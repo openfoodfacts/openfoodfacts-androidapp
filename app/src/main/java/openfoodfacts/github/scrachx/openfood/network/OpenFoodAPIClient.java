@@ -74,6 +74,9 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
 
+/**
+ * API Client for all API callbacks
+ */
 public class OpenFoodAPIClient {
     public static final String TEXT_PLAIN = "text/plain";
     private static final String USER_ID = "user_id";
@@ -106,6 +109,11 @@ public class OpenFoodAPIClient {
         mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
     }
 
+    /**
+     * Returns API Service for OpenFoodAPIClient
+     *
+     * @param apiUrl base url for the API
+     */
     private OpenFoodAPIClient(String apiUrl) {
         apiService = new Retrofit.Builder()
             .baseUrl(apiUrl)
@@ -117,6 +125,11 @@ public class OpenFoodAPIClient {
             .create(OpenFoodAPIService.class);
     }
 
+    /**
+     * Uploads comment by users
+     *
+     * @param login the username
+     */
     public static String getCommentToUpload(String login) {
         String comment = PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance());
         if (login.isEmpty()) {
@@ -125,8 +138,9 @@ public class OpenFoodAPIClient {
         return comment;
     }
 
-    public void getProduct(final String barcode, final Activity activity) {
-        getProduct(barcode, activity, null);
+    public static String getLocaleProductNameField() {
+        String locale = LocaleHelper.getLanguage(OFFApplication.getInstance());
+        return "product_name_" + locale;
     }
 
     public Call<State> getProductFull(final String barcode) {
@@ -303,6 +317,50 @@ public class OpenFoodAPIClient {
         });
     }
 
+    public static void addToHistory(HistoryProductDao mHistoryProductDao, Product product) {
+        List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
+        HistoryProduct hp;
+        if (historyProducts.size() == 1) {
+            hp = historyProducts.get(0);
+            hp.setLastSeen(new Date());
+        } else {
+            hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
+                product.getCode(), product
+                .getQuantity(), product.getNutritionGradeFr());
+        }
+        mHistoryProductDao.insertOrReplace(hp);
+    }
+
+    public void getProduct(final String barcode, final Activity activity) {
+        getProduct(barcode, activity, null);
+    }
+
+    public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Context activity, final OnProductSentCallback productSentCallback, SendProduct product) {
+        postImages(response, activity, productSentCallback, product);
+    }
+
+    /**
+     * @return This api service gets products of provided brand.
+     */
+    public OpenFoodAPIService getAPIService() {
+        return apiService;
+    }
+
+    public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
+
+        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                onBrandCallback.onBrandResponse(true, response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                onBrandCallback.onBrandResponse(false, null);
+            }
+        });
+    }
+
     public void searchProduct(final String name, final int page, final Activity activity, final OnProductsCallback productsCallback) {
         String productNameLocale = getLocaleProductNameField();
         String fields = "selected_images,image_small_url,product_name,brands,quantity,code,nutrition_grade_fr," + productNameLocale;
@@ -333,41 +391,12 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public static String getLocaleProductNameField() {
-        String locale = LocaleHelper.getLanguage(OFFApplication.getInstance());
-        return "product_name_" + locale;
-    }
-
-    public void onResponseCallForPostFunction(Call<State> call, Response<State> response, Context activity, final OnProductSentCallback productSentCallback, SendProduct product) {
-        postImages(response, activity, productSentCallback, product);
-    }
-
     /**
-     * @return This api service gets products of provided brand.
+     * Returns images for the current product
+     *
+     * @param barcode barcode for the current product
+     * @param onImagesCallback reference to the OnImagesCallback interface
      */
-    public OpenFoodAPIService getAPIService() {
-        return apiService;
-    }
-
-    public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
-
-        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(Call<Search> call, Response<Search> response) {
-                onBrandCallback.onBrandResponse(true, response.body());
-            }
-
-            @Override
-            public void onFailure(Call<Search> call, Throwable t) {
-                onBrandCallback.onBrandResponse(false, null);
-            }
-        });
-    }
-
-    public interface OnImagesCallback {
-        void onImageResponse(boolean value, String response);
-    }
-
     public void getImages(String barcode, OnImagesCallback onImagesCallback) {
 
         apiService.getProductImages(barcode).enqueue(new Callback<String>() {
@@ -465,6 +494,11 @@ public class OpenFoodAPIClient {
             });
     }
 
+    /**
+     * Returns a map for images uploaded for product/ingredients/nutrition/other images
+     *
+     * @param image object of ProductImage
+     */
     private Map<String, RequestBody> getUploadableMap(ProductImage image) {
         final String lang = image.getLanguage();
 
@@ -602,20 +636,33 @@ public class OpenFoodAPIClient {
         }
     }
 
-    public static void addToHistory(HistoryProductDao mHistoryProductDao, Product product) {
-        List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.getCode())).list();
-        HistoryProduct hp;
-        if (historyProducts.size() == 1) {
-            hp = historyProducts.get(0);
-            hp.setLastSeen(new Date());
-        } else {
-            hp = new HistoryProduct(product.getProductName(), product.getBrands(), product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
-                product.getCode(), product
-                .getQuantity(), product.getNutritionGradeFr());
-        }
-        mHistoryProductDao.insertOrReplace(hp);
+    public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
+
+        apiService.getProductByPackaging(packaging, page).enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
+                if (response.isSuccessful()) {
+                    onPackagingCallback.onPackagingResponse(true, response.body());
+                } else {
+                    onPackagingCallback.onPackagingResponse(false, null);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
+                onPackagingCallback.onPackagingResponse(false, null);
+            }
+        });
     }
 
+    /**
+     * upload images in offline mode
+     *
+     * @param context context
+     * @param cancel boolean to store whether to cancel upload or not
+     * @param job object of JobParameters
+     * @param service object of SavedProductUploadJob
+     */
     public void uploadOfflineImages(Context context, boolean cancel, JobParameters job, SavedProductUploadJob service) {
         if (!cancel) {
             task.job = job;
@@ -626,66 +673,17 @@ public class OpenFoodAPIClient {
         }
     }
 
-    public class OfflineUploadingTask extends AsyncTask<Context, Void, Void> {
-        JobParameters job;
-        WeakReference<SavedProductUploadJob> service;
-
-        @Override
-        protected Void doInBackground(Context... context) {
-            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder().where(ToUploadProductDao.Properties.Uploaded.eq(false)
-            ).list();
-            int totalSize = toUploadProductList.size();
-            for (int i = 0; i < totalSize; i++) {
-                ToUploadProduct uploadProduct = toUploadProductList.get(i);
-                File imageFile;
-                try {
-                    imageFile = new File(uploadProduct.getImageFilePath());
-                } catch (Exception e) {
-                    Log.e("OfflineUploadingTask", "doInBackground", e);
-                    continue;
-                }
-                ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
-                    uploadProduct.getProductField(), imageFile);
-
-                apiService.saveImage(getUploadableMap(productImage))
-                    .enqueue(new Callback<JsonNode>() {
-                        @Override
-                        public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
-                            if (!response.isSuccessful()) {
-                                Toast.makeText(context[0], response.toString(), Toast.LENGTH_LONG).show();
-                                return;
-                            }
-
-                            JsonNode body = response.body();
-                            if (body != null) {
-                                Log.d("onResponse", body.toString());
-                                if (!body.isObject()) {
-
-                                } else if (body.get("status").asText().contains("status not ok")) {
-                                    mToUploadProductDao.delete(uploadProduct);
-                                } else {
-                                    mToUploadProductDao.delete(uploadProduct);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
-
-                        }
-                    });
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Log.d("serviceValue", service.get().toString());
-            service.get().jobFinished(job, false);
-        }
+    public void getProductsByStore(final String store, final int page, final OnStoreCallback onStoreCallback) {
+        apiService.getProductByStores(store, page).enqueue(createStoreCallback(onStoreCallback));
     }
 
+    /**
+     * Search for products using bran name
+     *
+     * @param brand search query for product
+     * @param page page numbers
+     * @param onBrandCallback object of OnBrandCallback interface
+     */
     public void getProductsByBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
 
         apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
@@ -763,27 +761,98 @@ public class OpenFoodAPIClient {
         };
     }
 
-    public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
+    public void getProductsByOrigin(final String origin, final int page, final OnStoreCallback onStoreCallback) {
+        apiService.getProductsByOrigin(origin, page).enqueue(createStoreCallback(onStoreCallback));
+    }
 
-        apiService.getProductByPackaging(packaging, page).enqueue(new Callback<Search>() {
+    public void syncOldHistory() {
+        new SyncOldHistoryTask().execute();
+    }
+
+    public void getProductsByManufacturingPlace(final String manufacturingPlace, final int page, final OnStoreCallback onStoreCallback) {
+        apiService.getProductsByManufacturingPlace(manufacturingPlace, page).enqueue(createStoreCallback(onStoreCallback));
+    }
+
+    public interface OnImagesCallback {
+        void onImageResponse(boolean value, String response);
+    }
+
+    public class OfflineUploadingTask extends AsyncTask<Context, Void, Void> {
+        JobParameters job;
+        WeakReference<SavedProductUploadJob> service;
+
+        @Override
+        protected Void doInBackground(Context... context) {
+            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder().where(ToUploadProductDao.Properties.Uploaded.eq(false)
+            ).list();
+            int totalSize = toUploadProductList.size();
+            for (int i = 0; i < totalSize; i++) {
+                ToUploadProduct uploadProduct = toUploadProductList.get(i);
+                File imageFile;
+                try {
+                    imageFile = new File(uploadProduct.getImageFilePath());
+                } catch (Exception e) {
+                    Log.e("OfflineUploadingTask", "doInBackground", e);
+                    continue;
+                }
+                ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
+                    uploadProduct.getProductField(), imageFile);
+
+                apiService.saveImage(getUploadableMap(productImage))
+                    .enqueue(new Callback<JsonNode>() {
+                        @Override
+                        public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
+                            if (!response.isSuccessful()) {
+                                Toast.makeText(context[0], response.toString(), Toast.LENGTH_LONG).show();
+                                return;
+                            }
+
+                            JsonNode body = response.body();
+                            if (body != null) {
+                                Log.d("onResponse", body.toString());
+                                if (!body.isObject()) {
+
+                                } else if (body.get("status").asText().contains("status not ok")) {
+                                    mToUploadProductDao.delete(uploadProduct);
+                                } else {
+                                    mToUploadProductDao.delete(uploadProduct);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
+
+                        }
+                    });
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Log.d("serviceValue", service.get().toString());
+            service.get().jobFinished(job, false);
+        }
+    }
+
+    public Callback<Search> createStoreCallback(OnStoreCallback onStoreCallback) {
+        return new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
-                    onPackagingCallback.onPackagingResponse(true, response.body());
+                    onStoreCallback.onStoreResponse(true, response.body());
                 } else {
-                    onPackagingCallback.onPackagingResponse(false, null);
+                    onStoreCallback.onStoreResponse(false, null);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onPackagingCallback.onPackagingResponse(false, null);
+                onStoreCallback.onStoreResponse(false, null);
             }
-        });
-    }
-
-    public void syncOldHistory() {
-        new SyncOldHistoryTask().execute();
+        };
     }
 
     public class SyncOldHistoryTask extends AsyncTask<Void, Void, Void> {
@@ -830,36 +899,6 @@ public class OpenFoodAPIClient {
         }
     }
 
-    public void getProductsByStore(final String store, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductByStores(store, page).enqueue(createStoreCallback(onStoreCallback));
-    }
-
-    public void getProductsByOrigin(final String origin, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductsByOrigin(origin, page).enqueue(createStoreCallback(onStoreCallback));
-    }
-
-    public Callback<Search> createStoreCallback(OnStoreCallback onStoreCallback) {
-        return new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onStoreCallback.onStoreResponse(true, response.body());
-                } else {
-                    onStoreCallback.onStoreResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onStoreCallback.onStoreResponse(false, null);
-            }
-        };
-    }
-
-    public void getProductsByManufacturingPlace(final String manufacturingPlace, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductsByManufacturingPlace(manufacturingPlace, page).enqueue(createStoreCallback(onStoreCallback));
-    }
-
     private Callback<Search> createCallback(OnContributorCallback onContributorCallback) {
         return new Callback<Search>() {
             @Override
@@ -878,6 +917,13 @@ public class OpenFoodAPIClient {
         };
     }
 
+    /**
+     * call API service to return products using Additives
+     *
+     * @param additive search query for products
+     * @param page number of pages
+     * @param onAdditiveCallback object of OnAdditiveCallback interface
+     */
     public void getProductsByAdditive(final String additive, final int page, final OnAdditiveCallback onAdditiveCallback) {
 
         apiService.getProductsByAdditive(additive, page).enqueue(new Callback<Search>() {

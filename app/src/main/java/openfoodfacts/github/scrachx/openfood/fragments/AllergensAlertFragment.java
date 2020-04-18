@@ -180,6 +180,9 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         }
     }
 
+    /**
+     * Retrieve modified list of allergens from ProductRepository
+     */
     private void updateAllergenDao() {
         final String language = LocaleHelper.getLanguage(getContext());
         productRepository.getAllergensByEnabledAndLanguageCode(true, language)
@@ -217,6 +220,9 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         }
     }
 
+    /**
+     * Dat aobserver of the Recycler Views
+     */
     class DataObserver extends RecyclerView.AdapterDataObserver {
         DataObserver() {
             super();

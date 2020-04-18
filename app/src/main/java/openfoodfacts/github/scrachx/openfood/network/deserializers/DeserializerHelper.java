@@ -1,9 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.network.deserializers;
 
 import android.util.Log;
+
 import com.fasterxml.jackson.databind.JsonNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 class DeserializerHelper {
     static final String NAMES_KEY = "name";
@@ -20,6 +25,11 @@ class DeserializerHelper {
         //helper class.
     }
 
+    /**
+     * Extracts names form the names node in the Json Response
+     *
+     * @param namesNode namesNode in Json response
+     */
     static Map<String, String> extractNames(JsonNode namesNode) {
         Map<String, String> names = new HashMap<>();
         Iterator<Map.Entry<String, JsonNode>> nameNodeIterator = namesNode.fields();
@@ -31,6 +41,12 @@ class DeserializerHelper {
         return names;
     }
 
+    /**
+     * Extracts child nodes from a map of subnodes
+     *
+     * @param subNode map of subnodes
+     * @param key get the JsonNode for the given key
+     */
     static List<String> extractChildNodeAsText(Map.Entry<String, JsonNode> subNode, String key) {
         List<String> stringList = new ArrayList<>();
         JsonNode jsonNode = subNode.getValue().get(key);

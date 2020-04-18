@@ -70,6 +70,9 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
 
+/**
+ * A class for creating all the ListPreference
+ */
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;

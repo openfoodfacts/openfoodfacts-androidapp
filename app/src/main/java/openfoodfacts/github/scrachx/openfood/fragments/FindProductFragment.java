@@ -29,6 +29,9 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
+/**
+ * @see R.layout#fragment_find_product
+ */
 public class FindProductFragment extends NavigationBaseFragment {
     public static final String BARCODE = "barcode";
     @BindView(R.id.editTextBarcode)
