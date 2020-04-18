@@ -23,6 +23,9 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
+/**
+ * A class for handling photo receiver
+ */
 public class PhotoReceiverHandler {
     private final PhotoReceiver photoReceiver;
 
@@ -100,6 +103,9 @@ public class PhotoReceiverHandler {
         });
     }
 
+    /**
+     * A method called after cropping the image to process that image.
+     */
     private boolean onCropResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
