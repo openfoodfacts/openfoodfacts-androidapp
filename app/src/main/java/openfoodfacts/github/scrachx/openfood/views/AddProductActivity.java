@@ -50,6 +50,7 @@ import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 
@@ -59,7 +60,6 @@ public class AddProductActivity extends AppCompatActivity {
     private static final String KEY_USER_ID = "user_id";
     @SuppressWarnings("squid:S2068")
     private static final String KEY_PASSWORD = "password";
-    public static final String PARAM_LANGUAGE = "lang";
     private static final String ADD_TAG = AddProductActivity.class.getSimpleName();
     public static final String MODIFY_NUTRITION_PROMPT = "modify_nutrition_prompt";
     public static final String MODIFY_CATEGORY_PROMPT = "modify_category_prompt";
@@ -223,7 +223,7 @@ public class AddProductActivity extends AppCompatActivity {
         if (state != null) {
             mProduct = state.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db
-            offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(mProduct.getCode())).unique();
+            offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(mProduct.getCode());
         }
         if (mEditProduct != null) {
             setTitle(R.string.edit_product_title);
@@ -234,13 +234,13 @@ public class AddProductActivity extends AppCompatActivity {
         } else if (offlineSavedProduct != null) {
             mainBundle.putSerializable("edit_offline_product", offlineSavedProduct);
             // Save the already existing images in productDetails for UI
-            imagesFilePath[0] = offlineSavedProduct.getProductDetailsMap().get("image_front");
-            imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get("image_ingredients");
-            imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get("image_nutrition_facts");
+            imagesFilePath[0] = offlineSavedProduct.getImageFront();
+            imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS);
+            imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION);
             // get the status of images from productDetailsMap, whether uploaded or not
-            imageFrontUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_front_uploaded"));
-            imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_ingredients_uploaded"));
-            imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get("image_nutrition_facts_uploaded"));
+            imageFrontUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_FRONT_UPLOADED));
+            imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED));
+            imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED));
         }
         if (state == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
@@ -311,23 +311,25 @@ public class AddProductActivity extends AppCompatActivity {
      */
     private void saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.
-        productDetails.put("image_front", imagesFilePath[0]);
-        productDetails.put("image_ingredients", imagesFilePath[1]);
-        productDetails.put("image_nutrition_facts", imagesFilePath[2]);
+        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_FRONT, imagesFilePath[0]);
+        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS, imagesFilePath[1]);
+        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_NUTRITION, imagesFilePath[2]);
         // Add the status of images to the productDetails, whether uploaded or not
         if (imageFrontUploaded) {
-            productDetails.put("image_front_uploaded", "true");
+            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_FRONT_UPLOADED, "true");
         }
         if (imageIngredientsUploaded) {
-            productDetails.put("image_ingredients_uploaded", "true");
+            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED, "true");
         }
         if (imageNutritionFactsUploaded) {
-            productDetails.put("image_nutrition_facts_uploaded", "true");
+            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED, "true");
         }
         OfflineSavedProduct offlineSavedProduct = new OfflineSavedProduct();
         offlineSavedProduct.setBarcode(productDetails.get("code"));
         offlineSavedProduct.setProductDetailsMap(productDetails);
         mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
+
+        OfflineProductService.sharedInstance().startUploadQueue();
 
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
@@ -603,11 +605,11 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public String getProductLanguageForEdition() {
-        return productDetails.get(PARAM_LANGUAGE);
+        return productDetails.get(OfflineSavedProduct.KEYS.PARAM_LANGUAGE);
     }
 
     public void setProductLanguage(String languageCode) {
-        addToMap(PARAM_LANGUAGE, languageCode);
+        addToMap(OfflineSavedProduct.KEYS.PARAM_LANGUAGE, languageCode);
     }
 
     public void updateLanguage() {

@@ -753,5 +753,24 @@ public class Utils {
         }
         return jsonObject;
     }
+
+
+    public static <T> T firstNotNull(T... args) {
+        for (T arg : args) {
+            if (arg != null) {
+                return arg;
+            }
+        }
+        return null;
+    }
+
+    public static String firstNotEmpty(String... args) {
+        for (String arg : args) {
+            if (arg != null && arg.length() > 0) {
+                return arg;
+            }
+        }
+        return null;
+    }
 }
 

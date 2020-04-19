@@ -25,7 +25,7 @@ def obtainTestBuildType() {
 
 
 greendao {
-    schemaVersion 16
+    schemaVersion 17
 }
 
 
