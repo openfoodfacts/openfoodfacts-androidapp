@@ -7,6 +7,7 @@ import org.junit.Test;
  *
  */
 public class UnitUtilTest {
+
     @Test
     public void testConvertFromGram() {
         Assert.assertEquals(0.001, UnitUtils.convertFromGram(1, UnitUtils.UNIT_KILOGRAM), 1e-5);

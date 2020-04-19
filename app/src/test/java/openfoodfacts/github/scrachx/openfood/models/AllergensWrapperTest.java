@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -16,8 +17,11 @@ import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.
  */
 public class AllergensWrapperTest {
 
-    @Test
-    public void map_returnsListOfCorrectlyMappedAllergens() {
+    List<Allergen> allergens;
+
+
+    @Before
+    public void setUp(){
         AllergensWrapper allergensWrapper = new AllergensWrapper();
         Map<String, String> nameMap1 = new HashMap<>();
         nameMap1.put(LANGUAGE_CODE_ENGLISH, PEANUTS_EN);
@@ -31,10 +35,16 @@ public class AllergensWrapperTest {
         AllergenResponse allergenResponse2 = new AllergenResponse(UNIQUE_ALLERGEN_ID_2, nameMap2);
         allergensWrapper.setAllergens(Arrays.asList(allergenResponse1, allergenResponse2));
 
-        List<Allergen> allergens = allergensWrapper.map();
+        allergens = allergensWrapper.map();
+    }
 
+    @Test
+    public void allergensWrapper_CreatesOneListPerAllergen(){
         assertEquals(2, allergens.size());
+    }
 
+    @Test
+    public void map_returnsListOfCorrectlyMappedAllergens() {
         Allergen allergen1 = allergens.get(0);
         assertEquals(UNIQUE_ALLERGEN_ID_1, allergen1.getTag());
         assertEquals(2, allergen1.getNames().size());
