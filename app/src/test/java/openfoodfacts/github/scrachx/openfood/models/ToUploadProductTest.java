@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 
 /**
  * Tests for {@link ToUploadProduct}
@@ -27,5 +28,22 @@ public class ToUploadProductTest {
 
         toUploadProduct.setField("something else");
         assertEquals(ProductImageField.OTHER, toUploadProduct.getProductField());
+    }
+
+    @Test
+    public void toUploadProductWithId_fillsCorrectly() {
+        Long id = 1L;
+        String barcode = "CSE370";
+        String imageFilePath = "C:\\Images\\Example.pdf";
+        Boolean uploaded = false;
+        String field = "front";
+
+        ToUploadProduct toUploadProduct = new ToUploadProduct(id, barcode, imageFilePath, uploaded, field);
+
+        assertEquals(toUploadProduct.getId(), id);
+        assertEquals(toUploadProduct.getBarcode(), barcode);
+        assertEquals(toUploadProduct.getImageFilePath(), imageFilePath);
+        assertFalse(toUploadProduct.getUploaded());
+        assertEquals(toUploadProduct.getField(), field);
     }
 }
