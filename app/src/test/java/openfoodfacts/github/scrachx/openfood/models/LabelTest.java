@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNull;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
@@ -111,5 +112,13 @@ public class LabelTest {
         mLabel.__setDaoSession(mockDaoSession);
         mLabel.update();
         verify(mockLabelDao).update(mLabel);
+    }
+
+    @Test
+    public void resetNames_callsGetLabelNameDao() {
+        mLabel.__setDaoSession(mockDaoSession);
+        mLabel.resetNames();
+        mLabel.getNames();
+        verify(mockDaoSession).getLabelNameDao();
     }
 }
