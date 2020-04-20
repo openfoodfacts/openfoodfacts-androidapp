@@ -126,4 +126,12 @@ public class CategoryTest {
 
         verify(mockCategoryDao).update(mCategory);
     }
+
+    @Test
+    public void resetNames_callsGetLabelNameDao() {
+        mCategory.__setDaoSession(mockDaoSession);
+        mCategory.resetNames();
+        mCategory.getNames();
+        verify(mockDaoSession).getCategoryNameDao();
+    }
 }
