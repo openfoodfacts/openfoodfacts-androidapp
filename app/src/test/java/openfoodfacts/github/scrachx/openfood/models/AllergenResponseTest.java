@@ -34,4 +34,14 @@ public class AllergenResponseTest {
         assertEquals(PEANUTS_FR, allergen.getNames().get(1).getName());
         assertEquals(LANGUAGE_CODE_FRENCH, allergen.getNames().get(1).getLanguageCode());
     }
+
+    @Test
+    public void map_returnsMappedAllergenWithWikiDataCode() {
+        Map<String, String> nameMap = new HashMap<>();
+        String wikiDataCode = "Q12345";
+        AllergenResponse allergenResponse = new AllergenResponse(UNIQUE_ALLERGEN_ID_1, nameMap, wikiDataCode);
+        Allergen allergen = allergenResponse.map();
+
+        assertEquals(wikiDataCode, allergen.getWikiDataId());
+    }
 }
