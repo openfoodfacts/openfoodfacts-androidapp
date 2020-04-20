@@ -13,6 +13,8 @@ import static junit.framework.Assert.assertEquals;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_EN;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_TAG;
+import static junit.framework.Assert.assertNull;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static org.junit.Assert.*;
@@ -101,5 +103,13 @@ public class LabelTest {
         mLabel.__setDaoSession(mockDaoSession);
         mLabel.update();
         verify(mockLabelDao).update(mLabel);
+    }
+
+    @Test
+    public void resetNames_callsGetLabelNameDao() {
+        mLabel.__setDaoSession(mockDaoSession);
+        mLabel.resetNames();
+        mLabel.getNames();
+        verify(mockDaoSession).getLabelNameDao();
     }
 }
