@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import android.os.AsyncTask;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -7,6 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -51,16 +54,19 @@ public class OfflineProductService {
 
     public static List<OfflineSavedProduct> getListOfflineProductsNeedingSync() {
         return getOfflineProductDAO().queryBuilder()
-            .where(OfflineSavedProductDao.Properties.IsDataUploaded.eq(false))
+            .where(OfflineSavedProductDao.Properties.Barcode.isNotNull())
             .list();
     }
 
     public void startUploadQueue() {
-        //TODO: launch on a bg thread !
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            AsyncTask.execute(this::startUploadQueue);
+            return;
+        }
         startUploadQueueSynchronous();
     }
 
-    //TODO: make sure this queue is run on a bg thread. On a background service if possible.
+    //TODO: check PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true) and current network value
     private void startUploadQueueSynchronous() {
         boolean shouldActuallyRunThisTime = false;
         if (!isRunning) {
@@ -73,41 +79,30 @@ public class OfflineProductService {
         }
 
         if (!shouldActuallyRunThisTime) {
+            Log.d(LOG_TAG, "Do not startUploadQueueSynchronous because it is already running");
             return;
         }
 
-        //TODO: check PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true) and current network value
+        Log.d(LOG_TAG, "startUploadQueueSynchronous");
 
         final List<OfflineSavedProduct> listSaveProduct = getListOfflineProductsNeedingSync();
 
         for (final OfflineSavedProduct product : listSaveProduct) {
-            if (TextUtils.isEmpty(product.getBarcode()) || TextUtils.isEmpty(product.getImageFront())) {
+            if (TextUtils.isEmpty(product.getBarcode())) {
+                Log.d(LOG_TAG, "Ignore product because empty barcode: " + product.toString());
                 continue;
             }
 
-            String fields = TextUtils.join(",",
-                new String[]{
-                    "link", "quantity", "image_ingredients_url",
-                    OfflineSavedProduct.KEYS.GET_PARAM_INGREDIENTS(product.getLanguage()),
-                    OfflineSavedProduct.KEYS.GET_PARAM_NAME(product.getLanguage())
-                });
+            Log.d(LOG_TAG, "Start treating of product " + product.toString());
 
-            //TODO: make this call synchronous ?
             try {
-                State state = this.apiClient
-                    .getProductByBarcodeSingle(product.getBarcode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
-                    .blockingGet();
+                boolean ok = addProductToServerIfNeeded(product);
+                ok = ok && uploadImageIfNeeded(product, ProductImageField.FRONT);
+                ok = ok && uploadImageIfNeeded(product, ProductImageField.INGREDIENTS);
+                ok = ok && uploadImageIfNeeded(product, ProductImageField.NUTRITION);
 
-                //TODO: put those in the right place
-                uploadImageIfNeeded(product, ProductImageField.FRONT);
-                uploadImageIfNeeded(product, ProductImageField.INGREDIENTS);
-                uploadImageIfNeeded(product, ProductImageField.NUTRITION);
-                addProductToServer(product);
-
-                if (state.getStatus() == 0) {
-                    //TODO: Product doesn't exist yet on the server. Add as it is.
-                } else {
-                    //TODO: Product already exists on the server. Compare values saved locally with the values existing on server.
+                if (ok) {
+                    getOfflineProductDAO().deleteByKey(product.getId());
                 }
             } catch (Exception e) {
                 Log.e(LOG_TAG, "Error getting the product", e);
@@ -115,7 +110,7 @@ public class OfflineProductService {
         }
 
         isRunning = false;
-        //TODO: queue is done !
+        Log.d(LOG_TAG, "END OF uploadQueueSynchronous");
     }
 
     /**
@@ -123,7 +118,11 @@ public class OfflineProductService {
      *
      * @param product The offline product to be uploaded to the server.
      */
-    private void addProductToServer(OfflineSavedProduct product) {
+    private boolean addProductToServerIfNeeded(OfflineSavedProduct product) {
+        if (product.getIsDataUploaded()) {
+            return true;
+        }
+
         HashMap<String, String> productDetails = product.getProductDetailsMap();
         // Remove the images from the HashMap before uploading the product details
         productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_FRONT);
@@ -134,58 +133,76 @@ public class OfflineProductService {
         productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED);
         productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED);
 
-        //TODO: make sure only updated properties are sent
+        Iterator<Map.Entry<String, String>> it = productDetails.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<String, String> entry = it.next();
+            if (TextUtils.isEmpty(entry.getValue())) {
+                //remove null values
+                it.remove();
+            }
+        }
+
+        Log.d(LOG_TAG, product.getBarcode() + " Uploading data: " + productDetails.toString());
+
         try {
             State state = this.apiClient
                 .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIService.PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance()))
                 .blockingGet();
 
-            //TODO: check the response status
-            boolean isResponseOk = true;
+            boolean isResponseOk = state.getStatus() == 1;
 
             if (isResponseOk) {
-                product.setIsDataUploaded(false);
+                product.setIsDataUploaded(true);
                 getOfflineProductDAO().insertOrReplace(product);
-            }
-            //TODO: mark the product as "uploaded"
+                Log.i(LOG_TAG, "product " + product.getBarcode() + " uploaded");
 
-            //TODO: delete the offline product ? not sure, maybe we want to keep it locally ?
-            // mOfflineSavedProductDao.deleteInTx(mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(product.getBarcode())).list());
+                return true;
+            } else {
+                Log.i(LOG_TAG, "could not upload product?");
+            }
         } catch (Exception e) {
             Log.e(LOG_TAG, e.getMessage(), e);
         }
+        return false;
+    }
+
+    private static String imageTypeFromImageField(ProductImageField imageField) {
+        switch (imageField) {
+            case FRONT:
+                return "front";
+            case INGREDIENTS:
+                return "ingredients";
+            case NUTRITION:
+                return "nutrition";
+        }
+        return "other";
+    }
+
+    private static boolean needImageUpload(HashMap<String, String> productDetails, String imageType) {
+        boolean imageUploaded = "true".equals(productDetails.get("image_" + imageType + "_uploaded"));
+        String imageFilePath = productDetails.get("image_" + imageType);
+        return imageUploaded || TextUtils.isEmpty(imageFilePath);
     }
 
     private boolean uploadImageIfNeeded(OfflineSavedProduct product, ProductImageField imageField) {
-        String imageType = "";
-        switch (imageField) {
-            case FRONT:
-                imageType = "front";
-                break;
-            case INGREDIENTS:
-                imageType = "ingredients";
-                break;
-            case NUTRITION:
-                imageType = "nutrition";
-                break;
-        }
+        String imageType = imageTypeFromImageField(imageField);
 
         String code = product.getBarcode();
         HashMap<String, String> productDetails = product.getProductDetailsMap();
 
-        boolean imageUploaded = "true".equals(productDetails.get("image_" + imageType + "_uploaded"));
         String imageFilePath = productDetails.get("image_" + imageType);
 
-        if (imageUploaded || TextUtils.isEmpty(imageFilePath)) {
+        if (imageFilePath == null || !needImageUpload(productDetails, imageType)) {
             // no need or nothing to upload
             return true;
         }
+
+        Log.d(LOG_TAG, "Uploading image_" + imageType + " for product " + code);
 
         Map<String, RequestBody> imgMap = createRequestBodyMap(code, productDetails, imageField);
         RequestBody image = ProductImage.createImageRequest(new File(imageFilePath));
         imgMap.put("imgupload_" + imageType + "\"; filename=\"" + imageType + "_" + product.getLanguage() + ".png\"", image);
 
-        String finalImageType = imageType;
         try {
             JsonNode jsonNode = this.apiClient.saveImageSingle(imgMap)
                 .blockingGet();
@@ -193,21 +210,27 @@ public class OfflineProductService {
             if (status.equals("status not ok")) {
                 String error = jsonNode.get("error").asText();
                 if (error.equals("This picture has already been sent.")) {
-                    productDetails.put("image_" + finalImageType + "_uploaded", "true");
+                    productDetails.put("image_" + imageType + "_uploaded", "true");
                     product.setProductDetailsMap(productDetails);
+                    getOfflineProductDAO().insertOrReplace(product);
                     return true;
                 }
-                Log.e(LOG_TAG, "Error uploading " + finalImageType + ": " + error);
+                Log.e(LOG_TAG, "Error uploading " + imageType + ": " + error);
                 return false;
             }
-            productDetails.put("image_" + finalImageType + "_uploaded", "true");
-            product.setProductDetailsMap(productDetails);
 
             Map<String, String> queryMap = buildQueryMap(jsonNode, OpenFoodAPIClient.fillWithUserLoginInfo(imgMap));
 
             JsonNode node = OfflineProductService.this.apiClient
                 .editImageSingle(code, queryMap)
                 .blockingGet();
+
+            productDetails.put("image_" + imageType + "_uploaded", "true");
+            product.setProductDetailsMap(productDetails);
+            getOfflineProductDAO().insertOrReplace(product);
+
+            Log.d(LOG_TAG, "Uploaded image_" + imageType + " for product " + code + " /node= " + node.toString());
+
             return true;
         } catch (Exception e) {
             Log.e(LOG_TAG, e.getMessage(), e);
