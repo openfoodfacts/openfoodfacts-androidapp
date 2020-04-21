@@ -364,7 +364,7 @@ public class AddProductActivity extends AppCompatActivity {
             if ((isNutritionDataAvailable()) && addProductNutritionFactsFragment.containsInvalidValue()) {
                 viewPager.setCurrentItem(2, true);
             } else {
-                saveProductOffline();
+                saveProduct();
             }
         }
     }
@@ -451,10 +451,6 @@ public class AddProductActivity extends AppCompatActivity {
                             performOCR(image.getBarcode(), "ingredients_" + getProductLanguageForEdition());
                         } else {
                             hideImageProgress(position, true, error);
-                        }
-                        if (!alreadySent) {
-                            new MaterialDialog.Builder(AddProductActivity.this).title(R.string.error_uploading_photo)
-                                .content(error).show();
                         }
                     } else {
                         if (image.getImageField() == ProductImageField.FRONT) {

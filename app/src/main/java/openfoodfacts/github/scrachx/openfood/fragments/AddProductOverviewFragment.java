@@ -64,7 +64,7 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
-import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -233,61 +233,37 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             binding.quantity.setText(product.getQuantity());
         }
         if (product.getBrands() != null && !product.getBrands().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getBrands().split("\\s*,\\s*"));
-            binding.brand.setText(chipValues);
+            binding.brand.setText(extractProductBrandsChipsValues(product));
         }
         if (product.getPackaging() != null && !product.getPackaging().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getPackaging().split("\\s*,\\s*"));
-            binding.packaging.setText(chipValues);
+            binding.packaging.setText(extractProductPackagingChipsValues(product));
         }
         if (product.getCategoriesTags() != null && !product.getCategoriesTags().isEmpty()) {
-            List<String> categoriesTags = product.getCategoriesTags();
-            final List<String> chipValues = new ArrayList<>();
-            for (String tag : categoriesTags) {
-                chipValues.add(getCategoryName(appLanguageCode, tag));
-            }
-            binding.categories.setText(chipValues);
+            binding.categories.setText(extractProductCategoriesChipsValues(product));
         }
         if (product.getLabelsTags() != null && !product.getLabelsTags().isEmpty()) {
-            List<String> labelsTags = product.getLabelsTags();
-            final List<String> chipValues = new ArrayList<>();
-            for (String tag : labelsTags) {
-                chipValues.add(getLabelName(appLanguageCode, tag));
-            }
-            binding.label.setText(chipValues);
+            binding.label.setText(extractProductTagsChipsValues(product));
         }
         if (product.getOrigins() != null && !product.getOrigins().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getOrigins().split("\\s*,\\s*"));
-            binding.originOfIngredients.setText(chipValues);
+            binding.originOfIngredients.setText(extractProductOriginsChipsValues(product));
         }
         if (product.getManufacturingPlaces() != null && !product.getManufacturingPlaces().isEmpty()) {
             binding.manufacturingPlace.setText(product.getManufacturingPlaces());
         }
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
-            String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
-            final List<String> chipValues = new ArrayList<>();
-            for (String embTag : embTags) {
-                chipValues.add(getEmbCode(embTag));
-            }
-            binding.embCode.setText(chipValues);
+            binding.embCode.setText(extractProductEmbTagsChipsValues(product));
         }
         if (product.getManufactureUrl() != null && !product.getManufactureUrl().isEmpty()) {
             binding.link.setText(product.getManufactureUrl());
         }
         if (product.getPurchasePlaces() != null && !product.getPurchasePlaces().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getPurchasePlaces().split("\\s*,\\s*"));
-            binding.countryWherePurchased.setText(chipValues);
+            binding.countryWherePurchased.setText(extractProductPurchasePlaces(product));
         }
         if (product.getStores() != null && !product.getStores().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getStores().split("\\s*,\\s*"));
-            binding.stores.setText(chipValues);
+            binding.stores.setText(extractProductStoresChipValues(product));
         }
         if (product.getCountriesTags() != null && !product.getCountriesTags().isEmpty()) {
-            List<String> countriesTags = product.getCountriesTags();
-            final List<String> chipValues = new ArrayList<>();
-            for (String tag : countriesTags) {
-                chipValues.add(getCountryName(appLanguageCode, tag));
-            }
+            List<String> chipValues = extractProductCountriesTagsChipValues(product);
             //Also add the country set by the user in preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
             String savedCountry = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "");
@@ -297,6 +273,89 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             binding.countriesWhereSold.setText(chipValues);
         }
         setProductLanguage(lang);
+    }
+
+    private List<String> extractProductCountriesTagsChipValues(Product product) {
+        if (product == null || product.getCountriesTags() == null) {
+            return new ArrayList<>();
+        }
+        List<String> countriesTags = product.getCountriesTags();
+        final List<String> chipValues = new ArrayList<>();
+        for (String tag : countriesTags) {
+            chipValues.add(getCountryName(appLanguageCode, tag));
+        }
+        return chipValues;
+    }
+
+    private List<String> extractProductStoresChipValues(Product product) {
+        if (product == null || product.getStores() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getStores().split("\\s*,\\s*"));
+    }
+
+    private List<String> extractProductPurchasePlaces(Product product) {
+        if (product == null || product.getPurchasePlaces() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getPurchasePlaces().split("\\s*,\\s*"));
+    }
+
+    private List<String> extractProductEmbTagsChipsValues(Product product) {
+        if (product == null || product.getEmbTags() == null) {
+            return new ArrayList<>();
+        }
+        String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
+        final List<String> chipValues = new ArrayList<>();
+        for (String embTag : embTags) {
+            chipValues.add(getEmbCode(embTag));
+        }
+        return chipValues;
+    }
+
+    private List<String> extractProductOriginsChipsValues(Product product) {
+        if (product == null || product.getOrigins() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getOrigins().split("\\s*,\\s*"));
+    }
+
+    private List<String> extractProductTagsChipsValues(Product product) {
+        if (product == null || product.getLabelsTags() == null) {
+            return new ArrayList<>();
+        }
+        List<String> labelsTags = product.getLabelsTags();
+        final List<String> chipValues = new ArrayList<>();
+        for (String tag : labelsTags) {
+            chipValues.add(getLabelName(appLanguageCode, tag));
+        }
+        return chipValues;
+    }
+
+    private List<String> extractProductCategoriesChipsValues(Product product) {
+        if (product == null || product.getCategoriesTags() == null) {
+            return new ArrayList<>();
+        }
+        List<String> categoriesTags = product.getCategoriesTags();
+        final List<String> chipValues = new ArrayList<>();
+        for (String tag : categoriesTags) {
+            chipValues.add(getCategoryName(appLanguageCode, tag));
+        }
+        return chipValues;
+    }
+
+    private List<String> extractProductPackagingChipsValues(Product product) {
+        if (product == null || product.getPackaging() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getPackaging().split("\\s*,\\s*"));
+    }
+
+    private List<String> extractProductBrandsChipsValues(Product product) {
+        if (product == null || product.getBrands() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getBrands().split("\\s*,\\s*"));
     }
 
     /**
@@ -385,12 +444,12 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     private void preFillValuesFromOffline() {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
-            if (productDetails.get("image_front") != null) {
+            if (mOfflineSavedProduct.getImageFrontLocalUrl() != null) {
                 binding.imageProgress.setVisibility(View.VISIBLE);
-                binding.btnEditImageFront.setVisibility(View.INVISIBLE);
-                mImageUrl = productDetails.get("image_front");
+                binding.editImageFront.setVisibility(View.INVISIBLE);
+                mImageUrl = mOfflineSavedProduct.getImageFrontLocalUrl();
                 Picasso.get()
-                    .load(FileUtils.LOCALE_FILE_SCHEME + mImageUrl)
+                    .load(mImageUrl)
                     .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
                     .into(binding.btnAddImageFront, new Callback() {
@@ -660,7 +719,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     /**
-     * adds only those fields to the query map which are not empty.
+     * adds only those fields to the query map which have changed.
      */
     public void getDetails() {
         chipifyAllUnterminatedTokens();
@@ -672,53 +731,53 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             if (!appLanguageCode.isEmpty()) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_INTERFACE_LANGUAGE, appLanguageCode);
             }
-            if (!languageCode.isEmpty()) {
+            if (!TextUtils.isEmpty(languageCode)) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_LANGUAGE, languageCode);
             }
-            if (!binding.name.getText().toString().isEmpty()) {
-                String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            if (EditTextUtils.isNotEmpty(name) && EditTextUtils.isDifferent(binding.name, product != null ? product.getProductName(lc) : null)) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.GET_PARAM_NAME(lc), name.getText().toString());
             }
-            if (!quantity.getText().toString().isEmpty()) {
+            if (EditTextUtils.isNotEmpty(quantity) && EditTextUtils.isDifferent(quantity, product != null ? product.getQuantity() : null)) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_QUANTITY, quantity.getText().toString());
             }
-            if (!brand.getChipValues().isEmpty()) {
+            if (!brand.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(brand, extractProductBrandsChipsValues(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_BRAND, getValues(brand));
             }
-            if (!packaging.getChipValues().isEmpty()) {
+            if (!packaging.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(packaging, extractProductPackagingChipsValues(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_PACKAGING, getValues(packaging));
             }
-            if (!categories.getChipValues().isEmpty()) {
+            if (!categories.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(categories, extractProductCategoriesChipsValues(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_CATEGORIES, getValues(categories));
             }
-            if (!label.getChipValues().isEmpty()) {
+            if (!label.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(label, extractProductTagsChipsValues(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_LABELS, getValues(label));
             }
-            if (!periodsAfterOpening.getText().toString().isEmpty()) {
+            if (EditTextUtils.isNotEmpty(periodsAfterOpening)) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
             }
             if (mImageUrl != null) {
                 addProductActivity.addToMap("imageUrl", mImageUrl);
             }
-            if (!originOfIngredients.getChipValues().isEmpty()) {
+            if (!originOfIngredients.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(originOfIngredients, extractProductOriginsChipsValues(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_ORIGIN, getValues(originOfIngredients));
             }
-            if (!manufacturingPlace.getText().toString().isEmpty()) {
+            if (EditTextUtils.isNotEmpty(manufacturingPlace) && EditTextUtils.isDifferent(manufacturingPlace, product != null ? product.getManufacturingPlaces() : null)) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_MANUFACTURING_PLACE, manufacturingPlace.getText().toString());
             }
-            if (!embCode.getChipValues().isEmpty()) {
+            if (!embCode.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(embCode, extractProductEmbTagsChipsValues(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_EMB_CODE, getValues(embCode));
             }
-            if (!link.getText().toString().isEmpty()) {
+            if (EditTextUtils.isNotEmpty(link) && EditTextUtils.isDifferent(link, product != null ? product.getManufactureUrl() : null)) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_LINK, link.getText().toString());
             }
-            if (!countryWherePurchased.getChipValues().isEmpty()) {
+            if (!countryWherePurchased.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(countryWherePurchased, extractProductPurchasePlaces(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_PURCHASE, getValues(countryWherePurchased));
             }
-            if (!stores.getChipValues().isEmpty()) {
+            if (!stores.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(stores, extractProductStoresChipValues(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_STORE, getValues(stores));
             }
-            if (!countriesWhereSold.getChipValues().isEmpty()) {
+            if (!countriesWhereSold.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(countriesWhereSold, extractProductCountriesTagsChipValues(product))) {
                 addProductActivity.addToMap(OfflineSavedProduct.KEYS.PARAM_COUNTRIES, getValues(countriesWhereSold));
             }
         }
@@ -791,8 +850,8 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             List<String> brandNames = binding.brand.getChipAndTokenValues();
             url = url + " " + StringUtils.join(brandNames, " ");
         }
-        if (!binding.name.getText().toString().isEmpty()) {
-            url = url + " " + binding.name.getText().toString();
+        if (EditTextUtils.isNotEmpty(binding.name)) {
+            url = url + " " + EditTextUtils.content(binding.name);
         }
         url = url + " " + getString(R.string.official_website);
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(activity.getBaseContext(), null);

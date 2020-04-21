@@ -20,6 +20,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 @Entity(indexes = {
@@ -112,7 +113,7 @@ public class OfflineSavedProduct implements Serializable {
     public String getImageFrontLocalUrl() {
         String localUrl = getProductDetailsMap().get(KEYS.IMAGE_FRONT);
         if (!TextUtils.isEmpty(localUrl)) {
-            return "file://" + localUrl;
+            return FileUtils.LOCALE_FILE_SCHEME + localUrl;
         }
         return null;
     }
@@ -151,6 +152,16 @@ public class OfflineSavedProduct implements Serializable {
 
     public void setIsDataUploaded(boolean isDataUploaded) {
         this.isDataUploaded = isDataUploaded;
+    }
+
+    @Override
+    public String toString() {
+        return "OfflineSavedProduct{" +
+            "id=" + id +
+            ", barcode='" + barcode + '\'' +
+            ", isDataUploaded=" + isDataUploaded +
+            ", map='" + getProductDetailsMap().toString() + '\'' +
+            '}';
     }
 
     public static class KEYS {
