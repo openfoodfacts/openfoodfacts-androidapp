@@ -13,10 +13,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class NutrientLevelsTest {
 
-    private NutrientLevels nutrientLevels = new NutrientLevels();
+    private NutrientLevels nutrientLevels;
 
     @Before
     public void setUp(){
+        nutrientLevels = new NutrientLevels();
         nutrientLevels.setFat(NutrimentLevel.LOW);
         nutrientLevels.setSalt(NutrimentLevel.MODERATE);
         nutrientLevels.setSaturatedFat(NutrimentLevel.HIGH);
