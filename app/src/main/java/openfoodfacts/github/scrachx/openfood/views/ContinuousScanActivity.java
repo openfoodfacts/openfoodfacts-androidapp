@@ -197,7 +197,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     binding.quickViewProgress.setVisibility(GONE);
                     binding.quickViewProgressText.setVisibility(GONE);
                     if (state.getStatus() == 0) {
-                        if (offlineSavedProduct == null) {
+                        if (offlineSavedProduct != null) {
+                            showOfflineSavedDetails(offlineSavedProduct);
+                        } else {
                             productNotFound(getString(R.string.product_not_found, lastBarcode));
                         }
                     } else {
