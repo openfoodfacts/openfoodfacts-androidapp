@@ -23,6 +23,8 @@ public class CountriesWrapperTest {
 
     private CountriesWrapper mCountriesWrapper;
     List<Country> countries;
+    Country country1;
+    Country country2;
 
     @Before
     public void setup() {
@@ -39,6 +41,9 @@ public class CountriesWrapperTest {
                 new CountryResponse(GERMANY_COUNTRY_TAG, germanyNamesMap);
         mCountriesWrapper.setCountries(Arrays.asList(countryResponse1, countryResponse2));
         countries = mCountriesWrapper.map();
+
+        country1 = countries.get(0);
+        country2 = countries.get(1);
     }
 
     @Test
@@ -48,7 +53,6 @@ public class CountriesWrapperTest {
 
     @Test
     public void map_returnsListOfCountries_CountryTagsAreCorrect(){
-        Country country1 = countries.get(0);
         assertEquals(USA_COUNTRY_TAG, country1.getTag());
         assertEquals(2, country1.getNames().size());
 
@@ -59,9 +63,6 @@ public class CountriesWrapperTest {
 
     @Test
     public void map_returnsListOfCountries_SubCountryTagsAreCorrect() {
-        Country country1 = countries.get(0);
-        Country country2 = countries.get(1);
-
         CountryName country1Name1 = country1.getNames().get(0);
         assertEquals(USA_COUNTRY_TAG, country1Name1.getCountyTag());
 
@@ -78,9 +79,6 @@ public class CountriesWrapperTest {
 
     @Test
     public void map_returnsListOfCountries_SubLanguageCodesAreCorrect() {
-        Country country1 = countries.get(0);
-        Country country2 = countries.get(1);
-
         CountryName country1Name1 = country1.getNames().get(0);
         assertEquals(LANGUAGE_CODE_ENGLISH, country1Name1.getLanguageCode());
 
@@ -96,9 +94,6 @@ public class CountriesWrapperTest {
 
     @Test
     public void map_returnsListOfCountries_SubNamesAreCorrect(){
-        Country country1 = countries.get(0);
-        Country country2 = countries.get(1);
-
         CountryName country1Name1 = country1.getNames().get(0);
         assertEquals(USA_EN, country1Name1.getName());
 
