@@ -72,4 +72,10 @@ public class AnalysisTagTest {
         assertEquals(PEANUTS_EN, tags.get(1).getName());
 
     }
+
+    @Test (expected = DaoException.class)
+    public void delete_throwsExceptionMyDaoIsNull() throws DaoException {
+        testAnalysisTag.__setDaoSession(mockDaoSession);
+        testAnalysisTag.delete();
+    }
 }
