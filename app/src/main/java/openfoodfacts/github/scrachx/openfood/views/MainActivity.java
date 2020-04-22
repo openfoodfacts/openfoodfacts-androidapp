@@ -91,6 +91,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -506,6 +507,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         //Scheduling background image upload job
         Utils.scheduleProductUploadJob(this);
+
+        OfflineProductWorker.addWork();
 
         //Adds nutriscore and quantity values in old history for schema 5 update
         SharedPreferences mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);

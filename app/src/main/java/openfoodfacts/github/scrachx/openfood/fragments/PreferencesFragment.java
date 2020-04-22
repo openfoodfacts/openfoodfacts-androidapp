@@ -47,6 +47,7 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
@@ -73,7 +74,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 /**
  * A class for creating all the ListPreference
  */
-public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
+public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem, SharedPreferences.OnSharedPreferenceChangeListener {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
     private Context context;
@@ -339,6 +340,21 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             }
         } catch (NullPointerException e) {
             Log.e(getClass().getSimpleName(), "on resume error", e);
+        }
+
+        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if ("enableMobileDataUpload".equals(key)) {
+            OfflineProductWorker.addWork();
         }
     }
 

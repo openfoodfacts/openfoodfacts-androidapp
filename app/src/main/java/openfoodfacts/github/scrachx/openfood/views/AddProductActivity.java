@@ -41,6 +41,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsF
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -329,7 +330,7 @@ public class AddProductActivity extends AppCompatActivity {
         offlineSavedProduct.setProductDetailsMap(productDetails);
         mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
 
-        OfflineProductService.sharedInstance().startUploadQueue();
+        OfflineProductWorker.addWork();
 
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);

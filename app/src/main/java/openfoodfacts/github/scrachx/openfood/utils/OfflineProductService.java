@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.os.AsyncTask;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -27,8 +25,7 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class OfflineProductService {
     private static final String LOG_TAG = "OfflineProductService";
-    private final OpenFoodAPIService apiClient;
-    private boolean isRunning = false;
+    private OpenFoodAPIService apiClient;
 
     private static class Loader {
         // static synchronized singleton
@@ -52,40 +49,26 @@ public class OfflineProductService {
         return getOfflineProductDAO().queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode)).unique();
     }
 
-    public static List<OfflineSavedProduct> getListOfflineProductsNeedingSync() {
+    private static List<OfflineSavedProduct> getListOfflineProducts() {
         return getOfflineProductDAO().queryBuilder()
             .where(OfflineSavedProductDao.Properties.Barcode.isNotNull())
+            .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
             .list();
     }
 
-    public void startUploadQueue() {
-        if (Looper.myLooper() == Looper.getMainLooper()) {
-            AsyncTask.execute(this::startUploadQueue);
-            return;
-        }
-        startUploadQueueSynchronous();
+    private static List<OfflineSavedProduct> getListOfflineProductsWithoutDataSynced() {
+        return getOfflineProductDAO().queryBuilder()
+            .where(OfflineSavedProductDao.Properties.Barcode.isNotNull())
+            .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
+            .where(OfflineSavedProductDao.Properties.IsDataUploaded.notEq(true))
+            .list();
     }
 
-    //TODO: check PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("enableMobileDataUpload", true) and current network value
-    private void startUploadQueueSynchronous() {
-        boolean shouldActuallyRunThisTime = false;
-        if (!isRunning) {
-            synchronized (OfflineProductService.class) {
-                if (!isRunning) {
-                    isRunning = true;
-                    shouldActuallyRunThisTime = true;
-                }
-            }
-        }
-
-        if (!shouldActuallyRunThisTime) {
-            Log.d(LOG_TAG, "Do not startUploadQueueSynchronous because it is already running");
-            return;
-        }
-
-        Log.d(LOG_TAG, "startUploadQueueSynchronous");
-
-        final List<OfflineSavedProduct> listSaveProduct = getListOfflineProductsNeedingSync();
+    /**
+     * @return true if there is still products to upload, false otherwise
+     */
+    public boolean uploadAll(boolean includeImages) {
+        final List<OfflineSavedProduct> listSaveProduct = OfflineProductService.getListOfflineProducts();
 
         for (final OfflineSavedProduct product : listSaveProduct) {
             if (TextUtils.isEmpty(product.getBarcode())) {
@@ -97,20 +80,24 @@ public class OfflineProductService {
 
             try {
                 boolean ok = addProductToServerIfNeeded(product);
-                ok = ok && uploadImageIfNeeded(product, ProductImageField.FRONT);
-                ok = ok && uploadImageIfNeeded(product, ProductImageField.INGREDIENTS);
-                ok = ok && uploadImageIfNeeded(product, ProductImageField.NUTRITION);
 
-                if (ok) {
-                    getOfflineProductDAO().deleteByKey(product.getId());
+                if (includeImages) {
+                    ok = ok && uploadImageIfNeeded(product, ProductImageField.FRONT);
+                    ok = ok && uploadImageIfNeeded(product, ProductImageField.INGREDIENTS);
+                    ok = ok && uploadImageIfNeeded(product, ProductImageField.NUTRITION);
+
+                    if (ok) {
+                        OfflineProductService.getOfflineProductDAO().deleteByKey(product.getId());
+                    }
                 }
             } catch (Exception e) {
                 Log.e(LOG_TAG, "Error getting the product", e);
             }
         }
-
-        isRunning = false;
-        Log.d(LOG_TAG, "END OF uploadQueueSynchronous");
+        if (includeImages) {
+            return OfflineProductService.getListOfflineProducts().size() > 0;
+        }
+        return OfflineProductService.getListOfflineProductsWithoutDataSynced().size() > 0;
     }
 
     /**
@@ -145,7 +132,7 @@ public class OfflineProductService {
         Log.d(LOG_TAG, product.getBarcode() + " Uploading data: " + productDetails.toString());
 
         try {
-            State state = this.apiClient
+            State state = apiClient
                 .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIService.PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance()))
                 .blockingGet();
 
@@ -153,7 +140,7 @@ public class OfflineProductService {
 
             if (isResponseOk) {
                 product.setIsDataUploaded(true);
-                getOfflineProductDAO().insertOrReplace(product);
+                OfflineProductService.getOfflineProductDAO().insertOrReplace(product);
                 Log.i(LOG_TAG, "product " + product.getBarcode() + " uploaded");
 
                 return true;
@@ -194,6 +181,7 @@ public class OfflineProductService {
 
         if (imageFilePath == null || !needImageUpload(productDetails, imageType)) {
             // no need or nothing to upload
+            Log.d(LOG_TAG, "No need to upload image_" + imageType + " for product " + code);
             return true;
         }
 
@@ -204,7 +192,7 @@ public class OfflineProductService {
         imgMap.put("imgupload_" + imageType + "\"; filename=\"" + imageType + "_" + product.getLanguage() + ".png\"", image);
 
         try {
-            JsonNode jsonNode = this.apiClient.saveImageSingle(imgMap)
+            JsonNode jsonNode = apiClient.saveImageSingle(imgMap)
                 .blockingGet();
             String status = jsonNode.get("status").asText();
             if (status.equals("status not ok")) {
@@ -221,7 +209,7 @@ public class OfflineProductService {
 
             Map<String, String> queryMap = buildQueryMap(jsonNode, OpenFoodAPIClient.fillWithUserLoginInfo(imgMap));
 
-            JsonNode node = OfflineProductService.this.apiClient
+            JsonNode node = apiClient
                 .editImageSingle(code, queryMap)
                 .blockingGet();
 
@@ -238,7 +226,7 @@ public class OfflineProductService {
         }
     }
 
-    private Map<String, RequestBody> createRequestBodyMap(String code, HashMap<String, String> productDetails, ProductImageField front) {
+    private static Map<String, RequestBody> createRequestBodyMap(String code, HashMap<String, String> productDetails, ProductImageField front) {
         Map<String, RequestBody> imgMap = new HashMap<>();
         RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
         RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), front.toString() + '_' + productDetails.get("lang"));
@@ -247,7 +235,7 @@ public class OfflineProductService {
         return imgMap;
     }
 
-    private Map<String, String> buildQueryMap(JsonNode jsonNode, String login) {
+    private static Map<String, String> buildQueryMap(JsonNode jsonNode, String login) {
         Map<String, String> queryMap = buildImageQueryMap(jsonNode);
         queryMap.put("comment", OpenFoodAPIClient.getCommentToUpload(login));
         return queryMap;
