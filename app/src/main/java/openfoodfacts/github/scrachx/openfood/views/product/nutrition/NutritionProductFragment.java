@@ -295,9 +295,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         } else {
             String servingSize = product.getServingSize();
             if (settingsPreference.getString("volumeUnitPreference", "l").equals("oz")) {
-                servingSize = Utils.getServingInOz(servingSize);
+                servingSize = UnitUtils.getServingInOz(servingSize);
             } else if (servingSize.toLowerCase().contains("oz") && settingsPreference.getString("volumeUnitPreference", "l").equals("l")) {
-                servingSize = Utils.getServingInL(servingSize);
+                servingSize = UnitUtils.getServingInL(servingSize);
             }
 
             serving.setText(bold(getString(R.string.txtServingSize)));

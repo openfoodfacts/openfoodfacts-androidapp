@@ -40,9 +40,9 @@ public class RealPathUtil {
         Cursor cursor = cursorLoader.loadInBackground();
 
         if (cursor != null) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
             cursor.moveToFirst();
-            result = cursor.getString(column_index);
+            result = cursor.getString(columnIndex);
             cursor.close();
         }
         return result;
