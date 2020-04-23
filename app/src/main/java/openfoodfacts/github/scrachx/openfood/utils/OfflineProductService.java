@@ -168,7 +168,7 @@ public class OfflineProductService {
     private static boolean needImageUpload(HashMap<String, String> productDetails, String imageType) {
         boolean imageUploaded = "true".equals(productDetails.get("image_" + imageType + "_uploaded"));
         String imageFilePath = productDetails.get("image_" + imageType);
-        return imageUploaded || TextUtils.isEmpty(imageFilePath);
+        return !imageUploaded && !TextUtils.isEmpty(imageFilePath);
     }
 
     private boolean uploadImageIfNeeded(OfflineSavedProduct product, ProductImageField imageField) {
