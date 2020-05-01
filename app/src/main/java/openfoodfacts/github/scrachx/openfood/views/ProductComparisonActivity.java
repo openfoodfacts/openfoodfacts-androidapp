@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -30,15 +29,23 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAda
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 public class ProductComparisonActivity extends BaseActivity implements PhotoReceiver {
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private PhotoReceiverHandler photoReceiverHandler;
     private RecyclerView.Adapter productComparisonAdapter;
     private ArrayList<Product> products = new ArrayList<>();
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_comparison);
+        setTitle(getString(R.string.compare_products));
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         photoReceiverHandler=new PhotoReceiverHandler(this);
 
         if (getIntent().getExtras() != null && getIntent().getBooleanExtra("product_found", false)) {
@@ -79,21 +86,8 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
                 }
             }
         });
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
-        setTitle(getString(R.string.compare_products));
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            finish();
-            return true;
-        }
-        return false;
     }
 
     @Override
@@ -105,5 +99,12 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this,requestCode,resultCode,data);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.compare_products);
+
     }
 }

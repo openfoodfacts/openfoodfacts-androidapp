@@ -10,7 +10,7 @@ buildscript {
     dependencies {
 
 
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.6.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -30,8 +30,8 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
-    
-        sonarqube { properties { property 'sonar.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*,**/*.xml" } }
+
+    sonarqube { properties { property 'sonar.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*,**/*.xml" } }
 
     sonarqube { properties { property 'sonar.coverage.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*" } }
 
@@ -39,7 +39,10 @@ allprojects {
 
 ext {
     supportLibraryVersion = '1.0.0'
-    multidexVersion = '2.0.0'
+
+    materialVersion = '1.1.0-beta01'
+
+    multidexVersion = '2.0.1'
 
     workRuntime = '2.2.0'
 
@@ -61,8 +64,8 @@ ext {
 
     butterknifeVersion = '10.1.0'
 
-    commonsLang='2.6'
-    commonsCsv='1.4'
+    commonsLang = '2.6'
+    commonsCsv = '1.4'
 
     journeyappsZxingScannerVersion = '3.6.0'
     zxingCoreVersion = '3.3.0' //For Android 14+ support zxing:core should be 3.3.0 or earlier
@@ -72,7 +75,7 @@ ext {
     apacheValidatorVersion = '1.6'
 
     loadToastVersion = '1.0.12'
-    zoomingImgVersion = '2.1.3'
+    zoomingImgVersion = '2.3.0'
     materialDialogVersion = '0.9.6.0'
 
     fontIconCoreVersion = '3.2.5@aar'
@@ -95,6 +98,6 @@ ext {
     nachos = '1.1.1'
     testRunnerVersion = '1.1.0'
 
-    testFalconVersion="2.1.1"
-    testscreengrabVersion="1.2.0"
+    testFalconVersion = "2.1.1"
+    testscreengrabVersion = "1.2.0"
 }

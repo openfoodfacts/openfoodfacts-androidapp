@@ -9,13 +9,20 @@ import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -25,34 +32,71 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
-import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
-import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.views.*;
-import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
-import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
+import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.CategoryProductHelper;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.Question;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
+import openfoodfacts.github.scrachx.openfood.utils.QuestionActionListeners;
+import openfoodfacts.github.scrachx.openfood.utils.QuestionDialog;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
+import openfoodfacts.github.scrachx.openfood.views.TipBox;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
+import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
 
 import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -84,6 +128,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView categoryProduct;
     @BindView(R.id.textLabelProduct)
     TextView labelProduct;
+    @BindView(R.id.textCategoryAlcoholAlert)
+    TextView categoryAlcoholAlert;
     @BindView(R.id.front_picture_layout)
     LinearLayout frontPictureLayout;
     @BindView(R.id.imageViewFront)
@@ -117,13 +163,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @BindView(R.id.action_compare_button)
     ImageButton compareProductButton;
     @BindView(R.id.scrollView)
-    public NestedScrollView scrollView;
+    NestedScrollView scrollView;
     @BindView(R.id.product_question_layout)
     RelativeLayout productQuestionLayout;
     @BindView(R.id.product_question_text)
     TextView productQuestionText;
     @BindView(R.id.product_question_dismiss)
     ImageView productQuestionDismiss;
+    @BindView(R.id.tipBox)
+    TipBox tipBox;
+    @BindView(R.id.analysis_tags)
+    RecyclerView rvAnalysisTags;
+    @BindView(R.id.analysisContainer)
+    View analysisContainer;
     private State state;
     private Product product;
     private OpenFoodAPIClient api;
@@ -176,10 +228,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void refreshView(State state) {
-        //no state-> we can't display anything.
+        // No state -> we can't display anything.
         if (state == null) {
             return;
         }
+
         super.refreshView(state);
         this.state = state;
         product = state.getProduct();
@@ -208,6 +261,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadProductQuestion();
         additiveProduct.setText(bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
+        presenter.loadAnalysisTags();
 
         mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
         barcode = product.getCode();
@@ -438,10 +492,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (showNutrientPrompt || showCategoryPrompt) {
             addNutriScorePrompt.setVisibility(View.VISIBLE);
             if (showNutrientPrompt && showCategoryPrompt) {
+                // Both true
                 addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
             } else if (showNutrientPrompt) {
+                // showNutrientPrompt true
                 addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
-            } else if (showCategoryPrompt) {
+            } else {
+                // showCategoryPrompt true
                 addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
         } else {
@@ -457,17 +514,29 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showAdditivesState(String state) {
         getActivity().runOnUiThread(() -> {
-            switch (state) {
-                case LOADING: {
-                    additiveProduct.append(getString(R.string.txtLoading));
-                    additiveProduct.setVisibility(View.VISIBLE);
-                    break;
-                }
-                case EMPTY: {
-                    additiveProduct.setVisibility(View.GONE);
-                    break;
-                }
+            if (LOADING.equals(state)) {
+                additiveProduct.append(getString(R.string.txtLoading));
+                additiveProduct.setVisibility(View.VISIBLE);
+            } else if (EMPTY.equals(state)) {
+                additiveProduct.setVisibility(View.GONE);
             }
+        });
+    }
+
+    @Override
+    public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
+        getActivity().runOnUiThread(() -> {
+            analysisContainer.setVisibility(View.VISIBLE);
+            IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(getContext(), analysisTags);
+            adapter.setOnItemClickListener((view, position) -> {
+                IngredientsWithTagDialogFragment fragment = IngredientsWithTagDialogFragment
+                    .newInstance(product, (AnalysisTagConfig) view.getTag(R.id.analysis_tag_config));
+                fragment.show(getChildFragmentManager(), "fragment_ingredients_with_tag");
+
+                fragment.setOnDismissListener(dialog -> adapter.filterVisibleTags());
+            });
+
+            rvAnalysisTags.setAdapter(adapter);
         });
     }
 
@@ -492,27 +561,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showCategories(List<CategoryName> categories) {
-        categoryProduct.setText(bold(getString(R.string.txtCategories)));
-        categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        categoryProduct.append(" ");
-        categoryProduct.setClickable(true);
-        categoryProduct.setMovementMethod(LinkMovementMethod.getInstance());
+        CategoryProductHelper categoryProductHelper = new CategoryProductHelper(categoryProduct, categories, this, apiClientForWikiData);
+        categoryProductHelper.showCategories();
 
-        if (categories.isEmpty()) {
-            categoryProduct.setVisibility(View.GONE);
-        } else {
-            categoryProduct.setVisibility(View.VISIBLE);
-            // Add all the categories to text view and link them to wikidata is possible
-            for (int i = 0, lastIndex = categories.size() - 1; i <= lastIndex; i++) {
-                CategoryName category = categories.get(i);
-                CharSequence categoryName = getCategoriesTag(category);
-                // Add category name to text view
-                categoryProduct.append(categoryName);
-                // Add a comma if not the last item
-                if (i != lastIndex) {
-                    categoryProduct.append(", ");
-                }
-            }
+        if (categoryProductHelper.getContainsAlcohol()) {
+            categoryProductHelper.showAlcoholAlert(categoryAlcoholAlert);
         }
     }
 
@@ -520,7 +573,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void showProductQuestion(Question question) {
         if (Utils.isUserLoggedIn(getContext()) && question != null && !question.isEmpty()) {
             productQuestion = question;
-            productQuestionText.setText(String.format("%s\n%s",
+            productQuestionText.setText(String.format("%s%n%s",
                 question.getQuestion(), question.getValue()));
             productQuestionLayout.setVisibility(View.VISIBLE);
             hasCategoryInsightQuestion = question.getInsightType().equals("category");
@@ -609,19 +662,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showCategoriesState(String state) {
         getActivity().runOnUiThread(() -> {
-            switch (state) {
-                case LOADING: {
-                    if(getContext()!=null) {
-                        categoryProduct.append(getString(R.string.txtLoading));
-                    }
-                    break;
+            if (LOADING.equals(state)) {
+                if (getContext() != null) {
+                    categoryProduct.append(getString(R.string.txtLoading));
                 }
-                case EMPTY: {
-                    categoryProduct.setVisibility(View.GONE);
-                    break;
-                }
-                default:
-                    break;
+            } else if (EMPTY.equals(state)) {
+                categoryProduct.setVisibility(View.GONE);
             }
         });
     }
@@ -629,17 +675,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showLabelsState(String state) {
         getActivity().runOnUiThread(() -> {
-            switch (state) {
-                case LOADING: {
-                    labelProduct.append(getString(R.string.txtLoading));
-                    break;
-                }
-                case EMPTY: {
-                    labelProduct.setVisibility(View.GONE);
-                    break;
-                }
-                default:
-                    break;
+            if (LOADING.equals(state)) {
+                labelProduct.append(getString(R.string.txtLoading));
+            } else if (EMPTY.equals(state)) {
+                labelProduct.setVisibility(View.GONE);
             }
         });
     }
@@ -658,44 +697,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             return tag.getName();
         }
         return embTag;
-    }
-
-    private CharSequence getCategoriesTag(CategoryName category) {
-        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                if (category.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(category.getWikiDataId(), (value, result) -> {
-                        if (value) {
-                            FragmentActivity activity = getActivity();
-
-                            if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, category,
-                                    activity.getSupportFragmentManager());
-                            }
-                        } else {
-                            ProductBrowsingListActivity.startActivity(getContext(),
-                                category.getCategoryTag(),
-                                category.getName(),
-                                SearchType.CATEGORY);
-                        }
-                    });
-                } else {
-                    ProductBrowsingListActivity.startActivity(getContext(),
-                        category.getCategoryTag(),
-                        category.getName(),
-                        SearchType.CATEGORY);
-                }
-            }
-        };
-        spannableStringBuilder.append(category.getName());
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        if (!category.isNotNull()) {
-            StyleSpan iss = new StyleSpan(android.graphics.Typeface.ITALIC); //Span to make text italic
-            spannableStringBuilder.setSpan(iss, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        return spannableStringBuilder;
     }
 
     private CharSequence getLabelTag(LabelName label) {
@@ -879,10 +880,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             shouldRefresh = true;
         }
-        if (shouldRefresh) {
-            if (getActivity() instanceof ProductActivity) {
-                ((ProductActivity) getActivity()).onRefresh();
-            }
+        if (shouldRefresh && getActivity() instanceof ProductActivity) {
+            ((ProductActivity) getActivity()).onRefresh();
         }
         if (resultCode == RESULT_OK) {
             if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && isUserLoggedIn()) {
@@ -950,5 +949,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             context = OFFApplication.getInstance();
         }
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void resetScroll() {
+        scrollView.scrollTo(0, 0);
+
+        if (rvAnalysisTags.getAdapter() != null) {
+            ((IngredientAnalysisTagsAdapter) rvAnalysisTags.getAdapter()).filterVisibleTags();
+        }
     }
 }

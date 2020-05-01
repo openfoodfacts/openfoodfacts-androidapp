@@ -1,15 +1,26 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.util.StdConverter;
-import openfoodfacts.github.scrachx.openfood.images.ImageSize;
+
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.StringEscapeUtils;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import openfoodfacts.github.scrachx.openfood.images.ImageSize;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
@@ -140,6 +151,10 @@ public class Product implements Serializable {
     @JsonProperty("environment_infocard")
     private String environmentInfocard;
     private Map<String, Object> additionalProperties = new HashMap<>();
+    @JsonProperty("ingredients_analysis_tags")
+    private List<String> ingredientsAnalysisTags = new ArrayList<>();
+    @JsonProperty("ingredients")
+    private List<LinkedHashMap<String, String>> ingredients = new ArrayList<>();
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
@@ -684,6 +699,14 @@ public class Product implements Serializable {
 
     public String getEnvironmentInfocard() {
         return environmentInfocard;
+    }
+
+    public List<String> getIngredientsAnalysisTags() {
+        return ingredientsAnalysisTags;
+    }
+
+    public List<LinkedHashMap<String, String>> getIngredients() {
+        return ingredients;
     }
 
     /**

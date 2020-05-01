@@ -22,7 +22,7 @@ Per scoprire il progetto volontario Open Food Facts, visita https://world.openfo
 
 ▶ Contribuisci alla trasparenza alimentare
 - Open Food Facts è un database di prodotti alimentari realizzato da tutti, per tutti.
-- Puoi usarlo per fare scelte alimentari migliori e, dato che sono dati aperti, chiunque può riutilizzarlo per qualsiasi scopo.
+- Puoi usarlo per fare scelte alimentari migliori e, poiché si tratta di dati liberi, chiunque può riutilizzarlo per qualsiasi scopo.
 - Open Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi.
 - Puoi iniziare a contribuire oggi aggiungendo un prodotto dal tuo frigo.
 
@@ -32,7 +32,7 @@ Crea liste della spesa, registra ciò che hai mangiato e condividi ed esporta fa
 ▶ Ottieni i fatti
 - Open Food Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai in grado di trovare:
 - l'impronta di carbonio (emissioni di CO2) e l'imballaggio (comprese le istruzioni per il riciclo),
-- il Nutriscore (punteggio nutrizionale), i nutrienti, il contenuto di grassi, gli acidi grassi saturi, i carboidrati, gli zuccheri, le fibre, le proteine, il sale e il sodio.
+- il Nutriscore (punteggio nutrizionale), i nutrienti, il contenuto in grassi, gli acidi grassi saturi, i carboidrati, gli zuccheri, le fibre, le proteine, il sale e il sodio.
 - i marchi, gli allergeni, le etichette (bio, senza glutine, vegano, vegetariano, halal, kosher ...), informazioni sulla tracciabilità (codici di imballaggio, origine degli ingredienti)
 - Su vini e birre troverai la gradazione alcolica.
 
@@ -71,7 +71,7 @@ Open Food Facts è anche disponibile sul web all'indirizzo
 https://world-it.openfoodfacts.org/
 
 
-Domande e feedback a: contact@openfoodfacts.org
+Per domande e feedback: contact@openfoodfacts.org
 
 
 Per i cosmetici è possibile installare Open Beauty Facts, per alimenti per animali domestici Open Pet Food Facts e per tutti gli altri prodotti Open Products Facts.

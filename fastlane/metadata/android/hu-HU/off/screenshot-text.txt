@@ -1,5 +1,5 @@
 Ezek a feliratok a playstore-ban szereplő képernyőképek felett láthatóak. Legyenek rövidek és lényegretörőek.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=hu
 
 =====================
 V2 screenshots
@@ -49,7 +49,7 @@ Choose the products that are good for you and for the 🌍 planet !
 
 Nutritional quality
 
-Ultra-processed foods
+Többszörösen feldolgozott élelmiszerek
 
 Carbon impact
 

@@ -1,503 +1,563 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/swipeRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.core.widget.NestedScrollView
-            android:id="@+id/scrollView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="fill_vertical"
-            android:clipToPadding="false"
-            android:isScrollContainer="false">
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="fill_vertical"
+        android:clipToPadding="false"
+        android:isScrollContainer="false">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/nav_bar_height">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/nav_bar_height">
 
             <LinearLayout
-                    android:id="@+id/product_allergen_alert_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/orange_800"
-                    android:visibility="gone">
+                android:id="@+id/product_allergen_alert_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange_800"
+                android:visibility="gone">
 
                 <TextView
-                        android:id="@+id/product_allergen_alert_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/spacing_large"
-                        android:text="@string/product_incomplete_message"
-                        android:textColor="@color/white" />
+                    android:id="@+id/product_allergen_alert_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_large"
+                    android:text="@string/product_incomplete_message"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                    android:id="@+id/product_header_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="3dp">
+                android:id="@+id/product_header_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="3dp">
 
                 <RelativeLayout
-                        android:id="@+id/product_header_layout"
+                    android:id="@+id/product_header_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_normal">
+
+                    <LinearLayout
+                        android:id="@+id/header_product_details_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_normal">
-
-                    <LinearLayout
-                            android:id="@+id/header_product_details_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginStart="@dimen/spacing_normal"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_normal"
-                            android:layout_toStartOf="@id/front_picture_layout"
-                            android:layout_toLeftOf="@id/front_picture_layout"
-                            android:orientation="vertical">
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="@dimen/spacing_normal"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_normal"
+                        android:layout_toStartOf="@id/front_picture_layout"
+                        android:layout_toLeftOf="@id/front_picture_layout"
+                        android:orientation="vertical">
 
                         <TextView
-                                android:id="@+id/textNameProduct"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_tiny"
-                                android:layout_marginBottom="@dimen/spacing_tiny"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                                android:textIsSelectable="true"
-                                android:textStyle="bold"
-                                tools:text="Product name" />
-
-                        <TextView
-                                android:id="@+id/textBrandProduct"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/spacing_tiny"
-                                android:textColorLink="@color/tag_link"
-                                android:textIsSelectable="true"
-                                android:textSize="@dimen/font_normal"
-                                tools:text="Brands: ..." />
-
-                        <TextView
-                                android:id="@+id/textQuantityProduct"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/spacing_tiny"
-                                android:textSize="@dimen/font_normal"
-                                tools:text="Quantity" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:id="@+id/front_picture_layout"
+                            android:id="@+id/textNameProduct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:orientation="vertical">
-
-                        <ImageButton
-                                android:id="@+id/imageViewFront"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="@dimen/spacing_tiny"
-                                android:adjustViewBounds="true"
-                                android:background="?android:selectableItemBackground"
-                                android:maxHeight="120dp"
-                                android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+                            android:layout_marginTop="@dimen/spacing_tiny"
+                            android:layout_marginBottom="@dimen/spacing_tiny"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textIsSelectable="true"
+                            android:textStyle="bold"
+                            tools:text="Product name" />
 
                         <TextView
-                                android:id="@+id/addPhotoLabel"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="@string/take_picture_front"
-                                android:textStyle="bold" />
+                            android:id="@+id/textBrandProduct"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_tiny"
+                            android:textColorLink="@color/tag_link"
+                            android:textIsSelectable="true"
+                            android:textSize="@dimen/font_normal"
+                            tools:text="Brands: ..." />
 
+                        <TextView
+                            android:id="@+id/textQuantityProduct"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/spacing_tiny"
+                            android:textSize="@dimen/font_normal"
+                            tools:text="Quantity" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/front_picture_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
+
+                        <ImageButton
+
+                            android:id="@+id/imageViewFront"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/spacing_tiny"
+                            android:adjustViewBounds="true"
+                            android:background="?android:selectableItemBackground"
+                            android:maxHeight="120dp"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+                        <TextView
+                            android:id="@+id/addPhotoLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/take_picture_front"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/action_buttons_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:background="@color/white">
+                android:id="@+id/action_buttons_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="8dp">
 
                 <LinearLayout
-                        android:id="@+id/action_compare_button_layout"
-                        style="@style/ActionButtonLayout"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/action_add_to_list_button_layout"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                    android:id="@+id/action_compare_button_layout"
+                    style="@style/ActionButtonLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@id/action_add_to_list_button_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageButton
-                            android:id="@+id/action_compare_button"
-                            style="@style/ActionButton"
-                            app:srcCompat="@drawable/ic_compare_arrows_circle_24dp" />
+                        android:id="@+id/action_compare_button"
+                        style="@style/ActionButton"
+                        app:srcCompat="@drawable/ic_compare_arrows_circle_24dp" />
 
                     <TextView
-                            android:id="@+id/action_compare_button_label"
-                            style="@style/ActionButtonLabel"
-                            android:text="@string/product_summary_action_compare_button_label" />
+                        android:id="@+id/action_compare_button_label"
+                        style="@style/ActionButtonLabel"
+                        android:text="@string/product_summary_action_compare_button_label" />
                 </LinearLayout>
 
                 <LinearLayout
-                        android:id="@+id/action_add_to_list_button_layout"
-                        style="@style/ActionButtonLayout"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/action_edit_button_layout"
-                        app:layout_constraintStart_toEndOf="@id/action_compare_button_layout"
-                        app:layout_constraintTop_toTopOf="parent">
+                    android:id="@+id/action_add_to_list_button_layout"
+                    style="@style/ActionButtonLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@id/action_edit_button_layout"
+                    app:layout_constraintStart_toEndOf="@id/action_compare_button_layout"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageButton
-                            android:id="@+id/action_add_to_list_button"
-                            style="@style/ActionButton"
-                            app:srcCompat="@drawable/ic_bookmark_circle_24dp" />
+                        android:id="@+id/action_add_to_list_button"
+                        style="@style/ActionButton"
+                        app:srcCompat="@drawable/ic_bookmark_circle_24dp" />
 
                     <TextView
-                            android:id="@+id/action_add_to_list_button_label"
-                            style="@style/ActionButtonLabel"
-                            android:text="@string/product_summary_action_add_to_list_button_label" />
+                        android:id="@+id/action_add_to_list_button_label"
+                        style="@style/ActionButtonLabel"
+                        android:text="@string/product_summary_action_add_to_list_button_label" />
                 </LinearLayout>
 
                 <LinearLayout
-                        android:id="@+id/action_edit_button_layout"
-                        style="@style/ActionButtonLayout"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/action_share_button_layout"
-                        app:layout_constraintStart_toEndOf="@id/action_add_to_list_button_layout"
-                        app:layout_constraintTop_toTopOf="parent">
+                    android:id="@+id/action_edit_button_layout"
+                    style="@style/ActionButtonLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@id/action_share_button_layout"
+                    app:layout_constraintStart_toEndOf="@id/action_add_to_list_button_layout"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageButton
-                            android:id="@+id/action_edit_button"
-                            style="@style/ActionButton"
-                            app:srcCompat="@drawable/ic_edit_circle_24dp" />
+                        android:id="@+id/action_edit_button"
+                        style="@style/ActionButton"
+                        app:srcCompat="@drawable/ic_edit_circle_24dp" />
 
                     <TextView
-                            android:id="@+id/action_edit_button_label"
-                            style="@style/ActionButtonLabel"
-                            android:text="@string/product_summary_action_edit_button_label" />
+                        android:id="@+id/action_edit_button_label"
+                        style="@style/ActionButtonLabel"
+                        android:text="@string/product_summary_action_edit_button_label" />
                 </LinearLayout>
 
                 <LinearLayout
-                        android:id="@+id/action_share_button_layout"
-                        style="@style/ActionButtonLayout"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        app:layout_constrainedWidth="true"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/action_edit_button_layout"
-                        app:layout_constraintTop_toTopOf="parent">
+                    android:id="@+id/action_share_button_layout"
+                    style="@style/ActionButtonLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/action_edit_button_layout"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageButton
-                            android:id="@+id/action_share_button"
-                            style="@style/ActionButton"
-                            app:srcCompat="@drawable/ic_share_circle_24dp" />
+                        android:id="@+id/action_share_button"
+                        style="@style/ActionButton"
+                        app:srcCompat="@drawable/ic_share_circle_24dp" />
 
                     <TextView
-                            android:id="@+id/action_share_button_label"
-                            style="@style/ActionButtonLabel"
-                            android:text="@string/product_summary_action_share_button_label" />
+                        android:id="@+id/action_share_button_label"
+                        style="@style/ActionButtonLabel"
+                        android:text="@string/product_summary_action_share_button_label" />
                 </LinearLayout>
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View style="@style/HorizontalLineSeparator" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/scores_layout"
+            <LinearLayout
+                android:id="@+id/analysisContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <openfoodfacts.github.scrachx.openfood.views.TipBox
+                    android:id="@+id/tipBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white">
+                    app:arrowAlignment="start"
+                    app:arrowMarginStart="0dp"
+                    app:identifier="ingredient_analysis_tip_box"
+                    app:message="@string/ingredient_analysis_tip" />
 
-                <ImageView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/analysis_tags"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginLeft="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:layout_marginBottom="@dimen/spacing_tiny"
+                    android:background="@null"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <View
+                    android:id="@+id/analysisSeparator"
+                    style="@style/HorizontalLineSeparator" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/scores_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:id="@+id/grades_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
                         android:id="@+id/imageGrade"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:adjustViewBounds="true"
                         android:clickable="true"
                         android:focusable="true"
                         android:maxHeight="90dp"
                         android:scaleType="fitCenter"
-                        app:layout_constraintBottom_toTopOf="@id/add_nutriscore_prompt"
-                        app:layout_constraintEnd_toStartOf="@id/nova_group"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@drawable/nnc_a" />
+                        tools:src="@drawable/nnc_a"
+                        tools:visibility="visible" />
 
-                <ImageView
+                    <ImageView
                         android:id="@+id/nova_group"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:adjustViewBounds="true"
                         android:maxHeight="80dp"
                         android:scaleType="fitCenter"
-                        app:layout_constraintBottom_toTopOf="@id/add_nutriscore_prompt"
-                        app:layout_constraintEnd_toStartOf="@id/co2_icon"
-                        app:layout_constraintStart_toEndOf="@id/imageGrade"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@drawable/ic_nova_group_1" />
+                        tools:src="@drawable/ic_nova_group_1"
+                        tools:visibility="visible" />
 
-                <ImageView
+                    <ImageView
                         android:id="@+id/co2_icon"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:adjustViewBounds="true"
                         android:maxHeight="60dp"
                         android:scaleType="fitCenter"
-                        app:layout_constraintBottom_toTopOf="@id/add_nutriscore_prompt"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/nova_group"
-                        app:layout_constraintTop_toTopOf="parent"
                         tools:srcCompat="@drawable/ic_co2_high_24dp" />
+                </LinearLayout>
 
                 <Button
-                        android:id="@+id/add_nutriscore_prompt"
-                        style="@style/BorderButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="@dimen/spacing_normal"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/nova_group"
-                        tools:text="@string/add_nutrition_facts_for_nutriscore"
-                        tools:visibility="visible" />
+                    android:id="@+id/add_nutriscore_prompt"
+                    style="@style/ButtonBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"
+                    tools:text="@string/add_nutrition_facts_for_nutriscore"
+                    tools:visibility="visible" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View style="@style/HorizontalLineSeparator" />
 
             <RelativeLayout
-                    android:id="@+id/product_question_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/primary_dark"
-                    android:orientation="horizontal"
-                    android:paddingTop="@dimen/spacing_tiny"
-                    android:paddingBottom="@dimen/spacing_tiny"
-                    android:visibility="gone">
+                android:id="@+id/product_question_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_dark"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/spacing_tiny"
+                android:paddingBottom="@dimen/spacing_tiny"
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <ImageView
-                        android:id="@+id/product_question_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_margin="@dimen/spacing_normal"
-                        app:srcCompat="@drawable/ic_forum_white_24dp" />
+                    android:id="@+id/product_question_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/spacing_normal"
+                    app:srcCompat="@drawable/ic_forum_white_24dp" />
 
                 <LinearLayout
-                        android:id="@+id/bottom_sheet_linear_layout"
-                        android:layout_width="match_parent"
+                    android:id="@+id/bottom_sheet_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/product_question_icon"
+                    android:layout_toRightOf="@id/product_question_icon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/product_question_text"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toEndOf="@id/product_question_icon"
-                        android:layout_toRightOf="@id/product_question_icon"
-                        android:orientation="vertical">
+                        android:paddingLeft="@dimen/spacing_small"
+                        android:paddingTop="@dimen/spacing_small"
+                        android:paddingRight="@dimen/spacing_small"
+                        android:textColor="@android:color/white"
+                        tools:text="Does the product belong to this category?" />
 
                     <TextView
-                            android:id="@+id/product_question_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/spacing_small"
-                            android:paddingTop="@dimen/spacing_small"
-                            android:paddingRight="@dimen/spacing_small"
-                            android:textColor="@android:color/white"
-                            tools:text="Does the product belong to this category?" />
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="@dimen/spacing_small"
-                            android:paddingLeft="@dimen/spacing_small"
-                            android:paddingEnd="@dimen/spacing_tiny"
-                            android:paddingRight="@dimen/spacing_tiny"
-                            android:paddingBottom="@dimen/spacing_small"
-                            android:text="@string/product_question_prompt"
-                            android:textColor="@android:color/darker_gray" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/spacing_small"
+                        android:paddingLeft="@dimen/spacing_small"
+                        android:paddingEnd="@dimen/spacing_tiny"
+                        android:paddingRight="@dimen/spacing_tiny"
+                        android:paddingBottom="@dimen/spacing_small"
+                        android:text="@string/product_question_prompt"
+                        android:textColor="@color/grey_400" />
                 </LinearLayout>
 
                 <ImageView
-                        android:id="@+id/product_question_dismiss"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:padding="@dimen/spacing_normal"
-                        app:srcCompat="@drawable/ic_clear_white_24dp" />
+                    android:id="@+id/product_question_dismiss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/spacing_normal"
+                    app:srcCompat="@drawable/ic_clear_white_24dp" />
 
             </RelativeLayout>
 
             <androidx.cardview.widget.CardView
-                    android:id="@+id/cvNutritionLights"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation">
+                android:id="@+id/cvNutritionLights"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
-                            android:id="@+id/textNutrientTxt"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:padding="@dimen/spacing_small"
-                            android:text="@string/txtNutrientLevel100g"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            android:textStyle="bold" />
+                        android:id="@+id/textNutrientTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:padding="@dimen/spacing_small"
+                        android:text="@string/txtNutrientLevel100g"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal"
+                        android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/listNutrientLevels"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:divider="@color/white"
-                            android:dividerHeight="0dp"
-                            android:padding="@dimen/spacing_small"
-                            android:paddingBottom="60dp"
-                            android:scrollbars="vertical"
-                            tools:listitem="@layout/nutrient_lvl_list_item" />
+                        android:id="@+id/listNutrientLevels"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:divider="@color/white"
+                        android:dividerHeight="0dp"
+                        android:padding="@dimen/spacing_small"
+                        android:paddingBottom="60dp"
+                        android:scrollbars="vertical"
+                        tools:listitem="@layout/nutrient_lvl_list_item" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                    android:id="@+id/cvProductDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    app:cardElevation="@dimen/card_elevation">
+                android:id="@+id/cvProductDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                app:cardElevation="@dimen/card_elevation">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textAdditiveProduct"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/tag_link"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Additives: ..." />
 
                     <TextView
-                            android:id="@+id/textAdditiveProduct"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:padding="@dimen/padding_too_short"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Additives: ..." />
+                        android:id="@+id/textCategoryProduct"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/tag_link"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Categories: ..." />
 
                     <TextView
-                            android:id="@+id/textCategoryProduct"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:padding="@dimen/padding_too_short"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Categories: ..." />
+                        android:id="@+id/textLabelProduct"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/tag_link"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Labels: ..." />
 
                     <TextView
-                            android:id="@+id/textLabelProduct"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:padding="@dimen/padding_too_short"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Labels: ..." />
+                        android:id="@+id/textEmbCode"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textColorLink="@color/tag_link"
+                        android:textIsSelectable="true"
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Packager codes: ..." />
 
                     <TextView
-                            android:id="@+id/textEmbCode"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_normal"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginRight="@dimen/spacing_normal"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:padding="@dimen/padding_too_short"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Packager codes: ..." />
+                        android:id="@+id/textCategoryAlcoholAlert"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:padding="@dimen/padding_too_short"
+                        android:textSize="@dimen/font_normal"
+                        />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ProgressBar
-                        android:id="@+id/uploadingImageProgress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:layout_marginBottom="@dimen/spacing_small"
-                        android:visibility="gone"
-                        tools:visibility="visible" />
+                    android:id="@+id/uploadingImageProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <TextView
-                        android:id="@+id/uploadingImageProgressText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:layout_marginBottom="@dimen/spacing_small"
-                        android:gravity="center"
-                        android:text="@string/toastSending"
-                        android:visibility="gone"
-                        tools:visibility="visible" />
+                    android:id="@+id/uploadingImageProgressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="@string/toastSending"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
             </LinearLayout>
 
             <Button
-                    android:id="@+id/buttonMorePictures"
-                    style="@style/BorderButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:text="@string/take_more_pictures" />
+                android:id="@+id/buttonMorePictures"
+                style="@style/ButtonBorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/spacing_normal"
+                android:text="@string/take_more_pictures" />
 
         </LinearLayout>
 

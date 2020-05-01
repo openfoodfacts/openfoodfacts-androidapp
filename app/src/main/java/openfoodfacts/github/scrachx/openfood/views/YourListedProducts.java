@@ -37,11 +37,17 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import org.greenrobot.greendao.query.QueryBuilder;
+import org.greenrobot.greendao.query.WhereCondition;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -60,6 +66,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
     private ProductLists thisProductList;
     private List<YourListedProduct> products;
     private YourListedProductDao yourListedProductDao;
+    private HistoryProductDao historyProductDao;
     private Long id;
     private YourListedProductsAdapter adapter;
     private Boolean isLowBatteryMode = false;
@@ -67,6 +74,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
     private String listName;
     private Boolean emptyList = false;
     private Boolean isEatenList = false;
+    private String sortType = "none";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +89,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         }
         ProductListsDao  productListsDao = Utils.getDaoSession(this).getProductListsDao();
         yourListedProductDao = Utils.getAppDaoSession(this).getYourListedProductDao();
+        historyProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -134,6 +143,8 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
             itemTouchhelper.attachToRecyclerView(recyclerView);
         }
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
     }
 
@@ -160,6 +171,8 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_your_listed_products, menu);
         menu.findItem(R.id.action_export_all_listed_products)
+            .setVisible(!emptyList);
+        menu.findItem(R.id.action_sort_listed_products)
             .setVisible(!emptyList);
         return true;
     }
@@ -189,8 +202,149 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
                     exportCSV();
                 }
                 return true;
+            case R.id.action_sort_listed_products:
+                MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
+                builder.title(R.string.sort_by);
+                String[] sortTypes;
+                if (BuildConfig.FLAVOR.equals("off")) {
+                    sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(
+                        R.string.by_barcode), getString(R.string.by_time)};
+                } else {
+                    sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_time), getString(R.string.by_barcode)};
+                }
+                builder.items(sortTypes);
+                builder.itemsCallback((dialog, itemView, position, text) -> {
+
+                    switch (position) {
+
+                        case 0:
+                            sortType = "title";
+                            break;
+
+                        case 1:
+                            sortType = "brand";
+                            break;
+
+                        case 2:
+                            if (BuildConfig.FLAVOR.equals("off")) {
+                                sortType = "grade";
+                            } else {
+                                sortType = "time";
+                            }
+                            break;
+
+                        case 3:
+                            sortType = "barcode";
+                            break;
+
+                        default:
+                            sortType = "time";
+                            break;
+                    }
+
+                    sortProducts();
+                    adapter = new YourListedProductsAdapter(this, products, isLowBatteryMode);
+                    recyclerView.setAdapter(adapter);
+                });
+                builder.show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void sortProducts(){
+        switch(sortType){
+            case "title":
+                Collections.sort(products,(p1,p2)->{
+                    return p1.getProductName().compareToIgnoreCase(p2.getProductName());
+                });
+                break;
+
+            case "brand":
+                Collections.sort(products,(p1,p2)->{
+                    return p1.getProductDetails().compareToIgnoreCase(p2.getProductDetails());
+                });
+                break;
+
+            case "barcode":
+                Collections.sort(products,(p1,p2)->{
+                    return p1.getBarcode().compareToIgnoreCase(p2.getBarcode());
+                });
+                break;
+            case "grade":
+
+                //get list of HistoryProduct items for the YourListProduct items
+                WhereCondition[] conditionsGrade = new WhereCondition[products.size()];
+                int i = 0;
+                for (YourListedProduct p:products){
+                    conditionsGrade[i] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
+                    i++;
+                }
+                List<HistoryProduct> historyProductsGrade;
+                QueryBuilder<HistoryProduct> qbGrade = historyProductDao.queryBuilder();
+                qbGrade.whereOr(conditionsGrade[0],conditionsGrade[1], Arrays.copyOfRange(conditionsGrade,2,conditionsGrade.length));
+                historyProductsGrade = qbGrade.list();
+
+                Collections.sort(products,(p1,p2)->{
+
+                    String g1 = "E";
+                    String g2 = "E";
+
+                    for (HistoryProduct h:historyProductsGrade){
+                        if(h.getBarcode().equals(p1.getBarcode())){
+                            if(h.getNutritionGrade() != null) {
+                                g1 = h.getNutritionGrade();
+                            }
+                        }
+                        if(h.getBarcode().equals(p2.getBarcode())) {
+                            if(h.getNutritionGrade() != null) {
+                                g2 = h.getNutritionGrade();
+                            }
+                        }
+                    }
+                    return g1.compareToIgnoreCase(g2);
+                });
+                break;
+
+            case "time":
+                //get list of HistoryProduct items for the YourListProduct items
+                WhereCondition[] conditionsTime = new WhereCondition[products.size()];
+                int j = 0;
+                for (YourListedProduct p:products){
+                    conditionsTime[j] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
+                    j++;
+                }
+                List<HistoryProduct> historyProductsTime;
+                QueryBuilder<HistoryProduct> qbTime = historyProductDao.queryBuilder();
+                qbTime.whereOr(conditionsTime[0],conditionsTime[1], Arrays.copyOfRange(conditionsTime,2,conditionsTime.length));
+                historyProductsTime = qbTime.list();
+
+
+                Collections.sort(products,(p1,p2)->{
+
+                    Date d1 = new Date(0);
+                    Date d2 = new Date(0);
+
+                    for(HistoryProduct h:historyProductsTime){
+                        if(h.getBarcode().equals(p1.getBarcode())){
+                            if(h.getLastSeen() != null) {
+                                d1 = h.getLastSeen();
+                            }
+                        }
+                        if(h.getBarcode().equals(p2.getBarcode())){
+                            if(h.getLastSeen() != null ){
+                                d2 = h.getLastSeen();
+                            }
+                        }
+                    }
+                    //compare d2 to d1 because its recently viewed list, so items with later(higher) date come first in the list
+                    return d2.compareTo(d1);
+                });
+                break;
+
+            default:
+                Collections.sort(products,(p1,p2)->0);
         }
     }
 

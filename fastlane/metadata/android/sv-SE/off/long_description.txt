@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
+- Open Food Facts är en livsmedelsdatabas gjord av alla, för alla.
+- Du kan använda den för att göra bättre matval, och eftersom det är öppen data kan vem som helst använda dem för alla ändamål.
+- Open Food Facts är ett ideellt projekt utvecklat av tusentals volontärer från hela världen. Vi har massor av spännande projekt som du kan bidra till på många olika sätt.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+- Open Food Facts hjälper dig att känna till det finstilta på produktetiketter. You will be able to find:
+- koldioxidavtryck (CO2-utsläpp) och förpackning (samt återvinningsinstruktioner),
+- Nutriscore (näringsvärde), näringsämnen, fett / fettinnehåll, mättade fettsyror, kolhydrater, socker, fiber, protein och salt och natrium.
+- märken, allergener, etiketter (bio, glutenfri, vegan, vegetarian, halal, kosher ...), spårbarhetsinformation (förpackningskoder, ingrediensers ursprung)
+- På vin och öl hittar du alkoholhalten.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts finns också online på https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+Frågor, feedback: contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+För kosmetika kan du installera Open Beauty Facts, för husdjursmat Open Pet Food Facts och för alla andra produkter Open Products Facts.

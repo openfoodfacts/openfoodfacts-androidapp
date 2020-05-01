@@ -4,59 +4,29 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 import java.util.List;
 
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.Category;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.Country;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.Ingredient;
 import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
-import openfoodfacts.github.scrachx.openfood.models.Label;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Question;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
 
 /**
  * This is a repository class working as an Interface.
  * It defines all the functions in Repository component.
+ *
  * @author Lobster
  * @since 03.03.18
  */
-
 public interface IProductRepository {
+    Single<List<Allergen>> getAllergens();
 
-    Single<List<Label>> getLabels(Boolean checkUpdate);
-
-    Single<List<Allergen>> getAllergens(Boolean checkUpdate);
-
-    Single<List<Tag>> getTags(Boolean refresh);
-
-    Single<List<Additive>> getAdditives(Boolean checkUpdate);
-
-    Single<List<Country>> getCountries(Boolean checkUpdate);
-
-    Single<List<Category>> getCategories(Boolean checkUpdate);
-
-    Single<List<Ingredient>> getIngredients(Boolean checkUpdate);
-
-    void saveLabels(List<Label> labels);
-
-    void saveTags(List<Tag> tags);
-
-    void saveAdditives(List<Additive> additives);
-
-    void saveCountries(List<Country> countries);
-
-    void saveAllergens(List<Allergen> allergens);
-
-    void saveCategories(List<Category> categories);
-
-    void deleteIngredientCascade();
-
-    void saveIngredients(List<Ingredient> ingredients);
+    Single<List<Category>> getCategories();
 
     void saveIngredient(Ingredient ingredient);
 
@@ -92,9 +62,13 @@ public interface IProductRepository {
 
     Single<AllergenName> getAllergenByTagAndDefaultLanguageCode(String allergenTag);
 
-    Boolean additivesIsEmpty();
-
     Single<Question> getSingleProductQuestion(String code, String lang);
 
     Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation);
+
+    Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode);
+
+    Single<List<AnalysisTagConfig>> getUnknownAnalysisTagConfigsByLanguageCode(String languageCode);
+
+    void deleteIngredientCascade();
 }

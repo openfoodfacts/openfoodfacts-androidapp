@@ -296,4 +296,11 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
             }
         }
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.my_lists);
+
+    }
 }

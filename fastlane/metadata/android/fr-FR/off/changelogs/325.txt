@@ -1,0 +1,2 @@
+1. NOUVEAU : Vous pouvez maintenant si les produits sont végan, végétariens ou s'ils contiennent de l'huile de palme en consultant la liste de leurs ingrédients. Plus d'analyses seront ajoutées au fil du temps. Envoyez-nous un mail pour nous dire ce que vous aimeriez voir :-) 
+2. Coup de chiffon et correctifs sur les bugs que vous avez signalés à contact@openfoodfacts.org

@@ -112,17 +112,7 @@ public class FastScroller extends LinearLayout {
         handle.setY(getValueInRange(0, height - handleHeight, (int) ((height - handleHeight) * position)));
     }
 
-    private void showHandle() {
-        AnimatorSet animatorSet = new AnimatorSet();
-        handle.setPivotX(handle.getWidth());
-        handle.setPivotY(handle.getHeight());
-        handle.setVisibility(VISIBLE);
-        Animator growerX = ObjectAnimator.ofFloat(handle, SCALE_X, 0f, 1f).setDuration(HANDLE_ANIMATION_DURATION);
-        Animator growerY = ObjectAnimator.ofFloat(handle, SCALE_Y, 0f, 1f).setDuration(HANDLE_ANIMATION_DURATION);
-        Animator alpha = ObjectAnimator.ofFloat(handle, ALPHA, 0f, 1f).setDuration(HANDLE_ANIMATION_DURATION);
-        animatorSet.playTogether(growerX, growerY, alpha);
-        animatorSet.start();
-    }
+
 
     private void hideHandle() {
         currentAnimator = new AnimatorSet();

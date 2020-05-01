@@ -47,6 +47,7 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.FormatException;
@@ -76,6 +77,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
@@ -106,8 +108,10 @@ import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryAct
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.workers.OfflineEditPendingProductsWorker;
 
+import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.OFFLINE_EDIT_PENDING_WORK_NAME;
 
@@ -120,6 +124,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String BARCODE_SHORTCUT = "BARCODE";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
     PrimaryDrawerItem primaryDrawerItem;
     private AccountHeader headerResult = null;
     private Drawer result = null;
@@ -138,6 +144,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,6 +197,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         } else {
             fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
                 ()).commit();
+            toolbar.setTitle(APP_NAME);
         }
 
         // chrome custom tab init
@@ -271,38 +279,42 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 }
 
                 @Override
-                    public void onDrawerSlide(View drawerView, float slideOffset) {
-                        Utils.hideKeyboard(MainActivity.this);
-                    }
-                })
-                .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(ITEM_HOME),
-                        new SectionDrawerItem().withName(R.string.search_drawer),
-                        new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
-                        new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
-                        new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
-                        new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
-                        new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
-                        new DividerDrawerItem(),
-                        primaryDrawerItem,
-                        new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
-                        new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
-                )
-                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
+                public void onDrawerSlide(View drawerView, float slideOffset) {
+                    Utils.hideKeyboard(MainActivity.this);
+                }
+            })
+            .addDrawerItems(
+                new PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(ITEM_HOME),
+                new SectionDrawerItem().withName(R.string.search_drawer),
+                new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
+                new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES)
+                    .withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH)
+                    .withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY).withSelectable(false),
+                new SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),
+                new PrimaryDrawerItem().withName(getString(R.string.action_contributes)).withIcon(GoogleMaterial.Icon.gmd_rate_review).withIdentifier(ITEM_MY_CONTRIBUTIONS)
+                    .withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.your_lists).withIcon(GoogleMaterial.Icon.gmd_list).withIdentifier(ITEM_YOUR_LISTS).withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.products_to_be_completed).withIcon(GoogleMaterial.Icon.gmd_edit).withIdentifier(ITEM_INCOMPLETE_PRODUCTS)
+                    .withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
+                new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
+                new DividerDrawerItem(),
+                primaryDrawerItem,
+                new DividerDrawerItem(),
+                new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
+            )
+            .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
-                    if (drawerItem == null) {
-                        return false;
-                    }
+                if (drawerItem == null) {
+                    return false;
+                }
 
                 Fragment fragment = null;
                 switch ((int) drawerItem.getIdentifier()) {
@@ -447,7 +459,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.removeItem(ITEM_ADVANCED_SEARCH);
         }
 
-        if(!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
+        if (!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install) + " " + getString(R.string.open_other_flavor_drawer)));
         } else {
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
@@ -514,6 +526,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
             apiClient.syncOldHistory();
         }
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
+        BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
 
         handleIntent(getIntent());
     }
@@ -604,6 +619,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // do nothing
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOGIN_REQUEST && resultCode == RESULT_OK) {
             updateConnectedState();
         }
@@ -733,6 +749,64 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     protected void onStart() {
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
+
+        prefManager = new PrefManager(this);
+        if (isUserLoggedIn() && !prefManager.isFirstTimeLaunch() && !prefManager.getUserAskedToRate()
+            && "off".equals(BuildConfig.FLAVOR)) {
+
+            long firstTimeLaunchTime = prefManager.getFirstTimeLaunchTime();
+            // Check if it has been a week since first launch
+            if ((Calendar.getInstance().getTimeInMillis() - firstTimeLaunchTime) >= (60 * 60 * 24 * 7 * 1000)) {
+                showFeedbackDialog();
+            }
+        }
+    }
+
+    //show dialog to ask the user to rate the app/give feedback
+    private void showFeedbackDialog() {
+        //dialog for rating the app on play store
+        MaterialDialog.Builder rateDialog = new MaterialDialog.Builder(this);
+        rateDialog.title(R.string.app_name);
+        rateDialog.content(R.string.user_ask_rate_app);
+        rateDialog.positiveText(R.string.rate_app);
+        rateDialog.negativeText(R.string.no_thx);
+        rateDialog.onPositive((dialog, which) -> {
+            //open app page in play store
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+            dialog.dismiss();
+        });
+        rateDialog.onNegative((dialog, which) -> dialog.dismiss());
+
+        //dialog for giving feedback
+        MaterialDialog.Builder feedbackDialog = new MaterialDialog.Builder(this);
+        feedbackDialog.title(R.string.app_name);
+        feedbackDialog.content(R.string.user_ask_show_feedback_form);
+        feedbackDialog.positiveText(R.string.txtOk);
+        feedbackDialog.negativeText(R.string.txtNo);
+        feedbackDialog.onPositive((dialog, which) -> {
+            //show feedback form
+            CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                customTabsIntent, Uri.parse(getString(R.string.feedback_form_url)), new WebViewFallback());
+            dialog.dismiss();
+        });
+        feedbackDialog.onNegative((dialog, which) -> dialog.dismiss());
+
+        new MaterialDialog.Builder(this)
+            .title(R.string.app_name)
+            .content(R.string.user_enjoying_app)
+            .positiveText(R.string.txtYes)
+            .onPositive((dialog, which) -> {
+                prefManager.setUserAskedToRate(true);
+                rateDialog.show();
+                dialog.dismiss();
+            })
+            .negativeText(R.string.txtNo)
+            .onNegative((dialog, which) -> {
+                prefManager.setUserAskedToRate(true);
+                feedbackDialog.show();
+                dialog.dismiss();
+            })
+            .show();
     }
 
     @Override
@@ -749,6 +823,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
         handleIntent(intent);
     }
 
@@ -845,9 +920,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void onResume() {
         super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
-        if(Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
+        if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
             result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
 
             result.getAdapter().notifyDataSetChanged();
@@ -902,9 +978,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
                 bMap = BitmapFactory.decodeStream(imageStream);
             } catch (FileNotFoundException e) {
-                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString(),e);
+                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString(), e);
             } catch (IOException e) {
-                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage(),e);
+                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage(), e);
             }
             //decoding bitmap
             if (bMap != null) {

@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <!-- Basic OpenFoodFacts colors -->
-    <color name="blue">#0066FF</color>
-    <color name="orange">#FFCC00</color>
-    <color name="red">#FF0000</color>
+    <color name="brand_red">#FF0000</color>
+    <color name="brand_yellow">#FFCC00</color>
+    <color name="brand_green">#00D400</color>
+    <color name="brand_light_blue">#00ccff</color>
+    <color name="brand_blue">#0066FF</color>
+
+    <color name="brand_green_dark">#3C950E</color>
+    <color name="brand_red_dark">#E51C23</color>
+
+    <color name="blue">@color/brand_blue</color>
+    <color name="red">@color/brand_red_dark</color>
+    <color name="orange">@color/brand_yellow</color>
+
     <color name="material_red">#F44336</color>
     <color name="white">#FFFFFF</color>
-    <color name="gray">#808080	</color>
+    <color name="gray">#808080</color>
 
     <color name="overexposure_high">#FF0000</color>
     <color name="overexposure_moderate">#FF6600</color>
@@ -25,6 +34,7 @@
     <color name="light_blue_A700">#0091ea</color>
 
     <color name="green_300">#42bd41</color>
+    <color name="green_400">#43A047</color>
     <color name="green_500">#259b24</color>
 
     <color name="yellow_500">#ffeb3b</color>
@@ -60,7 +70,7 @@
     <color name="dot_light_screen2">#8cf9eb</color>
     <color name="dot_light_screen3">#93c6fd</color>
     <color name="dot_light_screen4">#e4b5fc</color>
-    <color name="button_link">#1c72e9</color>
+    <color name="button_link">@color/primary_dark</color>
     <color name="url_link">#1c72e9</color>
     <color name="tag_link">#1c72e9</color>
 
@@ -80,4 +90,9 @@
 
     <!--FeedBack Dialog sample color-->
     <color name="sampleColor">#795548</color>
+
+    <color name="monkey_happy">#85bb2f</color>
+    <color name="monkey_uncertain">#fecb02</color>
+    <color name="monkey_sad">#e63e11</color>
+    <color name="monkey_unknown">#777777</color>
 </resources>

@@ -16,27 +16,25 @@
             android:layout_height="wrap_content">
 
         <TextView
-                android:id="@+id/section_product_picture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:text="@string/product_picture"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+            android:id="@+id/section_product_picture"
+            style="@style/EditHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/product_picture"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-                android:id="@+id/hint_image_front"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/one_photo_compulsory"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/name_til"
-                app:layout_constraintStart_toStartOf="@id/section_product_picture"
-                app:layout_constraintTop_toBottomOf="@id/section_product_picture"/>
+            android:id="@+id/hint_image_front"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/one_photo_compulsory"
+            app:layout_constraintEnd_toEndOf="@id/name_til"
+            app:layout_constraintStart_toStartOf="@id/section_product_picture"
+            app:layout_constraintTop_toBottomOf="@id/section_product_picture" />
 
         <ImageView
                 android:id="@+id/btnAddImageFront"
@@ -50,7 +48,7 @@
         <Button
                 android:id="@+id/btnEditImageFront"
                 android:text="@string/update_image"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:layout_marginRight="@dimen/padding_large"
@@ -96,31 +94,29 @@
                 app:layout_constraintTop_toBottomOf="@id/btnAddImageFront"/>
 
         <TextView
-                android:id="@+id/section_product_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:text="@string/product_details"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/section_product_picture"
-                app:layout_constraintTop_toBottomOf="@id/grey_line1"/>
+            android:id="@+id/section_product_details"
+            style="@style/EditHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/product_details"
+            app:layout_constraintStart_toStartOf="@id/section_product_picture"
+            app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
         <TextView
-                android:id="@+id/barcode"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:background="@drawable/bg_edittext"
-                android:gravity="center_vertical"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/section_product_details"
-                tools:text="Barcode : 8888888888888"/>
+            android:id="@+id/barcode"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_product_details"
+            tools:text="Barcode : 8888888888888" />
 
         <TextView
                 android:id="@+id/language"
@@ -156,6 +152,7 @@
                     android:background="@drawable/bg_edittext_til"
                     android:gravity="center_vertical"
                     android:hint="@string/product_name"
+                    android:importantForAutofill="no"
                     android:inputType="text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -186,19 +183,16 @@
                     app:layout_constraintStart_toStartOf="parent"
             />
         </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
-                android:id="@+id/quantity_hint"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:paddingRight="@dimen/spacing_small"
-                android:paddingLeft="@dimen/spacing_small"
-                android:text="@string/hint_quantity"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/quantity_til"
-                app:layout_constraintStart_toStartOf="@id/quantity_til"
-                app:layout_constraintTop_toBottomOf="@id/quantity_til"/>
+            android:id="@+id/quantity_hint"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_quantity"
+            app:layout_constraintEnd_toEndOf="@id/quantity_til"
+            app:layout_constraintStart_toStartOf="@id/quantity_til"
+            app:layout_constraintTop_toBottomOf="@id/quantity_til" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -259,50 +253,60 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
             />
+
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/categories_til"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/packaging_til">
-            <com.hootsuite.nachos.NachoTextView
-                    android:id="@+id/categories"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_edittext_til"
-                    android:paddingTop="@dimen/floating_hint_margin_nacho"
-                    android:paddingBottom="@dimen/floating_hint_margin_nacho"
-                    android:completionThreshold="1"
-                    android:gravity="center_vertical"
-                    android:hint="@string/category_drawer"
-                    android:imeOptions="actionNext"
-                    android:minHeight="50dp"
-                    android:nextFocusDown="@id/label"
-                    app:chipBackground="#4389FA"
-                    app:chipHeight="30dp"
-                    app:chipTextColor="@color/grey_50"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-            />
-        </com.google.android.material.textfield.TextInputLayout>
         <TextView
-                android:id="@+id/category_hint"
-                android:layout_width="0dp"
+            android:id="@+id/packaging_hint"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hint_packaging"
+            app:layout_constraintEnd_toEndOf="@id/packaging_til"
+            app:layout_constraintStart_toStartOf="@id/packaging_til"
+            app:layout_constraintTop_toBottomOf="@id/packaging_til" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/categories_til"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/packaging_hint">
+
+            <com.hootsuite.nachos.NachoTextView
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:paddingHorizontal="@dimen/spacing_small"
-                android:text="@string/required_to_compute_nutriscore"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/categories_til"
-                app:layout_constraintStart_toStartOf="@+id/categories_til"
-                app:layout_constraintTop_toBottomOf="@+id/categories_til"/>
+                android:background="@drawable/bg_edittext_til"
+                android:completionThreshold="1"
+                android:gravity="center_vertical"
+                android:hint="@string/category_drawer"
+                android:imeOptions="actionNext"
+                android:minHeight="50dp"
+                android:nextFocusDown="@id/label"
+                android:paddingTop="@dimen/floating_hint_margin_nacho"
+                android:paddingBottom="@dimen/floating_hint_margin_nacho"
+                app:chipBackground="#4389FA"
+                app:chipHeight="30dp"
+                app:chipTextColor="@color/grey_50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/category_hint"
+            style="@style/EditHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/required_to_compute_nutriscore"
+            app:layout_constraintEnd_toEndOf="@+id/categories_til"
+            app:layout_constraintStart_toStartOf="@+id/categories_til"
+            app:layout_constraintTop_toBottomOf="@+id/categories_til" />
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/label_til"
@@ -375,18 +379,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/period_of_time_after_opening_til"/>
 
         <TextView
-                android:id="@+id/section_manufacturing_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:text="@string/manufacturing_details"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/grey_line2"
-                tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
-                tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
+            android:id="@+id/section_manufacturing_details"
+            style="@style/EditHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/manufacturing_details"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grey_line2"
+            tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
+            tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/origin_of_ingredients_til"
                 android:layout_width="0dp"
@@ -553,18 +557,18 @@
                 app:layout_constraintTop_toBottomOf="@id/hint_link_2"/>
 
         <TextView
-                android:id="@+id/section_purchasing_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:text="@string/purchasing_details"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/grey_line3"
-                tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
-                tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
+            android:id="@+id/section_purchasing_details"
+            style="@style/EditHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/purchasing_details"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grey_line3"
+            tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
+            tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/country_where_purchased_til"
@@ -700,28 +704,26 @@
                 tools:visibility="visible"/>
 
         <Button
-                android:drawablePadding="5dp"
-                android:id="@+id/btn_other_pictures"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_normal"
-                android:text="@string/take_more_pictures"
-                style="@style/BorderButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/other_image_progress_text"/>
+            android:id="@+id/btn_other_pictures"
+            style="@style/ButtonBorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_normal"
+            android:text="@string/take_more_pictures"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:drawablePadding="@dimen/spacing_tiny"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/other_image_progress_text" />
 
         <Button
-                android:id="@+id/btn_next"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:background="#4389FA"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="@string/next"
-                android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/btn_other_pictures"/>
+            android:id="@+id/btn_next"
+            style="@style/ButtonFlat"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/next"
+            app:layout_constraintTop_toBottomOf="@id/btn_other_pictures" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

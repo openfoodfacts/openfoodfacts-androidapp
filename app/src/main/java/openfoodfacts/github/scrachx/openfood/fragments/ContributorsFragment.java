@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
@@ -9,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,13 +23,14 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-/**
+/*
  * Created by prajwalm on 14/04/18.
  */
 
+/**
+ * @see R.layout#fragment_contributors
+ */
 public class ContributorsFragment extends BaseFragment {
-
     private State stateFromActivity;
     @BindView(R.id.creator)
     TextView creatorText;
@@ -47,7 +49,7 @@ public class ContributorsFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        stateFromActivity =getStateFromActivityIntent();
+        stateFromActivity = getStateFromActivityIntent();
         refreshView(stateFromActivity);
     }
 
@@ -97,9 +99,13 @@ public class ContributorsFragment extends BaseFragment {
                 statesText.append("\n ");
             }
         }
-
     }
 
+    /**
+     * Get date and time in MMMM dd, yyyy and HH:mm:ss a format
+     *
+     * @param dateTime date and time in miliseconds
+     */
     private String[] getDateTime(String dateTime) {
         long unixSeconds = Long.parseLong(dateTime);
         Date date = new java.util.Date(unixSeconds * 1000L);
@@ -123,7 +129,6 @@ public class ContributorsFragment extends BaseFragment {
         return spannableStringBuilder;
     }
 
-
     private CharSequence getStatesTag(String state) {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -137,7 +142,5 @@ public class ContributorsFragment extends BaseFragment {
         spannableStringBuilder.append(" ");
         return spannableStringBuilder;
     }
-
-
 }
 

@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -37,18 +38,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -61,6 +54,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 public class HistoryScanActivity extends BaseActivity implements SwipeControllerActions {
     @BindView(R.id.toolbar)
@@ -133,6 +141,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             new FillAdapter(HistoryScanActivity.this).execute(context);
             swipeRefreshLayout.setRefreshing(false);
         });
+
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
     }
 
@@ -299,38 +308,33 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    exportCSV();
-                } else {
-                    new MaterialDialog.Builder(this)
-                        .title(R.string.permission_title)
-                        .content(R.string.permission_denied)
-                        .negativeText(R.string.txtNo)
-                        .positiveText(R.string.txtYes)
-                        .onPositive((dialog, which) -> {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        })
-                        .show();
-                }
-                break;
+        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_STORAGE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                exportCSV();
+            } else {
+                new MaterialDialog.Builder(this)
+                    .title(R.string.permission_title)
+                    .content(R.string.permission_denied)
+                    .negativeText(R.string.txtNo)
+                    .positiveText(R.string.txtYes)
+                    .onPositive((dialog, which) -> {
+                        Intent intent = new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                    })
+                    .show();
             }
-            case Utils.MY_PERMISSIONS_REQUEST_CAMERA: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager
-                    .PERMISSION_GRANTED) {
-                    Intent intent = new Intent(HistoryScanActivity.this, ContinuousScanActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
+        } else if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager
+                .PERMISSION_GRANTED) {
+                Intent intent = new Intent(HistoryScanActivity.this, ContinuousScanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
-            break;
         }
     }
 
@@ -503,6 +507,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     public void onResume() {
         super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.history_bottom_nav);
         if (scanOnShake) {
             //unregister the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);

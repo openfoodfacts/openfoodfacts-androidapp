@@ -12,41 +12,46 @@ public class SummaryProductPresenterView implements ISummaryProductPresenter.Vie
 
     @Override
     public void showProductQuestion(Question question) {
-//empty impl
+        //empty impl
     }
 
     @Override
     public void showAnnotatedInsightToast(InsightAnnotationResponse insightAnnotationResponse) {
-//empty impl
+        //empty impl
     }
 
     @Override
     public void showCategories(List<CategoryName> categories) {
-//empty impl
+        //empty impl
     }
 
     @Override
     public void showLabels(List<LabelName> labels) {
-//empty impl
+        //empty impl
     }
 
     @Override
     public void showCategoriesState(String state) {
-//empty impl
+        //empty impl
     }
 
     @Override
     public void showLabelsState(String state) {
-//empty impl
+        //empty impl
     }
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
-//empty impl
+        //empty impl
     }
 
     @Override
     public void showAdditivesState(String state) {
-//empty impl
+        //empty impl
+    }
+
+    @Override
+    public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
+        //empty impl
     }
 }

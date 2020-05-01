@@ -11,7 +11,6 @@ import org.greenrobot.greendao.database.Database;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class DatabaseHelper extends DaoMaster.OpenHelper {
-
     private SharedPreferences settings;
 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
@@ -25,7 +24,6 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
 
         settings = context.getSharedPreferences("prefs", 0);
     }
-
 
     @Override
     public void onCreate(Database db) {
@@ -42,9 +40,8 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
         }
 
         //db model has changed we need to invalidate and reload taxonomies
-        if( settings != null && oldVersion != newVersion )
-        {
-            settings.edit().putLong( Utils.LAST_REFRESH_DATE, 0 ).apply();
+        if (settings != null && oldVersion != newVersion) {
+            settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, true).apply();
         }
     }
 
@@ -53,7 +50,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
      * left untouched just fix the code in the version case and push a new
      * release
      *
-     * @param db             database
+     * @param db database
      * @param migrateVersion
      */
     private void upgrade(Database db, int migrateVersion) {
@@ -110,7 +107,7 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             case 9: {
                 String newColumns[] = new String[]{"overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
-                        "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael"};
+                    "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael"};
                 String updatedTables[] = new String[]{"additive_name", "additive"};
                 for (String table : updatedTables) {
                     for (String column : newColumns) {
@@ -138,10 +135,18 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 YourListedProductDao.createTable(db, true);
                 break;
             }
-            case 12: {
+            //12 -13 - 14 - issue with merge and bad numerotation
+            case 15: {
                 IngredientDao.createTable(db, true);
                 IngredientNameDao.createTable(db, true);
                 IngredientsRelationDao.createTable(db, true);
+                AnalysisTagNameDao.createTable(db, true);
+                AnalysisTagDao.createTable(db, true);
+                AnalysisTagConfigDao.createTable(db, true);
+                break;
+            }
+            case 16: {
+                InvalidBarcodeDao.createTable(db, true);
                 break;
             }
         }

@@ -4,18 +4,21 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.browser.customtabs.CustomTabsIntent;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -35,8 +38,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
@@ -45,8 +46,12 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
+/**
+ * @see R.layout#fragment_home
+ */
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
     @BindView(R.id.tvDailyFoodFact)
     TextView tvDailyFoodFact;
@@ -70,12 +75,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
     }
 
     @OnClick(R.id.tvDailyFoodFact)
@@ -121,7 +121,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                             .putString("pass", "")
                             .apply();
 
-                        if(getActivity()!=null) {
+                        if (getActivity() != null) {
                             new MaterialDialog.Builder(getActivity())
                                 .title(R.string.alert_dialog_warning_title)
                                 .content(R.string.alert_dialog_warning_msg_user)
@@ -148,9 +148,11 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         }
     }
 
+    @Override
     public void onResume() {
 
         super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
 
         int productCount = sp.getInt("productCount", 0);
         apiClient.getTotalProductCount(Utils.getUserAgent())
@@ -159,15 +161,15 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
             .subscribe(new SingleObserver<Search>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    disposable=d;
-                    if(isAdded()) {
+                    disposable = d;
+                    if (isAdded()) {
                         updateTextHome(productCount);
                     }
                 }
 
                 @Override
                 public void onSuccess(Search search) {
-                    if(isAdded()) {
+                    if (isAdded()) {
                         int totalProductCount = productCount;
                         try {
                             totalProductCount = Integer.parseInt(search.getCount());
@@ -183,7 +185,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
                 @Override
                 public void onError(Throwable e) {
-                    if(isAdded()) {
+                    if (isAdded()) {
                         updateTextHome(productCount);
                     }
                 }
@@ -199,12 +201,16 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         }
     }
 
+    /**
+     * Set text displayed on HOme based on build variant
+     *
+     * @param totalProductCount count of total products availab;e on the apps database
+     */
     private void updateTextHome(int totalProductCount) {
         try {
             textHome.setText(R.string.txtHome);
             if (totalProductCount != 0) {
                 String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
-
                 textHome.setText(String.format(txtHomeOnline, totalProductCount));
             }
         } catch (Exception e) {
@@ -222,6 +228,9 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     }
 
+    /**
+     * get tag line url from OpenFoodAPIService
+     */
     private void getTagline() {
         OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
         Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline(Utils.getUserAgent());
