@@ -7,9 +7,12 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.RequiresApi;
@@ -21,11 +24,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import butterknife.BindView;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -91,6 +99,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             mState = new State();
             loadProductDataFromUrl(paths[4]);
         } else if (mState == null) {
+             //no state-> we can't display anything. we go back to home.
             final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         } else {
@@ -115,7 +124,8 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         }
         mShakeDetector = new ShakeDetector();
 
-        scanOnShake = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("shakeScanMode", false);
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
         mShakeDetector.setOnShakeListener(count -> {
             if (scanOnShake) {

@@ -130,7 +130,7 @@
         <activity
                 android:name=".views.ProductComparisonActivity"
             android:parentActivityName=".views.MainActivity" />
-        <activityandroid:name=".views.category.activity.CategoryActivity"
+        <activity android:name=".views.category.activity.CategoryActivity"
                 android:launchMode="singleTop"
                 android:parentActivityName=".views.MainActivity">
             <intent-filter>
@@ -157,7 +157,6 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
             </intent-filter>
         </service>
-        <service android:name=".utils.UploadService"/>
         <service android:name=".views.LoadTaxonomiesService"/>
 
         <provider
