@@ -683,7 +683,7 @@
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Add products</string>
+    <string name="add_product">পণ্য যোগ করুন</string>
     <string name="add_another_product">Add another product</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
