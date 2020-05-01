@@ -115,7 +115,7 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Suiker alcoholen (polyolen)</item>
-        <item>Enkelvoudige onverzadigde vetzuren</item>
+        <item>Meervoudig onverzadigde vetzuren</item>
         <item>Kalium</item>
         <item>Seleen</item>
         <item>Serumproteïnen</item>
@@ -306,7 +306,7 @@
     <string name="for_100g">Per 100g</string>
     <string name="for_100ml">Voor 100 ml</string>
     <string name="serving">Per portie</string>
-    <string name="nutrition_monounsaturatedFat">Enkelvoudige onverzadigde vetzuren</string>
+    <string name="nutrition_monounsaturatedFat">Enkelvoudig onverzadigde vetzuren</string>
     <string name="nutrition_polyunsaturatedFat">Meervoudig onvervaardigde vetzuren</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
