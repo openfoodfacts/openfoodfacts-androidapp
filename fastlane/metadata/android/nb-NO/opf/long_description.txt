@@ -7,7 +7,7 @@ Open Food Facts er en offentlig database for matprodukter med ingredienser, alle
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+*** Få faktaene ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***

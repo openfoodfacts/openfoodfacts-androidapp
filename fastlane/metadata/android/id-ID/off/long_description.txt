@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Pindai produk makanan atau kode batangnya untuk mendapatkan data tentang bahan, aditif, dan fakta nutrisi.
 
 ▶ Find & Compare more than 800.000 products
 

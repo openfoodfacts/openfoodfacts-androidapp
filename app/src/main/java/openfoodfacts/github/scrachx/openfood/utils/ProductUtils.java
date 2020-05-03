@@ -21,14 +21,20 @@ public class ProductUtils {
 
     /**
      * @param barcode the barcode to check
-     * @return true if valid according to {@link EAN13CheckDigit#EAN13_CHECK_DIGIT} and if the barecode doesn't start will 977/978/979 (Book barcode)
+     * @return true if valid according to {@link EAN13CheckDigit#EAN13_CHECK_DIGIT}
+     *     and if the barecode doesn't start will 977/978/979 (Book barcode)
      */
     public static boolean isBarcodeValid(@Nullable String barcode) {
-        //for debug only:the barcode 1 is used for test:
+        // For debug only: the barcode '1' is used for test:
         if (DEBUG_BARCODE.equals(barcode)) {
             return true;
         }
-        return barcode != null && (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcode) && (!barcode.substring(0, 3).contains("977") || !barcode.substring(0, 3)
-            .contains("978") || !barcode.substring(0, 3).contains("979")));
+        if ( barcode == null ) {
+            return false;
+        }
+        return (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcode) && barcode.length() > 3) &&
+            (!barcode.substring(0, 3).contains("977") ||
+                !barcode.substring(0, 3).contains("978") ||
+                !barcode.substring(0, 3).contains("979"));
     }
 }

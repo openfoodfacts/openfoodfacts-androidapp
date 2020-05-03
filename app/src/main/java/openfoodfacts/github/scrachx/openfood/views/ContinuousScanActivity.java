@@ -75,7 +75,6 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
-import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
@@ -146,7 +145,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product product;
     private ProductFragment productFragment;
-    private SharedPreferences.Editor editor;
     private BeepManager beepManager;
     private String lastText;
     private SharedPreferences sp;
@@ -598,15 +596,6 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
         productTags.setNestedScrollingEnabled(false);
 
-        Intent intent = new Intent(this, MainActivity.class);
-
-        new SwipeDetector(barcodeView).setOnSwipeListener((v, swipeType) -> {
-            if (swipeType == SwipeDetector.SwipeTypeEnum.TOP_TO_BOTTOM) {
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_up, R.anim.slide_down);
-            }
-        });
-
         View decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener
             (visibility -> {
@@ -770,7 +759,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     }
 
     void toggleCamera() {
-        editor = sp.edit();
+        SharedPreferences.Editor editor = sp.edit();
         CameraSettings settings = barcodeView.getBarcodeView().getCameraSettings();
         if (barcodeView.getBarcodeView().isPreviewActive()) {
             barcodeView.pause();
@@ -789,7 +778,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
 
     @OnClick(R.id.toggle_flash)
     void toggleFlash() {
-        editor = sp.edit();
+        SharedPreferences.Editor editor = sp.edit();
         if (mFlash) {
             barcodeView.setTorchOff();
             mFlash = false;
@@ -807,6 +796,7 @@ public class ContinuousScanActivity extends androidx.appcompat.app.AppCompatActi
     @OnClick(R.id.button_more)
     void moreSettings() {
         popup.setOnMenuItemClickListener(item -> {
+            SharedPreferences.Editor editor;
             switch (item.getItemId()) {
                 case R.id.toggleBeep:
                     editor = sp.edit();

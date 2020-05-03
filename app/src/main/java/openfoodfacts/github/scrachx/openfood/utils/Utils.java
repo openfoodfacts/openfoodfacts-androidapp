@@ -247,33 +247,25 @@ public class Utils {
     }
 
     public static int getImageGrade(String grade) {
-        int drawable = NO_DRAWABLE_RESOURCE;
 
         if (grade == null) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                drawable = R.drawable.nnc_a;
-                break;
+                return R.drawable.nnc_a;
             case "b":
-                drawable = R.drawable.nnc_b;
-                break;
+                return R.drawable.nnc_b;
             case "c":
-                drawable = R.drawable.nnc_c;
-                break;
+                return R.drawable.nnc_c;
             case "d":
-                drawable = R.drawable.nnc_d;
-                break;
+                return R.drawable.nnc_d;
             case "e":
-                drawable = R.drawable.nnc_e;
-                break;
+                return R.drawable.nnc_e;
             default:
-                break;
+                return NO_DRAWABLE_RESOURCE;
         }
-
-        return drawable;
     }
 
     public static String getNovaGroupExplanation(String novaGroup, Context context) {
@@ -317,29 +309,23 @@ public class Utils {
     }
 
     public static int getNovaGroupDrawable(String novaGroup) {
-        int drawable = NO_DRAWABLE_RESOURCE;
 
         if (novaGroup == null) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
 
         switch (novaGroup) {
             case "1":
-                drawable = R.drawable.ic_nova_group_1;
-                break;
+                return R.drawable.ic_nova_group_1;
             case "2":
-                drawable = R.drawable.ic_nova_group_2;
-                break;
+                return R.drawable.ic_nova_group_2;
             case "3":
-                drawable = R.drawable.ic_nova_group_3;
-                break;
+                return R.drawable.ic_nova_group_3;
             case "4":
-                drawable = R.drawable.ic_nova_group_4;
-                break;
+                return R.drawable.ic_nova_group_4;
             default:
-                break;
+                return NO_DRAWABLE_RESOURCE;
         }
-        return drawable;
     }
 
     public static int getSmallImageGrade(Product product) {
@@ -417,17 +403,18 @@ public class Utils {
     }
 
     /**
-     * Return a round float value with 2 decimals
+     * Return a round float value <b>with 2 decimals</b>
+     * <b>BE CAREFUL:</b> THE METHOD DOESN'T CHECK THE NUMBER AS A NUMBER.
      *
      * @param value float value
-     * @return round value or 0 if the value is empty or equals to 0
+     * @return round value <b>with 2 decimals</b> or 0 if the value is empty or equals to 0
      */
     public static String getRoundNumber(String value) {
         if ("0".equals(value)) {
             return value;
         }
 
-        if (isEmpty(value)) {
+        if (value == null || value.length() == 0) {
             return "?";
         }
 
@@ -818,11 +805,10 @@ public class Utils {
         return BuildConfig.APP_NAME + prefix + BuildConfig.VERSION_NAME;
     }
 
-     /*
-     @param Takes a string
-     @return Returns a Json object
-      */
-
+    /**
+     * @param response Takes a string
+     * @return Returns a Json object
+     */
     public static JSONObject createJsonObject(String response) {
         JSONObject jsonObject = null;
         try {

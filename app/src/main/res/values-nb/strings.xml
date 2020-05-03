@@ -162,7 +162,7 @@
     <string name="txtNutritionLevelLow">i liten mengde</string>
     <string name="txtNutritionLevelModerate">i moderat mengde</string>
     <string name="txtNutritionLevelHigh">i høy mengde</string>
-    <string name="txtSave">Lagr</string>
+    <string name="txtSave">Lagre</string>
     <string name="txtSignIn">Logg på</string>
     <string name="txtToastSaved">Bruker lagret</string>
     <string name="txtSalt">Salt</string>
@@ -369,7 +369,7 @@
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
-    <string name="scan_shortcut_short_label">Scan</string>
+    <string name="scan_shortcut_short_label">Skann</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">Søk</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
@@ -381,7 +381,7 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
-    <string name="contact">Contact</string>
+    <string name="contact">Kontakt</string>
     <string name="contact_summary">Contact the team</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
@@ -486,7 +486,7 @@
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">Historikk</string>
     <string name="products_added">Products you added or edited</string>
-    <string name="products_incomplete">Products you added that need to be completed</string>
+    <string name="products_incomplete">Produkter du har lagt til som må fullføres</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
