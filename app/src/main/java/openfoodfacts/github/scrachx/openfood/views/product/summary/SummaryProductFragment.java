@@ -124,18 +124,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     TextView quantityProduct;
     @BindView(R.id.textBrandProduct)
     TextView brandProduct;
-    @BindView(R.id.textEmbCode)
-    TextView embCode;
-    @BindView(R.id.icon_categories)
-    ImageView iconCategories;
-    @BindView(R.id.textCategoryProduct)
+    @BindView(R.id.categories_text)
     TextView categoryProduct;
-    @BindView(R.id.icon_emb)
+    @BindView(R.id.emb_text)
+    TextView embCode;
+    @BindView(R.id.categories_icon)
+    ImageView iconCategories;
+    @BindView(R.id.emb_icon)
     ImageView iconEmb;
-    @BindView(R.id.textLabelProduct)
-    TextView labelProduct;
-    @BindView(R.id.icon_labels)
+    @BindView(R.id.labels_icon)
     ImageView iconLabels;
+    @BindView(R.id.label_text)
+    TextView labelProduct;
     @BindView(R.id.textCategoryAlcoholAlert)
     TextView categoryAlcoholAlert;
     @BindView(R.id.front_picture_layout)
@@ -574,6 +574,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showCategories(List<CategoryName> categories) {
+        if (categories.isEmpty()) {
+            categoryProduct.setVisibility(GONE);
+        }
         CategoryProductHelper categoryProductHelper = new CategoryProductHelper(categoryProduct, categories, this, apiClientForWikiData);
         categoryProductHelper.showCategories();
 
