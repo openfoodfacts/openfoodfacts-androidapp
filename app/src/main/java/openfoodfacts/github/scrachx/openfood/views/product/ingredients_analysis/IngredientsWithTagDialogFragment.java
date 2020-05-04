@@ -27,6 +27,7 @@ import androidx.preference.PreferenceManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -97,6 +98,8 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         if (matchingIngredients.isEmpty()) {
             return null;
         }
+
+        Collections.sort(matchingIngredients);
 
         StringBuilder text = new StringBuilder(128);
         text.append(" <b>");
