@@ -26,9 +26,9 @@ import androidx.preference.PreferenceManager;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -83,10 +83,9 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
     }
 
     private static String getMatchingIngredientsText(Product product, String[] showIngredients) {
-        ArrayList<String> matchingIngredients = new ArrayList<>();
+        List<String> matchingIngredients = new LinkedList<>();
         List<LinkedHashMap<String, String>> ingredients = product.getIngredients();
-        for (LinkedHashMap<String, String> ingredient :
-            ingredients) {
+        for (LinkedHashMap<String, String> ingredient : ingredients) {
             if (showIngredients[1].equals(ingredient.get(showIngredients[0]))) {
                 final String text = ingredient.get("text");
                 if (text != null) {
