@@ -42,6 +42,7 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -765,6 +766,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                     addValidListener(textView);
                 } else {
                     String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
+                    Arrays.sort(nutrients);
                     Toast.makeText(activity, getString(R.string.nutrient_already_added, nutrients[position]), Toast.LENGTH_SHORT).show();
                 }
             })
