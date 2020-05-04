@@ -22,8 +22,8 @@ Pour découvrir le projet Open Food Facts mené par des volontaires, rendez-vous
 
 ▶ Contribuez à la transparence alimentaire
 - Open Food Facts est une base de données de produits alimentaires faite par tout le monde, pour tout le monde.
-- Vous pouvez l'utiliser pour faire de meilleurs choix alimentaires, et comme ce sont des données ouvertes, n'importe qui peut le réutiliser pour n'importe quel but.
-- Open Food Facts est un projet à but non lucratif développé par des milliers de volontaires du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons.
+- Vous pouvez l'utiliser pour faire de meilleurs choix alimentaires, et comme ces données sont ouvertes, n'importe qui peut les réutiliser pour n'importe quel but.
+- Open Food Facts est un projet à but non lucratif développé par des milliers de bénévoles du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons.
 - Vous pouvez commencer à contribuer aujourd'hui en ajoutant un produit de votre frigo.
 
 ▶ Créez des listes

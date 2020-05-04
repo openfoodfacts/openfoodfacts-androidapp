@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 
 def obtainTestBuildType() {
-    //to activate  screenshots buildType in IDE; uncomment next line and comment other
-    //otherwise the folder androidTestScreenshots is not recognized as a test folder.
-//    def result = "screenshots"
+    // To activate  screenshots buildType in IDE; uncomment next line and comment other
+    // otherwise the folder androidTestScreenshots is not recognized as a test folder.
+    // def result = "screenshots"
     def result = "debug"
     if (project.hasProperty("testBuildType")) {
         result = project.getProperties().get("testBuildType")
@@ -25,19 +25,20 @@ android {
         applicationId "openfoodfacts.github.scrachx.openfood"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 325
-        versionName "3.2.5"
+        versionCode 328
+        versionName "3.2.8"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
+        ndk.abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
     }
 
     buildTypes {
         release {
             crunchPngs true
         }
-        screenshots{
+        screenshots {
             initWith debug
+            applicationIdSuffix = '.screenshots'
         }
 
 
@@ -60,7 +61,6 @@ android {
             buildConfigField 'String', 'STATICURL', '"https://static.openfoodfacts.org"'
 
         }
-
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
             resValue "string", "app_name", "OpenBeautyFacts"
@@ -135,7 +135,6 @@ android {
 }
 
 
-
 buildscript {
     repositories {
         mavenCentral()
@@ -147,7 +146,7 @@ buildscript {
 apply plugin: 'org.greenrobot.greendao'
 
 greendao {
-    schemaVersion 15
+    schemaVersion 16
 }
 android {
     // Other settings
@@ -277,4 +276,7 @@ dependencies {
     resourcePlaceholders {
         files = ['xml/shortcuts.xml']
     }
+
+    // ShowCaseView dependency
+    implementation 'com.github.mreram:showcaseview:1.0.5'
 }

@@ -75,7 +75,6 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.my_lists);
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
         fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
 
@@ -296,5 +295,12 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                 return false;
             }
         }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.my_lists);
+
     }
 }

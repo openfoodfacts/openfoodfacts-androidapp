@@ -294,6 +294,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <Button
+                    android:id="@+id/quickView_productNotFoundButton"
+                    style="@style/ButtonFlat"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="@string/add_this_product"
+                    android:textStyle="normal"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quickView_productNotFound" />
+
                 <EditText
                     android:id="@+id/quickView_searchByBarcode"
                     android:layout_width="0dp"

@@ -6,7 +6,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.util.Log;
+
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -15,9 +20,6 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoadTaxonomiesService extends IntentService {
     private ProductRepository productRepository;
@@ -39,7 +41,7 @@ public class LoadTaxonomiesService extends IntentService {
         receiver = intent == null ? null : intent.getParcelableExtra("receiver");
         try {
             doTask();
-        } catch (Throwable throwable) {
+        } catch (Exception throwable) {
             handleError(throwable);
         }
     }
@@ -50,6 +52,7 @@ public class LoadTaxonomiesService extends IntentService {
         List<SingleSource<?>> syncObservables = new ArrayList<>();
         syncObservables.add(productRepository.reloadLabelsFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadTagsFromServer().subscribeOn(Schedulers.io()));
+        syncObservables.add(productRepository.reloadInvalidBarcodesFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadAllergensFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadIngredientsFromServer().subscribeOn(Schedulers.io()));
         syncObservables.add(productRepository.reloadAnalysisTagConfigsFromServer().subscribeOn(Schedulers.io()));

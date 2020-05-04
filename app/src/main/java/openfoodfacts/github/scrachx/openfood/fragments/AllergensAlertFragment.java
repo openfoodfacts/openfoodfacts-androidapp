@@ -5,12 +5,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,7 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -48,7 +49,6 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  * @see R.layout#fragment_alert_allergens
  */
 public class AllergensAlertFragment extends NavigationBaseFragment {
-
     private List<AllergenName> mAllergensEnabled;
     private List<AllergenName> mAllergensFromDao;
     private AllergensAdapter mAdapter;
@@ -59,6 +59,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     private LinearLayout mEmptyMessageView;                                         // Empty View containing the message that will be shown if the list is empty
     private DataObserver mDataObserver;
     private BottomNavigationView bottomNavigationView;
+
     public static Integer getKey(Map<Integer, String> map, String value) {
         Integer key = null;
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
@@ -89,33 +90,29 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         mEmptyMessageView = view.findViewById(R.id.emptyAllergensView);
         productRepository = ProductRepository.getInstance();
         mDataObserver = new DataObserver();
-        bottomNavigationView  = view.findViewById((R.id.bottom_navigation));
+        bottomNavigationView = view.findViewById((R.id.bottom_navigation));
         BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
         productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().getLanguage());
 
         final String language = LocaleHelper.getLanguage(getContext());
         productRepository.getAllergensByEnabledAndLanguageCode(true, language)
 
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> {
-                    mAllergensEnabled = allergens;
-                    mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled);
-                    mRvAllergens.setAdapter(mAdapter);
-                    mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
-                    mRvAllergens.setHasFixedSize(true);
-                    mAdapter.registerAdapterDataObserver(mDataObserver);
-                    mDataObserver.onChanged();
-                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByEnabledAndLanguageCode",e));
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(allergens -> {
+                mAllergensEnabled = allergens;
+                mAdapter = new AllergensAdapter(productRepository, mAllergensEnabled);
+                mRvAllergens.setAdapter(mAdapter);
+                mRvAllergens.setLayoutManager(new LinearLayoutManager(view.getContext()));
+                mRvAllergens.setHasFixedSize(true);
+                mAdapter.registerAdapterDataObserver(mDataObserver);
+                mDataObserver.onChanged();
+            }, e -> Log.e(AllergensAlertFragment.class.getSimpleName(), "getAllergensByEnabledAndLanguageCode", e));
 
         productRepository.getAllergensByLanguageCode(language)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> {
-                    mAllergensFromDao = allergens;
-                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByLanguageCode",e));
-
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(allergens -> mAllergensFromDao = allergens, e -> Log.e(AllergensAlertFragment.class.getSimpleName(), "getAllergensByLanguageCode", e));
 
         currentView = view;
         mSettings = getActivity().getSharedPreferences("prefs", 0);
@@ -126,27 +123,27 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
      */
     @OnClick(R.id.btn_add)
     protected void onAddAllergens() {
-        if (mAllergensEnabled != null && mAllergensFromDao != null && mAllergensFromDao.size() > 0) {
+        if (mAllergensEnabled != null && mAllergensFromDao != null && !mAllergensFromDao.isEmpty()) {
             productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(getContext()))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe((List<AllergenName> allergens) -> {
-                        Collections.sort(allergens, (a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
-                        List<String> allergensNames = new ArrayList<>();
-                        for (AllergenName allergenName : allergens) {
-                            allergensNames.add(allergenName.getName());
-                        }
-                        new MaterialDialog.Builder(currentView.getContext())
-                                .title(R.string.title_dialog_alert)
-                                .items(allergensNames)
-                                .itemsCallback((dialog, view, position, text) -> {
-                                    productRepository.setAllergenEnabled(allergens.get(position).getAllergenTag(), true);
-                                    mAllergensEnabled.add(allergens.get(position));
-                                    mAdapter.notifyItemInserted(mAllergensEnabled.size() - 1);
-                                    mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
-                                })
-                                .show();
-                    }, Throwable::printStackTrace);
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((List<AllergenName> allergens) -> {
+                    Collections.sort(allergens, (a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+                    List<String> allergensNames = new ArrayList<>();
+                    for (AllergenName allergenName : allergens) {
+                        allergensNames.add(allergenName.getName());
+                    }
+                    new MaterialDialog.Builder(currentView.getContext())
+                        .title(R.string.title_dialog_alert)
+                        .items(allergensNames)
+                        .itemsCallback((dialog, view, position, text) -> {
+                            productRepository.setAllergenEnabled(allergens.get(position).getAllergenTag(), true);
+                            mAllergensEnabled.add(allergens.get(position));
+                            mAdapter.notifyItemInserted(mAllergensEnabled.size() - 1);
+                            mRvAllergens.scrollToPosition(mAdapter.getItemCount() - 1);
+                        })
+                        .show();
+                }, Throwable::printStackTrace);
         } else {
             ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -159,45 +156,44 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                 lt.show();
                 final SharedPreferences.Editor editor = mSettings.edit();
                 productRepository.getAllergens()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .toObservable()
-                        .subscribe(allergens -> {
-                            editor.putBoolean("errorAllergens", false).apply();
-                            mAdapter.setAllergens(mAllergensEnabled);
-                            mAdapter.notifyDataSetChanged();
-                            updateAllergenDao();
-                            onAddAllergens();
-                            lt.success();
-                        }, e -> {
-                            editor.putBoolean("errorAllergens", true).apply();
-                            lt.error();
-                        });
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .toObservable()
+                    .subscribe(allergens -> {
+                        editor.putBoolean("errorAllergens", false).apply();
+                        mAdapter.setAllergens(mAllergensEnabled);
+                        mAdapter.notifyDataSetChanged();
+                        updateAllergenDao();
+                        onAddAllergens();
+                        lt.success();
+                    }, e -> {
+                        editor.putBoolean("errorAllergens", true).apply();
+                        lt.error();
+                    });
             } else {
                 new MaterialDialog.Builder(currentView.getContext())
-                        .title(R.string.title_dialog_alert)
-                        .content(R.string.info_download_data_connection)
-                        .neutralText(R.string.txtOk)
-                        .show();
+                    .title(R.string.title_dialog_alert)
+                    .content(R.string.info_download_data_connection)
+                    .neutralText(R.string.txtOk)
+                    .show();
             }
         }
     }
 
+    /**
+     * Retrieve modified list of allergens from ProductRepository
+     */
     private void updateAllergenDao() {
         final String language = LocaleHelper.getLanguage(getContext());
         productRepository.getAllergensByEnabledAndLanguageCode(true, language)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> {
-                    mAllergensEnabled = allergens;
-                }, e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByEnabledAndLanguageCode",e));
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(allergens -> mAllergensEnabled = allergens, e -> Log.e(AllergensAlertFragment.class.getSimpleName(), "getAllergensByEnabledAndLanguageCode", e));
 
         productRepository.getAllergensByLanguageCode(language)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> {
-                    mAllergensFromDao = allergens;
-                },  e->Log.e(AllergensAlertFragment.class.getSimpleName(),"getAllergensByLanguageCode",e));
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(allergens -> mAllergensFromDao = allergens, e -> Log.e(AllergensAlertFragment.class.getSimpleName(), "getAllergensByLanguageCode", e));
     }
 
     @Override
@@ -212,19 +208,22 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         try {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.alert_drawer));
         } catch (NullPointerException e) {
-            Log.e(AllergensAlertFragment.class.getSimpleName(),"onResume",e);
+            Log.e(AllergensAlertFragment.class.getSimpleName(), "onResume", e);
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        if(mRvAllergens != null){
+        if (mRvAllergens != null) {
             mRvAllergens.getAdapter().unregisterAdapterDataObserver(mDataObserver);
         }
     }
 
-    class DataObserver extends RecyclerView.AdapterDataObserver{
+    /**
+     * Dat aobserver of the Recycler Views
+     */
+    class DataObserver extends RecyclerView.AdapterDataObserver {
         DataObserver() {
             super();
         }
@@ -236,6 +235,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                 mRvAllergens.setVisibility(isListEmpty ? View.GONE : View.VISIBLE);
             }
         }
+
         @Override
         public void onChanged() {
             super.onChanged();

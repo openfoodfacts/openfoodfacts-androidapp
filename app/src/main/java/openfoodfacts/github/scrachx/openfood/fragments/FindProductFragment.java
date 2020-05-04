@@ -1,11 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.apache.commons.lang.StringUtils;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -21,10 +26,12 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Navi
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-import org.apache.commons.lang.StringUtils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
+/**
+ * @see R.layout#fragment_find_product
+ */
 public class FindProductFragment extends NavigationBaseFragment {
     public static final String BARCODE = "barcode";
     @BindView(R.id.editTextBarcode)
@@ -54,25 +61,28 @@ public class FindProductFragment extends NavigationBaseFragment {
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
     }
 
     @OnClick(R.id.buttonBarcode)
     protected void onSearchBarcodeProduct() {
         Utils.hideKeyboard(getActivity());
-        if (mBarCodeText.getText().toString().isEmpty()) {
-            displayToast(getResources().getString(R.string.txtBarcodeRequire));
+
+        final String barCodeTxt = mBarCodeText.getText().toString();
+        if (barCodeTxt.isEmpty()) {
+            mBarCodeText.setError(getResources().getString(R.string.txtBarcodeRequire));
+            return;
+        }
+
+        if (barCodeTxt.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barCodeTxt)) {
+            mBarCodeText.setError(getResources().getString(R.string.txtBarcodeNotValid));
+            return;
+        }
+
+        if (!ProductUtils.isBarcodeValid(barCodeTxt)) {
+            mBarCodeText.setError(getResources().getString(R.string.txtBarcodeNotValid));
         } else {
-            String barcodeText = mBarCodeText.getText().toString();
-            if (barcodeText.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barcodeText)) {
-                displayToast(getResources().getString(R.string.txtBarcodeNotValid));
-            } else {
-                if (ProductUtils.isBarcodeValid(barcodeText)) {
-                    api.getProduct(mBarCodeText.getText().toString(), getActivity());
-                } else {
-                    displayToast(getResources().getString(R.string.txtBarcodeNotValid));
-                }
-            }
+
+            api.getProduct(barCodeTxt, getActivity());
         }
     }
 
@@ -95,6 +105,7 @@ public class FindProductFragment extends NavigationBaseFragment {
         mToast.show();
     }
 
+    @Override
     public void onResume() {
         super.onResume();
         final ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

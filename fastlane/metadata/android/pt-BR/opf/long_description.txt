@@ -5,50 +5,50 @@ O Open Products Facts é um banco de dados aberto de todos os produtos do mundo.
 - Open Food Facts é um banco de dados de produtos alimentícios feito por todos, para todos.
 - Você pode usá-lo para fazer melhores escolhas e, como se trata de dados abertos, qualquer pessoa pode reutilizá-lo para qualquer finalidade.
 Open Product Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários ao redor do mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
-- Pode começar a contribuir hoje ao adicionar um produto do seu frigorífico. 
+-Você pode começar contribuindo hoje adicionando seu primeiro produto. 
 
 *** Conheça os Fatos ***
-- Open Food Facts ajuda-o a entender as letras miúdas dos rótulos dos produtos.
+- Open Products Facts te ajuda a entender as letras miúdas nos rótulos dos produtos.
 
-*** Colecione TODAAAAS as coisas ***
-- Pode adicionar todos os itens das suas coleções
-- Open Crayons Facts - O maior banco de dados aberto a lápis de cor
-- Open Miniature Food Facts - O maior banco de dados aberto de produtos alimentícios em miniatura
-- Aberto??? -- Crie a sua própria database :-)
+*** Colecione TOOOODAS as coisas ***
+- Você pode adicionar todos os itens de suas coleções
+- Open Crayons Facts - O maior banco de dados abertos de giz de cera
+- Open Miniature Food Facts - O maior banco de dados de comidas em miniatura
+- Aberto ??? Fatos - Crie seu próprio banco de dados :-)
 
 *** Funciona bem em qualquer condição***
 - Você pode adicionar novos produtos, mesmo se você não estiver conectado à Internet.
 - O aplicativo abre apenas o estritamente necessário para reduzir o consumo de bateria e dados
 - Não precisa de uma câmera para procurar um produto. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
 
-*** Os seus produtos, os seus dados ***
-- os seus dados são seus e nunca são enviados on-line
+*** Seus Produtos, seus dados ***
+- Seus dados pessoais são seus e nunca serão enviados online
 - Você pode usar o aplicativo anonimamente
 - Você pode exportar seu histórico
 
-Para comida, pode instalar Open Food Facts, para cosméticos, Open Beauty Facts, e para comida de animais, Open Pet Food Facts.
+Para comida você pode baixar Open Food Facts, para cosméticos, Open Beauty Facts, e para pets, Open Pet Food Facts.
 
-O Open Beauty Facts também está disponível na web em https://pt.openbeautyfacts.org
+Open Products Facts também está disponivel na internet em https://world.openproductsfacts.org
 Perguntas, feedback: contato@openfoodfacts.org
 
-*** Listagem Original do Dia das mentiras ***
+*** Listagem Original do Primeiro de Abril ***
 
-Ontem de manhã, a equipa do Open Food Facts acordou para uma revelação impressionante. 
+Ontem de manhã, o time do Open Food Facts acordou com uma revelação maravilhosa. 
 
-Colecionar alimentos, cosméticos e alimentos para animais de estimação no mundo era tão fora de moda. Com o imenso progresso feito no ano passado, certamente devemos estar próximos de completar a nossa missão de colecionar todos os produtos alimentícios e cosméticos do mundo, não é ?
+Colecionar alimentos, cosméticos e alimentos para animais de estimação do mundo era tão démodé. Com o progresso insano feito no ano passado, certamente devemos estar próximos de completar nossa missão de coletar todos os produtos alimentícios e cosméticos do mundo, né?
 
-Por isso, configuramos para criar não 1, mas outros 77000 novos bancos de dados separados! 
+Então, criamos para criar não 1, mas outros 77000 novos bancos de dados separados! 
 
-Open Products Facts será um projeto extremamente ambicioso. Eis alguns deles: 
+O Open Products Facts será um projecto extremamente ambicioso. Eis alguns deles: 
 
 Open Crayons Facts - O maior banco de dados aberto de lápis de cor
 
 Open Miniature Food Facts - O maior banco de dados aberto de produtos alimentícios em miniatura
 
-Aberto ??? Factos -- a maior base de dados de quê ???
+Open ??? Facts - O maior banco de dados aberto de ???
 
-Amanhã vamos selecionar os 3 bancos de dados mais bem sucedido e vamos começar a colecionar todos os produtos correspondentes no mundo.
+Amanhã, escolheremos as três bases de dados mais bem sucedidas, e começaremos a recolher todos os produtos correspondentes do mundo.
 
-Serão latas de lixo, télécartes, ou bases de dados de telemóveis? 
+Será o banco de dados das latas, dos cartões telefônicos, ou dos celulares? 
 
-Por isso, se se gostas de t-shirts, livros de culinária, papel de origami ou globos de neve, comece a digitalizar usando o aplicativo Open Products Facts Android no Google Play
+Então se você gosta de camisetas, livros de receitas, papel de origami ou globos de neve, comece a escanear usando o aplicativo Open Products Facts para Android no Google Play

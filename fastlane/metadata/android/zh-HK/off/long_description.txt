@@ -47,21 +47,21 @@ Create shopping lists, track what you've eaten and easily share and export your 
 
 
 ▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+不論您在飛機上、潛水艇裏或在逛超市，您都可以以光速掃描產品
 
 - The whole planet, in your pocket !
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
-▶ Your food, your data
+▶ 您的食物，您的數據
 - 您的數據是您的，永遠不會上載網上
 - 您可以匿名使用應用程式
 - 您可以匯出掃描紀錄
 
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+▶ 設置產品過敏原警告
+- 對牛奶、麩質、雞蛋、大豆、堅果、魚、芹菜、芥末、二氧化硫和亞硫酸鹽、花生、芝麻籽、海鮮、軟體動物或羽扇豆過敏？
 - Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+- 請注意，過敏資料和偵測未必完全準確。 因此，請仔細檢查食品包裝上的過敏原資料。
 
 
 ▶ Say hello and/or join us!
@@ -70,7 +70,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+疑問及反饋：contact@openfoodfacts.org
 
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

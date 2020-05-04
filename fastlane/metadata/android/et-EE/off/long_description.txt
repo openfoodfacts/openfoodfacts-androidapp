@@ -70,7 +70,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+Küsimused, tagasiside: contact@openfoodfacts.org
 
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
