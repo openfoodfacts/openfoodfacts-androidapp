@@ -755,9 +755,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     @OnClick(R.id.btn_add_a_nutrient)
     void addNutrient() {
+        String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
+        Arrays.sort(nutrients);
+
         new MaterialDialog.Builder(activity)
             .title(R.string.choose_nutrient)
-            .items(R.array.nutrients_array)
+            .items(nutrients)
             .itemsCallback((dialog, itemView, position, text) -> {
                 if (!index.contains(position)) {
                     index.add(position);
@@ -765,8 +768,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                     allEditViews.add(textView);
                     addValidListener(textView);
                 } else {
-                    String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
-                    Arrays.sort(nutrients);
                     Toast.makeText(activity, getString(R.string.nutrient_already_added, nutrients[position]), Toast.LENGTH_SHORT).show();
                 }
             })
