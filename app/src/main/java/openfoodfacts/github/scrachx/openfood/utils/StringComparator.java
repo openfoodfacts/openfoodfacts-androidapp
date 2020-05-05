@@ -23,7 +23,7 @@ public class StringComparator implements Comparator<String> {
         return removeAccents(obj1).compareTo(removeAccents(obj2));
     }
 
-    public static String removeAccents(String string) {
+    static String removeAccents(String string) {
         return Normalizer.normalize(string, Normalizer.Form.NFD)
             .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }

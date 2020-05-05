@@ -6,23 +6,43 @@ import org.junit.Test;
 import java.util.Arrays;
 
 public class StringComparatorTest {
-
     @Test
-    public void testSpecialCharacterSort() {
-        String[] arr = new String[]{"Ácido araquidónico", "Zinc", "Almidón"};
+    public void testSortWithoutComparator() {
+        String[] arr = new String[]{"Ácido araquidónico", "Ácido", "Zinc", "Almidón", "Acido"};
+        Arrays.sort(arr);
 
-        Arrays.sort(arr, new StringComparator());
-
-        String[] expectedResult = new String[]{"Ácido araquidónico", "Almidón", "Zinc"};
+        String[] expectedResult = new String[]{"Acido", "Almidón", "Zinc", "Ácido", "Ácido araquidónico"};
         Assert.assertArrayEquals(expectedResult, arr);
     }
 
     @Test
-    public void testNormalSort() {
-        String[] arr = new String[]{"Ácido araquidónico", "Zinc", "Almidón"};
-        Arrays.sort(arr);
+    public void testSpecialCharacterSort_ES() {
+        String[] arr = new String[]{"Ácido araquidónico", "Ácido", "Zinc", "Almidón", "Acido"};
 
-        String[] expectedResult = new String[]{"Almidón", "Zinc", "Ácido araquidónico"};
+        Arrays.sort(arr, new StringComparator());
+
+        String[] expectedResult = new String[]{"Ácido", "Acido", "Ácido araquidónico", "Almidón", "Zinc"};
+        Assert.assertArrayEquals(expectedResult, arr);
+    }
+
+    @Test
+    public void testSpecialCharacterSort_FR() {
+        String[] arr = new String[]{"oléique", "oleique", "acide", "Acide"};
+
+        Arrays.sort(arr, new StringComparator());
+
+        String[] expectedResult = new String[]{"Acide", "acide", "oléique", "oleique"};
+        Assert.assertArrayEquals(expectedResult, arr);
+    }
+
+    @Test
+    public void testSpecialCharacterSort_FR2() {
+        String[] arr = new String[]{"Molybdène", "manganèse", "molybdene", "Manganèse"};
+
+        Arrays.sort(arr, new StringComparator());
+
+        // upper case affects the order
+        String[] expectedResult = new String[]{"Manganèse", "Molybdène", "manganèse", "molybdene"};
         Assert.assertArrayEquals(expectedResult, arr);
     }
 
