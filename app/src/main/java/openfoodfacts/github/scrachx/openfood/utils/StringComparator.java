@@ -7,12 +7,23 @@ import java.util.Comparator;
  * Created by Raymond Chenon on 05/05/20.
  */
 public class StringComparator implements Comparator<String> {
+
     @Override
-    public int compare(String o1, String o2) {
-        return removeDiacriticalMarks(o1).hashCode() - removeDiacriticalMarks(o2).hashCode();
+    public int compare(String obj1, String obj2) {
+
+        if (obj1 == obj2) {
+            return 0;
+        }
+        if (obj1 == null) {
+            return -1;
+        }
+        if (obj2 == null) {
+            return 1;
+        }
+        return removeAccents(obj1).compareTo(removeAccents(obj2));
     }
 
-    public static String removeDiacriticalMarks(String string) {
+    public static String removeAccents(String string) {
         return Normalizer.normalize(string, Normalizer.Form.NFD)
             .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
