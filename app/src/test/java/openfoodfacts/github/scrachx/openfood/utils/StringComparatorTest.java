@@ -47,6 +47,16 @@ public class StringComparatorTest {
     }
 
     @Test
+    public void testSpecialCharacterSort_RU() {
+        String[] arr = new String[]{"Кофеин", "Каприновая кислота", "Кальций"};
+
+        Arrays.sort(arr, new StringComparator());
+
+        String[] expectedResult = new String[]{"Кальций", "Каприновая кислота", "Кофеин"};
+        Assert.assertArrayEquals(expectedResult, arr);
+    }
+
+    @Test
     public void testRemoveDiacriticalMarks() {
         String stringWithAccents = "Ácido araquidónico";
         String transformed = StringComparator.removeAccents(stringWithAccents);
