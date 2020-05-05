@@ -42,12 +42,14 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
+import java.text.Collator;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -758,7 +760,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     void addNutrient() {
         String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
         // sort string by ignoring accents on letters. The sorted strings will keep their accents.
-        Arrays.sort(nutrients, new StringComparator());
+        Arrays.sort(nutrients, Collator.getInstance(Locale.US));
 
         new MaterialDialog.Builder(activity)
             .title(R.string.choose_nutrient)
