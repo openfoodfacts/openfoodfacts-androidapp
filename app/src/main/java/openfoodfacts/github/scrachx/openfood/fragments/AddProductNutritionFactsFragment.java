@@ -68,6 +68,7 @@ import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.QuantityParserUtil;
+import openfoodfacts.github.scrachx.openfood.utils.StringComparator;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.utils.ValueState;
@@ -756,7 +757,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     @OnClick(R.id.btn_add_a_nutrient)
     void addNutrient() {
         String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
-        Arrays.sort(nutrients);
+        // sort string by ignoring accents on letters. The sorted strings will keep their accents.
+        Arrays.sort(nutrients, new StringComparator());
 
         new MaterialDialog.Builder(activity)
             .title(R.string.choose_nutrient)

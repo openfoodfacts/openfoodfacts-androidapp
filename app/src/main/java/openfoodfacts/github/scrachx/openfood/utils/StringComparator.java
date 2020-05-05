@@ -5,6 +5,8 @@ import java.util.Comparator;
 
 /**
  * Created by Raymond Chenon on 05/05/20.
+ *
+ * Compare the strings ignoring the accents on letters ([a-z][A-Z])
  */
 public class StringComparator implements Comparator<String> {
 
@@ -23,6 +25,11 @@ public class StringComparator implements Comparator<String> {
         return removeAccents(obj1).compareTo(removeAccents(obj2));
     }
 
+    /**
+     * remove diacritical marks (accents) in the string
+     * @param string ex: Ácido
+     * @return string without accent ex: Acido
+     */
     static String removeAccents(String string) {
         return Normalizer.normalize(string, Normalizer.Form.NFD)
             .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
