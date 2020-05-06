@@ -1,14 +1,20 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import java.text.Collator;
 import java.text.Normalizer;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Locale;
 
 /**
  * Created by Raymond Chenon on 05/05/20.
- *
  * Compare the strings ignoring the accents on letters ([a-z][A-Z])
  */
 public class StringComparator implements Comparator<String> {
+
+    public static <T> void sort(T[] arrays) {
+        Arrays.sort(arrays, Collator.getInstance(Locale.US));
+    }
 
     @Override
     public int compare(String obj1, String obj2) {
@@ -27,6 +33,7 @@ public class StringComparator implements Comparator<String> {
 
     /**
      * remove diacritical marks (accents) in the string
+     *
      * @param string ex: Ácido
      * @return string without accent ex: Acido
      */
