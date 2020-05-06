@@ -17,16 +17,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -43,10 +39,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.FragmentNutritionProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
@@ -99,45 +94,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, PhotoReceiver {
     private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
-    @BindView(R.id.imageGrade)
-    ImageView img;
-    @BindView(R.id.imageGradeLayout)
-    LinearLayout imageGradeLayout;
-    @BindView(R.id.nutriscoreLink)
-    TextView nutriscoreLink;
     private PhotoReceiverHandler photoReceiverHandler;
-    @BindView(R.id.listNutrientLevels)
-    RecyclerView rv;
-    @BindView(R.id.textServingSize)
-    TextView serving;
-    @BindView(R.id.serving_size_card_view)
-    CardView servingSizeCardView;
-    @BindView(R.id.textCarbonFootprint)
-    TextView carbonFootprint;
-    @BindView(R.id.textNutrientTxt)
-    TextView textNutrientTxt;
-    @BindView(R.id.get_nutriscore_prompt)
-    Button nutriscorePrompt;
-    @BindView(R.id.textPerPortion)
-    TextView mTextPerPortion;
-    @BindView(R.id.imageViewNutrition)
-    ImageView mImageNutrition;
-    @BindView(R.id.addPhotoLabel)
-    TextView addPhotoLabel;
-    @BindView(R.id.nutriments_recycler_view)
-    RecyclerView nutrimentsRecyclerView;
-    @BindView(R.id.textNutriScoreInfo)
-    TextView textNutriScoreInfo;
-    @BindView(R.id.nutrient_levels_card_view)
-    CardView nutrientLevelsCardView;
-    @BindView(R.id.newAdd)
-    Button newAdd;
-    @BindView(R.id.calculateNutritionFacts)
-    Button calculateNutritionFacts;
-    @BindView(R.id.nutrimentsCardView)
-    CardView nutrimentsCardView;
-    @BindView(R.id.textNoNutritionData)
-    TextView textNoNutritionData;
     private String mUrlImage;
     private String barcode;
     private OpenFoodAPIClient api;
@@ -153,11 +110,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     private boolean showNutritionData = true;
     private Product product;
     private State activityState;
+    FragmentNutritionProductBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-        return createView(inflater, container, R.layout.fragment_nutrition_product);
+        binding = FragmentNutritionProductBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -165,10 +124,17 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         super.onViewCreated(view, savedInstanceState);
         photoReceiverHandler = new PhotoReceiverHandler(this);
         // use VERTICAL divider
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
-        nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        nutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.nutrimentsRecyclerView.getContext(), VERTICAL);
+        binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
+        binding.getNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
+        binding.newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
+
+        binding.nutriscoreLink.setOnClickListener(v -> nutriscoreLinkDisplay());
+        binding.imageViewNutrition.setOnClickListener(this::openFullScreen);
+        binding.calculateNutritionFacts.setOnClickListener(this::calculateNutritionFacts);
+        binding.getNutriscorePrompt.setOnClickListener(v -> onNutriscoreButtonClick());
+        binding.newAdd.setOnClickListener(v -> newNutritionImage());
+
         refreshView(getStateFromActivityIntent());
     }
 
@@ -186,12 +152,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         showPrompts();
 
         if (!showNutritionData) {
-            mImageNutrition.setVisibility(View.GONE);
-            addPhotoLabel.setVisibility(View.GONE);
-            imageGradeLayout.setVisibility(View.GONE);
-            calculateNutritionFacts.setVisibility(View.GONE);
-            nutrimentsCardView.setVisibility(View.GONE);
-            textNoNutritionData.setVisibility(View.VISIBLE);
+            binding.imageViewNutrition.setVisibility(View.GONE);
+            binding.addPhotoLabel.setVisibility(View.GONE);
+            binding.imageGradeLayout.setVisibility(View.GONE);
+            binding.calculateNutritionFacts.setVisibility(View.GONE);
+            binding.nutrimentsCardView.setVisibility(View.GONE);
+            binding.textNoNutritionData.setVisibility(View.VISIBLE);
         }
 
         List<NutrientLevelItem> levelItem = new ArrayList<>();
@@ -201,7 +167,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         Nutriments nutriments = product.getNutriments();
 
         if (nutriments != null && !nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
-            carbonFootprint.setVisibility(View.GONE);
+            binding.textCarbonFootprint.setVisibility(View.GONE);
         }
 
         NutrientLevels nutrientLevels = product.getNutrientLevels();
@@ -218,9 +184,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
-            nutrientLevelsCardView.setVisibility(View.GONE);
+            binding.nutrientLevelsCardView.setVisibility(View.GONE);
             levelItem.add(new NutrientLevelItem("", "", "", 0));
-            img.setVisibility(View.GONE);
+            binding.imageGrade.setVisibility(View.GONE);
         } else {
             // prefetch the uri
             customTabActivityHelper = new CustomTabActivityHelper();
@@ -271,11 +237,11 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         //checks the flags and accordingly sets the text of the prompt
         showPrompts();
 
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
+        binding.listNutrientLevels.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.listNutrientLevels.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
-        textNutriScoreInfo.setClickable(true);
-        textNutriScoreInfo.setMovementMethod(LinkMovementMethod.getInstance());
+        binding.textNutriScoreInfo.setClickable(true);
+        binding.textNutriScoreInfo.setMovementMethod(LinkMovementMethod.getInstance());
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
@@ -287,11 +253,11 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         };
         spannableStringBuilder.append(getString(R.string.txtNutriScoreInfo));
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textNutriScoreInfo.setText(spannableStringBuilder);
+        binding.textNutriScoreInfo.setText(spannableStringBuilder);
 
         if (TextUtils.isEmpty(product.getServingSize())) {
-            serving.setVisibility(View.GONE);
-            servingSizeCardView.setVisibility(View.GONE);
+            binding.textServingSize.setVisibility(View.GONE);
+            binding.servingSizeCardView.setVisibility(View.GONE);
         } else {
             String servingSize = product.getServingSize();
             if (settingsPreference.getString("volumeUnitPreference", "l").equals("oz")) {
@@ -300,9 +266,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                 servingSize = UnitUtils.getServingInL(servingSize);
             }
 
-            serving.setText(bold(getString(R.string.txtServingSize)));
-            serving.append(" ");
-            serving.append(servingSize);
+            binding.textServingSize.setText(bold(getString(R.string.txtServingSize)));
+            binding.textServingSize.append(" ");
+            binding.textServingSize.append(servingSize);
         }
 
         if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
@@ -317,38 +283,38 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         List<NutrimentListItem> nutrimentListItems = new ArrayList<>();
 
         final boolean inVolume = ProductUtils.isPerServingInLiter(product);
-        textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
+        binding.textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
         if (isNotBlank(product.getServingSize())) {
-            mTextPerPortion.setText(getString(R.string.nutriment_serving_size) + " " + product.getServingSize());
+            binding.textPerPortion.setText(getString(R.string.nutriment_serving_size) + " " + product.getServingSize());
         } else {
-            mTextPerPortion.setVisibility(View.GONE);
+            binding.textPerPortion.setVisibility(View.GONE);
         }
 
         if (isNotBlank(product.getImageNutritionUrl(langCode))) {
-            addPhotoLabel.setVisibility(View.GONE);
-            newAdd.setVisibility(View.VISIBLE);
+            binding.addPhotoLabel.setVisibility(View.GONE);
+            binding.newAdd.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.get()
                     .load(product.getImageNutritionUrl(langCode))
-                    .into(mImageNutrition);
+                    .into(binding.imageViewNutrition);
             } else {
 
-                mImageNutrition.setVisibility(View.GONE);
+                binding.imageViewNutrition.setVisibility(View.GONE);
             }
             Picasso.get()
                 .load(product.getImageNutritionUrl(langCode))
-                .into(mImageNutrition);
+                .into(binding.imageViewNutrition);
 
             mUrlImage = product.getImageNutritionUrl(langCode);
         }
 
         //useful when this fragment is used in offline saving
         if (mSendProduct != null && isNotBlank(mSendProduct.getImgupload_nutrition())) {
-            addPhotoLabel.setVisibility(View.GONE);
+            binding.addPhotoLabel.setVisibility(View.GONE);
             mUrlImage = mSendProduct.getImgupload_nutrition();
-            Picasso.get().load(FileUtils.LOCALE_FILE_SCHEME + mUrlImage).config(Bitmap.Config.RGB_565).into(mImageNutrition);
+            Picasso.get().load(FileUtils.LOCALE_FILE_SCHEME + mUrlImage).config(Bitmap.Config.RGB_565).into(binding.imageViewNutrition);
         }
 
         if (nutriments == null) {
@@ -357,13 +323,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        nutrimentsRecyclerView.setHasFixedSize(true);
+        binding.nutrimentsRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        nutrimentsRecyclerView.setLayoutManager(mLayoutManager);
+        binding.nutrimentsRecyclerView.setLayoutManager(mLayoutManager);
 
-        nutrimentsRecyclerView.setNestedScrollingEnabled(false);
+        binding.nutrimentsRecyclerView.setNestedScrollingEnabled(false);
 
         // Header hack
         nutrimentListItems.add(new NutrimentListItem(inVolume));
@@ -450,20 +416,20 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
 
         RecyclerView.Adapter adapter = new NutrimentsGridAdapter(nutrimentListItems);
-        nutrimentsRecyclerView.setAdapter(adapter);
+        binding.nutrimentsRecyclerView.setAdapter(adapter);
     }
 
     private void drawNutritionGrade() {
         int nutritionGrade = Utils.getImageGrade(product);
         if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
-            imageGradeLayout.setVisibility(View.VISIBLE);
-            img.setImageResource(nutritionGrade);
-            img.setOnClickListener(view1 -> {
+            binding.imageGradeLayout.setVisibility(View.VISIBLE);
+            binding.imageGrade.setImageResource(nutritionGrade);
+            binding.imageGrade.setOnClickListener(view1 -> {
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                 CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         } else {
-            imageGradeLayout.setVisibility(View.GONE);
+            binding.imageGradeLayout.setVisibility(View.GONE);
         }
     }
 
@@ -487,13 +453,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     private void showPrompts() {
         if (showNutritionPrompt || showCategoryPrompt) {
-            nutriscorePrompt.setVisibility(View.VISIBLE);
+            binding.getNutriscorePrompt.setVisibility(View.VISIBLE);
             if (showNutritionPrompt && showCategoryPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+                binding.getNutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
             } else if (showNutritionPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+                binding.getNutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
             } else if (showCategoryPrompt) {
-                nutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
+                binding.getNutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
         }
     }
@@ -514,7 +480,6 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         return items;
     }
 
-    @OnClick(R.id.nutriscoreLink)
     void nutriscoreLinkDisplay() {
         if (product.getNutritionGradeFr() != null) {
             CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
@@ -522,10 +487,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
     }
 
-    @OnClick(R.id.imageViewNutrition)
-    public void openFullScreen(View v) {
+    private void openFullScreen(View v) {
         if (mUrlImage != null) {
-            FullScreenActivityOpener.openForUrl(this, product, NUTRITION, mUrlImage, mImageNutrition);
+            FullScreenActivityOpener.openForUrl(this, product, NUTRITION, mUrlImage, binding.imageViewNutrition);
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(getActivity(), CAMERA) != PERMISSION_GRANTED) {
@@ -536,7 +500,6 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
     }
 
-    @OnClick(R.id.calculateNutritionFacts)
     public void calculateNutritionFacts(View v) {
         MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
             .title(R.string.calculate_nutrition_facts)
@@ -584,13 +547,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image, null);
-        addPhotoLabel.setVisibility(View.GONE);
+        binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
         Picasso.get()
             .load(photoFile)
             .fit()
-            .into(mImageNutrition);
+            .into(binding.imageViewNutrition);
     }
 
     @Override
@@ -607,8 +570,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
     }
 
-    @OnClick(R.id.newAdd)
-    public void newNutritionImage() {
+    private void newNutritionImage() {
         doChooseOrTakePhotos(getString(R.string.nutrition_facts_picture));
     }
 
@@ -623,16 +585,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     @Override
     public void onCustomTabsConnected() {
-        img.setClickable(true);
+        binding.imageGrade.setClickable(true);
     }
 
     @Override
     public void onCustomTabsDisconnected() {
-        img.setClickable(false);
+        binding.imageGrade.setClickable(false);
     }
 
-    @OnClick(R.id.get_nutriscore_prompt)
-    public void onNutriscoreButtonClick() {
+    private void onNutriscoreButtonClick() {
         if (BuildConfig.FLAVOR.equals("off")) {
             if (isUserNotLoggedIn()) {
                 startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE);

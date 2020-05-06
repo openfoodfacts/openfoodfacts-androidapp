@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
@@ -56,6 +57,7 @@ import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.Question;
@@ -66,6 +68,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.QuestionActionListeners;
 import openfoodfacts.github.scrachx.openfood.utils.QuestionDialog;
@@ -86,15 +89,6 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
-
-import static android.app.Activity.RESULT_OK;
-import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
@@ -175,8 +169,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         this.state = state;
         product = state.getProduct();
         presenter = new SummaryProductPresenter(product, this);
-        binding.textCategoryProduct.setText(bold(getString(R.string.txtCategories)));
-        binding.textLabelProduct.setText(bold(getString(R.string.txtLabels)));
+        binding.textCategoryProduct.setText(Utils.bold(getString(R.string.txtCategories)));
+        binding.textLabelProduct.setText(Utils.bold(getString(R.string.txtLabels)));
 
         //refresh visibility of UI components
         binding.textLabelProduct.setVisibility(View.VISIBLE);
@@ -197,7 +191,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadCategories();
         presenter.loadLabels();
         presenter.loadProductQuestion();
-        binding.textAdditiveProduct.setText(bold(getString(R.string.txtAdditives)));
+        binding.textAdditiveProduct.setText(Utils.bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
         presenter.loadAnalysisTags();
 
@@ -206,7 +200,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String langCode = LocaleHelper.getLanguage(getContext());
 
         final String imageUrl = product.getImageUrl(langCode);
-        if (isNotBlank(imageUrl)) {
+        if (StringUtils.isNotBlank(imageUrl)) {
             binding.addPhotoLabel.setVisibility(View.GONE);
 
             // Load Image if isLowBatteryMode is false
@@ -229,13 +223,13 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.textNameProduct.setVisibility(View.GONE);
         }
 
-        if (isNotBlank(product.getQuantity())) {
+        if (StringUtils.isNotBlank(product.getQuantity())) {
             binding.textQuantityProduct.setText(product.getQuantity());
         } else {
             binding.textQuantityProduct.setVisibility(View.GONE);
         }
 
-        if (isNotBlank(product.getBrands())) {
+        if (StringUtils.isNotBlank(product.getBrands())) {
             binding.textBrandProduct.setClickable(true);
             binding.textBrandProduct.setMovementMethod(LinkMovementMethod.getInstance());
             binding.textBrandProduct.setText("");
@@ -253,7 +247,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
             binding.textEmbCode.setMovementMethod(LinkMovementMethod.getInstance());
-            binding.textEmbCode.setText(bold(getString(R.string.txtEMB)));
+            binding.textEmbCode.setText(Utils.bold(getString(R.string.txtEMB)));
             binding.textEmbCode.append(" ");
 
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
@@ -452,10 +446,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showAdditivesState(String state) {
         getActivity().runOnUiThread(() -> {
-            if (LOADING.equals(state)) {
+            if (ProductInfoState.LOADING.equals(state)) {
                 binding.textAdditiveProduct.append(getString(R.string.txtLoading));
                 binding.textAdditiveProduct.setVisibility(View.VISIBLE);
-            } else if (EMPTY.equals(state)) {
+            } else if (ProductInfoState.EMPTY.equals(state)) {
                 binding.textAdditiveProduct.setVisibility(View.GONE);
             }
         });
@@ -582,7 +576,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showLabels(List<LabelName> labels) {
-        binding.textLabelProduct.setText(bold(getString(R.string.txtLabels)));
+        binding.textLabelProduct.setText(Utils.bold(getString(R.string.txtLabels)));
         binding.textLabelProduct.setClickable(true);
         binding.textLabelProduct.setMovementMethod(LinkMovementMethod.getInstance());
         binding.textLabelProduct.append(" ");
@@ -598,11 +592,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showCategoriesState(String state) {
         getActivity().runOnUiThread(() -> {
-            if (LOADING.equals(state)) {
+            if (ProductInfoState.LOADING.equals(state)) {
                 if (getContext() != null) {
                     binding.textCategoryProduct.append(getString(R.string.txtLoading));
                 }
-            } else if (EMPTY.equals(state)) {
+            } else if (ProductInfoState.EMPTY.equals(state)) {
                 binding.textCategoryProduct.setVisibility(View.GONE);
             }
         });
@@ -611,9 +605,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showLabelsState(String state) {
         getActivity().runOnUiThread(() -> {
-            if (LOADING.equals(state)) {
+            if (ProductInfoState.LOADING.equals(state)) {
                 binding.textLabelProduct.append(getString(R.string.txtLoading));
-            } else if (EMPTY.equals(state)) {
+            } else if (ProductInfoState.EMPTY.equals(state)) {
                 binding.textLabelProduct.setVisibility(View.GONE);
             }
         });
@@ -667,7 +661,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         spannableStringBuilder.append(label.getName());
 
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
     }
 
@@ -775,7 +769,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void openFullScreen() {
         if (mUrlImage != null) {
-            FullScreenActivityOpener.openForUrl(this, product, FRONT, mUrlImage, binding.imageViewFront);
+            FullScreenActivityOpener.openForUrl(this, product, ProductImageField.FRONT, mUrlImage, binding.imageViewFront);
         } else {
             // take a picture
             newFrontImage();
@@ -789,7 +783,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void loadPhoto(File photoFile) {
-        ProductImage image = new ProductImage(barcode, FRONT, photoFile);
+        ProductImage image = new ProductImage(barcode, ProductImageField.FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image, this);
         binding.addPhotoLabel.setVisibility(View.GONE);
@@ -805,14 +799,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
-        boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false));
+        boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false));
         if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             shouldRefresh = true;
         }
         if (shouldRefresh && getActivity() instanceof ProductActivity) {
             ((ProductActivity) getActivity()).onRefresh();
         }
-        if (resultCode == RESULT_OK) {
+        if (resultCode == Activity.RESULT_OK) {
             if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && isUserLoggedIn()) {
                 editProduct();
             }
@@ -829,7 +823,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (!sendOther) {
             loadPhoto(new File(resultUri.getPath()));
         } else {
-            ProductImage image = new ProductImage(barcode, OTHER, newPhotoFile);
+            ProductImage image = new ProductImage(barcode, ProductImageField.OTHER, newPhotoFile);
             image.setFilePath(resultUri.getPath());
             showOtherImageProgress();
             api.postImg(getContext(), image, this);
