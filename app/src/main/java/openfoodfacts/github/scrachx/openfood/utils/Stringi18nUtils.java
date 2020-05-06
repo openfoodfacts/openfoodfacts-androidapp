@@ -3,32 +3,21 @@ package openfoodfacts.github.scrachx.openfood.utils;
 import java.text.Collator;
 import java.text.Normalizer;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Locale;
 
 /**
  * Created by Raymond Chenon on 05/05/20.
- * Compare the strings ignoring the accents on letters ([a-z][A-Z])
+ * String Internationalization (i18n)
  */
-public class StringComparator implements Comparator<String> {
-
-    public static <T> void sort(T[] arrays) {
+public class Stringi18nUtils {
+    /**
+     * Compare the strings ignoring the accents on letters ([a-z][A-Z])
+     * Sort string by ignoring accents on letters. The sorted strings will keep their accents.
+     *
+     * @param arrays
+     */
+    public static void sortAlphabetically(String[] arrays) {
         Arrays.sort(arrays, Collator.getInstance(Locale.US));
-    }
-
-    @Override
-    public int compare(String obj1, String obj2) {
-
-        if (obj1 == obj2) {
-            return 0;
-        }
-        if (obj1 == null) {
-            return -1;
-        }
-        if (obj2 == null) {
-            return 1;
-        }
-        return removeAccents(obj1).compareTo(removeAccents(obj2));
     }
 
     /**

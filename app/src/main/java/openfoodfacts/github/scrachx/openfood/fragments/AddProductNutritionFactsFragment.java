@@ -42,14 +42,11 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
-import java.text.Collator;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -70,7 +67,7 @@ import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.QuantityParserUtil;
-import openfoodfacts.github.scrachx.openfood.utils.StringComparator;
+import openfoodfacts.github.scrachx.openfood.utils.Stringi18nUtils;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.utils.ValueState;
@@ -759,8 +756,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     @OnClick(R.id.btn_add_a_nutrient)
     void addNutrient() {
         String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
-        // sort string by ignoring accents on letters. The sorted strings will keep their accents.
-        Arrays.sort(nutrients, Collator.getInstance(Locale.US));
+        Stringi18nUtils.sortAlphabetically(nutrients);
 
         new MaterialDialog.Builder(activity)
             .title(R.string.choose_nutrient)

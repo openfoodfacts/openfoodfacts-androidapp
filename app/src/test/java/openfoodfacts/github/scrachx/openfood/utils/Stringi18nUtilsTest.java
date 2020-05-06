@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class StringComparatorTest {
+public class Stringi18nUtilsTest {
     @Test
     public void testSortWithoutComparator() {
         String[] arr = new String[]{"Ácido araquidónico", "Ácido", "Zinc", "Almidón", "Acido"};
@@ -19,7 +19,7 @@ public class StringComparatorTest {
     public void testSpecialCharacterSort_ES() {
         String[] arr = new String[]{"Ácido araquidónico", "Ácido", "Zinc", "Almidón", "Acido"};
 
-        StringComparator.sort(arr);
+        Stringi18nUtils.sortAlphabetically(arr);
 
         String[] expectedResult = new String[]{"Acido", "Ácido", "Ácido araquidónico", "Almidón", "Zinc"};
         Assert.assertArrayEquals(expectedResult, arr);
@@ -29,7 +29,7 @@ public class StringComparatorTest {
     public void testSpecialCharacterSort_FR() {
         String[] arr = new String[]{"oléique", "oleique", "acide", "Acide"};
 
-        StringComparator.sort(arr);
+        Stringi18nUtils.sortAlphabetically(arr);
 
         String[] expectedResult = new String[]{"acide", "Acide", "oleique", "oléique"};
         Assert.assertArrayEquals(expectedResult, arr);
@@ -39,7 +39,7 @@ public class StringComparatorTest {
     public void testSpecialCharacterSort_FR2() {
         String[] arr = new String[]{"Molybdène", "manganèse", "molybdene", "Manganèse"};
 
-        StringComparator.sort(arr);
+        Stringi18nUtils.sortAlphabetically(arr);
 
         // upper case affects the order
         String[] expectedResult = new String[]{"manganèse", "Manganèse", "molybdene", "Molybdène"};
@@ -50,7 +50,7 @@ public class StringComparatorTest {
     public void testSpecialCharacterSort_RU() {
         String[] arr = new String[]{"Кофеин", "Каприновая кислота", "Кальций"};
 
-        StringComparator.sort(arr);
+        Stringi18nUtils.sortAlphabetically(arr);
 
         String[] expectedResult = new String[]{"Кальций", "Каприновая кислота", "Кофеин"};
         Assert.assertArrayEquals(expectedResult, arr);
@@ -59,7 +59,7 @@ public class StringComparatorTest {
     @Test
     public void testRemoveDiacriticalMarks() {
         String stringWithAccents = "Ácido araquidónico";
-        String transformed = StringComparator.removeAccents(stringWithAccents);
+        String transformed = Stringi18nUtils.removeAccents(stringWithAccents);
         Assert.assertEquals("Acido araquidonico", transformed);
     }
 }
