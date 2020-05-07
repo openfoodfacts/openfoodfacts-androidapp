@@ -1,640 +1,647 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swipeRefresh"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollView"
+    <data>
+
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="fill_vertical"
-        android:clipToPadding="false"
-        android:isScrollContainer="false">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/nav_bar_height">
+            android:layout_height="match_parent"
+            android:layout_gravity="fill_vertical"
+            android:clipToPadding="false"
+            android:isScrollContainer="false">
 
             <LinearLayout
-                android:id="@+id/product_allergen_alert_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange_800"
-                android:visibility="gone">
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/nav_bar_height">
 
-                <TextView
-                    android:id="@+id/product_allergen_alert_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/spacing_large"
-                    android:text="@string/product_incomplete_message"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/product_header_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardElevation="3dp">
-
-                <RelativeLayout
-                    android:id="@+id/product_header_layout"
+                <LinearLayout
+                    android:id="@+id/product_allergen_alert_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_normal"
-                    android:paddingStart="@dimen/padding_large"
-                    android:paddingLeft="@dimen/padding_large"
-                    android:paddingEnd="@dimen/padding_large"
-                    android:paddingRight="@dimen/padding_large">
+                    android:background="@color/orange_800"
+                    android:visibility="gone">
 
-                    <LinearLayout
-                        android:id="@+id/header_product_details_layout"
+                    <TextView
+                        android:id="@+id/product_allergen_alert_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/spacing_large"
+                        android:text="@string/product_incomplete_message"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/product_header_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="3dp">
+
+                    <RelativeLayout
+                        android:id="@+id/product_header_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/front_picture_layout"
-                        android:layout_alignBottom="@+id/front_picture_layout"
-                        android:layout_centerHorizontal="true"
+                        android:padding="@dimen/padding_normal"
+                        android:paddingStart="@dimen/padding_large"
+                        android:paddingLeft="@dimen/padding_large"
+                        android:paddingEnd="@dimen/padding_large"
+                        android:paddingRight="@dimen/padding_large">
 
-                        android:layout_marginEnd="@dimen/spacing_small"
-                        android:layout_marginRight="@dimen/spacing_small"
-                        android:layout_toStartOf="@id/front_picture_layout"
-                        android:layout_toLeftOf="@id/front_picture_layout"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/header_product_details_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/front_picture_layout"
+                            android:layout_alignBottom="@+id/front_picture_layout"
+                            android:layout_centerHorizontal="true"
 
-                        <TextView
-                            android:id="@+id/textNameProduct"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:layout_marginRight="@dimen/spacing_small"
+                            android:layout_toStartOf="@id/front_picture_layout"
+                            android:layout_toLeftOf="@id/front_picture_layout"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textNameProduct"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_tiny"
+                                android:layout_marginBottom="@dimen/spacing_tiny"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textIsSelectable="true"
+                                android:textStyle="bold"
+                                tools:text="Product name" />
+
+                            <TextView
+                                android:id="@+id/textBrandProduct"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_tiny"
+                                android:textColorLink="@color/tag_link"
+                                android:textIsSelectable="true"
+                                android:textSize="@dimen/font_normal"
+                                tools:text="Brands: ..." />
+
+                            <TextView
+                                android:id="@+id/textQuantityProduct"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing_tiny"
+                                android:textSize="@dimen/font_normal"
+                                tools:text="Quantity" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/front_picture_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_tiny"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                            android:textIsSelectable="true"
-                            android:textStyle="bold"
-                            tools:text="Product name" />
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentRight="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:orientation="vertical">
+
+                            <ImageButton
+
+                                android:id="@+id/imageViewFront"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/spacing_tiny"
+                                android:adjustViewBounds="true"
+                                android:background="?android:selectableItemBackground"
+                                android:contentDescription="@string/product__front_image"
+                                android:maxHeight="120dp"
+                                android:scaleType="fitCenter"
+                                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+                            <TextView
+                                android:id="@+id/addPhotoLabel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:maxWidth="140dp"
+                                android:text="@string/take_picture_front"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/action_buttons_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/action_compare_button_layout"
+                        style="@style/ActionButtonLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/action_add_to_list_button_layout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <ImageButton
+                            android:id="@+id/action_compare_button"
+                            style="@style/ActionButton"
+                            app:srcCompat="@drawable/ic_compare_arrows_circle_24dp" />
 
                         <TextView
-                            android:id="@+id/textBrandProduct"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Brands: ..." />
-
-                        <TextView
-                            android:id="@+id/textQuantityProduct"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/spacing_tiny"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Quantity" />
+                            android:id="@+id/action_compare_button_label"
+                            style="@style/ActionButtonLabel"
+                            android:text="@string/product_summary_action_compare_button_label" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/front_picture_layout"
+                        android:id="@+id/action_add_to_list_button_layout"
+                        style="@style/ActionButtonLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/action_edit_button_layout"
+                        app:layout_constraintStart_toEndOf="@id/action_compare_button_layout"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageButton
+                            android:id="@+id/action_add_to_list_button"
+                            style="@style/ActionButton"
+                            app:srcCompat="@drawable/ic_bookmark_circle_24dp" />
+
+                        <TextView
+                            android:id="@+id/action_add_to_list_button_label"
+                            style="@style/ActionButtonLabel"
+                            android:text="@string/product_summary_action_add_to_list_button_label" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/action_edit_button_layout"
+                        style="@style/ActionButtonLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/action_share_button_layout"
+                        app:layout_constraintStart_toEndOf="@id/action_add_to_list_button_layout"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <ImageButton
+                            android:id="@+id/action_edit_button"
+                            style="@style/ActionButton"
+                            app:srcCompat="@drawable/ic_edit_circle_24dp" />
+
+                        <TextView
+                            android:id="@+id/action_edit_button_label"
+                            style="@style/ActionButtonLabel"
+                            android:text="@string/product_summary_action_edit_button_label" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/action_share_button_layout"
+                        style="@style/ActionButtonLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/action_edit_button_layout"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <ImageButton
+                            android:id="@+id/action_share_button"
+                            style="@style/ActionButton"
+                            app:srcCompat="@drawable/ic_share_circle_24dp" />
+
+                        <TextView
+                            android:id="@+id/action_share_button_label"
+                            style="@style/ActionButtonLabel"
+                            android:text="@string/product_summary_action_share_button_label" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View style="@style/HorizontalLineSeparator" />
+
+                <LinearLayout
+                    android:id="@+id/analysisContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <openfoodfacts.github.scrachx.openfood.views.TipBox
+                        android:id="@+id/tipBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:arrowAlignment="start"
+                        app:arrowMarginStart="0dp"
+                        app:identifier="ingredient_analysis_tip_box"
+                        app:message="@string/ingredient_analysis_tip" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/analysis_tags"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="@dimen/spacing_large"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:background="@null"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    <View
+                        android:id="@+id/analysisSeparator"
+                        style="@style/HorizontalLineSeparator" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/scores_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/grades_wrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageGrade"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:adjustViewBounds="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:maxHeight="90dp"
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/nnc_a"
+                            tools:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/nova_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="80dp"
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_nova_group_1"
+                            tools:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/co2_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:scaleType="fitCenter"
+                            tools:srcCompat="@drawable/ic_co2_high_24dp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/add_nutriscore_prompt"
+                        style="@style/ButtonBorder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"
+                        tools:text="@string/add_nutrition_facts_for_nutriscore"
+                        tools:visibility="visible" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View style="@style/HorizontalLineSeparator" />
+
+                <RelativeLayout
+                    android:id="@+id/product_question_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_dark"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/spacing_tiny"
+                    android:paddingBottom="@dimen/spacing_tiny"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/product_question_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/spacing_normal"
+                        app:srcCompat="@drawable/ic_forum_white_24dp" />
+
+                    <LinearLayout
+                        android:id="@+id/bottom_sheet_linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/product_question_icon"
+                        android:layout_toRightOf="@id/product_question_icon"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/product_question_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/spacing_small"
+                            android:paddingTop="@dimen/spacing_small"
+                            android:paddingRight="@dimen/spacing_small"
+                            android:textColor="@android:color/white"
+                            tools:text="Does the product belong to this category?" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="@dimen/spacing_small"
+                            android:paddingLeft="@dimen/spacing_small"
+                            android:paddingEnd="@dimen/spacing_tiny"
+                            android:paddingRight="@dimen/spacing_tiny"
+                            android:paddingBottom="@dimen/spacing_small"
+                            android:text="@string/product_question_prompt"
+                            android:textColor="@color/grey_300" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/product_question_dismiss"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-
                         android:layout_alignParentRight="true"
-                        android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
+                        android:contentDescription="@string/close_button"
+                        android:padding="@dimen/spacing_normal"
+                        app:srcCompat="@drawable/ic_clear_white_24dp" />
+
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvNutritionLights"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone"
+                    app:cardElevation="@dimen/card_elevation"
+                    tools:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ImageButton
-
-                            android:id="@+id/imageViewFront"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="@dimen/spacing_tiny"
-                            android:adjustViewBounds="true"
-                            android:background="?android:selectableItemBackground"
-                            android:contentDescription="@string/product__front_image"
-                            android:maxHeight="120dp"
-                            android:scaleType="fitCenter"
-                            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
-
                         <TextView
-                            android:id="@+id/addPhotoLabel"
-                            android:layout_width="match_parent"
+                            android:id="@+id/textNutrientTxt"
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:maxWidth="140dp"
-                            android:text="@string/take_picture_front"
+                            android:layout_marginLeft="@dimen/spacing_normal"
+                            android:layout_marginTop="@dimen/spacing_tiny"
+                            android:layout_marginRight="@dimen/spacing_normal"
+                            android:padding="@dimen/spacing_small"
+                            android:text="@string/txtNutrientLevel100g"
+                            android:textIsSelectable="true"
+                            android:textSize="@dimen/font_normal"
                             android:textStyle="bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/listNutrientLevels"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="@dimen/spacing_normal"
+                            android:layout_marginRight="@dimen/spacing_normal"
+                            android:layout_marginBottom="@dimen/spacing_tiny"
+                            android:divider="@color/white"
+                            android:dividerHeight="0dp"
+                            android:padding="@dimen/spacing_small"
+                            android:paddingBottom="60dp"
+                            android:scrollbars="vertical"
+                            tools:listitem="@layout/nutrient_lvl_list_item" />
 
                     </LinearLayout>
 
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/action_buttons_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="8dp">
-
-                <LinearLayout
-                    android:id="@+id/action_compare_button_layout"
-                    style="@style/ActionButtonLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/action_add_to_list_button_layout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0">
-
-                    <ImageButton
-                        android:id="@+id/action_compare_button"
-                        style="@style/ActionButton"
-                        app:srcCompat="@drawable/ic_compare_arrows_circle_24dp" />
-
-                    <TextView
-                        android:id="@+id/action_compare_button_label"
-                        style="@style/ActionButtonLabel"
-                        android:text="@string/product_summary_action_compare_button_label" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/action_add_to_list_button_layout"
-                    style="@style/ActionButtonLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/action_edit_button_layout"
-                    app:layout_constraintStart_toEndOf="@id/action_compare_button_layout"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageButton
-                        android:id="@+id/action_add_to_list_button"
-                        style="@style/ActionButton"
-                        app:srcCompat="@drawable/ic_bookmark_circle_24dp" />
-
-                    <TextView
-                        android:id="@+id/action_add_to_list_button_label"
-                        style="@style/ActionButtonLabel"
-                        android:text="@string/product_summary_action_add_to_list_button_label" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/action_edit_button_layout"
-                    style="@style/ActionButtonLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/action_share_button_layout"
-                    app:layout_constraintStart_toEndOf="@id/action_add_to_list_button_layout"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0">
-
-                    <ImageButton
-                        android:id="@+id/action_edit_button"
-                        style="@style/ActionButton"
-                        app:srcCompat="@drawable/ic_edit_circle_24dp" />
-
-                    <TextView
-                        android:id="@+id/action_edit_button_label"
-                        style="@style/ActionButtonLabel"
-                        android:text="@string/product_summary_action_edit_button_label" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/action_share_button_layout"
-                    style="@style/ActionButtonLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constrainedWidth="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/action_edit_button_layout"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0">
-
-                    <ImageButton
-                        android:id="@+id/action_share_button"
-                        style="@style/ActionButton"
-                        app:srcCompat="@drawable/ic_share_circle_24dp" />
-
-                    <TextView
-                        android:id="@+id/action_share_button_label"
-                        style="@style/ActionButtonLabel"
-                        android:text="@string/product_summary_action_share_button_label" />
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View style="@style/HorizontalLineSeparator" />
-
-            <LinearLayout
-                android:id="@+id/analysisContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:visibility="gone"
-                tools:visibility="visible">
-
-                <openfoodfacts.github.scrachx.openfood.views.TipBox
-                    android:id="@+id/tipBox"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvProductDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:arrowAlignment="start"
-                    app:arrowMarginStart="0dp"
-                    app:identifier="ingredient_analysis_tip_box"
-                    app:message="@string/ingredient_analysis_tip" />
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    app:cardElevation="@dimen/card_elevation">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/analysis_tags"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="@dimen/spacing_large"
-                    android:layout_marginLeft="@dimen/spacing_large"
-                    android:layout_marginTop="@dimen/spacing_tiny"
-                    android:layout_marginBottom="@dimen/spacing_tiny"
-                    android:background="@null"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    <LinearLayout
+                        android:id="@+id/llProductDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:orientation="vertical">
 
-                <View
-                    android:id="@+id/analysisSeparator"
-                    style="@style/HorizontalLineSeparator" />
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/textAdditiveProduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_too_short"
+                            android:textColorLink="@color/tag_link"
+                            android:textIsSelectable="true"
+                            android:textSize="@dimen/font_normal"
+                            tools:text="Additives: Test1, Test2, Test3, Test4, Test5, Test6, Test7, Test8, Test9" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/scores_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="8dp">
+                        <TextView
+                            android:id="@+id/textCategoryAlcoholAlert"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_too_short"
+                            android:textSize="@dimen/font_normal"
+                            android:visibility="gone"
+                            tools:visibility="gone" />
+
+                        <LinearLayout
+                            android:id="@+id/categories_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/categories_icon"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:contentDescription="@string/icon_categories"
+                                android:padding="4dp"
+                                android:scaleType="fitCenter"
+                                app:layout_constraintEnd_toStartOf="@+id/categories_text"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/categories_text"
+                                app:srcCompat="@drawable/ic_label" />
+
+                            <TextView
+                                android:id="@+id/categories_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:padding="@dimen/padding_too_short"
+                                android:textColorLink="@color/tag_link"
+                                android:textIsSelectable="true"
+                                android:textSize="@dimen/font_normal"
+                                tools:text="Categories: ..." />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/labels_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/labels_icon"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:contentDescription="@string/icon_label"
+                                android:minWidth="30dp"
+                                android:scaleType="fitCenter"
+                                app:layout_constraintEnd_toStartOf="@+id/labels_text"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/labels_text"
+                                app:srcCompat="@drawable/ic_award" />
+
+                            <TextView
+                                android:id="@+id/labels_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:padding="@dimen/padding_too_short"
+                                android:textColorLink="@color/tag_link"
+                                android:textIsSelectable="true"
+                                android:textSize="@dimen/font_normal"
+                                tools:text="Labels: Test1, Test2, Test3, Test4, Test5, Tes6, Test7, Test8, Test9" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/emb_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:id="@+id/emb_icon"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+
+                                android:contentDescription="@string/icon_emb"
+                                android:minWidth="30dp"
+                                android:scaleType="fitCenter"
+                                app:layout_constraintEnd_toStartOf="@+id/emb_text"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/emb_text"
+                                app:srcCompat="@drawable/ic_map" />
+
+                            <TextView
+                                android:id="@+id/emb_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="fill"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:padding="@dimen/padding_too_short"
+                                android:textColorLink="@color/tag_link"
+                                android:textIsSelectable="true"
+                                android:textSize="@dimen/font_normal"
+                                tools:text="Packager codes: ..." />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
-                    android:id="@+id/grades_wrapper"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/imageGrade"
+                    <ProgressBar
+                        android:id="@+id/uploadingImageProgress"
                         android:layout_width="wrap_content"
-                        android:layout_height="80dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:adjustViewBounds="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:maxHeight="90dp"
-                        android:scaleType="fitCenter"
-                        tools:src="@drawable/nnc_a"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:layout_marginBottom="@dimen/spacing_small"
+                        android:visibility="gone"
                         tools:visibility="visible" />
 
-                    <ImageView
-                        android:id="@+id/nova_group"
+                    <TextView
+                        android:id="@+id/uploadingImageProgressText"
                         android:layout_width="wrap_content"
-                        android:layout_height="80dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:adjustViewBounds="true"
-                        android:maxHeight="80dp"
-                        android:scaleType="fitCenter"
-                        tools:src="@drawable/ic_nova_group_1"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:layout_marginBottom="@dimen/spacing_small"
+                        android:gravity="center"
+                        android:text="@string/toastSending"
+                        android:visibility="gone"
                         tools:visibility="visible" />
 
-                    <ImageView
-                        android:id="@+id/co2_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:adjustViewBounds="true"
-                        android:maxHeight="60dp"
-                        android:scaleType="fitCenter"
-                        tools:srcCompat="@drawable/ic_co2_high_24dp" />
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/add_nutriscore_prompt"
+                    android:id="@+id/buttonMorePictures"
                     style="@style/ButtonBorder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/spacing_normal"
-                    android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toStartOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"
-                    tools:text="@string/add_nutrition_facts_for_nutriscore"
-                    tools:visibility="visible" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View style="@style/HorizontalLineSeparator" />
-
-            <RelativeLayout
-                android:id="@+id/product_question_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/primary_dark"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/spacing_tiny"
-                android:paddingBottom="@dimen/spacing_tiny"
-                android:visibility="gone"
-                tools:visibility="visible">
-
-                <ImageView
-                    android:id="@+id/product_question_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="@dimen/spacing_normal"
-                    app:srcCompat="@drawable/ic_forum_white_24dp" />
-
-                <LinearLayout
-                    android:id="@+id/bottom_sheet_linear_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/product_question_icon"
-                    android:layout_toRightOf="@id/product_question_icon"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/product_question_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/spacing_small"
-                        android:paddingTop="@dimen/spacing_small"
-                        android:paddingRight="@dimen/spacing_small"
-                        android:textColor="@android:color/white"
-                        tools:text="Does the product belong to this category?" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/spacing_small"
-                        android:paddingLeft="@dimen/spacing_small"
-                        android:paddingEnd="@dimen/spacing_tiny"
-                        android:paddingRight="@dimen/spacing_tiny"
-                        android:paddingBottom="@dimen/spacing_small"
-                        android:text="@string/product_question_prompt"
-                        android:textColor="@color/grey_300" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/product_question_dismiss"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:contentDescription="@string/close_button"
-                    android:padding="@dimen/spacing_normal"
-                    app:srcCompat="@drawable/ic_clear_white_24dp" />
-
-            </RelativeLayout>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvNutritionLights"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:visibility="gone"
-                app:cardElevation="@dimen/card_elevation"
-                tools:visibility="gone">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textNutrientTxt"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginTop="@dimen/spacing_tiny"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:padding="@dimen/spacing_small"
-                        android:text="@string/txtNutrientLevel100g"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal"
-                        android:textStyle="bold" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/listNutrientLevels"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_marginLeft="@dimen/spacing_normal"
-                        android:layout_marginRight="@dimen/spacing_normal"
-                        android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:divider="@color/white"
-                        android:dividerHeight="0dp"
-                        android:padding="@dimen/spacing_small"
-                        android:paddingBottom="60dp"
-                        android:scrollbars="vertical"
-                        tools:listitem="@layout/nutrient_lvl_list_item" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvProductDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginBottom="@dimen/spacing_small"
-                app:cardElevation="@dimen/card_elevation">
-
-                <LinearLayout
-                    android:id="@+id/llProductDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textAdditiveProduct"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_too_short"
-                        android:textColorLink="@color/tag_link"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal"
-                        tools:text="Additives: Test1, Test2, Test3, Test4, Test5, Test6, Test7, Test8, Test9" />
-
-                    <TextView
-                        android:id="@+id/textCategoryAlcoholAlert"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_too_short"
-                        android:textSize="@dimen/font_normal"
-                        android:visibility="gone"
-                        tools:visibility="gone" />
-
-                    <LinearLayout
-                        android:id="@+id/categories_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/categories_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:contentDescription="@string/icon_categories"
-                            android:padding="4dp"
-                            android:scaleType="fitCenter"
-                            app:layout_constraintEnd_toStartOf="@+id/categories_text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/categories_text"
-                            app:srcCompat="@drawable/ic_label" />
-
-                        <TextView
-                            android:id="@+id/categories_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:padding="@dimen/padding_too_short"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Categories: ..." />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/labels_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/labels_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:contentDescription="@string/icon_label"
-                            android:minWidth="30dp"
-                            android:scaleType="fitCenter"
-                            app:layout_constraintEnd_toStartOf="@+id/labels_text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/labels_text"
-                            app:srcCompat="@drawable/ic_award" />
-
-                        <TextView
-                            android:id="@+id/labels_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:padding="@dimen/padding_too_short"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Labels: Test1, Test2, Test3, Test4, Test5, Tes6, Test7, Test8, Test9" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/emb_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-                            android:id="@+id/emb_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-
-                            android:contentDescription="@string/icon_emb"
-                            android:minWidth="30dp"
-                            android:scaleType="fitCenter"
-                            app:layout_constraintEnd_toStartOf="@+id/emb_text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/emb_text"
-                            app:srcCompat="@drawable/ic_map" />
-
-                        <TextView
-                            android:id="@+id/emb_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="fill"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:padding="@dimen/padding_too_short"
-                            android:textColorLink="@color/tag_link"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_normal"
-                            tools:text="Packager codes: ..." />
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ProgressBar
-                    android:id="@+id/uploadingImageProgress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:layout_marginBottom="@dimen/spacing_small"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/uploadingImageProgressText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:layout_marginBottom="@dimen/spacing_small"
-                    android:gravity="center"
-                    android:text="@string/toastSending"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
+                    android:text="@string/take_more_pictures" />
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/buttonMorePictures"
-                style="@style/ButtonBorder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/spacing_normal"
-                android:text="@string/take_more_pictures" />
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>
