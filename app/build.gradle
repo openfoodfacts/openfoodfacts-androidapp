@@ -47,9 +47,6 @@ android {
     dataBinding {
         enabled true
     }
-    viewBinding {
-        enabled true
-    }
 
     flavorDimensions "versionCode"
     productFlavors {

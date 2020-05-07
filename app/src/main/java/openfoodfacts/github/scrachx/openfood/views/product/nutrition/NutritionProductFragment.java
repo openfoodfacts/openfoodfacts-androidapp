@@ -110,7 +110,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     private boolean showNutritionData = true;
     private Product product;
     private State activityState;
-    FragmentNutritionProductBinding binding;
+    private FragmentNutritionProductBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
