@@ -53,6 +53,12 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
+    @Override
     public void navigateToMainActivity() {
         EasyImage.configuration(this)
             .setImagesFolderName("OFF_Images")

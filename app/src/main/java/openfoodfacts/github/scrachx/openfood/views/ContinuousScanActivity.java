@@ -481,6 +481,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        binding = null;
         if (disposable != null && !disposable.isDisposed()) {
             disposable.dispose();
         }

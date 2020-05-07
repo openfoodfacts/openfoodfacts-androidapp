@@ -31,6 +31,13 @@ public class WelcomeActivity extends AppCompatActivity {
     private int[] layouts;
     private PrefManager prefManager;
     private boolean lastPage = false;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
     private int currentState;
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override

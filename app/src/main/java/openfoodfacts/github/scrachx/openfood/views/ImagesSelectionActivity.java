@@ -131,6 +131,12 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         setResult(RESULT_CANCELED);
         finish();
