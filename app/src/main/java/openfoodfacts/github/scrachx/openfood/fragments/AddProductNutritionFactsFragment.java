@@ -42,11 +42,13 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
+import java.text.Collator;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -67,6 +69,7 @@ import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.QuantityParserUtil;
+import openfoodfacts.github.scrachx.openfood.utils.Stringi18nUtils;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.utils.ValueState;
@@ -754,9 +757,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     @OnClick(R.id.btn_add_a_nutrient)
     void addNutrient() {
+        String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
+        Stringi18nUtils.sortAlphabetically(nutrients, Collator.getInstance(Locale.getDefault()));
+
         new MaterialDialog.Builder(activity)
             .title(R.string.choose_nutrient)
-            .items(R.array.nutrients_array)
+            .items(nutrients)
             .itemsCallback((dialog, itemView, position, text) -> {
                 if (!index.contains(position)) {
                     index.add(position);
@@ -764,7 +770,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                     allEditViews.add(textView);
                     addValidListener(textView);
                 } else {
-                    String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
                     Toast.makeText(activity, getString(R.string.nutrient_already_added, nutrients[position]), Toast.LENGTH_SHORT).show();
                 }
             })
