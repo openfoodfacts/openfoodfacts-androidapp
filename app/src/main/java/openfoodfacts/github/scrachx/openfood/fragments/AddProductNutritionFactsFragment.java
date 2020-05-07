@@ -106,6 +106,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
