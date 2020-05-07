@@ -6,19 +6,17 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.BindView;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivitySplashBinding;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SplashActivity extends BaseActivity implements ISplashPresenter.View {
-    @BindView(R.id.tagline)
-    TextView tagline;
-
+    private ActivitySplashBinding binding;
     private ISplashPresenter.Actions presenter;
     private String[] taglines;
     /*
@@ -34,8 +32,8 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
             if (i > taglines.length - 1) {
                 i = 0;
             }
-            tagline.setText(taglines[i]);
-            tagline.postDelayed(changeTagline, 1500);
+            binding.tagline.setText(taglines[i]);
+            binding.tagline.postDelayed(changeTagline, 1500);
         }
     };
 
@@ -45,9 +43,10 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        setContentView(R.layout.activity_splash);
+        binding = ActivitySplashBinding.inflate(getLayoutInflater());
+
         taglines = getResources().getStringArray(R.array.taglines_array);
-        tagline.post(changeTagline);
+        binding.tagline.post(changeTagline);
 
         presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this, this);
         presenter.refreshData();
