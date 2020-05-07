@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.squareup.picasso.Picasso;
@@ -46,7 +47,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         OpenFoodAPIClient openFoodAPIClient = new OpenFoodAPIClient(this);
-        binding = ActivityProductImagesListBinding.inflate(getLayoutInflater());
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_product_images_list);
         binding.btnChooseImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_photo_library, 0, 0, 0);
 
         Intent intent = getIntent();

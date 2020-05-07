@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -526,7 +527,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         client = new OpenFoodAPIClient(this);
         super.onCreate(savedInstanceState);
 
-        binding = ActivityContinuousScanBinding.inflate(getLayoutInflater());
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_continuous_scan);
 
         binding.toggleFlash.setOnClickListener(v -> toggleFlash());
         binding.buttonMore.setOnClickListener(v -> moreSettings());
