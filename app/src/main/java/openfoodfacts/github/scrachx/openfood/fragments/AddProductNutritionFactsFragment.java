@@ -42,11 +42,13 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
+import java.text.Collator;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -756,7 +758,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     @OnClick(R.id.btn_add_a_nutrient)
     void addNutrient() {
         String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
-        Stringi18nUtils.sortAlphabetically(nutrients);
+        Stringi18nUtils.sortAlphabetically(nutrients, Collator.getInstance(Locale.getDefault()));
 
         new MaterialDialog.Builder(activity)
             .title(R.string.choose_nutrient)
