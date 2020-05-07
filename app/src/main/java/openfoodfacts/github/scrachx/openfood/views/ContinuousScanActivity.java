@@ -497,7 +497,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationLayout.bottomNavigation, R.id.scan_bottom_nav);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation, R.id.scan_bottom_nav);
         if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume();
         }
@@ -603,7 +603,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         binding.barcodeScanner.pause();
                         if (slideDelta > 0 && productFragment != null) {
                             productFragment.bottomSheetWillGrow();
-                            binding.bottomNavigationLayout.bottomNavigation.setVisibility(GONE);
+                            binding.bottomNavigation.setVisibility(GONE);
                         }
                     } else {
                         binding.barcodeScanner.resume();
@@ -613,7 +613,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         } else {
                             binding.quickViewTags.setVisibility(GONE);
                         }
-                        binding.bottomNavigationLayout.bottomNavigation.setVisibility(VISIBLE);
+                        binding.bottomNavigation.setVisibility(VISIBLE);
                         if (binding.quickViewProductNotFound.getVisibility() != VISIBLE) {
                             binding.txtProductCallToAction.setVisibility(VISIBLE);
                         }
@@ -687,7 +687,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             return false;
         });
 
-        BottomNavigationListenerInstaller.install(binding.bottomNavigationLayout.bottomNavigation, this, this);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this, this);
     }
 
     @Override
