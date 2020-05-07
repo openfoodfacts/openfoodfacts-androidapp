@@ -11,6 +11,7 @@ import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -69,36 +70,14 @@ public class AdditiveFragmentHelper {
         FragmentActivity activity = fragment.getActivity();
         Context context = fragment.getContext();
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View view) {
+            public void onClick(@NonNull View view) {
                 if (additive.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        if (value) {
-                            if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, additive,
-                                    activity.getSupportFragmentManager());
-                            }
-                        } else {
-                            if (additive.hasOverexposureData()) {
-                                if (activity != null && !activity.isFinishing()) {
-                                    BottomScreenCommon.showBottomScreen(result, additive,
-                                        activity.getSupportFragmentManager());
-                                }
-                            } else {
-                                ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                            }
-                        }
-                    });
+                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), getOnWikiResponse(activity, additive, context));
                 } else {
-                    if (additive.hasOverexposureData()) {
-                        if (activity != null && !activity.isFinishing()) {
-                            BottomScreenCommon.showBottomScreen(null, additive,
-                                activity.getSupportFragmentManager());
-                        }
-                    } else {
-                        ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                    }
+                    onWikiNoResponse(additive, activity, context);
                 }
             }
         };
@@ -108,7 +87,7 @@ public class AdditiveFragmentHelper {
 
         // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
         if (additive.hasOverexposureData()) {
-            boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
+            final boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
             Drawable riskIcon;
             String riskWarningStr;
             int riskWarningColor;
@@ -133,5 +112,36 @@ public class AdditiveFragmentHelper {
         }
 
         return spannableStringBuilder;
+    }
+
+    private static void onWikiNoResponse(AdditiveName additive, FragmentActivity activity, Context context) {
+        if (additive.hasOverexposureData()) {
+            if (activity != null && !activity.isFinishing()) {
+                BottomScreenCommon.showBottomScreen(null, additive,
+                    activity.getSupportFragmentManager());
+            }
+        } else {
+            ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+        }
+    }
+
+    private static WikidataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive, Context context) {
+        return (value, result) -> {
+            if (value) {
+                if (activity != null && !activity.isFinishing()) {
+                    BottomScreenCommon.showBottomScreen(result, additive,
+                        activity.getSupportFragmentManager());
+                }
+            } else {
+                if (additive.hasOverexposureData()) {
+                    if (activity != null && !activity.isFinishing()) {
+                        BottomScreenCommon.showBottomScreen(result, additive,
+                            activity.getSupportFragmentManager());
+                    }
+                } else {
+                    ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                }
+            }
+        };
     }
 }
