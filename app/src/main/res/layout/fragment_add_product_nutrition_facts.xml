@@ -313,7 +313,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/spinner_saturated-fat_unit"
+                    android:id="@+id/spinner_saturated_fat_unit"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="@dimen/top_margin_spinner_hint"
