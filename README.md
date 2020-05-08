@@ -61,7 +61,8 @@ You can help translate Open Food Facts and the app at (no technical knowledge re
 https://translate.openfoodfacts.org
 
 ## Generate screenshots for the Play Store
-To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
+To activate  screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
+To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
 [Help is welcome to improve those](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/fastlane)
 
 ## Installation
