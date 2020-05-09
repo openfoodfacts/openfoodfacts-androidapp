@@ -768,5 +768,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="icon_label">Etikettensymbol</string>
     <string name="icon_categories">Kategoriesymbol</string>
     <string name="icon_emb">Symbol des Produzenten-Codes</string>
-    <string name="product__front_image">Product front image</string>
+    <string name="product_front_image">Product front image</string>
 </resources>
