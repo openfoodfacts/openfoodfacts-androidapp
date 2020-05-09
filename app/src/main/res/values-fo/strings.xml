@@ -768,5 +768,5 @@
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
-    <string name="product__front_image">Product front image</string>
+    <string name="product_front_image">Product front image</string>
 </resources>
