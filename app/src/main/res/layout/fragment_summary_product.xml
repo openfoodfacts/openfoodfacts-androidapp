@@ -124,7 +124,7 @@
                                 android:layout_margin="@dimen/spacing_tiny"
                                 android:adjustViewBounds="true"
                                 android:background="?android:selectableItemBackground"
-                                android:contentDescription="@string/product__front_image"
+                                android:contentDescription="@string/product_front_image"
                                 android:maxHeight="120dp"
                                 android:scaleType="fitCenter"
                                 app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
