@@ -765,4 +765,8 @@
     <string name="content_unselect_photo">Druk hier om de huidige foto te deselecteren</string>
     <string name="title_exit">Verlaten</string>
     <string name="content_exit">Druk hier om terug te keren naar het product</string>
+    <string name="icon_label">Labels icon</string>
+    <string name="icon_categories">Categories icon</string>
+    <string name="icon_emb">EMB code icon</string>
+    <string name="product_front_image">Product front image</string>
 </resources>
