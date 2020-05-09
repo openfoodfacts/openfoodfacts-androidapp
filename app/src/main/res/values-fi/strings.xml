@@ -486,7 +486,7 @@
     <string name="do_you_want_to">Haluatko lisätä kuvia tähän viivakoodiin?</string>
     <string name="bottomNav_history">Historia</string>
     <string name="products_added">Lisäämäsi tai muokkaamasi tuotteet</string>
-    <string name="products_incomplete">Tuotteet, jotka olet lisännyt ja kaipaavat täydentämistä</string>
+    <string name="products_incomplete">Lisäämäsi täydennettävät tuotteet</string>
     <string name="product_pictures_contributed">Tuotteet, joista otit kuvia</string>
     <string name="picture_contributed_incomplete">Tuotteet, joista olet ottanut kuvia ja kaipaavat täydentämistä</string>
     <string name="product_info_added">Tuotteet, joihin lisäsit tietoja</string>
@@ -765,4 +765,8 @@
     <string name="content_unselect_photo">Paina tästä poistaaksesi valinnan nykyisestä kuvasta</string>
     <string name="title_exit">Poistu</string>
     <string name="content_exit">Paina tästä palataksesi tuotteeseen</string>
+    <string name="icon_label">Labels icon</string>
+    <string name="icon_categories">Categories icon</string>
+    <string name="icon_emb">EMB code icon</string>
+    <string name="product__front_image">Product front image</string>
 </resources>
