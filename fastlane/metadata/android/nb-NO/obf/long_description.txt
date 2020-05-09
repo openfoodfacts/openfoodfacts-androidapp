@@ -2,7 +2,7 @@
 
 - Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
 - You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Vi har mange spennende prosjekter du kan bidra til på mange forskjellige måter. 
 - You can start contributing today by adding a product from your cosmetic cupboard. 
 
 *** Få faktaene ***
@@ -20,12 +20,12 @@
 
 *** Your cosmetics, your data ***
 - Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Du kan bruke appen anonymt
+- Du kan eksportere skannehistorikken din
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
 
 Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Spørsmål, tilbakemelding: contact@openfoodfacts.org
 
 For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
