@@ -669,12 +669,13 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                         targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
                     }
                 }
+
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
                     if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
                     if (editTextView.getText() != null && EditTextUtils.isNotEmpty(editTextView)) {
-                        addNutrientToMap(editTextView, targetMap);
+                        addNutrientToMapIfUpdated(editTextView, targetMap);
                     }
                 }
             }
@@ -712,6 +713,84 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             reference = UnitUtils.convertToGrams(reference, ALL_UNIT_SERVING[binding.servingSize.getAttachedSpinner().getSelectedItemPosition()]);
         }
         return reference;
+    }
+    /**
+     * Add nutrients to the map by from the text entered into EditText, only if the value has been edited
+     *
+     * @param editTextView EditText with spinner for entering the nutients
+     * @param targetMap map to enter the nutrient value recieved from edit texts
+     */
+    private void addNutrientToMapIfUpdated(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
+
+                /*
+                // get nutriments from product
+                Nutriments nutriments = product.getNutriments();
+        if (nutriments != null && getView() != null) {
+            final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
+            for (CustomValidatingEditTextView view : editViews) {
+                final String nutrientShortName = view.getEntryName();
+                if (nutrientShortName.equals(servingSize.getEntryName())) {
+                    continue;
+                }
+                String value = getValueFromShortName(nutriments, nutrientShortName);
+                if (value != null) {
+                    view.setText(value);
+                    if (view.getAttachedSpinner() != null) {
+                        view.getAttachedSpinner().setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName));
+                    }
+                }
+            }
+            //set the values of all the other nutrients if defined and create new row in the tableLayout.
+            for (int i = 0; i < AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.size(); i++) {
+                String nutrientShortName = AddProductNutritionFactsData.getShortName(AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(i));
+                if (nutriments.getValue(nutrientShortName) != null) {
+
+                    String value = getValueFromShortName(nutriments, nutrientShortName);
+                    int unitSelectedIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName);
+                    index.add(i);
+                    String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
+                    addNutrientRow(i, nutrients[i], true, value, unitSelectedIndex);
+                }
+            }
+        }
+                 */
+
+        Nutriments productNutriments = product != null ? product.getNutriments() : new Nutriments();
+
+        String shortName = editTextView.getEntryName();
+        String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
+
+        Nutriments.Nutriment existingProductNutriment = productNutriments.get(shortName);
+        String previousValue = null;
+        String previousUnit = null;
+        if (existingProductNutriment != null) {
+            previousUnit = existingProductNutriment.getUnit();
+            if (isDataPer100()) {
+                previousValue = existingProductNutriment.getFor100gInUnits();
+            } else if (isDataPerServing()) {
+                previousValue = existingProductNutriment.getForServingInUnits();
+            }
+        }
+
+        boolean valueHasBeenUpdated = EditTextUtils.isDifferent(editTextView, previousValue);
+
+        String newUnit = null;
+        if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
+            newUnit = getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition());
+        }
+        boolean unitHasBeenUpdated = previousUnit == null || !previousUnit.equals(newUnit);
+
+        if (valueHasBeenUpdated || unitHasBeenUpdated) {
+            targetMap.put(completeName, editTextView.getText().toString());
+            if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
+                targetMap.put(completeName + AddProductNutritionFactsData.SUFFIX_UNIT,
+                    getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition()));
+            }
+        }
+    }
+
+    private boolean isDataPer100() {
+        return radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml;
     }
 
     void addNutrient() {
