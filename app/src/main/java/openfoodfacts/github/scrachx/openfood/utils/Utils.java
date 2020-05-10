@@ -106,7 +106,6 @@ public class Utils {
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
     public static final int NO_DRAWABLE_RESOURCE = 0;
-    public static final String OFFLINE_EDIT_PENDING_WORK_NAME = "offline_edit_pending_products_work";
     public static final String FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies";
 
     /**
