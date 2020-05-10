@@ -332,6 +332,8 @@ public class AddProductActivity extends AppCompatActivity {
 
         OfflineProductWorker.addWork();
 
+        OpenFoodAPIClient.addToHistory(Utils.getAppDaoSession(this).getHistoryProductDao(), offlineSavedProduct);
+
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT)
             .show();
 
