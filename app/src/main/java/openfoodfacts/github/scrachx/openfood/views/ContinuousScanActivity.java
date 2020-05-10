@@ -101,19 +101,13 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private Product product;
     private ProductFragment productFragment;
     private SharedPreferences.Editor editor;
-    private BeepManager beepManager;
-    private String lastText;
     private SharedPreferences sp;
-    private boolean mFlash;
     private boolean mRing;
     private int peekLarge;
     private int peekSmall;
     private PopupMenu popup;
-    private Product product;
-    private ProductFragment productFragment;
     private boolean productShowing = false;
     private Runnable runnable;
-    private SharedPreferences sp;
     private SummaryProductPresenter summaryProductPresenter;
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
@@ -457,11 +451,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
             binding.quickViewImageProgress.setVisibility(GONE);
         }
 
-        txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text));
-        txtProductCallToAction.setText(R.string.product_not_complete);
-        txtProductCallToAction.setVisibility(VISIBLE);
-        slideUpIndicator.setVisibility(GONE);
+        binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        binding.txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text));
+        binding.txtProductCallToAction.setText(R.string.product_not_complete);
+        binding.txtProductCallToAction.setVisibility(VISIBLE);
+        binding.quickViewSlideUpIndicator.setVisibility(GONE);
 
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
@@ -632,7 +626,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                     }
                 }
-                if (binding.searchByBarcode.getVisibility() == VISIBLE) {
+                if (binding.quickViewSearchByBarcode.getVisibility() == VISIBLE) {
                     bottomSheetBehavior.setPeekHeight(peekSmall);
                     bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
                     bottomSheet.requestLayout();

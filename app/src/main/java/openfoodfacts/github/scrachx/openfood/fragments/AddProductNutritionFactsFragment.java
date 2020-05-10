@@ -152,7 +152,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         });
         binding.checkboxNoNutritionData.setOnCheckedChangeListener((buttonView, isChecked) -> onCheckedChanged(isChecked));
 
-
         photoReceiverHandler = new PhotoReceiverHandler(this);
         binding.btnAddANutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0);
         Bundle b = getArguments();
@@ -332,7 +331,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 loadNutritionsImage(path);
             }
             if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_NO_NUTRITION_DATA) != null) {
-                binding.checkboxNoNutritionDatanoNutritionData.setChecked(true);
+                binding.checkboxNoNutritionData.setChecked(true);
                 binding.nutritionFactsLayout.setVisibility(View.GONE);
             }
             if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER) != null) {
@@ -664,7 +663,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                     }
                 }
                 if (EditTextUtils.isNotEmpty(binding.servingSize)) {
-                    String servingSizeValue = EditTextUtils.content(binding.servingSize) + ObjectUtils.toString(this.servingSize.getAttachedSpinner().getSelectedItem().toString());
+                    String servingSizeValue = EditTextUtils.content(binding.servingSize) + ObjectUtils
+                        .toString(binding.servingSize.getAttachedSpinner().getSelectedItem().toString());
                     if (product == null || !servingSizeValue.equals(product.getServingSize())) {
                         targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
                     }
@@ -685,10 +685,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private boolean hasUnit(CustomValidatingEditTextView editTextView) {
         String shortName = editTextView.getEntryName();
         return !Nutriments.PH.equals(shortName) && !Nutriments.ALCOHOL.equals(shortName);
-    }
-
-    private boolean isDataPer100() {
-        return binding.radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml;
     }
 
     /**
@@ -714,6 +710,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
         return reference;
     }
+
     /**
      * Add nutrients to the map by from the text entered into EditText, only if the value has been edited
      *
@@ -790,7 +787,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private boolean isDataPer100() {
-        return radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml;
+        return binding.radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml;
     }
 
     void addNutrient() {

@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
@@ -289,7 +290,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             }
             String ingredientsText = mOfflineSavedProduct.getIngredients();
             if (!TextUtils.isEmpty(ingredientsText)) {
-                binding.ingredients.setText(ingredientsText);
+                binding.ingredientsList.setText(ingredientsText);
             }
             if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_TRACES) != null) {
                 List<String> chipValues = Arrays.asList(productDetails.get(OfflineSavedProduct.KEYS.PARAM_TRACES).split("\\s*,\\s*"));
@@ -406,7 +407,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         if (activity instanceof AddProductActivity) {
             String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-            targetMap.put(OfflineSavedProduct.KEYS.GET_PARAM_INGREDIENTS(lc), ingredients.getText().toString());
+            targetMap.put(OfflineSavedProduct.KEYS.GET_PARAM_INGREDIENTS(lc), binding.ingredientsList.getText().toString());
             List<String> list = binding.traces.getChipValues();
             String string = StringUtils.join(list, ",");
             targetMap.put(OfflineSavedProduct.KEYS.PARAM_TRACES.substring(4), string);
