@@ -212,17 +212,11 @@ public class OfflineProductService {
                 return false;
             }
 
-            Map<String, String> queryMap = buildQueryMap(jsonNode, OpenFoodAPIClient.fillWithUserLoginInfo(imgMap));
-
-            JsonNode node = apiClient
-                .editImageSingle(code, queryMap)
-                .blockingGet();
-
             productDetails.put("image_" + imageType + "_uploaded", "true");
             product.setProductDetailsMap(productDetails);
             getOfflineProductDAO().insertOrReplace(product);
 
-            Log.d(LOG_TAG, "Uploaded image_" + imageType + " for product " + code + " /node= " + node.toString());
+            Log.d(LOG_TAG, "Uploaded image_" + imageType + " for product " + code);
 
             EventBus.getDefault().post(new ProductNeedsRefreshEvent(code));
 
