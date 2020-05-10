@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,6 +20,7 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
@@ -143,6 +146,8 @@ public class OfflineProductService {
                 OfflineProductService.getOfflineProductDAO().insertOrReplace(product);
                 Log.i(LOG_TAG, "product " + product.getBarcode() + " uploaded");
 
+                EventBus.getDefault().post(new ProductNeedsRefreshEvent(product.getBarcode()));
+
                 return true;
             } else {
                 Log.i(LOG_TAG, "could not upload product?");
@@ -218,6 +223,8 @@ public class OfflineProductService {
             getOfflineProductDAO().insertOrReplace(product);
 
             Log.d(LOG_TAG, "Uploaded image_" + imageType + " for product " + code + " /node= " + node.toString());
+
+            EventBus.getDefault().post(new ProductNeedsRefreshEvent(code));
 
             return true;
         } catch (Exception e) {

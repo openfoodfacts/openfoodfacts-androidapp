@@ -38,6 +38,8 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.lang.StringUtils;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,6 +63,7 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
@@ -125,7 +128,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
             lastText = result.getText();
             if (!(isFinishing())) {
-                findProduct(lastText, false);
+                findProduct(lastText);
             }
         }
 
@@ -146,16 +149,15 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.barcodeScanner.setVisibility(GONE);
         binding.barcodeScanner.pause();
         binding.imageForScreenshotGenerationOnly.setVisibility(VISIBLE);
-        findProduct(barcode, false);
+        findProduct(barcode);
     }
 
     /**
      * Makes network call and search for the product in the database
      *
      * @param lastBarcode Barcode to be searched
-     * @param newlyAdded true if the product is added using the product addition just now
      */
-    private void findProduct(String lastBarcode, boolean newlyAdded) {
+    private void findProduct(String lastBarcode) {
         if (isFinishing()) {
             return;
         }
@@ -504,6 +506,18 @@ public class ContinuousScanActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         binding.barcodeScanner.pause();
@@ -515,6 +529,13 @@ public class ContinuousScanActivity extends AppCompatActivity {
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.scan_bottom_nav);
         if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume();
+        }
+    }
+
+    @Subscribe
+    public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
+        if (event.getBarcode().equals(lastText)) {
+            findProduct(lastText);
         }
     }
 
@@ -690,7 +711,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         if (ProductUtils.isBarcodeValid(barcodeText)) {
                             lastText = barcodeText;
                             binding.quickViewSearchByBarcode.setVisibility(GONE);
-                            findProduct(barcodeText, false);
+                            findProduct(barcodeText);
                         } else {
                             binding.quickViewSearchByBarcode.requestFocus();
                             Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
