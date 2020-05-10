@@ -295,7 +295,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     .withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                 new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
-                new DividerDrawerItem(),
                 primaryDrawerItem,
                 new DividerDrawerItem(),
                 new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
