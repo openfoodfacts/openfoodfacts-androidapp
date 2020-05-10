@@ -462,7 +462,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         txtProductCallToAction.setText(R.string.product_not_complete);
         txtProductCallToAction.setVisibility(VISIBLE);
         slideUpIndicator.setVisibility(GONE);
-        
+
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 

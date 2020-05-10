@@ -337,6 +337,8 @@ public class AddProductActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT)
             .show();
 
+        Utils.hideKeyboard(this);
+
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
 
