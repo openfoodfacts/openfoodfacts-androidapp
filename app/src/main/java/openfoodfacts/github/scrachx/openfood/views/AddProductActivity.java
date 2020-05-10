@@ -332,8 +332,12 @@ public class AddProductActivity extends AppCompatActivity {
 
         OfflineProductWorker.addWork();
 
+        Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT)
+            .show();
+
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
+
         finish();
     }
 
