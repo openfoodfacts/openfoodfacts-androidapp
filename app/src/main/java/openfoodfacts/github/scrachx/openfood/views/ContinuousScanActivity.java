@@ -97,6 +97,14 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private HistoryProductDao mHistoryProductDao;
     private InvalidBarcodeDao mInvalidBarcodeDao;
     private OfflineSavedProductDao mOfflineSavedProductDao;
+    private OfflineSavedProduct offlineSavedProduct;
+    private Product product;
+    private ProductFragment productFragment;
+    private SharedPreferences.Editor editor;
+    private BeepManager beepManager;
+    private String lastText;
+    private SharedPreferences sp;
+    private boolean mFlash;
     private boolean mRing;
     private int peekLarge;
     private int peekSmall;
@@ -169,7 +177,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             summaryProductPresenter.dispose();
         }
 
-        OfflineSavedProduct offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(lastBarcode);
+        offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(lastBarcode);
         if (offlineSavedProduct != null) {
             showOfflineSavedDetails(offlineSavedProduct);
         }
@@ -448,6 +456,14 @@ public class ContinuousScanActivity extends AppCompatActivity {
             binding.quickViewImage.setImageResource(R.drawable.placeholder_thumb);
             binding.quickViewImageProgress.setVisibility(GONE);
         }
+
+        txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text));
+        txtProductCallToAction.setText(R.string.product_not_complete);
+        txtProductCallToAction.setVisibility(VISIBLE);
+        slideUpIndicator.setVisibility(GONE);
+        
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
     private void navigateToProductAddition(String lastText) {
@@ -611,7 +627,12 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     binding.barcodeScanner.resume();
                 }
-                if (binding.quickViewSearchByBarcode.getVisibility() == VISIBLE) {
+                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    if (product == null) {
+                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    }
+                }
+                if (binding.searchByBarcode.getVisibility() == VISIBLE) {
                     bottomSheetBehavior.setPeekHeight(peekSmall);
                     bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
                     bottomSheet.requestLayout();
