@@ -133,8 +133,7 @@ public class AdditiveName {
         return res;
     }
 
-
-    public Boolean getIsWikiDataIdPresent() {
+    public boolean getIsWikiDataIdPresent() {
         return BooleanUtils.toBooleanDefaultIfNull(this.isWikiDataIdPresent,false);
     }
 

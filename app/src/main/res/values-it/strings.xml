@@ -765,4 +765,8 @@
     <string name="content_unselect_photo">Premi qui per deselezionare la foto corrente</string>
     <string name="title_exit">Esci</string>
     <string name="content_exit">Premi qui per tornare al prodotto</string>
+    <string name="icon_label">Icona etichette</string>
+    <string name="icon_categories">Icona categorie</string>
+    <string name="icon_emb">Icona codice EMB</string>
+    <string name="product_front_image">Product front image</string>
 </resources>

@@ -8,12 +8,25 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import android.util.Log;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
+
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.util.List;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -27,6 +40,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding;
+import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser;
@@ -44,34 +59,19 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiver {
     static final String TOOLBAR_TITLE = "TOOLBAR_TITLE";
     private ProductImagesSelectionAdapter adapter;
-    @BindView(R.id.imagesRecycler)
-    RecyclerView imagesRecycler;
-    @BindView(R.id.expandedImage)
-    ImageView expandedImage;
-    @BindView(R.id.btnChooseImage)
-    Button btnChooseImage;
-    @BindView(R.id.btnAcceptSelection)
-    View btnAcceptSelection;
-    @BindView(R.id.zoomContainer)
-    View expandedContainer;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.txtInfo)
-    TextView txtInfo;
-
-
+    private ActivityProductImagesListBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         OpenFoodAPIClient openFoodAPIClient = new OpenFoodAPIClient(this);
-        setContentView(R.layout.activity_product_images_list);
-        btnChooseImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_photo_library, 0, 0, 0);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_product_images_list);
+        binding.btnChooseImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_photo_library, 0, 0, 0);
 
         Intent intent = getIntent();
 
         String code = intent.getStringExtra(ImageKeyHelper.PRODUCT_BARCODE);
-        toolbar.setTitle(intent.getStringExtra(TOOLBAR_TITLE));
+        binding.toolbar.setTitle(intent.getStringExtra(TOOLBAR_TITLE));
 
         openFoodAPIClient.getImages(code, (value, response) -> {
 
@@ -89,7 +89,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
                 }
                 List<String> imageNames=ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(images);
 
-                setSupportActionBar(toolbar);
+                setSupportActionBar(binding.toolbar);
                 if (getSupportActionBar() != null) {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
@@ -97,8 +97,8 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
                 //Check if user is logged in
                 adapter = new ProductImagesSelectionAdapter(this, imageNames, code, position -> imageSelected());
 
-                imagesRecycler.setAdapter(adapter);
-                imagesRecycler.setLayoutManager(new GridLayoutManager(this, 3));
+                binding.imagesRecycler.setAdapter(adapter);
+                binding.imagesRecycler.setLayoutManager(new GridLayoutManager(this, 3));
             }
         });
     }
@@ -107,17 +107,17 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         final int selectedPosition = adapter.getSelectedPosition();
         if(selectedPosition>=0) {
             String finalUrlString = adapter.getImageUrl(selectedPosition);
-            Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(expandedImage);
-            expandedContainer.setVisibility(View.VISIBLE);
-            imagesRecycler.setVisibility(View.INVISIBLE);
+            Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage);
+            binding.zoomContainer.setVisibility(View.VISIBLE);
+            binding.imagesRecycler.setVisibility(View.INVISIBLE);
         }
         updateButtonAccept();
     }
 
     @OnClick(R.id.closeZoom)
     void onCloseZoom() {
-        expandedContainer.setVisibility(View.INVISIBLE);
-        imagesRecycler.setVisibility(View.VISIBLE);
+        binding.zoomContainer.setVisibility(View.INVISIBLE);
+        binding.imagesRecycler.setVisibility(View.VISIBLE);
     }
     @OnClick(R.id.expandedImage)
     void onClickOnExpandedImage() {
@@ -144,8 +144,14 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
 
     private void updateButtonAccept() {
         boolean visible = isUserLoggedIn() && adapter.isSelectionDone();
-        btnAcceptSelection.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
-        txtInfo.setVisibility(btnAcceptSelection.getVisibility());
+        ((View) binding.btnAcceptSelection).setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+        binding.txtInfo.setVisibility(binding.btnAcceptSelection.getVisibility());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 
     @Override

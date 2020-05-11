@@ -765,4 +765,8 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="content_unselect_photo">Hier drücken, um das aktuelle Foto abzuwählen</string>
     <string name="title_exit">Beenden</string>
     <string name="content_exit">Hier drücken, um zum Produkt zurückzukehren</string>
+    <string name="icon_label">Etikettensymbol</string>
+    <string name="icon_categories">Kategoriesymbol</string>
+    <string name="icon_emb">Symbol des Produzenten-Codes</string>
+    <string name="product_front_image">Product front image</string>
 </resources>
