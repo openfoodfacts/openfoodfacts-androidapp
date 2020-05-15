@@ -80,12 +80,12 @@ Open Food Facts on Android has 0,5M users and 1M products. Each contribution you
 
 Here are issues and feature requests you can work on:
 - [Very high impact issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact)
-- [Priority issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority)
+- [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
 - [Issues with a screenshot of the problem](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Ascreenshot-available)
 - [Issues with a visual mockup of the solution](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Amockup-available)
 - [Simplify product addition](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/product%20addition)
 - [Create onboarding features for new users](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/onboarding)
-- [Small Hacktoberfest issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/hacktoberfest)
+- [Small issues (Hacktoberfest)](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/hacktoberfest)
 - [Improve product comparison](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/comparison)
 - [Help remove some of the technical debt](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/refactoring)
 
