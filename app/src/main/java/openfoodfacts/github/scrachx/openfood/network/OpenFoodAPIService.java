@@ -252,7 +252,7 @@ public interface OpenFoodAPIService {
     @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
     Call<Search> getProductByCategory(@Path("category") String category, @Path("page") int page);
 
-    @GET("contributor/{Contributor}/{page}.json")
+    @GET("contributor/{Contributor}/{page}.json?nocache=1")
     Call<Search> searchProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
 
     @GET("language/{language}.json")
@@ -297,28 +297,28 @@ public interface OpenFoodAPIService {
     @GET("nutrient-level/{NutrientLevel}.json")
     Call<Search> byNutrientLevel(@Path("NutrientLevel") String NutrientLevel);
 
-    @GET("contributor/{Contributor}.json")
+    @GET("contributor/{Contributor}.json?nocache=1")
     Call<Search> byContributor(@Path("Contributor") String Contributor);
 
-    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json")
+    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getToBeCompletedProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
 
-    @GET("/photographer/{Contributor}/{page}.json")
+    @GET("/photographer/{Contributor}/{page}.json?nocache=1")
     Call<Search> getPicturesContributedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
-    @GET("photographer/{Photographer}.json")
+    @GET("photographer/{Photographer}.json?nocache=1")
     Call<Search> byPhotographer(@Path("Photographer") String Photographer);
 
-    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json")
+    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getPicturesContributedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
-    @GET("informer/{Informer}.json")
+    @GET("informer/{Informer}.json?nocache=1")
     Call<Search> byInformer(@Path("Informer") String Informer);
 
-    @GET("informer/{Contributor}/{page}.json")
+    @GET("informer/{Contributor}/{page}.json?nocache=1")
     Call<Search> getInfoAddedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
-    @GET("informer/{Contributor}/state/to-be-completed/{page}.json")
+    @GET("informer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getInfoAddedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
     @GET("last-edit-date/{LastEditDate}.json")
@@ -351,7 +351,7 @@ public interface OpenFoodAPIService {
     /**
      * This method gives a list of incomplete products
      */
-    @GET("state/to-be-completed/{page}.json")
+    @GET("state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getIncompleteProducts(@Path("page") int page);
 
     /**
