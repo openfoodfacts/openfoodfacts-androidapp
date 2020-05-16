@@ -82,7 +82,7 @@ ext {
     googleMaterialFontVersion = '3.0.1.3.original@aar'
 
     jUnitVersion = '4.12'
-    jsonUnitVersion = '1.27.0'
+    jsonUnitVersion = '2.17.0'
     espressoVersion = '3.1.0'
     espressoContribVersion = '3.1.0'
     mockitoVersion = '2.13.0'
