@@ -10,17 +10,18 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.concurrent.futures.CallbackToFutureAdapter;
+import androidx.work.ListenableWorker;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.firebase.jobdispatcher.JobParameters;
+import com.google.common.util.concurrent.ListenableFuture;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -42,7 +43,6 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
@@ -83,7 +83,6 @@ public class OpenFoodAPIClient {
     public static final String PNG_EXT = ".png\"";
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
-    private OfflineUploadingTask task = new OfflineUploadingTask();
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
     private final OpenFoodAPIService apiService;
@@ -657,20 +656,58 @@ public class OpenFoodAPIClient {
 
     /**
      * upload images in offline mode
-     *
      * @param context context
-     * @param cancel boolean to store whether to cancel upload or not
-     * @param job object of JobParameters
-     * @param service object of SavedProductUploadJob
+     * @return ListenableFuture
      */
-    public void uploadOfflineImages(Context context, boolean cancel, JobParameters job, SavedProductUploadJob service) {
-        if (!cancel) {
-            task.job = job;
-            task.service = new WeakReference<>(service);
-            task.execute(context);
-        } else {
-            task.cancel(true);
-        }
+    public ListenableFuture<ListenableWorker.Result> uploadOfflineImages(Context context) {
+        return CallbackToFutureAdapter.getFuture(completer -> {
+            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder().where(ToUploadProductDao.Properties.Uploaded.eq(false)
+            ).list();
+            int totalSize = toUploadProductList.size();
+            Callback<JsonNode> callback = null;
+            for (int i = 0; i < totalSize; i++) {
+                ToUploadProduct uploadProduct = toUploadProductList.get(i);
+                File imageFile;
+                try {
+                    imageFile = new File(uploadProduct.getImageFilePath());
+                } catch (Exception e) {
+                    Log.e("OfflineUploadingTask", "doInBackground", e);
+                    continue;
+                }
+                ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
+                    uploadProduct.getProductField(), imageFile);
+                apiService.saveImage(getUploadableMap(productImage))
+                    .enqueue(
+                        callback = new Callback<JsonNode>() {
+                        @Override
+                        public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
+                            if (!response.isSuccessful()) {
+                                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                                return;
+                            }
+
+                            JsonNode body = response.body();
+                            if (body != null) {
+                                Log.d("onResponse", body.toString());
+                                if (!body.isObject()) {
+
+                                } else if (body.get("status").asText().contains("status not ok")) {
+                                    mToUploadProductDao.delete(uploadProduct);
+                                } else {
+                                    mToUploadProductDao.delete(uploadProduct);
+                                    completer.set(ListenableWorker.Result.success());
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
+                            completer.setException(t);
+                        }
+                    });
+            }
+            return callback;
+        });
     }
 
     public void getProductsByStore(final String store, final int page, final OnStoreCallback onStoreCallback) {
@@ -775,66 +812,6 @@ public class OpenFoodAPIClient {
 
     public interface OnImagesCallback {
         void onImageResponse(boolean value, String response);
-    }
-
-    public class OfflineUploadingTask extends AsyncTask<Context, Void, Void> {
-        JobParameters job;
-        WeakReference<SavedProductUploadJob> service;
-
-        @Override
-        protected Void doInBackground(Context... context) {
-            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder().where(ToUploadProductDao.Properties.Uploaded.eq(false)
-            ).list();
-            int totalSize = toUploadProductList.size();
-            for (int i = 0; i < totalSize; i++) {
-                ToUploadProduct uploadProduct = toUploadProductList.get(i);
-                File imageFile;
-                try {
-                    imageFile = new File(uploadProduct.getImageFilePath());
-                } catch (Exception e) {
-                    Log.e("OfflineUploadingTask", "doInBackground", e);
-                    continue;
-                }
-                ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
-                    uploadProduct.getProductField(), imageFile);
-
-                apiService.saveImage(getUploadableMap(productImage))
-                    .enqueue(new Callback<JsonNode>() {
-                        @Override
-                        public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
-                            if (!response.isSuccessful()) {
-                                Toast.makeText(context[0], response.toString(), Toast.LENGTH_LONG).show();
-                                return;
-                            }
-
-                            JsonNode body = response.body();
-                            if (body != null) {
-                                Log.d("onResponse", body.toString());
-                                if (!body.isObject()) {
-
-                                } else if (body.get("status").asText().contains("status not ok")) {
-                                    mToUploadProductDao.delete(uploadProduct);
-                                } else {
-                                    mToUploadProductDao.delete(uploadProduct);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
-
-                        }
-                    });
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Log.d("serviceValue", service.get().toString());
-            service.get().jobFinished(job, false);
-        }
     }
 
     public Callback<Search> createStoreCallback(OnStoreCallback onStoreCallback) {
