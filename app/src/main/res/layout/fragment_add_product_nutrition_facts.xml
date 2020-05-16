@@ -163,10 +163,10 @@
                         android:hint="@string/serving_size"
                         android:inputType="number"
                         android:nextFocusDown="@id/energy"
-                        app:attachedSpinner="@+id/spinner_serving_unit"
+                        app:attachedUnitSpinner="@id/spinner_serving_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:parentTextInputLayout="@+id/serving_size_til" />
+                        app:parentTextInputLayout="@id/serving_size_til" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
@@ -225,7 +225,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/fat"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_energy_unit"
+                        app:attachedCompSpinner="@+id/spinner_energy_comp"
+                        app:attachedUnitSpinner="@+id/spinner_energy_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/energy_til" />
@@ -287,7 +288,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/saturated_fat"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_fat_unit"
+                        app:attachedCompSpinner="@id/spinner_fat_comp"
+                        app:attachedUnitSpinner="@id/spinner_fat_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/fat_til" />
@@ -349,7 +351,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/carbohydrates"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_saturated_fat_unit"
+                        app:attachedCompSpinner="@id/spinner_saturated_fat_comp"
+                        app:attachedUnitSpinner="@id/spinner_saturated_fat_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/saturated_fat_til" />
@@ -411,7 +414,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/sugars"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_carbohydrates_unit"
+                        app:attachedCompSpinner="@id/spinner_carbohydrates_comp"
+                        app:attachedUnitSpinner="@id/spinner_carbohydrates_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/carbohydrates_til" />
@@ -473,7 +477,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/fiber"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_sugars_unit"
+                        app:attachedCompSpinner="@+id/spinner_sugars_comp"
+                        app:attachedUnitSpinner="@+id/spinner_sugars_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/sugars_til" />
@@ -535,7 +540,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/proteins"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_fiber_unit"
+                        app:attachedCompSpinner="@+id/spinner_fiber_comp"
+                        app:attachedUnitSpinner="@+id/spinner_fiber_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/fiber_til" />
@@ -597,7 +603,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/salt"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_proteins_unit"
+                        app:attachedCompSpinner="@+id/spinner_proteins_comp"
+                        app:attachedUnitSpinner="@+id/spinner_proteins_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/proteins_til" />
@@ -659,7 +666,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/sodium"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_salt_unit"
+                        app:attachedCompSpinner="@+id/spinner_salt_comp"
+                        app:attachedUnitSpinner="@+id/spinner_salt_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/salt_til" />
@@ -721,7 +729,8 @@
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/alcohol"
                         android:singleLine="true"
-                        app:attachedSpinner="@+id/spinner_sodium_unit"
+                        app:attachedCompSpinner="@id/spinner_sodium_comp"
+                        app:attachedUnitSpinner="@id/spinner_sodium_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/sodium_til" />

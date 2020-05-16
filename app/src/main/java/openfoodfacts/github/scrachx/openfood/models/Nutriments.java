@@ -1,17 +1,21 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import androidx.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+
 import org.apache.commons.lang.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
@@ -22,11 +26,9 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Nutriments implements Serializable {
-
     private static final long serialVersionUID = 1L;
     private static final String DEFAULT_UNIT = "g";
-
-    public static final  String ENERGY ="energy";
+    public static final String ENERGY = "energy";
     public static final String ENERGY_FROM_FAT = "energy-from-fat";
     public static final String FAT = "fat";
     public static final String SATURATED_FAT = "saturated-fat";
@@ -149,8 +151,7 @@ public class Nutriments implements Serializable {
         put(Nutriments.COCOA, R.string.cocoa);
         put(Nutriments.CHLOROPHYL, R.string.chlorophyl);
     }};
-
-    public static final Map<String, Integer> FAT_MAP = new HashMap<String, Integer>(){{
+    public static final Map<String, Integer> FAT_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SATURATED_FAT, R.string.nutrition_satured_fat);
         put(Nutriments.MONOUNSATURATED_FAT, R.string.nutrition_monounsaturatedFat);
         put(Nutriments.POLYUNSATURATED_FAT, R.string.nutrition_polyunsaturatedFat);
@@ -160,8 +161,7 @@ public class Nutriments implements Serializable {
         put(Nutriments.TRANS_FAT, R.string.nutrition_trans_fat);
         put(Nutriments.CHOLESTEROL, R.string.nutrition_cholesterol);
     }};
-
-    public static final Map<String, Integer> CARBO_MAP = new HashMap<String, Integer>(){{
+    public static final Map<String, Integer> CARBO_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.SUGARS, R.string.nutrition_sugars);
         put(Nutriments.SUCROSE, R.string.nutrition_sucrose);
         put(Nutriments.GLUCOSE, R.string.nutrition_glucose);
@@ -170,14 +170,12 @@ public class Nutriments implements Serializable {
         put(Nutriments.MALTOSE, R.string.nutrition_maltose);
         put(Nutriments.MALTODEXTRINS, R.string.nutrition_maltodextrins);
     }};
-
-    public static final Map<String, Integer> PROT_MAP = new HashMap<String, Integer>(){{
+    public static final Map<String, Integer> PROT_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.CASEIN, R.string.nutrition_casein);
         put(Nutriments.SERUM_PROTEINS, R.string.nutrition_serum_proteins);
         put(Nutriments.NUCLEOTIDES, R.string.nutrition_nucleotides);
     }};
-
-    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<String, Integer>(){{
+    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<String, Integer>() {{
         put(Nutriments.VITAMIN_A, R.string.vitamin_a);
         put(Nutriments.BETA_CAROTENE, R.string.vitamin_a);
         put(Nutriments.VITAMIN_D, R.string.vitamin_d);
@@ -193,59 +191,62 @@ public class Nutriments implements Serializable {
         put(Nutriments.BIOTIN, R.string.biotin);
         put(Nutriments.PANTOTHENIC_ACID, R.string.pantothenic_acid);
     }};
-
+    public static final String SUFFIX_VALUE = "_value";
+    public static final String SUFFIX_MOD = "_modifier";
+    public static final String SUFFIX_100g = "_100g";
+    public static final String SUFFIX_UNIT = "_unit";
+    public static final String SUFFIX_SERVING = "_serving";
     private Map<String, Object> additionalProperties = new HashMap<>();
     private boolean containsVitamins;
     private boolean containsMinerals;
 
-    public Nutriment get(String nutrimentName){
-        if (nutrimentName.isEmpty() || additionalProperties.get(nutrimentName)==null) {
+    public Nutriment get(String nutrimentName) {
+        if (nutrimentName.isEmpty() || additionalProperties.get(nutrimentName) == null) {
             return null;
         }
 
-        try{
-            return new Nutriment(nutrimentName,additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
+        try {
+            return new Nutriment(nutrimentName, additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
                 getModifier(nutrimentName));
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             // In case one of the getters was unable to get data as string
             String stacktrace = Log.getStackTraceString(e);
-            Log.e("NUTRIMENTS-MODEL",stacktrace);
+            Log.e("NUTRIMENTS-MODEL", stacktrace);
         }
         return null;
     }
 
-    public String getUnit(String nutrimentName){
-        return getAdditionalProperty(nutrimentName,"_unit",DEFAULT_UNIT);
+    public String getUnit(String nutrimentName) {
+        return getAdditionalProperty(nutrimentName, SUFFIX_UNIT, DEFAULT_UNIT);
     }
 
-    public String getServing(String nutrimentName){
-        return getAdditionalProperty(nutrimentName,"_serving");
+    public String getServing(String nutrimentName) {
+        return getAdditionalProperty(nutrimentName, SUFFIX_SERVING);
     }
 
-    private String getAdditionalProperty(String nutrimentName,String suffix){
-        return getAdditionalProperty(nutrimentName,suffix,StringUtils.EMPTY);
+    private String getAdditionalProperty(String nutrimentName, String suffix) {
+        return getAdditionalProperty(nutrimentName, suffix, StringUtils.EMPTY);
     }
 
-    private String getAdditionalProperty(String nutrimentName,String suffix,String defaultValue){
+    private String getAdditionalProperty(String nutrimentName, String suffix, String defaultValue) {
         final Object value = additionalProperties.get(nutrimentName + suffix);
-        return value==null?defaultValue:value.toString();
+        return value == null ? defaultValue : value.toString();
     }
 
-
-    public String get100g(String nutrimentName){
-        return getAdditionalProperty(nutrimentName,"_100g");
+    public String get100g(String nutrimentName) {
+        return getAdditionalProperty(nutrimentName, SUFFIX_100g);
     }
 
     public String getValue(String nutrimentName) {
-        return getAdditionalProperty(nutrimentName,"_value",null);
+        return getAdditionalProperty(nutrimentName, SUFFIX_VALUE, null);
     }
 
     @Nullable
     public String getModifier(String nutrimentName) {
-        return getAdditionalProperty(nutrimentName,"_modifier",null);
+        return getAdditionalProperty(nutrimentName, SUFFIX_MOD, null);
     }
 
-    public boolean contains(String nutrimentName){
+    public boolean contains(String nutrimentName) {
         return additionalProperties.containsKey(nutrimentName);
     }
 
@@ -311,7 +312,6 @@ public class Nutriments implements Serializable {
             return name;
         }
 
-
         /**
          * Returns the amount of nutriment per 100g
          * of product in the units stored in {@link Nutriment#unit}
@@ -319,7 +319,6 @@ public class Nutriments implements Serializable {
         public String getFor100gInUnits() {
             return getValueInUnits(for100g, unit);
         }
-
 
         /**
          * Returns the amount of nutriment per serving
@@ -334,7 +333,7 @@ public class Nutriments implements Serializable {
         }
 
         private String getValueInUnits(String valueInGramOrMl, String unit) {
-            if(StringUtils.isBlank(valueInGramOrMl)){
+            if (StringUtils.isBlank(valueInGramOrMl)) {
                 return StringUtils.EMPTY;
             }
             if (valueInGramOrMl.isEmpty() || unit.equals(UnitUtils.UNIT_GRAM)) {
@@ -365,14 +364,12 @@ public class Nutriments implements Serializable {
             }
             try {
                 float valueFor100g = Float.parseFloat(strValue);
-                float portionInGram=UnitUtils.convertToGrams(userSetServing,otherUnit);
-                return getRoundNumber(valueFor100g/100*portionInGram);
-            }catch (NumberFormatException fmt){
-                Log.w(Nutriments.class.getSimpleName(),"getForAnyValue can't parse value "+strValue,fmt);
+                float portionInGram = UnitUtils.convertToGrams(userSetServing, otherUnit);
+                return getRoundNumber(valueFor100g / 100 * portionInGram);
+            } catch (NumberFormatException fmt) {
+                Log.w(Nutriments.class.getSimpleName(), "getForAnyValue can't parse value " + strValue, fmt);
             }
             return StringUtils.EMPTY;
-
-
         }
     }
 }

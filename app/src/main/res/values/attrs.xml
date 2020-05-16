@@ -25,9 +25,10 @@
         <attr name="drawableTopCompat" />
         <attr name="drawableBottomCompat" />
     </declare-styleable>
-    <declare-styleable name="CustomValidatingEditView">
+    <declare-styleable name="CustomValidatingEditTextView">
         <attr name="parentTextInputLayout" format="reference" />
-        <attr name="attachedSpinner" format="reference" />
+        <attr name="attachedUnitSpinner" format="reference" />
+        <attr name="attachedModSpinner" format="reference" />
     </declare-styleable>
     <declare-styleable name="TipBox">
         <attr name="animate" format="boolean" />
