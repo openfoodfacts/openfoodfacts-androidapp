@@ -100,6 +100,13 @@
         <item>IU</item>
     </string-array>
 
+    <!-- nutrition comparison units -->
+    <string-array name="nutrition_comparison_units" translatable="false">
+        <item>=</item>
+        <item>&lt;</item>
+        <item>&gt;</item>
+    </string-array>
+
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
