@@ -765,8 +765,8 @@
     <string name="content_unselect_photo">Press here to unselect current photo</string>
     <string name="title_exit">Sair</string>
     <string name="content_exit">Pressione aqui para retornar ao produto</string>
-    <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_label">Ícone de rótulos</string>
+    <string name="icon_categories">Ícone de categorias</string>
+    <string name="icon_emb">Ícone de código EMB</string>
     <string name="product_front_image">Product front image</string>
 </resources>

@@ -766,7 +766,7 @@
     <string name="title_exit">Afslut</string>
     <string name="content_exit">Tryk hér for at returnere til produktet</string>
     <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
-    <string name="product_front_image">Product front image</string>
+    <string name="icon_categories">Kategoriikon</string>
+    <string name="icon_emb">EMB-kodeikon</string>
+    <string name="product_front_image">Produktbillede front</string>
 </resources>
