@@ -40,7 +40,7 @@ allprojects {
 ext {
     supportLibraryVersion = '1.0.0'
 
-    materialVersion = '1.1.0-beta01'
+    materialVersion = '1.1.0'
 
     multidexVersion = '2.0.1'
 
