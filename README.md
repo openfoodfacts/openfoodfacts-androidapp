@@ -57,7 +57,7 @@ Have a bug or a feature request? Please search for existing and closed issues. I
 
 ### What can I work on ?
 
-Open Food Facts on Android has 0,5M users and 1M products. Each contribution you make will have a large impact on food transparency worldwide. Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
+Open Food Facts on Android has 0,5M users and 1M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
 
 Here are issues and feature requests you can work on:
 - [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
