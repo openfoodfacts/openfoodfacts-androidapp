@@ -15,7 +15,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 
 public class CustomValidatingEditTextView extends AppCompatEditText {
     private TextInputLayout textInputLayout;
-    private int attachedCompSpinnerId = NO_ID;
+    private int attachedModSpinnerId = NO_ID;
     private int attachedUnitSpinnerId = NO_ID;
     private int textInputLayoutId = NO_ID;
     private Spinner modSpinner;
@@ -54,7 +54,7 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
         );
         textInputLayoutId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_parentTextInputLayout, NO_ID);
         attachedUnitSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedUnitSpinner, NO_ID);
-        attachedCompSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedModSpinner, NO_ID);
+        attachedModSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedModSpinner, NO_ID);
         attributeArray.recycle();
     }
 
@@ -124,13 +124,13 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
     }
 
     public Spinner getModSpinner() {
-        if (modSpinner == null && attachedCompSpinnerId != NO_ID) {
-            View view = getRootView().findViewById(attachedCompSpinnerId);
+        if (modSpinner == null && attachedModSpinnerId != NO_ID) {
+            View view = getRootView().findViewById(attachedModSpinnerId);
             if (view instanceof Spinner) {
                 modSpinner = (Spinner) view;
             } else {
                 //configuration error we reset the id
-                attachedCompSpinnerId = NO_ID;
+                attachedModSpinnerId = NO_ID;
                 String attachedTo = view == null ? "null" : view.getClass().getName();
                 Log.e(CustomValidatingEditTextView.class.getSimpleName(),
                     String.format("the id %d used in attachedSpinner  should be linked to a Spinner and not to %s", attachedUnitSpinnerId, attachedTo));
