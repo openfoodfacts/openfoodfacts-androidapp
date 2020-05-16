@@ -62,7 +62,7 @@ ext {
     //DO NOT UPDATE : saveInAppExternalFilesDir() removed
     easyImageVersion = '1.4.0'
 
-    butterknifeVersion = '10.1.0'
+    butterknifeVersion = '10.2.1'
 
     commonsLang = '2.6'
     commonsCsv = '1.4'
