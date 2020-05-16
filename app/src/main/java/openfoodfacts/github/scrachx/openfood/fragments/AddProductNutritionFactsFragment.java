@@ -120,6 +120,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         binding.btnAdd.setOnClickListener(v -> next());
         binding.for100g100ml.setOnClickListener(v -> checkAfterCheckChange());
         binding.btnAddANutrient.setOnClickListener(v -> addNutrient());
+
         binding.salt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -136,6 +137,17 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 autoCalculateSodiumValue();
             }
         });
+        binding.spinnerSaltComp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateSodiumComp(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // This is not possible
+            }
+        });
         binding.sodium.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -144,7 +156,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -152,8 +163,19 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 autoCalculateSaltValue();
             }
         });
-        binding.checkboxNoNutritionData.setOnCheckedChangeListener((buttonView, isChecked) -> onCheckedChanged(isChecked));
+        binding.spinnerSodiumComp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateSaltComp(position);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // This is not possible
+            }
+        });
+
+        binding.checkboxNoNutritionData.setOnCheckedChangeListener((buttonView, isChecked) -> onCheckedChanged(isChecked));
 
         photoReceiverHandler = new PhotoReceiverHandler(this);
         binding.btnAddANutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0);
@@ -193,6 +215,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
     }
 
+    private void updateSodiumComp(int position) {
+        binding.spinnerSodiumComp.setSelection(position);
+    }
+
+    private void updateSaltComp(int position) {
+        binding.spinnerSaltComp.setSelection(position);
+    }
+
     private void checkAllValues() {
         final Collection<CustomValidatingEditTextView> allEditText = getAllEditTextView();
         for (CustomValidatingEditTextView editText : allEditText) {
@@ -204,7 +234,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return allEditViews;
     }
 
-    private boolean isAllValuesValid() {
+    private boolean isFieldsValid() {
         final Collection<CustomValidatingEditTextView> allEditText = getAllEditTextView();
         for (CustomValidatingEditTextView editText : allEditText) {
             if (editText.hasError()) {
@@ -214,8 +244,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return true;
     }
 
-    public boolean containsInvalidValue() {
-        return !isAllValuesValid();
+    public boolean isFieldsInvalid() {
+        return !isFieldsValid();
     }
 
     @Nullable
@@ -503,7 +533,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private void updateButtonState() {
-        final boolean allValuesValid = isAllValuesValid();
+        final boolean allValuesValid = isFieldsValid();
         binding.globalValidationMsg.setVisibility(allValuesValid ? View.GONE : View.VISIBLE);
         binding.btnAdd.setEnabled(allValuesValid);
     }
