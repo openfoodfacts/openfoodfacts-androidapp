@@ -610,8 +610,8 @@
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="overexposure_high">Risiko pendedahan berlebihan</string>
+    <string name="overexposure_moderate">Risiko sederhana pendedahan berlebihan</string>
     <string name="infants">Bayi</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Kanak-kanak kecil</string>

@@ -780,5 +780,5 @@
     <string name="icon_label">סמל תוויות</string>
     <string name="icon_categories">סמל קטגוריות</string>
     <string name="icon_emb">סמל קוד EMB</string>
-    <string name="product_front_image">Product front image</string>
+    <string name="product_front_image">תמונת חזית המוצר</string>
 </resources>
