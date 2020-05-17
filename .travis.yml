@@ -42,7 +42,7 @@ cache:
     - $HOME/.m2
 
 before_script:
-# Create and start emulator.
+  # Create and start emulator.
   - echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid harmless sdkmanager warning
   - echo y | sdkmanager "platform-tools" >/dev/null
   - echo y | sdkmanager "tools" >/dev/null # A second time per Travis docs, gets latest versions
@@ -58,46 +58,46 @@ before_script:
   #- adb shell input keyevent 82 &
 
 jobs:
- include:
-  - stage: test
-    script:
-      #launch
-      - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
+  include:
+    - stage: test
+      script:
+        #launch
+        - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
 
-  - stage: test
-    script:
-      - ./gradlew compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+    - stage: test
+      script:
+        - ./gradlew compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
 
-  - stage: test
-    script:
-      - ./gradlew testObfDebugUnitTest assembleObfDebug --stacktrace # removed "connectedObfDebugAndroidTest"
-      - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
+    - stage: test
+      script:
+        - ./gradlew testObfDebugUnitTest assembleObfDebug --stacktrace # removed "connectedObfDebugAndroidTest"
+        - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
 
-  - stage: test
-    script:
-      - ./gradlew testOffDebugUnitTest assembleOffDebug --stacktrace # removed "connectedOffDebugAndroidTest"
-      - mv app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
+    - stage: test
+      script:
+        - ./gradlew testOffDebugUnitTest assembleOffDebug --stacktrace # removed "connectedOffDebugAndroidTest"
+        - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
 
-  - stage: test
-    script:
-      - ./gradlew testOpfDebugUnitTest assembleOpfDebug --stacktrace # removed "connectedOpfDebugAndroidTest"
-      - mv app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
+    - stage: test
+      script:
+        - ./gradlew testOpfDebugUnitTest assembleOpfDebug --stacktrace # removed "connectedOpfDebugAndroidTest"
+        - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
 
-  - stage: test
-    script:
-      - ./gradlew testOpffDebugUnitTest assembleOpffDebug --stacktrace # removed "connectedOpffDebugAndroidTest"
-      - mv app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
+    - stage: test
+      script:
+        - ./gradlew testOpffDebugUnitTest assembleOpffDebug --stacktrace # removed "connectedOpffDebugAndroidTest"
+        - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
 
 sudo: required
 
 notifications:
   email: false
   slack: $SLACK_KEY
-  
+
 before_deploy:
-   # no GIT tag for debug apk
+  # no GIT tag for debug apk
   - export TRAVIS_TAG=UNTAGGED
-  
+
 deploy:
   provider: releases
   skip_cleanup: true
