@@ -165,6 +165,7 @@ dependencies {
     implementation "androidx.browser:browser:$rootProject.supportLibraryVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
     implementation "androidx.work:work-runtime:$rootProject.workRuntime"
+    implementation "androidx.concurrent:concurrent-futures:1.0.0"
     implementation "androidx.recyclerview:recyclerview:$rootProject.supportLibraryVersion"
     implementation "androidx.cardview:cardview:$rootProject.supportLibraryVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.supportLibraryVersion"
