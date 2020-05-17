@@ -38,15 +38,13 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.work.Constraints;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.firebase.jobdispatcher.Constraint;
-import com.firebase.jobdispatcher.Driver;
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
-import com.firebase.jobdispatcher.Lifetime;
-import com.firebase.jobdispatcher.Trigger;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -72,7 +70,7 @@ import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
+import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWork;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
@@ -462,19 +460,14 @@ public class Utils {
             return;
         }
         final int periodicity = (int) TimeUnit.MINUTES.toSeconds(30);
-        final int toleranceInterval = (int) TimeUnit.MINUTES.toSeconds(5);
-        Driver driver = new GooglePlayDriver(context);
-        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(driver);
-        Job uploadJob = jobDispatcher.newJobBuilder()
-            .setService(SavedProductUploadJob.class)
-            .setTag(UPLOAD_JOB_TAG)
-            .setConstraints(Constraint.ON_UNMETERED_NETWORK)
-            .setLifetime(Lifetime.FOREVER)
-            .setRecurring(false)
-            .setTrigger(Trigger.executionWindow(periodicity, periodicity + toleranceInterval))
-            .setReplaceCurrent(false)
-            .build();
-        jobDispatcher.schedule(uploadJob);
+
+        OneTimeWorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(SavedProductUploadWork.class)
+            .setConstraints(new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.UNMETERED)
+                .build()
+            )
+            .setInitialDelay(periodicity, TimeUnit.SECONDS).build();
+        WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest);
         isUploadJobInitialised = true;
     }
 
