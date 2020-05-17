@@ -51,8 +51,8 @@ ext {
     rxVersion = '2.2.9'
     rxAndroidVersion = '2.1.1'
 
-    retrofitVersion = '2.6.0'
-    okhttpVersion = '3.12.1'
+    retrofitVersion = '2.6.4'
+    okhttpVersion = '3.12.11'
 
     jacksonVersion = '2.9.8'
 
