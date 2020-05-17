@@ -26,6 +26,7 @@ Open Beauty Facts 是一个非盈利项目，由来自于全世界上千志愿�
 注意：Open Beauty Facts 还正在开发中， 该站点和应用程序基于Open Food Facts。考虑到化妆品的特殊性，我们将在未来作出修改。
 
 还可在以下网站上找到Open Food Facts：https://world.openbeautyfacts.org
-Questions, feedback : contact@openfoodfacts.org
+提问，反馈：
+contact@openfoodfacts.org
 
 关于化妆品，你可以安装 Open Beauty Facts；关于宠物食品，你可以安装 Open Pet Food Facts；关于其他所有其他产品，你可以安装 Open Products Facts。

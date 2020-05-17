@@ -765,8 +765,8 @@
     <string name="content_unselect_photo">Paina tästä poistaaksesi valinnan nykyisestä kuvasta</string>
     <string name="title_exit">Poistu</string>
     <string name="content_exit">Paina tästä palataksesi tuotteeseen</string>
-    <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
-    <string name="product_front_image">Product front image</string>
+    <string name="icon_label">Merkit-kuvake</string>
+    <string name="icon_categories">Tuoteluokat-kuvake</string>
+    <string name="icon_emb">EMB-koodi-kuvake</string>
+    <string name="product_front_image">Tuotteen etukuva</string>
 </resources>
