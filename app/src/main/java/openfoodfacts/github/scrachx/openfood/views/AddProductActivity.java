@@ -368,14 +368,14 @@ public class AddProductActivity extends AppCompatActivity {
         if (!editionMode) {
             if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
                 binding.viewpager.setCurrentItem(0, true);
-            } else if (isNutritionDataAvailable() && addProductNutritionFactsFragment.isFieldsInvalid()) {
+            } else if (isNutritionDataAvailable() && addProductNutritionFactsFragment.containsInvalidField()) {
                 binding.viewpager.setCurrentItem(2, true);
             } else {
                 saveProduct();
             }
         } else {
             // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-            if (isNutritionDataAvailable() && addProductNutritionFactsFragment.isFieldsInvalid()) {
+            if (isNutritionDataAvailable() && addProductNutritionFactsFragment.containsInvalidField()) {
                 // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
                 binding.viewpager.setCurrentItem(2, true);
             } else {

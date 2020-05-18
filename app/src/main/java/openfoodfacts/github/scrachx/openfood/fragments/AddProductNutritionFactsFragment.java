@@ -233,7 +233,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return allEditViews;
     }
 
-    private boolean isFieldsValid() {
+    private boolean isEveryFieldValid() {
         final Collection<CustomValidatingEditTextView> allEditText = getAllEditTextView();
         for (CustomValidatingEditTextView editText : allEditText) {
             if (editText.hasError()) {
@@ -243,8 +243,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return true;
     }
 
-    public boolean isFieldsInvalid() {
-        return !isFieldsValid();
+    public boolean containsInvalidField() {
+        return !isEveryFieldValid();
     }
 
     @Nullable
@@ -544,7 +544,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private void updateButtonState() {
-        final boolean allValuesValid = isFieldsValid();
+        final boolean allValuesValid = isEveryFieldValid();
         binding.globalValidationMsg.setVisibility(allValuesValid ? View.GONE : View.VISIBLE);
         binding.btnAdd.setEnabled(allValuesValid);
     }
