@@ -81,7 +81,7 @@ ext {
     fontIconCoreVersion = '3.2.5@aar'
     googleMaterialFontVersion = '3.0.1.3.original@aar'
 
-    jUnitVersion = '4.12'
+    jUnitVersion = '4.13'
     jsonUnitVersion = '2.17.0'
     espressoVersion = '3.2.0'
     espressoContribVersion = '3.1.0'
