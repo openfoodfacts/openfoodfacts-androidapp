@@ -65,7 +65,7 @@ ext {
     butterknifeVersion = '10.2.1'
 
     commonsLang = '2.6'
-    commonsCsv = '1.4'
+    commonsCsv = '1.8'
 
     journeyappsZxingScannerVersion = '3.6.0'
     zxingCoreVersion = '3.3.0' //For Android 14+ support zxing:core should be 3.3.0 or earlier
