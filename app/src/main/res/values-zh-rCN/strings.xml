@@ -610,15 +610,15 @@
     <string name="description_activity_product">描述</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">过度暴露的高风险</string>
+    <string name="overexposure_moderate">过度接触风险适中</string>
+    <string name="infants">婴幼儿</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
+    <string name="toddlers">幼儿</string>
     <string name="toddlers_age">1至2岁</string>
     <string name="children">孩子</string>
     <string name="children_age">3至9岁</string>
-    <string name="adolescents">Adolescents</string>
+    <string name="adolescents">青少年</string>
     <string name="adolescents_age">10至17岁</string>
     <string name="adults">成人</string>
     <string name="adults_age">18至64岁</string>
@@ -715,7 +715,7 @@
     <string name="history_network_error">无法加载该产品。当您重新在线时，请重试。</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">放大</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">关闭</string>
     <string name="tip_message">TIP: %1$s </string>
@@ -759,4 +759,8 @@
     <string name="content_unselect_photo">Press here to unselect current photo</string>
     <string name="title_exit">Exit</string>
     <string name="content_exit">Press here to return to the product</string>
+    <string name="icon_label">Labels icon</string>
+    <string name="icon_categories">Categories icon</string>
+    <string name="icon_emb">EMB code icon</string>
+    <string name="product_front_image">Product front image</string>
 </resources>

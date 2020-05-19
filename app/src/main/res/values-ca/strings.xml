@@ -212,7 +212,7 @@
     <string name="select_camera">Selecciona la càmera</string>
     <string name="ok_button">D\'acord</string>
     <string name="cancel_button">Cancel·la</string>
-    <string name="login_button">Identificador</string>
+    <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
     <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades!</string>
     <string name="title_info_dialog">Com funciona?</string>
@@ -765,4 +765,8 @@
     <string name="content_unselect_photo">Press here to unselect current photo</string>
     <string name="title_exit">Exit</string>
     <string name="content_exit">Press here to return to the product</string>
+    <string name="icon_label">Icona d\'etiquetes</string>
+    <string name="icon_categories">Icona de categories</string>
+    <string name="icon_emb">Icona de codi EMB</string>
+    <string name="product_front_image">Imatge frontal del producte</string>
 </resources>

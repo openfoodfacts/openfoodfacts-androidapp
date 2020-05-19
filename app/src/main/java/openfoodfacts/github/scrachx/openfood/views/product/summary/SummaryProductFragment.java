@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
@@ -14,21 +15,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,10 +35,9 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.FragmentSummaryProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.CategoryProductHelper;
@@ -66,6 +57,7 @@ import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.Question;
@@ -76,6 +68,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.QuestionActionListeners;
 import openfoodfacts.github.scrachx.openfood.utils.QuestionDialog;
@@ -88,7 +81,6 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
-import openfoodfacts.github.scrachx.openfood.views.TipBox;
 import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
@@ -98,104 +90,35 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
 
-import static android.app.Activity.RESULT_OK;
-import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
-    private PhotoReceiverHandler photoReceiverHandler;
-    @BindView(R.id.product_allergen_alert_layout)
-    LinearLayout productAllergenAlertLayout;
-    @BindView(R.id.product_allergen_alert_text)
-    TextView productAllergenAlert;
-    @BindView(R.id.textNameProduct)
-    TextView nameProduct;
-    @BindView(R.id.textQuantityProduct)
-    TextView quantityProduct;
-    @BindView(R.id.textBrandProduct)
-    TextView brandProduct;
-    @BindView(R.id.textEmbCode)
-    TextView embCode;
-    @BindView(R.id.textCategoryProduct)
-    TextView categoryProduct;
-    @BindView(R.id.textLabelProduct)
-    TextView labelProduct;
-    @BindView(R.id.textCategoryAlcoholAlert)
-    TextView categoryAlcoholAlert;
-    @BindView(R.id.front_picture_layout)
-    LinearLayout frontPictureLayout;
-    @BindView(R.id.imageViewFront)
-    ImageView mImageFront;
-    @BindView(R.id.addPhotoLabel)
-    TextView addPhotoLabel;
-    @BindView(R.id.uploadingImageProgress)
-    ProgressBar uploadingImageProgress;
-    @BindView(R.id.uploadingImageProgressText)
-    TextView uploadingImageProgressText;
-    @BindView(R.id.buttonMorePictures)
-    Button addMorePicture;
-    @BindView(R.id.add_nutriscore_prompt)
-    Button addNutriScorePrompt;
-    @BindView(R.id.imageGrade)
-    ImageView nutriscoreImage;
-    @BindView(R.id.nova_group)
-    ImageView novaGroup;
-    @BindView(R.id.co2_icon)
-    ImageView co2Icon;
-    @BindView(R.id.scores_layout)
-    ConstraintLayout scoresLayout;
-    @BindView(R.id.listNutrientLevels)
-    RecyclerView rv;
-    @BindView(R.id.textNutrientTxt)
-    TextView textNutrientTxt;
-    @BindView(R.id.cvNutritionLights)
-    CardView nutritionLightsCardView;
-    @BindView(R.id.textAdditiveProduct)
-    TextView additiveProduct;
-    @BindView(R.id.action_compare_button)
-    ImageButton compareProductButton;
-    @BindView(R.id.scrollView)
-    NestedScrollView scrollView;
-    @BindView(R.id.product_question_layout)
-    RelativeLayout productQuestionLayout;
-    @BindView(R.id.product_question_text)
-    TextView productQuestionText;
-    @BindView(R.id.product_question_dismiss)
-    ImageView productQuestionDismiss;
-    @BindView(R.id.tipBox)
-    TipBox tipBox;
-    @BindView(R.id.analysis_tags)
-    RecyclerView rvAnalysisTags;
-    @BindView(R.id.analysisContainer)
-    View analysisContainer;
-    private State state;
-    private Product product;
     private OpenFoodAPIClient api;
     private WikidataApiClient apiClientForWikiData;
-    private String mUrlImage;
     private String barcode;
-    private boolean sendOther = false;
-    private CustomTabsIntent customTabsIntent;
+    private FragmentSummaryProductBinding binding;
     private CustomTabActivityHelper customTabActivityHelper;
-    private Uri nutritionScoreUri;
-    private TagDao mTagDao;
-    private ISummaryProductPresenter.Actions presenter;
+    private CustomTabsIntent customTabsIntent;
+    private boolean hasCategoryInsightQuestion = false;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
-    //boolean to determine if nutrient prompt should be shown
-    private boolean showNutrientPrompt = false;
+    private TagDao mTagDao;
+    private String mUrlImage;
+    private Uri nutritionScoreUri;
+    private PhotoReceiverHandler photoReceiverHandler;
+    private ISummaryProductPresenter.Actions presenter;
+    private Product product;
+    private Question productQuestion = null;
+    private boolean sendOther = false;
     //boolean to determine if category prompt should be shown
     private boolean showCategoryPrompt = false;
-    private Question productQuestion = null;
-    private boolean hasCategoryInsightQuestion = false;
+    //boolean to determine if nutrient prompt should be shown
+    private boolean showNutrientPrompt = false;
+    private State state;
 
     @Override
     public void onAttach(Context context) {
@@ -211,7 +134,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
         apiClientForWikiData = new WikidataApiClient();
-        return createView(inflater, container, R.layout.fragment_summary_product);
+        binding = FragmentSummaryProductBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -219,9 +143,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         super.onViewCreated(view, savedInstanceState);
         //done here for android 4 compatibility.
         //a better solution could be to use https://developer.android.com/jetpack/androidx/releases/ but weird issue with it..
-        addNutriScorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        addMorePicture.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
+        binding.addNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
+        binding.buttonMorePictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
         photoReceiverHandler = new PhotoReceiverHandler(this);
+
+        binding.imageViewFront.setOnClickListener(v -> openFullScreen());
+        binding.buttonMorePictures.setOnClickListener(v -> takeMorePicture());
+        binding.actionAddToListButton.setOnClickListener(v -> onBookmarkProductButtonClick());
+        binding.actionEditButton.setOnClickListener(v -> onEditProductButtonClick());
+        binding.actionShareButton.setOnClickListener(v -> onShareProductButtonClick());
+        binding.actionCompareButton.setOnClickListener(v -> onCompareProductButtonClick());
+        binding.addNutriscorePrompt.setOnClickListener(v -> onAddNutriScorePromptClick());
+        binding.productQuestionDismiss.setOnClickListener(v -> productQuestionDismiss());
+        binding.productQuestionLayout.setOnClickListener(v -> onProductQuestionClick());
+
         state = getStateFromActivityIntent();
         refreshView(state);
     }
@@ -237,15 +172,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         this.state = state;
         product = state.getProduct();
         presenter = new SummaryProductPresenter(product, this);
-        categoryProduct.setText(bold(getString(R.string.txtCategories)));
-        labelProduct.setText(bold(getString(R.string.txtLabels)));
+        binding.categoriesText.setText(Utils.bold(getString(R.string.txtCategories)));
+        binding.labelsText.setText(Utils.bold(getString(R.string.txtLabels)));
 
         //refresh visibility of UI components
-        labelProduct.setVisibility(View.VISIBLE);
-        brandProduct.setVisibility(View.VISIBLE);
-        quantityProduct.setVisibility(View.VISIBLE);
-        embCode.setVisibility(View.VISIBLE);
-        nameProduct.setVisibility(View.VISIBLE);
+        binding.textBrandProduct.setVisibility(VISIBLE);
+        binding.textQuantityProduct.setVisibility(VISIBLE);
+        binding.textNameProduct.setVisibility(VISIBLE);
+
+        binding.embText.setVisibility(VISIBLE);
+        binding.embIcon.setVisibility(VISIBLE);
+
+        binding.labelsText.setVisibility(VISIBLE);
+        binding.labelsIcon.setVisibility(VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
@@ -259,7 +198,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadCategories();
         presenter.loadLabels();
         presenter.loadProductQuestion();
-        additiveProduct.setText(bold(getString(R.string.txtAdditives)));
+        binding.textAdditiveProduct.setText(Utils.bold(getString(R.string.txtAdditives)));
         presenter.loadAdditives();
         presenter.loadAnalysisTags();
 
@@ -268,16 +207,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String langCode = LocaleHelper.getLanguage(getContext());
 
         final String imageUrl = product.getImageUrl(langCode);
-        if (isNotBlank(imageUrl)) {
-            addPhotoLabel.setVisibility(View.GONE);
+        if (StringUtils.isNotBlank(imageUrl)) {
+            binding.addPhotoLabel.setVisibility(GONE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Picasso.get()
                     .load(imageUrl)
-                    .into(mImageFront);
+                    .into(binding.imageViewFront);
             } else {
-                mImageFront.setVisibility(View.GONE);
+                binding.imageViewFront.setVisibility(GONE);
             }
 
             mUrlImage = imageUrl;
@@ -286,54 +225,55 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
 
         if (product.getProductName(langCode) != null) {
-            nameProduct.setText(product.getProductName(langCode));
+            binding.textNameProduct.setText(product.getProductName(langCode));
         } else {
-            nameProduct.setVisibility(View.GONE);
+            binding.textNameProduct.setVisibility(GONE);
         }
 
-        if (isNotBlank(product.getQuantity())) {
-            quantityProduct.setText(product.getQuantity());
+        if (StringUtils.isNotBlank(product.getQuantity())) {
+            binding.textQuantityProduct.setText(product.getQuantity());
         } else {
-            quantityProduct.setVisibility(View.GONE);
+            binding.textQuantityProduct.setVisibility(GONE);
         }
 
-        if (isNotBlank(product.getBrands())) {
-            brandProduct.setClickable(true);
-            brandProduct.setMovementMethod(LinkMovementMethod.getInstance());
-            brandProduct.setText("");
+        if (StringUtils.isNotBlank(product.getBrands())) {
+            binding.textBrandProduct.setClickable(true);
+            binding.textBrandProduct.setMovementMethod(LinkMovementMethod.getInstance());
+            binding.textBrandProduct.setText("");
 
             String[] brands = product.getBrands().split(",");
             for (int i = 0; i < brands.length; i++) {
                 if (i > 0) {
-                    brandProduct.append(", ");
+                    binding.textBrandProduct.append(", ");
                 }
-                brandProduct.append(Utils.getClickableText(brands[i].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
+                binding.textBrandProduct.append(Utils.getClickableText(brands[i].trim(), "", SearchType.BRAND, getActivity(), customTabsIntent));
             }
         } else {
-            brandProduct.setVisibility(View.GONE);
+            binding.textBrandProduct.setVisibility(GONE);
         }
 
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
-            embCode.setMovementMethod(LinkMovementMethod.getInstance());
-            embCode.setText(bold(getString(R.string.txtEMB)));
-            embCode.append(" ");
+            binding.embText.setMovementMethod(LinkMovementMethod.getInstance());
+            binding.embText.setText(Utils.bold(getString(R.string.txtEMB)));
+            binding.embText.append(" ");
 
             String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
             for (int i = 0; i < embTags.length; i++) {
                 if (i > 0) {
-                    embCode.append(", ");
+                    binding.embText.append(", ");
                 }
                 String embTag = embTags[i];
-                embCode.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
+                binding.embText.append(Utils.getClickableText(getEmbCode(embTag).trim(), getEmbUrl(embTag), SearchType.EMB, getActivity(), customTabsIntent));
             }
         } else {
-            embCode.setVisibility(View.GONE);
+            binding.embText.setVisibility(GONE);
+            binding.embIcon.setVisibility(GONE);
         }
 
         // if the device does not have a camera, hide the button
         try {
             if (!Utils.isHardwareCameraInstalled(getContext())) {
-                addMorePicture.setVisibility(View.GONE);
+                binding.buttonMorePictures.setVisibility(GONE);
             }
         } catch (NullPointerException e) {
             if (BuildConfig.DEBUG) {
@@ -342,7 +282,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         if (BuildConfig.FLAVOR.equals("off")) {
-            scoresLayout.setVisibility(View.VISIBLE);
+            binding.scoresLayout.setVisibility(VISIBLE);
             List<NutrientLevelItem> levelItem = new ArrayList<>();
             Nutriments nutriments = product.getNutriments();
 
@@ -359,7 +299,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             final boolean inVolume = ProductUtils.isPerServingInLiter(product);
-            textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
+            binding.textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
 
             if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
                 // prefetch the uri
@@ -369,7 +309,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 Context context = this.getContext();
 
                 if (nutriments != null) {
-                    nutritionLightsCardView.setVisibility(View.VISIBLE);
+                    binding.cvNutritionLights.setVisibility(VISIBLE);
                     Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
                     if (fat != null && fatNutriment != null) {
                         String fatNutrimentLevel = fat.getLocalize(context);
@@ -406,71 +346,71 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     }
                 }
             } else {
-                nutritionLightsCardView.setVisibility(View.GONE);
+                binding.cvNutritionLights.setVisibility(GONE);
             }
 
-            rv.setLayoutManager(new LinearLayoutManager(getContext()));
-            rv.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
+            binding.listNutrientLevels.setLayoutManager(new LinearLayoutManager(getContext()));
+            binding.listNutrientLevels.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
             refreshNutriscore();
             refreshNovaIcon();
             refreshCo2Icon();
             refreshScoresLayout();
         } else {
-            scoresLayout.setVisibility(View.GONE);
+            binding.scoresLayout.setVisibility(GONE);
         }
         //to be sure that top of the product view is visible at start
-        nameProduct.requestFocus();
-        nameProduct.clearFocus();
+        binding.textNameProduct.requestFocus();
+        binding.textNameProduct.clearFocus();
     }
 
     private void refreshScoresLayout() {
-        if (novaGroup.getVisibility() == View.GONE &&
-            co2Icon.getVisibility() == View.GONE &&
-            nutriscoreImage.getVisibility() == View.GONE &&
-            addNutriScorePrompt.getVisibility() == View.GONE) {
-            scoresLayout.setVisibility(View.GONE);
+        if (binding.novaGroup.getVisibility() == GONE &&
+            binding.co2Icon.getVisibility() == GONE &&
+            binding.imageGrade.getVisibility() == GONE &&
+            binding.addNutriscorePrompt.getVisibility() == GONE) {
+            binding.scoresLayout.setVisibility(GONE);
         } else {
-            scoresLayout.setVisibility(View.VISIBLE);
+            binding.scoresLayout.setVisibility(VISIBLE);
         }
     }
 
     private void refreshNutriscore() {
         int nutritionGradeResource = Utils.getImageGrade(product);
         if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
-            nutriscoreImage.setVisibility(View.VISIBLE);
-            nutriscoreImage.setImageResource(nutritionGradeResource);
-            nutriscoreImage.setOnClickListener(view1 -> {
+            binding.imageGrade.setVisibility(VISIBLE);
+            binding.imageGrade.setImageResource(nutritionGradeResource);
+            binding.imageGrade.setOnClickListener(view1 -> {
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                 CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         } else {
-            nutriscoreImage.setVisibility(View.GONE);
+            binding.imageGrade.setVisibility(GONE);
         }
     }
 
     private void refreshNovaIcon() {
         if (product.getNovaGroups() != null) {
-            novaGroup.setVisibility(View.VISIBLE);
-            novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
-            novaGroup.setOnClickListener(view1 -> {
+            binding.novaGroup.setVisibility(VISIBLE);
+            binding.novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            binding.novaGroup.setOnClickListener(view1 -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                 CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
             });
         } else {
-            novaGroup.setVisibility(View.GONE);
-            novaGroup.setImageResource(0);
+            binding.novaGroup.setVisibility(GONE);
+            binding.novaGroup.setImageResource(0);
         }
     }
 
     private void refreshCo2Icon() {
         int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
         if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
-            co2Icon.setVisibility(View.VISIBLE);
-            co2Icon.setImageResource(environmentImpactResource);
+            binding.co2Icon.setVisibility(VISIBLE);
+            binding.co2Icon.setImageResource(environmentImpactResource);
         } else {
-            co2Icon.setVisibility(View.GONE);
+            binding.co2Icon.setVisibility(GONE);
         }
     }
 
@@ -490,35 +430,35 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         if (showNutrientPrompt || showCategoryPrompt) {
-            addNutriScorePrompt.setVisibility(View.VISIBLE);
+            binding.addNutriscorePrompt.setVisibility(VISIBLE);
             if (showNutrientPrompt && showCategoryPrompt) {
                 // Both true
-                addNutriScorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+                binding.addNutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
             } else if (showNutrientPrompt) {
                 // showNutrientPrompt true
-                addNutriScorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+                binding.addNutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
             } else {
                 // showCategoryPrompt true
-                addNutriScorePrompt.setText(getString(R.string.add_category_prompt_text));
+                binding.addNutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
             }
         } else {
-            addNutriScorePrompt.setVisibility(View.GONE);
+            binding.addNutriscorePrompt.setVisibility(GONE);
         }
     }
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
-        AdditiveFragmentHelper.showAdditives(additives, additiveProduct, apiClientForWikiData, this);
+        AdditiveFragmentHelper.showAdditives(additives, binding.textAdditiveProduct, apiClientForWikiData, this);
     }
 
     @Override
     public void showAdditivesState(String state) {
         getActivity().runOnUiThread(() -> {
-            if (LOADING.equals(state)) {
-                additiveProduct.append(getString(R.string.txtLoading));
-                additiveProduct.setVisibility(View.VISIBLE);
-            } else if (EMPTY.equals(state)) {
-                additiveProduct.setVisibility(View.GONE);
+            if (ProductInfoState.LOADING.equals(state)) {
+                binding.textAdditiveProduct.append(getString(R.string.txtLoading));
+                binding.textAdditiveProduct.setVisibility(VISIBLE);
+            } else if (ProductInfoState.EMPTY.equals(state)) {
+                binding.textAdditiveProduct.setVisibility(GONE);
             }
         });
     }
@@ -526,7 +466,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
         getActivity().runOnUiThread(() -> {
-            analysisContainer.setVisibility(View.VISIBLE);
+            binding.analysisContainer.setVisibility(VISIBLE);
             IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(getContext(), analysisTags);
             adapter.setOnItemClickListener((view, position) -> {
                 IngredientsWithTagDialogFragment fragment = IngredientsWithTagDialogFragment
@@ -536,7 +476,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 fragment.setOnDismissListener(dialog -> adapter.filterVisibleTags());
             });
 
-            rvAnalysisTags.setAdapter(adapter);
+            binding.analysisTags.setAdapter(adapter);
         });
     }
 
@@ -548,24 +488,27 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         if (data.isIncomplete()) {
-            productAllergenAlert.setText(R.string.product_incomplete_message);
-            productAllergenAlertLayout.setVisibility(View.VISIBLE);
+            binding.productAllergenAlertText.setText(R.string.product_incomplete_message);
+            binding.productAllergenAlertLayout.setVisibility(VISIBLE);
             return;
         }
 
         String text = String.format("%s\n", getResources().getString(R.string.product_allergen_prompt)) +
             StringUtils.join(data.getAllergens(), ", ");
-        productAllergenAlert.setText(text);
-        productAllergenAlertLayout.setVisibility(View.VISIBLE);
+        binding.productAllergenAlertText.setText(text);
+        binding.productAllergenAlertLayout.setVisibility(VISIBLE);
     }
 
     @Override
     public void showCategories(List<CategoryName> categories) {
-        CategoryProductHelper categoryProductHelper = new CategoryProductHelper(categoryProduct, categories, this, apiClientForWikiData);
+        if (categories.isEmpty()) {
+            binding.categoriesLayout.setVisibility(GONE);
+        }
+        CategoryProductHelper categoryProductHelper = new CategoryProductHelper(binding.categoriesText, categories, this, apiClientForWikiData);
         categoryProductHelper.showCategories();
 
         if (categoryProductHelper.getContainsAlcohol()) {
-            categoryProductHelper.showAlcoholAlert(categoryAlcoholAlert);
+            categoryProductHelper.showAlcoholAlert(binding.textCategoryAlcoholAlert);
         }
     }
 
@@ -573,20 +516,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void showProductQuestion(Question question) {
         if (Utils.isUserLoggedIn(getContext()) && question != null && !question.isEmpty()) {
             productQuestion = question;
-            productQuestionText.setText(String.format("%s%n%s",
+            binding.productQuestionText.setText(String.format("%s%n%s",
                 question.getQuestion(), question.getValue()));
-            productQuestionLayout.setVisibility(View.VISIBLE);
+            binding.productQuestionLayout.setVisibility(VISIBLE);
             hasCategoryInsightQuestion = question.getInsightType().equals("category");
         } else {
-            productQuestionLayout.setVisibility(View.GONE);
+            binding.productQuestionLayout.setVisibility(GONE);
             productQuestion = null;
         }
         refreshNutriscorePrompt();
         refreshScoresLayout();
     }
 
-    @OnClick(R.id.product_question_layout)
-    public void onProductQuestionClick() {
+    private void onProductQuestionClick() {
         if (productQuestion == null && !Utils.isUserLoggedIn(getContext())) {
             return;
         }
@@ -626,7 +568,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         Log.d("SummaryProductFragment",
             String.format("Annotation %d received for insight %s", annotation, insightId));
         presenter.annotateInsight(insightId, annotation);
-        productQuestionLayout.setVisibility(View.GONE);
+        binding.productQuestionLayout.setVisibility(GONE);
         productQuestion = null;
     }
 
@@ -639,35 +581,35 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    @OnClick(R.id.product_question_dismiss)
-    public void productQuestionDismiss() {
-        productQuestionLayout.setVisibility(View.GONE);
+    private void productQuestionDismiss() {
+        binding.productQuestionLayout.setVisibility(GONE);
     }
 
     @Override
     public void showLabels(List<LabelName> labels) {
-        labelProduct.setText(bold(getString(R.string.txtLabels)));
-        labelProduct.setClickable(true);
-        labelProduct.setMovementMethod(LinkMovementMethod.getInstance());
-        labelProduct.append(" ");
+        binding.labelsText.setText(Utils.bold(getString(R.string.txtLabels)));
+        binding.labelsText.setClickable(true);
+        binding.labelsText.setMovementMethod(LinkMovementMethod.getInstance());
+        binding.labelsText.append(" ");
 
         for (int i = 0; i < labels.size() - 1; i++) {
-            labelProduct.append(getLabelTag(labels.get(i)));
-            labelProduct.append(", ");
+            binding.labelsText.append(getLabelTag(labels.get(i)));
+            binding.labelsText.append(", ");
         }
 
-        labelProduct.append(getLabelTag(labels.get(labels.size() - 1)));
+        binding.labelsText.append(getLabelTag(labels.get(labels.size() - 1)));
     }
 
     @Override
     public void showCategoriesState(String state) {
         getActivity().runOnUiThread(() -> {
-            if (LOADING.equals(state)) {
+            if (ProductInfoState.LOADING.equals(state)) {
                 if (getContext() != null) {
-                    categoryProduct.append(getString(R.string.txtLoading));
+                    binding.categoriesText.append(getString(R.string.txtLoading));
                 }
-            } else if (EMPTY.equals(state)) {
-                categoryProduct.setVisibility(View.GONE);
+            } else if (ProductInfoState.EMPTY.equals(state)) {
+                binding.categoriesText.setVisibility(GONE);
+                binding.categoriesIcon.setVisibility(GONE);
             }
         });
     }
@@ -675,10 +617,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showLabelsState(String state) {
         getActivity().runOnUiThread(() -> {
-            if (LOADING.equals(state)) {
-                labelProduct.append(getString(R.string.txtLoading));
-            } else if (EMPTY.equals(state)) {
-                labelProduct.setVisibility(View.GONE);
+            if (ProductInfoState.LOADING.equals(state)) {
+                binding.labelsText.append(getString(R.string.txtLoading));
+            } else if (ProductInfoState.EMPTY.equals(state)) {
+                binding.labelsText.setVisibility(GONE);
+                binding.labelsIcon.setVisibility(GONE);
             }
         });
     }
@@ -731,12 +674,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         spannableStringBuilder.append(label.getName());
 
-        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableStringBuilder;
     }
 
-    @OnClick(R.id.add_nutriscore_prompt)
-    public void onAddNutriScorePromptClick() {
+    private void onAddNutriScorePromptClick() {
         if (BuildConfig.FLAVOR.equals("off")) {
             if (isUserNotLoggedIn()) {
                 startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN);
@@ -755,8 +697,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivity(intent);
     }
 
-    @OnClick(R.id.action_compare_button)
-    public void onCompareProductButtonClick() {
+    private void onCompareProductButtonClick() {
         Intent intent = new Intent(getActivity(), ProductComparisonActivity.class);
         intent.putExtra("product_found", true);
         ArrayList<Product> productsToCompare = new ArrayList<>();
@@ -765,8 +706,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivity(intent);
     }
 
-    @OnClick(R.id.action_share_button)
-    public void onShareProductButtonClick() {
+    private void onShareProductButtonClick() {
         String shareUrl = " " + getString(R.string.website_product) + product.getCode();
         Intent sharingIntent = new Intent();
         sharingIntent.setAction(Intent.ACTION_SEND);
@@ -778,8 +718,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivity(Intent.createChooser(sharingIntent, "Share using"));
     }
 
-    @OnClick(R.id.action_edit_button)
-    public void onEditProductButtonClick() {
+    private void onEditProductButtonClick() {
         if (isUserNotLoggedIn()) {
             startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN);
         } else {
@@ -793,8 +732,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         startActivityForResult(intent, EDIT_REQUEST_CODE);
     }
 
-    @OnClick(R.id.action_add_to_list_button)
-    public void onBookmarkProductButtonClick() {
+    private void onBookmarkProductButtonClick() {
         Activity activity = getActivity();
 
         String productBarcode = product.getCode();
@@ -829,24 +767,22 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void onCustomTabsConnected() {
-        nutriscoreImage.setClickable(true);
+        binding.imageGrade.setClickable(true);
     }
 
     @Override
     public void onCustomTabsDisconnected() {
-        nutriscoreImage.setClickable(false);
+        binding.imageGrade.setClickable(false);
     }
 
-    @OnClick(R.id.buttonMorePictures)
-    public void takeMorePicture() {
+    private void takeMorePicture() {
         sendOther = true;
         doChooseOrTakePhotos(getString(R.string.take_more_pictures));
     }
 
-    @OnClick(R.id.imageViewFront)
-    public void openFullScreen(View v) {
+    private void openFullScreen() {
         if (mUrlImage != null) {
-            FullScreenActivityOpener.openForUrl(this, product, FRONT, mUrlImage, mImageFront);
+            FullScreenActivityOpener.openForUrl(this, product, ProductImageField.FRONT, mUrlImage, binding.imageViewFront);
         } else {
             // take a picture
             newFrontImage();
@@ -860,30 +796,30 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void loadPhoto(File photoFile) {
-        ProductImage image = new ProductImage(barcode, FRONT, photoFile);
+        ProductImage image = new ProductImage(barcode, ProductImageField.FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
         api.postImg(getContext(), image, this);
-        addPhotoLabel.setVisibility(View.GONE);
+        binding.addPhotoLabel.setVisibility(GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
         Picasso.get()
             .load(photoFile)
             .fit()
-            .into(mImageFront);
+            .into(binding.imageViewFront);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
-        boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false));
+        boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false));
         if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             shouldRefresh = true;
         }
         if (shouldRefresh && getActivity() instanceof ProductActivity) {
             ((ProductActivity) getActivity()).onRefresh();
         }
-        if (resultCode == RESULT_OK) {
+        if (resultCode == Activity.RESULT_OK) {
             if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && isUserLoggedIn()) {
                 editProduct();
             }
@@ -900,7 +836,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (!sendOther) {
             loadPhoto(new File(resultUri.getPath()));
         } else {
-            ProductImage image = new ProductImage(barcode, OTHER, newPhotoFile);
+            ProductImage image = new ProductImage(barcode, ProductImageField.OTHER, newPhotoFile);
             image.setFilePath(resultUri.getPath());
             showOtherImageProgress();
             api.postImg(getContext(), image, this);
@@ -920,18 +856,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onDestroyView() {
         presenter.dispose();
         super.onDestroyView();
+        binding = null;
     }
 
     public void showOtherImageProgress() {
-        uploadingImageProgress.setVisibility(View.VISIBLE);
-        uploadingImageProgressText.setVisibility(View.VISIBLE);
-        uploadingImageProgressText.setText(R.string.toastSending);
+        binding.uploadingImageProgress.setVisibility(VISIBLE);
+        binding.uploadingImageProgressText.setVisibility(VISIBLE);
+        binding.uploadingImageProgressText.setText(R.string.toastSending);
     }
 
     @Override
     public void onSuccess() {
-        uploadingImageProgress.setVisibility(View.GONE);
-        uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
+        binding.uploadingImageProgress.setVisibility(GONE);
+        binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
     }
 
     @Override
@@ -942,8 +879,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void onFailure(String message) {
-        uploadingImageProgress.setVisibility(View.GONE);
-        uploadingImageProgressText.setVisibility(View.GONE);
+        binding.uploadingImageProgress.setVisibility(GONE);
+        binding.uploadingImageProgressText.setVisibility(GONE);
         Context context = getContext();
         if (context == null) {
             context = OFFApplication.getInstance();
@@ -952,10 +889,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     public void resetScroll() {
-        scrollView.scrollTo(0, 0);
+        binding.scrollView.scrollTo(0, 0);
 
-        if (rvAnalysisTags.getAdapter() != null) {
-            ((IngredientAnalysisTagsAdapter) rvAnalysisTags.getAdapter()).filterVisibleTags();
+        if (binding.analysisTags.getAdapter() != null) {
+            ((IngredientAnalysisTagsAdapter) binding.analysisTags.getAdapter()).filterVisibleTags();
         }
     }
 }

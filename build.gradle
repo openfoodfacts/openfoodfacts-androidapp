@@ -48,13 +48,13 @@ ext {
 
     daggerVersion = '2.22'
 
-    rxVersion = '2.2.9'
+    rxVersion = '2.2.19'
     rxAndroidVersion = '2.1.1'
 
-    retrofitVersion = '2.6.0'
-    okhttpVersion = '3.12.1'
+    retrofitVersion = '2.6.4'
+    okhttpVersion = '3.12.11'
 
-    jacksonVersion = '2.9.8'
+    jacksonVersion = '2.11.0'
 
     greenDaoVersion = '3.2.0'
 
@@ -62,7 +62,7 @@ ext {
     //DO NOT UPDATE : saveInAppExternalFilesDir() removed
     easyImageVersion = '1.4.0'
 
-    butterknifeVersion = '10.1.0'
+    butterknifeVersion = '10.2.1'
 
     commonsLang = '2.6'
     commonsCsv = '1.4'
@@ -81,13 +81,13 @@ ext {
     fontIconCoreVersion = '3.2.5@aar'
     googleMaterialFontVersion = '3.0.1.3.original@aar'
 
-    jUnitVersion = '4.12'
-    jsonUnitVersion = '1.27.0'
-    espressoVersion = '3.1.0'
-    espressoContribVersion = '3.1.0'
-    mockitoVersion = '2.13.0'
+    jUnitVersion = '4.13'
+    jsonUnitVersion = '2.17.0'
+    espressoVersion = '3.2.0'
+    espressoContribVersion = '3.2.0'
+    mockitoVersion = '3.3.3'
 
-    constraintLayout = '1.1.2'
+    constraintLayout = '1.1.3'
     jsr250api = '1.0'
     jobDispatcher = '0.8.5'
     fastAdapterCommons = '3.3.1@aar'
@@ -95,8 +95,8 @@ ext {
     materialDrawer = '6.1.2'
     imageCropper = '2.8.0'
     orchestrator = '1.1.0-alpha4'
-    nachos = '1.1.1'
-    testRunnerVersion = '1.1.0'
+    nachos = '1.2.0'
+    testRunnerVersion = '1.2.0'
 
     testFalconVersion = "2.1.1"
     testscreengrabVersion = "1.2.0"

@@ -107,9 +107,9 @@
         <item>Nervonic acid (24:1 n-9)</item>
         <item>Nukleotider</item>
         <item>Oleic acid (18:1 n-9)</item>
-        <item>Omega 3 fatty acids</item>
-        <item>Omega 6 fatty acids</item>
-        <item>Omega 9 fatty acids</item>
+        <item>Omega 3-fettsyrer</item>
+        <item>Omega 6-fettsyrer</item>
+        <item>Omega 9-fettsyrer</item>
         <item>Palmitic acid (16:0)</item>
         <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
         <item>pH</item>
@@ -149,8 +149,8 @@
     <string name="txtLabels">Etiketter, sertifiseringer, priser :</string>
     <string name="txtEMB">EMB Code:</string>
     <string name="txtIngredients">Liste over ingredienser:</string>
-    <string name="Donate">Donate</string>
-    <string name="Donation">Click here to donate to Open Food Facts</string>
+    <string name="Donate">Doner</string>
+    <string name="Donation">Klikk her for å donere til Open Food Facts</string>
     <string name="txtSubstances">Stoffer eller produkter som fremkaller allergiske reaksjoner eller intoleranse</string>
     <string name="txtAdditives">Tilsetningsstoffer:</string>
     <string name="txtTraces">Kan finnes spor av:</string>
@@ -162,7 +162,7 @@
     <string name="txtNutritionLevelLow">i liten mengde</string>
     <string name="txtNutritionLevelModerate">i moderat mengde</string>
     <string name="txtNutritionLevelHigh">i høy mengde</string>
-    <string name="txtSave">Lagr</string>
+    <string name="txtSave">Lagre</string>
     <string name="txtSignIn">Logg på</string>
     <string name="txtToastSaved">Bruker lagret</string>
     <string name="txtSalt">Salt</string>
@@ -182,10 +182,10 @@
     <string name="txtNo">Nei</string>
     <string name="hintBrand">Merke</string>
     <string name="txtSendAll">Last opp alle</string>
-    <string name="txtPictureNeededDialogNo">Discard</string>
+    <string name="txtPictureNeededDialogNo">Forkast</string>
     <string name="toastSending">Laster opp …</string>
     <string name="txtLoading">Laster…</string>
-    <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
+    <string name="txtDialogsContentDelete">Er du sikker på at du vil fjerne dette utkastet?</string>
     <string name="txtDialogsContentInfoSave">P</string>
     <string name="txtBarcodeRequire">Strekkode behøves</string>
     <string name="txtOk">OK</string>
@@ -193,7 +193,7 @@
     <string name="msg_share">Se på dette produktet på Open Food Facts :</string>
     <string name="create_account">Registrer deg</string>
     <string name="home_drawer">Hjem</string>
-    <string name="install">Install</string>
+    <string name="install">Installer</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Søk</string>
@@ -207,7 +207,7 @@
     <string name="delete_txt">Slett</string>
     <string name="sign_in_drawer">Logg inn</string>
     <string name="alert_drawer">Allergenadvarsel</string>
-    <string name="your_lists">Your lists</string>
+    <string name="your_lists">Listene dine</string>
     <string name="title_dialog_alert">Legg til varsel</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
@@ -254,8 +254,8 @@
     <string name="check_facts">Check</string>
     <string name="nutrition">Ernæring</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
-    <string name="please_enter_weight">Please type the product weight</string>
-    <string name="enter_weight">Type the product weight</string>
+    <string name="please_enter_weight">Skriv inn produktets vekt</string>
+    <string name="enter_weight">Skriv inn produktets vekt</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Karbohydrater</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
@@ -276,7 +276,7 @@
     <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
     <string name="energy_pref_title">Preferred energy unit</string>
     <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
-    <string name="volume_pref_title">Preferred volume unit</string>
+    <string name="volume_pref_title">Foretrukket volumenhet</string>
     <string name="logout_drawer">Logg ut</string>
     <string name="contribution_without_account">Du kan logge inn eller lage en konto for å beholde bidragene dine</string>
     <string name="textCarbonFootprint">Karbonutslipp / CO2-utslipp: </string>
@@ -284,8 +284,8 @@
     <string name="search_hint">Søk etter produkt</string>
     <string name="number_of_results">Antall resultater: </string>
     <string name="number_of_products">Antall produkter: </string>
-    <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
-    <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
+    <string name="txt_no_matching__category_products">Å nei, vi har ikke noe produkt i denne kategorien, kan du legge til et?</string>
+    <string name="txt_no_matching_allergen_products">Å nei, vi har ingen produkter med dette allergenet, kan du legge til et?</string>
     <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
     <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
     <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
@@ -296,7 +296,7 @@
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
-    <string name="something_went_wrong">Sorry, something went wrong…</string>
+    <string name="something_went_wrong">Beklager, noe gikk galt…</string>
     <string name="txt_try_again">Prøv igjen</string>
     <string name="nutrition_lactose">Laktose</string>
     <string name="nutrition_casein">Kasein</string>
@@ -354,35 +354,35 @@
     <string name="collagen_meat_protein_ratio">Kollagenforhold</string>
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Klorofyll</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">Ta et bilde</string>
+    <string name="choose_picture_from_gallery">Fra galleriet</string>
     <string name="take_picture_ingredients">Ta et bilde av ingrediensene</string>
     <string name="take_picture_front">Ta et bilde av forsiden</string>
     <string name="take_picture_nutrition_table">Ta et bilde av næringslisten</string>
     <string name="take_more_pictures">Ta flere bilder</string>
     <string name="txtSaturatedFat">Mettet fett</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nutriscore_info_msg">Lær mer om Nutri-Score</string>
+    <string name="nova_info_msg">Lær mer om Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
-    <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
-    <string name="nova_grp3_msg">Group 3 - Processed foods</string>
-    <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
+    <string name="nova_grp2_msg">Gruppe 2 - Bearbeidede kulinariske ingredienser</string>
+    <string name="nova_grp3_msg">Gruppe 3 - Bearbeidet mat</string>
+    <string name="nova_grp4_msg">Gruppe 4 - Ultrabearbeidet mat- og drikkeprodukter</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
-    <string name="scan_shortcut_short_label">Scan</string>
-    <string name="scan_shortcut_long_label">Scan Product</string>
+    <string name="scan_shortcut_short_label">Skann</string>
+    <string name="scan_shortcut_long_label">Skann produkt</string>
     <string name="barcode_shortcut_short_label">Søk</string>
     <string name="barcode_shortcut_long_label">Search By Barcode</string>
     <string name="history_shortcut_short_label">Historikk</string>
     <string name="history_shortcut_long_label">Historikk</string>
-    <string name="contributions_shortcut_short_label">Contributions</string>
-    <string name="contributions_shortcut_long_label">My Contributions</string>
-    <string name="forgot_password">Forgot Password</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
-    <string name="contact">Contact</string>
-    <string name="contact_summary">Contact the team</string>
+    <string name="contributions_shortcut_short_label">Bidrag</string>
+    <string name="contributions_shortcut_long_label">Mine bidrag</string>
+    <string name="forgot_password">Glemt passordet</string>
+    <string name="next">NESTE</string>
+    <string name="skip">HOPP OVER</string>
+    <string name="start">FORSTÅR</string>
+    <string name="contact">Kontakt</string>
+    <string name="contact_summary">Kontakt teamet</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
     <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
@@ -485,8 +485,8 @@
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">Historikk</string>
-    <string name="products_added">Products you added or edited</string>
-    <string name="products_incomplete">Products you added that need to be completed</string>
+    <string name="products_added">Produkter du har lagt til eller redigert</string>
+    <string name="products_incomplete">Produkter du har lagt til som må fullføres</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
     <string name="product_info_added">Products you added information for</string>
@@ -501,7 +501,7 @@
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Product page also edited by </string>
-    <string name="contribution_tab">Contributions</string>
+    <string name="contribution_tab">Bidrag</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="txtDialogsTitle">Informasjon</string>
@@ -580,15 +580,15 @@
     <string name="per_serving">Per porsjon</string>
     <string name="serving_size">Porsjonstørrelse</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
+    <string name="add_a_nutrient">Legg til et næringsstoff</string>
     <string name="add_this_product">Add this product</string>
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
-    <string name="product_name">Product name</string>
+    <string name="product_name">Produktnavn</string>
     <string name="quantity">Mengde</string>
     <string name="labels">Labels</string>
-    <string name="period_of_time_after_opening">Period of time after opening</string>
+    <string name="period_of_time_after_opening">Tidsperiode etter åpning</string>
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Ingrediensopprinnelse</string>
     <string name="manufacturing_place">Manufacturing place</string>
@@ -616,19 +616,19 @@
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">Høy risiko for overeksponering</string>
+    <string name="overexposure_moderate">Moderat risiko for overeksponering</string>
+    <string name="infants">Spedbarn</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
+    <string name="toddlers">Småbarn</string>
+    <string name="toddlers_age">1 til 2</string>
+    <string name="children">Barn</string>
+    <string name="children_age">3 til 9</string>
+    <string name="adolescents">Ungdom</string>
+    <string name="adolescents_age">10 til 17</string>
     <string name="adults">Adults</string>
     <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="elderly">Eldre</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -670,7 +670,7 @@
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
-    <string name="txt_discard">Discard</string>
+    <string name="txt_discard">Forkast</string>
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
@@ -721,7 +721,7 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">Forstørr</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Lukk</string>
     <string name="tip_message">TIP: %1$s </string>
@@ -765,4 +765,8 @@
     <string name="content_unselect_photo">Press here to unselect current photo</string>
     <string name="title_exit">Exit</string>
     <string name="content_exit">Press here to return to the product</string>
+    <string name="icon_label">Labels icon</string>
+    <string name="icon_categories">Categories icon</string>
+    <string name="icon_emb">EMB code icon</string>
+    <string name="product_front_image">Product front image</string>
 </resources>
