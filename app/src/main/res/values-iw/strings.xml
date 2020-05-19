@@ -781,4 +781,5 @@
     <string name="icon_categories">סמל קטגוריות</string>
     <string name="icon_emb">סמל קוד EMB</string>
     <string name="product_front_image">תמונת חזית המוצר</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>
