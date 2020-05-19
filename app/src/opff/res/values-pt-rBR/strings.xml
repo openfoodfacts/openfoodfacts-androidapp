@@ -37,7 +37,7 @@
     <string name="currently_on_version">Atualmente no Open Pet Food Facts</string>
     <string name="category_game_btn">Ajude a categorizar produtos</string>
     <!-- TODO add true support instead of overriding strings -->
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_nutrient_prompt_text">Adicione informações nutricionais para calcular os níveis de nutrientes</string>
     <string name="add_category_prompt_text">Adicione uma categoria para ajudar a completar o produto</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Adicione uma categoria e informações nutricionais para ajudar a completar o produto</string>
 </resources>

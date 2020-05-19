@@ -769,4 +769,5 @@
     <string name="icon_categories">Icona categorie</string>
     <string name="icon_emb">Icona codice EMB</string>
     <string name="product_front_image">Immagine frontale prodotto</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>
