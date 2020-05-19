@@ -84,7 +84,7 @@ ext {
     jUnitVersion = '4.13'
     jsonUnitVersion = '2.17.0'
     espressoVersion = '3.2.0'
-    espressoContribVersion = '3.1.0'
+    espressoContribVersion = '3.2.0'
     mockitoVersion = '2.13.0'
 
     constraintLayout = '1.1.3'
