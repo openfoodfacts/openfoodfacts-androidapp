@@ -769,4 +769,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="icon_categories">Kategoriesymbol</string>
     <string name="icon_emb">Symbol des Produzenten-Codes</string>
     <string name="product_front_image">Produktfoto (Front)</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>
