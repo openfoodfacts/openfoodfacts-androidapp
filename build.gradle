@@ -44,7 +44,7 @@ ext {
 
     multidexVersion = '2.0.1'
 
-    workRuntime = '2.2.0'
+    workRuntime = '2.3.4'
 
     daggerVersion = '2.22'
 
