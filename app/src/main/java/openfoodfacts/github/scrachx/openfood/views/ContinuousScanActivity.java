@@ -863,11 +863,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastText)).unique();
-            if (offlineSavedProduct != null) {
-                hideAllViews();
-                showOfflineSavedDetails(offlineSavedProduct);
-            }
+            findProduct(lastText);
         } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
             intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
