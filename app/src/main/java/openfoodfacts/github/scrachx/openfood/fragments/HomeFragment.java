@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,13 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -31,6 +28,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -53,12 +51,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  * @see R.layout#fragment_home
  */
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
-    @BindView(R.id.tvDailyFoodFact)
-    TextView tvDailyFoodFact;
-    @BindView(R.id.textHome)
-    TextView textHome;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    private FragmentHomeBinding binding;
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
     private String taglineURL;
@@ -66,7 +59,8 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return createView(inflater, container, R.layout.fragment_home);
+        binding = FragmentHomeBinding.inflate(inflater);
+        return binding.getRoot();
     }
 
     @Override
@@ -75,7 +69,13 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.home_page);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 
     @OnClick(R.id.tvDailyFoodFact)
@@ -152,7 +152,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     public void onResume() {
 
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.home_page);
 
         int productCount = sp.getInt("productCount", 0);
         apiClient.getTotalProductCount(Utils.getUserAgent())
@@ -208,10 +208,10 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
      */
     private void updateTextHome(int totalProductCount) {
         try {
-            textHome.setText(R.string.txtHome);
+            binding.textHome.setText(R.string.txtHome);
             if (totalProductCount != 0) {
                 String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
-                textHome.setText(String.format(txtHomeOnline, totalProductCount));
+                binding.textHome.setText(String.format(txtHomeOnline, totalProductCount));
             }
         } catch (Exception e) {
             Log.w(HomeFragment.class.getSimpleName(), "can format text for home", e);
@@ -247,15 +247,15 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                         if (!isExactLanguageFound && (languageCountry.equals(localAsString) || languageCountry.contains(localAsString))) {
                             isExactLanguageFound = languageCountry.equals(localAsString);
                             taglineURL = response.body().get(i).getTaglineModel().getUrl();
-                            tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
-                            tvDailyFoodFact.setVisibility(View.VISIBLE);
+                            binding.tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
+                            binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
                             isLanguageFound = true;
                         }
                     }
                     if (!isLanguageFound) {
                         taglineURL = response.body().get(response.body().size() - 1).getTaglineModel().getUrl();
-                        tvDailyFoodFact.setText(response.body().get(response.body().size() - 1).getTaglineModel().getMessage());
-                        tvDailyFoodFact.setVisibility(View.VISIBLE);
+                        binding.tvDailyFoodFact.setText(response.body().get(response.body().size() - 1).getTaglineModel().getMessage());
+                        binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
                     }
                 }
             }

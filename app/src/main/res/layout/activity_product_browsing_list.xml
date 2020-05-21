@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
->
+        android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="100"
             tools:context="openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity">
 
 
-        <LinearLayout
+            <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <include
+                <include
                     android:id="@+id/toolbar"
-                    layout="@layout/toolbar"/>
+                    layout="@layout/toolbar" />
 
 
-            <TextView
+                <TextView
                     android:id="@+id/textCountProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -39,24 +40,24 @@
                     android:paddingRight="@dimen/padding_short"
                     android:paddingTop="@dimen/padding_too_short"
                     android:text="@string/number_of_products"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                     android:id="@+id/swipe_refresh"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <androidx.recyclerview.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/products_recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/materialize_baseline_grid_small">
 
-                </androidx.recyclerview.widget.RecyclerView>
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-        </LinearLayout>
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </LinearLayout>
 
-        <LinearLayout
+            <LinearLayout
                 android:id="@+id/offlineCloudLinearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,14 +75,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+                <ImageView
                     android:id="@+id/sadCloud"
                     android:layout_width="180dp"
                     android:layout_height="150dp"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/ic_cloud_off"/>
+                    app:srcCompat="@drawable/ic_cloud_off" />
 
-            <TextView
+                <TextView
                     android:id="@+id/txtCannotLoadResults"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,9 +92,9 @@
                     android:text="@string/something_went_wrong"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/grey_500"
-                    android:textSize="@dimen/font_normal"/>
+                    android:textSize="@dimen/font_normal" />
 
-            <Button
+                <Button
                     android:id="@+id/buttonTryAgain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,20 +102,20 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:text="@string/txt_try_again"
-                    android:textColor="@color/light_blue_500"/>
+                    android:textColor="@color/light_blue_500" />
 
-        </LinearLayout>
+            </LinearLayout>
 
-        <ProgressBar
+            <ProgressBar
                 android:id="@+id/progress_bar"
                 android:layout_width="@dimen/button_height_normal"
                 android:layout_height="@dimen/button_height_normal"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/linearLayout"/>
+                app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-        <LinearLayout
+            <LinearLayout
                 android:id="@+id/noResultsLayout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -127,7 +128,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+                <TextView
                     android:id="@+id/textNoResults"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,9 +137,9 @@
                     android:text="@string/txt_no_matching_products"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/grey_500"
-                    android:textSize="@dimen/font_normal"/>
+                    android:textSize="@dimen/font_normal" />
 
-            <TextView
+                <TextView
                     android:id="@+id/textExtendSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -148,17 +149,21 @@
                     android:text="@string/txt_broaden_search"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/grey_500"
-                    android:textSize="@dimen/font_normal"/>
+                    android:textSize="@dimen/font_normal" />
 
-            <ImageView
+                <ImageView
                     android:id="@+id/addProduct"
                     android:layout_width="95dp"
                     android:layout_height="90dp"
                     android:layout_marginTop="25dp"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_add_a_photo_black_48dp"/>
+                    app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <include layout="@layout/navigation_bottom"/>
-</LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/navigation_bottom"
+            layout="@layout/navigation_bottom" />
+    </LinearLayout>
+</layout>

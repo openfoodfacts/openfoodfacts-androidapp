@@ -183,7 +183,7 @@
         <activity
             android:name=".views.ProductListsActivity"
             android:parentActivityName=".views.MainActivity" />
-        <activity android:name=".views.YourListedProducts" />
+        <activity android:name=".views.YourListedProductsActivity" />
     </application>
 
 </manifest>

@@ -14,26 +14,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.OnClick;
+
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -44,25 +37,35 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding;
+import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
+import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+
 import static org.apache.commons.lang.StringUtils.capitalize;
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
-public class YourListedProducts extends BaseActivity implements SwipeControllerActions {
-    @BindView(R.id.rvYourListedProducts)
-    RecyclerView recyclerView;
-    @BindView(R.id.tvInfoYourListedProducts)
-    TextView tvInfo;
-    @BindView(R.id.scanFirstYourListedProduct)
-    Button btnScanFirst;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+public class YourListedProductsActivity extends BaseActivity implements SwipeControllerActions {
+    private ActivityYourListedProductsBinding binding;
     private ProductLists thisProductList;
     private List<YourListedProduct> products;
     private YourListedProductDao yourListedProductDao;
@@ -77,12 +80,21 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
     private String sortType = "none";
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_your_listed_products);
-        setSupportActionBar(findViewById(R.id.toolbar));
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_your_listed_products);
+        setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        // OnClick
+        binding.scanFirstYourListedProduct.setOnClickListener(v -> onScanFirst());
 
         if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
             isLowBatteryMode = true;
@@ -125,27 +137,27 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         if (thisProductList.getId() == 1L) {
             isEatenList = true;
         }
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(false);
+        binding.rvYourListedProducts.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvYourListedProducts.setHasFixedSize(false);
         products = thisProductList.getProducts();
         if (products.isEmpty()) {
             emptyList = true;
-            tvInfo.setVisibility(View.VISIBLE);
-            btnScanFirst.setVisibility(View.VISIBLE);
-            setInfo(tvInfo);
+            binding.tvInfoYourListedProducts.setVisibility(View.VISIBLE);
+            binding.scanFirstYourListedProduct.setVisibility(View.VISIBLE);
+            setInfo(binding.tvInfoYourListedProducts);
         }
 
         if (products != null) {
             adapter = new YourListedProductsAdapter(this, products, isLowBatteryMode);
-            recyclerView.setAdapter(adapter);
+            binding.rvYourListedProducts.setAdapter(adapter);
 
-            SwipeController swipeController = new SwipeController(this, YourListedProducts.this);
+            SwipeController swipeController = new SwipeController(this, YourListedProductsActivity.this);
             ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
-            itemTouchhelper.attachToRecyclerView(recyclerView);
+            itemTouchhelper.attachToRecyclerView(binding.rvYourListedProducts);
         }
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this, getBaseContext());
     }
 
     public static String getProductBrandsQuantityDetails(Product p) {
@@ -244,7 +256,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
 
                     sortProducts();
                     adapter = new YourListedProductsAdapter(this, products, isLowBatteryMode);
-                    recyclerView.setAdapter(adapter);
+                    binding.rvYourListedProducts.setAdapter(adapter);
                 });
                 builder.show();
                 return true;
@@ -348,24 +360,23 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
         }
     }
 
-    @OnClick(R.id.scanFirstYourListedProduct)
     protected void onScanFirst() {
         if (Utils.isHardwareCameraInstalled(getBaseContext())) {
             if (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(YourListedProducts.this, Manifest.permission.CAMERA)) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(YourListedProductsActivity.this, Manifest.permission.CAMERA)) {
                     new MaterialDialog.Builder(this)
                         .title(R.string.action_about)
                         .content(R.string.permission_camera)
                         .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(YourListedProducts.this, new String[]{Manifest
+                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(YourListedProductsActivity.this, new String[]{Manifest
                             .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
                         .show();
                 } else {
-                    ActivityCompat.requestPermissions(YourListedProducts.this, new String[]{Manifest.permission.CAMERA}, Utils
+                    ActivityCompat.requestPermissions(YourListedProductsActivity.this, new String[]{Manifest.permission.CAMERA}, Utils
                         .MY_PERMISSIONS_REQUEST_CAMERA);
                 }
             } else {
-                Intent intent = new Intent(YourListedProducts.this, ContinuousScanActivity.class);
+                Intent intent = new Intent(YourListedProductsActivity.this, ContinuousScanActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -400,7 +411,7 @@ public class YourListedProducts extends BaseActivity implements SwipeControllerA
             isDownload = true;
         } catch (IOException e) {
             isDownload = false;
-            Log.e(YourListedProducts.class.getSimpleName(), "exportCSV", e);
+            Log.e(YourListedProductsActivity.class.getSimpleName(), "exportCSV", e);
         }
 
         Intent downloadIntent = new Intent(Intent.ACTION_VIEW);

@@ -81,7 +81,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
-import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProductsActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -738,7 +738,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String productBarcode = product.getCode();
         String productName = product.getProductName();
         String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(getContext()));
-        String productDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
+        String productDetails = YourListedProductsActivity.getProductBrandsQuantityDetails(product);
 
         MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)
             .title(R.string.add_to_product_lists)
