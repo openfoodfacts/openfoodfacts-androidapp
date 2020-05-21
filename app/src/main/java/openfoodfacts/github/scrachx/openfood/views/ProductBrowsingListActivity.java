@@ -90,6 +90,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
         startActivity(context, searchQuery, searchQuery, type);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
     /**
      * @see #startActivity(Context, String, String, String)
      */

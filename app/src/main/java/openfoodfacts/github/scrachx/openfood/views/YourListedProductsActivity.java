@@ -80,6 +80,12 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
     private String sortType = "none";
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_your_listed_products);

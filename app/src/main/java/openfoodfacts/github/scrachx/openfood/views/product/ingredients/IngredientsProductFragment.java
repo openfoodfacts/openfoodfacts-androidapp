@@ -406,6 +406,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
     public void changeIngImage() {
         sendUpdatedIngredientsImage = true;
 

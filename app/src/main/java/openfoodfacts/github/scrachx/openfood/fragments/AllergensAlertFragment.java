@@ -76,6 +76,12 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, @NonNull MenuInflater inflater) {
         MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);

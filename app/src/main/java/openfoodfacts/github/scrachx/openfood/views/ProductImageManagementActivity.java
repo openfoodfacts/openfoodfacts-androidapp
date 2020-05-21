@@ -85,6 +85,12 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         client = new OpenFoodAPIClient(this);

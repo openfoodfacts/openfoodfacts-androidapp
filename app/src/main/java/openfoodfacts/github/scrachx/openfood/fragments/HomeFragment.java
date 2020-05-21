@@ -72,6 +72,12 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.home_page);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
     @OnClick(R.id.tvDailyFoodFact)
     protected void setDailyFoodFact() {
         // chrome custom tab init
