@@ -46,7 +46,7 @@ ext {
 
     workRuntime = '2.3.4'
 
-    daggerVersion = '2.22'
+    daggerVersion = '2.27'
 
     rxVersion = '2.2.19'
     rxAndroidVersion = '2.1.1'
