@@ -13,27 +13,29 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/toolbar" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/imageViewFullScreen"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginBottom="@dimen/spacing_tiny"
             android:adjustViewBounds="true"
             android:gravity="center"
             android:scaleType="fitCenter"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:transitionName="@string/product_transition"
             app:layout_constraintBottom_toTopOf="@id/textInfo"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_marginBottom="@dimen/spacing_tiny" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -49,16 +51,16 @@
             android:id="@+id/textInfo"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_height_short"
-            android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
             android:gravity="start|center_vertical"
             android:textColor="@color/white"
             android:textIsSelectable="true"
             android:textStyle="normal"
-            app:layout_constraintStart_toEndOf="@id/progressBar"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/progressBar" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
