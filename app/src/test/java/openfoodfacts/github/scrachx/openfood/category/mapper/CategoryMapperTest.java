@@ -11,7 +11,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.category.model.Category;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse;
-import openfoodfacts.github.scrachx.openfood.utils.FileHelperForTests;
+import openfoodfacts.github.scrachx.openfood.utils.FileTestUtils;
 
 /**
  * Created by Abdelali Eramli on 01/01/2018.
@@ -20,9 +20,9 @@ import openfoodfacts.github.scrachx.openfood.utils.FileHelperForTests;
 public class CategoryMapperTest {
 
     @Test
-    public void fromNetwork_FullResponse_CategoryList() throws IOException {
+    public void fromNetworkFullResponseCategoryList() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        CategoryResponse response = mapper.readValue(FileHelperForTests
+        CategoryResponse response = mapper.readValue(FileTestUtils
                 .readTextFileFromResources("mock_categories.json", this.getClass().getClassLoader()), CategoryResponse.class);
         List<Category> categories = new CategoryMapper().fromNetwork(response.getTags());
         Assert.assertEquals(response.getTags().size(), categories.size());
