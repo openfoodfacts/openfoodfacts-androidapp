@@ -769,5 +769,5 @@
     <string name="icon_categories">Katagori simgeleri</string>
     <string name="icon_emb">EMB kodu simgesi</string>
     <string name="product_front_image">Ürünün ön taraf resmi</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Örenekler: CocaCola, Nestle, vb…</string>
 </resources>

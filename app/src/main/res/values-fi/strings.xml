@@ -769,5 +769,5 @@
     <string name="icon_categories">Tuoteluokat-kuvake</string>
     <string name="icon_emb">EMB-koodi-kuvake</string>
     <string name="product_front_image">Tuotteen etukuva</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Esimerkkejä: CocaCola, Nestle jne…</string>
 </resources>

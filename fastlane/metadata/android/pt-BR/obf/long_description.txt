@@ -7,10 +7,10 @@
 
 *** Conheça os Fatos ***
 
-- Aditivos cosméticos, F.I.L. códigos, números CI, INCI (Nomenclatura Internacional de Ingredientes Cosméticos), lista de ingredientes, alérgenos, códigos de embalagem... 
+- Aditivos cosméticos, códigos F.I.L.,. números CI, INCI (Nomenclatura Internacional de Ingredientes Cosméticos), lista de ingredientes, alérgenos, códigos de embalagens... 
 - O Open Beauty Facts ajuda você a entender as letrinhas miúdas nos rótulos dos produtos.
 - Você não precisa mais ser químico e aprender latim para decifrar uma lista de ingredientes :-)
-- Você pode escanear: loções pós-barba, hidratantes, cremes, desodorantes, delineadores, bases, fragrâncias, batons, maquiagena, máscaras para cílios, perfumes, xampus, sabonetes, géis de banho, esmaltes e muito mais…
+- Você pode escanear: loções pós-barba, hidratantes, cremes, desodorantes, delineadores, bases, fragrâncias, batons, maquiagens, máscaras para cílios, perfumes, xampus, sabonetes, géis de banho, esmaltes e muito mais…
 - Acreditamos que o Open Beauty Facts pode pode ajudar pessoas com problemas de pele como acne, psoríase, eczema… a escolherem melhor seus cosméticos.
 
 *** Funciona bem em qualquer condição***
@@ -18,7 +18,7 @@
 - O aplicativo abre apenas o estritamente necessário para reduzir o consumo de bateria e dados
 - Você não precisa de uma câmera para procurar um produto. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
 
-*** Os seus produtos, os seus dados ***
+*** Seus cosméticos, seus dados ***
 - Seus dados são seus e nunca é enviado online
 - Você pode usar o aplicativo anonimamente
 - Você pode exportar seu histórico
