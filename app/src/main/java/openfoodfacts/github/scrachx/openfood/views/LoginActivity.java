@@ -26,7 +26,6 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 import java.net.HttpCookie;
 
-import butterknife.OnClick;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -79,6 +78,11 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         }
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
+        // Setup view listeners
+        binding.btnLogin.setOnClickListener(v -> doAttemptLogin());
+        binding.btnCreateAccount.setOnClickListener(v -> doRegister());
+        binding.btnForgotPass.setOnClickListener(v -> doForgotPassword());
+
         setTitle(getString(R.string.txtSignIn));
         setSupportActionBar(binding.toolbarLayout.toolbar);
         if (getSupportActionBar() != null) {
@@ -125,8 +129,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         });
     }
 
-    @OnClick(R.id.btn_login)
-    protected void attemptLogin() {
+    protected void doAttemptLogin() {
         String login = ((EditText) binding.loginInput).getText().toString();
         String password = ((EditText) binding.passInput).getText().toString();
         if (TextUtils.isEmpty(login)) {
@@ -223,15 +226,13 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         binding.btnLogin.setClickable(true);
     }
 
-    @OnClick(R.id.btn_create_account)
-    protected void onCreateUser() {
+    protected void doRegister() {
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, userLoginUri, new WebViewFallback());
     }
 
-    @OnClick(R.id.btn_forgot_pass)
-    public void forgotpassword() {
+    public void doForgotPassword() {
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, resetPasswordUri, new WebViewFallback());
     }

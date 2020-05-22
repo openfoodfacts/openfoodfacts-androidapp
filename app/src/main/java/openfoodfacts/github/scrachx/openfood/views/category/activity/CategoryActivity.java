@@ -9,25 +9,23 @@ import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.browser.customtabs.CustomTabsIntent;
 import android.widget.Button;
-import butterknife.BindView;
+
+import androidx.browser.customtabs.CustomTabsIntent;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityCategoryBinding;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 public class CategoryActivity extends BaseActivity {
-
+    private ActivityCategoryBinding binding;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     private boolean scanOnShake;
-
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, CategoryActivity.class);
@@ -39,11 +37,13 @@ public class CategoryActivity extends BaseActivity {
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        setContentView(R.layout.activity_category);
-        setSupportActionBar(findViewById(R.id.toolbar));
+        binding = ActivityCategoryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setSupportActionBar(binding.toolbar);
         setTitle(R.string.category_drawer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Button gameButton= findViewById(R.id.game_button);
+        Button gameButton = findViewById(R.id.game_button);
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
@@ -58,18 +58,24 @@ public class CategoryActivity extends BaseActivity {
         });
 
         // chrome custom tab for category hunger game
-        gameButton.setOnClickListener(v -> {
-            String url = getString(R.string.hunger_game_url);
-            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-            CustomTabsIntent customTabsIntent = builder.build();
-            customTabsIntent.launchUrl(CategoryActivity.this, Uri.parse(url));
-        });
+        gameButton.setOnClickListener(v -> openHungerGame());
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this, getBaseContext());
     }
 
+    private void openHungerGame() {
+        String url = getString(R.string.hunger_game_url);
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        CustomTabsIntent customTabsIntent = builder.build();
+        customTabsIntent.launchUrl(CategoryActivity.this, Uri.parse(url));
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
     @Override
     public void onPause() {

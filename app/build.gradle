@@ -213,10 +213,6 @@ dependencies {
     //Image from gallery or camera
     implementation "com.github.jkwiecien:EasyImage:1.4.0"
 
-    //Binding
-    implementation "com.jakewharton:butterknife:10.2.1"
-    annotationProcessor "com.jakewharton:butterknife-compiler:10.2.1"
-
     //Barcode and QR Scanner
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") {
         transitive = false

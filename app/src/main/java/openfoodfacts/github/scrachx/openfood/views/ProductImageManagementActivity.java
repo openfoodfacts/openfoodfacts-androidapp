@@ -35,7 +35,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -96,11 +95,14 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         client = new OpenFoodAPIClient(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_full_screen_image);
 
-        // OnCLick
+        // Setup onclick listeners
         binding.btnClose.setOnClickListener(v -> onExit());
         binding.btnUnselectImage.setOnClickListener(v -> unselectImage());
         binding.btnChooseImage.setOnClickListener(v -> onChooseImage());
         binding.btnAddImage.setOnClickListener(v -> onAddImage());
+        binding.btnChooseDefaultLanguage.setOnClickListener(v -> onSelectDefaultLanguage());
+        binding.btnEditImage.setOnClickListener(v -> onStartEditExistingImage());
+
         binding.comboLanguages.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -435,7 +437,6 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         }
     }
 
-    @OnClick(R.id.btnChooseDefaultLanguage)
     void onSelectDefaultLanguage() {
         String lang = LocaleHelper.getLocale(getProduct().getLang()).getLanguage();
         LocaleHelper.getLanguageData(lang, true);
@@ -509,7 +510,6 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         binding.btnChooseDefaultLanguage.setVisibility(isDefault ? View.INVISIBLE : View.VISIBLE);
     }
 
-    @OnClick(R.id.btnEditImage)
     void onStartEditExistingImage() {
         if (cannotEdit(REQUEST_EDIT_IMAGE_AFTER_LOGIN)) {
             return;

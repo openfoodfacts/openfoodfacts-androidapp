@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import butterknife.OnClick;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -66,6 +65,10 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.tvDailyFoodFact.setOnClickListener(v -> setDailyFoodFact());
+
+
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -78,8 +81,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         binding = null;
     }
 
-    @OnClick(R.id.tvDailyFoodFact)
-    protected void setDailyFoodFact() {
+    private void setDailyFoodFact() {
         // chrome custom tab init
         CustomTabsIntent customTabsIntent;
         CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();

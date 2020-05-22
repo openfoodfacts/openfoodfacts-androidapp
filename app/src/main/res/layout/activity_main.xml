@@ -1,28 +1,37 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
 
-        <include layout="@layout/toolbar" />
-
-        <FrameLayout
-            android:id="@+id/fragment_container"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbar" />
+            android:layout_height="match_parent">
 
+            <include
+                android:id="@+id/toolbar_include"
+                layout="@layout/toolbar" />
+
+            <FrameLayout
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/toolbar_include" />
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/bottom_navigation_include"
+            layout="@layout/navigation_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom" />
     </RelativeLayout>
-
-    <include
-        android:id="@+id/bottom_navigation"
-        layout="@layout/navigation_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom" />
-</RelativeLayout>
+</layout>

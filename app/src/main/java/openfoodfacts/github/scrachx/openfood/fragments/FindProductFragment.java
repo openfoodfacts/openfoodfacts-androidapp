@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,13 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import org.apache.commons.lang.StringUtils;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
@@ -34,52 +30,49 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  */
 public class FindProductFragment extends NavigationBaseFragment {
     public static final String BARCODE = "barcode";
-    @BindView(R.id.editTextBarcode)
-    EditText mBarCodeText;
-    @BindView(R.id.buttonBarcode)
-    Button mLaunchButton;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    private FragmentFindProductBinding binding;
     private OpenFoodAPIClient api;
     private Toast mToast;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return createView(inflater, container, R.layout.fragment_find_product);
+        binding = FragmentFindProductBinding.inflate(inflater);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mBarCodeText.setSelected(false);
+        binding.editTextBarcode.setSelected(false);
         api = new OpenFoodAPIClient(getActivity());
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+
+        binding.buttonBarcode.setOnClickListener(v -> onSearchBarcodeProduct());
+
         if (getActivity().getIntent() != null) {
             String barCode = getActivity().getIntent().getStringExtra(BARCODE);
             if (StringUtils.isNotEmpty(barCode)) {
                 searchBarcode(barCode);
             }
         }
-
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
     }
 
-    @OnClick(R.id.buttonBarcode)
-    protected void onSearchBarcodeProduct() {
+    private void onSearchBarcodeProduct() {
         Utils.hideKeyboard(getActivity());
 
-        final String barCodeTxt = mBarCodeText.getText().toString();
+        final String barCodeTxt = ((EditText) binding.editTextBarcode).getText().toString();
         if (barCodeTxt.isEmpty()) {
-            mBarCodeText.setError(getResources().getString(R.string.txtBarcodeRequire));
+            binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeRequire));
             return;
         }
 
         if (barCodeTxt.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barCodeTxt)) {
-            mBarCodeText.setError(getResources().getString(R.string.txtBarcodeNotValid));
+            binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeNotValid));
             return;
         }
 
         if (!ProductUtils.isBarcodeValid(barCodeTxt)) {
-            mBarCodeText.setError(getResources().getString(R.string.txtBarcodeNotValid));
+            binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeNotValid));
         } else {
 
             api.getProduct(barCodeTxt, getActivity());
@@ -87,7 +80,7 @@ public class FindProductFragment extends NavigationBaseFragment {
     }
 
     private void searchBarcode(String code) {
-        mBarCodeText.setText(code, TextView.BufferType.EDITABLE);
+        binding.editTextBarcode.setText(code, TextView.BufferType.EDITABLE);
         onSearchBarcodeProduct();
     }
 

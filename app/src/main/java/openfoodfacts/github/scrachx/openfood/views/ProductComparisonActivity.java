@@ -7,20 +7,18 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -29,24 +27,28 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAda
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 public class ProductComparisonActivity extends BaseActivity implements PhotoReceiver {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    private ActivityProductComparisonBinding binding;
     private PhotoReceiverHandler photoReceiverHandler;
     private RecyclerView.Adapter productComparisonAdapter;
     private ArrayList<Product> products = new ArrayList<>();
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_comparison);
+        binding = ActivityProductComparisonBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         setTitle(getString(R.string.compare_products));
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        photoReceiverHandler=new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(this);
 
         if (getIntent().getExtras() != null && getIntent().getBooleanExtra("product_found", false)) {
             products = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
@@ -87,7 +89,7 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
             }
         });
 
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this, getBaseContext());
     }
 
     @Override
@@ -98,13 +100,12 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        photoReceiverHandler.onActivityResult(this,requestCode,resultCode,data);
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.compare_products);
-
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, R.id.compare_products);
     }
 }
