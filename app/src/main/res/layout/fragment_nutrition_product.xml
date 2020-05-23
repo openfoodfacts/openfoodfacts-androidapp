@@ -41,7 +41,7 @@
                     app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
 
                 <Button
-                    android:id="@+id/newAdd"
+                    android:id="@+id/add_photo_btn"
                     style="@style/ButtonBorder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                     android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/addPhotoLabel"
+                    android:id="@+id/add_photo_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_normal"
@@ -60,13 +60,13 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:id="@+id/imageGradeLayout"
+                    android:id="@+id/nutriscore_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageGrade"
+                        android:id="@+id/nutriscore_image"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -76,10 +76,11 @@
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:clickable="true"
                         android:focusable="true"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        tools:srcCompat="@drawable/nnc_a" />
 
                     <TextView
-                        android:id="@+id/nutriscoreLink"
+                        android:id="@+id/nutriscore_link"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/spacing_small"
@@ -92,7 +93,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/get_nutriscore_prompt"
+                    android:id="@+id/get_nutriscore_prompt_btn"
                     style="@style/ButtonBorder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -101,7 +102,7 @@
                     android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/textCarbonFootprint"
+                    android:id="@+id/carbon_footprint_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/spacing_normal"
@@ -113,7 +114,7 @@
                     android:textSize="@dimen/font_normal" />
 
                 <TextView
-                    android:id="@+id/textNoNutritionData"
+                    android:id="@+id/no_nutrition_data_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -137,7 +138,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textNutrientTxt"
+                            android:id="@+id/nutrient_levels_label"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/spacing_normal"
@@ -150,7 +151,7 @@
                             android:textStyle="bold" />
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/listNutrientLevels"
+                            android:id="@+id/nutrient_levels_list"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_marginLeft="@dimen/spacing_normal"
@@ -164,7 +165,7 @@
                             tools:listitem="@layout/nutrient_lvl_list_item" />
 
                         <TextView
-                            android:id="@+id/textNutriScoreInfo"
+                            android:id="@+id/nutrients_info_label"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/spacing_normal"
@@ -182,7 +183,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <Button
-                    android:id="@+id/calculateNutritionFacts"
+                    android:id="@+id/calculate_nutrition_facts_btn"
                     style="@style/ButtonBorder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -194,12 +195,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:visibility="gone"
-                    app:cardElevation="@dimen/card_elevation"
-                    tools:visibility="visible">
+                    android:visibility="visible"
+                    app:cardElevation="@dimen/card_elevation">
 
                     <TextView
-                        android:id="@+id/textServingSize"
+                        android:id="@+id/serving_size_label"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/spacing_normal"
@@ -208,41 +208,28 @@
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/spacing_small"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="@string/txtServingSize" />
 
                 </androidx.cardview.widget.CardView>
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/nutrimentsCardView"
+                    android:id="@+id/nutriments_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:cardElevation="@dimen/card_elevation">
 
-                    <RelativeLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/nutriments_recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="@dimen/activity_vertical_margin">
+                        android:padding="@dimen/activity_vertical_margin"
+                        android:paddingBottom="@dimen/nav_bar_height"
+                        android:scrollbars="vertical"
+                        tools:listheader="@layout/nutriment_item_list_header"
+                        tools:listitem="@layout/nutriment_item_list" />
 
-                        <TextView
-                            android:id="@+id/textPerPortion"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:textIsSelectable="true"
-                            android:textSize="@dimen/font_large" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/nutriments_recycler_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_below="@id/textPerPortion"
-                            android:paddingBottom="@dimen/nav_bar_height"
-                            android:scrollbars="vertical"
-                            tools:listheader="@layout/nutriment_item_list_header"
-                            tools:listitem="@layout/nutriment_item_list" />
-
-                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>

@@ -92,7 +92,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, PhotoReceiver {
+public class NutritionProductFragment extends BaseFragment implements PhotoReceiver {
     private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
     private PhotoReceiverHandler photoReceiverHandler;
     private String mUrlImage;
@@ -126,14 +126,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.nutrimentsRecyclerView.getContext(), VERTICAL);
         binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
-        binding.getNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        binding.newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
+        binding.getNutriscorePromptBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
+        binding.addPhotoBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
 
-        binding.nutriscoreLink.setOnClickListener(v -> nutriscoreLinkDisplay());
+        binding.nutriscoreLink.setOnClickListener(v -> displayNutriScoreLink());
         binding.imageViewNutrition.setOnClickListener(this::openFullScreen);
-        binding.calculateNutritionFacts.setOnClickListener(this::calculateNutritionFacts);
-        binding.getNutriscorePrompt.setOnClickListener(v -> onNutriscoreButtonClick());
-        binding.newAdd.setOnClickListener(v -> newNutritionImage());
+        binding.calculateNutritionFactsBtn.setOnClickListener(v1 -> calculateNutritionFacts());
+        binding.getNutriscorePromptBtn.setOnClickListener(v -> onNutriscoreButtonClick());
+        binding.addPhotoBtn.setOnClickListener(v -> newNutritionImage());
 
         refreshView(getStateFromActivityIntent());
     }
@@ -154,10 +154,10 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (!showNutritionData) {
             binding.imageViewNutrition.setVisibility(View.GONE);
             binding.addPhotoLabel.setVisibility(View.GONE);
-            binding.imageGradeLayout.setVisibility(View.GONE);
-            binding.calculateNutritionFacts.setVisibility(View.GONE);
+            binding.nutriscoreImage.setVisibility(View.GONE);
+            binding.calculateNutritionFactsBtn.setVisibility(View.GONE);
             binding.nutrimentsCardView.setVisibility(View.GONE);
-            binding.textNoNutritionData.setVisibility(View.VISIBLE);
+            binding.noNutritionDataLabel.setVisibility(View.VISIBLE);
         }
 
         List<NutrientLevelItem> levelItem = new ArrayList<>();
@@ -167,7 +167,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         Nutriments nutriments = product.getNutriments();
 
         if (nutriments != null && !nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
-            binding.textCarbonFootprint.setVisibility(View.GONE);
+            binding.carbonFootprintLabel.setVisibility(View.GONE);
         }
 
         NutrientLevels nutrientLevels = product.getNutrientLevels();
@@ -186,11 +186,21 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
             binding.nutrientLevelsCardView.setVisibility(View.GONE);
             levelItem.add(new NutrientLevelItem("", "", "", 0));
-            binding.imageGrade.setVisibility(View.GONE);
+            binding.nutriscoreImage.setVisibility(View.GONE);
         } else {
             // prefetch the uri
             customTabActivityHelper = new CustomTabActivityHelper();
-            customTabActivityHelper.setConnectionCallback(this);
+            customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
+                @Override
+                public void onCustomTabsConnected() {
+                    binding.nutriscoreImage.setClickable(true);
+                }
+
+                @Override
+                public void onCustomTabsDisconnected() {
+                    binding.nutriscoreImage.setClickable(false);
+                }
+            });
 
             // TODO: Make it international
             nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
@@ -237,11 +247,11 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         //checks the flags and accordingly sets the text of the prompt
         showPrompts();
 
-        binding.listNutrientLevels.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.listNutrientLevels.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
+        binding.nutrientLevelsList.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.nutrientLevelsList.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
-        binding.textNutriScoreInfo.setClickable(true);
-        binding.textNutriScoreInfo.setMovementMethod(LinkMovementMethod.getInstance());
+        binding.nutrientsInfoLabel.setClickable(true);
+        binding.nutrientsInfoLabel.setMovementMethod(LinkMovementMethod.getInstance());
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
@@ -253,12 +263,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         };
         spannableStringBuilder.append(getString(R.string.txtNutriScoreInfo));
         spannableStringBuilder.setSpan(clickableSpan, 0, spannableStringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        binding.textNutriScoreInfo.setText(spannableStringBuilder);
+        binding.nutrientsInfoLabel.setText(spannableStringBuilder);
 
-        if (TextUtils.isEmpty(product.getServingSize())) {
-            binding.textServingSize.setVisibility(View.GONE);
-            binding.servingSizeCardView.setVisibility(View.GONE);
-        } else {
+        if (isNotBlank(product.getServingSize())) {
             String servingSize = product.getServingSize();
             if (settingsPreference.getString("volumeUnitPreference", "l").equals("oz")) {
                 servingSize = UnitUtils.getServingInOz(servingSize);
@@ -266,9 +273,11 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                 servingSize = UnitUtils.getServingInL(servingSize);
             }
 
-            binding.textServingSize.setText(bold(getString(R.string.txtServingSize)));
-            binding.textServingSize.append(" ");
-            binding.textServingSize.append(servingSize);
+            binding.servingSizeLabel.setText(bold(getString(R.string.txtServingSize)));
+            binding.servingSizeLabel.append(" ");
+            binding.servingSizeLabel.append(servingSize);
+        } else {
+            binding.servingSizeCardView.setVisibility(View.GONE);
         }
 
         if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
@@ -283,16 +292,11 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         List<NutrimentListItem> nutrimentListItems = new ArrayList<>();
 
         final boolean inVolume = ProductUtils.isPerServingInLiter(product);
-        binding.textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
-        if (isNotBlank(product.getServingSize())) {
-            binding.textPerPortion.setText(getString(R.string.nutriment_serving_size) + " " + product.getServingSize());
-        } else {
-            binding.textPerPortion.setVisibility(View.GONE);
-        }
+        binding.nutrientLevelsLabel.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
 
         if (isNotBlank(product.getImageNutritionUrl(langCode))) {
             binding.addPhotoLabel.setVisibility(View.GONE);
-            binding.newAdd.setVisibility(View.VISIBLE);
+            binding.addPhotoBtn.setVisibility(View.VISIBLE);
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
@@ -422,14 +426,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     private void drawNutritionGrade() {
         int nutritionGrade = Utils.getImageGrade(product);
         if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
-            binding.imageGradeLayout.setVisibility(View.VISIBLE);
-            binding.imageGrade.setImageResource(nutritionGrade);
-            binding.imageGrade.setOnClickListener(view1 -> {
+            binding.nutriscoreLayout.setVisibility(View.VISIBLE);
+            binding.nutriscoreImage.setImageResource(nutritionGrade);
+            binding.nutriscoreImage.setOnClickListener(v -> {
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
                 CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         } else {
-            binding.imageGradeLayout.setVisibility(View.GONE);
+            binding.nutriscoreLayout.setVisibility(View.GONE);
         }
     }
 
@@ -453,13 +457,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     private void showPrompts() {
         if (showNutritionPrompt || showCategoryPrompt) {
-            binding.getNutriscorePrompt.setVisibility(View.VISIBLE);
+            binding.getNutriscorePromptBtn.setVisibility(View.VISIBLE);
             if (showNutritionPrompt && showCategoryPrompt) {
-                binding.getNutriscorePrompt.setText(getString(R.string.add_nutrient_category_prompt_text));
+                binding.getNutriscorePromptBtn.setText(getString(R.string.add_nutrient_category_prompt_text));
             } else if (showNutritionPrompt) {
-                binding.getNutriscorePrompt.setText(getString(R.string.add_nutrient_prompt_text));
+                binding.getNutriscorePromptBtn.setText(getString(R.string.add_nutrient_prompt_text));
             } else if (showCategoryPrompt) {
-                binding.getNutriscorePrompt.setText(getString(R.string.add_category_prompt_text));
+                binding.getNutriscorePromptBtn.setText(getString(R.string.add_category_prompt_text));
             }
         }
     }
@@ -480,11 +484,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         return items;
     }
 
-    void nutriscoreLinkDisplay() {
-        if (product.getNutritionGradeFr() != null) {
-            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-            CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+    private void displayNutriScoreLink() {
+        if (product.getNutritionGradeFr() == null) {
+            return;
         }
+        CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+        CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
     }
 
     private void openFullScreen(View v) {
@@ -500,7 +505,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
     }
 
-    public void calculateNutritionFacts(View v) {
+    public void calculateNutritionFacts() {
         MaterialDialog dialog = new MaterialDialog.Builder(getActivity())
             .title(R.string.calculate_nutrition_facts)
             .customView(R.layout.dialog_calculate_calories, false)
@@ -581,16 +586,6 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     public String getNutrients() {
         return mUrlImage;
-    }
-
-    @Override
-    public void onCustomTabsConnected() {
-        binding.imageGrade.setClickable(true);
-    }
-
-    @Override
-    public void onCustomTabsDisconnected() {
-        binding.imageGrade.setClickable(false);
     }
 
     private void onNutriscoreButtonClick() {

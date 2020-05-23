@@ -30,6 +30,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
         this.nutrimentListItems = nutrimentListItems;
     }
 
+    @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         boolean isViewTypeHeader = viewType == TYPE_HEADER;
@@ -52,7 +53,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof NutrimentHeaderViewHolder) {
             NutrimentListItem item = nutrimentListItems.get(position);
             NutrimentHeaderViewHolder nutrimentViewHolder = (NutrimentHeaderViewHolder) holder;

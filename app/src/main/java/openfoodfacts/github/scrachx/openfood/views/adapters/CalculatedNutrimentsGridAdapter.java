@@ -24,6 +24,7 @@ public class CalculatedNutrimentsGridAdapter extends NutrimentsGridAdapter {
         this.nutrimentListItems = nutrimentListItems;
     }
 
+    @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         boolean isViewTypeHeader = viewType == TYPE_HEADER;
