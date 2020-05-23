@@ -221,49 +221,54 @@ dependencies {
     }
     implementation "com.google.zxing:core:$rootProject.zxingCoreVersion"
 
-    //Apache
+    // Apache
     implementation "commons-validator:commons-validator:$rootProject.apacheValidatorVersion"
 
-    //UI Component : Custom Toast
+    // UI Component : Custom Toast
     implementation "net.steamcrafted:load-toast:$rootProject.loadToastVersion"
 
-    //UI Component : ImageView with Zooming
+    // UI Component : ImageView with Zooming
     implementation "com.github.chrisbanes:PhotoView:$rootProject.zoomingImgVersion"
 
-    //UI Component : Material Dialog
+    // UI Component : Material Dialog
     implementation("com.afollestad.material-dialogs:core:$rootProject.materialDialogVersion") {
         transitive = true
     }
 
-    //UI Component : Material Drawer
+    // UI Component : Material Drawer
     implementation("com.mikepenz:materialdrawer:$rootProject.materialDrawer") {
         transitive = true
     }
 
-    //UI Component : Adapters
+    // UI Component : Adapters
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation "com.mikepenz:fastadapter-commons:$rootProject.fastAdapterCommons"
     implementation "com.squareup.retrofit2:converter-scalars:$rootProject.converterScalars"
 
-    //UI Component : Font Icons
+    // UI Component : Font Icons
     implementation "com.mikepenz:iconics-core:$rootProject.fontIconCoreVersion"
     implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
     implementation("com.theartofdev.edmodo:android-image-cropper:$rootProject.imageCropper") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
-    //UI Component : Chips Input
+    // UI Component : Chips Input
     implementation "com.hootsuite.android:nachos:$rootProject.nachos"
 
-    //Testing
-    androidTestUtil "androidx.test:orchestrator:$rootProject.orchestrator"
+    // Unit Testing
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
 
-    // Required for instrumented tests
+    // Instrumented tests
+    androidTestUtil "androidx.test:orchestrator:$rootProject.orchestrator"
+
     androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-web:$rootProject.espressoVersion"
