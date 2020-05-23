@@ -265,9 +265,9 @@ dependencies {
     androidTestUtil "androidx.test:orchestrator:$rootProject.orchestrator"
 
     androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
-    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation "androidx.test:rules:$rootProject.testRulesVersion"
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.testJunitVersion"
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"

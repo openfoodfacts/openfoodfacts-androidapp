@@ -95,7 +95,8 @@ ext {
     orchestrator = '1.2.0'
     nachos = '1.2.0'
     testRunnerVersion = '1.2.0'
-
-    testFalconVersion = "2.1.1"
+    testRulesVersion = '1.2.0'
+    testJunitVersion = '1.1.1'
+    testFalconVersion = '2.1.1'
     testscreengrabVersion = "1.2.0"
 }
