@@ -2,12 +2,10 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.content.SharedPreferences;
 import android.util.Log;
+
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
 import org.greenrobot.greendao.database.Database;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -17,6 +15,11 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static org.junit.Assert.*;
 
