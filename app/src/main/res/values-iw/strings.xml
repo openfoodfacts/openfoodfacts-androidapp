@@ -242,6 +242,12 @@
     <string name="prefs_power_mode_summary">ניתן לסרוק מוצרים במהירות בסופר כדי לראות אילו מהם לא נמצאים במסד הנתונים.</string>
     <string name="prefs_language">שפה</string>
     <string name="prefs_language_summary">החלפת שפה</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">האם החוויה שלך עם Open Food Facts חיובית?</string>
+    <string name="user_ask_show_feedback_form">לא לנו לשמוע על כך! נוכל להבין ממך מה קרה?</string>
+    <string name="user_ask_rate_app">מצוין! אנו בטוחים שכולם ישמחו לשמוע מה דעתך על היישומון!</string>
+    <string name="rate_app">דירוג היישומון</string>
+    <string name="no_thx">לא, תודה</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">היסטוריה</string>
     <string name="clear_history">פינוי ההיסטוריה</string>
@@ -771,4 +777,9 @@
     <string name="content_unselect_photo">יש ללחוץ כאן כדי לבטל את בחירת התמונה הנוכחית</string>
     <string name="title_exit">יציאה</string>
     <string name="content_exit">יש ללחוץ כאן כדי לחזור למוצר</string>
+    <string name="icon_label">סמל תוויות</string>
+    <string name="icon_categories">סמל קטגוריות</string>
+    <string name="icon_emb">סמל קוד EMB</string>
+    <string name="product_front_image">תמונת חזית המוצר</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

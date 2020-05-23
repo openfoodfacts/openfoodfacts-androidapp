@@ -4,13 +4,14 @@ import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
+
+import org.apache.commons.lang.StringUtils;
+
+import java.util.Map;
+
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.utils.NumberParserUtils;
-import org.apache.commons.lang.StringUtils;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ImageTransformation {
     public static final int NO_VALUE = -1;
@@ -30,7 +31,7 @@ public class ImageTransformation {
     private ImageTransformation() {
     }
 
-    public static void addTransformToMap(ImageTransformation newServerTransformation, HashMap<String, String> imgMap) {
+    public static void addTransformToMap(ImageTransformation newServerTransformation, Map<String, String> imgMap) {
         imgMap.put(ANGLE, Integer.toString(newServerTransformation.getRotationInDegree()));
         final Rect cropRectangle = newServerTransformation.getCropRectangle();
         if (cropRectangle != null) {

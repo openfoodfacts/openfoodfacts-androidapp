@@ -5,21 +5,24 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
-import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProductsActivity;
+import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> {
     private final List<HistoryItem> list;
@@ -46,7 +49,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
         holder.historyImageProgressbar.setVisibility(View.VISIBLE);
         HistoryItem item = list.get(position);
 
-        String productBrandsQuantityDetails = YourListedProducts.getProductBrandsQuantityDetails(item);
+        String productBrandsQuantityDetails = YourListedProductsActivity.getProductBrandsQuantityDetails(item);
 
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
         holder.txtTitle.setText(item.getTitle());

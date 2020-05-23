@@ -157,7 +157,7 @@
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
-    <string name="txtSave">Save</string>
+    <string name="txtSave">Simpan</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt</string>
@@ -225,8 +225,14 @@
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-    <string name="prefs_language">Language</string>
+    <string name="prefs_language">Bahasa</string>
     <string name="prefs_language_summary">Change language</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
+    <string name="rate_app">Rate app</string>
+    <string name="no_thx">No thanks</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
@@ -270,7 +276,7 @@
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="action_search">Gelintar</string>
-    <string name="search_hint">Search a product</string>
+    <string name="search_hint">Cari sesuatu produk</string>
     <string name="number_of_results">Number of results: </string>
     <string name="number_of_products">Number of products: </string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
@@ -463,7 +469,7 @@
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">Diisih oleh</string>
     <string name="shake_summary">Shake phone to scan products</string>
     <string name="shake_title">Shake to scan</string>
     <!-- strings related to share images -->
@@ -474,7 +480,7 @@
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">History</string>
-    <string name="products_added">Products you added or edited</string>
+    <string name="products_added">Produk yang anda tambah atau sunting</string>
     <string name="products_incomplete">Produk yang anda tambah yang perlu dilengkapkan</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
@@ -555,10 +561,10 @@
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
-    <string name="extracting_ingredients">Extracting ingredients</string>
+    <string name="extracting_ingredients">Mengekstrak ramuan</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Kesan-kesan</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Fakta pemakanan tidak dinyatakan pada produk.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
@@ -566,15 +572,15 @@
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">Per serving</string>
-    <string name="serving_size">Serving size</string>
+    <string name="serving_size">Saiz hidangan</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
+    <string name="add_a_nutrient">Tambah nutrien</string>
     <string name="add_this_product">Add this product</string>
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
-    <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
+    <string name="product_name">Nama Produk</string>
+    <string name="quantity">Kuantiti</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Tempoh masa selepas pembukaan</string>
     <string name="manufacturing_details">Manufacturing Details</string>
@@ -583,7 +589,7 @@
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
+    <string name="stores">Kedai</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
@@ -604,19 +610,19 @@
     <string name="description_activity_product">description</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">High risk of over exposure</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="overexposure_high">Risiko pendedahan berlebihan</string>
+    <string name="overexposure_moderate">Risiko sederhana pendedahan berlebihan</string>
+    <string name="infants">Bayi</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="toddlers">Kanak-kanak kecil</string>
+    <string name="toddlers_age">1 hingga 2</string>
+    <string name="children">Kanak-Kanak</string>
+    <string name="children_age">3 hingga 9</string>
+    <string name="adolescents">Remaja</string>
+    <string name="adolescents_age">10 hingga 17</string>
+    <string name="adults">Dewasa</string>
+    <string name="adults_age">18 hingga 64</string>
+    <string name="elderly">Warga tua</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
     <string name="some_people">Some people\n(over 5%)</string>
@@ -666,7 +672,7 @@
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
-    <string name="settings_country_title">Country</string>
+    <string name="settings_country_title">Negara</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
@@ -677,7 +683,7 @@
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Edit</string>
-    <string name="product_summary_action_share_button_label">Share</string>
+    <string name="product_summary_action_share_button_label">Kongsi</string>
     <string name="product_question_prompt">Tap here to answer</string>
     <string name="product_question_positive_response">Yes</string>
     <string name="product_question_negative_response">No</string>
@@ -753,4 +759,9 @@
     <string name="content_unselect_photo">Press here to unselect current photo</string>
     <string name="title_exit">Exit</string>
     <string name="content_exit">Press here to return to the product</string>
+    <string name="icon_label">Labels icon</string>
+    <string name="icon_categories">Categories icon</string>
+    <string name="icon_emb">EMB code icon</string>
+    <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

@@ -242,6 +242,12 @@
     <string name="prefs_power_mode_summary">Hitro skeniranje izdelkov v supermarketu, da vidite, katere niso v bazi podatkov.</string>
     <string name="prefs_language">Jezik</string>
     <string name="prefs_language_summary">Spremeni jezik</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Uživate v svoji izkušnji z Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Žal nam je, da to slišimo! Nam lahko poveste, kaj se je zgodilo?</string>
+    <string name="user_ask_rate_app">Super! Sporočite drugim, kaj menite o tej aplikaciji!</string>
+    <string name="rate_app">Oceni aplikacijo</string>
+    <string name="no_thx">Ne hvala</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Zgodovina</string>
     <string name="clear_history">Izbriši zgodovino</string>
@@ -771,4 +777,9 @@
     <string name="content_unselect_photo">Press here to unselect current photo</string>
     <string name="title_exit">Exit</string>
     <string name="content_exit">Press here to return to the product</string>
+    <string name="icon_label">Labels icon</string>
+    <string name="icon_categories">Categories icon</string>
+    <string name="icon_emb">EMB code icon</string>
+    <string name="product_front_image">Sprednja slika izdelka</string>
+    <string name="brand_hint">Primeri: CocaCola, Nestle itd…</string>
 </resources>

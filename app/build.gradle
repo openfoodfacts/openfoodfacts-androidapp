@@ -1,10 +1,20 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
+apply plugin: 'org.greenrobot.greendao'
+
 
 def obtainTestBuildType() {
-    //to activate  screenshots buildType in IDE; uncomment next line and comment other
-    //otherwise the folder androidTestScreenshots is not recognized as a test folder.
-//    def result = "screenshots"
+    // To activate  screenshots buildType in IDE; uncomment next line and comment other
+    // otherwise the folder androidTestScreenshots is not recognized as a test folder.
+    // def result = "screenshots"
     def result = "debug"
     if (project.hasProperty("testBuildType")) {
         result = project.getProperties().get("testBuildType")
@@ -13,41 +23,62 @@ def obtainTestBuildType() {
     result
 }
 
+
+greendao {
+    schemaVersion 16
+}
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion '28.0.3'
 
-
     testBuildType obtainTestBuildType()
+
+
+    dataBinding.enabled = true
+
+    flavorDimensions "versionCode"
 
 
     defaultConfig {
         applicationId "openfoodfacts.github.scrachx.openfood"
+
         minSdkVersion 16
         targetSdkVersion 29
+
         versionCode 328
         versionName "3.2.8"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
+        ndk.abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+
+        multiDexEnabled true
+        // jackOptions.enabled = true
     }
 
     buildTypes {
         release {
             crunchPngs true
+
+            // Enables code shrinking, obfuscation, and optimization for only
+            // release build type.
+            minifyEnabled true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        screenshots{
+
+        screenshots {
             initWith debug
+            applicationIdSuffix = '.screenshots'
         }
-
-
     }
 
-    dataBinding {
-        enabled true
-    }
-
-    flavorDimensions "versionCode"
     productFlavors {
         off {
             applicationId "openfoodfacts.github.scrachx.openfood"
@@ -60,7 +91,6 @@ android {
             buildConfigField 'String', 'STATICURL', '"https://static.openfoodfacts.org"'
 
         }
-
         obf {
             applicationId "openfoodfacts.github.scrachx.openbeauty"
             resValue "string", "app_name", "OpenBeautyFacts"
@@ -99,11 +129,6 @@ android {
         javaMaxHeapSize "4g"
     }
 
-    defaultConfig {
-        multiDexEnabled true
-        // jackOptions.enabled = true
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -135,37 +160,13 @@ android {
 }
 
 
-
-buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-        maven { url "https://jitpack.io" }
-    }
-}
-
-apply plugin: 'org.greenrobot.greendao'
-
-greendao {
-    schemaVersion 16
-}
-android {
-    // Other settings
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
 dependencies {
 
     //Android
     implementation "androidx.browser:browser:$rootProject.supportLibraryVersion"
     implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
     implementation "androidx.work:work-runtime:$rootProject.workRuntime"
+    implementation "androidx.concurrent:concurrent-futures:1.0.0"
     implementation "androidx.recyclerview:recyclerview:$rootProject.supportLibraryVersion"
     implementation "androidx.cardview:cardview:$rootProject.supportLibraryVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.supportLibraryVersion"
@@ -220,49 +221,54 @@ dependencies {
     }
     implementation "com.google.zxing:core:$rootProject.zxingCoreVersion"
 
-    //Apache
+    // Apache
     implementation "commons-validator:commons-validator:$rootProject.apacheValidatorVersion"
 
-    //UI Component : Custom Toast
+    // UI Component : Custom Toast
     implementation "net.steamcrafted:load-toast:$rootProject.loadToastVersion"
 
-    //UI Component : ImageView with Zooming
+    // UI Component : ImageView with Zooming
     implementation "com.github.chrisbanes:PhotoView:$rootProject.zoomingImgVersion"
 
-    //UI Component : Material Dialog
+    // UI Component : Material Dialog
     implementation("com.afollestad.material-dialogs:core:$rootProject.materialDialogVersion") {
         transitive = true
     }
 
-    //UI Component : Material Drawer
+    // UI Component : Material Drawer
     implementation("com.mikepenz:materialdrawer:$rootProject.materialDrawer") {
         transitive = true
     }
 
-    //UI Component : Adapters
+    // UI Component : Adapters
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation "com.mikepenz:fastadapter-commons:$rootProject.fastAdapterCommons"
     implementation "com.squareup.retrofit2:converter-scalars:$rootProject.converterScalars"
 
-    //UI Component : Font Icons
+    // UI Component : Font Icons
     implementation "com.mikepenz:iconics-core:$rootProject.fontIconCoreVersion"
     implementation "com.mikepenz:google-material-typeface:$rootProject.googleMaterialFontVersion"
     implementation("com.theartofdev.edmodo:android-image-cropper:$rootProject.imageCropper") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
-    //UI Component : Chips Input
+    // UI Component : Chips Input
     implementation "com.hootsuite.android:nachos:$rootProject.nachos"
 
-    //Testing
-    androidTestUtil "androidx.test:orchestrator:$rootProject.orchestrator"
+    // Unit Testing
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     testImplementation "net.javacrumbs.json-unit:json-unit-fluent:$rootProject.jsonUnitVersion"
 
-    // Required for instrumented tests
+    // Instrumented tests
+    androidTestUtil "androidx.test:orchestrator:$rootProject.orchestrator"
+
     androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-web:$rootProject.espressoVersion"

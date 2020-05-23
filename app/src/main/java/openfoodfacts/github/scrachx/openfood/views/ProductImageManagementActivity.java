@@ -6,27 +6,44 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.appcompat.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.*;
-import butterknife.BindView;
-import butterknife.OnClick;
-import butterknife.OnItemSelected;
-import com.github.chrisbanes.photoview.PhotoView;
+import androidx.databinding.DataBindingUtil;
+
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageActivity;
+
+import org.apache.commons.lang.StringUtils;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.images.*;
+import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
+import openfoodfacts.github.scrachx.openfood.images.ImageSize;
+import openfoodfacts.github.scrachx.openfood.images.ImageTransformation;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -37,12 +54,8 @@ import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
 import openfoodfacts.github.scrachx.openfood.views.adapters.LanguageDataAdapter;
-import org.apache.commons.lang.StringUtils;
 import pl.aprilapps.easyphotopicker.EasyImage;
 import smartdevelop.ir.eram.showcaseviewlib.GuideView;
-
-import java.io.File;
-import java.util.*;
 
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -60,54 +73,75 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     private static final int REQUEST_UNSELECT_IMAGE_AFTER_LOGIN = 4;
     static final int REQUEST_EDIT_IMAGE = 1000;
     private static final int REQUEST_CHOOSE_IMAGE = 1001;
-    @BindView(R.id.imageViewFullScreen)
-    PhotoView mPhotoView;
-    @BindView(R.id.btnEditImage)
-    View editButton;
-    @BindView(R.id.btnUnselectImage)
-    View btnUnselectImage;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.textInfo)
-    TextView textInfo;
-    @BindView(R.id.btnChooseDefaultLanguage)
-    TextView btnChooseDefaultLanguage;
-    @BindView(R.id.progressBar)
-    ProgressBar progressBar;
-    @BindView(R.id.comboLanguages)
-    Spinner comboLanguages;
-    @BindView(R.id.comboImageType)
-    Spinner comboImageType;
-    private PhotoViewAttacher mAttacher;
+    private static final List<ProductImageField> TYPE_IMAGE = Arrays.asList(ProductImageField.FRONT, ProductImageField.INGREDIENTS, ProductImageField.NUTRITION);
+    private ActivityFullScreenImageBinding binding;
     private OpenFoodAPIClient client;
     private File lastViewedImage;
+    private PhotoViewAttacher mAttacher;
     private SharedPreferences settings;
-    private static final List<ProductImageField> TYPE_IMAGE = Arrays.asList(ProductImageField.FRONT, ProductImageField.INGREDIENTS, ProductImageField.NUTRITION);
+
+    public static boolean isImageModified(int requestCode, int resultCode) {
+        return requestCode == REQUEST_EDIT_IMAGE && resultCode == ProductImageManagementActivity.RESULTCODE_MODIFIED;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         client = new OpenFoodAPIClient(this);
-        setContentView(R.layout.activity_full_screen_image);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_full_screen_image);
+
+        // OnCLick
+        binding.btnClose.setOnClickListener(v -> onExit());
+        binding.btnUnselectImage.setOnClickListener(v -> unselectImage());
+        binding.btnChooseImage.setOnClickListener(v -> onChooseImage());
+        binding.btnAddImage.setOnClickListener(v -> onAddImage());
+        binding.comboLanguages.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                onLanguageChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+        binding.comboImageType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                onImageTypeChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
 
         settings = getSharedPreferences("prefs", 0);
-        if (settings.getBoolean(getString(R.string.check_first_time),true)) {
-            startShowCase(getString(R.string.title_image_type),getString(R.string.content_image_type),R.id.comboImageType,1);
+        if (settings.getBoolean(getString(R.string.check_first_time), true)) {
+            startShowCase(getString(R.string.title_image_type), getString(R.string.content_image_type), R.id.comboImageType, 1);
         }
 
         Intent intent = getIntent();
 
         Product product = (Product) intent.getSerializableExtra(ImageKeyHelper.PRODUCT);
         boolean canEdit = product != null;
-        editButton.setVisibility(canEdit ? View.VISIBLE : View.INVISIBLE);
-        btnUnselectImage.setVisibility(editButton.getVisibility());
+        ((View) binding.btnEditImage).setVisibility(canEdit ? View.VISIBLE : View.INVISIBLE);
+        ((View) binding.btnUnselectImage).setVisibility(binding.btnEditImage.getVisibility());
 
-        mAttacher = new PhotoViewAttacher(mPhotoView);
+        mAttacher = new PhotoViewAttacher(binding.imageViewFullScreen);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //delaying the transition until the view has been laid out
             postponeEnterTransition();
         }
-        new SwipeDetector(mPhotoView).setOnSwipeListener((v, swipeType) -> {
+        new SwipeDetector(binding.imageViewFullScreen).setOnSwipeListener((v, swipeType) -> {
             if (swipeType == SwipeDetector.SwipeTypeEnum.LEFT_TO_RIGHT) {
                 incrementImageType(-1);
             } else if (swipeType == SwipeDetector.SwipeTypeEnum.RIGHT_TO_LEFT) {
@@ -120,15 +154,15 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         });
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.simple_spinner_item_white, generateImageTypeNames());
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        comboImageType.setAdapter(adapter);
-        setSupportActionBar(toolbar);
+        binding.comboImageType.setAdapter(adapter);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         loadLanguage();
 
-        comboImageType.setSelection(TYPE_IMAGE.indexOf(getSelectedType()));
+        binding.comboImageType.setSelection(TYPE_IMAGE.indexOf(getSelectedType()));
         updateProductImagesInfo(null);
         onRefresh(false);
     }
@@ -163,7 +197,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
                         break;
                     case 7:
                         SharedPreferences.Editor editor = settings.edit();
-                        editor.putBoolean(getString(R.string.check_first_time),false);
+                        editor.putBoolean(getString(R.string.check_first_time), false);
                         editor.commit();
                         break;
                 }
@@ -186,20 +220,16 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         return true;
     }
 
-    public static boolean isImageModified(int requestCode, int resultCode) {
-        return requestCode == REQUEST_EDIT_IMAGE && resultCode == ProductImageManagementActivity.RESULTCODE_MODIFIED;
-    }
-
     private void incrementImageType(int inc) {
         stopRefresh();
-        int newPosition = comboImageType.getSelectedItemPosition() + inc;
-        final int count = comboImageType.getAdapter().getCount();
+        int newPosition = binding.comboImageType.getSelectedItemPosition() + inc;
+        final int count = binding.comboImageType.getAdapter().getCount();
         if (newPosition < 0) {
             newPosition = count - 1;
         } else {
             newPosition = newPosition % count;
         }
-        comboImageType.setSelection(newPosition, true);
+        binding.comboImageType.setSelection(newPosition, true);
     }
 
     private void loadLanguage() {
@@ -227,10 +257,10 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         languageForImage.addAll(LocaleHelper.getLanguageData(otherNotSupportedCode, false));
         LanguageDataAdapter adapter = new LanguageDataAdapter(this, R.layout.simple_spinner_item_white, languageForImage);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        comboLanguages.setAdapter(adapter);
+        binding.comboLanguages.setAdapter(adapter);
         selectedIndex = LocaleHelper.find(languageForImage, currentLanguage);
         if (selectedIndex >= 0) {
-            comboLanguages.setSelection(selectedIndex);
+            binding.comboLanguages.setSelection(selectedIndex);
         }
         updateLanguageStatus();
         updateSelectDefaultLanguageAction();
@@ -248,20 +278,20 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         //we use the language of the image
         boolean languageSupported = language.equals(languageUsedByImage);
         if (languageSupported) {
-            textInfo.setText(null);
-            textInfo.setTextColor(ContextCompat.getColor(this, R.color.white));
+            binding.textInfo.setText(null);
+            binding.textInfo.setTextColor(ContextCompat.getColor(this, R.color.white));
         } else {
-            textInfo.setText(R.string.image_not_defined_for_language);
-            textInfo.setTextColor(ContextCompat.getColor(this, R.color.orange));
+            binding.textInfo.setText(R.string.image_not_defined_for_language);
+            binding.textInfo.setTextColor(ContextCompat.getColor(this, R.color.orange));
         }
-        editButton.setVisibility(languageSupported ? View.VISIBLE : View.GONE);
-        btnUnselectImage.setVisibility(editButton.getVisibility());
+        ((View) binding.btnEditImage).setVisibility(languageSupported ? View.VISIBLE : View.GONE);
+        ((View) binding.btnUnselectImage).setVisibility(binding.btnEditImage.getVisibility());
         return languageSupported;
     }
 
     private String getCurrentLanguage() {
         final String language = getIntent().getStringExtra(ImageKeyHelper.LANGUAGE);
-        if(language==null){
+        if (language == null) {
             return LocaleHelper.getLanguage(getBaseContext());
         }
         return language;
@@ -274,7 +304,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     }
 
     private void changeToolBarTitle(String productName) {
-        toolbar.setTitle(productName + " / " + comboImageType.getSelectedItem().toString());
+        binding.toolbar.setTitle(productName + " / " + binding.comboImageType.getSelectedItem().toString());
     }
 
     @Override
@@ -285,7 +315,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
 
     private void onRefresh(boolean reloadProduct) {
         String imageUrl = getCurrentImageUrl();
-        if (reloadProduct || imageUrl == null ) {
+        if (reloadProduct || imageUrl == null) {
             reloadProduct();
         } else {
             loadImage(imageUrl);
@@ -294,31 +324,31 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
 
     private void loadImage(String imageUrl) {
         if (isNotEmpty(imageUrl)) {
-            String url=imageUrl;
-            if(FileUtils.isAbsolute(url)){
-                url="file://"+url;
+            String url = imageUrl;
+            if (FileUtils.isAbsolute(url)) {
+                url = "file://" + url;
             }
             startRefresh(getString(R.string.txtLoading));
             Picasso.get()
                 .load(url)
-                .into(mPhotoView, new Callback() {
+                .into(binding.imageViewFullScreen, new Callback() {
                     @Override
                     public void onSuccess() {
                         mAttacher.update();
-                        scheduleStartPostponedTransition(mPhotoView);
-                        mPhotoView.setVisibility(View.VISIBLE);
+                        scheduleStartPostponedTransition(binding.imageViewFullScreen);
+                        binding.imageViewFullScreen.setVisibility(View.VISIBLE);
                         stopRefresh();
                     }
 
                     @Override
                     public void onError(Exception ex) {
-                        mPhotoView.setVisibility(View.VISIBLE);
+                        binding.imageViewFullScreen.setVisibility(View.VISIBLE);
                         Toast.makeText(ProductImageManagementActivity.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
                         stopRefresh();
                     }
                 });
         } else {
-            mPhotoView.setImageDrawable(null);
+            binding.imageViewFullScreen.setImageDrawable(null);
             stopRefresh();
         }
     }
@@ -389,19 +419,19 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     }
 
     private void stopRefresh() {
-        progressBar.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.GONE);
         updateLanguageStatus();
     }
 
     private boolean isRefreshing() {
-        return progressBar.getVisibility() == View.VISIBLE;
+        return binding.progressBar.getVisibility() == View.VISIBLE;
     }
 
     private void startRefresh(String text) {
-        progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
         if (text != null) {
-            textInfo.setTextColor(ContextCompat.getColor(this, R.color.white));
-            textInfo.setText(text);
+            binding.textInfo.setTextColor(ContextCompat.getColor(this, R.color.white));
+            binding.textInfo.setText(text);
         }
     }
 
@@ -409,18 +439,16 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     void onSelectDefaultLanguage() {
         String lang = LocaleHelper.getLocale(getProduct().getLang()).getLanguage();
         LocaleHelper.getLanguageData(lang, true);
-        final int position = ((LanguageDataAdapter) comboLanguages.getAdapter()).getPosition(lang);
+        final int position = ((LanguageDataAdapter) binding.comboLanguages.getAdapter()).getPosition(lang);
         if (position >= 0) {
-            comboLanguages.setSelection(position, true);
+            binding.comboLanguages.setSelection(position, true);
         }
     }
 
-    @OnClick(R.id.btnClose)
     void onExit() {
         finish();
     }
 
-    @OnClick(R.id.btnUnselectImage)
     void unselectImage() {
         if (cannotEdit(REQUEST_UNSELECT_IMAGE_AFTER_LOGIN)) {
             return;
@@ -434,14 +462,13 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         });
     }
 
-    @OnClick(R.id.btnChooseImage)
     void onChooseImage() {
         if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) {
             return;
         }
         final Intent intent = new Intent(ProductImageManagementActivity.this, ImagesSelectionActivity.class);
         intent.putExtra(ImageKeyHelper.PRODUCT_BARCODE, getProduct().getCode());
-        intent.putExtra(ImagesSelectionActivity.TOOLBAR_TITLE, toolbar.getTitle());
+        intent.putExtra(ImagesSelectionActivity.TOOLBAR_TITLE, binding.toolbar.getTitle());
         startActivityForResult(intent, REQUEST_CHOOSE_IMAGE);
     }
 
@@ -458,7 +485,6 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         return false;
     }
 
-    @OnClick(R.id.btnAddImage)
     void onAddImage() {
         if (cannotEdit(REQUEST_ADD_IMAGE_AFTER_LOGIN)) {
             return;
@@ -480,7 +506,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
 
     private void updateSelectDefaultLanguageAction() {
         boolean isDefault = getProduct().getLang() != null && getCurrentLanguage().equals(LocaleHelper.getLocale(getProduct().getLang()).getLanguage());
-        btnChooseDefaultLanguage.setVisibility(isDefault ? View.INVISIBLE : View.VISIBLE);
+        binding.btnChooseDefaultLanguage.setVisibility(isDefault ? View.INVISIBLE : View.VISIBLE);
     }
 
     @OnClick(R.id.btnEditImage)
@@ -514,10 +540,8 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         return (Product) getIntent().getSerializableExtra(ImageKeyHelper.PRODUCT);
     }
 
-    @SuppressWarnings("unused")
-    @OnItemSelected(R.id.comboLanguages)
     void onLanguageChanged() {
-        LocaleHelper.LanguageData data = (LocaleHelper.LanguageData) comboLanguages.getSelectedItem();
+        LocaleHelper.LanguageData data = (LocaleHelper.LanguageData) binding.comboLanguages.getSelectedItem();
         Product product = getProduct();
         if (!data.getCode().equals(getCurrentLanguage())) {
             getIntent().putExtra(ImageKeyHelper.LANGUAGE, data.getCode());
@@ -532,13 +556,11 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         return (ProductImageField) getIntent().getSerializableExtra(ImageKeyHelper.IMAGE_TYPE);
     }
 
-    @SuppressWarnings("unused")
-    @OnItemSelected(R.id.comboImageType)
     void onImageTypeChanged() {
         if (getProduct() == null) {
             return;
         }
-        ProductImageField newTypeSelected = TYPE_IMAGE.get(comboImageType.getSelectedItemPosition());
+        ProductImageField newTypeSelected = TYPE_IMAGE.get(binding.comboImageType.getSelectedItemPosition());
         final ProductImageField selectedType = getSelectedType();
         if (newTypeSelected.equals(selectedType)) {
             return;
@@ -575,39 +597,47 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // do nothing
-        if (requestCode == REQUEST_EDIT_IMAGE_AFTER_LOGIN) {
-            if (resultCode == RESULT_OK) {
-                onStartEditExistingImage();
-            }
-        } else if (requestCode == REQUEST_ADD_IMAGE_AFTER_LOGIN) {
-            if (resultCode == RESULT_OK) {
-                onAddImage();
-            }
-        } else if (requestCode == REQUEST_CHOOSE_IMAGE_AFTER_LOGIN) {
-            if (resultCode == RESULT_OK) {
-                onChooseImage();
-            }
-        } else if (requestCode == REQUEST_UNSELECT_IMAGE_AFTER_LOGIN) {
-            if (resultCode == RESULT_OK) {
-                unselectImage();
-            }
-        } else if (requestCode == REQUEST_EDIT_IMAGE) {
-            applyEditExistingImage(resultCode, data);
-        } else if (requestCode == REQUEST_CHOOSE_IMAGE) {
-            if (resultCode == RESULT_OK && data != null) {
-                File file = (File) data.getSerializableExtra(ImageKeyHelper.IMAGE_FILE);
-                String imgId = data.getStringExtra(ImageKeyHelper.IMG_ID);
-                //photo choosed from gallery
-                if (file != null) {
-                    onPhotoReturned(file);
-                } else if (StringUtils.isNotBlank(imgId)) {
-                    HashMap<String, String> imgMap = new HashMap<>();
-                    imgMap.put(ImageKeyHelper.IMG_ID, imgId);
-                    postEditImage(imgMap);
+        switch (requestCode) {
+            case REQUEST_EDIT_IMAGE_AFTER_LOGIN:
+                if (resultCode == RESULT_OK) {
+                    onStartEditExistingImage();
                 }
-            }
-        } else {
-            new PhotoReceiverHandler(this).onActivityResult(this, requestCode, resultCode, data);
+                break;
+            case REQUEST_ADD_IMAGE_AFTER_LOGIN:
+                if (resultCode == RESULT_OK) {
+                    onAddImage();
+                }
+                break;
+            case REQUEST_CHOOSE_IMAGE_AFTER_LOGIN:
+                if (resultCode == RESULT_OK) {
+                    onChooseImage();
+                }
+                break;
+            case REQUEST_UNSELECT_IMAGE_AFTER_LOGIN:
+                if (resultCode == RESULT_OK) {
+                    unselectImage();
+                }
+                break;
+            case REQUEST_EDIT_IMAGE:
+                applyEditExistingImage(resultCode, data);
+                break;
+            case REQUEST_CHOOSE_IMAGE:
+                if (resultCode == RESULT_OK && data != null) {
+                    File file = (File) data.getSerializableExtra(ImageKeyHelper.IMAGE_FILE);
+                    String imgId = data.getStringExtra(ImageKeyHelper.IMG_ID);
+                    //photo choosed from gallery
+                    if (file != null) {
+                        onPhotoReturned(file);
+                    } else if (StringUtils.isNotBlank(imgId)) {
+                        HashMap<String, String> imgMap = new HashMap<>();
+                        imgMap.put(ImageKeyHelper.IMG_ID, imgId);
+                        postEditImage(imgMap);
+                    }
+                }
+                break;
+            default:
+                new PhotoReceiverHandler(this).onActivityResult(this, requestCode, resultCode, data);
+                break;
         }
     }
 
@@ -646,7 +676,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         final String code = getProduct().getCode();
         imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, code);
         imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(getSelectedType(), getCurrentLanguage()));
-        mPhotoView.setVisibility(View.INVISIBLE);
+        binding.imageViewFullScreen.setVisibility(View.INVISIBLE);
         client.editImage(code, imgMap, (value, response) -> {
             if (value) {
                 setResult(RESULTCODE_MODIFIED);

@@ -232,6 +232,12 @@
     <string name="prefs_power_mode_summary">Skan hurtigt mange produkter i et supermarked for at afgøre hvilke der ikke er i databasen.</string>
     <string name="prefs_language">Sprog</string>
     <string name="prefs_language_summary">Skift sprog</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Synes du om din oplevelse med Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Det er vi kede af at høre! Kan du fortælle os, hvad der skete?</string>
+    <string name="user_ask_rate_app">Storartet! Lad andre vide, hvad du synes om appen!</string>
+    <string name="rate_app">Bedøm appen</string>
+    <string name="no_thx">Nei takk</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historik</string>
     <string name="clear_history">Ryd historik</string>
@@ -759,4 +765,9 @@
     <string name="content_unselect_photo">Tryk hér for at fravælge det aktuelle foto</string>
     <string name="title_exit">Afslut</string>
     <string name="content_exit">Tryk hér for at returnere til produktet</string>
+    <string name="icon_label">Etiketikon</string>
+    <string name="icon_categories">Kategoriikon</string>
+    <string name="icon_emb">EMB-kodeikon</string>
+    <string name="product_front_image">Produktbillede front</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

@@ -212,7 +212,7 @@
     <string name="select_camera">Selecciona la càmera</string>
     <string name="ok_button">D\'acord</string>
     <string name="cancel_button">Cancel·la</string>
-    <string name="login_button">Identificador</string>
+    <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
     <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades!</string>
     <string name="title_info_dialog">Com funciona?</string>
@@ -232,6 +232,12 @@
     <string name="prefs_power_mode_summary">Escanegeu ràpidament els productes d\'un comerç per veure quins no es troben a la base de dades.</string>
     <string name="prefs_language">Idioma</string>
     <string name="prefs_language_summary">Canvi de llengua</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
+    <string name="rate_app">Rate app</string>
+    <string name="no_thx">No thanks</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historial</string>
     <string name="clear_history">Neteja l\'historial</string>
@@ -759,4 +765,9 @@
     <string name="content_unselect_photo">Press here to unselect current photo</string>
     <string name="title_exit">Exit</string>
     <string name="content_exit">Press here to return to the product</string>
+    <string name="icon_label">Icona d\'etiquetes</string>
+    <string name="icon_categories">Icona de categories</string>
+    <string name="icon_emb">Icona de codi EMB</string>
+    <string name="product_front_image">Imatge frontal del producte</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

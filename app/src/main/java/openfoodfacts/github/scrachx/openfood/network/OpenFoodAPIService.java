@@ -1,30 +1,42 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import com.fasterxml.jackson.databind.JsonNode;
+
+import java.util.ArrayList;
+import java.util.Map;
+
 import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.Search;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import retrofit2.Call;
-import retrofit2.http.*;
-
-import java.util.ArrayList;
-import java.util.Map;
+import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.PartMap;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 /**
  * Define our Open Food Facts API endpoints.
  * All REST methods such as GET, POST, PUT, UPDATE, DELETE can be stated in here.
  */
 public interface OpenFoodAPIService {
-
     String PRODUCT_API_COMMENT = "Official Android app";
 
     @GET("api/v0/product/{barcode}.json")
     Call<State> getProductByBarcode(@Path("barcode") String barcode,
                                     @Query("fields") String fields,
                                     @Header("User-Agent") String header);
-
 
     @GET("api/v0/product/{barcode}.json")
     Single<State> getProductByBarcodeSingle(@Path("barcode") String barcode,
@@ -41,20 +53,20 @@ public interface OpenFoodAPIService {
     Call<State> getShortProductByBarcode(@Path("barcode") String barcode,
                                          @Header("User-Agent") String header);
 
-
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
-    Call<Search> searchProductByName(@Query("fields") String fields,@Query("search_terms") String name,@Query("page") int page);
+    Call<Search> searchProductByName(@Query("fields") String fields, @Query("search_terms") String name, @Query("page") int page);
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
     Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit);
-
 
     @GET("api/v0/product/{barcode}.json?fields=ingredients")
     Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)
+     *
+     * @deprecated
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
@@ -72,6 +84,8 @@ public interface OpenFoodAPIService {
      * does not contain Name of the product.
      * here name query is not present to make sure if the product is already present
      * then the server would not assume to delete it.
+     *
+     * @deprecated
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
@@ -83,12 +97,13 @@ public interface OpenFoodAPIService {
                                        @Query("password") String password,
                                        @Query("comment") String comment);
 
-
     /**
      * This method is used to upload those products which
      * does not contain Brands of the product.
      * here Brands query is not present to make sure if the product is already present
      * then the server would not assume to delete it.
+     *
+     * @deprecated
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
@@ -105,6 +120,8 @@ public interface OpenFoodAPIService {
      * does not contain Quantity of the product.
      * here Quantity query is not present to make sure if the product is already present
      * then the server would not assume to delete it.
+     *
+     * @deprecated
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
@@ -121,6 +138,8 @@ public interface OpenFoodAPIService {
      * does not contain Name and Brands of the product.
      * here Name and Brands query is not present to make sure if the product is already present
      * then the server would not assume to delete it.
+     *
+     * @deprecated
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
@@ -136,6 +155,8 @@ public interface OpenFoodAPIService {
      * does not contain Name and Quantity of the product.
      * here Name and Quantity query is not present to make sure if the product is already present
      * then the server would not assume to delete it.
+     *
+     * @deprecated
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
@@ -151,6 +172,8 @@ public interface OpenFoodAPIService {
      * does not contain Brands and Quantity of the product.
      * here Brands and Quantity query is not present to make sure if the product is already present
      * then the server would not assume to delete it.
+     *
+     * @deprecated
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
@@ -166,6 +189,8 @@ public interface OpenFoodAPIService {
      * does not contain Brands, Name and Quantity of the product.
      * here Brands, Name and Quantity query is not present to make sure if the product is already present
      * then the server would not assume to delete it.
+     *
+     * @deprecated
      */
     @Deprecated
     @GET("/cgi/product_jqm2.pl")
@@ -193,7 +218,7 @@ public interface OpenFoodAPIService {
 
     @GET("cgi/suggest.pl?tagtype=emb_codes")
     Single<ArrayList<String>> getEMBCodeSuggestions(@Query("term") String term);
-    
+
     @GET("/cgi/suggest.pl?tagtype=periods_after_opening")
     Single<ArrayList<String>> getPeriodAfterOpeningSuggestions(@Query("term") String term);
 
@@ -227,7 +252,7 @@ public interface OpenFoodAPIService {
     @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
     Call<Search> getProductByCategory(@Path("category") String category, @Path("page") int page);
 
-    @GET("contributor/{Contributor}/{page}.json")
+    @GET("contributor/{Contributor}/{page}.json?nocache=1")
     Call<Search> searchProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
 
     @GET("language/{language}.json")
@@ -272,28 +297,28 @@ public interface OpenFoodAPIService {
     @GET("nutrient-level/{NutrientLevel}.json")
     Call<Search> byNutrientLevel(@Path("NutrientLevel") String NutrientLevel);
 
-    @GET("contributor/{Contributor}.json")
+    @GET("contributor/{Contributor}.json?nocache=1")
     Call<Search> byContributor(@Path("Contributor") String Contributor);
 
-    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json")
+    @GET("contributor/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getToBeCompletedProductsByContributor(@Path("Contributor") String Contributor, @Path("page") int page);
 
-    @GET("/photographer/{Contributor}/{page}.json")
+    @GET("/photographer/{Contributor}/{page}.json?nocache=1")
     Call<Search> getPicturesContributedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
-    @GET("photographer/{Photographer}.json")
+    @GET("photographer/{Photographer}.json?nocache=1")
     Call<Search> byPhotographer(@Path("Photographer") String Photographer);
 
-    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json")
+    @GET("photographer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getPicturesContributedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
-    @GET("informer/{Informer}.json")
+    @GET("informer/{Informer}.json?nocache=1")
     Call<Search> byInformer(@Path("Informer") String Informer);
 
-    @GET("informer/{Contributor}/{page}.json")
+    @GET("informer/{Contributor}/{page}.json?nocache=1")
     Call<Search> getInfoAddedProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
-    @GET("informer/{Contributor}/state/to-be-completed/{page}.json")
+    @GET("informer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getInfoAddedIncompleteProducts(@Path("Contributor") String Contributor, @Path("page") int page);
 
     @GET("last-edit-date/{LastEditDate}.json")
@@ -311,15 +336,12 @@ public interface OpenFoodAPIService {
     @GET("code/{Code}.json")
     Call<Search> byCode(@Path("Code") String Code);
 
-
-
     @GET("state/{State}/{page}.json")
     Call<Search> getProductsByState(@Path("State") String state, @Path("page") int page);
 
     /**
      * Open Beauty Facts experimental and specific APIs
      */
-
     @GET("period-after-opening/{PeriodAfterOpening}.json")
     Call<Search> byPeriodAfterOpening(@Path("PeriodAfterOpening") String PeriodAfterOpening);
 
@@ -329,28 +351,30 @@ public interface OpenFoodAPIService {
     /**
      * This method gives a list of incomplete products
      */
-    @GET("state/to-be-completed/{page}.json")
+    @GET("state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getIncompleteProducts(@Path("page") int page);
+
     /**
      * This method gives the # of products on Open Food Facts
      */
     @GET("/1.json?fields=null")
     Single<Search> getTotalProductCount(@Header("User-Agent") String header);
+
     /**
      * This method gives the news in all languages
      */
-    @GET("/files/tagline/tagline-"+ BuildConfig.FLAVOR+".json")
+    @GET("/files/tagline/tagline-" + BuildConfig.FLAVOR + ".json")
     Call<ArrayList<TaglineLanguageModel>> getTagline(@Header("User-Agent") String header);
+
     /**
      * This method gives the image fields of a product
      */
-
     @GET("api/v0/product/{barcode}.json?fields=images")
     Call<String> getProductImages(@Path("barcode") String barcode);
+
     /**
      * This method is to crop images server side
      */
-
     @GET("/cgi/product_image_crop.pl")
     Call<String> editImages(@Query("code") String code,
                             @QueryMap Map<String, String> fields);

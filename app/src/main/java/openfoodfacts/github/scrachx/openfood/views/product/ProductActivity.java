@@ -237,7 +237,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
                 if ("perform_ocr".equals(action)) {
                     ((IngredientsProductFragment) fragment).extractIngredients();
                 } else if ("send_updated".equals(action)) {
-                    ((IngredientsProductFragment) fragment).change_ing_image();
+                    ((IngredientsProductFragment) fragment).changeIngImage();
                 }
                 return;
             }

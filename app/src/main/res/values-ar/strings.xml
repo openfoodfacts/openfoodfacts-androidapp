@@ -254,6 +254,12 @@
     <string name="prefs_power_mode_summary">مسح المنتجات بسرعة في متجر التسوق لمعرفة أي منها ليست في قاعدة البيانات.</string>
     <string name="prefs_language">اللغة</string>
     <string name="prefs_language_summary">تغيير اللغة</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">هل تستمتع بتجربتك مع Open Food Facts؟</string>
+    <string name="user_ask_show_feedback_form">نأسف لسماع ذلك! هل يمكنك إخبارنا بما حدث؟</string>
+    <string name="user_ask_rate_app">رائع! دع اﻷخرين يعرفون رأيك في هذا التطبيق!</string>
+    <string name="rate_app">قيِّم التطبيق</string>
+    <string name="no_thx">ﻻ، شكرًا</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">السجل</string>
     <string name="clear_history">محو السجل</string>
@@ -785,4 +791,9 @@
     <string name="content_unselect_photo">اضغط هنا ﻹلغاء تحديد الصورة الحالية</string>
     <string name="title_exit">خروج</string>
     <string name="content_exit">اضغط هنا للعودة إلى المنتج</string>
+    <string name="icon_label">Labels icon</string>
+    <string name="icon_categories">Categories icon</string>
+    <string name="icon_emb">EMB code icon</string>
+    <string name="product_front_image">الصورة اﻷمامية للمنتج</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

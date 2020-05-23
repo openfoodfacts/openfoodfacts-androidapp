@@ -55,14 +55,28 @@ Data about food is of public interest and has to be open. The complete database 
 
 Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
 
+### What can I work on ?
+
+Open Food Facts on Android has 0,5M users and 1M products. *Each contribution you make will have a large impact on food transparency worldwide.* Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
+
+Here are issues and feature requests you can work on:
+- [P1 issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/p1)
+- [Issues with a screenshot of the problem](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Ascreenshot-available)
+- [Issues with a visual mockup of the solution](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Amockup-available)
+- [Simplify product addition](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/product%20addition)
+- [Create onboarding features for new users](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/onboarding)
+- [Small issues (Hacktoberfest)](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/hacktoberfest)
+- [Improve product comparison](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/comparison)
+- [Help remove some of the technical debt](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/refactoring)
+
+If you don't have time to contribute code, you're very welcome to
+* scan new products
+* make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
+
 ## Help translate Open Food Facts in your language
 
 You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
 https://translate.openfoodfacts.org
-
-## Generate screenshots for the Play Store
-To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots`
-[Help is welcome to improve those](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/fastlane)
 
 ## Installation
 
@@ -73,24 +87,10 @@ To generate localized screenshots of the app on your local computer, launch the 
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 * You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator.
 
-### What can I work on ?
-
-Open Food Facts on Android has 0,5M users and 1M products. Each contribution you make will have a large impact on food transparency worldwide. Finding the right issue or feature will help you have even more more impact. Feel free to ask for feedback on the #android channel before you start work, and to document what you intend to code.
-
-Here are issues and feature requests you can work on:
-- [Very high impact issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/very%20high%20impact)
-- [Priority issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/priority)
-- [Issues with a screenshot of the problem](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Ascreenshot-available)
-- [Issues with a visual mockup of the solution](https://github.com/openfoodfacts/openfoodfacts-androidapp/issues?q=is%3Aissue+is%3Aopen+label%3Amockup-available)
-- [Simplify product addition](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/product%20addition)
-- [Create onboarding features for new users](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/onboarding)
-- [Small Hacktoberfest issues](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/hacktoberfest)
-- [Improve product comparison](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/comparison)
-- [Help remove some of the technical debt](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/refactoring)
-
-If you don't have time to contribute code, you're very welcome to
-* scan new products
-* make a donation to [_help pay for the hosting and general costs_](https://donate.openfoodfacts.org) 
+## Generate screenshots for the Play Store
+To activate  screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
+To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
+[Help is welcome to improve those](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/fastlane)
 
 ### Who do I talk to?
 
@@ -134,6 +134,7 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 - [Friedger Müffke](https://github.com/friedger)
 - [Qian Jin](https://github.com/jinqian)
 - [Fred Deniger](https://github.com/deniger)
+- [VaiTon](https://github.com/VaiTon)
 - [Full list of the Open Food Facts Android developers](https://github.com/openfoodfacts/openfoodfacts-androidapp/graphs/contributors)
 
 ## Copyright and License

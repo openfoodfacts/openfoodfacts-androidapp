@@ -12,6 +12,7 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -69,7 +70,7 @@ public class CategoryProductHelper {
                     categoryText.append(", ");
                 }
 
-                if(category.getCategoryTag().equals(baseFragment.getString(R.string.categorytag_en_alcoholic_beverages))){
+                if (category.getCategoryTag() != null && category.getCategoryTag().equals("en:alcoholic-beverages")) {
                     containsAlcohol = true;
                 }
             }
@@ -80,7 +81,7 @@ public class CategoryProductHelper {
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View view) {
+            public void onClick(@NonNull View view) {
                 if (category.getIsWikiDataIdPresent()) {
                     apiClient.doSomeThing(category.getWikiDataId(), (value, result) -> {
                         if (value) {

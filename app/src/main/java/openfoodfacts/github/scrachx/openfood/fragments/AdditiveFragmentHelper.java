@@ -2,16 +2,18 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.style.DynamicDrawableSpan;
-import androidx.fragment.app.FragmentActivity;
-import androidx.core.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.DynamicDrawableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import java.util.List;
 
@@ -26,11 +28,21 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 
+/**
+ * Helper class for additive fragment
+ */
 public class AdditiveFragmentHelper {
-    private AdditiveFragmentHelper(){
+    private AdditiveFragmentHelper() {
         //helper class
     }
 
+    /**
+     * Show names of all additives on the TextView
+     *
+     * @param additives list of additive names
+     * @param additiveProduct TextView which displays additive names
+     * @param apiClientForWikiData object of WikidataApiClient
+     */
     public static void showAdditives(List<AdditiveName> additives, TextView additiveProduct, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
         additiveProduct.setText(bold(fragment.getString(R.string.txtAdditives)));
         additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
@@ -40,47 +52,32 @@ public class AdditiveFragmentHelper {
         additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
 
         for (int i = 0; i < additives.size() - 1; i++) {
-            additiveProduct.append(getAdditiveTag(additives.get(i),apiClientForWikiData,fragment));
+            additiveProduct.append(getAdditiveTag(additives.get(i), apiClientForWikiData, fragment));
             additiveProduct.append("\n");
         }
 
-        additiveProduct.append(getAdditiveTag(additives.get(additives.size() - 1),apiClientForWikiData,fragment));
+        additiveProduct.append(getAdditiveTag(additives.get(additives.size() - 1), apiClientForWikiData, fragment));
     }
 
+    /**
+     * Returns additive tag from additive name using WikidataApiClient
+     *
+     * @param additive name of the additive
+     * @param apiClientForWikiData object of WikidataApiClient
+     * @param fragment holds a reference to the calling fragment
+     **/
     private static CharSequence getAdditiveTag(AdditiveName additive, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
-        FragmentActivity activity=fragment.getActivity();
-        Context context=fragment.getContext();
+        FragmentActivity activity = fragment.getActivity();
+        Context context = fragment.getContext();
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View view) {
+            public void onClick(@NonNull View view) {
                 if (additive.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), (value, result) -> {
-                        if (value) {
-                            if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, additive,
-                                    activity.getSupportFragmentManager());
-                            }
-                        } else {
-                            if (additive.hasOverexposureData()) {
-                                if (activity != null && !activity.isFinishing()) {
-                                    BottomScreenCommon.showBottomScreen(result, additive,
-                                        activity.getSupportFragmentManager());
-                                }
-                            } else {
-                                ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                            }
-                        }
-                    });
+                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), getOnWikiResponse(activity, additive, context));
                 } else {
-                    if (additive.hasOverexposureData()) {
-                        if (activity != null && !activity.isFinishing()) {
-                            BottomScreenCommon.showBottomScreen(null, additive,
-                                activity.getSupportFragmentManager());
-                        }
-                    } else {
-                        ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
-                    }
+                    onWikiNoResponse(additive, activity, context);
                 }
             }
         };
@@ -90,7 +87,7 @@ public class AdditiveFragmentHelper {
 
         // if the additive has an overexposure risk ("high" or "moderate") then append the warning message to it
         if (additive.hasOverexposureData()) {
-            boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
+            final boolean isHighRisk = "high".equalsIgnoreCase(additive.getOverexposureRisk());
             Drawable riskIcon;
             String riskWarningStr;
             int riskWarningColor;
@@ -115,5 +112,36 @@ public class AdditiveFragmentHelper {
         }
 
         return spannableStringBuilder;
+    }
+
+    private static void onWikiNoResponse(AdditiveName additive, FragmentActivity activity, Context context) {
+        if (additive.hasOverexposureData()) {
+            if (activity != null && !activity.isFinishing()) {
+                BottomScreenCommon.showBottomScreen(null, additive,
+                    activity.getSupportFragmentManager());
+            }
+        } else {
+            ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+        }
+    }
+
+    private static WikidataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive, Context context) {
+        return (value, result) -> {
+            if (value) {
+                if (activity != null && !activity.isFinishing()) {
+                    BottomScreenCommon.showBottomScreen(result, additive,
+                        activity.getSupportFragmentManager());
+                }
+            } else {
+                if (additive.hasOverexposureData()) {
+                    if (activity != null && !activity.isFinishing()) {
+                        BottomScreenCommon.showBottomScreen(result, additive,
+                            activity.getSupportFragmentManager());
+                    }
+                } else {
+                    ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                }
+            }
+        };
     }
 }

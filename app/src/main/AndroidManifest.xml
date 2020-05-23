@@ -138,7 +138,6 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-
         <service
             android:name=".jobs.SavedProductUploadJob"
             android:exported="false">
@@ -195,7 +194,7 @@
         <activity
             android:name=".views.ProductListsActivity"
             android:parentActivityName=".views.MainActivity" />
-        <activity android:name=".views.YourListedProducts" />
+        <activity android:name=".views.YourListedProductsActivity" />
     </application>
 
 </manifest>

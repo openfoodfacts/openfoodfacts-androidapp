@@ -232,6 +232,12 @@
     <string name="prefs_power_mode_summary">Digitalizar produtos rapidamente, num supermercado, para ver quais deles não se encontram na base de dados.</string>
     <string name="prefs_language">Idioma</string>
     <string name="prefs_language_summary">Mudar idioma</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Está gostando da sua experiência no Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Lamentamos ouvir isso! Poderia nos dizer o que aconteceu?</string>
+    <string name="user_ask_rate_app">Ótimo! Conte aos outros o que você acha deste aplicativo!</string>
+    <string name="rate_app">Avalie o aplicativo</string>
+    <string name="no_thx">Não, obrigado</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Histórico</string>
     <string name="clear_history">Eliminar histórico</string>
@@ -742,21 +748,26 @@
     <string name="load_ingredient_detection_data_summary">Nenhum dado de deteção de ingrediente foi encontrado, tente carregá-lo do servidor</string>
     <string name="white_check_image_descr">Um cheque branco</string>
     <string name="hint_packaging">Exemplos: plástico, papel, vidro</string>
-    <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
-    <string name="check_first_time">check_first_time</string>
+    <string name="risk_alcohol_consumption">O consumo excessivo de álcool é prejudicial à saúde e deve ser consumido com moderação</string>
+    <string name="check_first_time">verificar_primeira_vez</string>
     <!--ShowcaseView Strings-->
-    <string name="title_image_type">Select Image Type</string>
-    <string name="content_image_type">Choose the photo to work on</string>
-    <string name="title_choose_language">Select Language</string>
-    <string name="content_choose_language">Select the language of the photo</string>
-    <string name="title_add_photo">Add Photo</string>
-    <string name="content_add_photo">Press here to take a new photo</string>
-    <string name="title_choose_photo">Choose Photo</string>
-    <string name="content_choose_photo">Choose among existing photos</string>
-    <string name="title_edit_photo">Edit Photo</string>
-    <string name="content_edit_photo">Edit, crop and rotate the photo</string>
-    <string name="title_unselect_photo">Unselect Photo</string>
-    <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
-    <string name="content_exit">Press here to return to the product</string>
+    <string name="title_image_type">Escolha o tipo de imagem</string>
+    <string name="content_image_type">Escolher foto</string>
+    <string name="title_choose_language">Selecionar idioma</string>
+    <string name="content_choose_language">Selecionar idioma da foto</string>
+    <string name="title_add_photo">Adicionar foto</string>
+    <string name="content_add_photo">Pressione aqui para tirar uma nova foto</string>
+    <string name="title_choose_photo">Escolher Foto</string>
+    <string name="content_choose_photo">Escolher foto existente</string>
+    <string name="title_edit_photo">Editar foto</string>
+    <string name="content_edit_photo">Editar, cortar e girar foto</string>
+    <string name="title_unselect_photo">Desmarcar foto</string>
+    <string name="content_unselect_photo">Pressione aqui para desmarcar a foto atual</string>
+    <string name="title_exit">Sair</string>
+    <string name="content_exit">Pressione aqui para retornar ao produto</string>
+    <string name="icon_label">Ícone de rótulos</string>
+    <string name="icon_categories">Ícone de categorias</string>
+    <string name="icon_emb">Ícone de código EMB</string>
+    <string name="product_front_image">Imagem frontal do produto</string>
+    <string name="brand_hint">Exemplos: Coca Cola, Nestlé, etc…</string>
 </resources>

@@ -232,6 +232,12 @@
     <string name="prefs_power_mode_summary">Produkte in Supermarkt schnell erfassen, um festzustellen, welche noch nicht in der Datenbank enthalten sind.</string>
     <string name="prefs_language">Sprache</string>
     <string name="prefs_language_summary">Sprache ändern</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Sind Sie mit Open Food Facts zufrieden?</string>
+    <string name="user_ask_show_feedback_form">Es tut uns leid, das zu hören! Könnten Sie uns die Gründe dafür nennen?</string>
+    <string name="user_ask_rate_app">Großartig! Lassen Sie andere wissen, was Sie von dieser App halten!</string>
+    <string name="rate_app">App bewerten</string>
+    <string name="no_thx">Nein, danke</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Verlauf</string>
     <string name="clear_history">Verlauf leeren</string>
@@ -759,4 +765,9 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="content_unselect_photo">Hier drücken, um das aktuelle Foto abzuwählen</string>
     <string name="title_exit">Beenden</string>
     <string name="content_exit">Hier drücken, um zum Produkt zurückzukehren</string>
+    <string name="icon_label">Etikettensymbol</string>
+    <string name="icon_categories">Kategoriesymbol</string>
+    <string name="icon_emb">Symbol des Produzenten-Codes</string>
+    <string name="product_front_image">Produktfoto (Front)</string>
+    <string name="brand_hint">Beispiele: CocaCola, Nestle, usw…</string>
 </resources>

@@ -31,7 +31,7 @@ Maak boodschappenlijstjes, houd bij wat je hebt gegeten en deel je lijsten eenvo
 
 ▶ Ken de feiten
 Open Food Facts helpt je om de kleine lettertjes op etiketten te begrijpen. Zo kan je vinden:
-- de CO2-voetafdruk en verpakking (evenals recyclinginstructies),
+- de koolstofvoetafdruk (CO2-emissies) en verpakking (evenals recyclinginstructies),
 - Nutri-Score (voedingswaarde), voedingsstoffen, vetgehalte, verzadigde vetzuren, koolhydraten, suikers, vezels, eiwitten en zout,
 - merken, allergenen, logo's (bio, glutenvrij, veganistisch, vegetarisch, halal, kosjer ...), traceerbaarheidsinformatie (verpakkingscodes, oorsprong van ingrediënten),
 - en op wijnen en bieren vindt u het alcoholpercentage.
