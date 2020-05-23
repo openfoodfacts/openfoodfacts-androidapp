@@ -74,7 +74,7 @@ ext {
 
     loadToastVersion = '1.0.12'
     zoomingImgVersion = '2.3.0'
-    materialDialogVersion = '0.9.6.0'
+    materialDialogVersion = '3.3.0'
 
     fontIconCoreVersion = '3.2.5@aar'
     googleMaterialFontVersion = '3.0.1.3.original@aar'
