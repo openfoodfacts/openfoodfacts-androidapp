@@ -66,7 +66,7 @@ ext {
     commonsCsv = '1.4'
 
     journeyappsZxingScannerVersion = '3.6.0'
-    zxingCoreVersion = '3.3.0' //For Android 14+ support zxing:core should be 3.3.0 or earlier
+    zxingCoreVersion = '3.4.0' //For Android 14+ support zxing:core should be 3.3.0 or earlier
 
     htmlDomVersion = '1.11.2'
 
