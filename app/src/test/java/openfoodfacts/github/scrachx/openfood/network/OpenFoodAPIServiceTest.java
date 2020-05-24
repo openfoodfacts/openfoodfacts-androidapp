@@ -4,6 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class OpenFoodAPIServiceTest {
     /**
      * We need to use auth because we use world.openfoodfacts.dev
      */
-    private static OpenFoodAPIService clientWithAuth;
+    private static OpenFoodAPIService devClientWithAuth;
     private static final String DEV_API = "https://world.openfoodfacts.dev";
 
     @BeforeClass
@@ -48,9 +49,14 @@ public class OpenFoodAPIServiceTest {
 
                 return chain.proceed(request);
             })
+            // FIXME: Dev server is too slow serving some requests, causing a SocketTimeoutException
+            .callTimeout(Duration.ZERO)
+            .connectTimeout(Duration.ZERO)
+            .readTimeout(Duration.ZERO)
+            .writeTimeout(Duration.ZERO)
             .build();
 
-        clientWithAuth = new Retrofit.Builder()
+        devClientWithAuth = new Retrofit.Builder()
             .baseUrl(DEV_API)
             .addConverterFactory(JacksonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -61,7 +67,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byLanguage() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byLanguage("italian").execute();
+        Response<Search> searchResponse = devClientWithAuth.byLanguage("italian").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -71,7 +77,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byLabel() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byLabel("utz-certified").execute();
+        Response<Search> searchResponse = devClientWithAuth.byLabel("utz-certified").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -81,7 +87,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byCategory() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byCategory("baby-foods").execute();
+        Response<Search> searchResponse = devClientWithAuth.byCategory("baby-foods").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -91,7 +97,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byState() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byState("complete").execute();
+        Response<Search> searchResponse = devClientWithAuth.byState("complete").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -101,7 +107,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byPackaging() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byPackaging("cardboard").execute();
+        Response<Search> searchResponse = devClientWithAuth.byPackaging("cardboard").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -111,7 +117,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byBrand() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byBrand("monoprix").execute();
+        Response<Search> searchResponse = devClientWithAuth.byBrand("monoprix").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -121,7 +127,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byPurchasePlace() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byPurchasePlace("marseille-5").execute();
+        Response<Search> searchResponse = devClientWithAuth.byPurchasePlace("marseille-5").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -131,7 +137,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byStore() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byStore("super-u").execute();
+        Response<Search> searchResponse = devClientWithAuth.byStore("super-u").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -141,7 +147,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byCountry() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byCountry("france").execute();
+        Response<Search> searchResponse = devClientWithAuth.byCountry("france").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -151,7 +157,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byIngredient() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byIngredient("sucre").execute();
+        Response<Search> searchResponse = devClientWithAuth.byIngredient("sucre").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -161,7 +167,7 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byTrace() throws Exception {
-        Response<Search> searchResponse = clientWithAuth.byIngredient("eggs").execute();
+        Response<Search> searchResponse = devClientWithAuth.byIngredient("eggs").execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -172,7 +178,7 @@ public class OpenFoodAPIServiceTest {
     @Test
     public void getProduct_notFound() throws Exception {
         String barcode = "457457457";
-        Response<State> response = clientWithAuth.getProductByBarcode(barcode, "code", Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
+        Response<State> response = devClientWithAuth.getProductByBarcode(barcode, "code", Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
 
         assertTrue(response.isSuccessful());
 
@@ -199,7 +205,7 @@ public class OpenFoodAPIServiceTest {
             put("quantity", product.getQuantity());
         }};
 
-        State body = clientWithAuth
+        State body = devClientWithAuth
             .saveProductSingle(product.getBarcode(), productDetails, PRODUCT_API_COMMENT)
             .blockingGet();
 
@@ -208,7 +214,7 @@ public class OpenFoodAPIServiceTest {
 
         String fields = "product_name,brands,brands_tags,quantity";
 
-        Response<State> response = clientWithAuth.getProductByBarcode(
+        Response<State> response = devClientWithAuth.getProductByBarcode(
             product.getBarcode(),
             fields,
             Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
@@ -223,31 +229,31 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void getProductByTrace_eggs_productsFound() throws Exception {
-        Response<Search> response = clientWithAuth.byTrace("eggs").execute();
+        Response<Search> response = devClientWithAuth.byTrace("eggs").execute();
         assertProductsFound(response);
     }
 
     @Test
     public void getProductByPackagerCode_emb35069c_productsFound() throws Exception {
-        Response<Search> response = clientWithAuth.byPackagerCode("emb-35069c").execute();
+        Response<Search> response = devClientWithAuth.byPackagerCode("emb-35069c").execute();
         assertProductsFound(response);
     }
 
     @Test
     public void getProductByNutritionGrade_a_productsFound() throws Exception {
-        Response<Search> res = clientWithAuth.byNutritionGrade("a").execute();
+        Response<Search> res = devClientWithAuth.byNutritionGrade("a").execute();
         assertProductsFound(res);
     }
 
     @Test
     public void getProductByCity_Paris_noProductFound() throws Exception {
-        Response<Search> response = clientWithAuth.byCity("paris").execute();
+        Response<Search> response = devClientWithAuth.byCity("paris").execute();
         assertNoProductsFound(response);
     }
 
     @Test
     public void getProductByAdditive_e301_productsFound() throws Exception {
-        Response<Search> response = clientWithAuth.byAdditive("e301-sodium-ascorbate").execute();
+        Response<Search> response = devClientWithAuth.byAdditive("e301-sodium-ascorbate").execute();
         assertProductsFound(response);
     }
 
