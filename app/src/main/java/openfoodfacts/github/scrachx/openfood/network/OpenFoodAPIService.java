@@ -226,28 +226,28 @@ public interface OpenFoodAPIService {
     Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page, @Query("fields") String fields);
 
     @GET("additive/{additive}/{page}.json")
-    Call<Search> getProductsByAdditive(@Path("additive") String additive, @Path("page") int page);
+    Call<Search> getProductsByAdditive(@Path("additive") String additive, @Path("page") int page, @Query("fields") String fields);
 
     @GET("allergen/{allergen}/{page}.json")
-    Call<Search> getProductsByAllergen(@Path("allergen") String allergen, @Path("page") int page);
+    Call<Search> getProductsByAllergen(@Path("allergen") String allergen, @Path("page") int page, @Query("fields") String fields);
 
     @GET("country/{country}/{page}.json")
-    Call<Search> getProductsByCountry(@Path("country") String country, @Path("page") int page);
+    Call<Search> getProductsByCountry(@Path("country") String country, @Path("page") int page, @Query("fields") String fields);
 
     @GET("origin/{origin}/{page}.json")
-    Call<Search> getProductsByOrigin(@Path("origin") String origin, @Path("page") int page);
+    Call<Search> getProductsByOrigin(@Path("origin") String origin, @Path("page") int page, @Query("fields") String fields);
 
     @GET("manufacturing-place/{manufacturing-place}/{page}.json")
-    Call<Search> getProductsByManufacturingPlace(@Path("manufacturing-place") String manufacturingPlace, @Path("page") int page);
+    Call<Search> getProductsByManufacturingPlace(@Path("manufacturing-place") String manufacturingPlace, @Path("page") int page, @Query("fields") String fields);
 
     @GET("store/{store}/{page}.json")
-    Call<Search> getProductByStores(@Path("store") String store, @Path("page") int page);
+    Call<Search> getProductByStores(@Path("store") String store, @Path("page") int page, @Query("fields") String fields);
 
     @GET("packaging/{packaging}/{page}.json")
-    Call<Search> getProductByPackaging(@Path("packaging") String packaging, @Path("page") int page);
+    Call<Search> getProductByPackaging(@Path("packaging") String packaging, @Path("page") int page, @Query("fields") String fields);
 
     @GET("label/{label}/{page}.json")
-    Call<Search> getProductByLabel(@Path("label") String label, @Path("page") int page);
+    Call<Search> getProductByLabel(@Path("label") String label, @Path("page") int page, @Query("fields") String fields);
 
     @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
     Call<Search> getProductByCategory(@Path("category") String category, @Path("page") int page);
@@ -337,7 +337,7 @@ public interface OpenFoodAPIService {
     Call<Search> byCode(@Path("Code") String Code);
 
     @GET("state/{State}/{page}.json")
-    Call<Search> getProductsByState(@Path("State") String state, @Path("page") int page);
+    Call<Search> getProductsByState(@Path("State") String state, @Path("page") int page, @Query("fields") String fields);
 
     /**
      * Open Beauty Facts experimental and specific APIs
