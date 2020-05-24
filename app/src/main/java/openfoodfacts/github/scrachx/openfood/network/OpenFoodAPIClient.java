@@ -87,7 +87,7 @@ public class OpenFoodAPIClient {
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
     private final OpenFoodAPIService apiService;
     private Context mActivity;
-    private final String fieldsToFetchProductDetail = String
+    private final String FIELDS_TO_FETCH_FACETS = String
         .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags", getLocaleProductNameField());
 
     public OpenFoodAPIClient(Activity activity) {
@@ -348,7 +348,7 @@ public class OpenFoodAPIClient {
     }
 
     public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
-        apiService.getProductByBrands(brand, page, fieldsToFetchProductDetail).enqueue(new Callback<Search>() {
+        apiService.getProductByBrands(brand, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 onBrandCallback.onBrandResponse(true, response.body());
@@ -552,7 +552,7 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByCountry(String country, final int page, final OnCountryCallback onCountryCallback) {
-        apiService.getProductsByCountry(country, page, fieldsToFetchProductDetail).enqueue(new Callback<Search>() {
+        apiService.getProductsByCountry(country, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
@@ -571,7 +571,7 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByLabel(String label, final int page, final OnLabelCallback onLabelCallback) {
-        apiService.getProductByLabel(label, page, fieldsToFetchProductDetail).enqueue(new Callback<Search>() {
+        apiService.getProductByLabel(label, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
@@ -638,7 +638,7 @@ public class OpenFoodAPIClient {
 
     public void getProductsByPackaging(final String packaging, final int page, final OnPackagingCallback onPackagingCallback) {
 
-        apiService.getProductByPackaging(packaging, page, fieldsToFetchProductDetail).enqueue(new Callback<Search>() {
+        apiService.getProductByPackaging(packaging, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
@@ -713,7 +713,7 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByStore(final String store, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductByStores(store, page, fieldsToFetchProductDetail).enqueue(createStoreCallback(onStoreCallback));
+        apiService.getProductByStores(store, page, FIELDS_TO_FETCH_FACETS).enqueue(createStoreCallback(onStoreCallback));
     }
 
     /**
@@ -724,7 +724,7 @@ public class OpenFoodAPIClient {
      * @param onBrandCallback object of OnBrandCallback interface
      */
     public void getProductsByBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
-        apiService.getProductByBrands(brand, page, fieldsToFetchProductDetail).enqueue(new Callback<Search>() {
+        apiService.getProductByBrands(brand, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
@@ -800,7 +800,7 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByOrigin(final String origin, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductsByOrigin(origin, page, fieldsToFetchProductDetail).enqueue(createStoreCallback(onStoreCallback));
+        apiService.getProductsByOrigin(origin, page, FIELDS_TO_FETCH_FACETS).enqueue(createStoreCallback(onStoreCallback));
     }
 
     public void syncOldHistory() {
@@ -808,7 +808,7 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByManufacturingPlace(final String manufacturingPlace, final int page, final OnStoreCallback onStoreCallback) {
-        apiService.getProductsByManufacturingPlace(manufacturingPlace, page, fieldsToFetchProductDetail).enqueue(createStoreCallback(onStoreCallback));
+        apiService.getProductsByManufacturingPlace(manufacturingPlace, page, FIELDS_TO_FETCH_FACETS).enqueue(createStoreCallback(onStoreCallback));
     }
 
     public interface OnImagesCallback {
@@ -904,7 +904,7 @@ public class OpenFoodAPIClient {
      */
     public void getProductsByAdditive(final String additive, final int page, final OnAdditiveCallback onAdditiveCallback) {
 
-        apiService.getProductsByAdditive(additive, page, fieldsToFetchProductDetail).enqueue(new Callback<Search>() {
+        apiService.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
@@ -922,7 +922,7 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByAllergen(final String allergen, final int page, final OnAllergensCallback onAllergensCallback) {
-        apiService.getProductsByAllergen(allergen, page, fieldsToFetchProductDetail).enqueue(new Callback<Search>() {
+        apiService.getProductsByAllergen(allergen, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
                 if (response.isSuccessful()) {
@@ -1003,7 +1003,7 @@ public class OpenFoodAPIClient {
     }
 
     public void getProductsByStates(String state, final int page, final onStateCallback onStateCallback) {
-        apiService.getProductsByState(state, page, fieldsToFetchProductDetail).enqueue(new Callback<Search>() {
+        apiService.getProductsByState(state, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
