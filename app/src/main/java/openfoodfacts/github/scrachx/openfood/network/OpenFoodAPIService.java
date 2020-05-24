@@ -223,7 +223,7 @@ public interface OpenFoodAPIService {
     Single<ArrayList<String>> getPeriodAfterOpeningSuggestions(@Query("term") String term);
 
     @GET("brand/{brand}/{page}.json")
-    Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page);
+    Call<Search> getProductByBrands(@Path("brand") String brand, @Path("page") int page, @Query("fields") String fields);
 
     @GET("additive/{additive}/{page}.json")
     Call<Search> getProductsByAdditive(@Path("additive") String additive, @Path("page") int page);

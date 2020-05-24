@@ -346,8 +346,8 @@ public class OpenFoodAPIClient {
     }
 
     public void getBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
-
-        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
+        String fields = "brands,product_name_fr,product_name,image_small_url,image_front_thumb_url,quantity,nutrition_grades_tags";
+        apiService.getProductByBrands(brand, page, fields).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(Call<Search> call, Response<Search> response) {
                 onBrandCallback.onBrandResponse(true, response.body());
@@ -656,6 +656,7 @@ public class OpenFoodAPIClient {
 
     /**
      * upload images in offline mode
+     *
      * @param context context
      * @return ListenableFuture
      */
@@ -679,32 +680,32 @@ public class OpenFoodAPIClient {
                 apiService.saveImage(getUploadableMap(productImage))
                     .enqueue(
                         callback = new Callback<JsonNode>() {
-                        @Override
-                        public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
-                            if (!response.isSuccessful()) {
-                                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                                return;
-                            }
+                            @Override
+                            public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
+                                if (!response.isSuccessful()) {
+                                    Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
+                                    return;
+                                }
 
-                            JsonNode body = response.body();
-                            if (body != null) {
-                                Log.d("onResponse", body.toString());
-                                if (!body.isObject()) {
+                                JsonNode body = response.body();
+                                if (body != null) {
+                                    Log.d("onResponse", body.toString());
+                                    if (!body.isObject()) {
 
-                                } else if (body.get("status").asText().contains("status not ok")) {
-                                    mToUploadProductDao.delete(uploadProduct);
-                                } else {
-                                    mToUploadProductDao.delete(uploadProduct);
-                                    completer.set(ListenableWorker.Result.success());
+                                    } else if (body.get("status").asText().contains("status not ok")) {
+                                        mToUploadProductDao.delete(uploadProduct);
+                                    } else {
+                                        mToUploadProductDao.delete(uploadProduct);
+                                        completer.set(ListenableWorker.Result.success());
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
-                            completer.setException(t);
-                        }
-                    });
+                            @Override
+                            public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
+                                completer.setException(t);
+                            }
+                        });
             }
             return callback;
         });
@@ -722,8 +723,8 @@ public class OpenFoodAPIClient {
      * @param onBrandCallback object of OnBrandCallback interface
      */
     public void getProductsByBrand(final String brand, final int page, final OnBrandCallback onBrandCallback) {
-
-        apiService.getProductByBrands(brand, page).enqueue(new Callback<Search>() {
+        String fields = "brands,product_name_fr,product_name,image_small_url,image_front_thumb_url,quantity,nutrition_grades_tags";
+        apiService.getProductByBrands(brand, page, fields).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
                 if (response.isSuccessful()) {
