@@ -87,7 +87,8 @@ public class OpenFoodAPIClient {
     private static OkHttpClient httpClient = Utils.HttpClientBuilder();
     private final OpenFoodAPIService apiService;
     private Context mActivity;
-    private final String fieldsToFetchProductDetail = "brands,product_name_fr,product_name,image_small_url,image_front_thumb_url,quantity,nutrition_grades_tags";
+    private final String fieldsToFetchProductDetail = String
+        .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags", getLocaleProductNameField());
 
     public OpenFoodAPIClient(Activity activity) {
         this(BuildConfig.HOST);
