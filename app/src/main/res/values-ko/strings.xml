@@ -356,7 +356,7 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">포화 지방</string>
-    <string name="nutriscore_info_msg">영양 점수에 대해 더 알아보기</string>
+    <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
     <string name="nova_info_msg">노바에 대해 더 자세히 알아보기</string>
     <string name="nova_grp1_msg">그룹 1 - 미가공 식품 또는 최소 가공 식품</string>
     <string name="nova_grp2_msg">그룹 2 - 가공 식품 재료</string>
@@ -636,10 +636,10 @@
     <string name="update_image">업데이트된 이미지 보내기</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">성분 추출</string>
-    <string name="add_nutrient_prompt_text">영양 성분을 추가하여 영양 점수 계산</string>
-    <string name="add_category_prompt_text">영양 점수를 계산하기 위한 카테고리 추가</string>
-    <string name="add_nutrient_category_prompt_text">영양 성분 및 카테고리를 추가하여 영양 점수 계산</string>
-    <string name="category_game_btn">영양 점수를 계산하기위한 제품 분류 지원</string>
+    <string name="add_nutrient_prompt_text">영양 성분을 추가하여 Nutri-Score 계산</string>
+    <string name="add_category_prompt_text">Nutri-Score를 계산하기 위한 카테고리 추가</string>
+    <string name="add_nutrient_category_prompt_text">영양 성분 및 카테고리를 추가하여 Nutri-Score 계산</string>
+    <string name="category_game_btn">Nutri-Score를 계산하기위한 제품 분류 지원</string>
     <string name="version_string">Open Food Facts 안드로이드 App</string>
     <string name="version">버전</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
