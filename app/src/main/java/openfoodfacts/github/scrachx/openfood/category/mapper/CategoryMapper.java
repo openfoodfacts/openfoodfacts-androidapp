@@ -18,11 +18,10 @@ public class CategoryMapper {
     @Inject
     public CategoryMapper() {
     }
-
     /**
      * Returns list of Category objects using the tags
-     * @param  tags List of CategoryResponse.Tag object*/
-
+     * @param  tags List of CategoryResponse.Tag object
+     **/
     public List<Category> fromNetwork(List<CategoryResponse.Tag> tags) {
         List<Category> categories = new ArrayList<>(tags.size());
         for (CategoryResponse.Tag tag : tags) {
