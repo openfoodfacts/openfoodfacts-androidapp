@@ -187,7 +187,7 @@
     <string name="txtLoading">S\'està carregant…</string>
     <string name="txtDialogsContentDelete">Segur que voleu suprimir aquest esborrany?</string>
     <string name="txtDialogsContentInfoSave">El producte s\'ha desat localment, podeu editar-lo amb el menú \"Edita fora de línia\"</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Producte guardat, gràcies!</string>
     <string name="txtBarcodeRequire">Es necessita un codi de barres</string>
     <string name="txtOk">D\'acord</string>
     <string name="txtBarcodeNotValid">Codi de barres no vàlid</string>
