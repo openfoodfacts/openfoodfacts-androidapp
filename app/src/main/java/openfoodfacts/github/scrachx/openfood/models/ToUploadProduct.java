@@ -8,19 +8,16 @@ import org.greenrobot.greendao.annotation.Index;
 /**
  * Created by jayanth on 22/2/18.
  */
-
 @Entity(indexes = {
-        @Index(value = "id", unique = true)
+    @Index(value = "id", unique = true)
 })
 public class ToUploadProduct {
-
     @Id
-    private Long id ;
+    private Long id;
     private String barcode;
     private String imageFilePath;
     private boolean uploaded = false;
     private String field;
-
 
     public ToUploadProduct(String barcode, String imageFilePath, String field) {
         this.barcode = barcode;
@@ -28,11 +25,9 @@ public class ToUploadProduct {
         this.field = field;
     }
 
-
-
     @Generated(hash = 499343655)
     public ToUploadProduct(Long id, String barcode, String imageFilePath,
-            boolean uploaded, String field) {
+                           boolean uploaded, String field) {
         this.id = id;
         this.barcode = barcode;
         this.imageFilePath = imageFilePath;
@@ -40,13 +35,9 @@ public class ToUploadProduct {
         this.field = field;
     }
 
-
-
     @Generated(hash = 1993491654)
     public ToUploadProduct() {
     }
-
-
 
     public String getBarcode() {
         return barcode;
@@ -88,7 +79,6 @@ public class ToUploadProduct {
         return field;
     }
 
-
     public ProductImageField getProductField() {
         switch (field) {
             case "front":
@@ -101,6 +91,4 @@ public class ToUploadProduct {
                 return ProductImageField.OTHER;
         }
     }
-
-
 }

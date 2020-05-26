@@ -20,6 +20,9 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -27,6 +30,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -194,6 +198,13 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         return true;
     }
 
+    @Subscribe
+    public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
+        if (event.getBarcode().equals(mState.getProduct().getCode())) {
+            onRefresh();
+        }
+    }
+
     @Override
     public void onRefresh() {
         api.getProduct(mState.getProduct().getCode(), this);
@@ -205,6 +216,12 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         setIntent(intent);
         mState = (State) intent.getSerializableExtra("state");
         adapterResult.refresh(mState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -223,6 +240,12 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             //register the listener
             mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
+    }
+
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
     }
 
     public void showIngredientsTab(String action) {
