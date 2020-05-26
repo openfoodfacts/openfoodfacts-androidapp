@@ -1,35 +1,35 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 3.3
-Adding or editing a product is now instant in every condition, offline, online or bad connexion.
-You now are properly credited for your answers to blue questions
-Faster loading when you click a value on a product (like a brand)
-Many internal parts of the app were updated, resulting in increased reliability
-The synchronisation system has been improved
-Improvements in editing (you can type serving with the numeric keyboard, Nutrients are sorted in alphabetical order)
-Products to be completed is now real time
-Removed the Home Gesture in scan. Notifications are not yet easily accessible.
-OBF improvements
-Illustrations
+- Adding or editing a product is now instant in every condition, offline, online or bad connexion.
+- You now are properly credited for your answers to blue questions
+- Faster loading when you click a value on a product (like a brand)
+- Many internal parts of the app were updated, resulting in increased reliability
+- The synchronisation system has been improved
+- Improvements in editing (you can type serving with the numeric keyboard, Nutrients are sorted in alphabetical order)
+- Products to be completed is now real time
+- Removed the Home Gesture in scan. Notifications are not yet easily accessible.
+- OBF improvements
+- Illustrations
 
 3.2.8
 
-NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-)
-Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
-Alert for alcoholic drinks
-Clearer addition card
+- NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-)
+- Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
+- Alert for alcoholic drinks
+- Clearer addition card
 
 3.2.5
 
-Add support for ingredient detection
+- Add support for ingredient detection
 
 3.2.3
 
-use a dedicated url  for static resources (#2799)
+- use a dedicated url for static resources (#2799)
 
-* + Fix #2613
+- Fix #2613
 
-* + Fix static url for image
+- Fix static url for image
 
 X.X.X
 
