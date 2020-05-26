@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.category.model;
 /**
  * Model class for Category
  */
-
 public class Category {
     private final String id;
     private final String name;
