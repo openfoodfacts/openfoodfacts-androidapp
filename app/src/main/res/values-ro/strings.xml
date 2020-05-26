@@ -192,6 +192,7 @@
     <string name="txtLoading">Se încarcă…</string>
     <string name="txtDialogsContentDelete">Sunteţi sigur(ă) că doriţi să ştergeţi această ciornă?</string>
     <string name="txtDialogsContentInfoSave">Produsul a fost salvat local, puteți să il modificați din meniul \"Editare offline\".</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Codul de bare este obligatoriu</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
