@@ -209,6 +209,7 @@
     <string name="txtLoading">جاري التحميل...</string>
     <string name="txtDialogsContentDelete">هل أنت متأكد من أنك تريد حذف هذه المسودة؟</string>
     <string name="txtDialogsContentInfoSave">تم حفظ المنتج محليا، يمكنك تحريره في قائمة  تحرير</string>
+    <string name="productSavedToast">تم حفظ المنتج، شكرًا!</string>
     <string name="txtBarcodeRequire">الرمز الشريطي مطلوب</string>
     <string name="txtOk">موافق</string>
     <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
