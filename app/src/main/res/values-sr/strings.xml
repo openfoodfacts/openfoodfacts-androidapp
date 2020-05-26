@@ -192,6 +192,7 @@
     <string name="txtLoading">Učitavam</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">Ovaj proizvod je sačuvan lokalno, možete ga izmeniti u meniju \"Offline edit\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barkod je neophodan</string>
     <string name="txtOk">ОК</string>
     <string name="txtBarcodeNotValid">Barkod nije ispravan</string>
