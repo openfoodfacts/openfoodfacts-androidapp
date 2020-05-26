@@ -29,7 +29,6 @@ public class AdditiveFragmentHelper {
     private AdditiveFragmentHelper(){
         //helper class
     }
-
     /**
      * Set additive tag on the TextView additiveProduct
      * @param additives list of Additive names
