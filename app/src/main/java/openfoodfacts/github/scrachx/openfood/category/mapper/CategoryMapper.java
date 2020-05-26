@@ -11,7 +11,6 @@ import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse;
 /**
  * Class used to map tag name with the corresponding categories
  */
-
 public class CategoryMapper {
 
     @Inject
