@@ -182,6 +182,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Bạn có chắc chắn muốn xóa bản nháp này không?</string>
     <string name="txtDialogsContentInfoSave">Sản phẩm được lưu cục bộ, bạn có thể chỉnh sửa nó trong menu \"Chỉnh sửa ngoại tuyến\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Cần mã vạch</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Mã vạch không hợp lệ</string>

@@ -197,6 +197,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Ви дійсно бажаєте видалити цей товар?</string>
     <string name="txtDialogsContentInfoSave">Товар збережено на Вашому пристрої, Ви можете редагувати його в меню \"Автономний режим\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Необхіден код товару</string>
     <string name="txtOk">Добре</string>
     <string name="txtBarcodeNotValid">Некоректний код товару</string>

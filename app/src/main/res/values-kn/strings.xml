@@ -187,6 +187,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">ಈ ಫೋಲ್ಡರ್ ತೆಗೆದುಹಾಕುವ ನಿಮ್ಮ ಬಯಕೆ ಖಚಿತವೆ?</string>
     <string name="txtDialogsContentInfoSave">ಉತ್ಪನ್ನವನ್ನು ಸ್ಥಳೀಯವಾಗಿ ಉಳಿಸಲಾಗಿದೆ, ನೀವು ಅದನ್ನು \"ಆಫ್ಲೈನ್ ​​ಸಂಪಾದಿಸು\" ಮೆನುವಿನಲ್ಲಿ ಸಂಪಾದಿಸಬಹುದು</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">ಬಾರ್ಕೋಡ್ ಅಗತ್ಯವಿದೆ</string>
     <string name="txtOk">ಸರಿ</string>
     <string name="txtBarcodeNotValid">ಬಾರ್ಕೋಡ್ ಮಾನ್ಯವಾಗಿಲ್ಲ</string>
