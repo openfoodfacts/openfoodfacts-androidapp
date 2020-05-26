@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Collections;
 import java.util.List;
-
 /**
  * Class for response received from CategoryNetworkService class
  */
