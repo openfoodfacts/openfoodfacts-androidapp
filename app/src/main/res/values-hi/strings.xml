@@ -187,6 +187,7 @@
     <string name="txtLoading">लोड किया जा रहा है…</string>
     <string name="txtDialogsContentDelete">क्या आप वाकई इस प्रारूप को हटाना चाहते हैं?</string>
     <string name="txtDialogsContentInfoSave">उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते हैं</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">बारकोड अपेक्षित हैं</string>
     <string name="txtOk">ठीक है</string>
     <string name="txtBarcodeNotValid">बारकोड मान्य नहीं</string>

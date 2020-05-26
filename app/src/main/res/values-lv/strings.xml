@@ -192,6 +192,7 @@
     <string name="txtLoading">Ielādē…</string>
     <string name="txtDialogsContentDelete">Vai tiešām vēlaties noņemt šo melnrakstu?</string>
     <string name="txtDialogsContentInfoSave">Produkts tiek saglabāts lokāli, to varat rediģēt izvēlnē \"Bezsaistes rediģēšana\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Nepieciešams svītru kods</string>
     <string name="txtOk">Labi</string>
     <string name="txtBarcodeNotValid">Svītrkods nav derīgs</string>

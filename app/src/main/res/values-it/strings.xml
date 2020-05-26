@@ -187,6 +187,7 @@
     <string name="txtLoading">Caricamento…</string>
     <string name="txtDialogsContentDelete">Sicuro di voler rimuovere questa bozza?</string>
     <string name="txtDialogsContentInfoSave">Il prodotto è salvato localmente, lo puoi modificare nel menu Modifica Offline</string>
+    <string name="productSavedToast">Prodotto salvato, grazie!</string>
     <string name="txtBarcodeRequire">Codice a barre necessario</string>
     <string name="txtOk">Ok</string>
     <string name="txtBarcodeNotValid">Codice a barre non valido</string>

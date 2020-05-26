@@ -197,6 +197,7 @@
     <string name="txtLoading">בטעינה…</string>
     <string name="txtDialogsContentDelete">להסיר את הטיוטה הזו?</string>
     <string name="txtDialogsContentInfoSave">המוצר נשמר מקומית, ניתן לערוך אותו בתפריט העריכה בלתי מקוון</string>
+    <string name="productSavedToast">המוצר נשמר, תודה!</string>
     <string name="txtBarcodeRequire">נדרש ברקוד</string>
     <string name="txtOk">אישור</string>
     <string name="txtBarcodeNotValid">הברקוד לא זמין</string>

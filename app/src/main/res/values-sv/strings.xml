@@ -187,6 +187,7 @@
     <string name="txtLoading">Laddar…</string>
     <string name="txtDialogsContentDelete">Är du säker på att du vill ta bort det här utkastet?</string>
     <string name="txtDialogsContentInfoSave">Produkten är sparad lokalt. Du kan redigera den i menyn ”Redigera offline”</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Streckkod krävs</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Streckkoden är inte giltig</string>

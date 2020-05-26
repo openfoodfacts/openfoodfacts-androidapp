@@ -182,6 +182,7 @@
     <string name="txtLoading">sedang memuat</string>
     <string name="txtDialogsContentDelete">Apakah anda yakin ingin menghapus draf ini?</string>
     <string name="txtDialogsContentInfoSave">Produk disimpan di perangkat, anda dapat mengubahnya di menu \"ubah Offline\"</string>
+    <string name="productSavedToast">Produk telah disimpan, terima kasih!</string>
     <string name="txtBarcodeRequire">kode batang dibutuhkan</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Kode batang tidak valid</string>

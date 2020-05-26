@@ -182,6 +182,7 @@
     <string name="txtLoading">読み込んでいます…</string>
     <string name="txtDialogsContentDelete">このドラフトを削除してもよろしいですか?</string>
     <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">バーコードが必要です</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">バーコードが正しくありません</string>

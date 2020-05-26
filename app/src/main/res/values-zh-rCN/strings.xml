@@ -182,6 +182,7 @@
     <string name="txtLoading">正在加载…</string>
     <string name="txtDialogsContentDelete">你确定要移除这份草稿吗？</string>
     <string name="txtDialogsContentInfoSave">产品保存在本地，您可以在“离线编辑”中进行编辑</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">条形码需求</string>
     <string name="txtOk">确定</string>
     <string name="txtBarcodeNotValid">条形码无效</string>
