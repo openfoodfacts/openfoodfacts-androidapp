@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * Class for response received from CategoryNetworkService class
  */
-
 public class CategoryResponse {
     private final int count;
     private final List<Tag> tags;
