@@ -10,7 +10,7 @@ import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
 import openfoodfacts.github.scrachx.openfood.category.model.Category;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
 /**
- * This class recieves list of all categories using CategoryNetworkService
+ * This class receives list of all categories using CategoryNetworkService
  * */
 public class CategoryRepository {
     private final CategoryNetworkService networkService;

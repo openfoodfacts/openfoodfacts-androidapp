@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import openfoodfacts.github.scrachx.openfood.category.model.Category;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse;
-
 /**
  * Class used to map tag name with the corresponding categories
  */

@@ -1,5 +1,4 @@
 package openfoodfacts.github.scrachx.openfood.category.model;
-
 /**
  * Model class for Category
  */

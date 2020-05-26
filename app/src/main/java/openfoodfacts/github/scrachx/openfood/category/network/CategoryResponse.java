@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Class for response recieved from CaregoryNetworkService class
+ * Class for response received from CategoryNetworkService class
  */
 
 public class CategoryResponse {
