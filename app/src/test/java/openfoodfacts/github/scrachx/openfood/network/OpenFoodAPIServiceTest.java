@@ -4,7 +4,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,11 +48,6 @@ public class OpenFoodAPIServiceTest {
 
                 return chain.proceed(request);
             })
-            // FIXME: Dev server is too slow serving some requests, causing a SocketTimeoutException
-            .callTimeout(Duration.ZERO)
-            .connectTimeout(Duration.ZERO)
-            .readTimeout(Duration.ZERO)
-            .writeTimeout(Duration.ZERO)
             .build();
 
         devClientWithAuth = new Retrofit.Builder()
