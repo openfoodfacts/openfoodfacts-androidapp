@@ -24,10 +24,8 @@ public class CategoryRepository {
         this.mapper = mapper;
         memoryCache = new AtomicReference<>();
     }
-
     /**
      * Calling this function retrieves list of all categories from NetworkService*/
-
     public Single<List<Category>> retrieveAll() {
         if (memoryCache.get() != null) {
             return Single.just(memoryCache.get());
