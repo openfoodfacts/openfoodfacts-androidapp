@@ -197,6 +197,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Ви дійсно бажаєте видалити цей товар?</string>
     <string name="txtDialogsContentInfoSave">Товар збережено на Вашому пристрої, Ви можете редагувати його в меню \"Автономний режим\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Необхіден код товару</string>
     <string name="txtOk">Добре</string>
     <string name="txtBarcodeNotValid">Некоректний код товару</string>
@@ -781,4 +782,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

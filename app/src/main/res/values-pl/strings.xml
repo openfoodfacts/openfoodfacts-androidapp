@@ -217,6 +217,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="txtLoading">Ładowanie…</string>
     <string name="txtDialogsContentDelete">Jesteś pewien, że chcesz usunąć tę wersję roboczą?</string>
     <string name="txtDialogsContentInfoSave">Zapisano lokalnie, produkt możesz zmienić przez menu \"Edycja w trybie offline\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Wymagany kod kreskowy</string>
     <string name="txtOk">Dobrze</string>
     <string name="txtBarcodeNotValid">Nieważny kod kreskowy</string>
@@ -802,4 +803,5 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

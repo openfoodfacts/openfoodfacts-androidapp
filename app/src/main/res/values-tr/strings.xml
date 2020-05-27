@@ -187,6 +187,7 @@
     <string name="txtLoading">Yükleniyor…</string>
     <string name="txtDialogsContentDelete">Bu taslağı kaldırmak istediğinizden emin misiniz?</string>
     <string name="txtDialogsContentInfoSave">Ürün lokal olarak kaydedildi, \"Çevrimdışı Düzenle\" menüsünden düzenleyebilirsiniz</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barkod gerekli</string>
     <string name="txtOk">Tamam</string>
     <string name="txtBarcodeNotValid">Barkod geçerli değil</string>
@@ -765,8 +766,9 @@
     <string name="content_unselect_photo">Fotoğraf seçimini geri almak için buraya basınız</string>
     <string name="title_exit">Çıkış</string>
     <string name="content_exit">Ürüne geri dönmek için buraya basınız</string>
-    <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
-    <string name="product_front_image">Product front image</string>
+    <string name="icon_label">Etiket simgeleri</string>
+    <string name="icon_categories">Katagori simgeleri</string>
+    <string name="icon_emb">EMB kodu simgesi</string>
+    <string name="product_front_image">Ürünün ön taraf resmi</string>
+    <string name="brand_hint">Örenekler: CocaCola, Nestle, vb…</string>
 </resources>

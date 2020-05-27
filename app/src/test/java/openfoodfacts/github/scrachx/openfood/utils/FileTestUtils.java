@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-public final class FileHelperForTests {
+public final class FileTestUtils {
     public static String readTextFileFromResources(String filepath, ClassLoader classLoader) throws IOException {
         InputStream is = null;
         BufferedReader reader = null;

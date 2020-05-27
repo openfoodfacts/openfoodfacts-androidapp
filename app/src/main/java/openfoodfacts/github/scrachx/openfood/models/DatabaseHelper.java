@@ -149,6 +149,9 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 InvalidBarcodeDao.createTable(db, true);
                 break;
             }
+            case 17: {
+                db.execSQL("ALTER TABLE OFFLINE_SAVED_PRODUCT ADD COLUMN 'IS_DATA_UPLOADED' BOOLEAN NOT NULL DEFAULT FALSE;");
+            }
         }
     }
 

@@ -187,6 +187,7 @@
     <string name="txtLoading">Ladataan…</string>
     <string name="txtDialogsContentDelete">Haluatko varmasti poistaa tämän luonnoksen?</string>
     <string name="txtDialogsContentInfoSave">Tuote tallennetaan paikallisesti. Voit muokata sitä Offline-muokkaus -valikossa</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Virheellinen viivakoodi</string>
@@ -769,4 +770,5 @@
     <string name="icon_categories">Tuoteluokat-kuvake</string>
     <string name="icon_emb">EMB-koodi-kuvake</string>
     <string name="product_front_image">Tuotteen etukuva</string>
+    <string name="brand_hint">Esimerkkejä: CocaCola, Nestle jne…</string>
 </resources>

@@ -187,6 +187,7 @@
     <string name="txtLoading">Wird geladen …</string>
     <string name="txtDialogsContentDelete">Möchten Sie diesen Entwurf wirklich entfernen?</string>
     <string name="txtDialogsContentInfoSave">Produkt wurde lokal gespeichert und kann im Offline Bearbeiten-Menü überarbeitet werden</string>
+    <string name="productSavedToast">Produkt gespeichert. Vielen Dank!</string>
     <string name="txtBarcodeRequire">Strichcode erforderlich</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Strichcode ungültig</string>
@@ -769,4 +770,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="icon_categories">Kategoriesymbol</string>
     <string name="icon_emb">Symbol des Produzenten-Codes</string>
     <string name="product_front_image">Produktfoto (Front)</string>
+    <string name="brand_hint">Beispiele: CocaCola, Nestle, usw…</string>
 </resources>

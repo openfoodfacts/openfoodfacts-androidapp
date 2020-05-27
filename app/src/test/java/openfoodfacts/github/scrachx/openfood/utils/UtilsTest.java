@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -16,7 +15,7 @@ import static org.mockito.Mockito.when;
 public class UtilsTest {
     @Test
     public void getImageGrade() {
-        Product mockProduct = Mockito.spy(Product.class);
+        final Product mockProduct = mock(Product.class);
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("a");
         assertEquals(R.drawable.nnc_a, Utils.getImageGrade(mockProduct));
@@ -61,8 +60,8 @@ public class UtilsTest {
 
     @Test
     public void isHardwareCameraInstalled() {
-        Context mockCtx = mock(Context.class);
-        PackageManager mockPM = mock(PackageManager.class);
+        final Context mockCtx = mock(Context.class);
+        final PackageManager mockPM = mock(PackageManager.class);
 
         // Test for null
         assertFalse(Utils.isHardwareCameraInstalled(null));

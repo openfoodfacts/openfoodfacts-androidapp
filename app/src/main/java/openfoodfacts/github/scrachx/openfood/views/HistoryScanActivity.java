@@ -173,7 +173,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         }
 
         Intent downloadIntent = new Intent(Intent.ACTION_VIEW);
-        NotificationManager notificationManager = YourListedProducts.createNotification(csvFile, downloadIntent, this);
+        NotificationManager notificationManager = YourListedProductsActivity.createNotification(csvFile, downloadIntent, this);
 
         if (isDownload) {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "export_channel")

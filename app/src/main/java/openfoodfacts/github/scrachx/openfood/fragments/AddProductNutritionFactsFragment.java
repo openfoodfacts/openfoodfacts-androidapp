@@ -53,6 +53,7 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
+import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.QuantityParserUtil;
@@ -71,9 +72,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private static final String[] ALL_UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_DV, UnitUtils.UNIT_IU};
     private static final String[] ALL_UNIT_SERVING = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_LITER, UnitUtils.UNIT_MILLILITRE};
     private static final String[] UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM};
-    private static final String PARAM_NO_NUTRITION_DATA = "no_nutrition_data";
-    private static final String PARAM_NUTRITION_DATA_PER = "nutrition_data_per";
-    private static final String PARAM_SERVING_SIZE = "serving_size";
     private final NumberKeyListener keyListener = new NumberKeyListener() {
         public int getInputType() {
             return InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD;
@@ -153,7 +151,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             }
         });
         binding.checkboxNoNutritionData.setOnCheckedChangeListener((buttonView, isChecked) -> onCheckedChanged(isChecked));
-
 
         photoReceiverHandler = new PhotoReceiverHandler(this);
         binding.btnAddANutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0);
@@ -327,22 +324,22 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private void preFillValuesFromOffline() {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
-            if (productDetails.get("image_nutrition_facts") != null) {
-                imagePath = productDetails.get("image_nutrition_facts");
+            if (productDetails.get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION) != null) {
+                imagePath = productDetails.get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION);
                 final String path = FileUtils.LOCALE_FILE_SCHEME + imagePath;
                 binding.imageProgress.setVisibility(View.VISIBLE);
                 loadNutritionsImage(path);
             }
-            if (productDetails.get(PARAM_NO_NUTRITION_DATA) != null) {
+            if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_NO_NUTRITION_DATA) != null) {
                 binding.checkboxNoNutritionData.setChecked(true);
                 binding.nutritionFactsLayout.setVisibility(View.GONE);
             }
-            if (productDetails.get(PARAM_NUTRITION_DATA_PER) != null) {
-                String s = productDetails.get(PARAM_NUTRITION_DATA_PER);
+            if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER) != null) {
+                String s = productDetails.get(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER);
                 updateSelectedDataSize(s);
             }
-            if (productDetails.get(PARAM_SERVING_SIZE) != null) {
-                String servingSizeValue = productDetails.get(PARAM_SERVING_SIZE);
+            if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE) != null) {
+                String servingSizeValue = productDetails.get(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE);
                 // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
                 updateServingSizeFrom(servingSizeValue);
             }
@@ -619,18 +616,18 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     public void getAllDetails(Map<String, String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (binding.checkboxNoNutritionData.isChecked()) {
-                targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
+                targetMap.put(OfflineSavedProduct.KEYS.PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
+                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
+                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (binding.servingSize.getText() == null || binding.servingSize.getText().toString().isEmpty()) {
-                    targetMap.put(PARAM_SERVING_SIZE, "");
+                if (binding.servingSize.getText() == null || EditTextUtils.isEmpty(binding.servingSize)) {
+                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, "");
                 } else {
                     String servingSizeValue = binding.servingSize.getText().toString() + ObjectUtils.toString(binding.servingSize.getAttachedSpinner().getSelectedItem());
-                    targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
+                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
                     if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
@@ -647,29 +644,38 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     /**
-     * adds only those fields to the query map which are not empty.
+     * adds only those fields to the query map which are not empty and has changed from product.
      */
     public void getDetails(Map<String, String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (binding.checkboxNoNutritionData.isChecked()) {
-                targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
+                if (product == null || !"on".equals(product.getNoNutritionData())) {
+                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_NO_NUTRITION_DATA, "on");
+                }
             } else {
                 if (isDataPer100()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
+                    if (product == null || !ProductUtils.DEFAULT_NUTRITION_SIZE.equals(product.getNutritionDataPer())) {
+                        targetMap.put(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
+                    }
                 } else if (isDataPerServing()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
+                    if (product == null || !"serving".equals(product.getNutritionDataPer())) {
+                        targetMap.put(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER, "serving");
+                    }
                 }
-                if (binding.servingSize.getText() != null && !binding.servingSize.getText().toString().isEmpty()) {
-                    String servingSizeValue = binding.servingSize.getText().toString() + ObjectUtils
+                if (EditTextUtils.isNotEmpty(binding.servingSize)) {
+                    String servingSizeValue = EditTextUtils.content(binding.servingSize) + ObjectUtils
                         .toString(binding.servingSize.getAttachedSpinner().getSelectedItem().toString());
-                    targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
+                    if (product == null || !servingSizeValue.equals(product.getServingSize())) {
+                        targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
+                    }
                 }
+
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
                     if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
                         continue;
                     }
-                    if (editTextView.getText() != null && !editTextView.getText().toString().isEmpty()) {
-                        addNutrientToMap(editTextView, targetMap);
+                    if (editTextView.getText() != null && EditTextUtils.isNotEmpty(editTextView)) {
+                        addNutrientToMapIfUpdated(editTextView, targetMap);
                     }
                 }
             }
@@ -679,10 +685,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private boolean hasUnit(CustomValidatingEditTextView editTextView) {
         String shortName = editTextView.getEntryName();
         return !Nutriments.PH.equals(shortName) && !Nutriments.ALCOHOL.equals(shortName);
-    }
-
-    private boolean isDataPer100() {
-        return binding.radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml;
     }
 
     /**
@@ -707,6 +709,85 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             reference = UnitUtils.convertToGrams(reference, ALL_UNIT_SERVING[binding.servingSize.getAttachedSpinner().getSelectedItemPosition()]);
         }
         return reference;
+    }
+
+    /**
+     * Add nutrients to the map by from the text entered into EditText, only if the value has been edited
+     *
+     * @param editTextView EditText with spinner for entering the nutients
+     * @param targetMap map to enter the nutrient value recieved from edit texts
+     */
+    private void addNutrientToMapIfUpdated(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
+
+                /*
+                // get nutriments from product
+                Nutriments nutriments = product.getNutriments();
+        if (nutriments != null && getView() != null) {
+            final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
+            for (CustomValidatingEditTextView view : editViews) {
+                final String nutrientShortName = view.getEntryName();
+                if (nutrientShortName.equals(servingSize.getEntryName())) {
+                    continue;
+                }
+                String value = getValueFromShortName(nutriments, nutrientShortName);
+                if (value != null) {
+                    view.setText(value);
+                    if (view.getAttachedSpinner() != null) {
+                        view.getAttachedSpinner().setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName));
+                    }
+                }
+            }
+            //set the values of all the other nutrients if defined and create new row in the tableLayout.
+            for (int i = 0; i < AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.size(); i++) {
+                String nutrientShortName = AddProductNutritionFactsData.getShortName(AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(i));
+                if (nutriments.getValue(nutrientShortName) != null) {
+
+                    String value = getValueFromShortName(nutriments, nutrientShortName);
+                    int unitSelectedIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName);
+                    index.add(i);
+                    String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
+                    addNutrientRow(i, nutrients[i], true, value, unitSelectedIndex);
+                }
+            }
+        }
+                 */
+
+        Nutriments productNutriments = product != null ? product.getNutriments() : new Nutriments();
+
+        String shortName = editTextView.getEntryName();
+        String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
+
+        Nutriments.Nutriment existingProductNutriment = productNutriments.get(shortName);
+        String previousValue = null;
+        String previousUnit = null;
+        if (existingProductNutriment != null) {
+            previousUnit = existingProductNutriment.getUnit();
+            if (isDataPer100()) {
+                previousValue = existingProductNutriment.getFor100gInUnits();
+            } else if (isDataPerServing()) {
+                previousValue = existingProductNutriment.getForServingInUnits();
+            }
+        }
+
+        boolean valueHasBeenUpdated = EditTextUtils.isDifferent(editTextView, previousValue);
+
+        String newUnit = null;
+        if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
+            newUnit = getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition());
+        }
+        boolean unitHasBeenUpdated = previousUnit == null || !previousUnit.equals(newUnit);
+
+        if (valueHasBeenUpdated || unitHasBeenUpdated) {
+            targetMap.put(completeName, editTextView.getText().toString());
+            if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
+                targetMap.put(completeName + AddProductNutritionFactsData.SUFFIX_UNIT,
+                    getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition()));
+            }
+        }
+    }
+
+    private boolean isDataPer100() {
+        return binding.radioGroup.getCheckedRadioButtonId() == R.id.for100g_100ml;
     }
 
     void addNutrient() {
@@ -977,7 +1058,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 .centerInside()
                 .into(binding.btnAddImageNutritionFacts);
         }
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     private class ValidTextWatcher implements TextWatcher, AdapterView.OnItemSelectedListener {

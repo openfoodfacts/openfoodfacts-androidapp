@@ -182,6 +182,7 @@
     <string name="txtLoading">載入中…</string>
     <string name="txtDialogsContentDelete">是否確定要刪除此草稿?</string>
     <string name="txtDialogsContentInfoSave">該產品是儲存在本地裝置，您可以在「離線編輯」選單中編輯</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">需要條碼</string>
     <string name="txtOk">好</string>
     <string name="txtBarcodeNotValid">條碼無效</string>
@@ -763,4 +764,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

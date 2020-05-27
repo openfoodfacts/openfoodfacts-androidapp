@@ -187,6 +187,7 @@
     <string name="txtLoading">Ciji tıbe…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">Product xilas herêmî de, \"girêdayî Edit\" tu pêşeka biguherînî</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barcode pêwîst e</string>
     <string name="txtOk">Okay</string>
     <string name="txtBarcodeNotValid">Barcode derbas nabe</string>
@@ -769,4 +770,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

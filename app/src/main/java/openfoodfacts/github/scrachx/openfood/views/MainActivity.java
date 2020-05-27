@@ -10,7 +10,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
@@ -40,11 +39,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.Constraints;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.NetworkType;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -62,7 +56,6 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.holder.StringHolder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -81,7 +74,6 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -89,10 +81,9 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -109,11 +100,9 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-import openfoodfacts.github.scrachx.openfood.workers.OfflineEditPendingProductsWorker;
 
 import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.OFFLINE_EDIT_PENDING_WORK_NAME;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
     public static final int LOGIN_REQUEST = 1;
@@ -136,7 +125,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri contributeUri;
     private Uri discoverUri;
     private Uri userContributeUri;
-    private int numberOFSavedProducts;
     private String mBarcode;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -154,13 +142,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
         setContentView(R.layout.activity_main);
 
-        final PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(OfflineEditPendingProductsWorker.class, 60, TimeUnit.MINUTES, 10, TimeUnit.MINUTES)
-            .setConstraints(new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
-            .addTag(OFFLINE_EDIT_PENDING_WORK_NAME)
-            .build();
-
-        WorkManager.getInstance(getApplicationContext()).enqueueUniquePeriodicWork(OFFLINE_EDIT_PENDING_WORK_NAME, ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequest);
-
         shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
 
         Utils.hideKeyboard(this);
@@ -171,10 +152,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
-        Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        OfflineSavedProductDao mOfflineSavedProductDao = Utils.getAppDaoSession(MainActivity.this).getOfflineSavedProductDao();
-        numberOFSavedProducts = mOfflineSavedProductDao.loadAll().size();
 
 // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -189,16 +167,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         });
 
-        boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
-        if (isOpenOfflineEdit) {
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, new
-                OfflineEditFragment()).commit();
-            getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
-        } else {
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
-                ()).commit();
-            toolbar.setTitle(APP_NAME);
-        }
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
+            ()).commit();
+        toolbar.setTitle(APP_NAME);
 
         // chrome custom tab init
         customTabActivityHelper = new CustomTabActivityHelper();
@@ -261,7 +232,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (isUserConnected) {
             updateProfileForCurrentUser();
         }
-        primaryDrawerItem = createOfflineEditDrawerItem();
         //Create the drawer
         result = new DrawerBuilder()
             .withActivity(this)
@@ -303,7 +273,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     .withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                 new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
-                new DividerDrawerItem(),
                 primaryDrawerItem,
                 new DividerDrawerItem(),
                 new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
@@ -349,9 +318,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         break;
                     case ITEM_PREFERENCES:
                         fragment = new PreferencesFragment();
-                        break;
-                    case ITEM_OFFLINE:
-                        fragment = new OfflineEditFragment();
                         break;
                     case ITEM_ABOUT:
                         CustomTabActivityHelper.openCustomTab(MainActivity.this,
@@ -518,6 +484,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         //Scheduling background image upload job
         Utils.scheduleProductUploadJob(this);
+
+        OfflineProductWorker.addWork();
 
         //Adds nutriscore and quantity values in old history for schema 5 update
         SharedPreferences mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
@@ -857,46 +825,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void moveToBarcodeEntry() {
         Fragment fragment = new FindProductFragment();
         changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
-    }
-
-    /**
-     * This moves the main activity to the preferences fragment.
-     */
-    public void moveToPreferences() {
-        Fragment fragment = new PreferencesFragment();
-        changeFragment(fragment, getString(R.string.preferences), ITEM_PREFERENCES);
-    }
-
-    /**
-     * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
-     * there is no badge present.
-     *
-     * @return drawer item.
-     */
-    private PrimaryDrawerItem createOfflineEditDrawerItem() {
-        if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(10)
-                .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
-                    .color.md_red_700));
-        } else {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
-        }
-    }
-
-    /**
-     * Updates the drawer item. This updates the badge if there are items left in offline edit, otherwise
-     * there is no badge present.
-     * This function is called from OfflineEditFragment only.
-     */
-    public void updateBadgeOfflineEditDrawerITem(int size) {
-        int positionOfOfflineBadeItem = result.getPosition(primaryDrawerItem);
-        if (size > 0) {
-            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE)
-                .withBadge(String.valueOf(size)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
-        } else {
-            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
-        }
-        result.updateItemAtPosition(primaryDrawerItem, positionOfOfflineBadeItem);
     }
 
     @Override

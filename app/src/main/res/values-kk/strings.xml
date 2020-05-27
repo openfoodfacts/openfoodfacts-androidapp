@@ -187,6 +187,7 @@
     <string name="txtLoading">Жүктелуде…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">Өнім жергілікті сақталған, сіз оның мәзір Автономды Түзетуде түзете аласыз</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Штрих-код талап етеді</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Жарамсыз штрих-код</string>
@@ -769,4 +770,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

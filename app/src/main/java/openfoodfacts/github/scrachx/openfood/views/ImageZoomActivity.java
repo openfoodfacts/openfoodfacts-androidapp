@@ -5,18 +5,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import butterknife.BindView;
-import com.github.chrisbanes.photoview.PhotoView;
+import androidx.databinding.DataBindingUtil;
+
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityZoomImageBinding;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
@@ -25,33 +25,26 @@ import static org.apache.commons.lang.StringUtils.isNotEmpty;
  * Activity to display/edit product images
  */
 public class ImageZoomActivity extends BaseActivity {
-    @BindView(R.id.imageViewFullScreen)
-    PhotoView mPhotoView;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.textInfo)
-    TextView textInfo;
-    @BindView(R.id.progressBar)
-    ProgressBar progressBar;
+    private ActivityZoomImageBinding binding;
     private PhotoViewAttacher mAttacher;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zoom_image);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_zoom_image);
 
         Intent intent = getIntent();
 
-        mAttacher = new PhotoViewAttacher(mPhotoView);
+        mAttacher = new PhotoViewAttacher(binding.imageViewFullScreen);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //delaying the transition until the view has been laid out
             postponeEnterTransition();
         }
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        toolbar.setTitle(R.string.imageFullscreen);
+        binding.toolbar.setTitle(R.string.imageFullscreen);
         loadImage(intent.getStringExtra(ImageKeyHelper.IMAGE_URL));
     }
 
@@ -63,7 +56,7 @@ public class ImageZoomActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-        toolbar.setTitle(R.string.imageFullscreen);
+        binding.toolbar.setTitle(R.string.imageFullscreen);
         super.onResume();
     }
 
@@ -72,39 +65,44 @@ public class ImageZoomActivity extends BaseActivity {
             startRefresh(getString(R.string.txtLoading));
             Picasso.get()
                 .load(imageUrl)
-                .into(mPhotoView, new Callback() {
+                .into(binding.imageViewFullScreen, new Callback() {
                     @Override
                     public void onSuccess() {
                         mAttacher.update();
-                        scheduleStartPostponedTransition(mPhotoView);
-                        mPhotoView.setVisibility(View.VISIBLE);
+                        scheduleStartPostponedTransition(binding.imageViewFullScreen);
+                        binding.imageViewFullScreen.setVisibility(View.VISIBLE);
                         stopRefresh();
                     }
 
                     @Override
                     public void onError(Exception ex) {
-                        mPhotoView.setVisibility(View.VISIBLE);
+                        binding.imageViewFullScreen.setVisibility(View.VISIBLE);
                         Toast.makeText(ImageZoomActivity.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
                         stopRefresh();
                     }
                 });
         } else {
-            mPhotoView.setImageDrawable(null);
+            binding.imageViewFullScreen.setImageDrawable(null);
             stopRefresh();
         }
     }
 
     private void stopRefresh() {
-        progressBar.setVisibility(View.GONE);
-        textInfo.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.GONE);
+        binding.textInfo.setVisibility(View.GONE);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
     private void startRefresh(String text) {
-        progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
         if (text != null) {
-            textInfo.setTextColor(ContextCompat.getColor(this, R.color.white));
-            textInfo.setText(text);
+            binding.textInfo.setTextColor(ContextCompat.getColor(this, R.color.white));
+            binding.textInfo.setText(text);
         }
     }
 

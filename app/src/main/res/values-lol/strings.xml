@@ -187,6 +187,7 @@
     <string name="txtLoading">crwdns113482:0crwdne113482:0</string>
     <string name="txtDialogsContentDelete">crwdns113484:0crwdne113484:0</string>
     <string name="txtDialogsContentInfoSave">crwdns113486:0crwdne113486:0</string>
+    <string name="productSavedToast">crwdns125678:0crwdne125678:0</string>
     <string name="txtBarcodeRequire">crwdns113488:0crwdne113488:0</string>
     <string name="txtOk">crwdns113490:0crwdne113490:0</string>
     <string name="txtBarcodeNotValid">crwdns113500:0crwdne113500:0</string>
@@ -768,4 +769,5 @@
     <string name="icon_categories">crwdns125500:0crwdne125500:0</string>
     <string name="icon_emb">crwdns125502:0crwdne125502:0</string>
     <string name="product_front_image">crwdns125506:0crwdne125506:0</string>
+    <string name="brand_hint">crwdns125526:0crwdne125526:0</string>
 </resources>
