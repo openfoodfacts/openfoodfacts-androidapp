@@ -32,7 +32,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
@@ -390,8 +389,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         }
     }
 
-    @OnTextChanged(value = R.id.ingredients_list, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void toggleExtractIngredientsButtonVisibility() {
+    private void toggleExtractIngredientsButtonVisibility() {
         if (EditTextUtils.isEmpty(binding.ingredientsList)) {
             binding.btnExtractIngredients.setVisibility(View.VISIBLE);
         } else {

@@ -18,16 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.ShareActionProvider;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -46,16 +41,9 @@ import static android.app.Activity.RESULT_OK;
 
 public class ProductFragment extends Fragment implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
+    private ActivityProductBinding binding;
     public static State productState;//NOSONAR To be changed ASAP !
-    @BindView(R.id.pager)
-    ViewPager viewPager;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.tabs)
-    TabLayout tabLayout;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
-    ProductFragmentPagerAdapter adapterResult;
+    private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
     private ShareActionProvider mShareActionProvider;
     private SensorManager mSensorManager;
@@ -68,21 +56,20 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_product, container, false);
+        binding = ActivityProductBinding.inflate(inflater);
         if (getResources().getBoolean(R.bool.portrait_only)) {
             getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        ButterKnife.bind(this, view);
-        toolbar.setVisibility(View.GONE);
+        binding.toolbar.setVisibility(View.GONE);
         productState = (State) getArguments().getSerializable("state");
 
-        setupViewPager(viewPager);
+        setupViewPager(binding.pager);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            viewPager.setNestedScrollingEnabled(true);
+            binding.pager.setNestedScrollingEnabled(true);
         }
 
-        tabLayout.setupWithViewPager(viewPager);
+        binding.tabs.setupWithViewPager(binding.pager);
 
         api = new OpenFoodAPIClient(getActivity());
 
@@ -101,9 +88,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             }
         });
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
-        return view;
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, getActivity(), getContext());
+        return binding.getRoot();
     }
 
     @Override
@@ -178,7 +165,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         for (int i = 0; i < adapterResult.getCount(); ++i) {
             Fragment fragment = adapterResult.getItem(i);
             if (fragment instanceof IngredientsProductFragment) {
-                viewPager.setCurrentItem(i);
+                binding.pager.setCurrentItem(i);
 
                 if ("perform_ocr".equals(action)) {
                     ((IngredientsProductFragment) fragment).extractIngredients();

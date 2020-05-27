@@ -747,7 +747,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         addToListDialog.show();
         View addToListView = addToListDialog.getCustomView();
         if (addToListView != null) {
-            ProductListsDao productListsDao = ProductListsActivity.getProducListsDaoWithDefaultList(this.getContext());
+            ProductListsDao productListsDao = ProductListsActivity.getProductListsDaoWithDefaultList(this.getContext());
             List<ProductLists> productLists = productListsDao.loadAll();
 
             RecyclerView addToListRecyclerView =

@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +18,6 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 
-import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
@@ -60,12 +57,6 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
 
     int dpsToPixels(int dps) {
         return BaseActivity.dpsToPixel(dps, getActivity());
-    }
-
-    public View createView(LayoutInflater inflater, ViewGroup container, int layoutId) {
-        View view = inflater.inflate(layoutId, container, false);
-        ButterKnife.bind(this, view);
-        return view;
     }
 
     @Override

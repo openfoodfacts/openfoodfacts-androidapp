@@ -30,7 +30,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -41,7 +40,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.FormatException;
@@ -75,9 +73,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
 
-import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityMainBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
@@ -111,10 +109,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    private ActivityMainBinding binding;
     PrimaryDrawerItem primaryDrawerItem;
     private AccountHeader headerResult = null;
     private Drawer result = null;
@@ -140,7 +135,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -149,7 +145,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         final IProfile<ProfileDrawerItem> profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -169,7 +165,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
             ()).commit();
-        toolbar.setTitle(APP_NAME);
+        binding.toolbarInclude.toolbar.setTitle(APP_NAME);
 
         // chrome custom tab init
         customTabActivityHelper = new CustomTabActivityHelper();
@@ -235,7 +231,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         //Create the drawer
         result = new DrawerBuilder()
             .withActivity(this)
-            .withToolbar(toolbar)
+            .withToolbar(binding.toolbarInclude.toolbar)
             .withHasStableIds(true)
             .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
             .withOnDrawerListener(new Drawer.OnDrawerListener() {
@@ -495,8 +491,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             apiClient.syncOldHistory();
         }
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this, this);
 
         handleIntent(getIntent());
     }
@@ -848,7 +844,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page);
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
