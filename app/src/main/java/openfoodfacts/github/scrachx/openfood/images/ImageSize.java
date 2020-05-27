@@ -7,5 +7,4 @@ public enum ImageSize {
     SMALL,
     DISPLAY,
     THUMB
-
 }
