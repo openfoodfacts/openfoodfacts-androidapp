@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
@@ -42,6 +44,7 @@ import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -57,9 +60,6 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
  * @see R.layout#fragment_add_product_ingredients
  */
 public class AddProductIngredientsFragment extends BaseFragment implements PhotoReceiver {
-    private static final String PARAM_INGREDIENTS = "ingredients_text";
-    private static final String PARAM_TRACES = "add_traces";
-    private static final String PARAM_LANGUAGE = "lang";
     private FragmentAddProductIngredientsBinding binding;
     private PhotoReceiverHandler photoReceiverHandler;
     private AllergenNameDao mAllergenNameDao;
@@ -118,7 +118,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
         Bundle b = getArguments();
         if (b != null) {
-            mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
+            mAllergenNameDao = Utils.getDaoSession().getAllergenNameDao();
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             editProduct = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
@@ -146,11 +146,10 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
-        if (binding.ingredientsList.getText().toString().isEmpty() && getImageIngredients() != null && !getImageIngredients().isEmpty()) {
+        if (EditTextUtils.isEmpty(binding.ingredientsList) && getImageIngredients() != null && !getImageIngredients().isEmpty()) {
             binding.btnExtractIngredients.setVisibility(View.VISIBLE);
             imagePath = getImageIngredients();
-        } else if (editProduct && binding.ingredientsList.getText().toString().isEmpty() && product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl()
-            .isEmpty()) {
+        } else if (editProduct && EditTextUtils.isEmpty(binding.ingredientsList) && product.getImageIngredientsUrl() != null && !product.getImageIngredientsUrl().isEmpty()) {
             binding.btnExtractIngredients.setVisibility(View.VISIBLE);
         }
         loadAutoSuggestions();
@@ -160,12 +159,25 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     private String getImageIngredients() {
-        return productDetails.get("image_ingredients");
+        return productDetails.get(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS);
     }
 
     @Nullable
     private AddProductActivity getAddProductActivity() {
         return (AddProductActivity) getActivity();
+    }
+
+    private List<String> extractTracesChipValues(Product product) {
+        if (product == null || product.getTracesTags() == null) {
+            return new ArrayList<>();
+        }
+        List<String> tracesTags = product.getTracesTags();
+        final List<String> chipValues = new ArrayList<>();
+        final String appLanguageCode = LocaleHelper.getLanguage(activity);
+        for (String tag : tracesTags) {
+            chipValues.add(getTracesName(appLanguageCode, tag));
+        }
+        return chipValues;
     }
 
     /**
@@ -177,12 +189,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             binding.ingredientsList.setText(product.getIngredientsText());
         }
         if (product.getTracesTags() != null && !product.getTracesTags().isEmpty()) {
-            List<String> tracesTags = product.getTracesTags();
-            final List<String> chipValues = new ArrayList<>();
-            final String appLanguageCode = LocaleHelper.getLanguage(activity);
-            for (String tag : tracesTags) {
-                chipValues.add(getTracesName(appLanguageCode, tag));
-            }
+            List<String> chipValues = extractTracesChipValues(product);
             binding.traces.setText(chipValues);
         }
     }
@@ -281,14 +288,12 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                         }
                     });
             }
-            String lc = productDetails.get(PARAM_LANGUAGE) != null ? productDetails.get(PARAM_LANGUAGE) : "en";
-            if (productDetails.get(PARAM_INGREDIENTS + "_" + lc) != null) {
-                binding.ingredientsList.setText(productDetails.get(PARAM_INGREDIENTS + "_" + lc));
-            } else if (productDetails.get(PARAM_INGREDIENTS + "_" + "en") != null) {
-                binding.ingredientsList.setText(productDetails.get(PARAM_INGREDIENTS + "_" + "en"));
+            String ingredientsText = mOfflineSavedProduct.getIngredients();
+            if (!TextUtils.isEmpty(ingredientsText)) {
+                binding.ingredientsList.setText(ingredientsText);
             }
-            if (productDetails.get(PARAM_TRACES) != null) {
-                List<String> chipValues = Arrays.asList(productDetails.get(PARAM_TRACES).split("\\s*,\\s*"));
+            if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_TRACES) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(OfflineSavedProduct.KEYS.PARAM_TRACES).split("\\s*,\\s*"));
                 binding.traces.setText(chipValues);
             }
         }
@@ -385,8 +390,9 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         }
     }
 
-    private void toggleExtractIngredientsButtonVisibility() {
-        if (binding.ingredientsList.getText().toString().isEmpty()) {
+    @OnTextChanged(value = R.id.ingredients_list, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void toggleExtractIngredientsButtonVisibility() {
+        if (EditTextUtils.isEmpty(binding.ingredientsList)) {
             binding.btnExtractIngredients.setVisibility(View.VISIBLE);
         } else {
             binding.btnExtractIngredients.setVisibility(View.GONE);
@@ -401,28 +407,28 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         if (activity instanceof AddProductActivity) {
             String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-            targetMap.put(PARAM_INGREDIENTS + "_" + lc, binding.ingredientsList.getText().toString());
+            targetMap.put(OfflineSavedProduct.KEYS.GET_PARAM_INGREDIENTS(lc), binding.ingredientsList.getText().toString());
             List<String> list = binding.traces.getChipValues();
             String string = StringUtils.join(list, ",");
-            targetMap.put(PARAM_TRACES.substring(4), string);
+            targetMap.put(OfflineSavedProduct.KEYS.PARAM_TRACES.substring(4), string);
         }
     }
 
     /**
-     * adds only those fields to the query map which are not empty.
+     * adds only those fields to the query map which are not empty and have changed.
      */
     public void getDetails() {
         binding.traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
-            if (!binding.ingredientsList.getText().toString().isEmpty()) {
+            if (EditTextUtils.isNotEmpty(binding.ingredientsList) && EditTextUtils.isDifferent(binding.ingredientsList, product != null ? product.getIngredientsText() : null)) {
                 String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
                 String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-                ((AddProductActivity) activity).addToMap(PARAM_INGREDIENTS + "_" + lc, binding.ingredientsList.getText().toString());
+                ((AddProductActivity) activity).addToMap(OfflineSavedProduct.KEYS.GET_PARAM_INGREDIENTS(lc), binding.ingredientsList.getText().toString());
             }
-            if (!binding.traces.getChipValues().isEmpty()) {
+            if (!binding.traces.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.traces, extractTracesChipValues(product))) {
                 List<String> list = binding.traces.getChipValues();
                 String string = StringUtils.join(list, ",");
-                ((AddProductActivity) activity).addToMap(PARAM_TRACES, string);
+                ((AddProductActivity) activity).addToMap(OfflineSavedProduct.KEYS.PARAM_TRACES, string);
             }
         }
     }
@@ -482,7 +488,6 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
                 .centerInside()
                 .into(binding.btnAddImageIngredients);
         }
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     /**

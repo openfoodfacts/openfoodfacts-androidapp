@@ -25,4 +25,4 @@ jobs:
         run: bash ./gradlew compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
 
       - name: Unit tests
-        run: bash ./gradlew test --stacktrace
+        run: bash ./gradlew testObfDebugUnitTest testOffDebugUnitTest testOpfDebugUnitTest testOpffDebugUnitTest --stacktrace

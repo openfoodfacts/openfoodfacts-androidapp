@@ -65,7 +65,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
@@ -81,7 +81,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
-import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProductsActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -98,7 +98,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
     private OpenFoodAPIClient api;
-    private WikidataApiClient apiClientForWikiData;
+    private WikiDataApiClient apiClientForWikiData;
     private String barcode;
     private FragmentSummaryProductBinding binding;
     private CustomTabActivityHelper customTabActivityHelper;
@@ -133,7 +133,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-        apiClientForWikiData = new WikidataApiClient();
+        apiClientForWikiData = new WikiDataApiClient();
         binding = FragmentSummaryProductBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -202,7 +202,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadAdditives();
         presenter.loadAnalysisTags();
 
-        mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
+        mTagDao = Utils.getDaoSession().getTagDao();
         barcode = product.getCode();
         String langCode = LocaleHelper.getLanguage(getContext());
 
@@ -738,7 +738,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String productBarcode = product.getCode();
         String productName = product.getProductName();
         String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(getContext()));
-        String productDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
+        String productDetails = YourListedProductsActivity.getProductBrandsQuantityDetails(product);
 
         MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)
             .title(R.string.add_to_product_lists)
@@ -812,10 +812,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
-        boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK && data.getBooleanExtra(AddProductActivity.UPLOADED_TO_SERVER, false));
-        if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
-            shouldRefresh = true;
-        }
+        boolean shouldRefresh = requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK;
+        shouldRefresh = shouldRefresh || ProductImageManagementActivity.isImageModified(requestCode, resultCode);
+        
         if (shouldRefresh && getActivity() instanceof ProductActivity) {
             ((ProductActivity) getActivity()).onRefresh();
         }

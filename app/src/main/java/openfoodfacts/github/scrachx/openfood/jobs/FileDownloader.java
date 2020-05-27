@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class FileDownloader {
     private Context context;
 
     public interface FileReceiver {
-        void fileDownloaded(File file);
+        void onFileDownloaded(File file);
     }
 
     /**
@@ -45,17 +47,17 @@ public class FileDownloader {
      * @param fileUrl provides the URL of the file to download.
      * @param callback is called if the file is downloaded with success, cannot be null.
      */
-    public void download(String fileUrl, FileReceiver callback) {
+    public void download(@NonNull String fileUrl, @NonNull FileReceiver callback) {
         OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
         final Call<ResponseBody> responseBodyCall = client.downloadFile(fileUrl);
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Log.d(FileDownloader.class.getSimpleName(), "server contacted and has file");
                     File writtenToDisk = writeResponseBodyToDisk(context, response.body(), fileUrl);
                     if (writtenToDisk != null) {
-                        callback.fileDownloaded(writtenToDisk);
+                        callback.onFileDownloaded(writtenToDisk);
                     }
                     Log.d(FileDownloader.class.getSimpleName(), "file download was a success " + writtenToDisk);
                 } else {
@@ -64,7 +66,7 @@ public class FileDownloader {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Log.e(FileDownloader.class.getSimpleName(), "error");
             }
         });

@@ -22,9 +22,8 @@ public class SavedProductUploadWork extends ListenableWorker {
     @NonNull
     @Override
     public ListenableFuture<Result> startWork() {
-        Context context = getApplicationContext();
-        OpenFoodAPIClient apiClient = new OpenFoodAPIClient(context);
-        return apiClient.uploadOfflineImages(context);
+        final Context context = getApplicationContext();
+        return new OpenFoodAPIClient(context).uploadOfflineImages(context);
     }
 
 }

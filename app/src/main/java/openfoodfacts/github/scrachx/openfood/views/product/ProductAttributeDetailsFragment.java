@@ -115,7 +115,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 
             long id = getArguments().getLong(ARG_ID);
             if (SearchType.ADDITIVE.equals(searchType)) {
-                AdditiveNameDao dao = Utils.getAppDaoSession(getActivity()).getAdditiveNameDao();
+                AdditiveNameDao dao = Utils.getDaoSession().getAdditiveNameDao();
                 AdditiveName additiveName = dao.queryBuilder()
                     .where(
                         AdditiveNameDao.Properties.Id.eq(id)

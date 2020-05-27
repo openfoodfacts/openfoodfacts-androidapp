@@ -144,7 +144,6 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
         imageOther.setVisibility(View.VISIBLE);
         if (errorUploading) {
             imageProgressText.setVisibility(View.GONE);
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
             imageProgressText.setText(R.string.image_uploaded_successfully);
         }

@@ -1,14 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-
 import android.content.Context;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
 import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProductsActivity;
 
 //recyclerview adapter to display product lists in a dialog
 public class DialogAddToListAdapter extends RecyclerView.Adapter<DialogAddToListAdapter.TvListViewHolder> {
@@ -62,10 +62,10 @@ public class DialogAddToListAdapter extends RecyclerView.Adapter<DialogAddToList
             product.setProductDetails(productDetails);
             product.setImageUrl(imageUrl);
 
-            yourListedProductDao=Utils.getAppDaoSession(mContext).getYourListedProductDao();
+            yourListedProductDao= Utils.getDaoSession().getYourListedProductDao();
             yourListedProductDao.insertOrReplace(product);
 
-            Intent intent=new Intent(mContext,YourListedProducts.class);
+            Intent intent = new Intent(mContext, YourListedProductsActivity.class);
             intent.putExtra("listName",listName);
             intent.putExtra("listId",listId);
             mContext.startActivity(intent);

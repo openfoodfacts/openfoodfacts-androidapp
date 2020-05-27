@@ -13,7 +13,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.utils.NumberParserUtils;
 
-public class ImageTransformation {
+public class ImageTransformationUtils {
     public static final int NO_VALUE = -1;
     private static final String LEFT = "x1";
     private static final String RIGHT = "x2";
@@ -28,10 +28,19 @@ public class ImageTransformation {
     private String initImageUrl;
     private String initImageId;
 
-    private ImageTransformation() {
+    private ImageTransformationUtils() {
     }
 
-    public static void addTransformToMap(ImageTransformation newServerTransformation, Map<String, String> imgMap) {
+    public ImageTransformationUtils(int rotationInDegree, Rect cropRectangle) {
+        this.rotationInDegree = rotationInDegree;
+        this.cropRectangle = cropRectangle;
+    }
+
+    public String getInitImageId() {
+        return initImageId;
+    }
+
+    public static void addTransformToMap(ImageTransformationUtils newServerTransformation, Map<String, String> imgMap) {
         imgMap.put(ANGLE, Integer.toString(newServerTransformation.getRotationInDegree()));
         final Rect cropRectangle = newServerTransformation.getCropRectangle();
         if (cropRectangle != null) {
@@ -40,15 +49,6 @@ public class ImageTransformation {
             imgMap.put(TOP, Integer.toString(cropRectangle.top));
             imgMap.put(BOTTOM, Integer.toString(cropRectangle.bottom));
         }
-    }
-
-    public String getInitImageId() {
-        return initImageId;
-    }
-
-    public ImageTransformation(int rotationInDegree, Rect cropRectangle) {
-        this.rotationInDegree = rotationInDegree;
-        this.cropRectangle = cropRectangle;
     }
 
     @Override
@@ -60,25 +60,26 @@ public class ImageTransformation {
             '}';
     }
 
-    @SuppressWarnings("EqualsReplaceableByObjectsCall")
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
+    /**
+     * @param product the product
+     * @param productImageField the type of the image
+     * @param language the language
+     * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
+     */
+    public static ImageTransformationUtils getScreenTransformation(Product product, final ProductImageField productImageField, String language) {
+
+        ImageTransformationUtils res = getInitialServerTransformation(product, productImageField, language);
+        if (res.isEmpty()) {
+            return res;
         }
 
-        ImageTransformation that = (ImageTransformation) o;
-
-        if (rotationInDegree != that.rotationInDegree) {
-            return false;
+        //if a rotation + crop we have to rotate the crop area.
+        //off applies the crop on the rotated image and the android librairy applies the crop before the rotation... so we should
+        // transform the crop from off to the android library version.
+        if (res.getCropRectangle() != null && res.rotationInDegree != 0) {
+            applyRotationOnCropRectangle(product, productImageField, language, res, true);
         }
-        if (cropRectangle != null ? !cropRectangle.equals(that.cropRectangle) : that.cropRectangle != null) {
-            return false;
-        }
-        return initImageUrl != null ? initImageUrl.equals(that.initImageUrl) : that.initImageUrl == null;
+        return res;
     }
 
     @Override
@@ -109,29 +110,7 @@ public class ImageTransformation {
         return initImageUrl;
     }
 
-    /**
-     * @param product the product
-     * @param productImageField the type of the image
-     * @param language the language
-     * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
-     */
-    public static ImageTransformation getScreenTransformation(Product product, final ProductImageField productImageField, String language) {
-
-        ImageTransformation res = getInitialServerTransformation(product, productImageField, language);
-        if (res.isEmpty()) {
-            return res;
-        }
-
-        //if a rotation + crop we have to rotate the crop area.
-        //off applies the crop on the rotated image and the android librairy applies the crop before the rotation... so we should
-        // transform the crop from off to the android library version.
-        if (res.getCropRectangle() != null && res.rotationInDegree != 0) {
-            applyRotationOnCropRectangle(product, productImageField, language, res, true);
-        }
-        return res;
-    }
-
-    private static void applyRotationOnCropRectangle(Product product, ProductImageField productImageField, String language, ImageTransformation res, boolean inverse) {
+    private static void applyRotationOnCropRectangle(Product product, ProductImageField productImageField, String language, ImageTransformationUtils res, boolean inverse) {
         //if a crop and a rotation is done we should rotate the cropped rectangle
         final String imageKey = ImageKeyHelper.getImageStringKey(productImageField, language);
         final Map<String, ?> imageDetails = product.getImageDetails(imageKey);
@@ -167,15 +146,15 @@ public class ImageTransformation {
                     res.cropRectangle = toRect(initCrop);
                 }
             } catch (Exception e) {
-                Log.e(ImageTransformation.class.getSimpleName(), "can't process image for product " + product.getCode(), e);
+                Log.e(ImageTransformationUtils.class.getSimpleName(), "can't process image for product " + product.getCode(), e);
             }
         }
     }
 
-    public static ImageTransformation getInitialServerTransformation(Product product, final ProductImageField productImageField, String language) {
+    public static ImageTransformationUtils getInitialServerTransformation(Product product, final ProductImageField productImageField, String language) {
         final String imageKey = ImageKeyHelper.getImageStringKey(productImageField, language);
         final Map<String, ?> imageDetails = product.getImageDetails(imageKey);
-        ImageTransformation res = new ImageTransformation();
+        ImageTransformationUtils res = new ImageTransformationUtils();
         if (imageDetails == null) {
             return res;
         }
@@ -199,9 +178,9 @@ public class ImageTransformation {
      * @param language the language
      * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
      */
-    public static ImageTransformation toServerTransformation(ImageTransformation screenTransformation, Product product, final ProductImageField productImageField,
-                                                             String language) {
-        ImageTransformation res = getInitialServerTransformation(product, productImageField, language);
+    public static ImageTransformationUtils toServerTransformation(ImageTransformationUtils screenTransformation, Product product, final ProductImageField productImageField,
+                                                                  String language) {
+        ImageTransformationUtils res = getInitialServerTransformation(product, productImageField, language);
         if (res.isEmpty()) {
             return res;
         }
@@ -211,6 +190,27 @@ public class ImageTransformation {
             applyRotationOnCropRectangle(product, productImageField, language, res, false);
         }
         return res;
+    }
+
+    @SuppressWarnings("EqualsReplaceableByObjectsCall")
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ImageTransformationUtils that = (ImageTransformationUtils) o;
+
+        if (rotationInDegree != that.rotationInDegree) {
+            return false;
+        }
+        if (cropRectangle != null ? !cropRectangle.equals(that.cropRectangle) : that.cropRectangle != null) {
+            return false;
+        }
+        return initImageUrl != null ? initImageUrl.equals(that.initImageUrl) : that.initImageUrl == null;
     }
 
     /**

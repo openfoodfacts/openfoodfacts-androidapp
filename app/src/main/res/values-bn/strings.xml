@@ -187,6 +187,7 @@
     <string name="txtLoading">লোড হচ্ছে…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">পণ্যটি স্থানীয়ভাবে সংরক্ষণ হয়েছে। আপনি তা \"অফলাইন সম্পাদনা করুন\" মেনু থেকে সম্পাদনা করতে পারেন</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">বারকোড প্রযোজ্য</string>
     <string name="txtOk">ঠিক আছে</string>
     <string name="txtBarcodeNotValid">বারকোড বৈধ নয়</string>
@@ -769,4 +770,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

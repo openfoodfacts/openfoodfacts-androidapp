@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:background="@android:color/black"
-                                                   android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:elevation="4dp"
-            android:id="@+id/toolbar"/>
-    <Spinner
+            android:id="@+id/toolbar" />
+
+        <Spinner
             android:id="@+id/comboImageType"
             app:layout_constraintBottom_toBottomOf="@id/comboLanguages"
             app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:background="@drawable/spinner_wight_border"
-    />
-    <TextView
+            android:background="@drawable/spinner_wight_border" />
+
+        <TextView
             android:id="@+id/btnChooseDefaultLanguage"
             android:text="@string/choose_default_language"
             android:layout_width="wrap_content"
@@ -33,9 +41,9 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginStart="@dimen/spacing_small"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-    />
-    <Spinner
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Spinner
             android:id="@+id/comboLanguages"
             app:layout_constraintTop_toBottomOf="@id/btnChooseDefaultLanguage"
             app:layout_constraintEnd_toEndOf="@id/btnChooseDefaultLanguage"
@@ -45,10 +53,9 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/spacing_small"
-            android:background="@drawable/spinner_wight_border"
-    />
+            android:background="@drawable/spinner_wight_border" />
 
-    <com.github.chrisbanes.photoview.PhotoView
+        <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/imageViewFullScreen"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -61,17 +68,19 @@
             app:layout_constraintBottom_toTopOf="@id/textInfo"
             android:layout_marginTop="@dimen/spacing_tiny"
             android:layout_marginBottom="@dimen/spacing_tiny"
-            android:transitionName="@string/product_transition"/>
+            android:transitionName="@string/product_transition" />
 
-    <ProgressBar android:layout_width="@dimen/button_height_short" android:layout_height="@dimen/button_height_short"
-                 android:layout_marginStart="@dimen/spacing_small"
-                 android:layout_marginLeft="@dimen/spacing_small"
-                 android:layout_marginTop="@dimen/spacing_small"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintBottom_toTopOf="@id/btnAddImage"
-                 android:id="@+id/progressBar"
-    />
-    <TextView
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/button_height_short"
+            android:layout_height="@dimen/button_height_short"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:layout_constraintBottom_toTopOf="@id/btnAddImage"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
             android:id="@+id/textInfo"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_height_short"
@@ -84,9 +93,9 @@
             android:textStyle="normal"
             app:layout_constraintStart_toEndOf="@id/progressBar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btnAddImage"
-    />
-    <ImageView
+            app:layout_constraintBottom_toTopOf="@id/btnAddImage" />
+
+        <ImageView
             android:id="@+id/btnAddImage"
             android:hint="@string/take_picture"
             app:srcCompat="@drawable/ic_add_a_photo_white_18dp"
@@ -100,9 +109,9 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginStart="@dimen/spacing_small"
-    />
-    <ImageView
+            android:layout_marginStart="@dimen/spacing_small" />
+
+        <ImageView
             android:id="@+id/btnChooseImage"
             android:textColor="@color/white"
             app:srcCompat="@drawable/ic_baseline_image_search"
@@ -115,9 +124,9 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginStart="@dimen/spacing_small"
-    />
-    <ImageView
+            android:layout_marginStart="@dimen/spacing_small" />
+
+        <ImageView
             android:id="@+id/btnEditImage"
             android:text="@string/edit_image"
             app:srcCompat="@drawable/ic_crop_rotate_24dp"
@@ -131,9 +140,9 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginStart="@dimen/spacing_small"
-    />
-    <ImageView
+            android:layout_marginStart="@dimen/spacing_small" />
+
+        <ImageView
             android:id="@+id/btnUnselectImage"
             app:srcCompat="@drawable/ic_remove_circle_white"
             android:textColor="@color/white"
@@ -146,9 +155,9 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginStart="@dimen/spacing_small"
-    />
-    <ImageView
+            android:layout_marginStart="@dimen/spacing_small" />
+
+        <ImageView
             android:id="@+id/btnClose"
             android:textColor="@color/white"
             app:srcCompat="@drawable/ic_check_white_24dp"
@@ -161,8 +170,8 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginStart="@dimen/spacing_small"
-    />
+            android:layout_marginStart="@dimen/spacing_small" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -23,7 +23,7 @@ Você também poderá encontrar (de acordo com as indicações presentes nos pro
 *** Funciona bem em qualquer condição***
 - Você pode adicionar novos produtos, mesmo se você não estiver conectado à Internet.
 - O aplicativo abre apenas o estritamente necessário para reduzir o consumo de bateria e dados
-- Não precisa de uma câmera para procurar um produto. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
+- Você não precisa de uma câmera para procurar um produto. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
 
 ***Seus alimentos de animais, seus dados***
 - Seus dados pessoais são seus e nunca serão enviados online

@@ -8,19 +8,17 @@ buildscript {
         maven { url "https://jitpack.io" }
     }
     dependencies {
-
-
         classpath 'com.android.tools.build:gradle:3.6.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
         classpath 'com.github.timfreiheit:ResourcePlaceholdersPlugin:0.2'
     }
 }
 
 plugins {
-    id "org.sonarqube" version "2.7"
+    id "org.sonarqube" version "2.8"
 }
 
 allprojects {
@@ -35,69 +33,4 @@ allprojects {
 
     sonarqube { properties { property 'sonar.coverage.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*" } }
 
-}
-
-ext {
-    supportLibraryVersion = '1.0.0'
-
-    materialVersion = '1.1.0-beta01'
-
-    multidexVersion = '2.0.1'
-
-    workRuntime = '2.2.0'
-
-    daggerVersion = '2.22'
-
-    rxVersion = '2.2.19'
-    rxAndroidVersion = '2.1.1'
-
-    retrofitVersion = '2.6.4'
-    okhttpVersion = '3.12.11'
-
-    jacksonVersion = '2.11.0'
-
-    greenDaoVersion = '3.2.0'
-
-    picassoVersion = '2.71828'
-    //DO NOT UPDATE : saveInAppExternalFilesDir() removed
-    easyImageVersion = '1.4.0'
-
-    butterknifeVersion = '10.2.1'
-
-    commonsLang = '2.6'
-    commonsCsv = '1.4'
-
-    journeyappsZxingScannerVersion = '3.6.0'
-    zxingCoreVersion = '3.3.0' //For Android 14+ support zxing:core should be 3.3.0 or earlier
-
-    htmlDomVersion = '1.11.2'
-
-    apacheValidatorVersion = '1.6'
-
-    loadToastVersion = '1.0.12'
-    zoomingImgVersion = '2.3.0'
-    materialDialogVersion = '0.9.6.0'
-
-    fontIconCoreVersion = '3.2.5@aar'
-    googleMaterialFontVersion = '3.0.1.3.original@aar'
-
-    jUnitVersion = '4.13'
-    jsonUnitVersion = '2.17.0'
-    espressoVersion = '3.2.0'
-    espressoContribVersion = '3.1.0'
-    mockitoVersion = '2.13.0'
-
-    constraintLayout = '1.1.3'
-    jsr250api = '1.0'
-    jobDispatcher = '0.8.5'
-    fastAdapterCommons = '3.3.1@aar'
-    converterScalars = '2.1.0'
-    materialDrawer = '6.1.2'
-    imageCropper = '2.8.0'
-    orchestrator = '1.1.0-alpha4'
-    nachos = '1.1.1'
-    testRunnerVersion = '1.2.0'
-
-    testFalconVersion = "2.1.1"
-    testscreengrabVersion = "1.2.0"
 }

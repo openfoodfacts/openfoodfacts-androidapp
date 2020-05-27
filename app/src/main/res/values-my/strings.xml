@@ -182,6 +182,7 @@
     <string name="txtLoading">ဖြင့္ေနသည္</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">ထုတ္ကုန္ကို စက္ထဲသိမ္းထားခဲ့သည္။ ေအာ့္ဖ္လိုင္းျပင္ဆင္မႈမီႏူးမွတစ္ဆင့္သင္ျပင္ဆင္ႏိုင္သည္</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">ဘားကုဒ္လိုအပ္သည္</string>
     <string name="txtOk">အိုကေ</string>
     <string name="txtBarcodeNotValid">ဘားကုဒ္မမွန္ကန္ပါ</string>
@@ -763,4 +764,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

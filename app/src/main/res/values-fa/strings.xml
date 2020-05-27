@@ -187,6 +187,7 @@
     <string name="txtLoading">درحال بارگذاری…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">محصول به صورت محلی ذخیره می شود، شما می توانید آن را در منوی \"ویرایش آفلاین\" ویرایش کنید</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">بارکد مورد نیاز است</string>
     <string name="txtOk">تأیید</string>
     <string name="txtBarcodeNotValid">بارکد معتبر نیست</string>
@@ -769,4 +770,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

@@ -105,7 +105,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         apiClient = new Retrofit.Builder()
             .baseUrl(BuildConfig.HOST)
-            .client(Utils.HttpClientBuilder())
+            .client(Utils.httpClientBuilder())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
             .create(OpenFoodAPIService.class);

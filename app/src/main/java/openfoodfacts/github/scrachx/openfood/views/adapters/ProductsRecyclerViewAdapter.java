@@ -1,24 +1,28 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import org.apache.commons.lang.StringUtils;
+
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.YourListedProducts;
-import org.apache.commons.lang.StringUtils;
-
-import java.util.List;
+import openfoodfacts.github.scrachx.openfood.views.YourListedProductsActivity;
 
 /**
  * @author herau & itchix
@@ -98,7 +102,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
                 productHolder.vProductName.setText(productNameInLocale);
             }
 
-            String brandsQuantityDetails = YourListedProducts.getProductBrandsQuantityDetails(product);
+            String brandsQuantityDetails = YourListedProductsActivity.getProductBrandsQuantityDetails(product);
 
             final int gradeResource = Utils.getSmallImageGrade(product);
             if (gradeResource != 0) {

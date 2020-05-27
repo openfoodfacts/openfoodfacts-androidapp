@@ -197,6 +197,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Ste si istý, že chcete odstrániť tento koncept?</string>
     <string name="txtDialogsContentInfoSave">Produkt je uložený lokálne, môžete ho upravovať použitím \"Upravovanie offline\" menu</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Je potrebný čiarový kód</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Čiarový kód nie je platný</string>
@@ -781,4 +782,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

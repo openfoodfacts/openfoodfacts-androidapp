@@ -17,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
@@ -169,7 +170,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
 
     @Override
     public void loadAnalysisTags() {
-        if (OFFApplication.isFlavor(OFFApplication.OFF)) {
+        if (Utils.isFlavor(OFFApplication.OFF)) {
             List<String> analysisTags = product.getIngredientsAnalysisTags();
             final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             if (analysisTags != null && !analysisTags.isEmpty()) {

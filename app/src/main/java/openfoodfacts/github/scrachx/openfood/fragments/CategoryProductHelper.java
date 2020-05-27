@@ -21,7 +21,7 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
@@ -34,12 +34,12 @@ public class CategoryProductHelper {
     private TextView categoryText;
     private List<CategoryName> categories;
     private BaseFragment baseFragment;
-    private WikidataApiClient apiClient;
+    private WikiDataApiClient apiClient;
     private boolean containsAlcohol;
 
 
     public CategoryProductHelper(TextView categoryText, List<CategoryName> categories, BaseFragment baseFragment,
-                                 WikidataApiClient apiClient) {
+                                 WikiDataApiClient apiClient) {
         this.categoryText = categoryText;
         this.categories = categories;
         this.baseFragment = baseFragment;
