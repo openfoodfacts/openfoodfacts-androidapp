@@ -5,9 +5,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +57,7 @@ public class YourListedProductsAdapter extends RecyclerView.Adapter<YourListedPr
         holder.tvBarcode.setText(barcode);
 
         if (!isLowBatteryMode) {
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(products.get(position).getImageUrl())
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.ic_no_red_24dp)
@@ -70,7 +70,7 @@ public class YourListedProductsAdapter extends RecyclerView.Adapter<YourListedPr
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             holder.imgProgressBar.setVisibility(View.GONE);
                         }
                     });

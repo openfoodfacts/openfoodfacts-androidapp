@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/scrollView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill_vertical"
-            android:clipToPadding="false"
-            android:isScrollContainer="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".fragments.AddProductOverviewFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_vertical"
+        android:clipToPadding="false"
+        android:isScrollContainer="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".fragments.AddProductOverviewFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <TextView
+            <TextView
                 android:id="@+id/section_product_picture"
+                style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:text="@string/product_picture"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+            <TextView
                 android:id="@+id/hint_image_front"
+                style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/one_photo_compulsory"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/name_til"
                 app:layout_constraintStart_toStartOf="@id/section_product_picture"
-                app:layout_constraintTop_toBottomOf="@id/section_product_picture"/>
+                app:layout_constraintTop_toBottomOf="@id/section_product_picture" />
 
-        <ImageView
+            <ImageView
                 android:id="@+id/btnAddImageFront"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -46,11 +50,12 @@
                 android:background="?android:selectableItemBackground"
                 app:layout_constraintStart_toStartOf="@id/section_product_picture"
                 app:layout_constraintTop_toBottomOf="@id/hint_image_front"
-                app:srcCompat="@drawable/ic_add_a_photo_black_48dp"/>
-        <Button
+                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+            <Button
                 android:id="@+id/btnEditImageFront"
                 android:text="@string/update_image"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:layout_marginRight="@dimen/padding_large"
@@ -60,9 +65,9 @@
                 app:layout_constraintBottom_toBottomOf="@id/btnAddImageFront"
                 app:layout_constraintStart_toEndOf="@id/btnAddImageFront"
 
-        />
+                />
 
-        <ProgressBar
+            <ProgressBar
                 android:id="@+id/imageProgress"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -70,9 +75,9 @@
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@id/section_product_picture"
                 app:layout_constraintTop_toBottomOf="@id/hint_image_front"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <TextView
+            <TextView
                 android:id="@+id/imageProgressText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,9 +87,9 @@
                 app:layout_constraintBottom_toBottomOf="@id/imageProgress"
                 app:layout_constraintStart_toEndOf="@id/imageProgress"
                 app:layout_constraintTop_toTopOf="@id/imageProgress"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <View
+            <View
                 android:id="@+id/grey_line1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -93,36 +98,34 @@
                 android:layout_marginTop="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnAddImageFront"/>
+                app:layout_constraintTop_toBottomOf="@id/btnAddImageFront" />
 
-        <TextView
+            <TextView
                 android:id="@+id/section_product_details"
+                style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/product_details"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/section_product_picture"
-                app:layout_constraintTop_toBottomOf="@id/grey_line1"/>
+                app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
-        <TextView
+            <TextView
                 android:id="@+id/barcode"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:background="@drawable/bg_edittext"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:gravity="center_vertical"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/section_product_details"
-                tools:text="Barcode : 8888888888888"/>
+                tools:text="Barcode : 8888888888888" />
 
-        <TextView
+            <TextView
                 android:id="@+id/language"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
@@ -137,9 +140,9 @@
                 app:layout_constraintTop_toBottomOf="@id/barcode"
                 tools:drawableEnd="@drawable/ic_arrow_drop_down"
                 tools:drawableRight="@drawable/ic_arrow_drop_down"
-                tools:text="Product language : English"/>
+                tools:text="Product language : English" />
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -149,20 +152,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/language">
-            <EditText
+
+                <EditText
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_edittext_til"
                     android:gravity="center_vertical"
                     android:hint="@string/product_name"
+                    android:importantForAutofill="no"
                     android:inputType="text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:nextFocusDown="@id/quantity"/>
-        </android.support.design.widget.TextInputLayout>
+                    android:nextFocusDown="@id/quantity" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/quantity_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -173,7 +178,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/name_til">
-            <EditText
+
+                <EditText
                     android:id="@+id/quantity"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -183,25 +189,21 @@
                     android:inputType="text"
                     android:nextFocusDown="@id/brand"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-            />
-        </android.support.design.widget.TextInputLayout>
-        <TextView
+                    app:layout_constraintStart_toStartOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
                 android:id="@+id/quantity_hint"
+                style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:paddingRight="@dimen/spacing_small"
-                android:paddingLeft="@dimen/spacing_small"
                 android:text="@string/hint_quantity"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/quantity_til"
                 app:layout_constraintStart_toStartOf="@id/quantity_til"
-                app:layout_constraintTop_toBottomOf="@id/quantity_til"/>
+                app:layout_constraintTop_toBottomOf="@id/quantity_til" />
 
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/brand_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -211,7 +213,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/quantity_hint">
-            <com.hootsuite.nachos.NachoTextView
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/brand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -227,11 +230,20 @@
                     app:chipHeight="30dp"
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-            />
-        </android.support.design.widget.TextInputLayout>
+                    app:layout_constraintStart_toStartOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/brand_hint"
+                style="@style/EditHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/brand_hint"
+                app:layout_constraintEnd_toEndOf="@id/brand_til"
+                app:layout_constraintStart_toStartOf="@id/brand_til"
+                app:layout_constraintTop_toBottomOf="@id/brand_til" />
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/packaging_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -240,8 +252,9 @@
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/brand_til">
-            <com.hootsuite.nachos.NachoTextView
+                app:layout_constraintTop_toBottomOf="@id/brand_hint">
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/packaging"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -257,54 +270,63 @@
                     app:chipHeight="30dp"
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-            />
-        </android.support.design.widget.TextInputLayout>
+                    app:layout_constraintStart_toStartOf="parent" />
 
-        <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/packaging_hint"
+                style="@style/EditHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/hint_packaging"
+                app:layout_constraintEnd_toEndOf="@id/packaging_til"
+                app:layout_constraintStart_toStartOf="@id/packaging_til"
+                app:layout_constraintTop_toBottomOf="@id/packaging_til" />
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/categories_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/spacing_small"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/packaging_til">
-            <com.hootsuite.nachos.NachoTextView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/packaging_hint">
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/categories"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edittext_til"
-                    android:paddingTop="@dimen/floating_hint_margin_nacho"
-                    android:paddingBottom="@dimen/floating_hint_margin_nacho"
                     android:completionThreshold="1"
                     android:gravity="center_vertical"
                     android:hint="@string/category_drawer"
                     android:imeOptions="actionNext"
                     android:minHeight="50dp"
                     android:nextFocusDown="@id/label"
+                    android:paddingTop="@dimen/floating_hint_margin_nacho"
+                    android:paddingBottom="@dimen/floating_hint_margin_nacho"
                     app:chipBackground="#4389FA"
                     app:chipHeight="30dp"
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-            />
-        </android.support.design.widget.TextInputLayout>
-        <TextView
+                    app:layout_constraintStart_toStartOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
                 android:id="@+id/category_hint"
+                style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:paddingHorizontal="@dimen/spacing_small"
                 android:text="@string/required_to_compute_nutriscore"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/categories_til"
                 app:layout_constraintStart_toStartOf="@+id/categories_til"
-                app:layout_constraintTop_toBottomOf="@+id/categories_til"/>
+                app:layout_constraintTop_toBottomOf="@+id/categories_til" />
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/label_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -314,7 +336,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/category_hint">
-            <com.hootsuite.nachos.NachoTextView
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -332,10 +355,10 @@
                     app:chipHeight="30dp"
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-            />
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
+                    app:layout_constraintStart_toStartOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/period_of_time_after_opening_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -346,7 +369,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/label_til">
-            <AutoCompleteTextView
+
+                <AutoCompleteTextView
                     android:id="@+id/period_of_time_after_opening"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -359,11 +383,11 @@
                     android:nextFocusDown="@id/origin_of_ingredients"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <View
+            <View
                 android:id="@+id/grey_line2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -372,22 +396,23 @@
                 android:layout_marginTop="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/period_of_time_after_opening_til"/>
+                app:layout_constraintTop_toBottomOf="@+id/period_of_time_after_opening_til" />
 
-        <TextView
+            <TextView
                 android:id="@+id/section_manufacturing_details"
+                style="@style/EditHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/manufacturing_details"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/grey_line2"
                 tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
-                tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
-        <android.support.design.widget.TextInputLayout
+                tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/origin_of_ingredients_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -398,7 +423,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/section_manufacturing_details">
-            <com.hootsuite.nachos.NachoTextView
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/origin_of_ingredients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -418,10 +444,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
 
-                    tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/manufacturing_place_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -432,7 +458,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients_til">
-            <EditText
+
+                <EditText
                     android:id="@+id/manufacturing_place"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -443,10 +470,10 @@
                     android:nextFocusDown="@id/emb_code"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emb_code_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -457,7 +484,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/manufacturing_place_til">
-            <com.hootsuite.nachos.NachoTextView
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/emb_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -476,9 +504,10 @@
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
-        <ImageView
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
                 android:id="@+id/hint_emb_code"
                 android:layout_width="20dp"
                 android:layout_height="0dp"
@@ -489,9 +518,9 @@
                 app:layout_constraintBottom_toBottomOf="@id/emb_code_til"
                 app:layout_constraintEnd_toEndOf="@id/emb_code_til"
                 app:layout_constraintTop_toTopOf="@id/emb_code_til"
-                app:srcCompat="@drawable/ic_help_outline_orange_24dp"/>
+                app:srcCompat="@drawable/ic_help_outline_orange_24dp" />
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/link_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -503,7 +532,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/emb_code_til">
-            <EditText
+
+                <EditText
                     android:id="@+id/link"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -514,10 +544,10 @@
                     android:nextFocusDown="@id/country_where_purchased"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageView
+            <ImageView
                 android:id="@+id/hint_link"
                 android:layout_width="20dp"
                 android:layout_height="0dp"
@@ -526,9 +556,9 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/link_til"
                 app:layout_constraintTop_toTopOf="@id/link_til"
-                app:srcCompat="@drawable/ic_search_black"/>
+                app:srcCompat="@drawable/ic_search_black" />
 
-        <ImageView
+            <ImageView
                 android:id="@+id/hint_link_2"
                 android:layout_width="20dp"
                 android:layout_height="0dp"
@@ -539,9 +569,9 @@
                 android:visibility="gone"
                 app:layout_constraintTop_toTopOf="@id/link_til"
                 app:layout_constraintEnd_toStartOf="@id/hint_link"
-                app:srcCompat="@drawable/barcode_grey_24dp"/>
+                app:srcCompat="@drawable/barcode_grey_24dp" />
 
-        <View
+            <View
                 android:id="@+id/grey_line3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -550,23 +580,23 @@
                 android:layout_marginTop="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint_link_2"/>
+                app:layout_constraintTop_toBottomOf="@id/hint_link_2" />
 
-        <TextView
+            <TextView
                 android:id="@+id/section_purchasing_details"
+                style="@style/EditHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/purchasing_details"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/grey_line3"
                 tools:drawableEnd="@drawable/ic_keyboard_arrow_down_grey_24dp"
-                tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp"/>
+                tools:drawableRight="@drawable/ic_keyboard_arrow_down_grey_24dp" />
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/country_where_purchased_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -576,9 +606,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/section_purchasing_details"
-        >
-            <com.hootsuite.nachos.NachoTextView
+                app:layout_constraintTop_toBottomOf="@id/section_purchasing_details">
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/country_where_purchased"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -597,10 +627,10 @@
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/stores_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -610,9 +640,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/country_where_purchased_til"
-        >
-            <com.hootsuite.nachos.NachoTextView
+                app:layout_constraintTop_toBottomOf="@id/country_where_purchased_til">
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/stores"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -629,10 +659,10 @@
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/countries_where_sold_til"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -642,9 +672,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/stores_til"
-        >
-            <com.hootsuite.nachos.NachoTextView
+                app:layout_constraintTop_toBottomOf="@id/stores_til">
+
+                <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/countries_where_sold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -662,10 +692,10 @@
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible"/>
-        </android.support.design.widget.TextInputLayout>
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <View
+            <View
                 android:id="@+id/grey_line4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -674,9 +704,9 @@
                 android:layout_marginTop="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/countries_where_sold_til"/>
+                app:layout_constraintTop_toBottomOf="@id/countries_where_sold_til" />
 
-        <ProgressBar
+            <ProgressBar
                 android:id="@+id/other_image_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
@@ -684,9 +714,9 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@id/other_image_progress_text"
                 app:layout_constraintTop_toBottomOf="@id/grey_line4"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <TextView
+            <TextView
                 android:id="@+id/other_image_progress_text"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
@@ -697,32 +727,31 @@
                 app:layout_constraintEnd_toEndOf="@id/countries_where_sold_til"
                 app:layout_constraintStart_toStartOf="@id/countries_where_sold_til"
                 app:layout_constraintTop_toBottomOf="@id/grey_line4"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <Button
-                android:drawablePadding="5dp"
+            <Button
                 android:id="@+id/btn_other_pictures"
+                style="@style/ButtonBorder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_normal"
+                android:drawablePadding="@dimen/spacing_tiny"
                 android:text="@string/take_more_pictures"
-                style="@style/BorderButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/other_image_progress_text"/>
+                app:layout_constraintTop_toBottomOf="@id/other_image_progress_text" />
 
-        <Button
+            <Button
                 android:id="@+id/btn_next"
+                style="@style/ButtonFlat"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:background="#4389FA"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/next"
-                android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/btn_other_pictures"/>
+                app:layout_constraintTop_toBottomOf="@id/btn_other_pictures" />
 
-    </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    </ScrollView>
+</layout>

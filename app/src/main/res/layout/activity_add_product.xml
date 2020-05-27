@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".views.AddProductActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".views.AddProductActivity">
 
     <View
         android:id="@+id/overview_indicator"
@@ -20,7 +20,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="3dp"
-        android:background="@color/blue"
+        android:background="@color/primary_dark"
         app:layout_constraintBottom_toBottomOf="@id/overview_indicator"
         app:layout_constraintEnd_toStartOf="@id/ingredients_indicator"
         app:layout_constraintStart_toEndOf="@id/overview_indicator"
@@ -38,7 +38,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="3dp"
-        android:background="@color/blue"
+        android:background="@color/primary_dark"
         app:layout_constraintBottom_toBottomOf="@id/overview_indicator"
         app:layout_constraintEnd_toStartOf="@id/nutrition_facts_indicator"
         app:layout_constraintStart_toEndOf="@id/ingredients_indicator"
@@ -109,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_nutrition_facts_indicator" />
 
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -119,10 +119,10 @@
         app:layout_constraintTop_toBottomOf="@id/grey_line" />
 
     <!-- layout for the Snackbar -->
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@id/grey_line" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,44 +4,54 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
-import butterknife.BindView;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.File;
+import java.util.ArrayList;
+
+import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
-import java.io.File;
-import java.util.ArrayList;
-
 public class ProductComparisonActivity extends BaseActivity implements PhotoReceiver {
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private PhotoReceiverHandler photoReceiverHandler;
     private RecyclerView.Adapter productComparisonAdapter;
     private ArrayList<Product> products = new ArrayList<>();
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_comparison);
+        setTitle(getString(R.string.compare_products));
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         photoReceiverHandler=new PhotoReceiverHandler(this);
 
         if (getIntent().getExtras() != null && getIntent().getBooleanExtra("product_found", false)) {
             products = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
             if (getIntent().getBooleanExtra("product_already_exists", false)) {
-                Toast.makeText(this, "The product already exists in the comparison list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -76,21 +86,8 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
                 }
             }
         });
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
-        setTitle(getString(R.string.compare_products));
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
-            finish();
-            return true;
-        }
-        return false;
     }
 
     @Override
@@ -102,5 +99,12 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this,requestCode,resultCode,data);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.compare_products);
+
     }
 }

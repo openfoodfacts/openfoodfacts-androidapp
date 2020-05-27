@@ -13,7 +13,7 @@
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/product_comparison_rv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -31,7 +31,7 @@
                         android:layout_centerInParent="true"
                         android:layout_margin="16dp"
                         android:text="@string/add_product"
-                        style="@style/BorderButton"/>
+                        style="@style/ButtonBorder"/>
             </RelativeLayout>
         </RelativeLayout>
     </HorizontalScrollView>

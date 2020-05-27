@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,18 +13,15 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/ButtonFlat.Green"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/green_300"
             android:contentDescription="@string/app_name"
             android:gravity="center"
             android:padding="@dimen/padding_short"
             android:scaleType="center"
             android:text="@string/wikidata_information"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_large"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/font_large" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -52,7 +49,7 @@
                     android:textSize="@dimen/font_large"
                     android:textStyle="bold"/>
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/titleBottomSheetIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,25 +90,25 @@
 
                 <Button
                     android:id="@+id/wikipediaButton"
-                    style="@style/ButtonToBrowseProducts"
+                    style="@style/ButtonFlat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_normal"
                     android:layout_weight="50"
-                    android:background="@color/blue"
-                    android:text="@string/Wikipedia"/>
+                    android:text="@string/Wikipedia"
+                    android:textStyle="normal" />
 
 
                 <Button
                     android:id="@+id/buttonToBrowseProducts"
-                    style="@style/ButtonToBrowseProducts"
+                    style="@style/ButtonFlat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_normal"
                     android:layout_weight="50"
-                    android:background="@color/blue"
-                    android:text="@string/Browse_Products"/>
+                    android:text="@string/Browse_Products"
+                    android:textStyle="normal" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

@@ -21,7 +21,7 @@
         android:paddingEnd="8dp"
         android:paddingRight="8dp">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgHistoryProduct"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -39,7 +39,7 @@
     </FrameLayout>
 
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/nutritionGradeImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

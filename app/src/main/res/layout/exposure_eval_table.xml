@@ -218,7 +218,7 @@
                     android:textSize="@dimen/font_small"
                     android:textStyle="bold"/>
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpInfants"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -226,7 +226,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpToddlers"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -234,7 +234,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpChildren"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -242,7 +242,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpAdolescents"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -250,7 +250,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpAdults"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -258,7 +258,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpElderly"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -281,7 +281,7 @@
                     android:textSize="@dimen/font_small"
                     android:textStyle="bold"/>
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spInfants"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -289,7 +289,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spToddlers"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -297,7 +297,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spChildren"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -305,7 +305,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spAdolescents"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -313,7 +313,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spAdults"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -321,7 +321,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spElderly"
                     android:layout_width="84dp"
                     android:layout_height="84dp"

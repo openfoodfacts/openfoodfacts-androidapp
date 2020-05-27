@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+식품이나 제품의 바코드를 스캔하여 성분, 식품 첨가물 및 영양 정보에 대한 데이터를 얻습니다.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
+- Open Food Facts는 모두에 의한, 모두를 위해 만들어진 식품 데이터베이스입니다.
+- 당신은 이걸 사용해 더 좋은 식품을 선택 할 수 있으며, 이건 공개데이터이므로, 아무나 목적에 상관없이 자유롭게 재사용이 가능합니다.
+- Open Food Facts는 전 세계 수천 명의 자원봉사자가 개발한 비영리 프로젝트입니다. 이곳에는 여러분들이 다양한 방식으로 참여할 수 있는 흥미로운 프로젝트가 많이 있습니다.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+- Open Food Facts는 제품 라벨에 적힌 작은 글씨를 읽는데도 도움이 됩니다. You will be able to find:
+- 탄소 발자국 (CO2 배출량) 및 포장지 재질(재활용 지침 포함).
+- Nutriscore (영양 점수), 영양소, 지방 종류 및 지방 함량, 포화지방산, 탄수화물, 설탕, 섬유질, 단백질, 염분 및 나트륨.
+- 브랜드, 알레르기 항원, 라벨 (바이오, 글루텐프리, 비건, 채식주의자, 할랄, 코셔식 등), 추적 가능 정보(포장 코드 및 재료의 원산지)
+- 와인과 맥주 항목에서는 알코올 함량을 알 수 있습니다.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts는 웹 https://world.openfoodfacts.org 에서도 볼 수 있습니다.
 
 
-Questions, feedback : contact@openfoodfacts.org
+질문 및 피드백 : contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+화장품을 찾고 계신다면, Open Beauty Facts를, 애완동물용 음식을 찾으신다면, Open Pet Food Facts를 설치하세요. 다른 기타 제품들을 찾으신다면, Open Products Facts를 설치해주세요.

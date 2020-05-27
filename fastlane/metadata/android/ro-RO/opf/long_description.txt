@@ -4,10 +4,10 @@ Open Food Facts is an open database of food products with ingredients, allergens
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Avem o mulțime de proiecte interesante la care puteți contribui în multiple moduri. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+*** Obține informațiile ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -29,7 +29,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Întrebări, feedback: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
@@ -39,7 +39,7 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. Iată câteva dintre ele: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 

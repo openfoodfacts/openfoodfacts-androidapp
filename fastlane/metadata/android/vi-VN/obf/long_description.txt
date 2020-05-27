@@ -1,31 +1,31 @@
-***Contribute to Cosmetic Transparency***
+*** Đóng góp cho tính minh bạch của mỹ phẩm ***
 
-- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
-- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+- Open Beauty Fact là một cơ sở dữ liệu sản phẩm mỹ phẩm được thực hiện bởi tất cả mọi người, cho tất cả mọi người.
+- Bạn có thể sử dụng nó để đưa ra lựa chọn mỹ phẩm tốt hơn, và vì nó là dữ liệu mở, bất kỳ ai cũng có thể sử dụng lại cho bất kỳ mục đích nào.
+- Open Beauty Fact là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
+- Bạn có thể bắt đầu đóng góp ngay hôm nay bằng cách thêm một sản phẩm từ tủ mỹ phẩm của bạn. 
 
 *** Sự thật là ***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+Phụ gia mỹ phẩm, F.I.L. mã, số CI, INCI (International Nomenclature of Cosmetic Ingredients), danh sách thành phần, chất gây dị ứng, mã đóng gói... 
+- Open Beauty Fact giúp bạn hiểu ý nghĩa của bản in đẹp trên nhãn sản phẩm.
+- Bạn không cần phải là một nhà hóa học và học tiếng Latin nữa để giải mã danh sách thành phần :-)
+- Bạn có thể quét: aftershaves, kem cơ thể, kem, chất khử mùi, bút kẻ mắt, móng, nước hoa, son môi, trang điểm, mặt nạ, nước hoa, dầu gội đầu, xà phòng, sữa tắm, sơn móng tay và nhiều hơn nữa…
+- Chúng tôi nghĩ rằng nó có thể hữu ích cho những người có tình trạng da như mụn trứng cá, bệnh vẩy nến, eczema… để lựa chọn mỹ phẩm tốt hơn.
 
-*** Works well in any condition ***
+*** Hoạt động tốt trong mọi điều kiện ***
 - You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Ứng dụng chỉ nạp các thông tin cần thiết để giảm mức tiêu thụ dữ liệu và pin
+- Bạn không cần camera để tra cứu sản phẩm. Bạn cũng có thể nhập mã vạch nếu không có máy ảnh.
 
-*** Your cosmetics, your data ***
+*** Mỹ phẩm, dữ liệu của bạn ***
 - Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Lưu ý: Open Beauty Fact đang được xây dựng, trang web và ứng dụng dựa trên Thông tin thực phẩm mở và các thay đổi sẽ được thực hiện để tính đến các đặc tính của mỹ phẩm.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
+Open Beauty Fact cũng có sẵn trên web tại https://world.openbeautyfacts.org
 Câu hỏi và phản hồi: contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Đối với thực phẩm cho con người, bạn có thể cài đặt Sự kiện thực phẩm mở, cho thức ăn vật nuôi, Sự kiện thực phẩm dành cho thú cưng và cho tất cả các sản phẩm khác, Sự kiện sản phẩm mở.

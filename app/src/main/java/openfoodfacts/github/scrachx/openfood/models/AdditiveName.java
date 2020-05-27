@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang.BooleanUtils;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -133,8 +133,7 @@ public class AdditiveName {
         return res;
     }
 
-
-    public Boolean getIsWikiDataIdPresent() {
+    public boolean getIsWikiDataIdPresent() {
         return BooleanUtils.toBooleanDefaultIfNull(this.isWikiDataIdPresent,false);
     }
 

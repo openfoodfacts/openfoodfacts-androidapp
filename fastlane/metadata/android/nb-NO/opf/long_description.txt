@@ -4,10 +4,10 @@ Open Food Facts er en offentlig database for matprodukter med ingredienser, alle
 
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Vi har mange spennende prosjekter du kan bidra til på mange forskjellige måter. 
 - You can start contributing today by adding your first product. 
 
-*** Get the Facts ***
+*** Få faktaene ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
 *** Collect AAAALL the things ***
@@ -23,13 +23,13 @@ Open Food Facts er en offentlig database for matprodukter med ingredienser, alle
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Du kan bruke appen anonymt
+- Du kan eksportere skannehistorikken din
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Spørsmål, tilbakemelding: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
@@ -39,7 +39,7 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. Her er noen av dem: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 

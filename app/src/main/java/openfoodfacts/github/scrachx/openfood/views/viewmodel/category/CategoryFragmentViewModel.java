@@ -1,8 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views.viewmodel.category;
 
-import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
-import android.support.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
+import androidx.annotation.NonNull;
+
 import android.util.Log;
 import android.view.View;
 
@@ -27,7 +28,6 @@ import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
 /**
  * Created by Abdelali Eramli on 27/12/2017.
  */
-
 public class CategoryFragmentViewModel extends ViewModel {
     private final IProductRepository repository;
     private final List<CategoryName> categories;
@@ -49,71 +49,55 @@ public class CategoryFragmentViewModel extends ViewModel {
     }
 
     /**
-    * Generates a network call for showing categories in CategoryFragment
-     * */
-
+     * Generates a network call for showing categories in CategoryFragment
+     */
     public void loadCategories() {
         subscriptions.add(repository.getAllCategoriesByLanguageCode(LocaleHelper.getLanguage(OFFApplication.getInstance()))
-                .doOnSubscribe(disposable -> {
-                    showOffline.set(View.GONE);
-                    showProgress.set(View.VISIBLE);
-                })
-                .flatMap(categoryNames -> {
-                    if (categoryNames.isEmpty()) {
-                        return repository.getAllCategoriesByDefaultLanguageCode();
-                    } else {
-                        return Single.just(categoryNames);
+            .doOnSubscribe(disposable -> {
+                showOffline.set(View.GONE);
+                showProgress.set(View.VISIBLE);
+            })
+            .flatMap(categoryNames -> {
+                if (categoryNames.isEmpty()) {
+                    return repository.getAllCategoriesByDefaultLanguageCode();
+                } else {
+                    return Single.just(categoryNames);
+                }
+            })
+            .flatMap(categoryNames -> {
+                if (categoryNames.isEmpty()) {
+                    return repository.getCategories()
+                        .flatMap(categories -> {
+                            return Single.just(extractCategoriesNames(categories));
+                        });
+                } else {
+                    return Single.just(categoryNames);
+                }
+            })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(categoryList -> {
+                    categories.addAll(categoryList);
+                    filteredCategories.set(categoryList);
+                    showProgress.set(View.GONE);
+                },
+                throwable -> {
+                    Log.e(CategoryFragmentViewModel.class.getCanonicalName(), "Error loading categories", throwable);
+                    if (throwable instanceof UnknownHostException) {
+                        showOffline.set(View.VISIBLE);
+                        showProgress.set(View.GONE);
                     }
-                })
-                .flatMap(categoryNames -> {
-                    if (categoryNames.isEmpty()) {
-                        return repository.getCategories(true)
-                                .flatMap(categories -> {
-                                    saveCategories(categories);
-                                    return Single.just(extractCategoriesNames(categories));
-                                });
-                    } else {
-                        return Single.just(categoryNames);
-                    }
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(categoryList -> {
-                            categories.addAll(categoryList);
-                            filteredCategories.set(categoryList);
-                            showProgress.set(View.GONE);
-                        },
-                        throwable -> {
-                            Log.e(CategoryFragmentViewModel.class.getCanonicalName(), "Error loading categories", throwable);
-                            if (throwable instanceof UnknownHostException) {
-                                showOffline.set(View.VISIBLE);
-                                showProgress.set(View.GONE);
-                            }
-                        }));
-    }
-
-    /**
-     * Save categories in CategoryDao database
-     *
-     * @param categories lst of the categories that should be added to the database
-     * */
-
-    private void saveCategories(List<Category> categories) {
-        Completable.fromAction(() -> repository.saveCategories(categories))
-                .subscribeOn(Schedulers.computation())
-                .subscribe(() -> {
-                }, e->Log.e(CategoryFragmentViewModel.class.getSimpleName(),"saveCategories",e));
+                }));
     }
 
     /**
      * Generate a new array which lists all the category names
      *
      * @param categories list of all the categories loaded using API
-     * */
-
+     */
     private List<CategoryName> extractCategoriesNames(List<Category> categories) {
         List<CategoryName> categoryNames = new ArrayList<>();
-        final String languageCode=LocaleHelper.getLanguage(OFFApplication.getInstance());
+        final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         for (Category category : categories) {
             for (CategoryName categoryName : category.getNames()) {
                 if (categoryName.getLanguageCode().equals(languageCode)) {
@@ -140,12 +124,13 @@ public class CategoryFragmentViewModel extends ViewModel {
 
     /**
      * Search for all the category names that or equal to/start with a given string
-     * @param query string which is used to query for category names*/
-  
+     *
+     * @param query string which is used to query for category names
+     */
     public void searchCategories(String query) {
         List<CategoryName> newFilteredCategories = new ArrayList<>();
         for (CategoryName categoryName : categories) {
-            if (categoryName.getName()!=null && categoryName.getName().toLowerCase().startsWith(query)) {
+            if (categoryName.getName() != null && categoryName.getName().toLowerCase().startsWith(query)) {
                 newFilteredCategories.add(categoryName);
             }
         }

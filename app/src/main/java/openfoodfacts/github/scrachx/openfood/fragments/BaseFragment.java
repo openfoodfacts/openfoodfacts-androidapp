@@ -5,14 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -34,7 +35,14 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public abstract class BaseFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
-    protected static final int ROTATE_RESULT = 100;
+    /**
+     * an image height can't be less than 160. See https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577
+     */
+    public static final int MIN_CROP_RESULT_HEIGHT_ACCEPTED_BY_OFF = 160;
+    /**
+     * an image width can't be less than 640. See https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577
+     */
+    public static final int MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF = 640;
     private SwipeRefreshLayout swipeRefreshLayout;
     private OnRefreshListener refreshListener;
 
@@ -77,6 +85,9 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         return !isUserLoggedIn();
     }
 
+    /**
+     * Ask to login before editing product
+     */
     protected void startLoginToEditAnd(int requestCode) {
         final Context context = getContext();
         if (context == null) {
@@ -172,6 +183,7 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         Uri uri = Uri.fromFile(image);
         CropImage.activity(uri)
             .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
+            .setMinCropResultSize(MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF, MIN_CROP_RESULT_HEIGHT_ACCEPTED_BY_OFF)
             .setInitialCropWindowPaddingRatio(0)
             .setAllowFlipping(false)
             .setAllowRotation(true)

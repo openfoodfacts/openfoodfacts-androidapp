@@ -50,7 +50,7 @@ Crea listas de compras, rastrea lo que has comido y comparte y exporta fácilmen
 Escanea a la velocidad de la luz (incluso si estás en un avión, submarino o supermercado)
 
 - Todo el planeta, en su bolsillo !
-- Puede agregar nuevos productos, incluso si no tiene una conexión a Internet en este momento.
+- Puedes agregar nuevos productos, incluso si no tienes una conexión a Internet en este momento.
 - La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería.
 
 ▶ Tu comida, tus datos

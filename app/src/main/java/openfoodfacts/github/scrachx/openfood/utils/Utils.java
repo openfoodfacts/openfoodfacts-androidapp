@@ -22,23 +22,51 @@ import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.support.annotation.DrawableRes;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.content.res.AppCompatResources;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.work.Constraints;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.firebase.jobdispatcher.*;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
@@ -46,7 +74,7 @@ import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadJob;
+import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWork;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
@@ -54,8 +82,9 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -68,17 +97,16 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static android.text.TextUtils.isEmpty;
-
 public class Utils {
+    public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
-    public static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
-    public static boolean isUploadJobInitialised;
-    public static final String LAST_REFRESH_DATE = "last_refresh_date_of_taxonomies";
+    private static final String UPLOAD_JOB_TAG = "upload_saved_product_job";
+    private static boolean isUploadJobInitialised;
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
     public static final int NO_DRAWABLE_RESOURCE = 0;
+    public static final String FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies";
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -105,7 +133,7 @@ public class Utils {
      */
     private static void openTags(Spannable text, Object[] tags) {
         for (Object tag : tags) {
-            text.setSpan(tag, 0, 0, Spannable.SPAN_MARK_MARK);
+            text.setSpan(tag, 0, 0, Spanned.SPAN_MARK_MARK);
         }
     }
 
@@ -141,7 +169,7 @@ public class Utils {
         View view = activity.getCurrentFocus();
 
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null) {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
@@ -157,21 +185,11 @@ public class Utils {
         }
 
         File smallFileFront = new File(url.replace(".png", "_small.png"));
-        OutputStream fOutFront = null;
-        try {
-            fOutFront = new FileOutputStream(smallFileFront);
+
+        try (OutputStream fOutFront = new FileOutputStream(smallFileFront)) {
             bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
         } catch (IOException e) {
             Log.e("COMPRESS_IMAGE", e.getMessage(), e);
-        } finally {
-            if (fOutFront != null) {
-                try {
-                    fOutFront.flush();
-                    fOutFront.close();
-                } catch (IOException e) {
-                    // nothing to do
-                }
-            }
         }
         return smallFileFront.toString();
     }
@@ -186,7 +204,7 @@ public class Utils {
     }
 
     // Decodes image and scales it to reduce memory consumption
-    public static Bitmap decodeFile(File f) {
+    private static Bitmap decodeFile(File f) {
         try {
             // Decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
@@ -221,7 +239,6 @@ public class Utils {
      * @return true if the application is installed, false otherwise.
      */
     public static boolean isApplicationInstalled(Context context, String packageName) {
-        //private boolean isApplicationInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
             // Check if the package name exists, if exception is thrown, package name does not
@@ -234,31 +251,25 @@ public class Utils {
     }
 
     public static int getImageGrade(String grade) {
-        int drawable = NO_DRAWABLE_RESOURCE;
 
         if (grade == null) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                drawable = R.drawable.nnc_a;
-                break;
+                return R.drawable.nnc_a;
             case "b":
-                drawable = R.drawable.nnc_b;
-                break;
+                return R.drawable.nnc_b;
             case "c":
-                drawable = R.drawable.nnc_c;
-                break;
+                return R.drawable.nnc_c;
             case "d":
-                drawable = R.drawable.nnc_d;
-                break;
+                return R.drawable.nnc_d;
             case "e":
-                drawable = R.drawable.nnc_e;
-                break;
+                return R.drawable.nnc_e;
+            default:
+                return NO_DRAWABLE_RESOURCE;
         }
-
-        return drawable;
     }
 
     public static String getNovaGroupExplanation(String novaGroup, Context context) {
@@ -302,27 +313,23 @@ public class Utils {
     }
 
     public static int getNovaGroupDrawable(String novaGroup) {
-        int drawable = NO_DRAWABLE_RESOURCE;
 
         if (novaGroup == null) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
 
         switch (novaGroup) {
             case "1":
-                drawable = R.drawable.ic_nova_group_1;
-                break;
+                return R.drawable.ic_nova_group_1;
             case "2":
-                drawable = R.drawable.ic_nova_group_2;
-                break;
+                return R.drawable.ic_nova_group_2;
             case "3":
-                drawable = R.drawable.ic_nova_group_3;
-                break;
+                return R.drawable.ic_nova_group_3;
             case "4":
-                drawable = R.drawable.ic_nova_group_4;
-                break;
+                return R.drawable.ic_nova_group_4;
+            default:
+                return NO_DRAWABLE_RESOURCE;
         }
-        return drawable;
     }
 
     public static int getSmallImageGrade(Product product) {
@@ -350,8 +357,9 @@ public class Utils {
                 return R.drawable.ic_co2_low_24dp;
             case "en:medium":
                 return R.drawable.ic_co2_medium_24dp;
+            default:
+                return drawable;
         }
-        return drawable;
     }
 
     public static int getSmallImageGrade(String grade) {
@@ -377,6 +385,8 @@ public class Utils {
             case "e":
                 drawable = R.drawable.nnc_small_e;
                 break;
+            default:
+                break;
         }
 
         return drawable;
@@ -384,6 +394,9 @@ public class Utils {
 
     public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
+        if (drawable == null) {
+            return null;
+        }
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable
             .getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -394,17 +407,18 @@ public class Utils {
     }
 
     /**
-     * Return a round float value with 2 decimals
+     * Return a round float value <b>with 2 decimals</b>
+     * <b>BE CAREFUL:</b> THE METHOD DOESN'T CHECK THE NUMBER AS A NUMBER.
      *
      * @param value float value
-     * @return round value or 0 if the value is empty or equals to 0
+     * @return round value <b>with 2 decimals</b> or 0 if the value is empty or equals to 0
      */
     public static String getRoundNumber(String value) {
         if ("0".equals(value)) {
             return value;
         }
 
-        if (isEmpty(value)) {
+        if (TextUtils.isEmpty(value)) {
             return "?";
         }
 
@@ -461,19 +475,14 @@ public class Utils {
             return;
         }
         final int periodicity = (int) TimeUnit.MINUTES.toSeconds(30);
-        final int toleranceInterval = (int) TimeUnit.MINUTES.toSeconds(5);
-        Driver driver = new GooglePlayDriver(context);
-        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(driver);
-        Job uploadJob = jobDispatcher.newJobBuilder()
-            .setService(SavedProductUploadJob.class)
-            .setTag(UPLOAD_JOB_TAG)
-            .setConstraints(Constraint.ON_UNMETERED_NETWORK)
-            .setLifetime(Lifetime.FOREVER)
-            .setRecurring(false)
-            .setTrigger(Trigger.executionWindow(periodicity, periodicity + toleranceInterval))
-            .setReplaceCurrent(false)
-            .build();
-        jobDispatcher.schedule(uploadJob);
+
+        OneTimeWorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(SavedProductUploadWork.class)
+            .setConstraints(new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.UNMETERED)
+                .build()
+            )
+            .setInitialDelay(periodicity, TimeUnit.SECONDS).build();
+        WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest);
         isUploadJobInitialised = true;
     }
 
@@ -509,7 +518,7 @@ public class Utils {
      * @param context of the application.
      * @return true if airplane mode is active.
      */
-    @SuppressWarnings("depreciation")
+    @SuppressWarnings("deprecation")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static boolean isAirplaneModeActive(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -578,15 +587,16 @@ public class Utils {
                     return "WiFi";
                 case ConnectivityManager.TYPE_WIMAX:
                     return "WiMax";
+                default:
+                    break;
             }
         }
 
         return "Other";
     }
 
-    public static String timeStamp() {
-        Long tsLong = System.currentTimeMillis();
-        return tsLong.toString();
+    private static String timeStamp() {
+        return ((Long) System.currentTimeMillis()).toString();
     }
 
     public static File makeOrGetPictureDirectory(Context context) {
@@ -601,7 +611,10 @@ public class Utils {
             return picDir;
         }
         // creates the directory if not present yet
-        picDir.mkdir();
+        final boolean mkdir = picDir.mkdir();
+        if (!mkdir) {
+            Log.e(Utils.class.getSimpleName(), "Can create dir " + picDir);
+        }
 
         return picDir;
     }
@@ -617,7 +630,7 @@ public class Utils {
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
-        String url = SearchType.URLS.get(type);
+        String url = SearchTypeUrls.getUrl(type);
 
         if (url == null) {
             clickableSpan = new ClickableSpan() {
@@ -649,7 +662,7 @@ public class Utils {
      */
     public static String getEnergy(String value) {
         String defaultValue = StringUtils.EMPTY;
-        if (defaultValue.equals(value) || isEmpty(value)) {
+        if (defaultValue.equals(value) || TextUtils.isEmpty(value)) {
             return defaultValue;
         }
 
@@ -662,62 +675,13 @@ public class Utils {
     }
 
     private static int convertKjToKcal(double kj) {
-        return kj != 0 ? Double.valueOf(kj / 4.1868d).intValue() : -1;
-    }
-
-    /**
-     * Function which returns volume in oz if parameter is in cl, ml, or l
-     *
-     * @param servingSize
-     * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
-     */
-    public static String getServingInOz(String servingSize) {
-
-        Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
-        Matcher matcher = regex.matcher(servingSize);
-        if (servingSize.toLowerCase().contains("ml")) {
-            matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
-            val *= 0.033814f;
-            servingSize = getRoundNumber(val).concat(" oz");
-        } else if (servingSize.toLowerCase().contains("cl")) {
-            matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
-            val *= 0.33814f;
-            servingSize = getRoundNumber(val).concat(" oz");
-        } else if (servingSize.toLowerCase().contains("l")) {
-            matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
-            val *= 33.814f;
-            servingSize = getRoundNumber(val).concat(" oz");
-        }
-        return servingSize;
-    }
-
-    /**
-     * Function that returns the volume in liters if input parameter is in oz
-     *
-     * @param servingSize
-     * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
-     */
-    public static String getServingInL(String servingSize) {
-
-        if (servingSize.toLowerCase().contains("oz")) {
-            Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
-            Matcher matcher = regex.matcher(servingSize);
-            matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
-            val /= 33.814f;
-            servingSize = Float.toString(val).concat(" l");
-        }
-
-        return servingSize;
+        return kj != 0 ? (int) (kj / 4.1868d) : -1;
     }
 
     /**
      * Function which returns true if the battery level is low
      *
-     * @param context
+     * @param context the context
      * @return true if battery is low or false if battery in not low
      */
     public static boolean getBatteryLevel(Context context) {
@@ -773,7 +737,7 @@ public class Utils {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "getVersionName", e);
         }
         return "(version unknown)";
     }
@@ -783,28 +747,44 @@ public class Utils {
      * @return Returns the header to be put in network call
      */
     public static String getUserAgent(String type) {
-        final String prefix = "Official Android App ";
-        if (type.equals(HEADER_USER_AGENT_SCAN)) {
-            return prefix + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SCAN;
-        } else if (type.equals(HEADER_USER_AGENT_SEARCH)) {
-            return prefix + BuildConfig.VERSION_NAME + " " + HEADER_USER_AGENT_SEARCH;
-        }
-        return prefix + BuildConfig.VERSION_NAME;
+        return getUserAgent() + " " + type;
     }
 
-     /*
-     @param Takes a string
-     @return Returns a Json object
-      */
+    public static String getUserAgent() {
+        final String prefix = " Official Android App ";
+        return BuildConfig.APP_NAME + prefix + BuildConfig.VERSION_NAME;
+    }
 
+    /**
+     * @param response Takes a string
+     * @return Returns a Json object
+     */
     public static JSONObject createJsonObject(String response) {
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(response);
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
         }
         return jsonObject;
+    }
+
+    public static <T> T firstNotNull(T... args) {
+        for (T arg : args) {
+            if (arg != null) {
+                return arg;
+            }
+        }
+        return null;
+    }
+
+    public static String firstNotEmpty(String... args) {
+        for (String arg : args) {
+            if (arg != null && arg.length() > 0) {
+                return arg;
+            }
+        }
+        return null;
     }
 }
 

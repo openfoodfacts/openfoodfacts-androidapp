@@ -1,15 +1,14 @@
 # Join the development
 * Before you join development, please set up the project on your local machine, run it and go through the application completely. Press on any button you can find and see where it leads to. Explore.You'll be more familiar with what is where and might even get some cool ideas on how to improve various aspects of the app.
 * If you would like to work on an issue, drop in a comment at the issue. If it is already assigned to someone, but there is no sign of any work being done, please free to drop in a comment so that the issue can be assigned to you if the previous assignee has dropped it entirely.
+* Ensure you use OpenFoodFact code style defined in [.idea folder](.idea). It should be automatically used by your IDE ( Android Studio, IntelliJ)
+* **Review your code formatting, check classes imports and remove commented code lines and before creating a Pull Request**
 
 # Contributing
-
 When contributing to this repository, please first discuss the change you wish to make via issue, or the official [slack channel](https://slack-ssl-openfoodfacts.herokuapp.com/).
 
 ## Pull Request Process
-
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a 
-   build.
+1. Ensure any install or build dependencies are removed before the end of the layer when doing a build.
 2. Check that there are no conflicts and your request passes [Travis](https://travis-ci.org/openfoodfacts/openfoodfacts-androidapp) build. Check the log of the pass test if it fails the build.
 3. Give the description of the issue that you want to resolve in the pull request message. The format of the commit message to be fixed    - **Fixes #[issue number] [Description of the issue]** Example: **Fixes #529: Add toast warning in `MainActivity.java`** 
 4. Wait for the maintainers to review your pull request and do the changes if requested.

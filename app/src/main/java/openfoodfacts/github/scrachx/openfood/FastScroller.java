@@ -5,7 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -69,9 +69,6 @@ public class FastScroller extends LinearLayout {
                 currentAnimator.cancel();
             }
             getHandler().removeCallbacks(handleHider);
-           /* if (handle.getVisibility() == INVISIBLE) {
-                showHandle();
-            }*/
             setRecyclerViewPosition(event.getY());
             return true;
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -115,17 +112,7 @@ public class FastScroller extends LinearLayout {
         handle.setY(getValueInRange(0, height - handleHeight, (int) ((height - handleHeight) * position)));
     }
 
-    private void showHandle() {
-        AnimatorSet animatorSet = new AnimatorSet();
-        handle.setPivotX(handle.getWidth());
-        handle.setPivotY(handle.getHeight());
-        handle.setVisibility(VISIBLE);
-        Animator growerX = ObjectAnimator.ofFloat(handle, SCALE_X, 0f, 1f).setDuration(HANDLE_ANIMATION_DURATION);
-        Animator growerY = ObjectAnimator.ofFloat(handle, SCALE_Y, 0f, 1f).setDuration(HANDLE_ANIMATION_DURATION);
-        Animator alpha = ObjectAnimator.ofFloat(handle, ALPHA, 0f, 1f).setDuration(HANDLE_ANIMATION_DURATION);
-        animatorSet.playTogether(growerX, growerY, alpha);
-        animatorSet.start();
-    }
+
 
     private void hideHandle() {
         currentAnimator = new AnimatorSet();

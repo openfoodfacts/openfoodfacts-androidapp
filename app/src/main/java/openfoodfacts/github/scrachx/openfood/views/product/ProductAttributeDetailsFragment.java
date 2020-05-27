@@ -2,10 +2,10 @@ package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.annotation.Nullable;
+import androidx.browser.customtabs.CustomTabsIntent;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +24,7 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -123,14 +123,15 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
                 updateContent(view, additiveName);
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(getClass().getSimpleName(),"onCreateView",e);
         }
 
         return view;
     }
 
     private void updateContent(View view, AdditiveName additive) {
-        View exposureEvalTable = view.findViewById(R.id.exposureEvalTable);
+
+
         mpInfantsImage = view.findViewById(R.id.mpInfants);
         mpToddlersImage = view.findViewById(R.id.mpToddlers);
         mpChildrenImage = view.findViewById(R.id.mpChildren);
@@ -144,10 +145,10 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
         spAdultsImage = view.findViewById(R.id.spAdults);
         spElderlyImage = view.findViewById(R.id.spElderly);
 
-        TextView efsaWarning = view.findViewById(R.id.efsaWarning);
-
-        String overexposureRisk = additive.getOverexposureRisk();
-        if (additive.hasOverexposureData()) {
+        if (additive!=null && additive.hasOverexposureData()) {
+            View exposureEvalTable = view.findViewById(R.id.exposureEvalTable);
+            TextView efsaWarning = view.findViewById(R.id.efsaWarning);
+            String overexposureRisk = additive.getOverexposureRisk();
             boolean isHighRisk = "high".equalsIgnoreCase(overexposureRisk);
             if (isHighRisk) {
                 bottomSheetTitleIcon.setImageResource(R.drawable.ic_additive_high_risk);
@@ -263,14 +264,14 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
                 sitelinks = sitelinks.getJSONObject(languageCode);
                 link = sitelinks.getString("url");
             } catch (JSONException e) {
-                e.printStackTrace();
+                Log.e(getClass().getSimpleName(),"getWikiLink for language code "+languageCode,e);
             }
         } else if (sitelinks.has("enwiki")) {
             try {
                 sitelinks = sitelinks.getJSONObject("enwiki");
                 link = sitelinks.getString("url");
             } catch (JSONException e) {
-                e.printStackTrace();
+                Log.e(getClass().getSimpleName(),"sitelinks for language code "+languageCode,e);
             }
         } else {
             Log.i("ProductActivity", "Result for wikilink is not found in native or english language.");

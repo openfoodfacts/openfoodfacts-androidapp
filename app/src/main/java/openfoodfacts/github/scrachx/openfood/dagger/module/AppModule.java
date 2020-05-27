@@ -22,7 +22,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 @Module
 public class AppModule {
-    private final static OkHttpClient httpClient = Utils.HttpClientBuilder();
+    private static final OkHttpClient httpClient = Utils.HttpClientBuilder();
     private OFFApplication application;
 
     public AppModule(OFFApplication application) {

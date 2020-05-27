@@ -9,19 +9,22 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.ShareActionProvider;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -33,6 +36,7 @@ import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
+import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,7 +45,6 @@ import retrofit2.Response;
 import static android.app.Activity.RESULT_OK;
 
 public class ProductFragment extends Fragment implements OnRefreshListener {
-
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     public static State productState;//NOSONAR To be changed ASAP !
     @BindView(R.id.pager)
@@ -75,7 +78,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
         setupViewPager(viewPager);
 
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             viewPager.setNestedScrollingEnabled(true);
         }
 
@@ -97,7 +100,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                 Utils.scan(getActivity());
             }
         });
-        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
+        BottomNavigationListenerInstaller.install(bottomNavigationView, getActivity(), getContext());
         return view;
     }
 
@@ -120,17 +125,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         return ProductActivity.onOptionsItemSelected(item, getActivity());
     }
 
-    // Call to update the share intent
-    private void setShareIntent(Intent shareIntent) {
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setShareIntent(shareIntent);
-        }
-    }
-
-
     @Override
     public void onRefresh() {
-        api.getAPIService().getFullProductByBarcode(productState.getProduct().getCode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
+        api.getProductFull(productState.getProduct().getCode()).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                 final State s = response.body();
@@ -170,8 +167,25 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         // without this, the view can be centered vertically on initial show. we force the scroll to top !
         if (adapterResult.getItem(0) instanceof SummaryProductFragment) {
             SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.getItem(0);
-            if(productFragment.scrollView!=null) {
-                productFragment.scrollView.scrollTo(0, 0);
+            productFragment.resetScroll();
+        }
+    }
+
+    public void goToIngredients(String action) {
+        if (adapterResult == null || adapterResult.getCount() == 0) {
+            return;
+        }
+        for (int i = 0; i < adapterResult.getCount(); ++i) {
+            Fragment fragment = adapterResult.getItem(i);
+            if (fragment instanceof IngredientsProductFragment) {
+                viewPager.setCurrentItem(i);
+
+                if ("perform_ocr".equals(action)) {
+                    ((IngredientsProductFragment) fragment).extractIngredients();
+                } else if ("send_updated".equals(action)) {
+                    ((IngredientsProductFragment) fragment).changeIngImage();
+                }
+                return;
             }
         }
     }

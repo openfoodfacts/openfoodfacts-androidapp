@@ -1,43 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="fill_vertical"
-            android:clipToPadding="false"
-            android:isScrollContainer="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".fragments.AddProductIngredientsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="fill_vertical"
+        android:clipToPadding="false"
+        android:isScrollContainer="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".fragments.AddProductIngredientsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <TextView
+            <TextView
                 android:id="@+id/section_ingredients_picture"
+                style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:text="@string/ingredients_picture"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+            <TextView
                 android:id="@+id/hint_image_ingredients"
+                style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/take_ingredients_picture_to_extract"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-                app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture"/>
+                app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture" />
 
-        <ImageView
+            <ImageView
                 android:id="@+id/btnAddImageIngredients"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -45,22 +49,22 @@
                 android:background="?android:selectableItemBackground"
                 app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
                 app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
-                app:srcCompat="@drawable/ic_add_a_photo_black_48dp"/>
-        <Button
+                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+            <Button
                 android:id="@+id/btnEditImageIngredients"
-                android:text="@string/update_image"
-                style="@style/BorderButton"
+                style="@style/ButtonBorder"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:layout_marginRight="@dimen/padding_large"
                 android:layout_marginLeft="@dimen/padding_large"
+                android:layout_marginRight="@dimen/padding_large"
+                android:text="@string/update_image"
                 android:visibility="gone"
-                app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients"
                 app:layout_constraintBottom_toBottomOf="@id/btnAddImageIngredients"
                 app:layout_constraintStart_toEndOf="@id/btnAddImageIngredients"
-        />
+                app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients" />
 
-        <ProgressBar
+            <ProgressBar
                 android:id="@+id/imageProgress"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -68,9 +72,9 @@
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
                 app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <TextView
+            <TextView
                 android:id="@+id/imageProgressText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -81,87 +85,85 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageProgress"
                 app:layout_constraintTop_toTopOf="@id/imageProgress"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <View
+            <View
                 android:id="@+id/grey_line1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_small"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnAddImageIngredients"/>
+                app:layout_constraintTop_toBottomOf="@id/btnAddImageIngredients" />
 
-        <TextView
+            <TextView
                 android:id="@+id/section_ingredients_list"
+                style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/ingredients_list"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-                app:layout_constraintTop_toBottomOf="@id/grey_line1"/>
+                app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
-        <TextView
+            <TextView
                 android:id="@+id/hint_ingredients_list"
+                style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/ingredients_hint"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-                app:layout_constraintTop_toBottomOf="@id/section_ingredients_list"/>
+                app:layout_constraintTop_toBottomOf="@id/section_ingredients_list" />
 
 
-        <EditText
+            <EditText
                 android:id="@+id/ingredients_list"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/bg_edittext"
                 android:gravity="center_vertical"
                 android:minHeight="150dp"
                 android:nextFocusDown="@id/traces"
                 android:padding="@dimen/spacing_small"
+                android:textDirection="anyRtl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list"/>
+                app:layout_constraintTop_toBottomOf="@id/hint_ingredients_list" />
 
-        <Button
-                android:drawablePadding="5dp"
+            <Button
                 android:id="@+id/btn_extract_ingredients"
+                style="@style/ButtonBorder"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:drawablePadding="5dp"
                 android:text="@string/extract_ingredients"
-                android:textColor="@color/md_black_1000"
                 android:visibility="gone"
-                style="@style/BorderButton"
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
                 app:layout_constraintTop_toBottomOf="@id/traces"
                 app:layout_constraintTop_toTopOf="@id/ingredients_list"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <ImageView
+            <ImageView
                 android:id="@+id/ingredients_list_verified"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_small"
-                android:tint="#3C950E"
+                android:tint="@color/brand_green_dark"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:srcCompat="@drawable/ic_check_white_24dp"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <ProgressBar
+            <ProgressBar
                 android:id="@+id/ocr_progress"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -171,9 +173,9 @@
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
                 app:layout_constraintTop_toTopOf="@id/ingredients_list"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <TextView
+            <TextView
                 android:id="@+id/ocr_progress_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -183,85 +185,81 @@
                 app:layout_constraintEnd_toEndOf="@id/ocr_progress"
                 app:layout_constraintStart_toStartOf="@id/ocr_progress"
                 app:layout_constraintTop_toBottomOf="@id/ocr_progress"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
                 android:layout_width="1dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5"/>
+                app:layout_constraintGuide_percent="0.5" />
 
-        <Button
+            <Button
                 android:id="@+id/btn_looks_good"
+                style="@style/ButtonFlat.Green"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_margin="@dimen/spacing_small"
-                android:background="#3C950E"
                 android:text="@string/looksGood"
-                android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@id/guideline"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
                 app:layout_constraintTop_toBottomOf="@id/ingredients_list"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <Button
+            <Button
                 android:id="@+id/btn_skip_ingredients"
+                style="@style/ButtonFlat.Red"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_margin="@dimen/spacing_small"
-                android:background="@color/red_500"
                 android:text="@string/skip_ingredients"
-                android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toEndOf="@id/guideline"
                 app:layout_constraintTop_toBottomOf="@id/ingredients_list"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
-        <View
+            <View
                 android:id="@+id/grey_line2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/spacing_small"
-                android:layout_marginRight="@dimen/spacing_small"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_looks_good"/>
+                app:layout_constraintTop_toBottomOf="@id/btn_looks_good" />
 
-        <TextView
+            <TextView
                 android:id="@+id/section_traces"
+                style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/traces"
-                android:textColor="#dd0b16"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-                app:layout_constraintTop_toBottomOf="@id/grey_line2"/>
+                app:layout_constraintTop_toBottomOf="@id/grey_line2" />
 
-        <TextView
+            <TextView
                 android:id="@+id/hint_traces"
+                style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/traces_hint"
-                android:textColor="@color/grey_500"
-                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-                app:layout_constraintTop_toBottomOf="@id/section_traces"/>
+                app:layout_constraintTop_toBottomOf="@id/section_traces" />
 
-        <com.hootsuite.nachos.NachoTextView
+            <com.hootsuite.nachos.NachoTextView
                 android:id="@+id/traces"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/bg_edittext"
                 android:completionThreshold="1"
                 android:gravity="center_vertical"
@@ -273,18 +271,17 @@
                 app:chipTextColor="@color/grey_50"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint_traces"/>
+                app:layout_constraintTop_toBottomOf="@id/hint_traces" />
 
-        <Button
+            <Button
                 android:id="@+id/btn_next"
+                style="@style/ButtonFlat"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:background="#4389FA"
                 android:text="@string/next"
-                android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/traces"/>
+                app:layout_constraintTop_toBottomOf="@id/traces" />
 
-    </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    </ScrollView>
+</layout>

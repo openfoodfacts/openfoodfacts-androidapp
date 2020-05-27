@@ -1,31 +1,31 @@
-***Kozmetik Şeffaflığına Katkıda Bulunun***
+***Kozmetikte Şeffaflığa Katkıda Bulunun***
 
--Open Beauty Facts herkes tarafından herkes için oluşturulan bir kozmetik ürünleri veritabanıdır.
--Daha iyi kozmetik tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
--Open Beauty Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
--Bugün kozmetik dolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz. 
+- Open Beauty Facts herkes tarafından herkes için oluşturulan bir kozmetik ürünleri veritabanıdır.
+- Daha iyi kozmetik tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
+- Open Beauty Facts dünyanın dört bir yanından binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta. 
+- Bugün kozmetik dolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz. 
 
 ***Gerçekleri Öğrenin***
 
--Kozmetik katkı maddeleri,F.I.L. kodları. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
-- Open Beauty Facts helps you to make sense of the fine print on products labels.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+- Kozmetik katkı maddeleri, F.I.L. kodları, CI-numaraları, INCI (Uluslararası Kozmetik İçerikleri Terminolojisi), içerik listesi, alerjenler, paketleme kodları... 
+- Open Beauty Facts, ürün etiketlerindeki ince ayrıntıları anlamanıza yardımcı olur.
+- Artık bir içindekiler listesini anlayabilmek için kimyager olmanıza ve latince öğrenmenize gerek yok :-)
+- Tarama yapabilirsiniz: tıraş sonrası ürünleri, vücut losyonları, kremler, deodorant, göz kalemi, fondöten, koku, ruj, makyaj, maske, parfüm, şampuan, sabun, duş jeli, oje ve çok daha fazlası…
+- Akne, sedef hastalığı, egzama… gibi cilt rahatsızlıkları olan kişiler için daha iyi kozmetik seçimler yapmanın faydalı olabileceğini düşünüyoruz.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Her koşulda iyi çalışıyor ***
+- Şu an İnternet bağlantınız olmasa bile yeni ürünler ekleyebilirsiniz.
+- Uygulama veri ve pil kullanımını azaltmak için sadece gerekli olanları yükler
+- Bir ürünü aramak için kameraya ihtiyacınız yok. Kameranız yoksa veya bununla ilgili bir sorununuz varsa da barkodu yazabilirsiniz.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** Sizin kozmetikleriniz, sizin verileriniz ***
+- Verileriniz sizindir ve asla çevrimiçi gönderilmez
+- Uygulamayı anonim olarak kullanabilirsiniz
+- Tarama geçmişinizi dışa aktarabilirsiniz
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+Not: Open Beauty Facts sitesi ve uygulaması, kozmetik ürünlere göre gerekli değişiklikler yapılmak suretiyle Open Food Facts temel alınarak inşa edilmektedir.
 
-Open Beauty Facts is also available on the web at https://world.openbeautyfacts.org
+Open Beauty Facts aynı zamanda https://world-tr.openbeautyfacts.org internet adresinde mevcuttur
 Sorular, geri bildirim : contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Yiyecekler için Open Food Facts, evcil hayvan mamaları için Open Pet Food Facts, ve geri kalan her şey için Open Products Facts'i yükleyebilirsiniz.

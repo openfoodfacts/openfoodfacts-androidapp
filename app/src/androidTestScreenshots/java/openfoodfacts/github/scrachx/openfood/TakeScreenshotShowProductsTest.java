@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood;
 
 import android.content.Intent;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;

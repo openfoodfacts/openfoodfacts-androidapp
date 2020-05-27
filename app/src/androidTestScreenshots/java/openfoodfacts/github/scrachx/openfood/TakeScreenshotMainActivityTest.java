@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood;
 
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;

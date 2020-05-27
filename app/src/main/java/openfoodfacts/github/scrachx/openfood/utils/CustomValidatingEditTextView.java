@@ -2,8 +2,8 @@ package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.widget.AppCompatEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.appcompat.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -90,7 +90,7 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
                 textInputLayoutId = NO_ID;
                 String attachedTo = view == null ? "null" : view.getClass().getName();
                 Log.e(CustomValidatingEditTextView.class.getSimpleName(),
-                    String.format("the id {0} used in parentTextInputLayout should be linked to a TextInputLayout and not to {1}", textInputLayoutId, attachedTo));
+                    String.format("the id %d used in parentTextInputLayout should be linked to a TextInputLayout and not to %s", textInputLayoutId, attachedTo));
             }
         }
         return textInputLayout;
@@ -106,7 +106,7 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
                 attachedSpinnerId = NO_ID;
                 String attachedTo = view == null ? "null" : view.getClass().getName();
                 Log.e(CustomValidatingEditTextView.class.getSimpleName(),
-                    String.format("the id {0} used in attachedSpinner  should be linked to a Spinner and not to {1}", attachedSpinnerId, attachedTo));
+                    String.format("the id %d used in attachedSpinner  should be linked to a Spinner and not to %s", attachedSpinnerId, attachedTo));
             }
         }
         return attachedSpinner;

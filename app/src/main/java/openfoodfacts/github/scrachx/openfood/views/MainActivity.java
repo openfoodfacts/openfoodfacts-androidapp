@@ -2,12 +2,14 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
 import android.app.SearchManager;
-import android.content.*;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
@@ -17,18 +19,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,46 +26,86 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import butterknife.BindView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.zxing.*;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.FormatException;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
-import com.mikepenz.fastadapter.commons.utils.RecyclerViewCacheUtil;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.holder.StringHolder;
-import com.mikepenz.materialdrawer.model.*;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.fragments.*;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
-import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Objects;
 
+import butterknife.BindView;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
+import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
+import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
+import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+
+import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
-    private static final int LOGIN_REQUEST = 1;
+    public static final int LOGIN_REQUEST = 1;
     private static final int SHOW_CONTRIBUTION_AFTER_LOGIN = 2;
     private static final long USER_ID = 500;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
@@ -83,6 +113,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String BARCODE_SHORTCUT = "BARCODE";
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
     PrimaryDrawerItem primaryDrawerItem;
     private AccountHeader headerResult = null;
     private Drawer result = null;
@@ -93,7 +125,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri contributeUri;
     private Uri discoverUri;
     private Uri userContributeUri;
-    private int numberOFSavedProducts;
     private String mBarcode;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -101,6 +132,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,10 +152,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
-        Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        OfflineSavedProductDao mOfflineSavedProductDao = Utils.getAppDaoSession(MainActivity.this).getOfflineSavedProductDao();
-        numberOFSavedProducts = mOfflineSavedProductDao.loadAll().size();
 
 // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -138,15 +167,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         });
 
-        boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
-        if (isOpenOfflineEdit) {
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, new
-                OfflineEditFragment()).commit();
-            getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
-        } else {
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
-                ()).commit();
-        }
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
+            ()).commit();
+        toolbar.setTitle(APP_NAME);
 
         // chrome custom tab init
         customTabActivityHelper = new CustomTabActivityHelper();
@@ -160,6 +183,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .withActivity(this)
             .withTranslucentStatusBar(true)
             .withHeaderBackground(R.drawable.header)
+            .withTextColorRes(R.color.white)
             .addProfiles(profile)
             .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                 @Override
@@ -208,7 +232,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (isUserConnected) {
             updateProfileForCurrentUser();
         }
-        primaryDrawerItem = createOfflineEditDrawerItem();
         //Create the drawer
         result = new DrawerBuilder()
             .withActivity(this)
@@ -226,7 +249,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 }
 
                 @Override
-
                 public void onDrawerSlide(View drawerView, float slideOffset) {
                     Utils.hideKeyboard(MainActivity.this);
                 }
@@ -251,12 +273,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     .withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                 new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
-                new DividerDrawerItem(),
                 primaryDrawerItem,
                 new DividerDrawerItem(),
                 new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.open_beauty_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
+                new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
             )
             .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
@@ -297,9 +318,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         break;
                     case ITEM_PREFERENCES:
                         fragment = new PreferencesFragment();
-                        break;
-                    case ITEM_OFFLINE:
-                        fragment = new OfflineEditFragment();
                         break;
                     case ITEM_ABOUT:
                         CustomTabActivityHelper.openCustomTab(MainActivity.this,
@@ -393,19 +411,24 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         if (BuildConfig.FLAVOR.equals("obf")) {
             result.removeItem(ITEM_ALERT);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
+            result.removeItem(ITEM_ADDITIVES);
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
         }
 
         if (BuildConfig.FLAVOR.equals("opff")) {
             result.removeItem(ITEM_ALERT);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
         }
 
         if (BuildConfig.FLAVOR.equals("opf")) {
             result.removeItem(ITEM_ALERT);
             result.removeItem(ITEM_ADDITIVES);
             result.removeItem(ITEM_ADVANCED_SEARCH);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_food_drawer)));
+        }
+
+        if (!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install) + " " + getString(R.string.open_other_flavor_drawer)));
+        } else {
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
         }
 
         // Remove scan item if the device does not have a camera, for example, Chromebooks or
@@ -414,12 +437,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             result.removeItem(ITEM_SCAN);
         }
 
-        //if you have many different types of DrawerItems you can magically pre-cache those items
-        // to get a better scroll performance
-        //make sure to init the cache after the DrawerBuilder was created as this will first
-        // clear the cache to make sure no old elements are in
-        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
-            result.getDrawerItems());
+//        //if you have many different types of DrawerItems you can magically pre-cache those items
+//        // to get a better scroll performance
+//        //make sure to init the cache after the DrawerBuilder was created as this will first
+//        // clear the cache to make sure no old elements are in
+//        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
+//            result.getDrawerItems());
 
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
@@ -462,6 +485,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         //Scheduling background image upload job
         Utils.scheduleProductUploadJob(this);
 
+        OfflineProductWorker.addWork();
+
         //Adds nutriscore and quantity values in old history for schema 5 update
         SharedPreferences mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
         boolean isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false);
@@ -469,6 +494,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             OpenFoodAPIClient apiClient = new OpenFoodAPIClient(this);
             apiClient.syncOldHistory();
         }
+
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
+        BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
 
         handleIntent(getIntent());
     }
@@ -559,6 +587,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // do nothing
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOGIN_REQUEST && resultCode == RESULT_OK) {
             updateConnectedState();
         }
@@ -591,6 +620,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 super.onBackPressed();
             }
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     @Override
@@ -683,6 +717,64 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     protected void onStart() {
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
+
+        prefManager = new PrefManager(this);
+        if (isUserLoggedIn() && !prefManager.isFirstTimeLaunch() && !prefManager.getUserAskedToRate()
+            && "off".equals(BuildConfig.FLAVOR)) {
+
+            long firstTimeLaunchTime = prefManager.getFirstTimeLaunchTime();
+            // Check if it has been a week since first launch
+            if ((Calendar.getInstance().getTimeInMillis() - firstTimeLaunchTime) >= (60 * 60 * 24 * 7 * 1000)) {
+                showFeedbackDialog();
+            }
+        }
+    }
+
+    //show dialog to ask the user to rate the app/give feedback
+    private void showFeedbackDialog() {
+        //dialog for rating the app on play store
+        MaterialDialog.Builder rateDialog = new MaterialDialog.Builder(this);
+        rateDialog.title(R.string.app_name);
+        rateDialog.content(R.string.user_ask_rate_app);
+        rateDialog.positiveText(R.string.rate_app);
+        rateDialog.negativeText(R.string.no_thx);
+        rateDialog.onPositive((dialog, which) -> {
+            //open app page in play store
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+            dialog.dismiss();
+        });
+        rateDialog.onNegative((dialog, which) -> dialog.dismiss());
+
+        //dialog for giving feedback
+        MaterialDialog.Builder feedbackDialog = new MaterialDialog.Builder(this);
+        feedbackDialog.title(R.string.app_name);
+        feedbackDialog.content(R.string.user_ask_show_feedback_form);
+        feedbackDialog.positiveText(R.string.txtOk);
+        feedbackDialog.negativeText(R.string.txtNo);
+        feedbackDialog.onPositive((dialog, which) -> {
+            //show feedback form
+            CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                customTabsIntent, Uri.parse(getString(R.string.feedback_form_url)), new WebViewFallback());
+            dialog.dismiss();
+        });
+        feedbackDialog.onNegative((dialog, which) -> dialog.dismiss());
+
+        new MaterialDialog.Builder(this)
+            .title(R.string.app_name)
+            .content(R.string.user_enjoying_app)
+            .positiveText(R.string.txtYes)
+            .onPositive((dialog, which) -> {
+                prefManager.setUserAskedToRate(true);
+                rateDialog.show();
+                dialog.dismiss();
+            })
+            .negativeText(R.string.txtNo)
+            .onNegative((dialog, which) -> {
+                prefManager.setUserAskedToRate(true);
+                feedbackDialog.show();
+                dialog.dismiss();
+            })
+            .show();
     }
 
     @Override
@@ -699,6 +791,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
         handleIntent(intent);
     }
 
@@ -734,46 +827,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
     }
 
-    /**
-     * This moves the main activity to the preferences fragment.
-     */
-    public void moveToPreferences() {
-        Fragment fragment = new PreferencesFragment();
-        changeFragment(fragment, getString(R.string.preferences), ITEM_PREFERENCES);
-    }
-
-    /**
-     * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
-     * there is no badge present.
-     *
-     * @return drawer item.
-     */
-    private PrimaryDrawerItem createOfflineEditDrawerItem() {
-        if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(10)
-                .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
-                    .color.md_red_700));
-        } else {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
-        }
-    }
-
-    /**
-     * Updates the drawer item. This updates the badge if there are items left in offline edit, otherwise
-     * there is no badge present.
-     * This function is called from OfflineEditFragment only.
-     */
-    public void updateBadgeOfflineEditDrawerITem(int size) {
-        int positionOfOfflineBadeItem = result.getPosition(primaryDrawerItem);
-        if (size > 0) {
-            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE)
-                .withBadge(String.valueOf(size)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
-        } else {
-            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
-        }
-        result.updateItemAtPosition(primaryDrawerItem, positionOfOfflineBadeItem);
-    }
-
     @Override
     public void setItemSelected(@NavigationDrawerType Integer type) {
         result.setSelection(type, false);
@@ -795,6 +848,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void onResume() {
         super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
+
+        // change drawer menu item from "install" to "open" when navigating back from play store.
+        if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
+
+            result.getAdapter().notifyDataSetChanged();
+        }
 
         updateConnectedState();
         shakePreference.registerOnSharedPreferenceChangeListener(this);
@@ -845,9 +906,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
                 bMap = BitmapFactory.decodeStream(imageStream);
             } catch (FileNotFoundException e) {
-                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString(),e);
+                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString(), e);
             } catch (IOException e) {
-                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage(),e);
+                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage(), e);
             }
             //decoding bitmap
             if (bMap != null) {

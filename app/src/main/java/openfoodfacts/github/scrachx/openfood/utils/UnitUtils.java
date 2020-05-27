@@ -1,5 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import androidx.annotation.NonNull;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class UnitUtils {
     public static final String ENERGY_KJ = "kj";
     public static final String ENERGY_KCAL = "kcal";
@@ -13,19 +18,25 @@ public class UnitUtils {
     public static final String UNIT_CENTILITRE = "cl";
     public static final String UNIT_MILLILITRE = "ml";
     public static final String UNIT_IU = "IU";
+    private static final double SALT_PER_SODIUM = 2.54;
+    private static final float KCAL_KJ_RATIO = 0.23900573614f;
+    private static final float OZ_PER_L = 33.814f;
 
     /**
      * Converts a give quantity's unit to kcal
      *
-     * @param a The value to be converted
+     * @param value The value to be converted
      * @param energyUnit {@link #ENERGY_KCAL} or {@link #ENERGY_KJ}
      * @return return the converted value
      */
-    public static float convertToKiloCalories(float a, String energyUnit) {
+    public static float convertToKiloCalories(float value, String energyUnit) {
         if (ENERGY_KJ.equalsIgnoreCase(energyUnit)) {
-            a *= 0.23900573614f;
+            return (value * KCAL_KJ_RATIO);
+        } else if (ENERGY_KCAL.equalsIgnoreCase(energyUnit)) {
+            return value;
+        } else {
+            throw new IllegalArgumentException("energyUnit is neither ENERGY_KCAL nor ENERGY_KJ");
         }
-        return a;
     }
 
     public static float convertToGrams(float a, String unit) {
@@ -66,7 +77,7 @@ public class UnitUtils {
     }
 
     public static float convertFromGram(float valueInGramOrMl, String targetUnit) {
-        return (float) convertFromGram((double)valueInGramOrMl, targetUnit);
+        return (float) convertFromGram((double) valueInGramOrMl, targetUnit);
     }
 
     public static double convertFromGram(double valueInGramOrMl, String targetUnit) {
@@ -87,10 +98,62 @@ public class UnitUtils {
     }
 
     public static double saltToSodium(Double saltValue) {
-        return saltValue * 0.39370078740157477;
+        return saltValue / SALT_PER_SODIUM;
     }
 
     public static double sodiumToSalt(Double sodiumValue) {
-        return sodiumValue * 2.54;
+        return sodiumValue * SALT_PER_SODIUM;
+    }
+
+    /**
+     * Function which returns volume in oz if parameter is in cl, ml, or l
+     *
+     * @param servingSize value to transform
+     * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
+     */
+    public static String getServingInOz(String servingSize) {
+
+        Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
+        Matcher matcher = regex.matcher(servingSize);
+        if (servingSize.toLowerCase().contains("ml")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= (OZ_PER_L / 1000);
+            servingSize = Utils.getRoundNumber(val).concat(" oz");
+        } else if (servingSize.toLowerCase().contains("cl")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= (OZ_PER_L / 100);
+            servingSize = Utils.getRoundNumber(val).concat(" oz");
+        } else if (servingSize.toLowerCase().contains("l")) {
+            matcher.find();
+            Float val = Float.parseFloat(matcher.group(1));
+            val *= OZ_PER_L;
+            servingSize = Utils.getRoundNumber(val).concat(" oz");
+        }
+        return servingSize;
+        //TODO: HANDLE OTHER CASES, NOT L NOR OZ NOR ML NOR CL
+    }
+
+    /**
+     * Function that returns the volume in liters if input parameter is in oz
+     *
+     * @param servingSize the value to transform: not null
+     * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
+     */
+    public static String getServingInL(@NonNull String servingSize) {
+
+        if (servingSize.toLowerCase().contains("oz")) {
+            Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
+            Matcher matcher = regex.matcher(servingSize);
+            matcher.find();
+            float val = Float.parseFloat(matcher.group(1));
+            val /= OZ_PER_L;
+            servingSize = Float.toString(val).concat(" l");
+        }
+
+        // TODO: HANDLE OTHER CASES eg. not in L nor oz
+
+        return servingSize;
     }
 }

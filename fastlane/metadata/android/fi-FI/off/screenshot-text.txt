@@ -1,39 +1,39 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+Nuo ovat Play kaupassa näkyvien kuvakaappausten iskulauseita. Pidä ne lyhyenä ja puoleensavetävänä.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fi
 
 =====================
 V2 screenshots
 =====================
 
-Scan products
+Lue tuotteita
 
-Get the Nutriscore
+Saa Nutriscore
 
-Your full scan history, fully private & exportable
+Täysi lukuhistoria, täysin yksityinen ja vietävä
 
-Go further with Wikipedia
+Mene pidemmälle Wikipedian kanssa
 
-Set allergen alerts
+Aseta allergeenivaroituksia
 
-Nutrition, simplified
+Ravinto, yksinkertaistettuna
 
 Allergeenivaroitus
 
-Get alternatives for your favorite foods
+Saa vaihtoehtoja lempiruoillesi
 
-Become an actor of food transparency
+Vaikuta elintarvikkeiden läpinäkyvyyteen
 
-Wikipedia for Food
+Ruoan Wikipedia
 
-Wikipedia for Cosmetics
+Kosmetiikan Wikipedia
 
-Wikipedia for Pet Food
+Lemmikkien elintarvikkeiden Wikipedia
 
-Wikipedia of Products
+Tuotteiden Wikipedia
 
-Ainekset
+Ainesosat
 
-Powerful
+Tehokas
 
 Ravintosisältö
 

@@ -10,8 +10,10 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
-import android.support.annotation.ColorRes;
-import android.support.v4.graphics.drawable.DrawableCompat;
+
+import androidx.annotation.ColorRes;
+import androidx.core.graphics.drawable.DrawableCompat;
+
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -20,43 +22,28 @@ import android.widget.TextView;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
-
 public class QuestionDialog {
-
     private Context mContext;
-
-
     private Drawable mIcon;
-
     @ColorRes
     private int mIconColor;
-
     @ColorRes
     private int mBackgroundColor;
-
     private String mQuestion;
-
     private String mValue;
-
-
     private ImageView titleImageView;
     private TextView reviewQuestionTextView;
     private TextView reviewValueTextView;
-
     private LinearLayout positiveFeedbackLayout;
     private LinearLayout negativeFeedbackLayout;
     private LinearLayout ambiguityFeedbackLayout;
     private LinearLayout feedbackBodyLayout;
-
     private TextView positiveFeedbackTextView;
     private TextView negativeFeedbackTextView;
     private TextView ambiguityFeedbackTextView;
-
     private ImageView positiveFeedbackIconView;
     private ImageView negativeFeedbackIconView;
     private ImageView ambiguityFeedbackIconView;
-
-
     private String mPositiveFeedbackText;
     private Drawable mPositiveFeedbackIcon;
     private String mNegativeFeedbackText;
@@ -104,7 +91,6 @@ public class QuestionDialog {
         negativeFeedbackLayout = mDialog.findViewById(R.id.negative_feedback_layout);
         ambiguityFeedbackLayout = mDialog.findViewById(R.id.ambiguity_feedback_layout);
 
-
         positiveFeedbackTextView = mDialog.findViewById(R.id.positive_feedback_text);
         negativeFeedbackTextView = mDialog.findViewById(R.id.negative_feedback_text);
         ambiguityFeedbackTextView = mDialog.findViewById(R.id.ambiguity_feedback_text);
@@ -143,7 +129,6 @@ public class QuestionDialog {
                 drawable.setColorFilter(mContext.getResources().getColor(mIconColor), PorterDuff.Mode.SRC_IN);
             }
 
-
             layerDrawable.setDrawableByLayerId(R.id.drawable_image, drawable);
 
             titleImageView.setImageDrawable(layerDrawable);
@@ -152,15 +137,12 @@ public class QuestionDialog {
 
             positiveFeedbackTextView.setText(this.mPositiveFeedbackText);
             positiveFeedbackIconView.setImageDrawable(this.mPositiveFeedbackIcon);
-            positiveFeedbackIconView.setColorFilter(mContext.getResources().getColor(mIconColor));
 
             negativeFeedbackTextView.setText(this.mNegativeFeedbackText);
             negativeFeedbackIconView.setImageDrawable(this.mNegativeFeedbackIcon);
-            negativeFeedbackIconView.setColorFilter(mContext.getResources().getColor(mIconColor));
 
             ambiguityFeedbackTextView.setText(this.mAmbiguityFeedbackText);
             ambiguityFeedbackIconView.setImageDrawable(this.mAmbiguityFeedbackIcon);
-            ambiguityFeedbackIconView.setColorFilter(mContext.getResources().getColor(mIconColor));
 
             feedbackBodyLayout.setBackgroundResource(this.mBackgroundColor);
 

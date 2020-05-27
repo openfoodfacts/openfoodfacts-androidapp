@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import android.util.Log;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductAttributeDetailsFragment;

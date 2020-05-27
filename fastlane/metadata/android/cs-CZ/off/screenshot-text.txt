@@ -1,5 +1,5 @@
 To jsou štítky zobrazené nad snímky obrazovky v playstore. Uchovávejte je krátké a atraktivní.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=cs
 
 =====================
 V2 screenshots
@@ -23,17 +23,17 @@ Získejte alternativy pro vaše oblíbené potraviny
 
 Staňte se hybatelem férovosti potravin
 
-Wikipedia for Food
+Wikipedie pro potraviny
 
-Wikipedia for Cosmetics
+Wikipedie pro kosmetiku
 
-Wikipedia for Pet Food
+Wikipedie pro potraviny mazlíčků
 
-Wikipedia of Products
+Wikipedie výrobků
 
 Složení
 
-Powerful
+Mocný
 
 Nutriční hodnoty
 
