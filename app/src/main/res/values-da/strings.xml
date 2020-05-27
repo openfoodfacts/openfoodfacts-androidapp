@@ -187,7 +187,7 @@
     <string name="txtLoading">Indlæser…</string>
     <string name="txtDialogsContentDelete">Sikker på, at du vil fjerne dette udkast?</string>
     <string name="txtDialogsContentInfoSave">Produktet er gemt på enheden. Du kan redigere det via menuen \"Offline-redigering\"</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Produkt gemt, tak!</string>
     <string name="txtBarcodeRequire">Stregkode kræves</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Stregkode er ikke gyldig</string>
