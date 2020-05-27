@@ -84,7 +84,7 @@ public class OpenFoodAPIClient {
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
-    private static OkHttpClient httpClient = Utils.HttpClientBuilder();
+    private static OkHttpClient httpClient = Utils.httpClientBuilder();
     private final OpenFoodAPIService apiService;
     private Context mActivity;
     private final String FIELDS_TO_FETCH_FACETS = String
