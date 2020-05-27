@@ -20,7 +20,7 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
@@ -43,7 +43,7 @@ public class AdditiveFragmentHelper {
      * @param additiveProduct TextView which displays additive names
      * @param apiClientForWikiData object of WikidataApiClient
      */
-    public static void showAdditives(List<AdditiveName> additives, TextView additiveProduct, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
+    public static void showAdditives(List<AdditiveName> additives, TextView additiveProduct, final WikiDataApiClient apiClientForWikiData, BaseFragment fragment) {
         additiveProduct.setText(bold(fragment.getString(R.string.txtAdditives)));
         additiveProduct.setMovementMethod(LinkMovementMethod.getInstance());
         additiveProduct.append(" ");
@@ -66,7 +66,7 @@ public class AdditiveFragmentHelper {
      * @param apiClientForWikiData object of WikidataApiClient
      * @param fragment holds a reference to the calling fragment
      **/
-    private static CharSequence getAdditiveTag(AdditiveName additive, final WikidataApiClient apiClientForWikiData, BaseFragment fragment) {
+    private static CharSequence getAdditiveTag(AdditiveName additive, final WikiDataApiClient apiClientForWikiData, BaseFragment fragment) {
         FragmentActivity activity = fragment.getActivity();
         Context context = fragment.getContext();
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
@@ -125,7 +125,7 @@ public class AdditiveFragmentHelper {
         }
     }
 
-    private static WikidataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive, Context context) {
+    private static WikiDataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive, Context context) {
         return (value, result) -> {
             if (value) {
                 if (activity != null && !activity.isFinishing()) {

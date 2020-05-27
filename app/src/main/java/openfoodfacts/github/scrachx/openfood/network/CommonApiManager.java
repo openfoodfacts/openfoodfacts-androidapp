@@ -73,7 +73,7 @@ public class CommonApiManager implements ICommonApiManager {
     private ProductApiService createProductApiService() {
         productApiService = new Retrofit.Builder()
             .baseUrl(BuildConfig.HOST)
-            .client(Utils.HttpClientBuilder())
+            .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
@@ -88,7 +88,7 @@ public class CommonApiManager implements ICommonApiManager {
     private RobotoffAPIService createRobotoffApiService() {
         robotoffApiService = new Retrofit.Builder()
             .baseUrl("https://robotoff.openfoodfacts.org")
-            .client(Utils.HttpClientBuilder())
+            .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
@@ -103,7 +103,7 @@ public class CommonApiManager implements ICommonApiManager {
     private OpenFoodAPIService createOpenFoodApiService() {
         openFoodApiService = new Retrofit.Builder()
             .baseUrl(BuildConfig.HOST)
-            .client(Utils.HttpClientBuilder())
+            .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()

@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.Manifest;
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -33,7 +33,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
@@ -83,21 +82,11 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Utils {
+    private Utils() {
+        // Utility class
+    }
+
     public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
@@ -392,7 +381,7 @@ public class Utils {
         return drawable;
     }
 
-    public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
+    public static Bitmap getBitmapFromDrawable(@NonNull Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
         if (drawable == null) {
             return null;
@@ -450,21 +439,9 @@ public class Utils {
      *
      * @return true if installed, false otherwise.
      */
-    public static boolean isHardwareCameraInstalled(Context context) {
-        if (context == null) {
-            return false;
-        }
-        try {
-            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-                return true;
-            }
-        } catch (NullPointerException e) {
-            if (BuildConfig.DEBUG) {
-                Log.i(context.getClass().getSimpleName(), e.toString());
-            }
-            return false;
-        }
-        return false;
+    @SuppressLint("UnsupportedChromeOsCameraSystemFeature")
+    public static boolean isHardwareCameraInstalled(@NonNull Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }
 
     /**
@@ -486,9 +463,9 @@ public class Utils {
         isUploadJobInitialised = true;
     }
 
-    public static OkHttpClient HttpClientBuilder() {
+    public static OkHttpClient httpClientBuilder() {
         OkHttpClient httpClient;
-        if (Build.VERSION.SDK_INT == 24) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
                 .tlsVersions(TlsVersion.TLS_1_2)
                 .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
@@ -518,10 +495,9 @@ public class Utils {
      * @param context of the application.
      * @return true if airplane mode is active.
      */
-    @SuppressWarnings("deprecation")
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static boolean isAirplaneModeActive(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            //noinspection deprecation
             return Settings.System.getInt(context.getContentResolver(),
                 Settings.System.AIRPLANE_MODE_ON, 0) != 0;
         } else {
@@ -545,14 +521,16 @@ public class Utils {
      * @param context of the application.
      * @return true if connected or connecting. False otherwise.
      */
-    public static boolean isNetworkConnected(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = null;
-        if (cm != null) {
-            activeNetwork = cm.getActiveNetworkInfo();
+    public static boolean isNetworkConnected(@NonNull Context context) {
+        final ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null) {
+            return false;
         }
-
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        final NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork == null) {
+            return false;
+        }
+        return activeNetwork.isConnectedOrConnecting();
     }
 
     /**
@@ -595,8 +573,9 @@ public class Utils {
         return "Other";
     }
 
+    @NonNull
     private static String timeStamp() {
-        return ((Long) System.currentTimeMillis()).toString();
+        return String.valueOf(System.currentTimeMillis());
     }
 
     public static File makeOrGetPictureDirectory(Context context) {
@@ -635,7 +614,7 @@ public class Utils {
         if (url == null) {
             clickableSpan = new ClickableSpan() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(@NonNull View view) {
                     ProductBrowsingListActivity.startActivity(activity, text, type);
                 }
             };
@@ -643,7 +622,7 @@ public class Utils {
             Uri uri = Uri.parse(url + urlParameter);
             clickableSpan = new ClickableSpan() {
                 @Override
-                public void onClick(View textView) {
+                public void onClick(@NonNull View textView) {
                     CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, uri, new WebViewFallback());
                 }
             };
@@ -675,7 +654,7 @@ public class Utils {
     }
 
     private static int convertKjToKcal(double kj) {
-        return kj != 0 ? (int) (kj / 4.1868d) : -1;
+        return (int) (kj / 4.1868d);
     }
 
     /**
@@ -684,7 +663,7 @@ public class Utils {
      * @param context the context
      * @return true if battery is low or false if battery in not low
      */
-    public static boolean getBatteryLevel(Context context) {
+    public static boolean getBatteryLevel(@NonNull Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
@@ -696,16 +675,17 @@ public class Utils {
         return (int) ((batteryPct) * 100) <= 15;
     }
 
-    public static boolean isDisableImageLoad(Context context) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getBoolean("disableImageLoad", false);
+    public static boolean isDisableImageLoad(@NonNull Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+            .getBoolean("disableImageLoad", false);
     }
 
-    /*
+    /**
      * Function to open ContinuousScanActivity to facilitate scanning
+     *
      * @param activity
      */
-    public static void scan(Activity activity) {
+    public static void scan(@NonNull Activity activity) {
 
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) !=
             PackageManager.PERMISSION_GRANTED) {
@@ -732,7 +712,8 @@ public class Utils {
      * @param context The context
      * @return Returns the version name of the app
      */
-    public static String getVersionName(Context context) {
+    @NonNull
+    public static String getVersionName(@NonNull Context context) {
         try {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
@@ -759,6 +740,7 @@ public class Utils {
      * @param response Takes a string
      * @return Returns a Json object
      */
+    @Nullable
     public static JSONObject createJsonObject(String response) {
         JSONObject jsonObject = null;
         try {
@@ -769,6 +751,8 @@ public class Utils {
         return jsonObject;
     }
 
+    @Nullable
+    @SafeVarargs
     public static <T> T firstNotNull(T... args) {
         for (T arg : args) {
             if (arg != null) {
@@ -778,6 +762,7 @@ public class Utils {
         return null;
     }
 
+    @Nullable
     public static String firstNotEmpty(String... args) {
         for (String arg : args) {
             if (arg != null && arg.length() > 0) {
