@@ -222,10 +222,10 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
      * Pre fill the fields of the product which are already present on the server.
      */
     private void preFillProductValues(String lang) {
-        mTagDao = Utils.getAppDaoSession(activity).getTagDao();
-        mCategoryNameDao = Utils.getAppDaoSession(activity).getCategoryNameDao();
-        mLabelNameDao = Utils.getAppDaoSession(activity).getLabelNameDao();
-        mCountryNameDao = Utils.getAppDaoSession(activity).getCountryNameDao();
+        mTagDao = Utils.getDaoSession().getTagDao();
+        mCategoryNameDao = Utils.getDaoSession().getCategoryNameDao();
+        mLabelNameDao = Utils.getDaoSession().getLabelNameDao();
+        mCountryNameDao = Utils.getDaoSession().getCountryNameDao();
         if (product.getProductName() != null && !product.getProductName().isEmpty()) {
             binding.name.setText(product.getProductName());
         }

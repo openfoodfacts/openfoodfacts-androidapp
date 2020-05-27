@@ -118,7 +118,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
         Bundle b = getArguments();
         if (b != null) {
-            mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
+            mAllergenNameDao = Utils.getDaoSession().getAllergenNameDao();
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             editProduct = b.getBoolean(AddProductActivity.KEY_IS_EDITION);

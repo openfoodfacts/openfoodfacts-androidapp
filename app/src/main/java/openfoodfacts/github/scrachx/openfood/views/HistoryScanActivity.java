@@ -100,7 +100,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             isLowBatteryMode = true;
         }
 
-        mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
+        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
         productItems = new ArrayList<>();
         setInfo(binding.emptyHistoryInfo);
 
@@ -118,7 +118,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         });
 
         binding.srRefreshHistoryScanList.setOnRefreshListener(() -> {
-            mHistoryProductDao = Utils.getAppDaoSession(context).getHistoryProductDao();
+            mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
             productItems = new ArrayList<>();
             setInfo(binding.emptyHistoryInfo);
             new FillAdapter(HistoryScanActivity.this).execute(context);

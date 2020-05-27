@@ -45,7 +45,7 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.additives);
 
-        DaoSession daoSession = Utils.getAppDaoSession(this);
+        DaoSession daoSession = Utils.getDaoSession();
         AsyncSession asyncSessionAdditives = daoSession.startAsyncSession();
         AdditiveNameDao additiveNameDao = daoSession.getAdditiveNameDao();
 

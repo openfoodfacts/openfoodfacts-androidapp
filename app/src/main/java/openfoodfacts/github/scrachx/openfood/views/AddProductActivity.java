@@ -207,8 +207,8 @@ public class AddProductActivity extends AppCompatActivity {
         if (actionBar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        mToUploadProductDao = Utils.getAppDaoSession(this).getToUploadProductDao();
-        mOfflineSavedProductDao = Utils.getAppDaoSession(this).getOfflineSavedProductDao();
+        mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
+        mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
         Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
@@ -332,7 +332,7 @@ public class AddProductActivity extends AppCompatActivity {
 
         OfflineProductWorker.addWork();
 
-        OpenFoodAPIClient.addToHistory(Utils.getAppDaoSession(this).getHistoryProductDao(), offlineSavedProduct);
+        OpenFoodAPIClient.addToHistory(Utils.getDaoSession().getHistoryProductDao(), offlineSavedProduct);
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT)
             .show();

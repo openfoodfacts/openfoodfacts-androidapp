@@ -62,7 +62,7 @@ public class DialogAddToListAdapter extends RecyclerView.Adapter<DialogAddToList
             product.setProductDetails(productDetails);
             product.setImageUrl(imageUrl);
 
-            yourListedProductDao=Utils.getAppDaoSession(mContext).getYourListedProductDao();
+            yourListedProductDao= Utils.getDaoSession().getYourListedProductDao();
             yourListedProductDao.insertOrReplace(product);
 
             Intent intent = new Intent(mContext, YourListedProductsActivity.class);

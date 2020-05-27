@@ -99,9 +99,9 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
         if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
             isLowBatteryMode = true;
         }
-        ProductListsDao  productListsDao = Utils.getDaoSession(this).getProductListsDao();
-        yourListedProductDao = Utils.getAppDaoSession(this).getYourListedProductDao();
-        historyProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
+        ProductListsDao  productListsDao = Utils.getDaoSession().getProductListsDao();
+        yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
+        historyProductDao = Utils.getDaoSession().getHistoryProductDao();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {

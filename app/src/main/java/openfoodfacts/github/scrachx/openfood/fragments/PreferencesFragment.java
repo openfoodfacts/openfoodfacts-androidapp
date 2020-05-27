@@ -94,7 +94,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         SharedPreferences settings = getActivity().getSharedPreferences("prefs", 0);
-        mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
+        mAdditiveDao = Utils.getDaoSession().getAdditiveDao();
 
         String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];

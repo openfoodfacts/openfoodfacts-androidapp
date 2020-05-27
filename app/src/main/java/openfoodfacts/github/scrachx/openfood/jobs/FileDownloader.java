@@ -26,7 +26,7 @@ public class FileDownloader {
     private Context context;
 
     public interface FileReceiver {
-        void fileDownloaded(File file);
+        void onFileDownloaded(File file);
     }
 
     /**
@@ -55,7 +55,7 @@ public class FileDownloader {
                     Log.d(FileDownloader.class.getSimpleName(), "server contacted and has file");
                     File writtenToDisk = writeResponseBodyToDisk(context, response.body(), fileUrl);
                     if (writtenToDisk != null) {
-                        callback.fileDownloaded(writtenToDisk);
+                        callback.onFileDownloaded(writtenToDisk);
                     }
                     Log.d(FileDownloader.class.getSimpleName(), "file download was a success " + writtenToDisk);
                 } else {

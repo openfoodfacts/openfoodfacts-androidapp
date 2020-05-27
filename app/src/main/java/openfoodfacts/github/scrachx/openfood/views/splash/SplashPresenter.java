@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
@@ -29,7 +30,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     }
 
     private void activateDownload(Taxonomy taxonomy, String... flavors) {
-        if (OFFApplication.isFlavor(flavors)) {
+        if (Utils.isFlavor(flavors)) {
             settings.edit().putBoolean(taxonomy.getDownloadActivatePreferencesId(), true).apply();
         }
     }

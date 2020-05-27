@@ -50,6 +50,7 @@ import androidx.work.WorkManager;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -150,18 +151,14 @@ public class Utils {
         return apply(content, new StyleSpan(Typeface.BOLD));
     }
 
-    public static void hideKeyboard(Activity activity) {
-        if (activity == null) {
+    public static void hideKeyboard(@NonNull Activity activity) {
+        final View view = activity.getCurrentFocus();
+        if (view == null) {
             return;
         }
-
-        View view = activity.getCurrentFocus();
-
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            if (imm != null) {
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
@@ -184,10 +181,10 @@ public class Utils {
     }
 
     public static int getColor(Context context, int id) {
-        final int version = Build.VERSION.SDK_INT;
-        if (version >= 23) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return ContextCompat.getColor(context, id);
         } else {
+            //noinspection deprecation
             return context.getResources().getColor(id);
         }
     }
@@ -239,7 +236,7 @@ public class Utils {
         }
     }
 
-    public static int getImageGrade(String grade) {
+    public static int getImageGrade(@Nullable String grade) {
 
         if (grade == null) {
             return NO_DRAWABLE_RESOURCE;
@@ -261,7 +258,7 @@ public class Utils {
         }
     }
 
-    public static String getNovaGroupExplanation(String novaGroup, Context context) {
+    public static String getNovaGroupExplanation(@Nullable String novaGroup, @NonNull Context context) {
 
         if (novaGroup == null) {
             return "";
@@ -426,12 +423,8 @@ public class Utils {
         return getRoundNumber(Float.toString(value));
     }
 
-    public static DaoSession getAppDaoSession(Context context) {
-        return ((OFFApplication) context.getApplicationContext()).getDaoSession();
-    }
-
-    public static DaoSession getDaoSession(Context context) {
-        return OFFApplication.daoSession;
+    public static DaoSession getDaoSession() {
+        return OFFApplication.getDaoSession();
     }
 
     /**
@@ -727,10 +720,12 @@ public class Utils {
      * @param type Type of call (Search or Scan)
      * @return Returns the header to be put in network call
      */
-    public static String getUserAgent(String type) {
+    @NonNull
+    public static String getUserAgent(@NonNull String type) {
         return getUserAgent() + " " + type;
     }
 
+    @NonNull
     public static String getUserAgent() {
         final String prefix = " Official Android App ";
         return BuildConfig.APP_NAME + prefix + BuildConfig.VERSION_NAME;
@@ -742,13 +737,12 @@ public class Utils {
      */
     @Nullable
     public static JSONObject createJsonObject(String response) {
-        JSONObject jsonObject = null;
         try {
-            jsonObject = new JSONObject(response);
+            return new JSONObject(response);
         } catch (JSONException e) {
             Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
         }
-        return jsonObject;
+        return null;
     }
 
     @Nullable
@@ -770,6 +764,14 @@ public class Utils {
             }
         }
         return null;
+    }
+
+    public static boolean isFlavor(String... flavors) {
+        return ArrayUtils.contains(flavors, BuildConfig.FLAVOR);
+    }
+
+    public static boolean isFlavor(String flavor) {
+        return BuildConfig.FLAVOR.equals(flavor);
     }
 }
 

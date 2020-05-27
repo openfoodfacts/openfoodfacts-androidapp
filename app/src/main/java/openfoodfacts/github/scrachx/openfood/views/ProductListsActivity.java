@@ -65,7 +65,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     }
 
     public static ProductListsDao getProducListsDaoWithDefaultList(Context context) {
-        ProductListsDao productListsDao = Utils.getDaoSession(context).getProductListsDao();
+        ProductListsDao productListsDao = Utils.getDaoSession().getProductListsDao();
         if (productListsDao.loadAll().isEmpty()) {
             ProductLists eatenList = new ProductLists(context.getString(R.string.txt_eaten_products), 0);
             productListsDao.insert(eatenList);
@@ -266,7 +266,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            YourListedProductDao yourListedProductDao = Utils.getAppDaoSession(ProductListsActivity.this).getYourListedProductDao();
+            YourListedProductDao yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
             List<YourListedProduct> list = new ArrayList<>();
 
             try (CSVParser csvParser = new CSVParser(new InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader())) {

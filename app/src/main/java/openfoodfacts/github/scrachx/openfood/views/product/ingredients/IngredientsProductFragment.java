@@ -138,7 +138,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
 
-        mAllergenNameDao = Utils.getAppDaoSession(getActivity()).getAllergenNameDao();
+        mAllergenNameDao = Utils.getDaoSession().getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {

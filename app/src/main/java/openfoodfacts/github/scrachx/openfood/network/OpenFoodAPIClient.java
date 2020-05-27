@@ -92,22 +92,22 @@ public class OpenFoodAPIClient {
 
     public OpenFoodAPIClient(Activity activity) {
         this(BuildConfig.HOST);
-        mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
-        mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
+        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
+        mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
         mActivity = activity;
     }
 
     //used to upload in background
     public OpenFoodAPIClient(Context context) {
         this(BuildConfig.HOST);
-        DaoSession daoSession = Utils.getDaoSession(context);
+        DaoSession daoSession = Utils.getDaoSession();
         mToUploadProductDao = daoSession.getToUploadProductDao();
     }
 
     public OpenFoodAPIClient(Activity activity, String url) {
         this(url);
-        mHistoryProductDao = Utils.getAppDaoSession(activity).getHistoryProductDao();
-        mToUploadProductDao = Utils.getAppDaoSession(activity).getToUploadProductDao();
+        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
+        mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
     }
 
     /**

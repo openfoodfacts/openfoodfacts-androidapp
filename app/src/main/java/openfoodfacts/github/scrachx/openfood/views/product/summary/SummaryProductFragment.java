@@ -202,7 +202,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         presenter.loadAdditives();
         presenter.loadAnalysisTags();
 
-        mTagDao = Utils.getAppDaoSession(getActivity()).getTagDao();
+        mTagDao = Utils.getDaoSession().getTagDao();
         barcode = product.getCode();
         String langCode = LocaleHelper.getLanguage(getContext());
 

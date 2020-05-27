@@ -674,9 +674,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
             }
         });
 
-        mHistoryProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getHistoryProductDao();
-        mInvalidBarcodeDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getInvalidBarcodeDao();
-        mOfflineSavedProductDao = Utils.getAppDaoSession(ContinuousScanActivity.this).getOfflineSavedProductDao();
+        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
+        mInvalidBarcodeDao = Utils.getDaoSession().getInvalidBarcodeDao();
+        mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
 
         sp = getSharedPreferences("camera", 0);
         mRing = sp.getBoolean("ring", false);
