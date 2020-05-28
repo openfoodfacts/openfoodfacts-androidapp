@@ -61,7 +61,7 @@ public class CategoryActivity extends BaseActivity {
         gameButton.setOnClickListener(v -> openHungerGame());
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this, getBaseContext());
+        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
     }
 
     private void openHungerGame() {

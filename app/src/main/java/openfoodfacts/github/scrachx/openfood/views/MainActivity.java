@@ -492,7 +492,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this, this);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
 
         handleIntent(getIntent());
     }

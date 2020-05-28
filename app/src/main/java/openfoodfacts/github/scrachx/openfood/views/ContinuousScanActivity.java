@@ -739,7 +739,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             return false;
         });
 
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this, this);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
     }
 
     @Override

@@ -303,7 +303,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 if (allergen.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(
                         allergen.getWikiDataId(),
-                        (value, result) -> {
+                        (result) -> {
                             if (value) {
                                 FragmentActivity activity = getActivity();
                                 if (activity != null && !activity.isFinishing()) {

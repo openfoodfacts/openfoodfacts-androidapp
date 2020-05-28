@@ -242,7 +242,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this, getBaseContext());
+        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this);
     }
 
     protected void newSearchQuery() {

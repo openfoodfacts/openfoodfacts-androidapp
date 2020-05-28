@@ -14,7 +14,7 @@ import java.io.OutputStream;
 
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;

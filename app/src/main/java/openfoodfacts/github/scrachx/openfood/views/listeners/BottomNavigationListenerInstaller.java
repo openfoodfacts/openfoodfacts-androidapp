@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views.listeners;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -59,14 +58,14 @@ public class BottomNavigationListenerInstaller {
         }
     }
 
-    public static void install(BottomNavigationView bottomNavigationView, Activity activity, Context context) {
+    public static void install(BottomNavigationView bottomNavigationView, Activity activity) {
         try {
             BottomNavigationListenerInstaller.disableShiftMode(bottomNavigationView);
         } catch (Exception e) {
             Log.i(BottomNavigationListenerInstaller.class.getSimpleName(),"install",e);
         }
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity, context));
+        bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity));
     }
 
 

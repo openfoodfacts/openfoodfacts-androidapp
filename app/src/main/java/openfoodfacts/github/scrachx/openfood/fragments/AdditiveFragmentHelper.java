@@ -126,8 +126,8 @@ public class AdditiveFragmentHelper {
     }
 
     private static WikiDataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive, Context context) {
-        return (value, result) -> {
-            if (value) {
+        return result -> {
+            if (result != null) {
                 if (activity != null && !activity.isFinishing()) {
                     BottomScreenCommon.showBottomScreen(result, additive,
                         activity.getSupportFragmentManager());

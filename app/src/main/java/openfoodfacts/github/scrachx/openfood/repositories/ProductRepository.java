@@ -71,8 +71,8 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 

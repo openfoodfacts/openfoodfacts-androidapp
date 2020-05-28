@@ -18,20 +18,20 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.databinding.DataBindingUtil;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.net.HttpCookie;
+import java.util.Objects;
 
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
@@ -76,7 +76,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // Setup view listeners
         binding.btnLogin.setOnClickListener(v -> doAttemptLogin());
@@ -116,7 +117,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mAccelerometer = Objects.requireNonNull(mSensorManager).getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
@@ -130,6 +131,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     }
 
     protected void doAttemptLogin() {
+        Utils.hideKeyboard(this);
         String login = ((EditText) binding.loginInput).getText().toString();
         String password = ((EditText) binding.passInput).getText().toString();
         if (TextUtils.isEmpty(login)) {
@@ -143,13 +145,12 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             return;
         }
         if (password.length() < 6) {
-            Toast.makeText(this, getText(R.string.error_invalid_password), Toast.LENGTH_SHORT).show();
+            binding.passInput.setError(getText(R.string.error_invalid_password));
             binding.passInput.requestFocus();
             return;
         }
 
-        Snackbar snackbar = Snackbar
-            .make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, LENGTH_LONG);
         snackbar.show();
 
         binding.btnLogin.setClickable(false);
@@ -159,7 +160,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (!response.isSuccessful()) {
-                    Utils.hideKeyboard(context);
                     Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -212,12 +212,10 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
                     setResult(RESULT_OK, new Intent());
                     finish();
                 }
-                Utils.hideKeyboard(context);
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Utils.hideKeyboard(context);
                 Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
                 Log.e(getClass().getSimpleName(), "onFailure", t);
             }
@@ -264,8 +262,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding = null;
         customTabActivityHelper.setConnectionCallback(null);
+        binding = null;
     }
 
     @Override

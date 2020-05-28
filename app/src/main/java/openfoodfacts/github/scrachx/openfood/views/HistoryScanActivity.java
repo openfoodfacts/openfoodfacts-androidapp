@@ -125,7 +125,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             binding.srRefreshHistoryScanList.setRefreshing(false);
         });
 
-        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this, this);
+        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this);
     }
 
     @Override

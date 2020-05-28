@@ -1,6 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

@@ -23,11 +23,11 @@ public class TipBox extends LinearLayout {
     public static final int ALIGN_START = Gravity.START;
     public static final int ALIGN_CENTER = Gravity.CENTER_HORIZONTAL;
     public static final int ALIGN_END = Gravity.END;
-    private String identifier;
     private boolean animate;
+    private ImageView arrow;
+    private String identifier;
     private SharedPreferences prefs;
     private TextView tipMessage;
-    private ImageView arrow;
 
     public TipBox(Context context, @Nullable AttributeSet attrs) throws Exception {
         super(context, attrs);
@@ -68,7 +68,7 @@ public class TipBox extends LinearLayout {
             @Override
             public boolean onPreDraw() {
                 Handler handler = new Handler();
-                handler.postDelayed(() -> show(), 500);
+                handler.postDelayed(TipBox.this::show, 500);
 
                 getViewTreeObserver().removeOnPreDrawListener(this);
                 return true;
@@ -108,7 +108,7 @@ public class TipBox extends LinearLayout {
         // Older versions of android (pre API 21) cancel animations for views with a height of 0.
         getLayoutParams().height = 1;
         setVisibility(View.VISIBLE);
-        Animation a = new Animation() {
+        Animation anim = new Animation() {
             @Override
             protected void applyTransformation(float interpolatedTime, Transformation t) {
                 getLayoutParams().height = interpolatedTime == 1
@@ -124,8 +124,8 @@ public class TipBox extends LinearLayout {
         };
 
         // Expansion speed of 1dp/ms
-        a.setDuration((int) (targetHeight / getContext().getResources().getDisplayMetrics().density));
-        startAnimation(a);
+        anim.setDuration((int) (targetHeight / getContext().getResources().getDisplayMetrics().density));
+        startAnimation(anim);
     }
 
     public void show() {
@@ -139,7 +139,7 @@ public class TipBox extends LinearLayout {
     private void collapse() {
         final int initialHeight = getMeasuredHeight();
 
-        Animation a = new Animation() {
+        Animation anim = new Animation() {
             @Override
             protected void applyTransformation(float interpolatedTime, Transformation t) {
                 if (interpolatedTime == 1) {
@@ -157,8 +157,8 @@ public class TipBox extends LinearLayout {
         };
 
         // Collapse speed of 1dp/ms
-        a.setDuration((int) (initialHeight / getContext().getResources().getDisplayMetrics().density));
-        startAnimation(a);
+        anim.setDuration((int) (initialHeight / getContext().getResources().getDisplayMetrics().density));
+        startAnimation(anim);
     }
 
     public void hide() {

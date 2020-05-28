@@ -17,10 +17,7 @@ import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
 /**
  * Created by Lobster on 03.03.18.
  */
-
 public class AdditivesWrapperDeserializer extends StdDeserializer<AdditivesWrapper> {
-
-
     private static final String EFSA_EVALUATION_OVEREXPOSURE_RISK_KEY = "efsa_evaluation_overexposure_risk";
     private static final String EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_ADI = "efsa_evaluation_exposure_95th_greater_than_adi";
     private static final String EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_NOAEL = "efsa_evaluation_exposure_95th_greater_than_noael";
@@ -50,31 +47,26 @@ public class AdditivesWrapperDeserializer extends StdDeserializer<AdditivesWrapp
                 String exposureMeanGreaterThanNoael = null;
                 String exposure95ThGreaterThanAdi = null;
                 String exposure95ThGreaterThanNoael = null;
-                if( subNode.getValue().has( EFSA_EVALUATION_OVEREXPOSURE_RISK_KEY ) )
-                {
+                if (subNode.getValue().has(EFSA_EVALUATION_OVEREXPOSURE_RISK_KEY)) {
                     // parse the overexposure risk the default value is "no"
-                    overexposureRisk = subNode.getValue().get( EFSA_EVALUATION_OVEREXPOSURE_RISK_KEY ).
-                            get( DeserializerHelper.EN_KEY ).textValue().replaceFirst("^en:", "");
+                    overexposureRisk = subNode.getValue().get(EFSA_EVALUATION_OVEREXPOSURE_RISK_KEY).
+                        get(DeserializerHelper.EN_KEY).textValue().replaceFirst("^en:", "");
 
                     // update exposure evaluation map
-                    if( subNode.getValue().has( EFSA_EVALUATION_EXPOSURE_MEAN_GREATER_THAN_ADI ) )
-                    {
-                        exposureMeanGreaterThanAdi = subNode.getValue().get( EFSA_EVALUATION_EXPOSURE_MEAN_GREATER_THAN_ADI ).get( DeserializerHelper.EN_KEY ).textValue();
+                    if (subNode.getValue().has(EFSA_EVALUATION_EXPOSURE_MEAN_GREATER_THAN_ADI)) {
+                        exposureMeanGreaterThanAdi = subNode.getValue().get(EFSA_EVALUATION_EXPOSURE_MEAN_GREATER_THAN_ADI).get(DeserializerHelper.EN_KEY).textValue();
                     }
 
-                    if( subNode.getValue().has( EFSA_EVALUATION_EXPOSURE_MEAN_GREATER_THAN_NOAEL ) )
-                    {
-                        exposureMeanGreaterThanNoael = subNode.getValue().get( EFSA_EVALUATION_EXPOSURE_MEAN_GREATER_THAN_NOAEL ).get( DeserializerHelper.EN_KEY ).textValue();
+                    if (subNode.getValue().has(EFSA_EVALUATION_EXPOSURE_MEAN_GREATER_THAN_NOAEL)) {
+                        exposureMeanGreaterThanNoael = subNode.getValue().get(EFSA_EVALUATION_EXPOSURE_MEAN_GREATER_THAN_NOAEL).get(DeserializerHelper.EN_KEY).textValue();
                     }
 
-                    if( subNode.getValue().has( EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_ADI ) )
-                    {
-                        exposure95ThGreaterThanAdi = subNode.getValue().get( EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_ADI ).get( DeserializerHelper.EN_KEY ).textValue();
+                    if (subNode.getValue().has(EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_ADI)) {
+                        exposure95ThGreaterThanAdi = subNode.getValue().get(EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_ADI).get(DeserializerHelper.EN_KEY).textValue();
                     }
 
-                    if( subNode.getValue().has( EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_NOAEL ) )
-                    {
-                        exposure95ThGreaterThanNoael = subNode.getValue().get( EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_NOAEL ).get( DeserializerHelper.EN_KEY ).textValue();
+                    if (subNode.getValue().has(EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_NOAEL)) {
+                        exposure95ThGreaterThanNoael = subNode.getValue().get(EFSA_EVALUATION_EXPOSURE_95TH_GREATER_THAN_NOAEL).get(DeserializerHelper.EN_KEY).textValue();
                     }
                 }
 
@@ -84,11 +76,10 @@ public class AdditivesWrapperDeserializer extends StdDeserializer<AdditivesWrapp
                 } else {
                     additiveResponse = new AdditiveResponse(subNode.getKey(), names, overexposureRisk);
                 }
-                additiveResponse.setExposureEvalMap( exposure95ThGreaterThanAdi, exposure95ThGreaterThanNoael, exposureMeanGreaterThanAdi, exposureMeanGreaterThanNoael );
+                additiveResponse.setExposureEvalMap(exposure95ThGreaterThanAdi, exposure95ThGreaterThanNoael, exposureMeanGreaterThanAdi, exposureMeanGreaterThanNoael);
                 additives.add(additiveResponse);
             }
         }
-
 
         AdditivesWrapper wrapper = new AdditivesWrapper();
         wrapper.setAdditives(additives);

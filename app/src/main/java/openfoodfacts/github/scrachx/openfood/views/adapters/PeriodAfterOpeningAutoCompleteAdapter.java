@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 
 public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
 

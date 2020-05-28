@@ -102,7 +102,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         });
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this, this);
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
     }
 
     @Override

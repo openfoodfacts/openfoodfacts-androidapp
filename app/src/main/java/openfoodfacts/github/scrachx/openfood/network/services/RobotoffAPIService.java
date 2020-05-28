@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package openfoodfacts.github.scrachx.openfood.network.services;
 
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;

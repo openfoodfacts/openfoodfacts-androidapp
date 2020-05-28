@@ -89,7 +89,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         });
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, getActivity(), getContext());
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, getActivity());
         return binding.getRoot();
     }
 
