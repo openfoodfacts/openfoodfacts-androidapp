@@ -304,7 +304,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                     apiClientForWikiData.doSomeThing(
                         allergen.getWikiDataId(),
                         (result) -> {
-                            if (value) {
+                            if (result != null) {
                                 FragmentActivity activity = getActivity();
                                 if (activity != null && !activity.isFinishing()) {
                                     BottomScreenCommon.showBottomScreen(result, allergen,

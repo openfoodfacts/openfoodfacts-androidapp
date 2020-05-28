@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -68,16 +67,15 @@ public class AdditiveFragmentHelper {
      **/
     private static CharSequence getAdditiveTag(AdditiveName additive, final WikiDataApiClient apiClientForWikiData, BaseFragment fragment) {
         FragmentActivity activity = fragment.getActivity();
-        Context context = fragment.getContext();
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
 
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View view) {
                 if (additive.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), getOnWikiResponse(activity, additive, context));
+                    apiClientForWikiData.doSomeThing(additive.getWikiDataId(), getOnWikiResponse(activity, additive));
                 } else {
-                    onWikiNoResponse(additive, activity, context);
+                    onWikiNoResponse(additive, activity);
                 }
             }
         };
@@ -92,13 +90,13 @@ public class AdditiveFragmentHelper {
             String riskWarningStr;
             int riskWarningColor;
             if (isHighRisk) {
-                riskIcon = ContextCompat.getDrawable(context, R.drawable.ic_additive_high_risk);
+                riskIcon = ContextCompat.getDrawable(activity, R.drawable.ic_additive_high_risk);
                 riskWarningStr = fragment.getString(R.string.overexposure_high);
-                riskWarningColor = getColor(context, R.color.overexposure_high);
+                riskWarningColor = getColor(activity, R.color.overexposure_high);
             } else {
-                riskIcon = ContextCompat.getDrawable(context, R.drawable.ic_additive_moderate_risk);
+                riskIcon = ContextCompat.getDrawable(activity, R.drawable.ic_additive_moderate_risk);
                 riskWarningStr = fragment.getString(R.string.overexposure_moderate);
-                riskWarningColor = getColor(context, R.color.overexposure_moderate);
+                riskWarningColor = getColor(activity, R.color.overexposure_moderate);
             }
             riskIcon.setBounds(0, 0, riskIcon.getIntrinsicWidth(), riskIcon.getIntrinsicHeight());
             ImageSpan iconSpan = new ImageSpan(riskIcon, DynamicDrawableSpan.ALIGN_BOTTOM);
@@ -114,18 +112,18 @@ public class AdditiveFragmentHelper {
         return spannableStringBuilder;
     }
 
-    private static void onWikiNoResponse(AdditiveName additive, FragmentActivity activity, Context context) {
+    private static void onWikiNoResponse(AdditiveName additive, FragmentActivity activity) {
         if (additive.hasOverexposureData()) {
             if (activity != null && !activity.isFinishing()) {
                 BottomScreenCommon.showBottomScreen(null, additive,
                     activity.getSupportFragmentManager());
             }
         } else {
-            ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+            ProductBrowsingListActivity.startActivity(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
         }
     }
 
-    private static WikiDataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive, Context context) {
+    private static WikiDataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive) {
         return result -> {
             if (result != null) {
                 if (activity != null && !activity.isFinishing()) {
@@ -139,7 +137,7 @@ public class AdditiveFragmentHelper {
                             activity.getSupportFragmentManager());
                     }
                 } else {
-                    ProductBrowsingListActivity.startActivity(context, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                    ProductBrowsingListActivity.startActivity(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                 }
             }
         };

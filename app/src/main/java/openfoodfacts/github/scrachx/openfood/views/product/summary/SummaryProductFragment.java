@@ -650,7 +650,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
                 if (label.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(label.getWikiDataId(), (result) -> {
-                        if (value) {
+                        if (result != null) {
                             FragmentActivity activity = getActivity();
                             if (activity != null && !activity.isFinishing()) {
                                 BottomScreenCommon.showBottomScreen(result, label,
