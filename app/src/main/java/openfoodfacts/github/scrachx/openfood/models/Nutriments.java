@@ -1,17 +1,21 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import androidx.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+
 import org.apache.commons.lang.StringUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
@@ -193,8 +197,7 @@ public class Nutriments implements Serializable {
         put(Nutriments.BIOTIN, R.string.biotin);
         put(Nutriments.PANTOTHENIC_ACID, R.string.pantothenic_acid);
     }};
-
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
     private boolean containsVitamins;
     private boolean containsMinerals;
 

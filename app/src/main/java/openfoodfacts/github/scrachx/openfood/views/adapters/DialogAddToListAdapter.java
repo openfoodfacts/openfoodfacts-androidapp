@@ -21,13 +21,13 @@ import openfoodfacts.github.scrachx.openfood.views.YourListedProductsActivity;
 
 //recyclerview adapter to display product lists in a dialog
 public class DialogAddToListAdapter extends RecyclerView.Adapter<DialogAddToListAdapter.TvListViewHolder> {
-    private Context mContext;
-    private List<ProductLists> productLists;
-    private String barcode;
-    private String productName;
+    private final String barcode;
+    private final String imageUrl;
+    private final Context mContext;
+    private final String productDetails;
     private YourListedProductDao yourListedProductDao;
-    private String productDetails;
-    private String imageUrl;
+    private final List<ProductLists> productLists;
+    private final String productName;
 
     public DialogAddToListAdapter(Context context, List<ProductLists> productLists,
                                   String barcode,String productName,String productDetails,String imageUrl)
@@ -79,7 +79,7 @@ public class DialogAddToListAdapter extends RecyclerView.Adapter<DialogAddToList
     }
 
     static class TvListViewHolder extends RecyclerView.ViewHolder {
-        TextView tvListTitle;
+        final TextView tvListTitle;
 
         TvListViewHolder(View itemView) {
             super(itemView);

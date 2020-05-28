@@ -1,11 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+
+import androidx.annotation.NonNull;
+
+import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 
@@ -13,12 +16,11 @@ import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
-import org.apache.commons.lang.StringUtils;
 
 public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
 
     private static OpenFoodAPIService client;
-    private ArrayList<String> mEMBCodeList;
+    private final ArrayList<String> mEMBCodeList;
 
     public EmbCodeAutoCompleteAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);

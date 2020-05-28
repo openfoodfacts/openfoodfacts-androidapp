@@ -33,7 +33,7 @@ public class CountryTest {
             new CountryName(COUNTRY_TAG, LANGUAGE_CODE_FRENCH, GERMANY_FR);
 
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    public final ExpectedException thrown = ExpectedException.none();
 
     @Mock
     private DaoSession mockDaoSession;

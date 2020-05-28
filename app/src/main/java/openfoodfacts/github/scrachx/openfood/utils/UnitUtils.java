@@ -117,17 +117,17 @@ public class UnitUtils {
         Matcher matcher = regex.matcher(servingSize);
         if (servingSize.toLowerCase().contains("ml")) {
             matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
+            float val = Float.parseFloat(matcher.group(1));
             val *= (OZ_PER_L / 1000);
             servingSize = Utils.getRoundNumber(val).concat(" oz");
         } else if (servingSize.toLowerCase().contains("cl")) {
             matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
+            float val = Float.parseFloat(matcher.group(1));
             val *= (OZ_PER_L / 100);
             servingSize = Utils.getRoundNumber(val).concat(" oz");
         } else if (servingSize.toLowerCase().contains("l")) {
             matcher.find();
-            Float val = Float.parseFloat(matcher.group(1));
+            float val = Float.parseFloat(matcher.group(1));
             val *= OZ_PER_L;
             servingSize = Utils.getRoundNumber(val).concat(" oz");
         }

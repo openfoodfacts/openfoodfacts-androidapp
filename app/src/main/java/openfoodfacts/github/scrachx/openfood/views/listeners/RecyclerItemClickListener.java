@@ -12,14 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * Implementing the {@link RecyclerView.OnItemTouchListener} to respond to only single tap events
  */
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
-
-    private OnItemClickListener mListener;
+    final GestureDetector mGestureDetector;
 
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
 
-    GestureDetector mGestureDetector;
+    private final OnItemClickListener mListener;
 
     public RecyclerItemClickListener(Context context, OnItemClickListener listener) {
         mListener = listener;

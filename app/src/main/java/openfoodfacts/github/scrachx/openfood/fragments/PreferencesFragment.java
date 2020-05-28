@@ -359,8 +359,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     }
 
     private static class GetAnalysisTagConfigs extends AsyncTask<DaoSession, Void, List<AnalysisTagConfig>> {
-        private WeakReference<PreferencesFragment> wRefFragment;
-        private String language;
+        private final String language;
+        private final WeakReference<PreferencesFragment> wRefFragment;
 
         GetAnalysisTagConfigs(PreferencesFragment fragment) {
             this.wRefFragment = new WeakReference<>(fragment);
@@ -406,7 +406,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
-        private LoadToast lt = new LoadToast(getActivity());
+        private final LoadToast lt = new LoadToast(getActivity());
 
         @Override
         protected void onPreExecute() {

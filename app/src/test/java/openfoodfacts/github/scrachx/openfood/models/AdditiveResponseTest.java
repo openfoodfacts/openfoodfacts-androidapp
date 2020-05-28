@@ -18,8 +18,7 @@ import static org.junit.Assert.*;
  * Tests for {@link AdditiveResponse}
  */
 public class AdditiveResponseTest {
-
-    private Map<String, String> mStringMap = new HashMap<>();
+    private final Map<String, String> mStringMap = new HashMap<>();
 
     private AdditiveResponse mAdditiveResponse;
 

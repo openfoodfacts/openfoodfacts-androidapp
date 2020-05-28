@@ -20,7 +20,9 @@ import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
 import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 
 public class CommonBottomListener implements BottomNavigationView.OnNavigationItemSelectedListener {

@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 public class CategoryResponseTest {
     private final String CATEGORY_TAG = "tag";
     private final String WIKI_DATA_ID = "wiki_id";
-    private Map<String, String> mNamesMap = new HashMap<>();
+    private final Map<String, String> mNamesMap = new HashMap<>();
     private CategoryResponse mCategoryResponse;
 
     @Before

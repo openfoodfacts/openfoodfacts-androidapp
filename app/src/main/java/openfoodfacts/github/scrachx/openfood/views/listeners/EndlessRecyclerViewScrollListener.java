@@ -18,10 +18,9 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
     private int previousTotalItemCount = 0;
     // True if we are still waiting for the last set of data to load.
     private boolean loading = true;
+    final RecyclerView.LayoutManager mLayoutManager;
     // Sets the starting page index
-    private int startingPageIndex = 1;
-
-    RecyclerView.LayoutManager mLayoutManager;
+    private final int startingPageIndex = 1;
 
     public EndlessRecyclerViewScrollListener(LinearLayoutManager layoutManager) {
         this.mLayoutManager = layoutManager;

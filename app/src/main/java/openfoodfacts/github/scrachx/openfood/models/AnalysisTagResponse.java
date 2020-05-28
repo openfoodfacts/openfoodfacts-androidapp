@@ -10,9 +10,9 @@ import java.util.Map;
  */
 public class AnalysisTagResponse {
     private static final String DEFAULT_LANGUAGE = "en";
-    private String uniqueAnalysisTagID;
-    private Map<String, String> namesMap;
-    private Map<String, String> showIngredientsMap;
+    private final Map<String, String> namesMap;
+    private final Map<String, String> showIngredientsMap;
+    private final String uniqueAnalysisTagID;
 
     /**
      * Constructor.

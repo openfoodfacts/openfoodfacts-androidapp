@@ -12,7 +12,7 @@ public class PrefManager extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context _context;
-    int PRIVATE_MODE = 0;
+    final int PRIVATE_MODE = 0;
     private static final String PREF_NAME = "open-facts-welcome";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String FIRST_TIME_LAUNCH_TIME = "FirstTimeLaunchTime";

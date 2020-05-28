@@ -111,7 +111,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private boolean productShowing = false;
     private Runnable runnable;
     private SummaryProductPresenter summaryProductPresenter;
-    private BarcodeCallback callback = new BarcodeCallback() {
+    private final BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
             handler.removeCallbacks(runnable);

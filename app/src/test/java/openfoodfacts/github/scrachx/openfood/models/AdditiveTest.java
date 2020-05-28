@@ -27,7 +27,7 @@ public class AdditiveTest {
     private static final AdditiveName ADDITIVE_NAME_2 = new AdditiveName(ADDITIVE_NAME_NAME_2);
 
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    public final ExpectedException thrown = ExpectedException.none();
 
     @Mock
     private DaoSession mockDaoSession;

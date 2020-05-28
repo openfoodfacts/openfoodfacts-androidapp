@@ -25,7 +25,7 @@ public class OFFApplication extends MultiDexApplication {
     public static final String OPFF = "opff";
     public static final String OPF = "opf";
     public static final String OBF = "obf";
-    private boolean DEBUG = false;
+    private final boolean DEBUG = false;
     private static OFFApplication application;
     private static AppComponent appComponent;
 

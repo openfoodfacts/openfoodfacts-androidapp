@@ -32,7 +32,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
     private static final int VIEW_LOAD = 0;
     private Context context;
     private final List<Product> products;
-    private boolean isLowBatteryMode;
+    private final boolean isLowBatteryMode;
 
     public ProductsRecyclerViewAdapter(List<Product> items, boolean isLowBatteryMode) {
         this.products = items;
@@ -128,11 +128,11 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter {
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     static class ProductViewHolder extends RecyclerView.ViewHolder {
-        ImageView vProductImage;
-        ImageView vProductGrade;
-        TextView vProductName;
-        TextView vProductDetails;
-        ProgressBar vProductImageProgressbar;
+        final TextView vProductDetails;
+        final ImageView vProductGrade;
+        final ImageView vProductImage;
+        final ProgressBar vProductImageProgressbar;
+        final TextView vProductName;
 
         ProductViewHolder(View v) {
             super(v);

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
@@ -15,9 +16,9 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
  * Created by Lobster on 03.03.18.
  */
 public class SplashPresenter implements ISplashPresenter.Actions {
-    private ISplashPresenter.View view;
-    private SharedPreferences settings;
-    private Context context;
+    private final Context context;
+    private final SharedPreferences settings;
+    private final ISplashPresenter.View view;
 
     SplashPresenter(SharedPreferences settings, ISplashPresenter.View view, Context context) {
         this.view = view;

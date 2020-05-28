@@ -30,11 +30,10 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 
 public class CategoryProductHelper {
-
-    private TextView categoryText;
-    private List<CategoryName> categories;
-    private BaseFragment baseFragment;
-    private WikiDataApiClient apiClient;
+    private final WikiDataApiClient apiClient;
+    private final BaseFragment baseFragment;
+    private final List<CategoryName> categories;
+    private final TextView categoryText;
     private boolean containsAlcohol;
 
 

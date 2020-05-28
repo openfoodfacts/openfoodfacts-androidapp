@@ -28,11 +28,10 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class OfflineProductService {
     private static final String LOG_TAG = "OfflineProductService";
-    private OpenFoodAPIService apiClient;
+    private final OpenFoodAPIService apiClient;
 
-    private static class Loader {
-        // static synchronized singleton
-        static volatile OfflineProductService INSTANCE = new OfflineProductService();
+    private static OfflineSavedProductDao getOfflineProductDAO() {
+        return OFFApplication.getDaoSession().getOfflineSavedProductDao();
     }
 
     public static OfflineProductService sharedInstance() {
@@ -44,8 +43,9 @@ public class OfflineProductService {
         this.apiClient = CommonApiManager.getInstance().getOpenFoodApiService();
     }
 
-    private static OfflineSavedProductDao getOfflineProductDAO() {
-        return OFFApplication.getInstance().getDaoSession().getOfflineSavedProductDao();
+    private static class Loader {
+        // static synchronized singleton
+        static final OfflineProductService INSTANCE = new OfflineProductService();
     }
 
     public static OfflineSavedProduct getOfflineProductByBarcode(String barcode) {

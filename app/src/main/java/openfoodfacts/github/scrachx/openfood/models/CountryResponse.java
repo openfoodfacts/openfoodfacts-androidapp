@@ -8,10 +8,8 @@ import java.util.Map;
  */
 
 public class CountryResponse {
-
-    private String tag;
-
-    private Map<String, String> names;
+    private final Map<String, String> names;
+    private final String tag;
 
     public CountryResponse(String code, Map<String, String> names) {
         this.tag = code;

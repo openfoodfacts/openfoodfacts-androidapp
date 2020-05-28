@@ -450,7 +450,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     }
 
     public class FillAdapter extends AsyncTask<Context, Void, Context> {
-        private Activity activity;
+        private final Activity activity;
 
         public FillAdapter(Activity act) {
             activity = act;

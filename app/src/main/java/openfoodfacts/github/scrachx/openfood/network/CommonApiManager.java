@@ -17,7 +17,7 @@ public class CommonApiManager implements ICommonApiManager {
     private ProductApiService productApiService;
     private OpenFoodAPIService openFoodApiService;
     private RobotoffAPIService robotoffApiService;
-    private JacksonConverterFactory jacksonConverterFactory;
+    private final JacksonConverterFactory jacksonConverterFactory;
 
     public static ICommonApiManager getInstance() {
         if (instance == null) {

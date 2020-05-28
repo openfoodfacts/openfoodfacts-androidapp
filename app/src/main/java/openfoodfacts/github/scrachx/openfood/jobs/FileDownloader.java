@@ -25,7 +25,7 @@ import retrofit2.Response;
  * write response to the disk.
  */
 public class FileDownloader {
-    private Context context;
+    private final Context context;
 
     public interface FileReceiver {
         void onFileDownloaded(File file);

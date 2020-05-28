@@ -11,7 +11,7 @@ import org.greenrobot.greendao.database.Database;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class DatabaseHelper extends DaoMaster.OpenHelper {
-    private SharedPreferences settings;
+    private final SharedPreferences settings;
 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
         super(context, name, factory);

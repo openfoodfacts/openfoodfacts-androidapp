@@ -26,7 +26,7 @@ import static org.mockito.Mockito.when;
  */
 public class LabelTest {
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    public final ExpectedException thrown = ExpectedException.none();
     @Mock
     private DaoSession mockDaoSession;
     @Mock

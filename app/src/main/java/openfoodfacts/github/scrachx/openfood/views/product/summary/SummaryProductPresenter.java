@@ -24,10 +24,10 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
  * Created by Lobster on 17.03.18.
  */
 public class SummaryProductPresenter implements ISummaryProductPresenter.Actions {
-    private IProductRepository repository = ProductRepository.getInstance();
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private ISummaryProductPresenter.View view;
-    private Product product;
+    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final Product product;
+    private final IProductRepository repository = ProductRepository.getInstance();
+    private final ISummaryProductPresenter.View view;
 
     public SummaryProductPresenter(Product product, ISummaryProductPresenter.View view) {
         this.product = product;

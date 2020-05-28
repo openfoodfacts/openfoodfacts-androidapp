@@ -14,8 +14,8 @@ package openfoodfacts.github.scrachx.openfood.views.customtabs;
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 import android.content.ComponentName;
+
 import androidx.browser.customtabs.CustomTabsClient;
 import androidx.browser.customtabs.CustomTabsServiceConnection;
 
@@ -27,7 +27,7 @@ import java.lang.ref.WeakReference;
  */
 public class ServiceConnection extends CustomTabsServiceConnection {
     // A weak reference to the ServiceConnectionCallback to avoid leaking it.
-    private WeakReference<ServiceConnectionCallback> mConnectionCallback;
+    private final WeakReference<ServiceConnectionCallback> mConnectionCallback;
 
     public ServiceConnection(ServiceConnectionCallback connectionCallback) {
         mConnectionCallback = new WeakReference<>(connectionCallback);

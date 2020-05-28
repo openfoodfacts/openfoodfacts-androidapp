@@ -20,9 +20,9 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 public class IngredientAnalysisRecyclerAdapter extends RecyclerView.Adapter<IngredientAnalysisRecyclerAdapter.IngredientAnalysisViewHolder> implements CustomTabActivityHelper.ConnectionCallback {
-    private Context mContext;
-    private List<ProductIngredient> productIngredients;
-    private Activity activity;
+    private final Activity activity;
+    private final Context mContext;
+    private final List<ProductIngredient> productIngredients;
 
     public IngredientAnalysisRecyclerAdapter(Context context, List<ProductIngredient> productIngredients, Activity activity) {
         this.productIngredients = productIngredients;
@@ -54,7 +54,7 @@ public class IngredientAnalysisRecyclerAdapter extends RecyclerView.Adapter<Ingr
     }
 
     public class IngredientAnalysisViewHolder extends RecyclerView.ViewHolder {
-        TextView tvIngredientName;
+        final TextView tvIngredientName;
 
         public IngredientAnalysisViewHolder(View itemView) {
             super(itemView);
