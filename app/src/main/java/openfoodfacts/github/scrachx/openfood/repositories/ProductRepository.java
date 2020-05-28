@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -129,7 +130,7 @@ public class ProductRepository implements IProductRepository {
         productApi = CommonApiManager.getInstance().getProductApiService();
         robotoffApi = CommonApiManager.getInstance().getRobotoffApiService();
 
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         db = daoSession.getDatabase();
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
@@ -255,9 +256,9 @@ public class ProductRepository implements IProductRepository {
         }
         if (loadFromLocalDatabase) {
             //If we are here then just get the information from the local database
-            return Single.fromCallable(() -> dao.loadAll());
+            return Single.fromCallable((Callable<List<T>>) dao::loadAll);
         }
-        return Single.fromCallable(() -> Collections.emptyList());
+        return Single.fromCallable(Collections::emptyList);
     }
 
     Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
@@ -551,7 +552,7 @@ public class ProductRepository implements IProductRepository {
         ingredientDao.deleteAll();
         ingredientNameDao.deleteAll();
         ingredientsRelationDao.deleteAll();
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         daoSession.getDatabase().execSQL(
             "update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao
                 .getTablename() + "')");

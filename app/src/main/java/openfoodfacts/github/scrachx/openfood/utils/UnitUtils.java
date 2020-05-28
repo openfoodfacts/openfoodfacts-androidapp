@@ -81,18 +81,18 @@ public class UnitUtils {
     }
 
     public static double convertFromGram(double valueInGramOrMl, String targetUnit) {
-        if (targetUnit.equals(UNIT_KILOGRAM)) {
-            return valueInGramOrMl / 1000;
-        } else if (targetUnit.equals(UNIT_MILLIGRAM)) {
-            return valueInGramOrMl * 1000;
-        } else if (targetUnit.equals(UNIT_MICROGRAM)) {
-            return valueInGramOrMl * 1000000;
-        } else if (targetUnit.equals(UNIT_LITER)) {
-            return valueInGramOrMl / 1000;
-        } else if (targetUnit.equals(UNIT_DECILITRE)) {
-            return valueInGramOrMl / 100;
-        } else if (targetUnit.equals(UNIT_CENTILITRE)) {
-            return valueInGramOrMl / 10;
+        switch (targetUnit) {
+            case UNIT_KILOGRAM:
+            case UNIT_LITER:
+                return valueInGramOrMl / 1000;
+            case UNIT_MILLIGRAM:
+                return valueInGramOrMl * 1000;
+            case UNIT_MICROGRAM:
+                return valueInGramOrMl * 1000000;
+            case UNIT_DECILITRE:
+                return valueInGramOrMl / 100;
+            case UNIT_CENTILITRE:
+                return valueInGramOrMl / 10;
         }
         return valueInGramOrMl;
     }

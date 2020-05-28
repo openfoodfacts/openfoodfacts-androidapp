@@ -92,7 +92,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
                 }
 
                 //Check if user is logged in
-                adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick, product, isUserLoggedIn());
+                adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this, product, isUserLoggedIn());
                 imagesRecycler.setAdapter(adapter);
                 imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
             }

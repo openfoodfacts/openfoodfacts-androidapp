@@ -90,8 +90,8 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             }
             case 7: {
-                String newColumns[] = new String[]{"wiki_data_id", "is_wiki_data_id_present"};
-                String updatedTables[] = new String[]{"additive_name", "additive", "category_name", "category", "label_name", "label"};
+                String[] newColumns = new String[]{"wiki_data_id", "is_wiki_data_id_present"};
+                String[] updatedTables = new String[]{"additive_name", "additive", "category_name", "category", "label_name", "label"};
                 for (String table : updatedTables) {
                     for (String column : newColumns) {
                         if (!isFieldExist(db, table, column)) {
@@ -106,9 +106,9 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 OfflineSavedProductDao.createTable(db, true);
                 break;
             case 9: {
-                String newColumns[] = new String[]{"overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
+                String[] newColumns = new String[]{"overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
                     "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael"};
-                String updatedTables[] = new String[]{"additive_name", "additive"};
+                String[] updatedTables = new String[]{"additive_name", "additive"};
                 for (String table : updatedTables) {
                     for (String column : newColumns) {
                         if (!isFieldExist(db, table, column)) {
@@ -119,8 +119,8 @@ public class DatabaseHelper extends DaoMaster.OpenHelper {
                 break;
             }
             case 10: {
-                String newColumns[] = new String[]{"WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT"};
-                String updatedTables[] = new String[]{"allergen_name", "allergen"};
+                String[] newColumns = new String[]{"WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT"};
+                String[] updatedTables = new String[]{"allergen_name", "allergen"};
                 for (String table : updatedTables) {
                     for (String column : newColumns) {
                         if (!isFieldExist(db, table, column)) {

@@ -303,7 +303,7 @@ public class OpenFoodAPIClient {
                         if (ingredient != null) {
                             productIngredient.setId(ingredient.findValue("id").toString());
                             productIngredient.setText(ingredient.findValue("text").toString());
-                            productIngredient.setRank(Long.valueOf(ingredient.findValue("rank").toString()));
+                            productIngredient.setRank(Long.parseLong(ingredient.findValue("rank").toString()));
                             productIngredients.add(productIngredient);
                         }
                     }
@@ -390,7 +390,7 @@ public class OpenFoodAPIClient {
                 }
 
                 Search s = response.body();
-                if (s == null || Integer.valueOf(s.getCount()) == 0) {
+                if (s == null || Integer.parseInt(s.getCount()) == 0) {
                     productsCallback.onProductsResponse(false, null, -2);
                 } else {
                     productsCallback.onProductsResponse(true, s, Integer.parseInt(s.getCount()));

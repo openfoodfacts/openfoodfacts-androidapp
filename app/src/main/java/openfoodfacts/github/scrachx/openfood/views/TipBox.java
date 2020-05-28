@@ -68,9 +68,7 @@ public class TipBox extends LinearLayout {
             @Override
             public boolean onPreDraw() {
                 Handler handler = new Handler();
-                handler.postDelayed(() -> {
-                    show();
-                }, 500);
+                handler.postDelayed(() -> show(), 500);
 
                 getViewTreeObserver().removeOnPreDrawListener(this);
                 return true;

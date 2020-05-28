@@ -16,7 +16,7 @@ public class ProductFragmentPagerAdapter extends FragmentPagerAdapter {
     private List<BaseFragment> fragments;
 
     public ProductFragmentPagerAdapter(FragmentManager fm) {
-        super(fm);
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.fragments = new ArrayList<>();
         this.navMenuTitles = new ArrayList<>();
     }

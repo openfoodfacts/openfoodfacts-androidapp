@@ -53,6 +53,7 @@ public class AdditiveTest {
 
     @Test
     public void getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
+
         thrown.expect(DaoException.class);
 
         mAdditive.getNames();

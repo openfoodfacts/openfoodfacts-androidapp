@@ -68,7 +68,7 @@ public class CalculateDetails extends BaseActivity {
         p = (Product) i.getSerializableExtra("sampleObject");
         spinnervalue = i.getStringExtra("spinnervalue");
         weight = i.getStringExtra("weight");
-        value = Float.valueOf(weight);
+        value = Float.parseFloat(weight);
         nutriments = p.getNutriments();
         nutrimentListItems = new ArrayList<>();
         nutrimentsRecyclerView = findViewById(R.id.nutriments_recycler_view_calc);

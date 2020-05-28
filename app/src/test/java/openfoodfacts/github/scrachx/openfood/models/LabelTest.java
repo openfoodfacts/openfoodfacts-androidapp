@@ -12,7 +12,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_EN;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_FR;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_TAG;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static org.mockito.ArgumentMatchers.any;
@@ -23,19 +25,14 @@ import static org.mockito.Mockito.when;
  * Tests for {@link Label}
  */
 public class LabelTest {
-
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-
     @Mock
     private DaoSession mockDaoSession;
-
     @Mock
     private LabelDao mockLabelDao;
-
     @Mock
     private LabelNameDao mockLabelNameDao;
-
     private Label mLabel;
 
     @Before
@@ -46,7 +43,7 @@ public class LabelTest {
         LabelName labelName1 = new LabelName(LABEL_TAG, LANGUAGE_CODE_ENGLISH, LABEL_NAME_EN);
         LabelName labelName2 = new LabelName(LABEL_TAG, LANGUAGE_CODE_FRENCH, LABEL_NAME_FR);
         when(mockLabelNameDao._queryLabel_Names(any()))
-                .thenReturn(Arrays.asList(labelName1, labelName2));
+            .thenReturn(Arrays.asList(labelName1, labelName2));
         mLabel = new Label();
     }
 

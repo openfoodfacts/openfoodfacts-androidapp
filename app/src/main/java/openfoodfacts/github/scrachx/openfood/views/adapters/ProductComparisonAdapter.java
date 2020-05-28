@@ -384,7 +384,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (additivesTags != null && !additivesTags.isEmpty()) {
             final String languageCode = LocaleHelper.getLanguage(v.getContext());
             disposable.add(
-                Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
+                Observable.fromArray(additivesTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                         .flatMap(categoryName -> {
                             if (categoryName.isNull()) {

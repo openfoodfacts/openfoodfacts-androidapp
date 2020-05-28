@@ -111,8 +111,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             }
         }
 
-        languagePreference.setEntries(finalLocalLabels.toArray(new String[finalLocalLabels.size()]));
-        languagePreference.setEntryValues(finalLocalValues.toArray(new String[finalLocalValues.size()]));
+        languagePreference.setEntries(finalLocalLabels.toArray(new String[0]));
+        languagePreference.setEntryValues(finalLocalValues.toArray(new String[0]));
 
         languagePreference.setOnPreferenceChangeListener((preference, locale) -> {
 
@@ -139,7 +139,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         List<String> countryLabels = new ArrayList<>();
         List<String> countryTags = new ArrayList<>();
 
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
         CountryNameDao countryNameDao = daoSession.getCountryNameDao();
 
@@ -282,7 +282,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                                 preference.setSummary(null);
                                 preference.setWidgetLayoutResource(R.layout.loading);
                             } else {
-                                new GetAnalysisTagConfigs(PreferencesFragment.this).execute(OFFApplication.getInstance().getDaoSession());
+                                new GetAnalysisTagConfigs(PreferencesFragment.this).execute(OFFApplication.getDaoSession());
                             }
                         }
                     });

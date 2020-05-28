@@ -268,21 +268,15 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
     private void sortProducts(){
         switch(sortType){
             case "title":
-                Collections.sort(products,(p1,p2)->{
-                    return p1.getProductName().compareToIgnoreCase(p2.getProductName());
-                });
+                Collections.sort(products, (p1, p2) -> p1.getProductName().compareToIgnoreCase(p2.getProductName()));
                 break;
 
             case "brand":
-                Collections.sort(products,(p1,p2)->{
-                    return p1.getProductDetails().compareToIgnoreCase(p2.getProductDetails());
-                });
+                Collections.sort(products, (p1, p2) -> p1.getProductDetails().compareToIgnoreCase(p2.getProductDetails()));
                 break;
 
             case "barcode":
-                Collections.sort(products,(p1,p2)->{
-                    return p1.getBarcode().compareToIgnoreCase(p2.getBarcode());
-                });
+                Collections.sort(products, (p1, p2) -> p1.getBarcode().compareToIgnoreCase(p2.getBarcode()));
                 break;
             case "grade":
 

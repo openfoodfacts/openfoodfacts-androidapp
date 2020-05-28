@@ -127,7 +127,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
         if (labelsTags != null && !labelsTags.isEmpty()) {
             final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                Observable.fromArray(labelsTags.toArray(new String[labelsTags.size()]))
+                Observable.fromArray(labelsTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getLabelByTagAndLanguageCode(tag, languageCode)
                         .flatMap(labelName -> {
                             if (labelName.isNull()) {

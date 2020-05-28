@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.network.deserializers.AnalysisTagConfigsWrapperDeserializer;
-import openfoodfacts.github.scrachx.openfood.network.deserializers.AnalysisTagsWrapperDeserializer;
 
 /**
  * JSON from URL https://ssl-api.openfoodfacts.org/files/app/ingredients-analysis.json
