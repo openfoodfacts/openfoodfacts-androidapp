@@ -31,12 +31,13 @@ greendao {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '28.0.3'
 
     testBuildType obtainTestBuildType()
 
 
-    dataBinding.enabled = true
+    buildFeatures {
+        dataBinding = true
+    }
 
     flavorDimensions "versionCode"
 
