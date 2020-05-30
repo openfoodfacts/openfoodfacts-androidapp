@@ -457,29 +457,26 @@ public class Utils {
     }
 
     public static OkHttpClient httpClientBuilder() {
-        OkHttpClient httpClient;
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+            .connectTimeout(5000, TimeUnit.MILLISECONDS)
+            .readTimeout(30000, TimeUnit.MILLISECONDS)
+            .writeTimeout(30000, TimeUnit.MILLISECONDS);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
                 .tlsVersions(TlsVersion.TLS_1_2)
                 .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
                 .build();
 
-            httpClient = new OkHttpClient.Builder()
-                .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                .readTimeout(30000, TimeUnit.MILLISECONDS)
-                .writeTimeout(30000, TimeUnit.MILLISECONDS)
-                .connectionSpecs(Collections.singletonList(spec))
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build();
-        } else {
-            httpClient = new OkHttpClient.Builder()
-                .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                .readTimeout(30000, TimeUnit.MILLISECONDS)
-                .writeTimeout(30000, TimeUnit.MILLISECONDS)
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build();
+            builder.connectionSpecs(Collections.singletonList(spec));
         }
-        return httpClient;
+
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
+        } else {
+            builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
+        }
+        return builder.build();
     }
 
     /**
