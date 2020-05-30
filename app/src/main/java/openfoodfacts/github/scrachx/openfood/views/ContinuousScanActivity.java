@@ -32,10 +32,10 @@ import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DefaultDecoderFactory;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.IconicsSize;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 

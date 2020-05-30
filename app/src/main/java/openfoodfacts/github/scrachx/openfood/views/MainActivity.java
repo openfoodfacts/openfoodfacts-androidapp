@@ -25,11 +25,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.SearchView;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -49,12 +49,13 @@ import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.holder.StringHolder;
+import com.mikepenz.materialdrawer.model.AbstractBadgeableDrawerItem;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
@@ -110,7 +111,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
     private ActivityMainBinding binding;
-    PrimaryDrawerItem primaryDrawerItem;
     private AccountHeader headerResult = null;
     private Drawer result = null;
     private MenuItem searchMenuItem;
@@ -269,17 +269,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     .withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                 new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
-                primaryDrawerItem,
                 new DividerDrawerItem(),
                 new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
             )
             .withOnDrawerItemClickListener((view, position, drawerItem) -> {
-
-                if (drawerItem == null) {
-                    return false;
-                }
 
                 Fragment fragment = null;
                 switch ((int) drawerItem.getIdentifier()) {
@@ -625,24 +620,33 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchMenuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchMenuItem.getActionView();
-        if (searchManager.getSearchableInfo(getComponentName()) != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        }
 
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        searchView.setOnQueryTextFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                binding.bottomNavigationInclude.bottomNavigation.setVisibility(View.GONE);
+            } else {
+                binding.bottomNavigationInclude.bottomNavigation.setVisibility(View.VISIBLE);
+            }
+        });
         searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                binding.bottomNavigationInclude.bottomNavigation.setVisibility(View.GONE);
                 return true;
             }
 
             @Override
             public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+
                 return true;
             }
         });
@@ -671,8 +675,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
     }
 
-    private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model
-        .AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
+    private IDrawerItem<AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
         return new PrimaryDrawerItem()
             .withName(getString(R.string.logout_drawer))
             .withIcon(GoogleMaterial.Icon.gmd_settings_power)
@@ -680,8 +683,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .withSelectable(false);
     }
 
-    private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model
-        .AbstractBadgeableDrawerItem.ViewHolder> getLoginDrawerItem() {
+    private IDrawerItem<AbstractBadgeableDrawerItem.ViewHolder> getLoginDrawerItem() {
         return new PrimaryDrawerItem()
             .withName(R.string.sign_in_drawer)
             .withIcon(GoogleMaterial.Icon.gmd_account_circle)

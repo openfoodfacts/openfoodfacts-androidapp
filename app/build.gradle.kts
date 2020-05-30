@@ -93,7 +93,7 @@ dependencies {
     }
 
     // UI Component : Material Drawer
-    implementation("com.mikepenz:materialdrawer:6.1.2") {
+    implementation("com.mikepenz:materialdrawer:7.0.0") {
         isTransitive = true
     }
 
