@@ -235,7 +235,7 @@ dependencies {
     }
 
     // UI Component : Material Drawer
-    implementation("com.mikepenz:materialdrawer:6.1.2") {
+    implementation("com.mikepenz:materialdrawer:7.0.0") {
         transitive = true
     }
 
@@ -247,7 +247,7 @@ dependencies {
 
     // UI Component : Font Icons
     implementation 'com.mikepenz:iconics-core:4.0.2@aar'
-    implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
+    implementation 'com.mikepenz:google-material-typeface:3.0.1.4.original-kotlin@aar'
     implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }

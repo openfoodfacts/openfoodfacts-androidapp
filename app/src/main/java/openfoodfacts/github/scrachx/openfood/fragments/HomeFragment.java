@@ -39,7 +39,6 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -72,7 +71,6 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.home_page);
     }
 
     @Override
@@ -152,9 +150,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
     @Override
     public void onResume() {
-
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.home_page);
 
         int productCount = sp.getInt("productCount", 0);
         apiClient.getTotalProductCount(Utils.getUserAgent())
