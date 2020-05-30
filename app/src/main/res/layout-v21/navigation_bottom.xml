@@ -14,8 +14,8 @@
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
         android:elevation="8dp"
-        app:itemIconTint="@color/navigation_bottom_item"
-        app:itemTextColor="@color/navigation_bottom_item"
+        app:itemIconTint="@color/nav_default"
+        app:itemTextColor="@color/nav_default"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/navigation_bottom" />
 </layout>

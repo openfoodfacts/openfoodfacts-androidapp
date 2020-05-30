@@ -65,7 +65,7 @@ public class BottomNavigationListenerInstaller {
             Log.i(BottomNavigationListenerInstaller.class.getSimpleName(),"install",e);
         }
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity));
+        bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity, bottomNavigationView));
     }
 
 

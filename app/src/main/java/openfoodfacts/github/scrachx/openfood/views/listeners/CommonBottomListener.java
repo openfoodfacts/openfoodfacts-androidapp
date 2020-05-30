@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -26,18 +28,30 @@ import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 
 public class CommonBottomListener implements BottomNavigationView.OnNavigationItemSelectedListener {
     private final Activity currentActivity;
+    private final BottomNavigationView view;
 
-    CommonBottomListener(Activity activity) {
+    CommonBottomListener(Activity activity, BottomNavigationView view) {
+        this.view = view;
         this.currentActivity = activity;
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        final Resources resources = currentActivity.getResources();
+        ColorStateList color;
         switch (item.getItemId()) {
             case R.id.scan_bottom_nav:
+                color = resources.getColorStateList(R.color.nav_scan);
+                view.setItemIconTintList(color);
+                view.setItemTextColor(color);
+
                 openScanActivity();
                 break;
             case R.id.compare_products:
+                color = resources.getColorStateList(R.color.nav_compare);
+                view.setItemIconTintList(color);
+                view.setItemTextColor(color);
+
                 if (isCurrentActivity(ProductComparisonActivity.class)) {
                     break;
                 }
@@ -45,6 +59,10 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
                 break;
             case R.id.home_page:
             case R.id.home:
+                color = resources.getColorStateList(R.color.nav_home);
+                view.setItemIconTintList(color);
+                view.setItemTextColor(color);
+
                 if (isCurrentActivity(WelcomeActivity.class) || isCurrentActivity(MainActivity.class)) {
                     ((FragmentActivity) currentActivity).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).addToBackStack(null)
                         .commit();
@@ -53,19 +71,26 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
                 currentActivity.startActivity((createIntent(MainActivity.class)));
                 break;
             case R.id.history_bottom_nav:
+                color = resources.getColorStateList(R.color.nav_history);
+                view.setItemIconTintList(color);
+                view.setItemTextColor(color);
+
                 if (isCurrentActivity(HistoryScanActivity.class)) {
                     break;
                 }
                 currentActivity.startActivity(createIntent(HistoryScanActivity.class));
                 break;
             case R.id.my_lists:
+                color = resources.getColorStateList(R.color.nav_lists);
+                view.setItemIconTintList(color);
+                view.setItemTextColor(color);
+
                 if (isCurrentActivity(ProductListsActivity.class)) {
                     break;
                 }
                 currentActivity.startActivity(createIntent(ProductListsActivity.class));
                 break;
             default:
-                return true;
         }
         return true;
     }

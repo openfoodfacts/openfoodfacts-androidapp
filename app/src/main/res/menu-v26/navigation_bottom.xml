@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black"
+    app:showAsAction="always|withText">
+    <item
+        android:id="@+id/scan_bottom_nav"
+        android:icon="@drawable/barcode_white_24dp"
+        android:iconTint="@color/nav_scan"
+        android:title="@string/scan_shortcut_short_label" />
+
+    <item
+        android:id="@+id/compare_products"
+        android:icon="@drawable/ic_compare_arrows_black_18dp"
+        android:iconTint="@color/nav_compare"
+        android:title="@string/product_summary_action_compare_button_label" />
+
+
+    <item
+        android:id="@+id/home_page"
+        android:icon="@drawable/baseline_home_black_36dp"
+        android:title="@string/home_drawer" />
+
+
+    <item
+        android:id="@+id/history_bottom_nav"
+        android:icon="@drawable/ic_history_grey_24dp"
+        android:title="@string/bottomNav_history" />
+
+    <item
+        android:id="@+id/my_lists"
+        android:icon="@drawable/playlist_add"
+        android:title="@string/your_lists" />
+</menu>

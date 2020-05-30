@@ -10,6 +10,7 @@
 
     <color name="brand_green_dark">#3C950E</color>
     <color name="brand_red_dark">#E51C23</color>
+    <color name="brand_yellow_dark">#C89600</color>
 
     <color name="blue">@color/brand_blue</color>
     <color name="red">@color/brand_red_dark</color>
