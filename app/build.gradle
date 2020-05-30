@@ -246,7 +246,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:2.1.0"
 
     // UI Component : Font Icons
-    implementation 'com.mikepenz:iconics-core:4.0.2@aar'
+    implementation 'com.mikepenz:iconics-core:5.0.3@aar'
     implementation 'com.mikepenz:google-material-typeface:3.0.1.4.original-kotlin@aar'
     implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0") {
         exclude group: 'com.android.support', module: 'appcompat-v7'
