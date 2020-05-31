@@ -219,8 +219,8 @@
     <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="permission_camera">L\'autorisation d\'utiliser l\'appareil photo est nécessaire pour scanner des codes-barres et prendre des photos.</string>
-    <string name="no_camera_dialog_title">Camera not found</string>
-    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
+    <string name="no_camera_dialog_title">Appareil photo introuvable</string>
+    <string name="no_camera_dialog_content">Votre appareil n\'a pas d\'appareil photo. Vous ne pourrez pas scanner de code-barres.</string>
     <string name="permission_title">Informations sur les permissions</string>
     <string name="permission_denied">Veuillez activer la permission dans les paramètres</string>
     <string name="info_download_data_connection">Vous devez télécharger des données pour que cette fonctionnalité marche. Veuillez activer votre connexion Internet.</string>
