@@ -241,6 +241,8 @@
     <string name="title_info_dialog">كيف يعمل؟</string>
     <string name="text_offline_info_dialog">يمكنك مسح المنتجات ضوئيا عندما كنت تكون غير متصل بالإنترنت لإضافتها لاحقا إلى Open Food Facts. ستظهر جميع المنتجات التي فحصتها هنا، وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="permission_camera">تصريح الكاميرا مطلوب لمسح شفرة المنتجات والتقاط الصور.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">معلومات التصريح</string>
     <string name="permission_denied">يرجى تفعيل التصريح في الإعدادات</string>
     <string name="info_download_data_connection">تحتاج إلى تحميل بعض البيانات لجعل هذه الوظيفة تعمل، يرجى تفعيل الاتصال بالإنترنت.</string>
