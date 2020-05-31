@@ -41,6 +41,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -393,8 +394,8 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
             baseDir.mkdirs();
         }
         String productListName = thisProductList.getListName();
-        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + productListName + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
-        File f = new File(baseDir,fileName);
+        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + productListName + "-" + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()) + ".csv";
+        File f = new File(baseDir, fileName);
         boolean isDownload;
         try (CSVPrinter writer = new CSVPrinter(new FileWriter(f), CSVFormat.DEFAULT.withHeader(getResources().getStringArray(R.array.your_products_headers)))) {
             List<YourListedProduct> listProducts = thisProductList.getProducts();

@@ -33,11 +33,9 @@ public class IngredientAnalysisRecyclerAdapter extends RecyclerView.Adapter<Ingr
     @NonNull
     @Override
     public IngredientAnalysisViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(mContext)
             .inflate(R.layout.ingredient_analysis_list_item, parent, false);
-        IngredientAnalysisViewHolder viewHolder = new IngredientAnalysisViewHolder(view);
-        return viewHolder;
+        return new IngredientAnalysisViewHolder(view);
     }
 
     @Override

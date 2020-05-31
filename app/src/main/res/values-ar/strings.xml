@@ -165,7 +165,7 @@
     <string name="search_button">بحث</string>
     <string name="alert_dialog_warning_title">تحذير</string>
     <string name="alert_dialog_warning_msg_user">تم تغيير إسم المستخدم / كلمة السر، يرجى تحديث المعلومات</string>
-    <string name="toast_retrieving">جاري التحميل...</string>
+    <string name="toast_retrieving">جاري التحميل…</string>
     <string name="txtBarcode">الرمز الشريطي:</string>
     <string name="txtCategories">الفئات :</string>
     <string name="txtLabels">التسميات، الشهادات، الجوائز:</string>
@@ -205,8 +205,8 @@
     <string name="hintBrand">العلامة التجارية</string>
     <string name="txtSendAll">تحميل الكل</string>
     <string name="txtPictureNeededDialogNo">تجاهل</string>
-    <string name="toastSending">جاري الإرسال...</string>
-    <string name="txtLoading">جاري التحميل...</string>
+    <string name="toastSending">جاري الإرسال…</string>
+    <string name="txtLoading">جاري التحميل…</string>
     <string name="txtDialogsContentDelete">هل أنت متأكد من أنك تريد حذف هذه المسودة؟</string>
     <string name="txtDialogsContentInfoSave">تم حفظ المنتج محليا، يمكنك تحريره في قائمة  تحرير</string>
     <string name="productSavedToast">تم حفظ المنتج، شكرًا!</string>

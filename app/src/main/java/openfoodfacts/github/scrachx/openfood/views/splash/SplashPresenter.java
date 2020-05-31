@@ -70,7 +70,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
         intent.putExtra("receiver", receiver);
         context.startService(intent);
         if (firstRun) {
-            new Handler().postDelayed(() -> view.navigateToMainActivity(), 6000);
+            new Handler().postDelayed(view::navigateToMainActivity, 6000);
         } else {
             view.navigateToMainActivity();
         }

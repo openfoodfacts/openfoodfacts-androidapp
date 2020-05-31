@@ -406,14 +406,14 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
-        private final LoadToast lt = new LoadToast(getActivity());
+        private final LoadToast lt = new LoadToast(requireActivity());
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            lt.setText(getActivity().getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.blue));
-            lt.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            lt.setText(requireActivity().getString(R.string.toast_retrieving));
+            lt.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.blue));
+            lt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
             lt.show();
         }
 

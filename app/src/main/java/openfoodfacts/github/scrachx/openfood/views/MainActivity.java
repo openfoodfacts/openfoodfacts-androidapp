@@ -223,7 +223,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userSession = preferences.getString("user_session", null);
         final boolean isUserLoggedIn = isUserLoggedIn();
         boolean isUserConnected = isUserLoggedIn && userSession != null;
-        boolean isConnected = isUserLoggedIn;
 
         if (isUserConnected) {
             updateProfileForCurrentUser();
@@ -321,8 +320,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                     case ITEM_INCOMPLETE_PRODUCTS:
 
-                        /**
-                         * Search and display the products to be completed by moving to ProductBrowsingListActivity
+                        /*
+                          Search and display the products to be completed by moving to ProductBrowsingListActivity
                          */
                         ProductBrowsingListActivity.startActivity(this, "", SearchType.INCOMPLETE_PRODUCT);
                         break;
@@ -397,7 +396,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isConnected ?
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn ?
             getLogoutDrawerItem() : getLoginDrawerItem());
 
         if (BuildConfig.FLAVOR.equals("obf")) {
@@ -662,16 +661,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case Utils.MY_PERMISSIONS_REQUEST_CAMERA: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager
-                    .PERMISSION_GRANTED) {
-                    Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
+        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager
+                .PERMISSION_GRANTED) {
+                Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
-            break;
         }
     }
 

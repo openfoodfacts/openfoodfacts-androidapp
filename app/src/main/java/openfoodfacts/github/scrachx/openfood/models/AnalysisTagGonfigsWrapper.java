@@ -20,9 +20,7 @@ public class AnalysisTagGonfigsWrapper {
      * @return A list of AnalysisTagConfig objects
      */
     public List<AnalysisTagConfig> map() {
-        List<AnalysisTagConfig> entityAnalysis = new ArrayList<>(analysisTagConfigs);
-
-        return entityAnalysis;
+        return new ArrayList<>(analysisTagConfigs);
     }
 
     public void setAnalysisTagConfigs(List<AnalysisTagConfig> analysisTags) {

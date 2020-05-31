@@ -348,10 +348,9 @@ public class Product implements Serializable {
     }
 
     public Map<String, ?> getImageDetails(String imageKey) {
-        Map<String, Map> images = (Map<String, Map>) additionalProperties.get("images");
+        Map<String, Map<String, ?>> images = (Map<String, Map<String, ?>>) additionalProperties.get("images");
         if (images != null) {
-            Map<String, ?> imagesDetails = (Map<String, ?>) images.get(imageKey);
-            return imagesDetails;
+            return images.get(imageKey);
         }
         return null;
     }

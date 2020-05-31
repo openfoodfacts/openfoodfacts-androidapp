@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.network.services;
 
-/**
- * Created by Lobster on 03.03.18.
+/*
+  Created by Lobster on 03.03.18.
  */
 
 import java.util.List;

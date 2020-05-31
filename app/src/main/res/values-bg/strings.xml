@@ -143,7 +143,7 @@
     <string name="search_button">Търсене</string>
     <string name="alert_dialog_warning_title">Предупреждение</string>
     <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, моля обновете информацията</string>
-    <string name="toast_retrieving">Зареждане...</string>
+    <string name="toast_retrieving">Зареждане…</string>
     <string name="txtBarcode">Баркод :</string>
     <string name="txtCategories">Категории :</string>
     <string name="txtLabels">Етикети, сертификации, награди :</string>
@@ -184,7 +184,7 @@
     <string name="txtSendAll">Качване на всичко</string>
     <string name="txtPictureNeededDialogNo">Отказ</string>
     <string name="toastSending">Качване…</string>
-    <string name="txtLoading">Зареждане...</string>
+    <string name="txtLoading">Зареждане…</string>
     <string name="txtDialogsContentDelete">Сигурни ли сте, че искате да премахнете тази чернова?</string>
     <string name="txtDialogsContentInfoSave">Продуктът е запазен локално, можете да го редактирате в менюто \"Редактиране офлайн\"</string>
     <string name="productSavedToast">Product saved, thanks!</string>

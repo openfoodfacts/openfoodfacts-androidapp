@@ -143,7 +143,7 @@
     <string name="search_button">Otsi</string>
     <string name="alert_dialog_warning_title">Hoiatus</string>
     <string name="alert_dialog_warning_msg_user">Kasutaja / parool on muutunud, värskendage teavet</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">Triipkood :</string>
     <string name="txtCategories">Kategooriad :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
@@ -183,8 +183,8 @@
     <string name="hintBrand">Brand</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -245,7 +245,7 @@
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Ekspordi CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">Bränd puudub</string>

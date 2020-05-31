@@ -302,7 +302,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
      * Automaticcely load suggestions for allergen names
      */
     private void loadAutoSuggestions() {
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         AsyncSession asyncSessionAllergens = daoSession.startAsyncSession();
         AllergenNameDao allergenNameDao = daoSession.getAllergenNameDao();
         final String appLanguageCode = LocaleHelper.getLanguage(activity);

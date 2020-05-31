@@ -39,7 +39,7 @@ public class ProductRepositoryTest {
     }
 
     private static void clearDatabase() {
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         Database db = daoSession.getDatabase();
         db.beginTransaction();
         try {

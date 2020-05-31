@@ -49,6 +49,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -159,8 +160,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             baseDir.mkdirs();
         }
         Log.d("dir", String.valueOf(baseDir));
-        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
-        File csvFile= new File(baseDir ,fileName);
+        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()) + ".csv";
+        File csvFile = new File(baseDir, fileName);
         boolean isDownload = false;
         try (CSVPrinter writer = new CSVPrinter(new FileWriter(csvFile), CSVFormat.DEFAULT.withHeader(getResources().getStringArray(R.array.headers)))) {
             for (HistoryProduct hp : mHistoryProductDao.loadAll()) {
