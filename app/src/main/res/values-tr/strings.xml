@@ -219,6 +219,8 @@
     <string name="title_info_dialog">Nasıl çalışır?</string>
     <string name="text_offline_info_dialog">Ürünleri daha sonra Open Food Facts\'e eklemek için çevrimdışı olduğunuzda tarayabilirsiniz. Taradığınız tüm ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
     <string name="permission_camera">Barkodları taramak ve fotoğraf çekmek için kamera izni gerekiyor.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">İzin bilgisi</string>
     <string name="permission_denied">Lütfen ayarlardan izinleri aktif edin</string>
     <string name="info_download_data_connection">Bu işlevi çalıştırmak için bir miktar veri indirmeniz gerekiyor. Lütfen internet bağlantısını etkinleştirin.</string>
