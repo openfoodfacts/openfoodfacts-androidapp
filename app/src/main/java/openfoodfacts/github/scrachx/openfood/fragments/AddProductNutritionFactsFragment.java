@@ -70,9 +70,12 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUT
  */
 public class AddProductNutritionFactsFragment extends BaseFragment implements PhotoReceiver {
     private static final String[] ALL_UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_DV, UnitUtils.UNIT_IU};
-    private static final String[] ALL_COMP = {"=", "<", ">"};
+    private static final String[] ALL_MOD = {"=", "<", ">"};
     private static final String[] ALL_UNIT_SERVING = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM, UnitUtils.UNIT_LITER, UnitUtils.UNIT_MILLILITRE};
     private static final String[] UNIT = {UnitUtils.UNIT_GRAM, UnitUtils.UNIT_MILLIGRAM, UnitUtils.UNIT_MICROGRAM};
+    private static final String PARAM_NO_NUTRITION_DATA = "no_nutrition_data";
+    private static final String PARAM_NUTRITION_DATA_PER = "nutrition_data_per";
+    private static final String PARAM_SERVING_SIZE = "serving_size";
     private final NumberKeyListener keyListener = new NumberKeyListener() {
         public int getInputType() {
             return InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD;
@@ -233,7 +236,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return allEditViews;
     }
 
-    private boolean isEveryFieldValid() {
+    private boolean isAllValuesValid() {
         final Collection<CustomValidatingEditTextView> allEditText = getAllEditTextView();
         for (CustomValidatingEditTextView editText : allEditText) {
             if (editText.hasError()) {
@@ -243,8 +246,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return true;
     }
 
-    public boolean containsInvalidField() {
-        return !isEveryFieldValid();
+    public boolean containsInvalidValue() {
+        return !isAllValuesValid();
     }
 
     @Nullable
@@ -257,48 +260,57 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
      */
     private void preFillProductValues() {
         loadNutritionImage();
+
+        // Set no nutrition data checkbox
         if (product.getNoNutritionData() != null && product.getNoNutritionData().equalsIgnoreCase("on")) {
             binding.checkboxNoNutritionData.setChecked(true);
             binding.nutritionFactsLayout.setVisibility(View.GONE);
         }
+
+        // Set nutrition data per
         if (product.getNutritionDataPer() != null && !product.getNutritionDataPer().isEmpty()) {
             updateSelectedDataSize(product.getNutritionDataPer());
         }
+
+        // Set serving size
         if (product.getServingSize() != null && !product.getServingSize().isEmpty()) {
             String servingSizeValue = product.getServingSize();
             // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
             updateServingSizeFrom(servingSizeValue);
         }
+
+        // Fill nutriments fields
         Nutriments nutriments = product.getNutriments();
-        if (nutriments != null && getView() != null) {
-            final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
-            for (CustomValidatingEditTextView view : editViews) {
-                final String nutrientShortName = view.getEntryName();
-                if (nutrientShortName.equals(binding.servingSize.getEntryName())) {
-                    continue;
+        if (nutriments == null || getView() == null) {
+            return;
+        }
+        final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
+        for (CustomValidatingEditTextView view : editViews) {
+            final String nutrientShortName = view.getEntryName();
+            if (nutrientShortName.equals(binding.servingSize.getEntryName())) {
+                continue;
+            }
+            String value = getValueFromShortName(nutriments, nutrientShortName);
+            if (value != null) {
+                view.setText(value);
+                if (view.getUnitSpinner() != null) {
+                    view.getUnitSpinner().setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName));
                 }
-                String value = getValueFromShortName(nutriments, nutrientShortName);
-                if (value != null) {
-                    view.setText(value);
-                    if (view.getUnitSpinner() != null) {
-                        view.getUnitSpinner().setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName));
-                    }
-                    if (view.getModSpinner() != null) {
-                        view.getModSpinner().setSelection(getSelectedModifierFromShortName(nutriments, nutrientShortName));
-                    }
+                if (view.getModSpinner() != null) {
+                    view.getModSpinner().setSelection(getSelectedModifierFromShortName(nutriments, nutrientShortName));
                 }
             }
-            //set the values of all the other nutrients if defined and create new row in the tableLayout.
-            for (int i = 0; i < AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.size(); i++) {
-                String nutrientShortName = AddProductNutritionFactsData.getShortName(AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(i));
-                if (nutriments.getValue(nutrientShortName) != null) {
+        }
+        //set the values of all the other nutrients if defined and create new row in the tableLayout.
+        for (int i = 0; i < AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.size(); i++) {
+            String nutrientShortName = AddProductNutritionFactsData.getShortName(AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(i));
+            if (nutriments.getValue(nutrientShortName) != null) {
 
-                    String value = getValueFromShortName(nutriments, nutrientShortName);
-                    int unitSelectedIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName);
-                    index.add(i);
-                    String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
-                    addNutrientRow(i, nutrients[i], true, value, unitSelectedIndex);
-                }
+                String value = getValueFromShortName(nutriments, nutrientShortName);
+                int unitSelectedIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName);
+                index.add(i);
+                String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
+                addNutrientRow(i, nutrients[i], true, value, unitSelectedIndex);
             }
         }
     }
@@ -359,22 +371,22 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private void preFillValuesFromOffline() {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
-            if (productDetails.get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION) != null) {
-                imagePath = productDetails.get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION);
+            if (productDetails.get("image_nutrition_facts") != null) {
+                imagePath = productDetails.get("image_nutrition_facts");
                 final String path = FileUtils.LOCALE_FILE_SCHEME + imagePath;
                 binding.imageProgress.setVisibility(View.VISIBLE);
                 loadNutritionsImage(path);
             }
-            if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_NO_NUTRITION_DATA) != null) {
+            if (productDetails.get(PARAM_NO_NUTRITION_DATA) != null) {
                 binding.checkboxNoNutritionData.setChecked(true);
                 binding.nutritionFactsLayout.setVisibility(View.GONE);
             }
-            if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER) != null) {
-                String s = productDetails.get(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER);
+            if (productDetails.get(PARAM_NUTRITION_DATA_PER) != null) {
+                String s = productDetails.get(PARAM_NUTRITION_DATA_PER);
                 updateSelectedDataSize(s);
             }
-            if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE) != null) {
-                String servingSizeValue = productDetails.get(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE);
+            if (productDetails.get(PARAM_SERVING_SIZE) != null) {
+                String servingSizeValue = productDetails.get(PARAM_SERVING_SIZE);
                 // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
                 updateServingSizeFrom(servingSizeValue);
             }
@@ -485,8 +497,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private int getPositionInModifierArray(String mod) {
-        for (int i = 0; i < ALL_COMP.length; i++) {
-            if (ALL_COMP[i].equals(mod)) {
+        for (int i = 0; i < ALL_MOD.length; i++) {
+            if (ALL_MOD[i].equals(mod)) {
                 return i;
             }
         }
@@ -544,7 +556,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private void updateButtonState() {
-        final boolean allValuesValid = isEveryFieldValid();
+        final boolean allValuesValid = isAllValuesValid();
         binding.globalValidationMsg.setVisibility(allValuesValid ? View.GONE : View.VISIBLE);
         binding.btnAdd.setEnabled(allValuesValid);
     }
@@ -660,18 +672,18 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     public void getAllDetails(Map<String, String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (binding.checkboxNoNutritionData.isChecked()) {
-                targetMap.put(OfflineSavedProduct.KEYS.PARAM_NO_NUTRITION_DATA, "on");
+                targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
-                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER, "serving");
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (binding.servingSize.getText() == null || EditTextUtils.isEmpty(binding.servingSize)) {
-                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, "");
+                if (binding.servingSize.getText() == null || binding.servingSize.getText().toString().isEmpty()) {
+                    targetMap.put(PARAM_SERVING_SIZE, "");
                 } else {
                     String servingSizeValue = binding.servingSize.getText().toString() + ObjectUtils.toString(binding.servingSize.getUnitSpinner().getSelectedItem());
-                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
+                    targetMap.put(PARAM_SERVING_SIZE, servingSizeValue);
                 }
                 for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
                     if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
@@ -688,39 +700,33 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     /**
-     * adds only those fields to the query map which are not empty and has changed from product.
+     * adds only those fields to the query map which are not empty.
      */
     public void getDetails(Map<String, String> targetMap) {
         if (activity instanceof AddProductActivity) {
             if (binding.checkboxNoNutritionData.isChecked()) {
-                if (product == null || !"on".equals(product.getNoNutritionData())) {
-                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_NO_NUTRITION_DATA, "on");
-                }
+                targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
             } else {
                 if (isDataPer100()) {
-                    if (product == null || !ProductUtils.DEFAULT_NUTRITION_SIZE.equals(product.getNutritionDataPer())) {
-                        targetMap.put(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
-                    }
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
                 } else if (isDataPerServing()) {
-                    if (product == null || !"serving".equals(product.getNutritionDataPer())) {
-                        targetMap.put(OfflineSavedProduct.KEYS.PARAM_NUTRITION_DATA_PER, "serving");
-                    }
+                    targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
                 }
-                if (EditTextUtils.isNotEmpty(binding.servingSize)) {
-                    String servingSizeValue = EditTextUtils.content(binding.servingSize) + ObjectUtils
-                        .toString(binding.servingSize.getUnitSpinner().getSelectedItem().toString());
-                    if (product == null || !servingSizeValue.equals(product.getServingSize())) {
-                        targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
-                    }
+            }
+            if (EditTextUtils.isNotEmpty(binding.servingSize)) {
+                String servingSizeValue = EditTextUtils.content(binding.servingSize) + ObjectUtils
+                    .toString(binding.servingSize.getUnitSpinner().getSelectedItem().toString());
+                if (product == null || !servingSizeValue.equals(product.getServingSize())) {
+                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
                 }
+            }
 
-                for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
-                    if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
-                        continue;
-                    }
-                    if (editTextView.getText() != null && EditTextUtils.isNotEmpty(editTextView)) {
-                        addNutrientToMapIfUpdated(editTextView, targetMap);
-                    }
+            for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
+                if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
+                    continue;
+                }
+                if (editTextView.getText() != null && EditTextUtils.isNotEmpty(editTextView)) {
+                    addNutrientToMapIfUpdated(editTextView, targetMap);
                 }
             }
         }
@@ -771,49 +777,17 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
      */
     private void addNutrientToMapIfUpdated(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
 
-                /*
-                // get nutriments from product
-                Nutriments nutriments = product.getNutriments();
-        if (nutriments != null && getView() != null) {
-            final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
-            for (CustomValidatingEditTextView view : editViews) {
-                final String nutrientShortName = view.getEntryName();
-                if (nutrientShortName.equals(servingSize.getEntryName())) {
-                    continue;
-                }
-                String value = getValueFromShortName(nutriments, nutrientShortName);
-                if (value != null) {
-                    view.setText(value);
-                    if (view.getAttachedSpinner() != null) {
-                        view.getAttachedSpinner().setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName));
-                    }
-                }
-            }
-            //set the values of all the other nutrients if defined and create new row in the tableLayout.
-            for (int i = 0; i < AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.size(); i++) {
-                String nutrientShortName = AddProductNutritionFactsData.getShortName(AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(i));
-                if (nutriments.getValue(nutrientShortName) != null) {
-
-                    String value = getValueFromShortName(nutriments, nutrientShortName);
-                    int unitSelectedIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName);
-                    index.add(i);
-                    String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
-                    addNutrientRow(i, nutrients[i], true, value, unitSelectedIndex);
-                }
-            }
-        }
-                 */
-
         Nutriments productNutriments = product != null ? product.getNutriments() : new Nutriments();
 
         String shortName = editTextView.getEntryName();
-        String completeName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
 
         Nutriments.Nutriment existingProductNutriment = productNutriments.get(shortName);
         String previousValue = null;
         String previousUnit = null;
+        String previousMod = null;
         if (existingProductNutriment != null) {
             previousUnit = existingProductNutriment.getUnit();
+            previousMod = existingProductNutriment.getModifier();
             if (isDataPer100()) {
                 previousValue = existingProductNutriment.getFor100gInUnits();
             } else if (isDataPerServing()) {
@@ -824,17 +798,18 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         boolean valueHasBeenUpdated = EditTextUtils.isDifferent(editTextView, previousValue);
 
         String newUnit = null;
-        if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
-            newUnit = getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition());
+        String newMod = null;
+        if (hasUnit(editTextView) && editTextView.getUnitSpinner() != null) {
+            newUnit = getSelectedUnit(editTextView.getEntryName(), editTextView.getUnitSpinner().getSelectedItemPosition());
+        }
+        if (editTextView.getModSpinner() != null) {
+            newMod = editTextView.getModSpinner().getSelectedItem().toString();
         }
         boolean unitHasBeenUpdated = previousUnit == null || !previousUnit.equals(newUnit);
+        boolean modHasBeenUpdated = previousMod == null || !previousMod.equals(newMod);
 
-        if (valueHasBeenUpdated || unitHasBeenUpdated) {
-            targetMap.put(completeName, editTextView.getText().toString());
-            if (hasUnit(editTextView) && editTextView.getAttachedSpinner() != null) {
-                targetMap.put(completeName + AddProductNutritionFactsData.SUFFIX_UNIT,
-                    getSelectedUnit(editTextView.getEntryName(), editTextView.getAttachedSpinner().getSelectedItemPosition()));
-            }
+        if (valueHasBeenUpdated || unitHasBeenUpdated || modHasBeenUpdated) {
+            addNutrientToMap(editTextView, targetMap);
         }
     }
 
@@ -1112,10 +1087,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
     }
 
-    private class ValidTextWatcher implements TextWatcher, AdapterView.OnItemSelectedListener {
+    class ValidTextWatcher implements TextWatcher, AdapterView.OnItemSelectedListener {
         private final CustomValidatingEditTextView editTextView;
 
-        private ValidTextWatcher(CustomValidatingEditTextView editTextView) {
+        ValidTextWatcher(CustomValidatingEditTextView editTextView) {
             this.editTextView = editTextView;
         }
 

@@ -2,7 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import android.util.Log;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -28,6 +28,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 public class Nutriments implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final String DEFAULT_UNIT = "g";
+    private static final String DEFAULT_MOD = "=";
     public static final String ENERGY = "energy";
     public static final String ENERGY_FROM_FAT = "energy-from-fat";
     public static final String FAT = "fat";
@@ -206,7 +207,11 @@ public class Nutriments implements Serializable {
         }
 
         try {
-            return new Nutriment(nutrimentName, additionalProperties.get(nutrimentName).toString(), get100g(nutrimentName), getServing(nutrimentName), getUnit(nutrimentName),
+            return new Nutriment(nutrimentName,
+                additionalProperties.get(nutrimentName).toString(),
+                get100g(nutrimentName),
+                getServing(nutrimentName),
+                getUnit(nutrimentName),
                 getModifier(nutrimentName));
         } catch (NullPointerException e) {
             // In case one of the getters was unable to get data as string
@@ -216,6 +221,7 @@ public class Nutriments implements Serializable {
         return null;
     }
 
+    @NonNull
     public String getUnit(String nutrimentName) {
         return getAdditionalProperty(nutrimentName, SUFFIX_UNIT, DEFAULT_UNIT);
     }
@@ -224,6 +230,7 @@ public class Nutriments implements Serializable {
         return getAdditionalProperty(nutrimentName, SUFFIX_SERVING);
     }
 
+    @NonNull
     private String getAdditionalProperty(String nutrimentName, String suffix) {
         return getAdditionalProperty(nutrimentName, suffix, StringUtils.EMPTY);
     }
@@ -241,9 +248,9 @@ public class Nutriments implements Serializable {
         return getAdditionalProperty(nutrimentName, SUFFIX_VALUE, null);
     }
 
-    @Nullable
+    @NonNull
     public String getModifier(String nutrimentName) {
-        return getAdditionalProperty(nutrimentName, SUFFIX_MOD, null);
+        return getAdditionalProperty(nutrimentName, SUFFIX_MOD, DEFAULT_MOD);
     }
 
     public boolean contains(String nutrimentName) {
@@ -280,6 +287,11 @@ public class Nutriments implements Serializable {
         private final String for100g;
         private final String forServing;
         private final String unit;
+
+        public String getModifier() {
+            return modifier;
+        }
+
         private final String modifier;
 
         Nutriment(String key, String name, String for100g, String forServing, String unit, String modifier) {
