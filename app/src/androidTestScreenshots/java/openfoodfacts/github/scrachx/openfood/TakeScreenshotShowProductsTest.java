@@ -1,7 +1,16 @@
 package openfoodfacts.github.scrachx.openfood;
 
 import android.content.Intent;
-import androidx.test.runner.AndroidJUnit4;
+
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
@@ -9,12 +18,6 @@ import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Take screenshots...
