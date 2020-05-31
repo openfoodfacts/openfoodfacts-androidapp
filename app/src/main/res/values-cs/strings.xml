@@ -229,6 +229,8 @@
     <string name="title_info_dialog">Jak to funguje?</string>
     <string name="text_offline_info_dialog">Pokud jste offline, můžete produkty dále skenovat a do Open Food Facts se přidají později. Všechny naskenované produkty, se zobrazí zde a budete je moci odeslat pomocí tlačítka níže.</string>
     <string name="permission_camera">Přístup k fotoaparátu je zapotřebí ke snímání čárových kódů a pořizování snímků.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informace o oprávněních</string>
     <string name="permission_denied">Prosím aktivujte oprávnění v nastavení</string>
     <string name="info_download_data_connection">Pro tuto funkcionalitu je třeba stáhnout dodatečná data. Zapněte, prosím, připojení k internetu.</string>
