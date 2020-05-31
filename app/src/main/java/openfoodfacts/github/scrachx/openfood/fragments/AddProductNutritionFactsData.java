@@ -86,7 +86,6 @@ public class AddProductNutritionFactsData {
         "nutriment_vitamin-e",
         "nutriment_vitamin-k",
         "nutriment_zinc"));
-    static final String SUFFIX_UNIT = "_unit";
     static final String PREFIX_NUTRIMENT_LONG_NAME = "nutriment_";
 
     static String getCompleteEntryName(CustomValidatingEditTextView editText) {
