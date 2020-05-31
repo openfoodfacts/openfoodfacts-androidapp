@@ -111,8 +111,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             }
         }
 
-        languagePreference.setEntries(finalLocalLabels.toArray(new String[finalLocalLabels.size()]));
-        languagePreference.setEntryValues(finalLocalValues.toArray(new String[finalLocalValues.size()]));
+        languagePreference.setEntries(finalLocalLabels.toArray(new String[0]));
+        languagePreference.setEntryValues(finalLocalValues.toArray(new String[0]));
 
         languagePreference.setOnPreferenceChangeListener((preference, locale) -> {
 
@@ -139,7 +139,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         List<String> countryLabels = new ArrayList<>();
         List<String> countryTags = new ArrayList<>();
 
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
         CountryNameDao countryNameDao = daoSession.getCountryNameDao();
 
@@ -282,7 +282,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                                 preference.setSummary(null);
                                 preference.setWidgetLayoutResource(R.layout.loading);
                             } else {
-                                new GetAnalysisTagConfigs(PreferencesFragment.this).execute(OFFApplication.getInstance().getDaoSession());
+                                new GetAnalysisTagConfigs(PreferencesFragment.this).execute(OFFApplication.getDaoSession());
                             }
                         }
                     });
@@ -359,8 +359,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     }
 
     private static class GetAnalysisTagConfigs extends AsyncTask<DaoSession, Void, List<AnalysisTagConfig>> {
-        private WeakReference<PreferencesFragment> wRefFragment;
-        private String language;
+        private final String language;
+        private final WeakReference<PreferencesFragment> wRefFragment;
 
         GetAnalysisTagConfigs(PreferencesFragment fragment) {
             this.wRefFragment = new WeakReference<>(fragment);
@@ -406,14 +406,14 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
-        private LoadToast lt = new LoadToast(getActivity());
+        private final LoadToast lt = new LoadToast(requireActivity());
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            lt.setText(getActivity().getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.blue));
-            lt.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            lt.setText(requireActivity().getString(R.string.toast_retrieving));
+            lt.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.blue));
+            lt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
             lt.show();
         }
 

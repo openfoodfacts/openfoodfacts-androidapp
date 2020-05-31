@@ -3,28 +3,29 @@ package openfoodfacts.github.scrachx.openfood;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import androidx.test.rule.GrantPermissionRule;
 import android.util.Log;
-import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.rule.GrantPermissionRule;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.runner.RunWith;
+
+import java.util.Collection;
+import java.util.Locale;
+
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotsLocaleProvider;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
-import java.util.Collection;
-import java.util.Locale;
 
 /**
  * Take screenshots...
  */
-@RunWith(JUnit4.class)
+@RunWith(AndroidJUnit4.class)
 public abstract class AbstractScreenshotTest {
     public static final String ACTION_NAME = "actionName";
     private static final String LOG_TAG = AbstractScreenshotTest.class.getSimpleName();

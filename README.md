@@ -109,8 +109,7 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 - [Dagger 2](https://github.com/google/dagger) - A fast dependency injector for Android and Java
 - [Retrofit](http://square.github.io/retrofit/) - Retrofit turns your REST API into a Java interface
 - [OkHttp](https://github.com/square/okhttp) - An HTTP+SPDY client for Android and Java applications
-- [Butterknife](http://jakewharton.github.io/butterknife/) - View "injection" library for Android
-- [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java 
+- [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java
 - [Apache](https://github.com/apache/commons-io) - The Apache Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.
 - [RxJava](https://github.com/ReactiveX/RxJava) - Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.
 - [android-async-http](https://loopj.com/android-async-http/) - A Callback-Based Http Client Library for Android

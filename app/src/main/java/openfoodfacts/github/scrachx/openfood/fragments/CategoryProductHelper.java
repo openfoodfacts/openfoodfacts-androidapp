@@ -30,11 +30,10 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 
 public class CategoryProductHelper {
-
-    private TextView categoryText;
-    private List<CategoryName> categories;
-    private BaseFragment baseFragment;
-    private WikiDataApiClient apiClient;
+    private final WikiDataApiClient apiClient;
+    private final BaseFragment baseFragment;
+    private final List<CategoryName> categories;
+    private final TextView categoryText;
     private boolean containsAlcohol;
 
 
@@ -83,8 +82,8 @@ public class CategoryProductHelper {
             @Override
             public void onClick(@NonNull View view) {
                 if (category.getIsWikiDataIdPresent()) {
-                    apiClient.doSomeThing(category.getWikiDataId(), (value, result) -> {
-                        if (value) {
+                    apiClient.doSomeThing(category.getWikiDataId(), (result) -> {
+                        if (result != null) {
                             FragmentActivity activity = baseFragment.getActivity();
 
                             if (activity != null && !activity.isFinishing()) {

@@ -6,18 +6,18 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.Assert.*;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_EN;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_FR;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_TAG;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link LabelResponse}
  */
 public class LabelResponseTest {
-
     private Map<String, String> mNamesMap;
-
     private LabelResponse mLabelResponse;
 
     @Before

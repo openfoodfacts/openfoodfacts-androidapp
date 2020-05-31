@@ -21,40 +21,39 @@ import openfoodfacts.github.scrachx.openfood.views.YourListedProductsActivity;
 
 //recyclerview adapter to display product lists in a dialog
 public class DialogAddToListAdapter extends RecyclerView.Adapter<DialogAddToListAdapter.TvListViewHolder> {
-    private Context mContext;
-    private List<ProductLists> productLists;
-    private String barcode;
-    private String productName;
+    private final String barcode;
+    private final String imageUrl;
+    private final Context mContext;
+    private final String productDetails;
     private YourListedProductDao yourListedProductDao;
-    private String productDetails;
-    private String imageUrl;
+    private final List<ProductLists> productLists;
+    private final String productName;
 
     public DialogAddToListAdapter(Context context, List<ProductLists> productLists,
-                                  String barcode,String productName,String productDetails,String imageUrl)
-    {
-        this.mContext=context;
-        this.productLists=productLists;
-        this.barcode=barcode;
-        this.productName=productName;
-        this.productDetails=productDetails;
-        this.imageUrl=imageUrl;
+                                  String barcode, String productName, String productDetails, String imageUrl) {
+        this.mContext = context;
+        this.productLists = productLists;
+        this.barcode = barcode;
+        this.productName = productName;
+        this.productDetails = productDetails;
+        this.imageUrl = imageUrl;
     }
 
     @NonNull
     @Override
     public TvListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(mContext)
-                .inflate(R.layout.dialog_add_to_list_recycler_item,parent,false);
+        View view = LayoutInflater.from(mContext)
+            .inflate(R.layout.dialog_add_to_list_recycler_item, parent, false);
         return new TvListViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TvListViewHolder holder, int position) {
-        String listName=productLists.get(position).getListName();
+        String listName = productLists.get(position).getListName();
         holder.tvListTitle.setText(listName);
-        holder.itemView.setOnClickListener(v-> {
-            Long listId=productLists.get(position).getId();
-            YourListedProduct product=new YourListedProduct();
+        holder.itemView.setOnClickListener(v -> {
+            Long listId = productLists.get(position).getId();
+            YourListedProduct product = new YourListedProduct();
             product.setBarcode(barcode);
             product.setListId(listId);
             product.setListName(listName);
@@ -62,14 +61,13 @@ public class DialogAddToListAdapter extends RecyclerView.Adapter<DialogAddToList
             product.setProductDetails(productDetails);
             product.setImageUrl(imageUrl);
 
-            yourListedProductDao= Utils.getDaoSession().getYourListedProductDao();
+            yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
             yourListedProductDao.insertOrReplace(product);
 
             Intent intent = new Intent(mContext, YourListedProductsActivity.class);
-            intent.putExtra("listName",listName);
-            intent.putExtra("listId",listId);
+            intent.putExtra("listName", listName);
+            intent.putExtra("listId", listId);
             mContext.startActivity(intent);
-
         });
     }
 
@@ -79,11 +77,11 @@ public class DialogAddToListAdapter extends RecyclerView.Adapter<DialogAddToList
     }
 
     static class TvListViewHolder extends RecyclerView.ViewHolder {
-        TextView tvListTitle;
+        final TextView tvListTitle;
 
         TvListViewHolder(View itemView) {
             super(itemView);
-            tvListTitle=itemView.findViewById(R.id.tvDialogListName);
+            tvListTitle = itemView.findViewById(R.id.tvDialogListName);
         }
     }
 }

@@ -468,6 +468,8 @@
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate your internet connection.</string>

@@ -196,7 +196,7 @@ public class Nutriments implements Serializable {
     public static final String SUFFIX_100g = "_100g";
     public static final String SUFFIX_UNIT = "_unit";
     public static final String SUFFIX_SERVING = "_serving";
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
     private boolean containsVitamins;
     private boolean containsMinerals;
 

@@ -2,9 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -12,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -31,9 +30,6 @@ public class CategoryTest {
             new CategoryName(CATEGORY_TAG_1, LANGUAGE_CODE_ENGLISH, CATEGORY_NAME_NAME_1);
     private static final CategoryName CATEGORY_NAME_2 =
             new CategoryName(CATEGORY_TAG_2, LANGUAGE_CODE_FRENCH, CATEGORY_NAME_NAME_2);
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
     @Mock
     private DaoSession mockDaoSession;
@@ -59,10 +55,9 @@ public class CategoryTest {
 
     @Test
     public void getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-
-        mCategory.getNames();
+        assertThrows(DaoException.class, () -> mCategory.getNames());
     }
+
 
     @Test
     public void getNamesWithNullNamesAndNonNullDaoSession_setsNamesFromCategoryNameDao() {
@@ -81,9 +76,7 @@ public class CategoryTest {
 
     @Test
     public void deleteWithNullDao_throwsDaoException() {
-        thrown.expect(DaoException.class);
-
-        mCategory.delete();
+        assertThrows(DaoException.class, () -> mCategory.delete());
     }
 
     @Test
@@ -97,9 +90,7 @@ public class CategoryTest {
 
     @Test
     public void refreshWithNullDao_throwsDaoException() {
-        thrown.expect(DaoException.class);
-
-        mCategory.refresh();
+        assertThrows(DaoException.class, () -> mCategory.refresh());
     }
 
     @Test
@@ -113,9 +104,7 @@ public class CategoryTest {
 
     @Test
     public void updateWithNullDao_throwsDaoException() {
-        thrown.expect(DaoException.class);
-
-        mCategory.update();
+        assertThrows(DaoException.class, () -> mCategory.update());
     }
 
     @Test

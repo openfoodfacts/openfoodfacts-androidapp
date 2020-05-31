@@ -1,18 +1,17 @@
 package openfoodfacts.github.scrachx.openfood.views.viewmodel.category;
 
-import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableInt;
-import androidx.annotation.NonNull;
-
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -67,9 +66,7 @@ public class CategoryFragmentViewModel extends ViewModel {
             .flatMap(categoryNames -> {
                 if (categoryNames.isEmpty()) {
                     return repository.getCategories()
-                        .flatMap(categories -> {
-                            return Single.just(extractCategoriesNames(categories));
-                        });
+                        .flatMap(categories -> Single.just(extractCategoriesNames(categories)));
                 } else {
                     return Single.just(categoryNames);
                 }

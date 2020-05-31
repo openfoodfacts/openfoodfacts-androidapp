@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -70,8 +71,8 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
@@ -85,27 +86,27 @@ public class ProductRepository implements IProductRepository {
     private static final String DEFAULT_LANGUAGE = "en";
     private static final String TAG = ProductRepository.class.getSimpleName();
     private static IProductRepository instance;
-    private ProductApiService productApi;
-    private RobotoffAPIService robotoffApi;
-    private Database db;
-    private LabelDao labelDao;
-    private LabelNameDao labelNameDao;
-    private TagDao tagDao;
-    private InvalidBarcodeDao invalidBarcodeDao;
-    private AllergenDao allergenDao;
-    private AllergenNameDao allergenNameDao;
-    private AdditiveDao additiveDao;
-    private AdditiveNameDao additiveNameDao;
-    private CountryDao countryDao;
-    private CountryNameDao countryNameDao;
-    private CategoryDao categoryDao;
-    private CategoryNameDao categoryNameDao;
-    private IngredientDao ingredientDao;
-    private IngredientNameDao ingredientNameDao;
-    private IngredientsRelationDao ingredientsRelationDao;
-    private AnalysisTagDao analysisTagDao;
-    private AnalysisTagNameDao analysisTagNameDao;
-    private AnalysisTagConfigDao analysisTagConfigDao;
+    private final AdditiveDao additiveDao;
+    private final AdditiveNameDao additiveNameDao;
+    private final AllergenDao allergenDao;
+    private final AllergenNameDao allergenNameDao;
+    private final AnalysisTagConfigDao analysisTagConfigDao;
+    private final AnalysisTagDao analysisTagDao;
+    private final AnalysisTagNameDao analysisTagNameDao;
+    private final CategoryDao categoryDao;
+    private final CategoryNameDao categoryNameDao;
+    private final CountryDao countryDao;
+    private final CountryNameDao countryNameDao;
+    private final Database db;
+    private final IngredientDao ingredientDao;
+    private final IngredientNameDao ingredientNameDao;
+    private final IngredientsRelationDao ingredientsRelationDao;
+    private final InvalidBarcodeDao invalidBarcodeDao;
+    private final LabelDao labelDao;
+    private final LabelNameDao labelNameDao;
+    private final ProductApiService productApi;
+    private final RobotoffAPIService robotoffApi;
+    private final TagDao tagDao;
     // -1 no internet connexion.
     private final static long TAXONOMY_NO_INTERNET = -9999L;
 
@@ -129,7 +130,7 @@ public class ProductRepository implements IProductRepository {
         productApi = CommonApiManager.getInstance().getProductApiService();
         robotoffApi = CommonApiManager.getInstance().getRobotoffApiService();
 
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         db = daoSession.getDatabase();
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
@@ -255,9 +256,9 @@ public class ProductRepository implements IProductRepository {
         }
         if (loadFromLocalDatabase) {
             //If we are here then just get the information from the local database
-            return Single.fromCallable(() -> dao.loadAll());
+            return Single.fromCallable((Callable<List<T>>) dao::loadAll);
         }
-        return Single.fromCallable(() -> Collections.emptyList());
+        return Single.fromCallable(Collections::emptyList);
     }
 
     Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
@@ -551,7 +552,7 @@ public class ProductRepository implements IProductRepository {
         ingredientDao.deleteAll();
         ingredientNameDao.deleteAll();
         ingredientsRelationDao.deleteAll();
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         daoSession.getDatabase().execSQL(
             "update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao
                 .getTablename() + "')");

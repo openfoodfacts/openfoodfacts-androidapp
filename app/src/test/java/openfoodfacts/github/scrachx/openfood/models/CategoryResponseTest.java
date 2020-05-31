@@ -6,23 +6,19 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.Assert.*;
 import static openfoodfacts.github.scrachx.openfood.models.CategoryResponseTestData.GUMMY_BEARS_EN;
 import static openfoodfacts.github.scrachx.openfood.models.CategoryResponseTestData.GUMMY_BEARS_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link CategoryResponse}
  */
 public class CategoryResponseTest {
-
     private final String CATEGORY_TAG = "tag";
-
     private final String WIKI_DATA_ID = "wiki_id";
-
-    private Map<String, String> mNamesMap = new HashMap<>();
-
+    private final Map<String, String> mNamesMap = new HashMap<>();
     private CategoryResponse mCategoryResponse;
 
     @Before

@@ -63,9 +63,6 @@ public class UtilsTest {
         final Context mockCtx = mock(Context.class);
         final PackageManager mockPM = mock(PackageManager.class);
 
-        // Test for null
-        assertFalse(Utils.isHardwareCameraInstalled(null));
-
         when(mockCtx.getPackageManager()).thenReturn(mockPM);
 
         // Test for best condition
@@ -77,11 +74,6 @@ public class UtilsTest {
         when(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
             .thenReturn(false);
 
-        assertFalse(Utils.isHardwareCameraInstalled(mockCtx));
-
-        // Test for null package Manager
-        when(mockCtx.getPackageManager())
-            .thenReturn(null);
         assertFalse(Utils.isHardwareCameraInstalled(mockCtx));
     }
 }

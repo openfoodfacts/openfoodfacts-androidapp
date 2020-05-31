@@ -59,7 +59,6 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.Question;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
@@ -649,8 +648,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onClick(View view) {
 
                 if (label.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(label.getWikiDataId(), (value, result) -> {
-                        if (value) {
+                    apiClientForWikiData.doSomeThing(label.getWikiDataId(), (result) -> {
+                        if (result != null) {
                             FragmentActivity activity = getActivity();
                             if (activity != null && !activity.isFinishing()) {
                                 BottomScreenCommon.showBottomScreen(result, label,
@@ -733,36 +732,38 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void onBookmarkProductButtonClick() {
-        Activity activity = getActivity();
+        final Activity activity = requireActivity();
+        final List<ProductLists> productLists = ProductListsActivity.getProductListsDaoWithDefaultList(activity).loadAll();
 
-        String productBarcode = product.getCode();
-        String productName = product.getProductName();
-        String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(getContext()));
-        String productDetails = YourListedProductsActivity.getProductBrandsQuantityDetails(product);
+        final String productBarcode = product.getCode();
+        final String productName = product.getProductName();
+        final String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(activity));
+        final String productDetails = YourListedProductsActivity.getProductBrandsQuantityDetails(product);
 
-        MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)
+        final MaterialDialog addToListDialog = new MaterialDialog.Builder(activity)
             .title(R.string.add_to_product_lists)
-            .customView(R.layout.dialog_add_to_list, true);
-        MaterialDialog addToListDialog = addToListBuilder.build();
+            .customView(R.layout.dialog_add_to_list, true)
+            .build();
         addToListDialog.show();
-        View addToListView = addToListDialog.getCustomView();
-        if (addToListView != null) {
-            ProductListsDao productListsDao = ProductListsActivity.getProducListsDaoWithDefaultList(this.getContext());
-            List<ProductLists> productLists = productListsDao.loadAll();
 
-            RecyclerView addToListRecyclerView =
-                addToListView.findViewById(R.id.rv_dialogAddToList);
-            DialogAddToListAdapter addToListAdapter =
-                new DialogAddToListAdapter(activity, productLists, productBarcode, productName, productDetails, imageUrl);
-            addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
-            addToListRecyclerView.setAdapter(addToListAdapter);
-            TextView tvAddToList = addToListView.findViewById(R.id.tvAddToNewList);
-            tvAddToList.setOnClickListener(view -> {
-                Intent intent = new Intent(activity, ProductListsActivity.class);
-                intent.putExtra("product", product);
-                activity.startActivity(intent);
-            });
+        final View dialogView = addToListDialog.getCustomView();
+        if (dialogView == null) {
+            return;
         }
+
+        // Set recycler view
+        final RecyclerView addToListRecyclerView = dialogView.findViewById(R.id.rv_dialogAddToList);
+        DialogAddToListAdapter addToListAdapter = new DialogAddToListAdapter(activity, productLists, productBarcode, productName, productDetails, imageUrl);
+        addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        addToListRecyclerView.setAdapter(addToListAdapter);
+
+        // Add listener to text view
+        final TextView tvAddToList = dialogView.findViewById(R.id.tvAddToNewList);
+        tvAddToList.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ProductListsActivity.class);
+            intent.putExtra("product", product);
+            activity.startActivity(intent);
+        });
     }
 
     @Override
@@ -814,7 +815,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
         boolean shouldRefresh = requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK;
         shouldRefresh = shouldRefresh || ProductImageManagementActivity.isImageModified(requestCode, resultCode);
-        
+
         if (shouldRefresh && getActivity() instanceof ProductActivity) {
             ((ProductActivity) getActivity()).onRefresh();
         }

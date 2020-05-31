@@ -183,7 +183,7 @@
     <string name="hintBrand">Marque</string>
     <string name="txtSendAll">Tout envoyer</string>
     <string name="txtPictureNeededDialogNo">Annuler</string>
-    <string name="toastSending">Envoi en cours...</string>
+    <string name="toastSending">Envoi en cours…</string>
     <string name="txtLoading">Chargement…</string>
     <string name="txtDialogsContentDelete">Êtes-vous sûr(e) de vouloir supprimer ce brouillon ?</string>
     <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu « Édition hors-ligne »</string>

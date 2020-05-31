@@ -1,10 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
-import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
-
 import java.util.List;
+
+import io.reactivex.Single;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTag;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.Category;
+import openfoodfacts.github.scrachx.openfood.models.Country;
+import openfoodfacts.github.scrachx.openfood.models.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
+import openfoodfacts.github.scrachx.openfood.models.Label;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
 
 public enum Taxonomy {
     LABEL(ProductApiService.LABELS_JSON) {

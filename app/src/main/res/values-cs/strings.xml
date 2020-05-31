@@ -634,13 +634,13 @@
     <string name="infants">Kojenci</string>
     <string name="infants_age">&lt; %s</string>
     <string name="toddlers">Batolata</string>
-    <string name="toddlers_age">1 - 2</string>
+    <string name="toddlers_age">1 – 2</string>
     <string name="children">Děti</string>
-    <string name="children_age">3 - 9</string>
+    <string name="children_age">3 – 9</string>
     <string name="adolescents">Dospívající</string>
-    <string name="adolescents_age">10 - 17</string>
+    <string name="adolescents_age">10 – 17</string>
     <string name="adults">Dospělí</string>
-    <string name="adults_age">18 - 64</string>
+    <string name="adults_age">18 – 64</string>
     <string name="elderly">Senioři</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>

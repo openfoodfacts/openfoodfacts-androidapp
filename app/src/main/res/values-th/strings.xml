@@ -138,7 +138,7 @@
     <string name="search_button">ค้นหา</string>
     <string name="alert_dialog_warning_title">คำเตือน</string>
     <string name="alert_dialog_warning_msg_user">ผู้ใช้/รหัสผ่านมีการเปลี่ยนแปลง โปรดอัปเดตข้อมูล</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">บาร์โค้ด :</string>
     <string name="txtCategories">หมวดหมู่</string>
     <string name="txtLabels">ป้าย, ใบรับรอง, รางวัลต่างๆที่ได้รับ :</string>
@@ -179,8 +179,8 @@
     <string name="hintBrand">ยี่ห้อ</string>
     <string name="txtSendAll">อัปโหลดทั้งหมด</string>
     <string name="txtPictureNeededDialogNo">ยก​เลิก</string>
-    <string name="toastSending">กำลังอัปโหลด...</string>
-    <string name="txtLoading">กำลังโหลด...</string>
+    <string name="toastSending">กำลังอัปโหลด…</string>
+    <string name="txtLoading">กำลังโหลด…</string>
     <string name="txtDialogsContentDelete">คุณแน่ใจหรือไม่ว่าต้องการลบร่างข้อมูลนี้</string>
     <string name="txtDialogsContentInfoSave">ผลิตภัณฑ์ได้ถูกบันทึกไว้ในเครื่องแล้ว คุณสามารถแก้ไขได้อีกครั้งในเมนู \"แก้ไขออฟไลน์\"</string>
     <string name="productSavedToast">Product saved, thanks!</string>

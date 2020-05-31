@@ -17,9 +17,9 @@ public class ProductImage {
     private final RequestBody imguploadNutrition;
     private final RequestBody imguploadOther;
     private String filePath;
-    private String barcode;
-    private String language;
-    private ProductImageField imageField;
+    private final String barcode;
+    private final ProductImageField imageField;
+    private final String language;
 
     public ProductImage(String code, ProductImageField field, File image) {
         this(code, field, image, LocaleHelper.getLanguage(OFFApplication.getInstance()));

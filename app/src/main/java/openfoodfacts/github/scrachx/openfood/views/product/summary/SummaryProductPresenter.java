@@ -24,10 +24,10 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
  * Created by Lobster on 17.03.18.
  */
 public class SummaryProductPresenter implements ISummaryProductPresenter.Actions {
-    private IProductRepository repository = ProductRepository.getInstance();
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private ISummaryProductPresenter.View view;
-    private Product product;
+    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final Product product;
+    private final IProductRepository repository = ProductRepository.getInstance();
+    private final ISummaryProductPresenter.View view;
 
     public SummaryProductPresenter(Product product, ISummaryProductPresenter.View view) {
         this.product = product;
@@ -77,7 +77,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> view.showAllergens(allergens), e -> {
+                .subscribe(view::showAllergens, e -> {
                     if (runIfError != null) {
                         runIfError.run();
                     }
@@ -127,7 +127,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
         if (labelsTags != null && !labelsTags.isEmpty()) {
             final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                Observable.fromArray(labelsTags.toArray(new String[labelsTags.size()]))
+                Observable.fromArray(labelsTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getLabelByTagAndLanguageCode(tag, languageCode)
                         .flatMap(labelName -> {
                             if (labelName.isNull()) {

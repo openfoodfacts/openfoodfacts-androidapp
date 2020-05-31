@@ -10,8 +10,13 @@ import java.util.Map;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNull;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.*;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_DE;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_EN;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_FR;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_TAG;
+import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
+import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_GERMAN;
 
 /**
  * Tests for {@link LabelsWrapper}
@@ -39,7 +44,7 @@ public class LabelsWrapperTest {
 
         Label label1 = labels.get(0);
         assertEquals(LABEL_TAG, label1.getTag());
-        assertEquals(null, label1.getWikiDataId());
+        assertNull(label1.getWikiDataId());
         assertFalse(label1.getIsWikiDataIdPresent());
         assertEquals(2, label1.getNames().size());
 

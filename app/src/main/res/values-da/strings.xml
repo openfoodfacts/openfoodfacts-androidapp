@@ -245,7 +245,7 @@
     <string name="title_clear_history_dialog">Ryd</string>
     <string name="text_clear_history_dialog">Vil du slette hele din scanningshistorik?</string>
     <string name="export_csv_history">Eksport CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">Historik eksporteret</string>
     <string name="permision_write_external_storage">Tilladelse til skrivning på eksternt lager er nødvendig for at eksportere historik.</string>
     <string name="no_brand">Intet mærke</string>

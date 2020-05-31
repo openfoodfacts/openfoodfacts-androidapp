@@ -8,10 +8,8 @@ import java.util.Map;
  */
 
 public class CategoryResponse {
-
-    private String code;
-
-    private Map<String, String> names;
+    private final String code;
+    private final Map<String, String> names;
     private String wikiDataCode;
     private Boolean isWikiDataIdPresent = false;
 

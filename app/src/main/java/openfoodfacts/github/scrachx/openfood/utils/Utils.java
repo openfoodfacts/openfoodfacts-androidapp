@@ -62,15 +62,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
-import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -181,12 +179,7 @@ public class Utils {
     }
 
     public static int getColor(Context context, int id) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return ContextCompat.getColor(context, id);
-        } else {
-            //noinspection deprecation
-            return context.getResources().getColor(id);
-        }
+        return ContextCompat.getColor(context, id);
     }
 
     // Decodes image and scales it to reduce memory consumption
@@ -457,29 +450,18 @@ public class Utils {
     }
 
     public static OkHttpClient httpClientBuilder() {
-        OkHttpClient httpClient;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-                .tlsVersions(TlsVersion.TLS_1_2)
-                .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
-                .build();
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+            .connectTimeout(5000, TimeUnit.MILLISECONDS)
+            .readTimeout(30000, TimeUnit.MILLISECONDS)
+            .writeTimeout(30000, TimeUnit.MILLISECONDS)
+            .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS));
 
-            httpClient = new OkHttpClient.Builder()
-                .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                .readTimeout(30000, TimeUnit.MILLISECONDS)
-                .writeTimeout(30000, TimeUnit.MILLISECONDS)
-                .connectionSpecs(Collections.singletonList(spec))
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build();
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         } else {
-            httpClient = new OkHttpClient.Builder()
-                .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                .readTimeout(30000, TimeUnit.MILLISECONDS)
-                .writeTimeout(30000, TimeUnit.MILLISECONDS)
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build();
+            builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
         }
-        return httpClient;
+        return builder.build();
     }
 
     /**
@@ -489,20 +471,17 @@ public class Utils {
      * @return true if airplane mode is active.
      */
     public static boolean isAirplaneModeActive(Context context) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return Settings.Global.getInt(context.getContentResolver(),
+                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
+        } else {
             //noinspection deprecation
             return Settings.System.getInt(context.getContentResolver(),
                 Settings.System.AIRPLANE_MODE_ON, 0) != 0;
-        } else {
-            return Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
         }
     }
 
-    public static boolean isUserLoggedIn(Context context) {
-        if (context == null) {
-            return false;
-        }
+    public static boolean isUserLoggedIn(@NonNull Context context) {
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         return StringUtils.isNotEmpty(login);
@@ -583,7 +562,7 @@ public class Utils {
             return picDir;
         }
         // creates the directory if not present yet
-        final boolean mkdir = picDir.mkdir();
+        final boolean mkdir = picDir.mkdirs();
         if (!mkdir) {
             Log.e(Utils.class.getSimpleName(), "Can create dir " + picDir);
         }
@@ -592,12 +571,11 @@ public class Utils {
     }
 
     public static boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
     public static Uri getOutputPicUri(Context context) {
-        return (Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), "/" + Utils.timeStamp() + ".jpg")));
+        return Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), Utils.timeStamp() + ".jpg"));
     }
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {

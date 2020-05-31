@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.network;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +14,7 @@ import org.json.JSONObject;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.network.services.WikidataApiService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,25 +66,25 @@ public class WikiDataApiClient {
                 try {
                     String jsonInString = mapper.writeValueAsString(response.body());
                     JSONObject jsonObject = new JSONObject(jsonInString);
-                    onWikiResponse.onResponse(true, jsonObject);
+                    onWikiResponse.onResponse(jsonObject);
                 } catch (JsonProcessingException | JSONException e) {
-                    onWikiResponse.onResponse(false, null);
+                    onWikiResponse.onResponse(null);
                     Log.e("WikiDataApiClient", "doSomeThing", e);
                 }
             }
 
             @Override
             public void onFailure(final @NonNull Call<Object> call, final @NonNull Throwable t) {
-                onWikiResponse.onResponse(false, null);
+                onWikiResponse.onResponse(null);
                 Log.i("WikiDataApiClient", "failure", t);
             }
         });
     }
 
     /**
-     * Interface to call the function {@link OnWikiResponse#onResponse(boolean, JSONObject)}
+     * Interface to call the function {@link OnWikiResponse#onResponse(JSONObject)}
      */
     public interface OnWikiResponse {
-        void onResponse(boolean value, JSONObject result);
+        void onResponse(@Nullable JSONObject result);
     }
 }

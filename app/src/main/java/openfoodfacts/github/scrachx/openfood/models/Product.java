@@ -46,21 +46,20 @@ public class Product implements Serializable {
     private String manufactureUrl;
     private String url;
     private String code;
-    @JsonProperty("traces_tags")
-    private List<String> tracesTags = new ArrayList<>();
-    @JsonProperty("ingredients_that_may_be_from_palm_oil_tags")
-    private List<String> ingredientsThatMayBeFromPalmOilTags = new ArrayList<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
     @JsonProperty("additives_tags")
-    private List<String> additivesTags = new ArrayList<>();
+    private final List<String> additivesTags = new ArrayList<>();
     @JsonProperty("allergens_hierarchy")
-    private List<String> allergensHierarchy = new ArrayList<>();
+    private final List<String> allergensHierarchy = new ArrayList<>();
+    @JsonProperty("brands_tags")
+    private final List<String> brandsTags = new ArrayList<>();
     @JsonProperty("manufacturing_places")
     private String manufacturingPlaces;
     private Nutriments nutriments;
-    @JsonProperty("ingredients_from_palm_oil_tags")
-    private List<Object> ingredientsFromPalmOilTags = new ArrayList<>();
-    @JsonProperty("brands_tags")
-    private List<String> brandsTags = new ArrayList<>();
+    @JsonProperty("cities_tags")
+    private final List<Object> citiesTags = new ArrayList<>();
+    @JsonProperty("editors_tags")
+    private final List<String> editorsTags = new ArrayList<>();
     private String traces;
     @JsonProperty("categories_tags")
     private List<String> categoriesTags;
@@ -97,17 +96,17 @@ public class Product implements Serializable {
     private List<String> labelsHierarchy;
     @JsonProperty("labels_tags")
     private List<String> labelsTags;
-    @JsonProperty("cities_tags")
-    private List<Object> citiesTags = new ArrayList<>();
+    @JsonProperty("emb_codes_tags")
+    private final List<Object> embTags = new ArrayList<>();
     private String quantity;
     @JsonProperty("ingredients_from_palm_oil_n")
     private long ingredientsFromPalmOilN;
     @JsonProperty("image_url")
     private String imageUrl;
-    @JsonProperty("emb_codes_tags")
-    private List<Object> embTags = new ArrayList<>();
-    @JsonProperty("states_tags")
-    private List<String> statesTags = new ArrayList<>();
+    @JsonProperty("ingredients")
+    private final List<LinkedHashMap<String, String>> ingredients = new ArrayList<>();
+    @JsonProperty("ingredients_analysis_tags")
+    private final List<String> ingredientsAnalysisTags = new ArrayList<>();
     @JsonProperty("vitamins_tags")
     private List<String> vitaminTags = new ArrayList<>();
     @JsonProperty("minerals_tags")
@@ -122,8 +121,8 @@ public class Product implements Serializable {
     private String creator;
     @JsonProperty("last_modified_t")
     private String lastModifiedTime;
-    @JsonProperty("editors_tags")
-    private List<String> editorsTags = new ArrayList<>();
+    @JsonProperty("ingredients_from_palm_oil_tags")
+    private final List<Object> ingredientsFromPalmOilTags = new ArrayList<>();
     @JsonProperty("nova_groups")
     private String novaGroups;
     @JsonProperty("environment_impact_level_tags")
@@ -150,11 +149,12 @@ public class Product implements Serializable {
     private String customerService;
     @JsonProperty("environment_infocard")
     private String environmentInfocard;
-    private Map<String, Object> additionalProperties = new HashMap<>();
-    @JsonProperty("ingredients_analysis_tags")
-    private List<String> ingredientsAnalysisTags = new ArrayList<>();
-    @JsonProperty("ingredients")
-    private List<LinkedHashMap<String, String>> ingredients = new ArrayList<>();
+    @JsonProperty("ingredients_that_may_be_from_palm_oil_tags")
+    private final List<String> ingredientsThatMayBeFromPalmOilTags = new ArrayList<>();
+    @JsonProperty("states_tags")
+    private final List<String> statesTags = new ArrayList<>();
+    @JsonProperty("traces_tags")
+    private final List<String> tracesTags = new ArrayList<>();
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
@@ -348,10 +348,9 @@ public class Product implements Serializable {
     }
 
     public Map<String, ?> getImageDetails(String imageKey) {
-        Map<String, Map> images = (Map<String, Map>) additionalProperties.get("images");
+        Map<String, Map<String, ?>> images = (Map<String, Map<String, ?>>) additionalProperties.get("images");
         if (images != null) {
-            Map<String, ?> imagesDetails = (Map<String, ?>) images.get(imageKey);
-            return imagesDetails;
+            return images.get(imageKey);
         }
         return null;
     }

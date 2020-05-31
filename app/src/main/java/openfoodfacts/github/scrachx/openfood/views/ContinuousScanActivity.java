@@ -32,8 +32,10 @@ import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.DefaultDecoderFactory;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.iconics.IconicsSize;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -109,7 +111,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private boolean productShowing = false;
     private Runnable runnable;
     private SummaryProductPresenter summaryProductPresenter;
-    private BarcodeCallback callback = new BarcodeCallback() {
+    private final BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
             handler.removeCallbacks(runnable);
@@ -361,10 +363,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 if (data.isEmpty()) {
                     return;
                 }
-                final IconicsDrawable iconicsDrawable = new IconicsDrawable(ContinuousScanActivity.this)
-                    .icon(GoogleMaterial.Icon.gmd_warning)
-                    .color(ContextCompat.getColor(ContinuousScanActivity.this, R.color.white))
-                    .sizeDp(24);
+                final IconicsDrawable iconicsDrawable = new IconicsDrawable(ContinuousScanActivity.this, GoogleMaterial.Icon.gmd_warning)
+                    .color(IconicsColor.colorInt(ContextCompat.getColor(ContinuousScanActivity.this, R.color.white)))
+                    .size(IconicsSize.dp(24));
                 binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(iconicsDrawable, null, null, null);
                 binding.txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text_warn));
                 if (data.isIncomplete()) {
@@ -738,7 +739,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             return false;
         });
 
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this, this);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
     }
 
     @Override

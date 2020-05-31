@@ -14,7 +14,7 @@ import java.io.OutputStream;
 
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +25,7 @@ import retrofit2.Response;
  * write response to the disk.
  */
 public class FileDownloader {
-    private Context context;
+    private final Context context;
 
     public interface FileReceiver {
         void onFileDownloaded(File file);

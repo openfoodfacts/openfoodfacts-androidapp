@@ -1,6 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -17,7 +20,7 @@ public class CommonApiManager implements ICommonApiManager {
     private ProductApiService productApiService;
     private OpenFoodAPIService openFoodApiService;
     private RobotoffAPIService robotoffApiService;
-    private JacksonConverterFactory jacksonConverterFactory;
+    private final JacksonConverterFactory jacksonConverterFactory;
 
     public static ICommonApiManager getInstance() {
         if (instance == null) {
