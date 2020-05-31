@@ -219,6 +219,8 @@
     <string name="title_info_dialog">crwdns113584:0crwdne113584:0</string>
     <string name="text_offline_info_dialog">crwdns113586:0crwdne113586:0</string>
     <string name="permission_camera">crwdns113588:0crwdne113588:0</string>
+    <string name="no_camera_dialog_title">crwdns125758:0crwdne125758:0</string>
+    <string name="no_camera_dialog_content">crwdns125760:0crwdne125760:0</string>
     <string name="permission_title">crwdns113590:0crwdne113590:0</string>
     <string name="permission_denied">crwdns113592:0crwdne113592:0</string>
     <string name="info_download_data_connection">crwdns115926:0crwdne115926:0</string>
