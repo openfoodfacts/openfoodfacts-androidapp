@@ -219,8 +219,8 @@
     <string name="title_info_dialog">Wie funktioniert es?</string>
     <string name="text_offline_info_dialog">Sie können Produkte auch im Offline-Modus erfassen, um sie später zu Open Food Facts hinzuzufügen. Alle Produkte, die Sie erfasst haben, werden hier angezeigt, und Sie können sie über die untenstehende Schaltfläche versenden.</string>
     <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu machen.</string>
-    <string name="no_camera_dialog_title">Camera not found</string>
-    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
+    <string name="no_camera_dialog_title">Kamera nicht gefunden</string>
+    <string name="no_camera_dialog_content">Ihr Gerät verfügt über keine Kamera. Daher können Sie keinen Strichcode einlesen.</string>
     <string name="permission_title">Berechtigungs-Informationen</string>
     <string name="permission_denied">Bitte Berechtigung in den Einstellungen aktivieren</string>
     <string name="info_download_data_connection">Um diese Funktionalität nutzen zu können, müssen einige Daten herunterladen werden. Bitte aktivieren Sie die Internetverbindung.</string>
