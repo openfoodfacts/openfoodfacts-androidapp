@@ -224,6 +224,8 @@
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Možete skenirati proizvode i kada niste povezani na internet kako biste ih dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate pojaviće se ovde, i bićete u mogućnosti da ih pošaljete pritiskom na dugme ispod.</string>
     <string name="permission_camera">Dozvola za kameru je potrebna za skeniranje barkodova i fotografije.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informacije o dozvolama</string>
     <string name="permission_denied">Molimo Vas da aktivirate ovu dozvolu u podešavanjima</string>
     <string name="info_download_data_connection">Da bi ova funkcionalnost bila dostupna potrebno je preuzeti podatke, molimo vas da se povežete na internet.</string>
