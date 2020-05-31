@@ -481,10 +481,7 @@ public class Utils {
         }
     }
 
-    public static boolean isUserLoggedIn(Context context) {
-        if (context == null) {
-            return false;
-        }
+    public static boolean isUserLoggedIn(@NonNull Context context) {
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         return StringUtils.isNotEmpty(login);
