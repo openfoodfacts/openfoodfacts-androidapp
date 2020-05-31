@@ -897,21 +897,22 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation) {
+        return robotoffApi.annotateInsight(insightId, annotation);
         // if the user is logged in, send the auth, otherwise make it anonymous
-        final SharedPreferences userPref = OFFApplication.getInstance()
-            .getSharedPreferences("login", 0);
-
-        final String user = userPref.getString("user", "");
-        final String pass = userPref.getString("pass", "");
-
-        if (StringUtils.isNotBlank(user) && StringUtils.isNotBlank(pass)) {
-            final String baseAuth = "Basic " + Base64.encodeToString(
-                (user + ":" + pass).getBytes(), Base64.DEFAULT);
-
-            return robotoffApi.annotateInsight(insightId, annotation, baseAuth);
-        } else {
-            return robotoffApi.annotateInsight(insightId, annotation);
-        }
+//        final SharedPreferences userPref = OFFApplication.getInstance()
+//            .getSharedPreferences("login", 0);
+//
+//        final String user = userPref.getString("user", "");
+//        final String pass = userPref.getString("pass", "");
+//
+//        if (StringUtils.isNotBlank(user) && StringUtils.isNotBlank(pass)) {
+//            final String baseAuth = "Basic " + Base64.encodeToString(
+//                (user + ":" + pass).getBytes(), Base64.DEFAULT);
+//
+//            return robotoffApi.annotateInsight(insightId, annotation, baseAuth);
+//        } else {
+//            return robotoffApi.annotateInsight(insightId, annotation);
+//        }
     }
 
     /**
