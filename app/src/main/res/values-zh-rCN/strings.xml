@@ -214,6 +214,8 @@
     <string name="title_info_dialog">它是如何工作的？</string>
     <string name="text_offline_info_dialog">您可以在离线时扫描产品，稍后将其添加到 Open Food Facts 中。您扫描的所有产品都会显示在这里，可以按下面的按钮发送它们。</string>
     <string name="permission_camera">需要相机权限才能扫描条形码及拍照。</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">权限信息</string>
     <string name="permission_denied">请激活设置中的权限</string>
     <string name="info_download_data_connection">你需要下载一些数据才能使用该功能，请激活网络连接。</string>
