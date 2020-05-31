@@ -150,6 +150,7 @@
                     android:layout_marginRight="85dp"
                     app:errorTextAppearance="@style/errorText"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/radio_group">
 
@@ -186,32 +187,16 @@
                     app:layout_constraintTop_toTopOf="@id/serving_size_til" />
 
 
-                <Spinner
-                    android:id="@+id/spinner_energy_comp"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="@drawable/spinner_weights_grey"
-                    android:entries="@array/nutrition_comparison_units"
-                    android:gravity="center_vertical"
-                    android:spinnerMode="dropdown"
-                    app:layout_constraintEnd_toStartOf="@+id/energy_til"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/energy_til" />
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/energy_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/spacing_small"
                     app:errorTextAppearance="@style/errorText"
                     app:layout_constraintEnd_toStartOf="@+id/spinner_energy_unit"
-                    app:layout_constraintStart_toEndOf="@+id/spinner_energy_comp"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/serving_size_til">
 
                     <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
@@ -814,13 +799,11 @@
                     android:id="@+id/table_layout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
                     android:orientation="horizontal"
                     android:shrinkColumns="0"
                     android:stretchColumns="0"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/alcohol_til"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/alcohol_til" />
 
                 <Button

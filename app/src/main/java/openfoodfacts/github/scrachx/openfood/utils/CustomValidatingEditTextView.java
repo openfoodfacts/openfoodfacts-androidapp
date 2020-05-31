@@ -18,6 +18,11 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
     private int attachedModSpinnerId = NO_ID;
     private int attachedUnitSpinnerId = NO_ID;
     private int textInputLayoutId = NO_ID;
+
+    public void setModSpinner(Spinner modSpinner) {
+        this.modSpinner = modSpinner;
+    }
+
     private Spinner modSpinner;
     private Spinner unitSpinner;
     private String entryName;

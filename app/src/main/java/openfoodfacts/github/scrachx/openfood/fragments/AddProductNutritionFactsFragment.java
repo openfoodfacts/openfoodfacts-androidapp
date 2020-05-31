@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.NumberKeyListener;
@@ -41,6 +42,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import openfoodfacts.github.scrachx.openfood.R;
@@ -307,10 +309,11 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             if (nutriments.getValue(nutrientShortName) != null) {
 
                 String value = getValueFromShortName(nutriments, nutrientShortName);
-                int unitSelectedIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName);
+                int unitIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName);
+                int modIndex = getSelectedModifierFromShortName(nutriments, nutrientShortName);
                 index.add(i);
                 String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
-                addNutrientRow(i, nutrients[i], true, value, unitSelectedIndex);
+                addNutrientRow(i, nutrients[i], true, value, unitIndex, modIndex);
             }
         }
     }
@@ -324,11 +327,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         }
         photoFile = null;
         final String newImageNutritionUrl = product.getImageNutritionUrl(getAddProductActivity().getProductLanguageForEdition());
-        if (newImageNutritionUrl != null && !newImageNutritionUrl.isEmpty()) {
-            binding.imageProgress.setVisibility(View.VISIBLE);
-            imagePath = newImageNutritionUrl;
-            loadNutritionsImage(imagePath);
+        if (newImageNutritionUrl == null || newImageNutritionUrl.isEmpty()) {
+            return;
         }
+        binding.imageProgress.setVisibility(View.VISIBLE);
+        imagePath = newImageNutritionUrl;
+        loadNutritionsImage(imagePath);
     }
 
     private int getSelectedUnitFromShortName(Nutriments nutriments, String nutrientShortName) {
@@ -402,7 +406,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                     view.setText(value);
                     if (view.getUnitSpinner() != null) {
                         view.getUnitSpinner()
-                            .setSelection(getSelectedUnit(nutrientShortName, productDetails.get(nutrientCompleteName + AddProductNutritionFactsData.SUFFIX_UNIT)));
+                            .setSelection(getSelectedUnit(nutrientShortName, productDetails.get(nutrientCompleteName + Nutriments.SUFFIX_UNIT)));
                     }
                 }
             }
@@ -410,14 +414,19 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             for (int i = 0; i < AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.size(); i++) {
                 String completeNutrientName = AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(i);
                 if (productDetails.get(completeNutrientName) != null) {
-                    int position = 0;
+                    int unitIndex = 0;
+                    int modIndex = 0;
                     String value = productDetails.get(completeNutrientName);
-                    if (productDetails.get(completeNutrientName + AddProductNutritionFactsData.SUFFIX_UNIT) != null) {
-                        position = getPositionInAllUnitArray(productDetails.get(completeNutrientName + AddProductNutritionFactsData.SUFFIX_UNIT));
+                    if (productDetails.get(completeNutrientName + Nutriments.SUFFIX_UNIT) != null) {
+                        unitIndex = getPositionInAllUnitArray(productDetails.get(completeNutrientName + Nutriments.SUFFIX_UNIT));
                     }
+                    if (productDetails.get(completeNutrientName + Nutriments.SUFFIX_MOD) != null) {
+                        modIndex = getPositionInAllUnitArray(productDetails.get(completeNutrientName + Nutriments.SUFFIX_MOD));
+                    }
+
                     index.add(i);
                     String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
-                    addNutrientRow(i, nutrients[i], true, value, position);
+                    addNutrientRow(i, nutrients[i], true, value, unitIndex, modIndex);
                 }
             }
         }
@@ -746,17 +755,20 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private void addNutrientToMap(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
         final String fieldName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
 
-        targetMap.put(fieldName, editTextView.getText().toString());
+        if (hasUnit(editTextView) && editTextView.getUnitSpinner() != null) {
+            final String selectedUnit = getSelectedUnit(editTextView.getEntryName(), editTextView.getUnitSpinner().getSelectedItemPosition());
+            targetMap.put(fieldName + Nutriments.SUFFIX_UNIT, Html.escapeHtml(selectedUnit));
+        }
 
         if (editTextView.getModSpinner() != null) {
             String selectedComp = editTextView.getModSpinner().getSelectedItem().toString();
             if (!selectedComp.equals("=")) {
-                targetMap.put(fieldName + Nutriments.SUFFIX_MOD, selectedComp);
+                targetMap.put(fieldName, selectedComp + Objects.requireNonNull(editTextView.getText()).toString());
+                //FIXME: Atm the server only accept the field with the modifier attached (like "<27")
+                // targetMap.put(fieldName + Nutriments.SUFFIX_MOD, selectedComp);
             }
-        }
-        if (hasUnit(editTextView) && editTextView.getUnitSpinner() != null) {
-            targetMap.put(fieldName + Nutriments.SUFFIX_UNIT,
-                getSelectedUnit(editTextView.getEntryName(), editTextView.getUnitSpinner().getSelectedItemPosition()));
+        } else {
+            targetMap.put(fieldName, Objects.requireNonNull(editTextView.getText()).toString());
         }
     }
 
@@ -827,7 +839,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             .itemsCallback((dialog, itemView, position, text) -> {
                 if (!index.contains(position)) {
                     index.add(position);
-                    final CustomValidatingEditTextView textView = addNutrientRow(position, text, false, null, 0);
+                    final CustomValidatingEditTextView textView = addNutrientRow(position, text);
                     allEditViews.add(textView);
                     addValidListener(textView);
                 } else {
@@ -839,6 +851,13 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     /**
      * Adds a new row in the tableLayout.
+     */
+    private CustomValidatingEditTextView addNutrientRow(int position, CharSequence text) {
+        return addNutrientRow(position, text, false, null, 0, 0);
+    }
+
+    /**
+     * Adds a new row in the tableLayout.
      *
      * @param position The index of the additional nutrient to add in the "PARAM_OTHER_NUTRIENTS" array.
      * @param text The hint text to be displayed in the EditText.
@@ -846,11 +865,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
      * @param value This value will be set to the EditText. Required if 'preFillValues' is true.
      * @param unitSelectedIndex This spinner will be set to this position. Required if 'preFillValues' is true.
      */
-    private CustomValidatingEditTextView addNutrientRow(int position, CharSequence text, boolean preFillValues, String value, int unitSelectedIndex) {
+    private CustomValidatingEditTextView addNutrientRow(int position,
+                                                        CharSequence text,
+                                                        boolean preFillValues,
+                                                        String value,
+                                                        int unitSelectedIndex,
+                                                        int modSelectedIndex) {
         final String nutrientCompleteName = AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(position);
 
-        TableRow nutrient = new TableRow(activity);
-        nutrient.setPadding(0, dpsToPixels(10), 0, 0);
+        TableRow rowView = new TableRow(activity);
+        rowView.setPadding(0, dpsToPixels(10), 0, 0);
 
         CustomValidatingEditTextView editText = new CustomValidatingEditTextView(activity);
         editText.setBackgroundResource(R.drawable.bg_edittext_til);
@@ -876,36 +900,61 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         textInputLayout.addView(editText);
 
         textInputLayout.setErrorTextAppearance(R.style.errorText);
-        nutrient.addView(textInputLayout);
+        rowView.addView(textInputLayout);
 
-        Spinner spinner = new Spinner(activity);
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>
+        // Setup unit spinner
+        final Spinner unitSpinner = new Spinner(activity);
+        final Spinner modSpinner = new Spinner(activity);
+
+        ArrayAdapter<String> unitAdapter = new ArrayAdapter<>
             (activity, android.R.layout.simple_spinner_item, activity.getResources().getStringArray(R.array.weight_all_units));
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setBackgroundResource(R.drawable.spinner_weights_grey);
-        spinner.setAdapter(spinnerArrayAdapter);
-        spinner.setPadding(dpsToPixels(1), 0, 0, 0);
-        final TableRow.LayoutParams spinnerLayoutParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(35));
-        spinnerLayoutParams.setMargins(dpsToPixels(8), dpsToPixels(16), dpsToPixels(8), dpsToPixels(6));
-        spinner.setLayoutParams(spinnerLayoutParams);
+        ArrayAdapter<String> modAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item,
+            activity.getResources().getStringArray(R.array.nutrition_comparison_units));
 
-        nutrient.addView(spinner);
-        editText.setUnitSpinner(spinner);
+        unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        modAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        unitSpinner.setBackgroundResource(R.drawable.spinner_weights_grey);
+        modSpinner.setBackgroundResource(R.drawable.spinner_weights_grey);
+
+        unitSpinner.setAdapter(unitAdapter);
+        modSpinner.setAdapter(modAdapter);
+
+        unitSpinner.setPadding(dpsToPixels(1), 0, 0, 0);
+        modSpinner.setPadding(dpsToPixels(1), 0, 0, 0);
+
+        final TableRow.LayoutParams unitLayoutParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(35));
+        final TableRow.LayoutParams modLayoutParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(35));
+
+        unitLayoutParams.setMargins(dpsToPixels(8), dpsToPixels(16), dpsToPixels(8), dpsToPixels(6));
+        modLayoutParams.setMargins(dpsToPixels(8), dpsToPixels(16), dpsToPixels(8), dpsToPixels(6));
+
+        unitSpinner.setLayoutParams(unitLayoutParams);
+        modSpinner.setLayoutParams(unitLayoutParams);
+
+        rowView.addView(unitSpinner);
+        rowView.addView(modSpinner);
+
+        editText.setUnitSpinner(unitSpinner);
+        editText.setModSpinner(modSpinner);
+
         editText.setTextInputLayout(textInputLayout);
 
         if (Nutriments.PH.equals(nutrientShortName)) {
-            spinner.setVisibility(View.INVISIBLE);
+            unitSpinner.setVisibility(View.INVISIBLE);
         } else if (Nutriments.STARCH.equals(nutrientShortName)) {
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>
                 (activity, android.R.layout.simple_spinner_item, activity.getResources().getStringArray(R.array.weights_array));
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(arrayAdapter);
+            unitSpinner.setAdapter(arrayAdapter);
             starchEditText = editText;
         }
         if (preFillValues) {
-            spinner.setSelection(unitSelectedIndex);
+            unitSpinner.setSelection(unitSelectedIndex);
+            modSpinner.setSelection(modSelectedIndex);
         }
-        binding.tableLayout.addView(nutrient);
+
+        binding.tableLayout.addView(rowView);
         return editText;
     }
 
