@@ -219,6 +219,8 @@
     <string name="title_info_dialog">Как работи това?</string>
     <string name="text_offline_info_dialog">Можете да сканирате продукти, когато сте офлайн, за да ги добавите към Open Food Facts по-късно. Всички продукти, които сканирате, ще се показват тук и ще можете да ги изпратите, като използвате бутона по-долу.</string>
     <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Информация за разрешението</string>
     <string name="permission_denied">Моля, активирайте разрешението в настройките</string>
     <string name="info_download_data_connection">Трябва да изтеглите някои данни, за да получите тази функционалност. Моля активирайте интернет връзката.</string>
