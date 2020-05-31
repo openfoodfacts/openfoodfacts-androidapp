@@ -219,8 +219,8 @@
     <string name="title_info_dialog">Com funciona?</string>
     <string name="text_offline_info_dialog">Podeu escanejar productes fora de línia i afegir-los després a Open Food Facts. Tots els productes que escanegi apareixeran aquí, i podrà enviar-los amb el botó de baix.</string>
     <string name="permission_camera">El permís de la càmera és necessari per escanejar codis de barres i fer fotos.</string>
-    <string name="no_camera_dialog_title">Camera not found</string>
-    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
+    <string name="no_camera_dialog_title">No s\'ha trobat càmera</string>
+    <string name="no_camera_dialog_content">El vostre dispositiu no té càmera. No podreu escanejar cap codi de barres.</string>
     <string name="permission_title">Informació de permisos</string>
     <string name="permission_denied">Si us plau, activeu el permís a la configuració</string>
     <string name="info_download_data_connection">Necessiteu descarregar algunes dades per fer funcionar aquesta funcionalitat. Si us plau, activeu la connexió a internet.</string>
