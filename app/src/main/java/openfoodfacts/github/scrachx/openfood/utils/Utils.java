@@ -62,15 +62,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
-import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -455,16 +453,8 @@ public class Utils {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
             .connectTimeout(5000, TimeUnit.MILLISECONDS)
             .readTimeout(30000, TimeUnit.MILLISECONDS)
-            .writeTimeout(30000, TimeUnit.MILLISECONDS);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-                .tlsVersions(TlsVersion.TLS_1_2)
-                .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
-                .build();
-
-            builder.connectionSpecs(Collections.singletonList(spec));
-        }
+            .writeTimeout(30000, TimeUnit.MILLISECONDS)
+            .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS));
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
@@ -491,10 +481,7 @@ public class Utils {
         }
     }
 
-    public static boolean isUserLoggedIn(Context context) {
-        if (context == null) {
-            return false;
-        }
+    public static boolean isUserLoggedIn(@NonNull Context context) {
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         return StringUtils.isNotEmpty(login);
