@@ -9,7 +9,6 @@ import android.text.Html;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.NumberKeyListener;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.textfield.TextInputLayout;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -863,13 +861,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                                                         int modSelectedIndex) {
         final String nutrientCompleteName = AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(position);
 
-        TableRow rowView = new TableRow(activity);
-        rowView.setPadding(0, dpsToPixels(10), 0, 0);
+        final TableRow rowView = (TableRow) getLayoutInflater().inflate(R.layout.nutrition_facts_table_row, null);
 
-        CustomValidatingEditTextView editText = new CustomValidatingEditTextView(activity);
-        editText.setBackgroundResource(R.drawable.bg_edittext_til);
+        CustomValidatingEditTextView editText = rowView.findViewById(R.id.value);
         editText.setHint(text);
-        editText.setId(position);
         final String nutrientShortName = AddProductNutritionFactsData.getShortName(nutrientCompleteName);
         editText.setEntryName(nutrientShortName);
         editText.setKeyListener(keyListener);
@@ -877,58 +872,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         lastEditText.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         lastEditText = editText;
         editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        editText.setSingleLine();
-        editText.setGravity(Gravity.CENTER_VERTICAL);
         editText.requestFocus();
-        TableRow.LayoutParams lpEditText = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(45));
-        lpEditText.setMargins(0, dpsToPixels(10), 0, 0);
-        editText.setLayoutParams(lpEditText);
+
         if (preFillValues) {
             editText.setText(value);
         }
-        TextInputLayout textInputLayout = new TextInputLayout(activity);
-        textInputLayout.addView(editText);
-
-        textInputLayout.setErrorTextAppearance(R.style.errorText);
-        rowView.addView(textInputLayout);
 
         // Setup unit spinner
-        final Spinner unitSpinner = new Spinner(activity);
-        final Spinner modSpinner = new Spinner(activity);
-
-        ArrayAdapter<String> unitAdapter = new ArrayAdapter<>
-            (activity, android.R.layout.simple_spinner_item, activity.getResources().getStringArray(R.array.weight_all_units));
-        ArrayAdapter<String> modAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item,
-            activity.getResources().getStringArray(R.array.nutrition_comparison_units));
-
-        unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        modAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        unitSpinner.setBackgroundResource(R.drawable.spinner_weights_grey);
-        modSpinner.setBackgroundResource(R.drawable.spinner_weights_grey);
-
-        unitSpinner.setAdapter(unitAdapter);
-        modSpinner.setAdapter(modAdapter);
-
-        unitSpinner.setPadding(dpsToPixels(1), 0, 0, 0);
-        modSpinner.setPadding(dpsToPixels(1), 0, 0, 0);
-
-        final TableRow.LayoutParams unitLayoutParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(35));
-        final TableRow.LayoutParams modLayoutParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(35));
-
-        unitLayoutParams.setMargins(dpsToPixels(8), dpsToPixels(16), dpsToPixels(8), dpsToPixels(6));
-        modLayoutParams.setMargins(dpsToPixels(8), dpsToPixels(16), dpsToPixels(8), dpsToPixels(6));
-
-        unitSpinner.setLayoutParams(unitLayoutParams);
-        modSpinner.setLayoutParams(unitLayoutParams);
-
-        rowView.addView(unitSpinner);
-        rowView.addView(modSpinner);
-
-        editText.setUnitSpinner(unitSpinner);
-        editText.setModSpinner(modSpinner);
-
-        editText.setTextInputLayout(textInputLayout);
+        final Spinner unitSpinner = rowView.findViewById(R.id.spinner_unit);
+        final Spinner modSpinner = rowView.findViewById(R.id.spinner_mod);
 
         if (Nutriments.PH.equals(nutrientShortName)) {
             unitSpinner.setVisibility(View.INVISIBLE);
@@ -939,6 +891,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             unitSpinner.setAdapter(arrayAdapter);
             starchEditText = editText;
         }
+
         if (preFillValues) {
             unitSpinner.setSelection(unitSelectedIndex);
             modSpinner.setSelection(modSelectedIndex);

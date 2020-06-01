@@ -298,9 +298,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_small"
                     app:errorTextAppearance="@style/errorText"
-                    app:layout_constraintEnd_toStartOf="@+id/spinner_fat_unit"
+                    app:layout_constraintEnd_toStartOf="@id/spinner_fat_unit"
                     app:layout_constraintStart_toEndOf="@id/spinner_fat_comp"
-                    app:layout_constraintTop_toBottomOf="@+id/energy_kj_til">
+                    app:layout_constraintTop_toBottomOf="@id/energy_kj_til">
 
                     <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
                         android:id="@+id/fat"
