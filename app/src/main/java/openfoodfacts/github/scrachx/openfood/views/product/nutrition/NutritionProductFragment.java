@@ -272,7 +272,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         Nutriment energyKcal = nutriments.get(ENERGY_KCAL);
         if (energyKcal != null) {
             nutrimentListItems.add(
-                new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
+                new NutrimentListItem(getString(R.string.nutrition_energy_kcal),
                     energyKcal.getFor100gInUnits(),
                     energyKcal.getForServingInUnits(),
                     UnitUtils.ENERGY_KCAL,
@@ -281,7 +281,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         Nutriment energyKj = nutriments.get(ENERGY_KJ);
         if (energyKj != null) {
             nutrimentListItems.add(
-                new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
+                new NutrimentListItem(getString(R.string.nutrition_energy_kj),
                     energyKj.getFor100gInUnits(),
                     energyKj.getForServingInUnits(),
                     UnitUtils.ENERGY_KJ.toLowerCase(),

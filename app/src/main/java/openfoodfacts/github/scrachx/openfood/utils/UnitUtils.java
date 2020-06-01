@@ -6,6 +6,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UnitUtils {
+    // Utility class
+    private UnitUtils() {
+    }
+
     public static final String ENERGY_KJ = "kj";
     public static final String ENERGY_KCAL = "kcal";
     public static final String UNIT_KILOGRAM = "kg";
