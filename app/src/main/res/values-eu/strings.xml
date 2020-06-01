@@ -183,7 +183,7 @@
     <string name="hintBrand">Marka</string>
     <string name="txtSendAll">Igo guztiak</string>
     <string name="txtPictureNeededDialogNo">Baztertu</string>
-    <string name="toastSending">Uploading...</string>
+    <string name="toastSending">Uploading…</string>
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Ziur zaude zirriborro hau ezabatu nahi duzula?</string>
     <string name="txtDialogsContentInfoSave">Produktu hau lokalki gordea dago, \"Offline edizioa\" menuan edita dezakezu</string>
