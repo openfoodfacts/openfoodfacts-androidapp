@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
@@ -27,9 +29,10 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Nutriments implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final String DEFAULT_UNIT = "g";
-    private static final String DEFAULT_MOD = "=";
-    public static final String ENERGY = "energy";
+    public static final String DEFAULT_UNIT = "g";
+    public static final String DEFAULT_MOD = "=";
+    public static final String ENERGY_KCAL = "energy-kcal";
+    public static final String ENERGY_KJ = "energy-kj";
     public static final String ENERGY_FROM_FAT = "energy-from-fat";
     public static final String FAT = "fat";
     public static final String SATURATED_FAT = "saturated-fat";
@@ -240,10 +243,12 @@ public class Nutriments implements Serializable {
         return value == null ? defaultValue : value.toString();
     }
 
+    @NonNull
     public String get100g(String nutrimentName) {
         return getAdditionalProperty(nutrimentName, SUFFIX_100g);
     }
 
+    @Nullable
     public String getValue(String nutrimentName) {
         return getAdditionalProperty(nutrimentName, SUFFIX_VALUE, null);
     }
@@ -251,6 +256,17 @@ public class Nutriments implements Serializable {
     @NonNull
     public String getModifier(String nutrimentName) {
         return getAdditionalProperty(nutrimentName, SUFFIX_MOD, DEFAULT_MOD);
+    }
+
+    /**
+     * Get the nutriment modifier if it is different from {@link Nutriments#DEFAULT_MOD}
+     *
+     * @param nutrimentName
+     * @return The nutriment modifier if different from {@link Nutriments#DEFAULT_MOD}, otherwise an empty string {@code ""}
+     */
+    public String getModifierIfNotDefault(String nutrimentName) {
+        final String modifier = getModifier(nutrimentName);
+        return Utils.getModifierNonDefault(modifier);
     }
 
     public boolean contains(String nutrimentName) {
@@ -287,14 +303,10 @@ public class Nutriments implements Serializable {
         private final String for100g;
         private final String forServing;
         private final String unit;
-
-        public String getModifier() {
-            return modifier;
-        }
-
+        @NonNull
         private final String modifier;
 
-        Nutriment(String key, String name, String for100g, String forServing, String unit, String modifier) {
+        Nutriment(String key, String name, String for100g, String forServing, String unit, @NonNull String modifier) {
             this.key = key;
             this.name = name;
             this.for100g = for100g;
@@ -303,8 +315,16 @@ public class Nutriments implements Serializable {
             this.unit = getRealUnit(unit);
         }
 
+        @NonNull
+        public String getModifier() {
+            return modifier;
+        }
+
         public String getDisplayStringFor100g() {
-            return StringUtils.defaultString(modifier) + getFor100gInUnits() + " " + unit;
+            return String.format("%s %s %s",
+                Utils.getModifierNonDefault(getModifier()),
+                getFor100gInUnits(),
+                unit);
         }
 
         /**

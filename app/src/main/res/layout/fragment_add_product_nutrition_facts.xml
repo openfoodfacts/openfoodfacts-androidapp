@@ -146,10 +146,10 @@
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/spacing_small"
-                    android:layout_marginEnd="85dp"
-                    android:layout_marginRight="85dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     app:errorTextAppearance="@style/errorText"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/spinner_serving_unit"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/radio_group">
@@ -163,7 +163,7 @@
                         android:gravity="center_vertical"
                         android:hint="@string/serving_size"
                         android:inputType="number"
-                        android:nextFocusDown="@id/energy"
+                        android:nextFocusDown="@id/energy_kcal"
                         app:attachedUnitSpinner="@id/spinner_serving_unit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -172,10 +172,8 @@
 
                 <Spinner
                     android:id="@+id/spinner_serving_unit"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:layout_marginStart="@dimen/padding_short"
-                    android:layout_marginLeft="@dimen/padding_short"
                     android:layout_marginTop="@dimen/top_margin_spinner_hint"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -188,56 +186,98 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/energy_til"
+                    android:id="@+id/energy_kcal_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     app:errorTextAppearance="@style/errorText"
-                    app:layout_constraintEnd_toStartOf="@+id/spinner_energy_unit"
+                    app:layout_constraintEnd_toStartOf="@+id/energy_kcal_unit"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/serving_size_til">
 
                     <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
-                        android:id="@+id/energy"
+                        android:id="@+id/energy_kcal"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/bg_edittext_til"
                         android:digits="0123456789.,"
                         android:gravity="center_vertical"
-                        android:hint="@string/nutrition_energy"
+                        android:hint="@string/nutrition_energy_kcal"
                         android:inputType="numberDecimal"
                         android:nextFocusDown="@id/fat"
                         android:singleLine="true"
-                        app:attachedModSpinner="@+id/spinner_energy_comp"
-                        app:attachedUnitSpinner="@+id/spinner_energy_unit"
+                        app:fieldName="energy-kcal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:parentTextInputLayout="@+id/energy_til" />
+                        app:parentTextInputLayout="@+id/energy_kcal_til" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <Spinner
-                    android:id="@+id/spinner_energy_unit"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/energy_kcal_unit"
+                    android:layout_width="0dp"
                     android:layout_height="35dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="@dimen/top_margin_spinner_hint"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:background="@drawable/spinner_weights_grey"
-                    android:entries="@array/energy_units"
-                    android:spinnerMode="dropdown"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/kcal"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/energy_til"
-                    app:layout_constraintTop_toTopOf="@id/energy_til" />
+                    app:layout_constraintStart_toStartOf="@+id/spinner_serving_unit"
+                    app:layout_constraintTop_toTopOf="@id/energy_kcal_til" />
 
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/energy_kj_til"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:errorTextAppearance="@style/errorText"
+                    app:layout_constraintEnd_toStartOf="@+id/energy_kj_unit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/energy_kcal_til">
+
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+                        android:id="@+id/energy_kj"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_edittext_til"
+                        android:digits="0123456789.,"
+                        android:gravity="center_vertical"
+                        android:hint="@string/nutrition_energy_kj"
+                        android:inputType="numberDecimal"
+                        android:nextFocusDown="@id/fat"
+                        android:singleLine="true"
+                        app:fieldName="energy-kj"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:parentTextInputLayout="@+id/energy_kcal_til" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/energy_kj_unit"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="@dimen/top_margin_spinner_hint"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/kj"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/energy_kcal_unit"
+                    app:layout_constraintTop_toTopOf="@+id/energy_kj_til" />
 
                 <Spinner
                     android:id="@+id/spinner_fat_comp"
                     android:layout_width="wrap_content"
-
                     android:layout_height="35dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -260,10 +300,11 @@
                     app:errorTextAppearance="@style/errorText"
                     app:layout_constraintEnd_toStartOf="@+id/spinner_fat_unit"
                     app:layout_constraintStart_toEndOf="@id/spinner_fat_comp"
-                    app:layout_constraintTop_toBottomOf="@id/energy_til">
+                    app:layout_constraintTop_toBottomOf="@+id/energy_kj_til">
 
                     <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
                         android:id="@+id/fat"
+                        app:fieldName="fat"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/bg_edittext_til"
@@ -321,8 +362,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_small"
                     app:errorTextAppearance="@style/errorText"
-                    app:layout_constraintEnd_toStartOf="@+id/spinner_saturated_fat_unit"
-                    app:layout_constraintStart_toEndOf="@+id/spinner_saturated_fat_comp"
+                    app:layout_constraintEnd_toStartOf="@id/spinner_saturated_fat_unit"
+                    app:layout_constraintStart_toEndOf="@id/spinner_saturated_fat_comp"
                     app:layout_constraintTop_toBottomOf="@id/fat_til">
 
                     <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
@@ -338,6 +379,7 @@
                         android:singleLine="true"
                         app:attachedModSpinner="@id/spinner_saturated_fat_comp"
                         app:attachedUnitSpinner="@id/spinner_saturated_fat_unit"
+                        app:fieldName="saturated-fat"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/saturated_fat_til" />
