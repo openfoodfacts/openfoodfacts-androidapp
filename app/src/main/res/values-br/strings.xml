@@ -198,7 +198,7 @@
     <string name="hintBrand">Merk</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading...</string>
+    <string name="toastSending">Uploading…</string>
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
