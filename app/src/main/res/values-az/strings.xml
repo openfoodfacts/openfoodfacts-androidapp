@@ -183,7 +183,7 @@
     <string name="hintBrand">Brend</string>
     <string name="txtSendAll">Hamısını yüklə</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading...</string>
+    <string name="toastSending">Uploading…</string>
     <string name="txtLoading">Yüklənir…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
