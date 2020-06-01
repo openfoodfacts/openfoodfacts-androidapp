@@ -376,8 +376,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             customTabActivityHelper = new CustomTabActivityHelper();
             customTabActivityHelper.setConnectionCallback(this);
 
-            // TODO: Make it international
-            nutritionScoreUri = Uri.parse("https://fr.openfoodfacts.org/score-nutritionnel-france");
+            nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri));
 
             customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
 
