@@ -143,7 +143,7 @@
     <string name="search_button">Bilatu</string>
     <string name="alert_dialog_warning_title">Abisua</string>
     <string name="alert_dialog_warning_msg_user">Erabiltzailea/pasahitza aldatu egin da, eguneratu informazioa mesedez</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">Barra kodea :</string>
     <string name="txtCategories">Kategoriak :</string>
     <string name="txtLabels">Etiketa, ziurtagiriak, sariak:</string>
@@ -184,7 +184,7 @@
     <string name="txtSendAll">Igo guztiak</string>
     <string name="txtPictureNeededDialogNo">Baztertu</string>
     <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Ziur zaude zirriborro hau ezabatu nahi duzula?</string>
     <string name="txtDialogsContentInfoSave">Produktu hau lokalki gordea dago, \"Offline edizioa\" menuan edita dezakezu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -247,7 +247,7 @@
     <string name="title_clear_history_dialog">Garbitu</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Esportatu CSVa</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">Historiala esportatu da</string>
     <string name="permision_write_external_storage">Kanpo biltegiratzean idazteko baimena behar da historiala esportatzeko.</string>
     <string name="no_brand">No Brand</string>
@@ -428,9 +428,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Orokorra</string>
     <string name="preference_header_network">Sarea</string>
     <string name="preference_header_contributing">Parte hartzea</string>
