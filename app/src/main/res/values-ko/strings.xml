@@ -138,7 +138,7 @@
     <string name="search_button">수색</string>
     <string name="alert_dialog_warning_title">경고</string>
     <string name="alert_dialog_warning_msg_user">사용자/비밀번호가 변경되었습니다, 정보를 새로고침 해주세요</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">바코드 :</string>
     <string name="txtCategories">카테고리 :</string>
     <string name="txtLabels">라벨, 인증, 수상 내역 :</string>
@@ -178,8 +178,8 @@
     <string name="hintBrand">브랜드</string>
     <string name="txtSendAll">모두 업로드</string>
     <string name="txtPictureNeededDialogNo">삭제</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">정말로 해당 항목을 삭제하시겠습니까?</string>
     <string name="txtDialogsContentInfoSave">제품이 로컬에 저장되었으므로 \"오프라인 편집\" 메뉴에서 편집 할 수 있습니다.</string>
     <string name="productSavedToast">제품이 저장되었습니다. 감사합니다!</string>
@@ -242,7 +242,7 @@
     <string name="title_clear_history_dialog">지우기</string>
     <string name="text_clear_history_dialog">모든 스캔 기록을 삭제 하시겠습니까?</string>
     <string name="export_csv_history">CSV로 내보내기</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">최근 기록 내보냄</string>
     <string name="permision_write_external_storage">최근 기록을 내보내려면 외부 저장소에 쓰기 권한이 필요합니다.</string>
     <string name="no_brand">상표 없음</string>
