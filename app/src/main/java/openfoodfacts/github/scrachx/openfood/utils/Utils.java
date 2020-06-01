@@ -74,6 +74,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWork;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
@@ -605,30 +606,6 @@ public class Utils {
     }
 
     /**
-     * convert energy from kj to kcal for a product.
-     *
-     * @param value of energy in kj.
-     * @return energy in kcal.
-     */
-    public static String getEnergy(String value) {
-        String defaultValue = StringUtils.EMPTY;
-        if (defaultValue.equals(value) || TextUtils.isEmpty(value)) {
-            return defaultValue;
-        }
-
-        try {
-            int energyKcal = convertKjToKcal(Double.parseDouble(value));
-            return String.valueOf(energyKcal);
-        } catch (NumberFormatException e) {
-            return defaultValue;
-        }
-    }
-
-    private static int convertKjToKcal(double kj) {
-        return (int) (kj / 4.1868d);
-    }
-
-    /**
      * Function which returns true if the battery level is low
      *
      * @param context the context
@@ -750,6 +727,10 @@ public class Utils {
 
     public static boolean isFlavor(String flavor) {
         return BuildConfig.FLAVOR.equals(flavor);
+    }
+
+    public static String getModifierNonDefault(String modifier) {
+        return Nutriments.DEFAULT_MOD.equals(modifier) ? "" : modifier;
     }
 }
 

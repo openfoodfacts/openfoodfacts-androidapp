@@ -208,7 +208,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             activity.finish();
         }
         binding.alcohol.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.energy.requestFocus();
+        binding.energyKcal.requestFocus();
         allEditViews = new HashSet<>(Utils.getViewsByType((ViewGroup) view, CustomValidatingEditTextView.class));
         for (CustomValidatingEditTextView editText : allEditViews) {
             addValidListener(editText);
@@ -343,8 +343,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private int getSelectedUnit(String nutrientShortName, String unit) {
         int unitSelectedIndex = 0;
         if (unit != null) {
-            if (Nutriments.ENERGY.equals(nutrientShortName)) {
-                unitSelectedIndex = getSelectedEnergyUnitIndex(unit);
+            if (Nutriments.ENERGY_KCAL.equals(nutrientShortName) || Nutriments.ENERGY_KJ.equals(nutrientShortName)) {
+                throw new IllegalArgumentException("nutrient cannot be energy");
             } else {
                 unitSelectedIndex = getPositionInAllUnitArray(unit);
             }
@@ -478,18 +478,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private String getSelectedUnit(String nutrientShortName, int selectedIdx) {
-        if (Nutriments.ENERGY.equals(nutrientShortName)) {
-            String unit = UnitUtils.ENERGY_KJ;
-            if (selectedIdx == 0) {
-                unit = UnitUtils.ENERGY_KCAL;
-            }
-            return unit;
-        }
         return ALL_UNIT[selectedIdx];
-    }
-
-    private String getSelectedEnergyUnit() {
-        return getSelectedUnit(Nutriments.ENERGY, binding.energy.getUnitSpinner().getSelectedItemPosition());
     }
 
     /**
@@ -579,7 +568,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (res != ValueState.NOT_TESTED) {
             return res;
         }
-        res = checkEnergy(text, value);
+        res = checkEnergyField(text, value);
         if (res != ValueState.NOT_TESTED) {
             return res;
         }
@@ -712,31 +701,32 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
      * adds only those fields to the query map which are not empty.
      */
     public void getDetails(Map<String, String> targetMap) {
-        if (activity instanceof AddProductActivity) {
-            if (binding.checkboxNoNutritionData.isChecked()) {
-                targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
-            } else {
-                if (isDataPer100()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
-                } else if (isDataPerServing()) {
-                    targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
-                }
+        if (!(activity instanceof AddProductActivity)) {
+            return;
+        }
+        if (binding.checkboxNoNutritionData.isChecked()) {
+            targetMap.put(PARAM_NO_NUTRITION_DATA, "on");
+        } else {
+            if (isDataPer100()) {
+                targetMap.put(PARAM_NUTRITION_DATA_PER, ProductUtils.DEFAULT_NUTRITION_SIZE);
+            } else if (isDataPerServing()) {
+                targetMap.put(PARAM_NUTRITION_DATA_PER, "serving");
             }
-            if (EditTextUtils.isNotEmpty(binding.servingSize)) {
-                String servingSizeValue = EditTextUtils.content(binding.servingSize) + ObjectUtils
-                    .toString(binding.servingSize.getUnitSpinner().getSelectedItem().toString());
-                if (product == null || !servingSizeValue.equals(product.getServingSize())) {
-                    targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
-                }
+        }
+        if (EditTextUtils.isNotEmpty(binding.servingSize)) {
+            String servingSizeValue = EditTextUtils.content(binding.servingSize) + ObjectUtils
+                .toString(binding.servingSize.getUnitSpinner().getSelectedItem().toString());
+            if (product == null || !servingSizeValue.equals(product.getServingSize())) {
+                targetMap.put(OfflineSavedProduct.KEYS.PARAM_SERVING_SIZE, servingSizeValue);
             }
+        }
 
-            for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
-                if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
-                    continue;
-                }
-                if (editTextView.getText() != null && EditTextUtils.isNotEmpty(editTextView)) {
-                    addNutrientToMapIfUpdated(editTextView, targetMap);
-                }
+        for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
+            if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
+                continue;
+            }
+            if (editTextView.getText() != null && EditTextUtils.isNotEmpty(editTextView)) {
+                addNutrientToMapIfUpdated(editTextView, targetMap);
             }
         }
     }
@@ -1046,13 +1036,23 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     /**
      * Validate energy value entered by user
      */
-    private ValueState checkEnergy(CustomValidatingEditTextView editTextView, float value) {
-        if (binding.energy.getEntryName().equals(editTextView.getEntryName())) {
-            float energyInKcal = UnitUtils.convertToKiloCalories(value, getSelectedEnergyUnit());
+    private ValueState checkEnergyField(CustomValidatingEditTextView editTextView, float value) {
+        if (binding.energyKcal.getEntryName().equals(editTextView.getEntryName())) {
+            float energyInKcal = value;
             if (binding.radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
                 energyInKcal *= (100.0f / getReferenceValueInGram());
             }
-            boolean isValid = (energyInKcal <= 2000.0f);
+            boolean isValid = (energyInKcal <= 2000f);
+            if (!isValid) {
+                editTextView.showError(getString(R.string.max_energy_val_msg));
+            }
+            return isValid ? ValueState.VALID : ValueState.NOT_VALID;
+        } else if (binding.energyKj.getEntryName().equals(editTextView.getEntryName())) {
+            float energyInKj = value;
+            if (binding.radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
+                energyInKj *= (100.0f / getReferenceValueInGram());
+            }
+            boolean isValid = (energyInKj <= 8368000f);
             if (!isValid) {
                 editTextView.showError(getString(R.string.max_energy_val_msg));
             }

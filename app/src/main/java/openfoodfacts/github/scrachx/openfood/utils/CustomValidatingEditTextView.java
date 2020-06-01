@@ -26,9 +26,10 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
     private Spinner modSpinner;
     private Spinner unitSpinner;
     private String entryName;
+    private String fieldName;
 
     public CustomValidatingEditTextView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public CustomValidatingEditTextView(Context context, AttributeSet attrs) {
@@ -46,7 +47,13 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
     }
 
     public String getEntryName() {
-        return entryName == null ? getResources().getResourceEntryName(getId()) : entryName;
+        if (entryName == null) {
+            if (fieldName != null) {
+                return fieldName;
+            }
+            return getResources().getResourceEntryName(getId());
+        }
+        return entryName;
     }
 
     void initAttrs(Context context, AttributeSet attrs) {
@@ -60,6 +67,7 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
         textInputLayoutId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_parentTextInputLayout, NO_ID);
         attachedUnitSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedUnitSpinner, NO_ID);
         attachedModSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedModSpinner, NO_ID);
+        fieldName = attributeArray.getString(R.styleable.CustomValidatingEditTextView_fieldName);
         attributeArray.recycle();
     }
 

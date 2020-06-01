@@ -64,10 +64,13 @@
         <item>cl</item>
     </string-array>
 
+    <string name="kcal" translatable="false">kcal</string>
+    <string name="kj" translatable="false">kJ</string>
+
     <!-- nutrition energy units -->
     <string-array name="energy_units" translatable="false">
-        <item>kcal</item>
-        <item>kJ</item>
+        <item>@string/kcal</item>
+        <item>@string/kj</item>
     </string-array>
 
     <!-- volume units -->
@@ -517,6 +520,9 @@
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Energy</string>
+    <string name="nutrition_energy_kcal">Energy in calories</string>
+    <string name="nutrition_energy_kj">Energy in joules</string>
+
     <string name="nutrition_energy_short_name">Energy</string>
     <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fiber">Dietary fiber</string>
