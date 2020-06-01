@@ -729,6 +729,7 @@ public class Utils {
         return BuildConfig.FLAVOR.equals(flavor);
     }
 
+    @NonNull
     public static String getModifierNonDefault(String modifier) {
         return Nutriments.DEFAULT_MOD.equals(modifier) ? "" : modifier;
     }

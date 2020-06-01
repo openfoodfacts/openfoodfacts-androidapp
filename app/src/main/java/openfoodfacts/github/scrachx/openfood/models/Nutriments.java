@@ -321,10 +321,12 @@ public class Nutriments implements Serializable {
         }
 
         public String getDisplayStringFor100g() {
-            return String.format("%s %s %s",
-                Utils.getModifierNonDefault(getModifier()),
-                getFor100gInUnits(),
-                unit);
+            final StringBuilder builder = new StringBuilder();
+            final String mod = Utils.getModifierNonDefault(getModifier());
+            if (!mod.equals("")) {
+                builder.append(mod).append(" ");
+            }
+            return builder.append(getFor100gInUnits()).append(" ").append(unit).toString();
         }
 
         /**
