@@ -1,7 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.util.Log;
+import android.widget.Spinner;
 import android.widget.TextView;
+
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.CharUtils;
 import org.apache.commons.lang.StringUtils;
@@ -34,22 +36,12 @@ public class QuantityParserUtil {
         return null;
     }
 
-    /**
-     * @param text init text
-     */
-    public static String getModifier(TextView text) {
-        if (text.getText() == null) {
-            return null;
-        }
-        return getModifier(text.getText().toString());
+    public static boolean isModifierEqualsToGreaterThan(CustomValidatingEditTextView view) {
+        return isModifierEqualsToGreaterThan(view.getModSpinner());
     }
 
-    public static boolean isModifierEqualsToGreaterThan(TextView text) {
-        return isModifierEqualsToGreaterThan(text.getText().toString());
-    }
-
-    public static boolean isModifierEqualsToGreaterThan(String text) {
-        return ">".equals(getModifier(text));
+    public static boolean isModifierEqualsToGreaterThan(Spinner text) {
+        return ">".equals(Modifier.MODIFIERS[text.getSelectedItemPosition()]);
     }
 
     public static boolean isBlank(TextView editText) {

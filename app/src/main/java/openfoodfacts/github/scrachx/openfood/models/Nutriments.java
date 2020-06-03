@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
+import openfoodfacts.github.scrachx.openfood.utils.Modifier;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
@@ -30,7 +32,6 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 public class Nutriments implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String DEFAULT_UNIT = "g";
-    public static final String DEFAULT_MOD = "=";
     public static final String ENERGY_KCAL = "energy-kcal";
     public static final String ENERGY_KJ = "energy-kj";
     public static final String ENERGY_FROM_FAT = "energy-from-fat";
@@ -195,16 +196,13 @@ public class Nutriments implements Serializable {
         put(Nutriments.BIOTIN, R.string.biotin);
         put(Nutriments.PANTOTHENIC_ACID, R.string.pantothenic_acid);
     }};
-    public static final String SUFFIX_VALUE = "_value";
-    public static final String SUFFIX_MOD = "_modifier";
-    public static final String SUFFIX_100g = "_100g";
-    public static final String SUFFIX_UNIT = "_unit";
-    public static final String SUFFIX_SERVING = "_serving";
     private final Map<String, Object> additionalProperties = new HashMap<>();
     private boolean containsVitamins;
     private boolean containsMinerals;
 
-    public Nutriment get(String nutrimentName) {
+
+    @Nullable
+    public Nutriment get(@NonNull String nutrimentName) {
         if (nutrimentName.isEmpty() || additionalProperties.get(nutrimentName) == null) {
             return null;
         }
@@ -220,17 +218,47 @@ public class Nutriments implements Serializable {
             // In case one of the getters was unable to get data as string
             String stacktrace = Log.getStackTraceString(e);
             Log.e("NUTRIMENTS-MODEL", stacktrace);
+            return null;
         }
-        return null;
+    }
+
+    /**
+     * @param nutrimentName
+     * @return {@link StringUtils#EMPTY} if there is no serving value for the specified nutriment
+     */
+    @NonNull
+    public String getServing(String nutrimentName) {
+        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.SERVING);
+    }
+
+    /**
+     * @param nutrimentName
+     * @return {@link StringUtils#EMPTY} if there is no serving value for the specified nutriment
+     */
+    @NonNull
+    public String get100g(String nutrimentName) {
+        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.VALUE_100G);
     }
 
     @NonNull
     public String getUnit(String nutrimentName) {
-        return getAdditionalProperty(nutrimentName, SUFFIX_UNIT, DEFAULT_UNIT);
+        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.UNIT, DEFAULT_UNIT);
     }
 
-    public String getServing(String nutrimentName) {
-        return getAdditionalProperty(nutrimentName, SUFFIX_SERVING);
+    @NonNull
+    public String getModifier(String nutrimentName) {
+        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.MODIFIER, Modifier.DEFAULT_MODIFIER);
+    }
+
+    /**
+     * Get the nutriment modifier if it is different from {@link Modifier#DEFAULT_MODIFIER}
+     *
+     * @param nutrimentName
+     * @return The nutriment modifier if different from {@link Modifier#DEFAULT_MODIFIER}, otherwise an empty string {@code ""}
+     */
+    public String getModifierIfNotDefault(String nutrimentName) {
+        final String modifier = getModifier(nutrimentName);
+        return Utils.getModifierNonDefault(modifier);
     }
 
     @NonNull
@@ -238,35 +266,10 @@ public class Nutriments implements Serializable {
         return getAdditionalProperty(nutrimentName, suffix, StringUtils.EMPTY);
     }
 
+    @NonNull
     private String getAdditionalProperty(String nutrimentName, String suffix, String defaultValue) {
         final Object value = additionalProperties.get(nutrimentName + suffix);
         return value == null ? defaultValue : value.toString();
-    }
-
-    @NonNull
-    public String get100g(String nutrimentName) {
-        return getAdditionalProperty(nutrimentName, SUFFIX_100g);
-    }
-
-    @Nullable
-    public String getValue(String nutrimentName) {
-        return getAdditionalProperty(nutrimentName, SUFFIX_VALUE, null);
-    }
-
-    @NonNull
-    public String getModifier(String nutrimentName) {
-        return getAdditionalProperty(nutrimentName, SUFFIX_MOD, DEFAULT_MOD);
-    }
-
-    /**
-     * Get the nutriment modifier if it is different from {@link Nutriments#DEFAULT_MOD}
-     *
-     * @param nutrimentName
-     * @return The nutriment modifier if different from {@link Nutriments#DEFAULT_MOD}, otherwise an empty string {@code ""}
-     */
-    public String getModifierIfNotDefault(String nutrimentName) {
-        final String modifier = getModifier(nutrimentName);
-        return Utils.getModifierNonDefault(modifier);
     }
 
     public boolean contains(String nutrimentName) {
@@ -302,11 +305,12 @@ public class Nutriments implements Serializable {
         private final String name;
         private final String for100g;
         private final String forServing;
+        @NonNull
         private final String unit;
         @NonNull
         private final String modifier;
 
-        Nutriment(String key, String name, String for100g, String forServing, String unit, @NonNull String modifier) {
+        Nutriment(@NonNull String key, String name, String for100g, String forServing, @NonNull String unit, @NonNull String modifier) {
             this.key = key;
             this.name = name;
             this.for100g = for100g;
@@ -337,7 +341,7 @@ public class Nutriments implements Serializable {
          */
         private String getRealUnit(String unit) {
             if (unit.contains("%")) {
-                return UnitUtils.UNIT_GRAM;
+                return Units.UNIT_GRAM;
             }
             return unit;
         }
@@ -370,7 +374,7 @@ public class Nutriments implements Serializable {
             if (StringUtils.isBlank(valueInGramOrMl)) {
                 return StringUtils.EMPTY;
             }
-            if (valueInGramOrMl.isEmpty() || unit.equals(UnitUtils.UNIT_GRAM)) {
+            if (valueInGramOrMl.isEmpty() || unit.equals(Units.UNIT_GRAM)) {
                 return valueInGramOrMl;
             }
             float value = Float.parseFloat(valueInGramOrMl);

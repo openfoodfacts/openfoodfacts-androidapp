@@ -22,6 +22,8 @@ import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.Units;
+import openfoodfacts.github.scrachx.openfood.utils.Modifier;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
@@ -30,7 +32,6 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.CalculatedNutriments
 import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.DEFAULT_MOD;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY_KCAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY_KJ;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.FAT;
@@ -98,7 +99,7 @@ public class CalculateDetails extends BaseActivity {
                 new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
                     calculateCalories(value, spinnervalue),
                     energyKcal.getForServingInUnits(),
-                    UnitUtils.ENERGY_KCAL,
+                    Units.ENERGY_KCAL,
                     nutriments.getModifierIfNotDefault(ENERGY_KCAL)));
         }
         Nutriments.Nutriment energyKj = nutriments.get(ENERGY_KJ);
@@ -107,7 +108,7 @@ public class CalculateDetails extends BaseActivity {
                 new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
                     calculateKj(value, spinnervalue),
                     energyKj.getForServingInUnits(),
-                    UnitUtils.ENERGY_KJ.toLowerCase(),
+                    Units.ENERGY_KJ.toLowerCase(),
                     nutriments.getModifierIfNotDefault(ENERGY_KJ)));
         }
 
@@ -119,7 +120,7 @@ public class CalculateDetails extends BaseActivity {
                 fat.getForAnyValue(value, spinnervalue),
                 fat.getForServingInUnits(),
                 fat.getUnit(),
-                DEFAULT_MOD.equals(modifier) ? "" : modifier));
+                Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
 
             nutrimentListItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
@@ -132,7 +133,7 @@ public class CalculateDetails extends BaseActivity {
                 carbohydrates.getForAnyValue(value, spinnervalue),
                 carbohydrates.getForServingInUnits(),
                 carbohydrates.getUnit(),
-                DEFAULT_MOD.equals(modifier) ? "" : modifier));
+                Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
 
             nutrimentListItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
         }
@@ -149,7 +150,7 @@ public class CalculateDetails extends BaseActivity {
                     proteins.getForAnyValue(value, spinnervalue),
                     proteins.getForServingInUnits(),
                     proteins.getUnit(),
-                    DEFAULT_MOD.equals(modifier) ? "" : modifier));
+                    Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
 
             nutrimentListItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
         }
@@ -188,7 +189,7 @@ public class CalculateDetails extends BaseActivity {
                     nutriment.getForAnyValue(value, spinnervalue),
                     nutriment.getForServingInUnits(),
                     nutriment.getUnit(),
-                    DEFAULT_MOD.equals(modifier) ? "" : modifier));
+                    Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
             }
         }
 

@@ -56,6 +56,7 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Units;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -275,7 +276,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                 new NutrimentListItem(getString(R.string.nutrition_energy_kcal),
                     energyKcal.getFor100gInUnits(),
                     energyKcal.getForServingInUnits(),
-                    UnitUtils.ENERGY_KCAL,
+                    Units.ENERGY_KCAL,
                     nutriments.getModifierIfNotDefault(ENERGY_KCAL)));
         }
         Nutriment energyKj = nutriments.get(ENERGY_KJ);
@@ -284,7 +285,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                 new NutrimentListItem(getString(R.string.nutrition_energy_kj),
                     energyKj.getFor100gInUnits(),
                     energyKj.getForServingInUnits(),
-                    UnitUtils.ENERGY_KJ.toLowerCase(),
+                    Units.ENERGY_KJ.toLowerCase(),
                     nutriments.getModifierIfNotDefault(ENERGY_KJ)));
         }
 

@@ -5,22 +5,13 @@ import androidx.annotation.NonNull;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import openfoodfacts.github.scrachx.openfood.models.Units;
+
 public class UnitUtils {
     // Utility class
     private UnitUtils() {
     }
 
-    public static final String ENERGY_KJ = "kj";
-    public static final String ENERGY_KCAL = "kcal";
-    public static final String UNIT_KILOGRAM = "kg";
-    public static final String UNIT_GRAM = "g";
-    public static final String UNIT_MILLIGRAM = "mg";
-    public static final String UNIT_MICROGRAM = "µg";
-    public static final String UNIT_DV = "% DV";
-    public static final String UNIT_LITER = "l";
-    public static final String UNIT_DECILITRE = "dl";
-    public static final String UNIT_CENTILITRE = "cl";
-    public static final String UNIT_MILLILITRE = "ml";
     public static final String UNIT_IU = "IU";
     private static final double SALT_PER_SODIUM = 2.54;
     private static final float KCAL_KJ_RATIO = 0.23900573614f;
@@ -30,13 +21,13 @@ public class UnitUtils {
      * Converts a give quantity's unit to kcal
      *
      * @param value The value to be converted
-     * @param energyUnit {@link #ENERGY_KCAL} or {@link #ENERGY_KJ}
+     * @param originalUnit {@link Units#ENERGY_KCAL} or {@link Units#ENERGY_KJ}
      * @return return the converted value
      */
-    public static float convertToKiloCalories(float value, String energyUnit) {
-        if (ENERGY_KJ.equalsIgnoreCase(energyUnit)) {
+    public static float convertToKiloCalories(float value, String originalUnit) {
+        if (Units.ENERGY_KJ.equalsIgnoreCase(originalUnit)) {
             return (value * KCAL_KJ_RATIO);
-        } else if (ENERGY_KCAL.equalsIgnoreCase(energyUnit)) {
+        } else if (Units.ENERGY_KCAL.equalsIgnoreCase(originalUnit)) {
             return value;
         } else {
             throw new IllegalArgumentException("energyUnit is neither ENERGY_KCAL nor ENERGY_KJ");
@@ -55,25 +46,25 @@ public class UnitUtils {
      * @return return the converted value
      */
     public static double convertToGrams(double value, String unitOfValue) {
-        if (UNIT_MILLIGRAM.equalsIgnoreCase(unitOfValue)) {
+        if (Units.UNIT_MILLIGRAM.equalsIgnoreCase(unitOfValue)) {
             return value / 1000;
         }
-        if (UNIT_MICROGRAM.equalsIgnoreCase(unitOfValue)) {
+        if (Units.UNIT_MICROGRAM.equalsIgnoreCase(unitOfValue)) {
             return value / 1000000;
         }
-        if (UNIT_KILOGRAM.equalsIgnoreCase(unitOfValue)) {
+        if (Units.UNIT_KILOGRAM.equalsIgnoreCase(unitOfValue)) {
             return value * 1000;
         }
-        if (UNIT_LITER.equalsIgnoreCase(unitOfValue)) {
+        if (Units.UNIT_LITER.equalsIgnoreCase(unitOfValue)) {
             return value * 1000;
         }
-        if (UNIT_DECILITRE.equalsIgnoreCase(unitOfValue)) {
+        if (Units.UNIT_DECILITRE.equalsIgnoreCase(unitOfValue)) {
             return value * 100;
         }
-        if (UNIT_CENTILITRE.equalsIgnoreCase(unitOfValue)) {
+        if (Units.UNIT_CENTILITRE.equalsIgnoreCase(unitOfValue)) {
             return value * 10;
         }
-        if (UNIT_MILLILITRE.equalsIgnoreCase(unitOfValue)) {
+        if (Units.UNIT_MILLILITRE.equalsIgnoreCase(unitOfValue)) {
             return value;
         }
         //TODO : what about % DV and IU
@@ -86,16 +77,16 @@ public class UnitUtils {
 
     public static double convertFromGram(double valueInGramOrMl, String targetUnit) {
         switch (targetUnit) {
-            case UNIT_KILOGRAM:
-            case UNIT_LITER:
+            case Units.UNIT_KILOGRAM:
+            case Units.UNIT_LITER:
                 return valueInGramOrMl / 1000;
-            case UNIT_MILLIGRAM:
+            case Units.UNIT_MILLIGRAM:
                 return valueInGramOrMl * 1000;
-            case UNIT_MICROGRAM:
+            case Units.UNIT_MICROGRAM:
                 return valueInGramOrMl * 1000000;
-            case UNIT_DECILITRE:
+            case Units.UNIT_DECILITRE:
                 return valueInGramOrMl / 100;
-            case UNIT_CENTILITRE:
+            case Units.UNIT_CENTILITRE:
                 return valueInGramOrMl / 10;
         }
         return valueInGramOrMl;

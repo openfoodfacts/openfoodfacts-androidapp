@@ -6,11 +6,11 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber;
 
 public class NutrimentListItem {
     private final boolean displayVolumeHeader;
-    private final CharSequence modifier;
-    private final CharSequence servingValue;
-    private final CharSequence title;
-    private final CharSequence unit;
-    private final CharSequence value;
+    private final String modifier;
+    private final String servingValue;
+    private final String title;
+    private final String unit;
+    private final String value;
 
     public NutrimentListItem(boolean displayVolumeHeader) {
         this.displayVolumeHeader = displayVolumeHeader;
@@ -20,17 +20,6 @@ public class NutrimentListItem {
         this.servingValue = null;
         this.unit = null;
         this.modifier = null;
-    }
-
-    public NutrimentListItem(CharSequence title, CharSequence value, CharSequence servingValue,
-                             CharSequence unit, CharSequence modifier) {
-        this.title = title;
-        this.value = value;
-        this.servingValue = servingValue;
-        this.unit = unit;
-        this.modifier = modifier;
-
-        this.displayVolumeHeader = false;
     }
 
     /**

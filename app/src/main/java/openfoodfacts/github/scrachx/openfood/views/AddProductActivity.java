@@ -45,6 +45,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
@@ -168,7 +169,7 @@ public class AddProductActivity extends AppCompatActivity {
             .content(R.string.save_product)
             .positiveText(R.string.txtSave)
             .negativeText(R.string.txtPictureNeededDialogNo)
-            .onPositive((dialog, which) -> checkFields())
+            .onPositive((dialog, which) -> checkFieldsThenSave())
             .onNegative((dialog, which) -> super.onBackPressed())
             .show();
     }
@@ -180,7 +181,7 @@ public class AddProductActivity extends AppCompatActivity {
                 .content(R.string.save_product)
                 .positiveText(R.string.txtSave)
                 .negativeText(R.string.txtPictureNeededDialogNo)
-                .onPositive((dialog, which) -> checkFields())
+                .onPositive((dialog, which) -> checkFieldsThenSave())
                 .onNegative((dialog, which) -> finish())
                 .show();
         }
@@ -240,12 +241,12 @@ public class AddProductActivity extends AppCompatActivity {
             mainBundle.putSerializable("edit_offline_product", offlineSavedProduct);
             // Save the already existing images in productDetails for UI
             imagesFilePath[0] = offlineSavedProduct.getImageFront();
-            imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS);
-            imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION);
+            imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_INGREDIENTS);
+            imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_NUTRITION);
             // get the status of images from productDetailsMap, whether uploaded or not
-            imageFrontUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_FRONT_UPLOADED));
-            imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED));
-            imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED));
+            imageFrontUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_FRONT_UPLOADED));
+            imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED));
+            imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED));
         }
         if (state == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
@@ -288,12 +289,12 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void saveProduct() {
-        addProductOverviewFragment.getDetails();
-        addProductIngredientsFragment.getDetails();
+        addProductOverviewFragment.addUpdatedFieldsToMap(productDetails);
+        addProductIngredientsFragment.addUpdatedFieldsTomap(productDetails);
         if (isNutritionDataAvailable()) {
-            addProductNutritionFactsFragment.getDetails(productDetails);
+            addProductNutritionFactsFragment.addUpdatedFieldsToMap(productDetails);
         }
-        addLoginInfoInProductDetails();
+        addLoginInfoInProductDetails(productDetails);
         saveProductOffline();
     }
 
@@ -317,18 +318,18 @@ public class AddProductActivity extends AppCompatActivity {
      */
     private void saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.
-        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_FRONT, imagesFilePath[0]);
-        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS, imagesFilePath[1]);
-        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_NUTRITION, imagesFilePath[2]);
+        productDetails.put(ApiFields.Keys.IMAGE_FRONT, imagesFilePath[0]);
+        productDetails.put(ApiFields.Keys.IMAGE_INGREDIENTS, imagesFilePath[1]);
+        productDetails.put(ApiFields.Keys.IMAGE_NUTRITION, imagesFilePath[2]);
         // Add the status of images to the productDetails, whether uploaded or not
         if (imageFrontUploaded) {
-            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_FRONT_UPLOADED, "true");
+            productDetails.put(ApiFields.Keys.IMAGE_FRONT_UPLOADED, "true");
         }
         if (imageIngredientsUploaded) {
-            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED, "true");
+            productDetails.put(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED, "true");
         }
         if (imageNutritionFactsUploaded) {
-            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED, "true");
+            productDetails.put(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED, "true");
         }
         OfflineSavedProduct offlineSavedProduct = new OfflineSavedProduct();
         offlineSavedProduct.setBarcode(productDetails.get("code"));
@@ -359,12 +360,12 @@ public class AddProductActivity extends AppCompatActivity {
                 binding.viewpager.setCurrentItem(2, true);
                 break;
             case 2:
-                checkFields();
+                checkFieldsThenSave();
                 break;
         }
     }
 
-    private void checkFields() {
+    private void checkFieldsThenSave() {
         if (!editionMode) {
             if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
                 binding.viewpager.setCurrentItem(0, true);
@@ -388,13 +389,13 @@ public class AddProductActivity extends AppCompatActivity {
         return BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff");
     }
 
-    private void addLoginInfoInProductDetails() {
+    private void addLoginInfoInProductDetails(Map<String, String> targetMap) {
         final SharedPreferences settings = getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
         if (!login.isEmpty() && !password.isEmpty()) {
-            productDetails.put(KEY_USER_ID, login);
-            productDetails.put(KEY_PASSWORD, password);
+            targetMap.put(KEY_USER_ID, login);
+            targetMap.put(KEY_PASSWORD, password);
         }
     }
 
@@ -613,11 +614,11 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public String getProductLanguageForEdition() {
-        return productDetails.get(OfflineSavedProduct.KEYS.PARAM_LANGUAGE);
+        return productDetails.get(ApiFields.Keys.LANG);
     }
 
     public void setProductLanguage(String languageCode) {
-        addToMap(OfflineSavedProduct.KEYS.PARAM_LANGUAGE, languageCode);
+        addToMap(ApiFields.Keys.LANG, languageCode);
     }
 
     public void updateLanguage() {
