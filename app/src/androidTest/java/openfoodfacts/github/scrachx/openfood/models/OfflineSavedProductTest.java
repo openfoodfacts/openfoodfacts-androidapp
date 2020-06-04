@@ -71,7 +71,7 @@ public class OfflineSavedProductTest {
         productDetails.put(ApiFields.Keys.LANG, LANG);
         productDetails.put(ApiFields.Keys.PRODUCT_NAME, PRODUCT_NAME);
         productDetails.put(ApiFields.Keys.QUANTITY, QUANTITY);
-        productDetails.put("brands", BRAND);
+        productDetails.put(ApiFields.Keys.BRANDS, BRAND);
         productDetails.put("packaging", PACKAGING);
         productDetails.put("categories", CATEGORIES);
         productDetails.put("labels", LABELS);

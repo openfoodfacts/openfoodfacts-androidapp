@@ -28,6 +28,7 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.net.URI;
@@ -326,11 +327,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     private String getEnergyKcalValue(@NonNull Nutriments nutriments) {
+        String value;
         if (isDataPerServing()) {
-            return nutriments.getServing(Nutriments.ENERGY_KCAL);
+            value = nutriments.getServing(Nutriments.ENERGY_KCAL);
         } else {
-            return String.valueOf(UnitUtils.convertToKiloCalories(Float.parseFloat(nutriments.get100g(Nutriments.ENERGY_KCAL)), Nutriments.ENERGY_KCAL));
+            value = nutriments.get100g(Nutriments.ENERGY_KCAL);
         }
+        // Kcals are returned as kj, so we need to convert
+        return String.valueOf(UnitUtils.convertToKiloCalories(Float.parseFloat(value), Nutriments.ENERGY_KCAL));
     }
 
     /**
@@ -711,12 +715,14 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             return;
         }
 
+        String servingSizeValue;
         if (binding.servingSize.getText() == null || binding.servingSize.getText().toString().isEmpty()) {
-            targetMap.put(ApiFields.Keys.SERVING_SIZE, "");
+            servingSizeValue = StringUtils.EMPTY;
         } else {
-            String servingSizeValue = binding.servingSize.getText().toString() + ObjectUtils.toString(binding.servingSize.getUnitSpinner().getSelectedItem());
-            targetMap.put(ApiFields.Keys.SERVING_SIZE, servingSizeValue);
+            servingSizeValue = binding.servingSize.getText().toString() + ObjectUtils.toString(binding.servingSize.getUnitSpinner().getSelectedItem());
         }
+        targetMap.put(ApiFields.Keys.SERVING_SIZE, servingSizeValue);
+
         for (CustomValidatingEditTextView editTextView : getAllEditTextView()) {
             if (binding.servingSize.getEntryName().equals(editTextView.getEntryName())) {
                 continue;
@@ -802,7 +808,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (isDataPer100g()) {
             targetMap.put(ApiFields.Keys.NUTRITION_DATA_PER, ApiFields.Defaults.NUTRITION_DATA_PER_100G);
         } else if (isDataPerServing()) {
-            targetMap.put(ApiFields.Keys.NUTRITION_DATA_PER, "serving");
+            targetMap.put(ApiFields.Keys.NUTRITION_DATA_PER, ApiFields.Defaults.NUTRITION_DATA_PER_SERVING);
         }
     }
 
@@ -998,7 +1004,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
      * Validate energy value entered by user
      */
     private ValueState checkEnergyField(CustomValidatingEditTextView editTextView, float value) {
-        if (binding.energyKcal.getEntryName().equals(editTextView.getEntryName())) {
+        if (editTextView.getEntryName().equals(binding.energyKcal.getEntryName())) {
             float energyInKcal = value;
             if (binding.radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
                 energyInKcal *= (100.0f / getReferenceValueInGram());
@@ -1008,7 +1014,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
                 editTextView.showError(getString(R.string.max_energy_val_msg));
             }
             return isValid ? ValueState.VALID : ValueState.NOT_VALID;
-        } else if (binding.energyKj.getEntryName().equals(editTextView.getEntryName())) {
+        } else if (editTextView.getEntryName().equals(binding.energyKj.getEntryName())) {
             float energyInKj = value;
             if (binding.radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
                 energyInKj *= (100.0f / getReferenceValueInGram());

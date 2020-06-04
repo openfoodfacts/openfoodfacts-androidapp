@@ -58,6 +58,7 @@ public final class ApiFields {
         public static final String BARCODE = "code";
         public static final String QUANTITY = "quantity";
         public static final String ADD_BRANDS = "add_brands";
+        public static final String BRANDS = "brands";
         public static final String LC = "lc";
         public static final String ADD_PACKAGING = "add_packaging";
         public static final String ADD_CATEGORIES = "add_categories";
