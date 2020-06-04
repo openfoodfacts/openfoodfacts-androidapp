@@ -225,7 +225,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         newSearchQuery();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.getIfLowBatteryLevel(this)) {
             isLowBatteryMode = true;
         }
 
