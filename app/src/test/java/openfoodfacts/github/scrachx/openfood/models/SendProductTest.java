@@ -75,9 +75,10 @@ public class SendProductTest {
     @Test
     public void isEqualWithProductsDifferById_returnsTrue() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
-        SendProduct product2 = new SendProduct(567L, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+        Long id = 567L;
+        SendProduct product2 = new SendProduct(id, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
+                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         assertTrue(product1.isEqual(product2));
     }
 
