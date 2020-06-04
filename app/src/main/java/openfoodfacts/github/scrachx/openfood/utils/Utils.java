@@ -613,7 +613,7 @@ public class Utils {
      * @param context the context
      * @return true if battery is low or false if battery in not low
      */
-    public static boolean getIfLowBatteryLevel(Context context) {
+    public static boolean isBatteryLevelLow(Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
