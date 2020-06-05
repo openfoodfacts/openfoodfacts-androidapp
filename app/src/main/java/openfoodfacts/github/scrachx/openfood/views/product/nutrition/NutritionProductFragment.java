@@ -271,7 +271,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             binding.textServingSize.append(servingSize);
         }
 
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.getIfLowBatteryLevel(getContext())) {
             isLowBatteryMode = true;
         }
 
