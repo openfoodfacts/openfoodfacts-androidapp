@@ -39,4 +39,6 @@
     <string name="add_category_prompt_text">Fügen Sie eine Kategorie hinzu, um das Produkt zu vervollständigen.</string>
     <string name="add_nutrient_category_prompt_text">Fügen Sie eine Kategorie und weitere Details hinzu, um das Produkt zu vervollständigen.</string>
     <string name="required_to_compute_nutriscore"></string>
+    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
 </resources>
