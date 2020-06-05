@@ -14,6 +14,7 @@ public class UnitUtils {
 
     public static final String UNIT_IU = "IU";
     private static final double SALT_PER_SODIUM = 2.54;
+    private static final float KJ_PER_KCAL = 4.184f;
     private static final float KCAL_KJ_RATIO = 0.23900573614f;
     private static final float OZ_PER_L = 33.814f;
 
@@ -24,13 +25,13 @@ public class UnitUtils {
      * @param originalUnit {@link Units#ENERGY_KCAL} or {@link Units#ENERGY_KJ}
      * @return return the converted value
      */
-    public static float convertToKiloCalories(float value, String originalUnit) {
-        if (Units.ENERGY_KJ.equalsIgnoreCase(originalUnit)) {
-            return (value * KCAL_KJ_RATIO);
-        } else if (Units.ENERGY_KCAL.equalsIgnoreCase(originalUnit)) {
+    public static int convertToKiloCalories(int value, String originalUnit) {
+        if (originalUnit.equalsIgnoreCase(Units.ENERGY_KJ)) {
+            return (int) (value / KJ_PER_KCAL);
+        } else if (originalUnit.equalsIgnoreCase(Units.ENERGY_KCAL)) {
             return value;
         } else {
-            throw new IllegalArgumentException("energyUnit is neither ENERGY_KCAL nor ENERGY_KJ");
+            throw new IllegalArgumentException("energyUnit is neither Units.ENERGY_KCAL nor Units.ENERGY_KJ");
         }
     }
 

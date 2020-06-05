@@ -671,7 +671,7 @@
     <string name="txt_products_to_buy">Prodotti da acquistare</string>
     <string name="txt_exporting_your_listed_products">Esportazione dei tuoi prodotti…</string>
     <string name="txt_your_listed_products_exported">I tuoi prodotti sono stati esportati</string>
-    <string name="txt_discard">Annulla</string>
+    <string name="txt_discard">Scarta</string>
     <string name="txt_info_eaten_products">\"Sarai in grado di aggiungere prodotti a questo elenco mediante la scansione di prodotti, trascinando la scheda del prodotto verso l\'alto e toccando \"Sto mangiando questo\".
         Potrai anche aggiungere prodotti a questo elenco cercandoli e facendo clic sul pulsante \"+\" in alto a destra nella pagina del prodotto.\"</string>
     <string name="txt_info_your_listed_products">Potrai aggiungere prodotti a questo elenco cercandoli e facendo clic sul pulsante \"+\" in alto a destra nella pagina del prodotto.</string>

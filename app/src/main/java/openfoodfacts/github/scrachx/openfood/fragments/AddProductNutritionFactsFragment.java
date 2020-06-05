@@ -292,24 +292,25 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
             // Get the value
             String value = isDataPer100g() ? nutriments.get100g(nutrientShortName) : nutriments.getServing(nutrientShortName);
-            if (!value.isEmpty()) {
-                view.setText(value);
-                if (view.getUnitSpinner() != null) {
-                    view.getUnitSpinner().setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName));
-                }
-                if (view.getModSpinner() != null) {
-                    view.getModSpinner().setSelection(getSelectedModifierFromShortName(nutriments, nutrientShortName));
-                }
+            if (value.isEmpty()) {
+                continue;
+            }
+            view.setText(value);
+            if (view.getUnitSpinner() != null) {
+                view.getUnitSpinner().setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName));
+            }
+            if (view.getModSpinner() != null) {
+                view.getModSpinner().setSelection(getSelectedModifierFromShortName(nutriments, nutrientShortName));
             }
         }
 
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
         for (int i = 0; i < AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.size(); i++) {
             String nutrientShortName = AddProductNutritionFactsData.getShortName(AddProductNutritionFactsData.PARAMS_OTHER_NUTRIENTS.get(i));
-            if (nutriments.get100g(nutrientShortName).isEmpty()) {
+            String value = isDataPer100g() ? nutriments.get100g(nutrientShortName) : nutriments.getServing(nutrientShortName);
+            if (value.isEmpty()) {
                 continue;
             }
-            String value = nutriments.get100g(nutrientShortName);
             int unitIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName);
             int modIndex = getSelectedModifierFromShortName(nutriments, nutrientShortName);
             index.add(i);
@@ -333,8 +334,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         } else {
             value = nutriments.get100g(Nutriments.ENERGY_KCAL);
         }
-        // Kcals are returned as kj, so we need to convert
-        return String.valueOf(UnitUtils.convertToKiloCalories(Float.parseFloat(value), Nutriments.ENERGY_KCAL));
+        // TODO: kcals are returned as kj, so we need to convert
+        return String.valueOf(UnitUtils.convertToKiloCalories(Integer.parseInt(value), Units.ENERGY_KJ));
     }
 
     /**

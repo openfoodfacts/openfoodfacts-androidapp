@@ -180,7 +180,7 @@ public class AddProductActivity extends AppCompatActivity {
             new MaterialDialog.Builder(this)
                 .content(R.string.save_product)
                 .positiveText(R.string.txtSave)
-                .negativeText(R.string.txtPictureNeededDialogNo)
+                .negativeText(R.string.txt_discard)
                 .onPositive((dialog, which) -> checkFieldsThenSave())
                 .onNegative((dialog, which) -> finish())
                 .show();
