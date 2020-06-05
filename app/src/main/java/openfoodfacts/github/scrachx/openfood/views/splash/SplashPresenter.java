@@ -44,9 +44,9 @@ public class SplashPresenter implements ISplashPresenter.Actions {
         activateDownload(Taxonomy.ADDITIVE, OFFApplication.OFF, OFFApplication.OBF);
         activateDownload(Taxonomy.COUNTRY, OFFApplication.OFF, OFFApplication.OBF);
         activateDownload(Taxonomy.LABEL, OFFApplication.OFF, OFFApplication.OBF);
-        activateDownload(Taxonomy.ALLERGEN, OFFApplication.OFF);
-        activateDownload(Taxonomy.ANALYSIS_TAGS, OFFApplication.OFF);
-        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, OFFApplication.OFF);
+        activateDownload(Taxonomy.ALLERGEN, OFFApplication.OFF, OFFApplication.OBF, OFFApplication.OPFF);
+        activateDownload(Taxonomy.ANALYSIS_TAGS, OFFApplication.OFF, OFFApplication.OBF, OFFApplication.OPFF);
+        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, OFFApplication.OFF, OFFApplication.OBF, OFFApplication.OPFF);
 
         //first run ever off this application, whatever the version
         boolean firstRun = settings.getBoolean("firstRun", true);
