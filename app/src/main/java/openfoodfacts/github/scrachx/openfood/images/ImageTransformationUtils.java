@@ -73,9 +73,9 @@ public class ImageTransformationUtils {
             return res;
         }
 
-        //if a rotation + crop we have to rotate the crop area.
-        //off applies the crop on the rotated image and the android librairy applies the crop before the rotation... so we should
-        // transform the crop from off to the android library version.
+        // if we want to perform a rotation + a crop, we have to rotate the crop area.
+        // Open Food Facts applies the crop on the rotated image and the Android library applies the crop before the rotation... so we should
+        // transform the crop from Open Food Facts to the Android library version.
         if (res.getCropRectangle() != null && res.rotationInDegree != 0) {
             applyRotationOnCropRectangle(product, productImageField, language, res, true);
         }
@@ -111,7 +111,7 @@ public class ImageTransformationUtils {
     }
 
     private static void applyRotationOnCropRectangle(Product product, ProductImageField productImageField, String language, ImageTransformationUtils res, boolean inverse) {
-        //if a crop and a rotation is done we should rotate the cropped rectangle
+        // if a crop and a rotation is done, we should rotate the cropped rectangle
         final String imageKey = ImageKeyHelper.getImageStringKey(productImageField, language);
         final Map<String, ?> imageDetails = product.getImageDetails(imageKey);
         String initImageId = (String) imageDetails.get(ImageKeyHelper.IMG_ID);
