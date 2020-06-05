@@ -117,11 +117,11 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
     private void calcTime(Date date, HistoryScanHolder holder) {
 
-        Date now = new Date();
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(now.getTime() - date.getTime());
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(now.getTime() - date.getTime());
-        long hours = TimeUnit.MILLISECONDS.toHours(now.getTime() - date.getTime());
-        long days = TimeUnit.MILLISECONDS.toDays(now.getTime() - date.getTime());
+        final long duration = new Date().getTime() - date.getTime();
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(duration);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+        long hours = TimeUnit.MILLISECONDS.toHours(duration);
+        long days = TimeUnit.MILLISECONDS.toDays(duration);
 
         if (seconds < 60) {
             holder.txtDate.setText(res.getQuantityString(R.plurals.seconds, (int) seconds, (int) seconds));
