@@ -40,4 +40,6 @@
     <string name="add_nutrient_prompt_text">crwdns124539:0crwdne124539:0</string>
     <string name="add_category_prompt_text">crwdns124541:0crwdne124541:0</string>
     <string name="add_nutrient_category_prompt_text">crwdns124543:0crwdne124543:0</string>
+    <string name="txt_eaten_products">crwdns125828:0crwdne125828:0</string>
+    <string name="txt_products_to_buy">crwdns125830:0crwdne125830:0</string>
 </resources>
