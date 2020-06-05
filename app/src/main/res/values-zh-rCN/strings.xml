@@ -423,9 +423,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world-zh.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world-zh.openfoodfacts.org/nova</string>
+    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">一般</string>
     <string name="preference_header_network">网络</string>
     <string name="preference_header_contributing">贡献</string>
