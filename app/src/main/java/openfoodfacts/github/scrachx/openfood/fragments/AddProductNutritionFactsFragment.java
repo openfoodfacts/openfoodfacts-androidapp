@@ -608,7 +608,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             //if per serving is set must be not blank
             checkPerServing(text);
         } else {
-            Float value = QuantityParserUtil.getFloatValue(text, QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX);
+            Float value = QuantityParserUtil.getFloatValue(text);
             if (value == null) {
                 text.showError(getString(R.string.error_nutrient_entry));
             } else {
@@ -644,7 +644,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     void updateSodiumValue() {
         if (activity.getCurrentFocus() == binding.salt) {
 
-            Double saltValue = QuantityParserUtil.getDoubleValue(binding.salt, QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX);
+            Double saltValue = QuantityParserUtil.getDoubleValue(binding.salt);
             if (saltValue != null) {
                 double sodiumValue = UnitUtils.saltToSodium(saltValue);
                 binding.sodium.setText(String.valueOf(sodiumValue));
@@ -654,7 +654,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
     void updateSaltValue() {
         if (activity.getCurrentFocus() == binding.sodium) {
-            Double sodiumValue = QuantityParserUtil.getDoubleValue(binding.sodium, QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX);
+            Double sodiumValue = QuantityParserUtil.getDoubleValue(binding.sodium);
             if (sodiumValue != null) {
                 double saltValue = UnitUtils.sodiumToSalt(sodiumValue);
                 binding.salt.setText(String.valueOf(saltValue));
@@ -824,7 +824,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private float getReferenceValueInGram() {
         float reference = 100;
         if (binding.radioGroup.getCheckedRadioButtonId() != R.id.for100g_100ml) {
-            reference = QuantityParserUtil.getFloatValueOrDefault(binding.servingSize, QuantityParserUtil.EntryFormat.NO_PREFIX, reference);
+            reference = QuantityParserUtil.getFloatValueOrDefault(binding.servingSize, reference);
             reference = UnitUtils.convertToGrams(reference, SERVING_UNITS[binding.servingSize.getUnitSpinner().getSelectedItemPosition()]);
         }
         return reference;
@@ -951,8 +951,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (ValueState.NOT_VALID.equals(res)) {
             return res;
         }
-        float carbsValue = QuantityParserUtil.getFloatValueOrDefault(binding.carbohydrates, QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX, 0f);
-        float sugarValue = QuantityParserUtil.getFloatValueOrDefault(binding.sugars, QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX, 0f);
+        float carbsValue = QuantityParserUtil.getFloatValueOrDefault(binding.carbohydrates, 0f);
+        float sugarValue = QuantityParserUtil.getFloatValueOrDefault(binding.sugars, 0f);
         // check that value of (sugar + starch) is not greater than value of carbohydrates
         //convert all the values to grams
         carbsValue = convertToGrams(carbsValue, binding.carbohydrates.getUnitSpinner().getSelectedItemPosition());
@@ -974,7 +974,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             if (isDataPer100g()) {
                 return ValueState.VALID;
             }
-            float value = QuantityParserUtil.getFloatValueOrDefault(binding.servingSize, QuantityParserUtil.EntryFormat.NO_PREFIX, 0);
+            float value = QuantityParserUtil.getFloatValueOrDefault(binding.servingSize, 0);
             if (value <= 0) {
                 editText.showError(getString(R.string.error_nutrient_serving_data));
                 return ValueState.NOT_VALID;
@@ -1056,7 +1056,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (starchEditText == null) {
             return 0;
         }
-        final Float floatValue = QuantityParserUtil.getFloatValue(starchEditText, QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX);
+        final Float floatValue = QuantityParserUtil.getFloatValue(starchEditText);
         return floatValue == null ? 0 : floatValue;
     }
 

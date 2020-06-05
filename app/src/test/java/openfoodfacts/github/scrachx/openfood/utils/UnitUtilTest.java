@@ -72,8 +72,8 @@ public class UnitUtilTest {
 
     @Test
     public void testConvertToKiloCalories() {
-        assertEquals(0.239006, UnitUtils.convertToKiloCalories(1, Units.ENERGY_KJ), DELTA);
-        assertEquals(1, UnitUtils.convertToKiloCalories(1, Units.ENERGY_KCAL), DELTA);
+        assertEquals(23, UnitUtils.convertToKiloCalories(100, Units.ENERGY_KJ), DELTA);
+        assertEquals(100, UnitUtils.convertToKiloCalories(100, Units.ENERGY_KCAL), DELTA);
 
         assertThrows(IllegalArgumentException.class, () -> UnitUtils.convertToKiloCalories(1, Units.UNIT_GRAM));
     }
