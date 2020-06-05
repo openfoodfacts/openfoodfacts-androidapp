@@ -229,6 +229,8 @@
     <string name="title_info_dialog">איך זה עובד?</string>
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים ללא חיבור לאינטרנט ולהוסיף אותם למסד נתוני המזון הפתוח מאוחר יותר. כל המוצרים שנסרקים מופיעים כאן, תהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="permission_camera">נדרשת הרשאה לשימוש במצלמה כדי לסרוק ברקודים ולצלם תמונות.</string>
+    <string name="no_camera_dialog_title">מצלמה לא נמצאה</string>
+    <string name="no_camera_dialog_content">למכשיר שלך אין מצלמה. לא תהיה לך אפשרות לסרוק ברקודים.</string>
     <string name="permission_title">פרטי הרשאה</string>
     <string name="permission_denied">נא להפעיל את ההרשאות בהגדרות</string>
     <string name="info_download_data_connection">עליך להוריד נתונים כדי שתכונה זו תפעל. נא להתחבר לאינטרנט.</string>

@@ -138,7 +138,7 @@
     <string name="search_button">ค้นหา</string>
     <string name="alert_dialog_warning_title">คำเตือน</string>
     <string name="alert_dialog_warning_msg_user">ผู้ใช้/รหัสผ่านมีการเปลี่ยนแปลง โปรดอัปเดตข้อมูล</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">บาร์โค้ด :</string>
     <string name="txtCategories">หมวดหมู่</string>
     <string name="txtLabels">ป้าย, ใบรับรอง, รางวัลต่างๆที่ได้รับ :</string>
@@ -215,6 +215,8 @@
     <string name="title_info_dialog">มันทำงานอย่างไร?</string>
     <string name="text_offline_info_dialog">คุณสามารถสแกนผลิตภัณฑ์เมื่อออฟไลน์เพื่อเพิ่มลงใน Open Food Facts ในภายหลัง ผลิตภัณฑ์ทั้งหมดที่คุณสแกนจะปรากฏที่นี่และคุณจะสามารถส่งผลิตภัณฑ์โดยกดที่ปุ่มด้านล่าง</string>
     <string name="permission_camera">จำเป็นต้องได้รับอนุญาตจากกล้องเพื่อสแกนบาร์โค้ดและถ่ายภาพ</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">ข้อมูลการอนุญาต</string>
     <string name="permission_denied">กรุณาเปิดใช้งานการอนุญาตในการตั้งค่า</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>

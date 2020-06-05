@@ -153,7 +153,7 @@
     <string name="search_button">Vyhľadať</string>
     <string name="alert_dialog_warning_title">Upozornenie</string>
     <string name="alert_dialog_warning_msg_user">Užívateľské meno/heslo bolo zmenené, prosím upravte informácie</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">Čiarový kód :</string>
     <string name="txtCategories">Kategórie :</string>
     <string name="txtLabels">Štítky, certifikáty, ocenenia :</string>
@@ -193,8 +193,8 @@
     <string name="hintBrand">Značka</string>
     <string name="txtSendAll">Nahrať všetko</string>
     <string name="txtPictureNeededDialogNo">Odstrániť</string>
-    <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
+    <string name="toastSending">Uploading...</string>
+    <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Ste si istý, že chcete odstrániť tento koncept?</string>
     <string name="txtDialogsContentInfoSave">Produkt je uložený lokálne, môžete ho upravovať použitím \"Upravovanie offline\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -229,6 +229,8 @@
     <string name="title_info_dialog">Ako to funguje?</string>
     <string name="text_offline_info_dialog">Produkty môžete skenovať aj vtedy, keď ste v režime offline, aby ste ich neskôr mohli pridať do Open Food Facts. Tu sa zobrazia všetky produkty, ktoré skenujete, a budete ich môcť odoslať pomocou tlačidla nižšie.</string>
     <string name="permission_camera">Na snímanie čiarových kódov a fotenie výrobkov je potrebné povoliť fotoaparát.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informácie o povoleniach</string>
     <string name="permission_denied">Prosím udeľte povolenie v nastaveniach</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
@@ -255,7 +257,7 @@
     <string name="title_clear_history_dialog">Vymazať</string>
     <string name="text_clear_history_dialog">Chcete vyčistiť svoju celú históriu sťahovania?</string>
     <string name="export_csv_history">Exportovať ako CSV</string>
-    <string name="txt_exporting_history">Exporting history…</string>
+    <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">História bola exportovaná</string>
     <string name="permision_write_external_storage">Na exportovanie histórie je potrené povoliť ukladanie na externé úložisko.</string>
     <string name="no_brand">Žiadna značka</string>

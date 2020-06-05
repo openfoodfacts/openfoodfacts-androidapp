@@ -224,6 +224,8 @@
     <string name="title_info_dialog">Cum funcționează?</string>
     <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
     <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informații despre permisiuni.</string>
     <string name="permission_denied">Vă rugam activați permisiunile în configurări.</string>
     <string name="info_download_data_connection">Pentru a activa această funcționalitate, o serie de date suplimentare trebuiesc descărcate. Vă rugăm activați conexiunea la internet.</string>

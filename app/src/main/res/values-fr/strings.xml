@@ -187,7 +187,7 @@
     <string name="txtLoading">Chargement…</string>
     <string name="txtDialogsContentDelete">Êtes-vous sûr(e) de vouloir supprimer ce brouillon ?</string>
     <string name="txtDialogsContentInfoSave">Le produit a été sauvegardé localement, vous pouvez l\'éditer dans le menu « Édition hors-ligne »</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Produit enregistré, merci !</string>
     <string name="txtBarcodeRequire">Code-barres requis</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Code-barres non valide</string>
@@ -219,6 +219,8 @@
     <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="permission_camera">L\'autorisation d\'utiliser l\'appareil photo est nécessaire pour scanner des codes-barres et prendre des photos.</string>
+    <string name="no_camera_dialog_title">Appareil photo introuvable</string>
+    <string name="no_camera_dialog_content">Votre appareil n\'a pas d\'appareil photo. Vous ne pourrez pas scanner de code-barres.</string>
     <string name="permission_title">Informations sur les permissions</string>
     <string name="permission_denied">Veuillez activer la permission dans les paramètres</string>
     <string name="info_download_data_connection">Vous devez télécharger des données pour que cette fonctionnalité marche. Veuillez activer votre connexion Internet.</string>
@@ -428,7 +430,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://fr.openfoodfacts.org/classification-nova-pour-la-transformation-des-aliments</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://fr.openfoodfacts.org/feux-tricolores-nutritionnels</string>
     <string name="preference_header_general">Général</string>
     <string name="preference_header_network">Réseau</string>
     <string name="preference_header_contributing">Contribuer</string>

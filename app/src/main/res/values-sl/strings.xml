@@ -229,6 +229,8 @@
     <string name="title_info_dialog">Kako deluje?</string>
     <string name="text_offline_info_dialog">Kadarkoli lahko skenirate izdelke, jih lahko kasneje dodate v Open Food Facts. Tukaj bodo prikazani vsi izdelki, ki jih skenirate, in jih boste lahko poslali z uporabo spodnjega gumba.</string>
     <string name="permission_camera">Za pregledovanje črtnih kod in fotografiranje potrebujete dovoljenje kamere.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informacije o dovoljenju</string>
     <string name="permission_denied">Aktivirajte dovoljenje v nastavitvah</string>
     <string name="info_download_data_connection">Za prenos te funkcije potrebujete nekaj podatkov. Aktivirajte internetno povezavo.</string>

@@ -219,6 +219,8 @@
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">میتوانید محصولات را به صورت آفلاین اسکن کنید. اطلاعات ذخیره میشوند سپس میتوانید آن ها را با دکمه زیر بفرستید.</string>
     <string name="permission_camera">دسترسی دوربین برای عکس گرفتن و اسکن کردن بارکد نیاز است.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">اطلاعات دسترسی</string>
     <string name="permission_denied">لطفا اجازه دسترسی در تنظیمات را فعال کنید</string>
     <string name="info_download_data_connection">برای فعال سازی این قابلیت به باید مقداری داده دانلود کنید. لطفا اینترنت خود را فعال کنید.</string>

@@ -219,6 +219,8 @@
     <string name="title_info_dialog">Οδηγίες Χρήσης</string>
     <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
     <string name="permission_camera">Χρειάζεται άδεια κάμερας για τη σάρωση των Barcodes και τη λήψη φωτογραφιών.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Δικαιώματα</string>
     <string name="permission_denied">Παρακαλώ δώστε δικαιώματα από τις ρυθμίσεις</string>
     <string name="info_download_data_connection">Χρειάζεται περιπτέρου λήψη ώστε να γίνει χρήση αυτής της λειτουργίας. Για έναρξη λήψης ενεργοποιήστε WiFi ή Δεδομένα…</string>
@@ -426,9 +428,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Γενικά</string>
     <string name="preference_header_network">Ρυθμίσεις Δικτύου</string>
     <string name="preference_header_contributing">Συνεισφορά</string>

@@ -219,6 +219,8 @@
     <string name="title_info_dialog">Miten se toimii?</string>
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
     <string name="permission_camera">Lupaa käyttää kameraa vaaditaan viivakoodien lukemiseen ja kuvien ottamiseen.</string>
+    <string name="no_camera_dialog_title">Kameraa ei löytynyt</string>
+    <string name="no_camera_dialog_content">Laitteessasi ei ole kameraa. Et voi lukea viivakoodeja.</string>
     <string name="permission_title">Käyttöoikeudet</string>
     <string name="permission_denied">Aktivoi lupa asetuksissa</string>
     <string name="info_download_data_connection">Tämän ominaisuuden pitää ladata tietoja toimiakseen. Aktivoi Internet-yhteys.</string>
@@ -428,7 +430,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world-fi.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world-fi.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Yleiset</string>
     <string name="preference_header_network">Verkko</string>
     <string name="preference_header_contributing">Osallistu</string>
@@ -622,13 +624,13 @@
     <string name="infants">Imeväiset</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Taaperot</string>
-    <string name="toddlers_age">1 – 2</string>
+    <string name="toddlers_age">1 - 2</string>
     <string name="children">Lapset</string>
     <string name="children_age">3 – 9</string>
     <string name="adolescents">Nuoret</string>
-    <string name="adolescents_age">10 – 17</string>
+    <string name="adolescents_age">10 - 17</string>
     <string name="adults">Aikuiset</string>
-    <string name="adults_age">18 – 64</string>
+    <string name="adults_age">18 - 64</string>
     <string name="elderly">Vanhukset</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Useimmat ihmiset\n(yli 50%)</string>

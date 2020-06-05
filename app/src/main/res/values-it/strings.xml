@@ -219,6 +219,8 @@
     <string name="title_info_dialog">Come funziona?</string>
     <string name="text_offline_info_dialog">Puoi scansionare i prodotti quando sei offline e aggiungerli a Open Food Facts più tardi. Tutti i prodotti che scansioni verranno mostrati qui e potrai inviarli usando il tasto qui sotto.</string>
     <string name="permission_camera">L\'autorizzazione Fotocamera è necessaria per scansionare i codici a barre e scattare foto.</string>
+    <string name="no_camera_dialog_title">Fotocamera non trovata</string>
+    <string name="no_camera_dialog_content">Il tuo dispositivo non ha una fotocamera. Non potrai scansionare alcun codice a barre.</string>
     <string name="permission_title">Informazione permesso</string>
     <string name="permission_denied">Per favore attiva il permesso nelle impostazioni</string>
     <string name="info_download_data_connection">È necessario scaricare dei dati per rendere questa funzionalità operativa. Attiva la connessione internet.</string>

@@ -188,7 +188,7 @@
     <string name="hintBrand">Brend</string>
     <string name="txtSendAll">Pošaljite sve</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Otpremanje…</string>
+    <string name="toastSending">Otpremanje...</string>
     <string name="txtLoading">Učitavam</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">Ovaj proizvod je sačuvan lokalno, možete ga izmeniti u meniju \"Offline edit\"</string>
@@ -224,6 +224,8 @@
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Možete skenirati proizvode i kada niste povezani na internet kako biste ih dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate pojaviće se ovde, i bićete u mogućnosti da ih pošaljete pritiskom na dugme ispod.</string>
     <string name="permission_camera">Dozvola za kameru je potrebna za skeniranje barkodova i fotografije.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informacije o dozvolama</string>
     <string name="permission_denied">Molimo Vas da aktivirate ovu dozvolu u podešavanjima</string>
     <string name="info_download_data_connection">Da bi ova funkcionalnost bila dostupna potrebno je preuzeti podatke, molimo vas da se povežete na internet.</string>
@@ -250,7 +252,7 @@
     <string name="title_clear_history_dialog">Obriši</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Izvezi CSV</string>
-    <string name="txt_exporting_history">Izvoz istorije u toku…</string>
+    <string name="txt_exporting_history">Izvoz istorije u toku...</string>
     <string name="txt_history_exported">Istorija izvezena</string>
     <string name="permision_write_external_storage">Dozvola za upis na eksternu memorije je potrebna za izvoz istorije.</string>
     <string name="no_brand">No Brand</string>
