@@ -40,4 +40,6 @@
     <string name="add_nutrient_prompt_text">Ajoutez des informations nutritionnelles pour calculer les quantités de nutriments</string>
     <string name="add_category_prompt_text">Ajoutez une catégorie pour aider à compléter le produit</string>
     <string name="add_nutrient_category_prompt_text">Ajoutez une catégorie et des informations nutritionnelles pour aider à compléter le produit</string>
+    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_products_to_buy">Produits à acheter</string>
 </resources>
