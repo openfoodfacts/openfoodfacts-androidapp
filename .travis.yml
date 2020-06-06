@@ -6,6 +6,10 @@ jdk: oraclejdk8
 # If the distribution is omitted it falls back to Ubuntu Precise instead of Trusty, making the build unstable
 dist: trusty
 
+install:
+  - bundle install
+script:
+  - fastlane screenshots
 env:
   global:
     - ABI=x86_64
