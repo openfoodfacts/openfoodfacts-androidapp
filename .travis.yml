@@ -10,6 +10,8 @@ install:
   - bundle install
 script:
   - fastlane screenshots
+  - fastlane frameit download_frames
+  - fastlane frameit android
 env:
   global:
     - ABI=x86_64
