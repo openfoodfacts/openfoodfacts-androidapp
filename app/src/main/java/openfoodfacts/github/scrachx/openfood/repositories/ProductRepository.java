@@ -901,12 +901,12 @@ public class ProductRepository implements IProductRepository {
         final SharedPreferences userPref = OFFApplication.getInstance()
             .getSharedPreferences("login", 0);
 
-        final String user = userPref.getString("user", "");
-        final String pass = userPref.getString("pass", "");
+        final String user = userPref.getString("user", "").trim();
+        final String pass = userPref.getString("pass", "").trim();
 
         if (StringUtils.isNotBlank(user) && StringUtils.isNotBlank(pass)) {
             final String baseAuth = "Basic " + Base64.encodeToString(
-                (user + ":" + pass).getBytes(), Base64.DEFAULT);
+                (user + ":" + pass).getBytes(), Base64.NO_WRAP);
 
             return robotoffApi.annotateInsight(insightId, annotation, baseAuth);
         } else {
