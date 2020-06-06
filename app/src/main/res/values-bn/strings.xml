@@ -187,6 +187,7 @@
     <string name="txtLoading">লোড হচ্ছে…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">পণ্যটি স্থানীয়ভাবে সংরক্ষণ হয়েছে। আপনি তা \"অফলাইন সম্পাদনা করুন\" মেনু থেকে সম্পাদনা করতে পারেন</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">বারকোড প্রযোজ্য</string>
     <string name="txtOk">ঠিক আছে</string>
     <string name="txtBarcodeNotValid">বারকোড বৈধ নয়</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">আপনি অফলাইনে পণ্যগুলি স্ক্যান করতে এবং পরে সেগুলি যোগ করতে পারবেন। আপনার স্ক্যানকৃত পণ্য এখানে প্রদর্শিত হবে, এবং আপনি নচের বোতাম ব্যবহার করে সেগুলি পাঠাতে পারবেন।</string>
     <string name="permission_camera">বারকোড স্ক্যান এবং ছবি তুলতে ক্যামেরার অনুমতি প্রয়োজন।</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">অনুমতি তথ্য</string>
     <string name="permission_denied">দয়া করে সেটিংসে পারমিশন সক্রিয় করুন</string>
     <string name="info_download_data_connection">এই কার্যকারিতা কাজ করার জন্য আপনাকে কিছু ডেটা ডাউনলোড করতে হবে। দয়া করে ইন্টারনেট সংযোগ সক্রিয় করুন।</string>
@@ -425,9 +428,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>

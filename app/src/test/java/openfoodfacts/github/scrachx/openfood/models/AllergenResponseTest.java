@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,9 +16,15 @@ import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.
  */
 public class AllergenResponseTest {
 
+    private Map<String, String> nameMap;
+
+    @Before
+    public void setUp(){
+        nameMap = new HashMap<>();
+    }
+
     @Test
     public void map_returnsMappedAllergen() {
-        Map<String, String> nameMap = new HashMap<>();
         nameMap.put(LANGUAGE_CODE_ENGLISH, PEANUTS_EN);
         nameMap.put(LANGUAGE_CODE_FRENCH, PEANUTS_FR);
         AllergenResponse allergenResponse = new AllergenResponse(UNIQUE_ALLERGEN_ID_1, nameMap);
@@ -33,5 +40,14 @@ public class AllergenResponseTest {
         assertEquals(UNIQUE_ALLERGEN_ID_1, allergen.getNames().get(1).getAllergenTag());
         assertEquals(PEANUTS_FR, allergen.getNames().get(1).getName());
         assertEquals(LANGUAGE_CODE_FRENCH, allergen.getNames().get(1).getLanguageCode());
+    }
+
+    @Test
+    public void map_returnsMappedAllergenWithWikiDataCode() {
+        String wikiDataCode = "Q12345";
+        AllergenResponse allergenResponse = new AllergenResponse(UNIQUE_ALLERGEN_ID_1, nameMap, wikiDataCode);
+        Allergen allergen = allergenResponse.map();
+
+        assertEquals(wikiDataCode, allergen.getWikiDataId());
     }
 }

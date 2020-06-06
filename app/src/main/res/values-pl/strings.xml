@@ -217,6 +217,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="txtLoading">Ładowanie…</string>
     <string name="txtDialogsContentDelete">Jesteś pewien, że chcesz usunąć tę wersję roboczą?</string>
     <string name="txtDialogsContentInfoSave">Zapisano lokalnie, produkt możesz zmienić przez menu \"Edycja w trybie offline\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Wymagany kod kreskowy</string>
     <string name="txtOk">Dobrze</string>
     <string name="txtBarcodeNotValid">Nieważny kod kreskowy</string>
@@ -248,6 +249,8 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="title_info_dialog">Jak to działa?</string>
     <string name="text_offline_info_dialog">Możesz skanować produkty gdy jesteś offline by później dodać je do Open Food Facts. Wszystkie zeskanowane produkty pojawią się tu i będziesz mógł wysłać je za pomocą przycisku poniżej.</string>
     <string name="permission_camera">Potrzebujesz zezwolenia do skanowania kodów kreskowych i fotografowania.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informacja o zezwoleniu</string>
     <string name="permission_denied">Aktywuj zezwolenie w ustawieniach</string>
     <string name="info_download_data_connection">Aby funkcjonalność zadziałała, niektóre dane muszą zostać pobrane. Proszę o nawiązanie połączenia z Internetem.</string>

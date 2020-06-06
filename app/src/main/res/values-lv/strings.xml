@@ -192,6 +192,7 @@
     <string name="txtLoading">Ielādē…</string>
     <string name="txtDialogsContentDelete">Vai tiešām vēlaties noņemt šo melnrakstu?</string>
     <string name="txtDialogsContentInfoSave">Produkts tiek saglabāts lokāli, to varat rediģēt izvēlnē \"Bezsaistes rediģēšana\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Nepieciešams svītru kods</string>
     <string name="txtOk">Labi</string>
     <string name="txtBarcodeNotValid">Svītrkods nav derīgs</string>
@@ -223,6 +224,8 @@
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Iespējams skenēt produktus bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk, kad interneta savienojums ir pieejams. visi produkti kuri tiks noskenēti, būs redzami šeit. Lai nosūtītu produktus, izmantojiet pogu zemāk.</string>
     <string name="permission_camera">Piekļuve kamerai ir nepieciešama, lai skenētu svītrkodus un uzņemtu attēlus.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informācija par atļaujām</string>
     <string name="permission_denied">Lūdzu, aktivizējiet atļauju iestatījumos</string>
     <string name="info_download_data_connection">Jums ir jāielādē daži faili, lai šī funkcija darbotos. Lūdzu aktivizējiet interneta savienojumu.</string>

@@ -68,7 +68,7 @@ public class CalculateDetails extends BaseActivity {
         p = (Product) i.getSerializableExtra("sampleObject");
         spinnervalue = i.getStringExtra("spinnervalue");
         weight = i.getStringExtra("weight");
-        value = Float.valueOf(weight);
+        value = Float.parseFloat(weight);
         nutriments = p.getNutriments();
         nutrimentListItems = new ArrayList<>();
         nutrimentsRecyclerView = findViewById(R.id.nutriments_recycler_view_calc);
@@ -189,15 +189,12 @@ public class CalculateDetails extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                finish();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        // Respond to the action bar's Up/Home button
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }
 

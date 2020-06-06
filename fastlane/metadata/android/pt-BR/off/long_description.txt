@@ -17,7 +17,7 @@ Para descobrir o projeto Open Food Facts de execução voluntária, visite https
 - Tenha uma noção de quanto de sua cota diária de carbono você está usando para alimentar
 - Com base nas pegadas calculadas para a França pela ADEME.
 - Junte-se a nós e nos ajude a levar o Impacto de Carbono para o seu país!
-- Para exibir um Impacto de Carbono, um produto deve ter uma lista completa de ingredientes com % de carne ou peixe e uma quantidade
+- Para mostrar o impacto de carbono, o produto dever ter uma lista  completa de ingredientes com % de carne ou peixe e uma quantidade.
 
 
 ▶ Contribuir para a transparência alimentar

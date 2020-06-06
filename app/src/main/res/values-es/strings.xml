@@ -187,6 +187,7 @@
     <string name="txtLoading">Cargando…</string>
     <string name="txtDialogsContentDelete">¿Estás seguro de que quieres eliminar este borrador?</string>
     <string name="txtDialogsContentInfoSave">El producto se ha guardado localmente, puedes editarlo en el menú «Editor Offline»</string>
+    <string name="productSavedToast">Producto guardado, ¡gracias!</string>
     <string name="txtBarcodeRequire">Se necesita un código de barras</string>
     <string name="txtOk">Aceptar</string>
     <string name="txtBarcodeNotValid">Código de barras no válido</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">¿Cómo funciona?</string>
     <string name="text_offline_info_dialog">Puedes escanear productos cuando estés desconectado y agregarlos a Open Food Facts después. Todos los productos que escanees aparecerán aquí, y podrás enviarlos con el botón de abajo.</string>
     <string name="permission_camera">Se requiere el permiso para usar la cámara para poder escanear códigos de barras y tomar fotografías.</string>
+    <string name="no_camera_dialog_title">Cámara no encontrada</string>
+    <string name="no_camera_dialog_content">Tu dispositivo no tiene cámara. No podrás escanear ningún código de barras.</string>
     <string name="permission_title">Información del permiso</string>
     <string name="permission_denied">Por favor, activa el permiso en las opciones</string>
     <string name="info_download_data_connection">Debes descargar algunos datos para que esta característica funcione. Por favor, activa la conexión a internet.</string>
@@ -765,9 +768,9 @@
     <string name="content_unselect_photo">Pulsa aquí para anular la selección de la foto actual</string>
     <string name="title_exit">Salir</string>
     <string name="content_exit">Pulse aquí para volver al producto</string>
-    <string name="icon_label">Labels icon</string>
-    <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
-    <string name="product_front_image">Product front image</string>
+    <string name="icon_label">Icono de etiquetas</string>
+    <string name="icon_categories">Icono de categorías</string>
+    <string name="icon_emb">Icono de código EMB</string>
+    <string name="product_front_image">Imagen frontal del producto</string>
     <string name="brand_hint">Ejemplos: CocaCola, Nestlé, etc.…</string>
 </resources>

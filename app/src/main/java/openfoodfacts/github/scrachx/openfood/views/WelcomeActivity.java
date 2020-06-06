@@ -39,7 +39,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private int currentState;
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+    final ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
             addBottomDots(position);

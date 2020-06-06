@@ -187,6 +187,7 @@
     <string name="txtLoading">Carregando…</string>
     <string name="txtDialogsContentDelete">Tem a certeza que deseja eliminar este rascunho?</string>
     <string name="txtDialogsContentInfoSave">O produto é guardado localmente, poderá editá-lo no menu \"Editar Offline\"</string>
+    <string name="productSavedToast">Produto salvo, obrigado!</string>
     <string name="txtBarcodeRequire">Código de barras necessário</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Código de barras inválido</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">Como é que isto funciona?</string>
     <string name="text_offline_info_dialog">Poderá digitalizar produtos enquanto estiver offline para, mais tarde, adicioná-los ao Open Food Facts. Os produtos serão mostrados aqui e poderá enviá-los usando o botão abaixo.</string>
     <string name="permission_camera">A permissão da câmara é necessária para digitalizar códigos de barras e tirar fotos.</string>
+    <string name="no_camera_dialog_title">Câmera não encontrada</string>
+    <string name="no_camera_dialog_content">Seu dispositivo não tem uma câmera. Você não será capaz de escanear nenhum código de barras.</string>
     <string name="permission_title">Informações de permissão</string>
     <string name="permission_denied">Por favor active a permissão nas definições</string>
     <string name="info_download_data_connection">Você precisa baixar alguns dados para ativar esta funcionalidade. Por favor, ative sua conexão com a internet.</string>

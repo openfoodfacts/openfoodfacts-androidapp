@@ -187,6 +187,7 @@
     <string name="txtLoading">लोड किया जा रहा है…</string>
     <string name="txtDialogsContentDelete">क्या आप वाकई इस प्रारूप को हटाना चाहते हैं?</string>
     <string name="txtDialogsContentInfoSave">उत्पाद स्थानीय रूप से सेव है, आप ऑफलाइन संपादन मेनू में संपादित कर सकते हैं</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">बारकोड अपेक्षित हैं</string>
     <string name="txtOk">ठीक है</string>
     <string name="txtBarcodeNotValid">बारकोड मान्य नहीं</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">यह कैसे काम करता है?</string>
     <string name="text_offline_info_dialog">जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।</string>
     <string name="permission_camera">कैमरा अनुमति की जरूरत है बारकोड को स्कैन और तस्वीरें लेने के लिए</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">अनुमति जानकारी</string>
     <string name="permission_denied">सेटिंग्स में अनुमति सक्रिय करें</string>
     <string name="info_download_data_connection">आप इस कार्यक्षमता काम पाने के लिए कुछ डेटा डाउनलोड करने के लिए की जरूरत है। इंटरनेट कनेक्शन सक्रिय करें।</string>

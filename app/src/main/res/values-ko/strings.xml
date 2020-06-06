@@ -138,7 +138,7 @@
     <string name="search_button">수색</string>
     <string name="alert_dialog_warning_title">경고</string>
     <string name="alert_dialog_warning_msg_user">사용자/비밀번호가 변경되었습니다, 정보를 새로고침 해주세요</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">로딩중...</string>
     <string name="txtBarcode">바코드 :</string>
     <string name="txtCategories">카테고리 :</string>
     <string name="txtLabels">라벨, 인증, 수상 내역 :</string>
@@ -178,10 +178,11 @@
     <string name="hintBrand">브랜드</string>
     <string name="txtSendAll">모두 업로드</string>
     <string name="txtPictureNeededDialogNo">삭제</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">업로드 중...</string>
+    <string name="txtLoading">로딩중...</string>
     <string name="txtDialogsContentDelete">정말로 해당 항목을 삭제하시겠습니까?</string>
     <string name="txtDialogsContentInfoSave">제품이 로컬에 저장되었으므로 \"오프라인 편집\" 메뉴에서 편집 할 수 있습니다.</string>
+    <string name="productSavedToast">제품이 저장되었습니다. 감사합니다!</string>
     <string name="txtBarcodeRequire">바코드가 필요함</string>
     <string name="txtOk">확인</string>
     <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
@@ -213,6 +214,8 @@
     <string name="title_info_dialog">이용 방법</string>
     <string name="text_offline_info_dialog">오프라인 상태 일 때 제품을 스캔하여 나중에 Open Food Facts에 추가 할 수 있습니다. 스캔한 모든 제품이 여기에 표시되며 아래 버튼을 사용하여 추가할 수 있습니다.</string>
     <string name="permission_camera">바코드를 스캔하고 사진을 찍으려면 카메라 사용 권한이 필요합니다.</string>
+    <string name="no_camera_dialog_title">카메라를 찾을 수 없습니다</string>
+    <string name="no_camera_dialog_content">기기에 카메라가 없습니다. 바코드를 스캔할 수 없습니다.</string>
     <string name="permission_title">사용 권한 정보</string>
     <string name="permission_denied">설정에서 권한을 활성화하십시오.</string>
     <string name="info_download_data_connection">이 기능을 작동 시키려면 일부 데이터를 다운로드 해야합니다. 인터넷 연결을 활성화하십시오.</string>
@@ -239,7 +242,7 @@
     <string name="title_clear_history_dialog">지우기</string>
     <string name="text_clear_history_dialog">모든 스캔 기록을 삭제 하시겠습니까?</string>
     <string name="export_csv_history">CSV로 내보내기</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">기록을 내보내는 중...</string>
     <string name="txt_history_exported">최근 기록 내보냄</string>
     <string name="permision_write_external_storage">최근 기록을 내보내려면 외부 저장소에 쓰기 권한이 필요합니다.</string>
     <string name="no_brand">상표 없음</string>
@@ -356,7 +359,7 @@
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">포화 지방</string>
-    <string name="nutriscore_info_msg">영양 점수에 대해 더 알아보기</string>
+    <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
     <string name="nova_info_msg">노바에 대해 더 자세히 알아보기</string>
     <string name="nova_grp1_msg">그룹 1 - 미가공 식품 또는 최소 가공 식품</string>
     <string name="nova_grp2_msg">그룹 2 - 가공 식품 재료</string>
@@ -520,7 +523,7 @@
     <string name="initial_loading">초기 로딩</string>
     <string name="preferences">환경 설정</string>
     <string name="OFFlogo">Open Food Facts 로고</string>
-    <string name="loading_product">상품 불러오는 중... %s</string>
+    <string name="loading_product">상품 불러오는 중… %s</string>
     <string name="image_not_defined_for_language">선택한 언어에 대한 이미지가 없습니다. 새로운 것을 추가 할 수 있습니다.</string>
     <string name="error_adding_ingredients">제품 성분을 추가하는 중에 문제가 발생했습니다.</string>
     <string name="unable_to_extract_ingredients">이미지에서 성분을 추출 할 수 없습니다.</string>
@@ -636,10 +639,10 @@
     <string name="update_image">업데이트된 이미지 보내기</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">성분 추출</string>
-    <string name="add_nutrient_prompt_text">영양 성분을 추가하여 영양 점수 계산</string>
-    <string name="add_category_prompt_text">영양 점수를 계산하기 위한 카테고리 추가</string>
-    <string name="add_nutrient_category_prompt_text">영양 성분 및 카테고리를 추가하여 영양 점수 계산</string>
-    <string name="category_game_btn">영양 점수를 계산하기위한 제품 분류 지원</string>
+    <string name="add_nutrient_prompt_text">영양 성분을 추가하여 Nutri-Score 계산</string>
+    <string name="add_category_prompt_text">Nutri-Score를 계산하기 위한 카테고리 추가</string>
+    <string name="add_nutrient_category_prompt_text">영양 성분 및 카테고리를 추가하여 Nutri-Score 계산</string>
+    <string name="category_game_btn">Nutri-Score를 계산하기위한 제품 분류 지원</string>
     <string name="version_string">Open Food Facts 안드로이드 App</string>
     <string name="version">버전</string>
     <string name="set_ingredient_img">Set as ingredients image</string>

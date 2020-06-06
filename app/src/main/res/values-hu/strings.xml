@@ -187,6 +187,7 @@
     <string name="txtLoading">Betöltés…</string>
     <string name="txtDialogsContentDelete">Biztosan eltávolítja ezt a vázlatot?</string>
     <string name="txtDialogsContentInfoSave">A termék el lett mentve a készülékére, szerkeszthető az \"Offline Szerkesztés\" menüből</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Vonalkód szükséges</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Érvénytelen vonalkód</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">Hogyan működik?</string>
     <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküldheti őket.</string>
     <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Engedély információk</string>
     <string name="permission_denied">Kérem, aktiválja az engedélyt a beállításokban</string>
     <string name="info_download_data_connection">Bizonyos adatokat le kell töltenie, hogy ez a funkció működjön. Kérem, aktiválja az internet kapcsolatot.</string>
@@ -572,7 +575,7 @@
     <string name="skip_ingredients">Túl rossz\n
 Összetevők kihagyása</string>
     <string name="traces">Nyomokban</string>
-    <string name="traces_hint">Adja hozzá az összetevőket, amelyek a következőképpen vannak megemlítve: „Nyomokban tartalmazhat”, „... (is) felhasználó üzemben készült”, stb.\nPéldák: Tej, Glutén, Diófélék</string>
+    <string name="traces_hint">Adja hozzá az összetevőket, amelyek a következőképpen vannak megemlítve: „Nyomokban tartalmazhat”, „… (is) felhasználó üzemben készült”, stb.\nPéldák: Tej, Glutén, Diófélék</string>
     <string name="nutrition_facts_not_specified">Nincsenek megadva tápértékadatok a termékhez.</string>
     <string name="nutrition_facts_picture">Tápértékadatok képe</string>
     <string name="front_short_picture">Elölnézet</string>
@@ -622,13 +625,13 @@
     <string name="infants">Csecsemők</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Kisgyermekek</string>
-    <string name="toddlers_age">1-2</string>
+    <string name="toddlers_age">1–2</string>
     <string name="children">Gyerekek</string>
-    <string name="children_age">3-9</string>
+    <string name="children_age">3–9</string>
     <string name="adolescents">Serdülők</string>
-    <string name="adolescents_age">10-17</string>
+    <string name="adolescents_age">10–17</string>
     <string name="adults">Felnőttek</string>
-    <string name="adults_age">18-64</string>
+    <string name="adults_age">18–64</string>
     <string name="elderly">Idősek</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">A legtöbb ember\n (több mint 50%)</string>

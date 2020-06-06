@@ -10,7 +10,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
@@ -26,12 +25,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -40,14 +38,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.Constraints;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.NetworkType;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.FormatException;
@@ -57,13 +49,13 @@ import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.holder.StringHolder;
+import com.mikepenz.materialdrawer.model.AbstractBadgeableDrawerItem;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
@@ -81,18 +73,16 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
-import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityMainBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
-import openfoodfacts.github.scrachx.openfood.fragments.OfflineEditFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -109,11 +99,9 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-import openfoodfacts.github.scrachx.openfood.workers.OfflineEditPendingProductsWorker;
 
 import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
-import static openfoodfacts.github.scrachx.openfood.utils.Utils.OFFLINE_EDIT_PENDING_WORK_NAME;
 
 public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
     public static final int LOGIN_REQUEST = 1;
@@ -122,11 +110,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
-    PrimaryDrawerItem primaryDrawerItem;
+    private ActivityMainBinding binding;
     private AccountHeader headerResult = null;
     private Drawer result = null;
     private MenuItem searchMenuItem;
@@ -136,7 +120,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri contributeUri;
     private Uri discoverUri;
     private Uri userContributeUri;
-    private int numberOFSavedProducts;
     private String mBarcode;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -152,14 +135,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        setContentView(R.layout.activity_main);
-
-        final PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(OfflineEditPendingProductsWorker.class, 60, TimeUnit.MINUTES, 10, TimeUnit.MINUTES)
-            .setConstraints(new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
-            .addTag(OFFLINE_EDIT_PENDING_WORK_NAME)
-            .build();
-
-        WorkManager.getInstance(getApplicationContext()).enqueueUniquePeriodicWork(OFFLINE_EDIT_PENDING_WORK_NAME, ExistingPeriodicWorkPolicy.KEEP, periodicWorkRequest);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -168,13 +145,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         final IProfile<ProfileDrawerItem> profile = getUserProfile();
         LocaleHelper.setLocale(this, LocaleHelper.getLanguage(this));
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
-        Bundle extras = getIntent().getExtras();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        OfflineSavedProductDao mOfflineSavedProductDao = Utils.getAppDaoSession(MainActivity.this).getOfflineSavedProductDao();
-        numberOFSavedProducts = mOfflineSavedProductDao.loadAll().size();
 
 // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -189,16 +163,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         });
 
-        boolean isOpenOfflineEdit = extras != null && extras.getBoolean("openOfflineEdit");
-        if (isOpenOfflineEdit) {
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, new
-                OfflineEditFragment()).commit();
-            getSupportActionBar().setTitle(getResources().getString(R.string.offline_edit_drawer));
-        } else {
-            fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
-                ()).commit();
-            toolbar.setTitle(APP_NAME);
-        }
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
+            ()).commit();
+        binding.toolbarInclude.toolbar.setTitle(APP_NAME);
 
         // chrome custom tab init
         customTabActivityHelper = new CustomTabActivityHelper();
@@ -256,16 +223,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userSession = preferences.getString("user_session", null);
         final boolean isUserLoggedIn = isUserLoggedIn();
         boolean isUserConnected = isUserLoggedIn && userSession != null;
-        boolean isConnected = isUserLoggedIn;
 
         if (isUserConnected) {
             updateProfileForCurrentUser();
         }
-        primaryDrawerItem = createOfflineEditDrawerItem();
         //Create the drawer
         result = new DrawerBuilder()
             .withActivity(this)
-            .withToolbar(toolbar)
+            .withToolbar(binding.toolbarInclude.toolbar)
             .withHasStableIds(true)
             .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
             .withOnDrawerListener(new Drawer.OnDrawerListener() {
@@ -304,17 +269,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 new PrimaryDrawerItem().withName(R.string.alert_drawer).withIcon(GoogleMaterial.Icon.gmd_warning).withIdentifier(ITEM_ALERT),
                 new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                 new DividerDrawerItem(),
-                primaryDrawerItem,
-                new DividerDrawerItem(),
                 new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
             )
             .withOnDrawerItemClickListener((view, position, drawerItem) -> {
-
-                if (drawerItem == null) {
-                    return false;
-                }
 
                 Fragment fragment = null;
                 switch ((int) drawerItem.getIdentifier()) {
@@ -350,9 +309,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     case ITEM_PREFERENCES:
                         fragment = new PreferencesFragment();
                         break;
-                    case ITEM_OFFLINE:
-                        fragment = new OfflineEditFragment();
-                        break;
                     case ITEM_ABOUT:
                         CustomTabActivityHelper.openCustomTab(MainActivity.this,
                             customTabsIntent, discoverUri, new WebViewFallback());
@@ -364,8 +320,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                     case ITEM_INCOMPLETE_PRODUCTS:
 
-                        /**
-                         * Search and display the products to be completed by moving to ProductBrowsingListActivity
+                        /*
+                          Search and display the products to be completed by moving to ProductBrowsingListActivity
                          */
                         ProductBrowsingListActivity.startActivity(this, "", SearchType.INCOMPLETE_PRODUCT);
                         break;
@@ -440,7 +396,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isConnected ?
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn ?
             getLogoutDrawerItem() : getLoginDrawerItem());
 
         if (BuildConfig.FLAVOR.equals("obf")) {
@@ -519,6 +475,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         //Scheduling background image upload job
         Utils.scheduleProductUploadJob(this);
 
+        OfflineProductWorker.addWork();
+
         //Adds nutriscore and quantity values in old history for schema 5 update
         SharedPreferences mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);
         boolean isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false);
@@ -527,8 +485,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             apiClient.syncOldHistory();
         }
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
 
         handleIntent(getIntent());
     }
@@ -661,24 +619,33 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchMenuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchMenuItem.getActionView();
-        if (searchManager.getSearchableInfo(getComponentName()) != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        }
 
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        searchView.setOnQueryTextFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                binding.bottomNavigationInclude.bottomNavigation.setVisibility(View.GONE);
+            } else {
+                binding.bottomNavigationInclude.bottomNavigation.setVisibility(View.VISIBLE);
+            }
+        });
         searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                binding.bottomNavigationInclude.bottomNavigation.setVisibility(View.GONE);
                 return true;
             }
 
             @Override
             public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+
                 return true;
             }
         });
@@ -694,21 +661,17 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case Utils.MY_PERMISSIONS_REQUEST_CAMERA: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager
-                    .PERMISSION_GRANTED) {
-                    Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
+        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager
+                .PERMISSION_GRANTED) {
+                Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
-            break;
         }
     }
 
-    private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model
-        .AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
+    private IDrawerItem<AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
         return new PrimaryDrawerItem()
             .withName(getString(R.string.logout_drawer))
             .withIcon(GoogleMaterial.Icon.gmd_settings_power)
@@ -716,8 +679,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .withSelectable(false);
     }
 
-    private IDrawerItem<PrimaryDrawerItem, com.mikepenz.materialdrawer.model
-        .AbstractBadgeableDrawerItem.ViewHolder> getLoginDrawerItem() {
+    private IDrawerItem<AbstractBadgeableDrawerItem.ViewHolder> getLoginDrawerItem() {
         return new PrimaryDrawerItem()
             .withName(R.string.sign_in_drawer)
             .withIcon(GoogleMaterial.Icon.gmd_account_circle)
@@ -859,46 +821,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
     }
 
-    /**
-     * This moves the main activity to the preferences fragment.
-     */
-    public void moveToPreferences() {
-        Fragment fragment = new PreferencesFragment();
-        changeFragment(fragment, getString(R.string.preferences), ITEM_PREFERENCES);
-    }
-
-    /**
-     * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
-     * there is no badge present.
-     *
-     * @return drawer item.
-     */
-    private PrimaryDrawerItem createOfflineEditDrawerItem() {
-        if (numberOFSavedProducts > 0) {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(10)
-                .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
-                    .color.md_red_700));
-        } else {
-            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
-        }
-    }
-
-    /**
-     * Updates the drawer item. This updates the badge if there are items left in offline edit, otherwise
-     * there is no badge present.
-     * This function is called from OfflineEditFragment only.
-     */
-    public void updateBadgeOfflineEditDrawerITem(int size) {
-        int positionOfOfflineBadeItem = result.getPosition(primaryDrawerItem);
-        if (size > 0) {
-            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE)
-                .withBadge(String.valueOf(size)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
-        } else {
-            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
-        }
-        result.updateItemAtPosition(primaryDrawerItem, positionOfOfflineBadeItem);
-    }
-
     @Override
     public void setItemSelected(@NavigationDrawerType Integer type) {
         result.setSelection(type, false);
@@ -920,7 +842,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.home_page);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page);
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {

@@ -182,6 +182,7 @@
     <string name="txtLoading">読み込んでいます…</string>
     <string name="txtDialogsContentDelete">このドラフトを削除してもよろしいですか?</string>
     <string name="txtDialogsContentInfoSave">この製品はローカルに保存されます。オフライン編集 メニューで編集することができます</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">バーコードが必要です</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">バーコードが正しくありません</string>
@@ -213,6 +214,8 @@
     <string name="title_info_dialog">どのような仕組みですか?</string>
     <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
     <string name="permission_camera">バーコードのスキャンと写真の撮影には、カメラのアクセス許可が必要です。</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">アクセス許可情報</string>
     <string name="permission_denied">設定でアクセス許可を有効にしてください</string>
     <string name="info_download_data_connection">この機能を動作させるために、いくつかのデータをダウンロードする必要があります。インターネット接続を有効にしてください。</string>
@@ -517,7 +520,7 @@
     <string name="barcode_hint">スキャンに問題がありますか？バーコードを入力してください</string>
     <string name="switch_camera">カメラを切り替え</string>
     <string name="autofocus">オートフォーカス</string>
-    <string name="initial_loading">ロードしています...</string>
+    <string name="initial_loading">ロードしています…</string>
     <string name="preferences">プリファレンス</string>
     <string name="OFFlogo">Open Food Facts ロゴ</string>
     <string name="loading_product">製品「%s」を読み込み中</string>

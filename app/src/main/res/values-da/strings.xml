@@ -187,6 +187,7 @@
     <string name="txtLoading">Indlæser…</string>
     <string name="txtDialogsContentDelete">Sikker på, at du vil fjerne dette udkast?</string>
     <string name="txtDialogsContentInfoSave">Produktet er gemt på enheden. Du kan redigere det via menuen \"Offline-redigering\"</string>
+    <string name="productSavedToast">Produkt gemt, tak!</string>
     <string name="txtBarcodeRequire">Stregkode kræves</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Stregkode er ikke gyldig</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">Hvordan fungerer det?</string>
     <string name="text_offline_info_dialog">Du kan indskanne produkter mens du er offline og tilføje dem til Open Food Facts senere. Alle produkter du har skannet vil fremgå her, og du vil kunne indsende dem ved at bruge knappen nedenfor.</string>
     <string name="permission_camera">Kamera-tilladelse er nødvendig for at skanne stregkoder og tage billeder.</string>
+    <string name="no_camera_dialog_title">Kamera ikke fundet</string>
+    <string name="no_camera_dialog_content">Din enhed har intet kamera. Du kan ikke skanne stregkoder.</string>
     <string name="permission_title">Information om tilladelser</string>
     <string name="permission_denied">Aktivér venligst tilladelser under indstillinger</string>
     <string name="info_download_data_connection">Du skal hente noget data for at denne funktionalitet vil virke. Aktiver venligst en internetforbindelse.</string>
@@ -244,7 +247,7 @@
     <string name="title_clear_history_dialog">Ryd</string>
     <string name="text_clear_history_dialog">Vil du slette hele din scanningshistorik?</string>
     <string name="export_csv_history">Eksport CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Eksporterer historik…</string>
     <string name="txt_history_exported">Historik eksporteret</string>
     <string name="permision_write_external_storage">Tilladelse til skrivning på eksternt lager er nødvendig for at eksportere historik.</string>
     <string name="no_brand">Intet mærke</string>
@@ -425,7 +428,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Generelt</string>
@@ -769,5 +772,5 @@
     <string name="icon_categories">Kategoriikon</string>
     <string name="icon_emb">EMB-kodeikon</string>
     <string name="product_front_image">Produktbillede front</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Eksempler: CocaCola, Nestle mv.…</string>
 </resources>

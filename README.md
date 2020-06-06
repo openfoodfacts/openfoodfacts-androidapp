@@ -51,6 +51,7 @@ Data about food is of public interest and has to be open. The complete database 
   <img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" />
     <img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" />
 </p>
+
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
@@ -88,7 +89,7 @@ https://translate.openfoodfacts.org
 * You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator.
 
 ## Generate screenshots for the Play Store
-To activate  screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
+To activate screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
 To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
 [Help is welcome to improve those](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/fastlane)
 
@@ -109,8 +110,7 @@ If you spot any libraries we added or we don't use anymore, feel free to update 
 - [Dagger 2](https://github.com/google/dagger) - A fast dependency injector for Android and Java
 - [Retrofit](http://square.github.io/retrofit/) - Retrofit turns your REST API into a Java interface
 - [OkHttp](https://github.com/square/okhttp) - An HTTP+SPDY client for Android and Java applications
-- [Butterknife](http://jakewharton.github.io/butterknife/) - View "injection" library for Android
-- [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java 
+- [Mockito](https://github.com/mockito/mockito) - Most popular Mocking framework for unit tests written in Java
 - [Apache](https://github.com/apache/commons-io) - The Apache Commons IO library contains utility classes, stream implementations, file filters, file comparators, endian transformation classes, and much more.
 - [RxJava](https://github.com/ReactiveX/RxJava) - Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.
 - [android-async-http](https://loopj.com/android-async-http/) - A Callback-Based Http Client Library for Android

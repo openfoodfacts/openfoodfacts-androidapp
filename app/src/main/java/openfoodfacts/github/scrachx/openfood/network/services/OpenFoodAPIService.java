@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package openfoodfacts.github.scrachx.openfood.network.services;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

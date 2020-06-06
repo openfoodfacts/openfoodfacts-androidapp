@@ -197,6 +197,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Ви дійсно бажаєте видалити цей товар?</string>
     <string name="txtDialogsContentInfoSave">Товар збережено на Вашому пристрої, Ви можете редагувати його в меню \"Автономний режим\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Необхіден код товару</string>
     <string name="txtOk">Добре</string>
     <string name="txtBarcodeNotValid">Некоректний код товару</string>
@@ -228,6 +229,8 @@
     <string name="title_info_dialog">Як це працює?</string>
     <string name="text_offline_info_dialog">Ви можете сканувати товари, коли Ви знаходитесь у автономний режимі, щоб пізніше додати їх до Open Food Facts. Усі скановані товари відображатимуться тут, і ви зможете їх надіслати за допомогою кнопки нижче.</string>
     <string name="permission_camera">Дозвіл на використання камери необхідний для сканування кодів товарів та фотографування.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Інформація про надання дозволу</string>
     <string name="permission_denied">Будь ласка, активуйте дозвіл у налаштуваннях</string>
     <string name="info_download_data_connection">Вам необхідно завантажити деякі дані, щоб ця функціональність запрацювала. Будь ласка, активуйте підключення до Інтернету.</string>

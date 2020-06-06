@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,6 +8,7 @@ import static org.junit.Assert.*;
  *
  */
 public class UnitUtilTest {
+
     private static final double DELTA = 1e-5;
 
     @Test
@@ -34,6 +34,7 @@ public class UnitUtilTest {
         assertEquals("1 oz", UnitUtils.getServingInOz("29.5735 ml"));
         */
     }
+// Not finished yet
 
     @Test
     public void testConvertFromGram() {
@@ -71,11 +72,8 @@ public class UnitUtilTest {
     public void testConvertToKiloCalories() {
         assertEquals(0.239006, UnitUtils.convertToKiloCalories(1, UnitUtils.ENERGY_KJ), DELTA);
         assertEquals(1, UnitUtils.convertToKiloCalories(1, UnitUtils.ENERGY_KCAL), DELTA);
-        try {
-            UnitUtils.convertToKiloCalories(1, UnitUtils.UNIT_GRAM);
-            Assert.fail("Exception 'IllegalArgumentException not thrown");
-        } catch (IllegalArgumentException ignored) {
-        }
+
+        assertThrows(IllegalArgumentException.class, () -> UnitUtils.convertToKiloCalories(1, UnitUtils.UNIT_GRAM));
     }
 
     @Test

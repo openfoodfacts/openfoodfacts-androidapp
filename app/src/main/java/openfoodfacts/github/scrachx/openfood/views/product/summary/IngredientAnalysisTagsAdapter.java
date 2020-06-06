@@ -22,11 +22,11 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 
 public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<IngredientAnalysisTagsAdapter.ViewHolder> {
-    private WeakReference<Context> contextRef;
-    private SharedPreferences prefs;
-    private List<AnalysisTagConfig> tags;
-    private List<AnalysisTagConfig> visibleTags = new ArrayList<>();
-    private LayoutInflater inflater;
+    private final WeakReference<Context> contextRef;
+    private final LayoutInflater inflater;
+    private final SharedPreferences prefs;
+    private final List<AnalysisTagConfig> tags;
+    private final List<AnalysisTagConfig> visibleTags = new ArrayList<>();
     private OnItemClickListener onClickListener;
 
     // data is passed into the constructor
@@ -72,8 +72,8 @@ public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<Ingredie
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        View background;
-        AppCompatImageView icon;
+        final View background;
+        final AppCompatImageView icon;
 
         ViewHolder(View itemView) {
             super(itemView);

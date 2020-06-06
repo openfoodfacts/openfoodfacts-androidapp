@@ -187,6 +187,7 @@
     <string name="txtLoading">Naglo-load…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">Ang produktong ito ay nai-save locally, pwede mo itong i-edit sa \"Offline Edit\" menu</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Kailangan ang barcode</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Hindi wasto ang barcode</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">Paano ito gumagana?</string>
     <string name="text_offline_info_dialog">Maaari mong i-scan ang mga produkto kapag offline ka upang idagdag ang mga ito sa Open Food Fact sa ibang pagkakataon. Ang lahat ng mga produkto na iyong i-scan ay lilitaw dito, at magagawa mong ipadala ang mga ito gamit ang pindutan sa ibaba.</string>
     <string name="permission_camera">Kinakailangan ang pahintulot ng kamera upang i-scan ang mga barcode at kumuha ng mga larawan.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Pahintulot ng impormasyon</string>
     <string name="permission_denied">Maaring i-activate ang pahintulot sa mga setting</string>
     <string name="info_download_data_connection">Kailangan mong mag-download ng ilang data upang gumana ang functionality na ito na. Mangyaring isaaktibo ang koneksyon sa internet.</string>

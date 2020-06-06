@@ -66,14 +66,14 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> implements ImageUploadListener {
-    private List<Product> productsToCompare;
-    private Context context;
+    private final Button addProductButton;
+    private final OpenFoodAPIClient api;
     private boolean isLowBatteryMode = false;
-    private IProductRepository repository = ProductRepository.getInstance();
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private Button addProductButton;
-    private OpenFoodAPIClient api;
-    private ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
+    private final Context context;
+    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final List<Product> productsToCompare;
+    private final IProductRepository repository = ProductRepository.getInstance();
+    private final ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
     private Integer onPhotoReturnPosition;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -129,7 +129,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (isNotBlank(imageUrl)) {
             holder.productComparisonLabel.setVisibility(View.INVISIBLE);
 
-            if (Utils.isDisableImageLoad(context) && Utils.getBatteryLevel(context)) {
+            if (Utils.isDisableImageLoad(context) && Utils.getIfLowBatteryLevel(context)) {
                 isLowBatteryMode = true;
             }
             // Load Image if isLowBatteryMode is false
@@ -270,23 +270,23 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     }
 
     static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
-        NestedScrollView listItemLayout;
-        CardView productComparisonDetailsCv;
-        TextView productNameTextView;
-        TextView productQuantityTextView;
-        TextView productBrandTextView;
-        TextView productComparisonNutrientText;
-        RecyclerView nutrientsRecyclerView;
-        CardView productComparisonNutrientCv;
-        ImageButton productComparisonImage;
-        TextView productComparisonLabel;
-        ImageView productComparisonImageGrade;
-        ImageView productComparisonNovaGroup;
-        CardView productComparisonAdditiveCv;
-        TextView productComparisonAdditiveText;
-        Button fullProductButton;
-        ImageView productComparisonCo2Icon;
-        RelativeLayout productComparisonScoresLayout;
+        final Button fullProductButton;
+        final NestedScrollView listItemLayout;
+        final RecyclerView nutrientsRecyclerView;
+        final TextView productBrandTextView;
+        final CardView productComparisonAdditiveCv;
+        final TextView productComparisonAdditiveText;
+        final ImageView productComparisonCo2Icon;
+        final CardView productComparisonDetailsCv;
+        final ImageButton productComparisonImage;
+        final ImageView productComparisonImageGrade;
+        final TextView productComparisonLabel;
+        final ImageView productComparisonNovaGroup;
+        final CardView productComparisonNutrientCv;
+        final TextView productComparisonNutrientText;
+        final RelativeLayout productComparisonScoresLayout;
+        final TextView productNameTextView;
+        final TextView productQuantityTextView;
 
         public ProductComparisonViewHolder(View view) {
             super(view);
@@ -384,7 +384,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (additivesTags != null && !additivesTags.isEmpty()) {
             final String languageCode = LocaleHelper.getLanguage(v.getContext());
             disposable.add(
-                Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
+                Observable.fromArray(additivesTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                         .flatMap(categoryName -> {
                             if (categoryName.isNull()) {

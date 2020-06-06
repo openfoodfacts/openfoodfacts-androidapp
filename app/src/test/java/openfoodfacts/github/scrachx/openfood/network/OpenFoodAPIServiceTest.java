@@ -4,7 +4,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +15,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -25,7 +25,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
-import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService.PRODUCT_API_COMMENT;
+import static openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.junit.Assert.*;
 
 public class OpenFoodAPIServiceTest {
@@ -49,11 +49,6 @@ public class OpenFoodAPIServiceTest {
 
                 return chain.proceed(request);
             })
-            // FIXME: Dev server is too slow serving some requests, causing a SocketTimeoutException
-            .callTimeout(Duration.ZERO)
-            .connectTimeout(Duration.ZERO)
-            .readTimeout(Duration.ZERO)
-            .writeTimeout(Duration.ZERO)
             .build();
 
         devClientWithAuth = new Retrofit.Builder()

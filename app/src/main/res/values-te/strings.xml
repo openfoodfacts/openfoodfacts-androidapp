@@ -187,6 +187,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barcode required</string>
     <string name="txtOk">సరే</string>
     <string name="txtBarcodeNotValid">బార్ కోడ్ చెల్లదు</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">ఇది ఎలా పని చేస్తుంది?</string>
     <string name="text_offline_info_dialog">మీరు తరువాత ఆఫ్లైన్ ఫుడ్ ఫాక్స్ను తెరిచేందుకు వాటిని జోడించేటప్పుడు ఉత్పత్తులను స్కాన్ చేయవచ్చు. మీరు స్కాన్ చేసిన అన్ని ఉత్పత్తులు ఇక్కడ కనిపిస్తాయి, మరియు మీరు క్రింద ఉన్న బటన్ను ఉపయోగించి వాటిని పంపవచ్చు.</string>
     <string name="permission_camera">బార్కోడ్లను స్కాన్ చేసి చిత్రాలను తీయడానికి కెమెరా అనుమతి అవసరం.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">అనుమతి సమాచారం</string>
     <string name="permission_denied">దయచేసి సెట్టింగ్ల్లో అనుమతిని సక్రియం చేయండి</string>
     <string name="info_download_data_connection">మీరు ఈ కార్యాచరణను పని చేయడానికి కొన్ని డేటాను డౌన్లోడ్ చేయాలి. దయచేసి ఇంటర్నెట్ కనెక్షన్ను సక్రియం చేయండి.</string>

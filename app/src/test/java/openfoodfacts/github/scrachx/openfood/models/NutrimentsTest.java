@@ -1,14 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.*;
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+
+import static org.junit.Assert.*;
 
 public class NutrimentsTest {
-
     // TODO: in Nutriments, there is confusion between name and value when turning it into a Nutriment
     // TODO: in Nutriments, make the key endings public Strings, or at least turn them into variables
     private static final String NUTRIMENT_NAME_KEY = "a nutriment";
@@ -38,7 +38,8 @@ public class NutrimentsTest {
     public void getForAnyValue() {
         float valueInGramFor100Gram = 30;
         float valueInGramFor200Gram = 60;
-        Nutriments.Nutriment nutriment = new Nutriments.Nutriment("test","test", Double.toString(valueInGramFor100Gram), Double.toString(valueInGramFor200Gram), UnitUtils.UNIT_MILLIGRAM,
+        Nutriments.Nutriment nutriment = new Nutriments.Nutriment("test", "test", Double.toString(valueInGramFor100Gram), Double.toString(valueInGramFor200Gram),
+            UnitUtils.UNIT_MILLIGRAM,
             "");
         assertEquals(Utils.getRoundNumber(30 * 1000) + " mg", nutriment.getDisplayStringFor100g());
         assertEquals(Utils.getRoundNumber(UnitUtils.convertFromGram(valueInGramFor100Gram * 10, nutriment.getUnit())), nutriment.getForAnyValue(1, UnitUtils.UNIT_KILOGRAM));

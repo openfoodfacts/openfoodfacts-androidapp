@@ -13,6 +13,7 @@ import static junit.framework.Assert.assertTrue;
 /**
  * Tests for {@link Product}
  */
+@SuppressWarnings("UnnecessaryStringEscape")
 public class ProductTest {
 
     private static final String htmlEscapedSingleQuoteJson = "\"Sally\\\\\'s\"";

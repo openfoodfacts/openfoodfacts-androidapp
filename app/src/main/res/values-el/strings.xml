@@ -143,7 +143,7 @@
     <string name="search_button">Αναζήτηση</string>
     <string name="alert_dialog_warning_title">Προσοχή</string>
     <string name="alert_dialog_warning_msg_user">Όνομα/Κωδικός λογαριασμού έχει αλλάξει, ανανεώστε τις πληροφορίες</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">Barcode :</string>
     <string name="txtCategories">Κατηγορίες :</string>
     <string name="txtLabels">Ετικέτες, πιστοποιήσεις, βραβεία :</string>
@@ -184,9 +184,10 @@
     <string name="txtSendAll">Μεταφορτώστε όλα</string>
     <string name="txtPictureNeededDialogNo">Ακύρωση</string>
     <string name="toastSending">Μεταφόρτωση…</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Σίγουρα θέλετε να διαγράψετε αυτό το πρόχειρο;</string>
     <string name="txtDialogsContentInfoSave">Το προϊόν είναι αποθηκευμένο τοπικά, μπορείτε να το επεξεργαστείτε στο μενού «Επεξεργασία χωρίς σύνδεση»</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Απαιτείται Barcode</string>
     <string name="txtOk">Εντάξει</string>
     <string name="txtBarcodeNotValid">Barcode δεν είναι έγκυρο</string>
@@ -218,9 +219,11 @@
     <string name="title_info_dialog">Οδηγίες Χρήσης</string>
     <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
     <string name="permission_camera">Χρειάζεται άδεια κάμερας για τη σάρωση των Barcodes και τη λήψη φωτογραφιών.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Δικαιώματα</string>
     <string name="permission_denied">Παρακαλώ δώστε δικαιώματα από τις ρυθμίσεις</string>
-    <string name="info_download_data_connection">Χρειάζεται περιπτέρου λήψη ώστε να γίνει χρήση αυτής της λειτουργίας. Για έναρξη λήψης ενεργοποιήστε WiFi ή Δεδομένα...</string>
+    <string name="info_download_data_connection">Χρειάζεται περιπτέρου λήψη ώστε να γίνει χρήση αυτής της λειτουργίας. Για έναρξη λήψης ενεργοποιήστε WiFi ή Δεδομένα…</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες.</string>
     <string name="user">χρήστης</string>
@@ -244,7 +247,7 @@
     <string name="title_clear_history_dialog">Εκκαθάριση</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Εξαγωγή σε CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">Ιστορικό εξήχθη</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">Χωρίς μάρκα</string>
@@ -425,9 +428,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Γενικά</string>
     <string name="preference_header_network">Ρυθμίσεις Δικτύου</string>
     <string name="preference_header_contributing">Συνεισφορά</string>

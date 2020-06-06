@@ -20,7 +20,7 @@ public class TagsWrapper {
     @JsonProperty("tags")
     private List<Tag> tags = null;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonProperty("tags")
     public List<Tag> getTags() {

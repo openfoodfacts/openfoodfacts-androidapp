@@ -26,9 +26,9 @@ import openfoodfacts.github.scrachx.openfood.views.holders.HistoryScanHolder;
 
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> {
     private final List<HistoryItem> list;
-    private Activity mActivity;
-    private Resources res;
-    private boolean isLowBatteryMode;
+    private final boolean isLowBatteryMode;
+    private final Activity mActivity;
+    private final Resources res;
 
     public HistoryListAdapter(List<HistoryItem> list, Activity activity, boolean isLowBatteryMode) {
         this.list = list == null ? Collections.emptyList() : list;

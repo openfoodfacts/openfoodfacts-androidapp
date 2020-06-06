@@ -1,31 +1,31 @@
-***Contribute to Cosmetic Transparency***
+***화장품 투명도에 기여하기***
 
 - Open Beauty Facts는 모두에 의하여, 모두를 위해 만들어진 화장품 데이터베이스입니다.
 -이 도구를 사용하여 더 나은 선택을 할 수 있으며 공개 된 데이터이기 때문에 누구나 어떤 용도로든 다시 사용할 수 있습니다.
 - Open Beauty Facts는 전 세계 수천 명의 자원봉사자가 개발한 비영리 프로젝트입니다. 이곳에는 여러분들이 다양한 방식으로 참여할 수 있는 흥미로운 프로젝트가 많이 있습니다. 
-- You can start contributing today by adding a product from your cosmetic cupboard. 
+-오늘부터 화장품 찬장에서 제품을 추가하여 프로젝트에 기여해보세요. 
 
 *** 정보 얻기 ***
 
-- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+-화장품 첨가제, FIL 코드, CI 번호, INCI (국제 화장품 성분 명칭), 성분 목록, 알레르기 유발 물질, 포장 코드 ... 
 - Open Beauty Facts는 제품 라벨에 작은 글씨를 나타내는 데 도움이 됩니다.
-- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
-- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
-- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+-당신은 화학자 일 필요가 없으며 라틴어를 배우지 않아도 성분표을 해독할 수 있습니다 :-)
+- 스캔 가능: 애프터셰이브 로션, 바디로션, 크림, 데오드란트, 아이라이너, 파운데이션, 향수, 립스틱, 메이크업, 향수, 샴푸, 비누, 샤워젤, 매니큐어 등…
+- 여드름, 건선, 습진 등... 의 피부 질환을 가진 사람들을 위해 더 나은 화장품 선택을 하는데 유용 할 수 있다고 생각합니다.
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
+*** 어떤 조건에서도 잘 작동합니다 ***
+-지금 인터넷 연결이 안 되더라도 새로운 제품을 추가할 수 있습니다.
+-이 앱은 데이터 및 배터리 소비를 줄이기 위해 필요한 정보만 로드합니다
 - 제품을 검색할 때 카메라가 필요하지 않습니다. 카메라가 없거나 문제가 있는 경우 바코드를 입력 할 수도 있습니다.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+*** 화장품, 데이터 ***
+- 데이터는 사용자의 것으로 온라인으로 전송되지 않습니다
+- 앱을 익명으로 사용할 수 있습니다.
+- 스캔 기록을 내보낼 수 있습니다
 
-Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+참고: Open Beauty Facts가 구축되고 있으며, 사이트와 어플리케이션은 Open Food Facts를 기반으로 하며, 화장품의 특수성을 고려하여 변경될 예정입니다.
 
 Open Beauty Facts는 웹 https://world.openbeautyfacts.org 에서도 볼 수 있습니다.
 질문 및 피드백 : contact@openfoodfacts.org
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+사람이 먹는 식품의 경우 Open Food Facts, 애완 동물 사료는 Open Pet Food Facts 및 기타 모든 제품인 Open Products Facts를 설치할 수 있습니다.

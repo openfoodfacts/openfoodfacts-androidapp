@@ -40,4 +40,6 @@
     <string name="add_nutrient_prompt_text">Voeg voedingsinformatie toe om gehaltes van voedingsstoffen te berekenen</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_products_to_buy">Producten om te kopen</string>
 </resources>

@@ -22,7 +22,7 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
     /*
     To show different slogans below the logo while content is being downloaded.
      */
-    private Runnable changeTagline = new Runnable() {
+    private final Runnable changeTagline = new Runnable() {
         int i = 0;
 
         @Override

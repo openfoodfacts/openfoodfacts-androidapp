@@ -7,26 +7,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static junit.framework.Assert.*;
-import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.*;
+import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.ADDITIVE_TAG;
+import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.VINEGAR_EN;
+import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.VINEGAR_FR;
+import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.WIKI_DATA_ID;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link AdditivesWrapper}
  */
 public class AdditivesWrapperTest {
-
-
     @Test
     public void map_returnsListOfCorrectlyMappedAdditives() {
         AdditivesWrapper additivesWrapper = new AdditivesWrapper();
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put(LANGUAGE_CODE_ENGLISH, VINEGAR_EN);
         stringMap.put(LANGUAGE_CODE_FRENCH, VINEGAR_FR);
-        AdditiveResponse additiveResponse1 = new AdditiveResponse(ADDITIVE_TAG, stringMap,null);
+        AdditiveResponse additiveResponse1 = new AdditiveResponse(ADDITIVE_TAG, stringMap, null);
         AdditiveResponse additiveResponse2 =
-                new AdditiveResponse(ADDITIVE_TAG, stringMap,null, WIKI_DATA_ID);
+            new AdditiveResponse(ADDITIVE_TAG, stringMap, null, WIKI_DATA_ID);
         additivesWrapper.setAdditives(Arrays.asList(additiveResponse1, additiveResponse2));
         List<Additive> mappedAdditives = additivesWrapper.map();
 
@@ -41,7 +42,7 @@ public class AdditivesWrapperTest {
         // TODO: fix so that this test passes. Currently gives a null pointer.
         // The problem is based on using Boolean class rather than boolean primitive
         // Need to set the Boolean to false somewhere
-         assertFalse(mappedAdditives.get(0).getIsWikiDataIdPresent());
+        assertFalse(mappedAdditives.get(0).getIsWikiDataIdPresent());
 
         assertNull(mappedAdditive1.getWikiDataId());
 
@@ -78,6 +79,5 @@ public class AdditivesWrapperTest {
         assertTrue(mA2Name2.getIsWikiDataIdPresent());
         assertEquals(WIKI_DATA_ID, mA2Name1.getWikiDataId());
         assertEquals(WIKI_DATA_ID, mA2Name2.getWikiDataId());
-
     }
 }

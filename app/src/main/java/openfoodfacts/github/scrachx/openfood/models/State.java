@@ -27,7 +27,7 @@ public class State implements Serializable {
     private Product product;
     private String code;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     /**
      *

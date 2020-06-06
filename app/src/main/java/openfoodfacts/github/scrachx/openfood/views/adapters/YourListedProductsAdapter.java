@@ -1,19 +1,18 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -26,9 +25,9 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.CustomTextView;
 
 public class YourListedProductsAdapter extends RecyclerView.Adapter<YourListedProductsAdapter.ViewHolder> {
-    Context mContext;
-    List<YourListedProduct> products;
-    Boolean isLowBatteryMode;
+    final Boolean isLowBatteryMode;
+    final Context mContext;
+    final List<YourListedProduct> products;
 
     public YourListedProductsAdapter(Context context, List<YourListedProduct> products,Boolean isLowBatteryMode)
     {
@@ -102,12 +101,12 @@ public class YourListedProductsAdapter extends RecyclerView.Adapter<YourListedPr
         return products.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle,tvDetails;
-        CustomTextView tvBarcode;
-        AppCompatImageView imgProduct;
-        ProgressBar imgProgressBar;
+        final AppCompatImageView imgProduct;
+        final ProgressBar imgProgressBar;
+        final CustomTextView tvBarcode;
+        final TextView tvDetails;
+        final TextView tvTitle;
 
         public ViewHolder(View itemView) {
             super(itemView);

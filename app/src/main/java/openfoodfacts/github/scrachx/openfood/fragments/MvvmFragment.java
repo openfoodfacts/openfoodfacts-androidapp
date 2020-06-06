@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.os.Bundle;
+
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +13,7 @@ import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
 public abstract class MvvmFragment<T extends ViewModel, U> extends Fragment {
 
     private U component;
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @CallSuper
     @Override

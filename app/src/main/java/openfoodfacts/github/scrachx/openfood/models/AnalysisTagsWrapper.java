@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.network.deserializers.AllergensWrapperDeserializer;
 import openfoodfacts.github.scrachx.openfood.network.deserializers.AnalysisTagsWrapperDeserializer;
 
 /**

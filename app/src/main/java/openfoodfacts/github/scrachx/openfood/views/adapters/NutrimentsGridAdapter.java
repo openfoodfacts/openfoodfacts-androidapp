@@ -89,9 +89,9 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
     }
 
     static class NutrimentListViewHolder extends RecyclerView.ViewHolder {
-        private TextView vNutrimentName;
-        private TextView vNutrimentValue;
-        private TextView vNutrimentServingValue;
+        private final TextView vNutrimentName;
+        private final TextView vNutrimentServingValue;
+        private final TextView vNutrimentValue;
 
         public NutrimentListViewHolder(View v) {
             super(v);
@@ -122,7 +122,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
     }
 
     class NutrimentHeaderViewHolder extends RecyclerView.ViewHolder {
-        TextView vNutrimentValue;
+        final TextView vNutrimentValue;
 
         public NutrimentHeaderViewHolder(View itemView, boolean displayServing) {
             super(itemView);

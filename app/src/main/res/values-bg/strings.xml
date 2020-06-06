@@ -143,7 +143,7 @@
     <string name="search_button">Търсене</string>
     <string name="alert_dialog_warning_title">Предупреждение</string>
     <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, моля обновете информацията</string>
-    <string name="toast_retrieving">Зареждане...</string>
+    <string name="toast_retrieving">Зареждане…</string>
     <string name="txtBarcode">Баркод :</string>
     <string name="txtCategories">Категории :</string>
     <string name="txtLabels">Етикети, сертификации, награди :</string>
@@ -184,9 +184,10 @@
     <string name="txtSendAll">Качване на всичко</string>
     <string name="txtPictureNeededDialogNo">Отказ</string>
     <string name="toastSending">Качване…</string>
-    <string name="txtLoading">Зареждане...</string>
+    <string name="txtLoading">Зареждане…</string>
     <string name="txtDialogsContentDelete">Сигурни ли сте, че искате да премахнете тази чернова?</string>
     <string name="txtDialogsContentInfoSave">Продуктът е запазен локално, можете да го редактирате в менюто \"Редактиране офлайн\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Необходим е баркод</string>
     <string name="txtOk">ОК</string>
     <string name="txtBarcodeNotValid">Баркодът не е валиден</string>
@@ -218,6 +219,8 @@
     <string name="title_info_dialog">Как работи това?</string>
     <string name="text_offline_info_dialog">Можете да сканирате продукти, когато сте офлайн, за да ги добавите към Open Food Facts по-късно. Всички продукти, които сканирате, ще се показват тук и ще можете да ги изпратите, като използвате бутона по-долу.</string>
     <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Информация за разрешението</string>
     <string name="permission_denied">Моля, активирайте разрешението в настройките</string>
     <string name="info_download_data_connection">Трябва да изтеглите някои данни, за да получите тази функционалност. Моля активирайте интернет връзката.</string>
@@ -425,9 +428,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Общи</string>
     <string name="preference_header_network">Мрежа</string>
     <string name="preference_header_contributing">Допринасяне</string>

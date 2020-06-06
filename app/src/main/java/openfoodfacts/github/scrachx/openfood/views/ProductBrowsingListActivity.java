@@ -14,13 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.StringRes;
-import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.MenuItemCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -131,8 +130,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
         });
 
-        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat
-            .OnActionExpandListener() {
+        searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
                 return true;
@@ -173,11 +171,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
             builder.itemsCallback((dialog, itemView, position, text) -> {
 
                 switch (position) {
-
-                    case 0:
-                        contributionType = 0;
-                        newSearchQuery();
-                        break;
                     case 1:
                         contributionType = 1;
                         newSearchQuery();
@@ -198,6 +191,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         contributionType = 5;
                         newSearchQuery();
                         break;
+                    case 0:
                     default:
                         contributionType = 0;
                         newSearchQuery();
@@ -231,7 +225,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         newSearchQuery();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.getIfLowBatteryLevel(this)) {
             isLowBatteryMode = true;
         }
 
@@ -248,7 +242,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this, getBaseContext());
+        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this);
     }
 
     protected void newSearchQuery() {
@@ -418,10 +412,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
     private void loadDataForContributor(String searchQuery) {
         switch (contributionType) {
-            case 0:
-                api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
-                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
-                break;
 
             case 1:
                 api.getToBeCompletedProductsByContributor(searchQuery, pageAddress, (value, category) ->
@@ -448,6 +438,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
+            case 0:
             default:
                 api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
                     loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
@@ -519,7 +510,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response,
                                     @StringRes int emptyMessage, @StringRes int extendedMessage) {
-        if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
+        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage),
                 getResources().getString(extendedMessage));
         } else {
@@ -531,7 +522,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * @see #loadSearchProducts(boolean, Search, int, int)
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response, @StringRes int emptyMessage) {
-        if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
+        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage), null);
         } else {
             loadData(isResponseSuccessful, response);

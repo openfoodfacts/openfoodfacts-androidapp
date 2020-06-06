@@ -192,6 +192,7 @@
     <string name="txtLoading">Se încarcă…</string>
     <string name="txtDialogsContentDelete">Sunteţi sigur(ă) că doriţi să ştergeţi această ciornă?</string>
     <string name="txtDialogsContentInfoSave">Produsul a fost salvat local, puteți să il modificați din meniul \"Editare offline\".</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Codul de bare este obligatoriu</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
@@ -223,6 +224,8 @@
     <string name="title_info_dialog">Cum funcționează?</string>
     <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
     <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informații despre permisiuni.</string>
     <string name="permission_denied">Vă rugam activați permisiunile în configurări.</string>
     <string name="info_download_data_connection">Pentru a activa această funcționalitate, o serie de date suplimentare trebuiesc descărcate. Vă rugăm activați conexiunea la internet.</string>
@@ -627,13 +630,13 @@
     <string name="infants">Sugari</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Copii mici</string>
-    <string name="toddlers_age">1-2 ani</string>
+    <string name="toddlers_age">1–2 ani</string>
     <string name="children">Copii</string>
     <string name="children_age">3 to 9</string>
     <string name="adolescents">Adolescenţi</string>
     <string name="adolescents_age">10 to 17</string>
     <string name="adults">Adulţi</string>
-    <string name="adults_age">18-64 ani</string>
+    <string name="adults_age">18–64 ani</string>
     <string name="elderly">Vârstnic</string>
     <string name="elderly_age">peste 65 de ani</string>
     <string name="most_people">Majoritatea persoanelor \ n (peste 50%)</string>

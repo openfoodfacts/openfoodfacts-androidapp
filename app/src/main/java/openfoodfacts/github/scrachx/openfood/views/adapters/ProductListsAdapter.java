@@ -1,13 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 
 public class ProductListsAdapter extends RecyclerView.Adapter<ProductListsAdapter.ViewHolder> {
-    Context mContext;
-    List<ProductLists> productLists;
+    final Context mContext;
+    final List<ProductLists> productLists;
 
     public ProductListsAdapter(Context context, List<ProductLists> productLists)
     {
@@ -58,9 +59,9 @@ public class ProductListsAdapter extends RecyclerView.Adapter<ProductListsAdapte
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvListTitle;
-        CardView itemCardView;
-        TextView tvNumOfProducts;
+        final CardView itemCardView;
+        final TextView tvListTitle;
+        final TextView tvNumOfProducts;
 
         public ViewHolder(View itemView) {
             super(itemView);

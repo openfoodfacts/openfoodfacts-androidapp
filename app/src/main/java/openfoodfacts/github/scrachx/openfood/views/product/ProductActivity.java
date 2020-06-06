@@ -13,20 +13,20 @@ import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
-import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -44,14 +44,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 
 public class ProductActivity extends BaseActivity implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    @BindView(R.id.pager)
-    ViewPager viewPager;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.tabs)
-    TabLayout tabLayout;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    private ActivityProductBinding binding;
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
     private State mState;
@@ -68,10 +61,12 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        setContentView(R.layout.activity_product);
+
+        binding = ActivityProductBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         setTitle(getString(R.string.app_name_long));
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -85,9 +80,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             startActivity(intent);
         }
 
-        setupViewPager(viewPager);
+        setupViewPager(binding.pager);
 
-        tabLayout.setupWithViewPager(viewPager);
+        binding.tabs.setupWithViewPager(binding.pager);
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -106,8 +101,8 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             }
         });
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
     }
 
     @Override
@@ -194,6 +189,13 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         return true;
     }
 
+    @Subscribe
+    public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
+        if (event.getBarcode().equals(mState.getProduct().getCode())) {
+            onRefresh();
+        }
+    }
+
     @Override
     public void onRefresh() {
         api.getProduct(mState.getProduct().getCode(), this);
@@ -205,6 +207,12 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         setIntent(intent);
         mState = (State) intent.getSerializableExtra("state");
         adapterResult.refresh(mState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -225,6 +233,12 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         }
     }
 
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
     public void showIngredientsTab(String action) {
         if (adapterResult == null || adapterResult.getCount() == 0) {
             return;
@@ -232,7 +246,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         for (int i = 0; i < adapterResult.getCount(); ++i) {
             Fragment fragment = adapterResult.getItem(i);
             if (fragment instanceof IngredientsProductFragment) {
-                viewPager.setCurrentItem(i);
+                binding.pager.setCurrentItem(i);
 
                 if ("perform_ocr".equals(action)) {
                     ((IngredientsProductFragment) fragment).extractIngredients();

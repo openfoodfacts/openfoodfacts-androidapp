@@ -2,9 +2,9 @@ package openfoodfacts.github.scrachx.openfood.views.listeners;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.util.Log;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,7 +40,7 @@ public class BottomNavigationListenerInstaller {
     }
 
     public static void selectNavigationItem(BottomNavigationView bottomNavigationView, int itemId) {
-        Set<Integer> navItems = new HashSet<Integer>();
+        Set<Integer> navItems = new HashSet<>();
         navItems.add(R.id.scan_bottom_nav);
         navItems.add(R.id.compare_products);
         navItems.add(R.id.home_page);
@@ -58,14 +58,14 @@ public class BottomNavigationListenerInstaller {
         }
     }
 
-    public static void install(BottomNavigationView bottomNavigationView, Activity activity, Context context) {
+    public static void install(BottomNavigationView bottomNavigationView, Activity activity) {
         try {
             BottomNavigationListenerInstaller.disableShiftMode(bottomNavigationView);
         } catch (Exception e) {
             Log.i(BottomNavigationListenerInstaller.class.getSimpleName(),"install",e);
         }
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity, context));
+        bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity));
     }
 
 

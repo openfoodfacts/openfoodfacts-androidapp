@@ -49,7 +49,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -82,7 +82,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private State activityState;
     private String barcode;
     private SendProduct mSendProduct;
-    private WikidataApiClient apiClientForWikiData;
+    private WikiDataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private IIngredientsProductPresenter.Actions presenter;
@@ -106,7 +106,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-        apiClientForWikiData = new WikidataApiClient();
+        apiClientForWikiData = new WikiDataApiClient();
 
         binding = FragmentIngredientsProductBinding.inflate(inflater);
         return binding.getRoot();
@@ -138,10 +138,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
 
-        mAllergenNameDao = Utils.getAppDaoSession(getActivity()).getAllergenNameDao();
+        mAllergenNameDao = Utils.getDaoSession().getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.getIfLowBatteryLevel(getContext())) {
             isLowBatteryMode = true;
         }
 
@@ -303,8 +303,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 if (allergen.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(
                         allergen.getWikiDataId(),
-                        (value, result) -> {
-                            if (value) {
+                        (result) -> {
+                            if (result != null) {
                                 FragmentActivity activity = getActivity();
                                 if (activity != null && !activity.isFinishing()) {
                                     BottomScreenCommon.showBottomScreen(result, allergen,

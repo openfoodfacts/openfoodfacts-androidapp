@@ -1,6 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -17,7 +20,7 @@ public class CommonApiManager implements ICommonApiManager {
     private ProductApiService productApiService;
     private OpenFoodAPIService openFoodApiService;
     private RobotoffAPIService robotoffApiService;
-    private JacksonConverterFactory jacksonConverterFactory;
+    private final JacksonConverterFactory jacksonConverterFactory;
 
     public static ICommonApiManager getInstance() {
         if (instance == null) {
@@ -73,7 +76,7 @@ public class CommonApiManager implements ICommonApiManager {
     private ProductApiService createProductApiService() {
         productApiService = new Retrofit.Builder()
             .baseUrl(BuildConfig.HOST)
-            .client(Utils.HttpClientBuilder())
+            .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
@@ -88,7 +91,7 @@ public class CommonApiManager implements ICommonApiManager {
     private RobotoffAPIService createRobotoffApiService() {
         robotoffApiService = new Retrofit.Builder()
             .baseUrl("https://robotoff.openfoodfacts.org")
-            .client(Utils.HttpClientBuilder())
+            .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
@@ -103,7 +106,7 @@ public class CommonApiManager implements ICommonApiManager {
     private OpenFoodAPIService createOpenFoodApiService() {
         openFoodApiService = new Retrofit.Builder()
             .baseUrl(BuildConfig.HOST)
-            .client(Utils.HttpClientBuilder())
+            .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()

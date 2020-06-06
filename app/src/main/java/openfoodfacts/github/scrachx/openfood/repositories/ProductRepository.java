@@ -1,10 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.content.SharedPreferences;
+import android.util.Base64;
 import android.util.Log;
 
 import com.squareup.picasso.Picasso;
 
+import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.WhereCondition;
@@ -15,13 +17,62 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTag;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Category;
+import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Country;
+import openfoodfacts.github.scrachx.openfood.models.CountryDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientName;
+import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
+import openfoodfacts.github.scrachx.openfood.models.Label;
+import openfoodfacts.github.scrachx.openfood.models.LabelDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Question;
+import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
@@ -35,27 +86,27 @@ public class ProductRepository implements IProductRepository {
     private static final String DEFAULT_LANGUAGE = "en";
     private static final String TAG = ProductRepository.class.getSimpleName();
     private static IProductRepository instance;
-    private ProductApiService productApi;
-    private RobotoffAPIService robotoffApi;
-    private Database db;
-    private LabelDao labelDao;
-    private LabelNameDao labelNameDao;
-    private TagDao tagDao;
-    private InvalidBarcodeDao invalidBarcodeDao;
-    private AllergenDao allergenDao;
-    private AllergenNameDao allergenNameDao;
-    private AdditiveDao additiveDao;
-    private AdditiveNameDao additiveNameDao;
-    private CountryDao countryDao;
-    private CountryNameDao countryNameDao;
-    private CategoryDao categoryDao;
-    private CategoryNameDao categoryNameDao;
-    private IngredientDao ingredientDao;
-    private IngredientNameDao ingredientNameDao;
-    private IngredientsRelationDao ingredientsRelationDao;
-    private AnalysisTagDao analysisTagDao;
-    private AnalysisTagNameDao analysisTagNameDao;
-    private AnalysisTagConfigDao analysisTagConfigDao;
+    private final AdditiveDao additiveDao;
+    private final AdditiveNameDao additiveNameDao;
+    private final AllergenDao allergenDao;
+    private final AllergenNameDao allergenNameDao;
+    private final AnalysisTagConfigDao analysisTagConfigDao;
+    private final AnalysisTagDao analysisTagDao;
+    private final AnalysisTagNameDao analysisTagNameDao;
+    private final CategoryDao categoryDao;
+    private final CategoryNameDao categoryNameDao;
+    private final CountryDao countryDao;
+    private final CountryNameDao countryNameDao;
+    private final Database db;
+    private final IngredientDao ingredientDao;
+    private final IngredientNameDao ingredientNameDao;
+    private final IngredientsRelationDao ingredientsRelationDao;
+    private final InvalidBarcodeDao invalidBarcodeDao;
+    private final LabelDao labelDao;
+    private final LabelNameDao labelNameDao;
+    private final ProductApiService productApi;
+    private final RobotoffAPIService robotoffApi;
+    private final TagDao tagDao;
     // -1 no internet connexion.
     private final static long TAXONOMY_NO_INTERNET = -9999L;
 
@@ -79,7 +130,7 @@ public class ProductRepository implements IProductRepository {
         productApi = CommonApiManager.getInstance().getProductApiService();
         robotoffApi = CommonApiManager.getInstance().getRobotoffApiService();
 
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         db = daoSession.getDatabase();
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
@@ -205,9 +256,9 @@ public class ProductRepository implements IProductRepository {
         }
         if (loadFromLocalDatabase) {
             //If we are here then just get the information from the local database
-            return Single.fromCallable(() -> dao.loadAll());
+            return Single.fromCallable((Callable<List<T>>) dao::loadAll);
         }
-        return Single.fromCallable(() -> Collections.emptyList());
+        return Single.fromCallable(Collections::emptyList);
     }
 
     Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
@@ -501,7 +552,7 @@ public class ProductRepository implements IProductRepository {
         ingredientDao.deleteAll();
         ingredientNameDao.deleteAll();
         ingredientsRelationDao.deleteAll();
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         daoSession.getDatabase().execSQL(
             "update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao
                 .getTablename() + "')");
@@ -846,7 +897,21 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation) {
-        return robotoffApi.annotateInsight(insightId, annotation);
+        // if the user is logged in, send the auth, otherwise make it anonymous
+        final SharedPreferences userPref = OFFApplication.getInstance()
+            .getSharedPreferences("login", 0);
+
+        final String user = userPref.getString("user", "");
+        final String pass = userPref.getString("pass", "");
+
+        if (StringUtils.isNotBlank(user) && StringUtils.isNotBlank(pass)) {
+            final String baseAuth = "Basic " + Base64.encodeToString(
+                (user + ":" + pass).getBytes(), Base64.DEFAULT);
+
+            return robotoffApi.annotateInsight(insightId, annotation, baseAuth);
+        } else {
+            return robotoffApi.annotateInsight(insightId, annotation);
+        }
     }
 
     /**

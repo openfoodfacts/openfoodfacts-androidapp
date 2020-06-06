@@ -63,9 +63,6 @@ public class UtilsTest {
         final Context mockCtx = mock(Context.class);
         final PackageManager mockPM = mock(PackageManager.class);
 
-        // Test for null
-        assertFalse(Utils.isHardwareCameraInstalled(null));
-
         when(mockCtx.getPackageManager()).thenReturn(mockPM);
 
         // Test for best condition
@@ -79,9 +76,26 @@ public class UtilsTest {
 
         assertFalse(Utils.isHardwareCameraInstalled(mockCtx));
 
-        // Test for null package Manager
-        when(mockCtx.getPackageManager())
-            .thenReturn(null);
-        assertFalse(Utils.isHardwareCameraInstalled(mockCtx));
+    String servingSize;
+
+    @Test
+    public void getServingInOz_from_ml(){
+        servingSize = "100 ml";
+
+        assertEquals("3.38 oz", Utils.getServingInOz(servingSize));
+    }
+
+    @Test
+    public void getServingInOz_from_cl(){
+        servingSize = "250 cl";
+
+        assertEquals("84.54 oz", Utils.getServingInOz(servingSize));
+    }
+
+    @Test
+    public void getServingInOz_from_l(){
+        servingSize = "3 l";
+
+        assertEquals("101.44 oz", Utils.getServingInOz(servingSize));
     }
 }

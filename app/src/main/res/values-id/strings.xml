@@ -182,6 +182,7 @@
     <string name="txtLoading">sedang memuat</string>
     <string name="txtDialogsContentDelete">Apakah anda yakin ingin menghapus draf ini?</string>
     <string name="txtDialogsContentInfoSave">Produk disimpan di perangkat, anda dapat mengubahnya di menu \"ubah Offline\"</string>
+    <string name="productSavedToast">Produk telah disimpan, terima kasih!</string>
     <string name="txtBarcodeRequire">kode batang dibutuhkan</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Kode batang tidak valid</string>
@@ -213,6 +214,8 @@
     <string name="title_info_dialog">Bagaimana ini bekerja?</string>
     <string name="text_offline_info_dialog">kamu bisa  memindai produk saat kamu sedang tidak aktif  untuk menambah ke fakta-fakta makanan terbuka kemudian. Semua produk yang kamu memindai akan tampil  di sini, dan kamu dapat mengirimkan mereka dengan tombol yang ada di bawah ini</string>
     <string name="permission_camera">kamera membutuhkan izin untuk memindah kode batang dan mengambil gambar</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">mengizinkan informasi</string>
     <string name="permission_denied">silahkan mengaktifkan izin di penganturan</string>
     <string name="info_download_data_connection">kamu perlu mendownload beberapa data untuk mendapatkan perintah bekerja. Silahkan mengaktifkan koneksi internet.</string>
@@ -763,5 +766,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Contoh: CocaCola, Nestle, dll …</string>
 </resources>

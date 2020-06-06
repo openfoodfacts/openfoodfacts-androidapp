@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/coordinator_layout_product"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <include layout="@layout/toolbar" />
-    <HorizontalScrollView
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/coordinator_layout_product"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar_include"
+            layout="@layout/toolbar" />
+
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="100"
-    >
-        <RelativeLayout
+            android:layout_weight="100">
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
-            <androidx.recyclerview.widget.RecyclerView
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/product_comparison_rv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:scrollbars="horizontal"/>
+                    android:scrollbars="horizontal" />
 
-            <RelativeLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toEndOf="@id/product_comparison_rv"
                     android:layout_toRightOf="@id/product_comparison_rv">
-                <Button
+
+                    <Button
                         android:id="@+id/product_comparison_button"
+                        style="@style/ButtonBorder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_margin="16dp"
-                        android:text="@string/add_product"
-                        style="@style/ButtonBorder"/>
+                        android:text="@string/add_product" />
+                </RelativeLayout>
             </RelativeLayout>
-        </RelativeLayout>
-    </HorizontalScrollView>
-    <include layout="@layout/navigation_bottom" />
-</LinearLayout>
+        </HorizontalScrollView>
+
+        <include
+            android:id="@+id/navigation_bottom_include"
+            layout="@layout/navigation_bottom" />
+    </LinearLayout>
+</layout>
