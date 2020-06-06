@@ -79,6 +79,8 @@ import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
+import static openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsFragment.getEnergyKcalValue;
+import static openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsFragment.getEnergyKjValue;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY_KCAL;
@@ -274,8 +276,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (energyKcal != null) {
             nutrimentListItems.add(
                 new NutrimentListItem(getString(R.string.nutrition_energy_kcal),
-                    energyKcal.getFor100gInUnits(),
-                    energyKcal.getForServingInUnits(),
+                    getEnergyKcalValue(nutriments, false),
+                    getEnergyKcalValue(nutriments, true),
                     Units.ENERGY_KCAL,
                     nutriments.getModifierIfNotDefault(ENERGY_KCAL)));
         }
@@ -283,9 +285,9 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (energyKj != null) {
             nutrimentListItems.add(
                 new NutrimentListItem(getString(R.string.nutrition_energy_kj),
-                    energyKj.getFor100gInUnits(),
-                    energyKj.getForServingInUnits(),
-                    Units.ENERGY_KJ.toLowerCase(),
+                    getEnergyKjValue(nutriments, false),
+                    getEnergyKjValue(nutriments, true),
+                    Units.ENERGY_KJ,
                     nutriments.getModifierIfNotDefault(ENERGY_KJ)));
         }
 
