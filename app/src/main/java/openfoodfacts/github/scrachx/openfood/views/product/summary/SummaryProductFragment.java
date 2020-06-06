@@ -726,6 +726,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void editProduct() {
+
         Intent intent = new Intent(getActivity(), AddProductActivity.class);
         intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
         startActivityForResult(intent, EDIT_REQUEST_CODE);

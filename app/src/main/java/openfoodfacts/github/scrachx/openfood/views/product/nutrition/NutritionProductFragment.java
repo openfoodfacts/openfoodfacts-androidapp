@@ -132,7 +132,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         binding.getNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         binding.newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
 
-        binding.nutriscoreLink.setOnClickListener(v -> nutriscoreLinkDisplay());
+        binding.nutriscoreLink.setOnClickListener(v -> openNutriScoreLink());
         binding.imageViewNutrition.setOnClickListener(this::openFullScreen);
         binding.calculateNutritionFacts.setOnClickListener(this::calculateNutritionFacts);
         binding.getNutriscorePrompt.setOnClickListener(v -> onNutriscoreButtonClick());
@@ -485,11 +485,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         return items;
     }
 
-    void nutriscoreLinkDisplay() {
-        if (product.getNutritionGradeFr() != null) {
-            CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireActivity(), customTabActivityHelper.getSession());
-            CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+    void openNutriScoreLink() {
+        if (product.getNutritionGradeFr() == null) {
+            return;
         }
+        CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireActivity(), customTabActivityHelper.getSession());
+        CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
     }
 
     private void openFullScreen(View v) {
@@ -509,7 +510,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         MaterialDialog dialog = new MaterialDialog.Builder(requireActivity())
             .title(R.string.calculate_nutrition_facts)
             .customView(R.layout.dialog_calculate_calories, false)
-            .dismissListener(dialogInterface -> Utils.hideKeyboard(getActivity()))
+            .dismissListener(dialogInterface -> Utils.hideKeyboard(requireActivity()))
             .build();
 
         dialog.show();
@@ -525,7 +526,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                     btn.setOnClickListener(v1 -> {
                         if (!TextUtils.isEmpty(etWeight.getText().toString())) {
 
-                            String spinnerValue = (String) spinner.getSelectedItem();
+                            String spinnerValue = spinner.getSelectedItem().toString();
                             String weight = etWeight.getText().toString();
                             Product p = activityState.getProduct();
                             Intent intent = new Intent(getContext(), CalculateDetails.class);
@@ -542,7 +543,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
-
+                    // We don't care
                 }
             });
         }
