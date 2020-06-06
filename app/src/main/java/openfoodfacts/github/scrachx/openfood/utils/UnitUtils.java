@@ -15,7 +15,6 @@ public class UnitUtils {
     public static final String UNIT_IU = "IU";
     private static final double SALT_PER_SODIUM = 2.54;
     private static final float KJ_PER_KCAL = 4.184f;
-    private static final float KCAL_KJ_RATIO = 0.23900573614f;
     private static final float OZ_PER_L = 33.814f;
 
     /**

@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.os.Build;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class FileUtilsTest {
@@ -29,8 +29,4 @@ public class FileUtilsTest {
         assertFalse(FileUtils.isAbsolute(localURL));
     }
 
-    @Test
-    public void getCSVFolderName_off(){
-        assertEquals("Open Food Facts", FileUtils.getCsvFolderName());
-    }
 }
