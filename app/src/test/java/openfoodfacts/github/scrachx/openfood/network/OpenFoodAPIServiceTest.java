@@ -97,7 +97,8 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byState() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byState("complete").execute();
+        String fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags";
+        Response<Search> searchResponse = devClientWithAuth.byState("complete", fieldsToFetchFacets).execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -253,7 +254,8 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void getProductByAdditive_e301_productsFound() throws Exception {
-        Response<Search> response = devClientWithAuth.byAdditive("e301-sodium-ascorbate").execute();
+        String fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags";
+        Response<Search> response = devClientWithAuth.byAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).execute();
         assertProductsFound(response);
     }
 
