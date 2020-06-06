@@ -286,7 +286,7 @@ public interface OpenFoodAPIService {
     Call<Search> byCategory(@Path("category") String category);
 
     @GET("state/{state}.json")
-    Call<Search> byState(@Path("state") String state);
+    Call<Search> byState(@Path("state") String state, @Query("fields") String fields);
 
     @GET("packaging/{packaging}.json")
     Call<Search> byPackaging(@Path("packaging") String packaging);
@@ -353,7 +353,7 @@ public interface OpenFoodAPIService {
     Call<Search> byUnknownNutrient(@Path("UnknownNutrient") String unknownNutrient);
 
     @GET("additive/{Additive}.json")
-    Call<Search> byAdditive(@Path("Additive") String additive);
+    Call<Search> byAdditive(@Path("Additive") String additive, @Query("fields") String fields);
 
     @GET("code/{Code}.json")
     Call<Search> byCode(@Path("Code") String code);
@@ -376,7 +376,7 @@ public interface OpenFoodAPIService {
      * This method gives a list of incomplete products
      */
     @GET("state/to-be-completed/{page}.json?nocache=1")
-    Call<Search> getIncompleteProducts(@Path("page") int page);
+    Call<Search> getIncompleteProducts(@Path("page") int page, @Query("fields") String fields);
 
     /**
      * This method gives the # of products on Open Food Facts
