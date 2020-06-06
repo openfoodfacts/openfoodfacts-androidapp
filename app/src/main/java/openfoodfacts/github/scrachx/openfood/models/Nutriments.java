@@ -200,6 +200,25 @@ public class Nutriments implements Serializable {
     private boolean containsVitamins;
     private boolean containsMinerals;
 
+    @NonNull
+    public String getEnergyKjValue(final boolean isDataPerServing) {
+        if (isDataPerServing) {
+            return this.getServing(ENERGY_KJ);
+        } else {
+            return this.get100g(ENERGY_KJ);
+        }
+    }
+
+    public String getEnergyKcalValue(final boolean isDataPerServing) {
+        String value;
+        if (isDataPerServing) {
+            value = this.getServing(ENERGY_KCAL);
+        } else {
+            value = this.get100g(ENERGY_KCAL);
+        }
+        // TODO: kcals are returned as kj, so we need to convert
+        return String.valueOf(UnitUtils.convertToKiloCalories(Integer.parseInt(value), Units.ENERGY_KJ));
+    }
 
     @Nullable
     public Nutriment get(@NonNull String nutrimentName) {

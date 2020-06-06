@@ -250,25 +250,6 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         return (AddProductActivity) getActivity();
     }
 
-    public static String getEnergyKjValue(@NonNull Nutriments nutriments, boolean isDataPerServing) {
-        if (isDataPerServing) {
-            return nutriments.getServing(Nutriments.ENERGY_KJ);
-        } else {
-            return nutriments.get100g(Nutriments.ENERGY_KJ);
-        }
-    }
-
-    public static String getEnergyKcalValue(@NonNull Nutriments nutriments, boolean isDataPerServing) {
-        String value;
-        if (isDataPerServing) {
-            value = nutriments.getServing(Nutriments.ENERGY_KCAL);
-        } else {
-            value = nutriments.get100g(Nutriments.ENERGY_KCAL);
-        }
-        // TODO: kcals are returned as kj, so we need to convert
-        return String.valueOf(UnitUtils.convertToKiloCalories(Integer.parseInt(value), Units.ENERGY_KJ));
-    }
-
     /**
      * Pre fill the fields of the product which are already present on the server.
      */
@@ -297,8 +278,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (nutriments == null || getView() == null) {
             return;
         }
-        binding.energyKj.setText(getEnergyKjValue(nutriments, isDataPerServing()));
-        binding.energyKcal.setText(getEnergyKcalValue(nutriments, isDataPerServing()));
+        binding.energyKj.setText(nutriments.getEnergyKjValue(isDataPerServing()));
+        binding.energyKcal.setText(nutriments.getEnergyKcalValue(isDataPerServing()));
 
         // Fill default nutriments fields
         final List<CustomValidatingEditTextView> editViews = Utils.getViewsByType((ViewGroup) getView(), CustomValidatingEditTextView.class);
