@@ -6,17 +6,16 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.Units;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 
 public class ProductUtils {
-    public static final String DEFAULT_NUTRITION_SIZE = "100g";
-    public static final String DEBUG_BARCODE = "1";
-
     private ProductUtils() {
 
     }
 
     public static boolean isPerServingInLiter(Product product) {
-        return StringUtils.containsIgnoreCase(product.getServingSize(), UnitUtils.UNIT_LITER);
+        return StringUtils.containsIgnoreCase(product.getServingSize(), Units.UNIT_LITER);
     }
 
     /**
@@ -26,7 +25,7 @@ public class ProductUtils {
      */
     public static boolean isBarcodeValid(@Nullable String barcode) {
         // For debug only: the barcode '1' is used for test:
-        if (DEBUG_BARCODE.equals(barcode)) {
+        if (ApiFields.Defaults.DEBUG_BARCODE.equals(barcode)) {
             return true;
         }
         if (barcode == null) {

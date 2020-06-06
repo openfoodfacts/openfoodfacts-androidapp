@@ -30,8 +30,6 @@ allprojects {
     }
 
     sonarqube { properties { property 'sonar.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*,**/*.xml" } }
-   // Disabled during conflict rebase: sonarqube { properties { property 'sonar.coverage.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*" } }
-
-
+    sonarqube { properties { property 'sonar.coverage.exclusions', "**/openfoodfacts/github/scrachx/openfood/models/*" } }
 
 }

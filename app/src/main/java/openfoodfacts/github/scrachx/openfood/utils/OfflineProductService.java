@@ -21,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
@@ -115,13 +116,13 @@ public class OfflineProductService {
 
         HashMap<String, String> productDetails = product.getProductDetailsMap();
         // Remove the images from the HashMap before uploading the product details
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_FRONT);
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS);
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_NUTRITION);
+        productDetails.remove(ApiFields.Keys.IMAGE_FRONT);
+        productDetails.remove(ApiFields.Keys.IMAGE_INGREDIENTS);
+        productDetails.remove(ApiFields.Keys.IMAGE_NUTRITION);
         // Remove the status of the images from the HashMap before uploading the product details
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_FRONT_UPLOADED);
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED);
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED);
+        productDetails.remove(ApiFields.Keys.IMAGE_FRONT_UPLOADED);
+        productDetails.remove(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED);
+        productDetails.remove(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED);
 
         Iterator<Map.Entry<String, String>> it = productDetails.entrySet().iterator();
         while (it.hasNext()) {

@@ -102,10 +102,10 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
 
         void fillNutrimentValue(NutrimentListItem item) {
             vNutrimentName.setText(item.getTitle());
-            vNutrimentValue.append(item.getModifier());
-            vNutrimentValue.append(item.getValue());
-            vNutrimentValue.append(" ");
-            vNutrimentValue.append(item.getUnit());
+            vNutrimentValue.append(String.format("%s %s %s",
+                item.getModifier(),
+                item.getValue(),
+                item.getUnit()));
         }
 
         void fillServingValue(NutrimentListItem item) {
@@ -113,10 +113,10 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter {
             if (StringUtils.isBlank(servingValue.toString())) {
                 vNutrimentServingValue.setVisibility(GONE);
             } else {
-                vNutrimentServingValue.append(item.getModifier());
-                vNutrimentServingValue.append(servingValue);
-                vNutrimentServingValue.append(" ");
-                vNutrimentServingValue.append(item.getUnit());
+                vNutrimentServingValue.append(String.format("%s %s %s",
+                    item.getModifier(),
+                    servingValue,
+                    item.getUnit()));
             }
         }
     }

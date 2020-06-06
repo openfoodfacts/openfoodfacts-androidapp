@@ -186,7 +186,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.labelsIcon.setVisibility(VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getIfLowBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true;
         }
 
@@ -726,6 +726,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void editProduct() {
+
         Intent intent = new Intent(getActivity(), AddProductActivity.class);
         intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
         startActivityForResult(intent, EDIT_REQUEST_CODE);

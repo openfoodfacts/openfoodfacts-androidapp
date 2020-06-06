@@ -97,7 +97,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
         // OnClick
         binding.scanFirstYourListedProduct.setOnClickListener(v -> onScanFirst());
 
-        if (Utils.isDisableImageLoad(this) && Utils.getIfLowBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true;
         }
         ProductListsDao  productListsDao = Utils.getDaoSession().getProductListsDao();
