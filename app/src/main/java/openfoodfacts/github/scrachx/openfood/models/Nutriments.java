@@ -216,6 +216,9 @@ public class Nutriments implements Serializable {
         } else {
             value = this.get100g(ENERGY_KCAL);
         }
+        if (StringUtils.isBlank(value)) {
+            return value;
+        }
         // TODO: kcals are returned as kj, so we need to convert
         return String.valueOf(UnitUtils.convertToKiloCalories(Integer.parseInt(value), Units.ENERGY_KJ));
     }
