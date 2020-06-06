@@ -219,6 +219,8 @@
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Maaari mong i-scan ang mga produkto kapag offline ka upang idagdag ang mga ito sa Open Food Fact sa ibang pagkakataon. Ang lahat ng mga produkto na iyong i-scan ay lilitaw dito, at magagawa mong ipadala ang mga ito gamit ang pindutan sa ibaba.</string>
     <string name="permission_camera">Kinakailangan ang pahintulot ng kamera upang i-scan ang mga barcode at kumuha ng mga larawan.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Impormasyon ng pahintulot</string>
     <string name="permission_denied">Mangyaring isaaktibo ang pahintulot sa mga setting</string>
     <string name="info_download_data_connection">Kailangan mong mag-download ng ilang data upang gumana ang functionality na ito na. Mangyaring isaaktibo ang koneksyon sa internet.</string>
@@ -426,9 +428,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Panlahat</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Tumulong</string>

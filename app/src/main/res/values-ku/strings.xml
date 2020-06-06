@@ -219,6 +219,8 @@
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Tu dikarî berhemên browse û paşê gava hûn is to lê zêde bike Open Facts Food î. Hemû li vê derê xuya bibe û bikaribe bi te re bişîne venihartin li jêr bi bişkoja.</string>
     <string name="permission_camera">Tu divê destûr ji bo lêgerînê barcodes û gemere ji bo resma.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Destûrê bide agahî</string>
     <string name="permission_denied">Ji kerema xwe ve ku tu çalakkirin û eyer</string>
     <string name="info_download_data_connection">Ku hûn ji bo indırmışke pere welat ji bo birêvebirina vî wezîfeyî. Ji kerema xwe girêdana înternetê çalak.</string>

@@ -219,6 +219,8 @@
     <string name="title_info_dialog">Hogyan működik?</string>
     <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküldheti őket.</string>
     <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Engedély információk</string>
     <string name="permission_denied">Kérem, aktiválja az engedélyt a beállításokban</string>
     <string name="info_download_data_connection">Bizonyos adatokat le kell töltenie, hogy ez a funkció működjön. Kérem, aktiválja az internet kapcsolatot.</string>

@@ -138,7 +138,7 @@
     <string name="search_button">Tìm kiếm</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">Người dùng / mật khẩu đã thay đổi, vui lòng cập nhật thông tin</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">Mã vạch :</string>
     <string name="txtCategories">Thể loại :</string>
     <string name="txtLabels">Nhãn, chứng nhận, giải thưởng:</string>
@@ -178,8 +178,8 @@
     <string name="hintBrand">Nhãn hiệu</string>
     <string name="txtSendAll">Tải lên tất cả</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
+    <string name="toastSending">Uploading...</string>
+    <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Bạn có chắc chắn muốn xóa bản nháp này không?</string>
     <string name="txtDialogsContentInfoSave">Sản phẩm được lưu cục bộ, bạn có thể chỉnh sửa nó trong menu \"Chỉnh sửa ngoại tuyến\"</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -214,6 +214,8 @@
     <string name="title_info_dialog">Nó hoạt động như thế nào?</string>
     <string name="text_offline_info_dialog">Bạn có thể quét các sản phẩm khi bạn đang ngoại tuyến để thêm chúng vào Open Food Facts sau. Tất cả các sản phẩm bạn quét sẽ xuất hiện ở đây, và bạn sẽ có thể gửi cho họ bằng cách sử dụng nút bên dưới.</string>
     <string name="permission_camera">Cần có quyền đối với máy ảnh để quét mã vạch và chụp ảnh.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Thông tin quyền</string>
     <string name="permission_denied">Vui lòng kích hoạt quyền trong cài đặt</string>
     <string name="info_download_data_connection">Bạn cần tải xuống một số dữ liệu để chức năng này hoạt động. Vui lòng kích hoạt kết nối internet.</string>
@@ -240,7 +242,7 @@
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
-    <string name="txt_exporting_history">Exporting history…</string>
+    <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">Lịch sử đã được xuất</string>
     <string name="permision_write_external_storage">Viết quyền lưu trữ bên ngoài là cần thiết để xuất lịch sử.</string>
     <string name="no_brand">No Brand</string>

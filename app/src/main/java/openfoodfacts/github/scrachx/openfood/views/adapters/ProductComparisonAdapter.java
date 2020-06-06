@@ -129,7 +129,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (isNotBlank(imageUrl)) {
             holder.productComparisonLabel.setVisibility(View.INVISIBLE);
 
-            if (Utils.isDisableImageLoad(context) && Utils.isBatteryLevelLow(context)) {
+            if (Utils.isDisableImageLoad(context) && Utils.getIfLowBatteryLevel(context)) {
                 isLowBatteryMode = true;
             }
             // Load Image if isLowBatteryMode is false

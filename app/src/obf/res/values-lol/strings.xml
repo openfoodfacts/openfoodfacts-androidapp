@@ -39,4 +39,6 @@
     <string name="add_category_prompt_text">crwdns124535:0crwdne124535:0</string>
     <string name="add_nutrient_category_prompt_text">crwdns124537:0crwdne124537:0</string>
     <string name="required_to_compute_nutriscore"></string>
+    <string name="txt_eaten_products">crwdns125820:0crwdne125820:0</string>
+    <string name="txt_products_to_buy">crwdns125822:0crwdne125822:0</string>
 </resources>
