@@ -82,6 +82,9 @@ import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityH
 import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 public class Utils {
+    public static final int CONNECTION_TIMEOUT = 5000;
+    public static final int RW_TIMEOUT = 30000;
+
     private Utils() {
         // Utility class
     }
@@ -104,14 +107,14 @@ public class Utils {
      * @param tags the styled span objects to apply to the content
      *     such as android.text.style.StyleSpan
      */
-    private static CharSequence apply(CharSequence[] content, Object... tags) {
+    private static String apply(CharSequence[] content, Object... tags) {
         SpannableStringBuilder text = new SpannableStringBuilder();
         openTags(text, tags);
         for (CharSequence item : content) {
             text.append(item);
         }
         closeTags(text, tags);
-        return text;
+        return text.toString();
     }
 
     /**
@@ -145,7 +148,7 @@ public class Utils {
      * Returns a CharSequence that applies boldface to the concatenation
      * of the specified CharSequence objects.
      */
-    public static CharSequence bold(CharSequence... content) {
+    public static String bold(CharSequence... content) {
         return apply(content, new StyleSpan(Typeface.BOLD));
     }
 
@@ -271,27 +274,27 @@ public class Utils {
         }
     }
 
-    public static <T extends View> List<T> getViewsByType(ViewGroup root, Class<T> tClass) {
+    public static <T extends View> List<T> getViewsByType(ViewGroup root, Class<T> typeClass) {
         final ArrayList<T> result = new ArrayList<>();
         int childCount = root.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = root.getChildAt(i);
             if (child instanceof ViewGroup) {
-                result.addAll(getViewsByType((ViewGroup) child, tClass));
+                result.addAll(getViewsByType((ViewGroup) child, typeClass));
             }
 
-            if (tClass.isInstance(child)) {
-                result.add(tClass.cast(child));
+            if (typeClass.isInstance(child)) {
+                result.add(typeClass.cast(child));
             }
         }
         return result;
     }
 
-    public static int getNovaGroupDrawable(Product product) {
+    public static int getNovaGroupDrawable(@Nullable Product product) {
         return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
     }
 
-    public static int getNovaGroupDrawable(String novaGroup) {
+    public static int getNovaGroupDrawable(@Nullable String novaGroup) {
 
         if (novaGroup == null) {
             return NO_DRAWABLE_RESOURCE;
@@ -341,7 +344,7 @@ public class Utils {
         }
     }
 
-    public static int getSmallImageGrade(String grade) {
+    public static int getSmallImageGrade(@Nullable String grade) {
         int drawable = NO_DRAWABLE_RESOURCE;
 
         if (grade == null) {
@@ -451,9 +454,9 @@ public class Utils {
 
     public static OkHttpClient httpClientBuilder() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
-            .connectTimeout(5000, TimeUnit.MILLISECONDS)
-            .readTimeout(30000, TimeUnit.MILLISECONDS)
-            .writeTimeout(30000, TimeUnit.MILLISECONDS)
+            .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
+            .readTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
+            .writeTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
             .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS));
 
         if (BuildConfig.DEBUG) {
@@ -470,7 +473,7 @@ public class Utils {
      * @param context of the application.
      * @return true if airplane mode is active.
      */
-    public static boolean isAirplaneModeActive(Context context) {
+    public static boolean isAirplaneModeActive(@NonNull Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             return Settings.Global.getInt(context.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
@@ -521,7 +524,7 @@ public class Utils {
      * @param context of the application.
      * @return the type of network that is connected.
      */
-    private static String getNetworkType(Context context) {
+    private static String getNetworkType(@NonNull Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
@@ -605,36 +608,12 @@ public class Utils {
     }
 
     /**
-     * convert energy from kj to kcal for a product.
-     *
-     * @param value of energy in kj.
-     * @return energy in kcal.
-     */
-    public static String getEnergy(String value) {
-        String defaultValue = StringUtils.EMPTY;
-        if (defaultValue.equals(value) || TextUtils.isEmpty(value)) {
-            return defaultValue;
-        }
-
-        try {
-            int energyKcal = convertKjToKcal(Double.parseDouble(value));
-            return String.valueOf(energyKcal);
-        } catch (NumberFormatException e) {
-            return defaultValue;
-        }
-    }
-
-    private static int convertKjToKcal(double kj) {
-        return (int) (kj / 4.1868d);
-    }
-
-    /**
      * Function which returns true if the battery level is low
      *
      * @param context the context
      * @return true if battery is low or false if battery in not low
      */
-    public static boolean getIfLowBatteryLevel(Context context) {
+    public static boolean isBatteryLevelLow(Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
@@ -714,13 +693,13 @@ public class Utils {
      * @return Returns a Json object
      */
     @Nullable
-    public static JSONObject createJsonObject(String response) {
+    public static JSONObject createJsonObject(@NonNull String response) {
         try {
             return new JSONObject(response);
         } catch (JSONException e) {
             Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
+            return null;
         }
-        return null;
     }
 
     @Nullable
@@ -750,6 +729,11 @@ public class Utils {
 
     public static boolean isFlavor(String flavor) {
         return BuildConfig.FLAVOR.equals(flavor);
+    }
+
+    @NonNull
+    public static String getModifierNonDefault(String modifier) {
+        return modifier.equals(Modifier.DEFAULT_MODIFIER) ? "" : modifier;
     }
 }
 

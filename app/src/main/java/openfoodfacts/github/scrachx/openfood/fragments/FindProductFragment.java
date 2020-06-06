@@ -17,6 +17,7 @@ import org.apache.commons.lang.StringUtils;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
@@ -66,7 +67,7 @@ public class FindProductFragment extends NavigationBaseFragment {
             return;
         }
 
-        if (barCodeTxt.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barCodeTxt)) {
+        if (barCodeTxt.length() <= 2 && !ApiFields.Defaults.DEBUG_BARCODE.equals(barCodeTxt)) {
             binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeNotValid));
             return;
         }

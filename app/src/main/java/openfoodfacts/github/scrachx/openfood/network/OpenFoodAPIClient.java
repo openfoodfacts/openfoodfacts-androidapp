@@ -338,10 +338,10 @@ public class OpenFoodAPIClient {
         HashMap<String, String> map = offlineSavedProduct.getProductDetailsMap();
 
         HistoryProduct hp = new HistoryProduct(offlineSavedProduct.getName(),
-            map.get(OfflineSavedProduct.KEYS.PARAM_BRAND),
+            map.get(ApiFields.Keys.ADD_BRANDS),
             offlineSavedProduct.getImageFrontLocalUrl(),
             offlineSavedProduct.getBarcode(),
-            map.get(OfflineSavedProduct.KEYS.PARAM_QUANTITY),
+            map.get(ApiFields.Keys.QUANTITY),
             null);
         if (historyProducts.size() > 0) {
             hp.setId(historyProducts.get(0).getId());
