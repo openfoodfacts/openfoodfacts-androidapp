@@ -353,7 +353,7 @@ public interface OpenFoodAPIService {
     Call<Search> byUnknownNutrient(@Path("UnknownNutrient") String unknownNutrient);
 
     @GET("additive/{Additive}.json")
-    Call<Search> byAdditive(@Path("Additive") String Additive, @Query("fields") String fields);
+    Call<Search> byAdditive(@Path("Additive") String additive, @Query("fields") String fields);
 
     @GET("code/{Code}.json")
     Call<Search> byCode(@Path("Code") String code);
