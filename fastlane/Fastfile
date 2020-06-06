@@ -2,3 +2,90 @@ lane :screenshots do
   capture_android_screenshots
   upload_to_play_store
 end
+
+lane :playstore do
+  gradle(
+    task: 'assemble',
+    build_type: 'Release'
+      )
+  changelog = prompt(
+    text: "Changelog: ",
+    multi_line_end_keyword: "END"
+  )
+  #upload_to_play_store
+  slack(message: 'Successfully distributed a new stable build')
+end
+
+lane :beta do
+  # Adjust the `build_type` and `flavor` params as needed to build the right APK for your setup
+  gradle(
+    task: 'assemble',
+    build_type: 'Release'
+    )
+  changelog = prompt(
+    text: "Changelog: ",
+    multi_line_end_keyword: "END"
+  )
+  upload_to_play_store(track: 'beta')
+  slack(message: 'Successfully distributed a new beta build')
+end
+
+lane :beta_opf do
+  # Adjust the `build_type` and `flavor` params as needed to build the right APK for your setup
+  gradle(
+    flavor: 'opf'
+    task: 'assemble',
+    build_type: 'Release'
+    )
+  changelog = prompt(
+    text: "Changelog: ",
+    multi_line_end_keyword: "END"
+  )
+  upload_to_play_store(track: 'beta')
+  slack(message: 'Successfully distributed a new beta build')
+end
+
+lane :beta_opff do
+  # Adjust the `build_type` and `flavor` params as needed to build the right APK for your setup
+  gradle(
+    flavor: 'opff'
+    task: 'assemble',
+    build_type: 'Release'
+    )
+  changelog = prompt(
+    text: "Changelog: ",
+    multi_line_end_keyword: "END"
+  )
+  upload_to_play_store(track: 'beta')
+  slack(message: 'Successfully distributed a new beta build')
+end
+
+lane :beta_obf do
+  # Adjust the `build_type` and `flavor` params as needed to build the right APK for your setup
+  gradle(
+    flavor: 'obf'
+    task: 'assemble',
+    build_type: 'Release'
+    )
+  changelog = prompt(
+    text: "Changelog: ",
+    multi_line_end_keyword: "END"
+  )
+  upload_to_play_store(track: 'beta')
+  slack(message: 'Successfully distributed a new beta build')
+end
+
+lane :beta_off do
+  # Adjust the `build_type` and `flavor` params as needed to build the right APK for your setup
+  gradle(
+    flavor: 'off'
+    task: 'assemble',
+    build_type: 'Release'
+    )
+  changelog = prompt(
+    text: "Changelog: ",
+    multi_line_end_keyword: "END"
+  )
+  upload_to_play_store(track: 'beta')
+  slack(message: 'Successfully distributed a new beta build')
+end
