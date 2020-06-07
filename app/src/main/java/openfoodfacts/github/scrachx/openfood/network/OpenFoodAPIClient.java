@@ -88,7 +88,7 @@ public class OpenFoodAPIClient {
     private static final OkHttpClient httpClient = Utils.httpClientBuilder();
     private final OpenFoodAPIService apiService;
     private Context mActivity;
-    private final String FIELDS_TO_FETCH_FACETS = String
+    private static final String FIELDS_TO_FETCH_FACETS = String
         .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags", getLocaleProductNameField());
 
     public OpenFoodAPIClient(Activity activity) {
@@ -418,14 +418,12 @@ public class OpenFoodAPIClient {
 
         apiService.getProductImages(barcode).enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-
+            public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                 onImagesCallback.onImageResponse(true, response.body());
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
                 onImagesCallback.onImageResponse(false, null);
             }
         });
@@ -452,17 +450,18 @@ public class OpenFoodAPIClient {
                     }
 
                     JsonNode body = response.body();
-                    if (!body.isObject()) {
-                    } else if (body.get("status").asText().contains("status not ok")) {
-                        Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
-                        if (imageUploadListener != null) {
-                            imageUploadListener.onFailure(body.get("error").asText());
-                        }
-                    } else {
-                        if (setAsDefault) {
-                            setAsDefaultImage(body);
-                        } else if (imageUploadListener != null) {
-                            imageUploadListener.onSuccess();
+                    if (body.isObject()) {
+                        if (body.get("status").asText().contains("status not ok")) {
+                            Toast.makeText(context, body.get("error").asText(), Toast.LENGTH_LONG).show();
+                            if (imageUploadListener != null) {
+                                imageUploadListener.onFailure(body.get("error").asText());
+                            }
+                        } else {
+                            if (setAsDefault) {
+                                setAsDefaultImage(body);
+                            } else if (imageUploadListener != null) {
+                                imageUploadListener.onSuccess();
+                            }
                         }
                     }
                 }
@@ -795,7 +794,7 @@ public class OpenFoodAPIClient {
      * @param code code of the product
      * @param onEditImageCallback
      */
-    public void unselectImage(String code, ProductImageField field, String language, OnEditImageCallback onEditImageCallback) {
+    public void unSelectImage(String code, ProductImageField field, String language, OnEditImageCallback onEditImageCallback) {
         Map<String, String> imgMap = new HashMap<>();
         addUserInfo(imgMap);
         imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(field, language));

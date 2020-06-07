@@ -455,7 +455,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
             return;
         }
         startRefresh(getString(R.string.unselect_image));
-        client.unselectImage(getProduct().getCode(), getSelectedType(), getCurrentLanguage(), (value, response) -> {
+        client.unSelectImage(getProduct().getCode(), getSelectedType(), getCurrentLanguage(), (value, response) -> {
             if (value) {
                 setResult(RESULTCODE_MODIFIED);
             }
