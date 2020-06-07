@@ -73,7 +73,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
-import static openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService.PRODUCT_API_COMMENT;
 
 /**
  * API Client for all API callbacks
@@ -82,6 +81,7 @@ public class OpenFoodAPIClient {
     public static final String TEXT_PLAIN = "text/plain";
     private static final String USER_ID = "user_id";
     public static final String PNG_EXT = ".png\"";
+    public static final String PRODUCT_API_COMMENT = "Official Android app";
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();

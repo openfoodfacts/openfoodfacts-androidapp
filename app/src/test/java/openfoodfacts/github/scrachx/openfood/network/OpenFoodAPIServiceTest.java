@@ -25,7 +25,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
-import static openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService.PRODUCT_API_COMMENT;
+import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.PRODUCT_API_COMMENT;
 import static org.junit.Assert.*;
 
 public class OpenFoodAPIServiceTest {
