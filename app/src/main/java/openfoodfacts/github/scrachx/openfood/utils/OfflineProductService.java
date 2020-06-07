@@ -137,7 +137,7 @@ public class OfflineProductService {
 
         try {
             State state = apiClient
-                .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance()))
+                .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
                 .blockingGet();
 
             boolean isResponseOk = state.getStatus() == 1;
