@@ -28,6 +28,6 @@ public interface RobotoffAPIService {
     Single<InsightAnnotationResponse> annotateInsight(
         @Field("insight_id") String insightId,
         @Field("annotation") int annotation,
-        @Header("Authentication") String auth
+        @Header("Authorization") String auth
     );
 }

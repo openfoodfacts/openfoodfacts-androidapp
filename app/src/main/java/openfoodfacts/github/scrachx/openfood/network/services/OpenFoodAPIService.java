@@ -32,8 +32,6 @@ import retrofit2.http.Url;
  * All REST methods such as GET, POST, PUT, UPDATE, DELETE can be stated in here.
  */
 public interface OpenFoodAPIService {
-    String PRODUCT_API_COMMENT = "Official Android app";
-
     @GET("api/v0/product/{barcode}.json")
     Call<State> getProductByBarcode(@Path("barcode") String barcode,
                                     @Query("fields") String fields,
