@@ -1,4 +1,9 @@
 lane :screenshots do
   capture_android_screenshots
-  upload_to_play_store
+end
+
+desc "Capture Screen"
+lane :capture_screen do
+  gradle(task: "clean assembleScreenshots assembleAndroidTest")
+  screengrab
 end
