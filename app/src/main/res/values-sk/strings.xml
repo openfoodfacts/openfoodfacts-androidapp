@@ -66,6 +66,7 @@
         <item>% Denných hodnôt</item>
         <item>Medzinárodná jednotka</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -273,6 +274,8 @@
     <string name="nutrition_carbohydrate">Sacharidy</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Energetická hodnota</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Tuk</string>
     <string name="nutrition_fiber">Vláknina</string>
