@@ -259,8 +259,8 @@
     <string name="nutrition_carbohydrate">탄수화물</string>
     <string name="nutrition_cholesterol">콜레스테롤</string>
     <string name="nutrition_energy">에너지</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">칼로리 에너지 (kcal)</string>
+    <string name="nutrition_energy_kj">줄 에너지 (kJ)</string>
     <string name="nutrition_energy_short_name">에너지</string>
     <string name="nutrition_fat">지방</string>
     <string name="nutrition_fiber">식이 섬유</string>
@@ -695,7 +695,7 @@
     <string name="product_question_negative_response">아니요</string>
     <string name="product_question_ambiguous_response">잘 모르곘습니다.</string>
     <string name="product_question_submit_message">기여해주셔서 감사합니다!</string>
-    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
+    <string name="error_nutrient_entry">값은 숫자 여야한다. 예 : &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">1회 제공량은 양의 값이어야 합니다.</string>
     <string name="error_in_nutrient_data">일부 영양소 값이 유효하지 않습니다. 위의 필드를 오류 마커로 수정하십시오.</string>
     <string name="go_to_full_product_page">제품으로 이동</string>
