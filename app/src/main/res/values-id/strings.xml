@@ -259,8 +259,8 @@
     <string name="nutrition_carbohydrate">Karbohidrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
     <string name="nutrition_energy">Energi</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Energi dalam kalori (kkal)</string>
+    <string name="nutrition_energy_kj">Energi dalam joule (kJ)</string>
     <string name="nutrition_energy_short_name">Energi</string>
     <string name="nutrition_fat">Lemak</string>
     <string name="nutrition_fiber">Serat makanan</string>
