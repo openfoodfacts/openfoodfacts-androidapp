@@ -701,7 +701,7 @@
     <string name="product_question_negative_response">No</string>
     <string name="product_question_ambiguous_response">No estoy seguro/a</string>
     <string name="product_question_submit_message">¡Gracias por tu contribución!</string>
-    <string name="error_nutrient_entry">El valor debe ser numérico y puede empezar con &lt;, &gt; o ~. Ejemplo: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">El valor de tamaño de porción debe ser un valor positivo</string>
     <string name="error_in_nutrient_data">Algunos valores nutricionales no son válidos. Por favor, corrige los campos anteriores con marcador de error</string>
     <string name="go_to_full_product_page">Ir al producto</string>
