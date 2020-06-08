@@ -238,7 +238,7 @@ dependencies {
     }
 
     // UI Component : Material Drawer
-    implementation("com.mikepenz:materialdrawer:7.0.0") {
+    implementation("com.mikepenz:materialdrawer:8.1.1") {
         transitive = true
     }
 
