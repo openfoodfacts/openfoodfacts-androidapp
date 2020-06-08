@@ -274,8 +274,8 @@
     <string name="nutrition_carbohydrate">פחמימות</string>
     <string name="nutrition_cholesterol">כולסטרול</string>
     <string name="nutrition_energy">אנרגיה</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">אנרגיה בקלוריות (קק״ל)</string>
+    <string name="nutrition_energy_kj">אנרגיה בג׳אול (kJ)</string>
     <string name="nutrition_energy_short_name">אנרגיה</string>
     <string name="nutrition_fat">שומן</string>
     <string name="nutrition_fiber">סיבים תזונתיים</string>
