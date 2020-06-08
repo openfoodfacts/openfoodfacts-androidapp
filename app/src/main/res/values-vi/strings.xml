@@ -695,7 +695,7 @@
     <string name="product_question_negative_response">Không</string>
     <string name="product_question_ambiguous_response">Không chắc</string>
     <string name="product_question_submit_message">Cảm ơn sự đóng góp của bạn!</string>
-    <string name="error_nutrient_entry">Giá trị phải là số và có thể bắt đầu bằng &lt;, &gt; hoặc ~. Ví dụ: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Giá trị phải là giá trị dương</string>
     <string name="error_in_nutrient_data">Một số giá trị dinh dưỡng không hợp lệ. Xin vui lòng sửa các trường trên với dấu đánh dấu lỗi</string>
     <string name="go_to_full_product_page">Go to product</string>
