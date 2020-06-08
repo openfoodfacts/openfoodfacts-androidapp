@@ -65,10 +65,12 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 }
             }
         };
-        //the service will load server resources only if newer than already downloaded...
+
+        // The service will load server resources only if newer than already downloaded...
         Intent intent = new Intent(context, LoadTaxonomiesService.class);
-        intent.putExtra("receiver", receiver);
+        intent.putExtra(LoadTaxonomiesService.RECEIVER_KEY, receiver);
         context.startService(intent);
+
         if (firstRun) {
             new Handler().postDelayed(view::navigateToMainActivity, 6000);
         } else {

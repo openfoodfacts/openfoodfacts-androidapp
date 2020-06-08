@@ -22,6 +22,7 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class LoadTaxonomiesService extends IntentService {
+    public static final String RECEIVER_KEY = "receiver";
     private ProductRepository productRepository;
     private SharedPreferences settings;
     private ResultReceiver receiver;
@@ -38,7 +39,7 @@ public class LoadTaxonomiesService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         productRepository = (ProductRepository) ProductRepository.getInstance();
         settings = getSharedPreferences("prefs", 0);
-        receiver = intent == null ? null : intent.getParcelableExtra("receiver");
+        receiver = intent == null ? null : intent.getParcelableExtra(RECEIVER_KEY);
         try {
             doTask();
         } catch (Exception throwable) {

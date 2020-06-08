@@ -12,11 +12,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.UUID;
 
-public class Installation {
+public class InstallationUtils {
     private static final String KEY_INSTALLATION = "INSTALLATION";
     private static String sID = null;
 
-    private Installation(){
+    private InstallationUtils() {
         //Helper class
     }
 
@@ -24,8 +24,9 @@ public class Installation {
         if (sID == null || sID.isEmpty()) {
             File installation = new File(context.getFilesDir(), KEY_INSTALLATION);
             try {
-                if (!installation.exists())
+                if (!installation.exists()) {
                     writeInstallationFile(installation);
+                }
                 sID = readInstallationFile(installation);
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -35,7 +36,7 @@ public class Installation {
     }
 
     private static String readInstallationFile(File installation) throws IOException {
-        try(RandomAccessFile f = new RandomAccessFile(installation, "r")) {
+        try (RandomAccessFile f = new RandomAccessFile(installation, "r")) {
             byte[] bytes = new byte[(int) f.length()];
             f.readFully(bytes);
             return new String(bytes);
@@ -44,7 +45,7 @@ public class Installation {
 
     @SuppressWarnings("squid:S2119")
     private static void writeInstallationFile(File installation) throws IOException {
-        try(  FileOutputStream out = new FileOutputStream(installation)) {
+        try (FileOutputStream out = new FileOutputStream(installation)) {
             String id = UUID.randomUUID().toString();
             Random random = new Random();//NO-SONAR ok here
             random.setSeed(1000);
@@ -57,7 +58,7 @@ public class Installation {
     public static String getHashedString(String s) {
         try {
             // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            MessageDigest digest = MessageDigest.getInstance("MD5");
             digest.update(s.getBytes());
             byte[] messageDigest = digest.digest();
 
@@ -65,9 +66,8 @@ public class Installation {
             StringBuilder hexString = new StringBuilder();
             for (byte b : messageDigest) hexString.append(Integer.toHexString(0xFF & b));
             return hexString.toString();
-
         } catch (NoSuchAlgorithmException e) {
-            Log.e(Installation.class.getSimpleName(),"getHashedString "+s,e);
+            Log.e(InstallationUtils.class.getSimpleName(), "getHashedString " + s, e);
         }
         return "";
     }

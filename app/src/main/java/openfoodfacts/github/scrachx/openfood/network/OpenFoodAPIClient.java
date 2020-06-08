@@ -59,7 +59,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.Installation;
+import openfoodfacts.github.scrachx.openfood.views.InstallationUtils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import retrofit2.Call;
@@ -135,7 +135,7 @@ public class OpenFoodAPIClient {
     public static String getCommentToUpload(String login) {
         String comment = PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance());
         if (login.isEmpty()) {
-            comment += " ( Added by " + Installation.id(OFFApplication.getInstance()) + " )";
+            comment += " ( Added by " + InstallationUtils.id(OFFApplication.getInstance()) + " )";
         }
         return comment;
     }
