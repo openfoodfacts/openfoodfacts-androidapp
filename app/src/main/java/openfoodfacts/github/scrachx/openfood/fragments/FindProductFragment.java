@@ -47,8 +47,8 @@ public class FindProductFragment extends NavigationBaseFragment {
         api = new OpenFoodAPIClient(getActivity());
         binding.buttonBarcode.setOnClickListener(v -> onSearchBarcodeProduct());
 
-        if (getActivity().getIntent() != null) {
-            String barCode = getActivity().getIntent().getStringExtra(BARCODE);
+        if (requireActivity().getIntent() != null) {
+            String barCode = requireActivity().getIntent().getStringExtra(BARCODE);
             if (StringUtils.isNotEmpty(barCode)) {
                 searchBarcode(barCode);
             }
@@ -56,7 +56,7 @@ public class FindProductFragment extends NavigationBaseFragment {
     }
 
     private void onSearchBarcodeProduct() {
-        Utils.hideKeyboard(getActivity());
+        Utils.hideKeyboard(requireActivity());
 
         final String barCodeTxt = ((EditText) binding.editTextBarcode).getText().toString();
         if (barCodeTxt.isEmpty()) {
