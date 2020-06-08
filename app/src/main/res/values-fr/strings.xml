@@ -264,8 +264,8 @@
     <string name="nutrition_carbohydrate">Glucides</string>
     <string name="nutrition_cholesterol">Cholestérol</string>
     <string name="nutrition_energy">Énergie</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Énergie en kilocalories (kcal)</string>
+    <string name="nutrition_energy_kj">Énergie en kilojoules (kJ)</string>
     <string name="nutrition_energy_short_name">Énergie</string>
     <string name="nutrition_fat">Matières grasses</string>
     <string name="nutrition_fiber">Fibres alimentaires</string>
@@ -701,7 +701,7 @@
     <string name="product_question_negative_response">Non</string>
     <string name="product_question_ambiguous_response">Pas sûr(e)</string>
     <string name="product_question_submit_message">Un grand merci pour votre contribution !</string>
-    <string name="error_nutrient_entry">La valeur doit être numérique et peut commencer par &lt;, &gt; or ~. Exemple : &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">La valeur doit être numérique et peut commencer par &lt;, &gt; ou ~. Par exemple : &quot;&gt;1.5&quot; ou &quot;~2,0&quot;</string>
     <string name="error_nutrient_serving_data">La valeur de la taille de la portion doit être une valeur positive</string>
     <string name="error_in_nutrient_data">Certaines valeurs nutritives ne sont pas valides. Veuillez corriger les champs ci-dessus avec un marqueur d\'erreur</string>
     <string name="go_to_full_product_page">Aller au produit</string>
