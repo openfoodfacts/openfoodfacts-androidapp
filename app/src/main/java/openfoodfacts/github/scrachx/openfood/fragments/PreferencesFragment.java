@@ -247,7 +247,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Log.e(PreferencesFragment.class.getSimpleName(), "onCreatePreferences", e);
         }
 
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opff")) {
+        if (Utils.isFlavor(OFFApplication.OFF, OFFApplication.OBF, OFFApplication.OPFF)) {
             new GetAnalysisTagConfigs(this).execute(daoSession);
         } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();

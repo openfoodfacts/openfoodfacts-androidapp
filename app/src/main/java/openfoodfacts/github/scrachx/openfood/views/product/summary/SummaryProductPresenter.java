@@ -170,7 +170,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
 
     @Override
     public void loadAnalysisTags() {
-        if (Utils.isFlavor(OFFApplication.OFF) || Utils.isFlavor(OFFApplication.OBF) || Utils.isFlavor(OFFApplication.OPFF)) {
+        if (Utils.isFlavor(OFFApplication.OFF, OFFApplication.OBF, OFFApplication.OPFF)) {
             List<String> analysisTags = product.getIngredientsAnalysisTags();
             final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             if (analysisTags != null && !analysisTags.isEmpty()) {
