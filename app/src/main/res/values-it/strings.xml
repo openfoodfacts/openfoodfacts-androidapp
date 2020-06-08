@@ -264,8 +264,8 @@
     <string name="nutrition_carbohydrate">Carboidrati</string>
     <string name="nutrition_cholesterol">Colesterolo</string>
     <string name="nutrition_energy">Energia</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Energia in calorie (kcal)</string>
+    <string name="nutrition_energy_kj">Energia in joule (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Grassi</string>
     <string name="nutrition_fiber">Fibra dietetica</string>
