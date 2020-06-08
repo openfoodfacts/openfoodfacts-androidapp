@@ -701,7 +701,7 @@
     <string name="product_question_negative_response">Nee</string>
     <string name="product_question_ambiguous_response">Ik weet het niet zeker</string>
     <string name="product_question_submit_message">Bedankt voor je bijdrage!</string>
-    <string name="error_nutrient_entry">De waarde moet numeriek zijn en kan beginnen met &lt;, &gt; or ~. Voorbeeld: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">De waarde van de dienende grootte moet een positieve waarde zijn</string>
     <string name="error_in_nutrient_data">Sommige voedingswaarden zijn niet geldig. Corrigeer bovenstaande velden met een foutmarkering</string>
     <string name="go_to_full_product_page">Ga naar product</string>
