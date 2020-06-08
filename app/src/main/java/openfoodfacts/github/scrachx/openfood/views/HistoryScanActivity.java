@@ -93,7 +93,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         setTitle(getString(R.string.scan_history_drawer));
 
-        setSupportActionBar(binding.toolbar.toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
