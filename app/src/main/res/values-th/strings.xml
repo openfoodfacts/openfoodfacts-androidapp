@@ -51,6 +51,7 @@
         <item>% DV</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -259,6 +260,8 @@
     <string name="nutrition_carbohydrate">คาร์โบไฮเดรต</string>
     <string name="nutrition_cholesterol">คอเลสเตอรอล</string>
     <string name="nutrition_energy">พลังงาน</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">พลังงาน</string>
     <string name="nutrition_fat">ไขมัน</string>
     <string name="nutrition_fiber">เส้นใยอาหาร</string>
