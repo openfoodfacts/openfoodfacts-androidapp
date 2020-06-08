@@ -701,7 +701,7 @@
     <string name="product_question_negative_response">Hayır</string>
     <string name="product_question_ambiguous_response">Emin değilim</string>
     <string name="product_question_submit_message">Katkınız için teşekkür ederiz!</string>
-    <string name="error_nutrient_entry">Değer sayısal olmalıdır ve &lt;, &gt; veya ~ ile başlayabilir. Örnek: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Porsiyon büyüklüğü pozitif bir değer olmalıdır</string>
     <string name="error_in_nutrient_data">Bazı besin değerleri geçerli değil. Lütfen yukarıda hatalı olarak işaretlenmiş alanları düzeltin</string>
     <string name="go_to_full_product_page">Ürüne git</string>
