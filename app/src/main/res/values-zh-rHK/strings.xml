@@ -51,6 +51,7 @@
         <item>每日攝取百分比</item>
         <item>國際單位</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -258,6 +259,8 @@
     <string name="nutrition_carbohydrate">碳水化合物</string>
     <string name="nutrition_cholesterol">膽固醇</string>
     <string name="nutrition_energy">能量</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">能量</string>
     <string name="nutrition_fat">脂肪</string>
     <string name="nutrition_fiber">膳食纖維</string>
