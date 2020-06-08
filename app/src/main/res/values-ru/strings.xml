@@ -274,8 +274,8 @@
     <string name="nutrition_carbohydrate">Углеводы</string>
     <string name="nutrition_cholesterol">Холестерин</string>
     <string name="nutrition_energy">Энергетическая ценность</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Энергия в калориях (ккал)</string>
+    <string name="nutrition_energy_kj">Энергия в Джоулях (кДж)</string>
     <string name="nutrition_energy_short_name">Энергетическая ценность</string>
     <string name="nutrition_fat">Жир</string>
     <string name="nutrition_fiber">Пищевые волокна</string>
