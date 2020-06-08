@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_linearlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".views.LoginActivity">
 
         <include
             android:id="@+id/toolbar_layout"
@@ -33,44 +34,40 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
             app:layout_constraintVertical_bias="0.3">
 
+            <openfoodfacts.github.scrachx.openfood.views.TipBox
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/hintLogin"
+                app:startIconDrawable="@drawable/ic_person_grey_24dp">
 
-                <openfoodfacts.github.scrachx.openfood.utils.CustomEditTextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/loginInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:drawablePadding="10dip"
-                    android:ems="10"
-                    android:hint="@string/hintLogin"
                     android:inputType="text"
-                    android:maxLines="1"
-                    app:drawableLeftCompat="@drawable/ic_person_grey_24dp" />
+                    android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/ic_vpn_key_grey_24dp">
 
-                <openfoodfacts.github.scrachx.openfood.utils.CustomEditTextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/pass_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginRight="@dimen/spacing_normal"
-                    android:drawablePadding="10dip"
-                    android:ems="10"
                     android:hint="@string/hintPass"
                     android:inputType="textPassword"
-                    android:maxLines="1"
-                    app:drawableLeftCompat="@drawable/ic_vpn_key_grey_24dp" />
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
