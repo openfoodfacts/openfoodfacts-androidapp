@@ -32,6 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.journeyapps.barcodescanner.DecoratedBarcodeView
@@ -52,6 +54,7 @@
                 android:id="@+id/toggle_flash"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_gravity="start"
                 android:layout_margin="@dimen/spacing_small"
                 app:srcCompat="@drawable/ic_flash_off_white_24dp"
                 tools:ignore="ContentDescription" />
@@ -96,6 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
@@ -347,6 +352,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/quick_view_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

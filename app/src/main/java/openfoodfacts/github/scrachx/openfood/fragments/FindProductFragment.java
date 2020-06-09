@@ -22,7 +22,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
@@ -46,12 +45,10 @@ public class FindProductFragment extends NavigationBaseFragment {
         super.onViewCreated(view, savedInstanceState);
         binding.editTextBarcode.setSelected(false);
         api = new OpenFoodAPIClient(getActivity());
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-
         binding.buttonBarcode.setOnClickListener(v -> onSearchBarcodeProduct());
 
-        if (getActivity().getIntent() != null) {
-            String barCode = getActivity().getIntent().getStringExtra(BARCODE);
+        if (requireActivity().getIntent() != null) {
+            String barCode = requireActivity().getIntent().getStringExtra(BARCODE);
             if (StringUtils.isNotEmpty(barCode)) {
                 searchBarcode(barCode);
             }
@@ -59,7 +56,7 @@ public class FindProductFragment extends NavigationBaseFragment {
     }
 
     private void onSearchBarcodeProduct() {
-        Utils.hideKeyboard(getActivity());
+        Utils.hideKeyboard(requireActivity());
 
         final String barCodeTxt = ((EditText) binding.editTextBarcode).getText().toString();
         if (barCodeTxt.isEmpty()) {
