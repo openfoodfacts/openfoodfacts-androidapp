@@ -56,6 +56,7 @@
         <item>% GKM</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -263,6 +264,8 @@
     <string name="nutrition_carbohydrate">Karbonhidrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
     <string name="nutrition_energy">Enerji</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Enerji</string>
     <string name="nutrition_fat">Yağ</string>
     <string name="nutrition_fiber">Diyet lifi</string>
@@ -698,7 +701,7 @@
     <string name="product_question_negative_response">Hayır</string>
     <string name="product_question_ambiguous_response">Emin değilim</string>
     <string name="product_question_submit_message">Katkınız için teşekkür ederiz!</string>
-    <string name="error_nutrient_entry">Değer sayısal olmalıdır ve &lt;, &gt; veya ~ ile başlayabilir. Örnek: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Porsiyon büyüklüğü pozitif bir değer olmalıdır</string>
     <string name="error_in_nutrient_data">Bazı besin değerleri geçerli değil. Lütfen yukarıda hatalı olarak işaretlenmiş alanları düzeltin</string>
     <string name="go_to_full_product_page">Ürüne git</string>
