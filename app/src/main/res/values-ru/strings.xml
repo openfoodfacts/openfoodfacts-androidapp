@@ -66,6 +66,7 @@
         <item>% РСНП</item>
         <item>МЕ</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -273,6 +274,8 @@
     <string name="nutrition_carbohydrate">Углеводы</string>
     <string name="nutrition_cholesterol">Холестерин</string>
     <string name="nutrition_energy">Энергетическая ценность</string>
+    <string name="nutrition_energy_kcal">Энергия в калориях (ккал)</string>
+    <string name="nutrition_energy_kj">Энергия в Джоулях (кДж)</string>
     <string name="nutrition_energy_short_name">Энергетическая ценность</string>
     <string name="nutrition_fat">Жир</string>
     <string name="nutrition_fiber">Пищевые волокна</string>
@@ -710,7 +713,7 @@
     <string name="product_question_negative_response">Нет</string>
     <string name="product_question_ambiguous_response">Не уверен</string>
     <string name="product_question_submit_message">Спасибо за Ваш вклад!</string>
-    <string name="error_nutrient_entry">Значение должно быть числовым и может начинаться с &lt;, &gt; или ~. Пример: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">Значение должно быть цифровым. Пример: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Размер порции должен быть положительным</string>
     <string name="error_in_nutrient_data">Некоторые значения питательных веществ не допустимы. Исправьте поля выше с маркером ошибки</string>
     <string name="go_to_full_product_page">Перейти к продукту</string>

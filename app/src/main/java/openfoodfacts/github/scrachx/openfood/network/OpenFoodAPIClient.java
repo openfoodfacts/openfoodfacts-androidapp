@@ -81,7 +81,6 @@ public class OpenFoodAPIClient {
     public static final String TEXT_PLAIN = "text/plain";
     private static final String USER_ID = "user_id";
     public static final String PNG_EXT = ".png\"";
-    public static final String PRODUCT_API_COMMENT = "Official Android app";
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
@@ -133,11 +132,32 @@ public class OpenFoodAPIClient {
      * @param login the username
      */
     public static String getCommentToUpload(String login) {
-        String comment = PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance());
-        if (login.isEmpty()) {
-            comment += " ( Added by " + InstallationUtils.id(OFFApplication.getInstance()) + " )";
+        StringBuilder comment;
+        switch (BuildConfig.FLAVOR) {
+            case OFFApplication.OBF:
+                comment = new StringBuilder("Official Open Beauty Facts Android app");
+                break;
+            case OFFApplication.OPFF:
+                comment = new StringBuilder("Official Open Pet Food Facts Android app");
+                break;
+            case OFFApplication.OPF:
+                comment = new StringBuilder("Official Open Products Facts Android app");
+                break;
+            case OFFApplication.OFF:
+            default:
+                comment = new StringBuilder("Official Open Food Facts Android app");
+                break;
         }
-        return comment;
+
+        comment.append(" ").append(Utils.getVersionName(OFFApplication.getInstance()));
+        if (login.isEmpty()) {
+            comment.append(" (Added by ").append(Installation.id(OFFApplication.getInstance())).append(")");
+        }
+        return comment.toString();
+    }
+
+    public static String getCommentToUpload() {
+        return getCommentToUpload("");
     }
 
     public static String getLocaleProductNameField() {
@@ -1004,23 +1024,23 @@ public class OpenFoodAPIClient {
     public void postForNotification(final Context context, final SendProduct product, final ApiCallbacks.OnProductSentCallback productSentCallback) {
 
         if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
-            apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
+            apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), getCommentToUpload())
                 .enqueue(createNotifcationCallback(context, product, productSentCallback));
         } else if (product.getName().equals("") && product.getBrands().equals("")) {
             apiService
-                .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
+                .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), getCommentToUpload())
                 .enqueue(createNotifcationCallback(context, product, productSentCallback));
         } else if (product.getName().equals("") && product.getQuantity() == null) {
             apiService
-                .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
+                .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), getCommentToUpload())
                 .enqueue(createNotifcationCallback(context, product, productSentCallback));
         } else if (product.getBrands().equals("") && product.getQuantity() == null) {
             apiService
-                .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), PRODUCT_API_COMMENT)
+                .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), getCommentToUpload())
                 .enqueue(createNotifcationCallback(context, product, productSentCallback));
         } else {
             apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
-                .getUserId(), product.getPassword(), PRODUCT_API_COMMENT).enqueue(createNotifcationCallback(context, product, productSentCallback));
+                .getUserId(), product.getPassword(), getCommentToUpload()).enqueue(createNotifcationCallback(context, product, productSentCallback));
         }
     }
 

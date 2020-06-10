@@ -282,6 +282,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         break;
                     case ITEM_SEARCH_BY_CODE:
                         fragment = new FindProductFragment();
+                        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
                     case ITEM_CATEGORIES:
                         startActivity(CategoryActivity.getIntent(this));

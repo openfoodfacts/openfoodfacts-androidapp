@@ -56,6 +56,7 @@
         <item>crwdns112984:0crwdne112984:0</item>
         <item>crwdns112986:0crwdne112986:0</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -263,6 +264,8 @@
     <string name="nutrition_carbohydrate">crwdns113662:0crwdne113662:0</string>
     <string name="nutrition_cholesterol">crwdns113666:0crwdne113666:0</string>
     <string name="nutrition_energy">crwdns113670:0crwdne113670:0</string>
+    <string name="nutrition_energy_kcal">crwdns125848:0crwdne125848:0</string>
+    <string name="nutrition_energy_kj">crwdns125850:0crwdne125850:0</string>
     <string name="nutrition_energy_short_name">crwdns113672:0crwdne113672:0</string>
     <string name="nutrition_fat">crwdns113674:0crwdne113674:0</string>
     <string name="nutrition_fiber">crwdns113678:0crwdne113678:0</string>
@@ -697,7 +700,7 @@
     <string name="product_question_negative_response">crwdns116174:0crwdne116174:0</string>
     <string name="product_question_ambiguous_response">crwdns116176:0crwdne116176:0</string>
     <string name="product_question_submit_message">crwdns116178:0crwdne116178:0</string>
-    <string name="error_nutrient_entry">crwdns116154:0crwdne116154:0</string>
+    <string name="error_nutrient_entry">crwdns125852:0crwdne125852:0</string>
     <string name="error_nutrient_serving_data">crwdns116156:0crwdne116156:0</string>
     <string name="error_in_nutrient_data">crwdns116158:0crwdne116158:0</string>
     <string name="go_to_full_product_page">crwdns119586:0crwdne119586:0</string>
