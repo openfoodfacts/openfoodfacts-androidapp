@@ -209,18 +209,13 @@ public class Nutriments implements Serializable {
         }
     }
 
+    @NonNull
     public String getEnergyKcalValue(final boolean isDataPerServing) {
-        String value;
         if (isDataPerServing) {
-            value = this.getServing(ENERGY_KCAL);
+            return this.getServing(ENERGY_KCAL);
         } else {
-            value = this.get100g(ENERGY_KCAL);
+            return this.get100g(ENERGY_KCAL);
         }
-        if (StringUtils.isBlank(value)) {
-            return value;
-        }
-        // TODO: kcals are returned as kj, so we need to convert
-        return String.valueOf(UnitUtils.convertToKiloCalories(Integer.parseInt(value), Units.ENERGY_KJ));
     }
 
     @Nullable
