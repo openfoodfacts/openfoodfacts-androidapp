@@ -31,6 +31,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -89,7 +90,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     public void onCreatePreferences(Bundle bundle, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
-        context = getContext();
+        context = requireContext();
 
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
@@ -127,11 +128,18 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        Preference deleteSearchHistoryButton = findPreference("deleteSearchHistoryPreference");
-        deleteSearchHistoryButton.setOnPreferenceClickListener(preference -> {
-            Toast.makeText(getContext(), getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show();
-            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
-            suggestions.clearHistory();
+        findPreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
+            new MaterialAlertDialogBuilder(context)
+                .setMessage(R.string.search_history_pref_dialog_content)
+                .setPositiveButton(R.string.delete_txt, (dialog, which) -> {
+                    Toast.makeText(getContext(), getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show();
+                    SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
+                    suggestions.clearHistory();
+                })
+                .setNeutralButton(R.string.dialog_cancel, (dialog, which) -> {
+                })
+                .show();
+
             return true;
         });
 
