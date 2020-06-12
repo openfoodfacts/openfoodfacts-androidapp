@@ -1,9 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.net.Uri;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -21,20 +19,17 @@ import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 
 public class IngredientAnalysisRecyclerAdapter extends RecyclerView.Adapter<IngredientAnalysisRecyclerAdapter.IngredientAnalysisViewHolder> implements CustomTabActivityHelper.ConnectionCallback {
     private final Activity activity;
-    private final Context mContext;
     private final List<ProductIngredient> productIngredients;
 
-    public IngredientAnalysisRecyclerAdapter(Context context, List<ProductIngredient> productIngredients, Activity activity) {
+    public IngredientAnalysisRecyclerAdapter(List<ProductIngredient> productIngredients, Activity activity) {
         this.productIngredients = productIngredients;
-        this.mContext = context;
         this.activity = activity;
     }
 
     @NonNull
     @Override
     public IngredientAnalysisViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext)
-            .inflate(R.layout.ingredient_analysis_list_item, parent, false);
+        View view = activity.getLayoutInflater().inflate(R.layout.ingredient_analysis_list_item, parent, false);
         return new IngredientAnalysisViewHolder(view);
     }
 
@@ -46,12 +41,12 @@ public class IngredientAnalysisRecyclerAdapter extends RecyclerView.Adapter<Ingr
         holder.tvIngredientName.setText(name);
         holder.tvIngredientName.setOnClickListener(view -> {
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-            customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + mContext.getPackageName()));
-            CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(mContext.getString(R.string.website) + "ingredient/" + id), new WebViewFallback());
+            customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + activity.getPackageName()));
+            CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(activity.getString(R.string.website) + "ingredient/" + id), new WebViewFallback());
         });
     }
 
-    public class IngredientAnalysisViewHolder extends RecyclerView.ViewHolder {
+    public static class IngredientAnalysisViewHolder extends RecyclerView.ViewHolder {
         final TextView tvIngredientName;
 
         public IngredientAnalysisViewHolder(View itemView) {
