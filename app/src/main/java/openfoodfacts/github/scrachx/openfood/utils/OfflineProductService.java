@@ -99,9 +99,9 @@ public class OfflineProductService {
             }
         }
         if (includeImages) {
-            return OfflineProductService.getListOfflineProducts().size() > 0;
+            return !OfflineProductService.getListOfflineProducts().isEmpty();
         }
-        return OfflineProductService.getListOfflineProductsWithoutDataSynced().size() > 0;
+        return !OfflineProductService.getListOfflineProductsWithoutDataSynced().isEmpty();
     }
 
     /**
