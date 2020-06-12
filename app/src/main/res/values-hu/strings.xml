@@ -56,6 +56,7 @@
         <item>% DV</item>
         <item>NE</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -219,6 +220,8 @@
     <string name="title_info_dialog">Hogyan működik?</string>
     <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküldheti őket.</string>
     <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Engedély információk</string>
     <string name="permission_denied">Kérem, aktiválja az engedélyt a beállításokban</string>
     <string name="info_download_data_connection">Bizonyos adatokat le kell töltenie, hogy ez a funkció működjön. Kérem, aktiválja az internet kapcsolatot.</string>
@@ -261,6 +264,8 @@
     <string name="nutrition_carbohydrate">Szénhidrát</string>
     <string name="nutrition_cholesterol">Koleszterin</string>
     <string name="nutrition_energy">Energia</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Zsír</string>
     <string name="nutrition_fiber">Élelmi rost</string>
@@ -573,7 +578,7 @@
     <string name="skip_ingredients">Túl rossz\n
 Összetevők kihagyása</string>
     <string name="traces">Nyomokban</string>
-    <string name="traces_hint">Adja hozzá az összetevőket, amelyek a következőképpen vannak megemlítve: „Nyomokban tartalmazhat”, „... (is) felhasználó üzemben készült”, stb.\nPéldák: Tej, Glutén, Diófélék</string>
+    <string name="traces_hint">Adja hozzá az összetevőket, amelyek a következőképpen vannak megemlítve: „Nyomokban tartalmazhat”, „… (is) felhasználó üzemben készült”, stb.\nPéldák: Tej, Glutén, Diófélék</string>
     <string name="nutrition_facts_not_specified">Nincsenek megadva tápértékadatok a termékhez.</string>
     <string name="nutrition_facts_picture">Tápértékadatok képe</string>
     <string name="front_short_picture">Elölnézet</string>
@@ -623,13 +628,13 @@
     <string name="infants">Csecsemők</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Kisgyermekek</string>
-    <string name="toddlers_age">1-2</string>
+    <string name="toddlers_age">1–2</string>
     <string name="children">Gyerekek</string>
-    <string name="children_age">3-9</string>
+    <string name="children_age">3–9</string>
     <string name="adolescents">Serdülők</string>
-    <string name="adolescents_age">10-17</string>
+    <string name="adolescents_age">10–17</string>
     <string name="adults">Felnőttek</string>
-    <string name="adults_age">18-64</string>
+    <string name="adults_age">18–64</string>
     <string name="elderly">Idősek</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">A legtöbb ember\n (több mint 50%)</string>
@@ -697,7 +702,7 @@
     <string name="product_question_negative_response">Nem</string>
     <string name="product_question_ambiguous_response">Nem tudom</string>
     <string name="product_question_submit_message">Köszönjük a hozzájárulását!</string>
-    <string name="error_nutrient_entry">Az értéknek számnak kell lennie, és &lt;, &gt; vagy ~ értékkel kezdődhet. Példa: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Az adag pozitív érték kell legyen</string>
     <string name="error_in_nutrient_data">Néhány tápanyagérték nem érvényes. Kérjük, javítsa ki a fenti hibával jelzett mezőket.</string>
     <string name="go_to_full_product_page">Ugrás a termékre</string>

@@ -100,12 +100,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
                         imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
                         imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.NUTRITION, product));
 
-                        openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
-                            @Override
-                            public void onEditResponse(boolean value, String response) {
-                                displaySetImageName(response);
-                            }
-                        });
+                        openFoodAPIClient.editImage(product.getCode(), imgMap, (value, response) -> displaySetImageName(response));
                         break;
 
                     case R.id.set_front_image:
@@ -113,12 +108,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
                         imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
                         imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.FRONT, product));
 
-                        openFoodAPIClient.editImage(product.getCode(), imgMap, new OpenFoodAPIClient.OnEditImageCallback() {
-                            @Override
-                            public void onEditResponse(boolean value, String response) {
-                                displaySetImageName(response);
-                            }
-                        });
+                        openFoodAPIClient.editImage(product.getCode(), imgMap, (value, response) -> displaySetImageName(response));
                         break;
 
                     case R.id.report_image:

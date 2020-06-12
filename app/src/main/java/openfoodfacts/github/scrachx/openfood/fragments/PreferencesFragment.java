@@ -31,6 +31,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -47,6 +48,8 @@ import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
@@ -66,8 +69,6 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
 
@@ -89,7 +90,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     public void onCreatePreferences(Bundle bundle, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
-        context = getContext();
+        context = requireContext();
 
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
@@ -127,11 +128,18 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        Preference deleteSearchHistoryButton = findPreference("deleteSearchHistoryPreference");
-        deleteSearchHistoryButton.setOnPreferenceClickListener(preference -> {
-            Toast.makeText(getContext(), getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show();
-            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
-            suggestions.clearHistory();
+        findPreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
+            new MaterialAlertDialogBuilder(context)
+                .setMessage(R.string.search_history_pref_dialog_content)
+                .setPositiveButton(R.string.delete_txt, (dialog, which) -> {
+                    Toast.makeText(getContext(), getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show();
+                    SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
+                    suggestions.clearHistory();
+                })
+                .setNeutralButton(R.string.dialog_cancel, (dialog, which) -> {
+                })
+                .show();
+
             return true;
         });
 
@@ -406,14 +414,14 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
-        private final LoadToast lt = new LoadToast(getActivity());
+        private final LoadToast lt = new LoadToast(requireActivity());
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            lt.setText(getActivity().getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.blue));
-            lt.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            lt.setText(requireActivity().getString(R.string.toast_retrieving));
+            lt.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.blue));
+            lt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
             lt.show();
         }
 

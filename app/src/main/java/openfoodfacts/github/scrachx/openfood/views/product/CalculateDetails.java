@@ -22,16 +22,18 @@ import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.Units;
+import openfoodfacts.github.scrachx.openfood.utils.Modifier;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.CalculatedNutrimentsGridAdapter;
 
 import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
-import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY;
+import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY_KCAL;
+import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY_KJ;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.FAT;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.FAT_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.MINERALS_MAP;
@@ -60,18 +62,20 @@ public class CalculateDetails extends BaseActivity {
         setContentView(R.layout.calculate_details);
         setTitle(getString(R.string.app_name_long));
         toolbar = findViewById(R.id.toolbar1);
+        result = findViewById(R.id.result_text_view);
+        nutrimentsRecyclerView = findViewById(R.id.nutriments_recycler_view_calc);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        result = findViewById(R.id.result_text_view);
-        Intent i = getIntent();
-        p = (Product) i.getSerializableExtra("sampleObject");
-        spinnervalue = i.getStringExtra("spinnervalue");
-        weight = i.getStringExtra("weight");
+        final Intent intent = getIntent();
+
+        p = (Product) intent.getSerializableExtra("sampleObject");
+        spinnervalue = intent.getStringExtra("spinnervalue");
+        weight = intent.getStringExtra("weight");
         value = Float.parseFloat(weight);
         nutriments = p.getNutriments();
         nutrimentListItems = new ArrayList<>();
-        nutrimentsRecyclerView = findViewById(R.id.nutriments_recycler_view_calc);
         result.setText(getString(R.string.display_fact, weight + " " + spinnervalue));
         nutrimentsRecyclerView.setHasFixedSize(true);
 
@@ -89,13 +93,23 @@ public class CalculateDetails extends BaseActivity {
         nutrimentListItems.add(new NutrimentListItem(ProductUtils.isPerServingInLiter(p)));
 
         // Energy
-        Nutriments.Nutriment energy = nutriments.get(ENERGY);
-        if (energy != null) {
-            nutrimentListItems.add(new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
-                calculateCalories(value, spinnervalue),
-                Utils.getEnergy(energy.getForServingInUnits()),
-                "kcal",
-                nutriments.getModifier(ENERGY)));
+        Nutriments.Nutriment energyKcal = nutriments.get(ENERGY_KCAL);
+        if (energyKcal != null) {
+            nutrimentListItems.add(
+                new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
+                    calculateCalories(value, spinnervalue),
+                    energyKcal.getForServingInUnits(),
+                    Units.ENERGY_KCAL,
+                    nutriments.getModifierIfNotDefault(ENERGY_KCAL)));
+        }
+        Nutriments.Nutriment energyKj = nutriments.get(ENERGY_KJ);
+        if (energyKj != null) {
+            nutrimentListItems.add(
+                new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
+                    calculateKj(value, spinnervalue),
+                    energyKj.getForServingInUnits(),
+                    Units.ENERGY_KJ.toLowerCase(),
+                    nutriments.getModifierIfNotDefault(ENERGY_KJ)));
         }
 
         // Fat
@@ -106,7 +120,7 @@ public class CalculateDetails extends BaseActivity {
                 fat.getForAnyValue(value, spinnervalue),
                 fat.getForServingInUnits(),
                 fat.getUnit(),
-                modifier == null ? "" : modifier));
+                Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
 
             nutrimentListItems.addAll(getNutrimentItems(nutriments, FAT_MAP));
         }
@@ -119,7 +133,7 @@ public class CalculateDetails extends BaseActivity {
                 carbohydrates.getForAnyValue(value, spinnervalue),
                 carbohydrates.getForServingInUnits(),
                 carbohydrates.getUnit(),
-                modifier == null ? "" : modifier));
+                Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
 
             nutrimentListItems.addAll(getNutrimentItems(nutriments, CARBO_MAP));
         }
@@ -136,7 +150,7 @@ public class CalculateDetails extends BaseActivity {
                     proteins.getForAnyValue(value, spinnervalue),
                     proteins.getForServingInUnits(),
                     proteins.getUnit(),
-                    modifier == null ? "" : modifier));
+                    Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
 
             nutrimentListItems.addAll(getNutrimentItems(nutriments, PROT_MAP));
         }
@@ -170,11 +184,12 @@ public class CalculateDetails extends BaseActivity {
         for (Map.Entry<String, Integer> entry : nutrimentMap.entrySet()) {
             Nutriments.Nutriment nutriment = nutriments.get(entry.getKey());
             if (nutriment != null) {
+                final String modifier = nutriments.getModifier(entry.getKey());
                 items.add(new NutrimentListItem(getString(entry.getValue()),
                     nutriment.getForAnyValue(value, spinnervalue),
                     nutriment.getForServingInUnits(),
                     nutriment.getUnit(),
-                    nutriments.getModifier(entry.getKey())));
+                    Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
             }
         }
 
@@ -182,22 +197,25 @@ public class CalculateDetails extends BaseActivity {
     }
 
     private String calculateCalories(float weight, String unit) {
-        float caloriePer100g = Float.parseFloat(Utils.getEnergy(p.getNutriments().get(Nutriments.ENERGY).getFor100gInUnits()));
+        float caloriePer100g = Float.parseFloat(p.getNutriments().get(ENERGY_KCAL).getFor100gInUnits());
+        float weightInG = UnitUtils.convertToGrams(weight, unit);
+        return Float.toString(((caloriePer100g / 100) * weightInG));
+    }
+
+    private String calculateKj(float weight, String unit) {
+        float caloriePer100g = Float.parseFloat(p.getNutriments().get(ENERGY_KJ).getFor100gInUnits());
         float weightInG = UnitUtils.convertToGrams(weight, unit);
         return Float.toString(((caloriePer100g / 100) * weightInG));
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                finish();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        // Respond to the action bar's Up/Home button
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }
 

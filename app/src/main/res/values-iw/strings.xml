@@ -66,6 +66,7 @@
         <item>% מהערך היומי</item>
         <item>יחידה בינלאומית</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -229,6 +230,8 @@
     <string name="title_info_dialog">איך זה עובד?</string>
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים ללא חיבור לאינטרנט ולהוסיף אותם למסד נתוני המזון הפתוח מאוחר יותר. כל המוצרים שנסרקים מופיעים כאן, תהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="permission_camera">נדרשת הרשאה לשימוש במצלמה כדי לסרוק ברקודים ולצלם תמונות.</string>
+    <string name="no_camera_dialog_title">מצלמה לא נמצאה</string>
+    <string name="no_camera_dialog_content">למכשיר שלך אין מצלמה. לא תהיה לך אפשרות לסרוק ברקודים.</string>
     <string name="permission_title">פרטי הרשאה</string>
     <string name="permission_denied">נא להפעיל את ההרשאות בהגדרות</string>
     <string name="info_download_data_connection">עליך להוריד נתונים כדי שתכונה זו תפעל. נא להתחבר לאינטרנט.</string>
@@ -271,6 +274,8 @@
     <string name="nutrition_carbohydrate">פחמימות</string>
     <string name="nutrition_cholesterol">כולסטרול</string>
     <string name="nutrition_energy">אנרגיה</string>
+    <string name="nutrition_energy_kcal">אנרגיה בקלוריות (קק״ל)</string>
+    <string name="nutrition_energy_kj">אנרגיה בג׳אול (kJ)</string>
     <string name="nutrition_energy_short_name">אנרגיה</string>
     <string name="nutrition_fat">שומן</string>
     <string name="nutrition_fiber">סיבים תזונתיים</string>
@@ -708,7 +713,7 @@
     <string name="product_question_negative_response">לא</string>
     <string name="product_question_ambiguous_response">לא בטוח</string>
     <string name="product_question_submit_message">תודה לך על תרומתך!</string>
-    <string name="error_nutrient_entry">הערך אמור להיות מספרי ולהתחיל ב־&lt;, &gt; או ~. לדוגמה: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">גודל ההגשה חייב להיות ערך חיובי</string>
     <string name="error_in_nutrient_data">חלק מערכי ההזנה אינם תקינים. נא לתקן את השדות להלן שמסומנים כשגויים</string>
     <string name="go_to_full_product_page">למוצר</string>

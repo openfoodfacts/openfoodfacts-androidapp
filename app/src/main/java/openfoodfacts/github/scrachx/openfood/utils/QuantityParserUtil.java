@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.util.Log;
+import android.widget.Spinner;
 import android.widget.TextView;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.CharUtils;
+
 import org.apache.commons.lang.StringUtils;
 
 public class QuantityParserUtil {
@@ -14,42 +14,16 @@ public class QuantityParserUtil {
         NO_PREFIX
     }
 
-    private static final char[] PREFIX = new char[]{'<', '>', '~'};
-
     private QuantityParserUtil() {
 
     }
 
-    /**
-     * @param text init text
-     */
-    public static String getModifier(String text) {
-        if (StringUtils.isBlank(text)) {
-            return null;
-        }
-        char firstChar = text.trim().charAt(0);
-        if (ArrayUtils.contains(PREFIX, firstChar)) {
-            return CharUtils.toString(firstChar);
-        }
-        return null;
+    public static boolean isModifierEqualsToGreaterThan(CustomValidatingEditTextView view) {
+        return isModifierEqualsToGreaterThan(view.getModSpinner());
     }
 
-    /**
-     * @param text init text
-     */
-    public static String getModifier(TextView text) {
-        if (text.getText() == null) {
-            return null;
-        }
-        return getModifier(text.getText().toString());
-    }
-
-    public static boolean isModifierEqualsToGreaterThan(TextView text) {
-        return isModifierEqualsToGreaterThan(text.getText().toString());
-    }
-
-    public static boolean isModifierEqualsToGreaterThan(String text) {
-        return ">".equals(getModifier(text));
+    public static boolean isModifierEqualsToGreaterThan(Spinner text) {
+        return Modifier.GREATER_THAN.equals(Modifier.MODIFIERS[text.getSelectedItemPosition()]);
     }
 
     public static boolean isBlank(TextView editText) {
@@ -62,58 +36,55 @@ public class QuantityParserUtil {
 
     /**
      * @param editText the textview
-     * @param entryFormat to remove prefix if present
      * @return the float value or null if not correct
-     * @see #getFloatValue(String, EntryFormat)
+     * @see #getFloatValue(String)
      */
-    public static Float getFloatValue(TextView editText, EntryFormat entryFormat) {
+    public static Float getFloatValue(TextView editText) {
         if (editText.getText() == null) {
             return null;
         }
         final String text = editText.getText().toString();
-        return getFloatValue(text, entryFormat);
+        return getFloatValue(text);
     }
 
-    public static float getFloatValueOrDefault(TextView editText, EntryFormat entryFormat, float defaultValue) {
-        Float res = getFloatValue(editText, entryFormat);
+    public static float getFloatValueOrDefault(TextView editText, float defaultValue) {
+        Float res = getFloatValue(editText);
         return res == null ? defaultValue : res;
     }
 
     /**
      * @param editText the textview
-     * @param entryFormat to remove prefix if present
      * @return the float value or null if not correct
-     * @see #getFloatValue(String, EntryFormat)
+     * @see #getFloatValue(String)
      */
-    public static Double getDoubleValue(TextView editText, EntryFormat entryFormat) {
+    public static Double getDoubleValue(TextView editText) {
         if (editText.getText() == null) {
             return null;
         }
         final String text = editText.getText().toString();
-        return getDoubleValue(text, entryFormat);
+        return getDoubleValue(text);
     }
 
-    public static boolean containFloatValue(TextView editText, EntryFormat entryFormat) {
-        return editText != null && containFloatValue(editText.getText().toString(), entryFormat);
+    public static boolean containFloatValue(TextView editText) {
+        return editText != null && containFloatValue(editText.getText().toString());
     }
 
-    public static boolean containFloatValue(String text, EntryFormat floatFormat) {
-        return getFloatValue(text, floatFormat) != null;
+    public static boolean containFloatValue(String text) {
+        return getFloatValue(text) != null;
     }
 
-    public static boolean containDoubleValue(String text, EntryFormat floatFormat) {
-        return getDoubleValue(text, floatFormat) != null;
+    public static boolean containDoubleValue(String text) {
+        return getDoubleValue(text) != null;
     }
 
     /**
      * Retrieve the float value from strings like "> 1.03"
      *
      * @param initText value to parse
-     * @param floatFormat to specify if a prefix (<>~) can be present
      * @return the float value or null if not correct
      */
-    public static Float getFloatValue(String initText, EntryFormat floatFormat) {
-        Double result = getDoubleValue(initText, floatFormat);
+    public static Float getFloatValue(String initText) {
+        Double result = getDoubleValue(initText);
         if (result != null) {
             return result.floatValue();
         }
@@ -124,17 +95,13 @@ public class QuantityParserUtil {
      * Retrieve the float value from strings like "> 1.03"
      *
      * @param initText value to parse
-     * @param floatFormat to specify if a prefix (<>~) can be present
      * @return the float value or null if not correct
      */
-    public static Double getDoubleValue(String initText, EntryFormat floatFormat) {
+    public static Double getDoubleValue(String initText) {
         if (StringUtils.isBlank(initText)) {
             return null;
         }
         String text = StringUtils.trim(initText);
-        if (EntryFormat.WITH_KNOWN_PREFIX.equals(floatFormat)) {
-            text = removeKnowPrefix(text);
-        }
         text = replaceCommonByDot(text);
         try {
             return Double.parseDouble(text);
@@ -142,14 +109,6 @@ public class QuantityParserUtil {
             Log.d("Utils", "can't parse text: " + text);
         }
         return null;
-    }
-
-    private static String removeKnowPrefix(String text) {
-        char first = text.charAt(0);
-        if (ArrayUtils.contains(PREFIX, first)) {
-            text = text.substring(1).trim();
-        }
-        return text;
     }
 
     /**

@@ -51,6 +51,7 @@ Data about food is of public interest and has to be open. The complete database 
   <img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" />
     <img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" />
 </p>
+
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please search for existing and closed issues. If your problem or idea is not addressed yet, please open a new issue.
@@ -88,7 +89,7 @@ https://translate.openfoodfacts.org
 * You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator.
 
 ## Generate screenshots for the Play Store
-To activate  screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
+To activate screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
 To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
 [Help is welcome to improve those](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/fastlane)
 

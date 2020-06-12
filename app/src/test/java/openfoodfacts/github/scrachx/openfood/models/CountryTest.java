@@ -2,9 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -16,6 +14,7 @@ import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.G
 import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -24,26 +23,17 @@ import static org.mockito.Mockito.when;
  * Tests for {@link Country}
  */
 public class CountryTest {
-
     private final String COUNTRY_TAG = "code";
-
     private final CountryName GERMANY_IN_ENGLISH =
-            new CountryName(COUNTRY_TAG, LANGUAGE_CODE_ENGLISH, GERMANY_EN);
+        new CountryName(COUNTRY_TAG, LANGUAGE_CODE_ENGLISH, GERMANY_EN);
     private final CountryName GERMANY_IN_FRENCH =
-            new CountryName(COUNTRY_TAG, LANGUAGE_CODE_FRENCH, GERMANY_FR);
-
-    @Rule
-    public final ExpectedException thrown = ExpectedException.none();
-
+        new CountryName(COUNTRY_TAG, LANGUAGE_CODE_FRENCH, GERMANY_FR);
     @Mock
     private DaoSession mockDaoSession;
-
     @Mock
     private CountryDao mockCountryDao;
-
     @Mock
     private CountryNameDao mockCountryNameDao;
-
     private Country mCountry;
 
     @Before
@@ -52,14 +42,13 @@ public class CountryTest {
         when(mockDaoSession.getCountryDao()).thenReturn(mockCountryDao);
         when(mockDaoSession.getCountryNameDao()).thenReturn(mockCountryNameDao);
         when(mockCountryNameDao._queryCountry_Names(any()))
-                .thenReturn(Arrays.asList(GERMANY_IN_ENGLISH, GERMANY_IN_FRENCH));
+            .thenReturn(Arrays.asList(GERMANY_IN_ENGLISH, GERMANY_IN_FRENCH));
         mCountry = new Country();
     }
 
     @Test
     public void getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-        mCountry.getNames();
+        assertThrows(DaoException.class, () -> mCountry.getNames());
     }
 
     @Test
@@ -80,8 +69,7 @@ public class CountryTest {
 
     @Test
     public void deleteWithNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-        mCountry.delete();
+        assertThrows(DaoException.class, () -> mCountry.delete());
     }
 
     @Test
@@ -93,8 +81,7 @@ public class CountryTest {
 
     @Test
     public void refreshWithNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-        mCountry.refresh();
+        assertThrows(DaoException.class, () -> mCountry.refresh());
     }
 
     @Test
@@ -106,8 +93,7 @@ public class CountryTest {
 
     @Test
     public void updateWithNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-        mCountry.update();
+        assertThrows(DaoException.class, () -> mCountry.update());
     }
 
     @Test

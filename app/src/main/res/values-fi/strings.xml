@@ -56,6 +56,7 @@
         <item>% päivittäisestä saannista</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -219,6 +220,8 @@
     <string name="title_info_dialog">Miten se toimii?</string>
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
     <string name="permission_camera">Lupaa käyttää kameraa vaaditaan viivakoodien lukemiseen ja kuvien ottamiseen.</string>
+    <string name="no_camera_dialog_title">Kameraa ei löytynyt</string>
+    <string name="no_camera_dialog_content">Laitteessasi ei ole kameraa. Et voi lukea viivakoodeja.</string>
     <string name="permission_title">Käyttöoikeudet</string>
     <string name="permission_denied">Aktivoi lupa asetuksissa</string>
     <string name="info_download_data_connection">Tämän ominaisuuden pitää ladata tietoja toimiakseen. Aktivoi Internet-yhteys.</string>
@@ -261,6 +264,8 @@
     <string name="nutrition_carbohydrate">Hiilihydraatti</string>
     <string name="nutrition_cholesterol">Kolesteroli</string>
     <string name="nutrition_energy">Energia</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Rasva</string>
     <string name="nutrition_fiber">Ravintokuitu</string>
@@ -428,7 +433,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world-fi.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world-fi.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Yleiset</string>
     <string name="preference_header_network">Verkko</string>
     <string name="preference_header_contributing">Osallistu</string>
@@ -624,7 +629,7 @@
     <string name="toddlers">Taaperot</string>
     <string name="toddlers_age">1 - 2</string>
     <string name="children">Lapset</string>
-    <string name="children_age">3 - 9</string>
+    <string name="children_age">3 – 9</string>
     <string name="adolescents">Nuoret</string>
     <string name="adolescents_age">10 - 17</string>
     <string name="adults">Aikuiset</string>
@@ -696,7 +701,7 @@
     <string name="product_question_negative_response">Ei</string>
     <string name="product_question_ambiguous_response">Epävarma</string>
     <string name="product_question_submit_message">Kiitokset osallistumisestasi!</string>
-    <string name="error_nutrient_entry">Arvon tulee olla numeerinen ja se voi alkaa &lt;, &gt; tai ~. Esimerkki: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Annoskoon tulee olla positiivinen arvo</string>
     <string name="error_in_nutrient_data">Jotkut ravintoarvot eivät ole kelvollisia. Korjaa kentät joissa on virhemerkki</string>
     <string name="go_to_full_product_page">Siirry tuotteeseen</string>

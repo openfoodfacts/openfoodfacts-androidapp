@@ -56,6 +56,7 @@
         <item>% DV</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -219,6 +220,8 @@
     <string name="title_info_dialog">ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ?</string>
     <string name="text_offline_info_dialog">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗ ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಲು ಅವುಗಳನ್ನು ಸೇರಿಸಲು ನೀವು ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಬಹುದು. ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡುವ ಎಲ್ಲಾ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ, ಮತ್ತು ನೀವು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
     <string name="permission_camera">ಬಾರ್ಕೋಡ್ಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಕ್ಯಾಮೆರಾ ಅನುಮತಿ ಅಗತ್ಯವಿದೆ.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">ಅನುಮತಿ ಮಾಹಿತಿ</string>
     <string name="permission_denied">ದಯವಿಟ್ಟು ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ಅನುಮತಿಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
     <string name="info_download_data_connection">ಈ ಕ್ರಿಯಾತ್ಮಕತೆಯನ್ನು ಕೆಲಸ ಮಾಡಲು ನೀವು ಕೆಲವು ಡೇಟಾವನ್ನು ಡೌನ್ಲೋಡ್ ಮಾಡಬೇಕಾಗುತ್ತದೆ, ದಯವಿಟ್ಟು ಅದನ್ನು ಡೌನ್ಲೋಡ್ ಮಾಡಲು ಹೌದು ಎಂದು ಒತ್ತಿರಿ.</string>
@@ -261,6 +264,8 @@
     <string name="nutrition_carbohydrate">ಕಾರ್ಬೋಹೈಡ್ರೇಟ್</string>
     <string name="nutrition_cholesterol">ಕೊಲೆಸ್ಟರಾಲ್</string>
     <string name="nutrition_energy">ಶಕ್ತಿ</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">ಶಕ್ತಿ</string>
     <string name="nutrition_fat">ಫ್ಯಾಟ್</string>
     <string name="nutrition_fiber">ಆಹಾರ ಫೈಬರ್</string>
@@ -696,7 +701,7 @@
     <string name="product_question_negative_response">ಇಲ್ಲ</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
     <string name="go_to_full_product_page">Go to product</string>

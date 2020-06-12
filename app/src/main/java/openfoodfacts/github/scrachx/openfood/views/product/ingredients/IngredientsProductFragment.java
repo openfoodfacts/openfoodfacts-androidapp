@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.FragmentActivity;
@@ -35,6 +36,9 @@ import java.util.regex.Pattern;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -59,9 +63,6 @@ import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -104,7 +105,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
         apiClientForWikiData = new WikiDataApiClient();
 
@@ -113,7 +114,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activityState = getStateFromActivityIntent();
         binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
@@ -141,7 +142,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         mAllergenNameDao = Utils.getDaoSession().getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true;
         }
 
@@ -263,7 +264,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         if (product.getNovaGroups() != null) {
             binding.novaLayout.setVisibility(View.VISIBLE);
-            binding.novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), getContext()));
+            binding.novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), requireContext()));
             binding.novaGroup.setImageResource(Utils.getNovaGroupDrawable(product));
             binding.novaGroup.setOnClickListener((View v) -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
@@ -299,7 +300,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View view) {
+            public void onClick(@NonNull View view) {
                 if (allergen.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(
                         allergen.getWikiDataId(),

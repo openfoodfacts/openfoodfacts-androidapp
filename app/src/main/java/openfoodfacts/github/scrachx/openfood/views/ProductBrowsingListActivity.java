@@ -38,6 +38,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -225,7 +226,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         newSearchQuery();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true;
         }
 
@@ -368,18 +369,21 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     loadSearchProducts(value, packaging, R.string.txt_no_matching_packaging_products));
                 break;
             case SearchType.SEARCH:
-                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, (isOk, searchResponse, countProducts) -> {
-                    /*
-                    countProducts is checked, if it is -2 it means that there are no matching products in the
-                    database for the query.
-                     */
-                    if (countProducts == -2) {
-                        showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
-                            getResources().getString(R.string.txt_broaden_search));
-                    } else {
-                        loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
-                    }
-                });
+                if (ProductUtils.isBarcodeValid(searchQuery)) {
+                    api.getProduct(searchQuery, this);
+                } else {
+                    api.searchProduct(searchQuery, pageAddress, this, (isOk, searchResponse, countProducts) -> {
+
+                        // countProducts is checked, if it is -2 it means that there are no matching products in the
+                        // database for the query.
+                        if (countProducts == -2) {
+                            showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
+                                getResources().getString(R.string.txt_broaden_search));
+                        } else {
+                            loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
+                        }
+                    });
+                }
                 break;
             case SearchType.LABEL:
                 api.getProductsByLabel(searchQuery, pageAddress, (value, label) ->

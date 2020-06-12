@@ -37,6 +37,9 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentSummaryProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -59,7 +62,6 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.Question;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
@@ -84,9 +86,6 @@ import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
 import openfoodfacts.github.scrachx.openfood.views.YourListedProductsActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.DialogAddToListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
 
@@ -187,7 +186,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.labelsIcon.setVisibility(VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(getContext()) && Utils.isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true;
         }
 
@@ -727,42 +726,45 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void editProduct() {
+
         Intent intent = new Intent(getActivity(), AddProductActivity.class);
         intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
         startActivityForResult(intent, EDIT_REQUEST_CODE);
     }
 
     private void onBookmarkProductButtonClick() {
-        Activity activity = getActivity();
+        final Activity activity = requireActivity();
+        final List<ProductLists> productLists = ProductListsActivity.getProductListsDaoWithDefaultList(activity).loadAll();
 
-        String productBarcode = product.getCode();
-        String productName = product.getProductName();
-        String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(getContext()));
-        String productDetails = YourListedProductsActivity.getProductBrandsQuantityDetails(product);
+        final String productBarcode = product.getCode();
+        final String productName = product.getProductName();
+        final String imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(activity));
+        final String productDetails = YourListedProductsActivity.getProductBrandsQuantityDetails(product);
 
-        MaterialDialog.Builder addToListBuilder = new MaterialDialog.Builder(activity)
+        final MaterialDialog addToListDialog = new MaterialDialog.Builder(activity)
             .title(R.string.add_to_product_lists)
-            .customView(R.layout.dialog_add_to_list, true);
-        MaterialDialog addToListDialog = addToListBuilder.build();
+            .customView(R.layout.dialog_add_to_list, true)
+            .build();
         addToListDialog.show();
-        View addToListView = addToListDialog.getCustomView();
-        if (addToListView != null) {
-            ProductListsDao productListsDao = ProductListsActivity.getProductListsDaoWithDefaultList(this.getContext());
-            List<ProductLists> productLists = productListsDao.loadAll();
 
-            RecyclerView addToListRecyclerView =
-                addToListView.findViewById(R.id.rv_dialogAddToList);
-            DialogAddToListAdapter addToListAdapter =
-                new DialogAddToListAdapter(activity, productLists, productBarcode, productName, productDetails, imageUrl);
-            addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
-            addToListRecyclerView.setAdapter(addToListAdapter);
-            TextView tvAddToList = addToListView.findViewById(R.id.tvAddToNewList);
-            tvAddToList.setOnClickListener(view -> {
-                Intent intent = new Intent(activity, ProductListsActivity.class);
-                intent.putExtra("product", product);
-                activity.startActivity(intent);
-            });
+        final View dialogView = addToListDialog.getCustomView();
+        if (dialogView == null) {
+            return;
         }
+
+        // Set recycler view
+        final RecyclerView addToListRecyclerView = dialogView.findViewById(R.id.rv_dialogAddToList);
+        DialogAddToListAdapter addToListAdapter = new DialogAddToListAdapter(activity, productLists, productBarcode, productName, productDetails, imageUrl);
+        addToListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        addToListRecyclerView.setAdapter(addToListAdapter);
+
+        // Add listener to text view
+        final TextView tvAddToList = dialogView.findViewById(R.id.tvAddToNewList);
+        tvAddToList.setOnClickListener(view -> {
+            Intent intent = new Intent(activity, ProductListsActivity.class);
+            intent.putExtra("product", product);
+            activity.startActivity(intent);
+        });
     }
 
     @Override
@@ -814,7 +816,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
         boolean shouldRefresh = requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK;
         shouldRefresh = shouldRefresh || ProductImageManagementActivity.isImageModified(requestCode, resultCode);
-        
+
         if (shouldRefresh && getActivity() instanceof ProductActivity) {
             ((ProductActivity) getActivity()).onRefresh();
         }

@@ -43,7 +43,7 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         binding = ActivityAdditivesExplorerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.additives);
 

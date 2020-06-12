@@ -32,10 +32,10 @@ import java.util.List;
 import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 public class IngredientsWithTagDialogFragment extends DialogFragment {

@@ -4,4 +4,5 @@
     android:layout_width="@dimen/small_loading_size"
     android:layout_height="@dimen/small_loading_size"
     android:layout_centerInParent="true"
-    android:layout_gravity="center" />
+    android:layout_gravity="center"
+    android:indeterminate="false" />

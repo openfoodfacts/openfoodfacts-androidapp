@@ -51,6 +51,7 @@
         <item>% DV</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -214,6 +215,8 @@
     <string name="title_info_dialog">這是如何運作？</string>
     <string name="text_offline_info_dialog">在離線狀態下，您可以掃描產品並稍候將它們加到 Open Food Facts。所有您掃描過的產品都會出現在這裡，您可以使用下面的按鈕來傳送它們。</string>
     <string name="permission_camera">需要相機的存取權來掃描條碼以及拍攝照片。</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">許可資訊</string>
     <string name="permission_denied">請在設定中開啟許可權限</string>
     <string name="info_download_data_connection">您需要下載一些資料來讓此功能正常運作，請按啟用網路連線。</string>
@@ -256,6 +259,8 @@
     <string name="nutrition_carbohydrate">碳水化合物</string>
     <string name="nutrition_cholesterol">膽固醇</string>
     <string name="nutrition_energy">能量</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">能量</string>
     <string name="nutrition_fat">脂肪</string>
     <string name="nutrition_fiber">膳食纖維</string>
@@ -421,9 +426,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">通用</string>
     <string name="preference_header_network">網路</string>
     <string name="preference_header_contributing">貢獻</string>
@@ -617,7 +622,7 @@
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Toddlers</string>
     <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
+    <string name="children">孩子</string>
     <string name="children_age">3 to 9</string>
     <string name="adolescents">Adolescents</string>
     <string name="adolescents_age">10 to 17</string>
@@ -690,7 +695,7 @@
     <string name="product_question_negative_response">否</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
     <string name="go_to_full_product_page">Go to product</string>

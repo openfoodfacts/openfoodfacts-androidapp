@@ -77,7 +77,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> view.showAllergens(allergens), e -> {
+                .subscribe(view::showAllergens, e -> {
                     if (runIfError != null) {
                         runIfError.run();
                     }

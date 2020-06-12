@@ -12,6 +12,7 @@ import static junit.framework.Assert.assertEquals;
  */
 public class ProductIngredientTest {
 
+
     @Test
     public void toString_returnsCorrectFormat() {
         String text = "Mayonnaise";
@@ -39,5 +40,33 @@ public class ProductIngredientTest {
                 '}';
 
         assertEquals(expectedString, productIngredient.toString());
+    }
+
+    @Test
+    public void ProductIngredientWithAdditionalProperty() {
+        ProductIngredient productIngredient = new ProductIngredient();
+        productIngredient.setText("Ketchup");
+        productIngredient.setId("ketchup_id");
+        productIngredient.setRank(300L);
+        productIngredient.setPercent("20%");
+
+        productIngredient.withAdditionalProperty("Sweetness", "90");
+        Map<String, Object> returnedMap = productIngredient.getAdditionalProperties();
+
+        assertEquals("90", ((String) returnedMap.get("Sweetness")));
+    }
+
+    @Test
+    public void ProductIngredientGetters() {
+        ProductIngredient productIngredient = new ProductIngredient();
+        productIngredient.setText("Mustard");
+        productIngredient.setId("mustard_id");
+        productIngredient.setRank(200L);
+        productIngredient.setPercent("25%");
+
+        assertEquals("Mustard", productIngredient.getText());
+        assertEquals("mustard_id", productIngredient.getId());
+        assertEquals(200L, productIngredient.getRank());
+        assertEquals("25%", productIngredient.getPercent());
     }
 }

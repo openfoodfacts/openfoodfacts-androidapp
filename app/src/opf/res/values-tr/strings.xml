@@ -40,4 +40,6 @@
     <string name="add_nutrient_prompt_text">Ürünü tamamlamaya yardım etmek için daha fazla ayrıntı ekleyin</string>
     <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve daha fazla ayrıntı ekleyin</string>
+    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_products_to_buy">Satın alınacak ürünler</string>
 </resources>

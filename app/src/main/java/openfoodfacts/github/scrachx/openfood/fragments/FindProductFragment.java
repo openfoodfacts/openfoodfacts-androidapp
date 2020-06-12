@@ -17,11 +17,11 @@ import org.apache.commons.lang.StringUtils;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
@@ -45,12 +45,10 @@ public class FindProductFragment extends NavigationBaseFragment {
         super.onViewCreated(view, savedInstanceState);
         binding.editTextBarcode.setSelected(false);
         api = new OpenFoodAPIClient(getActivity());
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-
         binding.buttonBarcode.setOnClickListener(v -> onSearchBarcodeProduct());
 
-        if (getActivity().getIntent() != null) {
-            String barCode = getActivity().getIntent().getStringExtra(BARCODE);
+        if (requireActivity().getIntent() != null) {
+            String barCode = requireActivity().getIntent().getStringExtra(BARCODE);
             if (StringUtils.isNotEmpty(barCode)) {
                 searchBarcode(barCode);
             }
@@ -58,7 +56,7 @@ public class FindProductFragment extends NavigationBaseFragment {
     }
 
     private void onSearchBarcodeProduct() {
-        Utils.hideKeyboard(getActivity());
+        Utils.hideKeyboard(requireActivity());
 
         final String barCodeTxt = ((EditText) binding.editTextBarcode).getText().toString();
         if (barCodeTxt.isEmpty()) {
@@ -66,7 +64,7 @@ public class FindProductFragment extends NavigationBaseFragment {
             return;
         }
 
-        if (barCodeTxt.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barCodeTxt)) {
+        if (barCodeTxt.length() <= 2 && !ApiFields.Defaults.DEBUG_BARCODE.equals(barCodeTxt)) {
             binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeNotValid));
             return;
         }

@@ -56,6 +56,7 @@
         <item>% DV</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -143,7 +144,7 @@
     <string name="search_button">Търсене</string>
     <string name="alert_dialog_warning_title">Предупреждение</string>
     <string name="alert_dialog_warning_msg_user">Потребителско име/парола е променена, моля обновете информацията</string>
-    <string name="toast_retrieving">Зареждане...</string>
+    <string name="toast_retrieving">Зареждане…</string>
     <string name="txtBarcode">Баркод :</string>
     <string name="txtCategories">Категории :</string>
     <string name="txtLabels">Етикети, сертификации, награди :</string>
@@ -184,7 +185,7 @@
     <string name="txtSendAll">Качване на всичко</string>
     <string name="txtPictureNeededDialogNo">Отказ</string>
     <string name="toastSending">Качване…</string>
-    <string name="txtLoading">Зареждане...</string>
+    <string name="txtLoading">Зареждане…</string>
     <string name="txtDialogsContentDelete">Сигурни ли сте, че искате да премахнете тази чернова?</string>
     <string name="txtDialogsContentInfoSave">Продуктът е запазен локално, можете да го редактирате в менюто \"Редактиране офлайн\"</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -219,6 +220,8 @@
     <string name="title_info_dialog">Как работи това?</string>
     <string name="text_offline_info_dialog">Можете да сканирате продукти, когато сте офлайн, за да ги добавите към Open Food Facts по-късно. Всички продукти, които сканирате, ще се показват тук и ще можете да ги изпратите, като използвате бутона по-долу.</string>
     <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Информация за разрешението</string>
     <string name="permission_denied">Моля, активирайте разрешението в настройките</string>
     <string name="info_download_data_connection">Трябва да изтеглите някои данни, за да получите тази функционалност. Моля активирайте интернет връзката.</string>
@@ -261,6 +264,8 @@
     <string name="nutrition_carbohydrate">Въглехидрати</string>
     <string name="nutrition_cholesterol">Холестерол</string>
     <string name="nutrition_energy">Енергия</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Енергия</string>
     <string name="nutrition_fat">Мазнини</string>
     <string name="nutrition_fiber">Хранителните влакнини</string>
@@ -426,9 +431,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Общи</string>
     <string name="preference_header_network">Мрежа</string>
     <string name="preference_header_contributing">Допринасяне</string>
@@ -698,7 +703,7 @@
     <string name="product_question_negative_response">Не</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
     <string name="go_to_full_product_page">Go to product</string>

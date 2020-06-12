@@ -66,6 +66,7 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
@@ -721,7 +722,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 } else {
                     String barcodeText = binding.quickViewSearchByBarcode.getText().toString();
                     //for debug only:the barcode 1 is used for test:
-                    if (barcodeText.length() <= 2 && !ProductUtils.DEBUG_BARCODE.equals(barcodeText)) {
+                    if (barcodeText.length() <= 2 && !ApiFields.Defaults.DEBUG_BARCODE.equals(barcodeText)) {
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                     } else {
                         if (ProductUtils.isBarcodeValid(barcodeText)) {

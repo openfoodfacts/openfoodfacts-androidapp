@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.customtabs;
+package openfoodfacts.github.scrachx.openfood.customtabs;
 
 import android.app.Activity;
 import android.content.Intent;

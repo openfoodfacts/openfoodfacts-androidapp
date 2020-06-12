@@ -20,6 +20,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
@@ -77,41 +78,41 @@ public class OfflineSavedProduct implements Serializable {
 
     @Nullable
     public String getLanguage() {
-        return getProductDetailsMap().get(KEYS.PARAM_LANGUAGE);
+        return getProductDetailsMap().get(ApiFields.Keys.LANG);
     }
 
     @Nullable
     public String getName() {
         HashMap<String, String> map = getProductDetailsMap();
-        String language = Utils.firstNotEmpty(map.get(KEYS.PARAM_LANGUAGE), "en");
-        return Utils.firstNotEmpty(map.get(KEYS.GET_PARAM_NAME(language)), map.get(KEYS.GET_PARAM_NAME("en")));
+        String language = Utils.firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
+        return Utils.firstNotEmpty(map.get(ApiFields.Keys.lcProductNameKey(language)), map.get(ApiFields.Keys.lcProductNameKey("en")));
     }
 
     @Nullable
     public String getIngredients() {
         HashMap<String, String> map = getProductDetailsMap();
-        String language = Utils.firstNotEmpty(map.get(KEYS.PARAM_LANGUAGE), "en");
-        return Utils.firstNotEmpty(map.get(KEYS.GET_PARAM_INGREDIENTS(language)), map.get(KEYS.GET_PARAM_INGREDIENTS("en")));
+        String language = Utils.firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
+        return Utils.firstNotEmpty(map.get(ApiFields.Keys.lcIngredientsKey(language)), map.get(ApiFields.Keys.lcIngredientsKey("en")));
     }
 
     @Nullable
     public String getImageFront() {
-        return getProductDetailsMap().get(KEYS.IMAGE_FRONT);
+        return getProductDetailsMap().get(ApiFields.Keys.IMAGE_FRONT);
     }
 
     @Nullable
     public String getImageIngredients() {
-        return getProductDetailsMap().get(KEYS.IMAGE_INGREDIENTS);
+        return getProductDetailsMap().get(ApiFields.Keys.IMAGE_INGREDIENTS);
     }
 
     @Nullable
     public String getImageNutrition() {
-        return getProductDetailsMap().get(KEYS.IMAGE_NUTRITION);
+        return getProductDetailsMap().get(ApiFields.Keys.IMAGE_NUTRITION);
     }
 
     @Nullable
     public String getImageFrontLocalUrl() {
-        String localUrl = getProductDetailsMap().get(KEYS.IMAGE_FRONT);
+        String localUrl = getProductDetailsMap().get(ApiFields.Keys.IMAGE_FRONT);
         if (!TextUtils.isEmpty(localUrl)) {
             return FileUtils.LOCALE_FILE_SCHEME + localUrl;
         }
@@ -162,46 +163,5 @@ public class OfflineSavedProduct implements Serializable {
             ", isDataUploaded=" + isDataUploaded +
             ", map='" + getProductDetailsMap().toString() + '\'' +
             '}';
-    }
-
-    public static class KEYS {
-        // START OF OVERVIEW KEYS
-        public static String GET_PARAM_NAME(String lang) {
-            return "product_name_" + lang;
-        }
-
-        public static final String PARAM_LANGUAGE = "lang";
-        public static final String IMAGE_FRONT = "image_front";
-        public static final String IMAGE_FRONT_UPLOADED = "image_front_uploaded";
-        public static final String IMAGE_INGREDIENTS = "image_ingredients";
-        public static final String IMAGE_INGREDIENTS_UPLOADED = "image_ingredients_uploaded";
-        public static final String IMAGE_NUTRITION = "image_nutrition";
-        public static final String IMAGE_NUTRITION_UPLOADED = "image_nutrition_uploaded";
-        public static final String PARAM_BARCODE = "code";
-        public static final String PARAM_QUANTITY = "quantity";
-        public static final String PARAM_BRAND = "add_brands";
-        public static final String PARAM_INTERFACE_LANGUAGE = "lc";
-        public static final String PARAM_PACKAGING = "add_packaging";
-        public static final String PARAM_CATEGORIES = "add_categories";
-        public static final String PARAM_LABELS = "add_labels";
-        public static final String PARAM_PERIODS_AFTER_OPENING = "periods_after_opening";
-        public static final String PARAM_ORIGIN = "add_origins";
-        public static final String PARAM_MANUFACTURING_PLACE = "add_manufacturing_places";
-        public static final String PARAM_EMB_CODE = "add_emb_codes";
-        public static final String PARAM_LINK = "link";
-        public static final String PARAM_PURCHASE = "add_purchase_places";
-        public static final String PARAM_STORE = "add_stores";
-        public static final String PARAM_COUNTRIES = "add_countries";
-        // START OF NUTRITION FACTS KEYS
-        public static final String PARAM_NO_NUTRITION_DATA = "no_nutrition_data";
-        public static final String PARAM_NUTRITION_DATA_PER = "nutrition_data_per";
-        public static final String PARAM_SERVING_SIZE = "serving_size";
-
-        // START OF INGREDIENTS KEYS
-        public static String GET_PARAM_INGREDIENTS(String lang) {
-            return "ingredients_text_" + lang;
-        }
-
-        public static final String PARAM_TRACES = "add_traces";
     }
 }

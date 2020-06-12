@@ -76,6 +76,9 @@ import java.util.Objects;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityMainBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
@@ -95,9 +98,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
@@ -223,7 +223,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         String userSession = preferences.getString("user_session", null);
         final boolean isUserLoggedIn = isUserLoggedIn();
         boolean isUserConnected = isUserLoggedIn && userSession != null;
-        boolean isConnected = isUserLoggedIn;
 
         if (isUserConnected) {
             updateProfileForCurrentUser();
@@ -283,6 +282,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         break;
                     case ITEM_SEARCH_BY_CODE:
                         fragment = new FindProductFragment();
+                        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
                     case ITEM_CATEGORIES:
                         startActivity(CategoryActivity.getIntent(this));
@@ -321,8 +321,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
                     case ITEM_INCOMPLETE_PRODUCTS:
 
-                        /**
-                         * Search and display the products to be completed by moving to ProductBrowsingListActivity
+                        /*
+                          Search and display the products to be completed by moving to ProductBrowsingListActivity
                          */
                         ProductBrowsingListActivity.startActivity(this, "", SearchType.INCOMPLETE_PRODUCT);
                         break;
@@ -397,7 +397,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isConnected ?
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn ?
             getLogoutDrawerItem() : getLoginDrawerItem());
 
         if (BuildConfig.FLAVOR.equals("obf")) {
@@ -662,16 +662,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case Utils.MY_PERMISSIONS_REQUEST_CAMERA: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager
-                    .PERMISSION_GRANTED) {
-                    Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
+        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager
+                .PERMISSION_GRANTED) {
+                Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
-            break;
         }
     }
 

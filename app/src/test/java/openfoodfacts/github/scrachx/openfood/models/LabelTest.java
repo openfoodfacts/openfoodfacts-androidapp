@@ -2,9 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -15,8 +13,11 @@ import static junit.framework.Assert.assertEquals;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_EN;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_TAG;
+import static junit.framework.Assert.assertNull;
+import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -25,8 +26,6 @@ import static org.mockito.Mockito.when;
  * Tests for {@link Label}
  */
 public class LabelTest {
-    @Rule
-    public final ExpectedException thrown = ExpectedException.none();
     @Mock
     private DaoSession mockDaoSession;
     @Mock
@@ -49,8 +48,7 @@ public class LabelTest {
 
     @Test
     public void getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-        mLabel.getNames();
+        assertThrows(DaoException.class, () -> mLabel.getNames());
     }
 
     @Test
@@ -73,8 +71,7 @@ public class LabelTest {
 
     @Test
     public void deleteWithNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-        mLabel.delete();
+        assertThrows(DaoException.class, () -> mLabel.delete());
     }
 
     @Test
@@ -86,8 +83,7 @@ public class LabelTest {
 
     @Test
     public void refreshWithNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-        mLabel.refresh();
+        assertThrows(DaoException.class, () -> mLabel.refresh());
     }
 
     @Test
@@ -99,8 +95,7 @@ public class LabelTest {
 
     @Test
     public void updateWithNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-        mLabel.update();
+        assertThrows(DaoException.class, () -> mLabel.update());
     }
 
     @Test
@@ -108,5 +103,13 @@ public class LabelTest {
         mLabel.__setDaoSession(mockDaoSession);
         mLabel.update();
         verify(mockLabelDao).update(mLabel);
+    }
+
+    @Test
+    public void resetNames_callsGetLabelNameDao() {
+        mLabel.__setDaoSession(mockDaoSession);
+        mLabel.resetNames();
+        mLabel.getNames();
+        verify(mockDaoSession).getLabelNameDao();
     }
 }

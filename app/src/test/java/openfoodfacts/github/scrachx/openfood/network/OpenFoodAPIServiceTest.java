@@ -25,7 +25,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
-import static openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService.PRODUCT_API_COMMENT;
 import static org.junit.Assert.*;
 
 public class OpenFoodAPIServiceTest {
@@ -92,7 +91,8 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void byState() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byState("complete").execute();
+        String fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags";
+        Response<Search> searchResponse = devClientWithAuth.byState("complete", fieldsToFetchFacets).execute();
 
         assertNotNull(searchResponse);
         Search search = searchResponse.body();
@@ -201,7 +201,7 @@ public class OpenFoodAPIServiceTest {
         }};
 
         State body = devClientWithAuth
-            .saveProductSingle(product.getBarcode(), productDetails, PRODUCT_API_COMMENT)
+            .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
             .blockingGet();
 
         assertEquals(body.getStatus(), 1);
@@ -248,7 +248,8 @@ public class OpenFoodAPIServiceTest {
 
     @Test
     public void getProductByAdditive_e301_productsFound() throws Exception {
-        Response<Search> response = devClientWithAuth.byAdditive("e301-sodium-ascorbate").execute();
+        String fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags";
+        Response<Search> response = devClientWithAuth.byAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).execute();
         assertProductsFound(response);
     }
 

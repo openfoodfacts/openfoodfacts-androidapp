@@ -8,13 +8,11 @@
     android:orientation="vertical"
     android:padding="@dimen/padding_normal">
 
-    <!-- Don't remove android:src, otherwise some devices will not load the icon -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:contentDescription="@string/white_check_image_descr"
-        android:src="@drawable/ic_check_white_24dp"
         android:visibility="visible"
         app:srcCompat="@drawable/ic_check_white_24dp" />
 
