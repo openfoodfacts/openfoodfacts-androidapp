@@ -89,7 +89,7 @@ public class OpenFoodAPIClient {
     private final OpenFoodAPIService apiService;
     private Context mActivity;
     private static final String FIELDS_TO_FETCH_FACETS = String
-        .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags", getLocaleProductNameField());
+        .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags,code", getLocaleProductNameField());
 
     public OpenFoodAPIClient(Activity activity) {
         this(BuildConfig.HOST);
