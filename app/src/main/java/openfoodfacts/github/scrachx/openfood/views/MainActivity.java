@@ -76,6 +76,9 @@ import java.util.Objects;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityMainBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
@@ -95,9 +98,6 @@ import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
@@ -282,6 +282,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         break;
                     case ITEM_SEARCH_BY_CODE:
                         fragment = new FindProductFragment();
+                        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
                     case ITEM_CATEGORIES:
                         startActivity(CategoryActivity.getIntent(this));

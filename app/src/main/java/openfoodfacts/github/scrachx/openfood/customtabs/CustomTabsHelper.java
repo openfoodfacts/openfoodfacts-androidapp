@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package openfoodfacts.github.scrachx.openfood.views.customtabs;
+package openfoodfacts.github.scrachx.openfood.customtabs;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,10 +21,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.browser.customtabs.CustomTabsSession;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.browser.customtabs.CustomTabsSession;
 
 import java.util.ArrayList;
 import java.util.List;

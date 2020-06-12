@@ -8,6 +8,7 @@
         <!--<item name="colorBackground">@color/grey_50</item>-->
         <item name="colorAccent">@color/brand_red</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="searchViewStyle">@style/customSearchView</item>
     </style>
 
     <style name="errorText" parent="@style/TextAppearance.Design.Error">
@@ -23,10 +24,9 @@
         <item name="queryBackground">@color/md_light_appbar</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="searchViewStyle">@style/customSearchView</item>
     </style>
 
     <style name="SplashTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">

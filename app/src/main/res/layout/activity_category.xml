@@ -15,14 +15,9 @@
         tools:context="openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+        <include
+            android:id="@+id/toolbar_include"
+            layout="@layout/toolbar" />
 
         <Button
             android:id="@+id/game_button"
@@ -33,7 +28,7 @@
             android:textColor="@color/md_black_1000"
             android:textSize="@dimen/font_small" />
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment"
             android:name="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment"
             android:layout_width="match_parent"

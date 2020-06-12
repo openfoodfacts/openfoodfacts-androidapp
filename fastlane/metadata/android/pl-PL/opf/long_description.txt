@@ -22,7 +22,7 @@ Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składn
 -Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
 *** Your products, your data ***
-- Your personal data is yours, and is never sent online
+- Twoje dane należą do Ciebie i nigdy nie będą przesyłane online
 Możesz korzystać anonimowo z aplikacji
 Możesz eksportować historię skanowania
 

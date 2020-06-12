@@ -99,9 +99,9 @@ public class OfflineProductService {
             }
         }
         if (includeImages) {
-            return OfflineProductService.getListOfflineProducts().size() > 0;
+            return !OfflineProductService.getListOfflineProducts().isEmpty();
         }
-        return OfflineProductService.getListOfflineProductsWithoutDataSynced().size() > 0;
+        return !OfflineProductService.getListOfflineProductsWithoutDataSynced().isEmpty();
     }
 
     /**
@@ -137,7 +137,7 @@ public class OfflineProductService {
 
         try {
             State state = apiClient
-                .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance()))
+                .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
                 .blockingGet();
 
             boolean isResponseOk = state.getStatus() == 1;

@@ -19,7 +19,6 @@ import androidx.viewpager.widget.ViewPager;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
@@ -33,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
@@ -133,10 +133,13 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opff")) {
+
+        // Add Ingredients fragment for off, obf and opff
+        if (Utils.isFlavor(OFFApplication.OFF, OFFApplication.OBF, OFFApplication.OPFF)) {
             adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         }
-        if (BuildConfig.FLAVOR.equals("off")) {
+
+        if (Utils.isFlavor(OFFApplication.OFF)) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             if ((mState.getProduct().getNutriments() != null &&
                 mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
@@ -146,24 +149,20 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
-        }
-        if (BuildConfig.FLAVOR.equals("opff")) {
+        } else if (Utils.isFlavor(OFFApplication.OPFF)) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
-        }
-
-        if (BuildConfig.FLAVOR.equals("obf")) {
+        } else if (Utils.isFlavor(OFFApplication.OBF)) {
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
             adapterResult.addFragment(new IngredientsAnalysisProductFragment(), newMenuTitles[1]);
-        }
-
-        if (BuildConfig.FLAVOR.equals("opf")) {
+        } else if (Utils.isFlavor(OFFApplication.OPF)) {
             adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
         }
+
         if (preferences.getBoolean("contributionTab", false)) {
             adapterResult.addFragment(new ContributorsFragment(), activity.getString(R.string.contribution_tab));
         }

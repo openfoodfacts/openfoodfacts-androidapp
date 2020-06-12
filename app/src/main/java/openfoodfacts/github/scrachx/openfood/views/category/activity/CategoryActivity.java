@@ -40,7 +40,7 @@ public class CategoryActivity extends BaseActivity {
         binding = ActivityCategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         setTitle(R.string.category_drawer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Button gameButton = findViewById(R.id.game_button);

@@ -39,6 +39,6 @@
     <string name="add_category_prompt_text">아직 완성되지 않은 제품의 카테고리 추가하기</string>
     <string name="add_nutrient_category_prompt_text">아직 완성되지 않은 제품의 정보와 카테고리를 추가하기</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">내가 가진 제품</string>
     <string name="txt_products_to_buy">구매할 제품</string>
 </resources>

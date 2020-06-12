@@ -25,7 +25,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
-import static openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.PRODUCT_API_COMMENT;
 import static org.junit.Assert.*;
 
 public class OpenFoodAPIServiceTest {
@@ -202,7 +201,7 @@ public class OpenFoodAPIServiceTest {
         }};
 
         State body = devClientWithAuth
-            .saveProductSingle(product.getBarcode(), productDetails, PRODUCT_API_COMMENT)
+            .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
             .blockingGet();
 
         assertEquals(body.getStatus(), 1);
