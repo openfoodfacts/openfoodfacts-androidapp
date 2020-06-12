@@ -38,6 +38,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
@@ -134,16 +135,16 @@ public class OpenFoodAPIClient {
     public static String getCommentToUpload(String login) {
         StringBuilder comment;
         switch (BuildConfig.FLAVOR) {
-            case OFFApplication.OBF:
+            case AppFlavors.OBF:
                 comment = new StringBuilder("Official Open Beauty Facts Android app");
                 break;
-            case OFFApplication.OPFF:
+            case AppFlavors.OPFF:
                 comment = new StringBuilder("Official Open Pet Food Facts Android app");
                 break;
-            case OFFApplication.OPF:
+            case AppFlavors.OPF:
                 comment = new StringBuilder("Official Open Products Facts Android app");
                 break;
-            case OFFApplication.OFF:
+            case AppFlavors.OFF:
             default:
                 comment = new StringBuilder("Official Open Food Facts Android app");
                 break;

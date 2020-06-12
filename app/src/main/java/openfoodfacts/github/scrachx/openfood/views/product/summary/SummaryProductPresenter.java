@@ -9,6 +9,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
@@ -170,7 +171,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
 
     @Override
     public void loadAnalysisTags() {
-        if (Utils.isFlavor(OFFApplication.OFF)) {
+        if (Utils.isFlavor(AppFlavors.OFF)) {
             List<String> analysisTags = product.getIngredientsAnalysisTags();
             final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             if (analysisTags != null && !analysisTags.isEmpty()) {

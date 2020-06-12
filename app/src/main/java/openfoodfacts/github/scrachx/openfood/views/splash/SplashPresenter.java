@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -41,12 +41,12 @@ public class SplashPresenter implements ISplashPresenter.Actions {
         activateDownload(Taxonomy.CATEGORY);
         activateDownload(Taxonomy.TAGS);
         activateDownload(Taxonomy.INVALID_BARCODES);
-        activateDownload(Taxonomy.ADDITIVE, OFFApplication.OFF, OFFApplication.OBF);
-        activateDownload(Taxonomy.COUNTRY, OFFApplication.OFF, OFFApplication.OBF);
-        activateDownload(Taxonomy.LABEL, OFFApplication.OFF, OFFApplication.OBF);
-        activateDownload(Taxonomy.ALLERGEN, OFFApplication.OFF);
-        activateDownload(Taxonomy.ANALYSIS_TAGS, OFFApplication.OFF);
-        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, OFFApplication.OFF);
+        activateDownload(Taxonomy.ADDITIVE, AppFlavors.OFF, AppFlavors.OBF);
+        activateDownload(Taxonomy.COUNTRY, AppFlavors.OFF, AppFlavors.OBF);
+        activateDownload(Taxonomy.LABEL, AppFlavors.OFF, AppFlavors.OBF);
+        activateDownload(Taxonomy.ALLERGEN, AppFlavors.OFF);
+        activateDownload(Taxonomy.ANALYSIS_TAGS, AppFlavors.OFF);
+        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, AppFlavors.OFF);
 
         //first run ever off this application, whatever the version
         boolean firstRun = settings.getBoolean("firstRun", true);
