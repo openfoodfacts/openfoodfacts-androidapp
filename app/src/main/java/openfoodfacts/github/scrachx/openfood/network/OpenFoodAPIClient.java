@@ -149,9 +149,10 @@ public class OpenFoodAPIClient {
                 break;
         }
 
-        comment.append(" ").append(Utils.getVersionName(OFFApplication.getInstance()));
+        final OFFApplication instance = OFFApplication.getInstance();
+        comment.append(" ").append(Utils.getVersionName(instance));
         if (login.isEmpty()) {
-            comment.append(" (Added by ").append(Installation.id(OFFApplication.getInstance())).append(")");
+            comment.append(" (Added by ").append(Installation.id(instance)).append(")");
         }
         return comment.toString();
     }
