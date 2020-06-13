@@ -72,7 +72,7 @@ public class CategoryActivity extends BaseActivity {
     }
 
     private void openHungerGame() {
-        String url = getString(R.string.hunger_game_url);
+        final String url = getString(R.string.hunger_game_url);
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(CategoryActivity.this, Uri.parse(url));
