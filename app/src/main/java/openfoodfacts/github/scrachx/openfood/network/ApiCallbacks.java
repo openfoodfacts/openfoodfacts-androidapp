@@ -76,7 +76,7 @@ public class ApiCallbacks {
         void onContributorResponse(boolean value, Search contributor);
     }
 
-    public interface onStateCallback {
+    public interface OnStateCallback {
         void onStateResponse(boolean value, Search state);
     }
 }
