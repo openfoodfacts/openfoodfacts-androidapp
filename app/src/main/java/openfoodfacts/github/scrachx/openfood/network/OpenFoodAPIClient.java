@@ -38,6 +38,7 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
@@ -88,7 +89,7 @@ public class OpenFoodAPIClient {
     private final OpenFoodAPIService apiService;
     private Context mActivity;
     private static final String FIELDS_TO_FETCH_FACETS = String
-        .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags", getLocaleProductNameField());
+        .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags,code", getLocaleProductNameField());
 
     public OpenFoodAPIClient(Activity activity) {
         this(BuildConfig.HOST);
@@ -134,24 +135,25 @@ public class OpenFoodAPIClient {
     public static String getCommentToUpload(String login) {
         StringBuilder comment;
         switch (BuildConfig.FLAVOR) {
-            case OFFApplication.OBF:
+            case AppFlavors.OBF:
                 comment = new StringBuilder("Official Open Beauty Facts Android app");
                 break;
-            case OFFApplication.OPFF:
+            case AppFlavors.OPFF:
                 comment = new StringBuilder("Official Open Pet Food Facts Android app");
                 break;
-            case OFFApplication.OPF:
+            case AppFlavors.OPF:
                 comment = new StringBuilder("Official Open Products Facts Android app");
                 break;
-            case OFFApplication.OFF:
+            case AppFlavors.OFF:
             default:
                 comment = new StringBuilder("Official Open Food Facts Android app");
                 break;
         }
 
-        comment.append(" ").append(Utils.getVersionName(OFFApplication.getInstance()));
+        final OFFApplication instance = OFFApplication.getInstance();
+        comment.append(" ").append(Utils.getVersionName(instance));
         if (login.isEmpty()) {
-            comment.append(" (Added by ").append(InstallationUtils.id(OFFApplication.getInstance())).append(")");
+            comment.append(" (Added by ").append(InstallationUtils.id(instance)).append(")");
         }
         return comment.toString();
     }
@@ -348,13 +350,20 @@ public class OpenFoodAPIClient {
                 if (ingredientsJsonNode != null) {
                     ArrayList<ProductIngredient> productIngredients = new ArrayList<>();
                     final int nbIngredient = ingredientsJsonNode.size();
+
+                    // add ingredients to list from json
                     for (int i = 0; i < nbIngredient; i++) {
                         ProductIngredient productIngredient = new ProductIngredient();
                         final JsonNode ingredient = ingredientsJsonNode.get(i);
                         if (ingredient != null) {
                             productIngredient.setId(ingredient.findValue("id").toString());
                             productIngredient.setText(ingredient.findValue("text").toString());
-                            productIngredient.setRank(Long.parseLong(ingredient.findValue("rank").toString()));
+                            final JsonNode rankNode = ingredient.findValue("rank");
+                            if (rankNode == null) {
+                                productIngredient.setRank(-1);
+                            } else {
+                                productIngredient.setRank(Long.parseLong(rankNode.toString()));
+                            }
                             productIngredients.add(productIngredient);
                         }
                     }

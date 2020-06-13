@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import io.reactivex.exceptions.UndeliverableException;
 import io.reactivex.plugins.RxJavaPlugins;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
@@ -21,10 +22,6 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class OFFApplication extends MultiDexApplication {
     private static DaoSession daoSession;
-    public static final String OFF = "off";
-    public static final String OPFF = "opff";
-    public static final String OPF = "opf";
-    public static final String OBF = "obf";
     private final boolean DEBUG = false;
     private static OFFApplication application;
     private static AppComponent appComponent;
@@ -46,11 +43,11 @@ public class OFFApplication extends MultiDexApplication {
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
         String nameDB;
-        if ((Utils.isFlavor(OFF))) {
+        if ((Utils.isFlavor(AppFlavors.OFF))) {
             nameDB = "open_food_facts";
-        } else if (Utils.isFlavor(OPFF)) {
+        } else if (Utils.isFlavor(AppFlavors.OPFF)) {
             nameDB = "open_pet_food_facts";
-        } else if (Utils.isFlavor(OPF)) {
+        } else if (Utils.isFlavor(AppFlavors.OPF)) {
             nameDB = "open_products_facts";
         } else {
             nameDB = "open_beauty_facts";

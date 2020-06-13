@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
@@ -32,7 +33,6 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
@@ -135,11 +135,11 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
 
         // Add Ingredients fragment for off, obf and opff
-        if (Utils.isFlavor(OFFApplication.OFF, OFFApplication.OBF, OFFApplication.OPFF)) {
+        if (Utils.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
             adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         }
 
-        if (Utils.isFlavor(OFFApplication.OFF)) {
+        if (Utils.isFlavor(AppFlavors.OFF)) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             if ((mState.getProduct().getNutriments() != null &&
                 mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
@@ -149,17 +149,17 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
-        } else if (Utils.isFlavor(OFFApplication.OPFF)) {
+        } else if (Utils.isFlavor(AppFlavors.OPFF)) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
-        } else if (Utils.isFlavor(OFFApplication.OBF)) {
+        } else if (Utils.isFlavor(AppFlavors.OBF)) {
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
             adapterResult.addFragment(new IngredientsAnalysisProductFragment(), newMenuTitles[1]);
-        } else if (Utils.isFlavor(OFFApplication.OPF)) {
+        } else if (Utils.isFlavor(AppFlavors.OPF)) {
             adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
         }
 

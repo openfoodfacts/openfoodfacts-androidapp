@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
@@ -135,7 +135,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         binding.nutriscoreLink.setOnClickListener(v -> openNutriScoreLink());
         binding.imageViewNutrition.setOnClickListener(this::openFullScreen);
         binding.calculateNutritionFacts.setOnClickListener(this::calculateNutritionFacts);
-        binding.getNutriscorePrompt.setOnClickListener(v -> onNutriscoreButtonClick());
+        binding.getNutriscorePrompt.setOnClickListener(v -> onNutriScoreButtonClick());
         binding.newAdd.setOnClickListener(v -> newNutritionImage());
 
         refreshView(getStateFromActivityIntent());
@@ -599,8 +599,8 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         binding.imageGrade.setClickable(false);
     }
 
-    private void onNutriscoreButtonClick() {
-        if (BuildConfig.FLAVOR.equals("off")) {
+    private void onNutriScoreButtonClick() {
+        if (Utils.isFlavor(AppFlavors.OFF, AppFlavors.OBF)) {
             if (isUserNotLoggedIn()) {
                 startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE);
             } else {

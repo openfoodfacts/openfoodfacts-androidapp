@@ -31,7 +31,7 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
         super.onAttach(context);
         State state = getStateFromActivityIntent();
         product = state.getProduct();
-        api = new OpenFoodAPIClient(getActivity());
+        api = new OpenFoodAPIClient(requireActivity());
     }
 
     @Nullable
@@ -47,15 +47,15 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
 
         api.getIngredients(product.getCode(), ((value, ingredients) -> {
             if (value) {
-                adapter = new IngredientAnalysisRecyclerAdapter(getContext(), ingredients, getActivity());
-                binding.ingredientAnalysisRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                adapter = new IngredientAnalysisRecyclerAdapter(ingredients, requireActivity());
+                binding.ingredientAnalysisRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
                 binding.ingredientAnalysisRecyclerView.setAdapter(adapter);
             } else {
                 Toast.makeText(getActivity(), getActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
             }
         }));
 
-        Intent intent = getActivity().getIntent();
+        Intent intent = requireActivity().getIntent();
         if (intent != null && intent.getExtras() != null) {
             refreshView((State) intent.getExtras().getSerializable("state"));
         }

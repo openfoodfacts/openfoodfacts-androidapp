@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -554,23 +555,22 @@ public class ProductBrowsingListActivity extends BaseActivity {
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
             // Retain an instance so that you can call `resetState()` for fresh searches
-            EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
+            // Adds the scroll listener to RecyclerView
+            binding.productsRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(mLayoutManager) {
                 @Override
-                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                public void onLoadMore(int page, int totalItemsCount, RecyclerView view1) {
                     if (mProducts.size() < mCountProducts) {
                         pageAddress = page;
                         getDataFromAPI();
                     }
                 }
-            };
-            // Adds the scroll listener to RecyclerView
-            binding.productsRecyclerView.addOnScrollListener(scrollListener);
+            });
 
             binding.productsRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(ProductBrowsingListActivity.this, (view, position) -> {
-                    Product p = ((ProductsRecyclerViewAdapter) binding.productsRecyclerView.getAdapter()).getProduct(position);
-                    if (p != null) {
-                        String barcode = p.getCode();
+                    Product product = ((ProductsRecyclerViewAdapter) binding.productsRecyclerView.getAdapter()).getProduct(position);
+                    if (product != null) {
+                        String barcode = product.getCode();
                         if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
                             api.getProduct(barcode, ProductBrowsingListActivity.this);
                             try {
@@ -585,17 +585,18 @@ public class ProductBrowsingListActivity extends BaseActivity {
                                 Log.e(ProductBrowsingListActivity.class.getSimpleName(), "addOnItemTouchListener", e);
                             }
                         } else {
-                            new MaterialDialog.Builder(ProductBrowsingListActivity.this)
-                                .title(R.string.device_offline_dialog_title)
-                                .content(R.string.connectivity_check)
-                                .positiveText(R.string.txt_try_again)
-                                .negativeText(R.string.dismiss)
-                                .onPositive((dialog, which) -> {
+                            new MaterialAlertDialogBuilder(ProductBrowsingListActivity.this)
+                                .setTitle(R.string.device_offline_dialog_title)
+                                .setMessage(R.string.connectivity_check)
+                                .setPositiveButton(R.string.txt_try_again, (dialog, which) -> {
                                     if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
                                         api.getProduct(barcode, ProductBrowsingListActivity.this);
                                     } else {
                                         Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
                                     }
+                                })
+                                .setNegativeButton(R.string.dismiss, (dialog, which) -> {
+                                    dialog.dismiss();
                                 })
                                 .show();
                         }

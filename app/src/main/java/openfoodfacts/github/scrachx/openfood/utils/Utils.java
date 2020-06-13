@@ -663,14 +663,14 @@ public class Utils {
      * @return Returns the version name of the app
      */
     @NonNull
-    public static String getVersionName(@NonNull Context context) {
+    public static String getVersionName(@Nullable Context context) {
         try {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException | NullPointerException e) {
             Log.e(Utils.class.getSimpleName(), "getVersionName", e);
+            return "(version unknown)";
         }
-        return "(version unknown)";
     }
 
     /**

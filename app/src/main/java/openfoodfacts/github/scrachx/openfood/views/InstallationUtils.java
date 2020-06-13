@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,7 +22,10 @@ public class InstallationUtils {
         //Helper class
     }
 
-    public static synchronized String id(Context context) {
+    public static synchronized String id(@Nullable Context context) {
+        if (context == null) {
+            return "(no id)";
+        }
         if (sID == null || sID.isEmpty()) {
             File installation = new File(context.getFilesDir(), KEY_INSTALLATION);
             try {

@@ -98,7 +98,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_normal"
                     android:text="@string/add_nutrient_prompt_text"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <TextView
                     android:id="@+id/textCarbonFootprint"
