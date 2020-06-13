@@ -464,7 +464,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
-        getActivity().runOnUiThread(() -> {
+        requireActivity().runOnUiThread(() -> {
             binding.analysisContainer.setVisibility(VISIBLE);
             IngredientAnalysisTagsAdapter adapter = new IngredientAnalysisTagsAdapter(getContext(), analysisTags);
             adapter.setOnItemClickListener((view, position) -> {

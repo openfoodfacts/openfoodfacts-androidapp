@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
@@ -213,6 +214,7 @@ public class ProductRepository implements IProductRepository {
      * @return The allergens in the product.
      */
     public Single<List<Allergen>> reloadAllergensFromServer() {
+        // FIXME: this returns 404
         return getTaxonomyData(Taxonomy.ALLERGEN, true, false, allergenDao);
     }
 
@@ -1016,9 +1018,14 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * @param analysisTag
+     * @param languageCode
+     * @return {@link Maybe#empty()} if no analysis tag found
+     */
     @Override
-    public Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode) {
-        return Single.fromCallable(() -> {
+    public Maybe<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(final String analysisTag, final String languageCode) {
+        return Maybe.fromCallable(() -> {
             AnalysisTagConfig analysisTagConfig = analysisTagConfigDao.queryBuilder()
                 .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
                 .unique();
