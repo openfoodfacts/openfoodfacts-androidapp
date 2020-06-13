@@ -350,13 +350,20 @@ public class OpenFoodAPIClient {
                 if (ingredientsJsonNode != null) {
                     ArrayList<ProductIngredient> productIngredients = new ArrayList<>();
                     final int nbIngredient = ingredientsJsonNode.size();
+
+                    // add ingredients to list from json
                     for (int i = 0; i < nbIngredient; i++) {
                         ProductIngredient productIngredient = new ProductIngredient();
                         final JsonNode ingredient = ingredientsJsonNode.get(i);
                         if (ingredient != null) {
                             productIngredient.setId(ingredient.findValue("id").toString());
                             productIngredient.setText(ingredient.findValue("text").toString());
-                            productIngredient.setRank(Long.parseLong(ingredient.findValue("rank").toString()));
+                            final JsonNode rankNode = ingredient.findValue("rank");
+                            if (rankNode == null) {
+                                productIngredient.setRank(-1);
+                            } else {
+                                productIngredient.setRank(Long.parseLong(rankNode.toString()));
+                            }
                             productIngredients.add(productIngredient);
                         }
                     }

@@ -12,10 +12,10 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "text",
-        "id",
-        "rank",
-        "percent"
+    "text",
+    "id",
+    "rank",
+    "percent"
 })
 public class ProductIngredient implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -27,18 +27,14 @@ public class ProductIngredient implements Serializable {
     private final Map<String, Object> additionalProperties = new HashMap<>();
 
     /**
-     *
-     * @return
-     * The text
+     * @return The text
      */
     public String getText() {
         return text;
     }
 
     /**
-     *
-     * @param text
-     * The text
+     * @param text The text
      */
     public void setText(String text) {
         this.text = text;
@@ -50,18 +46,14 @@ public class ProductIngredient implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The id
+     * @return The id
      */
     public String getId() {
         return id;
     }
 
     /**
-     *
-     * @param id
-     * The id
+     * @param id The id
      */
     public void setId(String id) {
         this.id = id;
@@ -73,18 +65,14 @@ public class ProductIngredient implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The rank
+     * @return The rank
      */
     public long getRank() {
         return rank;
     }
 
     /**
-     *
-     * @param rank
-     * The rank
+     * @param rank The rank, set -1 if no rank returned
      */
     public void setRank(long rank) {
         this.rank = rank;
@@ -96,18 +84,14 @@ public class ProductIngredient implements Serializable {
     }
 
     /**
-     *
-     * @return
-     * The percent
+     * @return The percent
      */
     public String getPercent() {
         return percent;
     }
 
     /**
-     *
-     * @param percent
-     * The percent
+     * @param percent The percent
      */
     public void setPercent(String percent) {
         this.percent = percent;
@@ -136,11 +120,11 @@ public class ProductIngredient implements Serializable {
     @Override
     public String toString() {
         return "Ingredient{" +
-                "text='" + text + '\'' +
-                ", id='" + id + '\'' +
-                ", rank=" + rank +
-                ", percent='" + percent + '\'' +
-                ", additionalProperties=" + additionalProperties +
-                '}';
+            "text='" + text + '\'' +
+            ", id='" + id + '\'' +
+            ", rank=" + rank +
+            ", percent='" + percent + '\'' +
+            ", additionalProperties=" + additionalProperties +
+            '}';
     }
 }
