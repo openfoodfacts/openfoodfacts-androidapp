@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.util.Base64;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.lang.StringUtils;
@@ -17,7 +19,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import io.reactivex.Maybe;
 import io.reactivex.Single;
@@ -232,7 +233,10 @@ public class ProductRepository implements IProductRepository {
      * @param dao used to check if locale data is empty
      * @param <T> type of taxonomy
      */
-    private <T> Single<List<T>> getTaxonomyData(Taxonomy taxonomy, boolean checkUpdate, boolean loadFromLocalDatabase, AbstractDao dao) {
+    private <T> Single<List<T>> getTaxonomyData(Taxonomy taxonomy,
+                                                boolean checkUpdate,
+                                                boolean loadFromLocalDatabase,
+                                                AbstractDao<T, ?> dao) {
         //First check if this taxonomy is to be loaded.
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
         boolean isDownloadActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false);
@@ -240,27 +244,32 @@ public class ProductRepository implements IProductRepository {
         //if the database scheme changed, this settings should be true
         boolean forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false);
 
+        // TODO: better approach
         if (isDownloadActivated) {
             //Taxonomy is marked to be download
-            if (tableIsEmpty(dao)) {
+            if (isDaoEmpty(dao)) {
                 //Table is empty, no check for update, just load taxonomy
                 long lastModifiedDate = getLastModifiedDateFromServer(taxonomy);
                 if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
-                    return taxonomy.load(this, lastModifiedDate);
+                    return logDownload(taxonomy.load(this, lastModifiedDate), taxonomy);
                 }
             } else if (checkUpdate) {
                 //It is ask to check for update - Test if file on server is more recent than last download.
                 long lastModifiedDateFromServer = getLastModifiedDateFromServer(taxonomy);
                 if (forceUpdate || lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > lastDownloadFromSettings) {
-                    return taxonomy.load(this, lastModifiedDateFromServer);
+                    return logDownload(taxonomy.load(this, lastModifiedDateFromServer), taxonomy);
                 }
             }
         }
         if (loadFromLocalDatabase) {
             //If we are here then just get the information from the local database
-            return Single.fromCallable((Callable<List<T>>) dao::loadAll);
+            return Single.just(dao.loadAll());
         }
-        return Single.fromCallable(Collections::emptyList);
+        return Single.just(Collections.emptyList());
+    }
+
+    private <T> Single<List<T>> logDownload(Single<List<T>> load, Taxonomy taxonomy) {
+        return load.doOnSuccess(ts -> Log.i(getClass().getName() + "getTaxonomyData", "refreshed taxonomy '" + taxonomy + "' from server"));
     }
 
     Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
@@ -867,7 +876,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @param dao checks records count of any table
      */
-    private Boolean tableIsEmpty(AbstractDao dao) {
+    private boolean isDaoEmpty(@NonNull AbstractDao dao) {
         return dao.count() == 0;
     }
 
