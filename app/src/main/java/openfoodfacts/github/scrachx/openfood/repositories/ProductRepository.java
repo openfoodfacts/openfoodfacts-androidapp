@@ -4,25 +4,18 @@ import android.content.SharedPreferences;
 import android.util.Base64;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.lang.StringUtils;
-import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.WhereCondition;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.Maybe;
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
@@ -75,7 +68,6 @@ import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
@@ -109,8 +101,6 @@ public class ProductRepository implements IProductRepository {
     private final ProductApiService productApi;
     private final RobotoffAPIService robotoffApi;
     private final TagDao tagDao;
-    // -1 no internet connexion.
-    private final static long TAXONOMY_NO_INTERNET = -9999L;
 
     /**
      * A method used to get instance from the repository.
@@ -160,7 +150,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of Labels.
      */
     public Single<List<Label>> reloadLabelsFromServer() {
-        return getTaxonomyData(Taxonomy.LABEL, true, false, labelDao);
+        return Taxonomy.LABEL.getTaxonomyData(this, true, false, labelDao);
     }
 
     Single<List<Label>> loadLabels(long lastModifiedDate) {
@@ -178,7 +168,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of Tags.
      */
     public Single<List<Tag>> reloadTagsFromServer() {
-        return getTaxonomyData(Taxonomy.TAGS, true, false, tagDao);
+        return Taxonomy.TAGS.getTaxonomyData(this, true, false, tagDao);
     }
 
     Single<List<Tag>> loadTags(long lastModifiedDate) {
@@ -191,7 +181,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     public Single<List<InvalidBarcode>> reloadInvalidBarcodesFromServer() {
-        return getTaxonomyData(Taxonomy.INVALID_BARCODES, true, false, invalidBarcodeDao);
+        return Taxonomy.INVALID_BARCODES.getTaxonomyData(this, true, false, invalidBarcodeDao);
     }
 
     Single<List<InvalidBarcode>> loadInvalidBarcodes(long lastModifiedDate) {
@@ -216,60 +206,12 @@ public class ProductRepository implements IProductRepository {
      */
     public Single<List<Allergen>> reloadAllergensFromServer() {
         // FIXME: this returns 404
-        return getTaxonomyData(Taxonomy.ALLERGEN, true, false, allergenDao);
+        return Taxonomy.ALLERGEN.getTaxonomyData(this, true, false, allergenDao);
     }
 
     @Override
     public Single<List<Allergen>> getAllergens() {
-        return getTaxonomyData(Taxonomy.ALLERGEN, false, true, allergenDao);
-    }
-
-    /**
-     * @param taxonomy enum defining taxonomy to be downloaded
-     * @param checkUpdate checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     *     *     If checkUpdate is true (or local database is empty) then load it from the server,
-     *     *     *     else from the local database.
-     * @param loadFromLocalDatabase if true the values will be loaded from local database if no update to perform from server
-     * @param dao used to check if locale data is empty
-     * @param <T> type of taxonomy
-     */
-    private <T> Single<List<T>> getTaxonomyData(Taxonomy taxonomy,
-                                                boolean checkUpdate,
-                                                boolean loadFromLocalDatabase,
-                                                AbstractDao<T, ?> dao) {
-        //First check if this taxonomy is to be loaded.
-        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        boolean isDownloadActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false);
-        long lastDownloadFromSettings = mSettings.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L);
-        //if the database scheme changed, this settings should be true
-        boolean forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false);
-
-        // TODO: better approach
-        if (isDownloadActivated) {
-            //Taxonomy is marked to be download
-            if (isDaoEmpty(dao)) {
-                //Table is empty, no check for update, just load taxonomy
-                long lastModifiedDate = getLastModifiedDateFromServer(taxonomy);
-                if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
-                    return logDownload(taxonomy.load(this, lastModifiedDate), taxonomy);
-                }
-            } else if (checkUpdate) {
-                //It is ask to check for update - Test if file on server is more recent than last download.
-                long lastModifiedDateFromServer = getLastModifiedDateFromServer(taxonomy);
-                if (forceUpdate || lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > lastDownloadFromSettings) {
-                    return logDownload(taxonomy.load(this, lastModifiedDateFromServer), taxonomy);
-                }
-            }
-        }
-        if (loadFromLocalDatabase) {
-            //If we are here then just get the information from the local database
-            return Single.just(dao.loadAll());
-        }
-        return Single.just(Collections.emptyList());
-    }
-
-    private <T> Single<List<T>> logDownload(Single<List<T>> load, Taxonomy taxonomy) {
-        return load.doOnSuccess(ts -> Log.i(getClass().getName() + "getTaxonomyData", "refreshed taxonomy '" + taxonomy + "' from server"));
+        return Taxonomy.ALLERGEN.getTaxonomyData(this, false, true, allergenDao);
     }
 
     Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
@@ -287,7 +229,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of countries.
      */
     public Single<List<Country>> reloadCountriesFromServer() {
-        return getTaxonomyData(Taxonomy.COUNTRY, true, false, countryDao);
+        return Taxonomy.COUNTRY.getTaxonomyData(this, true, false, countryDao);
     }
 
     Single<List<Country>> loadCountries(Long lastModifiedDate) {
@@ -305,12 +247,12 @@ public class ProductRepository implements IProductRepository {
      * @return The list of categories.
      */
     public Single<List<Category>> reloadCategoriesFromServer() {
-        return getTaxonomyData(Taxonomy.CATEGORY, true, false, categoryDao);
+        return Taxonomy.CATEGORY.getTaxonomyData(this, true, false, categoryDao);
     }
 
     @Override
     public Single<List<Category>> getCategories() {
-        return getTaxonomyData(Taxonomy.CATEGORY, false, true, categoryDao);
+        return Taxonomy.CATEGORY.getTaxonomyData(this, false, true, categoryDao);
     }
 
     Single<List<Category>> loadCategories(Long lastModifiedDate) {
@@ -338,7 +280,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of additives.
      */
     public Single<List<Additive>> reloadAdditivesFromServer() {
-        return getTaxonomyData(Taxonomy.ADDITIVE, true, false, additiveDao);
+        return Taxonomy.ADDITIVE.getTaxonomyData(this, true, false, additiveDao);
     }
 
     Single<List<Additive>> loadAdditives(long lastModifiedDate) {
@@ -362,7 +304,7 @@ public class ProductRepository implements IProductRepository {
      * @return The ingredients in the product.
      */
     public Single<List<Ingredient>> reloadIngredientsFromServer() {
-        return getTaxonomyData(Taxonomy.INGREDIENT, true, false, ingredientDao);
+        return Taxonomy.INGREDIENT.getTaxonomyData(this, true, false, ingredientDao);
     }
 
     Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
@@ -372,31 +314,6 @@ public class ProductRepository implements IProductRepository {
                 saveIngredients(ingredients);
                 updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate);
             });
-    }
-
-    /**
-     * This function check the last modified date of the taxonomy.json file on OF server.
-     *
-     * @param taxonomy The lowercase taxonomy to be check
-     * @return lastModifierDate     The timestamp of the last changes date of the taxonomy.json on OF server
-     *     Or TAXONOMY_NO_INTERNET if there is no connexion.
-     */
-    private long getLastModifiedDateFromServer(Taxonomy taxonomy) {
-        long lastModifiedDate;
-        try {
-            String baseUrl = BuildConfig.OFWEBSITE;
-            URL url = new URL(baseUrl + taxonomy.getJsonUrl());
-            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-            lastModifiedDate = httpCon.getLastModified();
-            httpCon.disconnect();
-        } catch (IOException e) {
-            //Problem
-            Log.e(getClass().getName(), "getLastModifiedDate", e);
-            Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
-            return TAXONOMY_NO_INTERNET;
-        }
-        Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
-        return lastModifiedDate;
     }
 
     /**
@@ -872,15 +789,6 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
-     * Checks whether table is empty
-     *
-     * @param dao checks records count of any table
-     */
-    private boolean isDaoEmpty(@NonNull AbstractDao dao) {
-        return dao.count() == 0;
-    }
-
-    /**
      * Loads question from the local database by code and lang of question.
      *
      * @param code for the question
@@ -931,7 +839,7 @@ public class ProductRepository implements IProductRepository {
      * @return The analysis tags in the product.
      */
     public Single<List<AnalysisTag>> reloadAnalysisTagsFromServer() {
-        return getTaxonomyData(Taxonomy.ANALYSIS_TAGS, true, false, analysisTagDao);
+        return Taxonomy.ANALYSIS_TAGS.getTaxonomyData(this, true, false, analysisTagDao);
     }
 
     Single<List<AnalysisTag>> loadAnalysisTags(long lastModifiedDate) {
@@ -969,7 +877,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     public Single<List<AnalysisTagConfig>> reloadAnalysisTagConfigsFromServer() {
-        return getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, true, false, analysisTagConfigDao);
+        return Taxonomy.ANALYSIS_TAG_CONFIG.getTaxonomyData(this, true, false, analysisTagConfigDao);
     }
 
     Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
