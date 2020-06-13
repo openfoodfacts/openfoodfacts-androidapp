@@ -820,8 +820,8 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         binding.manufacturingPlaceTil.setVisibility(visibility);
         binding.embCodeTil.setVisibility(visibility);
         binding.linkTil.setVisibility(visibility);
-        ((View) binding.hintLink).setVisibility(visibility);
-        ((View) binding.hintLink2).setVisibility(visibility);
+        binding.hintLink.setVisibility(visibility);
+        binding.hintLink2.setVisibility(visibility);
     }
 
     void togglePurchasingSectionVisibility() {

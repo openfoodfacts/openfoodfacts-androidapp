@@ -978,7 +978,7 @@ public class OpenFoodAPIClient {
         apiService.getInfoAddedIncompleteProducts(contributor, page).enqueue(createCallback(onContributorCallback));
     }
 
-    public void getProductsByStates(String state, final int page, final ApiCallbacks.onStateCallback onStateCallback) {
+    public void getProductsByStates(String state, final int page, final ApiCallbacks.OnStateCallback onStateCallback) {
         apiService.getProductsByState(state, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
             public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {

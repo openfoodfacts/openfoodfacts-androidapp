@@ -470,7 +470,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         binding.btnEditImageNutritionFacts.setVisibility(View.VISIBLE);
     }
 
-    private String getSelectedUnit(String nutrientShortName, int selectedIdx) {
+    private String getSelectedUnit(int selectedIdx) {
         return NUTRIENTS_UNITS[selectedIdx];
     }
 
@@ -744,7 +744,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         String newUnit = null;
         String newMod = null;
         if (EditTextUtils.hasUnit(editTextView) && editTextView.getUnitSpinner() != null) {
-            newUnit = getSelectedUnit(editTextView.getEntryName(), editTextView.getUnitSpinner().getSelectedItemPosition());
+            newUnit = getSelectedUnit(editTextView.getUnitSpinner().getSelectedItemPosition());
         }
         if (editTextView.getModSpinner() != null) {
             newMod = editTextView.getModSpinner().getSelectedItem().toString();
@@ -769,7 +769,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
         // Add unit field {nutrient-id}_unit to map
         if (EditTextUtils.hasUnit(editTextView) && editTextView.getUnitSpinner() != null) {
-            final String selectedUnit = getSelectedUnit(editTextView.getEntryName(), editTextView.getUnitSpinner().getSelectedItemPosition());
+            final String selectedUnit = getSelectedUnit(editTextView.getUnitSpinner().getSelectedItemPosition());
             targetMap.put(fieldName + ApiFields.Suffix.UNIT, Html.escapeHtml(selectedUnit));
         }
 

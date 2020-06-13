@@ -82,7 +82,7 @@ public class CategoryProductHelper {
             @Override
             public void onClick(@NonNull View view) {
                 if (category.getIsWikiDataIdPresent()) {
-                    apiClient.doSomeThing(category.getWikiDataId(), (result) -> {
+                    apiClient.doSomeThing(category.getWikiDataId(), result -> {
                         if (result != null) {
                             FragmentActivity activity = baseFragment.getActivity();
 
