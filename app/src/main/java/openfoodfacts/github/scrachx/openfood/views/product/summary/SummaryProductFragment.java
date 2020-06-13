@@ -35,7 +35,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
@@ -91,6 +90,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static openfoodfacts.github.scrachx.openfood.AppFlavors.OFF;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
@@ -186,7 +186,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.labelsIcon.setVisibility(VISIBLE);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(getContext()) && Utils.isBatteryLevelLow(requireContext())) {
+        if (Utils.isDisableImageLoad(requireActivity()) && Utils.isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true;
         }
 
@@ -275,12 +275,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 binding.buttonMorePictures.setVisibility(GONE);
             }
         } catch (NullPointerException e) {
-            if (BuildConfig.DEBUG) {
-                Log.i(getClass().getSimpleName(), e.toString());
-            }
+            Log.d(getClass().getSimpleName(), e.toString());
         }
 
-        if (BuildConfig.FLAVOR.equals("off")) {
+        if (Utils.isFlavor(OFF)) {
             binding.scoresLayout.setVisibility(VISIBLE);
             List<NutrientLevelItem> levelItem = new ArrayList<>();
             Nutriments nutriments = product.getNutriments();
@@ -358,6 +356,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         } else {
             binding.scoresLayout.setVisibility(GONE);
         }
+
         //to be sure that top of the product view is visible at start
         binding.textNameProduct.requestFocus();
         binding.textNameProduct.clearFocus();
@@ -381,7 +380,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.imageGrade.setImageResource(nutritionGradeResource);
             binding.imageGrade.setOnClickListener(view1 -> {
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.requireActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         } else {
             binding.imageGrade.setVisibility(GONE);
@@ -395,7 +394,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.novaGroup.setOnClickListener(view1 -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.getActivity(), customTabsIntent, uri, new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.requireActivity(), customTabsIntent, uri, new WebViewFallback());
             });
         } else {
             binding.novaGroup.setVisibility(GONE);
@@ -513,7 +512,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showProductQuestion(Question question) {
-        if (Utils.isUserLoggedIn(getContext()) && question != null && !question.isEmpty()) {
+        if (Utils.isUserLoggedIn(requireActivity()) && question != null && !question.isEmpty()) {
             productQuestion = question;
             binding.productQuestionText.setText(String.format("%s%n%s",
                 question.getQuestion(), question.getValue()));
@@ -523,15 +522,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.productQuestionLayout.setVisibility(GONE);
             productQuestion = null;
         }
-        refreshNutriscorePrompt();
-        refreshScoresLayout();
+        if (Utils.isFlavor(OFF)) {
+            refreshNutriscorePrompt();
+            refreshScoresLayout();
+        }
     }
 
     private void onProductQuestionClick() {
-        if (productQuestion == null && !Utils.isUserLoggedIn(getContext())) {
+        if (productQuestion == null && !Utils.isUserLoggedIn(requireActivity())) {
             return;
         }
-        new QuestionDialog(getActivity())
+        new QuestionDialog(requireActivity())
             .setBackgroundColor(R.color.colorPrimaryDark)
             .setQuestion(productQuestion.getQuestion())
             .setValue(productQuestion.getValue())
@@ -564,8 +565,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     public void sendProductInsights(String insightId, int annotation) {
-        Log.d("SummaryProductFragment",
-            String.format("Annotation %d received for insight %s", annotation, insightId));
+        Log.d("SummaryProductFragment", String.format("Annotation %d received for insight %s", annotation, insightId));
         presenter.annotateInsight(insightId, annotation);
         binding.productQuestionLayout.setVisibility(GONE);
         productQuestion = null;
@@ -601,7 +601,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showCategoriesState(String state) {
-        getActivity().runOnUiThread(() -> {
+        requireActivity().runOnUiThread(() -> {
             if (ProductInfoState.LOADING.equals(state)) {
                 if (getContext() != null) {
                     binding.categoriesText.append(getString(R.string.txtLoading));
@@ -615,7 +615,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showLabelsState(String state) {
-        getActivity().runOnUiThread(() -> {
+        requireActivity().runOnUiThread(() -> {
             if (ProductInfoState.LOADING.equals(state)) {
                 binding.labelsText.append(getString(R.string.txtLoading));
             } else if (ProductInfoState.EMPTY.equals(state)) {
@@ -645,10 +645,10 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View view) {
+            public void onClick(@NonNull View view) {
 
                 if (label.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(label.getWikiDataId(), (result) -> {
+                    apiClientForWikiData.doSomeThing(label.getWikiDataId(), result -> {
                         if (result != null) {
                             FragmentActivity activity = getActivity();
                             if (activity != null && !activity.isFinishing()) {
@@ -678,7 +678,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void onAddNutriScorePromptClick() {
-        if (BuildConfig.FLAVOR.equals("off")) {
+        if (Utils.isFlavor(OFF)) {
             if (isUserNotLoggedIn()) {
                 startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN);
             } else {
@@ -870,12 +870,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onSuccess() {
         binding.uploadingImageProgress.setVisibility(GONE);
         binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

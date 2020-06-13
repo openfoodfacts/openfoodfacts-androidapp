@@ -164,6 +164,7 @@
                         <ImageButton
                             android:id="@+id/action_compare_button"
                             style="@style/ActionButton"
+                            android:contentDescription="@string/product_summary_action_compare_button_label"
                             app:srcCompat="@drawable/ic_compare_arrows_circle_24dp" />
 
                         <TextView
@@ -185,6 +186,7 @@
                         <ImageButton
                             android:id="@+id/action_add_to_list_button"
                             style="@style/ActionButton"
+                            android:contentDescription="@string/product_summary_action_add_to_list_button_label"
                             app:srcCompat="@drawable/ic_bookmark_circle_24dp" />
 
                         <TextView
@@ -207,6 +209,7 @@
                         <ImageButton
                             android:id="@+id/action_edit_button"
                             style="@style/ActionButton"
+                            android:contentDescription="@string/product_summary_action_edit_button_label"
                             app:srcCompat="@drawable/ic_edit_circle_24dp" />
 
                         <TextView
@@ -230,6 +233,7 @@
                         <ImageButton
                             android:id="@+id/action_share_button"
                             style="@style/ActionButton"
+                            android:contentDescription="@string/product_summary_action_share_button_label"
                             app:srcCompat="@drawable/ic_share_circle_24dp" />
 
                         <TextView
@@ -282,7 +286,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    tools:visibility="gone">
 
                     <LinearLayout
                         android:id="@+id/grades_wrapper"
@@ -360,7 +365,7 @@
                     android:paddingTop="@dimen/spacing_tiny"
                     android:paddingBottom="@dimen/spacing_tiny"
                     android:visibility="gone"
-                    tools:visibility="visible">
+                    tools:visibility="gone">
 
                     <ImageView
                         android:id="@+id/product_question_icon"
