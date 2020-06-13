@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
 
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Callback;
@@ -93,7 +92,8 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         client = new OpenFoodAPIClient(this);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_full_screen_image);
+        binding = ActivityFullScreenImageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // Setup onclick listeners
         binding.btnClose.setOnClickListener(v -> onExit());
