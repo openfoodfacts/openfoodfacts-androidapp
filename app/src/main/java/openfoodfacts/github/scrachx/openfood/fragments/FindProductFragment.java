@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +57,7 @@ public class FindProductFragment extends NavigationBaseFragment {
     private void onSearchBarcodeProduct() {
         Utils.hideKeyboard(requireActivity());
 
-        final String barCodeTxt = ((EditText) binding.editTextBarcode).getText().toString();
+        final String barCodeTxt = binding.editTextBarcode.getText().toString();
         if (barCodeTxt.isEmpty()) {
             binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeRequire));
             return;
