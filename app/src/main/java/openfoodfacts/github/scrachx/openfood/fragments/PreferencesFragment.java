@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.content.ContextCompat;
@@ -46,7 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
@@ -81,7 +83,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     private Context context;
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(Menu menu, @NonNull MenuInflater inflater) {
         MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
@@ -123,7 +125,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
-                new GetAdditives().execute();
+                new GetAdditivesTask().execute();
             }
             return true;
         });
@@ -186,8 +188,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             contactIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             try {
                 startActivity(contactIntent);
-            } catch (android.content.ActivityNotFoundException e) {
-
+            } catch (ActivityNotFoundException e) {
                 Toast.makeText(getActivity(), R.string.email_not_found, Toast.LENGTH_SHORT).show();
             }
             return true;
@@ -197,7 +198,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         rateus.setOnPreferenceClickListener(preference -> {
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getPackageName())));
-            } catch (android.content.ActivityNotFoundException e) {
+            } catch (ActivityNotFoundException e) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
             }
             return true;
@@ -238,7 +239,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         CheckBoxPreference photoPreference = (CheckBoxPreference) findPreference("photoMode");
-        if (BuildConfig.FLAVOR.equals("opf")) {
+        if (Utils.isFlavor(AppFlavors.OPF)) {
             photoPreference.setVisible(false);
         }
 
@@ -255,8 +256,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Log.e(PreferencesFragment.class.getSimpleName(), "onCreatePreferences", e);
         }
 
-        if (Utils.isFlavor(OFFApplication.OFF, OFFApplication.OBF, OFFApplication.OPFF)) {
-            new GetAnalysisTagConfigs(this).execute(daoSession);
+        if (Utils.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
+            new GetAnalysisTagConfigsTask(this).execute(daoSession);
         } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
             PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
@@ -265,55 +266,56 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     }
 
     private void buildDisplayCategory(List<AnalysisTagConfig> configs) {
-        if (isAdded()) {
-            PreferenceScreen preferenceScreen = getPreferenceScreen();
-            PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
-            displayCategory.removeAll();
-            preferenceScreen.addPreference(displayCategory);
-            // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
-            if (configs == null || configs.isEmpty()) {
-                Preference preference = new Preference(preferenceScreen.getContext());
-                preference.setTitle(R.string.load_ingredient_detection_data);
-                preference.setSummary(R.string.load_ingredient_detection_data_summary);
-                preference.setOnPreferenceClickListener(pref -> {
-                    pref.setOnPreferenceClickListener(null);
-                    //the service will load server resources only if newer than already downloaded...
-                    Intent intent = new Intent(context, LoadTaxonomiesService.class);
-                    intent.putExtra("receiver", new ResultReceiver(new Handler()) {
-                        @Override
-                        protected void onReceiveResult(int resultCode, Bundle resultData) {
-                            super.onReceiveResult(resultCode, resultData);
-
-                            if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
-                                preference.setTitle(R.string.please_wait);
-                                preference.setIcon(R.drawable.ic_cloud_download_black_24dp);
-                                preference.setSummary(null);
-                                preference.setWidgetLayoutResource(R.layout.loading);
-                            } else {
-                                new GetAnalysisTagConfigs(PreferencesFragment.this).execute(OFFApplication.getDaoSession());
-                            }
-                        }
-                    });
-                    context.startService(intent);
-                    return true;
-                });
-                displayCategory.addPreference(preference);
-            } else {
-                for (AnalysisTagConfig config : configs) {
-
-                    CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
-                    preference.setKey(config.getType());
-                    preference.setDefaultValue(true);
-                    preference.setSummary(null);
-                    preference.setSummaryOn(null);
-                    preference.setSummaryOff(null);
-                    preference.setTitle(getString(R.string.display_analysis_tag_status, config.getTypeName().toLowerCase()));
-                    displayCategory.addPreference(preference);
-                }
-            }
-
-            displayCategory.setVisible(true);
+        if (!isAdded()) {
+            return;
         }
+        PreferenceScreen preferenceScreen = getPreferenceScreen();
+        PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+        displayCategory.removeAll();
+        preferenceScreen.addPreference(displayCategory);
+        // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
+        if (configs == null || configs.isEmpty()) {
+            Preference preference = new Preference(preferenceScreen.getContext());
+            preference.setTitle(R.string.load_ingredient_detection_data);
+            preference.setSummary(R.string.load_ingredient_detection_data_summary);
+            preference.setOnPreferenceClickListener(pref -> {
+                pref.setOnPreferenceClickListener(null);
+                //the service will load server resources only if newer than already downloaded...
+                Intent intent = new Intent(context, LoadTaxonomiesService.class);
+                intent.putExtra("receiver", new ResultReceiver(new Handler()) {
+                    @Override
+                    protected void onReceiveResult(int resultCode, Bundle resultData) {
+                        super.onReceiveResult(resultCode, resultData);
+
+                        if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
+                            preference.setTitle(R.string.please_wait);
+                            preference.setIcon(R.drawable.ic_cloud_download_black_24dp);
+                            preference.setSummary(null);
+                            preference.setWidgetLayoutResource(R.layout.loading);
+                        } else {
+                            new GetAnalysisTagConfigsTask(PreferencesFragment.this).execute(OFFApplication.getDaoSession());
+                        }
+                    }
+                });
+                context.startService(intent);
+                return true;
+            });
+            displayCategory.addPreference(preference);
+        } else {
+            for (AnalysisTagConfig config : configs) {
+
+                CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
+                preference.setKey(config.getType());
+                preference.setDefaultValue(true);
+                preference.setSummary(null);
+                preference.setSummaryOn(null);
+                preference.setSummaryOff(null);
+                preference.setTitle(getString(R.string.display_analysis_tag_status, config.getTypeName().toLowerCase()));
+                displayCategory.addPreference(preference);
+            }
+        }
+
+        displayCategory.setVisible(true);
     }
 
     private boolean openWebCustomTab(int faqUrl) {
@@ -366,11 +368,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
     }
 
-    private static class GetAnalysisTagConfigs extends AsyncTask<DaoSession, Void, List<AnalysisTagConfig>> {
+    private static class GetAnalysisTagConfigsTask extends AsyncTask<DaoSession, Void, List<AnalysisTagConfig>> {
         private final String language;
         private final WeakReference<PreferencesFragment> wRefFragment;
 
-        GetAnalysisTagConfigs(PreferencesFragment fragment) {
+        GetAnalysisTagConfigsTask(PreferencesFragment fragment) {
             this.wRefFragment = new WeakReference<>(fragment);
             language = LocaleHelper.getLanguage(fragment.context);
         }
@@ -412,7 +414,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
     }
 
-    private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
+    private class GetAdditivesTask extends AsyncTask<Void, Integer, Boolean> {
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
         private final LoadToast lt = new LoadToast(requireActivity());
 
@@ -426,7 +428,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
 
         @Override
-        protected Boolean doInBackground(Void... arg0) {
+        protected Boolean doInBackground(Void... ignored) {
             final FragmentActivity activity = getActivity();
             if (activity == null) {
                 return true;
