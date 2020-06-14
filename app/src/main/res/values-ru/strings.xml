@@ -694,6 +694,7 @@
     <string name="txt_info_your_listed_products">Вы сможете добавлять товары в этот список, выполнив их поиск и кликнув кнопку \"+\" в правом верхнем углу страницы товара.</string>
     <string name="search_history_pref_title">Очистить историю поиска</string>
     <string name="search_history_pref_summary">Удалить все поиски, которые вы выполняли на этом устройстве</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Выберите свою страну</string>
     <string name="settings_country_summary">Изменить выбранную страну</string>
     <string name="settings_country_title">Страна</string>
