@@ -944,50 +944,6 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public class SyncOldHistoryTask extends AsyncTask<Void, Void, Void> {
-        boolean success = true;
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            List<HistoryProduct> historyProducts = mHistoryProductDao.loadAll();
-            int size = historyProducts.size();
-            for (int i = 0; i < size; i++) {
-                HistoryProduct historyProduct = historyProducts.get(i);
-                apiService.getShortProductByBarcode(historyProduct.getBarcode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
-                        final State s = response.body();
-
-                        if (s != null && s.getStatus() != 0) {
-                            Product product = s.getProduct();
-                            HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(),
-                                product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
-                                product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
-                            Log.d("syncOldHistory", hp.toString());
-
-                            hp.setLastSeen(historyProduct.getLastSeen());
-                            mHistoryProductDao.insertOrReplace(hp);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
-                        success = false;
-                    }
-                });
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            if (success) {
-                mContext.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply();
-            }
-        }
-    }
-
     public void getProductsByStates(String state, final int page, final ApiCallbacks.OnStateCallback onStateCallback) {
         apiService.getProductsByState(state, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
             @Override
