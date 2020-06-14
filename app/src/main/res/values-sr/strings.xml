@@ -189,7 +189,7 @@
     <string name="hintBrand">Brend</string>
     <string name="txtSendAll">Pošaljite sve</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Otpremanje…</string>
+    <string name="toastSending">Otpremanje...</string>
     <string name="txtLoading">Učitavam</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">Ovaj proizvod je sačuvan lokalno, možete ga izmeniti u meniju \"Offline edit\"</string>
@@ -253,7 +253,7 @@
     <string name="title_clear_history_dialog">Obriši</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Izvezi CSV</string>
-    <string name="txt_exporting_history">Izvoz istorije u toku…</string>
+    <string name="txt_exporting_history">Izvoz istorije u toku...</string>
     <string name="txt_history_exported">Istorija izvezena</string>
     <string name="permision_write_external_storage">Dozvola za upis na eksternu memorije je potrebna za izvoz istorije.</string>
     <string name="no_brand">No Brand</string>
@@ -688,6 +688,7 @@
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Država</string>
