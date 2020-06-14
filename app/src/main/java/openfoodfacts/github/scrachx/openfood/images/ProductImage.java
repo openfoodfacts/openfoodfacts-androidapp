@@ -26,9 +26,9 @@ public class ProductImage {
     }
 
     public ProductImage(String code, ProductImageField field, File image, String language) {
-        this.code = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
+        this.code = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code);
         this.language = language;
-        this.field = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), field.toString() + '_' + language);
+        this.field = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), field.toString() + '_' + language);
 
         switch (field) {
             case FRONT:

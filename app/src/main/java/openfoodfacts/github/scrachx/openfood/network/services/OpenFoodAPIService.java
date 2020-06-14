@@ -339,7 +339,7 @@ public interface OpenFoodAPIService {
     Call<Search> getInfoAddedProducts(@Path("Contributor") String contributor, @Path("page") int page);
 
     @GET("informer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
-    Call<Search> getInfoAddedIncompleteProducts(@Path("Contributor") String contributor, @Path("page") int page);
+    Single<Search> getInfoAddedIncompleteProductsSingle(@Path("Contributor") String contributor, @Path("page") int page);
 
     @GET("last-edit-date/{LastEditDate}.json")
     Call<Search> byLastEditDate(@Path("LastEditDate") String lastEditDate);

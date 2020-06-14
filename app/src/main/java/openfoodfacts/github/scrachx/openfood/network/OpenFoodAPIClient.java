@@ -43,7 +43,6 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
@@ -79,36 +78,19 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUT
  * API Client for all API callbacks
  */
 public class OpenFoodAPIClient {
-    public static final String TEXT_PLAIN = "text/plain";
-    private static final String USER_ID = "user_id";
+    public static final String MIME_TEXT = "text/plain";
     public static final String PNG_EXT = ".png\"";
     private HistoryProductDao mHistoryProductDao;
     private ToUploadProductDao mToUploadProductDao;
     private static final JacksonConverterFactory jacksonConverterFactory = JacksonConverterFactory.create();
     private static final OkHttpClient httpClient = Utils.httpClientBuilder();
     private final OpenFoodAPIService apiService;
-    private Context mActivity;
+    private final Context mContext;
     private static final String FIELDS_TO_FETCH_FACETS = String
         .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags,code", getLocaleProductNameField());
 
-    public OpenFoodAPIClient(Activity activity) {
-        this(BuildConfig.HOST);
-        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
-        mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
-        mActivity = activity;
-    }
-
-    //used to upload in background
     public OpenFoodAPIClient(Context context) {
-        this(BuildConfig.HOST);
-        DaoSession daoSession = Utils.getDaoSession();
-        mToUploadProductDao = daoSession.getToUploadProductDao();
-    }
-
-    public OpenFoodAPIClient(Activity activity, String url) {
-        this(url);
-        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
-        mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
+        this(context, BuildConfig.HOST);
     }
 
     /**
@@ -116,7 +98,7 @@ public class OpenFoodAPIClient {
      *
      * @param apiUrl base url for the API
      */
-    private OpenFoodAPIClient(String apiUrl) {
+    public OpenFoodAPIClient(Context context, String apiUrl) {
         apiService = new Retrofit.Builder()
             .baseUrl(apiUrl)
             .client(httpClient)
@@ -125,6 +107,9 @@ public class OpenFoodAPIClient {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
             .create(OpenFoodAPIService.class);
+        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
+        mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
+        mContext = context;
     }
 
     /**
@@ -754,7 +739,7 @@ public class OpenFoodAPIClient {
         final String login = settings.getString("user", "");
         imgMap.put("comment", OpenFoodAPIClient.getCommentToUpload(login));
         if (StringUtils.isNotBlank(login)) {
-            imgMap.put(USER_ID, login);
+            imgMap.put(ApiFields.Keys.USER_ID, login);
         }
         final String password = settings.getString("pass", "");
         if (StringUtils.isNotBlank(password)) {
@@ -766,9 +751,9 @@ public class OpenFoodAPIClient {
     public static String fillWithUserLoginInfo(Map<String, RequestBody> imgMap) {
         Map<String, String> values = addUserInfo(new HashMap<>());
         for (Map.Entry<String, String> entry : values.entrySet()) {
-            imgMap.put(entry.getKey(), RequestBody.create(MediaType.parse(TEXT_PLAIN), entry.getValue()));
+            imgMap.put(entry.getKey(), RequestBody.create(MediaType.parse(MIME_TEXT), entry.getValue()));
         }
-        return values.get(USER_ID);
+        return values.get(ApiFields.Keys.USER_ID);
     }
 
     public void editImage(String code, Map<String, String> imgMap, ApiCallbacks.OnEditImageCallback onEditImageCallback) {
@@ -833,48 +818,8 @@ public class OpenFoodAPIClient {
         };
     }
 
-    public class SyncOldHistoryTask extends AsyncTask<Void, Void, Void> {
-        boolean success = true;
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            List<HistoryProduct> historyProducts = mHistoryProductDao.loadAll();
-            int size = historyProducts.size();
-            for (int i = 0; i < size; i++) {
-                HistoryProduct historyProduct = historyProducts.get(i);
-                apiService.getShortProductByBarcode(historyProduct.getBarcode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
-                    @Override
-                    public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
-                        final State s = response.body();
-
-                        if (s != null && s.getStatus() != 0) {
-                            Product product = s.getProduct();
-                            HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(),
-                                product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
-                                product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
-                            Log.d("syncOldHistory", hp.toString());
-
-                            hp.setLastSeen(historyProduct.getLastSeen());
-                            mHistoryProductDao.insertOrReplace(hp);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
-                        success = false;
-                    }
-                });
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            if (success) {
-                mActivity.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply();
-            }
-        }
+    public Single<Search> getInfoAddedIncompleteProductsSingle(String contributor, final int page) {
+        return apiService.getInfoAddedIncompleteProductsSingle(contributor, page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     private Callback<Search> createCallback(ApiCallbacks.OnContributorCallback onContributorCallback) {
@@ -974,8 +919,48 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void getInfoAddedIncompleteProducts(String contributor, final int page, final ApiCallbacks.OnContributorCallback onContributorCallback) {
-        apiService.getInfoAddedIncompleteProducts(contributor, page).enqueue(createCallback(onContributorCallback));
+    public class SyncOldHistoryTask extends AsyncTask<Void, Void, Void> {
+        boolean success = true;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            List<HistoryProduct> historyProducts = mHistoryProductDao.loadAll();
+            int size = historyProducts.size();
+            for (int i = 0; i < size; i++) {
+                HistoryProduct historyProduct = historyProducts.get(i);
+                apiService.getShortProductByBarcode(historyProduct.getBarcode(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
+                    @Override
+                    public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
+                        final State s = response.body();
+
+                        if (s != null && s.getStatus() != 0) {
+                            Product product = s.getProduct();
+                            HistoryProduct hp = new HistoryProduct(product.getProductName(), product.getBrands(),
+                                product.getImageSmallUrl(LocaleHelper.getLanguage(OFFApplication.getInstance())),
+                                product.getCode(), product.getQuantity(), product.getNutritionGradeFr());
+                            Log.d("syncOldHistory", hp.toString());
+
+                            hp.setLastSeen(historyProduct.getLastSeen());
+                            mHistoryProductDao.insertOrReplace(hp);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
+                        success = false;
+                    }
+                });
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if (success) {
+                mContext.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply();
+            }
+        }
     }
 
     public void getProductsByStates(String state, final int page, final ApiCallbacks.OnStateCallback onStateCallback) {

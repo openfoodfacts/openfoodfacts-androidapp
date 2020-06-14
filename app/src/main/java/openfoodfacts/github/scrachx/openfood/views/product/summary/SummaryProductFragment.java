@@ -709,7 +709,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         String shareUrl = " " + getString(R.string.website_product) + product.getCode();
         Intent sharingIntent = new Intent();
         sharingIntent.setAction(Intent.ACTION_SEND);
-        sharingIntent.setType(OpenFoodAPIClient.TEXT_PLAIN);
+        sharingIntent.setType(OpenFoodAPIClient.MIME_TEXT);
         String shareBody = getResources().getString(R.string.msg_share) + shareUrl;
         String shareSub = "\n\n";
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);

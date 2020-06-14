@@ -32,6 +32,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding;
@@ -67,6 +68,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private SearchInfo mSearchInfo;
     private SensorManager mSensorManager;
     private ShakeDetector mShakeDetector;
+    private Disposable searchDisp;
     private int pageAddress = 1;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
@@ -94,6 +96,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (searchDisp != null) {
+            searchDisp.dispose();
+        }
         binding = null;
     }
 
@@ -439,8 +444,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
 
             case 5:
-                api.getInfoAddedIncompleteProducts(searchQuery, pageAddress, (value, category) ->
-                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
+                searchDisp = api.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
+                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 0:
