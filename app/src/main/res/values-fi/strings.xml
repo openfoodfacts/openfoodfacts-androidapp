@@ -682,6 +682,7 @@
     <string name="txt_info_your_listed_products">Voit lisätä tuotteita tähän luetteloon etsimällä niitä ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="search_history_pref_title">Poista paikallinen hakuhistoria</string>
     <string name="search_history_pref_summary">Poista kaikki tällä laitteella tekemäsi haut</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Valitse maasi</string>
     <string name="settings_country_summary">Vaihda valitsemasi maa</string>
     <string name="settings_country_title">Maa</string>

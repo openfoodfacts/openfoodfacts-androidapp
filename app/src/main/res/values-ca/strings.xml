@@ -682,6 +682,7 @@
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Suprimiu l\'historial de cerca local</string>
     <string name="search_history_pref_summary">Elimineu totes les cerques que heu realitzat en aquest dispositiu</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Seleccioneu el vostre país</string>
     <string name="settings_country_summary">Canvieu el país seleccionat</string>
     <string name="settings_country_title">País</string>

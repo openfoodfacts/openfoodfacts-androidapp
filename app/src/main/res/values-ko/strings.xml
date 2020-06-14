@@ -676,6 +676,7 @@
     <string name="txt_info_your_listed_products">제품을 검색하고 제품 페이지 오른쪽 상단의 + 버튼을 클릭하여 이 목록에 제품을 추가 할 수 있습니다.</string>
     <string name="search_history_pref_title">전체 검색기록 삭제</string>
     <string name="search_history_pref_summary">이 장치에서 수행한 모든 검색을 제거하십시오.</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">국가를 선택하세요.</string>
     <string name="settings_country_summary">선택한 국가 변경</string>
     <string name="settings_country_title">국가</string>

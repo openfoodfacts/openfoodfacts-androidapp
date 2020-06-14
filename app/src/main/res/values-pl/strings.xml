@@ -715,6 +715,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="txt_info_your_listed_products">Będziesz mógł dodawać produkty do listy przez wyszukiwanie i kliknięcie na przycisk + na górze po prawej stronie.</string>
     <string name="search_history_pref_title">Usuń prywatną historię wyszukiwania</string>
     <string name="search_history_pref_summary">Usuń wszystkie wyszukiwania z tego urządzenia</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Wybierz kraj</string>
     <string name="settings_country_summary">Zmień kraj</string>
     <string name="settings_country_title">Kraj</string>

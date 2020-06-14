@@ -683,6 +683,7 @@
     <string name="txt_info_your_listed_products">Termékeket adhat hozzá ehhez a listához a kereséssel és a termék jobb oldalán található + gombra kattintva.</string>
     <string name="search_history_pref_title">Keresési előzmények törlése</string>
     <string name="search_history_pref_summary">Távolítsa el az ezen az eszközön végzett összes keresési előzményt</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Válassza ki az országát</string>
     <string name="settings_country_summary">Változtassa meg a kiválasztott országot</string>
     <string name="settings_country_title">Ország</string>
