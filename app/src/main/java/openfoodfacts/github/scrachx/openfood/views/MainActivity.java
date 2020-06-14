@@ -476,7 +476,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         //Scheduling background image upload job
         Utils.scheduleProductUploadJob(this);
 
-        OfflineProductWorker.addWork();
+        OfflineProductWorker.scheduleSync();
 
         //Adds nutriscore and quantity values in old history for schema 5 update
         SharedPreferences mSharedPref = getApplicationContext().getSharedPreferences("prefs", 0);

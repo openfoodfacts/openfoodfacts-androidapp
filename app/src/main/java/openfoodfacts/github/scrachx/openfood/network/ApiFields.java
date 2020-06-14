@@ -122,6 +122,8 @@ public final class ApiFields {
         public static final String ALLERGENS_HIERARCHY = "allergens_hierarchy";
         public static final String SELECTED_IMAGES = "selected_images";
         public static final String IMAGES = "images";
+        public static final String USER_ID = "user_id";
+        public static final String USER_PWD = "password";
 
         private Keys() {
 

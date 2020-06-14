@@ -55,9 +55,6 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPager
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
 
 public class AddProductActivity extends AppCompatActivity {
-    private static final String KEY_USER_ID = "user_id";
-    @SuppressWarnings("squid:S2068")
-    private static final String KEY_PASSWORD = "password";
     private static final String ADD_TAG = AddProductActivity.class.getSimpleName();
     public static final String MODIFY_NUTRITION_PROMPT = "modify_nutrition_prompt";
     public static final String MODIFY_CATEGORY_PROMPT = "modify_category_prompt";
@@ -299,7 +296,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private RequestBody createTextPlain(String code) {
-        return RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
+        return RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code);
     }
 
     private void addLoginPasswordInfo(Map<String, RequestBody> imgMap) {
@@ -307,8 +304,8 @@ public class AddProductActivity extends AppCompatActivity {
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
         if (!login.isEmpty() && !password.isEmpty()) {
-            imgMap.put(KEY_USER_ID, createTextPlain(login));
-            imgMap.put(KEY_PASSWORD, createTextPlain(password));
+            imgMap.put(ApiFields.Keys.USER_ID, createTextPlain(login));
+            imgMap.put(ApiFields.Keys.USER_PWD, createTextPlain(password));
         }
         imgMap.put("comment", createTextPlain(OpenFoodAPIClient.getCommentToUpload(login)));
     }
@@ -336,7 +333,7 @@ public class AddProductActivity extends AppCompatActivity {
         offlineSavedProduct.setProductDetailsMap(productDetails);
         mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
 
-        OfflineProductWorker.addWork();
+        OfflineProductWorker.scheduleSync();
 
         OpenFoodAPIClient.addToHistory(Utils.getDaoSession().getHistoryProductDao(), offlineSavedProduct);
 
@@ -394,8 +391,8 @@ public class AddProductActivity extends AppCompatActivity {
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
         if (!login.isEmpty() && !password.isEmpty()) {
-            targetMap.put(KEY_USER_ID, login);
-            targetMap.put(KEY_PASSWORD, password);
+            targetMap.put(ApiFields.Keys.USER_ID, login);
+            targetMap.put(ApiFields.Keys.USER_PWD, password);
         }
     }
 

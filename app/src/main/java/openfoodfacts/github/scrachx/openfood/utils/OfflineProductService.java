@@ -230,8 +230,8 @@ public class OfflineProductService {
 
     private static Map<String, RequestBody> createRequestBodyMap(String code, HashMap<String, String> productDetails, ProductImageField front) {
         Map<String, RequestBody> imgMap = new HashMap<>();
-        RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
-        RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), front.toString() + '_' + productDetails.get("lang"));
+        RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code);
+        RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), front.toString() + '_' + productDetails.get("lang"));
         imgMap.put("code", barcode);
         imgMap.put("imagefield", imageField);
         return imgMap;

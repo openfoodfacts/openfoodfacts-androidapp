@@ -25,7 +25,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -241,25 +240,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             }
         } else {
             binding.cvTextTraceProduct.setVisibility(View.GONE);
-        }
-
-        binding.cvTextPalmOilProduct.setVisibility(View.GONE);
-        binding.textPalmOilProduct.setVisibility(View.GONE);
-        if (CollectionUtils.isNotEmpty(product.getIngredientsFromPalmOilTags())) {
-            binding.cvTextPalmOilProduct.setVisibility(View.VISIBLE);
-            binding.textPalmOilProduct.setVisibility(View.VISIBLE);
-            binding.textPalmOilProduct.setText(bold(getString(R.string.txtPalmOilProduct)));
-            binding.textPalmOilProduct.append(" ");
-            binding.textPalmOilProduct.append(product.getIngredientsFromPalmOilTags().toString().replaceAll("[\\[,\\]]", ""));
-        }
-        binding.cvTextMayBePalmOilProduct.setVisibility(View.GONE);
-        binding.textMayBeFromPalmOilProduct.setVisibility(View.GONE);
-        if (CollectionUtils.isNotEmpty(product.getIngredientsThatMayBeFromPalmOilTags())) {
-            binding.cvTextMayBePalmOilProduct.setVisibility(View.VISIBLE);
-            binding.textMayBeFromPalmOilProduct.setVisibility(View.VISIBLE);
-            binding.textMayBeFromPalmOilProduct.setText(bold(getString(R.string.txtMayBeFromPalmOilProduct)));
-            binding.textMayBeFromPalmOilProduct.append(" ");
-            binding.textMayBeFromPalmOilProduct.append(product.getIngredientsThatMayBeFromPalmOilTags().toString().replaceAll("[\\[,\\]]", ""));
         }
 
         if (product.getNovaGroups() != null) {

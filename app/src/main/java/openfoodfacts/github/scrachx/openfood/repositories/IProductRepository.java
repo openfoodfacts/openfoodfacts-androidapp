@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.repositories;
 
 import java.util.List;
 
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
@@ -66,7 +67,7 @@ public interface IProductRepository {
 
     Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation);
 
-    Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode);
+    Maybe<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode);
 
     Single<List<AnalysisTagConfig>> getUnknownAnalysisTagConfigsByLanguageCode(String languageCode);
 
