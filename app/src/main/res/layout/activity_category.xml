@@ -30,7 +30,6 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment"
-            android:name="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="100" />

@@ -300,7 +300,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     /**
-     * Automaticcely load suggestions for allergen names
+     * Automatically load suggestions for allergen names
      */
     private void loadAutoSuggestions() {
         DaoSession daoSession = OFFApplication.getDaoSession();
@@ -453,7 +453,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     /**
-     * Displays progress bar and hides other views util image is loaded
+     * Displays progress bar and hides other views util image is still loading
      */
     public void showImageProgress() {
         if (!isAdded()) {

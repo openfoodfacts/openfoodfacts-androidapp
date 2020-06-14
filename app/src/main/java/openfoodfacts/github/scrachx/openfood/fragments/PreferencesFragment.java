@@ -414,6 +414,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
     }
 
+    /**
+     * AsyncTask to receive additives on a background thread
+     */
     private class GetAdditivesTask extends AsyncTask<Void, Integer, Boolean> {
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
         private final LoadToast lt = new LoadToast(requireActivity());

@@ -443,7 +443,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     /**
-     * lads nutrition image into the ImageView
+     * Loads nutrition image into the ImageView
      *
      * @param path path of the image
      */
@@ -758,10 +758,10 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     /**
-     * Add nutients to the map by from the text enetered into EditText
+     * Add nutrients to the map by from the text entered into EditText
      *
-     * @param editTextView EditText with spinner for entering the nutients
-     * @param targetMap map to enter the nutrient value recieved from edit texts
+     * @param editTextView EditText with spinner for entering the nutrients
+     * @param targetMap map to enter the nutrient value received from edit texts
      */
     private void addNutrientToMap(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
         // For impl reference, see https://wiki.openfoodfacts.org/Nutrients_handling_in_Open_Food_Facts#Data_display
