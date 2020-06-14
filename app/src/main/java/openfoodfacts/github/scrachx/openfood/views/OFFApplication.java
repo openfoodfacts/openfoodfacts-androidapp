@@ -34,6 +34,10 @@ public class OFFApplication extends MultiDexApplication {
         return application;
     }
 
+    public static DaoSession getDaoSession() {
+        return daoSession;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -92,9 +96,5 @@ public class OFFApplication extends MultiDexApplication {
             }
             Log.w(OFFApplication.class.getSimpleName(), "Undeliverable exception received, not sure what to do", e);
         });
-    }
-
-    public static DaoSession getDaoSession() {
-        return daoSession;
     }
 }
