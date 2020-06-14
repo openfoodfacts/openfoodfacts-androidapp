@@ -230,7 +230,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     }
 
     /**
-     * Dat aobserver of the Recycler Views
+     * Data observer of the Recycler Views
      */
     class DataObserver extends RecyclerView.AdapterDataObserver {
         DataObserver() {
