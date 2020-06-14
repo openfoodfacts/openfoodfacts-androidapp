@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -32,8 +30,6 @@ import androidx.core.app.NavUtils;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -51,6 +47,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import io.reactivex.Completable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding;
@@ -59,7 +59,6 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
@@ -71,6 +70,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     private boolean emptyHistory;
     private HistoryProductDao mHistoryProductDao;
     private HistoryListAdapter adapter;
+    private Disposable disposable;
     private List<HistoryProduct> listHistoryProducts;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
@@ -122,7 +122,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
             productItems = new ArrayList<>();
             setInfo(binding.emptyHistoryInfo);
-            new FillAdapter(HistoryScanActivity.this).execute(context);
+            fillView();
             binding.srRefreshHistoryScanList.setRefreshing(false);
         });
 
@@ -133,7 +133,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     protected void onStart() {
         super.onStart();
         //to fill the view in any case even if the user scans products from History screen...
-        new HistoryScanActivity.FillAdapter(this).execute(this);
+        fillView();
     }
 
     @Override
@@ -153,7 +153,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
     public void exportCSV() {
 
-        String    folderMain = FileUtils.getCsvFolderName();
+        String folderMain = FileUtils.getCsvFolderName();
         Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show();
         File baseDir = new File(Environment.getExternalStorageDirectory(), folderMain);
         if (!baseDir.exists()) {
@@ -201,6 +201,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        disposable.dispose();
         binding = null;
     }
 
@@ -260,12 +261,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
                         case 0:
                             SORT_TYPE = "title";
-                            callTask();
+                            fillView();
                             break;
 
                         case 1:
                             SORT_TYPE = "brand";
-                            callTask();
+                            fillView();
                             break;
 
                         case 2:
@@ -275,17 +276,17 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                             } else {
                                 SORT_TYPE = "time";
                             }
-                            callTask();
+                            fillView();
                             break;
 
                         case 3:
                             SORT_TYPE = "barcode";
-                            callTask();
+                            fillView();
                             break;
 
                         default:
                             SORT_TYPE = "time";
-                            callTask();
+                            fillView();
                             break;
                     }
                 });
@@ -437,8 +438,9 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         }
     }
 
-    private void callTask() {
-        new HistoryScanActivity.FillAdapter(HistoryScanActivity.this).execute(HistoryScanActivity.this);
+    private void fillView() {
+        disposable.dispose();
+        disposable = getFillViewCompletable().subscribe();
     }
 
     @Override
@@ -450,56 +452,30 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         }
     }
 
-    public class FillAdapter extends AsyncTask<Context, Void, Context> {
-        private final Activity activity;
-
-        public FillAdapter(Activity act) {
-            activity = act;
-        }
-
-        @Override
-        protected void onPreExecute() {
+    private Completable getFillViewCompletable() {
+        return Completable.fromAction(() -> {
             if (binding.srRefreshHistoryScanList.isRefreshing()) {
                 binding.historyProgressbar.setVisibility(View.GONE);
             } else {
                 binding.historyProgressbar.setVisibility(View.VISIBLE);
             }
+
             productItems.clear();
-            List<HistoryProduct> listHistoryProducts = mHistoryProductDao.loadAll();
-            if (listHistoryProducts.size() == 0) {
+
+            List<HistoryProduct> productList = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
+            if (productList.isEmpty()) {
                 emptyHistory = true;
                 binding.historyProgressbar.setVisibility(View.GONE);
                 binding.emptyHistoryInfo.setVisibility(View.VISIBLE);
                 binding.scanFirst.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
-                cancel(true);
+                return;
             }
-        }
 
-        @Override
-        protected Context doInBackground(Context... ctx) {
-            listHistoryProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
-
-            for (HistoryProduct historyProduct : listHistoryProducts) {
+            for (HistoryProduct historyProduct : productList) {
                 productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct
                     .getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutritionGrade()));
             }
-
-            return ctx[0];
-        }
-
-        @Override
-        protected void onPostExecute(Context ctx) {
-
-            sort(SORT_TYPE, productItems);
-            adapter = new HistoryListAdapter(productItems, activity, isLowBatteryMode);
-            binding.listHistoryScan.setAdapter(adapter);
-            binding.listHistoryScan.setLayoutManager(new LinearLayoutManager(ctx));
-            binding.historyProgressbar.setVisibility(View.GONE);
-
-            SwipeController swipeController = new SwipeController(ctx, HistoryScanActivity.this);
-            ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
-            itemTouchhelper.attachToRecyclerView(binding.listHistoryScan);
-        }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }
