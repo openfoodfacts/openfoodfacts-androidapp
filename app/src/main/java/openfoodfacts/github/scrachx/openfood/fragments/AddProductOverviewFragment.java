@@ -519,7 +519,6 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     /**
      * Auto load suggestions into various NachoTextViews
      * */
-
     private void loadAutoSuggestions() {
         DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
@@ -910,7 +909,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     /**
-     * Before moving next check if the required feilds are empty
+     * Before moving next check if the required fields are empty
      * */
 
     public boolean areRequiredFieldsEmpty() {

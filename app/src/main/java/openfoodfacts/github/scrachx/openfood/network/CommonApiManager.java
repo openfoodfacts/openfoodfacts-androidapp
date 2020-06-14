@@ -45,7 +45,7 @@ public class CommonApiManager implements ICommonApiManager {
     }
 
     /**
-     * Defines  and returns getOpenFoodApiService
+     * Defines and returns getOpenFoodApiService
      * */
 
     @Override

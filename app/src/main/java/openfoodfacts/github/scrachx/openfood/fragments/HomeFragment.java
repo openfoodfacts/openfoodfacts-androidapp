@@ -197,8 +197,8 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     }
 
     /**
-     * Set text displayed on HOme based on build variant
-     * @param totalProductCount count of total products availab;e on the apps database
+     * Set text displayed on Home based on build variant
+     * @param totalProductCount count of total products available on the apps database
      * */
 
     private void updateTextHome(int totalProductCount){

@@ -261,7 +261,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     }
 
     /**
-     * AsyncTak to recieve additves on a background thread
+     * AsyncTask to receive additives on a background thread
      * */
 
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {

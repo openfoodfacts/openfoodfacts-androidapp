@@ -213,7 +213,6 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     /**
      * Set visibility parameters when image is loaded
      * */
-
     private void imageLoaded() {
         btnEditImageIngredients.setVisibility(View.VISIBLE);
         imageProgress.setVisibility(View.GONE);
@@ -289,7 +288,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     /**
-     * Automaticcely load suggestions for allergen names
+     * Automatically load suggestions for allergen names
      * */
 
     private void loadAutoSuggestions() {
@@ -483,7 +482,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     /**
-     * Display the list of ingredients based on the result from ocr of IngredientsList photo
+     * Displays the list of ingredients based on the result from OCR of IngredientsList photo
      * @param status status of ocr, in case of proper OCR it returns "set" or "0"
      * @param ocrResult resultant string obtained after OCR of image
      * */
