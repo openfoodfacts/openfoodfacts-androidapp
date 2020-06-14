@@ -10,46 +10,72 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.ResultReceiver;
 import android.provider.SearchRecentSuggestions;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.ListPreference;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import net.steamcrafted.loadtoast.LoadToast;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.*;
-import openfoodfacts.github.scrachx.openfood.utils.*;
-import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import org.apache.commons.text.WordUtils;
+
+import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
+import org.greenrobot.greendao.query.WhereCondition;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
+import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
 
 /**
  * A class for creating all the ListPreference
- * */
-
-public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem {
+ */
+public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem, SharedPreferences.OnSharedPreferenceChangeListener {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
     private Context context;
@@ -64,12 +90,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     public void onCreatePreferences(Bundle bundle, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
-        context = getContext();
+        context = requireContext();
 
         ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
 
         SharedPreferences settings = getActivity().getSharedPreferences("prefs", 0);
-        mAdditiveDao = Utils.getAppDaoSession(getActivity()).getAdditiveDao();
+        mAdditiveDao = Utils.getDaoSession().getAdditiveDao();
 
         String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
@@ -80,21 +106,20 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Locale current = LocaleHelper.getLocale(localeValues[i]);
 
             if (current != null) {
-                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+                localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current));
                 finalLocalLabels.add(localeLabels[i]);
                 finalLocalValues.add(localeValues[i]);
             }
         }
 
-        languagePreference.setEntries(finalLocalLabels.toArray(new String[finalLocalLabels.size()]));
-        languagePreference.setEntryValues(finalLocalValues.toArray(new String[finalLocalValues.size()]));
+        languagePreference.setEntries(finalLocalLabels.toArray(new String[0]));
+        languagePreference.setEntryValues(finalLocalValues.toArray(new String[0]));
 
         languagePreference.setOnPreferenceChangeListener((preference, locale) -> {
 
             FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
-            Toast.makeText(getContext(),getString(R.string.changes_saved),Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(getContext(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
@@ -103,11 +128,18 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        Preference deleteSearchHistoryButton = findPreference("deleteSearchHistoryPreference");
-        deleteSearchHistoryButton.setOnPreferenceClickListener(preference -> {
-            Toast.makeText(getContext(), getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show();
-            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
-            suggestions.clearHistory();
+        findPreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
+            new MaterialAlertDialogBuilder(context)
+                .setMessage(R.string.search_history_pref_dialog_content)
+                .setPositiveButton(R.string.delete_txt, (dialog, which) -> {
+                    Toast.makeText(getContext(), getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show();
+                    SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
+                    suggestions.clearHistory();
+                })
+                .setNeutralButton(R.string.dialog_cancel, (dialog, which) -> {
+                })
+                .show();
+
             return true;
         });
 
@@ -115,7 +147,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         List<String> countryLabels = new ArrayList<>();
         List<String> countryTags = new ArrayList<>();
 
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
         CountryNameDao countryNameDao = daoSession.getCountryNameDao();
 
@@ -135,14 +167,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             .orderAsc(CountryNameDao.Properties.Name).build());
 
         countryPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
-            if (preference instanceof ListPreference) {
-               if (preference.getKey().equals(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)) {
-                   String country = (String) newValue;
-                   SharedPreferences.Editor editor = settings.edit();
-                   editor.putString(preference.getKey(), country);
-                   editor.apply();
-                   Toast.makeText(getContext(),getString(R.string.changes_saved),Toast.LENGTH_SHORT).show();
-               }
+            if (preference instanceof ListPreference &&
+                preference.getKey().equals(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)) {
+                String country = (String) newValue;
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString(preference.getKey(), country);
+                editor.apply();
+                Toast.makeText(getContext(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
             }
             return true;
         }));
@@ -221,7 +252,67 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             String version = pInfo.versionName;
             versionPref.setSummary(getString(R.string.version_string) + " " + version);
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+            Log.e(PreferencesFragment.class.getSimpleName(), "onCreatePreferences", e);
+        }
+
+        if (BuildConfig.FLAVOR.equals("off")) {
+            new GetAnalysisTagConfigs(this).execute(daoSession);
+        } else {
+            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+            preferenceScreen.removePreference(displayCategory);
+        }
+    }
+
+    private void buildDisplayCategory(List<AnalysisTagConfig> configs) {
+        if (isAdded()) {
+            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+            displayCategory.removeAll();
+            preferenceScreen.addPreference(displayCategory);
+            // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
+            if (configs == null || configs.isEmpty()) {
+                Preference preference = new Preference(preferenceScreen.getContext());
+                preference.setTitle(R.string.load_ingredient_detection_data);
+                preference.setSummary(R.string.load_ingredient_detection_data_summary);
+                preference.setOnPreferenceClickListener(pref -> {
+                    pref.setOnPreferenceClickListener(null);
+                    //the service will load server resources only if newer than already downloaded...
+                    Intent intent = new Intent(context, LoadTaxonomiesService.class);
+                    intent.putExtra("receiver", new ResultReceiver(new Handler()) {
+                        @Override
+                        protected void onReceiveResult(int resultCode, Bundle resultData) {
+                            super.onReceiveResult(resultCode, resultData);
+
+                            if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
+                                preference.setTitle(R.string.please_wait);
+                                preference.setIcon(R.drawable.ic_cloud_download_black_24dp);
+                                preference.setSummary(null);
+                                preference.setWidgetLayoutResource(R.layout.loading);
+                            } else {
+                                new GetAnalysisTagConfigs(PreferencesFragment.this).execute(OFFApplication.getDaoSession());
+                            }
+                        }
+                    });
+                    context.startService(intent);
+                    return true;
+                });
+                displayCategory.addPreference(preference);
+            } else {
+                for (AnalysisTagConfig config : configs) {
+
+                    CheckBoxPreference preference = new CheckBoxPreference(preferenceScreen.getContext());
+                    preference.setKey(config.getType());
+                    preference.setDefaultValue(true);
+                    preference.setSummary(null);
+                    preference.setSummaryOn(null);
+                    preference.setSummaryOff(null);
+                    preference.setTitle(getString(R.string.display_analysis_tag_status, config.getTypeName().toLowerCase()));
+                    displayCategory.addPreference(preference);
+                }
+            }
+
+            displayCategory.setVisible(true);
         }
     }
 
@@ -252,28 +343,88 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         super.onResume();
         try {
             final AppCompatActivity activity = (AppCompatActivity) getActivity();
-            if (activity != null &&  activity.getSupportActionBar()!=null) {
+            if (activity != null && activity.getSupportActionBar() != null) {
                 activity.getSupportActionBar().setTitle(getString(R.string.action_preferences));
             }
         } catch (NullPointerException e) {
             Log.e(getClass().getSimpleName(), "on resume error", e);
         }
+
+        getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if ("enableMobileDataUpload".equals(key)) {
+            OfflineProductWorker.addWork();
+        }
+    }
+
+    private static class GetAnalysisTagConfigs extends AsyncTask<DaoSession, Void, List<AnalysisTagConfig>> {
+        private final String language;
+        private final WeakReference<PreferencesFragment> wRefFragment;
+
+        GetAnalysisTagConfigs(PreferencesFragment fragment) {
+            this.wRefFragment = new WeakReference<>(fragment);
+            language = LocaleHelper.getLanguage(fragment.context);
+        }
+
+        @Override
+        protected List<AnalysisTagConfig> doInBackground(DaoSession... daoSession) {
+            AnalysisTagConfigDao analysisTagConfigDao = daoSession[0].getAnalysisTagConfigDao();
+            List<AnalysisTagConfig> analysisTagConfigs = analysisTagConfigDao.queryBuilder()
+                .where(new WhereCondition.StringCondition("1 GROUP BY type"))
+                .orderAsc(AnalysisTagConfigDao.Properties.Type).build().list();
+
+            AnalysisTagNameDao analysisTagNameDao = daoSession[0].getAnalysisTagNameDao();
+            for (AnalysisTagConfig config :
+                analysisTagConfigs) {
+                String type = "en:" + config.getType();
+                AnalysisTagName analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(language))
+                    .unique();
+                if (analysisTagTypeName == null) {
+                    analysisTagTypeName = analysisTagNameDao.queryBuilder()
+                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                            AnalysisTagNameDao.Properties.LanguageCode.eq("en"))
+                        .unique();
+                }
+
+                config.setTypeName(analysisTagTypeName != null ? analysisTagTypeName.getName() : config.getType());
+            }
+            return analysisTagConfigs;
+        }
+
+        @Override
+        protected void onPostExecute(final List<AnalysisTagConfig> result) {
+            super.onPostExecute(result);
+            PreferencesFragment fragment = wRefFragment.get();
+            if (fragment != null) {
+                fragment.buildDisplayCategory(result);
+            }
+        }
     }
 
     /**
      * AsyncTask to receive additives on a background thread
-     * */
-
+     */
     private class GetAdditives extends AsyncTask<Void, Integer, Boolean> {
         private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
-        private LoadToast lt = new LoadToast(getActivity());
+        private final LoadToast lt = new LoadToast(requireActivity());
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            lt.setText(getActivity().getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.blue));
-            lt.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            lt.setText(requireActivity().getString(R.string.toast_retrieving));
+            lt.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.blue));
+            lt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
             lt.show();
         }
 
@@ -292,7 +443,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 mAdditiveDao.insertOrReplaceInTx(frenchAdditives);
             } catch (IOException e) {
                 result = false;
-                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile,e);
+                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile, e);
             }
             return result;
         }

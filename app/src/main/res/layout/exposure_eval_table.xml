@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:padding="16dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +12,7 @@
         android:layout_marginBottom="10dp"
         android:text="@string/safety_and_exposure_assessment"
         android:textSize="@dimen/font_large"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,24 +34,26 @@
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
-        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:drawableLeftCompat="@drawable/yellow_circle_24dp"
+            android:drawableStart="@drawable/yellow_circle_24dp"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="@string/legend_adi"
-            android:textSize="@dimen/font_small"/>
+            android:drawableLeft="@drawable/yellow_circle_24dp"
+            android:textSize="@dimen/font_small" />
 
-        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:drawableLeftCompat="@drawable/red_circle_24dp"
+            android:drawableStart="@drawable/red_circle_24dp"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:text="@string/legend_noael"
-            android:textSize="@dimen/font_small"/>
+            android:drawableLeft="@drawable/red_circle_24dp"
+            android:textSize="@dimen/font_small" />
     </LinearLayout>
 
     <HorizontalScrollView
@@ -218,7 +219,7 @@
                     android:textSize="@dimen/font_small"
                     android:textStyle="bold"/>
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpInfants"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -226,7 +227,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpToddlers"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -234,7 +235,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpChildren"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -242,7 +243,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpAdolescents"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -250,7 +251,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpAdults"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -258,7 +259,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/mpElderly"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -281,7 +282,7 @@
                     android:textSize="@dimen/font_small"
                     android:textStyle="bold"/>
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spInfants"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -289,7 +290,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spToddlers"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -297,7 +298,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spChildren"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -305,7 +306,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spAdolescents"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -313,7 +314,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spAdults"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
@@ -321,7 +322,7 @@
                     android:padding="16dp"
                     />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/spElderly"
                     android:layout_width="84dp"
                     android:layout_height="84dp"

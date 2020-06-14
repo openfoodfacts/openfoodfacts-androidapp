@@ -1,25 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
-
-import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +17,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
+import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
+
 /**
+ * @author prajwalm
  * @see R.layout#fragment_product_photos
  */
 public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter.OnImageClickInterface {
@@ -39,21 +39,19 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     private ImagesAdapter adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         openFoodAPIClient = new OpenFoodAPIClient(getActivity());
-        return createView(inflater, container, R.layout.fragment_product_photos);
+        return inflater.inflate(R.layout.fragment_product_photos, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        State state=getStateFromActivityIntent();
+        State state = getStateFromActivityIntent();
         product = state.getProduct();
         // initialize the arraylist
         imageNames = new ArrayList<>();
-        imagesRecycler = view.findViewById(R.id.images_recycler);
+        imagesRecycler = view.findViewById(R.id.imagesRecycler);
 
         openFoodAPIClient.getImages(product.getCode(), (value, response) -> {
 
@@ -94,7 +92,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
                 }
 
                 //Check if user is logged in
-                adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this::onImageClick, product, isUserLoggedIn());
+                adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this, product, isUserLoggedIn());
                 imagesRecycler.setAdapter(adapter);
                 imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
             }
@@ -103,27 +101,24 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
     /**
      * Call an intent to open full screen activity for a given image
-     * @param mUrlImage url of the image in FullScreenImage*/
-
+     *
+     * @param mUrlImage url of the image in FullScreenImage
+     */
     public void openFullScreen(String mUrlImage) {
         if (mUrlImage != null) {
-            Intent intent = new Intent(getContext(), FullScreenImage.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("imageurl", mUrlImage);
-            intent.putExtras(bundle);
-            startActivity(intent);
+            FullScreenActivityOpener.openZoom(this, mUrlImage, null);
         }
     }
 
     /**
      * retrieves url of the imae clicked to open FullScreenActivity
+     *
      * @param position position of the image clicked
-     * */
-
+     */
     @Override
     public void onImageClick(int position) {
 
-        String baseUrlString = "https://static.openfoodfacts.org/images/products/";
+        String baseUrlString = BuildConfig.STATICURL + "/images/products/";
         String barcodePattern = product.getCode();
         if (barcodePattern.length() > 8) {
             barcodePattern = new StringBuilder(product.getCode())

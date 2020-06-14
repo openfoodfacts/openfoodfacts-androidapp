@@ -6,17 +6,19 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.Assert.*;
-import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.*;
+import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.ADDITIVE_TAG;
+import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.VINEGAR_EN;
+import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.VINEGAR_FR;
+import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.WIKI_DATA_ID;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link AdditiveResponse}
  */
 public class AdditiveResponseTest {
-
-    private Map<String, String> mStringMap = new HashMap<>();
+    private final Map<String, String> mStringMap = new HashMap<>();
 
     private AdditiveResponse mAdditiveResponse;
 

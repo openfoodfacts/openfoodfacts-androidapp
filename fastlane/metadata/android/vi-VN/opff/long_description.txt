@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Quét thực phẩm hoặc mã vạch của sản phẩm thức ăn cho thú cưng để lấy dữ liệu về các thành phần dinh dưỡng và các chất phụ gia.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+Ứng dụng này cho phép xem hơn 600 loại sản phẩm thức ăn cho thú cưng đã có trong cơ sở dữ liệu mở và miễn phí Open Pet Food Facts, kèm theo các hình ảnh và dữ liệu cho các sản phẩm bị thiếu.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Để khám phá dự án Open Pet Food Facts, vui lòng truy cập https://world.openpetfoodfacts.org
 
-***Contribute to Pet Food Transparency***
+***Đóng góp cho sự minh bạch trong các sản phẩm thức ăn dành cho thú nuôi***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Open Pet Food Facts là cơ sở dữ liệu sản phẩm thức ăn cho thú cưng được tạo ra bởi cộng đồng, dành cho mọi người.
+- Bạn có thể sử dụng OPFF để đưa ra những lựa chọn tốt hơn khi lựa chọn thức ăn cho thú cưng của mình, và bởi đây là một kho dữ liệu mở, nên bất cứ ai cũng có thể tái sử dụng cho bất cứ mục đích nào.
+- Open Pet Food Facts là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau. 
+- Bạn có thể bắt đầu đóng góp bằng cách thêm dữ liệu về một sản phẩm từ tủ thức ăn dành cho thú cưng nhà mình. 
 
 
 *** Sự thật là ***
 
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+Bạn có thể tìm thấy (dựa trên các chỉ dẫn có trên bao bì sản phẩm):
+- danh sách các thành phần cấu tạo (bao gồm cả hàm lượng tro)
+- thông tin dinh dưỡng, thông tin phân bổ các thành phần dinh dưỡng...
+- thương hiệu, chất có thể gây dị ứng, nhãn ( hữu cơ, thuần chay...)
+- Chỉ dẫn trên dành cho các loại thức ăn cho chó ( loại khô & ướt), thức ăn cho mèo, thức ăn cho thỏ, rắn, cá, chim, ngựa và bất cứ loại thú cưng nào.
 
-*** Works well in any condition ***
+*** Hoạt động tốt trong mọi điều kiện ***
 - You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+- Ứng dụng chỉ nạp các thông tin cần thiết để giảm mức tiêu thụ dữ liệu và pin
+- Bạn không cần camera để tra cứu sản phẩm. Bạn cũng có thể nhập mã vạch nếu không có máy ảnh.
 
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
+*** Thức ăn thú cưng của bạn, dữ liệu của bạn ***
+- Đảm bảo dữ sự an toàn của dữ liệu cá nhân của bạn
 - You can use the app anonymously
 - You can export your scan history
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+Đối với thực phẩm cho con người, bạn có thể cài đặt Open Food Facts, với mỹ phẩm, Open Beauty Facts và với tất cả các sản phẩm khác, Open Products Facts.

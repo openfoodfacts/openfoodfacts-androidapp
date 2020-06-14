@@ -9,25 +9,25 @@ import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.BottomNavigationView;
-import android.support.customtabs.CustomTabsIntent;
-import android.widget.Button;
-import butterknife.BindView;
+
+import androidx.browser.customtabs.CustomTabsIntent;
+
+import java.util.Objects;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityCategoryBinding;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
+import openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 public class CategoryActivity extends BaseActivity {
-
+    private ActivityCategoryBinding binding;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
     private boolean scanOnShake;
-
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, CategoryActivity.class);
@@ -39,35 +39,50 @@ public class CategoryActivity extends BaseActivity {
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        setContentView(R.layout.activity_category);
-        setSupportActionBar(findViewById(R.id.toolbar));
+        binding = ActivityCategoryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         setTitle(R.string.category_drawer);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Button gameButton= findViewById(R.id.game_button);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mShakeDetector = new ShakeDetector();
 
-        mShakeDetector.setOnShakeListener(count -> {
-            if (scanOnShake) {
-                Utils.scan(CategoryActivity.this);
-            }
-        });
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (mSensorManager != null) {
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            mShakeDetector = new ShakeDetector();
+
+            mShakeDetector.setOnShakeListener(count -> {
+                if (scanOnShake) {
+                    Utils.scan(CategoryActivity.this);
+                }
+            });
+        }
 
         // chrome custom tab for category hunger game
-        gameButton.setOnClickListener(v -> {
-            String url = getString(R.string.hunger_game_url);
-            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-            CustomTabsIntent customTabsIntent = builder.build();
-            customTabsIntent.launchUrl(getBaseContext(), Uri.parse(url));
-        });
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
+        binding.gameButton.setOnClickListener(v -> openHungerGame());
+
+        // set fragment container view
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment, new CategoryListFragment()).commitNow();
+
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
     }
 
+    private void openHungerGame() {
+        final String url = getString(R.string.hunger_game_url);
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        CustomTabsIntent customTabsIntent = builder.build();
+        customTabsIntent.launchUrl(CategoryActivity.this, Uri.parse(url));
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
     @Override
     public void onPause() {

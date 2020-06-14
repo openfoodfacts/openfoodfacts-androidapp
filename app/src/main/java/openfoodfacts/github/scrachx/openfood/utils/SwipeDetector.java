@@ -1,14 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.view.View;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 
 public class SwipeDetector implements View.OnTouchListener{
 
     private int min_distance = 100;
     private float downX, downY, upX, upY;
-    private View v;
+    private final View v;
 
     private onSwipeEvent swipeEventListener;
 

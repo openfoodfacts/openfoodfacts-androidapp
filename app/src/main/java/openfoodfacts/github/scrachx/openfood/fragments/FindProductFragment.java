@@ -1,86 +1,83 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.BindView;
-import butterknife.OnClick;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.apache.commons.lang.StringUtils;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.FragmentFindProductBinding;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_SEARCH_BY_CODE;
 
 /**
  * @see R.layout#fragment_find_product
- * */
-
+ */
 public class FindProductFragment extends NavigationBaseFragment {
     public static final String BARCODE = "barcode";
-    @BindView(R.id.editTextBarcode)
-    EditText mBarCodeText;
-    @BindView(R.id.buttonBarcode)
-    Button mLaunchButton;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    private FragmentFindProductBinding binding;
     private OpenFoodAPIClient api;
     private Toast mToast;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return createView(inflater, container, R.layout.fragment_find_product);
+        binding = FragmentFindProductBinding.inflate(inflater);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mBarCodeText.setSelected(false);
+        binding.editTextBarcode.setSelected(false);
         api = new OpenFoodAPIClient(getActivity());
-        if (getActivity().getIntent() != null) {
-            String barCode = getActivity().getIntent().getStringExtra(BARCODE);
+        binding.buttonBarcode.setOnClickListener(v -> onSearchBarcodeProduct());
+
+        if (requireActivity().getIntent() != null) {
+            String barCode = requireActivity().getIntent().getStringExtra(BARCODE);
             if (StringUtils.isNotEmpty(barCode)) {
                 searchBarcode(barCode);
             }
         }
-        BottomNavigationListenerInstaller.install(bottomNavigationView,getActivity(),getContext());
     }
 
+    private void onSearchBarcodeProduct() {
+        Utils.hideKeyboard(requireActivity());
 
-    @OnClick(R.id.buttonBarcode)
-    protected void onSearchBarcodeProduct() {
-        Utils.hideKeyboard(getActivity());
-        if (mBarCodeText.getText().toString().isEmpty()) {
-            displayToast(getResources().getString(R.string.txtBarcodeRequire));
+        final String barCodeTxt = binding.editTextBarcode.getText().toString();
+        if (barCodeTxt.isEmpty()) {
+            binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeRequire));
+            return;
+        }
+
+        if (barCodeTxt.length() <= 2 && !ApiFields.Defaults.DEBUG_BARCODE.equals(barCodeTxt)) {
+            binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeNotValid));
+            return;
+        }
+
+        if (!ProductUtils.isBarcodeValid(barCodeTxt)) {
+            binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeNotValid));
         } else {
-            String barcodeText = mBarCodeText.getText().toString();
-            if (barcodeText.length() <= 2) {
-                displayToast(getResources().getString(R.string.txtBarcodeNotValid));
-            } else {
-                if (EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcodeText) && (!barcodeText.substring(0, 3).contains("977") || !barcodeText.substring(0, 3)
-                    .contains("978") || !barcodeText.substring(0, 3).contains("979"))) {
-                    api.getProduct(mBarCodeText.getText().toString(), getActivity());
-                } else {
-                    displayToast(getResources().getString(R.string.txtBarcodeNotValid));
-                }
-            }
+
+            api.getProduct(barCodeTxt, getActivity());
         }
     }
 
     private void searchBarcode(String code) {
-        mBarCodeText.setText(code, TextView.BufferType.EDITABLE);
+        binding.editTextBarcode.setText(code, TextView.BufferType.EDITABLE);
         onSearchBarcodeProduct();
     }
 
@@ -98,14 +95,12 @@ public class FindProductFragment extends NavigationBaseFragment {
         mToast.show();
     }
 
+    @Override
     public void onResume() {
-
         super.onResume();
-
-        try {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.search_by_barcode_drawer));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        final ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setTitle(getString(R.string.search_by_barcode_drawer));
         }
     }
 

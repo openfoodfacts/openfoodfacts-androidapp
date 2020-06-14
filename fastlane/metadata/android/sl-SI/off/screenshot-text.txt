@@ -1,5 +1,5 @@
 To so slogani, ki so prikazani nad posnetki zaslona v trgovini Google Play. Naj bodo kratki in privlačni.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=sl
 
 =====================
 Posnetki zaslona V2

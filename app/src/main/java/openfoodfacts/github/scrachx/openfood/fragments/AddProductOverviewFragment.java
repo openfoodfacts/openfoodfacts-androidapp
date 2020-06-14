@@ -7,16 +7,17 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.customtabs.CustomTabsIntent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.browser.customtabs.CustomTabsIntent;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -25,35 +26,55 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import org.apache.commons.lang.StringUtils;
+import org.greenrobot.greendao.async.AsyncSession;
+
+import java.io.File;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverviewBinding;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAutoCompleteAdapter;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.text.WordUtils;
-import org.greenrobot.greendao.async.AsyncSession;
-import org.jsoup.helper.StringUtil;
-
-import java.io.File;
-import java.net.URI;
-import java.util.*;
 
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
@@ -61,141 +82,64 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTH
 
 /**
  * Product Overview fragment of AddProductActivity
- * */
-
+ */
 public class AddProductOverviewFragment extends BaseFragment implements PhotoReceiver {
-    private static final String PARAM_NAME = "product_name";
-    private static final String PARAM_BARCODE = "code";
-    private static final String PARAM_QUANTITY = "quantity";
-    private static final String PARAM_BRAND = "add_brands";
-    private static final String PARAM_INTERFACE_LANGUAGE = "lc";
-    private static final String PARAM_PACKAGING = "add_packaging";
-    private static final String PARAM_CATEGORIES = "add_categories";
-    private static final String PARAM_LABELS = "add_labels";
-    private static final String PARAM_PERIODS_AFTER_OPENING = "periods_after_opening";
-    private static final String PARAM_ORIGIN = "add_origins";
-    private static final String PARAM_MANUFACTURING_PLACE = "add_manufacturing_places";
-    private static final String PARAM_EMB_CODE = "add_emb_codes";
-    private static final String PARAM_LINK = "link";
-    private static final String PARAM_PURCHASE = "add_purchase_places";
-    private static final String PARAM_STORE = "add_stores";
-    private static final String PARAM_COUNTRIES = "add_countries";
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
-    private PhotoReceiverHandler photoReceiverHandler;
-    @BindView(R.id.scrollView)
-    ScrollView scrollView;
-    @BindView(R.id.btnAddImageFront)
-    ImageView imageFront;
-    @BindView(R.id.btnEditImageFront)
-    View editImageFront;
-    @BindView(R.id.imageProgress)
-    ProgressBar imageProgress;
-    @BindView(R.id.imageProgressText)
-    TextView imageProgressText;
-    @BindView(R.id.section_manufacturing_details)
-    TextView sectionManufacturingDetails;
-    @BindView(R.id.section_purchasing_details)
-    TextView sectionPurchasingDetails;
-    @BindView(R.id.barcode)
-    TextView barcode;
-    @BindView(R.id.language)
-    TextView language;
-    @BindView(R.id.name)
-    EditText name;
-    @BindView(R.id.quantity)
-    EditText quantity;
-    @BindView(R.id.brand)
-    NachoTextView brand;
-    @BindView(R.id.packaging)
-    NachoTextView packaging;
-    @BindView(R.id.categories)
-    NachoTextView categories;
-    @BindView(R.id.label)
-    NachoTextView label;
-    @BindView(R.id.period_of_time_after_opening)
-    AutoCompleteTextView periodsAfterOpening;
-    @BindView(R.id.period_of_time_after_opening_til)
-    LinearLayout periodsAfterOpeningParent;
-    @BindView(R.id.origin_of_ingredients)
-    NachoTextView originOfIngredients;
-    @BindView(R.id.origin_of_ingredients_til)
-    LinearLayout originOfIngredientsParent;
-    @BindView(R.id.manufacturing_place)
-    EditText manufacturingPlace;
-    @BindView(R.id.manufacturing_place_til)
-    LinearLayout manufacturingPlaceParent;
-    @BindView(R.id.emb_code)
-    NachoTextView embCode;
-    @BindView(R.id.emb_code_til)
-    LinearLayout embCodeParent;
-    @BindView(R.id.link)
-    EditText link;
-    @BindView(R.id.link_til)
-    LinearLayout linkParent;
-    @BindView(R.id.hint_link)
-    View linkHint;
-    @BindView(R.id.hint_link_2)
-    View linkHint2;
-    @BindView(R.id.country_where_purchased)
-    NachoTextView countryWherePurchased;
-    @BindView(R.id.country_where_purchased_til)
-    LinearLayout countryWherePurchasedParent;
-    @BindView(R.id.stores)
-    NachoTextView stores;
-    @BindView(R.id.stores_til)
-    LinearLayout storesParent;
-    @BindView(R.id.countries_where_sold)
-    NachoTextView countriesWhereSold;
-    @BindView(R.id.countries_where_sold_til)
-    LinearLayout countriesWhereSoldParent;
-    @BindView(R.id.btn_other_pictures)
-    Button otherImage;
-    @BindView(R.id.other_image_progress)
-    ProgressBar otherImageProgress;
-    @BindView(R.id.other_image_progress_text)
-    TextView otherImageProgressText;
-    private String languageCode;
-    private String appLanguageCode;
     private Activity activity;
+    private FragmentAddProductOverviewBinding binding;
+    private String appLanguageCode;
+    private List<String> category = new ArrayList<>();
+    private String barcode;
+    private List<String> countries = new ArrayList<>();
+    private boolean editionMode;
+    private boolean frontImage;
+    private List<String> labels = new ArrayList<>();
+    private String languageCode;
+    private CategoryNameDao mCategoryNameDao;
+    private CountryNameDao mCountryNameDao;
+    private String mImageUrl;
+    private LabelNameDao mLabelNameDao;
     private OfflineSavedProduct mOfflineSavedProduct;
     private TagDao mTagDao;
-    private CategoryNameDao mCategoryNameDao;
-    private LabelNameDao mLabelNameDao;
-    private CountryNameDao mCountryNameDao;
-    private Product product;
-    private String code;
-    private String mImageUrl;
-    private boolean frontImage;
-    private boolean editionMode;
-    private File photoFile;
-    private List<String> countries = new ArrayList<>();
-    private List<String> labels = new ArrayList<>();
-    private List<String> category = new ArrayList<>();
     private boolean newImageSelected;
-    @BindView(R.id.grey_line2)
-    View greyLine2;
-    @BindView(R.id.grey_line3)
-    View greyLine3;
-    @BindView(R.id.grey_line4)
-    View greyLine4;
+    private File photoFile;
+    private PhotoReceiverHandler photoReceiverHandler;
+    private Product product;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_product_overview, container, false);
-        ButterKnife.bind(this, view);
-        return view;
+        binding = FragmentAddProductOverviewBinding.inflate(inflater);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         photoReceiverHandler = new PhotoReceiverHandler(this);
-        otherImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
+        binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
+
+        binding.btnNext.setOnClickListener(v -> next());
+        binding.btnAddImageFront.setOnClickListener(v -> addFrontImage());
+        binding.btnEditImageFront.setOnClickListener(v -> newFrontImage());
+        binding.btnOtherPictures.setOnClickListener(v -> addOtherImage());
+        binding.btnOtherPictures.setOnClickListener(v -> addOtherImage());
+        binding.sectionManufacturingDetails.setOnClickListener(v -> toggleManufacturingSectionVisibility());
+        binding.sectionPurchasingDetails.setOnClickListener(v -> togglePurchasingSectionVisibility());
+        binding.hintEmbCode.setOnClickListener(v -> toastEmbCodeHint());
+        binding.hintLink.setOnClickListener(v -> searchProductLink());
+        binding.hintLink2.setOnClickListener(v -> scanProductLink());
+        binding.language.setOnClickListener(v -> selectProductLanguage());
 
         //checks the information about the prompt clicked and takes action accordingly
         if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
-            categories.requestFocus();
+            binding.categories.requestFocus();
         } else if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
             ((AddProductActivity) getActivity()).proceed();
         }
@@ -205,36 +149,33 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             editionMode = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
-            barcode.setText(R.string.txtBarcode);
-            language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
-            sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
-            sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
+            binding.barcode.setText(R.string.txtBarcode);
+            binding.language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
+            binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
+            binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
             if (product != null) {
-                code = product.getCode();
+                barcode = product.getCode();
             }
             if (editionMode && product != null) {
-                code = product.getCode();
+                barcode = product.getCode();
                 String languageToUse = product.getLang();
                 if (product.isLanguageSupported(appLanguageCode)) {
                     languageToUse = appLanguageCode;
                 }
                 preFillProductValues(languageToUse);
             } else if (mOfflineSavedProduct != null) {
-                code = mOfflineSavedProduct.getBarcode();
+                barcode = mOfflineSavedProduct.getBarcode();
                 preFillValuesFromOffline();
             } else {
                 //addition
-                if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false)) {
-                    enableFastAdditionMode(true);
-                } else {
-                    enableFastAdditionMode(false);
-                }
+                final boolean fastAdditionMode = PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false);
+                enableFastAdditionMode(fastAdditionMode);
             }
 
-            barcode.append(" ");
-            barcode.append(code);
+            binding.barcode.append(" ");
+            binding.barcode.append(barcode);
             if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
-                otherImage.setVisibility(View.GONE);
+                binding.btnOtherPictures.setVisibility(View.GONE);
             }
             if (b.getBoolean("perform_ocr")) {
                 (getAddProductActivity()).proceed();
@@ -251,7 +192,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
             getAllDetails(((AddProductActivity) getActivity()).getInitialValues());
         }
-        if(StringUtils.isBlank(languageCode)){
+        if (StringUtils.isBlank(languageCode)) {
             setProductLanguage(appLanguageCode);
         }
     }
@@ -259,131 +200,190 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     /**
      * To enable fast addition mode
      *
-     * @param isEnabled
+     * @param enable
      */
-    private void enableFastAdditionMode(boolean isEnabled) {
+    private void enableFastAdditionMode(boolean enable) {
         int visibility = View.VISIBLE;
-        if (isEnabled) {
+        if (enable) {
             visibility = View.GONE;
         }
-        sectionManufacturingDetails.setVisibility(visibility);
-        sectionPurchasingDetails.setVisibility(visibility);
-        packaging.setVisibility(visibility);
-        label.setVisibility(visibility);
-        periodsAfterOpeningParent.setVisibility(visibility);
+        binding.sectionManufacturingDetails.setVisibility(visibility);
+        binding.sectionPurchasingDetails.setVisibility(visibility);
+        binding.packaging.setVisibility(visibility);
+        binding.label.setVisibility(visibility);
+        binding.periodOfTimeAfterOpeningTil.setVisibility(visibility);
         changeVisibilityManufacturingSectionTo(visibility);
         changePurchasingSectionVisibilityTo(visibility);
-        greyLine2.setVisibility(visibility);
-        greyLine3.setVisibility(visibility);
-        greyLine4.setVisibility(visibility);
+        binding.greyLine2.setVisibility(visibility);
+        binding.greyLine3.setVisibility(visibility);
+        binding.greyLine4.setVisibility(visibility);
     }
 
     /**
      * Pre fill the fields of the product which are already present on the server.
      */
     private void preFillProductValues(String lang) {
-        mTagDao = Utils.getAppDaoSession(activity).getTagDao();
-        mCategoryNameDao = Utils.getAppDaoSession(activity).getCategoryNameDao();
-        mLabelNameDao = Utils.getAppDaoSession(activity).getLabelNameDao();
-        mCountryNameDao = Utils.getAppDaoSession(activity).getCountryNameDao();
+        mTagDao = Utils.getDaoSession().getTagDao();
+        mCategoryNameDao = Utils.getDaoSession().getCategoryNameDao();
+        mLabelNameDao = Utils.getDaoSession().getLabelNameDao();
+        mCountryNameDao = Utils.getDaoSession().getCountryNameDao();
         if (product.getProductName() != null && !product.getProductName().isEmpty()) {
-            name.setText(product.getProductName());
+            binding.name.setText(product.getProductName());
         }
         if (product.getQuantity() != null && !product.getQuantity().isEmpty()) {
-            quantity.setText(product.getQuantity());
+            binding.quantity.setText(product.getQuantity());
         }
         if (product.getBrands() != null && !product.getBrands().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getBrands().split("\\s*,\\s*"));
-            brand.setText(chipValues);
+            binding.brand.setText(extractProductBrandsChipsValues(product));
         }
         if (product.getPackaging() != null && !product.getPackaging().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getPackaging().split("\\s*,\\s*"));
-            packaging.setText(chipValues);
+            binding.packaging.setText(extractProductPackagingChipsValues(product));
         }
         if (product.getCategoriesTags() != null && !product.getCategoriesTags().isEmpty()) {
-            List<String> categoriesTags = product.getCategoriesTags();
-            final List<String> chipValues = new ArrayList<>();
-            for (String tag : categoriesTags) {
-                chipValues.add(getCategoryName(appLanguageCode, tag));
-            }
-            categories.setText(chipValues);
+            binding.categories.setText(extractProductCategoriesChipsValues(product));
         }
         if (product.getLabelsTags() != null && !product.getLabelsTags().isEmpty()) {
-            List<String> labelsTags = product.getLabelsTags();
-            final List<String> chipValues = new ArrayList<>();
-            for (String tag : labelsTags) {
-                chipValues.add(getLabelName(appLanguageCode, tag));
-            }
-            label.setText(chipValues);
+            binding.label.setText(extractProductTagsChipsValues(product));
         }
         if (product.getOrigins() != null && !product.getOrigins().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getOrigins().split("\\s*,\\s*"));
-            originOfIngredients.setText(chipValues);
+            binding.originOfIngredients.setText(extractProductOriginsChipsValues(product));
         }
         if (product.getManufacturingPlaces() != null && !product.getManufacturingPlaces().isEmpty()) {
-            manufacturingPlace.setText(product.getManufacturingPlaces());
+            binding.manufacturingPlace.setText(product.getManufacturingPlaces());
         }
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
-            String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
-            final List<String> chipValues = new ArrayList<>();
-            for (String embTag : embTags) {
-                chipValues.add(getEmbCode(embTag));
-            }
-            embCode.setText(chipValues);
+            binding.embCode.setText(extractProductEmbTagsChipsValues(product));
         }
         if (product.getManufactureUrl() != null && !product.getManufactureUrl().isEmpty()) {
-            link.setText(product.getManufactureUrl());
+            binding.link.setText(product.getManufactureUrl());
         }
         if (product.getPurchasePlaces() != null && !product.getPurchasePlaces().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getPurchasePlaces().split("\\s*,\\s*"));
-            countryWherePurchased.setText(chipValues);
+            binding.countryWherePurchased.setText(extractProductPurchasePlaces(product));
         }
         if (product.getStores() != null && !product.getStores().isEmpty()) {
-            List<String> chipValues = Arrays.asList(product.getStores().split("\\s*,\\s*"));
-            stores.setText(chipValues);
+            binding.stores.setText(extractProductStoresChipValues(product));
         }
         if (product.getCountriesTags() != null && !product.getCountriesTags().isEmpty()) {
-            List<String> countriesTags = product.getCountriesTags();
-            final List<String> chipValues = new ArrayList<>();
-            for (String tag : countriesTags) {
-                chipValues.add(getCountryName(appLanguageCode, tag));
-            }
+            List<String> chipValues = extractProductCountriesTagsChipValues(product);
             //Also add the country set by the user in preferences
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
             String savedCountry = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "");
             if (!savedCountry.isEmpty()) {
                 chipValues.add(savedCountry);
             }
-            countriesWhereSold.setText(chipValues);
+            binding.countriesWhereSold.setText(chipValues);
         }
         setProductLanguage(lang);
     }
 
+    private List<String> extractProductCountriesTagsChipValues(Product product) {
+        if (product == null || product.getCountriesTags() == null) {
+            return new ArrayList<>();
+        }
+        List<String> countriesTags = product.getCountriesTags();
+        final List<String> chipValues = new ArrayList<>();
+        for (String tag : countriesTags) {
+            chipValues.add(getCountryName(appLanguageCode, tag));
+        }
+        return chipValues;
+    }
+
+    private List<String> extractProductStoresChipValues(Product product) {
+        if (product == null || product.getStores() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getStores().split("\\s*,\\s*"));
+    }
+
+    private List<String> extractProductPurchasePlaces(Product product) {
+        if (product == null || product.getPurchasePlaces() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getPurchasePlaces().split("\\s*,\\s*"));
+    }
+
+    private List<String> extractProductEmbTagsChipsValues(Product product) {
+        if (product == null || product.getEmbTags() == null) {
+            return new ArrayList<>();
+        }
+        String[] embTags = product.getEmbTags().toString().replace("[", "").replace("]", "").split(", ");
+        final List<String> chipValues = new ArrayList<>();
+        for (String embTag : embTags) {
+            chipValues.add(getEmbCode(embTag));
+        }
+        return chipValues;
+    }
+
+    private List<String> extractProductOriginsChipsValues(Product product) {
+        if (product == null || product.getOrigins() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getOrigins().split("\\s*,\\s*"));
+    }
+
+    private List<String> extractProductTagsChipsValues(Product product) {
+        if (product == null || product.getLabelsTags() == null) {
+            return new ArrayList<>();
+        }
+        List<String> labelsTags = product.getLabelsTags();
+        final List<String> chipValues = new ArrayList<>();
+        for (String tag : labelsTags) {
+            chipValues.add(getLabelName(appLanguageCode, tag));
+        }
+        return chipValues;
+    }
+
+    private List<String> extractProductCategoriesChipsValues(Product product) {
+        if (product == null || product.getCategoriesTags() == null) {
+            return new ArrayList<>();
+        }
+        List<String> categoriesTags = product.getCategoriesTags();
+        final List<String> chipValues = new ArrayList<>();
+        for (String tag : categoriesTags) {
+            chipValues.add(getCategoryName(appLanguageCode, tag));
+        }
+        return chipValues;
+    }
+
+    private List<String> extractProductPackagingChipsValues(Product product) {
+        if (product == null || product.getPackaging() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getPackaging().split("\\s*,\\s*"));
+    }
+
+    private List<String> extractProductBrandsChipsValues(Product product) {
+        if (product == null || product.getBrands() == null) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(product.getBrands().split("\\s*,\\s*"));
+    }
+
     /**
      * Loads front image of the product into the imageview
+     *
      * @param language language used for adding product
-     * */
-
+     */
     private void loadFrontImage(String language) {
-        photoFile=null;
+        photoFile = null;
         final String imageFrontUrl = product.getImageFrontUrl(language);
         if (imageFrontUrl != null && !imageFrontUrl.isEmpty()) {
 
             mImageUrl = imageFrontUrl;
-            imageProgress.setVisibility(View.VISIBLE);
-            editImageFront.setVisibility(View.INVISIBLE);
-            Picasso.with(getContext())
+            binding.imageProgress.setVisibility(View.VISIBLE);
+            binding.btnEditImageFront.setVisibility(View.INVISIBLE);
+            Picasso.get()
                 .load(imageFrontUrl)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
-                .into(imageFront, new Callback() {
+                .into(binding.btnAddImageFront, new Callback() {
                     @Override
                     public void onSuccess() {
                         frontImageLoaded();
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception ex) {
                         frontImageLoaded();
                     }
                 });
@@ -445,62 +445,61 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     private void preFillValuesFromOffline() {
         HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
         if (productDetails != null) {
-            if (productDetails.get("image_front") != null) {
-                imageProgress.setVisibility(View.VISIBLE);
-                editImageFront.setVisibility(View.INVISIBLE);
-                mImageUrl = productDetails.get("image_front");
-                Picasso.with(getContext())
-                    .load("file://" + mImageUrl)
+            if (mOfflineSavedProduct.getImageFrontLocalUrl() != null) {
+                binding.imageProgress.setVisibility(View.VISIBLE);
+                binding.btnEditImageFront.setVisibility(View.INVISIBLE);
+                mImageUrl = mOfflineSavedProduct.getImageFrontLocalUrl();
+                Picasso.get()
+                    .load(mImageUrl)
                     .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
-                    .into(imageFront, new Callback() {
+                    .into(binding.btnAddImageFront, new Callback() {
                         @Override
                         public void onSuccess() {
                             frontImageLoaded();
                         }
 
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
                             frontImageLoaded();
                         }
                     });
             }
-            if (productDetails.get(AddProductActivity.PARAM_LANGUAGE) != null) {
-                setProductLanguage(productDetails.get(AddProductActivity.PARAM_LANGUAGE));
+            String offLineProductLanguage = mOfflineSavedProduct.getLanguage();
+            if (!TextUtils.isEmpty(offLineProductLanguage)) {
+                setProductLanguage(offLineProductLanguage);
             }
-            String lc = productDetails.get(AddProductActivity.PARAM_LANGUAGE) != null ? productDetails.get(AddProductActivity.PARAM_LANGUAGE) : "en";
-            if (productDetails.get(PARAM_NAME + "_" + lc) != null) {
-                name.setText(productDetails.get(PARAM_NAME + "_" + lc));
-            } else if (productDetails.get(PARAM_NAME + "_" + "en") != null) {
-                name.setText(productDetails.get(PARAM_NAME + "_" + "en"));
+            String offlineProductName = mOfflineSavedProduct.getName();
+            if (!TextUtils.isEmpty(offlineProductName)) {
+                binding.name.setText(offlineProductName);
             }
-            if (productDetails.get(PARAM_QUANTITY) != null) {
-                quantity.setText(productDetails.get(PARAM_QUANTITY));
+            if (productDetails.get(ApiFields.Keys.QUANTITY) != null) {
+                binding.quantity.setText(productDetails.get(ApiFields.Keys.QUANTITY));
             }
-            addChipsText(productDetails, PARAM_BRAND, brand);
-            addChipsText(productDetails, PARAM_PACKAGING, packaging);
-            addChipsText(productDetails, PARAM_CATEGORIES, categories);
-            addChipsText(productDetails, PARAM_LABELS, label);
-            addChipsText(productDetails, PARAM_ORIGIN, originOfIngredients);
-            if (productDetails.get(PARAM_MANUFACTURING_PLACE) != null) {
-                manufacturingPlace.setText(productDetails.get(PARAM_MANUFACTURING_PLACE));
+            prefillChip(productDetails, ApiFields.Keys.ADD_BRANDS, binding.brand);
+            prefillChip(productDetails, ApiFields.Keys.ADD_PACKAGING, binding.packaging);
+            prefillChip(productDetails, ApiFields.Keys.ADD_CATEGORIES, binding.categories);
+            prefillChip(productDetails, ApiFields.Keys.ADD_LABELS, binding.label);
+            prefillChip(productDetails, ApiFields.Keys.ADD_ORIGINS, binding.originOfIngredients);
+            if (productDetails.get(ApiFields.Keys.ADD_MANUFACTURING_PLACE) != null) {
+                binding.manufacturingPlace.setText(productDetails.get(ApiFields.Keys.ADD_MANUFACTURING_PLACE));
             }
-            addChipsText(productDetails, PARAM_EMB_CODE, embCode);
-            if (productDetails.get(PARAM_LINK) != null) {
-                link.setText(productDetails.get(PARAM_LINK));
+            prefillChip(productDetails, ApiFields.Keys.ADD_EMB_CODE, binding.embCode);
+            if (productDetails.get(ApiFields.Keys.LINK) != null) {
+                binding.link.setText(productDetails.get(ApiFields.Keys.LINK));
             }
-            addChipsText(productDetails, PARAM_PURCHASE, countryWherePurchased);
-            addChipsText(productDetails, PARAM_STORE, stores);
-            addChipsText(productDetails, PARAM_COUNTRIES, countriesWhereSold);
+            prefillChip(productDetails, ApiFields.Keys.ADD_PURCHASE, binding.countryWherePurchased);
+            prefillChip(productDetails, ApiFields.Keys.ADD_STORES, binding.stores);
+            prefillChip(productDetails, ApiFields.Keys.ADD_COUNTRIES, binding.countriesWhereSold);
         }
     }
 
     private void frontImageLoaded() {
-        editImageFront.setVisibility(View.VISIBLE);
-        imageProgress.setVisibility(View.GONE);
+        binding.btnEditImageFront.setVisibility(View.VISIBLE);
+        binding.imageProgress.setVisibility(View.GONE);
     }
 
-    private void addChipsText(HashMap<String, String> productDetails, String paramName, NachoTextView nachoTextView) {
+    private void prefillChip(@NonNull Map<String, String> productDetails, @NonNull String paramName, @NonNull NachoTextView nachoTextView) {
         if (productDetails.get(paramName) != null) {
             List<String> chipValues = Arrays.asList(productDetails.get(paramName).split("\\s*,\\s*"));
             nachoTextView.setText(chipValues);
@@ -508,7 +507,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     private void initializeChips() {
-        NachoTextView[] nachoTextViews = {brand, packaging, categories, label, originOfIngredients, embCode, countryWherePurchased, stores, countriesWhereSold};
+        NachoTextView[] nachoTextViews = {binding.brand, binding.packaging, binding.categories, binding.label, binding.originOfIngredients, binding.embCode, binding.countryWherePurchased, binding.stores, binding.countriesWhereSold};
         for (NachoTextView nachoTextView : nachoTextViews) {
             nachoTextView.addChipTerminator(',', BEHAVIOR_CHIPIFY_CURRENT_TOKEN);
             nachoTextView.setNachoValidator(new ChipifyingNachoValidator());
@@ -518,9 +517,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
 
     /**
      * Auto load suggestions into various NachoTextViews
-     * */
+     */
     private void loadAutoSuggestions() {
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
         AsyncSession asyncSessionLabels = daoSession.startAsyncSession();
         AsyncSession asyncSessionCategories = daoSession.startAsyncSession();
@@ -548,10 +547,10 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_dropdown_item_1line, countries);
             EmbCodeAutoCompleteAdapter customAdapter = new EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
-            originOfIngredients.setAdapter(adapter);
-            countryWherePurchased.setAdapter(adapter);
-            countriesWhereSold.setAdapter(adapter);
-            embCode.setAdapter(customAdapter);
+            binding.originOfIngredients.setAdapter(adapter);
+            binding.countryWherePurchased.setAdapter(adapter);
+            binding.countriesWhereSold.setAdapter(adapter);
+            binding.embCode.setAdapter(customAdapter);
         });
         asyncSessionLabels.setListenerMainThread(operation -> {
             @SuppressWarnings("unchecked")
@@ -562,7 +561,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_dropdown_item_1line, labels);
-            label.setAdapter(adapter);
+            binding.label.setAdapter(adapter);
         });
         asyncSessionCategories.setListenerMainThread(operation -> {
             @SuppressWarnings("unchecked")
@@ -573,25 +572,25 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_dropdown_item_1line, category);
-            categories.setAdapter(adapter);
+            binding.categories.setAdapter(adapter);
         });
         if (BuildConfig.FLAVOR.equals("obf")) {
-            periodsAfterOpeningParent.setVisibility(View.VISIBLE);
+            binding.periodOfTimeAfterOpeningTil.setVisibility(View.VISIBLE);
             PeriodAfterOpeningAutoCompleteAdapter customAdapter = new PeriodAfterOpeningAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
-            periodsAfterOpening.setAdapter(customAdapter);
+            binding.periodOfTimeAfterOpening.setAdapter(customAdapter);
         }
     }
 
     /**
      * Set language of the product to the language entered
+     *
      * @param lang language code
-     * */
-
+     */
     private void setProductLanguage(String lang) {
         languageCode = lang;
         Locale current = LocaleHelper.getLocale(lang);
-        language.setText(R.string.product_language);
-        language.append(WordUtils.capitalize(current.getDisplayName(current)));
+        binding.language.setText(R.string.product_language);
+        binding.language.append(StringUtils.capitalize(current.getDisplayName(current)));
         if (activity instanceof AddProductActivity) {
             getAddProductActivity().setProductLanguage(languageCode);
         }
@@ -599,13 +598,13 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             loadFrontImage(lang);
             OpenFoodAPIService client = CommonApiManager.getInstance().getOpenFoodApiService();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getExistingProductDetails(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<State>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        name.setText(getString(R.string.txtLoading));
+                        binding.name.setText(getString(R.string.txtLoading));
                     }
 
                     @Override
@@ -613,14 +612,14 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                         if (state.getStatus() == 1) {
                             if (state.getProduct().getProductName(lang) != null) {
                                 if (languageCode.equals(lang)) {
-                                    name.setText(state.getProduct().getProductName(lang));
+                                    binding.name.setText(state.getProduct().getProductName(lang));
                                     if (activity instanceof AddProductActivity) {
                                         getAddProductActivity().setIngredients("set", state.getProduct().getIngredientsText(lang));
                                         getAddProductActivity().updateLanguage();
                                     }
                                 }
                             } else {
-                                name.setText(null);
+                                binding.name.setText(null);
                                 if (activity instanceof AddProductActivity) {
                                     (getAddProductActivity()).setIngredients("set", null);
                                 }
@@ -630,7 +629,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
 
                     @Override
                     public void onError(Throwable e) {
-                        name.setText(null);
+                        binding.name.setText(null);
                     }
                 });
         }
@@ -646,14 +645,12 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         activity = getActivity();
     }
 
-    @OnClick(R.id.btn_next)
     void next() {
         if (!areRequiredFieldsEmpty() && activity instanceof AddProductActivity) {
             (getAddProductActivity()).proceed();
         }
     }
 
-    @OnClick(R.id.btnAddImageFront)
     void addFrontImage() {
         if (mImageUrl != null) {
             frontImage = true;
@@ -670,14 +667,12 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         }
     }
 
-    @OnClick(R.id.btnEditImageFront)
     void newFrontImage() {
         // add front image.
         frontImage = true;
         doChooseOrTakePhotos(getString(R.string.set_img_front));
     }
 
-    @OnClick(R.id.btn_other_pictures)
     void addOtherImage() {
         frontImage = false;
         doChooseOrTakePhotos(getString(R.string.take_more_pictures));
@@ -698,94 +693,97 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     public void getAllDetails(Map<String, String> targetMap) {
         chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
-            targetMap.put(PARAM_BARCODE, code);
-            targetMap.put(AddProductActivity.PARAM_LANGUAGE, languageCode);
-            targetMap.put(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
+            targetMap.put(ApiFields.Keys.BARCODE, barcode);
+            targetMap.put(ApiFields.Keys.LANG, languageCode);
+            targetMap.put(ApiFields.Keys.LC, appLanguageCode);
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-            targetMap.put(PARAM_NAME + "_" + lc, name.getText().toString());
-            targetMap.put(PARAM_QUANTITY, quantity.getText().toString());
-            targetMap.put(PARAM_BRAND.substring(4), getValues(brand));
-            targetMap.put(PARAM_PACKAGING.substring(4), getValues(packaging));
-            targetMap.put(PARAM_CATEGORIES.substring(4), getValues(categories));
-            targetMap.put(PARAM_LABELS.substring(4), getValues(label));
+            targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
+            targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
+            targetMap.put(ApiFields.Keys.ADD_BRANDS.substring(4), getValues(binding.brand));
+            targetMap.put(ApiFields.Keys.ADD_PACKAGING.substring(4), getValues(binding.packaging));
+            targetMap.put(ApiFields.Keys.ADD_CATEGORIES.substring(4), getValues(binding.categories));
+            targetMap.put(ApiFields.Keys.ADD_LABELS.substring(4), getValues(binding.label));
             if (BuildConfig.FLAVOR.equals("obf")) {
-                targetMap.put(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
+                targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
             }
             if (mImageUrl != null) {
                 targetMap.put("imageUrl", mImageUrl);
             }
-            targetMap.put(PARAM_ORIGIN.substring(4), getValues(originOfIngredients));
-            targetMap.put(PARAM_MANUFACTURING_PLACE.substring(4), manufacturingPlace.getText().toString());
-            targetMap.put(PARAM_EMB_CODE.substring(4), getValues(embCode));
-            targetMap.put(PARAM_LINK, link.getText().toString());
-            targetMap.put(PARAM_PURCHASE.substring(4), getValues(countryWherePurchased));
-            targetMap.put(PARAM_STORE.substring(4), getValues(stores));
-            targetMap.put(PARAM_COUNTRIES.substring(4), getValues(countriesWhereSold));
+            targetMap.put(ApiFields.Keys.ADD_ORIGINS.substring(4), getValues(binding.originOfIngredients));
+            targetMap.put(ApiFields.Keys.ADD_MANUFACTURING_PLACE.substring(4), binding.manufacturingPlace.getText().toString());
+            targetMap.put(ApiFields.Keys.ADD_EMB_CODE.substring(4), getValues(binding.embCode));
+            targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
+            targetMap.put(ApiFields.Keys.ADD_PURCHASE.substring(4), getValues(binding.countryWherePurchased));
+            targetMap.put(ApiFields.Keys.ADD_STORES.substring(4), getValues(binding.stores));
+            targetMap.put(ApiFields.Keys.ADD_COUNTRIES.substring(4), getValues(binding.countriesWhereSold));
         }
     }
 
     /**
-     * adds only those fields to the query map which are not empty.
+     * adds only those fields to the query map which have changed.
      */
-    public void getDetails() {
+    public void addUpdatedFieldsToMap(Map<String, String> targetMap) {
         chipifyAllUnterminatedTokens();
-        if (activity instanceof AddProductActivity) {
-            final AddProductActivity addProductActivity = (AddProductActivity) this.activity;
-            if (!code.isEmpty()) {
-                addProductActivity.addToMap(PARAM_BARCODE, code);
-            }
-            if (!appLanguageCode.isEmpty()) {
-                addProductActivity.addToMap(PARAM_INTERFACE_LANGUAGE, appLanguageCode);
-            }
-            if (!languageCode.isEmpty()) {
-                addProductActivity.addToMap(AddProductActivity.PARAM_LANGUAGE, languageCode);
-            }
-            if (!name.getText().toString().isEmpty()) {
-                String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-                addProductActivity.addToMap(PARAM_NAME + "_" + lc, name.getText().toString());
-            }
-            if (!quantity.getText().toString().isEmpty()) {
-                addProductActivity.addToMap(PARAM_QUANTITY, quantity.getText().toString());
-            }
-            if (!brand.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_BRAND, getValues(brand));
-            }
-            if (!packaging.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_PACKAGING, getValues(packaging));
-            }
-            if (!categories.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_CATEGORIES, getValues(categories));
-            }
-            if (!label.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_LABELS, getValues(label));
-            }
-            if (!periodsAfterOpening.getText().toString().isEmpty()) {
-                addProductActivity.addToMap(PARAM_PERIODS_AFTER_OPENING, periodsAfterOpening.getText().toString());
-            }
-            if (mImageUrl != null) {
-                addProductActivity.addToMap("imageUrl", mImageUrl);
-            }
-            if (!originOfIngredients.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_ORIGIN, getValues(originOfIngredients));
-            }
-            if (!manufacturingPlace.getText().toString().isEmpty()) {
-                addProductActivity.addToMap(PARAM_MANUFACTURING_PLACE, manufacturingPlace.getText().toString());
-            }
-            if (!embCode.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_EMB_CODE, getValues(embCode));
-            }
-            if (!link.getText().toString().isEmpty()) {
-                addProductActivity.addToMap(PARAM_LINK, link.getText().toString());
-            }
-            if (!countryWherePurchased.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_PURCHASE, getValues(countryWherePurchased));
-            }
-            if (!stores.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_STORE, getValues(stores));
-            }
-            if (!countriesWhereSold.getChipValues().isEmpty()) {
-                addProductActivity.addToMap(PARAM_COUNTRIES, getValues(countriesWhereSold));
-            }
+        // Check for activity
+        if (!(activity instanceof AddProductActivity)) {
+            return;
+        }
+        if (!TextUtils.isEmpty(barcode)) {
+            targetMap.put(ApiFields.Keys.BARCODE, barcode);
+        }
+        if (!TextUtils.isEmpty(appLanguageCode)) {
+            targetMap.put(ApiFields.Keys.LC, appLanguageCode);
+        }
+        if (!TextUtils.isEmpty(languageCode)) {
+            targetMap.put(ApiFields.Keys.LANG, languageCode);
+        }
+        String lc = (!TextUtils.isEmpty(languageCode)) ? languageCode : "en";
+        if (EditTextUtils.isNotEmpty(binding.name) && EditTextUtils.isDifferent(binding.name, product != null ? product.getProductName(lc) : null)) {
+            targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
+        }
+        if (EditTextUtils.isNotEmpty(binding.quantity) && EditTextUtils.isDifferent(binding.quantity, product != null ? product.getQuantity() : null)) {
+            targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
+        }
+        if (!binding.brand.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.brand, extractProductBrandsChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.ADD_BRANDS, getValues(binding.brand));
+        }
+        if (!binding.packaging.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.packaging, extractProductPackagingChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.ADD_PACKAGING, getValues(binding.packaging));
+        }
+        if (!binding.categories.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.categories, extractProductCategoriesChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.ADD_CATEGORIES, getValues(binding.categories));
+        }
+        if (!binding.label.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.label, extractProductTagsChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.ADD_LABELS, getValues(binding.label));
+        }
+        if (EditTextUtils.isNotEmpty(binding.periodOfTimeAfterOpening)) {
+            targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
+        }
+        if (mImageUrl != null) {
+            targetMap.put("imageUrl", mImageUrl);
+        }
+        if (!binding.originOfIngredients.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.originOfIngredients, extractProductOriginsChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.ADD_ORIGINS, getValues(binding.originOfIngredients));
+        }
+        if (EditTextUtils.isNotEmpty(binding.manufacturingPlace) && EditTextUtils
+            .isDifferent(binding.manufacturingPlace, product != null ? product.getManufacturingPlaces() : null)) {
+            targetMap.put(ApiFields.Keys.ADD_MANUFACTURING_PLACE, binding.manufacturingPlace.getText().toString());
+        }
+        if (!binding.embCode.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.embCode, extractProductEmbTagsChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.ADD_EMB_CODE, getValues(binding.embCode));
+        }
+        if (EditTextUtils.isNotEmpty(binding.link) && EditTextUtils.isDifferent(binding.link, product != null ? product.getManufactureUrl() : null)) {
+            targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
+        }
+        if (!binding.countryWherePurchased.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.countryWherePurchased, extractProductPurchasePlaces(product))) {
+            targetMap.put(ApiFields.Keys.ADD_PURCHASE, getValues(binding.countryWherePurchased));
+        }
+        if (!binding.stores.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.stores, extractProductStoresChipValues(product))) {
+            targetMap.put(ApiFields.Keys.ADD_STORES, getValues(binding.stores));
+        }
+        if (!binding.countriesWhereSold.getChipValues().isEmpty() && EditTextUtils
+            .areChipsDifferent(binding.countriesWhereSold, extractProductCountriesTagsChipValues(product))) {
+            targetMap.put(ApiFields.Keys.ADD_COUNTRIES, getValues(binding.countriesWhereSold));
         }
     }
 
@@ -793,57 +791,56 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
      * Chipifies all existing plain text in all the NachoTextViews.
      */
     private void chipifyAllUnterminatedTokens() {
-        NachoTextView[] nachoTextViews = {brand, packaging, categories, label, originOfIngredients, embCode, countryWherePurchased, stores, countriesWhereSold};
+        NachoTextView[] nachoTextViews = {binding.brand, binding.packaging, binding.categories, binding.label, binding.originOfIngredients, binding.embCode, binding.countryWherePurchased, binding.stores, binding.countriesWhereSold};
         for (NachoTextView nachoTextView : nachoTextViews) {
-            nachoTextView.chipifyAllUnterminatedTokens();
+            if (nachoTextView != null) {
+                nachoTextView.chipifyAllUnterminatedTokens();
+            }
         }
     }
 
     private String getValues(NachoTextView nachoTextView) {
         List<String> list = nachoTextView.getChipValues();
-        return StringUtil.join(list, ",");
+        return StringUtils.join(list, ",");
     }
 
-    @OnClick(R.id.section_manufacturing_details)
     void toggleManufacturingSectionVisibility() {
-        if (manufacturingPlaceParent.getVisibility() != View.VISIBLE) {
+        if (binding.manufacturingPlaceTil.getVisibility() != View.VISIBLE) {
             changeVisibilityManufacturingSectionTo(View.VISIBLE);
-            originOfIngredients.requestFocus();
-            sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0);
+            binding.originOfIngredients.requestFocus();
+            binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0);
         } else {
             changeVisibilityManufacturingSectionTo(View.GONE);
-            sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
+            binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
         }
     }
 
     private void changeVisibilityManufacturingSectionTo(int visibility) {
-        originOfIngredientsParent.setVisibility(visibility);
-        manufacturingPlaceParent.setVisibility(visibility);
-        embCodeParent.setVisibility(visibility);
-        linkParent.setVisibility(visibility);
-        linkHint.setVisibility(visibility);
-        linkHint2.setVisibility(visibility);
+        binding.originOfIngredientsTil.setVisibility(visibility);
+        binding.manufacturingPlaceTil.setVisibility(visibility);
+        binding.embCodeTil.setVisibility(visibility);
+        binding.linkTil.setVisibility(visibility);
+        binding.hintLink.setVisibility(visibility);
+        binding.hintLink2.setVisibility(visibility);
     }
 
-    @OnClick(R.id.section_purchasing_details)
     void togglePurchasingSectionVisibility() {
-        if (storesParent.getVisibility() != View.VISIBLE) {
+        if (binding.storesTil.getVisibility() != View.VISIBLE) {
             changePurchasingSectionVisibilityTo(View.VISIBLE);
-            countryWherePurchased.requestFocus();
-            sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0);
+            binding.countryWherePurchased.requestFocus();
+            binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0);
         } else {
             changePurchasingSectionVisibilityTo(View.GONE);
-            sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
+            binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
         }
     }
 
     private void changePurchasingSectionVisibilityTo(int visibility) {
-        countryWherePurchasedParent.setVisibility(visibility);
-        storesParent.setVisibility(visibility);
-        countriesWhereSoldParent.setVisibility(visibility);
+        binding.countryWherePurchasedTil.setVisibility(visibility);
+        binding.storesTil.setVisibility(visibility);
+        binding.countriesWhereSoldTil.setVisibility(visibility);
     }
 
-    @OnClick(R.id.hint_emb_code)
     void toastEmbCodeHint() {
         new MaterialDialog.Builder(activity)
             .content(R.string.hint_emb_codes)
@@ -851,22 +848,20 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             .show();
     }
 
-    @OnClick(R.id.hint_link)
     void searchProductLink() {
-        String url = "https://www.google.com/search?q=" + code;
-        if (!brand.getChipAndTokenValues().isEmpty()) {
-            List<String> brandNames = brand.getChipAndTokenValues();
-            url = url + " " + StringUtil.join(brandNames, " ");
+        String url = "https://www.google.com/search?q=" + barcode;
+        if (!binding.brand.getChipAndTokenValues().isEmpty()) {
+            List<String> brandNames = binding.brand.getChipAndTokenValues();
+            url = url + " " + StringUtils.join(brandNames, " ");
         }
-        if (!name.getText().toString().isEmpty()) {
-            url = url + " " + name.getText().toString();
+        if (EditTextUtils.isNotEmpty(binding.name)) {
+            url = url + " " + EditTextUtils.getContent(binding.name);
         }
         url = url + " " + getString(R.string.official_website);
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(activity.getBaseContext(), null);
         CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(url), new WebViewFallback());
     }
 
-    @OnClick(R.id.hint_link_2)
     void scanProductLink() {
         IntentIntegrator integrator = IntentIntegrator.forSupportFragment(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
@@ -875,7 +870,6 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         integrator.initiateScan();
     }
 
-    @OnClick(R.id.language)
     void selectProductLanguage() {
         String[] localeValues = activity.getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
@@ -888,7 +882,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             }
             Locale current = LocaleHelper.getLocale(localeValues[i]);
             if (current != null) {
-                localeLabels[i] = WordUtils.capitalize(current.getDisplayName(current));
+                localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current));
                 finalLocalLabels.add(localeLabels[i]);
                 finalLocalValues.add(localeValues[i]);
             }
@@ -897,7 +891,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             .title(R.string.preference_choose_language_dialog_title)
             .items(finalLocalLabels)
             .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
-                name.setText(null);
+                binding.name.setText(null);
                 if (activity instanceof AddProductActivity) {
                     (getAddProductActivity()).setIngredients("set", null);
                 }
@@ -909,13 +903,12 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     /**
-     * Before moving next check if the required fields are empty
-     * */
-
+     * Before moving next check if the required feilds are empty
+     */
     public boolean areRequiredFieldsEmpty() {
         if (mImageUrl == null || mImageUrl.equals("")) {
-            Toast.makeText(OFFApplication.getInstance(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
-            scrollView.fullScroll(View.FOCUS_UP);
+            Toast.makeText(getContext(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
+            binding.scrollView.fullScroll(View.FOCUS_UP);
             return true;
         } else {
             return false;
@@ -929,12 +922,12 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         ProductImage image;
         int position;
         if (frontImage) {
-            image = new ProductImage(code, FRONT, newPhotoFile);
+            image = new ProductImage(barcode, FRONT, newPhotoFile);
             mImageUrl = newPhotoFile.getAbsolutePath();
             newImageSelected = true;
             position = 0;
         } else {
-            image = new ProductImage(code, OTHER, newPhotoFile);
+            image = new ProductImage(barcode, OTHER, newPhotoFile);
             position = 3;
         }
         image.setFilePath(resultUri.getPath());
@@ -950,8 +943,8 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         if (requestCode == INTENT_INTEGRATOR_REQUEST_CODE) {
             IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
             if (result.getContents() != null) {
-                link.setText(result.getContents());
-                link.requestFocus();
+                binding.link.setText(result.getContents());
+                binding.link.requestFocus();
             }
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -961,40 +954,45 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     public void showImageProgress() {
-        imageProgress.setVisibility(View.VISIBLE);
-        imageProgressText.setVisibility(View.VISIBLE);
-        imageFront.setVisibility(View.INVISIBLE);
-        editImageFront.setVisibility(View.INVISIBLE);
+        if (!isAdded()) {
+            return;
+        }
+        binding.imageProgress.setVisibility(View.VISIBLE);
+        binding.imageProgressText.setVisibility(View.VISIBLE);
+        binding.btnAddImageFront.setVisibility(View.INVISIBLE);
+        binding.btnEditImageFront.setVisibility(View.INVISIBLE);
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
-        imageProgress.setVisibility(View.GONE);
-        imageProgressText.setVisibility(View.GONE);
-        imageFront.setVisibility(View.VISIBLE);
-        editImageFront.setVisibility(View.VISIBLE);
+        if (!isAdded()) {
+            return;
+        }
+        binding.imageProgress.setVisibility(View.GONE);
+        binding.imageProgressText.setVisibility(View.GONE);
+        binding.btnAddImageFront.setVisibility(View.VISIBLE);
+        binding.btnEditImageFront.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
-            Picasso.with(activity)
+            Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
-                .into(imageFront);
+                .into(binding.btnAddImageFront);
         }
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 
     public void showOtherImageProgress() {
-        otherImageProgress.setVisibility(View.VISIBLE);
-        otherImageProgressText.setVisibility(View.VISIBLE);
-        otherImageProgressText.setText(R.string.toastSending);
+        binding.otherImageProgress.setVisibility(View.VISIBLE);
+        binding.otherImageProgressText.setVisibility(View.VISIBLE);
+        binding.otherImageProgressText.setText(R.string.toastSending);
     }
 
     public void hideOtherImageProgress(boolean errorUploading, String message) {
-        otherImageProgress.setVisibility(View.GONE);
+        binding.otherImageProgress.setVisibility(View.GONE);
         if (errorUploading) {
-            otherImageProgressText.setVisibility(View.GONE);
+            binding.otherImageProgressText.setVisibility(View.GONE);
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
         } else {
-            otherImageProgressText.setText(R.string.image_uploaded_successfully);
+            binding.otherImageProgressText.setText(R.string.image_uploaded_successfully);
         }
     }
 }

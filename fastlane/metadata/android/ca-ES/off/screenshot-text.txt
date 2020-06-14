@@ -1,5 +1,5 @@
 Aquestes són les etiquetes que es mostren a sobre de les captures de pantalla a la playstore. Manteniu-les curtes i atractives.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ca
 
 =====================
 V2 screenshots

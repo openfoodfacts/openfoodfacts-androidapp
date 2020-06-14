@@ -3,55 +3,76 @@ package openfoodfacts.github.scrachx.openfood.views.splash;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.ResultReceiver;
 
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 
 /**
  * Created by Lobster on 03.03.18.
  */
-
 public class SplashPresenter implements ISplashPresenter.Actions {
+    private final Context context;
+    private final SharedPreferences settings;
+    private final ISplashPresenter.View view;
 
-    /**
-     * Mutiplied by 6*30* to reduce the issue. TODO: fix https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1616
-     */
-    private final Long REFRESH_PERIOD = 6 * 30 * 24 * 60 * 60 * 1000L;
-
-    private ISplashPresenter.View view;
-    private SharedPreferences settings;
-    Context context;
-
-    public SplashPresenter(SharedPreferences settings, ISplashPresenter.View view, Context context) {
+    SplashPresenter(SharedPreferences settings, ISplashPresenter.View view, Context context) {
         this.view = view;
         this.settings = settings;
         this.context = context;
     }
 
-    @Override
-    public void refreshData() {
-            boolean firstRun = settings.getBoolean("firstRun", true);
-            if (firstRun) {
-                settings.edit()
-                        .putBoolean("firstRun", false)
-                        .apply();
-            }
-            if (isNeedToRefresh()) { //true if data was refreshed more than 1 day ago
-                Intent intent = new Intent(context, LoadTaxonomiesService.class);
-                context.startService(intent);
-            }
-            if (firstRun) {
-                new Handler().postDelayed(() -> view.navigateToMainActivity(), 6000);
-            } else {
-                view.navigateToMainActivity();
-            }
+    private void activateDownload(Taxonomy taxonomy) {
+        settings.edit().putBoolean(taxonomy.getDownloadActivatePreferencesId(), true).apply();
     }
 
-    /*
-     * This method checks if data was refreshed more than 1 day ago
-     */
-    private Boolean isNeedToRefresh() {
-        return System.currentTimeMillis() - settings.getLong(Utils.LAST_REFRESH_DATE, 0) > REFRESH_PERIOD;
+    private void activateDownload(Taxonomy taxonomy, String... flavors) {
+        if (Utils.isFlavor(flavors)) {
+            settings.edit().putBoolean(taxonomy.getDownloadActivatePreferencesId(), true).apply();
+        }
+    }
+
+    @Override
+    public void refreshData() {
+        activateDownload(Taxonomy.CATEGORY);
+        activateDownload(Taxonomy.TAGS);
+        activateDownload(Taxonomy.INVALID_BARCODES);
+        activateDownload(Taxonomy.ADDITIVE, AppFlavors.OFF, AppFlavors.OBF);
+        activateDownload(Taxonomy.COUNTRY, AppFlavors.OFF, AppFlavors.OBF);
+        activateDownload(Taxonomy.LABEL, AppFlavors.OFF, AppFlavors.OBF);
+        activateDownload(Taxonomy.ALLERGEN, AppFlavors.OFF);
+        activateDownload(Taxonomy.ANALYSIS_TAGS, AppFlavors.OFF);
+        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, AppFlavors.OFF);
+
+        //first run ever off this application, whatever the version
+        boolean firstRun = settings.getBoolean("firstRun", true);
+        if (firstRun) {
+            settings.edit()
+                .putBoolean("firstRun", false)
+                .apply();
+        }
+        final ResultReceiver receiver = new ResultReceiver(new Handler()) {
+            @Override
+            protected void onReceiveResult(int resultCode, Bundle resultData) {
+                if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
+                    view.showLoading();
+                } else {
+                    view.hideLoading(resultCode == LoadTaxonomiesService.STATUS_ERROR);
+                }
+            }
+        };
+        //the service will load server resources only if newer than already downloaded...
+        Intent intent = new Intent(context, LoadTaxonomiesService.class);
+        intent.putExtra("receiver", receiver);
+        context.startService(intent);
+        if (firstRun) {
+            new Handler().postDelayed(view::navigateToMainActivity, 6000);
+        } else {
+            view.navigateToMainActivity();
+        }
     }
 }

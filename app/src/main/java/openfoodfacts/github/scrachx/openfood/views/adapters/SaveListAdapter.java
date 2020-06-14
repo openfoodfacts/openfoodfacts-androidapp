@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +11,23 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 
 public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveViewHolder> {
 
     private static boolean isUploading;
     private final Context context;
     private final List<SaveItem> saveItems;
-    private SaveClickInterface mSaveClickInterface;
+    private final SaveClickInterface mSaveClickInterface;
 
     public SaveListAdapter(Context context, List<SaveItem> saveItems, SaveClickInterface saveClickInterface) {
         this.context = context;
@@ -69,7 +71,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
             holder.progressBar.setVisibility(View.VISIBLE);
         }
         holder.txtTitle.setText(item.getTitle());
-        Picasso.with(context).load("file://" + item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
+        Picasso.get().load(FileUtils.LOCALE_FILE_SCHEME + item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtWeight.setText(item.getWeight());
         holder.txtBrand.setText(item.getBrand());
@@ -93,14 +95,14 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
     }
 
     class SaveViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        ProgressBar percentageCompleted;
-        TextView txtPercentage;
-        TextView txtTitle;
-        TextView txtBarcode;
-        ImageView imgProduct;
-        TextView txtWeight;
-        TextView txtBrand;
-        ProgressBar progressBar;
+        final ImageView imgProduct;
+        final ProgressBar percentageCompleted;
+        final ProgressBar progressBar;
+        final TextView txtBarcode;
+        final TextView txtBrand;
+        final TextView txtPercentage;
+        final TextView txtTitle;
+        final TextView txtWeight;
 
         SaveViewHolder(View itemView) {
             super(itemView);

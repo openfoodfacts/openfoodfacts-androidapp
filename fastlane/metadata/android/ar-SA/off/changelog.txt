@@ -1,19 +1,19 @@
 
 ==================
-New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+نسخة أصلية جديدة من Open Food Facts. عمل المتطوعون في Open Food Facts بجد لتطويرها بناء على اقتراحاتكم و أرائكم
 ==================
-* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Will you join us ?
+* Open Food Facts وضل الآن للعالمية أكثر من أي وقت مضى. تم تحرير 500 ألف منتج و 10 آلاف مشارك مسجل و 182 دولة. هل ستشاركنا ؟
 ==================
-What's new ?
+ما الجديد؟
 ==================
-1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
-2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
-3. Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-4. You can set allergens alerts (always double check the actual label yourself though!)
-5. You now get a scan history you can export and that never leaves your phone
-6. You can shake your phone at any time in the app to start scanning
-7. You can now add new products even when you're offline
-8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-9. Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
-10. We're still not interested in your personal data. You don't have to sign-up to scan and contribute.
-Extra! Despite all the new stuff, the app is as light as before. The space left on your phone is sacred.
+1. يمكنك الحصول على صورة 360: التغذية ، والمكونات ، وجميع الحقائق الغذائية ، بدقة وعرض واضح.
+2. الحصول على درجة التغذية "NutriScore" لجميع المنتجات في العالم. قارن المنتجات بسهولة. أسهل من محاولة فهم جداول المغذيات.
+3. تحصل على معلومات إضافية من ويكيبيديا. اضغط على فئة الطعام ، إضافة... لتعلم المزيد و التعرف على منتجات مشابهة.
+4. يمكنك ضبط منبهات للمواد المثيرة للحساسية (تحقق دائمًا من الملصق بنفسك!)
+5. يمكنك الآن الحصول على سجل للمسح الذي يمكنك استخراجه ولن يغادر هاتفك أبداً
+6. يمكنك هز هاتفك في أي وقت إشناء تشغيل التطبيق لبدء المسح
+7. يمكنك الآن إضافة منتجات جديدة حتى عندما تكون غير متصل بالإنترنت
+8. يمكنك الآن استكمال الأطعمة المفضلة لديك مباشرةً عبر التطبيق وذلك بـ: التقاط الصور ، ملىء المعلومات ، وتحقيق شفافية الطعام
+9. كل شيء يعمل بشكل أسرع الآن. يتم تحميل المنتجات بسرعة فائقة ، حتى مع جودة اتصال سيئة.
+10. ما زلنا غير مهتمين بجمع معلوماتك الشخصية. ليس عليك أن تسجل لتشارك و تبدأ المسح.
+مميز! على الرغم من كل التجديدات ، فإن التطبيق سريع كما كان من قبل. المساحة المتبقية من ذاكرة هاتفك مهمة.

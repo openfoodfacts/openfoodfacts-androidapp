@@ -12,15 +12,19 @@
         android:id="@+id/searchImgFrame"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_margin="@dimen/spacing_normal">
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgProduct"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             tools:src="@drawable/header" />
 
         <ProgressBar
@@ -42,6 +46,8 @@
         android:layout_toLeftOf="@id/imgGrade"
         android:layout_toRightOf="@id/searchImgFrame"
         android:columnCount="1"
+        android:layout_toStartOf="@id/imgGrade"
+        android:layout_toEndOf="@id/searchImgFrame"
         android:rowCount="2">
 
         <TextView
@@ -67,7 +73,7 @@
 
     </GridLayout>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgGrade"
         android:layout_width="20dp"
         android:layout_height="20dp"

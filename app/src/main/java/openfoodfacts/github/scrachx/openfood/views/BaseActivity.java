@@ -4,16 +4,18 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
-import butterknife.ButterKnife;
+import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import org.apache.commons.lang.StringUtils;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.dagger.component.ActivityComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import org.apache.commons.lang3.StringUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private ActivityComponent activityComponent;
@@ -33,9 +35,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        super.setContentView(layoutResID);
-        ButterKnife.bind(this);
+    public void setContentView(final View view) {
+        super.setContentView(view);
         LocaleHelper.onCreate(this);
     }
 

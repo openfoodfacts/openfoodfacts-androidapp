@@ -1,28 +1,34 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
 import android.util.Log;
+
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-
-import java.util.List;
 
 /**
  * Created by Lobster on 17.03.18.
  */
 public class SummaryProductPresenter implements ISummaryProductPresenter.Actions {
-    private IProductRepository repository = ProductRepository.getInstance();
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private ISummaryProductPresenter.View view;
-    private Product product;
+    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final Product product;
+    private final IProductRepository repository = ProductRepository.getInstance();
+    private final ISummaryProductPresenter.View view;
 
     public SummaryProductPresenter(Product product, ISummaryProductPresenter.View view) {
         this.product = product;
@@ -44,7 +50,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
                                 return Single.just(categoryName);
                             }
                         }))
-                    .filter(additiveName -> additiveName.isNotNull())
+                    .filter(AdditiveName::isNotNull)
                     .toList()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -66,15 +72,18 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     }
 
     @Override
-    public void loadAllergens() {
+    public void loadAllergens(Runnable runIfError) {
         final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         disposable.add(
             repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> {
-                    view.showAllergens(allergens);
-                }, e -> Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e))
+                .subscribe(view::showAllergens, e -> {
+                    if (runIfError != null) {
+                        runIfError.run();
+                    }
+                    Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAllergens", e);
+                })
         );
     }
 
@@ -119,7 +128,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
         if (labelsTags != null && !labelsTags.isEmpty()) {
             final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                Observable.fromArray(labelsTags.toArray(new String[labelsTags.size()]))
+                Observable.fromArray(labelsTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getLabelByTagAndLanguageCode(tag, languageCode)
                         .flatMap(labelName -> {
                             if (labelName.isNull()) {
@@ -128,7 +137,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
                                 return Single.just(labelName);
                             }
                         }))
-                    .filter(labelName -> labelName.isNotNull())
+                    .filter(LabelName::isNotNull)
                     .toList()
                     .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
                     .subscribeOn(Schedulers.io())
@@ -156,8 +165,54 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.getSingleProductQuestion(product.getCode(), languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showProductQuestion, Throwable::printStackTrace)
+                .subscribe(view::showProductQuestion, e -> Log.e(SummaryProductPresenter.this.getClass().getSimpleName(), "loadProductQuestion", e))
         );
+    }
+
+    @Override
+    public void loadAnalysisTags() {
+        if (Utils.isFlavor(AppFlavors.OFF)) {
+            List<String> analysisTags = product.getIngredientsAnalysisTags();
+            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
+            if (analysisTags != null && !analysisTags.isEmpty()) {
+                disposable.add(
+                    Observable.fromIterable(analysisTags)
+                        .flatMapSingle(tag -> repository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode))
+                        .filter(AnalysisTagConfig::isNotNull)
+                        .toList()
+                        .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(analysisTagConfigs -> {
+                            if (analysisTagConfigs.isEmpty()) {
+                                view.showLabelsState(ProductInfoState.EMPTY);
+                            } else {
+                                view.showAnalysisTags(analysisTagConfigs);
+                            }
+                        }, e -> {
+                            Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
+                            view.showLabelsState(ProductInfoState.EMPTY);
+                        })
+                );
+            } else {
+                disposable.add(
+                    repository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
+                        .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(analysisTagConfigs -> {
+                            if (analysisTagConfigs.isEmpty()) {
+                                view.showLabelsState(ProductInfoState.EMPTY);
+                            } else {
+                                view.showAnalysisTags(analysisTagConfigs);
+                            }
+                        }, e -> {
+                            Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
+                            view.showLabelsState(ProductInfoState.EMPTY);
+                        })
+                );
+            }
+        }
     }
 
     @Override
@@ -166,7 +221,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.annotateInsight(insightId, annotation)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(view::showAnnotatedInsightToast, Throwable::printStackTrace)
+                .subscribe(view::showAnnotatedInsightToast, e -> Log.e(SummaryProductPresenter.this.getClass().getSimpleName(), "annotateInsight", e))
         );
     }
 

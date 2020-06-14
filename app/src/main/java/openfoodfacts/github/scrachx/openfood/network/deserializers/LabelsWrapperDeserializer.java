@@ -5,14 +5,18 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import openfoodfacts.github.scrachx.openfood.models.LabelResponse;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import openfoodfacts.github.scrachx.openfood.models.LabelResponse;
+import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+/*
+ * Created by Lobster on 03.03.18.
+ */
 
 /**
  * Custom deserializer for LabelsWrapper

@@ -1,9 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views.listeners;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 /**
  * @see <a href="https://guides.codepath.com/android/Endless-Scrolling-with-AdapterViews-and-RecyclerView">Implementation came from this sample</a>
@@ -18,10 +18,9 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
     private int previousTotalItemCount = 0;
     // True if we are still waiting for the last set of data to load.
     private boolean loading = true;
+    final RecyclerView.LayoutManager mLayoutManager;
     // Sets the starting page index
-    private int startingPageIndex = 1;
-
-    RecyclerView.LayoutManager mLayoutManager;
+    private final int startingPageIndex = 1;
 
     public EndlessRecyclerViewScrollListener(LinearLayoutManager layoutManager) {
         this.mLayoutManager = layoutManager;

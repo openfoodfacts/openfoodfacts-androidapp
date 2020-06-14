@@ -1,22 +1,36 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import com.fasterxml.jackson.annotation.*;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.util.StdConverter;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.text.StringEscapeUtils;
+
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import openfoodfacts.github.scrachx.openfood.images.ImageSize;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
+
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 class ProductStringConverter extends StdConverter<String, String> {
     public String convert(String value) {
-        return StringEscapeUtils.unescapeHtml4(value).replace("\\'", "'").replace("&quot", "'");
+        return StringEscapeUtils.unescapeHtml(value).replace("\\'", "'").replace("&quot", "'");
     }
 }
 
@@ -24,123 +38,128 @@ class ProductStringConverter extends StdConverter<String, String> {
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
-    @JsonProperty("image_small_url")
-    private String imageSmallUrl;
-    @JsonProperty("image_nutrition_url")
-    private String imageNutritionUrl;
-    @JsonProperty("image_front_url")
-    private String imageFrontUrl;
-    @JsonProperty("image_ingredients_url")
-    private String imageIngredientsUrl;
-    @JsonProperty("link")
-    private String manufactureUrl;
+    @JsonProperty(ApiFields.Keys.ADDITIVES_TAGS)
+    private final List<String> additivesTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.ALLERGENS_HIERARCHY)
+    private final List<String> allergensHierarchy = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.ALLERGENS_TAGS)
+    private List<String> allergensTags;
+    @JsonProperty(ApiFields.Keys.AMINO_ACIDS_TAGS)
+    private List<String> aminoAcidTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.BRANDS_TAGS)
+    private final List<String> brandsTags = new ArrayList<>();
     private String url;
     private String code;
-    @JsonProperty("traces_tags")
-    private List<String> tracesTags = new ArrayList<>();
-    @JsonProperty("ingredients_that_may_be_from_palm_oil_tags")
-    private List<String> ingredientsThatMayBeFromPalmOilTags = new ArrayList<>();
-    @JsonProperty("additives_tags")
-    private List<String> additivesTags = new ArrayList<>();
-    @JsonProperty("allergens_hierarchy")
-    private List<String> allergensHierarchy = new ArrayList<>();
-    @JsonProperty("manufacturing_places")
-    private String manufacturingPlaces;
-    private Nutriments nutriments;
-    @JsonProperty("ingredients_from_palm_oil_tags")
-    private List<Object> ingredientsFromPalmOilTags = new ArrayList<>();
-    @JsonProperty("brands_tags")
-    private List<String> brandsTags = new ArrayList<>();
-    private String traces;
-    @JsonProperty("categories_tags")
+    private final Map<String, Object> additionalProperties = new HashMap<>();
+    @JsonProperty(ApiFields.Keys.CATEGORIES_TAGS)
     private List<String> categoriesTags;
-    @JsonProperty("ingredients_text")
-    @JsonDeserialize(converter = ProductStringConverter.class)
-    private String ingredientsText;
-    @JsonProperty("product_name")
-    @JsonDeserialize(converter = ProductStringConverter.class)
-    private String productName;
-    @JsonProperty("generic_name")
+    @JsonProperty(ApiFields.Keys.CITIES_TAGS)
+    private final List<Object> citiesTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.CONSERVATION_CONDITIONS)
+    private String conservationConditions;
+    @JsonProperty(ApiFields.Keys.COUNTRIES_TAGS)
+    private List<String> countriesTags;
+    private Nutriments nutriments;
+    @JsonProperty(ApiFields.Keys.CREATOR_DATE_TIME)
+    private String createdDateTime;
+    @JsonProperty(ApiFields.Keys.CREATOR)
+    private String creator;
+    private String traces;
+    @JsonProperty(ApiFields.Keys.CUSTOMER_SERVICE)
+    private String customerService;
+    @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
+    private final List<String> editorsTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.EMB_CODES_TAGS)
+    private final List<Object> embTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.ENVIRONMENT_IMPACT_LEVEL_TAGS)
+    private List<String> environmentImpactLevelTags;
+    @JsonProperty(ApiFields.Keys.ENVIRONMENT_INFOCARD)
+    private String environmentInfocard;
+    @JsonProperty(ApiFields.Keys.GENERIC_NAME)
     @JsonDeserialize(converter = ProductStringConverter.class)
     private String genericName;
-    @JsonProperty("ingredients_from_or_that_may_be_from_palm_oil_n")
-    private long ingredientsFromOrThatMayBeFromPalmOilN;
-    @JsonProperty("serving_size")
-    private String servingSize;
-    @JsonProperty("last_modified_by")
-    private String lastModifiedBy;
-    @JsonProperty("allergens_tags")
-    private List<String> allergensTags;
+    @JsonProperty(ApiFields.Keys.IMAGE_FRONT_URL)
+    private String imageFrontUrl;
+    @JsonProperty(ApiFields.Keys.IMAGE_INGREDIENTS_URL)
+    private String imageIngredientsUrl;
     private String allergens;
     private String origins;
     private String stores;
-    @JsonProperty("nutrition_grade_fr")
-    private String nutritionGradeFr;
-    @JsonProperty("nutrient_levels")
-    private NutrientLevels nutrientLevels;
+    @JsonProperty(ApiFields.Keys.IMAGE_NUTRITION_URL)
+    private String imageNutritionUrl;
+    @JsonProperty(ApiFields.Keys.IMAGE_SMALL_URL)
+    private String imageSmallUrl;
     private String countries;
-    @JsonProperty("countries_tags")
-    private List<String> countriesTags;
+    @JsonProperty(ApiFields.Keys.IMAGE_URL)
+    private String imageUrl;
     private String brands;
     private String packaging;
-    @JsonProperty("labels_hierarchy")
-    private List<String> labelsHierarchy;
-    @JsonProperty("labels_tags")
-    private List<String> labelsTags;
-    @JsonProperty("cities_tags")
-    private List<Object> citiesTags = new ArrayList<>();
-    private String quantity;
-    @JsonProperty("ingredients_from_palm_oil_n")
+    @JsonProperty(ApiFields.Keys.INGREDIENTS)
+    private final List<LinkedHashMap<String, String>> ingredients = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.INGREDIENTS_ANALYSIS_TAGS)
+    private final List<String> ingredientsAnalysisTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.INGREDIENTS_MAY_PALM_OIL_N)
+    private long ingredientsFromOrThatMayBeFromPalmOilN;
+    @JsonProperty(ApiFields.Keys.INGREDIENTS_PALM_OIL_N)
     private long ingredientsFromPalmOilN;
-    @JsonProperty("image_url")
-    private String imageUrl;
-    @JsonProperty("emb_codes_tags")
-    private List<Object> embTags = new ArrayList<>();
-    @JsonProperty("states_tags")
-    private List<String> statesTags = new ArrayList<>();
-    @JsonProperty("vitamins_tags")
-    private List<String> vitaminTags = new ArrayList<>();
-    @JsonProperty("minerals_tags")
-    private List<String> mineralTags = new ArrayList<>();
-    @JsonProperty("amino_acids_tags")
-    private List<String> aminoAcidTags = new ArrayList<>();
-    @JsonProperty("other_nutritional_substances_tags")
-    private List<String> otherNutritionTags = new ArrayList<>();
-    @JsonProperty("created_t")
-    private String createdDateTime;
-    @JsonProperty("creator")
-    private String creator;
-    @JsonProperty("last_modified_t")
-    private String lastModifiedTime;
-    @JsonProperty("editors_tags")
-    private List<String> editorsTags = new ArrayList<>();
-    @JsonProperty("nova_groups")
-    private String novaGroups;
-    @JsonProperty("environment_impact_level_tags")
-    private List<String> environmentImpactLevelTags;
-    @JsonProperty("lang")
+    @JsonProperty(ApiFields.Keys.INGREDIENTS_FROM_PALM_OIL_TAGS)
+    private final List<Object> ingredientsFromPalmOilTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.INGREDIENTS_TEXT)
+    @JsonDeserialize(converter = ProductStringConverter.class)
+    private String ingredientsText;
+    @JsonProperty(ApiFields.Keys.INGREDIENTS_MAY_PALM_OIL_TAGS)
+    private final List<String> ingredientsThatMayBeFromPalmOilTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.LABELS_HIERARCHY)
+    private List<String> labelsHierarchy;
+    @JsonProperty(ApiFields.Keys.LABELS_TAGS)
+    private List<String> labelsTags;
+    @JsonProperty(ApiFields.Keys.LANG)
     private String lang;
-    @JsonProperty("purchase_places")
-    private String purchasePlaces;
-    @JsonProperty("nutrition_data_per")
-    private String nutritionDataPer;
-    @JsonProperty("no_nutrition_data")
+    @JsonProperty(ApiFields.Keys.LAST_MODIFIED_BY)
+    private String lastModifiedBy;
+    @JsonProperty(ApiFields.Keys.LAST_MODIFIED_TIME)
+    private String lastModifiedTime;
+    @JsonProperty(ApiFields.Keys.LINK)
+    private String manufactureUrl;
+    @JsonProperty(ApiFields.Keys.MANUFACTURING_PLACES)
+    private String manufacturingPlaces;
+    @JsonProperty(ApiFields.Keys.MINERALS_TAGS)
+    private List<String> mineralTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.NO_NUTRITION_DATA)
     private String noNutritionData;
-    @JsonProperty("other_information")
+    @JsonProperty(ApiFields.Keys.NOVA_GROUPS)
+    private String novaGroups;
+    @JsonProperty(ApiFields.Keys.NUTRIENT_LEVELS)
+    private NutrientLevels nutrientLevels;
+    @JsonProperty(ApiFields.Keys.NUTRITION_DATA_PER)
+    private String nutritionDataPer;
+    @JsonProperty(ApiFields.Keys.NUTRITION_GRADE_FR)
+    private String nutritionGradeFr;
+    @JsonProperty(ApiFields.Keys.OTHER_INFORMATION)
     private String otherInformation;
-    @JsonProperty("conservation_conditions")
-    private String conservationConditions;
-    @JsonProperty("recycling_instructions_to_discard")
+    @JsonProperty(ApiFields.Keys.OTHER_NUTRITIONAL_SUBSTANCES_TAGS)
+    private List<String> otherNutritionTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.PRODUCT_NAME)
+    @JsonDeserialize(converter = ProductStringConverter.class)
+    private String productName;
+    @JsonProperty(ApiFields.Keys.PURCHASE_PLACES)
+    private String purchasePlaces;
+    @JsonProperty(ApiFields.Keys.QUANTITY)
+    private String quantity;
+    @JsonProperty(ApiFields.Keys.RECYCLING_INSTRUCTIONS_TO_DISCARD)
     private String recyclingInstructionsToDiscard;
-    @JsonProperty("recycling_instructions_to_recycle")
+    @JsonProperty(ApiFields.Keys.RECYCLING_INSTRUCTIONS_TO_RECYCLE)
     private String recyclingInstructionsToRecycle;
-    @JsonProperty("warning")
+    @JsonProperty(ApiFields.Keys.SERVING_SIZE)
+    private String servingSize;
+    @JsonProperty(ApiFields.Keys.STATES_TAGS)
+    private final List<String> statesTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.TRACES_TAGS)
+    private final List<String> tracesTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.VITAMINS_TAGS)
+    private List<String> vitaminTags = new ArrayList<>();
+    @JsonProperty(ApiFields.Keys.WARNING)
     private String warning;
-    @JsonProperty("customer_service")
-    private String customerService;
-    @JsonProperty("environment_infocard")
-    private String environmentInfocard;
-    private Map<String, Object> additionalProperties = new HashMap<>();
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
@@ -153,7 +172,7 @@ public class Product implements Serializable {
     }
 
     public String getProductName(String languageCode) {
-        String result = getFieldHelper("product_name", languageCode);
+        String result = getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode);
         if (result != null) {
             return result;
         } else {
@@ -161,8 +180,12 @@ public class Product implements Serializable {
         }
     }
 
+    public boolean hasProductNameIn(String languageCode) {
+        return additionalProperties.get(ApiFields.Keys.lcProductNameKey(languageCode)) != null;
+    }
+
     public String getGenericName(String languageCode) {
-        String result = getFieldHelper("generic_name", languageCode);
+        String result = getFieldForLanguage("generic_name", languageCode);
         if (result != null) {
             return result;
         } else {
@@ -171,7 +194,7 @@ public class Product implements Serializable {
     }
 
     public String getIngredientsText(String languageCode) {
-        String result = getFieldHelper("ingredients_text", languageCode);
+        String result = getFieldForLanguage("ingredients_text", languageCode);
         if (result != null) {
             return result;
         } else {
@@ -180,7 +203,7 @@ public class Product implements Serializable {
     }
 
     public String getImageIngredientsUrl(String languageCode) {
-        String result = getImage(languageCode, ImageRole.INGREDIENTS, ImageSize.DISPLAY);
+        String result = getSelectedImage(languageCode, ProductImageField.INGREDIENTS, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(result)) {
             return result;
         } else {
@@ -189,7 +212,7 @@ public class Product implements Serializable {
     }
 
     public String getImageNutritionUrl(String languageCode) {
-        String result = getImage(languageCode, ImageRole.NUTRITION, ImageSize.DISPLAY);
+        String result = getSelectedImage(languageCode, ProductImageField.NUTRITION, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(result)) {
             return result;
         } else {
@@ -197,8 +220,9 @@ public class Product implements Serializable {
         }
     }
 
-    private String getFieldHelper(String field, String languageCode) {
-
+    @Nullable
+    private String getFieldForLanguage(@NonNull String field, @NonNull String languageCode) {
+        // First try the passed language
         if (!languageCode.equals("en") && additionalProperties.get(field + "_" + languageCode) != null
             && isNotBlank(additionalProperties.get(field + "_" + languageCode).toString())) {
             return additionalProperties.get(field + "_" + languageCode)
@@ -206,7 +230,7 @@ public class Product implements Serializable {
                 .replace("\\'", "'")
                 .replace("&quot", "'");
         } else if (additionalProperties.get(field + "_en") != null
-            && isNotBlank(additionalProperties.get(field + "_en").toString())) {
+            && isNotBlank(additionalProperties.get(field + "_en").toString())) { // Then try english
             return additionalProperties.get(field + "_en")
                 .toString()
                 .replace("\\'", "'")
@@ -226,7 +250,6 @@ public class Product implements Serializable {
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
-
 
     public String getWarning() {
         return warning;
@@ -284,15 +307,15 @@ public class Product implements Serializable {
     }
 
     public String getImageSmallUrl(String languageCode) {
-        String image = getImage(languageCode, ImageRole.FRONT, ImageSize.SMALL);
+        String image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL);
         if (StringUtils.isNotBlank(image)) {
             return image;
         }
         return getImageSmallUrl();
     }
 
-    private String getImage(String languageCode, ImageRole type, ImageSize size) {
-        Map<String, Map> images = (Map<String, Map>) additionalProperties.get("selected_images");
+    public String getSelectedImage(String languageCode, ProductImageField type, ImageSize size) {
+        Map<String, Map> images = (Map<String, Map>) additionalProperties.get(ApiFields.Keys.SELECTED_IMAGES);
         if (images != null) {
             images = (Map<String, Map>) images.get(type.name().toLowerCase());
             if (images != null) {
@@ -305,13 +328,42 @@ public class Product implements Serializable {
                 }
             }
         }
+        switch (type) {
+            case FRONT:
+                return getImageUrl();
+            case INGREDIENTS:
+                return getImageIngredientsUrl();
+            case NUTRITION:
+                return getImageNutritionUrl();
+            case OTHER:
+                return null;
+        }
         return null;
     }
 
+    public List<String> getAvailableLanguageForImage(ProductImageField type, ImageSize size) {
+        Map<String, Map<String, Map<String, String>>> images = (Map<String, Map<String, Map<String, String>>>) additionalProperties.get(ApiFields.Keys.SELECTED_IMAGES);
+        if (images != null) {
+            Map<String, Map<String, String>> imagesType = images.get(type.name().toLowerCase());
+            if (imagesType != null) {
+                Map<String, String> imagesByLocale = imagesType.get(size.name().toLowerCase());
+                return new ArrayList<>(imagesByLocale.keySet());
+            }
+        }
+        return Collections.emptyList();
+    }
+
+    public Map<String, ?> getImageDetails(String imageKey) {
+        Map<String, Map<String, ?>> images = (Map<String, Map<String, ?>>) additionalProperties.get(ApiFields.Keys.IMAGES);
+        if (images != null) {
+            return images.get(imageKey);
+        }
+        return null;
+    }
 
     public boolean isLanguageSupported(String languageCode) {
         Map<String, Map> languagesCodes = (Map<String, Map>) additionalProperties.get("languages_codes");
-        return languageCode!=null && languagesCodes!=null && languagesCodes.containsKey(languageCode.toLowerCase());
+        return languageCode != null && languagesCodes != null && languagesCodes.containsKey(languageCode.toLowerCase());
     }
 
     /**
@@ -322,7 +374,7 @@ public class Product implements Serializable {
     }
 
     public String getImageFrontUrl(String languageCode) {
-        String image = getImage(languageCode, ImageRole.FRONT, ImageSize.DISPLAY);
+        String image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(image)) {
             return image;
         }
@@ -494,6 +546,7 @@ public class Product implements Serializable {
     /**
      * @return The stores
      */
+    @Nullable
     public String getStores() {
         if (stores == null) {
             return null;
@@ -518,6 +571,7 @@ public class Product implements Serializable {
     /**
      * @return The countries
      */
+    @Nullable
     public String getCountries() {
         if (countries == null) {
             return null;
@@ -528,6 +582,7 @@ public class Product implements Serializable {
     /**
      * @return The brands
      */
+    @Nullable
     public String getBrands() {
         if (brands == null) {
             return null;
@@ -538,6 +593,7 @@ public class Product implements Serializable {
     /**
      * @return The packaging
      */
+    @Nullable
     public String getPackaging() {
         if (packaging == null) {
             return null;
@@ -588,7 +644,7 @@ public class Product implements Serializable {
     }
 
     public String getImageUrl(String languageCode) {
-        String url = getImage(languageCode, ImageRole.FRONT, ImageSize.DISPLAY);
+        String url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(url)) {
             return url;
         }
@@ -654,6 +710,14 @@ public class Product implements Serializable {
         return environmentInfocard;
     }
 
+    public List<String> getIngredientsAnalysisTags() {
+        return ingredientsAnalysisTags;
+    }
+
+    public List<LinkedHashMap<String, String>> getIngredients() {
+        return ingredients;
+    }
+
     /**
      * @return Other information
      */
@@ -682,6 +746,7 @@ public class Product implements Serializable {
         return recyclingInstructionsToRecycle;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return new ToStringBuilder(this)

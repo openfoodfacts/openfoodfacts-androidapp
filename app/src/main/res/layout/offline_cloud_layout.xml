@@ -29,12 +29,11 @@
 
     <Button
         android:id="@+id/buttonToRefresh"
+        style="@style/ButtonBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/txt_try_again"
-        android:textColor="@color/light_blue_500" />
+        android:text="@string/txt_try_again" />
 
 </LinearLayout>

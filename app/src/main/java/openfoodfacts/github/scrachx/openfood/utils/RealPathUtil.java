@@ -33,16 +33,16 @@ public class RealPathUtil {
 
     @SuppressLint("NewApi")
     public static String getRealPathFromURI_API11to18(Context context, Uri contentUri) {
-        String[] proj = {MediaStore.Images.Media.DATA};
+        String[] proj = {MediaStore.MediaColumns.DATA};
         String result = null;
 
         CursorLoader cursorLoader = new CursorLoader(context, contentUri, proj, null, null, null);
         Cursor cursor = cursorLoader.loadInBackground();
 
         if (cursor != null) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
             cursor.moveToFirst();
-            result = cursor.getString(column_index);
+            result = cursor.getString(columnIndex);
             cursor.close();
         }
         return result;
@@ -81,7 +81,7 @@ public class RealPathUtil {
 
                 final String id = DocumentsContract.getDocumentId(uri);
                 final Uri contentUri = ContentUris.withAppendedId(
-                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                    Uri.parse("content://downloads/public_downloads"), Long.parseLong(id));
 
                 return getDataColumn(context, contentUri, null, null);
             }

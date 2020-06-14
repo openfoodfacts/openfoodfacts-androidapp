@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 
@@ -22,7 +22,6 @@ public interface NavigationDrawerListener {
     int ITEM_LOGIN = 7;
     int ITEM_ALERT = 8;
     int ITEM_PREFERENCES = 9;
-    int ITEM_OFFLINE = 10;
     int ITEM_ABOUT = 11;
     int ITEM_CONTRIBUTE = 12;
     int ITEM_OBF = 13;
@@ -46,7 +45,6 @@ public interface NavigationDrawerListener {
             ITEM_LOGIN,
             ITEM_ALERT,
             ITEM_PREFERENCES,
-            ITEM_OFFLINE,
             ITEM_ABOUT,
             ITEM_CONTRIBUTE,
             ITEM_OBF,

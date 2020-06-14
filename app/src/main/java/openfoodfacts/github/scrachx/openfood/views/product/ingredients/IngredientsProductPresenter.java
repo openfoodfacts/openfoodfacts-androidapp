@@ -1,11 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
 
 import android.util.Log;
+
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
@@ -13,19 +17,15 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
-import java.util.List;
-
 /**
  * Created by Lobster on 17.03.18.
  */
 
 public class IngredientsProductPresenter implements IIngredientsProductPresenter.Actions {
-
-    private IProductRepository repository = ProductRepository.getInstance();
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private IIngredientsProductPresenter.View view;
-
-    private Product product;
+    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final Product product;
+    private final IProductRepository repository = ProductRepository.getInstance();
+    private final IIngredientsProductPresenter.View view;
 
 
     public IngredientsProductPresenter(Product product, IIngredientsProductPresenter.View view) {
@@ -48,7 +48,7 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
                                             return Single.just(categoryName);
                                         }
                                     }))
-                            .filter(additiveName -> additiveName.isNotNull())
+                            .filter(AdditiveName::isNotNull)
                             .toList()
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
@@ -75,7 +75,7 @@ public class IngredientsProductPresenter implements IIngredientsProductPresenter
         if (allergenTags != null && !allergenTags.isEmpty()) {
             final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                    Observable.fromArray(allergenTags.toArray(new String[allergenTags.size()]))
+                Observable.fromArray(allergenTags.toArray(new String[0]))
                               .flatMapSingle(tag -> repository.getAllergenByTagAndLanguageCode(tag, languageCode)
                                                               .flatMap(allergenName -> {
                                                                   if (allergenName.isNull()) {

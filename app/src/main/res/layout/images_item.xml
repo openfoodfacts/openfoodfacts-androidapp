@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ImageView
         android:id="@+id/img"
         android:layout_width="100dp"
         android:layout_height="100dp"

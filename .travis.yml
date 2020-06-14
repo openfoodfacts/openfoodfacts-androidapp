@@ -2,6 +2,10 @@ language: android
 
 jdk: oraclejdk8
 
+# Currently Travis doesn't have a Ubuntu Xenial image for "language: android"
+# If the distribution is omitted it falls back to Ubuntu Precise instead of Trusty, making the build unstable
+dist: trusty
+
 env:
   global:
     - ABI=x86_64
@@ -38,7 +42,7 @@ cache:
     - $HOME/.m2
 
 before_script:
-# Create and start emulator.
+  # Create and start emulator.
   - echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid harmless sdkmanager warning
   - echo y | sdkmanager "platform-tools" >/dev/null
   - echo y | sdkmanager "tools" >/dev/null # A second time per Travis docs, gets latest versions
@@ -48,48 +52,52 @@ before_script:
   - echo y | sdkmanager --channel=4 "emulator" >/dev/null # Use canary channel to get emulator 29.x for x86_64 image support
   - echo y | sdkmanager "extras;android;m2repository" >/dev/null
   - echo y | sdkmanager "system-images;android-$API;$EMU_FLAVOR;$ABI" >/dev/null # install our emulator
-  - echo no | avdmanager create avd --force -n test -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
-  - emulator -verbose -avd test -no-accel -no-snapshot -no-window $AUDIO -selinux permissive -qemu -m 2048 &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
+  #- echo no | avdmanager create avd --force -n test -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
+  #- emulator -verbose -avd test -no-accel -no-snapshot -no-window $AUDIO -selinux permissive -qemu -m 2048 &
+  #- android-wait-for-emulator
+  #- adb shell input keyevent 82 &
 
 jobs:
- include:
-  - stage: test
-    script:
-      #launch
-      - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
+  include:
+    - stage: test
+      script:
+        #launch
+        - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
 
-  - stage: test
-    script:
-      - ./gradlew testObfDebugUnitTest connectedObfDebugAndroidTest assembleObfDebug --stacktrace
-      - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
+    - stage: test
+      script:
+        - ./gradlew compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
 
-  - stage: test
-    script:
-      - ./gradlew testOffDebugUnitTest connectedOffDebugAndroidTest assembleOffDebug --stacktrace
-      - mv app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
+    - stage: test
+      script:
+        - ./gradlew testObfDebugUnitTest assembleObfDebug --stacktrace # removed "connectedObfDebugAndroidTest"
+        - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
 
-  - stage: test
-    script:
-      - ./gradlew testOpfDebugUnitTest connectedOpfDebugAndroidTest assembleOpfDebug --stacktrace
-      - mv app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
+    - stage: test
+      script:
+        - ./gradlew testOffDebugUnitTest assembleOffDebug --stacktrace # removed "connectedOffDebugAndroidTest"
+        - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
 
-  - stage: test
-    script:
-      - ./gradlew testOpffDebugUnitTest connectedOpffDebugAndroidTest assembleOpffDebug --stacktrace
-      - mv app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
+    - stage: test
+      script:
+        - ./gradlew testOpfDebugUnitTest assembleOpfDebug --stacktrace # removed "connectedOpfDebugAndroidTest"
+        - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
+
+    - stage: test
+      script:
+        - ./gradlew testOpffDebugUnitTest assembleOpffDebug --stacktrace # removed "connectedOpffDebugAndroidTest"
+        - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
 
 sudo: required
 
 notifications:
   email: false
-  slack: openfoodfacts:mXLLSlWjBKA9e03ELQ83rNvB
-  
+  slack: $SLACK_KEY
+
 before_deploy:
-   # no GIT tag for debug apk
+  # no GIT tag for debug apk
   - export TRAVIS_TAG=UNTAGGED
-  
+
 deploy:
   provider: releases
   skip_cleanup: true
@@ -101,3 +109,5 @@ deploy:
   file: app/build/outputs/apk/*.apk
   on:
     all_branches: true
+git:
+  depth: false

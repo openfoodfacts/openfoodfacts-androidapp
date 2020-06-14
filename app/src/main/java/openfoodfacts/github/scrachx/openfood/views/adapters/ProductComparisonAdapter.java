@@ -2,35 +2,52 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
+import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
+import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
@@ -38,69 +55,202 @@ import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.FullScreenImage;
+import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import pl.aprilapps.easyphotopicker.EasyImage;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> implements ImageUploadListener {
-    private List<Product> productsToCompare;
-    private Context context;
+    private final Button addProductButton;
+    private final OpenFoodAPIClient api;
     private boolean isLowBatteryMode = false;
-    private IProductRepository repository = ProductRepository.getInstance();
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private Button addProductButton;
-    private OpenFoodAPIClient api;
-    private ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
+    private final Context context;
+    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final List<Product> productsToCompare;
+    private final IProductRepository repository = ProductRepository.getInstance();
+    private final ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
     private Integer onPhotoReturnPosition;
 
-    static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
-        NestedScrollView listItemLayout;
-        CardView productComparisonDetailsCv;
-        TextView productNameTextView;
-        TextView productQuantityTextView;
-        TextView productBrandTextView;
-        TextView productComparisonNutrientText;
-        RecyclerView nutrientsRecyclerView;
-        CardView productComparisonNutrientCv;
-        ImageButton productComparisonImage;
-        TextView productComparisonLabel;
-        ImageView productComparisonImageGrade;
-        ImageView productComparisonNovaGroup;
-        CardView productComparisonAdditiveCv;
-        TextView productComparisonAdditiveText;
-        Button fullProductButton;
-        ImageView productComparisonCo2Icon;
-
-        public ProductComparisonViewHolder(View view) {
-            super(view);
-            listItemLayout = view.findViewById(R.id.product_comparison_list_item_layout);
-            productComparisonDetailsCv = view.findViewById(R.id.product_comparison_details_cv);
-            productNameTextView = view.findViewById(R.id.product_comparison_name);
-            productQuantityTextView = view.findViewById(R.id.product_comparison_quantity);
-            productBrandTextView = view.findViewById(R.id.product_comparison_brand);
-            productComparisonNutrientText = view.findViewById(R.id.product_comparison_textNutrientTxt);
-            nutrientsRecyclerView = view.findViewById(R.id.product_comparison_listNutrientLevels);
-            productComparisonNutrientCv = view.findViewById(R.id.product_comparison_nutrient_cv);
-            productComparisonImage = view.findViewById(R.id.product_comparison_image);
-            productComparisonLabel = view.findViewById(R.id.product_comparison_label);
-            productComparisonImageGrade = view.findViewById(R.id.product_comparison_imageGrade);
-            productComparisonNovaGroup = view.findViewById(R.id.product_comparison_nova_group);
-            productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
-            productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
-            fullProductButton = view.findViewById(R.id.full_product_button);
-            productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onBindViewHolder(@NonNull ProductComparisonViewHolder holder, int position) {
+        if (productsToCompare.isEmpty()) {
+            holder.listItemLayout.setVisibility(View.GONE);
+            return;
         }
+
+        // Support synchronous scrolling
+        if (CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+            holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
+                for (ProductComparisonViewHolder viewHolder : viewHolders) {
+                    viewHolder.listItemLayout.setScrollX(i);
+                    viewHolder.listItemLayout.setScrollY(i1);
+                }
+            });
+        }
+
+        Product product = productsToCompare.get(position);
+
+        // Set the visibility of UI components
+        holder.productNameTextView.setVisibility(View.VISIBLE);
+        holder.productQuantityTextView.setVisibility(View.VISIBLE);
+        holder.productBrandTextView.setVisibility(View.VISIBLE);
+
+        // Modify the text on the button for adding products
+        if (this.addProductButton != null) {
+            addProductButton.setText(R.string.add_another_product);
+        }
+
+        // Image
+        final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
+        holder.productComparisonImage.setOnClickListener(view -> {
+            if (imageUrl != null) {
+                FullScreenActivityOpener.openForUrl((Activity) context, product, FRONT, imageUrl, holder.productComparisonImage);
+            } else {
+                // take a picture
+                if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+                } else {
+                    onPhotoReturnPosition = position;
+                    if (Utils.isHardwareCameraInstalled(context)) {
+                        EasyImage.openCamera(((Activity) context), 0);
+                    } else {
+                        EasyImage.openGallery(((Activity) context), 0, false);
+                    }
+                }
+            }
+        });
+
+        if (isNotBlank(imageUrl)) {
+            holder.productComparisonLabel.setVisibility(View.INVISIBLE);
+
+            if (Utils.isDisableImageLoad(context) && Utils.isBatteryLevelLow(context)) {
+                isLowBatteryMode = true;
+            }
+            // Load Image if isLowBatteryMode is false
+            if (!isLowBatteryMode) {
+                Picasso.get()
+                    .load(imageUrl)
+                    .into(holder.productComparisonImage);
+            } else {
+                holder.productComparisonImage.setVisibility(View.GONE);
+            }
+        }
+
+        // Name
+        if (isNotBlank(product.getProductName())) {
+            holder.productNameTextView.setText(product.getProductName());
+        } else {
+            //product name placeholder text goes here
+        }
+
+        // Quantity
+        if (isNotBlank(product.getQuantity())) {
+            holder.productQuantityTextView.setText(bold(
+                context.getString(R.string.compare_quantity)
+            ));
+            holder.productQuantityTextView.append(' ' + product.getQuantity());
+        } else {
+            //product quantity placeholder goes here
+        }
+
+        // Brands
+        if (isNotBlank(product.getBrands())) {
+            holder.productBrandTextView.setText(bold(context.getString(R.string.compare_brands)));
+            holder.productBrandTextView.append(" ");
+
+            String[] brands = product.getBrands().split(",");
+            for (int i = 0; i < brands.length - 1; i++) {
+                holder.productBrandTextView.append(brands[i].trim());
+                holder.productBrandTextView.append(", ");
+            }
+            holder.productBrandTextView.append(brands[brands.length - 1].trim());
+        } else {
+            //product brand placeholder goes here
+        }
+
+        // Open Food Facts specific
+        if ("off".equals(BuildConfig.FLAVOR)) {
+            // NutriScore
+            int nutritionGradeResource = Utils.getImageGrade(product);
+            if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
+                holder.productComparisonImageGrade.setVisibility(View.VISIBLE);
+                holder.productComparisonImageGrade.setImageResource(nutritionGradeResource);
+            } else {
+                holder.productComparisonImageGrade.setVisibility(View.INVISIBLE);
+            }
+
+            // Nova group
+            if (product.getNovaGroups() != null) {
+                holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
+            } else {
+                holder.productComparisonNovaGroup.setVisibility(View.INVISIBLE);
+            }
+
+            // Environment impact
+            int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+            if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+                holder.productComparisonCo2Icon.setVisibility(View.VISIBLE);
+                holder.productComparisonCo2Icon.setImageResource(environmentImpactResource);
+            } else {
+                holder.productComparisonCo2Icon.setVisibility(View.GONE);
+            }
+
+            // Nutriments
+            if (product.getNutriments() != null) {
+                holder.nutrientsRecyclerView.setVisibility(View.VISIBLE);
+                holder.productComparisonNutrientText.setText(context.getString(R.string.txtNutrientLevel100g));
+                holder.nutrientsRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+                holder.nutrientsRecyclerView.setAdapter(new NutrientLevelListAdapter(context, loadLevelItems(product)));
+            }
+        } else {
+            holder.productComparisonScoresLayout.setVisibility(View.GONE);
+            holder.productComparisonNutrientCv.setVisibility(View.GONE);
+        }
+
+        // Additives
+        List<String> additivesTags = product.getAdditivesTags();
+        if (additivesTags != null && !additivesTags.isEmpty()) {
+            loadAdditives(product, holder.productComparisonAdditiveText);
+        }
+
+        // Full product button
+        holder.fullProductButton.setOnClickListener(view -> {
+            if (product != null) {
+                String barcode = product.getCode();
+                if (Utils.isNetworkConnected(context)) {
+                    api.getProduct(barcode, (Activity) context);
+                    try {
+                        View view1 = ((Activity) context).getCurrentFocus();
+                        if (view != null) {
+                            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                        }
+                    } catch (NullPointerException e) {
+                        Log.e(ProductComparisonAdapter.class.getSimpleName(), "setOnClickListener", e);
+                    }
+                } else {
+                    new MaterialDialog.Builder(context)
+                        .title(R.string.device_offline_dialog_title)
+                        .content(R.string.connectivity_check)
+                        .positiveText(R.string.txt_try_again)
+                        .negativeText(R.string.dismiss)
+                        .onPositive((dialog, which) -> {
+                            if (Utils.isNetworkConnected(context)) {
+                                api.getProduct(barcode, (Activity) context);
+                            } else {
+                                Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .show();
+                }
+            }
+        });
     }
 
     public ProductComparisonAdapter(List<Product> productsToCompare, Context context) {
@@ -119,173 +269,45 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         return viewHolder;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public void onBindViewHolder(@NonNull ProductComparisonViewHolder holder, int position) {
-        if (!productsToCompare.isEmpty()) {
+    static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
+        final Button fullProductButton;
+        final NestedScrollView listItemLayout;
+        final RecyclerView nutrientsRecyclerView;
+        final TextView productBrandTextView;
+        final CardView productComparisonAdditiveCv;
+        final TextView productComparisonAdditiveText;
+        final ImageView productComparisonCo2Icon;
+        final CardView productComparisonDetailsCv;
+        final ImageButton productComparisonImage;
+        final ImageView productComparisonImageGrade;
+        final TextView productComparisonLabel;
+        final ImageView productComparisonNovaGroup;
+        final CardView productComparisonNutrientCv;
+        final TextView productComparisonNutrientText;
+        final RelativeLayout productComparisonScoresLayout;
+        final TextView productNameTextView;
+        final TextView productQuantityTextView;
 
-            //support synchronous scrolling
-
-            if(CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
-                holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
-                    for (ProductComparisonViewHolder viewHolder : viewHolders) {
-                        viewHolder.listItemLayout.setScrollX(i);
-                        viewHolder.listItemLayout.setScrollY(i1);
-
-                    }
-                });
-            }
-
-            Product product = productsToCompare.get(position);
-
-            //set the visibility of UI components
-            holder.productNameTextView.setVisibility(View.VISIBLE);
-            holder.productQuantityTextView.setVisibility(View.VISIBLE);
-            holder.productBrandTextView.setVisibility(View.VISIBLE);
-
-            //Modify the text on the button for adding products
-            if (this.addProductButton != null) {
-                addProductButton.setText(R.string.add_another_product);
-            }
-
-            final String imageUrl = product.getImageUrl(LocaleHelper.getLanguage(context));
-            holder.productComparisonImage.setOnClickListener(view -> {
-                if (imageUrl != null) {
-                    Intent intent = new Intent(context, FullScreenImage.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("imageurl", imageUrl);
-                    intent.putExtras(bundle);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        ActivityOptionsCompat options = ActivityOptionsCompat.
-                            makeSceneTransitionAnimation((Activity) context, holder.productComparisonImage,
-                                context.getString(R.string.product_transition));
-                        context.startActivity(intent, options.toBundle());
-                    } else {
-                        context.startActivity(intent);
-                    }
-                } else {
-                    // take a picture
-                    if (ContextCompat.checkSelfPermission(context, CAMERA) != PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions((Activity) context, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-                    } else {
-                        onPhotoReturnPosition = position;
-                        if (Utils.isHardwareCameraInstalled(context)) {
-                            EasyImage.openCamera(((Activity) context), 0);
-                        } else {
-                            EasyImage.openGallery(((Activity) context), 0, false);
-                        }
-                    }
-                }
-            });
-
-            if (isNotBlank(imageUrl)) {
-                holder.productComparisonLabel.setVisibility(View.INVISIBLE);
-
-                if (Utils.isDisableImageLoad(context) && Utils.getBatteryLevel(context)) {
-                    isLowBatteryMode = true;
-                }
-                // Load Image if isLowBatteryMode is false
-                if (!isLowBatteryMode) {
-                    Picasso.with(context)
-                        .load(imageUrl)
-                        .into(holder.productComparisonImage);
-                } else {
-                    holder.productComparisonImage.setVisibility(View.GONE);
-                }
-            }
-
-            if (isNotBlank(product.getProductName())) {
-                holder.productNameTextView.setText(product.getProductName());
-            } else {
-                //product name placeholder text goes here
-            }
-
-            if (isNotBlank(product.getQuantity())) {
-                holder.productQuantityTextView.setText(bold("Quantity :"));
-                holder.productQuantityTextView.append(' ' + product.getQuantity());
-            } else {
-                //product quantity placeholder goes here
-            }
-
-            if (isNotBlank(product.getBrands())) {
-                holder.productBrandTextView.setText(bold("Brands :"));
-                holder.productBrandTextView.append(" ");
-
-                String[] brands = product.getBrands().split(",");
-                for (int i = 0; i < brands.length - 1; i++) {
-                    holder.productBrandTextView.append(brands[i].trim());
-                    holder.productBrandTextView.append(", ");
-                }
-                holder.productBrandTextView.append(brands[brands.length - 1].trim());
-            } else {
-                //product brand placeholder goes here
-            }
-
-            Nutriments nutriments = product.getNutriments();
-
-            int nutritionGradeResource = Utils.getImageGrade(product);
-            if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
-                holder.productComparisonImageGrade.setVisibility(View.VISIBLE);
-                holder.productComparisonImageGrade.setImageResource(nutritionGradeResource);
-            } else {
-                holder.productComparisonImageGrade.setVisibility(View.INVISIBLE);
-            }
-            if (nutriments != null) {
-                holder.nutrientsRecyclerView.setVisibility(View.VISIBLE);
-                holder.productComparisonNutrientText.setText(context.getString(R.string.txtNutrientLevel100g));
-                holder.nutrientsRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-                holder.nutrientsRecyclerView.setAdapter(new NutrientLevelListAdapter(context, loadLevelItems(product)));
-            }
-            if (product.getNovaGroups() != null) {
-                holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
-            } else {
-                holder.productComparisonNovaGroup.setVisibility(View.INVISIBLE);
-            }
-            int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
-            if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
-                holder.productComparisonCo2Icon.setVisibility(View.VISIBLE);
-                holder.productComparisonCo2Icon.setImageResource(environmentImpactResource);
-            } else {
-                holder.productComparisonCo2Icon.setVisibility(View.GONE);
-            }
-            List<String> additivesTags = product.getAdditivesTags();
-            if (additivesTags != null && !additivesTags.isEmpty()) {
-                loadAdditives(product, holder.productComparisonAdditiveText);
-            }
-
-            holder.fullProductButton.setOnClickListener(view -> {
-                if (product != null) {
-                    String barcode = product.getCode();
-                    if (Utils.isNetworkConnected(context)) {
-                        api.getProduct(barcode, (Activity) context);
-                        try {
-                            View view1 = ((Activity) context).getCurrentFocus();
-                            if (view != null) {
-                                InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
-                            }
-                        } catch (NullPointerException e) {
-                            Log.e(ProductComparisonAdapter.class.getSimpleName(), "setOnClickListener", e);
-                        }
-                    } else {
-                        new MaterialDialog.Builder(context)
-                            .title(R.string.device_offline_dialog_title)
-                            .content(R.string.connectivity_check)
-                            .positiveText(R.string.txt_try_again)
-                            .negativeText(R.string.dismiss)
-                            .onPositive((dialog, which) -> {
-                                if (Utils.isNetworkConnected(context)) {
-                                    api.getProduct(barcode, (Activity) context);
-                                } else {
-                                    Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
-                                }
-                            })
-                            .show();
-                    }
-                }
-            });
-        } else {
-            holder.listItemLayout.setVisibility(View.GONE);
+        public ProductComparisonViewHolder(View view) {
+            super(view);
+            listItemLayout = view.findViewById(R.id.product_comparison_list_item_layout);
+            productComparisonDetailsCv = view.findViewById(R.id.product_comparison_details_cv);
+            productNameTextView = view.findViewById(R.id.product_comparison_name);
+            productQuantityTextView = view.findViewById(R.id.product_comparison_quantity);
+            productBrandTextView = view.findViewById(R.id.product_comparison_brand);
+            productComparisonNutrientText = view.findViewById(R.id.product_comparison_textNutrientTxt);
+            nutrientsRecyclerView = view.findViewById(R.id.product_comparison_listNutrientLevels);
+            productComparisonNutrientCv = view.findViewById(R.id.product_comparison_nutrient_cv);
+            productComparisonImage = view.findViewById(R.id.product_comparison_image);
+            productComparisonLabel = view.findViewById(R.id.product_comparison_label);
+            productComparisonImageGrade = view.findViewById(R.id.product_comparison_imageGrade);
+            productComparisonNovaGroup = view.findViewById(R.id.product_comparison_nova_group);
+            productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
+            productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
+            fullProductButton = view.findViewById(R.id.full_product_button);
+            fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0);
+            productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
+            productComparisonScoresLayout = view.findViewById(R.id.product_comparison_scores_layout);
         }
     }
 
@@ -310,12 +332,14 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             salt = nutrientLevels.getSalt();
         }
 
-        if (nutriments != null  && !(fat == null && salt == null && saturatedFat == null && sugars == null)) {
+        if (nutriments != null && !(fat == null && salt == null && saturatedFat == null && sugars == null)) {
 
             Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
             if (fat != null && fatNutriment != null) {
                 String fatNutrimentLevel = fat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Fat", fatNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(
+                    context.getString(R.string.compare_fat),
+                    fatNutriment.getDisplayStringFor100g(),
                     fatNutrimentLevel,
                     fat.getImageLevel()));
             }
@@ -323,7 +347,9 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Saturated fat", saturatedFatNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(
+                    context.getString(R.string.compare_saturated_fat),
+                    saturatedFatNutriment.getDisplayStringFor100g(),
                     saturatedFatLocalize,
                     saturatedFat.getImageLevel()));
             }
@@ -331,7 +357,9 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
             if (sugars != null && sugarsNutriment != null) {
                 String sugarsLocalize = sugars.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Sugars", sugarsNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(
+                    context.getString(R.string.compare_sugars),
+                    sugarsNutriment.getDisplayStringFor100g(),
                     sugarsLocalize,
                     sugars.getImageLevel()));
             }
@@ -339,9 +367,12 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
             if (salt != null && saltNutriment != null) {
                 String saltLocalize = salt.getLocalize(context);
-                levelItem.add(new NutrientLevelItem("Salt", saltNutriment.getDisplayStringFor100g(),
+                levelItem.add(new NutrientLevelItem(
+                    context.getString(R.string.compare_salt),
+                    saltNutriment.getDisplayStringFor100g(),
                     saltLocalize,
-                    salt.getImageLevel()));
+                    salt.getImageLevel()
+                ));
             }
         }
         return levelItem;
@@ -353,7 +384,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         if (additivesTags != null && !additivesTags.isEmpty()) {
             final String languageCode = LocaleHelper.getLanguage(v.getContext());
             disposable.add(
-                Observable.fromArray(additivesTags.toArray(new String[additivesTags.size()]))
+                Observable.fromArray(additivesTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                         .flatMap(categoryName -> {
                             if (categoryName.isNull()) {
@@ -370,7 +401,11 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                     })
                     .subscribe(additives -> {
                         if (!additives.isEmpty()) {
-                            additivesBuilder.append(bold("Additives :"));
+                            additivesBuilder.append(
+                                bold(
+                                    context.getString(R.string.compare_additives)
+                                )
+                            );
                             additivesBuilder.append(" ");
                             additivesBuilder.append("\n");
 
@@ -431,11 +466,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     //helper method
     private int dpsToPixel(int dps) {
         Resources r = context.getResources();
-        float px = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dps + 100,
-            r.getDisplayMetrics()
-        );
-        return (int) px;
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dps + 100f, r.getDisplayMetrics());
     }
 }

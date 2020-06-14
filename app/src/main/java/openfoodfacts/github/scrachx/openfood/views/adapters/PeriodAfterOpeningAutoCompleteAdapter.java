@@ -1,23 +1,24 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 
 public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
 
     private static OpenFoodAPIService client;
-    private ArrayList<String> mPeriodsAfterOpeningList;
+    private final ArrayList<String> mPeriodsAfterOpeningList;
 
     public PeriodAfterOpeningAutoCompleteAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);

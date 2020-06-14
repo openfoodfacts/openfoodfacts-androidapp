@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
@@ -33,15 +32,15 @@
             android:id="@+id/taglineHome"
             android:layout_width="184dp"
             android:layout_height="30dp"
-            android:contentDescription="@string/OFFlogo"
             android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/OFFlogo"
+            android:gravity="center_horizontal"
             android:text="@string/tagline"
             android:textStyle="bold"
             app:autoSizeMaxTextSize="28sp"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeStepGranularity="0.1sp"
-            app:autoSizeTextType="uniform"
-            />
+            app:autoSizeTextType="uniform" />
 
         <TextView
             android:id="@+id/textHome"
@@ -68,5 +67,4 @@
     </LinearLayout>
 
 
-    <include layout="@layout/navigation_bottom" />
-</RelativeLayout>
+</layout>

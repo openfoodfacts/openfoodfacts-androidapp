@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import android.support.test.filters.SmallTest;
-import android.support.test.runner.AndroidJUnit4;
-import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.filters.SmallTest;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import java.util.HashMap;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
@@ -68,10 +68,10 @@ public class OfflineSavedProductTest {
     @Test
     public void getProductDetailsMap_returnsProductDetailsMap() {
         Map<String, String> productDetails = new HashMap<>();
-        productDetails.put("lang", LANG);
-        productDetails.put("product_name", PRODUCT_NAME);
-        productDetails.put("quantity", QUANTITY);
-        productDetails.put("brands", BRAND);
+        productDetails.put(ApiFields.Keys.LANG, LANG);
+        productDetails.put(ApiFields.Keys.PRODUCT_NAME, PRODUCT_NAME);
+        productDetails.put(ApiFields.Keys.QUANTITY, QUANTITY);
+        productDetails.put(ApiFields.Keys.BRANDS, BRAND);
         productDetails.put("packaging", PACKAGING);
         productDetails.put("categories", CATEGORIES);
         productDetails.put("labels", LABELS);
@@ -81,7 +81,7 @@ public class OfflineSavedProductTest {
         productDetails.put("ingredients_text", INGREDIENTS);
         productDetails.put("traces", TRACES);
         productDetails.put("serving_size", SERVING_SIZE);
-        productDetails.put("nutrition_data_per", ProductUtils.DEFAULT_NUTRITION_SIZE);
+        productDetails.put("nutrition_data_per", ApiFields.Defaults.NUTRITION_DATA_PER_100G);
         productDetails.put("nutriment_energy", ENERGY);
         productDetails.put("nutriment_energy_unit", ENERGY_UNIT);
         productDetails.put("nutriment_fat", FAT);

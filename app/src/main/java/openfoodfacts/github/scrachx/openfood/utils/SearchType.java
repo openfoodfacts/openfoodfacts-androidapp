@@ -1,10 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.support.annotation.StringDef;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import androidx.annotation.StringDef;
 
 import java.lang.annotation.Retention;
-import java.util.HashMap;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.*;
@@ -50,11 +48,4 @@ public @interface SearchType {
     String STATE = "state";
     String ORIGIN = "origin";
     String MANUFACTURING_PLACE = "manufacturing-place";
-
-    HashMap<String, String> URLS = new HashMap<String, String>() {{
-        put(ALLERGEN, BuildConfig.OFWEBSITE + "allergens/");
-        put(EMB, BuildConfig.OFWEBSITE + "packager-code/");
-        put(TRACE, BuildConfig.OFWEBSITE + "trace/");
-    }};
-
 }

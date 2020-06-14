@@ -1,46 +1,49 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
-import butterknife.BindView;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
-import org.apache.commons.collections.CollectionUtils;
-
-import java.util.Iterator;
-import java.util.List;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.fabAdd)
-    Button fabAdd;
-    @BindView(R.id.product_lists_recycler_view)
-    RecyclerView recyclerView;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    private static final int ACTIVITY_CHOOSE_FILE = 123;
+    private ActivityProductListsBinding binding;
     private ProductListsAdapter adapter;
     private List<ProductLists> productLists;
     private ProductListsDao productListsDao;
@@ -49,8 +52,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         return new Intent(context, ProductListsActivity.class);
     }
 
-    public static ProductListsDao getProducListsDaoWithDefaultList(Context context) {
-        ProductListsDao productListsDao = Utils.getDaoSession(context).getProductListsDao();
+    public static ProductListsDao getProductListsDaoWithDefaultList(Context context) {
+        ProductListsDao productListsDao = Utils.getDaoSession().getProductListsDao();
         if (productListsDao.loadAll().isEmpty()) {
             ProductLists eatenList = new ProductLists(context.getString(R.string.txt_eaten_products), 0);
             productListsDao.insert(eatenList);
@@ -63,21 +66,21 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_lists);
+        binding = ActivityProductListsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         setTitle(R.string.your_lists);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
-        fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
 
-
-        productListsDao = getProducListsDaoWithDefaultList(this);
+        productListsDao = getProductListsDaoWithDefaultList(this);
         productLists = productListsDao.loadAll();
 
         adapter = new ProductListsAdapter(this, productLists);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        binding.productListsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.productListsRecyclerView.setAdapter(adapter);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -103,7 +106,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                     productLists.add(productList);
                     productListsDao.insert(productList);
                     Long id = productList.getId();
-                    Intent intent = new Intent(ProductListsActivity.this, YourListedProducts.class);
+                    Intent intent = new Intent(ProductListsActivity.this, YourListedProductsActivity.class);
                     intent.putExtra("listId", id);
                     intent.putExtra("listName", listName);
                     intent.putExtra("product", p);
@@ -114,11 +117,11 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
             });
         }
 
-        recyclerView.addOnItemTouchListener(
+        binding.productListsRecyclerView.addOnItemTouchListener(
             new RecyclerItemClickListener(ProductListsActivity.this, ((view, position) -> {
                 Long id = productLists.get(position).getId();
                 String listName = productLists.get(position).getListName();
-                Intent intent = new Intent(this, YourListedProducts.class);
+                Intent intent = new Intent(this, YourListedProductsActivity.class);
                 intent.putExtra("listId", id);
                 intent.putExtra("listName", listName);
                 startActivityForResult(intent, 1);
@@ -127,9 +130,9 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
         SwipeController swipeController = new SwipeController(this, ProductListsActivity.this);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
-        itemTouchhelper.attachToRecyclerView(recyclerView);
+        itemTouchhelper.attachToRecyclerView(binding.productListsRecyclerView);
 
-        fabAdd.setOnClickListener(view -> {
+        binding.fabAdd.setOnClickListener(view -> {
             MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title(R.string.txt_create_new_list)
                 .input("List name", "", false, (dialog1, input) -> {
@@ -161,8 +164,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
      * @param listName
      */
     private boolean checkListNameExist(String listName) {
-        for (Iterator<ProductLists> i = productLists.iterator(); i.hasNext(); ) {
-            if (i.next().getListName().equals(listName)) {
+        for (ProductLists productList : productLists) {
+            if (productList.getListName().equals(listName)) {
                 return true;
             }
         }
@@ -171,8 +174,18 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data.getExtras().getBoolean("update")) {
             adapter.notifyDataSetChanged();
+        } else if (requestCode == ACTIVITY_CHOOSE_FILE) {
+            if (resultCode == RESULT_OK) {
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(data.getData());
+                    new ParseCSV(inputStream).execute();
+                } catch (Exception e) {
+                    Log.e(ProductListsActivity.class.getSimpleName(), "Error importing CSV: " + e.getMessage());
+                }
+            }
         }
     }
 
@@ -185,5 +198,107 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
             adapter.notifyItemRemoved(position);
             adapter.notifyItemRangeChanged(position, adapter.getItemCount());
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_product_lists, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_import_csv) {
+            selectCSVFile();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void selectCSVFile() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("text/csv");
+        startActivityForResult(Intent.createChooser(intent, getString(R.string.open_csv)), ACTIVITY_CHOOSE_FILE);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class ParseCSV extends AsyncTask<Void, Integer, Boolean> {
+        InputStream inputStream;
+        ProgressDialog progressDialog;
+
+        ParseCSV(InputStream inputStream) {
+            this.inputStream = inputStream;
+            progressDialog = new ProgressDialog(ProductListsActivity.this);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            progressDialog.dismiss();
+            if (!aBoolean) {
+                Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            progressDialog.setProgress(values[0]);
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            YourListedProductDao yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
+            List<YourListedProduct> list = new ArrayList<>();
+
+            try (CSVParser csvParser = new CSVParser(new InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+                List<CSVRecord> result = csvParser.getRecords();
+                int size = result.size();
+                int count = 0;
+                long id;
+                for (CSVRecord record : result) {
+                    List<ProductLists> lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
+                    if (lists.isEmpty()) {
+                        //create new list
+                        ProductLists productList = new ProductLists(record.get(2), 0);
+                        productLists.add(productList);
+                        productListsDao.insert(productList);
+                        lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
+                    }
+                    id = lists.get(0).getId();
+
+                    YourListedProduct yourListedProduct = new YourListedProduct();
+                    yourListedProduct.setBarcode(record.get(0));
+                    yourListedProduct.setProductName(record.get(1));
+                    yourListedProduct.setListName(record.get(2));
+                    yourListedProduct.setProductDetails(record.get(3));
+                    yourListedProduct.setListId(id);
+                    list.add(yourListedProduct);
+
+                    count++;
+                    publishProgress((int) ((float) count * 100 / (float) size));
+                }
+                yourListedProductDao.insertOrReplaceInTx(list);
+                return true;
+            } catch (Exception e) {
+                Log.e("ParseCSV",e.getMessage(),e);
+                return false;
+            }
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
+
     }
 }

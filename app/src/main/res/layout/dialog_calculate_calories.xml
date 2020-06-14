@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -7,9 +7,9 @@
     <EditText
         android:id="@+id/edit_text_weight"
         android:layout_width="0dp"
-        android:layout_height= "@dimen/button_height_normal"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_height="@dimen/button_height_normal"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:hint="@string/enter_weight"
         android:inputType="numberDecimal"
         android:padding="@dimen/padding_too_short"
@@ -35,17 +35,14 @@
 
     <Button
         android:id="@+id/txt_calories_result"
+        style="@style/ButtonBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:textSize="@dimen/font_normal"
         android:hint="@string/check_facts"
-        style="@style/BorderButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_text_weight" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

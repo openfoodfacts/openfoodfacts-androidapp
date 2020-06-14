@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link SendProduct}
@@ -11,7 +11,6 @@ import static junit.framework.Assert.*;
 public class SendProductTest {
 
     // TODO: add PowerMock to test compress()
-
     private static final long ID = 343L;
     private static final String BARCODE = "2302RER0";
     private static final String NAME = "product name";
@@ -22,7 +21,6 @@ public class SendProductTest {
     private static final String IMG_UPLOAD_INGREDIENTS = "ingredients";
     private static final String IMG_UPLOAD_NUTRITION = "nutrition";
     private static final String LANG = "EN";
-
     private SendProduct sendProduct;
 
     @Before
@@ -51,7 +49,7 @@ public class SendProductTest {
     @Test
     public void copy_copiesFromAnotherSendProduct() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         SendProduct product2 = new SendProduct();
         product2.copy(product1);
         assertEquals(BARCODE, product2.getBarcode());
@@ -68,9 +66,9 @@ public class SendProductTest {
     @Test
     public void isEqualWithEqualProducts_returnsTrue() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         SendProduct product2 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         assertTrue(product1.isEqual(product2));
     }
 
@@ -78,7 +76,8 @@ public class SendProductTest {
     public void isEqualWithProductsDifferById_returnsTrue() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
-        SendProduct product2 = new SendProduct(567L, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
+        Long id = 567L;
+        SendProduct product2 = new SendProduct(id, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         assertTrue(product1.isEqual(product2));
     }
@@ -86,10 +85,10 @@ public class SendProductTest {
     @Test
     public void isEqualWithDifferentProducts_returnsFalse() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         String differentBarcode = "different barcode";
         SendProduct product2 = new SendProduct(ID, differentBarcode, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT,
-                IMG_UPLOAD_FRONT, IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_FRONT, IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         assertFalse(product1.isEqual(product2));
     }
 }

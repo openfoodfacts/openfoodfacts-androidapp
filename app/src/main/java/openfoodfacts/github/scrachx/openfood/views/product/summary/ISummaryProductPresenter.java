@@ -5,6 +5,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
@@ -14,15 +15,13 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 /**
  * Created by Lobster on 17.03.18.
  */
-
 public interface ISummaryProductPresenter {
-
     interface Actions {
         void loadProductQuestion();
 
         void annotateInsight(String insightId, int annotation);
 
-        void loadAllergens();
+        void loadAllergens(Runnable runIfError);
 
         void loadCategories();
 
@@ -31,6 +30,8 @@ public interface ISummaryProductPresenter {
         void dispose();
 
         void loadAdditives();
+
+        void loadAnalysisTags();
     }
 
     interface View {
@@ -51,6 +52,7 @@ public interface ISummaryProductPresenter {
         void showAdditives(List<AdditiveName> additives);
 
         void showAdditivesState(@ProductInfoState String state);
-    }
 
+        void showAnalysisTags(List<AnalysisTagConfig> analysisTags);
+    }
 }

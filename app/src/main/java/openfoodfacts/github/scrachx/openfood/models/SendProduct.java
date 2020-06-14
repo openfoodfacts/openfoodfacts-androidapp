@@ -213,7 +213,7 @@ public class SendProduct implements Serializable {
 
     private boolean equalityOfString(String a, String b) {
         if (a != null) {
-            return b != null && a.equals(b);
+            return a.equals(b);
         } else {
             return b == null;
         }

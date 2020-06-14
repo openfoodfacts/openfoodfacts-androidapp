@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,11 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.State;
 
 public class ProductFragmentPagerAdapter extends FragmentPagerAdapter {
-
-    private List<String> navMenuTitles;
-    private List<BaseFragment> fragments;
+    private final List<BaseFragment> fragments;
+    private final List<String> navMenuTitles;
 
     public ProductFragmentPagerAdapter(FragmentManager fm) {
-        super(fm);
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.fragments = new ArrayList<>();
         this.navMenuTitles = new ArrayList<>();
     }

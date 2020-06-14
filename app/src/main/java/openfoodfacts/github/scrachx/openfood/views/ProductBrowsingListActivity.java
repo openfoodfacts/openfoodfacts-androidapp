@@ -9,30 +9,37 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.StringRes;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.*;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.SearchView;
 import android.widget.Toast;
-import butterknife.BindView;
-import butterknife.OnClick;
+
+import androidx.annotation.StringRes;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -42,58 +49,36 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ProductBrowsingListActivity extends BaseActivity {
-
-    private static final  String SEARCH_INFO = "search_info";
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.products_recycler_view)
-    RecyclerView productsRecyclerView;
-    @BindView(R.id.textCountProduct)
-    TextView countProductsView;
-    @BindView(R.id.offlineCloudLinearLayout)
-    LinearLayout offlineCloudLayout;
-    @BindView(R.id.progress_bar)
-    ProgressBar progressBar;
-    @BindView(R.id.noResultsLayout)
-    LinearLayout noResultsLayout;
-    @BindView(R.id.textNoResults)
-    TextView textNoResults;
-    @BindView(R.id.textExtendSearch)
-    TextView textExtendSearch;
-    @BindView(R.id.swipe_refresh)
-    SwipeRefreshLayout swipeRefreshLayout;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
-    private SearchInfo mSearchInfo;
-    private List<Product> mProducts;
+    /**
+     * Must be public to be visible by TakeScreenshotIncompleteProductsTest class.
+     */
+    @SuppressWarnings("WeakerAccess")
+    public static final String SEARCH_INFO = "search_info";
     private OpenFoodAPIClient api;
     private OpenFoodAPIClient apiClient;
-    private int mCountProducts = 0;
-    private int pageAddress = 1;
-    private Boolean setupDone = false;
+    private ActivityProductBrowsingListBinding binding;
+    private int contributionType;
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
-
-    private SensorManager mSensorManager;
     private Sensor mAccelerometer;
+    private int mCountProducts = 0;
+    private List<Product> mProducts;
+    private SearchInfo mSearchInfo;
+    private SensorManager mSensorManager;
     private ShakeDetector mShakeDetector;
+    private int pageAddress = 1;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
-    private int contributionType;
+    private boolean setupDone = false;
 
     /**
      * Start a new {@link ProductBrowsingListActivity} given a search information
      *
-     * @param context     the context to use to start this activity
+     * @param context the context to use to start this activity
      * @param searchQuery the search query
      * @param searchTitle the title used in the activity for this search query
-     * @param type        the type of search
+     * @param type the type of search
      */
     public static void startActivity(Context context, String searchQuery, String searchTitle, @SearchType String type) {
         startActivity(context, new SearchInfo(searchQuery, searchTitle, type));
@@ -106,6 +91,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
         startActivity(context, searchQuery, searchQuery, type);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
     /**
      * @see #startActivity(Context, String, String, String)
      */
@@ -113,6 +104,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
         Intent intent = new Intent(context, ProductBrowsingListActivity.class);
         intent.putExtra(SEARCH_INFO, searchInfo);
         context.startActivity(intent);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
     @Override
@@ -136,8 +132,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
         });
 
-        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat
-                .OnActionExpandListener() {
+        searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
                 return true;
@@ -170,19 +165,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
             MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
             builder.title(R.string.show_by);
             String[] contributionTypes = new String[]{getString(R.string.products_added),
-                    getString(R.string.products_incomplete), getString(R.string.product_pictures_contributed),
-                    getString(R.string.picture_contributed_incomplete), getString(R.string.product_info_added),
-                    getString(R.string.product_info_tocomplete)};
+                getString(R.string.products_incomplete), getString(R.string.product_pictures_contributed),
+                getString(R.string.picture_contributed_incomplete), getString(R.string.product_info_added),
+                getString(R.string.product_info_tocomplete)};
 
             builder.items(contributionTypes);
             builder.itemsCallback((dialog, itemView, position, text) -> {
 
                 switch (position) {
-
-                    case 0:
-                        contributionType = 0;
-                        newSearchQuery();
-                        break;
                     case 1:
                         contributionType = 1;
                         newSearchQuery();
@@ -203,17 +193,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         contributionType = 5;
                         newSearchQuery();
                         break;
+                    case 0:
                     default:
                         contributionType = 0;
                         newSearchQuery();
                         break;
-
                 }
-
             });
             builder.show();
-
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -221,10 +208,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_browsing_list);
-        setSupportActionBar(toolbar);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_product_browsing_list);
+
+        // OnClick
+        binding.buttonTryAgain.setOnClickListener(v -> setup());
+        binding.addProduct.setOnClickListener(v -> addProduct());
+
+        setSupportActionBar(binding.toolbar.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        countProductsView.setVisibility(View.INVISIBLE);
+        binding.textCountProduct.setVisibility(View.INVISIBLE);
 
         // Get the search information (query, title, type) that we will use in this activity
         Bundle extras = getIntent().getExtras();
@@ -235,7 +227,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         newSearchQuery();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this)&& Utils.getBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true;
         }
 
@@ -250,35 +242,37 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (scanOnShake) {
             mShakeDetector.setOnShakeListener(count -> Utils.scan(ProductBrowsingListActivity.this));
         }
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
+
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this);
     }
 
     protected void newSearchQuery() {
         getSupportActionBar().setTitle(mSearchInfo.getSearchTitle());
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                toolbar.setSubtitle(R.string.brand_string);
+                binding.toolbar.toolbar.setSubtitle(R.string.brand_string);
                 break;
             case SearchType.COUNTRY:
-                toolbar.setSubtitle(R.string.country_string);
+                binding.toolbar.toolbar.setSubtitle(R.string.country_string);
                 break;
             case SearchType.ORIGIN:
-                toolbar.setSubtitle(R.string.origin_of_ingredients);
+                binding.toolbar.toolbar.setSubtitle(R.string.origin_of_ingredients);
                 break;
             case SearchType.MANUFACTURING_PLACE:
-                toolbar.setSubtitle(R.string.manufacturing_place);
+                binding.toolbar.toolbar.setSubtitle(R.string.manufacturing_place);
                 break;
             case SearchType.ADDITIVE:
-                toolbar.setSubtitle(R.string.additive_string);
+                binding.toolbar.toolbar.setSubtitle(R.string.additive_string);
                 break;
             case SearchType.SEARCH:
-                toolbar.setSubtitle(R.string.search_string);
+                binding.toolbar.toolbar.setSubtitle(R.string.search_string);
                 break;
             case SearchType.STORE:
-                toolbar.setSubtitle(R.string.store_subtitle);
+                binding.toolbar.toolbar.setSubtitle(R.string.store_subtitle);
                 break;
             case SearchType.PACKAGING:
-                toolbar.setSubtitle(R.string.packaging_subtitle);
+                binding.toolbar.toolbar.setSubtitle(R.string.packaging_subtitle);
                 break;
             case SearchType.LABEL:
                 getSupportActionBar().setSubtitle(getString(R.string.label_string));
@@ -302,44 +296,38 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
             default:
                 Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
-
-
         }
-
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
         api = new OpenFoodAPIClient(ProductBrowsingListActivity.this);
 
-        progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
 
         setup();
     }
 
-
-    @OnClick(R.id.buttonTryAgain)
     public void setup() {
-        offlineCloudLayout.setVisibility(View.INVISIBLE);
-        countProductsView.setVisibility(View.INVISIBLE);
+        binding.offlineCloudLinearLayout.setVisibility(View.INVISIBLE);
+        binding.textCountProduct.setVisibility(View.INVISIBLE);
         pageAddress = 1;
-        noResultsLayout.setVisibility(View.INVISIBLE);
+        binding.noResultsLayout.setVisibility(View.INVISIBLE);
         getDataFromAPI();
     }
 
-    /*
-    when no matching products are found in the database then noResultsLayout is displayed.
-    This method is called when the user clicks on the add photo button in the noResultsLayout.
+    /**
+     * When no matching products are found in the database then noResultsLayout is displayed.
+     * This method is called when the user clicks on the add photo button in the noResultsLayout.
      */
-    @OnClick(R.id.addProduct)
     public void addProduct() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
                 new MaterialDialog.Builder(this)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission
-                                .CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                        .show();
+                    .title(R.string.action_about)
+                    .content(R.string.permission_camera)
+                    .neutralText(R.string.txtOk)
+                    .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(this, new String[]{Manifest.permission
+                        .CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                    .show();
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA);
             }
@@ -355,129 +343,127 @@ public class ProductBrowsingListActivity extends BaseActivity {
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
                 apiClient.getProductsByBrand(searchQuery, pageAddress, (value, country) ->
-                        loadSearchProducts(value, country, R.string.txt_no_matching_brand_products));
+                    loadSearchProducts(value, country, R.string.txt_no_matching_brand_products));
                 break;
             case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
-                        loadSearchProducts(value, country, R.string.txt_no_matching_country_products));
+                    loadSearchProducts(value, country, R.string.txt_no_matching_country_products));
                 break;
             case SearchType.ORIGIN:
                 apiClient.getProductsByOrigin(searchQuery, pageAddress, (value, origin) ->
-                        loadSearchProducts(value, origin, R.string.txt_no_matching_country_products));
+                    loadSearchProducts(value, origin, R.string.txt_no_matching_country_products));
                 break;
             case SearchType.MANUFACTURING_PLACE:
                 apiClient.getProductsByManufacturingPlace(searchQuery, pageAddress, (value, manufacturingPlace) ->
-                        loadSearchProducts(value, manufacturingPlace, R.string.txt_no_matching_country_products));
+                    loadSearchProducts(value, manufacturingPlace, R.string.txt_no_matching_country_products));
                 break;
             case SearchType.ADDITIVE:
                 apiClient.getProductsByAdditive(searchQuery, pageAddress, (value, additive) ->
-                        loadSearchProducts(value, additive, R.string.txt_no_matching_additive_products));
+                    loadSearchProducts(value, additive, R.string.txt_no_matching_additive_products));
                 break;
             case SearchType.STORE:
                 apiClient.getProductsByStore(searchQuery, pageAddress, (value, store) ->
-                        loadSearchProducts(value, store, R.string.txt_no_matching_store_products));
+                    loadSearchProducts(value, store, R.string.txt_no_matching_store_products));
                 break;
             case SearchType.PACKAGING:
                 apiClient.getProductsByPackaging(searchQuery, pageAddress, (value, packaging) ->
-                        loadSearchProducts(value, packaging, R.string.txt_no_matching_packaging_products));
+                    loadSearchProducts(value, packaging, R.string.txt_no_matching_packaging_products));
                 break;
             case SearchType.SEARCH:
-                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, (isOk, searchResponse, countProducts) -> {
-                    /*
-                    countProducts is checked, if it is -2 it means that there are no matching products in the
-                    database for the query.
-                     */
-                    if (countProducts == -2) {
-                        showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
+                if (ProductUtils.isBarcodeValid(searchQuery)) {
+                    api.getProduct(searchQuery, this);
+                } else {
+                    api.searchProduct(searchQuery, pageAddress, this, (isOk, searchResponse, countProducts) -> {
+
+                        // countProducts is checked, if it is -2 it means that there are no matching products in the
+                        // database for the query.
+                        if (countProducts == -2) {
+                            showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
                                 getResources().getString(R.string.txt_broaden_search));
-                    } else {
-                        loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
-                    }
-                });
+                        } else {
+                            loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
+                        }
+                    });
+                }
                 break;
             case SearchType.LABEL:
                 api.getProductsByLabel(searchQuery, pageAddress, (value, label) ->
-                        loadSearchProducts(value, label, R.string.txt_no_matching_label_products));
+                    loadSearchProducts(value, label, R.string.txt_no_matching_label_products));
                 break;
             case SearchType.CATEGORY:
                 api.getProductsByCategory(searchQuery, pageAddress, (value, category) ->
-                        loadSearchProducts(value, category, R.string.txt_no_matching__category_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching__category_products));
                 break;
             case SearchType.ALLERGEN:
                 api.getProductsByAllergen(searchQuery, pageAddress, (value, allergen) ->
-                        loadSearchProducts(value, allergen, R.string.txt_no_matching_allergen_products));
+                    loadSearchProducts(value, allergen, R.string.txt_no_matching_allergen_products));
                 break;
             case SearchType.CONTRIBUTOR:
                 loadDataForContributor(searchQuery);
                 break;
             case SearchType.STATE:
                 api.getProductsByStates(searchQuery, pageAddress, (value, state) ->
-                        loadSearchProducts(value, state, R.string.txt_no_matching_allergen_products));
+                    loadSearchProducts(value, state, R.string.txt_no_matching_allergen_products));
                 break;
             case SearchType.INCOMPLETE_PRODUCT:
                 // Get Products to be completed data and input it to loadData function
                 api.getIncompleteProducts(pageAddress, (value, state) ->
-                        loadSearchProducts(value, state, R.string.txt_no_matching_incomplete_products));
+                    loadSearchProducts(value, state, R.string.txt_no_matching_incomplete_products));
                 break;
             default:
                 Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
-
-
         }
     }
 
     private void loadDataForContributor(String searchQuery) {
         switch (contributionType) {
-            case 0:
-                api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
-                        loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
-                break;
 
             case 1:
                 api.getToBeCompletedProductsByContributor(searchQuery, pageAddress, (value, category) ->
-                        loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 2:
                 api.getPicturesContributedProducts(searchQuery, pageAddress, (value, category) ->
-                        loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 3:
                 api.getPicturesContributedIncompleteProducts(searchQuery, pageAddress, (value, category) ->
-                        loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 4:
                 api.getInfoAddedProducts(searchQuery, pageAddress, (value, category) ->
-                        loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 5:
                 api.getInfoAddedIncompleteProducts(searchQuery, pageAddress, (value, category) ->
-                        loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
+            case 0:
             default:
                 api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
-                        loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
         }
     }
 
     private void loadData(boolean isResponseOk, Search response) {
-        if (isResponseOk && response!=null) {
+        if (isResponseOk && response != null) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                countProductsView.setText(getResources().getString(R.string.number_of_results) + " " +
-                        NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
+                binding.textCountProduct.setText(getResources().getString(R.string.number_of_results) + " " +
+                    NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
                     mProducts.add(null);
                 }
                 if (setupDone) {
-                    productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode));
+                    binding.productsRecyclerView.setAdapter(new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode));
                 }
                 setUpRecyclerView();
             } else {
@@ -488,36 +474,34 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     if (mProducts.size() < mCountProducts) {
                         mProducts.add(null);
                     }
-                    productsRecyclerView.getAdapter().notifyItemRangeChanged(posStart - 1, mProducts.size() - 1);
+                    binding.productsRecyclerView.getAdapter().notifyItemRangeChanged(posStart - 1, mProducts.size() - 1);
                 }
             }
         } else {
-            swipeRefreshLayout.setRefreshing(false);
-            productsRecyclerView.setVisibility(View.INVISIBLE);
-            progressBar.setVisibility(View.INVISIBLE);
-            offlineCloudLayout.setVisibility(View.VISIBLE);
+            binding.swipeRefresh.setRefreshing(false);
+            binding.productsRecyclerView.setVisibility(View.INVISIBLE);
+            binding.progressBar.setVisibility(View.INVISIBLE);
+            binding.offlineCloudLinearLayout.setVisibility(View.VISIBLE);
         }
-
-
     }
 
     /**
      * Shows UI indicating that no matching products were found. Called by
      * {@link #loadSearchProducts(boolean, Search, int)} and {@link #loadSearchProducts(boolean, Search, int, int)}
      *
-     * @param msg         message to display when there are no results for given search
+     * @param msg message to display when there are no results for given search
      * @param extendedMsg additional message to display, -1 if no message is displayed
      */
     private void showEmptySearch(String msg, String extendedMsg) {
-        textNoResults.setText(msg);
-        textExtendSearch.setText(extendedMsg);
-        noResultsLayout.setVisibility(View.VISIBLE);
-        noResultsLayout.bringToFront();
-        productsRecyclerView.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.INVISIBLE);
-        offlineCloudLayout.setVisibility(View.INVISIBLE);
-        countProductsView.setVisibility(View.GONE);
-        swipeRefreshLayout.setRefreshing(false);
+        binding.textNoResults.setText(msg);
+        binding.textExtendSearch.setText(extendedMsg);
+        binding.noResultsLayout.setVisibility(View.VISIBLE);
+        binding.noResultsLayout.bringToFront();
+        binding.productsRecyclerView.setVisibility(View.INVISIBLE);
+        binding.progressBar.setVisibility(View.INVISIBLE);
+        binding.offlineCloudLinearLayout.setVisibility(View.INVISIBLE);
+        binding.textCountProduct.setVisibility(View.GONE);
+        binding.swipeRefresh.setRefreshing(false);
     }
 
     /**
@@ -525,15 +509,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * products were found.
      *
      * @param isResponseSuccessful true if the search response was successful
-     * @param response             the search results
-     * @param emptyMessage         message to display if there are no results
-     * @param extendedMessage      extended message to display if there are no results
+     * @param response the search results
+     * @param emptyMessage message to display if there are no results
+     * @param extendedMessage extended message to display if there are no results
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response,
                                     @StringRes int emptyMessage, @StringRes int extendedMessage) {
-        if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
+        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage),
-                    getResources().getString(extendedMessage));
+                getResources().getString(extendedMessage));
         } else {
             loadData(isResponseSuccessful, response);
         }
@@ -543,7 +527,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * @see #loadSearchProducts(boolean, Search, int, int)
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response, @StringRes int emptyMessage) {
-        if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
+        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage), null);
         } else {
             loadData(isResponseSuccessful, response);
@@ -552,89 +536,90 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
     private void setUpRecyclerView() {
 
-        progressBar.setVisibility(View.INVISIBLE);
-        swipeRefreshLayout.setRefreshing(false);
-        countProductsView.setVisibility(View.VISIBLE);
-        offlineCloudLayout.setVisibility(View.INVISIBLE);
-        productsRecyclerView.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.INVISIBLE);
+        binding.swipeRefresh.setRefreshing(false);
+        binding.textCountProduct.setVisibility(View.VISIBLE);
+        binding.offlineCloudLinearLayout.setVisibility(View.INVISIBLE);
+        binding.productsRecyclerView.setVisibility(View.VISIBLE);
 
         if (!setupDone) {
-            productsRecyclerView.setHasFixedSize(true);
+            binding.productsRecyclerView.setHasFixedSize(true);
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(ProductBrowsingListActivity.this, LinearLayoutManager.VERTICAL, false);
-            productsRecyclerView.setLayoutManager(mLayoutManager);
+            binding.productsRecyclerView.setLayoutManager(mLayoutManager);
 
             ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode);
-            productsRecyclerView.setAdapter(adapter);
+            binding.productsRecyclerView.setAdapter(adapter);
 
-
-            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(),
-                    DividerItemDecoration.VERTICAL);
-            productsRecyclerView.addItemDecoration(dividerItemDecoration);
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.productsRecyclerView.getContext(),
+                DividerItemDecoration.VERTICAL);
+            binding.productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
             // Retain an instance so that you can call `resetState()` for fresh searches
-            EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
+            // Adds the scroll listener to RecyclerView
+            binding.productsRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(mLayoutManager) {
                 @Override
-                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                public void onLoadMore(int page, int totalItemsCount, RecyclerView view1) {
                     if (mProducts.size() < mCountProducts) {
                         pageAddress = page;
                         getDataFromAPI();
                     }
                 }
-            };
-            // Adds the scroll listener to RecyclerView
-            productsRecyclerView.addOnScrollListener(scrollListener);
+            });
 
-
-            productsRecyclerView.addOnItemTouchListener(
-                    new RecyclerItemClickListener(ProductBrowsingListActivity.this, (view, position) -> {
-                        Product p = ((ProductsRecyclerViewAdapter) productsRecyclerView.getAdapter()).getProduct(position);
-                        if (p != null) {
-                            String barcode = p.getCode();
-                            if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
-                                api.getProduct(barcode, ProductBrowsingListActivity.this);
-                                try {
-                                    View view1 = ProductBrowsingListActivity.this.getCurrentFocus();
-                                    if (view != null) {
-                                        InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-                                        imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+            binding.productsRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(ProductBrowsingListActivity.this, (view, position) -> {
+                    Product product = ((ProductsRecyclerViewAdapter) binding.productsRecyclerView.getAdapter()).getProduct(position);
+                    if (product != null) {
+                        String barcode = product.getCode();
+                        if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
+                            api.getProduct(barcode, ProductBrowsingListActivity.this);
+                            try {
+                                View viewWithFocus = ProductBrowsingListActivity.this.getCurrentFocus();
+                                if (viewWithFocus != null) {
+                                    InputMethodManager imm = (InputMethodManager) ProductBrowsingListActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    if (imm != null) {
+                                        imm.hideSoftInputFromWindow(viewWithFocus.getWindowToken(), 0);
                                     }
-                                } catch (NullPointerException e) {
-                                    Log.e(ProductBrowsingListActivity.class.getSimpleName(),"addOnItemTouchListener",e);
                                 }
-                            } else {
-                                new MaterialDialog.Builder(ProductBrowsingListActivity.this)
-                                        .title(R.string.device_offline_dialog_title)
-                                        .content(R.string.connectivity_check)
-                                        .positiveText(R.string.txt_try_again)
-                                        .negativeText(R.string.dismiss)
-                                        .onPositive((dialog, which) -> {
-                                            if (Utils.isNetworkConnected(ProductBrowsingListActivity.this))
-                                                api.getProduct(barcode, ProductBrowsingListActivity.this);
-                                            else
-                                                Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
-                                        })
-                                        .show();
+                            } catch (NullPointerException e) {
+                                Log.e(ProductBrowsingListActivity.class.getSimpleName(), "addOnItemTouchListener", e);
                             }
+                        } else {
+                            new MaterialAlertDialogBuilder(ProductBrowsingListActivity.this)
+                                .setTitle(R.string.device_offline_dialog_title)
+                                .setMessage(R.string.connectivity_check)
+                                .setPositiveButton(R.string.txt_try_again, (dialog, which) -> {
+                                    if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
+                                        api.getProduct(barcode, ProductBrowsingListActivity.this);
+                                    } else {
+                                        Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .setNegativeButton(R.string.dismiss, (dialog, which) -> {
+                                    dialog.dismiss();
+                                })
+                                .show();
                         }
-                    })
+                    }
+                })
             );
 
-            swipeRefreshLayout.setOnRefreshListener(() -> {
+            binding.swipeRefresh.setOnRefreshListener(() -> {
 
                 mProducts.clear();
                 adapter.notifyDataSetChanged();
-                countProductsView.setText(getResources().getString(R.string.number_of_results));
+                binding.textCountProduct.setText(getResources().getString(R.string.number_of_results));
                 pageAddress = 1;
                 setup();
-                if (swipeRefreshLayout.isRefreshing()) {
-                    swipeRefreshLayout.setRefreshing(false);
+                if (binding.swipeRefresh.isRefreshing()) {
+                    binding.swipeRefresh.setRefreshing(false);
                 }
             });
         }
 
         setupDone = true;
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-            swipeRefreshLayout.setRefreshing(true);
+        binding.swipeRefresh.setOnRefreshListener(() -> {
+            binding.swipeRefresh.setRefreshing(true);
             pageAddress = 1;
             setup();
         });

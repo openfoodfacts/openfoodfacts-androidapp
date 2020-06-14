@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Сканиране на хранителни продукти за декриптиране на етикетите: съставки, добавки и хранителни факти.
 
 ▶ Find & Compare more than 800.000 products
 

@@ -1,14 +1,19 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.support.v7.widget.helper.ItemTouchHelper.Callback;
 import android.view.View;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.ItemTouchHelper.Callback;
+import androidx.recyclerview.widget.RecyclerView;
+
 import io.reactivex.annotations.NonNull;
 import openfoodfacts.github.scrachx.openfood.R;
 
@@ -16,13 +21,13 @@ import openfoodfacts.github.scrachx.openfood.R;
  * Created by Mehrosh.Mehboob on 19-Feb-18.
  */
 public class SwipeController extends Callback {
-    private SwipeControllerActions buttonsActions;
-    private Paint mClearPaint;
-    private ColorDrawable mBackground;
-    private int backgroundColor;
-    private Drawable deleteDrawable;
-    private int intrinsicWidth;
-    private int intrinsicHeight;
+    private final int backgroundColor;
+    private final SwipeControllerActions buttonsActions;
+    private final Drawable deleteDrawable;
+    private final int intrinsicHeight;
+    private final int intrinsicWidth;
+    private final ColorDrawable mBackground;
+    private final Paint mClearPaint;
 
     public SwipeController(Context context, SwipeControllerActions buttonsActions) {
         this.buttonsActions = buttonsActions;

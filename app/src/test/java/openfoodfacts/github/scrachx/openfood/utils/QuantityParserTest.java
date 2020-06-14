@@ -1,7 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import org.junit.Assert;
+import android.widget.Spinner;
+
 import org.junit.Test;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  *
@@ -9,58 +14,22 @@ import org.junit.Test;
 public class QuantityParserTest {
     @Test
     public void testWithEmptyValues() {
-        Assert.assertNull(QuantityParserUtil.getFloatValue((String) null, QuantityParserUtil.EntryFormat.NO_PREFIX));
-        Assert.assertNull(QuantityParserUtil.getFloatValue("", QuantityParserUtil.EntryFormat.NO_PREFIX));
-        Assert.assertNull(QuantityParserUtil.getFloatValue("   ", QuantityParserUtil.EntryFormat.NO_PREFIX));
-        Assert.assertNull(QuantityParserUtil.getFloatValue((String) null, QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-        Assert.assertNull(QuantityParserUtil.getFloatValue("", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-        Assert.assertNull(QuantityParserUtil.getFloatValue(" ", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-    }
-
-    @Test
-    public void testGetPrefix() {
-        Assert.assertNull(QuantityParserUtil.getModifier("+1.5"));
-        Assert.assertEquals(">", QuantityParserUtil.getModifier(">1.5"));
-        Assert.assertEquals("<", QuantityParserUtil.getModifier("<1.5"));
-        Assert.assertEquals("~", QuantityParserUtil.getModifier("~1.5"));
+        assertNull(QuantityParserUtil.getFloatValue((String) null));
+        assertNull(QuantityParserUtil.getFloatValue(""));
+        assertNull(QuantityParserUtil.getFloatValue("   "));
+        assertNull(QuantityParserUtil.getFloatValue((String) null));
+        assertNull(QuantityParserUtil.getFloatValue(""));
+        assertNull(QuantityParserUtil.getFloatValue(" "));
     }
 
     @Test
     public void testIsGreaterThan() {
-        Assert.assertTrue(QuantityParserUtil.isModifierEqualsToGreaterThan(">1.5"));
-        Assert.assertFalse(QuantityParserUtil.isModifierEqualsToGreaterThan("<1.5"));
-        Assert.assertFalse(QuantityParserUtil.isModifierEqualsToGreaterThan("~1.5"));
-    }
-
-    @Test
-    public void testWithPrefixAndCorrectValues() {
-        Assert.assertEquals(Float.valueOf("1.5"), QuantityParserUtil.getFloatValue("1.5", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-        Assert.assertEquals(Float.valueOf("1.5"), QuantityParserUtil.getFloatValue("1,5", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-        Assert.assertEquals(Float.valueOf("1.5"), QuantityParserUtil.getFloatValue(">1.5", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-        Assert.assertEquals(Float.valueOf("1.5"), QuantityParserUtil.getFloatValue("~ 1.5", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-        Assert.assertEquals(Float.valueOf("1.5"), QuantityParserUtil.getFloatValue("< 1,5 ", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-
-        Assert.assertEquals(Double.valueOf("1.5"), QuantityParserUtil.getDoubleValue(">1.5", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-        Assert.assertTrue(QuantityParserUtil.containFloatValue("1.5", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-    }
-
-    @Test
-    public void testWithPrefixAndIncorrectValues() {
-        Assert.assertNull(QuantityParserUtil.getFloatValue("> 1.5.1", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-        Assert.assertNull(QuantityParserUtil.getFloatValue("><1.5", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-
-        Assert.assertFalse(QuantityParserUtil.containFloatValue("><1.5", QuantityParserUtil.EntryFormat.WITH_KNOWN_PREFIX));
-    }
-
-    @Test
-    public void testWithoutPrefixAndCorrectValues() {
-        Assert.assertEquals(Float.valueOf("1.5"), QuantityParserUtil.getFloatValue("1.5", QuantityParserUtil.EntryFormat.NO_PREFIX));
-        Assert.assertEquals(Float.valueOf("1.5"), QuantityParserUtil.getFloatValue(" 1,5 ", QuantityParserUtil.EntryFormat.NO_PREFIX));
-    }
-
-    @Test
-    public void testWithoutPrefixAndIncorrectValues() {
-        Assert.assertNull(QuantityParserUtil.getFloatValue("> 1.5", QuantityParserUtil.EntryFormat.NO_PREFIX));
-        Assert.assertNull(QuantityParserUtil.getFloatValue("1.5a", QuantityParserUtil.EntryFormat.NO_PREFIX));
+        Spinner mockSpinner = mock(Spinner.class);
+        when(mockSpinner.getSelectedItemPosition()).thenReturn(2);
+        assertTrue(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner));
+        when(mockSpinner.getSelectedItemPosition()).thenReturn(1);
+        assertFalse(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner));
+        when(mockSpinner.getSelectedItemPosition()).thenReturn(0);
+        assertFalse(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner));
     }
 }

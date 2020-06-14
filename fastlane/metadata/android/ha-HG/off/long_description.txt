@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+A bincika samfuran abinci ko lambar lambar su don samun bayanai akan sinadaran, abubuwan ƙarawa da gaskiyar abubuwan abinci.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -50,13 +50,13 @@ Create shopping lists, track what you've eaten and easily share and export your 
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
-- You can add new products, even if you don't have an Internet connection right now.
+- Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
+- Kuna iya amfani da app ba tare da sani ba
+- Kuna iya fitarwa da tarihin bincikenku
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?

@@ -4,28 +4,31 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import android.widget.ImageView;
+import android.widget.TableRow;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
+
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImage;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
-
-import java.io.File;
 
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -34,40 +37,30 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 
 /**
  * Fragment for adding photos of the product
+ *
  * @see R.layout#fragment_add_product_photos
- * */
-
+ */
 public class AddProductPhotosFragment extends BaseFragment implements PhotoReceiver {
-
-    @BindView(R.id.btnAddOtherImage)
-    ImageView imageOther;
-    @BindView(R.id.imageProgress)
-    ProgressBar imageProgress;
-    @BindView(R.id.imageProgressText)
-    TextView imageProgressText;
+    private FragmentAddProductPhotosBinding binding;
     private PhotoReceiverHandler photoReceiverHandler;
-    @BindView(R.id.table_layout)
-    TableLayout tableLayout;
-    @BindView(R.id.btn_add)
-    Button buttonAdd;
-
     private String code;
     private Activity activity;
     private File photoFile;
 
-
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_product_photos, container, false);
-        ButterKnife.bind(this, view);
-        return view;
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentAddProductPhotosBinding.inflate(inflater);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler=new PhotoReceiverHandler(this);
+        binding.btnAddOtherImage.setOnClickListener(v -> addOtherImage());
+        binding.btnAdd.setOnClickListener(v -> next());
+
+
+        photoReceiverHandler = new PhotoReceiverHandler(this);
         Bundle b = getArguments();
         if (b != null) {
             Product product = (Product) b.getSerializable("product");
@@ -77,7 +70,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
                 code = product.getCode();
             }
             if (editionMode && product != null) {
-                buttonAdd.setText(R.string.save_edits);
+                binding.btnAdd.setText(R.string.save_edits);
             } else if (offlineSavedProduct != null) {
                 code = offlineSavedProduct.getBarcode();
             }
@@ -93,9 +86,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
         activity = getActivity();
     }
 
-
-    @OnClick(R.id.btnAddOtherImage)
-    void addOtherImage() {
+    private void addOtherImage() {
         if (ContextCompat.checkSelfPermission(activity, CAMERA) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(activity, new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
         } else {
@@ -103,8 +94,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
         }
     }
 
-    @OnClick(R.id.btn_add)
-    void next() {
+    private void next() {
         Activity fragmentActivity = getActivity();
         if (fragmentActivity instanceof AddProductActivity) {
             ((AddProductActivity) fragmentActivity).proceed();
@@ -124,46 +114,43 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        photoReceiverHandler.onActivityResult(this,requestCode,resultCode,data);
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
 
     public void showImageProgress() {
-        imageProgress.setVisibility(View.VISIBLE);
-        imageProgressText.setVisibility(View.VISIBLE);
-        imageProgressText.setText(R.string.toastSending);
+        binding.imageProgress.setVisibility(View.VISIBLE);
+        binding.imageProgressText.setVisibility(View.VISIBLE);
+        binding.imageProgressText.setText(R.string.toastSending);
         addImageRow();
     }
 
     public void hideImageProgress(boolean errorUploading, String message) {
-        imageProgress.setVisibility(View.GONE);
-        imageOther.setVisibility(View.VISIBLE);
+        binding.imageProgress.setVisibility(View.GONE);
+        binding.btnAddOtherImage.setVisibility(View.VISIBLE);
         if (errorUploading) {
-            imageProgressText.setVisibility(View.GONE);
-            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+            binding.imageProgressText.setVisibility(View.GONE);
         } else {
-            imageProgressText.setText(R.string.image_uploaded_successfully);
+            binding.imageProgressText.setText(R.string.image_uploaded_successfully);
         }
     }
 
     /**
      * Load image into the image view and add it to tableLayout
-     * */
-
+     */
     private void addImageRow() {
         TableRow image = new TableRow(activity);
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, dpsToPixels(100));
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixels(100));
         lp.topMargin = dpsToPixels(10);
         ImageView imageView = new ImageView(activity);
-        Picasso.with(activity)
-                .load(photoFile)
-                .resize(dpsToPixels(100), dpsToPixels(100))
-                .centerInside()
-                .into(imageView);
+        Picasso.get()
+            .load(photoFile)
+            .resize(dpsToPixels(100), dpsToPixels(100))
+            .centerInside()
+            .into(imageView);
         imageView.setAdjustViewBounds(true);
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setLayoutParams(lp);
         image.addView(imageView);
-        tableLayout.addView(image);
+        binding.tableLayout.addView(image);
     }
-
 }

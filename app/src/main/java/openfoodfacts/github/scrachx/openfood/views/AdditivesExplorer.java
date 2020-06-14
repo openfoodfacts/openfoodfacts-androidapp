@@ -3,12 +3,21 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.widget.*;
 import android.view.Menu;
 import android.view.MenuItem;
-import butterknife.BindView;
+import android.widget.SearchView;
+
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import org.greenrobot.greendao.async.AsyncSession;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityAdditivesExplorerBinding;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
@@ -17,32 +26,28 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AdditivesAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
-import org.greenrobot.greendao.async.AsyncSession;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.ClickListener {
-    private RecyclerView recyclerView;
+    private ActivityAdditivesExplorerBinding binding;
     private List<AdditiveName> additives;
-    private Toolbar toolbar;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_additives_explorer);
+        binding = ActivityAdditivesExplorerBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        recyclerView = findViewById(R.id.additiveRecyclerView);
-        toolbar = findViewById(R.id.toolbar);
-
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.additives);
 
-        DaoSession daoSession = Utils.getAppDaoSession(this);
+        DaoSession daoSession = Utils.getDaoSession();
         AsyncSession asyncSessionAdditives = daoSession.startAsyncSession();
         AdditiveNameDao additiveNameDao = daoSession.getAdditiveNameDao();
 
@@ -61,12 +66,13 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
                 return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
             });
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
-            recyclerView.setAdapter(new AdditivesAdapter(additives, AdditivesExplorer.this));
-            recyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
+            binding.additiveRecyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
+            binding.additiveRecyclerView.setAdapter(new AdditivesAdapter(additives, AdditivesExplorer.this));
+            binding.additiveRecyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
         });
 
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
     }
 
     @Override
@@ -108,8 +114,8 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
                         }
                     }
 
-                    recyclerView.setAdapter(new AdditivesAdapter(additiveNames, AdditivesExplorer.this));
-                    recyclerView.getAdapter().notifyDataSetChanged();
+                    binding.additiveRecyclerView.setAdapter(new AdditivesAdapter(additiveNames, AdditivesExplorer.this));
+                    binding.additiveRecyclerView.getAdapter().notifyDataSetChanged();
 
                     return false;
                 }

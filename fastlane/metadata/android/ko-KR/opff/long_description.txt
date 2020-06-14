@@ -1,34 +1,34 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+애완 동물 사료의 식품이나 그 바코드를 스캔하여 성분, 첨가물, 영양소의 데이터를 취득합니다.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+이 앱은 Open Pet Food Facts의 무료 공개 데이터베이스에 이미 올라온 총 600여개의 사료 제품들의 정보를 볼 수 있으며 아직 올라오지 않은 제품들에 대한 사진과 데이터를 추가할 수 있습니다.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Open Pet Food Facts project에 대해 좀 더 알고 싶으시다면, https://world.openpetfoodfacts.org를 방문해주세요.
 
-***Contribute to Pet Food Transparency***
+***애완동물 사료 투명도에 기여하기***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your pet's cupboard. 
-
-
-*** Get the Facts ***
-
-You will also be able to find (according to the indications present on the products):
-- list of ingredients (including ash content)
-- nutritional info, nutrition traffic lights…
-- brands, allergens, labels (organic, vegan...)
-- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
-
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
-
-*** Your pet food, your data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Open Pet Food Facts는 모두에 의한, 모두를 위해 만들어진 사료 데이터베이스입니다.
+- 당신은 이 앱을 사용해 더 좋은 사료를 선택할 수 있고,  공개데이터이므로 누구든지 어떤 목적에 상관없이 자유롭게 재사용이 가능합니다.
+- Open Pet Food Facts는 전 세계 수천 명의 자원봉사자가 개발한 비영리 프로젝트입니다. 이곳에는 여러분들이 다양한 방식으로 참여할 수 있는 흥미로운 프로젝트가 많이 있습니다. 
+- 오늘부터 애완동물 사료 저장고에 있는 제품을 추가해서 프로젝트에 기여해 보세요. 
 
 
-For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.
+*** 정보 얻기 ***
+
+(제품에 표기된 정보에 따라) 아래의 사항을 발견할 수 있습니다:
+-성분 목록 (회분 함량 포함)
+-영양 정보, 영양 신호…
+-브랜드, 알레르기 항원, 라벨 (유기농, 채식 등)
+- 강아지 사료 (건조 개 사료 & 습식 개 사료), 고양이 사료, 토끼 사료, 뱀 사료, 어류 사료, 새 먹이, 말 먹이 또는 좋아하는 동물의 사료 정보를 용이하게 알 수 있습니다.
+
+*** 어떤 조건에서도 잘 작동합니다 ***
+-지금 인터넷 연결이 안 되더라도 새로운 제품을 추가할 수 있습니다.
+-이 앱은 데이터 및 배터리 소비를 줄이기 위해 필요한 정보만 로드합니다
+- 제품을 검색할 때 카메라가 필요하지 않습니다. 카메라가 없거나 문제가 있는 경우 바코드를 입력 할 수도 있습니다.
+
+*** 나의 애완동물 사료, 나의 데이터 ***
+- 데이터는 사용자의 것으로 온라인으로 전송되지 않습니다
+- 앱을 익명으로 사용할 수 있습니다.
+- 스캔 기록을 내보낼 수 있습니다
+
+
+사람이 먹는 식품의 경우 Open Food Facts를, 애완동물 사료의 경우 Open Pet Food Facts를 기타 모든 제품의 경우에는 Open Products Facts를 설치할 수 있습니다.

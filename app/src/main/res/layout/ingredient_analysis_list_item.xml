@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_ingredient_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         android:textSize="22sp"
-        android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
-        android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp" />
+        app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        app:drawableRightCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        tools:text="Ingredient name" />
 
     <View
         android:layout_width="match_parent"
