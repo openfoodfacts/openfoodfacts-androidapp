@@ -18,7 +18,6 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Locale;
 
 import io.reactivex.SingleObserver;
@@ -53,7 +52,8 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
     private String taglineURL;
-    private Disposable disposable;
+    private Disposable tagLineDisp;
+    private Disposable totalProdDisp;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,7 +67,6 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
         binding.tvDailyFoodFact.setOnClickListener(v -> setDailyFoodFact());
 
-
         apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -76,6 +75,13 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //stop the call to off to get total product counts:
+        if (totalProdDisp != null) {
+            totalProdDisp.dispose();
+        }
+        if (tagLineDisp != null) {
+            tagLineDisp.dispose();
+        }
         binding = null;
     }
 
@@ -89,7 +95,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(),
             customTabActivityHelper.getSession());
-        CustomTabActivityHelper.openCustomTab(getActivity(),
+        CustomTabActivityHelper.openCustomTab(requireActivity(),
             customTabsIntent, dailyFoodFactUri, new WebViewFallback());
     }
 
@@ -140,35 +146,42 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        //stop the call to off to get total product counts:
-        if (disposable != null && !disposable.isDisposed()) {
-            disposable.dispose();
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
 
         int productCount = sp.getInt("productCount", 0);
+        refreshProductCount(productCount);
+
+        refreshTagline();
+
+        if (getActivity() instanceof AppCompatActivity) {
+            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setTitle("");
+            }
+        }
+    }
+
+    private void refreshProductCount(int oldCount) {
+        if (totalProdDisp != null) {
+            totalProdDisp.dispose();
+        }
         apiClient.getTotalProductCount(Utils.getUserAgent())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<Search>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    disposable = d;
+                    totalProdDisp = d;
                     if (isAdded()) {
-                        updateTextHome(productCount);
+                        updateTextHome(oldCount);
                     }
                 }
 
                 @Override
                 public void onSuccess(Search search) {
                     if (isAdded()) {
-                        int totalProductCount = productCount;
+                        int totalProductCount = oldCount;
                         try {
                             totalProductCount = Integer.parseInt(search.getCount());
                         } catch (NumberFormatException e) {
@@ -184,19 +197,10 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                 @Override
                 public void onError(Throwable e) {
                     if (isAdded()) {
-                        updateTextHome(productCount);
+                        updateTextHome(oldCount);
                     }
                 }
             });
-
-        getTagline();
-
-        if (getActivity() instanceof AppCompatActivity) {
-            ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-            if (actionBar != null) {
-                actionBar.setTitle("");
-            }
-        }
     }
 
     /**
@@ -229,38 +233,32 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     /**
      * get tag line url from OpenFoodAPIService
      */
-    private void getTagline() {
-        OpenFoodAPIService openFoodAPIService = new OpenFoodAPIClient(getActivity(), "https://ssl-api.openfoodfacts.org").getAPIService();
-        Call<ArrayList<TaglineLanguageModel>> call = openFoodAPIService.getTagline(Utils.getUserAgent());
-        call.enqueue(new Callback<ArrayList<TaglineLanguageModel>>() {
-            @Override
-            public void onResponse(Call<ArrayList<TaglineLanguageModel>> call, Response<ArrayList<TaglineLanguageModel>> response) {
-                if (response.isSuccessful()) {
-                    final Locale locale = LocaleHelper.getLocale(getContext());
-                    String localAsString = locale.toString();
-                    boolean isLanguageFound = false;
-                    boolean isExactLanguageFound = false;
-                    for (int i = 0; i < response.body().size(); i++) {
-                        final String languageCountry = response.body().get(i).getLanguage();
-                        if (!isExactLanguageFound && (languageCountry.equals(localAsString) || languageCountry.contains(localAsString))) {
-                            isExactLanguageFound = languageCountry.equals(localAsString);
-                            taglineURL = response.body().get(i).getTaglineModel().getUrl();
-                            binding.tvDailyFoodFact.setText(response.body().get(i).getTaglineModel().getMessage());
-                            binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
-                            isLanguageFound = true;
-                        }
-                    }
-                    if (!isLanguageFound) {
-                        taglineURL = response.body().get(response.body().size() - 1).getTaglineModel().getUrl();
-                        binding.tvDailyFoodFact.setText(response.body().get(response.body().size() - 1).getTaglineModel().getMessage());
-                        binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
-                    }
+    private void refreshTagline() {
+        if (tagLineDisp != null) {
+            tagLineDisp.dispose();
+        }
+        tagLineDisp = apiClient.getTaglineSingle(Utils.getUserAgent()).subscribe(taglineLanguageModels -> {
+            final Locale locale = LocaleHelper.getLocale(getContext());
+            String localAsString = locale.toString();
+            boolean isLanguageFound = false;
+            boolean isExactLanguageFound = false;
+
+            for (TaglineLanguageModel tagLine : taglineLanguageModels) {
+                final String languageCountry = tagLine.getLanguage();
+                if (!isExactLanguageFound && (languageCountry.equals(localAsString) || languageCountry.contains(localAsString))) {
+                    isExactLanguageFound = languageCountry.equals(localAsString);
+                    taglineURL = tagLine.getTaglineModel().getUrl();
+                    binding.tvDailyFoodFact.setText(tagLine.getTaglineModel().getMessage());
+                    binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
+                    isLanguageFound = true;
                 }
             }
 
-            @Override
-            public void onFailure(Call<ArrayList<TaglineLanguageModel>> call, Throwable t) {
+            if (!isLanguageFound) {
+                taglineURL = taglineLanguageModels.get(taglineLanguageModels.size() - 1).getTaglineModel().getUrl();
+                binding.tvDailyFoodFact.setText(taglineLanguageModels.get(taglineLanguageModels.size() - 1).getTaglineModel().getMessage());
+                binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
             }
-        });
+        }, e -> Log.w("getTagline", "cannot get tagline from server", e));
     }
 }

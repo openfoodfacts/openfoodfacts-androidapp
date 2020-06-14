@@ -386,7 +386,7 @@ public interface OpenFoodAPIService {
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-" + BuildConfig.FLAVOR + ".json")
-    Call<ArrayList<TaglineLanguageModel>> getTagline(@Header("User-Agent") String header);
+    Single<ArrayList<TaglineLanguageModel>> getTaglineSingle(@Header("User-Agent") String header);
 
     /**
      * This method gives the image fields of a product
