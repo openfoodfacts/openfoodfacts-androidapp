@@ -44,9 +44,9 @@ public class SplashPresenter implements ISplashPresenter.Actions {
         activateDownload(Taxonomy.ADDITIVE, AppFlavors.OFF, AppFlavors.OBF);
         activateDownload(Taxonomy.COUNTRY, AppFlavors.OFF, AppFlavors.OBF);
         activateDownload(Taxonomy.LABEL, AppFlavors.OFF, AppFlavors.OBF);
-        activateDownload(Taxonomy.ALLERGEN, AppFlavors.OFF);
-        activateDownload(Taxonomy.ANALYSIS_TAGS, AppFlavors.OFF);
-        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, AppFlavors.OFF);
+        activateDownload(Taxonomy.ALLERGEN, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF);
+        activateDownload(Taxonomy.ANALYSIS_TAGS, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF);
+        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF);
 
         //first run ever off this application, whatever the version
         boolean firstRun = settings.getBoolean("firstRun", true);
@@ -65,10 +65,12 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 }
             }
         };
-        //the service will load server resources only if newer than already downloaded...
+
+        // The service will load server resources only if newer than already downloaded...
         Intent intent = new Intent(context, LoadTaxonomiesService.class);
-        intent.putExtra("receiver", receiver);
+        intent.putExtra(LoadTaxonomiesService.RECEIVER_KEY, receiver);
         context.startService(intent);
+
         if (firstRun) {
             new Handler().postDelayed(view::navigateToMainActivity, 6000);
         } else {

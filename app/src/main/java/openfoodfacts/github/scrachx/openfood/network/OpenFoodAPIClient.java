@@ -60,7 +60,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.Installation;
+import openfoodfacts.github.scrachx.openfood.views.InstallationUtils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import retrofit2.Call;
@@ -153,7 +153,7 @@ public class OpenFoodAPIClient {
         final OFFApplication instance = OFFApplication.getInstance();
         comment.append(" ").append(Utils.getVersionName(instance));
         if (login.isEmpty()) {
-            comment.append(" (Added by ").append(Installation.id(instance)).append(")");
+            comment.append(" (Added by ").append(InstallationUtils.id(instance)).append(")");
         }
         return comment.toString();
     }
@@ -341,7 +341,7 @@ public class OpenFoodAPIClient {
 
         apiService.getIngredientsByBarcode(barcode).enqueue(new Callback<JsonNode>() {
             @Override
-            public void onResponse(@NonNull Call<JsonNode> call, Response<JsonNode> response) {
+            public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
                 final JsonNode node = response.body();
                 if (node == null) {
                     return;
@@ -372,7 +372,7 @@ public class OpenFoodAPIClient {
             }
 
             @Override
-            public void onFailure(@NonNull Call<JsonNode> call, Throwable t) {
+            public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
                 ingredientListCallback.onIngredientListResponse(false, null);
             }
         });
@@ -669,8 +669,10 @@ public class OpenFoodAPIClient {
      */
     public ListenableFuture<ListenableWorker.Result> uploadOfflineImages(Context context) {
         return CallbackToFutureAdapter.getFuture(completer -> {
-            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder().where(ToUploadProductDao.Properties.Uploaded.eq(false)
-            ).list();
+            List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder()
+                .where(ToUploadProductDao.Properties.Uploaded.eq(false))
+                .list();
+
             int totalSize = toUploadProductList.size();
             Callback<JsonNode> callback = null;
             for (int i = 0; i < totalSize; i++) {
@@ -727,7 +729,7 @@ public class OpenFoodAPIClient {
      *
      * @param brand search query for product
      * @param page page numbers
-     * @param onBrandCallback object of OnBrandCallback interface
+     * @param onBrandCallback object of {@link openfoodfacts.github.scrachx.openfood.network.ApiCallbacks.OnBrandCallback} interface
      */
     public void getProductsByBrand(final String brand, final int page, final ApiCallbacks.OnBrandCallback onBrandCallback) {
         apiService.getProductByBrands(brand, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
@@ -1034,26 +1036,26 @@ public class OpenFoodAPIClient {
 
         if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
             apiService.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), getCommentToUpload())
-                .enqueue(createNotifcationCallback(context, product, productSentCallback));
+                .enqueue(createNotificationCallback(context, product, productSentCallback));
         } else if (product.getName().equals("") && product.getBrands().equals("")) {
             apiService
                 .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), getCommentToUpload())
-                .enqueue(createNotifcationCallback(context, product, productSentCallback));
+                .enqueue(createNotificationCallback(context, product, productSentCallback));
         } else if (product.getName().equals("") && product.getQuantity() == null) {
             apiService
                 .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), getCommentToUpload())
-                .enqueue(createNotifcationCallback(context, product, productSentCallback));
+                .enqueue(createNotificationCallback(context, product, productSentCallback));
         } else if (product.getBrands().equals("") && product.getQuantity() == null) {
             apiService
                 .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), getCommentToUpload())
-                .enqueue(createNotifcationCallback(context, product, productSentCallback));
+                .enqueue(createNotificationCallback(context, product, productSentCallback));
         } else {
             apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
-                .getUserId(), product.getPassword(), getCommentToUpload()).enqueue(createNotifcationCallback(context, product, productSentCallback));
+                .getUserId(), product.getPassword(), getCommentToUpload()).enqueue(createNotificationCallback(context, product, productSentCallback));
         }
     }
 
-    public Callback<State> createNotifcationCallback(Context context, SendProduct product, ApiCallbacks.OnProductSentCallback productSentCallback) {
+    public Callback<State> createNotificationCallback(Context context, SendProduct product, ApiCallbacks.OnProductSentCallback productSentCallback) {
         return new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {

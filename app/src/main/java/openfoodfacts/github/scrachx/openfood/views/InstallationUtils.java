@@ -14,11 +14,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import java.util.UUID;
 
-public class Installation {
+public class InstallationUtils {
     private static final String KEY_INSTALLATION = "INSTALLATION";
     private static String sID = null;
 
-    private Installation() {
+    private InstallationUtils() {
         //Helper class
     }
 
@@ -63,7 +63,7 @@ public class Installation {
     public static String getHashedString(String s) {
         try {
             // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            MessageDigest digest = MessageDigest.getInstance("MD5");
             digest.update(s.getBytes());
             byte[] messageDigest = digest.digest();
 
@@ -72,7 +72,7 @@ public class Installation {
             for (byte b : messageDigest) hexString.append(Integer.toHexString(0xFF & b));
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
-            Log.e(Installation.class.getSimpleName(), "getHashedString " + s, e);
+            Log.e(InstallationUtils.class.getSimpleName(), "getHashedString " + s, e);
         }
         return "";
     }

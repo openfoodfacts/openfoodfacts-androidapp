@@ -87,7 +87,7 @@ public class AnalysisTagConfig {
         this.type = type;
     }
 
-    public Boolean isNotNull() {
+    public boolean isNotNull() {
         return analysisTag != null && type != null && icon != null && color != null;
     }
 
