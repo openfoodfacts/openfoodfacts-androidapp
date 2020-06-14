@@ -21,7 +21,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
- * API client to recieve data from the Wikidata APIs
+ * API client to receive data from the Wikidata APIs
  */
 
 public class WikidataApiClient {
