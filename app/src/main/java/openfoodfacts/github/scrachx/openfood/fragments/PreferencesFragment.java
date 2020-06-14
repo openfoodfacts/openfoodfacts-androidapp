@@ -364,7 +364,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if ("enableMobileDataUpload".equals(key)) {
-            OfflineProductWorker.addWork();
+            OfflineProductWorker.scheduleSync();
         }
     }
 

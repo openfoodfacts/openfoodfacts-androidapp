@@ -336,7 +336,7 @@ public class AddProductActivity extends AppCompatActivity {
         offlineSavedProduct.setProductDetailsMap(productDetails);
         mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
 
-        OfflineProductWorker.addWork();
+        OfflineProductWorker.scheduleSync();
 
         OpenFoodAPIClient.addToHistory(Utils.getDaoSession().getHistoryProductDao(), offlineSavedProduct);
 
