@@ -10,23 +10,21 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Build;
-
-import androidx.annotation.ColorRes;
-import androidx.core.graphics.drawable.DrawableCompat;
-
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
+import androidx.core.graphics.drawable.DrawableCompat;
+
 import openfoodfacts.github.scrachx.openfood.R;
 
 public class QuestionDialog {
-    private Context mContext;
-    private Drawable mIcon;
-    @ColorRes
-    private int mIconColor;
+    private final Drawable mAmbiguityFeedbackIcon;
+    private final String mAmbiguityFeedbackText;
+    private final Context mContext;
     @ColorRes
     private int mBackgroundColor;
     private String mQuestion;
@@ -44,13 +42,14 @@ public class QuestionDialog {
     private ImageView positiveFeedbackIconView;
     private ImageView negativeFeedbackIconView;
     private ImageView ambiguityFeedbackIconView;
-    private String mPositiveFeedbackText;
-    private Drawable mPositiveFeedbackIcon;
-    private String mNegativeFeedbackText;
-    private Drawable mNegativeFeedbackIcon;
-    private String mAmbiguityFeedbackText;
-    private Drawable mAmbiguityFeedbackIcon;
-    private Dialog mDialog;
+    private final Dialog mDialog;
+    private final Drawable mIcon;
+    @ColorRes
+    private final int mIconColor;
+    private final Drawable mNegativeFeedbackIcon;
+    private final String mNegativeFeedbackText;
+    private final Drawable mPositiveFeedbackIcon;
+    private final String mPositiveFeedbackText;
     private QuestionActionListeners mReviewActionsListener;
 
     public QuestionDialog(Context mContext) {

@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 
 import org.junit.Test;
 
+import java.util.Locale;
+
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 
@@ -63,9 +65,6 @@ public class UtilsTest {
         final Context mockCtx = mock(Context.class);
         final PackageManager mockPM = mock(PackageManager.class);
 
-        // Test for null
-        assertFalse(Utils.isHardwareCameraInstalled(null));
-
         when(mockCtx.getPackageManager()).thenReturn(mockPM);
 
         // Test for best condition
@@ -78,10 +77,25 @@ public class UtilsTest {
             .thenReturn(false);
 
         assertFalse(Utils.isHardwareCameraInstalled(mockCtx));
+    }
 
-        // Test for null package Manager
-        when(mockCtx.getPackageManager())
-            .thenReturn(null);
-        assertFalse(Utils.isHardwareCameraInstalled(mockCtx));
+    @Test
+    public void getServingInOz_from_ml() {
+        String servingSize = "100 ml";
+
+        assertEquals(String.format(Locale.getDefault(), "%.2f", 3.38) + " oz", UnitUtils.getServingInOz(servingSize));
+    }
+
+    @Test
+    public void getServingInOz_from_cl() {
+        String servingSize = "250 cl";
+        assertEquals(String.format(Locale.getDefault(), "%.2f", 84.53) + " oz", UnitUtils.getServingInOz(servingSize));
+    }
+
+    @Test
+    public void getServingInOz_from_l() {
+        String servingSize = "3 l";
+
+        assertEquals(String.format(Locale.getDefault(), "%.2f", 101.44) + " oz", UnitUtils.getServingInOz(servingSize));
     }
 }

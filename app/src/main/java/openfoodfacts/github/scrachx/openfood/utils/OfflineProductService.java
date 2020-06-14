@@ -21,18 +21,18 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class OfflineProductService {
     private static final String LOG_TAG = "OfflineProductService";
-    private OpenFoodAPIService apiClient;
+    private final OpenFoodAPIService apiClient;
 
-    private static class Loader {
-        // static synchronized singleton
-        static volatile OfflineProductService INSTANCE = new OfflineProductService();
+    private static OfflineSavedProductDao getOfflineProductDAO() {
+        return OFFApplication.getDaoSession().getOfflineSavedProductDao();
     }
 
     public static OfflineProductService sharedInstance() {
@@ -44,8 +44,9 @@ public class OfflineProductService {
         this.apiClient = CommonApiManager.getInstance().getOpenFoodApiService();
     }
 
-    private static OfflineSavedProductDao getOfflineProductDAO() {
-        return OFFApplication.getInstance().getDaoSession().getOfflineSavedProductDao();
+    private static class Loader {
+        // static synchronized singleton
+        static final OfflineProductService INSTANCE = new OfflineProductService();
     }
 
     public static OfflineSavedProduct getOfflineProductByBarcode(String barcode) {
@@ -98,9 +99,9 @@ public class OfflineProductService {
             }
         }
         if (includeImages) {
-            return OfflineProductService.getListOfflineProducts().size() > 0;
+            return !OfflineProductService.getListOfflineProducts().isEmpty();
         }
-        return OfflineProductService.getListOfflineProductsWithoutDataSynced().size() > 0;
+        return !OfflineProductService.getListOfflineProductsWithoutDataSynced().isEmpty();
     }
 
     /**
@@ -115,13 +116,13 @@ public class OfflineProductService {
 
         HashMap<String, String> productDetails = product.getProductDetailsMap();
         // Remove the images from the HashMap before uploading the product details
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_FRONT);
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS);
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_NUTRITION);
+        productDetails.remove(ApiFields.Keys.IMAGE_FRONT);
+        productDetails.remove(ApiFields.Keys.IMAGE_INGREDIENTS);
+        productDetails.remove(ApiFields.Keys.IMAGE_NUTRITION);
         // Remove the status of the images from the HashMap before uploading the product details
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_FRONT_UPLOADED);
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED);
-        productDetails.remove(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED);
+        productDetails.remove(ApiFields.Keys.IMAGE_FRONT_UPLOADED);
+        productDetails.remove(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED);
+        productDetails.remove(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED);
 
         Iterator<Map.Entry<String, String>> it = productDetails.entrySet().iterator();
         while (it.hasNext()) {
@@ -136,7 +137,7 @@ public class OfflineProductService {
 
         try {
             State state = apiClient
-                .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIService.PRODUCT_API_COMMENT + " " + Utils.getVersionName(OFFApplication.getInstance()))
+                .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
                 .blockingGet();
 
             boolean isResponseOk = state.getStatus() == 1;
@@ -229,8 +230,8 @@ public class OfflineProductService {
 
     private static Map<String, RequestBody> createRequestBodyMap(String code, HashMap<String, String> productDetails, ProductImageField front) {
         Map<String, RequestBody> imgMap = new HashMap<>();
-        RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
-        RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), front.toString() + '_' + productDetails.get("lang"));
+        RequestBody barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code);
+        RequestBody imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), front.toString() + '_' + productDetails.get("lang"));
         imgMap.put("code", barcode);
         imgMap.put("imagefield", imageField);
         return imgMap;

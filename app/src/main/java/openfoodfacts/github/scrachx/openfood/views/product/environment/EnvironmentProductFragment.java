@@ -2,17 +2,16 @@ package openfoodfacts.github.scrachx.openfood.views.product.environment;
 
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import butterknife.BindView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -21,66 +20,58 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
 public class EnvironmentProductFragment extends BaseFragment {
-
-    @BindView(R.id.textCarbonFootprint)
-    TextView carbonFootprint;
-    @BindView(R.id.environment_info_text)
-    TextView environmentInfoText;
-    @BindView(R.id.recyclingInstructionToDiscard)
-    TextView recyclingInstructionToDiscardText;
-    @BindView(R.id.recyclingInstructionToRecycle)
-    TextView recyclingInstructionToRecycleText;
-    @BindView(R.id.recycling_instructions_discard_cv)
-    CardView recyclingInstructionsToDiscardCv;
-    @BindView(R.id.recycling_instructions_recycle_cv)
-    CardView recyclingInstructionsToRecycleCv;
-    @BindView(R.id.carbon_footprint_cv)
-    CardView carbonFootprintCardView;
-
+    private FragmentEnvironmentProductBinding binding;
     private State activityState;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return createView(inflater, container, R.layout.fragment_environment_product);
+        binding = FragmentEnvironmentProductBinding.inflate(inflater);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activityState =getStateFromActivityIntent();
+        activityState = getStateFromActivityIntent();
 
         final Product product = activityState.getProduct();
         Nutriments nutriments = product.getNutriments();
 
-        if(nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
+        if (nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
             Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
-            carbonFootprint.setText(bold(getString(R.string.textCarbonFootprint)));
-            carbonFootprint.append(carbonFootprintNutriment.getFor100gInUnits());
-            carbonFootprint.append(carbonFootprintNutriment.getUnit());
+            binding.textCarbonFootprint.setText(bold(getString(R.string.textCarbonFootprint)));
+            binding.textCarbonFootprint.append(carbonFootprintNutriment.getFor100gInUnits());
+            binding.textCarbonFootprint.append(carbonFootprintNutriment.getUnit());
         } else {
-            carbonFootprintCardView.setVisibility(View.GONE);
+            binding.carbonFootprintCv.setVisibility(View.GONE);
         }
 
         if (product.getEnvironmentInfocard() != null && !product.getEnvironmentInfocard().isEmpty()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard(), Html.FROM_HTML_MODE_COMPACT));
+                binding.environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard(), Html.FROM_HTML_MODE_COMPACT));
             } else {
-                environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard()));
+                binding.environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard()));
             }
         }
 
-        if(product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
-            recyclingInstructionToDiscardText.setText(bold("Recycling instructions - To discard: "));
-            recyclingInstructionToDiscardText.append(product.getRecyclingInstructionsToDiscard());
+        if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
+            binding.recyclingInstructionToDiscard.setText(bold("Recycling instructions - To discard: "));
+            binding.recyclingInstructionToDiscard.append(product.getRecyclingInstructionsToDiscard());
         } else {
-            recyclingInstructionsToDiscardCv.setVisibility(View.GONE);
+            binding.recyclingInstructionsDiscardCv.setVisibility(View.GONE);
         }
 
         if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
-            recyclingInstructionToRecycleText.setText(bold("Recycling instructions - To recycle:"));
-            recyclingInstructionToRecycleText.append(product.getRecyclingInstructionsToRecycle());
+            binding.recyclingInstructionToRecycle.setText(bold("Recycling instructions - To recycle:"));
+            binding.recyclingInstructionToRecycle.append(product.getRecyclingInstructionsToRecycle());
         } else {
-            recyclingInstructionsToRecycleCv.setVisibility(View.GONE);
+            binding.recyclingInstructionsRecycleCv.setVisibility(View.GONE);
         }
 
         refreshView(activityState);
@@ -91,5 +82,4 @@ public class EnvironmentProductFragment extends BaseFragment {
         super.refreshView(state);
         activityState = state;
     }
-
 }

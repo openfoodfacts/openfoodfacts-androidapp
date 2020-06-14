@@ -1,7 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import openfoodfacts.github.scrachx.openfood.models.Units;
 
 import static org.junit.Assert.*;
 
@@ -9,6 +10,7 @@ import static org.junit.Assert.*;
  *
  */
 public class UnitUtilTest {
+
     private static final double DELTA = 1e-5;
 
     @Test
@@ -34,48 +36,46 @@ public class UnitUtilTest {
         assertEquals("1 oz", UnitUtils.getServingInOz("29.5735 ml"));
         */
     }
+// Not finished yet
 
     @Test
     public void testConvertFromGram() {
-        assertEquals(0.001, UnitUtils.convertFromGram(1, UnitUtils.UNIT_KILOGRAM), DELTA);
-        assertEquals(1, UnitUtils.convertFromGram(1, UnitUtils.UNIT_GRAM), DELTA);
-        assertEquals(1000, UnitUtils.convertFromGram(1, UnitUtils.UNIT_MILLIGRAM), DELTA);
-        assertEquals(1000 * 1000, UnitUtils.convertFromGram(1, UnitUtils.UNIT_MICROGRAM), DELTA);
+        assertEquals(0.001, UnitUtils.convertFromGram(1, Units.UNIT_KILOGRAM), DELTA);
+        assertEquals(1, UnitUtils.convertFromGram(1, Units.UNIT_GRAM), DELTA);
+        assertEquals(1000, UnitUtils.convertFromGram(1, Units.UNIT_MILLIGRAM), DELTA);
+        assertEquals(1000 * 1000, UnitUtils.convertFromGram(1, Units.UNIT_MICROGRAM), DELTA);
     }
 
     @Test
     public void testConvertFromMl() {
-        assertEquals(0.001, UnitUtils.convertFromGram(1, UnitUtils.UNIT_LITER), DELTA);
-        assertEquals(0.01, UnitUtils.convertFromGram(1, UnitUtils.UNIT_DECILITRE), DELTA);
-        assertEquals(0.1, UnitUtils.convertFromGram(1, UnitUtils.UNIT_CENTILITRE), DELTA);
-        assertEquals(1, UnitUtils.convertFromGram(1, UnitUtils.UNIT_MILLILITRE), DELTA);
+        assertEquals(0.001, UnitUtils.convertFromGram(1, Units.UNIT_LITER), DELTA);
+        assertEquals(0.01, UnitUtils.convertFromGram(1, Units.UNIT_DECILITRE), DELTA);
+        assertEquals(0.1, UnitUtils.convertFromGram(1, Units.UNIT_CENTILITRE), DELTA);
+        assertEquals(1, UnitUtils.convertFromGram(1, Units.UNIT_MILLILITRE), DELTA);
     }
 
     @Test
     public void testConvertToMl() {
-        assertEquals(1000, UnitUtils.convertToGrams(1, UnitUtils.UNIT_LITER), DELTA);
-        assertEquals(100, UnitUtils.convertToGrams(1, UnitUtils.UNIT_DECILITRE), DELTA);
-        assertEquals(10, UnitUtils.convertToGrams(1, UnitUtils.UNIT_CENTILITRE), DELTA);
-        assertEquals(1, UnitUtils.convertToGrams(1, UnitUtils.UNIT_MILLILITRE), DELTA);
+        assertEquals(1000, UnitUtils.convertToGrams(1, Units.UNIT_LITER), DELTA);
+        assertEquals(100, UnitUtils.convertToGrams(1, Units.UNIT_DECILITRE), DELTA);
+        assertEquals(10, UnitUtils.convertToGrams(1, Units.UNIT_CENTILITRE), DELTA);
+        assertEquals(1, UnitUtils.convertToGrams(1, Units.UNIT_MILLILITRE), DELTA);
     }
 
     @Test
     public void testConvertToGram() {
-        assertEquals(1000, UnitUtils.convertToGrams(1, UnitUtils.UNIT_KILOGRAM), DELTA);
-        assertEquals(1, UnitUtils.convertToGrams(1, UnitUtils.UNIT_GRAM), DELTA);
-        assertEquals(1e-3, UnitUtils.convertToGrams(1, UnitUtils.UNIT_MILLIGRAM), DELTA);
-        assertEquals(1e-6, UnitUtils.convertToGrams(1, UnitUtils.UNIT_MICROGRAM), DELTA);
+        assertEquals(1000, UnitUtils.convertToGrams(1, Units.UNIT_KILOGRAM), DELTA);
+        assertEquals(1, UnitUtils.convertToGrams(1, Units.UNIT_GRAM), DELTA);
+        assertEquals(1e-3, UnitUtils.convertToGrams(1, Units.UNIT_MILLIGRAM), DELTA);
+        assertEquals(1e-6, UnitUtils.convertToGrams(1, Units.UNIT_MICROGRAM), DELTA);
     }
 
     @Test
     public void testConvertToKiloCalories() {
-        assertEquals(0.239006, UnitUtils.convertToKiloCalories(1, UnitUtils.ENERGY_KJ), DELTA);
-        assertEquals(1, UnitUtils.convertToKiloCalories(1, UnitUtils.ENERGY_KCAL), DELTA);
-        try {
-            UnitUtils.convertToKiloCalories(1, UnitUtils.UNIT_GRAM);
-            Assert.fail("Exception 'IllegalArgumentException not thrown");
-        } catch (IllegalArgumentException ignored) {
-        }
+        assertEquals(23, UnitUtils.convertToKiloCalories(100, Units.ENERGY_KJ), DELTA);
+        assertEquals(100, UnitUtils.convertToKiloCalories(100, Units.ENERGY_KCAL), DELTA);
+
+        assertThrows(IllegalArgumentException.class, () -> UnitUtils.convertToKiloCalories(1, Units.UNIT_GRAM));
     }
 
     @Test

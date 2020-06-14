@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.squareup.picasso.Picasso;
@@ -20,7 +19,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.List;
 
-import butterknife.OnClick;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -47,7 +45,14 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         OpenFoodAPIClient openFoodAPIClient = new OpenFoodAPIClient(this);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_product_images_list);
+        binding = ActivityProductImagesListBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.closeZoom.setOnClickListener(v -> onCloseZoom());
+        binding.expandedImage.setOnClickListener(v -> onClickOnExpandedImage());
+        binding.btnAcceptSelection.setOnClickListener(v -> onBtnAcceptSelection());
+        binding.btnChooseImage.setOnClickListener(v -> onBtnChooseImage());
+
         binding.btnChooseImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_photo_library, 0, 0, 0);
 
         Intent intent = getIntent();
@@ -69,7 +74,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
                 } catch (JSONException e) {
                     Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
                 }
-                List<String> imageNames=ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(images);
+                List<String> imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(images);
 
                 setSupportActionBar(binding.toolbar);
                 if (getSupportActionBar() != null) {
@@ -87,7 +92,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
 
     private void imageSelected() {
         final int selectedPosition = adapter.getSelectedPosition();
-        if(selectedPosition>=0) {
+        if (selectedPosition >= 0) {
             String finalUrlString = adapter.getImageUrl(selectedPosition);
             Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage);
             binding.zoomContainer.setVisibility(View.VISIBLE);
@@ -96,18 +101,15 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         updateButtonAccept();
     }
 
-    @OnClick(R.id.closeZoom)
     void onCloseZoom() {
         binding.zoomContainer.setVisibility(View.INVISIBLE);
         binding.imagesRecycler.setVisibility(View.VISIBLE);
     }
-    @OnClick(R.id.expandedImage)
+
     void onClickOnExpandedImage() {
         onCloseZoom();
     }
 
-
-    @OnClick(R.id.btnAcceptSelection)
     void onBtnAcceptSelection() {
         Intent intent = new Intent();
         intent.putExtra(ImageKeyHelper.IMG_ID, adapter.getSelectedImageName());
@@ -115,7 +117,6 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         finish();
     }
 
-    @OnClick(R.id.btnChooseImage)
     void onBtnChooseImage() {
         if (ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);

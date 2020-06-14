@@ -1,29 +1,37 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsAnalysisProductFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/detected_ingredients"
-        android:id="@+id/tv_detected_ingredients"
-        android:textSize="28sp"
-        android:padding="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:gravity="center"/>
-    <androidx.cardview.widget.CardView
+    <data>
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_detected_ingredients"
-        android:layout_margin="8dp">
+        tools:context="openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsAnalysisProductFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:id="@+id/tv_detected_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/detected_ingredients"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textSize="28sp" />
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/ingredient_analysis_recycler_view"/>
+            android:layout_below="@+id/tv_detected_ingredients"
+            android:layout_margin="8dp">
 
-    </androidx.cardview.widget.CardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ingredient_analysis_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-</RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

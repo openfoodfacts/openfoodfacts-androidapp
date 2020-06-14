@@ -4,9 +4,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/round_background">
-        <shape
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:shape="oval">
+        <shape android:shape="oval">
             <solid
                 android:id="@+id/background_color"
                 android:color="#FFFFFF"/>

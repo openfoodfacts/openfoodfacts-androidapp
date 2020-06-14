@@ -56,6 +56,7 @@
         <item>% DV</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -143,7 +144,7 @@
     <string name="search_button">Αναζήτηση</string>
     <string name="alert_dialog_warning_title">Προσοχή</string>
     <string name="alert_dialog_warning_msg_user">Όνομα/Κωδικός λογαριασμού έχει αλλάξει, ανανεώστε τις πληροφορίες</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">Loading…</string>
     <string name="txtBarcode">Barcode :</string>
     <string name="txtCategories">Κατηγορίες :</string>
     <string name="txtLabels">Ετικέτες, πιστοποιήσεις, βραβεία :</string>
@@ -184,7 +185,7 @@
     <string name="txtSendAll">Μεταφορτώστε όλα</string>
     <string name="txtPictureNeededDialogNo">Ακύρωση</string>
     <string name="toastSending">Μεταφόρτωση…</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Σίγουρα θέλετε να διαγράψετε αυτό το πρόχειρο;</string>
     <string name="txtDialogsContentInfoSave">Το προϊόν είναι αποθηκευμένο τοπικά, μπορείτε να το επεξεργαστείτε στο μενού «Επεξεργασία χωρίς σύνδεση»</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -219,9 +220,11 @@
     <string name="title_info_dialog">Οδηγίες Χρήσης</string>
     <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
     <string name="permission_camera">Χρειάζεται άδεια κάμερας για τη σάρωση των Barcodes και τη λήψη φωτογραφιών.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Δικαιώματα</string>
     <string name="permission_denied">Παρακαλώ δώστε δικαιώματα από τις ρυθμίσεις</string>
-    <string name="info_download_data_connection">Χρειάζεται περιπτέρου λήψη ώστε να γίνει χρήση αυτής της λειτουργίας. Για έναρξη λήψης ενεργοποιήστε WiFi ή Δεδομένα...</string>
+    <string name="info_download_data_connection">Χρειάζεται περιπτέρου λήψη ώστε να γίνει χρήση αυτής της λειτουργίας. Για έναρξη λήψης ενεργοποιήστε WiFi ή Δεδομένα…</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες.</string>
     <string name="user">χρήστης</string>
@@ -245,7 +248,7 @@
     <string name="title_clear_history_dialog">Εκκαθάριση</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Εξαγωγή σε CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">Ιστορικό εξήχθη</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">Χωρίς μάρκα</string>
@@ -261,6 +264,8 @@
     <string name="nutrition_carbohydrate">Υδατάνθρακας</string>
     <string name="nutrition_cholesterol">Χοληστερόλη</string>
     <string name="nutrition_energy">Ενέργεια</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Ενέργεια</string>
     <string name="nutrition_fat">Λίπη</string>
     <string name="nutrition_fiber">Φυτικές ίνες</string>
@@ -426,9 +431,9 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Γενικά</string>
     <string name="preference_header_network">Ρυθμίσεις Δικτύου</string>
     <string name="preference_header_contributing">Συνεισφορά</string>
@@ -677,6 +682,7 @@
     <string name="txt_info_your_listed_products">Θα μπορείτε να προσθέσετε προϊόντα σε αυτήν τη λίστα, αναζητώντας τα και κάνοντας κλικ στο κουμπί + στην επάνω δεξιά γωνία της σελίδας του προϊόντος.</string>
     <string name="search_history_pref_title">Διαγραφή ιστορικού τοπικής αναζήτησης</string>
     <string name="search_history_pref_summary">Καταργήστε όλες τις αναζητήσεις που πραγματοποιήσατε σε αυτήν τη συσκευή</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Επιλέξτε τη χώρα σας</string>
     <string name="settings_country_summary">Αλλάξτε την επιλεγμένη χώρα σας</string>
     <string name="settings_country_title">Χώρα</string>
@@ -696,7 +702,7 @@
     <string name="product_question_negative_response">Όχι</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
     <string name="go_to_full_product_page">Go to product</string>

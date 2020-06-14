@@ -1,1 +1,1 @@
-Scan food products to decrypt labels: ingredients, additives and nutrition facts
+라벨을 해독하기 위해 식품 스캔하세요: 성분, 첨가제 및 영양성분의 사실

@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models.eventbus;
 
 public class ProductNeedsRefreshEvent {
-    private String barcode;
+    private final String barcode;
 
     public ProductNeedsRefreshEvent(String barcode) {
         this.barcode = barcode;

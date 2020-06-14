@@ -32,7 +32,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.OnTextChanged;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
@@ -44,6 +43,7 @@ import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -118,7 +118,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
 
         Bundle b = getArguments();
         if (b != null) {
-            mAllergenNameDao = Utils.getAppDaoSession(activity).getAllergenNameDao();
+            mAllergenNameDao = Utils.getDaoSession().getAllergenNameDao();
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
             editProduct = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
@@ -159,7 +159,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     private String getImageIngredients() {
-        return productDetails.get(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS);
+        return productDetails.get(ApiFields.Keys.IMAGE_INGREDIENTS);
     }
 
     @Nullable
@@ -292,18 +292,18 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             if (!TextUtils.isEmpty(ingredientsText)) {
                 binding.ingredientsList.setText(ingredientsText);
             }
-            if (productDetails.get(OfflineSavedProduct.KEYS.PARAM_TRACES) != null) {
-                List<String> chipValues = Arrays.asList(productDetails.get(OfflineSavedProduct.KEYS.PARAM_TRACES).split("\\s*,\\s*"));
+            if (productDetails.get(ApiFields.Keys.ADD_TRACES) != null) {
+                List<String> chipValues = Arrays.asList(productDetails.get(ApiFields.Keys.ADD_TRACES).split("\\s*,\\s*"));
                 binding.traces.setText(chipValues);
             }
         }
     }
 
     /**
-     * Automaticcely load suggestions for allergen names
+     * Automatically load suggestions for allergen names
      */
     private void loadAutoSuggestions() {
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         AsyncSession asyncSessionAllergens = daoSession.startAsyncSession();
         AllergenNameDao allergenNameDao = daoSession.getAllergenNameDao();
         final String appLanguageCode = LocaleHelper.getLanguage(activity);
@@ -390,8 +390,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         }
     }
 
-    @OnTextChanged(value = R.id.ingredients_list, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void toggleExtractIngredientsButtonVisibility() {
+    private void toggleExtractIngredientsButtonVisibility() {
         if (EditTextUtils.isEmpty(binding.ingredientsList)) {
             binding.btnExtractIngredients.setVisibility(View.VISIBLE);
         } else {
@@ -407,29 +406,29 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         if (activity instanceof AddProductActivity) {
             String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
             String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-            targetMap.put(OfflineSavedProduct.KEYS.GET_PARAM_INGREDIENTS(lc), binding.ingredientsList.getText().toString());
+            targetMap.put(ApiFields.Keys.lcIngredientsKey(lc), binding.ingredientsList.getText().toString());
             List<String> list = binding.traces.getChipValues();
             String string = StringUtils.join(list, ",");
-            targetMap.put(OfflineSavedProduct.KEYS.PARAM_TRACES.substring(4), string);
+            targetMap.put(ApiFields.Keys.ADD_TRACES.substring(4), string);
         }
     }
 
     /**
      * adds only those fields to the query map which are not empty and have changed.
      */
-    public void getDetails() {
+    public void addUpdatedFieldsTomap(Map<String, String> targetMap) {
         binding.traces.chipifyAllUnterminatedTokens();
-        if (activity instanceof AddProductActivity) {
-            if (EditTextUtils.isNotEmpty(binding.ingredientsList) && EditTextUtils.isDifferent(binding.ingredientsList, product != null ? product.getIngredientsText() : null)) {
-                String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
-                String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-                ((AddProductActivity) activity).addToMap(OfflineSavedProduct.KEYS.GET_PARAM_INGREDIENTS(lc), binding.ingredientsList.getText().toString());
-            }
-            if (!binding.traces.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.traces, extractTracesChipValues(product))) {
-                List<String> list = binding.traces.getChipValues();
-                String string = StringUtils.join(list, ",");
-                ((AddProductActivity) activity).addToMap(OfflineSavedProduct.KEYS.PARAM_TRACES, string);
-            }
+        if (!(activity instanceof AddProductActivity)) {
+            return;
+        }
+        if (EditTextUtils.isNotEmpty(binding.ingredientsList) && EditTextUtils.isDifferent(binding.ingredientsList, product != null ? product.getIngredientsText() : null)) {
+            String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
+            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            targetMap.put(ApiFields.Keys.lcIngredientsKey(lc), binding.ingredientsList.getText().toString());
+        }
+        if (!binding.traces.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.traces, extractTracesChipValues(product))) {
+            String string = StringUtils.join(binding.traces.getChipValues(), ",");
+            targetMap.put(ApiFields.Keys.ADD_TRACES, string);
         }
     }
 
@@ -454,7 +453,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     }
 
     /**
-     * Displays progress bar and hides other views util image is loaded
+     * Displays progress bar and hides other views util image is still loading
      */
     public void showImageProgress() {
         if (!isAdded()) {

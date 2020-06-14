@@ -49,6 +49,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -92,15 +93,15 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
 
         setTitle(getString(R.string.scan_history_drawer));
 
-        setSupportActionBar(binding.toolbar.toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true;
         }
 
-        mHistoryProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
+        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
         productItems = new ArrayList<>();
         setInfo(binding.emptyHistoryInfo);
 
@@ -118,14 +119,14 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         });
 
         binding.srRefreshHistoryScanList.setOnRefreshListener(() -> {
-            mHistoryProductDao = Utils.getAppDaoSession(context).getHistoryProductDao();
+            mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
             productItems = new ArrayList<>();
             setInfo(binding.emptyHistoryInfo);
             new FillAdapter(HistoryScanActivity.this).execute(context);
             binding.srRefreshHistoryScanList.setRefreshing(false);
         });
 
-        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this, this);
+        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this);
     }
 
     @Override
@@ -159,8 +160,8 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             baseDir.mkdirs();
         }
         Log.d("dir", String.valueOf(baseDir));
-        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
-        File csvFile= new File(baseDir ,fileName);
+        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()) + ".csv";
+        File csvFile = new File(baseDir, fileName);
         boolean isDownload = false;
         try (CSVPrinter writer = new CSVPrinter(new FileWriter(csvFile), CSVFormat.DEFAULT.withHeader(getResources().getStringArray(R.array.headers)))) {
             for (HistoryProduct hp : mHistoryProductDao.loadAll()) {
@@ -450,7 +451,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     }
 
     public class FillAdapter extends AsyncTask<Context, Void, Context> {
-        private Activity activity;
+        private final Activity activity;
 
         public FillAdapter(Activity act) {
             activity = act;

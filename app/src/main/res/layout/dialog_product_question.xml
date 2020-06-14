@@ -72,7 +72,9 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:weightSum="3"
-        android:background="#FFF">
+        android:background="#FFF"
+        android:baselineAligned="false">
+
         <LinearLayout
             android:id="@+id/postive_feedback_layout"
             android:layout_width="0dp"

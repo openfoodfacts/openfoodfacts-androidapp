@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -16,8 +17,13 @@ import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.
  */
 public class AllergensWrapperTest {
 
-    @Test
-    public void map_returnsListOfCorrectlyMappedAllergens() {
+    List<Allergen> allergens;
+    Allergen allergen1;
+    Allergen allergen2;
+
+
+    @Before
+    public void setUp(){
         AllergensWrapper allergensWrapper = new AllergensWrapper();
         Map<String, String> nameMap1 = new HashMap<>();
         nameMap1.put(LANGUAGE_CODE_ENGLISH, PEANUTS_EN);
@@ -31,28 +37,49 @@ public class AllergensWrapperTest {
         AllergenResponse allergenResponse2 = new AllergenResponse(UNIQUE_ALLERGEN_ID_2, nameMap2);
         allergensWrapper.setAllergens(Arrays.asList(allergenResponse1, allergenResponse2));
 
-        List<Allergen> allergens = allergensWrapper.map();
+        allergens = allergensWrapper.map();
+        allergen1 = allergens.get(0);
+        allergen2 = allergens.get(1);
+    }
 
+    @Test
+    public void allergensWrapper_CreatesOneListPerAllergen(){
         assertEquals(2, allergens.size());
+    }
 
-        Allergen allergen1 = allergens.get(0);
+    @Test
+    public void map_returnsListOfCorrectlyMappedAllergens() {
         assertEquals(UNIQUE_ALLERGEN_ID_1, allergen1.getTag());
         assertEquals(2, allergen1.getNames().size());
-        assertEquals(UNIQUE_ALLERGEN_ID_1, allergen1.getNames().get(0).getAllergenTag());
-        assertEquals(LANGUAGE_CODE_ENGLISH, allergen1.getNames().get(0).getLanguageCode());
-        assertEquals(PEANUTS_EN, allergen1.getNames().get(0).getName());
-        assertEquals(UNIQUE_ALLERGEN_ID_1, allergen1.getNames().get(1).getAllergenTag());
-        assertEquals(LANGUAGE_CODE_FRENCH, allergen1.getNames().get(1).getLanguageCode());
-        assertEquals(PEANUTS_FR, allergen1.getNames().get(1).getName());
 
-        Allergen allergen2 = allergens.get(1);
         assertEquals(UNIQUE_ALLERGEN_ID_2, allergen2.getTag());
         assertEquals(2, allergen2.getNames().size());
+    }
+
+    @Test
+    public void map_returnsListOfCorrectlyMappedSubAllergens_Tag(){
+        assertEquals(UNIQUE_ALLERGEN_ID_1, allergen1.getNames().get(0).getAllergenTag());
+        assertEquals(UNIQUE_ALLERGEN_ID_1, allergen1.getNames().get(1).getAllergenTag());
+
         assertEquals(UNIQUE_ALLERGEN_ID_2, allergen2.getNames().get(0).getAllergenTag());
-        assertEquals(LANGUAGE_CODE_GERMAN, allergen2.getNames().get(0).getLanguageCode());
-        assertEquals(STRAWBERRY_DE, allergen2.getNames().get(0).getName());
         assertEquals(UNIQUE_ALLERGEN_ID_2, allergen2.getNames().get(1).getAllergenTag());
+    }
+
+    @Test
+    public void map_returnsListOfCorrectlyMappedSubAllergens_LanguageCode(){
+        assertEquals(LANGUAGE_CODE_ENGLISH, allergen1.getNames().get(0).getLanguageCode());
+        assertEquals(LANGUAGE_CODE_FRENCH, allergen1.getNames().get(1).getLanguageCode());
+
+        assertEquals(LANGUAGE_CODE_GERMAN, allergen2.getNames().get(0).getLanguageCode());
         assertEquals(LANGUAGE_CODE_ENGLISH, allergen2.getNames().get(1).getLanguageCode());
+    }
+
+    @Test
+    public void map_returnsListOfCorrectlyMappedSubAllergens_Names(){
+        assertEquals(PEANUTS_EN, allergen1.getNames().get(0).getName());
+        assertEquals(PEANUTS_FR, allergen1.getNames().get(1).getName());
+
+        assertEquals(STRAWBERRY_DE, allergen2.getNames().get(0).getName());
         assertEquals(STRAWBERRY_EN, allergen2.getNames().get(1).getName());
     }
 }

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -25,10 +24,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnPageChange;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -36,6 +31,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityAddProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductIngredientsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductNutritionFactsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragment;
@@ -49,8 +45,9 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -58,47 +55,31 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPager
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
 
 public class AddProductActivity extends AppCompatActivity {
-    private static final String KEY_USER_ID = "user_id";
-    @SuppressWarnings("squid:S2068")
-    private static final String KEY_PASSWORD = "password";
     private static final String ADD_TAG = AddProductActivity.class.getSimpleName();
     public static final String MODIFY_NUTRITION_PROMPT = "modify_nutrition_prompt";
     public static final String MODIFY_CATEGORY_PROMPT = "modify_category_prompt";
     public static final String KEY_EDIT_PRODUCT = "edit_product";
     public static final String KEY_IS_EDITION = "is_edition";
-    private final Map<String, String> productDetails = new HashMap<>();
-    @Inject
-    OpenFoodAPIService client;
-    @BindView(R.id.overview_indicator)
-    View overviewIndicator;
-    @BindView(R.id.ingredients_indicator)
-    View ingredientsIndicator;
-    @BindView(R.id.nutrition_facts_indicator)
-    View nutritionFactsIndicator;
-    @BindView(R.id.text_nutrition_facts_indicator)
-    TextView nutritionFactsIndicatorText;
-    @BindView(R.id.viewpager)
-    ViewPager viewPager;
-    private AddProductOverviewFragment addProductOverviewFragment = new AddProductOverviewFragment();
     private AddProductIngredientsFragment addProductIngredientsFragment = new AddProductIngredientsFragment();
     private AddProductNutritionFactsFragment addProductNutritionFactsFragment = new AddProductNutritionFactsFragment();
+    private AddProductOverviewFragment addProductOverviewFragment = new AddProductOverviewFragment();
     private AddProductPhotosFragment addProductPhotosFragment = new AddProductPhotosFragment();
-    /**
-     * Product passed for edition
-     */
-    private Product mProduct;
-    private ToUploadProductDao mToUploadProductDao;
-    private OfflineSavedProductDao mOfflineSavedProductDao;
-    private Disposable mainDisposable;
-    private String[] imagesFilePath = new String[3];
-    private OfflineSavedProduct offlineSavedProduct;
-    private Map<String, String> initialValues;
-    private Bundle mainBundle = new Bundle();
+    private ActivityAddProductBinding binding;
+    @Inject
+    OpenFoodAPIService client;
     private boolean editionMode;
-    // These fields are used to compare the existing values of a product already present on the server with the product which was saved offline and is being uploaded.
     private boolean imageFrontUploaded;
     private boolean imageIngredientsUploaded;
     private boolean imageNutritionFactsUploaded;
+    private String[] imagesFilePath = new String[3];
+    private Map<String, String> initialValues;
+    private OfflineSavedProductDao mOfflineSavedProductDao;
+    private Product mProduct;
+    private ToUploadProductDao mToUploadProductDao;
+    private Bundle mainBundle = new Bundle();
+    private Disposable mainDisposable;
+    private OfflineSavedProduct offlineSavedProduct;
+    private final Map<String, String> productDetails = new HashMap<>();
 
     public static File getCameraPicLocation(Context context) {
         File cacheDir = context.getCacheDir();
@@ -127,8 +108,30 @@ public class AddProductActivity extends AppCompatActivity {
         }
     }
 
-    @OnPageChange(value = R.id.viewpager, callback = OnPageChange.Callback.PAGE_SELECTED)
-    void onPageSelected(int position) {
+    private static void updateTimeLine(int stage, View view) {
+        switch (stage) {
+            case 0:
+                view.setBackgroundResource(R.drawable.stage_inactive);
+                break;
+            case 1:
+                view.setBackgroundResource(R.drawable.stage_active);
+                break;
+            case 2:
+                view.setBackgroundResource(R.drawable.stage_complete);
+                break;
+        }
+    }
+
+    public static Map<String, String> buildImageQueryMap(JsonNode jsonNode) {
+        String imagefield = jsonNode.get("imagefield").asText();
+        String imgid = jsonNode.get("image").get("imgid").asText();
+        Map<String, String> queryMap = new HashMap<>();
+        queryMap.put("imgid", imgid);
+        queryMap.put("id", imagefield);
+        return queryMap;
+    }
+
+    private void selectPage(int position) {
         switch (position) {
             case 0:
             default:
@@ -152,23 +155,9 @@ public class AddProductActivity extends AppCompatActivity {
      * @param nutritionFactsStage change the state of nutrition facts indicator
      */
     private void updateTimelineIndicator(int overviewStage, int ingredientsStage, int nutritionFactsStage) {
-        updateTimeLine(overviewStage, overviewIndicator);
-        updateTimeLine(ingredientsStage, ingredientsIndicator);
-        updateTimeLine(nutritionFactsStage, nutritionFactsIndicator);
-    }
-
-    private static void updateTimeLine(int stage, View view) {
-        switch (stage) {
-            case 0:
-                view.setBackgroundResource(R.drawable.stage_inactive);
-                break;
-            case 1:
-                view.setBackgroundResource(R.drawable.stage_active);
-                break;
-            case 2:
-                view.setBackgroundResource(R.drawable.stage_complete);
-                break;
-        }
+        updateTimeLine(overviewStage, binding.overviewIndicator);
+        updateTimeLine(ingredientsStage, binding.ingredientsIndicator);
+        updateTimeLine(nutritionFactsStage, binding.nutritionFactsIndicator);
     }
 
     @Override
@@ -177,7 +166,7 @@ public class AddProductActivity extends AppCompatActivity {
             .content(R.string.save_product)
             .positiveText(R.string.txtSave)
             .negativeText(R.string.txtPictureNeededDialogNo)
-            .onPositive((dialog, which) -> checkFields())
+            .onPositive((dialog, which) -> checkFieldsThenSave())
             .onNegative((dialog, which) -> super.onBackPressed())
             .show();
     }
@@ -188,8 +177,8 @@ public class AddProductActivity extends AppCompatActivity {
             new MaterialDialog.Builder(this)
                 .content(R.string.save_product)
                 .positiveText(R.string.txtSave)
-                .negativeText(R.string.txtPictureNeededDialogNo)
-                .onPositive((dialog, which) -> checkFields())
+                .negativeText(R.string.txt_discard)
+                .onPositive((dialog, which) -> checkFieldsThenSave())
                 .onNegative((dialog, which) -> finish())
                 .show();
         }
@@ -200,15 +189,28 @@ public class AddProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         OFFApplication.getAppComponent().inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_product);
-        ButterKnife.bind(this);
+
+        binding = ActivityAddProductBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Setup onclick listeners
+        binding.overviewIndicator.setOnClickListener(v -> switchToOverviewPage());
+        binding.ingredientsIndicator.setOnClickListener(v -> switchToIngredientsPage());
+        binding.nutritionFactsIndicator.setOnClickListener(v -> switchToNutritionFactsPage());
+        binding.viewpager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                selectPage(position);
+            }
+        });
+
         setTitle(R.string.offline_product_addition_title);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        mToUploadProductDao = Utils.getAppDaoSession(this).getToUploadProductDao();
-        mOfflineSavedProductDao = Utils.getAppDaoSession(this).getOfflineSavedProductDao();
+        mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
+        mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
         final State state = (State) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra("edit_offline_product");
         Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
@@ -236,18 +238,18 @@ public class AddProductActivity extends AppCompatActivity {
             mainBundle.putSerializable("edit_offline_product", offlineSavedProduct);
             // Save the already existing images in productDetails for UI
             imagesFilePath[0] = offlineSavedProduct.getImageFront();
-            imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS);
-            imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION);
+            imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_INGREDIENTS);
+            imagesFilePath[2] = offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_NUTRITION);
             // get the status of images from productDetailsMap, whether uploaded or not
-            imageFrontUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_FRONT_UPLOADED));
-            imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED));
-            imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED));
+            imageFrontUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_FRONT_UPLOADED));
+            imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED));
+            imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED));
         }
         if (state == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
             finish();
         }
-        setupViewPager(viewPager);
+        setupViewPager(binding.viewpager);
     }
 
     public Map<String, String> getInitialValues() {
@@ -261,6 +263,7 @@ public class AddProductActivity extends AppCompatActivity {
             mainDisposable.dispose();
         }
         clearCachedCameraPic(this);
+        binding = null;
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -274,7 +277,7 @@ public class AddProductActivity extends AppCompatActivity {
             addProductNutritionFactsFragment.setArguments(mainBundle);
             adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
         } else if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
-            nutritionFactsIndicatorText.setText(R.string.photos);
+            binding.textNutritionFactsIndicator.setText(R.string.photos);
             addProductPhotosFragment.setArguments(mainBundle);
             adapterResult.addFragment(addProductPhotosFragment, "Photos");
         }
@@ -283,17 +286,17 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void saveProduct() {
-        addProductOverviewFragment.getDetails();
-        addProductIngredientsFragment.getDetails();
+        addProductOverviewFragment.addUpdatedFieldsToMap(productDetails);
+        addProductIngredientsFragment.addUpdatedFieldsTomap(productDetails);
         if (isNutritionDataAvailable()) {
-            addProductNutritionFactsFragment.getDetails(productDetails);
+            addProductNutritionFactsFragment.addUpdatedFieldsToMap(productDetails);
         }
-        addLoginInfoInProductDetails();
+        addLoginInfoInProductDetails(productDetails);
         saveProductOffline();
     }
 
     private RequestBody createTextPlain(String code) {
-        return RequestBody.create(MediaType.parse(OpenFoodAPIClient.TEXT_PLAIN), code);
+        return RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code);
     }
 
     private void addLoginPasswordInfo(Map<String, RequestBody> imgMap) {
@@ -301,8 +304,8 @@ public class AddProductActivity extends AppCompatActivity {
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
         if (!login.isEmpty() && !password.isEmpty()) {
-            imgMap.put(KEY_USER_ID, createTextPlain(login));
-            imgMap.put(KEY_PASSWORD, createTextPlain(password));
+            imgMap.put(ApiFields.Keys.USER_ID, createTextPlain(login));
+            imgMap.put(ApiFields.Keys.USER_PWD, createTextPlain(password));
         }
         imgMap.put("comment", createTextPlain(OpenFoodAPIClient.getCommentToUpload(login)));
     }
@@ -312,27 +315,27 @@ public class AddProductActivity extends AppCompatActivity {
      */
     private void saveProductOffline() {
         // Add the images to the productDetails to display them in UI later.
-        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_FRONT, imagesFilePath[0]);
-        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS, imagesFilePath[1]);
-        productDetails.put(OfflineSavedProduct.KEYS.IMAGE_NUTRITION, imagesFilePath[2]);
+        productDetails.put(ApiFields.Keys.IMAGE_FRONT, imagesFilePath[0]);
+        productDetails.put(ApiFields.Keys.IMAGE_INGREDIENTS, imagesFilePath[1]);
+        productDetails.put(ApiFields.Keys.IMAGE_NUTRITION, imagesFilePath[2]);
         // Add the status of images to the productDetails, whether uploaded or not
         if (imageFrontUploaded) {
-            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_FRONT_UPLOADED, "true");
+            productDetails.put(ApiFields.Keys.IMAGE_FRONT_UPLOADED, "true");
         }
         if (imageIngredientsUploaded) {
-            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_INGREDIENTS_UPLOADED, "true");
+            productDetails.put(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED, "true");
         }
         if (imageNutritionFactsUploaded) {
-            productDetails.put(OfflineSavedProduct.KEYS.IMAGE_NUTRITION_UPLOADED, "true");
+            productDetails.put(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED, "true");
         }
         OfflineSavedProduct offlineSavedProduct = new OfflineSavedProduct();
         offlineSavedProduct.setBarcode(productDetails.get("code"));
         offlineSavedProduct.setProductDetailsMap(productDetails);
         mOfflineSavedProductDao.insertOrReplace(offlineSavedProduct);
 
-        OfflineProductWorker.addWork();
+        OfflineProductWorker.scheduleSync();
 
-        OpenFoodAPIClient.addToHistory(Utils.getAppDaoSession(this).getHistoryProductDao(), offlineSavedProduct);
+        OpenFoodAPIClient.addToHistory(Utils.getDaoSession().getHistoryProductDao(), offlineSavedProduct);
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT)
             .show();
@@ -346,32 +349,33 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void proceed() {
-        switch (viewPager.getCurrentItem()) {
+        switch (binding.viewpager.getCurrentItem()) {
             case 0:
-                viewPager.setCurrentItem(1, true);
+                binding.viewpager.setCurrentItem(1, true);
                 break;
             case 1:
-                viewPager.setCurrentItem(2, true);
+                binding.viewpager.setCurrentItem(2, true);
                 break;
             case 2:
-                checkFields();
+                checkFieldsThenSave();
                 break;
         }
     }
 
-    private void checkFields() {
+    private void checkFieldsThenSave() {
         if (!editionMode) {
             if (addProductOverviewFragment.areRequiredFieldsEmpty()) {
-                viewPager.setCurrentItem(0, true);
+                binding.viewpager.setCurrentItem(0, true);
             } else if (isNutritionDataAvailable() && addProductNutritionFactsFragment.containsInvalidValue()) {
-                viewPager.setCurrentItem(2, true);
+                binding.viewpager.setCurrentItem(2, true);
             } else {
                 saveProduct();
             }
         } else {
             // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-            if ((isNutritionDataAvailable()) && addProductNutritionFactsFragment.containsInvalidValue()) {
-                viewPager.setCurrentItem(2, true);
+            if (isNutritionDataAvailable() && addProductNutritionFactsFragment.containsInvalidValue()) {
+                // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
+                binding.viewpager.setCurrentItem(2, true);
             } else {
                 saveProduct();
             }
@@ -382,29 +386,26 @@ public class AddProductActivity extends AppCompatActivity {
         return BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("opff");
     }
 
-    private void addLoginInfoInProductDetails() {
+    private void addLoginInfoInProductDetails(Map<String, String> targetMap) {
         final SharedPreferences settings = getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         final String password = settings.getString("pass", "");
         if (!login.isEmpty() && !password.isEmpty()) {
-            productDetails.put(KEY_USER_ID, login);
-            productDetails.put(KEY_PASSWORD, password);
+            targetMap.put(ApiFields.Keys.USER_ID, login);
+            targetMap.put(ApiFields.Keys.USER_PWD, password);
         }
     }
 
-    @OnClick(R.id.overview_indicator)
     void switchToOverviewPage() {
-        viewPager.setCurrentItem(0, true);
+        binding.viewpager.setCurrentItem(0, true);
     }
 
-    @OnClick(R.id.ingredients_indicator)
     void switchToIngredientsPage() {
-        viewPager.setCurrentItem(1, true);
+        binding.viewpager.setCurrentItem(1, true);
     }
 
-    @OnClick(R.id.nutrition_facts_indicator)
     void switchToNutritionFactsPage() {
-        viewPager.setCurrentItem(2, true);
+        binding.viewpager.setCurrentItem(2, true);
     }
 
     public void addToMap(String key, String value) {
@@ -610,11 +611,11 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public String getProductLanguageForEdition() {
-        return productDetails.get(OfflineSavedProduct.KEYS.PARAM_LANGUAGE);
+        return productDetails.get(ApiFields.Keys.LANG);
     }
 
     public void setProductLanguage(String languageCode) {
-        addToMap(OfflineSavedProduct.KEYS.PARAM_LANGUAGE, languageCode);
+        addToMap(ApiFields.Keys.LANG, languageCode);
     }
 
     public void updateLanguage() {

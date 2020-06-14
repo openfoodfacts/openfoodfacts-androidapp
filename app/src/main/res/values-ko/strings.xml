@@ -51,6 +51,7 @@
         <item>% DV</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -138,7 +139,7 @@
     <string name="search_button">수색</string>
     <string name="alert_dialog_warning_title">경고</string>
     <string name="alert_dialog_warning_msg_user">사용자/비밀번호가 변경되었습니다, 정보를 새로고침 해주세요</string>
-    <string name="toast_retrieving">Loading...</string>
+    <string name="toast_retrieving">로딩중...</string>
     <string name="txtBarcode">바코드 :</string>
     <string name="txtCategories">카테고리 :</string>
     <string name="txtLabels">라벨, 인증, 수상 내역 :</string>
@@ -178,11 +179,11 @@
     <string name="hintBrand">브랜드</string>
     <string name="txtSendAll">모두 업로드</string>
     <string name="txtPictureNeededDialogNo">삭제</string>
-    <string name="toastSending">Uploading...</string>
-    <string name="txtLoading">Loading...</string>
+    <string name="toastSending">업로드 중...</string>
+    <string name="txtLoading">로딩중...</string>
     <string name="txtDialogsContentDelete">정말로 해당 항목을 삭제하시겠습니까?</string>
     <string name="txtDialogsContentInfoSave">제품이 로컬에 저장되었으므로 \"오프라인 편집\" 메뉴에서 편집 할 수 있습니다.</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">제품이 저장되었습니다. 감사합니다!</string>
     <string name="txtBarcodeRequire">바코드가 필요함</string>
     <string name="txtOk">확인</string>
     <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
@@ -214,6 +215,8 @@
     <string name="title_info_dialog">이용 방법</string>
     <string name="text_offline_info_dialog">오프라인 상태 일 때 제품을 스캔하여 나중에 Open Food Facts에 추가 할 수 있습니다. 스캔한 모든 제품이 여기에 표시되며 아래 버튼을 사용하여 추가할 수 있습니다.</string>
     <string name="permission_camera">바코드를 스캔하고 사진을 찍으려면 카메라 사용 권한이 필요합니다.</string>
+    <string name="no_camera_dialog_title">카메라를 찾을 수 없습니다</string>
+    <string name="no_camera_dialog_content">기기에 카메라가 없습니다. 바코드를 스캔할 수 없습니다.</string>
     <string name="permission_title">사용 권한 정보</string>
     <string name="permission_denied">설정에서 권한을 활성화하십시오.</string>
     <string name="info_download_data_connection">이 기능을 작동 시키려면 일부 데이터를 다운로드 해야합니다. 인터넷 연결을 활성화하십시오.</string>
@@ -240,7 +243,7 @@
     <string name="title_clear_history_dialog">지우기</string>
     <string name="text_clear_history_dialog">모든 스캔 기록을 삭제 하시겠습니까?</string>
     <string name="export_csv_history">CSV로 내보내기</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">기록을 내보내는 중...</string>
     <string name="txt_history_exported">최근 기록 내보냄</string>
     <string name="permision_write_external_storage">최근 기록을 내보내려면 외부 저장소에 쓰기 권한이 필요합니다.</string>
     <string name="no_brand">상표 없음</string>
@@ -256,6 +259,8 @@
     <string name="nutrition_carbohydrate">탄수화물</string>
     <string name="nutrition_cholesterol">콜레스테롤</string>
     <string name="nutrition_energy">에너지</string>
+    <string name="nutrition_energy_kcal">칼로리 에너지 (kcal)</string>
+    <string name="nutrition_energy_kj">줄 에너지 (kJ)</string>
     <string name="nutrition_energy_short_name">에너지</string>
     <string name="nutrition_fat">지방</string>
     <string name="nutrition_fiber">식이 섬유</string>
@@ -521,7 +526,7 @@
     <string name="initial_loading">초기 로딩</string>
     <string name="preferences">환경 설정</string>
     <string name="OFFlogo">Open Food Facts 로고</string>
-    <string name="loading_product">상품 불러오는 중... %s</string>
+    <string name="loading_product">상품 불러오는 중… %s</string>
     <string name="image_not_defined_for_language">선택한 언어에 대한 이미지가 없습니다. 새로운 것을 추가 할 수 있습니다.</string>
     <string name="error_adding_ingredients">제품 성분을 추가하는 중에 문제가 발생했습니다.</string>
     <string name="unable_to_extract_ingredients">이미지에서 성분을 추출 할 수 없습니다.</string>
@@ -671,6 +676,7 @@
     <string name="txt_info_your_listed_products">제품을 검색하고 제품 페이지 오른쪽 상단의 + 버튼을 클릭하여 이 목록에 제품을 추가 할 수 있습니다.</string>
     <string name="search_history_pref_title">전체 검색기록 삭제</string>
     <string name="search_history_pref_summary">이 장치에서 수행한 모든 검색을 제거하십시오.</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">국가를 선택하세요.</string>
     <string name="settings_country_summary">선택한 국가 변경</string>
     <string name="settings_country_title">국가</string>
@@ -690,7 +696,7 @@
     <string name="product_question_negative_response">아니요</string>
     <string name="product_question_ambiguous_response">잘 모르곘습니다.</string>
     <string name="product_question_submit_message">기여해주셔서 감사합니다!</string>
-    <string name="error_nutrient_entry">값은 숫자 여야하며 &lt;, &gt; 또는 ~로 시작할 수 있습니다. 예 : &quot;&gt;1.5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">값은 숫자 여야한다. 예 : &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">1회 제공량은 양의 값이어야 합니다.</string>
     <string name="error_in_nutrient_data">일부 영양소 값이 유효하지 않습니다. 위의 필드를 오류 마커로 수정하십시오.</string>
     <string name="go_to_full_product_page">제품으로 이동</string>

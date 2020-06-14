@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!--<item name="colorPrimary">@color/material_blue_500</item>-->
         <!--<item name="statusBarColor">@color/grey_300</item>-->
         <!--<item name="colorBackground">@color/grey_50</item>-->
-        <item name="colorAccent">@color/red_700</item>
+        <item name="colorAccent">@color/brand_red</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
-
         <!--For shared element transition-->
         <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="errorText" parent="@style/TextAppearance.Design.Error">
+        <item name="android:textColor">@color/brand_red</item>
     </style>
 
     <style name="Black_Back_Arrow" parent="ThemeOverlay.AppCompat.ActionBar">
@@ -52,6 +56,19 @@
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="QuestionDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
+
+    <style name="HorizontalLineSeparator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.4dp</item>
+        <item name="android:background">@color/grey_200</item>
     </style>
 
 </resources>

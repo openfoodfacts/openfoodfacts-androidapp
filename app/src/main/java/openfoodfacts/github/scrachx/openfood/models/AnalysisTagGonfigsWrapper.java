@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.network.deserializers.AnalysisTagConfigsWrapperDeserializer;
-import openfoodfacts.github.scrachx.openfood.network.deserializers.AnalysisTagsWrapperDeserializer;
 
 /**
  * JSON from URL https://ssl-api.openfoodfacts.org/files/app/ingredients-analysis.json
@@ -21,9 +20,7 @@ public class AnalysisTagGonfigsWrapper {
      * @return A list of AnalysisTagConfig objects
      */
     public List<AnalysisTagConfig> map() {
-        List<AnalysisTagConfig> entityAnalysis = new ArrayList<>(analysisTagConfigs);
-
-        return entityAnalysis;
+        return new ArrayList<>(analysisTagConfigs);
     }
 
     public void setAnalysisTagConfigs(List<AnalysisTagConfig> analysisTags) {

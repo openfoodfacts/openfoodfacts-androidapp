@@ -56,6 +56,7 @@
         <item>% GKM</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -187,7 +188,7 @@
     <string name="txtLoading">Yükleniyor…</string>
     <string name="txtDialogsContentDelete">Bu taslağı kaldırmak istediğinizden emin misiniz?</string>
     <string name="txtDialogsContentInfoSave">Ürün lokal olarak kaydedildi, \"Çevrimdışı Düzenle\" menüsünden düzenleyebilirsiniz</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Ürün kaydedildi, teşekkürler!</string>
     <string name="txtBarcodeRequire">Barkod gerekli</string>
     <string name="txtOk">Tamam</string>
     <string name="txtBarcodeNotValid">Barkod geçerli değil</string>
@@ -219,6 +220,8 @@
     <string name="title_info_dialog">Nasıl çalışır?</string>
     <string name="text_offline_info_dialog">Ürünleri daha sonra Open Food Facts\'e eklemek için çevrimdışı olduğunuzda tarayabilirsiniz. Taradığınız tüm ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
     <string name="permission_camera">Barkodları taramak ve fotoğraf çekmek için kamera izni gerekiyor.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">İzin bilgisi</string>
     <string name="permission_denied">Lütfen ayarlardan izinleri aktif edin</string>
     <string name="info_download_data_connection">Bu işlevi çalıştırmak için bir miktar veri indirmeniz gerekiyor. Lütfen internet bağlantısını etkinleştirin.</string>
@@ -261,6 +264,8 @@
     <string name="nutrition_carbohydrate">Karbonhidrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
     <string name="nutrition_energy">Enerji</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Enerji</string>
     <string name="nutrition_fat">Yağ</string>
     <string name="nutrition_fiber">Diyet lifi</string>
@@ -677,6 +682,7 @@
     <string name="txt_info_your_listed_products">Ürünleri arayarak ve ürün sayfasının sağ üst kısmındaki + düğmesine tıklayarak onları bu listeye ekleyebilirsiniz.</string>
     <string name="search_history_pref_title">Yerel arama geçmişini sil</string>
     <string name="search_history_pref_summary">Bu cihazda yaptığınız tüm aramaları kaldırın</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Ülkenizi seçin</string>
     <string name="settings_country_summary">Seçili ülkenizi değiştirin</string>
     <string name="settings_country_title">Ülke</string>
@@ -696,7 +702,7 @@
     <string name="product_question_negative_response">Hayır</string>
     <string name="product_question_ambiguous_response">Emin değilim</string>
     <string name="product_question_submit_message">Katkınız için teşekkür ederiz!</string>
-    <string name="error_nutrient_entry">Değer sayısal olmalıdır ve &lt;, &gt; veya ~ ile başlayabilir. Örnek: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Porsiyon büyüklüğü pozitif bir değer olmalıdır</string>
     <string name="error_in_nutrient_data">Bazı besin değerleri geçerli değil. Lütfen yukarıda hatalı olarak işaretlenmiş alanları düzeltin</string>
     <string name="go_to_full_product_page">Ürüne git</string>

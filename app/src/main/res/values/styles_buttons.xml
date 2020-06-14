@@ -33,6 +33,10 @@
         <item name="android:paddingBottom">@dimen/spacing_tiny</item>
     </style>
 
+    <style name="ButtonBorder.Black" parent="ButtonBorder">
+        <item name="android:background">@drawable/rounded_button_shape_nobg</item>
+    </style>
+
     <style name="ButtonFlat.Green">
         <item name="android:background">@color/brand_green_dark</item>
     </style>

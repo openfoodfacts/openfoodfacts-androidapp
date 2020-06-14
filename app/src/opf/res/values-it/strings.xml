@@ -40,4 +40,6 @@
     <string name="add_nutrient_prompt_text">Aggiungi ulteriori dettagli per aiutare a completare il prodotto</string>
     <string name="add_category_prompt_text">Aggiungi una categoria per aiutare a completare il prodotto</string>
     <string name="add_nutrient_category_prompt_text">Aggiungi una categoria ed ulteriori dettagli per aiutare a completare il prodotto</string>
+    <string name="txt_eaten_products">Prodotti che ho</string>
+    <string name="txt_products_to_buy">Prodotti da acquistare</string>
 </resources>

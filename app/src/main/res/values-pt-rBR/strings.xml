@@ -56,6 +56,7 @@
         <item>% VD</item>
         <item>UI</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -187,7 +188,7 @@
     <string name="txtLoading">Carregando…</string>
     <string name="txtDialogsContentDelete">Tem a certeza que deseja eliminar este rascunho?</string>
     <string name="txtDialogsContentInfoSave">O produto é guardado localmente, poderá editá-lo no menu \"Editar Offline\"</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Produto salvo, obrigado!</string>
     <string name="txtBarcodeRequire">Código de barras necessário</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Código de barras inválido</string>
@@ -219,6 +220,8 @@
     <string name="title_info_dialog">Como é que isto funciona?</string>
     <string name="text_offline_info_dialog">Poderá digitalizar produtos enquanto estiver offline para, mais tarde, adicioná-los ao Open Food Facts. Os produtos serão mostrados aqui e poderá enviá-los usando o botão abaixo.</string>
     <string name="permission_camera">A permissão da câmara é necessária para digitalizar códigos de barras e tirar fotos.</string>
+    <string name="no_camera_dialog_title">Câmera não encontrada</string>
+    <string name="no_camera_dialog_content">Seu dispositivo não tem uma câmera. Você não será capaz de escanear nenhum código de barras.</string>
     <string name="permission_title">Informações de permissão</string>
     <string name="permission_denied">Por favor active a permissão nas definições</string>
     <string name="info_download_data_connection">Você precisa baixar alguns dados para ativar esta funcionalidade. Por favor, ative sua conexão com a internet.</string>
@@ -261,6 +264,8 @@
     <string name="nutrition_carbohydrate">Carboidratos</string>
     <string name="nutrition_cholesterol">Colesterol</string>
     <string name="nutrition_energy">Energia</string>
+    <string name="nutrition_energy_kcal">Energia em calorias (kcal)</string>
+    <string name="nutrition_energy_kj">Energia em joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Gorduras</string>
     <string name="nutrition_fiber">Fibra</string>
@@ -677,6 +682,7 @@
     <string name="txt_info_your_listed_products">Você poderá adicionar produtos a essa lista procrando-os e clicando no botão + no canto superior direito da página do produto.</string>
     <string name="search_history_pref_title">Apagar histórico de pesquisa local</string>
     <string name="search_history_pref_summary">Remover todas as pesquisas que você executou neste dispositivo</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Selecione seu país</string>
     <string name="settings_country_summary">Alterar seu país selecionado</string>
     <string name="settings_country_title">País</string>
@@ -696,7 +702,7 @@
     <string name="product_question_negative_response">Não</string>
     <string name="product_question_ambiguous_response">Não tenho certeza</string>
     <string name="product_question_submit_message">Obrigado pela sua contribuição!</string>
-    <string name="error_nutrient_entry">O valor deve ser numérico e pode começar com &lt;, &gt; ou ~. Exemplo: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">O valor deve ser numérico. Exemplo: &quot;1,5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">O valor de tamanho do serviço deve ser um valor positivo</string>
     <string name="error_in_nutrient_data">Alguns valores de nutrientes não são válidos. Por favor, corrija os campos acima com marcador de erro</string>
     <string name="go_to_full_product_page">Ir para o produto</string>

@@ -4,7 +4,7 @@
     android:imeOptions="actionSearch"
     android:label="@string/app_name"
     android:searchSuggestAuthority="openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider"
-    android:searchSuggestSelection=" ?"/>
+    android:searchSuggestSelection=" ?" />
 
     <!--
     Currently the voice search doesn't work

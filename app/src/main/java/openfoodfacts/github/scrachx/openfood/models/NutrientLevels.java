@@ -19,7 +19,7 @@ public class NutrientLevels implements Serializable {
     @JsonProperty("saturated-fat")
     private NutrimentLevel saturatedFat;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private final Map<String, Object> additionalProperties = new HashMap<>();
 
     /**
      *

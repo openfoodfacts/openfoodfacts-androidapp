@@ -41,6 +41,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -96,12 +97,12 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
         // OnClick
         binding.scanFirstYourListedProduct.setOnClickListener(v -> onScanFirst());
 
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true;
         }
-        ProductListsDao  productListsDao = Utils.getDaoSession(this).getProductListsDao();
-        yourListedProductDao = Utils.getAppDaoSession(this).getYourListedProductDao();
-        historyProductDao = Utils.getAppDaoSession(this).getHistoryProductDao();
+        ProductListsDao  productListsDao = Utils.getDaoSession().getProductListsDao();
+        yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
+        historyProductDao = Utils.getDaoSession().getHistoryProductDao();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -157,7 +158,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this, getBaseContext());
+        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
     }
 
     public static String getProductBrandsQuantityDetails(Product p) {
@@ -268,21 +269,15 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
     private void sortProducts(){
         switch(sortType){
             case "title":
-                Collections.sort(products,(p1,p2)->{
-                    return p1.getProductName().compareToIgnoreCase(p2.getProductName());
-                });
+                Collections.sort(products, (p1, p2) -> p1.getProductName().compareToIgnoreCase(p2.getProductName()));
                 break;
 
             case "brand":
-                Collections.sort(products,(p1,p2)->{
-                    return p1.getProductDetails().compareToIgnoreCase(p2.getProductDetails());
-                });
+                Collections.sort(products, (p1, p2) -> p1.getProductDetails().compareToIgnoreCase(p2.getProductDetails()));
                 break;
 
             case "barcode":
-                Collections.sort(products,(p1,p2)->{
-                    return p1.getBarcode().compareToIgnoreCase(p2.getBarcode());
-                });
+                Collections.sort(products, (p1, p2) -> p1.getBarcode().compareToIgnoreCase(p2.getBarcode()));
                 break;
             case "grade":
 
@@ -399,8 +394,8 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
             baseDir.mkdirs();
         }
         String productListName = thisProductList.getListName();
-        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + productListName + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".csv";
-        File f = new File(baseDir,fileName);
+        String fileName = BuildConfig.FLAVOR.toUpperCase() + "-" + productListName + "-" + new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()) + ".csv";
+        File f = new File(baseDir, fileName);
         boolean isDownload;
         try (CSVPrinter writer = new CSVPrinter(new FileWriter(f), CSVFormat.DEFAULT.withHeader(getResources().getStringArray(R.array.your_products_headers)))) {
             List<YourListedProduct> listProducts = thisProductList.getProducts();

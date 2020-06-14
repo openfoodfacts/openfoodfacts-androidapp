@@ -21,7 +21,7 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
@@ -30,16 +30,15 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.getColor;
 
 public class CategoryProductHelper {
-
-    private TextView categoryText;
-    private List<CategoryName> categories;
-    private BaseFragment baseFragment;
-    private WikidataApiClient apiClient;
+    private final WikiDataApiClient apiClient;
+    private final BaseFragment baseFragment;
+    private final List<CategoryName> categories;
+    private final TextView categoryText;
     private boolean containsAlcohol;
 
 
     public CategoryProductHelper(TextView categoryText, List<CategoryName> categories, BaseFragment baseFragment,
-                                 WikidataApiClient apiClient) {
+                                 WikiDataApiClient apiClient) {
         this.categoryText = categoryText;
         this.categories = categories;
         this.baseFragment = baseFragment;
@@ -83,8 +82,8 @@ public class CategoryProductHelper {
             @Override
             public void onClick(@NonNull View view) {
                 if (category.getIsWikiDataIdPresent()) {
-                    apiClient.doSomeThing(category.getWikiDataId(), (value, result) -> {
-                        if (value) {
+                    apiClient.doSomeThing(category.getWikiDataId(), result -> {
+                        if (result != null) {
                             FragmentActivity activity = baseFragment.getActivity();
 
                             if (activity != null && !activity.isFinishing()) {

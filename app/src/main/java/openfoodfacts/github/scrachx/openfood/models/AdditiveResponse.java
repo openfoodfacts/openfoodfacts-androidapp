@@ -8,14 +8,12 @@ import java.util.Map;
  */
 
 public class AdditiveResponse {
-
-    private String tag;
-
-    private Map<String, String> names;
+    private final Boolean isWikiDataIdPresent;
+    private final Map<String, String> names;
 
     private String wikiDataCode;
-    private Boolean isWikiDataIdPresent;
-    private String overexposureRisk;
+    private final String overexposureRisk;
+    private final String tag;
     private String exposureMeanGreaterThanAdi;
     private String exposureMeanGreaterThanNoael;
     private String exposure95ThGreaterThanAdi;

@@ -19,56 +19,62 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class OfflineProductWorker extends Worker {
     private static final String WORK_TAG = "OFFLINE_WORKER_TAG";
+    public static final String KEY_INCLUDE_IMAGES = "includeImages";
 
     public OfflineProductWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
-    @NonNull
-    @Override
-    public Result doWork() {
-        boolean includeImages = getInputData().getBoolean("includeImages", false);
-        Log.d(WORK_TAG, "[START] doWork with includeImages: " + includeImages);
-        boolean shouldRetry = OfflineProductService.sharedInstance().uploadAll(includeImages);
-        if (shouldRetry) {
-            Log.d(WORK_TAG, "[RETRY] doWork with includeImages: " + includeImages);
-            return Result.retry();
-        }
-        Log.d(WORK_TAG, "[SUCCESS] doWork with includeImages: " + includeImages);
-        return Result.success();
-    }
-
     private static Data inputData(boolean includeImages) {
         return new Data.Builder()
-            .putBoolean("includeImages", includeImages)
+            .putBoolean(KEY_INCLUDE_IMAGES, includeImages)
             .build();
     }
 
-    public static void addWork() {
+    public static void scheduleSync() {
+        Constraints.Builder constPics = new Constraints.Builder();
+        if (PreferenceManager.getDefaultSharedPreferences(OFFApplication.getInstance()).getBoolean("enableMobileDataUpload", true)) {
+            constPics.setRequiredNetworkType(NetworkType.CONNECTED);
+        } else {
+            constPics.setRequiredNetworkType(NetworkType.UNMETERED);
+        }
+
+        Constraints constData = new Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build();
+
         OneTimeWorkRequest uploadDataWorkRequest = new OneTimeWorkRequest
             .Builder(OfflineProductWorker.class)
             .setInputData(inputData(false))
-            .setConstraints(new Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED)
-                .build())
+            .setConstraints(constData)
             .build();
-
-        Constraints.Builder constraints = new Constraints.Builder();
-        if (PreferenceManager.getDefaultSharedPreferences(OFFApplication.getInstance()).getBoolean("enableMobileDataUpload", true)) {
-            constraints.setRequiredNetworkType(NetworkType.CONNECTED);
-        } else {
-            constraints.setRequiredNetworkType(NetworkType.UNMETERED);
-        }
 
         OneTimeWorkRequest uploadPicturesWorkRequest = new OneTimeWorkRequest
             .Builder(OfflineProductWorker.class)
             .setInputData(inputData(true))
-            .setConstraints(constraints.build())
+            .setConstraints(constPics.build())
             .build();
 
         WorkManager.getInstance(OFFApplication.getInstance())
             .beginUniqueWork(WORK_TAG, ExistingWorkPolicy.REPLACE, uploadDataWorkRequest)
             .then(uploadPicturesWorkRequest)
             .enqueue();
+    }
+
+    @NonNull
+    @Override
+    public Result doWork() {
+        boolean includeImages = getInputData().getBoolean(KEY_INCLUDE_IMAGES, false);
+        Log.d(WORK_TAG, "[START] doWork with includeImages: " + includeImages);
+
+        boolean shouldRetry = OfflineProductService.sharedInstance().uploadAll(includeImages);
+
+        if (shouldRetry) {
+            Log.d(WORK_TAG, "[RETRY] doWork with includeImages: " + includeImages);
+            return Result.retry();
+        } else {
+            Log.d(WORK_TAG, "[SUCCESS] doWork with includeImages: " + includeImages);
+            return Result.success();
+        }
     }
 }

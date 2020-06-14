@@ -12,18 +12,19 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.category.CategoryRepository;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
-import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+import static openfoodfacts.github.scrachx.openfood.dagger.Qualifiers.ForApplication;
+
 @Module
 public class AppModule {
-    private static final OkHttpClient httpClient = Utils.HttpClientBuilder();
-    private OFFApplication application;
+    private static final OkHttpClient httpClient = Utils.httpClientBuilder();
+    private final OFFApplication application;
 
     public AppModule(OFFApplication application) {
         this.application = application;
@@ -36,7 +37,7 @@ public class AppModule {
     }
 
     @Provides
-    @Qualifiers.ForApplication
+    @ForApplication
     @Singleton
     Context provideApplicationContext() {
         return application;

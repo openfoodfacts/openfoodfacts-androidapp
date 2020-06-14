@@ -40,4 +40,6 @@
     <string name="add_nutrient_prompt_text">영양 수준을 계산하기 위해 영양 사실을 추가</string>
     <string name="add_category_prompt_text">아직 완성되지 않은 제품의 카테고리 추가하기</string>
     <string name="add_nutrient_category_prompt_text">아직 완성되지 않은 제품의 영양 정보와 카테고리를 추가하기</string>
+    <string name="txt_eaten_products">내가 가진 제품</string>
+    <string name="txt_products_to_buy">구매할 제품</string>
 </resources>

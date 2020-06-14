@@ -56,6 +56,7 @@
         <item>crwdns112984:0crwdne112984:0</item>
         <item>crwdns112986:0crwdne112986:0</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -219,6 +220,8 @@
     <string name="title_info_dialog">crwdns113584:0crwdne113584:0</string>
     <string name="text_offline_info_dialog">crwdns113586:0crwdne113586:0</string>
     <string name="permission_camera">crwdns113588:0crwdne113588:0</string>
+    <string name="no_camera_dialog_title">crwdns125758:0crwdne125758:0</string>
+    <string name="no_camera_dialog_content">crwdns125760:0crwdne125760:0</string>
     <string name="permission_title">crwdns113590:0crwdne113590:0</string>
     <string name="permission_denied">crwdns113592:0crwdne113592:0</string>
     <string name="info_download_data_connection">crwdns115926:0crwdne115926:0</string>
@@ -261,6 +264,8 @@
     <string name="nutrition_carbohydrate">crwdns113662:0crwdne113662:0</string>
     <string name="nutrition_cholesterol">crwdns113666:0crwdne113666:0</string>
     <string name="nutrition_energy">crwdns113670:0crwdne113670:0</string>
+    <string name="nutrition_energy_kcal">crwdns125848:0crwdne125848:0</string>
+    <string name="nutrition_energy_kj">crwdns125850:0crwdne125850:0</string>
     <string name="nutrition_energy_short_name">crwdns113672:0crwdne113672:0</string>
     <string name="nutrition_fat">crwdns113674:0crwdne113674:0</string>
     <string name="nutrition_fiber">crwdns113678:0crwdne113678:0</string>
@@ -676,6 +681,7 @@
     <string name="txt_info_your_listed_products">crwdns115418:0crwdne115418:0</string>
     <string name="search_history_pref_title">crwdns114550:0crwdne114550:0</string>
     <string name="search_history_pref_summary">crwdns114552:0crwdne114552:0</string>
+    <string name="search_history_pref_dialog_content">crwdns125960:0crwdne125960:0</string>
     <string name="settings_country_dialog_title">crwdns114554:0crwdne114554:0</string>
     <string name="settings_country_summary">crwdns114556:0crwdne114556:0</string>
     <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
@@ -695,7 +701,7 @@
     <string name="product_question_negative_response">crwdns116174:0crwdne116174:0</string>
     <string name="product_question_ambiguous_response">crwdns116176:0crwdne116176:0</string>
     <string name="product_question_submit_message">crwdns116178:0crwdne116178:0</string>
-    <string name="error_nutrient_entry">crwdns116154:0crwdne116154:0</string>
+    <string name="error_nutrient_entry">crwdns125852:0crwdne125852:0</string>
     <string name="error_nutrient_serving_data">crwdns116156:0crwdne116156:0</string>
     <string name="error_in_nutrient_data">crwdns116158:0crwdne116158:0</string>
     <string name="go_to_full_product_page">crwdns119586:0crwdne119586:0</string>

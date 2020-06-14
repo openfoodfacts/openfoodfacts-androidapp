@@ -40,4 +40,6 @@
     <string name="add_nutrient_prompt_text">Tilføj flere detaljer som hjælp til produktfærdiggørelsen</string>
     <string name="add_category_prompt_text">Tilføj en kategori som hjælp til produktfærdiggørelsen</string>
     <string name="add_nutrient_category_prompt_text">Tilføj en kategori og flere detaljer som hjælp til produktfærdiggørelsen</string>
+    <string name="txt_eaten_products">Produkter, jeg har</string>
+    <string name="txt_products_to_buy">Produkter at købe</string>
 </resources>

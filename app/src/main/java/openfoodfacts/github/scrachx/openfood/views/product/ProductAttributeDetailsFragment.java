@@ -2,10 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.browser.customtabs.CustomTabsIntent;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import androidx.appcompat.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +9,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.browser.customtabs.CustomTabsIntent;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+import org.apache.commons.lang.StringUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -21,12 +31,6 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-import org.apache.commons.lang.StringUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment implements CustomTabActivityHelper.ConnectionCallback {
     private static final String ARG_OBJECT = "result";
@@ -115,7 +119,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 
             long id = getArguments().getLong(ARG_ID);
             if (SearchType.ADDITIVE.equals(searchType)) {
-                AdditiveNameDao dao = Utils.getAppDaoSession(getActivity()).getAdditiveNameDao();
+                AdditiveNameDao dao = Utils.getDaoSession().getAdditiveNameDao();
                 AdditiveName additiveName = dao.queryBuilder()
                     .where(
                         AdditiveNameDao.Properties.Id.eq(id)

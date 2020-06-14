@@ -4,14 +4,15 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +27,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
     private static boolean isUploading;
     private final Context context;
     private final List<SaveItem> saveItems;
-    private SaveClickInterface mSaveClickInterface;
+    private final SaveClickInterface mSaveClickInterface;
 
     public SaveListAdapter(Context context, List<SaveItem> saveItems, SaveClickInterface saveClickInterface) {
         this.context = context;
@@ -94,14 +95,14 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
     }
 
     class SaveViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        ProgressBar percentageCompleted;
-        TextView txtPercentage;
-        TextView txtTitle;
-        TextView txtBarcode;
-        ImageView imgProduct;
-        TextView txtWeight;
-        TextView txtBrand;
-        ProgressBar progressBar;
+        final ImageView imgProduct;
+        final ProgressBar percentageCompleted;
+        final ProgressBar progressBar;
+        final TextView txtBarcode;
+        final TextView txtBrand;
+        final TextView txtPercentage;
+        final TextView txtTitle;
+        final TextView txtWeight;
 
         SaveViewHolder(View itemView) {
             super(itemView);

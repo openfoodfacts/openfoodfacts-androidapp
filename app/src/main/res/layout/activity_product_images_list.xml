@@ -22,7 +22,7 @@
             android:elevation="4dp"
             android:id="@+id/toolbar" />
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -81,6 +81,7 @@
             android:textSize="@dimen/font_small"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/btnChooseImage"
+            android:layout_marginRight="@dimen/spacing_small"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
@@ -97,6 +98,7 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_alignParentRight="true"
             android:layout_marginStart="@dimen/spacing_small" />
 
         <ImageView
@@ -114,6 +116,7 @@
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_alignParentRight="true"
             android:layout_marginStart="@dimen/spacing_small" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

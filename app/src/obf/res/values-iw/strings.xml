@@ -39,4 +39,6 @@
     <string name="add_category_prompt_text">ניתן להוסיף קטגוריה כדי לסייע בהשלמת תיעוד המוצר</string>
     <string name="add_nutrient_category_prompt_text">ניתן להוסיף קטגוריה ולפרט כדי לסייע בהשלמת תיעוד המוצר</string>
     <string name="required_to_compute_nutriscore"></string>
+    <string name="txt_eaten_products">מוצרים שיש לי</string>
+    <string name="txt_products_to_buy">מוצרים לרכישה</string>
 </resources>

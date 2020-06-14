@@ -51,6 +51,7 @@
         <item>% DV</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -214,6 +215,8 @@
     <string name="title_info_dialog">Bagaimana ini bekerja?</string>
     <string name="text_offline_info_dialog">kamu bisa  memindai produk saat kamu sedang tidak aktif  untuk menambah ke fakta-fakta makanan terbuka kemudian. Semua produk yang kamu memindai akan tampil  di sini, dan kamu dapat mengirimkan mereka dengan tombol yang ada di bawah ini</string>
     <string name="permission_camera">kamera membutuhkan izin untuk memindah kode batang dan mengambil gambar</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">mengizinkan informasi</string>
     <string name="permission_denied">silahkan mengaktifkan izin di penganturan</string>
     <string name="info_download_data_connection">kamu perlu mendownload beberapa data untuk mendapatkan perintah bekerja. Silahkan mengaktifkan koneksi internet.</string>
@@ -256,6 +259,8 @@
     <string name="nutrition_carbohydrate">Karbohidrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
     <string name="nutrition_energy">Energi</string>
+    <string name="nutrition_energy_kcal">Energi dalam kalori (kkal)</string>
+    <string name="nutrition_energy_kj">Energi dalam joule (kJ)</string>
     <string name="nutrition_energy_short_name">Energi</string>
     <string name="nutrition_fat">Lemak</string>
     <string name="nutrition_fiber">Serat makanan</string>
@@ -671,6 +676,7 @@
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Negara</string>
@@ -690,7 +696,7 @@
     <string name="product_question_negative_response">Tidak</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">Nilai harus berupa angka. Contoh: &quot;1,5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
     <string name="go_to_full_product_page">Go to product</string>
@@ -764,5 +770,5 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Contoh: CocaCola, Nestle, dll ...</string>
+    <string name="brand_hint">Contoh: CocaCola, Nestle, dll …</string>
 </resources>

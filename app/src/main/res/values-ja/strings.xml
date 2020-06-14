@@ -51,6 +51,7 @@
         <item>% 1日当たり</item>
         <item>国際単位</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -214,6 +215,8 @@
     <string name="title_info_dialog">どのような仕組みですか?</string>
     <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
     <string name="permission_camera">バーコードのスキャンと写真の撮影には、カメラのアクセス許可が必要です。</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">アクセス許可情報</string>
     <string name="permission_denied">設定でアクセス許可を有効にしてください</string>
     <string name="info_download_data_connection">この機能を動作させるために、いくつかのデータをダウンロードする必要があります。インターネット接続を有効にしてください。</string>
@@ -256,6 +259,8 @@
     <string name="nutrition_carbohydrate">炭水化物</string>
     <string name="nutrition_cholesterol">コレステロール</string>
     <string name="nutrition_energy">エネルギー</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">エネルギー</string>
     <string name="nutrition_fat">脂肪</string>
     <string name="nutrition_fiber">食物繊維</string>
@@ -518,7 +523,7 @@
     <string name="barcode_hint">スキャンに問題がありますか？バーコードを入力してください</string>
     <string name="switch_camera">カメラを切り替え</string>
     <string name="autofocus">オートフォーカス</string>
-    <string name="initial_loading">ロードしています...</string>
+    <string name="initial_loading">ロードしています…</string>
     <string name="preferences">プリファレンス</string>
     <string name="OFFlogo">Open Food Facts ロゴ</string>
     <string name="loading_product">製品「%s」を読み込み中</string>
@@ -671,6 +676,7 @@
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">国</string>
@@ -690,7 +696,7 @@
     <string name="product_question_negative_response">いいえ</string>
     <string name="product_question_ambiguous_response">Not sure</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
-    <string name="error_nutrient_entry">The value should be numeric and can start with &lt;, &gt; or ~. Example: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
     <string name="error_in_nutrient_data">Some nutrient values are not valid. Please, fix above fields with error marker</string>
     <string name="go_to_full_product_page">Go to product</string>

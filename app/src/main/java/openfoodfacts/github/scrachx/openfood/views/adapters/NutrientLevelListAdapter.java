@@ -1,13 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -17,9 +18,8 @@ import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
 public class NutrientLevelListAdapter extends RecyclerView.Adapter<NutrientLevelListAdapter.NutrientViewHolder> {
-
-    private Context context;
-    private List<NutrientLevelItem> nutrientLevelItems;
+    private final Context context;
+    private final List<NutrientLevelItem> nutrientLevelItems;
 
     public NutrientLevelListAdapter(Context context, List<NutrientLevelItem> navDrawerItems) {
         this.context = context;
@@ -68,8 +68,8 @@ public class NutrientLevelListAdapter extends RecyclerView.Adapter<NutrientLevel
 
 
     class NutrientViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgIcon;
-        TextView txtTitle;
+        final ImageView imgIcon;
+        final TextView txtTitle;
 
         public NutrientViewHolder(View itemView) {
             super(itemView);

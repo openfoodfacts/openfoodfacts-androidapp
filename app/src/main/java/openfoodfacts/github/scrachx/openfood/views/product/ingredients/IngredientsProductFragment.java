@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.FragmentActivity;
@@ -24,7 +25,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -35,6 +35,9 @@ import java.util.regex.Pattern;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -49,7 +52,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.WikidataApiClient;
+import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -59,9 +62,6 @@ import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabsHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
 
 import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
@@ -82,7 +82,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private State activityState;
     private String barcode;
     private SendProduct mSendProduct;
-    private WikidataApiClient apiClientForWikiData;
+    private WikiDataApiClient apiClientForWikiData;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private IIngredientsProductPresenter.Actions presenter;
@@ -104,16 +104,16 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = new OpenFoodAPIClient(getActivity());
-        apiClientForWikiData = new WikidataApiClient();
+        apiClientForWikiData = new WikiDataApiClient();
 
         binding = FragmentIngredientsProductBinding.inflate(inflater);
         return binding.getRoot();
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         activityState = getStateFromActivityIntent();
         binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
@@ -138,10 +138,10 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             mSendProduct = (SendProduct) getArguments().getSerializable("sendProduct");
         }
 
-        mAllergenNameDao = Utils.getAppDaoSession(getActivity()).getAllergenNameDao();
+        mAllergenNameDao = Utils.getDaoSession().getAllergenNameDao();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(getContext()) && Utils.getBatteryLevel(getContext())) {
+        if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true;
         }
 
@@ -242,28 +242,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             binding.cvTextTraceProduct.setVisibility(View.GONE);
         }
 
-        binding.cvTextPalmOilProduct.setVisibility(View.GONE);
-        binding.textPalmOilProduct.setVisibility(View.GONE);
-        if (CollectionUtils.isNotEmpty(product.getIngredientsFromPalmOilTags())) {
-            binding.cvTextPalmOilProduct.setVisibility(View.VISIBLE);
-            binding.textPalmOilProduct.setVisibility(View.VISIBLE);
-            binding.textPalmOilProduct.setText(bold(getString(R.string.txtPalmOilProduct)));
-            binding.textPalmOilProduct.append(" ");
-            binding.textPalmOilProduct.append(product.getIngredientsFromPalmOilTags().toString().replaceAll("[\\[,\\]]", ""));
-        }
-        binding.cvTextMayBePalmOilProduct.setVisibility(View.GONE);
-        binding.textMayBeFromPalmOilProduct.setVisibility(View.GONE);
-        if (CollectionUtils.isNotEmpty(product.getIngredientsThatMayBeFromPalmOilTags())) {
-            binding.cvTextMayBePalmOilProduct.setVisibility(View.VISIBLE);
-            binding.textMayBeFromPalmOilProduct.setVisibility(View.VISIBLE);
-            binding.textMayBeFromPalmOilProduct.setText(bold(getString(R.string.txtMayBeFromPalmOilProduct)));
-            binding.textMayBeFromPalmOilProduct.append(" ");
-            binding.textMayBeFromPalmOilProduct.append(product.getIngredientsThatMayBeFromPalmOilTags().toString().replaceAll("[\\[,\\]]", ""));
-        }
-
         if (product.getNovaGroups() != null) {
             binding.novaLayout.setVisibility(View.VISIBLE);
-            binding.novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), getContext()));
+            binding.novaExplanation.setText(Utils.getNovaGroupExplanation(product.getNovaGroups(), requireContext()));
             binding.novaGroup.setImageResource(Utils.getNovaGroupDrawable(product));
             binding.novaGroup.setOnClickListener((View v) -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
@@ -299,12 +280,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View view) {
+            public void onClick(@NonNull View view) {
                 if (allergen.getIsWikiDataIdPresent()) {
                     apiClientForWikiData.doSomeThing(
                         allergen.getWikiDataId(),
-                        (value, result) -> {
-                            if (value) {
+                        (result) -> {
+                            if (result != null) {
                                 FragmentActivity activity = getActivity();
                                 if (activity != null && !activity.isFinishing()) {
                                     BottomScreenCommon.showBottomScreen(result, allergen,

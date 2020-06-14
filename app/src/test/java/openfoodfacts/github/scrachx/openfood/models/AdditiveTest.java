@@ -2,9 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -12,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -20,24 +19,16 @@ import static org.mockito.Mockito.when;
  * Tests for {@link Additive}
  */
 public class AdditiveTest {
-
     private static final String ADDITIVE_NAME_NAME_1 = "AdditiveName";
     private static final String ADDITIVE_NAME_NAME_2 = "AdditiveName2";
     private static final AdditiveName ADDITIVE_NAME_1 = new AdditiveName(ADDITIVE_NAME_NAME_1);
     private static final AdditiveName ADDITIVE_NAME_2 = new AdditiveName(ADDITIVE_NAME_NAME_2);
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
     @Mock
     private DaoSession mockDaoSession;
-
     @Mock
     private AdditiveDao mockAdditiveDao;
-
     @Mock
     private AdditiveNameDao mockAdditiveNameDao;
-
     private Additive mAdditive;
 
     @Before
@@ -46,16 +37,14 @@ public class AdditiveTest {
         when(mockDaoSession.getAdditiveNameDao()).thenReturn(mockAdditiveNameDao);
         when(mockDaoSession.getAdditiveDao()).thenReturn(mockAdditiveDao);
         when(mockAdditiveNameDao._queryAdditive_Names(any()))
-                .thenReturn(Arrays.asList(ADDITIVE_NAME_1, ADDITIVE_NAME_2));
+            .thenReturn(Arrays.asList(ADDITIVE_NAME_1, ADDITIVE_NAME_2));
 
         mAdditive = new Additive();
     }
 
     @Test
     public void getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
-        thrown.expect(DaoException.class);
-
-        mAdditive.getNames();
+        assertThrows(DaoException.class, () -> mAdditive.getNames());
     }
 
     @Test
@@ -71,9 +60,7 @@ public class AdditiveTest {
 
     @Test
     public void deleteWithNullDao_throwsDaoException() {
-        thrown.expect(DaoException.class);
-
-        mAdditive.delete();
+        assertThrows(DaoException.class, () -> mAdditive.delete());
     }
 
     @Test
@@ -87,9 +74,7 @@ public class AdditiveTest {
 
     @Test
     public void refreshWithNullDao_throwsDaoException() {
-        thrown.expect(DaoException.class);
-
-        mAdditive.refresh();
+        assertThrows(DaoException.class, () -> mAdditive.refresh());
     }
 
     @Test
@@ -103,9 +88,7 @@ public class AdditiveTest {
 
     @Test
     public void updateWithNullDao_throwsDaoException() {
-        thrown.expect(DaoException.class);
-
-        mAdditive.update();
+        assertThrows(DaoException.class, () -> mAdditive.update());
     }
 
     @Test

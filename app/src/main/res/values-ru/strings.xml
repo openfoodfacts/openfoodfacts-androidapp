@@ -66,6 +66,7 @@
         <item>% РСНП</item>
         <item>МЕ</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -197,7 +198,7 @@
     <string name="txtLoading">Загрузка…</string>
     <string name="txtDialogsContentDelete">Вы уверены, что хотите удалить этот черновик?</string>
     <string name="txtDialogsContentInfoSave">Продукт сохранён локально, вы можете редактировать его в меню Автономное редактирование</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Товар сохранен, спасибо!</string>
     <string name="txtBarcodeRequire">Требуется штрих-код</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Недействительный штрих-код</string>
@@ -229,6 +230,8 @@
     <string name="title_info_dialog">Как это работает?</string>
     <string name="text_offline_info_dialog">Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже.</string>
     <string name="permission_camera">Разрешение на доступ к камере требуется для сканирования штрих-кодов и получения фото.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Информация о разрешениях</string>
     <string name="permission_denied">Пожалуйста, включите разрешение в настройках.</string>
     <string name="info_download_data_connection">Для работы этой функциональности требуется скачать некоторые данные. Пожалуйста, включите интернет-соединение.</string>
@@ -271,6 +274,8 @@
     <string name="nutrition_carbohydrate">Углеводы</string>
     <string name="nutrition_cholesterol">Холестерин</string>
     <string name="nutrition_energy">Энергетическая ценность</string>
+    <string name="nutrition_energy_kcal">Энергия в калориях (ккал)</string>
+    <string name="nutrition_energy_kj">Энергия в Джоулях (кДж)</string>
     <string name="nutrition_energy_short_name">Энергетическая ценность</string>
     <string name="nutrition_fat">Жир</string>
     <string name="nutrition_fiber">Пищевые волокна</string>
@@ -584,7 +589,7 @@
     <string name="looksGood">Выглядит хорошо</string>
     <string name="skip_ingredients">Слишком плохо \n Пропустить ингредиенты</string>
     <string name="traces">Следы</string>
-    <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы…\", \"Сделано на фабрике, которая также использует...\" и т. д. \nПримеры: молоко, глютен, орехи</string>
+    <string name="traces_hint">Укажите ингредиенты, упоминаемые как \"Может содержать следы…\", \"Сделано на фабрике, которая также использует…\" и т. д. \nПримеры: молоко, глютен, орехи</string>
     <string name="nutrition_facts_not_specified">Пищевая ценность не указана на продукте.</string>
     <string name="nutrition_facts_picture">Фото пищевой ценности</string>
     <string name="front_short_picture">Лицевая сторона</string>
@@ -689,6 +694,7 @@
     <string name="txt_info_your_listed_products">Вы сможете добавлять товары в этот список, выполнив их поиск и кликнув кнопку \"+\" в правом верхнем углу страницы товара.</string>
     <string name="search_history_pref_title">Очистить историю поиска</string>
     <string name="search_history_pref_summary">Удалить все поиски, которые вы выполняли на этом устройстве</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Выберите свою страну</string>
     <string name="settings_country_summary">Изменить выбранную страну</string>
     <string name="settings_country_title">Страна</string>
@@ -708,7 +714,7 @@
     <string name="product_question_negative_response">Нет</string>
     <string name="product_question_ambiguous_response">Не уверен</string>
     <string name="product_question_submit_message">Спасибо за Ваш вклад!</string>
-    <string name="error_nutrient_entry">Значение должно быть числовым и может начинаться с &lt;, &gt; или ~. Пример: &quot;&gt;1.5&quot;, &quot;~2,0&quot;</string>
+    <string name="error_nutrient_entry">Значение должно быть цифровым. Пример: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Размер порции должен быть положительным</string>
     <string name="error_in_nutrient_data">Некоторые значения питательных веществ не допустимы. Исправьте поля выше с маркером ошибки</string>
     <string name="go_to_full_product_page">Перейти к продукту</string>
