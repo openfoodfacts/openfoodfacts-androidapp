@@ -305,7 +305,7 @@
     <string name="something_went_wrong">Sorry, something went wrong…</string>
     <string name="txt_try_again">Try again</string>
     <string name="nutrition_lactose">Lactose</string>
-    <string name="nutrition_casein">Casein</string>
+    <string name="nutrition_casein">Kaseiin</string>
     <string name="nutrition_maltodextrins">Maltodextrins</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
     <string name="nutrition_nucleotides">Nucleotides</string>
@@ -317,9 +317,9 @@
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
-    <string name="nutrition_sucrose">Sucrose</string>
-    <string name="nutrition_glucose">Glucose</string>
-    <string name="nutrition_fructose">Fructose</string>
+    <string name="nutrition_sucrose">Sahharoos</string>
+    <string name="nutrition_glucose">Glükoos</string>
+    <string name="nutrition_fructose">Fruktoos</string>
     <string name="nutrition_maltose">Maltose</string>
     <string name="nutrition_alcohol">Alcohol</string>
     <string name="nutrition_vitamins">Vitamins</string>
@@ -682,6 +682,7 @@
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
