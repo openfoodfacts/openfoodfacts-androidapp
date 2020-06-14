@@ -447,7 +447,7 @@
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
-    <string name="brand_string">Brand</string>
+    <string name="brand_string">ยี่ห้อ</string>
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">ค้นหา</string>
@@ -471,7 +471,7 @@
     <string name="disable_image_loading">Disable image loading when battery is low</string>
     <string name="DisableLoadTitle">Disable image loading</string>
     <string name="by_title">Title</string>
-    <string name="by_brand">Brand</string>
+    <string name="by_brand">ยี่ห้อ</string>
     <string name="by_barcode">บาร์โค้ด</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
@@ -677,6 +677,7 @@
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">ประเทศ</string>
