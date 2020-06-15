@@ -8,6 +8,7 @@
     <string name="website_discover">https://world.openfoodfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
+    <string name="deeplink_product" translatable="false">*.openfoodfacts.org</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -54,7 +55,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
     /**
      * Must be public to be visible by TakeScreenshotIncompleteProductsTest class.
      */
-    @SuppressWarnings("WeakerAccess")
     public static final String SEARCH_INFO = "search_info";
     private OpenFoodAPIClient api;
     private OpenFoodAPIClient apiClient;
@@ -228,7 +228,29 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (extras != null) {
             SearchInfo searchInfo = extras.getParcelable(SEARCH_INFO);
             mSearchInfo = searchInfo != null ? searchInfo : SearchInfo.emptySearchInfo();
+        } else if (Intent.ACTION_VIEW.equals(getIntent().getAction())){
+            // the user has entered the activity via a url
+            Uri data = getIntent().getData();
+            if (data != null) {
+                String[] paths = data.toString().split("/");
+
+                if (mSearchInfo == null) mSearchInfo = SearchInfo.emptySearchInfo();
+
+                mSearchInfo.setSearchTitle(paths[4]);
+                mSearchInfo.setSearchQuery(paths[4]);
+                mSearchInfo.setSearchType(paths[3]);
+
+                if (paths[3].equals("cgi") && paths[4] != null && paths[4].contains("search.pl")){
+                    mSearchInfo.setSearchTitle(data.getQueryParameter("search_terms"));
+                    mSearchInfo.setSearchQuery(data.getQueryParameter("search_terms"));
+                    mSearchInfo.setSearchType(SearchType.SEARCH);
+                }
+            } else {
+                Log.i(getClass().getSimpleName(), "No data was passed in with URL");
+                finish();
+            }
         }
+
         newSearchQuery();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
@@ -294,11 +316,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.INCOMPLETE_PRODUCT:
                 getSupportActionBar().setTitle(getString(R.string.products_to_be_completed));
                 break;
-
             case SearchType.STATE:
                 getSupportActionBar().setSubtitle("State");
                 break;
-
             default:
                 Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
         }
@@ -343,7 +363,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     public void getDataFromAPI() {
-
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
@@ -540,7 +559,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     private void setUpRecyclerView() {
-
         binding.progressBar.setVisibility(View.INVISIBLE);
         binding.swipeRefresh.setRefreshing(false);
         binding.textCountProduct.setVisibility(View.VISIBLE);
@@ -555,8 +573,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode);
             binding.productsRecyclerView.setAdapter(adapter);
 
-            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.productsRecyclerView.getContext(),
-                DividerItemDecoration.VERTICAL);
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.productsRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
             // Retain an instance so that you can call `resetState()` for fresh searches

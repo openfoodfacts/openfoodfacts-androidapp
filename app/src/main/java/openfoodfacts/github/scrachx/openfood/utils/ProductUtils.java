@@ -21,7 +21,7 @@ public class ProductUtils {
     /**
      * @param barcode
      * @return true if valid according to {@link EAN13CheckDigit#EAN13_CHECK_DIGIT}
-     *     and if the barecode doesn't start will 977/978/979 (Book barcode)
+     *     and if the barcode doesn't start will 977/978/979 (Book barcode)
      */
     public static boolean isBarcodeValid(@Nullable String barcode) {
         // For debug only: the barcode '1' is used for test:

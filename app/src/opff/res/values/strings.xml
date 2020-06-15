@@ -8,6 +8,7 @@
     <string name="website_discover">https://world.openpetfoodfacts.org/discover</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/produit/ -->
     <string name="website_product">https://world.openpetfoodfacts.org/product/</string>
+    <string name="deeplink_product" translatable="false">*.openpetfoodfacts.org</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
