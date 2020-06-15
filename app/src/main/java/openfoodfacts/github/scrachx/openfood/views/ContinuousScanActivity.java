@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -49,10 +48,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding;
 import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
@@ -160,9 +161,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
     /**
      * Makes network call and search for the product in the database
      *
-     * @param lastBarcode Barcode to be searched
+     * @param barcode Barcode to be searched
      */
-    private void findProduct(String lastBarcode) {
+    private void findProduct(String barcode) {
         if (isFinishing()) {
             return;
         }
@@ -174,25 +175,23 @@ public class ContinuousScanActivity extends AppCompatActivity {
             summaryProductPresenter.dispose();
         }
 
-        offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(lastBarcode);
+        offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(barcode);
         if (offlineSavedProduct != null) {
             showOfflineSavedDetails(offlineSavedProduct);
         }
 
-        client.getProductFullSingle(lastBarcode, Utils.HEADER_USER_AGENT_SCAN)
+        client.getProductFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe(a -> {
-                hideAllViews();
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                binding.quickView.setOnClickListener(null);
-                binding.quickViewProgress.setVisibility(VISIBLE);
-                binding.quickViewProgressText.setVisibility(VISIBLE);
-                binding.quickViewProgressText.setText(getString(R.string.loading_product, lastBarcode));
-            })
             .subscribe(new SingleObserver<State>() {
                 @Override
                 public void onSubscribe(Disposable d) {
                     disposable = d;
+                    hideAllViews();
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    binding.quickView.setOnClickListener(null);
+                    binding.quickViewProgress.setVisibility(VISIBLE);
+                    binding.quickViewProgressText.setVisibility(VISIBLE);
+                    binding.quickViewProgressText.setText(getString(R.string.loading_product, barcode));
                 }
 
                 @Override
@@ -207,7 +206,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         if (offlineSavedProduct != null) {
                             showOfflineSavedDetails(offlineSavedProduct);
                         } else {
-                            productNotFound(getString(R.string.product_not_found, lastBarcode));
+                            showProductNotFound(getString(R.string.product_not_found, barcode));
                         }
                     } else {
                         product = state.getProduct();
@@ -224,7 +223,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
-                        new HistoryTask(mHistoryProductDao).execute(product);
+
+                        disposable = addToHistory(mHistoryProductDao, product).subscribeOn(Schedulers.io()).subscribe();
+
                         showAllViews();
                         binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                         binding.txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text));
@@ -280,7 +281,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                             binding.quickViewImageProgress.setVisibility(GONE);
                         }
                         // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
-                        if (BuildConfig.FLAVOR.equals("off") && product.getNutritionGradeFr() != null) {
+                        if (Utils.isFlavor(AppFlavors.OFF) && product.getNutritionGradeFr() != null) {
                             if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
                                 binding.quickViewNutriScore.setVisibility(VISIBLE);
                                 binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
@@ -291,7 +292,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                             binding.quickViewNutriScore.setVisibility(GONE);
                         }
                         // Hide nova group from quickView if app flavour is not OFF or there is no nova group
-                        if (BuildConfig.FLAVOR.equals("off") && product.getNovaGroups() != null) {
+                        if (Utils.isFlavor(AppFlavors.OFF) && product.getNovaGroups() != null) {
                             final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
                             if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
                                 binding.quickViewNovaGroup.setVisibility(VISIBLE);
@@ -331,14 +332,14 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         // A network error happened
                         if (e instanceof IOException) {
                             hideAllViews();
-                            OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(lastBarcode))
+                            OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
                                 .unique();
                             if (offlineSavedProduct != null) {
                                 showOfflineSavedDetails(offlineSavedProduct);
                             } else {
-                                productNotFound(getString(R.string.addProductOffline, lastBarcode));
+                                showProductNotFound(getString(R.string.addProductOffline, barcode));
                             }
-                            binding.quickView.setOnClickListener(v -> navigateToProductAddition(lastBarcode));
+                            binding.quickView.setOnClickListener(v -> navigateToProductAddition(barcode));
                         } else {
                             binding.quickViewProgress.setVisibility(GONE);
                             binding.quickViewProgressText.setVisibility(GONE);
@@ -382,7 +383,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             public void showAnalysisTags(List<AnalysisTagConfig> analysisTags) {
                 super.showAnalysisTags(analysisTags);
 
-                if (analysisTags.size() == 0) {
+                if (analysisTags.isEmpty()) {
                     binding.quickViewTags.setVisibility(GONE);
                     isAnalysisTagsEmpty = true;
                     return;
@@ -406,7 +407,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         summaryProductPresenter.loadAnalysisTags();
     }
 
-    private void productNotFound(String text) {
+    private void showProductNotFound(String text) {
         hideAllViews();
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         binding.quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
@@ -462,11 +463,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
-    private void navigateToProductAddition(String lastText) {
+    private void navigateToProductAddition(String productBarcode) {
         Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
         State st = new State();
         Product pd = new Product();
-        pd.setCode(lastText);
+        pd.setCode(productBarcode);
         st.setProduct(pd);
         intent.putExtra("state", st);
         startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
@@ -623,20 +624,17 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     binding.barcodeScanner.resume();
                 }
-                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
-                    if (product == null) {
-                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    }
+                if (newState == BottomSheetBehavior.STATE_DRAGGING && product == null) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }
                 if (binding.quickViewSearchByBarcode.getVisibility() == VISIBLE) {
                     bottomSheetBehavior.setPeekHeight(peekSmall);
                     bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
-                    bottomSheet.requestLayout();
                 } else {
                     bottomSheetBehavior.setPeekHeight(peekLarge);
                     bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
-                    bottomSheet.requestLayout();
                 }
+                bottomSheet.requestLayout();
             }
 
             @Override
@@ -856,7 +854,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
      * @param savedInstanceState
      */
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
@@ -886,17 +884,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         productFragment.goToIngredients(action);
     }
 
-    private static class HistoryTask extends AsyncTask<Product, Void, Void> {
-        private final HistoryProductDao mHistoryProductDao;
-
-        private HistoryTask(HistoryProductDao mHistoryProductDao) {
-            this.mHistoryProductDao = mHistoryProductDao;
-        }
-
-        @Override
-        protected Void doInBackground(Product... products) {
-            OpenFoodAPIClient.addToHistory(mHistoryProductDao, products[0]);
-            return null;
-        }
+    private Completable addToHistory(HistoryProductDao mHistoryProductDao, Product product) {
+        return Completable.fromAction(() -> OpenFoodAPIClient.addToHistory(mHistoryProductDao, product));
     }
 }
