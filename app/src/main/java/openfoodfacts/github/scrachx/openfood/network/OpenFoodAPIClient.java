@@ -158,8 +158,8 @@ public class OpenFoodAPIClient {
     }
 
     public Single<State> getProductFullSingle(final String barcode, String header) {
-        String fieldParam = getAllFields();
-        return apiService.getProductByBarcodeSingle(barcode, fieldParam, Utils.getUserAgent(header));
+        return apiService.getProductByBarcodeSingle(barcode, getAllFields(), Utils.getUserAgent(header))
+            .subscribeOn(Schedulers.io());
     }
 
     public static void addToHistory(HistoryProductDao mHistoryProductDao, Product product) {

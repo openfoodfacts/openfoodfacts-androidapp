@@ -150,13 +150,6 @@
                 android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
                 android:theme="@style/Base.Theme.AppCompat"/>
 
-        <service
-                android:name=".jobs.SavedProductUploadJob"
-                android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
-            </intent-filter>
-        </service>
         <service android:name=".views.LoadTaxonomiesService"/>
 
         <provider

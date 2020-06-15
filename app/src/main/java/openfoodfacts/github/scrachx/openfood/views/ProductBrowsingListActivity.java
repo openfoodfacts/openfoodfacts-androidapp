@@ -247,6 +247,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 }
             } else {
                 Log.i(getClass().getSimpleName(), "No data was passed in with URL");
+                finish();
             }
         }
 
