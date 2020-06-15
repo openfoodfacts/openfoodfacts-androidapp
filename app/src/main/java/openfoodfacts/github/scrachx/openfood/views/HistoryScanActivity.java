@@ -30,6 +30,8 @@ import androidx.core.app.NavUtils;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -48,8 +50,11 @@ import java.util.List;
 import java.util.Locale;
 
 import io.reactivex.Completable;
+import io.reactivex.CompletableSource;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -59,6 +64,7 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
+import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
@@ -84,7 +90,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Context context = HistoryScanActivity.this;
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -439,8 +444,12 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     }
 
     private void fillView() {
-        disposable.dispose();
-        disposable = getFillViewCompletable().subscribe();
+        if (disposable != null) {
+            disposable.dispose();
+        }
+        Log.i(HistoryScanActivity.class.getSimpleName(), "task fillview started...");
+        disposable = getFillViewCompletable().subscribe(() ->
+            Log.i(HistoryScanActivity.class.getSimpleName(), "task fillview ended"));
     }
 
     @Override
@@ -453,29 +462,52 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     }
 
     private Completable getFillViewCompletable() {
-        return Completable.fromAction(() -> {
+        final Completable refreshAct = Completable.fromAction(() -> {
             if (binding.srRefreshHistoryScanList.isRefreshing()) {
                 binding.historyProgressbar.setVisibility(View.GONE);
             } else {
                 binding.historyProgressbar.setVisibility(View.VISIBLE);
             }
-
+        });
+        final Single<List<HistoryProduct>> dbSingle = Single.fromCallable(() -> {
             productItems.clear();
-
-            List<HistoryProduct> productList = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
-            if (productList.isEmpty()) {
+            List<HistoryProduct> historyProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list();
+            for (HistoryProduct historyProduct : historyProducts) {
+                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct
+                    .getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutritionGrade()));
+            }
+            return historyProducts;
+        });
+        final Function<List<HistoryProduct>, CompletableSource> updateUiFunc = historyProducts -> {
+            if (historyProducts.isEmpty()) {
                 emptyHistory = true;
                 binding.historyProgressbar.setVisibility(View.GONE);
                 binding.emptyHistoryInfo.setVisibility(View.VISIBLE);
                 binding.scanFirst.setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
-                return;
+                return Completable.complete();
             }
 
-            for (HistoryProduct historyProduct : productList) {
-                productItems.add(new HistoryItem(historyProduct.getTitle(), historyProduct.getBrands(), historyProduct.getUrl(), historyProduct
-                    .getBarcode(), historyProduct.getLastSeen(), historyProduct.getQuantity(), historyProduct.getNutritionGrade()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+            sort(SORT_TYPE, productItems);
+
+            adapter = new HistoryListAdapter(productItems, HistoryScanActivity.this, isLowBatteryMode);
+            binding.listHistoryScan.setAdapter(adapter);
+            binding.listHistoryScan.setLayoutManager(new LinearLayoutManager(HistoryScanActivity.this));
+            binding.historyProgressbar.setVisibility(View.GONE);
+
+            SwipeController swipeController = new SwipeController(HistoryScanActivity.this, HistoryScanActivity.this);
+            ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+            itemTouchhelper.attachToRecyclerView(binding.listHistoryScan);
+
+            return Completable.complete();
+        };
+
+        return refreshAct.subscribeOn(AndroidSchedulers.mainThread()) // Change ui on main thread
+
+            .observeOn(Schedulers.io()) // Switch for db operations
+            .andThen(dbSingle)
+
+            .observeOn(AndroidSchedulers.mainThread()) // Change ui on main thread
+            .flatMapCompletable(updateUiFunc);
     }
 }

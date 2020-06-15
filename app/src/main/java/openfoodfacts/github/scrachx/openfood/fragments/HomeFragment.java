@@ -237,28 +237,31 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         if (tagLineDisp != null) {
             tagLineDisp.dispose();
         }
-        tagLineDisp = apiClient.getTaglineSingle(Utils.getUserAgent()).subscribe(taglineLanguageModels -> {
-            final Locale locale = LocaleHelper.getLocale(getContext());
-            String localAsString = locale.toString();
-            boolean isLanguageFound = false;
-            boolean isExactLanguageFound = false;
+        tagLineDisp = apiClient.getTaglineSingle(Utils.getUserAgent())
+            .subscribeOn(Schedulers.io()) // io for network
+            .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
+            .subscribe(models -> {
+                final Locale locale = LocaleHelper.getLocale(getContext());
+                String localAsString = locale.toString();
+                boolean isLanguageFound = false;
+                boolean isExactLanguageFound = false;
 
-            for (TaglineLanguageModel tagLine : taglineLanguageModels) {
-                final String languageCountry = tagLine.getLanguage();
-                if (!isExactLanguageFound && (languageCountry.equals(localAsString) || languageCountry.contains(localAsString))) {
-                    isExactLanguageFound = languageCountry.equals(localAsString);
-                    taglineURL = tagLine.getTaglineModel().getUrl();
-                    binding.tvDailyFoodFact.setText(tagLine.getTaglineModel().getMessage());
-                    binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
-                    isLanguageFound = true;
+                for (TaglineLanguageModel tagLine : models) {
+                    final String languageCountry = tagLine.getLanguage();
+                    if (!isExactLanguageFound && (languageCountry.equals(localAsString) || languageCountry.contains(localAsString))) {
+                        isExactLanguageFound = languageCountry.equals(localAsString);
+                        taglineURL = tagLine.getTaglineModel().getUrl();
+                        binding.tvDailyFoodFact.setText(tagLine.getTaglineModel().getMessage());
+                        binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
+                        isLanguageFound = true;
+                    }
                 }
-            }
 
-            if (!isLanguageFound) {
-                taglineURL = taglineLanguageModels.get(taglineLanguageModels.size() - 1).getTaglineModel().getUrl();
-                binding.tvDailyFoodFact.setText(taglineLanguageModels.get(taglineLanguageModels.size() - 1).getTaglineModel().getMessage());
-                binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
-            }
-        }, e -> Log.w("getTagline", "cannot get tagline from server", e));
+                if (!isLanguageFound) {
+                    taglineURL = models.get(models.size() - 1).getTaglineModel().getUrl();
+                    binding.tvDailyFoodFact.setText(models.get(models.size() - 1).getTaglineModel().getMessage());
+                    binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
+                }
+            }, e -> Log.w("getTagline", "cannot get tagline from server", e));
     }
 }
