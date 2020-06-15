@@ -23,10 +23,14 @@ jobs:
           java-version: 1.8
 
       - name: Screenshots android tests
-        run: bash ./gradlew compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+        uses: eskatos/gradle-command-action@v1
+          with:
+            arguments: compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
 
       - name: Unit tests
-        run: bash ./gradlew testObfDebugUnitTest testOffDebugUnitTest testOpfDebugUnitTest testOpffDebugUnitTest --stacktrace
+        uses: eskatos/gradle-command-action@v1
+          with:
+            arguments: testObfDebugUnitTest testOffDebugUnitTest testOpfDebugUnitTest testOpffDebugUnitTest --stacktrace
 
   apk:
     name: Generate APK
@@ -42,7 +46,9 @@ jobs:
           java-version: 1.8
 
       - name: Build debug APKs
-        run: bash ./gradlew assembleDebug --stacktrace
+        uses: eskatos/gradle-command-action@v1
+          with:
+            arguments: assembleDebug --stacktrace
 
       - name: Upload OBF APK
         uses: actions/upload-artifact@v1
