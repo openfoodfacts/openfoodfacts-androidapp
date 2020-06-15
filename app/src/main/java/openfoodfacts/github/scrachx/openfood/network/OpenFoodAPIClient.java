@@ -707,24 +707,9 @@ public class OpenFoodAPIClient {
      *
      * @param brand search query for product
      * @param page page numbers
-     * @param onBrandCallback object of {@link openfoodfacts.github.scrachx.openfood.network.ApiCallbacks.OnBrandCallback} interface
      */
-    public void getProductsByBrand(final String brand, final int page, final ApiCallbacks.OnBrandCallback onBrandCallback) {
-        apiService.getProductByBrands(brand, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onBrandCallback.onBrandResponse(true, response.body());
-                } else {
-                    onBrandCallback.onBrandResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onBrandCallback.onBrandResponse(false, null);
-            }
-        });
+    public Single<Search> getProductsByBrandSingle(final String brand, final int page) {
+        return apiService.getProductByBrandsSingle(brand, page, FIELDS_TO_FETCH_FACETS);
     }
 
     public static Map<String, String> addUserInfo(Map<String, String> imgMap) {
@@ -821,6 +806,7 @@ public class OpenFoodAPIClient {
             }
         }).subscribeOn(Schedulers.io()).subscribe();
     }
+
     public Single<Search> getInfoAddedIncompleteProductsSingle(String contributor, final int page) {
         return apiService.getInfoAddedIncompleteProductsSingle(contributor, page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }

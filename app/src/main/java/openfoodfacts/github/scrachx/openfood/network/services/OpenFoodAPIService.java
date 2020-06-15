@@ -226,6 +226,11 @@ public interface OpenFoodAPIService {
                                     @Path("page") int page,
                                     @Query("fields") String fields);
 
+    @GET("brand/{brand}/{page}.json")
+    Single<Search> getProductByBrandsSingle(@Path("brand") String brand,
+                                            @Path("page") int page,
+                                            @Query("fields") String fields);
+
     @GET("additive/{additive}/{page}.json")
     Call<Search> getProductsByAdditive(@Path("additive") String additive,
                                        @Path("page") int page,

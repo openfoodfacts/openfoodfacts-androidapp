@@ -33,7 +33,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding;
@@ -68,7 +68,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private SearchInfo mSearchInfo;
     private SensorManager mSensorManager;
     private ShakeDetector mShakeDetector;
-    private Disposable searchDisp;
+    private CompositeDisposable disp;
     private int pageAddress = 1;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
@@ -96,9 +96,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (searchDisp != null) {
-            searchDisp.dispose();
-        }
+        disp.dispose();
         binding = null;
     }
 
@@ -166,46 +164,44 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
 
         if (item.getItemId() == R.id.action_set_type) {
-
-            MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
-            builder.title(R.string.show_by);
             String[] contributionTypes = new String[]{getString(R.string.products_added),
                 getString(R.string.products_incomplete), getString(R.string.product_pictures_contributed),
                 getString(R.string.picture_contributed_incomplete), getString(R.string.product_info_added),
                 getString(R.string.product_info_tocomplete)};
 
-            builder.items(contributionTypes);
-            builder.itemsCallback((dialog, itemView, position, text) -> {
+            new MaterialDialog.Builder(this)
+                .title(R.string.show_by)
+                .items(contributionTypes)
+                .itemsCallback((dialog, itemView, position, text) -> {
 
-                switch (position) {
-                    case 1:
-                        contributionType = 1;
-                        newSearchQuery();
-                        break;
-                    case 2:
-                        contributionType = 2;
-                        newSearchQuery();
-                        break;
-                    case 3:
-                        contributionType = 3;
-                        newSearchQuery();
-                        break;
-                    case 4:
-                        contributionType = 4;
-                        newSearchQuery();
-                        break;
-                    case 5:
-                        contributionType = 5;
-                        newSearchQuery();
-                        break;
-                    case 0:
-                    default:
-                        contributionType = 0;
-                        newSearchQuery();
-                        break;
-                }
-            });
-            builder.show();
+                    switch (position) {
+                        case 1:
+                            contributionType = 1;
+                            newSearchQuery();
+                            break;
+                        case 2:
+                            contributionType = 2;
+                            newSearchQuery();
+                            break;
+                        case 3:
+                            contributionType = 3;
+                            newSearchQuery();
+                            break;
+                        case 4:
+                            contributionType = 4;
+                            newSearchQuery();
+                            break;
+                        case 5:
+                            contributionType = 5;
+                            newSearchQuery();
+                            break;
+                        case 0:
+                        default:
+                            contributionType = 0;
+                            newSearchQuery();
+                            break;
+                    }
+                }).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -228,19 +224,21 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (extras != null) {
             SearchInfo searchInfo = extras.getParcelable(SEARCH_INFO);
             mSearchInfo = searchInfo != null ? searchInfo : SearchInfo.emptySearchInfo();
-        } else if (Intent.ACTION_VIEW.equals(getIntent().getAction())){
+        } else if (Intent.ACTION_VIEW.equals(getIntent().getAction())) {
             // the user has entered the activity via a url
             Uri data = getIntent().getData();
             if (data != null) {
                 String[] paths = data.toString().split("/");
 
-                if (mSearchInfo == null) mSearchInfo = SearchInfo.emptySearchInfo();
+                if (mSearchInfo == null) {
+                    mSearchInfo = SearchInfo.emptySearchInfo();
+                }
 
                 mSearchInfo.setSearchTitle(paths[4]);
                 mSearchInfo.setSearchQuery(paths[4]);
                 mSearchInfo.setSearchType(paths[3]);
 
-                if (paths[3].equals("cgi") && paths[4] != null && paths[4].contains("search.pl")){
+                if (paths[3].equals("cgi") && paths[4] != null && paths[4].contains("search.pl")) {
                     mSearchInfo.setSearchTitle(data.getQueryParameter("search_terms"));
                     mSearchInfo.setSearchQuery(data.getQueryParameter("search_terms"));
                     mSearchInfo.setSearchType(SearchType.SEARCH);
@@ -366,8 +364,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                apiClient.getProductsByBrand(searchQuery, pageAddress, (value, country) ->
-                    loadSearchProducts(value, country, R.string.txt_no_matching_brand_products));
+                disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
+                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_brand_products)));
                 break;
             case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
@@ -463,8 +461,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
 
             case 5:
-                searchDisp = api.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
-                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_contributor_products));
+                disp.add(api.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
+                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_contributor_products)));
                 break;
 
             case 0:

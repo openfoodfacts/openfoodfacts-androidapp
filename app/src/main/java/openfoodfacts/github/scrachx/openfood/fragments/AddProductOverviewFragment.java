@@ -129,7 +129,6 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         binding.btnAddImageFront.setOnClickListener(v -> addFrontImage());
         binding.btnEditImageFront.setOnClickListener(v -> newFrontImage());
         binding.btnOtherPictures.setOnClickListener(v -> addOtherImage());
-        binding.btnOtherPictures.setOnClickListener(v -> addOtherImage());
         binding.sectionManufacturingDetails.setOnClickListener(v -> toggleManufacturingSectionVisibility());
         binding.sectionPurchasingDetails.setOnClickListener(v -> togglePurchasingSectionVisibility());
         binding.hintEmbCode.setOnClickListener(v -> toastEmbCodeHint());
