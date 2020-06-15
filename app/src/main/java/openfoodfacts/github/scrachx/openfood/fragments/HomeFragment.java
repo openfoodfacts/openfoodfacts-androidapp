@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
@@ -52,8 +53,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     private OpenFoodAPIService apiClient;
     private SharedPreferences sp;
     private String taglineURL;
-    private Disposable tagLineDisp;
-    private Disposable totalProdDisp;
+    private CompositeDisposable compDisp = new CompositeDisposable();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,12 +76,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     public void onDestroy() {
         super.onDestroy();
         //stop the call to off to get total product counts:
-        if (totalProdDisp != null) {
-            totalProdDisp.dispose();
-        }
-        if (tagLineDisp != null) {
-            tagLineDisp.dispose();
-        }
+        compDisp.dispose();
         binding = null;
     }
 
@@ -163,16 +158,13 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
     }
 
     private void refreshProductCount(int oldCount) {
-        if (totalProdDisp != null) {
-            totalProdDisp.dispose();
-        }
         apiClient.getTotalProductCount(Utils.getUserAgent())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<Search>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    totalProdDisp = d;
+                    compDisp.add(d);
                     if (isAdded()) {
                         updateTextHome(oldCount);
                     }
@@ -234,10 +226,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
      * get tag line url from OpenFoodAPIService
      */
     private void refreshTagline() {
-        if (tagLineDisp != null) {
-            tagLineDisp.dispose();
-        }
-        tagLineDisp = apiClient.getTaglineSingle(Utils.getUserAgent())
+        compDisp.add(apiClient.getTaglineSingle(Utils.getUserAgent())
             .subscribeOn(Schedulers.io()) // io for network
             .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
             .subscribe(models -> {
@@ -262,6 +251,6 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
                     binding.tvDailyFoodFact.setText(models.get(models.size() - 1).getTaglineModel().getMessage());
                     binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
                 }
-            }, e -> Log.w("getTagline", "cannot get tagline from server", e));
+            }, e -> Log.w("getTagline", "cannot get tagline from server", e)));
     }
 }

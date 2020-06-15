@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -21,13 +22,13 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.Cust
     private final IProductRepository mProductRepository;
     private List<AllergenName> mAllergens;
 
-    public AllergensAdapter(IProductRepository productRepository, List<AllergenName> allergens) {
+    public AllergensAdapter(@NonNull IProductRepository productRepository, @Nullable List<AllergenName> allergens) {
         mProductRepository = productRepository;
-        mAllergens = allergens;
+        setAllergens(allergens);
     }
 
-    public void setAllergens(List<AllergenName> allergens) {
-        mAllergens = allergens;
+    public void setAllergens(@Nullable List<AllergenName> allergens) {
+        mAllergens = allergens != null ? allergens : new ArrayList<>();
     }
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -65,11 +66,6 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.Cust
 
     @Override
     public int getItemCount() {
-        if (mAllergens == null) {
-            mAllergens = new ArrayList<>();
-        }
-
         return mAllergens.size();
     }
-
 }
