@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-          package="openfoodfacts.github.scrachx.openfood"
-          android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="openfoodfacts.github.scrachx.openfood"
+    android:installLocation="auto">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- Merging strategy for the imported manifests -->
+    <uses-sdk tools:overrideLibrary="io.sentry.android" />
 
     <!-- Support for Chromebooks -->
     <uses-feature
@@ -36,6 +40,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme.NoActionBar">
+
+        <meta-data android:name="io.sentry.dsn" android:value="https://8f319aafd66343a191a0cf3ad09d1d7b@o241488.ingest.sentry.io/5276851" />
+        <meta-data android:name="io.sentry.session-tracking.enable" android:value="true" />
 
         <!-- 18:9 aspect ratio support -->
         <meta-data

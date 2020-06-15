@@ -18,6 +18,7 @@ import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class OFFApplication extends MultiDexApplication {
@@ -43,6 +44,8 @@ public class OFFApplication extends MultiDexApplication {
         super.onCreate();
         application = this;
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
+        AnalyticsService.getInstance().init();
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
