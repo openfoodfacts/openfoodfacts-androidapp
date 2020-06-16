@@ -47,7 +47,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        State state = getStateFromActivityIntent();
+        State state = FragmentUtils.getStateFromActivityIntent();
         product = state.getProduct();
         // initialize the arraylist
         imageNames = new ArrayList<>();

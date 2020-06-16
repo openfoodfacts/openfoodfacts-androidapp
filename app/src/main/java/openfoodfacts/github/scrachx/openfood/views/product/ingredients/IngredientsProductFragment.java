@@ -100,7 +100,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        activityState = getStateFromActivityIntent();
+        activityState = FragmentUtils.getStateFromActivityIntent();
     }
 
     @Override
@@ -115,7 +115,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activityState = getStateFromActivityIntent();
+        activityState = FragmentUtils.getStateFromActivityIntent();
         binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         binding.changeIngImg.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
 
@@ -407,7 +407,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             if (login.isEmpty()) {
                 showSignInDialog();
             } else {
-                activityState = getStateFromActivityIntent();
+                activityState = FragmentUtils.getStateFromActivityIntent();
                 if (activityState != null) {
                     Intent intent = new Intent(getContext(), AddProductActivity.class);
                     intent.putExtra("send_updated", sendUpdatedIngredientsImage);
@@ -468,7 +468,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
             showSignInDialog();
         } else {
-            activityState = getStateFromActivityIntent();
+            activityState = FragmentUtils.getStateFromActivityIntent();
             Intent intent = new Intent(getContext(), AddProductActivity.class);
             intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, activityState.getProduct());
             intent.putExtra("perform_ocr", extractIngredients);

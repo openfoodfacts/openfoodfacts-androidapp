@@ -67,6 +67,7 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
+import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
@@ -156,7 +157,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.productQuestionDismiss.setOnClickListener(v -> productQuestionDismiss());
         binding.productQuestionLayout.setOnClickListener(v -> onProductQuestionClick());
 
-        state = getStateFromActivityIntent();
+        state = FragmentUtils.requireStateFromActivityIntent(this);
         refreshView(state);
     }
 
@@ -271,7 +272,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         // if the device does not have a camera, hide the button
         try {
-            if (!Utils.isHardwareCameraInstalled(getContext())) {
+            if (!Utils.isHardwareCameraInstalled(requireActivity())) {
                 binding.buttonMorePictures.setVisibility(GONE);
             }
         } catch (NullPointerException e) {
@@ -349,7 +350,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.listNutrientLevels.setLayoutManager(new LinearLayoutManager(getContext()));
             binding.listNutrientLevels.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
-            refreshNutriscore();
+            refreshNutriScore();
             refreshNovaIcon();
             refreshCo2Icon();
             refreshScoresLayout();
@@ -373,7 +374,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    private void refreshNutriscore() {
+    private void refreshNutriScore() {
         int nutritionGradeResource = Utils.getImageGrade(product);
         if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
             binding.imageGrade.setVisibility(VISIBLE);
@@ -451,7 +452,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAdditivesState(String state) {
-        getActivity().runOnUiThread(() -> {
+        requireActivity().runOnUiThread(() -> {
             if (ProductInfoState.LOADING.equals(state)) {
                 binding.textAdditiveProduct.append(getString(R.string.txtLoading));
                 binding.textAdditiveProduct.setVisibility(VISIBLE);

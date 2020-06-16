@@ -138,7 +138,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         binding.getNutriscorePrompt.setOnClickListener(v -> onNutriScoreButtonClick());
         binding.newAdd.setOnClickListener(v -> newNutritionImage());
 
-        refreshView(getStateFromActivityIntent());
+        refreshView(FragmentUtils.getStateFromActivityIntent());
     }
 
     @Override

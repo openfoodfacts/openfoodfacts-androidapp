@@ -29,7 +29,7 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        State state = getStateFromActivityIntent();
+        State state = FragmentUtils.getStateFromActivityIntent();
         product = state.getProduct();
         api = new OpenFoodAPIClient(requireActivity());
     }

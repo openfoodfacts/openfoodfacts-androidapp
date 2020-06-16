@@ -100,13 +100,13 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Intent intent = new Intent(getActivity(), AddProductActivity.class);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, productState.getProduct());
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, getProductState().getProduct());
             startActivity(intent);
         }
     }
 
     private void setupViewPager(ViewPager2 viewPager) {
-        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(requireActivity()), productState, requireActivity());
+        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(requireActivity()), getProductState(), requireActivity());
     }
 
     @Override
@@ -116,7 +116,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @Override
     public void onRefresh() {
-        api.getProductFull(productState.getProduct().getCode()).enqueue(new Callback<State>() {
+        api.getProductFull(getProductState().getProduct().getCode()).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                 final State s = response.body();
@@ -126,7 +126,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
             @Override
             public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
-                adapterResult.refresh(productState);
+                adapterResult.refresh(getProductState());
             }
         });
     }
@@ -177,5 +177,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                 return;
             }
         }
+    }
+
+    public State getProductState() {
+        return productState;
     }
 }
