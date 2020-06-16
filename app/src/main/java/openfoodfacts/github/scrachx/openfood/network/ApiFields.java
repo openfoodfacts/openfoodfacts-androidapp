@@ -74,7 +74,7 @@ public final class ApiFields {
         public static final String SERVING_SIZE = "serving_size";
         public static final String ADD_TRACES = "add_traces";
         public static final String CREATOR = "creator";
-        public static final String CREATOR_DATE_TIME = "creator_t";
+        public static final String CREATED_DATE_TIME = "created_t";
         public static final String MINERALS_TAGS = "minerals_tags";
         public static final String AMINO_ACIDS_TAGS = "amino_acids_tags";
         public static final String LAST_MODIFIED_TIME = "last_modified_t";
