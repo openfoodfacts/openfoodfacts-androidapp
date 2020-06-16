@@ -2,6 +2,11 @@ package openfoodfacts.github.scrachx.openfood.utils;
 
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 
+import static openfoodfacts.github.scrachx.openfood.AppFlavors.OBF;
+import static openfoodfacts.github.scrachx.openfood.AppFlavors.OFF;
+import static openfoodfacts.github.scrachx.openfood.AppFlavors.OPF;
+import static openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF;
+
 public class FileUtils {
     private FileUtils() {
 
@@ -18,14 +23,16 @@ public class FileUtils {
     }
 
     public static String getCsvFolderName() {
-        if (BuildConfig.FLAVOR.equals("off")) {
-            return "Open Food Facts";
-        } else if (BuildConfig.FLAVOR.equals("opff")) {
-            return "Open Pet Food Facts";
-        } else if (BuildConfig.FLAVOR.equals("opf")) {
-            return "Open Products Facts";
-        } else {
-            return "Open Beauty Facts";
+        switch (BuildConfig.FLAVOR) {
+            case OPFF:
+                return "Open Pet Food Facts";
+            case OPF:
+                return "Open Products Facts";
+            case OBF:
+                return "Open Beauty Facts";
+            case OFF:
+            default:
+                return "Open Food Facts";
         }
     }
 }

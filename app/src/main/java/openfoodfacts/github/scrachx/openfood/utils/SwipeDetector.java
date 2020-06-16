@@ -4,63 +4,59 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class SwipeDetector implements View.OnTouchListener{
-
-    private int min_distance = 100;
+public class SwipeDetector implements View.OnTouchListener {
+    private int minDistance = 100;
     private float downX, downY, upX, upY;
     private final View v;
+    private OnSwipeEventListener swipeEventListener;
 
-    private onSwipeEvent swipeEventListener;
-
-
-
-    public SwipeDetector(View v){
-        this.v=v;
+    public SwipeDetector(View v) {
+        this.v = v;
         v.setOnTouchListener(this);
     }
 
-    public void setOnSwipeListener(onSwipeEvent listener)
-    {
-        try{
-            swipeEventListener=listener;
-        }
-        catch(ClassCastException e)
-        {
-            Log.e("ClassCastException","please pass SwipeDetector.onSwipeEvent Interface instance",e);
+    public void setOnSwipeListener(OnSwipeEventListener listener) {
+        try {
+            swipeEventListener = listener;
+        } catch (ClassCastException e) {
+            Log.e("ClassCastException", "please pass SwipeDetector.onSwipeEvent Interface instance", e);
         }
     }
 
-
-    public void onRightToLeftSwipe(){
-        if(swipeEventListener!=null)
-            swipeEventListener.SwipeEventDetected(v,SwipeTypeEnum.RIGHT_TO_LEFT);
-        else
-            Log.e("SwipeDetector error","please pass SwipeDetector.onSwipeEvent Interface instance");
+    public void onRightToLeftSwipe() {
+        if (swipeEventListener != null) {
+            swipeEventListener.onSwipeEventDetected(v, SwipeTypeEnum.RIGHT_TO_LEFT);
+        } else {
+            Log.e("SwipeDetector error", "please pass SwipeDetector.onSwipeEvent Interface instance");
+        }
     }
 
-    public void onLeftToRightSwipe(){
-        if(swipeEventListener!=null)
-            swipeEventListener.SwipeEventDetected(v,SwipeTypeEnum.LEFT_TO_RIGHT);
-        else
-            Log.e("SwipeDetector error","please pass SwipeDetector.onSwipeEvent Interface instance");
+    public void onLeftToRightSwipe() {
+        if (swipeEventListener != null) {
+            swipeEventListener.onSwipeEventDetected(v, SwipeTypeEnum.LEFT_TO_RIGHT);
+        } else {
+            Log.e("SwipeDetector error", "please pass SwipeDetector.onSwipeEvent Interface instance");
+        }
     }
 
-    public void onTopToBottomSwipe(){
-        if(swipeEventListener!=null)
-            swipeEventListener.SwipeEventDetected(v,SwipeTypeEnum.TOP_TO_BOTTOM);
-        else
-            Log.e("SwipeDetector error","please pass SwipeDetector.onSwipeEvent Interface instance");
+    public void onTopToBottomSwipe() {
+        if (swipeEventListener != null) {
+            swipeEventListener.onSwipeEventDetected(v, SwipeTypeEnum.TOP_TO_BOTTOM);
+        } else {
+            Log.e("SwipeDetector error", "please pass SwipeDetector.onSwipeEvent Interface instance");
+        }
     }
 
-    public void onBottomToTopSwipe(){
-        if(swipeEventListener!=null)
-            swipeEventListener.SwipeEventDetected(v,SwipeTypeEnum.BOTTOM_TO_TOP);
-        else
-            Log.e("SwipeDetector error","please pass SwipeDetector.onSwipeEvent Interface instance");
+    public void onBottomToTopSwipe() {
+        if (swipeEventListener != null) {
+            swipeEventListener.onSwipeEventDetected(v, SwipeTypeEnum.BOTTOM_TO_TOP);
+        } else {
+            Log.e("SwipeDetector error", "please pass SwipeDetector.onSwipeEvent Interface instance");
+        }
     }
 
     public boolean onTouch(View v, MotionEvent event) {
-        switch(event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 downX = event.getX();
                 downY = event.getY();
@@ -74,40 +70,35 @@ public class SwipeDetector implements View.OnTouchListener{
                 float deltaY = downY - upY;
 
                 //HORIZONTAL SCROLL
-                if(Math.abs(deltaX) > Math.abs(deltaY))
-                {
-                    if(Math.abs(deltaX) > min_distance){
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    if (Math.abs(deltaX) > minDistance) {
                         // left or right
-                        if(deltaX < 0)
-                        {
+                        if (deltaX < 0) {
                             this.onLeftToRightSwipe();
                             return true;
                         }
-                        if(deltaX > 0) {
+                        if (deltaX > 0) {
                             this.onRightToLeftSwipe();
                             return true;
                         }
-                    }
-                    else {
+                    } else {
                         //not long enough swipe...
                         return false;
                     }
                 }
                 //VERTICAL SCROLL
-                else
-                {
-                    if(Math.abs(deltaY) > min_distance){
+                else {
+                    if (Math.abs(deltaY) > minDistance) {
                         // top or down
-                        if(deltaY < 0)
-                        { this.onTopToBottomSwipe();
+                        if (deltaY < 0) {
+                            this.onTopToBottomSwipe();
                             return true;
                         }
-                        if(deltaY > 0)
-                        { this.onBottomToTopSwipe();
+                        if (deltaY > 0) {
+                            this.onBottomToTopSwipe();
                             return true;
                         }
-                    }
-                    else {
+                    } else {
                         //not long enough swipe...
                         return false;
                     }
@@ -118,20 +109,17 @@ public class SwipeDetector implements View.OnTouchListener{
         }
         return false;
     }
-    public interface onSwipeEvent
-    {
-        void SwipeEventDetected(View v, SwipeTypeEnum SwipeType);
-    }
 
-    public SwipeDetector setMinDistanceInPixels(int min_distance)
-    {
-        this.min_distance=min_distance;
+    public SwipeDetector setMinDistanceInPixels(int minDistance) {
+        this.minDistance = minDistance;
         return this;
     }
 
-    public enum SwipeTypeEnum
-    {
-        RIGHT_TO_LEFT,LEFT_TO_RIGHT,TOP_TO_BOTTOM,BOTTOM_TO_TOP
+    public enum SwipeTypeEnum {
+        RIGHT_TO_LEFT, LEFT_TO_RIGHT, TOP_TO_BOTTOM, BOTTOM_TO_TOP
     }
 
+    public interface OnSwipeEventListener {
+        void onSwipeEventDetected(View v, SwipeTypeEnum swipeType);
+    }
 }

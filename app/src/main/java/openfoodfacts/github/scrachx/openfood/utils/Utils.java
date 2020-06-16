@@ -163,18 +163,17 @@ public class Utils {
         }
     }
 
-    public static String compressImage(String url) {
-        File fileFront = new File(url);
-        Bitmap bt = decodeFile(fileFront);
-        if (bt == null) {
-            Log.e("COMPRESS_IMAGE", url + " not found");
+    public static String compressImage(String fileUrl) {
+        Bitmap decodedBitmap = decodeFile(new File(fileUrl));
+        if (decodedBitmap == null) {
+            Log.e("COMPRESS_IMAGE", fileUrl + " not found");
             return null;
         }
 
-        File smallFileFront = new File(url.replace(".png", "_small.png"));
+        File smallFileFront = new File(fileUrl.replace(".png", "_small.png"));
 
         try (OutputStream fOutFront = new FileOutputStream(smallFileFront)) {
-            bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
+            decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
         } catch (IOException e) {
             Log.e("COMPRESS_IMAGE", e.getMessage(), e);
         }
@@ -185,8 +184,11 @@ public class Utils {
         return ContextCompat.getColor(context, id);
     }
 
-    // Decodes image and scales it to reduce memory consumption
-    private static Bitmap decodeFile(File f) {
+    /**
+     * Decodes image and scales it to reduce memory consumption
+     */
+    @Nullable
+    private static Bitmap decodeFile(@NonNull File f) {
         try {
             // Decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
@@ -232,6 +234,7 @@ public class Utils {
         }
     }
 
+    @DrawableRes
     public static int getImageGrade(@Nullable String grade) {
 
         if (grade == null) {
@@ -294,6 +297,7 @@ public class Utils {
         return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
     }
 
+    @DrawableRes
     public static int getNovaGroupDrawable(@Nullable String novaGroup) {
 
         if (novaGroup == null) {
@@ -323,13 +327,12 @@ public class Utils {
     }
 
     public static int getImageEnvironmentImpact(Product product) {
-        int drawable = NO_DRAWABLE_RESOURCE;
         if (product == null) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
         List<String> tags = product.getEnvironmentImpactLevelTags();
         if (CollectionUtils.isEmpty(tags)) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
         String tag = tags.get(0).replace("\"", "");
         switch (tag) {
@@ -340,7 +343,7 @@ public class Utils {
             case "en:medium":
                 return R.drawable.ic_co2_medium_24dp;
             default:
-                return drawable;
+                return NO_DRAWABLE_RESOURCE;
         }
     }
 
@@ -548,11 +551,6 @@ public class Utils {
         return "Other";
     }
 
-    @NonNull
-    private static String timeStamp() {
-        return String.valueOf(System.currentTimeMillis());
-    }
-
     public static File makeOrGetPictureDirectory(Context context) {
         // determine the profile directory
         File dir = context.getFilesDir();
@@ -578,7 +576,7 @@ public class Utils {
     }
 
     public static Uri getOutputPicUri(Context context) {
-        return Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), Utils.timeStamp() + ".jpg"));
+        return Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), System.currentTimeMillis() + ".jpg"));
     }
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
@@ -613,16 +611,17 @@ public class Utils {
      * @param context the context
      * @return true if battery is low or false if battery in not low
      */
-    public static boolean isBatteryLevelLow(Context context) {
+    public static boolean isBatteryLevelLow(@NonNull Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
+
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
-        float batteryPct = (level / (float) scale);
+        float batteryPct = (level / (float) scale) * 100;
         Log.i("BATTERYSTATUS", String.valueOf(batteryPct));
 
-        return (int) ((batteryPct) * 100) <= 15;
+        return Math.ceil(batteryPct) <= 15;
     }
 
     public static boolean isDisableImageLoad(@NonNull Context context) {
@@ -684,8 +683,7 @@ public class Utils {
 
     @NonNull
     public static String getUserAgent() {
-        final String prefix = " Official Android App ";
-        return BuildConfig.APP_NAME + prefix + BuildConfig.VERSION_NAME;
+        return BuildConfig.APP_NAME + " Official Android App " + BuildConfig.VERSION_NAME;
     }
 
     /**

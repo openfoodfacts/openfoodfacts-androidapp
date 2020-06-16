@@ -13,11 +13,11 @@ import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 
 public class DaoUtils {
     private DaoUtils() {
-
+        // Utility class
     }
 
-    public static <T> Single<List<T>> logDownload(Single<List<T>> load, Taxonomy taxonomy) {
-        return load.doOnSuccess(ts -> Log.i(Taxonomy.class.getName() + "getTaxonomyData", "refreshed taxonomy '" + taxonomy + "' from server"));
+    public static <T> Single<List<T>> logDownload(Single<List<T>> single, Taxonomy taxonomy) {
+        return single.doOnSuccess(ts -> Log.i(Taxonomy.class.getName() + "getTaxonomyData", "refreshed taxonomy '" + taxonomy + "' from server"));
     }
 
     /**
@@ -25,7 +25,7 @@ public class DaoUtils {
      *
      * @param dao checks records count of any table
      */
-    public static boolean isDaoEmpty(@NonNull AbstractDao dao) {
+    public static boolean isDaoEmpty(@NonNull AbstractDao<?, ?> dao) {
         return dao.count() == 0;
     }
 }

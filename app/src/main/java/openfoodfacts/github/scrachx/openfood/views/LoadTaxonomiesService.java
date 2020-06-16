@@ -39,11 +39,8 @@ public class LoadTaxonomiesService extends IntentService {
         productRepository = (ProductRepository) ProductRepository.getInstance();
         settings = getSharedPreferences("prefs", 0);
         receiver = intent == null ? null : intent.getParcelableExtra(RECEIVER_KEY);
-        try {
-            doTask();
-        } catch (Exception throwable) {
-            handleError(throwable);
-        }
+
+        doTask();
     }
 
     private void doTask() {
@@ -67,12 +64,10 @@ public class LoadTaxonomiesService extends IntentService {
             .subscribe(() -> {
                 settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false).apply();
                 hideLoading(false);
-            }, this::handleError);
-    }
-
-    private void handleError(Throwable throwable) {
-        Log.e(LoadTaxonomiesService.class.getSimpleName(), "can't load products", throwable);
-        hideLoading(true);
+            }, throwable -> {
+                Log.e(LoadTaxonomiesService.class.getSimpleName(), "can't load products", throwable);
+                hideLoading(true);
+            });
     }
 
     @Override

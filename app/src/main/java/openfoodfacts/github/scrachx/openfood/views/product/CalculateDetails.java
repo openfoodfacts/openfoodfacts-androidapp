@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.CalculateDetailsBinding;
 import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
@@ -42,16 +40,14 @@ import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROT_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.VITAMINS_MAP;
 
 public class CalculateDetails extends BaseActivity {
-    RecyclerView nutrimentsRecyclerView;
     Nutriments nutriments;
     List<NutrimentListItem> nutrimentListItems;
+    private CalculateDetailsBinding binding;
     String spinnervalue;
     String weight;
     String pname;
     float value;
     Product p;
-    TextView result;
-    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +55,13 @@ public class CalculateDetails extends BaseActivity {
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        setContentView(R.layout.calculate_details);
-        setTitle(getString(R.string.app_name_long));
-        toolbar = findViewById(R.id.toolbar1);
-        result = findViewById(R.id.result_text_view);
-        nutrimentsRecyclerView = findViewById(R.id.nutriments_recycler_view_calc);
 
-        setSupportActionBar(toolbar);
+        binding = CalculateDetailsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setTitle(getString(R.string.app_name_long));
+
+        setSupportActionBar(binding.toolbar1);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final Intent intent = getIntent();
@@ -76,18 +72,18 @@ public class CalculateDetails extends BaseActivity {
         value = Float.parseFloat(weight);
         nutriments = p.getNutriments();
         nutrimentListItems = new ArrayList<>();
-        result.setText(getString(R.string.display_fact, weight + " " + spinnervalue));
-        nutrimentsRecyclerView.setHasFixedSize(true);
+        binding.resultTextView.setText(getString(R.string.display_fact, weight + " " + spinnervalue));
+        binding.nutrimentsRecyclerViewCalc.setHasFixedSize(true);
 
         // use a linear layout manager
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        nutrimentsRecyclerView.setLayoutManager(mLayoutManager);
+        binding.nutrimentsRecyclerViewCalc.setLayoutManager(mLayoutManager);
 
-        nutrimentsRecyclerView.setNestedScrollingEnabled(false);
+        binding.nutrimentsRecyclerViewCalc.setNestedScrollingEnabled(false);
 
         // use VERTICAL divider
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(nutrimentsRecyclerView.getContext(), VERTICAL);
-        nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.nutrimentsRecyclerViewCalc.getContext(), VERTICAL);
+        binding.nutrimentsRecyclerViewCalc.addItemDecoration(dividerItemDecoration);
 
         // Header hack
         nutrimentListItems.add(new NutrimentListItem(ProductUtils.isPerServingInLiter(p)));
@@ -175,8 +171,7 @@ public class CalculateDetails extends BaseActivity {
 
             nutrimentListItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
         }
-        RecyclerView.Adapter adapter = new CalculatedNutrimentsGridAdapter(nutrimentListItems);
-        nutrimentsRecyclerView.setAdapter(adapter);
+        binding.nutrimentsRecyclerViewCalc.setAdapter(new CalculatedNutrimentsGridAdapter(nutrimentListItems));
     }
 
     private List<NutrimentListItem> getNutrimentItems(Nutriments nutriments, Map<String, Integer> nutrimentMap) {

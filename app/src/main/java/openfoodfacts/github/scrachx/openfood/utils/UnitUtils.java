@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 import openfoodfacts.github.scrachx.openfood.models.Units;
 
 public class UnitUtils {
-    // Utility class
     private UnitUtils() {
+        // Utility class
     }
 
     public static final String UNIT_IU = "IU";
