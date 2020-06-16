@@ -1,5 +1,4 @@
-This is the Changelog.  
-Please list changes here so that we can provide meaningful changelog for the application stores.
+This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
 3.3
 - Adding or editing a product is now instant in every condition, offline, online or bad connexion.
