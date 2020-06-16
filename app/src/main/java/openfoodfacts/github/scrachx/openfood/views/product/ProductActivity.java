@@ -102,13 +102,13 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
     /**
      * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
-     *
-     * @param viewPager
-     * @param adapterResult
-     * @param mState
-     * @param activity
      */
-    public static ProductFragmentPagerAdapter setupViewPager(ViewPager2 viewPager, ProductFragmentPagerAdapter adapterResult, State mState, Activity activity) {
+    @NonNull
+    public static ProductFragmentPagerAdapter setupViewPager(@NonNull ViewPager2 viewPager,
+                                                             @NonNull ProductFragmentPagerAdapter adapterResult,
+                                                             @NonNull State mState,
+                                                             @NonNull Activity activity) {
+
         String[] menuTitles = activity.getResources().getStringArray(R.array.nav_drawer_items_product);
         String[] newMenuTitles = activity.getResources().getStringArray(R.array.nav_drawer_new_items_product);
 

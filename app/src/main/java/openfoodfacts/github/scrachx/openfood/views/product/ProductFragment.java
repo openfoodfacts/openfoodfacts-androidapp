@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.ShareActionProvider;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -44,10 +43,9 @@ import static android.app.Activity.RESULT_OK;
 public class ProductFragment extends Fragment implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     private ActivityProductBinding binding;
-    public static State productState;//NOSONAR To be changed ASAP !
+    private State productState;
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
-    private ShareActionProvider mShareActionProvider;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
@@ -60,7 +58,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = ActivityProductBinding.inflate(inflater);
         if (getResources().getBoolean(R.bool.portrait_only)) {
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         binding.toolbar.setVisibility(View.GONE);
         productState = (State) getArguments().getSerializable("state");
@@ -78,7 +76,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         api = new OpenFoodAPIClient(getActivity());
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) requireActivity().getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
 
@@ -88,7 +86,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         mShakeDetector.setOnShakeListener(count -> {
 
             if (scanOnShake) {
-                Utils.scan(getActivity());
+                Utils.scan(requireActivity());
             }
         });
 
@@ -108,11 +106,11 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     }
 
     private void setupViewPager(ViewPager2 viewPager) {
-        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(requireActivity()), productState, getActivity());
+        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(requireActivity()), productState, requireActivity());
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return ProductActivity.onOptionsItemSelected(item, getActivity());
     }
 
