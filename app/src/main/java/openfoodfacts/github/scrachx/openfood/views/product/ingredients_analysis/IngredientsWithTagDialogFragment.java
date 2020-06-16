@@ -224,7 +224,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onDismiss(DialogInterface dialog) {
+    public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
 
         if (onDismissListener != null) {
