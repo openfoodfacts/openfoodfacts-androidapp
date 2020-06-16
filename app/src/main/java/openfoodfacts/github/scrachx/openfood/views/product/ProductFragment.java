@@ -19,7 +19,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
@@ -69,7 +71,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             binding.pager.setNestedScrollingEnabled(true);
         }
 
-        binding.tabs.setupWithViewPager(binding.pager);
+        new TabLayoutMediator(binding.tabs, binding.pager, (tab, position) -> {
+            tab.setText(adapterResult.getPageTitle(position));
+        }).attach();
 
         api = new OpenFoodAPIClient(getActivity());
 
@@ -103,8 +107,8 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(getChildFragmentManager()), productState, getActivity());
+    private void setupViewPager(ViewPager2 viewPager) {
+        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(requireActivity()), productState, getActivity());
     }
 
     @Override
@@ -148,22 +152,22 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     }
 
     public void bottomSheetWillGrow() {
-        if (adapterResult == null || adapterResult.getCount() == 0) {
+        if (adapterResult == null || adapterResult.getItemCount() == 0) {
             return;
         }
         // without this, the view can be centered vertically on initial show. we force the scroll to top !
-        if (adapterResult.getItem(0) instanceof SummaryProductFragment) {
-            SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.getItem(0);
+        if (adapterResult.createFragment(0) instanceof SummaryProductFragment) {
+            SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.createFragment(0);
             productFragment.resetScroll();
         }
     }
 
     public void goToIngredients(String action) {
-        if (adapterResult == null || adapterResult.getCount() == 0) {
+        if (adapterResult == null || adapterResult.getItemCount() == 0) {
             return;
         }
-        for (int i = 0; i < adapterResult.getCount(); ++i) {
-            Fragment fragment = adapterResult.getItem(i);
+        for (int i = 0; i < adapterResult.getItemCount(); ++i) {
+            Fragment fragment = adapterResult.createFragment(i);
             if (fragment instanceof IngredientsProductFragment) {
                 binding.pager.setCurrentItem(i);
 

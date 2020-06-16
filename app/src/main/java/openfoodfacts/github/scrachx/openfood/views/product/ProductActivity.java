@@ -14,9 +14,12 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -98,77 +101,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     }
 
     /**
-     * Initialise the content that shows the content on the device.
-     */
-    private void initViews() {
-
-        setupViewPager(binding.pager);
-
-        binding.tabs.setupWithViewPager(binding.pager);
-
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        if (mSensorManager != null) {
-            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        }
-        mShakeDetector = new ShakeDetector();
-
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-
-        mShakeDetector.setOnShakeListener(count -> {
-            if (scanOnShake) {
-                Utils.scan(ProductActivity.this);
-            }
-        });
-
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
-    }
-
-    /**
-     * Get the product data from the barcode. This takes the barcode and retrieves the information.
-     *
-     * @param barcode from the URL.
-     */
-    private void loadProductDataFromUrl(String barcode) {
-        if (disposable != null) {
-            //dispose the previous call if not ended.
-            disposable.dispose();
-        }
-
-        disposable = api.getProductFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(state -> {
-                mState = state;
-                getIntent().putExtra(STATE_INTENT_KEY, state);
-                if (mState != null) {
-                    initViews();
-                } else {
-                    finish();
-                }
-            }, e -> {
-                Log.i(getClass().getSimpleName(), "Failed to load product data", e);
-                finish();
-            });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
-            startActivity(intent);
-        }
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        adapterResult = setupViewPager(viewPager, new ProductFragmentPagerAdapter(getSupportFragmentManager()), mState, this);
-    }
-
-    /**
      * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
      *
      * @param viewPager
@@ -176,7 +108,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
      * @param mState
      * @param activity
      */
-    public static ProductFragmentPagerAdapter setupViewPager(ViewPager viewPager, ProductFragmentPagerAdapter adapterResult, State mState, Activity activity) {
+    public static ProductFragmentPagerAdapter setupViewPager(ViewPager2 viewPager, ProductFragmentPagerAdapter adapterResult, State mState, Activity activity) {
         String[] menuTitles = activity.getResources().getStringArray(R.array.nav_drawer_items_product);
         String[] newMenuTitles = activity.getResources().getStringArray(R.array.nav_drawer_new_items_product);
 
@@ -220,12 +152,85 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         return adapterResult;
     }
 
+    /**
+     * Get the product data from the barcode. This takes the barcode and retrieves the information.
+     *
+     * @param barcode from the URL.
+     */
+    private void loadProductDataFromUrl(String barcode) {
+        if (disposable != null) {
+            //dispose the previous call if not ended.
+            disposable.dispose();
+        }
+
+        disposable = api.getProductFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(state -> {
+                mState = state;
+                getIntent().putExtra(STATE_INTENT_KEY, state);
+                if (mState != null) {
+                    initViews();
+                } else {
+                    finish();
+                }
+            }, e -> {
+                Log.i(getClass().getSimpleName(), "Failed to load product data", e);
+                finish();
+            });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
+            startActivity(intent);
+        }
+    }
+
+    /**
+     * Initialise the content that shows the content on the device.
+     */
+    private void initViews() {
+
+        setupViewPager(binding.pager);
+
+        new TabLayoutMediator(binding.tabs, binding.pager, (tab, position) -> {
+            tab.setText(adapterResult.getPageTitle(position));
+        }).attach();
+
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (mSensorManager != null) {
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
+        mShakeDetector = new ShakeDetector();
+
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+
+        mShakeDetector.setOnShakeListener(count -> {
+            if (scanOnShake) {
+                Utils.scan(ProductActivity.this);
+            }
+        });
+
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
+    }
+
+    private void setupViewPager(ViewPager2 viewPager) {
+        adapterResult = setupViewPager(viewPager, new ProductFragmentPagerAdapter(this), mState, this);
+    }
+
     private static boolean isPhotoMode(Activity activity) {
         return PreferenceManager.getDefaultSharedPreferences(activity).getBoolean("photoMode", false);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return onOptionsItemSelected(item, this);
     }
 
@@ -296,11 +301,11 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     }
 
     public void showIngredientsTab(String action) {
-        if (adapterResult == null || adapterResult.getCount() == 0) {
+        if (adapterResult == null || adapterResult.getItemCount() == 0) {
             return;
         }
-        for (int i = 0; i < adapterResult.getCount(); ++i) {
-            Fragment fragment = adapterResult.getItem(i);
+        for (int i = 0; i < adapterResult.getItemCount(); ++i) {
+            Fragment fragment = adapterResult.createFragment(i);
             if (fragment instanceof IngredientsProductFragment) {
                 binding.pager.setCurrentItem(i);
 

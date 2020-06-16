@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -29,6 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityAddProductBinding;
@@ -197,7 +198,7 @@ public class AddProductActivity extends AppCompatActivity {
         binding.overviewIndicator.setOnClickListener(v -> switchToOverviewPage());
         binding.ingredientsIndicator.setOnClickListener(v -> switchToIngredientsPage());
         binding.nutritionFactsIndicator.setOnClickListener(v -> switchToNutritionFactsPage());
-        binding.viewpager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        binding.viewpager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 selectPage(position);
@@ -266,8 +267,8 @@ public class AddProductActivity extends AppCompatActivity {
         binding = null;
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
+    private void setupViewPager(ViewPager2 viewPager) {
+        ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(this);
         mainBundle.putSerializable("product", mProduct);
         addProductOverviewFragment.setArguments(mainBundle);
         addProductIngredientsFragment.setArguments(mainBundle);
@@ -276,7 +277,7 @@ public class AddProductActivity extends AppCompatActivity {
         if (isNutritionDataAvailable()) {
             addProductNutritionFactsFragment.setArguments(mainBundle);
             adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
-        } else if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
+        } else if (Utils.isFlavor(AppFlavors.OBF, AppFlavors.OPF)) {
             binding.textNutritionFactsIndicator.setText(R.string.photos);
             addProductPhotosFragment.setArguments(mainBundle);
             adapterResult.addFragment(addProductPhotosFragment, "Photos");
