@@ -300,7 +300,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         }
     }
 
-    public void showIngredientsTab(String action) {
+    public void showIngredientsTab(ShowIngredientsAction action) {
         if (adapterResult == null || adapterResult.getItemCount() == 0) {
             return;
         }
@@ -309,13 +309,17 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             if (fragment instanceof IngredientsProductFragment) {
                 binding.pager.setCurrentItem(i);
 
-                if ("perform_ocr".equals(action)) {
+                if (action == ShowIngredientsAction.PERFORM_OCR) {
                     ((IngredientsProductFragment) fragment).extractIngredients();
-                } else if ("send_updated".equals(action)) {
+                } else if (action == ShowIngredientsAction.SEND_UPDATED) {
                     ((IngredientsProductFragment) fragment).changeIngImage();
                 }
                 return;
             }
         }
+    }
+
+    public enum ShowIngredientsAction {
+        PERFORM_OCR, SEND_UPDATED,
     }
 }

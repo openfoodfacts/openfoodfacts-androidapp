@@ -121,7 +121,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         if (getActivity() instanceof ContinuousScanActivity) {
             ((ContinuousScanActivity) getActivity()).showIngredientsTab("send_updated");
         } else if (getActivity() instanceof ProductActivity) {
-            ((ProductActivity) getActivity()).showIngredientsTab("send_updated");
+            ((ProductActivity) getActivity()).showIngredientsTab(ProductActivity.ShowIngredientsAction.SEND_UPDATED);
         }
     }
 
@@ -130,7 +130,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         if (getActivity() instanceof ContinuousScanActivity) {
             ((ContinuousScanActivity) getActivity()).showIngredientsTab("perform_ocr");
         } else if (getActivity() instanceof ProductActivity) {
-            ((ProductActivity) getActivity()).showIngredientsTab("perform_ocr");
+            ((ProductActivity) getActivity()).showIngredientsTab(ProductActivity.ShowIngredientsAction.PERFORM_OCR);
         }
     }
 
