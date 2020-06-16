@@ -1,4 +1,4 @@
-This roadmap is up for discussion.
+This roadmap is fully collaborative.
 
 Note: Nutrition table bugs can be solved by fixing: Use the HTML fallback for the nutrition table, and make the native optional until we fix it. https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2474
 
