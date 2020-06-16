@@ -22,6 +22,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
@@ -47,7 +48,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        State state = FragmentUtils.getStateFromActivityIntent();
+        State state = FragmentUtils.requireStateFromActivityIntent(this);
         product = state.getProduct();
         // initialize the arraylist
         imageNames = new ArrayList<>();
@@ -106,7 +107,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
      */
     public void openFullScreen(String mUrlImage) {
         if (mUrlImage != null) {
-            FullScreenActivityOpener.openZoom(this, mUrlImage, null);
+            FullScreenActivityOpener.openZoom(requireActivity(), mUrlImage, null);
         }
     }
 
