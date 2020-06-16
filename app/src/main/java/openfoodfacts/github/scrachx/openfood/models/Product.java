@@ -60,7 +60,7 @@ public class Product implements Serializable {
     @JsonProperty(ApiFields.Keys.COUNTRIES_TAGS)
     private List<String> countriesTags;
     private Nutriments nutriments;
-    @JsonProperty(ApiFields.Keys.CREATOR_DATE_TIME)
+    @JsonProperty(ApiFields.Keys.CREATED_DATE_TIME)
     private String createdDateTime;
     @JsonProperty(ApiFields.Keys.CREATOR)
     private String creator;
