@@ -46,8 +46,7 @@ public class FullScreenActivityOpener {
     private static void startActivity(Fragment fragment, View mImageFront, Intent intent) {
         if (mImageFront != null && fragment.getActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(fragment.getActivity(), mImageFront,
-                    fragment.getActivity().getString(R.string.product_transition));
+                makeSceneTransitionAnimation(fragment.getActivity(), mImageFront, fragment.getActivity().getString(R.string.product_transition));
             fragment.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE, options.toBundle());
         } else {
             fragment.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE);
@@ -63,15 +62,6 @@ public class FullScreenActivityOpener {
         startActivity(activity, mImageFront, intent);
     }
 
-    public static void openZoom(Activity activity, String mUrlImage, View mImageFront) {
-        if (activity == null) {
-            return;
-        }
-        Intent intent = new Intent(activity, ImageZoomActivity.class);
-        intent.putExtra(ImageKeyHelper.IMAGE_URL, mUrlImage);
-        startActivity(activity, mImageFront, intent);
-    }
-
     private static void startActivity(Activity activity, View mImageFront, Intent intent) {
         if (mImageFront != null && activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -81,6 +71,15 @@ public class FullScreenActivityOpener {
         } else if (activity != null) {
             activity.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE);
         }
+    }
+
+    public static void openZoom(Activity activity, String mUrlImage, View mImageFront) {
+        if (activity == null) {
+            return;
+        }
+        Intent intent = new Intent(activity, ImageZoomActivity.class);
+        intent.putExtra(ImageKeyHelper.IMAGE_URL, mUrlImage);
+        startActivity(activity, mImageFront, intent);
     }
 
     private static Intent createIntent(Context context, Product product, ProductImageField imageType, String mUrlImage) {

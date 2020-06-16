@@ -168,7 +168,7 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
             .setAllowRotation(true)
             .setAllowCounterRotation(true)
             .setActivityTitle(title)
-            .start(getContext(), this);
+            .start(requireContext(), this);
     }
 
     protected boolean canTakePhotos() {

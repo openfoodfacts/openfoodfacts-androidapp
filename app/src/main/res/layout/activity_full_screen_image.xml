@@ -146,7 +146,7 @@
             app:srcCompat="@drawable/ic_remove_circle_white" />
 
         <ImageView
-            android:id="@+id/btnClose"
+            android:id="@+id/btn_done"
             style="@style/ButtonBorder.Black"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height_short"

@@ -96,8 +96,8 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         setContentView(binding.getRoot());
 
         // Setup onclick listeners
-        binding.btnClose.setOnClickListener(v -> onExit());
-        binding.btnUnselectImage.setOnClickListener(v -> unselectImage());
+        binding.btnDone.setOnClickListener(v -> onExit());
+        binding.btnUnselectImage.setOnClickListener(v -> unSelectImage());
         binding.btnChooseImage.setOnClickListener(v -> onChooseImage());
         binding.btnAddImage.setOnClickListener(v -> onAddImage());
         binding.btnChooseDefaultLanguage.setOnClickListener(v -> onSelectDefaultLanguage());
@@ -195,12 +195,12 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
                         startShowCase(getString(R.string.title_unselect_photo), getString(R.string.content_unselect_photo), R.id.btnUnselectImage, 6);
                         break;
                     case 6:
-                        startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btnClose, 7);
+                        startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btn_done, 7);
                         break;
                     case 7:
                         SharedPreferences.Editor editor = settings.edit();
                         editor.putBoolean(getString(R.string.check_first_time), false);
-                        editor.commit();
+                        editor.apply();
                         break;
                 }
             })
@@ -450,7 +450,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         finish();
     }
 
-    void unselectImage() {
+    private void unSelectImage() {
         if (cannotEdit(REQUEST_UNSELECT_IMAGE_AFTER_LOGIN)) {
             return;
         }
@@ -463,7 +463,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         });
     }
 
-    void onChooseImage() {
+    private void onChooseImage() {
         if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) {
             return;
         }
@@ -531,7 +531,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
             new FileDownloader(getBaseContext()).download(transformation.getInitImageUrl(), file -> {
                 //to delete the file after:
                 lastViewedImage = file;
-                cropRotateExisitingImageOnServer(file, getString(ImageKeyHelper.getResourceIdForEditAction(productImageField)), transformation);
+                cropRotateExistingImageOnServer(file, getString(ImageKeyHelper.getResourceIdForEditAction(productImageField)), transformation);
             });
         }
     }
@@ -540,7 +540,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         return (Product) getIntent().getSerializableExtra(ImageKeyHelper.PRODUCT);
     }
 
-    void onLanguageChanged() {
+    private void onLanguageChanged() {
         LocaleHelper.LanguageData data = (LocaleHelper.LanguageData) binding.comboLanguages.getSelectedItem();
         Product product = getProduct();
         if (!data.getCode().equals(getCurrentLanguage())) {
@@ -556,7 +556,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         return (ProductImageField) getIntent().getSerializableExtra(ImageKeyHelper.IMAGE_TYPE);
     }
 
-    void onImageTypeChanged() {
+    private void onImageTypeChanged() {
         if (getProduct() == null) {
             return;
         }
@@ -572,7 +572,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         updateToolbarTitle(getProduct());
     }
 
-    private void cropRotateExisitingImageOnServer(File image, String title, ImageTransformationUtils transformation) {
+    private void cropRotateExistingImageOnServer(File image, String title, ImageTransformationUtils transformation) {
         Uri uri = Uri.fromFile(image);
         final CropImage.ActivityBuilder activityBuilder = CropImage.activity(uri)
             .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
@@ -615,7 +615,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
                 break;
             case REQUEST_UNSELECT_IMAGE_AFTER_LOGIN:
                 if (resultCode == RESULT_OK) {
-                    unselectImage();
+                    unSelectImage();
                 }
                 break;
             case REQUEST_EDIT_IMAGE:
@@ -696,8 +696,10 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         }
     }
 
-    /*For scheduling a postponed transition after the proper measures of the view are done
-        and the view has been properly laid out in the View hierarchy*/
+    /**
+     * For scheduling a postponed transition after the proper measures of the view are done
+     * and the view has been properly laid out in the View hierarchy
+     */
     private void scheduleStartPostponedTransition(final View sharedElement) {
         sharedElement.getViewTreeObserver().addOnPreDrawListener(
             new ViewTreeObserver.OnPreDrawListener() {
@@ -718,7 +720,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     @Override
     public void onPhotoReturned(File newPhotoFile) {
         startRefresh(getString(R.string.uploading_image));
-        new Thread(() -> {
+        new Thread(() -> { // TODO: Use rxjava
             ProductImage image = new ProductImage(getProduct().getCode(), getSelectedType(), newPhotoFile, getCurrentLanguage());
             image.setFilePath(newPhotoFile.getAbsolutePath());
 

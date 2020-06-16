@@ -41,7 +41,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        openFoodAPIClient = new OpenFoodAPIClient(getActivity());
+        openFoodAPIClient = new OpenFoodAPIClient(requireActivity());
         return inflater.inflate(R.layout.fragment_product_photos, container, false);
     }
 

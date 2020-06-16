@@ -54,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -100,7 +101,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
 
-        activityState = FragmentUtils.getStateFromActivityIntent();
+        activityState = FragmentUtils.requireStateFromActivityIntent(this);
     }
 
     @Override
@@ -115,7 +116,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activityState = FragmentUtils.getStateFromActivityIntent();
+        activityState = FragmentUtils.getStateFromActivityIntent(this);
         binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         binding.changeIngImg.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
 
@@ -407,7 +408,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             if (login.isEmpty()) {
                 showSignInDialog();
             } else {
-                activityState = FragmentUtils.getStateFromActivityIntent();
+                activityState = FragmentUtils.requireStateFromActivityIntent(this);
                 if (activityState != null) {
                     Intent intent = new Intent(getContext(), AddProductActivity.class);
                     intent.putExtra("send_updated", sendUpdatedIngredientsImage);
@@ -468,7 +469,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
             showSignInDialog();
         } else {
-            activityState = FragmentUtils.getStateFromActivityIntent();
+            activityState = FragmentUtils.requireStateFromActivityIntent(this);
             Intent intent = new Intent(getContext(), AddProductActivity.class);
             intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, activityState.getProduct());
             intent.putExtra("perform_ocr", extractIngredients);
@@ -477,7 +478,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     private void showSignInDialog() {
-        new MaterialDialog.Builder(getContext())
+        new MaterialDialog.Builder(requireContext())
             .title(R.string.sign_in_to_edit)
             .positiveText(R.string.txtSignIn)
             .negativeText(R.string.dialog_cancel)
@@ -490,7 +491,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             .build().show();
     }
 
-    void openFullScreen() {
+    private void openFullScreen() {
         if (mUrlImage != null && activityState != null && activityState.getProduct() != null) {
             FullScreenActivityOpener.openForUrl(this, activityState.getProduct(), INGREDIENTS, mUrlImage, binding.imageViewIngredients);
         } else {
