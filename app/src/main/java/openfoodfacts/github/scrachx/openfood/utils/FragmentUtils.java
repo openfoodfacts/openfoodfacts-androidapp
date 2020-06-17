@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,23 +14,20 @@ public class FragmentUtils {
     }
 
     @Nullable
-    public static State getStateFromActivityIntent(Fragment fragment) {
-        if (fragment.getActivity() != null) {
-            Intent intent = fragment.getActivity().getIntent();
-            if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-                return (State) intent.getExtras().getSerializable("state");
-            }
+    public static State getStateFromArguments(Fragment fragment) {
+        final Bundle args = fragment.getArguments();
+        if (args == null) {
+            return null;
         }
-        return null;
+        return (State) args.getSerializable("state");
     }
 
     @NonNull
-    public static State requireStateFromActivityIntent(Fragment fragment) {
-        final State state = getStateFromActivityIntent(fragment);
+    public static State requireStateFromArguments(Fragment fragment) {
+        final State state = getStateFromArguments(fragment);
         if (state == null) {
-            throw new IllegalStateException("cannot start fragment without product state (not passed as parameter)");
-        } else {
-            return state;
+            throw new IllegalStateException("cannot start fragment without product state (not passed as argument)");
         }
+        return state;
     }
 }

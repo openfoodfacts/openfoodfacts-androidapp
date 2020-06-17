@@ -39,7 +39,7 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activityState = FragmentUtils.requireStateFromActivityIntent(this);
+        activityState = FragmentUtils.requireStateFromArguments(this);
 
         final Product product = activityState.getProduct();
         Nutriments nutriments = product.getNutriments();

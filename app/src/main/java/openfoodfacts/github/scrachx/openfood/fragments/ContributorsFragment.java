@@ -44,7 +44,7 @@ public class ContributorsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        stateFromActivity = FragmentUtils.requireStateFromActivityIntent(this);
+        stateFromActivity = FragmentUtils.requireStateFromArguments(this);
 
         refreshView(stateFromActivity);
     }

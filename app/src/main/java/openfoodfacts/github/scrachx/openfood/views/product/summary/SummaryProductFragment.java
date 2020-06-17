@@ -147,7 +147,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.buttonMorePictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
         photoReceiverHandler = new PhotoReceiverHandler(this);
 
-        binding.imageViewFront.setOnClickListener(v -> openFullScreen());
+        binding.imageViewFront.setOnClickListener(v -> openFrontImageFullscreen());
         binding.buttonMorePictures.setOnClickListener(v -> takeMorePicture());
         binding.actionAddToListButton.setOnClickListener(v -> onBookmarkProductButtonClick());
         binding.actionEditButton.setOnClickListener(v -> onEditProductButtonClick());
@@ -157,7 +157,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.productQuestionDismiss.setOnClickListener(v -> productQuestionDismiss());
         binding.productQuestionLayout.setOnClickListener(v -> onProductQuestionClick());
 
-        state = FragmentUtils.requireStateFromActivityIntent(this);
+        state = FragmentUtils.requireStateFromArguments(this);
         refreshView(state);
     }
 
@@ -783,7 +783,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         doChooseOrTakePhotos(getString(R.string.take_more_pictures));
     }
 
-    private void openFullScreen() {
+    private void openFrontImageFullscreen() {
         if (mUrlImage != null) {
             FullScreenActivityOpener.openForUrl(this, product, ProductImageField.FRONT, mUrlImage, binding.imageViewFront);
         } else {
@@ -815,8 +815,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
-        boolean shouldRefresh = requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK;
-        shouldRefresh = shouldRefresh || ProductImageManagementActivity.isImageModified(requestCode, resultCode);
+        boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK)
+            || ProductImageManagementActivity.isImageModified(requestCode, resultCode);
 
         if (shouldRefresh && getActivity() instanceof ProductActivity) {
             ((ProductActivity) getActivity()).onRefresh();
