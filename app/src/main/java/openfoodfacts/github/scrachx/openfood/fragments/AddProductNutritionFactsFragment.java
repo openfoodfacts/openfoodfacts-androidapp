@@ -45,6 +45,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
@@ -95,7 +97,16 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private String productCode;
     private OfflineSavedProduct mOfflineSavedProduct;
     private String imagePath;
+    private CompositeDisposable disp = new CompositeDisposable();
     private Product product;
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        disp.dispose();
+        binding = null;
+    }
+
     private EditText lastEditText;
     private CustomValidatingEditTextView starchEditText;
     private Set<CustomValidatingEditTextView> allEditViews = Collections.emptySet();
@@ -519,10 +530,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             if (photoFile != null) {
                 cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
             } else {
-                new FileDownloader(getContext()).download(imagePath, file -> {
-                    photoFile = file;
-                    cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
-                });
+                disp.add(FileDownloader.download(requireContext(), imagePath)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(file -> {
+                        photoFile = file;
+                        cropRotateImage(photoFile, getString(R.string.nutrition_facts_picture));
+                    }));
             }
         } else {
             newNutritionFactsImage();

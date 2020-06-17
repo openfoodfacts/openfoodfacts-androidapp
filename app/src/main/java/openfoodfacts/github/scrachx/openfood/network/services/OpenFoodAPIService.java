@@ -412,4 +412,7 @@ public interface OpenFoodAPIService {
 
     @GET
     Call<ResponseBody> downloadFile(@Url String fileUrl);
+
+    @GET
+    Single<ResponseBody> downloadFileSingle(@Url String fileUrl);
 }

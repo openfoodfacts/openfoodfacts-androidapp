@@ -41,6 +41,7 @@ import java.util.Map;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -102,6 +103,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     private OfflineSavedProduct mOfflineSavedProduct;
     private TagDao mTagDao;
     private boolean newImageSelected;
+    private CompositeDisposable disp = new CompositeDisposable();
     private File photoFile;
     private PhotoReceiverHandler photoReceiverHandler;
     private Product product;
@@ -116,6 +118,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     @Override
     public void onDestroy() {
         super.onDestroy();
+        disp.dispose();
         binding = null;
     }
 
@@ -656,10 +659,12 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             if (photoFile != null) {
                 cropRotateImage(photoFile, getString(R.string.set_img_front));
             } else {
-                new FileDownloader(getContext()).download(mImageUrl, file -> {
-                    photoFile = file;
-                    cropRotateImage(photoFile, getString(R.string.set_img_front));
-                });
+                disp.add(FileDownloader.download(requireContext(), mImageUrl)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(file -> {
+                        photoFile = file;
+                        cropRotateImage(photoFile, getString(R.string.set_img_front));
+                    }));
             }
         } else {
             newFrontImage();
