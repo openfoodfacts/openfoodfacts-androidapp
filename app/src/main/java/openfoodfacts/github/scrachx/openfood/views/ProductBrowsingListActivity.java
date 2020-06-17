@@ -68,7 +68,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private SearchInfo mSearchInfo;
     private SensorManager mSensorManager;
     private ShakeDetector mShakeDetector;
-    private CompositeDisposable disp;
+    private CompositeDisposable disp = new CompositeDisposable();
     private int pageAddress = 1;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
