@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.utils;
 import android.text.TextUtils;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.hootsuite.nachos.NachoTextView;
@@ -37,15 +38,15 @@ public class EditTextUtils {
         return !TextUtils.isEmpty(getContent(editText));
     }
 
-    public static boolean isDifferent(EditText editText, @Nullable String toCompare) {
-        String textContent = getContent(editText);
-        if (TextUtils.isEmpty(textContent) && TextUtils.isEmpty(toCompare)) {
+    public static boolean isDifferent(@NonNull EditText textView, @Nullable String toCompare) {
+        String fieldValue = getContent(textView);
+        if (TextUtils.isEmpty(fieldValue) && TextUtils.isEmpty(toCompare)) {
             return false;
         }
-        if (TextUtils.isEmpty(textContent)) {
+        if (TextUtils.isEmpty(fieldValue)) {
             return true;
         }
-        return !textContent.equals(toCompare);
+        return !fieldValue.equals(toCompare);
     }
 
     public static boolean areChipsDifferent(NachoTextView nachoTextView, List<String> toCompare) {

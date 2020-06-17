@@ -33,6 +33,8 @@ import org.apache.commons.lang.StringUtils;
 import java.io.File;
 import java.net.URI;
 import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,6 +52,7 @@ import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.jobs.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+import openfoodfacts.github.scrachx.openfood.models.Nutriments.Nutriment;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Units;
@@ -725,21 +728,21 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
 
         String shortName = editTextView.getEntryName();
 
-        Nutriments.Nutriment existingProductNutriment = productNutriments.get(shortName);
-        String previousValue = null;
-        String previousUnit = null;
-        String previousMod = null;
-        if (existingProductNutriment != null) {
-            previousUnit = existingProductNutriment.getUnit();
-            previousMod = existingProductNutriment.getModifier();
+        Nutriment oldProductNutriment = productNutriments.get(shortName);
+        String oldValue = null;
+        String oldUnit = null;
+        String oldMod = null;
+        if (oldProductNutriment != null) {
+            oldUnit = oldProductNutriment.getUnit();
+            oldMod = oldProductNutriment.getModifier();
             if (isDataPer100g()) {
-                previousValue = existingProductNutriment.getFor100gInUnits();
+                oldValue = oldProductNutriment.getFor100gInUnits();
             } else if (isDataPerServing()) {
-                previousValue = existingProductNutriment.getForServingInUnits();
+                oldValue = oldProductNutriment.getForServingInUnits();
             }
         }
 
-        boolean valueHasBeenUpdated = EditTextUtils.isDifferent(editTextView, previousValue);
+        boolean valueHasBeenUpdated = EditTextUtils.isDifferent(editTextView, oldValue);
 
         String newUnit = null;
         String newMod = null;
@@ -749,8 +752,8 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         if (editTextView.getModSpinner() != null) {
             newMod = editTextView.getModSpinner().getSelectedItem().toString();
         }
-        boolean unitHasBeenUpdated = previousUnit == null || !previousUnit.equals(newUnit);
-        boolean modHasBeenUpdated = previousMod == null || !previousMod.equals(newMod);
+        boolean unitHasBeenUpdated = oldUnit == null || !oldUnit.equals(newUnit);
+        boolean modHasBeenUpdated = oldMod == null || !oldMod.equals(newMod);
 
         if (valueHasBeenUpdated || unitHasBeenUpdated || modHasBeenUpdated) {
             addNutrientToMap(editTextView, targetMap);
@@ -763,7 +766,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
      * @param editTextView EditText with spinner for entering the nutrients
      * @param targetMap map to enter the nutrient value received from edit texts
      */
-    private void addNutrientToMap(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
+    private void addNutrientToMap(@NonNull CustomValidatingEditTextView editTextView, @NonNull Map<String, String> targetMap) {
         // For impl reference, see https://wiki.openfoodfacts.org/Nutrients_handling_in_Open_Food_Facts#Data_display
         final String fieldName = AddProductNutritionFactsData.getCompleteEntryName(editTextView);
 
@@ -776,9 +779,9 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         // Take modifier from attached spinner, add to value if not the default one
         String mod = "";
         if (editTextView.getModSpinner() != null) {
-            String selectedComp = editTextView.getModSpinner().getSelectedItem().toString();
-            if (!selectedComp.equals("=")) {
-                mod = selectedComp;
+            String selectedMod = editTextView.getModSpinner().getSelectedItem().toString();
+            if (!Modifier.DEFAULT_MODIFIER.equals(selectedMod)) {
+                mod = selectedMod;
             }
         }
         // The suffix can either be _serving or _100g depending on user input
@@ -786,7 +789,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
         targetMap.put(fieldName, mod + value);
     }
 
-    private void addNutrientsModeToMap(Map<String, String> targetMap) {
+    private void addNutrientsModeToMap(@NonNull Map<String, String> targetMap) {
         if (isDataPer100g()) {
             targetMap.put(ApiFields.Keys.NUTRITION_DATA_PER, ApiFields.Defaults.NUTRITION_DATA_PER_100G);
         } else if (isDataPerServing()) {
@@ -812,21 +815,23 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     }
 
     void displayAddNutrientDialog() {
-        String[] nutrients = getResources().getStringArray(R.array.nutrients_array);
+        final List<String> origNutrients = Arrays.asList(getResources().getStringArray(R.array.nutrients_array));
+        List<String> nutrients = new ArrayList<>(origNutrients);
+
+        for (int i : index) {
+            nutrients.remove(origNutrients.get(i));
+        }
+
         Stringi18nUtils.sortAlphabetically(nutrients, Collator.getInstance(Locale.getDefault()));
 
         new MaterialDialog.Builder(activity)
             .title(R.string.choose_nutrient)
             .items(nutrients)
             .itemsCallback((dialog, itemView, position, text) -> {
-                if (!index.contains(position)) {
-                    index.add(position);
-                    final CustomValidatingEditTextView textView = addNutrientRow(position, text.toString());
-                    allEditViews.add(textView);
-                    addValidListener(textView);
-                } else {
-                    Toast.makeText(activity, getString(R.string.nutrient_already_added, nutrients[position]), Toast.LENGTH_SHORT).show();
-                }
+                index.add(origNutrients.indexOf(text));
+                final CustomValidatingEditTextView textView = addNutrientRow(origNutrients.indexOf(text), text.toString());
+                allEditViews.add(textView);
+                addValidListener(textView);
             })
             .show();
     }

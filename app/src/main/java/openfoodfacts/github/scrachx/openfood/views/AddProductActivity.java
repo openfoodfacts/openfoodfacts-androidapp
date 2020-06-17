@@ -29,6 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityAddProductBinding;
@@ -76,7 +77,7 @@ public class AddProductActivity extends AppCompatActivity {
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product mProduct;
     private ToUploadProductDao mToUploadProductDao;
-    private Bundle mainBundle = new Bundle();
+    private Bundle fragmentsBundle = new Bundle();
     private Disposable mainDisposable;
     private OfflineSavedProduct offlineSavedProduct;
     private final Map<String, String> productDetails = new HashMap<>();
@@ -216,11 +217,11 @@ public class AddProductActivity extends AppCompatActivity {
         Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
 
         if (getIntent().getBooleanExtra("perform_ocr", false)) {
-            mainBundle.putBoolean("perform_ocr", true);
+            fragmentsBundle.putBoolean("perform_ocr", true);
         }
 
         if (getIntent().getBooleanExtra("send_updated", false)) {
-            mainBundle.putBoolean("send_updated", true);
+            fragmentsBundle.putBoolean("send_updated", true);
         }
 
         if (state != null) {
@@ -232,10 +233,10 @@ public class AddProductActivity extends AppCompatActivity {
             setTitle(R.string.edit_product_title);
             mProduct = mEditProduct;
             editionMode = true;
-            mainBundle.putBoolean(KEY_IS_EDITION, true);
+            fragmentsBundle.putBoolean(KEY_IS_EDITION, true);
             initialValues = new HashMap<>();
         } else if (offlineSavedProduct != null) {
-            mainBundle.putSerializable("edit_offline_product", offlineSavedProduct);
+            fragmentsBundle.putSerializable("edit_offline_product", offlineSavedProduct);
             // Save the already existing images in productDetails for UI
             imagesFilePath[0] = offlineSavedProduct.getImageFront();
             imagesFilePath[1] = offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_INGREDIENTS);
@@ -268,17 +269,17 @@ public class AddProductActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
-        mainBundle.putSerializable("product", mProduct);
-        addProductOverviewFragment.setArguments(mainBundle);
-        addProductIngredientsFragment.setArguments(mainBundle);
+        fragmentsBundle.putSerializable("product", mProduct);
+        addProductOverviewFragment.setArguments(fragmentsBundle);
+        addProductIngredientsFragment.setArguments(fragmentsBundle);
         adapterResult.addFragment(addProductOverviewFragment, "Overview");
         adapterResult.addFragment(addProductIngredientsFragment, "Ingredients");
         if (isNutritionDataAvailable()) {
-            addProductNutritionFactsFragment.setArguments(mainBundle);
+            addProductNutritionFactsFragment.setArguments(fragmentsBundle);
             adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
-        } else if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
+        } else if (Utils.isFlavor(AppFlavors.OBF, AppFlavors.OPF)) {
             binding.textNutritionFactsIndicator.setText(R.string.photos);
-            addProductPhotosFragment.setArguments(mainBundle);
+            addProductPhotosFragment.setArguments(fragmentsBundle);
             adapterResult.addFragment(addProductPhotosFragment, "Photos");
         }
         viewPager.setOffscreenPageLimit(2);
