@@ -46,6 +46,6 @@
     <string name="intent_filter_share_label">Zu Open Products Facts hinzufügen</string>
     <string name="txt_info_eaten_products">Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Zu erwerbende Produkte” tippen.
 Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="OFFlogo">Logo von Open Products Facts</string>
+    <string name="brand_hint">Beispiele: Adidas, Apple usw. …</string>
 </resources>
