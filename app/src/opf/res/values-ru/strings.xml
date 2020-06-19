@@ -43,4 +43,5 @@
     <string name="add_nutrient_category_prompt_text">Добавьте категорию и более подробную информацию, чтобы помочь завершить продукт</string>
     <string name="txt_eaten_products">У меня есть товары</string>
     <string name="txt_products_to_buy">Продукты для покупки</string>
+    <string name="intent_filter_share_label">Add to Open Products Facts</string>
 </resources>
