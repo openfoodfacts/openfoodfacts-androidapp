@@ -19,8 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -87,6 +85,17 @@ import static android.view.View.VISIBLE;
 public class ContinuousScanActivity extends AppCompatActivity {
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
+    public static final Collection<BarcodeFormat> BARCODE_FORMATS = Arrays.asList(
+        BarcodeFormat.UPC_A,
+        BarcodeFormat.UPC_E,
+        BarcodeFormat.EAN_13,
+        BarcodeFormat.EAN_8,
+        BarcodeFormat.RSS_14,
+        BarcodeFormat.CODE_39,
+        BarcodeFormat.CODE_93,
+        BarcodeFormat.CODE_128,
+        BarcodeFormat.ITF
+    );
     private BeepManager beepManager;
     private ActivityContinuousScanBinding binding;
     private BottomSheetBehavior bottomSheetBehavior;
@@ -134,7 +143,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
             lastText = result.getText();
             if (!(isFinishing())) {
-                findProduct(lastText);
+                setShownProduct(lastText);
             }
         }
 
@@ -155,7 +164,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.barcodeScanner.setVisibility(GONE);
         binding.barcodeScanner.pause();
         binding.imageForScreenshotGenerationOnly.setVisibility(VISIBLE);
-        findProduct(barcode);
+        setShownProduct(barcode);
     }
 
     /**
@@ -163,7 +172,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
      *
      * @param barcode Barcode to be searched
      */
-    private void findProduct(String barcode) {
+    private void setShownProduct(String barcode) {
         if (isFinishing()) {
             return;
         }
@@ -234,7 +243,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
                         manageSummary(product);
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        productShownInBottomView();
+                        showProductFullScreen();
                         binding.quickViewProductNotFound.setVisibility(GONE);
                         binding.quickViewProductNotFoundButton.setVisibility(GONE);
 
@@ -311,17 +320,17 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         } else {
                             binding.quickViewCo2Icon.setVisibility(INVISIBLE);
                         }
-                        FragmentManager fm = getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fm.beginTransaction();
                         ProductFragment newProductFragment = new ProductFragment();
 
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("state", state);
-
                         newProductFragment.setArguments(bundle);
-                        fragmentTransaction.replace(R.id.frame_layout, newProductFragment);
-                        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                        fragmentTransaction.commitAllowingStateLoss();
+
+                        getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.frame_layout, newProductFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .commitAllowingStateLoss();
                         productFragment = newProductFragment;
                     }
                 }
@@ -332,7 +341,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         // A network error happened
                         if (e instanceof IOException) {
                             hideAllViews();
-                            OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
+                            OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder()
+                                .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
                                 .unique();
                             if (offlineSavedProduct != null) {
                                 showOfflineSavedDetails(offlineSavedProduct);
@@ -417,7 +427,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.quickViewProductNotFoundButton.setOnClickListener(v -> navigateToProductAddition(lastText));
     }
 
-    private void productShownInBottomView() {
+    private void showProductFullScreen() {
         bottomSheetBehavior.setPeekHeight(peekLarge);
         binding.quickView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
         binding.quickView.requestLayout();
@@ -548,7 +558,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Subscribe
     public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
         if (event.getBarcode().equals(lastText)) {
-            findProduct(lastText);
+            setShownProduct(lastText);
         }
     }
 
@@ -575,7 +585,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
         client = new OpenFoodAPIClient(this);
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_continuous_scan);
+        binding = ActivityContinuousScanBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         binding.toggleFlash.setOnClickListener(v -> toggleFlash());
         binding.buttonMore.setOnClickListener(v -> moreSettings());
@@ -613,7 +624,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.quickView);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+        bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             float previousSlideOffset = 0;
 
             @Override
@@ -687,11 +698,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         popup = new PopupMenu(this, binding.buttonMore);
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
 
-        Collection<BarcodeFormat> formats = Arrays.asList(BarcodeFormat.UPC_A,
-            BarcodeFormat.UPC_E, BarcodeFormat.EAN_13, BarcodeFormat.EAN_8,
-            BarcodeFormat.RSS_14, BarcodeFormat.CODE_39, BarcodeFormat.CODE_93,
-            BarcodeFormat.CODE_128, BarcodeFormat.ITF);
-        binding.barcodeScanner.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(formats));
+        binding.barcodeScanner.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(BARCODE_FORMATS));
         binding.barcodeScanner.setStatusText(null);
         CameraSettings settings = binding.barcodeScanner.getBarcodeView().getCameraSettings();
         settings.setRequestedCameraId(cameraState);
@@ -726,7 +733,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         if (ProductUtils.isBarcodeValid(barcodeText)) {
                             lastText = barcodeText;
                             binding.quickViewSearchByBarcode.setVisibility(GONE);
-                            findProduct(barcodeText);
+                            setShownProduct(barcodeText);
                         } else {
                             binding.quickViewSearchByBarcode.requestFocus();
                             Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
@@ -754,7 +761,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             product.getIngredientsText() == null || product.getIngredientsText().equals(""));
     }
 
-    void toggleCamera() {
+    private void toggleCamera() {
         SharedPreferences.Editor editor = sp.edit();
         CameraSettings settings = binding.barcodeScanner.getBarcodeView().getCameraSettings();
         if (binding.barcodeScanner.getBarcodeView().isPreviewActive()) {
@@ -772,7 +779,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.barcodeScanner.resume();
     }
 
-    void toggleFlash() {
+    private void toggleFlash() {
         SharedPreferences.Editor editor = sp.edit();
         if (mFlash) {
             binding.barcodeScanner.setTorchOff();
@@ -788,7 +795,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    void moreSettings() {
+    private void moreSettings() {
         popup.setOnMenuItemClickListener(item -> {
             SharedPreferences.Editor editor;
             switch (item.getItemId()) {
@@ -850,8 +857,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     /**
      * Overridden to collapse bottom view after a back action from edit form.
-     *
-     * @param savedInstanceState
      */
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
@@ -862,12 +867,16 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            findProduct(lastText);
-        } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
-            startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
+        if (requestCode == ProductImageManagementActivity.REQUEST_EDIT_IMAGE && (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)) {
+            setShownProduct(lastText);
+        } else if (resultCode == RESULT_OK) {
+            if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE) {
+                setShownProduct(lastText);
+            } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE) {
+                Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
+                intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
+                startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
+            }
         }
     }
 

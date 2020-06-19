@@ -24,7 +24,6 @@ import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshView;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 import static android.Manifest.permission.CAMERA;
@@ -111,35 +110,24 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         }
     }
 
-    protected State getStateFromActivityIntent() {
-        if (getActivity() != null) {
-            Intent intent = getActivity().getIntent();
-            if (intent != null && intent.getExtras() != null && intent.getExtras().getSerializable("state") != null) {
-                return (State) intent.getExtras().getSerializable("state");
-            }
-        }
-        return ProductFragment.productState;
-    }
-
-    protected void doChooseOrTakePhotos(String title) {
-        if (!canTakePhotos()) {
-            requestPermissionTakePhotos();
-        } else {
-            EasyImage.openCamera(this, 0);
-        }
-    }
-
     public static boolean isAllGranted(@NonNull int[] grantResults) {
         if (grantResults.length == 0) {
             return false;
         }
-        for (int result : grantResults
-        ) {
+        for (int result : grantResults) {
             if (result != PERMISSION_GRANTED) {
                 return false;
             }
         }
         return true;
+    }
+
+    protected void doChooseOrTakePhotos(String title) {
+        if (!canTakePhotos()) {
+            requestPermissions(new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
+            EasyImage.openCamera(this, 0);
+        }
     }
 
     @Override
@@ -180,15 +168,11 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
             .setAllowRotation(true)
             .setAllowCounterRotation(true)
             .setActivityTitle(title)
-            .start(getContext(), this);
+            .start(requireContext(), this);
     }
 
     protected boolean canTakePhotos() {
         return
             ContextCompat.checkSelfPermission(getContext(), CAMERA) == PERMISSION_GRANTED;
-    }
-
-    protected void requestPermissionTakePhotos() {
-        requestPermissions(new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
     }
 }

@@ -29,7 +29,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NavUtils;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -93,7 +92,9 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_history_scan);
+        binding = ActivityHistoryScanBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         binding.scanFirst.setOnClickListener(v -> onScanFirst());
 
         setTitle(getString(R.string.scan_history_drawer));

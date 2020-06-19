@@ -1,8 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,34 +11,34 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.State;
 
-public class ProductFragmentPagerAdapter extends FragmentPagerAdapter {
+public class ProductFragmentPagerAdapter extends FragmentStateAdapter {
     private final List<BaseFragment> fragments;
-    private final List<String> navMenuTitles;
+    private final List<String> tabsTitles;
 
-    public ProductFragmentPagerAdapter(FragmentManager fm) {
-        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+    public ProductFragmentPagerAdapter(FragmentActivity fragmentActivity) {
+        super(fragmentActivity);
         this.fragments = new ArrayList<>();
-        this.navMenuTitles = new ArrayList<>();
+        this.tabsTitles = new ArrayList<>();
     }
 
-    public void addFragment(BaseFragment fragment, String title) {
+    public void addFragment(BaseFragment fragment, String tabTitle) {
         this.fragments.add(fragment);
-        this.navMenuTitles.add(title);
+        this.tabsTitles.add(tabTitle);
     }
 
+    @NonNull
     @Override
-    public Fragment getItem(int i) {
+    public Fragment createFragment(int i) {
         return fragments.get(i);
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return fragments.size();
     }
 
-    @Override
     public CharSequence getPageTitle(int position) {
-        return navMenuTitles.get(position);
+        return tabsTitles.get(position);
     }
 
     public void refresh(State state) {

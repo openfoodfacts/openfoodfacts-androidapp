@@ -67,6 +67,7 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
+import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
@@ -146,7 +147,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.buttonMorePictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
         photoReceiverHandler = new PhotoReceiverHandler(this);
 
-        binding.imageViewFront.setOnClickListener(v -> openFullScreen());
+        binding.imageViewFront.setOnClickListener(v -> openFrontImageFullscreen());
         binding.buttonMorePictures.setOnClickListener(v -> takeMorePicture());
         binding.actionAddToListButton.setOnClickListener(v -> onBookmarkProductButtonClick());
         binding.actionEditButton.setOnClickListener(v -> onEditProductButtonClick());
@@ -156,7 +157,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.productQuestionDismiss.setOnClickListener(v -> productQuestionDismiss());
         binding.productQuestionLayout.setOnClickListener(v -> onProductQuestionClick());
 
-        state = getStateFromActivityIntent();
+        state = FragmentUtils.requireStateFromArguments(this);
         refreshView(state);
     }
 
@@ -271,7 +272,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         // if the device does not have a camera, hide the button
         try {
-            if (!Utils.isHardwareCameraInstalled(getContext())) {
+            if (!Utils.isHardwareCameraInstalled(requireActivity())) {
                 binding.buttonMorePictures.setVisibility(GONE);
             }
         } catch (NullPointerException e) {
@@ -349,7 +350,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.listNutrientLevels.setLayoutManager(new LinearLayoutManager(getContext()));
             binding.listNutrientLevels.setAdapter(new NutrientLevelListAdapter(getContext(), levelItem));
 
-            refreshNutriscore();
+            refreshNutriScore();
             refreshNovaIcon();
             refreshCo2Icon();
             refreshScoresLayout();
@@ -373,7 +374,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    private void refreshNutriscore() {
+    private void refreshNutriScore() {
         int nutritionGradeResource = Utils.getImageGrade(product);
         if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
             binding.imageGrade.setVisibility(VISIBLE);
@@ -451,7 +452,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAdditivesState(String state) {
-        getActivity().runOnUiThread(() -> {
+        requireActivity().runOnUiThread(() -> {
             if (ProductInfoState.LOADING.equals(state)) {
                 binding.textAdditiveProduct.append(getString(R.string.txtLoading));
                 binding.textAdditiveProduct.setVisibility(VISIBLE);
@@ -782,7 +783,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         doChooseOrTakePhotos(getString(R.string.take_more_pictures));
     }
 
-    private void openFullScreen() {
+    private void openFrontImageFullscreen() {
         if (mUrlImage != null) {
             FullScreenActivityOpener.openForUrl(this, product, ProductImageField.FRONT, mUrlImage, binding.imageViewFront);
         } else {
@@ -814,8 +815,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
-        boolean shouldRefresh = requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK;
-        shouldRefresh = shouldRefresh || ProductImageManagementActivity.isImageModified(requestCode, resultCode);
+        boolean shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK)
+            || ProductImageManagementActivity.isImageModified(requestCode, resultCode);
 
         if (shouldRefresh && getActivity() instanceof ProductActivity) {
             ((ProductActivity) getActivity()).onRefresh();

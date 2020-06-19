@@ -62,6 +62,7 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Units;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
@@ -138,7 +139,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         binding.getNutriscorePrompt.setOnClickListener(v -> onNutriScoreButtonClick());
         binding.newAdd.setOnClickListener(v -> newNutritionImage());
 
-        refreshView(getStateFromActivityIntent());
+        refreshView(FragmentUtils.requireStateFromArguments(this));
     }
 
     @Override

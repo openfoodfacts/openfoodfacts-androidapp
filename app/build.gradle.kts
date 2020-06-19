@@ -36,6 +36,7 @@ dependencies {
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.fragment:fragment:1.2.5")
     implementation("androidx.activity:activity:1.1.0")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -198,7 +198,7 @@ public class AddProductActivity extends AppCompatActivity {
         binding.overviewIndicator.setOnClickListener(v -> switchToOverviewPage());
         binding.ingredientsIndicator.setOnClickListener(v -> switchToIngredientsPage());
         binding.nutritionFactsIndicator.setOnClickListener(v -> switchToNutritionFactsPage());
-        binding.viewpager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        binding.viewpager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 selectPage(position);
@@ -267,8 +267,8 @@ public class AddProductActivity extends AppCompatActivity {
         binding = null;
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(getSupportFragmentManager());
+    private void setupViewPager(ViewPager2 viewPager) {
+        ProductFragmentPagerAdapter adapterResult = new ProductFragmentPagerAdapter(this);
         fragmentsBundle.putSerializable("product", mProduct);
         addProductOverviewFragment.setArguments(fragmentsBundle);
         addProductIngredientsFragment.setArguments(fragmentsBundle);

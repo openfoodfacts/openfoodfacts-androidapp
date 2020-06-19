@@ -18,6 +18,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.adapter.IngredientAnalysisRecyclerAdapter;
 
 public class IngredientsAnalysisProductFragment extends BaseFragment {
@@ -29,7 +30,7 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        State state = getStateFromActivityIntent();
+        State state = FragmentUtils.requireStateFromArguments(this);
         product = state.getProduct();
         api = new OpenFoodAPIClient(requireActivity());
     }

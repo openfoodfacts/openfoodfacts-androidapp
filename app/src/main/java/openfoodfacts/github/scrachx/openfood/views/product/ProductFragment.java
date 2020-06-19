@@ -17,9 +17,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.ShareActionProvider;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
@@ -42,10 +43,9 @@ import static android.app.Activity.RESULT_OK;
 public class ProductFragment extends Fragment implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     private ActivityProductBinding binding;
-    public static State productState;//NOSONAR To be changed ASAP !
+    private State productState;
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
-    private ShareActionProvider mShareActionProvider;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
@@ -58,7 +58,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = ActivityProductBinding.inflate(inflater);
         if (getResources().getBoolean(R.bool.portrait_only)) {
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         binding.toolbar.setVisibility(View.GONE);
         productState = (State) getArguments().getSerializable("state");
@@ -69,12 +69,14 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             binding.pager.setNestedScrollingEnabled(true);
         }
 
-        binding.tabs.setupWithViewPager(binding.pager);
+        new TabLayoutMediator(binding.tabs, binding.pager, (tab, position) -> {
+            tab.setText(adapterResult.getPageTitle(position));
+        }).attach();
 
         api = new OpenFoodAPIClient(getActivity());
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) requireActivity().getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mShakeDetector = new ShakeDetector();
 
@@ -84,7 +86,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         mShakeDetector.setOnShakeListener(count -> {
 
             if (scanOnShake) {
-                Utils.scan(getActivity());
+                Utils.scan(requireActivity());
             }
         });
 
@@ -98,23 +100,23 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Intent intent = new Intent(getActivity(), AddProductActivity.class);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, productState.getProduct());
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, getProductState().getProduct());
             startActivity(intent);
         }
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(getChildFragmentManager()), productState, getActivity());
+    private void setupViewPager(ViewPager2 viewPager) {
+        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(requireActivity()), getProductState(), requireActivity());
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return ProductActivity.onOptionsItemSelected(item, getActivity());
     }
 
     @Override
     public void onRefresh() {
-        api.getProductFull(productState.getProduct().getCode()).enqueue(new Callback<State>() {
+        api.getProductFull(getProductState().getProduct().getCode()).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
                 final State s = response.body();
@@ -124,7 +126,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
             @Override
             public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
-                adapterResult.refresh(productState);
+                adapterResult.refresh(getProductState());
             }
         });
     }
@@ -148,22 +150,22 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     }
 
     public void bottomSheetWillGrow() {
-        if (adapterResult == null || adapterResult.getCount() == 0) {
+        if (adapterResult == null || adapterResult.getItemCount() == 0) {
             return;
         }
         // without this, the view can be centered vertically on initial show. we force the scroll to top !
-        if (adapterResult.getItem(0) instanceof SummaryProductFragment) {
-            SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.getItem(0);
+        if (adapterResult.createFragment(0) instanceof SummaryProductFragment) {
+            SummaryProductFragment productFragment = (SummaryProductFragment) adapterResult.createFragment(0);
             productFragment.resetScroll();
         }
     }
 
     public void goToIngredients(String action) {
-        if (adapterResult == null || adapterResult.getCount() == 0) {
+        if (adapterResult == null || adapterResult.getItemCount() == 0) {
             return;
         }
-        for (int i = 0; i < adapterResult.getCount(); ++i) {
-            Fragment fragment = adapterResult.getItem(i);
+        for (int i = 0; i < adapterResult.getItemCount(); ++i) {
+            Fragment fragment = adapterResult.createFragment(i);
             if (fragment instanceof IngredientsProductFragment) {
                 binding.pager.setCurrentItem(i);
 
@@ -175,5 +177,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
                 return;
             }
         }
+    }
+
+    public State getProductState() {
+        return productState;
     }
 }

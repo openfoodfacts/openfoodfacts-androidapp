@@ -16,6 +16,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
@@ -38,7 +39,7 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activityState = getStateFromActivityIntent();
+        activityState = FragmentUtils.requireStateFromArguments(this);
 
         final Product product = activityState.getProduct();
         Nutriments nutriments = product.getNutriments();
