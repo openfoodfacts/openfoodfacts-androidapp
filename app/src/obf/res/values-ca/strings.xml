@@ -30,7 +30,7 @@
     <string name="text_offline_info_dialog">Escanegeu els productes fins i tot quan no esteu connectat per afegir-los a Open Beauty Facts més endavant. Els productes escanejats apareixeran aquí i podreu enviar-los mitjançant el botó que es mostra a continuació.</string>
     <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Beauty Facts. A més, aneu amb compte, les dades del producte poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades! </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
+    <string name="version_string">Aplicació d\'Android Open Beauty Facts</string>
     <string name="tagline">the free cosmetics database</string>
     <string name="product_not_found">El producte %1$s que heu escanejat encara no existeix a Open Beauty Facts. Podeu afegir-lo?</string>
     <string name="currently_on_version">Actualment a Open Beauty Facts</string>
@@ -42,4 +42,9 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">Productes que tinc</string>
     <string name="txt_products_to_buy">Productes per comprar</string>
+    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
+    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="OFFlogo">Open Beauty Facts logo</string>
 </resources>
