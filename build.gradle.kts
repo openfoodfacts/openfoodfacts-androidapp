@@ -14,6 +14,8 @@ buildscript {
         // in the individual module build.gradle files
         classpath("org.greenrobot:greendao-gradle-plugin:3.3.0")
         classpath("com.github.timfreiheit:ResourcePlaceholdersPlugin:0.2")
+
+        classpath("io.sentry:sentry-android-gradle-plugin:1.7.35")
     }
 }
 

@@ -9,6 +9,7 @@ plugins {
     id("com.android.application")
     id("de.timfreiheit.resourceplaceholders.plugin")
     id("org.greenrobot.greendao")
+    id("io.sentry.android.gradle")
 }
 
 fun obtainTestBuildType(): String {
@@ -116,6 +117,9 @@ dependencies {
 
     // UI Component : Chips Input
     implementation("com.hootsuite.android:nachos:1.2.0")
+
+    // Crash analytics
+    implementation("io.sentry:sentry-android:2.1.6")
 
     // Unit Testing
     testImplementation("junit:junit:4.13")
