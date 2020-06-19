@@ -30,7 +30,7 @@
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Beauty Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Beauty Facts. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
+    <string name="version_string">יישומון ה־Android של Open Beauty Facts</string>
     <string name="tagline">מסד נתוני הקוסמטיקה החופשי</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Beauty Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="currently_on_version">כרגע ב־Open Beauty Facts</string>
@@ -42,4 +42,9 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">מוצרים שיש לי</string>
     <string name="txt_products_to_buy">מוצרים לרכישה</string>
+    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
+    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="OFFlogo">Open Beauty Facts logo</string>
 </resources>

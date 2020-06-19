@@ -42,4 +42,9 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">Produkte, die ich besitze</string>
     <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
+    <string name="intent_filter_share_label">Zu Open Beauty Facts hinzufügen</string>
+    <string name="brand_hint">Beispiele: Nivea, L\'Oréal usw. …</string>
+    <string name="txt_info_eaten_products">Sie können ein Produkt zu dieser Liste hinzufügen, indem Sie Produkte erfassen, die Produktkarte nach oben ziehen und auf „Zu erwerbende Produkte” tippen.
+Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchsuchen und auf die Schaltfläche ➕ oben rechts auf der Produktseite klicken.</string>
+    <string name="OFFlogo">Logo von Open Food Fact</string>
 </resources>

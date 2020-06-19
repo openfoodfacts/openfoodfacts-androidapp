@@ -43,4 +43,8 @@
     <string name="add_nutrient_category_prompt_text">crwdns124543:0crwdne124543:0</string>
     <string name="txt_eaten_products">crwdns125828:0crwdne125828:0</string>
     <string name="txt_products_to_buy">crwdns125830:0crwdne125830:0</string>
+    <string name="intent_filter_share_label">crwdns126060:0crwdne126060:0</string>
+    <string name="txt_info_eaten_products">crwdns126072:0crwdne126072:0</string>
+    <string name="OFFlogo">crwdns126074:0crwdne126074:0</string>
+    <string name="brand_hint">crwdns126076:0crwdne126076:0</string>
 </resources>

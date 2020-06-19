@@ -43,4 +43,9 @@
     <string name="add_nutrient_category_prompt_text">Tilføj en kategori og flere detaljer som hjælp til produktfærdiggørelsen</string>
     <string name="txt_eaten_products">Produkter, jeg har</string>
     <string name="txt_products_to_buy">Produkter at købe</string>
+    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="OFFlogo">Open Products Facts logo</string>
+    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
 </resources>

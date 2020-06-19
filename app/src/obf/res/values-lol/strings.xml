@@ -42,4 +42,8 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">crwdns125820:0crwdne125820:0</string>
     <string name="txt_products_to_buy">crwdns125822:0crwdne125822:0</string>
+    <string name="intent_filter_share_label">crwdns126052:0crwdne126052:0</string>
+    <string name="brand_hint">crwdns126054:0crwdne126054:0</string>
+    <string name="txt_info_eaten_products">crwdns126056:0crwdne126056:0</string>
+    <string name="OFFlogo">crwdns126058:0crwdne126058:0</string>
 </resources>
