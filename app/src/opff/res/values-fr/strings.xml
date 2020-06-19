@@ -43,4 +43,5 @@
     <string name="add_nutrient_category_prompt_text">Ajoutez une catégorie et des informations nutritionnelles pour aider à compléter le produit</string>
     <string name="txt_eaten_products">Produits que j\'ai</string>
     <string name="txt_products_to_buy">Produits à acheter</string>
+    <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
 </resources>
