@@ -44,4 +44,7 @@
     <string name="txt_eaten_products">crwdns125824:0crwdne125824:0</string>
     <string name="txt_products_to_buy">crwdns125826:0crwdne125826:0</string>
     <string name="intent_filter_share_label">crwdns126062:0crwdne126062:0</string>
+    <string name="txt_info_eaten_products">crwdns126064:0crwdne126064:0</string>
+    <string name="OFFlogo">crwdns126066:0crwdne126066:0</string>
+    <string name="brand_hint">crwdns126068:0crwdne126068:0</string>
 </resources>
