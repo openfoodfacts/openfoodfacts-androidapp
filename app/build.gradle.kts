@@ -40,6 +40,7 @@ dependencies {
 
     //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.work:work-rxjava2:2.3.4")
     annotationProcessor("com.google.dagger:dagger-compiler:2.28")
     implementation("com.google.dagger:dagger:2.28")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")

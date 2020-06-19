@@ -34,6 +34,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -77,6 +79,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     private File lastViewedImage;
     private PhotoViewAttacher mAttacher;
     private SharedPreferences settings;
+    private CompositeDisposable disp = new CompositeDisposable();
 
     public static boolean isImageModified(int requestCode, int resultCode) {
         return requestCode == REQUEST_EDIT_IMAGE && resultCode == ProductImageManagementActivity.RESULTCODE_MODIFIED;
@@ -85,6 +88,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        disp.dispose();
         binding = null;
     }
 
@@ -528,11 +532,13 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
 
     private void editPhoto(ProductImageField productImageField, ImageTransformationUtils transformation) {
         if (transformation.isNotEmpty()) {
-            new FileDownloader(getBaseContext()).download(transformation.getInitImageUrl(), file -> {
-                //to delete the file after:
-                lastViewedImage = file;
-                cropRotateExistingImageOnServer(file, getString(ImageKeyHelper.getResourceIdForEditAction(productImageField)), transformation);
-            });
+            disp.add(FileDownloader.download(this, transformation.getInitImageUrl())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(file -> {
+                    //to delete the file after:
+                    lastViewedImage = file;
+                    cropRotateExistingImageOnServer(file, getString(ImageKeyHelper.getResourceIdForEditAction(productImageField)), transformation);
+                }));
         }
     }
 

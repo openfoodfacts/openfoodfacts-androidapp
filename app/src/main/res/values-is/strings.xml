@@ -158,7 +158,7 @@
     <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Skammtastærð:</string>
-    <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
+    <string name="txtNutrientLevel100g">Næringargildi í 100g :</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
@@ -576,7 +576,7 @@
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Leifar</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts Picture</string>

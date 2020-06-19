@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.utils;
 import java.text.Collator;
 import java.text.Normalizer;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Raymond Chenon on 05/05/20.
@@ -18,6 +20,17 @@ public class Stringi18nUtils {
      */
     public static void sortAlphabetically(String[] arrays, Collator collator) {
         Arrays.sort(arrays, collator);
+    }
+
+    /**
+     * Compare the strings ignoring the accents on letters ([a-z][A-Z])
+     * Sort string by ignoring accents on letters. The sorted strings will keep their accents.
+     *
+     * @param list
+     * @param collator
+     */
+    public static void sortAlphabetically(List<String> list, Collator collator) {
+        Collections.sort(list, collator);
     }
 
     /**

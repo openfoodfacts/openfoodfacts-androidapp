@@ -32,6 +32,7 @@
     <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Pet Food Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche versenden.</string>
     <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OPFF tagline in different languages -->
+    <string name="version_string">Android-App „Open Pet Food Facts” öffnen</string>
     <string name="tagline">freie Tierfutterdatenbank</string>
     <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Pet Food Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Pet Food Facts</string>

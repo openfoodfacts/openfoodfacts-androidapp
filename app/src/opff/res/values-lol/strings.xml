@@ -32,6 +32,7 @@
     <string name="text_offline_info_dialog">crwdns114756:0crwdne114756:0</string>
     <string name="warning_alert_data">crwdns114758:0crwdne114758:0</string>
     <!-- OPFF tagline in different languages -->
+    <string name="version_string">crwdns125978:0crwdne125978:0</string>
     <string name="tagline">crwdns114770:0crwdne114770:0</string>
     <string name="product_not_found">crwdns114774:0%1$scrwdne114774:0</string>
     <string name="currently_on_version">crwdns114776:0crwdne114776:0</string>

@@ -32,6 +32,7 @@
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="warning_alert_data">A información sobre as súas alerxias nunca se enviará ao servidor de Open Food Facts. Ademáis, teña en conta que os datos poderían non ser precisos e a detección podería non ser 100% precisa, así que compróbeo vostede mesma con atención! </string>
     <!-- OPFF tagline in different languages -->
+    <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Pet Food Facts</string>

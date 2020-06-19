@@ -32,6 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
@@ -69,6 +71,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     private List<String> allergens = new ArrayList<>();
     private OfflineSavedProduct mOfflineSavedProduct;
     private HashMap<String, String> productDetails = new HashMap<>();
+    private CompositeDisposable disp = new CompositeDisposable();
     private String imagePath;
     private boolean editProduct;
     private Product product;
@@ -247,6 +250,13 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         return tag;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        disp.dispose();
+        binding = null;
+    }
+
     /**
      * To enable fast addition mode
      */
@@ -338,10 +348,12 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             if (photoFile != null) {
                 cropRotateImage(photoFile, getString(R.string.ingredients_picture));
             } else {
-                new FileDownloader(getContext()).download(imagePath, file -> {
-                    photoFile = file;
-                    cropRotateImage(photoFile, getString(R.string.ingredients_picture));
-                });
+                disp.add(FileDownloader.download(requireContext(), imagePath)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(file -> {
+                        photoFile = file;
+                        cropRotateImage(photoFile, getString(R.string.ingredients_picture));
+                    }));
             }
         } else {
             onClickBtnEditImageIngredients();

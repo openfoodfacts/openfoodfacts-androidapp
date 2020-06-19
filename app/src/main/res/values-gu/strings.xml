@@ -169,7 +169,7 @@
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">બારકોડ</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
@@ -200,7 +200,7 @@
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">શ્રેણીઓ</string>
     <string name="search_by_category">Category</string>
     <string name="scan_search">Scan Barcode</string>
     <string name="user_drawer">User</string>
@@ -455,7 +455,7 @@
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Search</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">દેશો જ્યાં વેચાય છે</string>
     <string name="store_subtitle">Store</string>
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
@@ -476,7 +476,7 @@
     <string name="DisableLoadTitle">Disable image loading</string>
     <string name="by_title">Title</string>
     <string name="by_brand">Brand</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_barcode">બારકોડ</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
@@ -614,7 +614,7 @@
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
-    <string name="edit_product_title">Edit a product</string>
+    <string name="edit_product_title">ઉત્પાદન ઉમેરો</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
@@ -717,7 +717,7 @@
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Barcode</string>
+    <string name="barcode">બારકોડ</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>

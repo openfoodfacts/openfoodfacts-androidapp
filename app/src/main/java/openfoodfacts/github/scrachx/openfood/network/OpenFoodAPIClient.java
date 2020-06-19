@@ -9,12 +9,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.concurrent.futures.CallbackToFutureAdapter;
-import androidx.work.ListenableWorker;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.google.common.util.concurrent.ListenableFuture;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -33,6 +30,7 @@ import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -645,14 +643,14 @@ public class OpenFoodAPIClient {
      * @param context context
      * @return ListenableFuture
      */
-    public ListenableFuture<ListenableWorker.Result> uploadOfflineImages(Context context) {
-        return CallbackToFutureAdapter.getFuture(completer -> {
+    public Completable uploadOfflineImages(Context context) {
+        return Single.fromCallable(() -> {
             List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder()
                 .where(ToUploadProductDao.Properties.Uploaded.eq(false))
                 .list();
 
             int totalSize = toUploadProductList.size();
-            Callback<JsonNode> callback = null;
+            List<Completable> completables = new ArrayList<>();
             for (int i = 0; i < totalSize; i++) {
                 ToUploadProduct uploadProduct = toUploadProductList.get(i);
                 File imageFile;
@@ -664,38 +662,26 @@ public class OpenFoodAPIClient {
                 }
                 ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
                     uploadProduct.getProductField(), imageFile);
-                apiService.saveImage(getUploadableMap(productImage))
-                    .enqueue(
-                        callback = new Callback<JsonNode>() {
-                            @Override
-                            public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
-                                if (!response.isSuccessful()) {
-                                    Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show();
-                                    return;
-                                }
-
-                                JsonNode body = response.body();
-                                if (body != null) {
-                                    Log.d("onResponse", body.toString());
-                                    if (!body.isObject()) {
-
-                                    } else if (body.get("status").asText().contains("status not ok")) {
-                                        mToUploadProductDao.delete(uploadProduct);
-                                    } else {
-                                        mToUploadProductDao.delete(uploadProduct);
-                                        completer.set(ListenableWorker.Result.success());
-                                    }
-                                }
+                completables.add(apiService.saveImageSingle(OpenFoodAPIClient.this.getUploadableMap(productImage))
+                    .flatMapCompletable((Function<JsonNode, Completable>) jsonNode -> {
+                        if (jsonNode != null) {
+                            Log.d("onResponse", jsonNode.toString());
+                            if (!jsonNode.isObject()) {
+                                return Completable.error(new IOException("jsonNode is not an object"));
+                            } else if (jsonNode.get("status").asText().contains("status not ok")) {
+                                mToUploadProductDao.delete(uploadProduct);
+                                return Completable.error(new IOException("status not ok"));
+                            } else {
+                                mToUploadProductDao.delete(uploadProduct);
+                                return Completable.complete();
                             }
-
-                            @Override
-                            public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
-                                completer.setException(t);
-                            }
-                        });
+                        } else {
+                            return Completable.error(new IOException("jsonNode is null"));
+                        }
+                    }));
             }
-            return callback;
-        });
+            return completables;
+        }).flatMapCompletable(Completable::merge);
     }
 
     public void getProductsByStore(final String store, final int page, final ApiCallbacks.OnStoreCallback onStoreCallback) {
@@ -951,7 +937,8 @@ public class OpenFoodAPIClient {
     /**
      * OnResponseCall for uploads through notifications
      */
-    public void onResponseCallForNotificationPostFunction(Call<State> call, Response<State> response, Context context, final ApiCallbacks.OnProductSentCallback productSentCallback,
+    public void onResponseCallForNotificationPostFunction(Call<State> call, Response<State> response, Context context,
+                                                          final ApiCallbacks.OnProductSentCallback productSentCallback,
                                                           SendProduct product) {
         postImages(response, context, productSentCallback, product);
     }
@@ -991,15 +978,18 @@ public class OpenFoodAPIClient {
                 .enqueue(createNotificationCallback(context, product, productSentCallback));
         } else if (product.getName().equals("") && product.getBrands().equals("")) {
             apiService
-                .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(), getCommentToUpload())
+                .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(),
+                    getCommentToUpload())
                 .enqueue(createNotificationCallback(context, product, productSentCallback));
         } else if (product.getName().equals("") && product.getQuantity() == null) {
             apiService
-                .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(), getCommentToUpload())
+                .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(),
+                    getCommentToUpload())
                 .enqueue(createNotificationCallback(context, product, productSentCallback));
         } else if (product.getBrands().equals("") && product.getQuantity() == null) {
             apiService
-                .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(), getCommentToUpload())
+                .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(),
+                    getCommentToUpload())
                 .enqueue(createNotificationCallback(context, product, productSentCallback));
         } else {
             apiService.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product

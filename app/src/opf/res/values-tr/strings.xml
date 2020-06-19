@@ -32,6 +32,7 @@
     <string name="text_offline_info_dialog">Ürünleri Open Product Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
     <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Product Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
     <!-- OPF tagline in different languages -->
+    <string name="version_string">Open Products Facts Android App</string>
     <string name="tagline">özgür ürün veritabanı</string>
     <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Product Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
     <string name="currently_on_version">Open Product Facts\'te mevcut olan</string>
