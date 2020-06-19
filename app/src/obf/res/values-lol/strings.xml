@@ -30,6 +30,7 @@
     <string name="text_offline_info_dialog">crwdns114612:0crwdne114612:0</string>
     <string name="warning_alert_data">crwdns114614:0crwdne114614:0</string>
     <!-- OBF tagline in different languages -->
+    <string name="version_string">crwdns125974:0crwdne125974:0</string>
     <string name="tagline">crwdns114626:0crwdne114626:0</string>
     <string name="product_not_found">crwdns114630:0%1$scrwdne114630:0</string>
     <string name="currently_on_version">crwdns114632:0crwdne114632:0</string>

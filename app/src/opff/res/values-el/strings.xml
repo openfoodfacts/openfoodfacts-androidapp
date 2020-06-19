@@ -32,6 +32,7 @@
     <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Pet Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
     <string name="warning_alert_data">Η αλλεργίες που εισάγετε είναι προσωπικές και δεν στέλνονται σε εμάς. Να είστε προσεχτικοί καθώς οι πληροφορίες προϊόντων δεν είναι τελείως ακριβής και προτείνεται να ελέγχετε τι παίρνετε. </string>
     <!-- OPFF tagline in different languages -->
+    <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>
     <string name="product_not_found">Το προϊόν %1$s που σαρώσατε δεν υπάρχει ακόμα στο Open Pet Food Facts. Μπορείτε να το προσθέσετε;</string>
     <string name="currently_on_version">Τώρα στο Open Pet Food Facts</string>

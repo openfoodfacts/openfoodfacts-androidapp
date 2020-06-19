@@ -32,6 +32,7 @@
     <string name="text_offline_info_dialog">Hatto oflayn rejimda boʻlsangiz ham mahsulotlarni skaner qilishingiz va keyinchalik uni Open Pet Food Factsga kiritishingiz mumkin. Skanerlangan mahsulotlar bu yerda paydo boʻladi va siz ularni quyidagi tugmani bosish orqali yuborishingiz mumkin.</string>
     <string name="warning_alert_data">Sizning allergik kasalligingiz haqidagi maʼlumotlar hech qachon Open Food Facts serveriga yuborilmaydi. Bundan tashqari, mahsulot haqidagi maʼlumotlar juda aniq boʻlmasligi mumkin, aniqlash jarayoni 100% aniqlikda boʻlmasligi mumkin, shu sababli uni oʻzingiz ham tekshirib chiqing! </string>
     <!-- OPFF tagline in different languages -->
+    <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">uy hayvonlari uchun bepul ozuqa mahsulotlari maʻlumotlar ombori</string>
     <string name="product_not_found">Siz koʻrsatgan %1$s mahsuloti hozirda Open Pet Food Facts da mavjud emas. Uni qoʻsha olasizmi?</string>
     <string name="currently_on_version">Hozirda Open Pet Food Factsning versiyasi</string>
