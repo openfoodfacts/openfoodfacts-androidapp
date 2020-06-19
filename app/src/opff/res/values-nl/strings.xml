@@ -43,4 +43,5 @@
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="txt_eaten_products">Products I have</string>
     <string name="txt_products_to_buy">Producten om te kopen</string>
+    <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
 </resources>
