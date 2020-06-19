@@ -43,4 +43,5 @@
     <string name="add_nutrient_category_prompt_text">Fügen Sie eine Kategorie und weitere Details hinzu, um das Produkt zu vervollständigen.</string>
     <string name="txt_eaten_products">Produkte, die ich besitze</string>
     <string name="txt_products_to_buy">Zu erwerbende Produkte</string>
+    <string name="intent_filter_share_label">Add to Open Products Facts</string>
 </resources>
