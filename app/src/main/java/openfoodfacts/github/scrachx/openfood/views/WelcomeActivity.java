@@ -15,8 +15,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -26,8 +26,6 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 
 public class WelcomeActivity extends AppCompatActivity {
     private ActivityWelcomeBinding binding;
-    private MyViewPagerAdapter myViewPagerAdapter;
-    private TextView[] dots;
     private int[] layouts;
     private PrefManager prefManager;
     private boolean lastPage = false;
@@ -73,20 +71,20 @@ public class WelcomeActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onPageScrollStateChanged(int arg0) {
-            currentState = arg0;
+        public void onPageScrollStateChanged(int state) {
+            currentState = state;
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome);
+        binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         prefManager = new PrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
@@ -94,7 +92,7 @@ public class WelcomeActivity extends AppCompatActivity {
             finish();
         }
 
-        if (Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -109,16 +107,16 @@ public class WelcomeActivity extends AppCompatActivity {
         addBottomDots(0);
         changeStatusBarColor();
 
-        myViewPagerAdapter = new MyViewPagerAdapter();
+        MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter(getLayoutInflater(), layouts);
         binding.viewPager.setAdapter(myViewPagerAdapter);
         binding.viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
         binding.btnSkip.setOnClickListener(v -> launchHomeScreen());
 
         binding.btnNext.setOnClickListener(v -> {
-            int current = getItem(+1);
-            if (current < layouts.length) {
-                binding.viewPager.setCurrentItem(current);
+            int nextItem = getNextItem();
+            if (nextItem < layouts.length) {
+                binding.viewPager.setCurrentItem(nextItem);
             } else {
                 launchHomeScreen();
             }
@@ -126,7 +124,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
+        TextView[] dots = new TextView[layouts.length];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
@@ -156,29 +154,31 @@ public class WelcomeActivity extends AppCompatActivity {
         super.attachBaseContext(LocaleHelper.onCreate(newBase));
     }
 
-    private int getItem(int i) {
-        return binding.viewPager.getCurrentItem() + i;
+    private int getNextItem() {
+        return binding.viewPager.getCurrentItem() + 1;
     }
 
     private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return;
         }
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.TRANSPARENT);
     }
 
-    public class MyViewPagerAdapter extends PagerAdapter {
-        private LayoutInflater layoutInflater;
+    public static class MyViewPagerAdapter extends PagerAdapter {
+        private final LayoutInflater layoutInflater;
+        private final int[] layouts;
 
-        public MyViewPagerAdapter() {
+        public MyViewPagerAdapter(LayoutInflater layoutInflater, @StringRes int[] layouts) {
+            this.layoutInflater = layoutInflater;
+            this.layouts = layouts;
         }
 
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
             View view = layoutInflater.inflate(layouts[position], container, false);
             container.addView(view);
 

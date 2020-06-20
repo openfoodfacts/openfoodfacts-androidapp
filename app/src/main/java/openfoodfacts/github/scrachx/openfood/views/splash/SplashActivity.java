@@ -45,6 +45,7 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         taglines = getResources().getStringArray(R.array.taglines_array);
         binding.tagline.post(changeTagline);

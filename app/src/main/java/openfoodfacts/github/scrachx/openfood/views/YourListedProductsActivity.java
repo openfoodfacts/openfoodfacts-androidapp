@@ -115,7 +115,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
         }
         String locale = LocaleHelper.getLanguage(this);
         if (prodToAdd != null && prodToAdd.getCode() != null && prodToAdd.getProductName() != null
-            && prodToAdd.getImageSmallUrl(locale) !s = null){
+            && prodToAdd.getImageSmallUrl(locale) != null) {
 
             String barcode = prodToAdd.getCode();
             String productName = prodToAdd.getProductName();
