@@ -72,8 +72,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
+import io.reactivex.Observable;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -128,6 +134,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
     private PrefManager prefManager;
+    private CompositeDisposable disp = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -780,6 +787,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     protected void onDestroy() {
         customTabActivityHelper.setConnectionCallback(null);
+        disp.dispose();
+        binding = null;
         super.onDestroy();
     }
 
@@ -886,54 +895,65 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     private void chooseDialog(ArrayList<Uri> selectedImagesArray) {
-        boolean isBarCodePresent = detectBarCodeInImage(selectedImagesArray);
-        if (isBarCodePresent) {
-            createAlertDialog(false, mBarcode, selectedImagesArray);
-        } else {
-            createAlertDialog(true, "", selectedImagesArray);
-        }
-    }
-
-    private boolean detectBarCodeInImage(ArrayList<Uri> selectedImages) {
-        for (Uri uri : selectedImages) {
-            Bitmap bMap = null;
-            try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
-                bMap = BitmapFactory.decodeStream(imageStream);
-            } catch (FileNotFoundException e) {
-                Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString(), e);
-            } catch (IOException e) {
-                Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage(), e);
-            }
-            //decoding bitmap
-            if (bMap != null) {
-                int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
-                bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), bMap.getHeight());
-                LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), bMap.getHeight(), intArray);
-                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-                Reader reader = new MultiFormatReader();
-                try {
-                    HashMap<DecodeHintType, Object> decodeHints = new HashMap<>();
-                    decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-                    decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
-                    Result decodedResult = reader.decode(bitmap, decodeHints);
-                    if (decodedResult != null) {
-                        mBarcode = decodedResult.getText();
-                    }
-                    if (mBarcode != null) {
-                        return true;
-                    }
-                } catch (FormatException e) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.format_error), Toast.LENGTH_SHORT).show();
-                    Log.e(MainActivity.class.getSimpleName(), "Error decoding bitmap into barcode: " + e.getMessage());
-                } catch (Exception e) {
-                    Log.e(MainActivity.class.getSimpleName(), "Error decoding bitmap into barcode: " + e.getMessage());
+        disp.add(detectBarcodeInImages(selectedImagesArray).observeOn(AndroidSchedulers.mainThread())
+            .subscribe(isBarCodePresent -> {
+                if (isBarCodePresent) {
+                    createAlertDialog(false, mBarcode, selectedImagesArray);
+                } else {
+                    createAlertDialog(true, "", selectedImagesArray);
                 }
-            }
-        }
-        return false;
+            }));
     }
 
-    private void createAlertDialog(boolean hasEditText, String barcode, ArrayList<Uri> uri) {
+    /**
+     * IO / Computing intensive operation
+     *
+     * @param selectedImages
+     */
+    private Single<Boolean> detectBarcodeInImages(List<Uri> selectedImages) {
+        return Observable.fromArray(selectedImages.toArray(new Uri[0]))
+            .map(uri -> {
+                Bitmap bMap = null;
+                try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
+                    bMap = BitmapFactory.decodeStream(imageStream);
+                } catch (FileNotFoundException e) {
+                    Log.e(MainActivity.class.getSimpleName(), "Could not resolve file from Uri " + uri.toString(), e);
+                } catch (IOException e) {
+                    Log.e(MainActivity.class.getSimpleName(), "IO error during bitmap stream decoding: " + e.getMessage(), e);
+                }
+                //decoding bitmap
+                if (bMap != null) {
+                    int[] intArray = new int[bMap.getWidth() * bMap.getHeight()];
+                    bMap.getPixels(intArray, 0, bMap.getWidth(), 0, 0, bMap.getWidth(), bMap.getHeight());
+                    LuminanceSource source = new RGBLuminanceSource(bMap.getWidth(), bMap.getHeight(), intArray);
+                    BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+                    Reader reader = new MultiFormatReader();
+                    try {
+                        HashMap<DecodeHintType, Object> decodeHints = new HashMap<>();
+                        decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
+                        decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
+                        Result decodedResult = reader.decode(bitmap, decodeHints);
+                        if (decodedResult != null) {
+                            mBarcode = decodedResult.getText();
+                        }
+                        if (mBarcode != null) {
+                            return true;
+                        }
+                    } catch (FormatException e) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.format_error), Toast.LENGTH_SHORT).show();
+                        Log.e(MainActivity.class.getSimpleName(), "Error decoding bitmap into barcode: " + e.getMessage());
+                    } catch (Exception e) {
+                        Log.e(MainActivity.class.getSimpleName(), "Error decoding bitmap into barcode: " + e.getMessage());
+                    }
+                }
+                return false;
+            })
+            .filter(bool -> bool)
+            .first(false)
+            .subscribeOn(Schedulers.computation());
+    }
+
+    private void createAlertDialog(boolean hasEditText, @NonNull String barcode, @NonNull ArrayList<Uri> uri) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         LayoutInflater inflater = this.getLayoutInflater();
@@ -942,8 +962,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         final EditText barcodeEditText = dialogView.findViewById(R.id.barcode);
         final RecyclerView productImages = dialogView.findViewById(R.id.product_image);
-        LinearLayoutManager layoutManager
-            = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
+            LinearLayoutManager.HORIZONTAL,
+            false);
         productImages.setLayoutManager(layoutManager);
         productImages.setAdapter(new PhotosAdapter(uri));
 
