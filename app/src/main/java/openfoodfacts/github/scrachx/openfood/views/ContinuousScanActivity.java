@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
 import io.reactivex.SingleObserver;
@@ -120,12 +121,12 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private int peekSmall;
     private PopupMenu popup;
     private boolean productShowing = false;
-    private Runnable runnable;
-    private SummaryProductPresenter summaryProductPresenter;
     private final BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
-            handler.removeCallbacks(runnable);
+            if (disposable != null) {
+                disposable.dispose();
+            }
             if (result.getText() == null || result.getText().isEmpty() || result.getText().equals(lastText)) {
                 // Prevent duplicate scans
                 return;
@@ -152,6 +153,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
             // Here possible results are useless but we must implement this
         }
     };
+    private SummaryProductPresenter summaryProductPresenter;
+    private Disposable hintBarcodeDisp;
 
     /**
      * Used by screenshot tests.
@@ -611,16 +614,18 @@ public class ContinuousScanActivity extends AppCompatActivity {
             });
 
         handler = new Handler();
-        runnable = () -> {
-            if (productShowing) {
-                return;
-            }
-            hideAllViews();
-            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            binding.quickViewSearchByBarcode.setVisibility(VISIBLE);
-            binding.quickViewSearchByBarcode.requestFocus();
-        };
-        handler.postDelayed(runnable, 15000);
+
+        hintBarcodeDisp = Completable.timer(15, TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnComplete(() -> {
+                if (productShowing) {
+                    return;
+                }
+                hideAllViews();
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                binding.quickViewSearchByBarcode.setVisibility(VISIBLE);
+                binding.quickViewSearchByBarcode.requestFocus();
+            }).subscribe();
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.quickView);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
@@ -835,7 +840,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     break;
                 case R.id.troubleScanning:
                     hideAllViews();
-                    handler.removeCallbacks(runnable);
+                    if (hintBarcodeDisp != null) {
+                        hintBarcodeDisp.dispose();
+                    }
                     binding.quickView.setOnClickListener(null);
                     binding.quickViewSearchByBarcode.setText(null);
                     binding.quickViewSearchByBarcode.setVisibility(VISIBLE);
