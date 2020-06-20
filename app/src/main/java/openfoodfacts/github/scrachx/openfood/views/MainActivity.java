@@ -150,7 +150,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-// Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (mSensorManager != null) {
             mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -160,11 +160,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         setShakePreferences();
 
         fragmentManager.addOnBackStackChangedListener(() -> {
-
         });
 
-        fragmentManager.beginTransaction().replace(R.id.fragment_container, new HomeFragment
-            ()).commit();
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, new HomeFragment())
+            .commit();
         binding.toolbarInclude.toolbar.setTitle(APP_NAME);
 
         // chrome custom tab init
@@ -183,7 +183,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .addProfiles(profile)
             .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                 @Override
-                public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
+                public boolean onProfileImageClick(@NonNull View view, @NonNull IProfile profile, boolean current) {
 
                     if (isUserNotLoggedIn()) {
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
@@ -192,7 +192,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 }
 
                 @Override
-                public boolean onProfileImageLongClick(View view, IProfile profile, boolean current) {
+                public boolean onProfileImageLongClick(@NonNull View view, @NonNull IProfile profile, boolean current) {
                     return false;
                 }
             })
@@ -221,8 +221,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         SharedPreferences preferences = getSharedPreferences("login", 0);
 
         String userSession = preferences.getString("user_session", null);
-        final boolean isUserLoggedIn = isUserLoggedIn();
-        boolean isUserConnected = isUserLoggedIn && userSession != null;
+        boolean isUserConnected = isUserLoggedIn() && userSession != null;
 
         if (isUserConnected) {
             updateProfileForCurrentUser();
@@ -397,7 +396,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn ?
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn() ?
             getLogoutDrawerItem() : getLoginDrawerItem());
 
         if (BuildConfig.FLAVOR.equals("obf")) {
@@ -963,7 +962,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .setPositiveButton(R.string.txtYes, (dialog, id) -> {
                 for (Uri selected : uri) {
                     OpenFoodAPIClient api = new OpenFoodAPIClient(MainActivity.this);
-                    ProductImage image = null;
+                    ProductImage image;
                     ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                     NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
                     String tempBarcode;

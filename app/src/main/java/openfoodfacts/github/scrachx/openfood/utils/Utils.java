@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -431,7 +430,6 @@ public class Utils {
      *
      * @return true if installed, false otherwise.
      */
-    @SuppressLint("UnsupportedChromeOsCameraSystemFeature")
     public static boolean isHardwareCameraInstalled(@NonNull Context context) {
         return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }

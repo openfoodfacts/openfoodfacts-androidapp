@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -50,7 +51,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     private List<ProductLists> productLists;
     private ProductListsDao productListsDao;
 
-    public static Intent getIntent(Context context) {
+    public static Intent getIntent(@NonNull Context context) {
         return new Intent(context, ProductListsActivity.class);
     }
 
@@ -91,8 +92,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
             showCreateListDialog(productToAdd);
         }
 
-        binding.productListsRecyclerView.addOnItemTouchListener(
-            new RecyclerItemClickListener(ProductListsActivity.this, ((view, position) -> {
+        binding.productListsRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(ProductListsActivity.this,
+            ((view, position) -> {
                 Long id = productLists.get(position).getId();
                 String listName = productLists.get(position).getListName();
                 Intent intent = new Intent(this, YourListedProductsActivity.class);

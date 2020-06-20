@@ -23,15 +23,32 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvYourListedProducts"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/materialize_baseline_grid_small"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:listitem="@layout/your_listed_products_item" />
+
         <LinearLayout
             android:id="@+id/main_layout"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/tvInfoYourListedProducts"
@@ -44,28 +61,19 @@
                 android:padding="12dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/darker_gray"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                tools:visibility="visible" />
 
             <Button
                 android:id="@+id/scanFirstYourListedProduct"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/ButtonRounded"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/rounded_button"
-                android:padding="6dp"
                 android:text="@string/scan_first_product"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                tools:visibility="visible" />
         </LinearLayout>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvYourListedProducts"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/materialize_baseline_grid_small"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <include
             android:id="@+id/bottom_navigation"

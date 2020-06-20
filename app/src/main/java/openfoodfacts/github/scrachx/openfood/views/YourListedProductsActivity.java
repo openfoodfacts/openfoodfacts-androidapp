@@ -21,7 +21,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -71,10 +70,10 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
     private List<YourListedProduct> products;
     private YourListedProductDao yourListedProductDao;
     private HistoryProductDao historyProductDao;
-    private Long id;
+    private Long listID;
     private YourListedProductsAdapter adapter;
     private Boolean isLowBatteryMode = false;
-    private Product p;
+    private Product prodToAdd;
     private String listName;
     private Boolean emptyList = false;
     private Boolean isEatenList = false;
@@ -89,40 +88,43 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_your_listed_products);
+        binding = ActivityYourListedProductsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         // OnClick
-        binding.scanFirstYourListedProduct.setOnClickListener(v -> onScanFirst());
+        binding.scanFirstYourListedProduct.setOnClickListener(v -> onFirstScan());
 
         if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true;
         }
-        ProductListsDao  productListsDao = Utils.getDaoSession().getProductListsDao();
+        ProductListsDao productListsDao = Utils.getDaoSession().getProductListsDao();
         yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
         historyProductDao = Utils.getDaoSession().getHistoryProductDao();
 
+        // Get listid and add product to list if bundle is present
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            id = bundle.getLong("listId");
+            listID = bundle.getLong("listId");
             listName = bundle.getString("listName");
             setTitle(listName);
-            p = (Product) bundle.get("product");
+            prodToAdd = (Product) bundle.get("product");
         }
-        String locale = LocaleHelper.getLanguage(getBaseContext());
-        if (p != null && p.getCode() != null && p.getProductName() != null
-            && p.getImageSmallUrl(locale) != null) {
+        String locale = LocaleHelper.getLanguage(this);
+        if (prodToAdd != null && prodToAdd.getCode() != null && prodToAdd.getProductName() != null
+            && prodToAdd.getImageSmallUrl(locale) !s = null){
 
-            String barcode = p.getCode();
-            String productName = p.getProductName();
+            String barcode = prodToAdd.getCode();
+            String productName = prodToAdd.getProductName();
 
-            String productDetails = getProductBrandsQuantityDetails(p);
-            String imageUrl = p.getImageSmallUrl(locale);
+            String productDetails = getProductBrandsQuantityDetails(prodToAdd);
+            String imageUrl = prodToAdd.getImageSmallUrl(locale);
             YourListedProduct product = new YourListedProduct();
             product.setBarcode(barcode);
-            product.setListId(id);
+            product.setListId(listID);
             product.setListName(listName);
             product.setProductName(productName);
             product.setProductDetails(productDetails);
@@ -130,8 +132,8 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
             yourListedProductDao.insertOrReplace(product);
         }
 
-        thisProductList = productListsDao.load(id);
-        if(thisProductList==null){
+        thisProductList = productListsDao.load(listID);
+        if (thisProductList == null) {
             return;
         }
         thisProductList.resetProducts();
@@ -141,6 +143,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
         binding.rvYourListedProducts.setLayoutManager(new LinearLayoutManager(this));
         binding.rvYourListedProducts.setHasFixedSize(false);
         products = thisProductList.getProducts();
+
         if (products.isEmpty()) {
             emptyList = true;
             binding.tvInfoYourListedProducts.setVisibility(View.VISIBLE);
@@ -266,8 +269,8 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
         }
     }
 
-    private void sortProducts(){
-        switch(sortType){
+    private void sortProducts() {
+        switch (sortType) {
             case "title":
                 Collections.sort(products, (p1, p2) -> p1.getProductName().compareToIgnoreCase(p2.getProductName()));
                 break;
@@ -284,28 +287,28 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                 //get list of HistoryProduct items for the YourListProduct items
                 WhereCondition[] conditionsGrade = new WhereCondition[products.size()];
                 int i = 0;
-                for (YourListedProduct p:products){
+                for (YourListedProduct p : products) {
                     conditionsGrade[i] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
                     i++;
                 }
                 List<HistoryProduct> historyProductsGrade;
                 QueryBuilder<HistoryProduct> qbGrade = historyProductDao.queryBuilder();
-                qbGrade.whereOr(conditionsGrade[0],conditionsGrade[1], Arrays.copyOfRange(conditionsGrade,2,conditionsGrade.length));
+                qbGrade.whereOr(conditionsGrade[0], conditionsGrade[1], Arrays.copyOfRange(conditionsGrade, 2, conditionsGrade.length));
                 historyProductsGrade = qbGrade.list();
 
-                Collections.sort(products,(p1,p2)->{
+                Collections.sort(products, (p1, p2) -> {
 
                     String g1 = "E";
                     String g2 = "E";
 
-                    for (HistoryProduct h:historyProductsGrade){
-                        if(h.getBarcode().equals(p1.getBarcode())){
-                            if(h.getNutritionGrade() != null) {
+                    for (HistoryProduct h : historyProductsGrade) {
+                        if (h.getBarcode().equals(p1.getBarcode())) {
+                            if (h.getNutritionGrade() != null) {
                                 g1 = h.getNutritionGrade();
                             }
                         }
-                        if(h.getBarcode().equals(p2.getBarcode())) {
-                            if(h.getNutritionGrade() != null) {
+                        if (h.getBarcode().equals(p2.getBarcode())) {
+                            if (h.getNutritionGrade() != null) {
                                 g2 = h.getNutritionGrade();
                             }
                         }
@@ -318,29 +321,28 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                 //get list of HistoryProduct items for the YourListProduct items
                 WhereCondition[] conditionsTime = new WhereCondition[products.size()];
                 int j = 0;
-                for (YourListedProduct p:products){
+                for (YourListedProduct p : products) {
                     conditionsTime[j] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
                     j++;
                 }
                 List<HistoryProduct> historyProductsTime;
                 QueryBuilder<HistoryProduct> qbTime = historyProductDao.queryBuilder();
-                qbTime.whereOr(conditionsTime[0],conditionsTime[1], Arrays.copyOfRange(conditionsTime,2,conditionsTime.length));
+                qbTime.whereOr(conditionsTime[0], conditionsTime[1], Arrays.copyOfRange(conditionsTime, 2, conditionsTime.length));
                 historyProductsTime = qbTime.list();
 
-
-                Collections.sort(products,(p1,p2)->{
+                Collections.sort(products, (p1, p2) -> {
 
                     Date d1 = new Date(0);
                     Date d2 = new Date(0);
 
-                    for(HistoryProduct h:historyProductsTime){
-                        if(h.getBarcode().equals(p1.getBarcode())){
-                            if(h.getLastSeen() != null) {
+                    for (HistoryProduct h : historyProductsTime) {
+                        if (h.getBarcode().equals(p1.getBarcode())) {
+                            if (h.getLastSeen() != null) {
                                 d1 = h.getLastSeen();
                             }
                         }
-                        if(h.getBarcode().equals(p2.getBarcode())){
-                            if(h.getLastSeen() != null ){
+                        if (h.getBarcode().equals(p2.getBarcode())) {
+                            if (h.getLastSeen() != null) {
                                 d2 = h.getLastSeen();
                             }
                         }
@@ -351,30 +353,32 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                 break;
 
             default:
-                Collections.sort(products,(p1,p2)->0);
+                Collections.sort(products, (p1, p2) -> 0);
         }
     }
 
-    protected void onScanFirst() {
-        if (Utils.isHardwareCameraInstalled(getBaseContext())) {
-            if (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(YourListedProductsActivity.this, Manifest.permission.CAMERA)) {
-                    new MaterialDialog.Builder(this)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral((dialog, which) -> ActivityCompat.requestPermissions(YourListedProductsActivity.this, new String[]{Manifest
-                            .permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
-                        .show();
-                } else {
-                    ActivityCompat.requestPermissions(YourListedProductsActivity.this, new String[]{Manifest.permission.CAMERA}, Utils
-                        .MY_PERMISSIONS_REQUEST_CAMERA);
-                }
+    private void onFirstScan() {
+        if (!Utils.isHardwareCameraInstalled(this)) {
+            Log.e(this.getClass().getSimpleName(), "device has no camera installed");
+            return;
+        }
+        if (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                new MaterialDialog.Builder(this)
+                    .title(R.string.action_about)
+                    .content(R.string.permission_camera)
+                    .neutralText(R.string.txtOk)
+                    .onNeutral((dialog, which) ->
+                        ActivityCompat.requestPermissions(YourListedProductsActivity.this, new String[]{Manifest.permission.CAMERA}, Utils.MY_PERMISSIONS_REQUEST_CAMERA))
+                    .show();
             } else {
-                Intent intent = new Intent(YourListedProductsActivity.this, ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                ActivityCompat.requestPermissions(YourListedProductsActivity.this, new String[]{Manifest.permission.CAMERA}, Utils
+                    .MY_PERMISSIONS_REQUEST_CAMERA);
             }
+        } else {
+            Intent intent = new Intent(this, ContinuousScanActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
     }
 

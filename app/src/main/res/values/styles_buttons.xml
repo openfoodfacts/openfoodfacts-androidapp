@@ -11,6 +11,7 @@
         <item name="android:gravity">center</item>
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
+        <item name="android:padding">6dp</item>
     </style>
 
     <style name="ButtonRounded" parent="ButtonFlat">
