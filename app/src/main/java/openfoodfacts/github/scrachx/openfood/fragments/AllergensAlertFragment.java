@@ -224,8 +224,9 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
 
     @Override
     public void onDetach() {
-        super.onDetach();
+        // First unregister, then call onDetach, which is called after onDestroy so the binding is null
         binding.allergensRecycle.getAdapter().unregisterAdapterDataObserver(mDataObserver);
+        super.onDetach();
     }
 
     /**
