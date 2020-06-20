@@ -948,7 +948,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 }
                 return false;
             })
-            .filter(bool -> bool)
+            .filter(Boolean::booleanValue)
             .first(false)
             .subscribeOn(Schedulers.computation());
     }
