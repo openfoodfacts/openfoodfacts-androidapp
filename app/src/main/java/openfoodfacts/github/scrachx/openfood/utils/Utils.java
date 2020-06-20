@@ -19,7 +19,7 @@ import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Environment;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.Spannable;
 import android.text.SpannableString;

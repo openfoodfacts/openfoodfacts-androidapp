@@ -8,7 +8,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;

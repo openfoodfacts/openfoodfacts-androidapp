@@ -8,7 +8,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 import androidx.browser.customtabs.CustomTabsIntent;
 
