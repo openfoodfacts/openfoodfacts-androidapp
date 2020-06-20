@@ -463,10 +463,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     public void extractIngredients() {
         extractIngredients = true;
-        final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
+        final SharedPreferences settings = requireActivity().getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         if (login.isEmpty()) {
-
             showSignInDialog();
         } else {
             activityState = FragmentUtils.requireStateFromArguments(this);

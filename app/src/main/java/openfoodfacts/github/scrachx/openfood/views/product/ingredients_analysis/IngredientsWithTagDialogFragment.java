@@ -128,9 +128,9 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
     private void goToExtract() {
         dismiss();
         if (getActivity() instanceof ContinuousScanActivity) {
-            ((ContinuousScanActivity) getActivity()).showIngredientsTab("perform_ocr");
+            ((ContinuousScanActivity) requireActivity()).showIngredientsTab("perform_ocr");
         } else if (getActivity() instanceof ProductActivity) {
-            ((ProductActivity) getActivity()).showIngredientsTab(ProductActivity.ShowIngredientsAction.PERFORM_OCR);
+            ((ProductActivity) requireActivity()).showIngredientsTab(ProductActivity.ShowIngredientsAction.PERFORM_OCR);
         }
     }
 
