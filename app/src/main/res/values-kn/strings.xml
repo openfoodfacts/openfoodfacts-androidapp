@@ -16,24 +16,24 @@
   -->
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one"> You have %d offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="other"> ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ಗೆ ಕೊಡುಗೆ ನೀಡಲು ನೀವು ಕಾಯುತ್ತಿರುವ %d ಆಫ್ಲೈನ್ ​​ಉತ್ಪನ್ನಗಳನ್ನು ಹೊಂದಿದ್ದೀರಿ</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d ನಿಮಿಷಗಳ ಹಿಂದೆ</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d ಗಂಟೆಗಳ ಹಿಂದೆ</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d ದಿನಗಳ ಹಿಂದೆ</item>
     </plurals>
     <string name="action_about">ಬಗ್ಗೆ</string>
     <string name="action_discover">ಅನ್ವೇಷಿಸಿ</string>
