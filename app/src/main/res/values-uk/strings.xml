@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">You have %d offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -25,7 +25,7 @@
         <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
+        <item quantity="one">%d day ago</item>
         <item quantity="few">%d days ago</item>
         <item quantity="many">%d days ago</item>
         <item quantity="other">%d днів тому</item>

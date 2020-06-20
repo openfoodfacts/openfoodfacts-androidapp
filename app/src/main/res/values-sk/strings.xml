@@ -7,7 +7,7 @@
         <item quantity="other"> Máte %d offline produktov čakajúcich na prispenie do Otvorených Faktov o Jedle</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
@@ -19,7 +19,7 @@
         <item quantity="other">pred %d minútami</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
+        <item quantity="one">%d hour ago</item>
         <item quantity="few">pred %d hodinami</item>
         <item quantity="many">pred %d hodinami</item>
         <item quantity="other">pred %d hodinami</item>
