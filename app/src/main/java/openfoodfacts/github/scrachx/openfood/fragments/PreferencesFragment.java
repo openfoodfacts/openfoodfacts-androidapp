@@ -32,8 +32,8 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -131,14 +131,17 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         findPreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
-            new MaterialAlertDialogBuilder(context)
-                .setMessage(R.string.search_history_pref_dialog_content)
-                .setPositiveButton(R.string.delete_txt, (dialog, which) -> {
+            new MaterialDialog.Builder(context)
+                .content(R.string.search_history_pref_dialog_content)
+                .positiveText(R.string.delete_txt)
+                .onPositive((dialog, which) -> {
                     Toast.makeText(getContext(), getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show();
                     SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(), SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
                     suggestions.clearHistory();
                 })
-                .setNeutralButton(R.string.dialog_cancel, (dialog, which) -> {
+                .neutralText(R.string.dialog_cancel)
+                .onNeutral((dialog, which) -> {
+                    dialog.dismiss();
                 })
                 .show();
 
