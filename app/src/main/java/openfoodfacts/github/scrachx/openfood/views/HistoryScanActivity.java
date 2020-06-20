@@ -31,6 +31,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -225,7 +226,10 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
                     .onPositive((dialog, which) -> {
                         mHistoryProductDao.deleteAll();
                         productItems.clear();
-                        binding.listHistoryScan.getAdapter().notifyDataSetChanged();
+                        final RecyclerView.Adapter adapter = binding.listHistoryScan.getAdapter();
+                        if (adapter != null) {
+                            adapter.notifyDataSetChanged();
+                        }
                         binding.emptyHistoryInfo.setVisibility(View.VISIBLE);
                         binding.scanFirst.setVisibility(View.VISIBLE);
                     })
