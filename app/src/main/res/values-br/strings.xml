@@ -1,50 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="two">You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="many">You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one"> You have %d offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="two"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="two">%d seconds ago</item>
-        <item quantity="few">%d seconds ago</item>
-        <item quantity="many">%d seconds ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">1 eilenn zo</item>
+        <item quantity="two">%d eilenn</item>
+        <item quantity="few">%d eilenn</item>
+        <item quantity="many">%d eilenn</item>
+        <item quantity="other">%d eilenn</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
+        <item quantity="one">%d minute ago</item>
         <item quantity="two">%d minutes ago</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
         <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
+        <item quantity="one">%d hour ago</item>
         <item quantity="two">%d hours ago</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
         <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
+        <item quantity="one">%d day ago</item>
         <item quantity="two">%d days ago</item>
         <item quantity="few">%d days ago</item>
         <item quantity="many">%d days ago</item>
@@ -62,7 +47,7 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Summary</item>
-        <item>Ingredients</item>
+        <item>Aozennoù</item>
         <item>Nutrition</item>
         <item>Nutrition Table</item>
         <item>Environment</item>
@@ -198,7 +183,7 @@
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Holen</string>
     <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sugars</string>
+    <string name="txtSugars">Sukroù</string>
     <string name="hintBarcode">Kod barrennoù</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Login</string>
@@ -243,10 +228,10 @@
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Nullañ</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Krouiñ ur gont</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
@@ -304,7 +289,7 @@
     <string name="nutrition_salt">Holen</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sugars</string>
+    <string name="nutrition_sugars">Sukroù</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -472,7 +457,7 @@
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Nullañ</string>
     <string name="dialog_create">Krouiñ</string>
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
@@ -490,7 +475,7 @@
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Skritellig</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">Rummad</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Perzhiad</string>
     <string name="Rate_Us">Show Your Support</string>
@@ -598,7 +583,7 @@
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Overview</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients">Aozennoù</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
@@ -634,7 +619,7 @@
     <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
+    <string name="stores">Stalioù</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
@@ -646,7 +631,6 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Aozañ ur produ</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
@@ -811,5 +795,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

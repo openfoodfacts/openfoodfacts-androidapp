@@ -1,44 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="zero">You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="zero"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one"> You have %d offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="zero">%d seconds ago</item>
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="zero">%d minutes ago</item>
-        <item quantity="one">1 minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">pirms %d minūtēm</item>
     </plurals>
     <plurals name="hours">
         <item quantity="zero">%d hours ago</item>
-        <item quantity="one">1 hour ago</item>
+        <item quantity="one">Pirms stundas</item>
         <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
         <item quantity="zero">%d days ago</item>
-        <item quantity="one">1 day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">pirms %d dienām</item>
     </plurals>
     <string name="action_about">Par</string>
     <string name="action_discover">Atklāj</string>
@@ -236,7 +221,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Lietotājvārds</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data">Jūsu alerģiju informācija nekad netiks nosūtīta uz Open Food Facts serveri. Uzmanieties jo pieejamie dati par produktu var būt neprecīzi tāpēc pārliecinieties, pirms pieņemiet lēmumus! </string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Iespējams skenēt produktus bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk, kad interneta savienojums ir pieejams. visi produkti kuri tiks noskenēti, būs redzami šeit. Lai nosūtītu produktus, izmantojiet pogu zemāk.</string>
     <string name="permission_camera">Piekļuve kamerai ir nepieciešama, lai skenētu svītrkodus un uzņemtu attēlus.</string>
@@ -268,13 +253,13 @@
     <string name="title_clear_history_dialog">Notīrīt</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Eksportēt CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">Vēsture eksportēta</string>
     <string name="permision_write_external_storage">Vēstures eksportēšanai ir nepieciešama ārējās atmiņas piekļuves atļauja.</string>
     <string name="no_brand">No Brand</string>
     <string name="no_title">No Title</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+    <string name="display_fact">Uztura faktu tabula %1$s šim produktam</string>
     <string name="check_facts">Check</string>
     <string name="nutrition">Uzturs</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -453,7 +438,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Vispārīgs</string>
     <string name="preference_header_network">Tīkls</string>
     <string name="preference_header_contributing">Ieguldījums</string>
@@ -524,8 +509,8 @@
     <string name="notify_channel_description">Paziņojums, lai parādītu eksportēto failu atrašanās vietu</string>
     <string name="products_to_be_completed">Produkta nosaukums jāpabeidz</string>
     <string name="offline_notification_title">Nepieciešamie sūtījumi bezsaistē</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="creator_history">Produkts pievienots %1$s līdz %2$s CET pēc</string>
+    <string name="last_editor_history">Pēdējais produkta lapas rediģējums %1$s par %2$s CEST ar </string>
     <string name="other_editors">Produkta lapa ir arī rediģējis </string>
     <string name="contribution_tab">Iemaksas</string>
     <string name="contribution_tab_summary">Rādīt lietotāju iemaksu tabulu ar produktiem</string>
@@ -634,7 +619,6 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Rediģējiet produktu</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
@@ -750,7 +734,7 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Tālummaiņa</string>
+    <string name="imageFullscreen">Zoom</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Aizvērt</string>
     <string name="tip_message">TIP: %1$s </string>
@@ -763,7 +747,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
@@ -799,5 +783,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

@@ -25,7 +25,7 @@
     </plurals>
     <plurals name="seconds">
         <item quantity="zero">منذ ٪ d ثانية</item>
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="two">%d seconds ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
