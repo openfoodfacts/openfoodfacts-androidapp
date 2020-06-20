@@ -45,6 +45,9 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: Workaround for Android Gradle plugin issue
+        run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
+
       - name: Build debug APKs
         uses: eskatos/gradle-command-action@v1
         with:
