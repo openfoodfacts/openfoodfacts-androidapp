@@ -78,8 +78,9 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
 
     @Override
     public void onDestroy() {
-        dispCont.dispose();
         super.onDestroy();
+        dispCont.dispose();
+        binding.allergensRecycle.getAdapter().unregisterAdapterDataObserver(mDataObserver);
         binding = null;
     }
 
@@ -222,12 +223,6 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         }
     }
 
-    @Override
-    public void onDetach() {
-        // First unregister, then call onDetach, which is called after onDestroy so the binding is null
-        binding.allergensRecycle.getAdapter().unregisterAdapterDataObserver(mDataObserver);
-        super.onDetach();
-    }
 
     /**
      * Data observer of the Recycler Views
