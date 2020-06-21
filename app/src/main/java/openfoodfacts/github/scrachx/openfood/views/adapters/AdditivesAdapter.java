@@ -1,11 +1,12 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -17,9 +18,8 @@ import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
  */
 
 public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.AdditiveViewHolder> {
-
-    private List<AdditiveName> additives;
-    private ClickListener clickListener;
+    private final List<AdditiveName> additives;
+    private final ClickListener clickListener;
 
     public interface ClickListener {
         void onClick(int position ,String name);
@@ -58,7 +58,7 @@ public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.Addi
     }
 
     static class AdditiveViewHolder extends RecyclerView.ViewHolder{
-        TextView additiveName;
+        final TextView additiveName;
 
         AdditiveViewHolder(View itemView) {
             super(itemView);

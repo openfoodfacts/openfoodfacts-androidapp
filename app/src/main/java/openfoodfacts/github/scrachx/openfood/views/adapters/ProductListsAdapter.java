@@ -1,44 +1,41 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 
-public class ProductListsAdapter extends RecyclerView.Adapter<ProductListsAdapter.ViewHolder> {
-    Context mContext;
-    List<ProductLists> productLists;
+public class ProductListsAdapter extends RecyclerView.Adapter<ProductListsAdapter.ProductListsViewHolder> {
+    final Activity mContext;
+    final List<ProductLists> productLists;
 
-    public ProductListsAdapter(Context context, List<ProductLists> productLists)
-    {
-        this.mContext=context;
-        this.productLists=productLists;
+    public ProductListsAdapter(Activity context, List<ProductLists> productLists) {
+        this.mContext = context;
+        this.productLists = productLists;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=LayoutInflater.from(mContext)
-                .inflate(R.layout.your_product_lists_item,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+    public ProductListsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = mContext.getLayoutInflater().inflate(R.layout.your_product_lists_item, parent, false);
+        return new ProductListsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String listName=productLists.get(position).getListName();
-        Long listId=productLists.get(position).getId();
+    public void onBindViewHolder(@NonNull ProductListsViewHolder holder, int position) {
+        String listName = productLists.get(position).getListName();
+        Long listId = productLists.get(position).getId();
 
-        int numOfProducts=productLists.get(position).getProducts().size();
+        int numOfProducts = productLists.get(position).getProducts().size();
         productLists.get(position).setNumOfProducts(numOfProducts);
 
         holder.tvListTitle.setText(listName);
@@ -56,18 +53,16 @@ public class ProductListsAdapter extends RecyclerView.Adapter<ProductListsAdapte
         notifyItemRemoved(position);
     }
 
+    public static class ProductListsViewHolder extends RecyclerView.ViewHolder {
+        final CardView itemCardView;
+        final TextView tvListTitle;
+        final TextView tvNumOfProducts;
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvListTitle;
-        CardView itemCardView;
-        TextView tvNumOfProducts;
-
-        public ViewHolder(View itemView) {
+        public ProductListsViewHolder(View itemView) {
             super(itemView);
-            tvListTitle=itemView.findViewById(R.id.tvProductListName);
-            itemCardView=itemView.findViewById(R.id.cvYourProductList);
-            tvNumOfProducts=itemView.findViewById(R.id.tvlistSize);
-
+            tvListTitle = itemView.findViewById(R.id.tvProductListName);
+            itemCardView = itemView.findViewById(R.id.cvYourProductList);
+            tvNumOfProducts = itemView.findViewById(R.id.tvlistSize);
         }
     }
 }

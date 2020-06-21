@@ -3,14 +3,16 @@ package openfoodfacts.github.scrachx.openfood.jobs;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import androidx.work.ListenableWorker;
+import androidx.work.RxWorker;
 import androidx.work.WorkerParameters;
 
-import com.google.common.util.concurrent.ListenableFuture;
-
+import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 
-public class SavedProductUploadWork extends ListenableWorker {
+import static androidx.work.ListenableWorker.Result.failure;
+import static androidx.work.ListenableWorker.Result.success;
+
+public class SavedProductUploadWork extends RxWorker {
     /**
      * @param appContext The application {@link Context}
      * @param workerParams Parameters to setup the internal state of this worker
@@ -21,10 +23,10 @@ public class SavedProductUploadWork extends ListenableWorker {
 
     @NonNull
     @Override
-    public ListenableFuture<Result> startWork() {
-        Context context = getApplicationContext();
-        OpenFoodAPIClient apiClient = new OpenFoodAPIClient(context);
-        return apiClient.uploadOfflineImages(context);
+    public Single<Result> createWork() {
+        return new OpenFoodAPIClient(getApplicationContext())
+            .uploadOfflineImages(getApplicationContext())
+            .toSingleDefault(success())
+            .onErrorReturnItem(failure());
     }
-
 }

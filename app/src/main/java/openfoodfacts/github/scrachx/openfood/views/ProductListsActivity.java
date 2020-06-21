@@ -9,17 +9,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.csv.CSVFormat;
@@ -29,11 +27,10 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import butterknife.BindView;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
@@ -48,14 +45,7 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickLi
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
     private static final int ACTIVITY_CHOOSE_FILE = 123;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.fabAdd)
-    Button fabAdd;
-    @BindView(R.id.product_lists_recycler_view)
-    RecyclerView recyclerView;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    private ActivityProductListsBinding binding;
     private ProductListsAdapter adapter;
     private List<ProductLists> productLists;
     private ProductListsDao productListsDao;
@@ -64,8 +54,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         return new Intent(context, ProductListsActivity.class);
     }
 
-    public static ProductListsDao getProducListsDaoWithDefaultList(Context context) {
-        ProductListsDao productListsDao = Utils.getDaoSession(context).getProductListsDao();
+    public static ProductListsDao getProductListsDaoWithDefaultList(Context context) {
+        ProductListsDao productListsDao = Utils.getDaoSession().getProductListsDao();
         if (productListsDao.loadAll().isEmpty()) {
             ProductLists eatenList = new ProductLists(context.getString(R.string.txt_eaten_products), 0);
             productListsDao.insert(eatenList);
@@ -78,57 +68,30 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_lists);
+        binding = ActivityProductListsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         setTitle(R.string.your_lists);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, getBaseContext());
-        fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
 
-        productListsDao = getProducListsDaoWithDefaultList(this);
+        productListsDao = getProductListsDaoWithDefaultList(this);
         productLists = productListsDao.loadAll();
 
         adapter = new ProductListsAdapter(this, productLists);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        binding.productListsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.productListsRecyclerView.setAdapter(adapter);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            Product p = (Product) bundle.get("product");
+            Product productToAdd = (Product) bundle.get("product");
 
-            MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title(R.string.txt_create_new_list)
-                .input(R.string.create_new_list_list_name,
-                    R.string.empty, false, (d, input) -> {
-                        // do nothing
-                    }
-                )
-                .positiveText(R.string.txtSave)
-                .negativeText(R.string.txt_discard)
-                .show();
-            // this enable to avoid dismissing dalog if list name already exist
-            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(v -> {
-                Log.d("Positive", "Positive clicked");
-                String listName = dialog.getInputEditText().getText().toString();
-                boolean isAlreadyIn = checkListNameExist(listName);
-                if (!isAlreadyIn) {
-                    ProductLists productList = new ProductLists(listName, 0);
-                    productLists.add(productList);
-                    productListsDao.insert(productList);
-                    Long id = productList.getId();
-                    Intent intent = new Intent(ProductListsActivity.this, YourListedProductsActivity.class);
-                    intent.putExtra("listId", id);
-                    intent.putExtra("listName", listName);
-                    intent.putExtra("product", p);
-                    startActivityForResult(intent, 1);
-                } else {
-                    Toast.makeText(ProductListsActivity.this, R.string.error_duplicate_listname, Toast.LENGTH_SHORT).show();
-                }
-            });
+            showCreateListDialog(productToAdd);
         }
 
-        recyclerView.addOnItemTouchListener(
+        binding.productListsRecyclerView.addOnItemTouchListener(
             new RecyclerItemClickListener(ProductListsActivity.this, ((view, position) -> {
                 Long id = productLists.get(position).getId();
                 String listName = productLists.get(position).getListName();
@@ -141,32 +104,49 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
         SwipeController swipeController = new SwipeController(this, ProductListsActivity.this);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
-        itemTouchhelper.attachToRecyclerView(recyclerView);
+        itemTouchhelper.attachToRecyclerView(binding.productListsRecyclerView);
 
-        fabAdd.setOnClickListener(view -> {
-            MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title(R.string.txt_create_new_list)
-                .input("List name", "", false, (dialog1, input) -> {
-                })
-                .positiveText(R.string.dialog_create)
-                .negativeText(R.string.dialog_cancel)
-                .show();
-            // this enable to avoid dismissing dalog if list name already exist
-            dialog.getActionButton(DialogAction.POSITIVE).setOnClickListener(v -> {
-                Log.d("Positive", "Positive clicked");
-                String listName = dialog.getInputEditText().getText().toString();
-                boolean isAlreadyIn = checkListNameExist(listName);
-                if (!isAlreadyIn) {
-                    ProductLists productList = new ProductLists(listName, 0);
-                    productLists.add(productList);
-                    productListsDao.insert(productList);
+        binding.fabAdd.setOnClickListener(view -> showCreateListDialog(null));
+    }
+
+    private void showCreateListDialog(@Nullable Product productToAdd) {
+        new MaterialDialog.Builder(this)
+            .title(R.string.txt_create_new_list)
+            .alwaysCallInputCallback()
+            .input(R.string.create_new_list_list_name, R.string.empty, false, (dialog, listName) -> {
+                // validate if there is another list with the same name
+                EditText inputField = dialog.getInputEditText();
+                boolean isAlreadyIn = checkListNameExist(listName.toString());
+                if (inputField != null) {
+                    inputField.setError(isAlreadyIn ? getResources().getString(R.string.error_duplicate_listname) : null);
+                }
+                dialog.getActionButton(DialogAction.POSITIVE).setEnabled(!isAlreadyIn);
+            })
+            .positiveText(R.string.dialog_create)
+            .negativeText(R.string.dialog_cancel)
+            .onPositive((dialog, which) -> { // this enable to avoid dismissing dialog if list name already exist
+                Log.d("CreateListDialog", "Positive clicked");
+                final EditText inputEditText = dialog.getInputEditText();
+                if (inputEditText == null) {
+                    dialog.dismiss();
+                    return;
+                }
+                final String listName = inputEditText.getText().toString();
+                ProductLists productList = new ProductLists(listName, productToAdd != null ? 1 : 0);
+                productLists.add(productList);
+                productListsDao.insert(productList);
+                if (productToAdd != null) {
+                    Long id = productList.getId();
+                    Intent intent = new Intent(ProductListsActivity.this, YourListedProductsActivity.class);
+                    intent.putExtra("listId", id);
+                    intent.putExtra("listName", listName);
+                    intent.putExtra("product", productToAdd);
+                    startActivityForResult(intent, 1);
+                } else {
                     dialog.dismiss();
                     adapter.notifyDataSetChanged();
-                } else {
-                    Toast.makeText(ProductListsActivity.this, R.string.error_duplicate_listname, Toast.LENGTH_SHORT).show();
                 }
-            });
-        });
+            }).show();
     }
 
     /**
@@ -175,8 +155,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
      * @param listName
      */
     private boolean checkListNameExist(String listName) {
-        for (Iterator<ProductLists> i = productLists.iterator(); i.hasNext(); ) {
-            if (i.next().getListName().equals(listName)) {
+        for (ProductLists productList : productLists) {
+            if (productList.getListName().equals(listName)) {
                 return true;
             }
         }
@@ -185,16 +165,15 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data.getExtras().getBoolean("update")) {
             adapter.notifyDataSetChanged();
-        } else if (requestCode == ACTIVITY_CHOOSE_FILE) {
-            if (resultCode == RESULT_OK) {
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(data.getData());
-                    new ParseCSV(inputStream).execute();
-                } catch (Exception e) {
-                    Log.e(ProductListsActivity.class.getSimpleName(), "Error importing CSV: " + e.getMessage());
-                }
+        } else if (requestCode == ACTIVITY_CHOOSE_FILE && resultCode == RESULT_OK) {
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(data.getData());
+                new ParseCSV(inputStream).execute();
+            } catch (Exception e) {
+                Log.e(ProductListsActivity.class.getSimpleName(), "Error importing CSV: " + e.getMessage());
             }
         }
     }
@@ -232,6 +211,12 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         startActivityForResult(Intent.createChooser(intent, getString(R.string.open_csv)), ACTIVITY_CHOOSE_FILE);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
+    }
+
     @SuppressLint("StaticFieldLeak")
     class ParseCSV extends AsyncTask<Void, Integer, Boolean> {
         InputStream inputStream;
@@ -266,7 +251,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            YourListedProductDao yourListedProductDao = Utils.getAppDaoSession(ProductListsActivity.this).getYourListedProductDao();
+            YourListedProductDao yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
             List<YourListedProduct> list = new ArrayList<>();
 
             try (CSVParser csvParser = new CSVParser(new InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
@@ -276,7 +261,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                 long id;
                 for (CSVRecord record : result) {
                     List<ProductLists> lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
-                    if (lists.size() <= 0) {
+                    if (lists.isEmpty()) {
                         //create new list
                         ProductLists productList = new ProductLists(record.get(2), 0);
                         productLists.add(productList);
@@ -299,16 +284,9 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                 yourListedProductDao.insertOrReplaceInTx(list);
                 return true;
             } catch (Exception e) {
-                Log.e("ParseCSV",e.getMessage(),e);
+                Log.e("ParseCSV", e.getMessage(), e);
                 return false;
             }
         }
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, R.id.my_lists);
-
     }
 }

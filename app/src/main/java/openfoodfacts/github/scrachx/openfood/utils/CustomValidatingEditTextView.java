@@ -2,23 +2,34 @@ package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.appcompat.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Spinner;
+
+import androidx.appcompat.widget.AppCompatEditText;
+
+import com.google.android.material.textfield.TextInputLayout;
+
 import openfoodfacts.github.scrachx.openfood.R;
 
 public class CustomValidatingEditTextView extends AppCompatEditText {
     private TextInputLayout textInputLayout;
-    private Spinner attachedSpinner;
+    private int attachedModSpinnerId = NO_ID;
+    private int attachedUnitSpinnerId = NO_ID;
     private int textInputLayoutId = NO_ID;
-    private int attachedSpinnerId = NO_ID;
+
+    public void setModSpinner(Spinner modSpinner) {
+        this.modSpinner = modSpinner;
+    }
+
+    private Spinner modSpinner;
+    private Spinner unitSpinner;
     private String entryName;
+    private String fieldName;
 
     public CustomValidatingEditTextView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public CustomValidatingEditTextView(Context context, AttributeSet attrs) {
@@ -36,20 +47,29 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
     }
 
     public String getEntryName() {
-        return entryName==null?getResources().getResourceEntryName(getId()):entryName;
+        if (entryName == null) {
+            if (fieldName != null) {
+                return fieldName;
+            }
+            return getResources().getResourceEntryName(getId());
+        }
+        return entryName;
     }
 
     void initAttrs(Context context, AttributeSet attrs) {
-        if (attrs != null) {
-            TypedArray attributeArray = context.obtainStyledAttributes(
-                attrs,
-                R.styleable.CustomValidatingEditView);
-            textInputLayoutId = attributeArray.getResourceId(R.styleable.CustomValidatingEditView_parentTextInputLayout, NO_ID);
-            attachedSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditView_attachedSpinner, NO_ID);
-            attributeArray.recycle();
+        if (attrs == null) {
+            return;
         }
+        TypedArray attributeArray = context.obtainStyledAttributes(
+            attrs,
+            R.styleable.CustomValidatingEditTextView
+        );
+        textInputLayoutId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_parentTextInputLayout, NO_ID);
+        attachedUnitSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedUnitSpinner, NO_ID);
+        attachedModSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedModSpinner, NO_ID);
+        fieldName = attributeArray.getString(R.styleable.CustomValidatingEditTextView_fieldName);
+        attributeArray.recycle();
     }
-
 
     public void showError(String message) {
         final TextInputLayout currentTil = getTextInputLayout();
@@ -72,7 +92,7 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
         return textInputLayout != null && textInputLayout.getError() != null;
     }
 
-    public boolean isValid(){
+    public boolean isValid() {
         return !hasError();
     }
 
@@ -96,24 +116,39 @@ public class CustomValidatingEditTextView extends AppCompatEditText {
         return textInputLayout;
     }
 
-    public Spinner getAttachedSpinner() {
-        if (attachedSpinner == null && attachedSpinnerId != NO_ID) {
-            View view = getRootView().findViewById(attachedSpinnerId);
+    public Spinner getUnitSpinner() {
+        if (unitSpinner == null && attachedUnitSpinnerId != NO_ID) {
+            View view = getRootView().findViewById(attachedUnitSpinnerId);
             if (view instanceof Spinner) {
-                attachedSpinner = (Spinner) view;
+                unitSpinner = (Spinner) view;
             } else {
                 //configuration error we reset the id
-                attachedSpinnerId = NO_ID;
+                attachedUnitSpinnerId = NO_ID;
                 String attachedTo = view == null ? "null" : view.getClass().getName();
                 Log.e(CustomValidatingEditTextView.class.getSimpleName(),
-                    String.format("the id %d used in attachedSpinner  should be linked to a Spinner and not to %s", attachedSpinnerId, attachedTo));
+                    String.format("the id %d used in attachedSpinner  should be linked to a Spinner and not to %s", attachedUnitSpinnerId, attachedTo));
             }
         }
-        return attachedSpinner;
+        return unitSpinner;
     }
 
-    public void setAttachedSpinner(Spinner attachedSpinner) {
-        this.attachedSpinner = attachedSpinner;
+    public void setUnitSpinner(Spinner unitSpinner) {
+        this.unitSpinner = unitSpinner;
     }
 
+    public Spinner getModSpinner() {
+        if (modSpinner == null && attachedModSpinnerId != NO_ID) {
+            View view = getRootView().findViewById(attachedModSpinnerId);
+            if (view instanceof Spinner) {
+                modSpinner = (Spinner) view;
+            } else {
+                //configuration error we reset the id
+                attachedModSpinnerId = NO_ID;
+                String attachedTo = view == null ? "null" : view.getClass().getName();
+                Log.e(CustomValidatingEditTextView.class.getSimpleName(),
+                    String.format("the id %d used in attachedSpinner  should be linked to a Spinner and not to %s", attachedUnitSpinnerId, attachedTo));
+            }
+        }
+        return modSpinner;
+    }
 }

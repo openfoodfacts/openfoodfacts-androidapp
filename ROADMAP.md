@@ -1,4 +1,4 @@
-This roadmap is up for discussion.
+This roadmap is fully collaborative.
 
 Note: Nutrition table bugs can be solved by fixing: Use the HTML fallback for the nutrition table, and make the native optional until we fix it. https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2474
 
@@ -29,13 +29,13 @@ Nutrition table :
 Enhancements:
 - Product image stretched on upload: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/1393
 - Show NOVA and Nutri-Score in search results and history: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2458
-- Don't return a result if the scanned barcode matches the server-side blacklist:  https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2629
+- Don't return a result if the scanned barcode matches the server-side blocklist:  https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2629
 - I should not have to wait for the product to upload (esp. when I have no or little network) https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2677
 - Add in-app changelog: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2870
 - Revamp the onboarding with illustations/animations/new features
 - Add % of daily values for each nutrient of a product
 - Add a graph of your nutrient intake
-- Honoring the server-side barcode blacklist to avoid scan errors
+- Honoring the server-side barcode blocklist to avoid scan errors
 - Remove bugs on product page after product editing
 - Add additive function in the additive card: https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2233
 - Move "Take image" buttons at very start of product addition https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2860 and https://github.com/openfoodfacts/openfoodfacts-androidapp/issues/2350

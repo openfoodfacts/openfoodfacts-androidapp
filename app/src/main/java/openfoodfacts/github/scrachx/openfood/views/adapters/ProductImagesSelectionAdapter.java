@@ -1,26 +1,29 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 
 import java.util.List;
+
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 
 /**
  * Created by prajwalm on 10/09/18.
  */
 public class ProductImagesSelectionAdapter extends RecyclerView.Adapter<ProductImagesSelectionAdapter.CustomViewHolder> {
-    private Context context;
-    private List<String> images;
-    private String barcode;
+    private final String barcode;
+    private final Context context;
+    private final List<String> images;
     private final OnImageClickInterface onImageClick;
     int selectedPosition = -1;
 
@@ -85,8 +88,8 @@ public class ProductImagesSelectionAdapter extends RecyclerView.Adapter<ProductI
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView productImage;
-        ViewGroup parent;
+        final ViewGroup parent;
+        final ImageView productImage;
 
         public CustomViewHolder(View itemView) {
             super(itemView);

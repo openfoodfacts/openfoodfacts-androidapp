@@ -56,6 +56,7 @@
     <string name="txtLoading">Loading…</string>
   <string name="txtDialogsContentDelete">Do you want to delete this draft?</string>
   <string name="txtDialogsContentInfoSave">The product has been saved locally. You can edit it in the \"Offline Edit\" menu.</string>
+  <string name="productSavedToast">Product saved, thanks!</string>
   <string name="txtBarcodeRequire">Barcode required</string>
   <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Barcode Invalid</string>

@@ -1,84 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
+            android:id="@+id/toolbar_include"
+            layout="@layout/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srRefreshHistoryScanList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/navigation_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_include">
 
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/srRefreshHistoryScanList"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listHistoryScan"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/spacing_normal"
+                android:clipToPadding="false"
+                android:paddingBottom="56dp"
+                tools:listitem="@layout/history_list_item" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/listHistoryScan"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/spacing_normal"
-                    android:clipToPadding="false"
-                    android:paddingBottom="56dp"
-                    tools:listitem="@layout/history_list_item" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            <LinearLayout
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/srRefreshHistoryScanList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_include">
+
+            <TextView
+                android:id="@+id/empty_history_info"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_margin="12dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="12dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/darker_gray"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/scanFirst"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="vertical">
+                android:background="@drawable/rounded_button"
+                android:padding="6dp"
+                android:text="@string/scan_first_product"
+                android:visibility="invisible" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/empty_history_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="12dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:visibility="invisible" />
+        <ProgressBar
+            android:id="@+id/history_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/srRefreshHistoryScanList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_include" />
 
-                <Button
-                    android:id="@+id/scanFirst"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/rounded_button"
-                    android:padding="6dp"
-                    android:text="@string/scan_first_product"
-                    android:visibility="invisible" />
-            </LinearLayout>
+        <include
+            android:id="@+id/navigation_bottom"
+            layout="@layout/navigation_bottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <ProgressBar
-                android:id="@+id/history_progressbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="visible" />
-
-            <include
-                android:id="@+id/navigation_bottom"
-                layout="@layout/navigation_bottom" />
-
-        </FrameLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

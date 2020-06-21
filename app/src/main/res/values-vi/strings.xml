@@ -51,6 +51,7 @@
         <item>% GTDD hàng ngày</item>
         <item>IU</item>
     </string-array>
+    <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -182,6 +183,7 @@
     <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Bạn có chắc chắn muốn xóa bản nháp này không?</string>
     <string name="txtDialogsContentInfoSave">Sản phẩm được lưu cục bộ, bạn có thể chỉnh sửa nó trong menu \"Chỉnh sửa ngoại tuyến\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Cần mã vạch</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Mã vạch không hợp lệ</string>
@@ -213,6 +215,8 @@
     <string name="title_info_dialog">Nó hoạt động như thế nào?</string>
     <string name="text_offline_info_dialog">Bạn có thể quét các sản phẩm khi bạn đang ngoại tuyến để thêm chúng vào Open Food Facts sau. Tất cả các sản phẩm bạn quét sẽ xuất hiện ở đây, và bạn sẽ có thể gửi cho họ bằng cách sử dụng nút bên dưới.</string>
     <string name="permission_camera">Cần có quyền đối với máy ảnh để quét mã vạch và chụp ảnh.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Thông tin quyền</string>
     <string name="permission_denied">Vui lòng kích hoạt quyền trong cài đặt</string>
     <string name="info_download_data_connection">Bạn cần tải xuống một số dữ liệu để chức năng này hoạt động. Vui lòng kích hoạt kết nối internet.</string>
@@ -255,6 +259,8 @@
     <string name="nutrition_carbohydrate">Cacbohydrat</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Năng lượng</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Năng lượng</string>
     <string name="nutrition_fat">Fat</string>
     <string name="nutrition_fiber">Chất xơ</string>
@@ -670,6 +676,7 @@
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Nước</string>
@@ -689,7 +696,7 @@
     <string name="product_question_negative_response">Không</string>
     <string name="product_question_ambiguous_response">Không chắc</string>
     <string name="product_question_submit_message">Cảm ơn sự đóng góp của bạn!</string>
-    <string name="error_nutrient_entry">Giá trị phải là số và có thể bắt đầu bằng &lt;, &gt; hoặc ~. Ví dụ: &quot;&gt;1,5&quot;, &quot;~ 2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Giá trị phải là giá trị dương</string>
     <string name="error_in_nutrient_data">Một số giá trị dinh dưỡng không hợp lệ. Xin vui lòng sửa các trường trên với dấu đánh dấu lỗi</string>
     <string name="go_to_full_product_page">Go to product</string>

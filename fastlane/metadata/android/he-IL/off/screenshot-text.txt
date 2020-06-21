@@ -69,4 +69,4 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=he
 
 מזמינים אותך להצטרף לתנועה הגלובלית לשקיפות מזון
 
-world.openfoodfacts.org/contribute
+il.openfoodfacts.org/contribute

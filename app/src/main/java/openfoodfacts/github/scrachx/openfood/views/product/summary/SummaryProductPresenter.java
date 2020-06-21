@@ -9,24 +9,25 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * Created by Lobster on 17.03.18.
  */
 public class SummaryProductPresenter implements ISummaryProductPresenter.Actions {
-    private IProductRepository repository = ProductRepository.getInstance();
-    private CompositeDisposable disposable = new CompositeDisposable();
-    private ISummaryProductPresenter.View view;
-    private Product product;
+    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final Product product;
+    private final IProductRepository repository = ProductRepository.getInstance();
+    private final ISummaryProductPresenter.View view;
 
     public SummaryProductPresenter(Product product, ISummaryProductPresenter.View view) {
         this.product = product;
@@ -76,7 +77,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
             repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(allergens -> view.showAllergens(allergens), e -> {
+                .subscribe(view::showAllergens, e -> {
                     if (runIfError != null) {
                         runIfError.run();
                     }
@@ -126,7 +127,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
         if (labelsTags != null && !labelsTags.isEmpty()) {
             final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
             disposable.add(
-                Observable.fromArray(labelsTags.toArray(new String[labelsTags.size()]))
+                Observable.fromArray(labelsTags.toArray(new String[0]))
                     .flatMapSingle(tag -> repository.getLabelByTagAndLanguageCode(tag, languageCode)
                         .flatMap(labelName -> {
                             if (labelName.isNull()) {
@@ -169,47 +170,47 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
 
     @Override
     public void loadAnalysisTags() {
-        if (OFFApplication.isFlavor(OFFApplication.OFF)) {
-            List<String> analysisTags = product.getIngredientsAnalysisTags();
-            final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
-            if (analysisTags != null && !analysisTags.isEmpty()) {
-                disposable.add(
-                    Observable.fromIterable(analysisTags)
-                        .flatMapSingle(tag -> repository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode))
-                        .filter(AnalysisTagConfig::isNotNull)
-                        .toList()
-                        .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(analysisTagConfigs -> {
-                            if (analysisTagConfigs.isEmpty()) {
-                                view.showLabelsState(ProductInfoState.EMPTY);
-                            } else {
-                                view.showAnalysisTags(analysisTagConfigs);
-                            }
-                        }, e -> {
-                            Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
+        if (!Utils.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
+            return;
+        }
+        List<String> analysisTags = product.getIngredientsAnalysisTags();
+        final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
+        if (analysisTags != null && !analysisTags.isEmpty()) {
+            disposable.add(Observable.fromIterable(analysisTags)
+                .flatMapMaybe(tag -> repository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode))
+                .toList()
+                .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(analysisTagConfigs -> {
+                        if (analysisTagConfigs.isEmpty()) {
                             view.showLabelsState(ProductInfoState.EMPTY);
-                        })
-                );
-            } else {
-                disposable.add(
-                    repository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
-                        .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(analysisTagConfigs -> {
-                            if (analysisTagConfigs.isEmpty()) {
-                                view.showLabelsState(ProductInfoState.EMPTY);
-                            } else {
-                                view.showAnalysisTags(analysisTagConfigs);
-                            }
-                        }, e -> {
-                            Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
+                        } else {
+                            view.showAnalysisTags(analysisTagConfigs);
+                        }
+                    },
+                    e -> {
+                        Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
+                        view.showLabelsState(ProductInfoState.EMPTY);
+                    })
+            );
+        } else {
+            disposable.add(
+                repository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
+                    .doOnSubscribe(d -> view.showLabelsState(ProductInfoState.LOADING))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(analysisTagConfigs -> {
+                        if (analysisTagConfigs.isEmpty()) {
                             view.showLabelsState(ProductInfoState.EMPTY);
-                        })
-                );
-            }
+                        } else {
+                            view.showAnalysisTags(analysisTagConfigs);
+                        }
+                    }, e -> {
+                        Log.e(SummaryProductPresenter.class.getSimpleName(), "loadAnalysisTags", e);
+                        view.showLabelsState(ProductInfoState.EMPTY);
+                    })
+            );
         }
     }
 

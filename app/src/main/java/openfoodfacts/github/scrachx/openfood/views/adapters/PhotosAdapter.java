@@ -1,12 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -15,8 +16,7 @@ import java.util.List;
 import openfoodfacts.github.scrachx.openfood.R;
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
-
-    private List<Uri> mPhotos;
+    private final List<Uri> mPhotos;
 
     public PhotosAdapter(List<Uri> mPhotos) {
         this.mPhotos = mPhotos;

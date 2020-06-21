@@ -16,8 +16,8 @@ public class IngredientResponse {
     private Map<String, String> names;
     private List<String> parents;
     private List<String> children;
-    private String wikiDataCode;
-    private Boolean isWikiDataIdPresent;
+    private final Boolean isWikiDataIdPresent;
+    private final String wikiDataCode;
 
     /**
      * Constructor.

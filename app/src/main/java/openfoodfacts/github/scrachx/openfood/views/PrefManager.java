@@ -11,19 +11,16 @@ import java.util.Date;
 public class PrefManager extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-    Context _context;
-    int PRIVATE_MODE = 0;
+    private Context context;
+    final int PRIVATE_MODE = 0;
     private static final String PREF_NAME = "open-facts-welcome";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String FIRST_TIME_LAUNCH_TIME = "FirstTimeLaunchTime";
     private static final String USER_ASKED_TO_RATE = "UserAskedToRateApp";
 
-    public PrefManager() {
-    }
-
     public PrefManager(Context context) {
-        this._context = context;
-        pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+        this.context = context;
+        pref = this.context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
     }
 
     public void setFirstTimeLaunch(boolean isFirstTime) {
@@ -53,7 +50,7 @@ public class PrefManager extends AppCompatActivity {
     public void setUserAskedToRate(boolean userAskedToRate) {
         if (editor == null) {
             if (pref == null) {
-                pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+                pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
             }
             editor = pref.edit();
         }

@@ -1,28 +1,73 @@
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.content.SharedPreferences;
+import android.util.Base64;
 import android.util.Log;
 
 import com.squareup.picasso.Picasso;
 
-import org.greenrobot.greendao.AbstractDao;
+import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.WhereCondition;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import io.reactivex.Maybe;
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.models.*;
+import openfoodfacts.github.scrachx.openfood.models.Additive;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTag;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Category;
+import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Country;
+import openfoodfacts.github.scrachx.openfood.models.CountryDao;
+import openfoodfacts.github.scrachx.openfood.models.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientName;
+import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
+import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
+import openfoodfacts.github.scrachx.openfood.models.Label;
+import openfoodfacts.github.scrachx.openfood.models.LabelDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.Question;
+import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
+import openfoodfacts.github.scrachx.openfood.models.Tag;
+import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.RobotoffAPIService;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
@@ -35,29 +80,27 @@ public class ProductRepository implements IProductRepository {
     private static final String DEFAULT_LANGUAGE = "en";
     private static final String TAG = ProductRepository.class.getSimpleName();
     private static IProductRepository instance;
-    private ProductApiService productApi;
-    private RobotoffAPIService robotoffApi;
-    private Database db;
-    private LabelDao labelDao;
-    private LabelNameDao labelNameDao;
-    private TagDao tagDao;
-    private InvalidBarcodeDao invalidBarcodeDao;
-    private AllergenDao allergenDao;
-    private AllergenNameDao allergenNameDao;
-    private AdditiveDao additiveDao;
-    private AdditiveNameDao additiveNameDao;
-    private CountryDao countryDao;
-    private CountryNameDao countryNameDao;
-    private CategoryDao categoryDao;
-    private CategoryNameDao categoryNameDao;
-    private IngredientDao ingredientDao;
-    private IngredientNameDao ingredientNameDao;
-    private IngredientsRelationDao ingredientsRelationDao;
-    private AnalysisTagDao analysisTagDao;
-    private AnalysisTagNameDao analysisTagNameDao;
-    private AnalysisTagConfigDao analysisTagConfigDao;
-    // -1 no internet connexion.
-    private final static long TAXONOMY_NO_INTERNET = -9999L;
+    private final AdditiveDao additiveDao;
+    private final AdditiveNameDao additiveNameDao;
+    private final AllergenDao allergenDao;
+    private final AllergenNameDao allergenNameDao;
+    private final AnalysisTagConfigDao analysisTagConfigDao;
+    private final AnalysisTagDao analysisTagDao;
+    private final AnalysisTagNameDao analysisTagNameDao;
+    private final CategoryDao categoryDao;
+    private final CategoryNameDao categoryNameDao;
+    private final CountryDao countryDao;
+    private final CountryNameDao countryNameDao;
+    private final Database db;
+    private final IngredientDao ingredientDao;
+    private final IngredientNameDao ingredientNameDao;
+    private final IngredientsRelationDao ingredientsRelationDao;
+    private final InvalidBarcodeDao invalidBarcodeDao;
+    private final LabelDao labelDao;
+    private final LabelNameDao labelNameDao;
+    private final ProductApiService productApi;
+    private final RobotoffAPIService robotoffApi;
+    private final TagDao tagDao;
 
     /**
      * A method used to get instance from the repository.
@@ -79,7 +122,7 @@ public class ProductRepository implements IProductRepository {
         productApi = CommonApiManager.getInstance().getProductApiService();
         robotoffApi = CommonApiManager.getInstance().getRobotoffApiService();
 
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         db = daoSession.getDatabase();
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
@@ -107,7 +150,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of Labels.
      */
     public Single<List<Label>> reloadLabelsFromServer() {
-        return getTaxonomyData(Taxonomy.LABEL, true, false, labelDao);
+        return Taxonomy.LABEL.getTaxonomyData(this, true, false, labelDao);
     }
 
     Single<List<Label>> loadLabels(long lastModifiedDate) {
@@ -125,7 +168,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of Tags.
      */
     public Single<List<Tag>> reloadTagsFromServer() {
-        return getTaxonomyData(Taxonomy.TAGS, true, false, tagDao);
+        return Taxonomy.TAGS.getTaxonomyData(this, true, false, tagDao);
     }
 
     Single<List<Tag>> loadTags(long lastModifiedDate) {
@@ -138,7 +181,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     public Single<List<InvalidBarcode>> reloadInvalidBarcodesFromServer() {
-        return getTaxonomyData(Taxonomy.INVALID_BARCODES, true, false, invalidBarcodeDao);
+        return Taxonomy.INVALID_BARCODES.getTaxonomyData(this, true, false, invalidBarcodeDao);
     }
 
     Single<List<InvalidBarcode>> loadInvalidBarcodes(long lastModifiedDate) {
@@ -162,52 +205,13 @@ public class ProductRepository implements IProductRepository {
      * @return The allergens in the product.
      */
     public Single<List<Allergen>> reloadAllergensFromServer() {
-        return getTaxonomyData(Taxonomy.ALLERGEN, true, false, allergenDao);
+        // FIXME: this returns 404
+        return Taxonomy.ALLERGEN.getTaxonomyData(this, true, false, allergenDao);
     }
 
     @Override
     public Single<List<Allergen>> getAllergens() {
-        return getTaxonomyData(Taxonomy.ALLERGEN, false, true, allergenDao);
-    }
-
-    /**
-     * @param taxonomy enum defining taxonomy to be downloaded
-     * @param checkUpdate checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     *     *     If checkUpdate is true (or local database is empty) then load it from the server,
-     *     *     *     else from the local database.
-     * @param loadFromLocalDatabase if true the values will be loaded from local database if no update to perform from server
-     * @param dao used to check if locale data is empty
-     * @param <T> type of taxonomy
-     */
-    private <T> Single<List<T>> getTaxonomyData(Taxonomy taxonomy, boolean checkUpdate, boolean loadFromLocalDatabase, AbstractDao dao) {
-        //First check if this taxonomy is to be loaded.
-        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        boolean isDownloadActivated = mSettings.getBoolean(taxonomy.getDownloadActivatePreferencesId(), false);
-        long lastDownloadFromSettings = mSettings.getLong(taxonomy.getLastDownloadTimeStampPreferenceId(), 0L);
-        //if the database scheme changed, this settings should be true
-        boolean forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false);
-
-        if (isDownloadActivated) {
-            //Taxonomy is marked to be download
-            if (tableIsEmpty(dao)) {
-                //Table is empty, no check for update, just load taxonomy
-                long lastModifiedDate = getLastModifiedDateFromServer(taxonomy);
-                if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
-                    return taxonomy.load(this, lastModifiedDate);
-                }
-            } else if (checkUpdate) {
-                //It is ask to check for update - Test if file on server is more recent than last download.
-                long lastModifiedDateFromServer = getLastModifiedDateFromServer(taxonomy);
-                if (forceUpdate || lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > lastDownloadFromSettings) {
-                    return taxonomy.load(this, lastModifiedDateFromServer);
-                }
-            }
-        }
-        if (loadFromLocalDatabase) {
-            //If we are here then just get the information from the local database
-            return Single.fromCallable(() -> dao.loadAll());
-        }
-        return Single.fromCallable(() -> Collections.emptyList());
+        return Taxonomy.ALLERGEN.getTaxonomyData(this, false, true, allergenDao);
     }
 
     Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
@@ -225,7 +229,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of countries.
      */
     public Single<List<Country>> reloadCountriesFromServer() {
-        return getTaxonomyData(Taxonomy.COUNTRY, true, false, countryDao);
+        return Taxonomy.COUNTRY.getTaxonomyData(this, true, false, countryDao);
     }
 
     Single<List<Country>> loadCountries(Long lastModifiedDate) {
@@ -243,12 +247,12 @@ public class ProductRepository implements IProductRepository {
      * @return The list of categories.
      */
     public Single<List<Category>> reloadCategoriesFromServer() {
-        return getTaxonomyData(Taxonomy.CATEGORY, true, false, categoryDao);
+        return Taxonomy.CATEGORY.getTaxonomyData(this, true, false, categoryDao);
     }
 
     @Override
     public Single<List<Category>> getCategories() {
-        return getTaxonomyData(Taxonomy.CATEGORY, false, true, categoryDao);
+        return Taxonomy.CATEGORY.getTaxonomyData(this, false, true, categoryDao);
     }
 
     Single<List<Category>> loadCategories(Long lastModifiedDate) {
@@ -276,7 +280,7 @@ public class ProductRepository implements IProductRepository {
      * @return The list of additives.
      */
     public Single<List<Additive>> reloadAdditivesFromServer() {
-        return getTaxonomyData(Taxonomy.ADDITIVE, true, false, additiveDao);
+        return Taxonomy.ADDITIVE.getTaxonomyData(this, true, false, additiveDao);
     }
 
     Single<List<Additive>> loadAdditives(long lastModifiedDate) {
@@ -300,7 +304,7 @@ public class ProductRepository implements IProductRepository {
      * @return The ingredients in the product.
      */
     public Single<List<Ingredient>> reloadIngredientsFromServer() {
-        return getTaxonomyData(Taxonomy.INGREDIENT, true, false, ingredientDao);
+        return Taxonomy.INGREDIENT.getTaxonomyData(this, true, false, ingredientDao);
     }
 
     Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
@@ -310,31 +314,6 @@ public class ProductRepository implements IProductRepository {
                 saveIngredients(ingredients);
                 updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate);
             });
-    }
-
-    /**
-     * This function check the last modified date of the taxonomy.json file on OF server.
-     *
-     * @param taxonomy The lowercase taxonomy to be check
-     * @return lastModifierDate     The timestamp of the last changes date of the taxonomy.json on OF server
-     *     Or TAXONOMY_NO_INTERNET if there is no connexion.
-     */
-    private long getLastModifiedDateFromServer(Taxonomy taxonomy) {
-        long lastModifiedDate;
-        try {
-            String baseUrl = BuildConfig.OFWEBSITE;
-            URL url = new URL(baseUrl + taxonomy.getJsonUrl());
-            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-            lastModifiedDate = httpCon.getLastModified();
-            httpCon.disconnect();
-        } catch (IOException e) {
-            //Problem
-            Log.e(getClass().getName(), "getLastModifiedDate", e);
-            Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
-            return TAXONOMY_NO_INTERNET;
-        }
-        Log.i(getClass().getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
-        return lastModifiedDate;
     }
 
     /**
@@ -501,7 +480,7 @@ public class ProductRepository implements IProductRepository {
         ingredientDao.deleteAll();
         ingredientNameDao.deleteAll();
         ingredientsRelationDao.deleteAll();
-        DaoSession daoSession = OFFApplication.getInstance().getDaoSession();
+        DaoSession daoSession = OFFApplication.getDaoSession();
         daoSession.getDatabase().execSQL(
             "update sqlite_sequence set seq=0 where name in ('" + ingredientDao.getTablename() + "', '" + ingredientNameDao.getTablename() + "', '" + ingredientsRelationDao
                 .getTablename() + "')");
@@ -810,15 +789,6 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
-     * Checks whether table is empty
-     *
-     * @param dao checks records count of any table
-     */
-    private Boolean tableIsEmpty(AbstractDao dao) {
-        return dao.count() == 0;
-    }
-
-    /**
      * Loads question from the local database by code and lang of question.
      *
      * @param code for the question
@@ -846,7 +816,21 @@ public class ProductRepository implements IProductRepository {
      */
     @Override
     public Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation) {
-        return robotoffApi.annotateInsight(insightId, annotation);
+        // if the user is logged in, send the auth, otherwise make it anonymous
+        final SharedPreferences userPref = OFFApplication.getInstance()
+            .getSharedPreferences("login", 0);
+
+        final String user = userPref.getString("user", "").trim();
+        final String pass = userPref.getString("pass", "").trim();
+
+        if (StringUtils.isNotBlank(user) && StringUtils.isNotBlank(pass)) {
+            final String baseAuth = "Basic " + Base64.encodeToString(
+                (user + ":" + pass).getBytes(), Base64.NO_WRAP);
+
+            return robotoffApi.annotateInsight(insightId, annotation, baseAuth);
+        } else {
+            return robotoffApi.annotateInsight(insightId, annotation);
+        }
     }
 
     /**
@@ -855,7 +839,7 @@ public class ProductRepository implements IProductRepository {
      * @return The analysis tags in the product.
      */
     public Single<List<AnalysisTag>> reloadAnalysisTagsFromServer() {
-        return getTaxonomyData(Taxonomy.ANALYSIS_TAGS, true, false, analysisTagDao);
+        return Taxonomy.ANALYSIS_TAGS.getTaxonomyData(this, true, false, analysisTagDao);
     }
 
     Single<List<AnalysisTag>> loadAnalysisTags(long lastModifiedDate) {
@@ -893,7 +877,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     public Single<List<AnalysisTagConfig>> reloadAnalysisTagConfigsFromServer() {
-        return getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, true, false, analysisTagConfigDao);
+        return Taxonomy.ANALYSIS_TAG_CONFIG.getTaxonomyData(this, true, false, analysisTagConfigDao);
     }
 
     Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
@@ -951,9 +935,14 @@ public class ProductRepository implements IProductRepository {
         }
     }
 
+    /**
+     * @param analysisTag
+     * @param languageCode
+     * @return {@link Maybe#empty()} if no analysis tag found
+     */
     @Override
-    public Single<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode) {
-        return Single.fromCallable(() -> {
+    public Maybe<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(final String analysisTag, final String languageCode) {
+        return Maybe.fromCallable(() -> {
             AnalysisTagConfig analysisTagConfig = analysisTagConfigDao.queryBuilder()
                 .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
                 .unique();

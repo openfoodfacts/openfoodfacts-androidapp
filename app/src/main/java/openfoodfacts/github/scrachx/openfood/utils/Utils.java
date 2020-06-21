@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.Manifest;
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +26,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
@@ -34,6 +35,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
@@ -47,6 +50,7 @@ import androidx.work.WorkManager;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,30 +62,33 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
-import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWork;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.WebViewFallback;
-
-import static android.text.TextUtils.isEmpty;
 
 public class Utils {
+    public static final int CONNECTION_TIMEOUT = 5000;
+    public static final int RW_TIMEOUT = 30000;
+
+    private Utils() {
+        // Utility class
+    }
+
     public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
@@ -93,7 +100,6 @@ public class Utils {
     public static final String HEADER_USER_AGENT_SCAN = "Scan";
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
     public static final int NO_DRAWABLE_RESOURCE = 0;
-    public static final String OFFLINE_EDIT_PENDING_WORK_NAME = "offline_edit_pending_products_work";
     public static final String FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies";
 
     /**
@@ -104,14 +110,14 @@ public class Utils {
      * @param tags the styled span objects to apply to the content
      *     such as android.text.style.StyleSpan
      */
-    private static CharSequence apply(CharSequence[] content, Object... tags) {
+    private static String apply(CharSequence[] content, Object... tags) {
         SpannableStringBuilder text = new SpannableStringBuilder();
         openTags(text, tags);
         for (CharSequence item : content) {
             text.append(item);
         }
         closeTags(text, tags);
-        return text;
+        return text.toString();
     }
 
     /**
@@ -145,37 +151,32 @@ public class Utils {
      * Returns a CharSequence that applies boldface to the concatenation
      * of the specified CharSequence objects.
      */
-    public static CharSequence bold(CharSequence... content) {
+    public static String bold(CharSequence... content) {
         return apply(content, new StyleSpan(Typeface.BOLD));
     }
 
-    public static void hideKeyboard(Activity activity) {
-        if (activity == null) {
+    public static void hideKeyboard(@NonNull Activity activity) {
+        final View view = activity.getCurrentFocus();
+        if (view == null) {
             return;
         }
-
-        View view = activity.getCurrentFocus();
-
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            if (imm != null) {
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
-    public static String compressImage(String url) {
-        File fileFront = new File(url);
-        Bitmap bt = decodeFile(fileFront);
-        if (bt == null) {
-            Log.e("COMPRESS_IMAGE", url + " not found");
+    public static String compressImage(String fileUrl) {
+        Bitmap decodedBitmap = decodeFile(new File(fileUrl));
+        if (decodedBitmap == null) {
+            Log.e("COMPRESS_IMAGE", fileUrl + " not found");
             return null;
         }
 
-        File smallFileFront = new File(url.replace(".png", "_small.png"));
+        File smallFileFront = new File(fileUrl.replace(".png", "_small.png"));
 
         try (OutputStream fOutFront = new FileOutputStream(smallFileFront)) {
-            bt.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
+            decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutFront);
         } catch (IOException e) {
             Log.e("COMPRESS_IMAGE", e.getMessage(), e);
         }
@@ -183,16 +184,14 @@ public class Utils {
     }
 
     public static int getColor(Context context, int id) {
-        final int version = Build.VERSION.SDK_INT;
-        if (version >= 23) {
-            return ContextCompat.getColor(context, id);
-        } else {
-            return context.getResources().getColor(id);
-        }
+        return ContextCompat.getColor(context, id);
     }
 
-    // Decodes image and scales it to reduce memory consumption
-    private static Bitmap decodeFile(File f) {
+    /**
+     * Decodes image and scales it to reduce memory consumption
+     */
+    @Nullable
+    private static Bitmap decodeFile(@NonNull File f) {
         try {
             // Decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
@@ -238,7 +237,8 @@ public class Utils {
         }
     }
 
-    public static int getImageGrade(String grade) {
+    @DrawableRes
+    public static int getImageGrade(@Nullable String grade) {
 
         if (grade == null) {
             return NO_DRAWABLE_RESOURCE;
@@ -260,7 +260,7 @@ public class Utils {
         }
     }
 
-    public static String getNovaGroupExplanation(String novaGroup, Context context) {
+    public static String getNovaGroupExplanation(@Nullable String novaGroup, @NonNull Context context) {
 
         if (novaGroup == null) {
             return "";
@@ -280,27 +280,28 @@ public class Utils {
         }
     }
 
-    public static <T extends View> List<T> getViewsByType(ViewGroup root, Class<T> tClass) {
+    public static <T extends View> List<T> getViewsByType(ViewGroup root, Class<T> typeClass) {
         final ArrayList<T> result = new ArrayList<>();
         int childCount = root.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = root.getChildAt(i);
             if (child instanceof ViewGroup) {
-                result.addAll(getViewsByType((ViewGroup) child, tClass));
+                result.addAll(getViewsByType((ViewGroup) child, typeClass));
             }
 
-            if (tClass.isInstance(child)) {
-                result.add(tClass.cast(child));
+            if (typeClass.isInstance(child)) {
+                result.add(typeClass.cast(child));
             }
         }
         return result;
     }
 
-    public static int getNovaGroupDrawable(Product product) {
+    public static int getNovaGroupDrawable(@Nullable Product product) {
         return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
     }
 
-    public static int getNovaGroupDrawable(String novaGroup) {
+    @DrawableRes
+    public static int getNovaGroupDrawable(@Nullable String novaGroup) {
 
         if (novaGroup == null) {
             return NO_DRAWABLE_RESOURCE;
@@ -329,13 +330,12 @@ public class Utils {
     }
 
     public static int getImageEnvironmentImpact(Product product) {
-        int drawable = NO_DRAWABLE_RESOURCE;
         if (product == null) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
         List<String> tags = product.getEnvironmentImpactLevelTags();
         if (CollectionUtils.isEmpty(tags)) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
         String tag = tags.get(0).replace("\"", "");
         switch (tag) {
@@ -346,11 +346,11 @@ public class Utils {
             case "en:medium":
                 return R.drawable.ic_co2_medium_24dp;
             default:
-                return drawable;
+                return NO_DRAWABLE_RESOURCE;
         }
     }
 
-    public static int getSmallImageGrade(String grade) {
+    public static int getSmallImageGrade(@Nullable String grade) {
         int drawable = NO_DRAWABLE_RESOURCE;
 
         if (grade == null) {
@@ -380,7 +380,7 @@ public class Utils {
         return drawable;
     }
 
-    public static Bitmap getBitmapFromDrawable(Context context, @DrawableRes int drawableId) {
+    public static Bitmap getBitmapFromDrawable(@NonNull Context context, @DrawableRes int drawableId) {
         Drawable drawable = AppCompatResources.getDrawable(context, drawableId);
         if (drawable == null) {
             return null;
@@ -406,7 +406,7 @@ public class Utils {
             return value;
         }
 
-        if (value == null || value.length() == 0) {
+        if (TextUtils.isEmpty(value)) {
             return "?";
         }
 
@@ -425,12 +425,8 @@ public class Utils {
         return getRoundNumber(Float.toString(value));
     }
 
-    public static DaoSession getAppDaoSession(Context context) {
-        return ((OFFApplication) context.getApplicationContext()).getDaoSession();
-    }
-
-    public static DaoSession getDaoSession(Context context) {
-        return OFFApplication.daoSession;
+    public static DaoSession getDaoSession() {
+        return OFFApplication.getDaoSession();
     }
 
     /**
@@ -438,21 +434,9 @@ public class Utils {
      *
      * @return true if installed, false otherwise.
      */
-    public static boolean isHardwareCameraInstalled(Context context) {
-        if (context == null) {
-            return false;
-        }
-        try {
-            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-                return true;
-            }
-        } catch (NullPointerException e) {
-            if (BuildConfig.DEBUG) {
-                Log.i(context.getClass().getSimpleName(), e.toString());
-            }
-            return false;
-        }
-        return false;
+    @SuppressLint("UnsupportedChromeOsCameraSystemFeature")
+    public static boolean isHardwareCameraInstalled(@NonNull Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }
 
     /**
@@ -474,30 +458,19 @@ public class Utils {
         isUploadJobInitialised = true;
     }
 
-    public static OkHttpClient HttpClientBuilder() {
-        OkHttpClient httpClient;
-        if (Build.VERSION.SDK_INT == 24) {
-            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-                .tlsVersions(TlsVersion.TLS_1_2)
-                .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
-                .build();
+    public static OkHttpClient httpClientBuilder() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+            .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
+            .readTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
+            .writeTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
+            .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS));
 
-            httpClient = new OkHttpClient.Builder()
-                .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                .readTimeout(30000, TimeUnit.MILLISECONDS)
-                .writeTimeout(30000, TimeUnit.MILLISECONDS)
-                .connectionSpecs(Collections.singletonList(spec))
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build();
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         } else {
-            httpClient = new OkHttpClient.Builder()
-                .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                .readTimeout(30000, TimeUnit.MILLISECONDS)
-                .writeTimeout(30000, TimeUnit.MILLISECONDS)
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build();
+            builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
         }
-        return httpClient;
+        return builder.build();
     }
 
     /**
@@ -506,22 +479,18 @@ public class Utils {
      * @param context of the application.
      * @return true if airplane mode is active.
      */
-    @SuppressWarnings("deprecation")
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public static boolean isAirplaneModeActive(Context context) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
-        } else {
+    public static boolean isAirplaneModeActive(@NonNull Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             return Settings.Global.getInt(context.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
+        } else {
+            //noinspection deprecation
+            return Settings.System.getInt(context.getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
         }
     }
 
-    public static boolean isUserLoggedIn(Context context) {
-        if (context == null) {
-            return false;
-        }
+    public static boolean isUserLoggedIn(@NonNull Context context) {
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         return StringUtils.isNotEmpty(login);
@@ -533,14 +502,16 @@ public class Utils {
      * @param context of the application.
      * @return true if connected or connecting. False otherwise.
      */
-    public static boolean isNetworkConnected(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = null;
-        if (cm != null) {
-            activeNetwork = cm.getActiveNetworkInfo();
+    public static boolean isNetworkConnected(@NonNull Context context) {
+        final ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null) {
+            return false;
         }
-
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        final NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork == null) {
+            return false;
+        }
+        return activeNetwork.isConnectedOrConnecting();
     }
 
     /**
@@ -559,7 +530,7 @@ public class Utils {
      * @param context of the application.
      * @return the type of network that is connected.
      */
-    private static String getNetworkType(Context context) {
+    private static String getNetworkType(@NonNull Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
@@ -583,10 +554,6 @@ public class Utils {
         return "Other";
     }
 
-    private static String timeStamp() {
-        return ((Long) System.currentTimeMillis()).toString();
-    }
-
     public static File makeOrGetPictureDirectory(Context context) {
         // determine the profile directory
         File dir = context.getFilesDir();
@@ -599,7 +566,7 @@ public class Utils {
             return picDir;
         }
         // creates the directory if not present yet
-        final boolean mkdir = picDir.mkdir();
+        final boolean mkdir = picDir.mkdirs();
         if (!mkdir) {
             Log.e(Utils.class.getSimpleName(), "Can create dir " + picDir);
         }
@@ -608,8 +575,7 @@ public class Utils {
     }
 
     public static boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
     public static boolean isStoragePermissionGranted(Activity activity) {
@@ -631,7 +597,7 @@ public class Utils {
     }
 
     public static Uri getOutputPicUri(Context context) {
-        return (Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), "/" + Utils.timeStamp() + ".jpg")));
+        return Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), System.currentTimeMillis() + ".jpg"));
     }
 
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
@@ -641,7 +607,7 @@ public class Utils {
         if (url == null) {
             clickableSpan = new ClickableSpan() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(@NonNull View view) {
                     ProductBrowsingListActivity.startActivity(activity, text, type);
                 }
             };
@@ -649,7 +615,7 @@ public class Utils {
             Uri uri = Uri.parse(url + urlParameter);
             clickableSpan = new ClickableSpan() {
                 @Override
-                public void onClick(View textView) {
+                public void onClick(@NonNull View textView) {
                     CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, uri, new WebViewFallback());
                 }
             };
@@ -661,57 +627,35 @@ public class Utils {
     }
 
     /**
-     * convert energy from kj to kcal for a product.
-     *
-     * @param value of energy in kj.
-     * @return energy in kcal.
-     */
-    public static String getEnergy(String value) {
-        String defaultValue = StringUtils.EMPTY;
-        if (defaultValue.equals(value) || isEmpty(value)) {
-            return defaultValue;
-        }
-
-        try {
-            int energyKcal = convertKjToKcal(Double.parseDouble(value));
-            return String.valueOf(energyKcal);
-        } catch (NumberFormatException e) {
-            return defaultValue;
-        }
-    }
-
-    private static int convertKjToKcal(double kj) {
-        return kj != 0 ? (int) (kj / 4.1868d) : -1;
-    }
-
-    /**
      * Function which returns true if the battery level is low
      *
      * @param context the context
      * @return true if battery is low or false if battery in not low
      */
-    public static boolean getBatteryLevel(Context context) {
+    public static boolean isBatteryLevelLow(@NonNull Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
+
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
 
-        float batteryPct = (level / (float) scale);
+        float batteryPct = (level / (float) scale) * 100;
         Log.i("BATTERYSTATUS", String.valueOf(batteryPct));
 
-        return (int) ((batteryPct) * 100) <= 15;
+        return Math.ceil(batteryPct) <= 15;
     }
 
-    public static boolean isDisableImageLoad(Context context) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getBoolean("disableImageLoad", false);
+    public static boolean isDisableImageLoad(@NonNull Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+            .getBoolean("disableImageLoad", false);
     }
 
-    /*
+    /**
      * Function to open ContinuousScanActivity to facilitate scanning
+     *
      * @param activity
      */
-    public static void scan(Activity activity) {
+    public static void scan(@NonNull Activity activity) {
 
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) !=
             PackageManager.PERMISSION_GRANTED) {
@@ -738,41 +682,77 @@ public class Utils {
      * @param context The context
      * @return Returns the version name of the app
      */
-    public static String getVersionName(Context context) {
+    @NonNull
+    public static String getVersionName(@Nullable Context context) {
         try {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pInfo.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException | NullPointerException e) {
             Log.e(Utils.class.getSimpleName(), "getVersionName", e);
+            return "(version unknown)";
         }
-        return "(version unknown)";
     }
 
     /**
      * @param type Type of call (Search or Scan)
      * @return Returns the header to be put in network call
      */
-    public static String getUserAgent(String type) {
+    @NonNull
+    public static String getUserAgent(@NonNull String type) {
         return getUserAgent() + " " + type;
     }
 
+    @NonNull
     public static String getUserAgent() {
-        final String prefix = " Official Android App ";
-        return BuildConfig.APP_NAME + prefix + BuildConfig.VERSION_NAME;
+        return BuildConfig.APP_NAME + " Official Android App " + BuildConfig.VERSION_NAME;
     }
 
     /**
      * @param response Takes a string
      * @return Returns a Json object
      */
-    public static JSONObject createJsonObject(String response) {
-        JSONObject jsonObject = null;
+    @Nullable
+    public static JSONObject createJsonObject(@NonNull String response) {
         try {
-            jsonObject = new JSONObject(response);
+            return new JSONObject(response);
         } catch (JSONException e) {
             Log.e(Utils.class.getSimpleName(), "createJsonObject", e);
+            return null;
         }
-        return jsonObject;
+    }
+
+    @Nullable
+    @SafeVarargs
+    public static <T> T firstNotNull(T... args) {
+        for (T arg : args) {
+            if (arg != null) {
+                return arg;
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    public static String firstNotEmpty(String... args) {
+        for (String arg : args) {
+            if (arg != null && arg.length() > 0) {
+                return arg;
+            }
+        }
+        return null;
+    }
+
+    public static boolean isFlavor(String... flavors) {
+        return ArrayUtils.contains(flavors, BuildConfig.FLAVOR);
+    }
+
+    public static boolean isFlavor(String flavor) {
+        return BuildConfig.FLAVOR.equals(flavor);
+    }
+
+    @NonNull
+    public static String getModifierNonDefault(String modifier) {
+        return modifier.equals(Modifier.DEFAULT_MODIFIER) ? "" : modifier;
     }
 }
 

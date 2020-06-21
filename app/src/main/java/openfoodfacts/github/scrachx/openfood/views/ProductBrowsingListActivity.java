@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -14,24 +15,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.StringRes;
-import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.MenuItemCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding;
@@ -39,6 +41,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -52,7 +55,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
     /**
      * Must be public to be visible by TakeScreenshotIncompleteProductsTest class.
      */
-    @SuppressWarnings("WeakerAccess")
     public static final String SEARCH_INFO = "search_info";
     private OpenFoodAPIClient api;
     private OpenFoodAPIClient apiClient;
@@ -66,6 +68,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private SearchInfo mSearchInfo;
     private SensorManager mSensorManager;
     private ShakeDetector mShakeDetector;
+    private CompositeDisposable disp = new CompositeDisposable();
     private int pageAddress = 1;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
@@ -93,6 +96,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        disp.dispose();
         binding = null;
     }
 
@@ -131,8 +135,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
         });
 
-        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new MenuItemCompat
-            .OnActionExpandListener() {
+        searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
                 return true;
@@ -161,50 +164,44 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
 
         if (item.getItemId() == R.id.action_set_type) {
-
-            MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
-            builder.title(R.string.show_by);
             String[] contributionTypes = new String[]{getString(R.string.products_added),
                 getString(R.string.products_incomplete), getString(R.string.product_pictures_contributed),
                 getString(R.string.picture_contributed_incomplete), getString(R.string.product_info_added),
                 getString(R.string.product_info_tocomplete)};
 
-            builder.items(contributionTypes);
-            builder.itemsCallback((dialog, itemView, position, text) -> {
+            new MaterialDialog.Builder(this)
+                .title(R.string.show_by)
+                .items(contributionTypes)
+                .itemsCallback((dialog, itemView, position, text) -> {
 
-                switch (position) {
-
-                    case 0:
-                        contributionType = 0;
-                        newSearchQuery();
-                        break;
-                    case 1:
-                        contributionType = 1;
-                        newSearchQuery();
-                        break;
-                    case 2:
-                        contributionType = 2;
-                        newSearchQuery();
-                        break;
-                    case 3:
-                        contributionType = 3;
-                        newSearchQuery();
-                        break;
-                    case 4:
-                        contributionType = 4;
-                        newSearchQuery();
-                        break;
-                    case 5:
-                        contributionType = 5;
-                        newSearchQuery();
-                        break;
-                    default:
-                        contributionType = 0;
-                        newSearchQuery();
-                        break;
-                }
-            });
-            builder.show();
+                    switch (position) {
+                        case 1:
+                            contributionType = 1;
+                            newSearchQuery();
+                            break;
+                        case 2:
+                            contributionType = 2;
+                            newSearchQuery();
+                            break;
+                        case 3:
+                            contributionType = 3;
+                            newSearchQuery();
+                            break;
+                        case 4:
+                            contributionType = 4;
+                            newSearchQuery();
+                            break;
+                        case 5:
+                            contributionType = 5;
+                            newSearchQuery();
+                            break;
+                        case 0:
+                        default:
+                            contributionType = 0;
+                            newSearchQuery();
+                            break;
+                    }
+                }).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -227,11 +224,35 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (extras != null) {
             SearchInfo searchInfo = extras.getParcelable(SEARCH_INFO);
             mSearchInfo = searchInfo != null ? searchInfo : SearchInfo.emptySearchInfo();
+        } else if (Intent.ACTION_VIEW.equals(getIntent().getAction())) {
+            // the user has entered the activity via a url
+            Uri data = getIntent().getData();
+            if (data != null) {
+                String[] paths = data.toString().split("/");
+
+                if (mSearchInfo == null) {
+                    mSearchInfo = SearchInfo.emptySearchInfo();
+                }
+
+                mSearchInfo.setSearchTitle(paths[4]);
+                mSearchInfo.setSearchQuery(paths[4]);
+                mSearchInfo.setSearchType(paths[3]);
+
+                if (paths[3].equals("cgi") && paths[4] != null && paths[4].contains("search.pl")) {
+                    mSearchInfo.setSearchTitle(data.getQueryParameter("search_terms"));
+                    mSearchInfo.setSearchQuery(data.getQueryParameter("search_terms"));
+                    mSearchInfo.setSearchType(SearchType.SEARCH);
+                }
+            } else {
+                Log.i(getClass().getSimpleName(), "No data was passed in with URL");
+                finish();
+            }
         }
+
         newSearchQuery();
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this) && Utils.getBatteryLevel(this)) {
+        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true;
         }
 
@@ -248,7 +269,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this, getBaseContext());
+        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this);
     }
 
     protected void newSearchQuery() {
@@ -293,11 +314,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.INCOMPLETE_PRODUCT:
                 getSupportActionBar().setTitle(getString(R.string.products_to_be_completed));
                 break;
-
             case SearchType.STATE:
                 getSupportActionBar().setSubtitle("State");
                 break;
-
             default:
                 Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
         }
@@ -342,12 +361,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     public void getDataFromAPI() {
-
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                apiClient.getProductsByBrand(searchQuery, pageAddress, (value, country) ->
-                    loadSearchProducts(value, country, R.string.txt_no_matching_brand_products));
+                disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
+                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_brand_products)));
                 break;
             case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
@@ -374,18 +392,21 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     loadSearchProducts(value, packaging, R.string.txt_no_matching_packaging_products));
                 break;
             case SearchType.SEARCH:
-                api.searchProduct(searchQuery, pageAddress, ProductBrowsingListActivity.this, (isOk, searchResponse, countProducts) -> {
-                    /*
-                    countProducts is checked, if it is -2 it means that there are no matching products in the
-                    database for the query.
-                     */
-                    if (countProducts == -2) {
-                        showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
-                            getResources().getString(R.string.txt_broaden_search));
-                    } else {
-                        loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
-                    }
-                });
+                if (ProductUtils.isBarcodeValid(searchQuery)) {
+                    api.getProduct(searchQuery, this);
+                } else {
+                    api.searchProduct(searchQuery, pageAddress, this, (isOk, searchResponse, countProducts) -> {
+
+                        // countProducts is checked, if it is -2 it means that there are no matching products in the
+                        // database for the query.
+                        if (countProducts == -2) {
+                            showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
+                                getResources().getString(R.string.txt_broaden_search));
+                        } else {
+                            loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
+                        }
+                    });
+                }
                 break;
             case SearchType.LABEL:
                 api.getProductsByLabel(searchQuery, pageAddress, (value, label) ->
@@ -418,10 +439,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
     private void loadDataForContributor(String searchQuery) {
         switch (contributionType) {
-            case 0:
-                api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
-                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
-                break;
 
             case 1:
                 api.getToBeCompletedProductsByContributor(searchQuery, pageAddress, (value, category) ->
@@ -444,10 +461,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
 
             case 5:
-                api.getInfoAddedIncompleteProducts(searchQuery, pageAddress, (value, category) ->
-                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
+                disp.add(api.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
+                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_contributor_products)));
                 break;
 
+            case 0:
             default:
                 api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
                     loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
@@ -519,7 +537,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response,
                                     @StringRes int emptyMessage, @StringRes int extendedMessage) {
-        if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
+        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage),
                 getResources().getString(extendedMessage));
         } else {
@@ -531,7 +549,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * @see #loadSearchProducts(boolean, Search, int, int)
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response, @StringRes int emptyMessage) {
-        if (isResponseSuccessful && response != null && Integer.valueOf(response.getCount()) == 0) {
+        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
             showEmptySearch(getResources().getString(emptyMessage), null);
         } else {
             loadData(isResponseSuccessful, response);
@@ -539,7 +557,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     private void setUpRecyclerView() {
-
         binding.progressBar.setVisibility(View.INVISIBLE);
         binding.swipeRefresh.setRefreshing(false);
         binding.textCountProduct.setVisibility(View.VISIBLE);
@@ -554,28 +571,26 @@ public class ProductBrowsingListActivity extends BaseActivity {
             ProductsRecyclerViewAdapter adapter = new ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode);
             binding.productsRecyclerView.setAdapter(adapter);
 
-            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.productsRecyclerView.getContext(),
-                DividerItemDecoration.VERTICAL);
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.productsRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
             // Retain an instance so that you can call `resetState()` for fresh searches
-            EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(mLayoutManager) {
+            // Adds the scroll listener to RecyclerView
+            binding.productsRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(mLayoutManager) {
                 @Override
-                public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                public void onLoadMore(int page, int totalItemsCount, RecyclerView view1) {
                     if (mProducts.size() < mCountProducts) {
                         pageAddress = page;
                         getDataFromAPI();
                     }
                 }
-            };
-            // Adds the scroll listener to RecyclerView
-            binding.productsRecyclerView.addOnScrollListener(scrollListener);
+            });
 
             binding.productsRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(ProductBrowsingListActivity.this, (view, position) -> {
-                    Product p = ((ProductsRecyclerViewAdapter) binding.productsRecyclerView.getAdapter()).getProduct(position);
-                    if (p != null) {
-                        String barcode = p.getCode();
+                    Product product = ((ProductsRecyclerViewAdapter) binding.productsRecyclerView.getAdapter()).getProduct(position);
+                    if (product != null) {
+                        String barcode = product.getCode();
                         if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
                             api.getProduct(barcode, ProductBrowsingListActivity.this);
                             try {
@@ -590,17 +605,18 @@ public class ProductBrowsingListActivity extends BaseActivity {
                                 Log.e(ProductBrowsingListActivity.class.getSimpleName(), "addOnItemTouchListener", e);
                             }
                         } else {
-                            new MaterialDialog.Builder(ProductBrowsingListActivity.this)
-                                .title(R.string.device_offline_dialog_title)
-                                .content(R.string.connectivity_check)
-                                .positiveText(R.string.txt_try_again)
-                                .negativeText(R.string.dismiss)
-                                .onPositive((dialog, which) -> {
+                            new MaterialAlertDialogBuilder(ProductBrowsingListActivity.this)
+                                .setTitle(R.string.device_offline_dialog_title)
+                                .setMessage(R.string.connectivity_check)
+                                .setPositiveButton(R.string.txt_try_again, (dialog, which) -> {
                                     if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
                                         api.getProduct(barcode, ProductBrowsingListActivity.this);
                                     } else {
                                         Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
                                     }
+                                })
+                                .setNegativeButton(R.string.dismiss, (dialog, which) -> {
+                                    dialog.dismiss();
                                 })
                                 .show();
                         }

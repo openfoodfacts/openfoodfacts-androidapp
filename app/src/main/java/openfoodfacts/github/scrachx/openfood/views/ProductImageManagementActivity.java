@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
 
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Callback;
@@ -35,13 +34,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ImageSize;
-import openfoodfacts.github.scrachx.openfood.images.ImageTransformation;
+import openfoodfacts.github.scrachx.openfood.images.ImageTransformationUtils;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.FileDownloader;
@@ -79,6 +79,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     private File lastViewedImage;
     private PhotoViewAttacher mAttacher;
     private SharedPreferences settings;
+    private CompositeDisposable disp = new CompositeDisposable();
 
     public static boolean isImageModified(int requestCode, int resultCode) {
         return requestCode == REQUEST_EDIT_IMAGE && resultCode == ProductImageManagementActivity.RESULTCODE_MODIFIED;
@@ -87,6 +88,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        disp.dispose();
         binding = null;
     }
 
@@ -94,13 +96,17 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         client = new OpenFoodAPIClient(this);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_full_screen_image);
+        binding = ActivityFullScreenImageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        // OnCLick
+        // Setup onclick listeners
         binding.btnClose.setOnClickListener(v -> onExit());
         binding.btnUnselectImage.setOnClickListener(v -> unselectImage());
         binding.btnChooseImage.setOnClickListener(v -> onChooseImage());
         binding.btnAddImage.setOnClickListener(v -> onAddImage());
+        binding.btnChooseDefaultLanguage.setOnClickListener(v -> onSelectDefaultLanguage());
+        binding.btnEditImage.setOnClickListener(v -> onStartEditExistingImage());
+
         binding.comboLanguages.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -435,7 +441,6 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         }
     }
 
-    @OnClick(R.id.btnChooseDefaultLanguage)
     void onSelectDefaultLanguage() {
         String lang = LocaleHelper.getLocale(getProduct().getLang()).getLanguage();
         LocaleHelper.getLanguageData(lang, true);
@@ -454,7 +459,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
             return;
         }
         startRefresh(getString(R.string.unselect_image));
-        client.unselectImage(getProduct().getCode(), getSelectedType(), getCurrentLanguage(), (value, response) -> {
+        client.unSelectImage(getProduct().getCode(), getSelectedType(), getCurrentLanguage(), (value, response) -> {
             if (value) {
                 setResult(RESULTCODE_MODIFIED);
             }
@@ -509,7 +514,6 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         binding.btnChooseDefaultLanguage.setVisibility(isDefault ? View.INVISIBLE : View.VISIBLE);
     }
 
-    @OnClick(R.id.btnEditImage)
     void onStartEditExistingImage() {
         if (cannotEdit(REQUEST_EDIT_IMAGE_AFTER_LOGIN)) {
             return;
@@ -518,21 +522,23 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         final ProductImageField productImageField = getSelectedType();
         String language = getCurrentLanguage();
         //the rotation/crop set on the server
-        ImageTransformation transformation = ImageTransformation.getScreenTransformation(product, productImageField, language);
+        ImageTransformationUtils transformation = ImageTransformationUtils.getScreenTransformation(product, productImageField, language);
         //the first time, the images properties are not loaded...
         if (transformation.isEmpty()) {
-            updateProductImagesInfo(() -> editPhoto(productImageField, ImageTransformation.getScreenTransformation(product, productImageField, language)));
+            updateProductImagesInfo(() -> editPhoto(productImageField, ImageTransformationUtils.getScreenTransformation(product, productImageField, language)));
         }
         editPhoto(productImageField, transformation);
     }
 
-    private void editPhoto(ProductImageField productImageField, ImageTransformation transformation) {
+    private void editPhoto(ProductImageField productImageField, ImageTransformationUtils transformation) {
         if (transformation.isNotEmpty()) {
-            new FileDownloader(getBaseContext()).download(transformation.getInitImageUrl(), file -> {
-                //to delete the file after:
-                lastViewedImage = file;
-                cropRotateExisitingImageOnServer(file, getString(ImageKeyHelper.getResourceIdForEditAction(productImageField)), transformation);
-            });
+            disp.add(FileDownloader.download(this, transformation.getInitImageUrl())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(file -> {
+                    //to delete the file after:
+                    lastViewedImage = file;
+                    cropRotateExisitingImageOnServer(file, getString(ImageKeyHelper.getResourceIdForEditAction(productImageField)), transformation);
+                }));
         }
     }
 
@@ -572,7 +578,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
         updateToolbarTitle(getProduct());
     }
 
-    private void cropRotateExisitingImageOnServer(File image, String title, ImageTransformation transformation) {
+    private void cropRotateExisitingImageOnServer(File image, String title, ImageTransformationUtils transformation) {
         Uri uri = Uri.fromFile(image);
         final CropImage.ActivityBuilder activityBuilder = CropImage.activity(uri)
             .setCropMenuCropButtonIcon(R.drawable.ic_check_white_24dp)
@@ -656,15 +662,15 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
             startRefresh(StringUtils.EMPTY);
             CropImage.ActivityResult result = CropImage.getActivityResult(dataFromCropActivity);
             final Product product = getProduct();
-            ImageTransformation currentServerTransformation = ImageTransformation.getInitialServerTransformation(product, getSelectedType(), getCurrentLanguage());
-            ImageTransformation newServerTransformation = ImageTransformation
-                .toServerTransformation(new ImageTransformation(result.getRotation(), result.getCropRect()), product, getSelectedType(), getCurrentLanguage());
+            ImageTransformationUtils currentServerTransformation = ImageTransformationUtils.getInitialServerTransformation(product, getSelectedType(), getCurrentLanguage());
+            ImageTransformationUtils newServerTransformation = ImageTransformationUtils
+                .toServerTransformation(new ImageTransformationUtils(result.getRotation(), result.getCropRect()), product, getSelectedType(), getCurrentLanguage());
             boolean isModified = !currentServerTransformation.equals(newServerTransformation);
             if (isModified) {
                 startRefresh(getString(R.string.toastSending));
                 HashMap<String, String> imgMap = new HashMap<>();
                 imgMap.put(ImageKeyHelper.IMG_ID, newServerTransformation.getInitImageId());
-                ImageTransformation.addTransformToMap(newServerTransformation, imgMap);
+                ImageTransformationUtils.addTransformToMap(newServerTransformation, imgMap);
                 postEditImage(imgMap);
             } else {
                 stopRefresh();

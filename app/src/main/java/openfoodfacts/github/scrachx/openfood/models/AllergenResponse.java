@@ -17,7 +17,7 @@ public class AllergenResponse {
     private Map<String, String> names;
 
     private String wikiDataCode;
-    private Boolean isWikiDataIdPresent;
+    private final Boolean isWikiDataIdPresent;
 
     /**
      * Constructor.

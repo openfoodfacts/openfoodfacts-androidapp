@@ -3,13 +3,12 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link CategoryName}
  */
 public class CategoryNameTest {
-
     private CategoryName mCategoryName;
 
     @Before
@@ -46,7 +45,7 @@ public class CategoryNameTest {
     @Test
     public void constructorWithWikiDataId_setsIsWikiDataIdPresentTrue() {
         mCategoryName = new CategoryName("Tag", "en",
-                "Name", "WikiDataId");
+            "Name", "WikiDataId");
         assertTrue(mCategoryName.getIsWikiDataIdPresent());
     }
 

@@ -1,24 +1,24 @@
 package openfoodfacts.github.scrachx.openfood.views.listeners;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 /**
  * @author aurélien leboulanger
- * Implementing the {@link RecyclerView.android.support.v7.widget.RecyclerView.OnItemTouchListener} to respond to only single tap events
+ * Implementing the {@link RecyclerView.OnItemTouchListener} to respond to only single tap events
  */
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
-
-    private OnItemClickListener mListener;
+    final GestureDetector mGestureDetector;
 
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
 
-    GestureDetector mGestureDetector;
+    private final OnItemClickListener mListener;
 
     public RecyclerItemClickListener(Context context, OnItemClickListener listener) {
         mListener = listener;

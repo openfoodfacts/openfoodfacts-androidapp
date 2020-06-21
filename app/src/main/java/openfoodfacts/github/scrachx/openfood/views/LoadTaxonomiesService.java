@@ -12,16 +12,16 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Single;
-import io.reactivex.SingleSource;
+import io.reactivex.Completable;
+import io.reactivex.CompletableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class LoadTaxonomiesService extends IntentService {
+    public static final String RECEIVER_KEY = "receiver";
     private ProductRepository productRepository;
     private SharedPreferences settings;
     private ResultReceiver receiver;
@@ -38,45 +38,36 @@ public class LoadTaxonomiesService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         productRepository = (ProductRepository) ProductRepository.getInstance();
         settings = getSharedPreferences("prefs", 0);
-        receiver = intent == null ? null : intent.getParcelableExtra("receiver");
-        try {
-            doTask();
-        } catch (Exception throwable) {
-            handleError(throwable);
-        }
+        receiver = intent == null ? null : intent.getParcelableExtra(RECEIVER_KEY);
+
+        doTask();
     }
 
     private void doTask() {
-        final Consumer<Throwable> throwableConsumer = this::handleError;
         showLoading();
-        List<SingleSource<?>> syncObservables = new ArrayList<>();
-        syncObservables.add(productRepository.reloadLabelsFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadTagsFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadInvalidBarcodesFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadAllergensFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadIngredientsFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadAnalysisTagConfigsFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadAnalysisTagsFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadCountriesFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadAdditivesFromServer().subscribeOn(Schedulers.io()));
-        syncObservables.add(productRepository.reloadCategoriesFromServer().subscribeOn(Schedulers.io()));
 
-        disposable = Single.zip(syncObservables, objects -> {
-            //we do nothing there. Maybe there is a better solution to launch these singles in //
-            return true;
-        }).subscribeOn(Schedulers.io())
+        // We use completable because we only care about state (error or completed), not returned value
+        List<CompletableSource> syncObservables = new ArrayList<>();
+        syncObservables.add(productRepository.reloadLabelsFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadTagsFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadInvalidBarcodesFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadAllergensFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadIngredientsFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadAnalysisTagConfigsFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadAnalysisTagsFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadCountriesFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadAdditivesFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+        syncObservables.add(productRepository.reloadCategoriesFromServer().subscribeOn(Schedulers.io()).ignoreElement());
+
+        disposable = Completable.merge(syncObservables).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnError(throwableConsumer)
-            .ignoreElement()
             .subscribe(() -> {
                 settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false).apply();
                 hideLoading(false);
-            }, throwableConsumer);
-    }
-
-    private void handleError(Throwable throwable) {
-        Log.e(LoadTaxonomiesService.class.getSimpleName(), "can't load products", throwable);
-        hideLoading(true);
+            }, throwable -> {
+                Log.e(LoadTaxonomiesService.class.getSimpleName(), "can't load products", throwable);
+                hideLoading(true);
+            });
     }
 
     @Override

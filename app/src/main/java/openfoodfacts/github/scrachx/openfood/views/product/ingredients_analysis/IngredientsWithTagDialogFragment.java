@@ -32,10 +32,10 @@ import java.util.List;
 import java.util.Locale;
 
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 
 public class IngredientsWithTagDialogFragment extends DialogFragment {
@@ -175,26 +175,18 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             if (showHelpTakePhoto) {
                 messageStr = getString(R.string.unknown_status_missing_ingredients);
                 image.setImageResource(R.drawable.ic_add_a_photo_black_48dp);
-                image.setOnClickListener(v -> {
-                    goToAddPhoto();
-                });
+                image.setOnClickListener(v -> goToAddPhoto());
                 helpNeeded.setText(Html.fromHtml(getString(R.string.add_photo_to_extract_ingredients)));
-                helpNeeded.setOnClickListener(v -> {
-                    goToAddPhoto();
-                });
+                helpNeeded.setOnClickListener(v -> goToAddPhoto());
             } else if (showHelpExtract) {
                 String ingredientsImageUrl = getArguments().getString("ingredients_image_url");
                 Picasso.get()
                     .load(ingredientsImageUrl)
                     .into(image);
-                image.setOnClickListener(v -> {
-                    goToExtract();
-                });
+                image.setOnClickListener(v -> goToExtract());
                 messageStr = getString(R.string.unknown_status_missing_ingredients);
                 helpNeeded.setText(Html.fromHtml(getString(R.string.help_extract_ingredients, typeName.toLowerCase())));
-                helpNeeded.setOnClickListener(v -> {
-                    goToExtract();
-                });
+                helpNeeded.setOnClickListener(v -> goToExtract());
                 helpNeeded.setVisibility(View.VISIBLE);
             } else if (showHelpTranslate) {
                 messageStr = getString(R.string.unknown_status_no_translation);

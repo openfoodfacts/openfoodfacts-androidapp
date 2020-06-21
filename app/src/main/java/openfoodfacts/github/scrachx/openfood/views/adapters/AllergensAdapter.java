@@ -1,38 +1,39 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.CustomViewHolder> {
+import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 
-    private IProductRepository mProductRepository;
+public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.CustomViewHolder> {
+    private final IProductRepository mProductRepository;
     private List<AllergenName> mAllergens;
 
-    public AllergensAdapter(IProductRepository productRepository, List<AllergenName> allergens) {
+    public AllergensAdapter(@NonNull IProductRepository productRepository, @Nullable List<AllergenName> allergens) {
         mProductRepository = productRepository;
-        mAllergens = allergens;
+        setAllergens(allergens);
     }
 
-    public void setAllergens(List<AllergenName> allergens) {
-        mAllergens = allergens;
+    public void setAllergens(@Nullable List<AllergenName> allergens) {
+        mAllergens = allergens != null ? allergens : new ArrayList<>();
     }
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder {
-
-        TextView nameTextView;
-        Button messageButton;
+        final Button messageButton;
+        final TextView nameTextView;
 
         public CustomViewHolder(View itemView) {
             super(itemView);
@@ -65,11 +66,6 @@ public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.Cust
 
     @Override
     public int getItemCount() {
-        if (mAllergens == null) {
-            mAllergens = new ArrayList<>();
-        }
-
         return mAllergens.size();
     }
-
 }

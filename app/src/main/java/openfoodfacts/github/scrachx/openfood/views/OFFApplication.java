@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDexApplication;
 
-import org.apache.commons.lang.ArrayUtils;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -13,20 +12,17 @@ import java.io.IOException;
 
 import io.reactivex.exceptions.UndeliverableException;
 import io.reactivex.plugins.RxJavaPlugins;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class OFFApplication extends MultiDexApplication {
-    public static DaoSession daoSession;
-    public static final String OFF = "off";
-    public static final String OPFF = "opff";
-    public static final String OPF = "opf";
-    public static final String OBF = "obf";
-    private boolean DEBUG = false;
+    private static DaoSession daoSession;
+    private final boolean DEBUG = false;
     private static OFFApplication application;
     private static AppComponent appComponent;
 
@@ -38,12 +34,8 @@ public class OFFApplication extends MultiDexApplication {
         return application;
     }
 
-    public static boolean isFlavor(String... flavors) {
-        return ArrayUtils.contains(flavors, BuildConfig.FLAVOR);
-    }
-
-    public static boolean isFlavor(String flavor) {
-        return BuildConfig.FLAVOR.equals(flavor);
+    public static DaoSession getDaoSession() {
+        return daoSession;
     }
 
     @Override
@@ -55,16 +47,16 @@ public class OFFApplication extends MultiDexApplication {
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)
         String nameDB;
-        if ((isFlavor(OFF))) {
+        if ((Utils.isFlavor(AppFlavors.OFF))) {
             nameDB = "open_food_facts";
-        } else if (isFlavor(OPFF)) {
+        } else if (Utils.isFlavor(AppFlavors.OPFF)) {
             nameDB = "open_pet_food_facts";
-        } else if (isFlavor(OPF)) {
+        } else if (Utils.isFlavor(AppFlavors.OPF)) {
             nameDB = "open_products_facts";
         } else {
             nameDB = "open_beauty_facts";
         }
-        
+
         DatabaseHelper helper = new DatabaseHelper(this, nameDB);
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
@@ -104,9 +96,5 @@ public class OFFApplication extends MultiDexApplication {
             }
             Log.w(OFFApplication.class.getSimpleName(), "Undeliverable exception received, not sure what to do", e);
         });
-    }
-
-    public DaoSession getDaoSession() {
-        return daoSession;
     }
 }

@@ -7,26 +7,30 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
-import butterknife.BindView;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -44,16 +48,11 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 
 public class ProductActivity extends BaseActivity implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    @BindView(R.id.pager)
-    ViewPager viewPager;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.tabs)
-    TabLayout tabLayout;
-    @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    public static final String STATE_INTENT_KEY = "state";
+    private ActivityProductBinding binding;
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
+    private Disposable disposable;
     private State mState;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -65,29 +64,47 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        setContentView(R.layout.activity_product);
+
+        binding = ActivityProductBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         setTitle(getString(R.string.app_name_long));
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         api = new OpenFoodAPIClient(this);
 
-        mState = (State) getIntent().getSerializableExtra("state");
-        //no state-> we can't display anything. we go back to home.
-        if (mState == null) {
+        mState = (State) getIntent().getSerializableExtra(STATE_INTENT_KEY);
+
+        if (Intent.ACTION_VIEW.equals(getIntent().getAction())) {
+            // handle opening the app via product page url
+            Uri data = getIntent().getData();
+            String[] paths = data.toString().split("/"); // paths[4]
+            mState = new State();
+            loadProductDataFromUrl(paths[4]);
+        } else if (mState == null) {
+            //no state-> we can't display anything. we go back to home.
             final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+        } else {
+            initViews();
         }
+    }
 
-        setupViewPager(viewPager);
+    /**
+     * Initialise the content that shows the content on the device.
+     */
+    private void initViews() {
 
-        tabLayout.setupWithViewPager(viewPager);
+        setupViewPager(binding.pager);
+
+        binding.tabs.setupWithViewPager(binding.pager);
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -100,18 +117,45 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
         mShakeDetector.setOnShakeListener(count -> {
-
             if (scanOnShake) {
                 Utils.scan(ProductActivity.this);
             }
         });
 
-        BottomNavigationListenerInstaller.selectNavigationItem(bottomNavigationView, 0);
-        BottomNavigationListenerInstaller.install(bottomNavigationView, this, this);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
+    }
+
+    /**
+     * Get the product data from the barcode. This takes the barcode and retrieves the information.
+     *
+     * @param barcode from the URL.
+     */
+    private void loadProductDataFromUrl(String barcode) {
+        if (disposable != null) {
+            //dispose the previous call if not ended.
+            disposable.dispose();
+        }
+
+        disposable = api.getProductFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(state -> {
+                mState = state;
+                getIntent().putExtra(STATE_INTENT_KEY, state);
+                if (mState != null) {
+                    initViews();
+                } else {
+                    finish();
+                }
+            }, e -> {
+                Log.i(getClass().getSimpleName(), "Failed to load product data", e);
+                finish();
+            });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
@@ -138,10 +182,13 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         adapterResult.addFragment(new SummaryProductFragment(), menuTitles[0]);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
-        if (BuildConfig.FLAVOR.equals("off") || BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opff")) {
+
+        // Add Ingredients fragment for off, obf and opff
+        if (Utils.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
             adapterResult.addFragment(new IngredientsProductFragment(), menuTitles[1]);
         }
-        if (BuildConfig.FLAVOR.equals("off")) {
+
+        if (Utils.isFlavor(AppFlavors.OFF)) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             if ((mState.getProduct().getNutriments() != null &&
                 mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
@@ -151,24 +198,20 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
-        }
-        if (BuildConfig.FLAVOR.equals("opff")) {
+        } else if (Utils.isFlavor(AppFlavors.OPFF)) {
             adapterResult.addFragment(new NutritionProductFragment(), menuTitles[2]);
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
-        }
-
-        if (BuildConfig.FLAVOR.equals("obf")) {
+        } else if (Utils.isFlavor(AppFlavors.OBF)) {
             if (isPhotoMode(activity)) {
                 adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
             }
             adapterResult.addFragment(new IngredientsAnalysisProductFragment(), newMenuTitles[1]);
-        }
-
-        if (BuildConfig.FLAVOR.equals("opf")) {
+        } else if (Utils.isFlavor(AppFlavors.OPF)) {
             adapterResult.addFragment(new ProductPhotosFragment(), newMenuTitles[0]);
         }
+
         if (preferences.getBoolean("contributionTab", false)) {
             adapterResult.addFragment(new ContributorsFragment(), activity.getString(R.string.contribution_tab));
         }
@@ -194,6 +237,13 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         return true;
     }
 
+    @Subscribe
+    public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
+        if (event.getBarcode().equals(mState.getProduct().getCode())) {
+            onRefresh();
+        }
+    }
+
     @Override
     public void onRefresh() {
         api.getProduct(mState.getProduct().getCode(), this);
@@ -203,8 +253,14 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        mState = (State) intent.getSerializableExtra("state");
+        mState = (State) intent.getSerializableExtra(STATE_INTENT_KEY);
         adapterResult.refresh(mState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -225,6 +281,20 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         }
     }
 
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (disposable != null) {
+            disposable.dispose();
+        }
+    }
+
     public void showIngredientsTab(String action) {
         if (adapterResult == null || adapterResult.getCount() == 0) {
             return;
@@ -232,7 +302,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         for (int i = 0; i < adapterResult.getCount(); ++i) {
             Fragment fragment = adapterResult.getItem(i);
             if (fragment instanceof IngredientsProductFragment) {
-                viewPager.setCurrentItem(i);
+                binding.pager.setCurrentItem(i);
 
                 if ("perform_ocr".equals(action)) {
                     ((IngredientsProductFragment) fragment).extractIngredients();

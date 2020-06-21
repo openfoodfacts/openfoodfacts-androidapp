@@ -1,27 +1,27 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=kr
+플레이스토어의 스크린샷 위에 표시된 태그 라인입니다. 짧고 매력적으로 유지하세요
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ko
 
 =====================
-V2 screenshots
+V2 스크린샷
 =====================
 
 제품 스캔
 
 Nutriscore 가져 오기
 
-Your full scan history, fully private & exportable
+전체 검색 기록을 완전히 비공개하거나 내보내기 가능하다
 
 위키피디아와 함께 나아가십시오.
 
 알레르기 유발 경고 설정
 
-Nutrition, simplified
+영양, 단순하게
 
 알레르기 항원 경보
 
 좋아하는 음식에 대한 대안을 얻으십시오.
 
-Become an actor of food transparency
+식품 투명성의 배우가 되십시오
 
 음식 위키백과
 
@@ -38,35 +38,35 @@ Become an actor of food transparency
 영양 성분 표시
 
 =====================
-V3 screenshots
+V3 스크린샷
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+당신과 지구🌍를 위해 좋은 제품을 선택하십시오!
 
-✔ Ultra-fast barcode scan
+✔ 초고속 바코드 스캔
 
-✔ A global supermarket in your pocket
+✔ 주머니 속의 글로벌 마켓
 
-Nutritional quality
+영양 품질
 
-Ultra-processed foods
+가공 식품
 
-Carbon impact
+탄소 영향
 
-Compare easily before you buy
+구입하기 전에 쉽게 비교
 
-Create shopping lists, intake lists…
+쇼핑 목록, 섭취 목록 만들기…
 
-Find and compare over 750 000 products.
+750,000개 이상의 제품을 찾아 비교하십시오.
 
 
 
-Unlimited and fully-private scan history
+무제한 및 개인 검색 기록
 
-Swipe for even more details
+더 자세한 내용을 보려면 스와이프
 
-Set Allergen Alerts
+알레르기 유발 경고 설정
 
-Join our global movement for food transparency
+식품 투명성을위한 글로벌 운동에 동참하십시오
 
 world.openfoodfacts.org/contribute

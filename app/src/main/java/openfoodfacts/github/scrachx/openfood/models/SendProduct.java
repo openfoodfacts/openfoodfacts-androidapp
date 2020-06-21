@@ -12,6 +12,7 @@ import org.greenrobot.greendao.annotation.Transient;
 
 import java.io.Serializable;
 
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -24,11 +25,10 @@ public class SendProduct implements Serializable {
 
     @Id
     private Long id;
-
-    @JsonProperty("code")
+    @JsonProperty(ApiFields.Keys.BARCODE)
     private String barcode;
     private String lang;
-    @JsonProperty("product_name")
+    @JsonProperty(ApiFields.Keys.PRODUCT_NAME)
     private String name;
     private String brands;
     @JsonIgnore
@@ -41,7 +41,7 @@ public class SendProduct implements Serializable {
     private String imgupload_ingredients;
     @JsonIgnore
     private String imgupload_nutrition;
-    @JsonProperty("user_id")
+    @JsonProperty(ApiFields.Keys.USER_ID)
     @Transient
     private String userId;
     @Transient
@@ -213,7 +213,7 @@ public class SendProduct implements Serializable {
 
     private boolean equalityOfString(String a, String b) {
         if (a != null) {
-            return b != null && a.equals(b);
+            return a.equals(b);
         } else {
             return b == null;
         }
