@@ -150,7 +150,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         if (b != null) {
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            editionMode = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
+            editionMode = b.getBoolean(AddProductActivity.KEY_IS_EDITING);
             binding.barcode.setText(R.string.txtBarcode);
             binding.language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
             binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);

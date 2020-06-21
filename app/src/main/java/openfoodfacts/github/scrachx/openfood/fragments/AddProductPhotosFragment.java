@@ -65,7 +65,7 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
         if (b != null) {
             Product product = (Product) b.getSerializable("product");
             OfflineSavedProduct offlineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            boolean editionMode = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
+            boolean editionMode = b.getBoolean(AddProductActivity.KEY_IS_EDITING);
             if (product != null) {
                 code = product.getCode();
             }

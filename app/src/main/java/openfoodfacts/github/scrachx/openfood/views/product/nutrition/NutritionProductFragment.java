@@ -118,7 +118,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        api = new OpenFoodAPIClient(getActivity());
+        api = new OpenFoodAPIClient(requireActivity());
         binding = FragmentNutritionProductBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
