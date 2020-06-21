@@ -11,6 +11,9 @@ import java.util.List;
  * String Internationalization (i18n)
  */
 public class Stringi18nUtils {
+    private Stringi18nUtils() {
+    }
+
     /**
      * Compare the strings ignoring the accents on letters ([a-z][A-Z])
      * Sort string by ignoring accents on letters. The sorted strings will keep their accents.

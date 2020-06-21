@@ -62,16 +62,16 @@ public class AllergenTest {
 
     @Test
     public void deserialization_success(){
-        assertEquals(allergensWrapper.getAllergens().size(), 2);
+        assertEquals(2, allergensWrapper.getAllergens().size());
     }
 
     @Test
     public void allergensWrapper_AllergenAreCorrectlyTagged() {
         Allergen allergen = allergens.get(0);
 
-        assertEquals(allergen.getTag(), "en:lupin");
+        assertEquals("en:lupin", allergen.getTag());
         assertFalse(allergen.getEnabled());
-        assertEquals(allergen.getNames().size(), 9);
+        assertEquals(9, allergen.getNames().size());
     }
 
     @Test
@@ -79,9 +79,9 @@ public class AllergenTest {
         Allergen allergen = allergens.get(0);
         AllergenName allergenName = allergen.getNames().get(0);
 
-        assertEquals(allergenName.getAllergenTag(), allergen.getTag());
-        assertEquals(allergenName.getLanguageCode(), "de");
-        assertEquals(allergenName.getName(), "Lupinen");
+        assertEquals(allergen.getTag(), allergenName.getAllergenTag());
+        assertEquals("de", allergenName.getLanguageCode());
+        assertEquals("Lupinen", allergenName.getName());
     }
 
     private AllergensWrapper deserialize(String json) throws IOException {

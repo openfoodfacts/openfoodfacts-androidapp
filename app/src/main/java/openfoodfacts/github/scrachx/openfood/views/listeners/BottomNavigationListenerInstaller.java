@@ -29,6 +29,9 @@ public class BottomNavigationListenerInstaller {
         }
     }
 
+    private BottomNavigationListenerInstaller() {
+    }
+
     public static void install(BottomNavigationView bottomNavigationView, Activity activity) {
         bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity));
     }
