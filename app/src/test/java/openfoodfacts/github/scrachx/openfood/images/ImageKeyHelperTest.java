@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.images;
 
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -45,8 +46,9 @@ public class ImageKeyHelperTest {
         String barcode = "303371";
         String imageName = "Image";
         String size = "big";
-        // FIXME: we need to consider OBF and the other
-        //assertEquals("https://static.openfoodfacts.org/images/products/303371/Imagebig.jpg", ImageKeyHelper.getImageUrl(barcode, imageName, size));
+
+        final String expected = BuildConfig.STATICURL + "/images/products/303371/Imagebig.jpg";
+        assertEquals(expected, ImageKeyHelper.getImageUrl(barcode, imageName, size));
     }
 
 
@@ -56,7 +58,7 @@ public class ImageKeyHelperTest {
         String imageName = "Image";
         String size = "big";
 
-        // FIXME: we need to consider OBF and the other
-        //assertEquals("https://static.openfoodfacts.org/images/products/303/371/000/1279/Imagebig.jpg", ImageKeyHelper.getImageUrl(barcode, imageName, size));
+        final String expected = BuildConfig.STATICURL + "/images/products/303/371/000/1279/Imagebig.jpg";
+        assertEquals(expected, ImageKeyHelper.getImageUrl(barcode, imageName, size));
     }
 }
