@@ -10,13 +10,13 @@ import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -171,7 +171,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             disposable.dispose();
         }
 
-        disposable = api.getProductFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        disposable = api.getProductStateFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(state -> {
                 mState = state;

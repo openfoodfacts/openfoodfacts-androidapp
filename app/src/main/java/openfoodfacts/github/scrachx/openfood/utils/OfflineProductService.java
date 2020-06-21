@@ -25,12 +25,12 @@ import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefresh
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class OfflineProductService {
     private static final String LOG_TAG = "OfflineProductService";
-    private final OpenFoodAPIService apiClient;
+    private final ProductsAPI apiClient;
 
     private static OfflineSavedProductDao getOfflineProductDAO() {
         return OFFApplication.getDaoSession().getOfflineSavedProductDao();
@@ -42,7 +42,7 @@ public class OfflineProductService {
 
     private OfflineProductService() {
         super();
-        this.apiClient = CommonApiManager.getInstance().getOpenFoodApiService();
+        this.apiClient = CommonApiManager.getInstance().getProductsApi();
     }
 
     private static class Loader {

@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnalysisProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
@@ -19,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.adapter.IngredientAnalysisRecyclerAdapter;
 
 public class IngredientsAnalysisProductFragment extends BaseFragment {
@@ -26,6 +29,14 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     private OpenFoodAPIClient api;
     private Product product;
     private IngredientAnalysisRecyclerAdapter adapter;
+    private final CompositeDisposable disp = new CompositeDisposable();
+
+    @Override
+    public void onDestroy() {
+        disp.dispose();
+        binding = null;
+        super.onDestroy();
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -46,19 +57,18 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        api.getIngredients(product.getCode(), ((value, ingredients) -> {
-            if (value) {
+        disp.add(api.getIngredients(product.getCode()).observeOn(AndroidSchedulers.mainThread()).subscribe(
+            ingredients -> {
                 adapter = new IngredientAnalysisRecyclerAdapter(ingredients, requireActivity());
                 binding.ingredientAnalysisRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
                 binding.ingredientAnalysisRecyclerView.setAdapter(adapter);
-            } else {
-                Toast.makeText(getActivity(), getActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-            }
-        }));
+            },
+            throwable -> Toast.makeText(getActivity(), requireActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show())
+        );
 
         Intent intent = requireActivity().getIntent();
         if (intent != null && intent.getExtras() != null) {
-            refreshView((State) intent.getExtras().getSerializable("state"));
+            refreshView((State) intent.getExtras().getSerializable(ProductActivity.STATE_KEY));
         }
     }
 

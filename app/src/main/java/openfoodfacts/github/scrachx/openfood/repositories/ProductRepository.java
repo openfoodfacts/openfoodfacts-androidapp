@@ -66,8 +66,8 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
@@ -98,8 +98,8 @@ public class ProductRepository implements IProductRepository {
     private final InvalidBarcodeDao invalidBarcodeDao;
     private final LabelDao labelDao;
     private final LabelNameDao labelNameDao;
-    private final ProductApiService productApi;
-    private final RobotoffAPIService robotoffApi;
+    private final AnalysisDataAPI productApi;
+    private final RobotoffAPI robotoffApi;
     private final TagDao tagDao;
 
     /**
@@ -119,8 +119,8 @@ public class ProductRepository implements IProductRepository {
      * Constructor of the class which is used to initialize objects.
      */
     private ProductRepository() {
-        productApi = CommonApiManager.getInstance().getProductApiService();
-        robotoffApi = CommonApiManager.getInstance().getRobotoffApiService();
+        productApi = CommonApiManager.getInstance().getAnalysisDataApi();
+        robotoffApi = CommonApiManager.getInstance().getRobotoffApi();
 
         DaoSession daoSession = OFFApplication.getDaoSession();
         db = daoSession.getDatabase();

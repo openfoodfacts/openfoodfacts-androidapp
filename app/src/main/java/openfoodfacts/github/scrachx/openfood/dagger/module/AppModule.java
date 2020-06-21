@@ -12,7 +12,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.category.CategoryRepository;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
-import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import retrofit2.Retrofit;
@@ -67,13 +67,13 @@ public class AppModule {
 
     @Provides
     @Singleton
-    OpenFoodAPIService provideOpenFactsApiClient() {
+    ProductsAPI provideOpenFactsApiClient() {
         return new Retrofit.Builder()
-                .baseUrl(BuildConfig.HOST)
-                .client(httpClient)
-                .addConverterFactory(JacksonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-                .build()
-                .create(OpenFoodAPIService.class);
+            .baseUrl(BuildConfig.HOST)
+            .client(httpClient)
+            .addConverterFactory(JacksonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+            .build()
+            .create(ProductsAPI.class);
     }
 }

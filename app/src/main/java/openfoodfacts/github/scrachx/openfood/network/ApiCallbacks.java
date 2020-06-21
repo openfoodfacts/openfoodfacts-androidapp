@@ -1,9 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.State;
 
@@ -36,14 +32,6 @@ public class ApiCallbacks {
         void onProductSentResponse(boolean value);
     }
 
-    public interface OnIngredientListCallback {
-        void onIngredientListResponse(boolean value, ArrayList<ProductIngredient> productIngredients);
-    }
-
-    public interface OnFieldByLanguageCallback {
-        void onFieldByLanguageResponse(boolean value, HashMap<String, String> result);
-    }
-
     public interface OnStateListenerCallback {
         void onStateResponse(State newState);
     }
@@ -54,10 +42,6 @@ public class ApiCallbacks {
 
     public interface OnImagesCallback {
         void onImageResponse(boolean value, String response);
-    }
-
-    public interface OnIncompleteCallback {
-        void onIncompleteResponse(boolean value, Search incompleteProducts);
     }
 
     public interface OnCountryCallback {

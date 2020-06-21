@@ -15,7 +15,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -27,11 +27,11 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.*;
 
-public class OpenFoodAPIServiceTest {
+public class ProductsAPITest {
     /**
      * We need to use auth because we use world.openfoodfacts.dev
      */
-    private static OpenFoodAPIService devClientWithAuth;
+    private static ProductsAPI devClientWithAuth;
     private static final String DEV_API = "https://world.openfoodfacts.dev";
 
     @BeforeClass
@@ -56,7 +56,7 @@ public class OpenFoodAPIServiceTest {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(httpClientWithAuth)
             .build()
-            .create(OpenFoodAPIService.class);
+            .create(ProductsAPI.class);
     }
 
     @Test

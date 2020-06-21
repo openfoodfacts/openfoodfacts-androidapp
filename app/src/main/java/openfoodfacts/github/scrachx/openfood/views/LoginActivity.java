@@ -9,7 +9,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.preference.PreferenceManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.snackbar.Snackbar;
@@ -34,7 +34,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding;
-import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Call;
@@ -51,7 +51,7 @@ import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH
  */
 public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
     private ActivityLoginBinding binding;
-    private OpenFoodAPIService apiClient;
+    private ProductsAPI apiClient;
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri userLoginUri;
     private Uri resetPasswordUri;
@@ -113,7 +113,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
             .client(Utils.httpClientBuilder())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
-            .create(OpenFoodAPIService.class);
+            .create(ProductsAPI.class);
 
         // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);

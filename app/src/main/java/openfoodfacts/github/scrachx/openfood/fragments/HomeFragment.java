@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.preference.PreferenceManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -34,7 +34,7 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -50,7 +50,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  */
 public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
     private FragmentHomeBinding binding;
-    private OpenFoodAPIService apiClient;
+    private ProductsAPI apiClient;
     private SharedPreferences sp;
     private String taglineURL;
     private CompositeDisposable compDisp = new CompositeDisposable();

@@ -13,11 +13,10 @@ import java.util.ArrayList;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 
 public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
-
-    private static OpenFoodAPIService client;
+    private static ProductsAPI client;
     private final ArrayList<String> mPeriodsAfterOpeningList;
 
     public PeriodAfterOpeningAutoCompleteAdapter(Context context, int textViewResourceId) {
@@ -45,17 +44,17 @@ public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> 
                 FilterResults filterResults = new FilterResults();
                 if (constraint != null) {
                     // Retrieve the autocomplete results from server.
-                    client = CommonApiManager.getInstance().getOpenFoodApiService();
+                    client = CommonApiManager.getInstance().getProductsApi();
                     client.getPeriodAfterOpeningSuggestions(constraint.toString())
-                            .subscribe(new SingleObserver<ArrayList<String>>() {
-                                @Override
-                                public void onSubscribe(Disposable d) {
+                        .subscribe(new SingleObserver<ArrayList<String>>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
 
-                                }
+                            }
 
-                                @Override
-                                public void onSuccess(ArrayList<String> strings) {
-                                    mPeriodsAfterOpeningList.clear();
+                            @Override
+                            public void onSuccess(ArrayList<String> strings) {
+                                mPeriodsAfterOpeningList.clear();
                                     mPeriodsAfterOpeningList.addAll(strings);
                                 }
 

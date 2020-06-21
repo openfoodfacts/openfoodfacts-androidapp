@@ -23,67 +23,67 @@ import openfoodfacts.github.scrachx.openfood.models.Ingredient;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
 import openfoodfacts.github.scrachx.openfood.models.Label;
 import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 import openfoodfacts.github.scrachx.openfood.utils.DaoUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public enum Taxonomy {
-    LABEL(ProductApiService.LABELS_JSON) {
+    LABEL(AnalysisDataAPI.LABELS_JSON) {
         @Override
         public Single<List<Label>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadLabels(lastModifiedDate);
         }
     },
-    COUNTRY(ProductApiService.COUNTRIES_JSON) {
+    COUNTRY(AnalysisDataAPI.COUNTRIES_JSON) {
         @Override
         public Single<List<Country>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadCountries(lastModifiedDate);
         }
     },
-    CATEGORY(ProductApiService.CATEGORIES_JSON) {
+    CATEGORY(AnalysisDataAPI.CATEGORIES_JSON) {
         @Override
         public Single<List<Category>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadCategories(lastModifiedDate);
         }
     },
-    ADDITIVE(ProductApiService.ADDITIVES_JSON) {
+    ADDITIVE(AnalysisDataAPI.ADDITIVES_JSON) {
         @Override
         public Single<List<Additive>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAdditives(lastModifiedDate);
         }
     },
-    INGREDIENT(ProductApiService.INGREDIENTS_JSON) {
+    INGREDIENT(AnalysisDataAPI.INGREDIENTS_JSON) {
         @Override
         public Single<List<Ingredient>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadIngredients(lastModifiedDate);
         }
     },
-    ALLERGEN(ProductApiService.ALLERGENS_JSON) {
+    ALLERGEN(AnalysisDataAPI.ALLERGENS_JSON) {
         @Override
         public Single<List<Allergen>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAllergens(lastModifiedDate);
         }
     },
-    ANALYSIS_TAGS(ProductApiService.ANALYSIS_TAG_JSON) {
+    ANALYSIS_TAGS(AnalysisDataAPI.ANALYSIS_TAG_JSON) {
         @Override
         public Single<List<AnalysisTag>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAnalysisTags(lastModifiedDate);
         }
     },
-    ANALYSIS_TAG_CONFIG(ProductApiService.ANALYSIS_TAG_CONFIG_JSON) {
+    ANALYSIS_TAG_CONFIG(AnalysisDataAPI.ANALYSIS_TAG_CONFIG_JSON) {
         @Override
         public Single<List<AnalysisTagConfig>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadAnalysisTagConfigs(lastModifiedDate);
         }
     },
-    TAGS(ProductApiService.TAGS_JSON) {
+    TAGS(AnalysisDataAPI.TAGS_JSON) {
         @Override
         public Single<List<Tag>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadTags(lastModifiedDate);
         }
     },
-    INVALID_BARCODES(ProductApiService.INVALID_BARCODES_JSON) {
+    INVALID_BARCODES(AnalysisDataAPI.INVALID_BARCODES_JSON) {
         @Override
         public Single<List<InvalidBarcode>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadInvalidBarcodes(lastModifiedDate);

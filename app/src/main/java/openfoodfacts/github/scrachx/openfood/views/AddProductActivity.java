@@ -48,7 +48,7 @@ import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -67,7 +67,7 @@ public class AddProductActivity extends AppCompatActivity {
     private AddProductPhotosFragment addProductPhotosFragment = new AddProductPhotosFragment();
     private ActivityAddProductBinding binding;
     @Inject
-    OpenFoodAPIService client;
+    ProductsAPI client;
     private boolean editionMode;
     private boolean imageFrontUploaded;
     private boolean imageIngredientsUploaded;
@@ -306,7 +306,7 @@ public class AddProductActivity extends AppCompatActivity {
         final String password = settings.getString("pass", "");
         if (!login.isEmpty() && !password.isEmpty()) {
             imgMap.put(ApiFields.Keys.USER_ID, createTextPlain(login));
-            imgMap.put(ApiFields.Keys.USER_PWD, createTextPlain(password));
+            imgMap.put(ApiFields.Keys.USER_PASS, createTextPlain(password));
         }
         imgMap.put("comment", createTextPlain(OpenFoodAPIClient.getCommentToUpload(login)));
     }
@@ -336,7 +336,7 @@ public class AddProductActivity extends AppCompatActivity {
 
         OfflineProductWorker.scheduleSync();
 
-        OpenFoodAPIClient.addToHistory(Utils.getDaoSession().getHistoryProductDao(), offlineSavedProduct);
+        OpenFoodAPIClient.addToHistorySync(Utils.getDaoSession().getHistoryProductDao(), offlineSavedProduct);
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT)
             .show();
@@ -393,7 +393,7 @@ public class AddProductActivity extends AppCompatActivity {
         final String password = settings.getString("pass", "");
         if (!login.isEmpty() && !password.isEmpty()) {
             targetMap.put(ApiFields.Keys.USER_ID, login);
-            targetMap.put(ApiFields.Keys.USER_PWD, password);
+            targetMap.put(ApiFields.Keys.USER_PASS, password);
         }
     }
 

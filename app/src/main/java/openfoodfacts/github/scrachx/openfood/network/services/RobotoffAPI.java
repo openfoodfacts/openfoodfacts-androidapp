@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface RobotoffAPIService {
+public interface RobotoffAPI {
     @GET("api/v1/questions/{barcode}")
     Single<QuestionsState> getProductQuestion(@Path("barcode") String barcode,
                                               @Query("lang") String langCode,

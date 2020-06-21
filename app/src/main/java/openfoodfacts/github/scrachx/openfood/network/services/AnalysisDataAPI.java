@@ -22,7 +22,7 @@ import retrofit2.http.GET;
  * API calls for loading static multilingual data
  * This calls should be used as rare as possible, because they load Big Data
  */
-public interface ProductApiService {
+public interface AnalysisDataAPI {
     String LABELS_JSON = "data/taxonomies/labels.json";
     String COUNTRIES_JSON = "data/taxonomies/countries.json";
     String CATEGORIES_JSON = "data/taxonomies/categories.json";

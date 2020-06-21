@@ -1,9 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.network.services.OpenFoodAPIService;
-import openfoodfacts.github.scrachx.openfood.network.services.ProductApiService;
-import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPIService;
+import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
+import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -17,9 +18,9 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
  */
 public class CommonApiManager implements ICommonApiManager {
     private static CommonApiManager instance;
-    private ProductApiService productApiService;
-    private OpenFoodAPIService openFoodApiService;
-    private RobotoffAPIService robotoffApiService;
+    private AnalysisDataAPI analysisDataApi;
+    private ProductsAPI productsApi;
+    private RobotoffAPI robotoffApi;
     private final JacksonConverterFactory jacksonConverterFactory;
 
     public static ICommonApiManager getInstance() {
@@ -38,80 +39,80 @@ public class CommonApiManager implements ICommonApiManager {
      * Defines and returns ProductAPIService
      */
     @Override
-    public ProductApiService getProductApiService() {
-        if (productApiService == null) {
-            productApiService = createProductApiService();
+    public AnalysisDataAPI getAnalysisDataApi() {
+        if (analysisDataApi == null) {
+            analysisDataApi = createProductApiService();
         }
 
-        return productApiService;
+        return analysisDataApi;
     }
 
     /**
      * Defines and returns getOpenFoodApiService
      */
     @Override
-    public OpenFoodAPIService getOpenFoodApiService() {
-        if (openFoodApiService == null) {
-            openFoodApiService = createOpenFoodApiService();
+    public ProductsAPI getProductsApi() {
+        if (productsApi == null) {
+            productsApi = createOpenFoodApiService();
         }
 
-        return openFoodApiService;
+        return productsApi;
     }
 
     /**
      * Defines and returns getRobotoffApiService
      */
     @Override
-    public RobotoffAPIService getRobotoffApiService() {
-        if (robotoffApiService == null) {
-            robotoffApiService = createRobotoffApiService();
+    public RobotoffAPI getRobotoffApi() {
+        if (robotoffApi == null) {
+            robotoffApi = createRobotoffApiService();
         }
 
-        return robotoffApiService;
+        return robotoffApi;
     }
 
     /**
      * Initialising ProductApiService using Retrofit
      */
-    private ProductApiService createProductApiService() {
-        productApiService = new Retrofit.Builder()
+    private AnalysisDataAPI createProductApiService() {
+        analysisDataApi = new Retrofit.Builder()
             .baseUrl(BuildConfig.HOST)
             .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-            .create(ProductApiService.class);
+            .create(AnalysisDataAPI.class);
 
-        return productApiService;
+        return analysisDataApi;
     }
 
     /**
      * Initialising RobotoffAPIService using Retrofit
      */
-    private RobotoffAPIService createRobotoffApiService() {
-        robotoffApiService = new Retrofit.Builder()
+    private RobotoffAPI createRobotoffApiService() {
+        robotoffApi = new Retrofit.Builder()
             .baseUrl("https://robotoff.openfoodfacts.org")
             .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-            .create(RobotoffAPIService.class);
+            .create(RobotoffAPI.class);
 
-        return robotoffApiService;
+        return robotoffApi;
     }
 
     /**
      * Initialising OpenFoodAPIService using Retrofit
      */
-    private OpenFoodAPIService createOpenFoodApiService() {
-        openFoodApiService = new Retrofit.Builder()
+    private ProductsAPI createOpenFoodApiService() {
+        productsApi = new Retrofit.Builder()
             .baseUrl(BuildConfig.HOST)
             .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
-            .create(OpenFoodAPIService.class);
+            .create(ProductsAPI.class);
 
-        return openFoodApiService;
+        return productsApi;
     }
 }

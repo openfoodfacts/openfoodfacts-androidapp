@@ -31,7 +31,7 @@ import retrofit2.http.Url;
  * Define our Open Food Facts API endpoints.
  * All REST methods such as GET, POST, PUT, UPDATE, DELETE can be stated in here.
  */
-public interface OpenFoodAPIService {
+public interface ProductsAPI {
     @GET("api/v0/product/{barcode}.json")
     Call<State> getProductByBarcode(@Path("barcode") String barcode,
                                     @Query("fields") String fields,
@@ -60,7 +60,7 @@ public interface OpenFoodAPIService {
     Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit);
 
     @GET("api/v0/product/{barcode}.json?fields=ingredients")
-    Call<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
+    Single<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
 
     /**
      * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)
@@ -74,9 +74,9 @@ public interface OpenFoodAPIService {
                             @Query(ApiFields.Keys.PRODUCT_NAME) String name,
                             @Query(ApiFields.Keys.BRANDS) String brands,
                             @Query(ApiFields.Keys.QUANTITY) String quantity,
-                            @Query("user_id") String login,
-                            @Query("password") String password,
-                            @Query("comment") String comment);
+                            @Query(ApiFields.Keys.USER_ID) String login,
+                            @Query(ApiFields.Keys.USER_PASS) String password,
+                            @Query(ApiFields.Keys.USER_COMMENT) String comment);
 
     /**
      * This method is used to upload those products which
@@ -92,9 +92,9 @@ public interface OpenFoodAPIService {
                                        @Query(ApiFields.Keys.LANG) String lang,
                                        @Query(ApiFields.Keys.BRANDS) String brands,
                                        @Query(ApiFields.Keys.QUANTITY) String quantity,
-                                       @Query("user_id") String login,
-                                       @Query("password") String password,
-                                       @Query("comment") String comment);
+                                       @Query(ApiFields.Keys.USER_ID) String login,
+                                       @Query(ApiFields.Keys.USER_PASS) String password,
+                                       @Query(ApiFields.Keys.USER_COMMENT) String comment);
 
     /**
      * This method is used to upload those products which
@@ -379,7 +379,7 @@ public interface OpenFoodAPIService {
      * This method gives a list of incomplete products
      */
     @GET("state/to-be-completed/{page}.json?nocache=1")
-    Call<Search> getIncompleteProducts(@Path("page") int page, @Query("fields") String fields);
+    Single<Search> getIncompleteProducts(@Path("page") int page, @Query("fields") String fields);
 
     /**
      * This method gives the # of products on Open Food Facts
@@ -409,9 +409,6 @@ public interface OpenFoodAPIService {
     @GET("/cgi/product_image_unselect.pl")
     Call<String> unselectImage(@Query(ApiFields.Keys.BARCODE) String code,
                                @QueryMap Map<String, String> fields);
-
-    @GET
-    Call<ResponseBody> downloadFile(@Url String fileUrl);
 
     @GET
     Single<ResponseBody> downloadFileSingle(@Url String fileUrl);

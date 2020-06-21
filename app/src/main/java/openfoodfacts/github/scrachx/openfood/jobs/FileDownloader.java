@@ -44,7 +44,7 @@ public class FileDownloader {
      */
     public static Maybe<File> download(@NonNull Context context, @NonNull String fileUrl) {
         return CommonApiManager.getInstance()
-            .getOpenFoodApiService()
+            .getProductsApi()
             .downloadFileSingle(fileUrl)
             .flatMapMaybe(responseBody -> {
                 if (responseBody != null) {

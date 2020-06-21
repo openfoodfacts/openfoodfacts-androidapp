@@ -43,7 +43,6 @@ import org.greenrobot.eventbus.Subscribe;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -86,7 +85,7 @@ import static android.view.View.VISIBLE;
 public class ContinuousScanActivity extends AppCompatActivity {
     private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
-    public static final Collection<BarcodeFormat> BARCODE_FORMATS = Arrays.asList(
+    public static final List<BarcodeFormat> BARCODE_FORMATS = Arrays.asList(
         BarcodeFormat.UPC_A,
         BarcodeFormat.UPC_E,
         BarcodeFormat.EAN_13,
@@ -97,12 +96,14 @@ public class ContinuousScanActivity extends AppCompatActivity {
         BarcodeFormat.CODE_128,
         BarcodeFormat.ITF
     );
+    public static final String INTENT_KEY_COMPARE = "compare_product";
+    public static final String INTENT_KEY_PRODUCTS_TO_COMPARE = "products_to_compare";
     private BeepManager beepManager;
     private ActivityContinuousScanBinding binding;
     private BottomSheetBehavior bottomSheetBehavior;
     private int cameraState;
     private OpenFoodAPIClient client;
-    private Disposable disposable;
+    private Disposable productDisp;
     private Handler handler;
     private boolean isAnalysisTagsEmpty = true;
     private String lastText;
@@ -114,7 +115,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private OfflineSavedProduct offlineSavedProduct;
     private Product product;
     private ProductFragment productFragment;
-    private SharedPreferences.Editor editor;
     private SharedPreferences sp;
     private boolean mRing;
     private int peekLarge;
@@ -124,8 +124,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private final BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
-            if (disposable != null) {
-                disposable.dispose();
+            if (productDisp != null) {
+                productDisp.dispose();
             }
             if (result.getText() == null || result.getText().isEmpty() || result.getText().equals(lastText)) {
                 // Prevent duplicate scans
@@ -179,9 +179,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
         if (isFinishing()) {
             return;
         }
-        if (disposable != null && !disposable.isDisposed()) {
+        if (productDisp != null && !productDisp.isDisposed()) {
             //dispose the previous call if not ended.
-            disposable.dispose();
+            productDisp.dispose();
         }
         if (summaryProductPresenter != null) {
             summaryProductPresenter.dispose();
@@ -192,12 +192,12 @@ public class ContinuousScanActivity extends AppCompatActivity {
             showOfflineSavedDetails(offlineSavedProduct);
         }
 
-        client.getProductFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        client.getProductStateFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<State>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    disposable = d;
+                    productDisp = d;
                     hideAllViews();
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                     binding.quickView.setOnClickListener(null);
@@ -215,28 +215,24 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     binding.quickViewProgress.setVisibility(GONE);
                     binding.quickViewProgressText.setVisibility(GONE);
                     if (state.getStatus() == 0) {
-                        if (offlineSavedProduct != null) {
-                            showOfflineSavedDetails(offlineSavedProduct);
-                        } else {
-                            showProductNotFound(getString(R.string.product_not_found, barcode));
-                        }
+                        tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found);
                     } else {
                         product = state.getProduct();
-                        if (getIntent().getBooleanExtra("compare_product", false)) {
+                        if (getIntent().getBooleanExtra(INTENT_KEY_COMPARE, false)) {
                             Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
                             intent.putExtra("product_found", true);
-                            ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
+                            ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().getSerializable(INTENT_KEY_PRODUCTS_TO_COMPARE);
                             if (productsToCompare.contains(product)) {
                                 intent.putExtra("product_already_exists", true);
                             } else {
                                 productsToCompare.add(product);
                             }
-                            intent.putExtra("products_to_compare", productsToCompare);
+                            intent.putExtra(INTENT_KEY_PRODUCTS_TO_COMPARE, productsToCompare);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
 
-                        disposable = addToHistory(mHistoryProductDao, product).subscribeOn(Schedulers.io()).subscribe();
+                        productDisp = client.addToHistory(product).subscribeOn(Schedulers.io()).subscribe();
 
                         showAllViews();
                         binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -244,7 +240,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         binding.txtProductCallToAction.setText(isProductIncomplete() ? R.string.product_not_complete : R.string.scan_tooltip);
                         binding.txtProductCallToAction.setVisibility(VISIBLE);
 
-                        manageSummary(product);
+                        setupSummary(product);
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         showProductFullScreen();
                         binding.quickViewProductNotFound.setVisibility(GONE);
@@ -285,7 +281,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                                         }
                                     });
                             } catch (IllegalStateException e) {
-                                //could happen if Picasso is not instanciate correctly...
+                                //could happen if Picasso is not instantiated correctly...
                                 Log.w(this.getClass().getSimpleName(), e.getMessage(), e);
                             }
                         } else {
@@ -347,11 +343,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                             OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder()
                                 .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
                                 .unique();
-                            if (offlineSavedProduct != null) {
-                                showOfflineSavedDetails(offlineSavedProduct);
-                            } else {
-                                showProductNotFound(getString(R.string.addProductOffline, barcode));
-                            }
+                            tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline);
                             binding.quickView.setOnClickListener(v -> navigateToProductAddition(barcode));
                         } else {
                             binding.quickViewProgress.setVisibility(GONE);
@@ -361,14 +353,22 @@ public class ContinuousScanActivity extends AppCompatActivity {
                             errorMessage.show();
                             Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
                         }
-                    } catch (Exception e1) {
-                        Log.i(this.getClass().getSimpleName(), e1.getMessage(), e1);
+                    } catch (Exception err) {
+                        Log.w(this.getClass().getSimpleName(), err.getMessage(), err);
                     }
                 }
             });
     }
 
-    private void manageSummary(Product product) {
+    private void tryDisplayOffline(OfflineSavedProduct offlineSavedProduct, String barcode, int p) {
+        if (offlineSavedProduct != null) {
+            showOfflineSavedDetails(offlineSavedProduct);
+        } else {
+            showProductNotFound(getString(p, barcode));
+        }
+    }
+
+    private void setupSummary(Product product) {
         binding.callToActionImageProgress.setVisibility(VISIBLE);
         summaryProductPresenter = new SummaryProductPresenter(product, new SummaryProductPresenterView() {
             @Override
@@ -523,8 +523,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
-        if (disposable != null && !disposable.isDisposed()) {
-            disposable.dispose();
+        if (productDisp != null && !productDisp.isDisposed()) {
+            productDisp.dispose();
         }
         if (summaryProductPresenter != null) {
             summaryProductPresenter.dispose();
@@ -545,8 +545,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        super.onPause();
         binding.barcodeScanner.pause();
+        super.onPause();
     }
 
     @Override
@@ -898,9 +898,5 @@ public class ContinuousScanActivity extends AppCompatActivity {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         }
         productFragment.goToIngredients(action);
-    }
-
-    private Completable addToHistory(HistoryProductDao mHistoryProductDao, Product product) {
-        return Completable.fromAction(() -> OpenFoodAPIClient.addToHistory(mHistoryProductDao, product));
     }
 }

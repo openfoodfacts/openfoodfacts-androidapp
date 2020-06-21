@@ -9,7 +9,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +21,7 @@ import androidx.annotation.StringRes;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -429,8 +429,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             case SearchType.INCOMPLETE_PRODUCT:
                 // Get Products to be completed data and input it to loadData function
-                api.getIncompleteProducts(pageAddress, (value, state) ->
-                    loadSearchProducts(value, state, R.string.txt_no_matching_incomplete_products));
+                disp.add(api.getIncompleteProducts(pageAddress).subscribe((search, throwable) ->
+                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_incomplete_products)));
                 break;
             default:
                 Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
