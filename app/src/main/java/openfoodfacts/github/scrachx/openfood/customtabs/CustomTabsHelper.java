@@ -11,7 +11,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 package openfoodfacts.github.scrachx.openfood.customtabs;
 
 import android.content.Context;
@@ -42,11 +41,8 @@ public class CustomTabsHelper {
     static final String DEV_PACKAGE = "com.chrome.dev";
     static final String LOCAL_PACKAGE = "com.google.android.apps.chrome";
     private static final String TAG = "CustomTabsHelper";
-    private static final String EXTRA_CUSTOM_TABS_KEEP_ALIVE =
-            "android.support.customtabs.extra.KEEP_ALIVE";
-    private static final String ACTION_CUSTOM_TABS_CONNECTION =
-            "android.support.customtabs.action.CustomTabsService";
-
+    private static final String EXTRA_CUSTOM_TABS_KEEP_ALIVE = "android.support.customtabs.extra.KEEP_ALIVE";
+    private static final String ACTION_CUSTOM_TABS_CONNECTION = "android.support.customtabs.action.CustomTabsService";
     private static String sPackageNameToUse;
 
     private CustomTabsHelper() {
@@ -54,6 +50,7 @@ public class CustomTabsHelper {
 
     /**
      * Create a custom tabs intent configured
+     *
      * @param context to fetch drawables, colors...
      * @param session optional custom tabs session - could be null
      * @return CustomTabsIntent
@@ -62,11 +59,11 @@ public class CustomTabsHelper {
         Bitmap icon = Utils.getBitmapFromDrawable(context, R.drawable.ic_arrow_back_black);
         //TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
         return new CustomTabsIntent.Builder(session)
-                .setShowTitle(true)
-                // to override if not default theme value
+            .setShowTitle(true)
+            // to override if not default theme value
 //                .setToolbarColor(resources.getColor(R.color.md_light_appbar))
-                .setCloseButtonIcon(icon)
-                .build();
+            .setCloseButtonIcon(icon)
+            .build();
     }
 
     /**
@@ -80,7 +77,9 @@ public class CustomTabsHelper {
      * @return The package name recommended to use for connecting to custom tabs related components.
      */
     public static String getPackageNameToUse(Context context) {
-        if (sPackageNameToUse != null) return sPackageNameToUse;
+        if (sPackageNameToUse != null) {
+            return sPackageNameToUse;
+        }
 
         PackageManager pm = context.getPackageManager();
         // Get default VIEW intent handler.
@@ -110,8 +109,8 @@ public class CustomTabsHelper {
         } else if (packagesSupportingCustomTabs.size() == 1) {
             sPackageNameToUse = packagesSupportingCustomTabs.get(0);
         } else if (!TextUtils.isEmpty(defaultViewHandlerPackageName)
-                && !hasSpecializedHandlerIntents(context, activityIntent)
-                && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName)) {
+            && !hasSpecializedHandlerIntents(context, activityIntent)
+            && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName)) {
             sPackageNameToUse = defaultViewHandlerPackageName;
         } else if (packagesSupportingCustomTabs.contains(STABLE_PACKAGE)) {
             sPackageNameToUse = STABLE_PACKAGE;
@@ -135,16 +134,22 @@ public class CustomTabsHelper {
         try {
             PackageManager pm = context.getPackageManager();
             List<ResolveInfo> handlers = pm.queryIntentActivities(
-                    intent,
-                    PackageManager.GET_RESOLVED_FILTER);
+                intent,
+                PackageManager.GET_RESOLVED_FILTER);
             if (handlers == null || handlers.size() == 0) {
                 return false;
             }
             for (ResolveInfo resolveInfo : handlers) {
                 IntentFilter filter = resolveInfo.filter;
-                if (filter == null) continue;
-                if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) continue;
-                if (resolveInfo.activityInfo == null) continue;
+                if (filter == null) {
+                    continue;
+                }
+                if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) {
+                    continue;
+                }
+                if (resolveInfo.activityInfo == null) {
+                    continue;
+                }
                 return true;
             }
         } catch (RuntimeException e) {
