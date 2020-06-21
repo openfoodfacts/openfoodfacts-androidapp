@@ -406,6 +406,14 @@ public interface OpenFoodAPIService {
     Call<String> editImages(@Query(ApiFields.Keys.BARCODE) String code,
                             @QueryMap Map<String, String> fields);
 
+    /**
+     * This method downloads the file with a dynamic downloadable url
+     *
+     * @param fileUrl
+     * @return
+     */
+    @GET
+    Call<ResponseBody> downloadFileWithDynamicUrlSync(@Url String fileUrl);
     @GET("/cgi/product_image_unselect.pl")
     Call<String> unselectImage(@Query(ApiFields.Keys.BARCODE) String code,
                                @QueryMap Map<String, String> fields);

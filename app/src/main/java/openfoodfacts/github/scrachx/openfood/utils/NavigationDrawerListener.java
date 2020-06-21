@@ -52,7 +52,7 @@ public interface NavigationDrawerListener {
             ITEM_MY_CONTRIBUTIONS,
             ITEM_LOGOUT,
             ITEM_INCOMPLETE_PRODUCTS,
-            ITEM_ADDITIVES
+            ITEM_ADDITIVES,
     })
     @interface NavigationDrawerType {
     }

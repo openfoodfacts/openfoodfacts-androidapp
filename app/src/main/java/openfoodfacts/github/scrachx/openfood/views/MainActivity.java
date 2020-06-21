@@ -90,6 +90,8 @@ import openfoodfacts.github.scrachx.openfood.fragments.AllergensAlertFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.FindProductFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.jobs.DownloadOfflineProductService;
+import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -133,6 +135,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
+    SharedPreferences settings;
     private PrefManager prefManager;
     private CompositeDisposable disp = new CompositeDisposable();
 
@@ -146,6 +149,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         setContentView(binding.getRoot());
 
         shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        settings = getSharedPreferences("prefs", Context.MODE_PRIVATE);
 
         Utils.hideKeyboard(this);
 
@@ -675,6 +679,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
+            break;
+            case Utils.MY_PERMISSIONS_REQUEST_STORAGE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager
+                        .PERMISSION_GRANTED) {
+                    Intent serviceIntent = new Intent(this, DownloadOfflineProductService.class);
+                    startService(serviceIntent);
+                }
+            }
         }
     }
 
@@ -794,6 +806,26 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     protected void onNewIntent(Intent intent) {
+        // to handle Extract and Save button from DownloadOfflineProductService
+        if (intent.getStringExtra("from_download_service") != null && intent.getStringExtra("from_download_service").equals("start_extraction")) {
+
+            Bundle bundle = new Bundle();
+            bundle.putString("from_download_service", "start_extraction");
+//            moveToProductsDownload(bundle);
+        }
+
+        // to handle retry from DownloadOfflineProductService
+        if (intent.getStringExtra("from_download_service") != null && intent.getStringExtra("from_download_service").equals("retry")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("from_download_service", "retry");
+//            moveToProductsDownload(bundle);
+        }
+        // to handle retry from ExtractOfflineProductService
+        if (intent.getStringExtra("from_extract_service") != null && intent.getStringExtra("from_extract_service").equals("retry")) {
+            Bundle bundle = new Bundle();
+            bundle.putString("from_extract_service", "retry");
+//            moveToProductsDownload(bundle);
+        }
         super.onNewIntent(intent);
         handleIntent(intent);
     }
@@ -828,6 +860,51 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void moveToBarcodeEntry() {
         Fragment fragment = new FindProductFragment();
         changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
+    }
+
+    /**
+     * This moves the main activity to the preferences fragment.
+     */
+    public void moveToPreferences() {
+        Fragment fragment = new PreferencesFragment();
+        changeFragment(fragment, getString(R.string.preferences), ITEM_PREFERENCES);
+    }
+
+    /**
+     * Create the drawer item. This adds a badge if there are items in the offline edit, otherwise
+     * there is no badge present.
+     *
+     * @return drawer item.
+     */
+    private PrimaryDrawerItem createOfflineEditDrawerItem() {
+        if (numberOFSavedProducts > 0) {
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE)
+                    .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
+                            .color.md_red_700));
+          //  Fixed merge conflict @pierre
+//            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(10)
+  //                .withBadge(String.valueOf(numberOFSavedProducts)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R
+   //                   .color.md_red_700));
+
+        } else {
+            return new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
+        }
+    }
+
+    /**
+     * Updates the drawer item. This updates the badge if there are items left in offline edit, otherwise
+     * there is no badge present.
+     * This function is called from OfflineEditFragment only.
+     */
+    public void updateBadgeOfflineEditDrawerITem(int size) {
+        int positionOfOfflineBadeItem = result.getPosition(primaryDrawerItem);
+        if (size > 0) {
+            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE)
+                .withBadge(String.valueOf(size)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700));
+        } else {
+            primaryDrawerItem = new PrimaryDrawerItem().withName(R.string.offline_edit_drawer).withIcon(GoogleMaterial.Icon.gmd_local_airport).withIdentifier(ITEM_OFFLINE);
+        }
+        result.updateItemAtPosition(primaryDrawerItem, positionOfOfflineBadeItem);
     }
 
     @Override

@@ -945,6 +945,12 @@
     <string name="set_ingredient_img">Set image as Ingredient</string>
     <string name="set_img_nutrients">Set Image as Nutrition</string>
     <string name="set_img_front">Set Image as Front</string>
+    <string name="download_offline_product">Do you want to download data to search product offline?</string>
+    <string name="txtDownload">Download</string>
+    <string name="txtProcessing">Processing Data...</string>
+    <string name="txtSaving">Saving to database...</string>
+    <string name="txtConnectionFailed">Connection failed!</string>
+    <string name="retry">Retry</string>
     <string name="report_img">Report Image</string>
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
@@ -955,7 +961,27 @@
     <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
-
+    <string name="txtDownloading">Downloading Data...</string>
+    <string name="txtRetry">Retry</string>
+    <string name="txtDownloaded">Downloaded Successfully!</string>
+    <string name="offline_download">Offline Products</string>
+    <string name="toast_no_pending">No pending download remaining</string>
+    <string name="toast_starting_download">Starting downloading...</string>
+    <string name="toast_extracting_data">Extracting data...</string>
+    <string name="txtExtracting">Extracting data...</string>
+    <string name="txtExtracted">Extracted Successfully!</string>
+    <string name="txtSaved">Saved Successfully!</string>
+    <string name="txtError">Error in saving file</string>
+    <string name="toast_already_running">Service already running!</string>
+    <string name="txtExtractSave">Extract and Save</string>
+    <string name="txtDownloadError">Error in Downloading!</string>
+    <string name="txtSaveError">Error in Saving or Extraction!</string>
+    <string name="txtNotDownloaded">Start Download!</string>
+    <string name="txtNotSaved">Start Extraction!</string>
+    <string name="txtToastFileNotFound">File not found!</string>
+    <string name="txtToastErrorInDelete">Error in deleting file!</string>
+    <string name="txtToastFileDeleted">File deleted successfully!</string>
+    <string name="offline_excerpt_url" translatable="false">data/offline/</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
@@ -975,6 +1001,11 @@
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
     <string name="settings_country_title">Country</string>
+    <string name="offline_delete">Delete</string>
+    <string name="offline_update">Update</string>
+    <string name="offline_product_title">Products</string>
+    <string name="offline_product_send_title">Offline Products you need to send</string>
+    <string name="list_text">Added in:\u0020</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
