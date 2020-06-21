@@ -1,8 +1,11 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.utils;
 
 import androidx.fragment.app.FragmentManager;
 import android.util.Log;
-import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductAttributeDetailsFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
