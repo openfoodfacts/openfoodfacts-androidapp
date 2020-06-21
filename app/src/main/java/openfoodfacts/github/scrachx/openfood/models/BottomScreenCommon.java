@@ -8,6 +8,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class BottomScreenCommon {
+    private BottomScreenCommon() {
+    }
+
     public static void showBottomScreen(JSONObject result, AdditiveName additive,
                                         FragmentManager fragmentManager) {
         showBottomSheet(result, additive.getId(),
