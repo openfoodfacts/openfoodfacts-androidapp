@@ -28,7 +28,7 @@
     <string name="translate_help_title">ساعد في ترجمة \"حقائق الجمال المفتوحة\"</string>
     <string name="translate_help_summary">ترجم قاعدة بيانات حقائق الجمال المفتوحة إلى لغتك - لن تحتاج إلى معرفة تقنية</string>
     <string name="text_offline_info_dialog">يمكنك فحص المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى حقائق الجمال المفتوحة لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
-    <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى حقائق الطعام المفتوح. أيضاً، احذر من أن فى بعض الاحيان بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً ٪١٠٠، لذا يرجى التحقق مرة أخرى بنفسك! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى حقائق الطعام المفتوح. أيضاً، احذر من أن فى بعض الاحيان بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً ٪١٠٠، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">قاعدة بيانات مستحضرات التجميل المجانية</string>

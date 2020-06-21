@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> You have %d offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -216,7 +216,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Logg på</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Du kan skanne produkter når du er frakoblet og legge dem til Open Food Facts senere. Alle produktene du skanner vil vises her, og du kan sende dem til databasen ved å klikke på knappen nedenfor.</string>
     <string name="permission_camera">Kameratillatelse kreves for å skanne strekkoder og ta bilder.</string>

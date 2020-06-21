@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">https://world-es.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Ayude a traducir Open Food Facts</string>
     <string name="translate_help_summary">Lleva la base de datos de Open Food Facts a tu idioma - no se requiere conocimiento técnico</string>
     <string name="text_offline_info_dialog">Escanea productos incluso cuando no hay conexión a internet, para añadirlos a Open Pet Food Facts later. Podrás enviar más tarde los productos escaneados usando el botón de abajo.</string>
-    <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">base de datos de productos de comida para mascotas gratis</string>

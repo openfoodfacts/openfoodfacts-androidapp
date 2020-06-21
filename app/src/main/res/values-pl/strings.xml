@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">\" Masz 1 produkt offline oczekujący na wysłanie do Open Food Facts
 
@@ -246,7 +246,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="cancel_button">Anuluj</string>
     <string name="login_button">Logowanie</string>
     <string name="create_account_button">Załóż konto</string>
-    <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie spożywczym mogą nie być dokładne, a wykrywalność alergenów poprawna. Zatem, sprawdzaj dwa razy!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie spożywczym mogą nie być dokładne, a wykrywalność alergenów poprawna. Zatem, sprawdzaj dwa razy!</string>
     <string name="title_info_dialog">Jak to działa?</string>
     <string name="text_offline_info_dialog">Możesz skanować produkty gdy jesteś offline by później dodać je do Open Food Facts. Wszystkie zeskanowane produkty pojawią się tu i będziesz mógł wysłać je za pomocą przycisku poniżej.</string>
     <string name="permission_camera">Potrzebujesz zezwolenia do skanowania kodów kreskowych i fotografowania.</string>

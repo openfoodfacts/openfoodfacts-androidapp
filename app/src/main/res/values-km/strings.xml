@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="other"> អ្នកមានផលិតផលក្រៅបណ្ដាញ %d ដែលកំពុងរង់ចាំដើម្បីដាក់ចូលទៅក្នុង ការពង្រីកការពិតនៃអាហារ</item>
     </plurals>
@@ -212,7 +212,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">ពត៌មានអាឡែរហ្សីរបស់អ្នកនឹងមិនត្រូវបានផ្ញើទៅម៉ាស៊ីនបម្រើព័ត៌មានអាហារបើកចំហទេ។ គួរប្រុងប្រយ័ត្នផងដែរថាទិន្នន័យផលិតផលអាចមិនត្រឹមត្រូវនិងការរកឃើញប្រហែលជាមិនត្រឹមត្រូវ 100% ទេ។ដូច្នេះសូមពិនិត្យឡើងវិញដោយខ្លួនឯង! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">ពត៌មានអាឡែរហ្សីរបស់អ្នកនឹងមិនត្រូវបានផ្ញើទៅម៉ាស៊ីនបម្រើព័ត៌មានអាហារបើកចំហទេ។ គួរប្រុងប្រយ័ត្នផងដែរថាទិន្នន័យផលិតផលអាចមិនត្រឹមត្រូវនិងការរកឃើញប្រហែលជាមិនត្រឹមត្រូវ 100% ទេ។ដូច្នេះសូមពិនិត្យឡើងវិញដោយខ្លួនឯង! </string>
     <string name="title_info_dialog">តើ​វា​ដំណើរការ​យ៉ាង​ដូចម្តេច?</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>

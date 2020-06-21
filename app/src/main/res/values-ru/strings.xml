@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> У вас есть 1 продукт, ожидающий отправки в Open Food Facts</item>
         <item quantity="few"> У вас есть %d продукта, ожидающие отправки в Open Food Facts</item>
@@ -226,7 +226,7 @@
     <string name="cancel_button">Отмена</string>
     <string name="login_button">Логин</string>
     <string name="create_account_button">Создать учетную запись</string>
-    <string name="warning_alert_data">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
     <string name="title_info_dialog">Как это работает?</string>
     <string name="text_offline_info_dialog">Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже.</string>
     <string name="permission_camera">Разрешение на доступ к камере требуется для сканирования штрих-кодов и получения фото.</string>

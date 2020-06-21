@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">crwdns114636:0crwdne114636:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -29,7 +29,7 @@
     <string name="translate_help_title">crwdns114678:0crwdne114678:0</string>
     <string name="translate_help_summary">crwdns114680:0crwdne114680:0</string>
     <string name="text_offline_info_dialog">crwdns114682:0crwdne114682:0</string>
-    <string name="warning_alert_data">crwdns114684:0crwdne114684:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns114684:0crwdne114684:0</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">crwdns114696:0crwdne114696:0</string>
     <string name="product_not_found">crwdns114700:0%1$scrwdne114700:0</string>

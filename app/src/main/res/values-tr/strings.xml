@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Open Food Facts\'e katılmak için bekleyen 1 çevrimdışı ürününüz var</item>
         <item quantity="other">Open Food Facts\'e katılmak için bekleyen %d çevrimdışı ürününüz var</item>
@@ -216,7 +216,7 @@
     <string name="cancel_button">İptal</string>
     <string name="login_button">Giriş</string>
     <string name="create_account_button">Hesap Oluştur</string>
-    <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
     <string name="title_info_dialog">Nasıl çalışır?</string>
     <string name="text_offline_info_dialog">Ürünleri daha sonra Open Food Facts\'e eklemek için çevrimdışı olduğunuzda tarayabilirsiniz. Taradığınız tüm ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
     <string name="permission_camera">Barkodları taramak ve fotoğraf çekmek için kamera izni gerekiyor.</string>

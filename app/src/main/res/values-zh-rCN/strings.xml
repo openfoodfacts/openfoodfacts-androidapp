@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="other"> 您有 %d 个离线产品等待贡献到 Open Food Facts。</item>
     </plurals>
@@ -211,7 +211,7 @@
     <string name="cancel_button">取消</string>
     <string name="login_button">登录</string>
     <string name="create_account_button">创建帐号</string>
-    <string name="warning_alert_data">您的过敏信息将永远不会发送到 Open Food Facts 服务器。另外，请注意，产品数据可能不准确，检测可能不是 100％ 准确的，请自行仔细检查！ </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">您的过敏信息将永远不会发送到 Open Food Facts 服务器。另外，请注意，产品数据可能不准确，检测可能不是 100％ 准确的，请自行仔细检查！ </string>
     <string name="title_info_dialog">它是如何工作的？</string>
     <string name="text_offline_info_dialog">您可以在离线时扫描产品，稍后将其添加到 Open Food Facts 中。您扫描的所有产品都会显示在这里，可以按下面的按钮发送它们。</string>
     <string name="permission_camera">需要相机权限才能扫描条形码及拍照。</string>

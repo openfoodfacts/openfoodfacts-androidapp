@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world-nl.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -29,7 +29,7 @@
     <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
     <string name="text_offline_info_dialog">Scan de producten ook als u offline bent, om ze later aan Open Food Facts toe te voegen. De gescande producten verschijnen hier en u kunt ze verzenden via de onderstaande knop.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">de gratis database met levensmiddelen</string>
     <string name="product_not_found">Product %1$s door jou gescand, bestaat nog niet. Wil je het toevoegen?</string>

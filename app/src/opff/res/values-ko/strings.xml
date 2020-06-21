@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">https://world.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Open Food Facts 번역 도움말</string>
     <string name="translate_help_summary">Open Food Facts 데이터베이스를 귀하의 언어로 가져 오십시오 - 기술적인 지식이 필요하지 않습니다.</string>
     <string name="text_offline_info_dialog">오프라인 상태에서도 제품을 스캔하여 나중에 Open Pet Food Facts에 추가하십시오. 스캔한 제품이 여기에 나타나면 아래 버튼을 사용하여 추가할 수 있습니다.</string>
-    <string name="warning_alert_data">알레르기 정보는 Open Pet Products Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">알레르기 정보는 Open Pet Products Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">무료 사료 데이터베이스</string>

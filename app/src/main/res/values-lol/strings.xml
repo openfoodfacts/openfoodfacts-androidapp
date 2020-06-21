@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">crwdns115916:1crwdne115916:1</item>
         <item quantity="other">crwdns115916:5%dcrwdne115916:5</item>
@@ -216,7 +216,7 @@
     <string name="cancel_button">crwdns113570:0crwdne113570:0</string>
     <string name="login_button">crwdns113572:0crwdne113572:0</string>
     <string name="create_account_button">crwdns113574:0crwdne113574:0</string>
-    <string name="warning_alert_data">crwdns115706:0crwdne115706:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns115706:0crwdne115706:0</string>
     <string name="title_info_dialog">crwdns113584:0crwdne113584:0</string>
     <string name="text_offline_info_dialog">crwdns113586:0crwdne113586:0</string>
     <string name="permission_camera">crwdns113588:0crwdne113588:0</string>

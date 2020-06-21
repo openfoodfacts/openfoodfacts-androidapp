@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
     <string name="website">https://world-fi.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Auta kääntämään Open Products Factsia</string>
     <string name="translate_help_summary">Tuo Open Products Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Products Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
-    <string name="warning_alert_data">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
     <string name="tagline">vapaa tuotetietokanta</string>
