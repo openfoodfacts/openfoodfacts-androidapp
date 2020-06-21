@@ -10,14 +10,15 @@ import androidx.work.Data;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
+import androidx.work.RxWorker;
 import androidx.work.WorkManager;
-import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
-public class OfflineProductWorker extends Worker {
+public class OfflineProductWorker extends RxWorker {
     private static final String WORK_TAG = "OFFLINE_WORKER_TAG";
     public static final String KEY_INCLUDE_IMAGES = "includeImages";
 
@@ -63,18 +64,18 @@ public class OfflineProductWorker extends Worker {
 
     @NonNull
     @Override
-    public Result doWork() {
+    public Single<Result> createWork() {
         boolean includeImages = getInputData().getBoolean(KEY_INCLUDE_IMAGES, false);
         Log.d(WORK_TAG, "[START] doWork with includeImages: " + includeImages);
-
-        boolean shouldRetry = OfflineProductService.sharedInstance().uploadAll(includeImages);
-
-        if (shouldRetry) {
-            Log.d(WORK_TAG, "[RETRY] doWork with includeImages: " + includeImages);
-            return Result.retry();
-        } else {
-            Log.d(WORK_TAG, "[SUCCESS] doWork with includeImages: " + includeImages);
-            return Result.success();
-        }
+        return OfflineProductService.sharedInstance().uploadAll(includeImages)
+            .map(shouldRetry -> {
+                if (shouldRetry) {
+                    Log.d(WORK_TAG, "[RETRY] doWork with includeImages: " + includeImages);
+                    return Result.retry();
+                } else {
+                    Log.d(WORK_TAG, "[SUCCESS] doWork with includeImages: " + includeImages);
+                    return Result.success();
+                }
+            });
     }
 }

@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.Single;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
@@ -71,37 +72,39 @@ public class OfflineProductService {
     /**
      * @return true if there is still products to upload, false otherwise
      */
-    public boolean uploadAll(boolean includeImages) {
-        final List<OfflineSavedProduct> listSaveProduct = OfflineProductService.getListOfflineProducts();
+    public Single<Boolean> uploadAll(boolean includeImages) {
+        return Single.fromCallable(() -> {
+            final List<OfflineSavedProduct> listSaveProduct = OfflineProductService.getListOfflineProducts();
 
-        for (final OfflineSavedProduct product : listSaveProduct) {
-            if (TextUtils.isEmpty(product.getBarcode())) {
-                Log.d(LOG_TAG, "Ignore product because empty barcode: " + product.toString());
-                continue;
-            }
-
-            Log.d(LOG_TAG, "Start treating of product " + product.toString());
-
-            try {
-                boolean ok = addProductToServerIfNeeded(product);
-
-                if (includeImages) {
-                    ok = ok && uploadImageIfNeeded(product, ProductImageField.FRONT);
-                    ok = ok && uploadImageIfNeeded(product, ProductImageField.INGREDIENTS);
-                    ok = ok && uploadImageIfNeeded(product, ProductImageField.NUTRITION);
-
-                    if (ok) {
-                        OfflineProductService.getOfflineProductDAO().deleteByKey(product.getId());
-                    }
+            for (final OfflineSavedProduct product : listSaveProduct) {
+                if (TextUtils.isEmpty(product.getBarcode())) {
+                    Log.d(LOG_TAG, "Ignore product because empty barcode: " + product.toString());
+                    continue;
                 }
-            } catch (Exception e) {
-                Log.e(LOG_TAG, "Error getting the product", e);
+
+                Log.d(LOG_TAG, "Start treating of product " + product.toString());
+
+                try {
+                    boolean ok = addProductToServerIfNeeded(product);
+
+                    if (includeImages) {
+                        ok = ok && uploadImageIfNeeded(product, ProductImageField.FRONT);
+                        ok = ok && uploadImageIfNeeded(product, ProductImageField.INGREDIENTS);
+                        ok = ok && uploadImageIfNeeded(product, ProductImageField.NUTRITION);
+
+                        if (ok) {
+                            OfflineProductService.getOfflineProductDAO().deleteByKey(product.getId());
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e(LOG_TAG, "Error getting the product", e);
+                }
             }
-        }
-        if (includeImages) {
-            return !OfflineProductService.getListOfflineProducts().isEmpty();
-        }
-        return !OfflineProductService.getListOfflineProductsWithoutDataSynced().isEmpty();
+            if (includeImages) {
+                return !OfflineProductService.getListOfflineProducts().isEmpty();
+            }
+            return !OfflineProductService.getListOfflineProductsWithoutDataSynced().isEmpty();
+        });
     }
 
     /**
