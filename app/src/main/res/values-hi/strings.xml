@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">लॉगिन</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">आपकी एलर्जी जानकारी कभी ओपन फूड फैक्ट्स सर्वर पर नहीं भेजी जाएगी। इसके अलावा सावधान रहें, ज़रूरी नहीं कि उत्पाद डेटा सटीक हो, और पहचान 100% सही हो, इसलिए कृपया स्वयं दोबारा जांच करें!</string>
     <string name="title_info_dialog">यह कैसे काम करता है?</string>
     <string name="text_offline_info_dialog">जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।</string>
     <string name="permission_camera">कैमरा अनुमति की जरूरत है बारकोड को स्कैन और तस्वीरें लेने के लिए</string>

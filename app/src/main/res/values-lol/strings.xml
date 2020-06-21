@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">crwdns126934:1crwdne126934:1</item>
         <item quantity="other">crwdns126934:5%dcrwdne126934:5</item>
@@ -240,7 +240,6 @@
     <string name="permission_title">crwdns127714:0crwdne127714:0</string>
     <string name="permission_denied">crwdns127716:0crwdne127716:0</string>
     <string name="info_download_data_connection">crwdns127718:0crwdne127718:0</string>
-    <!-- Strings related to login -->
     <string name="error_invalid_password">crwdns127720:0crwdne127720:0</string>
     <string name="user">crwdns127722:0crwdne127722:0</string>
     <string name="error_field_required">crwdns127724:0crwdne127724:0</string>

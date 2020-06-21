@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> Önnek 1 darab kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</item>
         <item quantity="other"> Önnek %d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájárulásra</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Mégse</string>
     <string name="login_button">Bejelentkezés</string>
     <string name="create_account_button">Fiók létrehozása</string>
-    <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az felismerés talán nem 100% as pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az felismerés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
     <string name="title_info_dialog">Hogyan működik?</string>
     <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküldheti őket.</string>
     <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>

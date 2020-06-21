@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -29,7 +29,7 @@
     <string name="translate_help_title">Bantu terjemahkan Open Food Facts</string>
     <string name="translate_help_summary">Bawa database Open Food Facts ke bahasa anda - tidak memerlukan pengetahuan teknis</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informasi mengenai alergi anda tidak akan dikirim ke server Open Food Facts. Juga, berhati-hatilah terhadap data produk yang mungkin tidak akurat, dan hasil deteksi mungkin tidak 100% akurat, mohon cek kembali! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>

@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="zero"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="one"> You have %d offline product waiting to be contributed to Open Food Facts</item>
@@ -236,7 +236,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Lietotājvārds</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Jūsu alerģiju informācija nekad netiks nosūtīta uz Open Food Facts serveri. Uzmanieties jo pieejamie dati par produktu var būt neprecīzi tāpēc pārliecinieties, pirms pieņemiet lēmumus! </string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Iespējams skenēt produktus bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk, kad interneta savienojums ir pieejams. visi produkti kuri tiks noskenēti, būs redzami šeit. Lai nosūtītu produktus, izmantojiet pogu zemāk.</string>
     <string name="permission_camera">Piekļuve kamerai ir nepieciešama, lai skenētu svītrkodus un uzņemtu attēlus.</string>

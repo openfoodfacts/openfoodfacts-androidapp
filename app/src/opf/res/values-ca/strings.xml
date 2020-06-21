@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
     <string name="website">https://world-ca.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Ajudeu a traduir Open Products Facts</string>
     <string name="translate_help_summary">Traduïu la base de dades Open Products Facts a la vostra llengua. No calen coneixements tècnics</string>
     <string name="text_offline_info_dialog">Escanegeu els productes fins i tot quan no estigueu connectat per a afegir-los a Open Products Facts més endavant. Els productes escanejats apareixeran aquí i podreu enviar-los amb el botó que teniu més avall.</string>
-    <string name="warning_alert_data">La informació de les al·lèrgies que patiu no s\'enviarà mai al servidor d\'Open Products Facts. A més, aneu amb compte: les dades del producte poden ser poc precises i és possible que la detecció no sigui 100% axacta, així que comproveu-ho bé! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La informació de les al·lèrgies que patiu no s\'enviarà mai al servidor d\'Open Products Facts. A més, aneu amb compte: les dades del producte poden ser poc precises i és possible que la detecció no sigui 100% exacta, així que comproveu-ho bé! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Aplicació per a Android Open Products Facts</string>
     <string name="tagline">the free product database</string>

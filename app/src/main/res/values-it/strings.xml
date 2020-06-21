@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Hai 1 prodotto nella coda offline in attesa di essere inviato a Open Food Facts</item>
         <item quantity="other">Hai %d prodotti nella coda offline in attesa di essere contribuito a Open Food Facts</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Annulla</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Crea account</string>
-    <string name="warning_alert_data">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
     <string name="title_info_dialog">Come funziona?</string>
     <string name="text_offline_info_dialog">Puoi scansionare i prodotti quando sei offline e aggiungerli a Open Food Facts più tardi. Tutti i prodotti che scansioni verranno mostrati qui e potrai inviarli usando il tasto qui sotto.</string>
     <string name="permission_camera">L\'autorizzazione Fotocamera è necessaria per scansionare i codici a barre e scattare foto.</string>

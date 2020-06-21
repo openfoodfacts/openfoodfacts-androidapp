@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">https://world.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Допоможіть перекласти Open Food Facts</string>
     <string name="translate_help_summary">Перекладіть базу даних Open Food Facts на свою мову - технічних знань не потрібно</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Інформація про вашу алергію ніколи не буде відправлена ​​на сервер Open Food Facts. Крім того, будьте обережні, бо дані продукту можуть бути неточними, а виявлення може бути не на 100% точним, тому подвійно перевіряйте самостійно! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

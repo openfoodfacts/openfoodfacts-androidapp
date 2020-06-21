@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> Tienes un producto a la espera de ser sincronizado con Open Food Facts</item>
         <item quantity="other"> Tienes %d productos a la espera de ser sincronizados con Open Food Facts</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Iniciar sesión</string>
     <string name="create_account_button">Crear cuenta</string>
-    <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
     <string name="title_info_dialog">¿Cómo funciona?</string>
     <string name="text_offline_info_dialog">Puedes escanear productos cuando estés desconectado y agregarlos a Open Food Facts después. Todos los productos que escanees aparecerán aquí, y podrás enviarlos con el botón de abajo.</string>
     <string name="permission_camera">Se requiere el permiso para usar la cámara para poder escanear códigos de barras y tomar fotografías.</string>
@@ -586,7 +586,7 @@
     <string name="ingredients_picture">Imagen con los ingredientes del producto</string>
     <string name="take_ingredients_picture_to_extract">(Por favor, toma una foto de los ingredientes para extraerlos automáticamente)</string>
     <string name="ingredients_list">Lista de ingredientes</string>
-    <string name="ingredients_hint">Mantén el orden, indica el [%s]uando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
+    <string name="ingredients_hint" tools:ignore="StringFormatInvalid">Mantén el orden, indica el % cuando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
     <string name="extract_ingredients">Extraer ingredientes</string>
     <string name="extracting_ingredients">Extrayendo los ingredientes</string>
     <string name="looksGood">Parece correcto</string>

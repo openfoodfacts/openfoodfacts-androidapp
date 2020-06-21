@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Yksi offline-tilassa muokattu tuote odottaa lähettämistä Open Food Factsiin</item>
         <item quantity="other">%d offline-tilassa muokattua tuotetta odottaa lähettämistä Open Food Factsiin</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Peruuta</string>
     <string name="login_button">Kirjaudu</string>
     <string name="create_account_button">Luo tili</string>
-    <string name="warning_alert_data">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100% arkka, joten tarkista itse!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100% tarkka, joten tarkista itse!</string>
     <string name="title_info_dialog">Miten se toimii?</string>
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
     <string name="permission_camera">Lupaa käyttää kameraa vaaditaan viivakoodien lukemiseen ja kuvien ottamiseen.</string>

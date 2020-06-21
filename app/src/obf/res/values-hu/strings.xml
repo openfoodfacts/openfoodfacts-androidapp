@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns="">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
     <string name="website">https://world-hu.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
@@ -28,7 +28,7 @@
     <string name="translate_help_title">Segítse az Open Beauty Facts fordítását</string>
     <string name="translate_help_summary">Hozza az Open Beauty Facts adatbázist az ön nyelvére - nincs szükség műszaki ismeretekre</string>
     <string name="text_offline_info_dialog">Olvassa be a termékeket akkor is, amikor kapcsolat nélküli módban van, hogy később hozzáadja azokat az Open Beauty Facts-hez. A beolvasott termékek itt fognak megjelenni és az alábbi gomb használatával elküldheti őket.</string>
-    <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Beauty Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100% as pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Az Ön allergén információi soha nem lesznek elküldve az Open Beauty Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">a szabad kozmetikai adatbázis</string>

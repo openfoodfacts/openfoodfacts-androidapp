@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -241,7 +241,7 @@
     <string name="cancel_button">Отмена</string>
     <string name="login_button">Логин</string>
     <string name="create_account_button">Создать учетную запись</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ваша информация об аллергиях не будет отправлена на сервер Open Food Facts. Но будьте осторожны: данные могут быть неточными, перепроверяйте их! </string>
     <string name="title_info_dialog">Как это работает?</string>
     <string name="text_offline_info_dialog">Вы можете сканировать продукты будучи офлайн, и отправить их на Open Food Facts потом.  Все сканируемые продукты будут появляться здесь, и их можно будет отправить кнопкой, которая ниже.</string>
     <string name="permission_camera">Разрешение на доступ к камере требуется для сканирования штрих-кодов и получения фото.</string>

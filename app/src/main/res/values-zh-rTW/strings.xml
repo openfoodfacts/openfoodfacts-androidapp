@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
@@ -226,7 +226,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">登入</string>
     <string name="create_account_button">建立新帳號</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">您的過敏原資料將不會被傳送到 Open Food Facts 伺服器。另外，請小心數據可能不完全正確，以及過敏原偵測可能不完全正確，請再自行確認。 </string>
     <string name="title_info_dialog">這是如何運作？</string>
     <string name="text_offline_info_dialog">在離線狀態下，您可以掃描產品並稍候將它們加到 Open Food Facts。所有您掃描過的產品都會出現在這裡，您可以使用下面的按鈕來傳送它們。</string>
     <string name="permission_camera">需要相機的存取權來掃描條碼以及拍攝照片。</string>

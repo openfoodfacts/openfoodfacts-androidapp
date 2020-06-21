@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://vn.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -29,7 +29,7 @@
     <string name="translate_help_title">Giúp dịch Open Food Facts</string>
     <string name="translate_help_summary">Mang cơ sở dữ liệu Sự Open Food Facts sang ngôn ngữ của bạn - không yêu cầu kiến ​​thức kỹ thuật</string>
     <string name="text_offline_info_dialog">Scan sản phẩm ngay cả khi offline để thêm vào Open Food Fact sau. Sản phẩm đã scan sẽ xuất hiện ở đây và bạn có thể gửi chúng bằng nút ở bên dưới.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Thông tin bệnh dị ứng của bạn không bao giờ sẽ được gửi đến máy chủ Open Food Facts. Ngoài ra, hãy cẩn thận rằng dữ liệu sản phẩm có thể không chính xác, và việc phát hiện có thể không chính xác 100%, vì vậy xin vui lòng kiểm tra lần nữa! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>

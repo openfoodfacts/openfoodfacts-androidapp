@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
@@ -226,7 +226,7 @@
     <string name="cancel_button">Huỷ</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Tạo Tài Khoản</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Thông tin bệnh dị ứng của bạn không bao giờ sẽ được gửi đến máy chủ Open Food Facts. Ngoài ra, hãy cẩn thận rằng dữ liệu sản phẩm có thể không chính xác, và việc phát hiện có thể không chính xác 100%, vì vậy xin vui lòng kiểm tra lần nữa! </string>
     <string name="title_info_dialog">Nó hoạt động như thế nào?</string>
     <string name="text_offline_info_dialog">Bạn có thể quét các sản phẩm khi bạn đang ngoại tuyến để thêm chúng vào Open Food Facts sau. Tất cả các sản phẩm bạn quét sẽ xuất hiện ở đây, và bạn sẽ có thể gửi cho họ bằng cách sử dụng nút bên dưới.</string>
     <string name="permission_camera">Cần có quyền đối với máy ảnh để quét mã vạch và chụp ảnh.</string>

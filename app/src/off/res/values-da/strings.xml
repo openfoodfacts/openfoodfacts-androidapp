@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world-da.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -29,7 +29,7 @@
     <string name="translate_help_title">Hjælp med at oversætte Open Food Facts</string>
     <string name="translate_help_summary">Få Open Food Facts-databasen på dit sprog - ingen teknisk viden kræves</string>
     <string name="text_offline_info_dialog">Skan produkterne selv når du er offline for at føje dem til Open Food Facts senere. De indskannede produkter vises her, og du vil kunne indsende dem vha. knappen nedenfor.</string>
-    <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% aorrekte, så dobbelttjek venligst selv! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">den gratis fødevareproduktdatabase</string>
     <string name="product_not_found">Produktet %1$s, du har skannet, findes endnu ikke i Open Food Facts. Vil du tilføje det?</string>

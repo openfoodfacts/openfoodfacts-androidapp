@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Iniciar sessão</string>
     <string name="create_account_button">Criar uma conta</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa, por favor confirme sempre por si mesmo! </string>
     <string name="title_info_dialog">Como é que isto funciona?</string>
     <string name="text_offline_info_dialog">Poderá digitalizar produtos enquanto estiver offline para, mais tarde, adicioná-los ao Open Food Facts. Os produtos serão mostrados aqui e poderá enviá-los usando o botão abaixo.</string>
     <string name="permission_camera">A permissão da câmara é necessária para digitalizar códigos de barras e tirar fotos.</string>

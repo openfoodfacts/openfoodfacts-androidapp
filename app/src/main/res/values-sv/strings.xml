@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Annulera</string>
     <string name="login_button">Användarnamn</string>
     <string name="create_account_button">Skapa Konto</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Din allergiinformation kommer aldrig att lagras på Open Food Facts servrar. Var även försiktig med att produktinformation kanske inte alltid stämmer, och att identifiering inte är 100% träffsäker, så dubbelkolla själv! </string>
     <string name="title_info_dialog">Hur funkar det?</string>
     <string name="text_offline_info_dialog">Du kan skanna produkter när du är offline för att lägga till dem i Open Food Facts senare. Alla produkter du skannar kommer att visas här, och du kan skicka dem med knappen nedan.</string>
     <string name="permission_camera">Appen behöver tillstånd att använda kameran för att skanna streckkoder och ta bilder.</string>

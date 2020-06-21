@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="other"> %d のオフライン製品が Open Food Facts に送信されるのを待っています</item>
     </plurals>
@@ -226,7 +226,7 @@
     <string name="cancel_button">取消</string>
     <string name="login_button">ログイン</string>
     <string name="create_account_button">アカウントを作成する</string>
-    <string name="warning_alert_data">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
     <string name="title_info_dialog">どのような仕組みですか?</string>
     <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
     <string name="permission_camera">バーコードのスキャンと写真の撮影には、カメラのアクセス許可が必要です。</string>

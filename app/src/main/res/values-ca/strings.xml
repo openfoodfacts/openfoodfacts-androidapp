@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> Teniu 1 producte fora de línia esperant la vostra aportació a Open Food Facts</item>
         <item quantity="other"> Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancel·la</string>
     <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
-    <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% axacta, així que comproveu-ho dues vegades!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades!</string>
     <string name="title_info_dialog">Com funciona?</string>
     <string name="text_offline_info_dialog">Podeu escanejar productes fora de línia i afegir-los després a Open Food Facts. Tots els productes que escanegi apareixeran aquí, i podrà enviar-los amb el botó de baix.</string>
     <string name="permission_camera">El permís de la càmera és necessari per escanejar codis de barres i fer fotos.</string>
