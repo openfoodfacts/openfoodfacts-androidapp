@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="zero">لديك منتج 1 %d لايُباع على الإنترنت بانتظار الإسهام في اوبن فود فاكتس</item>
-        <item quantity="one">لديك منتج 1 [%i] لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
+        <item quantity="one">لديك منتج 1 %d لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
         <item quantity="two"> لديك منتج 1 %d لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
         <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -253,7 +238,7 @@
     <string name="cancel_button">إلغاء</string>
     <string name="login_button">تسجيل الدخول</string>
     <string name="create_account_button">إنشاء حساب</string>
-    <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <string name="title_info_dialog">كيف يعمل؟</string>
     <string name="text_offline_info_dialog">يمكنك مسح المنتجات ضوئيا عندما كنت تكون غير متصل بالإنترنت لإضافتها لاحقا إلى Open Food Facts. ستظهر جميع المنتجات التي فحصتها هنا، وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="permission_camera">تصريح الكاميرا مطلوب لمسح شفرة المنتجات والتقاط الصور.</string>
@@ -654,7 +639,6 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">الرجاء التسجيل لتحرير المنتج.</string>
-    <string name="sign_in_to_answer">الرجاء تسجيل الدخول أو التسجيل للإجابة على الفكرة.</string>
     <string name="hint_quantity">أمثلة: 1لتر، 250 غرام، 1 كيلوغرام، 25 سنتلتر، 6 اوقية سائلة، 1 باوند</string>
     <string name="edit_product_title">تعديل المنتج</string>
     <string name="nutrient_already_added">%s موجود بالفعل ضمن المعلومات التغذية</string>
@@ -819,5 +803,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">الصورة اﻷمامية للمنتج</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

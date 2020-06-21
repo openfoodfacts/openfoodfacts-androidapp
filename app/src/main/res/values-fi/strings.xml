@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Yksi offline-tilassa muokattu tuote odottaa lähettämistä Open Food Factsiin</item>
         <item quantity="other">%d offline-tilassa muokattua tuotetta odottaa lähettämistä Open Food Factsiin</item>
@@ -65,10 +50,10 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
         <item>µg</item>
-        <item>% Däivittäisestä saannista</item>
+        <item>% päivittäisestä saannista</item>
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -231,7 +216,7 @@
     <string name="cancel_button">Peruuta</string>
     <string name="login_button">Kirjaudu</string>
     <string name="create_account_button">Luo tili</string>
-    <string name="warning_alert_data">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100% arkka, joten tarkista itse!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100% tarkka, joten tarkista itse!</string>
     <string name="title_info_dialog">Miten se toimii?</string>
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
     <string name="permission_camera">Lupaa käyttää kameraa vaaditaan viivakoodien lukemiseen ja kuvien ottamiseen.</string>
@@ -279,8 +264,8 @@
     <string name="nutrition_carbohydrate">Hiilihydraatti</string>
     <string name="nutrition_cholesterol">Kolesteroli</string>
     <string name="nutrition_energy">Energia</string>
-    <string name="nutrition_energy_kcal">Energia kaloreina (kcal)</string>
-    <string name="nutrition_energy_kj">Energia jouleina (kJ)</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Rasva</string>
     <string name="nutrition_fiber">Ravintokuitu</string>
@@ -519,7 +504,7 @@
     <string name="notify_channel_description">Ilmoitus viedyn tiedoston sijainnin näyttämiseksi</string>
     <string name="products_to_be_completed">Tuotteet, jotka kaipaavat täydentämistä</string>
     <string name="offline_notification_title">Offline-lisäyksesi, jotka täytyy lähettää</string>
-    <string name="creator_history">Tuotteen lisäsi %1$s, %2$s kello %3$s CET</string>
+    <string name="creator_history">Tuotteen lisäsi %3$s, %1$s kello %2$s CET</string>
     <string name="last_editor_history">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
     <string name="other_editors">Tuotesivua on muokannut myös </string>
     <string name="contribution_tab">Muokkaukset</string>
@@ -628,7 +613,6 @@
     <string name="edit_ingredients_image">Muokkaa kuvaa ainesosista</string>
     <string name="edit_other_image">Muokkaa kuvaa</string>
     <string name="sign_in_to_edit">Kirjaudu sisään muokataksesi tuotetta.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Esimerkit: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pauna</string>
     <string name="edit_product_title">Muokkaa tuotetta</string>
     <string name="nutrient_already_added">%s on jo ravintosisällössä</string>
@@ -698,7 +682,7 @@
     <string name="txt_info_your_listed_products">Voit lisätä tuotteita tähän luetteloon etsimällä niitä ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="search_history_pref_title">Poista paikallinen hakuhistoria</string>
     <string name="search_history_pref_summary">Poista kaikki tällä laitteella tekemäsi haut</string>
-    <string name="search_history_pref_dialog_content">Poista paikallinen hakuhistoria?</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Valitse maasi</string>
     <string name="settings_country_summary">Vaihda valitsemasi maa</string>
     <string name="settings_country_title">Maa</string>
@@ -718,7 +702,7 @@
     <string name="product_question_negative_response">Ei</string>
     <string name="product_question_ambiguous_response">Epävarma</string>
     <string name="product_question_submit_message">Kiitokset osallistumisestasi!</string>
-    <string name="error_nutrient_entry">Arvon tulee olla numeerinen. Esimerkki: &quot;1,5&quot;, &quot;2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Annoskoon tulee olla positiivinen arvo</string>
     <string name="error_in_nutrient_data">Jotkut ravintoarvot eivät ole kelvollisia. Korjaa kentät joissa on virhemerkki</string>
     <string name="go_to_full_product_page">Siirry tuotteeseen</string>
@@ -793,5 +777,4 @@
     <string name="icon_emb">EMB-koodi-kuvake</string>
     <string name="product_front_image">Tuotteen etukuva</string>
     <string name="brand_hint">Esimerkkejä: CocaCola, Nestle jne…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

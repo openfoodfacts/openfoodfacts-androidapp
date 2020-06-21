@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> Aveți 1 produs offline care așteaptă să fie contribuit la Open Food Facts</item>
         <item quantity="few"> Aveți %d produse offline care așteaptă să fie contribuite la Open Food Facts</item>
@@ -236,7 +221,7 @@
     <string name="cancel_button">Anulare</string>
     <string name="login_button">Conectați-vă</string>
     <string name="create_account_button">Creează cont</string>
-    <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
     <string name="title_info_dialog">Cum funcționează?</string>
     <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
     <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
@@ -453,7 +438,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Rețea</string>
     <string name="preference_header_contributing">Contribuire</string>
@@ -634,7 +619,6 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">Conectați-vă pentru a edita un produs.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Exemple: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Modificare produs</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
@@ -799,5 +783,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> You have %d offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -231,7 +216,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
@@ -269,7 +254,7 @@
     <string name="no_brand">No Brand</string>
     <string name="no_title">No Title</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+    <string name="display_fact">የአመጋገብ እውነታ ጠቋሚዎች ለዚህ ምርት %1$s</string>
     <string name="check_facts">Check</string>
     <string name="nutrition">Nutrition</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -628,7 +613,6 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
@@ -793,5 +777,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

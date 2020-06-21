@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Sie verfügen über ein Offline-Produkt, das darauf wartet, zu Open Food Facts hinzugefügt zu werden.</item>
         <item quantity="other">Sie verfügen über %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</item>
@@ -68,7 +53,7 @@
         <item>g</item>
         <item>mg</item>
         <item>μg</item>
-        <item>% Dgesmenge</item>
+        <item>% Tagesmenge</item>
         <item>IE</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -231,7 +216,7 @@
     <string name="cancel_button">Abbrechen</string>
     <string name="login_button">Benutzername</string>
     <string name="create_account_button">Konto erstellen</string>
-    <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% aorrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <string name="title_info_dialog">Wie funktioniert es?</string>
     <string name="text_offline_info_dialog">Sie können Produkte auch im Offline-Modus erfassen, um sie später zu Open Food Facts hinzuzufügen. Alle Produkte, die Sie erfasst haben, werden hier angezeigt, und Sie können sie über die untenstehende Schaltfläche versenden.</string>
     <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu machen.</string>
@@ -434,7 +419,7 @@
     <string name="connectivity_check">Bitte überprüfen Sie Ihre Internet-Verbindung</string>
     <string name="dismiss">Verwerfen</string>
     <string name="Terms">Allgemeine Geschäftsbedingungen</string>
-    <string name="TermsOfUse">Allgemeine Geschäftsbedingungen und Datenschutz</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://de.openfoodfacts.org/terms-of-use</string>
@@ -538,7 +523,7 @@
     </plurals>
     <string name="product_not_complete">Dieses Produkt ist noch nicht vollständig.\nKönnten Sie ein paar Details hinzufügen?</string>
     <string name="addProductOffline">Sie scheinen offline zu sein. Möchten Sie das Produkt „%s” im Offline-Modus hinzufügen?</string>
-    <string name="product_not_found">Das eingelesene Produkt „%1$s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
+    <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="scan_sound">Sound beim Einlesen</string>
     <string name="trouble_scanning">Probleme beim Einlesen?</string>
     <string name="barcode_hint">Probleme beim Einlesen? Strichcode eingeben</string>
@@ -628,7 +613,6 @@
     <string name="edit_ingredients_image">Foto der Zutaten bearbeiten</string>
     <string name="edit_other_image">Foto bearbeiten</string>
     <string name="sign_in_to_edit">Bitte melden Sie sich an, um ein Produkt zu bearbeiten.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Beispiele: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 Pfund</string>
     <string name="edit_product_title">Produkt bearbeiten</string>
     <string name="nutrient_already_added">%s ist bereits in den Nährwertangaben enthalten</string>
@@ -793,5 +777,4 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="icon_emb">Symbol des Produzenten-Codes</string>
     <string name="product_front_image">Produktfoto (Front)</string>
     <string name="brand_hint">Beispiele: CocaCola, Nestle, usw…</string>
-    <string name="sign_in_or_register">Anmelden oder registrieren</string>
 </resources>

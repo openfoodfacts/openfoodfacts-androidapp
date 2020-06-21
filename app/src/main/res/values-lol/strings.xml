@@ -1,61 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">crwdns126934:1crwdne126934:1</item>
-        <item quantity="other">crwdns126934:5%dcrwdne126934:5</item>
+        <item quantity="one">crwdns115916:1crwdne115916:1</item>
+        <item quantity="other">crwdns115916:5%dcrwdne115916:5</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">crwdns126936:1crwdne126936:1</item>
-        <item quantity="other">crwdns126936:5%dcrwdne126936:5</item>
+        <item quantity="one">crwdns119588:1crwdne119588:1</item>
+        <item quantity="other">crwdns119588:5%dcrwdne119588:5</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">crwdns126938:1crwdne126938:1</item>
-        <item quantity="other">crwdns126938:5%dcrwdne126938:5</item>
+        <item quantity="one">crwdns112896:1crwdne112896:1</item>
+        <item quantity="other">crwdns112896:5%dcrwdne112896:5</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">crwdns126940:1crwdne126940:1</item>
-        <item quantity="other">crwdns126940:5%dcrwdne126940:5</item>
+        <item quantity="one">crwdns112898:1crwdne112898:1</item>
+        <item quantity="other">crwdns112898:5%dcrwdne112898:5</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">crwdns126942:1crwdne126942:1</item>
-        <item quantity="other">crwdns126942:5%dcrwdne126942:5</item>
+        <item quantity="one">crwdns112900:1crwdne112900:1</item>
+        <item quantity="other">crwdns112900:5%dcrwdne112900:5</item>
     </plurals>
-    <string name="action_about">crwdns126944:0crwdne126944:0</string>
-    <string name="action_discover">crwdns126946:0crwdne126946:0</string>
-    <string name="contribute">crwdns126948:0crwdne126948:0</string>
-    <string name="action_find">crwdns126950:0crwdne126950:0</string>
-    <string name="product_incomplete_message">crwdns126952:0crwdne126952:0</string>
-    <string name="product_allergen_prompt">crwdns126954:0crwdne126954:0</string>
-    <string name="no_offline_data">crwdns126956:0crwdne126956:0</string>
-    <string name="first_offline">crwdns126958:0crwdne126958:0</string>
+    <string name="action_about">crwdns112904:0crwdne112904:0</string>
+    <string name="action_discover">crwdns112906:0crwdne112906:0</string>
+    <string name="contribute">crwdns112908:0crwdne112908:0</string>
+    <string name="action_find">crwdns112910:0crwdne112910:0</string>
+    <string name="product_incomplete_message">crwdns115918:0crwdne115918:0</string>
+    <string name="product_allergen_prompt">crwdns116168:0crwdne116168:0</string>
+    <string name="no_offline_data">crwdns112918:0crwdne112918:0</string>
+    <string name="first_offline">crwdns112920:0crwdne112920:0</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>crwdns126968:0crwdne126968:0</item>
-        <item>crwdns126970:0crwdne126970:0</item>
-        <item>crwdns126972:0crwdne126972:0</item>
-        <item>crwdns126974:0crwdne126974:0</item>
-        <item>crwdns126976:0crwdne126976:0</item>
+        <item>crwdns112930:0crwdne112930:0</item>
+        <item>crwdns112932:0crwdne112932:0</item>
+        <item>crwdns112934:0crwdne112934:0</item>
+        <item>crwdns112936:0crwdne112936:0</item>
+        <item>crwdns112938:0crwdne112938:0</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>crwdns126978:0crwdne126978:0</item>
-        <item>crwdns126980:0crwdne126980:0</item>
+        <item>crwdns112940:0crwdne112940:0</item>
+        <item>crwdns112942:0crwdne112942:0</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -65,732 +50,730 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>crwdns127020:0crwdne127020:0</item>
-        <item>crwdns127022:0crwdne127022:0</item>
-        <item>crwdns127024:0crwdne127024:0</item>
-        <item>crwdns127026:0% Dcrwdne127026:0</item>
-        <item>crwdns127028:0crwdne127028:0</item>
+        <item>crwdns112978:0crwdne112978:0</item>
+        <item>crwdns112980:0crwdne112980:0</item>
+        <item>crwdns112982:0crwdne112982:0</item>
+        <item>crwdns112984:0crwdne112984:0</item>
+        <item>crwdns112986:0crwdne112986:0</item>
     </string-array>
     <!-- nutrition comparison units -->
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
     <string-array name="nutrients_array">
-        <item>crwdns127036:0crwdne127036:0</item>
-        <item>crwdns127038:0crwdne127038:0</item>
-        <item>crwdns127040:0crwdne127040:0</item>
-        <item>crwdns127042:0crwdne127042:0</item>
-        <item>crwdns127044:0crwdne127044:0</item>
-        <item>crwdns127046:0crwdne127046:0</item>
-        <item>crwdns127048:0crwdne127048:0</item>
-        <item>crwdns127050:0crwdne127050:0</item>
-        <item>crwdns127052:0crwdne127052:0</item>
-        <item>crwdns127054:0crwdne127054:0</item>
-        <item>crwdns127056:0crwdne127056:0</item>
-        <item>crwdns127058:0crwdne127058:0</item>
-        <item>crwdns127060:0crwdne127060:0</item>
-        <item>crwdns127062:0crwdne127062:0</item>
-        <item>crwdns127064:0crwdne127064:0</item>
-        <item>crwdns127066:0crwdne127066:0</item>
-        <item>crwdns127068:0crwdne127068:0</item>
-        <item>crwdns127070:0crwdne127070:0</item>
-        <item>crwdns127072:0crwdne127072:0</item>
-        <item>crwdns127074:0crwdne127074:0</item>
-        <item>crwdns127076:0crwdne127076:0</item>
-        <item>crwdns127078:0crwdne127078:0</item>
-        <item>crwdns127080:0crwdne127080:0</item>
-        <item>crwdns127082:0crwdne127082:0</item>
-        <item>crwdns127084:0crwdne127084:0</item>
-        <item>crwdns127086:0crwdne127086:0</item>
-        <item>crwdns127088:0crwdne127088:0</item>
-        <item>crwdns127090:0crwdne127090:0</item>
-        <item>crwdns127092:0crwdne127092:0</item>
-        <item>crwdns127094:0crwdne127094:0</item>
-        <item>crwdns127096:0crwdne127096:0</item>
-        <item>crwdns127098:0crwdne127098:0</item>
-        <item>crwdns127100:0crwdne127100:0</item>
-        <item>crwdns127102:0crwdne127102:0</item>
-        <item>crwdns127104:0crwdne127104:0</item>
-        <item>crwdns127106:0crwdne127106:0</item>
-        <item>crwdns127108:0crwdne127108:0</item>
-        <item>crwdns127110:0crwdne127110:0</item>
-        <item>crwdns127112:0crwdne127112:0</item>
-        <item>crwdns127114:0crwdne127114:0</item>
-        <item>crwdns127116:0crwdne127116:0</item>
-        <item>crwdns127118:0crwdne127118:0</item>
-        <item>crwdns127120:0crwdne127120:0</item>
-        <item>crwdns127122:0crwdne127122:0</item>
-        <item>crwdns127124:0crwdne127124:0</item>
-        <item>crwdns127126:0crwdne127126:0</item>
-        <item>crwdns127128:0crwdne127128:0</item>
-        <item>crwdns127130:0crwdne127130:0</item>
-        <item>crwdns127132:0crwdne127132:0</item>
-        <item>crwdns127134:0crwdne127134:0</item>
-        <item>crwdns127136:0crwdne127136:0</item>
-        <item>crwdns127138:0crwdne127138:0</item>
-        <item>crwdns127140:0crwdne127140:0</item>
-        <item>crwdns127142:0crwdne127142:0</item>
-        <item>crwdns127144:0crwdne127144:0</item>
-        <item>crwdns127146:0crwdne127146:0</item>
-        <item>crwdns127148:0crwdne127148:0</item>
-        <item>crwdns127150:0crwdne127150:0</item>
-        <item>crwdns127152:0crwdne127152:0</item>
-        <item>crwdns127154:0crwdne127154:0</item>
-        <item>crwdns127156:0crwdne127156:0</item>
-        <item>crwdns127158:0crwdne127158:0</item>
-        <item>crwdns127160:0crwdne127160:0</item>
-        <item>crwdns127162:0crwdne127162:0</item>
-        <item>crwdns127164:0crwdne127164:0</item>
-        <item>crwdns127166:0crwdne127166:0</item>
-        <item>crwdns127168:0crwdne127168:0</item>
-        <item>crwdns127170:0crwdne127170:0</item>
-        <item>crwdns127172:0crwdne127172:0</item>
-        <item>crwdns127174:0crwdne127174:0</item>
-        <item>crwdns127176:0crwdne127176:0</item>
-        <item>crwdns127178:0crwdne127178:0</item>
-        <item>crwdns127180:0crwdne127180:0</item>
-        <item>crwdns127182:0crwdne127182:0</item>
-        <item>crwdns127184:0crwdne127184:0</item>
-        <item>crwdns127186:0crwdne127186:0</item>
-        <item>crwdns127188:0crwdne127188:0</item>
+        <item>crwdns112988:0crwdne112988:0</item>
+        <item>crwdns112990:0crwdne112990:0</item>
+        <item>crwdns112992:0crwdne112992:0</item>
+        <item>crwdns112994:0crwdne112994:0</item>
+        <item>crwdns112996:0crwdne112996:0</item>
+        <item>crwdns112998:0crwdne112998:0</item>
+        <item>crwdns113000:0crwdne113000:0</item>
+        <item>crwdns113002:0crwdne113002:0</item>
+        <item>crwdns113004:0crwdne113004:0</item>
+        <item>crwdns113006:0crwdne113006:0</item>
+        <item>crwdns113008:0crwdne113008:0</item>
+        <item>crwdns113010:0crwdne113010:0</item>
+        <item>crwdns113012:0crwdne113012:0</item>
+        <item>crwdns113014:0crwdne113014:0</item>
+        <item>crwdns113016:0crwdne113016:0</item>
+        <item>crwdns113018:0crwdne113018:0</item>
+        <item>crwdns113020:0crwdne113020:0</item>
+        <item>crwdns113022:0crwdne113022:0</item>
+        <item>crwdns113024:0crwdne113024:0</item>
+        <item>crwdns113026:0crwdne113026:0</item>
+        <item>crwdns113028:0crwdne113028:0</item>
+        <item>crwdns113030:0crwdne113030:0</item>
+        <item>crwdns113032:0crwdne113032:0</item>
+        <item>crwdns113034:0crwdne113034:0</item>
+        <item>crwdns113036:0crwdne113036:0</item>
+        <item>crwdns113038:0crwdne113038:0</item>
+        <item>crwdns113040:0crwdne113040:0</item>
+        <item>crwdns113042:0crwdne113042:0</item>
+        <item>crwdns113044:0crwdne113044:0</item>
+        <item>crwdns113046:0crwdne113046:0</item>
+        <item>crwdns113048:0crwdne113048:0</item>
+        <item>crwdns113050:0crwdne113050:0</item>
+        <item>crwdns113052:0crwdne113052:0</item>
+        <item>crwdns113054:0crwdne113054:0</item>
+        <item>crwdns113056:0crwdne113056:0</item>
+        <item>crwdns113058:0crwdne113058:0</item>
+        <item>crwdns113060:0crwdne113060:0</item>
+        <item>crwdns113062:0crwdne113062:0</item>
+        <item>crwdns113064:0crwdne113064:0</item>
+        <item>crwdns113066:0crwdne113066:0</item>
+        <item>crwdns113068:0crwdne113068:0</item>
+        <item>crwdns113070:0crwdne113070:0</item>
+        <item>crwdns113072:0crwdne113072:0</item>
+        <item>crwdns113074:0crwdne113074:0</item>
+        <item>crwdns113076:0crwdne113076:0</item>
+        <item>crwdns113078:0crwdne113078:0</item>
+        <item>crwdns113080:0crwdne113080:0</item>
+        <item>crwdns113082:0crwdne113082:0</item>
+        <item>crwdns113084:0crwdne113084:0</item>
+        <item>crwdns113086:0crwdne113086:0</item>
+        <item>crwdns113088:0crwdne113088:0</item>
+        <item>crwdns113090:0crwdne113090:0</item>
+        <item>crwdns113092:0crwdne113092:0</item>
+        <item>crwdns113094:0crwdne113094:0</item>
+        <item>crwdns113096:0crwdne113096:0</item>
+        <item>crwdns113098:0crwdne113098:0</item>
+        <item>crwdns113100:0crwdne113100:0</item>
+        <item>crwdns113102:0crwdne113102:0</item>
+        <item>crwdns113104:0crwdne113104:0</item>
+        <item>crwdns113106:0crwdne113106:0</item>
+        <item>crwdns113108:0crwdne113108:0</item>
+        <item>crwdns113110:0crwdne113110:0</item>
+        <item>crwdns113112:0crwdne113112:0</item>
+        <item>crwdns113114:0crwdne113114:0</item>
+        <item>crwdns113116:0crwdne113116:0</item>
+        <item>crwdns113118:0crwdne113118:0</item>
+        <item>crwdns113120:0crwdne113120:0</item>
+        <item>crwdns113122:0crwdne113122:0</item>
+        <item>crwdns113124:0crwdne113124:0</item>
+        <item>crwdns113126:0crwdne113126:0</item>
+        <item>crwdns113128:0crwdne113128:0</item>
+        <item>crwdns113130:0crwdne113130:0</item>
+        <item>crwdns113132:0crwdne113132:0</item>
+        <item>crwdns113134:0crwdne113134:0</item>
+        <item>crwdns113136:0crwdne113136:0</item>
+        <item>crwdns113138:0crwdne113138:0</item>
+        <item>crwdns113140:0crwdne113140:0</item>
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
-    <string name="search_button">crwdns127552:0crwdne127552:0</string>
-    <string name="alert_dialog_warning_title">crwdns127554:0crwdne127554:0</string>
-    <string name="alert_dialog_warning_msg_user">crwdns127556:0crwdne127556:0</string>
-    <string name="toast_retrieving">crwdns127558:0crwdne127558:0</string>
-    <string name="txtBarcode">crwdns127560:0crwdne127560:0</string>
-    <string name="txtCategories">crwdns127562:0crwdne127562:0</string>
-    <string name="txtLabels">crwdns127564:0crwdne127564:0</string>
-    <string name="txtEMB">crwdns127566:0crwdne127566:0</string>
-    <string name="txtIngredients">crwdns127568:0crwdne127568:0</string>
-    <string name="Donate">crwdns127570:0crwdne127570:0</string>
-    <string name="Donation">crwdns127572:0crwdne127572:0</string>
-    <string name="txtSubstances">crwdns127574:0crwdne127574:0</string>
-    <string name="txtAdditives">crwdns127576:0crwdne127576:0</string>
-    <string name="txtTraces">crwdns127578:0crwdne127578:0</string>
-    <string name="txtMayBeFromPalmOilProduct">crwdns127580:0crwdne127580:0</string>
-    <string name="txtPalmOilProduct">crwdns127582:0crwdne127582:0</string>
-    <string name="txtServingSize">crwdns127584:0crwdne127584:0</string>
-    <string name="txtNutrientLevel100g">crwdns127586:0crwdne127586:0</string>
-    <string name="txtNutrientLevel100ml">crwdns127588:0crwdne127588:0</string>
-    <string name="txtNutritionLevelLow">crwdns127590:0crwdne127590:0</string>
-    <string name="txtNutritionLevelModerate">crwdns127592:0crwdne127592:0</string>
-    <string name="txtNutritionLevelHigh">crwdns127594:0crwdne127594:0</string>
-    <string name="txtSave">crwdns127596:0crwdne127596:0</string>
-    <string name="txtSignIn">crwdns127598:0crwdne127598:0</string>
-    <string name="txtToastSaved">crwdns127600:0crwdne127600:0</string>
-    <string name="txtSalt">crwdns127602:0crwdne127602:0</string>
-    <string name="txtFat">crwdns127604:0crwdne127604:0</string>
-    <string name="txtSugars">crwdns127606:0crwdne127606:0</string>
-    <string name="hintBarcode">crwdns127608:0crwdne127608:0</string>
-    <string name="txtNutriScoreInfo">crwdns127610:0crwdne127610:0</string>
-    <string name="hintLogin">crwdns127612:0crwdne127612:0</string>
-    <string name="hintPass">crwdns127614:0crwdne127614:0</string>
-    <string name="errorLogin">crwdns127616:0crwdne127616:0</string>
-    <string name="errorWeb">crwdns127618:0crwdne127618:0</string>
-    <string name="uploadLater">crwdns127620:0crwdne127620:0</string>
-    <string name="txtInfoLoginOk">crwdns127622:0crwdne127622:0</string>
-    <string name="txtInfoLoginNo">crwdns127624:0crwdne127624:0</string>
-    <string name="txtDialogsContent">crwdns127626:0crwdne127626:0</string>
-    <string name="txtYes">crwdns127628:0crwdne127628:0</string>
-    <string name="txtNo">crwdns127630:0crwdne127630:0</string>
-    <string name="hintBrand">crwdns127632:0crwdne127632:0</string>
-    <string name="txtSendAll">crwdns127634:0crwdne127634:0</string>
-    <string name="txtPictureNeededDialogNo">crwdns127636:0crwdne127636:0</string>
-    <string name="toastSending">crwdns127638:0crwdne127638:0</string>
-    <string name="txtLoading">crwdns127640:0crwdne127640:0</string>
-    <string name="txtDialogsContentDelete">crwdns127642:0crwdne127642:0</string>
-    <string name="txtDialogsContentInfoSave">crwdns127644:0crwdne127644:0</string>
-    <string name="productSavedToast">crwdns127646:0crwdne127646:0</string>
-    <string name="txtBarcodeRequire">crwdns127648:0crwdne127648:0</string>
-    <string name="txtOk">crwdns127650:0crwdne127650:0</string>
-    <string name="txtBarcodeNotValid">crwdns127652:0crwdne127652:0</string>
-    <string name="msg_share">crwdns127654:0crwdne127654:0</string>
-    <string name="create_account">crwdns127656:0crwdne127656:0</string>
-    <string name="home_drawer">crwdns127658:0crwdne127658:0</string>
-    <string name="install">crwdns127660:0crwdne127660:0</string>
-    <string name="open_beauty_drawer">crwdns127662:0crwdne127662:0</string>
-    <string name="open_food_drawer">crwdns127664:0crwdne127664:0</string>
-    <string name="search_drawer">crwdns127666:0crwdne127666:0</string>
-    <string name="search_by_barcode_drawer">crwdns127668:0crwdne127668:0</string>
-    <string name="category_drawer">crwdns127670:0crwdne127670:0</string>
-    <string name="search_by_category">crwdns127672:0crwdne127672:0</string>
-    <string name="scan_search">crwdns127674:0crwdne127674:0</string>
-    <string name="user_drawer">crwdns127676:0crwdne127676:0</string>
-    <string name="offline_edit_drawer">crwdns127678:0crwdne127678:0</string>
-    <string name="txt_anonymous">crwdns127680:0crwdne127680:0</string>
-    <string name="delete_txt">crwdns127682:0crwdne127682:0</string>
-    <string name="sign_in_drawer">crwdns127684:0crwdne127684:0</string>
-    <string name="alert_drawer">crwdns127686:0crwdne127686:0</string>
-    <string name="your_lists">crwdns127688:0crwdne127688:0</string>
-    <string name="title_dialog_alert">crwdns127690:0crwdne127690:0</string>
-    <string name="select_camera">crwdns127692:0crwdne127692:0</string>
-    <string name="ok_button">crwdns127694:0crwdne127694:0</string>
-    <string name="cancel_button">crwdns127696:0crwdne127696:0</string>
-    <string name="login_button">crwdns127698:0crwdne127698:0</string>
-    <string name="create_account_button">crwdns127700:0crwdne127700:0</string>
-    <string name="warning_alert_data">crwdns127702:0% acrwdne127702:0</string>
-    <string name="title_info_dialog">crwdns127704:0crwdne127704:0</string>
-    <string name="text_offline_info_dialog">crwdns127706:0crwdne127706:0</string>
-    <string name="permission_camera">crwdns127708:0crwdne127708:0</string>
-    <string name="no_camera_dialog_title">crwdns127710:0crwdne127710:0</string>
-    <string name="no_camera_dialog_content">crwdns127712:0crwdne127712:0</string>
-    <string name="permission_title">crwdns127714:0crwdne127714:0</string>
-    <string name="permission_denied">crwdns127716:0crwdne127716:0</string>
-    <string name="info_download_data_connection">crwdns127718:0crwdne127718:0</string>
+    <string name="search_button">crwdns113334:0crwdne113334:0</string>
+    <string name="alert_dialog_warning_title">crwdns113340:0crwdne113340:0</string>
+    <string name="alert_dialog_warning_msg_user">crwdns113342:0crwdne113342:0</string>
+    <string name="toast_retrieving">crwdns113346:0crwdne113346:0</string>
+    <string name="txtBarcode">crwdns113350:0crwdne113350:0</string>
+    <string name="txtCategories">crwdns113358:0crwdne113358:0</string>
+    <string name="txtLabels">crwdns113360:0crwdne113360:0</string>
+    <string name="txtEMB">crwdns113368:0crwdne113368:0</string>
+    <string name="txtIngredients">crwdns113376:0crwdne113376:0</string>
+    <string name="Donate">crwdns113378:0crwdne113378:0</string>
+    <string name="Donation">crwdns113380:0crwdne113380:0</string>
+    <string name="txtSubstances">crwdns113382:0crwdne113382:0</string>
+    <string name="txtAdditives">crwdns113384:0crwdne113384:0</string>
+    <string name="txtTraces">crwdns113386:0crwdne113386:0</string>
+    <string name="txtMayBeFromPalmOilProduct">crwdns113388:0crwdne113388:0</string>
+    <string name="txtPalmOilProduct">crwdns113390:0crwdne113390:0</string>
+    <string name="txtServingSize">crwdns113392:0crwdne113392:0</string>
+    <string name="txtNutrientLevel100g">crwdns113394:0crwdne113394:0</string>
+    <string name="txtNutrientLevel100ml">crwdns117604:0crwdne117604:0</string>
+    <string name="txtNutritionLevelLow">crwdns113396:0crwdne113396:0</string>
+    <string name="txtNutritionLevelModerate">crwdns113398:0crwdne113398:0</string>
+    <string name="txtNutritionLevelHigh">crwdns113400:0crwdne113400:0</string>
+    <string name="txtSave">crwdns113408:0crwdne113408:0</string>
+    <string name="txtSignIn">crwdns113410:0crwdne113410:0</string>
+    <string name="txtToastSaved">crwdns113414:0crwdne113414:0</string>
+    <string name="txtSalt">crwdns113416:0crwdne113416:0</string>
+    <string name="txtFat">crwdns113418:0crwdne113418:0</string>
+    <string name="txtSugars">crwdns113420:0crwdne113420:0</string>
+    <string name="hintBarcode">crwdns113422:0crwdne113422:0</string>
+    <string name="txtNutriScoreInfo">crwdns115384:0crwdne115384:0</string>
+    <string name="hintLogin">crwdns113426:0crwdne113426:0</string>
+    <string name="hintPass">crwdns113428:0crwdne113428:0</string>
+    <string name="errorLogin">crwdns113430:0crwdne113430:0</string>
+    <string name="errorWeb">crwdns113432:0crwdne113432:0</string>
+    <string name="uploadLater">crwdns113434:0crwdne113434:0</string>
+    <string name="txtInfoLoginOk">crwdns113436:0crwdne113436:0</string>
+    <string name="txtInfoLoginNo">crwdns113438:0crwdne113438:0</string>
+    <string name="txtDialogsContent">crwdns113440:0crwdne113440:0</string>
+    <string name="txtYes">crwdns113444:0crwdne113444:0</string>
+    <string name="txtNo">crwdns113446:0crwdne113446:0</string>
+    <string name="hintBrand">crwdns113458:0crwdne113458:0</string>
+    <string name="txtSendAll">crwdns113462:0crwdne113462:0</string>
+    <string name="txtPictureNeededDialogNo">crwdns113472:0crwdne113472:0</string>
+    <string name="toastSending">crwdns113474:0crwdne113474:0</string>
+    <string name="txtLoading">crwdns113482:0crwdne113482:0</string>
+    <string name="txtDialogsContentDelete">crwdns113484:0crwdne113484:0</string>
+    <string name="txtDialogsContentInfoSave">crwdns113486:0crwdne113486:0</string>
+    <string name="productSavedToast">crwdns125678:0crwdne125678:0</string>
+    <string name="txtBarcodeRequire">crwdns113488:0crwdne113488:0</string>
+    <string name="txtOk">crwdns113490:0crwdne113490:0</string>
+    <string name="txtBarcodeNotValid">crwdns113500:0crwdne113500:0</string>
+    <string name="msg_share">crwdns113508:0crwdne113508:0</string>
+    <string name="create_account">crwdns113510:0crwdne113510:0</string>
+    <string name="home_drawer">crwdns113512:0crwdne113512:0</string>
+    <string name="install">crwdns121274:0crwdne121274:0</string>
+    <string name="open_beauty_drawer">crwdns123488:0crwdne123488:0</string>
+    <string name="open_food_drawer">crwdns123490:0crwdne123490:0</string>
+    <string name="search_drawer">crwdns113518:0crwdne113518:0</string>
+    <string name="search_by_barcode_drawer">crwdns113520:0crwdne113520:0</string>
+    <string name="category_drawer">crwdns113522:0crwdne113522:0</string>
+    <string name="search_by_category">crwdns113524:0crwdne113524:0</string>
+    <string name="scan_search">crwdns113528:0crwdne113528:0</string>
+    <string name="user_drawer">crwdns113530:0crwdne113530:0</string>
+    <string name="offline_edit_drawer">crwdns113532:0crwdne113532:0</string>
+    <string name="txt_anonymous">crwdns113534:0crwdne113534:0</string>
+    <string name="delete_txt">crwdns113538:0crwdne113538:0</string>
+    <string name="sign_in_drawer">crwdns113540:0crwdne113540:0</string>
+    <string name="alert_drawer">crwdns113542:0crwdne113542:0</string>
+    <string name="your_lists">crwdns115386:0crwdne115386:0</string>
+    <string name="title_dialog_alert">crwdns113546:0crwdne113546:0</string>
+    <string name="select_camera">crwdns113566:0crwdne113566:0</string>
+    <string name="ok_button">crwdns113568:0crwdne113568:0</string>
+    <string name="cancel_button">crwdns113570:0crwdne113570:0</string>
+    <string name="login_button">crwdns113572:0crwdne113572:0</string>
+    <string name="create_account_button">crwdns113574:0crwdne113574:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns115706:0crwdne115706:0</string>
+    <string name="title_info_dialog">crwdns113584:0crwdne113584:0</string>
+    <string name="text_offline_info_dialog">crwdns113586:0crwdne113586:0</string>
+    <string name="permission_camera">crwdns113588:0crwdne113588:0</string>
+    <string name="no_camera_dialog_title">crwdns125758:0crwdne125758:0</string>
+    <string name="no_camera_dialog_content">crwdns125760:0crwdne125760:0</string>
+    <string name="permission_title">crwdns113590:0crwdne113590:0</string>
+    <string name="permission_denied">crwdns113592:0crwdne113592:0</string>
+    <string name="info_download_data_connection">crwdns115926:0crwdne115926:0</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">crwdns127720:0crwdne127720:0</string>
-    <string name="user">crwdns127722:0crwdne127722:0</string>
-    <string name="error_field_required">crwdns127724:0crwdne127724:0</string>
-    <string name="action_preferences">crwdns127726:0crwdne127726:0</string>
-    <string name="prefs_scan_startup">crwdns127728:0crwdne127728:0</string>
-    <string name="prefs_scan_startup_summary">crwdns127730:0crwdne127730:0</string>
-    <string name="prefs_power_mode">crwdns127732:0crwdne127732:0</string>
-    <string name="prefs_power_mode_summary">crwdns127734:0crwdne127734:0</string>
-    <string name="prefs_language">crwdns127736:0crwdne127736:0</string>
-    <string name="prefs_language_summary">crwdns127738:0crwdne127738:0</string>
+    <string name="error_invalid_password">crwdns113604:0crwdne113604:0</string>
+    <string name="user">crwdns113606:0crwdne113606:0</string>
+    <string name="error_field_required">crwdns113608:0crwdne113608:0</string>
+    <string name="action_preferences">crwdns113610:0crwdne113610:0</string>
+    <string name="prefs_scan_startup">crwdns113612:0crwdne113612:0</string>
+    <string name="prefs_scan_startup_summary">crwdns113614:0crwdne113614:0</string>
+    <string name="prefs_power_mode">crwdns113616:0crwdne113616:0</string>
+    <string name="prefs_power_mode_summary">crwdns113618:0crwdne113618:0</string>
+    <string name="prefs_language">crwdns113620:0crwdne113620:0</string>
+    <string name="prefs_language_summary">crwdns113622:0crwdne113622:0</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">crwdns127740:0crwdne127740:0</string>
-    <string name="user_ask_show_feedback_form">crwdns127742:0crwdne127742:0</string>
-    <string name="user_ask_rate_app">crwdns127744:0crwdne127744:0</string>
-    <string name="rate_app">crwdns127746:0crwdne127746:0</string>
-    <string name="no_thx">crwdns127748:0crwdne127748:0</string>
+    <string name="user_enjoying_app">crwdns125382:0crwdne125382:0</string>
+    <string name="user_ask_show_feedback_form">crwdns125384:0crwdne125384:0</string>
+    <string name="user_ask_rate_app">crwdns125386:0crwdne125386:0</string>
+    <string name="rate_app">crwdns125388:0crwdne125388:0</string>
+    <string name="no_thx">crwdns125390:0crwdne125390:0</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">crwdns127752:0crwdne127752:0</string>
-    <string name="clear_history">crwdns127754:0crwdne127754:0</string>
-    <string name="title_clear_history_dialog">crwdns127756:0crwdne127756:0</string>
-    <string name="text_clear_history_dialog">crwdns127758:0crwdne127758:0</string>
-    <string name="export_csv_history">crwdns127760:0crwdne127760:0</string>
-    <string name="txt_exporting_history">crwdns127762:0crwdne127762:0</string>
-    <string name="txt_history_exported">crwdns127764:0crwdne127764:0</string>
-    <string name="permision_write_external_storage">crwdns127766:0crwdne127766:0</string>
-    <string name="no_brand">crwdns127768:0crwdne127768:0</string>
-    <string name="no_title">crwdns127770:0crwdne127770:0</string>
+    <string name="scan_history_drawer">crwdns113624:0crwdne113624:0</string>
+    <string name="clear_history">crwdns113626:0crwdne113626:0</string>
+    <string name="title_clear_history_dialog">crwdns113628:0crwdne113628:0</string>
+    <string name="text_clear_history_dialog">crwdns115708:0crwdne115708:0</string>
+    <string name="export_csv_history">crwdns113632:0crwdne113632:0</string>
+    <string name="txt_exporting_history">crwdns113634:0crwdne113634:0</string>
+    <string name="txt_history_exported">crwdns113636:0crwdne113636:0</string>
+    <string name="permision_write_external_storage">crwdns113638:0crwdne113638:0</string>
+    <string name="no_brand">crwdns113642:0crwdne113642:0</string>
+    <string name="no_title">crwdns113644:0crwdne113644:0</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">crwdns127772:0%1$scrwdne127772:0</string>
-    <string name="check_facts">crwdns127774:0crwdne127774:0</string>
-    <string name="nutrition">crwdns127776:0crwdne127776:0</string>
-    <string name="calculated_nutrition">crwdns127778:0crwdne127778:0</string>
-    <string name="please_enter_weight">crwdns127780:0crwdne127780:0</string>
-    <string name="enter_weight">crwdns127782:0crwdne127782:0</string>
-    <string name="calculate_nutrition_facts">crwdns127784:0crwdne127784:0</string>
-    <string name="nutrition_carbohydrate">crwdns127786:0crwdne127786:0</string>
-    <string name="nutrition_cholesterol">crwdns127788:0crwdne127788:0</string>
-    <string name="nutrition_energy">crwdns127790:0crwdne127790:0</string>
-    <string name="nutrition_energy_kcal">crwdns127792:0crwdne127792:0</string>
-    <string name="nutrition_energy_kj">crwdns127794:0crwdne127794:0</string>
-    <string name="nutrition_energy_short_name">crwdns127796:0crwdne127796:0</string>
-    <string name="nutrition_fat">crwdns127798:0crwdne127798:0</string>
-    <string name="nutrition_fiber">crwdns127800:0crwdne127800:0</string>
-    <string name="nutrition_header">crwdns127802:0crwdne127802:0</string>
-    <string name="nutrition_proteins">crwdns127804:0crwdne127804:0</string>
-    <string name="nutrition_salt">crwdns127806:0crwdne127806:0</string>
-    <string name="nutrition_satured_fat">crwdns127808:0crwdne127808:0</string>
-    <string name="nutrition_sodium">crwdns127810:0crwdne127810:0</string>
-    <string name="nutrition_sugars">crwdns127812:0crwdne127812:0</string>
-    <string name="nutrition_trans_fat">crwdns127814:0crwdne127814:0</string>
-    <string name="nutriment_serving_size">crwdns127816:0crwdne127816:0</string>
-    <string name="action_manage_account">crwdns127818:0crwdne127818:0</string>
-    <string name="action_contributes">crwdns127820:0crwdne127820:0</string>
-    <string name="choose_energy_unit">crwdns127822:0crwdne127822:0</string>
-    <string name="energy_pref_title">crwdns127824:0crwdne127824:0</string>
-    <string name="choose_volume_unit">crwdns127826:0crwdne127826:0</string>
-    <string name="volume_pref_title">crwdns127828:0crwdne127828:0</string>
-    <string name="logout_drawer">crwdns127830:0crwdne127830:0</string>
-    <string name="contribution_without_account">crwdns127832:0crwdne127832:0</string>
-    <string name="textCarbonFootprint">crwdns127834:0crwdne127834:0</string>
-    <string name="action_search">crwdns127836:0crwdne127836:0</string>
-    <string name="search_hint">crwdns127838:0crwdne127838:0</string>
-    <string name="number_of_results">crwdns127840:0crwdne127840:0</string>
-    <string name="number_of_products">crwdns127842:0crwdne127842:0</string>
-    <string name="txt_no_matching__category_products">crwdns127844:0crwdne127844:0</string>
-    <string name="txt_no_matching_allergen_products">crwdns127846:0crwdne127846:0</string>
-    <string name="txt_no_matching_label_products">crwdns127848:0crwdne127848:0</string>
-    <string name="txt_no_matching_additive_products">crwdns127850:0crwdne127850:0</string>
-    <string name="txt_no_matching_country_products">crwdns127852:0crwdne127852:0</string>
-    <string name="txt_no_matching_store_products">crwdns127854:0crwdne127854:0</string>
-    <string name="txt_no_matching_packaging_products">crwdns127856:0crwdne127856:0</string>
-    <string name="txt_no_matching_brand_products">crwdns127858:0crwdne127858:0</string>
-    <string name="txt_no_matching_incomplete_products">crwdns127860:0crwdne127860:0</string>
-    <string name="txt_no_matching_contributor_products">crwdns127862:0crwdne127862:0</string>
-    <string name="txt_no_matching_products">crwdns127864:0crwdne127864:0</string>
-    <string name="txt_broaden_search">crwdns127866:0crwdne127866:0</string>
-    <string name="something_went_wrong">crwdns127868:0crwdne127868:0</string>
-    <string name="txt_try_again">crwdns127870:0crwdne127870:0</string>
-    <string name="nutrition_lactose">crwdns127872:0crwdne127872:0</string>
-    <string name="nutrition_casein">crwdns127874:0crwdne127874:0</string>
-    <string name="nutrition_maltodextrins">crwdns127876:0crwdne127876:0</string>
-    <string name="nutrition_serum_proteins">crwdns127878:0crwdne127878:0</string>
-    <string name="nutrition_nucleotides">crwdns127880:0crwdne127880:0</string>
-    <string name="for_100g">crwdns127882:0crwdne127882:0</string>
-    <string name="for_100ml">crwdns127884:0crwdne127884:0</string>
-    <string name="serving">crwdns127886:0crwdne127886:0</string>
-    <string name="nutrition_monounsaturatedFat">crwdns127888:0crwdne127888:0</string>
-    <string name="nutrition_polyunsaturatedFat">crwdns127890:0crwdne127890:0</string>
-    <string name="nutrition_omega3">crwdns127892:0crwdne127892:0</string>
-    <string name="nutrition_omega6">crwdns127894:0crwdne127894:0</string>
-    <string name="nutrition_omega9">crwdns127896:0crwdne127896:0</string>
-    <string name="nutrition_sucrose">crwdns127898:0crwdne127898:0</string>
-    <string name="nutrition_glucose">crwdns127900:0crwdne127900:0</string>
-    <string name="nutrition_fructose">crwdns127902:0crwdne127902:0</string>
-    <string name="nutrition_maltose">crwdns127904:0crwdne127904:0</string>
-    <string name="nutrition_alcohol">crwdns127906:0crwdne127906:0</string>
-    <string name="nutrition_vitamins">crwdns127908:0crwdne127908:0</string>
-    <string name="vitamin_a">crwdns127910:0crwdne127910:0</string>
-    <string name="vitamin_d">crwdns127912:0crwdne127912:0</string>
-    <string name="vitamin_e">crwdns127914:0crwdne127914:0</string>
-    <string name="vitamin_k">crwdns127916:0crwdne127916:0</string>
-    <string name="vitamin_c">crwdns127918:0crwdne127918:0</string>
-    <string name="vitamin_b1">crwdns127920:0crwdne127920:0</string>
-    <string name="vitamin_b2">crwdns127922:0crwdne127922:0</string>
-    <string name="vitamin_pp">crwdns127924:0crwdne127924:0</string>
-    <string name="vitamin_b6">crwdns127926:0crwdne127926:0</string>
-    <string name="vitamin_b9">crwdns127928:0crwdne127928:0</string>
-    <string name="vitamin_b12">crwdns127930:0crwdne127930:0</string>
-    <string name="biotin">crwdns127932:0crwdne127932:0</string>
-    <string name="pantothenic_acid">crwdns127934:0crwdne127934:0</string>
-    <string name="nutrition_minerals">crwdns127936:0crwdne127936:0</string>
-    <string name="silica">crwdns127938:0crwdne127938:0</string>
-    <string name="bicarbonate">crwdns127940:0crwdne127940:0</string>
-    <string name="potassium">crwdns127942:0crwdne127942:0</string>
-    <string name="chloride">crwdns127944:0crwdne127944:0</string>
-    <string name="calcium">crwdns127946:0crwdne127946:0</string>
-    <string name="phosphorus">crwdns127948:0crwdne127948:0</string>
-    <string name="iron">crwdns127950:0crwdne127950:0</string>
-    <string name="magnesium">crwdns127952:0crwdne127952:0</string>
-    <string name="zinc">crwdns127954:0crwdne127954:0</string>
-    <string name="copper">crwdns127956:0crwdne127956:0</string>
-    <string name="manganese">crwdns127958:0crwdne127958:0</string>
-    <string name="fluoride">crwdns127960:0crwdne127960:0</string>
-    <string name="selenium">crwdns127962:0crwdne127962:0</string>
-    <string name="chromium">crwdns127964:0crwdne127964:0</string>
-    <string name="molybdenum">crwdns127966:0crwdne127966:0</string>
-    <string name="iodine">crwdns127968:0crwdne127968:0</string>
-    <string name="caffeine">crwdns127970:0crwdne127970:0</string>
-    <string name="taurine">crwdns127972:0crwdne127972:0</string>
-    <string name="ph">crwdns127974:0crwdne127974:0</string>
-    <string name="fruits_vegetables_nuts">crwdns127976:0crwdne127976:0</string>
-    <string name="collagen_meat_protein_ratio">crwdns127978:0crwdne127978:0</string>
-    <string name="cocoa">crwdns127980:0crwdne127980:0</string>
-    <string name="chlorophyl">crwdns127982:0crwdne127982:0</string>
-    <string name="take_picture">crwdns127984:0crwdne127984:0</string>
-    <string name="choose_picture_from_gallery">crwdns127986:0crwdne127986:0</string>
-    <string name="take_picture_ingredients">crwdns127988:0crwdne127988:0</string>
-    <string name="take_picture_front">crwdns127990:0crwdne127990:0</string>
-    <string name="take_picture_nutrition_table">crwdns127992:0crwdne127992:0</string>
-    <string name="take_more_pictures">crwdns127994:0crwdne127994:0</string>
-    <string name="txtSaturatedFat">crwdns127996:0crwdne127996:0</string>
-    <string name="nutriscore_info_msg">crwdns127998:0crwdne127998:0</string>
-    <string name="nova_info_msg">crwdns128000:0crwdne128000:0</string>
-    <string name="nova_grp1_msg">crwdns128002:0crwdne128002:0</string>
-    <string name="nova_grp2_msg">crwdns128004:0crwdne128004:0</string>
-    <string name="nova_grp3_msg">crwdns128006:0crwdne128006:0</string>
-    <string name="nova_grp4_msg">crwdns128008:0crwdne128008:0</string>
+    <string name="display_fact">crwdns113646:0%1$scrwdne113646:0</string>
+    <string name="check_facts">crwdns113648:0crwdne113648:0</string>
+    <string name="nutrition">crwdns113650:0crwdne113650:0</string>
+    <string name="calculated_nutrition">crwdns113652:0crwdne113652:0</string>
+    <string name="please_enter_weight">crwdns115710:0crwdne115710:0</string>
+    <string name="enter_weight">crwdns115712:0crwdne115712:0</string>
+    <string name="calculate_nutrition_facts">crwdns115930:0crwdne115930:0</string>
+    <string name="nutrition_carbohydrate">crwdns113662:0crwdne113662:0</string>
+    <string name="nutrition_cholesterol">crwdns113666:0crwdne113666:0</string>
+    <string name="nutrition_energy">crwdns113670:0crwdne113670:0</string>
+    <string name="nutrition_energy_kcal">crwdns125848:0crwdne125848:0</string>
+    <string name="nutrition_energy_kj">crwdns125850:0crwdne125850:0</string>
+    <string name="nutrition_energy_short_name">crwdns113672:0crwdne113672:0</string>
+    <string name="nutrition_fat">crwdns113674:0crwdne113674:0</string>
+    <string name="nutrition_fiber">crwdns113678:0crwdne113678:0</string>
+    <string name="nutrition_header">crwdns113682:0crwdne113682:0</string>
+    <string name="nutrition_proteins">crwdns113688:0crwdne113688:0</string>
+    <string name="nutrition_salt">crwdns113692:0crwdne113692:0</string>
+    <string name="nutrition_satured_fat">crwdns113696:0crwdne113696:0</string>
+    <string name="nutrition_sodium">crwdns113704:0crwdne113704:0</string>
+    <string name="nutrition_sugars">crwdns113708:0crwdne113708:0</string>
+    <string name="nutrition_trans_fat">crwdns113712:0crwdne113712:0</string>
+    <string name="nutriment_serving_size">crwdns113716:0crwdne113716:0</string>
+    <string name="action_manage_account">crwdns113718:0crwdne113718:0</string>
+    <string name="action_contributes">crwdns113720:0crwdne113720:0</string>
+    <string name="choose_energy_unit">crwdns115714:0crwdne115714:0</string>
+    <string name="energy_pref_title">crwdns115716:0crwdne115716:0</string>
+    <string name="choose_volume_unit">crwdns115718:0crwdne115718:0</string>
+    <string name="volume_pref_title">crwdns115720:0crwdne115720:0</string>
+    <string name="logout_drawer">crwdns113730:0crwdne113730:0</string>
+    <string name="contribution_without_account">crwdns115932:0crwdne115932:0</string>
+    <string name="textCarbonFootprint">crwdns113734:0crwdne113734:0</string>
+    <string name="action_search">crwdns113740:0crwdne113740:0</string>
+    <string name="search_hint">crwdns113742:0crwdne113742:0</string>
+    <string name="number_of_results">crwdns113744:0crwdne113744:0</string>
+    <string name="number_of_products">crwdns113748:0crwdne113748:0</string>
+    <string name="txt_no_matching__category_products">crwdns113754:0crwdne113754:0</string>
+    <string name="txt_no_matching_allergen_products">crwdns113756:0crwdne113756:0</string>
+    <string name="txt_no_matching_label_products">crwdns113758:0crwdne113758:0</string>
+    <string name="txt_no_matching_additive_products">crwdns113760:0crwdne113760:0</string>
+    <string name="txt_no_matching_country_products">crwdns113762:0crwdne113762:0</string>
+    <string name="txt_no_matching_store_products">crwdns113764:0crwdne113764:0</string>
+    <string name="txt_no_matching_packaging_products">crwdns113766:0crwdne113766:0</string>
+    <string name="txt_no_matching_brand_products">crwdns113768:0crwdne113768:0</string>
+    <string name="txt_no_matching_incomplete_products">crwdns113772:0crwdne113772:0</string>
+    <string name="txt_no_matching_contributor_products">crwdns113774:0crwdne113774:0</string>
+    <string name="txt_no_matching_products">crwdns113776:0crwdne113776:0</string>
+    <string name="txt_broaden_search">crwdns113778:0crwdne113778:0</string>
+    <string name="something_went_wrong">crwdns113782:0crwdne113782:0</string>
+    <string name="txt_try_again">crwdns113784:0crwdne113784:0</string>
+    <string name="nutrition_lactose">crwdns113786:0crwdne113786:0</string>
+    <string name="nutrition_casein">crwdns113788:0crwdne113788:0</string>
+    <string name="nutrition_maltodextrins">crwdns113790:0crwdne113790:0</string>
+    <string name="nutrition_serum_proteins">crwdns113792:0crwdne113792:0</string>
+    <string name="nutrition_nucleotides">crwdns113794:0crwdne113794:0</string>
+    <string name="for_100g">crwdns113796:0crwdne113796:0</string>
+    <string name="for_100ml">crwdns117606:0crwdne117606:0</string>
+    <string name="serving">crwdns113798:0crwdne113798:0</string>
+    <string name="nutrition_monounsaturatedFat">crwdns113812:0crwdne113812:0</string>
+    <string name="nutrition_polyunsaturatedFat">crwdns113814:0crwdne113814:0</string>
+    <string name="nutrition_omega3">crwdns113816:0crwdne113816:0</string>
+    <string name="nutrition_omega6">crwdns113818:0crwdne113818:0</string>
+    <string name="nutrition_omega9">crwdns113820:0crwdne113820:0</string>
+    <string name="nutrition_sucrose">crwdns113822:0crwdne113822:0</string>
+    <string name="nutrition_glucose">crwdns113824:0crwdne113824:0</string>
+    <string name="nutrition_fructose">crwdns113826:0crwdne113826:0</string>
+    <string name="nutrition_maltose">crwdns113828:0crwdne113828:0</string>
+    <string name="nutrition_alcohol">crwdns113830:0crwdne113830:0</string>
+    <string name="nutrition_vitamins">crwdns113832:0crwdne113832:0</string>
+    <string name="vitamin_a">crwdns113834:0crwdne113834:0</string>
+    <string name="vitamin_d">crwdns113836:0crwdne113836:0</string>
+    <string name="vitamin_e">crwdns113838:0crwdne113838:0</string>
+    <string name="vitamin_k">crwdns113840:0crwdne113840:0</string>
+    <string name="vitamin_c">crwdns113842:0crwdne113842:0</string>
+    <string name="vitamin_b1">crwdns113844:0crwdne113844:0</string>
+    <string name="vitamin_b2">crwdns113846:0crwdne113846:0</string>
+    <string name="vitamin_pp">crwdns113848:0crwdne113848:0</string>
+    <string name="vitamin_b6">crwdns113850:0crwdne113850:0</string>
+    <string name="vitamin_b9">crwdns113852:0crwdne113852:0</string>
+    <string name="vitamin_b12">crwdns113854:0crwdne113854:0</string>
+    <string name="biotin">crwdns113856:0crwdne113856:0</string>
+    <string name="pantothenic_acid">crwdns113858:0crwdne113858:0</string>
+    <string name="nutrition_minerals">crwdns113860:0crwdne113860:0</string>
+    <string name="silica">crwdns113862:0crwdne113862:0</string>
+    <string name="bicarbonate">crwdns113864:0crwdne113864:0</string>
+    <string name="potassium">crwdns113866:0crwdne113866:0</string>
+    <string name="chloride">crwdns113868:0crwdne113868:0</string>
+    <string name="calcium">crwdns113870:0crwdne113870:0</string>
+    <string name="phosphorus">crwdns113872:0crwdne113872:0</string>
+    <string name="iron">crwdns113874:0crwdne113874:0</string>
+    <string name="magnesium">crwdns113876:0crwdne113876:0</string>
+    <string name="zinc">crwdns113878:0crwdne113878:0</string>
+    <string name="copper">crwdns113880:0crwdne113880:0</string>
+    <string name="manganese">crwdns113882:0crwdne113882:0</string>
+    <string name="fluoride">crwdns113884:0crwdne113884:0</string>
+    <string name="selenium">crwdns113886:0crwdne113886:0</string>
+    <string name="chromium">crwdns113888:0crwdne113888:0</string>
+    <string name="molybdenum">crwdns113890:0crwdne113890:0</string>
+    <string name="iodine">crwdns113892:0crwdne113892:0</string>
+    <string name="caffeine">crwdns113894:0crwdne113894:0</string>
+    <string name="taurine">crwdns113896:0crwdne113896:0</string>
+    <string name="ph">crwdns113898:0crwdne113898:0</string>
+    <string name="fruits_vegetables_nuts">crwdns113900:0crwdne113900:0</string>
+    <string name="collagen_meat_protein_ratio">crwdns113902:0crwdne113902:0</string>
+    <string name="cocoa">crwdns113904:0crwdne113904:0</string>
+    <string name="chlorophyl">crwdns113906:0crwdne113906:0</string>
+    <string name="take_picture">crwdns119446:0crwdne119446:0</string>
+    <string name="choose_picture_from_gallery">crwdns119450:0crwdne119450:0</string>
+    <string name="take_picture_ingredients">crwdns115934:0crwdne115934:0</string>
+    <string name="take_picture_front">crwdns115936:0crwdne115936:0</string>
+    <string name="take_picture_nutrition_table">crwdns115938:0crwdne115938:0</string>
+    <string name="take_more_pictures">crwdns115940:0crwdne115940:0</string>
+    <string name="txtSaturatedFat">crwdns113916:0crwdne113916:0</string>
+    <string name="nutriscore_info_msg">crwdns115388:0crwdne115388:0</string>
+    <string name="nova_info_msg">crwdns115390:0crwdne115390:0</string>
+    <string name="nova_grp1_msg">crwdns113922:0crwdne113922:0</string>
+    <string name="nova_grp2_msg">crwdns113924:0crwdne113924:0</string>
+    <string name="nova_grp3_msg">crwdns113926:0crwdne113926:0</string>
+    <string name="nova_grp4_msg">crwdns113928:0crwdne113928:0</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">crwdns128010:0crwdne128010:0</string>
-    <string name="scan_shortcut_short_label">crwdns128012:0crwdne128012:0</string>
-    <string name="scan_shortcut_long_label">crwdns128014:0crwdne128014:0</string>
-    <string name="barcode_shortcut_short_label">crwdns128016:0crwdne128016:0</string>
-    <string name="barcode_shortcut_long_label">crwdns128018:0crwdne128018:0</string>
-    <string name="history_shortcut_short_label">crwdns128020:0crwdne128020:0</string>
-    <string name="history_shortcut_long_label">crwdns128022:0crwdne128022:0</string>
-    <string name="contributions_shortcut_short_label">crwdns128024:0crwdne128024:0</string>
-    <string name="contributions_shortcut_long_label">crwdns128026:0crwdne128026:0</string>
-    <string name="forgot_password">crwdns128028:0crwdne128028:0</string>
-    <string name="next">crwdns128030:0crwdne128030:0</string>
-    <string name="skip">crwdns128032:0crwdne128032:0</string>
-    <string name="start">crwdns128034:0crwdne128034:0</string>
-    <string name="contact">crwdns128036:0crwdne128036:0</string>
-    <string name="contact_summary">crwdns128038:0crwdne128038:0</string>
-    <string name="email_not_found">crwdns128042:0crwdne128042:0</string>
-    <string name="airplane_mode_active_dialog_title">crwdns128044:0crwdne128044:0</string>
-    <string name="airplane_mode_active_dialog_message">crwdns128046:0crwdne128046:0</string>
-    <string name="airplane_mode_active_dialog_negative">crwdns128048:0crwdne128048:0</string>
-    <string name="airplane_mode_active_dialog_positive">crwdns128050:0crwdne128050:0</string>
-    <string name="device_offline_dialog_title">crwdns128052:0crwdne128052:0</string>
-    <string name="device_offline_dialog_message">crwdns128054:0crwdne128054:0</string>
-    <string name="device_offline_dialog_negative">crwdns128056:0crwdne128056:0</string>
-    <string name="device_offline_dialog_positive">crwdns128058:0crwdne128058:0</string>
-    <string name="scan_first_product">crwdns128060:0crwdne128060:0</string>
-    <string name="preference_delete_search_history">crwdns128062:0crwdne128062:0</string>
-    <string name="preference_enable_mobile_data_title">crwdns128064:0crwdne128064:0</string>
-    <string name="preference_enable_mobile_data_summary_on">crwdns128066:0crwdne128066:0</string>
-    <string name="preference_enable_mobile_data_summary_off">crwdns128068:0crwdne128068:0</string>
-    <string name="device_on_mobile_data_warning_title">crwdns128070:0crwdne128070:0</string>
-    <string name="device_on_mobile_data_warning_message">crwdns128072:0crwdne128072:0</string>
-    <string name="device_on_mobile_data_warning_positive">crwdns128074:0crwdne128074:0</string>
-    <string name="device_on_mobile_data_warning_negative">crwdns128076:0crwdne128076:0</string>
-    <string name="changes_saved">crwdns128078:0crwdne128078:0</string>
-    <string name="preference_choose_language_dialog_title">crwdns128080:0crwdne128080:0</string>
-    <string name="FAQ">crwdns128082:0crwdne128082:0</string>
-    <string name="FrequentlyAskedQuestions">crwdns128084:0crwdne128084:0</string>
-    <string name="translate_help_title">crwdns128086:0crwdne128086:0</string>
-    <string name="translate_help_summary">crwdns128088:0crwdne128088:0</string>
-    <string name="please_check_your_connection">crwdns128090:0crwdne128090:0</string>
-    <string name="advanced_search_title">crwdns128092:0crwdne128092:0</string>
-    <string name="compare_products">crwdns128094:0crwdne128094:0</string>
-    <string name="connectivity_check">crwdns128096:0crwdne128096:0</string>
-    <string name="dismiss">crwdns128098:0crwdne128098:0</string>
-    <string name="Terms">crwdns128100:0crwdne128100:0</string>
-    <string name="TermsOfUse">crwdns128102:0crwdne128102:0</string>
-    <string name="donation_url">crwdns128106:0crwdne128106:0</string>
+    <string name="disabled_message">crwdns115942:0crwdne115942:0</string>
+    <string name="scan_shortcut_short_label">crwdns113932:0crwdne113932:0</string>
+    <string name="scan_shortcut_long_label">crwdns113934:0crwdne113934:0</string>
+    <string name="barcode_shortcut_short_label">crwdns113936:0crwdne113936:0</string>
+    <string name="barcode_shortcut_long_label">crwdns115944:0crwdne115944:0</string>
+    <string name="history_shortcut_short_label">crwdns113940:0crwdne113940:0</string>
+    <string name="history_shortcut_long_label">crwdns113942:0crwdne113942:0</string>
+    <string name="contributions_shortcut_short_label">crwdns113944:0crwdne113944:0</string>
+    <string name="contributions_shortcut_long_label">crwdns113946:0crwdne113946:0</string>
+    <string name="forgot_password">crwdns113948:0crwdne113948:0</string>
+    <string name="next">crwdns113950:0crwdne113950:0</string>
+    <string name="skip">crwdns113952:0crwdne113952:0</string>
+    <string name="start">crwdns113954:0crwdne113954:0</string>
+    <string name="contact">crwdns113956:0crwdne113956:0</string>
+    <string name="contact_summary">crwdns113958:0crwdne113958:0</string>
+    <string name="email_not_found">crwdns113962:0crwdne113962:0</string>
+    <string name="airplane_mode_active_dialog_title">crwdns113964:0crwdne113964:0</string>
+    <string name="airplane_mode_active_dialog_message">crwdns113966:0crwdne113966:0</string>
+    <string name="airplane_mode_active_dialog_negative">crwdns113968:0crwdne113968:0</string>
+    <string name="airplane_mode_active_dialog_positive">crwdns113970:0crwdne113970:0</string>
+    <string name="device_offline_dialog_title">crwdns113972:0crwdne113972:0</string>
+    <string name="device_offline_dialog_message">crwdns113974:0crwdne113974:0</string>
+    <string name="device_offline_dialog_negative">crwdns113976:0crwdne113976:0</string>
+    <string name="device_offline_dialog_positive">crwdns113978:0crwdne113978:0</string>
+    <string name="scan_first_product">crwdns115946:0crwdne115946:0</string>
+    <string name="preference_delete_search_history">crwdns115914:0crwdne115914:0</string>
+    <string name="preference_enable_mobile_data_title">crwdns113984:0crwdne113984:0</string>
+    <string name="preference_enable_mobile_data_summary_on">crwdns113986:0crwdne113986:0</string>
+    <string name="preference_enable_mobile_data_summary_off">crwdns113988:0crwdne113988:0</string>
+    <string name="device_on_mobile_data_warning_title">crwdns113990:0crwdne113990:0</string>
+    <string name="device_on_mobile_data_warning_message">crwdns113992:0crwdne113992:0</string>
+    <string name="device_on_mobile_data_warning_positive">crwdns113994:0crwdne113994:0</string>
+    <string name="device_on_mobile_data_warning_negative">crwdns113996:0crwdne113996:0</string>
+    <string name="changes_saved">crwdns116016:0crwdne116016:0</string>
+    <string name="preference_choose_language_dialog_title">crwdns113998:0crwdne113998:0</string>
+    <string name="FAQ">crwdns114000:0crwdne114000:0</string>
+    <string name="FrequentlyAskedQuestions">crwdns114002:0crwdne114002:0</string>
+    <string name="translate_help_title">crwdns114006:0crwdne114006:0</string>
+    <string name="translate_help_summary">crwdns115948:0crwdne115948:0</string>
+    <string name="please_check_your_connection">crwdns114010:0crwdne114010:0</string>
+    <string name="advanced_search_title">crwdns114014:0crwdne114014:0</string>
+    <string name="compare_products">crwdns115950:0crwdne115950:0</string>
+    <string name="connectivity_check">crwdns114016:0crwdne114016:0</string>
+    <string name="dismiss">crwdns114018:0crwdne114018:0</string>
+    <string name="Terms">crwdns114020:0crwdne114020:0</string>
+    <string name="TermsOfUse">crwdns114022:0crwdne114022:0</string>
+    <string name="donation_url">crwdns115724:0crwdne115724:0</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">crwdns128108:0crwdne128108:0</string>
+    <string name="terms_url">crwdns114024:0crwdne114024:0</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
-    <string name="faq_url">crwdns128110:0crwdne128110:0</string>
+    <string name="faq_url">crwdns114026:0crwdne114026:0</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">crwdns128112:0crwdne128112:0</string>
+    <string name="hunger_game_url">crwdns115744:0crwdne115744:0</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">crwdns128116:0crwdne128116:0</string>
+    <string name="nutriscore_uri">crwdns114144:0crwdne114144:0</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">crwdns128118:0crwdne128118:0</string>
+    <string name="url_nova_groups">crwdns124529:0crwdne124529:0</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">crwdns128120:0crwdne128120:0</string>
-    <string name="preference_header_general">crwdns128122:0crwdne128122:0</string>
-    <string name="preference_header_network">crwdns128124:0crwdne128124:0</string>
-    <string name="preference_header_contributing">crwdns128128:0crwdne128128:0</string>
-    <string name="scan_first_string">crwdns128130:0crwdne128130:0</string>
-    <string name="log_in">crwdns128132:0crwdne128132:0</string>
-    <string name="login_true">crwdns128134:0crwdne128134:0</string>
-    <string name="confirm_logout">crwdns128136:0crwdne128136:0</string>
-    <string name="logout_dialog_content">crwdns128138:0crwdne128138:0</string>
-    <string name="dialog_cancel">crwdns128140:0crwdne128140:0</string>
-    <string name="dialog_create">crwdns128142:0crwdne128142:0</string>
-    <string name="choose_resolution">crwdns128144:0crwdne128144:0</string>
-    <string name="pref_resolution_summary">crwdns128146:0crwdne128146:0</string>
-    <string name="image_upload_resolution">crwdns128148:0crwdne128148:0</string>
-    <string name="wikidata_information">crwdns128150:0crwdne128150:0</string>
-    <string name="wikidata_unavailable">crwdns128152:0crwdne128152:0</string>
-    <string name="Wikipedia">crwdns128154:0crwdne128154:0</string>
-    <string name="Browse_Products">crwdns128156:0crwdne128156:0</string>
-    <string name="brand_string">crwdns128158:0crwdne128158:0</string>
-    <string name="additive_string">crwdns128160:0crwdne128160:0</string>
-    <string name="allergen_string">crwdns128162:0crwdne128162:0</string>
-    <string name="search_string">crwdns128164:0crwdne128164:0</string>
-    <string name="country_string">crwdns128166:0crwdne128166:0</string>
-    <string name="store_subtitle">crwdns128168:0crwdne128168:0</string>
-    <string name="packaging_subtitle">crwdns128170:0crwdne128170:0</string>
-    <string name="packaging_string">crwdns128172:0crwdne128172:0</string>
-    <string name="label_string">crwdns128174:0crwdne128174:0</string>
-    <string name="category_string">crwdns128176:0crwdne128176:0</string>
-    <string name="connection">crwdns128178:0crwdne128178:0</string>
-    <string name="contributor_string">crwdns128180:0crwdne128180:0</string>
-    <string name="Rate_Us">crwdns128182:0crwdne128182:0</string>
-    <string name="Rate_Us_title">crwdns128184:0crwdne128184:0</string>
-    <string name="app_disabled_text">crwdns128186:0crwdne128186:0</string>
+    <string name="url_nutrient_values">crwdns124531:0crwdne124531:0</string>
+    <string name="preference_header_general">crwdns114030:0crwdne114030:0</string>
+    <string name="preference_header_network">crwdns114032:0crwdne114032:0</string>
+    <string name="preference_header_contributing">crwdns114036:0crwdne114036:0</string>
+    <string name="scan_first_string">crwdns114040:0crwdne114040:0</string>
+    <string name="log_in">crwdns114042:0crwdne114042:0</string>
+    <string name="login_true">crwdns115954:0crwdne115954:0</string>
+    <string name="confirm_logout">crwdns115956:0crwdne115956:0</string>
+    <string name="logout_dialog_content">crwdns115958:0crwdne115958:0</string>
+    <string name="dialog_cancel">crwdns114050:0crwdne114050:0</string>
+    <string name="dialog_create">crwdns115392:0crwdne115392:0</string>
+    <string name="choose_resolution">crwdns115960:0crwdne115960:0</string>
+    <string name="pref_resolution_summary">crwdns114054:0crwdne114054:0</string>
+    <string name="image_upload_resolution">crwdns114056:0crwdne114056:0</string>
+    <string name="wikidata_information">crwdns114060:0crwdne114060:0</string>
+    <string name="wikidata_unavailable">crwdns114062:0crwdne114062:0</string>
+    <string name="Wikipedia">crwdns114068:0crwdne114068:0</string>
+    <string name="Browse_Products">crwdns114070:0crwdne114070:0</string>
+    <string name="brand_string">crwdns114074:0crwdne114074:0</string>
+    <string name="additive_string">crwdns114076:0crwdne114076:0</string>
+    <string name="allergen_string">crwdns114078:0crwdne114078:0</string>
+    <string name="search_string">crwdns114080:0crwdne114080:0</string>
+    <string name="country_string">crwdns114082:0crwdne114082:0</string>
+    <string name="store_subtitle">crwdns114084:0crwdne114084:0</string>
+    <string name="packaging_subtitle">crwdns114086:0crwdne114086:0</string>
+    <string name="packaging_string">crwdns114092:0crwdne114092:0</string>
+    <string name="label_string">crwdns114094:0crwdne114094:0</string>
+    <string name="category_string">crwdns114096:0crwdne114096:0</string>
+    <string name="connection">crwdns114098:0crwdne114098:0</string>
+    <string name="contributor_string">crwdns114100:0crwdne114100:0</string>
+    <string name="Rate_Us">crwdns114102:0crwdne114102:0</string>
+    <string name="Rate_Us_title">crwdns114104:0crwdne114104:0</string>
+    <string name="app_disabled_text">crwdns114106:0crwdne114106:0</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
-    <string name="vitamin_tags_text">crwdns128188:0crwdne128188:0</string>
-    <string name="amino_acid_tags_text">crwdns128190:0crwdne128190:0</string>
-    <string name="mineral_tags_text">crwdns128192:0crwdne128192:0</string>
-    <string name="other_tags_text">crwdns128194:0crwdne128194:0</string>
+    <string name="vitamin_tags_text">crwdns114108:0crwdne114108:0</string>
+    <string name="amino_acid_tags_text">crwdns114110:0crwdne114110:0</string>
+    <string name="mineral_tags_text">crwdns114112:0crwdne114112:0</string>
+    <string name="other_tags_text">crwdns114114:0crwdne114114:0</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">crwdns128198:0crwdne128198:0</string>
-    <string name="DisableLoadTitle">crwdns128200:0crwdne128200:0</string>
-    <string name="by_title">crwdns128202:0crwdne128202:0</string>
-    <string name="by_brand">crwdns128204:0crwdne128204:0</string>
-    <string name="by_barcode">crwdns128206:0crwdne128206:0</string>
-    <string name="by_time">crwdns128208:0crwdne128208:0</string>
-    <string name="sort">crwdns128210:0crwdne128210:0</string>
-    <string name="by_nutrition_grade">crwdns128212:0crwdne128212:0</string>
-    <string name="sort_by">crwdns128214:0crwdne128214:0</string>
-    <string name="shake_summary">crwdns128216:0crwdne128216:0</string>
-    <string name="shake_title">crwdns128218:0crwdne128218:0</string>
+    <string name="disable_image_loading">crwdns115962:0crwdne115962:0</string>
+    <string name="DisableLoadTitle">crwdns115964:0crwdne115964:0</string>
+    <string name="by_title">crwdns114130:0crwdne114130:0</string>
+    <string name="by_brand">crwdns114132:0crwdne114132:0</string>
+    <string name="by_barcode">crwdns114134:0crwdne114134:0</string>
+    <string name="by_time">crwdns114136:0crwdne114136:0</string>
+    <string name="sort">crwdns114138:0crwdne114138:0</string>
+    <string name="by_nutrition_grade">crwdns114140:0crwdne114140:0</string>
+    <string name="sort_by">crwdns115966:0crwdne115966:0</string>
+    <string name="shake_summary">crwdns114146:0crwdne114146:0</string>
+    <string name="shake_title">crwdns114148:0crwdne114148:0</string>
     <!-- strings related to share images -->
-    <string name="sorry_msg">crwdns128220:0crwdne128220:0</string>
-    <string name="no_barcode">crwdns128222:0crwdne128222:0</string>
-    <string name="enter_barcode">crwdns128224:0crwdne128224:0</string>
-    <string name="format_error">crwdns128226:0crwdne128226:0</string>
-    <string name="code_detected">crwdns128228:0crwdne128228:0</string>
-    <string name="do_you_want_to">crwdns128230:0crwdne128230:0</string>
-    <string name="bottomNav_history">crwdns128232:0crwdne128232:0</string>
-    <string name="products_added">crwdns128234:0crwdne128234:0</string>
-    <string name="products_incomplete">crwdns128236:0crwdne128236:0</string>
-    <string name="product_pictures_contributed">crwdns128238:0crwdne128238:0</string>
-    <string name="picture_contributed_incomplete">crwdns128240:0crwdne128240:0</string>
-    <string name="product_info_added">crwdns128242:0crwdne128242:0</string>
-    <string name="product_info_tocomplete">crwdns128244:0crwdne128244:0</string>
-    <string name="show_by">crwdns128246:0crwdne128246:0</string>
-    <string name="notify_title">crwdns128248:0crwdne128248:0</string>
-    <string name="notify_content">crwdns128250:0crwdne128250:0</string>
-    <string name="notification_channel_name">crwdns128252:0crwdne128252:0</string>
-    <string name="notify_channel_description">crwdns128254:0crwdne128254:0</string>
-    <string name="products_to_be_completed">crwdns128256:0crwdne128256:0</string>
-    <string name="offline_notification_title">crwdns128258:0crwdne128258:0</string>
-    <string name="creator_history">crwdns128260:0%1$scrwdnd128260:0%2$scrwdnd128260:0%3$scrwdne128260:0</string>
-    <string name="last_editor_history">crwdns128262:0%1$scrwdnd128262:0%2$scrwdnd128262:0%3$scrwdne128262:0</string>
-    <string name="other_editors">crwdns128264:0crwdne128264:0</string>
-    <string name="contribution_tab">crwdns128266:0crwdne128266:0</string>
-    <string name="contribution_tab_summary">crwdns128268:0crwdne128268:0</string>
-    <string name="contribution_tab_title">crwdns128270:0crwdne128270:0</string>
-    <string name="txtDialogsTitle">crwdns128272:0crwdne128272:0</string>
-    <string name="preference_show_all_product_photos_title">crwdns128274:0crwdne128274:0</string>
-    <string name="preference_show_all_product_photos_summary">crwdns128276:0crwdne128276:0</string>
-    <string name="offline_product_addition_title">crwdns128278:0crwdne128278:0</string>
-    <string name="productNameNull">crwdns128280:0crwdne128280:0</string>
+    <string name="sorry_msg">crwdns114150:0crwdne114150:0</string>
+    <string name="no_barcode">crwdns114152:0crwdne114152:0</string>
+    <string name="enter_barcode">crwdns114154:0crwdne114154:0</string>
+    <string name="format_error">crwdns114156:0crwdne114156:0</string>
+    <string name="code_detected">crwdns114158:0crwdne114158:0</string>
+    <string name="do_you_want_to">crwdns114160:0crwdne114160:0</string>
+    <string name="bottomNav_history">crwdns114162:0crwdne114162:0</string>
+    <string name="products_added">crwdns114166:0crwdne114166:0</string>
+    <string name="products_incomplete">crwdns114168:0crwdne114168:0</string>
+    <string name="product_pictures_contributed">crwdns114170:0crwdne114170:0</string>
+    <string name="picture_contributed_incomplete">crwdns114172:0crwdne114172:0</string>
+    <string name="product_info_added">crwdns114174:0crwdne114174:0</string>
+    <string name="product_info_tocomplete">crwdns114176:0crwdne114176:0</string>
+    <string name="show_by">crwdns114178:0crwdne114178:0</string>
+    <string name="notify_title">crwdns114180:0crwdne114180:0</string>
+    <string name="notify_content">crwdns114182:0crwdne114182:0</string>
+    <string name="notification_channel_name">crwdns114184:0crwdne114184:0</string>
+    <string name="notify_channel_description">crwdns114186:0crwdne114186:0</string>
+    <string name="products_to_be_completed">crwdns114188:0crwdne114188:0</string>
+    <string name="offline_notification_title">crwdns114192:0crwdne114192:0</string>
+    <string name="creator_history">crwdns122944:0%1$scrwdnd122944:0%2$scrwdnd122944:0%3$scrwdne122944:0</string>
+    <string name="last_editor_history">crwdns122946:0%1$scrwdnd122946:0%2$scrwdnd122946:0%3$scrwdne122946:0</string>
+    <string name="other_editors">crwdns114198:0crwdne114198:0</string>
+    <string name="contribution_tab">crwdns114200:0crwdne114200:0</string>
+    <string name="contribution_tab_summary">crwdns114202:0crwdne114202:0</string>
+    <string name="contribution_tab_title">crwdns114204:0crwdne114204:0</string>
+    <string name="txtDialogsTitle">crwdns114208:0crwdne114208:0</string>
+    <string name="preference_show_all_product_photos_title">crwdns114210:0crwdne114210:0</string>
+    <string name="preference_show_all_product_photos_summary">crwdns114212:0crwdne114212:0</string>
+    <string name="offline_product_addition_title">crwdns114214:0crwdne114214:0</string>
+    <string name="productNameNull">crwdns114216:0crwdne114216:0</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">crwdns128282:0%1$dcrwdne128282:0</string>
+    <string name="productAdditivesTemplate">crwdns119454:0%1$dcrwdne119454:0</string>
     <plurals name="productAdditives">
-        <item quantity="one">crwdns128284:1%dcrwdne128284:1</item>
-        <item quantity="other">crwdns128284:5%dcrwdne128284:5</item>
+        <item quantity="one">crwdns119590:1%dcrwdne119590:1</item>
+        <item quantity="other">crwdns119590:5%dcrwdne119590:5</item>
     </plurals>
-    <string name="product_not_complete">crwdns128286:0crwdne128286:0</string>
-    <string name="addProductOffline">crwdns128288:0%scrwdne128288:0</string>
-    <string name="product_not_found">crwdns128290:0%1$scrwdne128290:0</string>
-    <string name="scan_sound">crwdns128292:0crwdne128292:0</string>
-    <string name="trouble_scanning">crwdns128294:0crwdne128294:0</string>
-    <string name="barcode_hint">crwdns128296:0crwdne128296:0</string>
-    <string name="switch_camera">crwdns128298:0crwdne128298:0</string>
-    <string name="autofocus">crwdns128300:0crwdne128300:0</string>
-    <string name="initial_loading">crwdns128302:0crwdne128302:0</string>
-    <string name="preferences">crwdns128304:0crwdne128304:0</string>
-    <string name="OFFlogo">crwdns128306:0crwdne128306:0</string>
-    <string name="loading_product">crwdns128308:0%scrwdne128308:0</string>
-    <string name="image_not_defined_for_language">crwdns128310:0crwdne128310:0</string>
-    <string name="error_adding_ingredients">crwdns128312:0crwdne128312:0</string>
-    <string name="unable_to_extract_ingredients">crwdns128314:0crwdne128314:0</string>
-    <string name="error_adding_nutrition_facts">crwdns128316:0crwdne128316:0</string>
-    <string name="error_in_carbohydrate_value">crwdns128318:0crwdne128318:0</string>
-    <string name="choose_nutrient">crwdns128320:0crwdne128320:0</string>
-    <string name="error_adding_product_details">crwdns128322:0crwdne128322:0</string>
-    <string name="hint_product_URL">crwdns128324:0crwdne128324:0</string>
-    <string name="product_language">crwdns128326:0crwdne128326:0</string>
-    <string name="hint_emb_codes">crwdns128328:0crwdne128328:0</string>
-    <string name="official_website">crwdns128330:0crwdne128330:0</string>
-    <string name="scan_QR_code">crwdns128332:0crwdne128332:0</string>
-    <string name="add_at_least_one_picture">crwdns128334:0crwdne128334:0</string>
-    <string name="image_uploaded_successfully">crwdns128336:0crwdne128336:0</string>
-    <string name="error_adding_product_photos">crwdns128338:0crwdne128338:0</string>
-    <string name="ingredients_overwrite">crwdns128340:0crwdne128340:0</string>
-    <string name="choose_mine">crwdns128342:0crwdne128342:0</string>
-    <string name="keep_previous_version">crwdns128344:0crwdne128344:0</string>
-    <string name="product_name_overwrite">crwdns128346:0crwdne128346:0</string>
-    <string name="yours">crwdns128348:0crwdne128348:0</string>
-    <string name="currently_on">crwdns128350:0%scrwdne128350:0</string>
-    <string name="quantity_overwrite">crwdns128352:0crwdne128352:0</string>
-    <string name="link_overwrite">crwdns128354:0crwdne128354:0</string>
-    <string name="save_product">crwdns128356:0crwdne128356:0</string>
-    <string name="error_adding_product">crwdns128358:0crwdne128358:0</string>
-    <string name="photos">crwdns128360:0crwdne128360:0</string>
-    <string name="please_wait">crwdns128362:0crwdne128362:0</string>
-    <string name="product_uploaded_successfully">crwdns128364:0crwdne128364:0</string>
-    <string name="no_internet_connection">crwdns128366:0crwdne128366:0</string>
-    <string name="no_internet_unable_to_extract_ingredients">crwdns128368:0crwdne128368:0</string>
-    <string name="percent">crwdns128370:0%1$dcrwdnd128370:0%%crwdne128370:0</string>
-    <string name="overview">crwdns128372:0crwdne128372:0</string>
-    <string name="ingredients">crwdns128374:0crwdne128374:0</string>
-    <string name="nutrition_facts">crwdns128376:0crwdne128376:0</string>
-    <string name="your_version">crwdns128378:0crwdne128378:0</string>
-    <string name="ingredients_picture">crwdns128380:0crwdne128380:0</string>
-    <string name="take_ingredients_picture_to_extract">crwdns128382:0crwdne128382:0</string>
-    <string name="ingredients_list">crwdns128384:0crwdne128384:0</string>
-    <string name="ingredients_hint">crwdns128386:0crwdne128386:0</string>
-    <string name="extract_ingredients">crwdns128388:0crwdne128388:0</string>
-    <string name="extracting_ingredients">crwdns128390:0crwdne128390:0</string>
-    <string name="looksGood">crwdns128392:0crwdne128392:0</string>
-    <string name="skip_ingredients">crwdns128394:0crwdne128394:0</string>
-    <string name="traces">crwdns128396:0crwdne128396:0</string>
-    <string name="traces_hint">crwdns128398:0crwdne128398:0</string>
-    <string name="nutrition_facts_not_specified">crwdns128400:0crwdne128400:0</string>
-    <string name="nutrition_facts_picture">crwdns128402:0crwdne128402:0</string>
-    <string name="front_short_picture">crwdns128404:0crwdne128404:0</string>
-    <string name="other_picture">crwdns128406:0crwdne128406:0</string>
-    <string name="for_100g_100ml">crwdns128408:0crwdne128408:0</string>
-    <string name="per_serving">crwdns128410:0crwdne128410:0</string>
-    <string name="serving_size">crwdns128412:0crwdne128412:0</string>
-    <string name="alcohol_unit" formatted="false">crwdns128414:0crwdne128414:0</string>
-    <string name="add_a_nutrient">crwdns128416:0crwdne128416:0</string>
-    <string name="add_this_product">crwdns128418:0crwdne128418:0</string>
-    <string name="product_picture">crwdns128420:0crwdne128420:0</string>
-    <string name="one_photo_compulsory">crwdns128422:0crwdne128422:0</string>
-    <string name="product_details">crwdns128424:0crwdne128424:0</string>
-    <string name="product_name">crwdns128426:0crwdne128426:0</string>
-    <string name="quantity">crwdns128428:0crwdne128428:0</string>
-    <string name="labels">crwdns128430:0crwdne128430:0</string>
-    <string name="period_of_time_after_opening">crwdns128432:0crwdne128432:0</string>
-    <string name="manufacturing_details">crwdns128434:0crwdne128434:0</string>
-    <string name="origin_of_ingredients">crwdns128436:0crwdne128436:0</string>
-    <string name="manufacturing_place">crwdns128438:0crwdne128438:0</string>
-    <string name="emb_code">crwdns128440:0crwdne128440:0</string>
-    <string name="purchasing_details">crwdns128442:0crwdne128442:0</string>
-    <string name="country_where_purchased">crwdns128444:0crwdne128444:0</string>
-    <string name="stores">crwdns128446:0crwdne128446:0</string>
-    <string name="additional_pictures">crwdns128448:0crwdne128448:0</string>
-    <string name="hint_product_pictures">crwdns128450:0crwdne128450:0</string>
-    <string name="uploading_image">crwdns128452:0crwdne128452:0</string>
-    <string name="uploading_nutrition_image">crwdns128454:0crwdne128454:0</string>
-    <string name="uploading_ingredients_image">crwdns128456:0crwdne128456:0</string>
-    <string name="uploading_front_image">crwdns128458:0crwdne128458:0</string>
-    <string name="edit_front_image">crwdns128460:0crwdne128460:0</string>
-    <string name="edit_nutrition_image">crwdns128462:0crwdne128462:0</string>
-    <string name="edit_ingredients_image">crwdns128464:0crwdne128464:0</string>
-    <string name="edit_other_image">crwdns128466:0crwdne128466:0</string>
-    <string name="sign_in_to_edit">crwdns128468:0crwdne128468:0</string>
-    <string name="sign_in_to_answer">crwdns128470:0crwdne128470:0</string>
-    <string name="hint_quantity">crwdns128472:0crwdne128472:0</string>
-    <string name="edit_product_title">crwdns128474:0crwdne128474:0</string>
-    <string name="nutrient_already_added">crwdns128476:0%scrwdne128476:0</string>
-    <string name="save_edits">crwdns128478:0crwdne128478:0</string>
-    <string name="contribution_by">crwdns128480:0crwdne128480:0</string>
-    <string name="title_activity_product">crwdns128482:0crwdne128482:0</string>
-    <string name="description_activity_product">crwdns128484:0crwdne128484:0</string>
-    <string name="intent_filter_share_label">crwdns128486:0crwdne128486:0</string>
+    <string name="product_not_complete">crwdns114222:0crwdne114222:0</string>
+    <string name="addProductOffline">crwdns114224:0%scrwdne114224:0</string>
+    <string name="product_not_found">crwdns114226:0%1$scrwdne114226:0</string>
+    <string name="scan_sound">crwdns114228:0crwdne114228:0</string>
+    <string name="trouble_scanning">crwdns114230:0crwdne114230:0</string>
+    <string name="barcode_hint">crwdns114232:0crwdne114232:0</string>
+    <string name="switch_camera">crwdns114234:0crwdne114234:0</string>
+    <string name="autofocus">crwdns114236:0crwdne114236:0</string>
+    <string name="initial_loading">crwdns114238:0crwdne114238:0</string>
+    <string name="preferences">crwdns114240:0crwdne114240:0</string>
+    <string name="OFFlogo">crwdns114242:0crwdne114242:0</string>
+    <string name="loading_product">crwdns114244:0%scrwdne114244:0</string>
+    <string name="image_not_defined_for_language">crwdns119456:0crwdne119456:0</string>
+    <string name="error_adding_ingredients">crwdns114246:0crwdne114246:0</string>
+    <string name="unable_to_extract_ingredients">crwdns114248:0crwdne114248:0</string>
+    <string name="error_adding_nutrition_facts">crwdns114250:0crwdne114250:0</string>
+    <string name="error_in_carbohydrate_value">crwdns115726:0crwdne115726:0</string>
+    <string name="choose_nutrient">crwdns114254:0crwdne114254:0</string>
+    <string name="error_adding_product_details">crwdns114256:0crwdne114256:0</string>
+    <string name="hint_product_URL">crwdns114258:0crwdne114258:0</string>
+    <string name="product_language">crwdns114260:0crwdne114260:0</string>
+    <string name="hint_emb_codes">crwdns114262:0crwdne114262:0</string>
+    <string name="official_website">crwdns114264:0crwdne114264:0</string>
+    <string name="scan_QR_code">crwdns114266:0crwdne114266:0</string>
+    <string name="add_at_least_one_picture">crwdns114268:0crwdne114268:0</string>
+    <string name="image_uploaded_successfully">crwdns114270:0crwdne114270:0</string>
+    <string name="error_adding_product_photos">crwdns114272:0crwdne114272:0</string>
+    <string name="ingredients_overwrite">crwdns114274:0crwdne114274:0</string>
+    <string name="choose_mine">crwdns114276:0crwdne114276:0</string>
+    <string name="keep_previous_version">crwdns114278:0crwdne114278:0</string>
+    <string name="product_name_overwrite">crwdns114280:0crwdne114280:0</string>
+    <string name="yours">crwdns114282:0crwdne114282:0</string>
+    <string name="currently_on">crwdns114284:0%scrwdne114284:0</string>
+    <string name="quantity_overwrite">crwdns114286:0crwdne114286:0</string>
+    <string name="link_overwrite">crwdns114288:0crwdne114288:0</string>
+    <string name="save_product">crwdns114290:0crwdne114290:0</string>
+    <string name="error_adding_product">crwdns115728:0crwdne115728:0</string>
+    <string name="photos">crwdns114294:0crwdne114294:0</string>
+    <string name="please_wait">crwdns114296:0crwdne114296:0</string>
+    <string name="product_uploaded_successfully">crwdns114298:0crwdne114298:0</string>
+    <string name="no_internet_connection">crwdns114300:0crwdne114300:0</string>
+    <string name="no_internet_unable_to_extract_ingredients">crwdns114302:0crwdne114302:0</string>
+    <string name="percent">crwdns114304:0%1$dcrwdnd114304:0%%crwdne114304:0</string>
+    <string name="overview">crwdns114306:0crwdne114306:0</string>
+    <string name="ingredients">crwdns114308:0crwdne114308:0</string>
+    <string name="nutrition_facts">crwdns114310:0crwdne114310:0</string>
+    <string name="your_version">crwdns114312:0crwdne114312:0</string>
+    <string name="ingredients_picture">crwdns114314:0crwdne114314:0</string>
+    <string name="take_ingredients_picture_to_extract">crwdns114316:0crwdne114316:0</string>
+    <string name="ingredients_list">crwdns114318:0crwdne114318:0</string>
+    <string name="ingredients_hint">crwdns114320:0crwdne114320:0</string>
+    <string name="extract_ingredients">crwdns114322:0crwdne114322:0</string>
+    <string name="extracting_ingredients">crwdns114324:0crwdne114324:0</string>
+    <string name="looksGood">crwdns114326:0crwdne114326:0</string>
+    <string name="skip_ingredients">crwdns114328:0crwdne114328:0</string>
+    <string name="traces">crwdns114330:0crwdne114330:0</string>
+    <string name="traces_hint">crwdns114332:0crwdne114332:0</string>
+    <string name="nutrition_facts_not_specified">crwdns114334:0crwdne114334:0</string>
+    <string name="nutrition_facts_picture">crwdns114336:0crwdne114336:0</string>
+    <string name="front_short_picture">crwdns119460:0crwdne119460:0</string>
+    <string name="other_picture">crwdns119462:0crwdne119462:0</string>
+    <string name="for_100g_100ml">crwdns114338:0crwdne114338:0</string>
+    <string name="per_serving">crwdns115968:0crwdne115968:0</string>
+    <string name="serving_size">crwdns114342:0crwdne114342:0</string>
+    <string name="alcohol_unit" formatted="false">crwdns114344:0crwdne114344:0</string>
+    <string name="add_a_nutrient">crwdns114346:0crwdne114346:0</string>
+    <string name="add_this_product">crwdns114348:0crwdne114348:0</string>
+    <string name="product_picture">crwdns114350:0crwdne114350:0</string>
+    <string name="one_photo_compulsory">crwdns114352:0crwdne114352:0</string>
+    <string name="product_details">crwdns114354:0crwdne114354:0</string>
+    <string name="product_name">crwdns114356:0crwdne114356:0</string>
+    <string name="quantity">crwdns114358:0crwdne114358:0</string>
+    <string name="labels">crwdns114360:0crwdne114360:0</string>
+    <string name="period_of_time_after_opening">crwdns114362:0crwdne114362:0</string>
+    <string name="manufacturing_details">crwdns114364:0crwdne114364:0</string>
+    <string name="origin_of_ingredients">crwdns114366:0crwdne114366:0</string>
+    <string name="manufacturing_place">crwdns114368:0crwdne114368:0</string>
+    <string name="emb_code">crwdns114370:0crwdne114370:0</string>
+    <string name="purchasing_details">crwdns114372:0crwdne114372:0</string>
+    <string name="country_where_purchased">crwdns115970:0crwdne115970:0</string>
+    <string name="stores">crwdns114376:0crwdne114376:0</string>
+    <string name="additional_pictures">crwdns114378:0crwdne114378:0</string>
+    <string name="hint_product_pictures">crwdns114380:0crwdne114380:0</string>
+    <string name="uploading_image">crwdns119464:0crwdne119464:0</string>
+    <string name="uploading_nutrition_image">crwdns115972:0crwdne115972:0</string>
+    <string name="uploading_ingredients_image">crwdns115974:0crwdne115974:0</string>
+    <string name="uploading_front_image">crwdns115976:0crwdne115976:0</string>
+    <string name="edit_front_image">crwdns119466:0crwdne119466:0</string>
+    <string name="edit_nutrition_image">crwdns119468:0crwdne119468:0</string>
+    <string name="edit_ingredients_image">crwdns119470:0crwdne119470:0</string>
+    <string name="edit_other_image">crwdns119472:0crwdne119472:0</string>
+    <string name="sign_in_to_edit">crwdns114392:0crwdne114392:0</string>
+    <string name="hint_quantity">crwdns114394:0crwdne114394:0</string>
+    <string name="edit_product_title">crwdns114396:0crwdne114396:0</string>
+    <string name="nutrient_already_added">crwdns114400:0%scrwdne114400:0</string>
+    <string name="save_edits">crwdns114402:0crwdne114402:0</string>
+    <string name="contribution_by">crwdns115730:0crwdne115730:0</string>
+    <string name="title_activity_product">crwdns114406:0crwdne114406:0</string>
+    <string name="description_activity_product">crwdns114408:0crwdne114408:0</string>
+    <string name="intent_filter_share_label">crwdns114410:0crwdne114410:0</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">crwdns128488:0crwdne128488:0</string>
-    <string name="overexposure_moderate">crwdns128490:0crwdne128490:0</string>
-    <string name="infants">crwdns128492:0crwdne128492:0</string>
-    <string name="infants_age">crwdns128494:0crwdne128494:0</string>
-    <string name="toddlers">crwdns128496:0crwdne128496:0</string>
-    <string name="toddlers_age">crwdns128498:0crwdne128498:0</string>
-    <string name="children">crwdns128500:0crwdne128500:0</string>
-    <string name="children_age">crwdns128502:0crwdne128502:0</string>
-    <string name="adolescents">crwdns128504:0crwdne128504:0</string>
-    <string name="adolescents_age">crwdns128506:0crwdne128506:0</string>
-    <string name="adults">crwdns128508:0crwdne128508:0</string>
-    <string name="adults_age">crwdns128510:0crwdne128510:0</string>
-    <string name="elderly">crwdns128512:0crwdne128512:0</string>
-    <string name="elderly_age">crwdns128514:0crwdne128514:0</string>
-    <string name="most_people">crwdns128516:0crwdne128516:0</string>
-    <string name="some_people">crwdns128518:0crwdne128518:0</string>
-    <string name="safety_and_exposure_assessment">crwdns128520:0crwdne128520:0</string>
-    <string name="risk_of_exposure">crwdns128522:0crwdne128522:0</string>
-    <string name="efsa_warning_high_risk">crwdns128524:0%1$scrwdne128524:0</string>
-    <string name="legend_noael">crwdns128526:0crwdne128526:0</string>
-    <string name="legend_adi">crwdns128528:0crwdne128528:0</string>
-    <string name="max_energy_val_msg">crwdns128530:0crwdne128530:0</string>
-    <string name="max_nutrient_val_msg">crwdns128532:0crwdne128532:0</string>
-    <string name="update_image">crwdns128534:0crwdne128534:0</string>
+    <string name="overexposure_high">crwdns114412:0crwdne114412:0</string>
+    <string name="overexposure_moderate">crwdns114414:0crwdne114414:0</string>
+    <string name="infants">crwdns114416:0crwdne114416:0</string>
+    <string name="infants_age">crwdns114418:0crwdne114418:0</string>
+    <string name="toddlers">crwdns114420:0crwdne114420:0</string>
+    <string name="toddlers_age">crwdns114422:0crwdne114422:0</string>
+    <string name="children">crwdns114424:0crwdne114424:0</string>
+    <string name="children_age">crwdns114426:0crwdne114426:0</string>
+    <string name="adolescents">crwdns114428:0crwdne114428:0</string>
+    <string name="adolescents_age">crwdns114430:0crwdne114430:0</string>
+    <string name="adults">crwdns114432:0crwdne114432:0</string>
+    <string name="adults_age">crwdns114434:0crwdne114434:0</string>
+    <string name="elderly">crwdns114436:0crwdne114436:0</string>
+    <string name="elderly_age">crwdns114438:0crwdne114438:0</string>
+    <string name="most_people">crwdns114440:0crwdne114440:0</string>
+    <string name="some_people">crwdns114442:0crwdne114442:0</string>
+    <string name="safety_and_exposure_assessment">crwdns114444:0crwdne114444:0</string>
+    <string name="risk_of_exposure">crwdns114446:0crwdne114446:0</string>
+    <string name="efsa_warning_high_risk">crwdns114450:0%1$scrwdne114450:0</string>
+    <string name="legend_noael">crwdns114452:0crwdne114452:0</string>
+    <string name="legend_adi">crwdns114454:0crwdne114454:0</string>
+    <string name="max_energy_val_msg">crwdns114456:0crwdne114456:0</string>
+    <string name="max_nutrient_val_msg">crwdns114458:0crwdne114458:0</string>
+    <string name="update_image">crwdns114460:0crwdne114460:0</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="extract_ingredients_prompt">crwdns128536:0crwdne128536:0</string>
-    <string name="add_nutrient_prompt_text">crwdns128538:0crwdne128538:0</string>
-    <string name="add_category_prompt_text">crwdns128540:0crwdne128540:0</string>
-    <string name="add_nutrient_category_prompt_text">crwdns128542:0crwdne128542:0</string>
-    <string name="category_game_btn">crwdns128544:0crwdne128544:0</string>
-    <string name="version_string">crwdns128546:0crwdne128546:0</string>
-    <string name="version">crwdns128548:0crwdne128548:0</string>
-    <string name="set_ingredient_img">crwdns128550:0crwdne128550:0</string>
-    <string name="set_img_nutrients">crwdns128552:0crwdne128552:0</string>
-    <string name="set_img_front">crwdns128554:0crwdne128554:0</string>
-    <string name="report_img">crwdns128556:0crwdne128556:0</string>
-    <string name="detected_ingredients">crwdns128558:0crwdne128558:0</string>
-    <string name="txtConnectionError">crwdns128560:0crwdne128560:0</string>
-    <string name="set_image_name">crwdns128562:0crwdne128562:0</string>
-    <string name="fast_addition_mode_title">crwdns128564:0crwdne128564:0</string>
-    <string name="fast_addition_mode">crwdns128566:0crwdne128566:0</string>
-    <string name="crop_new_image_title">crwdns128568:0crwdne128568:0</string>
-    <string name="crop_new_image">crwdns128570:0crwdne128570:0</string>
-    <string name="addtive_search">crwdns128572:0crwdne128572:0</string>
-    <string name="additives">crwdns128574:0crwdne128574:0</string>
+    <string name="extract_ingredients_prompt">crwdns114488:0crwdne114488:0</string>
+    <string name="add_nutrient_prompt_text">crwdns114490:0crwdne114490:0</string>
+    <string name="add_category_prompt_text">crwdns114492:0crwdne114492:0</string>
+    <string name="add_nutrient_category_prompt_text">crwdns114494:0crwdne114494:0</string>
+    <string name="category_game_btn">crwdns114502:0crwdne114502:0</string>
+    <string name="version_string">crwdns115978:0crwdne115978:0</string>
+    <string name="version">crwdns114506:0crwdne114506:0</string>
+    <string name="set_ingredient_img">crwdns114524:0crwdne114524:0</string>
+    <string name="set_img_nutrients">crwdns114526:0crwdne114526:0</string>
+    <string name="set_img_front">crwdns114528:0crwdne114528:0</string>
+    <string name="report_img">crwdns114530:0crwdne114530:0</string>
+    <string name="detected_ingredients">crwdns114532:0crwdne114532:0</string>
+    <string name="txtConnectionError">crwdns115568:0crwdne115568:0</string>
+    <string name="set_image_name">crwdns114534:0crwdne114534:0</string>
+    <string name="fast_addition_mode_title">crwdns114540:0crwdne114540:0</string>
+    <string name="fast_addition_mode">crwdns114542:0crwdne114542:0</string>
+    <string name="crop_new_image_title">crwdns119474:0crwdne119474:0</string>
+    <string name="crop_new_image">crwdns119476:0crwdne119476:0</string>
+    <string name="addtive_search">crwdns114544:0crwdne114544:0</string>
+    <string name="additives">crwdns114546:0crwdne114546:0</string>
     <!--used for product_lists implementation-->
-    <string name="add_to_product_lists">crwdns128576:0crwdne128576:0</string>
-    <string name="txt_create_new_list">crwdns128578:0crwdne128578:0</string>
-    <string name="txt_add_to_new_list">crwdns128580:0crwdne128580:0</string>
-    <string name="create_new_list_list_name">crwdns128582:0crwdne128582:0</string>
-    <string name="txt_eaten_products">crwdns128584:0crwdne128584:0</string>
-    <string name="txt_products_to_buy">crwdns128586:0crwdne128586:0</string>
-    <string name="txt_exporting_your_listed_products">crwdns128588:0crwdne128588:0</string>
-    <string name="txt_your_listed_products_exported">crwdns128590:0crwdne128590:0</string>
-    <string name="txt_discard">crwdns128592:0crwdne128592:0</string>
-    <string name="txt_info_eaten_products">crwdns128594:0crwdne128594:0</string>
-    <string name="txt_info_your_listed_products">crwdns128596:0crwdne128596:0</string>
-    <string name="search_history_pref_title">crwdns128598:0crwdne128598:0</string>
-    <string name="search_history_pref_summary">crwdns128600:0crwdne128600:0</string>
-    <string name="search_history_pref_dialog_content">crwdns128602:0crwdne128602:0</string>
-    <string name="settings_country_dialog_title">crwdns128604:0crwdne128604:0</string>
-    <string name="settings_country_summary">crwdns128606:0crwdne128606:0</string>
-    <string name="settings_country_title">crwdns128608:0crwdne128608:0</string>
-    <string name="txt_no_nutrition_data">crwdns128610:0crwdne128610:0</string>
-    <string name="image_prompt_language">crwdns128612:0crwdne128612:0</string>
+    <string name="add_to_product_lists">crwdns115394:0crwdne115394:0</string>
+    <string name="txt_create_new_list">crwdns115396:0crwdne115396:0</string>
+    <string name="txt_add_to_new_list">crwdns115398:0crwdne115398:0</string>
+    <string name="create_new_list_list_name">crwdns115736:0crwdne115736:0</string>
+    <string name="txt_eaten_products">crwdns115400:0crwdne115400:0</string>
+    <string name="txt_products_to_buy">crwdns115402:0crwdne115402:0</string>
+    <string name="txt_exporting_your_listed_products">crwdns115406:0crwdne115406:0</string>
+    <string name="txt_your_listed_products_exported">crwdns115408:0crwdne115408:0</string>
+    <string name="txt_discard">crwdns115410:0crwdne115410:0</string>
+    <string name="txt_info_eaten_products">crwdns115416:0crwdne115416:0</string>
+    <string name="txt_info_your_listed_products">crwdns115418:0crwdne115418:0</string>
+    <string name="search_history_pref_title">crwdns114550:0crwdne114550:0</string>
+    <string name="search_history_pref_summary">crwdns114552:0crwdne114552:0</string>
+    <string name="search_history_pref_dialog_content">crwdns125960:0crwdne125960:0</string>
+    <string name="settings_country_dialog_title">crwdns114554:0crwdne114554:0</string>
+    <string name="settings_country_summary">crwdns114556:0crwdne114556:0</string>
+    <string name="settings_country_title">crwdns114558:0crwdne114558:0</string>
+    <string name="txt_no_nutrition_data">crwdns115426:0crwdne115426:0</string>
+    <string name="image_prompt_language">crwdns121276:0crwdne121276:0</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">crwdns128614:0crwdne128614:0</string>
-    <string name="add_another_product">crwdns128616:0crwdne128616:0</string>
-    <string name="add_nutrition_facts_for_nutriscore">crwdns128618:0crwdne128618:0</string>
-    <string name="product_summary_action_compare_button_label">crwdns128620:0crwdne128620:0</string>
-    <string name="product_summary_action_add_to_list_button_label">crwdns128622:0crwdne128622:0</string>
-    <string name="product_summary_action_edit_button_label">crwdns128624:0crwdne128624:0</string>
-    <string name="product_summary_action_share_button_label">crwdns128626:0crwdne128626:0</string>
-    <string name="product_question_prompt">crwdns128628:0crwdne128628:0</string>
-    <string name="product_question_positive_response">crwdns128630:0crwdne128630:0</string>
-    <string name="product_question_negative_response">crwdns128632:0crwdne128632:0</string>
-    <string name="product_question_ambiguous_response">crwdns128634:0crwdne128634:0</string>
-    <string name="product_question_submit_message">crwdns128636:0crwdne128636:0</string>
-    <string name="error_nutrient_entry">crwdns128638:0crwdne128638:0</string>
-    <string name="error_nutrient_serving_data">crwdns128640:0crwdne128640:0</string>
-    <string name="error_in_nutrient_data">crwdns128642:0crwdne128642:0</string>
-    <string name="go_to_full_product_page">crwdns128644:0crwdne128644:0</string>
-    <string name="no_additive_data_available_for_this_product">crwdns128646:0crwdne128646:0</string>
-    <string name="no_nutrient_information_available_for_this_product">crwdns128648:0crwdne128648:0</string>
-    <string name="error_duplicate_listname">crwdns128650:0crwdne128650:0</string>
-    <string name="required_to_compute_nutriscore">crwdns128652:0crwdne128652:0</string>
-    <string name="scan_tooltip">crwdns128654:0crwdne128654:0</string>
-    <string name="add_an_allergen">crwdns128656:0crwdne128656:0</string>
-    <string name="add_a_list">crwdns128658:0crwdne128658:0</string>
-    <string name="edit_image">crwdns128660:0crwdne128660:0</string>
-    <string name="cant_edit_image_not_yet_uploaded">crwdns128662:0crwdne128662:0</string>
-    <string name="unselect_image">crwdns128664:0crwdne128664:0</string>
-    <string name="choose_default_language">crwdns128666:0crwdne128666:0</string>
-    <string name="barcode">crwdns128668:0crwdne128668:0</string>
-    <string name="productAdditivesNone">crwdns128670:0crwdne128670:0</string>
-    <string name="error_uploading_photo">crwdns128672:0crwdne128672:0</string>
-    <string name="import_csv_to_list">crwdns128674:0crwdne128674:0</string>
-    <string name="toast_import_csv_error">crwdns128676:0crwdne128676:0</string>
-    <string name="toast_import_csv">crwdns128678:0crwdne128678:0</string>
-    <string name="open_csv">crwdns128680:0crwdne128680:0</string>
+    <string name="add_product">crwdns115984:0crwdne115984:0</string>
+    <string name="add_another_product">crwdns115748:0crwdne115748:0</string>
+    <string name="add_nutrition_facts_for_nutriscore">crwdns115986:0crwdne115986:0</string>
+    <string name="product_summary_action_compare_button_label">crwdns116160:0crwdne116160:0</string>
+    <string name="product_summary_action_add_to_list_button_label">crwdns116162:0crwdne116162:0</string>
+    <string name="product_summary_action_edit_button_label">crwdns116164:0crwdne116164:0</string>
+    <string name="product_summary_action_share_button_label">crwdns116166:0crwdne116166:0</string>
+    <string name="product_question_prompt">crwdns116170:0crwdne116170:0</string>
+    <string name="product_question_positive_response">crwdns116172:0crwdne116172:0</string>
+    <string name="product_question_negative_response">crwdns116174:0crwdne116174:0</string>
+    <string name="product_question_ambiguous_response">crwdns116176:0crwdne116176:0</string>
+    <string name="product_question_submit_message">crwdns116178:0crwdne116178:0</string>
+    <string name="error_nutrient_entry">crwdns125852:0crwdne125852:0</string>
+    <string name="error_nutrient_serving_data">crwdns116156:0crwdne116156:0</string>
+    <string name="error_in_nutrient_data">crwdns116158:0crwdne116158:0</string>
+    <string name="go_to_full_product_page">crwdns119586:0crwdne119586:0</string>
+    <string name="no_additive_data_available_for_this_product">crwdns116186:0crwdne116186:0</string>
+    <string name="no_nutrient_information_available_for_this_product">crwdns116188:0crwdne116188:0</string>
+    <string name="error_duplicate_listname">crwdns117592:0crwdne117592:0</string>
+    <string name="required_to_compute_nutriscore">crwdns117042:0crwdne117042:0</string>
+    <string name="scan_tooltip">crwdns120444:0crwdne120444:0</string>
+    <string name="add_an_allergen">crwdns117700:0crwdne117700:0</string>
+    <string name="add_a_list">crwdns118276:0crwdne118276:0</string>
+    <string name="edit_image">crwdns118218:0crwdne118218:0</string>
+    <string name="cant_edit_image_not_yet_uploaded">crwdns119592:0crwdne119592:0</string>
+    <string name="unselect_image">crwdns119478:0crwdne119478:0</string>
+    <string name="choose_default_language">crwdns119480:0crwdne119480:0</string>
+    <string name="barcode">crwdns118220:0crwdne118220:0</string>
+    <string name="productAdditivesNone">crwdns119482:0crwdne119482:0</string>
+    <string name="error_uploading_photo">crwdns118274:0crwdne118274:0</string>
+    <string name="import_csv_to_list">crwdns120446:0crwdne120446:0</string>
+    <string name="toast_import_csv_error">crwdns120448:0crwdne120448:0</string>
+    <string name="toast_import_csv">crwdns120450:0crwdne120450:0</string>
+    <string name="open_csv">crwdns120452:0crwdne120452:0</string>
     <!-- Used for diets AddOn -->
-    <string name="history_network_error">crwdns128682:0crwdne128682:0</string>
-    <string name="cant_modify_if_refreshing">crwdns128684:0crwdne128684:0</string>
-    <string name="closeZoom">crwdns128686:0crwdne128686:0</string>
-    <string name="imageFullscreen">crwdns128688:0crwdne128688:0</string>
+    <string name="history_network_error">crwdns119484:0crwdne119484:0</string>
+    <string name="cant_modify_if_refreshing">crwdns119486:0crwdne119486:0</string>
+    <string name="closeZoom">crwdns119488:0crwdne119488:0</string>
+    <string name="imageFullscreen">crwdns119576:0crwdne119576:0</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">crwdns128690:0crwdne128690:0</string>
-    <string name="tip_message">crwdns128692:0%1$scrwdne128692:0</string>
-    <string name="ingredient_analysis_tip">crwdns128694:0crwdne128694:0</string>
-    <string name="got_it">crwdns128696:0crwdne128696:0</string>
-    <string name="ingredients_in_this_product_are">crwdns128698:0%1$scrwdne128698:0</string>
-    <string name="ingredients_in_this_product">crwdns128700:0%1$scrwdne128700:0</string>
-    <string name="display_analysis_tag_status">crwdns128702:0%1$scrwdne128702:0</string>
-    <string name="preference_header_display">crwdns128704:0crwdne128704:0</string>
-    <string name="unknown_status_no_translation">crwdns128706:0crwdne128706:0</string>
-    <string name="help_translate_ingredients">crwdns128708:0crwdne128708:0</string>
-    <string name="unknown_status_missing_ingredients">crwdns128710:0crwdne128710:0</string>
-    <string name="help_extract_ingredients">crwdns128712:0%1$scrwdne128712:0</string>
-    <string name="add_photo_to_extract_ingredients">crwdns128714:0crwdne128714:0</string>
-    <string name="product_already_exists_in_comparison">crwdns128716:0crwdne128716:0</string>
-    <string name="compare_brands">crwdns128718:0crwdne128718:0</string>
-    <string name="compare_additives">crwdns128720:0crwdne128720:0</string>
-    <string name="compare_salt">crwdns128722:0crwdne128722:0</string>
-    <string name="compare_sugars">crwdns128724:0crwdne128724:0</string>
-    <string name="compare_saturated_fat">crwdns128726:0crwdne128726:0</string>
-    <string name="compare_fat">crwdns128728:0crwdne128728:0</string>
-    <string name="compare_quantity">crwdns128730:0crwdne128730:0</string>
-    <string name="load_ingredient_detection_data">crwdns128732:0crwdne128732:0</string>
-    <string name="load_ingredient_detection_data_summary">crwdns128734:0crwdne128734:0</string>
-    <string name="white_check_image_descr">crwdns128736:0crwdne128736:0</string>
-    <string name="hint_packaging">crwdns128738:0crwdne128738:0</string>
-    <string name="risk_alcohol_consumption">crwdns128740:0crwdne128740:0</string>
-    <string name="check_first_time">crwdns128742:0crwdne128742:0</string>
+    <string name="close_button">crwdns123492:0crwdne123492:0</string>
+    <string name="tip_message">crwdns123494:0%1$scrwdne123494:0</string>
+    <string name="ingredient_analysis_tip">crwdns123496:0crwdne123496:0</string>
+    <string name="got_it">crwdns123498:0crwdne123498:0</string>
+    <string name="ingredients_in_this_product_are">crwdns123500:0%1$scrwdne123500:0</string>
+    <string name="ingredients_in_this_product">crwdns123502:0%1$scrwdne123502:0</string>
+    <string name="display_analysis_tag_status">crwdns123504:0%1$scrwdne123504:0</string>
+    <string name="preference_header_display">crwdns123506:0crwdne123506:0</string>
+    <string name="unknown_status_no_translation">crwdns123508:0crwdne123508:0</string>
+    <string name="help_translate_ingredients">crwdns123510:0crwdne123510:0</string>
+    <string name="unknown_status_missing_ingredients">crwdns123512:0crwdne123512:0</string>
+    <string name="help_extract_ingredients">crwdns125130:0%1$scrwdne125130:0</string>
+    <string name="add_photo_to_extract_ingredients">crwdns125132:0crwdne125132:0</string>
+    <string name="product_already_exists_in_comparison">crwdns121762:0crwdne121762:0</string>
+    <string name="compare_brands">crwdns121764:0crwdne121764:0</string>
+    <string name="compare_additives">crwdns121766:0crwdne121766:0</string>
+    <string name="compare_salt">crwdns121768:0crwdne121768:0</string>
+    <string name="compare_sugars">crwdns121770:0crwdne121770:0</string>
+    <string name="compare_saturated_fat">crwdns121772:0crwdne121772:0</string>
+    <string name="compare_fat">crwdns121774:0crwdne121774:0</string>
+    <string name="compare_quantity">crwdns121776:0crwdne121776:0</string>
+    <string name="load_ingredient_detection_data">crwdns124957:0crwdne124957:0</string>
+    <string name="load_ingredient_detection_data_summary">crwdns124959:0crwdne124959:0</string>
+    <string name="white_check_image_descr">crwdns124961:0crwdne124961:0</string>
+    <string name="hint_packaging">crwdns124963:0crwdne124963:0</string>
+    <string name="risk_alcohol_consumption">crwdns125128:0crwdne125128:0</string>
+    <string name="check_first_time">crwdns125092:0crwdne125092:0</string>
     <!--ShowcaseView Strings-->
-    <string name="title_image_type">crwdns128744:0crwdne128744:0</string>
-    <string name="content_image_type">crwdns128746:0crwdne128746:0</string>
-    <string name="title_choose_language">crwdns128748:0crwdne128748:0</string>
-    <string name="content_choose_language">crwdns128750:0crwdne128750:0</string>
-    <string name="title_add_photo">crwdns128752:0crwdne128752:0</string>
-    <string name="content_add_photo">crwdns128754:0crwdne128754:0</string>
-    <string name="title_choose_photo">crwdns128756:0crwdne128756:0</string>
-    <string name="content_choose_photo">crwdns128758:0crwdne128758:0</string>
-    <string name="title_edit_photo">crwdns128760:0crwdne128760:0</string>
-    <string name="content_edit_photo">crwdns128762:0crwdne128762:0</string>
-    <string name="title_unselect_photo">crwdns128764:0crwdne128764:0</string>
-    <string name="content_unselect_photo">crwdns128766:0crwdne128766:0</string>
-    <string name="title_exit">crwdns128768:0crwdne128768:0</string>
-    <string name="content_exit">crwdns128770:0crwdne128770:0</string>
-    <string name="icon_label">crwdns128772:0crwdne128772:0</string>
-    <string name="icon_categories">crwdns128774:0crwdne128774:0</string>
-    <string name="icon_emb">crwdns128776:0crwdne128776:0</string>
-    <string name="product_front_image">crwdns128778:0crwdne128778:0</string>
-    <string name="brand_hint">crwdns128780:0crwdne128780:0</string>
-    <string name="sign_in_or_register">crwdns128782:0crwdne128782:0</string>
+    <string name="title_image_type">crwdns125094:0crwdne125094:0</string>
+    <string name="content_image_type">crwdns125096:0crwdne125096:0</string>
+    <string name="title_choose_language">crwdns125098:0crwdne125098:0</string>
+    <string name="content_choose_language">crwdns125100:0crwdne125100:0</string>
+    <string name="title_add_photo">crwdns125102:0crwdne125102:0</string>
+    <string name="content_add_photo">crwdns125104:0crwdne125104:0</string>
+    <string name="title_choose_photo">crwdns125106:0crwdne125106:0</string>
+    <string name="content_choose_photo">crwdns125108:0crwdne125108:0</string>
+    <string name="title_edit_photo">crwdns125110:0crwdne125110:0</string>
+    <string name="content_edit_photo">crwdns125112:0crwdne125112:0</string>
+    <string name="title_unselect_photo">crwdns125114:0crwdne125114:0</string>
+    <string name="content_unselect_photo">crwdns125116:0crwdne125116:0</string>
+    <string name="title_exit">crwdns125118:0crwdne125118:0</string>
+    <string name="content_exit">crwdns125120:0crwdne125120:0</string>
+    <string name="icon_label">crwdns125498:0crwdne125498:0</string>
+    <string name="icon_categories">crwdns125500:0crwdne125500:0</string>
+    <string name="icon_emb">crwdns125502:0crwdne125502:0</string>
+    <string name="product_front_image">crwdns125506:0crwdne125506:0</string>
+    <string name="brand_hint">crwdns125526:0crwdne125526:0</string>
 </resources>

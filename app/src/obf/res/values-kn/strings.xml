@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$d cosmetic products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$d cosmetic products (plus the ones you will contribute) with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
     <string name="txtHome">ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಎನ್ನುವುದು ಪದಾರ್ಥಗಳು, ಅಲರ್ಜಿನ್ಗಳು, ಸೂಚಕಗಳು ಮತ್ತು ಉತ್ಪನ್ನದ ಲೇಬಲ್ಗಳಲ್ಲಿ ನಾವು ಪಡೆಯಬಹುದಾದ ಮಾಹಿತಿಯ ಎಲ್ಲಾ ಸುಳಿವುಗಳೊಂದಿಗೆ ಕಾಸ್ಮೆಟಿಕ್ ಉತ್ಪನ್ನಗಳ ಡೇಟಾಬೇಸ್ ಆಗಿದೆ.</string>
     <string name="slide_1_title">ಕಾಸ್ಮೆಟಿಕ್ ಪಾರದರ್ಶಕತೆಗೆ ಕೊಡುಗೆ ನೀಡಿ</string>
     <string name="slide_1_desc">ಸ್ಕ್ಯಾನ್ ಉತ್ಪನ್ನಗಳು, ಅವುಗಳನ್ನು ಚಿತ್ರದಲ್ಲಿ ತೆಗೆದುಕೊಳ್ಳಿ, ಕಾಸ್ಮೆಟಿಕ್ ಪಾರದರ್ಶಕತೆ ಸಂಭವಿಸಿ</string>
@@ -28,11 +28,11 @@
     <string name="translate_help_title">ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ಅನುವಾದಿಸಲು ಸಹಾಯ ಮಾಡಿ</string>
     <string name="translate_help_summary">ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರಲು - ಯಾವುದೇ ತಾಂತ್ರಿಕ ಜ್ಞಾನ ಅಗತ್ಯವಿಲ್ಲ</string>
     <string name="text_offline_info_dialog">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗ ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಲು ಅವುಗಳನ್ನು ಸೇರಿಸಲು ನೀವು ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಬಹುದು. ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡುವ ಎಲ್ಲಾ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ, ಮತ್ತು ನೀವು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">ನಿಮ್ಮ ಅಲರ್ಜಿಯ ಮಾಹಿತಿಯನ್ನು ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಸರ್ವರ್ಗೆ ಎಂದಿಗೂ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ. ಅಲ್ಲದೆ, ಉತ್ಪನ್ನ ಡೇಟಾ ನಿಖರವಾಗಿರದಿರಬಹುದು ಮತ್ತು ಎಚ್ಚರಿಕೆಯು 100% ನಿಖರವಾಗಿರದಿರಬಹುದು ಎಂದು ಎಚ್ಚರಿಕೆಯಿಂದಿರಿ, ಆದ್ದರಿಂದ ದಯವಿಟ್ಟು ನಿಮ್ಮಿಂದ ಎರಡು ಬಾರಿ ಪರಿಶೀಲಿಸಿ! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">the free cosmetics database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
+    <string name="product_not_found">ಉತ್ಪನ್ನದ %1$s ನೀವು ಸ್ಕ್ಯಾನ್ ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ನೀವು ಅದನ್ನು ಸೇರಿಸಬಹುದೇ?</string>
     <string name="currently_on_version">ಪ್ರಸ್ತುತ ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ</string>
     <string name="category_game_btn">Help categorize products</string>
     <!-- TODO add true support instead of overriding strings -->

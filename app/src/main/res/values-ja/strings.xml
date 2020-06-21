@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="other"> %d のオフライン製品が Open Food Facts に送信されるのを待っています</item>
     </plurals>
@@ -226,7 +211,7 @@
     <string name="cancel_button">取消</string>
     <string name="login_button">ログイン</string>
     <string name="create_account_button">アカウントを作成する</string>
-    <string name="warning_alert_data">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">あなたのアレルギー情報は、Open Food Factsサーバーに送信されることはありません。また、製品データが正確でない可能性、検出が100％正確でない可能性があるので、ご自分でもう一度ご確認ください! </string>
     <string name="title_info_dialog">どのような仕組みですか?</string>
     <string name="text_offline_info_dialog">オフライン時に製品をスキャンして、後で Open Food Facts に追加するすることができます。スキャンする製品がすべてここに表示されます。下のボタンを使用してそれらを送信することができます。</string>
     <string name="permission_camera">バーコードのスキャンと写真の撮影には、カメラのアクセス許可が必要です。</string>
@@ -443,7 +428,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">全般</string>
     <string name="preference_header_network">ネットワーク</string>
     <string name="preference_header_contributing">貢献</string>
@@ -622,7 +607,6 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">商品を編集するにはログインしてください。</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">例：2リットル、250リットル、1リットル、25リットル、6リットル、1ポンド</string>
     <string name="edit_product_title">製品を編集</string>
     <string name="nutrient_already_added">%s はすでに栄養成分表に含まれています</string>
@@ -787,5 +771,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

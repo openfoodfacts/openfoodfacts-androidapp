@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">You have %d offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -226,7 +226,7 @@
     <string name="cancel_button">Скасувати</string>
     <string name="login_button">Логін</string>
     <string name="create_account_button">Створити обліковий запис</string>
-    <string name="warning_alert_data">Інформація про вашу алергію ніколи не буде відправлена ​​на сервер Open Food Facts. Крім того, будьте обережні, бо дані продукту можуть бути неточними, а виявлення може бути не на 100% точним, тому подвійно перевіряйте самостійно! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Інформація про вашу алергію ніколи не буде відправлена ​​на сервер Open Food Facts. Крім того, будьте обережні, бо дані продукту можуть бути неточними, а виявлення може бути не на 100% точним, тому подвійно перевіряйте самостійно! </string>
     <string name="title_info_dialog">Як це працює?</string>
     <string name="text_offline_info_dialog">Ви можете сканувати товари, коли Ви знаходитесь у автономний режимі, щоб пізніше додати їх до Open Food Facts. Усі скановані товари відображатимуться тут, і ви зможете їх надіслати за допомогою кнопки нижче.</string>
     <string name="permission_camera">Дозвіл на використання камери необхідний для сканування кодів товарів та фотографування.</string>

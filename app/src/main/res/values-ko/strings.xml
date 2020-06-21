@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="other"> Open Foods Facts 에 기부되기를 기다리는 오프라인 제품이 %d 있습니다.</item>
     </plurals>
@@ -226,7 +211,7 @@
     <string name="cancel_button">취소</string>
     <string name="login_button">로그인</string>
     <string name="create_account_button">계정 만들기</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">이용 방법</string>
     <string name="text_offline_info_dialog">오프라인 상태 일 때 제품을 스캔하여 나중에 Open Food Facts에 추가 할 수 있습니다. 스캔한 모든 제품이 여기에 표시되며 아래 버튼을 사용하여 추가할 수 있습니다.</string>
     <string name="permission_camera">바코드를 스캔하고 사진을 찍으려면 카메라 사용 권한이 필요합니다.</string>
@@ -443,7 +428,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">일반</string>
     <string name="preference_header_network">네트워크</string>
     <string name="preference_header_contributing">도움 보내기</string>
@@ -514,7 +499,7 @@
     <string name="notify_channel_description">내보낸 파일의 위치를 표시하는 알림</string>
     <string name="products_to_be_completed">완제품</string>
     <string name="offline_notification_title">보내야할 오프라인 기여</string>
-    <string name="creator_history">%1$s CET %2$s 에 %3$s가 추가 된 제품</string>
+    <string name="creator_history">%2$s CET %1$s 에 %3$s가 추가 된 제품</string>
     <string name="last_editor_history">%1$s 시에 %2$s CEST에서 %3$s 가 제품의 페이지를 마지막으로 편집</string>
     <string name="other_editors">상품 페이지는 다음 사람들에 의해 수정되었습니다.</string>
     <string name="contribution_tab">기여</string>
@@ -622,7 +607,6 @@
     <string name="edit_ingredients_image">성분 사진 편집</string>
     <string name="edit_other_image">사진 편집</string>
     <string name="sign_in_to_edit">제품을 편집 하시려면 로그인 하세요.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">예 : 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 파운드</string>
     <string name="edit_product_title">제품을 편집</string>
     <string name="nutrient_already_added">%s 은 영양 정보에 이미 존재합니다</string>
@@ -787,5 +771,4 @@
     <string name="icon_emb">EMB 코드 아이콘</string>
     <string name="product_front_image">제품 전면 이미지</string>
     <string name="brand_hint">예 : 코카콜라, 네슬레 등…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

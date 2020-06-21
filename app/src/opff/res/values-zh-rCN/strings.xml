@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">https://world.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts是一个超过%1$d的宠物食品数据库（加上你会贡献的）汪汪。汪汪。</string>
     <string name="txtHome">Open Pet Food Facts是一个宠物食品数据库，包含了宠物食品的成分、营养成分、营养事实… 汪汪。汪汪。</string>
     <string name="slide_1_title">为宠物食品的透明度做贡献</string>
     <string name="slide_1_desc">扫描产品，拍照，让宠物食品透明化</string>
@@ -30,7 +30,7 @@
     <string name="translate_help_title">帮助翻译 Open Food Facts</string>
     <string name="translate_help_summary">将 Open Food Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">您的过敏信息将永远不会发送到 Open Food Facts 服务器。另外，请注意，产品数据可能不准确，检测可能不是 100％ 准确的，请自行仔细检查！ </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

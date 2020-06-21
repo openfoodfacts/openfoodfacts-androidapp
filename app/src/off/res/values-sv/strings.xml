@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -10,16 +10,16 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <string name="txtHome">Open Food Facts är en öppen databas över livsmedelsprodukter med ingredienser, allergener, näringsfakta och alla godbitar av information som vi hittar på produktetiketter.</string>
     <string name="slide_1_title">Bidra till insyn i livsmedel</string>
     <string name="slide_1_desc">Skanna produkter, ta en bild, skapa livsmedelstransparens</string>
     <string name="slide_2_title">Få fakta</string>
-    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
+    <string name="slide_2_desc">Omfattande information om produkten du skannade, dechiffrerad för dig</string>
     <string name="slide_3_title">Få Nutriscore</string>
     <string name="slide_3_desc">En syntetisk bild av dina favoritprodukters näringsegenskaper</string>
     <string name="slide_4_title">Fungerar offline</string>
-    <string name="slide_4_desc">Du kan lägga till nya produkter även om du inte har en internetanslutning just nu</string>
+    <string name="slide_4_desc">Du kan lägga till nya produkter, även om du inte har en internetanslutning just nu</string>
     <string name="txtDialogsContent">Den skannade produkten finns inte i Open Food Facts. Vänligen lägg till den.</string>
     <string name="txtDialogsContentPowerMode">Den produkt du skannat finns redan i Open Food Facts.</string>
     <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
@@ -29,9 +29,9 @@
     <string name="translate_help_title">Hjälp översätta Open Food Facts</string>
     <string name="translate_help_summary">Ta Open Food Facts-databasen till ditt språk - ingen teknisk kunskap krävs</string>
     <string name="text_offline_info_dialog">Skanna produkterna även när du är offline för att lägga till dem i Open Food Facts senare. De skannade produkterna visas här och du kommer att kunna skicka dem med hjälp av knappen nedan.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Din allergiinformation kommer aldrig att lagras på Open Food Facts servrar. Var även försiktig med att produktinformation kanske inte alltid stämmer, och att identifiering inte är 100% träffsäker, så dubbelkolla själv! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="tagline">den öppna databasen för livsmedelsprodukter</string>
+    <string name="product_not_found">Produkten %1$s du skannat finns ännu inte i Open Food Facts. Kan du lägga till den?</string>
     <string name="currently_on_version">För närvarande på Open Food Facts</string>
 </resources>

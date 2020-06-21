@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one"> Du har 1 offlineprodukt som väntar på att bidras till Open Food Facts</item>
+        <item quantity="other"> Du har %d offlineprodukter som väntar på att bidras till Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">1 sekund sedan</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="one">1 minut sedan</item>
+        <item quantity="other">%d minuter sedan</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="one">1 timme sedan</item>
+        <item quantity="other">%d timmar sedan</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="one">1 dag sedan</item>
+        <item quantity="other">%d dagar sedan</item>
     </plurals>
     <string name="action_about">Om</string>
     <string name="action_discover">Upptäck</string>
@@ -228,10 +213,10 @@
     <string name="title_dialog_alert">Lägg till varning</string>
     <string name="select_camera">Välj en kamera</string>
     <string name="ok_button">OK</string>
-    <string name="cancel_button">Annulera</string>
+    <string name="cancel_button">Annullera</string>
     <string name="login_button">Användarnamn</string>
     <string name="create_account_button">Skapa Konto</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Din allergiinformation kommer aldrig att lagras på Open Food Facts servrar. Var även försiktig med att produktinformation kanske inte alltid stämmer, och att identifiering inte är 100% träffsäker, så dubbelkolla själv! </string>
     <string name="title_info_dialog">Hur funkar det?</string>
     <string name="text_offline_info_dialog">Du kan skanna produkter när du är offline för att lägga till dem i Open Food Facts senare. Alla produkter du skannar kommer att visas här, och du kan skicka dem med knappen nedan.</string>
     <string name="permission_camera">Appen behöver tillstånd att använda kameran för att skanna streckkoder och ta bilder.</string>
@@ -269,7 +254,7 @@
     <string name="no_brand">Inget märke</string>
     <string name="no_title">Ingen rubrik</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+    <string name="display_fact">Nutrition fakta tabell för %1$s av denna produkt</string>
     <string name="check_facts">Kontrollera</string>
     <string name="nutrition">Näring</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -448,7 +433,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Allmänt</string>
     <string name="preference_header_network">Nätverk</string>
     <string name="preference_header_contributing">Bidrar</string>
@@ -457,7 +442,7 @@
     <string name="login_true">Redan inloggad!</string>
     <string name="confirm_logout">Bekräfta utloggning</string>
     <string name="logout_dialog_content">Är du säker på att logga ut?</string>
-    <string name="dialog_cancel">Annulera</string>
+    <string name="dialog_cancel">Annullera</string>
     <string name="dialog_create">Skapa</string>
     <string name="choose_resolution">Välj upplösning</string>
     <string name="pref_resolution_summary">Välj en upplösning för bilduppladdning</string>
@@ -470,7 +455,7 @@
     <string name="additive_string">Tillsats</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Sök</string>
-    <string name="country_string">Länder där såld</string>
+    <string name="country_string">Säljs i</string>
     <string name="store_subtitle">Butik</string>
     <string name="packaging_subtitle">Förpackning</string>
     <string name="packaging_string">Förpackning</string>
@@ -519,8 +504,8 @@
     <string name="notify_channel_description">Meddelande för att visa den exporterade filens plats</string>
     <string name="products_to_be_completed">Produkter att slutföra</string>
     <string name="offline_notification_title">Offlinebidrag du ännu inte skickat</string>
-    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
-    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="creator_history">Produkt tillagd på %1$s vid %2$s CET av</string>
+    <string name="last_editor_history">Senaste ändring på produktsida vid %1$s kl %2$s CEST av </string>
     <string name="other_editors">Produktsidan har också redigerats av </string>
     <string name="contribution_tab">Bidrag</string>
     <string name="contribution_tab_summary">Visa fliken användarbidrag med produkter</string>
@@ -531,14 +516,14 @@
     <string name="offline_product_addition_title">Add a new product</string>
     <string name="productNameNull">Namn okänt</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate">%1$d tillsatser</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d tillsats</item>
+        <item quantity="other">%d tillsatser</item>
     </plurals>
     <string name="product_not_complete">Denna produkt är ofärdig. \nKan du lägga till några fler detaljer?</string>
-    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="addProductOffline">Du verkar vara offline. Lägg till %s med hjälp av offline-läge?</string>
+    <string name="product_not_found">Produkten %1$s du skannat finns ännu inte i Open Food Facts. Kan du lägga till den?</string>
     <string name="scan_sound">Skanningsljud</string>
     <string name="trouble_scanning">Problem med skanning?</string>
     <string name="barcode_hint">Problem med skanning? Ange streckkod</string>
@@ -547,7 +532,7 @@
     <string name="initial_loading">Inledande laddning</string>
     <string name="preferences">Inställningar</string>
     <string name="OFFlogo">Open Food Facts logotyp</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product">Laddar produkten %s</string>
     <string name="image_not_defined_for_language">Ingen bild för valt språk. Du kan lägga till en ny</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
@@ -628,7 +613,6 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Redigera fotot</string>
     <string name="sign_in_to_edit">Logga in för att redigera en produkt.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Redigera en produkt</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
@@ -757,7 +741,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
@@ -793,5 +777,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

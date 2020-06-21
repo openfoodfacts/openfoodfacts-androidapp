@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> You have %d offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> You have one offline product waiting to be contributing, Just open the food facts</item>
@@ -216,7 +216,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Mag-login</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Ang impormasyon ng iyong alerdyi ay hindi ipapadala sa server ng Mga Buksan na Mga Katotohanan sa Pagkain. Gayundin, mag-ingat na ang data ng produkto ay maaaring hindi tumpak, at ang pagtuklas ay maaaring hindi tumpak na 100%, kaya\'t mangyaring mag-doblwng ingat sa iyong sarili! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ang impormasyon ng iyong alerdyi ay hindi ipapadala sa server ng Mga Buksan na Mga Katotohanan sa Pagkain. Gayundin, mag-ingat na ang data ng produkto ay maaaring hindi tumpak, at ang pagtuklas ay maaaring hindi tumpak na 100%, kaya\'t mangyaring mag-doblwng ingat sa iyong sarili! </string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Maaari mong i-scan ang mga produkto kapag offline ka upang idagdag ang mga ito sa Open Food Fact sa ibang pagkakataon. Ang lahat ng mga produkto na iyong i-scan ay lilitaw dito, at magagawa mong ipadala ang mga ito gamit ang pindutan sa ibaba.</string>
     <string name="permission_camera">Kinakailangan ang pahintulot ng kamera upang i-scan ang mga barcode at kumuha ng mga larawan.</string>

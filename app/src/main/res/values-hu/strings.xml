@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> Önnek 1 darab kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</item>
         <item quantity="other"> Önnek %d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájárulásra</item>
@@ -231,7 +216,7 @@
     <string name="cancel_button">Mégse</string>
     <string name="login_button">Bejelentkezés</string>
     <string name="create_account_button">Fiók létrehozása</string>
-    <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az felismerés talán nem 100% as pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az felismerés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
     <string name="title_info_dialog">Hogyan működik?</string>
     <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküldheti őket.</string>
     <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>
@@ -519,8 +504,8 @@
     <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
     <string name="products_to_be_completed">Kiegészítendő termékek</string>
     <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
-    <string name="creator_history">A terméket hozzáadta %1$s ekkor: %2$s, %3$s (CET)</string>
-    <string name="last_editor_history">Termékoldalt legutóbb szerkesztette %1$s ekkor: %2$s, %3$s (CEST) </string>
+    <string name="creator_history">A terméket hozzáadta %3$s ekkor: %1$s, %2$s (CET)</string>
+    <string name="last_editor_history">Termékoldalt legutóbb szerkesztette %3$s ekkor: %1$s, %2$s (CEST) </string>
     <string name="other_editors">A termékoldalt szerkesztette még </string>
     <string name="contribution_tab">Hozzájárulások</string>
     <string name="contribution_tab_summary">Felhasználói hozzájárulások fül megjelenítése a termékekkel</string>
@@ -586,7 +571,7 @@
     <string name="ingredients_picture">Összetevők képe</string>
     <string name="take_ingredients_picture_to_extract">(Kérem, készítsen egy képet az összetevőkről, hogy be tudja olvasni róla szöveget a program)</string>
     <string name="ingredients_list">Összetevők</string>
-    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a [%s]zázalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon ( ) (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
+    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a % (százalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon ( ) (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
     <string name="extract_ingredients">Összetevők kiolvasása</string>
     <string name="extracting_ingredients">Összetevők kiolvasása</string>
     <string name="looksGood">Jónak tűnik</string>
@@ -629,7 +614,6 @@
     <string name="edit_ingredients_image">Összetevők kép szerkesztése</string>
     <string name="edit_other_image">Kép szerkesztése</string>
     <string name="sign_in_to_edit">Kérjük, jelentkezzen be egy termék szerkesztéséhez.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Példák: 2 liter, 250 g, 1 kg, 25 cl, 6 fl oz, 1 font</string>
     <string name="edit_product_title">Termék szerkesztése</string>
     <string name="nutrient_already_added">%s már szerepel a tárléptékadatok között</string>
@@ -794,5 +778,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

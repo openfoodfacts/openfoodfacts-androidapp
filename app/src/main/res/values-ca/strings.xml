@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2016-2020 Open Food Facts
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ https://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> Teniu 1 producte fora de línia esperant la vostra aportació a Open Food Facts</item>
         <item quantity="other"> Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
@@ -68,7 +53,7 @@
         <item>mg</item>
         <item>kg</item>
         <item>µg</item>
-        <item>% DDR</item>
+        <item>% QDR</item>
         <item>UI</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -231,7 +216,7 @@
     <string name="cancel_button">Cancel·la</string>
     <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
-    <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% axacta, així que comproveu-ho dues vegades!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades!</string>
     <string name="title_info_dialog">Com funciona?</string>
     <string name="text_offline_info_dialog">Podeu escanejar productes fora de línia i afegir-los després a Open Food Facts. Tots els productes que escanegi apareixeran aquí, i podrà enviar-los amb el botó de baix.</string>
     <string name="permission_camera">El permís de la càmera és necessari per escanejar codis de barres i fer fotos.</string>
@@ -628,7 +613,6 @@
     <string name="edit_ingredients_image">Edita la foto dels ingredients</string>
     <string name="edit_other_image">Edita la foto</string>
     <string name="sign_in_to_edit">Inicieu la sessió per editar un producte.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edita un producte</string>
     <string name="nutrient_already_added">%s ja està present en les dades nutricionals</string>
@@ -793,5 +777,4 @@
     <string name="icon_emb">Icona de codi EMB</string>
     <string name="product_front_image">Imatge frontal del producte</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
 </resources>
