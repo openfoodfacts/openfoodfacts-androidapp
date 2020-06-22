@@ -443,11 +443,11 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void postImg(final Context context, final ProductImage image, ImageUploadListener imageUploadListener) {
+    public void postImg(final Context context, final ProductImage image, @Nullable ImageUploadListener imageUploadListener) {
         postImg(context, image, false, imageUploadListener);
     }
 
-    public void postImg(final Context context, final ProductImage image, boolean setAsDefault, ImageUploadListener imageUploadListener) {
+    public void postImg(final Context context, final ProductImage image, boolean setAsDefault, @Nullable ImageUploadListener imageUploadListener) {
         api.saveImage(getUploadableMap(image))
             .enqueue(new Callback<JsonNode>() {
                 @Override

@@ -39,7 +39,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
@@ -52,7 +52,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
-import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
@@ -65,7 +64,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> implements ImageUploadListener {
+public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> {
     private final Button addProductButton;
     private final OpenFoodAPIClient api;
     private boolean isLowBatteryMode = false;
@@ -75,6 +74,13 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private final IProductRepository repository = ProductRepository.getInstance();
     private final ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
     private Integer onPhotoReturnPosition;
+
+    public ProductComparisonAdapter(List<Product> productsToCompare, Context context) {
+        this.productsToCompare = productsToCompare;
+        this.context = context;
+        this.addProductButton = ((Activity) context).findViewById(R.id.product_comparison_button);
+        api = new OpenFoodAPIClient(context);
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -175,7 +181,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         }
 
         // Open Food Facts specific
-        if ("off".equals(BuildConfig.FLAVOR)) {
+        if (Utils.isFlavor(AppFlavors.OFF)) {
             // NutriScore
             int nutritionGradeResource = Utils.getImageGrade(product);
             if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
@@ -253,13 +259,6 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         });
     }
 
-    public ProductComparisonAdapter(List<Product> productsToCompare, Context context) {
-        this.productsToCompare = productsToCompare;
-        this.context = context;
-        this.addProductButton = ((Activity) context).findViewById(R.id.product_comparison_button);
-        api = new OpenFoodAPIClient((Activity) context);
-    }
-
     @NonNull
     @Override
     public ProductComparisonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -269,46 +268,44 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         return viewHolder;
     }
 
-    static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
-        final Button fullProductButton;
-        final NestedScrollView listItemLayout;
-        final RecyclerView nutrientsRecyclerView;
-        final TextView productBrandTextView;
-        final CardView productComparisonAdditiveCv;
-        final TextView productComparisonAdditiveText;
-        final ImageView productComparisonCo2Icon;
-        final CardView productComparisonDetailsCv;
-        final ImageButton productComparisonImage;
-        final ImageView productComparisonImageGrade;
-        final TextView productComparisonLabel;
-        final ImageView productComparisonNovaGroup;
-        final CardView productComparisonNutrientCv;
-        final TextView productComparisonNutrientText;
-        final RelativeLayout productComparisonScoresLayout;
-        final TextView productNameTextView;
-        final TextView productQuantityTextView;
-
-        public ProductComparisonViewHolder(View view) {
-            super(view);
-            listItemLayout = view.findViewById(R.id.product_comparison_list_item_layout);
-            productComparisonDetailsCv = view.findViewById(R.id.product_comparison_details_cv);
-            productNameTextView = view.findViewById(R.id.product_comparison_name);
-            productQuantityTextView = view.findViewById(R.id.product_comparison_quantity);
-            productBrandTextView = view.findViewById(R.id.product_comparison_brand);
-            productComparisonNutrientText = view.findViewById(R.id.product_comparison_textNutrientTxt);
-            nutrientsRecyclerView = view.findViewById(R.id.product_comparison_listNutrientLevels);
-            productComparisonNutrientCv = view.findViewById(R.id.product_comparison_nutrient_cv);
-            productComparisonImage = view.findViewById(R.id.product_comparison_image);
-            productComparisonLabel = view.findViewById(R.id.product_comparison_label);
-            productComparisonImageGrade = view.findViewById(R.id.product_comparison_imageGrade);
-            productComparisonNovaGroup = view.findViewById(R.id.product_comparison_nova_group);
-            productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
-            productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
-            fullProductButton = view.findViewById(R.id.full_product_button);
-            fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0);
-            productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
-            productComparisonScoresLayout = view.findViewById(R.id.product_comparison_scores_layout);
+    private void loadAdditives(Product product, View v) {
+        StringBuilder additivesBuilder = new StringBuilder();
+        List<String> additivesTags = product.getAdditivesTags();
+        if (additivesTags == null || additivesTags.isEmpty()) {
+            return;
         }
+        final String languageCode = LocaleHelper.getLanguage(v.getContext());
+        disposable.add(
+            Observable.fromArray(additivesTags.toArray(new String[0]))
+                .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
+                    .flatMap(categoryName -> {
+                        if (categoryName.isNull()) {
+                            return repository.getAdditiveByTagAndDefaultLanguageCode(tag);
+                        } else {
+                            return Single.just(categoryName);
+                        }
+                    }))
+                .filter(AdditiveName::isNotNull)
+                .toList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(additives -> {
+                    if (!additives.isEmpty()) {
+                        additivesBuilder.append(bold(context.getString(R.string.compare_additives)));
+                        additivesBuilder.append(" ");
+                        additivesBuilder.append("\n");
+
+                        for (int i = 0; i < additives.size() - 1; i++) {
+                            additivesBuilder.append(additives.get(i).getName());
+                            additivesBuilder.append("\n");
+                        }
+
+                        additivesBuilder.append(additives.get(additives.size() - 1).getName());
+                        ((TextView) v).setText(additivesBuilder.toString());
+                        setMaxCardHeight();
+                    }
+                }, e -> Log.e(ProductComparisonAdapter.class.getSimpleName(), "loadAdditives", e))
+        );
     }
 
     @Override
@@ -378,49 +375,15 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         return levelItem;
     }
 
-    private void loadAdditives(Product product, View v) {
-        StringBuilder additivesBuilder = new StringBuilder();
-        List<String> additivesTags = product.getAdditivesTags();
-        if (additivesTags != null && !additivesTags.isEmpty()) {
-            final String languageCode = LocaleHelper.getLanguage(v.getContext());
-            disposable.add(
-                Observable.fromArray(additivesTags.toArray(new String[0]))
-                    .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
-                        .flatMap(categoryName -> {
-                            if (categoryName.isNull()) {
-                                return repository.getAdditiveByTagAndDefaultLanguageCode(tag);
-                            } else {
-                                return Single.just(categoryName);
-                            }
-                        }))
-                    .filter(AdditiveName::isNotNull)
-                    .toList()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnSubscribe(d -> {
-                    })
-                    .subscribe(additives -> {
-                        if (!additives.isEmpty()) {
-                            additivesBuilder.append(
-                                bold(
-                                    context.getString(R.string.compare_additives)
-                                )
-                            );
-                            additivesBuilder.append(" ");
-                            additivesBuilder.append("\n");
-
-                            for (int i = 0; i < additives.size() - 1; i++) {
-                                additivesBuilder.append(additives.get(i).getName());
-                                additivesBuilder.append("\n");
-                            }
-
-                            additivesBuilder.append(additives.get(additives.size() - 1).getName());
-                            ((TextView) v).setText(additivesBuilder.toString());
-                            setMaxCardHeight();
-                        }
-                    }, e -> Log.e(ProductComparisonAdapter.class.getSimpleName(), "loadAdditives", e))
-            );
-        }
+    public void setImageOnPhotoReturn(File file) {
+        Product product = productsToCompare.get(onPhotoReturnPosition);
+        ProductImage image = new ProductImage(product.getCode(), FRONT, file);
+        image.setFilePath(file.getAbsolutePath());
+        api.postImg(context, image, null);
+        String mUrlImage = file.getAbsolutePath();
+        product.setImageUrl(mUrlImage);
+        onPhotoReturnPosition = null;
+        notifyDataSetChanged();
     }
 
     private void setMaxCardHeight() {
@@ -442,25 +405,46 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         }
     }
 
-    public void setImageOnPhotoReturn(File file) {
-        Product product = productsToCompare.get(onPhotoReturnPosition);
-        ProductImage image = new ProductImage(product.getCode(), FRONT, file);
-        image.setFilePath(file.getAbsolutePath());
-        api.postImg(context, image, this);
-        String mUrlImage = file.getAbsolutePath();
-        product.setImageUrl(mUrlImage);
-        onPhotoReturnPosition = null;
-        notifyDataSetChanged();
-    }
+    public static class ProductComparisonViewHolder extends RecyclerView.ViewHolder {
+        final Button fullProductButton;
+        final NestedScrollView listItemLayout;
+        final RecyclerView nutrientsRecyclerView;
+        final TextView productBrandTextView;
+        final CardView productComparisonAdditiveCv;
+        final TextView productComparisonAdditiveText;
+        final ImageView productComparisonCo2Icon;
+        final CardView productComparisonDetailsCv;
+        final ImageButton productComparisonImage;
+        final ImageView productComparisonImageGrade;
+        final TextView productComparisonLabel;
+        final ImageView productComparisonNovaGroup;
+        final CardView productComparisonNutrientCv;
+        final TextView productComparisonNutrientText;
+        final RelativeLayout productComparisonScoresLayout;
+        final TextView productNameTextView;
+        final TextView productQuantityTextView;
 
-    @Override
-    public void onSuccess() {
-
-    }
-
-    @Override
-    public void onFailure(String message) {
-
+        public ProductComparisonViewHolder(View view) {
+            super(view);
+            listItemLayout = view.findViewById(R.id.product_comparison_list_item_layout);
+            productComparisonDetailsCv = view.findViewById(R.id.product_comparison_details_cv);
+            productNameTextView = view.findViewById(R.id.product_comparison_name);
+            productQuantityTextView = view.findViewById(R.id.product_comparison_quantity);
+            productBrandTextView = view.findViewById(R.id.product_comparison_brand);
+            productComparisonNutrientText = view.findViewById(R.id.product_comparison_textNutrientTxt);
+            nutrientsRecyclerView = view.findViewById(R.id.product_comparison_listNutrientLevels);
+            productComparisonNutrientCv = view.findViewById(R.id.product_comparison_nutrient_cv);
+            productComparisonImage = view.findViewById(R.id.product_comparison_image);
+            productComparisonLabel = view.findViewById(R.id.product_comparison_label);
+            productComparisonImageGrade = view.findViewById(R.id.product_comparison_imageGrade);
+            productComparisonNovaGroup = view.findViewById(R.id.product_comparison_nova_group);
+            productComparisonAdditiveCv = view.findViewById(R.id.product_comparison_additive);
+            productComparisonAdditiveText = view.findViewById(R.id.product_comparison_additive_text);
+            fullProductButton = view.findViewById(R.id.full_product_button);
+            fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0);
+            productComparisonCo2Icon = view.findViewById(R.id.product_comparison_co2_icon);
+            productComparisonScoresLayout = view.findViewById(R.id.product_comparison_scores_layout);
+        }
     }
 
     //helper method
