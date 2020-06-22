@@ -521,14 +521,17 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        binding = null;
-        if (productDisp != null && !productDisp.isDisposed()) {
+        if (productDisp != null) {
             productDisp.dispose();
+        }
+        if (hintBarcodeDisp != null) {
+            hintBarcodeDisp.dispose();
         }
         if (summaryProductPresenter != null) {
             summaryProductPresenter.dispose();
         }
+        binding = null;
+        super.onDestroy();
     }
 
     @Override
