@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!--<item name="colorPrimary">@color/material_blue_500</item>-->
         <!--<item name="statusBarColor">@color/grey_300</item>-->
         <!--<item name="colorBackground">@color/grey_50</item>-->
@@ -13,10 +13,6 @@
 
     <style name="errorText" parent="@style/TextAppearance.Design.Error">
         <item name="android:textColor">@color/brand_red</item>
-    </style>
-
-    <style name="Black_Back_Arrow" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:textColorPrimary">@color/md_black_1000</item>
     </style>
 
     <style name="customSearchView" parent="Widget.AppCompat.Light.SearchView">

@@ -148,7 +148,6 @@
                     android:id="@+id/action_buttons_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:padding="8dp">
 
                     <LinearLayout
@@ -251,7 +250,6 @@
                     android:id="@+id/analysisContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:orientation="vertical"
                     android:visibility="gone"
                     tools:visibility="visible">
@@ -286,7 +284,6 @@
                     android:id="@+id/scores_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:padding="8dp"
                     tools:visibility="visible">
 

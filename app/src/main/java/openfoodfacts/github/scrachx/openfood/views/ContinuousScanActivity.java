@@ -57,7 +57,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanB
 import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
-import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
@@ -106,10 +105,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private Disposable productDisp;
     private Handler handler;
     private boolean isAnalysisTagsEmpty = true;
-    private String lastText;
+    private String lastBarcode;
     private boolean mAutofocus;
     private boolean mFlash;
-    private HistoryProductDao mHistoryProductDao;
     private InvalidBarcodeDao mInvalidBarcodeDao;
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private OfflineSavedProduct offlineSavedProduct;
@@ -124,10 +122,10 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private final BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
-            if (productDisp != null) {
-                productDisp.dispose();
+            if (hintBarcodeDisp != null) {
+                hintBarcodeDisp.dispose();
             }
-            if (result.getText() == null || result.getText().isEmpty() || result.getText().equals(lastText)) {
+            if (result.getText() == null || result.getText().isEmpty() || result.getText().equals(lastBarcode)) {
                 // Prevent duplicate scans
                 return;
             }
@@ -142,9 +140,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 beepManager.playBeepSound();
             }
 
-            lastText = result.getText();
+            lastBarcode = result.getText();
             if (!(isFinishing())) {
-                setShownProduct(lastText);
+                setShownProduct(lastBarcode);
             }
         }
 
@@ -423,11 +421,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private void showProductNotFound(String text) {
         hideAllViews();
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        binding.quickView.setOnClickListener(v -> navigateToProductAddition(lastText));
+        binding.quickView.setOnClickListener(v -> navigateToProductAddition(lastBarcode));
         binding.quickViewProductNotFound.setText(text);
         binding.quickViewProductNotFound.setVisibility(VISIBLE);
         binding.quickViewProductNotFoundButton.setVisibility(VISIBLE);
-        binding.quickViewProductNotFoundButton.setOnClickListener(v -> navigateToProductAddition(lastText));
+        binding.quickViewProductNotFoundButton.setOnClickListener(v -> navigateToProductAddition(lastBarcode));
     }
 
     private void showProductFullScreen() {
@@ -521,14 +519,17 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        binding = null;
-        if (productDisp != null && !productDisp.isDisposed()) {
+        if (productDisp != null) {
             productDisp.dispose();
+        }
+        if (hintBarcodeDisp != null) {
+            hintBarcodeDisp.dispose();
         }
         if (summaryProductPresenter != null) {
             summaryProductPresenter.dispose();
         }
+        binding = null;
+        super.onDestroy();
     }
 
     @Override
@@ -560,8 +561,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     @Subscribe
     public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
-        if (event.getBarcode().equals(lastText)) {
-            setShownProduct(lastText);
+        if (event.getBarcode().equals(lastBarcode)) {
+            setShownProduct(lastBarcode);
         }
     }
 
@@ -635,7 +636,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                    lastText = null;
+                    lastBarcode = null;
                     binding.txtProductCallToAction.setVisibility(GONE);
                 } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     binding.barcodeScanner.resume();
@@ -690,7 +691,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
             }
         });
 
-        mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
         mInvalidBarcodeDao = Utils.getDaoSession().getInvalidBarcodeDao();
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
 
@@ -736,7 +736,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
                     } else {
                         if (ProductUtils.isBarcodeValid(barcodeText)) {
-                            lastText = barcodeText;
+                            lastBarcode = barcodeText;
                             binding.quickViewSearchByBarcode.setVisibility(GONE);
                             setShownProduct(barcodeText);
                         } else {
@@ -875,10 +875,10 @@ public class ContinuousScanActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ProductImageManagementActivity.REQUEST_EDIT_IMAGE && (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)) {
-            setShownProduct(lastText);
+            setShownProduct(lastBarcode);
         } else if (resultCode == RESULT_OK) {
             if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE) {
-                setShownProduct(lastText);
+                setShownProduct(lastBarcode);
             } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE) {
                 Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
                 intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
