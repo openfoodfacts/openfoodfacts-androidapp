@@ -43,9 +43,9 @@
     <string name="add_nutrient_category_prompt_text">Tilføj en kategori og ernæringsfakta som hjælp til produktfærdiggørelsen</string>
     <string name="txt_eaten_products">Produkter, jeg har</string>
     <string name="txt_products_to_buy">Produkter at købe</string>
-    <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Pet Food Facts logo</string>
-    <string name="brand_hint">Examples: Purina, Whiskas, etc…</string>
+    <string name="intent_filter_share_label">Føj til Pet Food Facts</string>
+    <string name="txt_info_eaten_products">Du vil kunne føje produkter til denne liste ved at skanne produkter, trække produktkortet op og trykke på \"Produkter, som skal købes\".
+        Du vl også kunne føje produkter til denne liste ved at søge efter dem og trykke på knappen + øverst til højre på produktsiden.</string>
+    <string name="OFFlogo">Open Pet Food Facts-logo</string>
+    <string name="brand_hint">Eks.: Purina, Whiskas etc.…</string>
 </resources>

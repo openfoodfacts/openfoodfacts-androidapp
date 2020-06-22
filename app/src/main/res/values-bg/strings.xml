@@ -5,8 +5,8 @@
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">преди 1 секунда</item>
+        <item quantity="other">преди %d секунди</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">преди 1 минута</item>
@@ -241,7 +241,7 @@
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="no_thx">Не, благодаря</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">История</string>
     <string name="clear_history">Изчисти историята</string>
@@ -264,8 +264,8 @@
     <string name="nutrition_carbohydrate">Въглехидрати</string>
     <string name="nutrition_cholesterol">Холестерол</string>
     <string name="nutrition_energy">Енергия</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Енергия в калории (kcal)</string>
+    <string name="nutrition_energy_kj">Енергия в джаули (kJ)</string>
     <string name="nutrition_energy_short_name">Енергия</string>
     <string name="nutrition_fat">Мазнини</string>
     <string name="nutrition_fiber">Хранителните влакнини</string>
@@ -310,7 +310,7 @@
     <string name="nutrition_serum_proteins">Серумни протеини</string>
     <string name="nutrition_nucleotides">Нуклеотиди</string>
     <string name="for_100g">За 100 g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">За 100 мл</string>
     <string name="serving">На порция</string>
     <string name="nutrition_monounsaturatedFat">Мононенаситени мазнини</string>
     <string name="nutrition_polyunsaturatedFat">Полиненаситени мазнини</string>
@@ -360,15 +360,15 @@
     <string name="collagen_meat_protein_ratio">Съотношение колаген месо протеин</string>
     <string name="cocoa">Какао</string>
     <string name="chlorophyl">Хлорофил</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">Направете снимка</string>
+    <string name="choose_picture_from_gallery">От галерията</string>
     <string name="take_picture_ingredients">Направете снимка на съставките</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Направете снимка на таблицата с хранителните стойности</string>
     <string name="take_more_pictures">Направете още снимки</string>
     <string name="txtSaturatedFat">Наситени мазнини</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Научете повече за Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -415,7 +415,7 @@
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Моля проверете връзката си.</string>
     <string name="advanced_search_title">Разширено търсене &amp; Графики</string>
-    <string name="compare_products">Compare products</string>
+    <string name="compare_products">Сравни продукти</string>
     <string name="connectivity_check">Моля проверете връзката си с интернет</string>
     <string name="dismiss">Отхвърли</string>
     <string name="Terms">Условия</string>
@@ -442,7 +442,7 @@
     <string name="login_true">Вече сте влезли!</string>
     <string name="confirm_logout">Потвърдете излизането</string>
     <string name="logout_dialog_content">Сигурни ли сте, че искате излезете?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Отказ</string>
     <string name="dialog_create">Create</string>
     <string name="choose_resolution">Изберете разделителна способност</string>
     <string name="pref_resolution_summary">Изберете резолюция за качване на изображение</string>
@@ -457,8 +457,8 @@
     <string name="search_string">Търсене</string>
     <string name="country_string">Държави, където се продават</string>
     <string name="store_subtitle">Магазин</string>
-    <string name="packaging_subtitle">Packaging</string>
-    <string name="packaging_string">Packaging</string>
+    <string name="packaging_subtitle">Опаковка</string>
+    <string name="packaging_string">Опаковка</string>
     <string name="label_string">Етикет</string>
     <string name="category_string">Категория</string>
     <string name="connection">Свързан</string>
@@ -480,7 +480,7 @@
     <string name="by_time">Наскоро разглеждано</string>
     <string name="sort">Сортирай</string>
     <string name="by_nutrition_grade">Хранителен клас</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">Сортирай по</string>
     <string name="shake_summary">Разклатете телефона, за да сканирате продуктите</string>
     <string name="shake_title">Shake to scan</string>
     <!-- strings related to share images -->
@@ -511,14 +511,14 @@
     <string name="contribution_tab_summary">Показване на раздела с потребителски приноси с продукти</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="txtDialogsTitle">Информация</string>
-    <string name="preference_show_all_product_photos_title">Show all product photos</string>
+    <string name="preference_show_all_product_photos_title">Показване на всички снимки на продукта</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
-    <string name="offline_product_addition_title">Add a new product</string>
+    <string name="offline_product_addition_title">Добавете нов продукт</string>
     <string name="productNameNull">Name unknown</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate">%1$d добавки</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
+        <item quantity="one">%d добавка</item>
         <item quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
@@ -589,18 +589,18 @@
     <string name="serving_size">Големина на порцията</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
-    <string name="add_this_product">Add this product</string>
-    <string name="product_picture">Product Picture</string>
+    <string name="add_this_product">Добавете продукта</string>
+    <string name="product_picture">Снимка на продукта</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
-    <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
+    <string name="product_name">Име на продукта</string>
+    <string name="quantity">Количество</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Origin of ingredients</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">EMB код</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Stores</string>
@@ -621,7 +621,7 @@
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Заглавие</string>
-    <string name="description_activity_product">description</string>
+    <string name="description_activity_product">описание</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
@@ -629,9 +629,9 @@
     <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
+    <string name="toddlers_age">1 до 2</string>
+    <string name="children">Деца</string>
+    <string name="children_age">3 до 9</string>
     <string name="adolescents">Adolescents</string>
     <string name="adolescents_age">10 to 17</string>
     <string name="adults">Adults</string>
