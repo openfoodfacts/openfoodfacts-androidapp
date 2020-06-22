@@ -43,9 +43,8 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
         super.onCreate(savedInstanceState);
         binding = ActivityProductComparisonBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setTitle(getString(R.string.compare_products));
 
-        setSupportActionBar(binding.toolbarInclude.toolbar);
+        setTitle(getString(R.string.compare_products));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         photoReceiverHandler = new PhotoReceiverHandler(this);

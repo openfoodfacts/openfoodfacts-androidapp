@@ -71,8 +71,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         super.onCreate(savedInstanceState);
         binding = ActivityProductListsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         setTitle(R.string.your_lists);
-        setSupportActionBar(binding.toolbarInclude.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);

@@ -268,7 +268,8 @@
 
         <activity
             android:name=".views.ProductListsActivity"
-            android:parentActivityName=".views.MainActivity" />
+            android:parentActivityName=".views.MainActivity"
+            android:theme="@style/AppTheme" />
         <activity android:name=".views.YourListedProductsActivity" />
     </application>
 
