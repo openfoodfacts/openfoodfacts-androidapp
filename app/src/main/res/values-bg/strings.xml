@@ -241,7 +241,7 @@
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="no_thx">Не, благодаря</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">История</string>
     <string name="clear_history">Изчисти историята</string>
@@ -264,8 +264,8 @@
     <string name="nutrition_carbohydrate">Въглехидрати</string>
     <string name="nutrition_cholesterol">Холестерол</string>
     <string name="nutrition_energy">Енергия</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Енергия в калории (kcal)</string>
+    <string name="nutrition_energy_kj">Енергия в джаули (kJ)</string>
     <string name="nutrition_energy_short_name">Енергия</string>
     <string name="nutrition_fat">Мазнини</string>
     <string name="nutrition_fiber">Хранителните влакнини</string>
@@ -442,7 +442,7 @@
     <string name="login_true">Вече сте влезли!</string>
     <string name="confirm_logout">Потвърдете излизането</string>
     <string name="logout_dialog_content">Сигурни ли сте, че искате излезете?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Отказ</string>
     <string name="dialog_create">Create</string>
     <string name="choose_resolution">Изберете разделителна способност</string>
     <string name="pref_resolution_summary">Изберете резолюция за качване на изображение</string>
@@ -457,8 +457,8 @@
     <string name="search_string">Търсене</string>
     <string name="country_string">Държави, където се продават</string>
     <string name="store_subtitle">Магазин</string>
-    <string name="packaging_subtitle">Packaging</string>
-    <string name="packaging_string">Packaging</string>
+    <string name="packaging_subtitle">Опаковка</string>
+    <string name="packaging_string">Опаковка</string>
     <string name="label_string">Етикет</string>
     <string name="category_string">Категория</string>
     <string name="connection">Свързан</string>
@@ -518,7 +518,7 @@
     <string name="productAdditivesUnknown"></string>
     <string name="productAdditivesTemplate">%1$d additives</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
+        <item quantity="one">%d добавка</item>
         <item quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
@@ -590,17 +590,17 @@
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
     <string name="add_this_product">Add this product</string>
-    <string name="product_picture">Product Picture</string>
+    <string name="product_picture">Снимка на продукта</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
-    <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
+    <string name="product_name">Име на продукта</string>
+    <string name="quantity">Количество</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Origin of ingredients</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">EMB код</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Stores</string>
@@ -621,7 +621,7 @@
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Заглавие</string>
-    <string name="description_activity_product">description</string>
+    <string name="description_activity_product">описание</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
@@ -629,9 +629,9 @@
     <string name="infants">Infants</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
+    <string name="toddlers_age">1 до 2</string>
+    <string name="children">Деца</string>
+    <string name="children_age">3 до 9</string>
     <string name="adolescents">Adolescents</string>
     <string name="adolescents_age">10 to 17</string>
     <string name="adults">Adults</string>
