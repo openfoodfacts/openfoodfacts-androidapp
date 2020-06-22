@@ -33,6 +33,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -364,8 +365,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
-                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_brand_products)));
+                disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_brand_products)));
                 break;
             case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
@@ -429,8 +431,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             case SearchType.INCOMPLETE_PRODUCT:
                 // Get Products to be completed data and input it to loadData function
-                disp.add(api.getIncompleteProducts(pageAddress).subscribe((search, throwable) ->
-                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_incomplete_products)));
+                disp.add(api.getIncompleteProducts(pageAddress).observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_incomplete_products)));
                 break;
             default:
                 Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
