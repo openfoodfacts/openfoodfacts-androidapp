@@ -144,7 +144,8 @@
         </activity>
         <activity
             android:name=".views.ProductComparisonActivity"
-            android:parentActivityName=".views.MainActivity" />
+            android:parentActivityName=".views.MainActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".views.category.activity.CategoryActivity"
             android:launchMode="singleTop"
