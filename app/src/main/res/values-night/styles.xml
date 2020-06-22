@@ -23,4 +23,14 @@
         <item name="material_drawer_header_selection_subtext">@color/material_drawer_header_selection_subtext</item>
         <item name="material_drawer_legacy_style">false</item> <!-- Enables legacy Material 1 style -->
     </style>
+
+    <style name="ButtonBorder" parent="ButtonRounded">
+        <item name="android:background">@drawable/rounded_button_shape</item>
+        <item name="android:textColor">@color/brand_light_blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/spacing_small</item>
+        <item name="android:paddingRight">@dimen/spacing_small</item>
+        <item name="android:paddingTop">@dimen/spacing_tiny</item>
+        <item name="android:paddingBottom">@dimen/spacing_tiny</item>
+    </style>
 </resources>
