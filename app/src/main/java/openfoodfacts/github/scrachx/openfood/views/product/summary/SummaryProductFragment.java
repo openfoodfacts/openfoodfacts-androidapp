@@ -132,7 +132,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        api = new OpenFoodAPIClient(getActivity());
+        api = new OpenFoodAPIClient(requireActivity());
         apiClientForWikiData = new WikiDataApiClient();
         binding = FragmentSummaryProductBinding.inflate(inflater, container, false);
         return binding.getRoot();
