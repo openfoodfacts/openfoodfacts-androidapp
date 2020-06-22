@@ -310,7 +310,7 @@
     <string name="nutrition_serum_proteins">Серумни протеини</string>
     <string name="nutrition_nucleotides">Нуклеотиди</string>
     <string name="for_100g">За 100 g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="for_100ml">За 100 мл</string>
     <string name="serving">На порция</string>
     <string name="nutrition_monounsaturatedFat">Мононенаситени мазнини</string>
     <string name="nutrition_polyunsaturatedFat">Полиненаситени мазнини</string>
@@ -360,15 +360,15 @@
     <string name="collagen_meat_protein_ratio">Съотношение колаген месо протеин</string>
     <string name="cocoa">Какао</string>
     <string name="chlorophyl">Хлорофил</string>
-    <string name="take_picture">Take a photo</string>
-    <string name="choose_picture_from_gallery">From gallery</string>
+    <string name="take_picture">Направете снимка</string>
+    <string name="choose_picture_from_gallery">От галерията</string>
     <string name="take_picture_ingredients">Направете снимка на съставките</string>
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Направете снимка на таблицата с хранителните стойности</string>
     <string name="take_more_pictures">Направете още снимки</string>
     <string name="txtSaturatedFat">Наситени мазнини</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Научете повече за Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
