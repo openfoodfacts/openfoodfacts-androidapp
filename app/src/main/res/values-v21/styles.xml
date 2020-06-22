@@ -16,10 +16,6 @@
         <item name="android:textColor">@color/brand_red</item>
     </style>
 
-    <style name="Black_Back_Arrow" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:textColorPrimary">@color/md_black_1000</item>
-    </style>
-
     <style name="customSearchView" parent="Widget.AppCompat.Light.SearchView">
         <item name="submitBackground">@color/md_light_appbar</item>
         <item name="queryBackground">@color/md_light_appbar</item>
