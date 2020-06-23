@@ -25,6 +25,16 @@ fastlane screenshots
 fastlane capture_screen
 ```
 Capture Screen
+### release
+```
+fastlane release
+```
+Create a release and upload to internal channel of playstore
+### daily
+```
+fastlane daily
+```
+Check the version currently in production and mark it as "finalized"
 
 ----
 
