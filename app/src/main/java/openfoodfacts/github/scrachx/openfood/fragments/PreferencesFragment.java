@@ -246,9 +246,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             photoPreference.setVisible(false);
         }
 
-        /*
-            Preference to show version name
-         */
+        // Preference to show version name
         Preference versionPref = findPreference("Version");
         versionPref.setEnabled(false);
         try {
@@ -324,7 +322,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     private boolean openWebCustomTab(int faqUrl) {
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
         customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
-        CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(faqUrl)), new WebViewFallback());
+        CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(faqUrl)), new WebViewFallback());
         return true;
     }
 

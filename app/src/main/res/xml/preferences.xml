@@ -2,7 +2,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="@string/preference_header_general" android:summary="">
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_general">
 
         <ListPreference
             android:defaultValue="en"
@@ -54,7 +56,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_header_network" android:summary="">
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_network">
 
         <CheckBoxPreference
             android:defaultValue="true"
@@ -80,9 +84,15 @@
     </PreferenceCategory>
 
     <!-- This is populated at runtime based on available analysis tags -->
-    <PreferenceCategory android:title="@string/preference_header_display" android:summary="" android:key="display_category" app:isPreferenceVisible="false"/>
+    <PreferenceCategory
+        android:key="display_category"
+        android:summary=""
+        android:title="@string/preference_header_display"
+        app:isPreferenceVisible="false" />
 
-    <PreferenceCategory android:title="@string/preference_header_contributing" android:summary="">
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_contributing">
 
         <Preference
             android:summary="@string/Donation"
@@ -104,10 +114,10 @@
             android:title="@string/contribution_tab_title" />
 
         <CheckBoxPreference
-                android:defaultValue="true"
-                android:key="cropNewImage"
-                android:summary="@string/crop_new_image"
-                android:title="@string/crop_new_image_title" />
+            android:defaultValue="true"
+            android:key="cropNewImage"
+            android:summary="@string/crop_new_image"
+            android:title="@string/crop_new_image_title" />
 
         <CheckBoxPreference
             android:defaultValue="true"
@@ -123,7 +133,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_header_about" android:summary="">
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_about">
 
         <Preference
             android:key="contact_team"
