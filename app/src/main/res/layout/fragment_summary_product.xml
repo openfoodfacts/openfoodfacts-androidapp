@@ -80,7 +80,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_tiny"
                                 android:layout_marginBottom="@dimen/spacing_tiny"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                 android:textIsSelectable="true"
                                 android:textStyle="bold"
                                 tools:text="Product name" />
