@@ -174,7 +174,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             AppCompatImageView image = getView().findViewById(R.id.image);
             if (showHelpTakePhoto) {
                 messageStr = getString(R.string.unknown_status_missing_ingredients);
-                image.setImageResource(R.drawable.ic_add_a_photo_black_48dp);
+                image.setImageResource(R.drawable.ic_add_a_photo_dark_48dp);
                 image.setOnClickListener(v -> goToAddPhoto());
                 helpNeeded.setText(Html.fromHtml(getString(R.string.add_photo_to_extract_ingredients)));
                 helpNeeded.setOnClickListener(v -> goToAddPhoto());

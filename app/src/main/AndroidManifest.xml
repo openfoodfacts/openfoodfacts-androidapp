@@ -179,7 +179,9 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".views.ProductBrowsingListActivity">
+        <activity
+            android:name=".views.ProductBrowsingListActivity"
+            android:theme="@style/AppTheme">
             <intent-filter
                 android:autoVerify="true"
                 android:label="@string/app_name_long"

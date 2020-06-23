@@ -33,7 +33,7 @@
                 android:maxHeight="120dp"
                 android:scaleType="fitCenter"
                 android:transitionName="@string/product_transition"
-                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
 
             <TextView
                 android:id="@+id/product_comparison_label"

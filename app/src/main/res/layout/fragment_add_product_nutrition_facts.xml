@@ -57,7 +57,7 @@
                     android:background="?android:selectableItemBackground"
                     app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
                     app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts_picture"
-                    app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+                    app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
 
                 <Button
                     android:id="@+id/btnEditImageNutritionFacts"
