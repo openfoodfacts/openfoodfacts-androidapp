@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+    <style name="OFFTheme" parent="Theme.AppCompat.DayNight">
         <!--<item name="colorPrimary">@color/material_blue_500</item>-->
         <!--<item name="statusBarColor">@color/grey_300</item>-->
         <!--<item name="colorBackground">@color/grey_50</item>-->
@@ -9,6 +9,7 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="searchViewStyle">@style/customSearchView</item>
 
+        <!-- Material drawer -->
         <item name="material_drawer_background">@color/material_drawer_dark_background</item>
         <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
         <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
