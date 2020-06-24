@@ -35,6 +35,8 @@
                 android:id="@+id/nutrition_facts_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/checkbox_no_nutrition_data">
 
                 <TextView
@@ -304,7 +306,6 @@
 
                     <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
                         android:id="@+id/fat"
-                        app:fieldName="fat"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:background="@drawable/bg_edittext_til"
@@ -316,6 +317,7 @@
                         android:singleLine="true"
                         app:attachedModSpinner="@id/spinner_fat_comp"
                         app:attachedUnitSpinner="@id/spinner_fat_unit"
+                        app:fieldName="fat"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:parentTextInputLayout="@+id/fat_til" />
@@ -856,6 +858,7 @@
                     android:layout_marginTop="@dimen/spacing_small"
                     android:drawablePadding="@dimen/spacing_tiny"
                     android:text="@string/add_a_nutrient"
+                    app:drawableStartCompat="@drawable/ic_add_box_blue_18dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/table_layout" />

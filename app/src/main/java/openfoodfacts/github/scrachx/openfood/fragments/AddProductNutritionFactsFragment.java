@@ -112,16 +112,15 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
     private Set<CustomValidatingEditTextView> allEditViews = Collections.emptySet();
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentAddProductNutritionFactsBinding.inflate(inflater);
         return binding.getRoot();
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         binding = null;
+        super.onDestroy();
     }
 
     @Override
