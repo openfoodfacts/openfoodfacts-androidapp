@@ -556,7 +556,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/link_til"
                 app:layout_constraintTop_toTopOf="@id/link_til"
-                app:srcCompat="@drawable/ic_search_black" />
+                app:srcCompat="@drawable/ic_search_dark" />
 
             <ImageView
                 android:id="@+id/hint_link_2"

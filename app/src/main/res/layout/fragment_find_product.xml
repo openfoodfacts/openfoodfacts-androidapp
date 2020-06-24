@@ -11,26 +11,23 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
         android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_marginEnd="@dimen/spacing_normal"
-            android:layout_weight="100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/search_button"
-            app:srcCompat="@drawable/img_scan" />
+            app:srcCompat="@drawable/ic_crowdsourcing_icon" />
 
-        <openfoodfacts.github.scrachx.openfood.utils.CustomEditTextView
+        <EditText
             android:id="@+id/editTextBarcode"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
             android:background="@drawable/edittext_full"
             android:drawablePadding="10dip"
             android:ems="10"
@@ -39,15 +36,16 @@
             android:maxLines="1"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
-            app:drawableLeftCompat="@drawable/ic_search_black" />
+            app:drawableLeftCompat="@drawable/ic_search_dark" />
 
         <Button
             android:id="@+id/buttonBarcode"
             style="@style/ButtonRounded"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+
             android:layout_gravity="center"
-            android:layout_margin="@dimen/spacing_normal"
+
+            android:layout_marginTop="@dimen/spacing_normal"
             android:gravity="center"
             android:text="@string/action_find"
             android:textSize="@dimen/font_large" />
