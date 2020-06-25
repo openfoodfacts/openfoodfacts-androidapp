@@ -88,6 +88,10 @@ https://translate.openfoodfacts.org
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 * You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator.
 
+## Running a Fastlane lane
+* First time you checkout, run `bundle install` at the root of the project
+* Then launch lanes using `bundle exec fastlane release` (for example the release lane)
+
 ## Generate screenshots for the Play Store
 To activate screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
 To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
