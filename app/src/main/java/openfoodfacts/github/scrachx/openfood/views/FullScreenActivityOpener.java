@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -48,6 +50,9 @@ public class FullScreenActivityOpener {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(fragment.getActivity(), mImageFront, fragment.getActivity().getString(R.string.product_transition));
             fragment.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE, options.toBundle());
+            fragment.getActivity().finish();
+            fragment.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                fragment).addToBackStack("product").commit();
         } else {
             fragment.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE);
         }

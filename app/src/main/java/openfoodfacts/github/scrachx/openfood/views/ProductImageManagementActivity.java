@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Callback;
@@ -451,6 +452,8 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     }
 
     void onExit() {
+        FragmentManager fm = getSupportFragmentManager();
+        fm.popBackStack("product",0);
         finish();
     }
 
