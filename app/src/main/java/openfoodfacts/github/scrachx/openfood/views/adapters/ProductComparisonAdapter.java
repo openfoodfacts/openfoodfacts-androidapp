@@ -379,7 +379,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         Product product = productsToCompare.get(onPhotoReturnPosition);
         ProductImage image = new ProductImage(product.getCode(), FRONT, file);
         image.setFilePath(file.getAbsolutePath());
-        api.postImg(context, image, null);
+        api.postImg(image, null);
         String mUrlImage = file.getAbsolutePath();
         product.setImageUrl(mUrlImage);
         onPhotoReturnPosition = null;

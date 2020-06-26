@@ -801,7 +801,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void loadPhoto(File photoFile) {
         ProductImage image = new ProductImage(barcode, ProductImageField.FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(getContext(), image, this);
+        api.postImg(image, this);
         binding.addPhotoLabel.setVisibility(GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
@@ -841,7 +841,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ProductImage image = new ProductImage(barcode, ProductImageField.OTHER, newPhotoFile);
             image.setFilePath(resultUri.getPath());
             showOtherImageProgress();
-            api.postImg(getContext(), image, this);
+            api.postImg(image, this);
         }
     }
 

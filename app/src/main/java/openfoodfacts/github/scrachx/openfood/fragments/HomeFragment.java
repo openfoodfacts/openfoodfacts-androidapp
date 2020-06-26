@@ -67,7 +67,7 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
         binding.tvDailyFoodFact.setOnClickListener(v -> setDailyFoodFact());
 
-        apiClient = new OpenFoodAPIClient(getActivity()).getAPIService();
+        apiClient = new OpenFoodAPIClient(getActivity()).getRawAPI();
         checkUserCredentials();
         sp = PreferenceManager.getDefaultSharedPreferences(getContext());
     }

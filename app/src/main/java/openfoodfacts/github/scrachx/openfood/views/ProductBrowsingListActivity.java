@@ -396,7 +396,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 if (ProductUtils.isBarcodeValid(searchQuery)) {
                     api.getProduct(searchQuery, this);
                 } else {
-                    api.searchProduct(searchQuery, pageAddress, this, (isOk, searchResponse, countProducts) -> {
+                    api.searchProductsByName(searchQuery, pageAddress, this, (isOk, searchResponse, countProducts) -> {
 
                         // countProducts is checked, if it is -2 it means that there are no matching products in the
                         // database for the query.
@@ -425,8 +425,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 loadDataForContributor(searchQuery);
                 break;
             case SearchType.STATE:
-                api.getProductsByStates(searchQuery, pageAddress, (value, state) ->
-                    loadSearchProducts(value, state, R.string.txt_no_matching_allergen_products));
+                disp.add(api.getProductsByStates(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_allergen_products)));
                 break;
             case SearchType.INCOMPLETE_PRODUCT:
                 // Get Products to be completed data and input it to loadData function

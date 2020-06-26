@@ -510,7 +510,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void onPhotoReturned(File newPhotoFile) {
         ProductImage image = new ProductImage(barcode, INGREDIENTS, newPhotoFile);
         image.setFilePath(newPhotoFile.getAbsolutePath());
-        api.postImg(getContext(), image, null);
+        api.postImg(image, null);
         binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = newPhotoFile.getAbsolutePath();
 
