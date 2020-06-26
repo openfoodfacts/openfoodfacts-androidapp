@@ -1,4 +1,4 @@
-name: Android Pull Request & Master CI
+name: Android Master & PR
 
 on:
   pull_request:
@@ -99,4 +99,4 @@ jobs:
       - name: Generate GitHub annotations
         uses: yutailang0119/action-android-lint@v1.0.2
         with:
-          xml_path: build/reports/lint-results.xml
+          xml_path: ./app/build/reports/lint-results.xml
