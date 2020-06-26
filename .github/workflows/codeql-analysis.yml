@@ -8,7 +8,7 @@ on:
 
 jobs:
   analyze:
-
+    name: Security analysis
     runs-on: ubuntu-latest
 
     steps:
