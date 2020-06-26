@@ -112,16 +112,19 @@
                     style="@style/EditHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/spacing_small"
                     android:text="@string/nutrition_facts"
-                    app:layout_constraintStart_toStartOf="@id/section_nutrition_facts_picture"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
                 <RadioGroup
                     android:id="@+id/radio_group"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/section_nutrition_facts"
                     app:layout_constraintTop_toBottomOf="@id/section_nutrition_facts">
 
