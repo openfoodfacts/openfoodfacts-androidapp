@@ -6,3 +6,4 @@
 /build
 *.iml
 /captures
+/fastlane/report.xml

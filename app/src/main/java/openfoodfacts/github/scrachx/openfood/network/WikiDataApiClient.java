@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.network.services.WikidataApiService;
+import openfoodfacts.github.scrachx.openfood.network.services.WikidataAPI;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +31,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
  */
 public class WikiDataApiClient {
     private static final OkHttpClient httpClient = Utils.httpClientBuilder();
-    private final WikidataApiService wikidataApiService;
+    private final WikidataAPI wikidataAPI;
 
     public WikiDataApiClient() {
         this(BuildConfig.WIKIDATA);
@@ -43,13 +43,13 @@ public class WikiDataApiClient {
      * @param apiUrl Url of the WikiData API
      */
     public WikiDataApiClient(String apiUrl) {
-        wikidataApiService = new Retrofit.Builder()
+        wikidataAPI = new Retrofit.Builder()
             .baseUrl(apiUrl)
             .client(httpClient)
             .addConverterFactory(JacksonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
-            .create(WikidataApiService.class);
+            .create(WikidataAPI.class);
     }
 
     /**
@@ -59,7 +59,7 @@ public class WikiDataApiClient {
      * @param onWikiResponse object of class OnWikiResponse
      */
     public void doSomeThing(final String code, final OnWikiResponse onWikiResponse) {
-        wikidataApiService.getWikiCategory(code).enqueue(new Callback<Object>() {
+        wikidataAPI.getWikiCategory(code).enqueue(new Callback<Object>() {
             @Override
             public void onResponse(final @NonNull Call<Object> call, final @NonNull Response<Object> response) {
                 final ObjectMapper mapper = new ObjectMapper();

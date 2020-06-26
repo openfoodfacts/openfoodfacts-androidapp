@@ -553,7 +553,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     public void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(requireActivity(), image, null);
+        api.postImg(image, null);
         binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 

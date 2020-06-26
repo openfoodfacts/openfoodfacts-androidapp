@@ -12,10 +12,6 @@ public class ApiCallbacks {
         void onAllergensResponse(boolean value, Search allergen);
     }
 
-    public interface OnBrandCallback {
-        void onBrandResponse(boolean value, Search brand);
-    }
-
     public interface OnStoreCallback {
         void onStoreResponse(boolean value, Search store);
     }
@@ -58,9 +54,5 @@ public class ApiCallbacks {
 
     public interface OnContributorCallback {
         void onContributorResponse(boolean value, Search contributor);
-    }
-
-    public interface OnStateCallback {
-        void onStateResponse(boolean value, Search state);
     }
 }

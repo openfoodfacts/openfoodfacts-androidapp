@@ -16,7 +16,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 import android.provider.Settings;
 import android.util.Log;
@@ -36,6 +35,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -999,7 +999,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                             File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
                             image = new ProductImage(tempBarcode, OTHER, imageFile);
-                            api.postImg(MainActivity.this, image, null);
+                            api.postImg(image, null);
                         } else {
                             Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                             State st = new State();

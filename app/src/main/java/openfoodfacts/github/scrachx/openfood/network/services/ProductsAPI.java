@@ -362,9 +362,9 @@ public interface ProductsAPI {
     Call<Search> byCode(@Path("Code") String code);
 
     @GET("state/{State}/{page}.json")
-    Call<Search> getProductsByState(@Path("State") String state,
-                                    @Path("page") int page,
-                                    @Query("fields") String fields);
+    Single<Search> getProductsByState(@Path("State") String state,
+                                      @Path("page") int page,
+                                      @Query("fields") String fields);
 
     /**
      * Open Beauty Facts experimental and specific APIs

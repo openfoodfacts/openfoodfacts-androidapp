@@ -34,6 +34,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -726,11 +727,11 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     @Override
     public void onPhotoReturned(File newPhotoFile) {
         startRefresh(getString(R.string.uploading_image));
-        new Thread(() -> { // TODO: Use rxjava
+        disp.add(Completable.fromAction(() -> {
             ProductImage image = new ProductImage(getProduct().getCode(), getSelectedType(), newPhotoFile, getCurrentLanguage());
             image.setFilePath(newPhotoFile.getAbsolutePath());
 
-            client.postImg(ProductImageManagementActivity.this, image, true, new ImageUploadListener() {
+            client.postImg(image, true, new ImageUploadListener() {
                 @Override
                 public void onSuccess() {
                     reloadProduct();
@@ -743,6 +744,6 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
                     stopRefresh();
                 }
             });
-        }).start();
+        }).observeOn(AndroidSchedulers.mainThread()).subscribe());
     }
 }
