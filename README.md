@@ -87,6 +87,7 @@ https://translate.openfoodfacts.org
 * In Android Studio, make sure to select `OFF` as the default flavor for Open Food Facts (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts)
 <img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
 * You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator.
+* The package name on the Play Store is org.openfoodfacts.scanner. For historic reasons, it's openfoodfacts.github.scrachx.openfood in the code and on F-Droid.
 
 ## Running a Fastlane lane
 * First time you checkout, run `bundle install` at the root of the project
