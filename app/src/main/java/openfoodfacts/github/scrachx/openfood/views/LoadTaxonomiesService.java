@@ -1,50 +1,39 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.app.IntentService;
-import android.content.Intent;
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.ResultReceiver;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.work.RxWorker;
+import androidx.work.WorkerParameters;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
-public class LoadTaxonomiesService extends IntentService {
+public class LoadTaxonomiesService extends RxWorker {
     public static final String RECEIVER_KEY = "receiver";
-    private ProductRepository productRepository;
-    private SharedPreferences settings;
-    private ResultReceiver receiver;
-    private Disposable disposable;
-    public static final int STATUS_RUNNING = 0;
-    public static final int STATUS_FINISHED = 1;
-    public static final int STATUS_ERROR = 2;
 
-    public LoadTaxonomiesService() {
-        super("LoadTaxonomiesService");
+    /**
+     * @param appContext The application {@link Context}
+     * @param workerParams Parameters to setup the internal state of this worker
+     */
+    public LoadTaxonomiesService(@NonNull Context appContext, @NonNull WorkerParameters workerParams) {
+        super(appContext, workerParams);
     }
 
+    @NonNull
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
-        productRepository = (ProductRepository) ProductRepository.getInstance();
-        settings = getSharedPreferences("prefs", 0);
-        receiver = intent == null ? null : intent.getParcelableExtra(RECEIVER_KEY);
-
-        doTask();
-    }
-
-    private void doTask() {
-        showLoading();
+    public Single<Result> createWork() {
+        ProductRepository productRepository = (ProductRepository) ProductRepository.getInstance();
+        SharedPreferences settings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
 
         // We use completable because we only care about state (error or completed), not returned value
         List<CompletableSource> syncObservables = new ArrayList<>();
@@ -59,34 +48,13 @@ public class LoadTaxonomiesService extends IntentService {
         syncObservables.add(productRepository.reloadAdditivesFromServer().subscribeOn(Schedulers.io()).ignoreElement());
         syncObservables.add(productRepository.reloadCategoriesFromServer().subscribeOn(Schedulers.io()).ignoreElement());
 
-        disposable = Completable.merge(syncObservables).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(() -> {
+        return Completable.merge(syncObservables).subscribeOn(Schedulers.io())
+            .toSingle(() -> {
                 settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false).apply();
-                hideLoading(false);
-            }, throwable -> {
+                return Result.success();
+            }).onErrorReturn(throwable -> {
                 Log.e(LoadTaxonomiesService.class.getSimpleName(), "can't load products", throwable);
-                hideLoading(true);
+                return Result.failure();
             });
-    }
-
-    @Override
-    public boolean stopService(Intent name) {
-        if (disposable != null) {
-            disposable.dispose();
-        }
-        return super.stopService(name);
-    }
-
-    private void showLoading() {
-        if (receiver != null) {
-            receiver.send(STATUS_RUNNING, new Bundle());
-        }
-    }
-
-    private void hideLoading(boolean isError) {
-        if (receiver != null) {
-            receiver.send(isError ? STATUS_ERROR : STATUS_FINISHED, new Bundle());
-        }
     }
 }

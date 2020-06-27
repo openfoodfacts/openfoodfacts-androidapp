@@ -11,8 +11,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
 import android.provider.SearchRecentSuggestions;
 import android.util.Log;
 import android.view.Menu;
@@ -31,6 +29,9 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -72,6 +73,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
+import static androidx.work.WorkInfo.State.RUNNING;
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_PREFERENCES;
 
 /**
@@ -279,26 +281,27 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Preference preference = new Preference(preferenceScreen.getContext());
             preference.setTitle(R.string.load_ingredient_detection_data);
             preference.setSummary(R.string.load_ingredient_detection_data_summary);
+
             preference.setOnPreferenceClickListener(pref -> {
                 pref.setOnPreferenceClickListener(null);
-                //the service will load server resources only if newer than already downloaded...
-                Intent intent = new Intent(context, LoadTaxonomiesService.class);
-                intent.putExtra("receiver", new ResultReceiver(new Handler()) {
-                    @Override
-                    protected void onReceiveResult(int resultCode, Bundle resultData) {
-                        super.onReceiveResult(resultCode, resultData);
 
-                        if (resultCode == LoadTaxonomiesService.STATUS_RUNNING) {
+                WorkManager manager = WorkManager.getInstance(PreferencesFragment.this.requireContext());
+                OneTimeWorkRequest request = OneTimeWorkRequest.from(LoadTaxonomiesService.class);
+
+                // The service will load server resources only if newer than already downloaded...
+                manager.enqueue(request);
+                manager.getWorkInfoByIdLiveData(request.getId()).observe(PreferencesFragment.this, workInfo -> {
+                    if (workInfo != null) {
+                        if (workInfo.getState() == RUNNING) {
                             preference.setTitle(R.string.please_wait);
                             preference.setIcon(R.drawable.ic_cloud_download_black_24dp);
                             preference.setSummary(null);
                             preference.setWidgetLayoutResource(R.layout.loading);
-                        } else {
+                        } else if (workInfo.getState() == WorkInfo.State.SUCCEEDED) {
                             new GetAnalysisTagConfigsTask(PreferencesFragment.this).execute(OFFApplication.getDaoSession());
                         }
                     }
                 });
-                context.startService(intent);
                 return true;
             });
             displayCategory.addPreference(preference);
@@ -369,6 +372,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
     }
 
+    // TODO: convert to RxJava
     private static class GetAnalysisTagConfigsTask extends AsyncTask<DaoSession, Void, List<AnalysisTagConfig>> {
         private final String language;
         private final WeakReference<PreferencesFragment> wRefFragment;
