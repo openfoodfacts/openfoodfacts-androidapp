@@ -20,7 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.squareup.picasso.Picasso;
@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
@@ -78,12 +78,12 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private static final int EDIT_REQUEST_CODE = 2;
     private FragmentIngredientsProductBinding binding;
     private AllergenNameDao mAllergenNameDao;
-    private OpenFoodAPIClient api;
+    private OpenFoodAPIClient client;
     private String mUrlImage;
     private State activityState;
     private String barcode;
     private SendProduct mSendProduct;
-    private WikiDataApiClient apiClientForWikiData;
+    private WikiDataApiClient wikidataClient;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private IIngredientsProductPresenter.Actions presenter;
@@ -106,9 +106,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        api = new OpenFoodAPIClient(getActivity());
-        apiClientForWikiData = new WikiDataApiClient();
-
+        client = new OpenFoodAPIClient(requireContext());
+        wikidataClient = new WikiDataApiClient();
         binding = FragmentIngredientsProductBinding.inflate(inflater);
         return binding.getRoot();
     }
@@ -124,7 +123,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         binding.novaMethodLink.setOnClickListener(v -> novaMethodLinkDisplay());
         binding.extractIngredientsPrompt.setOnClickListener(v -> extractIngredients());
         binding.imageViewIngredients.setOnClickListener(v -> openFullScreen());
-
 
         photoReceiverHandler = new PhotoReceiverHandler(this);
         refreshView(activityState);
@@ -250,7 +248,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             binding.novaGroup.setOnClickListener((View v) -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
                 CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.getActivity(), tabsIntent, uri, new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.requireActivity(), tabsIntent, uri, new WebViewFallback());
             });
         } else {
             binding.novaLayout.setVisibility(View.GONE);
@@ -283,9 +281,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             @Override
             public void onClick(@NonNull View view) {
                 if (allergen.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(
+                    wikidataClient.doSomeThing(
                         allergen.getWikiDataId(),
-                        (result) -> {
+                        result -> {
                             if (result != null) {
                                 FragmentActivity activity = getActivity();
                                 if (activity != null && !activity.isFinishing()) {
@@ -355,7 +353,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
-        AdditiveFragmentHelper.showAdditives(additives, binding.textAdditiveProduct, apiClientForWikiData, this);
+        AdditiveFragmentHelper.showAdditives(additives, binding.textAdditiveProduct, wikidataClient, this);
     }
 
     @Override
@@ -400,9 +398,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (getActivity() == null) {
             return;
         }
-        ViewPager viewPager = getActivity().findViewById(
-            R.id.pager);
-        if (BuildConfig.FLAVOR.equals("off")) {
+        final ViewPager2 viewPager = getActivity().findViewById(R.id.pager);
+        if (Utils.isFlavor(AppFlavors.OFF)) {
             final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
             final String login = settings.getString("user", "");
             if (login.isEmpty()) {
@@ -417,15 +414,15 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 }
             }
         }
-        if (BuildConfig.FLAVOR.equals("opff")) {
+        if (Utils.isFlavor(AppFlavors.OPFF)) {
             viewPager.setCurrentItem(4);
         }
 
-        if (BuildConfig.FLAVOR.equals("obf")) {
+        if (Utils.isFlavor(AppFlavors.OBF)) {
             viewPager.setCurrentItem(1);
         }
 
-        if (BuildConfig.FLAVOR.equals("opf")) {
+        if (Utils.isFlavor(AppFlavors.OPF)) {
             viewPager.setCurrentItem(0);
         }
     }
@@ -510,7 +507,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void onPhotoReturned(File newPhotoFile) {
         ProductImage image = new ProductImage(barcode, INGREDIENTS, newPhotoFile);
         image.setFilePath(newPhotoFile.getAbsolutePath());
-        api.postImg(image, null);
+        client.postImg(image, null);
         binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = newPhotoFile.getAbsolutePath();
 
