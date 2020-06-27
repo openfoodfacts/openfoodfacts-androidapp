@@ -548,40 +548,29 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void performOCR(String code, String imageField) {
-        client.getIngredients(code, imageField)
+        disp.add(client.getIngredients(code, imageField)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(disposable -> addProductIngredientsFragment.showOCRProgress())
-            .subscribe(new SingleObserver<JsonNode>() {
-                @Override
-                public void onSubscribe(Disposable d) {
-
+            .subscribe(jsonNode -> {
+                addProductIngredientsFragment.hideOCRProgress();
+                String status = jsonNode.get("status").toString();
+                if (status.equals("0")) {
+                    String ocrResult = jsonNode.get("ingredients_text_from_image").asText();
+                    addProductIngredientsFragment.setIngredients(status, ocrResult);
+                } else {
+                    addProductIngredientsFragment.setIngredients(status, null);
                 }
-
-                @Override
-                public void onSuccess(JsonNode jsonNode) {
-                    addProductIngredientsFragment.hideOCRProgress();
-                    String status = jsonNode.get("status").toString();
-                    if (status.equals("0")) {
-                        String ocrResult = jsonNode.get("ingredients_text_from_image").asText();
-                        addProductIngredientsFragment.setIngredients(status, ocrResult);
-                    } else {
-                        addProductIngredientsFragment.setIngredients(status, null);
-                    }
+            }, throwable -> {
+                addProductIngredientsFragment.hideOCRProgress();
+                if (throwable instanceof IOException) {
+                    View view = findViewById(R.id.coordinator_layout);
+                    Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
+                        .setAction(R.string.txt_try_again, v -> performOCR(code, imageField)).show();
+                } else {
+                    Log.i(this.getClass().getSimpleName(), throwable.getMessage(), throwable);
+                    Toast.makeText(AddProductActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
-                @Override
-                public void onError(Throwable e) {
-                    addProductIngredientsFragment.hideOCRProgress();
-                    if (e instanceof IOException) {
-                        View view = findViewById(R.id.coordinator_layout);
-                        Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
-                            .setAction(R.string.txt_try_again, v -> performOCR(code, imageField)).show();
-                    } else {
-                        Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
-                        Toast.makeText(AddProductActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            }));
     }
 
     private void hideImageProgress(int position, boolean errorUploading, String message) {
