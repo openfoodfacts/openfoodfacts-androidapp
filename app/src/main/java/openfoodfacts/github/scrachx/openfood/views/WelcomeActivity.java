@@ -52,7 +52,14 @@ public class WelcomeActivity extends AppCompatActivity {
                 lastPage = false;
             }
         }
-
+        /*
+        This is the Onboarding Activity shown on first-run.
+        TODO: redesign it & change the content to explain:
+        - the 3 scores
+        - be honest about offline until we implement offline scan (nobody cares about offline edit)
+        - perhaps highlight ingredient analysis
+        */
+        
         /*
         If user is on the last page and tries to swipe towards the next page on right then the value of
         positionOffset returned is always 0, on the other hand if the user tries to swipe towards the
