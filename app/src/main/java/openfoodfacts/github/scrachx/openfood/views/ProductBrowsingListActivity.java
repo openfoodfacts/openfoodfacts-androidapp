@@ -480,7 +480,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk && response != null) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                binding.textCountProduct.setText(getResources().getString(R.string.number_of_results) + " " +
+                binding.textCountProduct.setText(getResources().getString(R.string.number_of_results) +
                     NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
