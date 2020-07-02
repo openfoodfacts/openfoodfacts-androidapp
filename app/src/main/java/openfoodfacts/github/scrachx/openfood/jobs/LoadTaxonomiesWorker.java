@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views;
+package openfoodfacts.github.scrachx.openfood.jobs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,15 +17,14 @@ import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
-public class LoadTaxonomiesService extends RxWorker {
-    public static final String RECEIVER_KEY = "receiver";
-
+public class LoadTaxonomiesWorker extends RxWorker {
     /**
      * @param appContext The application {@link Context}
      * @param workerParams Parameters to setup the internal state of this worker
      */
-    public LoadTaxonomiesService(@NonNull Context appContext, @NonNull WorkerParameters workerParams) {
+    public LoadTaxonomiesWorker(@NonNull Context appContext, @NonNull WorkerParameters workerParams) {
         super(appContext, workerParams);
     }
 
@@ -53,7 +52,7 @@ public class LoadTaxonomiesService extends RxWorker {
                 settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false).apply();
                 return Result.success();
             }).onErrorReturn(throwable -> {
-                Log.e(LoadTaxonomiesService.class.getSimpleName(), "can't load products", throwable);
+                Log.e(LoadTaxonomiesWorker.class.getSimpleName(), "can't load products", throwable);
                 return Result.failure();
             });
     }

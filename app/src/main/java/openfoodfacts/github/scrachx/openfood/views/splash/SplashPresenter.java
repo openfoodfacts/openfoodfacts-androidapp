@@ -8,9 +8,9 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
+import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker;
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 
 /**
  * Created by Lobster on 03.03.18.
@@ -57,7 +57,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
         }
 
         // The service will load server resources only if newer than already downloaded...
-        OneTimeWorkRequest request = OneTimeWorkRequest.from(LoadTaxonomiesService.class);
+        OneTimeWorkRequest request = OneTimeWorkRequest.from(LoadTaxonomiesWorker.class);
         WorkManager manager = WorkManager.getInstance(activity);
         manager.enqueue(request);
         manager.getWorkInfoByIdLiveData(request.getId()).observe(activity, workInfo -> {

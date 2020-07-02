@@ -166,8 +166,6 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
 
-        <service android:name=".views.LoadTaxonomiesService" />
-
         <provider
             android:name=".utils.GenericFileProvider"
             android:authorities="${applicationId}.provider"

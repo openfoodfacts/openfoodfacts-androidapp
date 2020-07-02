@@ -1,10 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -30,6 +28,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -50,9 +54,16 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     private ProductListsAdapter adapter;
     private List<ProductLists> productLists;
     private ProductListsDao productListsDao;
+    private CompositeDisposable disp = new CompositeDisposable();
 
     public static Intent getIntent(@NonNull Context context) {
         return new Intent(context, ProductListsActivity.class);
+    }
+
+    @Override
+    protected void onDestroy() {
+        disp.dispose();
+        super.onDestroy();
     }
 
     public static ProductListsDao getProductListsDaoWithDefaultList(Context context) {
@@ -172,7 +183,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         } else if (requestCode == ACTIVITY_CHOOSE_FILE && resultCode == RESULT_OK) {
             try {
                 InputStream inputStream = getContentResolver().openInputStream(data.getData());
-                new ParseCSV(inputStream).execute();
+                parseCSV(inputStream);
             } catch (Exception e) {
                 Log.e(ProductListsActivity.class.getSimpleName(), "Error importing CSV: " + e.getMessage());
             }
@@ -218,76 +229,55 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
     }
 
-    @SuppressLint("StaticFieldLeak")
-    class ParseCSV extends AsyncTask<Void, Integer, Boolean> {
-        InputStream inputStream;
-        ProgressDialog progressDialog;
+    private void parseCSV(InputStream inputStream) {
+        ProgressDialog progressDialog = new ProgressDialog(ProductListsActivity.this);
+        progressDialog.show();
+        disp.add(Observable.create((ObservableEmitter<Integer> emitter) ->
+            disp.add(Single.fromCallable(() -> {
+                YourListedProductDao yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
+                List<YourListedProduct> list = new ArrayList<>();
 
-        ParseCSV(InputStream inputStream) {
-            this.inputStream = inputStream;
-            progressDialog = new ProgressDialog(ProductListsActivity.this);
-        }
+                try (CSVParser csvParser = new CSVParser(new InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+                    List<CSVRecord> result = csvParser.getRecords();
+                    int size = result.size();
+                    int count = 0;
+                    long id;
+                    for (CSVRecord record : result) {
+                        List<ProductLists> lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
+                        if (lists.isEmpty()) {
+                            //create new list
+                            ProductLists productList = new ProductLists(record.get(2), 0);
+                            productLists.add(productList);
+                            productListsDao.insert(productList);
+                            lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
+                        }
+                        id = lists.get(0).getId();
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog.show();
-        }
+                        YourListedProduct yourListedProduct = new YourListedProduct();
+                        yourListedProduct.setBarcode(record.get(0));
+                        yourListedProduct.setProductName(record.get(1));
+                        yourListedProduct.setListName(record.get(2));
+                        yourListedProduct.setProductDetails(record.get(3));
+                        yourListedProduct.setListId(id);
+                        list.add(yourListedProduct);
 
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            progressDialog.dismiss();
-            if (!aBoolean) {
-                Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            progressDialog.setProgress(values[0]);
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... voids) {
-            YourListedProductDao yourListedProductDao = Utils.getDaoSession().getYourListedProductDao();
-            List<YourListedProduct> list = new ArrayList<>();
-
-            try (CSVParser csvParser = new CSVParser(new InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
-                List<CSVRecord> result = csvParser.getRecords();
-                int size = result.size();
-                int count = 0;
-                long id;
-                for (CSVRecord record : result) {
-                    List<ProductLists> lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
-                    if (lists.isEmpty()) {
-                        //create new list
-                        ProductLists productList = new ProductLists(record.get(2), 0);
-                        productLists.add(productList);
-                        productListsDao.insert(productList);
-                        lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record.get(2))).list();
+                        count++;
+                        emitter.onNext(((int) ((float) count * 100 / (float) size)));
                     }
-                    id = lists.get(0).getId();
-
-                    YourListedProduct yourListedProduct = new YourListedProduct();
-                    yourListedProduct.setBarcode(record.get(0));
-                    yourListedProduct.setProductName(record.get(1));
-                    yourListedProduct.setListName(record.get(2));
-                    yourListedProduct.setProductDetails(record.get(3));
-                    yourListedProduct.setListId(id);
-                    list.add(yourListedProduct);
-
-                    count++;
-                    publishProgress((int) ((float) count * 100 / (float) size));
+                    yourListedProductDao.insertOrReplaceInTx(list);
+                    return true;
+                } catch (Exception e) {
+                    Log.e("ParseCSV", e.getMessage(), e);
+                    return false;
                 }
-                yourListedProductDao.insertOrReplaceInTx(list);
-                return true;
-            } catch (Exception e) {
-                Log.e("ParseCSV", e.getMessage(), e);
-                return false;
-            }
-        }
+            })
+                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(success -> {
+                    progressDialog.dismiss();
+                    if (success) {
+                        Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ProductListsActivity.this, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show();
+                    }
+                }))).subscribe(progressDialog::setProgress));
     }
 }

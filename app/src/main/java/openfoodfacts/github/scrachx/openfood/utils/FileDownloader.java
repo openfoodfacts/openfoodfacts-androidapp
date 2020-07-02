@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.jobs;
+package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.content.Context;
 import android.net.Uri;
@@ -17,7 +17,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 /**
  * File Downloader class which is used to download a file and
@@ -49,7 +48,7 @@ public class FileDownloader {
             .flatMapMaybe(responseBody -> {
                 if (responseBody != null) {
                     Log.d(FileDownloader.class.getSimpleName(), "server contacted and has file");
-                    File writtenToDisk = writeResponseBodyToDisk(context, responseBody, fileUrl);
+                    File writtenToDisk = writeResponseBodyToDiskSync(context, responseBody, fileUrl);
                     if (writtenToDisk != null) {
                         Log.d(FileDownloader.class.getSimpleName(), "file download was a success " + writtenToDisk);
                         return Maybe.just(writtenToDisk);
@@ -62,7 +61,7 @@ public class FileDownloader {
                 }
             })
             .doOnError(throwable -> Log.e(FileDownloader.class.getSimpleName(), "error"))
-            .subscribeOn(Schedulers.io()); // Network operation -> Schedulers.io()
+            .subscribeOn(Schedulers.io()); // IO operation -> Schedulers.io()
     }
 
     /**
@@ -73,7 +72,7 @@ public class FileDownloader {
      * @param url: url of the downloaded file.
      * @return {@link File} that has been written to the disk.
      */
-    private static File writeResponseBodyToDisk(Context context, ResponseBody body, String url) {
+    private static File writeResponseBodyToDiskSync(Context context, ResponseBody body, String url) {
         final Uri decode = Uri.parse(url);
         File res = new File(Utils.makeOrGetPictureDirectory(context), System.currentTimeMillis() + "-" + decode.getLastPathSegment());
         try {
