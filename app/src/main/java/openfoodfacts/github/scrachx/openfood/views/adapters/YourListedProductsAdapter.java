@@ -82,7 +82,7 @@ public class YourListedProductsAdapter extends RecyclerView.Adapter<YourListedPr
             boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
             if (isConnected) {
                 OpenFoodAPIClient api = new OpenFoodAPIClient(v.getContext());
-                api.getProduct(barcode, (Activity) v.getContext());
+                api.openProduct(barcode, (Activity) v.getContext());
             }
         });
     }

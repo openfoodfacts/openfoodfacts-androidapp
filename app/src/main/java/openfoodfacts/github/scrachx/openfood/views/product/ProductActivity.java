@@ -168,7 +168,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
      */
     private void loadProductDataFromUrl(String barcode) {
 
-        disp.add(api.getProductStateFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        disp.add(api.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(state -> {
                 mState = state;
@@ -257,7 +257,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
     @Override
     public void onRefresh() {
-        api.getProduct(mState.getProduct().getCode(), this);
+        api.openProduct(mState.getProduct().getCode(), this);
     }
 
     @Override

@@ -190,7 +190,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             showOfflineSavedDetails(offlineSavedProduct);
         }
 
-        client.getProductStateFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<State>() {
                 @Override

@@ -22,6 +22,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
 import openfoodfacts.github.scrachx.openfood.models.State;
@@ -34,9 +36,6 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -49,6 +48,14 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
+    private CompositeDisposable disp = new CompositeDisposable();
+
+    @Override
+    public void onDestroy() {
+        disp.dispose();
+        super.onDestroy();
+    }
+
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
 
@@ -116,19 +123,13 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @Override
     public void onRefresh() {
-        api.getProductStateFull(getProductState().getProduct().getCode()).enqueue(new Callback<State>() {
-            @Override
-            public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
-                final State s = response.body();
-                productState = s;
-                adapterResult.refresh(s);
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
-                adapterResult.refresh(getProductState());
-            }
-        });
+        disp.add(api.getProductStateFull(getProductState().getProduct().getCode())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(newState -> {
+                productState = newState;
+                adapterResult.refresh(newState);
+            }, throwable ->
+                adapterResult.refresh(getProductState())));
     }
 
     @Override
