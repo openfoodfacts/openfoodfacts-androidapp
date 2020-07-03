@@ -144,7 +144,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //done here for android 4 compatibility.
         //a better solution could be to use https://developer.android.com/jetpack/androidx/releases/ but weird issue with it..
         binding.addNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        binding.buttonMorePictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
         photoReceiverHandler = new PhotoReceiverHandler(this);
 
         binding.imageViewFront.setOnClickListener(v -> openFrontImageFullscreen());
