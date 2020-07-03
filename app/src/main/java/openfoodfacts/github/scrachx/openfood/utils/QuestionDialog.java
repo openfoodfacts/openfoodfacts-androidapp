@@ -119,16 +119,11 @@ public class QuestionDialog {
             gradientDrawable.setColor(Color.parseColor("#FFFFFF"));
             layerDrawable.setDrawableByLayerId(R.id.round_background, gradientDrawable);
 
-            Drawable drawable = this.mIcon;
-            Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+            Drawable wrappedDrawable = DrawableCompat.wrap(this.mIcon);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                DrawableCompat.setTint(drawable.mutate(), mContext.getResources().getColor(mIconColor));
-            } else {
-                drawable.setColorFilter(mContext.getResources().getColor(mIconColor), PorterDuff.Mode.SRC_IN);
-            }
+            DrawableCompat.setTint(wrappedDrawable.mutate(), mContext.getResources().getColor(mIconColor));
 
-            layerDrawable.setDrawableByLayerId(R.id.drawable_image, drawable);
+            layerDrawable.setDrawableByLayerId(R.id.drawable_image, wrappedDrawable);
 
             titleImageView.setImageDrawable(layerDrawable);
             reviewQuestionTextView.setText(this.mQuestion);
