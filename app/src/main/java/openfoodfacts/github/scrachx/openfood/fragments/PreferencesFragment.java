@@ -8,7 +8,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
@@ -44,15 +43,19 @@ import org.greenrobot.greendao.query.WhereCondition;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
@@ -70,7 +73,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.LoadTaxonomiesService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static androidx.work.WorkInfo.State.RUNNING;
@@ -82,7 +84,9 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem, SharedPreferences.OnSharedPreferenceChangeListener {
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
+    private static final String ADDITIVE_IMPORT_TAG = "ADDITIVE_IMPORT";
     private Context context;
+    private CompositeDisposable disp = new CompositeDisposable();
 
     @Override
     public void onCreateOptionsMenu(Menu menu, @NonNull MenuInflater inflater) {
@@ -127,7 +131,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
-                new GetAdditivesTask().execute();
+                getAdditives();
             }
             return true;
         });
@@ -260,7 +264,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
 
         if (Utils.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
-            new GetAnalysisTagConfigsTask(this).execute(daoSession);
+            getAnalysisTagConfigs(daoSession);
         } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
             PreferenceCategory displayCategory = preferenceScreen.findPreference("display_category");
@@ -286,7 +290,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 pref.setOnPreferenceClickListener(null);
 
                 WorkManager manager = WorkManager.getInstance(PreferencesFragment.this.requireContext());
-                OneTimeWorkRequest request = OneTimeWorkRequest.from(LoadTaxonomiesService.class);
+                OneTimeWorkRequest request = OneTimeWorkRequest.from(LoadTaxonomiesWorker.class);
 
                 // The service will load server resources only if newer than already downloaded...
                 manager.enqueue(request);
@@ -298,7 +302,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                             preference.setSummary(null);
                             preference.setWidgetLayoutResource(R.layout.loading);
                         } else if (workInfo.getState() == WorkInfo.State.SUCCEEDED) {
-                            new GetAnalysisTagConfigsTask(PreferencesFragment.this).execute(OFFApplication.getDaoSession());
+                            getAnalysisTagConfigs(OFFApplication.getDaoSession());
                         }
                     }
                 });
@@ -366,32 +370,30 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     }
 
     @Override
+    public void onDestroy() {
+        disp.dispose();
+        super.onDestroy();
+    }
+
+    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if ("enableMobileDataUpload".equals(key)) {
             OfflineProductWorker.scheduleSync();
         }
     }
 
-    // TODO: convert to RxJava
-    private static class GetAnalysisTagConfigsTask extends AsyncTask<DaoSession, Void, List<AnalysisTagConfig>> {
-        private final String language;
-        private final WeakReference<PreferencesFragment> wRefFragment;
+    private void getAnalysisTagConfigs(DaoSession daoSession) {
+        final String language = LocaleHelper.getLanguage(this.requireContext());
 
-        GetAnalysisTagConfigsTask(PreferencesFragment fragment) {
-            this.wRefFragment = new WeakReference<>(fragment);
-            language = LocaleHelper.getLanguage(fragment.context);
-        }
-
-        @Override
-        protected List<AnalysisTagConfig> doInBackground(DaoSession... daoSession) {
-            AnalysisTagConfigDao analysisTagConfigDao = daoSession[0].getAnalysisTagConfigDao();
+        disp.add(Single.fromCallable(() -> {
+            AnalysisTagConfigDao analysisTagConfigDao = daoSession.getAnalysisTagConfigDao();
             List<AnalysisTagConfig> analysisTagConfigs = analysisTagConfigDao.queryBuilder()
                 .where(new WhereCondition.StringCondition("1 GROUP BY type"))
                 .orderAsc(AnalysisTagConfigDao.Properties.Type).build().list();
 
-            AnalysisTagNameDao analysisTagNameDao = daoSession[0].getAnalysisTagNameDao();
-            for (AnalysisTagConfig config :
-                analysisTagConfigs) {
+            AnalysisTagNameDao analysisTagNameDao = daoSession.getAnalysisTagNameDao();
+
+            for (AnalysisTagConfig config : analysisTagConfigs) {
                 String type = "en:" + config.getType();
                 AnalysisTagName analysisTagTypeName = analysisTagNameDao.queryBuilder()
                     .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
@@ -407,36 +409,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 config.setTypeName(analysisTagTypeName != null ? analysisTagTypeName.getName() : config.getType());
             }
             return analysisTagConfigs;
-        }
-
-        @Override
-        protected void onPostExecute(final List<AnalysisTagConfig> result) {
-            super.onPostExecute(result);
-            PreferencesFragment fragment = wRefFragment.get();
-            if (fragment != null) {
-                fragment.buildDisplayCategory(result);
-            }
-        }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .subscribe(this::buildDisplayCategory));
     }
 
-    /**
-     * AsyncTask to receive additives on a background thread
-     */
-    private class GetAdditivesTask extends AsyncTask<Void, Integer, Boolean> {
-        private static final String ADDITIVE_IMPORT = "ADDITIVE_IMPORT";
-        private final LoadToast lt = new LoadToast(requireActivity());
+    private void getAdditives() {
+        final LoadToast lt = new LoadToast(requireActivity());
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            lt.setText(requireActivity().getString(R.string.toast_retrieving));
-            lt.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.blue));
-            lt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
-            lt.show();
-        }
+        lt.setText(requireActivity().getString(R.string.toast_retrieving));
+        lt.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.blue));
+        lt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
+        lt.show();
 
-        @Override
-        protected Boolean doInBackground(Void... ignored) {
+        disp.add(Single.fromCallable(() -> {
             final FragmentActivity activity = getActivity();
             if (activity == null) {
                 return true;
@@ -450,19 +435,16 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 mAdditiveDao.insertOrReplaceInTx(frenchAdditives);
             } catch (IOException e) {
                 result = false;
-                Log.e(ADDITIVE_IMPORT, "Unable to import additives from " + additivesFile, e);
+                Log.e(ADDITIVE_IMPORT_TAG, "Unable to import additives from " + additivesFile, e);
             }
             return result;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean result) {
-            super.onPostExecute(result);
-            lt.hide();
-            final FragmentActivity activity = getActivity();
-            if (activity != null) {
-                activity.recreate();
-            }
-        }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .subscribe(aBoolean -> {
+                lt.hide();
+                final FragmentActivity activity = getActivity();
+                if (activity != null) {
+                    activity.recreate();
+                }
+            }));
     }
 }

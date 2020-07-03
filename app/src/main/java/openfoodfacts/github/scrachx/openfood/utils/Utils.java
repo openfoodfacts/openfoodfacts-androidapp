@@ -19,7 +19,6 @@ import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Environment;
-import androidx.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -40,6 +39,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 import androidx.work.Constraints;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.NetworkType;
@@ -73,7 +73,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWork;
+import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
@@ -443,7 +443,7 @@ public class Utils {
         }
         final int periodicity = (int) TimeUnit.MINUTES.toSeconds(30);
 
-        OneTimeWorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(SavedProductUploadWork.class)
+        OneTimeWorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(SavedProductUploadWorker.class)
             .setConstraints(new Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.UNMETERED)
                 .build()
