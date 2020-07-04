@@ -5,8 +5,8 @@
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">᱑ ᱴᱤᱡ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="other">%d ᱴᱤᱡ ᱢᱟᱲᱟᱝ</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minute ago</item>
@@ -433,7 +433,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
