@@ -512,7 +512,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showProductQuestion(Question question) {
-        if (Utils.isUserLoggedIn(requireActivity()) && question != null && !question.isEmpty()) {
+        if (question != null && !question.isEmpty()) {
             productQuestion = question;
             binding.productQuestionText.setText(String.format("%s%n%s",
                 question.getQuestion(), question.getValue()));
