@@ -41,7 +41,7 @@
     <string name="add_nutrient_prompt_text">Lisää ravintosisältö ravintoainetasojen laskemiseksi</string>
     <string name="add_category_prompt_text">Lisää luokka auttaaksesi täydentämään tuotteen</string>
     <string name="add_nutrient_category_prompt_text">Lisää luokka ja ravintosisältö auttaaksesi täydentämään tuotteen</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Omistamani tuotteet</string>
     <string name="txt_products_to_buy">Ostettavat tuotteet</string>
     <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
