@@ -299,8 +299,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
 
             if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
-                // prefetch the uri
-                // currently only available in french translations
+                // prefetch the URL
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri));
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
@@ -538,6 +537,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             .setValue(productQuestion.getValue())
             .setOnReviewClickListener(new QuestionActionListeners() {
                 @Override
+                // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onPositiveFeedback(QuestionDialog dialog) {
                     //init POST request
                     sendProductInsights(productQuestion.getInsightId(), 1);
@@ -545,12 +545,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 }
 
                 @Override
+                // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onNegativeFeedback(QuestionDialog dialog) {
                     sendProductInsights(productQuestion.getInsightId(), 0);
                     dialog.dismiss();
                 }
 
                 @Override
+                // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onAmbiguityFeedback(QuestionDialog dialog) {
                     sendProductInsights(productQuestion.getInsightId(), -1);
                     dialog.dismiss();
