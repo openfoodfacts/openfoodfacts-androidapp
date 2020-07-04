@@ -13,7 +13,7 @@ L'historique de vos scans, entièrement privé et exportable
 
 Allez plus loin avec Wikipédia
 
-Ajoutez des alertes allergènes
+Définir des alertes d'allergènes
 
 La nutrition, simplifiée
 
@@ -27,7 +27,7 @@ Wikipédia pour la nourriture
 
 Wikipédia pour la cosmétique
 
-Wikipédia pour l'alimentation des animaux de compagnie
+Wikipédia pour la nourriture
 
 Wikipédia des produits
 
@@ -35,7 +35,7 @@ Ingrédients
 
 Puissant
 
-Informations nutritionnelles
+Qualité nutritionnelle
 
 ======================
 Captures d'écran V3
