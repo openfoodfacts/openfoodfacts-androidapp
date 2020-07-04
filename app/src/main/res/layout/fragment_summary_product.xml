@@ -80,17 +80,16 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_tiny"
                                 android:layout_marginBottom="@dimen/spacing_tiny"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Title"
                                 android:textIsSelectable="true"
-                                android:textStyle="bold"
                                 tools:text="Product name" />
 
                             <TextView
                                 android:id="@+id/textBrandProduct"
+                                style="Subtitle"
                                 android:layout_width="fill_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="@dimen/spacing_tiny"
-                                android:textColorLink="@color/tag_link"
                                 android:textIsSelectable="true"
                                 android:textSize="@dimen/font_normal"
                                 tools:text="Brands: ..." />
@@ -101,7 +100,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="@dimen/spacing_tiny"
                                 android:textSize="@dimen/font_normal"
-                                tools:text="Quantity" />
+                                tools:text="Quantity: ..." />
                         </LinearLayout>
 
                         <LinearLayout
@@ -244,8 +243,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <View style="@style/HorizontalLineSeparator" />
-
                 <LinearLayout
                     android:id="@+id/analysisContainer"
                     android:layout_width="match_parent"
@@ -268,6 +265,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginStart="@dimen/spacing_large"
+                        android:layout_marginEnd="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
                         android:layout_marginLeft="@dimen/spacing_large"
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginBottom="@dimen/spacing_tiny"
@@ -275,16 +274,12 @@
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                    <View
-                        android:id="@+id/analysisSeparator"
-                        style="@style/HorizontalLineSeparator" />
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/scores_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
                     tools:visibility="visible">
 
                     <LinearLayout
@@ -344,6 +339,8 @@
                         android:layout_margin="@dimen/spacing_normal"
                         android:layout_marginTop="8dp"
                         android:visibility="gone"
+                        app:drawableLeftCompat="@drawable/ic_add_box_blue_18dp"
+                        app:drawableStartCompat="@drawable/ic_add_box_blue_18dp"
                         app:layout_constraintEnd_toStartOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"
@@ -351,8 +348,6 @@
                         tools:visibility="visible" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <View style="@style/HorizontalLineSeparator" />
 
                 <RelativeLayout
                     android:id="@+id/product_question_layout"
@@ -476,18 +471,17 @@
                         android:id="@+id/llProductDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/padding_normal"
+                        android:paddingTop="@dimen/padding_normal"
+                        android:paddingEnd="@dimen/padding_normal"
+                        android:paddingBottom="@dimen/padding_normal">
 
                         <TextView
                             android:id="@+id/textAdditiveProduct"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/padding_too_short"
-                            android:textColorLink="@color/tag_link"
                             android:textIsSelectable="true"
                             android:textSize="@dimen/font_normal"
                             tools:text="Additives: Test1, Test2, Test3, Test4, Test5, Test6, Test7, Test8, Test9" />
@@ -528,7 +522,6 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
                                 android:padding="@dimen/padding_too_short"
-                                android:textColorLink="@color/tag_link"
                                 android:textIsSelectable="true"
                                 android:textSize="@dimen/font_normal"
                                 tools:text="Categories: ..." />
@@ -561,7 +554,6 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
                                 android:padding="@dimen/padding_too_short"
-                                android:textColorLink="@color/tag_link"
                                 android:textIsSelectable="true"
                                 android:textSize="@dimen/font_normal"
                                 tools:text="Labels: Test1, Test2, Test3, Test4, Test5, Tes6, Test7, Test8, Test9" />
@@ -596,7 +588,6 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
                                 android:padding="@dimen/padding_too_short"
-                                android:textColorLink="@color/tag_link"
                                 android:textIsSelectable="true"
                                 android:textSize="@dimen/font_normal"
                                 tools:text="Packager codes: ..." />
@@ -641,7 +632,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/spacing_normal"
-                    android:text="@string/take_more_pictures" />
+                    android:text="@string/take_more_pictures"
+                    app:drawableLeftCompat="@drawable/ic_add_a_photo_blue_18dp"
+                    app:drawableStartCompat="@drawable/ic_add_a_photo_blue_18dp" />
 
             </LinearLayout>
 

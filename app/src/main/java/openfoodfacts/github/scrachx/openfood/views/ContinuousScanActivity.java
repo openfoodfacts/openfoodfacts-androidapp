@@ -16,6 +16,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.content.ContextCompat;
@@ -106,19 +108,13 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private Handler handler;
     private boolean isAnalysisTagsEmpty = true;
     private String lastBarcode;
-    private boolean mAutofocus;
-    private boolean mFlash;
+    private boolean autoFocusActive;
+    private boolean beepActive;
     private InvalidBarcodeDao mInvalidBarcodeDao;
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private OfflineSavedProduct offlineSavedProduct;
     private Product product;
     private ProductFragment productFragment;
-    private SharedPreferences sp;
-    private boolean mRing;
-    private int peekLarge;
-    private int peekSmall;
-    private PopupMenu popup;
-    private boolean productShowing = false;
     private final BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
@@ -136,7 +132,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 return;
             }
 
-            if (mRing) {
+            if (beepActive) {
                 beepManager.playBeepSound();
             }
 
@@ -151,6 +147,12 @@ public class ContinuousScanActivity extends AppCompatActivity {
             // Here possible results are useless but we must implement this
         }
     };
+    private SharedPreferences cameraPref;
+    private int peekLarge;
+    private int peekSmall;
+    private PopupMenu popup;
+    private boolean productShowing = false;
+    private boolean flashActive;
     private SummaryProductPresenter summaryProductPresenter;
     private Disposable hintBarcodeDisp;
 
@@ -177,20 +179,22 @@ public class ContinuousScanActivity extends AppCompatActivity {
         if (isFinishing()) {
             return;
         }
+        // Dispose the previous call if not ended.
         if (productDisp != null && !productDisp.isDisposed()) {
-            //dispose the previous call if not ended.
             productDisp.dispose();
         }
         if (summaryProductPresenter != null) {
             summaryProductPresenter.dispose();
         }
 
+        // First, try to show if we have an offline saved product in the db
         offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(barcode);
         if (offlineSavedProduct != null) {
             showOfflineSavedDetails(offlineSavedProduct);
         }
 
-        client.getProductStateFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        // Then query the online db
+        client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<State>() {
                 @Override
@@ -358,11 +362,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
             });
     }
 
-    private void tryDisplayOffline(OfflineSavedProduct offlineSavedProduct, String barcode, int p) {
+    private void tryDisplayOffline(@Nullable OfflineSavedProduct offlineSavedProduct, @NonNull String barcode, @StringRes int errorMsg) {
         if (offlineSavedProduct != null) {
             showOfflineSavedDetails(offlineSavedProduct);
         } else {
-            showProductNotFound(getString(p, barcode));
+            showProductNotFound(getString(errorMsg, barcode));
         }
     }
 
@@ -593,7 +597,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.toggleFlash.setOnClickListener(v -> toggleFlash());
-        binding.buttonMore.setOnClickListener(v -> moreSettings());
+        binding.buttonMore.setOnClickListener(v -> showMoreSettings());
 
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
@@ -694,11 +698,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
         mInvalidBarcodeDao = Utils.getDaoSession().getInvalidBarcodeDao();
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
 
-        sp = getSharedPreferences("camera", 0);
-        mRing = sp.getBoolean("ring", false);
-        mFlash = sp.getBoolean("flash", false);
-        mAutofocus = sp.getBoolean("focus", true);
-        cameraState = sp.getInt("cameraState", 0);
+        cameraPref = getSharedPreferences("camera", 0);
+        beepActive = cameraPref.getBoolean("ring", false);
+        flashActive = cameraPref.getBoolean("flash", false);
+        autoFocusActive = cameraPref.getBoolean("focus", true);
+        cameraState = cameraPref.getInt("cameraState", 0);
 
         popup = new PopupMenu(this, binding.buttonMore);
         popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
@@ -707,19 +711,21 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.barcodeScanner.setStatusText(null);
         CameraSettings settings = binding.barcodeScanner.getBarcodeView().getCameraSettings();
         settings.setRequestedCameraId(cameraState);
-        if (mFlash) {
+        if (flashActive) {
             binding.barcodeScanner.setTorchOn();
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
         }
-        if (mRing) {
+        if (beepActive) {
             popup.getMenu().findItem(R.id.toggleBeep).setChecked(true);
         }
-        if (mAutofocus) {
+        if (autoFocusActive) {
             settings.setAutoFocusEnabled(true);
             popup.getMenu().findItem(R.id.toggleAutofocus).setChecked(true);
         } else {
             settings.setAutoFocusEnabled(false);
         }
+
+        // Start continuous scanner
         binding.barcodeScanner.decodeContinuous(callback);
         beepManager = new BeepManager(this);
 
@@ -759,15 +765,23 @@ public class ContinuousScanActivity extends AppCompatActivity {
     }
 
     private boolean isProductIncomplete() {
-        return product != null && (product.getImageFrontUrl() == null || product.getImageFrontUrl().equals("") ||
-            product.getQuantity() == null || product.getQuantity().equals("") ||
-            product.getProductName() == null || product.getProductName().equals("") ||
-            product.getBrands() == null || product.getBrands().equals("") ||
-            product.getIngredientsText() == null || product.getIngredientsText().equals(""));
+        if (product == null) {
+            return false;
+        }
+        return product.getImageFrontUrl() == null
+            || product.getImageFrontUrl().equals("")
+            || product.getQuantity() == null
+            || product.getQuantity().equals("")
+            || product.getProductName() == null
+            || product.getProductName().equals("")
+            || product.getBrands() == null
+            || product.getBrands().equals("")
+            || product.getIngredientsText() == null
+            || product.getIngredientsText().equals("");
     }
 
     private void toggleCamera() {
-        SharedPreferences.Editor editor = sp.edit();
+        SharedPreferences.Editor editor = cameraPref.edit();
         CameraSettings settings = binding.barcodeScanner.getBarcodeView().getCameraSettings();
         if (binding.barcodeScanner.getBarcodeView().isPreviewActive()) {
             binding.barcodeScanner.pause();
@@ -785,33 +799,33 @@ public class ContinuousScanActivity extends AppCompatActivity {
     }
 
     private void toggleFlash() {
-        SharedPreferences.Editor editor = sp.edit();
-        if (mFlash) {
+        SharedPreferences.Editor editor = cameraPref.edit();
+        if (flashActive) {
             binding.barcodeScanner.setTorchOff();
-            mFlash = false;
+            flashActive = false;
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp);
             editor.putBoolean("flash", false);
         } else {
             binding.barcodeScanner.setTorchOn();
-            mFlash = true;
+            flashActive = true;
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
             editor.putBoolean("flash", true);
         }
         editor.apply();
     }
 
-    private void moreSettings() {
+    private void showMoreSettings() {
         popup.setOnMenuItemClickListener(item -> {
             SharedPreferences.Editor editor;
             switch (item.getItemId()) {
                 case R.id.toggleBeep:
-                    editor = sp.edit();
-                    if (mRing) {
-                        mRing = false;
+                    editor = cameraPref.edit();
+                    if (beepActive) {
+                        beepActive = false;
                         item.setChecked(false);
                         editor.putBoolean("ring", false);
                     } else {
-                        mRing = true;
+                        beepActive = true;
                         item.setChecked(true);
                         editor.putBoolean("ring", true);
                     }
@@ -821,15 +835,15 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     if (binding.barcodeScanner.getBarcodeView().isPreviewActive()) {
                         binding.barcodeScanner.pause();
                     }
-                    editor = sp.edit();
+                    editor = cameraPref.edit();
                     CameraSettings settings = binding.barcodeScanner.getBarcodeView().getCameraSettings();
-                    if (mAutofocus) {
-                        mAutofocus = false;
+                    if (autoFocusActive) {
+                        autoFocusActive = false;
                         settings.setAutoFocusEnabled(false);
                         item.setChecked(false);
                         editor.putBoolean("focus", false);
                     } else {
-                        mAutofocus = true;
+                        autoFocusActive = true;
                         settings.setAutoFocusEnabled(true);
                         item.setChecked(true);
                         editor.putBoolean("focus", true);

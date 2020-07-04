@@ -230,7 +230,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             if (product != null) {
                 String barcode = product.getCode();
                 if (Utils.isNetworkConnected(context)) {
-                    api.getProduct(barcode, (Activity) context);
+                    api.openProduct(barcode, (Activity) context);
                     try {
                         View view1 = ((Activity) context).getCurrentFocus();
                         if (view != null) {
@@ -248,7 +248,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                         .negativeText(R.string.dismiss)
                         .onPositive((dialog, which) -> {
                             if (Utils.isNetworkConnected(context)) {
-                                api.getProduct(barcode, (Activity) context);
+                                api.openProduct(barcode, (Activity) context);
                             } else {
                                 Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
                             }
