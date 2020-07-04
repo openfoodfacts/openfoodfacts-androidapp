@@ -116,6 +116,7 @@ public class QuestionDialog {
 
             LayerDrawable layerDrawable = (LayerDrawable) mContext.getResources().getDrawable(R.drawable.reviewdialog_round_icon);
             GradientDrawable gradientDrawable = (GradientDrawable) layerDrawable.findDrawableByLayerId(R.id.round_background);
+            // TODO: Extract hardcoded color
             gradientDrawable.setColor(Color.parseColor("#FFFFFF"));
             layerDrawable.setDrawableByLayerId(R.id.round_background, gradientDrawable);
 

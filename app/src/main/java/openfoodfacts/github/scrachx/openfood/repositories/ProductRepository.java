@@ -789,7 +789,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
-     * Loads question from the local database by code and lang of question.
+     * Loads Robotoff question from the local database by code and lang of question.
      *
      * @param code for the question
      * @param lang is language of the question
@@ -808,7 +808,7 @@ public class ProductRepository implements IProductRepository {
     }
 
     /**
-     * Annotate the insight response using insight id and annotation
+     * Annotate the Robotoff insight response using insight id and annotation
      *
      * @param insightId is the unique id for the insight
      * @param annotation is the annotation to be used
