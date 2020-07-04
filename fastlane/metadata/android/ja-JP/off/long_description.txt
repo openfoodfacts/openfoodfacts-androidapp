@@ -17,7 +17,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Get a sense of how much of your daily carbon quota you're using for food
 - Based on the footprints computed for France by ADEME.
 - Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+-カーボンインパクトを表示するには、肉または魚の割合と数量を含む完全な成分リストが製品に含まれている必要があります
 
 
 ▶ Contribute to Food Transparency
@@ -50,7 +50,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
-- 今インターネットに接続していなくても、新製品を追加できます.
+- The whole planet, in your pocket ! - 今インターネットに接続していなくても、新製品を追加できます.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
@@ -59,7 +59,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - You can export your scan history
 
 ▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
+-牛乳、グルテン、卵、大豆、ナッツ、魚、セロリ、マスタード、二酸化硫黄と亜硫酸塩、ピーナッツ、ゴマ、甲殻類、軟体動物またはルピナスアレルギー？
 - Speed up your shopping by doing an initial screening of your food with Open Food Facts.
 - Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
