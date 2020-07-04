@@ -6,14 +6,14 @@ New native version of Open Food Facts. All the Open Food Facts volunteers been w
 ==================
 新鮮事
 ==================
-一、 You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
-二、 Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
-三、 Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
-四、 You can set allergens alerts (always double check the actual label yourself though!)
-五、 You now get a scan history you can export and that never leaves your phone
-六、 You can shake your phone at any time in the app to start scanning
-七、 You can now add new products even when you're offline
-八、 You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
-九、 Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
+一、 一、 You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
+二、 二、 Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.
+三、 三、 Get extra information from Wikipedia. Click on a food category, an additive… to learn more and see similar products.
+四、 四、 You can set allergens alerts (always double check the actual label yourself though!)
+五、 五、 You now get a scan history you can export and that never leaves your phone
+六、 六、 You can shake your phone at any time in the app to start scanning
+七、 七、 You can now add new products even when you're offline
+八、 八、 You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
+九、 九、 Everything is also much faster. Products load blazingly fast, even with a bad mobile connection.
 十、 我們對您的個人資料依然不感興趣。 您不用註冊都可以掃描和貢獻食品資料。
-額外功能！ Despite all the new stuff, the app is as light as before. 手機的剩餘空間是寶貴的。
+額外功能！ 額外功能！ Despite all the new stuff, the app is as light as before. 手機的剩餘空間是寶貴的。
