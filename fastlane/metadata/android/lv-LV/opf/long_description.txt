@@ -29,7 +29,7 @@ Open Food Facts ir atvērta datu bāze ar edienu produktiem un to sastāvdaļām
 Pārtikas jomā jūs varat instalēt Open Food Facts, kosmētikai, Open Beauty Facts un dzīvnieku barībai Pet Food Facts.
 
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Jautājumi, atsauksmes: contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 
