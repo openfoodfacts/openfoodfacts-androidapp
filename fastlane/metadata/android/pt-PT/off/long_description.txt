@@ -26,7 +26,7 @@ Para descobrir o projeto Open Food Facts realizado por voluntários, visite http
 - Open Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras.
 - Você pode começar a contribuir hoje adicionando um produto de sua geladeira.
 
-Criar listas
+▶ Obtenha os Factos
 Crie listas de compras, controle o que você comeu e compartilhe facilmente e exporte suas listas.
 
 ▶ Obtenha os Factos
