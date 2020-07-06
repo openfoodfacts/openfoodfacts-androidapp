@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="other"> Open Foods Facts 에 기부되기를 기다리는 오프라인 제품이 %d 있습니다.</item>
@@ -607,6 +622,7 @@
     <string name="edit_ingredients_image">성분 사진 편집</string>
     <string name="edit_other_image">사진 편집</string>
     <string name="sign_in_to_edit">제품을 편집 하시려면 로그인 하세요.</string>
+    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">예 : 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 파운드</string>
     <string name="edit_product_title">제품을 편집</string>
     <string name="nutrient_already_added">%s 은 영양 정보에 이미 존재합니다</string>
