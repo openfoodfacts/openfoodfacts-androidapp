@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
 import android.app.Activity;
@@ -18,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -79,6 +96,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
@@ -98,6 +116,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
+    private static final int LOGIN_GET_RESULT = 27;
     private OpenFoodAPIClient api;
     private WikiDataApiClient apiClientForWikiData;
     private String barcode;
@@ -529,7 +548,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void onProductQuestionClick() {
-        if (productQuestion == null && !Utils.isUserLoggedIn(requireActivity())) {
+        if (productQuestion == null) {
             return;
         }
         new QuestionDialog(requireActivity())
@@ -538,7 +557,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             .setValue(productQuestion.getValue())
             .setOnReviewClickListener(new QuestionActionListeners() {
                 @Override
-                // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onPositiveFeedback(QuestionDialog dialog) {
                     //init POST request
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.POSITIVE);
@@ -546,14 +564,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 }
 
                 @Override
-                // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onNegativeFeedback(QuestionDialog dialog) {
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.NEGATIVE);
                     dialog.dismiss();
                 }
 
                 @Override
-                // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onAmbiguityFeedback(QuestionDialog dialog) {
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.AMBIGUITY);
                     dialog.dismiss();
@@ -568,10 +584,31 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     public void sendProductInsights(String insightId, AnnotationAnswer annotation) {
-        Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
-        presenter.annotateInsight(insightId, annotation);
-        binding.productQuestionLayout.setVisibility(GONE);
-        productQuestion = null;
+        if (!Utils.isUserLoggedIn(requireActivity())) {
+            new MaterialDialog.Builder(requireActivity())
+                .title("Please sign in or register to answer insights.")
+                .positiveText("LogIn")
+                .onPositive((dialog, which) -> {
+                    registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
+                            presenter.annotateInsight(insightId, annotation);
+                            binding.productQuestionLayout.setVisibility(GONE);
+                            productQuestion = null;
+                        }
+                    }).launch(new Intent(getActivity(), LoginActivity.class));
+                })
+                .neutralText("Register")
+                .onNeutral((dialog, which) -> {
+                    // TODO: Link to register
+                })
+                .show();
+        } else {
+            Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
+            presenter.annotateInsight(insightId, annotation);
+            binding.productQuestionLayout.setVisibility(GONE);
+            productQuestion = null;
+        }
     }
 
     public void showAnnotatedInsightToast(AnnotationResponse response) {

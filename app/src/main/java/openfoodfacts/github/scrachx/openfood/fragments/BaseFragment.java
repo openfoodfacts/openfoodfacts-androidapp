@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.Context;
@@ -135,7 +151,7 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
                                            @NonNull int[] grantResults) {
         if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA) {
             if (!isAllGranted(grantResults)) {
-                new MaterialDialog.Builder(getActivity())
+                new MaterialDialog.Builder(requireActivity())
                     .title(R.string.permission_title)
                     .content(R.string.permission_denied)
                     .negativeText(R.string.txtNo)
