@@ -588,20 +588,23 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             new MaterialDialog.Builder(requireActivity())
                 .title("Please sign in or register to answer insights.")
                 .positiveText("LogIn")
-                .onPositive((dialog, which) -> {
-                    registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                            dialog.dismiss();
-                            Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
-                            presenter.annotateInsight(insightId, annotation);
-                            binding.productQuestionLayout.setVisibility(GONE);
-                            productQuestion = null;
-                        }
-                    }).launch(new Intent(getActivity(), LoginActivity.class));
+                .onPositive((dialog, which) ->
+                    registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                        result -> {
+                            if (result.getResultCode() == Activity.RESULT_OK) {
+                                dialog.dismiss();
+                                Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
+                                presenter.annotateInsight(insightId, annotation);
+                                binding.productQuestionLayout.setVisibility(GONE);
+                                productQuestion = null;
+                            }
+                        }).launch(new Intent(getActivity(), LoginActivity.class)))
+                .negativeText(R.string.create_account)
+                .onNegative((dialog, which) -> {
                 })
-                .neutralText("Register")
+                .neutralText(R.string.dialog_cancel)
                 .onNeutral((dialog, which) -> {
-                    // TODO: Link to register
+                    dialog.dismiss();
                 })
                 .show();
         } else {
@@ -612,7 +615,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    public void showAnnotatedInsightToast(AnnotationResponse response) {
+    public void showAnnotatedInsightToast(@NonNull AnnotationResponse response) {
         if (response.getStatus().equals("updated") && getActivity() != null) {
             Toast toast = Toast.makeText(getActivity(), R.string.product_question_submit_message, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 500);
