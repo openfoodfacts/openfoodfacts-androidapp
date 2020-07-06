@@ -34,6 +34,8 @@ import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.Category;
 import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
@@ -52,7 +54,6 @@ import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
 import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
 import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
 import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
 import openfoodfacts.github.scrachx.openfood.models.Label;
@@ -815,7 +816,7 @@ public class ProductRepository implements IProductRepository {
      * @return The annotated insight response
      */
     @Override
-    public Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation) {
+    public Single<AnnotationResponse> annotateInsight(String insightId, AnnotationAnswer annotation) {
         // if the user is logged in, send the auth, otherwise make it anonymous
         final SharedPreferences userPref = OFFApplication.getInstance()
             .getSharedPreferences("login", 0);
@@ -827,9 +828,9 @@ public class ProductRepository implements IProductRepository {
             final String baseAuth = "Basic " + Base64.encodeToString(
                 (user + ":" + pass).getBytes(), Base64.NO_WRAP);
 
-            return robotoffApi.annotateInsight(insightId, annotation, baseAuth);
+            return robotoffApi.annotateInsight(insightId, annotation.getResult(), baseAuth);
         } else {
-            return robotoffApi.annotateInsight(insightId, annotation);
+            return robotoffApi.annotateInsight(insightId, annotation.getResult());
         }
     }
 

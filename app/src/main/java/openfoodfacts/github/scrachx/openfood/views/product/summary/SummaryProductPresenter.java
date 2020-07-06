@@ -11,6 +11,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
@@ -215,7 +216,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
     }
 
     @Override
-    public void annotateInsight(String insightId, int annotation) {
+    public void annotateInsight(String insightId, AnnotationAnswer annotation) {
         disposable.add(
             repository.annotateInsight(insightId, annotation)
                 .subscribeOn(Schedulers.io())

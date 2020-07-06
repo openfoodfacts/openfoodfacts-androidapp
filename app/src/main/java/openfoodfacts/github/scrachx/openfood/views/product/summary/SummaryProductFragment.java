@@ -49,8 +49,9 @@ import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
@@ -540,21 +541,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onPositiveFeedback(QuestionDialog dialog) {
                     //init POST request
-                    sendProductInsights(productQuestion.getInsightId(), 1);
+                    sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.POSITIVE);
                     dialog.dismiss();
                 }
 
                 @Override
                 // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onNegativeFeedback(QuestionDialog dialog) {
-                    sendProductInsights(productQuestion.getInsightId(), 0);
+                    sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.NEGATIVE);
                     dialog.dismiss();
                 }
 
                 @Override
                 // TODO: show signup/login modal if !Utils.isUserLoggedIn
                 public void onAmbiguityFeedback(QuestionDialog dialog) {
-                    sendProductInsights(productQuestion.getInsightId(), -1);
+                    sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.AMBIGUITY);
                     dialog.dismiss();
                 }
 
@@ -566,14 +567,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             .show();
     }
 
-    public void sendProductInsights(String insightId, int annotation) {
-        Log.d("SummaryProductFragment", String.format("Annotation %d received for insight %s", annotation, insightId));
+    public void sendProductInsights(String insightId, AnnotationAnswer annotation) {
+        Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
         presenter.annotateInsight(insightId, annotation);
         binding.productQuestionLayout.setVisibility(GONE);
         productQuestion = null;
     }
 
-    public void showAnnotatedInsightToast(InsightAnnotationResponse response) {
+    public void showAnnotatedInsightToast(AnnotationResponse response) {
         if (response.getStatus().equals("updated") && getActivity() != null) {
             Toast toast = Toast.makeText(getActivity(), R.string.product_question_submit_message, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 500);

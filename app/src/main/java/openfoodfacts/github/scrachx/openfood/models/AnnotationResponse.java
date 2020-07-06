@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
-public class InsightAnnotationResponse implements Serializable {
-
+public class AnnotationResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @JsonProperty("status")
     private String status;
     @JsonProperty("description")

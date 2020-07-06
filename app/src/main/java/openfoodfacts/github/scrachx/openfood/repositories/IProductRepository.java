@@ -9,11 +9,12 @@ import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.Category;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.Ingredient;
-import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Question;
 
@@ -65,7 +66,7 @@ public interface IProductRepository {
 
     Single<Question> getSingleProductQuestion(String code, String lang);
 
-    Single<InsightAnnotationResponse> annotateInsight(String insightId, int annotation);
+    Single<AnnotationResponse> annotateInsight(String insightId, AnnotationAnswer annotation);
 
     Maybe<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(String analysisTag, String languageCode);
 
