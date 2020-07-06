@@ -591,6 +591,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 .onPositive((dialog, which) -> {
                     registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                         if (result.getResultCode() == Activity.RESULT_OK) {
+                            dialog.dismiss();
                             Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
                             presenter.annotateInsight(insightId, annotation);
                             binding.productQuestionLayout.setVisibility(GONE);

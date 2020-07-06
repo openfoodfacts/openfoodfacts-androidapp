@@ -28,7 +28,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -148,8 +147,8 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     protected void doAttemptLogin() {
         Utils.hideKeyboard(this);
-        String login = ((EditText) binding.loginInput).getText().toString();
-        String password = ((EditText) binding.passInput).getText().toString();
+        String login = binding.loginInput.getText().toString();
+        String password = binding.passInput.getText().toString();
         if (TextUtils.isEmpty(login)) {
             binding.loginInput.setError(getString(R.string.error_field_required));
             binding.loginInput.requestFocus();
