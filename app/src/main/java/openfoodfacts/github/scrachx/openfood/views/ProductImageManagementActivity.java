@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Activity;
@@ -39,7 +55,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding;
-import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ImageSize;
 import openfoodfacts.github.scrachx.openfood.images.ImageTransformationUtils;
@@ -54,6 +69,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.LanguageDataAdapter;
 import pl.aprilapps.easyphotopicker.EasyImage;
 import smartdevelop.ir.eram.showcaseviewlib.GuideView;
@@ -505,7 +521,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA && BaseFragment.isAllGranted(grantResults)) {
+        if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA && Utils.isAllGranted(grantResults)) {
             onAddImage();
         }
     }

@@ -14,20 +14,24 @@
  * limitations under the License.
  */
 
-package openfoodfacts.github.scrachx.openfood;
+package openfoodfacts.github.scrachx.openfood.models;
 
-import org.apache.commons.lang.ArrayUtils;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class AppFlavors {
-    public static final String OFF = "off";
-    public static final String OPFF = "opff";
-    public static final String OPF = "opf";
-    public static final String OBF = "obf";
+import java.io.Serializable;
 
-    private AppFlavors() {
+public class AnnotationResponse implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @JsonProperty("status")
+    private String status;
+    @JsonProperty("description")
+    private String description;
+
+    public String getStatus() {
+        return status;
     }
 
-    public static boolean isFlavor(String... flavors) {
-        return ArrayUtils.contains(flavors, BuildConfig.FLAVOR);
+    public String getDescription() {
+        return description;
     }
 }

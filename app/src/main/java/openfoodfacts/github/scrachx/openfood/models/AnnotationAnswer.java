@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-package openfoodfacts.github.scrachx.openfood;
+package openfoodfacts.github.scrachx.openfood.models;
 
-import org.apache.commons.lang.ArrayUtils;
+public enum AnnotationAnswer {
+    NEGATIVE(0),
+    POSITIVE(1),
+    AMBIGUITY(-1);
+    private final int result;
 
-public class AppFlavors {
-    public static final String OFF = "off";
-    public static final String OPFF = "opff";
-    public static final String OPF = "opf";
-    public static final String OBF = "obf";
-
-    private AppFlavors() {
+    AnnotationAnswer(int i) {
+        this.result = i;
     }
 
-    public static boolean isFlavor(String... flavors) {
-        return ArrayUtils.contains(flavors, BuildConfig.FLAVOR);
+    public int getResult() {
+        return this.result;
     }
 }

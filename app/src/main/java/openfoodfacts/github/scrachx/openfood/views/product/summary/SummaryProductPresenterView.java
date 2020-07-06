@@ -1,8 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
-import openfoodfacts.github.scrachx.openfood.models.*;
-
 import java.util.List;
+
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.Question;
 
 public class SummaryProductPresenterView implements ISummaryProductPresenter.View {
     @Override
@@ -16,7 +22,7 @@ public class SummaryProductPresenterView implements ISummaryProductPresenter.Vie
     }
 
     @Override
-    public void showAnnotatedInsightToast(InsightAnnotationResponse insightAnnotationResponse) {
+    public void showAnnotatedInsightToast(AnnotationResponse annotationResponse) {
         //empty impl
     }
 

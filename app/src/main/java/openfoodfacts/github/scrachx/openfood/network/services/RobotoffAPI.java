@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.network.services;
 
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -19,13 +19,13 @@ public interface RobotoffAPI {
 
     @FormUrlEncoded
     @POST("api/v1/insights/annotate")
-    Single<InsightAnnotationResponse> annotateInsight(
+    Single<AnnotationResponse> annotateInsight(
         @Field("insight_id") String insightId,
         @Field("annotation") int annotation);
 
     @FormUrlEncoded
     @POST("api/v1/insights/annotate")
-    Single<InsightAnnotationResponse> annotateInsight(
+    Single<AnnotationResponse> annotateInsight(
         @Field("insight_id") String insightId,
         @Field("annotation") int annotation,
         @Header("Authorization") String auth
