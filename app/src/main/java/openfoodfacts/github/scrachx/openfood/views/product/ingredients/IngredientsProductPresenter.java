@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
 
 import android.util.Log;
@@ -11,7 +27,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
@@ -24,7 +39,7 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 public class IngredientsProductPresenter implements IIngredientsProductPresenter.Actions {
     private final CompositeDisposable disposable = new CompositeDisposable();
     private final Product product;
-    private final IProductRepository repository = ProductRepository.getInstance();
+    private final ProductRepository repository = ProductRepository.getInstance();
     private final IIngredientsProductPresenter.View view;
 
 

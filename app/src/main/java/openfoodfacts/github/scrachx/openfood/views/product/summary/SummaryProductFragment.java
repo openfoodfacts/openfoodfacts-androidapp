@@ -141,7 +141,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private State state;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
@@ -724,7 +724,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void onAddNutriScorePromptClick() {
         if (Utils.isFlavor(OFF)) {
             if (isUserNotLoggedIn()) {
-                startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN);
+                Utils.startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN, requireActivity());
             } else {
                 editProductNutriscore();
             }
@@ -763,7 +763,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void onEditProductButtonClick() {
         if (isUserNotLoggedIn()) {
-            startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN);
+            Utils.startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN, requireActivity());
         } else {
             editProduct();
         }

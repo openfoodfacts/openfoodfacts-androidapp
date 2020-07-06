@@ -36,8 +36,8 @@ import java.io.File;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshView;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -55,15 +55,15 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
      * an image width can't be less than 640. See https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577
      */
     public static final int MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF = 640;
-    private SwipeRefreshLayout swipeRefreshLayout;
     private OnRefreshListener refreshListener;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public BaseFragment() {
         super();
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnRefreshListener) {
             refreshListener = (OnRefreshListener) context;
@@ -71,7 +71,7 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
     }
 
     int dpsToPixels(int dps) {
-        return BaseActivity.dpsToPixel(dps, getActivity());
+        return Utils.dpsToPixel(dps, getActivity());
     }
 
     @Override
@@ -91,27 +91,6 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         return !isUserLoggedIn();
     }
 
-    /**
-     * Ask to login before editing product
-     */
-    protected void startLoginToEditAnd(int requestCode) {
-        final Context context = getContext();
-        if (context == null) {
-            return;
-        }
-        new MaterialDialog.Builder(context)
-            .title(R.string.sign_in_to_edit)
-            .positiveText(R.string.txtSignIn)
-            .negativeText(R.string.dialog_cancel)
-            .onPositive((dialog, which) -> {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivityForResult(intent, requestCode);
-                dialog.dismiss();
-            })
-            .onNegative((dialog, which) -> dialog.dismiss())
-            .build().show();
-    }
-
     @Override
     public void onRefresh() {
         if (refreshListener != null) {
@@ -126,18 +105,6 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
         }
     }
 
-    public static boolean isAllGranted(@NonNull int[] grantResults) {
-        if (grantResults.length == 0) {
-            return false;
-        }
-        for (int result : grantResults) {
-            if (result != PERMISSION_GRANTED) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     protected void doChooseOrTakePhotos(String title) {
         if (!canTakePhotos()) {
             requestPermissions(new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
@@ -150,7 +117,7 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA) {
-            if (!isAllGranted(grantResults)) {
+            if (!Utils.isAllGranted(grantResults)) {
                 new MaterialDialog.Builder(requireActivity())
                     .title(R.string.permission_title)
                     .content(R.string.permission_denied)
@@ -188,7 +155,6 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
     }
 
     protected boolean canTakePhotos() {
-        return
-            ContextCompat.checkSelfPermission(getContext(), CAMERA) == PERMISSION_GRANTED;
+        return ContextCompat.checkSelfPermission(requireContext(), CAMERA) == PERMISSION_GRANTED;
     }
 }

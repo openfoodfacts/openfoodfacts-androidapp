@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.content.SharedPreferences;
@@ -77,10 +93,10 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
  * @author Lobster
  * @since 03.03.18
  */
-public class ProductRepository implements IProductRepository {
+public class ProductRepository {
     private static final String DEFAULT_LANGUAGE = "en";
     private static final String TAG = ProductRepository.class.getSimpleName();
-    private static IProductRepository instance;
+    private static ProductRepository instance;
     private final AdditiveDao additiveDao;
     private final AdditiveNameDao additiveNameDao;
     private final AllergenDao allergenDao;
@@ -108,7 +124,7 @@ public class ProductRepository implements IProductRepository {
      *
      * @return : instance of the repository
      */
-    public static IProductRepository getInstance() {
+    public static ProductRepository getInstance() {
         if (instance == null) {
             instance = new ProductRepository();
         }
@@ -210,7 +226,6 @@ public class ProductRepository implements IProductRepository {
         return Taxonomy.ALLERGEN.getTaxonomyData(this, true, false, allergenDao);
     }
 
-    @Override
     public Single<List<Allergen>> getAllergens() {
         return Taxonomy.ALLERGEN.getTaxonomyData(this, false, true, allergenDao);
     }
@@ -251,7 +266,6 @@ public class ProductRepository implements IProductRepository {
         return Taxonomy.CATEGORY.getTaxonomyData(this, true, false, categoryDao);
     }
 
-    @Override
     public Single<List<Category>> getCategories() {
         return Taxonomy.CATEGORY.getTaxonomyData(this, false, true, categoryDao);
     }
@@ -270,7 +284,6 @@ public class ProductRepository implements IProductRepository {
      *
      * @return The list of allergens.
      */
-    @Override
     public List<Allergen> getEnabledAllergens() {
         return allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq("true")).list();
     }
@@ -524,7 +537,6 @@ public class ProductRepository implements IProductRepository {
      *
      * @param ingredient The ingredient to be saved.
      */
-    @Override
     public void saveIngredient(Ingredient ingredient) {
         List<Ingredient> ingredients = new ArrayList<>();
         ingredients.add(ingredient);
@@ -537,7 +549,6 @@ public class ProductRepository implements IProductRepository {
      * @param isEnabled depends on whether user selected or unselected the allergen
      * @param allergenTag is unique Id of allergen
      */
-    @Override
     public void setAllergenEnabled(String allergenTag, Boolean isEnabled) {
         Allergen allergen = allergenDao.queryBuilder()
             .where(AllergenDao.Properties.Tag.eq(allergenTag))
@@ -556,7 +567,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated label
      */
-    @Override
     public Single<LabelName> getLabelByTagAndLanguageCode(String labelTag, String languageCode) {
         return Single.fromCallable(() -> {
             LabelName labelName = labelNameDao.queryBuilder()
@@ -575,7 +585,6 @@ public class ProductRepository implements IProductRepository {
      * @param labelTag is a unique Id of label
      * @return The translated label
      */
-    @Override
     public Single<LabelName> getLabelByTagAndDefaultLanguageCode(String labelTag) {
         return getLabelByTagAndLanguageCode(labelTag, DEFAULT_LANGUAGE);
     }
@@ -587,7 +596,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated additive name
      */
-    @Override
     public Single<AdditiveName> getAdditiveByTagAndLanguageCode(String additiveTag, String languageCode) {
         return Single.fromCallable(() -> {
             AdditiveName additiveName = additiveNameDao.queryBuilder()
@@ -606,7 +614,6 @@ public class ProductRepository implements IProductRepository {
      * @param additiveTag is a unique Id of additive
      * @return The translated additive tag
      */
-    @Override
     public Single<AdditiveName> getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
         return getAdditiveByTagAndLanguageCode(additiveTag, DEFAULT_LANGUAGE);
     }
@@ -618,7 +625,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated country name
      */
-    @Override
     public Single<CountryName> getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
         return Single.fromCallable(() -> {
             CountryName countryName = countryNameDao.queryBuilder()
@@ -637,7 +643,6 @@ public class ProductRepository implements IProductRepository {
      * @param countryTag is a unique Id of country
      * @return The translated country name
      */
-    @Override
     public Single<CountryName> getCountryByTagAndDefaultLanguageCode(String countryTag) {
         return getCountryByTagAndLanguageCode(countryTag, DEFAULT_LANGUAGE);
     }
@@ -649,7 +654,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated category name
      */
-    @Override
     public Single<CategoryName> getCategoryByTagAndLanguageCode(String categoryTag, String languageCode) {
         return Single.fromCallable(() -> {
             CategoryName categoryName = categoryNameDao.queryBuilder()
@@ -676,7 +680,6 @@ public class ProductRepository implements IProductRepository {
      * @param categoryTag is a unique Id of category
      * @return The translated category name
      */
-    @Override
     public Single<CategoryName> getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
         return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
     }
@@ -687,7 +690,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated list of category name
      */
-    @Override
     public Single<List<CategoryName>> getAllCategoriesByLanguageCode(String languageCode) {
         return Single.fromCallable(() -> categoryNameDao.queryBuilder()
             .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
@@ -700,7 +702,6 @@ public class ProductRepository implements IProductRepository {
      *
      * @return The list of category name
      */
-    @Override
     public Single<List<CategoryName>> getAllCategoriesByDefaultLanguageCode() {
         return getAllCategoriesByLanguageCode(DEFAULT_LANGUAGE);
     }
@@ -712,7 +713,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The list of allergen names
      */
-    @Override
     public Single<List<AllergenName>> getAllergensByEnabledAndLanguageCode(Boolean isEnabled, String languageCode) {
         return Single.fromCallable(() -> {
             List<Allergen> allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list();
@@ -743,7 +743,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The list of translated allergen names
      */
-    @Override
     public Single<List<AllergenName>> getAllergensByLanguageCode(String languageCode) {
         return Single.fromCallable(() ->
             allergenNameDao.queryBuilder()
@@ -758,7 +757,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated allergen name
      */
-    @Override
     public Single<AllergenName> getAllergenByTagAndLanguageCode(String allergenTag, String languageCode) {
         return Single.fromCallable(() -> {
             AllergenName allergenName = allergenNameDao.queryBuilder()
@@ -784,7 +782,6 @@ public class ProductRepository implements IProductRepository {
      * @param allergenTag is a unique Id of allergen
      * @return The translated allergen name
      */
-    @Override
     public Single<AllergenName> getAllergenByTagAndDefaultLanguageCode(String allergenTag) {
         return getAllergenByTagAndLanguageCode(allergenTag, DEFAULT_LANGUAGE);
     }
@@ -796,7 +793,6 @@ public class ProductRepository implements IProductRepository {
      * @param lang is language of the question
      * @return The single question
      */
-    @Override
     public Single<Question> getSingleProductQuestion(String code, String lang) {
         return robotoffApi.getProductQuestion(code, lang, 1)
             .map(QuestionsState::getQuestions)
@@ -815,7 +811,6 @@ public class ProductRepository implements IProductRepository {
      * @param annotation is the annotation to be used
      * @return The annotated insight response
      */
-    @Override
     public Single<AnnotationResponse> annotateInsight(String insightId, AnnotationAnswer annotation) {
         // if the user is logged in, send the auth, otherwise make it anonymous
         final SharedPreferences userPref = OFFApplication.getInstance()
@@ -941,7 +936,6 @@ public class ProductRepository implements IProductRepository {
      * @param languageCode
      * @return {@link Maybe#empty()} if no analysis tag found
      */
-    @Override
     public Maybe<AnalysisTagConfig> getAnalysisTagConfigByTagAndLanguageCode(final String analysisTag, final String languageCode) {
         return Maybe.fromCallable(() -> {
             AnalysisTagConfig analysisTagConfig = analysisTagConfigDao.queryBuilder()
@@ -952,7 +946,6 @@ public class ProductRepository implements IProductRepository {
         });
     }
 
-    @Override
     public Single<List<AnalysisTagConfig>> getUnknownAnalysisTagConfigsByLanguageCode(String languageCode) {
         return Single.fromCallable(() -> {
             List<AnalysisTagConfig> analysisTagConfigs = analysisTagConfigDao.queryBuilder()
