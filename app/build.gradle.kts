@@ -155,7 +155,7 @@ dependencies {
 
 
 android {
-    compileSdkVersion(29)
+    compileSdkVersion(30)
 
     testBuildType = obtainTestBuildType()
 

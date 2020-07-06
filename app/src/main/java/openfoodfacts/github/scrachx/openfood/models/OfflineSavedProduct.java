@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -21,9 +20,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
@@ -50,14 +47,6 @@ public class OfflineSavedProduct implements Serializable {
 
     @Generated(hash = 403273060)
     public OfflineSavedProduct() {
-    }
-
-    public Single<Product> toOnlineProduct(Context context) {
-        return toState(context).map(State::getProduct);
-    }
-
-    public Single<State> toState(Context context) {
-        return new OpenFoodAPIClient(context).getProductStateFull(getBarcode());
     }
 
     public String getBarcode() {
