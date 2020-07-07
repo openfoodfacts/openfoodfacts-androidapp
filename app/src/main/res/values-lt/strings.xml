@@ -188,7 +188,7 @@
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
-    <string name="txtSave">Save</string>
+    <string name="txtSave">Išsaugoti</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt</string>
@@ -312,7 +312,7 @@
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="action_search">Paieška</string>
-    <string name="search_hint">Search a product</string>
+    <string name="search_hint">Ieškoti prekės</string>
     <string name="number_of_results">Number of results: </string>
     <string name="number_of_products">Number of products: </string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
@@ -516,7 +516,7 @@
     <string name="code_detected">We have detected the barcode</string>
     <string name="do_you_want_to">Do you want to add photos to this barcode?</string>
     <string name="bottomNav_history">History</string>
-    <string name="products_added">Products you added or edited</string>
+    <string name="products_added">Produktai, kuriuos pridėjote ar redagavote</string>
     <string name="products_incomplete">Jūsų įkelti produktai, kuriuos reikia užbaigti pildyti</string>
     <string name="product_pictures_contributed">Products you took pictures for</string>
     <string name="picture_contributed_incomplete">Products you took pictures for that need to be completed</string>
@@ -618,8 +618,8 @@
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
-    <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
+    <string name="product_name">Produkto pavadinimas</string>
+    <string name="quantity">Kiekis</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Laikotarpis po atidarymo</string>
     <string name="manufacturing_details">Manufacturing Details</string>
@@ -651,7 +651,7 @@
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Didelė per didelio poveikio rizika</string>
-    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="overexposure_moderate">Didelė per didelio poveikio rizika</string>
     <string name="infants">Kūdikiai</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Maži vaikai</string>
