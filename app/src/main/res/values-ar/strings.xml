@@ -654,7 +654,7 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">الرجاء التسجيل لتحرير المنتج.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="sign_in_to_answer">الرجاء تسجيل الدخول أو التسجيل للإجابة على الفكرة.</string>
     <string name="hint_quantity">أمثلة: 1لتر، 250 غرام، 1 كيلوغرام، 25 سنتلتر، 6 اوقية سائلة، 1 باوند</string>
     <string name="edit_product_title">تعديل المنتج</string>
     <string name="nutrient_already_added">%s موجود بالفعل ضمن المعلومات التغذية</string>
