@@ -640,7 +640,7 @@
     <string name="edit_ingredients_image">עריכת תמונת הרכיבים</string>
     <string name="edit_other_image">עריכת התמונה</string>
     <string name="sign_in_to_edit">נא להיכנס כדי לערוך מוצר.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="sign_in_to_answer">נא להיכנס או להירשם כדי לענות על תובנה.</string>
     <string name="hint_quantity">למשל: 2 ל׳, 250 ג׳, 1 ק״ג, 25 סנטיליטרים, 6 אונקיות נוזלים, 1 פאונד</string>
     <string name="edit_product_title">עריכת מוצר</string>
     <string name="nutrient_already_added">%s כבר קיים בעובדות התזונתיות</string>
