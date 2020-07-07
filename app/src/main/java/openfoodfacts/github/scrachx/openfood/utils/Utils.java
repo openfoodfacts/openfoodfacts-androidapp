@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.Manifest;
@@ -49,7 +65,6 @@ import androidx.work.WorkManager;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,17 +92,15 @@ import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class Utils {
     public static final int CONNECTION_TIMEOUT = 5000;
     public static final int RW_TIMEOUT = 30000;
-
-    private Utils() {
-        // Utility class
-    }
-
     public static final String SPACE = " ";
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 2;
@@ -97,6 +110,10 @@ public class Utils {
     public static final String HEADER_USER_AGENT_SEARCH = "Search";
     public static final int NO_DRAWABLE_RESOURCE = 0;
     public static final String FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies";
+
+    private Utils() {
+        // Utility class
+    }
 
     /**
      * Returns a CharSequence that concatenates the specified array of CharSequence
@@ -509,47 +526,8 @@ public class Utils {
         return activeNetwork.isConnectedOrConnecting();
     }
 
-    /**
-     * Check if the user is connected to a mobile network.
-     *
-     * @param context of the application.
-     * @return true if connected to mobile data.
-     */
-    public static boolean isConnectedToMobileData(Context context) {
-        return getNetworkType(context).equals("Mobile");
-    }
-
-    /**
-     * Get the type of network that the user is connected to.
-     *
-     * @param context of the application.
-     * @return the type of network that is connected.
-     */
-    private static String getNetworkType(@NonNull Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-
-        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
-            switch (activeNetwork.getType()) {
-                case ConnectivityManager.TYPE_ETHERNET:
-                    return "Ethernet";
-                case ConnectivityManager.TYPE_MOBILE:
-                    return "Mobile";
-                case ConnectivityManager.TYPE_VPN:
-                    return "VPN";
-                case ConnectivityManager.TYPE_WIFI:
-                    return "WiFi";
-                case ConnectivityManager.TYPE_WIMAX:
-                    return "WiMax";
-                default:
-                    break;
-            }
-        }
-
-        return "Other";
-    }
-
-    public static File makeOrGetPictureDirectory(Context context) {
+    @NonNull
+    public static File makeOrGetPictureDirectory(@NonNull Context context) {
         // determine the profile directory
         File dir = context.getFilesDir();
 
@@ -577,6 +555,7 @@ public class Utils {
         return Uri.fromFile(new File(Utils.makeOrGetPictureDirectory(context), System.currentTimeMillis() + ".jpg"));
     }
 
+    @NonNull
     public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
         String url = SearchTypeUrls.getUrl(type);
@@ -719,10 +698,6 @@ public class Utils {
         return null;
     }
 
-    public static boolean isFlavor(String... flavors) {
-        return ArrayUtils.contains(flavors, BuildConfig.FLAVOR);
-    }
-
     public static boolean isFlavor(String flavor) {
         return BuildConfig.FLAVOR.equals(flavor);
     }
@@ -730,6 +705,47 @@ public class Utils {
     @NonNull
     public static String getModifierNonDefault(String modifier) {
         return modifier.equals(Modifier.DEFAULT_MODIFIER) ? "" : modifier;
+    }
+
+    public static int dpsToPixel(int dps, @Nullable Activity activity) {
+        if (activity == null) {
+            return 0;
+        }
+        final float scale = activity.getResources().getDisplayMetrics().density;
+        return (int) (dps * scale + 0.5f);
+    }
+
+    /**
+     * Ask to login before editing product
+     */
+    public static void startLoginToEditAnd(int requestCode, @Nullable Activity activity) {
+        if (activity == null) {
+            return;
+        }
+        new MaterialDialog.Builder(activity)
+            .title(R.string.sign_in_to_edit)
+            .positiveText(R.string.txtSignIn)
+            .negativeText(R.string.dialog_cancel)
+            .onPositive((dialog, which) -> {
+                Intent intent = new Intent(activity, LoginActivity.class);
+
+                activity.startActivityForResult(intent, requestCode);
+                dialog.dismiss();
+            })
+            .onNegative((dialog, which) -> dialog.dismiss())
+            .build().show();
+    }
+
+    public static boolean isAllGranted(@NonNull int[] grantResults) {
+        if (grantResults.length == 0) {
+            return false;
+        }
+        for (int result : grantResults) {
+            if (result != PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
