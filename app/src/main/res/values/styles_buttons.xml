@@ -25,7 +25,6 @@
 
     <style name="ButtonBorder" parent="ButtonRounded">
         <item name="android:background">@drawable/rounded_button_shape</item>
-        <item name="android:shadowColor">@color/grey_50</item>
         <item name="android:textColor">@color/button_link</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingLeft">@dimen/spacing_small</item>

@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="one">יש מוצר אחד בלתי מקוון שממתין להגשה כתרומה ל־Open Food Facts</item>
@@ -443,7 +458,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">כללי</string>
     <string name="preference_header_network">רשת</string>
     <string name="preference_header_contributing">התנדבות</string>
@@ -625,6 +640,7 @@
     <string name="edit_ingredients_image">עריכת תמונת הרכיבים</string>
     <string name="edit_other_image">עריכת התמונה</string>
     <string name="sign_in_to_edit">נא להיכנס כדי לערוך מוצר.</string>
+    <string name="sign_in_to_answer">נא להיכנס או להירשם כדי לענות על תובנה.</string>
     <string name="hint_quantity">למשל: 2 ל׳, 250 ג׳, 1 ק״ג, 25 סנטיליטרים, 6 אונקיות נוזלים, 1 פאונד</string>
     <string name="edit_product_title">עריכת מוצר</string>
     <string name="nutrient_already_added">%s כבר קיים בעובדות התזונתיות</string>
@@ -714,7 +730,7 @@
     <string name="product_question_negative_response">לא</string>
     <string name="product_question_ambiguous_response">לא בטוח</string>
     <string name="product_question_submit_message">תודה לך על תרומתך!</string>
-    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
+    <string name="error_nutrient_entry">הערך אמור להיות מספרי. למשל: &quot;1.5&quot;,‏ &quot;2.0&quot;</string>
     <string name="error_nutrient_serving_data">גודל ההגשה חייב להיות ערך חיובי</string>
     <string name="error_in_nutrient_data">חלק מערכי ההזנה אינם תקינים. נא לתקן את השדות להלן שמסומנים כשגויים</string>
     <string name="go_to_full_product_page">למוצר</string>

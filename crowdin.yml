@@ -15,6 +15,9 @@ files:
         sr-CS: sr
         sr: rs
         he: iw
+        he: he
+        id: in
+        yi: ji
         
   - source: /app/src/obf/res/values/strings.xml
     translation: /app/src/obf/res/values-%two_letters_code%/%original_file_name%
@@ -32,6 +35,9 @@ files:
         sr-CS: sr
         sr: rs
         he: iw
+        he: he
+        id: in
+        yi: ji
         
   - source: /app/src/off/res/values/strings.xml
     translation: /app/src/off/res/values-%two_letters_code%/%original_file_name%
@@ -48,6 +54,9 @@ files:
         sr-CS: sr
         sr: rs
         he: iw
+        he: he
+        id: in
+        yi: ji
         
   - source: /app/src/opff/res/values/strings.xml
     translation: /app/src/opff/res/values-%two_letters_code%/strings.xml
@@ -64,6 +73,9 @@ files:
         sr-CS: sr
         sr: rs
         he: iw
+        he: he
+        id: in
+        yi: ji
 
   - source: /app/src/opf/res/values/strings.xml
     translation: /app/src/opf/res/values-%two_letters_code%/strings.xml
@@ -80,6 +92,9 @@ files:
         sr-CS: sr
         sr: rs
         he: iw
+        he: he
+        id: in
+        yi: ji
 
   - source: /fastlane/metadata/android/en-US/off/long_description.txt
     translation: /fastlane/metadata/android/%locale%/off/long_description.txt

@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/nav_bar_height">
 
@@ -44,7 +44,6 @@
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
                         android:padding="@dimen/spacing_small"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -68,7 +67,6 @@
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
                         android:padding="@dimen/spacing_small"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -92,7 +90,6 @@
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
                         android:padding="@dimen/spacing_small"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />
@@ -116,7 +113,6 @@
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
-                        android:background="@drawable/textview_full"
                         android:padding="@dimen/spacing_small"
                         android:textIsSelectable="true"
                         android:textSize="@dimen/font_normal" />

@@ -39,7 +39,7 @@
                     android:background="?android:selectableItemBackground"
                     android:maxHeight="120dp"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+                    app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
 
                 <TextView
                     android:id="@+id/addPhotoLabel"

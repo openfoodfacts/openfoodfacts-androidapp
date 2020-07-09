@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
@@ -144,7 +159,7 @@
     <string name="search_button">ಹುಡುಕಿ</string>
     <string name="alert_dialog_warning_title">ಎಚ್ಚರಿಕೆ</string>
     <string name="alert_dialog_warning_msg_user">ಬಳಕೆದಾರ / ಪಾಸ್ವರ್ಡ್ ಬದಲಾಗಿದೆ, ದಯವಿಟ್ಟು ಮಾಹಿತಿಯನ್ನು ನವೀಕರಿಸಿ</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">ಬಾರ್‌ ಕೋಡ್:</string>
     <string name="txtCategories">ವರ್ಗಗಳು:</string>
     <string name="txtLabels">ಲೇಬಲ್ಗಳು, ಪ್ರಮಾಣೀಕರಣಗಳು, ಪ್ರಶಸ್ತಿಗಳು:</string>
@@ -184,8 +199,8 @@
     <string name="hintBrand">ಬ್ರ್ಯಾಂಡ್</string>
     <string name="txtSendAll">ಎಲ್ಲವನ್ನೂ ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
     <string name="txtPictureNeededDialogNo">ತಿರಸ್ಕರಿಸು</string>
-    <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
+    <string name="toastSending">Uploading...</string>
+    <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">ಈ ಫೋಲ್ಡರ್ ತೆಗೆದುಹಾಕುವ ನಿಮ್ಮ ಬಯಕೆ ಖಚಿತವೆ?</string>
     <string name="txtDialogsContentInfoSave">ಉತ್ಪನ್ನವನ್ನು ಸ್ಥಳೀಯವಾಗಿ ಉಳಿಸಲಾಗಿದೆ, ನೀವು ಅದನ್ನು \"ಆಫ್ಲೈನ್ ​​ಸಂಪಾದಿಸು\" ಮೆನುವಿನಲ್ಲಿ ಸಂಪಾದಿಸಬಹುದು</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -248,7 +263,7 @@
     <string name="title_clear_history_dialog">ತೆರವು ಮಾಡಿ</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">CSV ರಫ್ತು ಮಾಡಿ</string>
-    <string name="txt_exporting_history">Exporting history…</string>
+    <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">ಇತಿಹಾಸವನ್ನು ರಫ್ತು ಮಾಡಲಾಗಿದೆ</string>
     <string name="permision_write_external_storage">ಇತಿಹಾಸವನ್ನು ರಫ್ತು ಮಾಡಲು ಬಾಹ್ಯ ಸಂಗ್ರಹಣೆ ಅನುಮತಿ ಬರೆಯಿರಿ.</string>
     <string name="no_brand">ಯಾವುದೇ ಬ್ರ್ಯಾಂಡ್ ಇಲ್ಲ</string>
@@ -433,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">ಸಾಮಾನ್ಯ</string>
     <string name="preference_header_network">ನೆಟ್ವರ್ಕ್</string>
     <string name="preference_header_contributing">ಕೊಡುಗೆಗಳು</string>
@@ -613,6 +628,7 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">ಉತ್ಪನ್ನವನ್ನು ಸಂಪಾದಿಸಲು ದಯವಿಟ್ಟು ಸೈನ್ ಇನ್ ಮಾಡಿ.</string>
+    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">ಉದಾಹರಣೆಗಳು: 2 ಎಲ್, 250 ಗ್ರಾಂ, 1 ಕೆಜಿ, 25 ಕ್ಲಾ, 6 ಫ್ಲ್ ಔಜ್, 1 ಪೌಂಡ್</string>
     <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s ಪೌಷ್ಟಿಕಾಂಶ ಸತ್ಯಗಳಲ್ಲಿ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ</string>

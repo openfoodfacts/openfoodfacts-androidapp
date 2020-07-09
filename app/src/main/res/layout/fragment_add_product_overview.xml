@@ -50,7 +50,7 @@
                 android:background="?android:selectableItemBackground"
                 app:layout_constraintStart_toStartOf="@id/section_product_picture"
                 app:layout_constraintTop_toBottomOf="@id/hint_image_front"
-                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
 
             <Button
                 android:id="@+id/btnEditImageFront"
@@ -556,7 +556,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/link_til"
                 app:layout_constraintTop_toTopOf="@id/link_til"
-                app:srcCompat="@drawable/ic_search_black" />
+                app:srcCompat="@drawable/ic_search_dark" />
 
             <ImageView
                 android:id="@+id/hint_link_2"

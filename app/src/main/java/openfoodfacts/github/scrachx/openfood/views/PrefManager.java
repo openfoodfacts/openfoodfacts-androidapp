@@ -3,12 +3,10 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Calendar;
 import java.util.Date;
 
-public class PrefManager extends AppCompatActivity {
+public class PrefManager {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     private Context context;

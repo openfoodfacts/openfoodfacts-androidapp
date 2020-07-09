@@ -2,45 +2,51 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="@string/preference_header_general" android:summary="">
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_general">
 
         <ListPreference
             android:defaultValue="en"
             android:dialogTitle="@string/preference_choose_language_dialog_title"
             android:key="Locale.Helper.Selected.Language"
-            android:summary="@string/prefs_language_summary"
-            android:title="@string/prefs_language" />
+            android:title="@string/prefs_language"
+            app:useSimpleSummaryProvider="true" />
 
         <ListPreference
+            android:defaultValue="@string/kcal"
             android:dialogTitle="@string/energy_pref_title"
             android:key="energyUnitPreference"
-            android:summary="@string/choose_energy_unit"
-            android:title="@string/energy_pref_title" />
+            android:title="@string/energy_pref_title"
+            app:useSimpleSummaryProvider="true" />
 
         <ListPreference
+            android:defaultValue="l"
             android:dialogTitle="@string/volume_pref_title"
             android:key="volumeUnitPreference"
-            android:summary="@string/choose_volume_unit"
-            android:title="@string/volume_pref_title" />
+            android:title="@string/volume_pref_title"
+            app:useSimpleSummaryProvider="true" />
 
         <Preference
             android:dialogTitle="@string/search_history_pref_title"
             android:key="deleteSearchHistoryPreference"
             android:summary="@string/search_history_pref_summary"
             android:title="@string/search_history_pref_title" />
+
         <ListPreference
+
             android:dialogTitle="@string/settings_country_dialog_title"
             android:key="user_country"
             android:summary="@string/settings_country_summary"
             android:title="@string/settings_country_title" />
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="startScan"
             android:summary="@string/prefs_scan_startup_summary"
             android:title="@string/prefs_scan_startup" />
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="powerMode"
             android:summary="@string/prefs_power_mode_summary"
@@ -54,9 +60,11 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_header_network" android:summary="">
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_network">
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="enableMobileDataUpload"
             android:summaryOff="@string/preference_enable_mobile_data_summary_off"
@@ -71,7 +79,7 @@
             android:summary="@string/pref_resolution_summary"
             android:title="@string/image_upload_resolution" />
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="disableImageLoad"
             android:summary="@string/disable_image_loading"
@@ -80,9 +88,15 @@
     </PreferenceCategory>
 
     <!-- This is populated at runtime based on available analysis tags -->
-    <PreferenceCategory android:title="@string/preference_header_display" android:summary="" android:key="display_category" app:isPreferenceVisible="false"/>
+    <PreferenceCategory
+        android:key="display_category"
+        android:summary=""
+        android:title="@string/preference_header_display"
+        app:isPreferenceVisible="false" />
 
-    <PreferenceCategory android:title="@string/preference_header_contributing" android:summary="">
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_contributing">
 
         <Preference
             android:summary="@string/Donation"
@@ -97,24 +111,24 @@
             android:summary="@string/translate_help_summary"
             android:title="@string/translate_help_title" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="contributionTab"
-            android:summary="@string/contribution_tab_summary"
-            android:title="@string/contribution_tab_title" />
 
-        <CheckBoxPreference
-                android:defaultValue="true"
-                android:key="cropNewImage"
-                android:summary="@string/crop_new_image"
-                android:title="@string/crop_new_image_title" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="cropNewImage"
+            android:summary="@string/crop_new_image"
+            android:title="@string/crop_new_image_title" />
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="fastAdditionMode"
             android:summary="@string/fast_addition_mode"
             android:title="@string/fast_addition_mode_title" />
 
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="contributionTab"
+            android:summary="@string/contribution_tab_summary"
+            android:title="@string/contribution_tab_title" />
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="photoMode"
@@ -123,7 +137,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_header_about" android:summary="">
+    <PreferenceCategory
+        android:summary=""
+        android:title="@string/preference_header_about">
 
         <Preference
             android:key="contact_team"

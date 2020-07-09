@@ -20,7 +20,6 @@ import android.widget.Toast;
 import androidx.annotation.StringRes;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.databinding.DataBindingUtil;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,6 +32,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -209,13 +209,13 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_product_browsing_list);
+        binding = ActivityProductBrowsingListBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // OnClick
         binding.buttonTryAgain.setOnClickListener(v -> setup());
         binding.addProduct.setOnClickListener(v -> addProduct());
 
-        setSupportActionBar(binding.toolbar.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         binding.textCountProduct.setVisibility(View.INVISIBLE);
 
@@ -276,28 +276,28 @@ public class ProductBrowsingListActivity extends BaseActivity {
         getSupportActionBar().setTitle(mSearchInfo.getSearchTitle());
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                binding.toolbar.toolbar.setSubtitle(R.string.brand_string);
+                getSupportActionBar().setSubtitle(R.string.brand_string);
                 break;
             case SearchType.COUNTRY:
-                binding.toolbar.toolbar.setSubtitle(R.string.country_string);
+                getSupportActionBar().setSubtitle(R.string.country_string);
                 break;
             case SearchType.ORIGIN:
-                binding.toolbar.toolbar.setSubtitle(R.string.origin_of_ingredients);
+                getSupportActionBar().setSubtitle(R.string.origin_of_ingredients);
                 break;
             case SearchType.MANUFACTURING_PLACE:
-                binding.toolbar.toolbar.setSubtitle(R.string.manufacturing_place);
+                getSupportActionBar().setSubtitle(R.string.manufacturing_place);
                 break;
             case SearchType.ADDITIVE:
-                binding.toolbar.toolbar.setSubtitle(R.string.additive_string);
+                getSupportActionBar().setSubtitle(R.string.additive_string);
                 break;
             case SearchType.SEARCH:
-                binding.toolbar.toolbar.setSubtitle(R.string.search_string);
+                getSupportActionBar().setSubtitle(R.string.search_string);
                 break;
             case SearchType.STORE:
-                binding.toolbar.toolbar.setSubtitle(R.string.store_subtitle);
+                getSupportActionBar().setSubtitle(R.string.store_subtitle);
                 break;
             case SearchType.PACKAGING:
-                binding.toolbar.toolbar.setSubtitle(R.string.packaging_subtitle);
+                getSupportActionBar().setSubtitle(R.string.packaging_subtitle);
                 break;
             case SearchType.LABEL:
                 getSupportActionBar().setSubtitle(getString(R.string.label_string));
@@ -364,8 +364,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case SearchType.BRAND:
-                disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
-                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_brand_products)));
+                disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_brand_products)));
                 break;
             case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
@@ -429,8 +430,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             case SearchType.INCOMPLETE_PRODUCT:
                 // Get Products to be completed data and input it to loadData function
-                disp.add(api.getIncompleteProducts(pageAddress).subscribe((search, throwable) ->
-                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_incomplete_products)));
+                disp.add(api.getIncompleteProducts(pageAddress).observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_incomplete_products)));
                 break;
             default:
                 Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());

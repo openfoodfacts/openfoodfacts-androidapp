@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,10 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <include
-            android:id="@+id/toolbar_include"
-            layout="@layout/toolbar" />
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -28,7 +25,9 @@
                     android:id="@+id/product_comparison_rv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:scrollbars="horizontal" />
+                    android:scrollbars="horizontal"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/product_comparison_list_item" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

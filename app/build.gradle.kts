@@ -30,7 +30,6 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.legacy:legacy-preference-v14:1.0.0")
     implementation("com.google.android.material:material:1.1.0")
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
@@ -38,6 +37,7 @@ dependencies {
     implementation("androidx.fragment:fragment:1.2.5")
     implementation("androidx.activity:activity:1.1.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("androidx.preference:preference:1.1.1")
 
     //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
@@ -173,8 +173,8 @@ android {
         minSdkVersion(16)
         targetSdkVersion(29)
 
-        versionCode = 329
-        versionName = "3.2.9"
+        versionCode = 340
+        versionName = "3.4.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

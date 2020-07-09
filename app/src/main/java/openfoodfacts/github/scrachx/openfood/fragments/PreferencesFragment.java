@@ -94,7 +94,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         setHasOptionsMenu(true);
         context = requireContext();
 
-        ListPreference languagePreference = ((ListPreference) findPreference("Locale.Helper.Selected.Language"));
+        ListPreference languagePreference = findPreference("Locale.Helper.Selected.Language");
 
         SharedPreferences settings = getActivity().getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getDaoSession().getAdditiveDao();
@@ -148,7 +148,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        ListPreference countryPreference = ((ListPreference) findPreference(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY));
+        ListPreference countryPreference = findPreference(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY);
         List<String> countryLabels = new ArrayList<>();
         List<String> countryTags = new ArrayList<>();
 
@@ -211,7 +211,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         findPreference("Terms").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.terms_url));
         findPreference("local_translate_help").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.translate_url));
 
-        ListPreference energyUnitPreference = (ListPreference) findPreference("energyUnitPreference");
+        ListPreference energyUnitPreference = findPreference("energyUnitPreference");
         String[] energyUnits = getActivity().getResources().getStringArray(R.array.energy_units);
         energyUnitPreference.setEntries(energyUnits);
         energyUnitPreference.setEntryValues(energyUnits);
@@ -221,7 +221,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        ListPreference volumeUnitPreference = (ListPreference) findPreference("volumeUnitPreference");
+        ListPreference volumeUnitPreference = findPreference("volumeUnitPreference");
         String[] volumeUnits = getActivity().getResources().getStringArray(R.array.volume_units);
         volumeUnitPreference.setEntries(volumeUnits);
         volumeUnitPreference.setEntryValues(volumeUnits);
@@ -231,7 +231,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         }));
 
-        ListPreference imageUploadPref = ((ListPreference) findPreference("ImageUpload"));
+        ListPreference imageUploadPref = findPreference("ImageUpload");
         String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
         imageUploadPref.setEntries(values);
         imageUploadPref.setEntryValues(values);
@@ -241,14 +241,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        CheckBoxPreference photoPreference = (CheckBoxPreference) findPreference("photoMode");
+        CheckBoxPreference photoPreference = findPreference("photoMode");
         if (Utils.isFlavor(AppFlavors.OPF)) {
             photoPreference.setVisible(false);
         }
 
-        /*
-            Preference to show version name
-         */
+        // Preference to show version name
         Preference versionPref = findPreference("Version");
         versionPref.setEnabled(false);
         try {
@@ -263,7 +261,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             new GetAnalysisTagConfigsTask(this).execute(daoSession);
         } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
-            PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+            PreferenceCategory displayCategory = preferenceScreen.findPreference("display_category");
             preferenceScreen.removePreference(displayCategory);
         }
     }
@@ -273,7 +271,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return;
         }
         PreferenceScreen preferenceScreen = getPreferenceScreen();
-        PreferenceCategory displayCategory = (PreferenceCategory) preferenceScreen.findPreference("display_category");
+        PreferenceCategory displayCategory = preferenceScreen.findPreference("display_category");
         displayCategory.removeAll();
         preferenceScreen.addPreference(displayCategory);
         // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
@@ -324,7 +322,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     private boolean openWebCustomTab(int faqUrl) {
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
         customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
-        CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(faqUrl)), new WebViewFallback());
+        CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(faqUrl)), new WebViewFallback());
         return true;
     }
 

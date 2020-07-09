@@ -27,6 +27,9 @@ public class AllergenHelper {
         }
     }
 
+    private AllergenHelper() {
+    }
+
     private static Data createEmpty() {
         return new Data(false, Collections.emptyList());
     }

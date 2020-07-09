@@ -53,7 +53,7 @@ Işık hızında tarayın (uçakta, denizaltıda veya süpermarkette olsanız bi
 - Şu an İnternet bağlantınız olmasa bile yeni ürünler ekleyebilirsiniz.
 - Uygulama veri ve pil kullanımını azaltmak için sadece gerekli olanları yükler.
 
-▶ Sizin yiyecekleriniz, sizin verileriniz
+▶ Gıda Şeffaflığına Katkıda Bulunun
 - Verileriniz sizindir ve asla çevrimiçi gönderilmez
 - Uygulamayı anonim olarak kullanabilirsiniz
 - Tarama geçmişinizi dışa aktarabilirsiniz

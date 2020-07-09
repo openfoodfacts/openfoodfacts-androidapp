@@ -17,6 +17,9 @@ import android.provider.MediaStore;
  */
 public class RealPathUtil {
 
+    private RealPathUtil() {
+    }
+
     public static String getRealPath(Context context, Uri fileUri) {
         String realPath;
         // SDK >= 11 && SDK < 19

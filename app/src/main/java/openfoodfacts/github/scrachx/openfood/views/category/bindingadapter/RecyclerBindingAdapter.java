@@ -13,6 +13,9 @@ import openfoodfacts.github.scrachx.openfood.views.category.adapter.CategoryList
  */
 
 public class RecyclerBindingAdapter {
+    private RecyclerBindingAdapter() {
+    }
+
     @BindingAdapter({"categories"})
     public static void setStations(RecyclerView recyclerView, List<CategoryName> categoryList) {
         if (recyclerView != null && categoryList != null) {

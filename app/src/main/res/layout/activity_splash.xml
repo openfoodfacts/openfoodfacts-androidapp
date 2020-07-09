@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -29,6 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:textColor="?android:textColorSecondary"
             android:textStyle="bold"
             app:autoSizeMaxTextSize="28sp"
             app:autoSizeMinTextSize="12sp"
@@ -36,7 +38,8 @@
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="@id/logo"
             app:layout_constraintStart_toStartOf="@id/logo"
-            app:layout_constraintTop_toBottomOf="@id/logo" />
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            tools:text="tagline goes here..." />
 
         <TextView
             android:id="@+id/text_loading"
@@ -44,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:text="@string/initial_loading"
+            android:textColor="?android:textColorPrimary"
             app:layout_constraintEnd_toEndOf="@id/logo"
             app:layout_constraintStart_toStartOf="@id/logo"
             app:layout_constraintTop_toBottomOf="@id/tagline" />

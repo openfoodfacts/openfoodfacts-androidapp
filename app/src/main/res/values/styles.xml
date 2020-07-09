@@ -2,12 +2,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="OFFTheme" parent="Theme.AppCompat.DayNight">
         <!--<item name="colorPrimary">@color/material_blue_500</item>-->
         <!--<item name="statusBarColor">@color/grey_300</item>-->
         <!--<item name="colorBackground">@color/grey_50</item>-->
         <item name="colorAccent">@color/brand_red</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="preferenceTheme">@style/OFFPreferenceTheme</item>
         <item name="searchViewStyle">@style/customSearchView</item>
     </style>
 
@@ -15,16 +15,12 @@
         <item name="android:textColor">@color/brand_red</item>
     </style>
 
-    <style name="Black_Back_Arrow" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:textColorPrimary">@color/md_black_1000</item>
-    </style>
-
     <style name="customSearchView" parent="Widget.AppCompat.Light.SearchView">
         <item name="submitBackground">@color/md_light_appbar</item>
         <item name="queryBackground">@color/md_light_appbar</item>
     </style>
 
-    <style name="AppTheme.NoActionBar" parent="AppTheme">
+    <style name="AppTheme.NoActionBar" parent="OFFTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -36,10 +32,8 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="PreferenceThemeOverlay.v14">
-        <item name="android:textColor">@color/grey_800</item>
-        <item name="android:textColorSecondary">@color/grey_500</item>
-        <item name="android:summary">@color/grey_500</item>
+    <style name="OFFPreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="android:summaryOn">@color/grey_500</item>
     </style>
 
     <style name="DefaultButtonText">

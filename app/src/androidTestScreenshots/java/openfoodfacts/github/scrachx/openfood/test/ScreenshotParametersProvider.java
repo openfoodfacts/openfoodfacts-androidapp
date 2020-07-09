@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class ScreenshotParametersProvider {
+    private ScreenshotParametersProvider() {
+    }
+
     public static ScreenshotParameter create(String countryTag, String languageCode, String... otherProductsCode) {
         return create(countryTag, LocaleHelper.getLocale(languageCode), otherProductsCode);
     }

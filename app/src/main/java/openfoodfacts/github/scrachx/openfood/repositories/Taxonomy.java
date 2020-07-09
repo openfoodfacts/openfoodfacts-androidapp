@@ -90,7 +90,7 @@ public enum Taxonomy {
         }
     };
     // -1 no internet connexion.
-    private final static long TAXONOMY_NO_INTERNET = -9999L;
+    private static final long TAXONOMY_NO_INTERNET = -9999L;
     public final String jsonUrl;
 
     Taxonomy(String jsonUrl) {

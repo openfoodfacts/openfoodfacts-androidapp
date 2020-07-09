@@ -12,15 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/toolbar_include"
-            layout="@layout/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srRefreshHistoryScanList"
@@ -29,7 +20,7 @@
             app:layout_constraintBottom_toTopOf="@+id/navigation_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_include">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listHistoryScan"
@@ -52,7 +43,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/srRefreshHistoryScanList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_include">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/empty_history_info"
@@ -88,7 +79,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/srRefreshHistoryScanList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_include" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             android:id="@+id/navigation_bottom"

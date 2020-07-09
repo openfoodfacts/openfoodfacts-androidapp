@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
@@ -55,7 +55,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     private ActivityProductBinding binding;
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
-    private Disposable disposable;
+    private CompositeDisposable disp = new CompositeDisposable();
     private State mState;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -68,57 +68,58 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
      */
     @NonNull
     public static ProductFragmentPagerAdapter setupViewPager(@NonNull ViewPager2 viewPager,
-                                                             @NonNull ProductFragmentPagerAdapter adapterResult,
-                                                             @NonNull State mState,
+                                                             @NonNull ProductFragmentPagerAdapter adapter,
+                                                             @NonNull State state,
                                                              @NonNull Activity activity) {
 
         String[] menuTitles = activity.getResources().getStringArray(R.array.nav_drawer_items_product);
         String[] newMenuTitles = activity.getResources().getStringArray(R.array.nav_drawer_new_items_product);
 
         Bundle fBundle = new Bundle();
-        fBundle.putSerializable(STATE_KEY, mState);
+        fBundle.putSerializable(STATE_KEY, state);
 
-        adapterResult.addFragment(applyBundle(new SummaryProductFragment(), fBundle), menuTitles[0]);
+        adapter.addFragment(applyBundle(new SummaryProductFragment(), fBundle), menuTitles[0]);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
 
         // Add Ingredients fragment for off, obf and opff
         if (Utils.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
-            adapterResult.addFragment(applyBundle(new IngredientsProductFragment(), fBundle), menuTitles[1]);
+            adapter.addFragment(applyBundle(new IngredientsProductFragment(), fBundle), menuTitles[1]);
         }
 
         if (Utils.isFlavor(AppFlavors.OFF)) {
-            adapterResult.addFragment(applyBundle(new NutritionProductFragment(), fBundle), menuTitles[2]);
-            if ((mState.getProduct().getNutriments() != null &&
-                mState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
-                (mState.getProduct().getEnvironmentInfocard() != null && !mState.getProduct().getEnvironmentInfocard().isEmpty())) {
-                adapterResult.addFragment(applyBundle(new EnvironmentProductFragment(), fBundle), "Environment");
+            adapter.addFragment(applyBundle(new NutritionProductFragment(), fBundle), menuTitles[2]);
+            if ((state.getProduct().getNutriments() != null &&
+                state.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
+                (state.getProduct().getEnvironmentInfocard() != null && !state.getProduct().getEnvironmentInfocard().isEmpty())) {
+                adapter.addFragment(applyBundle(new EnvironmentProductFragment(), fBundle), "Environment");
             }
             if (isPhotoMode(activity)) {
-                adapterResult.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
+                adapter.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
             }
         } else if (Utils.isFlavor(AppFlavors.OPFF)) {
-            adapterResult.addFragment(applyBundle(new NutritionProductFragment(), fBundle), menuTitles[2]);
+            adapter.addFragment(applyBundle(new NutritionProductFragment(), fBundle), menuTitles[2]);
             if (isPhotoMode(activity)) {
-                adapterResult.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
+                adapter.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
             }
         } else if (Utils.isFlavor(AppFlavors.OBF)) {
             if (isPhotoMode(activity)) {
-                adapterResult.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
+                adapter.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
             }
-            adapterResult.addFragment(applyBundle(new IngredientsAnalysisProductFragment(), fBundle), newMenuTitles[1]);
+            adapter.addFragment(applyBundle(new IngredientsAnalysisProductFragment(), fBundle), newMenuTitles[1]);
         } else if (Utils.isFlavor(AppFlavors.OPF)) {
-            adapterResult.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
+            adapter.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
         }
 
         if (preferences.getBoolean("contributionTab", false)) {
-            adapterResult.addFragment(applyBundle(new ContributorsFragment(), fBundle), activity.getString(R.string.contribution_tab));
+            adapter.addFragment(applyBundle(new ContributorsFragment(), fBundle), activity.getString(R.string.contribution_tab));
         }
 
-        viewPager.setAdapter(adapterResult);
-        return adapterResult;
+        viewPager.setAdapter(adapter);
+        return adapter;
     }
 
-    public static <T extends Fragment> T applyBundle(T fragment, Bundle bundle) {
+    @NonNull
+    public static <T extends Fragment> T applyBundle(@NonNull T fragment, @NonNull Bundle bundle) {
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -166,12 +167,8 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
      * @param barcode from the URL.
      */
     private void loadProductDataFromUrl(String barcode) {
-        if (disposable != null) {
-            //dispose the previous call if not ended.
-            disposable.dispose();
-        }
 
-        disposable = api.getProductStateFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        disp.add(api.getProductStateFullSingle(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(state -> {
                 mState = state;
@@ -184,7 +181,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             }, e -> {
                 Log.i(getClass().getSimpleName(), "Failed to load product data", e);
                 finish();
-            });
+            }));
     }
 
     @Override
@@ -192,6 +189,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            // Open product editing after successful login
             Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
             intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
             startActivity(intent);
@@ -302,10 +300,8 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
     @Override
     protected void onDestroy() {
+        disp.dispose();
         super.onDestroy();
-        if (disposable != null) {
-            disposable.dispose();
-        }
     }
 
     public void showIngredientsTab(ShowIngredientsAction action) {

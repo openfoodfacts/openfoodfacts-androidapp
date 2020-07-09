@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -16,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.PreferenceManager;
 
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator;
 import com.squareup.picasso.Callback;
@@ -124,7 +124,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
             mAllergenNameDao = Utils.getDaoSession().getAllergenNameDao();
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            editProduct = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
+            editProduct = b.getBoolean(AddProductActivity.KEY_IS_EDITING);
             if (product != null) {
                 code = product.getCode();
             }

@@ -12,5 +12,6 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
+        style="?android:actionBarStyle"
         android:theme="?attr/actionBarTheme" />
 </layout>

@@ -118,7 +118,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        api = new OpenFoodAPIClient(getActivity());
+        api = new OpenFoodAPIClient(requireActivity());
         binding = FragmentNutritionProductBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -131,7 +131,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.nutrimentsRecyclerView.getContext(), VERTICAL);
         binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
         binding.getNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        binding.newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_black_18dp, 0, 0, 0);
+        binding.newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_dark_18dp, 0, 0, 0);
 
         binding.nutriscoreLink.setOnClickListener(v -> openNutriScoreLink());
         binding.imageViewNutrition.setOnClickListener(this::openFullScreen);

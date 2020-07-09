@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -29,7 +28,7 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 public class ProductComparisonActivity extends BaseActivity implements PhotoReceiver {
     private ActivityProductComparisonBinding binding;
     private PhotoReceiverHandler photoReceiverHandler;
-    private RecyclerView.Adapter productComparisonAdapter;
+    private RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> productComparisonAdapter;
     private ArrayList<Product> products = new ArrayList<>();
 
     @Override
@@ -43,30 +42,26 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
         super.onCreate(savedInstanceState);
         binding = ActivityProductComparisonBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setTitle(getString(R.string.compare_products));
 
-        setSupportActionBar(binding.toolbarInclude.toolbar);
+        setTitle(getString(R.string.compare_products));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         photoReceiverHandler = new PhotoReceiverHandler(this);
 
         if (getIntent().getExtras() != null && getIntent().getBooleanExtra("product_found", false)) {
-            products = (ArrayList<Product>) getIntent().getExtras().get("products_to_compare");
+            products = (ArrayList<Product>) getIntent().getExtras().getSerializable("products_to_compare");
             if (getIntent().getBooleanExtra("product_already_exists", false)) {
                 Toast.makeText(this, getString(R.string.product_already_exists_in_comparison), Toast.LENGTH_SHORT).show();
             }
         }
 
-        Button productComparisonButton = findViewById(R.id.product_comparison_button);
-        RecyclerView productComparisonRv = findViewById(R.id.product_comparison_rv);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        productComparisonRv.setLayoutManager(layoutManager);
+        binding.productComparisonRv.setLayoutManager(layoutManager);
 
         productComparisonAdapter = new ProductComparisonAdapter(products, this);
-        productComparisonRv.setAdapter(productComparisonAdapter);
+        binding.productComparisonRv.setAdapter(productComparisonAdapter);
 
-        productComparisonButton.setOnClickListener(v -> {
+        binding.productComparisonButton.setOnClickListener(v -> {
             if (Utils.isHardwareCameraInstalled(ProductComparisonActivity.this)) {
                 if (ContextCompat.checkSelfPermission(ProductComparisonActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(ProductComparisonActivity.this, Manifest.permission.CAMERA)) {

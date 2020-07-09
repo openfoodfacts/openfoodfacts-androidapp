@@ -88,6 +88,9 @@ public class AddProductNutritionFactsData {
         PREFIX_NUTRIMENT_LONG_NAME + "vitamin-k",
         PREFIX_NUTRIMENT_LONG_NAME + "zinc"));
 
+    private AddProductNutritionFactsData() {
+    }
+
     static String getCompleteEntryName(CustomValidatingEditTextView editText) {
         return PREFIX_NUTRIMENT_LONG_NAME + editText.getEntryName();
     }

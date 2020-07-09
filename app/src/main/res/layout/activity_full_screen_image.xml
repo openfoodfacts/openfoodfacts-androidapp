@@ -106,7 +106,7 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_add_a_photo_white_18dp" />
+            app:srcCompat="@drawable/ic_add_a_photo_light_18dp" />
 
         <ImageView
             android:id="@+id/btnChooseImage"

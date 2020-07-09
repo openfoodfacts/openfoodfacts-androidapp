@@ -198,7 +198,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment implements Ph
             boolean productEdited;
             product = (Product) b.getSerializable("product");
             mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            productEdited = b.getBoolean(AddProductActivity.KEY_IS_EDITION);
+            productEdited = b.getBoolean(AddProductActivity.KEY_IS_EDITING);
             if (product != null) {
                 productCode = product.getCode();
             }

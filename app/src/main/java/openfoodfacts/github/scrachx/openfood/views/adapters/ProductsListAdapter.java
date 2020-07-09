@@ -63,17 +63,22 @@ public class ProductsListAdapter extends BaseAdapter {
                 .into(imgIcon);
 
         Product product = products.get(position);
-        StringBuilder stringBuilder = new StringBuilder(product.getProductName() + "\n");
-
-        if (product != null && !product.getBrands().isEmpty()) {
-            stringBuilder.append(StringUtils.capitalize(product.getBrands().split(",")[0].trim()));
+        if (product == null) {
+            txtTitle.setText(R.string.product_not_found);
         }
+        else {
+            StringBuilder stringBuilder = new StringBuilder(product.getProductName() + "\n");
 
-        if (product != null && !product.getQuantity().isEmpty()) {
-            stringBuilder.append(" - ").append(product.getQuantity());
+            if (!product.getBrands().isEmpty()) {
+                stringBuilder.append(StringUtils.capitalize(product.getBrands().split(",")[0].trim()));
+            }
+
+            if (!product.getQuantity().isEmpty()) {
+                stringBuilder.append(" - ").append(product.getQuantity());
+            }
+
+            txtTitle.setText(stringBuilder.toString());
         }
-
-        txtTitle.setText(stringBuilder.toString());
 
         return convertView;
     }

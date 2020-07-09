@@ -4,7 +4,7 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_black"
+        android:icon="@drawable/ic_search_dark"
         android:title="@string/action_search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />

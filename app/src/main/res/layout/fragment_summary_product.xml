@@ -80,7 +80,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_tiny"
                                 android:layout_marginBottom="@dimen/spacing_tiny"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                 android:textIsSelectable="true"
                                 android:textStyle="bold"
                                 tools:text="Product name" />
@@ -128,7 +128,7 @@
                                 android:contentDescription="@string/product_front_image"
                                 android:maxHeight="120dp"
                                 android:scaleType="fitCenter"
-                                app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+                                app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
 
                             <TextView
                                 android:id="@+id/addPhotoLabel"
@@ -148,7 +148,6 @@
                     android:id="@+id/action_buttons_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:padding="8dp">
 
                     <LinearLayout
@@ -251,7 +250,6 @@
                     android:id="@+id/analysisContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:orientation="vertical"
                     android:visibility="gone"
                     tools:visibility="visible">
@@ -286,7 +284,6 @@
                     android:id="@+id/scores_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
                     android:padding="8dp"
                     tools:visibility="visible">
 

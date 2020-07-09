@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.ScreenshotCallback {
     private static final String LOG_TAG = FileWritingScreenshotCallback.class.getSimpleName();
-    private DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd-HHmmss");
+    private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HHmmss");
     private ScreenshotParameter screenshotParameter;
 
     FileWritingScreenshotCallback() {
