@@ -43,9 +43,9 @@
     <string name="add_nutrient_category_prompt_text">ניתן להוסיף קטגוריה ולפרט כדי לסייע בהשלמת תיעוד המוצר</string>
     <string name="txt_eaten_products">מוצרים שיש לי</string>
     <string name="txt_products_to_buy">מוצרים לרכישה</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="intent_filter_share_label">הוספה ל־Open Products Facts</string>
+    <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„מוצרים לרכישה”.
+        כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
+    <string name="OFFlogo">הלוגו של Open Products Facts</string>
+    <string name="brand_hint">דוגמאות: Nike,‏ Apple וכו׳…</string>
 </resources>

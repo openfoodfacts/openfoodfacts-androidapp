@@ -13,7 +13,7 @@ Ihr vollständiger Verlauf eingelesener Produkte, vollständig privat und export
 
 Weiter geht's mit Wikipedia
 
-Allergenwarnungen festlegen
+Allergen-Warnung
 
 Ernährung, vereinfacht
 
@@ -65,7 +65,7 @@ Unbegrenzter und vollständig privater Verlauf der erfassten Produkte
 
 Wischen, um weitere Details anzuzeigen
 
-Allergenwarnungen festlegen
+Allergen-Warnung
 
 Schließen Sie sich unserer globalen Bewegung für Transparenz bei Lebensmitteln an
 
