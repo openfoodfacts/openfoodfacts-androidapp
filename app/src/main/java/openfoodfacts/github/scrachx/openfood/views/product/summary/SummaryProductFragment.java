@@ -586,33 +586,29 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void sendProductInsights(String insightId, AnnotationAnswer annotation) {
         if (!Utils.isUserLoggedIn(requireActivity())) {
             new MaterialDialog.Builder(requireActivity())
-                .title("Please sign in or register to answer insights.")
-                .positiveText("LogIn")
+                .title(getString(R.string.sign_in_to_answer))
+                .positiveText(getString(R.string.sign_in_or_register))
                 .onPositive((dialog, which) ->
                     registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                         result -> {
                             if (result.getResultCode() == Activity.RESULT_OK) {
                                 dialog.dismiss();
-                                Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
-                                presenter.annotateInsight(insightId, annotation);
-                                binding.productQuestionLayout.setVisibility(GONE);
-                                productQuestion = null;
+                                processInsight(insightId, annotation);
                             }
                         }).launch(new Intent(getActivity(), LoginActivity.class)))
-                .negativeText(R.string.create_account)
-                .onNegative((dialog, which) -> {
-                })
                 .neutralText(R.string.dialog_cancel)
-                .onNeutral((dialog, which) -> {
-                    dialog.dismiss();
-                })
+                .onNeutral((dialog, which) -> dialog.dismiss())
                 .show();
         } else {
-            Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
-            presenter.annotateInsight(insightId, annotation);
-            binding.productQuestionLayout.setVisibility(GONE);
-            productQuestion = null;
+            processInsight(insightId, annotation);
         }
+    }
+
+    private void processInsight(String insightId, AnnotationAnswer annotation) {
+        presenter.annotateInsight(insightId, annotation);
+        Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
+        binding.productQuestionLayout.setVisibility(GONE);
+        productQuestion = null;
     }
 
     public void showAnnotatedInsightToast(@NonNull AnnotationResponse response) {

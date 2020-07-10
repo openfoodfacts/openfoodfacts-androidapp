@@ -30,7 +30,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.preference.PreferenceManager;
 
@@ -41,8 +40,8 @@ import java.io.IOException;
 import java.net.HttpCookie;
 import java.util.Objects;
 
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -52,9 +51,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -64,7 +60,7 @@ import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH
  * A login screen that offers login via login/password.
  * This Activity connect to the Chrome Custom Tabs Service on startup to prefetch the url.
  */
-public class LoginActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback {
+public class LoginActivity extends BaseActivity {
     private ActivityLoginBinding binding;
     private ProductsAPI apiClient;
     private CustomTabActivityHelper customTabActivityHelper;
@@ -72,6 +68,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     private Uri resetPasswordUri;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
+    private CompositeDisposable disp = new CompositeDisposable();
     private ShakeDetector mShakeDetector;
     // boolean to determine if scan on shake feature should be enabled
     private boolean scanOnShake;
@@ -109,13 +106,24 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
         // prefetch the uri
         customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(this);
+        customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
+            @Override
+            public void onCustomTabsConnected() {
+                binding.btnCreateAccount.setEnabled(true);
+            }
+
+            @Override
+            public void onCustomTabsDisconnected() {
+                //TODO find out what do do with it
+                binding.btnCreateAccount.setEnabled(false);
+            }
+        });
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
         binding.btnCreateAccount.setEnabled(true);
 
         final SharedPreferences settings = getSharedPreferences("login", 0);
         String loginS = settings.getString(getResources().getString(R.string.user), getResources().getString(R.string.txt_anonymous));
-        if (loginS.equals(getResources().getString(R.string.user))) {
+        if (getResources().getString(R.string.user).equals(loginS)) {
             new MaterialDialog.Builder(this)
                 .title(R.string.log_in)
                 .content(R.string.login_true)
@@ -145,7 +153,7 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         });
     }
 
-    protected void doAttemptLogin() {
+    private void doAttemptLogin() {
         Utils.hideKeyboard(this);
         String login = binding.loginInput.getText().toString();
         String password = binding.passInput.getText().toString();
@@ -171,74 +179,66 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
         binding.btnLogin.setClickable(false);
 
         final Activity context = this;
-        apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                    return;
-                }
+        disp.add(apiClient.signInSingle(login, password, "Sign-in").subscribe(response -> {
+            if (!response.isSuccessful()) {
+                Toast.makeText(context, R.string.errorWeb, Toast.LENGTH_LONG).show();
+                return;
+            }
 
-                String htmlNoParsed = null;
-                try {
-                    htmlNoParsed = response.body().string();
-                } catch (IOException e) {
-                    Log.e("LOGIN", "Unable to parse the login response page", e);
-                }
+            String htmlNoParsed = null;
+            try {
+                htmlNoParsed = response.body().string();
+            } catch (IOException e) {
+                Log.e("LOGIN", "Unable to parse the login response page", e);
+            }
 
-                SharedPreferences.Editor editor = context.getSharedPreferences("login", 0).edit();
+            SharedPreferences.Editor editor = context.getSharedPreferences("login", 0).edit();
 
-                if (htmlNoParsed == null
-                    || htmlNoParsed.contains("Incorrect user name or password.")
-                    || htmlNoParsed.contains("See you soon!")) {
+            if (htmlNoParsed == null
+                || htmlNoParsed.contains("Incorrect user name or password.")
+                || htmlNoParsed.contains("See you soon!")) {
 
-                    Toast.makeText(context, context.getString(R.string.errorLogin), Toast.LENGTH_LONG).show();
-                    binding.passInput.setText("");
+                Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show();
+                binding.passInput.setText("");
 
-                    binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.red));
-                    binding.txtInfoLogin.setText(R.string.txtInfoLoginNo);
+                binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.red));
+                binding.txtInfoLogin.setText(R.string.txtInfoLoginNo);
 
-                    snackbar.dismiss();
-                } else {
-                    // store the user session id (user_session and user_id)
-                    for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
-                        // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
-                        if (BuildConfig.HOST.contains(httpCookie.getDomain()) && httpCookie.getPath().equals("/")) {
-                            String[] cookieValues = httpCookie.getValue().split("&");
-                            for (int i = 0; i < cookieValues.length; i++) {
-                                editor.putString(cookieValues[i], cookieValues[++i]);
-                            }
-                            break;
+                snackbar.dismiss();
+            } else {
+                // store the user session id (user_session and user_id)
+                for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
+                    // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
+                    if (BuildConfig.HOST.contains(httpCookie.getDomain()) && httpCookie.getPath().equals("/")) {
+                        String[] cookieValues = httpCookie.getValue().split("&");
+                        for (int i = 0; i < cookieValues.length; i++) {
+                            editor.putString(cookieValues[i], cookieValues[++i]);
                         }
+                        break;
                     }
-                    Snackbar snackbar = Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG);
-
-                    snackbar.show();
-
-                    Toast.makeText(context, context.getResources().getText(R.string.txtToastSaved), Toast.LENGTH_LONG).show();
-                    editor.putString("user", login);
-                    editor.putString("pass", password);
-                    editor.apply();
-
-                    binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.green_500));
-                    binding.txtInfoLogin.setText(R.string.txtInfoLoginOk);
-
-                    setResult(RESULT_OK, new Intent());
-                    finish();
                 }
-            }
 
-            @Override
-            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                Log.e(getClass().getSimpleName(), "onFailure", t);
+                Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show();
+
+                editor.putString("user", login);
+                editor.putString("pass", password);
+                editor.apply();
+
+                binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.green_500));
+                binding.txtInfoLogin.setText(R.string.txtInfoLoginOk);
+
+                setResult(RESULT_OK, new Intent());
+                finish();
             }
-        });
+        }, t -> {
+            Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+            Log.e(getClass().getSimpleName(), "onFailure", t);
+        }));
 
         binding.btnLogin.setClickable(true);
     }
 
-    protected void doRegister() {
+    public void doRegister() {
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
 
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, userLoginUri, new WebViewFallback());
@@ -247,17 +247,6 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
     public void doForgotPassword() {
         CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(), customTabActivityHelper.getSession());
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, resetPasswordUri, new WebViewFallback());
-    }
-
-    @Override
-    public void onCustomTabsConnected() {
-        binding.btnCreateAccount.setEnabled(true);
-    }
-
-    @Override
-    public void onCustomTabsDisconnected() {
-        //TODO find out what do do with it
-        binding.btnCreateAccount.setEnabled(false);
     }
 
     @Override
@@ -275,9 +264,10 @@ public class LoginActivity extends BaseActivity implements CustomTabActivityHelp
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        disp.dispose();
         customTabActivityHelper.setConnectionCallback(null);
         binding = null;
+        super.onDestroy();
     }
 
     @Override
