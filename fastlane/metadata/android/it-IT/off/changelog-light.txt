@@ -1,34 +1,34 @@
 VERSIONE 3
 ====
-6. È più facile contribuire con nuovi prodotti e ottenere il Nutri-Score
-6. Crea (ed esporta) i tuoi elenchi di prodotti (acquisti, pasti…)
-6. Confronta i prodotti fianco a fianco scansionandoli uno dopo l'altro.
-6. Pagina del prodotto completamente ridisegnata, fai scorrere la scheda verso l'alto per scoprirla
-6. Open Food Facts è interamente gestito da volontari: puoi contribuire con il tempo (world.openfoodfacts.org/contribute) o con il denaro (donate.openfoodfacts.org)
+1. È più facile contribuire con nuovi prodotti e ottenere il Nutri-Score
+8. Crea (ed esporta) i tuoi elenchi di prodotti (acquisti, pasti…)
+7. Confronta i prodotti fianco a fianco scansionandoli uno dopo l'altro.
+8. Pagina del prodotto completamente ridisegnata, fai scorrere la scheda verso l'alto per scoprirla
+7. Open Food Facts è interamente gestito da volontari: puoi contribuire con il tempo (world.openfoodfacts.org/contribute) o con il denaro (donate.openfoodfacts.org)
 
 
 ======
-v2 ! Tutti i volontari di OFF hanno lavorato sodo sulla base dei tuoi suggerimenti. Siamo un movimento più globale che mai. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂 tu :-)
-6. Il NutriScore per tutti i prodotti nel mondo
-6. Cronologia esportabile, solo per te
-6. Allarme allergeni
-6. Tocca gli additivi per esplorarli con Wikipedia.
-6. Scatta foto, fai parte della trasparenza alimentare
-6. Molto più veloce, anche in 2G. Puoi contribuire anche senza connessione
+v2 ! Tutti i volontari di OFF hanno lavorato sodo sulla base dei tuoi suggerimenti. Siamo un movimento più globale che mai. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂 tu 🙂 tu :-)
+1. Il NutriScore per tutti i prodotti nel mondo
+8. Cronologia esportabile, solo per te
+7. Allarme allergeni
+8. Tocca gli additivi per esplorarli con Wikipedia.
+7. Scatta foto, fai parte della trasparenza alimentare
+7. Molto più veloce, anche in 2G. Puoi contribuire anche senza connessione
 7. Nessuna registrazione richiesta
 8. Leggero come prima :)
 
-v2.8 ! Dopo l'enorme V2 tutti i volontari di OFF hanno continuato a lavorare duramente sulla base dei tuoi suggerimenti. Ora abbiamo 570mila prodotti liberati da 182 Paesi da 10mila e più contributori incluso tu 🙂 tu 🙂
-6. Abbiamo rifatto l'intera esperienza di aggiunta di prodotti (e funziona anche senza connessione). (Grazie Huzaifa)
-6. Ora puoi ottenere le informazioni nutrizionali per la porzione che stai mangiando (Rutvik)
-6. Ora calcoliamo i gruppi NOVA oltre al Nutriscore (Huzaifa)
-6. Miglioramenti vari (di Rutvik & Salfai)
-6. 🌎 coreano e indonesiano
+v2.8 ! Dopo l'enorme V2 tutti i volontari di OFF hanno continuato a lavorare duramente sulla base dei tuoi suggerimenti. Ora abbiamo 570mila prodotti liberati da 182 Paesi da 10mila e più contributori incluso tu 🙂 tu 🙂 tu 🙂
+1. Abbiamo rifatto l'intera esperienza di aggiunta di prodotti (e funziona anche senza connessione). (Grazie Huzaifa)
+8. Ora puoi ottenere le informazioni nutrizionali per la porzione che stai mangiando (Rutvik)
+7. Ora calcoliamo i gruppi NOVA oltre al Nutriscore (Huzaifa)
+8. Miglioramenti vari (di Rutvik & Salfai)
+7. 🌎 coreano e indonesiano
 
-2.8.8 ! Pensavi che ci saremmo fermati all'aggiunta dei prodotti? Tutti i volontari di OFF hanno continuato a lavorare sodo. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂 tu 🙂
-6. Ora puoi modificare qualsiasi prodotto con il tuo account OFF. Fai clic su ✏️ in una pagina prodotto da modificare.
-6. 🌍 Slovacco, ebraico, spagnolo, arabo, olandese, ungherese e vietnamita (translate.openfoodfacts.org per aiutare)
-6. Open Food Facts è un impegno completamente volontario: puoi donare tempo (world.openfoodfacts.org/contribute) o denaro (donate.openfoodfacts.org)
+2.8.8 ! Pensavi che ci saremmo fermati all'aggiunta dei prodotti? Tutti i volontari di OFF hanno continuato a lavorare sodo. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂 tu 🙂 tu 🙂
+1. Ora puoi modificare qualsiasi prodotto con il tuo account OFF. Fai clic su ✏️ in una pagina prodotto da modificare.
+8. 🌍 Slovacco, ebraico, spagnolo, arabo, olandese, ungherese e vietnamita (translate.openfoodfacts.org per aiutare)
+7. Open Food Facts è un impegno completamente volontario: puoi donare tempo (world.openfoodfacts.org/contribute) o denaro (donate.openfoodfacts.org)
 
 
 
