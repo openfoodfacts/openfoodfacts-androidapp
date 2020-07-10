@@ -68,7 +68,7 @@
         <item>mg</item>
         <item>kg</item>
         <item>µg</item>
-        <item>% QDR</item>
+        <item>% DDR</item>
         <item>UI</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancel·la</string>
     <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
-    <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades!</string>
+    <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% axacta, així que comproveu-ho dues vegades!</string>
     <string name="title_info_dialog">Com funciona?</string>
     <string name="text_offline_info_dialog">Podeu escanejar productes fora de línia i afegir-los després a Open Food Facts. Tots els productes que escanegi apareixeran aquí, i podrà enviar-los amb el botó de baix.</string>
     <string name="permission_camera">El permís de la càmera és necessari per escanejar codis de barres i fer fotos.</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">Icona de codi EMB</string>
     <string name="product_front_image">Imatge frontal del producte</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>
