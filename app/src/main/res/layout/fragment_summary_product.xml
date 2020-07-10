@@ -308,7 +308,7 @@
                             android:focusable="true"
                             android:maxHeight="90dp"
                             android:scaleType="fitCenter"
-                            tools:src="@drawable/nnc_a"
+                            tools:src="@drawable/ic_nutriscore_a"
                             tools:visibility="visible" />
 
                         <ImageView

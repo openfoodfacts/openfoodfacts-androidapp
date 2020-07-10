@@ -26,7 +26,7 @@
             android:layout_marginEnd="@dimen/spacing_larger"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
+            app:srcCompat="@drawable/ic_openfoodfacts_logo_no_tagline" />
 
         <TextView
             android:id="@+id/taglineHome"

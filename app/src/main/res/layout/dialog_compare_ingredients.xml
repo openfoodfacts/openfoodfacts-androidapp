@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="@id/title_local"
         app:layout_constraintStart_toStartOf="@id/title_local"
         app:layout_constraintTop_toBottomOf="@id/line2"
-        tools:src="@drawable/img_scan" />
+        tools:src="@drawable/ic_crowdsourcing_icon" />
 
     <ProgressBar
         android:id="@+id/image_progress_local"

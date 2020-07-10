@@ -20,19 +20,19 @@ public class UtilsTest {
         final Product mockProduct = mock(Product.class);
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("a");
-        assertEquals(R.drawable.nnc_a, Utils.getImageGrade(mockProduct));
+        assertEquals(R.drawable.ic_nutriscore_a, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("b");
-        assertEquals(R.drawable.nnc_b, Utils.getImageGrade(mockProduct));
+        assertEquals(R.drawable.ic_nutriscore_b, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("c");
-        assertEquals(R.drawable.nnc_c, Utils.getImageGrade(mockProduct));
+        assertEquals(R.drawable.ic_nutriscore_c, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("d");
-        assertEquals(R.drawable.nnc_d, Utils.getImageGrade(mockProduct));
+        assertEquals(R.drawable.ic_nutriscore_d, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("e");
-        assertEquals(R.drawable.nnc_e, Utils.getImageGrade(mockProduct));
+        assertEquals(R.drawable.ic_nutriscore_e, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("");
         assertEquals(Utils.NO_DRAWABLE_RESOURCE, Utils.getImageGrade(mockProduct));
