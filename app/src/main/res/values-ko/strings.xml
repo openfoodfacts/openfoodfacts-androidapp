@@ -443,7 +443,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">일반</string>
     <string name="preference_header_network">네트워크</string>
     <string name="preference_header_contributing">도움 보내기</string>
@@ -514,7 +514,7 @@
     <string name="notify_channel_description">내보낸 파일의 위치를 표시하는 알림</string>
     <string name="products_to_be_completed">완제품</string>
     <string name="offline_notification_title">보내야할 오프라인 기여</string>
-    <string name="creator_history">%2$s CET %1$s 에 %3$s가 추가 된 제품</string>
+    <string name="creator_history">%1$s CET %2$s 에 %3$s가 추가 된 제품</string>
     <string name="last_editor_history">%1$s 시에 %2$s CEST에서 %3$s 가 제품의 페이지를 마지막으로 편집</string>
     <string name="other_editors">상품 페이지는 다음 사람들에 의해 수정되었습니다.</string>
     <string name="contribution_tab">기여</string>
@@ -787,4 +787,5 @@
     <string name="icon_emb">EMB 코드 아이콘</string>
     <string name="product_front_image">제품 전면 이미지</string>
     <string name="brand_hint">예 : 코카콜라, 네슬레 등…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>
