@@ -227,7 +227,7 @@
     <string name="your_lists">Le tue liste</string>
     <string name="title_dialog_alert">Aggiungi allarme</string>
     <string name="select_camera">Seleziona una fotocamera</string>
-    <string name="ok_button">OK</string>
+    <string name="ok_button">Ok</string>
     <string name="cancel_button">Annulla</string>
     <string name="login_button">Login</string>
     <string name="create_account_button">Crea account</string>
@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world-it.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Generale</string>
     <string name="preference_header_network">Rete</string>
     <string name="preference_header_contributing">Contribuire</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">Icona codice EMB</string>
     <string name="product_front_image">Immagine frontale prodotto</string>
     <string name="brand_hint">Esempi: CocaCola, Nestlé, ecc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>
