@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$d products (plus the ones you will contribute) in the world.</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$d products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <string name="slide_1_title">Contribute to product transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make food transparency happen</string>
@@ -33,16 +33,10 @@
     <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
-    <string name="tagline">the free product database
-
-Contextrequest</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Do not translate
-
-\" translation=\"\" style=\"cursor: pointer; border-bottom: 1px dashed rgb(102, 102, 102);\"&gt;Open Products Facts. Can you add it?
-
-Contextrequest?</string>
+    <string name="tagline">the free product database</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Do not translate\" translation=\"\" style=\"cursor: pointer; border-bottom: 1px dashed rgb(102, 102, 102); color: rgb(51, 51, 51); font-family: Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\"&gt;Open Products Facts</string>
-    <string name="category_game_btn">Help categorise products</string>
+    <string name="category_game_btn">Help categorize products</string>
     <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Add more details to help complete the product</string>
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
