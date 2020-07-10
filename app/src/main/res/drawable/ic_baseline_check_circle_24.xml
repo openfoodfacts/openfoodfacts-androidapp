@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<!--
   ~ Copyright 2016-2020 Open Food Facts
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,13 @@
   ~ limitations under the License.
   -->
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/green_500" />
-    <corners android:radius="@dimen/material_drawer_item_corner_radius" />
-    <padding
-        android:bottom="@dimen/padding_normal"
-        android:left="@dimen/padding_normal"
-        android:right="@dimen/padding_normal"
-        android:top="@dimen/padding_normal" />
-
-</shape>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:tint="?attr/colorControlNormal"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM10,17l-5,-5 1.41,-1.41L10,14.17l7.59,-7.59L19,8l-9,9z" />
+</vector>

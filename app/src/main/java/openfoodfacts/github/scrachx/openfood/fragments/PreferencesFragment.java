@@ -264,7 +264,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         CheckBoxPreference photoPreference = findPreference("photoMode");
-        if (Utils.isFlavor(AppFlavors.OPF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OPF)) {
             photoPreference.setVisible(false);
         }
 
@@ -279,7 +279,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             Log.e(PreferencesFragment.class.getSimpleName(), "onCreatePreferences", e);
         }
 
-        if (AppFlavors.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
             getAnalysisTagConfigs(daoSession);
         } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();

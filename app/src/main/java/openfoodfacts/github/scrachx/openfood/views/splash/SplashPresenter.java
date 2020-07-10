@@ -46,7 +46,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
     }
 
     private void activateDownload(Taxonomy taxonomy, String... flavors) {
-        if (AppFlavors.isFlavor(flavors)) {
+        if (AppFlavors.isFlavors(flavors)) {
             settings.edit().putBoolean(taxonomy.getDownloadActivatePreferencesId(), true).apply();
         }
     }

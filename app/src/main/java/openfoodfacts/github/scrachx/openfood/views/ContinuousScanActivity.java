@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ActionBar;
@@ -22,6 +38,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.zxing.BarcodeFormat;
@@ -46,6 +63,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
@@ -104,6 +122,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private BottomSheetBehavior bottomSheetBehavior;
     private int cameraState;
     private OpenFoodAPIClient client;
+    @NonNull
+    private VectorDrawableCompat errorDrawable;
     private Disposable productDisp;
     private Handler handler;
     private boolean isAnalysisTagsEmpty = true;
@@ -270,7 +290,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                             try {
                                 Picasso.get()
                                     .load(imageUrl)
-                                    .error(R.drawable.placeholder_thumb)
+                                    .error(errorDrawable)
                                     .into(binding.quickViewImage, new Callback() {
                                         @Override
                                         public void onSuccess() {
@@ -287,11 +307,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
                                 Log.w(this.getClass().getSimpleName(), e.getMessage(), e);
                             }
                         } else {
-                            binding.quickViewImage.setImageResource(R.drawable.placeholder_thumb);
+                            binding.quickViewImage.setImageDrawable(errorDrawable);
                             binding.quickViewImageProgress.setVisibility(GONE);
                         }
                         // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
-                        if (Utils.isFlavor(AppFlavors.OFF) && product.getNutritionGradeFr() != null) {
+                        if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNutritionGradeFr() != null) {
                             if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
                                 binding.quickViewNutriScore.setVisibility(VISIBLE);
                                 binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
@@ -302,7 +322,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                             binding.quickViewNutriScore.setVisibility(GONE);
                         }
                         // Hide nova group from quickView if app flavour is not OFF or there is no nova group
-                        if (Utils.isFlavor(AppFlavors.OFF) && product.getNovaGroups() != null) {
+                        if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNovaGroups() != null) {
                             final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
                             if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
                                 binding.quickViewNovaGroup.setVisibility(VISIBLE);
@@ -449,10 +469,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
         }
 
         String imageFront = offlineSavedProduct.getImageFrontLocalUrl();
+
         if (!TextUtils.isEmpty(imageFront)) {
             Picasso.get()
                 .load(imageFront)
-                .error(R.drawable.placeholder_thumb)
+                .error(errorDrawable)
                 .into(binding.quickViewImage, new Callback() {
                     @Override
                     public void onSuccess() {
@@ -465,7 +486,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     }
                 });
         } else {
-            binding.quickViewImage.setImageResource(R.drawable.placeholder_thumb);
+            binding.quickViewImage.setImageDrawable(errorDrawable);
             binding.quickViewImageProgress.setVisibility(GONE);
         }
 
@@ -606,6 +627,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
         peekLarge = getResources().getDimensionPixelSize(R.dimen.scan_summary_peek_large);
         peekSmall = getResources().getDimensionPixelSize(R.dimen.scan_summary_peek_small);
+        errorDrawable = Objects.requireNonNull(VectorDrawableCompat.create(getResources(), R.drawable.ic_product_silhouette, null));
 
         binding.quickViewTags.setNestedScrollingEnabled(false);
 

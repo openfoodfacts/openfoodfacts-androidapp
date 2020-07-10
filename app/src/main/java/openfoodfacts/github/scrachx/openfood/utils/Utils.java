@@ -698,10 +698,6 @@ public class Utils {
         return null;
     }
 
-    public static boolean isFlavor(String flavor) {
-        return BuildConfig.FLAVOR.equals(flavor);
-    }
-
     @NonNull
     public static String getModifierNonDefault(String modifier) {
         return modifier.equals(Modifier.DEFAULT_MODIFIER) ? "" : modifier;

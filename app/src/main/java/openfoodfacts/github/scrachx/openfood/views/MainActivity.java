@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
@@ -80,6 +96,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -118,7 +135,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private static final String BARCODE_SHORTCUT = "BARCODE";
     private ActivityMainBinding binding;
     private AccountHeader headerResult = null;
-    private Drawer result = null;
+    private Drawer drawerResult = null;
     private MenuItem searchMenuItem;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
@@ -234,7 +251,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             updateProfileForCurrentUser();
         }
         //Create the drawer
-        result = new DrawerBuilder()
+        drawerResult = new DrawerBuilder()
             .withActivity(this)
             .withToolbar(binding.toolbarInclude.toolbar)
             .withHasStableIds(true)
@@ -259,7 +276,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 new SectionDrawerItem().withName(R.string.search_drawer),
                 new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
                 new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES)
+                new PrimaryDrawerItem().withName(R.string.additives).withIcon(R.drawable.additives).withIdentifier(ITEM_ADDITIVES)
                     .withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
@@ -276,7 +293,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                 new DividerDrawerItem(),
                 new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.contribute).withIcon(GoogleMaterial.Icon.gmd_group).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
             )
             .withOnDrawerItemClickListener((view, position, drawerItem) -> {
@@ -400,38 +417,38 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .withShowDrawerOnFirstLaunch(false)
             .build();
 
-        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+        drawerResult.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn() ?
+        drawerResult.addItemsAtPosition(drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn() ?
             getLogoutDrawerItem() : getLoginDrawerItem());
 
-        if (BuildConfig.FLAVOR.equals("obf")) {
-            result.removeItem(ITEM_ALERT);
-            result.removeItem(ITEM_ADDITIVES);
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
+        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
+            drawerResult.removeItem(ITEM_ALERT);
+            drawerResult.removeItem(ITEM_ADDITIVES);
+            drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
         }
 
-        if (BuildConfig.FLAVOR.equals("opff")) {
-            result.removeItem(ITEM_ALERT);
+        if (AppFlavors.isFlavors(AppFlavors.OPFF)) {
+            drawerResult.removeItem(ITEM_ALERT);
         }
 
-        if (BuildConfig.FLAVOR.equals("opf")) {
-            result.removeItem(ITEM_ALERT);
-            result.removeItem(ITEM_ADDITIVES);
-            result.removeItem(ITEM_ADVANCED_SEARCH);
+        if (AppFlavors.isFlavors(AppFlavors.OPF)) {
+            drawerResult.removeItem(ITEM_ALERT);
+            drawerResult.removeItem(ITEM_ADDITIVES);
+            drawerResult.removeItem(ITEM_ADVANCED_SEARCH);
         }
 
         if (!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install) + " " + getString(R.string.open_other_flavor_drawer)));
+            drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.install) + " " + getString(R.string.open_other_flavor_drawer)));
         } else {
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
+            drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
         }
 
         // Remove scan item if the device does not have a camera, for example, Chromebooks or
         // Fire devices
         if (!Utils.isHardwareCameraInstalled(this)) {
-            result.removeItem(ITEM_SCAN);
+            drawerResult.removeItem(ITEM_SCAN);
         }
 
 //        //if you have many different types of DrawerItems you can magically pre-cache those items
@@ -444,7 +461,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
             // set the selection to the item with the identifier 1
-            result.setSelection(ITEM_HOME, false);
+            drawerResult.setSelection(ITEM_HOME, false);
 
             //set the active profile
             headerResult.setActiveProfile(profile);
@@ -596,7 +613,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //add the values which need to be saved from the drawer to the bundle
-        outState = result.saveInstanceState(outState);
+        outState = drawerResult.saveInstanceState(outState);
         //add the values which need to be saved from the accountHeader to the bundle
         outState = headerResult.saveInstanceState(outState);
         super.onSaveInstanceState(outState);
@@ -606,8 +623,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void onBackPressed() {
         //handle the back press :D close the drawer first and if the drawer is closed close the
         // activity
-        if (result != null && result.isDrawerOpen()) {
-            result.closeDrawer();
+        if (drawerResult != null && drawerResult.isDrawerOpen()) {
+            drawerResult.closeDrawer();
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                 getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -832,7 +849,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     @Override
     public void setItemSelected(@NavigationDrawerType Integer type) {
-        result.setSelection(type, false);
+        drawerResult.setSelection(type, false);
     }
 
     @Override
@@ -855,9 +872,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
+            drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
 
-            result.getAdapter().notifyDataSetChanged();
+            drawerResult.getAdapter().notifyDataSetChanged();
         }
 
         updateConnectedState();
@@ -871,9 +888,9 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
     private void updateConnectedState() {
         updateProfileForCurrentUser();
-        result.removeItem(ITEM_LOGIN);
-        result.removeItem(ITEM_LOGOUT);
-        result.addItemAtPosition(super.isUserLoggedIn() ? getLogoutDrawerItem() : getLoginDrawerItem(), result.getPosition(ITEM_MY_CONTRIBUTIONS));
+        drawerResult.removeItem(ITEM_LOGIN);
+        drawerResult.removeItem(ITEM_LOGOUT);
+        drawerResult.addItemAtPosition(super.isUserLoggedIn() ? getLogoutDrawerItem() : getLoginDrawerItem(), drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS));
     }
 
     private void handleSendImage(Intent intent) {
@@ -1052,7 +1069,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      */
     public void changeFragment(Fragment fragment, String title, long drawerName) {
         changeFragment(fragment, title);
-        result.setSelection(drawerName);
+        drawerResult.setSelection(drawerName);
     }
 
     /**

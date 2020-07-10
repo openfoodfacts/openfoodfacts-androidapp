@@ -617,7 +617,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     }
 
     private void onNutriScoreButtonClick() {
-        if (AppFlavors.isFlavor(AppFlavors.OFF, AppFlavors.OBF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OBF)) {
             if (isUserNotLoggedIn()) {
                 Utils.startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE, requireActivity());
             } else {

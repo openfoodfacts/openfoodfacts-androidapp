@@ -52,6 +52,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
@@ -298,7 +299,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             Log.d(getClass().getSimpleName(), e.toString());
         }
 
-        if (Utils.isFlavor(OFF)) {
+        if (AppFlavors.isFlavors(OFF)) {
             binding.scoresLayout.setVisibility(VISIBLE);
             List<NutrientLevelItem> levelItem = new ArrayList<>();
             Nutriments nutriments = product.getNutriments();
@@ -541,7 +542,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.productQuestionLayout.setVisibility(GONE);
             productQuestion = null;
         }
-        if (Utils.isFlavor(OFF)) {
+        if (AppFlavors.isFlavors(OFF)) {
             refreshNutriscorePrompt();
             refreshScoresLayout();
         }
@@ -718,7 +719,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void onAddNutriScorePromptClick() {
-        if (Utils.isFlavor(OFF)) {
+        if (AppFlavors.isFlavors(OFF)) {
             if (isUserNotLoggedIn()) {
                 Utils.startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN, requireActivity());
             } else {
