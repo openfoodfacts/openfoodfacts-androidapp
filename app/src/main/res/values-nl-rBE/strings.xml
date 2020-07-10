@@ -35,7 +35,7 @@
         <item quantity="one">1 dag geleden</item>
         <item quantity="other">%d dagen geleden</item>
     </plurals>
-    <string name="action_about">Informatie</string>
+    <string name="action_about">Over</string>
     <string name="action_discover">Ontdek</string>
     <string name="contribute">Hoe kan je bijdragen?</string>
     <string name="action_find">Zoeken</string>
@@ -284,7 +284,7 @@
     <string name="nutrition_energy_short_name">Energie</string>
     <string name="nutrition_fat">Vet</string>
     <string name="nutrition_fiber">Voedingsvezels</string>
-    <string name="nutrition_header">Voedigswaarden</string>
+    <string name="nutrition_header">Voedingswaarden</string>
     <string name="nutrition_proteins">Eiwitten</string>
     <string name="nutrition_salt">Zout</string>
     <string name="nutrition_satured_fat">Verzadigd vet</string>
@@ -384,13 +384,13 @@
     <string name="txtSaturatedFat">Verzadigd vet</string>
     <string name="nutriscore_info_msg">Meer informatie over de Nutri-Score</string>
     <string name="nova_info_msg">Meer informatie over Nova</string>
-    <string name="nova_grp1_msg">Groep 1 - Niet-verwerkte of minimaal verwerkte voedingsmiddelen</string>
-    <string name="nova_grp2_msg">Groep 2 - Verwerkte culinaire ingrediënten</string>
-    <string name="nova_grp3_msg">Groep 3 - Verwerkte voedingsmiddelen</string>
-    <string name="nova_grp4_msg">Groep 4 - Ultra-verwerkte voedingsmiddelen en dranken</string>
+    <string name="nova_grp1_msg">Groep 1 - Onverwerkte of minimaal verwerkte levensmiddelen</string>
+    <string name="nova_grp2_msg">Groep 2 - Bewerkte ingrediënten</string>
+    <string name="nova_grp3_msg">Groep 3 - Bewerkte levensmiddelen</string>
+    <string name="nova_grp4_msg">Groep 4 - Ultra-bewerkte levensmiddelen en dranken</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Shortcut Not Available</string>
-    <string name="scan_shortcut_short_label">Scannen</string>
+    <string name="scan_shortcut_short_label">Scan</string>
     <string name="scan_shortcut_long_label">Scan product</string>
     <string name="barcode_shortcut_short_label">Zoek</string>
     <string name="barcode_shortcut_long_label">Zoeken op barcode</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>
