@@ -72,7 +72,7 @@ public class FindProductFragment extends NavigationBaseFragment {
             binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeNotValid));
         } else {
 
-            api.getProduct(barCodeTxt, getActivity());
+            api.openProduct(barCodeTxt, getActivity());
         }
     }
 

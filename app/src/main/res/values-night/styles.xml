@@ -9,6 +9,8 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
         <item name="searchViewStyle">@style/customSearchView</item>
 
+        <item name="android:textColorLink">@color/brand_light_blue</item>
+
         <!-- Material drawer -->
         <item name="material_drawer_background">@color/material_drawer_dark_background</item>
         <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>

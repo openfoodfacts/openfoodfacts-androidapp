@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
 import android.app.Activity;
@@ -18,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -49,8 +66,9 @@ import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
+import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.InsightAnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
@@ -78,6 +96,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
@@ -97,6 +116,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
+    private static final int LOGIN_GET_RESULT = 27;
     private OpenFoodAPIClient api;
     private WikiDataApiClient apiClientForWikiData;
     private String barcode;
@@ -121,7 +141,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private State state;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
@@ -144,7 +164,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //done here for android 4 compatibility.
         //a better solution could be to use https://developer.android.com/jetpack/androidx/releases/ but weird issue with it..
         binding.addNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        binding.buttonMorePictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
         photoReceiverHandler = new PhotoReceiverHandler(this);
 
         binding.imageViewFront.setOnClickListener(v -> openFrontImageFullscreen());
@@ -300,8 +319,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
 
             if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
-                // prefetch the uri
-                // currently only available in french translations
+                // prefetch the URL
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri));
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
@@ -513,7 +531,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showProductQuestion(Question question) {
-        if (Utils.isUserLoggedIn(requireActivity()) && question != null && !question.isEmpty()) {
+        if (question != null && !question.isEmpty()) {
             productQuestion = question;
             binding.productQuestionText.setText(String.format("%s%n%s",
                 question.getQuestion(), question.getValue()));
@@ -530,7 +548,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void onProductQuestionClick() {
-        if (productQuestion == null && !Utils.isUserLoggedIn(requireActivity())) {
+        if (productQuestion == null) {
             return;
         }
         new QuestionDialog(requireActivity())
@@ -541,19 +559,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 @Override
                 public void onPositiveFeedback(QuestionDialog dialog) {
                     //init POST request
-                    sendProductInsights(productQuestion.getInsightId(), 1);
+                    sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.POSITIVE);
                     dialog.dismiss();
                 }
 
                 @Override
                 public void onNegativeFeedback(QuestionDialog dialog) {
-                    sendProductInsights(productQuestion.getInsightId(), 0);
+                    sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.NEGATIVE);
                     dialog.dismiss();
                 }
 
                 @Override
                 public void onAmbiguityFeedback(QuestionDialog dialog) {
-                    sendProductInsights(productQuestion.getInsightId(), -1);
+                    sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.AMBIGUITY);
                     dialog.dismiss();
                 }
 
@@ -565,14 +583,35 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             .show();
     }
 
-    public void sendProductInsights(String insightId, int annotation) {
-        Log.d("SummaryProductFragment", String.format("Annotation %d received for insight %s", annotation, insightId));
+    public void sendProductInsights(String insightId, AnnotationAnswer annotation) {
+        if (!Utils.isUserLoggedIn(requireActivity())) {
+            new MaterialDialog.Builder(requireActivity())
+                .title(getString(R.string.sign_in_to_answer))
+                .positiveText(getString(R.string.sign_in_or_register))
+                .onPositive((dialog, which) ->
+                    registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                        result -> {
+                            if (result.getResultCode() == Activity.RESULT_OK) {
+                                dialog.dismiss();
+                                processInsight(insightId, annotation);
+                            }
+                        }).launch(new Intent(getActivity(), LoginActivity.class)))
+                .neutralText(R.string.dialog_cancel)
+                .onNeutral((dialog, which) -> dialog.dismiss())
+                .show();
+        } else {
+            processInsight(insightId, annotation);
+        }
+    }
+
+    private void processInsight(String insightId, AnnotationAnswer annotation) {
         presenter.annotateInsight(insightId, annotation);
+        Log.d("SummaryProductFragment", String.format("Annotation %s received for insight %s", annotation, insightId));
         binding.productQuestionLayout.setVisibility(GONE);
         productQuestion = null;
     }
 
-    public void showAnnotatedInsightToast(InsightAnnotationResponse response) {
+    public void showAnnotatedInsightToast(@NonNull AnnotationResponse response) {
         if (response.getStatus().equals("updated") && getActivity() != null) {
             Toast toast = Toast.makeText(getActivity(), R.string.product_question_submit_message, Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 500);
@@ -681,7 +720,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void onAddNutriScorePromptClick() {
         if (Utils.isFlavor(OFF)) {
             if (isUserNotLoggedIn()) {
-                startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN);
+                Utils.startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN, requireActivity());
             } else {
                 editProductNutriscore();
             }
@@ -720,7 +759,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void onEditProductButtonClick() {
         if (isUserNotLoggedIn()) {
-            startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN);
+            Utils.startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN, requireActivity());
         } else {
             editProduct();
         }

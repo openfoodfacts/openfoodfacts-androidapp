@@ -13,7 +13,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 Узнайте больше с Википедией
 
-Установите предупреждения о аллергенах
+Предупреждение об аллергенах
 
 Питательность, кратко
 
@@ -27,7 +27,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 Википедия для косметики
 
-Википедия для кормов для домашних животных
+Википедия для продуктов питания
 
 Википедия для продуктов
 
@@ -35,7 +35,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 Мощное
 
-Пищевая и энергетическая ценность
+Пищевые свойства
 
 =====================
 Скриншоты V3
@@ -65,7 +65,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 Свайп для подробностей
 
-Установите предупреждения об аллергенах
+Предупреждение об аллергенах
 
 Присоединяйтесь к нашему глобальному движению за прозрачность продуктов питания
 

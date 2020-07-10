@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.content.Context;
@@ -5,12 +21,19 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
-import androidx.preference.PreferenceManager;
+
 import androidx.annotation.NonNull;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import androidx.preference.PreferenceManager;
+
 import org.apache.commons.lang.StringUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * This class is used to change your application locale and persist this change for the next time
@@ -32,54 +55,34 @@ public class LocaleHelper {
         return -1;
     }
 
-    public static class LanguageData implements Comparable<LanguageData> {
-        private final String code;
-        private final String name;
-        private final boolean supported;
-
-        LanguageData(String code, String name, boolean supported) {
-            this.code = code;
-            this.name = name;
-            this.supported = supported;
+    /**
+     * Used by screenshots generator.
+     *
+     * @param context
+     * @param locale
+     */
+    public static Context setLocale(Context context, Locale locale) {
+        if (locale == null) {
+            return context;
         }
+        PreferenceManager.getDefaultSharedPreferences(context)
+            .edit()
+            .putString(SELECTED_LANGUAGE, locale.getLanguage())
+            .apply();
 
-        public boolean isSupported() {
-            return supported;
-        }
+        Locale.setDefault(locale);
 
-        public String getCode() {
-            return code;
-        }
+        Resources resources = context.getResources();
 
-        public String getName() {
-            return name;
+        Configuration configuration = resources.getConfiguration();
+        if (Build.VERSION.SDK_INT >= 17) {
+            configuration.setLocale(locale);
+            context = context.createConfigurationContext(configuration);
+        } else {
+            configuration.locale = locale;
         }
-
-        @Override
-        public String toString() {
-            return name+" ["+code+"]";
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == null) {
-                return false;
-            }
-            if (LanguageData.class.equals(obj.getClass())) {
-                return code.equals(((LanguageData) obj).code);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return code.hashCode();
-        }
-
-        @Override
-        public int compareTo(@NonNull LanguageData o) {
-            return name.compareTo(o.name);
-        }
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        return context;
     }
 
     private LocaleHelper() {
@@ -166,43 +169,13 @@ public class LocaleHelper {
     }
 
     /**
-     * Used by screenshots generator.
-     * @param context
-     * @param locale
-     * @return
-     */
-    public static Context setLocale(Context context, Locale locale) {
-        if (locale == null) {
-            return context;
-        }
-        PreferenceManager.getDefaultSharedPreferences(context)
-            .edit()
-            .putString(SELECTED_LANGUAGE, locale.getLanguage())
-            .apply();
-
-        Locale.setDefault(locale);
-
-        Resources resources = context.getResources();
-
-        Configuration configuration = resources.getConfiguration();
-        if (Build.VERSION.SDK_INT >= 17) {
-            configuration.setLocale(locale);
-            context = context.createConfigurationContext(configuration);
-        } else {
-            configuration.locale = locale;
-        }
-        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-        return context;
-    }
-
-    /**
      * Extract language and region from the locale string
      *
      * @param locale language
      * @return Locale from locale string
      */
     public static Locale getLocale(String locale) {
-        if(locale==null){
+        if (locale == null) {
             return Locale.getDefault();
         }
         String[] localeParts = locale.split("-");
@@ -229,10 +202,60 @@ public class LocaleHelper {
     }
 
     private static String getLanguageInPreferences(Context context, String defaultLanguage) {
-        if(context==null){
-            return  defaultLanguage;
+        if (context == null) {
+            return defaultLanguage;
         }
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
+    }
+
+    public static class LanguageData implements Comparable<LanguageData> {
+        private final String code;
+        private final String name;
+        private final boolean supported;
+
+        LanguageData(String code, String name, boolean supported) {
+            this.code = code;
+            this.name = name;
+            this.supported = supported;
+        }
+
+        public boolean isSupported() {
+            return supported;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        @Override
+        public String toString() {
+            return name + " [" + code + "]";
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+            if (LanguageData.class.equals(obj.getClass())) {
+                return code.equals(((LanguageData) obj).code);
+            }
+            return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return code.hashCode();
+        }
+
+        @Override
+        public int compareTo(@NonNull LanguageData o) {
+            return name.compareTo(o.name);
+        }
     }
 }

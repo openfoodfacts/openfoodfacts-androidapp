@@ -1,34 +1,34 @@
 VERSÃO 3
 ====
-1. É mais fácil contribuir com produtos novos e obter o Nutri-Score
-2. Crie (e exporte) suas listas de produtos (compras, refeições…)
-3. Compare os produtos lado a lado, escaneando-os um após o outro.
-4. Página do produto completamente reprojetada, deslize o cartão para cima para descobri-la
-5. O Open Food Facts é totalmente realizado por voluntários: você pode contribuir com tempo (pt.openfoodfacts.org/contribute) ou com dinheiro (donate.openfoodfacts.org)
+6. É mais fácil contribuir com produtos novos e obter o Nutri-Score
+6. Crie (e exporte) suas listas de produtos (compras, refeições…)
+6. Compare os produtos lado a lado, escaneando-os um após o outro.
+6. Página do produto completamente reprojetada, deslize o cartão para cima para descobri-la
+6. O Open Food Facts é totalmente realizado por voluntários: você pode contribuir com tempo (pt.openfoodfacts.org/contribute) ou com dinheiro (donate.openfoodfacts.org)
 
 
 ======
 v2 ! Todos os voluntários OFF trabalharam duro, baseando-se em suas sugestões. Somos um movimento global mais do que nunca. Quinhentos mil produtos libertados, 182 países, mais de 10 mil contribuintes, incl. você :-)
-1. O NutriSocre para todos os produtos no mundo
-2. Histórias exportáveis, apenas para seus olhos
-3. Alertas alérgicos
-4. Clique em aditivos para explorar com Wikipedia.
-5. Fotografe, faça parte da transparência gastronômica
+6. O NutriSocre para todos os produtos no mundo
+6. Histórias exportáveis, apenas para seus olhos
+6. Alertas alérgicos
+6. Clique em aditivos para explorar com Wikipedia.
+6. Fotografe, faça parte da transparência gastronômica
 6. Muito mais rápido, até no 2G. Você contribuir mesmo sem conexão
 7. Não é necessário se cadastrar
 8. Tão leve quanto antes :)
 
-v2.8! Após o grande V2, todos os voluntários da OFF continuaram trabalhando duro, baseando-se em suas sugestões. Estamos agora nos 570 mil produtos libertados de 182 países por mais de 10 mil contribuintes, incl. você
-1. Reconstruímos toda experiência de adição de produtos (funciona quando offline). (obrigado Huzaifa)
-2. Agora você pode ter acesso a fatos nutritivos para a porção que está comendo (Rutvik)
-3. Agora computamos grupos NOVA junto ao Nutriscore (Huzaifa)
-4. Limpeza (por Rutvik e Salfai)
-5. Coreano e Indiano
+v2.8! Após o grande V2, todos os voluntários da OFF continuaram trabalhando duro, baseando-se em suas sugestões. Estamos agora nos 570 mil produtos libertados de 182 países por mais de 10 mil contribuintes, incl. você :-)
+6. Reconstruímos toda experiência de adição de produtos (funciona quando offline). (obrigado Huzaifa)
+6. Agora você pode ter acesso a fatos nutritivos para a porção que está comendo (Rutvik)
+6. Agora computamos grupos NOVA junto ao Nutriscore (Huzaifa)
+6. Limpeza (por Rutvik e Salfai)
+6. Coreano e Indiano
 
-2.8.8 ! Pensou que pararíamos em adição de produtos? Todos os voluntários da OFF continuaram trabalhando duro. Quinhentos e noventa mil produtos, 182 países, mais de 10 ml contribuintes, incl. você
-1. Agora você pode editar qualquer produto com sua conta OFF. Clique em ✏️ em uma página de produto para editar.
-2. Eslováquio, hebraico, espanhol, árabe, holandês, húngaro e vietnamita (traduzir.fatosopenfood.org para ajuda)
-3. Open Food Facts é um esforço feito completamente pot voluntários: Você pode doar tempo (world.openfood.facts.org/contribute) ou dinheiro (donate.openfoodfacts.org)
+2.8.8 ! Pensou que pararíamos em adição de produtos? Todos os voluntários da OFF continuaram trabalhando duro. Quinhentos mil produtos libertados, 182 países, mais de 10 mil contribuintes, incl. você :-)
+6. Agora você pode editar qualquer produto com sua conta OFF. Clique em ✏️ em uma página de produto para editar.
+6. Eslováquio, hebraico, espanhol, árabe, holandês, húngaro e vietnamita (traduzir.fatosopenfood.org para ajuda)
+6. Open Food Facts é um esforço feito completamente pot voluntários: Você pode doar tempo (world.openfood.facts.org/contribute) ou dinheiro (donate.openfoodfacts.org)
 
 
 

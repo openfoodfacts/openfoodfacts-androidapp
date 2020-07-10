@@ -191,13 +191,13 @@ public class OpenFoodAPIClient {
         mHistoryProductDao.insertOrReplace(hp);
     }
 
-    public Call<State> getProductStateFull(final String barcode) {
-        String fieldParam = getAllFields();
-        return api.getProductByBarcode(barcode, fieldParam, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH));
+    public Single<State> getProductStateFull(final String barcode, String header) {
+        return api.getProductByBarcodeSingle(barcode, getAllFields(), Utils.getUserAgent(header))
+            .subscribeOn(Schedulers.io());
     }
 
-    public Single<State> getProductStateFullSingle(final String barcode, String header) {
-        return api.getProductByBarcodeSingle(barcode, getAllFields(), Utils.getUserAgent(header))
+    public Single<State> getProductStateFull(final String barcode) {
+        return api.getProductByBarcodeSingle(barcode, getAllFields(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
             .subscribeOn(Schedulers.io());
     }
 
@@ -280,7 +280,7 @@ public class OpenFoodAPIClient {
      * @param activity
      */
     // TODO: This is not part of the client, move it to another class (preferably a utility class)
-    public void getProduct(final String barcode, final Activity activity, final ApiCallbacks.OnStateListenerCallback callback) {
+    public void openProduct(final String barcode, final Activity activity, final ApiCallbacks.OnStateListenerCallback callback) {
         String fieldParam = getAllFields();
         api.getProductByBarcode(barcode, fieldParam, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
             @Override
@@ -341,8 +341,15 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void getProduct(final String barcode, final Activity activity) {
-        getProduct(barcode, activity, null);
+    /**
+     * Open the product in {@link ProductActivity} if the barcode exist.
+     * Also add it in the history if the product exist.
+     *
+     * @param barcode product barcode
+     * @param activity
+     */
+    public void openProduct(final String barcode, final Activity activity) {
+        openProduct(barcode, activity, null);
     }
 
     /**

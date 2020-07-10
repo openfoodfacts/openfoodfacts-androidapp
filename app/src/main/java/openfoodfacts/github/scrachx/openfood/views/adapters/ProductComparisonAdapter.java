@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.app.Activity;
@@ -49,7 +65,6 @@ import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.repositories.IProductRepository;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -71,7 +86,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private final Context context;
     private final CompositeDisposable disposable = new CompositeDisposable();
     private final List<Product> productsToCompare;
-    private final IProductRepository repository = ProductRepository.getInstance();
+    private final ProductRepository repository = ProductRepository.getInstance();
     private final ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
     private Integer onPhotoReturnPosition;
 
@@ -230,7 +245,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             if (product != null) {
                 String barcode = product.getCode();
                 if (Utils.isNetworkConnected(context)) {
-                    api.getProduct(barcode, (Activity) context);
+                    api.openProduct(barcode, (Activity) context);
                     try {
                         View view1 = ((Activity) context).getCurrentFocus();
                         if (view != null) {
@@ -248,7 +263,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
                         .negativeText(R.string.dismiss)
                         .onPositive((dialog, which) -> {
                             if (Utils.isNetworkConnected(context)) {
-                                api.getProduct(barcode, (Activity) context);
+                                api.openProduct(barcode, (Activity) context);
                             } else {
                                 Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
                             }

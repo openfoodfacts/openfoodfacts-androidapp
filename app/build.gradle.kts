@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 buildscript {
     repositories {
         mavenCentral()
@@ -34,8 +50,8 @@ dependencies {
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.fragment:fragment:1.2.5")
-    implementation("androidx.activity:activity:1.1.0")
+    implementation("androidx.fragment:fragment:1.3.0-alpha06")
+    implementation("androidx.activity:activity:1.2.0-alpha06")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.preference:preference:1.1.1")
 
@@ -155,7 +171,7 @@ dependencies {
 
 
 android {
-    compileSdkVersion(29)
+    compileSdkVersion(30)
 
     testBuildType = obtainTestBuildType()
 

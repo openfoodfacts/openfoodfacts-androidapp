@@ -8,6 +8,9 @@
         <!--<item name="colorBackground">@color/grey_50</item>-->
         <item name="colorAccent">@color/brand_red</item>
         <item name="preferenceTheme">@style/OFFPreferenceTheme</item>
+
+        <item name="android:textColorLink">@color/brand_blue</item>
+
         <!--For shared element transition-->
         <item name="android:windowContentTransitions">true</item>
     </style>

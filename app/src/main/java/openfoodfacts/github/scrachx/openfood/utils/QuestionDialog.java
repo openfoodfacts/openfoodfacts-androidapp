@@ -1,11 +1,25 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.utils;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -116,19 +130,14 @@ public class QuestionDialog {
 
             LayerDrawable layerDrawable = (LayerDrawable) mContext.getResources().getDrawable(R.drawable.reviewdialog_round_icon);
             GradientDrawable gradientDrawable = (GradientDrawable) layerDrawable.findDrawableByLayerId(R.id.round_background);
-            gradientDrawable.setColor(Color.parseColor("#FFFFFF"));
+            gradientDrawable.setColor(mContext.getResources().getColor(R.color.white));
             layerDrawable.setDrawableByLayerId(R.id.round_background, gradientDrawable);
 
-            Drawable drawable = this.mIcon;
-            Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+            Drawable wrappedDrawable = DrawableCompat.wrap(this.mIcon);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                DrawableCompat.setTint(drawable.mutate(), mContext.getResources().getColor(mIconColor));
-            } else {
-                drawable.setColorFilter(mContext.getResources().getColor(mIconColor), PorterDuff.Mode.SRC_IN);
-            }
+            DrawableCompat.setTint(wrappedDrawable.mutate(), mContext.getResources().getColor(mIconColor));
 
-            layerDrawable.setDrawableByLayerId(R.id.drawable_image, drawable);
+            layerDrawable.setDrawableByLayerId(R.id.drawable_image, wrappedDrawable);
 
             titleImageView.setImageDrawable(layerDrawable);
             reviewQuestionTextView.setText(this.mQuestion);

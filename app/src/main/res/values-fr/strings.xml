@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="one"> Vous avez 1 produit hors ligne en attente d\'être ajouté à Open Food Facts</item>
@@ -613,6 +628,7 @@
     <string name="edit_ingredients_image">Modifier la photo des ingrédients</string>
     <string name="edit_other_image">Modifier la photo</string>
     <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
+    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Exemples : 2 l, 250 g, 1 kg, 25 cl, 6 onces liquides, 1 livre</string>
     <string name="edit_product_title">Modifier un produit</string>
     <string name="nutrient_already_added">%s est déjà présent dans les informations nutritionnelles</string>

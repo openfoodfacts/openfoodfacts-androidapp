@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
@@ -189,7 +204,7 @@
     <string name="hintBrand">Brend</string>
     <string name="txtSendAll">Pošaljite sve</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Otpremanje...</string>
+    <string name="toastSending">Otpremanje…</string>
     <string name="txtLoading">Učitavam</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">Ovaj proizvod je sačuvan lokalno, možete ga izmeniti u meniju \"Offline edit\"</string>
@@ -253,7 +268,7 @@
     <string name="title_clear_history_dialog">Obriši</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Izvezi CSV</string>
-    <string name="txt_exporting_history">Izvoz istorije u toku...</string>
+    <string name="txt_exporting_history">Izvoz istorije u toku…</string>
     <string name="txt_history_exported">Istorija izvezena</string>
     <string name="permision_write_external_storage">Dozvola za upis na eksternu memorije je potrebna za izvoz istorije.</string>
     <string name="no_brand">No Brand</string>
@@ -619,6 +634,7 @@
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
+    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Измени производ</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>

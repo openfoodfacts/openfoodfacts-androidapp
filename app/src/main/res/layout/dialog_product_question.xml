@@ -19,7 +19,9 @@
             android:layout_below="@+id/semi_trans"
             android:id="@+id/dialog_body"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            >
             <LinearLayout
                 android:id="@+id/feedback_body_layout"
                 android:orientation="vertical"
