@@ -30,7 +30,7 @@
     <string name="translate_help_title">Help met het vertalen van Open Food Facts</string>
     <string name="translate_help_summary">Breng de Open Food Fact database naar jouw taal - geen technische kennis vereist</string>
     <string name="text_offline_info_dialog">Scan de producten ook als u offline bent, om ze later aan Open Pet Food Facts toe te voegen. De gescande producten verschijnen hier en u kunt ze verzenden via de onderstaande knop.</string>
-    <string name="warning_alert_data">Uw allergieën-info wordt nooit naar de Open Food Facts-server verzonden. Let er ook op dat productgegevens mogelijk niet nauwkeurig zijn en detectie niet 100% nauwkeurig is, dus controleer het zelf! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">de open diervoeding-database</string>
