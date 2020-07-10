@@ -231,7 +231,7 @@
     <string name="cancel_button">Annuler</string>
     <string name="login_button">Connexion</string>
     <string name="create_account_button">Créer un Compte</string>
-    <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100%, et que la détection peut ne pas être précise à 100%. Veuillez à vérifier également par vous-même ! </string>
+    <string name="warning_alert_data">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100% at que la détection peut ne pas être précise à 100%. Veuillez à vérifier également par vous-même ! </string>
     <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="permission_camera">L\'autorisation d\'utiliser l\'appareil photo est nécessaire pour scanner des codes-barres et prendre des photos.</string>
@@ -586,7 +586,7 @@
     <string name="ingredients_picture">Photo de la liste des ingrédients</string>
     <string name="take_ingredients_picture_to_extract">(Veuillez prendre une photo des ingrédients pour les extraire automatiquement)</string>
     <string name="ingredients_list">Liste des ingrédients</string>
-    <string name="ingredients_hint">Conserver l\'ordre, indiquer le % lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
+    <string name="ingredients_hint">Conserver l\'ordre, indiquer le [%i]rsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
     <string name="extract_ingredients">Extraire les ingrédients</string>
     <string name="extracting_ingredients">Extraction des ingrédients en cours</string>
     <string name="looksGood">Ça a l\'air bon</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">Icône du code EMB</string>
     <string name="product_front_image">Image frontale du produit</string>
     <string name="brand_hint">Exemples : Coca-Cola, Nestlé, etc.</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>
