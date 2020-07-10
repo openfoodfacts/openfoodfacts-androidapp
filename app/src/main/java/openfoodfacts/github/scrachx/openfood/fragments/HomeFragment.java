@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.SharedPreferences;
@@ -48,7 +64,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 /**
  * @see R.layout#fragment_home
  */
-public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
+public class HomeFragment extends NavigationBaseFragment {
     private FragmentHomeBinding binding;
     private ProductsAPI apiClient;
     private SharedPreferences sp;
@@ -67,9 +83,9 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
         binding.tvDailyFoodFact.setOnClickListener(v -> setDailyFoodFact());
 
-        apiClient = new OpenFoodAPIClient(getActivity()).getRawAPI();
+        apiClient = new OpenFoodAPIClient(requireActivity()).getRawAPI();
         checkUserCredentials();
-        sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sp = PreferenceManager.getDefaultSharedPreferences(requireActivity());
     }
 
     @Override
@@ -84,7 +100,17 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         // chrome custom tab init
         CustomTabsIntent customTabsIntent;
         CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(this);
+        customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
+            @Override
+            public void onCustomTabsConnected() {
+
+            }
+
+            @Override
+            public void onCustomTabsDisconnected() {
+
+            }
+        });
         Uri dailyFoodFactUri = Uri.parse(taglineURL);
         customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null);
 
@@ -210,16 +236,6 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         } catch (Exception e) {
             Log.w(HomeFragment.class.getSimpleName(), "can format text for home", e);
         }
-    }
-
-    @Override
-    public void onCustomTabsConnected() {
-
-    }
-
-    @Override
-    public void onCustomTabsDisconnected() {
-
     }
 
     /**
