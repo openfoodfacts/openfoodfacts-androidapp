@@ -60,36 +60,42 @@ before_script:
 jobs:
   include:
     - stage: test
+      name: sonarqube
       script:
         #launch
         - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqube -Dsonar.projectKey=openfoodfacts_openfoodfacts-androidapp -Dsonar.organization=openfoodfacts -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN; fi
 
     - stage: test
+      name: compileOffScreenshotsAndroidTestSources
       script:
         - ./gradlew compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
 
     - stage: test
+      name: testObfDebugUnitTest assembleObfDebug
       script:
         - ./gradlew testObfDebugUnitTest assembleObfDebug --stacktrace # removed "connectedObfDebugAndroidTest"
         - mv app/build/outputs/apk/obf/debug/app-obf-debug.apk app/build/outputs/apk/app-obf-debug-$TRAVIS_BRANCH.apk
 
     - stage: test
+      name: testOffDebugUnitTest assembleOffDebug
       script:
         - ./gradlew testOffDebugUnitTest assembleOffDebug --stacktrace # removed "connectedOffDebugAndroidTest"
         - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/off/debug/app-off-debug.apk app/build/outputs/apk/app-off-debug-$TRAVIS_BRANCH.apk
 
     - stage: test
+      name: testOpfDebugUnitTest assembleOpfDebug
       script:
         - ./gradlew testOpfDebugUnitTest assembleOpfDebug --stacktrace # removed "connectedOpfDebugAndroidTest"
         - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/opf/debug/app-opf-debug.apk app/build/outputs/apk/app-opf-debug-$TRAVIS_BRANCH.apk
 
     - stage: test
+      name: testOpffDebugUnitTest assembleOpffDebug
       script:
         - ./gradlew testOpffDebugUnitTest assembleOpffDebug --stacktrace # removed "connectedOpffDebugAndroidTest"
         - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
 
     - stage: deploy-to-playstore-internal
-      name: PLaystore internal channel deployment
+      name: Playstore internal channel deployment
       install:
       - brew install getsentry/tools/sentry-cli
       - bundle install
