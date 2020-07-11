@@ -259,15 +259,15 @@ public class Utils {
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                return R.drawable.nnc_a;
+                return R.drawable.ic_nutriscore_a;
             case "b":
-                return R.drawable.nnc_b;
+                return R.drawable.ic_nutriscore_b;
             case "c":
-                return R.drawable.nnc_c;
+                return R.drawable.ic_nutriscore_c;
             case "d":
-                return R.drawable.nnc_d;
+                return R.drawable.ic_nutriscore_d;
             case "e":
-                return R.drawable.nnc_e;
+                return R.drawable.ic_nutriscore_e;
             default:
                 return NO_DRAWABLE_RESOURCE;
         }
@@ -372,19 +372,19 @@ public class Utils {
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                drawable = R.drawable.nnc_small_a;
+                drawable = R.drawable.ic_nutriscore_small_a;
                 break;
             case "b":
-                drawable = R.drawable.nnc_small_b;
+                drawable = R.drawable.ic_nutriscore_small_b;
                 break;
             case "c":
-                drawable = R.drawable.nnc_small_c;
+                drawable = R.drawable.ic_nutriscore_small_c;
                 break;
             case "d":
-                drawable = R.drawable.nnc_small_d;
+                drawable = R.drawable.ic_nutriscore_small_d;
                 break;
             case "e":
-                drawable = R.drawable.nnc_small_e;
+                drawable = R.drawable.ic_nutriscore_small_e;
                 break;
             default:
                 break;
@@ -696,10 +696,6 @@ public class Utils {
             }
         }
         return null;
-    }
-
-    public static boolean isFlavor(String flavor) {
-        return BuildConfig.FLAVOR.equals(flavor);
     }
 
     @NonNull

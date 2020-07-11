@@ -415,7 +415,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             return;
         }
         final ViewPager2 viewPager = getActivity().findViewById(R.id.pager);
-        if (Utils.isFlavor(AppFlavors.OFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
             final String login = settings.getString("user", "");
             if (login.isEmpty()) {
@@ -430,15 +430,15 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 }
             }
         }
-        if (Utils.isFlavor(AppFlavors.OPFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OPFF)) {
             viewPager.setCurrentItem(4);
         }
 
-        if (Utils.isFlavor(AppFlavors.OBF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
             viewPager.setCurrentItem(1);
         }
 
-        if (Utils.isFlavor(AppFlavors.OPF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OPF)) {
             viewPager.setCurrentItem(0);
         }
     }

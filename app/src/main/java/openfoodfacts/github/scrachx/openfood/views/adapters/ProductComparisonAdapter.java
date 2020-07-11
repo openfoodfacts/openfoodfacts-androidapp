@@ -196,7 +196,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         }
 
         // Open Food Facts specific
-        if (Utils.isFlavor(AppFlavors.OFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             // NutriScore
             int nutritionGradeResource = Utils.getImageGrade(product);
             if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
