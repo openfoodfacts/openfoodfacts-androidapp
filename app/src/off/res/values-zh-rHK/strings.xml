@@ -10,28 +10,28 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts是一個開放的食品資料庫，記載多於%1$d個食品（您可以輸入更多食品資料）。</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Food Facts是一個開放的食品資料庫。</string>
     <string name="slide_1_title">讓食品資訊更透明</string>
     <string name="slide_1_desc">掃描產品條碼，幫產品拍照，公開食品資料</string>
-    <string name="slide_2_title">掌握資訊</string>
-    <string name="slide_2_desc">為您解構食品的大量資料</string>
+    <string name="slide_2_title">Get the facts</string>
+    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
     <string name="slide_3_title">獲取Nutri-Score</string>
     <string name="slide_3_desc">一眼看清您喜愛的食品營養有多豐富</string>
-    <string name="slide_4_title">能離線使用</string>
-    <string name="slide_4_desc">就算不可上網，您都可以隨時隨地新增產品</string>
+    <string name="slide_4_title">Works offline</string>
+    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
     <string name="txtDialogsContent">Open Food Facts尚未收錄您掃描的產品，請把它錄入資料庫。</string>
     <string name="txtDialogsContentPowerMode">您掃描的產品已收錄於Open Food Facts。</string>
     <string name="msg_share">在Open Food Facts上查看此產品：</string>
     <string name="not_support_books">Open Food Facts現不支持書籍</string>
-    <string name="txt_broaden_search">- 擴大您的搜尋\n - 掃描並將其新增到 Open Food Facts</string>
-    <string name="Donation">按此捐助Open Food Facts</string>
+    <string name="txt_broaden_search">- 擴大搜尋範圍\n- 掃描並將產品加入Open Food Facts</string>
+    <string name="Donation">捐助Open Food Facts</string>
     <string name="translate_help_title">翻譯Open Food Facts</string>
     <string name="translate_help_summary">您不須懂得編程，也可以將Open Food Facts翻釋成其他語言</string>
     <string name="text_offline_info_dialog">就算上不了網，您也可以掃描產品，之後才將它加入Open Food Facts。您掃描過的所有產品都會在此出現，按一下下面的按鈕將會傳送產品至資料庫。</string>
-    <string name="warning_alert_data">您的過敏資料不會上載到Open Food Facts的伺服器。另外，產品資料未必準確，過敏原偵測亦可能出錯，請自行檢查過敏資料！</string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">自由的食品資料庫</string>
-    <string name="product_not_found">Open Food Facts尚未收錄產品%1$s，您可以把它錄入資料庫嗎？</string>
+    <string name="tagline">the free food products database</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="currently_on_version">Open Food Facts現有的資訊</string>
 </resources>

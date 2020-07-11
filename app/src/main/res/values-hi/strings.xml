@@ -16,24 +16,24 @@
   -->
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="one"> आपके पास 1 ऑफ़लाइन उत्पाद है जो Open Food Facts में योगदान देने का इंतजार कर रहा है |</item>
-        <item quantity="other"> आपके पास %d ऑफ़लाइन उत्पाद है जो Open Food Facts में योगदान देने का इंतजार कर रहा है |%d</item>
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">1 second ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 मिनट पहले</item>
-        <item quantity="other">%d मिनट पहले</item>
+        <item quantity="one">1 minute ago</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 घंटे पहले</item>
-        <item quantity="other">%d घंटे पहले</item>
+        <item quantity="one">1 hour ago</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 दिन पहले</item>
-        <item quantity="other">%d दिन पहले</item>
+        <item quantity="one">1 day ago</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">जानकारी</string>
     <string name="action_discover">तलाश करें</string>
@@ -68,7 +68,7 @@
         <item>ग्राम</item>
         <item>मिलीग्राम</item>
         <item>माइक्रोग्राम</item>
-        <item>% डीवी</item>
+        <item>% DV</item>
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -178,7 +178,7 @@
     <string name="txtNutritionLevelLow">कम मात्रा में</string>
     <string name="txtNutritionLevelModerate">मध्यम मात्रा में</string>
     <string name="txtNutritionLevelHigh">अधिक मात्रा में</string>
-    <string name="txtSave">सेव</string>
+    <string name="txtSave">सेव़</string>
     <string name="txtSignIn">साइन इन करें</string>
     <string name="txtToastSaved">उपयोगकर्ता की जानकारी  सेव है</string>
     <string name="txtSalt">नमक</string>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">लॉगिन</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">आपकी एलर्जी जानकारी कभी ओपन फूड फैक्ट्स सर्वर पर नहीं भेजी जाएगी। इसके अलावा सावधान रहें, ज़रूरी नहीं कि उत्पाद डेटा सटीक हो, और पहचान 100% सही हो, इसलिए कृपया स्वयं दोबारा जांच करें!</string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">यह कैसे काम करता है?</string>
     <string name="text_offline_info_dialog">जब आप ऑफ़लाइन हो तब भी आप उत्पादों को स्कैन कर सकते हैं, ताकि उन्हें आप बाद में जोड़ सके। आपके सभी स्कैन कि हुए  उत्पाद यहाँ दिखाई देगी, और आप नीचे दिए गए बटन का उपयोग कर उन्हें भेजने के लिए सक्षम हो जाएगा।</string>
     <string name="permission_camera">कैमरा अनुमति की जरूरत है बारकोड को स्कैन और तस्वीरें लेने के लिए</string>
@@ -269,7 +269,7 @@
     <string name="no_brand">No Brand</string>
     <string name="no_title">शीर्षक नहीं है</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">इस उत्पाद के %1$s के लिए पोषण तथ्य तालिका</string>
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">जाँचें</string>
     <string name="nutrition">पोषण</string>
     <string name="calculated_nutrition">परिकलित पोषण</string>
@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">सामान्य</string>
     <string name="preference_header_network">नेटवर्क</string>
     <string name="preference_header_contributing">योगदान</string>
@@ -547,7 +547,7 @@
     <string name="initial_loading">प्रारंभिक लोडिंग</string>
     <string name="preferences">प्राथमिकताएँ</string>
     <string name="OFFlogo">ओपन फ़ूड फैक्ट्स लोगो</string>
-    <string name="loading_product">%s लोड हो रहा है</string>
+    <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
@@ -568,7 +568,7 @@
     <string name="keep_previous_version">पिछला संस्करण रखें</string>
     <string name="product_name_overwrite">उत्पाद का नाम ओवरराइट करें</string>
     <string name="yours">आपका: </string>
-    <string name="currently_on">वर्तमान में %s पर: </string>
+    <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">मात्रा ओवरराइट करें</string>
     <string name="link_overwrite">लिंक ओवरराइट करें</string>
     <string name="save_product">क्या आप परिवर्तनों को सहेजना चाहते हैं?</string>
@@ -631,7 +631,7 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">उदाहरण: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
-    <string name="nutrient_already_added">पोषण तथ्यों में %s पहले से मौजूद है</string>
+    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">संपादन सहेजें</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">शीर्षक</string>
@@ -757,7 +757,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

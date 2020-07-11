@@ -458,7 +458,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">כללי</string>
     <string name="preference_header_network">רשת</string>
     <string name="preference_header_contributing">התנדבות</string>
@@ -805,4 +805,5 @@
     <string name="icon_emb">סמל קוד EMB</string>
     <string name="product_front_image">תמונת חזית המוצר</string>
     <string name="brand_hint">דוגמאות: קוקה קולה, נסטלה וכו׳…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

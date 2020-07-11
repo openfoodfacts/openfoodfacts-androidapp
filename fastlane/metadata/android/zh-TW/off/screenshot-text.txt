@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Set Allergen Alerts
+過敏原警報
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-成分 Powerful
+成分
 
 Powerful
 
-Nutritional quality
+營養成分
 
 =====================
 V3 screenshots

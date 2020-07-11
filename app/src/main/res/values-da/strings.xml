@@ -231,7 +231,7 @@
     <string name="cancel_button">Annullér</string>
     <string name="login_button">Brugernavn</string>
     <string name="create_account_button">Opret konto</string>
-    <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% korrekte, så dobbelttjek venligst selv! </string>
+    <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% aorrekte, så dobbelttjek venligst selv! </string>
     <string name="title_info_dialog">Hvordan fungerer det?</string>
     <string name="text_offline_info_dialog">Du kan indskanne produkter mens du er offline og tilføje dem til Open Food Facts senere. Alle produkter du har skannet vil fremgå her, og du vil kunne indsende dem ved at bruge knappen nedenfor.</string>
     <string name="permission_camera">Kamera-tilladelse er nødvendig for at skanne stregkoder og tage billeder.</string>
@@ -586,7 +586,7 @@
     <string name="ingredients_picture">Ingrediensfoto</string>
     <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
     <string name="ingredients_list">Ingrediensoversigt</string>
-    <string name="ingredients_hint">Bevar rækkefølgen, angiv %-forholdet, når det er oplyst, adskil med et komma eller -, benyt () til delingredienser i en ingrediens, omkrans allergener med _</string>
+    <string name="ingredients_hint">Bevar rækkefølgen, angiv [%f]orholdet, når det er oplyst, adskil med et komma eller -, benyt () til delingredienser i en ingrediens, omkrans allergener med _</string>
     <string name="extract_ingredients">Udtræk ingredienser</string>
     <string name="extracting_ingredients">Uddrager ingredienser</string>
     <string name="looksGood">Ser godt ud</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">EMB-kodeikon</string>
     <string name="product_front_image">Produktbillede front</string>
     <string name="brand_hint">Eksempler: CocaCola, Nestle mv.…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

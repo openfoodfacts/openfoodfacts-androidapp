@@ -58,7 +58,7 @@ Scan met de snelheid van het licht (zelfs als u in een vliegtuig, onderzeeër of
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
-▶ Kies de producten die goed voor je zijn
+Stel allergeenwaarschuwingen in
 - Voor een melk, gluten, eieren, sojabonen, noten, vis, selderij, mosterd, zwaveldioxide en sulfieten, pinda's, sesamzaad, schaaldieren, weekdieren of lupine-allergie
 - Versnel het boodschappen doen door een eerste screening van je voedsel uit te voeren.
 - Wees voorzichtig: de gegevens kunnen niet 100% accuraat zijn en de detectie is wellicht niet 100% accuraat. Dus controleer altijd zelf de verpakking.

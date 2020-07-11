@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>
