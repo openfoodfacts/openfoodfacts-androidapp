@@ -27,9 +27,9 @@ lane :release do
         version_name: versionName,
         gradle_file: gradle_file
     )
-    android_set_version_code(
+    increment_version_code(
         version_code: versionCode,
-        gradle_file: gradle_file
+        gradle_file_path: gradle_file
     )
     
     #build the bundle
