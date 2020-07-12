@@ -1,4 +1,4 @@
-name: Android Release on internal Google Play
+name: Google Play internal release
 
 on:
   push:
@@ -37,9 +37,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Decrypt api json file
-        run: cd ./fastlane/envfiles && ./decrypt_secret.sh
+        run: cd ./fastlane/envfiles && ./decrypt_secrets.sh
         env:
           API_JSON_FILE_DECRYPTKEY: ${{ secrets.API_JSON_FILE_DECRYPTKEY }}
+          STORE_JKS_DECRYPTKEY: ${{ secrets.STORE_JKS_DECRYPTKEY }}
 
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
@@ -64,4 +65,9 @@ jobs:
         run: bundle exec fastlane release
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          CI: true
+          SIGN_STORE_PATH: $HOME/fastlane/envfiles/keystore.jks
+          SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
+          SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
+          SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
 

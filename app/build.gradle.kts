@@ -221,6 +221,17 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            if ("true" == System.getenv("CI")) { // CI=true is exported by github action
+                storeFile = file(System.getenv()["SIGN_STORE_PATH"] ?: "")
+                storePassword = System.getenv("SIGN_STORE_PASSWORD")
+                keyAlias = System.getenv("SIGN_KEY_ALIAS")
+                keyPassword = System.getenv("SIGN_KEY_PASSWORD")
+            }
+        }
+    }
+
     productFlavors {
         create("off") {
             applicationId = "openfoodfacts.github.scrachx.openfood"
@@ -231,7 +242,6 @@ android {
             buildConfigField("String", "OFWEBSITE", "\"https://world.openfoodfacts.org/\"")
             buildConfigField("String", "WIKIDATA", "\"https://www.wikidata.org/wiki/Special:EntityData/\"")
             buildConfigField("String", "STATICURL", "\"https://static.openfoodfacts.org\"")
-
         }
         create("obf") {
             applicationId = "openfoodfacts.github.scrachx.openbeauty"
