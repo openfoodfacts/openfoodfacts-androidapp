@@ -43,7 +43,11 @@ lane :release do
     supply(
         track: 'internal',
         skip_upload_apk: true,
-        package_name: PACKAGE_NAME
+        package_name: PACKAGE_NAME,
+        skip_upload_metadata: true,
+        skip_upload_changelogs: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true
     )
 
     sentry_create_release(
