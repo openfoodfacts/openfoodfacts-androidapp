@@ -223,8 +223,11 @@ android {
 
     signingConfigs {
         create("release") {
-            if ("true" == System.getenv("CI")) { // CI=true is exported by github action
-                storeFile = file(System.getenv()["SIGN_STORE_PATH"] ?: "")
+            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
+                var storeFilePath = System.getenv("SIGN_STORE_PATH")
+                if(storeFilePath != null) {
+                    storeFile = file(storeFilePath)
+                }
                 storePassword = System.getenv("SIGN_STORE_PASSWORD")
                 keyAlias = System.getenv("SIGN_KEY_ALIAS")
                 keyPassword = System.getenv("SIGN_KEY_PASSWORD")
