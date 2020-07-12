@@ -29,6 +29,7 @@ jobs:
           arguments: testObfDebugUnitTest testOffDebugUnitTest testOpfDebugUnitTest testOpffDebugUnitTest --stacktrace
 
   google-play-internal:
+    needs: test
     name: Generate and deploy on google play
     runs-on: ubuntu-20.04
     steps:
