@@ -199,12 +199,12 @@ android {
         multiDexEnabled = true
         // jackOptions.enabled = true
     }
-    
+
     signingConfigs {
         create("release") {
             if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
-                var storeFilePath = System.getenv("SIGN_STORE_PATH")
-                if(storeFilePath != null) {
+                val storeFilePath = System.getenv("SIGN_STORE_PATH")
+                if (storeFilePath != null) {
                     storeFile = file(storeFilePath)
                 }
                 storePassword = System.getenv("SIGN_STORE_PASSWORD")
@@ -239,6 +239,9 @@ android {
     productFlavors {
         create("off") {
             applicationId = "openfoodfacts.github.scrachx.openfood"
+            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
+                applicationId = "org.openfoodfacts.scanner"
+            }
             resValue("string", "app_name", "OpenFoodFacts")
             buildConfigField("String", "APP_NAME", "\"Open Food Facts\"")
             buildConfigField("String", "HOST", "\"https://ssl-api.openfoodfacts.org\"")
