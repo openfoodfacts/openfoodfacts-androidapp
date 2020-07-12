@@ -2,7 +2,7 @@ name: Android Feature
 
 on:
   push:
-    branches: [*]
+    branches: ['*']
     branches-ignore:
       - 'develop'
       - 'master'

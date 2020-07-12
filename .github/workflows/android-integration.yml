@@ -1,10 +1,12 @@
-name: Android Master & PR
+name: Android Integration
 
 on:
   push:
-    branches: [master]
+    branches:
+      - 'develop'
+      - 'release/*'
   pull_request:
-    branches: [master]
+    branches: [develop]
 
 jobs:
   test:
