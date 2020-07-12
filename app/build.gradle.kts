@@ -199,6 +199,20 @@ android {
         multiDexEnabled = true
         // jackOptions.enabled = true
     }
+    
+    signingConfigs {
+        create("release") {
+            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
+                var storeFilePath = System.getenv("SIGN_STORE_PATH")
+                if(storeFilePath != null) {
+                    storeFile = file(storeFilePath)
+                }
+                storePassword = System.getenv("SIGN_STORE_PASSWORD")
+                keyAlias = System.getenv("SIGN_KEY_ALIAS")
+                keyPassword = System.getenv("SIGN_KEY_PASSWORD")
+            }
+        }
+    }
 
     buildTypes {
         getByName("release") {
@@ -219,20 +233,6 @@ android {
         create("screenshots") {
             initWith(getByName("debug"))
             applicationIdSuffix = ".screenshots"
-        }
-    }
-
-    signingConfigs {
-        create("release") {
-            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
-                var storeFilePath = System.getenv("SIGN_STORE_PATH")
-                if(storeFilePath != null) {
-                    storeFile = file(storeFilePath)
-                }
-                storePassword = System.getenv("SIGN_STORE_PASSWORD")
-                keyAlias = System.getenv("SIGN_KEY_ALIAS")
-                keyPassword = System.getenv("SIGN_KEY_PASSWORD")
-            }
         }
     }
 
