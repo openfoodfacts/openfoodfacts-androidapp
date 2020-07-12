@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -441,13 +442,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     }
 
     private void drawNutritionGrade() {
-        int nutritionGrade = Utils.getImageGrade(product);
-        if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
+        final Drawable nutritionGrade = Utils.getImageGradeDrawable(requireActivity(), product);
+        if (nutritionGrade != null) {
             binding.imageGradeLayout.setVisibility(View.VISIBLE);
-            binding.imageGrade.setImageResource(nutritionGrade);
+            binding.imageGrade.setImageDrawable(nutritionGrade);
             binding.imageGrade.setOnClickListener(view1 -> {
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.requireActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         } else {
             binding.imageGradeLayout.setVisibility(View.GONE);

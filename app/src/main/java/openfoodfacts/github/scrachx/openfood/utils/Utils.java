@@ -56,6 +56,7 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 import androidx.work.Constraints;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.NetworkType;
@@ -273,6 +274,25 @@ public class Utils {
         }
     }
 
+    public static int getImageGrade(@Nullable Product product) {
+        return getImageGrade(product == null ? null : product.getNutritionGradeFr());
+    }
+
+    @Nullable
+    public static Drawable getImageGradeDrawable(@NonNull Context context, @Nullable String grade) {
+
+        int gradeID = getImageGrade(grade);
+        if (gradeID == NO_DRAWABLE_RESOURCE) {
+            return null;
+        }
+        return VectorDrawableCompat.create(context.getResources(), gradeID, null);
+    }
+
+    @Nullable
+    public static Drawable getImageGradeDrawable(@NonNull Context context, @Nullable Product product) {
+        return getImageGradeDrawable(context, product == null ? null : product.getNutritionGradeFr());
+    }
+
     public static String getNovaGroupExplanation(@Nullable String novaGroup, @NonNull Context context) {
 
         if (novaGroup == null) {
@@ -336,10 +356,6 @@ public class Utils {
 
     public static int getSmallImageGrade(Product product) {
         return getSmallImageGrade(product == null ? null : product.getNutritionGradeFr());
-    }
-
-    public static int getImageGrade(Product product) {
-        return getImageGrade(product == null ? null : product.getNutritionGradeFr());
     }
 
     public static int getImageEnvironmentImpact(Product product) {
