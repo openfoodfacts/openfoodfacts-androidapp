@@ -213,7 +213,7 @@ android {
             isShrinkResources = true
 
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-            signingConfig signingConfigs.release
+            signingConfig = signingConfigs.getByName("release")
         }
 
         create("screenshots") {
