@@ -35,7 +35,7 @@ lane :release do
     #build the bundle
     gradle(
         project_dir: './',
-        task: 'bundle',
+        task: 'clean bundle',
         build_type: 'offRelease'
     )
 
