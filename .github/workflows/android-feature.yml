@@ -2,11 +2,11 @@ name: Android Feature
 
 on:
   push:
-    branches: ['*']
-    branches-ignore:
-      - 'develop'
-      - 'master'
-      - 'release/*'
+    branches:
+      - '*'
+      - '!develop'
+      - '!master'
+      - '!release/*'
 
 jobs:
   test:
