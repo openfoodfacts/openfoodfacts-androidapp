@@ -94,18 +94,6 @@ jobs:
         - ./gradlew testOpffDebugUnitTest assembleOpffDebug --stacktrace # removed "connectedOpffDebugAndroidTest"
         - mv $TRAVIS_BUILD_DIR/app/build/outputs/apk/opff/debug/app-opff-debug.apk app/build/outputs/apk/app-opff-debug-$TRAVIS_BRANCH.apk
 
-    - stage: deploy-to-playstore-internal
-      name: Playstore internal channel deployment
-      before_install:
-      - openssl aes-256-cbc -K $encrypted_4fd533c27640_key -iv $encrypted_4fd533c27640_iv
-        -in fastlane/envfiles/api-4712693179220384697-162836-33ea08672303.json.enc -out fastlane/envfiles/api-4712693179220384697-162836-33ea08672303.json
-        -d
-      install:
-      - brew install getsentry/tools/sentry-cli
-      - bundle install
-      script:
-      - travis_wait 40 bundle exec fastlane release
-      if: branch =~ /^release\/.*$/ AND type = push
 sudo: required
 
 notifications:
