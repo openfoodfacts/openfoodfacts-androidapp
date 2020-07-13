@@ -72,6 +72,7 @@ import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -83,8 +84,6 @@ import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivit
 import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
@@ -373,7 +372,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @Override
-    public void showAdditivesState(String state) {
+    public void showAdditivesState(ProductInfoState state) {
         switch (state) {
             case LOADING:
                 binding.cvTextAdditiveProduct.setVisibility(View.VISIBLE);
@@ -444,7 +443,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @Override
-    public void showAllergensState(String state) {
+    public void showAllergensState(ProductInfoState state) {
         switch (state) {
             case LOADING:
                 binding.textSubstanceProduct.setVisibility(View.VISIBLE);

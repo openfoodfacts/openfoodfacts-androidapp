@@ -471,13 +471,16 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void showAdditivesState(String state) {
+    public void showAdditivesState(ProductInfoState state) {
         requireActivity().runOnUiThread(() -> {
-            if (ProductInfoState.LOADING.equals(state)) {
-                binding.textAdditiveProduct.append(getString(R.string.txtLoading));
-                binding.textAdditiveProduct.setVisibility(VISIBLE);
-            } else if (ProductInfoState.EMPTY.equals(state)) {
-                binding.textAdditiveProduct.setVisibility(GONE);
+            switch (state) {
+                case LOADING:
+                    binding.textAdditiveProduct.append(getString(R.string.txtLoading));
+                    binding.textAdditiveProduct.setVisibility(VISIBLE);
+                    break;
+                case EMPTY:
+                    binding.textAdditiveProduct.setVisibility(GONE);
+                    break;
             }
         });
     }
@@ -642,27 +645,33 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void showCategoriesState(String state) {
+    public void showCategoriesState(ProductInfoState state) {
         requireActivity().runOnUiThread(() -> {
-            if (ProductInfoState.LOADING.equals(state)) {
-                if (getContext() != null) {
-                    binding.categoriesText.append(getString(R.string.txtLoading));
-                }
-            } else if (ProductInfoState.EMPTY.equals(state)) {
-                binding.categoriesText.setVisibility(GONE);
-                binding.categoriesIcon.setVisibility(GONE);
+            switch (state) {
+                case LOADING:
+                    if (getContext() != null) {
+                        binding.categoriesText.append(getString(R.string.txtLoading));
+                    }
+                    break;
+                case EMPTY:
+                    binding.categoriesText.setVisibility(GONE);
+                    binding.categoriesIcon.setVisibility(GONE);
+                    break;
             }
         });
     }
 
     @Override
-    public void showLabelsState(String state) {
+    public void showLabelsState(ProductInfoState state) {
         requireActivity().runOnUiThread(() -> {
-            if (ProductInfoState.LOADING.equals(state)) {
-                binding.labelsText.append(getString(R.string.txtLoading));
-            } else if (ProductInfoState.EMPTY.equals(state)) {
-                binding.labelsText.setVisibility(GONE);
-                binding.labelsIcon.setVisibility(GONE);
+            switch (state) {
+                case LOADING:
+                    binding.labelsText.append(getString(R.string.txtLoading));
+                    break;
+                case EMPTY:
+                    binding.labelsText.setVisibility(GONE);
+                    binding.labelsIcon.setVisibility(GONE);
+                    break;
             }
         });
     }
