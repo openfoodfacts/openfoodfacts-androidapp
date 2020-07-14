@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.content.Context;
@@ -24,6 +40,13 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 
+/**
+ * This is the Onboarding Activity shown on first-run.
+ * TODO: redesign it & change the content
+ * TODO: explain the 3 scores
+ * TODO: be honest about offline until we implement offline scan (nobody cares about offline edit)
+ * TODO: perhaps highlight ingredient analysis
+ */
 public class WelcomeActivity extends AppCompatActivity {
     private ActivityWelcomeBinding binding;
     private int[] layouts;
@@ -52,24 +75,17 @@ public class WelcomeActivity extends AppCompatActivity {
                 lastPage = false;
             }
         }
+
         /**
-        * This is the Onboarding Activity shown on first-run.
-        * @todo redesign it & change the content
-        * @todo : explain the 3 scores
-        * @todo : be honest about offline until we implement offline scan (nobody cares about offline edit)
-        * @todo : perhaps highlight ingredient analysis
-        */
-        
-        /**
-        * If user is on the last page and tries to swipe towards the next page on right then the value of
-        * positionOffset returned is always 0, on the other hand if the user tries to swipe towards the
-        * previous page on the left then the value of positionOffset returned is 0.999 and decreases as the
-        * user continues to swipe in the same direction. Also whenever a user tries to swipe in any
-        * direction the state is changed from idle to dragging and onPageScrollStateChanged is called.
-        * Therefore if the user is on the last page and the value of positionOffset is 0 and state is
-        * dragging it means that the user is trying to go to the next page on right from the last page and
-        * hence MainActivity is started in this case.
-        */
+         * If user is on the last page and tries to swipe towards the next page on right then the value of
+         * positionOffset returned is always 0, on the other hand if the user tries to swipe towards the
+         * previous page on the left then the value of positionOffset returned is 0.999 and decreases as the
+         * user continues to swipe in the same direction. Also whenever a user tries to swipe in any
+         * direction the state is changed from idle to dragging and onPageScrollStateChanged is called.
+         * Therefore if the user is on the last page and the value of positionOffset is 0 and state is
+         * dragging it means that the user is trying to go to the next page on right from the last page and
+         * hence MainActivity is started in this case.
+         */
         @Override
         public void onPageScrolled(int arg0, float positionOffset, int positionOffsetPixels) {
             if (lastPage && positionOffset == 0f && currentState == ViewPager.SCROLL_STATE_DRAGGING) {
