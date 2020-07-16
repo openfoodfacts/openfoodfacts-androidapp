@@ -27,10 +27,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
@@ -76,30 +74,27 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         String code = intent.getStringExtra(ImageKeyHelper.PRODUCT_BARCODE);
         binding.toolbar.setTitle(intent.getStringExtra(TOOLBAR_TITLE));
 
-        disp.add(openFoodAPIClient.getRawAPI().getProductImagesSingle(code).observeOn(AndroidSchedulers.mainThread()).subscribe(response -> {
-            // a json object referring to base json object
-            // TODO: better approach
-            JSONObject jsonObject = Utils.createJsonObject(response.toString());
+        disp.add(openFoodAPIClient.getRawAPI().getProductImagesSingle(code).observeOn(AndroidSchedulers.mainThread())
+            .subscribe(node -> {
+                // a json object referring to images
+                JsonNode images = null;
+                try {
+                    images = node.get("product").get("images");
+                } catch (NullPointerException e) {
+                    Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
+                }
+                List<String> imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(images);
 
-            // a json object referring to images
-            JSONObject images = null;
-            try {
-                images = jsonObject.getJSONObject("product").getJSONObject("images");
-            } catch (JSONException e) {
-                Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
-            }
-            List<String> imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(images);
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
 
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            }
+                //Check if user is logged in
+                adapter = new ProductImagesSelectionAdapter(this, imageNames, code, this::setSelectedImage);
 
-            //Check if user is logged in
-            adapter = new ProductImagesSelectionAdapter(this, imageNames, code, this::setSelectedImage);
-
-            binding.imagesRecycler.setAdapter(adapter);
-            binding.imagesRecycler.setLayoutManager(new GridLayoutManager(this, 3));
-        }, e -> Log.e(ImagesSelectionActivity.class.getSimpleName(), "cannot download images from server", e)));
+                binding.imagesRecycler.setAdapter(adapter);
+                binding.imagesRecycler.setLayoutManager(new GridLayoutManager(this, 3));
+            }, e -> Log.e(ImagesSelectionActivity.class.getSimpleName(), "cannot download images from server", e)));
     }
 
     private void setSelectedImage(int selectedPosition) {
