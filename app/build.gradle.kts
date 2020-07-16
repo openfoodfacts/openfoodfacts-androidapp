@@ -168,7 +168,7 @@ dependencies {
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.4")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.9")
 }
 
 
