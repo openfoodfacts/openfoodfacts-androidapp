@@ -38,7 +38,8 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesLi
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductImagesSelectionAdapter;
@@ -57,7 +58,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        OpenFoodAPIClient openFoodAPIClient = new OpenFoodAPIClient(this);
+        ProductsAPI api = CommonApiManager.getInstance().getProductsApi();
         binding = ActivityProductImagesListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
@@ -72,7 +73,7 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         String code = intent.getStringExtra(ImageKeyHelper.PRODUCT_BARCODE);
         binding.toolbar.setTitle(intent.getStringExtra(TOOLBAR_TITLE));
 
-        disp.add(openFoodAPIClient.getRawAPI().getProductImagesSingle(code)
+        disp.add(api.getProductImagesSingle(code)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(node -> {
 
