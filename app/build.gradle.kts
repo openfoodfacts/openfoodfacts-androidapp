@@ -40,7 +40,7 @@ fun obtainTestBuildType(): String {
 dependencies {
     //Android
     implementation("androidx.browser:browser:1.2.0")
-    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.appcompat:appcompat:1.2.0-rc01")
     implementation("androidx.work:work-runtime:2.3.4")
     implementation("androidx.concurrent:concurrent-futures:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
