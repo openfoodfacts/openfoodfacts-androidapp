@@ -11,8 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,14 +63,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
         disp.add(openFoodAPIClient.getRawAPI().getProductImagesSingle(product.getCode())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(node -> {
-                // a json object referring to images
-                JsonNode images = null;
-                try {
-                    images = node.get("product").get("images");
-                } catch (NullPointerException e) {
-                    Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
-                }
-                imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(images);
+                imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(node);
 
                 //Check if user is logged in
                 adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this, product, isUserLoggedIn());

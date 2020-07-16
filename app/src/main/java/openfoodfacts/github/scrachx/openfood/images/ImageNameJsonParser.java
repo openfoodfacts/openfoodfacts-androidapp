@@ -20,9 +20,12 @@ public class ImageNameJsonParser {
     }
 
     /**
-     * @param imagesNode json representing images entries given by api/v0/product/XXXX.json?fields=images
+     * @param rootNode json representing images entries given by api/v0/product/XXXX.json?fields=images
      */
-    public static List<String> extractImagesNameSortedByUploadTimeDesc(JsonNode imagesNode) {
+    public static List<String> extractImagesNameSortedByUploadTimeDesc(JsonNode rootNode) {
+        // a json object referring to images
+        JsonNode imagesNode = rootNode.get("product").get("images");
+
         ArrayList<NameUploadedTimeKey> namesWithTime = new ArrayList<>();
 
         if (imagesNode != null) {

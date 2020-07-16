@@ -27,7 +27,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -36,7 +35,6 @@ import java.util.List;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding;
-import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
@@ -77,14 +75,8 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         disp.add(openFoodAPIClient.getRawAPI().getProductImagesSingle(code)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(node -> {
-                // a json object referring to images
-                JsonNode images = null;
-                try {
-                    images = node.get("product").get("images");
-                } catch (NullPointerException e) {
-                    Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
-                }
-                List<String> imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(images);
+
+                List<String> imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(node);
 
                 if (getSupportActionBar() != null) {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
