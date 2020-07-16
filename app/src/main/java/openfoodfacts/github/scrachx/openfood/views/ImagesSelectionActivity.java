@@ -35,7 +35,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
@@ -67,8 +66,6 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         binding.expandedImage.setOnClickListener(v -> onClickOnExpandedImage());
         binding.btnAcceptSelection.setOnClickListener(v -> onBtnAcceptSelection());
         binding.btnChooseImage.setOnClickListener(v -> onBtnChooseImage());
-
-        binding.btnChooseImage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_photo_library, 0, 0, 0);
 
         Intent intent = getIntent();
 
