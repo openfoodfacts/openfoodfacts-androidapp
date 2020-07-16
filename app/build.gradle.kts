@@ -167,6 +167,8 @@ dependencies {
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.4")
 }
 
 
@@ -272,6 +274,9 @@ android {
     }
 
     compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+        // Sets Java compatibility to Java 8
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
