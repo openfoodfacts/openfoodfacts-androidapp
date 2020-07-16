@@ -17,6 +17,7 @@
 package openfoodfacts.github.scrachx.openfood.network.services;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -419,6 +420,12 @@ public interface ProductsAPI {
      */
     @GET("api/v0/product/{barcode}.json?fields=images")
     Call<String> getProductImages(@Path("barcode") String barcode);
+
+    /**
+     * This method gives the image fields of a product
+     */
+    @GET("api/v0/product/{barcode}.json?fields=images")
+    Single<ObjectNode> getProductImagesSingle(@Path("barcode") String barcode);
 
     /**
      * This method is to crop images server side
