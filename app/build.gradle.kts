@@ -139,7 +139,7 @@ dependencies {
 
     // Unit Testing
     testImplementation("junit:junit:4.13")
-    testImplementation("org.mockito:mockito-core:3.3.3")
+    testImplementation("org.mockito:mockito-core:3.4.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.17.0")
 
     // Instrumented tests
