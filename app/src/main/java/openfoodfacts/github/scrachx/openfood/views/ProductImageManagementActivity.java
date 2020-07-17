@@ -741,9 +741,9 @@ public class ProductImageManagementActivity extends BaseActivity {
      */
     public void onPhotoReturned(File newPhotoFile) {
         startRefresh(getString(R.string.uploading_image));
+        ProductImage image = new ProductImage(getProduct().getCode(), getSelectedType(), newPhotoFile, getCurrentLanguage());
+        image.setFilePath(newPhotoFile.getAbsolutePath());
         disp.add(Completable.fromAction(() -> {
-            ProductImage image = new ProductImage(getProduct().getCode(), getSelectedType(), newPhotoFile, getCurrentLanguage());
-            image.setFilePath(newPhotoFile.getAbsolutePath());
 
             client.postImg(image, true, new ImageUploadListener() {
                 @Override

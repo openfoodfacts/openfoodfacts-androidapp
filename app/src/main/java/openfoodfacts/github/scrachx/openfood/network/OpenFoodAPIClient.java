@@ -15,6 +15,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -390,10 +391,9 @@ public class OpenFoodAPIClient {
 
     public void onResponseCallForPostFunction(Call<State> call,
                                               Response<State> response,
-                                              Context activity,
                                               final ApiCallbacks.OnProductSentCallback productSentCallback,
                                               SendProduct product) {
-        postImages(response, activity, productSentCallback, product);
+        postImages(response, productSentCallback, product);
     }
 
     /**
@@ -564,7 +564,7 @@ public class OpenFoodAPIClient {
                 .list();
 
             int totalSize = toUploadProductList.size();
-            List<Completable> completables = new ArrayList<>();
+            List<Completable> imagesUploading = new ArrayList<>();
             for (int i = 0; i < totalSize; i++) {
                 ToUploadProduct uploadProduct = toUploadProductList.get(i);
                 File imageFile;
@@ -576,7 +576,7 @@ public class OpenFoodAPIClient {
                 }
                 ProductImage productImage = new ProductImage(uploadProduct.getBarcode(),
                     uploadProduct.getProductField(), imageFile);
-                completables.add(api.saveImageSingle(OpenFoodAPIClient.this.getUploadableMap(productImage))
+                imagesUploading.add(api.saveImageSingle(OpenFoodAPIClient.this.getUploadableMap(productImage))
                     .flatMapCompletable((Function<JsonNode, Completable>) jsonNode -> {
                         if (jsonNode != null) {
                             Log.d("onResponse", jsonNode.toString());
@@ -594,7 +594,7 @@ public class OpenFoodAPIClient {
                         }
                     }));
             }
-            return completables;
+            return imagesUploading;
         }).flatMapCompletable(Completable::merge);
     }
 
@@ -888,16 +888,7 @@ public class OpenFoodAPIClient {
         return api.getProductsByState(state, page, FIELDS_TO_FETCH_FACETS);
     }
 
-    /**
-     * OnResponseCall for uploads through notifications
-     */
-    public void onResponseCallForNotificationPostFunction(Call<State> call, Response<State> response, Context context,
-                                                          final ApiCallbacks.OnProductSentCallback productSentCallback,
-                                                          SendProduct product) {
-        postImages(response, context, productSentCallback, product);
-    }
-
-    private void postImages(Response<State> response, Context context, ApiCallbacks.OnProductSentCallback productSentCallback, SendProduct product) {
+    private void postImages(@NotNull Response<State> response, ApiCallbacks.OnProductSentCallback productSentCallback, SendProduct product) {
         if (!response.isSuccessful() || response.body().getStatus() == 0) {
 
             productSentCallback.onProductSentResponse(false);
@@ -920,48 +911,5 @@ public class OpenFoodAPIClient {
         }
 
         productSentCallback.onProductSentResponse(true);
-    }
-
-    /**
-     * Post method for upload through notification
-     */
-    public void postForNotification(final Context context, final SendProduct product, final ApiCallbacks.OnProductSentCallback productSentCallback) {
-
-        if (product.getName().equals("") && product.getBrands().equals("") && product.getQuantity() == null) {
-            api.saveProductWithoutNameBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getUserId(), product.getPassword(), getCommentToUpload())
-                .enqueue(createNotificationCallback(context, product, productSentCallback));
-        } else if (product.getName().equals("") && product.getBrands().equals("")) {
-            api
-                .saveProductWithoutNameAndBrands(product.getBarcode(), product.getLang(), product.getQuantity(), product.getUserId(), product.getPassword(),
-                    getCommentToUpload())
-                .enqueue(createNotificationCallback(context, product, productSentCallback));
-        } else if (product.getName().equals("") && product.getQuantity() == null) {
-            api
-                .saveProductWithoutNameAndQuantity(product.getBarcode(), product.getLang(), product.getBrands(), product.getUserId(), product.getPassword(),
-                    getCommentToUpload())
-                .enqueue(createNotificationCallback(context, product, productSentCallback));
-        } else if (product.getBrands().equals("") && product.getQuantity() == null) {
-            api
-                .saveProductWithoutBrandsAndQuantity(product.getBarcode(), product.getLang(), product.getName(), product.getUserId(), product.getPassword(),
-                    getCommentToUpload())
-                .enqueue(createNotificationCallback(context, product, productSentCallback));
-        } else {
-            api.saveProduct(product.getBarcode(), product.getLang(), product.getName(), product.getBrands(), product.getQuantity(), product
-                .getUserId(), product.getPassword(), getCommentToUpload()).enqueue(createNotificationCallback(context, product, productSentCallback));
-        }
-    }
-
-    public Callback<State> createNotificationCallback(Context context, SendProduct product, ApiCallbacks.OnProductSentCallback productSentCallback) {
-        return new Callback<State>() {
-            @Override
-            public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
-                onResponseCallForNotificationPostFunction(call, response, context, productSentCallback, product);
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<State> call, @NonNull Throwable t) {
-                productSentCallback.onProductSentResponse(false);
-            }
-        };
     }
 }

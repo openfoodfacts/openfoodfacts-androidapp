@@ -41,7 +41,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
@@ -55,9 +54,6 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
@@ -132,37 +128,29 @@ public class HomeFragment extends NavigationBaseFragment {
         String password = settings.getString("pass", "");
 
         if (!login.isEmpty() && !password.isEmpty()) {
-            apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                    String htmlNoParsed = null;
-                    try {
-                        htmlNoParsed = response.body().string();
-                    } catch (IOException e) {
-                        Log.e(HomeFragment.class.getSimpleName(), "signin", e);
-                    }
-                    if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
-                        || htmlNoParsed.contains("See you soon!"))) {
-                        settings.edit()
-                            .putString("user", "")
-                            .putString("pass", "")
-                            .apply();
+            compDisp.add(apiClient.signIn(login, password, "Sign-in").subscribe(response -> {
+                String htmlNoParsed = null;
+                try {
+                    htmlNoParsed = response.body().string();
+                } catch (IOException e) {
+                    Log.e(HomeFragment.class.getSimpleName(), "signin", e);
+                }
+                if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
+                    || htmlNoParsed.contains("See you soon!"))) {
+                    settings.edit()
+                        .putString("user", "")
+                        .putString("pass", "")
+                        .apply();
 
-                        if (getActivity() != null) {
-                            new MaterialDialog.Builder(getActivity())
-                                .title(R.string.alert_dialog_warning_title)
-                                .content(R.string.alert_dialog_warning_msg_user)
-                                .positiveText(R.string.txtOk)
-                                .show();
-                        }
+                    if (getActivity() != null) {
+                        new MaterialDialog.Builder(getActivity())
+                            .title(R.string.alert_dialog_warning_title)
+                            .content(R.string.alert_dialog_warning_msg_user)
+                            .positiveText(R.string.txtOk)
+                            .show();
                     }
                 }
-
-                @Override
-                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                    Log.e(HomeFragment.class.getName(), "Unable to Sign-in");
-                }
-            });
+            }, throwable -> Log.e(HomeFragment.class.getName(), "Unable to Sign-in", throwable)));
         }
     }
 

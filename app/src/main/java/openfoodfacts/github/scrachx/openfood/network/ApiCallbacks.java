@@ -36,10 +36,6 @@ public class ApiCallbacks {
         void onEditResponse(boolean value, String response);
     }
 
-    public interface OnImagesCallback {
-        void onImageResponse(boolean value, String response);
-    }
-
     public interface OnCountryCallback {
         void onCountryResponse(boolean value, Search country);
     }
