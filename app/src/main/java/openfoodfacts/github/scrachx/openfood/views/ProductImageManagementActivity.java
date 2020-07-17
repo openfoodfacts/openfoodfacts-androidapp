@@ -743,8 +743,7 @@ public class ProductImageManagementActivity extends BaseActivity {
         startRefresh(getString(R.string.uploading_image));
         ProductImage image = new ProductImage(getProduct().getCode(), getSelectedType(), newPhotoFile, getCurrentLanguage());
         image.setFilePath(newPhotoFile.getAbsolutePath());
-        disp.add(Completable.fromAction(() -> {
-
+        disp.add(Completable.fromAction(() ->
             client.postImg(image, true, new ImageUploadListener() {
                 @Override
                 public void onSuccess() {
@@ -757,7 +756,6 @@ public class ProductImageManagementActivity extends BaseActivity {
                     Toast.makeText(ProductImageManagementActivity.this, message, Toast.LENGTH_LONG).show();
                     stopRefresh();
                 }
-            });
-        }).observeOn(AndroidSchedulers.mainThread()).subscribe());
+            })).observeOn(AndroidSchedulers.mainThread()).subscribe());
     }
 }

@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +23,7 @@ public class ImageNameJsonParser {
     /**
      * @param rootNode json representing images entries given by api/v0/product/XXXX.json?fields=images
      */
-    public static List<String> extractImagesNameSortedByUploadTimeDesc(JsonNode rootNode) {
+    public static List<String> extractImagesNameSortedByUploadTimeDesc(@NotNull JsonNode rootNode) {
         // a json object referring to images
         JsonNode imagesNode = rootNode.get("product").get("images");
 
