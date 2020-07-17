@@ -69,7 +69,6 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverviewBinding;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
@@ -103,7 +102,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTH
 /**
  * Product Overview fragment of AddProductActivity
  */
-public class AddProductOverviewFragment extends BaseFragment implements PhotoReceiver {
+public class AddProductOverviewFragment extends BaseFragment {
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
     private Activity activity;
     private FragmentAddProductOverviewBinding binding;
@@ -144,7 +143,26 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
+            URI resultUri = newPhotoFile.toURI();
+            this.photoFile = newPhotoFile;
+            ProductImage image;
+            int position;
+            if (frontImage) {
+                image = new ProductImage(barcode, FRONT, newPhotoFile);
+                mImageUrl = newPhotoFile.getAbsolutePath();
+                newImageSelected = true;
+                position = 0;
+            } else {
+                image = new ProductImage(barcode, OTHER, newPhotoFile);
+                position = 3;
+            }
+            image.setFilePath(resultUri.getPath());
+            if (activity instanceof AddProductActivity) {
+                (getAddProductActivity()).addToPhotoMap(image, position);
+            }
+            hideImageProgress(false, StringUtils.EMPTY);
+        });
         binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
 
         binding.btnNext.setOnClickListener(v -> next());
@@ -936,28 +954,6 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         } else {
             return false;
         }
-    }
-
-    @Override
-    public void onPhotoReturned(File newPhotoFile) {
-        URI resultUri = newPhotoFile.toURI();
-        this.photoFile = newPhotoFile;
-        ProductImage image;
-        int position;
-        if (frontImage) {
-            image = new ProductImage(barcode, FRONT, newPhotoFile);
-            mImageUrl = newPhotoFile.getAbsolutePath();
-            newImageSelected = true;
-            position = 0;
-        } else {
-            image = new ProductImage(barcode, OTHER, newPhotoFile);
-            position = 3;
-        }
-        image.setFilePath(resultUri.getPath());
-        if (activity instanceof AddProductActivity) {
-            (getAddProductActivity()).addToPhotoMap(image, position);
-        }
-        hideImageProgress(false, StringUtils.EMPTY);
     }
 
     @Override

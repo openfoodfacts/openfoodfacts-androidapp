@@ -57,7 +57,6 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
@@ -87,7 +86,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View, PhotoReceiver {
+public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     private static final int EDIT_REQUEST_CODE = 2;
@@ -139,7 +138,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         binding.extractIngredientsPrompt.setOnClickListener(v -> extractIngredients());
         binding.imageViewIngredients.setOnClickListener(v -> openFullScreen());
 
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(this::onPhotoReturned);
         refreshView(activityState);
     }
 
@@ -468,7 +467,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     void novaMethodLinkDisplay() {
         if (activityState != null && activityState.getProduct() != null && activityState.getProduct().getNovaGroups() != null) {
             Uri uri = Uri.parse(getString(R.string.url_nova_groups));
-            CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
             CustomTabActivityHelper.openCustomTab(requireActivity(), tabsIntent, uri, new WebViewFallback());
         }
     }

@@ -62,7 +62,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentSummaryProductB
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.CategoryProductHelper;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
@@ -114,7 +113,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static openfoodfacts.github.scrachx.openfood.AppFlavors.OFF;
 
-public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener, PhotoReceiver {
+public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
@@ -166,7 +165,19 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //done here for android 4 compatibility.
         //a better solution could be to use https://developer.android.com/jetpack/androidx/releases/ but weird issue with it..
         binding.addNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
+            URI resultUri = newPhotoFile.toURI();
+            //the booleans are checked to determine if the picture uploaded was due to a prompt click
+            //the pictures are uploaded with the correct path
+            if (!sendOther) {
+                loadPhoto(new File(resultUri.getPath()));
+            } else {
+                ProductImage image = new ProductImage(barcode, ProductImageField.OTHER, newPhotoFile);
+                image.setFilePath(resultUri.getPath());
+                showOtherImageProgress();
+                api.postImg(image, this);
+            }
+        });
 
         binding.imageViewFront.setOnClickListener(v -> openFrontImageFullscreen());
         binding.buttonMorePictures.setOnClickListener(v -> takeMorePicture());
@@ -878,20 +889,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && isUserLoggedIn()) {
                 editProductNutriscore();
             }
-        }
-    }
-
-    public void onPhotoReturned(File newPhotoFile) {
-        URI resultUri = newPhotoFile.toURI();
-        //the booleans are checked to determine if the picture uploaded was due to a prompt click
-        //the pictures are uploaded with the correct path
-        if (!sendOther) {
-            loadPhoto(new File(resultUri.getPath()));
-        } else {
-            ProductImage image = new ProductImage(barcode, ProductImageField.OTHER, newPhotoFile);
-            image.setFilePath(resultUri.getPath());
-            showOtherImageProgress();
-            api.postImg(image, this);
         }
     }
 

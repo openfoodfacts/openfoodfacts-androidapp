@@ -29,7 +29,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -37,7 +36,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
@@ -49,7 +47,7 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_STORAGE;
 
-public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiver {
+public class ImagesSelectionActivity extends BaseActivity {
     static final String TOOLBAR_TITLE = "TOOLBAR_TITLE";
     private ProductImagesSelectionAdapter adapter;
     private ActivityProductImagesListBinding binding;
@@ -148,7 +146,12 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        new PhotoReceiverHandler(this).onActivityResult(this, requestCode, resultCode, data);
+        new PhotoReceiverHandler(newPhotoFile -> {
+            Intent intent = new Intent();
+            intent.putExtra(ImageKeyHelper.IMAGE_FILE, newPhotoFile);
+            setResult(RESULT_OK, intent);
+            finish();
+        }).onActivityResult(this, requestCode, resultCode, data);
     }
 
     @Override
@@ -157,13 +160,5 @@ public class ImagesSelectionActivity extends BaseActivity implements PhotoReceiv
         if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && Utils.isAllGranted(grantResults)) {
             onBtnChooseImage();
         }
-    }
-
-    @Override
-    public void onPhotoReturned(File newPhotoFile) {
-        Intent intent = new Intent();
-        intent.putExtra(ImageKeyHelper.IMAGE_FILE, newPhotoFile);
-        setResult(RESULT_OK, intent);
-        finish();
     }
 }

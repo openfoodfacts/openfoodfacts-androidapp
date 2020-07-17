@@ -403,27 +403,6 @@ public class OpenFoodAPIClient {
         return api;
     }
 
-    /**
-     * Returns images for the current product
-     *
-     * @param barcode barcode for the current product
-     * @param onImagesCallback reference to the OnImagesCallback interface
-     */
-    public void getImages(String barcode, ApiCallbacks.OnImagesCallback onImagesCallback) {
-
-        api.getProductImages(barcode).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                onImagesCallback.onImageResponse(true, response.body());
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
-                onImagesCallback.onImageResponse(false, null);
-            }
-        });
-    }
-
     public void searchProductsByName(final String name, final int page, final Activity activity, final ApiCallbacks.OnProductsCallback productsCallback) {
         String productNameLocale = getLocaleProductNameField();
         String fields = "selected_images,image_small_url,product_name,brands,quantity,code,nutrition_grade_fr," + productNameLocale;
@@ -739,7 +718,7 @@ public class OpenFoodAPIClient {
         Map<String, String> imgMap = new HashMap<>();
         addUserInfo(imgMap);
         imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(field, language));
-        api.unselectImage(code, imgMap).enqueue(createCallback(onEditImageCallback));
+        api.unSelectImage(code, imgMap).enqueue(createCallback(onEditImageCallback));
     }
 
     private Callback<String> createCallback(ApiCallbacks.OnEditImageCallback onEditImageCallback) {

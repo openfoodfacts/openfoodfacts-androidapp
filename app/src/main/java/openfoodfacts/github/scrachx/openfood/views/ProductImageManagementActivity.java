@@ -58,7 +58,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImage
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ImageSize;
 import openfoodfacts.github.scrachx.openfood.images.ImageTransformationUtils;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
@@ -82,7 +81,7 @@ import static org.apache.commons.lang.StringUtils.isNotEmpty;
 /**
  * Activity to display/edit product images
  */
-public class ProductImageManagementActivity extends BaseActivity implements PhotoReceiver {
+public class ProductImageManagementActivity extends BaseActivity {
     private static final int RESULTCODE_MODIFIED = 1;
     private static final int REQUEST_EDIT_IMAGE_AFTER_LOGIN = 1;
     private static final int REQUEST_ADD_IMAGE_AFTER_LOGIN = 2;
@@ -659,7 +658,7 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
                 }
                 break;
             default:
-                new PhotoReceiverHandler(this).onActivityResult(this, requestCode, resultCode, data);
+                new PhotoReceiverHandler(this::onPhotoReturned).onActivityResult(this, requestCode, resultCode, data);
                 break;
         }
     }
@@ -740,7 +739,6 @@ public class ProductImageManagementActivity extends BaseActivity implements Phot
     /**
      * @param newPhotoFile photo selected by the user to be sent to the server.
      */
-    @Override
     public void onPhotoReturned(File newPhotoFile) {
         startRefresh(getString(R.string.uploading_image));
         disp.add(Completable.fromAction(() -> {
