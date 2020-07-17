@@ -230,7 +230,7 @@ public class HomeFragment extends NavigationBaseFragment {
      * get tag line url from OpenFoodAPIService
      */
     private void refreshTagline() {
-        compDisp.add(apiClient.getTaglineSingle(Utils.getUserAgent())
+        compDisp.add(apiClient.getTagline(Utils.getUserAgent())
             .subscribeOn(Schedulers.io()) // io for network
             .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
             .subscribe(models -> {

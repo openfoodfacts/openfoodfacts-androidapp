@@ -276,7 +276,7 @@ public interface ProductsAPI {
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-" + BuildConfig.FLAVOR + ".json")
-    Single<ArrayList<TaglineLanguageModel>> getTaglineSingle(@Header("User-Agent") String header);
+    Single<ArrayList<TaglineLanguageModel>> getTagline(@Header("User-Agent") String header);
 
     /**
      * Returns images for the current product
@@ -284,7 +284,7 @@ public interface ProductsAPI {
      * @param barcode barcode for the current product
      */
     @GET("api/v0/product/{barcode}.json?fields=images")
-    Single<ObjectNode> getProductImagesSingle(@Path("barcode") String barcode);
+    Single<ObjectNode> getProductImages(@Path("barcode") String barcode);
 
     /**
      * This method is to crop images server side
@@ -298,5 +298,5 @@ public interface ProductsAPI {
                                @QueryMap Map<String, String> fields);
 
     @GET
-    Single<ResponseBody> downloadFileSingle(@Url String fileUrl);
+    Single<ResponseBody> downloadFile(@Url String fileUrl);
 }

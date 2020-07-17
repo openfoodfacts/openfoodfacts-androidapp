@@ -14,7 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import org.json.JSONObject;
+
 import java.util.List;
+import java.util.function.Consumer;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
@@ -66,7 +69,7 @@ public class AdditiveFragmentHelper {
      * @param fragment holds a reference to the calling fragment
      **/
     private static CharSequence getAdditiveTag(AdditiveName additive, final WikiDataApiClient apiClientForWikiData, BaseFragment fragment) {
-        FragmentActivity activity = fragment.getActivity();
+        FragmentActivity activity = fragment.requireActivity();
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
 
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -123,7 +126,7 @@ public class AdditiveFragmentHelper {
         }
     }
 
-    private static WikiDataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive) {
+    private static Consumer<JSONObject> getOnWikiResponse(FragmentActivity activity, AdditiveName additive) {
         return result -> {
             if (result != null) {
                 if (activity != null && !activity.isFinishing()) {

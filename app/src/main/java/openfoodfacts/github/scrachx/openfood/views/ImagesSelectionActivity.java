@@ -71,7 +71,7 @@ public class ImagesSelectionActivity extends BaseActivity {
         String code = intent.getStringExtra(ImageKeyHelper.PRODUCT_BARCODE);
         binding.toolbar.setTitle(intent.getStringExtra(TOOLBAR_TITLE));
 
-        disp.add(api.getProductImagesSingle(code)
+        disp.add(api.getProductImages(code)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(node -> {
 

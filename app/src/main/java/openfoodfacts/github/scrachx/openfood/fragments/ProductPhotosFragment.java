@@ -60,7 +60,7 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
         imageNames = new ArrayList<>();
         imagesRecycler = view.findViewById(R.id.imagesRecycler);
 
-        disp.add(openFoodAPIClient.getRawAPI().getProductImagesSingle(product.getCode())
+        disp.add(openFoodAPIClient.getRawAPI().getProductImages(product.getCode())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(node -> {
                 imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(node);

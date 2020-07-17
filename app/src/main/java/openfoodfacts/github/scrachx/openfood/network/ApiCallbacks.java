@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
 import openfoodfacts.github.scrachx.openfood.models.Search;
-import openfoodfacts.github.scrachx.openfood.models.State;
 
 public class ApiCallbacks {
     public interface OnProductsCallback {
@@ -26,10 +25,6 @@ public class ApiCallbacks {
 
     public interface OnProductSentCallback {
         void onProductSentResponse(boolean value);
-    }
-
-    public interface OnStateListenerCallback {
-        void onStateResponse(State newState);
     }
 
     public interface OnEditImageCallback {

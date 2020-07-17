@@ -27,6 +27,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -240,7 +241,7 @@ public class OpenFoodAPIClient {
      *
      * @param barcode product barcode
      */
-    public void getProductImages(final String barcode, final ApiCallbacks.OnStateListenerCallback callback) {
+    public void getProductImages(final String barcode, final Consumer<State> callback) {
         String[] allFieldsArray = OFFApplication.getInstance().getResources().getStringArray(R.array.product_images_fields_array);
         Set<String> fields = new HashSet<>(Arrays.asList(allFieldsArray));
         String langCode = LocaleHelper.getLanguage(OFFApplication.getInstance().getApplicationContext());
@@ -248,7 +249,7 @@ public class OpenFoodAPIClient {
         api.getProductByBarcode(barcode, StringUtils.join(fields, ','), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
             @Override
             public void onResponse(@NonNull Call<State> call, @NonNull Response<State> response) {
-                callback.onStateResponse(response.body());
+                callback.accept(response.body());
             }
 
             @Override
@@ -258,7 +259,7 @@ public class OpenFoodAPIClient {
                     State res = new State();
                     res.setStatus(0);
                     res.setStatusVerbose(isNetwork ? OFFApplication.getInstance().getResources().getString(R.string.errorWeb) : t.getMessage());
-                    callback.onStateResponse(res);
+                    callback.accept(res);
                 }
             }
         });
@@ -281,7 +282,7 @@ public class OpenFoodAPIClient {
      * @param activity
      */
     // TODO: This is not part of the client, move it to another class (preferably a utility class)
-    public void openProduct(final String barcode, final Activity activity, final ApiCallbacks.OnStateListenerCallback callback) {
+    public void openProduct(final String barcode, final Activity activity, @Nullable final Consumer<State> callback) {
         String fieldParam = getAllFields();
         api.getProductByBarcode(barcode, fieldParam, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<State>() {
             @Override
@@ -293,12 +294,12 @@ public class OpenFoodAPIClient {
                     return;
                 }
 
-                final State s = response.body();
-                if (s == null) {
+                final State state = response.body();
+                if (state == null) {
                     Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (s.getStatus() == 0) {
+                if (state.getStatus() == 0) {
                     if (activity != null) {
                         productNotFoundDialogBuilder(activity, barcode)
                             .onNegative((dialog, which) -> activity.onBackPressed())
@@ -306,16 +307,16 @@ public class OpenFoodAPIClient {
                     }
                 } else {
                     if (activity != null) {
-                        addToHistory(s.getProduct()).subscribe();
+                        addToHistory(state.getProduct()).subscribe();
                     }
                     Bundle bundle = new Bundle();
 
-                    s.setProduct(s.getProduct());
+                    state.setProduct(state.getProduct());
                     if (callback != null) {
-                        callback.onStateResponse(s);
+                        callback.accept(state);
                     } else {
                         Intent intent = new Intent(activity, ProductActivity.class);
-                        bundle.putSerializable("state", s);
+                        bundle.putSerializable("state", state);
                         intent.putExtras(bundle);
                         activity.startActivity(intent);
                     }
@@ -333,7 +334,7 @@ public class OpenFoodAPIClient {
                     State res = new State();
                     res.setStatus(0);
                     res.setStatusVerbose(isNetwork ? activity.getResources().getString(R.string.errorWeb) : t.getMessage());
-                    callback.onStateResponse(res);
+                    callback.accept(res);
                 }
                 if (!isNetwork) {
                     productNotFoundDialogBuilder(activity, barcode).show();
