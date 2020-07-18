@@ -43,7 +43,7 @@ lane :release do
     supply(
         track: 'internal',
         skip_upload_apk: true,
-        version_codes_to_retain: ['12', '23'],
+#        version_codes_to_retain: ['12', '23'],
         package_name: PACKAGE_NAME,
         skip_upload_metadata: true,
         skip_upload_changelogs: true,
