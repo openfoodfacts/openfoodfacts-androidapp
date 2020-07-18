@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Run Unit Tests
+    name: Run Android testing
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout sources
@@ -30,7 +30,7 @@ jobs:
 
   google-play-internal:
     needs: test
-    name: Generate and deploy on google play
+    name: Generate and deploy on Google Play
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout sources
