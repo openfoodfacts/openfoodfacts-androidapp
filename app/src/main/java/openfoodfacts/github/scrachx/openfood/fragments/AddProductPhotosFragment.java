@@ -38,7 +38,6 @@ import java.io.File;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
@@ -56,7 +55,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
  *
  * @see R.layout#fragment_add_product_photos
  */
-public class AddProductPhotosFragment extends BaseFragment implements PhotoReceiver {
+public class AddProductPhotosFragment extends BaseFragment {
     private FragmentAddProductPhotosBinding binding;
     private PhotoReceiverHandler photoReceiverHandler;
     private String code;
@@ -75,8 +74,14 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
         binding.btnAddOtherImage.setOnClickListener(v -> addOtherImage());
         binding.btnAdd.setOnClickListener(v -> next());
 
-
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
+            photoFile = newPhotoFile;
+            ProductImage image = new ProductImage(code, OTHER, photoFile);
+            image.setFilePath(photoFile.toURI().getPath());
+            if (activity instanceof AddProductActivity) {
+                ((AddProductActivity) activity).addToPhotoMap(image, 4);
+            }
+        });
         Bundle b = getArguments();
         if (b != null) {
             Product product = (Product) b.getSerializable("product");
@@ -114,16 +119,6 @@ public class AddProductPhotosFragment extends BaseFragment implements PhotoRecei
         Activity fragmentActivity = getActivity();
         if (fragmentActivity instanceof AddProductActivity) {
             ((AddProductActivity) fragmentActivity).proceed();
-        }
-    }
-
-    @Override
-    public void onPhotoReturned(File newPhotoFile) {
-        photoFile = newPhotoFile;
-        ProductImage image = new ProductImage(code, OTHER, photoFile);
-        image.setFilePath(photoFile.toURI().getPath());
-        if (activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).addToPhotoMap(image, 4);
         }
     }
 

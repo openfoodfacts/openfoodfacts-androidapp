@@ -44,7 +44,7 @@ public class FileDownloader {
     public static Maybe<File> download(@NonNull Context context, @NonNull String fileUrl) {
         return CommonApiManager.getInstance()
             .getProductsApi()
-            .downloadFileSingle(fileUrl)
+            .downloadFile(fileUrl)
             .flatMapMaybe(responseBody -> {
                 if (responseBody != null) {
                     Log.d(FileDownloader.class.getSimpleName(), "server contacted and has file");

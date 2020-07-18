@@ -179,7 +179,7 @@ public class LoginActivity extends BaseActivity {
         binding.btnLogin.setClickable(false);
 
         final Activity context = this;
-        disp.add(apiClient.signInSingle(login, password, "Sign-in").subscribe(response -> {
+        disp.add(apiClient.signIn(login, password, "Sign-in").subscribe(response -> {
             if (!response.isSuccessful()) {
                 Toast.makeText(context, R.string.errorWeb, Toast.LENGTH_LONG).show();
                 return;

@@ -64,7 +64,6 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentNutritionProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
@@ -113,7 +112,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, PhotoReceiver {
+public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
     private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
     private PhotoReceiverHandler photoReceiverHandler;
     private String mUrlImage;
@@ -143,7 +142,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(this::onPhotoReturned);
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.nutrimentsRecyclerView.getContext(), VERTICAL);
         binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);

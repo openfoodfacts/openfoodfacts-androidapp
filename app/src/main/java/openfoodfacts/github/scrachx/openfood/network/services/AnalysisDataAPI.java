@@ -33,6 +33,14 @@ public interface AnalysisDataAPI {
     String ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json";
     String TAGS_JSON = "data/taxonomies/packager-codes.json";
     String INVALID_BARCODES_JSON = "data/invalid-barcodes.json";
+    String VITAMINS_JSON = "data/taxonomies/vitamins.json";
+    String ADDITIVES_CLASSES_JSON = "data/taxonomies/additives_classes.json";
+    String NUCLEOTIDES_JSON = "data/taxonomies/nucleotides.json";
+    String NUTRIENT_LEVELS_JSON = "data/taxonomies/nutrient_levels.json";
+    String LANGUAGES_JSON = "data/taxonomies/languages.json";
+    String STATES_JSON = "data/taxonomies/states.json";
+    String MINERALS_JSON = "data/taxonomies/minerals.json";
+    String NUTRIENTS_JSON = "data/taxonomies/nutrients.json";
 
     @GET(LABELS_JSON)
     Single<LabelsWrapper> getLabels();
@@ -58,28 +66,28 @@ public interface AnalysisDataAPI {
     @GET(INVALID_BARCODES_JSON)
     Single<List<String>> getInvalidBarcodes();
 
-    @GET("data/taxonomies/vitamins.json")
+    @GET(VITAMINS_JSON)
     Single<CategoriesWrapper> getVitamins();
 
-    @GET("data/taxonomies/additives_classes.json")
+    @GET(ADDITIVES_CLASSES_JSON)
     Single<CategoriesWrapper> getAdditivesClasses();
 
-    @GET("data/taxonomies/nucleotides.json")
+    @GET(NUCLEOTIDES_JSON)
     Single<CategoriesWrapper> getNucleotides();
 
-    @GET("data/taxonomies/nutrient_levels.json")
+    @GET(NUTRIENT_LEVELS_JSON)
     Single<CategoriesWrapper> getNutrientLevels();
 
-    @GET("data/taxonomies/languages.json")
+    @GET(LANGUAGES_JSON)
     Single<CategoriesWrapper> getLanguages();
 
-    @GET("data/taxonomies/nutrients.json")
+    @GET(NUTRIENTS_JSON)
     Single<CategoriesWrapper> getNutrients();
 
-    @GET("data/taxonomies/minerals.json")
+    @GET(MINERALS_JSON)
     Single<CategoriesWrapper> getMinerals();
 
-    @GET("data/taxonomies/states.json")
+    @GET(STATES_JSON)
     Single<CategoriesWrapper> getStates();
 
     @GET(ANALYSIS_TAG_JSON)

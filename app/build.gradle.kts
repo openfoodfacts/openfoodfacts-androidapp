@@ -40,7 +40,7 @@ fun obtainTestBuildType(): String {
 dependencies {
     //Android
     implementation("androidx.browser:browser:1.2.0")
-    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.appcompat:appcompat:1.2.0-rc01")
     implementation("androidx.work:work-runtime:2.3.4")
     implementation("androidx.concurrent:concurrent-futures:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
@@ -135,11 +135,11 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:2.1.6")
+    implementation("io.sentry:sentry-android:2.2.1")
 
     // Unit Testing
     testImplementation("junit:junit:4.13")
-    testImplementation("org.mockito:mockito-core:3.3.3")
+    testImplementation("org.mockito:mockito-core:3.4.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.17.0")
 
     // Instrumented tests
@@ -167,6 +167,8 @@ dependencies {
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.9")
 }
 
 
@@ -289,6 +291,9 @@ android {
     }
 
     compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+        // Sets Java compatibility to Java 8
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }

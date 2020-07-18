@@ -15,9 +15,9 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.List;
+import java.util.function.Consumer;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -26,9 +26,9 @@ import pl.aprilapps.easyphotopicker.EasyImage;
  * A class for handling photo receiver
  */
 public class PhotoReceiverHandler {
-    private final PhotoReceiver photoReceiver;
+    private final Consumer<File> photoReceiver;
 
-    public PhotoReceiverHandler(PhotoReceiver photoReceiver) {
+    public PhotoReceiverHandler(Consumer<File> photoReceiver) {
         this.photoReceiver = photoReceiver;
     }
 
@@ -81,7 +81,7 @@ public class PhotoReceiverHandler {
                     }
                 } else {
                     for (File image : imageFiles) {
-                        photoReceiver.onPhotoReturned(image);
+                        photoReceiver.accept(image);
                     }
                 }
             }
@@ -110,7 +110,7 @@ public class PhotoReceiverHandler {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == Activity.RESULT_OK && result.getUri() != null) {
                 Uri resultUri = result.getUri();
-                photoReceiver.onPhotoReturned(new File(resultUri.getPath()));
+                photoReceiver.accept(new File(resultUri.getPath()));
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Log.w(PhotoReceiverHandler.class.getSimpleName(), "Can't process photo", result.getError());
             }

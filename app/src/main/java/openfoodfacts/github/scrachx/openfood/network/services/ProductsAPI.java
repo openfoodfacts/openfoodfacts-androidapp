@@ -17,6 +17,7 @@
 package openfoodfacts.github.scrachx.openfood.network.services;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -63,162 +64,25 @@ public interface ProductsAPI {
     @POST("cgi/product_jqm2.pl")
     Single<State> saveProductSingle(@Field(ApiFields.Keys.BARCODE) String code,
                                     @FieldMap Map<String, String> parameters,
-                                    @Field("comment") String comment);
+                                    @Field(ApiFields.Keys.USER_COMMENT) String comment);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
     Call<State> getShortProductByBarcode(@Path("barcode") String barcode,
                                          @Header("User-Agent") String header);
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
-    Call<Search> searchProductByName(@Query("fields") String fields, @Query("search_terms") String name, @Query("page") int page);
+    Call<Search> searchProductByName(@Query("fields") String fields,
+                                     @Query("search_terms") String name,
+                                     @Query("page") int page);
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
-    Call<ResponseBody> signIn(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit);
-
-    @FormUrlEncoded
-    @POST("/cgi/session.pl")
-    Single<Response<ResponseBody>> signInSingle(@Field("user_id") String login, @Field("password") String password, @Field(".submit") String submit);
+    Single<Response<ResponseBody>> signIn(@Field(ApiFields.Keys.USER_ID) String login,
+                                          @Field(ApiFields.Keys.USER_PASS) String password,
+                                          @Field(".submit") String submit);
 
     @GET("api/v0/product/{barcode}.json?fields=ingredients")
     Single<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
-
-    /**
-     * waiting https://github.com/openfoodfacts/openfoodfacts-server/issues/510 to use saveProduct(SendProduct)
-     *
-     * @deprecated
-     */
-    @Deprecated
-    @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProduct(@Query(ApiFields.Keys.BARCODE) String code,
-                            @Query(ApiFields.Keys.LANG) String lang,
-                            @Query(ApiFields.Keys.PRODUCT_NAME) String name,
-                            @Query(ApiFields.Keys.BRANDS) String brands,
-                            @Query(ApiFields.Keys.QUANTITY) String quantity,
-                            @Query(ApiFields.Keys.USER_ID) String login,
-                            @Query(ApiFields.Keys.USER_PASS) String password,
-                            @Query(ApiFields.Keys.USER_COMMENT) String comment);
-
-    /**
-     * This method is used to upload those products which
-     * does not contain Name of the product.
-     * here name query is not present to make sure if the product is already present
-     * then the server would not assume to delete it.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProductWithoutName(@Query(ApiFields.Keys.BARCODE) String code,
-                                       @Query(ApiFields.Keys.LANG) String lang,
-                                       @Query(ApiFields.Keys.BRANDS) String brands,
-                                       @Query(ApiFields.Keys.QUANTITY) String quantity,
-                                       @Query(ApiFields.Keys.USER_ID) String login,
-                                       @Query(ApiFields.Keys.USER_PASS) String password,
-                                       @Query(ApiFields.Keys.USER_COMMENT) String comment);
-
-    /**
-     * This method is used to upload those products which
-     * does not contain Brands of the product.
-     * here Brands query is not present to make sure if the product is already present
-     * then the server would not assume to delete it.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProductWithoutBrands(@Query(ApiFields.Keys.BARCODE) String code,
-                                         @Query(ApiFields.Keys.LANG) String lang,
-                                         @Query(ApiFields.Keys.PRODUCT_NAME) String name,
-                                         @Query(ApiFields.Keys.QUANTITY) String quantity,
-                                         @Query("user_id") String login,
-                                         @Query("password") String password,
-                                         @Query("comment") String comment);
-
-    /**
-     * This method is used to upload those products which
-     * does not contain Quantity of the product.
-     * here Quantity query is not present to make sure if the product is already present
-     * then the server would not assume to delete it.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProductWithoutQuantity(@Query(ApiFields.Keys.BARCODE) String code,
-                                           @Query(ApiFields.Keys.LANG) String lang,
-                                           @Query(ApiFields.Keys.PRODUCT_NAME) String name,
-                                           @Query(ApiFields.Keys.BRANDS) String brands,
-                                           @Query("user_id") String login,
-                                           @Query("password") String password,
-                                           @Query("comment") String comment);
-
-    /**
-     * This method is used to upload those products which
-     * does not contain Name and Brands of the product.
-     * here Name and Brands query is not present to make sure if the product is already present
-     * then the server would not assume to delete it.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProductWithoutNameAndBrands(@Query(ApiFields.Keys.BARCODE) String code,
-                                                @Query(ApiFields.Keys.LANG) String lang,
-                                                @Query(ApiFields.Keys.QUANTITY) String quantity,
-                                                @Query("user_id") String login,
-                                                @Query("password") String password,
-                                                @Query("comment") String comment);
-
-    /**
-     * This method is used to upload those products which
-     * does not contain Name and Quantity of the product.
-     * here Name and Quantity query is not present to make sure if the product is already present
-     * then the server would not assume to delete it.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProductWithoutNameAndQuantity(@Query(ApiFields.Keys.BARCODE) String code,
-                                                  @Query(ApiFields.Keys.LANG) String lang,
-                                                  @Query(ApiFields.Keys.BRANDS) String brands,
-                                                  @Query("user_id") String login,
-                                                  @Query("password") String password,
-                                                  @Query("comment") String comment);
-
-    /**
-     * This method is used to upload those products which
-     * does not contain Brands and Quantity of the product.
-     * here Brands and Quantity query is not present to make sure if the product is already present
-     * then the server would not assume to delete it.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProductWithoutBrandsAndQuantity(@Query(ApiFields.Keys.BARCODE) String code,
-                                                    @Query(ApiFields.Keys.LANG) String lang,
-                                                    @Query(ApiFields.Keys.PRODUCT_NAME) String name,
-                                                    @Query("user_id") String login,
-                                                    @Query("password") String password,
-                                                    @Query("comment") String comment);
-
-    /**
-     * This method is used to upload those products which
-     * does not contain Brands, Name and Quantity of the product.
-     * here Brands, Name and Quantity query is not present to make sure if the product is already present
-     * then the server would not assume to delete it.
-     *
-     * @deprecated
-     */
-    @Deprecated
-    @GET("/cgi/product_jqm2.pl")
-    Call<State> saveProductWithoutNameBrandsAndQuantity(@Query(ApiFields.Keys.BARCODE) String code,
-                                                        @Query(ApiFields.Keys.LANG) String lang,
-                                                        @Query("user_id") String login,
-                                                        @Query("password") String password,
-                                                        @Query("comment") String comment);
 
     @Multipart
     @POST("/cgi/product_image_upload.pl")
@@ -243,9 +107,9 @@ public interface ProductsAPI {
     Single<ArrayList<String>> getPeriodAfterOpeningSuggestions(@Query("term") String term);
 
     @GET("brand/{brand}/{page}.json")
-    Call<Search> getProductByBrands(@Path("brand") String brand,
-                                    @Path("page") int page,
-                                    @Query("fields") String fields);
+    Single<Search> getProductByBrands(@Path("brand") String brand,
+                                      @Path("page") int page,
+                                      @Query("fields") String fields);
 
     @GET("brand/{brand}/{page}.json")
     Single<Search> getProductByBrandsSingle(@Path("brand") String brand,
@@ -340,10 +204,10 @@ public interface ProductsAPI {
     Call<Search> byNutritionGrade(@Path("NutritionGrade") String nutritionGrade);
 
     @GET("nutrient-level/{NutrientLevel}.json")
-    Call<Search> byNutrientLevel(@Path("NutrientLevel") String nutrientLevel);
+    Single<Search> byNutrientLevel(@Path("NutrientLevel") String nutrientLevel);
 
     @GET("contributor/{Contributor}.json?nocache=1")
-    Call<Search> byContributor(@Path("Contributor") String contributor);
+    Single<Search> byContributor(@Path("Contributor") String contributor);
 
     @GET("contributor/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getToBeCompletedProductsByContributor(@Path("Contributor") String contributor, @Path("page") int page);
@@ -352,14 +216,14 @@ public interface ProductsAPI {
     Call<Search> getPicturesContributedProducts(@Path("Contributor") String contributor, @Path("page") int page);
 
     @GET("photographer/{Photographer}.json?nocache=1")
-    Call<Search> byPhotographer(@Path("Photographer") String photographer);
+    Single<Search> byPhotographer(@Path("Photographer") String photographer);
 
     @GET("photographer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getPicturesContributedIncompleteProducts(@Path("Contributor") String contributor,
                                                           @Path("page") int page);
 
     @GET("informer/{Informer}.json?nocache=1")
-    Call<Search> byInformer(@Path("Informer") String informer);
+    Single<Search> byInformer(@Path("Informer") String informer);
 
     @GET("informer/{Contributor}/{page}.json?nocache=1")
     Call<Search> getInfoAddedProducts(@Path("Contributor") String contributor, @Path("page") int page);
@@ -368,19 +232,19 @@ public interface ProductsAPI {
     Single<Search> getInfoAddedIncompleteProductsSingle(@Path("Contributor") String contributor, @Path("page") int page);
 
     @GET("last-edit-date/{LastEditDate}.json")
-    Call<Search> byLastEditDate(@Path("LastEditDate") String lastEditDate);
+    Single<Search> byLastEditDate(@Path("LastEditDate") String lastEditDate);
 
     @GET("entry-dates/{EntryDates}.json")
-    Call<Search> byEntryDates(@Path("EntryDates") String entryDates);
+    Single<Search> byEntryDates(@Path("EntryDates") String entryDates);
 
     @GET("unknown-nutrient/{UnknownNutrient}.json")
-    Call<Search> byUnknownNutrient(@Path("UnknownNutrient") String unknownNutrient);
+    Single<Search> byUnknownNutrient(@Path("UnknownNutrient") String unknownNutrient);
 
     @GET("additive/{Additive}.json")
     Call<Search> byAdditive(@Path("Additive") String additive, @Query("fields") String fields);
 
     @GET("code/{Code}.json")
-    Call<Search> byCode(@Path("Code") String code);
+    Single<Search> byCode(@Path("Code") String code);
 
     @GET("state/{State}/{page}.json")
     Single<Search> getProductsByState(@Path("State") String state,
@@ -412,13 +276,15 @@ public interface ProductsAPI {
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-" + BuildConfig.FLAVOR + ".json")
-    Single<ArrayList<TaglineLanguageModel>> getTaglineSingle(@Header("User-Agent") String header);
+    Single<ArrayList<TaglineLanguageModel>> getTagline(@Header("User-Agent") String header);
 
     /**
-     * This method gives the image fields of a product
+     * Returns images for the current product
+     *
+     * @param barcode barcode for the current product
      */
     @GET("api/v0/product/{barcode}.json?fields=images")
-    Call<String> getProductImages(@Path("barcode") String barcode);
+    Single<ObjectNode> getProductImages(@Path("barcode") String barcode);
 
     /**
      * This method is to crop images server side
@@ -428,9 +294,9 @@ public interface ProductsAPI {
                             @QueryMap Map<String, String> fields);
 
     @GET("/cgi/product_image_unselect.pl")
-    Call<String> unselectImage(@Query(ApiFields.Keys.BARCODE) String code,
+    Call<String> unSelectImage(@Query(ApiFields.Keys.BARCODE) String code,
                                @QueryMap Map<String, String> fields);
 
     @GET
-    Single<ResponseBody> downloadFileSingle(@Url String fileUrl);
+    Single<ResponseBody> downloadFile(@Url String fileUrl);
 }
