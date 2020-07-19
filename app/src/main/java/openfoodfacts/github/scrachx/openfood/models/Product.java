@@ -746,6 +746,18 @@ public class Product implements Serializable {
         return recyclingInstructionsToRecycle;
     }
 
+    public String getNutritionGradeTag() {
+        String nutritionGradeTag = null;
+        String nutritionGradeTagKey = "nutrition_grades_tags";
+        if (additionalProperties.containsKey(nutritionGradeTagKey)) {
+            ArrayList<String> nutritionGradeTags = ((ArrayList<String>) additionalProperties.get(nutritionGradeTagKey));
+            if (nutritionGradeTags != null && !nutritionGradeTags.isEmpty()) {
+                nutritionGradeTag = nutritionGradeTags.get(0);
+            }
+        }
+        return nutritionGradeTag;
+    }
+
     @NonNull
     @Override
     public String toString() {
