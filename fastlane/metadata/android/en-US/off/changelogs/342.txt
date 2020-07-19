@@ -1,0 +1,9 @@
+- Adding or editing a product is now instant in every condition, offline, online or bad connexion.
+- You now are properly credited for your answers to blue questions that now appear for non-logged users
+- Faster loading when you click a value on a product (like a brand)
+- The synchronisation system has been improved
+- Improvements in editing
+- Products to be completed is now real time
+- Removed the Home Gesture in scan.
+- Illustrations in the product page
+- Dark mode
