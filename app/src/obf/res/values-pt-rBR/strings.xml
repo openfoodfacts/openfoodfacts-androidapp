@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns="">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
-    <string name="website">https://world-pt.openbeautyfacts.org/</string>
+    <string name="website">https://world.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
     <string name="website_contribute">https://world-pt.openbeautyfacts.org/contribuir</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
@@ -42,9 +42,9 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">Produtos que eu tenho</string>
     <string name="txt_products_to_buy">Produtos para comprar</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="intent_filter_share_label">Adicionar ao Open Beauty Facts</string>
+    <string name="brand_hint">Exemplos: Nivea, L\'Oréal, etc…</string>
+    <string name="txt_info_eaten_products">Você poderá adicionar produtos a essa lista escaneando produtos, arrastando o cartão do produto para cima e tocando em \"Produtos para comprar\".
+         Você também poderá adicionar produtos a essa lista pesquisando-os e clicando no botão + no canto superior direito da página do produto.</string>
+    <string name="OFFlogo">Logotipo do Open Beauty Facts</string>
 </resources>

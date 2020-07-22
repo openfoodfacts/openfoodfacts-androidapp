@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="one"> Teniu 1 producte fora de línia esperant la vostra aportació a Open Food Facts</item>
@@ -613,6 +628,7 @@
     <string name="edit_ingredients_image">Edita la foto dels ingredients</string>
     <string name="edit_other_image">Edita la foto</string>
     <string name="sign_in_to_edit">Inicieu la sessió per editar un producte.</string>
+    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edita un producte</string>
     <string name="nutrient_already_added">%s ja està present en les dades nutricionals</string>
