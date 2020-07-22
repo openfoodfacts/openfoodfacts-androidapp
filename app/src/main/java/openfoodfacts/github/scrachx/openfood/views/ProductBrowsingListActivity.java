@@ -366,7 +366,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
             case SearchType.BRAND:
                 disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
                     .subscribe((search, throwable) ->
-                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_brand_products)));
+                        loadSearchProducts(throwable == null,
+                            search,
+                            R.string.txt_no_matching_brand_products)));
                 break;
             case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
@@ -396,17 +398,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 if (ProductUtils.isBarcodeValid(searchQuery)) {
                     api.openProduct(searchQuery, this);
                 } else {
-                    api.searchProductsByName(searchQuery, pageAddress, this, (isOk, searchResponse, countProducts) -> {
-
-                        // countProducts is checked, if it is -2 it means that there are no matching products in the
-                        // database for the query.
-                        if (countProducts == -2) {
-                            showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
-                                getResources().getString(R.string.txt_broaden_search));
-                        } else {
-                            loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
-                        }
-                    });
+                    disp.add(api.searchProductsByName(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
+                        .subscribe((search, throwable) ->
+                            loadSearchProducts(throwable == null,
+                                search,
+                                R.string.txt_no_matching_label_products,
+                                R.string.txt_broaden_search)));
                 }
                 break;
             case SearchType.LABEL:
@@ -436,7 +433,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         loadSearchProducts(throwable == null, search, R.string.txt_no_matching_incomplete_products)));
                 break;
             default:
-                Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
+                Log.e("Products Browsing", "No match case found for " + mSearchInfo.getSearchType());
         }
     }
 

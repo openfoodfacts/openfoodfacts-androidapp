@@ -71,9 +71,9 @@ public interface ProductsAPI {
                                          @Header("User-Agent") String header);
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
-    Call<Search> searchProductByName(@Query("fields") String fields,
-                                     @Query("search_terms") String name,
-                                     @Query("page") int page);
+    Single<Search> searchProductByName(@Query("fields") String fields,
+                                       @Query("search_terms") String name,
+                                       @Query("page") int page);
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")
