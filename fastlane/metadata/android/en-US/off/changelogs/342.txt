@@ -1,10 +1,7 @@
-All OFF volunteers kept working hard. 1,4M products, 182 countries, 25K+ contributors, incl. you 🙂
-
-1. Open Food Facts goes big in the US: 237.000 products with Nutri-Score !
+All 25k OFF volunteers kept working hard: 1,4M products, 182 countries 🙂
+1. OFF goes big in the US: 237k products with Nutri-Score !
 2. Dark mode: lighter on your eyes, lighter on your battery
-3. Help food transparency for Nutri-Score and Eco-Score: blue questions are now for everyone & you are credited for your answers.
-4. Massive improvements to the vegan, vegetarian and palm oil status detection. More improvements and detections are coming soon.
-5. Adding or editing a product is now instant in every condition, online, degraded or even offline. It's also much easier to enter or correct nutrition facts.
-6. We optimized many parts of the app for more reliability, more speed and less power consumption. If you like contributing, the Products to be completed page in the right menu is now real time.
-
-Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+3. Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
+4. Massive improvements to the vegan, vegetarian & palm oil detection.
+5. Instant product edition even with bad or no network
+6. Products To Be Completed page (right menu) is now real time.
