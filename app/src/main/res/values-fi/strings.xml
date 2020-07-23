@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Yksi offline-tilassa muokattu tuote odottaa lähettämistä Open Food Factsiin</item>
         <item quantity="other">%d offline-tilassa muokattua tuotetta odottaa lähettämistä Open Food Factsiin</item>

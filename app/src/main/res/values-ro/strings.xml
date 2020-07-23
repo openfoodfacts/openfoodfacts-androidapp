@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> Aveți 1 produs offline care așteaptă să fie contribuit la Open Food Facts</item>
         <item quantity="few"> Aveți %d produse offline care așteaptă să fie contribuite la Open Food Facts</item>

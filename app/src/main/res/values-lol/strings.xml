@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">crwdns126934:1crwdne126934:1</item>
         <item quantity="other">crwdns126934:5%dcrwdne126934:5</item>
