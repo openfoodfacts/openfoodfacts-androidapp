@@ -20,19 +20,19 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
+        <item quantity="one">%d minute ago</item>
         <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
+        <item quantity="one">%d hour ago</item>
         <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
+        <item quantity="one">%d day ago</item>
         <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">Om</string>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Annulera</string>
     <string name="login_button">Användarnamn</string>
     <string name="create_account_button">Skapa Konto</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Hur funkar det?</string>
     <string name="text_offline_info_dialog">Du kan skanna produkter när du är offline för att lägga till dem i Open Food Facts senare. Alla produkter du skannar kommer att visas här, och du kan skicka dem med knappen nedan.</string>
     <string name="permission_camera">Appen behöver tillstånd att använda kameran för att skanna streckkoder och ta bilder.</string>
@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Allmänt</string>
     <string name="preference_header_network">Nätverk</string>
     <string name="preference_header_contributing">Bidrar</string>

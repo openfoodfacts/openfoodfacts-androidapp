@@ -231,7 +231,7 @@
     <string name="cancel_button">Annullér</string>
     <string name="login_button">Brugernavn</string>
     <string name="create_account_button">Opret konto</string>
-    <string name="warning_alert_data">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% aorrekte, så dobbelttjek venligst selv! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Din allergi oplysninger vil aldrig blive sendt til Open Food Facts-serveren. Vær også opmærksom på, at produktdata såvel som detektering muligvis ikke altid er 100% aorrekte, så dobbelttjek venligst selv! </string>
     <string name="title_info_dialog">Hvordan fungerer det?</string>
     <string name="text_offline_info_dialog">Du kan indskanne produkter mens du er offline og tilføje dem til Open Food Facts senere. Alle produkter du har skannet vil fremgå her, og du vil kunne indsende dem ved at bruge knappen nedenfor.</string>
     <string name="permission_camera">Kamera-tilladelse er nødvendig for at skanne stregkoder og tage billeder.</string>

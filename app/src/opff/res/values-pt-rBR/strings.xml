@@ -30,7 +30,7 @@
     <string name="translate_help_title">Ajudar a traduzir Open Food Facts</string>
     <string name="translate_help_summary">Traga a base de dados Open Food Facts ao seu idioma - nenhum conhecimento técnico necessário</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Food Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Abrir o aplicativo Pet Foods Facts para android</string>
     <string name="tagline">free pet food products database</string>

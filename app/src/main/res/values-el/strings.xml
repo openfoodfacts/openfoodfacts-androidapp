@@ -231,7 +231,7 @@
     <string name="cancel_button">Ακύρωση</string>
     <string name="login_button">Σύνδεση</string>
     <string name="create_account_button">Δημιουργία Λογαριασμού</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Οδηγίες Χρήσης</string>
     <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
     <string name="permission_camera">Χρειάζεται άδεια κάμερας για τη σάρωση των Barcodes και τη λήψη φωτογραφιών.</string>

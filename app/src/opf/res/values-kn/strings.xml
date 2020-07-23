@@ -30,7 +30,7 @@
     <string name="translate_help_title">ಉತ್ಪನ್ನ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಿರಿ ಸಹಾಯ</string>
     <string name="translate_help_summary">ಓಪನ್ ಪ್ರಾಡಕ್ಟ್ಸ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರಲು - ಯಾವುದೇ ತಾಂತ್ರಿಕ ಜ್ಞಾನ ಅಗತ್ಯವಿಲ್ಲ</string>
     <string name="text_offline_info_dialog">ನಂತರ ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗಲೂ ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ನಂತರ ಅವುಗಳನ್ನು ಉತ್ಪನ್ನದ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಿರಿ. ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾದ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ ಮತ್ತು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
     <string name="tagline">the free product database</string>

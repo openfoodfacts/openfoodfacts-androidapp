@@ -25,7 +25,7 @@
     </plurals>
     <plurals name="seconds">
         <item quantity="zero">منذ ٪ d ثانية</item>
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="two">%d seconds ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
@@ -253,7 +253,7 @@
     <string name="cancel_button">إلغاء</string>
     <string name="login_button">تسجيل الدخول</string>
     <string name="create_account_button">إنشاء حساب</string>
-    <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <string name="title_info_dialog">كيف يعمل؟</string>
     <string name="text_offline_info_dialog">يمكنك مسح المنتجات ضوئيا عندما كنت تكون غير متصل بالإنترنت لإضافتها لاحقا إلى Open Food Facts. ستظهر جميع المنتجات التي فحصتها هنا، وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="permission_camera">تصريح الكاميرا مطلوب لمسح شفرة المنتجات والتقاط الصور.</string>

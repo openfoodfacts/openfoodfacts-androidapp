@@ -30,7 +30,7 @@
     <string name="translate_help_title">Aiuta a tradurre Open Products Facts</string>
     <string name="translate_help_summary">Porta il database di Open Products Facts nella tua lingua - non è richiesta alcuna conoscenza tecnica</string>
     <string name="text_offline_info_dialog">Scansione i prodotti anche quando sei offline così che possano essere aggiunti a Open Products Facts successivamente. I prodotti scansionati appariranno qui e potrai inviarli utilizzando il pulsante sottostante.</string>
-    <string name="warning_alert_data">Le informazioni sulle tue allergie non saranno mai inviate al server di Oper Products Facts. Inoltre, fai attenzione perché le informazioni sui prodotti potrebbero non essere accurate al 100%, quindi ricorda sempre di controllare! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Le informazioni sulle tue allergie non saranno mai inviate al server di Oper Products Facts. Inoltre, fai attenzione perché le informazioni sui prodotti potrebbero non essere accurate al 100%, quindi ricorda sempre di controllare! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
     <string name="tagline">il database aperto dei prodotti</string>

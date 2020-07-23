@@ -28,7 +28,7 @@
     <string name="translate_help_title">ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ಅನುವಾದಿಸಲು ಸಹಾಯ ಮಾಡಿ</string>
     <string name="translate_help_summary">ಓಪನ್ ಬ್ಯೂಟಿ ಫ್ಯಾಕ್ಟ್ಸ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರಲು - ಯಾವುದೇ ತಾಂತ್ರಿಕ ಜ್ಞಾನ ಅಗತ್ಯವಿಲ್ಲ</string>
     <string name="text_offline_info_dialog">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗ ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಲು ಅವುಗಳನ್ನು ಸೇರಿಸಲು ನೀವು ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಬಹುದು. ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡುವ ಎಲ್ಲಾ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ, ಮತ್ತು ನೀವು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">the free cosmetics database</string>

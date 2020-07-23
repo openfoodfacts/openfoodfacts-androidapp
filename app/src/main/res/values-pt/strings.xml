@@ -74,7 +74,7 @@
   <string name="sign_in_drawer">Iniciar sessão</string>
   <string name="alert_drawer">Alerta de alergénio</string>
     <string name="title_dialog_alert">Adicionar alerta</string>
-  <string name="warning_alert_data">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados. Confirme sempre os rótulos dos produtos! </string>
+  <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados. Confirme sempre os rótulos dos produtos! </string>
     <string name="title_info_dialog">Informação</string>
   <string name="text_offline_info_dialog">Poderá digitalizar produtos enquanto estiver offline para, mais tarde, adicioná-los ao Open Food Facts. Os produtos serão mostrados aqui e poderá enviá-los usando o botão abaixo.</string>
   <string name="permission_camera">A autorização da Câmara é necessária para digitalizar códigos de barras e tirar fotos.</string>

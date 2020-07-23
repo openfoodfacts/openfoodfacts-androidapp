@@ -30,7 +30,7 @@
     <string name="translate_help_title">crwdns129106:0crwdne129106:0</string>
     <string name="translate_help_summary">crwdns129108:0crwdne129108:0</string>
     <string name="text_offline_info_dialog">crwdns129110:0crwdne129110:0</string>
-    <string name="warning_alert_data">crwdns129112:0% acrwdne129112:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns129112:0% acrwdne129112:0</string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">crwdns129124:0crwdne129124:0</string>
     <string name="tagline">crwdns129126:0crwdne129126:0</string>

@@ -76,7 +76,7 @@
   <string name="sign_in_drawer">Prijavite se</string>
   <string name="alert_drawer">Alergen alarm</string>
     <string name="title_dialog_alert">Dodaj alarm</string>
-  <string name="warning_alert_data">Vaše informacije o alergijama nikada neće biti poslate na Open Food Facts server. Takođe, budite oprezni jer je moguće da podaci nisu tačni, molimo vas da proverite sami!</string>
+  <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Vaše informacije o alergijama nikada neće biti poslate na Open Food Facts server. Takođe, budite oprezni jer je moguće da podaci nisu tačni, molimo vas da proverite sami!</string>
     <string name="title_info_dialog">Informacija</string>
   <string name="text_offline_info_dialog">Možete skenirati proizvode i kada niste povezani na internet kako biste ih dodali kasnije na Open Food Facts. Svi proizvodi koje skenirate pojaviće se ovde, i bićete u mogućnosti da ih pošaljete pritiskom na dugme ispod.</string>
   <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>

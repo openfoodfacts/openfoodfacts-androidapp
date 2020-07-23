@@ -22,25 +22,25 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minute ago</item>
+        <item quantity="one">%d minute ago</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
         <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 hour ago</item>
+        <item quantity="one">%d hour ago</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
         <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 day ago</item>
+        <item quantity="one">%d day ago</item>
         <item quantity="few">%d days ago</item>
         <item quantity="many">%d days ago</item>
         <item quantity="other">%d days ago</item>
@@ -241,7 +241,7 @@
     <string name="cancel_button">Zrušiť</string>
     <string name="login_button">Užívateľské meno</string>
     <string name="create_account_button">Vytvoriť účet</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Ako to funguje?</string>
     <string name="text_offline_info_dialog">Produkty môžete skenovať aj vtedy, keď ste v režime offline, aby ste ich neskôr mohli pridať do Open Food Facts. Tu sa zobrazia všetky produkty, ktoré skenujete, a budete ich môcť odoslať pomocou tlačidla nižšie.</string>
     <string name="permission_camera">Na snímanie čiarových kódov a fotenie výrobkov je potrebné povoliť fotoaparát.</string>
@@ -458,7 +458,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Všeobecné</string>
     <string name="preference_header_network">Sieť</string>
     <string name="preference_header_contributing">Prispievajúci</string>

@@ -29,7 +29,7 @@
     <string name="translate_help_title">Open Food Facts 번역 도움말</string>
     <string name="translate_help_summary">Open Food Facts 데이터베이스를 귀하의 언어로 가져 오십시오 - 기술적인 지식이 필요하지 않습니다.</string>
     <string name="text_offline_info_dialog">오프라인 상태에서도 제품을 스캔하여 나중에 Open Food Facts에 추가하십시오. 스캔한 제품이 여기에 나타나면 아래 버튼을 사용하여 추가할 수 있습니다.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">무료 식제품 데이터베이스</string>
     <string name="product_not_found">스캔한 상품 %1$s가 Open Food Facts에 존재하지 않습니다. 추가하시겠습니까?</string>

@@ -28,7 +28,7 @@
     <string name="translate_help_title">crwdns128830:0crwdne128830:0</string>
     <string name="translate_help_summary">crwdns128832:0crwdne128832:0</string>
     <string name="text_offline_info_dialog">crwdns128834:0crwdne128834:0</string>
-    <string name="warning_alert_data">crwdns128836:0% acrwdne128836:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns128836:0% acrwdne128836:0</string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">crwdns128850:0crwdne128850:0</string>
     <string name="tagline">crwdns128852:0crwdne128852:0</string>

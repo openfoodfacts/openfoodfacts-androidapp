@@ -28,7 +28,7 @@
     <string name="translate_help_title">Ajută la traducerea aplicației Open Beauty Facts</string>
     <string name="translate_help_summary">Ajută la traducerea bazei de date Open Beauty Facts în limba ta - nu sunt necesare cunoștințe tehnice</string>
     <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Beauty Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
-    <string name="warning_alert_data">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Beauty Facts. Totodată, fii atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% aorectă, așa că te rog să verifici și tu personal acele produse! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Beauty Facts. Totodată, fii atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% aorectă, așa că te rog să verifici și tu personal acele produse! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">baza de date gratuită pentru produsele cosmetice</string>
