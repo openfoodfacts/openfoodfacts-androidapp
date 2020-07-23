@@ -12,36 +12,36 @@
 		"stack_title": false,
 		"title_below_image": false
 	},
-
-	"data": [{
+	"data": [
+		{
 			"filter": "Find the best products",
-      "title": {
-          "text": "Find products that are good for you\nand for the planet"
-      }
+			"title": {
+				"text": "Find products that are good for you\nand for the planet"
+			}
 		},
 		{
 			"filter": "Compare",
-      "title": {
-          "text": "Compare products to choose the best one"
-      }
+			"title": {
+				"text": "Compare products to choose the best one"
+			}
 		},
 		{
 			"filter": "Create lists",
-      "title": {
-          "text": "Create lists of products"
-      }
+			"title": {
+				"text": "Create lists of products"
+			}
 		},
 		{
 			"filter": "Contribute",
-      "title": {
-          "text": "Join our community\nto increase food transparency everywhere"
-      }
+			"title": {
+				"text": "Join our community\nto increase food transparency everywhere"
+			}
 		},
 		{
 			"filter": "Allergen Alert",
-      "title": {
-          "text": "Set up allergen alerts"
-      }
+			"title": {
+				"text": "Set up allergen alerts"
+			}
 		}
 	]
 }
