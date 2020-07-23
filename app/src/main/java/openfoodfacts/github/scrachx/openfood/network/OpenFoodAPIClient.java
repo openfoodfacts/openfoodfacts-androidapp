@@ -404,34 +404,11 @@ public class OpenFoodAPIClient {
         return api;
     }
 
-    public void searchProductsByName(final String name, final int page, final Activity activity, final ApiCallbacks.OnProductsCallback productsCallback) {
+    public Single<Search> searchProductsByName(final String name, final int page) {
         String productNameLocale = getLocaleProductNameField();
         String fields = "selected_images,image_small_url,product_name,brands,quantity,code,nutrition_grade_fr," + productNameLocale;
 
-        api.searchProductByName(fields, name, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (!response.isSuccessful()) {
-                    productsCallback.onProductsResponse(false, null, -1);
-                    return;
-                }
-
-                Search s = response.body();
-                if (s == null || Integer.parseInt(s.getCount()) == 0) {
-                    productsCallback.onProductsResponse(false, null, -2);
-                } else {
-                    productsCallback.onProductsResponse(true, s, Integer.parseInt(s.getCount()));
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                if (activity != null && !activity.isFinishing()) {
-                    Toast.makeText(activity, activity.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-                }
-                productsCallback.onProductsResponse(false, null, -1);
-            }
-        });
+        return api.searchProductByName(fields, name, page);
     }
 
     public void postImg(final ProductImage image, @Nullable ImageUploadListener imageUploadListener) {

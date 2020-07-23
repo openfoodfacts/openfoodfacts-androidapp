@@ -41,23 +41,36 @@ import static android.app.Activity.RESULT_OK;
 
 public class ProductFragment extends Fragment implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    private ActivityProductBinding binding;
-    private State productState;
+    private static final String STATE_ARG = "state";
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
-    private ShakeDetector mShakeDetector;
+    private ActivityProductBinding binding;
     private CompositeDisposable disp = new CompositeDisposable();
+    private Sensor mAccelerometer;
+    private SensorManager mSensorManager;
+    private ShakeDetector mShakeDetector;
+    private State productState;
+    /**
+     * boolean to determine if scan on shake feature should be enabled
+     */
+    private boolean scanOnShake;
+
+    @NonNull
+    public static ProductFragment newInstance(@NonNull State state) {
+
+        Bundle args = new Bundle();
+        args.putSerializable(STATE_ARG, state);
+
+        ProductFragment fragment = new ProductFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onDestroy() {
         disp.dispose();
         super.onDestroy();
     }
-
-    // boolean to determine if scan on shake feature should be enabled
-    private boolean scanOnShake;
 
     @Nullable
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -68,7 +81,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         binding.toolbar.setVisibility(View.GONE);
-        productState = (State) getArguments().getSerializable("state");
+        productState = (State) getArguments().getSerializable(STATE_ARG);
 
         setupViewPager(binding.pager);
 
