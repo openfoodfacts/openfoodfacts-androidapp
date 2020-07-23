@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">crwdns128954:0crwdne128954:0</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
@@ -30,7 +30,7 @@
     <string name="translate_help_title">crwdns129004:0crwdne129004:0</string>
     <string name="translate_help_summary">crwdns129006:0crwdne129006:0</string>
     <string name="text_offline_info_dialog">crwdns129008:0crwdne129008:0</string>
-    <string name="warning_alert_data">crwdns129010:0% acrwdne129010:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns129010:0% acrwdne129010:0</string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">crwdns129022:0crwdne129022:0</string>
     <string name="tagline">crwdns129024:0crwdne129024:0</string>

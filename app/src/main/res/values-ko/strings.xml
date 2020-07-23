@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="other"> Open Foods Facts 에 기부되기를 기다리는 오프라인 제품이 %d 있습니다.</item>
     </plurals>
@@ -226,7 +226,7 @@
     <string name="cancel_button">취소</string>
     <string name="login_button">로그인</string>
     <string name="create_account_button">계정 만들기</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">이용 방법</string>
     <string name="text_offline_info_dialog">오프라인 상태 일 때 제품을 스캔하여 나중에 Open Food Facts에 추가 할 수 있습니다. 스캔한 모든 제품이 여기에 표시되며 아래 버튼을 사용하여 추가할 수 있습니다.</string>
     <string name="permission_camera">바코드를 스캔하고 사진을 찍으려면 카메라 사용 권한이 필요합니다.</string>
@@ -443,7 +443,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">일반</string>
     <string name="preference_header_network">네트워크</string>
     <string name="preference_header_contributing">도움 보내기</string>
