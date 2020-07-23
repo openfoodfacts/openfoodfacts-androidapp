@@ -1,56 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:id="@+id/semi_trans"
-            android:background="@android:color/transparent"
             android:layout_width="match_parent"
-            android:layout_height="25dp">
+            android:layout_height="25dp"
+            android:background="@android:color/transparent">
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_below="@+id/semi_trans"
             android:id="@+id/dialog_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            >
+            android:layout_below="@+id/semi_trans"
+            android:background="@color/colorPrimaryDark">
+
             <LinearLayout
                 android:id="@+id/feedback_body_layout"
-                android:orientation="vertical"
-                android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="100dp">
+                android:minHeight="100dp"
+                android:orientation="vertical"
+                android:padding="5dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/review_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:ellipsize="marquee"
                     android:gravity="center"
+                    android:singleLine="true"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/review_question"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-                    tools:text="Question"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    tools:text="Question" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#FFF"
-                    android:layout_marginTop="5dp"
                     android:id="@+id/review_value"
-                    tools:text="Value"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:textColor="#FFF"
+                    android:textSize="18sp"
+                    tools:text="Value" />
 
             </LinearLayout>
         </RelativeLayout>
@@ -59,54 +78,55 @@
             android:id="@+id/review_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:elevation="5dp"
+            android:layout_above="@+id/dialog_body"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:adjustViewBounds="true"
             android:layout_marginBottom="-20dp"
-            android:src="@drawable/reviewdialog_round_icon"
-            android:layout_above="@+id/dialog_body" />
+            android:adjustViewBounds="true"
+            android:elevation="5dp"
+            android:src="@drawable/reviewdialog_round_icon" />
 
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/dialog_action"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:weightSum="3"
         android:background="#FFF"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <LinearLayout
             android:id="@+id/postive_feedback_layout"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="20dp"
+            android:background="@drawable/reviewdialog_review_action_ripple"
             android:clickable="true"
             android:focusable="true"
-            android:background="@drawable/reviewdialog_review_action_ripple"
-            android:layout_height="match_parent">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/postive_feedback_icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/reviewdialog_ic_accept_action"
-                android:tint="@color/brand_green" />
+                android:tint="@color/brand_green"
+                app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/positive_feedback_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="YES"
-                android:singleLine="true"
+                android:layout_marginTop="5dp"
                 android:ellipsize="end"
                 android:gravity="center"
-                android:textColor="#000"
+                android:singleLine="true"
                 android:textAllCaps="true"
-                android:layout_marginTop="5dp"
-                />
+                android:textColor="#000"
+                tools:text="YES" />
         </LinearLayout>
 
         <LinearLayout
@@ -125,8 +145,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/reviewdialog_ic_ambiguity_action"
-                android:tint="@color/gray" />
+                android:tint="@color/gray"
+                app:srcCompat="@drawable/ic_baseline_help_24" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/ambiguity_feedback_text"
@@ -146,33 +166,33 @@
         <LinearLayout
             android:id="@+id/negative_feedback_layout"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="20dp"
+            android:background="@drawable/reviewdialog_review_action_ripple"
             android:clickable="true"
             android:focusable="true"
-            android:background="@drawable/reviewdialog_review_action_ripple"
-            android:layout_height="match_parent">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/negative_feedback_icon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/reviewdialog_ic_cancel_action"
+                app:srcCompat="@drawable/ic_baseline_cancel_24"
                 android:tint="@color/brand_red" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/negative_feedback_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="NO"
-                android:textAllCaps="true"
-                android:singleLine="true"
+                android:layout_marginTop="5dp"
                 android:ellipsize="end"
                 android:gravity="center"
+                android:singleLine="true"
+                android:textAllCaps="true"
                 android:textColor="#000"
-                android:layout_marginTop="5dp"
-                />
+                tools:text="NO" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

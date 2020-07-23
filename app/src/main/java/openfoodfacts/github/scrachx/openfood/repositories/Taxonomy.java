@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.repositories;
 
 import android.content.SharedPreferences;
@@ -12,6 +28,7 @@ import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.Additive;
 import openfoodfacts.github.scrachx.openfood.models.Allergen;
@@ -104,22 +121,25 @@ public enum Taxonomy {
      * @return lastModifierDate     The timestamp of the last changes date of the taxonomy.json on OF server
      *     Or TAXONOMY_NO_INTERNET if there is no connexion.
      */
-    private static long getLastModifiedDateFromServer(Taxonomy taxonomy) {
-        long lastModifiedDate;
-        try {
-            String baseUrl = BuildConfig.OFWEBSITE;
-            URL url = new URL(baseUrl + taxonomy.getJsonUrl());
-            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-            lastModifiedDate = httpCon.getLastModified();
-            httpCon.disconnect();
-        } catch (IOException e) {
-            //Problem
-            Log.e(Taxonomy.class.getName(), "getLastModifiedDate", e);
-            Log.i(Taxonomy.class.getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
-            return TAXONOMY_NO_INTERNET;
-        }
-        Log.i(Taxonomy.class.getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
-        return lastModifiedDate;
+    private static Single<Long> getLastModifiedDateFromServer(Taxonomy taxonomy) {
+        // TODO: better approach
+        return Single.fromCallable(() -> {
+            long lastModifiedDate;
+            try {
+                String baseUrl = BuildConfig.OFWEBSITE;
+                URL url = new URL(baseUrl + taxonomy.getJsonUrl());
+                HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+                lastModifiedDate = httpCon.getLastModified();
+                httpCon.disconnect();
+            } catch (IOException e) {
+                //Problem
+                Log.e(Taxonomy.class.getName(), "getLastModifiedDate", e);
+                Log.i(Taxonomy.class.getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
+                return TAXONOMY_NO_INTERNET;
+            }
+            Log.i(Taxonomy.class.getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
+            return lastModifiedDate;
+        });
     }
 
     /**
@@ -147,13 +167,15 @@ public enum Taxonomy {
             //Taxonomy is marked to be download
             if (DaoUtils.isDaoEmpty(dao)) {
                 //Table is empty, no check for update, just load taxonomy
-                long lastModifiedDate = getLastModifiedDateFromServer(this);
+                long lastModifiedDate = getLastModifiedDateFromServer(this)
+                    .subscribeOn(Schedulers.io()).blockingGet();
                 if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
                     return DaoUtils.logDownload(load(repository, lastModifiedDate), this);
                 }
             } else if (checkUpdate) {
                 //It is ask to check for update - Test if file on server is more recent than last download.
-                long lastModifiedDateFromServer = getLastModifiedDateFromServer(this);
+                long lastModifiedDateFromServer = getLastModifiedDateFromServer(this)
+                    .subscribeOn(Schedulers.io()).blockingGet();
                 if (forceUpdate || lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > lastDownloadFromSettings) {
                     return DaoUtils.logDownload(load(repository, lastModifiedDateFromServer), this);
                 }

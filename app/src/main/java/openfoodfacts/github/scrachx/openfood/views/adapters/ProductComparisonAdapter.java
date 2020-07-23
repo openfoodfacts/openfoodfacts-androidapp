@@ -19,6 +19,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
 import android.util.TypedValue;
@@ -196,12 +197,12 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         }
 
         // Open Food Facts specific
-        if (Utils.isFlavor(AppFlavors.OFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             // NutriScore
-            int nutritionGradeResource = Utils.getImageGrade(product);
-            if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
+            final Drawable nutritionGradeResource = Utils.getImageGradeDrawable(context, product);
+            if (nutritionGradeResource != null) {
                 holder.productComparisonImageGrade.setVisibility(View.VISIBLE);
-                holder.productComparisonImageGrade.setImageResource(nutritionGradeResource);
+                holder.productComparisonImageGrade.setImageDrawable(nutritionGradeResource);
             } else {
                 holder.productComparisonImageGrade.setVisibility(View.INVISIBLE);
             }

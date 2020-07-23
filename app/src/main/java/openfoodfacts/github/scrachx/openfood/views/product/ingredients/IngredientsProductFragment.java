@@ -57,7 +57,6 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
@@ -72,6 +71,7 @@ import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
+import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -83,12 +83,10 @@ import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivit
 import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.EMPTY;
-import static openfoodfacts.github.scrachx.openfood.utils.ProductInfoState.LOADING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View, PhotoReceiver {
+public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     private static final int EDIT_REQUEST_CODE = 2;
@@ -140,7 +138,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         binding.extractIngredientsPrompt.setOnClickListener(v -> extractIngredients());
         binding.imageViewIngredients.setOnClickListener(v -> openFullScreen());
 
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(this::onPhotoReturned);
         refreshView(activityState);
     }
 
@@ -373,7 +371,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     @Override
-    public void showAdditivesState(String state) {
+    public void showAdditivesState(ProductInfoState state) {
         switch (state) {
             case LOADING:
                 binding.cvTextAdditiveProduct.setVisibility(View.VISIBLE);
@@ -415,7 +413,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             return;
         }
         final ViewPager2 viewPager = getActivity().findViewById(R.id.pager);
-        if (Utils.isFlavor(AppFlavors.OFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
             final String login = settings.getString("user", "");
             if (login.isEmpty()) {
@@ -430,21 +428,21 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 }
             }
         }
-        if (Utils.isFlavor(AppFlavors.OPFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OPFF)) {
             viewPager.setCurrentItem(4);
         }
 
-        if (Utils.isFlavor(AppFlavors.OBF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
             viewPager.setCurrentItem(1);
         }
 
-        if (Utils.isFlavor(AppFlavors.OPF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OPF)) {
             viewPager.setCurrentItem(0);
         }
     }
 
     @Override
-    public void showAllergensState(String state) {
+    public void showAllergensState(ProductInfoState state) {
         switch (state) {
             case LOADING:
                 binding.textSubstanceProduct.setVisibility(View.VISIBLE);
@@ -469,7 +467,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     void novaMethodLinkDisplay() {
         if (activityState != null && activityState.getProduct() != null && activityState.getProduct().getNovaGroups() != null) {
             Uri uri = Uri.parse(getString(R.string.url_nova_groups));
-            CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+            CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
             CustomTabActivityHelper.openCustomTab(requireActivity(), tabsIntent, uri, new WebViewFallback());
         }
     }

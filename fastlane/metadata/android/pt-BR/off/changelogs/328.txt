@@ -1,2 +1,2 @@
-1. Novo: Agora você pode ver se os produtos são veganos ou vegetarianos e se contêm óleo de palma, com base em sua lista de ingredientes. Mais análises serão adicionadas com o tempo. Envie um e-mail dizendo o que mais você gostaria de ver :-) 
-2. Limpeza com correções para vários problemas que você relatou para contact@openfoodfacts.org
+1. Novo: Agora você pode ver se os produtos são veganos ou vegetarianos, e se contêm óleo de palma, com base em sua lista de ingredientes. Mais análises serão adicionadas com o tempo. Envie um e-mail dizendo o que mais você gostaria de ver :-) 
+2. Correção de diversos problemas enviados para contact@openfoodfacts.org

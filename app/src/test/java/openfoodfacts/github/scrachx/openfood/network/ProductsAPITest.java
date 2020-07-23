@@ -253,7 +253,8 @@ public class ProductsAPITest {
         assertProductsFound(response);
     }
 
-    private void assertProductsFound(Response<Search> response) {
+    private static void assertProductsFound(Response<Search> response) {
+        assertNotNull(response);
         assertTrue(response.isSuccessful());
         Search search = response.body();
 
@@ -263,9 +264,11 @@ public class ProductsAPITest {
         assertFalse(products.isEmpty());
     }
 
-    private void assertNoProductsFound(Response<Search> response) {
+    private static void assertNoProductsFound(Response<Search> response) {
+        assertNotNull(response);
         assertTrue(response.isSuccessful());
         Search search = response.body();
+        assertNotNull(search);
 
         List<Product> products = search.getProducts();
         assertTrue(products.isEmpty());

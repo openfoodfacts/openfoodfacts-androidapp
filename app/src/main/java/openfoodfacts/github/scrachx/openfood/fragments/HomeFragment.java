@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.SharedPreferences;
@@ -25,7 +41,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
@@ -39,16 +54,13 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
 
 /**
  * @see R.layout#fragment_home
  */
-public class HomeFragment extends NavigationBaseFragment implements CustomTabActivityHelper.ConnectionCallback {
+public class HomeFragment extends NavigationBaseFragment {
     private FragmentHomeBinding binding;
     private ProductsAPI apiClient;
     private SharedPreferences sp;
@@ -67,9 +79,9 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
 
         binding.tvDailyFoodFact.setOnClickListener(v -> setDailyFoodFact());
 
-        apiClient = new OpenFoodAPIClient(getActivity()).getRawAPI();
+        apiClient = new OpenFoodAPIClient(requireActivity()).getRawAPI();
         checkUserCredentials();
-        sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sp = PreferenceManager.getDefaultSharedPreferences(requireActivity());
     }
 
     @Override
@@ -84,7 +96,17 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         // chrome custom tab init
         CustomTabsIntent customTabsIntent;
         CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(this);
+        customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
+            @Override
+            public void onCustomTabsConnected() {
+
+            }
+
+            @Override
+            public void onCustomTabsDisconnected() {
+
+            }
+        });
         Uri dailyFoodFactUri = Uri.parse(taglineURL);
         customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null);
 
@@ -106,37 +128,29 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         String password = settings.getString("pass", "");
 
         if (!login.isEmpty() && !password.isEmpty()) {
-            apiClient.signIn(login, password, "Sign-in").enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                    String htmlNoParsed = null;
-                    try {
-                        htmlNoParsed = response.body().string();
-                    } catch (IOException e) {
-                        Log.e(HomeFragment.class.getSimpleName(), "signin", e);
-                    }
-                    if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
-                        || htmlNoParsed.contains("See you soon!"))) {
-                        settings.edit()
-                            .putString("user", "")
-                            .putString("pass", "")
-                            .apply();
+            compDisp.add(apiClient.signIn(login, password, "Sign-in").subscribe(response -> {
+                String htmlNoParsed = null;
+                try {
+                    htmlNoParsed = response.body().string();
+                } catch (IOException e) {
+                    Log.e(HomeFragment.class.getSimpleName(), "signin", e);
+                }
+                if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
+                    || htmlNoParsed.contains("See you soon!"))) {
+                    settings.edit()
+                        .putString("user", "")
+                        .putString("pass", "")
+                        .apply();
 
-                        if (getActivity() != null) {
-                            new MaterialDialog.Builder(getActivity())
-                                .title(R.string.alert_dialog_warning_title)
-                                .content(R.string.alert_dialog_warning_msg_user)
-                                .positiveText(R.string.txtOk)
-                                .show();
-                        }
+                    if (getActivity() != null) {
+                        new MaterialDialog.Builder(getActivity())
+                            .title(R.string.alert_dialog_warning_title)
+                            .content(R.string.alert_dialog_warning_msg_user)
+                            .positiveText(R.string.txtOk)
+                            .show();
                     }
                 }
-
-                @Override
-                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                    Log.e(HomeFragment.class.getName(), "Unable to Sign-in");
-                }
-            });
+            }, throwable -> Log.e(HomeFragment.class.getName(), "Unable to Sign-in", throwable)));
         }
     }
 
@@ -212,21 +226,11 @@ public class HomeFragment extends NavigationBaseFragment implements CustomTabAct
         }
     }
 
-    @Override
-    public void onCustomTabsConnected() {
-
-    }
-
-    @Override
-    public void onCustomTabsDisconnected() {
-
-    }
-
     /**
      * get tag line url from OpenFoodAPIService
      */
     private void refreshTagline() {
-        compDisp.add(apiClient.getTaglineSingle(Utils.getUserAgent())
+        compDisp.add(apiClient.getTagline(Utils.getUserAgent())
             .subscribeOn(Schedulers.io()) // io for network
             .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
             .subscribe(models -> {

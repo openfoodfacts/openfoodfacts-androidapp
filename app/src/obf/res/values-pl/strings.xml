@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Food Facts to otwarta baza danych ponad %1$d produktów spożywczych (również tych dodanych przez ciebie) zawierająca składniki odżywcze, alergeny, wskazówki dietetyczne oraz inne ciekawe informacje jakie można znaleźć na etykietach produktów.</string>
+    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$d cosmetic products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Beauty Facts jest bazą danych kosmetyków, ich składników, alergenów oraz innych informacji z etykiet.</string>
     <string name="slide_1_title">Przyczyń się do przejrzystości Kosmetyków</string>
     <string name="slide_1_desc">Skanuj produkty, rób ich zdjęcia, niech się dzieje przezroczystość kosmetyczna</string>
@@ -28,11 +28,11 @@
     <string name="translate_help_title">Wspomóż tłumaczenie Open Beauty Facts</string>
     <string name="translate_help_summary">Wprowadź bazę danych Open Beauty Facts do twojego języka - nie wymagamy wiedzy technicznej</string>
     <string name="text_offline_info_dialog">Skanuj nawet w trybie offline, dodasz je później do Open Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mogła wysłać je poniższym przyciskiem.</string>
-    <string name="warning_alert_data">Informacja o twoich uczuleniach nie trafi na serwer Open Beaty Facts. Uważaj na niedokładne dane produktów oraz niedoskonałość wykrywania. Sprawdzaj dwa razy! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
-    <string name="tagline">ogólnodostępna baza danych o kosmetykach</string>
-    <string name="product_not_found">Zeskanowany produkt %1$s, jeszcze nie figuruje w Open Beauty Facts. Dodać go?</string>
+    <string name="tagline">the free cosmetics database</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
     <string name="currently_on_version">Aktualnie na Otwartych faktach o piękności</string>
     <string name="category_game_btn">Pomóż kategoryzować produkty</string>
     <!-- TODO add true support instead of overriding strings -->

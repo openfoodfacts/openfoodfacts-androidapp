@@ -98,11 +98,11 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
 
         // Add Ingredients fragment for off, obf and opff
-        if (AppFlavors.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
             adapter.addFragment(applyBundle(new IngredientsProductFragment(), fBundle), menuTitles[1]);
         }
 
-        if (Utils.isFlavor(AppFlavors.OFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             adapter.addFragment(applyBundle(new NutritionProductFragment(), fBundle), menuTitles[2]);
             if ((state.getProduct().getNutriments() != null &&
                 state.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
@@ -112,17 +112,17 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             if (isPhotoMode(activity)) {
                 adapter.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
             }
-        } else if (Utils.isFlavor(AppFlavors.OPFF)) {
+        } else if (AppFlavors.isFlavors(AppFlavors.OPFF)) {
             adapter.addFragment(applyBundle(new NutritionProductFragment(), fBundle), menuTitles[2]);
             if (isPhotoMode(activity)) {
                 adapter.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
             }
-        } else if (Utils.isFlavor(AppFlavors.OBF)) {
+        } else if (AppFlavors.isFlavors(AppFlavors.OBF)) {
             if (isPhotoMode(activity)) {
                 adapter.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
             }
             adapter.addFragment(applyBundle(new IngredientsAnalysisProductFragment(), fBundle), newMenuTitles[1]);
-        } else if (Utils.isFlavor(AppFlavors.OPF)) {
+        } else if (AppFlavors.isFlavors(AppFlavors.OPF)) {
             adapter.addFragment(applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
         }
 

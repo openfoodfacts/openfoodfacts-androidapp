@@ -11,19 +11,18 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
+import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
 
@@ -34,15 +33,22 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ImagesAdapter;
 public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter.OnImageClickInterface {
     private OpenFoodAPIClient openFoodAPIClient;
     private Product product;
-    // A Array list to store image names
-    private ArrayList<String> imageNames;
+    private final CompositeDisposable disp = new CompositeDisposable();
     private RecyclerView imagesRecycler;
     private ImagesAdapter adapter;
+    // A Array list to store image names
+    private List<String> imageNames;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         openFoodAPIClient = new OpenFoodAPIClient(requireActivity());
         return inflater.inflate(R.layout.fragment_product_photos, container, false);
+    }
+
+    @Override
+    public void onDestroy() {
+        disp.dispose();
+        super.onDestroy();
     }
 
     @Override
@@ -54,50 +60,17 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
         imageNames = new ArrayList<>();
         imagesRecycler = view.findViewById(R.id.imagesRecycler);
 
-        openFoodAPIClient.getImages(product.getCode(), (value, response) -> {
-
-            if (value && response != null) {
-
-                // a json object referring to base json object
-                JSONObject jsonObject = Utils.createJsonObject(response);
-
-                // a json object referring to images
-                JSONObject images = null;
-                try {
-                    images = jsonObject.getJSONObject("product").getJSONObject("images");
-                } catch (JSONException e) {
-                    Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
-                }
-                if (images != null) {
-                    final JSONArray names = images.names();
-                    if (names != null) {
-                        // loop through all the image names and store them in a array list
-                        for (int i = 0; i < names.length(); i++) {
-                            try {
-                                // do not include images with contain nutrients,ingredients or other in their names
-                                // as they are duplicate and do not load as well
-                                final String namesString = names.getString(i);
-                                if (namesString.contains("n") ||
-                                    namesString.contains("f") ||
-                                    namesString.contains("i") ||
-                                    namesString.contains("o")) {
-
-                                    continue;
-                                }
-                                imageNames.add(namesString);
-                            } catch (JSONException e) {
-                                Log.w(ProductPhotosFragment.class.getSimpleName(), "can't get product / images in json", e);
-                            }
-                        }
-                    }
-                }
+        disp.add(openFoodAPIClient.getRawAPI().getProductImages(product.getCode())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(node -> {
+                imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(node);
 
                 //Check if user is logged in
                 adapter = new ImagesAdapter(getContext(), imageNames, product.getCode(), ProductPhotosFragment.this, product, isUserLoggedIn());
+
                 imagesRecycler.setAdapter(adapter);
                 imagesRecycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
-            }
-        });
+            }, e -> Log.e(ProductPhotosFragment.class.getSimpleName(), "cannot download images from server", e)));
     }
 
     /**

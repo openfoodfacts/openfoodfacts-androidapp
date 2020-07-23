@@ -16,8 +16,8 @@
   -->
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="one"> మీకు 1 ఆఫ్లైన్ ఉత్పత్తిని ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్కు అందించడానికి వేచి ఉన్నాయి</item>
-        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">1 second ago</item>
@@ -25,15 +25,15 @@
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minute ago</item>
-        <item quantity="other">%d నిమిషాల క్రితం</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
         <item quantity="one">1 hour ago</item>
-        <item quantity="other">%d గంటల క్రితం</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
         <item quantity="one">1 day ago</item>
-        <item quantity="other">%d రోజుల క్రితం</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">గురించి</string>
     <string name="action_discover">కనుగొనండి</string>
@@ -159,7 +159,7 @@
     <string name="search_button">Search</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">వాడుకరి / పాస్వర్డ్ మార్చబడింది, దయచేసి సమాచారం అప్డేట్ చేయండి</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">బార్కోడ్:</string>
     <string name="txtCategories">వర్గాలు :</string>
     <string name="txtLabels">లేబుళ్ళు, ధృవపత్రాలు, అవార్డులు:</string>
@@ -199,8 +199,8 @@
     <string name="hintBrand">బ్రాండ్</string>
     <string name="txtSendAll">అన్నింటినీ అప్లోడ్ చేయండి</string>
     <string name="txtPictureNeededDialogNo">విస్మరించు</string>
-    <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
+    <string name="toastSending">Uploading...</string>
+    <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -231,7 +231,7 @@
     <string name="cancel_button">రద్దుచేయి</string>
     <string name="login_button">లాగిన్</string>
     <string name="create_account_button">ఖాతాను సృష్టించండి</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">ఇది ఎలా పని చేస్తుంది?</string>
     <string name="text_offline_info_dialog">మీరు తరువాత ఆఫ్లైన్ ఫుడ్ ఫాక్స్ను తెరిచేందుకు వాటిని జోడించేటప్పుడు ఉత్పత్తులను స్కాన్ చేయవచ్చు. మీరు స్కాన్ చేసిన అన్ని ఉత్పత్తులు ఇక్కడ కనిపిస్తాయి, మరియు మీరు క్రింద ఉన్న బటన్ను ఉపయోగించి వాటిని పంపవచ్చు.</string>
     <string name="permission_camera">బార్కోడ్లను స్కాన్ చేసి చిత్రాలను తీయడానికి కెమెరా అనుమతి అవసరం.</string>
@@ -263,13 +263,13 @@
     <string name="title_clear_history_dialog">తొలగింపు పూర్తయింది</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">ఎగుమతి CSV</string>
-    <string name="txt_exporting_history">Exporting history…</string>
+    <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">చరిత్ర ఎగుమతి చేయబడింది</string>
     <string name="permision_write_external_storage">చరిత్ర ఎగుమతి చేయడానికి బాహ్య నిల్వ అనుమతిని వ్రాయండి.</string>
     <string name="no_brand">బ్రాండ్ లేదు</string>
     <string name="no_title">శీర్షిక లేదు</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">ఈ ఉత్పత్తి యొక్క %1$s కోసం న్యూట్రిషన్ ఫాక్ట్స్ టేబుల్</string>
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Check</string>
     <string name="nutrition">Nutrition</string>
     <string name="calculated_nutrition">గణించిన న్యూట్రిషన్</string>
@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">సాధారణం</string>
     <string name="preference_header_network">నెట్‌వర్క్</string>
     <string name="preference_header_contributing">తోడ్పడింది</string>
@@ -537,8 +537,8 @@
         <item quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">ఈ ఉత్పత్తి ఇంకా పూర్తి కాలేదు. \nమీరు కొన్ని వివరాలను చేర్చవచ్చా?</string>
-    <string name="addProductOffline">మీరు ఆఫ్లైన్లో ఉన్నారు. ఉత్పత్తి జోడించు %s ఆఫ్లైన్ మోడ్ ఉపయోగించి?</string>
-    <string name="product_not_found">ఉత్పత్తి %1$s మీరు స్కాన్ లో ఓపెన్ ఆహార వాస్తవాలు ఇంకా ఉనికిలో లేదు. మీరు దీన్ని జోడించవచ్చా?</string>
+    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">ధ్వనిని స్కాన్ చేయండి</string>
     <string name="trouble_scanning">Trouble Scanning?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
@@ -547,7 +547,7 @@
     <string name="initial_loading">Initial loading</string>
     <string name="preferences">ప్రాధాన్యతలు</string>
     <string name="OFFlogo">ఓపెన్ ఫుడ్ ఫ్యాక్ట్స్ లోగో</string>
-    <string name="loading_product">ఉత్పత్తిని లోడ్ చేస్తోంది %s</string>
+    <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">ఉత్పత్తి పదార్ధాలను జోడించడానికి ప్రయత్నిస్తున్నప్పుడు ఏదో తప్పు జరిగింది</string>
     <string name="unable_to_extract_ingredients">చిత్రం నుండి పదార్ధాలను సేకరించడం సాధ్యం కాదు</string>
@@ -656,7 +656,7 @@
     <string name="some_people">Some people\n(over 5%)</string>
     <string name="safety_and_exposure_assessment">భద్రత మరియు ఎక్స్పోజర్ అంచనా</string>
     <string name="risk_of_exposure">ఎక్స్పోజర్ ప్రమాదం</string>
-    <string name="efsa_warning_high_risk">యూరోపియన్ ఫుడ్ సేఫ్టీ అథారిటి (EFS ఏ) కొన్ని జనాభా సమూహాలు వినియోగించే చాలా యొక్క అధిక ప్రమాదాన్ని కలిగి నిర్ణయించింది %1$s.</string>
+    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">గమనించిన ప్రతికూల ప్రభావంతో NO మోడల్ పైన (NOAEL)</string>
     <string name="legend_adi">acceptable డైలీ తీసుకోవడం పైన (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
@@ -757,7 +757,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

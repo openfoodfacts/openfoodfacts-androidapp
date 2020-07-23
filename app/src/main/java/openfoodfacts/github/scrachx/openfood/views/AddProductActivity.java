@@ -204,7 +204,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private static boolean isNutritionDataAvailable() {
-        return AppFlavors.isFlavor(AppFlavors.OFF, AppFlavors.OPFF);
+        return AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OPFF);
     }
 
     public Map<String, String> getInitialValues() {
@@ -304,7 +304,7 @@ public class AddProductActivity extends AppCompatActivity {
         if (isNutritionDataAvailable()) {
             addProductNutritionFactsFragment.setArguments(fragmentsBundle);
             adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
-        } else if (AppFlavors.isFlavor(AppFlavors.OBF, AppFlavors.OPF)) {
+        } else if (AppFlavors.isFlavors(AppFlavors.OBF, AppFlavors.OPF)) {
             binding.textNutritionFactsIndicator.setText(R.string.photos);
             addProductPhotosFragment.setArguments(fragmentsBundle);
             adapterResult.addFragment(addProductPhotosFragment, "Photos");

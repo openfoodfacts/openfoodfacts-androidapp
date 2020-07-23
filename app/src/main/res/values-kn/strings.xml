@@ -16,8 +16,8 @@
   -->
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other"> ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ಗೆ ಕೊಡುಗೆ ನೀಡಲು ನೀವು ಕಾಯುತ್ತಿರುವ %d ಆಫ್ಲೈನ್ ​​ಉತ್ಪನ್ನಗಳನ್ನು ಹೊಂದಿದ್ದೀರಿ</item>
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">1 second ago</item>
@@ -25,15 +25,15 @@
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minute ago</item>
-        <item quantity="other">%d ನಿಮಿಷಗಳ ಹಿಂದೆ</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
         <item quantity="one">1 hour ago</item>
-        <item quantity="other">%d ಗಂಟೆಗಳ ಹಿಂದೆ</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
         <item quantity="one">1 day ago</item>
-        <item quantity="other">%d ದಿನಗಳ ಹಿಂದೆ</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">ಬಗ್ಗೆ</string>
     <string name="action_discover">ಅನ್ವೇಷಿಸಿ</string>
@@ -159,7 +159,7 @@
     <string name="search_button">ಹುಡುಕಿ</string>
     <string name="alert_dialog_warning_title">ಎಚ್ಚರಿಕೆ</string>
     <string name="alert_dialog_warning_msg_user">ಬಳಕೆದಾರ / ಪಾಸ್ವರ್ಡ್ ಬದಲಾಗಿದೆ, ದಯವಿಟ್ಟು ಮಾಹಿತಿಯನ್ನು ನವೀಕರಿಸಿ</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">ಬಾರ್‌ ಕೋಡ್:</string>
     <string name="txtCategories">ವರ್ಗಗಳು:</string>
     <string name="txtLabels">ಲೇಬಲ್ಗಳು, ಪ್ರಮಾಣೀಕರಣಗಳು, ಪ್ರಶಸ್ತಿಗಳು:</string>
@@ -199,8 +199,8 @@
     <string name="hintBrand">ಬ್ರ್ಯಾಂಡ್</string>
     <string name="txtSendAll">ಎಲ್ಲವನ್ನೂ ಅಪ್ಲೋಡ್ ಮಾಡಿ</string>
     <string name="txtPictureNeededDialogNo">ತಿರಸ್ಕರಿಸು</string>
-    <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
+    <string name="toastSending">Uploading...</string>
+    <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">ಈ ಫೋಲ್ಡರ್ ತೆಗೆದುಹಾಕುವ ನಿಮ್ಮ ಬಯಕೆ ಖಚಿತವೆ?</string>
     <string name="txtDialogsContentInfoSave">ಉತ್ಪನ್ನವನ್ನು ಸ್ಥಳೀಯವಾಗಿ ಉಳಿಸಲಾಗಿದೆ, ನೀವು ಅದನ್ನು \"ಆಫ್ಲೈನ್ ​​ಸಂಪಾದಿಸು\" ಮೆನುವಿನಲ್ಲಿ ಸಂಪಾದಿಸಬಹುದು</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">ಲಾಗಿನ್</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">ನಿಮ್ಮ ಅಲರ್ಜಿಯ ಮಾಹಿತಿಯನ್ನು ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಸರ್ವರ್ಗೆ ಎಂದಿಗೂ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ. ಅಲ್ಲದೆ, ಉತ್ಪನ್ನ ಡೇಟಾ ನಿಖರವಾಗಿರದಿರಬಹುದು ಮತ್ತು ಎಚ್ಚರಿಕೆಯು 100% ನಿಖರವಾಗಿರದಿರಬಹುದು ಎಂದು ಎಚ್ಚರಿಕೆಯಿಂದಿರಿ, ಆದ್ದರಿಂದ ದಯವಿಟ್ಟು ನಿಮ್ಮಿಂದ ಎರಡು ಬಾರಿ ಪರಿಶೀಲಿಸಿ! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ?</string>
     <string name="text_offline_info_dialog">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗ ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಲು ಅವುಗಳನ್ನು ಸೇರಿಸಲು ನೀವು ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಬಹುದು. ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡುವ ಎಲ್ಲಾ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ, ಮತ್ತು ನೀವು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
     <string name="permission_camera">ಬಾರ್ಕೋಡ್ಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಕ್ಯಾಮೆರಾ ಅನುಮತಿ ಅಗತ್ಯವಿದೆ.</string>
@@ -263,13 +263,13 @@
     <string name="title_clear_history_dialog">ತೆರವು ಮಾಡಿ</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">CSV ರಫ್ತು ಮಾಡಿ</string>
-    <string name="txt_exporting_history">Exporting history…</string>
+    <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">ಇತಿಹಾಸವನ್ನು ರಫ್ತು ಮಾಡಲಾಗಿದೆ</string>
     <string name="permision_write_external_storage">ಇತಿಹಾಸವನ್ನು ರಫ್ತು ಮಾಡಲು ಬಾಹ್ಯ ಸಂಗ್ರಹಣೆ ಅನುಮತಿ ಬರೆಯಿರಿ.</string>
     <string name="no_brand">ಯಾವುದೇ ಬ್ರ್ಯಾಂಡ್ ಇಲ್ಲ</string>
     <string name="no_title">ಶೀರ್ಷಿಕೆಯಿಲ್ಲ</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">ಈ ಉತ್ಪನ್ನದ %1$s ಗಾಗಿ ಪೌಷ್ಟಿಕಾಂಶ ಫ್ಯಾಕ್ಟ್ಸ್ ಟೇಬಲ್</string>
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">ಪರಿಶೀಲಿಸಿ</string>
     <string name="nutrition">ಪೋಷಣೆ</string>
     <string name="calculated_nutrition">ಲೆಕ್ಕಹಾಕಿದ ನ್ಯೂಟ್ರಿಷನ್</string>
@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">ಸಾಮಾನ್ಯ</string>
     <string name="preference_header_network">ನೆಟ್ವರ್ಕ್</string>
     <string name="preference_header_contributing">ಕೊಡುಗೆಗಳು</string>
@@ -519,8 +519,8 @@
     <string name="notify_channel_description">ರಫ್ತು ಮಾಡಿದ ಕಡತದ ಸ್ಥಳವನ್ನು ತೋರಿಸಲು ಅಧಿಸೂಚನೆ</string>
     <string name="products_to_be_completed">ಉತ್ಪನ್ನಗಳು ಪೂರ್ಣಗೊಳ್ಳಬೇಕು</string>
     <string name="offline_notification_title">ಆಫ್ಲೈನ್ ​​ಕೊಡುಗೆಗಳನ್ನು ನೀವು ಕಳುಹಿಸಬೇಕು</string>
-    <string name="creator_history">%2$s CET ನಲ್ಲಿ ಉತ್ಪನ್ನವು %1$s ರಲ್ಲಿ ಸೇರಿಸಲ್ಪಟ್ಟಿದೆ</string>
-    <string name="last_editor_history">ಕೊನೆಯ ಸಂಪಾದನೆಯನ್ನು ಉತ್ಪನ್ನ ಪುಟದ %1$s ನಲ್ಲಿ %2$s CEST ಮೂಲಕ </string>
+    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">ಉತ್ಪನ್ನ ಪುಟವು ಸಹ ಸಂಪಾದಿಸಿದೆ </string>
     <string name="contribution_tab">ಕೊಡುಗೆಗಳು</string>
     <string name="contribution_tab_summary">ಉತ್ಪನ್ನಗಳೊಂದಿಗೆ ಬಳಕೆದಾರ ಕೊಡುಗೆಗಳ ಟ್ಯಾಬ್ ಅನ್ನು ತೋರಿಸಿ</string>
@@ -537,8 +537,8 @@
         <item quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">ಈ ಉತ್ಪನ್ನ ಇನ್ನೂ ಪೂರ್ಣಗೊಂಡಿಲ್ಲ. \ n ನೀವು ಕೆಲವು ವಿವರಗಳನ್ನು ಸೇರಿಸಬಹುದೇ?</string>
-    <string name="addProductOffline">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿ ಕಾಣಿಸುತ್ತಿದ್ದೀರಿ. ಆಫ್ಲೈನ್ ​​ಮೋಡ್ ಬಳಸಿಕೊಂಡು ಉತ್ಪನ್ನ %s ಸೇರಿಸಿ?</string>
-    <string name="product_not_found">ಉತ್ಪನ್ನದ %1$s ನೀವು ಸ್ಕ್ಯಾನ್ ಓಪನ್ ಆಹಾರ ಫ್ಯಾಕ್ಟ್ಸ್ ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ನೀವು ಅದನ್ನು ಸೇರಿಸಬಹುದೇ?</string>
+    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">ಸ್ಕ್ಯಾನ್ ಸೌಂಡ್</string>
     <string name="trouble_scanning">ತೊಂದರೆ ಸ್ಕ್ಯಾನಿಂಗ್?</string>
     <string name="barcode_hint">ತೊಂದರೆ ಸ್ಕ್ಯಾನಿಂಗ್? ಬಾರ್ಕೋಡ್ ನಮೂದಿಸಿ</string>
@@ -547,7 +547,7 @@
     <string name="initial_loading">ಆರಂಭಿಕ ಲೋಡ್</string>
     <string name="preferences">ಆದ್ಯತೆಗಳು</string>
     <string name="OFFlogo">ಆಹಾರ ಸಂಗತಿಗಳು ತೆರೆಯಿರಿ</string>
-    <string name="loading_product">ಉತ್ಪನ್ನವನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ %s</string>
+    <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">ಉತ್ಪನ್ನ ಪದಾರ್ಥಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
     <string name="unable_to_extract_ingredients">ಚಿತ್ರದಿಂದ ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
@@ -568,7 +568,7 @@
     <string name="keep_previous_version">ಹಿಂದಿನ ಆವೃತ್ತಿಯನ್ನು ಇರಿಸಿಕೊಳ್ಳಿ</string>
     <string name="product_name_overwrite">ಉತ್ಪನ್ನದ ಹೆಸರು ಬದಲಿಸಿ</string>
     <string name="yours">ನಿಮ್ಮದು: </string>
-    <string name="currently_on">ಪ್ರಸ್ತುತ %s: </string>
+    <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">ಪ್ರಮಾಣ ಬದಲಿಸಿ</string>
     <string name="link_overwrite">ಲಿಂಕ್ ಬದಲಿಸಿ</string>
     <string name="save_product">ಉತ್ಪನ್ನವನ್ನು ಉಳಿಸಲು ನೀವು ಬಯಸುವಿರಾ?</string>
@@ -631,7 +631,7 @@
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">ಉದಾಹರಣೆಗಳು: 2 ಎಲ್, 250 ಗ್ರಾಂ, 1 ಕೆಜಿ, 25 ಕ್ಲಾ, 6 ಫ್ಲ್ ಔಜ್, 1 ಪೌಂಡ್</string>
     <string name="edit_product_title">Edit a product</string>
-    <string name="nutrient_already_added">%s ಪೌಷ್ಟಿಕಾಂಶ ಸತ್ಯಗಳಲ್ಲಿ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ</string>
+    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
     <string name="save_edits">ಸಂಪಾದನೆಗಳನ್ನು ಉಳಿಸಿ</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">ಶೀರ್ಷಿಕೆ</string>
@@ -757,7 +757,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

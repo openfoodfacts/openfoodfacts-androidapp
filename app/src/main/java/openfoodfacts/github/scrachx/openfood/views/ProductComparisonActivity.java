@@ -13,19 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
-public class ProductComparisonActivity extends BaseActivity implements PhotoReceiver {
+public class ProductComparisonActivity extends BaseActivity {
     private ActivityProductComparisonBinding binding;
     private PhotoReceiverHandler photoReceiverHandler;
     private RecyclerView.Adapter<ProductComparisonAdapter.ProductComparisonViewHolder> productComparisonAdapter;
@@ -46,7 +44,7 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
         setTitle(getString(R.string.compare_products));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> ((ProductComparisonAdapter) productComparisonAdapter).setImageOnPhotoReturn(newPhotoFile));
 
         if (getIntent().getExtras() != null && getIntent().getBooleanExtra("product_found", false)) {
             products = (ArrayList<Product>) getIntent().getExtras().getSerializable("products_to_compare");
@@ -85,11 +83,6 @@ public class ProductComparisonActivity extends BaseActivity implements PhotoRece
         });
 
         BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
-    }
-
-    @Override
-    public void onPhotoReturned(File newPhotoFile) {
-        ((ProductComparisonAdapter) productComparisonAdapter).setImageOnPhotoReturn(newPhotoFile);
     }
 
     @Override

@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Red</string>
     <string name="preference_header_contributing">Contribuir</string>
@@ -586,7 +586,7 @@
     <string name="ingredients_picture">Imagen con los ingredientes del producto</string>
     <string name="take_ingredients_picture_to_extract">(Por favor, toma una foto de los ingredientes para extraerlos automáticamente)</string>
     <string name="ingredients_list">Lista de ingredientes</string>
-    <string name="ingredients_hint">Mantén el orden, indica el % cuando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
+    <string name="ingredients_hint">Mantén el orden, indica el [%s]uando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
     <string name="extract_ingredients">Extraer ingredientes</string>
     <string name="extracting_ingredients">Extrayendo los ingredientes</string>
     <string name="looksGood">Parece correcto</string>
@@ -793,4 +793,5 @@
     <string name="icon_emb">Icono de código EMB</string>
     <string name="product_front_image">Imagen frontal del producto</string>
     <string name="brand_hint">Ejemplos: CocaCola, Nestlé, etc.…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
 </resources>

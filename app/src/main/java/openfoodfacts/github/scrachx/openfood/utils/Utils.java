@@ -33,9 +33,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.BatteryManager;
-import android.os.Build;
 import android.os.Environment;
-import android.provider.Settings;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -56,6 +54,7 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 import androidx.work.Constraints;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.NetworkType;
@@ -259,18 +258,37 @@ public class Utils {
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                return R.drawable.nnc_a;
+                return R.drawable.ic_nutriscore_a;
             case "b":
-                return R.drawable.nnc_b;
+                return R.drawable.ic_nutriscore_b;
             case "c":
-                return R.drawable.nnc_c;
+                return R.drawable.ic_nutriscore_c;
             case "d":
-                return R.drawable.nnc_d;
+                return R.drawable.ic_nutriscore_d;
             case "e":
-                return R.drawable.nnc_e;
+                return R.drawable.ic_nutriscore_e;
             default:
                 return NO_DRAWABLE_RESOURCE;
         }
+    }
+
+    public static int getImageGrade(@Nullable Product product) {
+        return getImageGrade(product == null ? null : product.getNutritionGradeFr());
+    }
+
+    @Nullable
+    public static Drawable getImageGradeDrawable(@NonNull Context context, @Nullable String grade) {
+
+        int gradeID = getImageGrade(grade);
+        if (gradeID == NO_DRAWABLE_RESOURCE) {
+            return null;
+        }
+        return VectorDrawableCompat.create(context.getResources(), gradeID, null);
+    }
+
+    @Nullable
+    public static Drawable getImageGradeDrawable(@NonNull Context context, @Nullable Product product) {
+        return getImageGradeDrawable(context, product == null ? null : product.getNutritionGradeFr());
     }
 
     public static String getNovaGroupExplanation(@Nullable String novaGroup, @NonNull Context context) {
@@ -338,10 +356,6 @@ public class Utils {
         return getSmallImageGrade(product == null ? null : product.getNutritionGradeFr());
     }
 
-    public static int getImageGrade(Product product) {
-        return getImageGrade(product == null ? null : product.getNutritionGradeFr());
-    }
-
     public static int getImageEnvironmentImpact(Product product) {
         if (product == null) {
             return NO_DRAWABLE_RESOURCE;
@@ -372,19 +386,19 @@ public class Utils {
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                drawable = R.drawable.nnc_small_a;
+                drawable = R.drawable.ic_nutriscore_small_a;
                 break;
             case "b":
-                drawable = R.drawable.nnc_small_b;
+                drawable = R.drawable.ic_nutriscore_small_b;
                 break;
             case "c":
-                drawable = R.drawable.nnc_small_c;
+                drawable = R.drawable.ic_nutriscore_small_c;
                 break;
             case "d":
-                drawable = R.drawable.nnc_small_d;
+                drawable = R.drawable.ic_nutriscore_small_d;
                 break;
             case "e":
-                drawable = R.drawable.nnc_small_e;
+                drawable = R.drawable.ic_nutriscore_small_e;
                 break;
             default:
                 break;
@@ -483,23 +497,6 @@ public class Utils {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
         }
         return builder.build();
-    }
-
-    /**
-     * Check if airplane mode is turned on on the device.
-     *
-     * @param context of the application.
-     * @return true if airplane mode is active.
-     */
-    public static boolean isAirplaneModeActive(@NonNull Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
-        } else {
-            //noinspection deprecation
-            return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
-        }
     }
 
     public static boolean isUserLoggedIn(@NonNull Context context) {
@@ -696,10 +693,6 @@ public class Utils {
             }
         }
         return null;
-    }
-
-    public static boolean isFlavor(String flavor) {
-        return BuildConfig.FLAVOR.equals(flavor);
     }
 
     @NonNull
