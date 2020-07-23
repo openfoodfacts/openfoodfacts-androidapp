@@ -22,6 +22,12 @@ jobs:
         uses: eskatos/gradle-command-action@v1
         with:
           arguments: compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+          steps:
+            - name: Upload generated screenshots as build artefacts
+              uses: actions/upload-artifact@v2
+              with:
+                name: homework
+                path: math-homework.txt
 
       - name: Unit tests
         uses: eskatos/gradle-command-action@v1
