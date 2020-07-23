@@ -117,7 +117,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
-    private static final int LOGIN_GET_RESULT = 27;
     private OpenFoodAPIClient api;
     private WikiDataApiClient apiClientForWikiData;
     private String barcode;
@@ -146,7 +145,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         super.onAttach(context);
         customTabActivityHelper = new CustomTabActivityHelper();
         customTabActivityHelper.setConnectionCallback(this);
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
 
         presenter = new SummaryProductPresenter(product, this);
     }
@@ -425,7 +424,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.getNovaGroups()));
             binding.novaGroup.setOnClickListener(view1 -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
                 CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.requireActivity(), customTabsIntent, uri, new WebViewFallback());
             });
         } else {
