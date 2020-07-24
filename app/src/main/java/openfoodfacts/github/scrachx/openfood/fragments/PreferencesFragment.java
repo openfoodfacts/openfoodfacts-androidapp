@@ -44,6 +44,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
@@ -263,7 +264,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        CheckBoxPreference photoPreference = findPreference("photoMode");
+        SwitchPreference photoPreference = findPreference("photoMode");
         if (AppFlavors.isFlavors(AppFlavors.OPF)) {
             photoPreference.setVisible(false);
         }
