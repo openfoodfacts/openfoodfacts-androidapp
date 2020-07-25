@@ -44,6 +44,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
@@ -82,6 +83,7 @@ import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
 import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -263,10 +265,19 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        CheckBoxPreference photoPreference = findPreference("photoMode");
+        SwitchPreference photoPreference = findPreference("photoMode");
         if (AppFlavors.isFlavors(AppFlavors.OPF)) {
             photoPreference.setVisible(false);
         }
+
+        SwitchPreference analyticsReportingPreference = findPreference("privacyAnalyticsReporting");
+        analyticsReportingPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                AnalyticsService.getInstance().onAnalyticsEnabledToggled(newValue == Boolean.TRUE);
+                return true;
+            }
+        });
 
         // Preference to show version name
         Preference versionPref = findPreference("Version");

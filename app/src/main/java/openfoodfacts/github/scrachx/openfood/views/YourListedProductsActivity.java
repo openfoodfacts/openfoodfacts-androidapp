@@ -53,6 +53,8 @@ import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
 import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
@@ -216,6 +218,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                     }
                 } else {
                     exportCSV();
+                    AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ShoppingListExported());
                 }
                 return true;
             case R.id.action_sort_listed_products:

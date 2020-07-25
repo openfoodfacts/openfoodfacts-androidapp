@@ -65,6 +65,8 @@ import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
@@ -386,6 +388,12 @@ public class AddProductActivity extends AppCompatActivity {
             .show();
 
         Utils.hideKeyboard(this);
+
+        if (editingMode) {
+            AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ProductEdited(productDetails.get("code")));
+        } else {
+            AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ProductCreated(productDetails.get("code")));
+        }
 
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);

@@ -84,6 +84,7 @@ import openfoodfacts.github.scrachx.openfood.models.Tag;
 import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
 import openfoodfacts.github.scrachx.openfood.utils.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
@@ -547,6 +548,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showProductQuestion(Question question) {
         if (question != null && !question.isEmpty()) {
+            AnalyticsEvent.RobotoffSeen().track();
             productQuestion = question;
             binding.productQuestionText.setText(String.format("%s%n%s",
                 question.getQuestion(), question.getValue()));
@@ -574,18 +576,21 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 @Override
                 public void onPositiveFeedback(QuestionDialog dialog) {
                     //init POST request
+                    AnalyticsEvent.RobotoffAnsweredPositive().track();
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.POSITIVE);
                     dialog.dismiss();
                 }
 
                 @Override
                 public void onNegativeFeedback(QuestionDialog dialog) {
+                    AnalyticsEvent.RobotoffAnsweredNegative().track();
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.NEGATIVE);
                     dialog.dismiss();
                 }
 
                 @Override
                 public void onAmbiguityFeedback(QuestionDialog dialog) {
+                    AnalyticsEvent.RobotoffAnsweredAmbiguous().track();
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.AMBIGUITY);
                     dialog.dismiss();
                 }

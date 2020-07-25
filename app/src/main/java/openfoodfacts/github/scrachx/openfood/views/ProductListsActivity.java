@@ -57,6 +57,8 @@ import openfoodfacts.github.scrachx.openfood.models.ProductLists;
 import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
 import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
 import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -159,6 +161,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
                     dialog.dismiss();
                     return;
                 }
+                AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ShoppingListCreated());
                 final String listName = inputEditText.getText().toString();
                 ProductLists productList = new ProductLists(listName, productToAdd != null ? 1 : 0);
                 productLists.add(productList);

@@ -72,6 +72,8 @@ import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Units;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsView;
 import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader;
@@ -130,6 +132,12 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentAddProductNutritionFactsBinding.inflate(inflater);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        AnalyticsService.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_NUTRITION_FACTS);
     }
 
     @Override

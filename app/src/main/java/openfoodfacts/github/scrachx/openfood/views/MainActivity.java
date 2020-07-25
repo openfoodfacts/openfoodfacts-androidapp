@@ -112,6 +112,7 @@ import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
@@ -596,6 +597,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void logout() {
         getSharedPreferences("login", MODE_PRIVATE).edit().clear().apply();
         updateConnectedState();
+        AnalyticsEvent.UserLogout().track();
     }
 
     @Override

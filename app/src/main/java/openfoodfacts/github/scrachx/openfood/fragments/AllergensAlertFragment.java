@@ -52,6 +52,8 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAlertAllergensBinding;
 import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AllergensAdapter;
 
@@ -167,6 +169,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
                             mAllergensEnabled.add(allergens.get(position));
                             mAdapter.notifyItemInserted(mAllergensEnabled.size() - 1);
                             binding.allergensRecycle.scrollToPosition(mAdapter.getItemCount() - 1);
+                            AnalyticsService.getInstance().trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens.get(position).getAllergenTag()));
                         })
                         .show();
                 }, Throwable::printStackTrace));

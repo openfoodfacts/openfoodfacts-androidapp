@@ -134,8 +134,9 @@ dependencies {
     // UI Component : Chips Input
     implementation("com.hootsuite.android:nachos:1.2.0")
 
-    // Crash analytics
+    // Analytics
     implementation("io.sentry:sentry-android:2.2.2")
+    implementation("org.matomo.sdk:tracker:4.1.2")
 
     // Unit Testing
     testImplementation("junit:junit:4.13")

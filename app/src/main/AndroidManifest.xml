@@ -47,6 +47,7 @@
         <meta-data
             android:name="io.sentry.session-tracking.enable"
             android:value="true" />
+        <meta-data android:name="io.sentry.auto-init" android:value="false" />
 
         <!-- 18:9 aspect ratio support -->
         <meta-data

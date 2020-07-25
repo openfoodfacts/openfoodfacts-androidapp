@@ -59,6 +59,9 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsView;
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
@@ -100,6 +103,12 @@ public class AddProductIngredientsFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        AnalyticsService.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_INGREDIENTS);
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
@@ -112,6 +121,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
             if (activity instanceof AddProductActivity) {
                 ((AddProductActivity) activity).addToPhotoMap(image, 1);
             }
+            AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code));
             hideImageProgress(false, getString(R.string.image_uploaded_successfully));
         });
         binding.btnExtractIngredients.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_compare_arrows_black_18dp, 0, 0, 0);

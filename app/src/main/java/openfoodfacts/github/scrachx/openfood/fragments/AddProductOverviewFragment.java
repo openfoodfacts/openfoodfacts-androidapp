@@ -85,6 +85,8 @@ import openfoodfacts.github.scrachx.openfood.models.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsView;
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -131,6 +133,12 @@ public class AddProductOverviewFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         binding = FragmentAddProductOverviewBinding.inflate(inflater);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        AnalyticsService.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_OVERVIEW);
     }
 
     @Override

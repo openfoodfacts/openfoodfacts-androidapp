@@ -49,6 +49,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Retrofit;
@@ -226,6 +227,8 @@ public class LoginActivity extends BaseActivity {
 
                 binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.green_500));
                 binding.txtInfoLogin.setText(R.string.txtInfoLoginOk);
+
+                AnalyticsEvent.UserLogin().track();
 
                 setResult(RESULT_OK, new Intent());
                 finish();

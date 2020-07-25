@@ -88,6 +88,9 @@ import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsView;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
@@ -177,6 +180,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             lastBarcode = result.getText();
             if (!(isFinishing())) {
                 setShownProduct(lastBarcode);
+                AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ScannedBarcode(lastBarcode));
             }
         }
 
@@ -598,6 +602,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        AnalyticsService.getInstance().trackView(AnalyticsView.SCANNER);
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.scan_bottom_nav);
         if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume();
@@ -696,6 +701,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 } else {
                     bottomSheetBehavior.setPeekHeight(peekLarge);
                     bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+                }
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ScannedBarcodeResultExpanded(lastBarcode));
                 }
                 bottomSheet.requestLayout();
             }
