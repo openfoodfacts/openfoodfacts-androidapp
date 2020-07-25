@@ -37,6 +37,8 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentAlertAllergensB
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
@@ -137,6 +139,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                                 mAllergensEnabled!!.add(allergens[position])
                                 adapter.notifyItemInserted(mAllergensEnabled!!.size - 1)
                                 binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
+                                AnalyticsService.getInstance().trackEvent(AnalyticsEvent.AllergenAlertCreated(allergens[position].allergenTag))
                             }
                         }.show()
                     }.addTo(disp)

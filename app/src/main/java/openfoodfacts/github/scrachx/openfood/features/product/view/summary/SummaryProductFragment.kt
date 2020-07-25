@@ -134,8 +134,12 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
     private var productQuestion: Question? = null
 
-    private val loginThenProcessInsight = registerForActivityResult(LoginContract())
-    { isLogged -> if (isLogged) processInsight() }
+    private val loginThenProcessInsight = registerForActivityResult(LoginContract()) { isLogged ->
+        if (isLogged) {
+            AnalyticsEvent.RobotoffLoggedInAfterPrompt().track()
+            processInsight()
+        }
+    }
 
     private lateinit var productState: ProductState
     private var sendOther = false
@@ -644,6 +648,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         if (requireActivity().isUserSet()) {
             processInsight()
         } else {
+            AnalyticsEvent.RobotoffLoginPrompt().track()
             MaterialDialog.Builder(requireActivity()).run {
                 title(getString(R.string.sign_in_to_answer))
                 positiveText(getString(R.string.sign_in_or_register))

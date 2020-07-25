@@ -36,6 +36,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService as MatomoAnalytics
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -157,6 +158,11 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         (activity as? ProductEditActivity)?.initialValues?.let { values ->
             addAllFieldsToMap(values)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MatomoAnalytics.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_NUTRITION_FACTS)
     }
 
     override fun onDestroyView() {

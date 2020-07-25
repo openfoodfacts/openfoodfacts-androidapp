@@ -52,6 +52,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
@@ -138,6 +140,7 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
                 .negativeText(R.string.dialog_cancel)
                 .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
                     Log.d("CreateListDialog", "Positive clicked")
+                    AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ShoppingListCreated())
                     val inputEditText = dialog.inputEditText!!
                     val listName = inputEditText.text.toString()
                     val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)

@@ -96,6 +96,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
                 filePath = uri.path
             }
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 1)
+            AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ProductIngredientsPictureEdited(code))
             hideImageProgress(false, getString(R.string.image_uploaded_successfully))
         }
         val intent = if (activity == null) null else requireActivity().intent
@@ -153,6 +154,11 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         if (activity is ProductEditActivity && (activity as ProductEditActivity).initialValues != null) {
             getAllDetails((activity as ProductEditActivity).initialValues!!)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        AnalyticsService.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_INGREDIENTS)
     }
 
     private fun getImageIngredients() = productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]

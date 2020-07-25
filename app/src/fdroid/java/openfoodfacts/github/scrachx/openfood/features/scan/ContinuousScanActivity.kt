@@ -226,6 +226,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                                     putExtra(ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS, true)
                                 } else {
                                     productsToCompare += product
+                                    AnalyticsEvent.AddProductToComparison(product.code).track()
                                 }
                                 putExtra(ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE, productsToCompare)
                                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -519,6 +520,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         if (quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume()
         }
+        AnalyticsService.getInstance().trackView(AnalyticsView.SCANNER)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -711,10 +713,12 @@ class ContinuousScanActivity : AppCompatActivity() {
                     lastBarcode = null
                     binding.txtProductCallToAction.visibility = View.GONE
                 }
-                else -> {
-                        binding.barcodeScanner.pause()
-                    }
+                BottomSheetBehavior.STATE_EXPANDED -> {
+                    binding.barcodeScanner.pause()
+                    AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ScannedBarcodeResultExpanded(lastBarcode))
                 }
+                else -> binding.barcodeScanner.pause()
+            }
 
 
             if (binding.quickViewSearchByBarcode.visibility == View.VISIBLE) {
@@ -796,7 +800,11 @@ class ContinuousScanActivity : AppCompatActivity() {
             if (beepActive) {
                 beepManager.playBeepSound()
             }
-            lastBarcode = result.text.also { if (!isFinishing) setShownProduct(it) }
+            lastBarcode = result.text
+            if (!isFinishing) {
+                setShownProduct(result.text)
+                AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ScannedBarcode(result.text))
+            }
 
         }
 

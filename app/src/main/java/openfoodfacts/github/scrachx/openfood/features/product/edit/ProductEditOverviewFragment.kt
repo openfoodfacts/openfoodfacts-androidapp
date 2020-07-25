@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features.product.edit.overview
+package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
 import android.net.Uri
@@ -50,10 +50,8 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverviewBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete.EmbCodeAutoCompleteAdapter
 import openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete.PeriodAfterOpeningAutoCompleteAdapter
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -213,6 +211,11 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (languageCode.isNullOrEmpty()) {
             setProductLanguage(appLanguageCode)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        AnalyticsService.getInstance().trackView(AnalyticsView.PRODUCT_EDIT_OVERVIEW)
     }
 
     override fun onDestroyView() {

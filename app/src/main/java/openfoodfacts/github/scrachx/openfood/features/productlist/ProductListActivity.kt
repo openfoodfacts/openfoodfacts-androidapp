@@ -229,6 +229,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
                 }
             } else {
                 exportAsCSV()
+                AnalyticsService.getInstance().trackEvent(AnalyticsEvent.ShoppingListExported())
             }
             true
         }

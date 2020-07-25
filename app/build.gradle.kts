@@ -163,6 +163,7 @@ dependencies {
 
     // Crash analytics
     implementation("io.sentry:sentry-android:4.3.0")
+    implementation("org.matomo.sdk:tracker:4.1.2")
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")

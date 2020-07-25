@@ -519,6 +519,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private fun logout() {
         getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit { clear() }
         updateConnectedState()
+        AnalyticsEvent.UserLogout().track()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -728,6 +729,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     public override fun onResume() {
         super.onResume()
         binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(R.id.home_page)
+        AnalyticsService.getInstance().showAnalyticsBottomSheetIfNeeded(supportFragmentManager)
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)) {
