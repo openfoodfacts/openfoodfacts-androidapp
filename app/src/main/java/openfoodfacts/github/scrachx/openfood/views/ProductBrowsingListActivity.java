@@ -26,7 +26,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -60,17 +59,21 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private OpenFoodAPIClient apiClient;
     private ActivityProductBrowsingListBinding binding;
     private int contributionType;
-    //boolean to determine if image should be loaded or not
-    private boolean isLowBatteryMode = false;
+    private CompositeDisposable disp;
     private Sensor mAccelerometer;
     private int mCountProducts = 0;
     private List<Product> mProducts;
     private SearchInfo mSearchInfo;
     private SensorManager mSensorManager;
     private ShakeDetector mShakeDetector;
-    private CompositeDisposable disp = new CompositeDisposable();
+    /**
+     * boolean to determine if image should be loaded or not
+     */
+    private boolean isLowBatteryMode = false;
     private int pageAddress = 1;
-    // boolean to determine if scan on shake feature should be enabled
+    /**
+     * boolean to determine if scan on shake feature should be enabled
+     */
     private boolean scanOnShake;
     private boolean setupDone = false;
 
@@ -209,8 +212,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        disp = new CompositeDisposable();
         binding = ActivityProductBrowsingListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbarInclude.toolbar);
 
         // OnClick
         binding.buttonTryAgain.setOnClickListener(v -> setup());
@@ -315,10 +320,11 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setTitle(getString(R.string.products_to_be_completed));
                 break;
             case SearchType.STATE:
+                // TODO: 26/07/2020 use resources
                 getSupportActionBar().setSubtitle("State");
                 break;
             default:
-                Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
+                Log.e("Products Browsing", "No match case found for " + mSearchInfo.getSearchType());
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
@@ -477,8 +483,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk && response != null) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                binding.textCountProduct.setText(getResources().getString(R.string.number_of_results) +
-                    NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
+                binding.textCountProduct.setText(getResources().getString(R.string.number_of_results) + NumberFormat.getInstance(getResources().getConfiguration().locale)
+                    .format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
@@ -605,19 +611,19 @@ public class ProductBrowsingListActivity extends BaseActivity {
                                 Log.e(ProductBrowsingListActivity.class.getSimpleName(), "addOnItemTouchListener", e);
                             }
                         } else {
-                            new MaterialAlertDialogBuilder(ProductBrowsingListActivity.this)
-                                .setTitle(R.string.device_offline_dialog_title)
-                                .setMessage(R.string.connectivity_check)
-                                .setPositiveButton(R.string.txt_try_again, (dialog, which) -> {
+                            new MaterialDialog.Builder(ProductBrowsingListActivity.this)
+                                .title(R.string.device_offline_dialog_title)
+                                .content(R.string.connectivity_check)
+                                .positiveText(R.string.txt_try_again)
+                                .onPositive((dialog, which) -> {
                                     if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
                                         api.openProduct(barcode, ProductBrowsingListActivity.this);
                                     } else {
                                         Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
                                     }
                                 })
-                                .setNegativeButton(R.string.dismiss, (dialog, which) -> {
-                                    dialog.dismiss();
-                                })
+                                .negativeText(R.string.dismiss)
+                                .onNegative((dialog, which) -> dialog.dismiss())
                                 .show();
                         }
                     }
