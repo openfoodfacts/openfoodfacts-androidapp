@@ -49,6 +49,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -103,6 +104,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     private IIngredientsProductPresenter.Actions presenter;
     private boolean extractIngredients = false;
     private boolean sendUpdatedIngredientsImage = false;
+    private final CompositeDisposable disp = new CompositeDisposable();
     /**
      * boolean to determine if image should be loaded or not
      **/
@@ -402,8 +404,9 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
+        disp.dispose();
         binding = null;
+        super.onDestroy();
     }
 
     public void changeIngImage() {
@@ -521,7 +524,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     public void onPhotoReturned(File newPhotoFile) {
         ProductImage image = new ProductImage(barcode, INGREDIENTS, newPhotoFile);
         image.setFilePath(newPhotoFile.getAbsolutePath());
-        client.postImg(image, null);
+        disp.add(client.postImg(image).subscribe());
         binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = newPhotoFile.getAbsolutePath();
 
