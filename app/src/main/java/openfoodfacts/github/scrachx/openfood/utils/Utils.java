@@ -553,7 +553,7 @@ public class Utils {
     }
 
     @NonNull
-    public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
+    public static CharSequence getClickableText(String text, String urlParameter, SearchType type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
         String url = SearchTypeUrls.getUrl(type);
 

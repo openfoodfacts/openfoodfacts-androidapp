@@ -309,7 +309,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
                     case ITEM_CATEGORIES:
-                        startActivity(CategoryActivity.getIntent(this));
+                        CategoryActivity.start(this);
                         break;
 
                     case ITEM_ADDITIVES:
@@ -319,14 +319,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         scan();
                         break;
                     case ITEM_COMPARE:
-                        startActivity(new Intent(MainActivity.this, ProductComparisonActivity.class));
+                        startActivity(new Intent(this, ProductComparisonActivity.class));
                         break;
                     case ITEM_HISTORY:
-                        startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
+                        startActivity(new Intent(this, HistoryScanActivity.class));
                         break;
                     case ITEM_LOGIN:
-                        startActivityForResult(new Intent(MainActivity.this, LoginActivity
-                            .class), LOGIN_REQUEST);
+                        startActivityForResult(new Intent(this, LoginActivity.class), LOGIN_REQUEST);
                         break;
                     case ITEM_ALERT:
                         fragment = new AllergensAlertFragment();
@@ -335,12 +334,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         fragment = new PreferencesFragment();
                         break;
                     case ITEM_ABOUT:
-                        CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                            customTabsIntent, discoverUri, new WebViewFallback());
+                        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
                         break;
                     case ITEM_CONTRIBUTE:
-                        CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                            customTabsIntent, contributeUri, new WebViewFallback());
+                        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, contributeUri, new WebViewFallback());
                         break;
 
                     case ITEM_INCOMPLETE_PRODUCTS:

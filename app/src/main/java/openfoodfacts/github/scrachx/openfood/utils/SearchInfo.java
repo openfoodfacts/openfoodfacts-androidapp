@@ -7,19 +7,18 @@ import android.os.Parcelable;
  * Class that contains search information
  */
 public class SearchInfo implements Parcelable {
-
     private String mSearchQuery;
     private String mSearchTitle;
-    private String mSearchType;
+    private SearchType mSearchType;
 
     /**
      * Constructor for search information used by {@link openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity}
      *
      * @param mSearchQuery the search query
      * @param mSearchTitle title of the search
-     * @param mSearchType  type of search
+     * @param mSearchType type of search
      */
-    public SearchInfo(String mSearchQuery, String mSearchTitle, @SearchType String mSearchType) {
+    public SearchInfo(String mSearchQuery, String mSearchTitle, SearchType mSearchType) {
         this.mSearchQuery = mSearchQuery;
         this.mSearchTitle = mSearchTitle;
         this.mSearchType = mSearchType;
@@ -28,9 +27,9 @@ public class SearchInfo implements Parcelable {
     /**
      * Constructor where search query is the same as search title
      *
-     * @see #SearchInfo(String, String, String)
+     * @see #SearchInfo(String, String, SearchType)
      */
-    public SearchInfo(String mSearchQuery, @SearchType String mSearchType) {
+    public SearchInfo(String mSearchQuery, SearchType mSearchType) {
         this.mSearchQuery = mSearchQuery;
         this.mSearchTitle = mSearchQuery;
         this.mSearchType = mSearchType;
@@ -43,7 +42,6 @@ public class SearchInfo implements Parcelable {
         return new SearchInfo("", "", SearchType.INCOMPLETE_PRODUCT);
     }
 
-
     public String getSearchQuery() {
         return mSearchQuery;
     }
@@ -52,8 +50,10 @@ public class SearchInfo implements Parcelable {
         return mSearchTitle;
     }
 
-    public String getSearchType() {
-        return mSearchType;
+    protected SearchInfo(Parcel in) {
+        this.mSearchQuery = in.readString();
+        this.mSearchTitle = in.readString();
+        this.mSearchType = (SearchType) in.readSerializable();
     }
 
     public void setSearchQuery(String mSearchQuery) {
@@ -64,31 +64,27 @@ public class SearchInfo implements Parcelable {
         this.mSearchTitle = mSearchTitle;
     }
 
-    public void setSearchType(String mSearchType) {
-        this.mSearchType = mSearchType;
+    public SearchType getSearchType() {
+        return mSearchType;
     }
 
     /**
-     *
      * Parcelable implementation
-     *
      */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    public void setSearchType(SearchType mSearchType) {
+        this.mSearchType = mSearchType;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.mSearchQuery);
         dest.writeString(this.mSearchTitle);
-        dest.writeString(this.mSearchType);
-    }
-
-    protected SearchInfo(Parcel in) {
-        this.mSearchQuery = in.readString();
-        this.mSearchTitle = in.readString();
-        this.mSearchType = in.readString();
+        dest.writeSerializable(this.mSearchType);
     }
 
     public static final Creator<SearchInfo> CREATOR = new Creator<SearchInfo>() {
