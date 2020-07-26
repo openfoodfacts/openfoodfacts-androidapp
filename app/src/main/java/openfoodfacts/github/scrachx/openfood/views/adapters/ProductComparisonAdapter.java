@@ -85,7 +85,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private final OpenFoodAPIClient api;
     private boolean isLowBatteryMode = false;
     private final Context context;
-    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private final List<Product> productsToCompare;
     private final ProductRepository repository = ProductRepository.getInstance();
     private final ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
@@ -291,7 +291,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             return;
         }
         final String languageCode = LocaleHelper.getLanguage(v.getContext());
-        disposable.add(
+        disp.add(
             Observable.fromArray(additivesTags.toArray(new String[0]))
                 .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                     .flatMap(categoryName -> {
@@ -395,7 +395,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         Product product = productsToCompare.get(onPhotoReturnPosition);
         ProductImage image = new ProductImage(product.getCode(), FRONT, file);
         image.setFilePath(file.getAbsolutePath());
-        api.postImg(image, null);
+        disp.add(api.postImg(image).subscribe());
         String mUrlImage = file.getAbsolutePath();
         product.setImageUrl(mUrlImage);
         onPhotoReturnPosition = null;

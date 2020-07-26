@@ -53,6 +53,9 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableCompletableObserver;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -86,7 +89,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
-import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
@@ -113,7 +115,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static openfoodfacts.github.scrachx.openfood.AppFlavors.OFF;
 
-public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View, ImageUploadListener {
+public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View {
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
@@ -123,7 +125,26 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private FragmentSummaryProductBinding binding;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
+    private CompositeDisposable disp;
     private boolean hasCategoryInsightQuestion = false;
+    private DisposableCompletableObserver imageUploadListener = new DisposableCompletableObserver() {
+        @Override
+        public void onComplete() {
+            binding.uploadingImageProgress.setVisibility(GONE);
+            binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
+        }
+
+        @Override
+        public void onError(Throwable error) {
+            binding.uploadingImageProgress.setVisibility(GONE);
+            binding.uploadingImageProgressText.setVisibility(GONE);
+            Context context = getContext();
+            if (context == null) {
+                context = OFFApplication.getInstance();
+            }
+            Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    };
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     private TagDao mTagDao;
@@ -152,6 +173,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        disp = new CompositeDisposable();
         api = new OpenFoodAPIClient(requireActivity());
         apiClientForWikiData = new WikiDataApiClient();
         binding = FragmentSummaryProductBinding.inflate(inflater, container, false);
@@ -174,7 +196,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 ProductImage image = new ProductImage(barcode, ProductImageField.OTHER, newPhotoFile);
                 image.setFilePath(resultUri.getPath());
                 showOtherImageProgress();
-                api.postImg(image, this);
+
+                disp.add(api.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(imageUploadListener));
             }
         });
 
@@ -861,7 +884,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void loadPhoto(File photoFile) {
         ProductImage image = new ProductImage(barcode, ProductImageField.FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(image, this);
+        disp.add(api.postImg(image).subscribeWith(imageUploadListener));
         binding.addPhotoLabel.setVisibility(GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
@@ -911,23 +934,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.uploadingImageProgress.setVisibility(VISIBLE);
         binding.uploadingImageProgressText.setVisibility(VISIBLE);
         binding.uploadingImageProgressText.setText(R.string.toastSending);
-    }
-
-    @Override
-    public void onSuccess() {
-        binding.uploadingImageProgress.setVisibility(GONE);
-        binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
-    }
-
-    @Override
-    public void onFailure(String message) {
-        binding.uploadingImageProgress.setVisibility(GONE);
-        binding.uploadingImageProgressText.setVisibility(GONE);
-        Context context = getContext();
-        if (context == null) {
-            context = OFFApplication.getInstance();
-        }
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
     public void resetScroll() {

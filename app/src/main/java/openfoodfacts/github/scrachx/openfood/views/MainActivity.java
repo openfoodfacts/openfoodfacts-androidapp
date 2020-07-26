@@ -151,11 +151,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
     private PrefManager prefManager;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private CompositeDisposable disp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        disp = new CompositeDisposable();
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -1016,7 +1017,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                             File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
                             image = new ProductImage(tempBarcode, OTHER, imageFile);
-                            api.postImg(image, null);
+                            disp.add(api.postImg(image).subscribe());
                         } else {
                             Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                             State st = new State();

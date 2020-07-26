@@ -31,7 +31,6 @@ import java.util.function.Consumer;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
@@ -50,12 +49,10 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.ProductIngredient;
 import openfoodfacts.github.scrachx.openfood.models.Search;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
-import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
@@ -69,10 +66,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUTRITION;
 
 /**
  * API Client for all API callbacks
@@ -390,13 +383,6 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void onResponseCallForPostFunction(Call<State> call,
-                                              Response<State> response,
-                                              final ApiCallbacks.OnProductSentCallback productSentCallback,
-                                              SendProduct product) {
-        postImages(response, productSentCallback, product);
-    }
-
     /**
      * @return This api service gets products of provided brand.
      */
@@ -411,8 +397,8 @@ public class OpenFoodAPIClient {
         return api.searchProductByName(fields, name, page);
     }
 
-    public void postImg(final ProductImage image, @Nullable ImageUploadListener imageUploadListener) {
-        postImg(image, false, imageUploadListener);
+    public Completable postImg(final ProductImage image) {
+        return postImg(image, false);
     }
 
     /**
@@ -604,79 +590,40 @@ public class OpenFoodAPIClient {
         return imgMap;
     }
 
-    public void postImg(final ProductImage image, boolean setAsDefault, @Nullable ImageUploadListener imageUploadListener) {
-        api.saveImage(getUploadableMap(image))
-            .enqueue(new Callback<JsonNode>() {
-                @Override
-                public void onResponse(@NonNull Call<JsonNode> call, @NonNull Response<JsonNode> response) {
-                    Log.d("onResponse", response.toString());
-                    if (!response.isSuccessful()) {
-                        ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
-                        mToUploadProductDao.insertOrReplace(product);
-                        Toast.makeText(OpenFoodAPIClient.this.mContext, response.toString(), Toast.LENGTH_LONG).show();
-                        if (imageUploadListener != null) {
-                            imageUploadListener.onFailure(response.toString());
-                        }
-                        return;
-                    }
-
-                    JsonNode body = response.body();
-                    if (body.isObject()) {
-                        if (body.get("status").asText().contains("status not ok")) {
-                            Toast.makeText(OpenFoodAPIClient.this.mContext, body.get("error").asText(), Toast.LENGTH_LONG).show();
-                            if (imageUploadListener != null) {
-                                imageUploadListener.onFailure(body.get("error").asText());
-                            }
+    public Completable postImg(final ProductImage image, boolean setAsDefault) {
+        return api.saveImageSingle(getUploadableMap(image))
+            .flatMapCompletable(body -> {
+                if (body.isObject()) {
+                    if (!body.get("status").asText().contains("status not ok")) {
+                        if (setAsDefault) {
+                            return setDefaultImageFromServerResponse(body, image);
                         } else {
-                            if (setAsDefault) {
-                                setAsDefaultImage(body);
-                            } else if (imageUploadListener != null) {
-                                imageUploadListener.onSuccess();
-                            }
+                            return Completable.complete();
                         }
+                    } else {
+                        throw new IOException(body.get("error").asText());
                     }
+                } else {
+                    throw new IOException("body is not an object");
                 }
+            }).doOnError(throwable -> {
+                ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
+                mToUploadProductDao.insertOrReplace(product);
+            });
+    }
 
-                private void setAsDefaultImage(JsonNode body) {
-                    Map<String, String> queryMap = new HashMap<>();
-                    queryMap.put("imgid", body.get("image").get("imgid").asText());
-                    queryMap.put("id", body.get("imagefield").asText());
-                    addUserInfo(queryMap);
-                    api.editImageSingle(image.getBarcode(), queryMap)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new SingleObserver<JsonNode>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
-
-                            }
-
-                            @Override
-                            public void onSuccess(JsonNode jsonNode) {
-                                if ("status ok".equals(jsonNode.get("status").asText())
-                                    && imageUploadListener != null) {
-                                    imageUploadListener.onSuccess();
-                                }
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                Log.i(this.getClass().getSimpleName(), e.getMessage());
-                                if (imageUploadListener != null) {
-                                    imageUploadListener.onFailure(e.getMessage());
-                                }
-                            }
-                        });
-                }
-
-                @Override
-                public void onFailure(@NonNull Call<JsonNode> call, @NonNull Throwable t) {
-                    Log.d("onResponse", t.toString());
-                    if (imageUploadListener != null) {
-                        imageUploadListener.onFailure(OpenFoodAPIClient.this.mContext.getString(R.string.uploadLater));
-                    }
-                    ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
-                    mToUploadProductDao.insertOrReplace(product);
-                    Toast.makeText(OpenFoodAPIClient.this.mContext, OpenFoodAPIClient.this.mContext.getString(R.string.uploadLater), Toast.LENGTH_LONG).show();
+    private Completable setDefaultImageFromServerResponse(@NotNull JsonNode body,
+                                                          @NotNull final ProductImage image) {
+        Map<String, String> queryMap = new HashMap<>();
+        queryMap.put("imgid", body.get("image").get("imgid").asText());
+        queryMap.put("id", body.get("imagefield").asText());
+        addUserInfo(queryMap);
+        return api.editImageSingle(image.getBarcode(), queryMap)
+            .flatMapCompletable(jsonNode -> {
+                if ("status ok".equals(jsonNode.get("status").asText())) {
+                    return Completable.complete();
+                } else {
+                    throw new IOException(jsonNode.get("error").asText());
                 }
             });
     }
@@ -864,30 +811,5 @@ public class OpenFoodAPIClient {
 
     public Single<Search> getProductsByStates(String state, final int page) {
         return api.getProductsByState(state, page, FIELDS_TO_FETCH_FACETS);
-    }
-
-    private void postImages(@NotNull Response<State> response, ApiCallbacks.OnProductSentCallback productSentCallback, SendProduct product) {
-        if (!response.isSuccessful() || response.body().getStatus() == 0) {
-
-            productSentCallback.onProductSentResponse(false);
-            return;
-        }
-
-        String imguploadFront = product.getImgupload_front();
-        if (StringUtils.isNotEmpty(imguploadFront)) {
-            postImg(new ProductImage(product.getBarcode(), FRONT, new File(imguploadFront)), null);
-        }
-
-        String imguploadIngredients = product.getImgupload_ingredients();
-        if (StringUtils.isNotEmpty(imguploadIngredients)) {
-            postImg(new ProductImage(product.getBarcode(), INGREDIENTS, new File(imguploadIngredients)), null);
-        }
-
-        String imguploadNutrition = product.getImgupload_nutrition();
-        if (StringUtils.isNotBlank(imguploadNutrition)) {
-            postImg(new ProductImage(product.getBarcode(), NUTRITION, new File(imguploadNutrition)), null);
-        }
-
-        productSentCallback.onProductSentResponse(true);
     }
 }
