@@ -311,6 +311,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 getSupportActionBar().setSubtitle(R.string.brand_string);
                 setupHungerGames();
                 break;
+            case LABEL:
+                getSupportActionBar().setSubtitle(getString(R.string.label_string));
+                setupHungerGames();
+                break;
+            case CATEGORY:
+                getSupportActionBar().setSubtitle(getString(R.string.category_string));
+                setupHungerGames();
+                break;
             case COUNTRY:
                 getSupportActionBar().setSubtitle(R.string.country_string);
                 break;
@@ -331,13 +339,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 break;
             case PACKAGING:
                 getSupportActionBar().setSubtitle(R.string.packaging_subtitle);
-                break;
-            case LABEL:
-                getSupportActionBar().setSubtitle(getString(R.string.label_string));
-                break;
-            case CATEGORY:
-                getSupportActionBar().setSubtitle(getString(R.string.category_string));
-                setupHungerGames();
                 break;
             case CONTRIBUTOR:
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
@@ -437,7 +438,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
                         .subscribe((search, throwable) ->
                             loadSearchProducts(throwable == null,
                                 search,
-                                R.string.txt_no_matching_label_products,
+                                R.string.txt_no_matching_products,
                                 R.string.txt_broaden_search)));
                 }
                 break;

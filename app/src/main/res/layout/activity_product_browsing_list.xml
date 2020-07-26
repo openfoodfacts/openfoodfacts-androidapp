@@ -144,9 +144,11 @@
                 android:id="@+id/textNoResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:paddingStart="@dimen/padding_too_short"
                 android:paddingEnd="@dimen/padding_too_short"
                 android:text="@string/txt_no_matching_products"
+                android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textSize="@dimen/font_normal" />
 
@@ -162,8 +164,8 @@
                 android:textSize="@dimen/font_normal" />
 
             <ImageButton
-                style="@style/ButtonBorder"
                 android:id="@+id/addProduct"
+                style="@style/ButtonBorder"
                 android:layout_width="95dp"
                 android:layout_height="90dp"
                 android:layout_marginTop="25dp"
