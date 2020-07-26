@@ -7,10 +7,10 @@
   <string name="action_find">Nađi</string>
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>Summary</item>
-        <item>Ingredients</item>
-        <item>Nutrition</item>
-        <item>Nutrition Table</item>
+        <item>Pregled</item>
+        <item>Sastojci</item>
+        <item>Nutritivne vrednosti</item>
+        <item>Nutritivna tablica</item>
         <item>Environment</item>
     </string-array>
   <!-- Text units -->
