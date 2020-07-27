@@ -518,10 +518,9 @@ public class OpenFoodAPIClient {
     /**
      * upload images in offline mode
      *
-     * @param context context
      * @return ListenableFuture
      */
-    public Completable uploadOfflineImages(Context context) {
+    public Completable uploadOfflineImages() {
         return Single.fromCallable(() -> {
             List<ToUploadProduct> toUploadProductList = mToUploadProductDao.queryBuilder()
                 .where(ToUploadProductDao.Properties.Uploaded.eq(false))
@@ -546,9 +545,9 @@ public class OpenFoodAPIClient {
                             Log.d("onResponse", jsonNode.toString());
                             if (!jsonNode.isObject()) {
                                 return Completable.error(new IOException("jsonNode is not an object"));
-                            } else if (jsonNode.get("status").asText().contains("status not ok")) {
+                            } else if (jsonNode.get(ApiFields.Keys.STATUS).asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
                                 mToUploadProductDao.delete(uploadProduct);
-                                return Completable.error(new IOException("status not ok"));
+                                return Completable.error(new IOException(ApiFields.Defaults.STATUS_NOT_OK));
                             } else {
                                 mToUploadProductDao.delete(uploadProduct);
                                 return Completable.complete();
@@ -594,7 +593,7 @@ public class OpenFoodAPIClient {
         return api.saveImageSingle(getUploadableMap(image))
             .flatMapCompletable(body -> {
                 if (body.isObject()) {
-                    if (!body.get("status").asText().contains("status not ok")) {
+                    if (!body.get(ApiFields.Keys.STATUS).asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
                         if (setAsDefault) {
                             return setDefaultImageFromServerResponse(body, image);
                         } else {
@@ -620,7 +619,7 @@ public class OpenFoodAPIClient {
         addUserInfo(queryMap);
         return api.editImageSingle(image.getBarcode(), queryMap)
             .flatMapCompletable(jsonNode -> {
-                if ("status ok".equals(jsonNode.get("status").asText())) {
+                if ("status ok".equals(jsonNode.get(ApiFields.Keys.STATUS).asText())) {
                     return Completable.complete();
                 } else {
                     throw new IOException(jsonNode.get("error").asText());

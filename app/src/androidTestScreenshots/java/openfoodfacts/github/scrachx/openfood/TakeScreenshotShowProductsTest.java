@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
@@ -31,7 +31,7 @@ public class TakeScreenshotShowProductsTest extends AbstractScreenshotTest {
 
     private static Intent createProductIntent(String productCode) {
         Intent intent = new Intent(OFFApplication.getInstance(), ProductActivity.class);
-        State st = new State();
+        ProductState st = new ProductState();
         Product pd = new Product();
         pd.setCode(productCode);
         st.setProduct(pd);

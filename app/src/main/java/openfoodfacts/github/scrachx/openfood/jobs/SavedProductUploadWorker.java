@@ -25,7 +25,7 @@ public class SavedProductUploadWorker extends RxWorker {
     @Override
     public Single<Result> createWork() {
         return new OpenFoodAPIClient(getApplicationContext())
-            .uploadOfflineImages(getApplicationContext())
+            .uploadOfflineImages()
             .toSingleDefault(success())
             .onErrorReturnItem(failure());
     }
