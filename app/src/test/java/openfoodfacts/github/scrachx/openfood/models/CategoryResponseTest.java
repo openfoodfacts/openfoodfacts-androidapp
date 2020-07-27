@@ -6,6 +6,10 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryResponse;
+
 import static openfoodfacts.github.scrachx.openfood.models.CategoryResponseTestData.GUMMY_BEARS_EN;
 import static openfoodfacts.github.scrachx.openfood.models.CategoryResponseTestData.GUMMY_BEARS_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;

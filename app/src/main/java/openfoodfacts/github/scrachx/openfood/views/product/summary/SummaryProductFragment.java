@@ -66,25 +66,25 @@ import openfoodfacts.github.scrachx.openfood.fragments.AdditiveFragmentHelper;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.CategoryProductHelper;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.models.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.Question;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.BottomScreenCommon;
@@ -159,7 +159,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private boolean showCategoryPrompt = false;
     //boolean to determine if nutrient prompt should be shown
     private boolean showNutrientPrompt = false;
-    private State state;
+    private ProductState productState;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -211,20 +211,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.productQuestionDismiss.setOnClickListener(v -> productQuestionDismiss());
         binding.productQuestionLayout.setOnClickListener(v -> onProductQuestionClick());
 
-        state = FragmentUtils.requireStateFromArguments(this);
-        refreshView(state);
+        productState = FragmentUtils.requireStateFromArguments(this);
+        refreshView(productState);
     }
 
     @Override
-    public void refreshView(State state) {
+    public void refreshView(ProductState productState) {
         // No state -> we can't display anything.
-        if (state == null) {
+        if (productState == null) {
             return;
         }
 
-        super.refreshView(state);
-        this.state = state;
-        product = state.getProduct();
+        super.refreshView(productState);
+        this.productState = productState;
+        product = productState.getProduct();
         presenter = new SummaryProductPresenter(product, this);
         binding.categoriesText.setText(Utils.bold(getString(R.string.txtCategories)));
         binding.labelsText.setText(Utils.bold(getString(R.string.txtLabels)));

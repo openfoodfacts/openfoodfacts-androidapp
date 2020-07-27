@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.junit.Before;
 import org.junit.Test;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+
 import static org.junit.Assert.*;
 
 /**

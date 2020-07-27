@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views.category.adapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import openfoodfacts.github.scrachx.openfood.databinding.CategoryRecyclerItemBinding;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 

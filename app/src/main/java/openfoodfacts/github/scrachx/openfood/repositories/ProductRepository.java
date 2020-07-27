@@ -29,59 +29,60 @@ import org.greenrobot.greendao.query.WhereCondition;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import io.reactivex.Maybe;
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTag;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Category;
-import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Country;
-import openfoodfacts.github.scrachx.openfood.models.CountryDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.Ingredient;
-import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientName;
-import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
-import openfoodfacts.github.scrachx.openfood.models.Label;
-import openfoodfacts.github.scrachx.openfood.models.LabelDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.Question;
 import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
-import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditivesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagName;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientName;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsRelation;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI;
@@ -618,33 +619,14 @@ public class ProductRepository {
         return getAdditiveByTagAndLanguageCode(additiveTag, DEFAULT_LANGUAGE);
     }
 
-    /**
-     * Loads translated country from the local database by unique tag of country and language code
-     *
-     * @param countryTag is a unique Id of country
-     * @param languageCode is a 2-digit language code
-     * @return The translated country name
-     */
-    public Single<CountryName> getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
-        return Single.fromCallable(() -> {
-            CountryName countryName = countryNameDao.queryBuilder()
-                .where(
-                    CountryNameDao.Properties.CountyTag.eq(countryTag),
-                    CountryNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
-
-            return countryName != null ? countryName : new CountryName();
-        });
+    public Single<List<Country>> getCountries() {
+        return Taxonomy.COUNTRY.getTaxonomyData(this, false, true, countryDao);
     }
 
-    /**
-     * Loads translated country from the local database by unique tag of country and default language code
-     *
-     * @param countryTag is a unique Id of country
-     * @return The translated country name
-     */
-    public Single<CountryName> getCountryByTagAndDefaultLanguageCode(String countryTag) {
-        return getCountryByTagAndLanguageCode(countryTag, DEFAULT_LANGUAGE);
+    public Single<Optional<Country>> getCountryByCC2OrWorld(String cc2) {
+        return getCountries().map(countries -> countries.stream()
+            .filter(country -> country.getCc2().equalsIgnoreCase(cc2))
+            .findFirst());
     }
 
     /**
@@ -878,7 +860,7 @@ public class ProductRepository {
 
     Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
         return productApi.getAnalysisTagConfigs()
-            .map(AnalysisTagGonfigsWrapper::map).doOnSuccess(analysisTagConfigs -> {
+            .map(AnalysisTagConfigsWrapper::map).doOnSuccess(analysisTagConfigs -> {
                 saveAnalysisTagConfigs(analysisTagConfigs);
                 updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAG_CONFIG, lastModifiedDate);
             });

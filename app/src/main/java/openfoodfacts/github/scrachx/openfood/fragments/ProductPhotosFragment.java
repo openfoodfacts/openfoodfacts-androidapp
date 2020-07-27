@@ -20,7 +20,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
@@ -54,8 +54,8 @@ public class ProductPhotosFragment extends BaseFragment implements ImagesAdapter
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        State state = FragmentUtils.requireStateFromArguments(this);
-        product = state.getProduct();
+        ProductState productState = FragmentUtils.requireStateFromArguments(this);
+        product = productState.getProduct();
         // initialize the arraylist
         imageNames = new ArrayList<>();
         imagesRecycler = view.findViewById(R.id.imagesRecycler);

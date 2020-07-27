@@ -55,13 +55,13 @@ import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragmen
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
-import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
@@ -238,7 +238,7 @@ public class AddProductActivity extends AppCompatActivity {
         }
         mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
-        final State state = (State) getIntent().getSerializableExtra("state");
+        final ProductState productState = (ProductState) getIntent().getSerializableExtra("state");
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra(KEY_EDIT_OFFLINE_PRODUCT);
         Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
 
@@ -250,8 +250,8 @@ public class AddProductActivity extends AppCompatActivity {
             fragmentsBundle.putBoolean("send_updated", true);
         }
 
-        if (state != null) {
-            mProduct = state.getProduct();
+        if (productState != null) {
+            mProduct = productState.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db
             offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(mProduct.getCode());
         }
@@ -272,7 +272,7 @@ public class AddProductActivity extends AppCompatActivity {
             imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED));
             imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED));
         }
-        if (state == null && offlineSavedProduct == null && mEditProduct == null) {
+        if (productState == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
             finish();
         }

@@ -8,16 +8,19 @@ import org.junit.rules.ExpectedException;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.UNIQUE_ALLERGEN_ID_1;
-import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.UNIQUE_ALLERGEN_ID_2;
-import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.PEANUTS_DE;
-import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.PEANUTS_EN;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_GERMAN;
-import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagName;
+
+import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.PEANUTS_DE;
+import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.PEANUTS_EN;
+import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.UNIQUE_ALLERGEN_ID_1;
+import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.UNIQUE_ALLERGEN_ID_2;
+import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
+import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_GERMAN;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 

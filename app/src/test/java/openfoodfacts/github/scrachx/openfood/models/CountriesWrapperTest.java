@@ -8,8 +8,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryResponse;
+
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.*;
+import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_EN;
+import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_FR;
+import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.USA_EN;
+import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.USA_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 
@@ -33,13 +41,13 @@ public class CountriesWrapperTest {
         usaNamesMap.put(LANGUAGE_CODE_ENGLISH, USA_EN);
         usaNamesMap.put(LANGUAGE_CODE_FRENCH, USA_FR);
         CountryResponse countryResponse1 =
-                new CountryResponse(USA_COUNTRY_TAG, usaNamesMap);
+            new CountryResponse(USA_COUNTRY_TAG, usaNamesMap, country_code_2, country_code_3);
         Map<String, String> germanyNamesMap = new HashMap<>();
         germanyNamesMap.put(LANGUAGE_CODE_ENGLISH, GERMANY_EN);
         germanyNamesMap.put(LANGUAGE_CODE_FRENCH, GERMANY_FR);
         CountryResponse countryResponse2 =
-                new CountryResponse(GERMANY_COUNTRY_TAG, germanyNamesMap);
-        mCountriesWrapper.setCountries(Arrays.asList(countryResponse1, countryResponse2));
+            new CountryResponse(GERMANY_COUNTRY_TAG, germanyNamesMap, country_code_2, country_code_3);
+        mCountriesWrapper.setResponses(Arrays.asList(countryResponse1, countryResponse2));
         countries = mCountriesWrapper.map();
 
         country1 = countries.get(0);

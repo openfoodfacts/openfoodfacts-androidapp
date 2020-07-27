@@ -9,6 +9,9 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;

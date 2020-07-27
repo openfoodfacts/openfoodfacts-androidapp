@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelResponse;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNull;

@@ -7,10 +7,10 @@ import androidx.fragment.app.FragmentManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductAttributeDetailsFragment;
 
 public class BottomScreenCommon {

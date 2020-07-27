@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.junit.Before;
 import org.junit.Test;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 

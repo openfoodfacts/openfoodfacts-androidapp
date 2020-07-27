@@ -110,7 +110,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
@@ -1017,7 +1017,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             disp.add(api.postImg(image).subscribe());
                         } else {
                             Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
-                            State st = new State();
+                            ProductState st = new ProductState();
                             Product pd = new Product();
                             pd.setCode(tempBarcode);
                             st.setProduct(pd);

@@ -76,15 +76,15 @@ import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding;
-import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -257,17 +257,17 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 binding.quickViewProgressText.setVisibility(VISIBLE);
                 binding.quickViewProgressText.setText(getString(R.string.loading_product, barcode));
             })
-            .subscribe((State state) -> {
+            .subscribe((ProductState productState) -> {
                 //clear product tags
                 isAnalysisTagsEmpty = true;
                 binding.quickViewTags.setAdapter(null);
 
                 binding.quickViewProgress.setVisibility(GONE);
                 binding.quickViewProgressText.setVisibility(GONE);
-                if (state.getStatus() == 0) {
+                if (productState.getStatus() == 0) {
                     tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found);
                 } else {
-                    product = state.getProduct();
+                    product = productState.getProduct();
                     if (getIntent().getBooleanExtra(INTENT_KEY_COMPARE, false)) {
                         Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
                         intent.putExtra("product_found", true);
@@ -369,7 +369,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewCo2Icon.setVisibility(INVISIBLE);
                     }
-                    ProductFragment newProductFragment = ProductFragment.newInstance(state);
+                    ProductFragment newProductFragment = ProductFragment.newInstance(productState);
 
                     getSupportFragmentManager()
                         .beginTransaction()
@@ -521,7 +521,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     private void navigateToProductAddition(String productBarcode) {
         Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-        State st = new State();
+        ProductState st = new ProductState();
         Product pd = new Product();
         pd.setCode(productBarcode);
         st.setProduct(pd);

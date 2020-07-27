@@ -46,6 +46,7 @@ public final class ApiFields {
         public static final String NUTRITION_DATA_PER_100G = "100g";
         public static final String NUTRITION_DATA_PER_SERVING = "serving";
         public static final String DEBUG_BARCODE = "1";
+        public static final String DEFAULT_TAXO_PREFIX = "en";
 
         private Defaults() {
 

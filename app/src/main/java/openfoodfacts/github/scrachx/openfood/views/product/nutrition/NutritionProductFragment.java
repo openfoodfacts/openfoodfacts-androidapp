@@ -73,9 +73,9 @@ import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.Units;
+import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
@@ -139,7 +139,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     //boolean to determine if nutrition data should be shown
     private boolean showNutritionData = true;
     private Product product;
-    private State activityState;
+    private ProductState activityProductState;
     private FragmentNutritionProductBinding binding;
 
     @Override
@@ -175,13 +175,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     }
 
     @Override
-    public void refreshView(State state) {
-        super.refreshView(state);
+    public void refreshView(ProductState productState) {
+        super.refreshView(productState);
         final Activity currActivity = requireActivity();
         final String langCode = LocaleHelper.getLanguage(requireActivity());
 
-        activityState = state;
-        product = state.getProduct();
+        activityProductState = productState;
+        product = productState.getProduct();
 
         checkPrompts();
 
@@ -561,7 +561,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
                             String spinnerValue = spinner.getSelectedItem().toString();
                             String weight = etWeight.getText().toString();
-                            Product p = activityState.getProduct();
+                            Product p = activityProductState.getProduct();
                             Intent intent = new Intent(getContext(), CalculateDetails.class);
                             intent.putExtra("sampleObject", p);
                             intent.putExtra("spinnervalue", spinnerValue);

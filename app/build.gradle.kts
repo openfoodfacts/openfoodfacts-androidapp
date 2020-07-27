@@ -325,7 +325,7 @@ android {
 
 
 greendao {
-    schemaVersion(17)
+    schemaVersion(18)
 }
 
 

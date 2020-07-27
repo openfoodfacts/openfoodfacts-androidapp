@@ -70,18 +70,18 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverviewBinding;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
@@ -640,20 +640,20 @@ public class AddProductOverviewFragment extends BaseFragment {
             client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<State>() {
+                .subscribe(new SingleObserver<ProductState>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         binding.name.setText(getString(R.string.txtLoading));
                     }
 
                     @Override
-                    public void onSuccess(State state) {
-                        if (state.getStatus() == 1) {
-                            if (state.getProduct().getProductName(lang) != null) {
+                    public void onSuccess(ProductState productState) {
+                        if (productState.getStatus() == 1) {
+                            if (productState.getProduct().getProductName(lang) != null) {
                                 if (languageCode.equals(lang)) {
-                                    binding.name.setText(state.getProduct().getProductName(lang));
+                                    binding.name.setText(productState.getProduct().getProductName(lang));
                                     if (activity instanceof AddProductActivity) {
-                                        getAddProductActivity().setIngredients("set", state.getProduct().getIngredientsText(lang));
+                                        getAddProductActivity().setIngredients("set", productState.getProduct().getIngredientsText(lang));
                                         getAddProductActivity().updateLanguage();
                                     }
                                 }

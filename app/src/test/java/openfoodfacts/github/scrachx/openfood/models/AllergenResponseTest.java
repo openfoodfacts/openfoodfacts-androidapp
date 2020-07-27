@@ -6,8 +6,13 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponse;
+
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.*;
+import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.PEANUTS_EN;
+import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.PEANUTS_FR;
+import static openfoodfacts.github.scrachx.openfood.models.AllergenResponseTestData.UNIQUE_ALLERGEN_ID_1;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 

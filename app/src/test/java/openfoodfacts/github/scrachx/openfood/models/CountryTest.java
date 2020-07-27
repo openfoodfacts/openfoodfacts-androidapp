@@ -9,6 +9,9 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+
 import static junit.framework.Assert.assertEquals;
 import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_EN;
 import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_FR;

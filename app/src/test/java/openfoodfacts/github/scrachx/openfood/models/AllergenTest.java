@@ -2,18 +2,17 @@ package openfoodfacts.github.scrachx.openfood.models;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mock;
 
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper;
+
+import static org.junit.Assert.*;
 
 public class AllergenTest {
 

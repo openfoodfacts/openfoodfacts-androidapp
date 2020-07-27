@@ -42,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsing
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
@@ -285,21 +286,31 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     private void setupHungerGames() {
-        binding.btnHungerGames.setVisibility(View.VISIBLE);
-        binding.btnHungerGames.setText(getResources().getString(R.string.hunger_game_call_to_action, mSearchInfo.getSearchTitle()));
-        //final String orig_url = "https://hunger.openfoodfacts.org/questions?type=%s&value_tag=%s&country=%s";
-        final String orig_url = "https://hunger.openfoodfacts.org/questions?type=%s&value_tag=%s";
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
-        /*final Uri url = Uri.parse(String.format(orig_url,
+        final String actualCountryTag = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "");
+        if ("".equals(actualCountryTag)) {
+            disp.add(ProductRepository.getInstance().getCountryByCC2OrWorld(LocaleHelper.getLocale().getCountry())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(mayCountry ->
+                    setupUrlHungerGames(mayCountry.isPresent() ? mayCountry.get().getTag() : "en:world")));
+        } else {
+            setupUrlHungerGames(actualCountryTag);
+        }
+    }
+
+    private void setupUrlHungerGames(String countryTag) {
+        final Uri url = Uri.parse(String.format("https://hunger.openfoodfacts.org/questions?type=%s&value_tag=%s&country=%s",
             mSearchInfo.getSearchType().getUrl(),
             mSearchInfo.getSearchQuery(),
-            LocaleHelper.getLocale().getCountry()));*/
-        final Uri url = Uri.parse(String.format(orig_url,
-            mSearchInfo.getSearchType().getUrl(),
-            mSearchInfo.getSearchQuery()));
+            countryTag));
 
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         CustomTabsIntent customTabsIntent = builder.build();
+
+        binding.btnHungerGames.setVisibility(View.VISIBLE);
+        binding.btnHungerGames.setText(
+            getResources().getString(R.string.hunger_game_call_to_action, mSearchInfo.getSearchTitle()));
         binding.btnHungerGames.setOnClickListener(view ->
             CustomTabActivityHelper.openCustomTab(this, customTabsIntent, url, null));
     }

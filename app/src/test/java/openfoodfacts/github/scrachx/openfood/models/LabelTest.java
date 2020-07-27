@@ -9,12 +9,13 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
+
 import static junit.framework.Assert.assertEquals;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_EN;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_TAG;
-import static junit.framework.Assert.assertNull;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.*;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static org.junit.Assert.*;

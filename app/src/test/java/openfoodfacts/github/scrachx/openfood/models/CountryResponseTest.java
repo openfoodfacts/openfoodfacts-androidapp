@@ -6,6 +6,10 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryResponse;
+
 import static junit.framework.Assert.assertEquals;
 import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_EN;
 import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_FR;
@@ -29,7 +33,7 @@ public class CountryResponseTest {
     public void setup() {
         NAMES_MAP.put(LANGUAGE_CODE_ENGLISH, GERMANY_EN);
         NAMES_MAP.put(LANGUAGE_CODE_FRENCH, GERMANY_FR);
-        mCountryResponse = new CountryResponse(COUNTRY_TAG, NAMES_MAP);
+        mCountryResponse = new CountryResponse(COUNTRY_TAG, NAMES_MAP, country_code_2, country_code_3);
         country = mCountryResponse.map();
     }
 
