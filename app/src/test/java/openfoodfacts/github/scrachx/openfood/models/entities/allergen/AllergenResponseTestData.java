@@ -1,6 +1,8 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.allergen;
 
 public class AllergenResponseTestData {
+    private AllergenResponseTestData() {
+    }
 
     public static final String UNIQUE_ALLERGEN_ID_1 = "AllergenId1";
     public static final String UNIQUE_ALLERGEN_ID_2 = "AllergenId2";

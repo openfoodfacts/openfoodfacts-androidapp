@@ -1,16 +1,16 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.category;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
-import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
@@ -21,6 +21,7 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link Category}
  */
+@RunWith(MockitoJUnitRunner.class)
 public class CategoryTest {
 
     private static final String CATEGORY_TAG_1 = "Tag1";
@@ -47,7 +48,6 @@ public class CategoryTest {
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
         when(mockDaoSession.getCategoryDao()).thenReturn(mockCategoryDao);
         when(mockDaoSession.getCategoryNameDao()).thenReturn(mockCategoryNameDao);
         when(mockCategoryNameDao._queryCategory_Names(any()))

@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.country;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,27 +8,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
-import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryResponse;
-
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_EN;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_FR;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.USA_EN;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.USA_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_EN;
+import static openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_FR;
+import static openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.USA_EN;
+import static openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.USA_FR;
 
 /**
  * Tests for {@link CountriesWrapper}
  */
 public class CountriesWrapperTest {
-
     private static final String USA_COUNTRY_TAG = "usa";
     private static final String GERMANY_COUNTRY_TAG = "germany";
-
     private CountriesWrapper mCountriesWrapper;
     List<Country> countries;
     Country country1;
@@ -40,13 +33,22 @@ public class CountriesWrapperTest {
         Map<String, String> usaNamesMap = new HashMap<>();
         usaNamesMap.put(LANGUAGE_CODE_ENGLISH, USA_EN);
         usaNamesMap.put(LANGUAGE_CODE_FRENCH, USA_FR);
+
+        Map<String, String> usaCC2Map = new HashMap<>();
+        usaCC2Map.put(LANGUAGE_CODE_ENGLISH, "US");
+        Map<String, String> usaCC3Map = new HashMap<>();
+        usaCC3Map.put(LANGUAGE_CODE_ENGLISH, "USA");
         CountryResponse countryResponse1 =
-            new CountryResponse(USA_COUNTRY_TAG, usaNamesMap, country_code_2, country_code_3);
+            new CountryResponse(USA_COUNTRY_TAG, usaNamesMap, usaCC2Map, usaCC3Map);
         Map<String, String> germanyNamesMap = new HashMap<>();
         germanyNamesMap.put(LANGUAGE_CODE_ENGLISH, GERMANY_EN);
         germanyNamesMap.put(LANGUAGE_CODE_FRENCH, GERMANY_FR);
+        Map<String, String> gerCC2Map = new HashMap<>();
+        gerCC2Map.put(LANGUAGE_CODE_ENGLISH, "DE");
+        Map<String, String> gerCC3Map = new HashMap<>();
+        gerCC3Map.put(LANGUAGE_CODE_ENGLISH, "DEU");
         CountryResponse countryResponse2 =
-            new CountryResponse(GERMANY_COUNTRY_TAG, germanyNamesMap, country_code_2, country_code_3);
+            new CountryResponse(GERMANY_COUNTRY_TAG, germanyNamesMap, gerCC2Map, gerCC3Map);
         mCountriesWrapper.setResponses(Arrays.asList(countryResponse1, countryResponse2));
         countries = mCountriesWrapper.map();
 
@@ -55,12 +57,12 @@ public class CountriesWrapperTest {
     }
 
     @Test
-    public void map_returnsListOfCountries_ListHasCorrectSize(){
+    public void map_returnsListOfCountries_ListHasCorrectSize() {
         assertEquals(2, countries.size());
     }
 
     @Test
-    public void map_returnsListOfCountries_CountryTagsAreCorrect(){
+    public void map_returnsListOfCountries_CountryTagsAreCorrect() {
         assertEquals(USA_COUNTRY_TAG, country1.getTag());
         assertEquals(2, country1.getNames().size());
 
@@ -84,7 +86,6 @@ public class CountriesWrapperTest {
         assertEquals(GERMANY_COUNTRY_TAG, country2Name2.getCountyTag());
     }
 
-
     @Test
     public void map_returnsListOfCountries_SubLanguageCodesAreCorrect() {
         CountryName country1Name1 = country1.getNames().get(0);
@@ -101,7 +102,7 @@ public class CountriesWrapperTest {
     }
 
     @Test
-    public void map_returnsListOfCountries_SubNamesAreCorrect(){
+    public void map_returnsListOfCountries_SubNamesAreCorrect() {
         CountryName country1Name1 = country1.getNames().get(0);
         assertEquals(USA_EN, country1Name1.getName());
 

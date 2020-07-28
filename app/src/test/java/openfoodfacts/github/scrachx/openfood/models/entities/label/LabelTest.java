@@ -1,23 +1,23 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.label;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
-import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_EN;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_FR;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_TAG;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_EN;
+import static openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_FR;
+import static openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_TAG;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -26,6 +26,7 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link Label}
  */
+@RunWith(MockitoJUnitRunner.class)
 public class LabelTest {
     @Mock
     private DaoSession mockDaoSession;
@@ -37,7 +38,6 @@ public class LabelTest {
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
         when(mockDaoSession.getLabelDao()).thenReturn(mockLabelDao);
         when(mockDaoSession.getLabelNameDao()).thenReturn(mockLabelNameDao);
         LabelName labelName1 = new LabelName(LABEL_TAG, LANGUAGE_CODE_ENGLISH, LABEL_NAME_EN);

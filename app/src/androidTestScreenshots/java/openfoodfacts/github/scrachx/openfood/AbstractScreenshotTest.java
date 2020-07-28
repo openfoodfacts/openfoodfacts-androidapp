@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -34,17 +35,18 @@ public abstract class AbstractScreenshotTest {
     private static Locale initLocale;
     ScreenshotsLocaleProvider localeProvider = new ScreenshotsLocaleProvider();
 
-    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule... activityRules) {
+    @SafeVarargs
+    protected final <T extends Activity> void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<T>... activityRules) {
         changeLocale(screenshotParameter);
-        for (ScreenshotActivityTestRule activityRule : activityRules) {
+        for (ScreenshotActivityTestRule<T> activityRule : activityRules) {
             activityRule.finishActivity();
             activityRule.setScreenshotParameter(screenshotParameter);
             activityRule.launchActivity(null);
         }
     }
 
-    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule activityRule,
-                                                    Collection<Intent> intents) {
+    protected <T extends Activity> void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<T> activityRule,
+                                                                         Collection<Intent> intents) {
 
         changeLocale(screenshotParameter);
         for (Intent intent : intents) {
@@ -69,8 +71,8 @@ public abstract class AbstractScreenshotTest {
         final String countryName = parameter.getCountryTag();
     }
 
-
-    public void startForAllLocales(ScreenshotActivityTestRule... activityRule) {
+    @SafeVarargs
+    public final <T extends Activity> void startForAllLocales(ScreenshotActivityTestRule<T>... activityRule) {
         for (ScreenshotParameter screenshotParameter : localeProvider.getParameters()) {
             startScreenshotActivityTestRules(screenshotParameter, activityRule);
         }

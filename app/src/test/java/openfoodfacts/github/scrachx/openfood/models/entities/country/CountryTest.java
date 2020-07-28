@@ -1,22 +1,22 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.country;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
-import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
 import static junit.framework.Assert.assertEquals;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_EN;
-import static openfoodfacts.github.scrachx.openfood.models.CountryNameTestData.GERMANY_FR;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_EN;
+import static openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_FR;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -25,6 +25,7 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link Country}
  */
+@RunWith(MockitoJUnitRunner.class)
 public class CountryTest {
     private final String COUNTRY_TAG = "code";
     private final CountryName GERMANY_IN_ENGLISH =
@@ -41,7 +42,6 @@ public class CountryTest {
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
         when(mockDaoSession.getCountryDao()).thenReturn(mockCountryDao);
         when(mockDaoSession.getCountryNameDao()).thenReturn(mockCountryNameDao);
         when(mockCountryNameDao._queryCountry_Names(any()))

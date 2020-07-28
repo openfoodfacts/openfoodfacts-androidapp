@@ -1,16 +1,16 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.additive;
 
 import org.greenrobot.greendao.DaoException;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
@@ -21,6 +21,7 @@ import static org.mockito.Mockito.when;
 /**
  * Tests for {@link Additive}
  */
+@RunWith(MockitoJUnitRunner.class)
 public class AdditiveTest {
     private static final String ADDITIVE_NAME_NAME_1 = "AdditiveName";
     private static final String ADDITIVE_NAME_NAME_2 = "AdditiveName2";
@@ -36,7 +37,6 @@ public class AdditiveTest {
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
         when(mockDaoSession.getAdditiveNameDao()).thenReturn(mockAdditiveNameDao);
         when(mockDaoSession.getAdditiveDao()).thenReturn(mockAdditiveDao);
         when(mockAdditiveNameDao._queryAdditive_Names(any()))

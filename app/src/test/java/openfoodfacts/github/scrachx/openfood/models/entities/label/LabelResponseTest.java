@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.label;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,15 +6,11 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
-import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelResponse;
-
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_EN;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_NAME_FR;
-import static openfoodfacts.github.scrachx.openfood.models.LabelNameTestData.LABEL_TAG;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_EN;
+import static openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_FR;
+import static openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_TAG;
 import static org.junit.Assert.*;
 
 /**

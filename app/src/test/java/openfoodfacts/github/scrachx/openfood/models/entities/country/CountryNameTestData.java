@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.country;
 
 public class CountryNameTestData {
     public static final String GERMANY_EN = "Germany";

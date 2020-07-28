@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.label;
 
 public class LabelNameTestData {
     public static final String LABEL_TAG = "tag";

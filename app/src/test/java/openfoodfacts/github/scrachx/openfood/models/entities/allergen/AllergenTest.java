@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.allergen;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -7,10 +7,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;
-
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper;
 
 import static org.junit.Assert.*;
 

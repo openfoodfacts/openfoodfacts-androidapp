@@ -1,9 +1,7 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.label;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
 
 import static org.junit.Assert.*;
 

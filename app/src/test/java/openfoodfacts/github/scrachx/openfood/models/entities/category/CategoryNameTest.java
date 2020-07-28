@@ -1,9 +1,7 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.category;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
 
 import static org.junit.Assert.*;
 

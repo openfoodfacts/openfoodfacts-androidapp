@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.additive;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,15 +6,12 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponse;
-
-import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.ADDITIVE_TAG;
-import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.VINEGAR_EN;
-import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.VINEGAR_FR;
-import static openfoodfacts.github.scrachx.openfood.models.AdditiveResponseTestData.WIKI_DATA_ID;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
+import static openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponseTestData.ADDITIVE_TAG;
+import static openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponseTestData.VINEGAR_EN;
+import static openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponseTestData.VINEGAR_FR;
+import static openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponseTestData.WIKI_DATA_ID;
 import static org.junit.Assert.*;
 
 /**

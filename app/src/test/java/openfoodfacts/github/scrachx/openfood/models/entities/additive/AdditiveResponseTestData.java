@@ -1,6 +1,9 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models.entities.additive;
 
 public class AdditiveResponseTestData {
+    private AdditiveResponseTestData() {
+
+    }
 
     public static final String ADDITIVE_TAG = "tag";
     public static final String VINEGAR_EN = "vinegar";
