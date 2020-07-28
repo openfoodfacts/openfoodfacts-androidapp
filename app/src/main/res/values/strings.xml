@@ -414,7 +414,7 @@
     <string name="txtBarcode">Barcode :</string>
     <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtEMB">EMB Code:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Ingredients list :</string>
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
