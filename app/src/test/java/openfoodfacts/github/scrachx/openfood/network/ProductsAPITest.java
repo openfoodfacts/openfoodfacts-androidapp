@@ -19,7 +19,7 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import static junit.framework.Assert.assertEquals;
@@ -53,7 +53,7 @@ public class ProductsAPITest {
         devClientWithAuth = new Retrofit.Builder()
             .baseUrl(DEV_API)
             .addConverterFactory(JacksonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(httpClientWithAuth)
             .build()
             .create(ProductsAPI.class);

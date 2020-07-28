@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Single;
-import io.reactivex.observers.TestObserver;
+import io.reactivex.rxjava3.observers.TestObserver;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
 import openfoodfacts.github.scrachx.openfood.category.model.Category;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
@@ -49,8 +49,11 @@ public class CategoryRepositoryTest {
     public void retrieveAll_Success() {
         TestObserver<List<Category>> testObserver = new TestObserver<>();
         repository.retrieveAll().subscribe(testObserver);
-
-        testObserver.awaitTerminalEvent();
+        try {
+            testObserver.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<Category> result = testObserver.values().get(0);
         assertThat(result.get(0), CoreMatchers.is(category));
     }
