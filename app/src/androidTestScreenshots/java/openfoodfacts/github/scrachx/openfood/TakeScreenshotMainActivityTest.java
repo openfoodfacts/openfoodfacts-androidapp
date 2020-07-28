@@ -17,13 +17,12 @@ import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 public class TakeScreenshotMainActivityTest extends AbstractScreenshotTest {
     @Rule
     public ScreenshotActivityTestRule<MainActivity> activityRule = new ScreenshotActivityTestRule<>(MainActivity.class);
-
     @Rule
     public ScreenshotActivityTestRule<WelcomeActivity> welcomeActivityRule = new ScreenshotActivityTestRule<>(WelcomeActivity.class);
 
     @Test
     public void testTakeScreenshotMainActivity() {
         welcomeActivityRule.setFirstTimeLaunched(true);
-        startForAllLocales(welcomeActivityRule,activityRule);
+        startForAllLocales(welcomeActivityRule, activityRule);
     }
 }

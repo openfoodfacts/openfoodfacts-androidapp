@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -34,16 +35,17 @@ public abstract class AbstractScreenshotTest {
     private static Locale initLocale;
     ScreenshotsLocaleProvider localeProvider = new ScreenshotsLocaleProvider();
 
-    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule... activityRules) {
+    @SafeVarargs
+    protected final void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<? extends Activity>... activityRules) {
         changeLocale(screenshotParameter);
-        for (ScreenshotActivityTestRule activityRule : activityRules) {
+        for (ScreenshotActivityTestRule<? extends Activity> activityRule : activityRules) {
             activityRule.finishActivity();
             activityRule.setScreenshotParameter(screenshotParameter);
             activityRule.launchActivity(null);
         }
     }
 
-    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule activityRule,
+    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<? extends Activity> activityRule,
                                                     Collection<Intent> intents) {
 
         changeLocale(screenshotParameter);
@@ -69,8 +71,8 @@ public abstract class AbstractScreenshotTest {
         final String countryName = parameter.getCountryTag();
     }
 
-
-    public void startForAllLocales(ScreenshotActivityTestRule... activityRule) {
+    @SafeVarargs
+    public final void startForAllLocales(ScreenshotActivityTestRule<? extends Activity>... activityRule) {
         for (ScreenshotParameter screenshotParameter : localeProvider.getParameters()) {
             startScreenshotActivityTestRules(screenshotParameter, activityRule);
         }
@@ -85,5 +87,4 @@ public abstract class AbstractScreenshotTest {
     public static void initLanguage() {
         initLocale = LocaleHelper.getLocale();
     }
-
 }

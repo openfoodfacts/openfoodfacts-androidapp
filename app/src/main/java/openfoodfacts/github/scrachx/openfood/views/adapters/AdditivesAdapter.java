@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
 
 /**
  * Created by prajwalm on 16/04/18.

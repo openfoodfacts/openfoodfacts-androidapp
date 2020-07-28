@@ -1086,4 +1086,5 @@
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

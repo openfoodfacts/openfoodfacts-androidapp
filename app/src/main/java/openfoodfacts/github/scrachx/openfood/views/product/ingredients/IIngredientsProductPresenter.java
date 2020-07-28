@@ -18,8 +18,8 @@ package openfoodfacts.github.scrachx.openfood.views.product.ingredients;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 
 /**
