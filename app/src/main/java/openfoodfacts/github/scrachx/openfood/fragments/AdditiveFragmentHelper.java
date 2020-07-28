@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;

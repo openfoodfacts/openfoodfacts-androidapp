@@ -26,7 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -49,17 +49,17 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     private Sensor mAccelerometer;
     private SensorManager mSensorManager;
     private ShakeDetector mShakeDetector;
-    private State productState;
+    private ProductState productState;
     /**
      * boolean to determine if scan on shake feature should be enabled
      */
     private boolean scanOnShake;
 
     @NonNull
-    public static ProductFragment newInstance(@NonNull State state) {
+    public static ProductFragment newInstance(@NonNull ProductState productState) {
 
         Bundle args = new Bundle();
-        args.putSerializable(STATE_ARG, state);
+        args.putSerializable(STATE_ARG, productState);
 
         ProductFragment fragment = new ProductFragment();
         fragment.setArguments(args);
@@ -81,7 +81,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         binding.toolbar.setVisibility(View.GONE);
-        productState = (State) getArguments().getSerializable(STATE_ARG);
+        productState = (ProductState) getArguments().getSerializable(STATE_ARG);
 
         setupViewPager(binding.pager);
 
@@ -193,7 +193,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
     }
 
-    public State getProductState() {
+    public ProductState getProductState() {
         return productState;
     }
 }

@@ -9,13 +9,13 @@ import java.io.IOException;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Tests for {@link Product}
  */
 @SuppressWarnings("UnnecessaryStringEscape")
 public class ProductTest {
-
     private static final String htmlEscapedSingleQuoteJson = "\"Sally\\\\\'s\"";
     private static final String badEscapeSequence = "\"Sally\\\'s\"";
     private static final String correctlyConvertedString = "Sally's";
@@ -27,11 +27,9 @@ public class ProductTest {
         assertEquals(correctlyConvertedString, product.getGenericName());
     }
 
-    @Test(expected = JsonMappingException.class)
-    public void productStringConverter_badEscapeSequence_throwsJsonMappingException()
-            throws Exception {
-        String productJson = "{\"generic_name\": " + badEscapeSequence + "}";
-        Product product = deserialize(productJson);
+    private static Product deserialize(String json) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(json, Product.class);
     }
 
     @Test
@@ -77,16 +75,17 @@ public class ProductTest {
     }
 
     @Test
-    public void toString_addsCodeAndProductName() throws IOException {
-        String productJson = "{\"packaging\": \"Plastic\"," +
-                "\"product_name\": \"Ice\"," +
-                "\"code\": \"0022343\"}";
-        Product product = deserialize(productJson);
-        assertTrue(product.toString().endsWith("[code=0022343,productName=Ice,additional_properties={}]"));
+    public void productStringConverter_badEscapeSequence_throwsJsonMappingException() {
+        String productJson = "{\"generic_name\": " + badEscapeSequence + "}";
+        assertThrows(JsonMappingException.class, () -> deserialize(productJson));
     }
 
-    private Product deserialize(String json) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(json, Product.class);
+    @Test
+    public void toString_addsCodeAndProductName() throws IOException {
+        String productJson = "{\"packaging\": \"Plastic\"," +
+            "\"product_name\": \"Ice\"," +
+            "\"code\": \"0022343\"}";
+        Product product = deserialize(productJson);
+        assertTrue(product.toString().endsWith("[code=0022343,productName=Ice,additional_properties={}]"));
     }
 }

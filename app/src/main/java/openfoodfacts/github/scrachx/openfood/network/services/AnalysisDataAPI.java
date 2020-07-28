@@ -7,15 +7,15 @@ package openfoodfacts.github.scrachx.openfood.network.services;
 import java.util.List;
 
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditivesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper;
 import retrofit2.http.GET;
 
 /**
@@ -94,5 +94,5 @@ public interface AnalysisDataAPI {
     Single<AnalysisTagsWrapper> getAnalysisTags();
 
     @GET(ANALYSIS_TAG_CONFIG_JSON)
-    Single<AnalysisTagGonfigsWrapper> getAnalysisTagConfigs();
+    Single<AnalysisTagConfigsWrapper> getAnalysisTagConfigs();
 }

@@ -17,7 +17,7 @@ import java.util.Date;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentContributorsBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
@@ -33,7 +33,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
  */
 public class ContributorsFragment extends BaseFragment {
     private FragmentContributorsBinding binding;
-    private State stateFromActivity;
+    private ProductState productStateFromActivity;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,17 +44,17 @@ public class ContributorsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        stateFromActivity = FragmentUtils.requireStateFromArguments(this);
+        productStateFromActivity = FragmentUtils.requireStateFromArguments(this);
 
-        refreshView(stateFromActivity);
+        refreshView(productStateFromActivity);
     }
 
     @Override
-    public void refreshView(State state) {
-        super.refreshView(state);
-        stateFromActivity = state;
+    public void refreshView(ProductState productState) {
+        super.refreshView(productState);
+        productStateFromActivity = productState;
 
-        final Product product = stateFromActivity.getProduct();
+        final Product product = productStateFromActivity.getProduct();
         if (isNotBlank(product.getCreator())) {
             String[] createdDate = getDateTime(product.getCreatedDateTime());
             String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1], product.getCreator());

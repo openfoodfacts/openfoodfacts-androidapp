@@ -33,8 +33,8 @@ import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.DatabaseHelper;
 import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
+import openfoodfacts.github.scrachx.openfood.utils.DatabaseHelper;
 
 public class OFFApplication extends MultiDexApplication {
     private static DaoSession daoSession;

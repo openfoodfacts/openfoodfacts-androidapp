@@ -27,7 +27,7 @@
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/nav_bar_height">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageViewIngredients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -57,7 +57,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/spacing_normal"
                     android:text="@string/extract_ingredients_prompt"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <LinearLayout
                     android:id="@+id/novaLayout"

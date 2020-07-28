@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Zadali jste 1 výrobek offline, který čeká na přidání do Open Food Facts</item>
         <item quantity="few"> Máte %d offline produkty, které čekají na přidání do Open Food Facts</item>
@@ -241,7 +241,7 @@
     <string name="cancel_button">Zrušit</string>
     <string name="login_button">Přihlašovací jméno</string>
     <string name="create_account_button">Vytvořit účet</string>
-    <string name="warning_alert_data">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % ařesná, vše prosím sami dvakrát zkontrolujte!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % ařesná, vše prosím sami dvakrát zkontrolujte!</string>
     <string name="title_info_dialog">Jak to funguje?</string>
     <string name="text_offline_info_dialog">Pokud jste offline, můžete produkty dále skenovat a do Open Food Facts se přidají později. Všechny naskenované produkty, se zobrazí zde a budete je moci odeslat pomocí tlačítka níže.</string>
     <string name="permission_camera">Přístup k fotoaparátu je zapotřebí ke snímání čárových kódů a pořizování snímků.</string>
