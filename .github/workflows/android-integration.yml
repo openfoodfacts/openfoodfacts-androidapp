@@ -52,25 +52,25 @@ jobs:
           arguments: assembleDebug --stacktrace
 
       - name: Upload OBF APK
-        uses: actions/upload-artifact@2.1.0
+        uses: actions/upload-artifact@v2.1.1
         with:
           name: obf
           path: app/build/outputs/apk/obf/debug/app-obf-debug.apk
 
       - name: Upload OFF APK
-        uses: actions/upload-artifact@2.1.0
+        uses: actions/upload-artifact@v2.1.1
         with:
           name: off
           path: app/build/outputs/apk/off/debug/app-off-debug.apk
 
       - name: Upload OPF APK
-        uses: actions/upload-artifact@2.1.0
+        uses: actions/upload-artifact@v2.1.1
         with:
           name: opf
           path: app/build/outputs/apk/opf/debug/app-opf-debug.apk
 
       - name: Upload OPFF APK
-        uses: actions/upload-artifact@2.1.0
+        uses: actions/upload-artifact@v2.1.1
         with:
           name: opff
           path: app/build/outputs/apk/opff/debug/app-opff-debug.apk
