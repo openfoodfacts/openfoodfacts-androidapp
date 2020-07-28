@@ -73,7 +73,7 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        disp.add(api.getIngredients(product.getCode()).observeOn(AndroidSchedulers.mainThread()).subscribe(
+        disp.add(api.getIngredients(product).observeOn(AndroidSchedulers.mainThread()).subscribe(
             ingredients -> {
                 adapter = new IngredientAnalysisRecyclerAdapter(ingredients, requireActivity());
                 binding.ingredientAnalysisRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));

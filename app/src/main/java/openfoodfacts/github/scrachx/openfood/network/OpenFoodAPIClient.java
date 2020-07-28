@@ -15,7 +15,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import org.apache.commons.lang.StringUtils;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -115,7 +114,7 @@ public class OpenFoodAPIClient {
      *
      * @param login the username
      */
-    public static String getCommentToUpload(String login) {
+    public static String getCommentToUpload(@Nullable String login) {
         StringBuilder comment;
         switch (BuildConfig.FLAVOR) {
             case AppFlavors.OBF:
@@ -135,7 +134,7 @@ public class OpenFoodAPIClient {
 
         final OFFApplication instance = OFFApplication.getInstance();
         comment.append(" ").append(Utils.getVersionName(instance));
-        if (login.isEmpty()) {
+        if (login != null && login.isEmpty()) {
             comment.append(" (Added by ").append(InstallationUtils.id(instance)).append(")");
         }
         return comment.toString();
@@ -351,7 +350,7 @@ public class OpenFoodAPIClient {
      * @param barcode
      * @return a single containing a list of product ingredients (can be empty)
      */
-    public Single<List<ProductIngredient>> getIngredients(String barcode) {
+    public Single<List<ProductIngredient>> getIngredients(@NonNull String barcode) {
         return api.getIngredientsByBarcode(barcode).map(node -> {
             if (node == null) {
                 return Collections.emptyList();
@@ -381,6 +380,10 @@ public class OpenFoodAPIClient {
             }
             return productIngredients;
         });
+    }
+
+    public Single<List<ProductIngredient>> getIngredients(@NonNull Product product) {
+        return getIngredients(product.getCode());
     }
 
     /**
@@ -611,8 +614,8 @@ public class OpenFoodAPIClient {
             });
     }
 
-    private Completable setDefaultImageFromServerResponse(@NotNull JsonNode body,
-                                                          @NotNull final ProductImage image) {
+    private Completable setDefaultImageFromServerResponse(@NonNull JsonNode body,
+                                                          @NonNull final ProductImage image) {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("imgid", body.get("image").get("imgid").asText());
         queryMap.put("id", body.get("imagefield").asText());
