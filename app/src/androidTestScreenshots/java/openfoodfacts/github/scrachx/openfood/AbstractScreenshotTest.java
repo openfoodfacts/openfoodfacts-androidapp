@@ -36,17 +36,17 @@ public abstract class AbstractScreenshotTest {
     ScreenshotsLocaleProvider localeProvider = new ScreenshotsLocaleProvider();
 
     @SafeVarargs
-    protected final <T extends Activity> void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<T>... activityRules) {
+    protected final void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<? extends Activity>... activityRules) {
         changeLocale(screenshotParameter);
-        for (ScreenshotActivityTestRule<T> activityRule : activityRules) {
+        for (ScreenshotActivityTestRule<? extends Activity> activityRule : activityRules) {
             activityRule.finishActivity();
             activityRule.setScreenshotParameter(screenshotParameter);
             activityRule.launchActivity(null);
         }
     }
 
-    protected <T extends Activity> void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<T> activityRule,
-                                                                         Collection<Intent> intents) {
+    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule<? extends Activity> activityRule,
+                                                    Collection<Intent> intents) {
 
         changeLocale(screenshotParameter);
         for (Intent intent : intents) {
@@ -72,7 +72,7 @@ public abstract class AbstractScreenshotTest {
     }
 
     @SafeVarargs
-    public final <T extends Activity> void startForAllLocales(ScreenshotActivityTestRule<T>... activityRule) {
+    public final void startForAllLocales(ScreenshotActivityTestRule<? extends Activity>... activityRule) {
         for (ScreenshotParameter screenshotParameter : localeProvider.getParameters()) {
             startScreenshotActivityTestRules(screenshotParameter, activityRule);
         }
@@ -87,5 +87,4 @@ public abstract class AbstractScreenshotTest {
     public static void initLanguage() {
         initLocale = LocaleHelper.getLocale();
     }
-
 }
