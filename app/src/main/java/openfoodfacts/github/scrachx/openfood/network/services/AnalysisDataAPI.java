@@ -6,7 +6,7 @@ package openfoodfacts.github.scrachx.openfood.network.services;
 
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Single;
 import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
 import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
 import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;

@@ -3,10 +3,10 @@ package openfoodfacts.github.scrachx.openfood.jobs;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import androidx.work.RxWorker;
+import androidx.work.rxjava3.RxWorker;
 import androidx.work.WorkerParameters;
 
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Single;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 
 import static androidx.work.ListenableWorker.Result.failure;

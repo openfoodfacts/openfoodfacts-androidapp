@@ -10,11 +10,11 @@ import androidx.work.Data;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.RxWorker;
+import androidx.work.rxjava3.RxWorker;
 import androidx.work.WorkManager;
 import androidx.work.WorkerParameters;
 
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Single;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 

@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.network.services;
 
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Single;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
 import retrofit2.http.Field;

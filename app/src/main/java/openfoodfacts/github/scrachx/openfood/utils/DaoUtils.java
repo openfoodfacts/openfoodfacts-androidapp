@@ -8,7 +8,7 @@ import org.greenrobot.greendao.AbstractDao;
 
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Single;
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 
 public class DaoUtils {

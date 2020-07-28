@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Single;
 import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;

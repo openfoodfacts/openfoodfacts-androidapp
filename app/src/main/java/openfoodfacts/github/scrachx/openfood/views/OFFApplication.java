@@ -10,8 +10,8 @@ import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.io.IOException;
 
-import io.reactivex.exceptions.UndeliverableException;
-import io.reactivex.plugins.RxJavaPlugins;
+import io.reactivex.rxjava3.exceptions.UndeliverableException;
+import io.reactivex.rxjava3.plugins.RxJavaPlugins;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent;
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;

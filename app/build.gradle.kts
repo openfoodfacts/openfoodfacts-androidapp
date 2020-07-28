@@ -57,19 +57,19 @@ dependencies {
 
     //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.work:work-rxjava2:2.3.4")
+    implementation("androidx.work:work-rxjava3:2.4.0")
     annotationProcessor("com.google.dagger:dagger-compiler:2.28")
     implementation("com.google.dagger:dagger:2.28")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
-    implementation("io.reactivex.rxjava2:rxjava:2.2.19")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.0")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
 
     //Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
 
     //scheduling jobs

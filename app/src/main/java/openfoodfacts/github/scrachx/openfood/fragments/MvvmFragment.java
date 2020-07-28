@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
 
 public abstract class MvvmFragment<T extends ViewModel, U> extends Fragment {

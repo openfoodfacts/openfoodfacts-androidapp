@@ -61,8 +61,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding;
 import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;

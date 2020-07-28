@@ -1,13 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.network;
 
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 /*
  * Created by Lobster on 03.03.18.
@@ -79,7 +79,7 @@ public class CommonApiManager implements ICommonApiManager {
             .baseUrl(BuildConfig.HOST)
             .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(AnalysisDataAPI.class);
 
@@ -94,7 +94,7 @@ public class CommonApiManager implements ICommonApiManager {
             .baseUrl("https://robotoff.openfoodfacts.org")
             .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(RobotoffAPI.class);
 
@@ -109,7 +109,7 @@ public class CommonApiManager implements ICommonApiManager {
             .baseUrl(BuildConfig.HOST)
             .client(Utils.httpClientBuilder())
             .addConverterFactory(jacksonConverterFactory)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
             .create(ProductsAPI.class);
 
