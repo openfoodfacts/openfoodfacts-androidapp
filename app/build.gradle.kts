@@ -67,7 +67,7 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
 
     //Networking
-    implementation("com.squareup.retrofit2:retrofit:2.6.4")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
     implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
