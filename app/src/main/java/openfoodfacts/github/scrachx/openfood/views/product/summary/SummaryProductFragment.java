@@ -127,24 +127,22 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private CustomTabsIntent customTabsIntent;
     private CompositeDisposable disp;
     private boolean hasCategoryInsightQuestion = false;
-    private DisposableCompletableObserver imageUploadListener = new DisposableCompletableObserver() {
-        @Override
-        public void onComplete() {
-            binding.uploadingImageProgress.setVisibility(GONE);
-            binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
-        }
 
-        @Override
-        public void onError(Throwable error) {
-            binding.uploadingImageProgress.setVisibility(GONE);
-            binding.uploadingImageProgressText.setVisibility(GONE);
-            Context context = getContext();
-            if (context == null) {
-                context = OFFApplication.getInstance();
-            }
-            Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+    private void onImageListenerComplete() {
+        binding.uploadingImageProgress.setVisibility(GONE);
+        binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
+    }
+
+    private void onImageListenerError(Throwable error) {
+        binding.uploadingImageProgress.setVisibility(GONE);
+        binding.uploadingImageProgressText.setVisibility(GONE);
+        Context context = getContext();
+        if (context == null) {
+            context = OFFApplication.getInstance();
         }
-    };
+        Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     private TagDao mTagDao;
@@ -197,7 +195,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 image.setFilePath(resultUri.getPath());
                 showOtherImageProgress();
 
-                disp.add(api.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(imageUploadListener));
+                disp.add(api.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        onImageListenerComplete();
+                    }
+
+                    @Override
+                    public void onError(Throwable error) {
+                        onImageListenerError(error);
+                    }
+                }));
             }
         });
 
@@ -884,7 +892,17 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void loadPhoto(File photoFile) {
         ProductImage image = new ProductImage(barcode, ProductImageField.FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        disp.add(api.postImg(image).subscribeWith(imageUploadListener));
+        disp.add(api.postImg(image).subscribeWith(new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                onImageListenerComplete();
+            }
+
+            @Override
+            public void onError(Throwable error) {
+                onImageListenerError(error);
+            }
+        }));
         binding.addPhotoLabel.setVisibility(GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
