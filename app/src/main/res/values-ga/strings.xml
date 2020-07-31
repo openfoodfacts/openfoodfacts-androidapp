@@ -156,7 +156,7 @@
         <item>Sucrose</item>
         <item>Taurine</item>
         <item>Trans fat</item>
-        <item>Vitamin A</item>
+        <item>Vitimín A</item>
         <item>Vitamin B1 (Thiamin)</item>
         <item>Vitamin B12 (Cobalamin)</item>
         <item>Vitamin B2 (Riboflavin)</item>
@@ -174,7 +174,7 @@
     <string name="search_button">Cuardaigh</string>
     <string name="alert_dialog_warning_title">Warning</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">Loading...</string>
     <string name="txtBarcode">Barcode:</string>
     <string name="txtCategories">Catagóirí:</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
@@ -214,8 +214,8 @@
     <string name="hintBrand">Brand</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
-    <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
+    <string name="toastSending">Uploading...</string>
+    <string name="txtLoading">Loading...</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
@@ -278,7 +278,7 @@
     <string name="title_clear_history_dialog">Glan</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Easpórtáil CSV</string>
-    <string name="txt_exporting_history">Exporting history…</string>
+    <string name="txt_exporting_history">Exporting history...</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">Uimh Branda</string>
@@ -351,19 +351,19 @@
     <string name="nutrition_glucose">Glucose</string>
     <string name="nutrition_fructose">Fructose</string>
     <string name="nutrition_maltose">Maltose</string>
-    <string name="nutrition_alcohol">Alcohol</string>
+    <string name="nutrition_alcohol">Alcól</string>
     <string name="nutrition_vitamins">Vitamins</string>
-    <string name="vitamin_a">Vitamin A</string>
+    <string name="vitamin_a">Vitimín A</string>
     <string name="vitamin_d">Vitamin D</string>
     <string name="vitamin_e">Vitamin E</string>
     <string name="vitamin_k">Vitamin K</string>
     <string name="vitamin_c">Vitamin C</string>
-    <string name="vitamin_b1">Vitamin B1</string>
-    <string name="vitamin_b2">Vitamin B2</string>
+    <string name="vitamin_b1">Vitimín B1</string>
+    <string name="vitamin_b2">Vitimín B2</string>
     <string name="vitamin_pp">Vitamin PP</string>
-    <string name="vitamin_b6">Vitamin B6</string>
-    <string name="vitamin_b9">Vitamin B9</string>
-    <string name="vitamin_b12">Vitamin B12</string>
+    <string name="vitamin_b6">Vitimín B6</string>
+    <string name="vitamin_b9">Vitimín B9</string>
+    <string name="vitamin_b12">Vitimín B12</string>
     <string name="biotin">Biotin</string>
     <string name="pantothenic_acid">Pantothenic acid</string>
     <string name="nutrition_minerals">Minerals</string>
@@ -433,7 +433,7 @@
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-    <string name="device_on_mobile_data_warning_title">Information</string>
+    <string name="device_on_mobile_data_warning_title">Eolas</string>
     <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
@@ -597,7 +597,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">Summary</string>
     <string name="ingredients">Comhábhair</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
