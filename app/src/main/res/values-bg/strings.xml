@@ -236,7 +236,7 @@
     <string name="text_offline_info_dialog">Можете да сканирате продукти, когато сте офлайн, за да ги добавите към Open Food Facts по-късно. Всички продукти, които сканирате, ще се показват тук и ще можете да ги изпратите, като използвате бутона по-долу.</string>
     <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
-    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
+    <string name="no_camera_dialog_content">Вашето устройство няма камера. Няма да можете да сканирате никой баркод.</string>
     <string name="permission_title">Информация за разрешението</string>
     <string name="permission_denied">Моля, активирайте разрешението в настройките</string>
     <string name="info_download_data_connection">Трябва да изтеглите някои данни, за да получите тази функционалност. Моля активирайте интернет връзката.</string>
@@ -252,10 +252,10 @@
     <string name="prefs_language">Език</string>
     <string name="prefs_language_summary">Промяна на езика</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_enjoying_app">Наслаждавате ли се на вашето преживяване с Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Съжаляваме, че чуваме това! Бихте ли ни казали какво се е случило?</string>
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
+    <string name="rate_app">Оценете приложението</string>
     <string name="no_thx">Не, благодаря</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">История</string>
@@ -294,7 +294,7 @@
     <string name="nutriment_serving_size">За порция : </string>
     <string name="action_manage_account">Управление на профил</string>
     <string name="action_contributes">Вашите приноси</string>
-    <string name="choose_energy_unit">Choose your preferred energy units for the nutrition table</string>
+    <string name="choose_energy_unit">Изберете предпочитаните от вас енергийни единици за хранителната таблица</string>
     <string name="energy_pref_title">Предпочитана енергийна единица</string>
     <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="volume_pref_title">Preferred volume unit</string>
