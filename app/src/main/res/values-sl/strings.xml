@@ -241,7 +241,7 @@
     <string name="cancel_button">Prekliči</string>
     <string name="login_button">Prijava</string>
     <string name="create_account_button">Ustvari račun</string>
-    <string name="warning_alert_data">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
+    <string name="warning_alert_data">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% ačno, zato vas prosimo, da dvakrat preverite sami! </string>
     <string name="title_info_dialog">Kako deluje?</string>
     <string name="text_offline_info_dialog">Kadarkoli lahko skenirate izdelke, jih lahko kasneje dodate v Open Food Facts. Tukaj bodo prikazani vsi izdelki, ki jih skenirate, in jih boste lahko poslali z uporabo spodnjega gumba.</string>
     <string name="permission_camera">Za pregledovanje črtnih kod in fotografiranje potrebujete dovoljenje kamere.</string>
@@ -458,7 +458,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Splošno</string>
     <string name="preference_header_network">Omrežje</string>
     <string name="preference_header_contributing">Prispevaj</string>
