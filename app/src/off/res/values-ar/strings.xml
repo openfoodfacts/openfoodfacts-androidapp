@@ -31,7 +31,7 @@
     <string name="text_offline_info_dialog">قم بمسح المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى Open Food Facts لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
+    <string name="tagline">قاعدة بيانات المنتجات الغذائية المجانية</string>
     <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. هل يمكنك إضافته؟</string>
     <string name="currently_on_version">حاليا على Open Food Facts</string>
 </resources>
