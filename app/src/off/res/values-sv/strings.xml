@@ -29,7 +29,7 @@
     <string name="translate_help_title">Hjälp översätta Open Food Facts</string>
     <string name="translate_help_summary">Ta Open Food Facts-databasen till ditt språk - ingen teknisk kunskap krävs</string>
     <string name="text_offline_info_dialog">Skanna produkterna även när du är offline för att lägga till dem i Open Food Facts senare. De skannade produkterna visas här och du kommer att kunna skicka dem med hjälp av knappen nedan.</string>
-    <string name="warning_alert_data">Din allergiinformation kommer aldrig att lagras på Open Food Facts servrar. Var även försiktig med att produktinformation kanske inte alltid stämmer, och att identifiering inte är 100% träffsäker, så dubbelkolla själv! </string>
+    <string name="warning_alert_data">Din allergiinformation kommer aldrig att lagras på Open Food Facts servrar. Var även försiktig med att produktinformation kanske inte alltid stämmer, och att identifiering inte är 100% aäffsäker, så dubbelkolla själv! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">den öppna databasen för livsmedelsprodukter</string>
     <string name="product_not_found">Produkten %1$s du skannat finns ännu inte i Open Food Facts. Kan du lägga till den?</string>
