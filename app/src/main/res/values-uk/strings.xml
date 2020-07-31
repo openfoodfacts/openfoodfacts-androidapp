@@ -17,24 +17,24 @@
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
-        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="many">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 секунду тому</item>
+        <item quantity="one">1 second ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 хвилину тому</item>
+        <item quantity="one">1 minute ago</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
-        <item quantity="other">%d хвилин тому</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 годину тому</item>
+        <item quantity="one">1 hour ago</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
         <item quantity="other">%d hours ago</item>
@@ -43,7 +43,7 @@
         <item quantity="one">1 day ago</item>
         <item quantity="few">%d days ago</item>
         <item quantity="many">%d days ago</item>
-        <item quantity="other">%d днів тому</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">Про додаток</string>
     <string name="action_discover">Дізнатись більше</string>
@@ -77,7 +77,7 @@
     <string-array name="weight_all_units">
         <item>г</item>
         <item>мг</item>
-        <item>мкг</item>
+        <item>µg</item>
         <item>% DV</item>
         <item>Міжнародна одиниця</item>
     </string-array>
@@ -166,7 +166,7 @@
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
-    <string name="search_button">Пошук</string>
+    <string name="search_button">Шукати</string>
     <string name="alert_dialog_warning_title">Увага</string>
     <string name="alert_dialog_warning_msg_user">Ім\'я користувача/Пароль було змінено. Будь ласка, оновіть інформацію.</string>
     <string name="toast_retrieving">Loading…</string>
@@ -196,7 +196,7 @@
     <string name="txtSugars">Цукор</string>
     <string name="hintBarcode">Код товару</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Логін</string>
+    <string name="hintLogin">Ім\'я користувача</string>
     <string name="hintPass">Пароль</string>
     <string name="errorLogin">Помилка логіна або пароля</string>
     <string name="errorWeb">Ми не змогли підключитись до Інтернету. Чи у Вас є проблеми з підключенням?</string>
@@ -223,7 +223,7 @@
     <string name="install">Install</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
-    <string name="search_drawer">Пошук</string>
+    <string name="search_drawer">Шукати</string>
     <string name="search_by_barcode_drawer">Введіть код товару</string>
     <string name="category_drawer">Категорії</string>
     <string name="search_by_category">Категорія</string>
@@ -233,15 +233,15 @@
     <string name="txt_anonymous">Анонімний</string>
     <string name="delete_txt">Видалити</string>
     <string name="sign_in_drawer">Увійти</string>
-    <string name="alert_drawer">Aлергени</string>
+    <string name="alert_drawer">Мої аллергени</string>
     <string name="your_lists">Ваші списки</string>
     <string name="title_dialog_alert">Додати оповіщення</string>
     <string name="select_camera">Обрати камеру</string>
     <string name="ok_button">Добре</string>
     <string name="cancel_button">Скасувати</string>
-    <string name="login_button">Логін</string>
+    <string name="login_button">Ім\'я користувача</string>
     <string name="create_account_button">Створити обліковий запис</string>
-    <string name="warning_alert_data">Інформація про вашу алергію ніколи не буде відправлена ​​на сервер Open Food Facts. Крім того, будьте обережні, бо дані продукту можуть бути неточними, а виявлення може бути не на 100% точним, тому подвійно перевіряйте самостійно! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Як це працює?</string>
     <string name="text_offline_info_dialog">Ви можете сканувати товари, коли Ви знаходитесь у автономний режимі, щоб пізніше додати їх до Open Food Facts. Усі скановані товари відображатимуться тут, і ви зможете їх надіслати за допомогою кнопки нижче.</string>
     <string name="permission_camera">Дозвіл на використання камери необхідний для сканування кодів товарів та фотографування.</string>
@@ -279,7 +279,7 @@
     <string name="no_brand">Торгівельну марку не знайдено</string>
     <string name="no_title">Без назви</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Стосунки з харчуванням для %1$s цього продукту</string>
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Перевірити</string>
     <string name="nutrition">Харчова цінність</string>
     <string name="calculated_nutrition">Розраховане харчування</string>
@@ -311,7 +311,7 @@
     <string name="logout_drawer">Вийти</string>
     <string name="contribution_without_account">Вам потрібно увійти або створити обліковий запис, щоб побачити свої внески</string>
     <string name="textCarbonFootprint">Викиди вуглецю / CO2: </string>
-    <string name="action_search">Пошук</string>
+    <string name="action_search">Шукати</string>
     <string name="search_hint">Пошук товару</string>
     <string name="number_of_results">Кількість результатів: </string>
     <string name="number_of_products">Кількість продуктів: </string>
@@ -394,7 +394,7 @@
     <string name="txtSaturatedFat">Насичені жири</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about Nova</string>
-    <string name="nova_grp1_msg">1 група - необроблені або мінімально оброблені продукти</string>
+    <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
@@ -402,7 +402,7 @@
     <string name="disabled_message">Ярлик недоступний</string>
     <string name="scan_shortcut_short_label">Сканувати</string>
     <string name="scan_shortcut_long_label">Сканування товару</string>
-    <string name="barcode_shortcut_short_label">Пошук</string>
+    <string name="barcode_shortcut_short_label">Шукати</string>
     <string name="barcode_shortcut_long_label">Пошук за кодом</string>
     <string name="history_shortcut_short_label">Історія</string>
     <string name="history_shortcut_long_label">Історія</string>
@@ -463,7 +463,7 @@
     <string name="preference_header_network">Мережа</string>
     <string name="preference_header_contributing">Зробити внесок</string>
     <string name="scan_first_string">Тут відображується історія переглянутих Вами продуктів.\nЦей список зберігається виключно локально в призначений для перегляду лише Вами.</string>
-    <string name="log_in">Логін</string>
+    <string name="log_in">Ім\'я користувача</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -479,7 +479,7 @@
     <string name="brand_string">Виробник</string>
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Алерген</string>
-    <string name="search_string">Пошук</string>
+    <string name="search_string">Шукати</string>
     <string name="country_string">Countries where sold</string>
     <string name="store_subtitle">Магазин</string>
     <string name="packaging_subtitle">Packaging</string>
@@ -591,7 +591,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">Загальна інформація</string>
     <string name="ingredients">Інгредієнти</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
@@ -769,7 +769,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
