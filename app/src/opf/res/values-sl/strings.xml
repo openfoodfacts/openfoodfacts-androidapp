@@ -30,7 +30,7 @@
     <string name="translate_help_title">Pomagajte prevesti Open Products Facts</string>
     <string name="translate_help_summary">Dodajte Open Facts Facts zbirko podatkov v vaš jezik - tehnično znanje ni potrebno</string>
     <string name="text_offline_info_dialog">Skenirajte izdelke tudi, ko ste brez povezave, da jih boste kasneje dodali v Open Products Facts. Skenirani izdelki bodo prikazani tukaj in jih boste lahko poslali z uporabo spodnjega gumba.</string>
-    <string name="warning_alert_data">Informacije o alergijah nikoli ne bodo poslani na strežnik Open Facts Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
+    <string name="warning_alert_data">Informacije o alergijah nikoli ne bodo poslani na strežnik Open Facts Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% ačno, zato vas prosimo, da dvakrat preverite sami! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
     <string name="tagline">the free product database</string>
