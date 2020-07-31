@@ -75,8 +75,8 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>g</item>
         <item>mg</item>
+        <item>kg</item>
         <item>μg</item>
         <item>% DDD</item>
         <item>IU</item>
@@ -241,7 +241,7 @@
     <string name="cancel_button">Zrušit</string>
     <string name="login_button">Přihlašovací jméno</string>
     <string name="create_account_button">Vytvořit účet</string>
-    <string name="warning_alert_data">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % přesná, vše prosím sami dvakrát zkontrolujte!</string>
+    <string name="warning_alert_data">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % ařesná, vše prosím sami dvakrát zkontrolujte!</string>
     <string name="title_info_dialog">Jak to funguje?</string>
     <string name="text_offline_info_dialog">Pokud jste offline, můžete produkty dále skenovat a do Open Food Facts se přidají později. Všechny naskenované produkty, se zobrazí zde a budete je moci odeslat pomocí tlačítka níže.</string>
     <string name="permission_camera">Přístup k fotoaparátu je zapotřebí ke snímání čárových kódů a pořizování snímků.</string>
@@ -612,7 +612,7 @@
     <string name="for_100g_100ml">Na 100 g / 100 ml</string>
     <string name="per_serving">V jedné porci</string>
     <string name="serving_size">Velikost porce</string>
-    <string name="alcohol_unit" formatted="false">% obj.</string>
+    <string name="alcohol_unit" formatted="false">[%i]bj.</string>
     <string name="add_a_nutrient">Přidejte živinu</string>
     <string name="add_this_product">Přidat výrobek</string>
     <string name="product_picture">Snímek výrobku</string>
@@ -653,7 +653,7 @@
     <string name="overexposure_high">Vysoké riziko nepřiměřeného příjmu</string>
     <string name="overexposure_moderate">Střední riziko nepřiměřeného příjmu</string>
     <string name="infants">Kojenci</string>
-    <string name="infants_age">&lt; %s</string>
+    <string name="infants_age">&lt; [%s]</string>
     <string name="toddlers">Batolata</string>
     <string name="toddlers_age">1 – 2</string>
     <string name="children">Děti</string>
