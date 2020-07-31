@@ -18,7 +18,7 @@
     <plurals name="offline_notification_count">
         <item quantity="one">\" Masz 1 produkt offline oczekujący na wysłanie do Open Food Facts
 
-Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item>
+Masz [%i] produktów offline oczekujących na wysyłkę do Open Food Facts\"</item>
         <item quantity="few">\" Masz 1 produkt offline oczekujący na wysłanie do Open Food Facts
 
 Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item>
@@ -37,7 +37,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     </plurals>
     <plurals name="minutes">
         <item quantity="one">\"Minutę temu
-%d minut temu\"</item>
+[%i] minut temu\"</item>
         <item quantity="few">\"Minutę temu
 %d minut temu\"</item>
         <item quantity="many">\"Minutę temu
@@ -47,7 +47,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     </plurals>
     <plurals name="hours">
         <item quantity="one">\"Godzinę temu
-%d godzin temu\"</item>
+[%i] godzin temu\"</item>
         <item quantity="few">\"Godzinę temu
 %d godzin temu\"</item>
         <item quantity="many">\"Wiele godzin temu
@@ -57,7 +57,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     </plurals>
     <plurals name="days">
         <item quantity="one">\"Jeden dzień temu
-%d dni temu\"</item>
+[%i] dni temu\"</item>
         <item quantity="few">\"Dzień temu
 %d dni temu\"</item>
         <item quantity="many">\"Dzień temu
@@ -98,7 +98,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
         <item>g</item>
         <item>mg</item>
         <item>μg</item>
-        <item>% Zalecane dzienne spożycie</item>
+        <item>% Dalecane dzienne spożycie</item>
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -478,7 +478,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Ogólne</string>
     <string name="preference_header_network">Połączenie</string>
     <string name="preference_header_contributing">Współpraca</string>
@@ -619,7 +619,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="ingredients_picture">Zdjęcie składników</string>
     <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
     <string name="ingredients_list">Lista składników</string>
-    <string name="ingredients_hint">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
+    <string name="ingredients_hint">Zachowaj kolejność, wskaż [%f]śli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
     <string name="extract_ingredients">Wyodrębnij składniki</string>
     <string name="extracting_ingredients">Wyodrębnianie składników</string>
     <string name="looksGood">Wygląda dobrze</string>
@@ -633,7 +633,7 @@ Masz %d produktów offline oczekujących na wysyłkę do Open Food Facts\"</item
     <string name="for_100g_100ml">W 100 g / 100 ml</string>
     <string name="per_serving">Na porcję</string>
     <string name="serving_size">Porcja</string>
-    <string name="alcohol_unit" formatted="false">% obj / °</string>
+    <string name="alcohol_unit" formatted="false">[%i]bj / °</string>
     <string name="add_a_nutrient">Dodaj składnik odżywczy</string>
     <string name="add_this_product">Dodaj ten produkt</string>
     <string name="product_picture">Zdjęcie Produktu</string>
