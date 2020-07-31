@@ -83,6 +83,7 @@ import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
 import openfoodfacts.github.scrachx.openfood.models.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
 import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
 import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
@@ -346,6 +347,17 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 preference.setSummaryOn(null);
                 preference.setSummaryOff(null);
                 preference.setTitle(getString(R.string.display_analysis_tag_status, config.getTypeName().toLowerCase()));
+                preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        if (newValue == Boolean.TRUE) {
+                            AnalyticsEvent.IngredientAnalysisEnabled(config.getType()).track();
+                        } else {
+                            AnalyticsEvent.IngredientAnalysisDisabled(config.getType()).track();
+                        }
+                        return true;
+                    }
+                });
                 displayCategory.addPreference(preference);
             }
         }

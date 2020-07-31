@@ -64,4 +64,12 @@ public class AnalyticsEvent {
     public static AnalyticsEvent ShoppingListExported() {
         return new AnalyticsEvent("shopping-lists", "exported", null, null);
     }
+
+    public static AnalyticsEvent IngredientAnalysisEnabled(String name) {
+        return new AnalyticsEvent("ingredient-analysis", "enabled", name, null);
+    }
+
+    public static AnalyticsEvent IngredientAnalysisDisabled(String name) {
+        return new AnalyticsEvent("ingredient-analysis", "disabled", name, null);
+    }
 }
