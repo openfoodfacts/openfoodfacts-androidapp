@@ -17,7 +17,7 @@
 <resources>
     <plurals name="offline_notification_count">
         <item quantity="zero">لديك منتج 1 %d لايُباع على الإنترنت بانتظار الإسهام في اوبن فود فاكتس</item>
-        <item quantity="one">لديك منتج 1 %d لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
+        <item quantity="one">لديك منتج 1 [%i] لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
         <item quantity="two"> لديك منتج 1 %d لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
         <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
