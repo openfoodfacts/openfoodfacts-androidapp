@@ -10,7 +10,7 @@
     <string name="website_product">https://world-tr.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-tr.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts, %1$d fazla gıda ürününden oluşan açık bir veritabanıdır (artı katkıda bulunacaklarınız).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Food Facts açık bir gıda ürünleri veritabanıdır.</string>
     <string name="slide_1_title">Gıda şeffaflığına katkıda bulunun</string>
     <string name="slide_1_desc">Ürünleri tarayın, fotoğraflarını çekin, gıda şeffaflığının gerçekleşmesini sağlayın</string>
@@ -20,18 +20,18 @@
     <string name="slide_3_desc">Favori gıda ürünlerinizin besin özelliklerinin sentetik bir görünümü</string>
     <string name="slide_4_title">Çevrimdışı çalışır</string>
     <string name="slide_4_desc">Şu anda internet bağlantınız olmasa dahi yeni ürünler ekleyebilirsiniz</string>
-    <string name="txtDialogsContent">Aradığınız ürün henüz Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
+    <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
     <string name="txtDialogsContentPowerMode">Aradığınız ürün Open Food Facts\'te zaten mevcut.</string>
     <string name="msg_share">Bu ürüne Open Food Facts\'te bak :</string>
     <string name="not_support_books">Kitaplar şu anda Open Food Facts tarafından desteklenmemektedir</string>
     <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Food Facts\'e ekle</string>
     <string name="Donation">Open Food Facts\'e bağışta bulunmak için buraya tıklayınız</string>
-    <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardım edin</string>
+    <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
     <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
     <string name="text_offline_info_dialog">Ürünleri Open Food Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
-    <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">özgür gıda ürünleri veritabanı</string>
-    <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
+    <string name="tagline">ücretsiz gıda ürünleri veritabanı</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="currently_on_version">Open Food Facts\'te mevcut olan</string>
 </resources>
