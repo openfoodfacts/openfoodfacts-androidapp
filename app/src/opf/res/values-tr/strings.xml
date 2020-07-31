@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-tr.openproductsfacts.org/contributor/</string>
     <string name="terms_url">https://world-tr.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Product Facts, %1$d fazla gıda ürününden oluşan açık bir veritabanıdır (artı katkıda bulunacaklarınız).</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$d products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Product Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.</string>
     <string name="slide_1_title">Ürün şeffaflığına katkıda bulunun</string>
     <string name="slide_1_desc">Ürünleri tarayın, fotoğraflarını çekin, ürün şeffaflığının gerçekleşmesini sağlayın</string>
@@ -30,11 +30,11 @@
     <string name="translate_help_title">Open Product Facts\'i tercüme etmeye yardım edin</string>
     <string name="translate_help_summary">Open Product Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
     <string name="text_offline_info_dialog">Ürünleri Open Product Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
-    <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Product Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
-    <string name="tagline">özgür ürün veritabanı</string>
-    <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Product Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
+    <string name="tagline">the free product database</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="currently_on_version">Open Product Facts\'te mevcut olan</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
     <!-- TODO add true support instead of overriding strings -->
