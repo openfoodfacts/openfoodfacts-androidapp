@@ -49,26 +49,19 @@ public class AnalyticsEvent {
         return new AnalyticsEvent("user-account", "logout", null, null);
     }
 
+    public static AnalyticsEvent RobotoffLoginPrompt() {
+        return new AnalyticsEvent("user-account", "login-prompt", "robotoff", null);
+    }
+
+    public static AnalyticsEvent RobotoffLoggedInAfterPrompt() {
+        return new AnalyticsEvent("user-account", "logged-in-after-prompt", "robotoff", null);
+    }
+
     public static AnalyticsEvent ShoppingListCreated() {
         return new AnalyticsEvent("shopping-lists", "created", null, null);
     }
 
     public static AnalyticsEvent ShoppingListExported() {
         return new AnalyticsEvent("shopping-lists", "exported", null, null);
-    }
-
-    public static AnalyticsEvent RobotoffSeen() {
-        return new AnalyticsEvent("robotoff", "seen", null, null);
-    }
-    public static AnalyticsEvent RobotoffAnsweredPositive() {
-        return new AnalyticsEvent("robotoff", "answered", "positive", null);
-    }
-
-    public static AnalyticsEvent RobotoffAnsweredNegative() {
-        return new AnalyticsEvent("robotoff", "answered", "negative", null);
-    }
-
-    public static AnalyticsEvent RobotoffAnsweredAmbiguous() {
-        return new AnalyticsEvent("robotoff", "answered", "ambiguous", null);
     }
 }

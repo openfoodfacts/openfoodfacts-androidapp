@@ -548,7 +548,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void showProductQuestion(Question question) {
         if (question != null && !question.isEmpty()) {
-            AnalyticsEvent.RobotoffSeen().track();
             productQuestion = question;
             binding.productQuestionText.setText(String.format("%s%n%s",
                 question.getQuestion(), question.getValue()));
@@ -576,21 +575,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 @Override
                 public void onPositiveFeedback(QuestionDialog dialog) {
                     //init POST request
-                    AnalyticsEvent.RobotoffAnsweredPositive().track();
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.POSITIVE);
                     dialog.dismiss();
                 }
 
                 @Override
                 public void onNegativeFeedback(QuestionDialog dialog) {
-                    AnalyticsEvent.RobotoffAnsweredNegative().track();
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.NEGATIVE);
                     dialog.dismiss();
                 }
 
                 @Override
                 public void onAmbiguityFeedback(QuestionDialog dialog) {
-                    AnalyticsEvent.RobotoffAnsweredAmbiguous().track();
                     sendProductInsights(productQuestion.getInsightId(), AnnotationAnswer.AMBIGUITY);
                     dialog.dismiss();
                 }
@@ -605,6 +601,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     public void sendProductInsights(String insightId, AnnotationAnswer annotation) {
         if (!Utils.isUserLoggedIn(requireActivity())) {
+            AnalyticsEvent.RobotoffLoginPrompt().track();
             new MaterialDialog.Builder(requireActivity())
                 .title(getString(R.string.sign_in_to_answer))
                 .positiveText(getString(R.string.sign_in_or_register))
@@ -612,6 +609,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                     registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                         result -> {
                             if (result.getResultCode() == Activity.RESULT_OK) {
+                                AnalyticsEvent.RobotoffLoggedInAfterPrompt().track();
                                 dialog.dismiss();
                                 processInsight(insightId, annotation);
                             }
