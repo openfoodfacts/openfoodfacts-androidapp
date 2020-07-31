@@ -120,7 +120,6 @@ public class AddProductOverviewFragment extends BaseFragment {
     private LabelNameDao mLabelNameDao;
     private OfflineSavedProduct mOfflineSavedProduct;
     private TagDao mTagDao;
-    private boolean newImageSelected;
     private CompositeDisposable disp = new CompositeDisposable();
     private File photoFile;
     private PhotoReceiverHandler photoReceiverHandler;
@@ -143,6 +142,12 @@ public class AddProductOverviewFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mTagDao = Utils.getDaoSession().getTagDao();
+        mCategoryNameDao = Utils.getDaoSession().getCategoryNameDao();
+        mLabelNameDao = Utils.getDaoSession().getLabelNameDao();
+        mCountryNameDao = Utils.getDaoSession().getCountryNameDao();
+
         photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
             URI resultUri = newPhotoFile.toURI();
             this.photoFile = newPhotoFile;
@@ -151,7 +156,6 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (frontImage) {
                 image = new ProductImage(barcode, FRONT, newPhotoFile);
                 mImageUrl = newPhotoFile.getAbsolutePath();
-                newImageSelected = true;
                 position = 0;
             } else {
                 image = new ProductImage(barcode, OTHER, newPhotoFile);
@@ -262,10 +266,6 @@ public class AddProductOverviewFragment extends BaseFragment {
      * Pre fill the fields of the product which are already present on the server.
      */
     private void preFillProductValues(String lang) {
-        mTagDao = Utils.getDaoSession().getTagDao();
-        mCategoryNameDao = Utils.getDaoSession().getCategoryNameDao();
-        mLabelNameDao = Utils.getDaoSession().getLabelNameDao();
-        mCountryNameDao = Utils.getDaoSession().getCountryNameDao();
         if (product.getProductName() != null && !product.getProductName().isEmpty()) {
             binding.name.setText(product.getProductName());
         }
