@@ -128,7 +128,7 @@
         <item>Omega 9 fatty acids</item>
         <item>Palmitic acid (16:0)</item>
         <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
-        <item>pH</item>
+        <item>Ph</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Poly unsaturated fat</item>
@@ -370,7 +370,7 @@
     <string name="iodine">Iodine</string>
     <string name="caffeine">Caffeine</string>
     <string name="taurine">Taurine</string>
-    <string name="ph">pH</string>
+    <string name="ph">Ph</string>
     <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Kakawo</string>
@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
