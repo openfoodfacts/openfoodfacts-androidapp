@@ -279,6 +279,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         if (productsToCompare.contains(product)) {
                             intent.putExtra("product_already_exists", true);
                         } else {
+                            AnalyticsEvent.AddProductToComparison(product.getCode()).track();
                             productsToCompare.add(product);
                         }
                         intent.putExtra(INTENT_KEY_PRODUCTS_TO_COMPARE, productsToCompare);

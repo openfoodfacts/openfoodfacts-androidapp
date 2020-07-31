@@ -72,4 +72,12 @@ public class AnalyticsEvent {
     public static AnalyticsEvent IngredientAnalysisDisabled(String name) {
         return new AnalyticsEvent("ingredient-analysis", "disabled", name, null);
     }
+
+    public static AnalyticsEvent AddProductToComparison(String barcode) {
+        return new AnalyticsEvent("products", "compare-add", barcode, null);
+    }
+
+    public static AnalyticsEvent CompareProducts(int count) {
+        return new AnalyticsEvent("products", "compare-multiple", null, (float) count);
+    }
 }

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAdapter;
@@ -58,6 +59,10 @@ public class ProductComparisonActivity extends BaseActivity {
 
         productComparisonAdapter = new ProductComparisonAdapter(products, this);
         binding.productComparisonRv.setAdapter(productComparisonAdapter);
+
+        if (products.size() > 1) {
+            AnalyticsEvent.CompareProducts(products.size()).track();
+        }
 
         binding.productComparisonButton.setOnClickListener(v -> {
             if (Utils.isHardwareCameraInstalled(ProductComparisonActivity.this)) {
