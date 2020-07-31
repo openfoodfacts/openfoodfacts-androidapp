@@ -1,4 +1,4 @@
-VERSION 3
+HANDELV 3
 ====
 6. It's easier to contribute new products, and get the Nutri-Score
 6. Create (and export) your product lists (shopping, eating…)
