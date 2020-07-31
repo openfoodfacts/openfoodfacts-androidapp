@@ -68,7 +68,7 @@
         <item>mg</item>
         <item>kg</item>
         <item>µg</item>
-        <item>% QDR</item>
+        <item>% DDR</item>
         <item>UI</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancel·la</string>
     <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
-    <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades!</string>
+    <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% axacta, així que comproveu-ho dues vegades!</string>
     <string name="title_info_dialog">Com funciona?</string>
     <string name="text_offline_info_dialog">Podeu escanejar productes fora de línia i afegir-los després a Open Food Facts. Tots els productes que escanegi apareixeran aquí, i podrà enviar-los amb el botó de baix.</string>
     <string name="permission_camera">El permís de la càmera és necessari per escanejar codis de barres i fer fotos.</string>
@@ -252,11 +252,11 @@
     <string name="prefs_language">Idioma</string>
     <string name="prefs_language_summary">Canvi de llengua</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
-    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
-    <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="user_enjoying_app">Gaudeixes de la teva experiència amb Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">Ens sap greu saber-ho! Ens podríeu explicar què ha passat?</string>
+    <string name="user_ask_rate_app">Genial! Feu saber a d\'altres què en penseu, d’aquesta aplicació!</string>
+    <string name="rate_app">Puntueu l\'aplicació</string>
+    <string name="no_thx">No, gràcies</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historial</string>
     <string name="clear_history">Neteja l\'historial</string>
@@ -434,7 +434,7 @@
     <string name="connectivity_check">Si us plau, comproveu la connexió a internet</string>
     <string name="dismiss">Omet</string>
     <string name="Terms">Condicions</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="TermsOfUse">Termes i privadesa</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://es-ca.openfoodfacts.org/terms-of-use</string>
@@ -446,7 +446,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://es-ca.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
+    <string name="url_nova_groups">https://world-ca.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://es-ca.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
@@ -628,7 +628,7 @@
     <string name="edit_ingredients_image">Edita la foto dels ingredients</string>
     <string name="edit_other_image">Edita la foto</string>
     <string name="sign_in_to_edit">Inicieu la sessió per editar un producte.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="sign_in_to_answer">Inicieu la sessió o registreu-vos per respondre una informació.</string>
     <string name="hint_quantity">Exemples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edita un producte</string>
     <string name="nutrient_already_added">%s ja està present en les dades nutricionals</string>
@@ -638,7 +638,7 @@
     <string name="description_activity_product">descripció</string>
     <string name="intent_filter_share_label">Afegiu a Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
-    <string name="overexposure_high">Risc alt per exposició excessiva</string>
+    <string name="overexposure_high">Risc alt d\'exposició excessiva</string>
     <string name="overexposure_moderate">Risc moderat per exposició excessiva</string>
     <string name="infants">Nadons</string>
     <string name="infants_age">&lt; 1</string>
@@ -688,35 +688,35 @@
     <string name="txt_create_new_list">Crea una llista nova</string>
     <string name="txt_add_to_new_list">Afegeix a una llista nova</string>
     <string name="create_new_list_list_name">Nom de la llista</string>
-    <string name="txt_eaten_products">Eaten products</string>
-    <string name="txt_products_to_buy">Products to buy</string>
-    <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
-    <string name="txt_your_listed_products_exported">Your products have been exported</string>
+    <string name="txt_eaten_products">Productes menjats</string>
+    <string name="txt_products_to_buy">Productes per comprar</string>
+    <string name="txt_exporting_your_listed_products">Exportació dels vostres productes…</string>
+    <string name="txt_your_listed_products_exported">Els vostres productes s’han exportat</string>
     <string name="txt_discard">Descarta</string>
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
-    <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_your_listed_products">Podreu afegir productes en aquesta llista si feu una cerca i feu clic al botó + a la part superior dreta de la pàgina del producte.</string>
     <string name="search_history_pref_title">Suprimiu l\'historial de cerca local</string>
     <string name="search_history_pref_summary">Elimineu totes les cerques que heu realitzat en aquest dispositiu</string>
-    <string name="search_history_pref_dialog_content">Delete local search history?</string>
+    <string name="search_history_pref_dialog_content">Suprimiu l\'historial de cerca local?</string>
     <string name="settings_country_dialog_title">Seleccioneu el vostre país</string>
     <string name="settings_country_summary">Canvieu el país seleccionat</string>
     <string name="settings_country_title">País</string>
-    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
-    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="txt_no_nutrition_data">Aquest producte no té cap informació nutricional a l\'envàs. Si això ha canviat, podeu editar el producte.</string>
+    <string name="image_prompt_language">Feu una foto dels ingredients a</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Afegiu productes</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_another_product">Afegiu un altre producte</string>
     <string name="add_nutrition_facts_for_nutriscore">Afegiu informació nutricional per calcular el Nutri-Score</string>
-    <string name="product_summary_action_compare_button_label">Compare</string>
-    <string name="product_summary_action_add_to_list_button_label">Add to list</string>
+    <string name="product_summary_action_compare_button_label">Comparar</string>
+    <string name="product_summary_action_add_to_list_button_label">Afegiu a la llista</string>
     <string name="product_summary_action_edit_button_label">Edita</string>
     <string name="product_summary_action_share_button_label">Comparteix</string>
     <string name="product_question_prompt">Toca per contestar</string>
     <string name="product_question_positive_response">Si</string>
     <string name="product_question_negative_response">No</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_ambiguous_response">No n\'estic segur</string>
     <string name="product_question_submit_message">Gràcies per la teva aportació</string>
     <string name="error_nutrient_entry">El valor ha de ser numèric. Exemple: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
@@ -755,7 +755,7 @@
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="help_translate_ingredients">Ajudeu a traduir els ingredients a la vostra llengua</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
