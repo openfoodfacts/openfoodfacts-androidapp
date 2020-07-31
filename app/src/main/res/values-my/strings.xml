@@ -16,7 +16,7 @@
   -->
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="other">%d seconds ago</item>
@@ -181,7 +181,7 @@
     <string name="txtSugars">သကြားဓာတ်</string>
     <string name="hintBarcode">ဘားကုုဒ္</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">ဝင္ေရာက္ရန္</string>
+    <string name="hintLogin">Username</string>
     <string name="hintPass">စကားဝွက္</string>
     <string name="errorLogin">ဝင္ေရာက္မႈ သို႔မဟုတ္ စကားဝွက္ခ်ိဳ႕ယြင္းခ်က္</string>
     <string name="errorWeb">ကၽြႏ္ုပ္တို႔မွ အင္တာနက္ႏွင့္မခ်ိတ္ဆက္ႏိုင္ဘူးျဖစ္ေနသည္။ သင့္တြင္ ခ်ိတ္ဆက္မႈခ်ိဳ႕ယြင္းေနပါသလား။</string>
@@ -224,9 +224,9 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">အိုကေ</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">ဝင္ေရာက္ရန္</string>
+    <string name="login_button">Username</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
@@ -264,7 +264,7 @@
     <string name="no_brand">No Brand</string>
     <string name="no_title">No Title</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">များအတွက်အာဟာရအချက်အလက်များစားပွဲပေါ်မှာ %1$s ဒီထုတ်ကုန်၏</string>
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Check</string>
     <string name="nutrition">အဟာရဓါတ်</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -448,7 +448,7 @@
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">ဝင္ေရာက္ရန္</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -573,7 +573,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">အက်ဥ္းခ်ဳပ္</string>
     <string name="ingredients">ပါဝင္မႈမ်ား</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
