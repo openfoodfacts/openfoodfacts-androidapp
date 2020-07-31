@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
-    <string name="website">crwdns114636:0crwdne114636:0</string>
+    <string name="website">crwdns131970:0crwdne131970:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
-    <string name="website_contribute">crwdns114638:0crwdne114638:0</string>
+    <string name="website_contribute">crwdns131972:0crwdne131972:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
-    <string name="website_discover">crwdns114640:0crwdne114640:0</string>
+    <string name="website_discover">crwdns131974:0crwdne131974:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
-    <string name="website_product">crwdns114642:0crwdne114642:0</string>
+    <string name="website_product">crwdns131976:0crwdne131976:0</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
-    <string name="website_contributor">crwdns114644:0crwdne114644:0</string>
-    <string name="txtHomeOnline">crwdns114646:0%1$dcrwdne114646:0</string>
-    <string name="txtHome">crwdns114648:0crwdne114648:0</string>
-    <string name="slide_1_title">crwdns114650:0crwdne114650:0</string>
-    <string name="slide_1_desc">crwdns114652:0crwdne114652:0</string>
-    <string name="slide_2_title">crwdns114654:0crwdne114654:0</string>
-    <string name="slide_2_desc">crwdns114656:0crwdne114656:0</string>
-    <string name="slide_3_title">crwdns114658:0crwdne114658:0</string>
-    <string name="slide_3_desc">crwdns114660:0crwdne114660:0</string>
-    <string name="slide_4_title">crwdns114662:0crwdne114662:0</string>
-    <string name="slide_4_desc">crwdns114664:0crwdne114664:0</string>
-    <string name="txtDialogsContent">crwdns114666:0crwdne114666:0</string>
-    <string name="txtDialogsContentPowerMode">crwdns114668:0crwdne114668:0</string>
-    <string name="msg_share">crwdns114670:0crwdne114670:0</string>
-    <string name="not_support_books">crwdns114672:0crwdne114672:0</string>
-    <string name="txt_broaden_search">crwdns114674:0crwdne114674:0</string>
-    <string name="Donation">crwdns114676:0crwdne114676:0</string>
-    <string name="translate_help_title">crwdns114678:0crwdne114678:0</string>
-    <string name="translate_help_summary">crwdns114680:0crwdne114680:0</string>
-    <string name="text_offline_info_dialog">crwdns114682:0crwdne114682:0</string>
-    <string name="warning_alert_data">crwdns114684:0crwdne114684:0</string>
+    <string name="website_contributor">crwdns131980:0crwdne131980:0</string>
+    <string name="txtHomeOnline">crwdns131982:0%1$dcrwdne131982:0</string>
+    <string name="txtHome">crwdns131984:0crwdne131984:0</string>
+    <string name="slide_1_title">crwdns131986:0crwdne131986:0</string>
+    <string name="slide_1_desc">crwdns131988:0crwdne131988:0</string>
+    <string name="slide_2_title">crwdns131990:0crwdne131990:0</string>
+    <string name="slide_2_desc">crwdns131992:0crwdne131992:0</string>
+    <string name="slide_3_title">crwdns131994:0crwdne131994:0</string>
+    <string name="slide_3_desc">crwdns131996:0crwdne131996:0</string>
+    <string name="slide_4_title">crwdns131998:0crwdne131998:0</string>
+    <string name="slide_4_desc">crwdns132000:0crwdne132000:0</string>
+    <string name="txtDialogsContent">crwdns132002:0crwdne132002:0</string>
+    <string name="txtDialogsContentPowerMode">crwdns132004:0crwdne132004:0</string>
+    <string name="msg_share">crwdns132006:0crwdne132006:0</string>
+    <string name="not_support_books">crwdns132008:0crwdne132008:0</string>
+    <string name="txt_broaden_search">crwdns132010:0crwdne132010:0</string>
+    <string name="Donation">crwdns132012:0crwdne132012:0</string>
+    <string name="translate_help_title">crwdns132014:0crwdne132014:0</string>
+    <string name="translate_help_summary">crwdns132016:0crwdne132016:0</string>
+    <string name="text_offline_info_dialog">crwdns132018:0crwdne132018:0</string>
+    <string name="warning_alert_data">crwdns132020:0% acrwdne132020:0</string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">crwdns114696:0crwdne114696:0</string>
-    <string name="product_not_found">crwdns114700:0%1$scrwdne114700:0</string>
-    <string name="currently_on_version">crwdns114702:0crwdne114702:0</string>
+    <string name="tagline">crwdns132032:0crwdne132032:0</string>
+    <string name="product_not_found">crwdns132036:0%1$scrwdne132036:0</string>
+    <string name="currently_on_version">crwdns132038:0crwdne132038:0</string>
 </resources>
