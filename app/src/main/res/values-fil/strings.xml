@@ -16,8 +16,8 @@
   -->
 <resources>
     <plurals name="offline_notification_count">
-        <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other"> You have one offline product waiting to be contributing, Just open the food facts</item>
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">1 second ago</item>
@@ -25,15 +25,15 @@
     </plurals>
     <plurals name="minutes">
         <item quantity="one">1 minute ago</item>
-        <item quantity="other">%d one minute ago</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
         <item quantity="one">1 hour ago</item>
-        <item quantity="other">%d one hour ago</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
         <item quantity="one">1 day ago</item>
-        <item quantity="other">%d one day ago</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">Tungkol sa</string>
     <string name="action_discover">Tuklasin</string>
@@ -186,7 +186,7 @@
     <string name="txtSugars">Mga asukal</string>
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Mag-login</string>
+    <string name="hintLogin">Username</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Error sa login o password</string>
     <string name="errorWeb">Hindi namin ma-access ang internet. Mayroon ka bang mga isyu sa pagkakakonekta?</string>
@@ -229,9 +229,9 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">Mag-login</string>
+    <string name="login_button">Username</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Ang impormasyon ng iyong alerdyi ay hindi ipapadala sa server ng Mga Buksan na Mga Katotohanan sa Pagkain. Gayundin, mag-ingat na ang data ng produkto ay maaaring hindi tumpak, at ang pagtuklas ay maaaring hindi tumpak na 100%, kaya\'t mangyaring mag-doblwng ingat sa iyong sarili! </string>
+    <string name="warning_alert_data">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
     <string name="text_offline_info_dialog">Maaari mong i-scan ang mga produkto kapag offline ka upang idagdag ang mga ito sa Open Food Fact sa ibang pagkakataon. Ang lahat ng mga produkto na iyong i-scan ay lilitaw dito, at magagawa mong ipadala ang mga ito gamit ang pindutan sa ibaba.</string>
     <string name="permission_camera">Kinakailangan ang pahintulot ng kamera upang i-scan ang mga barcode at kumuha ng mga larawan.</string>
@@ -269,7 +269,7 @@
     <string name="no_brand">No Brand</string>
     <string name="no_title">No Title</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Ang talino ng talahanayan ng Nutrisyon para sa %1$s ng produktong ito</string>
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Check</string>
     <string name="nutrition">Nutrisyon</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -453,7 +453,7 @@
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Tumulong</string>
     <string name="scan_first_string">Makikita ang iyong kasaysayan ng produkto na tiningnan ng produkto. \n Nang kasaysayan na ito ay para lamang sa iyong mga mata at nakaimbak nang lokal.</string>
-    <string name="log_in">Mag-login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Nakapasok na!</string>
     <string name="confirm_logout">Kumpirmahin ang pag-logout</string>
     <string name="logout_dialog_content">Sigurado ka bang mag-log out?</string>
@@ -579,7 +579,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">Buod</string>
     <string name="ingredients">Mga sangkap</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
@@ -757,7 +757,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
