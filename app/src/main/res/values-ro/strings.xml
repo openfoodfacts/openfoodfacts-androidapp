@@ -387,7 +387,7 @@
     <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
     <string name="take_more_pictures">Faceți mai multe poze</string>
     <string name="txtSaturatedFat">Acizi grași saturați</string>
-    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
+    <string name="nutriscore_info_msg">Aflați mai multe despre Nutri-Score</string>
     <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Grupa 1 - Alimente neprocesate sau procesate minim</string>
     <string name="nova_grp2_msg">Grupa 2 - Ingrediente culinare procesate</string>
@@ -453,7 +453,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Rețea</string>
     <string name="preference_header_contributing">Contribuire</string>
