@@ -105,7 +105,7 @@
         <item>Glucose</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>იოდი</item>
-        <item>Iron</item>
+        <item>რკინა</item>
         <item>Lactose</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
@@ -194,7 +194,7 @@
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtYes">Yes</string>
+    <string name="txtYes">დიახ</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">ბრენდი</string>
     <string name="txtSendAll">Upload all</string>
@@ -579,7 +579,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">Summary</string>
     <string name="ingredients">Ingredients</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
