@@ -25,7 +25,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000000">
 
         <ImageView
             android:id="@+id/logo"
@@ -34,12 +35,12 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/OFFlogo"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_openfacts_logo_no_tagline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.40" />
+            app:layout_constraintVertical_bias="0.40"
+            app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tagline"
