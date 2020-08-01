@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_screen4"
+    android:background="@color/monkey_happy"
     android:gravity="center">
 
     <ImageView
@@ -11,7 +11,9 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/ic_aeroplane" />
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/ic_co2_medium_24dp" />
 
     <TextView
         android:id="@+id/slide_4_title"
@@ -21,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:padding="20dp"
-        android:text="@string/slide_4_title"
+        android:text="Environmental impact"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -35,7 +37,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:gravity="center_horizontal"
-        android:text="@string/slide_4_desc"
+        android:text="We compute the environmental impact of your food, in terms of CO2 and sustainability."
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="@dimen/slide_desc" />
