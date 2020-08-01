@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textColor="?android:textColorSecondary"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:autoSizeMaxTextSize="28sp"
             app:autoSizeMinTextSize="12sp"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:text="@string/initial_loading"
-            android:textColor="?android:textColorPrimary"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@id/logo"
             app:layout_constraintStart_toStartOf="@id/logo"
             app:layout_constraintTop_toBottomOf="@id/tagline" />
