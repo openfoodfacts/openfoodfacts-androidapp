@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -41,6 +43,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 public class IngredientsWithTagDialogFragment extends DialogFragment {
     private SharedPreferences prefs;
     private DialogInterface.OnDismissListener onDismissListener;
+    private static final String AMBIGUOUS_INGREDIENT_KEY = "ambiguous_ingredient";
 
     public static IngredientsWithTagDialogFragment newInstance(Product product, AnalysisTagConfig config) {
         IngredientsWithTagDialogFragment frag = new IngredientsWithTagDialogFragment();
@@ -75,6 +78,11 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             String showIngredients = config.getName().getShowIngredients();
             if (showIngredients != null) {
                 args.putSerializable("ingredients", getMatchingIngredientsText(product, showIngredients.split(":")));
+            }
+            Optional<LinkedHashMap<String, String>> ambiguousIngredient = product.getIngredients().stream()
+                .filter(ingredientList -> ingredientList.containsKey(config.getType()) && ingredientList.containsValue("maybe")).findFirst();
+            if (ambiguousIngredient.isPresent() && ambiguousIngredient.get().containsKey("text")) {
+                args.putString(AMBIGUOUS_INGREDIENT_KEY, ambiguousIngredient.get().get("text"));
             }
         }
         frag.setArguments(args);
@@ -150,6 +158,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             String color = getArguments().getString("color");
             String name = getArguments().getString("name");
             String ingredients = getArguments().getString("ingredients");
+            String ambiguousIngredient = getArguments().getString(AMBIGUOUS_INGREDIENT_KEY);
 
             AppCompatImageView icon = getView().findViewById(R.id.icon);
             Picasso.get()
@@ -166,30 +175,34 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             sc.setChecked(prefs.getBoolean(type, true));
             sc.setOnCheckedChangeListener((buttonView, isChecked) -> prefs.edit().putBoolean(type, isChecked).apply());
 
-            String messageStr = getString(R.string.ingredients_in_this_product_are, name.toLowerCase());
+            Spanned messageToBeShown = Html.fromHtml(getString(R.string.ingredients_in_this_product_are, name.toLowerCase()));
             AppCompatButton helpNeeded = getView().findViewById(R.id.helpNeeded);
             boolean showHelpTakePhoto = getArguments().getBoolean("photos_to_be_validated", false);
+            boolean hasAmbiguousIngredient = tag != null && ambiguousIngredient != null;
             boolean showHelpTranslate = tag != null && tag.contains("unknown");
             boolean showHelpExtract = showHelpTranslate && getArguments().getBoolean("missing_ingredients", false);
             AppCompatImageView image = getView().findViewById(R.id.image);
             if (showHelpTakePhoto) {
-                messageStr = getString(R.string.unknown_status_missing_ingredients);
+                messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_missing_ingredients));
                 image.setImageResource(R.drawable.ic_add_a_photo_dark_48dp);
                 image.setOnClickListener(v -> goToAddPhoto());
                 helpNeeded.setText(Html.fromHtml(getString(R.string.add_photo_to_extract_ingredients)));
                 helpNeeded.setOnClickListener(v -> goToAddPhoto());
+            } else if (hasAmbiguousIngredient) {
+                messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient));
+                helpNeeded.setVisibility(View.GONE);
             } else if (showHelpExtract) {
                 String ingredientsImageUrl = getArguments().getString("ingredients_image_url");
                 Picasso.get()
                     .load(ingredientsImageUrl)
                     .into(image);
                 image.setOnClickListener(v -> goToExtract());
-                messageStr = getString(R.string.unknown_status_missing_ingredients);
+                messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_missing_ingredients));
                 helpNeeded.setText(Html.fromHtml(getString(R.string.help_extract_ingredients, typeName.toLowerCase())));
                 helpNeeded.setOnClickListener(v -> goToExtract());
                 helpNeeded.setVisibility(View.VISIBLE);
             } else if (showHelpTranslate) {
-                messageStr = getString(R.string.unknown_status_no_translation);
+                messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_no_translation));
                 helpNeeded.setText(Html.fromHtml(getString(R.string.help_translate_ingredients)));
                 helpNeeded.setOnClickListener(v -> {
                     CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
@@ -208,12 +221,12 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             } else {
                 image.setVisibility(View.GONE);
                 if (!TextUtils.isEmpty(ingredients)) {
-                    messageStr = getString(R.string.ingredients_in_this_product, name.toLowerCase()) + ingredients;
+                    messageToBeShown = Html.fromHtml(getString(R.string.ingredients_in_this_product, name.toLowerCase()) + ingredients);
                 }
                 helpNeeded.setVisibility(View.GONE);
             }
             AppCompatTextView message = getView().findViewById(R.id.message);
-            message.setText(Html.fromHtml(messageStr));
+            message.setText(messageToBeShown);
 
             getView().findViewById(R.id.close).setOnClickListener(v -> dismiss());
         }
