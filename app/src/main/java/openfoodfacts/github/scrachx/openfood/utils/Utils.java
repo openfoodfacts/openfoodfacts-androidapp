@@ -355,11 +355,7 @@ public class Utils {
     }
 
     public static int getSmallImageGrade(Product product) {
-        String nutritionGrade = null;
-        if (product != null) {
-            nutritionGrade = product.getNutritionGradeFr() != null ? product.getNutritionGradeFr() : product.getNutritionGradeTag();
-        }
-        return getSmallImageGrade(nutritionGrade);
+        return getSmallImageGrade(product == null ? null : (product.getNutritionGradeFr() != null ? product.getNutritionGradeFr() : product.getNutritionGradeTag()));
     }
 
     public static int getImageEnvironmentImpact(Product product) {
