@@ -145,6 +145,7 @@ public final class ApiFields {
         public static final String COUNTRIES = "countries";
         public static final String STORES = "stores";
         public static final String STATUS = "status";
+        public static final String NUTRITION_GRADE = "nutrition_grades_tags";
 
         private Keys() {
 
