@@ -38,33 +38,33 @@ class ProductStringConverter extends StdConverter<String, String> {
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
+    private final Map<String, Object> additionalProperties = new HashMap<>();
     @JsonProperty(ApiFields.Keys.ADDITIVES_TAGS)
     private final List<String> additivesTags = new ArrayList<>();
+    private String allergens;
     @JsonProperty(ApiFields.Keys.ALLERGENS_HIERARCHY)
     private final List<String> allergensHierarchy = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.ALLERGENS_TAGS)
     private List<String> allergensTags;
     @JsonProperty(ApiFields.Keys.AMINO_ACIDS_TAGS)
     private List<String> aminoAcidTags = new ArrayList<>();
+    private String brands;
     @JsonProperty(ApiFields.Keys.BRANDS_TAGS)
     private final List<String> brandsTags = new ArrayList<>();
-    private String url;
-    private String code;
-    private final Map<String, Object> additionalProperties = new HashMap<>();
     @JsonProperty(ApiFields.Keys.CATEGORIES_TAGS)
     private List<String> categoriesTags;
     @JsonProperty(ApiFields.Keys.CITIES_TAGS)
     private final List<Object> citiesTags = new ArrayList<>();
+    private String code;
     @JsonProperty(ApiFields.Keys.CONSERVATION_CONDITIONS)
     private String conservationConditions;
+    private String countries;
     @JsonProperty(ApiFields.Keys.COUNTRIES_TAGS)
     private List<String> countriesTags;
-    private Nutriments nutriments;
     @JsonProperty(ApiFields.Keys.CREATED_DATE_TIME)
     private String createdDateTime;
     @JsonProperty(ApiFields.Keys.CREATOR)
     private String creator;
-    private String traces;
     @JsonProperty(ApiFields.Keys.CUSTOMER_SERVICE)
     private String customerService;
     @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
@@ -82,18 +82,12 @@ public class Product implements Serializable {
     private String imageFrontUrl;
     @JsonProperty(ApiFields.Keys.IMAGE_INGREDIENTS_URL)
     private String imageIngredientsUrl;
-    private String allergens;
-    private String origins;
-    private String stores;
     @JsonProperty(ApiFields.Keys.IMAGE_NUTRITION_URL)
     private String imageNutritionUrl;
     @JsonProperty(ApiFields.Keys.IMAGE_SMALL_URL)
     private String imageSmallUrl;
-    private String countries;
     @JsonProperty(ApiFields.Keys.IMAGE_URL)
     private String imageUrl;
-    private String brands;
-    private String packaging;
     @JsonProperty(ApiFields.Keys.INGREDIENTS)
     private final List<LinkedHashMap<String, String>> ingredients = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.INGREDIENTS_ANALYSIS_TAGS)
@@ -131,14 +125,17 @@ public class Product implements Serializable {
     private String novaGroups;
     @JsonProperty(ApiFields.Keys.NUTRIENT_LEVELS)
     private NutrientLevels nutrientLevels;
+    private Nutriments nutriments;
     @JsonProperty(ApiFields.Keys.NUTRITION_DATA_PER)
     private String nutritionDataPer;
     @JsonProperty(ApiFields.Keys.NUTRITION_GRADE_FR)
     private String nutritionGradeFr;
+    private String origins;
     @JsonProperty(ApiFields.Keys.OTHER_INFORMATION)
     private String otherInformation;
     @JsonProperty(ApiFields.Keys.OTHER_NUTRITIONAL_SUBSTANCES_TAGS)
     private List<String> otherNutritionTags = new ArrayList<>();
+    private String packaging;
     @JsonProperty(ApiFields.Keys.PRODUCT_NAME)
     @JsonDeserialize(converter = ProductStringConverter.class)
     private String productName;
@@ -154,8 +151,11 @@ public class Product implements Serializable {
     private String servingSize;
     @JsonProperty(ApiFields.Keys.STATES_TAGS)
     private final List<String> statesTags = new ArrayList<>();
+    private String stores;
+    private String traces;
     @JsonProperty(ApiFields.Keys.TRACES_TAGS)
     private final List<String> tracesTags = new ArrayList<>();
+    private String url;
     @JsonProperty(ApiFields.Keys.VITAMINS_TAGS)
     private List<String> vitaminTags = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.WARNING)
@@ -557,6 +557,7 @@ public class Product implements Serializable {
     /**
      * @return The nutritionGradeFr
      */
+    @Nullable
     public String getNutritionGradeFr() {
         return nutritionGradeFr;
     }
@@ -643,6 +644,10 @@ public class Product implements Serializable {
         return imageUrl;
     }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public String getImageUrl(String languageCode) {
         String url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(url)) {
@@ -702,10 +707,6 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getEnvironmentInfocard() {
         return environmentInfocard;
     }
@@ -744,6 +745,18 @@ public class Product implements Serializable {
      */
     public String getRecyclingInstructionsToRecycle() {
         return recyclingInstructionsToRecycle;
+    }
+
+    @Nullable
+    public String getNutritionGradeTag() {
+        if (!additionalProperties.containsKey(ApiFields.Keys.NUTRITION_GRADE)) {
+            return null;
+        }
+        List<String> nutritionGradeTags = (List<String>) additionalProperties.get(ApiFields.Keys.NUTRITION_GRADE);
+        if (nutritionGradeTags == null || nutritionGradeTags.isEmpty()) {
+            return null;
+        }
+        return nutritionGradeTags.get(0);
     }
 
     @NonNull
