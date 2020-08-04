@@ -26,7 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -41,23 +41,36 @@ import static android.app.Activity.RESULT_OK;
 
 public class ProductFragment extends Fragment implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    private ActivityProductBinding binding;
-    private State productState;
+    private static final String STATE_ARG = "state";
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
-    private ShakeDetector mShakeDetector;
+    private ActivityProductBinding binding;
     private CompositeDisposable disp = new CompositeDisposable();
+    private Sensor mAccelerometer;
+    private SensorManager mSensorManager;
+    private ShakeDetector mShakeDetector;
+    private ProductState productState;
+    /**
+     * boolean to determine if scan on shake feature should be enabled
+     */
+    private boolean scanOnShake;
+
+    @NonNull
+    public static ProductFragment newInstance(@NonNull ProductState productState) {
+
+        Bundle args = new Bundle();
+        args.putSerializable(STATE_ARG, productState);
+
+        ProductFragment fragment = new ProductFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onDestroy() {
         disp.dispose();
         super.onDestroy();
     }
-
-    // boolean to determine if scan on shake feature should be enabled
-    private boolean scanOnShake;
 
     @Nullable
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -68,7 +81,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         binding.toolbar.setVisibility(View.GONE);
-        productState = (State) getArguments().getSerializable("state");
+        productState = (ProductState) getArguments().getSerializable(STATE_ARG);
 
         setupViewPager(binding.pager);
 
@@ -180,7 +193,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
     }
 
-    public State getProductState() {
+    public ProductState getProductState() {
         return productState;
     }
 }

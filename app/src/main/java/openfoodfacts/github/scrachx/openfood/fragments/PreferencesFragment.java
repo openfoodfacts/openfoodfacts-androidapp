@@ -44,6 +44,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
@@ -73,15 +74,15 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagName;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
 import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
@@ -263,7 +264,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        CheckBoxPreference photoPreference = findPreference("photoMode");
+        SwitchPreference photoPreference = findPreference("photoMode");
         if (AppFlavors.isFlavors(AppFlavors.OPF)) {
             photoPreference.setVisible(false);
         }

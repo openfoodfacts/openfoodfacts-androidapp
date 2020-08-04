@@ -8,9 +8,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.preference.PreferenceManager;
 
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.preference.PreferenceManager;
 
 import java.util.Objects;
 
@@ -29,8 +29,9 @@ public class CategoryActivity extends BaseActivity {
     private ShakeDetector mShakeDetector;
     private boolean scanOnShake;
 
-    public static Intent getIntent(Context context) {
-        return new Intent(context, CategoryActivity.class);
+    public static void start(Context context) {
+        Intent starter = new Intent(context, CategoryActivity.class);
+        context.startActivity(starter);
     }
 
     @Override

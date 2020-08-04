@@ -35,7 +35,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import java.io.File;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
@@ -99,7 +99,7 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
     }
 
     @Override
-    public void refreshView(State state) {
+    public void refreshView(ProductState productState) {
         if (swipeRefreshLayout != null) {
             swipeRefreshLayout.setRefreshing(false);
         }

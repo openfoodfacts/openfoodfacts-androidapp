@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="185dp"
+    android:viewportWidth="180"
+    android:viewportHeight="185">
+    <path
+        android:fillColor="@color/material_drawer_dark_primary_icon"
+        android:fillType="evenOdd"
+        android:pathData="M90,95m-90,0a90,90 0,1 1,180 0a90,90 0,1 1,-180 0"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="nonZero"
+        android:pathData="M42.41,115L42.41,107.32L23.27,107.32L23.27,97.36L40.49,97.36L40.49,89.68L23.27,89.68L23.27,79.72L42.41,79.72L42.41,72.04L15.17,72.04L15.17,115L42.41,115ZM57.05,115L66.41,99.52L66.89,99.52L76.25,115L86.33,115L72.23,92.56L85.25,72.04L75.17,72.04L66.89,86.08L66.41,86.08L58.07,72.04L48.05,72.04L61.01,92.56L46.97,115L57.05,115ZM98.69,115L108.05,99.52L108.53,99.52L117.89,115L127.97,115L113.87,92.56L126.89,72.04L116.81,72.04L108.53,86.08L108.05,86.08L99.71,72.04L89.69,72.04L102.65,92.56L88.61,115L98.69,115ZM140.33,115L149.69,99.52L150.17,99.52L159.53,115L169.61,115L155.51,92.56L168.53,72.04L158.45,72.04L150.17,86.08L149.69,86.08L141.35,72.04L131.33,72.04L144.29,92.56L130.25,115L140.33,115Z"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+</vector>

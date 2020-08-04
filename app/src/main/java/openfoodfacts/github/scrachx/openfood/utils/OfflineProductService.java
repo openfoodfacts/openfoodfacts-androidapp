@@ -17,10 +17,10 @@ import io.reactivex.Single;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
@@ -139,11 +139,11 @@ public class OfflineProductService {
         Log.d(LOG_TAG, product.getBarcode() + " Uploading data: " + productDetails.toString());
 
         try {
-            State state = apiClient
+            ProductState productState = apiClient
                 .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
                 .blockingGet();
 
-            boolean isResponseOk = state.getStatus() == 1;
+            boolean isResponseOk = productState.getStatus() == 1;
 
             if (isResponseOk) {
                 product.setIsDataUploaded(true);

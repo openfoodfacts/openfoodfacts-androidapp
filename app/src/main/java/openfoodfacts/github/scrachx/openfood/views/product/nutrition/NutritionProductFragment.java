@@ -57,6 +57,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -72,9 +73,9 @@ import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.Units;
+import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
@@ -114,6 +115,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
     private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
+    private CompositeDisposable disp;
     private PhotoReceiverHandler photoReceiverHandler;
     private String mUrlImage;
     private String barcode;
@@ -126,11 +128,25 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     //the following booleans indicate whether the prompts are to be made visible
     private boolean showNutritionPrompt = false;
     private boolean showCategoryPrompt = false;
+
+    @Override
+    public void onDestroy() {
+        disp.dispose();
+        binding = null;
+        super.onDestroy();
+    }
+
     //boolean to determine if nutrition data should be shown
     private boolean showNutritionData = true;
     private Product product;
-    private State activityState;
+    private ProductState activityProductState;
     private FragmentNutritionProductBinding binding;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        disp = new CompositeDisposable();
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -159,13 +175,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     }
 
     @Override
-    public void refreshView(State state) {
-        super.refreshView(state);
+    public void refreshView(ProductState productState) {
+        super.refreshView(productState);
         final Activity currActivity = requireActivity();
         final String langCode = LocaleHelper.getLanguage(requireActivity());
 
-        activityState = state;
-        product = state.getProduct();
+        activityProductState = productState;
+        product = productState.getProduct();
 
         checkPrompts();
 
@@ -545,7 +561,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
                             String spinnerValue = spinner.getSelectedItem().toString();
                             String weight = etWeight.getText().toString();
-                            Product p = activityState.getProduct();
+                            Product p = activityProductState.getProduct();
                             Intent intent = new Intent(getContext(), CalculateDetails.class);
                             intent.putExtra("sampleObject", p);
                             intent.putExtra("spinnervalue", spinnerValue);
@@ -569,7 +585,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     public void onPhotoReturned(File photoFile) {
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(image, null);
+        disp.add(api.postImg(image).subscribe());
         binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 

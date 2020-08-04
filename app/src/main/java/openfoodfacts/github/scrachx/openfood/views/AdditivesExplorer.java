@@ -18,9 +18,9 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityAdditivesExplorerBinding;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -60,9 +60,9 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         asyncSessionAdditives.setListenerMainThread(operation -> {
             additives = (List<AdditiveName>) operation.getResult();
 
-            Collections.sort(additives, (additiveName, t1) -> {
-                String s1 = additiveName.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
-                String s2 = t1.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
+            Collections.sort(additives, (additive1, additive2) -> {
+                String s1 = additive1.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
+                String s2 = additive2.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
                 return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
             });
 

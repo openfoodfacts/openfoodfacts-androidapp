@@ -46,6 +46,8 @@ public final class ApiFields {
         public static final String NUTRITION_DATA_PER_100G = "100g";
         public static final String NUTRITION_DATA_PER_SERVING = "serving";
         public static final String DEBUG_BARCODE = "1";
+        public static final String DEFAULT_TAXO_PREFIX = "en";
+        public static final String STATUS_NOT_OK = "status not ok";
 
         private Defaults() {
 
@@ -142,6 +144,7 @@ public final class ApiFields {
         public static final String ORIGINS = "origins";
         public static final String COUNTRIES = "countries";
         public static final String STORES = "stores";
+        public static final String STATUS = "status";
         public static final String NUTRITION_GRADE = "nutrition_grades_tags";
 
         private Keys() {

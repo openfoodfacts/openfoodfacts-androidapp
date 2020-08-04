@@ -12,9 +12,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.Search;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Response;
@@ -173,7 +173,7 @@ public class ProductsAPITest {
     @Test
     public void getProduct_notFound() throws Exception {
         String barcode = "457457457";
-        Response<State> response = devClientWithAuth.getProductByBarcode(barcode, "code", Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
+        Response<ProductState> response = devClientWithAuth.getProductByBarcode(barcode, "code", Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
 
         assertTrue(response.isSuccessful());
 
@@ -200,7 +200,7 @@ public class ProductsAPITest {
             put("quantity", product.getQuantity());
         }};
 
-        State body = devClientWithAuth
+        ProductState body = devClientWithAuth
             .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
             .blockingGet();
 
@@ -209,7 +209,7 @@ public class ProductsAPITest {
 
         String fields = "product_name,brands,brands_tags,quantity";
 
-        Response<State> response = devClientWithAuth.getProductByBarcode(
+        Response<ProductState> response = devClientWithAuth.getProductByBarcode(
             product.getBarcode(),
             fields,
             Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)

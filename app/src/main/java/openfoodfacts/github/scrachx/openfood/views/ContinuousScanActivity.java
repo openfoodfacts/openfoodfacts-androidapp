@@ -29,6 +29,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,6 +43,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.ResultPoint;
 import com.google.zxing.client.android.BeepManager;
@@ -67,22 +70,21 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding;
-import openfoodfacts.github.scrachx.openfood.models.AllergenHelper;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
@@ -117,25 +119,41 @@ public class ContinuousScanActivity extends AppCompatActivity {
     );
     public static final String INTENT_KEY_COMPARE = "compare_product";
     public static final String INTENT_KEY_PRODUCTS_TO_COMPARE = "products_to_compare";
+    public static final String SETTING_RING = "ring";
+    public static final String SETTING_FLASH = "flash";
+    public static final String SETTING_FOCUS = "focus";
     private BeepManager beepManager;
     private ActivityContinuousScanBinding binding;
-    private BottomSheetBehavior bottomSheetBehavior;
-    private int cameraState;
-    private OpenFoodAPIClient client;
-    @NonNull
-    private VectorDrawableCompat errorDrawable;
-    private Disposable productDisp;
-    private Handler handler;
-    private boolean isAnalysisTagsEmpty = true;
-    private String lastBarcode;
-    private boolean autoFocusActive;
-    private boolean beepActive;
-    private InvalidBarcodeDao mInvalidBarcodeDao;
-    private OfflineSavedProductDao mOfflineSavedProductDao;
-    private OfflineSavedProduct offlineSavedProduct;
-    private Product product;
-    private ProductFragment productFragment;
-    private final BarcodeCallback callback = new BarcodeCallback() {
+    private BottomSheetBehavior<LinearLayout> bottomSheetBehavior;
+    private final TextView.OnEditorActionListener barcodeInputListener = (textView, actionId, event) -> {
+        // When user search from "having trouble" edit text
+        if (actionId != EditorInfo.IME_ACTION_SEARCH) {
+            return false;
+        }
+
+        Utils.hideKeyboard(this);
+
+        hideSystemUI();
+
+        // Check for barcode validity
+        if (!textView.getText().toString().isEmpty()) {
+            String barcodeText = textView.getText().toString();
+
+            // For debug only: the barcode 1 is used for test
+            if (((barcodeText.length() > 2) || ApiFields.Defaults.DEBUG_BARCODE.equals(barcodeText))
+                && ProductUtils.isBarcodeValid(barcodeText)) {
+
+                lastBarcode = barcodeText;
+                textView.setVisibility(GONE);
+                setShownProduct(barcodeText);
+                return true;
+            }
+        }
+        textView.requestFocus();
+        Snackbar.make(binding.getRoot(), getString(R.string.txtBarcodeNotValid), Snackbar.LENGTH_SHORT).show();
+        return true;
+    };
+    private final BarcodeCallback barcodeScanCallback = new BarcodeCallback() {
         @Override
         public void barcodeResult(BarcodeResult result) {
             if (hintBarcodeDisp != null) {
@@ -167,6 +185,21 @@ public class ContinuousScanActivity extends AppCompatActivity {
             // Here possible results are useless but we must implement this
         }
     };
+    private int cameraState;
+    private OpenFoodAPIClient client;
+    @NonNull
+    private VectorDrawableCompat errorDrawable;
+    private Disposable productDisp;
+    private Handler handler;
+    private boolean isAnalysisTagsEmpty = true;
+    private String lastBarcode;
+    private boolean autoFocusActive;
+    private boolean beepActive;
+    private InvalidBarcodeDao mInvalidBarcodeDao;
+    private OfflineSavedProductDao mOfflineSavedProductDao;
+    private OfflineSavedProduct offlineSavedProduct;
+    private Product product;
+    private ProductFragment productFragment;
     private SharedPreferences cameraPref;
     private int peekLarge;
     private int peekSmall;
@@ -214,170 +247,157 @@ public class ContinuousScanActivity extends AppCompatActivity {
         }
 
         // Then query the online db
-        client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
+        productDisp = client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new SingleObserver<State>() {
-                @Override
-                public void onSubscribe(Disposable d) {
-                    productDisp = d;
-                    hideAllViews();
+            .doOnSubscribe(disposable -> {
+                hideAllViews();
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                binding.quickView.setOnClickListener(null);
+                binding.quickViewProgress.setVisibility(VISIBLE);
+                binding.quickViewProgressText.setVisibility(VISIBLE);
+                binding.quickViewProgressText.setText(getString(R.string.loading_product, barcode));
+            })
+            .subscribe((ProductState productState) -> {
+                //clear product tags
+                isAnalysisTagsEmpty = true;
+                binding.quickViewTags.setAdapter(null);
+
+                binding.quickViewProgress.setVisibility(GONE);
+                binding.quickViewProgressText.setVisibility(GONE);
+                if (productState.getStatus() == 0) {
+                    tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found);
+                } else {
+                    product = productState.getProduct();
+                    if (getIntent().getBooleanExtra(INTENT_KEY_COMPARE, false)) {
+                        Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
+                        intent.putExtra("product_found", true);
+                        ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().getSerializable(INTENT_KEY_PRODUCTS_TO_COMPARE);
+                        if (productsToCompare.contains(product)) {
+                            intent.putExtra("product_already_exists", true);
+                        } else {
+                            productsToCompare.add(product);
+                        }
+                        intent.putExtra(INTENT_KEY_PRODUCTS_TO_COMPARE, productsToCompare);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+
+                    productDisp = client.addToHistory(product).subscribeOn(Schedulers.io()).subscribe();
+
+                    showAllViews();
+                    binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                    binding.txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text));
+                    binding.txtProductCallToAction.setText(isProductIncomplete() ? R.string.product_not_complete : R.string.scan_tooltip);
+                    binding.txtProductCallToAction.setVisibility(VISIBLE);
+
+                    setupSummary(product);
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    binding.quickView.setOnClickListener(null);
-                    binding.quickViewProgress.setVisibility(VISIBLE);
-                    binding.quickViewProgressText.setVisibility(VISIBLE);
-                    binding.quickViewProgressText.setText(getString(R.string.loading_product, barcode));
-                }
+                    showProductFullScreen();
+                    binding.quickViewProductNotFound.setVisibility(GONE);
+                    binding.quickViewProductNotFoundButton.setVisibility(GONE);
 
-                @Override
-                public void onSuccess(State state) {
-                    //clear product tags
-                    isAnalysisTagsEmpty = true;
-                    binding.quickViewTags.setAdapter(null);
-
-                    binding.quickViewProgress.setVisibility(GONE);
-                    binding.quickViewProgressText.setVisibility(GONE);
-                    if (state.getStatus() == 0) {
-                        tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found);
+                    if (offlineSavedProduct != null && !TextUtils.isEmpty(offlineSavedProduct.getName())) {
+                        binding.quickViewName.setText(offlineSavedProduct.getName());
+                    } else if (product.getProductName() == null || product.getProductName().equals("")) {
+                        binding.quickViewName.setText(R.string.productNameNull);
                     } else {
-                        product = state.getProduct();
-                        if (getIntent().getBooleanExtra(INTENT_KEY_COMPARE, false)) {
-                            Intent intent = new Intent(ContinuousScanActivity.this, ProductComparisonActivity.class);
-                            intent.putExtra("product_found", true);
-                            ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().getSerializable(INTENT_KEY_PRODUCTS_TO_COMPARE);
-                            if (productsToCompare.contains(product)) {
-                                intent.putExtra("product_already_exists", true);
-                            } else {
-                                productsToCompare.add(product);
-                            }
-                            intent.putExtra(INTENT_KEY_PRODUCTS_TO_COMPARE, productsToCompare);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                        }
-
-                        productDisp = client.addToHistory(product).subscribeOn(Schedulers.io()).subscribe();
-
-                        showAllViews();
-                        binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                        binding.txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text));
-                        binding.txtProductCallToAction.setText(isProductIncomplete() ? R.string.product_not_complete : R.string.scan_tooltip);
-                        binding.txtProductCallToAction.setVisibility(VISIBLE);
-
-                        setupSummary(product);
-                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        showProductFullScreen();
-                        binding.quickViewProductNotFound.setVisibility(GONE);
-                        binding.quickViewProductNotFoundButton.setVisibility(GONE);
-
-                        if (offlineSavedProduct != null && !TextUtils.isEmpty(offlineSavedProduct.getName())) {
-                            binding.quickViewName.setText(offlineSavedProduct.getName());
-                        } else if (product.getProductName() == null || product.getProductName().equals("")) {
-                            binding.quickViewName.setText(R.string.productNameNull);
-                        } else {
-                            binding.quickViewName.setText(product.getProductName());
-                        }
-                        List<String> addTags = product.getAdditivesTags();
-                        if (!addTags.isEmpty()) {
-                            binding.quickViewAdditives.setText(getResources().getQuantityString(R.plurals.productAdditives, addTags.size(), addTags.size()));
-                        } else if (product.getStatesTags().contains("en:ingredients-completed")) {
-                            binding.quickViewAdditives.setText(getString(R.string.productAdditivesNone));
-                        } else {
-                            binding.quickViewAdditives.setText(getString(R.string.productAdditivesUnknown));
-                        }
-
-                        final String imageUrl = Utils.firstNotEmpty(offlineSavedProduct != null ? offlineSavedProduct.getImageFrontLocalUrl() : null,
-                            product.getImageUrl(LocaleHelper.getLanguage(getBaseContext())));
-                        if (imageUrl != null) {
-                            try {
-                                Picasso.get()
-                                    .load(imageUrl)
-                                    .error(errorDrawable)
-                                    .into(binding.quickViewImage, new Callback() {
-                                        @Override
-                                        public void onSuccess() {
-                                            binding.quickViewImageProgress.setVisibility(GONE);
-                                        }
-
-                                        @Override
-                                        public void onError(Exception ex) {
-                                            binding.quickViewImageProgress.setVisibility(GONE);
-                                        }
-                                    });
-                            } catch (IllegalStateException e) {
-                                //could happen if Picasso is not instantiated correctly...
-                                Log.w(this.getClass().getSimpleName(), e.getMessage(), e);
-                            }
-                        } else {
-                            binding.quickViewImage.setImageDrawable(errorDrawable);
-                            binding.quickViewImageProgress.setVisibility(GONE);
-                        }
-                        // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
-                        if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNutritionGradeFr() != null) {
-                            if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
-                                binding.quickViewNutriScore.setVisibility(VISIBLE);
-                                binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
-                            } else {
-                                binding.quickViewNutriScore.setVisibility(INVISIBLE);
-                            }
-                        } else {
-                            binding.quickViewNutriScore.setVisibility(GONE);
-                        }
-                        // Hide nova group from quickView if app flavour is not OFF or there is no nova group
-                        if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNovaGroups() != null) {
-                            final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
-                            if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
-                                binding.quickViewNovaGroup.setVisibility(VISIBLE);
-                                binding.quickViewAdditives.setVisibility(VISIBLE);
-                                binding.quickViewNovaGroup.setImageResource(novaGroupDrawable);
-                            } else {
-                                binding.quickViewNovaGroup.setVisibility(INVISIBLE);
-                            }
-                        } else {
-                            binding.quickViewNovaGroup.setVisibility(GONE);
-                        }
-                        int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
-                        if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
-                            binding.quickViewCo2Icon.setVisibility(VISIBLE);
-                            binding.quickViewCo2Icon.setImageResource(environmentImpactResource);
-                        } else {
-                            binding.quickViewCo2Icon.setVisibility(INVISIBLE);
-                        }
-                        ProductFragment newProductFragment = new ProductFragment();
-
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("state", state);
-                        newProductFragment.setArguments(bundle);
-
-                        getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.frame_layout, newProductFragment)
-                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                            .commitAllowingStateLoss();
-                        productFragment = newProductFragment;
+                        binding.quickViewName.setText(product.getProductName());
                     }
+                    List<String> addTags = product.getAdditivesTags();
+                    if (!addTags.isEmpty()) {
+                        binding.quickViewAdditives.setText(getResources().getQuantityString(R.plurals.productAdditives, addTags.size(), addTags.size()));
+                    } else if (product.getStatesTags().contains("en:ingredients-completed")) {
+                        binding.quickViewAdditives.setText(getString(R.string.productAdditivesNone));
+                    } else {
+                        binding.quickViewAdditives.setText(getString(R.string.productAdditivesUnknown));
+                    }
+
+                    final String imageUrl = Utils.firstNotEmpty(offlineSavedProduct != null ? offlineSavedProduct.getImageFrontLocalUrl() : null,
+                        product.getImageUrl(LocaleHelper.getLanguage(getBaseContext())));
+                    if (imageUrl != null) {
+                        try {
+                            Picasso.get()
+                                .load(imageUrl)
+                                .error(errorDrawable)
+                                .into(binding.quickViewImage, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        binding.quickViewImageProgress.setVisibility(GONE);
+                                    }
+
+                                    @Override
+                                    public void onError(Exception ex) {
+                                        binding.quickViewImageProgress.setVisibility(GONE);
+                                    }
+                                });
+                        } catch (IllegalStateException e) {
+                            //could happen if Picasso is not instantiated correctly...
+                            Log.w(this.getClass().getSimpleName(), e.getMessage(), e);
+                        }
+                    } else {
+                        binding.quickViewImage.setImageDrawable(errorDrawable);
+                        binding.quickViewImageProgress.setVisibility(GONE);
+                    }
+                    // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
+                    if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNutritionGradeFr() != null) {
+                        if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
+                            binding.quickViewNutriScore.setVisibility(VISIBLE);
+                            binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
+                        } else {
+                            binding.quickViewNutriScore.setVisibility(INVISIBLE);
+                        }
+                    } else {
+                        binding.quickViewNutriScore.setVisibility(GONE);
+                    }
+                    // Hide nova group from quickView if app flavour is not OFF or there is no nova group
+                    if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNovaGroups() != null) {
+                        final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
+                        if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
+                            binding.quickViewNovaGroup.setVisibility(VISIBLE);
+                            binding.quickViewAdditives.setVisibility(VISIBLE);
+                            binding.quickViewNovaGroup.setImageResource(novaGroupDrawable);
+                        } else {
+                            binding.quickViewNovaGroup.setVisibility(INVISIBLE);
+                        }
+                    } else {
+                        binding.quickViewNovaGroup.setVisibility(GONE);
+                    }
+                    int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+                    if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+                        binding.quickViewCo2Icon.setVisibility(VISIBLE);
+                        binding.quickViewCo2Icon.setImageResource(environmentImpactResource);
+                    } else {
+                        binding.quickViewCo2Icon.setVisibility(INVISIBLE);
+                    }
+                    ProductFragment newProductFragment = ProductFragment.newInstance(productState);
+
+                    getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_layout, newProductFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .commitAllowingStateLoss();
+                    productFragment = newProductFragment;
                 }
-
-                @Override
-                public void onError(Throwable e) {
-                    try {
-                        // A network error happened
-                        if (e instanceof IOException) {
-                            hideAllViews();
-                            OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder()
-                                .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
-                                .unique();
-                            tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline);
-                            binding.quickView.setOnClickListener(v -> navigateToProductAddition(barcode));
-                        } else {
-                            binding.quickViewProgress.setVisibility(GONE);
-                            binding.quickViewProgressText.setVisibility(GONE);
-                            final Toast errorMessage = Toast.makeText(ContinuousScanActivity.this.getBaseContext(), R.string.txtConnectionError, Toast.LENGTH_LONG);
-                            errorMessage.setGravity(Gravity.CENTER, 0, 0);
-                            errorMessage.show();
-                            Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
-                        }
-                    } catch (Exception err) {
-                        Log.w(this.getClass().getSimpleName(), err.getMessage(), err);
+            }, (Throwable e) -> {
+                try {
+                    // A network error happened
+                    if (e instanceof IOException) {
+                        hideAllViews();
+                        OfflineSavedProduct offlineSavedProduct = mOfflineSavedProductDao.queryBuilder()
+                            .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
+                            .unique();
+                        tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline);
+                        binding.quickView.setOnClickListener(v -> navigateToProductAddition(barcode));
+                    } else {
+                        binding.quickViewProgress.setVisibility(GONE);
+                        binding.quickViewProgressText.setVisibility(GONE);
+                        final Toast errorMessage = Toast.makeText(ContinuousScanActivity.this.getBaseContext(), R.string.txtConnectionError, Toast.LENGTH_LONG);
+                        errorMessage.setGravity(Gravity.CENTER, 0, 0);
+                        errorMessage.show();
+                        Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
                     }
+                } catch (Exception err) {
+                    Log.w(this.getClass().getSimpleName(), err.getMessage(), err);
                 }
             });
     }
@@ -501,7 +521,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     private void navigateToProductAddition(String productBarcode) {
         Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-        State st = new State();
+        ProductState st = new ProductState();
         Product pd = new Product();
         pd.setCode(productBarcode);
         st.setProduct(pd);
@@ -721,18 +741,34 @@ public class ContinuousScanActivity extends AppCompatActivity {
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
 
         cameraPref = getSharedPreferences("camera", 0);
-        beepActive = cameraPref.getBoolean("ring", false);
-        flashActive = cameraPref.getBoolean("flash", false);
-        autoFocusActive = cameraPref.getBoolean("focus", true);
+        beepActive = cameraPref.getBoolean(SETTING_RING, false);
+        flashActive = cameraPref.getBoolean(SETTING_FLASH, false);
+        autoFocusActive = cameraPref.getBoolean(SETTING_FOCUS, true);
         cameraState = cameraPref.getInt("cameraState", 0);
 
-        popup = new PopupMenu(this, binding.buttonMore);
-        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
-
+        // Setup barcode scanner
         binding.barcodeScanner.getBarcodeView().setDecoderFactory(new DefaultDecoderFactory(BARCODE_FORMATS));
         binding.barcodeScanner.setStatusText(null);
         CameraSettings settings = binding.barcodeScanner.getBarcodeView().getCameraSettings();
         settings.setRequestedCameraId(cameraState);
+        settings.setAutoFocusEnabled(autoFocusActive);
+
+        // Setup popup menu
+        setupPopupMenu();
+
+        // Start continuous scanner
+        binding.barcodeScanner.decodeContinuous(barcodeScanCallback);
+        beepManager = new BeepManager(this);
+
+        binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener);
+
+        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+    }
+
+    private void setupPopupMenu() {
+        popup = new PopupMenu(this, binding.buttonMore);
+        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
         if (flashActive) {
             binding.barcodeScanner.setTorchOn();
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
@@ -741,44 +777,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
             popup.getMenu().findItem(R.id.toggleBeep).setChecked(true);
         }
         if (autoFocusActive) {
-            settings.setAutoFocusEnabled(true);
             popup.getMenu().findItem(R.id.toggleAutofocus).setChecked(true);
-        } else {
-            settings.setAutoFocusEnabled(false);
         }
-
-        // Start continuous scanner
-        binding.barcodeScanner.decodeContinuous(callback);
-        beepManager = new BeepManager(this);
-
-        binding.quickViewSearchByBarcode.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                Utils.hideKeyboard(this);
-                hideSystemUI();
-                if (binding.quickViewSearchByBarcode.getText().toString().isEmpty()) {
-                    Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
-                } else {
-                    String barcodeText = binding.quickViewSearchByBarcode.getText().toString();
-                    //for debug only:the barcode 1 is used for test:
-                    if (barcodeText.length() <= 2 && !ApiFields.Defaults.DEBUG_BARCODE.equals(barcodeText)) {
-                        Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
-                    } else {
-                        if (ProductUtils.isBarcodeValid(barcodeText)) {
-                            lastBarcode = barcodeText;
-                            binding.quickViewSearchByBarcode.setVisibility(GONE);
-                            setShownProduct(barcodeText);
-                        } else {
-                            binding.quickViewSearchByBarcode.requestFocus();
-                            Toast.makeText(this, getString(R.string.txtBarcodeNotValid), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-                return true;
-            }
-            return false;
-        });
-
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
     }
 
     @Override
@@ -826,12 +826,12 @@ public class ContinuousScanActivity extends AppCompatActivity {
             binding.barcodeScanner.setTorchOff();
             flashActive = false;
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp);
-            editor.putBoolean("flash", false);
+            editor.putBoolean(SETTING_FLASH, false);
         } else {
             binding.barcodeScanner.setTorchOn();
             flashActive = true;
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
-            editor.putBoolean("flash", true);
+            editor.putBoolean(SETTING_FLASH, true);
         }
         editor.apply();
     }
@@ -845,11 +845,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     if (beepActive) {
                         beepActive = false;
                         item.setChecked(false);
-                        editor.putBoolean("ring", false);
+                        editor.putBoolean(SETTING_RING, false);
                     } else {
                         beepActive = true;
                         item.setChecked(true);
-                        editor.putBoolean("ring", true);
+                        editor.putBoolean(SETTING_RING, true);
                     }
                     editor.apply();
                     break;
@@ -863,12 +863,12 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         autoFocusActive = false;
                         settings.setAutoFocusEnabled(false);
                         item.setChecked(false);
-                        editor.putBoolean("focus", false);
+                        editor.putBoolean(SETTING_FOCUS, false);
                     } else {
                         autoFocusActive = true;
                         settings.setAutoFocusEnabled(true);
                         item.setChecked(true);
-                        editor.putBoolean("focus", true);
+                        editor.putBoolean(SETTING_FOCUS, true);
                     }
                     binding.barcodeScanner.getBarcodeView().setCameraSettings(settings);
                     binding.barcodeScanner.resume();

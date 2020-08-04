@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns="">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
     <string name="website">https://world.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
@@ -28,7 +28,7 @@
     <string name="translate_help_title">Wspomóż tłumaczenie Open Beauty Facts</string>
     <string name="translate_help_summary">Wprowadź bazę danych Open Beauty Facts do twojego języka - nie wymagamy wiedzy technicznej</string>
     <string name="text_offline_info_dialog">Skanuj nawet w trybie offline, dodasz je później do Open Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mogła wysłać je poniższym przyciskiem.</string>
-    <string name="warning_alert_data">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">Open Beauty Facts Android App</string>
     <string name="tagline">the free cosmetics database</string>

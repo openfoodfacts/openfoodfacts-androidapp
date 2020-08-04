@@ -50,7 +50,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -64,7 +63,6 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
-import openfoodfacts.github.scrachx.openfood.utils.ImageUploadListener;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector;
@@ -95,7 +93,7 @@ public class ProductImageManagementActivity extends BaseActivity {
     private File lastViewedImage;
     private PhotoViewAttacher mAttacher;
     private SharedPreferences settings;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private CompositeDisposable disp;
 
     public static boolean isImageModified(int requestCode, int resultCode) {
         return requestCode == REQUEST_EDIT_IMAGE && resultCode == ProductImageManagementActivity.RESULTCODE_MODIFIED;
@@ -111,6 +109,7 @@ public class ProductImageManagementActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        disp = new CompositeDisposable();
         client = new OpenFoodAPIClient(this);
         binding = ActivityFullScreenImageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -743,19 +742,13 @@ public class ProductImageManagementActivity extends BaseActivity {
         startRefresh(getString(R.string.uploading_image));
         ProductImage image = new ProductImage(getProduct().getCode(), getSelectedType(), newPhotoFile, getCurrentLanguage());
         image.setFilePath(newPhotoFile.getAbsolutePath());
-        disp.add(Completable.fromAction(() ->
-            client.postImg(image, true, new ImageUploadListener() {
-                @Override
-                public void onSuccess() {
-                    reloadProduct();
-                    setResult(RESULTCODE_MODIFIED);
-                }
-
-                @Override
-                public void onFailure(String message) {
-                    Toast.makeText(ProductImageManagementActivity.this, message, Toast.LENGTH_LONG).show();
-                    stopRefresh();
-                }
-            })).observeOn(AndroidSchedulers.mainThread()).subscribe());
+        disp.add(client.postImg(image, true).observeOn(AndroidSchedulers.mainThread()).subscribe(() -> {
+            reloadProduct();
+            setResult(RESULTCODE_MODIFIED);
+        }, throwable -> {
+            Toast.makeText(ProductImageManagementActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e(ProductImageManagementActivity.class.getSimpleName(), throwable.getMessage(), throwable);
+            stopRefresh();
+        }));
     }
 }

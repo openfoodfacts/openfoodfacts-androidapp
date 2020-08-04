@@ -286,7 +286,7 @@
                         android:id="@+id/grades_wrapper"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="bottom|center_horizontal"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -314,6 +314,7 @@
                             android:layout_marginEnd="8dp"
                             android:adjustViewBounds="true"
                             android:maxHeight="80dp"
+                            android:padding="5dp"
                             android:scaleType="fitCenter"
                             tools:src="@drawable/ic_nova_group_1"
                             tools:visibility="visible" />
