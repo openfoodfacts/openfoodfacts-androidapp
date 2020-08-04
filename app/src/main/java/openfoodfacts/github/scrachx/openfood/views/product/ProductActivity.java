@@ -48,7 +48,7 @@ import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.ContributorsFragment;
 import openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
@@ -72,7 +72,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient api;
     private CompositeDisposable disp = new CompositeDisposable();
-    private State mState;
+    private ProductState mProductState;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
@@ -85,14 +85,14 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     @NonNull
     public static ProductFragmentPagerAdapter setupViewPager(@NonNull ViewPager2 viewPager,
                                                              @NonNull ProductFragmentPagerAdapter adapter,
-                                                             @NonNull State state,
+                                                             @NonNull ProductState productState,
                                                              @NonNull Activity activity) {
 
         String[] menuTitles = activity.getResources().getStringArray(R.array.nav_drawer_items_product);
         String[] newMenuTitles = activity.getResources().getStringArray(R.array.nav_drawer_new_items_product);
 
         Bundle fBundle = new Bundle();
-        fBundle.putSerializable(STATE_KEY, state);
+        fBundle.putSerializable(STATE_KEY, productState);
 
         adapter.addFragment(applyBundle(new SummaryProductFragment(), fBundle), menuTitles[0]);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -104,9 +104,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             adapter.addFragment(applyBundle(new NutritionProductFragment(), fBundle), menuTitles[2]);
-            if ((state.getProduct().getNutriments() != null &&
-                state.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
-                (state.getProduct().getEnvironmentInfocard() != null && !state.getProduct().getEnvironmentInfocard().isEmpty())) {
+            if ((productState.getProduct().getNutriments() != null &&
+                productState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
+                (productState.getProduct().getEnvironmentInfocard() != null && !productState.getProduct().getEnvironmentInfocard().isEmpty())) {
                 adapter.addFragment(applyBundle(new EnvironmentProductFragment(), fBundle), "Environment");
             }
             if (isPhotoMode(activity)) {
@@ -160,15 +160,15 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
         api = new OpenFoodAPIClient(this);
 
-        mState = (State) getIntent().getSerializableExtra(STATE_KEY);
+        mProductState = (ProductState) getIntent().getSerializableExtra(STATE_KEY);
 
         if (Intent.ACTION_VIEW.equals(getIntent().getAction())) {
             // handle opening the app via product page url
             Uri data = getIntent().getData();
             String[] paths = data.toString().split("/"); // paths[4]
-            mState = new State();
+            mProductState = new ProductState();
             loadProductDataFromUrl(paths[4]);
-        } else if (mState == null) {
+        } else if (mProductState == null) {
             //no state-> we can't display anything. we go back to home.
             final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
@@ -187,9 +187,9 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         disp.add(api.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(state -> {
-                mState = state;
+                mProductState = state;
                 getIntent().putExtra(STATE_KEY, state);
-                if (mState != null) {
+                if (mProductState != null) {
                     initViews();
                 } else {
                     finish();
@@ -207,7 +207,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             // Open product editing after successful login
             Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mState.getProduct());
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, mProductState.getProduct());
             startActivity(intent);
         }
     }
@@ -244,7 +244,7 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     }
 
     private void setupViewPager(ViewPager2 viewPager) {
-        adapterResult = setupViewPager(viewPager, new ProductFragmentPagerAdapter(this), mState, this);
+        adapterResult = setupViewPager(viewPager, new ProductFragmentPagerAdapter(this), mProductState, this);
     }
 
     private static boolean isPhotoMode(Activity activity) {
@@ -266,22 +266,22 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
 
     @Subscribe
     public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
-        if (event.getBarcode().equals(mState.getProduct().getCode())) {
+        if (event.getBarcode().equals(mProductState.getProduct().getCode())) {
             onRefresh();
         }
     }
 
     @Override
     public void onRefresh() {
-        api.openProduct(mState.getProduct().getCode(), this);
+        api.openProduct(mProductState.getProduct().getCode(), this);
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        mState = (State) intent.getSerializableExtra(STATE_KEY);
-        adapterResult.refresh(mState);
+        mProductState = (ProductState) intent.getSerializableExtra(STATE_KEY);
+        adapterResult.refresh(mProductState);
     }
 
     @Override

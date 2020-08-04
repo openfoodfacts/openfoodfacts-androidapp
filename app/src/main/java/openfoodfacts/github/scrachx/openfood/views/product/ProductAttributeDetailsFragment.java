@@ -17,6 +17,7 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,8 +25,8 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -52,16 +53,17 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
     private AppCompatImageView spElderlyImage;
     private CustomTabsIntent customTabsIntent;
 
-    public static ProductAttributeDetailsFragment newInstance(String jsonObjectStr, long id, String searchType, String title) {
+    @NotNull
+    public static ProductAttributeDetailsFragment newInstance(String jsonObjectStr, long id, SearchType searchType, String title) {
         ProductAttributeDetailsFragment fragment = new ProductAttributeDetailsFragment();
         Bundle args = new Bundle();
+
         args.putString(ARG_OBJECT, jsonObjectStr);
         args.putLong(ARG_ID, id);
-        args.putString(ARG_SEARCH_TYPE, searchType);
+        args.putSerializable(ARG_SEARCH_TYPE, searchType);
         args.putString(ARG_TITLE, title);
 
         fragment.setArguments(args);
-
         return fragment;
     }
 
@@ -101,7 +103,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 
             String title = getArguments().getString(ARG_TITLE);
             bottomSheetTitle.setText(title);
-            String searchType = getArguments().getString(ARG_SEARCH_TYPE);
+            SearchType searchType = (SearchType) getArguments().getSerializable(ARG_SEARCH_TYPE);
             if (descriptionString != null) {
                 bottomSheetDescription.setText(descriptionString);
                 bottomSheetDescription.setVisibility(View.VISIBLE);

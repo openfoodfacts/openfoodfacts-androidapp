@@ -68,9 +68,9 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutri
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments.Nutriment;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Units;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;

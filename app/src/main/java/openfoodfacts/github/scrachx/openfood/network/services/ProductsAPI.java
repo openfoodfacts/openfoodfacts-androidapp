@@ -26,8 +26,8 @@ import io.reactivex.Single;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.Search;
-import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import retrofit2.Call;
@@ -51,29 +51,29 @@ import retrofit2.http.Url;
  */
 public interface ProductsAPI {
     @GET("api/v0/product/{barcode}.json")
-    Call<State> getProductByBarcode(@Path("barcode") String barcode,
-                                    @Query("fields") String fields,
-                                    @Header("User-Agent") String header);
+    Call<ProductState> getProductByBarcode(@Path("barcode") String barcode,
+                                           @Query("fields") String fields,
+                                           @Header("User-Agent") String header);
 
     @GET("api/v0/product/{barcode}.json")
-    Single<State> getProductByBarcodeSingle(@Path("barcode") String barcode,
-                                            @Query("fields") String fields,
-                                            @Header("User-Agent") String header);
+    Single<ProductState> getProductByBarcodeSingle(@Path("barcode") String barcode,
+                                                   @Query("fields") String fields,
+                                                   @Header("User-Agent") String header);
 
     @FormUrlEncoded
     @POST("cgi/product_jqm2.pl")
-    Single<State> saveProductSingle(@Field(ApiFields.Keys.BARCODE) String code,
-                                    @FieldMap Map<String, String> parameters,
-                                    @Field(ApiFields.Keys.USER_COMMENT) String comment);
+    Single<ProductState> saveProductSingle(@Field(ApiFields.Keys.BARCODE) String code,
+                                           @FieldMap Map<String, String> parameters,
+                                           @Field(ApiFields.Keys.USER_COMMENT) String comment);
 
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
-    Call<State> getShortProductByBarcode(@Path("barcode") String barcode,
-                                         @Header("User-Agent") String header);
+    Call<ProductState> getShortProductByBarcode(@Path("barcode") String barcode,
+                                                @Header("User-Agent") String header);
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
-    Call<Search> searchProductByName(@Query("fields") String fields,
-                                     @Query("search_terms") String name,
-                                     @Query("page") int page);
+    Single<Search> searchProductByName(@Query("fields") String fields,
+                                       @Query("search_terms") String name,
+                                       @Query("page") int page);
 
     @FormUrlEncoded
     @POST("/cgi/session.pl")

@@ -110,7 +110,7 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
@@ -151,11 +151,12 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private boolean scanOnShake;
     private SharedPreferences shakePreference;
     private PrefManager prefManager;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private CompositeDisposable disp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        disp = new CompositeDisposable();
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
@@ -276,7 +277,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                 new SectionDrawerItem().withName(R.string.search_drawer),
                 new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
                 new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.additives).withIcon(R.drawable.additives).withIdentifier(ITEM_ADDITIVES)
+                new PrimaryDrawerItem().withName(R.string.additives).withIcon(R.drawable.ic_additives).withIdentifier(ITEM_ADDITIVES)
                     .withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
@@ -308,7 +309,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
                     case ITEM_CATEGORIES:
-                        startActivity(CategoryActivity.getIntent(this));
+                        CategoryActivity.start(this);
                         break;
 
                     case ITEM_ADDITIVES:
@@ -318,14 +319,13 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         scan();
                         break;
                     case ITEM_COMPARE:
-                        startActivity(new Intent(MainActivity.this, ProductComparisonActivity.class));
+                        startActivity(new Intent(this, ProductComparisonActivity.class));
                         break;
                     case ITEM_HISTORY:
-                        startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
+                        startActivity(new Intent(this, HistoryScanActivity.class));
                         break;
                     case ITEM_LOGIN:
-                        startActivityForResult(new Intent(MainActivity.this, LoginActivity
-                            .class), LOGIN_REQUEST);
+                        startActivityForResult(new Intent(this, LoginActivity.class), LOGIN_REQUEST);
                         break;
                     case ITEM_ALERT:
                         fragment = new AllergensAlertFragment();
@@ -334,12 +334,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         fragment = new PreferencesFragment();
                         break;
                     case ITEM_ABOUT:
-                        CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                            customTabsIntent, discoverUri, new WebViewFallback());
+                        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
                         break;
                     case ITEM_CONTRIBUTE:
-                        CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                            customTabsIntent, contributeUri, new WebViewFallback());
+                        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, contributeUri, new WebViewFallback());
                         break;
 
                     case ITEM_INCOMPLETE_PRODUCTS:
@@ -1016,10 +1014,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                             File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
                             image = new ProductImage(tempBarcode, OTHER, imageFile);
-                            api.postImg(image, null);
+                            disp.add(api.postImg(image).subscribe());
                         } else {
                             Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
-                            State st = new State();
+                            ProductState st = new ProductState();
                             Product pd = new Product();
                             pd.setCode(tempBarcode);
                             st.setProduct(pd);

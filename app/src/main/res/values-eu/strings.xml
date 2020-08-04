@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Utzi</string>
     <string name="login_button">Erabiltzaile-izena</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data">Zure alergien informazioa ez da inoiz Open Food Facts-en zerbitzarira bidaliko. Horrez gain, kontuz ibili agian produktuaren datuak ez baitira zehatzak, eta detekzioa agian ez da %100 zehatza, beraz egiaztatu zure kabuz mesedez! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Zure alergien informazioa ez da inoiz Open Food Facts-en zerbitzarira bidaliko. Horrez gain, kontuz ibili agian produktuaren datuak ez baitira zehatzak, eta detekzioa agian ez da %100 zehatza, beraz egiaztatu zure kabuz mesedez! </string>
     <string name="title_info_dialog">Nola dabil?</string>
     <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>

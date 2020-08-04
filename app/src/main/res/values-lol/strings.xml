@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">crwdns126934:1crwdne126934:1</item>
         <item quantity="other">crwdns126934:5%dcrwdne126934:5</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">crwdns127696:0crwdne127696:0</string>
     <string name="login_button">crwdns127698:0crwdne127698:0</string>
     <string name="create_account_button">crwdns127700:0crwdne127700:0</string>
-    <string name="warning_alert_data">crwdns127702:0% acrwdne127702:0</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">crwdns127702:0% acrwdne127702:0</string>
     <string name="title_info_dialog">crwdns127704:0crwdne127704:0</string>
     <string name="text_offline_info_dialog">crwdns127706:0crwdne127706:0</string>
     <string name="permission_camera">crwdns127708:0crwdne127708:0</string>

@@ -83,6 +83,7 @@ public class CategoryListFragment extends MvvmFragment<CategoryFragmentViewModel
         SearchManager searchManager = (SearchManager) requireActivity().getSystemService(Context.SEARCH_SERVICE);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        // TODO: 26/07/2020 use resources
         searchView.setQueryHint("Search for a food category");
         if (searchManager.getSearchableInfo(requireActivity().getComponentName()) == null) {
             return;

@@ -1,7 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
-public enum Units {
-    ;
+public final class Units {
+    private Units() {
+    }
+
     public static final String ENERGY_KJ = "kj";
     public static final String ENERGY_KCAL = "kcal";
     public static final String UNIT_KILOGRAM = "kg";
