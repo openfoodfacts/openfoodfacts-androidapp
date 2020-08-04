@@ -414,7 +414,7 @@
     <string name="txtBarcode">Barcode :</string>
     <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtEMB">EMB Code:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Ingredients list :</string>
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -586,8 +586,8 @@
     <string name="for_100g">For 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -642,7 +642,7 @@
     <string name="take_more_pictures">Take more photos</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -657,7 +657,7 @@
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
-    <string name="contributions_shortcut_long_label">My Contributions</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Forgot Password</string>
 
     <string name="next">NEXT</string>
@@ -686,7 +686,7 @@
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
 
     <string name="device_on_mobile_data_warning_title">Information</string>
-    <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -882,7 +882,7 @@
     <string name="traces">Traces</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
@@ -901,7 +901,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Origin of ingredients</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country of purchase</string>
     <string name="stores">Stores</string>
@@ -1082,9 +1082,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

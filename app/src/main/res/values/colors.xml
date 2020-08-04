@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2016-2020 Open Food Facts
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +31,8 @@
     <color name="orange">@color/brand_yellow</color>
 
     <color name="material_red">#F44336</color>
-    <color name="white">@android:color/white</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="gray">#808080</color>
 
     <color name="overexposure_high">#FF0000</color>
