@@ -113,6 +113,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.AnalyticsEvent;
+import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
@@ -871,6 +872,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     public void onResume() {
         super.onResume();
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page);
+
+        AnalyticsService.getInstance().showAnalyticsBottomSheetIfNeeded(getSupportFragmentManager());
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {

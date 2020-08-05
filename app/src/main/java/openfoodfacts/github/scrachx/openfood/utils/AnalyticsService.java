@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 
 import org.matomo.sdk.Matomo;
@@ -10,6 +11,7 @@ import org.matomo.sdk.extra.TrackHelper;
 import io.sentry.android.core.SentryAndroid;
 import io.sentry.core.Sentry;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.fragments.AnalyticsUsageBottomSheetDialogFragment;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class AnalyticsService {
@@ -66,6 +68,15 @@ public class AnalyticsService {
             .name(event.name)
             .value(event.value)
             .with(tracker);
+    }
+
+    public void showAnalyticsBottomSheetIfNeeded(FragmentManager childFragmentManager) {
+        if (PreferenceManager.getDefaultSharedPreferences(OFFApplication.getInstance()).contains("privacyAnalyticsReporting")) {
+            //key already exists, do not show
+            return;
+        }
+        AnalyticsUsageBottomSheetDialogFragment bottomSheet = new AnalyticsUsageBottomSheetDialogFragment();
+        bottomSheet.show(childFragmentManager, "AnalyticsUsageBottomSheetDialogFragment");
     }
 
     private static boolean isAnalyticsEnabled() {
