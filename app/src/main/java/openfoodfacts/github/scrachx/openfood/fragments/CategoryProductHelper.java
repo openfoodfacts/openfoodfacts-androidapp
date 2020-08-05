@@ -87,7 +87,7 @@ public class CategoryProductHelper {
                             FragmentActivity activity = baseFragment.getActivity();
 
                             if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, category,
+                                BottomScreenCommon.showBottomSheet(result, category,
                                     activity.getSupportFragmentManager());
                             }
                         } else {

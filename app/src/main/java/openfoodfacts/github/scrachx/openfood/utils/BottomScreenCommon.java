@@ -1,11 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import android.util.Log;
-
 import androidx.fragment.app.FragmentManager;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
@@ -17,55 +14,52 @@ public class BottomScreenCommon {
     private BottomScreenCommon() {
     }
 
-    public static void showBottomScreen(JSONObject result, AdditiveName additive,
-                                        FragmentManager fragmentManager) {
+    public static void showBottomSheet(JsonNode result, AdditiveName additive,
+                                       FragmentManager fragmentManager) {
         showBottomSheet(result, additive.getId(),
             additive.getName(),
             SearchType.ADDITIVE, "additive_details_fragment",
             fragmentManager);
     }
 
-    public static void showBottomScreen(JSONObject result, LabelName label,
-                                        FragmentManager fragmentManager) {
+    public static void showBottomSheet(JsonNode result, LabelName label,
+                                       FragmentManager fragmentManager) {
         showBottomSheet(result, label.getId(),
             label.getName(),
             SearchType.LABEL, "label_details_fragment",
             fragmentManager);
     }
 
-    public static void showBottomScreen(JSONObject result, CategoryName category,
-                                        FragmentManager fragmentManager) {
+    public static void showBottomSheet(JsonNode result, CategoryName category,
+                                       FragmentManager fragmentManager) {
         showBottomSheet(result, category.getId(),
             category.getName(),
             SearchType.CATEGORY, "category_details_fragment",
             fragmentManager);
     }
 
-    public static void showBottomScreen(JSONObject result, AllergenName allergen,
-                                        FragmentManager fragmentManager) {
+    public static void showBottomSheet(JsonNode result, AllergenName allergen,
+                                       FragmentManager fragmentManager) {
         showBottomSheet(result, allergen.getId(),
             allergen.getName(),
             SearchType.ALLERGEN, "allergen_details_fragment",
             fragmentManager);
     }
 
-    private static void showBottomSheet(JSONObject result, Long id, String name,
-                                        SearchType searchType, String fragmentTag,
+    private static void showBottomSheet(JsonNode result,
+                                        Long id,
+                                        String name,
+                                        SearchType searchType,
+                                        String fragmentTag,
                                         FragmentManager fragmentManager) {
-        try {
-            String jsonObjectStr = null;
-            if ((result != null)) {
-                final JSONObject entities = result.getJSONObject("entities");
-                if (entities.length() > 0) {
-                    jsonObjectStr = entities
-                        .getJSONObject(entities.keys().next()).toString();
-                }
+        String jsonObjectStr = null;
+        if ((result != null)) {
+            final JsonNode entities = result.get("entities");
+            if (entities.elements().hasNext()) {
+                jsonObjectStr = entities.elements().next().toString();
             }
-            ProductAttributeDetailsFragment fragment =
-                ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
-            fragment.show(fragmentManager, fragmentTag);
-        } catch (JSONException e) {
-            Log.e(BottomScreenCommon.class.getSimpleName(), "showBottomSheet for " + name, e);
         }
+        ProductAttributeDetailsFragment fragment = ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
+        fragment.show(fragmentManager, fragmentTag);
     }
 }
