@@ -13,6 +13,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
+import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_GERMAN;
 import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestData.PEANUTS_DE;
@@ -56,13 +57,13 @@ public class AnalysisTagTest {
 
         List<AnalysisTagName> tags = testAnalysisTag.getNames();
 
-        assertEquals(UNIQUE_ALLERGEN_ID_1, tags.get(0).getAnalysisTag());
-        assertEquals(LANGUAGE_CODE_GERMAN, tags.get(0).getLanguageCode());
-        assertEquals(PEANUTS_DE, tags.get(0).getName());
+        assertThat(tags.get(0).getAnalysisTag()).isEqualTo(UNIQUE_ALLERGEN_ID_1);
+        assertThat(tags.get(0).getLanguageCode()).isEqualTo(LANGUAGE_CODE_GERMAN);
+        assertThat(tags.get(0).getName()).isEqualTo(PEANUTS_DE);
 
-        assertEquals(UNIQUE_ALLERGEN_ID_2, tags.get(1).getAnalysisTag());
-        assertEquals(LANGUAGE_CODE_ENGLISH, tags.get(1).getLanguageCode());
-        assertEquals(PEANUTS_EN, tags.get(1).getName());
+        assertThat(tags.get(1).getAnalysisTag()).isEqualTo(UNIQUE_ALLERGEN_ID_2);
+        assertThat(tags.get(1).getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(tags.get(1).getName()).isEqualTo(PEANUTS_EN);
     }
 
     @Test(expected = DaoException.class)

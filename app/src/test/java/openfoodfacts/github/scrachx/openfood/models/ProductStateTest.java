@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Tests for {@link ProductState}
@@ -43,6 +43,6 @@ public class ProductStateTest {
                 CODE,
                 additionalProperties);
 
-        assertEquals(checkString, productState.toString());
+        assertThat(productState.toString()).isEqualTo(checkString);
     }
 }
