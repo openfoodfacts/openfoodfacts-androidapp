@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -14,52 +16,56 @@ public class BottomScreenCommon {
     private BottomScreenCommon() {
     }
 
-    public static void showBottomSheet(JsonNode result, AdditiveName additive,
-                                       FragmentManager fragmentManager) {
+    public static void showBottomSheet(JsonNode result,
+                                       @NonNull AdditiveName additive,
+                                       @NonNull FragmentManager fragmentManager) {
         showBottomSheet(result, additive.getId(),
             additive.getName(),
             SearchType.ADDITIVE, "additive_details_fragment",
             fragmentManager);
     }
 
-    public static void showBottomSheet(JsonNode result, LabelName label,
-                                       FragmentManager fragmentManager) {
+    public static void showBottomSheet(JsonNode result,
+                                       @NonNull LabelName label,
+                                       @NonNull FragmentManager fragmentManager) {
         showBottomSheet(result, label.getId(),
             label.getName(),
             SearchType.LABEL, "label_details_fragment",
             fragmentManager);
     }
 
-    public static void showBottomSheet(JsonNode result, CategoryName category,
-                                       FragmentManager fragmentManager) {
+    public static void showBottomSheet(@Nullable JsonNode result,
+                                       @NonNull CategoryName category,
+                                       @NonNull FragmentManager fragmentManager) {
         showBottomSheet(result, category.getId(),
             category.getName(),
             SearchType.CATEGORY, "category_details_fragment",
             fragmentManager);
     }
 
-    public static void showBottomSheet(JsonNode result, AllergenName allergen,
-                                       FragmentManager fragmentManager) {
+    public static void showBottomSheet(@Nullable JsonNode result,
+                                       @NonNull AllergenName allergen,
+                                       @NonNull FragmentManager fragmentManager) {
         showBottomSheet(result, allergen.getId(),
             allergen.getName(),
             SearchType.ALLERGEN, "allergen_details_fragment",
             fragmentManager);
     }
 
-    private static void showBottomSheet(JsonNode result,
+    private static void showBottomSheet(@Nullable JsonNode result,
                                         Long id,
                                         String name,
                                         SearchType searchType,
                                         String fragmentTag,
-                                        FragmentManager fragmentManager) {
+                                        @NonNull FragmentManager fragmentManager) {
         String jsonObjectStr = null;
-        if ((result != null)) {
+        if (result != null) {
             final JsonNode entities = result.get("entities");
             if (entities.elements().hasNext()) {
                 jsonObjectStr = entities.elements().next().toString();
             }
         }
-        ProductAttributeDetailsFragment fragment = ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name);
-        fragment.show(fragmentManager, fragmentTag);
+        ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name)
+            .show(fragmentManager, fragmentTag);
     }
 }

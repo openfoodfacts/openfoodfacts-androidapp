@@ -4,6 +4,9 @@ import android.util.Log;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.apache.commons.lang.StringUtils;
 
 public class QuantityParserUtil {
@@ -18,15 +21,15 @@ public class QuantityParserUtil {
 
     }
 
-    public static boolean isModifierEqualsToGreaterThan(CustomValidatingEditTextView view) {
+    public static boolean isModifierEqualsToGreaterThan(@NonNull CustomValidatingEditTextView view) {
         return isModifierEqualsToGreaterThan(view.getModSpinner());
     }
 
-    public static boolean isModifierEqualsToGreaterThan(Spinner text) {
+    public static boolean isModifierEqualsToGreaterThan(@NonNull Spinner text) {
         return Modifier.GREATER_THAN.equals(Modifier.MODIFIERS[text.getSelectedItemPosition()]);
     }
 
-    public static boolean isBlank(TextView editText) {
+    public static boolean isBlank(@NonNull TextView editText) {
         return StringUtils.isBlank(editText.getText().toString());
     }
 
@@ -39,7 +42,8 @@ public class QuantityParserUtil {
      * @return the float value or null if not correct
      * @see #getFloatValue(String)
      */
-    public static Float getFloatValue(TextView editText) {
+    @Nullable
+    public static Float getFloatValue(@NonNull TextView editText) {
         if (editText.getText() == null) {
             return null;
         }
@@ -57,7 +61,8 @@ public class QuantityParserUtil {
      * @return the float value or null if not correct
      * @see #getFloatValue(String)
      */
-    public static Double getDoubleValue(TextView editText) {
+    @Nullable
+    public static Double getDoubleValue(@NonNull TextView editText) {
         if (editText.getText() == null) {
             return null;
         }
@@ -83,6 +88,7 @@ public class QuantityParserUtil {
      * @param initText value to parse
      * @return the float value or null if not correct
      */
+    @Nullable
     public static Float getFloatValue(String initText) {
         Double result = getDoubleValue(initText);
         if (result != null) {
@@ -97,12 +103,13 @@ public class QuantityParserUtil {
      * @param initText value to parse
      * @return the float value or null if not correct
      */
+    @Nullable
     public static Double getDoubleValue(String initText) {
         if (StringUtils.isBlank(initText)) {
             return null;
         }
         String text = StringUtils.trim(initText);
-        text = replaceCommonByDot(text);
+        text = replaceCommaByDot(text);
         try {
             return Double.parseDouble(text);
         } catch (NumberFormatException ex) {
@@ -117,7 +124,7 @@ public class QuantityParserUtil {
      * @param text
      * @return text with , replaced by .
      */
-    private static String replaceCommonByDot(String text) {
+    private static String replaceCommaByDot(@NonNull String text) {
         if (text.contains(",")) {
             text = StringUtils.replace(text, ",", ".");
         }

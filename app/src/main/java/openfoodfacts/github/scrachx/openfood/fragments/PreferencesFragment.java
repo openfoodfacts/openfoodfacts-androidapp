@@ -17,7 +17,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -102,7 +101,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
     private static final String ADDITIVE_IMPORT_TAG = "ADDITIVE_IMPORT";
-    private Context context;
     private CompositeDisposable disp = new CompositeDisposable();
 
     @Override
@@ -115,14 +113,14 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     public void onCreatePreferences(Bundle bundle, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
-        context = requireContext();
+        final FragmentActivity activity = requireActivity();
 
         ListPreference languagePreference = findPreference("Locale.Helper.Selected.Language");
 
-        SharedPreferences settings = getActivity().getSharedPreferences("prefs", 0);
+        SharedPreferences settings = activity.getSharedPreferences("prefs", 0);
         mAdditiveDao = Utils.getDaoSession().getAdditiveDao();
 
-        String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
+        String[] localeValues = activity.getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
         List<String> finalLocalValues = new ArrayList<>();
         List<String> finalLocalLabels = new ArrayList<>();
@@ -141,8 +139,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         languagePreference.setEntryValues(finalLocalValues.toArray(new String[0]));
 
         languagePreference.setOnPreferenceChangeListener((preference, locale) -> {
-
-            FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
             Toast.makeText(getContext(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
 
@@ -154,7 +150,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         });
 
         findPreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
-            new MaterialDialog.Builder(context)
+            new MaterialDialog.Builder(activity)
                 .content(R.string.search_history_pref_dialog_content)
                 .positiveText(R.string.delete_txt)
                 .onPositive((dialog, which) -> {
@@ -223,9 +219,9 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         Preference rateus = findPreference("RateUs");
         rateus.setOnPreferenceClickListener(preference -> {
             try {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getPackageName())));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.getPackageName())));
             } catch (ActivityNotFoundException e) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + activity.getPackageName())));
             }
             return true;
         });
@@ -273,7 +269,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         Preference versionPref = findPreference("Version");
         versionPref.setEnabled(false);
         try {
-            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            PackageInfo pInfo = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0);
             String version = pInfo.versionName;
             versionPref.setSummary(getString(R.string.version_string) + " " + version);
         } catch (PackageManager.NameNotFoundException e) {
