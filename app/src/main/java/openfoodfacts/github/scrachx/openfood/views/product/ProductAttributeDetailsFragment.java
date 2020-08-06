@@ -10,16 +10,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.browser.customtabs.CustomTabsIntent;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.apache.commons.lang.StringUtils;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -33,7 +34,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
-public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment implements CustomTabActivityHelper.ConnectionCallback {
+public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment {
     private static final String ARG_OBJECT = "result";
     private static final String ARG_ID = "code";
     private static final String ARG_SEARCH_TYPE = "search_type";
@@ -53,7 +54,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
     private AppCompatImageView spElderlyImage;
     private CustomTabsIntent customTabsIntent;
 
-    @NotNull
+    @NonNull
     public static ProductAttributeDetailsFragment newInstance(String jsonObjectStr, long id, SearchType searchType, String title) {
         ProductAttributeDetailsFragment fragment = new ProductAttributeDetailsFragment();
         Bundle args = new Bundle();
@@ -69,12 +70,22 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(this);
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext().getApplicationContext(), customTabActivityHelper.getSession());
+        customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
+            @Override
+            public void onCustomTabsConnected() {
+
+            }
+
+            @Override
+            public void onCustomTabsDisconnected() {
+
+            }
+        });
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
 
         View view = inflater.inflate(R.layout.fragment_product_attribute_details, container,
             false);
@@ -88,11 +99,13 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
         try {
             final String descriptionString;
             final String wikiLink;
-            String str = getArguments().getString(ARG_OBJECT);
+            final Bundle arguments = requireArguments();
+            String str = arguments.getString(ARG_OBJECT);
             if (str != null) {
-                JSONObject result = new JSONObject(str);
-                JSONObject description = result.getJSONObject("descriptions");
-                JSONObject siteLinks = result.getJSONObject("sitelinks");
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode result = mapper.readTree(str);
+                JsonNode description = result.get("descriptions");
+                JsonNode siteLinks = result.get("sitelinks");
 
                 descriptionString = getDescription(description);
                 wikiLink = getWikiLink(siteLinks);
@@ -101,9 +114,9 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
                 wikiLink = null;
             }
 
-            String title = getArguments().getString(ARG_TITLE);
+            String title = arguments.getString(ARG_TITLE);
             bottomSheetTitle.setText(title);
-            SearchType searchType = (SearchType) getArguments().getSerializable(ARG_SEARCH_TYPE);
+            SearchType searchType = (SearchType) arguments.getSerializable(ARG_SEARCH_TYPE);
             if (descriptionString != null) {
                 bottomSheetDescription.setText(descriptionString);
                 bottomSheetDescription.setVisibility(View.VISIBLE);
@@ -119,7 +132,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
                 wikipediaButton.setVisibility(View.GONE);
             }
 
-            long id = getArguments().getLong(ARG_ID);
+            long id = arguments.getLong(ARG_ID);
             if (SearchType.ADDITIVE.equals(searchType)) {
                 AdditiveNameDao dao = Utils.getDaoSession().getAdditiveNameDao();
                 AdditiveName additiveName = dao.queryBuilder()
@@ -128,8 +141,8 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
                     ).unique();
                 updateContent(view, additiveName);
             }
-        } catch (JSONException e) {
-            Log.e(getClass().getSimpleName(),"onCreateView",e);
+        } catch (JsonProcessingException e) {
+            Log.e(getClass().getSimpleName(), "onCreateView", e);
         }
 
         return view;
@@ -158,11 +171,10 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
             boolean isHighRisk = "high".equalsIgnoreCase(overexposureRisk);
             if (isHighRisk) {
                 bottomSheetTitleIcon.setImageResource(R.drawable.ic_additive_high_risk);
-                efsaWarning.setText(getString(R.string.efsa_warning_high_risk, additive.getName()));
             } else {
                 bottomSheetTitleIcon.setImageResource(R.drawable.ic_additive_moderate_risk);
-                efsaWarning.setText(getString(R.string.efsa_warning_high_risk, additive.getName()));
             }
+            efsaWarning.setText(getString(R.string.efsa_warning_high_risk, additive.getName()));
             bottomSheetTitleIcon.setVisibility(View.VISIBLE);
 
             // noel will override adi evaluation if present
@@ -229,30 +241,22 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
         }
     }
 
-    private String getDescription(JSONObject description) {
+    private String getDescription(JsonNode description) {
         String descriptionString = "";
         if (description == null) {
             return descriptionString;
         }
         final String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         if (languageCode != null && description.has(languageCode)) {
-            try {
-                description = description.getJSONObject(languageCode);
-                if (description != null) {
-                    descriptionString = description.getString("value");
-                }
-            } catch (JSONException e) {
-                Log.e(ProductAttributeDetailsFragment.class.getSimpleName(), e.getMessage(), e);
+            description = description.get(languageCode);
+            if (description != null) {
+                descriptionString = description.get("value").asText();
             }
         }
         if (description != null && StringUtils.isEmpty(descriptionString) && description.has("en")) {
-            try {
-                description = description.getJSONObject("en");
-                if (description != null) {
-                    descriptionString = description.getString("value");
-                }
-            } catch (JSONException e) {
-                Log.e(ProductAttributeDetailsFragment.class.getSimpleName(), e.getMessage(), e);
+            description = description.get("en");
+            if (description != null) {
+                descriptionString = description.get("value").asText();
             }
         }
         if (StringUtils.isEmpty(descriptionString)) {
@@ -261,47 +265,29 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment i
         return descriptionString;
     }
 
-    private String getWikiLink(JSONObject sitelinks) {
+    private String getWikiLink(@NonNull JsonNode sitelinks) {
         String link = "";
         String languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance());
         languageCode = languageCode + "wiki";
         if (sitelinks.has(languageCode)) {
-            try {
-                sitelinks = sitelinks.getJSONObject(languageCode);
-                link = sitelinks.getString("url");
-            } catch (JSONException e) {
-                Log.e(getClass().getSimpleName(),"getWikiLink for language code "+languageCode,e);
-            }
+            sitelinks = sitelinks.get(languageCode);
+            link = sitelinks.get("url").asText();
         } else if (sitelinks.has("enwiki")) {
-            try {
-                sitelinks = sitelinks.getJSONObject("enwiki");
-                link = sitelinks.getString("url");
-            } catch (JSONException e) {
-                Log.e(getClass().getSimpleName(),"sitelinks for language code "+languageCode,e);
-            }
+            sitelinks = sitelinks.get("enwiki");
+            link = sitelinks.get("url").asText();
         } else {
             Log.i("ProductActivity", "Result for wikilink is not found in native or english language.");
         }
         return link;
     }
 
-    private void openInCustomTab(String url) {
+    private void openInCustomTab(@NonNull String url) {
         // Url might be empty string if there is no wiki link in english or the user's language
         if (!url.equals("")) {
             Uri wikipediaUri = Uri.parse(url);
-            CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, wikipediaUri, new WebViewFallback());
+            CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, wikipediaUri, new WebViewFallback());
         } else {
             Toast.makeText(getContext(), R.string.wikidata_unavailable, Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    public void onCustomTabsConnected() {
-//nothing to do
-    }
-
-    @Override
-    public void onCustomTabsDisconnected() {
-//nothing to do
     }
 }

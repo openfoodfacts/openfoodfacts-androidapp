@@ -6,17 +6,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * @author herau
  */
 public class NutrientLevelsTest {
-
     private NutrientLevels nutrientLevels;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         nutrientLevels = new NutrientLevels();
         nutrientLevels.setFat(NutrimentLevel.LOW);
         nutrientLevels.setSalt(NutrimentLevel.MODERATE);
@@ -28,25 +27,25 @@ public class NutrientLevelsTest {
     public void jsonSerialization_ok() {
         JsonNode jsonNode = new ObjectMapper().valueToTree(nutrientLevels);
 
-        assertEquals(jsonNode.get("fat").asText(), NutrimentLevel.LOW.toString());
-        assertEquals(jsonNode.get("salt").asText(), NutrimentLevel.MODERATE.toString());
-        assertEquals(jsonNode.get("saturated-fat").asText(), NutrimentLevel.HIGH.toString());
-        assertEquals(jsonNode.get("sugars").asText(), NutrimentLevel.MODERATE.toString());
+        assertThat(jsonNode.get("fat").asText()).isEqualTo(NutrimentLevel.LOW.toString());
+        assertThat(jsonNode.get("salt").asText()).isEqualTo(NutrimentLevel.MODERATE.toString());
+        assertThat(jsonNode.get("saturated-fat").asText()).isEqualTo(NutrimentLevel.HIGH.toString());
+        assertThat(jsonNode.get("sugars").asText()).isEqualTo(NutrimentLevel.MODERATE.toString());
     }
 
     @Test
     public void jsonDeserialization_ok() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         NutrientLevels nutrientLevelsResult = objectMapper.treeToValue(
-                objectMapper.createObjectNode()
+            objectMapper.createObjectNode()
                 .put("fat", "low")
                 .put("salt", "moderate")
                 .put("saturated-fat", "high")
                 .put("sugars", "moderate"), NutrientLevels.class);
 
-        assertEquals(nutrientLevels.getFat(), nutrientLevelsResult.getFat());
-        assertEquals(nutrientLevels.getSugars(), nutrientLevelsResult.getSugars());
-        assertEquals(nutrientLevels.getSaturatedFat(), nutrientLevelsResult.getSaturatedFat());
-        assertEquals(nutrientLevels.getSalt(), nutrientLevelsResult.getSalt());
+        assertThat(nutrientLevelsResult.getFat()).isEqualTo(nutrientLevels.getFat());
+        assertThat(nutrientLevelsResult.getSugars()).isEqualTo(nutrientLevels.getSugars());
+        assertThat(nutrientLevelsResult.getSaturatedFat()).isEqualTo(nutrientLevels.getSaturatedFat());
+        assertThat(nutrientLevelsResult.getSalt()).isEqualTo(nutrientLevels.getSalt());
     }
 }

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_EN;
@@ -58,61 +58,61 @@ public class CountriesWrapperTest {
 
     @Test
     public void map_returnsListOfCountries_ListHasCorrectSize() {
-        assertEquals(2, countries.size());
+        assertThat(countries).hasSize(2);
     }
 
     @Test
     public void map_returnsListOfCountries_CountryTagsAreCorrect() {
-        assertEquals(USA_COUNTRY_TAG, country1.getTag());
-        assertEquals(2, country1.getNames().size());
+        assertThat(country1.getTag()).isEqualTo(USA_COUNTRY_TAG);
+        assertThat(country1.getNames()).hasSize(2);
 
         Country country2 = countries.get(1);
-        assertEquals(GERMANY_COUNTRY_TAG, country2.getTag());
-        assertEquals(2, country2.getNames().size());
+        assertThat(country2.getTag()).isEqualTo(GERMANY_COUNTRY_TAG);
+        assertThat(country2.getNames()).hasSize(2);
     }
 
     @Test
     public void map_returnsListOfCountries_SubCountryTagsAreCorrect() {
         CountryName country1Name1 = country1.getNames().get(0);
-        assertEquals(USA_COUNTRY_TAG, country1Name1.getCountyTag());
+        assertThat(country1Name1.getCountyTag()).isEqualTo(USA_COUNTRY_TAG);
 
         CountryName country1Name2 = country1.getNames().get(1);
-        assertEquals(USA_COUNTRY_TAG, country1Name2.getCountyTag());
+        assertThat(country1Name2.getCountyTag()).isEqualTo(USA_COUNTRY_TAG);
 
         CountryName country2Name1 = country2.getNames().get(0);
-        assertEquals(GERMANY_COUNTRY_TAG, country2Name1.getCountyTag());
+        assertThat(country2Name1.getCountyTag()).isEqualTo(GERMANY_COUNTRY_TAG);
 
         CountryName country2Name2 = country2.getNames().get(1);
-        assertEquals(GERMANY_COUNTRY_TAG, country2Name2.getCountyTag());
+        assertThat(country2Name2.getCountyTag()).isEqualTo(GERMANY_COUNTRY_TAG);
     }
 
     @Test
     public void map_returnsListOfCountries_SubLanguageCodesAreCorrect() {
         CountryName country1Name1 = country1.getNames().get(0);
-        assertEquals(LANGUAGE_CODE_ENGLISH, country1Name1.getLanguageCode());
+        assertThat(country1Name1.getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
 
         CountryName country1Name2 = country1.getNames().get(1);
-        assertEquals(LANGUAGE_CODE_FRENCH, country1Name2.getLanguageCode());
+        assertThat(country1Name2.getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
 
         CountryName country2Name1 = country2.getNames().get(0);
-        assertEquals(LANGUAGE_CODE_ENGLISH, country2Name1.getLanguageCode());
+        assertThat(country2Name1.getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
 
         CountryName country2Name2 = country2.getNames().get(1);
-        assertEquals(LANGUAGE_CODE_FRENCH, country2Name2.getLanguageCode());
+        assertThat(country2Name2.getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
     }
 
     @Test
     public void map_returnsListOfCountries_SubNamesAreCorrect() {
         CountryName country1Name1 = country1.getNames().get(0);
-        assertEquals(USA_EN, country1Name1.getName());
+        assertThat(country1Name1.getName()).isEqualTo(USA_EN);
 
         CountryName country1Name2 = country1.getNames().get(1);
-        assertEquals(USA_FR, country1Name2.getName());
+        assertThat(country1Name2.getName()).isEqualTo(USA_FR);
 
         CountryName country2Name1 = country2.getNames().get(0);
-        assertEquals(GERMANY_EN, country2Name1.getName());
+        assertThat(country2Name1.getName()).isEqualTo(GERMANY_EN);
 
         CountryName country2Name2 = country2.getNames().get(1);
-        assertEquals(GERMANY_FR, country2Name2.getName());
+        assertThat(country2Name2.getName()).isEqualTo(GERMANY_FR);
     }
 }

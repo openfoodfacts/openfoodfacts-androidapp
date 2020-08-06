@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import org.json.JSONObject;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -118,7 +118,7 @@ public class AdditiveFragmentHelper {
     private static void onWikiNoResponse(AdditiveName additive, FragmentActivity activity) {
         if (additive.hasOverexposureData()) {
             if (activity != null && !activity.isFinishing()) {
-                BottomScreenCommon.showBottomScreen(null, additive,
+                BottomScreenCommon.showBottomSheet(null, additive,
                     activity.getSupportFragmentManager());
             }
         } else {
@@ -126,17 +126,17 @@ public class AdditiveFragmentHelper {
         }
     }
 
-    private static Consumer<JSONObject> getOnWikiResponse(FragmentActivity activity, AdditiveName additive) {
+    private static Consumer<JsonNode> getOnWikiResponse(FragmentActivity activity, AdditiveName additive) {
         return result -> {
             if (result != null) {
                 if (activity != null && !activity.isFinishing()) {
-                    BottomScreenCommon.showBottomScreen(result, additive,
+                    BottomScreenCommon.showBottomSheet(result, additive,
                         activity.getSupportFragmentManager());
                 }
             } else {
                 if (additive.hasOverexposureData()) {
                     if (activity != null && !activity.isFinishing()) {
-                        BottomScreenCommon.showBottomScreen(result, additive,
+                        BottomScreenCommon.showBottomSheet(result, additive,
                             activity.getSupportFragmentManager());
                     }
                 } else {

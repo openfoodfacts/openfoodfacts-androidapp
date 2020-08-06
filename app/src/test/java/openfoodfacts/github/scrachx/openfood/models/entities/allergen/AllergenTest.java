@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 public class AllergenTest {
 
@@ -57,26 +57,26 @@ public class AllergenTest {
 
     @Test
     public void deserialization_success(){
-        assertEquals(2, allergensWrapper.getAllergens().size());
+        assertThat(allergensWrapper.getAllergens()).hasSize(2);
     }
 
     @Test
     public void allergensWrapper_AllergenAreCorrectlyTagged() {
         Allergen allergen = allergens.get(0);
 
-        assertEquals("en:lupin", allergen.getTag());
-        assertFalse(allergen.getEnabled());
-        assertEquals(9, allergen.getNames().size());
+        assertThat(allergen.getTag()).isEqualTo("en:lupin");
+        assertThat(allergen.getEnabled()).isFalse();
+        assertThat(allergen.getNames()).hasSize(9);
     }
 
     @Test
-    public void allergensWrapper_SubElementsAreCorrectlyTagged(){
+    public void allergensWrapper_SubElementsAreCorrectlyTagged() {
         Allergen allergen = allergens.get(0);
         AllergenName allergenName = allergen.getNames().get(0);
 
-        assertEquals(allergen.getTag(), allergenName.getAllergenTag());
-        assertEquals("de", allergenName.getLanguageCode());
-        assertEquals("Lupinen", allergenName.getName());
+        assertThat(allergenName.getAllergenTag()).isEqualTo(allergen.getTag());
+        assertThat(allergenName.getLanguageCode()).isEqualTo("de");
+        assertThat(allergenName.getName()).isEqualTo("Lupinen");
     }
 
     private AllergensWrapper deserialize(String json) throws IOException {

@@ -5,10 +5,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.function.Consumer;
 
@@ -59,16 +57,15 @@ public class WikiDataApiClient {
      * @param code WikiData ID of additive/ingredient/category/label
      * @param onWikiResponse object of class OnWikiResponse
      */
-    public void doSomeThing(final String code, final Consumer<JSONObject> onWikiResponse) {
+    public void doSomeThing(final String code, final Consumer<JsonNode> onWikiResponse) {
         wikidataAPI.getWikiCategory(code).enqueue(new Callback<Object>() {
             @Override
             public void onResponse(final @NonNull Call<Object> call, final @NonNull Response<Object> response) {
-                final ObjectMapper mapper = new ObjectMapper();
                 try {
-                    String jsonInString = mapper.writeValueAsString(response.body());
-                    JSONObject jsonObject = new JSONObject(jsonInString);
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    JsonNode jsonObject = objectMapper.readTree(response.body().toString());
                     onWikiResponse.accept(jsonObject);
-                } catch (JsonProcessingException | JSONException e) {
+                } catch (JsonProcessingException e) {
                     onWikiResponse.accept(null);
                     Log.e("WikiDataApiClient", "doSomeThing", e);
                 }

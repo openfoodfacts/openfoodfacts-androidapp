@@ -744,7 +744,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         if (result != null) {
                             FragmentActivity activity = getActivity();
                             if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, label,
+                                BottomScreenCommon.showBottomSheet(result, label,
                                     activity.getSupportFragmentManager());
                             }
                         } else {

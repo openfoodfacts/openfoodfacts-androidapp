@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models.entities.label;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Tests for {@link LabelName}
@@ -18,34 +18,34 @@ public class LabelNameTest {
 
     @Test
     public void getWikiDataIdWithNullWikiDataId_returnsNullAsString() {
-        assertEquals("null", mLabelName.getWikiDataId());
+        assertThat(mLabelName.getWikiDataId()).isEqualTo("null");
     }
 
     @Test
     public void getWikiDataIdWithoutEnInWikiDataId_returnsWholeWikiDataId() {
         String fakeWikiDataId = "aFakeWikiDataId";
         mLabelName.setWikiDataId(fakeWikiDataId);
-        assertEquals(fakeWikiDataId, mLabelName.getWikiDataId());
+        assertThat(mLabelName.getWikiDataId()).isEqualTo(fakeWikiDataId);
     }
 
     @Test
     public void getWikiDataIdWithoutQuote_returnsWholeWikiDataId() {
         String wikiDataId = "somethingenmoreofit\"otherstuff";
         mLabelName.setWikiDataId(wikiDataId);
-        assertEquals("eofit", mLabelName.getWikiDataId());
+        assertThat(mLabelName.getWikiDataId()).isEqualTo("eofit");
     }
 
     @Test
     public void constructorWithWikiDataId_setsIsWikiDataIdPresentTrue() {
         mLabelName = new LabelName("Tag", "en", "Food", "wikiid");
-        assertTrue(mLabelName.getIsWikiDataIdPresent());
+        assertThat(mLabelName.getIsWikiDataIdPresent()).isTrue();
     }
 
     @Test
     public void constructorWithoutWikiDataId_setsIsWikiDataIdPresentFalse() {
         mLabelName = new LabelName("Tag", "en", "name");
-        assertFalse(mLabelName.getIsWikiDataIdPresent());
+        assertThat(mLabelName.getIsWikiDataIdPresent()).isFalse();
         mLabelName = new LabelName("name");
-        assertFalse(mLabelName.getIsWikiDataIdPresent());
+        assertThat(mLabelName.getIsWikiDataIdPresent()).isFalse();
     }
 }

@@ -8,9 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNull;
+import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_GERMAN;
@@ -51,23 +49,23 @@ public class LabelsWrapperTest {
 
     @Test
     public void map_returnsListOfCorrectlyMappedLabels_correctSize(){
-        assertEquals(2, labels.size());
+        assertThat(labels).hasSize(2);
     }
 
     @Test
-    public void map_returnsListOfCorrectlyMappedLabels_correctStructure(){
+    public void map_returnsListOfCorrectlyMappedLabels_correctStructure() {
         label1 = labels.get(0);
         label2 = labels.get(1);
 
-        assertEquals(LABEL_TAG, label1.getTag());
-        assertNull(label1.getWikiDataId());
-        assertFalse(label1.getIsWikiDataIdPresent());
-        assertEquals(2, label1.getNames().size());
+        assertThat(label1.getTag()).isEqualTo(LABEL_TAG);
+        assertThat(label1.getWikiDataId()).isNull();
+        assertThat(label1.getIsWikiDataIdPresent()).isFalse();
+        assertThat(label1.getNames()).hasSize(2);
 
-        assertEquals(labelTag2, label2.getTag());
-        assertNull(label2.getWikiDataId());
-        assertFalse(label2.getIsWikiDataIdPresent());
-        assertEquals(2, label2.getNames().size());
+        assertThat(label2.getTag()).isEqualTo(labelTag2);
+        assertThat(label2.getWikiDataId()).isNull();
+        assertThat(label2.getIsWikiDataIdPresent()).isFalse();
+        assertThat(label2.getNames()).hasSize(2);
     }
 
     @Test
@@ -76,31 +74,31 @@ public class LabelsWrapperTest {
         label2 = labels.get(1);
 
         LabelName label1_FRENCH = label1.getNames().get(0);
-        assertEquals(LABEL_TAG, label1_FRENCH.getLabelTag());
-        assertEquals(LANGUAGE_CODE_FRENCH, label1_FRENCH.getLanguageCode());
-        assertEquals(LABEL_NAME_FR, label1_FRENCH.getName());
-        assertFalse(label1_FRENCH.getIsWikiDataIdPresent());
-        assertEquals("null", label1_FRENCH.getWikiDataId());
+        assertThat(label1_FRENCH.getLabelTag()).isEqualTo(LABEL_TAG);
+        assertThat(label1_FRENCH.getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
+        assertThat(label1_FRENCH.getName()).isEqualTo(LABEL_NAME_FR);
+        assertThat(label1_FRENCH.getIsWikiDataIdPresent()).isFalse();
+        assertThat(label1_FRENCH.getWikiDataId()).isEqualTo("null");
 
         LabelName label1_ENGLISH = label1.getNames().get(1);
-        assertEquals(LABEL_TAG, label1_ENGLISH.getLabelTag());
-        assertEquals(LANGUAGE_CODE_ENGLISH, label1_ENGLISH.getLanguageCode());
-        assertEquals(LABEL_NAME_EN, label1_ENGLISH.getName());
-        assertFalse(label1_ENGLISH.getIsWikiDataIdPresent());
-        assertEquals("null", label1_ENGLISH.getWikiDataId());
+        assertThat(label1_ENGLISH.getLabelTag()).isEqualTo(LABEL_TAG);
+        assertThat(label1_ENGLISH.getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(label1_ENGLISH.getName()).isEqualTo(LABEL_NAME_EN);
+        assertThat(label1_ENGLISH.getIsWikiDataIdPresent()).isFalse();
+        assertThat(label1_ENGLISH.getWikiDataId()).isEqualTo("null");
 
         LabelName label2_GERMAN = label2.getNames().get(0);
-        assertEquals(labelTag2, label2_GERMAN.getLabelTag());
-        assertEquals(LANGUAGE_CODE_GERMAN, label2_GERMAN.getLanguageCode());
-        assertEquals(LABEL_NAME_DE, label2_GERMAN.getName());
-        assertFalse(label2_GERMAN.getIsWikiDataIdPresent());
-        assertEquals("null", label2_GERMAN.getWikiDataId());
+        assertThat(label2_GERMAN.getLabelTag()).isEqualTo(labelTag2);
+        assertThat(label2_GERMAN.getLanguageCode()).isEqualTo(LANGUAGE_CODE_GERMAN);
+        assertThat(label2_GERMAN.getName()).isEqualTo(LABEL_NAME_DE);
+        assertThat(label2_GERMAN.getIsWikiDataIdPresent()).isFalse();
+        assertThat(label2_GERMAN.getWikiDataId()).isEqualTo("null");
 
         LabelName label2_ENGLISH = label2.getNames().get(1);
-        assertEquals(labelTag2, label2_ENGLISH.getLabelTag());
-        assertEquals(LANGUAGE_CODE_ENGLISH, label2_ENGLISH.getLanguageCode());
-        assertEquals(LABEL_NAME_EN, label2_ENGLISH.getName());
-        assertFalse(label2_ENGLISH.getIsWikiDataIdPresent());
-        assertEquals("null", label2_ENGLISH.getWikiDataId());
+        assertThat(label2_ENGLISH.getLabelTag()).isEqualTo(labelTag2);
+        assertThat(label2_ENGLISH.getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(label2_ENGLISH.getName()).isEqualTo(LABEL_NAME_EN);
+        assertThat(label2_ENGLISH.getIsWikiDataIdPresent()).isFalse();
+        assertThat(label2_ENGLISH.getWikiDataId()).isEqualTo("null");
     }
 }

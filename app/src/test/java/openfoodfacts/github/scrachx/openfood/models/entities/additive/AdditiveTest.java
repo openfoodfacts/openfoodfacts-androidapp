@@ -12,7 +12,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -56,9 +56,9 @@ public class AdditiveTest {
 
         List<AdditiveName> names = mAdditive.getNames();
 
-        assertEquals(2, names.size());
-        assertEquals(ADDITIVE_NAME_NAME_1, names.get(0).getName());
-        assertEquals(ADDITIVE_NAME_NAME_2, names.get(1).getName());
+        assertThat(names).hasSize(2);
+        assertThat(names.get(0).getName()).isEqualTo(ADDITIVE_NAME_NAME_1);
+        assertThat(names.get(1).getName()).isEqualTo(ADDITIVE_NAME_NAME_2);
     }
 
     @Test

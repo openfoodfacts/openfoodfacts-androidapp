@@ -12,7 +12,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_EN;
@@ -60,14 +60,14 @@ public class CountryTest {
 
         List<CountryName> names = mCountry.getNames();
 
-        assertEquals(2, names.size());
-        assertEquals(COUNTRY_TAG, names.get(0).getCountyTag());
-        assertEquals(LANGUAGE_CODE_ENGLISH, names.get(0).getLanguageCode());
-        assertEquals(GERMANY_EN, names.get(0).getName());
+        assertThat(names).hasSize(2);
+        assertThat(names.get(0).getCountyTag()).isEqualTo(COUNTRY_TAG);
+        assertThat(names.get(0).getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(names.get(0).getName()).isEqualTo(GERMANY_EN);
 
-        assertEquals(COUNTRY_TAG, names.get(1).getCountyTag());
-        assertEquals(LANGUAGE_CODE_FRENCH, names.get(1).getLanguageCode());
-        assertEquals(GERMANY_FR, names.get(1).getName());
+        assertThat(names.get(1).getCountyTag()).isEqualTo(COUNTRY_TAG);
+        assertThat(names.get(1).getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
+        assertThat(names.get(1).getName()).isEqualTo(GERMANY_FR);
     }
 
     @Test

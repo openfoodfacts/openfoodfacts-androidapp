@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models.entities.category;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Tests for {@link CategoryName}
@@ -18,41 +18,41 @@ public class CategoryNameTest {
 
     @Test
     public void getWikiDataIdWithNullWikiDataId_returnsStringNull() {
-        assertEquals("null", mCategoryName.getWikiDataId());
+        assertThat(mCategoryName.getWikiDataId()).isEqualTo("null");
     }
 
     @Test
     public void getWikiDataIdWithoutEnInWikiDataId_returnsWholeWikiDataId() {
         String fakeWikiDataId = "aFakeWikiDataId";
         mCategoryName.setWikiDataId(fakeWikiDataId);
-        assertEquals(fakeWikiDataId, mCategoryName.getWikiDataId());
+        assertThat(mCategoryName.getWikiDataId()).isEqualTo(fakeWikiDataId);
     }
 
     @Test
     public void getWikiDataIdWithoutQuote_returnsWholeWikiDataId() {
         String fakeWikiDataId = "ThisOneIncludesenButNotAQuote";
         mCategoryName.setWikiDataId(fakeWikiDataId);
-        assertEquals(fakeWikiDataId, mCategoryName.getWikiDataId());
+        assertThat(mCategoryName.getWikiDataId()).isEqualTo(fakeWikiDataId);
     }
 
     @Test
     public void getWikiDataIdWithEnAndQuote_returnsPartOfIdInBetweenFivePositionsPastEnAndQuote() {
         String wikiDataId = "somethingenmoreofit\"otherstuff";
         mCategoryName.setWikiDataId(wikiDataId);
-        assertEquals("eofit", mCategoryName.getWikiDataId());
+        assertThat(mCategoryName.getWikiDataId()).isEqualTo("eofit");
     }
 
     @Test
     public void constructorWithWikiDataId_setsIsWikiDataIdPresentTrue() {
         mCategoryName = new CategoryName("Tag", "en",
             "Name", "WikiDataId");
-        assertTrue(mCategoryName.getIsWikiDataIdPresent());
+        assertThat(mCategoryName.getIsWikiDataIdPresent()).isTrue();
     }
 
     @Test
     public void constructorsWithoutWikiDataId_setIsWikiDataIdPresentFalse() {
         // TODO: update empty constructor to set isWikiDataIdPresent to false if possible
         mCategoryName = new CategoryName("Tag", "en", "Name");
-        assertFalse(mCategoryName.getIsWikiDataIdPresent());
+        assertThat(mCategoryName.getIsWikiDataIdPresent()).isFalse();
     }
 }

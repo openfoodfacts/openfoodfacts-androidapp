@@ -6,13 +6,13 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponseTestData.ADDITIVE_TAG;
 import static openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponseTestData.VINEGAR_EN;
 import static openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponseTestData.VINEGAR_FR;
 import static openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveResponseTestData.WIKI_DATA_ID;
-import static org.junit.Assert.*;
 
 /**
  * Tests for {@link AdditiveResponse}
@@ -30,43 +30,43 @@ public class AdditiveResponseTest {
 
     @Test
     public void mapWithoutWikiDataId_returnsAdditiveWithNamesWithoutWikiDataId() {
-        mAdditiveResponse = new AdditiveResponse(ADDITIVE_TAG, mStringMap,null);
+        mAdditiveResponse = new AdditiveResponse(ADDITIVE_TAG, mStringMap, null);
         Additive additive = mAdditiveResponse.map();
 
-        assertEquals(ADDITIVE_TAG, additive.getTag());
-        assertEquals(2, additive.getNames().size());
+        assertThat(additive.getTag()).isEqualTo(ADDITIVE_TAG);
+        assertThat(additive.getNames()).hasSize(2);
 
-        assertEquals(LANGUAGE_CODE_ENGLISH, additive.getNames().get(0).getLanguageCode());
-        assertEquals(VINEGAR_EN, additive.getNames().get(0).getName());
-        assertEquals(ADDITIVE_TAG, additive.getNames().get(0).getAdditiveTag());
-        assertEquals("null", additive.getNames().get(0).getWikiDataId());
-        assertFalse(additive.getNames().get(0).getIsWikiDataIdPresent());
+        assertThat(additive.getNames().get(0).getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(additive.getNames().get(0).getName()).isEqualTo(VINEGAR_EN);
+        assertThat(additive.getNames().get(0).getAdditiveTag()).isEqualTo(ADDITIVE_TAG);
+        assertThat(additive.getNames().get(0).getWikiDataId()).isEqualTo("null");
+        assertThat(additive.getNames().get(0).getIsWikiDataIdPresent()).isFalse();
 
-        assertEquals(LANGUAGE_CODE_FRENCH, additive.getNames().get(1).getLanguageCode());
-        assertEquals(VINEGAR_FR, additive.getNames().get(1).getName());
-        assertEquals(ADDITIVE_TAG, additive.getNames().get(1).getAdditiveTag());
-        assertEquals("null", additive.getNames().get(1).getWikiDataId());
-        assertFalse(additive.getNames().get(1).getIsWikiDataIdPresent());
+        assertThat(additive.getNames().get(1).getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
+        assertThat(additive.getNames().get(1).getName()).isEqualTo(VINEGAR_FR);
+        assertThat(additive.getNames().get(1).getAdditiveTag()).isEqualTo(ADDITIVE_TAG);
+        assertThat(additive.getNames().get(1).getWikiDataId()).isEqualTo("null");
+        assertThat(additive.getNames().get(1).getIsWikiDataIdPresent()).isFalse();
     }
 
     @Test
     public void mapWithWikiDataId_returnsAdditiveWithNamesWithWikiDataId() {
-        mAdditiveResponse = new AdditiveResponse(ADDITIVE_TAG, mStringMap,null, WIKI_DATA_ID);
+        mAdditiveResponse = new AdditiveResponse(ADDITIVE_TAG, mStringMap, null, WIKI_DATA_ID);
         Additive additive = mAdditiveResponse.map();
 
-        assertEquals(ADDITIVE_TAG, additive.getTag());
-        assertEquals(2, additive.getNames().size());
+        assertThat(additive.getTag()).isEqualTo(ADDITIVE_TAG);
+        assertThat(additive.getNames()).hasSize(2);
 
-        assertEquals(LANGUAGE_CODE_ENGLISH, additive.getNames().get(0).getLanguageCode());
-        assertEquals(VINEGAR_EN, additive.getNames().get(0).getName());
-        assertEquals(ADDITIVE_TAG, additive.getNames().get(0).getAdditiveTag());
-        assertEquals(WIKI_DATA_ID, additive.getNames().get(0).getWikiDataId());
-        assertTrue(additive.getNames().get(0).getIsWikiDataIdPresent());
+        assertThat(additive.getNames().get(0).getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(additive.getNames().get(0).getName()).isEqualTo(VINEGAR_EN);
+        assertThat(additive.getNames().get(0).getAdditiveTag()).isEqualTo(ADDITIVE_TAG);
+        assertThat(additive.getNames().get(0).getWikiDataId()).isEqualTo(WIKI_DATA_ID);
+        assertThat(additive.getNames().get(0).getIsWikiDataIdPresent()).isTrue();
 
-        assertEquals(LANGUAGE_CODE_FRENCH, additive.getNames().get(1).getLanguageCode());
-        assertEquals(VINEGAR_FR, additive.getNames().get(1).getName());
-        assertEquals(ADDITIVE_TAG, additive.getNames().get(1).getAdditiveTag());
-        assertEquals(WIKI_DATA_ID, additive.getNames().get(1).getWikiDataId());
-        assertTrue(additive.getNames().get(1).getIsWikiDataIdPresent());
+        assertThat(additive.getNames().get(1).getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
+        assertThat(additive.getNames().get(1).getName()).isEqualTo(VINEGAR_FR);
+        assertThat(additive.getNames().get(1).getAdditiveTag()).isEqualTo(ADDITIVE_TAG);
+        assertThat(additive.getNames().get(1).getWikiDataId()).isEqualTo(WIKI_DATA_ID);
+        assertThat(additive.getNames().get(1).getIsWikiDataIdPresent()).isTrue();
     }
 }
