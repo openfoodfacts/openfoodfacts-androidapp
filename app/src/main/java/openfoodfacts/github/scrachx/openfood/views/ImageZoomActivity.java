@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityZoomImageBinding;
@@ -40,11 +43,11 @@ public class ImageZoomActivity extends BaseActivity {
             //delaying the transition until the view has been laid out
             postponeEnterTransition();
         }
+
         setSupportActionBar(binding.toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.toolbar.setTitle(R.string.imageFullscreen);
+
         loadImage(intent.getStringExtra(ImageKeyHelper.IMAGE_URL));
     }
 
@@ -68,6 +71,10 @@ public class ImageZoomActivity extends BaseActivity {
                 .into(binding.imageViewFullScreen, new Callback() {
                     @Override
                     public void onSuccess() {
+                        // Activity could have been destroyed while we load the image
+                        if (binding == null) {
+                            return;
+                        }
                         mAttacher.update();
                         scheduleStartPostponedTransition(binding.imageViewFullScreen);
                         binding.imageViewFullScreen.setVisibility(View.VISIBLE);
@@ -76,6 +83,10 @@ public class ImageZoomActivity extends BaseActivity {
 
                     @Override
                     public void onError(Exception ex) {
+                        // Activity could have been destroyed while we load the image
+                        if (binding == null) {
+                            return;
+                        }
                         binding.imageViewFullScreen.setVisibility(View.VISIBLE);
                         Toast.makeText(ImageZoomActivity.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
                         stopRefresh();
@@ -94,8 +105,8 @@ public class ImageZoomActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         binding = null;
+        super.onDestroy();
     }
 
     private void startRefresh(String text) {
@@ -106,9 +117,11 @@ public class ImageZoomActivity extends BaseActivity {
         }
     }
 
-    /*For scheduling a postponed transition after the proper measures of the view are done
-        and the view has been properly laid out in the View hierarchy*/
-    private void scheduleStartPostponedTransition(final View sharedElement) {
+    /**
+     * For scheduling a postponed transition after the proper measures of the view are done
+     * and the view has been properly laid out in the View hierarchy
+     */
+    private void scheduleStartPostponedTransition(@NonNull final View sharedElement) {
         sharedElement.getViewTreeObserver().addOnPreDrawListener(
             new ViewTreeObserver.OnPreDrawListener() {
                 @Override
