@@ -458,7 +458,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">כללי</string>
     <string name="preference_header_network">רשת</string>
     <string name="preference_header_contributing">התנדבות</string>
@@ -767,6 +767,7 @@
     <string name="unknown_status_no_translation">לא הצלחנו להעריך את מצב המוצר עקב רכיבים בלתי מזוהים.</string>
     <string name="help_translate_ingredients">נשמח לקבל את עזרתך בתרגום הרכיבים לשפה שלך</string>
     <string name="unknown_status_missing_ingredients">לא הצלחנו להעריך את מצב המוצר עקב רכיבים חסרים.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">סיוע בחילוץ הרכיבים לקבלת מצב %1$s.</string>
     <string name="add_photo_to_extract_ingredients">יש להוסיף תמונה כדי להתחיל לחלץ רכיבים</string>
     <string name="product_already_exists_in_comparison">המוצר כבר קיים ברשימת ההשוואה</string>
@@ -804,4 +805,5 @@
     <string name="product_front_image">תמונת חזית המוצר</string>
     <string name="brand_hint">דוגמאות: קוקה קולה, נסטלה וכו׳…</string>
     <string name="sign_in_or_register">כניסה או הרשמה</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
