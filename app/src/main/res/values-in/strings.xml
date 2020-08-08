@@ -158,7 +158,7 @@
     <string name="txtBarcode">kode batang anda</string>
     <string name="txtCategories">Kategori:</string>
     <string name="txtLabels">Label, sertifikasi, penghargaan:</string>
-    <string name="txtEMB">Kode EMB:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Daftar komposisi :</string>
     <string name="Donate">Donasi</string>
     <string name="Donation">Klik di sini untuk menyumbang pada Open Food Facts</string>
@@ -181,7 +181,7 @@
     <string name="txtSugars">Gula</string>
     <string name="hintBarcode">Kode batang</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Masuk</string>
+    <string name="hintLogin">Nama pengguna</string>
     <string name="hintPass">Kata sandi</string>
     <string name="errorLogin">Nama pengguna atau password salah</string>
     <string name="errorWeb">Tidak bisa mengakses internet. Mohon periksa koneksi anda.</string>
@@ -206,7 +206,7 @@
     <string name="create_account">Daftar</string>
     <string name="home_drawer">Beranda</string>
     <string name="install">Install</string>
-    <string name="open_beauty_drawer">Fakta Kecantikan yang Wajib Diketahui</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">mencari </string>
     <string name="search_by_barcode_drawer">Ketik kode batang</string>
@@ -224,7 +224,7 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">Masuk</string>
+    <string name="login_button">Nama pengguna</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Bagaimana ini bekerja?</string>
@@ -323,7 +323,7 @@
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">porsi</string>
     <string name="nutrition_monounsaturatedFat">Lemak tak jenuh Mono</string>
-    <string name="nutrition_polyunsaturatedFat">Poli tidak jenuh lemak</string>
+    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
     <string name="nutrition_omega3">Omega3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega9</string>
@@ -378,7 +378,7 @@
     <string name="take_more_pictures">memfoto</string>
     <string name="txtSaturatedFat">Lemak jenuh</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -392,7 +392,7 @@
     <string name="history_shortcut_short_label">riwayat/kenangan</string>
     <string name="history_shortcut_long_label">riwayat/kenangan</string>
     <string name="contributions_shortcut_short_label">Kontribusi</string>
-    <string name="contributions_shortcut_long_label">Kontribusi Saya</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Lupa Kata Sandi</string>
     <string name="next">BERIKUTNYA</string>
     <string name="skip">LEWATI</string>
@@ -414,7 +414,7 @@
     <string name="preference_enable_mobile_data_summary_on">Unggah produk baru menggunakan data telepon &amp; Wifi</string>
     <string name="preference_enable_mobile_data_summary_off">Unggah produk baru hanya melalui Wifi</string>
     <string name="device_on_mobile_data_warning_title">informasi</string>
-    <string name="device_on_mobile_data_warning_message">Unggah pada data seluler dimatikan, sambungkan Wi-Fi atau ubah ini di preferensi</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">pengaturan</string>
     <string name="device_on_mobile_data_warning_negative">Tetap unggah</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -443,12 +443,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Umum</string>
     <string name="preference_header_network">Jaringan</string>
     <string name="preference_header_contributing">Berkontribusi</string>
     <string name="scan_first_string">Riwayat produk Anda yang dilihat akan dicantumkan di sini. \ Nriwayat ini hanya dapat dilihat oleh Anda dan disimpan secara lokal.</string>
-    <string name="log_in">Masuk</string>
+    <string name="log_in">Nama pengguna</string>
     <string name="login_true">Sudah masuk!</string>
     <string name="confirm_logout">Konfirmasi keluar</string>
     <string name="logout_dialog_content">Apakah anda yakin untuk keluar?</string>
@@ -571,7 +571,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">meringkas</string>
     <string name="ingredients">Bahan</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
@@ -586,7 +586,7 @@
     <string name="traces">Jejak</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Informasi nilai gizi tidak ditetapkan pada produk.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
@@ -605,7 +605,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Asal bahan</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Toko</string>
@@ -749,6 +749,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -782,8 +783,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Contoh: CocaCola, Nestle, dll …</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
