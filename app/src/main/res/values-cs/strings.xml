@@ -651,7 +651,7 @@
     <string name="overexposure_high">Vysoké riziko nepřiměřeného příjmu</string>
     <string name="overexposure_moderate">Střední riziko nepřiměřeného příjmu</string>
     <string name="infants">Kojenci</string>
-    <string name="infants_age">&lt; [%s]</string>
+    <string name="infants_age">&lt; [[%s]]</string>
     <string name="toddlers">Batolata</string>
     <string name="toddlers_age">1 – 2</string>
     <string name="children">Děti</string>
@@ -767,6 +767,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -804,4 +805,5 @@
     <string name="product_front_image">Přední strana výrobku</string>
     <string name="brand_hint">Například: Kofola, Opavia…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
