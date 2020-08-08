@@ -27,11 +27,13 @@ import androidx.preference.PreferenceManager;
 
 import com.squareup.picasso.Picasso;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -79,10 +81,11 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             if (showIngredients != null) {
                 args.putSerializable("ingredients", getMatchingIngredientsText(product, showIngredients.split(":")));
             }
-            Optional<LinkedHashMap<String, String>> ambiguousIngredient = product.getIngredients().stream()
-                .filter(ingredientList -> ingredientList.containsKey(config.getType()) && ingredientList.containsValue("maybe")).findFirst();
-            if (ambiguousIngredient.isPresent() && ambiguousIngredient.get().containsKey("text")) {
-                args.putString(AMBIGUOUS_INGREDIENT_KEY, ambiguousIngredient.get().get("text"));
+            List<String> ambiguousIngredient = product.getIngredients().stream()
+                .filter(ingredientList -> ingredientList.containsKey(config.getType()) && ingredientList.containsValue("maybe"))
+                .filter(ingredient -> ingredient.containsKey("text")).map(ingredient -> ingredient.get("text")).collect(Collectors.toList());
+            if (!ambiguousIngredient.isEmpty()) {
+                args.putString(AMBIGUOUS_INGREDIENT_KEY, StringUtils.join(ambiguousIngredient, ","));
             }
         }
         frag.setArguments(args);
