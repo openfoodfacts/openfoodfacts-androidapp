@@ -163,7 +163,7 @@
     <string name="txtBarcode">बारकोड:</string>
     <string name="txtCategories">श्रेणी:</string>
     <string name="txtLabels">लेबल, प्रमाणपत्र, पुरस्कार:</string>
-    <string name="txtEMB">ईएमबी कोड:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">सामग्री की सूची:</string>
     <string name="Donate">दान करें</string>
     <string name="Donation">ओपन फ़ूड फैक्ट्स को दान करने के लिए यहाँ क्लिक करें</string>
@@ -186,7 +186,7 @@
     <string name="txtSugars">शुगर्स</string>
     <string name="hintBarcode">बारकोड</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">लॉगिन</string>
+    <string name="hintLogin">उपयोगकर्ता नाम</string>
     <string name="hintPass">पासवर्ड</string>
     <string name="errorLogin">लॉगिन या पासवर्ड एरर</string>
     <string name="errorWeb">हम इंटरनेट का उपयोग करने में सक्षम नहीं थे| क्या आपके पास कनेक्टिविटी है?</string>
@@ -229,7 +229,7 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">ठीक है</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">लॉगिन</string>
+    <string name="login_button">उपयोगकर्ता नाम</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">यह कैसे काम करता है?</string>
@@ -383,7 +383,7 @@
     <string name="take_more_pictures">और तस्वीरें लें</string>
     <string name="txtSaturatedFat">संतृप्त वसा</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -397,7 +397,7 @@
     <string name="history_shortcut_short_label">वृत्तांत</string>
     <string name="history_shortcut_long_label">वृत्तांत</string>
     <string name="contributions_shortcut_short_label">योगदान</string>
-    <string name="contributions_shortcut_long_label">मेरा योगदान</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">पासवर्ड भूल गए</string>
     <string name="next">अगला</string>
     <string name="skip">छोड़ें</string>
@@ -419,7 +419,7 @@
     <string name="preference_enable_mobile_data_summary_on">मोबाइल डेटा और WiFi का उपयोग करके नए उत्पाद अपलोड करें</string>
     <string name="preference_enable_mobile_data_summary_off">केवल WiFi का उपयोग कर नए उत्पाद अपलोड करें</string>
     <string name="device_on_mobile_data_warning_title">जानकारी</string>
-    <string name="device_on_mobile_data_warning_message">मोबाइल डेटा पर अपलोड अक्षम है, कृपया वाईफाई से कनेक्ट करें या वरीयताओं में इसे बदलें</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">प्राथमिकताएँ</string>
     <string name="device_on_mobile_data_warning_negative">ऐसे ही अपलोड करें</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -448,12 +448,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">सामान्य</string>
     <string name="preference_header_network">नेटवर्क</string>
     <string name="preference_header_contributing">योगदान</string>
     <string name="scan_first_string">आपके द्वारा देखे गए उत्पाद यहाँ सूचीबद्ध हैं \n यह केवल आपके लिए है और फ़ोन में संग्रहीत है</string>
-    <string name="log_in">लॉगिन</string>
+    <string name="log_in">उपयोगकर्ता नाम</string>
     <string name="login_true">पहले से ही लॉगिन हैं!</string>
     <string name="confirm_logout">लॉगआउट करें?</string>
     <string name="logout_dialog_content">लॉग आउट करने के लिए निश्चित हैं?</string>
@@ -544,7 +544,7 @@
     <string name="autofocus">ऑटोफोकस</string>
     <string name="initial_loading">प्रारंभिक लोडिंग</string>
     <string name="preferences">प्राथमिकताएँ</string>
-    <string name="OFFlogo">ओपन फ़ूड फैक्ट्स लोगो</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
@@ -577,7 +577,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">अवलोकन</string>
+    <string name="overview">संग्रह</string>
     <string name="ingredients">सामग्री</string>
     <string name="nutrition_facts">पोषण तथ्य</string>
     <string name="your_version">आपका</string>
@@ -592,7 +592,7 @@
     <string name="traces">अवशेष</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
-    <string name="nutrition_facts_picture">पोषण तथ्य की तस्वीर</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">100 ग्राम / 100 मिलीलीटर के लिए</string>
@@ -611,7 +611,7 @@
     <string name="manufacturing_details">विनिर्माण विवरण</string>
     <string name="origin_of_ingredients">सामग्री की उत्पत्ति</string>
     <string name="manufacturing_place">विनिर्माण स्थान</string>
-    <string name="emb_code">ई.एम.बी कोड</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">खरीद विवरण</string>
     <string name="country_where_purchased">जिस देश में खरीदा</string>
     <string name="stores">दुकाने</string>
@@ -755,6 +755,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -788,8 +789,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
