@@ -83,7 +83,8 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             }
             List<String> ambiguousIngredient = product.getIngredients().stream()
                 .filter(ingredientList -> ingredientList.containsKey(config.getType()) && ingredientList.containsValue("maybe"))
-                .filter(ingredient -> ingredient.containsKey("text")).map(ingredient -> ingredient.get("text")).collect(Collectors.toList());
+                .filter(ingredient -> ingredient.containsKey("text")).map(ingredient -> ingredient.get("text"))
+                .collect(Collectors.toList());
             if (!ambiguousIngredient.isEmpty()) {
                 args.putString(AMBIGUOUS_INGREDIENT_KEY, StringUtils.join(ambiguousIngredient, ","));
             }
@@ -180,21 +181,18 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
 
             Spanned messageToBeShown = Html.fromHtml(getString(R.string.ingredients_in_this_product_are, name.toLowerCase()));
             AppCompatButton helpNeeded = getView().findViewById(R.id.helpNeeded);
-            boolean showHelpTakePhoto = getArguments().getBoolean("photos_to_be_validated", false);
-            boolean hasAmbiguousIngredient = tag != null && ambiguousIngredient != null;
             boolean showHelpTranslate = tag != null && tag.contains("unknown");
-            boolean showHelpExtract = showHelpTranslate && getArguments().getBoolean("missing_ingredients", false);
             AppCompatImageView image = getView().findViewById(R.id.image);
-            if (showHelpTakePhoto) {
+            if (getArguments().getBoolean("photos_to_be_validated", false)) {
                 messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_missing_ingredients));
                 image.setImageResource(R.drawable.ic_add_a_photo_dark_48dp);
                 image.setOnClickListener(v -> goToAddPhoto());
                 helpNeeded.setText(Html.fromHtml(getString(R.string.add_photo_to_extract_ingredients)));
                 helpNeeded.setOnClickListener(v -> goToAddPhoto());
-            } else if (hasAmbiguousIngredient) {
+            } else if (tag != null && ambiguousIngredient != null) {
                 messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient));
                 helpNeeded.setVisibility(View.GONE);
-            } else if (showHelpExtract) {
+            } else if (showHelpTranslate && getArguments().getBoolean("missing_ingredients", false)) {
                 String ingredientsImageUrl = getArguments().getString("ingredients_image_url");
                 Picasso.get()
                     .load(ingredientsImageUrl)
