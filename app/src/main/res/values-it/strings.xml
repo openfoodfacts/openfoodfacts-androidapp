@@ -163,7 +163,7 @@
     <string name="txtBarcode">Codice a barre:</string>
     <string name="txtCategories">Categorie:</string>
     <string name="txtLabels">Etichette, certificazioni, premi:</string>
-    <string name="txtEMB">Codice EMB:Codici di intraccibilita\'</string>
+    <string name="txtEMB">Codici di intraccibilita:</string>
     <string name="txtIngredients">Lista degli ingredienti:</string>
     <string name="Donate">Effettua una donazione</string>
     <string name="Donation">Clicca qui per donare a Open Food Facts</string>
@@ -789,9 +789,9 @@
     <string name="content_exit">Premi qui per tornare al prodotto</string>
     <string name="icon_label">Icona etichette</string>
     <string name="icon_categories">Icona categorie</string>
-    <string name="icon_emb">Icona codice EMB</string>
+    <string name="icon_emb">Icona del codice di tracciabilità</string>
     <string name="product_front_image">Immagine frontale prodotto</string>
-    <string name="brand_hint">Esempi: CocaCola, Nestlé, ecc…</string>
+    <string name="brand_hint">Esempi: Coca-Cola, Nestlé, ecc…</string>
     <string name="sign_in_or_register">Accedi o registrati</string>
-    <string name="hunger_game_call_to_action">Aiuta a classificare più %1$s</string>
+    <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
 </resources>
