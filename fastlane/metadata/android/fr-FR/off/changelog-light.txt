@@ -18,7 +18,7 @@ v2 ! Tous les bénévoles ont travaillé dur, en se basant sur vos suggestions. 
 7. Aucune inscription requise
 8. Aussi léger qu'avant :)
 
-v2.8! Après la grande V2, tous les volontaires OFF ont travaillé dur, sur la base de vos suggestions. Nous affichons maintenant 570k produits libérés de 182 pays par 10K + contributeurs, y compris vous 🙂 vous :) vous :)
+v2.8! Après la grande V2, tous les volontaires OFF ont travaillé dur, sur la base de vos suggestions. Nous affichons maintenant 570k produits libérés de 182 pays par 10K + contributeurs, y compris vous 🙂 vous :) vous :) vous :)
 1. Nous avons reconstruit toute l'expérience d'ajout de produit (et ça fonctionne même hors ligne). (merci Huzaifa)
 8. Vous pouvez maintenant obtenir des informations nutritionnelles pour la portion que vous mangez (Rutvik)
 7. Nous calculons maintenant les groupes NOVA en plus du Nutriscore (Huzaifa)
