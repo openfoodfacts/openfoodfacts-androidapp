@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/tipBoxContainer"
         android:background="@color/brand_light_blue"
         android:gravity="center"
         android:orientation="horizontal"
@@ -38,8 +39,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:tint="@color/brand_light_blue"
         app:srcCompat="@drawable/ic_tip_box_down_arrow"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        app:tint="@color/brand_light_blue" />
 
 </LinearLayout>
