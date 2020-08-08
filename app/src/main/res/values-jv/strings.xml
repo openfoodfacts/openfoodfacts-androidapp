@@ -43,9 +43,9 @@
     <string-array name="nav_drawer_items_product">
         <item>Summary</item>
         <item>Ingredients</item>
-        <item>Nutrition</item>
+        <item>Nutrisi</item>
         <item>Nutrition Table</item>
-        <item>Environment</item>
+        <item>Lingkungan</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -75,40 +75,40 @@
         <item>Arachidic acid (20:0)</item>
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
-        <item>Bicarbonate</item>
+        <item>Bikarbonat</item>
         <item>Biotin</item>
         <item>Butyric acid (4:0)</item>
         <item>Caffeine</item>
-        <item>Calcium</item>
+        <item>Kalsium</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
         <item>Caprylic acid (8:0)</item>
-        <item>Casein</item>
+        <item>Kasein</item>
         <item>Cerotic acid (26:0)</item>
-        <item>Chloride</item>
-        <item>Cholesterol</item>
+        <item>Klorid</item>
+        <item>Kolesterol</item>
         <item>Chromium</item>
-        <item>Copper</item>
+        <item>Tembaga</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
         <item>Fluoride</item>
-        <item>Fructose</item>
+        <item>Fruktosa</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
-        <item>Glucose</item>
+        <item>Glukosa</item>
         <item>Gondoic acid (20:1 n-9)</item>
         <item>Iodine</item>
-        <item>Iron</item>
-        <item>Lactose</item>
+        <item>Wesi</item>
+        <item>Laktosa</item>
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
         <item>Magnesium</item>
-        <item>Maltodextrins</item>
-        <item>Maltose</item>
-        <item>Manganese</item>
+        <item>Maltodekstrin</item>
+        <item>Maltosa</item>
+        <item>Mangan</item>
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molybdenum</item>
@@ -116,7 +116,7 @@
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>Nukleotida</item>
         <item>Oleic acid (18:1 n-9)</item>
         <item>Omega 3 fatty acids</item>
         <item>Omega 6 fatty acids</item>
@@ -124,18 +124,18 @@
         <item>Palmitic acid (16:0)</item>
         <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
         <item>pH</item>
-        <item>Phosphorus</item>
+        <item>Pospor</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Poly unsaturated fat</item>
-        <item>Potassium</item>
+        <item>Potasium</item>
         <item>Selenium</item>
         <item>Serum proteins</item>
-        <item>Silica</item>
+        <item>Silika</item>
         <item>Starch</item>
         <item>Stearic acid (18:0)</item>
-        <item>Sucrose</item>
+        <item>Sukrosa</item>
         <item>Taurine</item>
-        <item>Trans fat</item>
+        <item>Owah-owahan lemak</item>
         <item>Vitamin A</item>
         <item>Vitamin B1 (Thiamin)</item>
         <item>Vitamin B12 (Cobalamin)</item>
@@ -147,7 +147,7 @@
         <item>Vitamin D</item>
         <item>Vitamin E</item>
         <item>Vitamin K</item>
-        <item>Zinc</item>
+        <item>Seng</item>
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
@@ -158,7 +158,7 @@
     <string name="txtBarcode">Barcode :</string>
     <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtEMB">EMB Code:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Ingredients list :</string>
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
@@ -170,9 +170,9 @@
     <string name="txtServingSize">Serving size :</string>
     <string name="txtNutrientLevel100g">Nutrient levels for 100g :</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
-    <string name="txtNutritionLevelLow">in low quantity</string>
-    <string name="txtNutritionLevelModerate">in moderate quantity</string>
-    <string name="txtNutritionLevelHigh">in high quantity</string>
+    <string name="txtNutritionLevelLow">ing jumlah andhap</string>
+    <string name="txtNutritionLevelModerate">ing jumlah moderat</string>
+    <string name="txtNutritionLevelHigh">ing jumlah katah</string>
     <string name="txtSave">Save</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtToastSaved">User saved</string>
@@ -181,7 +181,7 @@
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Login</string>
+    <string name="hintLogin">Username</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
@@ -191,7 +191,7 @@
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
-    <string name="hintBrand">Brand</string>
+    <string name="hintBrand">Merek</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
     <string name="toastSending">Uploading...</string>
@@ -211,7 +211,7 @@
     <string name="search_drawer">Search</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Categories</string>
-    <string name="search_by_category">Category</string>
+    <string name="search_by_category">Kategori</string>
     <string name="scan_search">Scan Barcode</string>
     <string name="user_drawer">User</string>
     <string name="offline_edit_drawer">Offline edit</string>
@@ -224,7 +224,7 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">Login</string>
+    <string name="login_button">Username</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
@@ -266,13 +266,13 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Check</string>
-    <string name="nutrition">Nutrition</string>
+    <string name="nutrition">Nutrisi</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
     <string name="please_enter_weight">Please type the product weight</string>
     <string name="enter_weight">Type the product weight</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
-    <string name="nutrition_cholesterol">Cholesterol</string>
+    <string name="nutrition_cholesterol">Kolesterol</string>
     <string name="nutrition_energy">Energy</string>
     <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
     <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
@@ -282,10 +282,10 @@
     <string name="nutrition_header">Nutrition facts</string>
     <string name="nutrition_proteins">Proteins</string>
     <string name="nutrition_salt">Salt</string>
-    <string name="nutrition_satured_fat">Saturated fat</string>
+    <string name="nutrition_satured_fat">Lemak jenuh</string>
     <string name="nutrition_sodium">Sodium</string>
     <string name="nutrition_sugars">Sugars</string>
-    <string name="nutrition_trans_fat">Trans fat</string>
+    <string name="nutrition_trans_fat">Owah-owahan lemak</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
     <string name="action_contributes">Your contributions</string>
@@ -314,24 +314,24 @@
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
     <string name="txt_try_again">Try again</string>
-    <string name="nutrition_lactose">Lactose</string>
-    <string name="nutrition_casein">Casein</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
-    <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
+    <string name="nutrition_lactose">Laktosa</string>
+    <string name="nutrition_casein">Kasein</string>
+    <string name="nutrition_maltodextrins">Maltodekstrin</string>
+    <string name="nutrition_serum_proteins">Serum Protein</string>
+    <string name="nutrition_nucleotides">Nukleotida</string>
     <string name="for_100g">For 100 g</string>
     <string name="for_100ml">For 100 ml</string>
-    <string name="serving">Per serving</string>
+    <string name="serving">Saben porsi</string>
     <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
     <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
-    <string name="nutrition_sucrose">Sucrose</string>
-    <string name="nutrition_glucose">Glucose</string>
-    <string name="nutrition_fructose">Fructose</string>
-    <string name="nutrition_maltose">Maltose</string>
-    <string name="nutrition_alcohol">Alcohol</string>
+    <string name="nutrition_sucrose">Sukrosa</string>
+    <string name="nutrition_glucose">Glukosa</string>
+    <string name="nutrition_fructose">Fruktosa</string>
+    <string name="nutrition_maltose">Maltosa</string>
+    <string name="nutrition_alcohol">Alkohol</string>
     <string name="nutrition_vitamins">Vitamins</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
@@ -346,18 +346,18 @@
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">Biotin</string>
     <string name="pantothenic_acid">Pantothenic acid</string>
-    <string name="nutrition_minerals">Minerals</string>
-    <string name="silica">Silica</string>
-    <string name="bicarbonate">Bicarbonate</string>
-    <string name="potassium">Potassium</string>
-    <string name="chloride">Chloride</string>
-    <string name="calcium">Calcium</string>
-    <string name="phosphorus">Phosphorus</string>
-    <string name="iron">Iron</string>
+    <string name="nutrition_minerals">Mineral</string>
+    <string name="silica">Silika</string>
+    <string name="bicarbonate">Bikarbonat</string>
+    <string name="potassium">Potasium</string>
+    <string name="chloride">Klorid</string>
+    <string name="calcium">Kalsium</string>
+    <string name="phosphorus">Pospor</string>
+    <string name="iron">Wesi</string>
     <string name="magnesium">Magnesium</string>
-    <string name="zinc">Zinc</string>
-    <string name="copper">Copper</string>
-    <string name="manganese">Manganese</string>
+    <string name="zinc">Seng</string>
+    <string name="copper">Tembaga</string>
+    <string name="manganese">Mangan</string>
     <string name="fluoride">Fluoride</string>
     <string name="selenium">Selenium</string>
     <string name="chromium">Chromium</string>
@@ -376,9 +376,9 @@
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
-    <string name="txtSaturatedFat">Saturated fat</string>
+    <string name="txtSaturatedFat">Lemak jenuh</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -392,7 +392,7 @@
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
-    <string name="contributions_shortcut_long_label">My Contributions</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -414,7 +414,7 @@
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">Information</string>
-    <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -443,12 +443,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -461,7 +461,7 @@
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
-    <string name="brand_string">Brand</string>
+    <string name="brand_string">Merek</string>
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">Search</string>
@@ -470,7 +470,7 @@
     <string name="packaging_subtitle">Packaging</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">Kategori</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
     <string name="Rate_Us">Show Your Support</string>
@@ -485,7 +485,7 @@
     <string name="disable_image_loading">Disable image loading when battery is low</string>
     <string name="DisableLoadTitle">Disable image loading</string>
     <string name="by_title">Title</string>
-    <string name="by_brand">Brand</string>
+    <string name="by_brand">Merek</string>
     <string name="by_barcode">Barcode</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
@@ -571,9 +571,9 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">Summary</string>
     <string name="ingredients">Ingredients</string>
-    <string name="nutrition_facts">Nutrition Facts</string>
+    <string name="nutrition_facts">Kasunyatan nutrisi</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
@@ -586,11 +586,11 @@
     <string name="traces">Traces</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
-    <string name="per_serving">Per serving</string>
+    <string name="per_serving">Saben porsi</string>
     <string name="serving_size">Serving size</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
@@ -605,7 +605,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Origin of ingredients</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Stores</string>
@@ -674,7 +674,7 @@
     <string name="crop_new_image_title">Crop new images</string>
     <string name="crop_new_image">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
-    <string name="additives">Additives</string>
+    <string name="additives">Aditif</string>
     <!--used for product_lists implementation-->
     <string name="add_to_product_lists">Add to your lists</string>
     <string name="txt_create_new_list">Create a new list</string>
@@ -747,8 +747,9 @@
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="help_translate_ingredients">Tulung nerjemahake bahan-bahan ing basane sampeyan</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -756,7 +757,7 @@
     <string name="compare_additives">Additives :</string>
     <string name="compare_salt">Salt</string>
     <string name="compare_sugars">Sugars</string>
-    <string name="compare_saturated_fat">Saturated fat</string>
+    <string name="compare_saturated_fat">Lemak jenuh</string>
     <string name="compare_fat">Fat</string>
     <string name="compare_quantity">Quantity :</string>
     <string name="load_ingredient_detection_data">Load ingredient detection data</string>
@@ -782,8 +783,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
