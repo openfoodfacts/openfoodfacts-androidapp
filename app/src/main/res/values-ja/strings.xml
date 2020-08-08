@@ -19,16 +19,16 @@
         <item quantity="other"> %d のオフライン製品が Open Food Facts に送信されるのを待っています</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d 秒前</item>
+        <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d 分前</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d 時間前</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d 日前</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">アプリについて</string>
     <string name="action_discover">見つける</string>
@@ -158,7 +158,7 @@
     <string name="txtBarcode">バーコード :</string>
     <string name="txtCategories">カテゴリー :</string>
     <string name="txtLabels">ラベル、認定、表彰 :</string>
-    <string name="txtEMB">EMBコード:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">原材料一覧 :</string>
     <string name="Donate">寄付</string>
     <string name="Donation">Open Food Factsに寄付するにはここをクリックしてください</string>
@@ -378,7 +378,7 @@
     <string name="take_more_pictures">もっと写真を撮ります</string>
     <string name="txtSaturatedFat">飽和脂肪酸</string>
     <string name="nutriscore_info_msg">栄養スコアの詳細</string>
-    <string name="nova_info_msg">Nova の詳細</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -392,7 +392,7 @@
     <string name="history_shortcut_short_label">履歴</string>
     <string name="history_shortcut_long_label">履歴</string>
     <string name="contributions_shortcut_short_label">貢献</string>
-    <string name="contributions_shortcut_long_label">私の貢献</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">パスワードを忘れた場合</string>
     <string name="next">次へ</string>
     <string name="skip">スキップ</string>
@@ -414,7 +414,7 @@
     <string name="preference_enable_mobile_data_summary_on">モバイル データ通信 &amp; WiFi を使用して新しい製品をアップロードします</string>
     <string name="preference_enable_mobile_data_summary_off">WiFi 接続時のみ新しい製品をアップロードします</string>
     <string name="device_on_mobile_data_warning_title">情報</string>
-    <string name="device_on_mobile_data_warning_message">モバイルデータ通信時のアップロードが無効になっています。WiFiに接続するか、設定でこれを変更してください</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">プリファレンス</string>
     <string name="device_on_mobile_data_warning_negative">とにかくアップロード</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -443,7 +443,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">全般</string>
     <string name="preference_header_network">ネットワーク</string>
     <string name="preference_header_contributing">貢献</string>
@@ -586,7 +586,7 @@
     <string name="traces">形跡</string>
     <string name="traces_hint">「微量含まれている可能性がある」「使用する工場で製造されている」などの言及から原材料を示します。\n例: 牛乳、グルテン、ナッツ</string>
     <string name="nutrition_facts_not_specified">栄養成分表が製品に指定されていません。</string>
-    <string name="nutrition_facts_picture">栄養成分表の画像</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">100g / 100ml 当たり</string>
@@ -605,7 +605,7 @@
     <string name="manufacturing_details">製造の詳細</string>
     <string name="origin_of_ingredients">成分の起源</string>
     <string name="manufacturing_place">製造場所</string>
-    <string name="emb_code">EMB コード</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">購入の詳細</string>
     <string name="country_where_purchased">購入した国</string>
     <string name="stores">店舗</string>
@@ -747,8 +747,9 @@
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="help_translate_ingredients">原材料をあなたの言語への翻訳を手伝ってください</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -782,8 +783,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
