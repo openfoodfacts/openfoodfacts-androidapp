@@ -20,7 +20,7 @@
         <item quantity="other"> Tienes %d productos a la espera de ser sincronizados con Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">Hace 1 segundo</item>
+        <item quantity="one">Hace %d segundo</item>
         <item quantity="other">Hace %d segundos</item>
     </plurals>
     <plurals name="minutes">
@@ -163,7 +163,7 @@
     <string name="txtBarcode">Código de barras :</string>
     <string name="txtCategories">Categorías :</string>
     <string name="txtLabels">Etiquetas, certificaciones, premios :</string>
-    <string name="txtEMB">Código EMB:</string>
+    <string name="txtEMB">Códigos de trazabilidad:</string>
     <string name="txtIngredients">Lista de ingredientes :</string>
     <string name="Donate">Donar</string>
     <string name="Donation">Haz clic aquí para donar a Open Food Facts</string>
@@ -383,7 +383,7 @@
     <string name="take_more_pictures">Haz más fotos</string>
     <string name="txtSaturatedFat">Grasas saturadas</string>
     <string name="nutriscore_info_msg">Aprende más sobre el Nutri-Score</string>
-    <string name="nova_info_msg">Aprende más sobre Nova</string>
+    <string name="nova_info_msg">Más información sobre los grupos NOVA</string>
     <string name="nova_grp1_msg">Grupo 1 - Alimentos no procesados o mínimamente procesados</string>
     <string name="nova_grp2_msg">Grupo 2 - Ingredientes culinarios procesados</string>
     <string name="nova_grp3_msg">Grupo 3 - Alimentos procesados</string>
@@ -592,7 +592,7 @@
     <string name="traces">Trazas</string>
     <string name="traces_hint">Indica los ingredientes señalados en frases tipo «Puede contener trazas de», «Hecho en una fábrica que también procesa», etc. \n Ejemplos: leche, gluten, frutos secos</string>
     <string name="nutrition_facts_not_specified">El producto no incluye información nutricional.</string>
-    <string name="nutrition_facts_picture">Foto de la información nutricional</string>
+    <string name="nutrition_facts_picture">Foto de datos nutricionales</string>
     <string name="front_short_picture">Frontal</string>
     <string name="other_picture">Otra imagen</string>
     <string name="for_100g_100ml">Por 100g / 100ml</string>
@@ -791,7 +791,7 @@
     <string name="icon_categories">Icono de categorías</string>
     <string name="icon_emb">Icono de código EMB</string>
     <string name="product_front_image">Imagen frontal del producto</string>
-    <string name="brand_hint">Ejemplos: CocaCola, Nestlé, etc.…</string>
+    <string name="brand_hint">Ejemplos: Coca-Cola, Nestlé, etc…</string>
     <string name="sign_in_or_register">Inicia sesión o regístrate</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
