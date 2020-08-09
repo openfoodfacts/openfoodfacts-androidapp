@@ -419,7 +419,7 @@
     <string name="preference_enable_mobile_data_summary_on">Enviar nuevos productos usando datos móviles &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Enviar nuevos productos usando solo WiFi</string>
     <string name="device_on_mobile_data_warning_title">Información</string>
-    <string name="device_on_mobile_data_warning_message">El envío con datos móviles está deshabilitado. Por favor, conéctate mediante WiFi o cámbialo en tus preferencias</string>
+    <string name="device_on_mobile_data_warning_message">Has desactivado la carga en datos móviles, por favor conéctate a WiFi o cambia esto en tus preferencias</string>
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
     <string name="changes_saved">Cambios guardados correctamente</string>
@@ -755,7 +755,7 @@
     <string name="unknown_status_no_translation">No pudimos evaluar el estado del producto debido a ingredientes no reconocidos.</string>
     <string name="help_translate_ingredients">Ayuda a traducir los ingredientes a tu idioma</string>
     <string name="unknown_status_missing_ingredients">No pudimos evaluar el estado del producto debido a la falta de ingredientes.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
+    <string name="unknown_status_ambiguous_ingredients">No pudimos evaluar el estado del producto debido a ingredientes ambiguos: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Agrega una foto para comenzar a extraer ingredientes</string>
     <string name="product_already_exists_in_comparison">El producto ya existe en la lista de comparación</string>
@@ -793,5 +793,5 @@
     <string name="product_front_image">Imagen frontal del producto</string>
     <string name="brand_hint">Ejemplos: Coca-Cola, Nestlé, etc…</string>
     <string name="sign_in_or_register">Inicia sesión o regístrate</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action">Ayuda a clasificar más %1$s</string>
 </resources>
