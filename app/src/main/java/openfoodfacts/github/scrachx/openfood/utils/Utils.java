@@ -596,6 +596,9 @@ public class Utils {
     public static boolean isBatteryLevelLow(@NonNull Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
+        if (batteryStatus == null) {
+            throw new IllegalStateException("cannot get battery level");
+        }
 
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
