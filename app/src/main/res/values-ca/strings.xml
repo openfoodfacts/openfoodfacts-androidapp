@@ -20,19 +20,19 @@
         <item quantity="other"> Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">Fa 1 segon</item>
+        <item quantity="one">Fa %d segon</item>
         <item quantity="other">Fa %d segons</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">fa 1 minut</item>
+        <item quantity="one">fa %d minut</item>
         <item quantity="other">fa %d minuts</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">fa 1 hora</item>
+        <item quantity="one">fa %d hora</item>
         <item quantity="other">fa %d hores</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">fa 1 dia</item>
+        <item quantity="one">fa %d dia</item>
         <item quantity="other">fa %d dies</item>
     </plurals>
     <string name="action_about">Quant a</string>
@@ -383,7 +383,7 @@
     <string name="take_more_pictures">Feu més fotos</string>
     <string name="txtSaturatedFat">Greixos saturats</string>
     <string name="nutriscore_info_msg">Apreneu més sobre la Nutri-Score</string>
-    <string name="nova_info_msg">Apreneu més sobre els grups NOVA</string>
+    <string name="nova_info_msg">Obteniu més informació sobre els grups NOVA</string>
     <string name="nova_grp1_msg">Grup 1 - Aliments no processats o mínimament processats</string>
     <string name="nova_grp2_msg">Grup 2 - Ingredients culinaris processats</string>
     <string name="nova_grp3_msg">Grup 3 - Aliments processats</string>
@@ -611,7 +611,7 @@
     <string name="manufacturing_details">Detalls de fabricació</string>
     <string name="origin_of_ingredients">Origen dels ingredients</string>
     <string name="manufacturing_place">Lloc de fabricació</string>
-    <string name="emb_code">Codi RGSEAA</string>
+    <string name="emb_code">Codi de traçabilitat</string>
     <string name="purchasing_details">Detalls de compra</string>
     <string name="country_where_purchased">País on s\'ha comprat</string>
     <string name="stores">Botigues</string>
@@ -789,9 +789,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Icona d\'etiquetes</string>
     <string name="icon_categories">Icona de categories</string>
-    <string name="icon_emb">Icona de codi EMB</string>
+    <string name="icon_emb">Icona de codi de traçabilitat</string>
     <string name="product_front_image">Imatge frontal del producte</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Exemples: Coca-Cola, Nestlé, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Ajudeu a classificar millor %1$s</string>
 </resources>
