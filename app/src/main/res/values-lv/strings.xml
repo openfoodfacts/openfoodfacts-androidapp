@@ -453,12 +453,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Vispārīgs</string>
     <string name="preference_header_network">Tīkls</string>
     <string name="preference_header_contributing">Ieguldījums</string>
     <string name="scan_first_string">Šeit tiks parādīta jūsu skatīto produktu vēsture. Šī vēsture ir paredzēta tikai jūsu apskatei un tiek saglabāta lokāli.</string>
-    <string name="log_in">Username</string>
+    <string name="log_in">Login</string>
     <string name="login_true">Jau esat ielogojies!</string>
     <string name="confirm_logout">Apstipriniet izlogošanos</string>
     <string name="logout_dialog_content">Vai tiešām vēlaties izrakstīties?</string>
