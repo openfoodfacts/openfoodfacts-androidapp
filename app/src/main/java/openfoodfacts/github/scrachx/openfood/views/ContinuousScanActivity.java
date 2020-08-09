@@ -185,6 +185,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             // Here possible results are useless but we must implement this
         }
     };
+    private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback;
     private int cameraState;
     private OpenFoodAPIClient client;
     @NonNull
@@ -573,6 +574,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
         if (summaryProductPresenter != null) {
             summaryProductPresenter.dispose();
         }
+        // Remove callback as it uses binding
+        bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback);
         binding = null;
         super.onDestroy();
     }
@@ -676,7 +679,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.quickView);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+        bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
             float previousSlideOffset = 0;
 
             @Override
@@ -735,7 +738,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 }
                 previousSlideOffset = slideOffset;
             }
-        });
+        };
+        bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback);
 
         mInvalidBarcodeDao = Utils.getDaoSession().getInvalidBarcodeDao();
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
