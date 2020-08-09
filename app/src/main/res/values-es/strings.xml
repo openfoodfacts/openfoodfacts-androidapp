@@ -419,7 +419,7 @@
     <string name="preference_enable_mobile_data_summary_on">Enviar nuevos productos usando datos móviles &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Enviar nuevos productos usando solo WiFi</string>
     <string name="device_on_mobile_data_warning_title">Información</string>
-    <string name="device_on_mobile_data_warning_message">Has desactivado la carga en datos móviles, por favor conéctate a WiFi o cambia esto en tus preferencias</string>
+    <string name="device_on_mobile_data_warning_message">Has desactivado la carga en datos móviles, por favor conéctate a WiFi o cámbialo en tus preferencias</string>
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
     <string name="changes_saved">Cambios guardados correctamente</string>
