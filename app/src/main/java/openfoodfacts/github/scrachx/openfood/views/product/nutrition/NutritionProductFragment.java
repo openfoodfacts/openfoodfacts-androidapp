@@ -43,7 +43,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.snackbar.Snackbar;
@@ -217,7 +216,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             public void onClick(@NonNull View view) {
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
                 customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + currActivity.getPackageName()));
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.url_nutrient_values)), new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(R.string.url_nutrient_values)), new WebViewFallback());
             }
         };
         spannableStringBuilder.append(getString(R.string.txtNutriScoreInfo));
@@ -383,8 +382,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             nutrimentListItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
         }
 
-        RecyclerView.Adapter adapter = new NutrimentsGridAdapter(nutrimentListItems);
-        binding.nutrimentsRecyclerView.setAdapter(adapter);
+        binding.nutrimentsRecyclerView.setAdapter(new NutrimentsGridAdapter(nutrimentListItems));
     }
 
     private void setupNutrientItems(Activity currActivity, Nutriments nutriments) {
