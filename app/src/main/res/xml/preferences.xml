@@ -52,11 +52,6 @@
             android:summary="@string/prefs_power_mode_summary"
             android:title="@string/prefs_power_mode" />
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="shakeScanMode"
-            android:summary="@string/shake_summary"
-            android:title="@string/shake_title" />
 
     </PreferenceCategory>
 

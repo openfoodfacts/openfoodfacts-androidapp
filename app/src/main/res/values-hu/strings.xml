@@ -496,8 +496,6 @@
     <string name="sort">Rendezés</string>
     <string name="by_nutrition_grade">Táplálkozási osztályzat</string>
     <string name="sort_by">Rendezés</string>
-    <string name="shake_summary">Rázza meg a telefont termékek beolvasásához</string>
-    <string name="shake_title">Rázza meg a beolvasáshoz</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Vonalkód nélküli fényképeket még nem lehet hozzáadni az alkalmazással. Kérjük, próbálja a mobil webes változattal.</string>
     <string name="no_barcode">Nem találtunk vonalkódot</string>

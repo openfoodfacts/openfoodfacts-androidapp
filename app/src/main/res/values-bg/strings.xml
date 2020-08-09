@@ -496,8 +496,6 @@
     <string name="sort">Сортирай</string>
     <string name="by_nutrition_grade">Хранителен клас</string>
     <string name="sort_by">Сортирай по</string>
-    <string name="shake_summary">Разклатете телефона, за да сканирате продуктите</string>
-    <string name="shake_title">Shake to scan</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Снимките без баркод все още не могат да се добавят с приложението. Моля, опитайте с мобилната уеб версия.</string>
     <string name="no_barcode">Не открихме никакъв баркод</string>

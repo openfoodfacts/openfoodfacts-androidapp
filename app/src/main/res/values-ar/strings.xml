@@ -518,8 +518,6 @@
     <string name="sort">التصنيف</string>
     <string name="by_nutrition_grade">درجة التغذية</string>
     <string name="sort_by">ترتيب حسب</string>
-    <string name="shake_summary">قم بهز الهاتف لمسح المنتجات</string>
-    <string name="shake_title">هز الهاتف للفحص</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">لا يمكن بعد إضافة الصور بدون الباركود فى التطبيق. يرجى تجربة نسخة الويب للهاتف المحمولة.</string>
     <string name="no_barcode">البرنامج لم يكتشف أي باركود</string>

@@ -506,8 +506,6 @@
     <string name="sort">Razvrsti</string>
     <string name="by_nutrition_grade">Prehranska stopnja</string>
     <string name="sort_by">Razvrsti po</string>
-    <string name="shake_summary">Potresite telefon za skeniranje izdelkov</string>
-    <string name="shake_title">Pretresi za skeniranje</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Slike brez črtne kode še ni mogoče dodati z aplikacijo. Poskusite z mobilno spletno različico.</string>
     <string name="no_barcode">Nismo zaznali nobene črtne kode</string>

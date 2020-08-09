@@ -1,11 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.preference.PreferenceManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -28,8 +23,6 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding;
 import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
@@ -43,17 +36,10 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
     private static final String STATE_ARG = "state";
     private ProductFragmentPagerAdapter adapterResult;
-    private OpenFoodAPIClient api;
+    private OpenFoodAPIClient client;
     private ActivityProductBinding binding;
     private CompositeDisposable disp = new CompositeDisposable();
-    private Sensor mAccelerometer;
-    private SensorManager mSensorManager;
-    private ShakeDetector mShakeDetector;
     private ProductState productState;
-    /**
-     * boolean to determine if scan on shake feature should be enabled
-     */
-    private boolean scanOnShake;
 
     @NonNull
     public static ProductFragment newInstance(@NonNull ProductState productState) {
@@ -81,7 +67,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         binding.toolbar.setVisibility(View.GONE);
-        productState = (ProductState) getArguments().getSerializable(STATE_ARG);
+        productState = (ProductState) requireArguments().getSerializable(STATE_ARG);
 
         setupViewPager(binding.pager);
 
@@ -89,26 +75,11 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             binding.pager.setNestedScrollingEnabled(true);
         }
 
-        new TabLayoutMediator(binding.tabs, binding.pager, (tab, position) -> {
-            tab.setText(adapterResult.getPageTitle(position));
-        }).attach();
+        new TabLayoutMediator(binding.tabs, binding.pager, (tab, position) ->
+            tab.setText(adapterResult.getPageTitle(position)))
+            .attach();
 
-        api = new OpenFoodAPIClient(getActivity());
-
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) requireActivity().getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mShakeDetector = new ShakeDetector();
-
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(getContext());
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-
-        mShakeDetector.setOnShakeListener(count -> {
-
-            if (scanOnShake) {
-                Utils.scan(requireActivity());
-            }
-        });
+        client = new OpenFoodAPIClient(requireActivity());
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
         BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, getActivity());
@@ -136,31 +107,13 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @Override
     public void onRefresh() {
-        disp.add(api.getProductStateFull(getProductState().getProduct().getCode())
+        disp.add(client.getProductStateFull(getProductState().getProduct().getCode())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(newState -> {
                 productState = newState;
                 adapterResult.refresh(newState);
             }, throwable ->
                 adapterResult.refresh(getProductState())));
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (scanOnShake) {
-            //unregister the listener
-            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (scanOnShake) {
-            //register the listener
-            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-        }
     }
 
     public void bottomSheetWillGrow() {

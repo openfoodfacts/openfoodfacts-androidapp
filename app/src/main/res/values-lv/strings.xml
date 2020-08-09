@@ -501,8 +501,6 @@
     <string name="sort">Kārtot</string>
     <string name="by_nutrition_grade">Uztura pakāpe</string>
     <string name="sort_by">Sort by</string>
-    <string name="shake_summary">Lai produktu skenētu, sakratiet tālruni</string>
-    <string name="shake_title">Shake to scan</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Attēlus bez svītrkoda vēl nevar pievienot lietotnei. Lūdzu, izmēģiniet mobilo tīmekļa versiju.</string>
     <string name="no_barcode">Mēs neesam atraduši nevienu svītrkodu</string>

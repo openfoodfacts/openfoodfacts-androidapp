@@ -496,8 +496,6 @@
     <string name="sort">Ordenar</string>
     <string name="by_nutrition_grade">Grado nutricional</string>
     <string name="sort_by">Ordenar por</string>
-    <string name="shake_summary">Agitar el teléfono para escanear productos</string>
-    <string name="shake_title">Agitar para escanear</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Las imágenes sin código de barras no pueden ser añadidas con la aplicación. Por favor, inténtalo con la versión móvil del sitio web.</string>
     <string name="no_barcode">No hemos detectado ningún código de barras</string>

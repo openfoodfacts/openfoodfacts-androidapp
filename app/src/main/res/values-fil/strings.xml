@@ -496,8 +496,6 @@
     <string name="sort">Uri</string>
     <string name="by_nutrition_grade">Marka ng nutrisyon</string>
     <string name="sort_by">Ayusin ayon sa</string>
-    <string name="shake_summary">I-shake ang telepono upang masuri ang mga produkto</string>
-    <string name="shake_title">Shake to scan</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Ang mga larawan na walang barcode ay hindi pa maidaragdag sa app. Pakisubukan ang bersyon ng mobile web.</string>
     <string name="no_barcode">Hindi namin nakita ang anumang barcode</string>

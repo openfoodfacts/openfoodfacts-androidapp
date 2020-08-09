@@ -491,8 +491,6 @@
     <string name="sort">분류</string>
     <string name="by_nutrition_grade">영양 등급</string>
     <string name="sort_by">정렬 기준</string>
-    <string name="shake_summary">제품을 스캔하기 위해 단말기를 흔드세요</string>
-    <string name="shake_title">흔들어 스캔하기</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">바코드가없는 사진은 아직 앱에 추가 할 수 없습니다. 모바일 웹 버전을 사용해보세요.</string>
     <string name="no_barcode">바코드가 감지되지 않았습니다.</string>

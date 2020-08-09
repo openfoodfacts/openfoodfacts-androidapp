@@ -491,8 +491,6 @@
     <string name="sort">Urutkan</string>
     <string name="by_nutrition_grade">Mutu Nutrisi</string>
     <string name="sort_by">Sortir berdasarkan</string>
-    <string name="shake_summary">Goyang telepon untuk memindai produk</string>
-    <string name="shake_title">Goyang untuk memindai</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Gambar tanpa barcode belum bisa ditambahkan ke aplikasi. Mohon coba versi web seluler.</string>
     <string name="no_barcode">Kami tidak mendeteksi barcode apapun</string>

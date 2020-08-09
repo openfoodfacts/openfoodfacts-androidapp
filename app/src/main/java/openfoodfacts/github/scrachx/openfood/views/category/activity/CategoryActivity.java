@@ -2,32 +2,22 @@ package openfoodfacts.github.scrachx.openfood.views.category.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.preference.PreferenceManager;
 
 import java.util.Objects;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityCategoryBinding;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 public class CategoryActivity extends BaseActivity {
     private ActivityCategoryBinding binding;
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
-    private ShakeDetector mShakeDetector;
-    private boolean scanOnShake;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, CategoryActivity.class);
@@ -46,21 +36,6 @@ public class CategoryActivity extends BaseActivity {
         setSupportActionBar(binding.toolbarInclude.toolbar);
         setTitle(R.string.category_drawer);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        if (mSensorManager != null) {
-            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-            mShakeDetector = new ShakeDetector();
-
-            mShakeDetector.setOnShakeListener(count -> {
-                if (scanOnShake) {
-                    Utils.scan(CategoryActivity.this);
-                }
-            });
-        }
 
         // chrome custom tab for category hunger game
         binding.gameButton.setOnClickListener(v -> openHungerGame());
@@ -85,19 +60,4 @@ public class CategoryActivity extends BaseActivity {
         binding = null;
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (scanOnShake) {
-            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (scanOnShake) {
-            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-        }
-    }
 }

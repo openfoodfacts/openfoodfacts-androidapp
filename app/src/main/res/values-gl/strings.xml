@@ -496,8 +496,6 @@
     <string name="sort">Ordear</string>
     <string name="by_nutrition_grade">Grado nutricional</string>
     <string name="sort_by">Sort by</string>
-    <string name="shake_summary">Axite o móbil para escanear produtos</string>
-    <string name="shake_title">Axite para escanear</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Polo momento non se poden engadir imaxes sin código de barras. Por favor, probe coa versión web móbil.</string>
     <string name="no_barcode">Non detectamos ningún código de barras</string>

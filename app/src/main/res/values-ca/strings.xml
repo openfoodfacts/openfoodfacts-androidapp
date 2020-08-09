@@ -496,8 +496,6 @@
     <string name="sort">Ordena</string>
     <string name="by_nutrition_grade">Grau nutricional</string>
     <string name="sort_by">Ordena per</string>
-    <string name="shake_summary">Escaneja productes sacsejant el telèfon</string>
-    <string name="shake_title">Sacseja per escanejar</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Les imatges sense codi de barres encara no es poden afegir amb l\'aplicació. Proveu la versió web per a mòbils.</string>
     <string name="no_barcode">No hem detectat cap codi de barres</string>

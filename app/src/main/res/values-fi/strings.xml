@@ -496,8 +496,6 @@
     <string name="sort">Järjestä</string>
     <string name="by_nutrition_grade">Ravintoarvosana</string>
     <string name="sort_by">Lajittelujärjestys</string>
-    <string name="shake_summary">Ravista puhelinta lukeaksesi tuotteita</string>
-    <string name="shake_title">Ravista lukeaksesi</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Kuvia ilman viivakoodia ei voi vielä lisätä sovelluksella. Kokeile sivuston mobiiliversiota.</string>
     <string name="no_barcode">Viivakoodia ei löydetty</string>

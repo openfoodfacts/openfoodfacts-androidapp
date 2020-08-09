@@ -491,8 +491,6 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Lớp dinh dưỡng</string>
     <string name="sort_by">Xếp theo</string>
-    <string name="shake_summary">Lắc điện thoại để quét sản phẩm</string>
-    <string name="shake_title">Lắc để quét</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Không thể thêm hình ảnh không có mã vạch bằng ứng dụng. Vui lòng thử phiên bản web di động.</string>
     <string name="no_barcode">Chúng tôi đã không phát hiện bất kỳ mã vạch nào</string>

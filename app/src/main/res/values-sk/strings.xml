@@ -506,8 +506,6 @@
     <string name="sort">Zoradiť</string>
     <string name="by_nutrition_grade">Stupeň výživnosti</string>
     <string name="sort_by">Sort by</string>
-    <string name="shake_summary">Potrasením telefónu nasnímať výrobok</string>
-    <string name="shake_title">Nasnímať potrasením</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">S aplikáciou sa ešte nedajú pridať obrázky bez čiarového kódu. Vyskúšajte mobilnú webovú verziu.</string>
     <string name="no_barcode">Nezistili sme žiadny čiarový kód</string>

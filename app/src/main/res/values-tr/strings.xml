@@ -496,8 +496,6 @@
     <string name="sort">Sırala</string>
     <string name="by_nutrition_grade">Besin Derecesi</string>
     <string name="sort_by">Sırala</string>
-    <string name="shake_summary">Ürünleri taramak için telefonu sallayın</string>
-    <string name="shake_title">Taramak için sallayın</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Barkodsuz resimler henüz uygulamaya eklenemez. Lütfen mobil web sürümünü deneyin.</string>
     <string name="no_barcode">Herhangi bir barcod tespit etmedik</string>

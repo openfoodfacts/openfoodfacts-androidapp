@@ -491,8 +491,6 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">排序依</string>
-    <string name="shake_summary">Shake phone to scan products</string>
-    <string name="shake_title">Shake to scan</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">We have not detected any barcode</string>

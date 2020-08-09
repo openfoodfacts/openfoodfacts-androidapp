@@ -491,8 +491,6 @@
     <string name="sort">排序</string>
     <string name="by_nutrition_grade">营养等级</string>
     <string name="sort_by">排序方式</string>
-    <string name="shake_summary">摇动手机以扫描产品</string>
-    <string name="shake_title">摇动扫描</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">我们没有检测到任何条码</string>

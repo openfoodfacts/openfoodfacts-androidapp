@@ -506,8 +506,6 @@
     <string name="sort">Сортировка</string>
     <string name="by_nutrition_grade">Уровень питательных веществ</string>
     <string name="sort_by">Сортировать по</string>
-    <string name="shake_summary">Встряхните телефон для сканирования продуктов</string>
-    <string name="shake_title">Встряхните для сканирования</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Фотографии без штрих-кода невозможно добавить в приложении. Попробуйте мобильную веб-версию.</string>
     <string name="no_barcode">Не найден штрих-код</string>

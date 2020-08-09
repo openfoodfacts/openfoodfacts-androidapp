@@ -496,8 +496,6 @@
     <string name="sort">Sortér</string>
     <string name="by_nutrition_grade">Ernæringskvalitet</string>
     <string name="sort_by">Sortér efter</string>
-    <string name="shake_summary">Ryst mobil for at skanne produkter</string>
-    <string name="shake_title">Ryst for at skanne</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Billeder uden stregkode kan endnu ikke tilføjes med app\'en. Prøv venligst mobil-webversionen.</string>
     <string name="no_barcode">Iogen stregkode fundet</string>

@@ -748,14 +748,14 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                                     activity.getSupportFragmentManager());
                             }
                         } else {
-                            ProductBrowsingListActivity.startActivity(getContext(),
+                            ProductBrowsingListActivity.start(getContext(),
                                 label.getLabelTag(),
                                 label.getName(),
                                 SearchType.LABEL);
                         }
                     });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(),
+                    ProductBrowsingListActivity.start(getContext(),
                         label.getLabelTag(),
                         label.getName(),
                         SearchType.LABEL);

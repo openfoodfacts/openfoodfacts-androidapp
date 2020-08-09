@@ -496,8 +496,6 @@
     <string name="sort">క్రమీకరించు</string>
     <string name="by_nutrition_grade">న్యూట్రిషన్ గ్రేడ్</string>
     <string name="sort_by">Sort by</string>
-    <string name="shake_summary">ఉత్పత్తులను స్కాన్ చేయడానికి ఫోన్ను షేక్ చేయండి</string>
-    <string name="shake_title">స్కాన్ చేయడానికి షేక్ చేయండి</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">బార్కోడ్ లేకుండా చిత్రాలు ఇంకా అనువర్తనంతో జోడించబడవు. దయచేసి మొబైల్ వెబ్ సంస్కరణను ప్రయత్నించండి.</string>
     <string name="no_barcode">మేము ఏ బార్కోడ్ను గుర్తించలేదు</string>

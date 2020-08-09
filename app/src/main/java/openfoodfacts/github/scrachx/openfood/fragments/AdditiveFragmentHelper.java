@@ -122,7 +122,7 @@ public class AdditiveFragmentHelper {
                     activity.getSupportFragmentManager());
             }
         } else {
-            ProductBrowsingListActivity.startActivity(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+            ProductBrowsingListActivity.start(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
         }
     }
 
@@ -140,7 +140,7 @@ public class AdditiveFragmentHelper {
                             activity.getSupportFragmentManager());
                     }
                 } else {
-                    ProductBrowsingListActivity.startActivity(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                    ProductBrowsingListActivity.start(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                 }
             }
         };

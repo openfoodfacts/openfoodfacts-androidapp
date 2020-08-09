@@ -569,7 +569,7 @@ public class Utils {
             clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(@NonNull View view) {
-                    ProductBrowsingListActivity.startActivity(activity, text, type);
+                    ProductBrowsingListActivity.start(activity, text, type);
                 }
             };
         } else {

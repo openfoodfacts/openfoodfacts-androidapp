@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -78,13 +79,14 @@ public class AddProductActivity extends AppCompatActivity {
     public static final String KEY_EDIT_PRODUCT = "edit_product";
     public static final String KEY_IS_EDITING = "is_edition";
     public static final String KEY_EDIT_OFFLINE_PRODUCT = "edit_offline_product";
+    public static final String STATE_KEY = "state";
     private AddProductIngredientsFragment addProductIngredientsFragment = new AddProductIngredientsFragment();
     private AddProductNutritionFactsFragment addProductNutritionFactsFragment = new AddProductNutritionFactsFragment();
     private AddProductOverviewFragment addProductOverviewFragment = new AddProductOverviewFragment();
     private AddProductPhotosFragment addProductPhotosFragment = new AddProductPhotosFragment();
     private ActivityAddProductBinding binding;
     @Inject
-    ProductsAPI client;
+    ProductsAPI api;
     private CompositeDisposable disp = new CompositeDisposable();
     private boolean imageFrontUploaded;
     private boolean imageIngredientsUploaded;
@@ -149,19 +151,10 @@ public class AddProductActivity extends AppCompatActivity {
         return queryMap;
     }
 
-    private void selectPage(int position) {
-        switch (position) {
-            case 0:
-            default:
-                updateTimelineIndicator(1, 0, 0);
-                break;
-            case 1:
-                updateTimelineIndicator(2, 1, 0);
-                break;
-            case 2:
-                updateTimelineIndicator(2, 2, 1);
-                break;
-        }
+    public static void start(Context context, @Nullable ProductState state) {
+        Intent starter = new Intent(context, AddProductActivity.class);
+        starter.putExtra(STATE_KEY, state);
+        context.startActivity(starter);
     }
 
     /**
@@ -211,6 +204,21 @@ public class AddProductActivity extends AppCompatActivity {
         return initialValues;
     }
 
+    private void selectPage(int position) {
+        switch (position) {
+            case 1:
+                updateTimelineIndicator(2, 1, 0);
+                break;
+            case 2:
+                updateTimelineIndicator(2, 2, 1);
+                break;
+            case 0:
+            default:
+                updateTimelineIndicator(1, 0, 0);
+                break;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         OFFApplication.getAppComponent().inject(this);
@@ -238,7 +246,7 @@ public class AddProductActivity extends AppCompatActivity {
         }
         mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
-        final ProductState productState = (ProductState) getIntent().getSerializableExtra("state");
+        final ProductState productState = (ProductState) getIntent().getSerializableExtra(STATE_KEY);
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra(KEY_EDIT_OFFLINE_PRODUCT);
         Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
 
@@ -469,7 +477,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void savePhoto(Map<String, RequestBody> imgMap, ProductImage image, int position, boolean ocr) {
-        client.saveImageSingle(imgMap)
+        api.saveImageSingle(imgMap)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(disposable -> showImageProgress(position))
             .subscribe(new SingleObserver<JsonNode>() {
@@ -531,7 +539,7 @@ public class AddProductActivity extends AppCompatActivity {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("imgid", imgid);
         queryMap.put("id", imagefield);
-        client.editImageSingle(image.getBarcode(), queryMap)
+        api.editImageSingle(image.getBarcode(), queryMap)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<JsonNode>() {
                 @Override
@@ -564,7 +572,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void performOCR(String code, String imageField) {
-        disp.add(client.getIngredients(code, imageField)
+        disp.add(api.getIngredients(code, imageField)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(disposable -> addProductIngredientsFragment.showOCRProgress())
             .subscribe(jsonNode -> {

@@ -506,8 +506,6 @@
     <string name="sort">Sortuj</string>
     <string name="by_nutrition_grade">Stopień odżywienia</string>
     <string name="sort_by">Sortuj wg</string>
-    <string name="shake_summary">Potrząśnij telefonem, by zeskanować produkt</string>
-    <string name="shake_title">Potrząśnij aby zeskanować</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Aplikacje nie dodaje obrazów bez kodu kreskowego. Spróbuj w wersji mobilnej.</string>
     <string name="no_barcode">Nie odnaleziono kodu kreskowego</string>

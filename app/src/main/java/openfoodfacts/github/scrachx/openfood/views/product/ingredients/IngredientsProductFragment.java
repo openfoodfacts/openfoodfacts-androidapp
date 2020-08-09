@@ -307,14 +307,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                                         activity.getSupportFragmentManager());
                                 }
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(),
+                                ProductBrowsingListActivity.start(getContext(),
                                     allergen.getAllergenTag(),
                                     allergen.getName(),
                                     SearchType.ALLERGEN);
                             }
                         });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(),
+                    ProductBrowsingListActivity.start(getContext(),
                         allergen.getAllergenTag(),
                         allergen.getName(),
                         SearchType.ALLERGEN);

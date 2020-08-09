@@ -496,8 +496,6 @@
     <string name="sort">Ταξινόμηση</string>
     <string name="by_nutrition_grade">Διατροφική αξιολόγηση</string>
     <string name="sort_by">Ταξινομήστε ανά</string>
-    <string name="shake_summary">Shake phone to scan products</string>
-    <string name="shake_title">Ανακινήστε για σάρωση</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">Δεν βρέθηκε Barcode</string>

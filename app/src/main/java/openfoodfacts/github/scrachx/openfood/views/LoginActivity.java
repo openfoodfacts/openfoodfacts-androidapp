@@ -17,12 +17,9 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -31,14 +28,12 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.preference.PreferenceManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.net.HttpCookie;
-import java.util.Objects;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -49,7 +44,6 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -66,12 +60,7 @@ public class LoginActivity extends BaseActivity {
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri userLoginUri;
     private Uri resetPasswordUri;
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
     private CompositeDisposable disp = new CompositeDisposable();
-    private ShakeDetector mShakeDetector;
-    // boolean to determine if scan on shake feature should be enabled
-    private boolean scanOnShake;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -137,20 +126,6 @@ public class LoginActivity extends BaseActivity {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .build()
             .create(ProductsAPI.class);
-
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = Objects.requireNonNull(mSensorManager).getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mShakeDetector = new ShakeDetector();
-
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-
-        mShakeDetector.setOnShakeListener(count -> {
-            if (scanOnShake) {
-                Utils.scan(LoginActivity.this);
-            }
-        });
     }
 
     private void doAttemptLogin() {
@@ -268,23 +243,5 @@ public class LoginActivity extends BaseActivity {
         customTabActivityHelper.setConnectionCallback(null);
         binding = null;
         super.onDestroy();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (scanOnShake) {
-            // unregister the listener
-            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (scanOnShake) {
-            //register the listener
-            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-        }
     }
 }

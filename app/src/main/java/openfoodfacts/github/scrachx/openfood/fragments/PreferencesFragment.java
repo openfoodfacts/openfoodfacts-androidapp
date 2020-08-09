@@ -98,6 +98,8 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  * A class for creating all the ListPreference
  */
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem, SharedPreferences.OnSharedPreferenceChangeListener {
+    @NonNull
+    public static final String LOGIN_PREF = "login";
     private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
     private static final String ADDITIVE_IMPORT_TAG = "ADDITIVE_IMPORT";

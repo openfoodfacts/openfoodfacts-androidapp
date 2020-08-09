@@ -496,8 +496,6 @@
     <string name="sort">ವಿಂಗಡಿಸಿ</string>
     <string name="by_nutrition_grade">ನ್ಯೂಟ್ರಿಷನ್ ಟೇಬಲ್</string>
     <string name="sort_by">Sort by</string>
-    <string name="shake_summary">ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಫೋನ್ ಅನ್ನು ಶೇಕ್ ಮಾಡಿ</string>
-    <string name="shake_title">ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಶೇಕ್ ಮಾಡಿ</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">ಬಾರ್ಕೋಡ್ ಇಲ್ಲದೆ ಚಿತ್ರಗಳನ್ನು ಇನ್ನೂ ಅಪ್ಲಿಕೇಶನ್ನೊಂದಿಗೆ ಸೇರಿಸಲಾಗುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಮೊಬೈಲ್ ವೆಬ್ ಆವೃತ್ತಿಯನ್ನು ಪ್ರಯತ್ನಿಸಿ.</string>
     <string name="no_barcode">ನಾವು ಯಾವುದೇ ಬಾರ್ಕೋಡ್ ಅನ್ನು ಪತ್ತೆ ಮಾಡಿಲ್ಲ</string>

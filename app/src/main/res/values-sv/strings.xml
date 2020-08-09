@@ -496,8 +496,6 @@
     <string name="sort">Sortera</string>
     <string name="by_nutrition_grade">Näringsvärde</string>
     <string name="sort_by">Sortera efter</string>
-    <string name="shake_summary">Skaka telefonen för att skanna produkter</string>
-    <string name="shake_title">Skaka för att skanna</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Bilder utan streckkod kan inte läggas till med appen. Vänligen prova den mobila webbversionen.</string>
     <string name="no_barcode">Vi har inte upptäckt någon streckkod</string>

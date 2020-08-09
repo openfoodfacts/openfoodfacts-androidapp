@@ -26,8 +26,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -87,7 +85,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -117,7 +115,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
@@ -126,13 +123,14 @@ import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationLis
 import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
-public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
+public class MainActivity extends BaseActivity implements NavigationDrawerListener {
     public static final int LOGIN_REQUEST = 1;
     private static final int SHOW_CONTRIBUTION_AFTER_LOGIN = 2;
     private static final long USER_ID = 500;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
+    private static final int WEEK_IN_MS = 60 * 60 * 24 * 7 * 1000;
     private ActivityMainBinding binding;
     private AccountHeader headerResult = null;
     private Drawer drawerResult = null;
@@ -144,12 +142,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private Uri discoverUri;
     private Uri userContributeUri;
     private String mBarcode;
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
-    private ShakeDetector mShakeDetector;
-    // boolean to determine if scan on shake feature should be enabled
-    private boolean scanOnShake;
-    private SharedPreferences shakePreference;
     private PrefManager prefManager;
     private CompositeDisposable disp;
 
@@ -163,8 +155,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-
         Utils.hideKeyboard(this);
 
         final IProfile<ProfileDrawerItem> profile = getUserProfile();
@@ -174,15 +164,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        if (mSensorManager != null) {
-            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        }
-        mShakeDetector = new ShakeDetector();
-
-        setShakePreferences();
 
         fragmentManager.addOnBackStackChangedListener(() -> {
         });
@@ -194,7 +175,17 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
 
         // chrome custom tab init
         customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(this);
+        customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
+            @Override
+            public void onCustomTabsConnected() {
+
+            }
+
+            @Override
+            public void onCustomTabsDisconnected() {
+
+            }
+        });
 
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(),
             customTabActivityHelper.getSession());
@@ -209,7 +200,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                 @Override
                 public boolean onProfileImageClick(@NonNull View view, @NonNull IProfile profile, boolean current) {
-
                     if (isUserNotLoggedIn()) {
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     }
@@ -229,11 +219,11 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             })
             .withSelectionListEnabledForSingleProfile(false)
             .withOnAccountHeaderListener((view, profile1, current) -> {
-                if (profile1 instanceof IDrawerItem) {
-                    if (profile1.getIdentifier() == ITEM_MANAGE_ACCOUNT) {
-                        CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                            customTabsIntent, userAccountUri, new WebViewFallback());
-                    }
+                if (profile1 instanceof IDrawerItem && profile1.getIdentifier() == ITEM_MANAGE_ACCOUNT) {
+                    CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                        customTabsIntent,
+                        userAccountUri,
+                        new WebViewFallback());
                 }
 
                 //false if you have not consumed the event and it should close the drawer
@@ -243,7 +233,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             .build();
 
         // Add Manage Account profile if the user is connected
-        SharedPreferences preferences = getSharedPreferences("login", 0);
+        SharedPreferences preferences = getSharedPreferences(PreferencesFragment.LOGIN_PREF, 0);
 
         String userSession = preferences.getString("user_session", null);
         boolean isUserConnected = isUserLoggedIn() && userSession != null;
@@ -345,7 +335,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                         /*
                           Search and display the products to be completed by moving to ProductBrowsingListActivity
                          */
-                        ProductBrowsingListActivity.startActivity(this, "", SearchType.INCOMPLETE_PRODUCT);
+                        ProductBrowsingListActivity.start(this, "", SearchType.INCOMPLETE_PRODUCT);
                         break;
 
                     case ITEM_OBF:
@@ -568,7 +558,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     private void showMyContributions() {
         String userLogin = getUserLogin();
         userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
-        ProductBrowsingListActivity.startActivity(this, userLogin, SearchType.CONTRIBUTOR);
+        ProductBrowsingListActivity.start(this, userLogin, SearchType.CONTRIBUTOR);
     }
 
     private IProfile<ProfileSettingDrawerItem> getProfileSettingDrawerItem() {
@@ -592,7 +582,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * Remove user login info
      */
     private void logout() {
-        getSharedPreferences("login", MODE_PRIVATE).edit().clear().apply();
+        getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit().clear().apply();
         updateConnectedState();
     }
 
@@ -680,16 +670,16 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager
-                .PERMISSION_GRANTED) {
-                Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
+        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA
+            && grantResults.length > 0
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
     }
 
@@ -710,7 +700,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     private IProfile<ProfileDrawerItem> getUserProfile() {
-        String userLogin = getSharedPreferences("login", 0)
+        String userLogin = getSharedPreferences(PreferencesFragment.LOGIN_PREF, 0)
             .getString("user", getResources().getString(R.string.txt_anonymous));
 
         return new ProfileDrawerItem()
@@ -720,27 +710,19 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     @Override
-    public void onCustomTabsConnected() {
-
-    }
-
-    @Override
-    public void onCustomTabsDisconnected() {
-
-    }
-
-    @Override
     protected void onStart() {
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
 
         prefManager = new PrefManager(this);
-        if (isUserLoggedIn() && !prefManager.isFirstTimeLaunch() && !prefManager.getUserAskedToRate()
-            && "off".equals(BuildConfig.FLAVOR)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF)
+            && isUserLoggedIn()
+            && !prefManager.isFirstTimeLaunch()
+            && !prefManager.getUserAskedToRate()) {
 
             long firstTimeLaunchTime = prefManager.getFirstTimeLaunchTime();
             // Check if it has been a week since first launch
-            if ((Calendar.getInstance().getTimeInMillis() - firstTimeLaunchTime) >= (60 * 60 * 24 * 7 * 1000)) {
+            if ((Calendar.getInstance().getTimeInMillis() - firstTimeLaunchTime) >= WEEK_IN_MS) {
                 showFeedbackDialog();
             }
         }
@@ -749,31 +731,31 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     //show dialog to ask the user to rate the app/give feedback
     private void showFeedbackDialog() {
         //dialog for rating the app on play store
-        MaterialDialog.Builder rateDialog = new MaterialDialog.Builder(this);
-        rateDialog.title(R.string.app_name);
-        rateDialog.content(R.string.user_ask_rate_app);
-        rateDialog.positiveText(R.string.rate_app);
-        rateDialog.negativeText(R.string.no_thx);
-        rateDialog.onPositive((dialog, which) -> {
-            //open app page in play store
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-            dialog.dismiss();
-        });
-        rateDialog.onNegative((dialog, which) -> dialog.dismiss());
+        MaterialDialog.Builder rateDialog = new MaterialDialog.Builder(this)
+            .title(R.string.app_name)
+            .content(R.string.user_ask_rate_app)
+            .positiveText(R.string.rate_app)
+            .negativeText(R.string.no_thx)
+            .onPositive((dialog, which) -> {
+                //open app page in play store
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+                dialog.dismiss();
+            })
+            .onNegative((dialog, which) -> dialog.dismiss());
 
         //dialog for giving feedback
-        MaterialDialog.Builder feedbackDialog = new MaterialDialog.Builder(this);
-        feedbackDialog.title(R.string.app_name);
-        feedbackDialog.content(R.string.user_ask_show_feedback_form);
-        feedbackDialog.positiveText(R.string.txtOk);
-        feedbackDialog.negativeText(R.string.txtNo);
-        feedbackDialog.onPositive((dialog, which) -> {
-            //show feedback form
-            CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                customTabsIntent, Uri.parse(getString(R.string.feedback_form_url)), new WebViewFallback());
-            dialog.dismiss();
-        });
-        feedbackDialog.onNegative((dialog, which) -> dialog.dismiss());
+        MaterialDialog.Builder feedbackDialog = new MaterialDialog.Builder(this)
+            .title(R.string.app_name)
+            .content(R.string.user_ask_show_feedback_form)
+            .positiveText(R.string.txtOk)
+            .negativeText(R.string.txtNo)
+            .onPositive((dialog, which) -> {
+                //show feedback form
+                CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                    customTabsIntent, Uri.parse(getString(R.string.feedback_form_url)), new WebViewFallback());
+                dialog.dismiss();
+            })
+            .onNegative((dialog, which) -> dialog.dismiss());
 
         new MaterialDialog.Builder(this)
             .title(R.string.app_name)
@@ -822,16 +804,14 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
             SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
                 SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
             suggestions.saveRecentQuery(query, null);
-            ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
+            ProductBrowsingListActivity.start(this, query, SearchType.SEARCH);
             if (searchMenuItem != null) {
                 searchMenuItem.collapseActionView();
             }
-        } else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
-            if (type.startsWith("image/")) {
+        } else if (type != null && type.startsWith("image/")) {
+            if (Intent.ACTION_SEND.equals(intent.getAction())) {
                 handleSendImage(intent); // Handle single image being sent
-            }
-        } else if (Intent.ACTION_SEND_MULTIPLE.equals(intent.getAction()) && type != null) {
-            if (type.startsWith("image/")) {
+            } else if (Intent.ACTION_SEND_MULTIPLE.equals(intent.getAction())) {
                 handleSendMultipleImages(intent); // Handle multiple images being sent
             }
         }
@@ -851,19 +831,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-
-        shakePreference.unregisterOnSharedPreferenceChangeListener(this);
-
-        if (scanOnShake) {
-
-            // unregister the listener
-            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page);
@@ -876,12 +843,6 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
         }
 
         updateConnectedState();
-        shakePreference.registerOnSharedPreferenceChangeListener(this);
-        if (scanOnShake) {
-
-            //register the listener
-            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-        }
     }
 
     private void updateConnectedState() {
@@ -892,9 +853,8 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
     }
 
     private void handleSendImage(Intent intent) {
-        Uri selectedImage = null;
         ArrayList<Uri> selectedImagesArray = new ArrayList<>();
-        selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        Uri selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (selectedImage != null) {
             selectedImagesArray.add(selectedImage);
             chooseDialog(selectedImagesArray);
@@ -926,7 +886,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * @param selectedImages
      */
     private Single<Boolean> detectBarcodeInImages(List<Uri> selectedImages) {
-        return Observable.fromArray(selectedImages.toArray(new Uri[0]))
+        return Observable.fromIterable(selectedImages)
             .map(uri -> {
                 Bitmap bMap = null;
                 try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
@@ -944,9 +904,10 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                     BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                     Reader reader = new MultiFormatReader();
                     try {
-                        HashMap<DecodeHintType, Object> decodeHints = new HashMap<>();
+                        EnumMap<DecodeHintType, Object> decodeHints = new EnumMap<>(DecodeHintType.class);
                         decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
                         decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
+
                         Result decodedResult = reader.decode(bitmap, decodeHints);
                         if (decodedResult != null) {
                             mBarcode = decodedResult.getText();
@@ -1016,42 +977,23 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
                             image = new ProductImage(tempBarcode, OTHER, imageFile);
                             disp.add(api.postImg(image).subscribe());
                         } else {
-                            Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
-                            ProductState st = new ProductState();
                             Product pd = new Product();
                             pd.setCode(tempBarcode);
+                            ProductState st = new ProductState();
                             st.setProduct(pd);
-                            intent.putExtra("state", st);
-                            startActivity(intent);
+                            AddProductActivity.start(this, st);
                         }
                     } else {
                         Toast.makeText(MainActivity.this, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show();
                     }
                 }
             })
-
             .setNegativeButton(R.string.txtNo,
                 (dialog, id) -> dialog.cancel());
 
         AlertDialog alertDialog = alertDialogBuilder.create();
 
         alertDialog.show();
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-        // properly handle scan on shake preferences changes
-        setShakePreferences();
-    }
-
-    private void setShakePreferences() {
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-        Log.i("Shake", String.valueOf(scanOnShake));
-        mShakeDetector.setOnShakeListener(count -> {
-            if (scanOnShake) {
-                Utils.scan(MainActivity.this);
-            }
-        });
     }
 
     /**
@@ -1065,7 +1007,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
      * @since 06/16/18
      */
-    public void changeFragment(Fragment fragment, String title, long drawerName) {
+    public void changeFragment(@NonNull Fragment fragment, @NonNull String title, long drawerName) {
         changeFragment(fragment, title);
         drawerResult.setSelection(drawerName);
     }
@@ -1080,7 +1022,7 @@ public class MainActivity extends BaseActivity implements CustomTabActivityHelpe
      * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
      * @since 06/16/18
      */
-    public void changeFragment(Fragment fragment, String title) {
+    public void changeFragment(@NonNull Fragment fragment, @NonNull String title) {
 
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();

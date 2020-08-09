@@ -124,7 +124,7 @@ public class ProductAttributeDetailsFragment extends BottomSheetDialogFragment {
                 bottomSheetDescription.setVisibility(View.GONE);
             }
 
-            buttonToBrowseProducts.setOnClickListener(v -> ProductBrowsingListActivity.startActivity(getContext(), title, searchType));
+            buttonToBrowseProducts.setOnClickListener(v -> ProductBrowsingListActivity.start(getContext(), title, searchType));
             if (wikiLink != null) {
                 wikipediaButton.setOnClickListener(v -> openInCustomTab(wikiLink));
                 wikipediaButton.setVisibility(View.VISIBLE);

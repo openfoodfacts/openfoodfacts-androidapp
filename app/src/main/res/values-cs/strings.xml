@@ -506,8 +506,6 @@
     <string name="sort">Řazení</string>
     <string name="by_nutrition_grade">Výživová hodnota</string>
     <string name="sort_by">Seřadit podle</string>
-    <string name="shake_summary">Pokud zatřesete telefonem, spustíte se skenování</string>
-    <string name="shake_title">Zatřeste a skenujte</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">Nezjistili jsme žádný čárový kód</string>

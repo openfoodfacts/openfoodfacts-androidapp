@@ -496,8 +496,6 @@
     <string name="sort">Sortieren</string>
     <string name="by_nutrition_grade">Nährwertqualität</string>
     <string name="sort_by">Sortieren nach</string>
-    <string name="shake_summary">Telefon schütteln, um Produkte einzulesen</string>
-    <string name="shake_title">Schütteln zum Erfassen</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Fotos ohne Strichcode können noch nicht mit der App hinzugefügt werden. Bitte probieren Sie die mobile Web-Version aus.</string>
     <string name="no_barcode">Es konnte kein Barcode gefunden werden.</string>

@@ -3,10 +3,6 @@ package openfoodfacts.github.scrachx.openfood.network;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 
 public class ApiCallbacks {
-    public interface OnProductsCallback {
-        void onProductsResponse(boolean isOk, Search searchResponse, int countProducts);
-    }
-
     public interface OnAllergensCallback {
         void onAllergensResponse(boolean value, Search allergen);
     }
@@ -21,10 +17,6 @@ public class ApiCallbacks {
 
     public interface OnAdditiveCallback {
         void onAdditiveResponse(boolean value, Search brand);
-    }
-
-    public interface OnProductSentCallback {
-        void onProductSentResponse(boolean value);
     }
 
     public interface OnEditImageCallback {

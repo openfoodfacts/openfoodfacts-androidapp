@@ -506,8 +506,6 @@
     <string name="sort">מיון</string>
     <string name="by_nutrition_grade">ציון תזונתי</string>
     <string name="sort_by">סידור לפי</string>
-    <string name="shake_summary">יש לנער את הטלפון כדי לסרוק מוצרים</string>
-    <string name="shake_title">יש לנער לסריקה</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">לא ניתן עדיין להוסיף תמונות ללא בר קוד ליישומון. נא לנסות את גרסת האתר לניידים.</string>
     <string name="no_barcode">לא זוהה כל ברקוד</string>

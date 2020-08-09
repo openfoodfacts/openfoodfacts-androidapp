@@ -496,8 +496,6 @@
     <string name="sort">Sorteer</string>
     <string name="by_nutrition_grade">Voeding Grade</string>
     <string name="sort_by">Ordenen volgens</string>
-    <string name="shake_summary">Schud telefoon om producten te scannen</string>
-    <string name="shake_title">Schud om te scannen</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Foto\'s zonder streepjescode kunnen nog niet met de app worden toegevoegd. Probeer de mobiele webversie.</string>
     <string name="no_barcode">We hebben geen barcode gevonden</string>
