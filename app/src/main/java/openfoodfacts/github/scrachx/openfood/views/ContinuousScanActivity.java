@@ -33,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -521,13 +522,19 @@ public class ContinuousScanActivity extends AppCompatActivity {
     }
 
     private void navigateToProductAddition(String productBarcode) {
-        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-        ProductState st = new ProductState();
         Product pd = new Product();
         pd.setCode(productBarcode);
-        st.setProduct(pd);
-        intent.putExtra("state", st);
-        startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
+        navigateToProductAddition(pd);
+    }
+
+    private void navigateToProductAddition(Product product) {
+        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
+        intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
+        registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                setShownProduct(lastBarcode);
+            }
+        }).launch(intent);
     }
 
     private void showAllViews() {
@@ -916,14 +923,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ProductImageManagementActivity.REQUEST_EDIT_IMAGE && (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)) {
             setShownProduct(lastBarcode);
-        } else if (resultCode == RESULT_OK) {
-            if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE) {
-                setShownProduct(lastBarcode);
-            } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE) {
-                Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-                intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
-                startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
-            }
+        } else if (resultCode == RESULT_OK && requestCode == LOGIN_ACTIVITY_REQUEST_CODE) {
+            navigateToProductAddition(product);
         }
     }
 
