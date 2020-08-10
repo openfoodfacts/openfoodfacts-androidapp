@@ -158,7 +158,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler = new PhotoReceiverHandler(this::onPhotoReturned);
+        photoReceiverHandler = new PhotoReceiverHandler(this::loadNutritionPhoto);
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.nutrimentsRecyclerView.getContext(), VERTICAL);
         binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
@@ -577,10 +577,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
     }
 
-    public void onPhotoReturned(File photoFile) {
+    public void loadNutritionPhoto(File photoFile) {
+        // Create a new instance of ProductImage so we can load to server
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
+        // Load to server
         disp.add(api.postImg(image).subscribe());
+        // Load into view
         binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
