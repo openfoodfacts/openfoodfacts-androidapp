@@ -876,7 +876,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void openFrontImageFullscreen() {
         if (mUrlImage != null) {
-            FullScreenActivityOpener.openForUrl(this, product, ProductImageField.FRONT, mUrlImage, binding.imageViewFront);
+            FullScreenActivityOpener.openForUrl(this,
+                product,
+                ProductImageField.FRONT,
+                mUrlImage,
+                binding.imageViewFront);
         } else {
             // take a picture
             newFrontImage();

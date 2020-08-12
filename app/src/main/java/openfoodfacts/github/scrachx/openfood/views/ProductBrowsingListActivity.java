@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
@@ -498,7 +499,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
     }
 
-    private void loadData(boolean isResponseOk, Search response) {
+    private void loadData(boolean isResponseOk, @Nullable Search response) {
         if (isResponseOk && response != null) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
@@ -562,11 +563,20 @@ public class ProductBrowsingListActivity extends BaseActivity {
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response,
                                     @StringRes int emptyMessage, @StringRes int extendedMessage) {
-        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
-            showEmptySearch(getResources().getString(emptyMessage),
-                getResources().getString(extendedMessage));
+        if (response == null) {
+            loadData(isResponseSuccessful, null);
         } else {
-            loadData(isResponseSuccessful, response);
+            final int count;
+            try {
+                count = Integer.parseInt(response.getCount());
+            } catch (NumberFormatException e) {
+                throw new NumberFormatException("cannot parse " + response.getCount());
+            }
+            if (isResponseSuccessful && count == 0) {
+                showEmptySearch(getResources().getString(emptyMessage), getResources().getString(extendedMessage));
+            } else {
+                loadData(isResponseSuccessful, response);
+            }
         }
     }
 

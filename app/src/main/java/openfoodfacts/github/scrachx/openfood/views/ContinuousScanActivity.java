@@ -103,9 +103,9 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
 
 public class ContinuousScanActivity extends AppCompatActivity {
-    private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     public static final List<BarcodeFormat> BARCODE_FORMATS = Arrays.asList(
         BarcodeFormat.UPC_A,
@@ -151,7 +151,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             }
         }
         textView.requestFocus();
-        Snackbar.make(binding.getRoot(), getString(R.string.txtBarcodeNotValid), Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(binding.getRoot(), getString(R.string.txtBarcodeNotValid), LENGTH_SHORT).show();
         return true;
     };
     private final BarcodeCallback barcodeScanCallback = new BarcodeCallback() {
@@ -377,7 +377,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         .beginTransaction()
                         .replace(R.id.frame_layout, newProductFragment)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .commitAllowingStateLoss();
+                        .commit();
                     productFragment = newProductFragment;
                 }
             }, (Throwable e) -> {
@@ -615,7 +615,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     }
 
     @Subscribe
-    public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
+    public void onEventBusProductNeedsRefreshEvent(@NonNull ProductNeedsRefreshEvent event) {
         if (event.getBarcode().equals(lastBarcode)) {
             setShownProduct(lastBarcode);
         }
@@ -687,18 +687,23 @@ public class ContinuousScanActivity extends AppCompatActivity {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.quickView);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
-            float previousSlideOffset = 0;
+            private float previousSlideOffset = 0;
 
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                    lastBarcode = null;
-                    binding.txtProductCallToAction.setVisibility(GONE);
-                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    binding.barcodeScanner.resume();
-                }
-                if (newState == BottomSheetBehavior.STATE_DRAGGING && product == null) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        lastBarcode = null;
+                        binding.txtProductCallToAction.setVisibility(GONE);
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        binding.barcodeScanner.resume();
+                        break;
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        if (product == null) {
+                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        }
+                        break;
                 }
                 if (binding.quickViewSearchByBarcode.getVisibility() == VISIBLE) {
                     bottomSheetBehavior.setPeekHeight(peekSmall);

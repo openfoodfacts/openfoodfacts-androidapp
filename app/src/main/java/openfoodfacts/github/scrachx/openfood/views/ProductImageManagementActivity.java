@@ -154,8 +154,8 @@ public class ProductImageManagementActivity extends BaseActivity {
 
         Product product = (Product) intent.getSerializableExtra(ImageKeyHelper.PRODUCT);
         boolean canEdit = product != null;
-        ((View) binding.btnEditImage).setVisibility(canEdit ? View.VISIBLE : View.INVISIBLE);
-        ((View) binding.btnUnselectImage).setVisibility(binding.btnEditImage.getVisibility());
+        binding.btnEditImage.setVisibility(canEdit ? View.VISIBLE : View.INVISIBLE);
+        binding.btnUnselectImage.setVisibility(binding.btnEditImage.getVisibility());
 
         mAttacher = new PhotoViewAttacher(binding.imageViewFullScreen);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -466,6 +466,7 @@ public class ProductImageManagementActivity extends BaseActivity {
     }
 
     void onExit() {
+        setResult(RESULT_OK);
         finish();
     }
 
