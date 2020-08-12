@@ -43,7 +43,7 @@
     <string-array name="nav_drawer_items_product">
         <item>摘要</item>
         <item>成分</item>
-        <item>營養成分</item>
+        <item>營養素</item>
         <item>營養標籤</item>
         <item>環境</item>
     </string-array>
@@ -75,7 +75,7 @@
         <item>Arachidic acid (20:0)</item>
         <item>花生四烯酸 / AA / ARA（20:4 n-6）</item>
         <item>Behenic acid (22:0)</item>
-        <item>碳酸氢钠</item>
+        <item>碳酸氫鹽</item>
         <item>生物素</item>
         <item>Butyric acid (4:0)</item>
         <item>咖啡因</item>
@@ -126,7 +126,7 @@
         <item>pH值</item>
         <item>磷</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>多元不飽和脂肪</item>
+        <item>多不飽和脂肪</item>
         <item>鉀</item>
         <item>硒</item>
         <item>Serum proteins</item>
@@ -158,7 +158,7 @@
     <string name="txtBarcode">條碼：</string>
     <string name="txtCategories">分類：</string>
     <string name="txtLabels">標籤、認證、獎項：</string>
-    <string name="txtEMB">EMB碼：</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">成分：</string>
     <string name="Donate">捐款</string>
     <string name="Donation">捐助Open Food Facts</string>
@@ -170,7 +170,7 @@
     <string name="txtServingSize">分量：</string>
     <string name="txtNutrientLevel100g">每100克的營養等級：</string>
     <string name="txtNutrientLevel100ml">100毫升的營養素：</string>
-    <string name="txtNutritionLevelLow">少量</string>
+    <string name="txtNutritionLevelLow">低量</string>
     <string name="txtNutritionLevelModerate">中等量</string>
     <string name="txtNutritionLevelHigh">大量</string>
     <string name="txtSave">儲存</string>
@@ -181,7 +181,7 @@
     <string name="txtSugars">糖</string>
     <string name="hintBarcode">條碼</string>
     <string name="txtNutriScoreInfo">瞭解營養水平</string>
-    <string name="hintLogin">登入</string>
+    <string name="hintLogin">用戶名</string>
     <string name="hintPass">密碼</string>
     <string name="errorLogin">使用者名稱或密碼錯誤</string>
     <string name="errorWeb">我們無法連接網絡，您的連線是否出了問題？</string>
@@ -213,7 +213,7 @@
     <string name="category_drawer">分類</string>
     <string name="search_by_category">分類</string>
     <string name="scan_search">掃描條碼</string>
-    <string name="user_drawer">用户</string>
+    <string name="user_drawer">用戶</string>
     <string name="offline_edit_drawer">離線編輯</string>
     <string name="txt_anonymous">匿名</string>
     <string name="delete_txt">刪除</string>
@@ -224,7 +224,7 @@
     <string name="select_camera">選擇相機</string>
     <string name="ok_button">確定</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">登入</string>
+    <string name="login_button">用戶名</string>
     <string name="create_account_button">註冊</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">這是如何運作？</string>
@@ -266,7 +266,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">檢查</string>
-    <string name="nutrition">營養成分</string>
+    <string name="nutrition">營養素</string>
     <string name="calculated_nutrition">計算出的營養</string>
     <string name="please_enter_weight">請輸入產品重量</string>
     <string name="enter_weight">輸入產品重量</string>
@@ -317,13 +317,13 @@
     <string name="nutrition_lactose">乳糖</string>
     <string name="nutrition_casein">酪蛋白</string>
     <string name="nutrition_maltodextrins">麥芽糊精</string>
-    <string name="nutrition_serum_proteins">血浆蛋白</string>
+    <string name="nutrition_serum_proteins">血清蛋白</string>
     <string name="nutrition_nucleotides">核苷酸</string>
     <string name="for_100g">每100克</string>
     <string name="for_100ml">每100毫升</string>
-    <string name="serving">每食用分量</string>
+    <string name="serving">每份</string>
     <string name="nutrition_monounsaturatedFat">單不飽和脂肪</string>
-    <string name="nutrition_polyunsaturatedFat">多元不飽和脂肪</string>
+    <string name="nutrition_polyunsaturatedFat">多不飽和脂肪</string>
     <string name="nutrition_omega3">奧米加-3</string>
     <string name="nutrition_omega6">奧米加-6</string>
     <string name="nutrition_omega9">奧米加-9</string>
@@ -348,7 +348,7 @@
     <string name="pantothenic_acid">泛酸</string>
     <string name="nutrition_minerals">礦物質</string>
     <string name="silica">二氧化矽</string>
-    <string name="bicarbonate">碳酸氢钠</string>
+    <string name="bicarbonate">碳酸氫鹽</string>
     <string name="potassium">鉀</string>
     <string name="chloride">氯化物</string>
     <string name="calcium">鈣</string>
@@ -378,7 +378,7 @@
     <string name="take_more_pictures">拍攝更多照片</string>
     <string name="txtSaturatedFat">飽和脂肪</string>
     <string name="nutriscore_info_msg">瞭解Nutri-Score</string>
-    <string name="nova_info_msg">瞭解Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">第一類：未加工或經少量加工的食品</string>
     <string name="nova_grp2_msg">第二類：加工的烹飪用食品</string>
     <string name="nova_grp3_msg">第三類：加工食品</string>
@@ -392,7 +392,7 @@
     <string name="history_shortcut_short_label">查看紀錄</string>
     <string name="history_shortcut_long_label">查看紀錄</string>
     <string name="contributions_shortcut_short_label">貢獻</string>
-    <string name="contributions_shortcut_long_label">我的貢獻</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">忘記密碼</string>
     <string name="next">下一頁</string>
     <string name="skip">跳過</string>
@@ -414,7 +414,7 @@
     <string name="preference_enable_mobile_data_summary_on">使用流動數據和WiFi上載產品</string>
     <string name="preference_enable_mobile_data_summary_off">只使用WiFi上載產品</string>
     <string name="device_on_mobile_data_warning_title">資訊</string>
-    <string name="device_on_mobile_data_warning_message">您禁用流動數據上載資料，請連接上WiFi或更改此項設置</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">設定</string>
     <string name="device_on_mobile_data_warning_negative">仍要上傳</string>
     <string name="changes_saved">更改已儲存</string>
@@ -448,7 +448,7 @@
     <string name="preference_header_network">網絡</string>
     <string name="preference_header_contributing">貢獻</string>
     <string name="scan_first_string">這裏列出您之前查看的產品。\n此記錄儲存在手機上，只有你才可以查看。</string>
-    <string name="log_in">登入</string>
+    <string name="log_in">用戶名</string>
     <string name="login_true">您已經登入了！</string>
     <string name="confirm_logout">確認登出Open Food Facts</string>
     <string name="logout_dialog_content">確定登出Open Food Facts嗎？</string>
@@ -571,7 +571,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">概覽</string>
+    <string name="overview">總覽</string>
     <string name="ingredients">成分</string>
     <string name="nutrition_facts">營養標籤</string>
     <string name="your_version">您的圖片</string>
@@ -586,11 +586,11 @@
     <string name="traces">痕迹</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">產品未具體標明營養成分</string>
-    <string name="nutrition_facts_picture">營養標籤相片</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">正面</string>
     <string name="other_picture">其他圖片</string>
     <string name="for_100g_100ml">每100克/100毫升</string>
-    <string name="per_serving">每食用分量</string>
+    <string name="per_serving">每份</string>
     <string name="serving_size">分量</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">新增營養</string>
@@ -605,7 +605,7 @@
     <string name="manufacturing_details">製造資料</string>
     <string name="origin_of_ingredients">成分来源</string>
     <string name="manufacturing_place">出產地</string>
-    <string name="emb_code">EMB碼</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">購買資料</string>
     <string name="country_where_purchased">購買國家</string>
     <string name="stores">商店</string>
@@ -749,6 +749,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">把食品成分翻譯至您的語言</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -782,8 +783,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

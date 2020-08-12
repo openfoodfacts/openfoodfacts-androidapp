@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">Escanea tus productos incluso cuando no hay Internet, para añadirlos luego a Open Products Facts. Los productos escaneados aparecerán aquí y podrás enviarlos usando el botón de abajo.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La información de tus alergias no se enviará al servidor de open products Facts. así que debes ser cuidadoso ya que la información del producto no puede ser fidedigna, y la detección puede que no sea 100% arecisa, ¡así que chequea más de una vez por ti mismo! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Aplicación de Android Open Products Facts</string>
     <string name="tagline">la base de datos de productos gratis</string>
     <string name="product_not_found">El producto %1$s que has escaneado aún no esta en el inventario de Open Products Facts, ¿puedes añadirlo?</string>
     <string name="currently_on_version">Actualmente en Open Products Facts</string>
@@ -41,11 +41,11 @@
     <string name="add_nutrient_prompt_text">Agrega más detalles para ayudar a completar el producto</string>
     <string name="add_category_prompt_text">Agrega una categoría para ayudar a completar el producto</string>
     <string name="add_nutrient_category_prompt_text">Añade una categoría y más detalles para ayudar a completar el producto</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Productos que poseo</string>
     <string name="txt_products_to_buy">Productos para comprar</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="intent_filter_share_label">Añadir a Open Products Facts</string>
+    <string name="txt_info_eaten_products">Podrás añadir productos a esta lista escaneando productos, arrastrando la tarjeta del producto y pulsando \"Productos a comprar\".
+        También podrás añadir productos a esta lista buscando y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
+    <string name="OFFlogo">Logotipo de Open Food Facts</string>
+    <string name="brand_hint">Ejemplos: Nike, Apple, etc…</string>
 </resources>

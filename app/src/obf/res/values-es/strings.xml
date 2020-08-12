@@ -30,7 +30,7 @@
     <string name="text_offline_info_dialog">Escanea productos incluso cuando estés sin conexión para agregarlos posteriormente a Open Beauty Facts. Los productos escaneados aparecerán aquí y podrás enviarlo usando el botón de abajo.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Tu información sobre alergias nunca será enviada al servidor de Open Beauty Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
+    <string name="version_string">Aplicación de Android Open Beauty Facts</string>
     <string name="tagline">base de datos de cosméticos gratis</string>
     <string name="product_not_found">El producto %1$s que escaneaste aún no existe en Open Beauty Facts. ¿Puedes agregarla?</string>
     <string name="currently_on_version">Actualmente en Open Beauty Facts</string>
@@ -40,11 +40,11 @@
     <string name="add_category_prompt_text">Agrega una categoría para ayudar a completar el producto</string>
     <string name="add_nutrient_category_prompt_text">Añade una categoría y más detalles para ayudar a completar el producto</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Productos que poseo</string>
     <string name="txt_products_to_buy">Productos para comprar</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="intent_filter_share_label">Añadir a Open Food Facts</string>
+    <string name="brand_hint">Ejemplos: Nivea, L\'Oréal, etc…</string>
+    <string name="txt_info_eaten_products">Podrás añadir productos a esta lista escaneando productos, arrastrando la tarjeta del producto y pulsando \"Productos a comprar\".
+        También podrás añadir productos a esta lista buscando y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
+    <string name="OFFlogo">Logotipo de Open Food Facts</string>
 </resources>

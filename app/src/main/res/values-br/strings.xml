@@ -62,7 +62,7 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>Summary</item>
-        <item>Ingredients</item>
+        <item>Aozennoù</item>
         <item>Nutrition</item>
         <item>Nutrition Table</item>
         <item>Environment</item>
@@ -98,7 +98,7 @@
         <item>Bicarbonate</item>
         <item>Biotin</item>
         <item>Butyric acid (4:0)</item>
-        <item>Caffeine</item>
+        <item>Kafein</item>
         <item>Calcium</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
@@ -174,17 +174,17 @@
     <string name="search_button">Klask</string>
     <string name="alert_dialog_warning_title">Diwall</string>
     <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
-    <string name="toast_retrieving">Loading…</string>
+    <string name="toast_retrieving">O kargañ…</string>
     <string name="txtBarcode">Kod barrennoù:</string>
     <string name="txtCategories">Rummadoù:</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtEMB">Kod EMB:</string>
-    <string name="txtIngredients">Ingredients list :</string>
+    <string name="txtEMB">Traceability codes:</string>
+    <string name="txtIngredients">Roll an aozennoù:</string>
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-    <string name="txtAdditives">Additives :</string>
-    <string name="txtTraces">Traces :</string>
+    <string name="txtAdditives">Danvezioù-ouzhpenn:</string>
+    <string name="txtTraces">Roudennoù:</string>
     <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
     <string name="txtServingSize">Serving size :</string>
@@ -194,14 +194,14 @@
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
     <string name="txtSave">Enrollañ</string>
-    <string name="txtSignIn">Sign in</string>
+    <string name="txtSignIn">Kevreañ</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Holen</string>
     <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sugars</string>
+    <string name="txtSugars">Sukroù</string>
     <string name="hintBarcode">Kod barrennoù</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Login</string>
+    <string name="hintLogin">Anv arveriad</string>
     <string name="hintPass">Ger-tremen</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
@@ -215,23 +215,23 @@
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
     <string name="toastSending">Uploading…</string>
-    <string name="txtLoading">Loading…</string>
+    <string name="txtLoading">O kargañ…</string>
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
     <string name="txtBarcodeRequire">Barcode required</string>
-    <string name="txtOk">OK</string>
+    <string name="txtOk">Mat eo</string>
     <string name="txtBarcodeNotValid">Barcode not valid</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Sign up</string>
     <string name="home_drawer">Degemer</string>
-    <string name="install">Install</string>
+    <string name="install">Staliañ</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Klask</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Rummadoù</string>
-    <string name="search_by_category">Category</string>
+    <string name="search_by_category">Rummad</string>
     <string name="scan_search">Scan Barcode</string>
     <string name="user_drawer">Implijer</string>
     <string name="offline_edit_drawer">Offline edit</string>
@@ -242,9 +242,9 @@
     <string name="your_lists">Ho rolloù</string>
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
-    <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
-    <string name="login_button">Login</string>
+    <string name="ok_button">Mat eo</string>
+    <string name="cancel_button">Nullañ</string>
+    <string name="login_button">Anv arveriad</string>
     <string name="create_account_button">Krouiñ ur gont</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
@@ -257,9 +257,9 @@
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-    <string name="user">user</string>
+    <string name="user">implijer</string>
     <string name="error_field_required">This field is required.</string>
-    <string name="action_preferences">Preferences</string>
+    <string name="action_preferences">Gwellvezioù</string>
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
@@ -304,7 +304,7 @@
     <string name="nutrition_salt">Holen</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sugars</string>
+    <string name="nutrition_sugars">Sukroù</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -313,7 +313,7 @@
     <string name="energy_pref_title">Preferred energy unit</string>
     <string name="choose_volume_unit">Choose your preferred volume units for the nutrition table</string>
     <string name="volume_pref_title">Preferred volume unit</string>
-    <string name="logout_drawer">Logout</string>
+    <string name="logout_drawer">Digennaskañ</string>
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="action_search">Klask</string>
@@ -333,7 +333,7 @@
     <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
-    <string name="txt_try_again">Try again</string>
+    <string name="txt_try_again">Klask en-dro</string>
     <string name="nutrition_lactose">Lactose</string>
     <string name="nutrition_casein">Casein</string>
     <string name="nutrition_maltodextrins">Maltodextrins</string>
@@ -352,7 +352,7 @@
     <string name="nutrition_fructose">Fructose</string>
     <string name="nutrition_maltose">Maltose</string>
     <string name="nutrition_alcohol">Alcohol</string>
-    <string name="nutrition_vitamins">Vitamins</string>
+    <string name="nutrition_vitamins">Vitaminoù</string>
     <string name="vitamin_a">Vitamin A</string>
     <string name="vitamin_d">Vitamin D</string>
     <string name="vitamin_e">Vitamin E</string>
@@ -383,14 +383,14 @@
     <string name="chromium">Chromium</string>
     <string name="molybdenum">Molybdenum</string>
     <string name="iodine">Iodine</string>
-    <string name="caffeine">Caffeine</string>
+    <string name="caffeine">Kafein</string>
     <string name="taurine">Taurine</string>
     <string name="ph">pH</string>
     <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
     <string name="cocoa">Cocoa</string>
     <string name="chlorophyl">Chlorophyl</string>
-    <string name="take_picture">Take a photo</string>
+    <string name="take_picture">Kemer ur skeudenn</string>
     <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
     <string name="take_picture_front">Take a photo of the front</string>
@@ -398,7 +398,7 @@
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -412,7 +412,7 @@
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
-    <string name="contributions_shortcut_long_label">My Contributions</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -422,11 +422,11 @@
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
     <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-    <string name="airplane_mode_active_dialog_negative">Dismiss</string>
+    <string name="airplane_mode_active_dialog_negative">Argas</string>
     <string name="airplane_mode_active_dialog_positive">Arventennoù</string>
-    <string name="device_offline_dialog_title">Network unavailable</string>
+    <string name="device_offline_dialog_title">Rouedad dihegerz</string>
     <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-    <string name="device_offline_dialog_negative">Dismiss</string>
+    <string name="device_offline_dialog_negative">Argas</string>
     <string name="device_offline_dialog_positive">Arventennoù</string>
     <string name="scan_first_product">Scan First Product</string>
     <string name="preference_delete_search_history">Successfully deleted history</string>
@@ -434,12 +434,12 @@
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">Titouroù</string>
-    <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Preferences</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_positive">Gwellvezioù</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
-    <string name="preference_choose_language_dialog_title">Choose language</string>
-    <string name="FAQ">FAQ</string>
+    <string name="preference_choose_language_dialog_title">Dibab ur yezh</string>
+    <string name="FAQ">FAG</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
@@ -447,7 +447,7 @@
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Please check your internet connection</string>
-    <string name="dismiss">Dismiss</string>
+    <string name="dismiss">Argas</string>
     <string name="Terms">Terms</string>
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
@@ -465,14 +465,14 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
-    <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
+    <string name="preference_header_network">Rouedad</string>
+    <string name="preference_header_contributing">Kenoberiañ</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Anv arveriad</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_cancel">Nullañ</string>
     <string name="dialog_create">Krouiñ</string>
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Pick a resolution for image upload</string>
@@ -487,10 +487,10 @@
     <string name="search_string">Klask</string>
     <string name="country_string">Country</string>
     <string name="store_subtitle">Stal</string>
-    <string name="packaging_subtitle">Packaging</string>
-    <string name="packaging_string">Packaging</string>
+    <string name="packaging_subtitle">Enpakañ</string>
+    <string name="packaging_string">Enpakañ</string>
     <string name="label_string">Skritellig</string>
-    <string name="category_string">Category</string>
+    <string name="category_string">Rummad</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Perzhiad</string>
     <string name="Rate_Us">Show Your Support</string>
@@ -510,7 +510,7 @@
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
-    <string name="sort_by">Sort by</string>
+    <string name="sort_by">Dispartiañ dre</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">We have not detected any barcode</string>
@@ -561,7 +561,7 @@
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Preferences</string>
+    <string name="preferences">Gwellvezioù</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -583,23 +583,23 @@
     <string name="choose_mine">Choose mine</string>
     <string name="keep_previous_version">Keep previous version</string>
     <string name="product_name_overwrite">Product name overwrite</string>
-    <string name="yours">Yours: </string>
+    <string name="yours">Deoc\'h-c\'hwi: </string>
     <string name="currently_on">Currently on %s: </string>
     <string name="quantity_overwrite">Quantity overwrite</string>
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
     <string name="photos">Skeudennoù</string>
-    <string name="please_wait">Please wait</string>
+    <string name="please_wait">Gortozit mar plij</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="overview">Summary</string>
+    <string name="ingredients">Aozennoù</string>
     <string name="nutrition_facts">Nutrition Facts</string>
-    <string name="your_version">Yours</string>
-    <string name="ingredients_picture">Ingredients Picture</string>
+    <string name="your_version">Deoc\'h-c\'hwi</string>
+    <string name="ingredients_picture">Skeudenn an aozennoù</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Roll an aozennoù</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
@@ -607,10 +607,10 @@
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Roudennoù</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
@@ -618,31 +618,31 @@
     <string name="serving_size">Serving size</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
-    <string name="add_this_product">Add this product</string>
-    <string name="product_picture">Product Picture</string>
+    <string name="add_this_product">Ouzhpennañ ar produ-mañ</string>
+    <string name="product_picture">Skeudenn ar produ</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
     <string name="product_name">Anv ar produ</string>
     <string name="quantity">Kementad</string>
-    <string name="labels">Labels</string>
+    <string name="labels">Skritellouigoù</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Orin an aozennoù</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
-    <string name="additional_pictures">Additional Pictures</string>
+    <string name="stores">Stalioù</string>
+    <string name="additional_pictures">Skeudennoù ouzhpenn</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
-    <string name="uploading_image">Sending the photo</string>
+    <string name="uploading_image">O kas ar skeudenn</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
     <string name="uploading_ingredients_image">Uploading ingredients image</string>
     <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
-    <string name="edit_other_image">Edit the photo</string>
+    <string name="edit_other_image">Aozañ ar skeudenn</string>
     <string name="sign_in_to_edit">Please sign in to edit a product.</string>
     <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
@@ -651,7 +651,7 @@
     <string name="save_edits">Save edits</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Titl</string>
-    <string name="description_activity_product">description</string>
+    <string name="description_activity_product">deskrivadur</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
@@ -659,13 +659,13 @@
     <string name="infants">Poupigoù</string>
     <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Babigoù</string>
-    <string name="toddlers_age">1 to 2</string>
+    <string name="toddlers_age">1 da 2</string>
     <string name="children">Bugale</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
+    <string name="children_age">3 da 9</string>
+    <string name="adolescents">Krennarded</string>
+    <string name="adolescents_age">10 da 17</string>
     <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
+    <string name="adults_age">18 da 64</string>
     <string name="elderly">Elderly</string>
     <string name="elderly_age">65+</string>
     <string name="most_people">Most people\n(over 50%)</string>
@@ -685,7 +685,7 @@
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
+    <string name="version">Handelv</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -723,12 +723,12 @@
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Ouzhpennañ produioù</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_another_product">Ouzhpennañ ur produ all</string>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Ouzhpennañ d\'ar roll</string>
-    <string name="product_summary_action_edit_button_label">Edit</string>
-    <string name="product_summary_action_share_button_label">Share</string>
+    <string name="product_summary_action_edit_button_label">Aozañ</string>
+    <string name="product_summary_action_share_button_label">Rannañ</string>
     <string name="product_question_prompt">Tap here to answer</string>
     <string name="product_question_positive_response">Ya</string>
     <string name="product_question_negative_response">Ket</string>
@@ -745,7 +745,7 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Ouzhpennañ un allergen</string>
     <string name="add_a_list">Ouzhpennañ ur roll</string>
-    <string name="edit_image">Edit Image</string>
+    <string name="edit_image">Aozañ ar skeudenn</string>
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
@@ -755,7 +755,7 @@
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="open_csv">Digeriñ ar CSV</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
@@ -769,20 +769,21 @@
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
-    <string name="preference_header_display">Display</string>
+    <string name="preference_header_display">Diskouez</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
-    <string name="compare_brands">Brands :</string>
-    <string name="compare_additives">Additives :</string>
+    <string name="compare_brands">Merkoù :</string>
+    <string name="compare_additives">Danvezioù-ouzhpenn:</string>
     <string name="compare_salt">Holen</string>
-    <string name="compare_sugars">Sugars</string>
+    <string name="compare_sugars">Sukroù</string>
     <string name="compare_saturated_fat">Saturated fat</string>
     <string name="compare_fat">Fat</string>
-    <string name="compare_quantity">Quantity :</string>
+    <string name="compare_quantity">Kementad :</string>
     <string name="load_ingredient_detection_data">Load ingredient detection data</string>
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
@@ -792,13 +793,13 @@
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>
-    <string name="title_choose_language">Select Language</string>
+    <string name="title_choose_language">Dibab ur yezh</string>
     <string name="content_choose_language">Select the language of the photo</string>
-    <string name="title_add_photo">Add Photo</string>
+    <string name="title_add_photo">Ouzhpennañ ur skeudenn</string>
     <string name="content_add_photo">Press here to take a new photo</string>
-    <string name="title_choose_photo">Choose Photo</string>
+    <string name="title_choose_photo">Dibab ur skeudenn</string>
     <string name="content_choose_photo">Choose among existing photos</string>
-    <string name="title_edit_photo">Edit Photo</string>
+    <string name="title_edit_photo">Aozañ ar skeudenn</string>
     <string name="content_edit_photo">Edit, crop and rotate the photo</string>
     <string name="title_unselect_photo">Unselect Photo</string>
     <string name="content_unselect_photo">Press here to unselect current photo</string>
@@ -806,8 +807,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

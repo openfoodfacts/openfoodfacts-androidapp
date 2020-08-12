@@ -31,7 +31,7 @@
     <string name="text_offline_info_dialog">Skenirajte izdelke tudi, ko ste brez povezave, da jih boste kasneje dodali v Open Food Facts later. Skenirani izdelki bodo prikazani tukaj in jih boste lahko poslali z uporabo spodnjega gumba.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
+    <string name="tagline">brezplačna zbirka podatkov o prehranskih izdelkih</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="currently_on_version">Trenutno na Open Food Facts</string>
 </resources>

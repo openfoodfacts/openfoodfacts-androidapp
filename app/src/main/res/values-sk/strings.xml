@@ -127,7 +127,7 @@
         <item>Kyselina meďnatá (20: 3 n-9)</item>
         <item>Kyselina melíssová (30: 0)</item>
         <item>Molybdén</item>
-        <item>Mononenasýtený tuk</item>
+        <item>Mono unsaturated fat</item>
         <item>Kyselina montánová (28: 0)</item>
         <item>Kyselina myristová (14: 0)</item>
         <item>Kyselina nervónová (24: 1 n-9)</item>
@@ -141,7 +141,7 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Cukrové alkoholy (polyoly)</item>
-        <item>Polynenasýtený tuk</item>
+        <item>Poly unsaturated fat</item>
         <item>Draslík</item>
         <item>Selén</item>
         <item>Sérové ​​proteíny</item>
@@ -173,7 +173,7 @@
     <string name="txtBarcode">Čiarový kód :</string>
     <string name="txtCategories">Kategórie :</string>
     <string name="txtLabels">Štítky, certifikáty, ocenenia :</string>
-    <string name="txtEMB">Kód EMB:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Zoznam ingrediencií:</string>
     <string name="Donate">Darovať</string>
     <string name="Donation">Kliknite sem, ak chcete darovať Open Food Facts</string>
@@ -196,7 +196,7 @@
     <string name="txtSugars">Cukry</string>
     <string name="hintBarcode">Čiarový kód</string>
     <string name="txtNutriScoreInfo">Získajte viac informácií o množstvách živín</string>
-    <string name="hintLogin">Užívateľské meno</string>
+    <string name="hintLogin">Username</string>
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Chyba prihlasovacieho mena alebo hesla</string>
     <string name="errorWeb">Nebolo možné pripojiť sa k internetu. Skontrolujte, prosím, pripojenie k sieti.</string>
@@ -228,7 +228,7 @@
     <string name="category_drawer">Categories</string>
     <string name="search_by_category">Kategória</string>
     <string name="scan_search">Nasnímať čiarový kód</string>
-    <string name="user_drawer">Užívateľ</string>
+    <string name="user_drawer">Používateľ</string>
     <string name="offline_edit_drawer">Úpravy bez pripojenia</string>
     <string name="txt_anonymous">Anonymný</string>
     <string name="delete_txt">Vymazať</string>
@@ -239,7 +239,7 @@
     <string name="select_camera">Vybrať fotoaparát</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Zrušiť</string>
-    <string name="login_button">Užívateľské meno</string>
+    <string name="login_button">Username</string>
     <string name="create_account_button">Vytvoriť účet</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Ako to funguje?</string>
@@ -337,8 +337,8 @@
     <string name="for_100g">Na 100 g</string>
     <string name="for_100ml">Na 100 ml</string>
     <string name="serving">Na jednu porciu</string>
-    <string name="nutrition_monounsaturatedFat">Mononenasýtený tuk</string>
-    <string name="nutrition_polyunsaturatedFat">Polynenasýtený tuk</string>
+    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -393,7 +393,7 @@
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Nasýtený tuk</string>
     <string name="nutriscore_info_msg">Ďalšie informácie o Nutri-Score</string>
-    <string name="nova_info_msg">Ďalšie informácie o službe Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -407,7 +407,7 @@
     <string name="history_shortcut_short_label">História</string>
     <string name="history_shortcut_long_label">História</string>
     <string name="contributions_shortcut_short_label">Príspevky</string>
-    <string name="contributions_shortcut_long_label">Moje príspevky</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Zabudnuté heslo</string>
     <string name="next">ĎALEJ</string>
     <string name="skip">PRESKOČIŤ</string>
@@ -429,7 +429,7 @@
     <string name="preference_enable_mobile_data_summary_on">Nahrávať nové výrobky použitím mobilného dátového pripojenia &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Nahrávať nové výrobky len pri použití WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informácia</string>
-    <string name="device_on_mobile_data_warning_message">Nahrávanie cez mobilné dáta je vypnuté, prosím pripojte sa k WiFi alebo to zmeňte v predvoľbách</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Predvoľby</string>
     <string name="device_on_mobile_data_warning_negative">Nahrať napriek tomu</string>
     <string name="changes_saved">Zmeny boli úspešne uložené</string>
@@ -463,7 +463,7 @@
     <string name="preference_header_network">Sieť</string>
     <string name="preference_header_contributing">Prispievajúci</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Užívateľské meno</string>
+    <string name="log_in">Login</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -589,7 +589,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">Zhrnutie</string>
     <string name="ingredients">Ingrediencie</string>
     <string name="nutrition_facts">Výživové údaje</string>
     <string name="your_version">Vaše</string>
@@ -604,7 +604,7 @@
     <string name="traces">Traces</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">Na 100g / 100ml</string>
@@ -623,7 +623,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Origin of ingredients</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Stores</string>
@@ -767,6 +767,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -800,8 +801,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

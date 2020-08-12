@@ -163,7 +163,7 @@
     <string name="txtBarcode">Streckkod :</string>
     <string name="txtCategories">Kategorier:</string>
     <string name="txtLabels">Etiketter, certifieringar, utmärkelser :</string>
-    <string name="txtEMB">EMB-kod:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Ingredienslista :</string>
     <string name="Donate">Donera</string>
     <string name="Donation">Klicka här för att donera till Open Food Facts</string>
@@ -383,7 +383,7 @@
     <string name="take_more_pictures">Ta fler bilder</string>
     <string name="txtSaturatedFat">Mättat fett</string>
     <string name="nutriscore_info_msg">Läs mer om Nutri-Score</string>
-    <string name="nova_info_msg">Läs mer om Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -397,7 +397,7 @@
     <string name="history_shortcut_short_label">Historik</string>
     <string name="history_shortcut_long_label">Historik</string>
     <string name="contributions_shortcut_short_label">Bidrag</string>
-    <string name="contributions_shortcut_long_label">Mina bidrag</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Glömt lösenord</string>
     <string name="next">NÄSTA</string>
     <string name="skip">HOPPA ÖVER</string>
@@ -419,7 +419,7 @@
     <string name="preference_enable_mobile_data_summary_on">Ladda upp nya produkter med mobildata &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Ladda bara upp produkter över WiFi</string>
     <string name="device_on_mobile_data_warning_title">Information</string>
-    <string name="device_on_mobile_data_warning_message">Uppladdning på mobildata är inaktiverat, vänligen anslut till WiFi eller ändra dina inställningar</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Inställningar</string>
     <string name="device_on_mobile_data_warning_negative">Ladda upp ändå</string>
     <string name="changes_saved">Ändringarna har sparats korrekt</string>
@@ -577,9 +577,9 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Översikt</string>
+    <string name="overview">Sammanfattning</string>
     <string name="ingredients">Ingredienser</string>
-    <string name="nutrition_facts">Nutrition Facts</string>
+    <string name="nutrition_facts">Näringsfakta</string>
     <string name="your_version">Din</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
@@ -592,7 +592,7 @@
     <string name="traces">Spår</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Näringsfakta anges inte på produkten.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Främre</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">För 100g / 100ml</string>
@@ -611,7 +611,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Ingredients ursprung</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB-kod</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Inköpsdetaljer</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Butiker</string>
@@ -753,8 +753,9 @@
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="help_translate_ingredients">Hjälp till att översätta ingredienserna på ditt språk</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -788,8 +789,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

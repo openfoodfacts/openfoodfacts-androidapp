@@ -173,7 +173,7 @@
     <string name="txtBarcode">ברקוד:</string>
     <string name="txtCategories">קטגוריות:</string>
     <string name="txtLabels">תוויות, אישורים, פרסים:</string>
-    <string name="txtEMB">קוד EMB:</string>
+    <string name="txtEMB">קודים למעקב:</string>
     <string name="txtIngredients">רשימת רכיבים:</string>
     <string name="Donate">תרומה</string>
     <string name="Donation">יש ללחוץ כאן כדי לתרום ל־Open Food Facts</string>
@@ -337,8 +337,8 @@
     <string name="for_100g">ל־100 ג׳</string>
     <string name="for_100ml">ל100 מ\"ל</string>
     <string name="serving">להגשה</string>
-    <string name="nutrition_monounsaturatedFat">שומן חד בלתי רווי</string>
-    <string name="nutrition_polyunsaturatedFat">שומן רב בלתי רווי</string>
+    <string name="nutrition_monounsaturatedFat">חד־שומן בלתי רווי</string>
+    <string name="nutrition_polyunsaturatedFat">רב־שומן בלתי רווי</string>
     <string name="nutrition_omega3">אומגה 3</string>
     <string name="nutrition_omega6">אומגה 6</string>
     <string name="nutrition_omega9">אומגה 9</string>
@@ -393,7 +393,7 @@
     <string name="take_more_pictures">צילום תמונות נוספות</string>
     <string name="txtSaturatedFat">שומן רווי</string>
     <string name="nutriscore_info_msg">מידע נוסף על ציון תזונתי</string>
-    <string name="nova_info_msg">מידע נוסף על NOVA</string>
+    <string name="nova_info_msg">מידע נוסף על קבוצות NOVA</string>
     <string name="nova_grp1_msg">קבוצה 1 - מזון עם עיבוד מזערי או נטול</string>
     <string name="nova_grp2_msg">קבוצה 2 - רכיבים קולינריים מעובדים</string>
     <string name="nova_grp3_msg">קבוצה 3 - מזון מעובד</string>
@@ -429,7 +429,7 @@
     <string name="preference_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
     <string name="preference_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
     <string name="device_on_mobile_data_warning_title">פרטים</string>
-    <string name="device_on_mobile_data_warning_message">העלאת מוצרים חדשים כשיש חיבור נתונים סלולרי מושבתת, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
+    <string name="device_on_mobile_data_warning_message">השבתת העלאה דרך רשת סלולרית, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
     <string name="device_on_mobile_data_warning_positive">העדפות</string>
     <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
     <string name="changes_saved">השינויים נשמרו בהצלחה</string>
@@ -623,7 +623,7 @@
     <string name="manufacturing_details">פרטי ייצור</string>
     <string name="origin_of_ingredients">מקור הרכיבים</string>
     <string name="manufacturing_place">מקום ייצור</string>
-    <string name="emb_code">קוד EMB</string>
+    <string name="emb_code">קוד מעקב</string>
     <string name="purchasing_details">פרטי רכישה</string>
     <string name="country_where_purchased">מדינת הרכישה</string>
     <string name="stores">חנויות</string>
@@ -767,6 +767,7 @@
     <string name="unknown_status_no_translation">לא הצלחנו להעריך את מצב המוצר עקב רכיבים בלתי מזוהים.</string>
     <string name="help_translate_ingredients">נשמח לקבל את עזרתך בתרגום הרכיבים לשפה שלך</string>
     <string name="unknown_status_missing_ingredients">לא הצלחנו להעריך את מצב המוצר עקב רכיבים חסרים.</string>
+    <string name="unknown_status_ambiguous_ingredients">לא הצלחנו להעריך את מצב המוצר עקב רכיבים שנויים במחלוקת: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">סיוע בחילוץ הרכיבים לקבלת מצב %1$s.</string>
     <string name="add_photo_to_extract_ingredients">יש להוסיף תמונה כדי להתחיל לחלץ רכיבים</string>
     <string name="product_already_exists_in_comparison">המוצר כבר קיים ברשימת ההשוואה</string>
@@ -800,8 +801,9 @@
     <string name="content_exit">יש ללחוץ כאן כדי לחזור למוצר</string>
     <string name="icon_label">סמל תוויות</string>
     <string name="icon_categories">סמל קטגוריות</string>
-    <string name="icon_emb">סמל קוד EMB</string>
+    <string name="icon_emb">סמל קוד מעקב</string>
     <string name="product_front_image">תמונת חזית המוצר</string>
     <string name="brand_hint">דוגמאות: קוקה קולה, נסטלה וכו׳…</string>
     <string name="sign_in_or_register">כניסה או הרשמה</string>
+    <string name="hunger_game_call_to_action">סיוג בסיווג של עוד %1$s</string>
 </resources>

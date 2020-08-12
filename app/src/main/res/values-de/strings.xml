@@ -626,7 +626,7 @@
     <string name="edit_ingredients_image">Foto der Zutaten bearbeiten</string>
     <string name="edit_other_image">Foto bearbeiten</string>
     <string name="sign_in_to_edit">Bitte melden Sie sich an, um ein Produkt zu bearbeiten.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="sign_in_to_answer">Bitte melden Sie sich an oder registrieren Sie sich, um einen Einblick zu erhalten.</string>
     <string name="hint_quantity">Beispiele: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 Pfund</string>
     <string name="edit_product_title">Produkt bearbeiten</string>
     <string name="nutrient_already_added">%s ist bereits in den Nährwertangaben enthalten</string>
@@ -755,6 +755,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="unknown_status_no_translation">Open Food Facts konnte den Status des Produkts aufgrund nicht erkannter Inhaltsstoffe nicht beurteilen.</string>
     <string name="help_translate_ingredients">Helfen Sie mit, die Zutaten in Ihre Sprache zu übersetzen</string>
     <string name="unknown_status_missing_ingredients">Open Food Facts konnte den Status des Produkts aufgrund fehlender Inhaltsstoffe nicht beurteilen.</string>
+    <string name="unknown_status_ambiguous_ingredients">Der Status des Produkts konnte wegen unklarer Zutaten nicht beurteilt werden: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Helfen Sie mit, Zutaten zu erfassen, um den Status %1$s zu erhalten</string>
     <string name="add_photo_to_extract_ingredients">Fügen Sie ein Foto hinzu, um mit der Verarbeitung der Inhaltsstoffe zu beginnen</string>
     <string name="product_already_exists_in_comparison">Das Produkt ist bereits in der Vergleichsliste vorhanden</string>
@@ -790,6 +791,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="icon_categories">Kategoriesymbol</string>
     <string name="icon_emb">Symbol des Produzenten-Codes</string>
     <string name="product_front_image">Produktfoto (Front)</string>
-    <string name="brand_hint">Beispiele: CocaCola, Nestle, usw…</string>
+    <string name="brand_hint">Beispiele: CocaCola, Nestle, usw …</string>
     <string name="sign_in_or_register">Anmelden oder registrieren</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

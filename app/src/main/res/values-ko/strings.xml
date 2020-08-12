@@ -19,16 +19,16 @@
         <item quantity="other"> Open Foods Facts 에 기부되기를 기다리는 오프라인 제품이 %d 있습니다.</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d 초 전</item>
+        <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d 분 전</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d 시간 전</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d 일 전</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">정보</string>
     <string name="action_discover">발견</string>
@@ -158,7 +158,7 @@
     <string name="txtBarcode">바코드 :</string>
     <string name="txtCategories">카테고리 :</string>
     <string name="txtLabels">라벨, 인증, 수상 내역 :</string>
-    <string name="txtEMB">EMB 코드:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">성분 목록 :</string>
     <string name="Donate">기부</string>
     <string name="Donation">Open Food Facts에 기부하려면 여기를 클릭하십시오.</string>
@@ -378,7 +378,7 @@
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">포화 지방</string>
     <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
-    <string name="nova_info_msg">노바에 대해 더 자세히 알아보기</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">그룹 1 - 미가공 식품 또는 최소 가공 식품</string>
     <string name="nova_grp2_msg">그룹 2 - 가공 식품 재료</string>
     <string name="nova_grp3_msg">그룹 3 - 가공 식품</string>
@@ -392,7 +392,7 @@
     <string name="history_shortcut_short_label">최근 기록</string>
     <string name="history_shortcut_long_label">최근 기록</string>
     <string name="contributions_shortcut_short_label">기여</string>
-    <string name="contributions_shortcut_long_label">나의 기여</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">비밀번호를 잊어버렸어요</string>
     <string name="next">다음</string>
     <string name="skip">건너뛰기</string>
@@ -414,7 +414,7 @@
     <string name="preference_enable_mobile_data_summary_on">모바일 데이터 &amp; WiFi를 사용하여 새 제품 업로드하기</string>
     <string name="preference_enable_mobile_data_summary_off">WiFi 만 사용하여 새 제품 업로드하기</string>
     <string name="device_on_mobile_data_warning_title">정보</string>
-    <string name="device_on_mobile_data_warning_message">모바일 데이터 업로드가 비활성화되었습니다. WiFi를 연결하거나 환경 설정에서 변경하십시오.</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">환경 설정</string>
     <string name="device_on_mobile_data_warning_negative">강제 업로드</string>
     <string name="changes_saved">변경 사항이 성공적으로 저장되었습니다</string>
@@ -429,7 +429,7 @@
     <string name="connectivity_check">인터넷 연결을 확인하십시오.</string>
     <string name="dismiss">무시</string>
     <string name="Terms">약관</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="TermsOfUse">이용 약관</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -586,7 +586,7 @@
     <string name="traces">흔적</string>
     <string name="traces_hint">\'~를 미량 함유할 수 있음\', \'~를 사용하는 공장에서 제조 됨\' 등과 같이 언급된 성분을 표시하십시오. \n예시 : 우유, 글루텐, 견과류</string>
     <string name="nutrition_facts_not_specified">영양성분표가 제품에 명시되어 있지 않습니다.</string>
-    <string name="nutrition_facts_picture">영양성분표 사진</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">앞</string>
     <string name="other_picture">다른 사진</string>
     <string name="for_100g_100ml">100g / 100ml 당</string>
@@ -605,7 +605,7 @@
     <string name="manufacturing_details">제조 정보</string>
     <string name="origin_of_ingredients">성분의 유래</string>
     <string name="manufacturing_place">제조 장소</string>
-    <string name="emb_code">EMB 코드</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">구매 세부 사항</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">상점</string>
@@ -749,6 +749,7 @@
     <string name="unknown_status_no_translation"> 인식되지 않는 성분 때문에 제품의 상태를 평가할 수 없습니다.</string>
     <string name="help_translate_ingredients">귀하의 언어로 성분를 번역하도록 도와주세요</string>
     <string name="unknown_status_missing_ingredients">성분이 누락되어 제품 상태를 평가할 수 없습니다.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">성분 추출을 시작하기 위해 사진 추가</string>
     <string name="product_already_exists_in_comparison">제품이 이미 비교 목록에 있습니다</string>
@@ -782,8 +783,9 @@
     <string name="content_exit">제품으로 돌아가려면 여기를 누르십시오</string>
     <string name="icon_label">라벨 아이콘</string>
     <string name="icon_categories">카테고리 아이콘</string>
-    <string name="icon_emb">EMB 코드 아이콘</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">제품 전면 이미지</string>
-    <string name="brand_hint">예 : 코카콜라, 네슬레 등…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

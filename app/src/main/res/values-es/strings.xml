@@ -20,7 +20,7 @@
         <item quantity="other"> Tienes %d productos a la espera de ser sincronizados con Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">Hace 1 segundo</item>
+        <item quantity="one">Hace %d segundo</item>
         <item quantity="other">Hace %d segundos</item>
     </plurals>
     <plurals name="minutes">
@@ -163,7 +163,7 @@
     <string name="txtBarcode">Código de barras :</string>
     <string name="txtCategories">Categorías :</string>
     <string name="txtLabels">Etiquetas, certificaciones, premios :</string>
-    <string name="txtEMB">Código EMB:</string>
+    <string name="txtEMB">Códigos de trazabilidad:</string>
     <string name="txtIngredients">Lista de ingredientes :</string>
     <string name="Donate">Donar</string>
     <string name="Donation">Haz clic aquí para donar a Open Food Facts</string>
@@ -279,8 +279,8 @@
     <string name="nutrition_carbohydrate">Carbohidratos</string>
     <string name="nutrition_cholesterol">Colesterol</string>
     <string name="nutrition_energy">Valor energético</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Energía en calorías (kcal)</string>
+    <string name="nutrition_energy_kj">Energía en julios (kJ)</string>
     <string name="nutrition_energy_short_name">Valor energético</string>
     <string name="nutrition_fat">Grasas</string>
     <string name="nutrition_fiber">Fibra dietética</string>
@@ -383,7 +383,7 @@
     <string name="take_more_pictures">Haz más fotos</string>
     <string name="txtSaturatedFat">Grasas saturadas</string>
     <string name="nutriscore_info_msg">Aprende más sobre el Nutri-Score</string>
-    <string name="nova_info_msg">Aprende más sobre Nova</string>
+    <string name="nova_info_msg">Más información sobre los grupos NOVA</string>
     <string name="nova_grp1_msg">Grupo 1 - Alimentos no procesados o mínimamente procesados</string>
     <string name="nova_grp2_msg">Grupo 2 - Ingredientes culinarios procesados</string>
     <string name="nova_grp3_msg">Grupo 3 - Alimentos procesados</string>
@@ -419,7 +419,7 @@
     <string name="preference_enable_mobile_data_summary_on">Enviar nuevos productos usando datos móviles &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Enviar nuevos productos usando solo WiFi</string>
     <string name="device_on_mobile_data_warning_title">Información</string>
-    <string name="device_on_mobile_data_warning_message">El envío con datos móviles está deshabilitado. Por favor, conéctate mediante WiFi o cámbialo en tus preferencias</string>
+    <string name="device_on_mobile_data_warning_message">Has desactivado la carga en datos móviles, por favor conéctate a WiFi o cámbialo en tus preferencias</string>
     <string name="device_on_mobile_data_warning_positive">Preferencias</string>
     <string name="device_on_mobile_data_warning_negative">Enviar de todas formas</string>
     <string name="changes_saved">Cambios guardados correctamente</string>
@@ -434,7 +434,7 @@
     <string name="connectivity_check">Por favor, comprueba tu conexión a internet</string>
     <string name="dismiss">Descartar</string>
     <string name="Terms">Términos</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="TermsOfUse">Términos y privacidad</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -584,7 +584,7 @@
     <string name="ingredients_picture">Imagen con los ingredientes del producto</string>
     <string name="take_ingredients_picture_to_extract">(Por favor, toma una foto de los ingredientes para extraerlos automáticamente)</string>
     <string name="ingredients_list">Lista de ingredientes</string>
-    <string name="ingredients_hint">Mantén el orden, indica el [%s]uando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
+    <string name="ingredients_hint">Mantén el orden, indica el [[%s]]uando se especifique, separa con una coma o usa -, utiliza () para ingredientes de otro ingrediente, utiliza _ al principio y al final de los alérgenos</string>
     <string name="extract_ingredients">Extraer ingredientes</string>
     <string name="extracting_ingredients">Extrayendo los ingredientes</string>
     <string name="looksGood">Parece correcto</string>
@@ -592,7 +592,7 @@
     <string name="traces">Trazas</string>
     <string name="traces_hint">Indica los ingredientes señalados en frases tipo «Puede contener trazas de», «Hecho en una fábrica que también procesa», etc. \n Ejemplos: leche, gluten, frutos secos</string>
     <string name="nutrition_facts_not_specified">El producto no incluye información nutricional.</string>
-    <string name="nutrition_facts_picture">Foto de la información nutricional</string>
+    <string name="nutrition_facts_picture">Foto de datos nutricionales</string>
     <string name="front_short_picture">Frontal</string>
     <string name="other_picture">Otra imagen</string>
     <string name="for_100g_100ml">Por 100g / 100ml</string>
@@ -626,7 +626,7 @@
     <string name="edit_ingredients_image">Editar la foto de ingredientes</string>
     <string name="edit_other_image">Editar foto</string>
     <string name="sign_in_to_edit">Por favor, identifícate para editar un producto.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="sign_in_to_answer">Inicie sesión o regístrate para responder una información.</string>
     <string name="hint_quantity">Ejemplos: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 libra</string>
     <string name="edit_product_title">Editar un producto</string>
     <string name="nutrient_already_added">%s ya está presente en los datos nutricionales</string>
@@ -696,7 +696,7 @@
     <string name="txt_info_your_listed_products">Podrá agregar productos a esta lista buscándolos y haciendo clic en el botón + en la parte superior derecha de la página del producto.</string>
     <string name="search_history_pref_title">Eliminar el historial de búsqueda local</string>
     <string name="search_history_pref_summary">Eliminar todas las búsquedas realizadas en este dispositivo</string>
-    <string name="search_history_pref_dialog_content">Delete local search history?</string>
+    <string name="search_history_pref_dialog_content">¿Eliminar todo el historial de búsqueda?</string>
     <string name="settings_country_dialog_title">Selecciona tu país</string>
     <string name="settings_country_summary">Cambiar el país seleccionado</string>
     <string name="settings_country_title">País</string>
@@ -716,7 +716,7 @@
     <string name="product_question_negative_response">No</string>
     <string name="product_question_ambiguous_response">No estoy seguro/a</string>
     <string name="product_question_submit_message">¡Gracias por tu contribución!</string>
-    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
+    <string name="error_nutrient_entry">El valor debe ser numérico. Ejemplo: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">El valor de tamaño de porción debe ser un valor positivo</string>
     <string name="error_in_nutrient_data">Algunos valores nutricionales no son válidos. Por favor, corrige los campos anteriores con marcador de error</string>
     <string name="go_to_full_product_page">Ir al producto</string>
@@ -755,6 +755,7 @@
     <string name="unknown_status_no_translation">No pudimos evaluar el estado del producto debido a ingredientes no reconocidos.</string>
     <string name="help_translate_ingredients">Ayuda a traducir los ingredientes a tu idioma</string>
     <string name="unknown_status_missing_ingredients">No pudimos evaluar el estado del producto debido a la falta de ingredientes.</string>
+    <string name="unknown_status_ambiguous_ingredients">No pudimos evaluar el estado del producto debido a ingredientes ambiguos: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Agrega una foto para comenzar a extraer ingredientes</string>
     <string name="product_already_exists_in_comparison">El producto ya existe en la lista de comparación</string>
@@ -790,6 +791,7 @@
     <string name="icon_categories">Icono de categorías</string>
     <string name="icon_emb">Icono de código EMB</string>
     <string name="product_front_image">Imagen frontal del producto</string>
-    <string name="brand_hint">Ejemplos: CocaCola, Nestlé, etc.…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="brand_hint">Ejemplos: Coca-Cola, Nestlé, etc…</string>
+    <string name="sign_in_or_register">Inicia sesión o regístrate</string>
+    <string name="hunger_game_call_to_action">Ayuda a clasificar más %1$s</string>
 </resources>

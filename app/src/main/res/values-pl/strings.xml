@@ -121,13 +121,13 @@
         <item>Kwas lignocerowy (24: 0)</item>
         <item>Kwas linolowy / LA (18: 2 n-6)</item>
         <item>Magnez</item>
-        <item>Maltodekstryna</item>
+        <item>Maltodekstryny</item>
         <item>Maltoza</item>
         <item>Mangan</item>
         <item>Kwas miodowy (20: 3 n-9)</item>
         <item>Kwas melisowy (30: 0)</item>
         <item>Molibden</item>
-        <item>Tłuszcze jednonienasycone</item>
+        <item>Kwasy tłuszczowe jednonienasycone</item>
         <item>Kwas montanowy (28:0)</item>
         <item>Kwas mirystynowy (14:0)</item>
         <item>Kwas nerwonowy (24:1 n-9)</item>
@@ -141,7 +141,7 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Alkohole cukrowe (poliole)</item>
-        <item>Tłuszcze wielonienasycone</item>
+        <item>Kwasy tłuszczowe wielonienasycone</item>
         <item>Potas</item>
         <item>Selen</item>
         <item>Białka surowicy</item>
@@ -173,7 +173,7 @@
     <string name="txtBarcode">Kod kreskowy :</string>
     <string name="txtCategories">Kategorie :</string>
     <string name="txtLabels">Etykiety, certyfikaty, nagrody :</string>
-    <string name="txtEMB">Kod EMB:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Lista składników :</string>
     <string name="Donate">Podaruj</string>
     <string name="Donation">Kliknij tu, by przekazać darowiznę na rzecz Open Food Facts</string>
@@ -185,7 +185,7 @@
     <string name="txtServingSize">Wielkość porcji:</string>
     <string name="txtNutrientLevel100g">Wartość odżywcza w 100 g:</string>
     <string name="txtNutrientLevel100ml">Wartość odżywcza w 100 ml :</string>
-    <string name="txtNutritionLevelLow">niska zawartość</string>
+    <string name="txtNutritionLevelLow">mała zawartość</string>
     <string name="txtNutritionLevelModerate">umiarkowana zawartość</string>
     <string name="txtNutritionLevelHigh">wysoka zawartość</string>
     <string name="txtSave">Zapisz</string>
@@ -196,7 +196,7 @@
     <string name="txtSugars">Cukry</string>
     <string name="hintBarcode">Kod kreskowy</string>
     <string name="txtNutriScoreInfo">Dowiedz się więcej o poziomach składników odżywczych</string>
-    <string name="hintLogin">Logowanie</string>
+    <string name="hintLogin">Nazwa użytkownika</string>
     <string name="hintPass">Hasło</string>
     <string name="errorLogin">Błędny login lub hasło</string>
     <string name="errorWeb">Brak dostępu do Internetu. Czy masz problemy z łącznością?</string>
@@ -239,7 +239,7 @@
     <string name="select_camera">Wybierz aparat fotograficzny</string>
     <string name="ok_button">Dobrze</string>
     <string name="cancel_button">Anuluj</string>
-    <string name="login_button">Logowanie</string>
+    <string name="login_button">Nazwa użytkownika</string>
     <string name="create_account_button">Załóż konto</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Jak to działa?</string>
@@ -297,7 +297,7 @@
     <string name="nutrition_header">Wartości odżywcze</string>
     <string name="nutrition_proteins">Proteiny</string>
     <string name="nutrition_salt">Sól</string>
-    <string name="nutrition_satured_fat">Tłuszcze nasycone</string>
+    <string name="nutrition_satured_fat">Tłuszcz nasycony</string>
     <string name="nutrition_sodium">Sód</string>
     <string name="nutrition_sugars">Cukry</string>
     <string name="nutrition_trans_fat">Tłuszcze trans</string>
@@ -331,14 +331,14 @@
     <string name="txt_try_again">Spróbuj ponownie</string>
     <string name="nutrition_lactose">Laktoza</string>
     <string name="nutrition_casein">Kazeina</string>
-    <string name="nutrition_maltodextrins">Maltodekstryna</string>
+    <string name="nutrition_maltodextrins">Maltodekstryny</string>
     <string name="nutrition_serum_proteins">Białka surowicy</string>
     <string name="nutrition_nucleotides">Nukleotydy</string>
     <string name="for_100g">W 100 g</string>
     <string name="for_100ml">W 100 ml</string>
-    <string name="serving">Na porcję</string>
-    <string name="nutrition_monounsaturatedFat">Tłuszcze jednonienasycone</string>
-    <string name="nutrition_polyunsaturatedFat">Tłuszcze wielonienasycone</string>
+    <string name="serving">W porcji</string>
+    <string name="nutrition_monounsaturatedFat">Kwasy tłuszczowe jednonienasycone</string>
+    <string name="nutrition_polyunsaturatedFat">Kwasy tłuszczowe wielonienasycone</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -353,12 +353,12 @@
     <string name="vitamin_e">Witamina E</string>
     <string name="vitamin_k">Witamina K</string>
     <string name="vitamin_c">Witamina C (kwas askorbinowy)</string>
-    <string name="vitamin_b1">Witamina B1</string>
-    <string name="vitamin_b2">Witamina B2</string>
+    <string name="vitamin_b1">Witamina B1 (tiamina)</string>
+    <string name="vitamin_b2">Witamina B2 (ryboflawina)</string>
     <string name="vitamin_pp">Witamina B3 (Witamina PP)</string>
-    <string name="vitamin_b6">Witamina B6</string>
-    <string name="vitamin_b9">Witamina B9</string>
-    <string name="vitamin_b12">Witamina B12</string>
+    <string name="vitamin_b6">Witamina B6 (pirydoksyna)</string>
+    <string name="vitamin_b9">Witamina B9 (kwas foliowy)</string>
+    <string name="vitamin_b12">Witamina B12 (kobalamina)</string>
     <string name="biotin">Biotyna</string>
     <string name="pantothenic_acid">Kwas pantotenowy</string>
     <string name="nutrition_minerals">Minerały</string>
@@ -388,12 +388,12 @@
     <string name="take_picture">Zrób zdjęcie</string>
     <string name="choose_picture_from_gallery">Z galerii</string>
     <string name="take_picture_ingredients">Zrób zdjęcie listy składników</string>
-    <string name="take_picture_front">Zrób zdjęcie przodu</string>
+    <string name="take_picture_front">Zrób główne zdjęcie produktu</string>
     <string name="take_picture_nutrition_table">Zrób zdjęcie tabeli wartości odżywczej</string>
     <string name="take_more_pictures">Zrób więcej zdjęć</string>
-    <string name="txtSaturatedFat">Tłuszcze nasycone</string>
+    <string name="txtSaturatedFat">Tłuszcz nasycony</string>
     <string name="nutriscore_info_msg">Dowiedz się więcej o Nutri-Score</string>
-    <string name="nova_info_msg">Dowiedz się więcej o Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Grupa 1 - Żywność nieprzetworzona lub minimalnie przetworzona</string>
     <string name="nova_grp2_msg">Grupa 2 - Przetworzone składniki kulinarne</string>
     <string name="nova_grp3_msg">Grupa 3 - Żywność przetworzona</string>
@@ -407,7 +407,7 @@
     <string name="history_shortcut_short_label">Historia</string>
     <string name="history_shortcut_long_label">Historia</string>
     <string name="contributions_shortcut_short_label">Wkład</string>
-    <string name="contributions_shortcut_long_label">Mój wkład</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Zapomniałeś hasła</string>
     <string name="next">DALEJ</string>
     <string name="skip">POMIŃ</string>
@@ -429,7 +429,7 @@
     <string name="preference_enable_mobile_data_summary_on">Wyślij nowe produkty używając mobilnej transmisji danych &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Prześlij nowe produkty tylko przez WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informacje</string>
-    <string name="device_on_mobile_data_warning_message">Mobilna transmisja danych jest wyłączona, połącz się z WiFi lub zmień ustawienia</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Ustawienia</string>
     <string name="device_on_mobile_data_warning_negative">Przesyłaj mimo to</string>
     <string name="changes_saved">Zmiany zostały zapisane</string>
@@ -463,7 +463,7 @@
     <string name="preference_header_network">Połączenie</string>
     <string name="preference_header_contributing">Współpraca</string>
     <string name="scan_first_string">Historia produktów, które przeglądałeś zostanie podana tutaj.\n Jest przechowywana lokalnie, tylko dla ciebie.</string>
-    <string name="log_in">Logowanie</string>
+    <string name="log_in">Nazwa użytkownika</string>
     <string name="login_true">Jesteś już zalogowany.</string>
     <string name="confirm_logout">Potwierdź wylogowanie się</string>
     <string name="logout_dialog_content">Czy na pewno chcesz się wylogować?</string>
@@ -589,7 +589,7 @@
     <string name="no_internet_connection">Wygląda na to, że nie masz połączenia z Internetem, zdjęcia zostaną przesłane, gdy sieć będzie dostępna</string>
     <string name="no_internet_unable_to_extract_ingredients">Brak połączenia z internetem. Nie można wyodrębnić składników</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Przegląd</string>
+    <string name="overview">Podsumowanie</string>
     <string name="ingredients">Składniki</string>
     <string name="nutrition_facts">Wartość odżywcza</string>
     <string name="your_version">Twoje</string>
@@ -604,11 +604,11 @@
     <string name="traces">Ślady</string>
     <string name="traces_hint">Wskaż składniki z wzmianek pokroju \'Może zawierać śladowe ilości\', \'Wyprodukowano w fabryce które również stosuje\' itd. \nPrzykłady: Mleko, Gluten, Orzechy</string>
     <string name="nutrition_facts_not_specified">Nie podano wartości odżywczych dla tego produktu.</string>
-    <string name="nutrition_facts_picture">Zdjęcie informacji o wartości odżywczej</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Z przodu</string>
     <string name="other_picture">Inne zdjęcie</string>
     <string name="for_100g_100ml">W 100 g / 100 ml</string>
-    <string name="per_serving">Na porcję</string>
+    <string name="per_serving">W porcji</string>
     <string name="serving_size">Porcja</string>
     <string name="alcohol_unit" formatted="false">% obj / °</string>
     <string name="add_a_nutrient">Dodaj składnik odżywczy</string>
@@ -623,7 +623,7 @@
     <string name="manufacturing_details">Szczegóły produkcji</string>
     <string name="origin_of_ingredients">Pochodzenie składników</string>
     <string name="manufacturing_place">Miejsce produkcji</string>
-    <string name="emb_code">Kod EMB</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Szczegóły zakupu</string>
     <string name="country_where_purchased">Kraj, w którym kupiono</string>
     <string name="stores">Sklepy</string>
@@ -767,6 +767,7 @@
     <string name="unknown_status_no_translation">Nie mogliśmy ocenić statusu produktu z powodu nierozpoznanych składników.</string>
     <string name="help_translate_ingredients">Pomóż przetłumaczyć składniki na swój język</string>
     <string name="unknown_status_missing_ingredients">Nie mogliśmy ocenić statusu produktu z powodu brakujących składników.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Dodaj zdjęcie, aby zainicjować proces rozpoznawania składników</string>
     <string name="product_already_exists_in_comparison">Produkt już istnieje na liście porównawczej</string>
@@ -774,7 +775,7 @@
     <string name="compare_additives">Dodatki :</string>
     <string name="compare_salt">Sól</string>
     <string name="compare_sugars">Cukry</string>
-    <string name="compare_saturated_fat">Tłuszcze nasycone</string>
+    <string name="compare_saturated_fat">Tłuszcz nasycony</string>
     <string name="compare_fat">Tłuszcz</string>
     <string name="compare_quantity">Ilość :</string>
     <string name="load_ingredient_detection_data">Załaduj dane wykrywania składników</string>
@@ -800,8 +801,9 @@
     <string name="content_exit">Naciśnij tutaj, aby wrócić do produktu</string>
     <string name="icon_label">Ikona etykiet</string>
     <string name="icon_categories">Ikona kategorii</string>
-    <string name="icon_emb">Ikona kodu EMB</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Obraz z przodu produktu</string>
-    <string name="brand_hint">Przykłady: CocaCola, Nestle itp…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

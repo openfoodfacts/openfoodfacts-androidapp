@@ -43,9 +43,9 @@
     <string-array name="nav_drawer_items_product">
         <item>ภาพรวม</item>
         <item>ส่วนผสม</item>
-        <item>ข้อมูลโภชนาการ</item>
+        <item>อาหารการกิน</item>
         <item>ฉลากโภชนาการ</item>
-        <item>สภาพแวดล้อม</item>
+        <item>สิ่งแวดล้อม</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -94,29 +94,29 @@
         <item>กรดอีโคซะเพนทะโนอิก / EPA (20:5 n-3)</item>
         <item>กรดอีไลดิก (18:1 n-9)</item>
         <item>กรดอีรูซิก (22:1 n-9)</item>
-        <item>ธาฅุที่ประกอบด้วย</item>
-        <item>ฟรักโทส</item>
+        <item>ฟลูโอไรด์</item>
+        <item>ฟรุกโทส</item>
         <item>กรดแกมมา-ไลโนเลนิก / GLA (18:3 n-6)</item>
         <item>กลูโคส</item>
         <item>กรดกอนโดอิก (20:1 n-9)</item>
         <item>ไอโอดีน</item>
         <item>เหล็ก</item>
-        <item>แล็กโตส</item>
+        <item>แลคโตส</item>
         <item>กรดลอริก (12:0)</item>
         <item>กรดลิกโนซีริก (24:0)</item>
         <item>กรดไลโนเลอิก / LA (18:2 n-6)</item>
         <item>แมกนีเซียม</item>
-        <item>Maltodextrins</item>
+        <item>มอลโตเดกทรินซ์</item>
         <item>มอลโตส</item>
         <item>แมงกานีส</item>
         <item>กรดมี๊ด (20:3 n-9)</item>
         <item>กรดมีลิสสิก (30:0)</item>
         <item>โมลิบดีนัม</item>
-        <item>ไขมันไม่อิ่มตัวโมโน</item>
+        <item>ไขมันไม่อิ่มตัวตำแหน่งเดียว</item>
         <item>กรดมอนแทนิก (28:0)</item>
         <item>กรดมิริสติก (14:0)</item>
         <item>กรดเนอร์โวนิก (24:1 n-9)</item>
-        <item>นิวคลีโอ</item>
+        <item>นิวคลีโอไทด์</item>
         <item>กรดโอเลอิก (18:1 n-9)</item>
         <item>กรดไขมันโอเมกา 3</item>
         <item>กรดไขมันโอเมกา 6</item>
@@ -126,15 +126,15 @@
         <item>พีเอช</item>
         <item>ฟอสฟอรัส</item>
         <item>แอลกอฮอล์น้ำตาล (พอลิออล)</item>
-        <item>ไขมันไม่อิ่มตัวโพลี</item>
+        <item>ไขมันไม่อิ่มตัวหลายตำแหน่ง</item>
         <item>โพแทสเซียม</item>
         <item>ซีลีเนียม</item>
         <item>โปรตีนเซรุ่ม</item>
-        <item>ไข่มุก</item>
+        <item>ซิลิกา</item>
         <item>แป้ง</item>
         <item>กรดสเตียริก (18:0)</item>
         <item>ซูโครส</item>
-        <item>Taurine</item>
+        <item>ทอรีน</item>
         <item>ไขมันทรานส์</item>
         <item>วิตามินเอ</item>
         <item>วิตามิน B1 (ไทอะมิน)</item>
@@ -158,7 +158,7 @@
     <string name="txtBarcode">บาร์โค้ด :</string>
     <string name="txtCategories">หมวดหมู่</string>
     <string name="txtLabels">ป้าย, ใบรับรอง, รางวัลต่างๆที่ได้รับ :</string>
-    <string name="txtEMB">รหัส EMB</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">ส่วนผสมรายการ :</string>
     <string name="Donate">บริจาค</string>
     <string name="Donation">คลิกที่นี่เพื่อบริจาคให้กับ Open Food Facts</string>
@@ -181,7 +181,7 @@
     <string name="txtSugars">น้ำตาล</string>
     <string name="hintBarcode">บาร์โค้ด</string>
     <string name="txtNutriScoreInfo">เรียนรู้เพิ่มเติมเกี่ยวกับปริมาณสารอาหาร</string>
-    <string name="hintLogin">เข้าสู่ระบบ</string>
+    <string name="hintLogin">ชื่อผู้ใช้</string>
     <string name="hintPass">รหัสผ่าน</string>
     <string name="errorLogin">เกิดข้อผิดพลาดการเข้าสู่ระบบหรือรหัสผ่าน</string>
     <string name="errorWeb">ไม่สามารถเข้าถึงอินเทอร์เน็ตได้ คุณมีปัญหาการเชื่อมต่อหรือไม่?</string>
@@ -192,7 +192,7 @@
 ชื่อผลิตภัณฑ์</string>
     <string name="txtYes">ถูกต้อง</string>
     <string name="txtNo">ไม่ใช่</string>
-    <string name="hintBrand">ยี่ห้อ</string>
+    <string name="hintBrand">ยี่ห้อสินค้า</string>
     <string name="txtSendAll">อัปโหลดทั้งหมด</string>
     <string name="txtPictureNeededDialogNo">ยก​เลิก</string>
     <string name="toastSending">กำลังอัปโหลด…</string>
@@ -212,7 +212,7 @@
     <string name="search_drawer">ค้นหา</string>
     <string name="search_by_barcode_drawer">พิมพ์บาร์โค้ด</string>
     <string name="category_drawer">หมวดหมู่</string>
-    <string name="search_by_category">หมวดหมู่:</string>
+    <string name="search_by_category">ประเภท</string>
     <string name="scan_search">สแกนบาร์โค้ด</string>
     <string name="user_drawer">ผู้ใช้งาน</string>
     <string name="offline_edit_drawer">แก้ไขออฟไลน์</string>
@@ -225,7 +225,7 @@
     <string name="select_camera">เลือกกล้อง</string>
     <string name="ok_button">ตกลง</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">เข้าสู่ระบบ</string>
+    <string name="login_button">ชื่อผู้ใช้</string>
     <string name="create_account_button">สร้างบัญชีผู้ใช้</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">มันทำงานอย่างไร?</string>
@@ -267,7 +267,7 @@
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">ตรวจสอบ</string>
-    <string name="nutrition">ข้อมูลโภชนาการ</string>
+    <string name="nutrition">อาหารการกิน</string>
     <string name="calculated_nutrition">คำนวณสารอาหาร</string>
     <string name="please_enter_weight">กรุณาพิมพ์น้ำหนักผลิตภัณฑ์</string>
     <string name="enter_weight">กรุณาพิมพ์น้ำหนักผลิตภัณฑ์</string>
@@ -315,11 +315,11 @@
     <string name="txt_broaden_search">- ขยายการค้นหาของคุณ \n- สแกนและเพิ่มลงใน Open Food Facts</string>
     <string name="something_went_wrong">ขอโทษด้วย ระบบมีปัญหาบางอย่าง</string>
     <string name="txt_try_again">ลองอีกครั้ง</string>
-    <string name="nutrition_lactose">แล็กโตส</string>
+    <string name="nutrition_lactose">แลคโตส</string>
     <string name="nutrition_casein">เคซิอิน</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="nutrition_maltodextrins">มอลโตเดกทรินซ์</string>
     <string name="nutrition_serum_proteins">โปรตีนในซีรัม</string>
-    <string name="nutrition_nucleotides">นิวคลีโอ</string>
+    <string name="nutrition_nucleotides">นิวคลีโอไทด์</string>
     <string name="for_100g">ต่อ 100 กรัม</string>
     <string name="for_100ml">ต่อ 100 มล</string>
     <string name="serving">ต่อหน่วยบริโภค</string>
@@ -330,7 +330,7 @@
     <string name="nutrition_omega9">โอเมก้า 9</string>
     <string name="nutrition_sucrose">ซูโครส</string>
     <string name="nutrition_glucose">กลูโคส</string>
-    <string name="nutrition_fructose">ฟรักโทส</string>
+    <string name="nutrition_fructose">ฟรุกโทส</string>
     <string name="nutrition_maltose">มอลโตส</string>
     <string name="nutrition_alcohol">แอลกอฮอล์</string>
     <string name="nutrition_vitamins">วิตามิน</string>
@@ -343,12 +343,12 @@
     <string name="vitamin_b2">วิตามินบี 2</string>
     <string name="vitamin_pp">วิตามิน PP</string>
     <string name="vitamin_b6">วิตามินบี 6</string>
-    <string name="vitamin_b9">วิตามินบี 9</string>
+    <string name="vitamin_b9">โฟเลต</string>
     <string name="vitamin_b12">วิตามินบี 12</string>
     <string name="biotin">ไบโอติน</string>
     <string name="pantothenic_acid">กรด pantothenic</string>
     <string name="nutrition_minerals">แร่ธาตุ</string>
-    <string name="silica">ไข่มุก</string>
+    <string name="silica">ซิลิกา</string>
     <string name="bicarbonate">ไบคาร์บอเนต</string>
     <string name="potassium">โพแทสเซียม</string>
     <string name="chloride">คลอไรด์</string>
@@ -359,15 +359,15 @@
     <string name="zinc">สังกะสี</string>
     <string name="copper">ทองแดง</string>
     <string name="manganese">แมงกานีส</string>
-    <string name="fluoride">ธาฅุที่ประกอบด้วย</string>
+    <string name="fluoride">ฟลูโอไรด์</string>
     <string name="selenium">ซีลีเนียม</string>
     <string name="chromium">โครเมียม</string>
     <string name="molybdenum">โมลิบดีนัม</string>
     <string name="iodine">ไอโอดีน</string>
     <string name="caffeine">คาเฟอีน</string>
-    <string name="taurine">Taurine</string>
+    <string name="taurine">ทอรีน</string>
     <string name="ph">พีเอช</string>
-    <string name="fruits_vegetables_nuts">ผักผลไม้ถั่ว</string>
+    <string name="fruits_vegetables_nuts">ผัก ผลไม้ ถั่ว</string>
     <string name="collagen_meat_protein_ratio">อัตราส่วนโปรตีนจากเนื้อสัตว์คอลลาเจน</string>
     <string name="cocoa">โกโก้</string>
     <string name="chlorophyl">คลอโรฟิลล์</string>
@@ -379,7 +379,7 @@
     <string name="take_more_pictures">ถ่ายรูปเพิ่มเติม</string>
     <string name="txtSaturatedFat">ไขมันอิ่มตัว</string>
     <string name="nutriscore_info_msg">เรียนรู้เพิ่มเติมเกี่ยวกับคะแนน Nutri-Score</string>
-    <string name="nova_info_msg">เรียนรู้เพิ่มเติมเกี่ยวกับ Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -393,12 +393,12 @@
     <string name="history_shortcut_short_label">ประวัติการเข้าใช้</string>
     <string name="history_shortcut_long_label">ประวัติการเข้าใช้</string>
     <string name="contributions_shortcut_short_label">การมีส่วนร่วม</string>
-    <string name="contributions_shortcut_long_label">ผลงานของฉัน</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">ลืมรหัสผ่าน</string>
     <string name="next">ถัดไป</string>
     <string name="skip">ข้าม</string>
     <string name="start">รับทราบ</string>
-    <string name="contact">Contact</string>
+    <string name="contact">รายชื่อผู้ติดต่อ</string>
     <string name="contact_summary">Contact the team</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
@@ -415,7 +415,7 @@
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">ข้อมูล</string>
-    <string name="device_on_mobile_data_warning_message">Upload on mobile data is disabled, please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">ตั้งค่า</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -449,7 +449,7 @@
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">เข้าสู่ระบบ</string>
+    <string name="log_in">ชื่อผู้ใช้</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -462,7 +462,7 @@
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
-    <string name="brand_string">ยี่ห้อ</string>
+    <string name="brand_string">ยี่ห้อสินค้า</string>
     <string name="additive_string">Additive</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">ค้นหา</string>
@@ -471,7 +471,7 @@
     <string name="packaging_subtitle">บรรจุภัณฑ์</string>
     <string name="packaging_string">บรรจุภัณฑ์</string>
     <string name="label_string">Label</string>
-    <string name="category_string">หมวดหมู่:</string>
+    <string name="category_string">ประเภท</string>
     <string name="connection">Connected</string>
     <string name="contributor_string">Contributor</string>
     <string name="Rate_Us">Show Your Support</string>
@@ -486,7 +486,7 @@
     <string name="disable_image_loading">Disable image loading when battery is low</string>
     <string name="DisableLoadTitle">Disable image loading</string>
     <string name="by_title">Title</string>
-    <string name="by_brand">ยี่ห้อ</string>
+    <string name="by_brand">ยี่ห้อสินค้า</string>
     <string name="by_barcode">บาร์โค้ด</string>
     <string name="by_time">Recently Viewed</string>
     <string name="sort">Sort</string>
@@ -572,9 +572,9 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">ภาพรวม</string>
     <string name="ingredients">ส่วนผสม</string>
-    <string name="nutrition_facts">Nutrition Facts</string>
+    <string name="nutrition_facts">ตารางโภชนาการ</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
@@ -587,7 +587,7 @@
     <string name="traces">ร่องรอย</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
@@ -606,7 +606,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">แหล่งที่มาของวัตถุดิบ</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">ร้านค้า</string>
@@ -748,8 +748,9 @@
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="help_translate_ingredients">ช่วยแปลส่วนผสมในภาษาของคุณ</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -783,8 +784,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

@@ -141,7 +141,7 @@
         <item>ph</item>
         <item>Fosfor</item>
         <item>Sladkorni alkoholi (polioli)</item>
-        <item>Polinenasičene maščobe</item>
+        <item>Poli nenasičene maščobe</item>
         <item>Kalij</item>
         <item>Selen</item>
         <item>Serum proteins</item>
@@ -173,7 +173,7 @@
     <string name="txtBarcode">Črtna koda:</string>
     <string name="txtCategories">Kategorije:</string>
     <string name="txtLabels">Etikete, certifikati, nagrade:</string>
-    <string name="txtEMB">EMB koda:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Seznam sestavin:</string>
     <string name="Donate">Prispevaj</string>
     <string name="Donation">Kliknite tukaj, če želite prispevati k Open Products Facts</string>
@@ -196,7 +196,7 @@
     <string name="txtSugars">Sladkorji</string>
     <string name="hintBarcode">Črtna koda</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Prijava</string>
+    <string name="hintLogin">Uporabniško ime</string>
     <string name="hintPass">Geslo</string>
     <string name="errorLogin">Uporabniško ime ali geslo sta napačna</string>
     <string name="errorWeb">Nismo mogli dostopati do interneta. Imate težave s povezljivostjo?</string>
@@ -222,11 +222,11 @@
     <string name="home_drawer">Domov</string>
     <string name="install">Namesti</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
-    <string name="open_food_drawer">Odpri dejstva o hrani</string>
+    <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Iskanje</string>
     <string name="search_by_barcode_drawer">Vnesite črtno kodo</string>
     <string name="category_drawer">Kategorije</string>
-    <string name="search_by_category">Kategorija</string>
+    <string name="search_by_category">Kategorijo</string>
     <string name="scan_search">Skeniraj črtno kodo</string>
     <string name="user_drawer">Uporabnik</string>
     <string name="offline_edit_drawer">Urejanje brez povezave</string>
@@ -239,7 +239,7 @@
     <string name="select_camera">Izbira kamere</string>
     <string name="ok_button">V redu</string>
     <string name="cancel_button">Prekliči</string>
-    <string name="login_button">Prijava</string>
+    <string name="login_button">Uporabniško ime</string>
     <string name="create_account_button">Ustvari račun</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Kako deluje?</string>
@@ -393,7 +393,7 @@
     <string name="take_more_pictures">Naredite več slik</string>
     <string name="txtSaturatedFat">Nasičena maščoba</string>
     <string name="nutriscore_info_msg">Več o rezultatu Nutri-Score</string>
-    <string name="nova_info_msg">Več o Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Skupina 1 - Nepredelana ali minimalno predelana živila</string>
     <string name="nova_grp2_msg">Skupina 2 - predelane kulinarične sestavine</string>
     <string name="nova_grp3_msg">Skupina 3 - Predelana živila</string>
@@ -407,7 +407,7 @@
     <string name="history_shortcut_short_label">Zgodovina</string>
     <string name="history_shortcut_long_label">Zgodovina</string>
     <string name="contributions_shortcut_short_label">Prispevki</string>
-    <string name="contributions_shortcut_long_label">Moji prispevki</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Pozabljeno geslo</string>
     <string name="next">NAPREJ</string>
     <string name="skip">PRESKOČI</string>
@@ -429,7 +429,7 @@
     <string name="preference_enable_mobile_data_summary_on">Nove izdelke naloži z mobilnimi podatki in WiFi-jem</string>
     <string name="preference_enable_mobile_data_summary_off">Nove izdelke naloži samo z uporabo WiFi-ja</string>
     <string name="device_on_mobile_data_warning_title">Informacije</string>
-    <string name="device_on_mobile_data_warning_message">Nalaganje v mobilnih podatkih je onemogočeno. Povežite se z WiFi ali spremenite nastavitve</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Nastavitve</string>
     <string name="device_on_mobile_data_warning_negative">Vseeno naloži</string>
     <string name="changes_saved">Spremembe so uspešno shranjene</string>
@@ -463,7 +463,7 @@
     <string name="preference_header_network">Omrežje</string>
     <string name="preference_header_contributing">Prispevaj</string>
     <string name="scan_first_string">Vaša ogledana zgodovina izdelkov bo navedena tukaj.\nTa zgodovina je samo za vaše oči in je shranjena lokalno.</string>
-    <string name="log_in">Prijava</string>
+    <string name="log_in">Uporabniško ime</string>
     <string name="login_true">Že prijavljen!</string>
     <string name="confirm_logout">Potrdi odjavo</string>
     <string name="logout_dialog_content">Ali ste prepričani, da se želite odjaviti?</string>
@@ -485,7 +485,7 @@
     <string name="packaging_subtitle">Pakiranje</string>
     <string name="packaging_string">Pakiranje</string>
     <string name="label_string">Oznaka</string>
-    <string name="category_string">Kategorija</string>
+    <string name="category_string">Kategorijo</string>
     <string name="connection">Povezano</string>
     <string name="contributor_string">Sodelavec</string>
     <string name="Rate_Us">Pokaži svojo podporo</string>
@@ -604,7 +604,7 @@
     <string name="traces">Sledi</string>
     <string name="traces_hint">Navedite sestavine iz navedb, kot so \"Lahko vsebujejo sledi\", \"Izdelano v tovarni, ki prav tako uporablja\", itd. \nPrimeri: mleko, gluten, oreščki</string>
     <string name="nutrition_facts_not_specified">Podatki o hranilni vrednosti niso navedeni na izdelku.</string>
-    <string name="nutrition_facts_picture">Slika s podatki o hranilni vrednosti</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Spredaj</string>
     <string name="other_picture">Druga slika</string>
     <string name="for_100g_100ml">Na 100g / 100ml</string>
@@ -623,7 +623,7 @@
     <string name="manufacturing_details">Podrobnosti o izdelavi</string>
     <string name="origin_of_ingredients">Poreklo sestavin</string>
     <string name="manufacturing_place">Kraj proizvodnje</string>
-    <string name="emb_code">EMB koda</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Podrobnosti nakupa</string>
     <string name="country_where_purchased">Država, kjer ste kupili</string>
     <string name="stores">Trgovine</string>
@@ -767,6 +767,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Pomagajte prevesti sestavine v vaš jezik</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">Izdelek že obstaja na primerjalnem seznamu</string>
@@ -800,8 +801,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Sprednja slika izdelka</string>
-    <string name="brand_hint">Primeri: CocaCola, Nestle itd…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
