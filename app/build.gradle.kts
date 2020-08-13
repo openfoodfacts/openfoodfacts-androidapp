@@ -40,7 +40,7 @@ fun obtainTestBuildType(): String {
 dependencies {
     //Android
     implementation("androidx.browser:browser:1.2.0")
-    implementation("androidx.appcompat:appcompat:1.2.0-rc02")
+    implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.work:work-runtime:2.4.0")
     implementation("androidx.concurrent:concurrent-futures:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
@@ -48,7 +48,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.android.material:material:1.2.0")
     implementation("androidx.annotation:annotation:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.0-rc1")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.fragment:fragment:1.3.0-alpha07")
     implementation("androidx.activity:activity:1.2.0-alpha07")
@@ -59,7 +59,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
     annotationProcessor("com.google.dagger:dagger-compiler:2.28.3")
-    implementation("com.google.dagger:dagger:2.28.1")
+    implementation("com.google.dagger:dagger:2.28.3")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
@@ -77,9 +77,9 @@ dependencies {
     implementation("org.apache.commons:commons-csv:1.4")
 
     //Serialization/Deserialization
-    implementation("com.fasterxml.jackson.core:jackson-core:2.11.1")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.1")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.1")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.11.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.2")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.2")
 
     //Database
     implementation("org.greenrobot:greendao:3.3.0")
@@ -135,11 +135,11 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:2.2.2")
+    implementation("io.sentry:sentry-android:2.3.0")
 
     // Unit Testing
     testImplementation("junit:junit:4.13")
-    testImplementation("org.mockito:mockito-core:3.4.4")
+    testImplementation("org.mockito:mockito-core:3.4.6")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.18.1")
     testImplementation("com.google.truth:truth:1.0.1")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.0.1")
@@ -170,7 +170,7 @@ dependencies {
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.9")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.10")
 }
 
 

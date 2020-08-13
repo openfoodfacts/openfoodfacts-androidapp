@@ -54,6 +54,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.FormatException;
@@ -108,10 +110,12 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
+import openfoodfacts.github.scrachx.openfood.utils.PrefManager;
 import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -121,16 +125,14 @@ import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryAct
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
-import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
 public class MainActivity extends BaseActivity implements NavigationDrawerListener {
-    public static final int LOGIN_REQUEST = 1;
-    private static final int SHOW_CONTRIBUTION_AFTER_LOGIN = 2;
     private static final long USER_ID = 500;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
     private static final int WEEK_IN_MS = 60 * 60 * 24 * 7 * 1000;
+    public static final String PRODUCT_SEARCH_KEY = "product_search";
     private ActivityMainBinding binding;
     private AccountHeader headerResult = null;
     private Drawer drawerResult = null;
@@ -141,7 +143,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private Uri contributeUri;
     private Uri discoverUri;
     private Uri userContributeUri;
-    private String mBarcode;
+    private String barcode;
     private PrefManager prefManager;
     private CompositeDisposable disp;
 
@@ -163,15 +165,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         setSupportActionBar(binding.toolbarInclude.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        fragmentManager.addOnBackStackChangedListener(() -> {
-        });
-
-        fragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, new HomeFragment())
-            .commit();
-        binding.toolbarInclude.toolbar.setTitle(APP_NAME);
+        swapToHomeFragment();
 
         // chrome custom tab init
         customTabActivityHelper = new CustomTabActivityHelper();
@@ -187,7 +181,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             }
         });
 
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(),
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(this,
             customTabActivityHelper.getSession());
 
         // Create the AccountHeader
@@ -235,8 +229,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         // Add Manage Account profile if the user is connected
         SharedPreferences preferences = getSharedPreferences(PreferencesFragment.LOGIN_PREF, 0);
 
-        String userSession = preferences.getString("user_session", null);
-        boolean isUserConnected = isUserLoggedIn() && userSession != null;
+        String userSessionPrefs = preferences.getString("user_session", null);
+        boolean isUserConnected = isUserLoggedIn() && userSessionPrefs != null;
 
         if (isUserConnected) {
             updateProfileForCurrentUser();
@@ -289,13 +283,13 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             )
             .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
-                Fragment fragment = null;
+                Fragment newFragment = null;
                 switch ((int) drawerItem.getIdentifier()) {
                     case ITEM_HOME:
-                        fragment = new HomeFragment();
+                        newFragment = new HomeFragment();
                         break;
                     case ITEM_SEARCH_BY_CODE:
-                        fragment = new FindProductFragment();
+                        newFragment = new FindProductFragment();
                         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
                     case ITEM_CATEGORIES:
@@ -306,7 +300,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         startActivity(new Intent(this, AdditivesExplorer.class));
                         break;
                     case ITEM_SCAN:
-                        scan();
+                        openScan();
                         break;
                     case ITEM_COMPARE:
                         startActivity(new Intent(this, ProductComparisonActivity.class));
@@ -315,13 +309,17 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         startActivity(new Intent(this, HistoryScanActivity.class));
                         break;
                     case ITEM_LOGIN:
-                        startActivityForResult(new Intent(this, LoginActivity.class), LOGIN_REQUEST);
+                        registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
+                            if (isLoggedIn) {
+                                updateConnectedState();
+                            }
+                        });
                         break;
                     case ITEM_ALERT:
-                        fragment = new AllergensAlertFragment();
+                        newFragment = new AllergensAlertFragment();
                         break;
                     case ITEM_PREFERENCES:
-                        fragment = new PreferencesFragment();
+                        newFragment = new PreferencesFragment();
                         break;
                     case ITEM_ABOUT:
                         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
@@ -373,7 +371,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         break;
 
                     case ITEM_MY_CONTRIBUTIONS:
-                        myContributions();
+                        openMyContributions();
                         break;
 
                     case ITEM_YOUR_LISTS:
@@ -387,16 +385,18 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                             .positiveText(R.string.txtOk)
                             .negativeText(R.string.dialog_cancel)
                             .onPositive((dialog, which) -> logout())
-                            .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
-                                Toast.LENGTH_SHORT).show()).show();
+                            .onNegative((dialog, which) -> {
+                                dialog.dismiss();
+                                Snackbar.make(binding.getRoot(), "Cancelled", BaseTransientBottomBar.LENGTH_SHORT).show();
+                            }).show();
                         break;
                     default:
                         // nothing to do
                         break;
                 }
 
-                if (fragment != null) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+                if (newFragment != null) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFragment).addToBackStack(null).commit();
                 }
 
                 return false;
@@ -415,13 +415,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             drawerResult.removeItem(ITEM_ALERT);
             drawerResult.removeItem(ITEM_ADDITIVES);
             drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
-        }
-
-        if (AppFlavors.isFlavors(AppFlavors.OPFF)) {
+        } else if (AppFlavors.isFlavors(AppFlavors.OPFF)) {
             drawerResult.removeItem(ITEM_ALERT);
-        }
-
-        if (AppFlavors.isFlavors(AppFlavors.OPF)) {
+        } else if (AppFlavors.isFlavors(AppFlavors.OPF)) {
             drawerResult.removeItem(ITEM_ALERT);
             drawerResult.removeItem(ITEM_ADDITIVES);
             drawerResult.removeItem(ITEM_ADVANCED_SEARCH);
@@ -455,8 +451,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             headerResult.setActiveProfile(profile);
         }
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext
-            ());
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         if (settings.getBoolean("startScan", false)) {
             Intent cameraIntent = new Intent(MainActivity.this, ContinuousScanActivity.class);
             cameraIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -473,15 +468,15 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
 
         if (CONTRIBUTIONS_SHORTCUT.equals(getIntent().getAction())) {
-            myContributions();
+            openMyContributions();
         }
 
         if (SCAN_SHORTCUT.equals(getIntent().getAction())) {
-            scan();
+            openScan();
         }
 
         if (BARCODE_SHORTCUT.equals(getIntent().getAction())) {
-            moveToBarcodeEntry();
+            swapToSearchByCode();
         }
 
         //Scheduling background image upload job
@@ -503,7 +498,19 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         handleIntent(getIntent());
     }
 
-    private void scan() {
+    private void swapToHomeFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.addOnBackStackChangedListener(() -> {
+        });
+
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, new HomeFragment())
+            .commit();
+        binding.toolbarInclude.toolbar.setTitle(APP_NAME);
+    }
+
+    private void openScan() {
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) !=
             PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest
@@ -528,9 +535,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
 
     private void updateProfileForCurrentUser() {
         headerResult.updateProfile(getUserProfile());
-        final boolean userLoggedIn = isUserLoggedIn();
-        if (userLoggedIn) {
-            if (headerResult.getProfiles().size() < 2) {
+        if (isUserLoggedIn()) {
+            if (headerResult.getProfiles() != null && headerResult.getProfiles().size() < 2) {
                 headerResult.addProfiles(getProfileSettingDrawerItem());
             }
         } else {
@@ -538,10 +544,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         }
     }
 
-    private void myContributions() {
-
+    private void openMyContributions() {
         if (isUserLoggedIn()) {
-            showMyContributions();
+            openMyContributionsInBrowser();
         } else {
             new MaterialDialog.Builder(MainActivity.this)
                 .title(R.string.contribute)
@@ -550,12 +555,17 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                 .neutralText(R.string.login_button)
                 .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R
                     .string.website) + "cgi/user.pl"), new WebViewFallback()))
-                .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), SHOW_CONTRIBUTION_AFTER_LOGIN))
+                .onNeutral((dialog, which) ->
+                    registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
+                        if (isLoggedIn) {
+                            openMyContributionsInBrowser();
+                        }
+                    }).launch(null))
                 .show();
         }
     }
 
-    private void showMyContributions() {
+    private void openMyContributionsInBrowser() {
         String userLogin = getUserLogin();
         userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
         ProductBrowsingListActivity.start(this, userLogin, SearchType.CONTRIBUTOR);
@@ -584,18 +594,6 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private void logout() {
         getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit().clear().apply();
         updateConnectedState();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // do nothing
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == LOGIN_REQUEST && resultCode == RESULT_OK) {
-            updateConnectedState();
-        }
-        if (requestCode == SHOW_CONTRIBUTION_AFTER_LOGIN && resultCode == RESULT_OK && isUserLoggedIn()) {
-            showMyContributions();
-        }
     }
 
     @Override
@@ -662,7 +660,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             }
         });
 
-        if (getIntent().getBooleanExtra("product_search", false)) {
+        if (getIntent().getBooleanExtra(PRODUCT_SEARCH_KEY, false)) {
             searchMenuItem.expandActionView();
         }
 
@@ -728,7 +726,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         }
     }
 
-    //show dialog to ask the user to rate the app/give feedback
+    /**
+     * show dialog to ask the user to rate the app/give feedback
+     */
     private void showFeedbackDialog() {
         //dialog for rating the app on play store
         MaterialDialog.Builder rateDialog = new MaterialDialog.Builder(this)
@@ -820,9 +820,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     /**
      * This moves the main activity to the barcode entry fragment.
      */
-    public void moveToBarcodeEntry() {
-        Fragment fragment = new FindProductFragment();
-        changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
+    public void swapToSearchByCode() {
+        changeFragment(new FindProductFragment(), getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
     }
 
     @Override
@@ -873,7 +872,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         disp.add(detectBarcodeInImages(selectedImagesArray).observeOn(AndroidSchedulers.mainThread())
             .subscribe(isBarCodePresent -> {
                 if (isBarCodePresent) {
-                    createAlertDialog(false, mBarcode, selectedImagesArray);
+                    createAlertDialog(false, barcode, selectedImagesArray);
                 } else {
                     createAlertDialog(true, "", selectedImagesArray);
                 }
@@ -910,9 +909,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
 
                         Result decodedResult = reader.decode(bitmap, decodeHints);
                         if (decodedResult != null) {
-                            mBarcode = decodedResult.getText();
+                            barcode = decodedResult.getText();
                         }
-                        if (mBarcode != null) {
+                        if (barcode != null) {
                             return true;
                         }
                     } catch (FormatException e) {
@@ -974,7 +973,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         dialog.cancel();
                         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                             File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
-                            image = new ProductImage(tempBarcode, OTHER, imageFile);
+                            image = new ProductImage(tempBarcode, ProductImageField.OTHER, imageFile);
                             disp.add(api.postImg(image).subscribe());
                         } else {
                             Product pd = new Product();
