@@ -181,10 +181,10 @@ public class AddProductOverviewFragment extends BaseFragment {
         binding.language.setOnClickListener(v -> selectProductLanguage());
 
         //checks the information about the prompt clicked and takes action accordingly
-        if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
+        if (requireActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
             binding.categories.requestFocus();
-        } else if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
-            ((AddProductActivity) getActivity()).proceed();
+        } else if (requireActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
+            ((AddProductActivity) requireActivity()).proceed();
         }
         appLanguageCode = LocaleHelper.getLanguage(activity);
         Bundle b = getArguments();

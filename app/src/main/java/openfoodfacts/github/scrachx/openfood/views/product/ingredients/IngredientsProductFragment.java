@@ -81,7 +81,6 @@ import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 
-import static android.app.Activity.RESULT_OK;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.INGREDIENTS;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
@@ -89,8 +88,6 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
-    private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    private static final int EDIT_REQUEST_CODE = 2;
     private FragmentIngredientsProductBinding binding;
     private AllergenNameDao mAllergenNameDao;
     private OpenFoodAPIClient client;
@@ -424,10 +421,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             } else {
                 activityProductState = FragmentUtils.getStateFromArguments(this);
                 if (activityProductState != null) {
-                    Intent intent = new Intent(getContext(), AddProductActivity.class);
-                    intent.putExtra("send_updated", sendUpdatedIngredientsImage);
-                    intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, activityProductState.getProduct());
-                    startActivityForResult(intent, EDIT_REQUEST_CODE);
+                    registerForActivityResult(new AddProductActivity.EditProductSendUpdatedImg(), result -> {
+                        if (result) {
+                            onRefresh();
+                        }
+                    }).launch(activityProductState.getProduct());
                 }
             }
         }
@@ -483,10 +481,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             showSignInDialog();
         } else {
             activityProductState = FragmentUtils.requireStateFromArguments(this);
-            Intent intent = new Intent(getContext(), AddProductActivity.class);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, activityProductState.getProduct());
-            intent.putExtra("perform_ocr", extractIngredients);
-            startActivityForResult(intent, EDIT_REQUEST_CODE);
+            registerForActivityResult(new AddProductActivity.EditProductPerformOCR(), result -> {
+                if (result) {
+                    onRefresh();
+                }
+            }).launch(activityProductState.getProduct());
         }
     }
 
@@ -496,8 +495,11 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             .positiveText(R.string.txtSignIn)
             .negativeText(R.string.dialog_cancel)
             .onPositive((dialog, which) -> {
-                Intent intent = new Intent(getContext(), LoginActivity.class);
-                startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
+                registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn ->
+                    AddProductActivity.start(getContext(),
+                        activityProductState,
+                        sendUpdatedIngredientsImage,
+                        extractIngredients)).launch(null);
                 dialog.dismiss();
             })
             .onNegative((dialog, which) -> dialog.dismiss())
@@ -537,18 +539,6 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        //added case for sending updated ingredients image
-        if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Intent intent = new Intent(getContext(), AddProductActivity.class);
-            intent.putExtra("send_updated", sendUpdatedIngredientsImage);
-            intent.putExtra("perform_ocr", extractIngredients);
-            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, activityProductState.getProduct());
-            startActivity(intent);
-        }
-        if (requestCode == EDIT_REQUEST_CODE && resultCode == RESULT_OK) {
-            onRefresh();
-        }
         if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)) {
             onRefresh();
         }

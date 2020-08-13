@@ -22,7 +22,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -72,6 +71,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
@@ -94,6 +94,7 @@ import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.IngredientAnalysisTagsAdapter;
@@ -192,7 +193,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @NonNull
     private VectorDrawableCompat errorDrawable;
     private Disposable productDisp;
-    private Handler handler;
     private boolean isAnalysisTagsEmpty = true;
     private String lastBarcode;
     private boolean autoFocusActive;
@@ -210,6 +210,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private boolean flashActive;
     private SummaryProductPresenter summaryProductPresenter;
     private Disposable hintBarcodeDisp;
+    private CompositeDisposable commonDisp;
 
     /**
      * Used by screenshot tests.
@@ -341,8 +342,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         binding.quickViewImageProgress.setVisibility(GONE);
                     }
                     // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
-                    if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNutritionGradeFr() != null) {
-                        if (Utils.getImageGrade(product.getNutritionGradeFr()) != Utils.NO_DRAWABLE_RESOURCE) {
+                    if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNutritionGradeTag() != null) {
+                        if (Utils.getImageGrade(product.getNutritionGradeTag()) != Utils.NO_DRAWABLE_RESOURCE) {
                             binding.quickViewNutriScore.setVisibility(VISIBLE);
                             binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
                         } else {
@@ -572,15 +573,19 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        if (summaryProductPresenter != null) {
+            summaryProductPresenter.dispose();
+        }
+
+        // Dispose all RxJava disposable
         if (productDisp != null) {
             productDisp.dispose();
         }
         if (hintBarcodeDisp != null) {
             hintBarcodeDisp.dispose();
         }
-        if (summaryProductPresenter != null) {
-            summaryProductPresenter.dispose();
-        }
+        commonDisp.dispose();
+
         // Remove callback as it uses binding
         bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback);
         binding = null;
@@ -642,6 +647,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         OFFApplication.getAppComponent().inject(this);
         client = new OpenFoodAPIClient(this);
+        commonDisp = new CompositeDisposable();
         super.onCreate(savedInstanceState);
 
         binding = ActivityContinuousScanBinding.inflate(getLayoutInflater());
@@ -670,7 +676,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 }
             });
 
-        handler = new Handler();
 
         hintBarcodeDisp = Completable.timer(15, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
@@ -858,15 +863,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.toggleBeep:
                     editor = cameraPref.edit();
-                    if (beepActive) {
-                        beepActive = false;
-                        item.setChecked(false);
-                        editor.putBoolean(SETTING_RING, false);
-                    } else {
-                        beepActive = true;
-                        item.setChecked(true);
-                        editor.putBoolean(SETTING_RING, true);
-                    }
+
+                    beepActive = !beepActive;
+                    item.setChecked(beepActive);
+                    editor.putBoolean(SETTING_RING, beepActive);
+
                     editor.apply();
                     break;
                 case R.id.toggleAutofocus:
@@ -875,17 +876,12 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     }
                     editor = cameraPref.edit();
                     CameraSettings settings = binding.barcodeScanner.getBarcodeView().getCameraSettings();
-                    if (autoFocusActive) {
-                        autoFocusActive = false;
-                        settings.setAutoFocusEnabled(false);
-                        item.setChecked(false);
-                        editor.putBoolean(SETTING_FOCUS, false);
-                    } else {
-                        autoFocusActive = true;
-                        settings.setAutoFocusEnabled(true);
-                        item.setChecked(true);
-                        editor.putBoolean(SETTING_FOCUS, true);
-                    }
+
+                    autoFocusActive = !autoFocusActive;
+                    settings.setAutoFocusEnabled(autoFocusActive);
+                    item.setChecked(autoFocusActive);
+                    editor.putBoolean(SETTING_FOCUS, autoFocusActive);
+
                     binding.barcodeScanner.getBarcodeView().setCameraSettings(settings);
                     binding.barcodeScanner.resume();
                     editor.apply();
@@ -900,7 +896,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     binding.quickViewSearchByBarcode.setVisibility(VISIBLE);
                     binding.quickView.setVisibility(INVISIBLE);
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                    handler.postDelayed(() -> binding.quickView.setVisibility(VISIBLE), 500);
+
+                    commonDisp.add(Completable.timer(500, TimeUnit.MILLISECONDS)
+                        .doOnComplete(() -> binding.quickView.setVisibility(VISIBLE))
+                        .subscribeOn(AndroidSchedulers.mainThread()).subscribe());
+
                     binding.quickViewSearchByBarcode.requestFocus();
                     break;
                 case R.id.toggleCamera:
@@ -939,10 +939,10 @@ public class ContinuousScanActivity extends AppCompatActivity {
         }
     }
 
-    public void showIngredientsTab(String action) {
+    public void showIngredientsTab(ProductActivity.ShowIngredientsAction action) {
         if (bottomSheetBehavior != null) {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         }
-        productFragment.goToIngredients(action);
+        productFragment.showIngredientsTab(action);
     }
 }

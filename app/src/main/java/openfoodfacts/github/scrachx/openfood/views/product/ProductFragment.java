@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -31,13 +30,14 @@ import openfoodfacts.github.scrachx.openfood.views.product.ingredients.Ingredien
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
 
 import static android.app.Activity.RESULT_OK;
+import static openfoodfacts.github.scrachx.openfood.views.product.ProductActivity.ShowIngredientsAction.PERFORM_OCR;
+import static openfoodfacts.github.scrachx.openfood.views.product.ProductActivity.ShowIngredientsAction.SEND_UPDATED;
 
 public class ProductFragment extends Fragment implements OnRefreshListener {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    private static final String STATE_ARG = "state";
+    private ActivityProductBinding binding;
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient client;
-    private ActivityProductBinding binding;
     private CompositeDisposable disp = new CompositeDisposable();
     private ProductState productState;
 
@@ -45,7 +45,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
     public static ProductFragment newInstance(@NonNull ProductState productState) {
 
         Bundle args = new Bundle();
-        args.putSerializable(STATE_ARG, productState);
+        args.putSerializable(ProductActivity.STATE_KEY, productState);
 
         ProductFragment fragment = new ProductFragment();
         fragment.setArguments(args);
@@ -58,18 +58,21 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         super.onDestroy();
     }
 
-    @Nullable
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = ActivityProductBinding.inflate(inflater);
+
         if (getResources().getBoolean(R.bool.portrait_only)) {
             requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-        binding.toolbar.setVisibility(View.GONE);
-        productState = (ProductState) requireArguments().getSerializable(STATE_ARG);
 
-        setupViewPager(binding.pager);
+        binding = ActivityProductBinding.inflate(inflater);
+        binding.toolbar.setVisibility(View.GONE);
+
+        client = new OpenFoodAPIClient(requireActivity());
+
+        productState = (ProductState) requireArguments().getSerializable(ProductActivity.STATE_KEY);
+
+        adapterResult = setupViewPager(binding.pager);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             binding.pager.setNestedScrollingEnabled(true);
@@ -78,8 +81,6 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         new TabLayoutMediator(binding.tabs, binding.pager, (tab, position) ->
             tab.setText(adapterResult.getPageTitle(position)))
             .attach();
-
-        client = new OpenFoodAPIClient(requireActivity());
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
         BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, getActivity());
@@ -96,8 +97,8 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
     }
 
-    private void setupViewPager(ViewPager2 viewPager) {
-        adapterResult = ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(requireActivity()), getProductState(), requireActivity());
+    private ProductFragmentPagerAdapter setupViewPager(ViewPager2 viewPager) {
+        return ProductActivity.setupViewPager(viewPager, new ProductFragmentPagerAdapter(requireActivity()), getProductState(), requireActivity());
     }
 
     @Override
@@ -107,13 +108,14 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
 
     @Override
     public void onRefresh() {
-        disp.add(client.getProductStateFull(getProductState().getProduct().getCode())
+        disp.add(client.getProductStateFull(productState.getProduct().getCode())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(newState -> {
                 productState = newState;
                 adapterResult.refresh(newState);
             }, throwable ->
-                adapterResult.refresh(getProductState())));
+                adapterResult.refresh(productState))
+        );
     }
 
     public void bottomSheetWillGrow() {
@@ -127,7 +129,7 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
         }
     }
 
-    public void goToIngredients(String action) {
+    public void showIngredientsTab(ProductActivity.ShowIngredientsAction action) {
         if (adapterResult == null || adapterResult.getItemCount() == 0) {
             return;
         }
@@ -136,9 +138,9 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             if (fragment instanceof IngredientsProductFragment) {
                 binding.pager.setCurrentItem(i);
 
-                if ("perform_ocr".equals(action)) {
+                if (action == PERFORM_OCR) {
                     ((IngredientsProductFragment) fragment).extractIngredients();
-                } else if ("send_updated".equals(action)) {
+                } else if (action == SEND_UPDATED) {
                     ((IngredientsProductFragment) fragment).changeIngImage();
                 }
                 return;

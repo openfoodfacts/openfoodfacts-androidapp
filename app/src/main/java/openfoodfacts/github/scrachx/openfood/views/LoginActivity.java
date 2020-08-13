@@ -17,6 +17,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -27,6 +28,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -55,79 +59,6 @@ import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH
  * This Activity connect to the Chrome Custom Tabs Service on startup to prefetch the url.
  */
 public class LoginActivity extends BaseActivity {
-    private ActivityLoginBinding binding;
-    private ProductsAPI apiClient;
-    private CustomTabActivityHelper customTabActivityHelper;
-    private Uri userLoginUri;
-    private Uri resetPasswordUri;
-    private CompositeDisposable disp = new CompositeDisposable();
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            super.onBackPressed();
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getResources().getBoolean(R.bool.portrait_only)) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        // Setup view listeners
-        binding.btnLogin.setOnClickListener(v -> doAttemptLogin());
-        binding.btnCreateAccount.setOnClickListener(v -> doRegister());
-        binding.btnForgotPass.setOnClickListener(v -> doForgotPassword());
-
-        setTitle(getString(R.string.txtSignIn));
-        setSupportActionBar(binding.toolbarLayout.toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
-        resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
-
-        // prefetch the uri
-        customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
-            @Override
-            public void onCustomTabsConnected() {
-                binding.btnCreateAccount.setEnabled(true);
-            }
-
-            @Override
-            public void onCustomTabsDisconnected() {
-                //TODO find out what do do with it
-                binding.btnCreateAccount.setEnabled(false);
-            }
-        });
-        customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
-        binding.btnCreateAccount.setEnabled(true);
-
-        final SharedPreferences settings = getSharedPreferences("login", 0);
-        String loginS = settings.getString(getResources().getString(R.string.user), getResources().getString(R.string.txt_anonymous));
-        if (getResources().getString(R.string.user).equals(loginS)) {
-            new MaterialDialog.Builder(this)
-                .title(R.string.log_in)
-                .content(R.string.login_true)
-                .neutralText(R.string.ok_button)
-                .show();
-        }
-
-        apiClient = new Retrofit.Builder()
-            .baseUrl(BuildConfig.HOST)
-            .client(Utils.httpClientBuilder())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-            .build()
-            .create(ProductsAPI.class);
-    }
-
     private void doAttemptLogin() {
         Utils.hideKeyboard(this);
         String login = binding.loginInput.getText().toString();
@@ -202,7 +133,7 @@ public class LoginActivity extends BaseActivity {
                 binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.green_500));
                 binding.txtInfoLogin.setText(R.string.txtInfoLoginOk);
 
-                setResult(RESULT_OK, new Intent());
+                setResult(RESULT_OK);
                 finish();
             }
         }, t -> {
@@ -211,6 +142,92 @@ public class LoginActivity extends BaseActivity {
         }));
 
         binding.btnLogin.setClickable(true);
+    }
+
+    private ActivityLoginBinding binding;
+    private ProductsAPI apiClient;
+    private CustomTabActivityHelper customTabActivityHelper;
+    private Uri userLoginUri;
+    private Uri resetPasswordUri;
+    private CompositeDisposable disp = new CompositeDisposable();
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            super.onBackPressed();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Setup view listeners
+        binding.btnLogin.setOnClickListener(v -> doAttemptLogin());
+        binding.btnCreateAccount.setOnClickListener(v -> doRegister());
+        binding.btnForgotPass.setOnClickListener(v -> doForgotPassword());
+
+        setTitle(getString(R.string.txtSignIn));
+        setSupportActionBar(binding.toolbarLayout.toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl");
+        resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl");
+
+        // prefetch the uri
+        customTabActivityHelper = new CustomTabActivityHelper();
+        customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
+            @Override
+            public void onCustomTabsConnected() {
+                binding.btnCreateAccount.setEnabled(true);
+            }
+
+            @Override
+            public void onCustomTabsDisconnected() {
+                //TODO find out what do do with it
+                binding.btnCreateAccount.setEnabled(false);
+            }
+        });
+        customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null);
+        binding.btnCreateAccount.setEnabled(true);
+
+        final SharedPreferences settings = getSharedPreferences("login", 0);
+        String loginS = settings.getString(getResources().getString(R.string.user), getResources().getString(R.string.txt_anonymous));
+        if (getResources().getString(R.string.user).equals(loginS)) {
+            new MaterialDialog.Builder(this)
+                .title(R.string.log_in)
+                .content(R.string.login_true)
+                .neutralText(R.string.ok_button)
+                .show();
+        }
+
+        apiClient = new Retrofit.Builder()
+            .baseUrl(BuildConfig.HOST)
+            .client(Utils.httpClientBuilder())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+            .build()
+            .create(ProductsAPI.class);
+    }
+
+    public static class LoginContract extends ActivityResultContract<Void, Boolean> {
+        @NonNull
+        @Override
+        public Intent createIntent(@NonNull Context context, Void input) {
+            return new Intent(context, LoginActivity.class);
+        }
+
+        @Override
+        public Boolean parseResult(int resultCode, @Nullable Intent intent) {
+            return resultCode == RESULT_OK;
+        }
     }
 
     public void doRegister() {

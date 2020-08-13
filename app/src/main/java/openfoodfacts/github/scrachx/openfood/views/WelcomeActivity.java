@@ -39,6 +39,7 @@ import androidx.viewpager.widget.ViewPager;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.PrefManager;
 
 /**
  * This is the Onboarding Activity shown on first-run.
