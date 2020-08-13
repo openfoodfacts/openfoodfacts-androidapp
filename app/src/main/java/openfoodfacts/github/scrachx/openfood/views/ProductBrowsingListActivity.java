@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
@@ -47,7 +46,6 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
 import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
@@ -68,21 +66,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private ActivityProductBrowsingListBinding binding;
     private int contributionType;
     private CompositeDisposable disp;
-    private Sensor mAccelerometer;
     private int mCountProducts = 0;
     private List<Product> mProducts;
     private SearchInfo mSearchInfo;
-    private SensorManager mSensorManager;
-    private ShakeDetector mShakeDetector;
     /**
      * boolean to determine if image should be loaded or not
      */
     private boolean isLowBatteryMode = false;
     private int pageAddress = 1;
-    /**
-     * boolean to determine if scan on shake feature should be enabled
-     */
-    private boolean scanOnShake;
     private boolean setupDone = false;
 
     /**
@@ -93,15 +84,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * @param searchTitle the title used in the activity for this search query
      * @param type the type of search
      */
-    public static void startActivity(Context context, String searchQuery, String searchTitle, SearchType type) {
-        startActivity(context, new SearchInfo(searchQuery, searchTitle, type));
+    public static void start(Context context, String searchQuery, String searchTitle, SearchType type) {
+        start(context, new SearchInfo(searchQuery, searchTitle, type));
     }
 
     /**
-     * @see #startActivity(Context, String, String, SearchType) )
+     * @see #start(Context, String, String, SearchType) )
      */
-    public static void startActivity(Context context, String searchQuery, SearchType type) {
-        startActivity(context, searchQuery, searchQuery, type);
+    public static void start(Context context, String searchQuery, SearchType type) {
+        start(context, searchQuery, searchQuery, type);
     }
 
     @Override
@@ -112,9 +103,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     /**
-     * @see #startActivity(Context, String, String, SearchType)
+     * @see #start(Context, String, String, SearchType)
      */
-    private static void startActivity(Context context, SearchInfo searchInfo) {
+    private static void start(Context context, SearchInfo searchInfo) {
         Intent intent = new Intent(context, ProductBrowsingListActivity.class);
         intent.putExtra(SEARCH_INFO, searchInfo);
         context.startActivity(intent);
@@ -267,18 +258,6 @@ public class ProductBrowsingListActivity extends BaseActivity {
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true;
-        }
-
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mShakeDetector = new ShakeDetector();
-
-        if (scanOnShake) {
-            mShakeDetector.setOnShakeListener(count -> Utils.scan(ProductBrowsingListActivity.this));
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
@@ -520,7 +499,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
     }
 
-    private void loadData(boolean isResponseOk, Search response) {
+    private void loadData(boolean isResponseOk, @Nullable Search response) {
         if (isResponseOk && response != null) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
@@ -584,11 +563,20 @@ public class ProductBrowsingListActivity extends BaseActivity {
      */
     private void loadSearchProducts(boolean isResponseSuccessful, Search response,
                                     @StringRes int emptyMessage, @StringRes int extendedMessage) {
-        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
-            showEmptySearch(getResources().getString(emptyMessage),
-                getResources().getString(extendedMessage));
+        if (response == null) {
+            loadData(isResponseSuccessful, null);
         } else {
-            loadData(isResponseSuccessful, response);
+            final int count;
+            try {
+                count = Integer.parseInt(response.getCount());
+            } catch (NumberFormatException e) {
+                throw new NumberFormatException("cannot parse " + response.getCount());
+            }
+            if (isResponseSuccessful && count == 0) {
+                showEmptySearch(getResources().getString(emptyMessage), getResources().getString(extendedMessage));
+            } else {
+                loadData(isResponseSuccessful, response);
+            }
         }
     }
 
@@ -690,23 +678,5 @@ public class ProductBrowsingListActivity extends BaseActivity {
             pageAddress = 1;
             setup();
         });
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (scanOnShake) {
-            //register the listener
-            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (scanOnShake) {
-            //unregister the listener
-            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-        }
     }
 }

@@ -33,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -102,9 +103,9 @@ import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProduc
 import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
 
 public class ContinuousScanActivity extends AppCompatActivity {
-    private static final int ADD_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
     public static final List<BarcodeFormat> BARCODE_FORMATS = Arrays.asList(
         BarcodeFormat.UPC_A,
@@ -150,7 +151,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             }
         }
         textView.requestFocus();
-        Snackbar.make(binding.getRoot(), getString(R.string.txtBarcodeNotValid), Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(binding.getRoot(), getString(R.string.txtBarcodeNotValid), LENGTH_SHORT).show();
         return true;
     };
     private final BarcodeCallback barcodeScanCallback = new BarcodeCallback() {
@@ -185,6 +186,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             // Here possible results are useless but we must implement this
         }
     };
+    private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback;
     private int cameraState;
     private OpenFoodAPIClient client;
     @NonNull
@@ -375,7 +377,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         .beginTransaction()
                         .replace(R.id.frame_layout, newProductFragment)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .commitAllowingStateLoss();
+                        .commit();
                     productFragment = newProductFragment;
                 }
             }, (Throwable e) -> {
@@ -520,13 +522,19 @@ public class ContinuousScanActivity extends AppCompatActivity {
     }
 
     private void navigateToProductAddition(String productBarcode) {
-        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-        ProductState st = new ProductState();
         Product pd = new Product();
         pd.setCode(productBarcode);
-        st.setProduct(pd);
-        intent.putExtra("state", st);
-        startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
+        navigateToProductAddition(pd);
+    }
+
+    private void navigateToProductAddition(Product product) {
+        Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
+        intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
+        registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                setShownProduct(lastBarcode);
+            }
+        }).launch(intent);
     }
 
     private void showAllViews() {
@@ -573,6 +581,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
         if (summaryProductPresenter != null) {
             summaryProductPresenter.dispose();
         }
+        // Remove callback as it uses binding
+        bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback);
         binding = null;
         super.onDestroy();
     }
@@ -605,7 +615,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     }
 
     @Subscribe
-    public void onEventBusProductNeedsRefreshEvent(ProductNeedsRefreshEvent event) {
+    public void onEventBusProductNeedsRefreshEvent(@NonNull ProductNeedsRefreshEvent event) {
         if (event.getBarcode().equals(lastBarcode)) {
             setShownProduct(lastBarcode);
         }
@@ -676,19 +686,24 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.quickView);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            float previousSlideOffset = 0;
+        bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
+            private float previousSlideOffset = 0;
 
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                    lastBarcode = null;
-                    binding.txtProductCallToAction.setVisibility(GONE);
-                } else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    binding.barcodeScanner.resume();
-                }
-                if (newState == BottomSheetBehavior.STATE_DRAGGING && product == null) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        lastBarcode = null;
+                        binding.txtProductCallToAction.setVisibility(GONE);
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        binding.barcodeScanner.resume();
+                        break;
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        if (product == null) {
+                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        }
+                        break;
                 }
                 if (binding.quickViewSearchByBarcode.getVisibility() == VISIBLE) {
                     bottomSheetBehavior.setPeekHeight(peekSmall);
@@ -735,7 +750,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 }
                 previousSlideOffset = slideOffset;
             }
-        });
+        };
+        bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback);
 
         mInvalidBarcodeDao = Utils.getDaoSession().getInvalidBarcodeDao();
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
@@ -912,14 +928,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ProductImageManagementActivity.REQUEST_EDIT_IMAGE && (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)) {
             setShownProduct(lastBarcode);
-        } else if (resultCode == RESULT_OK) {
-            if (requestCode == ADD_PRODUCT_ACTIVITY_REQUEST_CODE) {
-                setShownProduct(lastBarcode);
-            } else if (requestCode == LOGIN_ACTIVITY_REQUEST_CODE) {
-                Intent intent = new Intent(ContinuousScanActivity.this, AddProductActivity.class);
-                intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
-                startActivityForResult(intent, ADD_PRODUCT_ACTIVITY_REQUEST_CODE);
-            }
+        } else if (resultCode == RESULT_OK && requestCode == LOGIN_ACTIVITY_REQUEST_CODE) {
+            navigateToProductAddition(product);
         }
     }
 

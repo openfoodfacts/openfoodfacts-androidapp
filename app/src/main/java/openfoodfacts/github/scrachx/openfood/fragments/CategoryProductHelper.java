@@ -87,18 +87,18 @@ public class CategoryProductHelper {
                             FragmentActivity activity = baseFragment.getActivity();
 
                             if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, category,
+                                BottomScreenCommon.showBottomSheet(result, category,
                                     activity.getSupportFragmentManager());
                             }
                         } else {
-                            ProductBrowsingListActivity.startActivity(baseFragment.getContext(),
+                            ProductBrowsingListActivity.start(baseFragment.getContext(),
                                 category.getCategoryTag(),
                                 category.getName(),
                                 SearchType.CATEGORY);
                         }
                     });
                 } else {
-                    ProductBrowsingListActivity.startActivity(baseFragment.getContext(),
+                    ProductBrowsingListActivity.start(baseFragment.getContext(),
                         category.getCategoryTag(),
                         category.getName(),
                         SearchType.CATEGORY);

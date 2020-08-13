@@ -17,12 +17,9 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -51,7 +48,6 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
@@ -73,11 +69,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
     private OpenFoodAPIClient api;
     private CompositeDisposable disp = new CompositeDisposable();
     private ProductState mProductState;
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
-    private ShakeDetector mShakeDetector;
-    // boolean to determine if scan on shake feature should be enabled
-    private boolean scanOnShake;
 
     /**
      * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
@@ -223,21 +214,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
             tab.setText(adapterResult.getPageTitle(position));
         }).attach();
 
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        if (mSensorManager != null) {
-            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        }
-        mShakeDetector = new ShakeDetector();
-
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-
-        mShakeDetector.setOnShakeListener(count -> {
-            if (scanOnShake) {
-                Utils.scan(ProductActivity.this);
-            }
-        });
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
         BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
@@ -290,23 +266,6 @@ public class ProductActivity extends BaseActivity implements OnRefreshListener {
         EventBus.getDefault().register(this);
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (scanOnShake) {
-            //unregister the listener
-            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (scanOnShake) {
-            //register the listener
-            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-        }
-    }
 
     @Override
     protected void onStop() {

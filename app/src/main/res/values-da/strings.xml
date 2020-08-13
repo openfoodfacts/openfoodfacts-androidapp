@@ -434,7 +434,7 @@
     <string name="connectivity_check">Tjek Internetforbindelsen</string>
     <string name="dismiss">Afvis</string>
     <string name="Terms">Vilkår</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="TermsOfUse">Betingelser og Fortrolighed</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/vilkår-for-brug</string>
@@ -496,8 +496,6 @@
     <string name="sort">Sortér</string>
     <string name="by_nutrition_grade">Ernæringskvalitet</string>
     <string name="sort_by">Sortér efter</string>
-    <string name="shake_summary">Ryst mobil for at skanne produkter</string>
-    <string name="shake_title">Ryst for at skanne</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Billeder uden stregkode kan endnu ikke tilføjes med app\'en. Prøv venligst mobil-webversionen.</string>
     <string name="no_barcode">Iogen stregkode fundet</string>
@@ -586,7 +584,7 @@
     <string name="ingredients_picture">Ingrediensfoto</string>
     <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
     <string name="ingredients_list">Ingrediensoversigt</string>
-    <string name="ingredients_hint">Bevar rækkefølgen, angiv [%f]orholdet, når det er oplyst, adskil med et komma eller -, benyt () til delingredienser i en ingrediens, omkrans allergener med _</string>
+    <string name="ingredients_hint">Bevar rækkefølgen, angiv [[%f]]orholdet, når det er oplyst, adskil med et komma eller -, benyt () til delingredienser i en ingrediens, omkrans allergener med _</string>
     <string name="extract_ingredients">Udtræk ingredienser</string>
     <string name="extracting_ingredients">Uddrager ingredienser</string>
     <string name="looksGood">Ser godt ud</string>
@@ -757,6 +755,7 @@
     <string name="unknown_status_no_translation">Produktstatussen kunne ikke vurderes grundet ukendte ingredienser.</string>
     <string name="help_translate_ingredients">Hjælp med at oversætte ingredienserne til dit sprog</string>
     <string name="unknown_status_missing_ingredients">Produktstatussen kunne ikke vurderes grundet manglende ingredienser.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Hjælp med at udtrække ingredienserne for at få %1$s-statussen.</string>
     <string name="add_photo_to_extract_ingredients">Tilføj et foto for at begynde at udtrække ingredienser</string>
     <string name="product_already_exists_in_comparison">Produktet findes allerede på sammenligningslisten</string>
@@ -793,5 +792,6 @@
     <string name="icon_emb">EMB-kodeikon</string>
     <string name="product_front_image">Produktbillede front</string>
     <string name="brand_hint">Eksempler: CocaCola, Nestle mv.…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="sign_in_or_register">Log ind eller tilmeld</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

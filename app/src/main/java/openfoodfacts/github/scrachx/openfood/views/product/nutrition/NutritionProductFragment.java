@@ -35,7 +35,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,9 +43,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -97,6 +96,7 @@ import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY_KCAL;
@@ -158,7 +158,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler = new PhotoReceiverHandler(this::onPhotoReturned);
+        photoReceiverHandler = new PhotoReceiverHandler(this::loadNutritionPhoto);
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.nutrimentsRecyclerView.getContext(), VERTICAL);
         binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
@@ -216,7 +216,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             public void onClick(@NonNull View view) {
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
                 customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + currActivity.getPackageName()));
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.url_nutrient_values)), new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(R.string.url_nutrient_values)), new WebViewFallback());
             }
         };
         spannableStringBuilder.append(getString(R.string.txtNutriScoreInfo));
@@ -382,8 +382,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             nutrimentListItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
         }
 
-        RecyclerView.Adapter adapter = new NutrimentsGridAdapter(nutrimentListItems);
-        binding.nutrimentsRecyclerView.setAdapter(adapter);
+        binding.nutrimentsRecyclerView.setAdapter(new NutrimentsGridAdapter(nutrimentListItems));
     }
 
     private void setupNutrientItems(Activity currActivity, Nutriments nutriments) {
@@ -543,6 +542,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         MaterialDialog dialog = new MaterialDialog.Builder(requireActivity())
             .title(R.string.calculate_nutrition_facts)
             .customView(R.layout.dialog_calculate_calories, false)
+
             .dismissListener(dialogInterface -> Utils.hideKeyboard(requireActivity()))
             .build();
 
@@ -558,18 +558,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
                     Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
                     btn.setOnClickListener(v1 -> {
                         if (!TextUtils.isEmpty(etWeight.getText().toString())) {
-
-                            String spinnerValue = spinner.getSelectedItem().toString();
-                            String weight = etWeight.getText().toString();
-                            Product p = activityProductState.getProduct();
-                            Intent intent = new Intent(getContext(), CalculateDetails.class);
-                            intent.putExtra("sampleObject", p);
-                            intent.putExtra("spinnervalue", spinnerValue);
-                            intent.putExtra("weight", weight);
-                            startActivity(intent);
+                            CalculateDetails.start(requireActivity(),
+                                activityProductState.getProduct(),
+                                spinner.getSelectedItem().toString(),
+                                etWeight.getText().toString());
                             dialog.dismiss();
                         } else {
-                            Toast.makeText(getContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
+                            Snackbar.make(binding.getRoot(), getResources().getString(R.string.please_enter_weight), LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -582,10 +577,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
     }
 
-    public void onPhotoReturned(File photoFile) {
+    public void loadNutritionPhoto(File photoFile) {
+        // Create a new instance of ProductImage so we can load to server
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
+        // Load to server
         disp.add(api.postImg(image).subscribe());
+        // Load into view
         binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 

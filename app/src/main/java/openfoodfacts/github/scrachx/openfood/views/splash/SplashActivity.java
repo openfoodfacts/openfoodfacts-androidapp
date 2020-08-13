@@ -17,7 +17,6 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SplashActivity extends BaseActivity implements ISplashPresenter.View {
     private ActivitySplashBinding binding;
-    private ISplashPresenter.Actions presenter;
     private String[] taglines;
     /*
     To show different slogans below the logo while content is being downloaded.
@@ -51,7 +50,7 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
         taglines = getResources().getStringArray(R.array.taglines_array);
         binding.tagline.post(changeTagline);
 
-        presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this, this);
+        ISplashPresenter.Actions presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this, this);
         presenter.refreshData();
     }
 

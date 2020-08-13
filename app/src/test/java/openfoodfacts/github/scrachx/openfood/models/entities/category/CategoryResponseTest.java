@@ -6,11 +6,11 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryResponseTestData.GUMMY_BEARS_EN;
 import static openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryResponseTestData.GUMMY_BEARS_FR;
-import static org.junit.Assert.*;
 
 /**
  * Tests for {@link CategoryResponse}
@@ -32,22 +32,22 @@ public class CategoryResponseTest {
         mCategoryResponse = new CategoryResponse(CATEGORY_TAG, mNamesMap);
         Category category = mCategoryResponse.map();
 
-        assertEquals(CATEGORY_TAG, category.getTag());
-        assertEquals(2, category.getNames().size());
+        assertThat(category.getTag()).isEqualTo(CATEGORY_TAG);
+        assertThat(category.getNames()).hasSize(2);
 
         CategoryName categoryName1 = category.getNames().get(0);
-        assertEquals(LANGUAGE_CODE_ENGLISH, categoryName1.getLanguageCode());
-        assertEquals(GUMMY_BEARS_EN, categoryName1.getName());
-        assertEquals(CATEGORY_TAG, categoryName1.getCategoryTag());
-        assertFalse(categoryName1.getIsWikiDataIdPresent());
-        assertEquals("null", categoryName1.getWikiDataId());
+        assertThat(categoryName1.getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(categoryName1.getName()).isEqualTo(GUMMY_BEARS_EN);
+        assertThat(categoryName1.getCategoryTag()).isEqualTo(CATEGORY_TAG);
+        assertThat(categoryName1.getIsWikiDataIdPresent()).isFalse();
+        assertThat(categoryName1.getWikiDataId()).isEqualTo("null");
 
         CategoryName categoryName2 = category.getNames().get(1);
-        assertEquals(LANGUAGE_CODE_FRENCH, categoryName2.getLanguageCode());
-        assertEquals(GUMMY_BEARS_FR, categoryName2.getName());
-        assertEquals(CATEGORY_TAG, categoryName2.getCategoryTag());
-        assertFalse(categoryName2.getIsWikiDataIdPresent());
-        assertEquals("null", categoryName2.getWikiDataId());
+        assertThat(categoryName2.getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
+        assertThat(categoryName2.getName()).isEqualTo(GUMMY_BEARS_FR);
+        assertThat(categoryName2.getCategoryTag()).isEqualTo(CATEGORY_TAG);
+        assertThat(categoryName2.getIsWikiDataIdPresent()).isFalse();
+        assertThat(categoryName2.getWikiDataId()).isEqualTo("null");
     }
 
     @Test
@@ -55,21 +55,21 @@ public class CategoryResponseTest {
         mCategoryResponse = new CategoryResponse(CATEGORY_TAG, mNamesMap, WIKI_DATA_ID);
         Category category = mCategoryResponse.map();
 
-        assertEquals(CATEGORY_TAG, category.getTag());
-        assertEquals(2, category.getNames().size());
+        assertThat(category.getTag()).isEqualTo(CATEGORY_TAG);
+        assertThat(category.getNames()).hasSize(2);
 
         CategoryName categoryName1 = category.getNames().get(0);
-        assertEquals(LANGUAGE_CODE_ENGLISH, categoryName1.getLanguageCode());
-        assertEquals(GUMMY_BEARS_EN, categoryName1.getName());
-        assertEquals(CATEGORY_TAG, categoryName1.getCategoryTag());
-        assertTrue(categoryName1.getIsWikiDataIdPresent());
-        assertEquals(WIKI_DATA_ID, categoryName1.getWikiDataId());
+        assertThat(categoryName1.getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(categoryName1.getName()).isEqualTo(GUMMY_BEARS_EN);
+        assertThat(categoryName1.getCategoryTag()).isEqualTo(CATEGORY_TAG);
+        assertThat(categoryName1.getIsWikiDataIdPresent()).isTrue();
+        assertThat(categoryName1.getWikiDataId()).isEqualTo(WIKI_DATA_ID);
 
         CategoryName categoryName2 = category.getNames().get(1);
-        assertEquals(LANGUAGE_CODE_FRENCH, categoryName2.getLanguageCode());
-        assertEquals(GUMMY_BEARS_FR, categoryName2.getName());
-        assertEquals(CATEGORY_TAG, categoryName2.getCategoryTag());
-        assertTrue(categoryName2.getIsWikiDataIdPresent());
-        assertEquals(WIKI_DATA_ID, categoryName2.getWikiDataId());
+        assertThat(categoryName2.getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
+        assertThat(categoryName2.getName()).isEqualTo(GUMMY_BEARS_FR);
+        assertThat(categoryName2.getCategoryTag()).isEqualTo(CATEGORY_TAG);
+        assertThat(categoryName2.getIsWikiDataIdPresent()).isTrue();
+        assertThat(categoryName2.getWikiDataId()).isEqualTo(WIKI_DATA_ID);
     }
 }

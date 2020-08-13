@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.InflateException;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -35,7 +36,7 @@ public class TipBox extends LinearLayout {
         TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.TipBox);
         identifier = attributes.getString(R.styleable.TipBox_identifier);
         if (identifier == null) {
-            throw new Exception("Tip box identifier not set!!!");
+            throw new InflateException("Tip box identifier not set!!!");
         }
         animate = attributes.getBoolean(R.styleable.TipBox_animate, true);
         tipMessage = findViewById(R.id.tipMessage);

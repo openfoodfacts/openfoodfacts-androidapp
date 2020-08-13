@@ -7,6 +7,7 @@ import android.os.Build;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 
@@ -29,10 +30,7 @@ public class FullScreenActivityOpener {
         // Utility class
     }
 
-    public static void openForUrl(Fragment fragment, Product product, ProductImageField imageType, String mUrlImage, View mImageFront) {
-        if (fragment == null) {
-            return;
-        }
+    public static void openForUrl(@NonNull Fragment fragment, Product product, ProductImageField imageType, String mUrlImage, View mImageFront) {
         // A new file added just now
         if (FileUtils.isAbsolute(mUrlImage)) {
             loadImageServerUrl(fragment, product, imageType, mImageFront);

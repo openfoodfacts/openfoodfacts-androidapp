@@ -67,7 +67,6 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
@@ -107,7 +106,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         }
 
         // Support synchronous scrolling
-        if (CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
                 for (ProductComparisonViewHolder viewHolder : viewHolders) {
                     viewHolder.listItemLayout.setScrollX(i);

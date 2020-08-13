@@ -19,6 +19,7 @@ package openfoodfacts.github.scrachx.openfood.views.splash;
 import android.content.SharedPreferences;
 import android.os.Handler;
 
+import androidx.annotation.NonNull;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
@@ -41,13 +42,13 @@ public class SplashPresenter implements ISplashPresenter.Actions {
         this.activity = activity;
     }
 
-    private void activateDownload(Taxonomy taxonomy) {
+    private void activateDownload(@NonNull Taxonomy taxonomy) {
         settings.edit().putBoolean(taxonomy.getDownloadActivatePreferencesId(), true).apply();
     }
 
-    private void activateDownload(Taxonomy taxonomy, String... flavors) {
+    private void activateDownload(@NonNull Taxonomy taxonomy, String... flavors) {
         if (AppFlavors.isFlavors(flavors)) {
-            settings.edit().putBoolean(taxonomy.getDownloadActivatePreferencesId(), true).apply();
+            activateDownload(taxonomy);
         }
     }
 

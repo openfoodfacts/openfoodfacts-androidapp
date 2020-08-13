@@ -7,8 +7,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.*;
 
 /**
@@ -24,7 +23,7 @@ public class ProductTest {
     public void productStringConverter_convertsGenericName() throws IOException {
         String productJson = "{\"generic_name\": " + htmlEscapedSingleQuoteJson + "}";
         Product product = deserialize(productJson);
-        assertEquals(correctlyConvertedString, product.getGenericName());
+        assertThat(product.getGenericName()).isEqualTo(correctlyConvertedString);
     }
 
     private static Product deserialize(String json) throws IOException {
@@ -36,42 +35,42 @@ public class ProductTest {
     public void productStringConverter_convertsIngredientsText() throws IOException {
         String productJson = "{\"ingredients_text\": " + htmlEscapedSingleQuoteJson + "}";
         Product product = deserialize(productJson);
-        assertEquals(correctlyConvertedString, product.getIngredientsText());
+        assertThat(product.getIngredientsText()).isEqualTo(correctlyConvertedString);
     }
 
     @Test
     public void productStringConverter_convertsProductName() throws IOException {
         String productJson = "{\"product_name\": " + htmlEscapedSingleQuoteJson + "}";
         Product product = deserialize(productJson);
-        assertEquals(correctlyConvertedString, product.getProductName());
+        assertThat(product.getProductName()).isEqualTo(correctlyConvertedString);
     }
 
     @Test
     public void getStores_insertsSpacesAfterCommas() throws IOException {
         String productJason = "{\"stores\": \"CVS,Waitrose,Flunch\"}";
         Product product = deserialize(productJason);
-        assertEquals("CVS, Waitrose, Flunch", product.getStores());
+        assertThat(product.getStores()).isEqualTo("CVS, Waitrose, Flunch");
     }
 
     @Test
     public void getCountries_insertsSpacesAfterCommas() throws IOException {
         String productJson = "{\"countries\": \"US,France,Germany\"}";
         Product product = deserialize(productJson);
-        assertEquals("US, France, Germany", product.getCountries());
+        assertThat(product.getCountries()).isEqualTo("US, France, Germany");
     }
 
     @Test
     public void getBrands_insertsSpacesAfterCommas() throws IOException {
         String productJson = "{\"brands\": \"Kellogg,Kharma,Dharma\"}";
         Product product = deserialize(productJson);
-        assertEquals("Kellogg, Kharma, Dharma", product.getBrands());
+        assertThat(product.getBrands()).isEqualTo("Kellogg, Kharma, Dharma");
     }
 
     @Test
     public void getPackaging_insertsSpacesAfterCommas() throws IOException {
         String productJson = "{\"packaging\": \"Plastic Bottle,Keg,Glass Bottle\"}";
         Product product = deserialize(productJson);
-        assertEquals("Plastic Bottle, Keg, Glass Bottle", product.getPackaging());
+        assertThat(product.getPackaging()).isEqualTo("Plastic Bottle, Keg, Glass Bottle");
     }
 
     @Test
@@ -86,6 +85,6 @@ public class ProductTest {
             "\"product_name\": \"Ice\"," +
             "\"code\": \"0022343\"}";
         Product product = deserialize(productJson);
-        assertTrue(product.toString().endsWith("[code=0022343,productName=Ice,additional_properties={}]"));
+        assertThat(product.toString().endsWith("[code=0022343,productName=Ice,additional_properties={}]")).isTrue();
     }
 }

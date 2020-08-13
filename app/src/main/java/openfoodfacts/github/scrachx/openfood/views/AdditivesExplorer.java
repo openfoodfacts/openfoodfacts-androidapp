@@ -77,7 +77,7 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
 
     @Override
     public void onClick(int position, String name) {
-        ProductBrowsingListActivity.startActivity(AdditivesExplorer.this, name, SearchType.ADDITIVE);
+        ProductBrowsingListActivity.start(AdditivesExplorer.this, name, SearchType.ADDITIVE);
     }
 
 

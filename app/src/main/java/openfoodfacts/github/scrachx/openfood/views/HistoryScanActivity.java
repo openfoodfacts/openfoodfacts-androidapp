@@ -3,13 +3,9 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.Manifest;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,7 +24,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NavUtils;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,7 +59,6 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
-import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
@@ -82,11 +76,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     private static String SORT_TYPE = "none";
-    private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
-    private ShakeDetector mShakeDetector;
-    // boolean to determine if scan on shake feature should be enabled
-    private boolean scanOnShake;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,19 +100,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
         mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
         productItems = new ArrayList<>();
         setInfo(binding.emptyHistoryInfo);
-
-        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
-        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
-        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mShakeDetector = new ShakeDetector();
-
-        mShakeDetector.setOnShakeListener(count -> {
-            if (scanOnShake) {
-                Utils.scan(HistoryScanActivity.this);
-            }
-        });
 
         binding.srRefreshHistoryScanList.setOnRefreshListener(() -> {
             mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
@@ -343,10 +319,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     public void onResume() {
         super.onResume();
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.history_bottom_nav);
-        if (scanOnShake) {
-            //unregister the listener
-            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
-        }
     }
 
     protected void onScanFirst() {
@@ -460,10 +432,6 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     public void onPause() {
         super.onPause();
-        if (scanOnShake) {
-            //register the listener
-            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
-        }
     }
 
     private Completable getFillViewCompletable() {

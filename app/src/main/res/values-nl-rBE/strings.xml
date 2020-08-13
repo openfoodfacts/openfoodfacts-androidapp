@@ -20,20 +20,20 @@
         <item quantity="other"> Je hebt %d offline producten wachtende om bijgedragen te worden aan Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 seconde geleden</item>
-        <item quantity="other">%d seconden geleden</item>
+        <item quantity="one">%d second ago</item>
+        <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minuut geleden</item>
-        <item quantity="other">%d minuten geleden</item>
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 uur geleden</item>
-        <item quantity="other">%d uur geleden</item>
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 dag geleden</item>
-        <item quantity="other">%d dagen geleden</item>
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">Over</string>
     <string name="action_discover">Ontdek</string>
@@ -117,7 +117,7 @@
         <item>Mead-zuur (20: 3 n-9)</item>
         <item>Melissylzuur (30: 0)</item>
         <item>Molybdeen</item>
-        <item>Enkelvoudig onverzadigde vetten</item>
+        <item>Enkelvoudige onverzadigde vetzuren</item>
         <item>Montanic zuur (28:0)</item>
         <item>Myristinezuur (14:0)</item>
         <item>Nervonzuur (24:1 n-9)</item>
@@ -131,7 +131,7 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Suikeralcoholen (polyolen)</item>
-        <item>Enkelvoudige onverzadigde vetzuren</item>
+        <item>Meervoudig onvervaardigde vetzuren</item>
         <item>Kalium</item>
         <item>Seleen</item>
         <item>Serumproteïnen</item>
@@ -163,7 +163,7 @@
     <string name="txtBarcode">Streepjescode</string>
     <string name="txtCategories">Categoriëen</string>
     <string name="txtLabels">Etiketten, certificeringen, onderscheidingen:</string>
-    <string name="txtEMB">EMB code:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Ingrediënten</string>
     <string name="Donate">Doneer</string>
     <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
@@ -186,7 +186,7 @@
     <string name="txtSugars">Suikers</string>
     <string name="hintBarcode">Streepjescode</string>
     <string name="txtNutriScoreInfo">Meer informatie over de voedingsstofniveaus</string>
-    <string name="hintLogin">Inloggen</string>
+    <string name="hintLogin">Gebruikersnaam</string>
     <string name="hintPass">Wachtwoord</string>
     <string name="errorLogin">Verkeerde gebruikersnaam of wachtwoord</string>
     <string name="errorWeb">We krijgen geen verbinding met het internet. Gelieve uw netwerkconnectie te controleren.</string>
@@ -229,7 +229,7 @@
     <string name="select_camera">Selecteer een camera</string>
     <string name="ok_button">Ok</string>
     <string name="cancel_button">Annuleer</string>
-    <string name="login_button">Inloggen</string>
+    <string name="login_button">Gebruikersnaam</string>
     <string name="create_account_button">Account aanmaken</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Hoe werkt het?</string>
@@ -383,7 +383,7 @@
     <string name="take_more_pictures">Maak meer foto\'s</string>
     <string name="txtSaturatedFat">Verzadigd vet</string>
     <string name="nutriscore_info_msg">Meer informatie over de Nutri-Score</string>
-    <string name="nova_info_msg">Meer informatie over Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Groep 1 - Onverwerkte of minimaal verwerkte levensmiddelen</string>
     <string name="nova_grp2_msg">Groep 2 - Bewerkte ingrediënten</string>
     <string name="nova_grp3_msg">Groep 3 - Bewerkte levensmiddelen</string>
@@ -397,7 +397,7 @@
     <string name="history_shortcut_short_label">Geschiedenis</string>
     <string name="history_shortcut_long_label">Geschiedenis</string>
     <string name="contributions_shortcut_short_label">Bijdragen</string>
-    <string name="contributions_shortcut_long_label">Mijn bijdragen</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">Wachtwoord vergeten</string>
     <string name="next">VOLGENDE</string>
     <string name="skip">OVERSLAAN</string>
@@ -419,7 +419,7 @@
     <string name="preference_enable_mobile_data_summary_on">Upload nieuwe producten via mobiele data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload nieuwe producten alleen via WiFi</string>
     <string name="device_on_mobile_data_warning_title">Opmerking</string>
-    <string name="device_on_mobile_data_warning_message">Upload via mobiele data is uitgeschakeld, verbind met WiFi of verander dit in de instellingen</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Voorkeuren</string>
     <string name="device_on_mobile_data_warning_negative">Toch uploaden</string>
     <string name="changes_saved">Veranderingen succesvol opgeslagen</string>
@@ -434,7 +434,7 @@
     <string name="connectivity_check">Controleer je internetverbinding</string>
     <string name="dismiss">Afwijzen</string>
     <string name="Terms">Voorwaarden</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="TermsOfUse">Voorwaarden en Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org&amp;hl=nl</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -453,7 +453,7 @@
     <string name="preference_header_network">Netwerk</string>
     <string name="preference_header_contributing">Bijdragen</string>
     <string name="scan_first_string">Uw bekeken productgeschiedenis wordt hier weergegeven.\nDeze geschiedenis is alleen voor uw ogen en wordt lokaal opgeslagen.</string>
-    <string name="log_in">Inloggen</string>
+    <string name="log_in">Gebruikersnaam</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Weet u zeker dat u wilt uitloggen?</string>
@@ -496,8 +496,6 @@
     <string name="sort">Sorteer</string>
     <string name="by_nutrition_grade">Voeding Grade</string>
     <string name="sort_by">Ordenen volgens</string>
-    <string name="shake_summary">Schud telefoon om producten te scannen</string>
-    <string name="shake_title">Schud om te scannen</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Foto\'s zonder streepjescode kunnen nog niet met de app worden toegevoegd. Probeer de mobiele webversie.</string>
     <string name="no_barcode">We hebben geen barcode gevonden</string>
@@ -579,7 +577,7 @@
     <string name="no_internet_connection">Je lijkt geen internetverbinding te hebben, afbeelding zullen worden geüpload wanneer er een netwerk beschikbaar is</string>
     <string name="no_internet_unable_to_extract_ingredients">Geen internet verbinding. Kan ingrediënten niet herkennen</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overzicht</string>
+    <string name="overview">Samenvatting</string>
     <string name="ingredients">Ingrediënten</string>
     <string name="nutrition_facts">Voedingswaarden</string>
     <string name="your_version">Jouw</string>
@@ -594,7 +592,7 @@
     <string name="traces">Sporen</string>
     <string name="traces_hint">Vermeld de ingrediënten met de vermelding \"Kan sporen bevatten van\", \"Geproduceerd in een fabriek waar ook X verwerkt wordt\", etc.</string>
     <string name="nutrition_facts_not_specified">De nutritionele informatie wordt niet op het product vermeld</string>
-    <string name="nutrition_facts_picture">Foto van de voedingswaardetabel</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Voorkant</string>
     <string name="other_picture">Andere foto</string>
     <string name="for_100g_100ml">Voor 100 g / 100 ml</string>
@@ -613,7 +611,7 @@
     <string name="manufacturing_details">Productie details</string>
     <string name="origin_of_ingredients">Herkomst van de ingrediënten</string>
     <string name="manufacturing_place">Productieplaats</string>
-    <string name="emb_code">EMB code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Aankoopdetails</string>
     <string name="country_where_purchased">Land van aankoop</string>
     <string name="stores">Winkels</string>
@@ -757,6 +755,7 @@
     <string name="unknown_status_no_translation">We konden de status van het product niet beoordelen vanwege niet-herkende ingrediënten.</string>
     <string name="help_translate_ingredients">Help de ingrediënten in uw taal te vertalen</string>
     <string name="unknown_status_missing_ingredients">We konden de status van het product niet beoordelen vanwege ontbrekende ingrediënten.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help de ingrediënten te herkennen om de %1$s status te krijgen.</string>
     <string name="add_photo_to_extract_ingredients">Voeg een foto toe om te beginnen met het extraheren van ingrediënten</string>
     <string name="product_already_exists_in_comparison">Het product staat al in de vergelijkingslijst</string>
@@ -790,8 +789,9 @@
     <string name="content_exit">Druk hier om terug te keren naar het product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

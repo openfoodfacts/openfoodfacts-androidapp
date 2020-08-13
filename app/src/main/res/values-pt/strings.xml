@@ -496,8 +496,6 @@
     <string name="sort">Ordenar</string>
     <string name="by_nutrition_grade">Classificação nutricional</string>
     <string name="sort_by">Ordenar por</string>
-    <string name="shake_summary">Agite o telefone para digitalizar produtos</string>
-    <string name="shake_title">Agite para digitalizar</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Fotos sem código de barras ainda não podem ser adicionadas á aplicação. Por favor, tente a versão web móvel.</string>
     <string name="no_barcode">Não detetamos nenhum código de barras</string>

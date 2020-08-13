@@ -496,8 +496,6 @@
     <string name="sort">Rendezés</string>
     <string name="by_nutrition_grade">Táplálkozási osztályzat</string>
     <string name="sort_by">Rendezés</string>
-    <string name="shake_summary">Rázza meg a telefont termékek beolvasásához</string>
-    <string name="shake_title">Rázza meg a beolvasáshoz</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Vonalkód nélküli fényképeket még nem lehet hozzáadni az alkalmazással. Kérjük, próbálja a mobil webes változattal.</string>
     <string name="no_barcode">Nem találtunk vonalkódot</string>
@@ -586,7 +584,7 @@
     <string name="ingredients_picture">Összetevők képe</string>
     <string name="take_ingredients_picture_to_extract">(Kérem, készítsen egy képet az összetevőkről, hogy be tudja olvasni róla szöveget a program)</string>
     <string name="ingredients_list">Összetevők</string>
-    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a [%s]zázalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon ( ) (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
+    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a [[%s]]zázalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon ( ) (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
     <string name="extract_ingredients">Összetevők kiolvasása</string>
     <string name="extracting_ingredients">Összetevők kiolvasása</string>
     <string name="looksGood">Jónak tűnik</string>
@@ -758,6 +756,7 @@
     <string name="unknown_status_no_translation">A felismerhetetlen összetevők miatt nem tudtuk felmérni a termék állapotát.</string>
     <string name="help_translate_ingredients">Segítsen lefordítani az összetevőket az Ön nyelvére</string>
     <string name="unknown_status_missing_ingredients">A hiányzó összetevők miatt nem tudtuk felmérni a termék állapotát.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Segítsen kinyerni az összetevőket, hogy megkapjuk a(z) %1$s állapotát.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">Ez a termék már szerepel az összehasonlítási listán</string>
@@ -795,4 +794,5 @@
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

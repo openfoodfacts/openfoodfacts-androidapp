@@ -20,19 +20,19 @@
         <item quantity="other">Hai %d prodotti nella coda offline in attesa di essere contribuito a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 secondo fa</item>
+        <item quantity="one">Un secondo fa</item>
         <item quantity="other">%d secondi fa</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 minuto fa</item>
+        <item quantity="one">Minuto fa%d</item>
         <item quantity="other">%d minuti fa</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 ora fa</item>
+        <item quantity="one">Un\' ora fa</item>
         <item quantity="other">%d ore fa</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 giorno fa</item>
+        <item quantity="one">Un giorno fa</item>
         <item quantity="other">%d giorni fa</item>
     </plurals>
     <string name="action_about">Informazioni</string>
@@ -163,7 +163,7 @@
     <string name="txtBarcode">Codice a barre:</string>
     <string name="txtCategories">Categorie:</string>
     <string name="txtLabels">Etichette, certificazioni, premi:</string>
-    <string name="txtEMB">Codice EMB:</string>
+    <string name="txtEMB">Codici di intraccibilita:</string>
     <string name="txtIngredients">Lista degli ingredienti:</string>
     <string name="Donate">Effettua una donazione</string>
     <string name="Donation">Clicca qui per donare a Open Food Facts</string>
@@ -186,7 +186,7 @@
     <string name="txtSugars">Zuccheri</string>
     <string name="hintBarcode">Codice a barre</string>
     <string name="txtNutriScoreInfo">Ulteriori informazioni sui livelli nutrizionali</string>
-    <string name="hintLogin">Login</string>
+    <string name="hintLogin">Nome utente</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login o password errati</string>
     <string name="errorWeb">Impossibile accedere ad internet. Verifica la connessione.</string>
@@ -229,7 +229,7 @@
     <string name="select_camera">Seleziona una fotocamera</string>
     <string name="ok_button">Ok</string>
     <string name="cancel_button">Annulla</string>
-    <string name="login_button">Login</string>
+    <string name="login_button">Nome utente</string>
     <string name="create_account_button">Crea account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Le tue informazioni sulle allergie non saranno mai inviate al server di Open Food Facts. Inoltre, fai attenzione che i dati del prodotto potrebbero non essere precisi e il rilevamento potrebbe non essere accurato al 100%, quindi ti preghiamo di ricontrollare da solo! </string>
     <string name="title_info_dialog">Come funziona?</string>
@@ -383,7 +383,7 @@
     <string name="take_more_pictures">Fai ulteriori foto</string>
     <string name="txtSaturatedFat">Grassi saturi</string>
     <string name="nutriscore_info_msg">Ulteriori informazioni su Punteggio-Nutri</string>
-    <string name="nova_info_msg">Ulteriori informazioni su Nova</string>
+    <string name="nova_info_msg">Ulteriori informazioni sui gruppi NOVA</string>
     <string name="nova_grp1_msg">Gruppo 1 - Alimenti non trasformati o minimamente trasformati</string>
     <string name="nova_grp2_msg">Gruppo 2 - Ingredienti culinari elaborati</string>
     <string name="nova_grp3_msg">Gruppo 3 - Alimenti trasformati</string>
@@ -419,7 +419,7 @@
     <string name="preference_enable_mobile_data_summary_on">Carica nuovi prodotti utilizzando i dati mobili e WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Carica nuovi prodotti solo tramite WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informazioni</string>
-    <string name="device_on_mobile_data_warning_message">Il caricamento con i dati cellulare è disattivato, connettiti al WiFi o modifica l\'opzione tra le impostazioni</string>
+    <string name="device_on_mobile_data_warning_message">Hai disabilitato il caricamento sui dati mobili, connettiti al WiFi o modificalo nelle preferenze</string>
     <string name="device_on_mobile_data_warning_positive">Impostazioni</string>
     <string name="device_on_mobile_data_warning_negative">Carica comunque</string>
     <string name="changes_saved">Modifiche salvate correttamente</string>
@@ -453,7 +453,7 @@
     <string name="preference_header_network">Rete</string>
     <string name="preference_header_contributing">Contribuire</string>
     <string name="scan_first_string">La cronologia dei prodotti visualizzati verrà elencata qui.\nQuesta cronologia è privata e viene archiviata localmente.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Nome utente</string>
     <string name="login_true">Ha già effettuato il login!</string>
     <string name="confirm_logout">Conferma il logout</string>
     <string name="logout_dialog_content">Sei sicuro di uscire?</string>
@@ -496,8 +496,6 @@
     <string name="sort">Ordine</string>
     <string name="by_nutrition_grade">Grado-nutrizione</string>
     <string name="sort_by">Ordina per</string>
-    <string name="shake_summary">Scuoti il telefono per scansionare i prodotti</string>
-    <string name="shake_title">Scuoti per scansionare</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Le immagini senza codice a barre non possono ancora essere aggiunte con l\'applicazione. Per favore prova la versione mobile del sito web.</string>
     <string name="no_barcode">Nessun codice a barre rilevato</string>
@@ -594,7 +592,7 @@
     <string name="traces">Tracce</string>
     <string name="traces_hint">Indicare gli ingredienti dalla frasi tipo \"Può contenere tracce di\", \'Prodotto in una fabbrica che utilizza anche\', ecc. \nEsempi: Latte, glutine, frutta a guscio</string>
     <string name="nutrition_facts_not_specified">I valori nutrizionali non sono specificati sul prodotto.</string>
-    <string name="nutrition_facts_picture">Foto delle informazioni nutrizionali</string>
+    <string name="nutrition_facts_picture">Foto valori nutrizionali</string>
     <string name="front_short_picture">Frontale</string>
     <string name="other_picture">Altra immagine</string>
     <string name="for_100g_100ml">Per 100g / 100ml</string>
@@ -613,7 +611,7 @@
     <string name="manufacturing_details">Dettagli di produzione</string>
     <string name="origin_of_ingredients">Origine degli ingredienti</string>
     <string name="manufacturing_place">Luogo di produzione</string>
-    <string name="emb_code">Codice EMB</string>
+    <string name="emb_code">Codice di tracciabilità</string>
     <string name="purchasing_details">Dettagli di acquisto</string>
     <string name="country_where_purchased">Paese in cui è stato acquistato</string>
     <string name="stores">Negozi</string>
@@ -757,6 +755,7 @@
     <string name="unknown_status_no_translation">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti non riconosciuti.</string>
     <string name="help_translate_ingredients">Aiuta a tradurre gli ingredienti nella tua lingua</string>
     <string name="unknown_status_missing_ingredients">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti mancanti.</string>
+    <string name="unknown_status_ambiguous_ingredients">Non è stato possibile valutare lo stato del prodotto a causa di ingredienti ambigui: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Aiuta ad estrarre gli ingredienti per ottenere lo stato di %1$s.</string>
     <string name="add_photo_to_extract_ingredients">Aggiungi una foto per iniziare ad estrarre gli ingredienti</string>
     <string name="product_already_exists_in_comparison">Il prodotto esiste già nell\'elenco di confronto</string>
@@ -790,8 +789,9 @@
     <string name="content_exit">Premi qui per tornare al prodotto</string>
     <string name="icon_label">Icona etichette</string>
     <string name="icon_categories">Icona categorie</string>
-    <string name="icon_emb">Icona codice EMB</string>
+    <string name="icon_emb">Icona del codice di tracciabilità</string>
     <string name="product_front_image">Immagine frontale prodotto</string>
-    <string name="brand_hint">Esempi: CocaCola, Nestlé, ecc…</string>
+    <string name="brand_hint">Esempi: Coca-Cola, Nestlé, ecc…</string>
     <string name="sign_in_or_register">Accedi o registrati</string>
+    <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
 </resources>

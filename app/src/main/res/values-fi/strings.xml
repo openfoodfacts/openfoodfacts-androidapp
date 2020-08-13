@@ -496,8 +496,6 @@
     <string name="sort">Järjestä</string>
     <string name="by_nutrition_grade">Ravintoarvosana</string>
     <string name="sort_by">Lajittelujärjestys</string>
-    <string name="shake_summary">Ravista puhelinta lukeaksesi tuotteita</string>
-    <string name="shake_title">Ravista lukeaksesi</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Kuvia ilman viivakoodia ei voi vielä lisätä sovelluksella. Kokeile sivuston mobiiliversiota.</string>
     <string name="no_barcode">Viivakoodia ei löydetty</string>
@@ -757,6 +755,7 @@
     <string name="unknown_status_no_translation">Tuotteen tilaa ei voitu arvioida tunnistamattomien ainesosien takia.</string>
     <string name="help_translate_ingredients">Auta kääntämään ainesosat kielellesi</string>
     <string name="unknown_status_missing_ingredients">Tuotteen tilaa ei voitu arvioida puuttuvien ainesosien takia.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Auta poimimaan ainesosat tilan %1$s saamiseksi</string>
     <string name="add_photo_to_extract_ingredients">Lisää kuva aloittaaksesi ainesosien poiminnan</string>
     <string name="product_already_exists_in_comparison">Tuote on jo vertailuluettelossa</string>
@@ -794,4 +793,5 @@
     <string name="product_front_image">Tuotteen etukuva</string>
     <string name="brand_hint">Esimerkkejä: CocaCola, Nestle jne…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

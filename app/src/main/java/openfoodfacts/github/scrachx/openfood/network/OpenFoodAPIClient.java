@@ -614,8 +614,7 @@ public class OpenFoodAPIClient {
             });
     }
 
-    private Completable setDefaultImageFromServerResponse(@NonNull JsonNode body,
-                                                          @NonNull final ProductImage image) {
+    private Completable setDefaultImageFromServerResponse(@NonNull final JsonNode body, @NonNull final ProductImage image) {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("imgid", body.get("image").get("imgid").asText());
         queryMap.put("id", body.get("imagefield").asText());

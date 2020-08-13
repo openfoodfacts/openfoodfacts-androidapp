@@ -126,7 +126,7 @@
         <item>pH</item>
         <item>磷</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>多不饱和脂肪</item>
         <item>钾</item>
         <item>硒</item>
         <item>血清蛋白</item>
@@ -158,7 +158,7 @@
     <string name="txtBarcode">条形码</string>
     <string name="txtCategories">类别：</string>
     <string name="txtLabels">标签，认证，奖励：</string>
-    <string name="txtEMB">EMB 代码：</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">配料列表 :</string>
     <string name="Donate">捐助</string>
     <string name="Donation">点击此处捐助给 Open Food Facts</string>
@@ -170,9 +170,9 @@
     <string name="txtServingSize">份量：</string>
     <string name="txtNutrientLevel100g">100g 所含营养等级：</string>
     <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
-    <string name="txtNutritionLevelLow">库存量</string>
-    <string name="txtNutritionLevelModerate">中等数量</string>
-    <string name="txtNutritionLevelHigh">最高含量</string>
+    <string name="txtNutritionLevelLow">较少含量</string>
+    <string name="txtNutritionLevelModerate">中等含量</string>
+    <string name="txtNutritionLevelHigh">较高含量</string>
     <string name="txtSave">保存</string>
     <string name="txtSignIn">登录</string>
     <string name="txtToastSaved">用户已保存</string>
@@ -181,7 +181,7 @@
     <string name="txtSugars">糖</string>
     <string name="hintBarcode">条形码</string>
     <string name="txtNutriScoreInfo">了解有关营养水平的更多信息</string>
-    <string name="hintLogin">登录</string>
+    <string name="hintLogin">用户名</string>
     <string name="hintPass">密码</string>
     <string name="errorLogin">用户名或密码错误</string>
     <string name="errorWeb">我们无法访问互联网，你有连接问题吗？</string>
@@ -224,7 +224,7 @@
     <string name="select_camera">选择一个摄像头</string>
     <string name="ok_button">确定</string>
     <string name="cancel_button">取消</string>
-    <string name="login_button">登录</string>
+    <string name="login_button">用户名</string>
     <string name="create_account_button">创建帐号</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">它是如何工作的？</string>
@@ -322,10 +322,10 @@
     <string name="for_100g">每 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">每份</string>
-    <string name="nutrition_monounsaturatedFat">单不饱和脂肪</string>
-    <string name="nutrition_polyunsaturatedFat">多元不饱和脂肪</string>
+    <string name="nutrition_monounsaturatedFat">单元不饱和脂肪</string>
+    <string name="nutrition_polyunsaturatedFat">多不饱和脂肪</string>
     <string name="nutrition_omega3">欧米伽 3</string>
-    <string name="nutrition_omega6">欧米伽 5</string>
+    <string name="nutrition_omega6">欧米伽 6</string>
     <string name="nutrition_omega9">欧米伽 9</string>
     <string name="nutrition_sucrose">蔗糖</string>
     <string name="nutrition_glucose">葡萄糖</string>
@@ -373,12 +373,12 @@
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">拍摄营养成分</string>
-    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_front">拍摄正面照片</string>
     <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍摄更多照片</string>
     <string name="txtSaturatedFat">饱和脂肪</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -392,7 +392,7 @@
     <string name="history_shortcut_short_label">历史记录</string>
     <string name="history_shortcut_long_label">历史记录</string>
     <string name="contributions_shortcut_short_label">贡献</string>
-    <string name="contributions_shortcut_long_label">我的贡献</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">忘记密码</string>
     <string name="next">下一个</string>
     <string name="skip">跳过</string>
@@ -414,7 +414,7 @@
     <string name="preference_enable_mobile_data_summary_on">使用移动数据和 WiFi 上传新产品</string>
     <string name="preference_enable_mobile_data_summary_off">仅使用 WiFi 上传新产品</string>
     <string name="device_on_mobile_data_warning_title">信息</string>
-    <string name="device_on_mobile_data_warning_message">移动数据上传功能已禁用，请连接至 WiFi 或在偏好设置中更改</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">偏好</string>
     <string name="device_on_mobile_data_warning_negative">继续上传</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -448,7 +448,7 @@
     <string name="preference_header_network">网络</string>
     <string name="preference_header_contributing">贡献</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">登录</string>
+    <string name="log_in">用户名</string>
     <string name="login_true">已经登录！</string>
     <string name="confirm_logout">确认注销</string>
     <string name="logout_dialog_content">你确定要注销吗？</string>
@@ -491,8 +491,6 @@
     <string name="sort">排序</string>
     <string name="by_nutrition_grade">营养等级</string>
     <string name="sort_by">排序方式</string>
-    <string name="shake_summary">摇动手机以扫描产品</string>
-    <string name="shake_title">摇动扫描</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">我们没有检测到任何条码</string>
@@ -573,9 +571,9 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">概要</string>
     <string name="ingredients">成分</string>
-    <string name="nutrition_facts">Nutrition Facts</string>
+    <string name="nutrition_facts">营养成分表</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
@@ -588,7 +586,7 @@
     <string name="traces">痕迹</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">营养成分没有在产品傻姑娘注明</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
@@ -607,7 +605,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">成分来源</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">商店</string>
@@ -751,6 +749,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">帮助翻译您的语言中的成分</string>
     <string name="unknown_status_missing_ingredients">由于缺少成分，我们无法评估产品的状态。</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -784,8 +783,9 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

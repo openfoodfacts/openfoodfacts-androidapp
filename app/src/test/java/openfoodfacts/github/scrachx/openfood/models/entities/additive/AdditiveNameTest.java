@@ -3,7 +3,7 @@ package openfoodfacts.github.scrachx.openfood.models.entities.additive;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Tests for {@link AdditiveName}
@@ -19,44 +19,44 @@ public class AdditiveNameTest {
 
     @Test
     public void getWikiDataIdWithNullWikiDataId_returnsStringNull() {
-        assertEquals("null", mAdditiveName.getWikiDataId());
+        assertThat(mAdditiveName.getWikiDataId()).isEqualTo("null");
     }
 
     @Test
     public void getWikiDataIdWithoutEnInWikiDataId_returnsWholeWikiDataId() {
         String fakeWikiDataId = "aFakeWikiDataId";
         mAdditiveName.setWikiDataId(fakeWikiDataId);
-        assertEquals(fakeWikiDataId, mAdditiveName.getWikiDataId());
+        assertThat(mAdditiveName.getWikiDataId()).isEqualTo(fakeWikiDataId);
     }
 
     @Test
     public void getWikiDataIdWithoutQuote_returnsWholeWikiDataId() {
         String fakeWikiDataId = "ThisOneIncludesenButNotAQuote";
         mAdditiveName.setWikiDataId(fakeWikiDataId);
-        assertEquals(fakeWikiDataId, mAdditiveName.getWikiDataId());
+        assertThat(mAdditiveName.getWikiDataId()).isEqualTo(fakeWikiDataId);
     }
 
     @Test
     public void getWikiDataIdWithEnAndQuote_returnsPartOfIdInBetweenFivePositionsPastEnAndQuote() {
         String wikiDataId = "somethingenmoreofit\"otherstuff";
         mAdditiveName.setWikiDataId(wikiDataId);
-        assertEquals("eofit", mAdditiveName.getWikiDataId());
+        assertThat(mAdditiveName.getWikiDataId()).isEqualTo("eofit");
     }
 
     @Test
     public void constructorWithWikiDataId_setsIsWikiDataIdPresentTrue() {
         mAdditiveName = new AdditiveName("AdditiveTag", "En", "Name",
-                null,"WikiDatId");
-        assertTrue(mAdditiveName.getIsWikiDataIdPresent());
+            null, "WikiDatId");
+        assertThat(mAdditiveName.getIsWikiDataIdPresent()).isTrue();
     }
 
     @Test
     public void constructorsWithoutWikiDataId_setIsWikiDataIdPresentFalse() {
         // TODO: update empty constructor to set isWikiDataIdPresent to false
         mAdditiveName = new AdditiveName("AdditiveTag", "Language",
-                "Name", "no");
-        assertFalse(mAdditiveName.getIsWikiDataIdPresent());
+            "Name", "no");
+        assertThat(mAdditiveName.getIsWikiDataIdPresent()).isFalse();
         mAdditiveName = new AdditiveName("Name");
-        assertFalse(mAdditiveName.getIsWikiDataIdPresent());
+        assertThat(mAdditiveName.getIsWikiDataIdPresent()).isFalse();
     }
 }

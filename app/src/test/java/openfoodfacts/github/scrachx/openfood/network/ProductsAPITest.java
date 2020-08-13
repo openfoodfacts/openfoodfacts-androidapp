@@ -22,10 +22,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.TestCase.assertNotNull;
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 public class ProductsAPITest {
     /**
@@ -59,34 +56,56 @@ public class ProductsAPITest {
             .create(ProductsAPI.class);
     }
 
+    private static void assertProductsFound(Response<Search> response) {
+        assertThat(response).isNotNull();
+        assertThat(response.isSuccessful()).isTrue();
+        Search search = response.body();
+
+        List<Product> products = search.getProducts();
+        assertThat(products).isNotNull();
+        assertThat(Integer.parseInt(search.getCount())).isGreaterThan(0);
+        assertThat(products.isEmpty()).isFalse();
+    }
+
+    private static void assertNoProductsFound(Response<Search> response) {
+        assertThat(response).isNotNull();
+        assertThat(response.isSuccessful()).isTrue();
+        Search search = response.body();
+        assertThat(search).isNotNull();
+
+        List<Product> products = search.getProducts();
+        assertThat(products.isEmpty()).isTrue();
+        assertThat(Integer.parseInt(search.getCount())).isEqualTo(0);
+    }
+
     @Test
     public void byLanguage() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byLanguage("italian").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byLabel() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byLabel("utz-certified").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byCategory() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byCategory("baby-foods").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
@@ -94,132 +113,80 @@ public class ProductsAPITest {
         String fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags";
         Response<Search> searchResponse = devClientWithAuth.byState("complete", fieldsToFetchFacets).execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byPackaging() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byPackaging("cardboard").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byBrand() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byBrand("monoprix").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byPurchasePlace() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byPurchasePlace("marseille-5").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byStore() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byStore("super-u").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse);
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byCountry() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byCountry("france").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byIngredient() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byIngredient("sucre").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
     public void byTrace() throws Exception {
         Response<Search> searchResponse = devClientWithAuth.byIngredient("eggs").execute();
 
-        assertNotNull(searchResponse);
+        assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
-        assertNotNull(search);
-        assertNotNull(search.getProducts());
-    }
-
-    @Test
-    public void getProduct_notFound() throws Exception {
-        String barcode = "457457457";
-        Response<ProductState> response = devClientWithAuth.getProductByBarcode(barcode, "code", Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
-
-        assertTrue(response.isSuccessful());
-
-        assertEquals(0, response.body().getStatus());
-        assertEquals("product not found", response.body().getStatusVerbose());
-        assertEquals(barcode, response.body().getCode());
-    }
-
-    @Test
-    public void post_product() throws IOException {
-        SendProduct product = new SendProduct();
-
-        product.setBarcode("1234567890");
-        product.setName("ProductName");
-        product.setBrands("productbrand");
-        product.setWeight("123");
-        product.setWeight_unit("g");
-        product.setLang("en");
-
-        Map<String, String> productDetails = new HashMap<String, String>() {{
-            put("lang", product.getLang());
-            put("product_name", product.getName());
-            put("brands", product.getBrands());
-            put("quantity", product.getQuantity());
-        }};
-
-        ProductState body = devClientWithAuth
-            .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
-            .blockingGet();
-
-        assertEquals(body.getStatus(), 1);
-        assertEquals(body.getStatusVerbose(), "fields saved");
-
-        String fields = "product_name,brands,brands_tags,quantity";
-
-        Response<ProductState> response = devClientWithAuth.getProductByBarcode(
-            product.getBarcode(),
-            fields,
-            Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
-        ).execute();
-
-        Product savedProduct = response.body().getProduct();
-        assertEquals(product.getName(), savedProduct.getProductName());
-        assertEquals(product.getBrands(), savedProduct.getBrands());
-        assertTrue(savedProduct.getBrandsTags().contains(product.getBrands()));
-        assertEquals(product.getWeight() + " " + product.getWeight_unit(), savedProduct.getQuantity());
+        assertThat(search).isNotNull();
+        assertThat(search.getProducts()).isNotNull();
     }
 
     @Test
@@ -253,25 +220,55 @@ public class ProductsAPITest {
         assertProductsFound(response);
     }
 
-    private static void assertProductsFound(Response<Search> response) {
-        assertNotNull(response);
-        assertTrue(response.isSuccessful());
-        Search search = response.body();
+    @Test
+    public void getProduct_notFound() throws Exception {
+        String barcode = "457457457";
+        Response<ProductState> response = devClientWithAuth.getProductByBarcode(barcode, "code", Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
 
-        List<Product> products = search.getProducts();
-        assertNotNull(products);
-        assertTrue(Integer.parseInt(search.getCount()) > 0);
-        assertFalse(products.isEmpty());
+        assertThat(response.isSuccessful()).isTrue();
+
+        assertThat(response.body().getStatus()).isEqualTo(0);
+        assertThat(response.body().getStatusVerbose()).isEqualTo("product not found");
+        assertThat(response.body().getCode()).isEqualTo(barcode);
     }
 
-    private static void assertNoProductsFound(Response<Search> response) {
-        assertNotNull(response);
-        assertTrue(response.isSuccessful());
-        Search search = response.body();
-        assertNotNull(search);
+    @Test
+    public void post_product() throws IOException {
+        SendProduct product = new SendProduct();
 
-        List<Product> products = search.getProducts();
-        assertTrue(products.isEmpty());
-        assertEquals(0, Integer.parseInt(search.getCount()));
+        product.setBarcode("1234567890");
+        product.setName("ProductName");
+        product.setBrands("productbrand");
+        product.setWeight("123");
+        product.setWeight_unit("g");
+        product.setLang("en");
+
+        Map<String, String> productDetails = new HashMap<String, String>() {{
+            put("lang", product.getLang());
+            put("product_name", product.getName());
+            put("brands", product.getBrands());
+            put("quantity", product.getQuantity());
+        }};
+
+        ProductState body = devClientWithAuth
+            .saveProductSingle(product.getBarcode(), productDetails, OpenFoodAPIClient.getCommentToUpload())
+            .blockingGet();
+
+        assertThat(body.getStatus()).isEqualTo(1);
+        assertThat(body.getStatusVerbose()).isEqualTo("fields saved");
+
+        String fields = "product_name,brands,brands_tags,quantity";
+
+        Response<ProductState> response = devClientWithAuth.getProductByBarcode(
+            product.getBarcode(),
+            fields,
+            Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
+        ).execute();
+
+        Product savedProduct = response.body().getProduct();
+        assertThat(savedProduct.getProductName()).isEqualTo(product.getName());
+        assertThat(savedProduct.getBrands()).isEqualTo(product.getBrands());
+        assertThat(savedProduct.getBrandsTags()).contains(product.getBrands());
+        assertThat(savedProduct.getQuantity()).isEqualTo(product.getWeight() + " " + product.getWeight_unit());
     }
 }

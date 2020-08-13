@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestData.PEANUTS_EN;
@@ -34,14 +34,14 @@ public class AllergenResponseTest {
 
         // TODO: expected this to be the allergen ID but a string to constructor actually makes it
         // the tag. Should update AllergenResponse to fix that.
-        assertEquals(UNIQUE_ALLERGEN_ID_1, allergen.getTag());
-        assertEquals(2, allergen.getNames().size());
-        assertEquals(UNIQUE_ALLERGEN_ID_1, allergen.getNames().get(0).getAllergenTag());
-        assertEquals(PEANUTS_EN, allergen.getNames().get(0).getName());
-        assertEquals(LANGUAGE_CODE_ENGLISH, allergen.getNames().get(0).getLanguageCode());
-        assertEquals(UNIQUE_ALLERGEN_ID_1, allergen.getNames().get(1).getAllergenTag());
-        assertEquals(PEANUTS_FR, allergen.getNames().get(1).getName());
-        assertEquals(LANGUAGE_CODE_FRENCH, allergen.getNames().get(1).getLanguageCode());
+        assertThat(allergen.getTag()).isEqualTo(UNIQUE_ALLERGEN_ID_1);
+        assertThat(allergen.getNames()).hasSize(2);
+        assertThat(allergen.getNames().get(0).getAllergenTag()).isEqualTo(UNIQUE_ALLERGEN_ID_1);
+        assertThat(allergen.getNames().get(0).getName()).isEqualTo(PEANUTS_EN);
+        assertThat(allergen.getNames().get(0).getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(allergen.getNames().get(1).getAllergenTag()).isEqualTo(UNIQUE_ALLERGEN_ID_1);
+        assertThat(allergen.getNames().get(1).getName()).isEqualTo(PEANUTS_FR);
+        assertThat(allergen.getNames().get(1).getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
     }
 
     @Test
@@ -50,6 +50,6 @@ public class AllergenResponseTest {
         AllergenResponse allergenResponse = new AllergenResponse(UNIQUE_ALLERGEN_ID_1, nameMap, wikiDataCode);
         Allergen allergen = allergenResponse.map();
 
-        assertEquals(wikiDataCode, allergen.getWikiDataId());
+        assertThat(allergen.getWikiDataId()).isEqualTo(wikiDataCode);
     }
 }

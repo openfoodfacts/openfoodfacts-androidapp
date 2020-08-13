@@ -37,12 +37,12 @@ import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNa
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
+import openfoodfacts.github.scrachx.openfood.views.viewmodel.BaseViewModel;
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.
  */
-public class CategoryFragmentViewModel extends ViewModel {
+public class CategoryFragmentViewModel extends BaseViewModel {
     private final ProductRepository repository;
     private final List<CategoryName> categories;
     private final ObservableField<List<CategoryName>> filteredCategories;
@@ -59,13 +59,13 @@ public class CategoryFragmentViewModel extends ViewModel {
 
     @Override
     protected void subscribe(@NonNull CompositeDisposable subscriptions) {
-        loadCategories();
+        refreshCategories();
     }
 
     /**
      * Generates a network call for showing categories in CategoryFragment
      */
-    public void loadCategories() {
+    public void refreshCategories() {
         subscriptions.add(repository.getAllCategoriesByLanguageCode(LocaleHelper.getLanguage(OFFApplication.getInstance()))
             .doOnSubscribe(disposable -> {
                 showOffline.set(View.GONE);

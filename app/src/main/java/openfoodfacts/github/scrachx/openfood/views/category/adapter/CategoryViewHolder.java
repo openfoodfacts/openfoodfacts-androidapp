@@ -22,10 +22,10 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
     public void bind(CategoryName category) {
         binding.setCategory(category);
         binding.getRoot().setOnClickListener(v ->
-                ProductBrowsingListActivity.startActivity(v.getContext(),
-                        category.getCategoryTag(),
-                        category.getName(),
-                        SearchType.CATEGORY));
+                ProductBrowsingListActivity.start(v.getContext(),
+                    category.getCategoryTag(),
+                    category.getName(),
+                    SearchType.CATEGORY));
         binding.executePendingBindings();
     }
 }

@@ -116,7 +116,7 @@ public class ContributorsFragment extends BaseFragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View view) {
-                ProductBrowsingListActivity.startActivity(getContext(), contributor, SearchType.CONTRIBUTOR);
+                ProductBrowsingListActivity.start(getContext(), contributor, SearchType.CONTRIBUTOR);
             }
         };
         spannableStringBuilder.append(contributor);
@@ -130,7 +130,7 @@ public class ContributorsFragment extends BaseFragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View view) {
-                ProductBrowsingListActivity.startActivity(getContext(), state, SearchType.STATE);
+                ProductBrowsingListActivity.start(getContext(), state, SearchType.STATE);
             }
         };
         spannableStringBuilder.append(state);

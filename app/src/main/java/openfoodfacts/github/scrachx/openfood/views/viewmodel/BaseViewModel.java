@@ -7,12 +7,10 @@ import io.reactivex.disposables.CompositeDisposable;
 /**
  * Created by Abdelali Eramli on 27/12/2017.
  */
-
-public abstract class ViewModel {
-
+public abstract class BaseViewModel {
     protected CompositeDisposable subscriptions;
 
-    public ViewModel() {
+    public BaseViewModel() {
     }
 
     public void bind() {

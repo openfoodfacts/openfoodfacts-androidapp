@@ -12,7 +12,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH;
 import static openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameTestData.LABEL_NAME_EN;
@@ -57,17 +57,17 @@ public class LabelTest {
         mLabel.__setDaoSession(mockDaoSession);
         List<LabelName> labelNames = mLabel.getNames();
 
-        assertEquals(2, labelNames.size());
+        assertThat(labelNames).hasSize(2);
 
         LabelName labelName1 = labelNames.get(0);
-        assertEquals(LABEL_TAG, labelName1.getLabelTag());
-        assertEquals(LANGUAGE_CODE_ENGLISH, labelName1.getLanguageCode());
-        assertEquals(LABEL_NAME_EN, labelName1.getName());
+        assertThat(labelName1.getLabelTag()).isEqualTo(LABEL_TAG);
+        assertThat(labelName1.getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(labelName1.getName()).isEqualTo(LABEL_NAME_EN);
 
         LabelName labelName2 = labelNames.get(1);
-        assertEquals(LABEL_TAG, labelName2.getLabelTag());
-        assertEquals(LANGUAGE_CODE_FRENCH, labelName2.getLanguageCode());
-        assertEquals(LABEL_NAME_FR, labelName2.getName());
+        assertThat(labelName2.getLabelTag()).isEqualTo(LABEL_TAG);
+        assertThat(labelName2.getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
+        assertThat(labelName2.getName()).isEqualTo(LABEL_NAME_FR);
     }
 
     @Test

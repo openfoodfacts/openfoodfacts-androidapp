@@ -518,8 +518,6 @@
     <string name="sort">التصنيف</string>
     <string name="by_nutrition_grade">درجة التغذية</string>
     <string name="sort_by">ترتيب حسب</string>
-    <string name="shake_summary">قم بهز الهاتف لمسح المنتجات</string>
-    <string name="shake_title">هز الهاتف للفحص</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">لا يمكن بعد إضافة الصور بدون الباركود فى التطبيق. يرجى تجربة نسخة الويب للهاتف المحمولة.</string>
     <string name="no_barcode">البرنامج لم يكتشف أي باركود</string>
@@ -783,6 +781,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">ساعد في استخراج المكونات لتحصل على الحالة %1$s</string>
     <string name="add_photo_to_extract_ingredients">أضف صورة لبدء استخراج المكونات</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -820,4 +819,5 @@
     <string name="product_front_image">الصورة اﻷمامية للمنتج</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

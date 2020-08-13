@@ -744,18 +744,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                         if (result != null) {
                             FragmentActivity activity = getActivity();
                             if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomScreen(result, label,
+                                BottomScreenCommon.showBottomSheet(result, label,
                                     activity.getSupportFragmentManager());
                             }
                         } else {
-                            ProductBrowsingListActivity.startActivity(getContext(),
+                            ProductBrowsingListActivity.start(getContext(),
                                 label.getLabelTag(),
                                 label.getName(),
                                 SearchType.LABEL);
                         }
                     });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(),
+                    ProductBrowsingListActivity.start(getContext(),
                         label.getLabelTag(),
                         label.getName(),
                         SearchType.LABEL);
@@ -876,7 +876,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     private void openFrontImageFullscreen() {
         if (mUrlImage != null) {
-            FullScreenActivityOpener.openForUrl(this, product, ProductImageField.FRONT, mUrlImage, binding.imageViewFront);
+            FullScreenActivityOpener.openForUrl(this,
+                product,
+                ProductImageField.FRONT,
+                mUrlImage,
+                binding.imageViewFront);
         } else {
             // take a picture
             newFrontImage();

@@ -14,7 +14,7 @@ public class FragmentUtils {
     }
 
     @Nullable
-    public static ProductState getStateFromArguments(Fragment fragment) {
+    public static ProductState getStateFromArguments(@NonNull Fragment fragment) {
         final Bundle args = fragment.getArguments();
         if (args == null) {
             return null;

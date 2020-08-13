@@ -78,6 +78,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.ConnectionSpec;
@@ -569,7 +570,7 @@ public class Utils {
             clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(@NonNull View view) {
-                    ProductBrowsingListActivity.startActivity(activity, text, type);
+                    ProductBrowsingListActivity.start(activity, text, type);
                 }
             };
         } else {
@@ -596,6 +597,9 @@ public class Utils {
     public static boolean isBatteryLevelLow(@NonNull Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
+        if (batteryStatus == null) {
+            throw new IllegalStateException("cannot get battery level");
+        }
 
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
@@ -747,6 +751,10 @@ public class Utils {
             }
         }
         return true;
+    }
+
+    public static boolean isAllGranted(@NonNull Map<String, Boolean> grantResults) {
+        return grantResults.containsValue(false);
     }
 }
 

@@ -496,8 +496,6 @@
     <string name="sort">Trier</string>
     <string name="by_nutrition_grade">Note nutritionnelle</string>
     <string name="sort_by">Trier par</string>
-    <string name="shake_summary">Secouez le téléphone pour scanner des produits</string>
-    <string name="shake_title">Secouer pour scanner</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Les photos sans code-barres ne peuvent pas encore être ajoutées avec l\'application. Il est possible d\'en ajouter un avec la version web mobile.</string>
     <string name="no_barcode">Nous n\'avons détecté aucun code-barres</string>
@@ -628,7 +626,7 @@
     <string name="edit_ingredients_image">Modifier la photo des ingrédients</string>
     <string name="edit_other_image">Modifier la photo</string>
     <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="sign_in_to_answer">Veuillez vous connecter ou vous inscrire pour répondre à un aperçu.</string>
     <string name="hint_quantity">Exemples : 2 l, 250 g, 1 kg, 25 cl, 6 onces liquides, 1 livre</string>
     <string name="edit_product_title">Modifier un produit</string>
     <string name="nutrient_already_added">%s est déjà présent dans les informations nutritionnelles</string>
@@ -757,6 +755,7 @@
     <string name="unknown_status_no_translation">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients inconnus.</string>
     <string name="help_translate_ingredients">Aidez à traduire les ingrédients dans votre langue</string>
     <string name="unknown_status_missing_ingredients">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients manquants.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Aidez à extraire les ingrédients pour obtenir le statut de %1$s.</string>
     <string name="add_photo_to_extract_ingredients">Ajoutez une photo pour débuter l\'extraction des ingrédients</string>
     <string name="product_already_exists_in_comparison">Le produit existe déjà dans la liste de comparaison</string>
@@ -794,4 +793,5 @@
     <string name="product_front_image">Image frontale du produit</string>
     <string name="brand_hint">Exemples : Coca-Cola, Nestlé, etc.</string>
     <string name="sign_in_or_register">Se connecter ou s\'inscrire</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>

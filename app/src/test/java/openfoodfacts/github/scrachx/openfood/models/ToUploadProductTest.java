@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Tests for {@link ToUploadProduct}
@@ -24,16 +24,16 @@ public class ToUploadProductTest {
     @Test
     public void getProductField_returnsCorrectProductImageField() {
         toUploadProduct.setField("front");
-        assertEquals(ProductImageField.FRONT, toUploadProduct.getProductField());
+        assertThat(toUploadProduct.getProductField()).isEqualTo(ProductImageField.FRONT);
 
         toUploadProduct.setField("ingredients");
-        assertEquals(ProductImageField.INGREDIENTS, toUploadProduct.getProductField());
+        assertThat(toUploadProduct.getProductField()).isEqualTo(ProductImageField.INGREDIENTS);
 
         toUploadProduct.setField("nutrients");
-        assertEquals(ProductImageField.NUTRITION, toUploadProduct.getProductField());
+        assertThat(toUploadProduct.getProductField()).isEqualTo(ProductImageField.NUTRITION);
 
         toUploadProduct.setField("something else");
-        assertEquals(ProductImageField.OTHER, toUploadProduct.getProductField());
+        assertThat(toUploadProduct.getProductField()).isEqualTo(ProductImageField.OTHER);
     }
 
     @Test
@@ -46,10 +46,10 @@ public class ToUploadProductTest {
 
         toUploadProduct = new ToUploadProduct(id, barcode, imageFilePath, uploaded, field);
 
-        assertEquals(id, toUploadProduct.getId().longValue());
-        assertEquals(barcode, toUploadProduct.getBarcode());
-        assertEquals(imageFilePath, toUploadProduct.getImageFilePath());
-        assertEquals(uploaded, toUploadProduct.getUploaded());
-        assertEquals(field, toUploadProduct.getField());
+        assertThat(toUploadProduct.getId()).isEqualTo(id);
+        assertThat(toUploadProduct.getBarcode()).isEqualTo(barcode);
+        assertThat(toUploadProduct.getImageFilePath()).isEqualTo(imageFilePath);
+        assertThat(toUploadProduct.getUploaded()).isEqualTo(uploaded);
+        assertThat(toUploadProduct.getField()).isEqualTo(field);
     }
 }

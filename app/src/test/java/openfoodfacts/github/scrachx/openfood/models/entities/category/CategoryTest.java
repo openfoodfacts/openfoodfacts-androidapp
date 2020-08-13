@@ -12,7 +12,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -68,13 +68,13 @@ public class CategoryTest {
 
         List<CategoryName> names = mCategory.getNames();
 
-        assertEquals(2, names.size());
-        assertEquals(CATEGORY_TAG_1, names.get(0).getCategoryTag());
-        assertEquals(LANGUAGE_CODE_ENGLISH, names.get(0).getLanguageCode());
-        assertEquals(CATEGORY_NAME_NAME_1, names.get(0).getName());
-        assertEquals(CATEGORY_TAG_2, names.get(1).getCategoryTag());
-        assertEquals(LANGUAGE_CODE_FRENCH, names.get(1).getLanguageCode());
-        assertEquals(CATEGORY_NAME_NAME_2, names.get(1).getName());
+        assertThat(names).hasSize(2);
+        assertThat(names.get(0).getCategoryTag()).isEqualTo(CATEGORY_TAG_1);
+        assertThat(names.get(0).getLanguageCode()).isEqualTo(LANGUAGE_CODE_ENGLISH);
+        assertThat(names.get(0).getName()).isEqualTo(CATEGORY_NAME_NAME_1);
+        assertThat(names.get(1).getCategoryTag()).isEqualTo(CATEGORY_TAG_2);
+        assertThat(names.get(1).getLanguageCode()).isEqualTo(LANGUAGE_CODE_FRENCH);
+        assertThat(names.get(1).getName()).isEqualTo(CATEGORY_NAME_NAME_2);
     }
 
     @Test

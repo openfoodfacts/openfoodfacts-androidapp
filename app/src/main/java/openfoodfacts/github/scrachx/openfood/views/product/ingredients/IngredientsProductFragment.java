@@ -303,18 +303,18 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                             if (result != null) {
                                 FragmentActivity activity = getActivity();
                                 if (activity != null && !activity.isFinishing()) {
-                                    BottomScreenCommon.showBottomScreen(result, allergen,
+                                    BottomScreenCommon.showBottomSheet(result, allergen,
                                         activity.getSupportFragmentManager());
                                 }
                             } else {
-                                ProductBrowsingListActivity.startActivity(getContext(),
+                                ProductBrowsingListActivity.start(getContext(),
                                     allergen.getAllergenTag(),
                                     allergen.getName(),
                                     SearchType.ALLERGEN);
                             }
                         });
                 } else {
-                    ProductBrowsingListActivity.startActivity(getContext(),
+                    ProductBrowsingListActivity.start(getContext(),
                         allergen.getAllergenTag(),
                         allergen.getName(),
                         SearchType.ALLERGEN);

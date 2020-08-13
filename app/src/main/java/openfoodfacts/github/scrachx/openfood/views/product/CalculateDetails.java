@@ -1,10 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.views.product;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -13,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.CalculateDetailsBinding;
@@ -40,14 +44,30 @@ import static openfoodfacts.github.scrachx.openfood.models.Nutriments.PROT_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.VITAMINS_MAP;
 
 public class CalculateDetails extends BaseActivity {
+    private static final String KEY_SAMPLE_OBJECT = "sampleObject";
+    private static final String KEY_SPINNER_VALUE = "spinnervalue";
+    private static final String KEY_WEIGHT = "weight";
     Nutriments nutriments;
-    List<NutrimentListItem> nutrimentListItems;
-    private CalculateDetailsBinding binding;
-    String spinnervalue;
-    String weight;
-    String pname;
-    float value;
-    Product p;
+    private List<NutrimentListItem> nutrimentListItems;
+    private Product product;
+    private String spinnerValue;
+    private float weight;
+
+    /**
+     * @deprecated use {@link #start(Context, Product, String, float)}
+     */
+    @Deprecated
+    public static void start(@NonNull Context context, @NonNull Product product, @NonNull String spinnerValue, @NonNull String weight) {
+        start(context, product, spinnerValue, Float.parseFloat(weight));
+    }
+
+    public static void start(@NonNull Context context, @NonNull Product product, @NonNull String spinnerValue, float weight) {
+        Intent starter = new Intent(context, CalculateDetails.class);
+        starter.putExtra(KEY_SAMPLE_OBJECT, product);
+        starter.putExtra(KEY_SPINNER_VALUE, spinnerValue);
+        starter.putExtra(KEY_WEIGHT, weight);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,23 +76,26 @@ public class CalculateDetails extends BaseActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
-        binding = CalculateDetailsBinding.inflate(getLayoutInflater());
+        openfoodfacts.github.scrachx.openfood.databinding.CalculateDetailsBinding binding = CalculateDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setTitle(getString(R.string.app_name_long));
 
-        setSupportActionBar(binding.toolbar1);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(binding.toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         final Intent intent = getIntent();
 
-        p = (Product) intent.getSerializableExtra("sampleObject");
-        spinnervalue = intent.getStringExtra("spinnervalue");
-        weight = intent.getStringExtra("weight");
-        value = Float.parseFloat(weight);
-        nutriments = p.getNutriments();
+        product = (Product) intent.getSerializableExtra(KEY_SAMPLE_OBJECT);
+        spinnerValue = intent.getStringExtra(KEY_SPINNER_VALUE);
+        weight = intent.getFloatExtra(KEY_WEIGHT, -1);
+        if (product == null || spinnerValue == null || weight == -1) {
+            Log.e(CalculateDetails.class.getSimpleName(), "fragment instantiated with wrong intent extras");
+            finish();
+        }
+        nutriments = product.getNutriments();
         nutrimentListItems = new ArrayList<>();
-        binding.resultTextView.setText(getString(R.string.display_fact, weight + " " + spinnervalue));
+        binding.resultTextView.setText(getString(R.string.display_fact, weight + " " + spinnerValue));
         binding.nutrimentsRecyclerViewCalc.setHasFixedSize(true);
 
         // use a linear layout manager
@@ -86,14 +109,14 @@ public class CalculateDetails extends BaseActivity {
         binding.nutrimentsRecyclerViewCalc.addItemDecoration(dividerItemDecoration);
 
         // Header hack
-        nutrimentListItems.add(new NutrimentListItem(ProductUtils.isPerServingInLiter(p)));
+        nutrimentListItems.add(new NutrimentListItem(ProductUtils.isPerServingInLiter(product)));
 
         // Energy
         Nutriments.Nutriment energyKcal = nutriments.get(ENERGY_KCAL);
         if (energyKcal != null) {
             nutrimentListItems.add(
                 new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
-                    calculateCalories(value, spinnervalue),
+                    calculateCalories(weight, spinnerValue),
                     energyKcal.getForServingInUnits(),
                     Units.ENERGY_KCAL,
                     nutriments.getModifierIfNotDefault(ENERGY_KCAL)));
@@ -102,7 +125,7 @@ public class CalculateDetails extends BaseActivity {
         if (energyKj != null) {
             nutrimentListItems.add(
                 new NutrimentListItem(getString(R.string.nutrition_energy_short_name),
-                    calculateKj(value, spinnervalue),
+                    calculateKj(weight, spinnerValue),
                     energyKj.getForServingInUnits(),
                     Units.ENERGY_KJ.toLowerCase(),
                     nutriments.getModifierIfNotDefault(ENERGY_KJ)));
@@ -113,7 +136,7 @@ public class CalculateDetails extends BaseActivity {
         if (fat != null) {
             String modifier = nutriments.getModifier(FAT);
             nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_fat),
-                fat.getForAnyValue(value, spinnervalue),
+                fat.getForAnyValue(weight, spinnerValue),
                 fat.getForServingInUnits(),
                 fat.getUnit(),
                 Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
@@ -126,7 +149,7 @@ public class CalculateDetails extends BaseActivity {
         if (carbohydrates != null) {
             String modifier = nutriments.getModifier(CARBOHYDRATES);
             nutrimentListItems.add(new HeaderNutrimentListItem(getString(R.string.nutrition_carbohydrate),
-                carbohydrates.getForAnyValue(value, spinnervalue),
+                carbohydrates.getForAnyValue(weight, spinnerValue),
                 carbohydrates.getForServingInUnits(),
                 carbohydrates.getUnit(),
                 Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
@@ -143,7 +166,7 @@ public class CalculateDetails extends BaseActivity {
             String modifier = nutriments.getModifier(PROTEINS);
             nutrimentListItems.add(
                 new HeaderNutrimentListItem(getString(R.string.nutrition_proteins),
-                    proteins.getForAnyValue(value, spinnervalue),
+                    proteins.getForAnyValue(weight, spinnerValue),
                     proteins.getForServingInUnits(),
                     proteins.getUnit(),
                     Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
@@ -181,7 +204,7 @@ public class CalculateDetails extends BaseActivity {
             if (nutriment != null) {
                 final String modifier = nutriments.getModifier(entry.getKey());
                 items.add(new NutrimentListItem(getString(entry.getValue()),
-                    nutriment.getForAnyValue(value, spinnervalue),
+                    nutriment.getForAnyValue(weight, spinnerValue),
                     nutriment.getForServingInUnits(),
                     nutriment.getUnit(),
                     Modifier.DEFAULT_MODIFIER.equals(modifier) ? "" : modifier));
@@ -192,13 +215,13 @@ public class CalculateDetails extends BaseActivity {
     }
 
     private String calculateCalories(float weight, String unit) {
-        float caloriePer100g = Float.parseFloat(p.getNutriments().get(ENERGY_KCAL).getFor100gInUnits());
+        float caloriePer100g = Float.parseFloat(product.getNutriments().get(ENERGY_KCAL).getFor100gInUnits());
         float weightInG = UnitUtils.convertToGrams(weight, unit);
         return Float.toString(((caloriePer100g / 100) * weightInG));
     }
 
     private String calculateKj(float weight, String unit) {
-        float caloriePer100g = Float.parseFloat(p.getNutriments().get(ENERGY_KJ).getFor100gInUnits());
+        float caloriePer100g = Float.parseFloat(product.getNutriments().get(ENERGY_KJ).getFor100gInUnits());
         float weightInG = UnitUtils.convertToGrams(weight, unit);
         return Float.toString(((caloriePer100g / 100) * weightInG));
     }
