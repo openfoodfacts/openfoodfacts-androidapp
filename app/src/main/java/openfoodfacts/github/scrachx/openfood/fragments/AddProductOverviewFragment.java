@@ -92,8 +92,8 @@ import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
-import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAutoCompleteAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.autocomplete.EmbCodeAutoCompleteAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.autocomplete.PeriodAfterOpeningAutoCompleteAdapter;
 
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;

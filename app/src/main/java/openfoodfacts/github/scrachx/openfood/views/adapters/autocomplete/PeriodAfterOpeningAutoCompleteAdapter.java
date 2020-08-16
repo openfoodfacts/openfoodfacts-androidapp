@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.views.adapters;
+package openfoodfacts.github.scrachx.openfood.views.adapters.autocomplete;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
@@ -10,55 +10,51 @@ import androidx.annotation.NonNull;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 
-public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
-    private final ProductsAPI client;
-    private final List<String> codeList;
+public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
+    private ProductsAPI client;
+    private final ArrayList<String> periodsList;
 
-    public EmbCodeAutoCompleteAdapter(Context context, int textViewResourceId) {
+    public PeriodAfterOpeningAutoCompleteAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
         client = CommonApiManager.getInstance().getProductsApi();
-        codeList = new ArrayList<>();
+        periodsList = new ArrayList<>();
     }
 
     @Override
     public int getCount() {
-        return codeList.size();
+        return periodsList.size();
     }
 
     @Override
     public String getItem(int position) {
-        if (position < 0 || position >= codeList.size()) {
+        if (position < 0 || position >= periodsList.size()) {
             return StringUtils.EMPTY;
         }
-        return codeList.get(position);
+        return periodsList.get(position);
     }
 
     @NonNull
     @Override
     public Filter getFilter() {
-        Filter filter;
-        filter = new Filter() {
+        return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults filterResults = new FilterResults();
                 filterResults.count = 0;
-
-                // if no value typed, return
                 if (constraint == null) {
                     return filterResults;
                 }
                 // Retrieve the autocomplete results from server.
-                codeList.clear();
-                codeList.addAll(client.getEMBCodeSuggestions(constraint.toString()).blockingGet());
+                periodsList.clear();
+                periodsList.addAll(client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet());
 
                 // Assign the data to the FilterResults
-                filterResults.values = codeList;
-                filterResults.count = codeList.size();
+                filterResults.values = periodsList;
+                filterResults.count = periodsList.size();
                 return filterResults;
             }
 
@@ -71,6 +67,5 @@ public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements 
                 }
             }
         };
-        return filter;
     }
 }
