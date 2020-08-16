@@ -47,7 +47,12 @@ public class TipBox extends LinearLayout {
         int marginStart = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginStart, 0);
         int marginEnd = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginEnd, 0);
         int arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START);
+        boolean canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false);
         setArrowAlignment(arrowAlignment, marginStart, marginEnd);
+        int toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor, getResources().getColor(R.color.md_black_1000));
+        int toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor,
+            getResources().getColor(R.color.brand_light_blue));
+        attributes.recycle();
 
         // gone by default
         setVisibility(View.GONE);
@@ -58,13 +63,10 @@ public class TipBox extends LinearLayout {
 
         prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         //Tooltip should be shown the first time the actual content is available
-        boolean canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false);
-        tipMessage.setTextColor(attributes.getColor(R.styleable.TipBox_textColor, getResources().getColor(R.color.md_black_1000)));
-        int toolTipColor = attributes.getColor(R.styleable.TipBox_backgroundColor,
-            getResources().getColor(R.color.brand_light_blue));
-        findViewById(R.id.tipBoxContainer).setBackgroundColor(toolTipColor);
-        arrow.setColorFilter(toolTipColor);
-        attributes.recycle();
+
+        tipMessage.setTextColor(toolTipTextColor);
+        findViewById(R.id.tipBoxContainer).setBackgroundColor(toolTipBackgroundColor);
+        arrow.setColorFilter(toolTipBackgroundColor);
         if (canDisplayImmediately) {
             loadToolTip();
         }
