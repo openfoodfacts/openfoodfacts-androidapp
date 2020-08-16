@@ -257,6 +257,7 @@
                         android:layout_height="wrap_content"
                         app:arrowAlignment="start"
                         app:arrowMarginStart="0dp"
+                        app:shouldDisplayImmediately="true"
                         app:identifier="ingredient_analysis_tip_box"
                         app:message="@string/ingredient_analysis_tip" />
 
