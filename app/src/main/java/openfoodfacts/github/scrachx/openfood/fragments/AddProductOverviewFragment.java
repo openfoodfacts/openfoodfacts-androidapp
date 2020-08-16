@@ -107,7 +107,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private Activity activity;
     private FragmentAddProductOverviewBinding binding;
     private String appLanguageCode;
-    private List<String> category = new ArrayList<>();
+    private List<String> categories = new ArrayList<>();
     private String barcode;
     private List<String> countries = new ArrayList<>();
     private boolean editionMode;
@@ -163,7 +163,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             image.setFilePath(resultUri.getPath());
             if (activity instanceof AddProductActivity) {
-                (getAddProductActivity()).addToPhotoMap(image, position);
+                ((AddProductActivity) activity).addToPhotoMap(image, position);
             }
             hideImageProgress(false, StringUtils.EMPTY);
         });
@@ -221,10 +221,10 @@ public class AddProductOverviewFragment extends BaseFragment {
                 binding.btnOtherPictures.setVisibility(View.GONE);
             }
             if (b.getBoolean("perform_ocr")) {
-                (getAddProductActivity()).proceed();
+                ((AddProductActivity) activity).proceed();
             }
             if (b.getBoolean("send_updated")) {
-                (getAddProductActivity()).proceed();
+                ((AddProductActivity) activity).proceed();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
@@ -557,6 +557,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     /**
      * Auto load suggestions into various NachoTextViews
      */
+    @SuppressWarnings("unchecked")
     private void loadAutoSuggestions() {
         DaoSession daoSession = OFFApplication.getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
@@ -577,11 +578,9 @@ public class AddProductOverviewFragment extends BaseFragment {
             .orderDesc(CategoryNameDao.Properties.Name).build());
 
         asyncSessionCountries.setListenerMainThread(operation -> {
-            @SuppressWarnings("unchecked")
-            List<CountryName> countryNames = (List<CountryName>) operation.getResult();
             countries.clear();
-            for (int i = 0; i < countryNames.size(); i++) {
-                countries.add(countryNames.get(i).getName());
+            for (CountryName name : (List<CountryName>) operation.getResult()) {
+                countries.add(name.getName());
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_dropdown_item_1line, countries);
@@ -592,28 +591,22 @@ public class AddProductOverviewFragment extends BaseFragment {
             binding.embCode.setAdapter(embAdapter);
         });
         asyncSessionLabels.setListenerMainThread(operation -> {
-            @SuppressWarnings("unchecked")
-            List<LabelName> labelNames = (List<LabelName>) operation.getResult();
             labels.clear();
-            for (int i = 0; i < labelNames.size(); i++) {
-                labels.add(labelNames.get(i).getName());
+            for (LabelName name : (List<LabelName>) operation.getResult()) {
+                labels.add(name.getName());
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
-                android.R.layout.simple_dropdown_item_1line, labels);
-            binding.label.setAdapter(adapter);
+            binding.label.setAdapter(new ArrayAdapter<>(activity,
+                android.R.layout.simple_dropdown_item_1line, labels));
         });
         asyncSessionCategories.setListenerMainThread(operation -> {
-            @SuppressWarnings("unchecked")
-            List<CategoryName> categoryNames = (List<CategoryName>) operation.getResult();
-            category.clear();
-            for (int i = 0; i < categoryNames.size(); i++) {
-                category.add(categoryNames.get(i).getName());
+            categories.clear();
+            for (CategoryName name : (List<CategoryName>) operation.getResult()) {
+                categories.add(name.getName());
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
-                android.R.layout.simple_dropdown_item_1line, category);
-            binding.categories.setAdapter(adapter);
+            binding.categories.setAdapter(new ArrayAdapter<>(activity,
+                android.R.layout.simple_dropdown_item_1line, categories));
         });
-        if (BuildConfig.FLAVOR.equals("obf")) {
+        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
             binding.periodOfTimeAfterOpeningTil.setVisibility(View.VISIBLE);
             PeriodAfterOpeningAutoCompleteAdapter customAdapter = new PeriodAfterOpeningAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter);
@@ -631,7 +624,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         binding.language.setText(R.string.product_language);
         binding.language.append(StringUtils.capitalize(current.getDisplayName(current)));
         if (activity instanceof AddProductActivity) {
-            getAddProductActivity().setProductLanguage(languageCode);
+            ((AddProductActivity) activity).setProductLanguage(languageCode);
         }
         if (editionMode) {
             loadFrontImage(lang);
@@ -653,14 +646,14 @@ public class AddProductOverviewFragment extends BaseFragment {
                                 if (languageCode.equals(lang)) {
                                     binding.name.setText(productState.getProduct().getProductName(lang));
                                     if (activity instanceof AddProductActivity) {
-                                        getAddProductActivity().setIngredients("set", productState.getProduct().getIngredientsText(lang));
-                                        getAddProductActivity().updateLanguage();
+                                        ((AddProductActivity) activity).setIngredients("set", productState.getProduct().getIngredientsText(lang));
+                                        ((AddProductActivity) activity).updateLanguage();
                                     }
                                 }
                             } else {
                                 binding.name.setText(null);
                                 if (activity instanceof AddProductActivity) {
-                                    (getAddProductActivity()).setIngredients("set", null);
+                                    ((AddProductActivity) activity).setIngredients("set", null);
                                 }
                             }
                         }
@@ -674,10 +667,6 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
     }
 
-    private AddProductActivity getAddProductActivity() {
-        return (AddProductActivity) activity;
-    }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -686,7 +675,7 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     void next() {
         if (!areRequiredFieldsEmpty() && activity instanceof AddProductActivity) {
-            (getAddProductActivity()).proceed();
+            ((AddProductActivity) activity).proceed();
         }
     }
 
@@ -733,31 +722,32 @@ public class AddProductOverviewFragment extends BaseFragment {
      */
     public void getAllDetails(Map<String, String> targetMap) {
         chipifyAllUnterminatedTokens();
-        if (activity instanceof AddProductActivity) {
-            targetMap.put(ApiFields.Keys.BARCODE, barcode);
-            targetMap.put(ApiFields.Keys.LANG, languageCode);
-            targetMap.put(ApiFields.Keys.LC, appLanguageCode);
-            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-            targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
-            targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
-            targetMap.put(ApiFields.Keys.BRANDS, getValues(binding.brand));
-            targetMap.put(ApiFields.Keys.PACKAGING, getValues(binding.packaging));
-            targetMap.put(ApiFields.Keys.CATEGORIES, getValues(binding.categories));
-            targetMap.put(ApiFields.Keys.LABELS, getValues(binding.label));
-            if (AppFlavors.isFlavors(AppFlavors.OBF)) {
-                targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
-            }
-            if (mImageUrl != null) {
-                targetMap.put("imageUrl", mImageUrl);
-            }
-            targetMap.put(ApiFields.Keys.ORIGINS, getValues(binding.originOfIngredients));
-            targetMap.put(ApiFields.Keys.MANUFACTURING_PLACES, binding.manufacturingPlace.getText().toString());
-            targetMap.put(ApiFields.Keys.EMB_CODES, getValues(binding.embCode));
-            targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
-            targetMap.put(ApiFields.Keys.PURCHASE_PLACES, getValues(binding.countryWherePurchased));
-            targetMap.put(ApiFields.Keys.STORES, getValues(binding.stores));
-            targetMap.put(ApiFields.Keys.COUNTRIES, getValues(binding.countriesWhereSold));
+        if (!(activity instanceof AddProductActivity)) {
+            return;
         }
+        targetMap.put(ApiFields.Keys.BARCODE, barcode);
+        targetMap.put(ApiFields.Keys.LANG, languageCode);
+        targetMap.put(ApiFields.Keys.LC, appLanguageCode);
+        String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+        targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
+        targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
+        targetMap.put(ApiFields.Keys.BRANDS, getValues(binding.brand));
+        targetMap.put(ApiFields.Keys.PACKAGING, getValues(binding.packaging));
+        targetMap.put(ApiFields.Keys.CATEGORIES, getValues(binding.categories));
+        targetMap.put(ApiFields.Keys.LABELS, getValues(binding.label));
+        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
+            targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
+        }
+        if (mImageUrl != null) {
+            targetMap.put("imageUrl", mImageUrl);
+        }
+        targetMap.put(ApiFields.Keys.ORIGINS, getValues(binding.originOfIngredients));
+        targetMap.put(ApiFields.Keys.MANUFACTURING_PLACES, binding.manufacturingPlace.getText().toString());
+        targetMap.put(ApiFields.Keys.EMB_CODES, getValues(binding.embCode));
+        targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
+        targetMap.put(ApiFields.Keys.PURCHASE_PLACES, getValues(binding.countryWherePurchased));
+        targetMap.put(ApiFields.Keys.STORES, getValues(binding.stores));
+        targetMap.put(ApiFields.Keys.COUNTRIES, getValues(binding.countriesWhereSold));
     }
 
     /**
@@ -845,7 +835,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         return StringUtils.join(list, ",");
     }
 
-    void toggleManufacturingSectionVisibility() {
+    private void toggleManufacturingSectionVisibility() {
         if (binding.manufacturingPlaceTil.getVisibility() != View.VISIBLE) {
             changeVisibilityManufacturingSectionTo(View.VISIBLE);
             binding.originOfIngredients.requestFocus();
@@ -865,7 +855,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         binding.hintLink2.setVisibility(visibility);
     }
 
-    void togglePurchasingSectionVisibility() {
+    private void togglePurchasingSectionVisibility() {
         if (binding.storesTil.getVisibility() != View.VISIBLE) {
             changePurchasingSectionVisibilityTo(View.VISIBLE);
             binding.countryWherePurchased.requestFocus();
@@ -882,14 +872,14 @@ public class AddProductOverviewFragment extends BaseFragment {
         binding.countriesWhereSoldTil.setVisibility(visibility);
     }
 
-    void toastEmbCodeHint() {
+    private void toastEmbCodeHint() {
         new MaterialDialog.Builder(activity)
             .content(R.string.hint_emb_codes)
             .positiveText(R.string.ok_button)
             .show();
     }
 
-    void searchProductLink() {
+    private void searchProductLink() {
         String url = "https://www.google.com/search?q=" + barcode;
         if (!binding.brand.getChipAndTokenValues().isEmpty()) {
             List<String> brandNames = binding.brand.getChipAndTokenValues();
@@ -903,7 +893,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(url), new WebViewFallback());
     }
 
-    void scanProductLink() {
+    private void scanProductLink() {
         IntentIntegrator integrator = IntentIntegrator.forSupportFragment(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
         integrator.setRequestCode(INTENT_INTEGRATOR_REQUEST_CODE);
@@ -911,7 +901,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         integrator.initiateScan();
     }
 
-    void selectProductLanguage() {
+    private void selectProductLanguage() {
         String[] localeValues = activity.getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
         List<String> finalLocalValues = new ArrayList<>();
@@ -934,7 +924,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
                 binding.name.setText(null);
                 if (activity instanceof AddProductActivity) {
-                    (getAddProductActivity()).setIngredients("set", null);
+                    ((AddProductActivity) activity).setIngredients("set", null);
                 }
                 setProductLanguage(finalLocalValues.get(which));
                 return true;

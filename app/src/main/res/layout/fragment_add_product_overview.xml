@@ -514,11 +514,11 @@
                 android:paddingTop="@dimen/spacing_small"
                 android:layout_marginEnd="@dimen/horizontal_margin"
                 android:layout_marginRight="@dimen/horizontal_margin"
-                android:tint="@color/grey_600"
                 app:layout_constraintBottom_toBottomOf="@id/emb_code_til"
                 app:layout_constraintEnd_toEndOf="@id/emb_code_til"
                 app:layout_constraintTop_toTopOf="@id/emb_code_til"
-                app:srcCompat="@drawable/ic_help_outline_orange_24dp" />
+                app:srcCompat="@drawable/ic_help_outline_orange_24dp"
+                app:tint="@color/grey_600" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/link_til"
