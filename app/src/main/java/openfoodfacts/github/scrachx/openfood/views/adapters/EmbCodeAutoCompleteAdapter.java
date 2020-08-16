@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -11,32 +10,32 @@ import androidx.annotation.NonNull;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import io.reactivex.SingleObserver;
-import io.reactivex.disposables.Disposable;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 
 public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
-    private static ProductsAPI client;
-    private final ArrayList<String> mEMBCodeList;
+    private final ProductsAPI client;
+    private final List<String> codeList;
 
     public EmbCodeAutoCompleteAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
-        mEMBCodeList = new ArrayList<>();
+        client = CommonApiManager.getInstance().getProductsApi();
+        codeList = new ArrayList<>();
     }
 
     @Override
     public int getCount() {
-        return mEMBCodeList.size();
+        return codeList.size();
     }
 
     @Override
     public String getItem(int position) {
-        if(position<0|| position>=mEMBCodeList.size()){
+        if (position < 0 || position >= codeList.size()) {
             return StringUtils.EMPTY;
         }
-        return mEMBCodeList.get(position);
+        return codeList.get(position);
     }
 
     @NonNull
@@ -47,32 +46,19 @@ public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements 
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults filterResults = new FilterResults();
-                if (constraint != null) {
-                    // Retrieve the autocomplete results from server.
-                    client = CommonApiManager.getInstance().getProductsApi();
-                    client.getEMBCodeSuggestions(constraint.toString())
-                        .subscribe(new SingleObserver<ArrayList<String>>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
+                filterResults.count = 0;
 
-                            }
-
-                            @Override
-                            public void onSuccess(ArrayList<String> strings) {
-                                mEMBCodeList.clear();
-                                    mEMBCodeList.addAll(strings);
-                                }
-
-                                @Override
-                                public void onError(Throwable e) {
-                                    Log.e(EmbCodeAutoCompleteAdapter.class.getSimpleName(), e.getMessage());
-                                }
-                            });
-
-                    // Assign the data to the FilterResults
-                    filterResults.values = mEMBCodeList;
-                    filterResults.count = mEMBCodeList.size();
+                // if no value typed, return
+                if (constraint == null) {
+                    return filterResults;
                 }
+                // Retrieve the autocomplete results from server.
+                codeList.clear();
+                codeList.addAll(client.getEMBCodeSuggestions(constraint.toString()).blockingGet());
+
+                // Assign the data to the FilterResults
+                filterResults.values = codeList;
+                filterResults.count = codeList.size();
                 return filterResults;
             }
 

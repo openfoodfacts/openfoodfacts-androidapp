@@ -585,11 +585,11 @@ public class AddProductOverviewFragment extends BaseFragment {
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_dropdown_item_1line, countries);
-            EmbCodeAutoCompleteAdapter customAdapter = new EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
+            EmbCodeAutoCompleteAdapter embAdapter = new EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
             binding.originOfIngredients.setAdapter(adapter);
             binding.countryWherePurchased.setAdapter(adapter);
             binding.countriesWhereSold.setAdapter(adapter);
-            binding.embCode.setAdapter(customAdapter);
+            binding.embCode.setAdapter(embAdapter);
         });
         asyncSessionLabels.setListenerMainThread(operation -> {
             @SuppressWarnings("unchecked")
