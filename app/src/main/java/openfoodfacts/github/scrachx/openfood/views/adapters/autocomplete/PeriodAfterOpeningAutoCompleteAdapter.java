@@ -49,18 +49,20 @@ public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> 
                     return filterResults;
                 }
                 // Retrieve the autocomplete results from server.
-                periodsList.clear();
-                periodsList.addAll(client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet());
+                ArrayList<String> list = client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet();
 
                 // Assign the data to the FilterResults
-                filterResults.values = periodsList;
-                filterResults.count = periodsList.size();
+                filterResults.values = list;
+                filterResults.count = list.size();
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 if (results != null && results.count > 0) {
+                    periodsList.clear();
+                    //noinspection unchecked
+                    periodsList.addAll((ArrayList<String>) results.values);
                     notifyDataSetChanged();
                 } else {
                     notifyDataSetInvalidated();

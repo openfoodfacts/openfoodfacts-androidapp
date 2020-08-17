@@ -52,18 +52,20 @@ public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements 
                     return filterResults;
                 }
                 // Retrieve the autocomplete results from server.
-                codeList.clear();
-                codeList.addAll(client.getEMBCodeSuggestions(constraint.toString()).blockingGet());
+                ArrayList<String> list = client.getEMBCodeSuggestions(constraint.toString()).blockingGet();
 
                 // Assign the data to the FilterResults
-                filterResults.values = codeList;
-                filterResults.count = codeList.size();
+                filterResults.values = list;
+                filterResults.count = list.size();
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 if (results != null && results.count > 0) {
+                    codeList.clear();
+                    //noinspection unchecked
+                    codeList.addAll((ArrayList<String>) results.values);
                     notifyDataSetChanged();
                 } else {
                     notifyDataSetInvalidated();
