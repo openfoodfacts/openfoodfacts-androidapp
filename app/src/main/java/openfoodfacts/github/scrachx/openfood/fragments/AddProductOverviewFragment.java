@@ -728,7 +728,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         targetMap.put(ApiFields.Keys.BARCODE, barcode);
         targetMap.put(ApiFields.Keys.LANG, languageCode);
         targetMap.put(ApiFields.Keys.LC, appLanguageCode);
-        String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+        String lc = (languageCode != null && !languageCode.isEmpty()) ? languageCode : "en";
         targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
         targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
         targetMap.put(ApiFields.Keys.BRANDS, getValues(binding.brand));
