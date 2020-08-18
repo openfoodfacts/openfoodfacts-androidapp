@@ -78,7 +78,7 @@
         <item>Bikarbonat</item>
         <item>Biotin</item>
         <item>Butyric acid (4:0)</item>
-        <item>Caffeine</item>
+        <item>Kafein</item>
         <item>Kalsium</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
@@ -87,19 +87,19 @@
         <item>Cerotic acid (26:0)</item>
         <item>Klorid</item>
         <item>Kolesterol</item>
-        <item>Chromium</item>
+        <item>Krom</item>
         <item>Tembaga</item>
         <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
         <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
         <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
         <item>Elaidic acid (18:1 n-9)</item>
         <item>Erucic acid (22:1 n-9)</item>
-        <item>Fluoride</item>
+        <item>Fluorida</item>
         <item>Fruktosa</item>
         <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
         <item>Glukosa</item>
         <item>Gondoic acid (20:1 n-9)</item>
-        <item>Iodine</item>
+        <item>Yodium</item>
         <item>Wesi</item>
         <item>Laktosa</item>
         <item>Lauric acid (12:0)</item>
@@ -134,7 +134,7 @@
         <item>Starch</item>
         <item>Stearic acid (18:0)</item>
         <item>Sukrosa</item>
-        <item>Taurine</item>
+        <item>Taurin</item>
         <item>Owah-owahan lemak</item>
         <item>Vitamin A</item>
         <item>Vitamin B1 (Thiamin)</item>
@@ -213,7 +213,7 @@
     <string name="category_drawer">Categories</string>
     <string name="search_by_category">Kategori</string>
     <string name="scan_search">Scan Barcode</string>
-    <string name="user_drawer">User</string>
+    <string name="user_drawer">Pangguna</string>
     <string name="offline_edit_drawer">Offline edit</string>
     <string name="txt_anonymous">Anonymous</string>
     <string name="delete_txt">Delete</string>
@@ -358,22 +358,22 @@
     <string name="zinc">Seng</string>
     <string name="copper">Tembaga</string>
     <string name="manganese">Mangan</string>
-    <string name="fluoride">Fluoride</string>
+    <string name="fluoride">Fluorida</string>
     <string name="selenium">Selenium</string>
-    <string name="chromium">Chromium</string>
+    <string name="chromium">Krom</string>
     <string name="molybdenum">Molybdenum</string>
-    <string name="iodine">Iodine</string>
-    <string name="caffeine">Caffeine</string>
-    <string name="taurine">Taurine</string>
+    <string name="iodine">Yodium</string>
+    <string name="caffeine">Kafein</string>
+    <string name="taurine">Taurin</string>
     <string name="ph">pH</string>
-    <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+    <string name="fruits_vegetables_nuts">Woh-wohan, sayuran, kacang-kacangan</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-    <string name="cocoa">Cocoa</string>
+    <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Chlorophyl</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
-    <string name="take_picture_front">Take a photo of the front</string>
+    <string name="take_picture_front">Mundut poto ing ngajeng</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
     <string name="txtSaturatedFat">Lemak jenuh</string>
@@ -397,7 +397,7 @@
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
-    <string name="contact">Contact</string>
+    <string name="contact">Kontak</string>
     <string name="contact_summary">Contact the team</string>
     <string name="email_not_found">No email applications found</string>
     <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
@@ -413,7 +413,7 @@
     <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
     <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-    <string name="device_on_mobile_data_warning_title">Information</string>
+    <string name="device_on_mobile_data_warning_title">Informasi</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Preferences</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
@@ -443,12 +443,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -518,7 +518,7 @@
     <string name="contribution_tab">Contributions</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
-    <string name="txtDialogsTitle">Information</string>
+    <string name="txtDialogsTitle">Informasi</string>
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Add a new product</string>
@@ -742,6 +742,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
