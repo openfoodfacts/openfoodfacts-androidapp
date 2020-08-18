@@ -31,8 +31,8 @@ plugins {
 fun obtainTestBuildType(): String {
     // To activate  screenshots buildType in IDE; uncomment next line and comment other
     // otherwise the folder androidTestScreenshots is not recognized as a test folder.
-    val result = "screenshots"
-    //val result = "debug"
+    //val result = "screenshots"
+    val result = "debug"
 
     return project.properties.getOrDefault("testBuildType", result) as String
 }
@@ -139,7 +139,7 @@ dependencies {
 
     // Unit Testing
     testImplementation("junit:junit:4.13")
-    testImplementation("org.mockito:mockito-core:3.4.6")
+    testImplementation("org.mockito:mockito-core:3.5.0")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.18.1")
     testImplementation("com.google.truth:truth:1.0.1")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.0.1")

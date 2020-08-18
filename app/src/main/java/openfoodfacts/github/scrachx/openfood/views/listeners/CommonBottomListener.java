@@ -35,6 +35,9 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.scan_bottom_nav:
+                if (isCurrentActivity(ContinuousScanActivity.class)) {
+                    break;
+                }
                 openScanActivity();
                 break;
             case R.id.compare_products:
