@@ -48,8 +48,11 @@ public class TipBox extends LinearLayout {
         int marginStart = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginStart, 0);
         int marginEnd = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginEnd, 0);
         int arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START);
+        boolean canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false);
         setArrowAlignment(arrowAlignment, marginStart, marginEnd);
-
+        int toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor, getResources().getColor(R.color.md_black_1000));
+        int toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor,
+            getResources().getColor(R.color.brand_light_blue));
         attributes.recycle();
 
         // gone by default
@@ -60,21 +63,14 @@ public class TipBox extends LinearLayout {
         });
 
         prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        boolean show = prefs.getBoolean(identifier, true);
-        if (!show) {
-            return;
+        //Tooltip should be shown the first time the actual content is available
+
+        tipMessage.setTextColor(toolTipTextColor);
+        findViewById(R.id.tipBoxContainer).setBackgroundColor(toolTipBackgroundColor);
+        arrow.setColorFilter(toolTipBackgroundColor);
+        if (canDisplayImmediately) {
+            loadToolTip();
         }
-
-        getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-                Handler handler = new Handler();
-                handler.postDelayed(TipBox.this::show, 500);
-
-                getViewTreeObserver().removeOnPreDrawListener(this);
-                return true;
-            }
-        });
     }
 
     public void setIdentifier(String identifier) {
@@ -160,6 +156,23 @@ public class TipBox extends LinearLayout {
         // Collapse speed of 1dp/ms
         anim.setDuration((int) (initialHeight / getContext().getResources().getDisplayMetrics().density));
         startAnimation(anim);
+    }
+
+    public void loadToolTip() {
+        boolean show = prefs.getBoolean(identifier, true);
+        if (!show) {
+            return;
+        }
+        getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                Handler handler = new Handler();
+                handler.postDelayed(TipBox.this::show, 500);
+
+                getViewTreeObserver().removeOnPreDrawListener(this);
+                return true;
+            }
+        });
     }
 
     public void hide() {
