@@ -486,6 +486,7 @@ public class Product implements Serializable {
     /**
      * @return The categoriesTags
      */
+    @Nullable
     public List<String> getCategoriesTags() {
         return categoriesTags;
     }
@@ -500,6 +501,7 @@ public class Product implements Serializable {
     /**
      * @return The productName
      */
+    @Nullable
     public String getProductName() {
         return productName;
     }
