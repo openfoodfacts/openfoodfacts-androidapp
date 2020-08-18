@@ -748,8 +748,8 @@
     <string name="tip_message">CONSEJO: %1$s </string>
     <string name="ingredient_analysis_tip">Haz clic en los siguientes iconos para obtener más información sobre el producto y seleccionar qué información te interesa.</string>
     <string name="got_it">¡Entendido!</string>
-    <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
+    <string name="onboarding_hint_msg">Sugerencia: %s </string>
+    <string name="ingredient_image_edit_tip">Pulsa la imagen para acercarla, cambiarla, recortarla, rotarla y más…</string>
     <string name="ingredients_in_this_product_are">Los ingredientes en este producto son %1$s.</string>
     <string name="ingredients_in_this_product">Ingredientes en este producto que son %1$s:</string>
     <string name="display_analysis_tag_status">Mostrar estado %1$s</string>
