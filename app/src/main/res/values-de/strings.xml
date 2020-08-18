@@ -749,7 +749,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="ingredient_analysis_tip">Klicken Sie auf die untenstehenden Symbole, um mehr über das Produkt zu erfahren und auszuwählen, für welche Informationen Sie sich interessieren.</string>
     <string name="got_it">Verstanden!</string>
     <string name="onboarding_hint_msg">Tipp: %s </string>
-    <string name="ingredient_image_edit_tip">Tippen Sie auf das Bild, um es zu zoomen, zu ändern, zuzuschneiden, zu drehen und mehr…</string>
+    <string name="ingredient_image_edit_tip">Tippen Sie auf das Foto, um es zu vergrößern, zu ändern, zuzuschneiden, zu drehen und vieles mehr …</string>
     <string name="ingredients_in_this_product_are">Die Inhaltsstoffe in diesem Produkt sind %1$s.</string>
     <string name="ingredients_in_this_product">Zutaten in diesem Produkt, die %1$s sind:</string>
     <string name="display_analysis_tag_status">%1$s Status anzeigen</string>
@@ -795,5 +795,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="product_front_image">Produktfoto (Front)</string>
     <string name="brand_hint">Beispiele: CocaCola, Nestle, usw …</string>
     <string name="sign_in_or_register">Anmelden oder registrieren</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action">Mithelfen beim Klassifizieren weiterer %1$s</string>
 </resources>
