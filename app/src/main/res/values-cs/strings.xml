@@ -651,7 +651,7 @@
     <string name="overexposure_high">Vysoké riziko nepřiměřeného příjmu</string>
     <string name="overexposure_moderate">Střední riziko nepřiměřeného příjmu</string>
     <string name="infants">Kojenci</string>
-    <string name="infants_age">&lt; [[[%s]]]</string>
+    <string name="infants_age">&lt; [[%s]]</string>
     <string name="toddlers">Batolata</string>
     <string name="toddlers_age">1 – 2</string>
     <string name="children">Děti</string>
