@@ -596,7 +596,7 @@
     <string name="ingredients_picture">Zdjęcie składników</string>
     <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
     <string name="ingredients_list">Lista składników</string>
-    <string name="ingredients_hint">Zachowaj kolejność, wskaż [%f]śli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
+    <string name="ingredients_hint">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
     <string name="extract_ingredients">Wyodrębnij składniki</string>
     <string name="extracting_ingredients">Wyodrębnianie składników</string>
     <string name="looksGood">Wygląda dobrze</string>
@@ -610,7 +610,7 @@
     <string name="for_100g_100ml">W 100 g / 100 ml</string>
     <string name="per_serving">W porcji</string>
     <string name="serving_size">Porcja</string>
-    <string name="alcohol_unit" formatted="false">[%i]bj / °</string>
+    <string name="alcohol_unit" formatted="false">% obj / °</string>
     <string name="add_a_nutrient">Dodaj składnik odżywczy</string>
     <string name="add_this_product">Dodaj ten produkt</string>
     <string name="product_picture">Zdjęcie Produktu</string>
