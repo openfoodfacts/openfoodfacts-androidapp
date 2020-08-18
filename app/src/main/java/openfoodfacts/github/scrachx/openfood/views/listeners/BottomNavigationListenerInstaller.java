@@ -18,10 +18,14 @@ public class BottomNavigationListenerInstaller {
         navItems.add(R.id.history_bottom_nav);
         navItems.add(R.id.my_lists);
 
+        if (bottomNavigationView.getSelectedItemId() == itemId) {
+            return;
+        }
+
         if (navItems.contains(itemId)) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N_MR1){
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N_MR1) {
                 bottomNavigationView.setSelectedItemId(itemId);
-            } else{
+            } else {
                 bottomNavigationView.getMenu().findItem(itemId).setChecked(true);
             }
         } else {
@@ -35,6 +39,4 @@ public class BottomNavigationListenerInstaller {
     public static void install(BottomNavigationView bottomNavigationView, Activity activity) {
         bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity));
     }
-
-
 }
