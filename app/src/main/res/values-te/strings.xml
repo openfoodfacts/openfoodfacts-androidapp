@@ -448,12 +448,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">సాధారణం</string>
     <string name="preference_header_network">నెట్‌వర్క్</string>
     <string name="preference_header_contributing">తోడ్పడింది</string>
     <string name="scan_first_string">మీ చూచుటకు ఉత్పత్తి చరిత్ర ఇక్కడ ఇవ్వబడుతుంది.\nఈ చరిత్ర మీ కళ్ళు మాత్రమే మరియు స్థానికంగా నిల్వ చేయబడుతుంది.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">ఇప్పటికే లాగిన్ అయ్యింది!</string>
     <string name="confirm_logout">లాగ్ అవుట్ను నిర్ధారించండి</string>
     <string name="logout_dialog_content">మీరు ఖచ్చితంగా లాగ్ అవుట్ అవ్వాలా?</string>
@@ -748,6 +748,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
