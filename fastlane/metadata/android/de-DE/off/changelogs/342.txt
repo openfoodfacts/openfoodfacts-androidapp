@@ -2,6 +2,6 @@ Alle 25.000 der OFF-Freiwilligen arbeiteten weiterhin hart: 1,4 Mio. Produkte, 1
 1. OFF kommt in den USA groß raus: schon 237.000 Produkte mit Nutri-Score!
 2. Dunkler Modus: besser für die Augen, besser für den Akku
 3. Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
-4. Massive improvements to the vegan, vegetarian & palm oil detection.
-5. Instant product edition even with bad or no network
-6. Products To Be Completed page (right menu) is now real time.
+4. Umfangreiche Verbesserungen beim Erkennen von veganen und vegetarischen Lebensmitteln und Palmöl.
+5. Sofortiges Bearbeiten von Produkten auch bei schlechter oder fehlender Netzwerkverbindung
+6. Die Seite „Zu vervollständigende Produkte” (rechtes Menü) ist jetzt in Echtzeit verfügbar.
