@@ -598,7 +598,7 @@
     <string name="for_100g_100ml">100g / 100ml için</string>
     <string name="per_serving">Porsiyon başına</string>
     <string name="serving_size">Porsiyon ölçüsü</string>
-    <string name="alcohol_unit" formatted="false">% hacim / °</string>
+    <string name="alcohol_unit" formatted="false">[%f]cim / °</string>
     <string name="add_a_nutrient">Bir besin ekle</string>
     <string name="add_this_product">Bu ürünü ekle</string>
     <string name="product_picture">Ürün Resmi</string>
@@ -748,6 +748,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Ürün hakkında daha fazla bilgi edinmek ve ilgilendiğiniz bilgileri seçmek için aşağıdaki simgelere tıklayın.</string>
     <string name="got_it">Anladım!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
