@@ -29,6 +29,7 @@ public class ProductsAPITest {
      * We need to use auth because we use world.openfoodfacts.dev
      */
     private static ProductsAPI devClientWithAuth;
+    private static ProductsAPI prodClient;
     private static final String DEV_API = "https://world.openfoodfacts.dev";
 
     @BeforeClass
@@ -46,6 +47,8 @@ public class ProductsAPITest {
                 return chain.proceed(request);
             })
             .build();
+
+        prodClient = CommonApiManager.getInstance().getProductsApi();
 
         devClientWithAuth = new Retrofit.Builder()
             .baseUrl(DEV_API)
@@ -80,7 +83,7 @@ public class ProductsAPITest {
 
     @Test
     public void byLanguage() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byLanguage("italian").execute();
+        Response<Search> searchResponse = prodClient.byLanguage("italian").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -90,7 +93,7 @@ public class ProductsAPITest {
 
     @Test
     public void byLabel() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byLabel("utz-certified").execute();
+        Response<Search> searchResponse = prodClient.byLabel("utz-certified").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -100,7 +103,7 @@ public class ProductsAPITest {
 
     @Test
     public void byCategory() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byCategory("baby-foods").execute();
+        Response<Search> searchResponse = prodClient.byCategory("baby-foods").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -111,7 +114,7 @@ public class ProductsAPITest {
     @Test
     public void byState() throws Exception {
         String fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags";
-        Response<Search> searchResponse = devClientWithAuth.byState("complete", fieldsToFetchFacets).execute();
+        Response<Search> searchResponse = prodClient.byState("complete", fieldsToFetchFacets).execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -121,7 +124,7 @@ public class ProductsAPITest {
 
     @Test
     public void byPackaging() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byPackaging("cardboard").execute();
+        Response<Search> searchResponse = prodClient.byPackaging("cardboard").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -131,7 +134,7 @@ public class ProductsAPITest {
 
     @Test
     public void byBrand() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byBrand("monoprix").execute();
+        Response<Search> searchResponse = prodClient.byBrand("monoprix").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -141,7 +144,7 @@ public class ProductsAPITest {
 
     @Test
     public void byPurchasePlace() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byPurchasePlace("marseille-5").execute();
+        Response<Search> searchResponse = prodClient.byPurchasePlace("marseille-5").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -151,7 +154,7 @@ public class ProductsAPITest {
 
     @Test
     public void byStore() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byStore("super-u").execute();
+        Response<Search> searchResponse = prodClient.byStore("super-u").execute();
 
         assertThat(searchResponse);
         Search search = searchResponse.body();
@@ -161,7 +164,7 @@ public class ProductsAPITest {
 
     @Test
     public void byCountry() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byCountry("france").execute();
+        Response<Search> searchResponse = prodClient.byCountry("france").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -171,7 +174,7 @@ public class ProductsAPITest {
 
     @Test
     public void byIngredient() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byIngredient("sucre").execute();
+        Response<Search> searchResponse = prodClient.byIngredient("sucre").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -181,7 +184,7 @@ public class ProductsAPITest {
 
     @Test
     public void byTrace() throws Exception {
-        Response<Search> searchResponse = devClientWithAuth.byIngredient("eggs").execute();
+        Response<Search> searchResponse = prodClient.byIngredient("eggs").execute();
 
         assertThat(searchResponse).isNotNull();
         Search search = searchResponse.body();
@@ -191,39 +194,39 @@ public class ProductsAPITest {
 
     @Test
     public void getProductByTrace_eggs_productsFound() throws Exception {
-        Response<Search> response = devClientWithAuth.byTrace("eggs").execute();
+        Response<Search> response = prodClient.byTrace("eggs").execute();
         assertProductsFound(response);
     }
 
     @Test
     public void getProductByPackagerCode_emb35069c_productsFound() throws Exception {
-        Response<Search> response = devClientWithAuth.byPackagerCode("emb-35069c").execute();
+        Response<Search> response = prodClient.byPackagerCode("emb-35069c").execute();
         assertProductsFound(response);
     }
 
     @Test
     public void getProductByNutritionGrade_a_productsFound() throws Exception {
-        Response<Search> res = devClientWithAuth.byNutritionGrade("a").execute();
+        Response<Search> res = prodClient.byNutritionGrade("a").execute();
         assertProductsFound(res);
     }
 
     @Test
     public void getProductByCity_Paris_noProductFound() throws Exception {
-        Response<Search> response = devClientWithAuth.byCity("paris").execute();
+        Response<Search> response = prodClient.byCity("paris").execute();
         assertNoProductsFound(response);
     }
 
     @Test
     public void getProductByAdditive_e301_productsFound() throws Exception {
         String fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags";
-        Response<Search> response = devClientWithAuth.byAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).execute();
+        Response<Search> response = prodClient.byAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).execute();
         assertProductsFound(response);
     }
 
     @Test
     public void getProduct_notFound() throws Exception {
         String barcode = "457457457";
-        Response<ProductState> response = devClientWithAuth.getProductByBarcode(barcode, "code", Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
+        Response<ProductState> response = prodClient.getProductByBarcode(barcode, "code", Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).execute();
 
         assertThat(response.isSuccessful()).isTrue();
 

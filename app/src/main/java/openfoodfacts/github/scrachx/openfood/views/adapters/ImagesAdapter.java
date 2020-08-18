@@ -121,6 +121,8 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
                         emailIntent.putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product " + barcode);
                         context.startActivity(Intent.createChooser(emailIntent, "Send mail"));
                         break;
+                    default:
+                        break;
                 }
                 return true;
             });
@@ -129,14 +131,15 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
         });
     }
 
-    public void displaySetImageName(String response) {
-
+    public void displaySetImageName(@NonNull String response) {
         JSONObject jsonObject = Utils.createJsonObject(response);
         String imageName = null;
         try {
             imageName = jsonObject.getString("imagefield");
         } catch (JSONException e) {
             Log.e(getClass().getSimpleName(), "displaySetImageName", e);
+            Toast.makeText(context, "Error while setting image " + imageName, Toast.LENGTH_LONG).show();
+            return;
         }
         Toast.makeText(context, context.getString(R.string.set_image_name) + " " + imageName, Toast.LENGTH_LONG).show();
     }

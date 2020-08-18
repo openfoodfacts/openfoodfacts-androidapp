@@ -13,31 +13,20 @@ import org.junit.Assert;
 import java.util.function.Consumer;
 
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.PrefManager;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.PrefManager;
 
 public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTestRule<T> {
     public static final int MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY = 5000;
-    String name;
     private Intent activityIntent;
+    private Consumer<ScreenshotActivityTestRule<T>> afterActivityLaunchedAction;
+    private Consumer<ScreenshotActivityTestRule<T>> beforeActivityStartedAction;
+    private boolean firstTimeLaunched = false;
+    private String name;
     private ScreenshotParameter screenshotParameter;
-    Consumer<ScreenshotActivityTestRule<T>> afterActivityLaunchedAction;
-    Consumer<ScreenshotActivityTestRule<T>> beforeActivityStartedAction;
 
     public ScreenshotActivityTestRule(Class<T> activityClass) {
         this(activityClass, activityClass.getSimpleName(), null);
-    }
-
-    public void setBeforeActivityStartedAction(Consumer<ScreenshotActivityTestRule<T>> beforeActivityStartedAction) {
-        this.beforeActivityStartedAction = beforeActivityStartedAction;
-    }
-
-    public ScreenshotParameter getScreenshotParameter() {
-        return screenshotParameter;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public ScreenshotActivityTestRule(Class<T> activityClass, String name) {
@@ -54,6 +43,14 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         this.activityIntent = intent;
     }
 
+    public void setBeforeActivityStartedAction(Consumer<ScreenshotActivityTestRule<T>> beforeActivityStartedAction) {
+        this.beforeActivityStartedAction = beforeActivityStartedAction;
+    }
+
+    public ScreenshotParameter getScreenshotParameter() {
+        return screenshotParameter;
+    }
+
     public void setScreenshotParameter(ScreenshotParameter screenshotParameter) {
         this.screenshotParameter = screenshotParameter;
     }
@@ -61,12 +58,6 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
     public void setAfterActivityLaunchedAction(Consumer<ScreenshotActivityTestRule<T>> afterActivityLaunchedAction) {
         this.afterActivityLaunchedAction = afterActivityLaunchedAction;
     }
-
-    public void setActivityIntent(Intent activityIntent) {
-        this.activityIntent = activityIntent;
-    }
-
-    private boolean firstTimeLaunched = false;
 
     public void setFirstTimeLaunched(boolean firstTimeLaunched) {
         this.firstTimeLaunched = firstTimeLaunched;
@@ -117,7 +108,15 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         return activityIntent;
     }
 
+    public void setActivityIntent(Intent activityIntent) {
+        this.activityIntent = activityIntent;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

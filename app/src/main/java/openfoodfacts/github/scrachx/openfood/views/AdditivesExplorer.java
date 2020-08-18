@@ -66,6 +66,9 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
                 return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
             });
 
+            if (binding == null) {
+                return;
+            }
             binding.additiveRecyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
             binding.additiveRecyclerView.setAdapter(new AdditivesAdapter(additives, AdditivesExplorer.this));
             binding.additiveRecyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
@@ -80,7 +83,6 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         ProductBrowsingListActivity.start(AdditivesExplorer.this, name, SearchType.ADDITIVE);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -90,7 +92,7 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
 
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint(getString(R.string.addtive_search));
-        if (searchManager!=null && searchManager.getSearchableInfo(this.getComponentName()) != null) {
+        if (searchManager != null && searchManager.getSearchableInfo(this.getComponentName()) != null) {
 
             searchView.setSearchableInfo(searchManager.getSearchableInfo(this.getComponentName()));
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

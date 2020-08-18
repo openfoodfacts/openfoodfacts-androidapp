@@ -23,11 +23,17 @@ public class FragmentUtils {
     }
 
     @NonNull
-    public static ProductState requireStateFromArguments(Fragment fragment) {
+    public static ProductState requireStateFromArguments(@NonNull Fragment fragment) {
         final ProductState productState = getStateFromArguments(fragment);
         if (productState == null) {
-            throw new IllegalStateException("cannot start fragment without product state (not passed as argument)");
+            throw new IllegalStateException("Fragment" + fragment + "started without without product state (not passed as argument).");
         }
         return productState;
+    }
+
+    @NonNull
+    public static <T extends Fragment> T applyBundle(@NonNull T fragment, @NonNull Bundle bundle) {
+        fragment.setArguments(bundle);
+        return fragment;
     }
 }

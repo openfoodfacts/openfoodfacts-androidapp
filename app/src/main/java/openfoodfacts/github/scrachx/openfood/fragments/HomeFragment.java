@@ -110,7 +110,7 @@ public class HomeFragment extends NavigationBaseFragment {
         Uri dailyFoodFactUri = Uri.parse(taglineURL);
         customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null);
 
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(),
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireActivity(),
             customTabActivityHelper.getSession());
         CustomTabActivityHelper.openCustomTab(requireActivity(),
             customTabsIntent, dailyFoodFactUri, new WebViewFallback());
@@ -216,8 +216,9 @@ public class HomeFragment extends NavigationBaseFragment {
      */
     private void updateTextHome(int totalProductCount) {
         try {
-            binding.textHome.setText(R.string.txtHome);
-            if (totalProductCount != 0) {
+            if (totalProductCount == 0) {
+                binding.textHome.setText(R.string.txtHome);
+            } else {
                 String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
                 binding.textHome.setText(String.format(txtHomeOnline, totalProductCount));
             }

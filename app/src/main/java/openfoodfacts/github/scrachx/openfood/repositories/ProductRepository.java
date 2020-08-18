@@ -83,6 +83,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao;
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI;
@@ -95,7 +96,6 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
  * @since 03.03.18
  */
 public class ProductRepository {
-    private static final String DEFAULT_LANGUAGE = "en";
     private static final String TAG = ProductRepository.class.getSimpleName();
     private static ProductRepository instance;
     private final AdditiveDao additiveDao;
@@ -587,7 +587,7 @@ public class ProductRepository {
      * @return The translated label
      */
     public Single<LabelName> getLabelByTagAndDefaultLanguageCode(String labelTag) {
-        return getLabelByTagAndLanguageCode(labelTag, DEFAULT_LANGUAGE);
+        return getLabelByTagAndLanguageCode(labelTag, ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     /**
@@ -616,7 +616,7 @@ public class ProductRepository {
      * @return The translated additive tag
      */
     public Single<AdditiveName> getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
-        return getAdditiveByTagAndLanguageCode(additiveTag, DEFAULT_LANGUAGE);
+        return getAdditiveByTagAndLanguageCode(additiveTag, ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     public Single<List<Country>> getCountries() {
@@ -663,7 +663,7 @@ public class ProductRepository {
      * @return The translated category name
      */
     public Single<CategoryName> getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
-        return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
+        return getCategoryByTagAndLanguageCode(categoryTag, ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     /**
@@ -685,7 +685,7 @@ public class ProductRepository {
      * @return The list of category name
      */
     public Single<List<CategoryName>> getAllCategoriesByDefaultLanguageCode() {
-        return getAllCategoriesByLanguageCode(DEFAULT_LANGUAGE);
+        return getAllCategoriesByLanguageCode(ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     /**
@@ -765,7 +765,7 @@ public class ProductRepository {
      * @return The translated allergen name
      */
     public Single<AllergenName> getAllergenByTagAndDefaultLanguageCode(String allergenTag) {
-        return getAllergenByTagAndLanguageCode(allergenTag, DEFAULT_LANGUAGE);
+        return getAllergenByTagAndLanguageCode(allergenTag, ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     /**
@@ -891,7 +891,7 @@ public class ProductRepository {
             if (analysisTagName == null) {
                 analysisTagName = analysisTagNameDao.queryBuilder()
                     .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.getAnalysisTag()),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE))
                     .unique();
             }
 
@@ -905,7 +905,7 @@ public class ProductRepository {
             if (analysisTagTypeName == null) {
                 analysisTagTypeName = analysisTagNameDao.queryBuilder()
                     .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE))
                     .unique();
             }
 

@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood;
 
 import android.content.Intent;
 
+import androidx.annotation.NonNull;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Rule;
@@ -22,6 +23,7 @@ public class TakeScreenshotIncompleteProductsTest extends AbstractScreenshotTest
     public ScreenshotActivityTestRule<ProductBrowsingListActivity> incompleteRule = new ScreenshotActivityTestRule<>(ProductBrowsingListActivity.class, "incompleteProducts",
         createSearchIntent(SearchInfo.emptySearchInfo()));
 
+    @NonNull
     private static Intent createSearchIntent(SearchInfo searchInfo) {
         Intent intent = new Intent(OFFApplication.getInstance(), ProductBrowsingListActivity.class);
         intent.putExtra(ProductBrowsingListActivity.SEARCH_INFO, searchInfo);

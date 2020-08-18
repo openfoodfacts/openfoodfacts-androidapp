@@ -16,6 +16,10 @@
 
 package openfoodfacts.github.scrachx.openfood.network;
 
+import androidx.annotation.NonNull;
+
+import org.jetbrains.annotations.Contract;
+
 public final class ApiFields {
     private ApiFields() {
     }
@@ -47,6 +51,7 @@ public final class ApiFields {
         public static final String NUTRITION_DATA_PER_SERVING = "serving";
         public static final String DEBUG_BARCODE = "1";
         public static final String DEFAULT_TAXO_PREFIX = "en";
+        public static final String DEFAULT_LANGUAGE = "en";
         public static final String STATUS_NOT_OK = "status not ok";
 
         private Defaults() {
@@ -151,11 +156,14 @@ public final class ApiFields {
 
         }
 
+        @NonNull
+        @Contract(pure = true)
         public static String lcProductNameKey(String lang) {
             return Prefix.PRODUCT_NAME + lang;
         }
 
-        // START OF INGREDIENTS KEYS
+        @NonNull
+        @Contract(pure = true)
         public static String lcIngredientsKey(String lang) {
             return Prefix.INGREDIENTS_TEXT + lang;
         }

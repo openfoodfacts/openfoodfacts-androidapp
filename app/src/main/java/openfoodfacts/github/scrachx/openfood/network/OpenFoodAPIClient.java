@@ -307,10 +307,7 @@ public class OpenFoodAPIClient {
                     if (callback != null) {
                         callback.accept(productState);
                     } else {
-                        Intent intent = new Intent(activity, ProductActivity.class);
-                        bundle.putSerializable("state", productState);
-                        intent.putExtras(bundle);
-                        activity.startActivity(intent);
+                        ProductActivity.start(activity, productState);
                     }
                 }
             }

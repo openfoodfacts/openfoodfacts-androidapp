@@ -119,8 +119,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
-    private OpenFoodAPIClient api;
-    private WikiDataApiClient apiClientForWikiData;
+    private OpenFoodAPIClient client;
+    private WikiDataApiClient wikidataCLient;
     private String barcode;
     private FragmentSummaryProductBinding binding;
     private CustomTabActivityHelper customTabActivityHelper;
@@ -172,8 +172,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         disp = new CompositeDisposable();
-        api = new OpenFoodAPIClient(requireActivity());
-        apiClientForWikiData = new WikiDataApiClient();
+        client = new OpenFoodAPIClient(requireActivity());
+        wikidataCLient = new WikiDataApiClient();
         binding = FragmentSummaryProductBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -195,7 +195,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 image.setFilePath(resultUri.getPath());
                 showOtherImageProgress();
 
-                disp.add(api.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableCompletableObserver() {
+                disp.add(client.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableCompletableObserver() {
                     @Override
                     public void onComplete() {
                         onImageListenerComplete();
@@ -508,7 +508,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showAdditives(List<AdditiveName> additives) {
-        AdditiveFragmentHelper.showAdditives(additives, binding.textAdditiveProduct, apiClientForWikiData, this);
+        AdditiveFragmentHelper.showAdditives(additives, binding.textAdditiveProduct, wikidataCLient, this);
     }
 
     @Override
@@ -567,7 +567,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (categories.isEmpty()) {
             binding.categoriesLayout.setVisibility(GONE);
         }
-        CategoryProductHelper categoryProductHelper = new CategoryProductHelper(binding.categoriesText, categories, this, apiClientForWikiData);
+        CategoryProductHelper categoryProductHelper = new CategoryProductHelper(binding.categoriesText, categories, this, wikidataCLient);
         categoryProductHelper.showCategories();
 
         if (categoryProductHelper.getContainsAlcohol()) {
@@ -577,6 +577,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     @Override
     public void showProductQuestion(Question question) {
+        if (binding == null) {
+            return;
+        }
         if (question != null && !question.isEmpty()) {
             productQuestion = question;
             binding.productQuestionText.setText(String.format("%s%n%s",
@@ -740,7 +743,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onClick(@NonNull View view) {
 
                 if (label.getIsWikiDataIdPresent()) {
-                    apiClientForWikiData.doSomeThing(label.getWikiDataId(), result -> {
+                    wikidataCLient.doSomeThing(label.getWikiDataId(), result -> {
                         if (result != null) {
                             FragmentActivity activity = getActivity();
                             if (activity != null && !activity.isFinishing()) {
@@ -896,7 +899,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void loadPhoto(File photoFile) {
         ProductImage image = new ProductImage(barcode, ProductImageField.FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        disp.add(api.postImg(image).subscribeWith(new DisposableCompletableObserver() {
+        disp.add(client.postImg(image).subscribeWith(new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
                 onImageListenerComplete();

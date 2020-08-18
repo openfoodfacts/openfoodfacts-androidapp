@@ -443,7 +443,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         binding.traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
-            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            String lc = (!languageCode.isEmpty()) ? languageCode : ApiFields.Defaults.DEFAULT_LANGUAGE;
             targetMap.put(ApiFields.Keys.lcIngredientsKey(lc), binding.ingredientsList.getText().toString());
             List<String> list = binding.traces.getChipValues();
             String string = StringUtils.join(list, ",");
@@ -461,7 +461,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         }
         if (EditTextUtils.isNotEmpty(binding.ingredientsList) && EditTextUtils.isDifferent(binding.ingredientsList, product != null ? product.getIngredientsText() : null)) {
             String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
-            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            String lc = (!languageCode.isEmpty()) ? languageCode : ApiFields.Defaults.DEFAULT_LANGUAGE;
             targetMap.put(ApiFields.Keys.lcIngredientsKey(lc), binding.ingredientsList.getText().toString());
         }
         if (!binding.traces.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.traces, extractTracesChipValues(product))) {
