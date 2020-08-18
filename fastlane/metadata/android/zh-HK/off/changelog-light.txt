@@ -1,34 +1,34 @@
 VERSION 3
 ====
-一、 一、 It's easier to contribute new products, and get the Nutri-Score
-二、 二、 Create (and export) your product lists (shopping, eating…)
-三、 三、 Compare products side by side by scanning them one after the other.
-四、 四、 Completely redesigned product page, slide the card up to discover it
+一、 一、 一、 It's easier to contribute new products, and get the Nutri-Score
+二、 二、 二、 Create (and export) your product lists (shopping, eating…)
+三、 三、 三、 Compare products side by side by scanning them one after the other.
+四、 四、 四、 Completely redesigned product page, slide the card up to discover it
 五、 五、 Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
 ======
 v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a more global movement than ever. 500k products freed, 182 countries, 10K+ contributors, incl. you :-)
-一、 The NutriScore for all products in the world
-二、 Exportable history, for your eyes only
-三、 Allergen alerts
-四、 Tap additives to explore with Wikipedia.
-五、 Take photos, be part of food transparency
-六、 Much faster, even on 2G. You can even contribute with no connection
-七、 No sign-up required
-八、 As light as before :)
+一、 一、 The NutriScore for all products in the world
+二、 二、 Exportable history, for your eyes only
+三、 三、 Allergen alerts
+四、 四、 Tap additives to explore with Wikipedia.
+五、 五、 Take photos, be part of food transparency
+六、 六、 Much faster, even on 2G. You can even contribute with no connection
+七、 七、 No sign-up required
+八、 八、 As light as before :)
 
 v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-一、 We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
-二、 You can now get nutrition facts for the portion you're eating (Rutvik)
-三、 We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
-四、 Housecleaning (by Rutvik & Salfai)
-五、 🌎 Korean & Indonesian
+一、 一、 We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
+二、 二、 You can now get nutrition facts for the portion you're eating (Rutvik)
+三、 三、 We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+四、 四、 Housecleaning (by Rutvik & Salfai)
+五、 五、 🌎 Korean & Indonesian
 
 2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
-一、 You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-二、 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-三、 Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+一、 一、 You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
+二、 二、 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
+三、 三、 Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
 
