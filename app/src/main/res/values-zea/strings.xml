@@ -453,7 +453,7 @@
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -748,6 +748,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>

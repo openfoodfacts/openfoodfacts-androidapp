@@ -742,6 +742,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">单击下面的图标以了解有关该产品的更多信息并选择您感兴趣的信息。</string>
     <string name="got_it">Got it!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>

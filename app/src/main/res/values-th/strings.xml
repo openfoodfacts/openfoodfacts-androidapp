@@ -444,7 +444,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
@@ -743,6 +743,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
