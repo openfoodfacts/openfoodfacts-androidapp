@@ -117,12 +117,12 @@ public class AddProductOverviewFragment extends BaseFragment {
     private boolean frontImage;
     private List<String> labels = new ArrayList<>();
     private String languageCode;
-    private CategoryNameDao mCategoryNameDao;
-    private CountryNameDao mCountryNameDao;
-    private String mImageUrl;
-    private LabelNameDao mLabelNameDao;
+    private CategoryNameDao categoryNameDao;
+    private CountryNameDao countryNameDao;
+    private String frontImageUrl;
+    private LabelNameDao labelNameDao;
     private OfflineSavedProduct savedProduct;
-    private TagDao mTagDao;
+    private TagDao tagDao;
     private CompositeDisposable disp = new CompositeDisposable();
     private File photoFile;
     private PhotoReceiverHandler photoReceiverHandler;
@@ -148,10 +148,10 @@ public class AddProductOverviewFragment extends BaseFragment {
 
         client = CommonApiManager.getInstance().getProductsApi();
 
-        mTagDao = Utils.getDaoSession().getTagDao();
-        mCategoryNameDao = Utils.getDaoSession().getCategoryNameDao();
-        mLabelNameDao = Utils.getDaoSession().getLabelNameDao();
-        mCountryNameDao = Utils.getDaoSession().getCountryNameDao();
+        tagDao = Utils.getDaoSession().getTagDao();
+        categoryNameDao = Utils.getDaoSession().getCategoryNameDao();
+        labelNameDao = Utils.getDaoSession().getLabelNameDao();
+        countryNameDao = Utils.getDaoSession().getCountryNameDao();
 
         photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
             URI resultUri = newPhotoFile.toURI();
@@ -160,7 +160,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             int position;
             if (frontImage) {
                 image = new ProductImage(barcode, FRONT, newPhotoFile);
-                mImageUrl = newPhotoFile.getAbsolutePath();
+                frontImageUrl = newPhotoFile.getAbsolutePath();
                 position = 0;
             } else {
                 image = new ProductImage(barcode, OTHER, newPhotoFile);
@@ -176,8 +176,8 @@ public class AddProductOverviewFragment extends BaseFragment {
 
         binding.btnNext.setOnClickListener(v -> next());
         binding.btnAddImageFront.setOnClickListener(v -> addFrontImage());
-        binding.btnEditImageFront.setOnClickListener(v -> newFrontImage());
-        binding.btnOtherPictures.setOnClickListener(v -> addOtherImage());
+        binding.btnEditImageFront.setOnClickListener(v -> editFrontImage());
+        binding.btnOtherPictures.setOnClickListener(v -> editOtherImage());
         binding.sectionManufacturingDetails.setOnClickListener(v -> toggleManufacturingSectionVisibility());
         binding.sectionPurchasingDetails.setOnClickListener(v -> togglePurchasingSectionVisibility());
         binding.hintEmbCode.setOnClickListener(v -> toastEmbCodeHint());
@@ -428,7 +428,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         final String imageFrontUrl = product.getImageFrontUrl(language);
         if (imageFrontUrl != null && !imageFrontUrl.isEmpty()) {
 
-            mImageUrl = imageFrontUrl;
+            frontImageUrl = imageFrontUrl;
             binding.imageProgress.setVisibility(View.VISIBLE);
             binding.btnEditImageFront.setVisibility(View.INVISIBLE);
             Picasso.get()
@@ -455,7 +455,7 @@ public class AddProductOverviewFragment extends BaseFragment {
      * @return returns the name of the country if found in the db or else returns the tag itself.
      */
     private String getCountryName(String languageCode, String tag) {
-        CountryName countryName = mCountryNameDao.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode))
+        CountryName countryName = countryNameDao.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode))
             .unique();
         if (countryName != null) {
             return countryName.getName();
@@ -469,7 +469,7 @@ public class AddProductOverviewFragment extends BaseFragment {
      * @return returns the name of the label if found in the db or else returns the tag itself.
      */
     private String getLabelName(String languageCode, String tag) {
-        LabelName labelName = mLabelNameDao.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        LabelName labelName = labelNameDao.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique();
         if (labelName != null) {
             return labelName.getName();
         }
@@ -482,7 +482,7 @@ public class AddProductOverviewFragment extends BaseFragment {
      * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
      */
     private String getCategoryName(String languageCode, String tag) {
-        CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+        CategoryName categoryName = categoryNameDao.queryBuilder().where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode))
             .unique();
         if (categoryName != null) {
             return categoryName.getName();
@@ -491,7 +491,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     }
 
     private String getEmbCode(String embTag) {
-        Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
+        Tag tag = tagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
         if (tag != null) {
             return tag.getName();
         }
@@ -507,9 +507,9 @@ public class AddProductOverviewFragment extends BaseFragment {
             if (savedProduct.getImageFrontLocalUrl() != null) {
                 binding.imageProgress.setVisibility(View.VISIBLE);
                 binding.btnEditImageFront.setVisibility(View.INVISIBLE);
-                mImageUrl = savedProduct.getImageFrontLocalUrl();
+                frontImageUrl = savedProduct.getImageFrontLocalUrl();
                 Picasso.get()
-                    .load(mImageUrl)
+                    .load(frontImageUrl)
                     .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
                     .into(binding.btnAddImageFront, new Callback() {
@@ -701,12 +701,12 @@ public class AddProductOverviewFragment extends BaseFragment {
     }
 
     void addFrontImage() {
-        if (mImageUrl != null) {
+        if (frontImageUrl != null) {
             frontImage = true;
             if (photoFile != null) {
                 cropRotateImage(photoFile, getString(R.string.set_img_front));
             } else {
-                disp.add(FileDownloader.download(requireContext(), mImageUrl)
+                disp.add(FileDownloader.download(requireContext(), frontImageUrl)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(file -> {
                         photoFile = file;
@@ -714,17 +714,17 @@ public class AddProductOverviewFragment extends BaseFragment {
                     }));
             }
         } else {
-            newFrontImage();
+            editFrontImage();
         }
     }
 
-    void newFrontImage() {
+    void editFrontImage() {
         // add front image.
         frontImage = true;
         doChooseOrTakePhotos(getString(R.string.set_img_front));
     }
 
-    void addOtherImage() {
+    void editOtherImage() {
         frontImage = false;
         doChooseOrTakePhotos(getString(R.string.take_more_pictures));
     }
@@ -732,7 +732,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     @Override
     protected void doOnPhotosPermissionGranted() {
         if (frontImage) {
-            addOtherImage();
+            editOtherImage();
         } else {
             addFrontImage();
         }
@@ -759,8 +759,8 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (AppFlavors.isFlavors(AppFlavors.OBF)) {
             targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
         }
-        if (mImageUrl != null) {
-            targetMap.put("imageUrl", mImageUrl);
+        if (frontImageUrl != null) {
+            targetMap.put("imageUrl", frontImageUrl);
         }
         targetMap.put(ApiFields.Keys.ORIGINS, getValues(binding.originOfIngredients));
         targetMap.put(ApiFields.Keys.MANUFACTURING_PLACES, binding.manufacturingPlace.getText().toString());
@@ -811,8 +811,8 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (EditTextUtils.isNotEmpty(binding.periodOfTimeAfterOpening)) {
             targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
         }
-        if (mImageUrl != null) {
-            targetMap.put("imageUrl", mImageUrl);
+        if (frontImageUrl != null) {
+            targetMap.put("imageUrl", frontImageUrl);
         }
         if (EditTextUtils.areChipsDifferent(binding.originOfIngredients, extractProductOriginsChipsValues(product))) {
             targetMap.put(ApiFields.Keys.ORIGINS, getValues(binding.originOfIngredients));
@@ -958,7 +958,7 @@ public class AddProductOverviewFragment extends BaseFragment {
      * Before moving next check if the required fields are empty
      */
     public boolean areRequiredFieldsEmpty() {
-        if (mImageUrl == null || mImageUrl.equals("")) {
+        if (TextUtils.isEmpty(frontImageUrl)) {
             Snackbar.make(binding.getRoot(), R.string.add_at_least_one_picture, BaseTransientBottomBar.LENGTH_SHORT).show();
             binding.scrollView.fullScroll(View.FOCUS_UP);
             return true;

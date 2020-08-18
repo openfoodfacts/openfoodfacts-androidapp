@@ -16,9 +16,11 @@ import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 @RunWith(AndroidJUnit4.class)
 public class TakeScreenshotMainActivityTest extends AbstractScreenshotTest {
     @Rule
-    public ScreenshotActivityTestRule<MainActivity> activityRule = new ScreenshotActivityTestRule<>(MainActivity.class);
+    public ScreenshotActivityTestRule<MainActivity> activityRule =
+        new ScreenshotActivityTestRule<>(MainActivity.class);
     @Rule
-    public ScreenshotActivityTestRule<WelcomeActivity> welcomeActivityRule = new ScreenshotActivityTestRule<>(WelcomeActivity.class);
+    public ScreenshotActivityTestRule<WelcomeActivity> welcomeActivityRule =
+        new ScreenshotActivityTestRule<>(WelcomeActivity.class);
 
     @Test
     public void testTakeScreenshotMainActivity() {

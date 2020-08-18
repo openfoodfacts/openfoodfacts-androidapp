@@ -16,18 +16,17 @@ import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 public class TakeScreenshotScanActivityTest extends AbstractScreenshotTest {
     public static final int MS_TO_WAIT_TO_DISPLAY_PRODUCT_IN_SCAN = 2000;
     @Rule
-    public ScreenshotActivityTestRule<ContinuousScanActivity> activity = new ScreenshotActivityTestRule<>(ContinuousScanActivity.class);
+    public ScreenshotActivityTestRule<ContinuousScanActivity> activityRule =
+        new ScreenshotActivityTestRule<>(ContinuousScanActivity.class);
 
     @Test
     public void testTakeScreenshotScanActivity() {
-        activity.setAfterActivityLaunchedAction(screenshotActivityTestRule ->
-        {
+        activityRule.setAfterActivityLaunchedAction(screenshotActivityTestRule -> {
             try {
-                screenshotActivityTestRule.runOnUiThread(() ->
-                {
+                screenshotActivityTestRule.runOnUiThread(() -> {
                     final String barcode = screenshotActivityTestRule
                         .getScreenshotParameter().getProductCodes().get(0);
-                    ((ContinuousScanActivity) screenshotActivityTestRule.getActivity())
+                    screenshotActivityTestRule.getActivity()
                         .showProduct(barcode);
                 });
                 Thread.sleep(MS_TO_WAIT_TO_DISPLAY_PRODUCT_IN_SCAN);
@@ -36,6 +35,6 @@ public class TakeScreenshotScanActivityTest extends AbstractScreenshotTest {
             }
         });
 
-        startForAllLocales(activity);
+        startForAllLocales(activityRule);
     }
 }
