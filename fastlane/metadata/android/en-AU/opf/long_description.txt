@@ -10,7 +10,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 *** Get the Facts ***
 - Open Products Facts helps you to make sense of the fine print on products labels.
 
-Collect Everything!!!! ***
+*** But why limit it to food? Collect Everything!!!! ***
 - You can add all the items from your collections
 - Open Crayons Facts - The largest open database of coloring crayons
 - Open Miniature Food Facts - The largest open database of miniature food products
