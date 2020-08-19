@@ -598,7 +598,7 @@
     <string name="for_100g_100ml">100g / 100ml için</string>
     <string name="per_serving">Porsiyon başına</string>
     <string name="serving_size">Porsiyon ölçüsü</string>
-    <string name="alcohol_unit" formatted="false">[%f]cim / °</string>
+    <string name="alcohol_unit" formatted="false">% hacim / °</string>
     <string name="add_a_nutrient">Bir besin ekle</string>
     <string name="add_this_product">Bu ürünü ekle</string>
     <string name="product_picture">Ürün Resmi</string>

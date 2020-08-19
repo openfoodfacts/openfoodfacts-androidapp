@@ -45,7 +45,7 @@ Open Crayons Facts - The largest open database of coloring crayons
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-Open X Open X Facts - The largest open database of Y
+Open X Facts - The largest open database of Y
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
