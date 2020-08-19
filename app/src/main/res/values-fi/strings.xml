@@ -749,7 +749,7 @@
     <string name="ingredient_analysis_tip">Napsauttamalla alla olevia kuvakkeita saat lisätietoja tuotteesta, ja voit valita tiedot joista olet kiinnostunut.</string>
     <string name="got_it">Selvä!</string>
     <string name="onboarding_hint_msg">Vihje: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
+    <string name="ingredient_image_edit_tip">Kosketa kuvaa zoomataksesi, muuttaaksesi, rajataksesi, kiertääksesi jne… sitä</string>
     <string name="ingredients_in_this_product_are">Tämän tuotteen ainesosat ovat %1$s.</string>
     <string name="ingredients_in_this_product">Tämän tuotteen ainesosat, jotka ovat %1$s:</string>
     <string name="display_analysis_tag_status">Näytä tila %1$s</string>
@@ -794,6 +794,6 @@
     <string name="icon_emb">EMB-koodi-kuvake</string>
     <string name="product_front_image">Tuotteen etukuva</string>
     <string name="brand_hint">Esimerkkejä: CocaCola, Nestle jne…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="sign_in_or_register">Kirjaudu sisään tai rekisteröidy</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
 </resources>
