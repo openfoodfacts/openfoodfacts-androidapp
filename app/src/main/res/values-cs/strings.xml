@@ -651,7 +651,7 @@
     <string name="overexposure_high">Vysoké riziko nepřiměřeného příjmu</string>
     <string name="overexposure_moderate">Střední riziko nepřiměřeného příjmu</string>
     <string name="infants">Kojenci</string>
-    <string name="infants_age">&lt; [[%s]]</string>
+    <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Batolata</string>
     <string name="toddlers_age">1 – 2</string>
     <string name="children">Děti</string>
@@ -760,6 +760,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Zobrazovat stav %1$s</string>

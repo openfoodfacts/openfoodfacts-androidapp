@@ -163,7 +163,7 @@
     <string name="txtBarcode">Strichcode:</string>
     <string name="txtCategories">Kategorien:</string>
     <string name="txtLabels">Kategorien, Zertifizierungen, Preise:</string>
-    <string name="txtEMB">Produzenten-Schlüssel:</string>
+    <string name="txtEMB">Produzentenschlüssel:</string>
     <string name="txtIngredients">Liste der Inhaltsstoffe:</string>
     <string name="Donate">Spenden</string>
     <string name="Donation">Hier klicken, um für Open Food Facts zu spenden</string>
@@ -611,7 +611,7 @@
     <string name="manufacturing_details">Herstellungsdetails</string>
     <string name="origin_of_ingredients">Herkunft der Inhaltsstoffe</string>
     <string name="manufacturing_place">Herstellungsort</string>
-    <string name="emb_code">Zulassungsnummer</string>
+    <string name="emb_code">Produzentenschlüssel</string>
     <string name="purchasing_details">Bezahlinformationen</string>
     <string name="country_where_purchased">Vertriebsland</string>
     <string name="stores">Läden</string>
@@ -748,6 +748,8 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="tip_message">TIPP: %1$s </string>
     <string name="ingredient_analysis_tip">Klicken Sie auf die untenstehenden Symbole, um mehr über das Produkt zu erfahren und auszuwählen, für welche Informationen Sie sich interessieren.</string>
     <string name="got_it">Verstanden!</string>
+    <string name="onboarding_hint_msg">Tipp: %s </string>
+    <string name="ingredient_image_edit_tip">Tippen Sie auf das Foto, um es zu vergrößern, zu ändern, zuzuschneiden, zu drehen und vieles mehr …</string>
     <string name="ingredients_in_this_product_are">Die Inhaltsstoffe in diesem Produkt sind %1$s.</string>
     <string name="ingredients_in_this_product">Zutaten in diesem Produkt, die %1$s sind:</string>
     <string name="display_analysis_tag_status">%1$s Status anzeigen</string>
@@ -789,9 +791,9 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="content_exit">Hier drücken, um zum Produkt zurückzukehren</string>
     <string name="icon_label">Etikettensymbol</string>
     <string name="icon_categories">Kategoriesymbol</string>
-    <string name="icon_emb">Symbol des Produzenten-Codes</string>
+    <string name="icon_emb">Symbol des Produzentenschlüssel</string>
     <string name="product_front_image">Produktfoto (Front)</string>
     <string name="brand_hint">Beispiele: CocaCola, Nestle, usw …</string>
     <string name="sign_in_or_register">Anmelden oder registrieren</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action">Mithelfen beim Klassifizieren weiterer %1$s</string>
 </resources>

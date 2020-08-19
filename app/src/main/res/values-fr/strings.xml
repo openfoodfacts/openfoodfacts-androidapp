@@ -584,7 +584,7 @@
     <string name="ingredients_picture">Photo de la liste des ingrédients</string>
     <string name="take_ingredients_picture_to_extract">(Veuillez prendre une photo des ingrédients pour les extraire automatiquement)</string>
     <string name="ingredients_list">Liste des ingrédients</string>
-    <string name="ingredients_hint">Conserver l\'ordre, indiquer le [%i]rsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
+    <string name="ingredients_hint">Conserver l\'ordre, indiquer le pourcentage lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
     <string name="extract_ingredients">Extraire les ingrédients</string>
     <string name="extracting_ingredients">Extraction des ingrédients en cours</string>
     <string name="looksGood">Ça a l\'air bon</string>
@@ -748,6 +748,8 @@
     <string name="tip_message">CONSEIL : %1$s </string>
     <string name="ingredient_analysis_tip">Cliquez sur les icônes ci-dessous pour en savoir plus sur le produit, et sélectionner les informations qui vous intéressent.</string>
     <string name="got_it">Compris !</string>
+    <string name="onboarding_hint_msg">Astuce : %s </string>
+    <string name="ingredient_image_edit_tip">Appuyez sur l\'image pour l\'agrandir, la modifier, la recadrer, la faire pivoter et plus encore…</string>
     <string name="ingredients_in_this_product_are">Les ingrédients de ce produit sont %1$s.</string>
     <string name="ingredients_in_this_product">Ingrédients de ce produit qui sont %1$s :</string>
     <string name="display_analysis_tag_status">Afficher le statut %1$s</string>
@@ -793,5 +795,5 @@
     <string name="product_front_image">Image frontale du produit</string>
     <string name="brand_hint">Exemples : Coca-Cola, Nestlé, etc.</string>
     <string name="sign_in_or_register">Se connecter ou s\'inscrire</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action">Aider à classer plus de: %1$s</string>
 </resources>
