@@ -235,7 +235,7 @@
     <string name="title_info_dialog">Hur funkar det?</string>
     <string name="text_offline_info_dialog">Du kan skanna produkter när du är offline för att lägga till dem i Open Food Facts senare. Alla produkter du skannar kommer att visas här, och du kan skicka dem med knappen nedan.</string>
     <string name="permission_camera">Appen behöver tillstånd att använda kameran för att skanna streckkoder och ta bilder.</string>
-    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_title">Kameran hittades inte</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Behörighetsinformation</string>
     <string name="permission_denied">Vänligen lägg till behörighet i inställningarna</string>
@@ -448,7 +448,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Allmänt</string>
     <string name="preference_header_network">Nätverk</string>
     <string name="preference_header_contributing">Bidrar</string>
