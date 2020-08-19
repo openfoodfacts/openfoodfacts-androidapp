@@ -742,6 +742,8 @@
     <string name="tip_message">팁 : %1$s </string>
     <string name="ingredient_analysis_tip">아래 아이콘을 클릭하여 제품에 대한 자세한 내용을 보고 관심있는 정보를 선택하십시오.</string>
     <string name="got_it">알겠습니다!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">이 제품의 성분은 %1$s입니다.</string>
     <string name="ingredients_in_this_product">이 제품의 성분은 %1$s입니다:</string>
     <string name="display_analysis_tag_status">%1$s 상태 표시</string>
