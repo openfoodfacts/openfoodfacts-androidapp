@@ -35,7 +35,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
@@ -49,16 +48,11 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.fasterxml.jackson.core.type.TypeReference;
-
-import net.steamcrafted.loadtoast.LoadToast;
 
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 import org.greenrobot.greendao.query.WhereCondition;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -74,8 +68,6 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveDao;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagName;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
@@ -83,12 +75,10 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
-import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static androidx.work.WorkInfo.State.RUNNING;
@@ -100,9 +90,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem, SharedPreferences.OnSharedPreferenceChangeListener {
     @NonNull
     public static final String LOGIN_PREF = "login";
-    private AdditiveDao mAdditiveDao;
     private NavigationDrawerListener navigationDrawerListener;
-    private static final String ADDITIVE_IMPORT_TAG = "ADDITIVE_IMPORT";
     private CompositeDisposable disp = new CompositeDisposable();
 
     @Override
@@ -120,7 +108,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         ListPreference languagePreference = findPreference("Locale.Helper.Selected.Language");
 
         SharedPreferences settings = activity.getSharedPreferences("prefs", 0);
-        mAdditiveDao = Utils.getDaoSession().getAdditiveDao();
 
         String[] localeValues = activity.getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
@@ -146,7 +133,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
-                getAdditives();
+                activity.recreate();
             }
             return true;
         });
@@ -161,9 +148,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                     suggestions.clearHistory();
                 })
                 .neutralText(R.string.dialog_cancel)
-                .onNeutral((dialog, which) -> {
-                    dialog.dismiss();
-                })
+                .onNeutral((dialog, which) -> dialog.dismiss())
                 .show();
 
             return true;
@@ -426,40 +411,5 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return analysisTagConfigs;
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::buildDisplayCategory));
-    }
-
-    private void getAdditives() {
-        final LoadToast lt = new LoadToast(requireActivity());
-
-        lt.setText(requireActivity().getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.blue));
-        lt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
-        lt.show();
-
-        disp.add(Single.fromCallable(() -> {
-            final FragmentActivity activity = getActivity();
-            if (activity == null) {
-                return true;
-            }
-            boolean result = true;
-            String additivesFile = "additives_" + LocaleHelper.getLanguage(activity) + ".json";
-            try (InputStream is = activity.getAssets().open(additivesFile)) {
-                List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {
-                })
-                    .readValue(is);
-                mAdditiveDao.insertOrReplaceInTx(frenchAdditives);
-            } catch (IOException e) {
-                result = false;
-                Log.e(ADDITIVE_IMPORT_TAG, "Unable to import additives from " + additivesFile, e);
-            }
-            return result;
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(aBoolean -> {
-                lt.hide();
-                final FragmentActivity activity = getActivity();
-                if (activity != null) {
-                    activity.recreate();
-                }
-            }));
     }
 }

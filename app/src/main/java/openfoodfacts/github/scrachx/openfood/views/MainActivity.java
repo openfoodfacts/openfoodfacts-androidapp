@@ -42,6 +42,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
@@ -138,6 +139,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private Drawer drawerResult = null;
     private MenuItem searchMenuItem;
     private CustomTabActivityHelper customTabActivityHelper;
+    /**
+     * Used to re-create the fragment after activity recreation
+     */
     private CustomTabsIntent customTabsIntent;
     private Uri userAccountUri;
     private Uri contributeUri;
@@ -396,7 +400,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                 }
 
                 if (newFragment != null) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFragment).addToBackStack(null).commit();
+                    changeFragment(newFragment);
                 }
 
                 return false;
@@ -1006,7 +1010,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
      * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
      * @since 06/16/18
      */
-    public void changeFragment(@NonNull Fragment fragment, @NonNull String title, long drawerName) {
+    public void changeFragment(@NonNull Fragment fragment, @Nullable String title, long drawerName) {
         changeFragment(fragment, title);
         drawerResult.setSelection(drawerName);
     }
@@ -1021,7 +1025,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
      * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
      * @since 06/16/18
      */
-    public void changeFragment(@NonNull Fragment fragment, @NonNull String title) {
+    public void changeFragment(@NonNull Fragment fragment, @Nullable String title) {
 
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();
@@ -1033,8 +1037,13 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             ft.addToBackStack(backStateName);
             ft.commit();
         }
+        if (title != null) {
+            Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+        }
+    }
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    public void changeFragment(@NonNull Fragment fragment) {
+        changeFragment(fragment, null);
     }
 }
 

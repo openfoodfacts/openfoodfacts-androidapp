@@ -166,14 +166,14 @@ public enum Taxonomy {
         if (isDownloadActivated) {
             //Taxonomy is marked to be download
             if (DaoUtils.isDaoEmpty(dao)) {
-                //Table is empty, no check for update, just load taxonomy
+                // Table is empty, no need check for update, just load taxonomy
                 long lastModifiedDate = getLastModifiedDateFromServer(this)
                     .subscribeOn(Schedulers.io()).blockingGet();
                 if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
                     return DaoUtils.logDownload(load(repository, lastModifiedDate), this);
                 }
             } else if (checkUpdate) {
-                //It is ask to check for update - Test if file on server is more recent than last download.
+                // We need to check for update - Test if file on server is more recent than last download.
                 long lastModifiedDateFromServer = getLastModifiedDateFromServer(this)
                     .subscribeOn(Schedulers.io()).blockingGet();
                 if (forceUpdate || lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > lastDownloadFromSettings) {
