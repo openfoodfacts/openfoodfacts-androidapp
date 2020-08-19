@@ -57,7 +57,7 @@ lane :release do
     sentry_create_release(
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
-        version: 'off-android@'+versionName+'.'+versionCode,
+        version: 'off-android@'+versionName+' ('+versionCode+')',
         app_identifier: PACKAGE_NAME,
         finalize: false # Release will be finalized by the "daily" lane, when the version is in production
     )
@@ -65,7 +65,7 @@ lane :release do
     sentry_set_commits(
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
-        version: 'off-android@'+versionName+'.'+versionCode,
+        version: 'off-android@'+versionName+' ('+versionCode+')',
         app_identifier: PACKAGE_NAME, # pass in the bundle_identifer of your app
         auto: true, # enable completely automated commit management
         clear: false, # clear all current commits from the release
@@ -81,7 +81,7 @@ lane :daily do
     sentry_finalize_release(
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
-        version: 'off-android@'+versionName+'.'+versionCode,
+        version: 'off-android@'+versionName+' ('+versionCode+')',
         app_identifier: PACKAGE_NAME
     )
 end
