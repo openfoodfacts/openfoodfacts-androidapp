@@ -611,7 +611,7 @@
     <string name="for_100g_100ml">W 100 g / 100 ml</string>
     <string name="per_serving">W porcji</string>
     <string name="serving_size">Porcja</string>
-    <string name="alcohol_unit" formatted="false">[%i]bj / °</string>
+    <string name="alcohol_unit" formatted="false">% obj / °</string>
     <string name="add_a_nutrient">Dodaj składnik odżywczy</string>
     <string name="add_this_product">Dodaj ten produkt</string>
     <string name="product_picture">Zdjęcie Produktu</string>
