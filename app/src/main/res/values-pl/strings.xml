@@ -267,6 +267,7 @@
     <string name="user_ask_rate_app">Świetnie! Daj znać innym co sądzisz o tej aplikacji!</string>
     <string name="rate_app">Oceń aplikację</string>
     <string name="no_thx">Nie, dziękuję</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historia</string>
     <string name="clear_history">Usuń historię</string>
@@ -458,7 +459,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Ogólne</string>
     <string name="preference_header_network">Połączenie</string>
     <string name="preference_header_contributing">Współpraca</string>
@@ -472,7 +473,7 @@
     <string name="choose_resolution">Wybierz rozdzielczość</string>
     <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
     <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
-    <string name="wikidata_information">Idź dalej</string>
+    <string name="wikidata_ination">Idź dalej</string>
     <string name="wikidata_unavailable">Nie ma jeszcze strony Wikipedii w twoim języku.</string>
     <string name="Wikipedia">Zobacz na Wikipedii</string>
     <string name="Browse_Products">Wybierz produkty</string>
@@ -596,7 +597,7 @@
     <string name="ingredients_picture">Zdjęcie składników</string>
     <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
     <string name="ingredients_list">Lista składników</string>
-    <string name="ingredients_hint">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
+    <string name="ingredients_hint">Zachowaj kolejność, wskaż [%f]śli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
     <string name="extract_ingredients">Wyodrębnij składniki</string>
     <string name="extracting_ingredients">Wyodrębnianie składników</string>
     <string name="looksGood">Wygląda dobrze</string>
@@ -610,7 +611,7 @@
     <string name="for_100g_100ml">W 100 g / 100 ml</string>
     <string name="per_serving">W porcji</string>
     <string name="serving_size">Porcja</string>
-    <string name="alcohol_unit" formatted="false">% obj / °</string>
+    <string name="alcohol_unit" formatted="false">[%i]bj / °</string>
     <string name="add_a_nutrient">Dodaj składnik odżywczy</string>
     <string name="add_this_product">Dodaj ten produkt</string>
     <string name="product_picture">Zdjęcie Produktu</string>
