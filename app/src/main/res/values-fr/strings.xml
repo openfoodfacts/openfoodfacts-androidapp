@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Super ! Faites savoir aux autres ce que vous pensez de cette application !</string>
     <string name="rate_app">Noter l\'app</string>
     <string name="no_thx">Non merci</string>
+    <string name="feedback_form_url">https://docs.google.com/forms/d/e/1FAIpQLScQSJync82iXBCmA7EpuZ_iGNiGjVW2ASSq1lworpR09X8sIQ/viewform</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historique</string>
     <string name="clear_history">Effacer l\'historique</string>
@@ -584,7 +585,7 @@
     <string name="ingredients_picture">Photo de la liste des ingrédients</string>
     <string name="take_ingredients_picture_to_extract">(Veuillez prendre une photo des ingrédients pour les extraire automatiquement)</string>
     <string name="ingredients_list">Liste des ingrédients</string>
-    <string name="ingredients_hint">Conserver l\'ordre, indiquer le pourcentage lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
+    <string name="ingredients_hint">Conserver l\'ordre, indiquer le % lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
     <string name="extract_ingredients">Extraire les ingrédients</string>
     <string name="extracting_ingredients">Extraction des ingrédients en cours</string>
     <string name="looksGood">Ça a l\'air bon</string>

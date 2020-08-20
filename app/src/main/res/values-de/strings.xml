@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Großartig! Lassen Sie andere wissen, was Sie von dieser App halten!</string>
     <string name="rate_app">App bewerten</string>
     <string name="no_thx">Nein, danke</string>
+    <string name="feedback_form_url">https://forms.gle/xMRR2fjHQwsTNLmh7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Verlauf</string>
     <string name="clear_history">Verlauf leeren</string>
