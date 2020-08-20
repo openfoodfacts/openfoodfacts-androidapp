@@ -262,6 +262,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Istorija</string>
     <string name="clear_history">Obriši istoriju</string>
@@ -453,7 +454,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Opšte</string>
     <string name="preference_header_network">Mreža</string>
     <string name="preference_header_contributing">Doprinesi</string>
@@ -467,7 +468,7 @@
     <string name="choose_resolution">Odaberite rezoluciju</string>
     <string name="pref_resolution_summary">Odaberite rezoluciju slika koje šaljete</string>
     <string name="image_upload_resolution">Rezolucija slika</string>
-    <string name="wikidata_information">Going further</string>
+    <string name="wikidata_ination">Going further</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">View on Wikipedia</string>
     <string name="Browse_Products">Browse Products</string>
