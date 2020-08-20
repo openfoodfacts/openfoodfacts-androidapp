@@ -257,7 +257,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
@@ -463,7 +463,7 @@
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">Сүрөт жүктөө үчүн өлчөмүн тандаңыз</string>
     <string name="image_upload_resolution">Сүрөт жүктөө өлчөмү</string>
-    <string name="wikidata_ination">Андан ары баруу</string>
+    <string name="wikidata_information">Андан ары баруу</string>
     <string name="wikidata_unavailable">Азырынча сиздин тилиңизде Wikipedia барагы жок.</string>
     <string name="Wikipedia">Википедиядан көрүү</string>
     <string name="Browse_Products">Өнүмдөрдү карап чыгыңыз</string>
