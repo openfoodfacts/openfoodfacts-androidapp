@@ -279,6 +279,7 @@
     <string name="user_ask_rate_app">رائع! دع اﻷخرين يعرفون رأيك في هذا التطبيق!</string>
     <string name="rate_app">قيِّم التطبيق</string>
     <string name="no_thx">ﻻ، شكرًا</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">السجل</string>
     <string name="clear_history">محو السجل</string>
@@ -484,7 +485,7 @@
     <string name="choose_resolution">اختر دقة الوضوح</string>
     <string name="pref_resolution_summary">اختر الدقة لتحميل الصورة</string>
     <string name="image_upload_resolution">نقاء الصورة</string>
-    <string name="wikidata_information">الذهاب إلى أبعد من ذلك</string>
+    <string name="wikidata_ination">الذهاب إلى أبعد الحدود </string>
     <string name="wikidata_unavailable">لا يوجد صفحة ويكيبيديا بلغتكم بعد.</string>
     <string name="Wikipedia">عرض على ويكيبيديا</string>
     <string name="Browse_Products">استعراض المنتجات</string>
