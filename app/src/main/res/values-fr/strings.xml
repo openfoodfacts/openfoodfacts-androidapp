@@ -257,7 +257,7 @@
     <string name="user_ask_rate_app">Super ! Faites savoir aux autres ce que vous pensez de cette application !</string>
     <string name="rate_app">Noter l\'app</string>
     <string name="no_thx">Non merci</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://docs.google.com/forms/d/e/1FAIpQLScQSJync82iXBCmA7EpuZ_iGNiGjVW2ASSq1lworpR09X8sIQ/viewform</string>
+    <string name="feedback_form_url">https://docs.google.com/forms/d/e/1FAIpQLScQSJync82iXBCmA7EpuZ_iGNiGjVW2ASSq1lworpR09X8sIQ/viewform</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historique</string>
     <string name="clear_history">Effacer l\'historique</string>
@@ -463,7 +463,7 @@
     <string name="choose_resolution">Choisir la résolution</string>
     <string name="pref_resolution_summary">Choisissez une résolution pour l’envoi d’images</string>
     <string name="image_upload_resolution">Résolution de l\'envoi d\'images</string>
-    <string name="wikidata_ination">Aller plus loin</string>
+    <string name="wikidata_information">Aller plus loin</string>
     <string name="wikidata_unavailable">Il n\'y a pas encore de page Wikipedia dans votre langue.</string>
     <string name="Wikipedia">Voir sur Wikipedia</string>
     <string name="Browse_Products">Parcourir les produits</string>
