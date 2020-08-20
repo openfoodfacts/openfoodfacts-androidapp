@@ -449,7 +449,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world-te.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">సాధారణం</string>
     <string name="preference_header_network">నెట్‌వర్క్</string>
     <string name="preference_header_contributing">తోడ్పడింది</string>
