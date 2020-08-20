@@ -262,6 +262,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Istoric</string>
     <string name="clear_history">Stergere istoric</string>
@@ -453,7 +454,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Rețea</string>
     <string name="preference_header_contributing">Contribuire</string>
@@ -467,7 +468,7 @@
     <string name="choose_resolution">Alege Rezoluție</string>
     <string name="pref_resolution_summary">Alege o rezoluție pentru încărcare imagini</string>
     <string name="image_upload_resolution">Rezoluția pentru încărcarea imaginilor</string>
-    <string name="wikidata_information">Mergi mai departe</string>
+    <string name="wikidata_ination">Mergi mai departe</string>
     <string name="wikidata_unavailable">Nu există nici o pagină de Wikipedia in limba dumneavoastră, încă.</string>
     <string name="Wikipedia">Vizualizează pe Wikipedia</string>
     <string name="Browse_Products">Răsfoiește produse</string>
