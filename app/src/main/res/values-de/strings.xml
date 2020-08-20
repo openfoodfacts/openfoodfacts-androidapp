@@ -257,7 +257,7 @@
     <string name="user_ask_rate_app">Großartig! Lassen Sie andere wissen, was Sie von dieser App halten!</string>
     <string name="rate_app">App bewerten</string>
     <string name="no_thx">Nein, danke</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/xMRR2fjHQwsTNLmh7</string>
+    <string name="feedback_form_url">https://forms.gle/xMRR2fjHQwsTNLmh7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Verlauf</string>
     <string name="clear_history">Verlauf leeren</string>
@@ -463,7 +463,7 @@
     <string name="choose_resolution">Auflösung wählen</string>
     <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
     <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
-    <string name="wikidata_ination">Weitergehen</string>
+    <string name="wikidata_information">Weitergehen</string>
     <string name="wikidata_unavailable">Es gibt noch keine Wikipedia-Seite in Ihrer Sprache.</string>
     <string name="Wikipedia">Auf Wikipedia ansehen</string>
     <string name="Browse_Products">Produkte durchsuchen</string>
