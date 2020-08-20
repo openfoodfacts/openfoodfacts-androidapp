@@ -257,7 +257,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">చరిత్ర</string>
     <string name="clear_history">చరిత్రను తొలగించండి</string>
@@ -463,7 +463,7 @@
     <string name="choose_resolution">రిజల్యూషన్ ఎంచుకోండి</string>
     <string name="pref_resolution_summary">చిత్రం అప్లోడ్ కోసం ఒక తీర్మానాన్ని ఎంచుకోండి</string>
     <string name="image_upload_resolution">చిత్రం అప్లోడ్ రిజల్యూషన్</string>
-    <string name="wikidata_ination">Going further</string>
+    <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">ఇంకా వికీపీడియా పేజీ మీ భాషలో లేదు.</string>
     <string name="Wikipedia">వికీపీడియాలో చూడండి</string>
     <string name="Browse_Products">ఉత్పత్తులు బ్రౌజ్ చేయండి</string>
