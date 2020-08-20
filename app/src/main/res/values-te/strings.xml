@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">చరిత్ర</string>
     <string name="clear_history">చరిత్రను తొలగించండి</string>
@@ -448,12 +449,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">సాధారణం</string>
     <string name="preference_header_network">నెట్‌వర్క్</string>
     <string name="preference_header_contributing">తోడ్పడింది</string>
     <string name="scan_first_string">మీ చూచుటకు ఉత్పత్తి చరిత్ర ఇక్కడ ఇవ్వబడుతుంది.\nఈ చరిత్ర మీ కళ్ళు మాత్రమే మరియు స్థానికంగా నిల్వ చేయబడుతుంది.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">ఇప్పటికే లాగిన్ అయ్యింది!</string>
     <string name="confirm_logout">లాగ్ అవుట్ను నిర్ధారించండి</string>
     <string name="logout_dialog_content">మీరు ఖచ్చితంగా లాగ్ అవుట్ అవ్వాలా?</string>
@@ -462,7 +463,7 @@
     <string name="choose_resolution">రిజల్యూషన్ ఎంచుకోండి</string>
     <string name="pref_resolution_summary">చిత్రం అప్లోడ్ కోసం ఒక తీర్మానాన్ని ఎంచుకోండి</string>
     <string name="image_upload_resolution">చిత్రం అప్లోడ్ రిజల్యూషన్</string>
-    <string name="wikidata_information">Going further</string>
+    <string name="wikidata_ination">Going further</string>
     <string name="wikidata_unavailable">ఇంకా వికీపీడియా పేజీ మీ భాషలో లేదు.</string>
     <string name="Wikipedia">వికీపీడియాలో చూడండి</string>
     <string name="Browse_Products">ఉత్పత్తులు బ్రౌజ్ చేయండి</string>
