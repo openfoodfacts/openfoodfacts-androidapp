@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Histórico</string>
     <string name="clear_history">Limpar histórico</string>
@@ -448,7 +449,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://pt.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Geral</string>
     <string name="preference_header_network">Rede</string>
     <string name="preference_header_contributing">Contribuir</string>
@@ -462,7 +463,7 @@
     <string name="choose_resolution">Escolha a resolução</string>
     <string name="pref_resolution_summary">Escolha uma resolução para o upload de imagens</string>
     <string name="image_upload_resolution">Resolução de upload de imagem</string>
-    <string name="wikidata_information">Mais…</string>
+    <string name="wikidata_ination">Mais…</string>
     <string name="wikidata_unavailable">Ainda não há página da Wikipédia no seu idioma.</string>
     <string name="Wikipedia">Ver na Wikipedia</string>
     <string name="Browse_Products">Explorar produtos</string>
