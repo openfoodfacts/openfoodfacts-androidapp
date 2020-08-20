@@ -252,6 +252,7 @@
     <string name="user_ask_rate_app">좋아요! 다른 사람들에게 당신이 이 앱에 대해 어떻게 생각하는지 알려주세요!</string>
     <string name="rate_app">앱 평가</string>
     <string name="no_thx">아니요, 괜찮아요</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">최근 기록</string>
     <string name="clear_history">방문 기록 삭제</string>
@@ -443,7 +444,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">일반</string>
     <string name="preference_header_network">네트워크</string>
     <string name="preference_header_contributing">도움 보내기</string>
@@ -457,7 +458,7 @@
     <string name="choose_resolution">해상도 선택</string>
     <string name="pref_resolution_summary">업로드하는 이미지 해상도 설정</string>
     <string name="image_upload_resolution">이미지 업로드 해상도</string>
-    <string name="wikidata_information">더 알아보기</string>
+    <string name="wikidata_ination">더 알아보기</string>
     <string name="wikidata_unavailable">당신의 언어로 된 위키백과 페이지가 없습니다.</string>
     <string name="Wikipedia">Wikipedia에서 보기</string>
     <string name="Browse_Products">제품 찾아보기</string>
