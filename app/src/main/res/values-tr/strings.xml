@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Harika! Diğerlerine bu uygulama hakkında ne düşündüğünüzü bildirin!</string>
     <string name="rate_app">Uygulamayı değerlendir</string>
     <string name="no_thx">Hayır teşekkürler</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Geçmiş</string>
     <string name="clear_history">Geçmişi Temizle</string>
@@ -462,7 +463,7 @@
     <string name="choose_resolution">Çözünürlük Seçin</string>
     <string name="pref_resolution_summary">Resim yükleme için bir çözünürlük seçin</string>
     <string name="image_upload_resolution">Resim yükleme çözünürlüğü</string>
-    <string name="wikidata_information">Daha fazla ilerliyor</string>
+    <string name="wikidata_ination">Daha fazla ilerliyor</string>
     <string name="wikidata_unavailable">Henüz sizin dilinizde Wikipedia sayfası yok.</string>
     <string name="Wikipedia">Wikipedia\'da Görüntüle</string>
     <string name="Browse_Products">Ürünlere Göz At</string>
@@ -598,7 +599,7 @@
     <string name="for_100g_100ml">100g / 100ml için</string>
     <string name="per_serving">Porsiyon başına</string>
     <string name="serving_size">Porsiyon ölçüsü</string>
-    <string name="alcohol_unit" formatted="false">% hacim / °</string>
+    <string name="alcohol_unit" formatted="false">[%f]cim / °</string>
     <string name="add_a_nutrient">Bir besin ekle</string>
     <string name="add_this_product">Bu ürünü ekle</string>
     <string name="product_picture">Ürün Resmi</string>
