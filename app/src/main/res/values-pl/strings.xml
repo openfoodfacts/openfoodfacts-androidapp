@@ -267,7 +267,7 @@
     <string name="user_ask_rate_app">Świetnie! Daj znać innym co sądzisz o tej aplikacji!</string>
     <string name="rate_app">Oceń aplikację</string>
     <string name="no_thx">Nie, dziękuję</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historia</string>
     <string name="clear_history">Usuń historię</string>
@@ -459,7 +459,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world-pl.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Ogólne</string>
     <string name="preference_header_network">Połączenie</string>
     <string name="preference_header_contributing">Współpraca</string>
@@ -473,7 +473,7 @@
     <string name="choose_resolution">Wybierz rozdzielczość</string>
     <string name="pref_resolution_summary">Wybierz rozdzielczość do przesyłania obrazów</string>
     <string name="image_upload_resolution">Rozdzielczość przesyłania zdjęć</string>
-    <string name="wikidata_ination">Idź dalej</string>
+    <string name="wikidata_information">Idź dalej</string>
     <string name="wikidata_unavailable">Nie ma jeszcze strony Wikipedii w twoim języku.</string>
     <string name="Wikipedia">Zobacz na Wikipedii</string>
     <string name="Browse_Products">Wybierz produkty</string>
