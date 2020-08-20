@@ -252,6 +252,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">riwayat/kenangan</string>
     <string name="clear_history">menghapus riwayat</string>
@@ -443,7 +444,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">Umum</string>
     <string name="preference_header_network">Jaringan</string>
     <string name="preference_header_contributing">Berkontribusi</string>
@@ -457,7 +458,7 @@
     <string name="choose_resolution">Pilih Resolusi</string>
     <string name="pref_resolution_summary">Pilih resolusi untuk unggahan gambar</string>
     <string name="image_upload_resolution">Resolusi unggahan gambar</string>
-    <string name="wikidata_information">Menuju selanjutnya</string>
+    <string name="wikidata_ination">Menuju selanjutnya</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">Lihat di Wikipedia</string>
     <string name="Browse_Products">Telusuri Produk</string>
