@@ -252,6 +252,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">歷史紀錄</string>
     <string name="clear_history">清除歷史記錄</string>
@@ -457,7 +458,7 @@
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">為上傳的圖片選擇一個解析度</string>
     <string name="image_upload_resolution">圖片上傳解析度</string>
-    <string name="wikidata_information">Going further</string>
+    <string name="wikidata_ination">Going further</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">在維基百科上查看</string>
     <string name="Browse_Products">瀏覽產品</string>
