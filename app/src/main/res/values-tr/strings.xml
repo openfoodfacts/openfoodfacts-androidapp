@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Harika! Diğerlerine bu uygulama hakkında ne düşündüğünüzü bildirin!</string>
     <string name="rate_app">Uygulamayı değerlendir</string>
     <string name="no_thx">Hayır teşekkürler</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Geçmiş</string>
     <string name="clear_history">Geçmişi Temizle</string>

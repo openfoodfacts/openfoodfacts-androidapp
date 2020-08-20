@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Grande! Fai sapere agli altri cosa pensi di quest\'app!</string>
     <string name="rate_app">Valuta l\'app</string>
     <string name="no_thx">No grazie</string>
+    <string name="feedback_form_url">https://forms.gle/Ts2Yds6YHSFFPZE88</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Cronologia</string>
     <string name="clear_history">Cancella cronologia</string>
@@ -448,7 +449,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world-it.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world-it.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Generale</string>
     <string name="preference_header_network">Rete</string>
     <string name="preference_header_contributing">Contribuire</string>

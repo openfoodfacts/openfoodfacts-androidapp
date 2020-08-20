@@ -20,27 +20,27 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">%d ᱴᱤᱡ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="other">%d ᱴᱤᱡ ᱠᱚ ᱢᱟᱲᱟᱝ</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="one">%d ᱴᱤᱯᱤᱡ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="other">%d ᱴᱤᱯᱤᱡ ᱠᱚ ᱢᱟᱲᱟᱝ</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="one">%d ᱴᱚᱲᱟᱝ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="other">%d ᱴᱚᱲᱟᱝᱠᱚ ᱢᱟᱲᱟᱝ</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="one">%d ᱫᱤᱱ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="other">%d ᱫᱤᱱᱠᱚ ᱢᱟᱲᱟᱝ</item>
     </plurals>
-    <string name="action_about">About</string>
+    <string name="action_about">ᱵᱟᱵᱚᱛ</string>
     <string name="action_discover">Discover</string>
-    <string name="contribute">How to contribute</string>
-    <string name="action_find">Find</string>
+    <string name="contribute">ᱚᱠᱟᱞᱠᱟᱛᱮ ᱮᱱᱮᱢᱟ</string>
+    <string name="action_find">ᱯᱟᱱᱛᱮ</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
+    <string name="product_allergen_prompt">ᱱᱚᱶᱟ ᱡᱤᱱᱤᱥ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ:</string>
     <string name="no_offline_data">You\'re all done</string>
     <string name="first_offline">Products added offline will appear here</string>
     <!-- Image Upload -->
@@ -178,25 +178,25 @@
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
-    <string name="txtSave">Save</string>
+    <string name="txtSave">ᱥᱟᱸᱪᱟᱣ</string>
     <string name="txtSignIn">Sign in</string>
-    <string name="txtToastSaved">User saved</string>
-    <string name="txtSalt">Salt</string>
+    <string name="txtToastSaved">ᱵᱮᱵᱦᱟᱨᱤᱭᱟᱹ ᱥᱟᱸᱪᱟᱣ</string>
+    <string name="txtSalt">ᱵᱩᱞᱩᱢ</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">Barcode</string>
+    <string name="hintBarcode">ᱵᱟᱨᱠᱳᱰ</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Username</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
     <string name="uploadLater">Image will be uploaded when network is available</string>
-    <string name="txtInfoLoginOk">User saved</string>
+    <string name="txtInfoLoginOk">ᱵᱮᱵᱦᱟᱨᱤᱭᱟᱹ ᱥᱟᱸᱪᱟᱣ</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtYes">Yes</string>
-    <string name="txtNo">No</string>
-    <string name="hintBrand">Brand</string>
+    <string name="txtYes">ᱴᱷᱤᱠ</string>
+    <string name="txtNo">ᱵᱟᱝ</string>
+    <string name="hintBrand">ᱪᱷᱟᱯ</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
     <string name="toastSending">Uploading…</string>
@@ -204,30 +204,30 @@
     <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
     <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
     <string name="productSavedToast">Product saved, thanks!</string>
-    <string name="txtBarcodeRequire">Barcode required</string>
-    <string name="txtOk">OK</string>
-    <string name="txtBarcodeNotValid">Barcode not valid</string>
+    <string name="txtBarcodeRequire">ᱵᱟᱨᱠᱳᱰ ᱫᱚᱨᱠᱟᱨ</string>
+    <string name="txtOk">ᱴᱷᱤᱠ</string>
+    <string name="txtBarcodeNotValid">ᱵᱟᱨ ᱠᱳᱰ ᱵᱟᱝ ᱴᱷᱤᱠ ᱟ</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Sign up</string>
-    <string name="home_drawer">Home</string>
-    <string name="install">Install</string>
+    <string name="home_drawer">ᱚᱲᱟᱜ</string>
+    <string name="install">ᱵᱚᱦᱟᱞ ᱢᱮ</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">ᱥᱮᱸᱫᱽᱨᱟ</string>
-    <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
-    <string name="search_by_category">Category</string>
-    <string name="scan_search">Scan Barcode</string>
-    <string name="user_drawer">User</string>
-    <string name="offline_edit_drawer">Offline edit</string>
-    <string name="txt_anonymous">Anonymous</string>
-    <string name="delete_txt">Delete</string>
+    <string name="search_by_barcode_drawer">ᱵᱟᱨᱠᱳᱰ ᱴᱟᱭᱤᱯ ᱢᱮ</string>
+    <string name="category_drawer">ᱦᱟᱹᱴᱤᱧᱠᱚ</string>
+    <string name="search_by_category">ᱦᱟᱹᱴᱤᱧ</string>
+    <string name="scan_search">ᱵᱟᱨᱠᱳᱰ ᱥᱠᱟᱱ ᱢᱮ</string>
+    <string name="user_drawer">ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ</string>
+    <string name="offline_edit_drawer">ᱚᱯᱷᱞᱟᱭᱤᱱ ᱥᱟᱯᱲᱟᱣ</string>
+    <string name="txt_anonymous">ᱵᱟᱝ ᱵᱟᱰᱟᱭ</string>
+    <string name="delete_txt">ᱢᱮᱴᱟᱣ</string>
     <string name="sign_in_drawer">ᱵᱷᱤᱛᱟᱹᱨ ᱵᱚᱞᱚᱱ</string>
     <string name="alert_drawer">Allergen alert</string>
     <string name="your_lists">Your lists</string>
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
-    <string name="ok_button">OK</string>
+    <string name="ok_button">ᱴᱷᱤᱠ</string>
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Username</string>
     <string name="create_account_button">Create Account</string>
@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">History</string>
     <string name="clear_history">Clear history</string>
@@ -448,12 +449,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world-sat.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Network</string>
     <string name="preference_header_contributing">Contributing</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>

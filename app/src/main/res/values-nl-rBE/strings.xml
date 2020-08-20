@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Geweldig! Laat anderen weten wat je vindt van deze app!</string>
     <string name="rate_app">Beoordeel app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Geschiedenis</string>
     <string name="clear_history">Geschiedenis wissen</string>
