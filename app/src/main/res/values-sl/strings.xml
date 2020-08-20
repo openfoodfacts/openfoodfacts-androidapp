@@ -267,7 +267,7 @@
     <string name="user_ask_rate_app">Super! Sporočite drugim, kaj menite o tej aplikaciji!</string>
     <string name="rate_app">Oceni aplikacijo</string>
     <string name="no_thx">Ne hvala</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Zgodovina</string>
     <string name="clear_history">Izbriši zgodovino</string>
@@ -473,7 +473,7 @@
     <string name="choose_resolution">Izberite ločljivost</string>
     <string name="pref_resolution_summary">Izberite ločljivost za nalaganje slik</string>
     <string name="image_upload_resolution">Ločljivost slike</string>
-    <string name="wikidata_ination">Še korak dlje</string>
+    <string name="wikidata_information">Še korak dlje</string>
     <string name="wikidata_unavailable">Stran v Wikipediji še ni na voljo v vašem jeziku.</string>
     <string name="Wikipedia">Poglej na Wikipediji</string>
     <string name="Browse_Products">Brskajte po izdelkih</string>
