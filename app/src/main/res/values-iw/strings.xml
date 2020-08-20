@@ -267,6 +267,7 @@
     <string name="user_ask_rate_app">מצוין! אנו בטוחים שכולם ישמחו לשמוע מה דעתך על היישומון!</string>
     <string name="rate_app">דירוג היישומון</string>
     <string name="no_thx">לא, תודה</string>
+    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">היסטוריה</string>
     <string name="clear_history">פינוי ההיסטוריה</string>
@@ -458,7 +459,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
     <string name="preference_header_general">כללי</string>
     <string name="preference_header_network">רשת</string>
     <string name="preference_header_contributing">התנדבות</string>
@@ -472,7 +473,7 @@
     <string name="choose_resolution">נא לבחור ברזולוציה</string>
     <string name="pref_resolution_summary">נא לבחור רזולוציה להעלאת התמונה</string>
     <string name="image_upload_resolution">רזולוציית התמונה להעלאה</string>
-    <string name="wikidata_information">להמשיך מעבר</string>
+    <string name="wikidata_ination">להמשיך מעבר</string>
     <string name="wikidata_unavailable">אין ערך ויקיפדי בשפה שלך עדיין.</string>
     <string name="Wikipedia">הצגה בוויקיפדיה</string>
     <string name="Browse_Products">עיון במוצרים</string>
