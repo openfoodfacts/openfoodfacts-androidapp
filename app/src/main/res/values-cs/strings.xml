@@ -267,7 +267,7 @@
     <string name="user_ask_rate_app">Skvěle! Dejte ostatním vědět, co si o aplikaci myslíte!</string>
     <string name="rate_app">Ohodnoťte aplikaci</string>
     <string name="no_thx">Ne, díky</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historie</string>
     <string name="clear_history">Smazat historii</string>
@@ -473,7 +473,7 @@
     <string name="choose_resolution">Zvolte rozlišení</string>
     <string name="pref_resolution_summary">Nastavit rozlišení snímků pro nahrávání</string>
     <string name="image_upload_resolution">Rozlišení snímku</string>
-    <string name="wikidata_ination">Další</string>
+    <string name="wikidata_information">Další</string>
     <string name="wikidata_unavailable">Stránka ve Wikipedii zatím není ve vašem jazyce.</string>
     <string name="Wikipedia">Zobrazit na Wikipedii</string>
     <string name="Browse_Products">Procházet výrobky</string>
@@ -652,7 +652,7 @@
     <string name="overexposure_high">Vysoké riziko nepřiměřeného příjmu</string>
     <string name="overexposure_moderate">Střední riziko nepřiměřeného příjmu</string>
     <string name="infants">Kojenci</string>
-    <string name="infants_age">&lt; [[[%s]]]</string>
+    <string name="infants_age">&lt; 1</string>
     <string name="toddlers">Batolata</string>
     <string name="toddlers_age">1 – 2</string>
     <string name="children">Děti</string>
