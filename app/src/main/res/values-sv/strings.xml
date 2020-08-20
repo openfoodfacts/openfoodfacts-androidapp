@@ -257,7 +257,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historik</string>
     <string name="clear_history">Rensa historik</string>
@@ -463,7 +463,7 @@
     <string name="choose_resolution">Välj upplösning</string>
     <string name="pref_resolution_summary">Välj en upplösning för bilduppladdning</string>
     <string name="image_upload_resolution">Upplösning för bilduppladdning</string>
-    <string name="wikidata_ination">Går längre</string>
+    <string name="wikidata_information">Går längre</string>
     <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
     <string name="Wikipedia">Visa på Wikipedia</string>
     <string name="Browse_Products">Bläddra produkter</string>
