@@ -42,6 +42,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding;
@@ -222,7 +223,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
                 builder.title(R.string.sort_by);
                 String[] sortTypes;
-                if (BuildConfig.FLAVOR.equals("off")) {
+                if (AppFlavors.isFlavors(AppFlavors.OFF)) {
                     sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(
                         R.string.by_barcode), getString(R.string.by_time)};
                 } else {
@@ -230,7 +231,6 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                 }
                 builder.items(sortTypes);
                 builder.itemsCallback((dialog, itemView, position, text) -> {
-
                     switch (position) {
 
                         case 0:
@@ -242,7 +242,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                             break;
 
                         case 2:
-                            if (BuildConfig.FLAVOR.equals("off")) {
+                            if (AppFlavors.isFlavors(AppFlavors.OFF)) {
                                 sortType = "grade";
                             } else {
                                 sortType = "time";
@@ -282,18 +282,23 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
             case "barcode":
                 Collections.sort(products, (p1, p2) -> p1.getBarcode().compareToIgnoreCase(p2.getBarcode()));
                 break;
+
             case "grade":
 
                 //get list of HistoryProduct items for the YourListProduct items
-                WhereCondition[] conditionsGrade = new WhereCondition[products.size()];
+                WhereCondition[] conditions = new WhereCondition[products.size()];
                 int i = 0;
                 for (YourListedProduct p : products) {
-                    conditionsGrade[i] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
+                    conditions[i] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
                     i++;
                 }
                 List<HistoryProduct> historyProductsGrade;
                 QueryBuilder<HistoryProduct> qbGrade = historyProductDao.queryBuilder();
-                qbGrade.whereOr(conditionsGrade[0], conditionsGrade[1], Arrays.copyOfRange(conditionsGrade, 2, conditionsGrade.length));
+                if (conditions.length > 1) {
+                    qbGrade.whereOr(conditions[0], conditions[1], Arrays.copyOfRange(conditions, 2, conditions.length));
+                } else {
+                    qbGrade.where(conditions[0]);
+                }
                 historyProductsGrade = qbGrade.list();
 
                 Collections.sort(products, (p1, p2) -> {

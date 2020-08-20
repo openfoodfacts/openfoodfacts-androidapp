@@ -67,6 +67,16 @@ public class HomeFragment extends NavigationBaseFragment {
     private String taglineURL;
     private CompositeDisposable compDisp = new CompositeDisposable();
 
+    @NonNull
+    public static HomeFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        HomeFragment fragment = new HomeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater);

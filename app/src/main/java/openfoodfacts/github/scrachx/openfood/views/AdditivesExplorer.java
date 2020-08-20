@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,11 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, AdditivesExplorer.class);
+        context.startActivity(starter);
     }
 
     @Override

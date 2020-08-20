@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.views;
 import android.Manifest;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -76,6 +77,11 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     //boolean to determine if image should be loaded or not
     private boolean isLowBatteryMode = false;
     private static String SORT_TYPE = "none";
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, HistoryScanActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

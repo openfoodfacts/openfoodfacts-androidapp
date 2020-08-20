@@ -83,6 +83,16 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
         return key;
     }
 
+    @NonNull
+    public static AllergensAlertFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        AllergensAlertFragment fragment = new AllergensAlertFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);

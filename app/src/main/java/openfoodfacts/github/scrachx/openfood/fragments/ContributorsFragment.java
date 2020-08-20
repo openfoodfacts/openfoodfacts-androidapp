@@ -49,6 +49,15 @@ public class ContributorsFragment extends BaseFragment {
         refreshView(productStateFromActivity);
     }
 
+    public static ContributorsFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        ContributorsFragment fragment = new ContributorsFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void refreshView(ProductState productState) {
         super.refreshView(productState);

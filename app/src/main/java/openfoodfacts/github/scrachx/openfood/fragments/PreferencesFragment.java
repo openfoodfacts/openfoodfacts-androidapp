@@ -42,7 +42,6 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
@@ -78,6 +77,7 @@ import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.PreferencesUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
@@ -90,11 +90,21 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem, SharedPreferences.OnSharedPreferenceChangeListener {
     @NonNull
     public static final String LOGIN_PREF = "login";
-    private NavigationDrawerListener navigationDrawerListener;
     private CompositeDisposable disp = new CompositeDisposable();
+    private NavigationDrawerListener navigationDrawerListener;
+
+    @NonNull
+    public static PreferencesFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        PreferencesFragment fragment = new PreferencesFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, @NonNull MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
@@ -104,8 +114,6 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
         final FragmentActivity activity = requireActivity();
-
-        ListPreference languagePreference = findPreference("Locale.Helper.Selected.Language");
 
         SharedPreferences settings = activity.getSharedPreferences("prefs", 0);
 
@@ -124,6 +132,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             }
         }
 
+        ListPreference languagePreference = requirePreference("Locale.Helper.Selected.Language");
+
         languagePreference.setEntries(finalLocalLabels.toArray(new String[0]));
         languagePreference.setEntryValues(finalLocalValues.toArray(new String[0]));
 
@@ -138,7 +148,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        findPreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
+        requirePreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
             new MaterialDialog.Builder(activity)
                 .content(R.string.search_history_pref_dialog_content)
                 .positiveText(R.string.delete_txt)
@@ -154,7 +164,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        ListPreference countryPreference = findPreference(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY);
+        ListPreference countryPreference = requirePreference(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY);
         List<String> countryLabels = new ArrayList<>();
         List<String> countryTags = new ArrayList<>();
 
@@ -189,8 +199,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         }));
 
-        Preference contactButton = findPreference("contact_team");
-        contactButton.setOnPreferenceClickListener(preference -> {
+        requirePreference("contact_team").setOnPreferenceClickListener(preference -> {
 
             Intent contactIntent = new Intent(Intent.ACTION_SENDTO);
             contactIntent.setData(Uri.parse(getString(R.string.off_mail)));
@@ -203,7 +212,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        Preference rateus = findPreference("RateUs");
+        Preference rateus = requirePreference("RateUs");
         rateus.setOnPreferenceClickListener(preference -> {
             try {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.getPackageName())));
@@ -213,12 +222,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        findPreference("FAQ").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.faq_url));
-        findPreference("Terms").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.terms_url));
-        findPreference("local_translate_help").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.translate_url));
+        requirePreference("FAQ").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.faq_url));
+        requirePreference("Terms").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.terms_url));
+        requirePreference("local_translate_help").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.translate_url));
 
-        ListPreference energyUnitPreference = findPreference("energyUnitPreference");
-        String[] energyUnits = getActivity().getResources().getStringArray(R.array.energy_units);
+        ListPreference energyUnitPreference = requirePreference("energyUnitPreference");
+        String[] energyUnits = requireActivity().getResources().getStringArray(R.array.energy_units);
         energyUnitPreference.setEntries(energyUnits);
         energyUnitPreference.setEntryValues(energyUnits);
         energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -227,8 +236,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        ListPreference volumeUnitPreference = findPreference("volumeUnitPreference");
-        String[] volumeUnits = getActivity().getResources().getStringArray(R.array.volume_units);
+        ListPreference volumeUnitPreference = requirePreference("volumeUnitPreference");
+        String[] volumeUnits = requireActivity().getResources().getStringArray(R.array.volume_units);
         volumeUnitPreference.setEntries(volumeUnits);
         volumeUnitPreference.setEntryValues(volumeUnits);
         volumeUnitPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
@@ -237,8 +246,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         }));
 
-        ListPreference imageUploadPref = findPreference("ImageUpload");
-        String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
+        ListPreference imageUploadPref = requirePreference("ImageUpload");
+        String[] values = requireActivity().getResources().getStringArray(R.array.upload_image);
         imageUploadPref.setEntries(values);
         imageUploadPref.setEntryValues(values);
         imageUploadPref.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -247,13 +256,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        SwitchPreference photoPreference = findPreference("photoMode");
         if (AppFlavors.isFlavors(AppFlavors.OPF)) {
-            photoPreference.setVisible(false);
+            requirePreference("photoMode").setVisible(false);
         }
 
         // Preference to show version name
-        Preference versionPref = findPreference("Version");
+        Preference versionPref = requirePreference("Version");
         versionPref.setEnabled(false);
         try {
             PackageInfo pInfo = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0);
@@ -267,9 +275,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             getAnalysisTagConfigs(daoSession);
         } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
-            PreferenceCategory displayCategory = preferenceScreen.findPreference("display_category");
-            preferenceScreen.removePreference(displayCategory);
+            preferenceScreen.removePreference(PreferencesUtils.requirePreference(preferenceScreen, "display_category"));
         }
+    }
+
+    @NonNull
+    private <T extends Preference> T requirePreference(@NonNull String key) {
+        return PreferencesUtils.requirePreference(this, key);
     }
 
     private void buildDisplayCategory(List<AnalysisTagConfig> configs) {
@@ -278,8 +290,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
         PreferenceScreen preferenceScreen = getPreferenceScreen();
         PreferenceCategory displayCategory = preferenceScreen.findPreference("display_category");
+        if (displayCategory == null) {
+            throw new IllegalStateException("Display category preference does not exist.");
+        }
         displayCategory.removeAll();
         preferenceScreen.addPreference(displayCategory);
+
         // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
         if (configs == null || configs.isEmpty()) {
             Preference preference = new Preference(preferenceScreen.getContext());
@@ -328,7 +344,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
     private boolean openWebCustomTab(int faqUrl) {
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-        customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
+        customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + requireContext().getPackageName()));
         CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(faqUrl)), new WebViewFallback());
         return true;
     }
