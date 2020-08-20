@@ -257,7 +257,7 @@
     <string name="user_ask_rate_app">Ótimo! Conte aos outros o que você acha deste aplicativo!</string>
     <string name="rate_app">Avalie o aplicativo</string>
     <string name="no_thx">Não, obrigado</string>
-    <string name="feedback_form_url" comment="feedback_form_url&#10;Do not translate directly. Contact me so that I can create the form with translations.">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Histórico</string>
     <string name="clear_history">Eliminar histórico</string>
@@ -449,7 +449,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://pt.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="url_nutrient_values">https://world-pt.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Gerais</string>
     <string name="preference_header_network">Rede</string>
     <string name="preference_header_contributing">Contribuições</string>
@@ -463,7 +463,7 @@
     <string name="choose_resolution">Escolha a resolução</string>
     <string name="pref_resolution_summary">Escolha uma resolução para upload da imagem</string>
     <string name="image_upload_resolution">Resolução de upload de imagens</string>
-    <string name="wikidata_ination">Indo além</string>
+    <string name="wikidata_information">Indo além</string>
     <string name="wikidata_unavailable">Ainda não há página da Wikipédia no seu idioma.</string>
     <string name="Wikipedia">Ver na Wikipédia</string>
     <string name="Browse_Products">Ver Produtos</string>
