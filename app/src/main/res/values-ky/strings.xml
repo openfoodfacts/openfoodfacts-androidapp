@@ -20,42 +20,42 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d second ago</item>
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="one">%d секунд мурун</item>
+        <item quantity="other">%d секунд мурун</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="one">%d мүнөт мурун</item>
+        <item quantity="other">%d мүнөт мурун</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="one">%d саат мурун</item>
+        <item quantity="other">%d саат мурун</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="one">%d күн мурун</item>
+        <item quantity="other">%d күн мурун</item>
     </plurals>
-    <string name="action_about">About</string>
-    <string name="action_discover">Discover</string>
+    <string name="action_about">Биз жөнүндө</string>
+    <string name="action_discover">Долбоор тууралуу</string>
     <string name="contribute">How to contribute</string>
-    <string name="action_find">Find</string>
+    <string name="action_find">Табуу</string>
     <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
-    <string name="product_allergen_prompt">This product contains:</string>
-    <string name="no_offline_data">You\'re all done</string>
+    <string name="product_allergen_prompt">Бул продукт төмөнкүлөрдү камтыйт:</string>
+    <string name="no_offline_data">Баары бүттү</string>
     <string name="first_offline">Products added offline will appear here</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
-        <item>Summary</item>
-        <item>Ingredients</item>
-        <item>Nutrition</item>
+        <item>Жыйынтык</item>
+        <item>Ингредиенттер</item>
+        <item>Тамактануу</item>
         <item>Nutrition Table</item>
-        <item>Environment</item>
+        <item>Айлана чөйрө</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
-        <item>Product Photos</item>
-        <item>Ingredient Analysis</item>
+        <item>Продукт сүрөттөрү</item>
+        <item>Ингредиенттик анализ</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -65,9 +65,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
-        <item>g</item>
-        <item>mg</item>
-        <item>µg</item>
+        <item>г</item>
+        <item>мг</item>
+        <item>мкг</item>
         <item>% DV</item>
         <item>IU</item>
     </string-array>
@@ -81,10 +81,10 @@
         <item>Arachidonic acid / AA / ARA (20:4 n-6)</item>
         <item>Behenic acid (22:0)</item>
         <item>Bicarbonate</item>
-        <item>Biotin</item>
+        <item>Биотин</item>
         <item>Butyric acid (4:0)</item>
-        <item>Caffeine</item>
-        <item>Calcium</item>
+        <item>Кофеин</item>
+        <item>Кальций</item>
         <item>Capric acid (10:0)</item>
         <item>Caproic acid (6:0)</item>
         <item>Caprylic acid (8:0)</item>
@@ -149,26 +149,26 @@
         <item>Vitamin B6 (Pyridoxin)</item>
         <item>Vitamin B9 (Folic acid)</item>
         <item>Vitamin C (Ascorbic acid)</item>
-        <item>Vitamin D</item>
-        <item>Vitamin E</item>
-        <item>Vitamin K</item>
-        <item>Zinc</item>
+        <item>D витамини</item>
+        <item>Е витамини</item>
+        <item>К витамини</item>
+        <item>Цинк</item>
     </string-array>
     <!-- Text units -->
     <!-- Content Description -->
     <string name="search_button">Издөө</string>
-    <string name="alert_dialog_warning_title">Warning</string>
-    <string name="alert_dialog_warning_msg_user">User/password has changed, please update information</string>
+    <string name="alert_dialog_warning_title">Эскертүү</string>
+    <string name="alert_dialog_warning_msg_user">Колдонуучу / сырсөз өзгөрүлдү, маалыматты жаңыртыңыз</string>
     <string name="toast_retrieving">Loading...</string>
-    <string name="txtBarcode">Barcode :</string>
-    <string name="txtCategories">Categories :</string>
-    <string name="txtLabels">Labels, certifications, awards :</string>
+    <string name="txtBarcode">Штрих-код :</string>
+    <string name="txtCategories">Категориялар :</string>
+    <string name="txtLabels">Маркалар, сертификаттар, сыйлыктар:</string>
     <string name="txtEMB">Traceability codes:</string>
-    <string name="txtIngredients">Ingredients list :</string>
-    <string name="Donate">Donate</string>
+    <string name="txtIngredients">Ингредиенттердин тизмеси:</string>
+    <string name="Donate">Колдоо</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
-    <string name="txtSubstances">Substances or products causing allergies or intolerances :</string>
-    <string name="txtAdditives">Additives :</string>
+    <string name="txtSubstances">Аллергияга же чыдамсыздыкка алып келген заттар же буюмдар:</string>
+    <string name="txtAdditives">Кошумчалары :</string>
     <string name="txtTraces">Traces :</string>
     <string name="txtMayBeFromPalmOilProduct">Ingredients that may be from palm oil :</string>
     <string name="txtPalmOilProduct">Ingredients from palm oil :</string>
@@ -178,8 +178,8 @@
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
-    <string name="txtSave">Save</string>
-    <string name="txtSignIn">Sign in</string>
+    <string name="txtSave">Сактоо</string>
+    <string name="txtSignIn">Кирүү</string>
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
@@ -196,64 +196,64 @@
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Yes</string>
     <string name="txtNo">No</string>
-    <string name="hintBrand">Brand</string>
-    <string name="txtSendAll">Upload all</string>
-    <string name="txtPictureNeededDialogNo">Discard</string>
+    <string name="hintBrand">Бренд</string>
+    <string name="txtSendAll">Баарын жөнөтүү</string>
+    <string name="txtPictureNeededDialogNo">Жокко чыгаруу</string>
     <string name="toastSending">Uploading...</string>
     <string name="txtLoading">Loading...</string>
-    <string name="txtDialogsContentDelete">Are you sure you want to remove this draft?</string>
-    <string name="txtDialogsContentInfoSave">The product is saved locally, you can edit it in the \"Offline Edit\" menu</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
-    <string name="txtBarcodeRequire">Barcode required</string>
-    <string name="txtOk">OK</string>
-    <string name="txtBarcodeNotValid">Barcode not valid</string>
+    <string name="txtDialogsContentDelete">Бул караламаны чын эле алып салгыңыз келеби?</string>
+    <string name="txtDialogsContentInfoSave">Өнүм жергиликтүү деңгээлде сакталат, аны \"Автономдуу Түзөтүү\" менюсунан түзөтсөңүз болот</string>
+    <string name="productSavedToast">Продукт сакталды, рахмат!</string>
+    <string name="txtBarcodeRequire">Штрих-код талап кылынат</string>
+    <string name="txtOk">Макул</string>
+    <string name="txtBarcodeNotValid">Штрих-код жараксыз</string>
     <string name="msg_share">Look at this product on Open Food Facts :</string>
-    <string name="create_account">Sign up</string>
-    <string name="home_drawer">Home</string>
-    <string name="install">Install</string>
+    <string name="create_account">Катталуу</string>
+    <string name="home_drawer">Башкы бет</string>
+    <string name="install">Орнотуу</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Издөө</string>
-    <string name="search_by_barcode_drawer">Type barcode</string>
-    <string name="category_drawer">Categories</string>
-    <string name="search_by_category">Category</string>
-    <string name="scan_search">Scan Barcode</string>
-    <string name="user_drawer">User</string>
-    <string name="offline_edit_drawer">Offline edit</string>
-    <string name="txt_anonymous">Anonymous</string>
-    <string name="delete_txt">Delete</string>
+    <string name="search_by_barcode_drawer">Штрих-код боюнча издөө</string>
+    <string name="category_drawer">Категориялар</string>
+    <string name="search_by_category">Категория</string>
+    <string name="scan_search">Штрих-кодду скандоо</string>
+    <string name="user_drawer">Колдонуучу</string>
+    <string name="offline_edit_drawer">Автономдуу түзөтүү</string>
+    <string name="txt_anonymous">Анонимдүү</string>
+    <string name="delete_txt">Өчүрүү</string>
     <string name="sign_in_drawer">Кирүү</string>
     <string name="alert_drawer">Allergen alert</string>
-    <string name="your_lists">Your lists</string>
-    <string name="title_dialog_alert">Add alert</string>
-    <string name="select_camera">Select a Camera</string>
-    <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="your_lists">Сиздин тизмелериңиз</string>
+    <string name="title_dialog_alert">Эскертүү кошуу</string>
+    <string name="select_camera">Камераны тандаңыз</string>
+    <string name="ok_button">Макул</string>
+    <string name="cancel_button">Жокко чыгаруу</string>
     <string name="login_button">Username</string>
-    <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
-    <string name="title_info_dialog">How does it work?</string>
-    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
-    <string name="permission_camera">Camera permission is needed to scan barcodes and take pictures.</string>
-    <string name="no_camera_dialog_title">Camera not found</string>
-    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
-    <string name="permission_title">Permission information</string>
-    <string name="permission_denied">Please activate permission in the settings</string>
+    <string name="create_account_button">Катталуу</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Сиздин аллергия жөнүндө маалыматыңыз эч качан Open Food Facts серверине жөнөтүлбөйт. Ошондой эле, өнүмдүн маалыматтары так болбошу жана 100% accurate болбошу үчүн сак болуңуз, андыктан эки жолу текшерип көрүңүз!</string>
+    <string name="title_info_dialog">Бул кантип иштейт?</string>
+    <string name="text_offline_info_dialog">Оффлайн режиминде жүргөндө, аларды кийинчерээк Open Food Facts кошуу үчүн сканерлеп алсаңыз болот. Скандалган бардык буюмдар ушул жерде пайда болот жана сиз аларды төмөнкү баскычты колдонуп жөнөтө аласыз.</string>
+    <string name="permission_camera">Штрих-кодду сканерлөө жана сүрөткө тартуу үчүн камеранын уруксаты талап кылынат.</string>
+    <string name="no_camera_dialog_title">Камера табылган жок</string>
+    <string name="no_camera_dialog_content">Түзмөгүңүздө камера жок. Штрих-кодду сканерлей албайсыз.</string>
+    <string name="permission_title">Уруксат маалыматы</string>
+    <string name="permission_denied">Жөндөөлөрдөн уруксатты жандырыңыз</string>
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <!-- Strings related to login -->
-    <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-    <string name="user">user</string>
-    <string name="error_field_required">This field is required.</string>
-    <string name="action_preferences">Preferences</string>
-    <string name="prefs_scan_startup">Scan on startup</string>
-    <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
+    <string name="error_invalid_password">Сырсөз кеминде 6 белгиден турушу керек.</string>
+    <string name="user">колдонуучу</string>
+    <string name="error_field_required">Бул талаа талап кылынат.</string>
+    <string name="action_preferences">Түзөтүүлөр</string>
+    <string name="prefs_scan_startup">Башталганда скандоо</string>
+    <string name="prefs_scan_startup_summary">Тандалган болсо, бул параметр колдонмо ачылганда издөөнү баштайт.</string>
     <string name="prefs_power_mode">Power mode scan</string>
-    <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-    <string name="prefs_language">Language</string>
-    <string name="prefs_language_summary">Change language</string>
+    <string name="prefs_power_mode_summary">Бул маалымат базасында бар-жок экендигин көрүү үчүн супермаркеттен продукцияны тез сканерлеңиз.</string>
+    <string name="prefs_language">Тил</string>
+    <string name="prefs_language_summary">Тилди өзгөртүү</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_enjoying_app">Open Food Facts колдонмосу сизге жактыбы?</string>
+    <string name="user_ask_show_feedback_form">Муну укканга кечирим сурайбыз! Эмне болгонун айтып бере аласызбы?</string>
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
@@ -307,7 +307,7 @@
     <string name="number_of_products">Number of products: </string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
     <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
-    <string name="txt_no_matching_label_products">Oh no, we don’t have any products with this label, can you add one?</string>
+    <string name="txt_no_matching_label_products">Жок, бизде бул энбелги бар бир дагы продукт жок, дагы кошо аласызбы?</string>
     <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
     <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
     <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
@@ -318,48 +318,48 @@
     <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
-    <string name="txt_try_again">Try again</string>
-    <string name="nutrition_lactose">Lactose</string>
-    <string name="nutrition_casein">Casein</string>
-    <string name="nutrition_maltodextrins">Maltodextrins</string>
+    <string name="txt_try_again">Кайра аракет кыл</string>
+    <string name="nutrition_lactose">Лактоза</string>
+    <string name="nutrition_casein">Казеин</string>
+    <string name="nutrition_maltodextrins">Мальтодекстрин</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
-    <string name="nutrition_nucleotides">Nucleotides</string>
-    <string name="for_100g">For 100 g</string>
-    <string name="for_100ml">For 100 ml</string>
+    <string name="nutrition_nucleotides">Нуклеотид</string>
+    <string name="for_100g">100 г үчүн</string>
+    <string name="for_100ml">100 мл үчүн</string>
     <string name="serving">Per serving</string>
     <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
     <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
-    <string name="nutrition_omega3">Omega 3</string>
-    <string name="nutrition_omega6">Omega 6</string>
-    <string name="nutrition_omega9">Omega 9</string>
-    <string name="nutrition_sucrose">Sucrose</string>
-    <string name="nutrition_glucose">Glucose</string>
-    <string name="nutrition_fructose">Fructose</string>
-    <string name="nutrition_maltose">Maltose</string>
-    <string name="nutrition_alcohol">Alcohol</string>
-    <string name="nutrition_vitamins">Vitamins</string>
-    <string name="vitamin_a">Vitamin A</string>
-    <string name="vitamin_d">Vitamin D</string>
-    <string name="vitamin_e">Vitamin E</string>
-    <string name="vitamin_k">Vitamin K</string>
-    <string name="vitamin_c">Vitamin C</string>
-    <string name="vitamin_b1">Vitamin B1</string>
-    <string name="vitamin_b2">Vitamin B2</string>
-    <string name="vitamin_pp">Vitamin PP</string>
-    <string name="vitamin_b6">Vitamin B6</string>
-    <string name="vitamin_b9">Vitamin B9</string>
-    <string name="vitamin_b12">Vitamin B12</string>
-    <string name="biotin">Biotin</string>
+    <string name="nutrition_omega3">Омега 3</string>
+    <string name="nutrition_omega6">Омега 6</string>
+    <string name="nutrition_omega9">Омега 9</string>
+    <string name="nutrition_sucrose">Сахароза</string>
+    <string name="nutrition_glucose">Глюкоза</string>
+    <string name="nutrition_fructose">Фруктоза</string>
+    <string name="nutrition_maltose">Мальтоза</string>
+    <string name="nutrition_alcohol">Ичимдик</string>
+    <string name="nutrition_vitamins">Витаминдер</string>
+    <string name="vitamin_a">А витамини</string>
+    <string name="vitamin_d">D витамини</string>
+    <string name="vitamin_e">Е витамини</string>
+    <string name="vitamin_k">К витамини</string>
+    <string name="vitamin_c">С витамини</string>
+    <string name="vitamin_b1">В1 витамини</string>
+    <string name="vitamin_b2">В2 витамини</string>
+    <string name="vitamin_pp">PP витамини</string>
+    <string name="vitamin_b6">В6 витамини</string>
+    <string name="vitamin_b9">В9 витамини</string>
+    <string name="vitamin_b12">В12 витамини</string>
+    <string name="biotin">Биотин</string>
     <string name="pantothenic_acid">Pantothenic acid</string>
-    <string name="nutrition_minerals">Minerals</string>
+    <string name="nutrition_minerals">Минералдар</string>
     <string name="silica">Silica</string>
-    <string name="bicarbonate">Bicarbonate</string>
-    <string name="potassium">Potassium</string>
-    <string name="chloride">Chloride</string>
-    <string name="calcium">Calcium</string>
-    <string name="phosphorus">Phosphorus</string>
-    <string name="iron">Iron</string>
-    <string name="magnesium">Magnesium</string>
+    <string name="bicarbonate">Гидрокарбонат</string>
+    <string name="potassium">Калий</string>
+    <string name="chloride">Хлорид</string>
+    <string name="calcium">Кальций</string>
+    <string name="phosphorus">Фосфор</string>
+    <string name="iron">Темир</string>
+    <string name="magnesium">Магний</string>
     <string name="zinc">Zinc</string>
     <string name="copper">Copper</string>
     <string name="manganese">Manganese</string>
@@ -404,37 +404,37 @@
     <string name="start">GOT IT</string>
     <string name="contact">Contact</string>
     <string name="contact_summary">Contact the team</string>
-    <string name="email_not_found">No email applications found</string>
-    <string name="airplane_mode_active_dialog_title">Airplane mode enabled</string>
-    <string name="airplane_mode_active_dialog_message">Airplane mode is enabled, please disable this to continue.</string>
-    <string name="airplane_mode_active_dialog_negative">Dismiss</string>
-    <string name="airplane_mode_active_dialog_positive">Settings</string>
-    <string name="device_offline_dialog_title">Network unavailable</string>
-    <string name="device_offline_dialog_message">A network connection is needed to do this, would you like to change this in settings?</string>
-    <string name="device_offline_dialog_negative">Dismiss</string>
-    <string name="device_offline_dialog_positive">Settings</string>
+    <string name="email_not_found">Элдарек тиркемелери табылган жок</string>
+    <string name="airplane_mode_active_dialog_title">Учак режими иштетилген</string>
+    <string name="airplane_mode_active_dialog_message">Учак режими иштетилген, улантуу үчүн муну өчүрүп коюңуз.</string>
+    <string name="airplane_mode_active_dialog_negative">Жокко чыгаруу</string>
+    <string name="airplane_mode_active_dialog_positive">Орнотуулар</string>
+    <string name="device_offline_dialog_title">Тармак мүмкүн эмес</string>
+    <string name="device_offline_dialog_message">Бул үчүн тармак туташуусу керек, муну жөндөөлөрдөн өзгөрткүңүз келеби?</string>
+    <string name="device_offline_dialog_negative">Жокко чыгаруу</string>
+    <string name="device_offline_dialog_positive">Орнотуулар</string>
     <string name="scan_first_product">Scan First Product</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
-    <string name="preference_enable_mobile_data_title">Upload on mobile data</string>
-    <string name="preference_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>
-    <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
-    <string name="device_on_mobile_data_warning_title">Information</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Preferences</string>
-    <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
-    <string name="changes_saved">Changes saved successfully</string>
-    <string name="preference_choose_language_dialog_title">Choose language</string>
-    <string name="FAQ">FAQ</string>
-    <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
-    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="preference_delete_search_history">Ийгиликтүү жок кылынды</string>
+    <string name="preference_enable_mobile_data_title">Мобилдик дайындарга жүктөп бериңиз</string>
+    <string name="preference_enable_mobile_data_summary_on">Мобилдик &amp; WiFi дайындарын колдонуп жаңы өнүмдөрдү жүктөп бериңиз</string>
+    <string name="preference_enable_mobile_data_summary_off">Жаңы өнүмдөрдү WiFi аркылуу гана жүктөп бериңиз</string>
+    <string name="device_on_mobile_data_warning_title">Маалымат</string>
+    <string name="device_on_mobile_data_warning_message">Сиз мобилдик дайындарды жүктөп берүүнү өчүрүп койдуңуз, WiFi\'га туташыңыз же муну жөндөөлөрдөн өзгөртүңүз</string>
+    <string name="device_on_mobile_data_warning_positive">Түзөтүүлөр</string>
+    <string name="device_on_mobile_data_warning_negative">Баары бир жүктөп бериңиз</string>
+    <string name="changes_saved">Өзгөртүүлөр ийгиликтүү сакталды</string>
+    <string name="preference_choose_language_dialog_title">Тилди тандаңыз</string>
+    <string name="FAQ">FAQ.KG</string>
+    <string name="FrequentlyAskedQuestions">Көп берилүүчү суроолор - FAQ.KG</string>
+    <string name="translate_help_title">Open Food Facts которууга жардам бериңиз</string>
     <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
-    <string name="please_check_your_connection">Please check your connection.</string>
-    <string name="advanced_search_title">Advanced Search &amp; Charts</string>
-    <string name="compare_products">Compare products</string>
-    <string name="connectivity_check">Please check your internet connection</string>
-    <string name="dismiss">Dismiss</string>
-    <string name="Terms">Terms</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="please_check_your_connection">Туташууңузду текшериңиз.</string>
+    <string name="advanced_search_title">Өркүндөтүлгөн издөө &amp; Диаграммалар</string>
+    <string name="compare_products">Продукцияларды салыштырыңыз</string>
+    <string name="connectivity_check">Сураныч, интернет туташууңузду текшериңиз</string>
+    <string name="dismiss">Жокко чыгаруу</string>
+    <string name="Terms">Шарттар</string>
+    <string name="TermsOfUse">Шарттар жана купуялуулук</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -448,31 +448,31 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
-    <string name="preference_header_general">General</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrient-levels</string>
+    <string name="preference_header_general">Жалпы</string>
     <string name="preference_header_network">Network</string>
-    <string name="preference_header_contributing">Contributing</string>
-    <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Login</string>
+    <string name="preference_header_contributing">Долбоорго салым</string>
+    <string name="scan_first_string">Просмотренные вами продукты будут перечислены здесь.\nЭта история предназначена только для ваших глаз и хранится локально.</string>
+    <string name="log_in">Username</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_cancel">Жокко чыгаруу</string>
+    <string name="dialog_create">Түзүү</string>
     <string name="choose_resolution">Choose Resolution</string>
-    <string name="pref_resolution_summary">Pick a resolution for image upload</string>
-    <string name="image_upload_resolution">Image upload resolution</string>
-    <string name="wikidata_information">Going further</string>
-    <string name="wikidata_unavailable">There is no Wikipedia page in your language yet.</string>
-    <string name="Wikipedia">View on Wikipedia</string>
-    <string name="Browse_Products">Browse Products</string>
-    <string name="brand_string">Brand</string>
-    <string name="additive_string">Additive</string>
-    <string name="allergen_string">Allergen</string>
+    <string name="pref_resolution_summary">Сүрөт жүктөө үчүн өлчөмүн тандаңыз</string>
+    <string name="image_upload_resolution">Сүрөт жүктөө өлчөмү</string>
+    <string name="wikidata_information">Андан ары баруу</string>
+    <string name="wikidata_unavailable">Азырынча сиздин тилиңизде Wikipedia барагы жок.</string>
+    <string name="Wikipedia">Википедиядан көрүү</string>
+    <string name="Browse_Products">Өнүмдөрдү карап чыгыңыз</string>
+    <string name="brand_string">Бренд</string>
+    <string name="additive_string">Кошумча</string>
+    <string name="allergen_string">Аллерген</string>
     <string name="search_string">Издөө</string>
     <string name="country_string">Country</string>
-    <string name="store_subtitle">Store</string>
-    <string name="packaging_subtitle">Packaging</string>
+    <string name="store_subtitle">Дүкөн</string>
+    <string name="packaging_subtitle">Таңгак</string>
     <string name="packaging_string">Packaging</string>
     <string name="label_string">Label</string>
     <string name="category_string">Category</string>
@@ -527,24 +527,24 @@
     <string name="preference_show_all_product_photos_title">Show all product photos</string>
     <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
     <string name="offline_product_addition_title">Add a new product</string>
-    <string name="productNameNull">Name unknown</string>
+    <string name="productNameNull">Аты белгисиз</string>
     <string name="productAdditivesUnknown"></string>
-    <string name="productAdditivesTemplate">%1$d additives</string>
+    <string name="productAdditivesTemplate">%1$d кошумчалар</string>
     <plurals name="productAdditives">
-        <item quantity="one">%d additive</item>
-        <item quantity="other">%d additives</item>
+        <item quantity="one">%d кошумча</item>
+        <item quantity="other">%d кошумчалар</item>
     </plurals>
-    <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
-    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
-    <string name="scan_sound">Scan sound</string>
+    <string name="product_not_complete">Бул продукт али толук эмес. \nЧоо-жайын кошо аласызбы?</string>
+    <string name="addProductOffline">Сиз оффлайнсыз окшойсуз. Оффлайн режимин колдонуп %s өнүмүн кошосузбу?</string>
+    <string name="product_not_found">Сиз сканерлеген %1$s продукт Ачык Фактыларда азырынча жок. Аны кошо аласызбы?</string>
+    <string name="scan_sound">Үндү скандоо</string>
     <string name="trouble_scanning">Trouble Scanning?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
-    <string name="switch_camera">Switch camera</string>
-    <string name="autofocus">Autofocus</string>
-    <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Preferences</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="switch_camera">Камераны которуңуз</string>
+    <string name="autofocus">Автофокус</string>
+    <string name="initial_loading">Баштапкы жүктөө</string>
+    <string name="preferences">Түзөтүүлөр</string>
+    <string name="OFFlogo">Open Food Facts логотиби</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
@@ -571,14 +571,14 @@
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
-    <string name="photos">Photos</string>
-    <string name="please_wait">Please wait</string>
+    <string name="photos">Сүрөттөр</string>
+    <string name="please_wait">Сураныч, күтө туруңуз</string>
     <string name="product_uploaded_successfully">Product uploaded successfully</string>
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
     <string name="overview">Summary</string>
-    <string name="ingredients">Ingredients</string>
+    <string name="ingredients">Ингредиенттер</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
@@ -599,23 +599,23 @@
     <string name="per_serving">Per serving</string>
     <string name="serving_size">Serving size</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
-    <string name="add_this_product">Add this product</string>
-    <string name="product_picture">Product Picture</string>
-    <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
-    <string name="product_details">Product Details</string>
-    <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
-    <string name="labels">Labels</string>
-    <string name="period_of_time_after_opening">Period of time after opening</string>
-    <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Origin of ingredients</string>
-    <string name="manufacturing_place">Manufacturing place</string>
+    <string name="add_a_nutrient">Аш болумдуу зат кошуңуз</string>
+    <string name="add_this_product">Бул өнүмдү кошуу</string>
+    <string name="product_picture">Продукт сүрөтү</string>
+    <string name="one_photo_compulsory">(жаңы сүрөт кошуу үчүн бир сүрөт милдеттүү)</string>
+    <string name="product_details">Продукт жөнүндө маалымат</string>
+    <string name="product_name">Продукциянын аталышы</string>
+    <string name="quantity">Сан</string>
+    <string name="labels">Белгилөө</string>
+    <string name="period_of_time_after_opening">Убакыт аралыгы ачылгандан кийин</string>
+    <string name="manufacturing_details">Өндүрүш тууралуу маалымат</string>
+    <string name="origin_of_ingredients">Ингредиенттердин келип чыгышы</string>
+    <string name="manufacturing_place">Өндүрүш орду</string>
     <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
-    <string name="additional_pictures">Additional Pictures</string>
+    <string name="stores">Дүкөндөр</string>
+    <string name="additional_pictures">Кошумча сүрөттөр</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
     <string name="uploading_nutrition_image">Uploading nutrition facts image</string>
@@ -630,29 +630,29 @@
     <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Edit a product</string>
     <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
-    <string name="save_edits">Save edits</string>
+    <string name="save_edits">Түзөтүүлөрдү сактаңыз</string>
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Title</string>
-    <string name="description_activity_product">description</string>
+    <string name="description_activity_product">баяндоо</string>
     <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
-    <string name="infants">Infants</string>
+    <string name="infants">Ымыркайлар</string>
     <string name="infants_age">&lt; 1</string>
-    <string name="toddlers">Toddlers</string>
-    <string name="toddlers_age">1 to 2</string>
-    <string name="children">Children</string>
-    <string name="children_age">3 to 9</string>
-    <string name="adolescents">Adolescents</string>
-    <string name="adolescents_age">10 to 17</string>
-    <string name="adults">Adults</string>
-    <string name="adults_age">18 to 64</string>
-    <string name="elderly">Elderly</string>
+    <string name="toddlers">Бөбөктөр</string>
+    <string name="toddlers_age">1ден 2ге</string>
+    <string name="children">Балдар</string>
+    <string name="children_age">3төн 9га</string>
+    <string name="adolescents">Өспүрүмдөр</string>
+    <string name="adolescents_age">10дон 17ге</string>
+    <string name="adults">Кишилер</string>
+    <string name="adults_age">18ден 64ге</string>
+    <string name="elderly">Карылар</string>
     <string name="elderly_age">65+</string>
-    <string name="most_people">Most people\n(over 50%)</string>
-    <string name="some_people">Some people\n(over 5%)</string>
-    <string name="safety_and_exposure_assessment">Safety and exposure assessment</string>
+    <string name="most_people">Көпчүлүк адамдар\n(50% дан жогору)</string>
+    <string name="some_people">Айрым адамдар\n(5% дан жогору)</string>
+    <string name="safety_and_exposure_assessment">Коопсуздук жана экспозицияны баалоо</string>
     <string name="risk_of_exposure">Risk of exposure</string>
     <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
     <string name="legend_noael">above dose with observed adverse effect (NOAEL)</string>
@@ -690,7 +690,7 @@
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
-    <string name="txt_discard">Discard</string>
+    <string name="txt_discard">Жокко чыгаруу</string>
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
@@ -699,7 +699,7 @@
     <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
-    <string name="settings_country_title">Country</string>
+    <string name="settings_country_title">Мамлекет</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <!-- Used for diets AddOn -->
@@ -709,12 +709,12 @@
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
-    <string name="product_summary_action_edit_button_label">Edit</string>
-    <string name="product_summary_action_share_button_label">Share</string>
-    <string name="product_question_prompt">Tap here to answer</string>
-    <string name="product_question_positive_response">Yes</string>
-    <string name="product_question_negative_response">No</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_summary_action_edit_button_label">Оңдоо</string>
+    <string name="product_summary_action_share_button_label">Бөлүшүү</string>
+    <string name="product_question_prompt">Жооп берүү үчүн бул жерди таптаңыз</string>
+    <string name="product_question_positive_response">Ооба</string>
+    <string name="product_question_negative_response">Жок</string>
+    <string name="product_question_ambiguous_response">Так эмес</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
@@ -727,22 +727,22 @@
     <string name="scan_tooltip">You can slide up the card for more details</string>
     <string name="add_an_allergen">Add an allergen</string>
     <string name="add_a_list">Add a list</string>
-    <string name="edit_image">Edit Image</string>
-    <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
+    <string name="edit_image">Сүрөттү түзөө</string>
+    <string name="cant_edit_image_not_yet_uploaded">Жаңы сүрөт али жүктөлө элек. Сураныч, аны түзөөрдөн мурун күтө туруңуз</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Barcode</string>
-    <string name="productAdditivesNone">No additives</string>
+    <string name="barcode">Штрих-код</string>
+    <string name="productAdditivesNone">Кошулмалар жок</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
     <string name="toast_import_csv_error">Error in importing CSV file</string>
     <string name="toast_import_csv">CSV imported successfully!</string>
-    <string name="open_csv">Open CSV</string>
+    <string name="open_csv">Ачуу CSV</string>
     <!-- Used for diets AddOn -->
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">Масштабдоо</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Жабуу</string>
     <string name="tip_message">TIP: %1$s </string>
@@ -762,13 +762,13 @@
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
-    <string name="compare_additives">Additives :</string>
-    <string name="compare_salt">Salt</string>
-    <string name="compare_sugars">Sugars</string>
-    <string name="compare_saturated_fat">Saturated fat</string>
-    <string name="compare_fat">Fat</string>
-    <string name="compare_quantity">Quantity :</string>
-    <string name="load_ingredient_detection_data">Load ingredient detection data</string>
+    <string name="compare_additives">Кошумчалары :</string>
+    <string name="compare_salt">Туз</string>
+    <string name="compare_sugars">Кант</string>
+    <string name="compare_saturated_fat">Каныккан майлар</string>
+    <string name="compare_fat">Май</string>
+    <string name="compare_quantity">Саны:</string>
+    <string name="load_ingredient_detection_data">Ингредиенттерди аныктоо дайындарын жүктөө</string>
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
