@@ -352,6 +352,7 @@
         <item>origins</item>
         <item>stores</item>
         <item>nutrition_grade_fr</item>
+        <item>nutrition_grades_tags</item>
         <item>nutrient_levels</item>
         <item>countries</item>
         <item>countries_tags</item>

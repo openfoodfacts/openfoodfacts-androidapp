@@ -78,7 +78,7 @@ public class OpenFoodAPIClient {
     @NonNull
     private final ProductsAPI api;
     @NonNull
-    private final Context mContext;
+    private final Context context;
     private static final String FIELDS_TO_FETCH_FACETS = String
         .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags,code", getLocaleProductNameField());
 
@@ -106,7 +106,7 @@ public class OpenFoodAPIClient {
         }
         mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
         mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
-        mContext = context;
+        this.context = context;
     }
 
     /**
@@ -196,11 +196,12 @@ public class OpenFoodAPIClient {
     }
 
     private String getAllFields() {
-        String[] allFieldsArray = OFFApplication.getInstance().getResources().getStringArray(R.array.product_all_fields_array);
-        Set<String> fields = new HashSet<>(Arrays.asList(allFieldsArray));
+        String[] allFields = context.getResources().getStringArray(R.array.product_all_fields_array);
+        String[] fieldsToLocalize = context.getResources().getStringArray(R.array.fields_array);
+
+        Set<String> fields = new HashSet<>(Arrays.asList(allFields));
         String langCode = LocaleHelper.getLanguage(OFFApplication.getInstance().getApplicationContext());
-        String[] fieldsToLocalizedArray = OFFApplication.getInstance().getResources().getStringArray(R.array.fields_array);
-        for (String fieldToLocalize : fieldsToLocalizedArray) {
+        for (String fieldToLocalize : fieldsToLocalize) {
             fields.add(fieldToLocalize + "_" + langCode);
             fields.add(fieldToLocalize + "_en");
         }
@@ -687,7 +688,7 @@ public class OpenFoodAPIClient {
                             mHistoryProductDao.insertOrReplace(hp);
                         }
 
-                        mContext.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply();
+                        context.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply();
                     }
 
                     @Override
