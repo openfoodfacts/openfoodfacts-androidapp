@@ -22,19 +22,19 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 ▶ Contribute to Food Transparency
 Open food facts adalah basis data produk makanan yang dibuat oleh semua orang, untuk siapapun.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
+Anda bisa menggunakannya untuk membuat pilihan makanan yang lebih baik, dan karena itu merupakan data terbuka, siapapun bisa menggunakannya kembali untuk kepentingan apapun.
+Open Food Facts adalah sebuah proyek nirlaba yang dikembangkan oleh ribuan relawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+Open Food Facts membantu anda untuk memahami cetakan pada label produk. You will be able to find:
+Jejak karbon (emisi CO2) dan kemasan (serta instruksi daur ulang),
+Nutriscore (skor nutirisi), nutrisi, lemak / kandungan lemak, asam lemak jenuh, karbohidrat, gula, serat, protein dan garam dan sodium.
+Merek, alergen, label (bio, bebas gluten, vegan, vegetarian, halal, kosher ...), informasi yang dapat ditelusuri (kode kemasan, asal bahan)
+Pada minuman anggur dan bir, anda akan menemukan kandungan alkoholnya.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Food Facts juga tersedia pada web di https://world.openfoodfacts.org
 
 
 Pertanyaan, umpan balik: contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Untuk kosmetik, anda dapat menginstal Open Beauty Facts, untuk makanan hewan peliharaan, Open Pet Food Facts, dan untuk produk lainnya, Open Products Facts.
