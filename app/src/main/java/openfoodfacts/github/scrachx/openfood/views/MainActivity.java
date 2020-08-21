@@ -42,6 +42,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
@@ -138,6 +139,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private Drawer drawerResult = null;
     private MenuItem searchMenuItem;
     private CustomTabActivityHelper customTabActivityHelper;
+    /**
+     * Used to re-create the fragment after activity recreation
+     */
     private CustomTabsIntent customTabsIntent;
     private Uri userAccountUri;
     private Uri contributeUri;
@@ -285,54 +289,62 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
 
                 Fragment newFragment = null;
                 switch ((int) drawerItem.getIdentifier()) {
+
                     case ITEM_HOME:
-                        newFragment = new HomeFragment();
+                        newFragment = HomeFragment.newInstance();
                         break;
+
                     case ITEM_SEARCH_BY_CODE:
                         newFragment = new FindProductFragment();
                         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
+
                     case ITEM_CATEGORIES:
                         CategoryActivity.start(this);
                         break;
 
                     case ITEM_ADDITIVES:
-                        startActivity(new Intent(this, AdditivesExplorer.class));
+                        AdditivesExplorer.start(this);
                         break;
+
                     case ITEM_SCAN:
                         openScan();
                         break;
+
                     case ITEM_COMPARE:
-                        startActivity(new Intent(this, ProductComparisonActivity.class));
+                        ProductComparisonActivity.start(this);
                         break;
+
                     case ITEM_HISTORY:
-                        startActivity(new Intent(this, HistoryScanActivity.class));
+                        HistoryScanActivity.start(this);
                         break;
+
                     case ITEM_LOGIN:
                         registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
                             if (isLoggedIn) {
                                 updateConnectedState();
                             }
-                        });
+                        }).launch(null);
                         break;
+
                     case ITEM_ALERT:
-                        newFragment = new AllergensAlertFragment();
+                        newFragment = AllergensAlertFragment.newInstance();
                         break;
+
                     case ITEM_PREFERENCES:
-                        newFragment = new PreferencesFragment();
+                        newFragment = PreferencesFragment.newInstance();
                         break;
+
                     case ITEM_ABOUT:
                         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
                         break;
+
                     case ITEM_CONTRIBUTE:
                         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, contributeUri, new WebViewFallback());
                         break;
 
                     case ITEM_INCOMPLETE_PRODUCTS:
-
-                        /*
-                          Search and display the products to be completed by moving to ProductBrowsingListActivity
-                         */
+                        // Search and display the products to be completed by moving to ProductBrowsingListActivity
                         ProductBrowsingListActivity.start(this, "", SearchType.INCOMPLETE_PRODUCT);
                         break;
 
@@ -396,7 +408,10 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                 }
 
                 if (newFragment != null) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, newFragment).addToBackStack(null).commit();
+                    getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, newFragment)
+                        .addToBackStack(null)
+                        .commit();
                 }
 
                 return false;
@@ -851,7 +866,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         drawerResult.addItemAtPosition(super.isUserLoggedIn() ? getLogoutDrawerItem() : getLoginDrawerItem(), drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS));
     }
 
-    private void handleSendImage(Intent intent) {
+    private void handleSendImage(@NonNull Intent intent) {
         ArrayList<Uri> selectedImagesArray = new ArrayList<>();
         Uri selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (selectedImage != null) {
@@ -860,7 +875,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         }
     }
 
-    private void handleSendMultipleImages(Intent intent) {
+    private void handleSendMultipleImages(@NonNull Intent intent) {
         ArrayList<Uri> selectedImagesArray = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         if (selectedImagesArray != null) {
             selectedImagesArray.removeAll(Collections.singleton(null));
@@ -1006,7 +1021,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
      * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
      * @since 06/16/18
      */
-    public void changeFragment(@NonNull Fragment fragment, @NonNull String title, long drawerName) {
+    public void changeFragment(@NonNull Fragment fragment, @Nullable String title, long drawerName) {
         changeFragment(fragment, title);
         drawerResult.setSelection(drawerName);
     }
@@ -1021,7 +1036,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
      * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
      * @since 06/16/18
      */
-    public void changeFragment(@NonNull Fragment fragment, @NonNull String title) {
+    public void changeFragment(@NonNull Fragment fragment, @Nullable String title) {
 
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();
@@ -1033,8 +1048,13 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             ft.addToBackStack(backStateName);
             ft.commit();
         }
+        if (title != null) {
+            Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+        }
+    }
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    public void changeFragment(@NonNull Fragment fragment) {
+        changeFragment(fragment, null);
     }
 }
 

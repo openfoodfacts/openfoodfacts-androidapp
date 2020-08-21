@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -33,6 +34,11 @@ public class ProductComparisonActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, ProductComparisonActivity.class);
+        context.startActivity(starter);
     }
 
     @Override
