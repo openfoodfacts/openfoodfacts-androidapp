@@ -758,7 +758,7 @@
     <string name="unknown_status_no_translation">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients inconnus.</string>
     <string name="help_translate_ingredients">Aidez à traduire les ingrédients dans votre langue</string>
     <string name="unknown_status_missing_ingredients">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients manquants.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
+    <string name="unknown_status_ambiguous_ingredients">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients ambigüs : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Aidez à extraire les ingrédients pour obtenir le statut de %1$s.</string>
     <string name="add_photo_to_extract_ingredients">Ajoutez une photo pour débuter l\'extraction des ingrédients</string>
     <string name="product_already_exists_in_comparison">Le produit existe déjà dans la liste de comparaison</string>
@@ -769,8 +769,8 @@
     <string name="compare_saturated_fat">Graisses saturées</string>
     <string name="compare_fat">Matières grasses</string>
     <string name="compare_quantity">Quantité :</string>
-    <string name="load_ingredient_detection_data">Charger les données des ingrédients analysés</string>
-    <string name="load_ingredient_detection_data_summary">Aucune donnée disponible pour les ingrédients analysés, essayez de les télécharger</string>
+    <string name="load_ingredient_detection_data">Charger les données de l'analyse des ingrédients</string>
+    <string name="load_ingredient_detection_data_summary">Aucune donnée disponible pour l'analyse des ingrédients, essayez de les télécharger</string>
     <string name="white_check_image_descr">Un coche blanc</string>
     <string name="hint_packaging">Exemples : plastique, papier, verre</string>
     <string name="risk_alcohol_consumption">L\'abus d’alcool est dangereux pour la santé, à consommer avec modération</string>
@@ -792,7 +792,7 @@
     <string name="content_exit">Cliquez ici pour revenir au produit</string>
     <string name="icon_label">Icône d\'étiquette</string>
     <string name="icon_categories">Icône des catégories</string>
-    <string name="icon_emb">Icône du code EMB</string>
+    <string name="icon_emb">Icône traçabilité</string>
     <string name="product_front_image">Image frontale du produit</string>
     <string name="brand_hint">Exemples : Coca-Cola, Nestlé, etc.</string>
     <string name="sign_in_or_register">Se connecter ou s\'inscrire</string>
