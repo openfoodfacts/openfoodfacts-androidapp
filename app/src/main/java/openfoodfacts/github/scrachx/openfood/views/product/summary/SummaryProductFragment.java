@@ -133,6 +133,12 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding.uploadingImageProgressText.setText(R.string.image_uploaded_successfully);
     }
 
+    @Override
+    public void onDestroy() {
+        disp.clear();
+        super.onDestroy();
+    }
+
     private void onImageListenerError(Throwable error) {
         binding.uploadingImageProgress.setVisibility(GONE);
         binding.uploadingImageProgressText.setVisibility(GONE);
