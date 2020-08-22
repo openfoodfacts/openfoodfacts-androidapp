@@ -236,7 +236,7 @@
     <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
     <string name="permission_camera">Om streepjescodes te scannen en foto\'s te nemen is cameratoestemming vereist.</string>
     <string name="no_camera_dialog_title">Camera niet gevonden</string>
-    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
+    <string name="no_camera_dialog_content">Je apparaat heeft geen camera. Je kunt geen barcode scannen.</string>
     <string name="permission_title">Informatie over permissies</string>
     <string name="permission_denied">Activeer alstublieft de toegang bij Instellingen</string>
     <string name="info_download_data_connection">Er is een extra bestand nodig om deze functie te kunnen activeren. Activeer je netwerkverbinding alstublieft.</string>
