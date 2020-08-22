@@ -20,20 +20,20 @@
         <item quantity="other"> Je hebt %d offline producten wachtende om bijgedragen te worden aan Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d second ago</item>
+        <item quantity="one">%d seconde geleden</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
         <item quantity="one">%d minute ago</item>
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d minuten geleden</item>
     </plurals>
     <plurals name="hours">
         <item quantity="one">%d hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d uur geleden</item>
     </plurals>
     <plurals name="days">
         <item quantity="one">%d day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d dagen geleden</item>
     </plurals>
     <string name="action_about">Over</string>
     <string name="action_discover">Ontdek</string>
@@ -235,7 +235,7 @@
     <string name="title_info_dialog">Hoe werkt het?</string>
     <string name="text_offline_info_dialog">Je kunt de producten offline scannen en deze later verzenden naar Open Food Facts. Alle producten die je scant zullen hier verschijnen en zijn te verzenden met onderstaande button.</string>
     <string name="permission_camera">Om streepjescodes te scannen en foto\'s te nemen is cameratoestemming vereist.</string>
-    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_title">Camera niet gevonden</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Informatie over permissies</string>
     <string name="permission_denied">Activeer alstublieft de toegang bij Instellingen</string>
@@ -280,8 +280,8 @@
     <string name="nutrition_carbohydrate">Koolhydraten</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Energie</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Energie in calorieën (kcal)</string>
+    <string name="nutrition_energy_kj">Energie in joule (kJ)</string>
     <string name="nutrition_energy_short_name">Energie</string>
     <string name="nutrition_fat">Vet</string>
     <string name="nutrition_fiber">Voedingsvezels</string>
@@ -398,7 +398,7 @@
     <string name="history_shortcut_short_label">Geschiedenis</string>
     <string name="history_shortcut_long_label">Geschiedenis</string>
     <string name="contributions_shortcut_short_label">Bijdragen</string>
-    <string name="contributions_shortcut_long_label">My contributions</string>
+    <string name="contributions_shortcut_long_label">Mijn bijdragen</string>
     <string name="forgot_password">Wachtwoord vergeten</string>
     <string name="next">VOLGENDE</string>
     <string name="skip">OVERSLAAN</string>
