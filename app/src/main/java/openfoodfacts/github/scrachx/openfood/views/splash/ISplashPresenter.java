@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.views.splash;
 
-import android.content.res.AssetManager;
-
 /**
  * Created by Lobster on 03.03.18.
  */
@@ -18,7 +16,5 @@ public interface ISplashPresenter {
         void hideLoading(boolean isError);
 
         void navigateToMainActivity();
-
-        AssetManager getAssetManager();
     }
 }

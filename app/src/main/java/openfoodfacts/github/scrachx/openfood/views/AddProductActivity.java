@@ -335,6 +335,7 @@ public class AddProductActivity extends AppCompatActivity {
         viewPager.setAdapter(adapterResult);
     }
 
+    @NonNull
     private RequestBody createTextPlain(String code) {
         return RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code);
     }
