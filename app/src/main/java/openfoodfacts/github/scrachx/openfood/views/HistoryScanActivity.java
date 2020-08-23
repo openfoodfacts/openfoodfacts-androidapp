@@ -64,7 +64,8 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.HistoryListAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 public class HistoryScanActivity extends BaseActivity implements SwipeControllerActions {
     private ActivityHistoryScanBinding binding;
@@ -115,7 +116,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
             binding.srRefreshHistoryScanList.setRefreshing(false);
         });
 
-        BottomNavigationListenerInstaller.install(this, binding.navigationBottom.bottomNavigation);
+        CommonBottomListenerInstaller.install(this, binding.navigationBottom.bottomNavigation);
     }
 
     @Override
@@ -324,7 +325,7 @@ public class HistoryScanActivity extends BaseActivity implements SwipeController
     @Override
     public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.history_bottom_nav);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.history_bottom_nav);
     }
 
     protected void onScanFirst() {

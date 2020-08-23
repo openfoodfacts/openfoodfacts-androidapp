@@ -26,7 +26,7 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AdditivesAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 
 public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.ClickListener {
     private ActivityAdditivesExplorerBinding binding;
@@ -80,8 +80,8 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
             binding.additiveRecyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
         });
 
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(this, binding.navigationBottomInclude.bottomNavigation);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
+        CommonBottomListenerInstaller.install(this, binding.navigationBottomInclude.bottomNavigation);
     }
 
     @Override

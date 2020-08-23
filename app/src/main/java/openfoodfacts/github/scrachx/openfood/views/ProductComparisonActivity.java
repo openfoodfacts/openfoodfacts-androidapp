@@ -22,7 +22,8 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductComparisonAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 public class ProductComparisonActivity extends BaseActivity {
     private ActivityProductComparisonBinding binding;
@@ -88,7 +89,7 @@ public class ProductComparisonActivity extends BaseActivity {
             }
         });
 
-        BottomNavigationListenerInstaller.install(this, binding.navigationBottomInclude.bottomNavigation);
+        CommonBottomListenerInstaller.install(this, binding.navigationBottomInclude.bottomNavigation);
     }
 
     @Override
@@ -100,6 +101,6 @@ public class ProductComparisonActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, R.id.compare_products);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, R.id.compare_products);
     }
 }

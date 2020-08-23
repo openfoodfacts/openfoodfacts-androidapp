@@ -61,7 +61,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
@@ -102,7 +102,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         setTitle(R.string.your_lists);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BottomNavigationListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
+        CommonBottomListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0);
 
         productListsDao = getProductListsDaoWithDefaultList(this);
@@ -242,7 +242,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     @Override
     public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
     }
 
     private void parseCSV(InputStream inputStream) {

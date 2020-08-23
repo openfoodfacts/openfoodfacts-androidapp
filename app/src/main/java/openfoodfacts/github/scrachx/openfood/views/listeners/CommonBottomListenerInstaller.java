@@ -6,28 +6,32 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
-public class BottomNavigationListenerInstaller {
-    public static void selectNavigationItem(BottomNavigationView bottomNavigationView, int itemId) {
-        Set<Integer> navItems = new HashSet<>();
-        navItems.add(R.id.scan_bottom_nav);
-        navItems.add(R.id.compare_products);
-        navItems.add(R.id.home_page);
-        navItems.add(R.id.history_bottom_nav);
-        navItems.add(R.id.my_lists);
+public class CommonBottomListenerInstaller {
+    // We use LinkedHashSet to retain insertion order
+    protected static final Set<Integer> NAV_ITEMS = new LinkedHashSet<>();
 
-        if (navItems.contains(itemId)) {
+    static {
+        NAV_ITEMS.add(R.id.scan_bottom_nav);
+        NAV_ITEMS.add(R.id.compare_products);
+        NAV_ITEMS.add(R.id.home_page);
+        NAV_ITEMS.add(R.id.history_bottom_nav);
+        NAV_ITEMS.add(R.id.my_lists);
+    }
+
+    private CommonBottomListenerInstaller() {
+    }
+
+    public static void selectNavigationItem(BottomNavigationView bottomNavigationView, int itemId) {
+        if (NAV_ITEMS.contains(itemId)) {
             bottomNavigationView.getMenu().findItem(itemId).setChecked(true);
         } else {
             bottomNavigationView.getMenu().getItem(0).setCheckable(false);
         }
-    }
-
-    private BottomNavigationListenerInstaller() {
     }
 
     public static void install(@NonNull Activity activity, @NonNull BottomNavigationView bottomNavigationView) {

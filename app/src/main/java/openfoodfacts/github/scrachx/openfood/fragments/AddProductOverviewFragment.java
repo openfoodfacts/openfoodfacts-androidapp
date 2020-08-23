@@ -114,7 +114,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     private ProductsAPI client;
     private List<String> countries = new ArrayList<>();
     private boolean editionMode;
-    private boolean frontImage;
+    private boolean isFrontImagePresent;
     private List<String> labels = new ArrayList<>();
     private String languageCode;
     private CategoryNameDao categoryNameDao;
@@ -137,9 +137,9 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         disp.dispose();
         binding = null;
+        super.onDestroy();
     }
 
     @Override
@@ -158,7 +158,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             this.photoFile = newPhotoFile;
             ProductImage image;
             int position;
-            if (frontImage) {
+            if (isFrontImagePresent) {
                 image = new ProductImage(barcode, FRONT, newPhotoFile);
                 frontImageUrl = newPhotoFile.getAbsolutePath();
                 position = 0;
@@ -175,12 +175,12 @@ public class AddProductOverviewFragment extends BaseFragment {
         binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
 
         binding.btnNext.setOnClickListener(v -> next());
-        binding.btnAddImageFront.setOnClickListener(v -> addFrontImage());
-        binding.btnEditImageFront.setOnClickListener(v -> editFrontImage());
+        binding.imgFront.setOnClickListener(v -> onFrontImageClick());
+        binding.btnEditImgFront.setOnClickListener(v -> onEditFrontImageClick());
         binding.btnOtherPictures.setOnClickListener(v -> editOtherImage());
         binding.sectionManufacturingDetails.setOnClickListener(v -> toggleManufacturingSectionVisibility());
         binding.sectionPurchasingDetails.setOnClickListener(v -> togglePurchasingSectionVisibility());
-        binding.hintEmbCode.setOnClickListener(v -> toastEmbCodeHint());
+        binding.hintEmbCode.setOnClickListener(v -> showEmbCodeHintDialog());
         binding.hintLink.setOnClickListener(v -> searchProductLink());
         binding.hintLink2.setOnClickListener(v -> scanProductLink());
         binding.language.setOnClickListener(v -> selectProductLanguage());
@@ -238,7 +238,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         initializeChips();
         setupAutoSuggestion();
         if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
-            getAllDetails(((AddProductActivity) getActivity()).getInitialValues());
+            addAllFieldsToMap(((AddProductActivity) getActivity()).getInitialValues());
         }
         if (StringUtils.isBlank(languageCode)) {
             setProductLanguage(appLanguageCode);
@@ -430,12 +430,12 @@ public class AddProductOverviewFragment extends BaseFragment {
 
             frontImageUrl = imageFrontUrl;
             binding.imageProgress.setVisibility(View.VISIBLE);
-            binding.btnEditImageFront.setVisibility(View.INVISIBLE);
+            binding.btnEditImgFront.setVisibility(View.INVISIBLE);
             Picasso.get()
                 .load(imageFrontUrl)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
-                .into(binding.btnAddImageFront, new Callback() {
+                .into(binding.imgFront, new Callback() {
                     @Override
                     public void onSuccess() {
                         frontImageLoaded();
@@ -506,13 +506,13 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (productDetails != null) {
             if (savedProduct.getImageFrontLocalUrl() != null) {
                 binding.imageProgress.setVisibility(View.VISIBLE);
-                binding.btnEditImageFront.setVisibility(View.INVISIBLE);
+                binding.btnEditImgFront.setVisibility(View.INVISIBLE);
                 frontImageUrl = savedProduct.getImageFrontLocalUrl();
                 Picasso.get()
                     .load(frontImageUrl)
                     .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
-                    .into(binding.btnAddImageFront, new Callback() {
+                    .into(binding.imgFront, new Callback() {
                         @Override
                         public void onSuccess() {
                             frontImageLoaded();
@@ -555,7 +555,7 @@ public class AddProductOverviewFragment extends BaseFragment {
 
     private void frontImageLoaded() {
         binding.imageProgress.setVisibility(View.GONE);
-        binding.btnEditImageFront.setVisibility(View.VISIBLE);
+        binding.btnEditImgFront.setVisibility(View.VISIBLE);
     }
 
     private void prefillChip(@NonNull Map<String, String> productDetails, @NonNull String paramName, @NonNull NachoTextView nachoTextView) {
@@ -694,54 +694,56 @@ public class AddProductOverviewFragment extends BaseFragment {
         activity = getActivity();
     }
 
-    void next() {
+    private void next() {
         if (!areRequiredFieldsEmpty() && activity instanceof AddProductActivity) {
             ((AddProductActivity) activity).proceed();
         }
     }
 
-    void addFrontImage() {
-        if (frontImageUrl != null) {
-            frontImage = true;
-            if (photoFile != null) {
-                cropRotateImage(photoFile, getString(R.string.set_img_front));
-            } else {
+    private void onFrontImageClick() {
+        if (frontImageUrl == null) {
+            // No image, take one
+            onEditFrontImageClick();
+        } else {
+            // Image found, download it if necessary and edit it
+            isFrontImagePresent = true;
+            if (photoFile == null) {
                 disp.add(FileDownloader.download(requireContext(), frontImageUrl)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(file -> {
                         photoFile = file;
                         cropRotateImage(photoFile, getString(R.string.set_img_front));
                     }));
+            } else {
+                cropRotateImage(photoFile, getString(R.string.set_img_front));
             }
-        } else {
-            editFrontImage();
         }
     }
 
-    void editFrontImage() {
+    private void onEditFrontImageClick() {
         // add front image.
-        frontImage = true;
+        isFrontImagePresent = true;
         doChooseOrTakePhotos(getString(R.string.set_img_front));
     }
 
-    void editOtherImage() {
-        frontImage = false;
+    private void editOtherImage() {
+        isFrontImagePresent = false;
         doChooseOrTakePhotos(getString(R.string.take_more_pictures));
     }
 
     @Override
     protected void doOnPhotosPermissionGranted() {
-        if (frontImage) {
+        if (isFrontImagePresent) {
             editOtherImage();
         } else {
-            addFrontImage();
+            onFrontImageClick();
         }
     }
 
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    public void getAllDetails(Map<String, String> targetMap) {
+    public void addAllFieldsToMap(Map<String, String> targetMap) {
         chipifyAllUnterminatedTokens();
         if (!(activity instanceof AddProductActivity)) {
             return;
@@ -752,23 +754,23 @@ public class AddProductOverviewFragment extends BaseFragment {
         targetMap.put(ApiFields.Keys.LC, appLanguageCode);
         targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
         targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
-        targetMap.put(ApiFields.Keys.BRANDS, getValues(binding.brand));
-        targetMap.put(ApiFields.Keys.PACKAGING, getValues(binding.packaging));
-        targetMap.put(ApiFields.Keys.CATEGORIES, getValues(binding.categories));
-        targetMap.put(ApiFields.Keys.LABELS, getValues(binding.label));
+        targetMap.put(ApiFields.Keys.BRANDS, getNachoValues(binding.brand));
+        targetMap.put(ApiFields.Keys.PACKAGING, getNachoValues(binding.packaging));
+        targetMap.put(ApiFields.Keys.CATEGORIES, getNachoValues(binding.categories));
+        targetMap.put(ApiFields.Keys.LABELS, getNachoValues(binding.label));
         if (AppFlavors.isFlavors(AppFlavors.OBF)) {
             targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
         }
         if (frontImageUrl != null) {
             targetMap.put("imageUrl", frontImageUrl);
         }
-        targetMap.put(ApiFields.Keys.ORIGINS, getValues(binding.originOfIngredients));
+        targetMap.put(ApiFields.Keys.ORIGINS, getNachoValues(binding.originOfIngredients));
         targetMap.put(ApiFields.Keys.MANUFACTURING_PLACES, binding.manufacturingPlace.getText().toString());
-        targetMap.put(ApiFields.Keys.EMB_CODES, getValues(binding.embCode));
+        targetMap.put(ApiFields.Keys.EMB_CODES, getNachoValues(binding.embCode));
         targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
-        targetMap.put(ApiFields.Keys.PURCHASE_PLACES, getValues(binding.countryWherePurchased));
-        targetMap.put(ApiFields.Keys.STORES, getValues(binding.stores));
-        targetMap.put(ApiFields.Keys.COUNTRIES, getValues(binding.countriesWhereSold));
+        targetMap.put(ApiFields.Keys.PURCHASE_PLACES, getNachoValues(binding.countryWherePurchased));
+        targetMap.put(ApiFields.Keys.STORES, getNachoValues(binding.stores));
+        targetMap.put(ApiFields.Keys.COUNTRIES, getNachoValues(binding.countriesWhereSold));
     }
 
     /**
@@ -797,16 +799,16 @@ public class AddProductOverviewFragment extends BaseFragment {
             targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
         }
         if (EditTextUtils.areChipsDifferent(binding.brand, extractProductBrandsChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.BRANDS, getValues(binding.brand));
+            targetMap.put(ApiFields.Keys.BRANDS, getNachoValues(binding.brand));
         }
         if (EditTextUtils.areChipsDifferent(binding.packaging, extractProductPackagingChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.PACKAGING, getValues(binding.packaging));
+            targetMap.put(ApiFields.Keys.PACKAGING, getNachoValues(binding.packaging));
         }
         if (EditTextUtils.areChipsDifferent(binding.categories, extractProductCategoriesChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.CATEGORIES, getValues(binding.categories));
+            targetMap.put(ApiFields.Keys.CATEGORIES, getNachoValues(binding.categories));
         }
         if (EditTextUtils.areChipsDifferent(binding.label, extractProductTagsChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.LABELS, getValues(binding.label));
+            targetMap.put(ApiFields.Keys.LABELS, getNachoValues(binding.label));
         }
         if (EditTextUtils.isNotEmpty(binding.periodOfTimeAfterOpening)) {
             targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
@@ -815,27 +817,27 @@ public class AddProductOverviewFragment extends BaseFragment {
             targetMap.put("imageUrl", frontImageUrl);
         }
         if (EditTextUtils.areChipsDifferent(binding.originOfIngredients, extractProductOriginsChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.ORIGINS, getValues(binding.originOfIngredients));
+            targetMap.put(ApiFields.Keys.ORIGINS, getNachoValues(binding.originOfIngredients));
         }
         if (EditTextUtils.isNotEmpty(binding.manufacturingPlace) && EditTextUtils
             .isDifferent(binding.manufacturingPlace, product != null ? product.getManufacturingPlaces() : null)) {
             targetMap.put(ApiFields.Keys.MANUFACTURING_PLACES, binding.manufacturingPlace.getText().toString());
         }
         if (EditTextUtils.areChipsDifferent(binding.embCode, extractProductEmbTagsChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.EMB_CODES, getValues(binding.embCode));
+            targetMap.put(ApiFields.Keys.EMB_CODES, getNachoValues(binding.embCode));
         }
         if (EditTextUtils.isNotEmpty(binding.link) && EditTextUtils.isDifferent(binding.link, product != null ? product.getManufactureUrl() : null)) {
             targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
         }
         if (EditTextUtils.areChipsDifferent(binding.countryWherePurchased, extractProductPurchasePlaces(product))) {
-            targetMap.put(ApiFields.Keys.PURCHASE_PLACES, getValues(binding.countryWherePurchased));
+            targetMap.put(ApiFields.Keys.PURCHASE_PLACES, getNachoValues(binding.countryWherePurchased));
         }
         if (EditTextUtils.areChipsDifferent(binding.stores, extractProductStoresChipValues(product))) {
-            targetMap.put(ApiFields.Keys.STORES, getValues(binding.stores));
+            targetMap.put(ApiFields.Keys.STORES, getNachoValues(binding.stores));
         }
         if (EditTextUtils.areChipsDifferent(binding.countriesWhereSold,
             extractProductCountriesTagsChipValues(product))) {
-            targetMap.put(ApiFields.Keys.COUNTRIES, getValues(binding.countriesWhereSold));
+            targetMap.put(ApiFields.Keys.COUNTRIES, getNachoValues(binding.countriesWhereSold));
         }
     }
 
@@ -851,9 +853,10 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
     }
 
-    private String getValues(NachoTextView nachoTextView) {
-        List<String> list = nachoTextView.getChipValues();
-        return StringUtils.join(list, ",");
+    @NonNull
+    @Contract(pure = true)
+    private String getNachoValues(@NonNull NachoTextView nachoTextView) {
+        return StringUtils.join(nachoTextView.getChipValues(), ",");
     }
 
     private void toggleManufacturingSectionVisibility() {
@@ -893,10 +896,11 @@ public class AddProductOverviewFragment extends BaseFragment {
         binding.countriesWhereSoldTil.setVisibility(visibility);
     }
 
-    private void toastEmbCodeHint() {
+    private void showEmbCodeHintDialog() {
         new MaterialDialog.Builder(activity)
             .content(R.string.hint_emb_codes)
             .positiveText(R.string.ok_button)
+            .onPositive((dialog, which) -> dialog.dismiss())
             .show();
     }
 
@@ -970,6 +974,7 @@ public class AddProductOverviewFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        // Scanned QR code returned
         if (requestCode == INTENT_INTEGRATOR_REQUEST_CODE) {
             IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
             if (result.getContents() != null) {
@@ -977,8 +982,9 @@ public class AddProductOverviewFragment extends BaseFragment {
                 binding.link.requestFocus();
             }
         }
+        // Returning from editing image
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            frontImage = true;
+            isFrontImagePresent = true;
         }
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
@@ -989,8 +995,8 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
         binding.imageProgress.setVisibility(View.VISIBLE);
         binding.imageProgressText.setVisibility(View.VISIBLE);
-        binding.btnAddImageFront.setVisibility(View.INVISIBLE);
-        binding.btnEditImageFront.setVisibility(View.INVISIBLE);
+        binding.imgFront.setVisibility(View.INVISIBLE);
+        binding.btnEditImgFront.setVisibility(View.INVISIBLE);
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
@@ -999,14 +1005,14 @@ public class AddProductOverviewFragment extends BaseFragment {
         }
         binding.imageProgress.setVisibility(View.GONE);
         binding.imageProgressText.setVisibility(View.GONE);
-        binding.btnAddImageFront.setVisibility(View.VISIBLE);
-        binding.btnEditImageFront.setVisibility(View.VISIBLE);
+        binding.imgFront.setVisibility(View.VISIBLE);
+        binding.btnEditImgFront.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
             Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
-                .into(binding.btnAddImageFront);
+                .into(binding.imgFront);
         }
     }
 

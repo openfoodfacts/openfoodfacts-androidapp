@@ -48,9 +48,10 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
+import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CONTRIBUTOR;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH;
@@ -260,8 +261,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
             isLowBatteryMode = true;
         }
 
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(this, binding.navigationBottom.bottomNavigation);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
+        CommonBottomListenerInstaller.install(this, binding.navigationBottom.bottomNavigation);
     }
 
     private void setupHungerGames() {
