@@ -2,6 +2,8 @@ package openfoodfacts.github.scrachx.openfood.views.listeners;
 
 import android.app.Activity;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.HashSet;
@@ -19,11 +21,7 @@ public class BottomNavigationListenerInstaller {
         navItems.add(R.id.my_lists);
 
         if (navItems.contains(itemId)) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N_MR1){
-                bottomNavigationView.setSelectedItemId(itemId);
-            } else{
-                bottomNavigationView.getMenu().findItem(itemId).setChecked(true);
-            }
+            bottomNavigationView.getMenu().findItem(itemId).setChecked(true);
         } else {
             bottomNavigationView.getMenu().getItem(0).setCheckable(false);
         }
@@ -32,9 +30,7 @@ public class BottomNavigationListenerInstaller {
     private BottomNavigationListenerInstaller() {
     }
 
-    public static void install(BottomNavigationView bottomNavigationView, Activity activity) {
+    public static void install(@NonNull Activity activity, @NonNull BottomNavigationView bottomNavigationView) {
         bottomNavigationView.setOnNavigationItemSelectedListener(new CommonBottomListener(activity));
     }
-
-
 }

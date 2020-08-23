@@ -88,7 +88,7 @@ public class ProductComparisonActivity extends BaseActivity {
             }
         });
 
-        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
+        BottomNavigationListenerInstaller.install(this, binding.navigationBottomInclude.bottomNavigation);
     }
 
     @Override

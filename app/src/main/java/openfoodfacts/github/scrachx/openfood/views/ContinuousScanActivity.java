@@ -783,7 +783,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
         binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener);
 
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        BottomNavigationListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
     }
 
     private void setupPopupMenu() {

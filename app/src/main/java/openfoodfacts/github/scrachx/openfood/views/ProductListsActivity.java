@@ -102,7 +102,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         setTitle(R.string.your_lists);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        BottomNavigationListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0);
 
         productListsDao = getProductListsDaoWithDefaultList(this);

@@ -261,7 +261,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this);
+        BottomNavigationListenerInstaller.install(this, binding.navigationBottom.bottomNavigation);
     }
 
     private void setupHungerGames() {

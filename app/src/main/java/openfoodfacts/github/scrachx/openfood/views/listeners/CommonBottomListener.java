@@ -25,9 +25,10 @@ import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
 import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 
 public class CommonBottomListener implements BottomNavigationView.OnNavigationItemSelectedListener {
+    @NonNull
     private final Activity currentActivity;
 
-    CommonBottomListener(Activity activity) {
+    CommonBottomListener(@NonNull Activity activity) {
         this.currentActivity = activity;
     }
 
@@ -115,6 +116,7 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
         return currentActivity != null && currentActivity.getClass().equals(activityClass);
     }
 
+    @NonNull
     private Intent createIntent(Class<? extends Activity> activityClass) {
         final Intent intent = new Intent(currentActivity, activityClass);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

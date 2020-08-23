@@ -44,7 +44,7 @@ public class CategoryActivity extends BaseActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.fragment, new CategoryListFragment()).commitNow();
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
+        BottomNavigationListenerInstaller.install(this, binding.bottomNavigationInclude.bottomNavigation);
     }
 
     private void openHungerGame() {

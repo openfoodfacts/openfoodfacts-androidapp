@@ -162,7 +162,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        BottomNavigationListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
     }
 
     public static String getProductBrandsQuantityDetails(Product p) {

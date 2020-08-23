@@ -508,7 +508,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         }
 
         BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
+        BottomNavigationListenerInstaller.install(this, binding.bottomNavigationInclude.bottomNavigation);
 
         handleIntent(getIntent());
     }
