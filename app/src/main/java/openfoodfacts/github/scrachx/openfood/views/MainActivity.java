@@ -388,7 +388,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         break;
 
                     case ITEM_YOUR_LISTS:
-                        startActivity(ProductListsActivity.getIntent(this));
+                        ProductListsActivity.start(this);
                         break;
 
                     case ITEM_LOGOUT:
