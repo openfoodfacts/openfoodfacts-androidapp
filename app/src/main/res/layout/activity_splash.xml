@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2016-2020 Open Food Facts
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +24,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/logo"
