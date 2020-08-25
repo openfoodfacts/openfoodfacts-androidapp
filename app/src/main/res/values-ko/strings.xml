@@ -19,16 +19,16 @@
         <item quantity="other"> Open Foods Facts 에 기부되기를 기다리는 오프라인 제품이 %d 있습니다.</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">%d 초 전</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d 분 전</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d 시간 전</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d 일 전</item>
     </plurals>
     <string name="action_about">정보</string>
     <string name="action_discover">발견</string>
@@ -587,7 +587,7 @@
     <string name="traces">흔적</string>
     <string name="traces_hint">\'~를 미량 함유할 수 있음\', \'~를 사용하는 공장에서 제조 됨\' 등과 같이 언급된 성분을 표시하십시오. \n예시 : 우유, 글루텐, 견과류</string>
     <string name="nutrition_facts_not_specified">영양성분표가 제품에 명시되어 있지 않습니다.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
+    <string name="nutrition_facts_picture">영양성분표 사진</string>
     <string name="front_short_picture">앞</string>
     <string name="other_picture">다른 사진</string>
     <string name="for_100g_100ml">100g / 100ml 당</string>
