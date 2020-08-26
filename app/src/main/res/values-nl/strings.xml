@@ -163,7 +163,7 @@
     <string name="txtBarcode">Streepjescode</string>
     <string name="txtCategories">Categoriëen</string>
     <string name="txtLabels">Etiketten, certificeringen, onderscheidingen:</string>
-    <string name="txtEMB">Traceability codes:</string>
+    <string name="txtEMB">Traceerbaarheidscodes:</string>
     <string name="txtIngredients">Ingrediënten</string>
     <string name="Donate">Doneer</string>
     <string name="Donation">Klik hier om te doneren aan Open Food Facts</string>
@@ -203,7 +203,7 @@
     <string name="txtLoading">Bezig met laden…</string>
     <string name="txtDialogsContentDelete">Weet u zeker dat u deze concept wilt verwijderen?</string>
     <string name="txtDialogsContentInfoSave">Het product is lokaal opgeslagen, u kunt het bewerken in het Offline Edit-menu</string>
-    <string name="productSavedToast">Product saved, thanks!</string>
+    <string name="productSavedToast">Product opgeslagen, bedankt!</string>
     <string name="txtBarcodeRequire">Streepjescode verplicht</string>
     <string name="txtOk">Ok</string>
     <string name="txtBarcodeNotValid">Streepjescode niet geldig</string>
@@ -252,11 +252,11 @@
     <string name="prefs_language">Taal</string>
     <string name="prefs_language_summary">Een andere taal kiezen</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_enjoying_app">Geniet je van je ervaring met Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We vinden het jammer om dat te horen! Kun je ons vertellen wat er is gebeurd?</string>
     <string name="user_ask_rate_app">Geweldig! Laat anderen weten wat je vindt van deze app!</string>
     <string name="rate_app">Beoordeel app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="no_thx">Nee, bedankt</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Geschiedenis</string>
@@ -384,7 +384,7 @@
     <string name="take_more_pictures">Maak meer foto\'s</string>
     <string name="txtSaturatedFat">Verzadigd vet</string>
     <string name="nutriscore_info_msg">Meer informatie over de Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about NOVA groups</string>
+    <string name="nova_info_msg">Meer informatie over NOVA groepen</string>
     <string name="nova_grp1_msg">Groep 1 - Onverwerkte of minimaal verwerkte levensmiddelen</string>
     <string name="nova_grp2_msg">Groep 2 - Bewerkte ingrediënten</string>
     <string name="nova_grp3_msg">Groep 3 - Bewerkte levensmiddelen</string>
@@ -420,7 +420,7 @@
     <string name="preference_enable_mobile_data_summary_on">Upload nieuwe producten via mobiele data &amp; WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Upload nieuwe producten alleen via WiFi</string>
     <string name="device_on_mobile_data_warning_title">Opmerking</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_message">Je hebt het uploaden op mobiele data uitgeschakeld, maak verbinding met WiFi of wijzig dit in voorkeuren</string>
     <string name="device_on_mobile_data_warning_positive">Voorkeuren</string>
     <string name="device_on_mobile_data_warning_negative">Toch uploaden</string>
     <string name="changes_saved">Wijzigingen opgeslagen</string>
@@ -522,11 +522,11 @@
     <string name="last_editor_history">Laatste bewerking van productpagina op %1$s om %2$s CET door </string>
     <string name="other_editors">Productpagina ook bewerkt door </string>
     <string name="contribution_tab">Bijdragen</string>
-    <string name="contribution_tab_summary">Bijdragen tonen bij producten</string>
+    <string name="contribution_tab_summary">Bijdragen weergeven bij producten</string>
     <string name="contribution_tab_title">Bijdrage tabblad weergeven</string>
     <string name="txtDialogsTitle">Opmerking</string>
-    <string name="preference_show_all_product_photos_title">Weergeef alle productfoto\'s</string>
-    <string name="preference_show_all_product_photos_summary">Weergeef alle productfoto\'s in een apart tabblad</string>
+    <string name="preference_show_all_product_photos_title">Alle productfoto\'s weergeven</string>
+    <string name="preference_show_all_product_photos_summary">Alle ingezonden productfoto\'s op een apart tabblad weergeven</string>
     <string name="offline_product_addition_title">Voeg een nieuw product toe</string>
     <string name="productNameNull">Naam onbekend</string>
     <string name="productAdditivesUnknown"></string>
