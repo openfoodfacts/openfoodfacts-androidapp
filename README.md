@@ -38,12 +38,9 @@ Data about food is of public interest and has to be open. The complete database 
 
 ## Screenshots
 
-<p>
-  <img src="https://lh3.googleusercontent.com/5QxkJkxPmoVxj_H_BidOPHJwFZSvLx9hx3ls-p9FetMORGMf2-7e9J4Jsg9EN8NjBpYq=w1260-h646" width="212" height="400" />
-  <img src="https://lh3.googleusercontent.com/8Oab6oXw8Z8z_a5BO2stLRAkCVVR3cW4R-NfQ4BdYSdWM24I0cG0F2HHvXYRDWslcg=w1260-h646" width="212" height="400" /> 
-  <img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" />
-    <img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" />
-</p>
+|               |               |               |               |
+| ------------- | ------------- | ------------- | ------------- |
+|<img src="https://lh3.googleusercontent.com/5QxkJkxPmoVxj_H_BidOPHJwFZSvLx9hx3ls-p9FetMORGMf2-7e9J4Jsg9EN8NjBpYq=w1260-h646" width="212" height="400" />|     <img src="https://lh3.googleusercontent.com/8Oab6oXw8Z8z_a5BO2stLRAkCVVR3cW4R-NfQ4BdYSdWM24I0cG0F2HHvXYRDWslcg=w1260-h646" width="212" height="400" /> |       <img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" />|<img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" />|
 
 ## Bugs and feature requests
 
