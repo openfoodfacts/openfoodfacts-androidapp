@@ -548,15 +548,15 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
         dialog.show();
 
-        View view = dialog.getCustomView();
-        if (view != null) {
-            EditText etWeight = view.findViewById(R.id.edit_text_weight);
-            Spinner spinner = view.findViewById(R.id.spinner_weight);
+        View dialogView = dialog.getCustomView();
+        if (dialogView != null) {
+            EditText etWeight = dialogView.findViewById(R.id.edit_text_weight);
+            Spinner spinner = dialogView.findViewById(R.id.spinner_weight);
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
-                    btn.setOnClickListener(v1 -> {
+                    btn.setOnClickListener(btnView -> {
                         if (!TextUtils.isEmpty(etWeight.getText().toString())) {
                             CalculateDetails.start(requireActivity(),
                                 activityProductState.getProduct(),
