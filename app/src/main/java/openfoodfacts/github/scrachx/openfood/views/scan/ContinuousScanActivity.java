@@ -129,6 +129,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     public static final String SETTING_RING = "ring";
     public static final String SETTING_FLASH = "flash";
     public static final String SETTING_FOCUS = "focus";
+    public static final String LOG_TAG = ContinuousScanActivity.class.getSimpleName();
     private BeepManager beepManager;
     private ActivityContinuousScanBinding binding;
     private BottomSheetBehavior<LinearLayout> bottomSheetBehavior;
@@ -272,17 +273,21 @@ public class ContinuousScanActivity extends AppCompatActivity {
                                 .into(binding.quickViewImage, new Callback() {
                                     @Override
                                     public void onSuccess() {
-                                        binding.quickViewImageProgress.setVisibility(GONE);
+                                        if (binding != null) {
+                                            binding.quickViewImageProgress.setVisibility(GONE);
+                                        }
                                     }
 
                                     @Override
                                     public void onError(Exception ex) {
-                                        binding.quickViewImageProgress.setVisibility(GONE);
+                                        if (binding != null) {
+                                            binding.quickViewImageProgress.setVisibility(GONE);
+                                        }
                                     }
                                 });
                         } catch (IllegalStateException e) {
                             //could happen if Picasso is not instantiated correctly...
-                            Log.w(this.getClass().getSimpleName(), e.getMessage(), e);
+                            Log.w(LOG_TAG, e.getMessage(), e);
                         }
                     } else {
                         binding.quickViewImage.setImageDrawable(errorDrawable);
@@ -341,13 +346,13 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewProgress.setVisibility(GONE);
                         binding.quickViewProgressText.setVisibility(GONE);
-                        final Toast errorMessage = Toast.makeText(ContinuousScanActivity.this.getBaseContext(), R.string.txtConnectionError, Toast.LENGTH_LONG);
+                        final Toast errorMessage = Toast.makeText(this, R.string.txtConnectionError, Toast.LENGTH_LONG);
                         errorMessage.setGravity(Gravity.CENTER, 0, 0);
                         errorMessage.show();
-                        Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
+                        Log.i(LOG_TAG, e.getMessage(), e);
                     }
                 } catch (Exception err) {
-                    Log.w(this.getClass().getSimpleName(), err.getMessage(), err);
+                    Log.w(LOG_TAG, err.getMessage(), err);
                 }
             });
     }

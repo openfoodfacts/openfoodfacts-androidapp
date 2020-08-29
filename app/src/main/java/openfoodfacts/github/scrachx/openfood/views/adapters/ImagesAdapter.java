@@ -1,10 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.views.adapters;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Consumer;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
@@ -34,26 +36,23 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
  * Created by prajwalm on 10/09/18.
  */
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomViewHolder> {
+    private static final String LOG_TAG = ImagesAdapter.class.getSimpleName();
     private final String barcode;
-    private final Context context;
+    private final Activity context;
     private final List<String> images;
-    private final OnImageClickInterface onImageClick;
+    private final Consumer<Integer> onImageClick;
     private final HashMap<String, String> imgMap;
     private final boolean isLoggedIn;
     private final OpenFoodAPIClient openFoodAPIClient;
     private final Product product;
 
-    public interface OnImageClickInterface {
-        void onImageClick(int position);
-    }
-
-    public ImagesAdapter(Context context, List<String> images, String barcode, OnImageClickInterface onImageClick, Product product, boolean isLoggedin) {
-        this.context = context;
+    public ImagesAdapter(Activity activity, @NonNull Product product, boolean isLoggedin, List<String> images, Consumer<Integer> onImageClick) {
+        this.context = activity;
         this.images = images;
-        this.barcode = barcode;
+        this.barcode = product.getCode();
         this.onImageClick = onImageClick;
         this.product = product;
-        openFoodAPIClient = new OpenFoodAPIClient(context);
+        openFoodAPIClient = new OpenFoodAPIClient(activity);
         imgMap = new HashMap<>();
         this.isLoggedIn = isLoggedin;
     }
@@ -61,7 +60,6 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         return new CustomViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.images_item, parent, false));
     }
 
@@ -73,8 +71,8 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
         Button menuButton = holder.menuButton;
         String finalUrlString = ImageKeyHelper.getImageUrl(barcode, imageName, ImageKeyHelper.IMAGE_EDIT_SIZE_FILE);
 
+        Log.d(LOG_TAG, String.format("Loading image %s...", finalUrlString));
         Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(imageView);
-        Log.i("URL", finalUrlString);
 
         if (!isLoggedIn) {
             menuButton.setVisibility(View.INVISIBLE);
@@ -83,49 +81,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
 
             PopupMenu popupMenu = new PopupMenu(context, menuButton);
             popupMenu.inflate(R.menu.menu_image_edit);
-            popupMenu.setOnMenuItemClickListener(item -> {
-                final String imgIdKey = ImageKeyHelper.IMG_ID;
-                switch (item.getItemId()) {
-
-                    case R.id.set_ingredient_image:
-                        imgMap.put(imgIdKey, images.get(position));
-                        imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
-                        imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.INGREDIENTS, product));
-
-                        openFoodAPIClient.editImage(product.getCode(), imgMap, (value, response) -> displaySetImageName(response));
-                        break;
-
-                    case R.id.set_nutrition_image:
-                        imgMap.put(imgIdKey, images.get(position));
-                        imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
-                        imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.NUTRITION, product));
-
-                        openFoodAPIClient.editImage(product.getCode(), imgMap, (value, response) -> displaySetImageName(response));
-                        break;
-
-                    case R.id.set_front_image:
-                        imgMap.put(imgIdKey, images.get(position));
-                        imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
-                        imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.FRONT, product));
-
-                        openFoodAPIClient.editImage(product.getCode(), imgMap, (value, response) -> displaySetImageName(response));
-                        break;
-
-                    case R.id.report_image:
-
-                        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                        emailIntent.setData(Uri.parse("mailto:"));
-                        emailIntent.setType(OpenFoodAPIClient.MIME_TEXT);
-                        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"contact@openfoodfacts.org"});
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Photo report for product " + barcode);
-                        emailIntent.putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product " + barcode);
-                        context.startActivity(Intent.createChooser(emailIntent, "Send mail"));
-                        break;
-                    default:
-                        break;
-                }
-                return true;
-            });
+            popupMenu.setOnMenuItemClickListener(new PopupItemClickListener(position));
 
             popupMenu.show();
         });
@@ -133,12 +89,12 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
 
     public void displaySetImageName(@NonNull String response) {
         JSONObject jsonObject = Utils.createJsonObject(response);
-        String imageName = null;
+        String imageName;
         try {
             imageName = jsonObject.getString("imagefield");
-        } catch (JSONException e) {
-            Log.e(getClass().getSimpleName(), "displaySetImageName", e);
-            Toast.makeText(context, "Error while setting image " + imageName, Toast.LENGTH_LONG).show();
+        } catch (JSONException | NullPointerException e) {
+            Log.e(LOG_TAG, "displaySetImageName", e);
+            Toast.makeText(context, String.format("Error while setting image from response %s", response), Toast.LENGTH_LONG).show();
             return;
         }
         Toast.makeText(context, context.getString(R.string.set_image_name) + " " + imageName, Toast.LENGTH_LONG).show();
@@ -162,9 +118,61 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
 
         @Override
         public void onClick(View v) {
-
             int position = getAdapterPosition();
-            onImageClick.onImageClick(position);
+            onImageClick.accept(position);
+        }
+    }
+
+    private class PopupItemClickListener implements PopupMenu.OnMenuItemClickListener {
+        private final int position;
+
+        public PopupItemClickListener(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            final String imgIdKey = ImageKeyHelper.IMG_ID;
+            switch (item.getItemId()) {
+
+                case R.id.set_ingredient_image:
+                    imgMap.put(imgIdKey, images.get(position));
+                    imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
+                    imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.INGREDIENTS, product));
+
+                    openFoodAPIClient.editImage(product.getCode(), imgMap, (value, response) -> ImagesAdapter.this.displaySetImageName(response));
+                    break;
+
+                case R.id.set_nutrition_image:
+                    imgMap.put(imgIdKey, images.get(position));
+                    imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
+                    imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.NUTRITION, product));
+
+                    openFoodAPIClient.editImage(product.getCode(), imgMap, (value, response) -> ImagesAdapter.this.displaySetImageName(response));
+                    break;
+
+                case R.id.set_front_image:
+                    imgMap.put(imgIdKey, images.get(position));
+                    imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, barcode);
+                    imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(ProductImageField.FRONT, product));
+
+                    openFoodAPIClient.editImage(product.getCode(), imgMap, (value, response) -> ImagesAdapter.this.displaySetImageName(response));
+                    break;
+
+                case R.id.report_image:
+                    context.startActivity(Intent.createChooser(
+                        new Intent(Intent.ACTION_SEND)
+                            .setData(Uri.parse("mailto:"))
+                            .setType(OpenFoodAPIClient.MIME_TEXT)
+                            .putExtra(Intent.EXTRA_EMAIL, new String[]{"Open Food Facts <contact@openfoodfacts.org>"})
+                            .putExtra(Intent.EXTRA_SUBJECT, String.format("Photo report for product %s", barcode))
+                            .putExtra(Intent.EXTRA_TEXT, String.format("I've spotted a problematic photo for product %s", barcode)),
+                        "Send mail"));
+                    break;
+                default:
+                    break;
+            }
+            return true;
         }
     }
 }

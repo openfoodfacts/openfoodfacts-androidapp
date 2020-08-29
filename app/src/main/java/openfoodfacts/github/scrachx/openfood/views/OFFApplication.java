@@ -60,7 +60,7 @@ public class OFFApplication extends MultiDexApplication {
         application = this;
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        AnalyticsService.getInstance().init();
+        AnalyticsService.init();
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: DatabaseHelper (see on Upgrade!)

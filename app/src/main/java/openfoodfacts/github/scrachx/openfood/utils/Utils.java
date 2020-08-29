@@ -65,6 +65,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.Contract;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -686,12 +687,15 @@ public class Utils {
         }
     }
 
+    @Contract(pure = true)
     @Nullable
     @SafeVarargs
-    public static <T> T firstNotNull(T... args) {
-        for (T arg : args) {
-            if (arg != null) {
-                return arg;
+    public static <T> T firstNotNull(@Nullable T... args) {
+        if (args != null) {
+            for (T arg : args) {
+                if (arg != null) {
+                    return arg;
+                }
             }
         }
         return null;
