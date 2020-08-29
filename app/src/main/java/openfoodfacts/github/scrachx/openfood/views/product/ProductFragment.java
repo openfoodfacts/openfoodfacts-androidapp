@@ -24,7 +24,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPagerAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients.IngredientsProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.summary.SummaryProductFragment;
@@ -82,8 +82,8 @@ public class ProductFragment extends Fragment implements OnRefreshListener {
             tab.setText(adapterResult.getPageTitle(position)))
             .attach();
 
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, getActivity());
+        CommonBottomListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
+        CommonBottomListenerInstaller.install(getActivity(), binding.navigationBottomInclude.bottomNavigation);
         return binding.getRoot();
     }
 

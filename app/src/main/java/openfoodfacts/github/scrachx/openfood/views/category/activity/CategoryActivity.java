@@ -14,7 +14,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityCategoryBinding;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 
 public class CategoryActivity extends BaseActivity {
     private ActivityCategoryBinding binding;
@@ -43,8 +43,8 @@ public class CategoryActivity extends BaseActivity {
         // set fragment container view
         getSupportFragmentManager().beginTransaction().add(R.id.fragment, new CategoryListFragment()).commitNow();
 
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+        CommonBottomListenerInstaller.install(this, binding.bottomNavigationInclude.bottomNavigation);
     }
 
     private void openHungerGame() {

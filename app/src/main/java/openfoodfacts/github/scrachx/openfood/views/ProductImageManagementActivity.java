@@ -85,7 +85,7 @@ public class ProductImageManagementActivity extends BaseActivity {
     private static final int REQUEST_ADD_IMAGE_AFTER_LOGIN = 2;
     private static final int REQUEST_CHOOSE_IMAGE_AFTER_LOGIN = 3;
     private static final int REQUEST_UNSELECT_IMAGE_AFTER_LOGIN = 4;
-    static final int REQUEST_EDIT_IMAGE = 1000;
+    public static final int REQUEST_EDIT_IMAGE = 1000;
     private static final int REQUEST_CHOOSE_IMAGE = 1001;
     private static final List<ProductImageField> TYPE_IMAGE = Arrays.asList(ProductImageField.FRONT, ProductImageField.INGREDIENTS, ProductImageField.NUTRITION);
     private ActivityFullScreenImageBinding binding;

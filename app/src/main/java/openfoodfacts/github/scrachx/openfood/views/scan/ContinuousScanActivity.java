@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package openfoodfacts.github.scrachx.openfood.views;
+package openfoodfacts.github.scrachx.openfood.views.scan;
 
 import android.app.ActionBar;
 import android.content.Context;
@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -93,7 +94,11 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
+import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
 import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsWithTagDialogFragment;
@@ -124,69 +129,12 @@ public class ContinuousScanActivity extends AppCompatActivity {
     public static final String SETTING_RING = "ring";
     public static final String SETTING_FLASH = "flash";
     public static final String SETTING_FOCUS = "focus";
+    public static final String LOG_TAG = ContinuousScanActivity.class.getSimpleName();
     private BeepManager beepManager;
     private ActivityContinuousScanBinding binding;
     private BottomSheetBehavior<LinearLayout> bottomSheetBehavior;
-    private final TextView.OnEditorActionListener barcodeInputListener = (textView, actionId, event) -> {
-        // When user search from "having trouble" edit text
-        if (actionId != EditorInfo.IME_ACTION_SEARCH) {
-            return false;
-        }
-
-        Utils.hideKeyboard(this);
-
-        hideSystemUI();
-
-        // Check for barcode validity
-        if (!textView.getText().toString().isEmpty()) {
-            String barcodeText = textView.getText().toString();
-
-            // For debug only: the barcode 1 is used for test
-            if (((barcodeText.length() > 2) || ApiFields.Defaults.DEBUG_BARCODE.equals(barcodeText))
-                && ProductUtils.isBarcodeValid(barcodeText)) {
-
-                lastBarcode = barcodeText;
-                textView.setVisibility(GONE);
-                setShownProduct(barcodeText);
-                return true;
-            }
-        }
-        textView.requestFocus();
-        Snackbar.make(binding.getRoot(), getString(R.string.txtBarcodeNotValid), LENGTH_SHORT).show();
-        return true;
-    };
-    private final BarcodeCallback barcodeScanCallback = new BarcodeCallback() {
-        @Override
-        public void barcodeResult(BarcodeResult result) {
-            if (hintBarcodeDisp != null) {
-                hintBarcodeDisp.dispose();
-            }
-            if (result.getText() == null || result.getText().isEmpty() || result.getText().equals(lastBarcode)) {
-                // Prevent duplicate scans
-                return;
-            }
-            InvalidBarcode invalidBarcode = mInvalidBarcodeDao.queryBuilder()
-                .where(InvalidBarcodeDao.Properties.Barcode.eq(result.getText())).unique();
-            if (invalidBarcode != null) {
-                // scanned barcode is in the list of invalid barcodes, do nothing
-                return;
-            }
-
-            if (beepActive) {
-                beepManager.playBeepSound();
-            }
-
-            lastBarcode = result.getText();
-            if (!(isFinishing())) {
-                setShownProduct(lastBarcode);
-            }
-        }
-
-        @Override
-        public void possibleResultPoints(List<ResultPoint> resultPoints) {
-            // Here possible results are useless but we must implement this
-        }
-    };
+    private final TextView.OnEditorActionListener barcodeInputListener = new BarcodeInputListener();
+    private final BarcodeCallback barcodeScanCallback = new BarcodeScannerCallback();
     private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback;
     private int cameraState;
     private OpenFoodAPIClient client;
@@ -205,7 +153,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private SharedPreferences cameraPref;
     private int peekLarge;
     private int peekSmall;
-    private PopupMenu popup;
+    private PopupMenu popupMenu;
     private boolean productShowing = false;
     private boolean flashActive;
     private SummaryProductPresenter summaryProductPresenter;
@@ -325,17 +273,21 @@ public class ContinuousScanActivity extends AppCompatActivity {
                                 .into(binding.quickViewImage, new Callback() {
                                     @Override
                                     public void onSuccess() {
-                                        binding.quickViewImageProgress.setVisibility(GONE);
+                                        if (binding != null) {
+                                            binding.quickViewImageProgress.setVisibility(GONE);
+                                        }
                                     }
 
                                     @Override
                                     public void onError(Exception ex) {
-                                        binding.quickViewImageProgress.setVisibility(GONE);
+                                        if (binding != null) {
+                                            binding.quickViewImageProgress.setVisibility(GONE);
+                                        }
                                     }
                                 });
                         } catch (IllegalStateException e) {
                             //could happen if Picasso is not instantiated correctly...
-                            Log.w(this.getClass().getSimpleName(), e.getMessage(), e);
+                            Log.w(LOG_TAG, e.getMessage(), e);
                         }
                     } else {
                         binding.quickViewImage.setImageDrawable(errorDrawable);
@@ -394,13 +346,13 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewProgress.setVisibility(GONE);
                         binding.quickViewProgressText.setVisibility(GONE);
-                        final Toast errorMessage = Toast.makeText(ContinuousScanActivity.this.getBaseContext(), R.string.txtConnectionError, Toast.LENGTH_LONG);
+                        final Toast errorMessage = Toast.makeText(this, R.string.txtConnectionError, Toast.LENGTH_LONG);
                         errorMessage.setGravity(Gravity.CENTER, 0, 0);
                         errorMessage.show();
-                        Log.i(this.getClass().getSimpleName(), e.getMessage(), e);
+                        Log.i(LOG_TAG, e.getMessage(), e);
                     }
                 } catch (Exception err) {
-                    Log.w(this.getClass().getSimpleName(), err.getMessage(), err);
+                    Log.w(LOG_TAG, err.getMessage(), err);
                 }
             });
     }
@@ -482,7 +434,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.quickView.getRootView().requestLayout();
     }
 
-    private void showOfflineSavedDetails(OfflineSavedProduct offlineSavedProduct) {
+    private void showOfflineSavedDetails(@NonNull OfflineSavedProduct offlineSavedProduct) {
         showAllViews();
         String pName = offlineSavedProduct.getName();
         if (!TextUtils.isEmpty(pName)) {
@@ -586,8 +538,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
         }
         commonDisp.dispose();
 
-        // Remove callback as it uses binding
+        // Remove bottom sheet callback as it uses binding
         bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback);
+
         binding = null;
         super.onDestroy();
     }
@@ -613,7 +566,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.scan_bottom_nav);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.scan_bottom_nav);
         if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume();
         }
@@ -676,7 +629,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
                 }
             });
 
-
         hintBarcodeDisp = Completable.timer(15, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete(() -> {
@@ -691,71 +643,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.quickView);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
-            private float previousSlideOffset = 0;
-
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                switch (newState) {
-                    case BottomSheetBehavior.STATE_HIDDEN:
-                        lastBarcode = null;
-                        binding.txtProductCallToAction.setVisibility(GONE);
-                        break;
-                    case BottomSheetBehavior.STATE_COLLAPSED:
-                        binding.barcodeScanner.resume();
-                        break;
-                    case BottomSheetBehavior.STATE_DRAGGING:
-                        if (product == null) {
-                            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                        }
-                        break;
-                }
-                if (binding.quickViewSearchByBarcode.getVisibility() == VISIBLE) {
-                    bottomSheetBehavior.setPeekHeight(peekSmall);
-                    bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
-                } else {
-                    bottomSheetBehavior.setPeekHeight(peekLarge);
-                    bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
-                }
-                bottomSheet.requestLayout();
-            }
-
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                float slideDelta = slideOffset - previousSlideOffset;
-                if (binding.quickViewSearchByBarcode.getVisibility() != VISIBLE && binding.quickViewProgress.getVisibility() != VISIBLE) {
-                    if (slideOffset > 0.01f || slideOffset < -0.01f) {
-                        binding.txtProductCallToAction.setVisibility(GONE);
-                    } else {
-                        if (binding.quickViewProductNotFound.getVisibility() != VISIBLE) {
-                            binding.txtProductCallToAction.setVisibility(VISIBLE);
-                        }
-                    }
-                    if (slideOffset > 0.01f) {
-                        binding.quickViewDetails.setVisibility(GONE);
-                        binding.quickViewTags.setVisibility(GONE);
-                        binding.barcodeScanner.pause();
-                        if (slideDelta > 0 && productFragment != null) {
-                            productFragment.bottomSheetWillGrow();
-                            binding.bottomNavigation.bottomNavigation.setVisibility(GONE);
-                        }
-                    } else {
-                        binding.barcodeScanner.resume();
-                        binding.quickViewDetails.setVisibility(VISIBLE);
-                        if (!isAnalysisTagsEmpty) {
-                            binding.quickViewTags.setVisibility(VISIBLE);
-                        } else {
-                            binding.quickViewTags.setVisibility(GONE);
-                        }
-                        binding.bottomNavigation.bottomNavigation.setVisibility(VISIBLE);
-                        if (binding.quickViewProductNotFound.getVisibility() != VISIBLE) {
-                            binding.txtProductCallToAction.setVisibility(VISIBLE);
-                        }
-                    }
-                }
-                previousSlideOffset = slideOffset;
-            }
-        };
+        bottomSheetCallback = new QuickViewCallback();
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback);
 
         mInvalidBarcodeDao = Utils.getDaoSession().getInvalidBarcodeDao();
@@ -783,22 +671,22 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
         binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener);
 
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        CommonBottomListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
     }
 
     private void setupPopupMenu() {
-        popup = new PopupMenu(this, binding.buttonMore);
-        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+        popupMenu = new PopupMenu(this, binding.buttonMore);
+        popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
 
         if (flashActive) {
             binding.barcodeScanner.setTorchOn();
             binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp);
         }
         if (beepActive) {
-            popup.getMenu().findItem(R.id.toggleBeep).setChecked(true);
+            popupMenu.getMenu().findItem(R.id.toggleBeep).setChecked(true);
         }
         if (autoFocusActive) {
-            popup.getMenu().findItem(R.id.toggleAutofocus).setChecked(true);
+            popupMenu.getMenu().findItem(R.id.toggleAutofocus).setChecked(true);
         }
     }
 
@@ -858,7 +746,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     }
 
     private void showMoreSettings() {
-        popup.setOnMenuItemClickListener(item -> {
+        popupMenu.setOnMenuItemClickListener(item -> {
             SharedPreferences.Editor editor;
             switch (item.getItemId()) {
                 case R.id.toggleBeep:
@@ -911,7 +799,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             }
             return true;
         });
-        popup.show();
+        popupMenu.show();
     }
 
     /**
@@ -944,5 +832,136 @@ public class ContinuousScanActivity extends AppCompatActivity {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         }
         productFragment.showIngredientsTab(action);
+    }
+
+    private class QuickViewCallback extends BottomSheetBehavior.BottomSheetCallback {
+        private float previousSlideOffset = 0;
+
+        @Override
+        public void onStateChanged(@NonNull View bottomSheet, int newState) {
+            switch (newState) {
+                case BottomSheetBehavior.STATE_HIDDEN:
+                    lastBarcode = null;
+                    binding.txtProductCallToAction.setVisibility(GONE);
+                    break;
+                case BottomSheetBehavior.STATE_COLLAPSED:
+                    binding.barcodeScanner.resume();
+                    break;
+                case BottomSheetBehavior.STATE_DRAGGING:
+                    if (product == null) {
+                        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    }
+                    break;
+            }
+            if (binding.quickViewSearchByBarcode.getVisibility() == VISIBLE) {
+                bottomSheetBehavior.setPeekHeight(peekSmall);
+                bottomSheet.getLayoutParams().height = bottomSheetBehavior.getPeekHeight();
+            } else {
+                bottomSheetBehavior.setPeekHeight(peekLarge);
+                bottomSheet.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
+            }
+            bottomSheet.requestLayout();
+        }
+
+        @Override
+        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+            float slideDelta = slideOffset - previousSlideOffset;
+            if (binding.quickViewSearchByBarcode.getVisibility() != VISIBLE && binding.quickViewProgress.getVisibility() != VISIBLE) {
+                if (slideOffset > 0.01f || slideOffset < -0.01f) {
+                    binding.txtProductCallToAction.setVisibility(GONE);
+                } else {
+                    if (binding.quickViewProductNotFound.getVisibility() != VISIBLE) {
+                        binding.txtProductCallToAction.setVisibility(VISIBLE);
+                    }
+                }
+                if (slideOffset > 0.01f) {
+                    binding.quickViewDetails.setVisibility(GONE);
+                    binding.quickViewTags.setVisibility(GONE);
+                    binding.barcodeScanner.pause();
+                    if (slideDelta > 0 && productFragment != null) {
+                        productFragment.bottomSheetWillGrow();
+                        binding.bottomNavigation.bottomNavigation.setVisibility(GONE);
+                    }
+                } else {
+                    binding.barcodeScanner.resume();
+                    binding.quickViewDetails.setVisibility(VISIBLE);
+                    if (!isAnalysisTagsEmpty) {
+                        binding.quickViewTags.setVisibility(VISIBLE);
+                    } else {
+                        binding.quickViewTags.setVisibility(GONE);
+                    }
+                    binding.bottomNavigation.bottomNavigation.setVisibility(VISIBLE);
+                    if (binding.quickViewProductNotFound.getVisibility() != VISIBLE) {
+                        binding.txtProductCallToAction.setVisibility(VISIBLE);
+                    }
+                }
+            }
+            previousSlideOffset = slideOffset;
+        }
+    }
+
+    private class BarcodeInputListener implements TextView.OnEditorActionListener {
+        @Override
+        public boolean onEditorAction(TextView textView, int actionId, KeyEvent event) {
+            // When user search from "having trouble" edit text
+            if (actionId != EditorInfo.IME_ACTION_SEARCH) {
+                return false;
+            }
+
+            Utils.hideKeyboard(ContinuousScanActivity.this);
+
+            ContinuousScanActivity.this.hideSystemUI();
+
+            // Check for barcode validity
+            if (!textView.getText().toString().isEmpty()) {
+                String barcodeText = textView.getText().toString();
+
+                // For debug only: the barcode 1 is used for test
+                if (((barcodeText.length() > 2) || ApiFields.Defaults.DEBUG_BARCODE.equals(barcodeText))
+                    && ProductUtils.isBarcodeValid(barcodeText)) {
+
+                    lastBarcode = barcodeText;
+                    textView.setVisibility(GONE);
+                    ContinuousScanActivity.this.setShownProduct(barcodeText);
+                    return true;
+                }
+            }
+            textView.requestFocus();
+            Snackbar.make(binding.getRoot(), ContinuousScanActivity.this.getString(R.string.txtBarcodeNotValid), LENGTH_SHORT).show();
+            return true;
+        }
+    }
+
+    private class BarcodeScannerCallback implements BarcodeCallback {
+        @Override
+        public void barcodeResult(BarcodeResult result) {
+            if (hintBarcodeDisp != null) {
+                hintBarcodeDisp.dispose();
+            }
+            if (result.getText() == null || result.getText().isEmpty() || result.getText().equals(lastBarcode)) {
+                // Prevent duplicate scans
+                return;
+            }
+            InvalidBarcode invalidBarcode = mInvalidBarcodeDao.queryBuilder()
+                .where(InvalidBarcodeDao.Properties.Barcode.eq(result.getText())).unique();
+            if (invalidBarcode != null) {
+                // scanned barcode is in the list of invalid barcodes, do nothing
+                return;
+            }
+
+            if (beepActive) {
+                beepManager.playBeepSound();
+            }
+
+            lastBarcode = result.getText();
+            if (!(isFinishing())) {
+                setShownProduct(lastBarcode);
+            }
+        }
+
+        @Override
+        public void possibleResultPoints(List<ResultPoint> resultPoints) {
+            // Here possible results are useless but we must implement this
+        }
     }
 }

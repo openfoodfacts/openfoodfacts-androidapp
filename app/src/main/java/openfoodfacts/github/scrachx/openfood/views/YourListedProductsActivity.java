@@ -60,7 +60,8 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 import static org.apache.commons.lang.StringUtils.capitalize;
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
@@ -161,8 +162,8 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
             itemTouchhelper.attachToRecyclerView(binding.rvYourListedProducts);
         }
 
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0);
+        CommonBottomListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
     }
 
     public static String getProductBrandsQuantityDetails(Product p) {

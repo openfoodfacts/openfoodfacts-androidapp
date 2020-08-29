@@ -61,28 +61,24 @@ import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
     private static final int ACTIVITY_CHOOSE_FILE = 123;
-    private ActivityProductListsBinding binding;
     private ProductListsAdapter adapter;
+    private ActivityProductListsBinding binding;
+    private CompositeDisposable disp = new CompositeDisposable();
     private List<ProductLists> productLists;
     private ProductListsDao productListsDao;
-    private CompositeDisposable disp = new CompositeDisposable();
 
-    public static Intent getIntent(@NonNull Context context) {
-        return new Intent(context, ProductListsActivity.class);
+    public static void start(Context context) {
+        Intent starter = new Intent(context, ProductListsActivity.class);
+        context.startActivity(starter);
     }
 
-    @Override
-    protected void onDestroy() {
-        disp.dispose();
-        super.onDestroy();
-    }
-
-    public static ProductListsDao getProductListsDaoWithDefaultList(Context context) {
+    @NonNull
+    public static ProductListsDao getProductListsDaoWithDefaultList(@NonNull Context context) {
         ProductListsDao productListsDao = Utils.getDaoSession().getProductListsDao();
         if (productListsDao.loadAll().isEmpty()) {
             ProductLists eatenList = new ProductLists(context.getString(R.string.txt_eaten_products), 0);
@@ -94,6 +90,12 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     }
 
     @Override
+    protected void onDestroy() {
+        disp.dispose();
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityProductListsBinding.inflate(getLayoutInflater());
@@ -102,7 +104,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         setTitle(R.string.your_lists);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        CommonBottomListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0);
 
         productListsDao = getProductListsDaoWithDefaultList(this);
@@ -179,8 +181,6 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
     /**
      * Check if listname already in products lists.
-     *
-     * @param listName
      */
     private boolean checkListNameExist(String listName) {
         for (ProductLists productList : productLists) {
@@ -242,7 +242,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     @Override
     public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
     }
 
     private void parseCSV(InputStream inputStream) {

@@ -123,7 +123,8 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
 
@@ -296,7 +297,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
 
                     case ITEM_SEARCH_BY_CODE:
                         newFragment = new FindProductFragment();
-                        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+                        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
 
                     case ITEM_CATEGORIES:
@@ -387,7 +388,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         break;
 
                     case ITEM_YOUR_LISTS:
-                        startActivity(ProductListsActivity.getIntent(this));
+                        ProductListsActivity.start(this);
                         break;
 
                     case ITEM_LOGOUT:
@@ -507,8 +508,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             apiClient.syncOldHistory();
         }
 
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+        CommonBottomListenerInstaller.install(this, binding.bottomNavigationInclude.bottomNavigation);
 
         handleIntent(getIntent());
     }
@@ -682,20 +683,6 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         return true;
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA
-            && grantResults.length > 0
-            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-    }
-
     private IDrawerItem<AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
         return new PrimaryDrawerItem()
             .withName(getString(R.string.logout_drawer))
@@ -847,7 +834,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     @Override
     public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page);
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {

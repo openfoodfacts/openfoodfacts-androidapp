@@ -19,6 +19,7 @@ package openfoodfacts.github.scrachx.openfood.fragments;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,7 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.ITEM_HOME;
@@ -61,17 +63,16 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  * @see R.layout#fragment_home
  */
 public class HomeFragment extends NavigationBaseFragment {
+    private static final String LOG_TAG = HomeFragment.class.getSimpleName();
     private FragmentHomeBinding binding;
-    private ProductsAPI apiClient;
-    private SharedPreferences sp;
+    private ProductsAPI api;
+    private CompositeDisposable compDisp;
     private String taglineURL;
-    private CompositeDisposable compDisp = new CompositeDisposable();
+    private SharedPreferences sharedPrefs;
 
     @NonNull
     public static HomeFragment newInstance() {
-
         Bundle args = new Bundle();
-
         HomeFragment fragment = new HomeFragment();
         fragment.setArguments(args);
         return fragment;
@@ -79,6 +80,7 @@ public class HomeFragment extends NavigationBaseFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        compDisp = new CompositeDisposable();
         binding = FragmentHomeBinding.inflate(inflater);
         return binding.getRoot();
     }
@@ -86,12 +88,12 @@ public class HomeFragment extends NavigationBaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        api = new OpenFoodAPIClient(requireActivity()).getRawAPI();
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireActivity());
 
-        binding.tvDailyFoodFact.setOnClickListener(v -> setDailyFoodFact());
+        binding.tvDailyFoodFact.setOnClickListener(v -> openDailyFoodFacts());
 
-        apiClient = new OpenFoodAPIClient(requireActivity()).getRawAPI();
         checkUserCredentials();
-        sp = PreferenceManager.getDefaultSharedPreferences(requireActivity());
     }
 
     @Override
@@ -102,7 +104,7 @@ public class HomeFragment extends NavigationBaseFragment {
         binding = null;
     }
 
-    private void setDailyFoodFact() {
+    private void openDailyFoodFacts() {
         // chrome custom tab init
         CustomTabsIntent customTabsIntent;
         CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
@@ -137,38 +139,44 @@ public class HomeFragment extends NavigationBaseFragment {
         String login = settings.getString("user", "");
         String password = settings.getString("pass", "");
 
-        if (!login.isEmpty() && !password.isEmpty()) {
-            compDisp.add(apiClient.signIn(login, password, "Sign-in").subscribe(response -> {
-                String htmlNoParsed = null;
-                try {
-                    htmlNoParsed = response.body().string();
-                } catch (IOException e) {
-                    Log.e(HomeFragment.class.getSimpleName(), "signin", e);
-                }
-                if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
-                    || htmlNoParsed.contains("See you soon!"))) {
-                    settings.edit()
-                        .putString("user", "")
-                        .putString("pass", "")
-                        .apply();
-
-                    if (getActivity() != null) {
-                        new MaterialDialog.Builder(getActivity())
-                            .title(R.string.alert_dialog_warning_title)
-                            .content(R.string.alert_dialog_warning_msg_user)
-                            .positiveText(R.string.txtOk)
-                            .show();
-                    }
-                }
-            }, throwable -> Log.e(HomeFragment.class.getName(), "Unable to Sign-in", throwable)));
+        Log.d(LOG_TAG, "Checking user saved credentials...");
+        if (TextUtils.isEmpty(login) || TextUtils.isEmpty(password)) {
+            Log.d(LOG_TAG, "User is not logged in.");
+            return;
         }
+        compDisp.add(api.signIn(login, password, "Sign-in").subscribe(response -> {
+            String htmlNoParsed = null;
+            try {
+                htmlNoParsed = response.body().string();
+            } catch (IOException e) {
+                Log.e(LOG_TAG, "I/O Exception while checking user saved credentials.", e);
+            }
+            if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
+                || htmlNoParsed.contains("See you soon!"))) {
+                Log.w(LOG_TAG, "Cannot validate login, deleting saved credentials and asking the user to log back in.");
+                settings.edit()
+                    .putString("user", "")
+                    .putString("pass", "")
+                    .apply();
+
+                new MaterialDialog.Builder(requireActivity())
+                    .title(R.string.alert_dialog_warning_title)
+                    .content(R.string.alert_dialog_warning_msg_user)
+                    .positiveText(R.string.txtOk)
+                    .onPositive((dialog, which) ->
+                        registerForActivityResult(new LoginActivity.LoginContract(), result -> {
+                            // ignore if logged in or not
+                        }).launch(null))
+                    .show();
+            }
+        }, throwable -> Log.e(HomeFragment.class.getName(), "Cannot check user credentials.", throwable)));
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        int productCount = sp.getInt("productCount", 0);
+        int productCount = sharedPrefs.getInt("productCount", 0);
         refreshProductCount(productCount);
 
         refreshTagline();
@@ -182,7 +190,8 @@ public class HomeFragment extends NavigationBaseFragment {
     }
 
     private void refreshProductCount(int oldCount) {
-        apiClient.getTotalProductCount(Utils.getUserAgent())
+        Log.d(LOG_TAG, "Refreshing total product count.");
+        api.getTotalProductCount(Utils.getUserAgent())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<Search>() {
@@ -190,7 +199,7 @@ public class HomeFragment extends NavigationBaseFragment {
                 public void onSubscribe(Disposable d) {
                     compDisp.add(d);
                     if (isAdded()) {
-                        updateTextHome(oldCount);
+                        setProductCount(oldCount);
                     }
                 }
 
@@ -201,10 +210,15 @@ public class HomeFragment extends NavigationBaseFragment {
                         try {
                             totalProductCount = Integer.parseInt(search.getCount());
                         } catch (NumberFormatException e) {
-                            Log.w(HomeFragment.class.getSimpleName(), "can parse " + search.getCount() + " as int", e);
+                            Log.w(LOG_TAG, "Cannot parse " + search.getCount() + " as integer.", e);
+                            return;
                         }
-                        updateTextHome(totalProductCount);
-                        SharedPreferences.Editor editor = sp.edit();
+                        Log.d(LOG_TAG, String.format(
+                            "Refreshed total product count. There are %d products on the database.",
+                            totalProductCount
+                        ));
+                        setProductCount(totalProductCount);
+                        SharedPreferences.Editor editor = sharedPrefs.edit();
                         editor.putInt("productCount", totalProductCount);
                         editor.apply();
                     }
@@ -213,7 +227,7 @@ public class HomeFragment extends NavigationBaseFragment {
                 @Override
                 public void onError(Throwable e) {
                     if (isAdded()) {
-                        updateTextHome(oldCount);
+                        setProductCount(oldCount);
                     }
                 }
             });
@@ -222,18 +236,13 @@ public class HomeFragment extends NavigationBaseFragment {
     /**
      * Set text displayed on Home based on build variant
      *
-     * @param totalProductCount count of total products available on the apps database
+     * @param count count of total products available on the apps database
      */
-    private void updateTextHome(int totalProductCount) {
-        try {
-            if (totalProductCount == 0) {
-                binding.textHome.setText(R.string.txtHome);
-            } else {
-                String txtHomeOnline = getResources().getString(R.string.txtHomeOnline);
-                binding.textHome.setText(String.format(txtHomeOnline, totalProductCount));
-            }
-        } catch (Exception e) {
-            Log.w(HomeFragment.class.getSimpleName(), "can format text for home", e);
+    private void setProductCount(int count) {
+        if (count == 0) {
+            binding.textHome.setText(R.string.txtHome);
+        } else {
+            binding.textHome.setText(getResources().getString(R.string.txtHomeOnline, count));
         }
     }
 
@@ -241,7 +250,7 @@ public class HomeFragment extends NavigationBaseFragment {
      * get tag line url from OpenFoodAPIService
      */
     private void refreshTagline() {
-        compDisp.add(apiClient.getTagline(Utils.getUserAgent())
+        compDisp.add(api.getTagline(Utils.getUserAgent())
             .subscribeOn(Schedulers.io()) // io for network
             .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
             .subscribe(models -> {

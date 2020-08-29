@@ -161,7 +161,7 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".views.WelcomeActivity" />
+        <activity android:name=".views.welcome.WelcomeActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
@@ -256,7 +256,7 @@
         </activity>
 
         <activity
-            android:name=".views.ContinuousScanActivity"
+            android:name=".views.scan.ContinuousScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/OFFTheme.NoActionBar" />
         <activity

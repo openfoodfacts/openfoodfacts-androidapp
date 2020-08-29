@@ -65,6 +65,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.Contract;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -91,10 +92,10 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
@@ -696,12 +697,15 @@ public class Utils {
         }
     }
 
+    @Contract(pure = true)
     @Nullable
     @SafeVarargs
-    public static <T> T firstNotNull(T... args) {
-        for (T arg : args) {
-            if (arg != null) {
-                return arg;
+    public static <T> T firstNotNull(@Nullable T... args) {
+        if (args != null) {
+            for (T arg : args) {
+                if (arg != null) {
+                    return arg;
+                }
             }
         }
         return null;

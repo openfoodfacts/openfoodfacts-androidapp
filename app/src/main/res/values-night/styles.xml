@@ -35,6 +35,7 @@
         <item name="android:paddingRight">@dimen/spacing_small</item>
         <item name="android:paddingTop">@dimen/spacing_tiny</item>
         <item name="android:paddingBottom">@dimen/spacing_tiny</item>
+        <item name="android:shadowColor">@android:color/transparent</item>
     </style>
 
     <style name="PreferenceThemeOverlay.v14" tools:override="true">

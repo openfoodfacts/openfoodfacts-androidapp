@@ -760,7 +760,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
      * @param editTextView EditText with spinner for entering the nutients
      * @param targetMap map to enter the nutrient value recieved from edit texts
      */
-    private void addNutrientToMapIfUpdated(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
+    private void addNutrientToMapIfUpdated(@NonNull CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
 
         Nutriments productNutriments = product != null ? product.getNutriments() : new Nutriments();
 

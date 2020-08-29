@@ -20,17 +20,16 @@ import androidx.preference.PreferenceManager;
 
 import openfoodfacts.github.scrachx.openfood.R;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 public class TipBox extends LinearLayout {
-    public static final int ALIGN_START = Gravity.START;
-    public static final int ALIGN_CENTER = Gravity.CENTER_HORIZONTAL;
-    public static final int ALIGN_END = Gravity.END;
-    private boolean animate;
+    private boolean shouldAnimate;
     private ImageView arrow;
     private String identifier;
     private SharedPreferences prefs;
     private TextView tipMessage;
 
-    public TipBox(Context context, @Nullable AttributeSet attrs) throws Exception {
+    public TipBox(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         inflate(context, R.layout.tip_box, this);
         TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.TipBox);
@@ -38,7 +37,7 @@ public class TipBox extends LinearLayout {
         if (identifier == null) {
             throw new InflateException("Tip box identifier not set!!!");
         }
-        animate = attributes.getBoolean(R.styleable.TipBox_animate, true);
+        shouldAnimate = attributes.getBoolean(R.styleable.TipBox_animate, true);
         tipMessage = findViewById(R.id.tipMessage);
         String message = attributes.getString(R.styleable.TipBox_message);
         if (message != null) {
@@ -77,8 +76,8 @@ public class TipBox extends LinearLayout {
         this.identifier = identifier;
     }
 
-    public void setAnimate(boolean animate) {
-        this.animate = animate;
+    public void setShouldAnimate(boolean shouldAnimate) {
+        this.shouldAnimate = shouldAnimate;
     }
 
     public void setTipMessage(CharSequence message) {
@@ -86,8 +85,8 @@ public class TipBox extends LinearLayout {
     }
 
     public void setArrowAlignment(int arrowAlignment, int marginStart, int marginEnd) {
-        if (arrowAlignment != ALIGN_START && arrowAlignment != ALIGN_CENTER && arrowAlignment != ALIGN_END) {
-            arrowAlignment = ALIGN_START;
+        if (arrowAlignment != Gravity.START && arrowAlignment != Gravity.CENTER_HORIZONTAL && arrowAlignment != Gravity.END) {
+            arrowAlignment = Gravity.START;
         }
 
         LinearLayout.LayoutParams layoutParams = (LayoutParams) arrow.getLayoutParams();
@@ -108,9 +107,11 @@ public class TipBox extends LinearLayout {
         Animation anim = new Animation() {
             @Override
             protected void applyTransformation(float interpolatedTime, Transformation t) {
-                getLayoutParams().height = interpolatedTime == 1
-                    ? LayoutParams.WRAP_CONTENT
-                    : (int) (targetHeight * interpolatedTime);
+                if (interpolatedTime == 1) {
+                    getLayoutParams().height = WRAP_CONTENT;
+                } else {
+                    getLayoutParams().height = (int) (targetHeight * interpolatedTime);
+                }
                 requestLayout();
             }
 
@@ -126,7 +127,7 @@ public class TipBox extends LinearLayout {
     }
 
     public void show() {
-        if (animate) {
+        if (shouldAnimate) {
             expand();
         } else {
             setVisibility(View.VISIBLE);
@@ -176,7 +177,7 @@ public class TipBox extends LinearLayout {
     }
 
     public void hide() {
-        if (animate) {
+        if (shouldAnimate) {
             collapse();
         } else {
             setVisibility(View.GONE);

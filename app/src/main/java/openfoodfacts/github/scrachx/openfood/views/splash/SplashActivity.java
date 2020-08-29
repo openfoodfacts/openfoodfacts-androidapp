@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views.splash;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,7 +11,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivitySplashBinding;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
+import openfoodfacts.github.scrachx.openfood.views.welcome.WelcomeActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class SplashActivity extends BaseActivity implements ISplashPresenter.View {
@@ -66,8 +65,7 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
             .setImagesFolderName("OFF_Images")
             .saveInAppExternalFilesDir()
             .setCopyExistingPicturesToPublicLocation(true);
-        Intent mainIntent = new Intent(SplashActivity.this, WelcomeActivity.class);
-        startActivity(mainIntent);
+        startActivity(new Intent(this, WelcomeActivity.class));
         finish();
     }
 
@@ -80,10 +78,5 @@ public class SplashActivity extends BaseActivity implements ISplashPresenter.Vie
         if (isError) {
             new Handler(Looper.getMainLooper()).post(() -> Toast.makeText(OFFApplication.getInstance(), R.string.errorWeb, Toast.LENGTH_LONG).show());
         }
-    }
-
-    @Override
-    public AssetManager getAssetManager() {
-        return getAssets();
     }
 }

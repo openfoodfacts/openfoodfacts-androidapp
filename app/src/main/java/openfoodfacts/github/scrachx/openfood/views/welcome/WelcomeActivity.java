@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package openfoodfacts.github.scrachx.openfood.views;
+package openfoodfacts.github.scrachx.openfood.views.welcome;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,23 +23,19 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager;
+import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 
 /**
  * This is the Onboarding Activity shown on first-run.
@@ -131,8 +127,8 @@ public class WelcomeActivity extends AppCompatActivity {
         addBottomDots(0);
         changeStatusBarColor();
 
-        MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter(getLayoutInflater(), layouts);
-        binding.viewPager.setAdapter(myViewPagerAdapter);
+        WelcomePageAdapter welcomePageAdapter = new WelcomePageAdapter(getLayoutInflater(), layouts);
+        binding.viewPager.setAdapter(welcomePageAdapter);
         binding.viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
         binding.btnSkip.setOnClickListener(v -> launchHomeScreen());
@@ -189,40 +185,5 @@ public class WelcomeActivity extends AppCompatActivity {
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.TRANSPARENT);
-    }
-
-    public static class MyViewPagerAdapter extends PagerAdapter {
-        private final LayoutInflater layoutInflater;
-        private final int[] layouts;
-
-        public MyViewPagerAdapter(LayoutInflater layoutInflater, @StringRes int[] layouts) {
-            this.layoutInflater = layoutInflater;
-            this.layouts = layouts;
-        }
-
-        @NonNull
-        @Override
-        public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            View view = layoutInflater.inflate(layouts[position], container, false);
-            container.addView(view);
-
-            return view;
-        }
-
-        @Override
-        public int getCount() {
-            return layouts.length;
-        }
-
-        @Override
-        public boolean isViewFromObject(@NonNull View view, @NonNull Object obj) {
-            return view == obj;
-        }
-
-        @Override
-        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            View view = (View) object;
-            container.removeView(view);
-        }
     }
 }

@@ -158,13 +158,13 @@ public final class ApiFields {
 
         @NonNull
         @Contract(pure = true)
-        public static String lcProductNameKey(String lang) {
+        public static String lcProductNameKey(final String lang) {
             return Prefix.PRODUCT_NAME + lang;
         }
 
         @NonNull
         @Contract(pure = true)
-        public static String lcIngredientsKey(String lang) {
+        public static String lcIngredientsKey(final String lang) {
             return Prefix.INGREDIENTS_TEXT + lang;
         }
     }
