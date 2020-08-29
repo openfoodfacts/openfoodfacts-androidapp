@@ -71,7 +71,6 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 .putBoolean("firstRun", false)
                 .apply();
         }
-
         // The service will load server resources only if newer than already downloaded...
         OneTimeWorkRequest request = OneTimeWorkRequest.from(LoadTaxonomiesWorker.class);
         WorkManager manager = WorkManager.getInstance(activity);
@@ -83,7 +82,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 view.hideLoading(workInfo.getState() == WorkInfo.State.FAILED);
             }
         });
-
+        // The 6000 delay is probably to show one loop of the multilingual logo - I asked for it
         if (firstRun) {
             new Handler().postDelayed(view::navigateToMainActivity, 6000);
         } else {
