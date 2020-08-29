@@ -60,10 +60,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -74,7 +72,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverv
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao;
@@ -298,8 +295,8 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
             binding.embCode.setText(extractProductEmbTagsChipsValues(product));
         }
-        if (product.getManufactureUrl() != null && !product.getManufactureUrl().isEmpty()) {
-            binding.link.setText(product.getManufactureUrl());
+        if (product.getManufacturerUrl() != null && !product.getManufacturerUrl().isEmpty()) {
+            binding.link.setText(product.getManufacturerUrl());
         }
         if (product.getPurchasePlaces() != null && !product.getPurchasePlaces().isEmpty()) {
             binding.countryWherePurchased.setText(extractProductPurchasePlaces(product));
@@ -649,42 +646,32 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (editionMode) {
             loadFrontImage(lang);
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            disp.add(client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<ProductState>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        binding.name.setText(getString(R.string.txtLoading));
+                .doOnSubscribe(disposable -> binding.name.setText(getString(R.string.txtLoading)))
+                .subscribe(productState -> {
+                    if (productState.getStatus() != 1) {
+                        return;
                     }
-
-                    @Override
-                    public void onSuccess(ProductState productState) {
-                        if (productState.getStatus() != 1) {
-                            return;
-                        }
-                        if (productState.getProduct().getProductName(lang) != null) {
-                            if (languageCode.equals(lang)) {
-                                binding.name.setText(productState.getProduct().getProductName(lang));
-                                if (activity instanceof AddProductActivity) {
-                                    ((AddProductActivity) activity).setIngredients("set", productState.getProduct().getIngredientsText(lang));
-                                    ((AddProductActivity) activity).updateLanguage();
-                                }
-                            }
-                        } else {
-                            binding.name.setText(null);
+                    if (productState.getProduct().getProductName(lang) != null) {
+                        if (languageCode.equals(lang)) {
+                            binding.name.setText(productState.getProduct().getProductName(lang));
                             if (activity instanceof AddProductActivity) {
-                                ((AddProductActivity) activity).setIngredients("set", null);
+                                ((AddProductActivity) activity).setIngredients("set", productState.getProduct().getIngredientsText(lang));
+                                ((AddProductActivity) activity).updateLanguage();
                             }
                         }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.w("addProductOverview", "Error retrieving product state from server api.", e);
+                    } else {
                         binding.name.setText(null);
+                        if (activity instanceof AddProductActivity) {
+                            ((AddProductActivity) activity).setIngredients("set", null);
+                        }
                     }
-                });
+                }, e -> {
+                    Log.w("addProductOverview", "Error retrieving product state from server api.", e);
+                    binding.name.setText(null);
+                }));
         }
     }
 
@@ -826,7 +813,7 @@ public class AddProductOverviewFragment extends BaseFragment {
         if (EditTextUtils.areChipsDifferent(binding.embCode, extractProductEmbTagsChipsValues(product))) {
             targetMap.put(ApiFields.Keys.EMB_CODES, getNachoValues(binding.embCode));
         }
-        if (EditTextUtils.isNotEmpty(binding.link) && EditTextUtils.isDifferent(binding.link, product != null ? product.getManufactureUrl() : null)) {
+        if (EditTextUtils.isNotEmpty(binding.link) && EditTextUtils.isDifferent(binding.link, product != null ? product.getManufacturerUrl() : null)) {
             targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
         }
         if (EditTextUtils.areChipsDifferent(binding.countryWherePurchased, extractProductPurchasePlaces(product))) {
