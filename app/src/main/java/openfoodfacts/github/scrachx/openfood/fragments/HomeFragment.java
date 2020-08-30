@@ -208,7 +208,7 @@ public class HomeFragment extends NavigationBaseFragment {
                     editor.apply();
                 }, e -> {
                     setProductCount(oldCount);
-                    Log.e(LOG_TAG, "Could not load product count.", e);
+                Log.e(LOG_TAG, "Could not retrieve product count from server.", e);
                 }
             ));
     }
@@ -255,6 +255,6 @@ public class HomeFragment extends NavigationBaseFragment {
                     binding.tvDailyFoodFact.setText(models.get(models.size() - 1).getTaglineModel().getMessage());
                     binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
                 }
-            }, e -> Log.w("getTagline", "cannot get tagline from server", e)));
+            }, e -> Log.e(LOG_TAG, "Could not retrieve tag-line from server.", e)));
     }
 }
