@@ -774,7 +774,6 @@
     <string name="white_check_image_descr">Um cheque branco</string>
     <string name="hint_packaging">Exemplos: plástico, papel, vidro</string>
     <string name="risk_alcohol_consumption">O consumo excessivo de álcool é prejudicial à saúde e deve ser consumido com moderação</string>
-    <string name="check_first_time">verificar_primeira_vez</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Escolha o tipo de imagem</string>
     <string name="content_image_type">Escolher foto</string>
