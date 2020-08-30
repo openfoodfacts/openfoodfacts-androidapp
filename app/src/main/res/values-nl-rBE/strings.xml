@@ -774,7 +774,6 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Voorbeelden: plastic, papier, glas</string>
     <string name="risk_alcohol_consumption">Overmatig alcoholgebruik is schadelijk voor de gezondheid en moet met mate worden geconsumeerd</string>
-    <string name="check_first_time">controleer_eerste_keer</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Selecteer Beeldtype</string>
     <string name="content_image_type">Kies de foto om aan te werken</string>
