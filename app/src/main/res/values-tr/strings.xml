@@ -774,7 +774,6 @@
     <string name="white_check_image_descr">Beyaz tik işareti</string>
     <string name="hint_packaging">Örnekler: plastik, kağıt, cam</string>
     <string name="risk_alcohol_consumption">Aşırı miktarda alkol tüketimi sağlığa zararlıdır, ölçülü olarak tüketilmelidir</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Resim Tipi Seçin</string>
     <string name="content_image_type">Üzerinde çalışacağınız fotoğrafı seçin</string>
