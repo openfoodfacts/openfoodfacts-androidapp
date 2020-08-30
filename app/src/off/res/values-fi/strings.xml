@@ -10,7 +10,6 @@
     <string name="website_product">https://world-fi.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fi.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts on avoin tietokanta, joka sisältää yli %1$d elintarviketta (plus ne jotka lisäät).</string>
     <string name="txtHome">Open Food Facts on avoin elintarviketietokanta.</string>
     <string name="slide_1_title">Edistä elintarvikkeiden läpinäkyvyyttä</string>
     <string name="slide_1_desc">Lue tuotteita, ota ne mukaan kuvaan, mahdollista elintarvikkeiden läpinäkyvyys</string>

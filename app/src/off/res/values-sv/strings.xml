@@ -10,7 +10,6 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Food Facts är en öppen databas över livsmedelsprodukter med ingredienser, allergener, näringsfakta och alla godbitar av information som vi hittar på produktetiketter.</string>
     <string name="slide_1_title">Bidra till insyn i livsmedel</string>
     <string name="slide_1_desc">Skanna produkter, ta en bild, skapa livsmedelstransparens</string>

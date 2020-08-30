@@ -32,16 +32,16 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelDao;
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao;
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao;
 
-public class DatabaseHelper extends DaoMaster.OpenHelper {
+public class OFFDatabaseHelper extends DaoMaster.OpenHelper {
     private final SharedPreferences settings;
 
-    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
+    public OFFDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
         super(context, name, factory);
 
         settings = context.getSharedPreferences("prefs", 0);
     }
 
-    public DatabaseHelper(Context context, String name) {
+    public OFFDatabaseHelper(Context context, String name) {
         super(context, name);
 
         settings = context.getSharedPreferences("prefs", 0);

@@ -10,7 +10,6 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Food Facts是一個開放的食品資料庫。</string>
     <string name="slide_1_title">讓食品資訊更透明</string>
     <string name="slide_1_desc">掃描產品條碼，幫產品拍照，公開食品資料</string>

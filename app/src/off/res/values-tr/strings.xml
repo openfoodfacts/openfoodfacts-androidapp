@@ -10,7 +10,6 @@
     <string name="website_product">https://world-tr.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-tr.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Food Facts açık bir gıda ürünleri veritabanıdır.</string>
     <string name="slide_1_title">Gıda şeffaflığına katkıda bulunun</string>
     <string name="slide_1_desc">Ürünleri tarayın, fotoğraflarını çekin, gıda şeffaflığının gerçekleşmesini sağlayın</string>

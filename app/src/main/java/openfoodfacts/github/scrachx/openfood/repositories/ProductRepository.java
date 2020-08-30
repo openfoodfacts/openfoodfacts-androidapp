@@ -168,7 +168,7 @@ public class ProductRepository {
      * @return The list of Labels.
      */
     public Single<List<Label>> reloadLabelsFromServer() {
-        return Taxonomy.LABEL.getTaxonomyData(this, true, false, labelDao);
+        return Taxonomy.LABEL.getTaxonomyData(this, true, labelDao);
     }
 
     Single<List<Label>> loadLabels(long lastModifiedDate) {
@@ -186,7 +186,7 @@ public class ProductRepository {
      * @return The list of Tags.
      */
     public Single<List<Tag>> reloadTagsFromServer() {
-        return Taxonomy.TAGS.getTaxonomyData(this, true, false, tagDao);
+        return Taxonomy.TAGS.getTaxonomyData(this, true, tagDao);
     }
 
     Single<List<Tag>> loadTags(long lastModifiedDate) {
@@ -199,7 +199,7 @@ public class ProductRepository {
     }
 
     public Single<List<InvalidBarcode>> reloadInvalidBarcodesFromServer() {
-        return Taxonomy.INVALID_BARCODES.getTaxonomyData(this, true, false, invalidBarcodeDao);
+        return Taxonomy.INVALID_BARCODES.getTaxonomyData(this, true, invalidBarcodeDao);
     }
 
     Single<List<InvalidBarcode>> loadInvalidBarcodes(long lastModifiedDate) {
@@ -224,11 +224,11 @@ public class ProductRepository {
      */
     public Single<List<Allergen>> reloadAllergensFromServer() {
         // FIXME: this returns 404
-        return Taxonomy.ALLERGEN.getTaxonomyData(this, true, false, allergenDao);
+        return Taxonomy.ALLERGEN.getTaxonomyData(this, true, allergenDao);
     }
 
     public Single<List<Allergen>> getAllergens() {
-        return Taxonomy.ALLERGEN.getTaxonomyData(this, false, true, allergenDao);
+        return Taxonomy.ALLERGEN.getTaxonomyData(this, false, allergenDao);
     }
 
     Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
@@ -246,7 +246,7 @@ public class ProductRepository {
      * @return The list of countries.
      */
     public Single<List<Country>> reloadCountriesFromServer() {
-        return Taxonomy.COUNTRY.getTaxonomyData(this, true, false, countryDao);
+        return Taxonomy.COUNTRY.getTaxonomyData(this, true, countryDao);
     }
 
     Single<List<Country>> loadCountries(Long lastModifiedDate) {
@@ -264,11 +264,11 @@ public class ProductRepository {
      * @return The list of categories.
      */
     public Single<List<Category>> reloadCategoriesFromServer() {
-        return Taxonomy.CATEGORY.getTaxonomyData(this, true, false, categoryDao);
+        return Taxonomy.CATEGORY.getTaxonomyData(this, true, categoryDao);
     }
 
     public Single<List<Category>> getCategories() {
-        return Taxonomy.CATEGORY.getTaxonomyData(this, false, true, categoryDao);
+        return Taxonomy.CATEGORY.getTaxonomyData(this, false, categoryDao);
     }
 
     Single<List<Category>> loadCategories(Long lastModifiedDate) {
@@ -295,7 +295,7 @@ public class ProductRepository {
      * @return The list of additives.
      */
     public Single<List<Additive>> reloadAdditivesFromServer() {
-        return Taxonomy.ADDITIVE.getTaxonomyData(this, true, false, additiveDao);
+        return Taxonomy.ADDITIVE.getTaxonomyData(this, true, additiveDao);
     }
 
     Single<List<Additive>> loadAdditives(long lastModifiedDate) {
@@ -319,7 +319,7 @@ public class ProductRepository {
      * @return The ingredients in the product.
      */
     public Single<List<Ingredient>> reloadIngredientsFromServer() {
-        return Taxonomy.INGREDIENT.getTaxonomyData(this, true, false, ingredientDao);
+        return Taxonomy.INGREDIENT.getTaxonomyData(this, true, ingredientDao);
     }
 
     Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
@@ -620,7 +620,7 @@ public class ProductRepository {
     }
 
     public Single<List<Country>> getCountries() {
-        return Taxonomy.COUNTRY.getTaxonomyData(this, false, true, countryDao);
+        return Taxonomy.COUNTRY.getTaxonomyData(this, false, countryDao);
     }
 
     public Single<Optional<Country>> getCountryByCC2OrWorld(String cc2) {
@@ -817,7 +817,7 @@ public class ProductRepository {
      * @return The analysis tags in the product.
      */
     public Single<List<AnalysisTag>> reloadAnalysisTagsFromServer() {
-        return Taxonomy.ANALYSIS_TAGS.getTaxonomyData(this, true, false, analysisTagDao);
+        return Taxonomy.ANALYSIS_TAGS.getTaxonomyData(this, true, analysisTagDao);
     }
 
     Single<List<AnalysisTag>> loadAnalysisTags(long lastModifiedDate) {
@@ -855,7 +855,7 @@ public class ProductRepository {
     }
 
     public Single<List<AnalysisTagConfig>> reloadAnalysisTagConfigsFromServer() {
-        return Taxonomy.ANALYSIS_TAG_CONFIG.getTaxonomyData(this, true, false, analysisTagConfigDao);
+        return Taxonomy.ANALYSIS_TAG_CONFIG.getTaxonomyData(this, true, analysisTagConfigDao);
     }
 
     Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {

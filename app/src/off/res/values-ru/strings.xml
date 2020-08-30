@@ -10,7 +10,6 @@
     <string name="website_product">https://world-ru.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ru.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Food Facts - открытая база данных продуктов питания с ингредиентами, аллергенами, питательной ценностью и всей информацией, которую мы можем найти на этикетках продуктов.</string>
     <string name="slide_1_title">Способствовать продовольственной прозрачности</string>
     <string name="slide_1_desc">Сканируйте продукты, фотографируйте их, способствуйте продовольственной прозрачности</string>

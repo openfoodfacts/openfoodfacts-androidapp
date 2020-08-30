@@ -267,10 +267,10 @@ public interface ProductsAPI {
     Single<Search> getIncompleteProducts(@Path("page") int page, @Query("fields") String fields);
 
     /**
-     * This method gives the # of products on Open Food Facts
+     * This method is used to get the number of products on Open X Facts
      */
     @GET("/1.json?fields=null")
-    Single<Search> getTotalProductCount(@Header("User-Agent") String header);
+    Single<JsonNode> getTotalProductCount(@Header("User-Agent") String header);
 
     /**
      * This method gives the news in all languages

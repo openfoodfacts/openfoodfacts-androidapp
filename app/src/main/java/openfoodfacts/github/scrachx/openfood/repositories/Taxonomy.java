@@ -28,7 +28,6 @@ import java.util.Collections;
 import java.util.List;
 
 import io.reactivex.Single;
-import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
@@ -108,6 +107,7 @@ public enum Taxonomy {
     };
     // -1 no internet connexion.
     private static final long TAXONOMY_NO_INTERNET = -9999L;
+    private static final String LOG_TAG = Taxonomy.class.getSimpleName();
     public final String jsonUrl;
 
     Taxonomy(String jsonUrl) {
@@ -133,59 +133,69 @@ public enum Taxonomy {
                 httpCon.disconnect();
             } catch (IOException e) {
                 //Problem
-                Log.e(Taxonomy.class.getName(), "getLastModifiedDate", e);
-                Log.i(Taxonomy.class.getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
+                Log.e(LOG_TAG, "getLastModifiedDate", e);
+                Log.i(LOG_TAG, "getLastModifiedDate for : " + taxonomy + " end, return " + TAXONOMY_NO_INTERNET);
                 return TAXONOMY_NO_INTERNET;
             }
-            Log.i(Taxonomy.class.getName(), "getLastModifiedDate for : " + taxonomy + " end, return " + lastModifiedDate);
+            Log.i(LOG_TAG, String.format("Last modified date for taxonomy \"%s\" is %d", taxonomy, lastModifiedDate));
             return lastModifiedDate;
         });
     }
 
     /**
      * @param repository
-     * @param checkUpdate checkUpdate defines if the source of data must be refresh from server if it has been update there.
-     *     *     *     If checkUpdate is true (or local database is empty) then load it from the server,
-     *     *     *     else from the local database.
-     * @param loadFromLocalDatabase if true the values will be loaded from local database if no update to perform from server
+     * @param checkUpdate defines if the source of data must be refresh from server if it has been update there.
+     *     <ul>
+     *         <li>If checkUpdate is true (or local database is empty) then load it from the server,</li>
+     *         <li>else from the local database.</li>
+     *     </ul>
      * @param dao used to check if locale data is empty
      * @param <T> type of taxonomy
      */
     <T> Single<List<T>> getTaxonomyData(ProductRepository repository,
                                         boolean checkUpdate,
-                                        boolean loadFromLocalDatabase,
                                         AbstractDao<T, ?> dao) {
-        //First check if this taxonomy is to be loaded.
+        // WARNING: Before "return" all code is executed on MAIN THREAD
         SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        boolean isDownloadActivated = mSettings.getBoolean(getDownloadActivatePreferencesId(), false);
-        long lastDownloadFromSettings = mSettings.getLong(getLastDownloadTimeStampPreferenceId(), 0L);
-        //if the database scheme changed, this settings should be true
+
+        // First check if this taxonomy is to be loaded for this flavor, else return empty list
+        boolean isTaxonomyActivated = mSettings.getBoolean(getDownloadActivatePreferencesId(), false);
+        if (!isTaxonomyActivated) {
+            return Single.just(Collections.emptyList());
+        }
+
+        // If the database scheme changed, this settings should be true
         boolean forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false);
 
-        // TODO: better approach
-        if (isDownloadActivated) {
-            //Taxonomy is marked to be download
-            if (DaoUtils.isDaoEmpty(dao)) {
-                // Table is empty, no need check for update, just load taxonomy
-                long lastModifiedDate = getLastModifiedDateFromServer(this)
-                    .subscribeOn(Schedulers.io()).blockingGet();
-                if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
-                    return DaoUtils.logDownload(load(repository, lastModifiedDate), this);
-                }
-            } else if (checkUpdate) {
-                // We need to check for update - Test if file on server is more recent than last download.
-                long lastModifiedDateFromServer = getLastModifiedDateFromServer(this)
-                    .subscribeOn(Schedulers.io()).blockingGet();
-                if (forceUpdate || lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > lastDownloadFromSettings) {
-                    return DaoUtils.logDownload(load(repository, lastModifiedDateFromServer), this);
-                }
-            }
-        }
-        if (loadFromLocalDatabase) {
-            //If we are here then just get the information from the local database
-            return Single.just(dao.loadAll());
+        // If database is empty or we have to force update, download it
+        if (DaoUtils.isDaoEmpty(dao) || forceUpdate) {
+            // Table is empty, no need check for update, just load taxonomy
+            return download(repository);
+        } else if (checkUpdate) {
+            // Get local last downloaded time
+            long localDownloadTime = mSettings.getLong(getLastDownloadTimeStampPreferenceId(), 0L);
+            // We need to check for update. Test if file on server is more recent than last download.
+            return checkAndDownloadIfNewer(repository, localDownloadTime);
         }
         return Single.just(Collections.emptyList());
+    }
+
+    private <T> Single<List<T>> download(ProductRepository repository) {
+        return getLastModifiedDateFromServer(this).flatMap(lastModifiedDate -> {
+            if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
+                return DaoUtils.logDownload(load(repository, lastModifiedDate), this);
+            }
+            return Single.just(Collections.emptyList());
+        });
+    }
+
+    private <T> Single<List<T>> checkAndDownloadIfNewer(ProductRepository repository, long localDownloadTime) {
+        return getLastModifiedDateFromServer(this).flatMap(lastModifiedDateFromServer -> {
+            if (lastModifiedDateFromServer == 0 || lastModifiedDateFromServer > localDownloadTime) {
+                return DaoUtils.logDownload(load(repository, lastModifiedDateFromServer), this);
+            }
+            return Single.just(Collections.emptyList());
+        });
     }
 
     public String getJsonUrl() {

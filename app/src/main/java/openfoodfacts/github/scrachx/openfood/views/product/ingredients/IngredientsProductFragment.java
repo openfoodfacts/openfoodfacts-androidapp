@@ -262,7 +262,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             binding.novaGroup.setImageResource(Utils.getNovaGroupDrawable(product));
             binding.novaGroup.setOnClickListener((View v) -> {
                 Uri uri = Uri.parse(getString(R.string.url_nova_groups));
-                CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabsIntent tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
                 CustomTabActivityHelper.openCustomTab(IngredientsProductFragment.this.requireActivity(), tabsIntent, uri, new WebViewFallback());
             });
         } else {
@@ -279,7 +279,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         return tag;
     }
 
-    private StringBuilder buildStringBuilder(List<String> stringList, String prefix) {
+    @NonNull
+    private StringBuilder buildStringBuilder(@NonNull List<String> stringList, String prefix) {
         StringBuilder otherNutritionStringBuilder = new StringBuilder();
         for (String otherSubstance : stringList) {
             otherNutritionStringBuilder.append(prefix);
@@ -289,7 +290,8 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         return otherNutritionStringBuilder;
     }
 
-    private CharSequence getAllergensTag(AllergenName allergen) {
+    @NonNull
+    private CharSequence getAllergensTag(@NonNull AllergenName allergen) {
         SpannableStringBuilder ssb = new SpannableStringBuilder();
 
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -418,7 +420,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             final SharedPreferences settings = getActivity().getSharedPreferences("login", 0);
             final String login = settings.getString("user", "");
-            if (login.isEmpty()) {
+            if (TextUtils.isEmpty(login)) {
                 showSignInDialog();
             } else {
                 activityProductState = FragmentUtils.getStateFromArguments(this);

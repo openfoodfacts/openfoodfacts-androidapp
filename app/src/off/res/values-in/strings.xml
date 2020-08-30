@@ -10,7 +10,6 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute).</string>
     <string name="txtHome">hal hal manakan buka adalah  sistem data  terbuka dari produk makanan dengan bahan-bahan, alergen, fakta nutrisi dan semua tidbits informasi bisa dilihat pada label produk</string>
     <string name="slide_1_title">Berkontribusi pada transparansi Pangan</string>
     <string name="slide_1_desc">Pindai produk, ambil gambarnya, buat transparansi pangan</string>
