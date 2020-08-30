@@ -18,17 +18,16 @@ v2 ! Tutti i volontari di OFF hanno lavorato sodo sulla base dei tuoi suggerimen
 7. Nessuna registrazione richiesta
 8. Leggero come prima :)
 
-v2.8 ! Dopo l'enorme V2 tutti i volontari di OFF hanno continuato a lavorare duramente sulla base dei tuoi suggerimenti. Ora abbiamo 570mila prodotti liberati da 182 Paesi da 10mila e più contributori incluso tu 🙂 tu 🙂 tu 🙂 tu 🙂 tu 🙂
+v2.8 ! Dopo l'enorme V2 tutti i volontari di OFF hanno continuato a lavorare duramente sulla base dei tuoi suggerimenti. Ora abbiamo 570mila prodotti liberati da 182 Paesi da 10mila e più contributori incluso tu 🙂
 1. Abbiamo rifatto l'intera esperienza di aggiunta di prodotti (e funziona anche senza connessione). (Grazie Huzaifa)
 8. Ora puoi ottenere le informazioni nutrizionali per la porzione che stai mangiando (Rutvik)
 7. Ora calcoliamo i gruppi NOVA oltre al Nutriscore (Huzaifa)
 8. Miglioramenti vari (di Rutvik & Salfai)
 7. 🌎 coreano e indonesiano
 
-2.8.8 ! Pensavi che ci saremmo fermati all'aggiunta dei prodotti? Tutti i volontari di OFF hanno continuato a lavorare sodo. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂 tu 🙂 tu 🙂 tu 🙂 tu 🙂
+2.8.8 ! Pensavi che ci saremmo fermati all'aggiunta dei prodotti? Tutti i volontari di OFF hanno continuato a lavorare sodo. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂 
 1. Ora puoi modificare qualsiasi prodotto con il tuo account OFF. Fai clic su ✏️ in una pagina prodotto da modificare.
 8. 🌍 Slovacco, ebraico, spagnolo, arabo, olandese, ungherese e vietnamita (translate.openfoodfacts.org per aiutare)
 7. Open Food Facts è un impegno completamente volontario: puoi donare tempo (world.openfoodfacts.org/contribute) o denaro (donate.openfoodfacts.org)
-
 
 
