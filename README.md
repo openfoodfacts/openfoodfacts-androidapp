@@ -71,13 +71,14 @@ https://translate.openfoodfacts.org
 |<img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300"> | * Download the latest [Android Studio](https://developer.android.com/studio) stable build. <br>* If you are running the app for the first time, Android Studio will ask you to install the Gradle dependencies. <br>* If you are a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md) <br>* In Android Studio, make sure to select `OFF` as the default flavor for Open Food Facts (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts) <br>* You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator. <br>* The package name on the Play Store is org.openfoodfacts.scanner. For historic reasons, it's openfoodfacts.github.scrachx.openfood in the code and on F-Droid.|
 
 ## Running a Fastlane lane
+The project uses Fastlane to automate release and screenshots generation.
 * First time you checkout, run `bundle install` at the root of the project
 * Then launch lanes using `bundle exec fastlane release` (for example the release lane)
 
 ## Generate screenshots for the Play Store
-To activate screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
+To activate the `screenshots` buildType in IDE, uncomment `def result = "screenshots"` and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
 To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
-[Help is welcome to improve those](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/fastlane)
+[Help is welcome to improve](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/screenshot-generation)
 
 ### Who do I talk to?
 
