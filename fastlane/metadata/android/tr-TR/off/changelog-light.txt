@@ -14,7 +14,7 @@ v2! Tüm OFF gönüllüleri önerilerinize dayanarak çok sıkı çalıştılar.
 3. Alerjen uyarıları
 4. Wikipedia ile keşfetmek için katkı maddelerinin üzerine tıklayın.
 5. Fotoğraf çekin, gıda şeffaflığının bir parçası olun
-6. 6. 2G'de bile çok daha hızlı. Bağlantı olmadan katkıda bile bulunabilirsiniz
+6. 2G'de bile çok daha hızlı. Bağlantı olmadan katkıda bile bulunabilirsiniz
 7. Kaydolmak gerekmiyor
 8. Daha önce olduğu gibi hafif :)
 
@@ -29,4 +29,3 @@ v2.8! Büyük V2’den sonra, tüm OFF gönüllüleri önerilerinize dayanarak s
 1. Artık OFF hesabınızla herhangi bir ürünü düzenleyebilirsiniz. Düzenlemek için ürün sayfasında ✏️ simgesine tıklayın.
 2. 🌍 Slovakça, İbranice, İspanyolca, Arapça, Hollandaca, Macarca ve Vietnamca (yardım etmek için translate.openfoodfacts.org)
 3. Open Food Facts tamamen gönüllü bir çabadır: Zaman (world-tr.openfoodfacts.org/contribute) veya para (donate.openfoodfacts.org) bağışında bulunabilirsiniz
-
