@@ -30,7 +30,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts ช่วยให้คุณเข้าใจถึงการพิมพ์ที่ดีบนฉลากผลิตภัณฑ์ You will be able to find: You will be able to find:
+- Open Food Facts ช่วยให้คุณเข้าใจถึงการพิมพ์ที่ดีบนฉลากผลิตภัณฑ์ You will be able to find:
 - คาร์บอนไดออกไซด์ (CO2 emissions) และบรรจุภัณฑ์ (รวมถึงคำแนะนำในการรีไซเคิล)
 Nutriscore (โภชนาการ) สารอาหารไขมัน / ไขมันไขมันอิ่มตัวคาร์โบไฮเดรตน้ำตาลใยโปรตีนและเกลือและโซเดียม
 - แบรนด์สารก่อภูมิแพ้ป้ายชื่อ (ชีวภาพปราศจากกลูเตนมังสวิรัติมังสวิรัติฮาลาลโคเชอร์ ... ) ข้อมูลการตรวจสอบย้อนกลับ (รหัสบรรจุภัณฑ์ต้นกำเนิดของส่วนผสม)

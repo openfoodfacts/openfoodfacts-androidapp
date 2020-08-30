@@ -8,7 +8,7 @@ VERSİYON 3
 
 
 ======
-v2! Tüm OFF gönüllüleri önerilerinize dayanarak çok sıkı çalıştılar. Biz her zamankinden daha küresel bir hareketiz. 500 bin özgür ürün, 182 ülke, 10 binin üzerinde katılımcı, sen de dahil :-) sen de dahil :-)
+v2! Tüm OFF gönüllüleri önerilerinize dayanarak çok sıkı çalıştılar. Biz her zamankinden daha küresel bir hareketiz. 500 bin özgür ürün, 182 ülke, 10 binin üzerinde katılımcı, sen de dahil :-)
 1. Dünyadaki tüm ürünler için NutriScore
 2. Sadece sizin görebileceğiniz, dışa aktarılabilir geçmiş bilgisi
 3. Alerjen uyarıları
@@ -29,6 +29,5 @@ v2.8! Büyük V2’den sonra, tüm OFF gönüllüleri önerilerinize dayanarak s
 1. Artık OFF hesabınızla herhangi bir ürünü düzenleyebilirsiniz. Düzenlemek için ürün sayfasında ✏️ simgesine tıklayın.
 2. 🌍 Slovakça, İbranice, İspanyolca, Arapça, Hollandaca, Macarca ve Vietnamca (yardım etmek için translate.openfoodfacts.org)
 3. Open Food Facts tamamen gönüllü bir çabadır: Zaman (world-tr.openfoodfacts.org/contribute) veya para (donate.openfoodfacts.org) bağışında bulunabilirsiniz
-
 
 
