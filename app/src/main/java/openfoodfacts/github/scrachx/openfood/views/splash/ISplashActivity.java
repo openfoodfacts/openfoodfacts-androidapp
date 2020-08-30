@@ -3,10 +3,8 @@ package openfoodfacts.github.scrachx.openfood.views.splash;
 /**
  * Created by Lobster on 03.03.18.
  */
-
-public interface ISplashPresenter {
-
-    interface Actions {
+public interface ISplashActivity {
+    interface Controller {
         void refreshData();
     }
 

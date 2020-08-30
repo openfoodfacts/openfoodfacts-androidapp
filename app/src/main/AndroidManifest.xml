@@ -130,7 +130,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity" />
         </activity>
-        <activity android:name=".views.ProductImageManagementActivity" />
+        <activity android:name=".views.ImagesManagementActivity" />
         <activity android:name=".views.ImageZoomActivity" />
         <activity android:name=".views.ImagesSelectionActivity" />
         <activity

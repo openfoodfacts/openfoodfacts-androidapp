@@ -49,14 +49,16 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 
 public class ImagesSelectionActivity extends BaseActivity {
     static final String TOOLBAR_TITLE = "TOOLBAR_TITLE";
+    private static final String LOG_TAG = ImagesSelectionActivity.class.getSimpleName();
     private ProductImagesSelectionAdapter adapter;
+    private ProductsAPI api;
     private ActivityProductImagesListBinding binding;
     private final CompositeDisposable disp = new CompositeDisposable();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ProductsAPI api = CommonApiManager.getInstance().getProductsApi();
+        api = CommonApiManager.getInstance().getProductsApi();
         binding = ActivityProductImagesListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
@@ -66,11 +68,15 @@ public class ImagesSelectionActivity extends BaseActivity {
         binding.btnAcceptSelection.setOnClickListener(v -> onBtnAcceptSelection());
         binding.btnChooseImage.setOnClickListener(v -> onBtnChooseImage());
 
+        // Get intent data
         Intent intent = getIntent();
-
         String code = intent.getStringExtra(ImageKeyHelper.PRODUCT_BARCODE);
         binding.toolbar.setTitle(intent.getStringExtra(TOOLBAR_TITLE));
 
+        loadProductImages(code);
+    }
+
+    private void loadProductImages(String code) {
         disp.add(api.getProductImages(code)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(node -> {
@@ -86,7 +92,7 @@ public class ImagesSelectionActivity extends BaseActivity {
 
                 binding.imagesRecycler.setAdapter(adapter);
                 binding.imagesRecycler.setLayoutManager(new GridLayoutManager(this, 3));
-            }, e -> Log.e(ImagesSelectionActivity.class.getSimpleName(), "cannot download images from server", e)));
+            }, e -> Log.e(LOG_TAG, "cannot download images from server", e)));
     }
 
     private void setSelectedImage(int selectedPosition) {

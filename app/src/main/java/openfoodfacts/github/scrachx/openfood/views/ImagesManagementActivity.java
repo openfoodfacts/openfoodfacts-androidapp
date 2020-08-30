@@ -79,7 +79,7 @@ import static org.apache.commons.lang.StringUtils.isNotEmpty;
 /**
  * Activity to display/edit product images
  */
-public class ProductImageManagementActivity extends BaseActivity {
+public class ImagesManagementActivity extends BaseActivity {
     private static final int RESULTCODE_MODIFIED = 1;
     private static final int REQUEST_EDIT_IMAGE_AFTER_LOGIN = 1;
     private static final int REQUEST_ADD_IMAGE_AFTER_LOGIN = 2;
@@ -91,12 +91,12 @@ public class ProductImageManagementActivity extends BaseActivity {
     private ActivityFullScreenImageBinding binding;
     private OpenFoodAPIClient client;
     private File lastViewedImage;
-    private PhotoViewAttacher mAttacher;
+    private PhotoViewAttacher attacher;
     private SharedPreferences settings;
     private CompositeDisposable disp;
 
     public static boolean isImageModified(int requestCode, int resultCode) {
-        return requestCode == REQUEST_EDIT_IMAGE && resultCode == ProductImageManagementActivity.RESULTCODE_MODIFIED;
+        return requestCode == REQUEST_EDIT_IMAGE && resultCode == ImagesManagementActivity.RESULTCODE_MODIFIED;
     }
 
     @Override
@@ -157,7 +157,7 @@ public class ProductImageManagementActivity extends BaseActivity {
         binding.btnEditImage.setVisibility(canEdit ? View.VISIBLE : View.INVISIBLE);
         binding.btnUnselectImage.setVisibility(binding.btnEditImage.getVisibility());
 
-        mAttacher = new PhotoViewAttacher(binding.imageViewFullScreen);
+        attacher = new PhotoViewAttacher(binding.imageViewFullScreen);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //delaying the transition until the view has been laid out
             postponeEnterTransition();
@@ -227,6 +227,7 @@ public class ProductImageManagementActivity extends BaseActivity {
             .show();
     }
 
+    @NonNull
     private List<String> generateImageTypeNames() {
         List<String> images = new ArrayList<>();
         for (ProductImageField type : TYPE_IMAGE) {
@@ -305,8 +306,8 @@ public class ProductImageManagementActivity extends BaseActivity {
             binding.textInfo.setText(R.string.image_not_defined_for_language);
             binding.textInfo.setTextColor(ContextCompat.getColor(this, R.color.orange));
         }
-        ((View) binding.btnEditImage).setVisibility(languageSupported ? View.VISIBLE : View.GONE);
-        ((View) binding.btnUnselectImage).setVisibility(binding.btnEditImage.getVisibility());
+        binding.btnEditImage.setVisibility(languageSupported ? View.VISIBLE : View.GONE);
+        binding.btnUnselectImage.setVisibility(binding.btnEditImage.getVisibility());
         return languageSupported;
     }
 
@@ -320,12 +321,10 @@ public class ProductImageManagementActivity extends BaseActivity {
 
     private void updateToolbarTitle(Product product) {
         if (product != null) {
-            changeToolBarTitle(StringUtils.defaultString(product.getProductName(LocaleHelper.getLanguage(this))));
+            binding.toolbar.setTitle(String.format("%s / %s",
+                StringUtils.defaultString(product.getLocalProductName(this)),
+                binding.comboImageType.getSelectedItem().toString()));
         }
-    }
-
-    private void changeToolBarTitle(String productName) {
-        binding.toolbar.setTitle(productName + " / " + binding.comboImageType.getSelectedItem().toString());
     }
 
     @Override
@@ -355,7 +354,7 @@ public class ProductImageManagementActivity extends BaseActivity {
                 .into(binding.imageViewFullScreen, new Callback() {
                     @Override
                     public void onSuccess() {
-                        mAttacher.update();
+                        attacher.update();
                         scheduleStartPostponedTransition(binding.imageViewFullScreen);
                         binding.imageViewFullScreen.setVisibility(View.VISIBLE);
                         stopRefresh();
@@ -364,7 +363,7 @@ public class ProductImageManagementActivity extends BaseActivity {
                     @Override
                     public void onError(Exception ex) {
                         binding.imageViewFullScreen.setVisibility(View.VISIBLE);
-                        Toast.makeText(ProductImageManagementActivity.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ImagesManagementActivity.this, getResources().getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show();
                         stopRefresh();
                     }
                 });
@@ -375,7 +374,7 @@ public class ProductImageManagementActivity extends BaseActivity {
     }
 
     /**
-     * Reload the product, update the image and the language
+     * Reloads product images from the server. Updates images and the language.
      */
     private void reloadProduct() {
         if (isFinishing()) {
@@ -383,7 +382,8 @@ public class ProductImageManagementActivity extends BaseActivity {
         }
         Product product = getProduct();
         if (product != null) {
-            startRefresh(getString(R.string.loading_product, "..."));
+            startRefresh(getString(R.string.loading_product,
+                StringUtils.defaultString(product.getLocalProductName(this) + "...")));
             client.getProductImages(product.getCode(), newState -> {
                 final Product newStateProduct = newState.getProduct();
                 boolean imageReloaded = false;
@@ -400,7 +400,7 @@ public class ProductImageManagementActivity extends BaseActivity {
                     }
                 } else {
                     if (StringUtils.isNotBlank(newState.getStatusVerbose())) {
-                        Toast.makeText(ProductImageManagementActivity.this, newState.getStatusVerbose(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ImagesManagementActivity.this, newState.getStatusVerbose(), Toast.LENGTH_LONG).show();
                     }
                 }
                 if (!imageReloaded) {
@@ -430,7 +430,7 @@ public class ProductImageManagementActivity extends BaseActivity {
         }
     }
 
-    private String getImageUrlToDisplay(Product product) {
+    private String getImageUrlToDisplay(@NonNull Product product) {
         return product.getSelectedImage(getCurrentLanguage(), getSelectedType(),
             ImageSize.DISPLAY);
     }
@@ -439,6 +439,9 @@ public class ProductImageManagementActivity extends BaseActivity {
         return getIntent().getStringExtra(ImageKeyHelper.IMAGE_URL);
     }
 
+    /**
+     * @see #startRefresh(String)
+     */
     private void stopRefresh() {
         binding.progressBar.setVisibility(View.GONE);
         updateLanguageStatus();
@@ -448,7 +451,11 @@ public class ProductImageManagementActivity extends BaseActivity {
         return binding.progressBar.getVisibility() == View.VISIBLE;
     }
 
-    private void startRefresh(String text) {
+    /**
+     * @param text
+     * @see #stopRefresh()
+     */
+    private void startRefresh(@Nullable String text) {
         binding.progressBar.setVisibility(View.VISIBLE);
         if (text != null) {
             binding.textInfo.setTextColor(ContextCompat.getColor(this, R.color.white));
@@ -487,12 +494,18 @@ public class ProductImageManagementActivity extends BaseActivity {
         if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) {
             return;
         }
-        final Intent intent = new Intent(ProductImageManagementActivity.this, ImagesSelectionActivity.class);
+        final Intent intent = new Intent(this, ImagesSelectionActivity.class);
         intent.putExtra(ImageKeyHelper.PRODUCT_BARCODE, getProduct().getCode());
         intent.putExtra(ImagesSelectionActivity.TOOLBAR_TITLE, binding.toolbar.getTitle());
         startActivityForResult(intent, REQUEST_CHOOSE_IMAGE);
     }
 
+    /**
+     * Check if user is able to edit or not.
+     *
+     * @param loginRequestCode request code to pass to {@link #startActivityForResult(Intent, int)}.
+     * @return true if user <strong>cannot edit</strong>, false otherwise.
+     */
     private boolean cannotEdit(int loginRequestCode) {
         if (isRefreshing()) {
             Toast.makeText(this, R.string.cant_modify_if_refreshing, Toast.LENGTH_SHORT).show();
@@ -500,13 +513,13 @@ public class ProductImageManagementActivity extends BaseActivity {
         }
         //if user not logged in, we force to log
         if (isUserNotLoggedIn()) {
-            startActivityForResult(new Intent(ProductImageManagementActivity.this, LoginActivity.class), loginRequestCode);
+            startActivityForResult(new Intent(this, LoginActivity.class), loginRequestCode);
             return true;
         }
         return false;
     }
 
-    void onAddImage() {
+    private void onAddImage() {
         if (cannotEdit(REQUEST_ADD_IMAGE_AFTER_LOGIN)) {
             return;
         }
@@ -530,7 +543,7 @@ public class ProductImageManagementActivity extends BaseActivity {
         binding.btnChooseDefaultLanguage.setVisibility(isDefault ? View.INVISIBLE : View.VISIBLE);
     }
 
-    void onStartEditExistingImage() {
+    private void onStartEditExistingImage() {
         if (cannotEdit(REQUEST_EDIT_IMAGE_AFTER_LOGIN)) {
             return;
         }
@@ -546,7 +559,7 @@ public class ProductImageManagementActivity extends BaseActivity {
         editPhoto(productImageField, transformation);
     }
 
-    private void editPhoto(ProductImageField productImageField, ImageTransformationUtils transformation) {
+    private void editPhoto(ProductImageField productImageField, @NonNull ImageTransformationUtils transformation) {
         if (transformation.isNotEmpty()) {
             disp.add(FileDownloader.download(this, transformation.getInitImageUrl())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -668,7 +681,7 @@ public class ProductImageManagementActivity extends BaseActivity {
      * @param dataFromCropActivity from the crop activity. If not, action is ignored
      */
     private void applyEditExistingImage(int resultCode, @Nullable Intent dataFromCropActivity) {
-        //delete downoaded local file
+        // Delete downloaded local file
         deleteLocalFiles();
         // if the selected language is not the same than current image we can't modify: only add
         if (isUserNotLoggedIn() || !updateLanguageStatus() || dataFromCropActivity == null) {
@@ -694,7 +707,7 @@ public class ProductImageManagementActivity extends BaseActivity {
         }
     }
 
-    private void postEditImage(HashMap<String, String> imgMap) {
+    private void postEditImage(@NonNull HashMap<String, String> imgMap) {
         final String code = getProduct().getCode();
         imgMap.put(ImageKeyHelper.PRODUCT_BARCODE, code);
         imgMap.put(ImageKeyHelper.IMAGE_STRING_ID, ImageKeyHelper.getImageStringKey(getSelectedType(), getCurrentLanguage()));
@@ -711,7 +724,8 @@ public class ProductImageManagementActivity extends BaseActivity {
         if (lastViewedImage != null) {
             boolean deleted = lastViewedImage.delete();
             if (!deleted) {
-                Log.w(ProductImageManagementActivity.class.getSimpleName(), "cant delete file " + lastViewedImage);
+                Log.w(ImagesManagementActivity.class.getSimpleName(),
+                    String.format("Cannot delete file %s.", lastViewedImage.getAbsolutePath()));
             } else {
                 lastViewedImage = null;
             }
@@ -722,7 +736,7 @@ public class ProductImageManagementActivity extends BaseActivity {
      * For scheduling a postponed transition after the proper measures of the view are done
      * and the view has been properly laid out in the View hierarchy
      */
-    private void scheduleStartPostponedTransition(final View sharedElement) {
+    private void scheduleStartPostponedTransition(@NonNull final View sharedElement) {
         sharedElement.getViewTreeObserver().addOnPreDrawListener(
             new ViewTreeObserver.OnPreDrawListener() {
                 @Override
@@ -747,8 +761,8 @@ public class ProductImageManagementActivity extends BaseActivity {
             reloadProduct();
             setResult(RESULTCODE_MODIFIED);
         }, throwable -> {
-            Toast.makeText(ProductImageManagementActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
-            Log.e(ProductImageManagementActivity.class.getSimpleName(), throwable.getMessage(), throwable);
+            Toast.makeText(ImagesManagementActivity.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e(ImagesManagementActivity.class.getSimpleName(), throwable.getMessage(), throwable);
             stopRefresh();
         }));
     }
