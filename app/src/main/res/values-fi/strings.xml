@@ -771,10 +771,9 @@
     <string name="compare_quantity">Määrä:</string>
     <string name="load_ingredient_detection_data">Lataa ainesosien tunnistustiedot</string>
     <string name="load_ingredient_detection_data_summary">Ainesosien tunnistamistietoja ei löydy, yritä ladata ne palvelimelta</string>
-    <string name="white_check_image_descr">A white check</string>
+    <string name="white_check_image_descr">Valkoinen valintamerkki</string>
     <string name="hint_packaging">Esimerkkejä: muovi, paperi, lasi</string>
     <string name="risk_alcohol_consumption">Alkoholin liiallinen kulutus on haitallista terveydelle. Käytettävä maltillisesti</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Valitse kuvan tyyppi</string>
     <string name="content_image_type">Valitse käsiteltävä kuva</string>

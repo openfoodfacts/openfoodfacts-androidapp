@@ -1,7 +1,7 @@
-All 25k OFF volunteers kept working hard: 1,4M products, 182 countries 🙂
-1. OFF goes big in the US: 237k products with Nutri-Score !
-2. Dark mode: lighter on your eyes, lighter on your battery
-3. Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
-4. Massive improvements to the vegan, vegetarian & palm oil detection.
-5. Instant product edition even with bad or no network
+所有25千 OFF志愿者都在努力工作：182个国家/地区， 1,4万产品🙂
+一， OFF goes big in the US: 237k products with Nutri-Score !
+二， 暗模式：眼睛更亮，电池更亮
+三， Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
+四， 大幅改善了素食，素食和棕榈油的检测。
+五， Instant product edition even with bad or no network
 6. Products To Be Completed page (right menu) is now real time.

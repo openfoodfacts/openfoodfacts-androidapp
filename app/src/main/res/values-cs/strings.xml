@@ -786,7 +786,6 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Například: plast, papír, sklo</string>
     <string name="risk_alcohol_consumption">Nadměrná konzumace alkoholu škodí vašemu zdraví, konzumujte v omezeném množství</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>

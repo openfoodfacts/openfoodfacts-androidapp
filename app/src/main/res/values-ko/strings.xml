@@ -768,7 +768,6 @@
     <string name="white_check_image_descr">화이트 체크</string>
     <string name="hint_packaging">예 : 플라스틱, 종이, 유리</string>
     <string name="risk_alcohol_consumption">과도한 알코올 섭취는 건강에 해로우며, 적당히 섭취해야 합니다</string>
-    <string name="check_first_time">처음 확인하다</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">이미지 유형 선택</string>
     <string name="content_image_type">작업 할 사진을 선택하십시오</string>

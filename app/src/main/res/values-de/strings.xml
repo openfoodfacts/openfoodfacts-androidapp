@@ -774,7 +774,6 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="white_check_image_descr">Weißer Haken</string>
     <string name="hint_packaging">Beispiele: Kunststoff, Papier, Glas</string>
     <string name="risk_alcohol_consumption">Übermäßiger Alkoholkonsum ist gesundheitsschädlich und sollte deshalb nur maßvoll konsumiert werden.</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Grafiktyp auswählen</string>
     <string name="content_image_type">Zu bearbeitendes Foto auswählen</string>

@@ -786,7 +786,6 @@
     <string name="white_check_image_descr">Белая галочка</string>
     <string name="hint_packaging">Примеры: пластик, бумага, стекло</string>
     <string name="risk_alcohol_consumption">Чрезмерное потребление алкоголя (которое должно потребляться умеренно) вредно для здоровья</string>
-    <string name="check_first_time">проверьте_первый_раз</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Выберите тип изображения</string>
     <string name="content_image_type">Выбрать фото для работы</string>

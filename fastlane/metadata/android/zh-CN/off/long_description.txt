@@ -70,8 +70,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 Open Food Facts 也可以在网站 https://world-zh.openfoodfacts.org 上找到
 
 
-提问，反馈：
-contact@openfoodfacts.org
+提问，反馈： contact@openfoodfacts.org
 
 
 关于化妆品，您可以安装 Open Beauty Facts；关于宠物食品，您可以安装 Open Pet Food Facts；关于其他所有其他产品，您可以安装 Open Products Facts。
