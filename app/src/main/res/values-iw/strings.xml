@@ -786,7 +786,6 @@
     <string name="white_check_image_descr">סימון לבן</string>
     <string name="hint_packaging">דוגמאות: פלסטיק, נייר, זכוכית</string>
     <string name="risk_alcohol_consumption">צריכה מופרזת של אלכוהול מסוכנת לבריאות, יש לצרוך בכמות מתונה</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">בחירת סוג תמונה</string>
     <string name="content_image_type">נא לבחור על איזו תמונה לעבוד</string>
