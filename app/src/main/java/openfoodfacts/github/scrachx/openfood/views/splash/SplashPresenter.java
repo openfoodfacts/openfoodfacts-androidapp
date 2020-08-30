@@ -82,7 +82,7 @@ public class SplashPresenter implements ISplashPresenter.Actions {
                 view.hideLoading(workInfo.getState() == WorkInfo.State.FAILED);
             }
         });
-        // The 6000 delay is probably to show one loop of the multilingual logo - I asked for it
+        // The 6000 delay is to show one loop of the multilingual logo. I asked for it ~ Pierre
         if (firstRun) {
             new Handler().postDelayed(view::navigateToMainActivity, 6000);
         } else {
