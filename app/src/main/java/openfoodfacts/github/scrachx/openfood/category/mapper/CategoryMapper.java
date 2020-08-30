@@ -8,17 +8,18 @@ import javax.inject.Inject;
 
 import openfoodfacts.github.scrachx.openfood.category.model.Category;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse;
-
 /**
- * Created by Abdelali Eramli on 27/12/2017.
+ * Class used to map tag name with the corresponding categories
  */
-
 public class CategoryMapper {
 
     @Inject
     public CategoryMapper() {
     }
-
+    /**
+     * Returns list of Category objects using the tags
+     * @param  tags List of CategoryResponse.Tag object
+     **/
     public List<Category> fromNetwork(List<CategoryResponse.Tag> tags) {
         List<Category> categories = new ArrayList<>(tags.size());
         for (CategoryResponse.Tag tag : tags) {

@@ -251,6 +251,10 @@ public class Utils {
         }
     }
 
+    
+    /**
+     * Returns the Nutri-Score graphic asset given the grade
+     */
     @DrawableRes
     public static int getImageGrade(@Nullable String grade) {
 
@@ -293,6 +297,9 @@ public class Utils {
         return getImageGradeDrawable(context, product == null ? null : product.getNutritionGradeFr());
     }
 
+    /**
+     * Returns the NOVA group explanation given the group
+     */
     public static String getNovaGroupExplanation(@Nullable String novaGroup, @NonNull Context context) {
 
         if (novaGroup == null) {
@@ -328,7 +335,10 @@ public class Utils {
         }
         return result;
     }
-
+    
+    /**
+     * Returns the NOVA group graphic asset given the group
+     */
     public static int getNovaGroupDrawable(@Nullable Product product) {
         return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
     }

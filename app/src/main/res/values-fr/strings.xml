@@ -20,7 +20,7 @@
         <item quantity="other">Vous avez %d produits hors-ligne en attente d\'être ajoutés à Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">Il y a 1 seconde</item>
+        <item quantity="one">Il y a %d seconde</item>
         <item quantity="other">Il y a %d secondes</item>
     </plurals>
     <plurals name="minutes">
@@ -39,7 +39,7 @@
     <string name="action_discover">Découvrir</string>
     <string name="contribute">Comment contribuer ?</string>
     <string name="action_find">Chercher</string>
-    <string name="product_incomplete_message">Ce produit n\'est pas complet. En conséquence, nous n\'avons pas pu faire le test d\'allergène.</string>
+    <string name="product_incomplete_message">La liste des ingrédients de ce produit n\'est pas complète. Par conséquent, l\'alerte allergène n\'est pas affichée.</string>
     <string name="product_allergen_prompt">Ce produit contient :</string>
     <string name="no_offline_data">C\'est bon :)</string>
     <string name="first_offline">Les produits ajoutés hors ligne apparaîtront ici</string>
@@ -186,7 +186,7 @@
     <string name="txtSugars">Sucres</string>
     <string name="hintBarcode">Code-barres</string>
     <string name="txtNutriScoreInfo">En savoir plus sur les niveaux de nutriments</string>
-    <string name="hintLogin">Connexion</string>
+    <string name="hintLogin">Nom d\'utilisateur</string>
     <string name="hintPass">Mot de passe</string>
     <string name="errorLogin">Identifiant ou mot de passe incorrect</string>
     <string name="errorWeb">Erreur de connexion internet</string>
@@ -758,7 +758,7 @@
     <string name="unknown_status_no_translation">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients inconnus.</string>
     <string name="help_translate_ingredients">Aidez à traduire les ingrédients dans votre langue</string>
     <string name="unknown_status_missing_ingredients">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients manquants.</string>
-    <string name="unknown_status_ambiguous_ingredients">Nous n\'avons pas pu évaluer l\'état du produit en raison d\'ingrédients ambigüs : <![CDATA[<b>%1$s</b>]]></string>
+    <string name="unknown_status_ambiguous_ingredients">Nous n\'avons pas pu évaluer le statut du produit en raison d\'ingrédients ambigus: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Aidez à extraire les ingrédients pour obtenir le statut de %1$s.</string>
     <string name="add_photo_to_extract_ingredients">Ajoutez une photo pour débuter l\'extraction des ingrédients</string>
     <string name="product_already_exists_in_comparison">Le produit existe déjà dans la liste de comparaison</string>
@@ -774,7 +774,7 @@
     <string name="white_check_image_descr">Un coche blanc</string>
     <string name="hint_packaging">Exemples : plastique, papier, verre</string>
     <string name="risk_alcohol_consumption">L\'abus d’alcool est dangereux pour la santé, à consommer avec modération</string>
-    <string name="check_first_time">vérifier_la_première_fois</string>
+    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Sélectionnez le type d\'image</string>
     <string name="content_image_type">Choisissez la photo sur laquelle vous souhaitez travailler</string>
