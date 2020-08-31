@@ -452,7 +452,11 @@ public class Product implements Serializable {
     /**
      * @return The nutriments
      */
+    @NonNull
     public Nutriments getNutriments() {
+        if (nutriments == null) {
+            nutriments = new Nutriments();
+        }
         return nutriments;
     }
 
