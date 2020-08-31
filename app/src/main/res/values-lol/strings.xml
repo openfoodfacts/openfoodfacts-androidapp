@@ -795,4 +795,5 @@
     <string name="brand_hint">crwdns140574:0crwdne140574:0</string>
     <string name="sign_in_or_register">crwdns128782:0crwdne128782:0</string>
     <string name="hunger_game_call_to_action">crwdns140576:0%1$scrwdne140576:0</string>
+    <string name="txtHomeOnline">crwdns148916:0%1$scrwdne148916:0</string>
 </resources>
