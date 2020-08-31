@@ -575,7 +575,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Subscribe
     public void onEventBusProductNeedsRefreshEvent(@NonNull ProductNeedsRefreshEvent event) {
         if (event.getBarcode().equals(lastBarcode)) {
-            setShownProduct(lastBarcode);
+            runOnUiThread(() -> setShownProduct(lastBarcode));
         }
     }
 

@@ -79,7 +79,7 @@ public class HomeFragment extends NavigationBaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         compDisp = new CompositeDisposable();
-        binding = FragmentHomeBinding.inflate(inflater);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -96,10 +96,10 @@ public class HomeFragment extends NavigationBaseFragment {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
-        //stop the call to off to get total product counts:
+        // Stop the call to server to get total product count and tagline
         compDisp.dispose();
         binding = null;
+        super.onDestroy();
     }
 
     private void openDailyFoodFacts() {
@@ -207,7 +207,7 @@ public class HomeFragment extends NavigationBaseFragment {
                     editor.putInt("productCount", totalProductCount);
                     editor.apply();
                 }, e -> {
-                    setProductCount(oldCount);
+                setProductCount(oldCount);
                 Log.e(LOG_TAG, "Could not retrieve product count from server.", e);
                 }
             ));
