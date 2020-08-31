@@ -13,7 +13,7 @@ Tu historial de escaneo completo, totalmente privado y exportable
 
 Ve más allá con Wikipedia
 
-Alerta de alérgenos
+Establece alertas de alérgenos
 
 Nutrición, simplificada
 
@@ -65,7 +65,7 @@ Historial de escaneo ilimitado y completamente privado
 
 Desliza para más detalles
 
-Alerta de alérgenos
+Configurar alertas de Allergen
 
 Únete a nuestro movimiento global para la transparencia alimentaria
 
