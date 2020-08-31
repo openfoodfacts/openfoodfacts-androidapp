@@ -786,7 +786,6 @@
     <string name="white_check_image_descr">Okienko wyboru</string>
     <string name="hint_packaging">Na przykład: plastik, papier, szkło</string>
     <string name="risk_alcohol_consumption">Spożywanie alkoholu, zwłaszcza nadmierne jest szkodliwe dla zdrowia</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Wybierz typ obrazu</string>
     <string name="content_image_type">Wybierz zdjęcie, nad którym chcesz pracować</string>

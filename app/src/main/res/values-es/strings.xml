@@ -774,7 +774,6 @@
     <string name="white_check_image_descr">Un \"check\" blanco</string>
     <string name="hint_packaging">Ejemplos: plástico, papel, vidrio</string>
     <string name="risk_alcohol_consumption">El consumo excesivo de alcohol es nocivo para la salud, consumirse con moderación</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Seleccionar tipo de imagen</string>
     <string name="content_image_type">Elegir la foto trabajar en</string>

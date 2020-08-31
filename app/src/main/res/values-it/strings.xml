@@ -774,7 +774,6 @@
     <string name="white_check_image_descr">Una spunta bianca</string>
     <string name="hint_packaging">Esempi: plastica, carta, vetro</string>
     <string name="risk_alcohol_consumption">Il consumo eccessivo di alcol è nocivo per la salute, da consumare con moderazione</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Seleziona Tipo Immagine</string>
     <string name="content_image_type">Scegli la foto su cui lavorare</string>

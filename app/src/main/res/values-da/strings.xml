@@ -774,7 +774,6 @@
     <string name="white_check_image_descr">Et hvidt flueben</string>
     <string name="hint_packaging">F.eks.: Plast, papir, glas</string>
     <string name="risk_alcohol_consumption">Overdrevent indtag af alkohol er sundhedsskadeligt, bør indtages med moderation</string>
-    <string name="check_first_time">tjek_første_gang</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Vælg billedtype</string>
     <string name="content_image_type">Vælg et foto at arbejde med</string>
