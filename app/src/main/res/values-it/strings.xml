@@ -20,23 +20,23 @@
         <item quantity="other">Hai %d prodotti nella coda offline in attesa di essere contribuito a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">Un secondo fa</item>
+        <item quantity="one">%d secondo fa</item>
         <item quantity="other">%d secondi fa</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">Minuto fa%d</item>
+        <item quantity="one">%d minuto fa</item>
         <item quantity="other">%d minuti fa</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">Un\' ora fa</item>
+        <item quantity="one">%d ora fa</item>
         <item quantity="other">%d ore fa</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">Un giorno fa</item>
+        <item quantity="one">%d giorno fa</item>
         <item quantity="other">%d giorni fa</item>
     </plurals>
     <string name="action_about">Informazioni</string>
-    <string name="action_discover">Scopri</string>
+    <string name="action_discover">Esplora</string>
     <string name="contribute">Come contribuire</string>
     <string name="action_find">Trova</string>
     <string name="product_incomplete_message">L\'elenco degli ingredienti di questo prodotto non è completo. Non abbiamo quindi potuto controllare gli allergeni.</string>
@@ -55,7 +55,7 @@
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
         <item>Foto del prodotto</item>
-        <item>Analisi degli ingredienti</item>
+        <item>Analisi ingredienti</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -130,11 +130,11 @@
         <item>Acido pantotenico / pantenolo (vitamina B5)</item>
         <item>pH</item>
         <item>Fosforo</item>
-        <item>Alditoli (polioli)</item>
+        <item>Polialcoli (polioli)</item>
         <item>Grassi polinsaturi</item>
         <item>Potassio</item>
         <item>Selenio</item>
-        <item>Sieroproteine</item>
+        <item>Proteine plasmatiche</item>
         <item>Silice</item>
         <item>Amido</item>
         <item>Acido stearico (18:0)</item>
@@ -158,7 +158,7 @@
     <!-- Content Description -->
     <string name="search_button">Cerca</string>
     <string name="alert_dialog_warning_title">Attenzione</string>
-    <string name="alert_dialog_warning_msg_user">Nome utente/password cambiati, per favore aggiorna le informazioni</string>
+    <string name="alert_dialog_warning_msg_user">Nome utente e/o password cambiati. Per favore aggiorna le informazioni.</string>
     <string name="toast_retrieving">Caricamento in corso…</string>
     <string name="txtBarcode">Codice a barre:</string>
     <string name="txtCategories">Categorie:</string>
@@ -172,12 +172,12 @@
     <string name="txtTraces">Tracce:</string>
     <string name="txtMayBeFromPalmOilProduct">Ingredienti che possono essere derivati dell\'olio di palma:</string>
     <string name="txtPalmOilProduct">Ingredienti derivati dell\'olio di palma:</string>
-    <string name="txtServingSize">Grandezza porzione:</string>
+    <string name="txtServingSize">Porzione:</string>
     <string name="txtNutrientLevel100g">Livelli dei nutrienti per 100g:</string>
     <string name="txtNutrientLevel100ml">Livelli dei nutrienti per 100 ml:</string>
-    <string name="txtNutritionLevelLow">in basse quantità</string>
-    <string name="txtNutritionLevelModerate">in moderate quantità</string>
-    <string name="txtNutritionLevelHigh">in grandi quantità</string>
+    <string name="txtNutritionLevelLow">in piccola quantità</string>
+    <string name="txtNutritionLevelModerate">in moderata quantità</string>
+    <string name="txtNutritionLevelHigh">in elevata quantità</string>
     <string name="txtSave">Salva</string>
     <string name="txtSignIn">Accedi</string>
     <string name="txtToastSaved">Utente salvato</string>
@@ -227,7 +227,7 @@
     <string name="your_lists">Le tue liste</string>
     <string name="title_dialog_alert">Aggiungi allarme</string>
     <string name="select_camera">Seleziona una fotocamera</string>
-    <string name="ok_button">Ok</string>
+    <string name="ok_button">OK</string>
     <string name="cancel_button">Annulla</string>
     <string name="login_button">Nome utente</string>
     <string name="create_account_button">Crea account</string>
@@ -236,7 +236,7 @@
     <string name="text_offline_info_dialog">Puoi scansionare i prodotti quando sei offline e aggiungerli a Open Food Facts più tardi. Tutti i prodotti che scansioni verranno mostrati qui e potrai inviarli usando il tasto qui sotto.</string>
     <string name="permission_camera">L\'autorizzazione Fotocamera è necessaria per scansionare i codici a barre e scattare foto.</string>
     <string name="no_camera_dialog_title">Fotocamera non trovata</string>
-    <string name="no_camera_dialog_content">Il tuo dispositivo non ha una fotocamera. Non sarai in grado di scansionare nessun codice a barre.</string>
+    <string name="no_camera_dialog_content">Il dispositivo non ha una fotocamera. Non potrai eseguire la scansione di alcun codice a barre.</string>
     <string name="permission_title">Informazioni sui permessi</string>
     <string name="permission_denied">Per favore attiva il permesso nelle impostazioni</string>
     <string name="info_download_data_connection">È necessario scaricare dei dati per rendere questa funzionalità operativa. Attiva la connessione internet.</string>
@@ -253,8 +253,8 @@
     <string name="prefs_language_summary">Cambia lingua</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Ti stai godendo la tua esperienza con Open Food Facts?</string>
-    <string name="user_ask_show_feedback_form">Ci spiace sentirlo! Potresti dirci che è successo?</string>
-    <string name="user_ask_rate_app">Grande! Fai sapere agli altri cosa pensi di quest\'app!</string>
+    <string name="user_ask_show_feedback_form">Ci dispiace sentirlo! Potresti dirci cos\'è successo?</string>
+    <string name="user_ask_rate_app">Ottimo! Fai sapere agli altri cosa ne pensi di questa app!</string>
     <string name="rate_app">Valuta l\'app</string>
     <string name="no_thx">No grazie</string>
     <string name="feedback_form_url">https://forms.gle/Ts2Yds6YHSFFPZE88</string>
@@ -264,7 +264,7 @@
     <string name="title_clear_history_dialog">Cancella</string>
     <string name="text_clear_history_dialog">Vuoi cancellare tutta la cronologia delle scansioni?</string>
     <string name="export_csv_history">Esporta CSV</string>
-    <string name="txt_exporting_history">Sto esportando la cronologia…</string>
+    <string name="txt_exporting_history">Esportazione della cronologia in corso…</string>
     <string name="txt_history_exported">Cronologia esportata</string>
     <string name="permision_write_external_storage">Per esportare la cronologia è necessaria l\'autorizzazione di archiviazione esterna.</string>
     <string name="no_brand">Senza marca</string>
@@ -793,7 +793,7 @@
     <string name="icon_categories">Icona categorie</string>
     <string name="icon_emb">Icona codice di tracciabilità</string>
     <string name="product_front_image">Immagine frontale prodotto</string>
-    <string name="brand_hint">Esempi: Coca-Cola, Nestlé, ecc…</string>
+    <string name="brand_hint">Esempi: Coca-Cola, Nestle, ecc…</string>
     <string name="sign_in_or_register">Accedi o registrati</string>
     <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
     <string name="txtHomeOnline">Open Food Facts è un database aperto contenente più di %1$s prodotti alimentari (più quelli che aggiungerai).</string>
