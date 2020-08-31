@@ -25,7 +25,7 @@ v2.8 ! Dopo l'enorme V2 tutti i volontari di OFF hanno continuato a lavorare dur
 8. Miglioramenti vari (di Rutvik & Salfai)
 7. 🌎 coreano e indonesiano
 
-2.8.8 ! Pensavi che ci saremmo fermati all'aggiunta dei prodotti? Tutti i volontari di OFF hanno continuato a lavorare sodo. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂 
+2.8.8 ! Pensavi che ci saremmo fermati all'aggiunta dei prodotti? Tutti i volontari di OFF hanno continuato a lavorare sodo. 590mila prodotti, 182 Paesi, 10mila e più contributori, incluso tu 🙂
 1. Ora puoi modificare qualsiasi prodotto con il tuo account OFF. Fai clic su ✏️ in una pagina prodotto da modificare.
 8. 🌍 Slovacco, ebraico, spagnolo, arabo, olandese, ungherese e vietnamita (translate.openfoodfacts.org per aiutare)
 7. Open Food Facts è un impegno completamente volontario: puoi donare tempo (world.openfoodfacts.org/contribute) o denaro (donate.openfoodfacts.org)
