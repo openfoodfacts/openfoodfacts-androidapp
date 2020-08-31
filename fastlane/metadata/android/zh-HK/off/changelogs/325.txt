@@ -1,2 +1,2 @@
-一、 一、 一、 NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
-二、 二、 二、 Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
+一、 一、 NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
+二、 二、 Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
