@@ -597,7 +597,7 @@
     <string name="ingredients_picture">Zdjęcie składników</string>
     <string name="take_ingredients_picture_to_extract">(Zrób zdjęcie składników, aby automatycznie je wyodrębnić)</string>
     <string name="ingredients_list">Lista składników</string>
-    <string name="ingredients_hint">Zachowaj kolejność, wskaż % jeśli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
+    <string name="ingredients_hint">Zachowaj kolejność, wskaż [%f]śli jest podany, oddziel przecinkiem lub -, zastosuj () dla składników składnika, oznacz alergeny za pomocą _</string>
     <string name="extract_ingredients">Wyodrębnij składniki</string>
     <string name="extracting_ingredients">Wyodrębnianie składników</string>
     <string name="looksGood">Wygląda dobrze</string>
@@ -808,4 +808,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>
