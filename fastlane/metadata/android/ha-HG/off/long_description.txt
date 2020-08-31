@@ -32,9 +32,9 @@ Create shopping lists, track what you've eaten and easily share and export your 
 ▶ Get the Facts
 -Budedden Abinci yana taimako ne wajen gano kyauwun abu. You will be able to find:
 -kabon takun kafa (CO2 turiri) da kuma rafe shi (da kuma sake amfani dashi),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+-Nutriscore (abun sinadarin), abun gina jiki, abunda ke kunshe da maiko / maiko, sunadarin sa jiki, sinadarin kabuhaidiret, sikari, tsimi, abun karin jini da kuma gishiri.
+-nau'uka, alegens, adadi (tarihi, rashin gulutan, me cin nama, me cin ganyayyaki, halali, koshar...), abun da ake iya ganowa na labarai ( kud din da aka sa mai, asalin kayan hade-haden)
+-Daga tsimi da kuma giya, zaka samu sinadaren jiya.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,11 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Budedden Abinci yana samuwa a yanar gizo a http://word.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+Tambayoyi, amsoshi : 
+contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Domin kayan kwalliya, zaka iya sa Open Beauty Facts, domin abincin dabbobi, Open Pet Facts, da kuma sauran abubuwa, Open Product Facts.
