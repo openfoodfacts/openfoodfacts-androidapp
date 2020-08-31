@@ -30,7 +30,7 @@
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Beauty Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Beauty Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
+    <string name="version_string">Open Beauty Facts Android-sovellus</string>
     <string name="tagline">vapaa kosmetiikkatietokanta</string>
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Beauty Factsissa. Voitko lisätä sen?</string>
     <string name="currently_on_version">Tällä hetkellä Open Beauty Factsissa</string>
@@ -42,9 +42,9 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">Omistamani tuotteet</string>
     <string name="txt_products_to_buy">Ostettavat tuotteet</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
+    <string name="intent_filter_share_label">Lisää Open Beauty Factsiin</string>
+    <string name="brand_hint">Esimerkkejä: Nivea, L\'Oréal jne…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Beauty Facts logo</string>
+    <string name="OFFlogo">Open Beauty Facts -logo</string>
 </resources>
