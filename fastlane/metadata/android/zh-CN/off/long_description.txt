@@ -30,7 +30,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts 可帮助您了解产品标签上的各个细节。 You will be able to find: You will be able to find:
+- Open Food Facts 可帮助您了解产品标签上的各个细节。 You will be able to find: 
 - 碳足迹（二氧化碳排放量）和包装信息（以及回收说明），
 -  Nutriscore（营养评分）、营养素、脂肪/脂肪含量、饱和脂肪酸、碳水化合物、糖分、纤维、蛋白质、以及盐和钠。
 - 品牌、过敏原、标签（简介、无麸质、纯素食、素食、清真、犹太...），可追溯性信息（包装规范、原料来源）
