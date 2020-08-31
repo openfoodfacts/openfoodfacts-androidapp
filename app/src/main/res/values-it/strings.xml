@@ -383,7 +383,7 @@
     <string name="take_picture_nutrition_table">Prendi una foto della tabella nutrizionale</string>
     <string name="take_more_pictures">Fai ulteriori foto</string>
     <string name="txtSaturatedFat">Grassi saturi</string>
-    <string name="nutriscore_info_msg">Ulteriori informazioni su Punteggio-Nutri</string>
+    <string name="nutriscore_info_msg">Ulteriori informazioni sul Nutri-Score</string>
     <string name="nova_info_msg">Ulteriori informazioni sui gruppi NOVA</string>
     <string name="nova_grp1_msg">Gruppo 1 - Alimenti non trasformati o minimamente trasformati</string>
     <string name="nova_grp2_msg">Gruppo 2 - Ingredienti culinari elaborati</string>
@@ -420,7 +420,7 @@
     <string name="preference_enable_mobile_data_summary_on">Carica nuovi prodotti utilizzando i dati mobili e WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Carica nuovi prodotti solo tramite WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informazioni</string>
-    <string name="device_on_mobile_data_warning_message">Hai disabilitato il caricamento sui dati mobili, connettiti al WiFi o modificalo nelle preferenze</string>
+    <string name="device_on_mobile_data_warning_message">Il caricamento di dati sulla rete mobile è disattivato. Connettiti al Wi-Fi o modificalo nelle preferenze</string>
     <string name="device_on_mobile_data_warning_positive">Impostazioni</string>
     <string name="device_on_mobile_data_warning_negative">Carica comunque</string>
     <string name="changes_saved">Modifiche salvate correttamente</string>
@@ -445,7 +445,7 @@
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://it.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world-it.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
@@ -663,10 +663,10 @@
     <string name="update_image">Invia un\'immagine aggiornata</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
-    <string name="add_nutrient_prompt_text">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
-    <string name="add_category_prompt_text">Aggiungi una categoria per calcolare il punteggio-Nutri</string>
-    <string name="add_nutrient_category_prompt_text">Aggiungi i dati nutrizionali e una categoria per calcolare il punteggio-Nutri</string>
-    <string name="category_game_btn">Aiuta a categorizzare i prodotti per calcolare il punteggio-Nutri</string>
+    <string name="add_nutrient_prompt_text">Aggiungi i valori nutrizionali per calcolare il Nutri-Score</string>
+    <string name="add_category_prompt_text">Aggiungi una categoria per calcolare il Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Aggiungi i valori nutrizionali e una categoria per calcolare il Nutri-Score</string>
+    <string name="category_game_btn">Aiuta a categorizzare i prodotti per calcolare il Nutri-Score</string>
     <string name="version_string">App Android Open Food Facts</string>
     <string name="version">Versione</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -707,7 +707,7 @@
     <string name="empty"></string>
     <string name="add_product">Inserisci prodotti</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>
-    <string name="add_nutrition_facts_for_nutriscore">Aggiungi i dati nutrizionali per calcolare il punteggio-Nutri</string>
+    <string name="add_nutrition_facts_for_nutriscore">Aggiungi i valori nutrizionali per calcolare il Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Confronta</string>
     <string name="product_summary_action_add_to_list_button_label">Aggiungi alla lista</string>
     <string name="product_summary_action_edit_button_label">Modifica</string>
@@ -758,7 +758,7 @@
     <string name="unknown_status_no_translation">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti non riconosciuti.</string>
     <string name="help_translate_ingredients">Aiuta a tradurre gli ingredienti nella tua lingua</string>
     <string name="unknown_status_missing_ingredients">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti mancanti.</string>
-    <string name="unknown_status_ambiguous_ingredients">Non è stato possibile valutare lo stato del prodotto a causa di ingredienti ambigui: <![CDATA[<b>%1$s</b>]]></string>
+    <string name="unknown_status_ambiguous_ingredients">Impossibile valutare lo stato del prodotto a causa di ingredienti ambigui: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Aiuta ad estrarre gli ingredienti per ottenere lo stato di %1$s.</string>
     <string name="add_photo_to_extract_ingredients">Aggiungi una foto per iniziare ad estrarre gli ingredienti</string>
     <string name="product_already_exists_in_comparison">Il prodotto esiste già nell\'elenco di confronto</string>
@@ -791,10 +791,10 @@
     <string name="content_exit">Premi qui per tornare al prodotto</string>
     <string name="icon_label">Icona etichette</string>
     <string name="icon_categories">Icona categorie</string>
-    <string name="icon_emb">Icona del codice di tracciabilità</string>
+    <string name="icon_emb">Icona codice di tracciabilità</string>
     <string name="product_front_image">Immagine frontale prodotto</string>
     <string name="brand_hint">Esempi: Coca-Cola, Nestlé, ecc…</string>
     <string name="sign_in_or_register">Accedi o registrati</string>
     <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts è un database aperto contenente più di %1$s prodotti alimentari (più quelli che aggiungerai).</string>
 </resources>
