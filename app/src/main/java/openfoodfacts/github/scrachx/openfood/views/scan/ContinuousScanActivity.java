@@ -95,9 +95,9 @@ import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
+import openfoodfacts.github.scrachx.openfood.views.ImagesManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
-import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductFragment;
@@ -575,7 +575,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Subscribe
     public void onEventBusProductNeedsRefreshEvent(@NonNull ProductNeedsRefreshEvent event) {
         if (event.getBarcode().equals(lastBarcode)) {
-            setShownProduct(lastBarcode);
+            runOnUiThread(() -> setShownProduct(lastBarcode));
         }
     }
 
@@ -814,7 +814,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == ProductImageManagementActivity.REQUEST_EDIT_IMAGE && (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)) {
+        if (requestCode == ImagesManagementActivity.REQUEST_EDIT_IMAGE && (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)) {
             setShownProduct(lastBarcode);
         } else if (resultCode == RESULT_OK && requestCode == LOGIN_ACTIVITY_REQUEST_CODE) {
             navigateToProductAddition(product);

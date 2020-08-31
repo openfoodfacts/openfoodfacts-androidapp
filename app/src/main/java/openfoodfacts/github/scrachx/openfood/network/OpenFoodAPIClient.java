@@ -749,25 +749,9 @@ public class OpenFoodAPIClient {
      *
      * @param additive search query for products
      * @param page number of pages
-     * @param onAdditiveCallback object of OnAdditiveCallback interface
      */
-    public void getProductsByAdditive(final String additive, final int page, final ApiCallbacks.OnAdditiveCallback onAdditiveCallback) {
-
-        api.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onAdditiveCallback.onAdditiveResponse(true, response.body());
-                } else {
-                    onAdditiveCallback.onAdditiveResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onAdditiveCallback.onAdditiveResponse(false, null);
-            }
-        });
+    public Single<Search> getProductsByAdditive(final String additive, final int page) {
+        return api.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS);
     }
 
     public void getProductsByAllergen(final String allergen, final int page, final ApiCallbacks.OnAllergensCallback onAllergensCallback) {

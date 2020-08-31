@@ -38,7 +38,9 @@ import openfoodfacts.github.scrachx.openfood.utils.PrefManager;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 
 /**
- * This is the Onboarding Activity shown on first-run.
+ * This is the on boarding activity shown on first-run.
+ */
+/*
  * TODO: redesign it & change the content
  * TODO: explain the 3 scores
  * TODO: be honest about offline until we implement offline scan (nobody cares about offline edit)
@@ -50,13 +52,6 @@ public class WelcomeActivity extends AppCompatActivity {
     private PrefManager prefManager;
     private boolean lastPage = false;
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        binding = null;
-    }
-
-    private int currentState;
     final ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
@@ -75,7 +70,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         /**
          * If user is on the last page and tries to swipe towards the next page on right then the value of
-         * positionOffset returned is always 0, on the other hand if the user tries to swipe towards the
+         * positionOffset returned is always 0. On the other hand if the user tries to swipe towards the
          * previous page on the left then the value of positionOffset returned is 0.999 and decreases as the
          * user continues to swipe in the same direction. Also whenever a user tries to swipe in any
          * direction the state is changed from idle to dragging and onPageScrollStateChanged is called.
@@ -95,6 +90,19 @@ public class WelcomeActivity extends AppCompatActivity {
             currentState = state;
         }
     };
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, WelcomeActivity.class);
+        context.startActivity(starter);
+    }
+
+    private int currentState;
+
+    @Override
+    protected void onDestroy() {
+        binding = null;
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

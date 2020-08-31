@@ -26,6 +26,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -135,6 +136,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private static final String BARCODE_SHORTCUT = "BARCODE";
     private static final int WEEK_IN_MS = 60 * 60 * 24 * 7 * 1000;
     public static final String PRODUCT_SEARCH_KEY = "product_search";
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private ActivityMainBinding binding;
     private AccountHeader headerResult = null;
     private Drawer drawerResult = null;
@@ -190,10 +192,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             customTabActivityHelper.getSession());
 
         // Create the AccountHeader
-        headerResult = new AccountHeaderBuilder()
+        AccountHeaderBuilder accountHeaderBuilder = new AccountHeaderBuilder()
             .withActivity(this)
             .withTranslucentStatusBar(true)
-            .withHeaderBackground(R.drawable.header)
             .withTextColorRes(R.color.white)
             .addProfiles(profile)
             .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
@@ -228,8 +229,15 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                 //false if you have not consumed the event and it should close the drawer
                 return false;
             })
-            .withSavedInstance(savedInstanceState)
-            .build();
+            .withSavedInstance(savedInstanceState);
+
+        try {
+            accountHeaderBuilder = accountHeaderBuilder.withHeaderBackground(R.drawable.header);
+        } catch (OutOfMemoryError e) {
+            Log.w(LOG_TAG, "Device has too low memory, loading color drawer header...", e);
+            accountHeaderBuilder = accountHeaderBuilder.withHeaderBackground(new ColorDrawable(ContextCompat.getColor(this, R.color.primary_dark)));
+        }
+        headerResult = accountHeaderBuilder.build();
 
         // Add Manage Account profile if the user is connected
         SharedPreferences preferences = getSharedPreferences(PreferencesFragment.LOGIN_PREF, 0);

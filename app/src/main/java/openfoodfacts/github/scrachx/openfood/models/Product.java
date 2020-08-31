@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -25,6 +27,7 @@ import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.images.ImageSize;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
@@ -449,7 +452,11 @@ public class Product implements Serializable {
     /**
      * @return The nutriments
      */
+    @NonNull
     public Nutriments getNutriments() {
+        if (nutriments == null) {
+            nutriments = new Nutriments();
+        }
         return nutriments;
     }
 
@@ -515,6 +522,11 @@ public class Product implements Serializable {
         } else {
             return getProductName();
         }
+    }
+
+    @Nullable
+    public String getLocalProductName(final Context context) {
+        return getProductName(LocaleHelper.getLanguage(context));
     }
 
     /**

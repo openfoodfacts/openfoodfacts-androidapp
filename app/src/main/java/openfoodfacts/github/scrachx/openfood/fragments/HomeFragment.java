@@ -35,19 +35,17 @@ import androidx.preference.PreferenceManager;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.Locale;
 
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding;
-import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
@@ -81,7 +79,7 @@ public class HomeFragment extends NavigationBaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         compDisp = new CompositeDisposable();
-        binding = FragmentHomeBinding.inflate(inflater);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -98,10 +96,10 @@ public class HomeFragment extends NavigationBaseFragment {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
-        //stop the call to off to get total product counts:
+        // Stop the call to server to get total product count and tagline
         compDisp.dispose();
         binding = null;
+        super.onDestroy();
     }
 
     private void openDailyFoodFacts() {
@@ -144,32 +142,35 @@ public class HomeFragment extends NavigationBaseFragment {
             Log.d(LOG_TAG, "User is not logged in.");
             return;
         }
-        compDisp.add(api.signIn(login, password, "Sign-in").subscribe(response -> {
-            String htmlNoParsed = null;
-            try {
-                htmlNoParsed = response.body().string();
-            } catch (IOException e) {
-                Log.e(LOG_TAG, "I/O Exception while checking user saved credentials.", e);
-            }
-            if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
-                || htmlNoParsed.contains("See you soon!"))) {
-                Log.w(LOG_TAG, "Cannot validate login, deleting saved credentials and asking the user to log back in.");
-                settings.edit()
-                    .putString("user", "")
-                    .putString("pass", "")
-                    .apply();
+        compDisp.add(api.signIn(login, password, "Sign-in")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(response -> {
+                String htmlNoParsed = null;
+                try {
+                    htmlNoParsed = response.body().string();
+                } catch (IOException e) {
+                    Log.e(LOG_TAG, "I/O Exception while checking user saved credentials.", e);
+                }
+                if (htmlNoParsed != null && (htmlNoParsed.contains("Incorrect user name or password.")
+                    || htmlNoParsed.contains("See you soon!"))) {
+                    Log.w(LOG_TAG, "Cannot validate login, deleting saved credentials and asking the user to log back in.");
+                    settings.edit()
+                        .putString("user", "")
+                        .putString("pass", "")
+                        .apply();
 
-                new MaterialDialog.Builder(requireActivity())
-                    .title(R.string.alert_dialog_warning_title)
-                    .content(R.string.alert_dialog_warning_msg_user)
-                    .positiveText(R.string.txtOk)
-                    .onPositive((dialog, which) ->
-                        registerForActivityResult(new LoginActivity.LoginContract(), result -> {
-                            // ignore if logged in or not
-                        }).launch(null))
-                    .show();
-            }
-        }, throwable -> Log.e(HomeFragment.class.getName(), "Cannot check user credentials.", throwable)));
+                    new MaterialDialog.Builder(requireActivity())
+                        .title(R.string.alert_dialog_warning_title)
+                        .content(R.string.alert_dialog_warning_msg_user)
+                        .positiveText(R.string.txtOk)
+                        .onPositive((dialog, which) ->
+                            registerForActivityResult(new LoginActivity.LoginContract(), result -> {
+                                // ignore if logged in or not
+                            }).launch(null))
+                        .show();
+                }
+            }, throwable -> Log.e(HomeFragment.class.getName(), "Cannot check user credentials.", throwable)));
     }
 
     @Override
@@ -190,47 +191,26 @@ public class HomeFragment extends NavigationBaseFragment {
     }
 
     private void refreshProductCount(int oldCount) {
-        Log.d(LOG_TAG, "Refreshing total product count.");
-        api.getTotalProductCount(Utils.getUserAgent())
+        Log.d(LOG_TAG, "Refreshing total product count...");
+        compDisp.add(api.getTotalProductCount(Utils.getUserAgent())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new SingleObserver<Search>() {
-                @Override
-                public void onSubscribe(Disposable d) {
-                    compDisp.add(d);
-                    if (isAdded()) {
-                        setProductCount(oldCount);
-                    }
+            .doOnSubscribe(disposable -> setProductCount(oldCount))
+            .subscribe(json -> {
+                    int totalProductCount = json.get("count").asInt(0);
+                    Log.d(LOG_TAG, String.format(
+                        "Refreshed total product count. There are %d products on the database.",
+                        totalProductCount
+                    ));
+                    setProductCount(totalProductCount);
+                    SharedPreferences.Editor editor = sharedPrefs.edit();
+                    editor.putInt("productCount", totalProductCount);
+                    editor.apply();
+                }, e -> {
+                setProductCount(oldCount);
+                Log.e(LOG_TAG, "Could not retrieve product count from server.", e);
                 }
-
-                @Override
-                public void onSuccess(Search search) {
-                    if (isAdded()) {
-                        int totalProductCount = oldCount;
-                        try {
-                            totalProductCount = Integer.parseInt(search.getCount());
-                        } catch (NumberFormatException e) {
-                            Log.w(LOG_TAG, "Cannot parse " + search.getCount() + " as integer.", e);
-                            return;
-                        }
-                        Log.d(LOG_TAG, String.format(
-                            "Refreshed total product count. There are %d products on the database.",
-                            totalProductCount
-                        ));
-                        setProductCount(totalProductCount);
-                        SharedPreferences.Editor editor = sharedPrefs.edit();
-                        editor.putInt("productCount", totalProductCount);
-                        editor.apply();
-                    }
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    if (isAdded()) {
-                        setProductCount(oldCount);
-                    }
-                }
-            });
+            ));
     }
 
     /**
@@ -242,7 +222,7 @@ public class HomeFragment extends NavigationBaseFragment {
         if (count == 0) {
             binding.textHome.setText(R.string.txtHome);
         } else {
-            binding.textHome.setText(getResources().getString(R.string.txtHomeOnline, count));
+            binding.textHome.setText(getResources().getString(R.string.txtHomeOnline, NumberFormat.getInstance().format(count)));
         }
     }
 
@@ -275,6 +255,6 @@ public class HomeFragment extends NavigationBaseFragment {
                     binding.tvDailyFoodFact.setText(models.get(models.size() - 1).getTaglineModel().getMessage());
                     binding.tvDailyFoodFact.setVisibility(View.VISIBLE);
                 }
-            }, e -> Log.w("getTagline", "cannot get tagline from server", e)));
+            }, e -> Log.e(LOG_TAG, "Could not retrieve tag-line from server.", e)));
     }
 }

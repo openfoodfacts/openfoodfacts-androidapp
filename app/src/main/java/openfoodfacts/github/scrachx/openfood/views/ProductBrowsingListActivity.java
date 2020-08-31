@@ -388,6 +388,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     public void getDataFromAPI() {
+        // TODO: 31/08/2020 all api calls to rxjava single
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case BRAND:
@@ -410,8 +411,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
                     displaySearch(value, manufacturingPlace, R.string.txt_no_matching_country_products));
                 break;
             case ADDITIVE:
-                apiClient.getProductsByAdditive(searchQuery, pageAddress, (value, additive) ->
-                    displaySearch(value, additive, R.string.txt_no_matching_additive_products));
+                disp.add(apiClient.getProductsByAdditive(searchQuery, pageAddress)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        displaySearch(throwable == null,
+                            search,
+                            R.string.txt_no_matching_additive_products)));
                 break;
             case STORE:
                 apiClient.getProductsByStore(searchQuery, pageAddress, (value, store) ->
@@ -425,7 +430,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
                 if (ProductUtils.isBarcodeValid(searchQuery)) {
                     api.openProduct(searchQuery, this);
                 } else {
-                    disp.add(api.searchProductsByName(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
+                    disp.add(api.searchProductsByName(searchQuery, pageAddress)
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe((search, throwable) ->
                             displaySearch(throwable == null,
                                 search,
@@ -504,8 +510,10 @@ public class ProductBrowsingListActivity extends BaseActivity {
         if (isResponseOk && response != null) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                binding.textCountProduct.setText(getResources().getString(R.string.number_of_results) + NumberFormat.getInstance(getResources().getConfiguration().locale)
-                    .format(Long.parseLong(response.getCount())));
+                binding.textCountProduct.setText(
+                    getResources().getString(R.string.number_of_results)
+                        + NumberFormat.getInstance(getResources().getConfiguration().locale)
+                        .format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {

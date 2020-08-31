@@ -31,12 +31,12 @@ import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy;
 /**
  * Created by Lobster on 03.03.18.
  */
-public class SplashPresenter implements ISplashPresenter.Actions {
+public class SplashController implements ISplashActivity.Controller {
     private final SplashActivity activity;
     private final SharedPreferences settings;
-    private final ISplashPresenter.View view;
+    private final ISplashActivity.View view;
 
-    SplashPresenter(SharedPreferences settings, ISplashPresenter.View view, SplashActivity activity) {
+    SplashController(SharedPreferences settings, ISplashActivity.View view, SplashActivity activity) {
         this.view = view;
         this.settings = settings;
         this.activity = activity;

@@ -45,9 +45,9 @@ public class FullScreenActivityOpener {
         if (mImageFront != null && fragment.getActivity() != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(fragment.getActivity(), mImageFront, fragment.getActivity().getString(R.string.product_transition));
-            fragment.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE, options.toBundle());
+            fragment.startActivityForResult(intent, ImagesManagementActivity.REQUEST_EDIT_IMAGE, options.toBundle());
         } else {
-            fragment.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE);
+            fragment.startActivityForResult(intent, ImagesManagementActivity.REQUEST_EDIT_IMAGE);
         }
     }
 
@@ -65,9 +65,9 @@ public class FullScreenActivityOpener {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(activity, mImageFront,
                     activity.getString(R.string.product_transition));
-            activity.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE, options.toBundle());
+            activity.startActivityForResult(intent, ImagesManagementActivity.REQUEST_EDIT_IMAGE, options.toBundle());
         } else if (activity != null) {
-            activity.startActivityForResult(intent, ProductImageManagementActivity.REQUEST_EDIT_IMAGE);
+            activity.startActivityForResult(intent, ImagesManagementActivity.REQUEST_EDIT_IMAGE);
         }
     }
 
@@ -81,7 +81,7 @@ public class FullScreenActivityOpener {
     }
 
     private static Intent createIntent(Context context, Product product, ProductImageField imageType, String mUrlImage) {
-        Intent intent = new Intent(context, ProductImageManagementActivity.class);
+        Intent intent = new Intent(context, ImagesManagementActivity.class);
         String language = LocaleHelper.getLanguage(context);
         if (!product.isLanguageSupported(language) && StringUtils.isNotBlank(product.getLang())) {
             language = product.getLang();
