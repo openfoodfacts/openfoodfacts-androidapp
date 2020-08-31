@@ -10,7 +10,7 @@ Wat is er nieuw?
 2. Krijg de "NutriScore" voedingswaarde voor alle producten in de wereld. Vergelijk eenvoudig producten. Gemakkelijker dan het ontcijferen van voedingswaardentabellen.
 3. Krijg extra informatie van Wikipedia. Klik op een voedselcategorie, een additief… om meer te leren en vergelijkbare producten te zien.
 4. Je kunt allergeen-waarschuwingen instellen (controleer wel altijd het echte etiket!)
-5. Je krijgt nu een scangeschiedenis die je kunt exporteren.
+5. Je krijgt nu een scangeschiedenis die je kunt exporteren. Deze geschiedenis kan niet door anderen bekeken worden.
 6. U kunt uw telefoon schudden op elk gewenst moment in de app om te beginnen met het scannen
 7. Je kunt nu nieuwe producten toevoegen, zelfs als je offline bent
 8. Je kunt nu helpen om je favoriete voedselproducten direct in de app te voltooien: foto's nemen, info invullen, en ons voedsel transparant te maken
