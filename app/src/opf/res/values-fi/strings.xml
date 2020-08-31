@@ -32,7 +32,7 @@
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Products Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Products Facts Android-sovellus</string>
     <string name="tagline">vapaa tuotetietokanta</string>
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Products Factsissa. Voitko lisätä sen?</string>
     <string name="currently_on_version">Tällä hetkellä Open Products Factsissa</string>
@@ -43,9 +43,9 @@
     <string name="add_nutrient_category_prompt_text">Lisää luokka ja yksityiskohtia auttaaksesi täydentämään tuotteen</string>
     <string name="txt_eaten_products">Omistamani tuotteet</string>
     <string name="txt_products_to_buy">Ostettavat tuotteet</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Lisää Open Products Factsiin</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="OFFlogo">Open Products Facts -logo</string>
+    <string name="brand_hint">Esimerkkejä: Nike, Apple jne…</string>
 </resources>
