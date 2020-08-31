@@ -796,4 +796,5 @@
     <string name="brand_hint">Esempi: Coca-Cola, Nestlé, ecc…</string>
     <string name="sign_in_or_register">Accedi o registrati</string>
     <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>
