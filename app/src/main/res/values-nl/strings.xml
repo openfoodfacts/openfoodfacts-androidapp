@@ -90,7 +90,7 @@
         <item>Caprylzuur (8: 0)</item>
         <item>Caseïne</item>
         <item>Cerotinezuur (26:0)</item>
-        <item>Chloride</item>
+        <item>Chloor</item>
         <item>Cholesterol</item>
         <item>Chroom</item>
         <item>Koper</item>
@@ -99,7 +99,7 @@
         <item>Eicosapentaeenzuur (20:5 n-3)</item>
         <item>Eaidinezuur (18:1 n-9)</item>
         <item>Erucazuur (22:1 n-9)</item>
-        <item>Fluoride</item>
+        <item>Fluor</item>
         <item>Fructose</item>
         <item>Gamma-linoleenzuur / GLA (18: 3 n-6)</item>
         <item>Glucose</item>
@@ -364,7 +364,7 @@
     <string name="zinc">Zink</string>
     <string name="copper">Koper</string>
     <string name="manganese">Mangaan</string>
-    <string name="fluoride">Fluoride</string>
+    <string name="fluoride">Fluor</string>
     <string name="selenium">Seleen</string>
     <string name="chromium">Chroom</string>
     <string name="molybdenum">Molybdeen</string>
@@ -796,4 +796,5 @@
     <string name="brand_hint">Voorbeelden: Coca-Cola, Nestlé, enz…</string>
     <string name="sign_in_or_register">Aanmelden of registreren</string>
     <string name="hunger_game_call_to_action">Help meer %1$s te classificeren</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>
