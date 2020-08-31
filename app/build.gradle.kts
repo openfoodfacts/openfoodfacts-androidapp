@@ -42,16 +42,16 @@ dependencies {
     implementation("androidx.browser:browser:1.2.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.work:work-runtime:2.4.0")
-    implementation("androidx.concurrent:concurrent-futures:1.0.0")
+    implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.android.material:material:1.2.0")
     implementation("androidx.annotation:annotation:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0-rc1")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
     implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.fragment:fragment:1.3.0-alpha07")
-    implementation("androidx.activity:activity:1.2.0-alpha07")
+    implementation("androidx.fragment:fragment:1.3.0-alpha08")
+    implementation("androidx.activity:activity:1.2.0-alpha08")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.preference:preference:1.1.1")
 
@@ -135,27 +135,27 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:2.3.0")
+    implementation("io.sentry:sentry-android:2.3.1")
 
     // Unit Testing
     testImplementation("junit:junit:4.13")
-    testImplementation("org.mockito:mockito-core:3.5.0")
+    testImplementation("org.mockito:mockito-core:3.5.7")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.18.1")
     testImplementation("com.google.truth:truth:1.0.1")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.0.1")
 
     // Instrumented tests
-    androidTestUtil("androidx.test:orchestrator:1.2.0")
+    androidTestUtil("androidx.test:orchestrator:1.3.0")
 
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestImplementation("androidx.test:rules:1.2.0")
+    androidTestImplementation("androidx.test:runner:1.3.0")
+    androidTestImplementation("androidx.test:rules:1.3.0")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.1")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
 
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-intents:3.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-web:3.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.2.0") {
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-web:3.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.3.0") {
         exclude(group = "com.android.support", module = "appcompat-v7")
         exclude(group = "com.android.support", module = "support-v4")
         exclude(group = "com.android.support", module = "design")
