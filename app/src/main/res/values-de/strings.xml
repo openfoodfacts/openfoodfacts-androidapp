@@ -796,4 +796,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="brand_hint">Beispiele: CocaCola, Nestle, usw …</string>
     <string name="sign_in_or_register">Anmelden oder registrieren</string>
     <string name="hunger_game_call_to_action">Mithelfen beim Klassifizieren weiterer %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts ist eine offene Datenbank mit mehr als %1$s Lebensmittelprodukten (plus diejenigen, die Sie beitragen werden).</string>
 </resources>
