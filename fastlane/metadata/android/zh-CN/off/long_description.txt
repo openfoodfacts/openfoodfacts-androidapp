@@ -23,7 +23,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 ▶ Contribute to Food Transparency
 - Open Food Facts 是一个大家共同建立，为了每一个人的食品数据库。
 - 您可以使用它来做出更好的食物选择，并且由于它是公开数据，任何人都可以将其复用于任何目的。
-- Open Food Facts 是一个由全球数以千计的志愿者者开发的非盈利性项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中
+- Open Food Facts 是一个由全球数以千计的志愿者者开发的非盈利性项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
