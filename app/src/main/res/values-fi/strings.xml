@@ -796,4 +796,5 @@
     <string name="brand_hint">Esimerkkejä: CocaCola, Nestle jne…</string>
     <string name="sign_in_or_register">Kirjaudu sisään tai rekisteröidy</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts on avoin tietokanta, joka sisältää yli %1$s elintarviketta (plus ne jotka lisäät).</string>
 </resources>
