@@ -40,31 +40,31 @@ Luo ostoslistoja, seuraa mitä olet syönyt, ja jaa ja vie helposti luettelosi.
 ▶ Perustuu tieteeseen, auttaa tiedettä!
 
 - Emme keksi asioita. Luotamme vertaisarvioituun tieteeseen.
-- The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
-- You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+- Nutri-Scoren on luonut riippumaton ranskalainen ryhmä, jota johtaa professori Hercberg.
+- NOVA-ryhmät elintarvikkeiden jalostuksesta on suunnitellut professori Monteiron kansainvälinen ryhmä.
+- Saat yhteenvedon Euroopan elintarviketurvallisuusviranomaisten (EFSA) elintarvikelisäaineiden altistustasoista.
+- Open Food Facts -yhteisö tekee yhteistyötä koko maapallon tutkimusryhmien kanssa, parantaakseen ravitsemustutkimusta, josta on hyötyä kaikille.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+▶ Lukeminen yhteydettömässä tilassa: Lue KAIKISSA olosuhteissa! (tulossa pian)
+Lue valon nopeudella (vaikka olisitkin lentokoneessa, sukellusveneessä tai supermarketissa)
 
-- The whole planet, in your pocket !
+- Koko planeetta taskussasi!
 - Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
-- The app loads only the strict necessary to reduce data and battery consumption.
+- Sovellus lataa vain kaikkein välttämättömimmän, tiedonsiirron ja akunkulutuksen vähentämiseksi.
 
-▶ Your food, your data
+▶ Sinun ruokasi, sinun tietosi
 - Tietosi ovat sinun, eikä niitä koskaan lähetetä verkkoon
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+▶ Aseta allergeenivaroitukset tuotteille
+- Maito-, gluteeni-, muna-, soijapapu-, pähkinä., kala-, selleri-, sinappi-, rikkidioksidi ja sulfiitit -, maapähkinä-, seesaminsiemen-, äyriäis-, nilviäis- tai lupiiniallergia?
+- Nopeuta ostoksiasi tekemällä ensin seulonta Open Food Factsilla.
+- Ole varovainen, sillä tiedot eivät välttämättä ole 100% tarkkoja, ja havaitseminen ei välttämättä ole 100% tarkkaa. Joten varmista aina tiedot pakkauksesta.
 
 
-▶ Say hello and/or join us!
+▶ Sano hei ja/tai liity joukkoon!
 
 
 Open Food Facts on myös verkossa osoitteessa https://world.openfoodfacts.org
