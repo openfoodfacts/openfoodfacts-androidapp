@@ -1,9 +1,9 @@
 VERSION 3
 ====
-一、 一、 It's easier to contribute new products, and get the Nutri-Score
-二、 二、 Create (and export) your product lists (shopping, eating…)
-三、 三、 Compare products side by side by scanning them one after the other.
-四、 四、 Completely redesigned product page, slide the card up to discover it
+一、 It's easier to contribute new products, and get the Nutri-Score
+二、 Create (and export) your product lists (shopping, eating…)
+三、 Compare products side by side by scanning them one after the other.
+四、 Completely redesigned product page, slide the card up to discover it
 五、 五、 Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
@@ -29,6 +29,5 @@ v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your
 一、 You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
 二、 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
 三、 Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
-
 
 
