@@ -210,7 +210,7 @@
     <string name="msg_share">Titta på denna produkt på Open Food Facts:</string>
     <string name="create_account">Registrera</string>
     <string name="home_drawer">Hem</string>
-    <string name="install">Install</string>
+    <string name="install">Installera</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Sök</string>
@@ -787,7 +787,7 @@
     <string name="content_edit_photo">Edit, crop and rotate the photo</string>
     <string name="title_unselect_photo">Unselect Photo</string>
     <string name="content_unselect_photo">Press here to unselect current photo</string>
-    <string name="title_exit">Exit</string>
+    <string name="title_exit">Avsluta</string>
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
