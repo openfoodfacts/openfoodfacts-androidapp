@@ -17,6 +17,8 @@
 
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
@@ -52,7 +54,7 @@ public interface ISummaryProductPresenter {
     }
 
     interface View {
-        void showAllergens(List<AllergenName> allergens);
+        void showAllergens(@NonNull List<AllergenName> allergens);
 
         void showProductQuestion(Question question);
 
@@ -60,7 +62,7 @@ public interface ISummaryProductPresenter {
 
         void showCategories(List<CategoryName> categories);
 
-        void showLabels(List<LabelName> labels);
+        void showLabels(@NonNull List<LabelName> labels);
 
         void showCategoriesState(ProductInfoState state);
 

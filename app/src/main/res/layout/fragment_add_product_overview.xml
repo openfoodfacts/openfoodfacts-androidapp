@@ -34,7 +34,7 @@
 
             <TextView
                 android:id="@+id/hint_image_front"
-                style="@style/EditHint"
+                style="@style/EditHint.Important"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/one_photo_compulsory"
@@ -319,7 +319,7 @@
 
             <TextView
                 android:id="@+id/category_hint"
-                style="@style/EditHint"
+                style="@style/EditHint.Important"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/required_to_compute_nutriscore"
@@ -673,7 +673,8 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/stores_til">
+                app:layout_constraintTop_toBottomOf="@id/stores_til"
+                tools:visibility="visible">
 
                 <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/countries_where_sold"
@@ -713,7 +714,10 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:visibility="gone"
-                app:layout_constraintEnd_toStartOf="@id/other_image_progress_text"
+                app:layout_constraintEnd_toStartOf="@+id/other_image_progress_text"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/grey_line4"
                 tools:visibility="visible" />
 
@@ -725,8 +729,9 @@
                 android:gravity="center"
                 android:text="@string/toastSending"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@id/countries_where_sold_til"
-                app:layout_constraintStart_toStartOf="@id/countries_where_sold_til"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/other_image_progress"
                 app:layout_constraintTop_toBottomOf="@id/grey_line4"
                 tools:visibility="visible" />
 

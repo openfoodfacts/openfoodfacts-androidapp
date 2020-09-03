@@ -16,6 +16,8 @@
 
 package openfoodfacts.github.scrachx.openfood.views.product.summary;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
@@ -29,7 +31,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
 
 public class SummaryProductPresenterView implements ISummaryProductPresenter.View {
     @Override
-    public void showAllergens(List<AllergenName> allergens) {
+    public void showAllergens(@NonNull List<AllergenName> allergens) {
         //empty impl
     }
 
@@ -49,7 +51,7 @@ public class SummaryProductPresenterView implements ISummaryProductPresenter.Vie
     }
 
     @Override
-    public void showLabels(List<LabelName> labels) {
+    public void showLabels(@NonNull List<LabelName> labels) {
         //empty impl
     }
 

@@ -369,7 +369,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.callToActionImageProgress.setVisibility(VISIBLE);
         summaryProductPresenter = new SummaryProductPresenter(product, new SummaryProductPresenterView() {
             @Override
-            public void showAllergens(List<AllergenName> allergens) {
+            public void showAllergens(@NonNull List<AllergenName> allergens) {
                 final AllergenHelper.Data data = AllergenHelper.computeUserAllergen(product, allergens);
                 binding.callToActionImageProgress.setVisibility(GONE);
                 if (data.isEmpty()) {

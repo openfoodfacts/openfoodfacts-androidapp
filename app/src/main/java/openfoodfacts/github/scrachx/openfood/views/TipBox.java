@@ -43,17 +43,16 @@ public class TipBox extends LinearLayout {
         if (message != null) {
             tipMessage.setText(context.getString(R.string.tip_message, message));
         }
-        arrow = findViewById(R.id.arrow);
-        int marginStart = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginStart, 0);
-        int marginEnd = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginEnd, 0);
-        int arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START);
-        boolean canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false);
-        setArrowAlignment(arrowAlignment, marginStart, marginEnd);
-        int toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor, getResources().getColor(R.color.md_black_1000));
-        int toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor,
-            getResources().getColor(R.color.brand_light_blue));
+        final int marginStart = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginStart, 0);
+        final int marginEnd = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginEnd, 0);
+        final int arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START);
+        final boolean canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false);
+        final int toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor, getResources().getColor(R.color.md_black_1000));
+        final int toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor, getResources().getColor(R.color.brand_light_blue));
         attributes.recycle();
 
+        arrow = findViewById(R.id.arrow);
+        setArrowAlignment(arrowAlignment, marginStart, marginEnd);
         // gone by default
         setVisibility(View.GONE);
         findViewById(R.id.gotItBtn).setOnClickListener(v -> {
