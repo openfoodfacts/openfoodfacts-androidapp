@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fi.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world-fi.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts on avoin tietokanta, joka sisältää yli %1$d kosmetiikkatuotetta (plus ne jotka lisäät).</string>
+    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Beauty Facts on kosmetiikkatuotetietokanta.</string>
     <string name="slide_1_title">Edistä kosmetiikan läpinäkyvyyttä</string>
     <string name="slide_1_desc">Lue tuotteita, ota ne mukaan kuvaan, mahdollista kosmetiikan läpinäkyvyys</string>
