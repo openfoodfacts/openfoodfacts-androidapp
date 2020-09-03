@@ -17,7 +17,7 @@ Stel allergeenwaarschuwingen in
 
 Voeding, vereenvoudigd
 
-Stel allergeenwaarschuwingen in
+Allergenen alert
 
 Krijg alternatieven voor je favoriete voedingsmiddelen
 
@@ -35,7 +35,7 @@ Ingrediënten
 
 Krachtig
 
-Krachtig Voedingswaarden
+Voedingswaarden
 
 =====================
 V3 schermafbeeldingen

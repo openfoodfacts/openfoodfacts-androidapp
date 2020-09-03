@@ -198,7 +198,7 @@
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Holen</string>
     <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sukroù</string>
+    <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Kod barrennoù</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Anv arveriad</string>
@@ -305,7 +305,7 @@
     <string name="nutrition_salt">Holen</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sukroù</string>
+    <string name="nutrition_sugars">Sugars</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -783,7 +783,7 @@
     <string name="compare_brands">Merkoù :</string>
     <string name="compare_additives">Danvezioù-ouzhpenn:</string>
     <string name="compare_salt">Holen</string>
-    <string name="compare_sugars">Sukroù</string>
+    <string name="compare_sugars">Sugars</string>
     <string name="compare_saturated_fat">Saturated fat</string>
     <string name="compare_fat">Fat</string>
     <string name="compare_quantity">Kementad :</string>
@@ -814,4 +814,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

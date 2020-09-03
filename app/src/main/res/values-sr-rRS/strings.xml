@@ -454,7 +454,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova-groups-for-food-processing</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world-sr.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Opšte</string>
     <string name="preference_header_network">Mreža</string>
     <string name="preference_header_contributing">Doprinesi</string>
@@ -802,4 +802,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

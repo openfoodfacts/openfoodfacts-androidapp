@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -186,7 +186,7 @@
     <string name="txtSugars">Sskeṛ</string>
     <string name="hintBarcode">Tangalt s yifeggagen</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Kcem</string>
+    <string name="hintLogin">Isem n useqdac</string>
     <string name="hintPass">Tasarut</string>
     <string name="errorLogin">Tɣelṭeḍ deg tuqqna neɣ deg tsarut</string>
     <string name="errorWeb">Ur nezmir ara ad nekcem ar Internet. Tesɛiḍ uguren deg tuqqna?</string>
@@ -229,7 +229,7 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Ssefex</string>
-    <string name="login_button">Kcem</string>
+    <string name="login_button">Isem n useqdac</string>
     <string name="create_account_button">Asnulfu n umiḍan</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
@@ -454,7 +454,7 @@
     <string name="preference_header_network">Azeṭṭa</string>
     <string name="preference_header_contributing">Attekki</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Kcem</string>
+    <string name="log_in">Isem n useqdac</string>
     <string name="login_true">Already logged in!</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
@@ -796,4 +796,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

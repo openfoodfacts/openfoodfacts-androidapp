@@ -186,7 +186,7 @@
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Login or password error</string>
     <string name="errorWeb">We were not able to access the internet. Do you have connectivity issues?</string>
@@ -796,4 +796,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

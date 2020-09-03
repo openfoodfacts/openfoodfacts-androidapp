@@ -186,7 +186,7 @@
     <string name="txtSugars">Sugars</string>
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Username</string>
+    <string name="hintLogin">Login</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">లాగిన్ లేదా పాస్ వర్డ్ లోపం</string>
     <string name="errorWeb">మేము ఇంటర్నెట్ను ప్రాప్యత చేయలేకపోయాము. మీకు కనెక్టివిటీ సమస్యలు ఉన్నాయా?</string>
@@ -229,7 +229,7 @@
     <string name="select_camera">కెమెరాను ఎంచుకోండి</string>
     <string name="ok_button">సరే</string>
     <string name="cancel_button">రద్దుచేయి</string>
-    <string name="login_button">Username</string>
+    <string name="login_button">Login</string>
     <string name="create_account_button">ఖాతాను సృష్టించండి</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">ఇది ఎలా పని చేస్తుంది?</string>
@@ -796,4 +796,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

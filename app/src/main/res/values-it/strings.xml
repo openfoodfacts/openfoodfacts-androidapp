@@ -445,7 +445,7 @@
     <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://it.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world-it.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->

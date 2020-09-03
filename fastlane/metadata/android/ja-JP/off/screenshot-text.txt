@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Set allergen alerts
+アレルゲン警告
 
 Get alternatives for your favorite foods
 
@@ -35,7 +35,7 @@ Wikipedia of Products
 
 Powerful
 
-Wikipedia for Food
+栄養成分表
 
 =====================
 V3 screenshots
@@ -65,7 +65,7 @@ Unlimited and fully-private scan history
 
 Swipe for even more details
 
-Set allergen alerts
+Set Allergen Alerts
 
 Join our global movement for food transparency
 

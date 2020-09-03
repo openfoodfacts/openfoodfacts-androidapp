@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fi.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world-fi.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts on tietokanta, joka sisältää yli %1$d lemmikkien elintarviketta (plus ne jotka lisäät) Vuh. Vuh.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
     <string name="txtHome">Open Pet Food Facts on tietokanta lemmikkien elintarvikkeille, joka sisältää ainesosat, ravintosisällöt… Vuh. Vuh.</string>
     <string name="slide_1_title">Lisää lemmikkien elintarvikkeiden läpinäkyvyyttä</string>
     <string name="slide_1_desc">Lue tuotteita, ota ne mukaan kuvaan, mahdollista lemmikkien elintarvikkeiden läpinäkyvyys</string>
