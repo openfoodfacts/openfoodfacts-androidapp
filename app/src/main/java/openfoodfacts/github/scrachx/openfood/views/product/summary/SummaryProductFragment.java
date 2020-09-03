@@ -187,9 +187,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //done here for android 4 compatibility.
-        //a better solution could be to use https://developer.android.com/jetpack/androidx/releases/ but weird issue with it..
-        binding.addNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
             URI resultUri = newPhotoFile.toURI();
             //the booleans are checked to determine if the picture uploaded was due to a prompt click
