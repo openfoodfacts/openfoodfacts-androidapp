@@ -46,7 +46,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
 
-▶ Offline Scan: Scan in ANY condition! (coming soon)
+▶ Offline Scan: Scan in ANY condition! (kommer snart)
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
@@ -55,7 +55,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 
 ▶ Your food, your data
 - Your data is yours, and is never sent online
-- You can use the app anonymously
+- Du kan använda appen anonymt
 - Du kan exportera din skanningshistorik
 
 ▶ Set up allergen alerts on products
