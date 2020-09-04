@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts는 %1$d개 이상의 화장품을 포함한 공개 데이터베이스입니다.</string>
+    <string name="txtHomeOnline">Open Beauty Facts는 %1$s개 이상의 화장품을 포함한 공개 데이터베이스입니다.</string>
     <string name="txtHome">Open Beauty Facts는 화장품 데이터베이스입니다.</string>
     <string name="slide_1_title">화장품 투명도에 기여하기</string>
     <string name="slide_1_desc">제품을 잘 살펴 사진을 찍어 화장품을 투명하게 한다 </string>
