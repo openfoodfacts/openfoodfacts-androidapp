@@ -23,7 +23,7 @@ Open Food Facts is an open database of food products with ingredients, allergens
 
 *** Your products, your data ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
+- Du kan använda appen anonymt
 - Du kan exportera din skanningshistorik
 
 For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
