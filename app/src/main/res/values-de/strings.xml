@@ -547,7 +547,7 @@
     <string name="preferences">Einstellungen</string>
     <string name="OFFlogo">Logo von Open Food Fact</string>
     <string name="loading_product">Produkt „%s” wird geladen</string>
-    <string name="image_not_defined_for_language">Kein Foto für die ausgewählte Sprache. Sie können eine neue hinzufügen.</string>
+    <string name="image_not_defined_for_language">Kein Foto für die ausgewählte Sprache. Sie können ein neues hinzufügen</string>
     <string name="error_adding_ingredients">Beim Versuch, Produktzutaten hinzuzufügen, ist ein Fehler aufgetreten</string>
     <string name="unable_to_extract_ingredients">Die Zutaten können nicht aus dem Bild extrahiert werden</string>
     <string name="error_adding_nutrition_facts">Beim Versuch, Nährwertangaben für Produkte hinzuzufügen, ist ein Fehler aufgetreten</string>
