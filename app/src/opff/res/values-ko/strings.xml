@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts는 %1$d개 이상의 애완동물 사료(및 기여할 제품)를 포함한 공개 데이터베이스입니다. 컹. 컹.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts는 %1$s개 이상의 애완동물 사료(및 기여할 제품)를 포함한 공개 데이터베이스입니다. 컹. 컹.</string>
     <string name="txtHome">Open Pet Food Facts는 재료, 영양 정보가 포함된 애완동물 사료 제품에 대한 데이터베이스입니다… 컹.컹.</string>
     <string name="slide_1_title">애완동물 사료 투명도에 기여하기</string>
     <string name="slide_1_desc">제품을 잘 살펴 사진을 찍어 애완동물 사료를 투명 하게 한다 </string>
