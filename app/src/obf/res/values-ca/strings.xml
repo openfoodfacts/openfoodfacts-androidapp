@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://es-ca.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://es-ca.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts és una base de dades oberta de més de %1$d productes cosmètics (més els que aportareu) amb ingredients, al·lèrgens, indicis i tots els detalls de la informació que podem trobar a les etiquetes del producte.</string>
+    <string name="txtHomeOnline">Open Beauty Facts és una base de dades oberta de més de %1$s productes cosmètics (més els que aportareu) amb ingredients, al·lèrgens, indicis i tots els detalls de la informació que podem trobar a les etiquetes del producte.</string>
     <string name="txtHome">Open Beauty Facts és una base de dades de productes cosmètics amb ingredients, al·lèrgens, indicis i tots els detalls de la informació que podem trobar a les etiquetes del producte.</string>
     <string name="slide_1_title">Contribueix a la transparència Cosmètica</string>
     <string name="slide_1_desc">Escanegeu els productes, feu-los fotos, feu més transparent la cosmètica</string>
