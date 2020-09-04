@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fr.openproductsfacts.org/contributeur/</string>
     <string name="terms_url">https://fr.openproductsfacts.org/conditions-d-utilisation</string>
-    <string name="txtHomeOnline">Open Products Facts est une base de données de plus de %1$d produits (plus ceux que vous contribuerez) dans le monde.</string>
+    <string name="txtHomeOnline">Open Products Facts est une base de données de plus de %1$s produits (plus ceux que vous contribuerez) dans le monde.</string>
     <string name="txtHome">Open Products Facts est une base de données ouverte de tous les produits dans le monde.</string>
     <string name="slide_1_title">Contribuer à la transparence des produits</string>
     <string name="slide_1_desc">Scannez les produits, prenez-les en photo, devenez un acteur de la transparence produit</string>
