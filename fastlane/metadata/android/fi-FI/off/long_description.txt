@@ -58,13 +58,13 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 
-▶ Set up allergen alerts on products
-- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
+▶ Aseta allergeenivaroitukset tuotteille
+- Maito-, gluteeni-, muna-, soijapapu-, pähkinä-, kala-, selleri-, sinappi-, rikkidioksidi ja sulfiitit -, maapähkinä-, seesaminsiemen-, äyriäis-, nilviäis- tai lupiiniallergia?
+- Nopeuta ostoksiasi tekemällä ensin seulonta Open Food Factsilla.
+- Ole varovainen, sillä tiedot eivät välttämättä ole 100% tarkkoja, ja havaitseminen ei välttämättä ole 100% tarkkaa. Joten varmista aina tiedot pakkauksesta.
 
 
-▶ Say hello and/or join us!
+▶ Sano hei ja/tai liity joukkoon!
 
 
 Open Food Facts on myös verkossa osoitteessa https://world.openfoodfacts.org
