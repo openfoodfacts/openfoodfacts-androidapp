@@ -30,7 +30,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
--Budedden Abinci yana taimako ne wajen gano kyauwun abu. You will be able to find:
+-Open Food Facts yana taimako ne wajen gano kyauwun abu. You will be able to find:
 -kabon takun kafa (CO2 turiri) da kuma rafe shi (da kuma sake amfani dashi),
 -Nutriscore (abun sinadarin), abun gina jiki, abunda ke kunshe da maiko / maiko, sunadarin sa jiki, sinadarin kabuhaidiret, sikari, tsimi, abun karin jini da kuma gishiri.
 -nau'uka, alegens, adadi (tarihi, rashin gulutan, me cin nama, me cin ganyayyaki, halali, koshar...), abun da ake iya ganowa na labarai ( kud din da aka sa mai, asalin kayan hade-haden)
