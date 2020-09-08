@@ -39,6 +39,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 import java.net.HttpCookie;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
@@ -85,61 +86,64 @@ public class LoginActivity extends BaseActivity {
         binding.btnLogin.setClickable(false);
 
         final Activity context = this;
-        disp.add(apiClient.signIn(login, password, "Sign-in").subscribe(response -> {
-            if (!response.isSuccessful()) {
-                Toast.makeText(context, R.string.errorWeb, Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            String htmlNoParsed = null;
-            try {
-                htmlNoParsed = response.body().string();
-            } catch (IOException e) {
-                Log.e("LOGIN", "Unable to parse the login response page", e);
-            }
-
-            SharedPreferences.Editor editor = context.getSharedPreferences("login", 0).edit();
-
-            if (htmlNoParsed == null
-                || htmlNoParsed.contains("Incorrect user name or password.")
-                || htmlNoParsed.contains("See you soon!")) {
-
-                Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show();
-                binding.passInput.setText("");
-
-                binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.red));
-                binding.txtInfoLogin.setText(R.string.txtInfoLoginNo);
-
-                snackbar.dismiss();
-            } else {
-                // store the user session id (user_session and user_id)
-                for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
-                    // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
-                    if (BuildConfig.HOST.contains(httpCookie.getDomain()) && httpCookie.getPath().equals("/")) {
-                        String[] cookieValues = httpCookie.getValue().split("&");
-                        for (int i = 0; i < cookieValues.length; i++) {
-                            editor.putString(cookieValues[i], cookieValues[++i]);
-                        }
-                        break;
-                    }
+        disp.add(apiClient.signIn(login, password, "Sign-in")
+            .subscribeOn(Schedulers.io()) // Network operation
+            .observeOn(AndroidSchedulers.mainThread()) // We need to modify view
+            .subscribe(response -> {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(context, R.string.errorWeb, Toast.LENGTH_LONG).show();
+                    return;
                 }
 
-                Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show();
+                String htmlNoParsed = null;
+                try {
+                    htmlNoParsed = response.body().string();
+                } catch (IOException e) {
+                    Log.e("LOGIN", "Unable to parse the login response page", e);
+                }
 
-                editor.putString("user", login);
-                editor.putString("pass", password);
-                editor.apply();
+                SharedPreferences.Editor editor = context.getSharedPreferences("login", 0).edit();
 
-                binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.green_500));
-                binding.txtInfoLogin.setText(R.string.txtInfoLoginOk);
+                if (htmlNoParsed == null
+                    || htmlNoParsed.contains("Incorrect user name or password.")
+                    || htmlNoParsed.contains("See you soon!")) {
 
-                setResult(RESULT_OK);
-                finish();
-            }
-        }, t -> {
-            Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
-            Log.e(getClass().getSimpleName(), "onFailure", t);
-        }));
+                    Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, LENGTH_LONG).show();
+                    binding.passInput.setText("");
+
+                    binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.red));
+                    binding.txtInfoLogin.setText(R.string.txtInfoLoginNo);
+
+                    snackbar.dismiss();
+                } else {
+                    // store the user session id (user_session and user_id)
+                    for (HttpCookie httpCookie : HttpCookie.parse(response.headers().get("set-cookie"))) {
+                        // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
+                        if (BuildConfig.HOST.contains(httpCookie.getDomain()) && httpCookie.getPath().equals("/")) {
+                            String[] cookieValues = httpCookie.getValue().split("&");
+                            for (int i = 0; i < cookieValues.length; i++) {
+                                editor.putString(cookieValues[i], cookieValues[++i]);
+                            }
+                            break;
+                        }
+                    }
+
+                    Snackbar.make(binding.loginLinearlayout, R.string.connection, LENGTH_LONG).show();
+
+                    editor.putString("user", login);
+                    editor.putString("pass", password);
+                    editor.apply();
+
+                    binding.txtInfoLogin.setTextColor(getResources().getColor(R.color.green_500));
+                    binding.txtInfoLogin.setText(R.string.txtInfoLoginOk);
+
+                    setResult(RESULT_OK);
+                    finish();
+                }
+            }, t -> {
+                Toast.makeText(context, context.getString(R.string.errorWeb), Toast.LENGTH_LONG).show();
+                Log.e(getClass().getSimpleName(), "onFailure", t);
+            }));
 
         binding.btnLogin.setClickable(true);
     }
@@ -152,7 +156,7 @@ public class LoginActivity extends BaseActivity {
     private CompositeDisposable disp = new CompositeDisposable();
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             super.onBackPressed();
             return true;

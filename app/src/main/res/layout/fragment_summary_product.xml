@@ -281,6 +281,8 @@
                     android:id="@+id/scores_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
                     tools:visibility="visible">
 
                     <LinearLayout
@@ -360,7 +362,7 @@
                     android:paddingTop="@dimen/spacing_tiny"
                     android:paddingBottom="@dimen/spacing_tiny"
                     android:visibility="gone"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <ImageView
                         android:id="@+id/product_question_icon"
@@ -465,7 +467,6 @@
                     android:id="@+id/cvProductDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_small"
                     android:layout_marginBottom="@dimen/spacing_small"
                     app:cardElevation="@dimen/card_elevation">
 

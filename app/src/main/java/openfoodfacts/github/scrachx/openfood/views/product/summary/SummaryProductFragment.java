@@ -28,14 +28,12 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -44,6 +42,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.lang.StringUtils;
@@ -113,6 +112,7 @@ import openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
 import static openfoodfacts.github.scrachx.openfood.AppFlavors.OFF;
 
 public class SummaryProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View {
@@ -192,9 +192,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //done here for android 4 compatibility.
-        //a better solution could be to use https://developer.android.com/jetpack/androidx/releases/ but weird issue with it..
-        binding.addNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
         photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
             URI resultUri = newPhotoFile.toURI();
             //the booleans are checked to determine if the picture uploaded was due to a prompt click
@@ -264,7 +261,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
 
         //checks the product states_tags to determine which prompt to be shown
-        refreshNutriscorePrompt();
+        refreshNutriScorePrompt();
 
         presenter.loadAllergens(null);
         presenter.loadCategories();
@@ -371,48 +368,46 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             final boolean inVolume = ProductUtils.isPerServingInLiter(product);
             binding.textNutrientTxt.setText(inVolume ? R.string.txtNutrientLevel100ml : R.string.txtNutrientLevel100g);
 
-            if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
+            if (fat != null || salt != null || saturatedFat != null || sugars != null) {
                 // prefetch the URL
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri));
                 customTabActivityHelper.mayLaunchUrl(nutritionScoreUri, null, null);
                 Context context = this.getContext();
 
-                if (nutriments != null) {
-                    binding.cvNutritionLights.setVisibility(VISIBLE);
-                    Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
-                    if (fat != null && fatNutriment != null) {
-                        String fatNutrimentLevel = fat.getLocalize(context);
-                        levelItem.add(new NutrientLevelItem(getString(R.string.txtFat),
-                            fatNutriment.getDisplayStringFor100g(),
-                            fatNutrimentLevel,
-                            fat.getImageLevel()));
-                    }
+                binding.cvNutritionLights.setVisibility(VISIBLE);
+                Nutriments.Nutriment fatNutriment = nutriments.get(Nutriments.FAT);
+                if (fat != null && fatNutriment != null) {
+                    String fatNutrimentLevel = fat.getLocalize(context);
+                    levelItem.add(new NutrientLevelItem(getString(R.string.txtFat),
+                        fatNutriment.getDisplayStringFor100g(),
+                        fatNutrimentLevel,
+                        fat.getImageLevel()));
+                }
 
-                    Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
-                    if (saturatedFat != null && saturatedFatNutriment != null) {
-                        String saturatedFatLocalize = saturatedFat.getLocalize(context);
-                        levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatNutriment.getDisplayStringFor100g(),
-                            saturatedFatLocalize,
-                            saturatedFat.getImageLevel()));
-                    }
+                Nutriments.Nutriment saturatedFatNutriment = nutriments.get(Nutriments.SATURATED_FAT);
+                if (saturatedFat != null && saturatedFatNutriment != null) {
+                    String saturatedFatLocalize = saturatedFat.getLocalize(context);
+                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatNutriment.getDisplayStringFor100g(),
+                        saturatedFatLocalize,
+                        saturatedFat.getImageLevel()));
+                }
 
-                    Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
-                    if (sugars != null && sugarsNutriment != null) {
-                        String sugarsLocalize = sugars.getLocalize(context);
-                        levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars),
-                            sugarsNutriment.getDisplayStringFor100g(),
-                            sugarsLocalize,
-                            sugars.getImageLevel()));
-                    }
+                Nutriments.Nutriment sugarsNutriment = nutriments.get(Nutriments.SUGARS);
+                if (sugars != null && sugarsNutriment != null) {
+                    String sugarsLocalize = sugars.getLocalize(context);
+                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSugars),
+                        sugarsNutriment.getDisplayStringFor100g(),
+                        sugarsLocalize,
+                        sugars.getImageLevel()));
+                }
 
-                    Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
-                    if (salt != null && saltNutriment != null) {
-                        String saltLocalize = salt.getLocalize(context);
-                        levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt),
-                            saltNutriment.getDisplayStringFor100g(),
-                            saltLocalize,
-                            salt.getImageLevel()));
-                    }
+                Nutriments.Nutriment saltNutriment = nutriments.get(Nutriments.SALT);
+                if (salt != null && saltNutriment != null) {
+                    String saltLocalize = salt.getLocalize(context);
+                    levelItem.add(new NutrientLevelItem(getString(R.string.txtSalt),
+                        saltNutriment.getDisplayStringFor100g(),
+                        saltLocalize,
+                        salt.getImageLevel()));
                 }
             } else {
                 binding.cvNutritionLights.setVisibility(GONE);
@@ -454,7 +449,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             binding.imageGrade.setVisibility(VISIBLE);
             binding.imageGrade.setImageDrawable(nutritionGradeResource);
             binding.imageGrade.setOnClickListener(view1 -> {
-                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+                CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
                 CustomTabActivityHelper.openCustomTab(SummaryProductFragment.this.requireActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         } else {
@@ -487,7 +482,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    private void refreshNutriscorePrompt() {
+    private void refreshNutriScorePrompt() {
         //checks the product states_tags to determine which prompt to be shown
         List<String> statesTags = product.getStatesTags();
         showCategoryPrompt = (statesTags.contains("en:categories-to-be-completed") &&
@@ -557,7 +552,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void showAllergens(List<AllergenName> allergens) {
+    public void showAllergens(@NonNull List<AllergenName> allergens) {
         final AllergenHelper.Data data = AllergenHelper.computeUserAllergen(product, allergens);
         if (data.isEmpty()) {
             return;
@@ -604,7 +599,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             productQuestion = null;
         }
         if (AppFlavors.isFlavors(OFF)) {
-            refreshNutriscorePrompt();
+            refreshNutriScorePrompt();
             refreshScoresLayout();
         }
     }
@@ -646,23 +641,22 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     public void sendProductInsights(String insightId, AnnotationAnswer annotation) {
-        if (!Utils.isUserLoggedIn(requireActivity())) {
+        if (Utils.isUserLoggedIn(requireActivity())) {
+            processInsight(insightId, annotation);
+        } else {
             new MaterialDialog.Builder(requireActivity())
                 .title(getString(R.string.sign_in_to_answer))
                 .positiveText(getString(R.string.sign_in_or_register))
                 .onPositive((dialog, which) ->
-                    registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                        result -> {
-                            if (result.getResultCode() == Activity.RESULT_OK) {
-                                dialog.dismiss();
-                                processInsight(insightId, annotation);
-                            }
-                        }).launch(new Intent(getActivity(), LoginActivity.class)))
+                    registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
+                        if (isLoggedIn) {
+                            dialog.dismiss();
+                            processInsight(insightId, annotation);
+                        }
+                    }).launch(null))
                 .neutralText(R.string.dialog_cancel)
                 .onNeutral((dialog, which) -> dialog.dismiss())
                 .show();
-        } else {
-            processInsight(insightId, annotation);
         }
     }
 
@@ -675,9 +669,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     public void showAnnotatedInsightToast(@NonNull AnnotationResponse response) {
         if (response.getStatus().equals("updated") && getActivity() != null) {
-            Toast toast = Toast.makeText(getActivity(), R.string.product_question_submit_message, Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER, 0, 500);
-            toast.setDuration(Toast.LENGTH_SHORT);
+            Snackbar toast = Snackbar.make(binding.getRoot(), R.string.product_question_submit_message, LENGTH_SHORT);
             toast.show();
         }
     }
@@ -687,7 +679,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
-    public void showLabels(List<LabelName> labels) {
+    public void showLabels(@NonNull List<LabelName> labels) {
         binding.labelsText.setText(Utils.bold(getString(R.string.txtLabels)));
         binding.labelsText.setClickable(true);
         binding.labelsText.setMovementMethod(LinkMovementMethod.getInstance());
@@ -834,7 +826,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     private void editProduct() {
-
         Intent intent = new Intent(getActivity(), AddProductActivity.class);
         intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
         startActivityForResult(intent, EDIT_REQUEST_CODE);
@@ -867,8 +858,8 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         addToListRecyclerView.setAdapter(addToListAdapter);
 
         // Add listener to text view
-        final TextView tvAddToList = dialogView.findViewById(R.id.tvAddToNewList);
-        tvAddToList.setOnClickListener(view -> {
+        final TextView addToNewList = dialogView.findViewById(R.id.tvAddToNewList);
+        addToNewList.setOnClickListener(view -> {
             Intent intent = new Intent(activity, ProductListsActivity.class);
             intent.putExtra("product", product);
             activity.startActivity(intent);

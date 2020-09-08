@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -172,6 +173,14 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.barcodeScanner.pause();
         binding.imageForScreenshotGenerationOnly.setVisibility(VISIBLE);
         setShownProduct(barcode);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        if (productDisp != null) {
+            productDisp.dispose();
+        }
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 
     /**
@@ -369,7 +378,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.callToActionImageProgress.setVisibility(VISIBLE);
         summaryProductPresenter = new SummaryProductPresenter(product, new SummaryProductPresenterView() {
             @Override
-            public void showAllergens(List<AllergenName> allergens) {
+            public void showAllergens(@NonNull List<AllergenName> allergens) {
                 final AllergenHelper.Data data = AllergenHelper.computeUserAllergen(product, allergens);
                 binding.callToActionImageProgress.setVisibility(GONE);
                 if (data.isEmpty()) {

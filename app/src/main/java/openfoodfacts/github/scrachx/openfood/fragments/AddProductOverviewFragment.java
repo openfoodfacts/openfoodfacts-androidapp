@@ -649,28 +649,38 @@ public class AddProductOverviewFragment extends BaseFragment {
             disp.add(client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(disposable -> binding.name.setText(getString(R.string.txtLoading)))
+                .doOnSubscribe(disposable -> {
+                    binding.name.setText(getString(R.string.txtLoading));
+                    binding.name.setActivated(false);
+                })
                 .subscribe(productState -> {
                     if (productState.getStatus() != 1) {
+                        Log.e(AddProductOverviewFragment.class.getSimpleName(),
+                            String.format("Retrieved product with code %s, but status was not successful.", productState.getCode()));
+                        binding.name.setText(StringUtils.EMPTY);
+                        binding.name.setActivated(true);
                         return;
                     }
                     if (productState.getProduct().getProductName(lang) != null) {
                         if (languageCode.equals(lang)) {
                             binding.name.setText(productState.getProduct().getProductName(lang));
+                            binding.name.setActivated(true);
                             if (activity instanceof AddProductActivity) {
                                 ((AddProductActivity) activity).setIngredients("set", productState.getProduct().getIngredientsText(lang));
                                 ((AddProductActivity) activity).updateLanguage();
                             }
                         }
                     } else {
-                        binding.name.setText(null);
+                        binding.name.setText(StringUtils.EMPTY);
+                        binding.name.setActivated(true);
                         if (activity instanceof AddProductActivity) {
                             ((AddProductActivity) activity).setIngredients("set", null);
                         }
                     }
                 }, e -> {
-                    Log.w("addProductOverview", "Error retrieving product state from server api.", e);
-                    binding.name.setText(null);
+                    Log.e(AddProductOverviewFragment.class.getSimpleName(), "Error retrieving product state from server api.", e);
+                    binding.name.setText(StringUtils.EMPTY);
+                    binding.name.setActivated(true);
                 }));
         }
     }

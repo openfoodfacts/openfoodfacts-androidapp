@@ -385,10 +385,10 @@
     <string name="txtSaturatedFat">Tyydyttynyt rasva</string>
     <string name="nutriscore_info_msg">Lisätietoja Nutri-Scoresta</string>
     <string name="nova_info_msg">Lisätietoja Novasta</string>
-    <string name="nova_grp1_msg">Ryhmä 1 - Jalostamattomat tai vähän jalostetut elintarvikkeet</string>
-    <string name="nova_grp2_msg">Ryhmä 2 - Jalostetut ruoka-aineosat</string>
+    <string name="nova_grp1_msg">Ryhmä 1 - Jalostamattomat tai vähän jalostetut ruoat</string>
+    <string name="nova_grp2_msg">Ryhmä 2 - Jalostetut ruoanvalmistusaineet</string>
     <string name="nova_grp3_msg">Ryhmä 3 - Jalostetut elintarvikkeet</string>
-    <string name="nova_grp4_msg">Ryhmä 4 - Ultrajalostetut elintarvikkeet</string>
+    <string name="nova_grp4_msg">Ryhmä 4 - Ultrajalostetut ruoka- ja juomatuotteet</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">Pikakuvake ei käytettävissä.</string>
     <string name="scan_shortcut_short_label">Lue</string>
@@ -796,5 +796,5 @@
     <string name="brand_hint">Esimerkkejä: CocaCola, Nestle jne…</string>
     <string name="sign_in_or_register">Kirjaudu sisään tai rekisteröidy</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts on avoin tietokanta, joka sisältää yli %1$s elintarviketta (plus ne jotka lisäät).</string>
 </resources>

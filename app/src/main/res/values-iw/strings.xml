@@ -808,5 +808,5 @@
     <string name="brand_hint">דוגמאות: קוקה קולה, נסטלה וכו׳…</string>
     <string name="sign_in_or_register">כניסה או הרשמה</string>
     <string name="hunger_game_call_to_action">סיוג בסיווג של עוד %1$s</string>
-    <string name="txtHomeOnline">מסד הנתונים הפתוח Open Food Facts מכיל למעלה מ־%1$s מוצרי מזון (בלי אלו שעוד יתווספו על ידיך).</string>
+    <string name="txtHomeOnline">Open Food Facts הוא מסד נתונים פתוח המכיל למעלה מ־%1$s מוצרי מזון (כולל אלו שתרמת) עם רכיבים, חומרים מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תוויות המוצרים.</string>
 </resources>

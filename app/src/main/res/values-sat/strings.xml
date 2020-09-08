@@ -20,22 +20,22 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d ᱴᱤᱡ ᱢᱟᱲᱟᱝ</item>
-        <item quantity="other">%d ᱴᱤᱡ ᱠᱚ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="one">%d second ago</item>
+        <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d ᱴᱤᱯᱤᱡ ᱢᱟᱲᱟᱝ</item>
-        <item quantity="other">%d ᱴᱤᱯᱤᱡ ᱠᱚ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d ᱴᱚᱲᱟᱝ ᱢᱟᱲᱟᱝ</item>
-        <item quantity="other">%d ᱴᱚᱲᱟᱝᱠᱚ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d ᱫᱤᱱ ᱢᱟᱲᱟᱝ</item>
-        <item quantity="other">%d ᱫᱤᱱᱠᱚ ᱢᱟᱲᱟᱝ</item>
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
-    <string name="action_about">ᱵᱟᱵᱚᱛ</string>
+    <string name="action_about">About</string>
     <string name="action_discover">Discover</string>
     <string name="contribute">ᱚᱠᱟᱞᱠᱟᱛᱮ ᱮᱱᱮᱢᱟ</string>
     <string name="action_find">ᱯᱟᱱᱛᱮ</string>
@@ -178,13 +178,13 @@
     <string name="txtNutritionLevelLow">in low quantity</string>
     <string name="txtNutritionLevelModerate">in moderate quantity</string>
     <string name="txtNutritionLevelHigh">in high quantity</string>
-    <string name="txtSave">ᱥᱟᱸᱪᱟᱣ</string>
+    <string name="txtSave">Save</string>
     <string name="txtSignIn">Sign in</string>
     <string name="txtToastSaved">ᱵᱮᱵᱦᱟᱨᱤᱭᱟᱹ ᱥᱟᱸᱪᱟᱣ</string>
-    <string name="txtSalt">ᱵᱩᱞᱩᱢ</string>
+    <string name="txtSalt">Salt</string>
     <string name="txtFat">Fat</string>
     <string name="txtSugars">Sugars</string>
-    <string name="hintBarcode">ᱵᱟᱨᱠᱳᱰ</string>
+    <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Username</string>
     <string name="hintPass">Password</string>
@@ -194,9 +194,9 @@
     <string name="txtInfoLoginOk">ᱵᱮᱵᱦᱟᱨᱤᱭᱟᱹ ᱥᱟᱸᱪᱟᱣ</string>
     <string name="txtInfoLoginNo">User not saved</string>
     <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
-    <string name="txtYes">ᱴᱷᱤᱠ</string>
-    <string name="txtNo">ᱵᱟᱝ</string>
-    <string name="hintBrand">ᱪᱷᱟᱯ</string>
+    <string name="txtYes">Yes</string>
+    <string name="txtNo">No</string>
+    <string name="hintBrand">Brand</string>
     <string name="txtSendAll">Upload all</string>
     <string name="txtPictureNeededDialogNo">Discard</string>
     <string name="toastSending">Uploading…</string>
@@ -215,10 +215,10 @@
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">ᱥᱮᱸᱫᱽᱨᱟ</string>
     <string name="search_by_barcode_drawer">ᱵᱟᱨᱠᱳᱰ ᱴᱟᱭᱤᱯ ᱢᱮ</string>
-    <string name="category_drawer">ᱦᱟᱹᱴᱤᱧᱠᱚ</string>
-    <string name="search_by_category">ᱦᱟᱹᱴᱤᱧ</string>
+    <string name="category_drawer">Categories</string>
+    <string name="search_by_category">Category</string>
     <string name="scan_search">ᱵᱟᱨᱠᱳᱰ ᱥᱠᱟᱱ ᱢᱮ</string>
-    <string name="user_drawer">ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ</string>
+    <string name="user_drawer">User</string>
     <string name="offline_edit_drawer">ᱚᱯᱷᱞᱟᱭᱤᱱ ᱥᱟᱯᱲᱟᱣ</string>
     <string name="txt_anonymous">ᱵᱟᱝ ᱵᱟᱰᱟᱭ</string>
     <string name="delete_txt">ᱢᱮᱴᱟᱣ</string>
