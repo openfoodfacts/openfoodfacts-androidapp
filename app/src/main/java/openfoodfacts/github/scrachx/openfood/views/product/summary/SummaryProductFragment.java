@@ -185,6 +185,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     @Override
+    public void onRefresh() {
+        refreshView(productState);
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //done here for android 4 compatibility.
@@ -236,7 +241,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             return;
         }
 
-        super.refreshView(productState);
         this.productState = productState;
         product = productState.getProduct();
         presenter = new SummaryProductPresenter(product, this);
@@ -428,6 +432,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         //to be sure that top of the product view is visible at start
         binding.textNameProduct.requestFocus();
         binding.textNameProduct.clearFocus();
+
+        //Set refreshing animation to false after all processing is done
+        super.refreshView(productState);
     }
 
     private void refreshScoresLayout() {
