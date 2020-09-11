@@ -504,6 +504,13 @@ public class Utils {
         isUploadJobInitialised = true;
     }
 
+        if (Build.VERSION.SDK_INT == 24) {
+            ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                    .tlsVersions(TlsVersion.TLS_1_2)
+                    .cipherSuites(CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                    .build();
+            }
+    
     public static OkHttpClient httpClientBuilder() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
             .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
@@ -518,7 +525,7 @@ public class Utils {
         }
         return builder.build();
     }
-
+    
     public static boolean isUserLoggedIn(@NonNull Context context) {
         final SharedPreferences settings = context.getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
