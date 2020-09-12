@@ -750,7 +750,7 @@
     <string name="ingredient_analysis_tip">Clique nos ícones abaixo para saber mais sobre o produto e selecionar em quais informações está interessado.</string>
     <string name="got_it">Entendido!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
+    <string name="ingredient_image_edit_tip">Toque na imagem para ampliá-la, alterá-la, cortá-la, girá-la e mais…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
@@ -791,10 +791,10 @@
     <string name="content_exit">Pressione aqui para retornar ao produto</string>
     <string name="icon_label">Ícone de rótulos</string>
     <string name="icon_categories">Ícone de categorias</string>
-    <string name="icon_emb">Traceability code icon</string>
+    <string name="icon_emb">Ícone de código de rastreabilidade</string>
     <string name="product_front_image">Imagem frontal do produto</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="brand_hint">Exemplos: Coca-Cola, Nestlé, etc…</string>
+    <string name="sign_in_or_register">Entrar ou registrar-se</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>
