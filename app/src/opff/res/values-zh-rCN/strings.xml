@@ -36,12 +36,12 @@
     <string name="tagline">free pet food products database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Pet Food Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">帮助分类产品</string>
     <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_category_prompt_text">添加类别以帮助完成产品</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">我的产品</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
