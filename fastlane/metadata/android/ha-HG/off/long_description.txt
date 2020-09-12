@@ -21,7 +21,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
--budedden Abinci wani nau'in abune wanda aka tarashi a ma'aji don kowa, saboda kowa.
+- Open Food Facts is a food products database made by everyone, for everyone.
 -zaka iya amfani dashi wajen inganta zaben abinci, saboda budedden ma'aji ne, kowa zai iya amfani dashi domin kowani bukata.
 -Budedden Abinci abu ne wanda yake bana kudi ba wanda dubunan mutane suka shirya shi kyauta a duniya baki daya. Munada da yawan abubuwan burgewa wanda zaka iya bada gudumuwa ga kowa ta hanyoyi da yawa.
 - You can start contributing today by adding a product from your fridge.
