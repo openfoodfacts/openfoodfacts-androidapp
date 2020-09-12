@@ -1,4 +1,4 @@
-„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.
+Open Products Facts is an open database of all products in the world.
 
 ★★★ Beitrag zur Transparenz von Produkten ★★★
 
