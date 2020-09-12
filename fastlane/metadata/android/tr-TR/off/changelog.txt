@@ -6,7 +6,7 @@ Open Food Facts'in yeni yerli versiyonu. Bütün Open Food Facts gönüllüleri,
 ==================
 Ne yenilikler var?
 ==================
-1. 1. 360 resmini elde ettiniz: beslenme, bileşenler ve tüm gıda unsurları, düzgün ve açık bir şekilde sunuldu.
+1. 1. 1. 360 resmini elde ettiniz: beslenme, bileşenler ve tüm gıda unsurları, düzgün ve açık bir şekilde sunuldu.
 2. Dünyadaki tüm ürünler için "NutriScore" beslenme puanını al. Ürünleri kolayca karşılaştır. Beslenme tablolarını deşifre etmekten daha kolay.
 3. Vikipedi'den ekstra bilgi edin. Daha fazla bilgi edinmek ve benzer ürünleri görmek için bir gıda kategorisine, katkı maddesine… tıkla.
 4. Alerjen uyarıları ayarlayabilirsin (her zaman gerçek etiketi iki kere kontrol et ama!)
