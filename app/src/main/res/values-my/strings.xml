@@ -202,7 +202,7 @@
     <string name="txtBarcodeRequire">ဘားကုဒ္လိုအပ္သည္</string>
     <string name="txtOk">အိုကေ</string>
     <string name="txtBarcodeNotValid">ဘားကုဒ္မမွန္ကန္ပါ</string>
-    <string name="msg_share">Open Food Fact မွာဒီထုတ္ကုန္ကို ၾကည့္မည္ -</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">အေကာင့္ျပဳလုပ္မည္</string>
     <string name="home_drawer">ပင္မစာမ်က္ႏွာ</string>
     <string name="install">Install</string>
