@@ -317,7 +317,7 @@
     <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">ಯಾವುದೇ ಹೊಂದಿಕೆಯಾಗುವ ಉತ್ಪನ್ನಗಳನ್ನು ನಾವು ಕಂಡುಕೊಂಡಿಲ್ಲ. \ N ನೀವು ಪ್ರಯತ್ನಿಸಬಹುದು:</string>
-    <string name="txt_broaden_search">- ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸುವುದು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಿರಿ</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">ಕ್ಷಮಿಸಿ, ಏನೋ ತಪ್ಪಾಗಿದೆ…</string>
     <string name="txt_try_again">ಮರು ಯತ್ನಿಸಿ</string>
     <string name="nutrition_lactose">ಲ್ಯಾಕ್ಟೋಸ್</string>
