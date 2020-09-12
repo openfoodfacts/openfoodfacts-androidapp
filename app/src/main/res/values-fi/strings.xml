@@ -516,7 +516,7 @@
     <string name="notify_content">Napsauta nähdäksesi viedyt tuotteet</string>
     <string name="notification_channel_name">Vie ilmoitukset</string>
     <string name="notify_channel_description">Ilmoitus viedyn tiedoston sijainnin näyttämiseksi</string>
-    <string name="products_to_be_completed">Tuotteet, jotka kaipaavat täydentämistä</string>
+    <string name="products_to_be_completed">Täydennettävät tuotteet</string>
     <string name="offline_notification_title">Offline-lisäyksesi, jotka täytyy lähettää</string>
     <string name="creator_history">Tuotteen lisäsi %1$s, %2$s kello %3$s CET</string>
     <string name="last_editor_history">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
