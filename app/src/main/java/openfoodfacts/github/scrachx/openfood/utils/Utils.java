@@ -33,6 +33,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.Environment;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -77,6 +78,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -98,6 +100,10 @@ import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static okhttp3.CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256;
+import static okhttp3.ConnectionSpec.COMPATIBLE_TLS;
+import static okhttp3.ConnectionSpec.MODERN_TLS;
+import static okhttp3.TlsVersion.TLS_1_2;
 
 public class Utils {
     public static final int CONNECTION_TIMEOUT = 5000;
@@ -251,7 +257,6 @@ public class Utils {
         }
     }
 
-    
     /**
      * Returns the Nutri-Score graphic asset given the grade
      */
@@ -335,7 +340,7 @@ public class Utils {
         }
         return result;
     }
-    
+
     /**
      * Returns the NOVA group graphic asset given the group
      */
@@ -504,12 +509,25 @@ public class Utils {
         isUploadJobInitialised = true;
     }
 
+    @NonNull
     public static OkHttpClient httpClientBuilder() {
+
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
             .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
             .readTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
-            .writeTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
-            .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS));
+            .writeTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS);
+
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N) {
+            // Fix for https://github.com/openfoodfacts/openfoodfacts-androidapp/pull/3519/files
+            builder.connectionSpecs(Collections.singletonList(
+                new ConnectionSpec.Builder(MODERN_TLS)
+                    .tlsVersions(TLS_1_2)
+                    .cipherSuites(TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+                    .build())
+            );
+        } else {
+            builder.connectionSpecs(Arrays.asList(MODERN_TLS, COMPATIBLE_TLS));
+        }
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
