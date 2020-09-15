@@ -173,7 +173,7 @@
     <string name="txtBarcode">Kod kreskowy :</string>
     <string name="txtCategories">Kategorie :</string>
     <string name="txtLabels">Etykiety, certyfikaty, nagrody :</string>
-    <string name="txtEMB">Traceability codes:</string>
+    <string name="txtEMB">Kody identyfikacyjne:</string>
     <string name="txtIngredients">Lista składników :</string>
     <string name="Donate">Podaruj</string>
     <string name="Donation">Kliknij tu, by przekazać darowiznę na rzecz Open Food Facts</string>
@@ -408,7 +408,7 @@
     <string name="history_shortcut_short_label">Historia</string>
     <string name="history_shortcut_long_label">Historia</string>
     <string name="contributions_shortcut_short_label">Wkład</string>
-    <string name="contributions_shortcut_long_label">My contributions</string>
+    <string name="contributions_shortcut_long_label">Mój wkład</string>
     <string name="forgot_password">Zapomniałeś hasła</string>
     <string name="next">DALEJ</string>
     <string name="skip">POMIŃ</string>
@@ -624,7 +624,7 @@
     <string name="manufacturing_details">Szczegóły produkcji</string>
     <string name="origin_of_ingredients">Pochodzenie składników</string>
     <string name="manufacturing_place">Miejsce produkcji</string>
-    <string name="emb_code">Traceability Code</string>
+    <string name="emb_code">Kody identyfikacyjne</string>
     <string name="purchasing_details">Szczegóły zakupu</string>
     <string name="country_where_purchased">Kraj, w którym kupiono</string>
     <string name="stores">Sklepy</string>
@@ -806,7 +806,7 @@
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Obraz z przodu produktu</string>
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="sign_in_or_register">Zaloguj się lub zarejestruj</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>
