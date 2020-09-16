@@ -290,8 +290,8 @@
     <string name="nutrition_carbohydrate">Węglowodany</string>
     <string name="nutrition_cholesterol">Cholesterol</string>
     <string name="nutrition_energy">Energia</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy_kcal">Wartość energetyczna w kaloriach (kcal)</string>
+    <string name="nutrition_energy_kj">Wartość energetyczna w dżulach (kJ)</string>
     <string name="nutrition_energy_short_name">Energia</string>
     <string name="nutrition_fat">Tłuszcz</string>
     <string name="nutrition_fiber">Błonnik</string>
