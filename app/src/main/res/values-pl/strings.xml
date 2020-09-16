@@ -605,7 +605,7 @@
     <string name="traces">Ślady</string>
     <string name="traces_hint">Wskaż składniki z wzmianek pokroju \'Może zawierać śladowe ilości\', \'Wyprodukowano w fabryce które również stosuje\' itd. \nPrzykłady: Mleko, Gluten, Orzechy</string>
     <string name="nutrition_facts_not_specified">Nie podano wartości odżywczych dla tego produktu.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
+    <string name="nutrition_facts_picture">Zdjęcie danych żywieniowych</string>
     <string name="front_short_picture">Z przodu</string>
     <string name="other_picture">Inne zdjęcie</string>
     <string name="for_100g_100ml">W 100 g / 100 ml</string>
