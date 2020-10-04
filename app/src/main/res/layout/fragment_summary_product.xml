@@ -647,7 +647,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/spacing_normal"
-                    android:text="@string/take_more_pictures"
+                    android:text="@string/take_extra_packaging_pictures"
                     app:drawableLeftCompat="@drawable/ic_add_a_photo_blue_18dp"
                     app:drawableStartCompat="@drawable/ic_add_a_photo_blue_18dp" />
 
