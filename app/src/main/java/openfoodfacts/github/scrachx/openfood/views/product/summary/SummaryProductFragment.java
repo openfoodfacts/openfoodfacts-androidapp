@@ -218,6 +218,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         });
 
         binding.imageViewFront.setOnClickListener(v -> openFrontImageFullscreen());
+        binding.buttonNewFrontImage.setOnClickListener(v -> newFrontImage());
         binding.buttonMorePictures.setOnClickListener(v -> takeMorePicture());
         binding.actionAddToListButton.setOnClickListener(v -> onBookmarkProductButtonClick());
         binding.actionEditButton.setOnClickListener(v -> onEditProductButtonClick());
