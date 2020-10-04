@@ -241,7 +241,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             .load(photoFile)
             .fit()
             .into(binding.imageViewFront);
-        binding.imageViewFront.invalidate();
     }
 
     @Override
