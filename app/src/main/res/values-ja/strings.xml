@@ -654,7 +654,7 @@
     <string name="legend_adi">一日の摂取許容量 (ADI) を超える</string>
     <string name="max_energy_val_msg">この値は 100g 当たり 2000 kcal を超えています。修正できますか?</string>
     <string name="max_nutrient_val_msg">入力された値が一食分量あたりの値を超えています</string>
-    <string name="send_updated_image">更新された画像を送信</string>
+    <string name="update_image">更新された画像を送信</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">原材料を抽出</string>
     <string name="add_nutrient_prompt_text">栄養成分を追加してニュートリスコアを計算する</string>

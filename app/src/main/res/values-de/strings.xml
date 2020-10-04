@@ -660,7 +660,7 @@
     <string name="legend_adi">über der zulässigen täglichen Aufnahme (ADI)</string>
     <string name="max_energy_val_msg">Dieser Wert liegt über 2.000 kcal pro 100g. Können Sie dies berichtigen?</string>
     <string name="max_nutrient_val_msg">Der eingegebene Wert ist höher als pro Portionsgröße angegeben.</string>
-    <string name="send_updated_image">Senden Sie ein aktualisiertes Bild</string>
+    <string name="update_image">Senden Sie ein aktualisiertes Bild</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Zutaten extrahieren</string>
     <string name="add_nutrient_prompt_text">Nährwertangaben hinzufügen, um den Nutri-Wert zu berechnen</string>

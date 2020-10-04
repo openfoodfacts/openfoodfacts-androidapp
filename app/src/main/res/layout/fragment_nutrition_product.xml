@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/spacing_normal"
-                    android:text="@string/send_updated_image"
+                    android:text="@string/update_image"
                     android:visibility="gone" />
 
                 <TextView

@@ -671,7 +671,7 @@
     <string name="legend_adi">מעל לכמות היומית המומלצת (ADI)</string>
     <string name="max_energy_val_msg">ערך זה הוא מעל 2000 קק״ל ל־100 גרם. אפשר לבקש ממך לתקן זאת?</string>
     <string name="max_nutrient_val_msg">הערך שהוקלד גבוה מגודל למנה</string>
-    <string name="send_updated_image">שליחת תמונה מעודכנת</string>
+    <string name="update_image">שליחת תמונה מעודכנת</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">חילוץ רכיבים</string>
     <string name="add_nutrient_prompt_text">יש להוסיף מפרט תזונתי כדי לחשב Nutri-Score</string>

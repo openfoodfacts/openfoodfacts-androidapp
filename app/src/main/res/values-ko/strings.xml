@@ -654,7 +654,7 @@
     <string name="legend_adi">일일 섭취허용량 (ADI)</string>
     <string name="max_energy_val_msg">이 값은 100g 당 2000kcal 이상입니다. 맞습니까?</string>
     <string name="max_nutrient_val_msg">입력한 값이 1인분당 지정된 값보다 큽니다.</string>
-    <string name="send_updated_image">업데이트된 이미지 보내기</string>
+    <string name="update_image">업데이트된 이미지 보내기</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">성분 추출</string>
     <string name="add_nutrient_prompt_text">영양 성분을 추가하여 Nutri-Score 계산</string>

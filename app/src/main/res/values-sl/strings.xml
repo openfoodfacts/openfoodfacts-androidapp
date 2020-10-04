@@ -672,7 +672,7 @@
     <string name="legend_adi">nad sprejemljivim dnevnim vnosom (ADI)</string>
     <string name="max_energy_val_msg">Vrednost je nad 2000 kcal na 100 g. Ali lahko to popravite?</string>
     <string name="max_nutrient_val_msg">Vnesena vrednost je večja od velikosti obroka</string>
-    <string name="send_updated_image">Pošlji posodobljeno sliko</string>
+    <string name="update_image">Pošlji posodobljeno sliko</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Preberi sestavine</string>
     <string name="add_nutrient_prompt_text">Dodajte prehranska dejstva za izračun Nutri-Score</string>

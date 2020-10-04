@@ -655,7 +655,7 @@
     <string name="legend_adi">高于每日允许摄入量（ADI）</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="send_updated_image">发送更新的图像</string>
+    <string name="update_image">发送更新的图像</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">提取成分</string>
     <string name="add_nutrient_prompt_text">添加营养成分以计算Nutri-Score</string>

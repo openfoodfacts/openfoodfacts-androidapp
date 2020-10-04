@@ -660,7 +660,7 @@
     <string name="legend_adi">au-dessus de la dose journalière admissible (DJA)</string>
     <string name="max_energy_val_msg">Cette valeur est supérieure à 2000 kcal pour 100g. Pouvez-vous corriger cela?</string>
     <string name="max_nutrient_val_msg">La valeur entrée est plus que donnée par portion</string>
-    <string name="send_updated_image">Envoyer une image mise à jour</string>
+    <string name="update_image">Envoyer une image mise à jour</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>

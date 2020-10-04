@@ -660,7 +660,7 @@
     <string name="legend_adi">over Acceptabelt Dagligt Indtag (ADI)</string>
     <string name="max_energy_val_msg">Denne værdi er over 2000 kcal pr. 100 g. Kan du rette det?</string>
     <string name="max_nutrient_val_msg">Indtastet værdi er mere end angivet pr. serveringsstørrelse</string>
-    <string name="send_updated_image">Send et opdateret billede</string>
+    <string name="update_image">Send et opdateret billede</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>

@@ -660,7 +660,7 @@
     <string name="legend_adi">Kabul Edilebilir Günlük Alım Miktarının (ADI) üzerinde</string>
     <string name="max_energy_val_msg">Bu değer 100 g için 2000 kcal\'nin üzerinde. Düzeltebilir misin?</string>
     <string name="max_nutrient_val_msg">Girilen değer, bir porsiyon için belirtilenden daha fazla</string>
-    <string name="send_updated_image">Güncellenmiş Bir Resim Gönder</string>
+    <string name="update_image">Güncellenmiş Bir Resim Gönder</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">İçindekileri çıkartın</string>
     <string name="add_nutrient_prompt_text">Nutri-Score hesaplamak için besin değerlerini ekleyin</string>

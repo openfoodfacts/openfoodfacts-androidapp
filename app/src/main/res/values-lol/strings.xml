@@ -660,7 +660,7 @@
     <string name="legend_adi">crwdns150510:0crwdne150510:0</string>
     <string name="max_energy_val_msg">crwdns150512:0crwdne150512:0</string>
     <string name="max_nutrient_val_msg">crwdns150514:0crwdne150514:0</string>
-    <string name="send_updated_image">crwdns150516:0crwdne150516:0</string>
+    <string name="update_image">crwdns150516:0crwdne150516:0</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">crwdns150518:0crwdne150518:0</string>
     <string name="add_nutrient_prompt_text">crwdns150520:0crwdne150520:0</string>

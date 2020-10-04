@@ -660,7 +660,7 @@
     <string name="legend_adi">acceptable డైలీ తీసుకోవడం పైన (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
     <string name="max_nutrient_val_msg">అందించిన విలువ కంటే ఇవ్వబడిన విలువ ఎక్కువ</string>
-    <string name="send_updated_image">అప్డేట్ ఇమేజ్ పంపండి</string>
+    <string name="update_image">అప్డేట్ ఇమేజ్ పంపండి</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="add_nutrient_prompt_text">Nutri- స్కోరును లెక్కించడానికి పోషకాహార వాస్తవాలను జోడించండి</string>

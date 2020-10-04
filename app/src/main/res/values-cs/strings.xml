@@ -672,7 +672,7 @@
     <string name="legend_adi">větší dávka, než akceptovatelný denní příjem (ADI)</string>
     <string name="max_energy_val_msg">Hodnota je vyšší než 2000 kcal na 100 g. Můžete ji opravit?</string>
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="send_updated_image">Přidat aktuální snímek</string>
+    <string name="update_image">Přidat aktuální snímek</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Aut. rozpoznat složení</string>
     <string name="add_nutrient_prompt_text">Doplnit výživové údaje pro výpočet Nutri-Score</string>

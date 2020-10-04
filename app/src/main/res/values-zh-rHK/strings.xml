@@ -654,7 +654,7 @@
     <string name="legend_adi">超出每日可容忍攝入量</string>
     <string name="max_energy_val_msg">此數值高於每100克2000千卡，您可以更改數值嗎？</string>
     <string name="max_nutrient_val_msg">輸入的數值大於食用分量</string>
-    <string name="send_updated_image">發送新圖片</string>
+    <string name="update_image">發送新圖片</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">摘錄成分</string>
     <string name="add_nutrient_prompt_text">加入營養標籤後才能算出Nutri-Score</string>
