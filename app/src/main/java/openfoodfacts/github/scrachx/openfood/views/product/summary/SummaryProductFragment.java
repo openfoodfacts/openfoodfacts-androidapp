@@ -904,6 +904,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private void loadPhoto(File photoFile) {
         ProductImage image = new ProductImage(barcode, ProductImageField.FRONT, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
+        showImageProgress();
         disp.add(client.postImg(image).subscribeWith(new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
