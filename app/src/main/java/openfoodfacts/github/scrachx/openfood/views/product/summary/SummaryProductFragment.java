@@ -201,7 +201,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             } else {
                 ProductImage image = new ProductImage(barcode, ProductImageField.OTHER, newPhotoFile);
                 image.setFilePath(resultUri.getPath());
-                showOtherImageProgress();
+                showImageProgress();
 
                 disp.add(client.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableCompletableObserver() {
                     @Override
@@ -960,7 +960,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding = null;
     }
 
-    public void showOtherImageProgress() {
+    public void showImageProgress() {
         binding.uploadingImageProgress.setVisibility(VISIBLE);
         binding.uploadingImageProgressText.setVisibility(VISIBLE);
         binding.uploadingImageProgressText.setText(R.string.toastSending);
