@@ -672,7 +672,7 @@
     <string name="legend_adi">выше допустимой дневной нормы (ADI)</string>
     <string name="max_energy_val_msg">Это значение выше 2000 ккал на 100 г. Вы можете его исправить?</string>
     <string name="max_nutrient_val_msg">Введенное значение больше указанного на порцию</string>
-    <string name="update_image">Отправить обновленное изображение</string>
+    <string name="send_updated_image">Отправить обновленное изображение</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
     <string name="add_nutrient_prompt_text">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>

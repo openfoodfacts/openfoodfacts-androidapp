@@ -660,7 +660,7 @@
     <string name="legend_adi">boven acceptabele dagelijkse inname (ADI)</string>
     <string name="max_energy_val_msg">Deze waarde is boven 2000 kcal per 100g. Kun je het corrigeren?</string>
     <string name="max_nutrient_val_msg">De ingevoerde waarde is groter dan opgegeven per portie</string>
-    <string name="update_image">Stuur een bijgewerkte afbeelding</string>
+    <string name="send_updated_image">Stuur een bijgewerkte afbeelding</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Herken de ingrediënten</string>
     <string name="add_nutrient_prompt_text">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>

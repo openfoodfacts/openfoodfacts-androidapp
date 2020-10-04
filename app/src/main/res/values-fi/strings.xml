@@ -660,7 +660,7 @@
     <string name="legend_adi">enemmän kuin hyväksyttävä päiväsaanti (ADI)</string>
     <string name="max_energy_val_msg">Tämä arvo on yli 2000 kcal / 100 g. Voitko korjata sen?</string>
     <string name="max_nutrient_val_msg">Annettu arvo on korkeampi kuin annoskokoa kohti annettu</string>
-    <string name="update_image">Lähetä päivitetty kuva</string>
+    <string name="send_updated_image">Lähetä päivitetty kuva</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Poimi ainesosat</string>
     <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Scoren laskemiseksi</string>

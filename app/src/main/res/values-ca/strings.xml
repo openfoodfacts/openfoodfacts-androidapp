@@ -660,7 +660,7 @@
     <string name="legend_adi">per sobre de la Ingesta Diària Acceptable (IDA)</string>
     <string name="max_energy_val_msg">Aquest valor és superior a 2000 kcal per 100 g. El podeu corregir?</string>
     <string name="max_nutrient_val_msg">El valor introduït és superior a l\'indicat per la mida de la porció</string>
-    <string name="update_image">Envieu una imatge actualitzada</string>
+    <string name="send_updated_image">Envieu una imatge actualitzada</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extreu els ingredients</string>
     <string name="add_nutrient_prompt_text">Afegiu informació nutricional per calcular el Nutri-Score</string>

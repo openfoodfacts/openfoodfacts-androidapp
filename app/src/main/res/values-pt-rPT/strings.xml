@@ -660,7 +660,7 @@
     <string name="legend_adi">acima de ingestão diária aceitável (ADI)</string>
     <string name="max_energy_val_msg">Este valor está acima de 2000 kcal por 100g. Você pode corrigi-lo?</string>
     <string name="max_nutrient_val_msg">O valor inserido é mais do que determinado por tamanho da porção</string>
-    <string name="update_image">Enviar uma imagem atualizada</string>
+    <string name="send_updated_image">Enviar uma imagem atualizada</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extrair ingredientes</string>
     <string name="add_nutrient_prompt_text">Adicione fatos nutricionais para calcular o Nutri-Score</string>

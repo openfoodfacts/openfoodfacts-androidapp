@@ -660,7 +660,7 @@
     <string name="legend_adi">above Acceptable Daily Intake (ADI)</string>
     <string name="max_energy_val_msg">This value is above 2000 kcal per 100g. Can you correct it ?</string>
     <string name="max_nutrient_val_msg">Value entered is more than given per serving size</string>
-    <string name="update_image">Send an Updated Image</string>
+    <string name="send_updated_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extrahera ingredienser</string>
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>

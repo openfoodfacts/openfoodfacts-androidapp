@@ -68,7 +68,7 @@
                     android:layout_height="32dp"
                     android:layout_marginLeft="@dimen/padding_large"
                     android:layout_marginRight="@dimen/padding_large"
-                    android:text="@string/update_image"
+                    android:text="@string/send_updated_image"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@id/btnAddImageNutritionFacts"
                     app:layout_constraintStart_toEndOf="@id/btnAddImageNutritionFacts"

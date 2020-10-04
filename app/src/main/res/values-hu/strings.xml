@@ -661,7 +661,7 @@
     <string name="legend_adi">Ajánlott Napi Bevitel (ADI) felett</string>
     <string name="max_energy_val_msg">Az érték 2000 kcal/100g felett van. Ki tudod javítani?</string>
     <string name="max_nutrient_val_msg">A megadott érték nagyobb, mint egy adag mérete</string>
-    <string name="update_image">Frissített kép küldése</string>
+    <string name="send_updated_image">Frissített kép küldése</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Összetevők kiolvasása</string>
     <string name="add_nutrient_prompt_text">Adjon hozzá tápérték adatokat a Nutri-Score kiszámításához</string>
