@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Callback;
+import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
 import org.apache.commons.lang.StringUtils;
@@ -32,8 +33,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     private static final int VIEW_ITEM = 1;
     private static final int VIEW_LOAD = 0;
     private Context context;
-    private final List<Product> products;
     private final boolean isLowBatteryMode;
+    private final List<Product> products;
 
     public ProductsRecyclerViewAdapter(List<Product> items, boolean isLowBatteryMode) {
         this.products = items;
@@ -76,8 +77,9 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
 
         // Load Image if isLowBatteryMode is false
         if (!isLowBatteryMode) {
-            Picasso.get()
-                .load(imageSmallUrl)
+            new Picasso.Builder(context)
+                .downloader(new OkHttp3Downloader(Utils.httpClientBuilder()))
+                .build().load(imageSmallUrl)
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.error_image)
                 .fit()
