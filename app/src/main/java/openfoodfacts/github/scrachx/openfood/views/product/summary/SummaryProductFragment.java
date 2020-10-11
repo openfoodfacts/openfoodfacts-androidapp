@@ -220,7 +220,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         refreshView(productState);
     }
 
-    private void uploadImage(ProductImage image) {
+    /**
+     * Starts uploading image to backend
+     * @param image image to upload
+     */
+    private void uploadImage(@NonNull ProductImage image) {
         showImageProgress();
         disp.add(client.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableCompletableObserver() {
             @Override
@@ -234,7 +238,11 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }));
     }
 
-    private void loadPhoto(File photoFile) {
+    /**
+     * Sets photo as current front image and displays it
+     * @param photoFile file to set
+     */
+    private void loadPhoto(@NonNull File photoFile) {
         binding.addPhotoLabel.setVisibility(GONE);
         mUrlImage = photoFile.getAbsolutePath();
         Picasso.get()
