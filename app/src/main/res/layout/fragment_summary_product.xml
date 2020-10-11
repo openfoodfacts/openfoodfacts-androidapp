@@ -257,6 +257,7 @@
                         android:layout_height="wrap_content"
                         app:arrowAlignment="start"
                         app:arrowMarginStart="0dp"
+                        app:shouldDisplayImmediately="true"
                         app:identifier="ingredient_analysis_tip_box"
                         app:message="@string/ingredient_analysis_tip" />
 
@@ -280,13 +281,15 @@
                     android:id="@+id/scores_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
                     tools:visibility="visible">
 
                     <LinearLayout
                         android:id="@+id/grades_wrapper"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="bottom|center_horizontal"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -303,7 +306,7 @@
                             android:focusable="true"
                             android:maxHeight="90dp"
                             android:scaleType="fitCenter"
-                            tools:src="@drawable/nnc_a"
+                            tools:src="@drawable/ic_nutriscore_a"
                             tools:visibility="visible" />
 
                         <ImageView
@@ -314,6 +317,7 @@
                             android:layout_marginEnd="8dp"
                             android:adjustViewBounds="true"
                             android:maxHeight="80dp"
+                            android:padding="5dp"
                             android:scaleType="fitCenter"
                             tools:src="@drawable/ic_nova_group_1"
                             tools:visibility="visible" />
@@ -358,7 +362,7 @@
                     android:paddingTop="@dimen/spacing_tiny"
                     android:paddingBottom="@dimen/spacing_tiny"
                     android:visibility="gone"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <ImageView
                         android:id="@+id/product_question_icon"
@@ -463,7 +467,6 @@
                     android:id="@+id/cvProductDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_small"
                     android:layout_marginBottom="@dimen/spacing_small"
                     app:cardElevation="@dimen/card_elevation">
 

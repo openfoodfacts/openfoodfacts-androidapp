@@ -1,5 +1,29 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.network;
 
+import androidx.annotation.NonNull;
+
+import org.jetbrains.annotations.Contract;
+
+/**
+ * This class lists all fields, field prefixes and suffixes and default values used by the api.
+ * We discourage the use of string literals through the code and we recommend creating a field here so that it can be updated on API change.
+ */
 public final class ApiFields {
     private ApiFields() {
     }
@@ -30,6 +54,9 @@ public final class ApiFields {
         public static final String NUTRITION_DATA_PER_100G = "100g";
         public static final String NUTRITION_DATA_PER_SERVING = "serving";
         public static final String DEBUG_BARCODE = "1";
+        public static final String DEFAULT_TAXO_PREFIX = "en";
+        public static final String DEFAULT_LANGUAGE = "en";
+        public static final String STATUS_NOT_OK = "status not ok";
 
         private Defaults() {
 
@@ -60,13 +87,8 @@ public final class ApiFields {
         public static final String ADD_BRANDS = "add_brands";
         public static final String BRANDS = "brands";
         public static final String LC = "lc";
-        public static final String ADD_PACKAGING = "add_packaging";
-        public static final String ADD_CATEGORIES = "add_categories";
-        public static final String ADD_LABELS = "add_labels";
         public static final String PERIODS_AFTER_OPENING = "periods_after_opening";
-        public static final String ADD_ORIGINS = "add_origins";
-        public static final String ADD_MANUFACTURING_PLACE = "add_manufacturing_places";
-        public static final String ADD_EMB_CODE = "add_emb_codes";
+        public static final String EMB_CODES = "emb_codes";
         public static final String LINK = "link";
         public static final String ADD_PURCHASE = "add_purchase_places";
         public static final String ADD_STORES = "add_stores";
@@ -125,17 +147,28 @@ public final class ApiFields {
         public static final String USER_ID = "user_id";
         public static final String USER_PASS = "password";
         public static final String USER_COMMENT = "comment";
+        public static final String PACKAGING = "packaging";
+        public static final String CATEGORIES = "categories";
+        public static final String LABELS = "labels";
+        public static final String ORIGINS = "origins";
+        public static final String COUNTRIES = "countries";
+        public static final String STORES = "stores";
+        public static final String STATUS = "status";
+        public static final String NUTRITION_GRADE = "nutrition_grades_tags";
 
         private Keys() {
 
         }
 
-        public static String lcProductNameKey(String lang) {
+        @NonNull
+        @Contract(pure = true)
+        public static String lcProductNameKey(final String lang) {
             return Prefix.PRODUCT_NAME + lang;
         }
 
-        // START OF INGREDIENTS KEYS
-        public static String lcIngredientsKey(String lang) {
+        @NonNull
+        @Contract(pure = true)
+        public static String lcIngredientsKey(final String lang) {
             return Prefix.INGREDIENTS_TEXT + lang;
         }
     }

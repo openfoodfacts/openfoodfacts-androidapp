@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016-2020 Open Food Facts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.ProgressDialog;
@@ -37,36 +53,32 @@ import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductListsAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
 
 public class ProductListsActivity extends BaseActivity implements SwipeControllerActions {
     private static final int ACTIVITY_CHOOSE_FILE = 123;
-    private ActivityProductListsBinding binding;
     private ProductListsAdapter adapter;
+    private ActivityProductListsBinding binding;
+    private CompositeDisposable disp = new CompositeDisposable();
     private List<ProductLists> productLists;
     private ProductListsDao productListsDao;
-    private CompositeDisposable disp = new CompositeDisposable();
 
-    public static Intent getIntent(@NonNull Context context) {
-        return new Intent(context, ProductListsActivity.class);
+    public static void start(Context context) {
+        Intent starter = new Intent(context, ProductListsActivity.class);
+        context.startActivity(starter);
     }
 
-    @Override
-    protected void onDestroy() {
-        disp.dispose();
-        super.onDestroy();
-    }
-
-    public static ProductListsDao getProductListsDaoWithDefaultList(Context context) {
+    @NonNull
+    public static ProductListsDao getProductListsDaoWithDefaultList(@NonNull Context context) {
         ProductListsDao productListsDao = Utils.getDaoSession().getProductListsDao();
         if (productListsDao.loadAll().isEmpty()) {
             ProductLists eatenList = new ProductLists(context.getString(R.string.txt_eaten_products), 0);
@@ -78,6 +90,12 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     }
 
     @Override
+    protected void onDestroy() {
+        disp.dispose();
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityProductListsBinding.inflate(getLayoutInflater());
@@ -86,8 +104,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         setTitle(R.string.your_lists);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
-        binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.plus_blue, 0, 0, 0);
+        CommonBottomListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
+        binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0);
 
         productListsDao = getProductListsDaoWithDefaultList(this);
         productLists = productListsDao.loadAll();
@@ -163,8 +181,6 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
 
     /**
      * Check if listname already in products lists.
-     *
-     * @param listName
      */
     private boolean checkListNameExist(String listName) {
         for (ProductLists productList : productLists) {
@@ -226,7 +242,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     @Override
     public void onResume() {
         super.onResume();
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists);
     }
 
     private void parseCSV(InputStream inputStream) {

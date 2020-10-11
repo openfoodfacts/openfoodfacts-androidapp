@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns="">
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
     <string name="website">https://world-he.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-he.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts הוא מסד נתונים פתוח המכיל למעלה מ־%1$d מוצרי טיפוח (כולל אלו שתרמת) עם רכיבים, אלרגנים, תסמינים וכל שביב מידע שניתן למצוא על תווית המוצר.</string>
+    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Beauty Facts הוא מסד נתונים של מוצרי קוסמטיקה עם רכיבים, אלרגנים, תסמינים וכל שביב מידע שניתן למצוא על תווית המוצר.</string>
     <string name="slide_1_title">תרומה לשקיפות קוסמטית</string>
     <string name="slide_1_desc">ניתן לסרוק מוצרים, לצלם אותם ולהפוך את השקיפות הקוסמטית למציאות</string>
@@ -28,7 +28,7 @@
     <string name="translate_help_title">סיוע בתרגום Open Beauty Facts</string>
     <string name="translate_help_summary">הנגשת מסד הנתונים של Open Beauty Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Beauty Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
-    <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Beauty Facts. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Beauty Facts. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <!-- OBF tagline in different languages -->
     <string name="version_string">יישומון ה־Android של Open Beauty Facts</string>
     <string name="tagline">מסד נתוני הקוסמטיקה החופשי</string>

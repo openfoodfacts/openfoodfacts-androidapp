@@ -2,39 +2,31 @@ package openfoodfacts.github.scrachx.openfood.test;
 
 import android.app.Activity;
 import android.content.Intent;
-import androidx.test.InstrumentationRegistry;
-import androidx.test.rule.ActivityTestRule;
 import android.util.Log;
-import junit.framework.Assert;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.PrefManager;
+
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.rule.ActivityTestRule;
+
 import org.apache.commons.lang.StringUtils;
+import org.junit.Assert;
 
 import java.util.function.Consumer;
 
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.PrefManager;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+
 public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTestRule<T> {
     public static final int MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY = 5000;
-    String name;
     private Intent activityIntent;
+    private Consumer<ScreenshotActivityTestRule<T>> afterActivityLaunchedAction;
+    private Consumer<ScreenshotActivityTestRule<T>> beforeActivityStartedAction;
+    private boolean firstTimeLaunched = false;
+    private String name;
     private ScreenshotParameter screenshotParameter;
-    Consumer<ScreenshotActivityTestRule> afterActivityLaunchedAction;
-    Consumer<ScreenshotActivityTestRule> beforeActivityStartedAction;
 
     public ScreenshotActivityTestRule(Class<T> activityClass) {
         this(activityClass, activityClass.getSimpleName(), null);
-    }
-
-    public void setBeforeActivityStartedAction(Consumer<ScreenshotActivityTestRule> beforeActivityStartedAction) {
-        this.beforeActivityStartedAction = beforeActivityStartedAction;
-    }
-
-    public ScreenshotParameter getScreenshotParameter() {
-        return screenshotParameter;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public ScreenshotActivityTestRule(Class<T> activityClass, String name) {
@@ -51,19 +43,21 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         this.activityIntent = intent;
     }
 
+    public void setBeforeActivityStartedAction(Consumer<ScreenshotActivityTestRule<T>> beforeActivityStartedAction) {
+        this.beforeActivityStartedAction = beforeActivityStartedAction;
+    }
+
+    public ScreenshotParameter getScreenshotParameter() {
+        return screenshotParameter;
+    }
+
     public void setScreenshotParameter(ScreenshotParameter screenshotParameter) {
         this.screenshotParameter = screenshotParameter;
     }
 
-    public void setAfterActivityLaunchedAction(Consumer<ScreenshotActivityTestRule> afterActivityLaunchedAction) {
+    public void setAfterActivityLaunchedAction(Consumer<ScreenshotActivityTestRule<T>> afterActivityLaunchedAction) {
         this.afterActivityLaunchedAction = afterActivityLaunchedAction;
     }
-
-    public void setActivityIntent(Intent activityIntent) {
-        this.activityIntent = activityIntent;
-    }
-
-    private boolean firstTimeLaunched = false;
 
     public void setFirstTimeLaunched(boolean firstTimeLaunched) {
         this.firstTimeLaunched = firstTimeLaunched;
@@ -74,7 +68,7 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         try {
             runOnUiThread(() -> {
                 new PrefManager(OFFApplication.getInstance()).setFirstTimeLaunch(firstTimeLaunched);
-                LocaleHelper.setLocale(InstrumentationRegistry.getInstrumentation().getTargetContext(),screenshotParameter.getLocale());
+                LocaleHelper.setLocale(InstrumentationRegistry.getInstrumentation().getTargetContext(), screenshotParameter.getLocale());
             });
         } catch (Throwable throwable) {
             throwable.printStackTrace();
@@ -88,16 +82,11 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
     @Override
     protected void afterActivityLaunched() {
         try {
-
             if (afterActivityLaunchedAction != null) {
                 afterActivityLaunchedAction.accept(this);
-                Thread.sleep(MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY);
-                InstrumentationRegistry.getInstrumentation().waitForIdleSync();
             }
-            else{
-                Thread.sleep(MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY);
-                InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-            }
+            Thread.sleep(MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY);
+            InstrumentationRegistry.getInstrumentation().waitForIdleSync();
             takeScreenshot();
             this.finishActivity();
         } catch (Throwable throwable) {
@@ -119,7 +108,15 @@ public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTest
         return activityIntent;
     }
 
+    public void setActivityIntent(Intent activityIntent) {
+        this.activityIntent = activityIntent;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

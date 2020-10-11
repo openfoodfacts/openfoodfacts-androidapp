@@ -17,7 +17,6 @@
 package openfoodfacts.github.scrachx.openfood.fragments;
 
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -36,7 +35,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
@@ -49,16 +47,11 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.fasterxml.jackson.core.type.TypeReference;
-
-import net.steamcrafted.loadtoast.LoadToast;
 
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
 import org.greenrobot.greendao.query.WhereCondition;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -73,22 +66,19 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagName;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.utils.INavigationItem;
-import openfoodfacts.github.scrachx.openfood.utils.JsonUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType;
+import openfoodfacts.github.scrachx.openfood.utils.PreferencesUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static androidx.work.WorkInfo.State.RUNNING;
@@ -98,14 +88,23 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
  * A class for creating all the ListPreference
  */
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem, SharedPreferences.OnSharedPreferenceChangeListener {
-    private AdditiveDao mAdditiveDao;
-    private NavigationDrawerListener navigationDrawerListener;
-    private static final String ADDITIVE_IMPORT_TAG = "ADDITIVE_IMPORT";
-    private Context context;
+    @NonNull
+    public static final String LOGIN_PREF = "login";
     private CompositeDisposable disp = new CompositeDisposable();
+    private NavigationDrawerListener navigationDrawerListener;
+
+    @NonNull
+    public static PreferencesFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        PreferencesFragment fragment = new PreferencesFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, @NonNull MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         MenuItem item = menu.findItem(R.id.action_search);
         item.setVisible(false);
     }
@@ -114,14 +113,11 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
     public void onCreatePreferences(Bundle bundle, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
         setHasOptionsMenu(true);
-        context = requireContext();
+        final FragmentActivity activity = requireActivity();
 
-        ListPreference languagePreference = findPreference("Locale.Helper.Selected.Language");
+        SharedPreferences settings = activity.getSharedPreferences("prefs", 0);
 
-        SharedPreferences settings = getActivity().getSharedPreferences("prefs", 0);
-        mAdditiveDao = Utils.getDaoSession().getAdditiveDao();
-
-        String[] localeValues = getActivity().getResources().getStringArray(R.array.languages_array);
+        String[] localeValues = activity.getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
         List<String> finalLocalValues = new ArrayList<>();
         List<String> finalLocalLabels = new ArrayList<>();
@@ -136,24 +132,24 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             }
         }
 
+        ListPreference languagePreference = requirePreference("Locale.Helper.Selected.Language");
+
         languagePreference.setEntries(finalLocalLabels.toArray(new String[0]));
         languagePreference.setEntryValues(finalLocalValues.toArray(new String[0]));
 
         languagePreference.setOnPreferenceChangeListener((preference, locale) -> {
-
-            FragmentActivity activity = PreferencesFragment.this.getActivity();
             Configuration configuration = activity.getResources().getConfiguration();
             Toast.makeText(getContext(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
-                getAdditives();
+                activity.recreate();
             }
             return true;
         });
 
-        findPreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
-            new MaterialDialog.Builder(context)
+        requirePreference("deleteSearchHistoryPreference").setOnPreferenceClickListener(preference -> {
+            new MaterialDialog.Builder(activity)
                 .content(R.string.search_history_pref_dialog_content)
                 .positiveText(R.string.delete_txt)
                 .onPositive((dialog, which) -> {
@@ -162,15 +158,13 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                     suggestions.clearHistory();
                 })
                 .neutralText(R.string.dialog_cancel)
-                .onNeutral((dialog, which) -> {
-                    dialog.dismiss();
-                })
+                .onNeutral((dialog, which) -> dialog.dismiss())
                 .show();
 
             return true;
         });
 
-        ListPreference countryPreference = findPreference(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY);
+        ListPreference countryPreference = requirePreference(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY);
         List<String> countryLabels = new ArrayList<>();
         List<String> countryTags = new ArrayList<>();
 
@@ -205,8 +199,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         }));
 
-        Preference contactButton = findPreference("contact_team");
-        contactButton.setOnPreferenceClickListener(preference -> {
+        requirePreference("contact_team").setOnPreferenceClickListener(preference -> {
 
             Intent contactIntent = new Intent(Intent.ACTION_SENDTO);
             contactIntent.setData(Uri.parse(getString(R.string.off_mail)));
@@ -219,22 +212,22 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        Preference rateus = findPreference("RateUs");
+        Preference rateus = requirePreference("RateUs");
         rateus.setOnPreferenceClickListener(preference -> {
             try {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + context.getPackageName())));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.getPackageName())));
             } catch (ActivityNotFoundException e) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName())));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + activity.getPackageName())));
             }
             return true;
         });
 
-        findPreference("FAQ").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.faq_url));
-        findPreference("Terms").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.terms_url));
-        findPreference("local_translate_help").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.translate_url));
+        requirePreference("FAQ").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.faq_url));
+        requirePreference("Terms").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.terms_url));
+        requirePreference("local_translate_help").setOnPreferenceClickListener(preference -> openWebCustomTab(R.string.translate_url));
 
-        ListPreference energyUnitPreference = findPreference("energyUnitPreference");
-        String[] energyUnits = getActivity().getResources().getStringArray(R.array.energy_units);
+        ListPreference energyUnitPreference = requirePreference("energyUnitPreference");
+        String[] energyUnits = requireActivity().getResources().getStringArray(R.array.energy_units);
         energyUnitPreference.setEntries(energyUnits);
         energyUnitPreference.setEntryValues(energyUnits);
         energyUnitPreference.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -243,8 +236,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        ListPreference volumeUnitPreference = findPreference("volumeUnitPreference");
-        String[] volumeUnits = getActivity().getResources().getStringArray(R.array.volume_units);
+        ListPreference volumeUnitPreference = requirePreference("volumeUnitPreference");
+        String[] volumeUnits = requireActivity().getResources().getStringArray(R.array.volume_units);
         volumeUnitPreference.setEntries(volumeUnits);
         volumeUnitPreference.setEntryValues(volumeUnits);
         volumeUnitPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
@@ -253,8 +246,8 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         }));
 
-        ListPreference imageUploadPref = findPreference("ImageUpload");
-        String[] values = getActivity().getResources().getStringArray(R.array.upload_image);
+        ListPreference imageUploadPref = requirePreference("ImageUpload");
+        String[] values = requireActivity().getResources().getStringArray(R.array.upload_image);
         imageUploadPref.setEntries(values);
         imageUploadPref.setEntryValues(values);
         imageUploadPref.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -263,29 +256,32 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return true;
         });
 
-        CheckBoxPreference photoPreference = findPreference("photoMode");
-        if (Utils.isFlavor(AppFlavors.OPF)) {
-            photoPreference.setVisible(false);
+        if (AppFlavors.isFlavors(AppFlavors.OPF)) {
+            requirePreference("photoMode").setVisible(false);
         }
 
         // Preference to show version name
-        Preference versionPref = findPreference("Version");
+        Preference versionPref = requirePreference("Version");
         versionPref.setEnabled(false);
         try {
-            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            PackageInfo pInfo = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0);
             String version = pInfo.versionName;
             versionPref.setSummary(getString(R.string.version_string) + " " + version);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(PreferencesFragment.class.getSimpleName(), "onCreatePreferences", e);
         }
 
-        if (AppFlavors.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
             getAnalysisTagConfigs(daoSession);
         } else {
             PreferenceScreen preferenceScreen = getPreferenceScreen();
-            PreferenceCategory displayCategory = preferenceScreen.findPreference("display_category");
-            preferenceScreen.removePreference(displayCategory);
+            preferenceScreen.removePreference(PreferencesUtils.requirePreference(preferenceScreen, "display_category"));
         }
+    }
+
+    @NonNull
+    private <T extends Preference> T requirePreference(@NonNull String key) {
+        return PreferencesUtils.requirePreference(this, key);
     }
 
     private void buildDisplayCategory(List<AnalysisTagConfig> configs) {
@@ -294,8 +290,12 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
         }
         PreferenceScreen preferenceScreen = getPreferenceScreen();
         PreferenceCategory displayCategory = preferenceScreen.findPreference("display_category");
+        if (displayCategory == null) {
+            throw new IllegalStateException("Display category preference does not exist.");
+        }
         displayCategory.removeAll();
         preferenceScreen.addPreference(displayCategory);
+
         // If analysis tag is empty show "Load ingredient detection data" option in order to manually reload taxonomies
         if (configs == null || configs.isEmpty()) {
             Preference preference = new Preference(preferenceScreen.getContext());
@@ -344,7 +344,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
 
     private boolean openWebCustomTab(int faqUrl) {
         CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
-        customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + getContext().getPackageName()));
+        customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + requireContext().getPackageName()));
         CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(faqUrl)), new WebViewFallback());
         return true;
     }
@@ -427,40 +427,5 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
             return analysisTagConfigs;
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::buildDisplayCategory));
-    }
-
-    private void getAdditives() {
-        final LoadToast lt = new LoadToast(requireActivity());
-
-        lt.setText(requireActivity().getString(R.string.toast_retrieving));
-        lt.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.blue));
-        lt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
-        lt.show();
-
-        disp.add(Single.fromCallable(() -> {
-            final FragmentActivity activity = getActivity();
-            if (activity == null) {
-                return true;
-            }
-            boolean result = true;
-            String additivesFile = "additives_" + LocaleHelper.getLanguage(activity) + ".json";
-            try (InputStream is = activity.getAssets().open(additivesFile)) {
-                List<Additive> frenchAdditives = JsonUtils.readFor(new TypeReference<List<Additive>>() {
-                })
-                    .readValue(is);
-                mAdditiveDao.insertOrReplaceInTx(frenchAdditives);
-            } catch (IOException e) {
-                result = false;
-                Log.e(ADDITIVE_IMPORT_TAG, "Unable to import additives from " + additivesFile, e);
-            }
-            return result;
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(aBoolean -> {
-                lt.hide();
-                final FragmentActivity activity = getActivity();
-                if (activity != null) {
-                    activity.recreate();
-                }
-            }));
     }
 }

@@ -25,6 +25,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -55,13 +58,13 @@ import openfoodfacts.github.scrachx.openfood.fragments.AddProductOverviewFragmen
 import openfoodfacts.github.scrachx.openfood.fragments.AddProductPhotosFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.ToUploadProduct;
-import openfoodfacts.github.scrachx.openfood.models.ToUploadProductDao;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
@@ -72,20 +75,25 @@ import openfoodfacts.github.scrachx.openfood.views.adapters.ProductFragmentPager
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable;
 
 public class AddProductActivity extends AppCompatActivity {
+    public static final String KEY_PERFORM_OCR = "perform_ocr";
+    public static final String KEY_SEND_UPDATED = "send_updated";
     private static final String LOGGER_TAG = AddProductActivity.class.getSimpleName();
     public static final String MODIFY_NUTRITION_PROMPT = "modify_nutrition_prompt";
     public static final String MODIFY_CATEGORY_PROMPT = "modify_category_prompt";
     public static final String KEY_EDIT_PRODUCT = "edit_product";
     public static final String KEY_IS_EDITING = "is_edition";
     public static final String KEY_EDIT_OFFLINE_PRODUCT = "edit_offline_product";
+    public static final String KEY_STATE = "state";
     private AddProductIngredientsFragment addProductIngredientsFragment = new AddProductIngredientsFragment();
     private AddProductNutritionFactsFragment addProductNutritionFactsFragment = new AddProductNutritionFactsFragment();
     private AddProductOverviewFragment addProductOverviewFragment = new AddProductOverviewFragment();
     private AddProductPhotosFragment addProductPhotosFragment = new AddProductPhotosFragment();
-    private ActivityAddProductBinding binding;
     @Inject
-    ProductsAPI client;
+    ProductsAPI api;
+    private ActivityAddProductBinding binding;
     private CompositeDisposable disp = new CompositeDisposable();
+    private boolean editingMode;
+    private Bundle fragmentsBundle = new Bundle();
     private boolean imageFrontUploaded;
     private boolean imageIngredientsUploaded;
     private boolean imageNutritionFactsUploaded;
@@ -94,8 +102,6 @@ public class AddProductActivity extends AppCompatActivity {
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product mProduct;
     private ToUploadProductDao mToUploadProductDao;
-    private Bundle fragmentsBundle = new Bundle();
-    private boolean editingMode;
     private OfflineSavedProduct offlineSavedProduct;
     private final Map<String, String> productDetails = new HashMap<>();
 
@@ -149,19 +155,24 @@ public class AddProductActivity extends AppCompatActivity {
         return queryMap;
     }
 
-    private void selectPage(int position) {
-        switch (position) {
-            case 0:
-            default:
-                updateTimelineIndicator(1, 0, 0);
-                break;
-            case 1:
-                updateTimelineIndicator(2, 1, 0);
-                break;
-            case 2:
-                updateTimelineIndicator(2, 2, 1);
-                break;
+    public static void start(Context context, @Nullable ProductState state) {
+        start(context, state, false, false);
+    }
+
+    public static void start(Context context, @Nullable ProductState state, boolean sendUpdated, boolean performOcr) {
+        Intent starter = new Intent(context, AddProductActivity.class);
+        starter.putExtra(KEY_STATE, state);
+        if (sendUpdated) {
+            starter.putExtra(KEY_SEND_UPDATED, true);
         }
+        if (performOcr) {
+            starter.putExtra(KEY_PERFORM_OCR, true);
+        }
+        context.startActivity(starter);
+    }
+
+    private static boolean isNutritionDataAvailable() {
+        return AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OPFF);
     }
 
     /**
@@ -203,12 +214,23 @@ public class AddProductActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private static boolean isNutritionDataAvailable() {
-        return AppFlavors.isFlavor(AppFlavors.OFF, AppFlavors.OPFF);
-    }
-
     public Map<String, String> getInitialValues() {
         return initialValues;
+    }
+
+    private void selectPage(int position) {
+        switch (position) {
+            case 1:
+                updateTimelineIndicator(2, 1, 0);
+                break;
+            case 2:
+                updateTimelineIndicator(2, 2, 1);
+                break;
+            case 0:
+            default:
+                updateTimelineIndicator(1, 0, 0);
+                break;
+        }
     }
 
     @Override
@@ -238,20 +260,20 @@ public class AddProductActivity extends AppCompatActivity {
         }
         mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
-        final State state = (State) getIntent().getSerializableExtra("state");
+        final ProductState productState = (ProductState) getIntent().getSerializableExtra(KEY_STATE);
         offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra(KEY_EDIT_OFFLINE_PRODUCT);
         Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
 
-        if (getIntent().getBooleanExtra("perform_ocr", false)) {
-            fragmentsBundle.putBoolean("perform_ocr", true);
+        if (getIntent().getBooleanExtra(KEY_PERFORM_OCR, false)) {
+            fragmentsBundle.putBoolean(KEY_PERFORM_OCR, true);
         }
 
-        if (getIntent().getBooleanExtra("send_updated", false)) {
-            fragmentsBundle.putBoolean("send_updated", true);
+        if (getIntent().getBooleanExtra(KEY_SEND_UPDATED, false)) {
+            fragmentsBundle.putBoolean(KEY_SEND_UPDATED, true);
         }
 
-        if (state != null) {
-            mProduct = state.getProduct();
+        if (productState != null) {
+            mProduct = productState.getProduct();
             // Search if the barcode already exists in the OfflineSavedProducts db
             offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(mProduct.getCode());
         }
@@ -272,7 +294,7 @@ public class AddProductActivity extends AppCompatActivity {
             imageIngredientsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED));
             imageNutritionFactsUploaded = "true".equals(offlineSavedProduct.getProductDetailsMap().get(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED));
         }
-        if (state == null && offlineSavedProduct == null && mEditProduct == null) {
+        if (productState == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show();
             finish();
         }
@@ -304,7 +326,7 @@ public class AddProductActivity extends AppCompatActivity {
         if (isNutritionDataAvailable()) {
             addProductNutritionFactsFragment.setArguments(fragmentsBundle);
             adapterResult.addFragment(addProductNutritionFactsFragment, "Nutrition Facts");
-        } else if (AppFlavors.isFlavor(AppFlavors.OBF, AppFlavors.OPF)) {
+        } else if (AppFlavors.isFlavors(AppFlavors.OBF, AppFlavors.OPF)) {
             binding.textNutritionFactsIndicator.setText(R.string.photos);
             addProductPhotosFragment.setArguments(fragmentsBundle);
             adapterResult.addFragment(addProductPhotosFragment, "Photos");
@@ -313,6 +335,7 @@ public class AddProductActivity extends AppCompatActivity {
         viewPager.setAdapter(adapterResult);
     }
 
+    @NonNull
     private RequestBody createTextPlain(String code) {
         return RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code);
     }
@@ -387,9 +410,7 @@ public class AddProductActivity extends AppCompatActivity {
 
         Utils.hideKeyboard(this);
 
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
-
+        setResult(RESULT_OK);
         finish();
     }
 
@@ -469,7 +490,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void savePhoto(Map<String, RequestBody> imgMap, ProductImage image, int position, boolean ocr) {
-        client.saveImageSingle(imgMap)
+        api.saveImageSingle(imgMap)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(disposable -> showImageProgress(position))
             .subscribe(new SingleObserver<JsonNode>() {
@@ -531,7 +552,7 @@ public class AddProductActivity extends AppCompatActivity {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("imgid", imgid);
         queryMap.put("id", imagefield);
-        client.editImageSingle(image.getBarcode(), queryMap)
+        api.editImageSingle(image.getBarcode(), queryMap)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(new SingleObserver<JsonNode>() {
                 @Override
@@ -564,7 +585,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     public void performOCR(String code, String imageField) {
-        disp.add(client.getIngredients(code, imageField)
+        disp.add(api.getIngredients(code, imageField)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe(disposable -> addProductIngredientsFragment.showOCRProgress())
             .subscribe(jsonNode -> {
@@ -642,5 +663,37 @@ public class AddProductActivity extends AppCompatActivity {
 
     public void setIngredients(String status, String ingredients) {
         addProductIngredientsFragment.setIngredients(status, ingredients);
+    }
+
+    public static class EditProductPerformOCR extends ActivityResultContract<Product, Boolean> {
+        @NonNull
+        @Override
+        public Intent createIntent(@NonNull Context context, Product product) {
+            Intent intent = new Intent(context, AddProductActivity.class);
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
+            intent.putExtra(KEY_PERFORM_OCR, true);
+            return intent;
+        }
+
+        @Override
+        public Boolean parseResult(int resultCode, @Nullable Intent intent) {
+            return resultCode == RESULT_OK;
+        }
+    }
+
+    public static class EditProductSendUpdatedImg extends ActivityResultContract<Product, Boolean> {
+        @NonNull
+        @Override
+        public Intent createIntent(@NonNull Context context, Product product) {
+            Intent intent = new Intent(context, AddProductActivity.class);
+            intent.putExtra(KEY_SEND_UPDATED, true);
+            intent.putExtra(AddProductActivity.KEY_EDIT_PRODUCT, product);
+            return intent;
+        }
+
+        @Override
+        public Boolean parseResult(int resultCode, @Nullable Intent intent) {
+            return resultCode == RESULT_OK;
+        }
     }
 }

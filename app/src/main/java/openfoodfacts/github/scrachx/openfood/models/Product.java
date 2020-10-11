@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -25,6 +27,7 @@ import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.images.ImageSize;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
@@ -38,33 +41,33 @@ class ProductStringConverter extends StdConverter<String, String> {
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
+    private final Map<String, Object> additionalProperties = new HashMap<>();
     @JsonProperty(ApiFields.Keys.ADDITIVES_TAGS)
     private final List<String> additivesTags = new ArrayList<>();
+    private String allergens;
     @JsonProperty(ApiFields.Keys.ALLERGENS_HIERARCHY)
     private final List<String> allergensHierarchy = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.ALLERGENS_TAGS)
     private List<String> allergensTags;
     @JsonProperty(ApiFields.Keys.AMINO_ACIDS_TAGS)
     private List<String> aminoAcidTags = new ArrayList<>();
+    private String brands;
     @JsonProperty(ApiFields.Keys.BRANDS_TAGS)
     private final List<String> brandsTags = new ArrayList<>();
-    private String url;
-    private String code;
-    private final Map<String, Object> additionalProperties = new HashMap<>();
     @JsonProperty(ApiFields.Keys.CATEGORIES_TAGS)
     private List<String> categoriesTags;
     @JsonProperty(ApiFields.Keys.CITIES_TAGS)
     private final List<Object> citiesTags = new ArrayList<>();
+    private String code;
     @JsonProperty(ApiFields.Keys.CONSERVATION_CONDITIONS)
     private String conservationConditions;
+    private String countries;
     @JsonProperty(ApiFields.Keys.COUNTRIES_TAGS)
     private List<String> countriesTags;
-    private Nutriments nutriments;
     @JsonProperty(ApiFields.Keys.CREATED_DATE_TIME)
     private String createdDateTime;
     @JsonProperty(ApiFields.Keys.CREATOR)
     private String creator;
-    private String traces;
     @JsonProperty(ApiFields.Keys.CUSTOMER_SERVICE)
     private String customerService;
     @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
@@ -82,18 +85,12 @@ public class Product implements Serializable {
     private String imageFrontUrl;
     @JsonProperty(ApiFields.Keys.IMAGE_INGREDIENTS_URL)
     private String imageIngredientsUrl;
-    private String allergens;
-    private String origins;
-    private String stores;
     @JsonProperty(ApiFields.Keys.IMAGE_NUTRITION_URL)
     private String imageNutritionUrl;
     @JsonProperty(ApiFields.Keys.IMAGE_SMALL_URL)
     private String imageSmallUrl;
-    private String countries;
     @JsonProperty(ApiFields.Keys.IMAGE_URL)
     private String imageUrl;
-    private String brands;
-    private String packaging;
     @JsonProperty(ApiFields.Keys.INGREDIENTS)
     private final List<LinkedHashMap<String, String>> ingredients = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.INGREDIENTS_ANALYSIS_TAGS)
@@ -120,7 +117,7 @@ public class Product implements Serializable {
     @JsonProperty(ApiFields.Keys.LAST_MODIFIED_TIME)
     private String lastModifiedTime;
     @JsonProperty(ApiFields.Keys.LINK)
-    private String manufactureUrl;
+    private String manufacturerUrl;
     @JsonProperty(ApiFields.Keys.MANUFACTURING_PLACES)
     private String manufacturingPlaces;
     @JsonProperty(ApiFields.Keys.MINERALS_TAGS)
@@ -131,14 +128,17 @@ public class Product implements Serializable {
     private String novaGroups;
     @JsonProperty(ApiFields.Keys.NUTRIENT_LEVELS)
     private NutrientLevels nutrientLevels;
+    private Nutriments nutriments;
     @JsonProperty(ApiFields.Keys.NUTRITION_DATA_PER)
     private String nutritionDataPer;
     @JsonProperty(ApiFields.Keys.NUTRITION_GRADE_FR)
     private String nutritionGradeFr;
+    private String origins;
     @JsonProperty(ApiFields.Keys.OTHER_INFORMATION)
     private String otherInformation;
     @JsonProperty(ApiFields.Keys.OTHER_NUTRITIONAL_SUBSTANCES_TAGS)
     private List<String> otherNutritionTags = new ArrayList<>();
+    private String packaging;
     @JsonProperty(ApiFields.Keys.PRODUCT_NAME)
     @JsonDeserialize(converter = ProductStringConverter.class)
     private String productName;
@@ -154,8 +154,11 @@ public class Product implements Serializable {
     private String servingSize;
     @JsonProperty(ApiFields.Keys.STATES_TAGS)
     private final List<String> statesTags = new ArrayList<>();
+    private String stores;
+    private String traces;
     @JsonProperty(ApiFields.Keys.TRACES_TAGS)
     private final List<String> tracesTags = new ArrayList<>();
+    private String url;
     @JsonProperty(ApiFields.Keys.VITAMINS_TAGS)
     private List<String> vitaminTags = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.WARNING)
@@ -169,15 +172,6 @@ public class Product implements Serializable {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
-
-    public String getProductName(String languageCode) {
-        String result = getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getProductName();
-        }
     }
 
     public boolean hasProductNameIn(String languageCode) {
@@ -194,7 +188,7 @@ public class Product implements Serializable {
     }
 
     public String getIngredientsText(String languageCode) {
-        String result = getFieldForLanguage("ingredients_text", languageCode);
+        String result = getFieldForLanguage(ApiFields.Keys.INGREDIENTS_TEXT, languageCode);
         if (result != null) {
             return result;
         } else {
@@ -223,7 +217,7 @@ public class Product implements Serializable {
     @Nullable
     private String getFieldForLanguage(@NonNull String field, @NonNull String languageCode) {
         // First try the passed language
-        if (!languageCode.equals("en") && additionalProperties.get(field + "_" + languageCode) != null
+        if (!ApiFields.Defaults.DEFAULT_LANGUAGE.equals(languageCode) && additionalProperties.get(field + "_" + languageCode) != null
             && isNotBlank(additionalProperties.get(field + "_" + languageCode).toString())) {
             return additionalProperties.get(field + "_" + languageCode)
                 .toString()
@@ -398,8 +392,8 @@ public class Product implements Serializable {
     /**
      * @return The manufactureUrl
      */
-    public String getManufactureUrl() {
-        return manufactureUrl;
+    public String getManufacturerUrl() {
+        return manufacturerUrl;
     }
 
     /**
@@ -458,7 +452,11 @@ public class Product implements Serializable {
     /**
      * @return The nutriments
      */
+    @NonNull
     public Nutriments getNutriments() {
+        if (nutriments == null) {
+            nutriments = new Nutriments();
+        }
         return nutriments;
     }
 
@@ -486,6 +484,7 @@ public class Product implements Serializable {
     /**
      * @return The categoriesTags
      */
+    @Nullable
     public List<String> getCategoriesTags() {
         return categoriesTags;
     }
@@ -498,10 +497,36 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The productName
+     * Get the default product name.
+     *
+     * @return The default product name
      */
+    @Nullable
     public String getProductName() {
         return productName;
+    }
+
+    /**
+     * Get the product name for the specified language code. If null return default product name.
+     *
+     * @param languageCode The language code for the language we get the product in.
+     * @return The product name for the specified language code.
+     *     If null returns default product name.
+     * @see #getProductName()
+     */
+    @Nullable
+    public String getProductName(final String languageCode) {
+        String result = getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getProductName();
+        }
+    }
+
+    @Nullable
+    public String getLocalProductName(final Context context) {
+        return getProductName(LocaleHelper.getLanguage(context));
     }
 
     /**
@@ -544,7 +569,7 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The stores
+     * @return The stores where the product is sold.
      */
     @Nullable
     public String getStores() {
@@ -555,8 +580,10 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The nutritionGradeFr
+     * @return The NutriScore as specified by the
+     *     {@link ApiFields.Keys#NUTRITION_GRADE_FR} api field.
      */
+    @Nullable
     public String getNutritionGradeFr() {
         return nutritionGradeFr;
     }
@@ -569,7 +596,7 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The countries
+     * @return The countries where the product is sold.
      */
     @Nullable
     public String getCountries() {
@@ -643,6 +670,10 @@ public class Product implements Serializable {
         return imageUrl;
     }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public String getImageUrl(String languageCode) {
         String url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(url)) {
@@ -702,10 +733,6 @@ public class Product implements Serializable {
         return noNutritionData;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getEnvironmentInfocard() {
         return environmentInfocard;
     }
@@ -744,6 +771,18 @@ public class Product implements Serializable {
      */
     public String getRecyclingInstructionsToRecycle() {
         return recyclingInstructionsToRecycle;
+    }
+
+    @Nullable
+    public String getNutritionGradeTag() {
+        if (!additionalProperties.containsKey(ApiFields.Keys.NUTRITION_GRADE)) {
+            return null;
+        }
+        List<String> nutritionGradeTags = (List<String>) additionalProperties.get(ApiFields.Keys.NUTRITION_GRADE);
+        if (nutritionGradeTags == null || nutritionGradeTags.isEmpty()) {
+            return null;
+        }
+        return nutritionGradeTags.get(0);
     }
 
     @NonNull

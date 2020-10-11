@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Tests for {@link ProductIngredient}
@@ -39,7 +39,7 @@ public class ProductIngredientTest {
                 ", additionalProperties=" + additionalProperties +
                 '}';
 
-        assertEquals(expectedString, productIngredient.toString());
+        assertThat(productIngredient.toString()).isEqualTo(expectedString);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ProductIngredientTest {
         productIngredient.withAdditionalProperty("Sweetness", "90");
         Map<String, Object> returnedMap = productIngredient.getAdditionalProperties();
 
-        assertEquals("90", ((String) returnedMap.get("Sweetness")));
+        assertThat(((String) returnedMap.get("Sweetness"))).isEqualTo("90");
     }
 
     @Test
@@ -64,9 +64,9 @@ public class ProductIngredientTest {
         productIngredient.setRank(200L);
         productIngredient.setPercent("25%");
 
-        assertEquals("Mustard", productIngredient.getText());
-        assertEquals("mustard_id", productIngredient.getId());
-        assertEquals(200L, productIngredient.getRank());
-        assertEquals("25%", productIngredient.getPercent());
+        assertThat(productIngredient.getText()).isEqualTo("Mustard");
+        assertThat(productIngredient.getId()).isEqualTo("mustard_id");
+        assertThat(productIngredient.getRank()).isEqualTo(200L);
+        assertThat(productIngredient.getPercent()).isEqualTo("25%");
     }
 }

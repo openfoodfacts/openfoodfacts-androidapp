@@ -1,10 +1,12 @@
 package openfoodfacts.github.scrachx.openfood;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.GrantPermissionRule;
 
@@ -29,22 +31,38 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 public abstract class AbstractScreenshotTest {
     public static final String ACTION_NAME = "actionName";
     private static final String LOG_TAG = AbstractScreenshotTest.class.getSimpleName();
-    @Rule
-    public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CHANGE_CONFIGURATION);
     private static Locale initLocale;
-    ScreenshotsLocaleProvider localeProvider = new ScreenshotsLocaleProvider();
+    protected ScreenshotsLocaleProvider localeProvider = new ScreenshotsLocaleProvider();
+    @Rule
+    public GrantPermissionRule permissionRule = GrantPermissionRule.grant(
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.CHANGE_CONFIGURATION
+    );
 
-    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule... activityRules) {
+    @BeforeClass
+    public static void initLanguage() {
+        initLocale = LocaleHelper.getLocale();
+    }
+
+    @AfterClass
+    public static void resetLanguage() {
+        LocaleHelper.setLocale(initLocale);
+    }
+
+    @SafeVarargs
+    protected final void startScreenshotActivityTestRule(@NonNull ScreenshotParameter screenshotParameter,
+                                                         @NonNull ScreenshotActivityTestRule<? extends Activity>... activityRules) {
         changeLocale(screenshotParameter);
-        for (ScreenshotActivityTestRule activityRule : activityRules) {
+        for (ScreenshotActivityTestRule<? extends Activity> activityRule : activityRules) {
             activityRule.finishActivity();
             activityRule.setScreenshotParameter(screenshotParameter);
             activityRule.launchActivity(null);
         }
     }
 
-    protected void startScreenshotActivityTestRules(ScreenshotParameter screenshotParameter, ScreenshotActivityTestRule activityRule,
-                                                    Collection<Intent> intents) {
+    protected void startScreenshotActivityTestRule(@NonNull ScreenshotParameter screenshotParameter,
+                                                   @NonNull ScreenshotActivityTestRule<? extends Activity> activityRule,
+                                                   @NonNull Collection<Intent> intents) {
 
         changeLocale(screenshotParameter);
         for (Intent intent : intents) {
@@ -59,31 +77,20 @@ public abstract class AbstractScreenshotTest {
         }
     }
 
-    protected void changeLocale(ScreenshotParameter parameter) {
+    protected void changeLocale(@NonNull ScreenshotParameter parameter) {
         changeLocale(parameter, OFFApplication.getInstance());
     }
 
-    protected void changeLocale(ScreenshotParameter parameter, Context context) {
+    protected void changeLocale(@NonNull ScreenshotParameter parameter, @NonNull Context context) {
         Log.d(LOG_TAG, "Change parameters to " + parameter);
         LocaleHelper.setLocale(context, parameter.getLocale());
         final String countryName = parameter.getCountryTag();
     }
 
-
-    public void startForAllLocales(ScreenshotActivityTestRule... activityRule) {
-        for (ScreenshotParameter screenshotParameter : localeProvider.getParameters()) {
-            startScreenshotActivityTestRules(screenshotParameter, activityRule);
+    @SafeVarargs
+    protected final void startForAllLocales(ScreenshotActivityTestRule<? extends Activity>... activityRule) {
+        for (ScreenshotParameter screenshotParameter : localeProvider.getFilteredParameters()) {
+            startScreenshotActivityTestRule(screenshotParameter, activityRule);
         }
     }
-
-    @AfterClass
-    public static void resetLanguage() {
-        LocaleHelper.setLocale(initLocale);
-    }
-
-    @BeforeClass
-    public static void initLanguage() {
-        initLocale = LocaleHelper.getLocale();
-    }
-
 }

@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+原材料、添加物、栄養成分に関するデータを取得するため、食品またはそのバーコードをスキャンしてください。
 
 ▶ Find & Compare more than 800.000 products
 
@@ -23,7 +23,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 ▶ Contribute to Food Transparency
 - Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
+- Open Food Facts は、世界中の何千人ものボランティアによって開発された非営利プロジェクトです。 We have lots of exciting projects you can contribute to in many different ways. We have lots of exciting projects you can contribute to in many different ways.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
@@ -50,7 +50,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
-- The whole planet, in your pocket ! - 今インターネットに接続していなくても、新製品を追加できます.
+- 今インターネットに接続していなくても、新製品を追加できます.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data

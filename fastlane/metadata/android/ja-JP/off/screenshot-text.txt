@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Set Allergen Alerts
+アレルゲン警告
 
 Get alternatives for your favorite foods
 
@@ -35,7 +35,7 @@ Wikipedia of Products
 
 Powerful
 
-Nutritional quality
+栄養成分表
 
 =====================
 V3 screenshots

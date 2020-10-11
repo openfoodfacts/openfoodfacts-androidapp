@@ -32,17 +32,17 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.models.Category;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
+import openfoodfacts.github.scrachx.openfood.views.viewmodel.BaseViewModel;
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.
  */
-public class CategoryFragmentViewModel extends ViewModel {
+public class CategoryFragmentViewModel extends BaseViewModel {
     private final ProductRepository repository;
     private final List<CategoryName> categories;
     private final ObservableField<List<CategoryName>> filteredCategories;
@@ -59,13 +59,13 @@ public class CategoryFragmentViewModel extends ViewModel {
 
     @Override
     protected void subscribe(@NonNull CompositeDisposable subscriptions) {
-        loadCategories();
+        refreshCategories();
     }
 
     /**
      * Generates a network call for showing categories in CategoryFragment
      */
-    public void loadCategories() {
+    public void refreshCategories() {
         subscriptions.add(repository.getAllCategoriesByLanguageCode(LocaleHelper.getLanguage(OFFApplication.getInstance()))
             .doOnSubscribe(disposable -> {
                 showOffline.set(View.GONE);

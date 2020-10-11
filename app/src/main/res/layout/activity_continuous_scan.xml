@@ -11,7 +11,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.ContinuousScanActivity">
+        tools:context=".views.scan.ContinuousScanActivity">
 
         <ImageView
             android:id="@+id/imageForScreenshotGenerationOnly"
@@ -187,7 +187,7 @@
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="ContentDescription"
                             tools:layout_constraintStart_toStartOf="parent"
-                            tools:src="@drawable/img_scan" />
+                            tools:src="@drawable/ic_crowdsourcing_icon" />
 
                         <ProgressBar
                             android:id="@+id/quickView_imageProgress"
@@ -218,7 +218,7 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintWidth_percent="0.4"
                             tools:ignore="ContentDescription"
-                            tools:src="@drawable/nnc_a" />
+                            tools:src="@drawable/ic_nutriscore_a" />
 
                         <ImageView
                             android:id="@+id/quickView_novaGroup"

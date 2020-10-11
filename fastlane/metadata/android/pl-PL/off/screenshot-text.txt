@@ -1,4 +1,4 @@
-Teksty widoczne nad zrzutami ekranu w sklepie z aplikacjami. Niech będą krótkie i atrakcyjne.
+Oto slogany nad screenshotami w playstore. Niech będą krótkie i atrakcyjne.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=pl
 
 =====================
@@ -35,7 +35,7 @@ Składniki
 
 Potężny
 
-Wikipedia żywności
+Wartości odżywcze
 
 =====================
 V3 zrzuty ekranu

@@ -1,10 +1,10 @@
 
 ==================
-Nowa natywna wersja Open Food Facts. Wszyscy wolontariusze Open Food Facts ciężko pracowali, bazując na twoich sugestiach i opiniach :)
+New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
 ==================
-* Open Food Facts są obecnie bardziej globalnym ruchem niż kiedykolwiek wcześniej. Uwolniono 500 000 produktów, 10 000 zarejestrowanych autorów, 182 kraje. Czy dołączysz do nas?
+* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Czy dołączysz do nas?
 ==================
-Co nowego?
+What's new ?
 ==================
 1. You get the 360 picture: nutrition, ingredients, and all food facts, neatly and clearly presented.
 2. Get the "NutriScore" nutrition grade for all products in the world. Easily compare products. Easier than deciphering nutrition tables.

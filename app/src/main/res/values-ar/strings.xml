@@ -14,10 +14,10 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="zero">لديك منتج 1 %d لايُباع على الإنترنت بانتظار الإسهام في اوبن فود فاكتس</item>
-        <item quantity="one">لديك منتج 1 %d لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
+        <item quantity="one">لديك منتج 1 [%i] لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
         <item quantity="two"> لديك منتج 1 %d لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
         <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
         <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
@@ -25,7 +25,7 @@
     </plurals>
     <plurals name="seconds">
         <item quantity="zero">منذ ٪ d ثانية</item>
-        <item quantity="one">1 second ago</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="two">%d seconds ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
@@ -253,7 +253,7 @@
     <string name="cancel_button">إلغاء</string>
     <string name="login_button">تسجيل الدخول</string>
     <string name="create_account_button">إنشاء حساب</string>
-    <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <string name="title_info_dialog">كيف يعمل؟</string>
     <string name="text_offline_info_dialog">يمكنك مسح المنتجات ضوئيا عندما كنت تكون غير متصل بالإنترنت لإضافتها لاحقا إلى Open Food Facts. ستظهر جميع المنتجات التي فحصتها هنا، وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="permission_camera">تصريح الكاميرا مطلوب لمسح شفرة المنتجات والتقاط الصور.</string>
@@ -279,6 +279,7 @@
     <string name="user_ask_rate_app">رائع! دع اﻷخرين يعرفون رأيك في هذا التطبيق!</string>
     <string name="rate_app">قيِّم التطبيق</string>
     <string name="no_thx">ﻻ، شكرًا</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">السجل</string>
     <string name="clear_history">محو السجل</string>
@@ -518,8 +519,6 @@
     <string name="sort">التصنيف</string>
     <string name="by_nutrition_grade">درجة التغذية</string>
     <string name="sort_by">ترتيب حسب</string>
-    <string name="shake_summary">قم بهز الهاتف لمسح المنتجات</string>
-    <string name="shake_title">هز الهاتف للفحص</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">لا يمكن بعد إضافة الصور بدون الباركود فى التطبيق. يرجى تجربة نسخة الويب للهاتف المحمولة.</string>
     <string name="no_barcode">البرنامج لم يكتشف أي باركود</string>
@@ -776,6 +775,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
@@ -783,6 +784,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">ساعد في استخراج المكونات لتحصل على الحالة %1$s</string>
     <string name="add_photo_to_extract_ingredients">أضف صورة لبدء استخراج المكونات</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -798,7 +800,6 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">حدد نوع الصورة</string>
     <string name="content_image_type">اختر الصورة للعمل عليها</string>
@@ -819,4 +820,7 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">الصورة اﻷمامية للمنتج</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

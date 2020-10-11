@@ -15,14 +15,14 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProd
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 
 public class EnvironmentProductFragment extends BaseFragment {
     private FragmentEnvironmentProductBinding binding;
-    private State activityState;
+    private ProductState activityProductState;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,9 +39,9 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activityState = FragmentUtils.requireStateFromArguments(this);
+        activityProductState = FragmentUtils.requireStateFromArguments(this);
 
-        final Product product = activityState.getProduct();
+        final Product product = activityProductState.getProduct();
         Nutriments nutriments = product.getNutriments();
 
         if (nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
@@ -75,12 +75,12 @@ public class EnvironmentProductFragment extends BaseFragment {
             binding.recyclingInstructionsRecycleCv.setVisibility(View.GONE);
         }
 
-        refreshView(activityState);
+        refreshView(activityProductState);
     }
 
     @Override
-    public void refreshView(State state) {
-        super.refreshView(state);
-        activityState = state;
+    public void refreshView(ProductState productState) {
+        super.refreshView(productState);
+        activityProductState = productState;
     }
 }

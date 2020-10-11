@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -34,7 +35,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,9 +43,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -56,6 +56,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -63,7 +64,6 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentNutritionProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.HeaderNutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
@@ -72,9 +72,9 @@ import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.SendProduct;
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.models.Units;
+import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
@@ -85,7 +85,7 @@ import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
-import openfoodfacts.github.scrachx.openfood.views.ProductImageManagementActivity;
+import openfoodfacts.github.scrachx.openfood.views.ImagesManagementActivity;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrientLevelListAdapter;
 import openfoodfacts.github.scrachx.openfood.views.adapters.NutrimentsGridAdapter;
 import openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails;
@@ -96,6 +96,7 @@ import static android.Manifest.permission.CAMERA;
 import static android.app.Activity.RESULT_OK;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static androidx.recyclerview.widget.DividerItemDecoration.VERTICAL;
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBOHYDRATES;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.CARBO_MAP;
 import static openfoodfacts.github.scrachx.openfood.models.Nutriments.ENERGY_KCAL;
@@ -112,8 +113,9 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_R
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
-public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback, PhotoReceiver {
+public class NutritionProductFragment extends BaseFragment implements CustomTabActivityHelper.ConnectionCallback {
     private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
+    private CompositeDisposable disp;
     private PhotoReceiverHandler photoReceiverHandler;
     private String mUrlImage;
     private String barcode;
@@ -126,11 +128,25 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     //the following booleans indicate whether the prompts are to be made visible
     private boolean showNutritionPrompt = false;
     private boolean showCategoryPrompt = false;
+
+    @Override
+    public void onDestroy() {
+        disp.dispose();
+        binding = null;
+        super.onDestroy();
+    }
+
     //boolean to determine if nutrition data should be shown
     private boolean showNutritionData = true;
     private Product product;
-    private State activityState;
+    private ProductState activityProductState;
     private FragmentNutritionProductBinding binding;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        disp = new CompositeDisposable();
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -142,12 +158,12 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(this::loadNutritionPhoto);
         // use VERTICAL divider
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.nutrimentsRecyclerView.getContext(), VERTICAL);
         binding.nutrimentsRecyclerView.addItemDecoration(dividerItemDecoration);
         binding.getNutriscorePrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0);
-        binding.newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_dark_18dp, 0, 0, 0);
+        binding.newAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
 
         binding.nutriscoreLink.setOnClickListener(v -> openNutriScoreLink());
         binding.imageViewNutrition.setOnClickListener(this::openFullScreen);
@@ -159,13 +175,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     }
 
     @Override
-    public void refreshView(State state) {
-        super.refreshView(state);
+    public void refreshView(ProductState productState) {
+        super.refreshView(productState);
         final Activity currActivity = requireActivity();
         final String langCode = LocaleHelper.getLanguage(requireActivity());
 
-        activityState = state;
-        product = state.getProduct();
+        activityProductState = productState;
+        product = productState.getProduct();
 
         checkPrompts();
 
@@ -200,7 +216,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             public void onClick(@NonNull View view) {
                 CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().build();
                 customTabsIntent.intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + currActivity.getPackageName()));
-                CustomTabActivityHelper.openCustomTab(getActivity(), customTabsIntent, Uri.parse(getString(R.string.url_nutrient_values)), new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(getString(R.string.url_nutrient_values)), new WebViewFallback());
             }
         };
         spannableStringBuilder.append(getString(R.string.txtNutriScoreInfo));
@@ -366,8 +382,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
             nutrimentListItems.addAll(getNutrimentItems(nutriments, MINERALS_MAP));
         }
 
-        RecyclerView.Adapter adapter = new NutrimentsGridAdapter(nutrimentListItems);
-        binding.nutrimentsRecyclerView.setAdapter(adapter);
+        binding.nutrimentsRecyclerView.setAdapter(new NutrimentsGridAdapter(nutrimentListItems));
     }
 
     private void setupNutrientItems(Activity currActivity, Nutriments nutriments) {
@@ -441,13 +456,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     }
 
     private void drawNutritionGrade() {
-        int nutritionGrade = Utils.getImageGrade(product);
-        if (nutritionGrade != Utils.NO_DRAWABLE_RESOURCE) {
+        final Drawable nutritionGrade = Utils.getImageGradeDrawable(requireActivity(), product);
+        if (nutritionGrade != null) {
             binding.imageGradeLayout.setVisibility(View.VISIBLE);
-            binding.imageGrade.setImageResource(nutritionGrade);
+            binding.imageGrade.setImageDrawable(nutritionGrade);
             binding.imageGrade.setOnClickListener(view1 -> {
                 CustomTabsIntent customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
-                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.getActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
+                CustomTabActivityHelper.openCustomTab(NutritionProductFragment.this.requireActivity(), customTabsIntent, nutritionScoreUri, new WebViewFallback());
             });
         } else {
             binding.imageGradeLayout.setVisibility(View.GONE);
@@ -527,33 +542,29 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         MaterialDialog dialog = new MaterialDialog.Builder(requireActivity())
             .title(R.string.calculate_nutrition_facts)
             .customView(R.layout.dialog_calculate_calories, false)
+
             .dismissListener(dialogInterface -> Utils.hideKeyboard(requireActivity()))
             .build();
 
         dialog.show();
 
-        View view = dialog.getCustomView();
-        if (view != null) {
-            EditText etWeight = view.findViewById(R.id.edit_text_weight);
-            Spinner spinner = view.findViewById(R.id.spinner_weight);
+        View dialogView = dialog.getCustomView();
+        if (dialogView != null) {
+            EditText etWeight = dialogView.findViewById(R.id.edit_text_weight);
+            Spinner spinner = dialogView.findViewById(R.id.spinner_weight);
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     Button btn = (Button) dialog.findViewById(R.id.txt_calories_result);
-                    btn.setOnClickListener(v1 -> {
+                    btn.setOnClickListener(btnView -> {
                         if (!TextUtils.isEmpty(etWeight.getText().toString())) {
-
-                            String spinnerValue = spinner.getSelectedItem().toString();
-                            String weight = etWeight.getText().toString();
-                            Product p = activityState.getProduct();
-                            Intent intent = new Intent(getContext(), CalculateDetails.class);
-                            intent.putExtra("sampleObject", p);
-                            intent.putExtra("spinnervalue", spinnerValue);
-                            intent.putExtra("weight", weight);
-                            startActivity(intent);
+                            CalculateDetails.start(requireActivity(),
+                                activityProductState.getProduct(),
+                                spinner.getSelectedItem().toString(),
+                                etWeight.getText().toString());
                             dialog.dismiss();
                         } else {
-                            Toast.makeText(getContext(), getResources().getString(R.string.please_enter_weight), Toast.LENGTH_SHORT).show();
+                            Snackbar.make(binding.getRoot(), getResources().getString(R.string.please_enter_weight), LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -566,10 +577,13 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         }
     }
 
-    public void onPhotoReturned(File photoFile) {
+    public void loadNutritionPhoto(File photoFile) {
+        // Create a new instance of ProductImage so we can load to server
         ProductImage image = new ProductImage(barcode, NUTRITION, photoFile);
         image.setFilePath(photoFile.getAbsolutePath());
-        api.postImg(image, null);
+        // Load to server
+        disp.add(api.postImg(image).subscribe());
+        // Load into view
         binding.addPhotoLabel.setVisibility(View.GONE);
         mUrlImage = photoFile.getAbsolutePath();
 
@@ -587,7 +601,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
         if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == RESULT_OK && isUserLoggedIn()) {
             startEditProduct();
         }
-        if (ProductImageManagementActivity.isImageModified(requestCode, resultCode)
+        if (ImagesManagementActivity.isImageModified(requestCode, resultCode)
             && getActivity() instanceof ProductActivity) {
             ((ProductActivity) getActivity()).onRefresh();
         }
@@ -617,7 +631,7 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
     }
 
     private void onNutriScoreButtonClick() {
-        if (AppFlavors.isFlavor(AppFlavors.OFF, AppFlavors.OBF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OBF)) {
             if (isUserNotLoggedIn()) {
                 Utils.startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE, requireActivity());
             } else {

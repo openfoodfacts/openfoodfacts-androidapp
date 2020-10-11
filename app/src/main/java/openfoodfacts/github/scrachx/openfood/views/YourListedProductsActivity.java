@@ -42,6 +42,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding;
@@ -49,17 +50,18 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryItem;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductLists;
-import openfoodfacts.github.scrachx.openfood.models.ProductListsDao;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
-import openfoodfacts.github.scrachx.openfood.models.YourListedProductDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists;
+import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao;
 import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController;
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.YourListedProductsAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 import static org.apache.commons.lang.StringUtils.capitalize;
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
@@ -160,8 +162,8 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
             itemTouchhelper.attachToRecyclerView(binding.rvYourListedProducts);
         }
 
-        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0);
-        BottomNavigationListenerInstaller.install(binding.bottomNavigation.bottomNavigation, this);
+        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0);
+        CommonBottomListenerInstaller.install(this, binding.bottomNavigation.bottomNavigation);
     }
 
     public static String getProductBrandsQuantityDetails(Product p) {
@@ -222,7 +224,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                 MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
                 builder.title(R.string.sort_by);
                 String[] sortTypes;
-                if (BuildConfig.FLAVOR.equals("off")) {
+                if (AppFlavors.isFlavors(AppFlavors.OFF)) {
                     sortTypes = new String[]{getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(
                         R.string.by_barcode), getString(R.string.by_time)};
                 } else {
@@ -230,7 +232,6 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                 }
                 builder.items(sortTypes);
                 builder.itemsCallback((dialog, itemView, position, text) -> {
-
                     switch (position) {
 
                         case 0:
@@ -242,7 +243,7 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
                             break;
 
                         case 2:
-                            if (BuildConfig.FLAVOR.equals("off")) {
+                            if (AppFlavors.isFlavors(AppFlavors.OFF)) {
                                 sortType = "grade";
                             } else {
                                 sortType = "time";
@@ -282,18 +283,23 @@ public class YourListedProductsActivity extends BaseActivity implements SwipeCon
             case "barcode":
                 Collections.sort(products, (p1, p2) -> p1.getBarcode().compareToIgnoreCase(p2.getBarcode()));
                 break;
+
             case "grade":
 
                 //get list of HistoryProduct items for the YourListProduct items
-                WhereCondition[] conditionsGrade = new WhereCondition[products.size()];
+                WhereCondition[] conditions = new WhereCondition[products.size()];
                 int i = 0;
                 for (YourListedProduct p : products) {
-                    conditionsGrade[i] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
+                    conditions[i] = HistoryProductDao.Properties.Barcode.eq(p.getBarcode());
                     i++;
                 }
                 List<HistoryProduct> historyProductsGrade;
                 QueryBuilder<HistoryProduct> qbGrade = historyProductDao.queryBuilder();
-                qbGrade.whereOr(conditionsGrade[0], conditionsGrade[1], Arrays.copyOfRange(conditionsGrade, 2, conditionsGrade.length));
+                if (conditions.length > 1) {
+                    qbGrade.whereOr(conditions[0], conditions[1], Arrays.copyOfRange(conditions, 2, conditions.length));
+                } else {
+                    qbGrade.where(conditions[0]);
+                }
                 historyProductsGrade = qbGrade.list();
 
                 Collections.sort(products, (p1, p2) -> {

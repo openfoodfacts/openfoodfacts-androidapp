@@ -3,7 +3,9 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct;
+
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Tests for {@link SendProduct}
@@ -30,20 +32,20 @@ public class SendProductTest {
 
     @Test
     public void getQuantityWithNullWeight_returnsNull() {
-        assertNull(sendProduct.getQuantity());
+        assertThat(sendProduct.getQuantity()).isNull();
     }
 
     @Test
     public void getQuantityWithWeightStringZeroLength_returnsNull() {
         sendProduct.setWeight("");
-        assertNull(sendProduct.getQuantity());
+        assertThat(sendProduct.getQuantity()).isNull();
     }
 
     @Test
     public void getQuantity_returnsWeightAndWeightUnit() {
         sendProduct.setWeight(WEIGHT);
         sendProduct.setWeight_unit(WEIGHT_UNIT);
-        assertEquals(WEIGHT + " " + WEIGHT_UNIT, sendProduct.getQuantity());
+        assertThat(sendProduct.getQuantity()).isEqualTo(WEIGHT + " " + WEIGHT_UNIT);
     }
 
     @Test
@@ -52,15 +54,15 @@ public class SendProductTest {
             IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         SendProduct product2 = new SendProduct();
         product2.copy(product1);
-        assertEquals(BARCODE, product2.getBarcode());
-        assertEquals(LANG, product2.getLang());
-        assertEquals(NAME, product2.getName());
-        assertEquals(BRANDS, product2.getBrands());
-        assertEquals(WEIGHT, product2.getWeight());
-        assertEquals(WEIGHT_UNIT, product2.getWeight_unit());
-        assertEquals(IMG_UPLOAD_FRONT, product2.getImgupload_front());
-        assertEquals(IMG_UPLOAD_INGREDIENTS, product2.getImgupload_ingredients());
-        assertEquals(IMG_UPLOAD_NUTRITION, product2.getImgupload_nutrition());
+        assertThat(product2.getBarcode()).isEqualTo(BARCODE);
+        assertThat(product2.getLang()).isEqualTo(LANG);
+        assertThat(product2.getName()).isEqualTo(NAME);
+        assertThat(product2.getBrands()).isEqualTo(BRANDS);
+        assertThat(product2.getWeight()).isEqualTo(WEIGHT);
+        assertThat(product2.getWeight_unit()).isEqualTo(WEIGHT_UNIT);
+        assertThat(product2.getImgupload_front()).isEqualTo(IMG_UPLOAD_FRONT);
+        assertThat(product2.getImgupload_ingredients()).isEqualTo(IMG_UPLOAD_INGREDIENTS);
+        assertThat(product2.getImgupload_nutrition()).isEqualTo(IMG_UPLOAD_NUTRITION);
     }
 
     @Test
@@ -69,7 +71,7 @@ public class SendProductTest {
             IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
         SendProduct product2 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
             IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
-        assertTrue(product1.isEqual(product2));
+        assertThat(product1.isEqual(product2)).isTrue();
     }
 
     @Test
@@ -79,7 +81,7 @@ public class SendProductTest {
         Long id = 567L;
         SendProduct product2 = new SendProduct(id, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
                 IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
-        assertTrue(product1.isEqual(product2));
+        assertThat(product1.isEqual(product2)).isTrue();
     }
 
     @Test
@@ -89,6 +91,6 @@ public class SendProductTest {
         String differentBarcode = "different barcode";
         SendProduct product2 = new SendProduct(ID, differentBarcode, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT,
             IMG_UPLOAD_FRONT, IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
-        assertFalse(product1.isEqual(product2));
+        assertThat(product1.isEqual(product2)).isFalse();
     }
 }

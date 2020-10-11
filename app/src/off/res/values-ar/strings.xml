@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world-ar.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -10,7 +10,6 @@
     <string name="website_product">https://world-ar.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-ar.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <string name="txtHome">Open Food Facts هو قاعدة بيانات مفتوحة للمنتجات الغذائية مع المكونات، والمواد المسببة للحساسية، والمؤشرات وجميع المعلومات التي يمكن أن نجدها على ملصقات المنتج.</string>
     <string name="slide_1_title">ساهم في شفافية المواد الغذائية</string>
     <string name="slide_1_desc">قم بمسح المنتجات ضوئيًا ، التقط صورها ، هنا تبداء شفافية الغذاء</string>
@@ -29,9 +28,9 @@
     <string name="translate_help_title">المساعدة في ترجمة Open Food Facts</string>
     <string name="translate_help_summary">قم تحويل قاعدة بيانات Open Food Facts إلى لغتك - دون الحاجة إلى معرفة فنية</string>
     <string name="text_offline_info_dialog">قم بمسح المنتجات حتى عندما تكون في وضع عدم الاتصال لإضافتها إلى Open Food Facts لاحقًا. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
-    <string name="warning_alert_data">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <!-- OFF tagline in different languages -->
-    <string name="tagline">the free food products database</string>
+    <string name="tagline">قاعدة بيانات المنتجات الغذائية المجانية</string>
     <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. هل يمكنك إضافته؟</string>
     <string name="currently_on_version">حاليا على Open Food Facts</string>
 </resources>

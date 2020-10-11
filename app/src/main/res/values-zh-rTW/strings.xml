@@ -14,21 +14,21 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d秒鐘前</item>
+        <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d 分鐘前</item>
+        <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d 小時前</item>
+        <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d 天前</item>
+        <item quantity="other">%d days ago</item>
     </plurals>
     <string name="action_about">關於</string>
     <string name="action_discover">探索</string>
@@ -158,7 +158,7 @@
     <string name="txtBarcode">條碼：</string>
     <string name="txtCategories">類別：</string>
     <string name="txtLabels">標籤，認證，獎項：</string>
-    <string name="txtEMB">EMB 碼:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">成份表：</string>
     <string name="Donate">贊助/捐款</string>
     <string name="Donation">點擊此處捐贈 Open Feed Facts</string>
@@ -181,7 +181,7 @@
     <string name="txtSugars">糖</string>
     <string name="hintBarcode">條碼</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">登入</string>
+    <string name="hintLogin">用戶名</string>
     <string name="hintPass">密碼</string>
     <string name="errorLogin">使用者名稱或密碼錯誤</string>
     <string name="errorWeb">我們無法存取網際網路。您是否有連線問題？</string>
@@ -223,10 +223,10 @@
     <string name="title_dialog_alert">新增警報</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">好</string>
-    <string name="cancel_button">取消</string>
-    <string name="login_button">登入</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="login_button">用戶名</string>
     <string name="create_account_button">建立新帳號</string>
-    <string name="warning_alert_data">您的過敏原資料將不會被傳送到 Open Food Facts 伺服器。另外，請小心數據可能不完全正確，以及過敏原偵測可能不完全正確，請再自行確認。 </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">這是如何運作？</string>
     <string name="text_offline_info_dialog">在離線狀態下，您可以掃描產品並稍候將它們加到 Open Food Facts。所有您掃描過的產品都會出現在這裡，您可以使用下面的按鈕來傳送它們。</string>
     <string name="permission_camera">需要相機的存取權來掃描條碼以及拍攝照片。</string>
@@ -252,6 +252,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">歷史紀錄</string>
     <string name="clear_history">清除歷史記錄</string>
@@ -264,7 +265,7 @@
     <string name="no_brand">No Brand</string>
     <string name="no_title">無標題</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">此產品的營養成分錶 %1$s</string>
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">Check</string>
     <string name="nutrition">營養成分</string>
     <string name="calculated_nutrition">Calculated Nutrition</string>
@@ -322,8 +323,8 @@
     <string name="for_100g">每 100 公克</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">每份</string>
-    <string name="nutrition_monounsaturatedFat">單不飽和脂肪</string>
-    <string name="nutrition_polyunsaturatedFat">多不飽和脂肪</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -378,7 +379,7 @@
     <string name="take_more_pictures">拍攝更多照片</string>
     <string name="txtSaturatedFat">飽和脂肪</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about Nova</string>
+    <string name="nova_info_msg">Learn more about NOVA groups</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -392,7 +393,7 @@
     <string name="history_shortcut_short_label">歷史紀錄</string>
     <string name="history_shortcut_long_label">歷史紀錄</string>
     <string name="contributions_shortcut_short_label">貢獻</string>
-    <string name="contributions_shortcut_long_label">我的貢獻</string>
+    <string name="contributions_shortcut_long_label">My contributions</string>
     <string name="forgot_password">忘記密碼</string>
     <string name="next">下一步</string>
     <string name="skip">略過</string>
@@ -414,7 +415,7 @@
     <string name="preference_enable_mobile_data_summary_on">使用行動數據 &amp; WiFi 來上傳新產品</string>
     <string name="preference_enable_mobile_data_summary_off">僅使用 WiFi 來上傳新產品</string>
     <string name="device_on_mobile_data_warning_title">資訊</string>
-    <string name="device_on_mobile_data_warning_message">已禁止透過行動數據上傳資料，請連接 WiFi 或修改此項設定</string>
+    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">偏好設定</string>
     <string name="device_on_mobile_data_warning_negative">仍要上傳</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -448,11 +449,11 @@
     <string name="preference_header_network">網路</string>
     <string name="preference_header_contributing">貢獻</string>
     <string name="scan_first_string">您之前的產品觀看記錄將會在此列出。\n這個記錄僅供您使用，並儲存在本地。</string>
-    <string name="log_in">登入</string>
+    <string name="log_in">用戶名</string>
     <string name="login_true">您已經登錄了！</string>
     <string name="confirm_logout">確認登出</string>
     <string name="logout_dialog_content">確定是否要登出？</string>
-    <string name="dialog_cancel">取消</string>
+    <string name="dialog_cancel">Cancel</string>
     <string name="dialog_create">Create</string>
     <string name="choose_resolution">Choose Resolution</string>
     <string name="pref_resolution_summary">為上傳的圖片選擇一個解析度</string>
@@ -491,8 +492,6 @@
     <string name="sort">Sort</string>
     <string name="by_nutrition_grade">Nutrition Grade</string>
     <string name="sort_by">排序依</string>
-    <string name="shake_summary">Shake phone to scan products</string>
-    <string name="shake_title">Shake to scan</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Pictures without barcode cannot yet be added with the app. Please try the mobile web version.</string>
     <string name="no_barcode">We have not detected any barcode</string>
@@ -573,7 +572,7 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">Overview</string>
+    <string name="overview">總覽</string>
     <string name="ingredients">成分</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
@@ -588,7 +587,7 @@
     <string name="traces">追蹤</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">產品未具體標明營養成分</string>
-    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
+    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
@@ -607,7 +606,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">配料來源</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">EMB Code</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">商店</string>
@@ -744,6 +743,8 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
+    <string name="onboarding_hint_msg">Hint: %s </string>
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
@@ -751,6 +752,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -766,7 +768,6 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>
@@ -784,7 +785,10 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="sign_in_or_register">Sign in or register</string>
+    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

@@ -1,13 +1,14 @@
 package openfoodfacts.github.scrachx.openfood.views.category.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.databinding.CategoryRecyclerItemBinding;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
 
 /**
  * Created by Abdelali Eramli on 27/12/2017.

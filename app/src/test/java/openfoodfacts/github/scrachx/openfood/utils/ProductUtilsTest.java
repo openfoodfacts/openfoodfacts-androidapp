@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import openfoodfacts.github.scrachx.openfood.models.Product;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -16,23 +16,23 @@ public class ProductUtilsTest {
         Product mockProd = mock(Product.class);
 
         when(mockProd.getServingSize()).thenReturn("3l");
-        assertTrue(ProductUtils.isPerServingInLiter(mockProd));
+        assertThat(ProductUtils.isPerServingInLiter(mockProd)).isTrue();
 
         when(mockProd.getServingSize()).thenReturn("3oz");
-        assertFalse(ProductUtils.isPerServingInLiter(mockProd));
+        assertThat(ProductUtils.isPerServingInLiter(mockProd)).isFalse();
     }
 
     @Test
     public void isBarcodeValid() {
         // Debug value
-        assertTrue(ProductUtils.isBarcodeValid("1"));
+        assertThat(ProductUtils.isBarcodeValid("1")).isTrue();
 
         // Incorrect values
-        assertFalse(ProductUtils.isBarcodeValid("2"));
-        assertFalse(ProductUtils.isBarcodeValid("123456789"));
-        assertFalse(ProductUtils.isBarcodeValid("test"));
-        assertFalse(ProductUtils.isBarcodeValid(""));
-        assertFalse(ProductUtils.isBarcodeValid(null));
+        assertThat(ProductUtils.isBarcodeValid("2")).isFalse();
+        assertThat(ProductUtils.isBarcodeValid("123456789")).isFalse();
+        assertThat(ProductUtils.isBarcodeValid("test")).isFalse();
+        assertThat(ProductUtils.isBarcodeValid("")).isFalse();
+        assertThat(ProductUtils.isBarcodeValid(null)).isFalse();
 
         // Correct values
         Arrays.stream(new String[]{
@@ -136,6 +136,6 @@ public class ProductUtilsTest {
             "9510371184373",
             "9528722036004",
             "9634827116517"
-        }).forEach(bar -> assertTrue(ProductUtils.isBarcodeValid(bar)));
+        }).forEach(bar -> assertThat(ProductUtils.isBarcodeValid(bar)).isTrue());
     }
 }

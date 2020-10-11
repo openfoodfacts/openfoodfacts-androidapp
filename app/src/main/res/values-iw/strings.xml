@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">יש מוצר אחד בלתי מקוון שממתין להגשה כתרומה ל־Open Food Facts</item>
         <item quantity="two">יש שני מוצרים בלתי מקוונים שממתינים להגשה כתרומה ל־Open Food Facts</item>
@@ -173,7 +173,7 @@
     <string name="txtBarcode">ברקוד:</string>
     <string name="txtCategories">קטגוריות:</string>
     <string name="txtLabels">תוויות, אישורים, פרסים:</string>
-    <string name="txtEMB">קוד EMB:</string>
+    <string name="txtEMB">קודים למעקב:</string>
     <string name="txtIngredients">רשימת רכיבים:</string>
     <string name="Donate">תרומה</string>
     <string name="Donation">יש ללחוץ כאן כדי לתרום ל־Open Food Facts</string>
@@ -220,7 +220,7 @@
     <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
     <string name="create_account">הרשמה</string>
     <string name="home_drawer">ראשי</string>
-    <string name="install">התקנה</string>
+    <string name="install">התקנת</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">חיפוש</string>
@@ -241,7 +241,7 @@
     <string name="cancel_button">ביטול</string>
     <string name="login_button">שם משתמש</string>
     <string name="create_account_button">יצירת חשבון</string>
-    <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <string name="title_info_dialog">איך זה עובד?</string>
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים ללא חיבור לאינטרנט ולהוסיף אותם למסד נתוני המזון הפתוח מאוחר יותר. כל המוצרים שנסרקים מופיעים כאן, תהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="permission_camera">נדרשת הרשאה לשימוש במצלמה כדי לסרוק ברקודים ולצלם תמונות.</string>
@@ -267,6 +267,7 @@
     <string name="user_ask_rate_app">מצוין! אנו בטוחים שכולם ישמחו לשמוע מה דעתך על היישומון!</string>
     <string name="rate_app">דירוג היישומון</string>
     <string name="no_thx">לא, תודה</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">היסטוריה</string>
     <string name="clear_history">פינוי ההיסטוריה</string>
@@ -337,8 +338,8 @@
     <string name="for_100g">ל־100 ג׳</string>
     <string name="for_100ml">ל100 מ\"ל</string>
     <string name="serving">להגשה</string>
-    <string name="nutrition_monounsaturatedFat">שומן חד בלתי רווי</string>
-    <string name="nutrition_polyunsaturatedFat">שומן רב בלתי רווי</string>
+    <string name="nutrition_monounsaturatedFat">חד־שומן בלתי רווי</string>
+    <string name="nutrition_polyunsaturatedFat">רב־שומן בלתי רווי</string>
     <string name="nutrition_omega3">אומגה 3</string>
     <string name="nutrition_omega6">אומגה 6</string>
     <string name="nutrition_omega9">אומגה 9</string>
@@ -393,7 +394,7 @@
     <string name="take_more_pictures">צילום תמונות נוספות</string>
     <string name="txtSaturatedFat">שומן רווי</string>
     <string name="nutriscore_info_msg">מידע נוסף על ציון תזונתי</string>
-    <string name="nova_info_msg">מידע נוסף על NOVA</string>
+    <string name="nova_info_msg">מידע נוסף על קבוצות NOVA</string>
     <string name="nova_grp1_msg">קבוצה 1 - מזון עם עיבוד מזערי או נטול</string>
     <string name="nova_grp2_msg">קבוצה 2 - רכיבים קולינריים מעובדים</string>
     <string name="nova_grp3_msg">קבוצה 3 - מזון מעובד</string>
@@ -429,7 +430,7 @@
     <string name="preference_enable_mobile_data_summary_on">להעלות מוצרים חדשים כשיש חיבור נתונים סלולרי או אלחוטי</string>
     <string name="preference_enable_mobile_data_summary_off">להעלות מוצרים חדשים כשיש חיבור נתונים אלחוטי בלבד</string>
     <string name="device_on_mobile_data_warning_title">פרטים</string>
-    <string name="device_on_mobile_data_warning_message">העלאת מוצרים חדשים כשיש חיבור נתונים סלולרי מושבתת, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
+    <string name="device_on_mobile_data_warning_message">השבתת העלאה דרך רשת סלולרית, נא להתחבר לרשת אלחוטית או לשנות זאת בהעדפות</string>
     <string name="device_on_mobile_data_warning_positive">העדפות</string>
     <string name="device_on_mobile_data_warning_negative">להעלות בכל זאת</string>
     <string name="changes_saved">השינויים נשמרו בהצלחה</string>
@@ -444,7 +445,7 @@
     <string name="connectivity_check">נא לבדוק את החיבור שלך לאינטרנט</string>
     <string name="dismiss">התעלמות</string>
     <string name="Terms">תנאים</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="TermsOfUse">תנאי השירות ופרטיות</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://he.openfoodfacts.org/terms-of-use</string>
@@ -458,7 +459,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world-he.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">כללי</string>
     <string name="preference_header_network">רשת</string>
     <string name="preference_header_contributing">התנדבות</string>
@@ -506,8 +507,6 @@
     <string name="sort">מיון</string>
     <string name="by_nutrition_grade">ציון תזונתי</string>
     <string name="sort_by">סידור לפי</string>
-    <string name="shake_summary">יש לנער את הטלפון כדי לסרוק מוצרים</string>
-    <string name="shake_title">יש לנער לסריקה</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">לא ניתן עדיין להוסיף תמונות ללא בר קוד ליישומון. נא לנסות את גרסת האתר לניידים.</string>
     <string name="no_barcode">לא זוהה כל ברקוד</string>
@@ -625,7 +624,7 @@
     <string name="manufacturing_details">פרטי ייצור</string>
     <string name="origin_of_ingredients">מקור הרכיבים</string>
     <string name="manufacturing_place">מקום ייצור</string>
-    <string name="emb_code">קוד EMB</string>
+    <string name="emb_code">קוד מעקב</string>
     <string name="purchasing_details">פרטי רכישה</string>
     <string name="country_where_purchased">מדינת הרכישה</string>
     <string name="stores">חנויות</string>
@@ -762,6 +761,8 @@
     <string name="tip_message">עצה: %1$s </string>
     <string name="ingredient_analysis_tip">יש ללחוץ על הסמלים שלהלן כדי ללמוד עוד על המוצר ולבחור את המידע שמעניין אותך.</string>
     <string name="got_it">הבנתי!</string>
+    <string name="onboarding_hint_msg">רמז: %s </string>
+    <string name="ingredient_image_edit_tip">יש לגעת בתמונה כדי להתקרב אליה, לשנות אותה, לחתוך אותה, לסובב אותה ועוד…</string>
     <string name="ingredients_in_this_product_are">הרכיבים במוצר הזה הם %1$s.</string>
     <string name="ingredients_in_this_product">הרכיבים במוצר הזה שהם %1$s:</string>
     <string name="display_analysis_tag_status">הצגת מצב %1$s</string>
@@ -769,6 +770,7 @@
     <string name="unknown_status_no_translation">לא הצלחנו להעריך את מצב המוצר עקב רכיבים בלתי מזוהים.</string>
     <string name="help_translate_ingredients">נשמח לקבל את עזרתך בתרגום הרכיבים לשפה שלך</string>
     <string name="unknown_status_missing_ingredients">לא הצלחנו להעריך את מצב המוצר עקב רכיבים חסרים.</string>
+    <string name="unknown_status_ambiguous_ingredients">לא הצלחנו להעריך את מצב המוצר עקב רכיבים שנויים במחלוקת: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">סיוע בחילוץ הרכיבים לקבלת מצב %1$s.</string>
     <string name="add_photo_to_extract_ingredients">יש להוסיף תמונה כדי להתחיל לחלץ רכיבים</string>
     <string name="product_already_exists_in_comparison">המוצר כבר קיים ברשימת ההשוואה</string>
@@ -784,7 +786,6 @@
     <string name="white_check_image_descr">סימון לבן</string>
     <string name="hint_packaging">דוגמאות: פלסטיק, נייר, זכוכית</string>
     <string name="risk_alcohol_consumption">צריכה מופרזת של אלכוהול מסוכנת לבריאות, יש לצרוך בכמות מתונה</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">בחירת סוג תמונה</string>
     <string name="content_image_type">נא לבחור על איזו תמונה לעבוד</string>
@@ -802,7 +803,10 @@
     <string name="content_exit">יש ללחוץ כאן כדי לחזור למוצר</string>
     <string name="icon_label">סמל תוויות</string>
     <string name="icon_categories">סמל קטגוריות</string>
-    <string name="icon_emb">סמל קוד EMB</string>
+    <string name="icon_emb">סמל קוד מעקב</string>
     <string name="product_front_image">תמונת חזית המוצר</string>
     <string name="brand_hint">דוגמאות: קוקה קולה, נסטלה וכו׳…</string>
+    <string name="sign_in_or_register">כניסה או הרשמה</string>
+    <string name="hunger_game_call_to_action">סיוג בסיווג של עוד %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts הוא מסד נתונים פתוח המכיל למעלה מ־%1$s מוצרי מזון (כולל אלו שתרמת) עם רכיבים, חומרים מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תוויות המוצרים.</string>
 </resources>
