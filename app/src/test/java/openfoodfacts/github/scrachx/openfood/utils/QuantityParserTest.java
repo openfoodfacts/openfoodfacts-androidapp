@@ -4,7 +4,7 @@ import android.widget.Spinner;
 
 import org.junit.Test;
 
-import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -14,22 +14,22 @@ import static org.mockito.Mockito.when;
 public class QuantityParserTest {
     @Test
     public void testWithEmptyValues() {
-        assertThat(QuantityParserUtil.getFloatValue((String) null)).isNull();
-        assertThat(QuantityParserUtil.getFloatValue("")).isNull();
-        assertThat(QuantityParserUtil.getFloatValue("   ")).isNull();
-        assertThat(QuantityParserUtil.getFloatValue((String) null)).isNull();
-        assertThat(QuantityParserUtil.getFloatValue("")).isNull();
-        assertThat(QuantityParserUtil.getFloatValue(" ")).isNull();
+        assertNull(QuantityParserUtil.getFloatValue((String) null));
+        assertNull(QuantityParserUtil.getFloatValue(""));
+        assertNull(QuantityParserUtil.getFloatValue("   "));
+        assertNull(QuantityParserUtil.getFloatValue((String) null));
+        assertNull(QuantityParserUtil.getFloatValue(""));
+        assertNull(QuantityParserUtil.getFloatValue(" "));
     }
 
     @Test
     public void testIsGreaterThan() {
         Spinner mockSpinner = mock(Spinner.class);
         when(mockSpinner.getSelectedItemPosition()).thenReturn(2);
-        assertThat(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner)).isTrue();
+        assertTrue(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner));
         when(mockSpinner.getSelectedItemPosition()).thenReturn(1);
-        assertThat(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner)).isFalse();
+        assertFalse(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner));
         when(mockSpinner.getSelectedItemPosition()).thenReturn(0);
-        assertThat(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner)).isFalse();
+        assertFalse(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner));
     }
 }

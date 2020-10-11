@@ -1,4 +1,4 @@
-„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.
+• Open Products Facts ist eine Produktdatenbank, die von jedermann für alle erstellt wurde.
 
 ★★★ Beitrag zur Transparenz von Produkten ★★★
 
@@ -12,8 +12,8 @@
 
 ★★★ Sammeln Sie ALLE diese Dinge ★★★
 • Sie können alle Elemente aus Ihren Sammlungen hinzufügen
-• Open Crayons Facts - Die größte offene Datenbank von Farbstiften
-• Open Miniature Food Facts - Die größte offene Datenbank für Miniaturnahrungsmittel
+Open Crayons Facts - Die größte offene Datenbank von Farbstiften
+Open Miniature Food Facts - Die größte offene Datenbank für Miniaturnahrungsmittel
 • Open … • Open … Facts - Erstellen Sie Ihre eigene offene Datenbank 🙂
 
 ★★★ Funktioniert gut in jedem Umfeld ★★★

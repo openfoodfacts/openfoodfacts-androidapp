@@ -10,7 +10,7 @@ import java.util.Locale;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 
-import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -20,42 +20,42 @@ public class UtilsTest {
         final Product mockProduct = mock(Product.class);
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("a");
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_a);
+        assertEquals(R.drawable.nnc_a, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("b");
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_b);
+        assertEquals(R.drawable.nnc_b, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("c");
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_c);
+        assertEquals(R.drawable.nnc_c, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("d");
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_d);
+        assertEquals(R.drawable.nnc_d, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("e");
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_e);
+        assertEquals(R.drawable.nnc_e, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn("");
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(Utils.NO_DRAWABLE_RESOURCE);
+        assertEquals(Utils.NO_DRAWABLE_RESOURCE, Utils.getImageGrade(mockProduct));
 
         when(mockProduct.getNutritionGradeFr()).thenReturn(null);
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(Utils.NO_DRAWABLE_RESOURCE);
+        assertEquals(Utils.NO_DRAWABLE_RESOURCE, Utils.getImageGrade(mockProduct));
     }
 
     @Test
     public void getRoundNumber() {
         /* TODO: Fix method before testing
-        assertThat(Utils.getRoundNumber("")).isEqualTo("?");
-        assertThat(Utils.getRoundNumber(null)).isEqualTo("?");
+        assertEquals("?", Utils.getRoundNumber(""));
+        assertEquals("?", Utils.getRoundNumber(null));
         // TODO: Something for string
-        // assertThat(Utils.getRoundNumber("test")).isEqualTo("?");
-        assertThat(Utils.getRoundNumber("0")).isEqualTo("0");
-        assertThat(Utils.getRoundNumber(0)).isEqualTo("0");
-        assertThat(Utils.getRoundNumber(1)).isEqualTo("1");
-        assertThat(Utils.getRoundNumber(1.7f)).isEqualTo("1.7");
-        assertThat(Utils.getRoundNumber(1.75f)).isEqualTo("1.75");
-        assertThat(Utils.getRoundNumber(1.754f)).isEqualTo("1.75");
-        assertThat(Utils.getRoundNumber(1.756f)).isEqualTo("1.76");
-        assertThat(Utils.getRoundNumber(1.756f)).isEqualTo("1.76");
+        // assertEquals("?", Utils.getRoundNumber("test"));
+        assertEquals("0", Utils.getRoundNumber("0"));
+        assertEquals("0", Utils.getRoundNumber(0));
+        assertEquals("1", Utils.getRoundNumber(1));
+        assertEquals("1.7", Utils.getRoundNumber(1.7f));
+        assertEquals("1.75", Utils.getRoundNumber(1.75f));
+        assertEquals("1.75", Utils.getRoundNumber(1.754f));
+        assertEquals("1.76", Utils.getRoundNumber(1.756f));
+        assertEquals("1.76", Utils.getRoundNumber(1.756f));
 
          */
     }
@@ -70,32 +70,32 @@ public class UtilsTest {
         // Test for best condition
         when(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
             .thenReturn(true);
-        assertThat(Utils.isHardwareCameraInstalled(mockCtx)).isTrue();
+        assertTrue(Utils.isHardwareCameraInstalled(mockCtx));
 
         // False condition
         when(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
             .thenReturn(false);
 
-        assertThat(Utils.isHardwareCameraInstalled(mockCtx)).isFalse();
+        assertFalse(Utils.isHardwareCameraInstalled(mockCtx));
     }
 
     @Test
     public void getServingInOz_from_ml() {
+        String servingSize = "100 ml";
 
-        assertThat(UnitUtils.getServingInOz("100 ml"))
-            .isEqualTo(String.format(Locale.getDefault(), "%.2f", 3.38) + " oz");
+        assertEquals(String.format(Locale.getDefault(), "%.2f", 3.38) + " oz", UnitUtils.getServingInOz(servingSize));
     }
 
     @Test
     public void getServingInOz_from_cl() {
-        assertThat(UnitUtils.getServingInOz("250 cl"))
-            .isEqualTo(String.format(Locale.getDefault(), "%.2f", 84.53) + " oz");
+        String servingSize = "250 cl";
+        assertEquals(String.format(Locale.getDefault(), "%.2f", 84.53) + " oz", UnitUtils.getServingInOz(servingSize));
     }
 
     @Test
     public void getServingInOz_from_l() {
+        String servingSize = "3 l";
 
-        assertThat(UnitUtils.getServingInOz("3 l"))
-            .isEqualTo(String.format(Locale.getDefault(), "%.2f", 101.44) + " oz");
+        assertEquals(String.format(Locale.getDefault(), "%.2f", 101.44) + " oz", UnitUtils.getServingInOz(servingSize));
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.State;
 
 public class ProductFragmentPagerAdapter extends FragmentStateAdapter {
     private final List<BaseFragment> fragments;
@@ -41,10 +41,10 @@ public class ProductFragmentPagerAdapter extends FragmentStateAdapter {
         return tabsTitles.get(position);
     }
 
-    public void refresh(ProductState productState) {
+    public void refresh(State state) {
         for (BaseFragment f : fragments) {
             if (f.isAdded()) {
-                f.refreshView(productState);
+                f.refreshView(state);
             }
         }
     }

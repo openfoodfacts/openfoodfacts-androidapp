@@ -33,7 +33,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
@@ -143,14 +142,6 @@ public class LocaleHelper {
             lang = lang.split("-")[0];
         }
         return lang;
-    }
-
-    public static String getLCOrDefault(String languageCode) {
-        if (languageCode != null && !languageCode.isEmpty()) {
-            return languageCode;
-        } else {
-            return ApiFields.Defaults.DEFAULT_LANGUAGE;
-        }
     }
 
     public static Locale getLocale(Context context) {

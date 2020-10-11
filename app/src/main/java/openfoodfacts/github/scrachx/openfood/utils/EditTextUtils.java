@@ -14,16 +14,17 @@ import java.util.Collections;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
+
 public class EditTextUtils {
     private EditTextUtils() {
     }
 
     @Nullable
     public static String getContent(EditText editText) {
-        if (editText == null || editText.getText() == null) {
-            return null;
+        if (editText != null && editText.getText() != null) {
+            return editText.getText().toString();
         }
-        return editText.getText().toString();
+        return null;
     }
 
     /**

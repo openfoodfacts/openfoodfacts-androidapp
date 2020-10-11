@@ -35,8 +35,6 @@
 
     <style name="ButtonBorder.Black" parent="ButtonBorder">
         <item name="android:background">@drawable/rounded_button_shape_nobg</item>
-        <item name="android:drawablePadding">@dimen/spacing_tiny</item>
-        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="ButtonFlat.Green">

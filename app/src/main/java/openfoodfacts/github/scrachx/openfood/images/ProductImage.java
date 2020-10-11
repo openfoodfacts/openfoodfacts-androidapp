@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.images;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 
 import okhttp3.MediaType;
@@ -27,7 +25,7 @@ public class ProductImage {
         this(code, field, image, LocaleHelper.getLanguage(OFFApplication.getInstance()));
     }
 
-    public ProductImage(String code, @NotNull ProductImageField field, File image, String language) {
+    public ProductImage(String code, ProductImageField field, File image, String language) {
         this.code = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code);
         this.language = language;
         this.field = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), field.toString() + '_' + language);

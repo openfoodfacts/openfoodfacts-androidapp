@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
@@ -25,15 +25,13 @@ import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 @RunWith(AndroidJUnit4.class)
 public class TakeScreenshotShowProductsTest extends AbstractScreenshotTest {
     @Rule
-    public ScreenshotActivityTestRule<HistoryScanActivity> activityHistoryRule =
-        new ScreenshotActivityTestRule<>(HistoryScanActivity.class);
+    public ScreenshotActivityTestRule<ProductActivity> activityShowProductRule = new ScreenshotActivityTestRule<>(ProductActivity.class);
     @Rule
-    public ScreenshotActivityTestRule<ProductActivity> activityShowProductRule =
-        new ScreenshotActivityTestRule<>(ProductActivity.class);
+    public ScreenshotActivityTestRule<HistoryScanActivity> historyTestRule = new ScreenshotActivityTestRule<>(HistoryScanActivity.class);
 
     private static Intent createProductIntent(String productCode) {
         Intent intent = new Intent(OFFApplication.getInstance(), ProductActivity.class);
-        ProductState st = new ProductState();
+        State st = new State();
         Product pd = new Product();
         pd.setCode(productCode);
         st.setProduct(pd);
@@ -44,13 +42,13 @@ public class TakeScreenshotShowProductsTest extends AbstractScreenshotTest {
 
     @Test
     public void testTakeScreenshot() {
-        for (ScreenshotParameter screenshotParameter : localeProvider.getFilteredParameters()) {
+        for (ScreenshotParameter screenshotParameter : localeProvider.getParameters()) {
             List<Intent> intents = new ArrayList<>();
             for (String product : screenshotParameter.getProductCodes()) {
                 intents.add(createProductIntent(product));
             }
-            startScreenshotActivityTestRule(screenshotParameter, activityShowProductRule, intents);
-            startScreenshotActivityTestRule(screenshotParameter, activityHistoryRule);
+            startScreenshotActivityTestRules(screenshotParameter, activityShowProductRule, intents);
+            startScreenshotActivityTestRules(screenshotParameter, historyTestRule);
         }
     }
 }

@@ -13,8 +13,4 @@
         <item name="android:paddingRight">@dimen/spacing_small</item>
         <item name="android:selectable">false</item>
     </style>
-
-    <style name="EditHint.Important">
-        <item name="android:textColor">@color/md_red_400</item>
-    </style>
 </resources>

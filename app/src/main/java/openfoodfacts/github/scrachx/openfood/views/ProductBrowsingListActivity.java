@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,9 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
@@ -26,36 +26,30 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Search;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.ProductsRecyclerViewAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 import openfoodfacts.github.scrachx.openfood.views.listeners.EndlessRecyclerViewScrollListener;
 import openfoodfacts.github.scrachx.openfood.views.listeners.RecyclerItemClickListener;
-import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
-
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.CONTRIBUTOR;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.SEARCH;
-import static openfoodfacts.github.scrachx.openfood.utils.SearchType.fromUrl;
 
 public class ProductBrowsingListActivity extends BaseActivity {
     /**
@@ -66,15 +60,18 @@ public class ProductBrowsingListActivity extends BaseActivity {
     private OpenFoodAPIClient apiClient;
     private ActivityProductBrowsingListBinding binding;
     private int contributionType;
-    private CompositeDisposable disp;
+    //boolean to determine if image should be loaded or not
+    private boolean isLowBatteryMode = false;
+    private Sensor mAccelerometer;
     private int mCountProducts = 0;
     private List<Product> mProducts;
     private SearchInfo mSearchInfo;
-    /**
-     * boolean to determine if image should be loaded or not
-     */
-    private boolean isLowBatteryMode = false;
+    private SensorManager mSensorManager;
+    private ShakeDetector mShakeDetector;
+    private CompositeDisposable disp = new CompositeDisposable();
     private int pageAddress = 1;
+    // boolean to determine if scan on shake feature should be enabled
+    private boolean scanOnShake;
     private boolean setupDone = false;
 
     /**
@@ -85,15 +82,15 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * @param searchTitle the title used in the activity for this search query
      * @param type the type of search
      */
-    public static void start(Context context, String searchQuery, String searchTitle, SearchType type) {
-        start(context, new SearchInfo(searchQuery, searchTitle, type));
+    public static void startActivity(Context context, String searchQuery, String searchTitle, @SearchType String type) {
+        startActivity(context, new SearchInfo(searchQuery, searchTitle, type));
     }
 
     /**
-     * @see #start(Context, String, String, SearchType) )
+     * @see #startActivity(Context, String, String, String) )
      */
-    public static void start(Context context, String searchQuery, SearchType type) {
-        start(context, searchQuery, searchQuery, type);
+    public static void startActivity(Context context, String searchQuery, @SearchType String type) {
+        startActivity(context, searchQuery, searchQuery, type);
     }
 
     @Override
@@ -104,9 +101,9 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     /**
-     * @see #start(Context, String, String, SearchType)
+     * @see #startActivity(Context, String, String, String)
      */
-    private static void start(Context context, SearchInfo searchInfo) {
+    private static void startActivity(Context context, SearchInfo searchInfo) {
         Intent intent = new Intent(context, ProductBrowsingListActivity.class);
         intent.putExtra(SEARCH_INFO, searchInfo);
         context.startActivity(intent);
@@ -127,7 +124,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 mSearchInfo.setSearchQuery(query);
-                mSearchInfo.setSearchType(SEARCH);
+                mSearchInfo.setSearchType(SearchType.SEARCH);
                 newSearchQuery();
                 return true;
             }
@@ -152,7 +149,7 @@ public class ProductBrowsingListActivity extends BaseActivity {
             }
         });
 
-        if (CONTRIBUTOR.equals(mSearchInfo.getSearchType())) {
+        if (SearchType.CONTRIBUTOR.equals(mSearchInfo.getSearchType())) {
             MenuItem contributionItem = menu.findItem(R.id.action_set_type);
             contributionItem.setVisible(true);
         }
@@ -212,10 +209,8 @@ public class ProductBrowsingListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        disp = new CompositeDisposable();
         binding = ActivityProductBrowsingListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setSupportActionBar(binding.toolbarInclude.toolbar);
 
         // OnClick
         binding.buttonTryAgain.setOnClickListener(v -> setup());
@@ -241,12 +236,12 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
                 mSearchInfo.setSearchTitle(paths[4]);
                 mSearchInfo.setSearchQuery(paths[4]);
-                mSearchInfo.setSearchType(Objects.requireNonNull(fromUrl(paths[3])));
+                mSearchInfo.setSearchType(paths[3]);
 
                 if (paths[3].equals("cgi") && paths[4] != null && paths[4].contains("search.pl")) {
                     mSearchInfo.setSearchTitle(data.getQueryParameter("search_terms"));
                     mSearchInfo.setSearchQuery(data.getQueryParameter("search_terms"));
-                    mSearchInfo.setSearchType(SEARCH);
+                    mSearchInfo.setSearchType(SearchType.SEARCH);
                 }
             } else {
                 Log.i(getClass().getSimpleName(), "No data was passed in with URL");
@@ -261,91 +256,69 @@ public class ProductBrowsingListActivity extends BaseActivity {
             isLowBatteryMode = true;
         }
 
-        CommonBottomListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
-        CommonBottomListenerInstaller.install(this, binding.navigationBottom.bottomNavigation);
-    }
+        SharedPreferences shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
 
-    private void setupHungerGames() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector();
 
-        final String actualCountryTag = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "");
-        if ("".equals(actualCountryTag)) {
-            disp.add(ProductRepository.getInstance().getCountryByCC2OrWorld(LocaleHelper.getLocale().getCountry())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(mayCountry ->
-                    setupUrlHungerGames(mayCountry.isPresent() ? mayCountry.get().getTag() : "en:world")));
-        } else {
-            setupUrlHungerGames(actualCountryTag);
+        if (scanOnShake) {
+            mShakeDetector.setOnShakeListener(count -> Utils.scan(ProductBrowsingListActivity.this));
         }
-    }
 
-    private void setupUrlHungerGames(String countryTag) {
-        final Uri url = Uri.parse(String.format("https://hunger.openfoodfacts.org/questions?type=%s&value_tag=%s&country=%s",
-            mSearchInfo.getSearchType().getUrl(),
-            mSearchInfo.getSearchQuery(),
-            countryTag));
-
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        CustomTabsIntent customTabsIntent = builder.build();
-
-        binding.btnHungerGames.setVisibility(View.VISIBLE);
-        binding.btnHungerGames.setText(
-            getResources().getString(R.string.hunger_game_call_to_action, mSearchInfo.getSearchTitle()));
-        binding.btnHungerGames.setOnClickListener(view ->
-            CustomTabActivityHelper.openCustomTab(this, customTabsIntent, url, null));
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottom.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.navigationBottom.bottomNavigation, this);
     }
 
     protected void newSearchQuery() {
         getSupportActionBar().setTitle(mSearchInfo.getSearchTitle());
         switch (mSearchInfo.getSearchType()) {
-            case BRAND:
+            case SearchType.BRAND:
                 getSupportActionBar().setSubtitle(R.string.brand_string);
-                setupHungerGames();
                 break;
-            case LABEL:
-                getSupportActionBar().setSubtitle(getString(R.string.label_string));
-                setupHungerGames();
-                break;
-            case CATEGORY:
-                getSupportActionBar().setSubtitle(getString(R.string.category_string));
-                setupHungerGames();
-                break;
-            case COUNTRY:
+            case SearchType.COUNTRY:
                 getSupportActionBar().setSubtitle(R.string.country_string);
                 break;
-            case ORIGIN:
+            case SearchType.ORIGIN:
                 getSupportActionBar().setSubtitle(R.string.origin_of_ingredients);
                 break;
-            case MANUFACTURING_PLACE:
+            case SearchType.MANUFACTURING_PLACE:
                 getSupportActionBar().setSubtitle(R.string.manufacturing_place);
                 break;
-            case ADDITIVE:
+            case SearchType.ADDITIVE:
                 getSupportActionBar().setSubtitle(R.string.additive_string);
                 break;
-            case SEARCH:
+            case SearchType.SEARCH:
                 getSupportActionBar().setSubtitle(R.string.search_string);
                 break;
-            case STORE:
+            case SearchType.STORE:
                 getSupportActionBar().setSubtitle(R.string.store_subtitle);
                 break;
-            case PACKAGING:
+            case SearchType.PACKAGING:
                 getSupportActionBar().setSubtitle(R.string.packaging_subtitle);
                 break;
-            case CONTRIBUTOR:
+            case SearchType.LABEL:
+                getSupportActionBar().setSubtitle(getString(R.string.label_string));
+                break;
+            case SearchType.CATEGORY:
+                getSupportActionBar().setSubtitle(getString(R.string.category_string));
+                break;
+            case SearchType.CONTRIBUTOR:
                 getSupportActionBar().setSubtitle(getString(R.string.contributor_string));
                 break;
-            case ALLERGEN:
+            case SearchType.ALLERGEN:
                 getSupportActionBar().setSubtitle(getString(R.string.allergen_string));
                 break;
-            case INCOMPLETE_PRODUCT:
+            case SearchType.INCOMPLETE_PRODUCT:
                 getSupportActionBar().setTitle(getString(R.string.products_to_be_completed));
                 break;
-            case STATE:
-                // TODO: 26/07/2020 use resources
+            case SearchType.STATE:
                 getSupportActionBar().setSubtitle("State");
                 break;
             default:
-                Log.e("Products Browsing", "No match case found for " + mSearchInfo.getSearchType());
+                Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
         }
 
         apiClient = new OpenFoodAPIClient(ProductBrowsingListActivity.this, BuildConfig.OFWEBSITE);
@@ -388,85 +361,82 @@ public class ProductBrowsingListActivity extends BaseActivity {
     }
 
     public void getDataFromAPI() {
-        // TODO: 31/08/2020 all api calls to rxjava single
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
-            case BRAND:
+            case SearchType.BRAND:
                 disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
                     .subscribe((search, throwable) ->
-                        displaySearch(throwable == null,
-                            search,
-                            R.string.txt_no_matching_brand_products)));
+                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_brand_products)));
                 break;
-            case COUNTRY:
+            case SearchType.COUNTRY:
                 apiClient.getProductsByCountry(searchQuery, pageAddress, (value, country) ->
-                    displaySearch(value, country, R.string.txt_no_matching_country_products));
+                    loadSearchProducts(value, country, R.string.txt_no_matching_country_products));
                 break;
-            case ORIGIN:
+            case SearchType.ORIGIN:
                 apiClient.getProductsByOrigin(searchQuery, pageAddress, (value, origin) ->
-                    displaySearch(value, origin, R.string.txt_no_matching_country_products));
+                    loadSearchProducts(value, origin, R.string.txt_no_matching_country_products));
                 break;
-            case MANUFACTURING_PLACE:
+            case SearchType.MANUFACTURING_PLACE:
                 apiClient.getProductsByManufacturingPlace(searchQuery, pageAddress, (value, manufacturingPlace) ->
-                    displaySearch(value, manufacturingPlace, R.string.txt_no_matching_country_products));
+                    loadSearchProducts(value, manufacturingPlace, R.string.txt_no_matching_country_products));
                 break;
-            case ADDITIVE:
-                disp.add(apiClient.getProductsByAdditive(searchQuery, pageAddress)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe((search, throwable) ->
-                        displaySearch(throwable == null,
-                            search,
-                            R.string.txt_no_matching_additive_products)));
+            case SearchType.ADDITIVE:
+                apiClient.getProductsByAdditive(searchQuery, pageAddress, (value, additive) ->
+                    loadSearchProducts(value, additive, R.string.txt_no_matching_additive_products));
                 break;
-            case STORE:
+            case SearchType.STORE:
                 apiClient.getProductsByStore(searchQuery, pageAddress, (value, store) ->
-                    displaySearch(value, store, R.string.txt_no_matching_store_products));
+                    loadSearchProducts(value, store, R.string.txt_no_matching_store_products));
                 break;
-            case PACKAGING:
+            case SearchType.PACKAGING:
                 apiClient.getProductsByPackaging(searchQuery, pageAddress, (value, packaging) ->
-                    displaySearch(value, packaging, R.string.txt_no_matching_packaging_products));
+                    loadSearchProducts(value, packaging, R.string.txt_no_matching_packaging_products));
                 break;
-            case SEARCH:
+            case SearchType.SEARCH:
                 if (ProductUtils.isBarcodeValid(searchQuery)) {
                     api.openProduct(searchQuery, this);
                 } else {
-                    disp.add(api.searchProductsByName(searchQuery, pageAddress)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe((search, throwable) ->
-                            displaySearch(throwable == null,
-                                search,
-                                R.string.txt_no_matching_products,
-                                R.string.txt_broaden_search)));
+                    api.searchProductsByName(searchQuery, pageAddress, this, (isOk, searchResponse, countProducts) -> {
+
+                        // countProducts is checked, if it is -2 it means that there are no matching products in the
+                        // database for the query.
+                        if (countProducts == -2) {
+                            showEmptySearch(getResources().getString(R.string.txt_no_matching_products),
+                                getResources().getString(R.string.txt_broaden_search));
+                        } else {
+                            loadSearchProducts(isOk, searchResponse, R.string.txt_no_matching_label_products, R.string.txt_broaden_search);
+                        }
+                    });
                 }
                 break;
-            case LABEL:
+            case SearchType.LABEL:
                 api.getProductsByLabel(searchQuery, pageAddress, (value, label) ->
-                    displaySearch(value, label, R.string.txt_no_matching_label_products));
+                    loadSearchProducts(value, label, R.string.txt_no_matching_label_products));
                 break;
-            case CATEGORY:
+            case SearchType.CATEGORY:
                 api.getProductsByCategory(searchQuery, pageAddress, (value, category) ->
-                    displaySearch(value, category, R.string.txt_no_matching__category_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching__category_products));
                 break;
-            case ALLERGEN:
+            case SearchType.ALLERGEN:
                 api.getProductsByAllergen(searchQuery, pageAddress, (value, allergen) ->
-                    displaySearch(value, allergen, R.string.txt_no_matching_allergen_products));
+                    loadSearchProducts(value, allergen, R.string.txt_no_matching_allergen_products));
                 break;
-            case CONTRIBUTOR:
+            case SearchType.CONTRIBUTOR:
                 loadDataForContributor(searchQuery);
                 break;
-            case STATE:
+            case SearchType.STATE:
                 disp.add(api.getProductsByStates(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
                     .subscribe((search, throwable) ->
-                        displaySearch(throwable == null, search, R.string.txt_no_matching_allergen_products)));
+                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_allergen_products)));
                 break;
-            case INCOMPLETE_PRODUCT:
+            case SearchType.INCOMPLETE_PRODUCT:
                 // Get Products to be completed data and input it to loadData function
                 disp.add(api.getIncompleteProducts(pageAddress).observeOn(AndroidSchedulers.mainThread())
                     .subscribe((search, throwable) ->
-                        displaySearch(throwable == null, search, R.string.txt_no_matching_incomplete_products)));
+                        loadSearchProducts(throwable == null, search, R.string.txt_no_matching_incomplete_products)));
                 break;
             default:
-                Log.e("Products Browsing", "No match case found for " + mSearchInfo.getSearchType());
+                Log.e("Products Browsing", "No math case found for " + mSearchInfo.getSearchType());
         }
     }
 
@@ -475,45 +445,43 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
             case 1:
                 api.getToBeCompletedProductsByContributor(searchQuery, pageAddress, (value, category) ->
-                    displaySearch(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 2:
                 api.getPicturesContributedProducts(searchQuery, pageAddress, (value, category) ->
-                    displaySearch(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 3:
                 api.getPicturesContributedIncompleteProducts(searchQuery, pageAddress, (value, category) ->
-                    displaySearch(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 4:
                 api.getInfoAddedProducts(searchQuery, pageAddress, (value, category) ->
-                    displaySearch(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
 
             case 5:
                 disp.add(api.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
-                    displaySearch(throwable == null, search, R.string.txt_no_matching_contributor_products)));
+                    loadSearchProducts(throwable == null, search, R.string.txt_no_matching_contributor_products)));
                 break;
 
             case 0:
             default:
                 api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
-                    displaySearch(value, category, R.string.txt_no_matching_contributor_products));
+                    loadSearchProducts(value, category, R.string.txt_no_matching_contributor_products));
                 break;
         }
     }
 
-    private void loadData(boolean isResponseOk, @Nullable Search response) {
+    private void loadData(boolean isResponseOk, Search response) {
         if (isResponseOk && response != null) {
             mCountProducts = Integer.parseInt(response.getCount());
             if (pageAddress == 1) {
-                binding.textCountProduct.setText(
-                    getResources().getString(R.string.number_of_results)
-                        + NumberFormat.getInstance(getResources().getConfiguration().locale)
-                        .format(Long.parseLong(response.getCount())));
+                binding.textCountProduct.setText(getResources().getString(R.string.number_of_results) +
+                    NumberFormat.getInstance(getResources().getConfiguration().locale).format(Long.parseLong(response.getCount())));
                 mProducts = new ArrayList<>();
                 mProducts.addAll(response.getProducts());
                 if (mProducts.size() < mCountProducts) {
@@ -544,16 +512,14 @@ public class ProductBrowsingListActivity extends BaseActivity {
 
     /**
      * Shows UI indicating that no matching products were found. Called by
-     * {@link #displaySearch(boolean, Search, int)} and {@link #displaySearch(boolean, Search, int, int)}
+     * {@link #loadSearchProducts(boolean, Search, int)} and {@link #loadSearchProducts(boolean, Search, int, int)}
      *
-     * @param message message to display when there are no results for given search
-     * @param extendedMessage additional message to display, -1 if no message is displayed
+     * @param msg message to display when there are no results for given search
+     * @param extendedMsg additional message to display, -1 if no message is displayed
      */
-    private void showEmptySearch(@StringRes int message, @StringRes int extendedMessage) {
-        binding.textNoResults.setText(message);
-        if (extendedMessage != -1) {
-            binding.textExtendSearch.setText(extendedMessage);
-        }
+    private void showEmptySearch(String msg, String extendedMsg) {
+        binding.textNoResults.setText(msg);
+        binding.textExtendSearch.setText(extendedMsg);
         binding.noResultsLayout.setVisibility(View.VISIBLE);
         binding.noResultsLayout.bringToFront();
         binding.productsRecyclerView.setVisibility(View.INVISIBLE);
@@ -572,30 +538,25 @@ public class ProductBrowsingListActivity extends BaseActivity {
      * @param emptyMessage message to display if there are no results
      * @param extendedMessage extended message to display if there are no results
      */
-    private void displaySearch(boolean isResponseSuccessful, Search response,
-                               @StringRes int emptyMessage, @StringRes int extendedMessage) {
-        if (response == null) {
-            loadData(isResponseSuccessful, null);
+    private void loadSearchProducts(boolean isResponseSuccessful, Search response,
+                                    @StringRes int emptyMessage, @StringRes int extendedMessage) {
+        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
+            showEmptySearch(getResources().getString(emptyMessage),
+                getResources().getString(extendedMessage));
         } else {
-            final int count;
-            try {
-                count = Integer.parseInt(response.getCount());
-            } catch (NumberFormatException e) {
-                throw new NumberFormatException(String.format("Cannot parse %s.", response.getCount()));
-            }
-            if (isResponseSuccessful && count == 0) {
-                showEmptySearch(emptyMessage, extendedMessage);
-            } else {
-                loadData(isResponseSuccessful, response);
-            }
+            loadData(isResponseSuccessful, response);
         }
     }
 
     /**
-     * @see #displaySearch(boolean, Search, int, int)
+     * @see #loadSearchProducts(boolean, Search, int, int)
      */
-    private void displaySearch(boolean isResponseSuccessful, Search response, @StringRes int emptyMessage) {
-        displaySearch(isResponseSuccessful, response, emptyMessage, -1);
+    private void loadSearchProducts(boolean isResponseSuccessful, Search response, @StringRes int emptyMessage) {
+        if (isResponseSuccessful && response != null && Integer.parseInt(response.getCount()) == 0) {
+            showEmptySearch(getResources().getString(emptyMessage), null);
+        } else {
+            loadData(isResponseSuccessful, response);
+        }
     }
 
     private void setUpRecyclerView() {
@@ -647,19 +608,19 @@ public class ProductBrowsingListActivity extends BaseActivity {
                                 Log.e(ProductBrowsingListActivity.class.getSimpleName(), "addOnItemTouchListener", e);
                             }
                         } else {
-                            new MaterialDialog.Builder(ProductBrowsingListActivity.this)
-                                .title(R.string.device_offline_dialog_title)
-                                .content(R.string.connectivity_check)
-                                .positiveText(R.string.txt_try_again)
-                                .onPositive((dialog, which) -> {
+                            new MaterialAlertDialogBuilder(ProductBrowsingListActivity.this)
+                                .setTitle(R.string.device_offline_dialog_title)
+                                .setMessage(R.string.connectivity_check)
+                                .setPositiveButton(R.string.txt_try_again, (dialog, which) -> {
                                     if (Utils.isNetworkConnected(ProductBrowsingListActivity.this)) {
                                         api.openProduct(barcode, ProductBrowsingListActivity.this);
                                     } else {
                                         Toast.makeText(ProductBrowsingListActivity.this, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show();
                                     }
                                 })
-                                .negativeText(R.string.dismiss)
-                                .onNegative((dialog, which) -> dialog.dismiss())
+                                .setNegativeButton(R.string.dismiss, (dialog, which) -> {
+                                    dialog.dismiss();
+                                })
                                 .show();
                         }
                     }
@@ -685,5 +646,23 @@ public class ProductBrowsingListActivity extends BaseActivity {
             pageAddress = 1;
             setup();
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (scanOnShake) {
+            //register the listener
+            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (scanOnShake) {
+            //unregister the listener
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
     }
 }

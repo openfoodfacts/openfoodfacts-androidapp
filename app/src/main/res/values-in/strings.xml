@@ -14,24 +14,24 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <plurals name="offline_notification_count">
-        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other"> Anda memiliki 1 produk luring menunggu untuk dikontribusikan ke Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">%d detik yang lalu</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d menit yang lalu</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d jam yang lalu</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d hari yang lalu</item>
     </plurals>
     <string name="action_about">Tentang,</string>
-    <string name="action_discover">Jelajahi</string>
+    <string name="action_discover">mendapatkan</string>
     <string name="contribute">Bagaimana cara  kontribusi,</string>
     <string name="action_find">mencari</string>
     <string name="product_incomplete_message">Produk ini tidak lengkap. Akibatnya, kami tidak bisa melakukan pemeriksaan alergen.</string>
@@ -42,7 +42,7 @@
     <!-- Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_items_product">
         <item>meringkas</item>
-        <item>Bahan</item>
+        <item>bahan</item>
         <item>kandungan nutrisi</item>
         <item>meja nutrisi</item>
         <item>Environment</item>
@@ -158,7 +158,7 @@
     <string name="txtBarcode">kode batang anda</string>
     <string name="txtCategories">Kategori:</string>
     <string name="txtLabels">Label, sertifikasi, penghargaan:</string>
-    <string name="txtEMB">Traceability codes:</string>
+    <string name="txtEMB">Kode EMB:</string>
     <string name="txtIngredients">Daftar komposisi :</string>
     <string name="Donate">Donasi</string>
     <string name="Donation">Klik di sini untuk menyumbang pada Open Food Facts</string>
@@ -173,16 +173,16 @@
     <string name="txtNutritionLevelLow">kualitas jumlah rendah</string>
     <string name="txtNutritionLevelModerate">dalam jumlah sedang</string>
     <string name="txtNutritionLevelHigh">kualitas hasil rendah</string>
-    <string name="txtSave">Simpan</string>
+    <string name="txtSave">menyimpan </string>
     <string name="txtSignIn">Masuk</string>
     <string name="txtToastSaved">Pengguna yang disimpan</string>
     <string name="txtSalt">garam</string>
     <string name="txtFat">Lemak</string>
     <string name="txtSugars">Gula</string>
-    <string name="hintBarcode">Kode batang</string>
+    <string name="hintBarcode">kode batang</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Nama pengguna</string>
-    <string name="hintPass">Kata sandi</string>
+    <string name="hintLogin">Masuk</string>
+    <string name="hintPass">kata sandi anda</string>
     <string name="errorLogin">Nama pengguna atau password salah</string>
     <string name="errorWeb">Tidak bisa mengakses internet. Mohon periksa koneksi anda.</string>
     <string name="uploadLater">Gambar akan diunggah ketika jaringan tersedia</string>
@@ -224,9 +224,9 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
-    <string name="login_button">Nama pengguna</string>
+    <string name="login_button">Masuk</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data">Informasi mengenai alergi anda tidak akan dikirim ke server Open Food Facts. Juga, berhati-hatilah terhadap data produk yang mungkin tidak akurat, dan hasil deteksi mungkin tidak 100% akurat, mohon cek kembali! </string>
     <string name="title_info_dialog">Bagaimana ini bekerja?</string>
     <string name="text_offline_info_dialog">kamu bisa  memindai produk saat kamu sedang tidak aktif  untuk menambah ke fakta-fakta makanan terbuka kemudian. Semua produk yang kamu memindai akan tampil  di sini, dan kamu dapat mengirimkan mereka dengan tombol yang ada di bawah ini</string>
     <string name="permission_camera">kamera membutuhkan izin untuk memindah kode batang dan mengambil gambar</string>
@@ -244,7 +244,7 @@
     <string name="prefs_scan_startup_summary">pilih ini jika memulai memindai saat aplikasi dibuka</string>
     <string name="prefs_power_mode">tenaga untuk memindai</string>
     <string name="prefs_power_mode_summary">Cepat memindai produk di supermarket untuk melihat mana yang tidak ada dalam database.</string>
-    <string name="prefs_language">Bahasa</string>
+    <string name="prefs_language">bahasa</string>
     <string name="prefs_language_summary">ubah bahasa</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
@@ -252,7 +252,6 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">riwayat/kenangan</string>
     <string name="clear_history">menghapus riwayat</string>
@@ -265,7 +264,7 @@
     <string name="no_brand">Tanpa merek</string>
     <string name="no_title">Tanpa judul</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+    <string name="display_fact">Tabel fakta nutrisi untuk %1$s produk ini</string>
     <string name="check_facts">Memeriksa</string>
     <string name="nutrition">kandungan nutrisi</string>
     <string name="calculated_nutrition">Nutrisi terhitung</string>
@@ -274,12 +273,12 @@
     <string name="calculate_nutrition_facts">Menghitung fakta nutrisi</string>
     <string name="nutrition_carbohydrate">Karbohidrat</string>
     <string name="nutrition_cholesterol">Kolesterol</string>
-    <string name="nutrition_energy">tenaga</string>
+    <string name="nutrition_energy">Energi</string>
     <string name="nutrition_energy_kcal">Energi dalam kalori (kkal)</string>
     <string name="nutrition_energy_kj">Energi dalam joule (kJ)</string>
-    <string name="nutrition_energy_short_name">tenaga</string>
+    <string name="nutrition_energy_short_name">Energi</string>
     <string name="nutrition_fat">Lemak</string>
-    <string name="nutrition_fiber">kandungan makanan</string>
+    <string name="nutrition_fiber">Serat makanan</string>
     <string name="nutrition_header">tabel nutrisi</string>
     <string name="nutrition_proteins">Protein:</string>
     <string name="nutrition_salt">garam</string>
@@ -298,7 +297,7 @@
     <string name="contribution_without_account">kamu bisa masuk atau membuat akun untuk menyimpan kontribusi kamu</string>
     <string name="textCarbonFootprint">langkah karbon/co2 emissions</string>
     <string name="action_search">mencari </string>
-    <string name="search_hint">Cari produk</string>
+    <string name="search_hint">mencari sebuah produk</string>
     <string name="number_of_results">Jumlah hasil: </string>
     <string name="number_of_products">Jumlah produk: </string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
@@ -324,7 +323,7 @@
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">porsi</string>
     <string name="nutrition_monounsaturatedFat">Lemak tak jenuh Mono</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Poli tidak jenuh lemak</string>
     <string name="nutrition_omega3">Omega3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega9</string>
@@ -379,7 +378,7 @@
     <string name="take_more_pictures">memfoto</string>
     <string name="txtSaturatedFat">Lemak jenuh</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
-    <string name="nova_info_msg">Learn more about NOVA groups</string>
+    <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Group 1 - Unprocessed or minimally processed foods</string>
     <string name="nova_grp2_msg">Group 2 - Processed culinary ingredients</string>
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
@@ -393,7 +392,7 @@
     <string name="history_shortcut_short_label">riwayat/kenangan</string>
     <string name="history_shortcut_long_label">riwayat/kenangan</string>
     <string name="contributions_shortcut_short_label">Kontribusi</string>
-    <string name="contributions_shortcut_long_label">My contributions</string>
+    <string name="contributions_shortcut_long_label">Kontribusi Saya</string>
     <string name="forgot_password">Lupa Kata Sandi</string>
     <string name="next">BERIKUTNYA</string>
     <string name="skip">LEWATI</string>
@@ -415,7 +414,7 @@
     <string name="preference_enable_mobile_data_summary_on">Unggah produk baru menggunakan data telepon &amp; Wifi</string>
     <string name="preference_enable_mobile_data_summary_off">Unggah produk baru hanya melalui Wifi</string>
     <string name="device_on_mobile_data_warning_title">informasi</string>
-    <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
+    <string name="device_on_mobile_data_warning_message">Unggah pada data seluler dimatikan, sambungkan Wi-Fi atau ubah ini di preferensi</string>
     <string name="device_on_mobile_data_warning_positive">pengaturan</string>
     <string name="device_on_mobile_data_warning_negative">Tetap unggah</string>
     <string name="changes_saved">Changes saved successfully</string>
@@ -444,12 +443,12 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world-id.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Umum</string>
     <string name="preference_header_network">Jaringan</string>
     <string name="preference_header_contributing">Berkontribusi</string>
     <string name="scan_first_string">Riwayat produk Anda yang dilihat akan dicantumkan di sini. \ Nriwayat ini hanya dapat dilihat oleh Anda dan disimpan secara lokal.</string>
-    <string name="log_in">Nama pengguna</string>
+    <string name="log_in">Masuk</string>
     <string name="login_true">Sudah masuk!</string>
     <string name="confirm_logout">Konfirmasi keluar</string>
     <string name="logout_dialog_content">Apakah anda yakin untuk keluar?</string>
@@ -466,7 +465,7 @@
     <string name="additive_string">Aditif</string>
     <string name="allergen_string">Allergen</string>
     <string name="search_string">mencari </string>
-    <string name="country_string">Negara tempat penjualan</string>
+    <string name="country_string">Negara tempat dijual</string>
     <string name="store_subtitle">Toko</string>
     <string name="packaging_subtitle">Pengemasan</string>
     <string name="packaging_string">Pengemasan</string>
@@ -487,11 +486,13 @@
     <string name="DisableLoadTitle">Nonaktifkan memuat gambar</string>
     <string name="by_title">Judul</string>
     <string name="by_brand">Merek</string>
-    <string name="by_barcode">Kode batang</string>
+    <string name="by_barcode">kode batang</string>
     <string name="by_time">Barusaja dilihat</string>
     <string name="sort">Urutkan</string>
     <string name="by_nutrition_grade">Mutu Nutrisi</string>
-    <string name="sort_by">Sortir berdasarkan</string>
+    <string name="sort_by">Sortir dengan</string>
+    <string name="shake_summary">Goyang telepon untuk memindai produk</string>
+    <string name="shake_title">Goyang untuk memindai</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Gambar tanpa barcode belum bisa ditambahkan ke aplikasi. Mohon coba versi web seluler.</string>
     <string name="no_barcode">Kami tidak mendeteksi barcode apapun</string>
@@ -500,8 +501,8 @@
     <string name="code_detected">Kami telah mendeteksi barkod</string>
     <string name="do_you_want_to">Apakah anda ingin menambahkan gambar ke barcode ini?</string>
     <string name="bottomNav_history">riwayat/kenangan</string>
-    <string name="products_added">Produk yang telah Anda tambahkan atau edit</string>
-    <string name="products_incomplete">Produk yang Anda tambahkan perlu diselesaikan</string>
+    <string name="products_added">Produk yang Anda tambahkan atau edit</string>
+    <string name="products_incomplete">Produk yang Anda tambahkan itu perlu diselesaikan</string>
     <string name="product_pictures_contributed">Produk yang anda ambil gambarnya</string>
     <string name="picture_contributed_incomplete">Produk yang anda ambil gambarnya perlu diselesaikan</string>
     <string name="product_info_added">Produk yang anda tambahkan informasinya</string>
@@ -530,8 +531,8 @@
         <item quantity="other">%d additives</item>
     </plurals>
     <string name="product_not_complete">Produk ini belum selesai. \nBisa tambahkan detail lain?</string>
-    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="addProductOffline">Anda terlihat offline. Tambahkan produk %s menggunakan mode luar jaringan?</string>
+    <string name="product_not_found">Produk %1$s yang anda pindai sepertinya belum terdaftar di Open Food Facts. Dapatkah anda menambahkannya?</string>
     <string name="scan_sound">Suara pemindai</string>
     <string name="trouble_scanning">Pemindaian bermasalah?</string>
     <string name="barcode_hint">Kesulitan memindai? Masukkan barcode</string>
@@ -540,7 +541,7 @@
     <string name="initial_loading">Pemuatan awal</string>
     <string name="preferences">pengaturan</string>
     <string name="OFFlogo">Logo Open Food Facts</string>
-    <string name="loading_product">Loading product %s</string>
+    <string name="loading_product">Memuat produk %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
     <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
@@ -572,8 +573,8 @@
     <string name="no_internet_connection">You appear to have no internet connection, images will be uploaded when network is available</string>
     <string name="no_internet_unable_to_extract_ingredients">No internet connection. Unable to extract ingredients</string>
     <string name="percent">%1$d%%</string>
-    <string name="overview">meringkas</string>
-    <string name="ingredients">Bahan</string>
+    <string name="overview">Overview</string>
+    <string name="ingredients">bahan</string>
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
@@ -581,20 +582,20 @@
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
     <string name="extract_ingredients">Extract ingredients</string>
-    <string name="extracting_ingredients">Mengekstraksi bahan</string>
+    <string name="extracting_ingredients">Mengekstrak bahan</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
     <string name="traces">Jejak</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
-    <string name="nutrition_facts_not_specified">Informasi nilai gizi tidak ditetapkan pada produk.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
+    <string name="nutrition_facts_not_specified">Fakta nutrisi tidak ditentukan pada produk.</string>
+    <string name="nutrition_facts_picture">Nutrition Facts Picture</string>
     <string name="front_short_picture">Front</string>
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">porsi</string>
-    <string name="serving_size">Takaran saji</string>
+    <string name="serving_size">Melayani ukuran</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Tambahkan gizi</string>
+    <string name="add_a_nutrient">Tambahkan nutrisi</string>
     <string name="add_this_product">Add this product</string>
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
@@ -606,7 +607,7 @@
     <string name="manufacturing_details">Manufacturing Details</string>
     <string name="origin_of_ingredients">Asal bahan</string>
     <string name="manufacturing_place">Manufacturing place</string>
-    <string name="emb_code">Traceability Code</string>
+    <string name="emb_code">EMB Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Toko</string>
@@ -705,7 +706,7 @@
     <string name="product_summary_action_compare_button_label">Compare</string>
     <string name="product_summary_action_add_to_list_button_label">Add to list</string>
     <string name="product_summary_action_edit_button_label">Sunting</string>
-    <string name="product_summary_action_share_button_label">Bagikan</string>
+    <string name="product_summary_action_share_button_label">membagikan</string>
     <string name="product_question_prompt">Tap here to answer</string>
     <string name="product_question_positive_response">Ya</string>
     <string name="product_question_negative_response">Tidak</string>
@@ -726,7 +727,7 @@
     <string name="cant_edit_image_not_yet_uploaded">The new image is not yet uploaded. Please, wait before editing it</string>
     <string name="unselect_image">Unselect Image</string>
     <string name="choose_default_language">Select product language</string>
-    <string name="barcode">Kode batang</string>
+    <string name="barcode">kode batang</string>
     <string name="productAdditivesNone">No additives</string>
     <string name="error_uploading_photo">Something went wrong while uploading a new photo</string>
     <string name="import_csv_to_list">Import an Open Food Facts list CSV file</string>
@@ -737,14 +738,12 @@
     <string name="history_network_error">The product couldn\'t be loaded. Please try again when you are back online.</string>
     <string name="cant_modify_if_refreshing">Please wait until the upload finishes</string>
     <string name="closeZoom">Click to close zoom</string>
-    <string name="imageFullscreen">Perbesar</string>
+    <string name="imageFullscreen">Zoom</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Tutup</string>
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
-    <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
@@ -752,8 +751,7 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
+    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
     <string name="compare_brands">Brands :</string>
@@ -768,6 +766,7 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>
@@ -785,10 +784,7 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Labels icon</string>
     <string name="icon_categories">Categories icon</string>
-    <string name="icon_emb">Traceability code icon</string>
+    <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="brand_hint">Contoh: CocaCola, Nestle, dll …</string>
 </resources>

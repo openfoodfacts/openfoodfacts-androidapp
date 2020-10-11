@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Collections;
 import java.util.List;
+
 /**
- * Class for response received from CategoryNetworkService class
+ * Created by Abdelali Eramli on 27/12/2017.
  */
+
 public class CategoryResponse {
     private final int count;
     private final List<Tag> tags;

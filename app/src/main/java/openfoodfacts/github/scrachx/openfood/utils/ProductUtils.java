@@ -9,10 +9,10 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit;
 
 import io.reactivex.Single;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.models.Units;
-import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 
@@ -44,11 +44,11 @@ public class ProductUtils {
                 !barcode.substring(0, 3).contains("979"));
     }
 
-    public static Single<ProductState> toState(@NonNull OfflineSavedProduct offlineSavedProduct, @NonNull Context context) {
+    public static Single<State> toState(@NonNull OfflineSavedProduct offlineSavedProduct, @NonNull Context context) {
         return new OpenFoodAPIClient(context).getProductStateFull(offlineSavedProduct.getBarcode());
     }
 
     public static Single<Product> toOnlineProduct(@NonNull OfflineSavedProduct offlineSavedProduct, @NonNull Context context) {
-        return toState(offlineSavedProduct, context).map(ProductState::getProduct);
+        return toState(offlineSavedProduct, context).map(State::getProduct);
     }
 }

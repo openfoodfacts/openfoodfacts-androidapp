@@ -20,7 +20,7 @@
 
 *** Your cosmetics, your data ***
 - Your data is yours, and is never sent online
-- Du kan använda appen anonymt
+- You can use the app anonymously
 - Du kan exportera din skanningshistorik
 
 Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.

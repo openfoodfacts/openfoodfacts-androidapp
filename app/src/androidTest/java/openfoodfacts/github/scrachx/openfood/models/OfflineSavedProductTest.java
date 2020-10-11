@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
 import java.util.HashMap;
 import java.util.Map;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 
 import static junit.framework.Assert.assertEquals;

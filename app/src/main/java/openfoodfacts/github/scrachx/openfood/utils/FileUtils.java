@@ -1,9 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import androidx.annotation.NonNull;
-
-import org.jetbrains.annotations.Contract;
-
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 
 import static openfoodfacts.github.scrachx.openfood.AppFlavors.OBF;
@@ -26,8 +22,6 @@ public class FileUtils {
         return url != null && url.startsWith("/");
     }
 
-    @NonNull
-    @Contract(pure = true)
     public static String getCsvFolderName() {
         switch (BuildConfig.FLAVOR) {
             case OPFF:

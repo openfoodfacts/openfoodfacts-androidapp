@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.views;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,14 +18,14 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityAdditivesExplorerBinding;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.AdditivesAdapter;
-import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.ClickListener {
     private ActivityAdditivesExplorerBinding binding;
@@ -36,11 +35,6 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
-    }
-
-    public static void start(Context context) {
-        Intent starter = new Intent(context, AdditivesExplorer.class);
-        context.startActivity(starter);
     }
 
     @Override
@@ -66,28 +60,26 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
         asyncSessionAdditives.setListenerMainThread(operation -> {
             additives = (List<AdditiveName>) operation.getResult();
 
-            Collections.sort(additives, (additive1, additive2) -> {
-                String s1 = additive1.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
-                String s2 = additive2.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
+            Collections.sort(additives, (additiveName, t1) -> {
+                String s1 = additiveName.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
+                String s2 = t1.getName().toLowerCase().replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
                 return Integer.valueOf(s1).compareTo(Integer.valueOf(s2));
             });
 
-            if (binding == null) {
-                return;
-            }
             binding.additiveRecyclerView.setLayoutManager(new LinearLayoutManager(AdditivesExplorer.this));
             binding.additiveRecyclerView.setAdapter(new AdditivesAdapter(additives, AdditivesExplorer.this));
             binding.additiveRecyclerView.addItemDecoration(new DividerItemDecoration(AdditivesExplorer.this, DividerItemDecoration.VERTICAL));
         });
 
-        CommonBottomListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
-        CommonBottomListenerInstaller.install(this, binding.navigationBottomInclude.bottomNavigation);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.navigationBottomInclude.bottomNavigation, this);
     }
 
     @Override
     public void onClick(int position, String name) {
-        ProductBrowsingListActivity.start(AdditivesExplorer.this, name, SearchType.ADDITIVE);
+        ProductBrowsingListActivity.startActivity(AdditivesExplorer.this, name, SearchType.ADDITIVE);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,7 +90,7 @@ public class AdditivesExplorer extends BaseActivity implements AdditivesAdapter.
 
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint(getString(R.string.addtive_search));
-        if (searchManager != null && searchManager.getSearchableInfo(this.getComponentName()) != null) {
+        if (searchManager!=null && searchManager.getSearchableInfo(this.getComponentName()) != null) {
 
             searchView.setSearchableInfo(searchManager.getSearchableInfo(this.getComponentName()));
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

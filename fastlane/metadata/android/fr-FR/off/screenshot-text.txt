@@ -13,7 +13,7 @@ L'historique de vos scans, entièrement privé et exportable
 
 Allez plus loin avec Wikipédia
 
-Mettez des alertes allergènes
+Définir des alertes d'allergènes
 
 La nutrition, simplifiée
 
@@ -23,19 +23,19 @@ Trouvez des alternatives pour vos aliments préférés
 
 Devenez un acteur de la transparence alimentaire
 
-Wikipedia pour la nourriture
+Wikipédia pour la nourriture
 
 Wikipédia pour la cosmétique
 
-Wikipedia pour l'alimentation des animaux de compagnie
+Wikipédia pour la nourriture
 
-Wikipedia des produits
+Wikipédia des produits
 
 Ingrédients
 
 Puissant
 
-Informations nutritionnelles
+Qualité nutritionnelle
 
 ======================
 Captures d'écran V3

@@ -11,7 +11,7 @@ import openfoodfacts.github.scrachx.openfood.category.model.Category;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryResponse;
 import openfoodfacts.github.scrachx.openfood.utils.FileTestUtils;
 
-import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * Created by Abdelali Eramli on 01/01/2018.
@@ -25,6 +25,6 @@ public class CategoryMapperTest {
         CategoryResponse response = mapper.readValue(FileTestUtils
                 .readTextFileFromResources("mock_categories.json", this.getClass().getClassLoader()), CategoryResponse.class);
         List<Category> categories = new CategoryMapper().fromNetwork(response.getTags());
-        assertThat(response.getTags()).hasSize(categories.size());
+        assertEquals(response.getTags().size(), categories.size());
     }
 }

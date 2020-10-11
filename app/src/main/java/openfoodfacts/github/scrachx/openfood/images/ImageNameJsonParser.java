@@ -1,17 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.images;
 
 import androidx.annotation.NonNull;
-
-import com.fasterxml.jackson.databind.JsonNode;
-
+import android.util.Log;
 import org.apache.commons.lang.StringUtils;
-import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.TreeSet;
 
 /**
  * Extract images informations form json.
@@ -21,36 +19,34 @@ public class ImageNameJsonParser {
     }
 
     /**
-     * @param rootNode json representing images entries given by api/v0/product/XXXX.json?fields=images
+     * @param imagesAsJsonObject json representing images entries given by api/v0/product/XXXX.json?fields=images
      */
-    public static List<String> extractImagesNameSortedByUploadTimeDesc(@NotNull JsonNode rootNode) {
-        // a json object referring to images
-        JsonNode imagesNode = rootNode.get("product").get("images");
-
-        ArrayList<NameUploadedTimeKey> namesWithTime = new ArrayList<>();
-
-        if (imagesNode != null) {
-            final Iterator<Map.Entry<String, JsonNode>> images = imagesNode.fields();
-            if (images != null) {
+    public static List<String> extractImagesNameSortedByUploadTimeDesc(JSONObject imagesAsJsonObject) {
+        TreeSet<NameUploadedTimeKey> nameWithTime = new TreeSet<>();
+        if (imagesAsJsonObject != null) {
+            final JSONArray names = imagesAsJsonObject.names();
+            if (names != null) {
                 // loop through all the image names and store them in a array list
-                while (images.hasNext()) {
-                    final Map.Entry<String, JsonNode> image = images.next();
-                    final String imageName = image.getKey();
-                    // do not include images with contain nutrients, ingredients or other in their names
-                    // as they are duplicate and do not load as well
-                    if (!isNameAccepted(imageName)) {
-                        continue;
+                for (int i = 0; i < names.length(); i++) {
+                    try {
+                        // do not include images with contain nutrients,ingredients or other in their names
+                        // as they are duplicate and do not load as well
+                        final String namesString = names.getString(i);
+                        if (isNameAccepted(namesString)) {
+                            final long uploadedTime = imagesAsJsonObject.getJSONObject(namesString).getLong("uploaded_t");
+                            nameWithTime.add(new NameUploadedTimeKey(namesString, uploadedTime));
+                        }
+                    } catch (JSONException e) {
+                        Log.w(ImageNameJsonParser.class.getSimpleName(), "can't get product / images in json", e);
                     }
-                    final long uploadedTime = image.getValue().get("uploaded_t").asLong();
-                    namesWithTime.add(new NameUploadedTimeKey(imageName, uploadedTime));
                 }
             }
         }
-
-        return namesWithTime.stream()
-            .sorted()
-            .map(nameUploadedTimeKey -> nameUploadedTimeKey.name)
-            .collect(Collectors.toList());
+        ArrayList<String> imageNames = new ArrayList<>();
+        for (NameUploadedTimeKey key : nameWithTime) {
+            imageNames.add(key.name);
+        }
+        return imageNames;
     }
 
     private static boolean isNameAccepted(String namesString) {

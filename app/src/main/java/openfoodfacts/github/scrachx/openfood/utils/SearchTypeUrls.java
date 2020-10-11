@@ -9,7 +9,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.SearchType.EMB;
 import static openfoodfacts.github.scrachx.openfood.utils.SearchType.TRACE;
 
 public class SearchTypeUrls {
-    private static final HashMap<SearchType, String> URLS = new HashMap<>();
+    private static final HashMap<String, String> URLS = new HashMap<>();
 
     private SearchTypeUrls() {
 
@@ -21,7 +21,7 @@ public class SearchTypeUrls {
         URLS.put(TRACE, BuildConfig.OFWEBSITE + "trace/");
     }
 
-    public static String getUrl(SearchType type) {
+    public static String getUrl(@SearchType String type) {
         return URLS.get(type);
     }
 }

@@ -26,7 +26,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 - Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
 - You can start contributing today by adding a product from your fridge.
 
-▶ Krouiñ rolloù
+▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts

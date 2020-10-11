@@ -4,18 +4,27 @@ import io.sentry.core.Sentry;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 
 public class AnalyticsService {
+    private static AnalyticsService instance;
+
     private AnalyticsService() {
     }
 
-    public static void init() {
+    public static synchronized AnalyticsService getInstance() {
+        if (instance == null) {
+            instance = new AnalyticsService();
+        }
+        return instance;
+    }
+
+    public void init() {
         Sentry.configureScope(scope -> scope.setTag("flavor", BuildConfig.FLAVOR));
     }
 
-    public static void log(String key, String value) {
+    public void log(String key, String value) {
         Sentry.setTag(key, value);
     }
 
-    public static void record(Exception exception) {
+    public void record(Exception exception) {
         Sentry.captureException(exception);
     }
 }

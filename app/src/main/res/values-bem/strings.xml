@@ -1,11 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string-array name="nav_drawer_items_product">
-        <item>Summary</item>
-        <item>Ingredients</item>
-        <item>Nutrition</item>
-        <item>Nutrition Table</item>
-        <item>Environment</item>
-    </string-array>
+  <string-array name="nav_drawer_items_product">
+    <item>Summary</item>
+    <item>Ingredients</item>
+    <item>Nutrition</item>
+    <item>Nutrition Table</item>
+  </string-array>
     <string name="add_nutrition_facts_for_nutriscore">Add nutrition facts to compute the Nutri-Score</string>
 </resources>

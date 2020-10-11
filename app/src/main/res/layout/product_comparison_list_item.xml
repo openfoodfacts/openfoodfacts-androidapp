@@ -118,7 +118,7 @@
                 android:adjustViewBounds="true"
                 android:maxWidth="180dp"
                 android:scaleType="fitCenter"
-                tools:src="@drawable/ic_nutriscore_a" />
+                tools:src="@drawable/nnc_a" />
 
             <ImageView
                 android:id="@+id/product_comparison_nova_group"

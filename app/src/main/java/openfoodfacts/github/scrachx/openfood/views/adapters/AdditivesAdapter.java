@@ -11,23 +11,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 
 /**
  * Created by prajwalm on 16/04/18.
  */
+
 public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.AdditiveViewHolder> {
     private final List<AdditiveName> additives;
     private final ClickListener clickListener;
 
-    public AdditivesAdapter(List<AdditiveName> additives, ClickListener clickListener) {
+    public interface ClickListener {
+        void onClick(int position ,String name);
+    }
+
+    public AdditivesAdapter(List<AdditiveName> additives ,ClickListener clickListener) {
 
         this.additives = additives;
         this.clickListener = clickListener;
-    }
 
-    public interface ClickListener {
-        void onClick(int position, String name);
     }
 
     @NonNull
@@ -47,6 +49,7 @@ public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.Addi
                 clickListener.onClick(pos, additives.get(pos).getName());
             }
         });
+
     }
 
     @Override
@@ -54,12 +57,13 @@ public class AdditivesAdapter extends RecyclerView.Adapter<AdditivesAdapter.Addi
         return additives.size();
     }
 
-    static class AdditiveViewHolder extends RecyclerView.ViewHolder {
+    static class AdditiveViewHolder extends RecyclerView.ViewHolder{
         final TextView additiveName;
 
         AdditiveViewHolder(View itemView) {
             super(itemView);
             additiveName = itemView.findViewById(R.id.additiveName);
         }
+
     }
 }

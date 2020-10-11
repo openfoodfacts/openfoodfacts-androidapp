@@ -1,22 +1,23 @@
 package openfoodfacts.github.scrachx.openfood.views.splash;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.widget.Toast;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivitySplashBinding;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
-import openfoodfacts.github.scrachx.openfood.views.welcome.WelcomeActivity;
+import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
-import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG;
-
-public class SplashActivity extends BaseActivity implements ISplashActivity.View {
+public class SplashActivity extends BaseActivity implements ISplashPresenter.View {
     private ActivitySplashBinding binding;
+    private ISplashPresenter.Actions presenter;
     private String[] taglines;
     /*
     To show different slogans below the logo while content is being downloaded.
@@ -50,7 +51,7 @@ public class SplashActivity extends BaseActivity implements ISplashActivity.View
         taglines = getResources().getStringArray(R.array.taglines_array);
         binding.tagline.post(changeTagline);
 
-        ISplashActivity.Controller presenter = new SplashController(getSharedPreferences("prefs", 0), this, this);
+        presenter = new SplashPresenter(getSharedPreferences("prefs", 0), this, this);
         presenter.refreshData();
     }
 
@@ -66,7 +67,8 @@ public class SplashActivity extends BaseActivity implements ISplashActivity.View
             .setImagesFolderName("OFF_Images")
             .saveInAppExternalFilesDir()
             .setCopyExistingPicturesToPublicLocation(true);
-        WelcomeActivity.start(this);
+        Intent mainIntent = new Intent(SplashActivity.this, WelcomeActivity.class);
+        startActivity(mainIntent);
         finish();
     }
 
@@ -77,7 +79,12 @@ public class SplashActivity extends BaseActivity implements ISplashActivity.View
     @Override
     public void hideLoading(boolean isError) {
         if (isError) {
-            new Handler(Looper.getMainLooper()).post(() -> Snackbar.make(binding.getRoot(), R.string.errorWeb, LENGTH_LONG).show());
+            new Handler(Looper.getMainLooper()).post(() -> Toast.makeText(OFFApplication.getInstance(), R.string.errorWeb, Toast.LENGTH_LONG).show());
         }
+    }
+
+    @Override
+    public AssetManager getAssetManager() {
+        return getAssets();
     }
 }

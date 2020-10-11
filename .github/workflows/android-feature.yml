@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - '*'
-      - '!develop'
       - '!master'
-      - '!release/*'
+      - '!release*'
 
 jobs:
   test:

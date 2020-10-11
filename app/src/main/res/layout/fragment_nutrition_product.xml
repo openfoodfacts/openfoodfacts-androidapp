@@ -67,8 +67,8 @@
 
                     <ImageView
                         android:id="@+id/imageGrade"
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginTop="@dimen/spacing_normal"
@@ -76,9 +76,7 @@
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:clickable="true"
                         android:focusable="true"
-                        android:gravity="center"
-                        android:scaleType="fitCenter"
-                        tools:srcCompat="@drawable/ic_nutriscore_a" />
+                        android:gravity="center" />
 
                     <TextView
                         android:id="@+id/nutriscoreLink"

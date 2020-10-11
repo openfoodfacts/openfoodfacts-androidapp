@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
     <string name="website">https://world-de.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-de.openfoodfacts.org/mitwirkender/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts ist eine offene Datenbank mit mehr als %1$s Produkten (und denjenigen, die Sie beitragen werden).</string>
+    <string name="txtHomeOnline">Open Products Facts ist eine offene Datenbank mit mehr als %1$d Produkten (und denjenigen, die Sie beitragen werden).</string>
     <string name="txtHome">„Open Food Facts” ist eine offene Datenbank von Lebensmitteln mit Inhaltsstoffen, Allergenen, Nährwertangaben und all den Kleinigkeiten, die wir auf den Produktetiketten finden können.</string>
     <string name="slide_1_title">Beitrag zur Transparenz von Produkten leisten</string>
     <string name="slide_1_desc">Produkte erfassen und Fotos hinzufügen ermöglichen das Verständnis über Lebensmittelprodukte</string>
@@ -30,11 +30,11 @@
     <string name="translate_help_title">Mithelfen bei der Übersetzung von Open Products Facts</string>
     <string name="translate_help_summary">Übersetzen Sie die „Open Products Facts”-Datenbank in Ihre Sprache – technische Kenntnisse sind nicht erforderlich</string>
     <string name="text_offline_info_dialog">Sie können Produkte auch dann erfassen, wenn Sie offline sind, um sie später zu Open Products Facts hinzuzufügen. Die eingelesenen Produkte werden hier angezeigt und Sie können sie mit der folgenden Schaltfläche versenden.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Products Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% aorrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
+    <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Products Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Android-App „Open Products Facts” öffnen</string>
     <string name="tagline">die freie Produktdatenbank</string>
-    <string name="product_not_found">Das eingelesene Produkt „%1$s” existiert noch nicht in Open Product Facts. Könnten Sie es bitte hinzufügen?</string>
+    <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Product Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="currently_on_version">Aktuell auf Open Products Facts</string>
     <string name="category_game_btn">Helfen, Produkte zu kategorisieren</string>
     <!-- TODO add true support instead of overriding strings -->

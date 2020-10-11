@@ -1,13 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.test;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 import java.util.Locale;
 
 public class ScreenshotParameter {
-    private final String countryTag;
-    private final Locale locale;
+    private String countryTag;
+    private Locale locale;
     private List<String> productCodes;
 
     public ScreenshotParameter(String countryTag, Locale language) {
@@ -28,7 +26,6 @@ public class ScreenshotParameter {
     }
 
     @Override
-    @NonNull
     public String toString() {
         return "country: " + countryTag + "; language: " + locale;
     }

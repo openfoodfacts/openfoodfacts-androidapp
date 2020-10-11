@@ -17,18 +17,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.fragments.HomeFragment;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.MainActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductComparisonActivity;
 import openfoodfacts.github.scrachx.openfood.views.ProductListsActivity;
-import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.welcome.WelcomeActivity;
+import openfoodfacts.github.scrachx.openfood.views.WelcomeActivity;
 
 public class CommonBottomListener implements BottomNavigationView.OnNavigationItemSelectedListener {
-    @NonNull
     private final Activity currentActivity;
 
-    CommonBottomListener(@NonNull Activity activity) {
+    CommonBottomListener(Activity activity) {
         this.currentActivity = activity;
     }
 
@@ -110,10 +109,9 @@ public class CommonBottomListener implements BottomNavigationView.OnNavigationIt
     // Utility functions
 
     private boolean isCurrentActivity(Class<? extends Activity> activityClass) {
-        return currentActivity.getClass().equals(activityClass);
+        return currentActivity != null && currentActivity.getClass().equals(activityClass);
     }
 
-    @NonNull
     private Intent createIntent(Class<? extends Activity> activityClass) {
         final Intent intent = new Intent(currentActivity, activityClass);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -14,13 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import java.util.List;
-import java.util.function.Consumer;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -69,7 +66,7 @@ public class AdditiveFragmentHelper {
      * @param fragment holds a reference to the calling fragment
      **/
     private static CharSequence getAdditiveTag(AdditiveName additive, final WikiDataApiClient apiClientForWikiData, BaseFragment fragment) {
-        FragmentActivity activity = fragment.requireActivity();
+        FragmentActivity activity = fragment.getActivity();
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
 
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -118,29 +115,29 @@ public class AdditiveFragmentHelper {
     private static void onWikiNoResponse(AdditiveName additive, FragmentActivity activity) {
         if (additive.hasOverexposureData()) {
             if (activity != null && !activity.isFinishing()) {
-                BottomScreenCommon.showBottomSheet(null, additive,
+                BottomScreenCommon.showBottomScreen(null, additive,
                     activity.getSupportFragmentManager());
             }
         } else {
-            ProductBrowsingListActivity.start(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+            ProductBrowsingListActivity.startActivity(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
         }
     }
 
-    private static Consumer<JsonNode> getOnWikiResponse(FragmentActivity activity, AdditiveName additive) {
+    private static WikiDataApiClient.OnWikiResponse getOnWikiResponse(FragmentActivity activity, AdditiveName additive) {
         return result -> {
             if (result != null) {
                 if (activity != null && !activity.isFinishing()) {
-                    BottomScreenCommon.showBottomSheet(result, additive,
+                    BottomScreenCommon.showBottomScreen(result, additive,
                         activity.getSupportFragmentManager());
                 }
             } else {
                 if (additive.hasOverexposureData()) {
                     if (activity != null && !activity.isFinishing()) {
-                        BottomScreenCommon.showBottomSheet(result, additive,
+                        BottomScreenCommon.showBottomScreen(result, additive,
                             activity.getSupportFragmentManager());
                     }
                 } else {
-                    ProductBrowsingListActivity.start(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
+                    ProductBrowsingListActivity.startActivity(activity, additive.getAdditiveTag(), additive.getName(), SearchType.ADDITIVE);
                 }
             }
         };

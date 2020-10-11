@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world-es.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -10,6 +10,7 @@
     <string name="website_product">https://world-es.openfoodfacts.org/producto/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-es.openfoodfacts.org/contribuyente/</string>
+    <string name="txtHomeOnline">Open Food Facts es una base de datos abierta con más de %1$d productos alimenticios (además de aquellos con los que contribuirá) con ingredientes, alérgenos, información nutricional y toda la información que podemos encontrar en las etiquetas de los productos.</string>
     <string name="txtHome">Open Food Facts es una base de datos abierta de productos alimenticios con ingredientes, alérgenos, información nutricional y toda la información que podemos encontrar en las etiquetas de los productos.</string>
     <string name="slide_1_title">Aporta más transparencia a los productos alimenticios</string>
     <string name="slide_1_desc">Escanea los productos, sácales una foto y haz que la comida sea más transparente</string>
@@ -28,7 +29,7 @@
     <string name="translate_help_title">Ayuda a traducir Open Food Facts</string>
     <string name="translate_help_summary">Lleva la base de datos de Open Food Facts a tu idioma - no se requiere conocimiento técnico</string>
     <string name="text_offline_info_dialog">Escanea los productos incluso cuando estés sin conexión para agregarlos posteriormente a Open Food Facts. Los productos escaneados aparecerán aquí y podrás enviarlos usando el botón de abajo.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
+    <string name="warning_alert_data">Tu información sobre alergias nunca será enviada al servidor de Open Food Facts. Además, ten en cuenta que los datos del producto pueden no ser precisos al 100% ¡por lo tanto compruébalo por ti mismo por favor! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">la base de datos libre sobre productos alimenticios</string>
     <string name="product_not_found">El producto %1$s que escaneaste aún no existe en Open Food Pacts. ¿Puedes añadirlo?</string>

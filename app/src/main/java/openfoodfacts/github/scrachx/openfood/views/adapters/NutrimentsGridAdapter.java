@@ -20,7 +20,7 @@ import static android.view.View.GONE;
 /**
  * @author herau
  */
-public class NutrimentsGridAdapter extends RecyclerView.Adapter<NutrimentsGridAdapter.NutrimentViewHolder> {
+public class NutrimentsGridAdapter extends RecyclerView.Adapter {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
     private final List<NutrimentListItem> nutrimentListItems;
@@ -31,7 +31,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter<NutrimentsGridAd
     }
 
     @Override
-    public NutrimentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         boolean isViewTypeHeader = viewType == TYPE_HEADER;
 
         int layoutResourceId = isViewTypeHeader ? R.layout.nutriment_item_list_header : R.layout.nutriment_item_list;
@@ -52,7 +52,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter<NutrimentsGridAd
     }
 
     @Override
-    public void onBindViewHolder(NutrimentViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof NutrimentHeaderViewHolder) {
             NutrimentListItem item = nutrimentListItems.get(position);
             NutrimentHeaderViewHolder nutrimentViewHolder = (NutrimentHeaderViewHolder) holder;
@@ -88,13 +88,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter<NutrimentsGridAd
         return nutrimentListItems.size();
     }
 
-    public abstract static class NutrimentViewHolder extends RecyclerView.ViewHolder {
-        public NutrimentViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
-    }
-
-    static class NutrimentListViewHolder extends NutrimentViewHolder {
+    static class NutrimentListViewHolder extends RecyclerView.ViewHolder {
         private final TextView vNutrimentName;
         private final TextView vNutrimentServingValue;
         private final TextView vNutrimentValue;
@@ -127,7 +121,7 @@ public class NutrimentsGridAdapter extends RecyclerView.Adapter<NutrimentsGridAd
         }
     }
 
-    static class NutrimentHeaderViewHolder extends NutrimentViewHolder {
+    class NutrimentHeaderViewHolder extends RecyclerView.ViewHolder {
         final TextView vNutrimentValue;
 
         public NutrimentHeaderViewHolder(View itemView, boolean displayServing) {

@@ -17,7 +17,7 @@ import java.util.Date;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentContributorsBinding;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
@@ -33,7 +33,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
  */
 public class ContributorsFragment extends BaseFragment {
     private FragmentContributorsBinding binding;
-    private ProductState productStateFromActivity;
+    private State stateFromActivity;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,26 +44,17 @@ public class ContributorsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        productStateFromActivity = FragmentUtils.requireStateFromArguments(this);
+        stateFromActivity = FragmentUtils.requireStateFromArguments(this);
 
-        refreshView(productStateFromActivity);
-    }
-
-    public static ContributorsFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        ContributorsFragment fragment = new ContributorsFragment();
-        fragment.setArguments(args);
-        return fragment;
+        refreshView(stateFromActivity);
     }
 
     @Override
-    public void refreshView(ProductState productState) {
-        super.refreshView(productState);
-        productStateFromActivity = productState;
+    public void refreshView(State state) {
+        super.refreshView(state);
+        stateFromActivity = state;
 
-        final Product product = productStateFromActivity.getProduct();
+        final Product product = stateFromActivity.getProduct();
         if (isNotBlank(product.getCreator())) {
             String[] createdDate = getDateTime(product.getCreatedDateTime());
             String creatorTxt = getString(R.string.creator_history, createdDate[0], createdDate[1], product.getCreator());
@@ -125,7 +116,7 @@ public class ContributorsFragment extends BaseFragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View view) {
-                ProductBrowsingListActivity.start(getContext(), contributor, SearchType.CONTRIBUTOR);
+                ProductBrowsingListActivity.startActivity(getContext(), contributor, SearchType.CONTRIBUTOR);
             }
         };
         spannableStringBuilder.append(contributor);
@@ -139,7 +130,7 @@ public class ContributorsFragment extends BaseFragment {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View view) {
-                ProductBrowsingListActivity.start(getContext(), state, SearchType.STATE);
+                ProductBrowsingListActivity.startActivity(getContext(), state, SearchType.STATE);
             }
         };
         spannableStringBuilder.append(state);

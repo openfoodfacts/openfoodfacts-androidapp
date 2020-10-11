@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentActivity;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient;
 import openfoodfacts.github.scrachx.openfood.utils.BottomScreenCommon;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
@@ -87,18 +87,18 @@ public class CategoryProductHelper {
                             FragmentActivity activity = baseFragment.getActivity();
 
                             if (activity != null && !activity.isFinishing()) {
-                                BottomScreenCommon.showBottomSheet(result, category,
+                                BottomScreenCommon.showBottomScreen(result, category,
                                     activity.getSupportFragmentManager());
                             }
                         } else {
-                            ProductBrowsingListActivity.start(baseFragment.getContext(),
+                            ProductBrowsingListActivity.startActivity(baseFragment.getContext(),
                                 category.getCategoryTag(),
                                 category.getName(),
                                 SearchType.CATEGORY);
                         }
                     });
                 } else {
-                    ProductBrowsingListActivity.start(baseFragment.getContext(),
+                    ProductBrowsingListActivity.startActivity(baseFragment.getContext(),
                         category.getCategoryTag(),
                         category.getName(),
                         SearchType.CATEGORY);

@@ -1,12 +1,11 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.text.Collator;
 import java.util.Arrays;
 import java.util.Locale;
-
-import static com.google.common.truth.Truth.assertThat;
 
 public class Stringi18nUtilsTest {
     @Test
@@ -14,7 +13,8 @@ public class Stringi18nUtilsTest {
         String[] arr = new String[]{"Ácido araquidónico", "Ácido", "Zinc", "Almidón", "Acido"};
         Arrays.sort(arr);
 
-        assertThat(arr).isEqualTo(new String[]{"Acido", "Almidón", "Zinc", "Ácido", "Ácido araquidónico"});
+        String[] expectedResult = new String[]{"Acido", "Almidón", "Zinc", "Ácido", "Ácido araquidónico"};
+        Assert.assertArrayEquals(expectedResult, arr);
     }
 
     @Test
@@ -23,7 +23,8 @@ public class Stringi18nUtilsTest {
 
         Stringi18nUtils.sortAlphabetically(arr, Collator.getInstance(Locale.US));
 
-        assertThat(arr).isEqualTo(new String[]{"Acido", "Ácido", "Ácido araquidónico", "Almidón", "Zinc"});
+        String[] expectedResult = new String[]{"Acido", "Ácido", "Ácido araquidónico", "Almidón", "Zinc"};
+        Assert.assertArrayEquals(expectedResult, arr);
     }
 
     @Test
@@ -32,7 +33,8 @@ public class Stringi18nUtilsTest {
 
         Stringi18nUtils.sortAlphabetically(arr, Collator.getInstance(Locale.FRENCH));
 
-        assertThat(arr).isEqualTo(new String[]{"acide", "Acide", "oleique", "oléique"});
+        String[] expectedResult = new String[]{"acide", "Acide", "oleique", "oléique"};
+        Assert.assertArrayEquals(expectedResult, arr);
     }
 
     @Test
@@ -42,7 +44,8 @@ public class Stringi18nUtilsTest {
         Stringi18nUtils.sortAlphabetically(arr, Collator.getInstance(Locale.FRENCH));
 
         // upper case affects the order
-        assertThat(arr).isEqualTo(new String[]{"manganèse", "Manganèse", "molybdene", "Molybdène"});
+        String[] expectedResult = new String[]{"manganèse", "Manganèse", "molybdene", "Molybdène"};
+        Assert.assertArrayEquals(expectedResult, arr);
     }
 
     @Test
@@ -52,13 +55,13 @@ public class Stringi18nUtilsTest {
         Stringi18nUtils.sortAlphabetically(arr, Collator.getInstance(Locale.US));
 
         String[] expectedResult = new String[]{"Кальций", "Каприновая кислота", "Кофеин"};
-        assertThat(arr).isEqualTo(expectedResult);
+        Assert.assertArrayEquals(expectedResult, arr);
     }
 
     @Test
     public void testRemoveDiacriticalMarks() {
         String stringWithAccents = "Ácido araquidónico";
         String transformed = Stringi18nUtils.removeAccents(stringWithAccents);
-        assertThat(transformed).isEqualTo("Acido araquidonico");
+        Assert.assertEquals("Acido araquidonico", transformed);
     }
 }

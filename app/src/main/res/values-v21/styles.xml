@@ -24,7 +24,7 @@
         <item name="queryBackground">@color/md_light_appbar</item>
     </style>
 
-    <style name="OFFTheme.NoActionBar" parent="OFFTheme">
+    <style name="AppTheme.NoActionBar" parent="OFFTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="searchViewStyle">@style/customSearchView</item>

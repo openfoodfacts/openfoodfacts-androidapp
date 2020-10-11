@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 
 import java.util.Locale;
 
-import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * Created by n27 on 4/4/17.
@@ -18,19 +18,19 @@ public class LocaleHelperTest {
     @Test
     public void getLocale_fr() {
         Locale locale = LocaleHelper.getLocale("fr");
-        assertThat(locale).isEqualTo(Locale.FRENCH);
+        assertEquals(Locale.FRENCH, locale);
     }
 
     @Test
     public void getLocale_en() {
         Locale locale = LocaleHelper.getLocale("en");
-        assertThat(locale).isEqualTo(Locale.ENGLISH);
+        assertEquals(Locale.ENGLISH, locale);
     }
 
     @Test
     public void getLocale_en_US() {
         Locale locale = LocaleHelper.getLocale("en-US");
-        assertThat(locale).isEqualTo(Locale.US);
+        assertEquals(Locale.US, locale);
     }
 
     @Test
@@ -45,6 +45,6 @@ public class LocaleHelperTest {
         Mockito.when(context.getResources()).thenReturn(resources);
         Mockito.when(resources.getConfiguration()).thenReturn(configuration);
 
-        assertThat(LocaleHelper.getLocale(context)).isEqualTo(locale);
+        assertEquals(locale, LocaleHelper.getLocale(context));
     }
 }

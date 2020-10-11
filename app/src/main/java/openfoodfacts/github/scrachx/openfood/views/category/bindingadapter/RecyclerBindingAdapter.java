@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.CategoryName;
 import openfoodfacts.github.scrachx.openfood.views.category.adapter.CategoryListRecyclerAdapter;
 
 /**
