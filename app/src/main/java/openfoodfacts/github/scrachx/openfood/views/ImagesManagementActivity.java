@@ -36,7 +36,6 @@ import androidx.core.content.ContextCompat;
 
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageActivity;
 
@@ -349,7 +348,7 @@ public class ImagesManagementActivity extends BaseActivity {
                 url = "file://" + url;
             }
             startRefresh(getString(R.string.txtLoading));
-            Picasso.get()
+            Utils.picassoBuilder(this)
                 .load(url)
                 .into(binding.imageViewFullScreen, new Callback() {
                     @Override

@@ -62,6 +62,8 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -253,7 +255,7 @@ public class Utils {
         }
     }
 
-    
+
     /**
      * Returns the Nutri-Score graphic asset given the grade
      */
@@ -337,7 +339,7 @@ public class Utils {
         }
         return result;
     }
-    
+
     /**
      * Returns the NOVA group graphic asset given the group
      */
@@ -531,6 +533,12 @@ public class Utils {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
         }
         return builder.build();
+    }
+
+    public static Picasso picassoBuilder(Context context) {
+        return new Picasso.Builder(context)
+            .downloader(new OkHttp3Downloader(Utils.httpClientBuilder()))
+            .build();
     }
 
     public static boolean isUserLoggedIn(@NonNull Context context) {

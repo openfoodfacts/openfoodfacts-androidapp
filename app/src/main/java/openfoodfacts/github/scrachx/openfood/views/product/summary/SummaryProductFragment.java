@@ -281,7 +281,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.get()
+                Utils.picassoBuilder(getContext())
                     .load(imageUrl)
                     .into(binding.imageViewFront);
             } else {

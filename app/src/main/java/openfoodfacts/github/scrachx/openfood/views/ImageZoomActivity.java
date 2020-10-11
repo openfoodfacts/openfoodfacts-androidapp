@@ -13,13 +13,13 @@ import androidx.core.content.ContextCompat;
 
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityZoomImageBinding;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
@@ -66,7 +66,7 @@ public class ImageZoomActivity extends BaseActivity {
     private void loadImage(String imageUrl) {
         if (isNotEmpty(imageUrl)) {
             startRefresh(getString(R.string.txtLoading));
-            Picasso.get()
+            Utils.picassoBuilder(this)
                 .load(imageUrl)
                 .into(binding.imageViewFullScreen, new Callback() {
                     @Override
