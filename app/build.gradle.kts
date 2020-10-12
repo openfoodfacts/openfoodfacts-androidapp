@@ -48,7 +48,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.annotation:annotation:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.fragment:fragment:1.3.0-alpha08")
     implementation("androidx.activity:activity:1.2.0-alpha08")
