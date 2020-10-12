@@ -62,6 +62,8 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -82,8 +84,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
+import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -251,7 +255,7 @@ public class Utils {
         }
     }
 
-    
+
     /**
      * Returns the Nutri-Score graphic asset given the grade
      */
@@ -335,7 +339,7 @@ public class Utils {
         }
         return result;
     }
-    
+
     /**
      * Returns the NOVA group graphic asset given the group
      */
@@ -505,11 +509,23 @@ public class Utils {
     }
 
     public static OkHttpClient httpClientBuilder() {
+        // Our servers don't support TLS 1.3 therefore we need to create custom connectionSpec
+        // with the correct ciphers to support network requests successfully on Android 7
+        ConnectionSpec connectionSpecModernTLS = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+            .tlsVersions(TlsVersion.TLS_1_2)
+            .cipherSuites(
+                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+            .build();
+
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
             .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
             .readTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
             .writeTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
-            .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS));
+            .connectionSpecs(Arrays.asList(connectionSpecModernTLS, ConnectionSpec.COMPATIBLE_TLS));
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
@@ -517,6 +533,12 @@ public class Utils {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
         }
         return builder.build();
+    }
+
+    public static Picasso picassoBuilder(Context context) {
+        return new Picasso.Builder(context)
+            .downloader(new OkHttp3Downloader(Utils.httpClientBuilder()))
+            .build();
     }
 
     public static boolean isUserLoggedIn(@NonNull Context context) {

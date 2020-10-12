@@ -428,7 +428,7 @@ public class AddProductOverviewFragment extends BaseFragment {
             frontImageUrl = imageFrontUrl;
             binding.imageProgress.setVisibility(View.VISIBLE);
             binding.btnEditImgFront.setVisibility(View.INVISIBLE);
-            Picasso.get()
+            Utils.picassoBuilder(activity)
                 .load(imageFrontUrl)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()

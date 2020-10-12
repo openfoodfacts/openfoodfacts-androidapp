@@ -17,6 +17,7 @@ import java.util.function.Consumer;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 /**
  * Created by prajwalm on 10/09/18.
@@ -73,7 +74,7 @@ public class ProductImagesSelectionAdapter extends RecyclerView.Adapter<ProductI
         } else {
             viewGroup.setBackgroundColor(0);
         }
-        Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(imageView);
+        Utils.picassoBuilder(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView);
     }
 
     @Override

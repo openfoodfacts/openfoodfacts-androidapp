@@ -98,7 +98,7 @@ public class ImagesSelectionActivity extends BaseActivity {
     private void setSelectedImage(int selectedPosition) {
         if (selectedPosition >= 0) {
             String finalUrlString = adapter.getImageUrl(selectedPosition);
-            Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage);
+            Utils.picassoBuilder(this).load(finalUrlString).resize(400, 400).centerInside().into(binding.expandedImage);
             binding.zoomContainer.setVisibility(View.VISIBLE);
             binding.imagesRecycler.setVisibility(View.INVISIBLE);
         }

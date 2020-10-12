@@ -32,8 +32,8 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
     private static final int VIEW_ITEM = 1;
     private static final int VIEW_LOAD = 0;
     private Context context;
-    private final List<Product> products;
     private final boolean isLowBatteryMode;
+    private final List<Product> products;
 
     public ProductsRecyclerViewAdapter(List<Product> items, boolean isLowBatteryMode) {
         this.products = items;
@@ -76,7 +76,7 @@ public class ProductsRecyclerViewAdapter extends RecyclerView.Adapter<ProductsRe
 
         // Load Image if isLowBatteryMode is false
         if (!isLowBatteryMode) {
-            Picasso.get()
+            Utils.picassoBuilder(context)
                 .load(imageSmallUrl)
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.error_image)

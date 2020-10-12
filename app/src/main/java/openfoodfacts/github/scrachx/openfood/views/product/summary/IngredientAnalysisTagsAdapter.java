@@ -12,14 +12,13 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<IngredientAnalysisTagsAdapter.ViewHolder> {
     private final WeakReference<Context> contextRef;
@@ -53,7 +52,7 @@ public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<Ingredie
         Context context = contextRef.get();
         if (context != null) {
             AnalysisTagConfig tag = visibleTags.get(position);
-            Picasso.get()
+            Utils.picassoBuilder(context)
                 .load(tag.getIconUrl())
                 .into(holder.icon);
             Drawable background = context.getResources().getDrawable(R.drawable.rounded_button);

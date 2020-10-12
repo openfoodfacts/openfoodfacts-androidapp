@@ -69,7 +69,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryScanHolder> 
 
         // Load Image if isBatteryLoad is false
         if (!isLowBatteryMode) {
-            Picasso.get()
+            Utils.picassoBuilder(mActivity)
                 .load(item.getUrl())
                 .placeholder(R.drawable.placeholder_thumb)
                 .error(R.drawable.ic_no_red_24dp)
