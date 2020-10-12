@@ -91,15 +91,15 @@ import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.features.LoginActivity;
+import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
@@ -603,7 +603,7 @@ public class Utils {
             clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(@NonNull View view) {
-                    ProductBrowsingListActivity.start(activity, text, type);
+                    ProductSearchActivity.start(activity, text, type);
                 }
             };
         } else {

@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 import static org.junit.Assert.*;
 

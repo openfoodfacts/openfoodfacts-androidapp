@@ -15,9 +15,9 @@ import java.util.List;
 
 import io.reactivex.Single;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.utils.DaoUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class TaxonomiesManager {
     public static final long TAXONOMY_NO_INTERNET = -9999L;

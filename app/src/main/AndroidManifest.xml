@@ -33,7 +33,7 @@
         android:required="false" />
 
     <application
-        android:name=".views.OFFApplication"
+        android:name=".app.OFFApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -58,7 +58,7 @@
             android:authorities="${applicationId}.utils.SearchSuggestionProvider" />
 
         <activity
-            android:name=".views.splash.SplashActivity"
+            android:name=".features.splash.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -72,7 +72,7 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".views.MainActivity"
+            android:name=".features.MainActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <intent-filter>
@@ -98,14 +98,14 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".views.product.ProductActivity"
+            android:name=".features.product.view.ProductViewActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".views.MainActivity"
+            android:parentActivityName=".features.MainActivity"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.MainActivity" />
+                android:value=".features.MainActivity" />
 
             <intent-filter
                 android:autoVerify="true"
@@ -123,45 +123,45 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.LoginActivity"
-            android:parentActivityName=".views.MainActivity"
+            android:name=".features.LoginActivity"
+            android:parentActivityName=".features.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.MainActivity" />
+                android:value=".features.MainActivity" />
         </activity>
-        <activity android:name=".views.ImagesManagementActivity" />
-        <activity android:name=".views.ImageZoomActivity" />
-        <activity android:name=".views.ImagesSelectionActivity" />
+        <activity android:name=".features.ImagesManageActivity" />
+        <activity android:name=".features.ImageZoomActivity" />
+        <activity android:name=".features.ImagesSelectActivity" />
         <activity
-            android:name=".views.HistoryScanActivity"
-            android:parentActivityName=".views.MainActivity"
+            android:name=".features.scanhistory.ScanHistoryActivity"
+            android:parentActivityName=".features.MainActivity"
             android:theme="@style/OFFTheme"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.MainActivity" />
+                android:value=".features.MainActivity" />
         </activity>
         <activity
-            android:name=".views.ProductComparisonActivity"
-            android:parentActivityName=".views.MainActivity"
+            android:name=".features.compare.ProductCompareActivity"
+            android:parentActivityName=".features.MainActivity"
             android:theme="@style/OFFTheme" />
         <activity
-            android:name=".views.category.activity.CategoryActivity"
+            android:name=".features.categories.activity.CategoryActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".views.MainActivity">
+            android:parentActivityName=".features.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.MainActivity" />
+                android:value=".features.MainActivity" />
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".views.welcome.WelcomeActivity" />
+        <activity android:name=".features.welcome.WelcomeActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
@@ -177,7 +177,7 @@
         </provider>
 
         <activity
-            android:name=".views.ProductBrowsingListActivity"
+            android:name=".features.search.ProductSearchActivity"
             android:theme="@style/OFFTheme.NoActionBar">
             <intent-filter
                 android:autoVerify="true"
@@ -239,12 +239,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.AdditivesExplorer"
+            android:name=".features.additives.AdditiveListActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".views.MainActivity">
+            android:parentActivityName=".features.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.MainActivity" />
+                android:value=".features.MainActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -256,21 +256,21 @@
         </activity>
 
         <activity
-            android:name=".views.scan.ContinuousScanActivity"
+            android:name=".features.scan.ContinuousScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/OFFTheme.NoActionBar" />
         <activity
-            android:name=".views.AddProductActivity"
+            android:name=".features.product.edit.ProductEditActivity"
             android:screenOrientation="portrait"
             android:theme="@style/OFFTheme"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".views.product.CalculateDetails" />
+        <activity android:name=".features.product.view.CalculateDetailsActivity" />
 
         <activity
-            android:name=".views.ProductListsActivity"
-            android:parentActivityName=".views.MainActivity"
+            android:name=".features.productlists.ProductListsActivity"
+            android:parentActivityName=".features.MainActivity"
             android:theme="@style/OFFTheme" />
-        <activity android:name=".views.YourListedProductsActivity" />
+        <activity android:name=".features.productlist.ProductListActivity" />
     </application>
 
 </manifest>

@@ -6,10 +6,10 @@ import java.io.File;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class ProductImage {
     private final RequestBody code;

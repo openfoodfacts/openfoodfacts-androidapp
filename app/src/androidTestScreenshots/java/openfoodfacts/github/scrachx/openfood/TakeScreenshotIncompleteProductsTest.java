@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
+import openfoodfacts.github.scrachx.openfood.features.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.features.ProductBrowsingListActivity;
 
 /**
  * Take screenshots...

@@ -3,10 +3,11 @@ package openfoodfacts.github.scrachx.openfood.dagger.component;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity;
+import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity;
 
 @Component(modules = {AppModule.class})
 @Singleton
@@ -18,7 +19,7 @@ public interface AppComponent {
 
     void inject(ContinuousScanActivity activity);
 
-    void inject(openfoodfacts.github.scrachx.openfood.views.AddProductActivity activity);
+    void inject(ProductEditActivity activity);
 
     final class Initializer {
 

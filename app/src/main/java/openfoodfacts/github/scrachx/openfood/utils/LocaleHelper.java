@@ -33,8 +33,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * This class is used to change your application locale and persist this change for the next time

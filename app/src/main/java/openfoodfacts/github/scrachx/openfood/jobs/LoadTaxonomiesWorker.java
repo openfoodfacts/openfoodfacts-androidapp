@@ -31,9 +31,9 @@ import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class LoadTaxonomiesWorker extends RxWorker {
     private static final String LOG_TAG = LoadTaxonomiesWorker.class.getSimpleName();

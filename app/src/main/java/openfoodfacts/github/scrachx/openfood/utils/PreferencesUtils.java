@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
-import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
+import openfoodfacts.github.scrachx.openfood.features.PreferencesFragment;
 
 public final class PreferencesUtils {
     private PreferencesUtils() {

@@ -3,6 +3,8 @@ package openfoodfacts.github.scrachx.openfood.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity;
+
 /**
  * Class that contains search information
  */
@@ -12,7 +14,7 @@ public class SearchInfo implements Parcelable {
     private SearchType mSearchType;
 
     /**
-     * Constructor for search information used by {@link openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity}
+     * Constructor for search information used by {@link ProductSearchActivity}
      *
      * @param mSearchQuery the search query
      * @param mSearchTitle title of the search

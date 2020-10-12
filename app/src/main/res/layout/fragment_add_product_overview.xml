@@ -15,7 +15,7 @@
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".fragments.AddProductOverviewFragment">
+        tools:context=".features.product.edit.ProductEditOverviewFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

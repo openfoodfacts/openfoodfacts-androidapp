@@ -39,6 +39,9 @@ import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity;
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
@@ -52,12 +55,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
+import openfoodfacts.github.scrachx.openfood.utils.InstallationUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.InstallationUtils;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -216,7 +216,7 @@ public class OpenFoodAPIClient {
             .negativeText(R.string.txtNo)
             .onPositive((dialog, which) -> {
                 if (!activity.isFinishing()) {
-                    Intent intent = new Intent(activity, AddProductActivity.class);
+                    Intent intent = new Intent(activity, ProductEditActivity.class);
                     ProductState st = new ProductState();
                     Product pd = new Product();
                     pd.setCode(barcode);
@@ -308,7 +308,7 @@ public class OpenFoodAPIClient {
                     if (callback != null) {
                         callback.accept(productState);
                     } else {
-                        ProductActivity.start(activity, productState);
+                        ProductViewActivity.start(activity, productState);
                     }
                 }
             }
@@ -334,7 +334,7 @@ public class OpenFoodAPIClient {
     }
 
     /**
-     * Open the product in {@link ProductActivity} if the barcode exist.
+     * Open the product in {@link ProductViewActivity} if the barcode exist.
      * Also add it in the history if the product exist.
      *
      * @param barcode product barcode

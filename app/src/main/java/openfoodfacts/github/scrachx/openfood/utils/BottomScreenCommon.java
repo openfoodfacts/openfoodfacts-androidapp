@@ -6,11 +6,11 @@ import androidx.fragment.app.FragmentManager;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import openfoodfacts.github.scrachx.openfood.features.product.view.attribute.ProductAttributeFragment;
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductAttributeDetailsFragment;
 
 public class BottomScreenCommon {
     private BottomScreenCommon() {
@@ -65,7 +65,7 @@ public class BottomScreenCommon {
                 jsonObjectStr = entities.elements().next().toString();
             }
         }
-        ProductAttributeDetailsFragment.newInstance(jsonObjectStr, id, searchType, name)
+        ProductAttributeFragment.newInstance(jsonObjectStr, id, searchType, name)
             .show(fragmentManager, fragmentTag);
     }
 }

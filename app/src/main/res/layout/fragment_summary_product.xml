@@ -251,7 +251,7 @@
                     android:visibility="gone"
                     tools:visibility="visible">
 
-                    <openfoodfacts.github.scrachx.openfood.views.TipBox
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
                         android:id="@+id/tipBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

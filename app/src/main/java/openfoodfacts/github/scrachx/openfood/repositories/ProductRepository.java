@@ -33,6 +33,7 @@ import java.util.Optional;
 
 import io.reactivex.Maybe;
 import io.reactivex.Single;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
@@ -87,7 +88,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 /**
  * This is a repository class which implements repository interface.

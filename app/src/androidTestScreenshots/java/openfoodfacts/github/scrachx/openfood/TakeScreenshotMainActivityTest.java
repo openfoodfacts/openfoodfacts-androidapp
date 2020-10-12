@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
-import openfoodfacts.github.scrachx.openfood.views.MainActivity;
-import openfoodfacts.github.scrachx.openfood.views.welcome.WelcomeActivity;
+import openfoodfacts.github.scrachx.openfood.features.MainActivity;
+import openfoodfacts.github.scrachx.openfood.features.welcome.WelcomeActivity;
 
 /**
  * Take screenshots...

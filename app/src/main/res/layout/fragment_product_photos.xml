@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="@dimen/nav_bar_height"
-        tools:context="openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment">
+        tools:context="openfoodfacts.github.scrachx.openfood.features.ProductPhotosFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/imagesRecycler"

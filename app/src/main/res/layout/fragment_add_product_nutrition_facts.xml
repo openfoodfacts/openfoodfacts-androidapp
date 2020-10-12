@@ -14,7 +14,7 @@
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".fragments.AddProductNutritionFactsFragment">
+        tools:context=".features.product.edit.ProductEditNutritionFactsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

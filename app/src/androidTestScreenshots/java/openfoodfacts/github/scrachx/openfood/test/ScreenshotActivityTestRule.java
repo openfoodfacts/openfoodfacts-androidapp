@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.features.OFFApplication;
 
 public class ScreenshotActivityTestRule<T extends Activity> extends ActivityTestRule<T> {
     public static final int MILLIS_TO_WAIT_TO_DISPLAY_ACTIVITY = 5000;

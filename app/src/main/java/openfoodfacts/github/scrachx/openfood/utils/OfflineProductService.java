@@ -16,6 +16,7 @@ import java.util.Map;
 import io.reactivex.Single;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 import openfoodfacts.github.scrachx.openfood.models.ProductState;
@@ -26,7 +27,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class OfflineProductService {
     private static final String LOG_TAG = "OfflineProductService";

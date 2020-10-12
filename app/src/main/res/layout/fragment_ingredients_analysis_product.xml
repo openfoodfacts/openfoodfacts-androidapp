@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsAnalysisProductFragment">
+        tools:context=".features.product.view.ingredients_analysis.IngredientsAnalysisProductFragment">
 
         <TextView
             android:id="@+id/tv_detected_ingredients"

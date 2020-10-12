@@ -15,9 +15,9 @@ import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter;
-import openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
+import openfoodfacts.github.scrachx.openfood.features.HistoryScanActivity;
+import openfoodfacts.github.scrachx.openfood.features.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.features.product.ProductActivity;
 
 /**
  * Take screenshots...
