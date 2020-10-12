@@ -50,8 +50,8 @@ dependencies {
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.2")
     implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.fragment:fragment:1.3.0-alpha08")
-    implementation("androidx.activity:activity:1.2.0-alpha08")
+    implementation("androidx.fragment:fragment:1.3.0-beta01")
+    implementation("androidx.activity:activity:1.2.0-beta01")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.preference:preference:1.1.1")
 
