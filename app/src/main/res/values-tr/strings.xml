@@ -14,25 +14,25 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <plurals name="offline_notification_count">
         <item quantity="one">Open Food Facts\'e katılmak için bekleyen 1 çevrimdışı ürününüz var</item>
         <item quantity="other">Open Food Facts\'e katılmak için bekleyen %d çevrimdışı ürününüz var</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d saniye önce</item>
+        <item quantity="one">1 saniye önce</item>
         <item quantity="other">%d saniye önce</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d dakika önce</item>
+        <item quantity="one">1 dakika önce</item>
         <item quantity="other">%d dakika önce</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d saat önce</item>
+        <item quantity="one">1 saat önce</item>
         <item quantity="other">%d saat önce</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d gün önce</item>
+        <item quantity="one">1 gün önce</item>
         <item quantity="other">%d gün önce</item>
     </plurals>
     <string name="action_about">Hakkında</string>
@@ -68,7 +68,7 @@
         <item>g</item>
         <item>mg</item>
         <item>µg</item>
-        <item>% DV</item>
+        <item>% GKM</item>
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -117,7 +117,7 @@
         <item>Mead asit (20:3 n-9)</item>
         <item>Melisik asit (30:0)</item>
         <item>Molibden</item>
-        <item>Tekil doymamış yağ</item>
+        <item>Tekli doymamış yağ</item>
         <item>Montanik asit (28:0)</item>
         <item>Miristik asit (14:0)</item>
         <item>Nervonik asit (24:1 n-9)</item>
@@ -163,7 +163,7 @@
     <string name="txtBarcode">Barkod :</string>
     <string name="txtCategories">Kategoriler :</string>
     <string name="txtLabels">Etiketler, sertifikalar, ödüller :</string>
-    <string name="txtEMB">İzlenebilirlik kodları:</string>
+    <string name="txtEMB">EMB Kodu:</string>
     <string name="txtIngredients">İçindekiler listesi :</string>
     <string name="Donate">Bağış Yapın</string>
     <string name="Donation">Open Food Facts\'e bağışta bulunmak için buraya tıklayınız</string>
@@ -186,7 +186,7 @@
     <string name="txtSugars">Şeker</string>
     <string name="hintBarcode">Barkod</string>
     <string name="txtNutriScoreInfo">Besin seviyeleri hakkında daha fazla bilgi edinin</string>
-    <string name="hintLogin">Kullanıcı adı</string>
+    <string name="hintLogin">Giriş</string>
     <string name="hintPass">Şifre</string>
     <string name="errorLogin">Giriş veya parola hatası</string>
     <string name="errorWeb">İnternet\'e erişemedik. Bağlantı sorununuz var mı?</string>
@@ -222,21 +222,21 @@
     <string name="offline_edit_drawer">Çevrimdışı düzenle</string>
     <string name="txt_anonymous">Anonim</string>
     <string name="delete_txt">Sil</string>
-    <string name="sign_in_drawer">Giriş yap</string>
+    <string name="sign_in_drawer">Giriş</string>
     <string name="alert_drawer">Alerjen uyarısı</string>
     <string name="your_lists">Listeleriniz</string>
     <string name="title_dialog_alert">Uyarı ekle</string>
     <string name="select_camera">Kamera Seç</string>
     <string name="ok_button">Tamam</string>
     <string name="cancel_button">İptal</string>
-    <string name="login_button">Kullanıcı adı</string>
+    <string name="login_button">Giriş</string>
     <string name="create_account_button">Hesap Oluştur</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz!</string>
+    <string name="warning_alert_data">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz! </string>
     <string name="title_info_dialog">Nasıl çalışır?</string>
     <string name="text_offline_info_dialog">Ürünleri daha sonra Open Food Facts\'e eklemek için çevrimdışı olduğunuzda tarayabilirsiniz. Taradığınız tüm ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
     <string name="permission_camera">Barkodları taramak ve fotoğraf çekmek için kamera izni gerekiyor.</string>
-    <string name="no_camera_dialog_title">Kamera bulunamadı</string>
-    <string name="no_camera_dialog_content">Cihazınızın kamerası yok. Herhangi bir barkodu tarayamayacaksınız.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">İzin bilgisi</string>
     <string name="permission_denied">Lütfen ayarlardan izinleri aktif edin</string>
     <string name="info_download_data_connection">Bu işlevi çalıştırmak için bir miktar veri indirmeniz gerekiyor. Lütfen internet bağlantısını etkinleştirin.</string>
@@ -257,7 +257,6 @@
     <string name="user_ask_rate_app">Harika! Diğerlerine bu uygulama hakkında ne düşündüğünüzü bildirin!</string>
     <string name="rate_app">Uygulamayı değerlendir</string>
     <string name="no_thx">Hayır teşekkürler</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Geçmiş</string>
     <string name="clear_history">Geçmişi Temizle</string>
@@ -278,10 +277,10 @@
     <string name="enter_weight">Ürün ağırlığını girin</string>
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Karbonhidrat</string>
-    <string name="nutrition_cholesterol">Kollesterol</string>
+    <string name="nutrition_cholesterol">Kolesterol</string>
     <string name="nutrition_energy">Enerji</string>
-    <string name="nutrition_energy_kcal">Kalori cinsinden enerji (kcal)</string>
-    <string name="nutrition_energy_kj">Joule cinsinden enerji (kJ)</string>
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
     <string name="nutrition_energy_short_name">Enerji</string>
     <string name="nutrition_fat">Yağ</string>
     <string name="nutrition_fiber">Diyet lifi</string>
@@ -328,7 +327,7 @@
     <string name="for_100g">100 gr için</string>
     <string name="for_100ml">100 ml için</string>
     <string name="serving">Porsiyon başına</string>
-    <string name="nutrition_monounsaturatedFat">Tekil doymamış yağ</string>
+    <string name="nutrition_monounsaturatedFat">Tekli doymamış yağ</string>
     <string name="nutrition_polyunsaturatedFat">Çoklu doymamış yağ</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
@@ -356,7 +355,7 @@
     <string name="silica">Silika</string>
     <string name="bicarbonate">Bikarbonat</string>
     <string name="potassium">Potasyum</string>
-    <string name="chloride">Klorid</string>
+    <string name="chloride">Klorür</string>
     <string name="calcium">Kalsiyum</string>
     <string name="phosphorus">Fosfor</string>
     <string name="iron">Demir</string>
@@ -372,7 +371,7 @@
     <string name="caffeine">Kafein</string>
     <string name="taurine">Taurin</string>
     <string name="ph">pH</string>
-    <string name="fruits_vegetables_nuts">Meyve, sebze, fındık</string>
+    <string name="fruits_vegetables_nuts">Meyveler, sebzeler, kuruyemişler</string>
     <string name="collagen_meat_protein_ratio">Kollajen et protein oranı</string>
     <string name="cocoa">Kakao</string>
     <string name="chlorophyl">Klorofil</string>
@@ -384,7 +383,7 @@
     <string name="take_more_pictures">Daha fazla resim çek</string>
     <string name="txtSaturatedFat">Doymuş yağ</string>
     <string name="nutriscore_info_msg">Nutri-Score hakkında daha fazla bilgi edinin</string>
-    <string name="nova_info_msg">Roller hakkında daha fazla bilgi edinin</string>
+    <string name="nova_info_msg">Nova hakkında daha fazla bilgi edinin</string>
     <string name="nova_grp1_msg">Grup 1 - İşlenmemiş veya az işlenmiş gıdalar</string>
     <string name="nova_grp2_msg">Grup 2 - İşlenmiş yemek malzemeleri</string>
     <string name="nova_grp3_msg">Grup 3 - İşlenmiş gıdalar</string>
@@ -420,7 +419,7 @@
     <string name="preference_enable_mobile_data_summary_on">Mobil veri &amp; WiFi kullanarak yeni ürünler yükleyin</string>
     <string name="preference_enable_mobile_data_summary_off">Yalnızca WiFi kullanarak yeni ürünleri yükle</string>
     <string name="device_on_mobile_data_warning_title">Bilgi</string>
-    <string name="device_on_mobile_data_warning_message">Mobil veride yüklemeyi devre dışı bıraktınız, lütfen WiFi\'ye bağlanın veya bunu tercihlerde değiştirin</string>
+    <string name="device_on_mobile_data_warning_message">Mobil verilere yükleme devre dışı bırakıldı, lütfen WiFi\'ye bağlanın veya tercihlerde bunu değiştirin</string>
     <string name="device_on_mobile_data_warning_positive">Tercihler</string>
     <string name="device_on_mobile_data_warning_negative">Yine de yükle</string>
     <string name="changes_saved">Değişiklikler başarıyla kaydedildi</string>
@@ -431,14 +430,14 @@
     <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize çevirin - teknik bilgi gerektirmez</string>
     <string name="please_check_your_connection">Bağlantınızı kontrol ediniz.</string>
     <string name="advanced_search_title">Gelişmiş Arama &amp; Grafikler</string>
-    <string name="compare_products">Ürünleri karşılaştırın</string>
+    <string name="compare_products">Ürünleri karşılaştır</string>
     <string name="connectivity_check">İnternet bağlantınızı kontrol ediniz</string>
     <string name="dismiss">Yoksay</string>
     <string name="Terms">Kurallar</string>
-    <string name="TermsOfUse">Şartlar ve Gizlilik</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://tr.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -454,7 +453,7 @@
     <string name="preference_header_network">Ağ</string>
     <string name="preference_header_contributing">Katılım</string>
     <string name="scan_first_string">Görüntülenen ürün geçmişiniz burada listelenecektir.\nBu geçmiş sadece sizin içindir ve yerel olarak depolanır.</string>
-    <string name="log_in">Kullanıcı adı</string>
+    <string name="log_in">Giriş</string>
     <string name="login_true">Zaten oturum açıldı!</string>
     <string name="confirm_logout">Çıkışı Onayla</string>
     <string name="logout_dialog_content">Open food Facts katkıda bulunanlar hesabınızdan çıkış yapmak istediğinize emin misiniz?</string>
@@ -496,7 +495,9 @@
     <string name="by_time">Son Görüntülenenler</string>
     <string name="sort">Sırala</string>
     <string name="by_nutrition_grade">Besin Derecesi</string>
-    <string name="sort_by">Sırala</string>
+    <string name="sort_by">Şuna göre sırala</string>
+    <string name="shake_summary">Ürünleri taramak için telefonu sallayın</string>
+    <string name="shake_title">Taramak için sallayın</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Barkodsuz resimler henüz uygulamaya eklenemez. Lütfen mobil web sürümünü deneyin.</string>
     <string name="no_barcode">Herhangi bir barcod tespit etmedik</string>
@@ -521,7 +522,7 @@
     <string name="creator_history">Ürün %1$s %2$s CET\'te %3$s tarafından eklendi</string>
     <string name="last_editor_history">Ürün sayfası en son %1$s %2$s CEST\'te %3$s tarafından düzenlendi </string>
     <string name="other_editors">Ürün sayfası ayrıca … tarafından düzenlendi</string>
-    <string name="contribution_tab">Katkıda Bulunulanlar</string>
+    <string name="contribution_tab">Bağışlar</string>
     <string name="contribution_tab_summary">Kullanıcı ürün katkıları sekmesini göster</string>
     <string name="contribution_tab_title">Katkı sekmesini göster</string>
     <string name="txtDialogsTitle">Bilgi</string>
@@ -577,8 +578,8 @@
     <string name="product_uploaded_successfully">Ürün başarıyla yüklendi</string>
     <string name="no_internet_connection">İnternet bağlantınız yok gibi görünüyor, resimler ağ kullanılabilir olduğunda yüklenecek</string>
     <string name="no_internet_unable_to_extract_ingredients">İnternet bağlantısı yok. İçerikler alınamıyor</string>
-    <string name="percent">%1$d%%</string>
-    <string name="overview">Özet</string>
+    <string name="percent">%%%1$d</string>
+    <string name="overview">Genel Görünüm</string>
     <string name="ingredients">İçindekiler</string>
     <string name="nutrition_facts">Besin Değerleri</string>
     <string name="your_version">Seninki</string>
@@ -612,7 +613,7 @@
     <string name="manufacturing_details">Üretim Detayları</string>
     <string name="origin_of_ingredients">Malzemelerin kaynağı</string>
     <string name="manufacturing_place">Üretim yeri</string>
-    <string name="emb_code">İzlenebilirlik Kodu</string>
+    <string name="emb_code">EMB Kodu</string>
     <string name="purchasing_details">Satın Alma Detayları</string>
     <string name="country_where_purchased">Country where purchased</string>
     <string name="stores">Mağazalar</string>
@@ -627,7 +628,7 @@
     <string name="edit_ingredients_image">İçindekiler fotoğrafını düzenleyin</string>
     <string name="edit_other_image">Fotoğrafı düzenle</string>
     <string name="sign_in_to_edit">Ürün düzenlemek için lütfen oturum açın.</string>
-    <string name="sign_in_to_answer">Bir kavrayışı yanıtlamak için lütfen oturum açın veya kaydolun.</string>
+    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
     <string name="hint_quantity">Örnekler: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
     <string name="edit_product_title">Ürün düzenle</string>
     <string name="nutrient_already_added">%s besin değerlerinde zaten var</string>
@@ -691,13 +692,13 @@
     <string name="txt_products_to_buy">Satın alınacak ürünler</string>
     <string name="txt_exporting_your_listed_products">Ürünleriniz Dışa Aktarılıyor…</string>
     <string name="txt_your_listed_products_exported">Ürünleriniz dışa aktarıldı</string>
-    <string name="txt_discard">Sil</string>
+    <string name="txt_discard">Çıkar</string>
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">Ürünleri arayarak ve ürün sayfasının sağ üst kısmındaki + düğmesine tıklayarak onları bu listeye ekleyebilirsiniz.</string>
     <string name="search_history_pref_title">Yerel arama geçmişini sil</string>
     <string name="search_history_pref_summary">Bu cihazda yaptığınız tüm aramaları kaldırın</string>
-    <string name="search_history_pref_dialog_content">Yerel arama geçmişi silinsin mi?</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Ülkenizi seçin</string>
     <string name="settings_country_summary">Seçili ülkenizi değiştirin</string>
     <string name="settings_country_title">Ülke</string>
@@ -705,7 +706,7 @@
     <string name="image_prompt_language">Malzemelerin fotoğrafını çekin</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Ürün ekle</string>
+    <string name="add_product">Ürünler ekle</string>
     <string name="add_another_product">Başka bir ürün ekle</string>
     <string name="add_nutrition_facts_for_nutriscore">Nutri-Score hesaplamak için besin değerlerini ekleyin</string>
     <string name="product_summary_action_compare_button_label">Karşılaştır</string>
@@ -717,7 +718,7 @@
     <string name="product_question_negative_response">Hayır</string>
     <string name="product_question_ambiguous_response">Emin değilim</string>
     <string name="product_question_submit_message">Katkınız için teşekkür ederiz!</string>
-    <string name="error_nutrient_entry">Değer sayısal olmalıdır. Örnek: &quot;1,5&quot;, &quot;2,0&quot;</string>
+    <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">Porsiyon büyüklüğü pozitif bir değer olmalıdır</string>
     <string name="error_in_nutrient_data">Bazı besin değerleri geçerli değil. Lütfen yukarıda hatalı olarak işaretlenmiş alanları düzeltin</string>
     <string name="go_to_full_product_page">Ürüne git</string>
@@ -749,8 +750,6 @@
     <string name="tip_message">İPUCU: %1$s </string>
     <string name="ingredient_analysis_tip">Ürün hakkında daha fazla bilgi edinmek ve ilgilendiğiniz bilgileri seçmek için aşağıdaki simgelere tıklayın.</string>
     <string name="got_it">Anladım!</string>
-    <string name="onboarding_hint_msg">İpucu: %s </string>
-    <string name="ingredient_image_edit_tip">Yakınlaştırmak, değiştirmek, kırpmak, döndürmek ve daha fazlası için resme dokunun…</string>
     <string name="ingredients_in_this_product_are">Bu ürünün içindeki malzemeler %1$s.</string>
     <string name="ingredients_in_this_product">Bu ürünün içindeki %1$s olan malzemeler:</string>
     <string name="display_analysis_tag_status">%1$s durumunu göster</string>
@@ -758,8 +757,7 @@
     <string name="unknown_status_no_translation">Tanınmayan malzemeler nedeniyle ürünün durumunu değerlendiremedik.</string>
     <string name="help_translate_ingredients">İçindeki malzemelerin konuştuğunuz dile çevrilmesine yardım edin</string>
     <string name="unknown_status_missing_ingredients">Eksik malzemeler nedeniyle ürünün durumunu değerlendiremedik.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
-    <string name="help_extract_ingredients">%1$s durumunu elde etmek için malzemelerin çıkarılmasına yardım edin</string>
+    <string name="help_extract_ingredients">%1$s durumunu elde etmek için malzemelerin çıkarılmasına yardım edin.</string>
     <string name="add_photo_to_extract_ingredients">Malzemeleri çıkarmaya başlamak için fotoğraf ekleyin</string>
     <string name="product_already_exists_in_comparison">Ürün karşılaştırma listesinde zaten var</string>
     <string name="compare_brands">Markalar:</string>
@@ -774,6 +772,7 @@
     <string name="white_check_image_descr">Beyaz tik işareti</string>
     <string name="hint_packaging">Örnekler: plastik, kağıt, cam</string>
     <string name="risk_alcohol_consumption">Aşırı miktarda alkol tüketimi sağlığa zararlıdır, ölçülü olarak tüketilmelidir</string>
+    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Resim Tipi Seçin</string>
     <string name="content_image_type">Üzerinde çalışacağınız fotoğrafı seçin</string>
@@ -791,10 +790,7 @@
     <string name="content_exit">Ürüne geri dönmek için buraya basınız</string>
     <string name="icon_label">Etiket simgeleri</string>
     <string name="icon_categories">Katagori simgeleri</string>
-    <string name="icon_emb">İzlenebilirlik kodu simgesi</string>
+    <string name="icon_emb">EMB kodu simgesi</string>
     <string name="product_front_image">Ürünün ön taraf resmi</string>
-    <string name="brand_hint">Örnekler: Coca-Cola, Nestle vb…</string>
-    <string name="sign_in_or_register">Oturum aç / Kayıt ol</string>
-    <string name="hunger_game_call_to_action">Daha fazla sınıflandırmaya yardımcı olun %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="brand_hint">Örenekler: CocaCola, Nestle, vb…</string>
 </resources>

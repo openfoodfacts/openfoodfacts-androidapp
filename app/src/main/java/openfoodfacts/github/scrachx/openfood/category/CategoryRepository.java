@@ -9,9 +9,7 @@ import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
 import openfoodfacts.github.scrachx.openfood.category.model.Category;
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
-/**
- * This class receives list of all categories using CategoryNetworkService
- * */
+
 public class CategoryRepository {
     private final CategoryNetworkService networkService;
     private final CategoryMapper mapper;
@@ -22,8 +20,7 @@ public class CategoryRepository {
         this.mapper = mapper;
         memoryCache = new AtomicReference<>();
     }
-    /**
-     * Calling this function retrieves list of all categories from NetworkService*/
+
     public Single<List<Category>> retrieveAll() {
         if (memoryCache.get() != null) {
             return Single.just(memoryCache.get());

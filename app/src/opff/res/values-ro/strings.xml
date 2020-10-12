@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">https://world.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
     <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Contribuie la transparența produselor alimentare veterinare</string>
     <string name="slide_1_desc">Scanați produsele, fotografiați-le, ajutați la concretizarea transparenței produselor alimentare veterinare</string>
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Ajută la traducerea informațiilor din Open Food Facts</string>
     <string name="translate_help_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
     <string name="text_offline_info_dialog">Scanați produsele când sunteți offline pentru a le adăuga in Open Pet Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de mai jos.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
+    <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

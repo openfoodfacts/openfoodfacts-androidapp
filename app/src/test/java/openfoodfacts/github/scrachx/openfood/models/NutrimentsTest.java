@@ -6,7 +6,7 @@ import org.junit.Test;
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
-import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.*;
 
 public class NutrimentsTest {
     // TODO: in Nutriments, there is confusion between name and value when turning it into a Nutriment
@@ -35,32 +35,32 @@ public class NutrimentsTest {
         Nutriments.Nutriment nutriment = new Nutriments.Nutriment("test", "test", Double.toString(valueInGramFor100Gram), Double.toString(valueInGramFor200Gram),
             Units.UNIT_MILLIGRAM,
             "");
-        assertThat(nutriment.getDisplayStringFor100g()).isEqualTo(Utils.getRoundNumber(30 * 1000) + " mg");
-        assertThat(nutriment.getForAnyValue(1, Units.UNIT_KILOGRAM)).isEqualTo(Utils.getRoundNumber(UnitUtils.convertFromGram(valueInGramFor100Gram * 10, nutriment.getUnit())));
-        assertThat(nutriment.getForAnyValue(1, Units.UNIT_GRAM)).isEqualTo(Utils.getRoundNumber(UnitUtils.convertFromGram(valueInGramFor100Gram / 100, nutriment.getUnit())));
+        assertEquals(Utils.getRoundNumber(30 * 1000) + " mg", nutriment.getDisplayStringFor100g());
+        assertEquals(Utils.getRoundNumber(UnitUtils.convertFromGram(valueInGramFor100Gram * 10, nutriment.getUnit())), nutriment.getForAnyValue(1, Units.UNIT_KILOGRAM));
+        assertEquals(Utils.getRoundNumber(UnitUtils.convertFromGram(valueInGramFor100Gram / 100, nutriment.getUnit())), nutriment.getForAnyValue(1, Units.UNIT_GRAM));
     }
 
     @Test
     public void getUnit_returnsUnit() {
         nutriments.setAdditionalProperty(NUTRIMENT_UNIT_KEY, NUTRIMENT_UNIT);
-        assertThat(nutriments.getUnit(NUTRIMENT_NAME_KEY)).isEqualTo(NUTRIMENT_UNIT);
+        assertEquals(NUTRIMENT_UNIT, nutriments.getUnit(NUTRIMENT_NAME_KEY));
     }
 
     @Test
     public void getServing_returnsServing() {
         nutriments.setAdditionalProperty(NUTRIMENT_SERVING_KEY, NUTRIMENT_SERVING);
-        assertThat(nutriments.getServing(NUTRIMENT_NAME_KEY)).isEqualTo(NUTRIMENT_SERVING);
+        assertEquals(NUTRIMENT_SERVING, nutriments.getServing(NUTRIMENT_NAME_KEY));
     }
 
     @Test
     public void get100g_returns100g() {
         nutriments.setAdditionalProperty(NUTRIMENT_100G_KEY, NUTRIMENT_100G);
-        assertThat(nutriments.get100g(NUTRIMENT_NAME_KEY)).isEqualTo(NUTRIMENT_100G);
+        assertEquals(NUTRIMENT_100G, nutriments.get100g(NUTRIMENT_NAME_KEY));
     }
 
     @Test
     public void getNonExistentNutriment_returnsNull() {
-        assertThat(nutriments.get("not there")).isNull();
+        assertNull(nutriments.get("not there"));
     }
 
     @Test
@@ -73,30 +73,30 @@ public class NutrimentsTest {
         Nutriments.Nutriment nutriment = nutriments.get(NUTRIMENT_NAME_KEY);
 
         // See note about confusion between value and name above
-        assertThat(nutriment.getName()).isEqualTo(NUTRIMENT_NAME);
-        assertThat(nutriment.getUnit()).isEqualTo(NUTRIMENT_UNIT);
+        assertEquals(NUTRIMENT_NAME, nutriment.getName());
+        assertEquals(NUTRIMENT_UNIT, nutriment.getUnit());
     }
 
     @Test
     public void setAdditionalPropertyWithMineralName_setsHasMineralsTrue() {
         nutriments.setAdditionalProperty(Nutriments.SILICA, Nutriments.SILICA);
-        assertThat(nutriments.hasMinerals()).isTrue();
+        assertTrue(nutriments.hasMinerals());
     }
 
     @Test
     public void setAdditionalPropertyWithVitaminName_setsHasVitaminsTrue() {
         nutriments.setAdditionalProperty(Nutriments.VITAMIN_A, Nutriments.VITAMIN_A);
-        assertThat(nutriments.hasVitamins()).isTrue();
+        assertTrue(nutriments.hasVitamins());
     }
 
     @Test
     public void containsWithAvailableElement_returnsTrue() {
         nutriments.setAdditionalProperty(Nutriments.VITAMIN_A, Nutriments.VITAMIN_A);
-        assertThat(nutriments.contains(Nutriments.VITAMIN_A)).isTrue();
+        assertTrue(nutriments.contains(Nutriments.VITAMIN_A));
     }
 
     @Test
     public void containsWithNonExistentElement_returnsFalse() {
-        assertThat(nutriments.contains(Nutriments.VITAMIN_B1)).isFalse();
+        assertFalse(nutriments.contains(Nutriments.VITAMIN_B1));
     }
 }

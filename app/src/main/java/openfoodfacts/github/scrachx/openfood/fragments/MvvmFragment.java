@@ -8,9 +8,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import io.reactivex.disposables.CompositeDisposable;
-import openfoodfacts.github.scrachx.openfood.views.viewmodel.BaseViewModel;
+import openfoodfacts.github.scrachx.openfood.views.viewmodel.ViewModel;
 
-public abstract class MvvmFragment<T extends BaseViewModel, U> extends Fragment {
+public abstract class MvvmFragment<T extends ViewModel, U> extends Fragment {
+
     private U component;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 

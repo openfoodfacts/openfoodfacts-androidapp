@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">https://world-cs.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
     <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Contribute to Pet Food transparency</string>
     <string name="slide_1_desc">Scan products, take them in picture, make pet food transparency happen</string>
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Pomozte přeložit Open Food Facts</string>
     <string name="translate_help_summary">Přineste databázi Open Food Facts do vašeho jazyka - nejsou na to třeba žádné technické znalosti</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Pet Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % ařesné, vše prosím sami dvakrát zkontrolujte! </string>
+    <string name="warning_alert_data">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % přesné, vše prosím sami dvakrát zkontrolujte! </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

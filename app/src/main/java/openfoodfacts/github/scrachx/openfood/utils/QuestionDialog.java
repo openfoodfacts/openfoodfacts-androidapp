@@ -31,7 +31,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import openfoodfacts.github.scrachx.openfood.R;
@@ -69,12 +68,12 @@ public class QuestionDialog {
 
     public QuestionDialog(Context mContext) {
         this.mContext = mContext;
+        Resources resources = mContext.getResources();
 
         mDialog = new Dialog(mContext, R.style.QuestionDialog);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mDialog.setContentView(R.layout.dialog_product_question);
 
-        final Resources resources = mContext.getResources();
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             int width = (int) (resources.getDisplayMetrics().widthPixels * 0.90);
             int height = (int) (resources.getDisplayMetrics().heightPixels * 0.50);
@@ -83,16 +82,15 @@ public class QuestionDialog {
                 mDialog.getWindow().setLayout(width, height);
             }
         }
-        final Resources.Theme theme = mContext.getTheme();
-        mIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_feedback_black_24dp, theme);
+        mIcon = resources.getDrawable(R.drawable.ic_feedback_black_24dp);
         mIconColor = R.color.gray;
         mPositiveFeedbackText = resources.getString(R.string.product_question_positive_response);
         mNegativeFeedbackText = resources.getString(R.string.product_question_negative_response);
         mAmbiguityFeedbackText = resources.getString(R.string.product_question_ambiguous_response);
 
-        mPositiveFeedbackIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_check_circle_black_24dp, theme);
-        mNegativeFeedbackIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_cancel_black_24dp, theme);
-        mAmbiguityFeedbackIcon = ResourcesCompat.getDrawable(resources, R.drawable.ic_help_black_24dp, theme);
+        mPositiveFeedbackIcon = resources.getDrawable(R.drawable.ic_check_circle_black_24dp);
+        mNegativeFeedbackIcon = resources.getDrawable(R.drawable.ic_cancel_black_24dp);
+        mAmbiguityFeedbackIcon = resources.getDrawable(R.drawable.ic_help_black_24dp);
     }
 
     private void initiateAllViews() {
@@ -130,14 +128,9 @@ public class QuestionDialog {
             initiateAllViews();
             initiateListeners();
 
-            LayerDrawable layerDrawable = (LayerDrawable) ResourcesCompat.getDrawable(
-                mContext.getResources(),
-                R.drawable.reviewdialog_round_icon,
-                mContext.getTheme()
-            );
+            LayerDrawable layerDrawable = (LayerDrawable) mContext.getResources().getDrawable(R.drawable.reviewdialog_round_icon);
             GradientDrawable gradientDrawable = (GradientDrawable) layerDrawable.findDrawableByLayerId(R.id.round_background);
-            final int whiteColor = ResourcesCompat.getColor(mContext.getResources(), R.color.white, mContext.getTheme());
-            gradientDrawable.setColor(whiteColor);
+            gradientDrawable.setColor(mContext.getResources().getColor(R.color.white));
             layerDrawable.setDrawableByLayerId(R.id.round_background, gradientDrawable);
 
             Drawable wrappedDrawable = DrawableCompat.wrap(this.mIcon);

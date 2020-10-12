@@ -4,9 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Environment;
 import android.util.Log;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import tools.fastlane.screengrab.file.Chmod;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -16,14 +15,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import tools.fastlane.screengrab.ScreenshotCallback;
-import tools.fastlane.screengrab.file.Chmod;
-
 /**
  * Write screennshot files.
  */
-public class FileWritingScreenshotCallback implements ScreenshotCallback {
+public class FileWritingScreenshotCallback implements tools.fastlane.screengrab.ScreenshotCallback {
     private static final String LOG_TAG = FileWritingScreenshotCallback.class.getSimpleName();
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HHmmss");
     private ScreenshotParameter screenshotParameter;
@@ -50,18 +45,9 @@ public class FileWritingScreenshotCallback implements ScreenshotCallback {
         }
     }
 
-    @Nullable
-    private static File initializeDirectory(File dir) {
-        try {
-            createPathTo(dir);
-            if (dir.isDirectory() && dir.canWrite()) {
-                return dir;
-            }
-        } catch (IOException exception) {
-            Log.e(LOG_TAG, "Failed to initialize directory: " + dir.getAbsolutePath(), exception);
-        }
-
-        return null;
+    private File getScreenshotFile(File screenshotDirectory, String screenshotName) {
+        String screenshotFileName = screenshotName + "_" + dateFormat.format(new Date()) + ".png";
+        return new File(screenshotDirectory, screenshotFileName);
     }
 
     /* Checks if external storage is available for read and write */
@@ -70,21 +56,6 @@ public class FileWritingScreenshotCallback implements ScreenshotCallback {
         return Environment.MEDIA_MOUNTED.equals(state);
     }
 
-    private static void createPathTo(@NonNull File dir) throws IOException {
-        if (!dir.exists() && !dir.mkdirs()) {
-            throw new IOException("Unable to create output dir: " + dir.getAbsolutePath());
-        } else {
-            Chmod.chmodPlusRWX(dir);
-        }
-    }
-
-    @NonNull
-    private File getScreenshotFile(File screenshotDirectory, String screenshotName) {
-        String screenshotFileName = screenshotName + "_" + dateFormat.format(new Date()) + ".png";
-        return new File(screenshotDirectory, screenshotFileName);
-    }
-
-    @NonNull
     private File getFilesDirectory() throws IOException {
 
         if (!isExternalStorageWritable()) {
@@ -102,6 +73,28 @@ public class FileWritingScreenshotCallback implements ScreenshotCallback {
         } else {
             Log.d(LOG_TAG, "Using screenshot storage directory: " + directory.getAbsolutePath());
             return directory;
+        }
+    }
+
+    private static File initializeDirectory(File dir) {
+        try {
+
+            createPathTo(dir);
+            if (dir.isDirectory() && dir.canWrite()) {
+                return dir;
+            }
+        } catch (IOException exception) {
+            Log.e(LOG_TAG, "Failed to initialize directory: " + dir.getAbsolutePath(), exception);
+        }
+
+        return null;
+    }
+
+    private static void createPathTo(File dir) throws IOException {
+        if (!dir.exists() && !dir.mkdirs()) {
+            throw new IOException("Unable to create output dir: " + dir.getAbsolutePath());
+        } else {
+            Chmod.chmodPlusRWX(dir);
         }
     }
 

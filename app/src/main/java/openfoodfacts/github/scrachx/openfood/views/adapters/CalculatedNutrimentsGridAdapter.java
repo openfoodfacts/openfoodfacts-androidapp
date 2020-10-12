@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -24,7 +25,7 @@ public class CalculatedNutrimentsGridAdapter extends NutrimentsGridAdapter {
     }
 
     @Override
-    public NutrimentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         boolean isViewTypeHeader = viewType == TYPE_HEADER;
 
         int layoutResourceId = isViewTypeHeader ? R.layout.nutrition_fact_header_calc : R.layout.nutriment_item_list;
@@ -45,7 +46,7 @@ public class CalculatedNutrimentsGridAdapter extends NutrimentsGridAdapter {
     }
 
     @Override
-    public void onBindViewHolder(NutrimentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (!(holder instanceof NutrimentListViewHolder)) {
             return;
         }

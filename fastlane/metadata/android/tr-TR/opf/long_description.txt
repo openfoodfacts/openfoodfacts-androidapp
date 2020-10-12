@@ -1,4 +1,4 @@
-Open Product Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.
+Open Products Facts dünya üzerindeki tüm ürünleri içeren açık bir veritabanıdır.
 
 *** Ürün Şeffaflığına Katkıda Bulunun ***
 

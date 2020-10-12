@@ -65,12 +65,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding;
+import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments.Nutriment;
+import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.Units;
-import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView;
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
@@ -90,7 +91,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.NUT
 /**
  * @see R.layout#fragment_add_product_nutrition_facts
  */
-public class AddProductNutritionFactsFragment extends BaseFragment {
+public class AddProductNutritionFactsFragment extends BaseFragment implements PhotoReceiver {
     private static final String[] NUTRIENTS_UNITS = {Units.UNIT_GRAM, Units.UNIT_MILLIGRAM, Units.UNIT_MICROGRAM, Units.UNIT_DV, UnitUtils.UNIT_IU};
     private static final String[] SERVING_UNITS = {Units.UNIT_GRAM, Units.UNIT_MILLIGRAM, Units.UNIT_MICROGRAM, Units.UNIT_LITER, Units.UNIT_MILLILITRE};
     private final NumberKeyListener keyListener = new NumberKeyListener() {
@@ -204,18 +205,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
 
         binding.checkboxNoNutritionData.setOnCheckedChangeListener((buttonView, isChecked) -> onCheckedChanged(isChecked));
 
-        photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
-            URI resultUri = newPhotoFile.toURI();
-            imagePath = resultUri.getPath();
-
-            photoFile = newPhotoFile;
-            ProductImage image = new ProductImage(productCode, NUTRITION, newPhotoFile);
-            image.setFilePath(resultUri.getPath());
-            if (activity instanceof AddProductActivity) {
-                ((AddProductActivity) activity).addToPhotoMap(image, 2);
-            }
-            hideImageProgress(false, getString(R.string.image_uploaded_successfully));
-        });
+        photoReceiverHandler = new PhotoReceiverHandler(this);
         binding.btnAddANutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0);
         Bundle b = getArguments();
         lastEditText = binding.alcohol;
@@ -760,7 +750,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
      * @param editTextView EditText with spinner for entering the nutients
      * @param targetMap map to enter the nutrient value recieved from edit texts
      */
-    private void addNutrientToMapIfUpdated(@NonNull CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
+    private void addNutrientToMapIfUpdated(CustomValidatingEditTextView editTextView, Map<String, String> targetMap) {
 
         Nutriments productNutriments = product != null ? product.getNutriments() : new Nutriments();
 
@@ -1089,6 +1079,20 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
             return 0;
         }
         return starchEditText.getUnitSpinner().getSelectedItemPosition();
+    }
+
+    @Override
+    public void onPhotoReturned(File newPhotoFile) {
+        URI resultUri = newPhotoFile.toURI();
+        imagePath = resultUri.getPath();
+
+        photoFile = newPhotoFile;
+        ProductImage image = new ProductImage(productCode, NUTRITION, newPhotoFile);
+        image.setFilePath(resultUri.getPath());
+        if (activity instanceof AddProductActivity) {
+            ((AddProductActivity) activity).addToPhotoMap(image, 2);
+        }
+        hideImageProgress(false, getString(R.string.image_uploaded_successfully));
     }
 
     @Override

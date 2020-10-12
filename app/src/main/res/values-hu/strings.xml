@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <plurals name="offline_notification_count">
         <item quantity="one"> Önnek 1 darab kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájáruláshoz</item>
         <item quantity="other"> Önnek %d kapcsolat nélküli módban készült terméke vár az Open Food Facts-hoz való hozzájárulásra</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Mégse</string>
     <string name="login_button">Bejelentkezés</string>
     <string name="create_account_button">Fiók létrehozása</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az felismerés talán nem 100% as pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
+    <string name="warning_alert_data">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az felismerés talán nem 100%-os pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
     <string name="title_info_dialog">Hogyan működik?</string>
     <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküldheti őket.</string>
     <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>
@@ -257,7 +257,6 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Előzmények</string>
     <string name="clear_history">Előzmények törlése</string>
@@ -497,6 +496,8 @@
     <string name="sort">Rendezés</string>
     <string name="by_nutrition_grade">Táplálkozási osztályzat</string>
     <string name="sort_by">Rendezés</string>
+    <string name="shake_summary">Rázza meg a telefont termékek beolvasásához</string>
+    <string name="shake_title">Rázza meg a beolvasáshoz</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Vonalkód nélküli fényképeket még nem lehet hozzáadni az alkalmazással. Kérjük, próbálja a mobil webes változattal.</string>
     <string name="no_barcode">Nem találtunk vonalkódot</string>
@@ -518,8 +519,8 @@
     <string name="notify_channel_description">Értesítés az exportált fájl helyének megjelenítéséhez</string>
     <string name="products_to_be_completed">Kiegészítendő termékek</string>
     <string name="offline_notification_title">Kapcsolat nélküli módban készült hozzájárulások, amiket el kell küldenie</string>
-    <string name="creator_history">A terméket hozzáadta %1$s ekkor: %2$s, %3$s (CET)</string>
-    <string name="last_editor_history">Termékoldalt legutóbb szerkesztette %1$s ekkor: %2$s, %3$s (CEST) </string>
+    <string name="creator_history">A terméket hozzáadta %3$s ekkor: %1$s, %2$s (CET)</string>
+    <string name="last_editor_history">Termékoldalt legutóbb szerkesztette %3$s ekkor: %1$s, %2$s (CEST) </string>
     <string name="other_editors">A termékoldalt szerkesztette még </string>
     <string name="contribution_tab">Hozzájárulások</string>
     <string name="contribution_tab_summary">Felhasználói hozzájárulások fül megjelenítése a termékekkel</string>
@@ -585,7 +586,7 @@
     <string name="ingredients_picture">Összetevők képe</string>
     <string name="take_ingredients_picture_to_extract">(Kérem, készítsen egy képet az összetevőkről, hogy be tudja olvasni róla szöveget a program)</string>
     <string name="ingredients_list">Összetevők</string>
-    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a % (százalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon () (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
+    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a % (százalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon ( ) (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
     <string name="extract_ingredients">Összetevők kiolvasása</string>
     <string name="extracting_ingredients">Összetevők kiolvasása</string>
     <string name="looksGood">Jónak tűnik</string>
@@ -750,8 +751,6 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Kattintson az alábbi ikonokra, ha többet szeretne megtudni a termékről, és kiválasztani, hogy melyik információ érdekli.</string>
     <string name="got_it">Rendben!</string>
-    <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">A termék összetevői %1$s.</string>
     <string name="ingredients_in_this_product">A termék összetevői amik %1$s:</string>
     <string name="display_analysis_tag_status">%1$s állapot megjelenítése</string>
@@ -759,7 +758,6 @@
     <string name="unknown_status_no_translation">A felismerhetetlen összetevők miatt nem tudtuk felmérni a termék állapotát.</string>
     <string name="help_translate_ingredients">Segítsen lefordítani az összetevőket az Ön nyelvére</string>
     <string name="unknown_status_missing_ingredients">A hiányzó összetevők miatt nem tudtuk felmérni a termék állapotát.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Segítsen kinyerni az összetevőket, hogy megkapjuk a(z) %1$s állapotát.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">Ez a termék már szerepel az összehasonlítási listán</string>
@@ -775,6 +773,7 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>
@@ -795,7 +794,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

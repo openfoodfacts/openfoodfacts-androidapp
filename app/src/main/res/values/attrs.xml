@@ -35,9 +35,6 @@
         <attr name="animate" format="boolean" />
         <attr name="message" format="string" />
         <attr name="identifier" format="string" />
-        <attr name="shouldDisplayImmediately" format="boolean"/>
-        <attr name="backgroundColor" format="color"/>
-        <attr name="textColor" format="color"/>
         <attr name="arrowMarginStart" format="dimension" />
         <attr name="arrowMarginEnd" format="dimension" />
         <attr name="arrowAlignment" format="string">

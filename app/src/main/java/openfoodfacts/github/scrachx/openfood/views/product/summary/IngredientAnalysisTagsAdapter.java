@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
 
 public class IngredientAnalysisTagsAdapter extends RecyclerView.Adapter<IngredientAnalysisTagsAdapter.ViewHolder> {
     private final WeakReference<Context> contextRef;

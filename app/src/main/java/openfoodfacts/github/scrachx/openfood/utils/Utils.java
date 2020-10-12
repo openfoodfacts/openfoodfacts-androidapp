@@ -35,6 +35,7 @@ import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.Settings;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -55,7 +56,6 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 import androidx.work.Constraints;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.NetworkType;
@@ -66,7 +66,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.jetbrains.annotations.Contract;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -78,10 +77,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.ConnectionSpec;
@@ -94,16 +91,12 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
-import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static okhttp3.CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256;
-import static okhttp3.ConnectionSpec.COMPATIBLE_TLS;
-import static okhttp3.ConnectionSpec.MODERN_TLS;
-import static okhttp3.TlsVersion.TLS_1_2;
 
 public class Utils {
     public static final int CONNECTION_TIMEOUT = 5000;
@@ -257,9 +250,6 @@ public class Utils {
         }
     }
 
-    /**
-     * Returns the Nutri-Score graphic asset given the grade
-     */
     @DrawableRes
     public static int getImageGrade(@Nullable String grade) {
 
@@ -269,42 +259,20 @@ public class Utils {
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                return R.drawable.ic_nutriscore_a;
+                return R.drawable.nnc_a;
             case "b":
-                return R.drawable.ic_nutriscore_b;
+                return R.drawable.nnc_b;
             case "c":
-                return R.drawable.ic_nutriscore_c;
+                return R.drawable.nnc_c;
             case "d":
-                return R.drawable.ic_nutriscore_d;
+                return R.drawable.nnc_d;
             case "e":
-                return R.drawable.ic_nutriscore_e;
+                return R.drawable.nnc_e;
             default:
                 return NO_DRAWABLE_RESOURCE;
         }
     }
 
-    public static int getImageGrade(@Nullable Product product) {
-        return getImageGrade(product == null ? null : product.getNutritionGradeFr());
-    }
-
-    @Nullable
-    public static Drawable getImageGradeDrawable(@NonNull Context context, @Nullable String grade) {
-
-        int gradeID = getImageGrade(grade);
-        if (gradeID == NO_DRAWABLE_RESOURCE) {
-            return null;
-        }
-        return VectorDrawableCompat.create(context.getResources(), gradeID, null);
-    }
-
-    @Nullable
-    public static Drawable getImageGradeDrawable(@NonNull Context context, @Nullable Product product) {
-        return getImageGradeDrawable(context, product == null ? null : product.getNutritionGradeFr());
-    }
-
-    /**
-     * Returns the NOVA group explanation given the group
-     */
     public static String getNovaGroupExplanation(@Nullable String novaGroup, @NonNull Context context) {
 
         if (novaGroup == null) {
@@ -341,9 +309,6 @@ public class Utils {
         return result;
     }
 
-    /**
-     * Returns the NOVA group graphic asset given the group
-     */
     public static int getNovaGroupDrawable(@Nullable Product product) {
         return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
     }
@@ -370,15 +335,11 @@ public class Utils {
     }
 
     public static int getSmallImageGrade(Product product) {
-        if (product == null) {
-            return getSmallImageGrade((String) null);
-        }
-        // Prefer the global tag to the FR tag
-        if (product.getNutritionGradeTag() != null) {
-            return getSmallImageGrade(product.getNutritionGradeTag());
-        } else {
-            return getSmallImageGrade(product.getNutritionGradeFr());
-        }
+        return getSmallImageGrade(product == null ? null : product.getNutritionGradeFr());
+    }
+
+    public static int getImageGrade(Product product) {
+        return getImageGrade(product == null ? null : product.getNutritionGradeFr());
     }
 
     public static int getImageEnvironmentImpact(Product product) {
@@ -411,19 +372,19 @@ public class Utils {
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                drawable = R.drawable.ic_nutriscore_small_a;
+                drawable = R.drawable.nnc_small_a;
                 break;
             case "b":
-                drawable = R.drawable.ic_nutriscore_small_b;
+                drawable = R.drawable.nnc_small_b;
                 break;
             case "c":
-                drawable = R.drawable.ic_nutriscore_small_c;
+                drawable = R.drawable.nnc_small_c;
                 break;
             case "d":
-                drawable = R.drawable.ic_nutriscore_small_d;
+                drawable = R.drawable.nnc_small_d;
                 break;
             case "e":
-                drawable = R.drawable.ic_nutriscore_small_e;
+                drawable = R.drawable.nnc_small_e;
                 break;
             default:
                 break;
@@ -509,25 +470,12 @@ public class Utils {
         isUploadJobInitialised = true;
     }
 
-    @NonNull
     public static OkHttpClient httpClientBuilder() {
-
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
             .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
             .readTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
-            .writeTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS);
-
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N) {
-            // Fix for https://github.com/openfoodfacts/openfoodfacts-androidapp/pull/3519/files
-            builder.connectionSpecs(Collections.singletonList(
-                new ConnectionSpec.Builder(MODERN_TLS)
-                    .tlsVersions(TLS_1_2)
-                    .cipherSuites(TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
-                    .build())
-            );
-        } else {
-            builder.connectionSpecs(Arrays.asList(MODERN_TLS, COMPATIBLE_TLS));
-        }
+            .writeTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
+            .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS));
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
@@ -535,6 +483,23 @@ public class Utils {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
         }
         return builder.build();
+    }
+
+    /**
+     * Check if airplane mode is turned on on the device.
+     *
+     * @param context of the application.
+     * @return true if airplane mode is active.
+     */
+    public static boolean isAirplaneModeActive(@NonNull Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return Settings.Global.getInt(context.getContentResolver(),
+                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
+        } else {
+            //noinspection deprecation
+            return Settings.System.getInt(context.getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+        }
     }
 
     public static boolean isUserLoggedIn(@NonNull Context context) {
@@ -591,7 +556,7 @@ public class Utils {
     }
 
     @NonNull
-    public static CharSequence getClickableText(String text, String urlParameter, SearchType type, Activity activity, CustomTabsIntent customTabsIntent) {
+    public static CharSequence getClickableText(String text, String urlParameter, @SearchType String type, Activity activity, CustomTabsIntent customTabsIntent) {
         ClickableSpan clickableSpan;
         String url = SearchTypeUrls.getUrl(type);
 
@@ -599,7 +564,7 @@ public class Utils {
             clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(@NonNull View view) {
-                    ProductBrowsingListActivity.start(activity, text, type);
+                    ProductBrowsingListActivity.startActivity(activity, text, type);
                 }
             };
         } else {
@@ -626,9 +591,6 @@ public class Utils {
     public static boolean isBatteryLevelLow(@NonNull Context context) {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
-        if (batteryStatus == null) {
-            throw new IllegalStateException("cannot get battery level");
-        }
 
         int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
@@ -715,15 +677,12 @@ public class Utils {
         }
     }
 
-    @Contract(pure = true)
     @Nullable
     @SafeVarargs
-    public static <T> T firstNotNull(@Nullable T... args) {
-        if (args != null) {
-            for (T arg : args) {
-                if (arg != null) {
-                    return arg;
-                }
+    public static <T> T firstNotNull(T... args) {
+        for (T arg : args) {
+            if (arg != null) {
+                return arg;
             }
         }
         return null;
@@ -737,6 +696,10 @@ public class Utils {
             }
         }
         return null;
+    }
+
+    public static boolean isFlavor(String flavor) {
+        return BuildConfig.FLAVOR.equals(flavor);
     }
 
     @NonNull
@@ -783,10 +746,6 @@ public class Utils {
             }
         }
         return true;
-    }
-
-    public static boolean isAllGranted(@NonNull Map<String, Boolean> grantResults) {
-        return grantResults.containsValue(false);
     }
 }
 

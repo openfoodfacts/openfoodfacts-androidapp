@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/ -->
     <string name="website">https://world.openpetfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contribuer -->
@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
     <string name="txtHome">Open Pet Food Facts is a database of pet food products with ingredients, nutrition facts… Woof. Woof.</string>
     <string name="slide_1_title">Συμβάλλετε στη διαφάνεια των τροφών κατοικιδίων</string>
     <string name="slide_1_desc">Σαρώστε τα προϊόντα, τραβήξτε τα φωτογραφία και κάντε τη διατροφική διαφάνεια των ζωοτροφών πραγματικότητα</string>
@@ -30,7 +30,7 @@
     <string name="translate_help_title">Βοηθήστε να μεταφραστεί το Open Food Facts</string>
     <string name="translate_help_summary">Βοηθήστε στην μετάφραση της εφαρμογής χωρίς να απαιτούνται τεχνολογικές γνώσεις</string>
     <string name="text_offline_info_dialog">Μπορείτε να σαρώσετε προϊόντα όταν είστε εκτός σύνδεσης για να τα προσθέσετε αργότερα στο Open Pet Food Facts. Όλα τα προϊόντα που σαρώνετε θα εμφανίζονται εδώ και θα μπορείτε να τα στείλετε χρησιμοποιώντας το παρακάτω κουμπί.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Η αλλεργίες που εισάγετε είναι προσωπικές και δεν στέλνονται σε εμάς. Να είστε προσεχτικοί καθώς οι πληροφορίες προϊόντων δεν είναι τελείως ακριβής και προτείνεται να ελέγχετε τι παίρνετε. </string>
+    <string name="warning_alert_data">Η αλλεργίες που εισάγετε είναι προσωπικές και δεν στέλνονται σε εμάς. Να είστε προσεχτικοί καθώς οι πληροφορίες προϊόντων δεν είναι τελείως ακριβής και προτείνεται να ελέγχετε τι παίρνετε. </string>
     <!-- OPFF tagline in different languages -->
     <string name="version_string">Open Pet Food Facts Android App</string>
     <string name="tagline">free pet food products database</string>

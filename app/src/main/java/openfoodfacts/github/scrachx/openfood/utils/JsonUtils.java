@@ -8,12 +8,10 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 /**
  * Jackson Utils for read and write JSON
  */
-public class JsonUtils {
-    private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static ObjectMapper getSharedMapper() {
-        return objectMapper;
-    }
+public class JsonUtils {
+
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     private JsonUtils() {
     }
@@ -29,4 +27,5 @@ public class JsonUtils {
     public static ObjectWriter writerFor(Class<?> type) {
         return objectMapper.writerFor(type);
     }
+
 }

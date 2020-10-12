@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world-cs.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -10,6 +10,7 @@
     <string name="website_product">https://world-cs.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-cs.openfoodfacts.org/contributor/</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$d food products (plus the ones you will contribute) with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>
     <string name="txtHome">Open Food Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.</string>
     <string name="slide_1_title">Přispěte k transparenci potravin</string>
     <string name="slide_1_desc">Nasnímejte zboží, vyfoťte ho, zajistěte transparentnost potravin</string>
@@ -28,7 +29,7 @@
     <string name="translate_help_title">Pomozte přeložit Open Food Facts</string>
     <string name="translate_help_summary">Přineste databázi Open Food Facts do vašeho jazyka - nejsou na to třeba žádné technické znalosti</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % ařesná, vše prosím sami dvakrát zkontrolujte!</string>
+    <string name="warning_alert_data">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % přesná, vše prosím sami dvakrát zkontrolujte!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">svobodná databáze potravin</string>
     <string name="product_not_found">Výrobek %1$s, který jste naskenovali, ještě není v databázi Open Food Facts. Můžete ho prosím přidat?</string>

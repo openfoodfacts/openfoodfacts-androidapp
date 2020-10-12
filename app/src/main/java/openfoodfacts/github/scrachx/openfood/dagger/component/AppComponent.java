@@ -6,7 +6,6 @@ import dagger.Component;
 import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule;
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
 @Component(modules = {AppModule.class})
 @Singleton
@@ -16,7 +15,7 @@ public interface AppComponent {
 
     void inject(OFFApplication application);
 
-    void inject(ContinuousScanActivity activity);
+    void inject(openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity activity);
 
     void inject(openfoodfacts.github.scrachx.openfood.views.AddProductActivity activity);
 

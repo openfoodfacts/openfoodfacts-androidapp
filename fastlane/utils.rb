@@ -13,10 +13,10 @@ def play_store_version_code_to_upload_to()
     return versionCode.max + 1
 end
 
-def play_store_version_to_upload_to(minimumVersionName: '0.0.1')
-    puts "fetching play_store_version_to_upload_to, min is #{minimumVersionName}"
+def play_store_version_to_upload_to()
+    puts "fetching play_store_version_to_upload_to"
 
-    versionParsed = Versionomy.parse(minimumVersionName)
+    versionParsed = Versionomy.parse('0.0.1')
 
     ['internal', 'alpha', 'beta', 'production'].each { |branch|
         trackVersionName = google_play_track_version_name(track: branch)

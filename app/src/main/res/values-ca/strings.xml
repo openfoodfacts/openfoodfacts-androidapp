@@ -14,25 +14,25 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <plurals name="offline_notification_count">
         <item quantity="one"> Teniu 1 producte fora de línia esperant la vostra aportació a Open Food Facts</item>
         <item quantity="other"> Teniu %d productes fora de línia esperant la vostra aportació a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">Fa %d segon</item>
+        <item quantity="one">Fa 1 segon</item>
         <item quantity="other">Fa %d segons</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">fa %d minut</item>
+        <item quantity="one">fa 1 minut</item>
         <item quantity="other">fa %d minuts</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">fa %d hora</item>
+        <item quantity="one">fa 1 hora</item>
         <item quantity="other">fa %d hores</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">fa %d dia</item>
+        <item quantity="one">fa 1 dia</item>
         <item quantity="other">fa %d dies</item>
     </plurals>
     <string name="action_about">Quant a</string>
@@ -68,7 +68,7 @@
         <item>mg</item>
         <item>kg</item>
         <item>µg</item>
-        <item>% DDR</item>
+        <item>% QDR</item>
         <item>UI</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -163,7 +163,7 @@
     <string name="txtBarcode">Codi de barres :</string>
     <string name="txtCategories">Categories :</string>
     <string name="txtLabels">Etiquetes, certificacions, premis :</string>
-    <string name="txtEMB">Codis de traçabilitat:</string>
+    <string name="txtEMB">Codi RGSEAA:</string>
     <string name="txtIngredients">Llista d\'ingredients :</string>
     <string name="Donate">Feu un donatiu</string>
     <string name="Donation">Cliqueu aquí per a fer un donatiu a Open Food Facts</string>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancel·la</string>
     <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% axacta, així que comproveu-ho dues vegades!</string>
+    <string name="warning_alert_data">La informació sobre les vostres al·lèrgies no s\'enviarà mai al servidor d\'Open Food Facts. Tot i això, aneu amb compte, les dades dels productes poden ser poc precises i és possible que la detecció pot ser que no sigui 100% exacta, així que comproveu-ho dues vegades!</string>
     <string name="title_info_dialog">Com funciona?</string>
     <string name="text_offline_info_dialog">Podeu escanejar productes fora de línia i afegir-los després a Open Food Facts. Tots els productes que escanegi apareixeran aquí, i podrà enviar-los amb el botó de baix.</string>
     <string name="permission_camera">El permís de la càmera és necessari per escanejar codis de barres i fer fotos.</string>
@@ -257,7 +257,6 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Historial</string>
     <string name="clear_history">Neteja l\'historial</string>
@@ -384,7 +383,7 @@
     <string name="take_more_pictures">Feu més fotos</string>
     <string name="txtSaturatedFat">Greixos saturats</string>
     <string name="nutriscore_info_msg">Apreneu més sobre la Nutri-Score</string>
-    <string name="nova_info_msg">Obteniu més informació sobre els grups NOVA</string>
+    <string name="nova_info_msg">Apreneu més sobre Nova</string>
     <string name="nova_grp1_msg">Grup 1 - Aliments no processats o mínimament processats</string>
     <string name="nova_grp2_msg">Grup 2 - Ingredients culinaris processats</string>
     <string name="nova_grp3_msg">Grup 3 - Aliments processats</string>
@@ -497,6 +496,8 @@
     <string name="sort">Ordena</string>
     <string name="by_nutrition_grade">Grau nutricional</string>
     <string name="sort_by">Ordena per</string>
+    <string name="shake_summary">Escaneja productes sacsejant el telèfon</string>
+    <string name="shake_title">Sacseja per escanejar</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Les imatges sense codi de barres encara no es poden afegir amb l\'aplicació. Proveu la versió web per a mòbils.</string>
     <string name="no_barcode">No hem detectat cap codi de barres</string>
@@ -612,7 +613,7 @@
     <string name="manufacturing_details">Detalls de fabricació</string>
     <string name="origin_of_ingredients">Origen dels ingredients</string>
     <string name="manufacturing_place">Lloc de fabricació</string>
-    <string name="emb_code">Codi de traçabilitat</string>
+    <string name="emb_code">Codi RGSEAA</string>
     <string name="purchasing_details">Detalls de compra</string>
     <string name="country_where_purchased">País on s\'ha comprat</string>
     <string name="stores">Botigues</string>
@@ -749,16 +750,13 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
-    <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Ajudeu a traduir els ingredients a la vostra llengua</string>
+    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="unknown_status_ambiguous_ingredients">No hem pogut valorar l\'estat del producte perquè inclou ingredients ambigus: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">The product already exists in the comparison list</string>
@@ -774,6 +772,7 @@
     <string name="white_check_image_descr">Un vist blanc</string>
     <string name="hint_packaging">Exemples: plàstic, paper, vidre</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>
@@ -791,10 +790,7 @@
     <string name="content_exit">Press here to return to the product</string>
     <string name="icon_label">Icona d\'etiquetes</string>
     <string name="icon_categories">Icona de categories</string>
-    <string name="icon_emb">Icona de codi de traçabilitat</string>
+    <string name="icon_emb">Icona de codi EMB</string>
     <string name="product_front_image">Imatge frontal del producte</string>
-    <string name="brand_hint">Exemples: Coca-Cola, Nestlé, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Ajudeu a classificar millor %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
 </resources>

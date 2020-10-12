@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
-import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
 
 /**
  * Take screenshots...
@@ -16,18 +16,15 @@ import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 public class TakeScreenshotScanActivityTest extends AbstractScreenshotTest {
     public static final int MS_TO_WAIT_TO_DISPLAY_PRODUCT_IN_SCAN = 2000;
     @Rule
-    public ScreenshotActivityTestRule<ContinuousScanActivity> activityRule =
-        new ScreenshotActivityTestRule<>(ContinuousScanActivity.class);
+    public ScreenshotActivityTestRule<ContinuousScanActivity> activity = new ScreenshotActivityTestRule<>(ContinuousScanActivity.class);
 
     @Test
     public void testTakeScreenshotScanActivity() {
-        activityRule.setAfterActivityLaunchedAction(screenshotActivityTestRule -> {
+        activity.setAfterActivityLaunchedAction(screenshotActivityTestRule ->
+        {
             try {
                 screenshotActivityTestRule.runOnUiThread(() -> {
-                    final String barcode = screenshotActivityTestRule
-                        .getScreenshotParameter().getProductCodes().get(0);
-                    screenshotActivityTestRule.getActivity()
-                        .showProduct(barcode);
+                    ((ContinuousScanActivity) screenshotActivityTestRule.getActivity()).showProduct(screenshotActivityTestRule.getScreenshotParameter().getProductCodes().get(0));
                 });
                 Thread.sleep(MS_TO_WAIT_TO_DISPLAY_PRODUCT_IN_SCAN);
             } catch (Throwable throwable) {
@@ -35,6 +32,6 @@ public class TakeScreenshotScanActivityTest extends AbstractScreenshotTest {
             }
         });
 
-        startForAllLocales(activityRule);
+        startForAllLocales(activity);
     }
 }

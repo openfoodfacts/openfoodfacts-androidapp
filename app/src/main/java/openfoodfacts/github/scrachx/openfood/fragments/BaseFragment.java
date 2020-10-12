@@ -23,7 +23,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -36,7 +35,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import java.io.File;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.BaseActivity;
 import openfoodfacts.github.scrachx.openfood.views.listeners.OnRefreshListener;
@@ -45,6 +44,7 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 
 public abstract class BaseFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
     /**
@@ -99,21 +99,25 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
     }
 
     @Override
-    public void refreshView(ProductState productState) {
+    public void refreshView(State state) {
         if (swipeRefreshLayout != null) {
             swipeRefreshLayout.setRefreshing(false);
         }
     }
 
     protected void doChooseOrTakePhotos(String title) {
-        if (canTakePhotos()) {
+        if (!canTakePhotos()) {
+            requestPermissions(new String[]{CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
+        } else {
             EasyImage.openCamera(this, 0);
-            return;
         }
-        // Ask for permissions
-        registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), results -> {
-            if (!Utils.isAllGranted(results)) {
-                // Tell the user how to give permission
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA) {
+            if (!Utils.isAllGranted(grantResults)) {
                 new MaterialDialog.Builder(requireActivity())
                     .title(R.string.permission_title)
                     .content(R.string.permission_denied)
@@ -122,16 +126,15 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
                     .onPositive((dialog, which) -> {
                         Intent intent = new Intent();
                         intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", requireActivity().getPackageName(), null);
+                        Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
                         intent.setData(uri);
                         startActivity(intent);
                     })
                     .show();
             } else {
-                // Callback
                 doOnPhotosPermissionGranted();
             }
-        }).launch(new String[]{CAMERA});
+        }
     }
 
     protected void doOnPhotosPermissionGranted() {

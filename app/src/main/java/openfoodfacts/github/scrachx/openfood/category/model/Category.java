@@ -1,7 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.category.model;
+
 /**
- * Model class for Category
+ * Created by Abdelali Eramli on 27/12/2017.
  */
+
 public class Category {
     private final String id;
     private final String name;

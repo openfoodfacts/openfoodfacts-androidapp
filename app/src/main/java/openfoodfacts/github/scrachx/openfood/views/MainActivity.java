@@ -1,19 +1,3 @@
-/*
- * Copyright 2016-2020 Open Food Facts
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package openfoodfacts.github.scrachx.openfood.views;
 
 import android.Manifest;
@@ -26,7 +10,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.ColorDrawable;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -43,7 +28,6 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityCompat;
@@ -56,8 +40,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.FormatException;
@@ -89,7 +71,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -98,7 +80,6 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
@@ -112,57 +93,59 @@ import openfoodfacts.github.scrachx.openfood.fragments.PreferencesFragment;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener;
-import openfoodfacts.github.scrachx.openfood.utils.PrefManager;
 import openfoodfacts.github.scrachx.openfood.utils.RealPathUtil;
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider;
 import openfoodfacts.github.scrachx.openfood.utils.SearchType;
+import openfoodfacts.github.scrachx.openfood.utils.ShakeDetector;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.adapters.PhotosAdapter;
 import openfoodfacts.github.scrachx.openfood.views.category.activity.CategoryActivity;
-import openfoodfacts.github.scrachx.openfood.views.listeners.CommonBottomListenerInstaller;
-import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.views.listeners.BottomNavigationListenerInstaller;
 
 import static openfoodfacts.github.scrachx.openfood.BuildConfig.APP_NAME;
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTHER;
 
-public class MainActivity extends BaseActivity implements NavigationDrawerListener {
+public class MainActivity extends BaseActivity implements CustomTabActivityHelper.ConnectionCallback, NavigationDrawerListener, SharedPreferences.OnSharedPreferenceChangeListener {
+    public static final int LOGIN_REQUEST = 1;
+    private static final int SHOW_CONTRIBUTION_AFTER_LOGIN = 2;
     private static final long USER_ID = 500;
     private static final String CONTRIBUTIONS_SHORTCUT = "CONTRIBUTIONS";
     private static final String SCAN_SHORTCUT = "SCAN";
     private static final String BARCODE_SHORTCUT = "BARCODE";
-    private static final int WEEK_IN_MS = 60 * 60 * 24 * 7 * 1000;
-    public static final String PRODUCT_SEARCH_KEY = "product_search";
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private ActivityMainBinding binding;
     private AccountHeader headerResult = null;
-    private Drawer drawerResult = null;
+    private Drawer result = null;
     private MenuItem searchMenuItem;
     private CustomTabActivityHelper customTabActivityHelper;
-    /**
-     * Used to re-create the fragment after activity recreation
-     */
     private CustomTabsIntent customTabsIntent;
     private Uri userAccountUri;
     private Uri contributeUri;
     private Uri discoverUri;
     private Uri userContributeUri;
-    private String barcode;
+    private String mBarcode;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+    // boolean to determine if scan on shake feature should be enabled
+    private boolean scanOnShake;
+    private SharedPreferences shakePreference;
     private PrefManager prefManager;
-    private CompositeDisposable disp;
+    private CompositeDisposable disp = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        disp = new CompositeDisposable();
         if (getResources().getBoolean(R.bool.portrait_only)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        shakePreference = PreferenceManager.getDefaultSharedPreferences(this);
 
         Utils.hideKeyboard(this);
 
@@ -172,34 +155,43 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         setSupportActionBar(binding.toolbarInclude.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
-        swapToHomeFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // Get the user preference for scan on shake feature and open ContinuousScanActivity if the user has enabled the feature
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        if (mSensorManager != null) {
+            mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        }
+        mShakeDetector = new ShakeDetector();
+
+        setShakePreferences();
+
+        fragmentManager.addOnBackStackChangedListener(() -> {
+        });
+
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, new HomeFragment())
+            .commit();
+        binding.toolbarInclude.toolbar.setTitle(APP_NAME);
 
         // chrome custom tab init
         customTabActivityHelper = new CustomTabActivityHelper();
-        customTabActivityHelper.setConnectionCallback(new CustomTabActivityHelper.ConnectionCallback() {
-            @Override
-            public void onCustomTabsConnected() {
+        customTabActivityHelper.setConnectionCallback(this);
 
-            }
-
-            @Override
-            public void onCustomTabsDisconnected() {
-
-            }
-        });
-
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(this,
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getBaseContext(),
             customTabActivityHelper.getSession());
 
         // Create the AccountHeader
-        AccountHeaderBuilder accountHeaderBuilder = new AccountHeaderBuilder()
+        headerResult = new AccountHeaderBuilder()
             .withActivity(this)
             .withTranslucentStatusBar(true)
+            .withHeaderBackground(R.drawable.header)
             .withTextColorRes(R.color.white)
             .addProfiles(profile)
             .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                 @Override
                 public boolean onProfileImageClick(@NonNull View view, @NonNull IProfile profile, boolean current) {
+
                     if (isUserNotLoggedIn()) {
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     }
@@ -219,37 +211,30 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             })
             .withSelectionListEnabledForSingleProfile(false)
             .withOnAccountHeaderListener((view, profile1, current) -> {
-                if (profile1 instanceof IDrawerItem && profile1.getIdentifier() == ITEM_MANAGE_ACCOUNT) {
-                    CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                        customTabsIntent,
-                        userAccountUri,
-                        new WebViewFallback());
+                if (profile1 instanceof IDrawerItem) {
+                    if (profile1.getIdentifier() == ITEM_MANAGE_ACCOUNT) {
+                        CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                            customTabsIntent, userAccountUri, new WebViewFallback());
+                    }
                 }
 
                 //false if you have not consumed the event and it should close the drawer
                 return false;
             })
-            .withSavedInstance(savedInstanceState);
-
-        try {
-            accountHeaderBuilder = accountHeaderBuilder.withHeaderBackground(R.drawable.header);
-        } catch (OutOfMemoryError e) {
-            Log.w(LOG_TAG, "Device has too low memory, loading color drawer header...", e);
-            accountHeaderBuilder = accountHeaderBuilder.withHeaderBackground(new ColorDrawable(ContextCompat.getColor(this, R.color.primary_dark)));
-        }
-        headerResult = accountHeaderBuilder.build();
+            .withSavedInstance(savedInstanceState)
+            .build();
 
         // Add Manage Account profile if the user is connected
-        SharedPreferences preferences = getSharedPreferences(PreferencesFragment.LOGIN_PREF, 0);
+        SharedPreferences preferences = getSharedPreferences("login", 0);
 
-        String userSessionPrefs = preferences.getString("user_session", null);
-        boolean isUserConnected = isUserLoggedIn() && userSessionPrefs != null;
+        String userSession = preferences.getString("user_session", null);
+        boolean isUserConnected = isUserLoggedIn() && userSession != null;
 
         if (isUserConnected) {
             updateProfileForCurrentUser();
         }
         //Create the drawer
-        drawerResult = new DrawerBuilder()
+        result = new DrawerBuilder()
             .withActivity(this)
             .withToolbar(binding.toolbarInclude.toolbar)
             .withHasStableIds(true)
@@ -274,7 +259,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                 new SectionDrawerItem().withName(R.string.search_drawer),
                 new PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE),
                 new PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.additives).withIcon(R.drawable.ic_additives).withIdentifier(ITEM_ADDITIVES)
+                new PrimaryDrawerItem().withName(R.string.additives).withIcon(getResources().getDrawable(R.drawable.additives)).withIdentifier(ITEM_ADDITIVES)
                     .withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE).withSelectable(false),
@@ -291,70 +276,61 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                 new PrimaryDrawerItem().withName(R.string.action_preferences).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(ITEM_PREFERENCES),
                 new DividerDrawerItem(),
                 new PrimaryDrawerItem().withName(R.string.action_discover).withIcon(GoogleMaterial.Icon.gmd_info).withIdentifier(ITEM_ABOUT).withSelectable(false),
-                new PrimaryDrawerItem().withName(R.string.contribute).withIcon(GoogleMaterial.Icon.gmd_group).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
+                new PrimaryDrawerItem().withName(R.string.contribute).withIcon(R.drawable.ic_group_grey_24dp).withIdentifier(ITEM_CONTRIBUTE).withSelectable(false),
                 new PrimaryDrawerItem().withName(R.string.open_other_flavor_drawer).withIcon(GoogleMaterial.Icon.gmd_shop).withIdentifier(ITEM_OBF).withSelectable(false)
             )
             .withOnDrawerItemClickListener((view, position, drawerItem) -> {
 
-                Fragment newFragment = null;
+                Fragment fragment = null;
                 switch ((int) drawerItem.getIdentifier()) {
-
                     case ITEM_HOME:
-                        newFragment = HomeFragment.newInstance();
+                        fragment = new HomeFragment();
                         break;
-
                     case ITEM_SEARCH_BY_CODE:
-                        newFragment = new FindProductFragment();
-                        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+                        fragment = new FindProductFragment();
+                        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
                         break;
-
                     case ITEM_CATEGORIES:
-                        CategoryActivity.start(this);
+                        startActivity(CategoryActivity.getIntent(this));
                         break;
 
                     case ITEM_ADDITIVES:
-                        AdditivesExplorer.start(this);
+                        startActivity(new Intent(this, AdditivesExplorer.class));
                         break;
-
                     case ITEM_SCAN:
-                        openScan();
+                        scan();
                         break;
-
                     case ITEM_COMPARE:
-                        ProductComparisonActivity.start(this);
+                        startActivity(new Intent(MainActivity.this, ProductComparisonActivity.class));
                         break;
-
                     case ITEM_HISTORY:
-                        HistoryScanActivity.start(this);
+                        startActivity(new Intent(MainActivity.this, HistoryScanActivity.class));
                         break;
-
                     case ITEM_LOGIN:
-                        registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
-                            if (isLoggedIn) {
-                                updateConnectedState();
-                            }
-                        }).launch(null);
+                        startActivityForResult(new Intent(MainActivity.this, LoginActivity
+                            .class), LOGIN_REQUEST);
                         break;
-
                     case ITEM_ALERT:
-                        newFragment = AllergensAlertFragment.newInstance();
+                        fragment = new AllergensAlertFragment();
                         break;
-
                     case ITEM_PREFERENCES:
-                        newFragment = PreferencesFragment.newInstance();
+                        fragment = new PreferencesFragment();
                         break;
-
                     case ITEM_ABOUT:
-                        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, discoverUri, new WebViewFallback());
+                        CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                            customTabsIntent, discoverUri, new WebViewFallback());
                         break;
-
                     case ITEM_CONTRIBUTE:
-                        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, contributeUri, new WebViewFallback());
+                        CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                            customTabsIntent, contributeUri, new WebViewFallback());
                         break;
 
                     case ITEM_INCOMPLETE_PRODUCTS:
-                        // Search and display the products to be completed by moving to ProductBrowsingListActivity
-                        ProductBrowsingListActivity.start(this, "", SearchType.INCOMPLETE_PRODUCT);
+
+                        /*
+                          Search and display the products to be completed by moving to ProductBrowsingListActivity
+                         */
+                        ProductBrowsingListActivity.startActivity(this, "", SearchType.INCOMPLETE_PRODUCT);
                         break;
 
                     case ITEM_OBF:
@@ -392,11 +368,11 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         break;
 
                     case ITEM_MY_CONTRIBUTIONS:
-                        openMyContributions();
+                        myContributions();
                         break;
 
                     case ITEM_YOUR_LISTS:
-                        ProductListsActivity.start(this);
+                        startActivity(ProductListsActivity.getIntent(this));
                         break;
 
                     case ITEM_LOGOUT:
@@ -406,21 +382,16 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                             .positiveText(R.string.txtOk)
                             .negativeText(R.string.dialog_cancel)
                             .onPositive((dialog, which) -> logout())
-                            .onNegative((dialog, which) -> {
-                                dialog.dismiss();
-                                Snackbar.make(binding.getRoot(), "Cancelled", BaseTransientBottomBar.LENGTH_SHORT).show();
-                            }).show();
+                            .onNegative((dialog, which) -> Toast.makeText(getApplicationContext(), "Cancelled",
+                                Toast.LENGTH_SHORT).show()).show();
                         break;
                     default:
                         // nothing to do
                         break;
                 }
 
-                if (newFragment != null) {
-                    getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, newFragment)
-                        .addToBackStack(null)
-                        .commit();
+                if (fragment != null) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
                 }
 
                 return false;
@@ -429,34 +400,38 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             .withShowDrawerOnFirstLaunch(false)
             .build();
 
-        drawerResult.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
 
         // Add Drawer items for the connected user
-        drawerResult.addItemsAtPosition(drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn() ?
+        result.addItemsAtPosition(result.getPosition(ITEM_MY_CONTRIBUTIONS), isUserLoggedIn() ?
             getLogoutDrawerItem() : getLoginDrawerItem());
 
-        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
-            drawerResult.removeItem(ITEM_ALERT);
-            drawerResult.removeItem(ITEM_ADDITIVES);
-            drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
-        } else if (AppFlavors.isFlavors(AppFlavors.OPFF)) {
-            drawerResult.removeItem(ITEM_ALERT);
-        } else if (AppFlavors.isFlavors(AppFlavors.OPF)) {
-            drawerResult.removeItem(ITEM_ALERT);
-            drawerResult.removeItem(ITEM_ADDITIVES);
-            drawerResult.removeItem(ITEM_ADVANCED_SEARCH);
+        if (BuildConfig.FLAVOR.equals("obf")) {
+            result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_ADDITIVES);
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
+        }
+
+        if (BuildConfig.FLAVOR.equals("opff")) {
+            result.removeItem(ITEM_ALERT);
+        }
+
+        if (BuildConfig.FLAVOR.equals("opf")) {
+            result.removeItem(ITEM_ALERT);
+            result.removeItem(ITEM_ADDITIVES);
+            result.removeItem(ITEM_ADVANCED_SEARCH);
         }
 
         if (!Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-            drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.install) + " " + getString(R.string.open_other_flavor_drawer)));
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.install) + " " + getString(R.string.open_other_flavor_drawer)));
         } else {
-            drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
         }
 
         // Remove scan item if the device does not have a camera, for example, Chromebooks or
         // Fire devices
         if (!Utils.isHardwareCameraInstalled(this)) {
-            drawerResult.removeItem(ITEM_SCAN);
+            result.removeItem(ITEM_SCAN);
         }
 
 //        //if you have many different types of DrawerItems you can magically pre-cache those items
@@ -469,13 +444,14 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
             // set the selection to the item with the identifier 1
-            drawerResult.setSelection(ITEM_HOME, false);
+            result.setSelection(ITEM_HOME, false);
 
             //set the active profile
             headerResult.setActiveProfile(profile);
         }
 
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext
+            ());
         if (settings.getBoolean("startScan", false)) {
             Intent cameraIntent = new Intent(MainActivity.this, ContinuousScanActivity.class);
             cameraIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -492,15 +468,15 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null);
 
         if (CONTRIBUTIONS_SHORTCUT.equals(getIntent().getAction())) {
-            openMyContributions();
+            myContributions();
         }
 
         if (SCAN_SHORTCUT.equals(getIntent().getAction())) {
-            openScan();
+            scan();
         }
 
         if (BARCODE_SHORTCUT.equals(getIntent().getAction())) {
-            swapToSearchByCode();
+            moveToBarcodeEntry();
         }
 
         //Scheduling background image upload job
@@ -516,25 +492,13 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             apiClient.syncOldHistory();
         }
 
-        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
-        CommonBottomListenerInstaller.install(this, binding.bottomNavigationInclude.bottomNavigation);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0);
+        BottomNavigationListenerInstaller.install(binding.bottomNavigationInclude.bottomNavigation, this);
 
         handleIntent(getIntent());
     }
 
-    private void swapToHomeFragment() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        fragmentManager.addOnBackStackChangedListener(() -> {
-        });
-
-        fragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, new HomeFragment())
-            .commit();
-        binding.toolbarInclude.toolbar.setTitle(APP_NAME);
-    }
-
-    private void openScan() {
+    private void scan() {
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) !=
             PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest
@@ -559,8 +523,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
 
     private void updateProfileForCurrentUser() {
         headerResult.updateProfile(getUserProfile());
-        if (isUserLoggedIn()) {
-            if (headerResult.getProfiles() != null && headerResult.getProfiles().size() < 2) {
+        final boolean userLoggedIn = isUserLoggedIn();
+        if (userLoggedIn) {
+            if (headerResult.getProfiles().size() < 2) {
                 headerResult.addProfiles(getProfileSettingDrawerItem());
             }
         } else {
@@ -568,9 +533,10 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         }
     }
 
-    private void openMyContributions() {
+    private void myContributions() {
+
         if (isUserLoggedIn()) {
-            openMyContributionsInBrowser();
+            showMyContributions();
         } else {
             new MaterialDialog.Builder(MainActivity.this)
                 .title(R.string.contribute)
@@ -579,20 +545,15 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                 .neutralText(R.string.login_button)
                 .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R
                     .string.website) + "cgi/user.pl"), new WebViewFallback()))
-                .onNeutral((dialog, which) ->
-                    registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
-                        if (isLoggedIn) {
-                            openMyContributionsInBrowser();
-                        }
-                    }).launch(null))
+                .onNeutral((dialog, which) -> startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), SHOW_CONTRIBUTION_AFTER_LOGIN))
                 .show();
         }
     }
 
-    private void openMyContributionsInBrowser() {
+    private void showMyContributions() {
         String userLogin = getUserLogin();
         userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin);
-        ProductBrowsingListActivity.start(this, userLogin, SearchType.CONTRIBUTOR);
+        ProductBrowsingListActivity.startActivity(this, userLogin, SearchType.CONTRIBUTOR);
     }
 
     private IProfile<ProfileSettingDrawerItem> getProfileSettingDrawerItem() {
@@ -616,14 +577,26 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
      * Remove user login info
      */
     private void logout() {
-        getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit().clear().apply();
+        getSharedPreferences("login", MODE_PRIVATE).edit().clear().apply();
         updateConnectedState();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // do nothing
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LOGIN_REQUEST && resultCode == RESULT_OK) {
+            updateConnectedState();
+        }
+        if (requestCode == SHOW_CONTRIBUTION_AFTER_LOGIN && resultCode == RESULT_OK && isUserLoggedIn()) {
+            showMyContributions();
+        }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //add the values which need to be saved from the drawer to the bundle
-        outState = drawerResult.saveInstanceState(outState);
+        outState = result.saveInstanceState(outState);
         //add the values which need to be saved from the accountHeader to the bundle
         outState = headerResult.saveInstanceState(outState);
         super.onSaveInstanceState(outState);
@@ -633,8 +606,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     public void onBackPressed() {
         //handle the back press :D close the drawer first and if the drawer is closed close the
         // activity
-        if (drawerResult != null && drawerResult.isDrawerOpen()) {
-            drawerResult.closeDrawer();
+        if (result != null && result.isDrawerOpen()) {
+            result.closeDrawer();
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                 getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -684,11 +657,25 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             }
         });
 
-        if (getIntent().getBooleanExtra(PRODUCT_SEARCH_KEY, false)) {
+        if (getIntent().getBooleanExtra("product_search", false)) {
             searchMenuItem.expandActionView();
         }
 
         return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager
+                .PERMISSION_GRANTED) {
+                Intent intent = new Intent(MainActivity.this, ContinuousScanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        }
     }
 
     private IDrawerItem<AbstractBadgeableDrawerItem.ViewHolder> getLogoutDrawerItem() {
@@ -708,7 +695,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     }
 
     private IProfile<ProfileDrawerItem> getUserProfile() {
-        String userLogin = getSharedPreferences(PreferencesFragment.LOGIN_PREF, 0)
+        String userLogin = getSharedPreferences("login", 0)
             .getString("user", getResources().getString(R.string.txt_anonymous));
 
         return new ProfileDrawerItem()
@@ -718,54 +705,60 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     }
 
     @Override
+    public void onCustomTabsConnected() {
+
+    }
+
+    @Override
+    public void onCustomTabsDisconnected() {
+
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         customTabActivityHelper.bindCustomTabsService(this);
 
         prefManager = new PrefManager(this);
-        if (AppFlavors.isFlavors(AppFlavors.OFF)
-            && isUserLoggedIn()
-            && !prefManager.isFirstTimeLaunch()
-            && !prefManager.getUserAskedToRate()) {
+        if (isUserLoggedIn() && !prefManager.isFirstTimeLaunch() && !prefManager.getUserAskedToRate()
+            && "off".equals(BuildConfig.FLAVOR)) {
 
             long firstTimeLaunchTime = prefManager.getFirstTimeLaunchTime();
             // Check if it has been a week since first launch
-            if ((Calendar.getInstance().getTimeInMillis() - firstTimeLaunchTime) >= WEEK_IN_MS) {
+            if ((Calendar.getInstance().getTimeInMillis() - firstTimeLaunchTime) >= (60 * 60 * 24 * 7 * 1000)) {
                 showFeedbackDialog();
             }
         }
     }
 
-    /**
-     * show dialog to ask the user to rate the app/give feedback
-     */
+    //show dialog to ask the user to rate the app/give feedback
     private void showFeedbackDialog() {
         //dialog for rating the app on play store
-        MaterialDialog.Builder rateDialog = new MaterialDialog.Builder(this)
-            .title(R.string.app_name)
-            .content(R.string.user_ask_rate_app)
-            .positiveText(R.string.rate_app)
-            .negativeText(R.string.no_thx)
-            .onPositive((dialog, which) -> {
-                //open app page in play store
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-                dialog.dismiss();
-            })
-            .onNegative((dialog, which) -> dialog.dismiss());
+        MaterialDialog.Builder rateDialog = new MaterialDialog.Builder(this);
+        rateDialog.title(R.string.app_name);
+        rateDialog.content(R.string.user_ask_rate_app);
+        rateDialog.positiveText(R.string.rate_app);
+        rateDialog.negativeText(R.string.no_thx);
+        rateDialog.onPositive((dialog, which) -> {
+            //open app page in play store
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+            dialog.dismiss();
+        });
+        rateDialog.onNegative((dialog, which) -> dialog.dismiss());
 
         //dialog for giving feedback
-        MaterialDialog.Builder feedbackDialog = new MaterialDialog.Builder(this)
-            .title(R.string.app_name)
-            .content(R.string.user_ask_show_feedback_form)
-            .positiveText(R.string.txtOk)
-            .negativeText(R.string.txtNo)
-            .onPositive((dialog, which) -> {
-                //show feedback form
-                CustomTabActivityHelper.openCustomTab(MainActivity.this,
-                    customTabsIntent, Uri.parse(getString(R.string.feedback_form_url)), new WebViewFallback());
-                dialog.dismiss();
-            })
-            .onNegative((dialog, which) -> dialog.dismiss());
+        MaterialDialog.Builder feedbackDialog = new MaterialDialog.Builder(this);
+        feedbackDialog.title(R.string.app_name);
+        feedbackDialog.content(R.string.user_ask_show_feedback_form);
+        feedbackDialog.positiveText(R.string.txtOk);
+        feedbackDialog.negativeText(R.string.txtNo);
+        feedbackDialog.onPositive((dialog, which) -> {
+            //show feedback form
+            CustomTabActivityHelper.openCustomTab(MainActivity.this,
+                customTabsIntent, Uri.parse(getString(R.string.feedback_form_url)), new WebViewFallback());
+            dialog.dismiss();
+        });
+        feedbackDialog.onNegative((dialog, which) -> dialog.dismiss());
 
         new MaterialDialog.Builder(this)
             .title(R.string.app_name)
@@ -814,14 +807,16 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
                 SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE);
             suggestions.saveRecentQuery(query, null);
-            ProductBrowsingListActivity.start(this, query, SearchType.SEARCH);
+            ProductBrowsingListActivity.startActivity(this, query, SearchType.SEARCH);
             if (searchMenuItem != null) {
                 searchMenuItem.collapseActionView();
             }
-        } else if (type != null && type.startsWith("image/")) {
-            if (Intent.ACTION_SEND.equals(intent.getAction())) {
+        } else if (Intent.ACTION_SEND.equals(intent.getAction()) && type != null) {
+            if (type.startsWith("image/")) {
                 handleSendImage(intent); // Handle single image being sent
-            } else if (Intent.ACTION_SEND_MULTIPLE.equals(intent.getAction())) {
+            }
+        } else if (Intent.ACTION_SEND_MULTIPLE.equals(intent.getAction()) && type != null) {
+            if (type.startsWith("image/")) {
                 handleSendMultipleImages(intent); // Handle multiple images being sent
             }
         }
@@ -830,47 +825,68 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     /**
      * This moves the main activity to the barcode entry fragment.
      */
-    public void swapToSearchByCode() {
-        changeFragment(new FindProductFragment(), getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
+    public void moveToBarcodeEntry() {
+        Fragment fragment = new FindProductFragment();
+        changeFragment(fragment, getResources().getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE);
     }
 
     @Override
     public void setItemSelected(@NavigationDrawerType Integer type) {
-        drawerResult.setSelection(type, false);
+        result.setSelection(type, false);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        shakePreference.unregisterOnSharedPreferenceChangeListener(this);
+
+        if (scanOnShake) {
+
+            // unregister the listener
+            mSensorManager.unregisterListener(mShakeDetector, mAccelerometer);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        CommonBottomListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page);
+        BottomNavigationListenerInstaller.selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page);
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (Utils.isApplicationInstalled(MainActivity.this, BuildConfig.OFOTHERLINKAPP)) {
-            drawerResult.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
+            result.updateName(ITEM_OBF, new StringHolder(getString(R.string.open_other_flavor_drawer)));
 
-            drawerResult.getAdapter().notifyDataSetChanged();
+            result.getAdapter().notifyDataSetChanged();
         }
 
         updateConnectedState();
+        shakePreference.registerOnSharedPreferenceChangeListener(this);
+        if (scanOnShake) {
+
+            //register the listener
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
     }
 
     private void updateConnectedState() {
         updateProfileForCurrentUser();
-        drawerResult.removeItem(ITEM_LOGIN);
-        drawerResult.removeItem(ITEM_LOGOUT);
-        drawerResult.addItemAtPosition(super.isUserLoggedIn() ? getLogoutDrawerItem() : getLoginDrawerItem(), drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS));
+        result.removeItem(ITEM_LOGIN);
+        result.removeItem(ITEM_LOGOUT);
+        result.addItemAtPosition(super.isUserLoggedIn() ? getLogoutDrawerItem() : getLoginDrawerItem(), result.getPosition(ITEM_MY_CONTRIBUTIONS));
     }
 
-    private void handleSendImage(@NonNull Intent intent) {
+    private void handleSendImage(Intent intent) {
+        Uri selectedImage = null;
         ArrayList<Uri> selectedImagesArray = new ArrayList<>();
-        Uri selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        selectedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (selectedImage != null) {
             selectedImagesArray.add(selectedImage);
             chooseDialog(selectedImagesArray);
         }
     }
 
-    private void handleSendMultipleImages(@NonNull Intent intent) {
+    private void handleSendMultipleImages(Intent intent) {
         ArrayList<Uri> selectedImagesArray = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         if (selectedImagesArray != null) {
             selectedImagesArray.removeAll(Collections.singleton(null));
@@ -882,7 +898,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
         disp.add(detectBarcodeInImages(selectedImagesArray).observeOn(AndroidSchedulers.mainThread())
             .subscribe(isBarCodePresent -> {
                 if (isBarCodePresent) {
-                    createAlertDialog(false, barcode, selectedImagesArray);
+                    createAlertDialog(false, mBarcode, selectedImagesArray);
                 } else {
                     createAlertDialog(true, "", selectedImagesArray);
                 }
@@ -895,7 +911,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
      * @param selectedImages
      */
     private Single<Boolean> detectBarcodeInImages(List<Uri> selectedImages) {
-        return Observable.fromIterable(selectedImages)
+        return Observable.fromArray(selectedImages.toArray(new Uri[0]))
             .map(uri -> {
                 Bitmap bMap = null;
                 try (InputStream imageStream = getContentResolver().openInputStream(uri)) {
@@ -913,15 +929,14 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                     BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                     Reader reader = new MultiFormatReader();
                     try {
-                        EnumMap<DecodeHintType, Object> decodeHints = new EnumMap<>(DecodeHintType.class);
+                        HashMap<DecodeHintType, Object> decodeHints = new HashMap<>();
                         decodeHints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
                         decodeHints.put(DecodeHintType.PURE_BARCODE, Boolean.TRUE);
-
                         Result decodedResult = reader.decode(bitmap, decodeHints);
                         if (decodedResult != null) {
-                            barcode = decodedResult.getText();
+                            mBarcode = decodedResult.getText();
                         }
-                        if (barcode != null) {
+                        if (mBarcode != null) {
                             return true;
                         }
                     } catch (FormatException e) {
@@ -983,26 +998,45 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         dialog.cancel();
                         if (activeNetwork != null && activeNetwork.isConnectedOrConnecting()) {
                             File imageFile = new File(RealPathUtil.getRealPath(MainActivity.this, selected));
-                            image = new ProductImage(tempBarcode, ProductImageField.OTHER, imageFile);
-                            disp.add(api.postImg(image).subscribe());
+                            image = new ProductImage(tempBarcode, OTHER, imageFile);
+                            api.postImg(image, null);
                         } else {
+                            Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
+                            State st = new State();
                             Product pd = new Product();
                             pd.setCode(tempBarcode);
-                            ProductState st = new ProductState();
                             st.setProduct(pd);
-                            AddProductActivity.start(this, st);
+                            intent.putExtra("state", st);
+                            startActivity(intent);
                         }
                     } else {
                         Toast.makeText(MainActivity.this, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show();
                     }
                 }
             })
+
             .setNegativeButton(R.string.txtNo,
                 (dialog, id) -> dialog.cancel());
 
         AlertDialog alertDialog = alertDialogBuilder.create();
 
         alertDialog.show();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+        // properly handle scan on shake preferences changes
+        setShakePreferences();
+    }
+
+    private void setShakePreferences() {
+        scanOnShake = shakePreference.getBoolean("shakeScanMode", false);
+        Log.i("Shake", String.valueOf(scanOnShake));
+        mShakeDetector.setOnShakeListener(count -> {
+            if (scanOnShake) {
+                Utils.scan(MainActivity.this);
+            }
+        });
     }
 
     /**
@@ -1016,9 +1050,9 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
      * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
      * @since 06/16/18
      */
-    public void changeFragment(@NonNull Fragment fragment, @Nullable String title, long drawerName) {
+    public void changeFragment(Fragment fragment, String title, long drawerName) {
         changeFragment(fragment, title);
-        drawerResult.setSelection(drawerName);
+        result.setSelection(drawerName);
     }
 
     /**
@@ -1031,7 +1065,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
      * @see <a href="https://stackoverflow.com/questions/45138446/calling-fragment-from-recyclerview-adapter">Related Stack Overflow article</a>
      * @since 06/16/18
      */
-    public void changeFragment(@NonNull Fragment fragment, @Nullable String title) {
+    public void changeFragment(Fragment fragment, String title) {
 
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();
@@ -1043,13 +1077,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
             ft.addToBackStack(backStateName);
             ft.commit();
         }
-        if (title != null) {
-            Objects.requireNonNull(getSupportActionBar()).setTitle(title);
-        }
-    }
 
-    public void changeFragment(@NonNull Fragment fragment) {
-        changeFragment(fragment, null);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
     }
 }
 

@@ -16,14 +16,14 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 /**
  * Initializes all the required API Services
  */
-public class CommonApiManager {
+public class CommonApiManager implements ICommonApiManager {
     private static CommonApiManager instance;
     private AnalysisDataAPI analysisDataApi;
     private ProductsAPI productsApi;
     private RobotoffAPI robotoffApi;
     private final JacksonConverterFactory jacksonConverterFactory;
 
-    public static CommonApiManager getInstance() {
+    public static ICommonApiManager getInstance() {
         if (instance == null) {
             instance = new CommonApiManager();
         }
@@ -38,6 +38,7 @@ public class CommonApiManager {
     /**
      * Defines and returns ProductAPIService
      */
+    @Override
     public AnalysisDataAPI getAnalysisDataApi() {
         if (analysisDataApi == null) {
             analysisDataApi = createProductApiService();
@@ -49,6 +50,7 @@ public class CommonApiManager {
     /**
      * Defines and returns getOpenFoodApiService
      */
+    @Override
     public ProductsAPI getProductsApi() {
         if (productsApi == null) {
             productsApi = createOpenFoodApiService();
@@ -60,6 +62,7 @@ public class CommonApiManager {
     /**
      * Defines and returns getRobotoffApiService
      */
+    @Override
     public RobotoffAPI getRobotoffApi() {
         if (robotoffApi == null) {
             robotoffApi = createRobotoffApiService();

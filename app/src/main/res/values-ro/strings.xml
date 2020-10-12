@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <plurals name="offline_notification_count">
         <item quantity="one"> Aveți 1 produs offline care așteaptă să fie contribuit la Open Food Facts</item>
         <item quantity="few"> Aveți %d produse offline care așteaptă să fie contribuite la Open Food Facts</item>
@@ -236,7 +236,7 @@
     <string name="cancel_button">Anulare</string>
     <string name="login_button">Conectați-vă</string>
     <string name="create_account_button">Creează cont</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
+    <string name="warning_alert_data">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
     <string name="title_info_dialog">Cum funcționează?</string>
     <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
     <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
@@ -262,7 +262,6 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Istoric</string>
     <string name="clear_history">Stergere istoric</string>
@@ -388,7 +387,7 @@
     <string name="take_picture_nutrition_table">Faceți o poză tabelului cu informații nutriționale</string>
     <string name="take_more_pictures">Faceți mai multe poze</string>
     <string name="txtSaturatedFat">Acizi grași saturați</string>
-    <string name="nutriscore_info_msg">Aflați mai multe despre Nutri-Score</string>
+    <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about Nova</string>
     <string name="nova_grp1_msg">Grupa 1 - Alimente neprocesate sau procesate minim</string>
     <string name="nova_grp2_msg">Grupa 2 - Ingrediente culinare procesate</string>
@@ -454,7 +453,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world-ro.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
     <string name="preference_header_network">Rețea</string>
     <string name="preference_header_contributing">Contribuire</string>
@@ -502,6 +501,8 @@
     <string name="sort">Sortează</string>
     <string name="by_nutrition_grade">Notă nutrițională</string>
     <string name="sort_by">Ordonează după</string>
+    <string name="shake_summary">Scutură telefonul pentru a scana produse</string>
+    <string name="shake_title">Agitați pentru a scana</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Imaginile fără cod de bare nu pot fi încă adăugate prin aplicație. Încercați versiunea web mobilă.</string>
     <string name="no_barcode">Nu am detectat nici un cod de bare</string>
@@ -755,8 +756,6 @@
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
-    <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
@@ -764,7 +763,6 @@
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
-    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
     <string name="add_photo_to_extract_ingredients">Add a photo to begin extracting ingredients</string>
     <string name="product_already_exists_in_comparison">Produsul există deja în lista de comparație</string>
@@ -780,6 +778,7 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
+    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
     <string name="content_image_type">Choose the photo to work on</string>
@@ -800,7 +799,4 @@
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
     <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

@@ -1,44 +1,51 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.StringDef;
+
+import java.lang.annotation.Retention;
+
+import static java.lang.annotation.RetentionPolicy.SOURCE;
+import static openfoodfacts.github.scrachx.openfood.utils.SearchType.*;
 
 /**
  * Created by Lobster on 10.03.18.
  */
-public enum SearchType {
-    ADDITIVE("additive"),
-    ALLERGEN("allergen"),
-    BRAND("brand"),
-    CATEGORY("category"),
-    COUNTRY("country"),
-    EMB("emb"),
-    LABEL("label"),
-    PACKAGING("packaging"),
-    SEARCH("search"),
-    STORE("store"),
-    TRACE("trace"),
-    CONTRIBUTOR("contributor"),
-    INCOMPLETE_PRODUCT("incomplete_product"),
-    STATE("state"),
-    ORIGIN("origin"),
-    MANUFACTURING_PLACE("url");
-    private final String url;
 
-    SearchType(String url) {
-        this.url = url;
-    }
+@Retention(SOURCE)
+@StringDef({
+        ADDITIVE,
+        ALLERGEN,
+        BRAND,
+        CATEGORY,
+        COUNTRY,
+        EMB,
+        LABEL,
+        PACKAGING,
+        SEARCH,
+        STORE,
+        TRACE,
+        CONTRIBUTOR,
+        STATE,
+        INCOMPLETE_PRODUCT,
+        ORIGIN,
+        MANUFACTURING_PLACE
+})
+public @interface SearchType {
 
-    @Nullable
-    public static SearchType fromUrl(String url) {
-        for (SearchType type : SearchType.values()) {
-            if (type.getUrl().equalsIgnoreCase(url)) {
-                return type;
-            }
-        }
-        return null;
-    }
-
-    public String getUrl() {
-        return url;
-    }
+    String ADDITIVE = "additive";
+    String ALLERGEN = "allergen";
+    String BRAND = "brand";
+    String CATEGORY = "category";
+    String COUNTRY = "country";
+    String EMB = "emb";
+    String LABEL = "label";
+    String PACKAGING = "packaging";
+    String SEARCH = "search";
+    String STORE = "store";
+    String TRACE = "trace";
+    String CONTRIBUTOR = "contributor";
+    String INCOMPLETE_PRODUCT = "incomplete_product";
+    String STATE = "state";
+    String ORIGIN = "origin";
+    String MANUFACTURING_PLACE = "manufacturing-place";
 }

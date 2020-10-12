@@ -34,7 +34,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnalysisProductBinding;
 import openfoodfacts.github.scrachx.openfood.fragments.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.models.State;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
@@ -57,8 +57,8 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        ProductState productState = FragmentUtils.requireStateFromArguments(this);
-        product = productState.getProduct();
+        State state = FragmentUtils.requireStateFromArguments(this);
+        product = state.getProduct();
         api = new OpenFoodAPIClient(requireActivity());
     }
 
@@ -73,7 +73,7 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        disp.add(api.getIngredients(product).observeOn(AndroidSchedulers.mainThread()).subscribe(
+        disp.add(api.getIngredients(product.getCode()).observeOn(AndroidSchedulers.mainThread()).subscribe(
             ingredients -> {
                 adapter = new IngredientAnalysisRecyclerAdapter(ingredients, requireActivity());
                 binding.ingredientAnalysisRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
@@ -84,14 +84,14 @@ public class IngredientsAnalysisProductFragment extends BaseFragment {
 
         Intent intent = requireActivity().getIntent();
         if (intent != null && intent.getExtras() != null) {
-            refreshView((ProductState) intent.getExtras().getSerializable(ProductActivity.STATE_KEY));
+            refreshView((State) intent.getExtras().getSerializable(ProductActivity.STATE_KEY));
         }
     }
 
     @Override
-    public void refreshView(ProductState productState) {
-        super.refreshView(productState);
-        this.product = productState.getProduct();
+    public void refreshView(State state) {
+        super.refreshView(state);
+        this.product = state.getProduct();
 
         if (adapter != null) {
             adapter.notifyDataSetChanged();

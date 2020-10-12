@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world-he.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -10,6 +10,7 @@
     <string name="website_product">https://world-he.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-he.openfoodfacts.org/contributor/</string>
+    <string name="txtHomeOnline">Open Food Facts הוא מסד נתונים פתוח המכיל למעלה מ־%1$d מוצרי מזון (כולל אלו שתרמת) עם רכיבים, חומרים מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תוויות המוצרים.</string>
     <string name="txtHome">Open Food Facts הוא מסד נתונים של מוצרי מזון עם רכיבים, מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תווית המוצר.</string>
     <string name="slide_1_title">תרומה לשקיפות המזון</string>
     <string name="slide_1_desc">ניתן לסרוק מוצרים, לצלם אותם ולהפוך את השקיפות בתחום המזון למציאות</string>
@@ -28,7 +29,7 @@
     <string name="translate_help_title">סיוע בתרגום Open Food Facts</string>
     <string name="translate_help_summary">הנגשת מסד הנתונים של Open Food Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
     <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Food Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
+    <string name="warning_alert_data">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">מסד נתוני מוצרי המזון החופשי</string>
     <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Food Facts. נוכל לבקש ממך להוסיף אותו?</string>

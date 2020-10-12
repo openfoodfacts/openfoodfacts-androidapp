@@ -45,7 +45,7 @@
         android:layout_alignBottom="@id/imgHistoryFrame"
         android:layout_alignEnd="@id/imgHistoryFrame"
         android:layout_alignRight="@id/imgHistoryFrame"
-        tools:src="@drawable/ic_nutriscore_small_a" />
+        tools:src="@drawable/nnc_small_a" />
 
     <TextView
         android:id="@+id/titleHistory"

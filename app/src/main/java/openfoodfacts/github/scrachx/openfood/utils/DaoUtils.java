@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import org.greenrobot.greendao.AbstractDao;
-import org.jetbrains.annotations.Contract;
 
 import java.util.List;
 
@@ -17,8 +16,7 @@ public class DaoUtils {
         // Utility class
     }
 
-    @Contract(pure = true)
-    public static <T> Single<List<T>> logDownload(@NonNull Single<List<T>> single, Taxonomy taxonomy) {
+    public static <T> Single<List<T>> logDownload(Single<List<T>> single, Taxonomy taxonomy) {
         return single.doOnSuccess(ts -> Log.i(Taxonomy.class.getName() + "getTaxonomyData", "refreshed taxonomy '" + taxonomy + "' from server"));
     }
 
@@ -27,7 +25,6 @@ public class DaoUtils {
      *
      * @param dao checks records count of any table
      */
-    @Contract(pure = true)
     public static boolean isDaoEmpty(@NonNull AbstractDao<?, ?> dao) {
         return dao.count() == 0;
     }

@@ -13,70 +13,70 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:elevation="4dp"
+            android:id="@+id/toolbar" />
 
         <Spinner
             android:id="@+id/comboImageType"
+            app:layout_constraintBottom_toBottomOf="@id/comboLanguages"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:background="@drawable/spinner_wight_border"
-            app:layout_constraintBottom_toBottomOf="@id/comboLanguages"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:background="@drawable/spinner_wight_border" />
 
         <TextView
             android:id="@+id/btnChooseDefaultLanguage"
+            android:text="@string/choose_default_language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:text="@string/choose_default_language"
-            android:textColor="?android:textColorPrimaryInverse"
+            android:textColor="@color/indigo_50"
             android:textSize="@dimen/font_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Spinner
             android:id="@+id/comboLanguages"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginEnd="@dimen/spacing_small"
-            android:background="@drawable/spinner_wight_border"
+            app:layout_constraintTop_toBottomOf="@id/btnChooseDefaultLanguage"
             app:layout_constraintEnd_toEndOf="@id/btnChooseDefaultLanguage"
             app:layout_constraintStart_toStartOf="@id/btnChooseDefaultLanguage"
-            app:layout_constraintTop_toBottomOf="@id/btnChooseDefaultLanguage" />
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:background="@drawable/spinner_wight_border" />
 
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/imageViewFullScreen"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_marginBottom="@dimen/spacing_tiny"
             android:adjustViewBounds="true"
             android:gravity="center"
             android:scaleType="fitCenter"
-            android:transitionName="@string/product_transition"
-            app:layout_constraintBottom_toTopOf="@id/textInfo"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comboLanguages"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/comboLanguages" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textInfo"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:transitionName="@string/product_transition" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="@dimen/button_height_short"
             android:layout_height="@dimen/button_height_short"
             android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
             app:layout_constraintBottom_toTopOf="@id/btnAddImage"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -84,16 +84,16 @@
             android:id="@+id/textInfo"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_height_short"
+            android:layout_marginTop="@dimen/spacing_small"
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginBottom="8dp"
             android:gravity="start|center_vertical"
             android:textColor="@color/white"
             android:textIsSelectable="true"
             android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@id/btnAddImage"
+            app:layout_constraintStart_toEndOf="@id/progressBar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/progressBar" />
+            app:layout_constraintBottom_toTopOf="@id/btnAddImage" />
 
         <ImageView
             android:id="@+id/btnAddImage"
@@ -101,8 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height_short"
             android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="@dimen/spacing_small"
             android:hint="@string/take_picture"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -116,7 +115,6 @@
             android:layout_height="@dimen/button_height_short"
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginBottom="16dp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnAddImage"
@@ -129,7 +127,6 @@
             android:layout_height="@dimen/button_height_short"
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginBottom="16dp"
             android:text="@string/edit_image"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -143,7 +140,6 @@
             android:layout_height="@dimen/button_height_short"
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginBottom="16dp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnEditImage"
@@ -155,8 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height_short"
             android:layout_marginEnd="@dimen/spacing_small"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="16dp"
+            android:layout_marginRight="@dimen/spacing_small"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

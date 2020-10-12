@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.AllergenName;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 
 public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.CustomViewHolder> {

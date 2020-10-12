@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world-pl.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -10,11 +10,12 @@
     <string name="website_product">https://world-pl.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-pl.openfoodfacts.org/contributor/</string>
+    <string name="txtHomeOnline">Open Food Facts to otwarta baza danych ponad %1$d produktów spożywczych (również tych dodanych przez ciebie) zawierająca składniki odżywcze, alergeny, wskazówki dietetyczne oraz inne ciekawe informacje jakie można znaleźć na etykietach produktów.</string>
     <string name="txtHome">Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składnikami, alergenami, wartościami odżywczymi i wszystkimi informacjami które możemy znaleźć na etykietach produktów.</string>
     <string name="slide_1_title">Przyczyń się do przejrzystości Żywność</string>
     <string name="slide_1_desc">Skanuj produkty, fotografuj je, niech się dzieje transparentność jedzenia</string>
     <string name="slide_2_title">Poznaj fakty</string>
-    <string name="slide_2_desc">Obszerna informacja o zeskanowanym produkcie odcyfrowana dla ciebie</string>
+    <string name="slide_2_desc">Obszerna informacja o zeskanowanym produkcie rozszyfrowana dla ciebie</string>
     <string name="slide_3_title">Poznaj skalę Nutri_Score</string>
     <string name="slide_3_desc">Wirtualny podgląd właściwości odżywczych twoich ulubionych produktów</string>
     <string name="slide_4_title">Działa offline</string>
@@ -28,9 +29,9 @@
     <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
     <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
     <string name="text_offline_info_dialog">Skanuj nawet w trybie offline by dodać produkty później. Zeskanowane produkty pojawią się tutaj i wyślesz je poniższym przyciskiem.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data">Informacja o twoich uczuleniach nie zostanie przesłana na serwer Open Food Facts. Uważaj, dane o produkcie spożywczym mogą nie być dokładne, a wykrywalność alergenów poprawna. Zatem, sprawdzaj dwa razy!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">ogólnodostępna baza danych o produktach żywnościowych</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">Zeskanowany produkt %1$s jeszcze nie figuruje w Open Food Facts. Możesz go dodać?</string>
     <string name="currently_on_version">Aktualna wersja w Open Food Facts</string>
 </resources>

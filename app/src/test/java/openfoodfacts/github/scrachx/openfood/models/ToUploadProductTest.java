@@ -3,53 +3,53 @@ package openfoodfacts.github.scrachx.openfood.models;
 import org.junit.Before;
 import org.junit.Test;
 
-import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct;
-
-import static com.google.common.truth.Truth.assertThat;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 
 /**
  * Tests for {@link ToUploadProduct}
  */
 public class ToUploadProductTest {
+
     // TODO: should make product field strings public static fields in ToUploadProduct or use toString from
     // ProductImageField to do comparison in getProductField(), keeping in mind the difference between
     // nutrients and NUTRITION
-    private ToUploadProduct toUploadProduct;
+    ToUploadProduct toUploadProduct;
 
     @Before
-    public void setUp() {
+    public void setUp(){
         toUploadProduct = new ToUploadProduct();
     }
 
     @Test
     public void getProductField_returnsCorrectProductImageField() {
         toUploadProduct.setField("front");
-        assertThat(toUploadProduct.getProductField()).isEqualTo(ProductImageField.FRONT);
+        assertEquals(ProductImageField.FRONT, toUploadProduct.getProductField());
 
         toUploadProduct.setField("ingredients");
-        assertThat(toUploadProduct.getProductField()).isEqualTo(ProductImageField.INGREDIENTS);
+        assertEquals(ProductImageField.INGREDIENTS, toUploadProduct.getProductField());
 
         toUploadProduct.setField("nutrients");
-        assertThat(toUploadProduct.getProductField()).isEqualTo(ProductImageField.NUTRITION);
+        assertEquals(ProductImageField.NUTRITION, toUploadProduct.getProductField());
 
         toUploadProduct.setField("something else");
-        assertThat(toUploadProduct.getProductField()).isEqualTo(ProductImageField.OTHER);
+        assertEquals(ProductImageField.OTHER, toUploadProduct.getProductField());
     }
 
     @Test
     public void toUploadProductWithId_fillsCorrectly() {
-        long id = 1L;
+        Long id = 1L;
         String barcode = "CSE370";
         String imageFilePath = "C:\\Images\\Example.pdf";
-        boolean uploaded = false;
+        Boolean uploaded = false;
         String field = "front";
 
         toUploadProduct = new ToUploadProduct(id, barcode, imageFilePath, uploaded, field);
 
-        assertThat(toUploadProduct.getId()).isEqualTo(id);
-        assertThat(toUploadProduct.getBarcode()).isEqualTo(barcode);
-        assertThat(toUploadProduct.getImageFilePath()).isEqualTo(imageFilePath);
-        assertThat(toUploadProduct.getUploaded()).isEqualTo(uploaded);
-        assertThat(toUploadProduct.getField()).isEqualTo(field);
+        assertEquals(toUploadProduct.getId(), id);
+        assertEquals(toUploadProduct.getBarcode(), barcode);
+        assertEquals(toUploadProduct.getImageFilePath(), imageFilePath);
+        assertFalse(toUploadProduct.getUploaded());
+        assertEquals(toUploadProduct.getField(), field);
     }
 }

@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct;
+import openfoodfacts.github.scrachx.openfood.models.YourListedProduct;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.CustomTextView;
 
