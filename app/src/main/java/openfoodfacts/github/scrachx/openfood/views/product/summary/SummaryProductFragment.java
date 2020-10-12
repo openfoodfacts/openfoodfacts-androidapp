@@ -193,31 +193,20 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
-            URI resultUri = newPhotoFile.toURI();
-            //the booleans are checked to determine if the picture uploaded was due to a prompt click
             //the pictures are uploaded with the correct path
-            if (!sendOther) {
-                loadPhoto(new File(resultUri.getPath()));
-            } else {
-                ProductImage image = new ProductImage(barcode, ProductImageField.OTHER, newPhotoFile);
-                image.setFilePath(resultUri.getPath());
-                showOtherImageProgress();
 
-                disp.add(client.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableCompletableObserver() {
-                    @Override
-                    public void onComplete() {
-                        onImageListenerComplete();
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-                        onImageListenerError(error);
-                    }
-                }));
-            }
+            URI resultUri = newPhotoFile.toURI();
+            File photoFile = sendOther ? newPhotoFile : new File(resultUri.getPath());
+            ProductImageField field = sendOther ? ProductImageField.OTHER : ProductImageField.FRONT;
+            ProductImage image = new ProductImage(barcode, field, photoFile);
+            image.setFilePath(photoFile.getAbsolutePath());
+            uploadImage(image);
+            if(!sendOther)
+                loadPhoto(photoFile);
         });
 
         binding.imageViewFront.setOnClickListener(v -> openFrontImageFullscreen());
+        binding.buttonNewFrontImage.setOnClickListener(v -> newFrontImage());
         binding.buttonMorePictures.setOnClickListener(v -> takeMorePicture());
         binding.actionAddToListButton.setOnClickListener(v -> onBookmarkProductButtonClick());
         binding.actionEditButton.setOnClickListener(v -> onEditProductButtonClick());
@@ -229,6 +218,37 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
         productState = FragmentUtils.requireStateFromArguments(this);
         refreshView(productState);
+    }
+
+    /**
+     * Starts uploading image to backend
+     * @param image image to upload
+     */
+    private void uploadImage(@NonNull ProductImage image) {
+        showImageProgress();
+        disp.add(client.postImg(image).observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                onImageListenerComplete();
+            }
+            @Override
+            public void onError(Throwable error) {
+                onImageListenerError(error);
+            }
+        }));
+    }
+
+    /**
+     * Sets photo as current front image and displays it
+     * @param photoFile file to set
+     */
+    private void loadPhoto(@NonNull File photoFile) {
+        binding.addPhotoLabel.setVisibility(GONE);
+        mUrlImage = photoFile.getAbsolutePath();
+        Picasso.get()
+            .load(photoFile)
+            .fit()
+            .into(binding.imageViewFront);
     }
 
     @Override
@@ -900,29 +920,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         doChooseOrTakePhotos(getString(R.string.set_img_front));
     }
 
-    private void loadPhoto(File photoFile) {
-        ProductImage image = new ProductImage(barcode, ProductImageField.FRONT, photoFile);
-        image.setFilePath(photoFile.getAbsolutePath());
-        disp.add(client.postImg(image).subscribeWith(new DisposableCompletableObserver() {
-            @Override
-            public void onComplete() {
-                onImageListenerComplete();
-            }
-
-            @Override
-            public void onError(Throwable error) {
-                onImageListenerError(error);
-            }
-        }));
-        binding.addPhotoLabel.setVisibility(GONE);
-        mUrlImage = photoFile.getAbsolutePath();
-
-        Picasso.get()
-            .load(photoFile)
-            .fit()
-            .into(binding.imageViewFront);
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -959,7 +956,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         binding = null;
     }
 
-    public void showOtherImageProgress() {
+    public void showImageProgress() {
         binding.uploadingImageProgress.setVisibility(VISIBLE);
         binding.uploadingImageProgressText.setVisibility(VISIBLE);
         binding.uploadingImageProgressText.setText(R.string.toastSending);
