@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils;
 
-import io.sentry.core.Sentry;
+import io.sentry.Sentry;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 
 public class AnalyticsService {

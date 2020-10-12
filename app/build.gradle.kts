@@ -135,7 +135,7 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:2.3.1")
+    implementation("io.sentry:sentry-android:3.0.0")
 
     // Unit Testing
     testImplementation("junit:junit:4.13.1")
