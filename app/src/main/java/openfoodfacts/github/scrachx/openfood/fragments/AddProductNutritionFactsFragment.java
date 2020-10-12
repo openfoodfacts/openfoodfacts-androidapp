@@ -487,7 +487,7 @@ public class AddProductNutritionFactsFragment extends BaseFragment {
      * @param path path of the image
      */
     private void loadNutritionsImage(String path) {
-        Picasso.get()
+        Utils.picassoBuilder(activity)
             .load(path)
             .resize(dpsToPixels(50), dpsToPixels(50))
             .centerInside()

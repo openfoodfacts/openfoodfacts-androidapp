@@ -155,7 +155,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             }
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.get()
+                Utils.picassoBuilder(context)
                     .load(imageUrl)
                     .into(holder.productComparisonImage);
             } else {

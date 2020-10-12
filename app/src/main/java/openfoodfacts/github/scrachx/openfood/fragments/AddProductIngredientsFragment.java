@@ -235,7 +235,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         if (newImageIngredientsUrl != null && !newImageIngredientsUrl.isEmpty()) {
             binding.imageProgress.setVisibility(View.VISIBLE);
             imagePath = newImageIngredientsUrl;
-            Picasso.get()
+            Utils.picassoBuilder(activity)
                 .load(newImageIngredientsUrl)
                 .resize(dps50ToPixels(), dps50ToPixels())
                 .centerInside()
@@ -308,7 +308,7 @@ public class AddProductIngredientsFragment extends BaseFragment {
         if (productDetails != null) {
             if (getImageIngredients() != null) {
                 binding.imageProgress.setVisibility(View.VISIBLE);
-                Picasso.get()
+                Utils.picassoBuilder(activity)
                     .load(FileUtils.LOCALE_FILE_SCHEME + getImageIngredients())
                     .resize(dps50ToPixels(), dps50ToPixels())
                     .centerInside()

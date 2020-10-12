@@ -200,7 +200,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.get()
+                Utils.picassoBuilder(getContext())
                     .load(product.getImageIngredientsUrl(langCode))
                     .into(binding.imageViewIngredients);
             } else {

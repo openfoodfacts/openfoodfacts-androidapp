@@ -58,7 +58,6 @@ import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.IconicsSize;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
 import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.eventbus.EventBus;
@@ -276,7 +275,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         product.getImageUrl(LocaleHelper.getLanguage(getBaseContext())));
                     if (imageUrl != null) {
                         try {
-                            Picasso.get()
+                            Utils.picassoBuilder(this)
                                 .load(imageUrl)
                                 .error(errorDrawable)
                                 .into(binding.quickViewImage, new Callback() {
@@ -455,7 +454,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
         String imageFront = offlineSavedProduct.getImageFrontLocalUrl();
 
         if (!TextUtils.isEmpty(imageFront)) {
-            Picasso.get()
+            Utils.picassoBuilder(this)
                 .load(imageFront)
                 .error(errorDrawable)
                 .into(binding.quickViewImage, new Callback() {

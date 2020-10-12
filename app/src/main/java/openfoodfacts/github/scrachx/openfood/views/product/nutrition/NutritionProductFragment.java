@@ -264,14 +264,14 @@ public class NutritionProductFragment extends BaseFragment implements CustomTabA
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Picasso.get()
+                Utils.picassoBuilder(getContext())
                     .load(product.getImageNutritionUrl(langCode))
                     .into(binding.imageViewNutrition);
             } else {
 
                 binding.imageViewNutrition.setVisibility(View.GONE);
             }
-            Picasso.get()
+            Utils.picassoBuilder(getContext())
                 .load(product.getImageNutritionUrl(langCode))
                 .into(binding.imageViewNutrition);
 

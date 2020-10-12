@@ -25,8 +25,6 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceManager;
 
-import com.squareup.picasso.Picasso;
-
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
@@ -39,6 +37,7 @@ import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.scan.ContinuousScanActivity;
 
@@ -155,7 +154,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
         String ambiguousIngredient = arguments.getString(AMBIGUOUS_INGREDIENT_KEY);
 
         AppCompatImageView icon = rootView.findViewById(R.id.icon);
-        Picasso.get()
+        Utils.picassoBuilder(getActivity())
             .load(iconUrl)
             .into(icon);
         Drawable background = getResources().getDrawable(R.drawable.rounded_button);
@@ -184,7 +183,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
             helpNeeded.setVisibility(View.GONE);
         } else if (showHelpTranslate && arguments.getBoolean(MISSING_INGREDIENTS_KEY, false)) {
             String ingredientsImageUrl = arguments.getString(INGREDIENTS_IMAGE_URL_KEY);
-            Picasso.get()
+            Utils.picassoBuilder(getActivity())
                 .load(ingredientsImageUrl)
                 .into(image);
             image.setOnClickListener(v -> goToExtract());

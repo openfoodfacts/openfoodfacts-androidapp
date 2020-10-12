@@ -72,7 +72,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.CustomView
         String finalUrlString = ImageKeyHelper.getImageUrl(barcode, imageName, ImageKeyHelper.IMAGE_EDIT_SIZE_FILE);
 
         Log.d(LOG_TAG, String.format("Loading image %s...", finalUrlString));
-        Picasso.get().load(finalUrlString).resize(400, 400).centerInside().into(imageView);
+        Utils.picassoBuilder(context).load(finalUrlString).resize(400, 400).centerInside().into(imageView);
 
         if (!isLoggedIn) {
             menuButton.setVisibility(View.INVISIBLE);
