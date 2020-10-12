@@ -77,9 +77,9 @@ dependencies {
     implementation("org.apache.commons:commons-csv:1.4")
 
     //Serialization/Deserialization
-    implementation("com.fasterxml.jackson.core:jackson-core:2.11.2")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.2")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.2")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.11.3")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.3")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.3")
 
     //Database
     implementation("org.greenrobot:greendao:3.3.0")
