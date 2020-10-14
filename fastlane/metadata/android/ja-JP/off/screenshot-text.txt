@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-アレルゲン警告
+Set allergen alerts
 
 Get alternatives for your favorite foods
 
@@ -65,7 +65,7 @@ Unlimited and fully-private scan history
 
 Swipe for even more details
 
-Set Allergen Alerts
+Set allergen alerts
 
 Join our global movement for food transparency
 
