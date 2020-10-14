@@ -392,6 +392,7 @@
     <string name="take_picture_front">Зробити фото товару</string>
     <string name="take_picture_nutrition_table">Зробити фото складу</string>
     <string name="take_more_pictures">Зробити більше фото</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Насичені жири</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
