@@ -382,6 +382,7 @@
     <string name="take_picture_front">Tire uma foto da frente</string>
     <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
     <string name="take_more_pictures">Tirar mais fotos</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Gordura saturada</string>
     <string name="nutriscore_info_msg">Saiba mais sobre o Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
