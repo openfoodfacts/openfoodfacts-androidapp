@@ -404,6 +404,7 @@
     <string name="take_picture_front">التقاط صورة من الجهة الأمامية</string>
     <string name="take_picture_nutrition_table">التقط صورة لجدول الحقائق الغذائية</string>
     <string name="take_more_pictures">التقط المزيد من الصور</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">الدهون المشبعة</string>
     <string name="nutriscore_info_msg">معرفة المزيد عن Nutri-Score</string>
     <string name="nova_info_msg">معرفة المزيد عن Nova</string>
