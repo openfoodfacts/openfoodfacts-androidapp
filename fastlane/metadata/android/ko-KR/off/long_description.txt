@@ -5,7 +5,7 @@
 ▶ 800.000  개 이상의 제품을 찾아 비교하십시오 이 앱은 무료 오픈데이터베이스 Open Food Facts에 이미 포함된 800.000개(미국 175.000개 포함) 제품을 볼 수 있고, 신제품에 대한 사진과 데이터도 추가할 수 있습니다.
 
 
-자원 봉사자가 운영하는 Open Food Facts 프로젝트를 알아보려면 https://world.openfoodfacts.org을 방문해주세요.
+자원 봉사자가 운영하는 Open Food Facts 프로젝트를 알아보려면 https://world-ko.openfoodfacts.org을 방문해주세요.
 
 ▶ 자신에게 맞는 제품을 선택하십시오
 - "A"에서 "E"까지의 Nutri-Score 등급 >> 영양 품질
@@ -61,10 +61,7 @@
 - 스캔 기록을 내보낼 수 있습니다 ▶ 제품에 알레르기성 경고 설정
 ▶ 제품에 알레르기성 경고 설정 - 우유, 글루텐, 달걀, 콩, 견과류, 생선, 셀러리, 머스터드, 이산화황 및 황산염, 땅콩, 참깨, 갑각류, 연체동물, 연체동물 또는 루핀 알레르기?
 -Open Food Facts로 음식을 초기 선별하여 쇼핑 속도를 높입니다.
-- 정보의 정확도가 100%가 아닐 수 있고, 검출의 정확도가 100%가 아닐 수 있으므로 주의하세요 따라서 항상 포장지를 직접 스스로 다시 확인해보세요 따라서 항상 포장지를 직접 스스로 다시 확인해보세요
-
-
-▶ 인사하하거나 함께하세요!
+- 정보의 정확도가 100%가 아닐 수 있고, 검출의 정확도가 100%가 아닐 수 있으므로 주의하세요 따라서 항상 포장지를 직접 스스로 다시 확인해보세요 따라서 항상 포장지를 직접 스스로 다시 확인해보세요 ▶ 인사하하거나 함께하세요!
 
 
 Open Food Facts는 웹 https://world.openfoodfacts.org 에서도 볼 수 있습니다.
@@ -73,4 +70,7 @@ Open Food Facts는 웹 https://world.openfoodfacts.org 에서도 볼 수 있습�
 질문 및 피드백 : contact@openfoodfacts.org
 
 
-화장품을 찾고 계신다면, Open Beauty Facts를, 애완동물용 음식을 찾으신다면, Open Pet Food Facts를 설치하세요. 다른 기타 제품들을 찾으신다면, Open Products Facts를 설치해주세요.
+화장품을 찾고 계신다면, Open Beauty Facts를, 애완동물용 음식을 찾으신다면, Open Pet Food Facts를 설치하세요.
+
+
+다른 기타 제품들을 찾으신다면, Open Products Facts를 설치해주세요.
