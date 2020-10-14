@@ -22,13 +22,13 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d second ago</item>
+        <item quantity="one">%d секунд назад</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d minute ago</item>
+        <item quantity="one">%d минут назад</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
         <item quantity="other">%d minutes ago</item>
@@ -392,6 +392,7 @@
     <string name="take_picture_front">Сделайте общее фото</string>
     <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
     <string name="take_more_pictures">Сделайте дополнительные фото</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Насыщенные жиры</string>
     <string name="nutriscore_info_msg">Узнайте больше о Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
