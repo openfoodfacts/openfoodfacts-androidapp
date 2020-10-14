@@ -198,7 +198,7 @@
     <string name="txtToastSaved">User saved</string>
     <string name="txtSalt">Holen</string>
     <string name="txtFat">Fat</string>
-    <string name="txtSugars">Sugars</string>
+    <string name="txtSugars">Sukroù</string>
     <string name="hintBarcode">Kod barrennoù</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
     <string name="hintLogin">Anv arveriad</string>
@@ -305,7 +305,7 @@
     <string name="nutrition_salt">Holen</string>
     <string name="nutrition_satured_fat">Saturated fat</string>
     <string name="nutrition_sodium">Sodium</string>
-    <string name="nutrition_sugars">Sugars</string>
+    <string name="nutrition_sugars">Sukroù</string>
     <string name="nutrition_trans_fat">Trans fat</string>
     <string name="nutriment_serving_size">Per portion : </string>
     <string name="action_manage_account">Manage account</string>
@@ -397,6 +397,7 @@
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
@@ -783,7 +784,7 @@
     <string name="compare_brands">Merkoù :</string>
     <string name="compare_additives">Danvezioù-ouzhpenn:</string>
     <string name="compare_salt">Holen</string>
-    <string name="compare_sugars">Sugars</string>
+    <string name="compare_sugars">Sukroù</string>
     <string name="compare_saturated_fat">Saturated fat</string>
     <string name="compare_fat">Fat</string>
     <string name="compare_quantity">Kementad :</string>
