@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">Du har [%i] offline produkter som väntar på att bidra till till Open Food Facts</item>
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -382,6 +382,7 @@
     <string name="take_picture_front">Ta en bild på framsidan</string>
     <string name="take_picture_nutrition_table">Ta en bild av näringstabellen</string>
     <string name="take_more_pictures">Ta fler bilder</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Mättat fett</string>
     <string name="nutriscore_info_msg">Läs mer om Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
