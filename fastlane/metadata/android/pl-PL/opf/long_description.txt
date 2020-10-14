@@ -1,19 +1,19 @@
 Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składnikami, alergenami, wartościami odżywczymi i wszystkimi informacjami które możemy znaleźć na etykietach produktów.
 
-*** Contribute to Product Transparency ***
+*** Przyczyń się do przejrzystości produktów ***
 
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. Jest dużo ciekawych projectków do których możesz dołączyć. 
-- You can start contributing today by adding your first product. 
+- Open Products Facts to baza danych produktów tworzona przez wszystkich dla każdego.
+- Możesz go używać, aby dokonywać lepszych wyborów, a ponieważ są to otwarte dane, każdy może je ponownie wykorzystać w dowolnym celu.
+- Open Products Facts to projekt non-profit opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projectków do których możesz dołączyć. 
+- Możesz zacząć wnosić swój wkład już dziś, dodając swój pierwszy produkt. 
 
 ***Poznaj fakty***
-- Open Products Facts helps you to make sense of the fine print on products labels.
+- Open Products Facts pomaga zrozumieć drobny wydruk na etykietach produktów.
 
-*** Collect AAAALL the things ***
-- You can add all the items from your collections
-- Open Crayons Facts - The largest open database of coloring crayons
-- Open Miniature Food Facts - The largest open database of miniature food products
+*** Zbierz wszystkie rzeczy ***
+- Możesz dodać wszystkie elementy ze swoich kolekcji
+- Open Crayons Facts - Największa otwarta baza danych kredek do kolorowania
+- Open Miniature Food Facts - Największa otwarta baza danych miniaturowych produktów spożywczych
 - Otwarty ??? Fakts - Stwórz własną otwartą bazę danych :-)
 
 ***Działa dobrze w każdej sytuacji***
@@ -21,34 +21,34 @@ Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składn
 -W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy
 -Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
 
-*** Your products, your data ***
+*** Twoje produkty, Twoje dane ***
 - Twoje dane należą do Ciebie i nigdy nie będą przesyłane online
 Możesz korzystać anonimowo z aplikacji
 Możesz eksportować historię skanowania
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+Dla jedzenia możesz zainstalować Open Food Facts, dla kosmetyków, Open Beauty Facts, a dla karmy dla zwierząt domowych, Open Pet Food Facts.
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+Open Products Facts jest również dostępny w Internecie pod adresem https://world.openproductsfacts.org
 Pytania, opinie: contact@openfoodfacts.org
 
-*** Original April's Fool Listing ***
+*** Oryginalne prima aprilis ***
 
-Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+Wczoraj rano zespół Open Food Facts obudził się i zobaczył oszałamiające odkrycie. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Zbieranie światowej żywności, kosmetyków i karmy dla zwierząt było tak passé. Z niesamowitym postępem osiągniętym w ubiegłym roku, Z pewnością musimy być bliscy ukończenia naszej misji, polegającej na zbieraniu wszystkich żywności i produktów kosmetycznych na świecie, prawda?
 
-So we set up to create not 1, but other 77000 separate new databases ! 
+Utworzyliśmy więc nie 1, ale inne 77000 nowych baz danych! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts będzie niezwykle ambitnym projektem. Oto kilka z nich: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - Największa otwarta baza danych kredek do kolorowania
 
-Open Miniature Food Facts - The largest open database of miniature food products
+- Open Miniature Food Facts - Największa otwarta baza danych miniaturowych produktów spożywczych
 
-Otwarty ??? Facts - The largest open database of ???
+Otwarty ??? Fakty - największa otwarta baza danych ???
 
-Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+Jutro wybierzemy 3 najbardziej bezpieczne bazy danych i zaczniemy zbierać wszystkie pasujące produkty na świecie.
 
-Will it be trash cans, télécartes, or mobile phones database ? 
+Czy będą to puszki śmieciowe, koszyki czy baza danych telefonów komórkowych? 
 
-So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play
+Więc jeśli lubisz koszulki, książki kuchenne, papier origami lub śnieżne globy, rozpocznij skanowanie za pomocą aplikacji Open Products Facts Android w Google Play
