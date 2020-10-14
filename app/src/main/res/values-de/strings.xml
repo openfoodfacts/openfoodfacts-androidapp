@@ -382,6 +382,7 @@
     <string name="take_picture_front">Machen Sie ein Foto von der Vorderseite</string>
     <string name="take_picture_nutrition_table">Foto der Nährwerttabelle aufnehmen</string>
     <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
     <string name="nutriscore_info_msg">Mehr über Nutri-Score erfahren</string>
     <string name="nova_info_msg">Mehr über Nova erfahren</string>
@@ -547,7 +548,7 @@
     <string name="preferences">Einstellungen</string>
     <string name="OFFlogo">Logo von Open Food Fact</string>
     <string name="loading_product">Produkt „%s” wird geladen</string>
-    <string name="image_not_defined_for_language">Kein Foto für die ausgewählte Sprache. Sie können eine neue hinzufügen.</string>
+    <string name="image_not_defined_for_language">Kein Foto für die ausgewählte Sprache. Sie können ein neues hinzufügen</string>
     <string name="error_adding_ingredients">Beim Versuch, Produktzutaten hinzuzufügen, ist ein Fehler aufgetreten</string>
     <string name="unable_to_extract_ingredients">Die Zutaten können nicht aus dem Bild extrahiert werden</string>
     <string name="error_adding_nutrition_facts">Beim Versuch, Nährwertangaben für Produkte hinzuzufügen, ist ein Fehler aufgetreten</string>
