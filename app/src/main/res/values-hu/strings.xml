@@ -382,6 +382,7 @@
     <string name="take_picture_front">Készíts egy képet az elejéről</string>
     <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
     <string name="take_more_pictures">Készítsen további képeket</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Telített zsír</string>
     <string name="nutriscore_info_msg">Tudjon meg többet a Nutri-Score-ról</string>
     <string name="nova_info_msg">Tudjon meg többet a Nováról</string>
@@ -585,7 +586,7 @@
     <string name="ingredients_picture">Összetevők képe</string>
     <string name="take_ingredients_picture_to_extract">(Kérem, készítsen egy képet az összetevőkről, hogy be tudja olvasni róla szöveget a program)</string>
     <string name="ingredients_list">Összetevők</string>
-    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a % (százalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon () (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
+    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a [%s]zázalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon () (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
     <string name="extract_ingredients">Összetevők kiolvasása</string>
     <string name="extracting_ingredients">Összetevők kiolvasása</string>
     <string name="looksGood">Jónak tűnik</string>
