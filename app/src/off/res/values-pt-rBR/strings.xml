@@ -15,7 +15,7 @@
     <string name="slide_1_desc">Digitalize produtos, fotografe-os, faça a transparência alimentar acontecer</string>
     <string name="slide_2_title">Conheça os fatos</string>
     <string name="slide_2_desc">Informações extensivas sobre o produto escaneado, decifradas para você</string>
-    <string name="slide_3_title">Obtenha o Nutriscore</string>
+    <string name="slide_3_title">Obtenha o Nutri-Score</string>
     <string name="slide_3_desc">Uma visão sintética das características nutricionais dos seus produtos alimentares favoritos</string>
     <string name="slide_4_title">Funciona offline</string>
     <string name="slide_4_desc">Você pode adicionar novos produtos, mesmo se você não estiver atualmente conectado à Internet</string>
@@ -28,7 +28,7 @@
     <string name="translate_help_title">Ajudar a traduzir Open Food Facts</string>
     <string name="translate_help_summary">Traga a base de dados Open Food Facts ao seu idioma - nenhum conhecimento técnico necessário</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Food Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Além disso, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa; então, por favor, verifique por si mesmo!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Além disso, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% arecisa; então, por favor, verifique por si mesmo!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">a base de dados gratuita de produtos alimentares</string>
     <string name="product_not_found">O produto %1$s que você digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
