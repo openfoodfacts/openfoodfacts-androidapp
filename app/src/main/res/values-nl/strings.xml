@@ -90,7 +90,7 @@
         <item>Caprylzuur (8: 0)</item>
         <item>Caseïne</item>
         <item>Cerotinezuur (26:0)</item>
-        <item>Chloor</item>
+        <item>Chloride</item>
         <item>Cholesterol</item>
         <item>Chroom</item>
         <item>Koper</item>
@@ -99,7 +99,7 @@
         <item>Eicosapentaeenzuur (20:5 n-3)</item>
         <item>Eaidinezuur (18:1 n-9)</item>
         <item>Erucazuur (22:1 n-9)</item>
-        <item>Fluor</item>
+        <item>Fluoride</item>
         <item>Fructose</item>
         <item>Gamma-linoleenzuur / GLA (18: 3 n-6)</item>
         <item>Glucose</item>
@@ -364,7 +364,7 @@
     <string name="zinc">Zink</string>
     <string name="copper">Koper</string>
     <string name="manganese">Mangaan</string>
-    <string name="fluoride">Fluor</string>
+    <string name="fluoride">Fluoride</string>
     <string name="selenium">Seleen</string>
     <string name="chromium">Chroom</string>
     <string name="molybdenum">Molybdeen</string>
@@ -382,6 +382,7 @@
     <string name="take_picture_front">Maak een foto van de voorkant</string>
     <string name="take_picture_nutrition_table">Maak een foto van de voedingstabel</string>
     <string name="take_more_pictures">Maak meer foto\'s</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Verzadigd vet</string>
     <string name="nutriscore_info_msg">Meer informatie over de Nutri-Score</string>
     <string name="nova_info_msg">Meer informatie over NOVA groepen</string>
@@ -771,7 +772,7 @@
     <string name="compare_quantity">Hoeveelheid:</string>
     <string name="load_ingredient_detection_data">Laad detectiegegevens van ingrediënten</string>
     <string name="load_ingredient_detection_data_summary">Er zijn geen gegevens voor de detectie van ingrediënten gevonden, probeer deze te laden van de server</string>
-    <string name="white_check_image_descr">A white check</string>
+    <string name="white_check_image_descr">Een blanco cheque</string>
     <string name="hint_packaging">Voorbeelden: plastic, papier, glas</string>
     <string name="risk_alcohol_consumption">Overmatig alcoholgebruik is schadelijk voor de gezondheid, met mate te consumeren</string>
     <!--ShowcaseView Strings-->
@@ -796,5 +797,5 @@
     <string name="brand_hint">Voorbeelden: Coca-Cola, Nestlé, enz…</string>
     <string name="sign_in_or_register">Aanmelden of registreren</string>
     <string name="hunger_game_call_to_action">Help meer %1$s te classificeren</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is een open database met meer dan %1$s voedingsproducten (plus uw bijdragen).</string>
 </resources>
