@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
     <string name="terms_url">https://world.openbeautyfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Beauty Facts는 %1$s개 이상의 화장품을 포함한 공개 데이터베이스입니다.</string>
     <string name="txtHome">Open Beauty Facts는 화장품 데이터베이스입니다.</string>
     <string name="slide_1_title">화장품 투명도에 기여하기</string>
     <string name="slide_1_desc">제품을 잘 살펴 사진을 찍어 화장품을 투명하게 한다 </string>
@@ -42,7 +42,7 @@
     <string name="required_to_compute_nutriscore"></string>
     <string name="txt_eaten_products">내가 가진 제품</string>
     <string name="txt_products_to_buy">구매할 제품</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
+    <string name="intent_filter_share_label">Open Beauty Facts에 추가하기</string>
     <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
