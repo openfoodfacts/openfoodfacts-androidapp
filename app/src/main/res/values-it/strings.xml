@@ -17,7 +17,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Hai 1 prodotto nella coda offline in attesa di essere inviato a Open Food Facts</item>
-        <item quantity="other">Hai %d prodotti nella coda offline in attesa di essere contribuito a Open Food Facts</item>
+        <item quantity="other">Hai %d prodotti nella coda offline in attesa di essere inviati a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">%d secondo fa</item>
@@ -55,7 +55,7 @@
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
         <item>Foto del prodotto</item>
-        <item>Analisi ingredienti</item>
+        <item>Analisi degli ingredienti</item>
     </string-array>
     <!-- Text units -->
     <!-- weight units -->
@@ -170,7 +170,7 @@
     <string name="txtSubstances">Sostanze o prodotti che causano allergie o intolleranze:</string>
     <string name="txtAdditives">Additivi:</string>
     <string name="txtTraces">Tracce:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ingredienti che possono essere derivati dell\'olio di palma:</string>
+    <string name="txtMayBeFromPalmOilProduct">Ingredienti che potrebbero essere derivati dall\'olio di palma:</string>
     <string name="txtPalmOilProduct">Ingredienti derivati dell\'olio di palma:</string>
     <string name="txtServingSize">Porzione:</string>
     <string name="txtNutrientLevel100g">Livelli dei nutrienti per 100g:</string>
@@ -382,6 +382,7 @@
     <string name="take_picture_front">Scatta una foto della parte anteriore</string>
     <string name="take_picture_nutrition_table">Prendi una foto della tabella nutrizionale</string>
     <string name="take_more_pictures">Fai ulteriori foto</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Grassi saturi</string>
     <string name="nutriscore_info_msg">Ulteriori informazioni sul Nutri-Score</string>
     <string name="nova_info_msg">Ulteriori informazioni sui gruppi NOVA</string>
