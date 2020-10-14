@@ -16,7 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one"> Vous avez 1 produit hors ligne en attente d\'être ajouté à Open Food Facts</item>
+        <item quantity="one">Vous avez 1 produit hors-ligne en attente d\'être ajouté à Open Food Facts</item>
         <item quantity="other">Vous avez %d produits hors-ligne en attente d\'être ajoutés à Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
@@ -382,6 +382,7 @@
     <string name="take_picture_front">Prendre une photo de l’avant</string>
     <string name="take_picture_nutrition_table">Prendre une photo du tableau nutritionnel</string>
     <string name="take_more_pictures">Prendre plus de photos</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Graisses saturées</string>
     <string name="nutriscore_info_msg">En savoir plus sur le Nutri-Score</string>
     <string name="nova_info_msg">En savoir plus sur Nova</string>
