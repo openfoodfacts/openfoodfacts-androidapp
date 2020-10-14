@@ -392,6 +392,7 @@
     <string name="take_picture_front">Vyfoťte přední stranu výrobku</string>
     <string name="take_picture_nutrition_table">Vyfotit nutriční tabulku</string>
     <string name="take_more_pictures">Vyfotit další obrázky</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Nasycené tuky</string>
     <string name="nutriscore_info_msg">Další informace o Nutri-Score</string>
     <string name="nova_info_msg">Další informace o stupnici Nova</string>
@@ -768,7 +769,7 @@
     <string name="display_analysis_tag_status">Zobrazovat stav %1$s</string>
     <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="help_translate_ingredients">Pomozte přeložit ingredience do vašeho jazyka</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
