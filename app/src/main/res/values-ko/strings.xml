@@ -377,6 +377,7 @@
     <string name="take_picture_front">정면 사진 찍기</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">포화 지방</string>
     <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
