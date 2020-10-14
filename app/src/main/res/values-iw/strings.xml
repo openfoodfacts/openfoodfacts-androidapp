@@ -111,15 +111,15 @@
         <item>חומצה ארוסית (22:1 n-9)</item>
         <item>פלואוריד</item>
         <item>פרוקטוז</item>
-        <item>חומצה גמא לינולאית / GLA ‏(18:3 n-6)</item>
+        <item>חומצה גמא לינולאית / GLA ‏(‎18:3 n-6)</item>
         <item>גלוקוז</item>
-        <item>חומצה איקוסנואית (20:1 n-9)</item>
+        <item>חומצה איקוסנואית (‎20:1 n-9)</item>
         <item>יוד</item>
         <item>ברזל</item>
         <item>לקטוז</item>
         <item>חומצה לאורית (12:0)</item>
         <item>חומצה ליגנוצרית (24:0)</item>
-        <item>חומצה לינולאית / LA ‏(18:2 n-6)</item>
+        <item>חומצה לינולאית / LA ‏(‎18:2 n-6)</item>
         <item>מגנזיום</item>
         <item>מלטודקסטרין</item>
         <item>מלטוז</item>
@@ -130,9 +130,9 @@
         <item>שומן חד בלתי רווי</item>
         <item>חומצת מונטאניק (28:0)</item>
         <item>חומצה מיריסטית (14:0)</item>
-        <item>חומצה נרוונית (24:1 n-9)</item>
+        <item>חומצה נרוונית (‎24:1 n-9)</item>
         <item>נוקלאוטידים</item>
-        <item>חומצה אולאית (18:1 n-9)</item>
+        <item>חומצה אולאית (‎18:1 n-9)</item>
         <item>חומצות שומן אומגה 3</item>
         <item>חומצות שומן אומגה 6</item>
         <item>חומצות שומן אומגה 9</item>
@@ -392,6 +392,7 @@
     <string name="take_picture_front">צילום תמונה של החזית</string>
     <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
     <string name="take_more_pictures">צילום תמונות נוספות</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">שומן רווי</string>
     <string name="nutriscore_info_msg">מידע נוסף על ציון תזונתי</string>
     <string name="nova_info_msg">מידע נוסף על קבוצות NOVA</string>
