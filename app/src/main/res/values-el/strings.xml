@@ -382,6 +382,7 @@
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Τραβήξτε περισσότερες φωτογραφίες</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Κορεσμένα λιπαρά</string>
     <string name="nutriscore_info_msg">Περισσότερες πληροφορίες σχετικά με το Nutri-Score</string>
     <string name="nova_info_msg">Περισσότερες πληροφορίες για την Nova</string>
