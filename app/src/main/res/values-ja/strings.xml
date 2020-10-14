@@ -377,6 +377,7 @@
     <string name="take_picture_front">正面の写真を撮る</string>
     <string name="take_picture_nutrition_table">栄養成分表の写真を撮ります</string>
     <string name="take_more_pictures">もっと写真を撮ります</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">飽和脂肪酸</string>
     <string name="nutriscore_info_msg">栄養スコアの詳細</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
