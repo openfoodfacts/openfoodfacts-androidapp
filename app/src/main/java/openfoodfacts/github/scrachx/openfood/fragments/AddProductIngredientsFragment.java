@@ -52,13 +52,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils;
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader;
@@ -77,7 +76,7 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.ING
  *
  * @see R.layout#fragment_add_product_ingredients
  */
-public class AddProductIngredientsFragment extends BaseFragment implements PhotoReceiver {
+public class AddProductIngredientsFragment extends BaseFragment {
     private FragmentAddProductIngredientsBinding binding;
     private PhotoReceiverHandler photoReceiverHandler;
     private AllergenNameDao mAllergenNameDao;
@@ -103,7 +102,18 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+        photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
+            final URI uri = newPhotoFile.toURI();
+            imagePath = uri.getPath();
+            newImageSelected = true;
+            this.photoFile = newPhotoFile;
+            ProductImage image = new ProductImage(code, INGREDIENTS, newPhotoFile);
+            image.setFilePath(uri.getPath());
+            if (activity instanceof AddProductActivity) {
+                ((AddProductActivity) activity).addToPhotoMap(image, 1);
+            }
+            hideImageProgress(false, getString(R.string.image_uploaded_successfully));
+        });
         binding.btnExtractIngredients.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_compare_arrows_black_18dp, 0, 0, 0);
         final Intent intent = getActivity() == null ? null : getActivity().getIntent();
         if (intent != null && intent.getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false) && !intent
@@ -433,7 +443,7 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         binding.traces.chipifyAllUnterminatedTokens();
         if (activity instanceof AddProductActivity) {
             String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
-            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            String lc = (!languageCode.isEmpty()) ? languageCode : ApiFields.Defaults.DEFAULT_LANGUAGE;
             targetMap.put(ApiFields.Keys.lcIngredientsKey(lc), binding.ingredientsList.getText().toString());
             List<String> list = binding.traces.getChipValues();
             String string = StringUtils.join(list, ",");
@@ -451,27 +461,13 @@ public class AddProductIngredientsFragment extends BaseFragment implements Photo
         }
         if (EditTextUtils.isNotEmpty(binding.ingredientsList) && EditTextUtils.isDifferent(binding.ingredientsList, product != null ? product.getIngredientsText() : null)) {
             String languageCode = ((AddProductActivity) activity).getProductLanguageForEdition();
-            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
+            String lc = (!languageCode.isEmpty()) ? languageCode : ApiFields.Defaults.DEFAULT_LANGUAGE;
             targetMap.put(ApiFields.Keys.lcIngredientsKey(lc), binding.ingredientsList.getText().toString());
         }
         if (!binding.traces.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.traces, extractTracesChipValues(product))) {
             String string = StringUtils.join(binding.traces.getChipValues(), ",");
             targetMap.put(ApiFields.Keys.ADD_TRACES, string);
         }
-    }
-
-    @Override
-    public void onPhotoReturned(File newPhotoFile) {
-        final URI uri = newPhotoFile.toURI();
-        imagePath = uri.getPath();
-        newImageSelected = true;
-        this.photoFile = newPhotoFile;
-        ProductImage image = new ProductImage(code, INGREDIENTS, newPhotoFile);
-        image.setFilePath(uri.getPath());
-        if (activity instanceof AddProductActivity) {
-            ((AddProductActivity) activity).addToPhotoMap(image, 1);
-        }
-        hideImageProgress(false, getString(R.string.image_uploaded_successfully));
     }
 
     @Override

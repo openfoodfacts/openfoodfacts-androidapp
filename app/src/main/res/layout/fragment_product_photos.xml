@@ -1,18 +1,25 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/nav_bar_height"
-    android:orientation="vertical"
-    tools:context="openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/imagesRecycler"
+    <data>
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/images_item">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/nav_bar_height"
+        tools:context="openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/imagesRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/images_item">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

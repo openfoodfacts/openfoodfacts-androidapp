@@ -29,59 +29,61 @@ import org.greenrobot.greendao.query.WhereCondition;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import io.reactivex.Maybe;
 import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.Additive;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.AllergenDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergenName;
-import openfoodfacts.github.scrachx.openfood.models.AllergenNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTag;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfig;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagConfigDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagGonfigsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagName;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagNameDao;
-import openfoodfacts.github.scrachx.openfood.models.AnalysisTagsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse;
-import openfoodfacts.github.scrachx.openfood.models.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Category;
-import openfoodfacts.github.scrachx.openfood.models.CategoryDao;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.Country;
-import openfoodfacts.github.scrachx.openfood.models.CountryDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.Ingredient;
-import openfoodfacts.github.scrachx.openfood.models.IngredientDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientName;
-import openfoodfacts.github.scrachx.openfood.models.IngredientNameDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsRelation;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsRelationDao;
-import openfoodfacts.github.scrachx.openfood.models.IngredientsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcode;
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao;
-import openfoodfacts.github.scrachx.openfood.models.Label;
-import openfoodfacts.github.scrachx.openfood.models.LabelDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
-import openfoodfacts.github.scrachx.openfood.models.LabelsWrapper;
 import openfoodfacts.github.scrachx.openfood.models.Question;
 import openfoodfacts.github.scrachx.openfood.models.QuestionsState;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
-import openfoodfacts.github.scrachx.openfood.models.TagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.Additive;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditivesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagName;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientName;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsRelation;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsRelationDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper;
+import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI;
@@ -94,7 +96,6 @@ import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
  * @since 03.03.18
  */
 public class ProductRepository {
-    private static final String DEFAULT_LANGUAGE = "en";
     private static final String TAG = ProductRepository.class.getSimpleName();
     private static ProductRepository instance;
     private final AdditiveDao additiveDao;
@@ -139,7 +140,7 @@ public class ProductRepository {
         productApi = CommonApiManager.getInstance().getAnalysisDataApi();
         robotoffApi = CommonApiManager.getInstance().getRobotoffApi();
 
-        DaoSession daoSession = OFFApplication.getDaoSession();
+        final DaoSession daoSession = OFFApplication.getDaoSession();
         db = daoSession.getDatabase();
         labelDao = daoSession.getLabelDao();
         labelNameDao = daoSession.getLabelNameDao();
@@ -167,7 +168,7 @@ public class ProductRepository {
      * @return The list of Labels.
      */
     public Single<List<Label>> reloadLabelsFromServer() {
-        return Taxonomy.LABEL.getTaxonomyData(this, true, false, labelDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.LABEL, this, true, labelDao);
     }
 
     Single<List<Label>> loadLabels(long lastModifiedDate) {
@@ -185,7 +186,7 @@ public class ProductRepository {
      * @return The list of Tags.
      */
     public Single<List<Tag>> reloadTagsFromServer() {
-        return Taxonomy.TAGS.getTaxonomyData(this, true, false, tagDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.TAGS, this, true, tagDao);
     }
 
     Single<List<Tag>> loadTags(long lastModifiedDate) {
@@ -198,7 +199,7 @@ public class ProductRepository {
     }
 
     public Single<List<InvalidBarcode>> reloadInvalidBarcodesFromServer() {
-        return Taxonomy.INVALID_BARCODES.getTaxonomyData(this, true, false, invalidBarcodeDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.INVALID_BARCODES, this, true, invalidBarcodeDao);
     }
 
     Single<List<InvalidBarcode>> loadInvalidBarcodes(long lastModifiedDate) {
@@ -223,11 +224,11 @@ public class ProductRepository {
      */
     public Single<List<Allergen>> reloadAllergensFromServer() {
         // FIXME: this returns 404
-        return Taxonomy.ALLERGEN.getTaxonomyData(this, true, false, allergenDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.ALLERGEN, this, true, allergenDao);
     }
 
     public Single<List<Allergen>> getAllergens() {
-        return Taxonomy.ALLERGEN.getTaxonomyData(this, false, true, allergenDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.ALLERGEN, this, false, allergenDao);
     }
 
     Single<List<Allergen>> loadAllergens(Long lastModifiedDate) {
@@ -245,7 +246,7 @@ public class ProductRepository {
      * @return The list of countries.
      */
     public Single<List<Country>> reloadCountriesFromServer() {
-        return Taxonomy.COUNTRY.getTaxonomyData(this, true, false, countryDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.COUNTRY, this, true, countryDao);
     }
 
     Single<List<Country>> loadCountries(Long lastModifiedDate) {
@@ -263,11 +264,11 @@ public class ProductRepository {
      * @return The list of categories.
      */
     public Single<List<Category>> reloadCategoriesFromServer() {
-        return Taxonomy.CATEGORY.getTaxonomyData(this, true, false, categoryDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.CATEGORY, this, true, categoryDao);
     }
 
     public Single<List<Category>> getCategories() {
-        return Taxonomy.CATEGORY.getTaxonomyData(this, false, true, categoryDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.CATEGORY, this, false, categoryDao);
     }
 
     Single<List<Category>> loadCategories(Long lastModifiedDate) {
@@ -294,7 +295,7 @@ public class ProductRepository {
      * @return The list of additives.
      */
     public Single<List<Additive>> reloadAdditivesFromServer() {
-        return Taxonomy.ADDITIVE.getTaxonomyData(this, true, false, additiveDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.ADDITIVE, this, true, additiveDao);
     }
 
     Single<List<Additive>> loadAdditives(long lastModifiedDate) {
@@ -318,7 +319,7 @@ public class ProductRepository {
      * @return The ingredients in the product.
      */
     public Single<List<Ingredient>> reloadIngredientsFromServer() {
-        return Taxonomy.INGREDIENT.getTaxonomyData(this, true, false, ingredientDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.INGREDIENT, this, true, ingredientDao);
     }
 
     Single<List<Ingredient>> loadIngredients(long lastModifiedDate) {
@@ -586,7 +587,7 @@ public class ProductRepository {
      * @return The translated label
      */
     public Single<LabelName> getLabelByTagAndDefaultLanguageCode(String labelTag) {
-        return getLabelByTagAndLanguageCode(labelTag, DEFAULT_LANGUAGE);
+        return getLabelByTagAndLanguageCode(labelTag, ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     /**
@@ -615,36 +616,17 @@ public class ProductRepository {
      * @return The translated additive tag
      */
     public Single<AdditiveName> getAdditiveByTagAndDefaultLanguageCode(String additiveTag) {
-        return getAdditiveByTagAndLanguageCode(additiveTag, DEFAULT_LANGUAGE);
+        return getAdditiveByTagAndLanguageCode(additiveTag, ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
-    /**
-     * Loads translated country from the local database by unique tag of country and language code
-     *
-     * @param countryTag is a unique Id of country
-     * @param languageCode is a 2-digit language code
-     * @return The translated country name
-     */
-    public Single<CountryName> getCountryByTagAndLanguageCode(String countryTag, String languageCode) {
-        return Single.fromCallable(() -> {
-            CountryName countryName = countryNameDao.queryBuilder()
-                .where(
-                    CountryNameDao.Properties.CountyTag.eq(countryTag),
-                    CountryNameDao.Properties.LanguageCode.eq(languageCode)
-                ).unique();
-
-            return countryName != null ? countryName : new CountryName();
-        });
+    public Single<List<Country>> getCountries() {
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.COUNTRY, this, false, countryDao);
     }
 
-    /**
-     * Loads translated country from the local database by unique tag of country and default language code
-     *
-     * @param countryTag is a unique Id of country
-     * @return The translated country name
-     */
-    public Single<CountryName> getCountryByTagAndDefaultLanguageCode(String countryTag) {
-        return getCountryByTagAndLanguageCode(countryTag, DEFAULT_LANGUAGE);
+    public Single<Optional<Country>> getCountryByCC2OrWorld(String cc2) {
+        return getCountries().map(countries -> countries.stream()
+            .filter(country -> country.getCc2().equalsIgnoreCase(cc2))
+            .findFirst());
     }
 
     /**
@@ -681,7 +663,7 @@ public class ProductRepository {
      * @return The translated category name
      */
     public Single<CategoryName> getCategoryByTagAndDefaultLanguageCode(String categoryTag) {
-        return getCategoryByTagAndLanguageCode(categoryTag, DEFAULT_LANGUAGE);
+        return getCategoryByTagAndLanguageCode(categoryTag, ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     /**
@@ -703,7 +685,7 @@ public class ProductRepository {
      * @return The list of category name
      */
     public Single<List<CategoryName>> getAllCategoriesByDefaultLanguageCode() {
-        return getAllCategoriesByLanguageCode(DEFAULT_LANGUAGE);
+        return getAllCategoriesByLanguageCode(ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     /**
@@ -783,7 +765,7 @@ public class ProductRepository {
      * @return The translated allergen name
      */
     public Single<AllergenName> getAllergenByTagAndDefaultLanguageCode(String allergenTag) {
-        return getAllergenByTagAndLanguageCode(allergenTag, DEFAULT_LANGUAGE);
+        return getAllergenByTagAndLanguageCode(allergenTag, ApiFields.Defaults.DEFAULT_LANGUAGE);
     }
 
     /**
@@ -835,7 +817,7 @@ public class ProductRepository {
      * @return The analysis tags in the product.
      */
     public Single<List<AnalysisTag>> reloadAnalysisTagsFromServer() {
-        return Taxonomy.ANALYSIS_TAGS.getTaxonomyData(this, true, false, analysisTagDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.ANALYSIS_TAGS, this, true, analysisTagDao);
     }
 
     Single<List<AnalysisTag>> loadAnalysisTags(long lastModifiedDate) {
@@ -873,12 +855,12 @@ public class ProductRepository {
     }
 
     public Single<List<AnalysisTagConfig>> reloadAnalysisTagConfigsFromServer() {
-        return Taxonomy.ANALYSIS_TAG_CONFIG.getTaxonomyData(this, true, false, analysisTagConfigDao);
+        return TaxonomiesManager.getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, this, true, analysisTagConfigDao);
     }
 
     Single<List<AnalysisTagConfig>> loadAnalysisTagConfigs(long lastModifiedDate) {
         return productApi.getAnalysisTagConfigs()
-            .map(AnalysisTagGonfigsWrapper::map).doOnSuccess(analysisTagConfigs -> {
+            .map(AnalysisTagConfigsWrapper::map).doOnSuccess(analysisTagConfigs -> {
                 saveAnalysisTagConfigs(analysisTagConfigs);
                 updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAG_CONFIG, lastModifiedDate);
             });
@@ -909,7 +891,7 @@ public class ProductRepository {
             if (analysisTagName == null) {
                 analysisTagName = analysisTagNameDao.queryBuilder()
                     .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.getAnalysisTag()),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE))
                     .unique();
             }
 
@@ -923,7 +905,7 @@ public class ProductRepository {
             if (analysisTagTypeName == null) {
                 analysisTagTypeName = analysisTagNameDao.queryBuilder()
                     .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
-                        AnalysisTagNameDao.Properties.LanguageCode.eq(DEFAULT_LANGUAGE))
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE))
                     .unique();
             }
 

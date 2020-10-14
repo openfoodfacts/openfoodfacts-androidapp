@@ -7,9 +7,9 @@ import org.apache.commons.collections.PredicateUtils;
 import java.util.List;
 
 public class ScreenshotsLocaleProvider {
-    private static List<ScreenshotParameter> parameters;
+    private List<ScreenshotParameter> parameters;
 
-    private List<ScreenshotParameter> getAllParameters() {
+    private List<ScreenshotParameter> getParameters() {
         if (parameters == null) {
             parameters = ScreenshotParametersProvider.createDefault();
         }
@@ -25,8 +25,8 @@ public class ScreenshotsLocaleProvider {
         this.predicate = predicate;
     }
 
-    public List<ScreenshotParameter> getParameters() {
-        final List<ScreenshotParameter> allLocales = getAllParameters();
+    public List<ScreenshotParameter> getFilteredParameters() {
+        final List<ScreenshotParameter> allLocales = getParameters();
         CollectionUtils.filter(allLocales, predicate);
         return allLocales;
     }

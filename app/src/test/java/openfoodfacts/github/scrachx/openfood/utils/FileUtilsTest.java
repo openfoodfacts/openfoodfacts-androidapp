@@ -2,31 +2,29 @@ package openfoodfacts.github.scrachx.openfood.utils;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 public class FileUtilsTest {
-
-    private String localURL = "file://path";
-    private String absoluteURL = "/path";
+    private final String absoluteURL = "/path";
+    private final String localURL = "file://path";
 
     @Test
-    public void fileIsLocal_true(){
-        assertTrue(FileUtils.isLocaleFile(localURL));
+    public void fileIsLocal_true() {
+        assertThat(FileUtils.isLocaleFile(localURL)).isTrue();
     }
 
     @Test
-    public void fileIsLocal_false(){
-        assertFalse(FileUtils.isLocaleFile(absoluteURL));
+    public void fileIsLocal_false() {
+        assertThat(FileUtils.isLocaleFile(absoluteURL)).isFalse();
     }
 
     @Test
-    public void isAbsolute_true(){
-        assertTrue(FileUtils.isAbsolute(absoluteURL));
+    public void isAbsolute_true() {
+        assertThat(FileUtils.isAbsolute(absoluteURL)).isTrue();
     }
 
     @Test
-    public void isAbsolute_false(){
-        assertFalse(FileUtils.isAbsolute(localURL));
+    public void isAbsolute_false() {
+        assertThat(FileUtils.isAbsolute(localURL)).isFalse();
     }
-
 }

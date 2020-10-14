@@ -27,7 +27,7 @@ public class AppFlavors {
     private AppFlavors() {
     }
 
-    public static boolean isFlavor(String... flavors) {
+    public static boolean isFlavors(String... flavors) {
         return ArrayUtils.contains(flavors, BuildConfig.FLAVOR);
     }
 }

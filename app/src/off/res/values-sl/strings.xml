@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
     <string name="website">https://world.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
@@ -10,7 +10,6 @@
     <string name="website_product">https://world.openfoodfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
-    <string name="txtHomeOnline">Open Food Facts je odprta zbirka podatkov z več kot %1$d prehrambenih izdelkov (poleg tistih, ki jih boste prispevali), s sestavinami, alergeni, podatki o hranilni vrednosti in vsemi informacijami, ki jih najdemo na nalepkah izdelkov.</string>
     <string name="txtHome">Dejstva o odprtih živilih je odprta zbirka živilskih izdelkov s sestavinami, alergeni, podatki o hranilni vrednosti in vsemi informacijami, ki jih najdemo na nalepkah izdelkov.</string>
     <string name="slide_1_title">Prispevajte k preglednosti hrane</string>
     <string name="slide_1_desc">Skenirajte izdelke, posnamite sliko izdelka, naredite preglednost hrane</string>
@@ -29,9 +28,9 @@
     <string name="translate_help_title">Pomagajte prevesti Open Products Facts</string>
     <string name="translate_help_summary">Prevedite Open Facts Facts zbirko podatkov v vaš jezik - tehnično znanje ni potrebno</string>
     <string name="text_offline_info_dialog">Skenirajte izdelke tudi, ko ste brez povezave, da jih boste kasneje dodali v Open Food Facts later. Skenirani izdelki bodo prikazani tukaj in jih boste lahko poslali z uporabo spodnjega gumba.</string>
-    <string name="warning_alert_data">Informacije o alergijah nikoli ne bodo poslane na strežnik Open Food Facts. Upoštevajte tudi, da podatki o izdelku morda niso točni in odkrivanje morda ni 100% točno, zato vas prosimo, da dvakrat preverite sami! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">brezplačna zbirka podatkov o prehranskih izdelkih</string>
-    <string name="product_not_found">Skeniran izdelek %1$s še ne obstaja v Open Food Facts. Ga lahko dodate?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="currently_on_version">Trenutno na Open Food Facts</string>
 </resources>

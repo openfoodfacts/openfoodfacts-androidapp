@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
     <string name="website">https://world-fi.openfoodfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-fi.openfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world-fi.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Food Facts on tietokanta, joka sisältää yli %1$d tuotetta (plus ne jotka lisäät).</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Products Facts on avoin tietokanta kaikille maailman tuotteille.</string>
     <string name="slide_1_title">Lisää tuotteiden läpinäkyvyyttä</string>
     <string name="slide_1_desc">Lue tuotteita, ota ne mukaan kuvaan, mahdollista tuotteiden läpinäkyvyys</string>
@@ -30,9 +30,9 @@
     <string name="translate_help_title">Auta kääntämään Open Products Factsia</string>
     <string name="translate_help_summary">Tuo Open Products Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
     <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Products Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
-    <string name="warning_alert_data">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <!-- OPF tagline in different languages -->
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Products Facts Android-sovellus</string>
     <string name="tagline">vapaa tuotetietokanta</string>
     <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Products Factsissa. Voitko lisätä sen?</string>
     <string name="currently_on_version">Tällä hetkellä Open Products Factsissa</string>
@@ -43,9 +43,9 @@
     <string name="add_nutrient_category_prompt_text">Lisää luokka ja yksityiskohtia auttaaksesi täydentämään tuotteen</string>
     <string name="txt_eaten_products">Omistamani tuotteet</string>
     <string name="txt_products_to_buy">Ostettavat tuotteet</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="intent_filter_share_label">Lisää Open Products Factsiin</string>
+    <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Ostettavat tuotteet\".
+        Voit lisätä tuotteita tähän luetteloon myös etsimällä niitä, ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
+    <string name="OFFlogo">Open Products Facts -logo</string>
+    <string name="brand_hint">Esimerkkejä: Nike, Apple jne…</string>
 </resources>

@@ -12,8 +12,9 @@ files:
         nl: nl
         zh-TW: zh-rTW
         zh-HK: zh-rHK
-        sr-CS: sr
-        sr: rs
+        sr-CS: sr-rRS # Serbian, Latin
+        me: sr-rME
+        sr: sr # Serbian, Cyrillic
         he: iw
         id: in
         yi: ji
@@ -133,6 +134,9 @@ files:
   - source: /fastlane/metadata/android/en-US/off/changelogs/322.txt
     translation: /fastlane/metadata/android/%locale%/off/changelogs/322.txt  
     
+  - source: /fastlane/metadata/android/en-US/off/changelogs/342.txt
+    translation: /fastlane/metadata/android/%locale%/off/changelogs/342.txt  
+    
   - source: /fastlane/metadata/android/en-US/obf/changelogs/322.txt
     translation: /fastlane/metadata/android/%locale%/obf/changelogs/322.txt
     
@@ -153,3 +157,6 @@ files:
 
   - source: /fastlane/metadata/android/en-US/off/screenshot-text.txt
     translation: /fastlane/metadata/android/%locale%/off/screenshot-text.txt
+    
+  - source: /fastlane/metadata/android/en-US/off/feedback-form.txt
+    translation: /fastlane/metadata/android/%locale%/off/feedback-form.txt

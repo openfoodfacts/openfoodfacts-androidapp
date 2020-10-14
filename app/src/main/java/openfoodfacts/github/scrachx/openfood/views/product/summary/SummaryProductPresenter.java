@@ -26,10 +26,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState;
@@ -185,7 +185,7 @@ public class SummaryProductPresenter implements ISummaryProductPresenter.Actions
 
     @Override
     public void loadAnalysisTags() {
-        if (!AppFlavors.isFlavor(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
+        if (!AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
             return;
         }
         List<String> analysisTags = product.getIngredientsAnalysisTags();

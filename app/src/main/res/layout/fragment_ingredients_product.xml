@@ -27,15 +27,29 @@
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/nav_bar_height">
 
-                <ImageView
+                <openfoodfacts.github.scrachx.openfood.views.TipBox
+                    android:id="@+id/ingredientImagetipBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    app:arrowAlignment="center"
+                    app:arrowMarginStart="0dp"
+                    app:shouldDisplayImmediately="false"
+                    app:backgroundColor="@android:color/holo_green_light"
+                    app:textColor="@android:color/white"
+                    android:visibility="gone"
+                    app:identifier="ingredient_image_tip_box"
+                    app:message="@string/ingredient_image_edit_tip" />
+
+                <ImageButton
                     android:id="@+id/imageViewIngredients"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/spacing_normal"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:layout_marginRight="@dimen/spacing_normal"
                     android:adjustViewBounds="true"
+                    android:layout_marginTop="@dimen/spacing_tiny"
                     android:background="?android:selectableItemBackground"
                     android:maxHeight="120dp"
                     android:scaleType="fitCenter"
@@ -57,7 +71,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/spacing_normal"
                     android:text="@string/extract_ingredients_prompt"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <LinearLayout
                     android:id="@+id/novaLayout"

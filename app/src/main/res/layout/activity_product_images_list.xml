@@ -84,7 +84,7 @@
             app:layout_constraintBottom_toTopOf="@id/btnChooseImage"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnChooseImage"
             style="@style/ButtonBorder.Black"
             android:layout_width="wrap_content"
@@ -94,11 +94,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginStart="@dimen/spacing_small"
             android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_marginEnd="@dimen/spacing_small"
-            android:layout_marginRight="@dimen/spacing_small"
             android:text="@string/choose_picture_from_gallery"
-            android:textColor="@color/white"
+            app:drawableLeftCompat="@drawable/ic_photo_library"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -109,12 +106,8 @@
             android:layout_height="@dimen/button_height_short"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginStart="@dimen/spacing_small"
-            android:layout_marginLeft="@dimen/spacing_small"
-            android:layout_marginTop="@dimen/spacing_tiny"
             android:layout_marginEnd="@dimen/spacing_small"
             android:layout_marginRight="@dimen/spacing_small"
-            android:textColor="@color/white"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,100 @@
+name: Android Integration
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  test:
+    name: Run Unit Tests
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Screenshots android tests
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+
+      - name: Unit tests
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: testObfDebugUnitTest testOffDebugUnitTest testOpfDebugUnitTest testOpffDebugUnitTest --stacktrace
+
+  apk:
+    name: Generate APK
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Workaround for Android Gradle plugin issue
+        run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
+
+      - name: Build debug APKs
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: assembleDebug --stacktrace
+
+      - name: Upload OBF APK
+        uses: actions/upload-artifact@v2.1.4
+        with:
+          name: obf
+          path: app/build/outputs/apk/obf/debug/app-obf-debug.apk
+
+      - name: Upload OFF APK
+        uses: actions/upload-artifact@v2.1.4
+        with:
+          name: off
+          path: app/build/outputs/apk/off/debug/app-off-debug.apk
+
+      - name: Upload OPF APK
+        uses: actions/upload-artifact@v2.1.4
+        with:
+          name: opf
+          path: app/build/outputs/apk/opf/debug/app-opf-debug.apk
+
+      - name: Upload OPFF APK
+        uses: actions/upload-artifact@v2.1.4
+        with:
+          name: opff
+          path: app/build/outputs/apk/opff/debug/app-opff-debug.apk
+
+  lint:
+    name: Android Lint
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Workaround for Android Gradle plugin issue
+        run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
+
+      - name: Run gradle android lint
+        run: ./gradlew lint
+
+      - name: Generate GitHub annotations
+        uses: yutailang0119/action-android-lint@v1.0.2
+        with:
+          xml_path: ./app/build/reports/lint-results.xml

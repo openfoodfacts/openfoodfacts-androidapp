@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import openfoodfacts.github.scrachx.openfood.models.State;
+import openfoodfacts.github.scrachx.openfood.models.ProductState;
 
 public class FragmentUtils {
     private FragmentUtils() {
@@ -14,20 +14,26 @@ public class FragmentUtils {
     }
 
     @Nullable
-    public static State getStateFromArguments(Fragment fragment) {
+    public static ProductState getStateFromArguments(@NonNull Fragment fragment) {
         final Bundle args = fragment.getArguments();
         if (args == null) {
             return null;
         }
-        return (State) args.getSerializable("state");
+        return (ProductState) args.getSerializable("state");
     }
 
     @NonNull
-    public static State requireStateFromArguments(Fragment fragment) {
-        final State state = getStateFromArguments(fragment);
-        if (state == null) {
-            throw new IllegalStateException("cannot start fragment without product state (not passed as argument)");
+    public static ProductState requireStateFromArguments(@NonNull Fragment fragment) {
+        final ProductState productState = getStateFromArguments(fragment);
+        if (productState == null) {
+            throw new IllegalStateException("Fragment" + fragment + "started without without product state (not passed as argument).");
         }
-        return state;
+        return productState;
+    }
+
+    @NonNull
+    public static <T extends Fragment> T applyBundle(@NonNull T fragment, @NonNull Bundle bundle) {
+        fragment.setArguments(bundle);
+        return fragment;
     }
 }

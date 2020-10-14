@@ -3,13 +3,12 @@ package openfoodfacts.github.scrachx.openfood.network;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.function.Consumer;
 
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
@@ -58,33 +57,25 @@ public class WikiDataApiClient {
      * @param code WikiData ID of additive/ingredient/category/label
      * @param onWikiResponse object of class OnWikiResponse
      */
-    public void doSomeThing(final String code, final OnWikiResponse onWikiResponse) {
+    public void doSomeThing(final String code, final Consumer<JsonNode> onWikiResponse) {
         wikidataAPI.getWikiCategory(code).enqueue(new Callback<Object>() {
             @Override
             public void onResponse(final @NonNull Call<Object> call, final @NonNull Response<Object> response) {
-                final ObjectMapper mapper = new ObjectMapper();
                 try {
-                    String jsonInString = mapper.writeValueAsString(response.body());
-                    JSONObject jsonObject = new JSONObject(jsonInString);
-                    onWikiResponse.onResponse(jsonObject);
-                } catch (JsonProcessingException | JSONException e) {
-                    onWikiResponse.onResponse(null);
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    JsonNode jsonObject = objectMapper.readTree(response.body().toString());
+                    onWikiResponse.accept(jsonObject);
+                } catch (JsonProcessingException e) {
+                    onWikiResponse.accept(null);
                     Log.e("WikiDataApiClient", "doSomeThing", e);
                 }
             }
 
             @Override
             public void onFailure(final @NonNull Call<Object> call, final @NonNull Throwable t) {
-                onWikiResponse.onResponse(null);
+                onWikiResponse.accept(null);
                 Log.i("WikiDataApiClient", "failure", t);
             }
         });
-    }
-
-    /**
-     * Interface to call the function {@link OnWikiResponse#onResponse(JSONObject)}
-     */
-    public interface OnWikiResponse {
-        void onResponse(@Nullable JSONObject result);
     }
 }

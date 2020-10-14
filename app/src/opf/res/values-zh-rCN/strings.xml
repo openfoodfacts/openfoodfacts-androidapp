@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
     <string name="website">https://world-zh.openproductsfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-zh.openproductsfacts.org/contributor/</string>
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$d products (plus the ones you will contribute) in the world.</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="txtHome">打开“Open Food Facts”是一个化妆品数据库，我们可以在产品标签上找到该商品的成分，过敏原等所有信息。</string>
     <string name="slide_1_title">贡献给产品透明化</string>
     <string name="slide_1_desc">扫描产品，给它们拍照，让产品透明化成为可能</string>
@@ -30,7 +30,7 @@
     <string name="translate_help_title">帮助翻译 Open Products Facts</string>
     <string name="translate_help_summary">将 Open Products Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data">您的过敏信息将永远不会发送到 Open Products Facts 服务器。另外，请注意，产品数据可能不准确，检测可能不是 100％ 准确的，请自行仔细检查！ </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
     <string name="tagline">the free product database</string>

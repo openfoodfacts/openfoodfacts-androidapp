@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
         <item quantity="one">Sie verfügen über ein Offline-Produkt, das darauf wartet, zu Open Food Facts hinzugefügt zu werden.</item>
         <item quantity="other">Sie verfügen über %d Offline-Produkte, die darauf warten, zu Open Food Facts hinzugefügt zu werden.</item>
@@ -68,7 +68,7 @@
         <item>g</item>
         <item>mg</item>
         <item>μg</item>
-        <item>% Tagesmenge</item>
+        <item>% Dgesmenge</item>
         <item>IE</item>
     </string-array>
     <!-- nutrition comparison units -->
@@ -163,7 +163,7 @@
     <string name="txtBarcode">Strichcode:</string>
     <string name="txtCategories">Kategorien:</string>
     <string name="txtLabels">Kategorien, Zertifizierungen, Preise:</string>
-    <string name="txtEMB">Produzenten-Schlüssel:</string>
+    <string name="txtEMB">Produzentenschlüssel:</string>
     <string name="txtIngredients">Liste der Inhaltsstoffe:</string>
     <string name="Donate">Spenden</string>
     <string name="Donation">Hier klicken, um für Open Food Facts zu spenden</string>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Abbrechen</string>
     <string name="login_button">Benutzername</string>
     <string name="create_account_button">Konto erstellen</string>
-    <string name="warning_alert_data">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% korrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Ihre Allergie-Informationen werden niemals an die Open Food Facts Server gesendet. Beachten Sie bitte auch, dass die Produktdaten nicht immer zu 100% aorrekt sind. Überprüfen Sie die Allergieüberprüfungen deshalb bitte! </string>
     <string name="title_info_dialog">Wie funktioniert es?</string>
     <string name="text_offline_info_dialog">Sie können Produkte auch im Offline-Modus erfassen, um sie später zu Open Food Facts hinzuzufügen. Alle Produkte, die Sie erfasst haben, werden hier angezeigt, und Sie können sie über die untenstehende Schaltfläche versenden.</string>
     <string name="permission_camera">Die Kamera-Berechtigung wird benötigt, um Strichcodes zu scannen und Fotos zu machen.</string>
@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Großartig! Lassen Sie andere wissen, was Sie von dieser App halten!</string>
     <string name="rate_app">App bewerten</string>
     <string name="no_thx">Nein, danke</string>
+    <string name="feedback_form_url">https://forms.gle/xMRR2fjHQwsTNLmh7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Verlauf</string>
     <string name="clear_history">Verlauf leeren</string>
@@ -434,7 +435,7 @@
     <string name="connectivity_check">Bitte überprüfen Sie Ihre Internet-Verbindung</string>
     <string name="dismiss">Verwerfen</string>
     <string name="Terms">Allgemeine Geschäftsbedingungen</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="TermsOfUse">Allgemeine Geschäftsbedingungen und Datenschutz</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://de.openfoodfacts.org/terms-of-use</string>
@@ -462,7 +463,7 @@
     <string name="choose_resolution">Auflösung wählen</string>
     <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
     <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
-    <string name="wikidata_information">Weitergehen</string>
+    <string name="wikidata_information">Fortfahren</string>
     <string name="wikidata_unavailable">Es gibt noch keine Wikipedia-Seite in Ihrer Sprache.</string>
     <string name="Wikipedia">Auf Wikipedia ansehen</string>
     <string name="Browse_Products">Produkte durchsuchen</string>
@@ -496,8 +497,6 @@
     <string name="sort">Sortieren</string>
     <string name="by_nutrition_grade">Nährwertqualität</string>
     <string name="sort_by">Sortieren nach</string>
-    <string name="shake_summary">Telefon schütteln, um Produkte einzulesen</string>
-    <string name="shake_title">Schütteln zum Erfassen</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Fotos ohne Strichcode können noch nicht mit der App hinzugefügt werden. Bitte probieren Sie die mobile Web-Version aus.</string>
     <string name="no_barcode">Es konnte kein Barcode gefunden werden.</string>
@@ -538,7 +537,7 @@
     </plurals>
     <string name="product_not_complete">Dieses Produkt ist noch nicht vollständig.\nKönnten Sie ein paar Details hinzufügen?</string>
     <string name="addProductOffline">Sie scheinen offline zu sein. Möchten Sie das Produkt „%s” im Offline-Modus hinzufügen?</string>
-    <string name="product_not_found">Das eingelesene Produkt „%s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
+    <string name="product_not_found">Das eingelesene Produkt „%1$s” existiert noch nicht in Open Food Facts. Könnten Sie es bitte hinzufügen?</string>
     <string name="scan_sound">Sound beim Einlesen</string>
     <string name="trouble_scanning">Probleme beim Einlesen?</string>
     <string name="barcode_hint">Probleme beim Einlesen? Strichcode eingeben</string>
@@ -613,7 +612,7 @@
     <string name="manufacturing_details">Herstellungsdetails</string>
     <string name="origin_of_ingredients">Herkunft der Inhaltsstoffe</string>
     <string name="manufacturing_place">Herstellungsort</string>
-    <string name="emb_code">Zulassungsnummer</string>
+    <string name="emb_code">Produzentenschlüssel</string>
     <string name="purchasing_details">Bezahlinformationen</string>
     <string name="country_where_purchased">Vertriebsland</string>
     <string name="stores">Läden</string>
@@ -628,7 +627,7 @@
     <string name="edit_ingredients_image">Foto der Zutaten bearbeiten</string>
     <string name="edit_other_image">Foto bearbeiten</string>
     <string name="sign_in_to_edit">Bitte melden Sie sich an, um ein Produkt zu bearbeiten.</string>
-    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="sign_in_to_answer">Bitte melden Sie sich an oder registrieren Sie sich, um einen Einblick zu erhalten.</string>
     <string name="hint_quantity">Beispiele: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 Pfund</string>
     <string name="edit_product_title">Produkt bearbeiten</string>
     <string name="nutrient_already_added">%s ist bereits in den Nährwertangaben enthalten</string>
@@ -750,6 +749,8 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="tip_message">TIPP: %1$s </string>
     <string name="ingredient_analysis_tip">Klicken Sie auf die untenstehenden Symbole, um mehr über das Produkt zu erfahren und auszuwählen, für welche Informationen Sie sich interessieren.</string>
     <string name="got_it">Verstanden!</string>
+    <string name="onboarding_hint_msg">Tipp: %s </string>
+    <string name="ingredient_image_edit_tip">Tippen Sie auf das Foto, um es zu vergrößern, zu ändern, zuzuschneiden, zu drehen und vieles mehr …</string>
     <string name="ingredients_in_this_product_are">Die Inhaltsstoffe in diesem Produkt sind %1$s.</string>
     <string name="ingredients_in_this_product">Zutaten in diesem Produkt, die %1$s sind:</string>
     <string name="display_analysis_tag_status">%1$s Status anzeigen</string>
@@ -757,6 +758,7 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="unknown_status_no_translation">Open Food Facts konnte den Status des Produkts aufgrund nicht erkannter Inhaltsstoffe nicht beurteilen.</string>
     <string name="help_translate_ingredients">Helfen Sie mit, die Zutaten in Ihre Sprache zu übersetzen</string>
     <string name="unknown_status_missing_ingredients">Open Food Facts konnte den Status des Produkts aufgrund fehlender Inhaltsstoffe nicht beurteilen.</string>
+    <string name="unknown_status_ambiguous_ingredients">Der Status des Produkts konnte wegen unklarer Zutaten nicht beurteilt werden: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Helfen Sie mit, Zutaten zu erfassen, um den Status %1$s zu erhalten</string>
     <string name="add_photo_to_extract_ingredients">Fügen Sie ein Foto hinzu, um mit der Verarbeitung der Inhaltsstoffe zu beginnen</string>
     <string name="product_already_exists_in_comparison">Das Produkt ist bereits in der Vergleichsliste vorhanden</string>
@@ -772,7 +774,6 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="white_check_image_descr">Weißer Haken</string>
     <string name="hint_packaging">Beispiele: Kunststoff, Papier, Glas</string>
     <string name="risk_alcohol_consumption">Übermäßiger Alkoholkonsum ist gesundheitsschädlich und sollte deshalb nur maßvoll konsumiert werden.</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Grafiktyp auswählen</string>
     <string name="content_image_type">Zu bearbeitendes Foto auswählen</string>
@@ -790,7 +791,10 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="content_exit">Hier drücken, um zum Produkt zurückzukehren</string>
     <string name="icon_label">Etikettensymbol</string>
     <string name="icon_categories">Kategoriesymbol</string>
-    <string name="icon_emb">Symbol des Produzenten-Codes</string>
+    <string name="icon_emb">Symbol des Produzentenschlüssel</string>
     <string name="product_front_image">Produktfoto (Front)</string>
-    <string name="brand_hint">Beispiele: CocaCola, Nestle, usw…</string>
+    <string name="brand_hint">Beispiele: CocaCola, Nestle, usw …</string>
+    <string name="sign_in_or_register">Anmelden oder registrieren</string>
+    <string name="hunger_game_call_to_action">Mithelfen beim Klassifizieren weiterer %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts ist eine offene Datenbank mit mehr als %1$s Lebensmittelprodukten (plus diejenigen, die Sie beitragen werden).</string>
 </resources>

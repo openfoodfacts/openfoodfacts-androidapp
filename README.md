@@ -7,11 +7,11 @@
 Open Food Facts is a food products database made by everyone, for everyone. Open Food Facts gathers information and data on food products from around the world.
 
 [![Project Status](https://opensource.box.com/badges/active.svg)](https://opensource.box.com/badges)
-![Android Master & PR](https://github.com/openfoodfacts/openfoodfacts-androidapp/workflows/Android%20Master%20&%20PR/badge.svg)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=openfoodfacts_openfoodfacts-androidapp&metric=alert_status)](https://sonarcloud.io/dashboard/index/openfoodfacts_openfoodfacts-androidapp)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
+![Android Master & PR](https://github.com/openfoodfacts/openfoodfacts-androidapp/workflows/Android%20Master%20&%20PR/badge.svg)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/openfoodfacts/openfoodfacts-androidapp.svg)](https://isitmaintained.com/project/openfoodfacts/openfoodfacts-androidapp "Percentage of issues still open")
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/openfoodfacts/localized.svg)](https://crowdin.com/project/openfoodfacts)
 [![Open Source Helpers](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp/badges/users.svg)](https://www.codetriage.com/openfoodfacts/openfoodfacts-androidapp)
 <br>
 
@@ -29,28 +29,13 @@ Open Food Facts is a non-profit association of volunteers.
 ### For everyone
 
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
-- <https://world.openfoodfacts.org>
 
+## Test it on your phone or tablet
 
-### Open Food Facts on [Google Play](https://play.google.com)
-------------------
-
-<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>
-
-### Open Food Facts on [F-Droid](https://f-droid.org/)
-------------------
-
-<a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"></a>
-
-
-## Screenshots
-
-<p>
-  <img src="https://lh3.googleusercontent.com/5QxkJkxPmoVxj_H_BidOPHJwFZSvLx9hx3ls-p9FetMORGMf2-7e9J4Jsg9EN8NjBpYq=w1260-h646" width="212" height="400" />
-  <img src="https://lh3.googleusercontent.com/8Oab6oXw8Z8z_a5BO2stLRAkCVVR3cW4R-NfQ4BdYSdWM24I0cG0F2HHvXYRDWslcg=w1260-h646" width="212" height="400" /> 
-  <img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" />
-    <img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" />
-</p>
+| Open Food Facts on [Google Play](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner)  | Open Food Facts on [F-Droid](https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/) | Open Food Facts on the [Web](https://world.openfoodfacts.org/) |Open Food Facts is also available on [iOS](https://ios.openfoodfacts.org)|
+| ------------- | ------------- | ------------- | ------------- |
+| <a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80"></a>  | <a href="https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/" alt="Get it on F-Droid" target="_blank"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"></a>  | [https://world.openfoodfacts.org/](https://world.openfoodfacts.org/) |<a href="https://apps.apple.com/app/open-food-facts/id588797948"><img height="75" src="https://user-images.githubusercontent.com/7317008/43209852-4ca39622-904b-11e8-8ce1-cdc3aee76ae9.png" align="left" hspace="1" vspace="1"></a> [iOS repository](https://github.com/openfoodfacts/openfoodfacts-ios) |
+|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/5QxkJkxPmoVxj_H_BidOPHJwFZSvLx9hx3ls-p9FetMORGMf2-7e9J4Jsg9EN8NjBpYq=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/8Oab6oXw8Z8z_a5BO2stLRAkCVVR3cW4R-NfQ4BdYSdWM24I0cG0F2HHvXYRDWslcg=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/9DRWlQwnz1NTKP7VJucWg1i_bzwInSUiUsflKprCSKR_f5aG11MLoYk5BvtVYPI1zg=w1260-h646" width="212" height="400" /></a>|<a href="https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner" alt="Get it on Google Play" target="_blank"><img src="https://lh3.googleusercontent.com/627r30FFxVbodLMApJavAhwLym1kSOxSJScXy7DacfAiBPNxjkC6Rsd8Lhjj7yEb_A=w1260-h646" width="212" height="400" /></a>|
 
 ## Bugs and feature requests
 
@@ -81,22 +66,19 @@ https://translate.openfoodfacts.org
 
 ## Installation
 
-* Download the latest [Android Studio](https://developer.android.com/studio) stable build.
-* If you are running the app for the first time, Android Studio will ask you to install the Gradle dependencies.
-* If you are a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md)
-* In Android Studio, make sure to select `OFF` as the default flavor for Open Food Facts (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts)
-<img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300">
-* You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator.
-* The package name on the Play Store is org.openfoodfacts.scanner. For historic reasons, it's openfoodfacts.github.scrachx.openfood in the code and on F-Droid.
+| Choose the right flavor | Install steps|
+| ------------- | ------------- |
+|<img src="https://user-images.githubusercontent.com/1689815/39445509-8064b2f8-4cbb-11e8-908d-86bcd61cb4f5.png" height="300"> | * Download the latest [Android Studio](https://developer.android.com/studio) stable build. <br>* If you are running the app for the first time, Android Studio will ask you to install the Gradle dependencies. <br>* If you are a new contributor to open-source, we recommend you read our [Setup Guidelines](https://github.com/openfoodfacts/openfoodfacts-androidapp/blob/master/SETUP_GUIDELINES.md) <br>* In Android Studio, make sure to select `OFF` as the default flavor for Open Food Facts (`OBF` is Open Beauty Facts, `OPF` - Open Products Facts, `OPFF` - Open Pet Food Facts) <br>* You should be able to install Open Food Facts on your phone using an USB cable, or run it in an emulator. <br>* The package name on the Play Store is org.openfoodfacts.scanner. For historic reasons, it's openfoodfacts.github.scrachx.openfood in the code and on F-Droid.|
 
 ## Running a Fastlane lane
+The project uses Fastlane to automate release and screenshots generation.
 * First time you checkout, run `bundle install` at the root of the project
 * Then launch lanes using `bundle exec fastlane release` (for example the release lane)
 
 ## Generate screenshots for the Play Store
-To activate screenshots buildType in IDE; uncomment def result = "screenshots" and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
+To activate the `screenshots` buildType in IDE, uncomment `def result = "screenshots"` and comment the other line otherwise the folder androidTestScreenshots is not recognized as a test folder.
 To generate localized screenshots of the app on your local computer, launch the command `gradlew connectedOffScreenshotsAndroidTest --stacktrace --info -PtestBuildType=screenshots` with a physical device attached to your computer
-[Help is welcome to improve those](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/fastlane)
+[Help is welcome to improve](https://github.com/openfoodfacts/openfoodfacts-androidapp/labels/screenshot-generation)
 
 ### Who do I talk to?
 

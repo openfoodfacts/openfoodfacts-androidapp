@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.preference.PreferenceManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.hootsuite.nachos.NachoTextView;
@@ -45,6 +48,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.greendao.async.AsyncSession;
+import org.jetbrains.annotations.Contract;
 
 import java.io.File;
 import java.net.URI;
@@ -54,32 +58,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
+import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverviewBinding;
-import openfoodfacts.github.scrachx.openfood.images.PhotoReceiver;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.CategoryName;
-import openfoodfacts.github.scrachx.openfood.models.CategoryNameDao;
-import openfoodfacts.github.scrachx.openfood.models.CountryName;
-import openfoodfacts.github.scrachx.openfood.models.CountryNameDao;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.LabelName;
-import openfoodfacts.github.scrachx.openfood.models.LabelNameDao;
-import openfoodfacts.github.scrachx.openfood.models.OfflineSavedProduct;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.models.State;
-import openfoodfacts.github.scrachx.openfood.models.Tag;
-import openfoodfacts.github.scrachx.openfood.models.TagDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName;
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName;
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
@@ -90,8 +91,8 @@ import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
 import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.adapters.EmbCodeAutoCompleteAdapter;
-import openfoodfacts.github.scrachx.openfood.views.adapters.PeriodAfterOpeningAutoCompleteAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.autocomplete.EmbCodeAutoCompleteAdapter;
+import openfoodfacts.github.scrachx.openfood.views.adapters.autocomplete.PeriodAfterOpeningAutoCompleteAdapter;
 
 import static com.hootsuite.nachos.terminator.ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN;
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.FRONT;
@@ -100,25 +101,25 @@ import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.OTH
 /**
  * Product Overview fragment of AddProductActivity
  */
-public class AddProductOverviewFragment extends BaseFragment implements PhotoReceiver {
+public class AddProductOverviewFragment extends BaseFragment {
     private static final int INTENT_INTEGRATOR_REQUEST_CODE = 1;
     private Activity activity;
     private FragmentAddProductOverviewBinding binding;
     private String appLanguageCode;
-    private List<String> category = new ArrayList<>();
+    private List<String> categories = new ArrayList<>();
     private String barcode;
+    private ProductsAPI client;
     private List<String> countries = new ArrayList<>();
     private boolean editionMode;
-    private boolean frontImage;
+    private boolean isFrontImagePresent;
     private List<String> labels = new ArrayList<>();
     private String languageCode;
-    private CategoryNameDao mCategoryNameDao;
-    private CountryNameDao mCountryNameDao;
-    private String mImageUrl;
-    private LabelNameDao mLabelNameDao;
-    private OfflineSavedProduct mOfflineSavedProduct;
-    private TagDao mTagDao;
-    private boolean newImageSelected;
+    private CategoryNameDao categoryNameDao;
+    private CountryNameDao countryNameDao;
+    private String frontImageUrl;
+    private LabelNameDao labelNameDao;
+    private OfflineSavedProduct savedProduct;
+    private TagDao tagDao;
     private CompositeDisposable disp = new CompositeDisposable();
     private File photoFile;
     private PhotoReceiverHandler photoReceiverHandler;
@@ -133,40 +134,66 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         disp.dispose();
         binding = null;
+        super.onDestroy();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        photoReceiverHandler = new PhotoReceiverHandler(this);
+
+        client = CommonApiManager.getInstance().getProductsApi();
+
+        tagDao = Utils.getDaoSession().getTagDao();
+        categoryNameDao = Utils.getDaoSession().getCategoryNameDao();
+        labelNameDao = Utils.getDaoSession().getLabelNameDao();
+        countryNameDao = Utils.getDaoSession().getCountryNameDao();
+
+        photoReceiverHandler = new PhotoReceiverHandler(newPhotoFile -> {
+            URI resultUri = newPhotoFile.toURI();
+            this.photoFile = newPhotoFile;
+            ProductImage image;
+            int position;
+            if (isFrontImagePresent) {
+                image = new ProductImage(barcode, FRONT, newPhotoFile);
+                frontImageUrl = newPhotoFile.getAbsolutePath();
+                position = 0;
+            } else {
+                image = new ProductImage(barcode, OTHER, newPhotoFile);
+                position = 3;
+            }
+            image.setFilePath(resultUri.getPath());
+            if (activity instanceof AddProductActivity) {
+                ((AddProductActivity) activity).addToPhotoMap(image, position);
+            }
+            hideImageProgress(false, StringUtils.EMPTY);
+        });
         binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0);
 
         binding.btnNext.setOnClickListener(v -> next());
-        binding.btnAddImageFront.setOnClickListener(v -> addFrontImage());
-        binding.btnEditImageFront.setOnClickListener(v -> newFrontImage());
-        binding.btnOtherPictures.setOnClickListener(v -> addOtherImage());
+        binding.imgFront.setOnClickListener(v -> onFrontImageClick());
+        binding.btnEditImgFront.setOnClickListener(v -> onEditFrontImageClick());
+        binding.btnOtherPictures.setOnClickListener(v -> editOtherImage());
         binding.sectionManufacturingDetails.setOnClickListener(v -> toggleManufacturingSectionVisibility());
         binding.sectionPurchasingDetails.setOnClickListener(v -> togglePurchasingSectionVisibility());
-        binding.hintEmbCode.setOnClickListener(v -> toastEmbCodeHint());
+        binding.hintEmbCode.setOnClickListener(v -> showEmbCodeHintDialog());
         binding.hintLink.setOnClickListener(v -> searchProductLink());
         binding.hintLink2.setOnClickListener(v -> scanProductLink());
         binding.language.setOnClickListener(v -> selectProductLanguage());
 
         //checks the information about the prompt clicked and takes action accordingly
-        if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
+        if (activity.getIntent().getBooleanExtra(AddProductActivity.MODIFY_CATEGORY_PROMPT, false)) {
             binding.categories.requestFocus();
-        } else if (getActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
-            ((AddProductActivity) getActivity()).proceed();
+        } else if (requireActivity().getIntent().getBooleanExtra(AddProductActivity.MODIFY_NUTRITION_PROMPT, false)) {
+            ((AddProductActivity) requireActivity()).proceed();
         }
         appLanguageCode = LocaleHelper.getLanguage(activity);
-        Bundle b = getArguments();
-        if (b != null) {
-            product = (Product) b.getSerializable("product");
-            mOfflineSavedProduct = (OfflineSavedProduct) b.getSerializable("edit_offline_product");
-            editionMode = b.getBoolean(AddProductActivity.KEY_IS_EDITING);
+        Bundle args = getArguments();
+        if (args != null) {
+            product = (Product) args.getSerializable("product");
+            savedProduct = (OfflineSavedProduct) args.getSerializable("edit_offline_product");
+            editionMode = args.getBoolean(AddProductActivity.KEY_IS_EDITING);
             binding.barcode.setText(R.string.txtBarcode);
             binding.language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
             binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0);
@@ -181,34 +208,34 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                     languageToUse = appLanguageCode;
                 }
                 preFillProductValues(languageToUse);
-            } else if (mOfflineSavedProduct != null) {
-                barcode = mOfflineSavedProduct.getBarcode();
+            } else if (savedProduct != null) {
+                barcode = savedProduct.getBarcode();
                 preFillValuesFromOffline();
             } else {
                 //addition
-                final boolean fastAdditionMode = PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("fastAdditionMode", false);
+                final boolean fastAdditionMode = PreferenceManager.getDefaultSharedPreferences(requireContext()).getBoolean("fastAdditionMode", false);
                 enableFastAdditionMode(fastAdditionMode);
             }
 
             binding.barcode.append(" ");
             binding.barcode.append(barcode);
-            if (BuildConfig.FLAVOR.equals("obf") || BuildConfig.FLAVOR.equals("opf")) {
+            if (AppFlavors.isFlavors(AppFlavors.OBF, AppFlavors.OPF)) {
                 binding.btnOtherPictures.setVisibility(View.GONE);
             }
-            if (b.getBoolean("perform_ocr")) {
-                (getAddProductActivity()).proceed();
+            if (args.getBoolean("perform_ocr")) {
+                ((AddProductActivity) activity).proceed();
             }
-            if (b.getBoolean("send_updated")) {
-                (getAddProductActivity()).proceed();
+            if (args.getBoolean("send_updated")) {
+                ((AddProductActivity) activity).proceed();
             }
         } else {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show();
             activity.finish();
         }
         initializeChips();
-        loadAutoSuggestions();
+        setupAutoSuggestion();
         if (getActivity() instanceof AddProductActivity && ((AddProductActivity) getActivity()).getInitialValues() != null) {
-            getAllDetails(((AddProductActivity) getActivity()).getInitialValues());
+            addAllFieldsToMap(((AddProductActivity) getActivity()).getInitialValues());
         }
         if (StringUtils.isBlank(languageCode)) {
             setProductLanguage(appLanguageCode);
@@ -241,20 +268,16 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
      * Pre fill the fields of the product which are already present on the server.
      */
     private void preFillProductValues(String lang) {
-        mTagDao = Utils.getDaoSession().getTagDao();
-        mCategoryNameDao = Utils.getDaoSession().getCategoryNameDao();
-        mLabelNameDao = Utils.getDaoSession().getLabelNameDao();
-        mCountryNameDao = Utils.getDaoSession().getCountryNameDao();
-        if (product.getProductName() != null && !product.getProductName().isEmpty()) {
+        if (!TextUtils.isEmpty(product.getProductName())) {
             binding.name.setText(product.getProductName());
         }
-        if (product.getQuantity() != null && !product.getQuantity().isEmpty()) {
+        if (!TextUtils.isEmpty(product.getQuantity())) {
             binding.quantity.setText(product.getQuantity());
         }
-        if (product.getBrands() != null && !product.getBrands().isEmpty()) {
+        if (!TextUtils.isEmpty(product.getBrands())) {
             binding.brand.setText(extractProductBrandsChipsValues(product));
         }
-        if (product.getPackaging() != null && !product.getPackaging().isEmpty()) {
+        if (!TextUtils.isEmpty(product.getPackaging())) {
             binding.packaging.setText(extractProductPackagingChipsValues(product));
         }
         if (product.getCategoriesTags() != null && !product.getCategoriesTags().isEmpty()) {
@@ -272,8 +295,8 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         if (product.getEmbTags() != null && !product.getEmbTags().toString().trim().equals("[]")) {
             binding.embCode.setText(extractProductEmbTagsChipsValues(product));
         }
-        if (product.getManufactureUrl() != null && !product.getManufactureUrl().isEmpty()) {
-            binding.link.setText(product.getManufactureUrl());
+        if (product.getManufacturerUrl() != null && !product.getManufacturerUrl().isEmpty()) {
+            binding.link.setText(product.getManufacturerUrl());
         }
         if (product.getPurchasePlaces() != null && !product.getPurchasePlaces().isEmpty()) {
             binding.countryWherePurchased.setText(extractProductPurchasePlaces(product));
@@ -284,9 +307,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         if (product.getCountriesTags() != null && !product.getCountriesTags().isEmpty()) {
             List<String> chipValues = extractProductCountriesTagsChipValues(product);
             //Also add the country set by the user in preferences
-            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext());
             String savedCountry = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "");
-            if (!savedCountry.isEmpty()) {
+            if (!TextUtils.isEmpty(savedCountry)) {
                 chipValues.add(savedCountry);
             }
             binding.countriesWhereSold.setText(chipValues);
@@ -294,32 +317,37 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         setProductLanguage(lang);
     }
 
-    private List<String> extractProductCountriesTagsChipValues(Product product) {
+    @NonNull
+    @Contract("null -> new")
+    private List<String> extractProductCountriesTagsChipValues(@Nullable Product product) {
         if (product == null || product.getCountriesTags() == null) {
             return new ArrayList<>();
         }
-        List<String> countriesTags = product.getCountriesTags();
-        final List<String> chipValues = new ArrayList<>();
-        for (String tag : countriesTags) {
-            chipValues.add(getCountryName(appLanguageCode, tag));
-        }
-        return chipValues;
+        return product.getCountriesTags().stream()
+            .map(tag -> getCountryName(appLanguageCode, tag))
+            .collect(Collectors.toList());
     }
 
-    private List<String> extractProductStoresChipValues(Product product) {
+    @NonNull
+    @Contract("null -> new")
+    private List<String> extractProductStoresChipValues(@Nullable Product product) {
         if (product == null || product.getStores() == null) {
             return new ArrayList<>();
         }
         return Arrays.asList(product.getStores().split("\\s*,\\s*"));
     }
 
-    private List<String> extractProductPurchasePlaces(Product product) {
+    @NonNull
+    @Contract("null -> new")
+    private List<String> extractProductPurchasePlaces(@Nullable Product product) {
         if (product == null || product.getPurchasePlaces() == null) {
             return new ArrayList<>();
         }
         return Arrays.asList(product.getPurchasePlaces().split("\\s*,\\s*"));
     }
 
+    @NonNull
+    @Contract("null -> new")
     private List<String> extractProductEmbTagsChipsValues(Product product) {
         if (product == null || product.getEmbTags() == null) {
             return new ArrayList<>();
@@ -332,14 +360,18 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         return chipValues;
     }
 
-    private List<String> extractProductOriginsChipsValues(Product product) {
+    @NonNull
+    @Contract("null -> new")
+    private List<String> extractProductOriginsChipsValues(@Nullable Product product) {
         if (product == null || product.getOrigins() == null) {
             return new ArrayList<>();
         }
         return Arrays.asList(product.getOrigins().split("\\s*,\\s*"));
     }
 
-    private List<String> extractProductTagsChipsValues(Product product) {
+    @NonNull
+    @Contract("null -> new")
+    private List<String> extractProductTagsChipsValues(@Nullable Product product) {
         if (product == null || product.getLabelsTags() == null) {
             return new ArrayList<>();
         }
@@ -351,7 +383,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         return chipValues;
     }
 
-    private List<String> extractProductCategoriesChipsValues(Product product) {
+    @NonNull
+    @Contract("null -> new")
+    private List<String> extractProductCategoriesChipsValues(@Nullable Product product) {
         if (product == null || product.getCategoriesTags() == null) {
             return new ArrayList<>();
         }
@@ -363,14 +397,18 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         return chipValues;
     }
 
-    private List<String> extractProductPackagingChipsValues(Product product) {
+    @NonNull
+    @Contract("null -> new")
+    private List<String> extractProductPackagingChipsValues(@Nullable Product product) {
         if (product == null || product.getPackaging() == null) {
             return new ArrayList<>();
         }
         return Arrays.asList(product.getPackaging().split("\\s*,\\s*"));
     }
 
-    private List<String> extractProductBrandsChipsValues(Product product) {
+    @NonNull
+    @Contract("null -> new")
+    private List<String> extractProductBrandsChipsValues(@Nullable Product product) {
         if (product == null || product.getBrands() == null) {
             return new ArrayList<>();
         }
@@ -387,14 +425,14 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         final String imageFrontUrl = product.getImageFrontUrl(language);
         if (imageFrontUrl != null && !imageFrontUrl.isEmpty()) {
 
-            mImageUrl = imageFrontUrl;
+            frontImageUrl = imageFrontUrl;
             binding.imageProgress.setVisibility(View.VISIBLE);
-            binding.btnEditImageFront.setVisibility(View.INVISIBLE);
+            binding.btnEditImgFront.setVisibility(View.INVISIBLE);
             Picasso.get()
                 .load(imageFrontUrl)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
-                .into(binding.btnAddImageFront, new Callback() {
+                .into(binding.imgFront, new Callback() {
                     @Override
                     public void onSuccess() {
                         frontImageLoaded();
@@ -414,7 +452,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
      * @return returns the name of the country if found in the db or else returns the tag itself.
      */
     private String getCountryName(String languageCode, String tag) {
-        CountryName countryName = mCountryNameDao.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode))
+        CountryName countryName = countryNameDao.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode))
             .unique();
         if (countryName != null) {
             return countryName.getName();
@@ -428,7 +466,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
      * @return returns the name of the label if found in the db or else returns the tag itself.
      */
     private String getLabelName(String languageCode, String tag) {
-        LabelName labelName = mLabelNameDao.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique();
+        LabelName labelName = labelNameDao.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique();
         if (labelName != null) {
             return labelName.getName();
         }
@@ -441,7 +479,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
      * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
      */
     private String getCategoryName(String languageCode, String tag) {
-        CategoryName categoryName = mCategoryNameDao.queryBuilder().where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+        CategoryName categoryName = categoryNameDao.queryBuilder().where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode))
             .unique();
         if (categoryName != null) {
             return categoryName.getName();
@@ -450,7 +488,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     private String getEmbCode(String embTag) {
-        Tag tag = mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
+        Tag tag = tagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique();
         if (tag != null) {
             return tag.getName();
         }
@@ -461,17 +499,17 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
     private void preFillValuesFromOffline() {
-        HashMap<String, String> productDetails = mOfflineSavedProduct.getProductDetailsMap();
+        HashMap<String, String> productDetails = savedProduct.getProductDetailsMap();
         if (productDetails != null) {
-            if (mOfflineSavedProduct.getImageFrontLocalUrl() != null) {
+            if (savedProduct.getImageFrontLocalUrl() != null) {
                 binding.imageProgress.setVisibility(View.VISIBLE);
-                binding.btnEditImageFront.setVisibility(View.INVISIBLE);
-                mImageUrl = mOfflineSavedProduct.getImageFrontLocalUrl();
+                binding.btnEditImgFront.setVisibility(View.INVISIBLE);
+                frontImageUrl = savedProduct.getImageFrontLocalUrl();
                 Picasso.get()
-                    .load(mImageUrl)
+                    .load(frontImageUrl)
                     .resize(dpsToPixels(50), dpsToPixels(50))
                     .centerInside()
-                    .into(binding.btnAddImageFront, new Callback() {
+                    .into(binding.imgFront, new Callback() {
                         @Override
                         public void onSuccess() {
                             frontImageLoaded();
@@ -483,26 +521,26 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                         }
                     });
             }
-            String offLineProductLanguage = mOfflineSavedProduct.getLanguage();
+            String offLineProductLanguage = savedProduct.getLanguage();
             if (!TextUtils.isEmpty(offLineProductLanguage)) {
                 setProductLanguage(offLineProductLanguage);
             }
-            String offlineProductName = mOfflineSavedProduct.getName();
+            String offlineProductName = savedProduct.getName();
             if (!TextUtils.isEmpty(offlineProductName)) {
                 binding.name.setText(offlineProductName);
             }
             if (productDetails.get(ApiFields.Keys.QUANTITY) != null) {
                 binding.quantity.setText(productDetails.get(ApiFields.Keys.QUANTITY));
             }
-            prefillChip(productDetails, ApiFields.Keys.ADD_BRANDS, binding.brand);
-            prefillChip(productDetails, ApiFields.Keys.ADD_PACKAGING, binding.packaging);
-            prefillChip(productDetails, ApiFields.Keys.ADD_CATEGORIES, binding.categories);
-            prefillChip(productDetails, ApiFields.Keys.ADD_LABELS, binding.label);
-            prefillChip(productDetails, ApiFields.Keys.ADD_ORIGINS, binding.originOfIngredients);
-            if (productDetails.get(ApiFields.Keys.ADD_MANUFACTURING_PLACE) != null) {
-                binding.manufacturingPlace.setText(productDetails.get(ApiFields.Keys.ADD_MANUFACTURING_PLACE));
+            prefillChip(productDetails, ApiFields.Keys.BRANDS, binding.brand);
+            prefillChip(productDetails, ApiFields.Keys.PACKAGING, binding.packaging);
+            prefillChip(productDetails, ApiFields.Keys.CATEGORIES, binding.categories);
+            prefillChip(productDetails, ApiFields.Keys.LABELS, binding.label);
+            prefillChip(productDetails, ApiFields.Keys.ORIGINS, binding.originOfIngredients);
+            if (productDetails.get(ApiFields.Keys.MANUFACTURING_PLACES) != null) {
+                binding.manufacturingPlace.setText(productDetails.get(ApiFields.Keys.MANUFACTURING_PLACES));
             }
-            prefillChip(productDetails, ApiFields.Keys.ADD_EMB_CODE, binding.embCode);
+            prefillChip(productDetails, ApiFields.Keys.EMB_CODES, binding.embCode);
             if (productDetails.get(ApiFields.Keys.LINK) != null) {
                 binding.link.setText(productDetails.get(ApiFields.Keys.LINK));
             }
@@ -513,8 +551,8 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     private void frontImageLoaded() {
-        binding.btnEditImageFront.setVisibility(View.VISIBLE);
         binding.imageProgress.setVisibility(View.GONE);
+        binding.btnEditImgFront.setVisibility(View.VISIBLE);
     }
 
     private void prefillChip(@NonNull Map<String, String> productDetails, @NonNull String paramName, @NonNull NachoTextView nachoTextView) {
@@ -536,7 +574,8 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     /**
      * Auto load suggestions into various NachoTextViews
      */
-    private void loadAutoSuggestions() {
+    @SuppressWarnings("unchecked")
+    private void setupAutoSuggestion() {
         DaoSession daoSession = OFFApplication.getDaoSession();
         AsyncSession asyncSessionCountries = daoSession.startAsyncSession();
         AsyncSession asyncSessionLabels = daoSession.startAsyncSession();
@@ -556,43 +595,35 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             .orderDesc(CategoryNameDao.Properties.Name).build());
 
         asyncSessionCountries.setListenerMainThread(operation -> {
-            @SuppressWarnings("unchecked")
-            List<CountryName> countryNames = (List<CountryName>) operation.getResult();
             countries.clear();
-            for (int i = 0; i < countryNames.size(); i++) {
-                countries.add(countryNames.get(i).getName());
+            for (CountryName name : (List<CountryName>) operation.getResult()) {
+                countries.add(name.getName());
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
                 android.R.layout.simple_dropdown_item_1line, countries);
-            EmbCodeAutoCompleteAdapter customAdapter = new EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
+            EmbCodeAutoCompleteAdapter embAdapter = new EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
             binding.originOfIngredients.setAdapter(adapter);
             binding.countryWherePurchased.setAdapter(adapter);
             binding.countriesWhereSold.setAdapter(adapter);
-            binding.embCode.setAdapter(customAdapter);
+            binding.embCode.setAdapter(embAdapter);
         });
         asyncSessionLabels.setListenerMainThread(operation -> {
-            @SuppressWarnings("unchecked")
-            List<LabelName> labelNames = (List<LabelName>) operation.getResult();
             labels.clear();
-            for (int i = 0; i < labelNames.size(); i++) {
-                labels.add(labelNames.get(i).getName());
+            for (LabelName name : (List<LabelName>) operation.getResult()) {
+                labels.add(name.getName());
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
-                android.R.layout.simple_dropdown_item_1line, labels);
-            binding.label.setAdapter(adapter);
+            binding.label.setAdapter(new ArrayAdapter<>(activity,
+                android.R.layout.simple_dropdown_item_1line, labels));
         });
         asyncSessionCategories.setListenerMainThread(operation -> {
-            @SuppressWarnings("unchecked")
-            List<CategoryName> categoryNames = (List<CategoryName>) operation.getResult();
-            category.clear();
-            for (int i = 0; i < categoryNames.size(); i++) {
-                category.add(categoryNames.get(i).getName());
+            categories.clear();
+            for (CategoryName name : (List<CategoryName>) operation.getResult()) {
+                categories.add(name.getName());
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(activity,
-                android.R.layout.simple_dropdown_item_1line, category);
-            binding.categories.setAdapter(adapter);
+            binding.categories.setAdapter(new ArrayAdapter<>(activity,
+                android.R.layout.simple_dropdown_item_1line, categories));
         });
-        if (BuildConfig.FLAVOR.equals("obf")) {
+        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
             binding.periodOfTimeAfterOpeningTil.setVisibility(View.VISIBLE);
             PeriodAfterOpeningAutoCompleteAdapter customAdapter = new PeriodAfterOpeningAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line);
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter);
@@ -610,51 +641,48 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         binding.language.setText(R.string.product_language);
         binding.language.append(StringUtils.capitalize(current.getDisplayName(current)));
         if (activity instanceof AddProductActivity) {
-            getAddProductActivity().setProductLanguage(languageCode);
+            ((AddProductActivity) activity).setProductLanguage(languageCode);
         }
         if (editionMode) {
             loadFrontImage(lang);
-            ProductsAPI client = CommonApiManager.getInstance().getProductsApi();
             String fields = "ingredients_text_" + lang + ",product_name_" + lang;
-            client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            disp.add(client.getProductByBarcodeSingle(product.getCode(), fields, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<State>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        binding.name.setText(getString(R.string.txtLoading));
+                .doOnSubscribe(disposable -> {
+                    binding.name.setText(getString(R.string.txtLoading));
+                    binding.name.setActivated(false);
+                })
+                .subscribe(productState -> {
+                    if (productState.getStatus() != 1) {
+                        Log.e(AddProductOverviewFragment.class.getSimpleName(),
+                            String.format("Retrieved product with code %s, but status was not successful.", productState.getCode()));
+                        binding.name.setText(StringUtils.EMPTY);
+                        binding.name.setActivated(true);
+                        return;
                     }
-
-                    @Override
-                    public void onSuccess(State state) {
-                        if (state.getStatus() == 1) {
-                            if (state.getProduct().getProductName(lang) != null) {
-                                if (languageCode.equals(lang)) {
-                                    binding.name.setText(state.getProduct().getProductName(lang));
-                                    if (activity instanceof AddProductActivity) {
-                                        getAddProductActivity().setIngredients("set", state.getProduct().getIngredientsText(lang));
-                                        getAddProductActivity().updateLanguage();
-                                    }
-                                }
-                            } else {
-                                binding.name.setText(null);
-                                if (activity instanceof AddProductActivity) {
-                                    (getAddProductActivity()).setIngredients("set", null);
-                                }
+                    if (productState.getProduct().getProductName(lang) != null) {
+                        if (languageCode.equals(lang)) {
+                            binding.name.setText(productState.getProduct().getProductName(lang));
+                            binding.name.setActivated(true);
+                            if (activity instanceof AddProductActivity) {
+                                ((AddProductActivity) activity).setIngredients("set", productState.getProduct().getIngredientsText(lang));
+                                ((AddProductActivity) activity).updateLanguage();
                             }
                         }
+                    } else {
+                        binding.name.setText(StringUtils.EMPTY);
+                        binding.name.setActivated(true);
+                        if (activity instanceof AddProductActivity) {
+                            ((AddProductActivity) activity).setIngredients("set", null);
+                        }
                     }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        binding.name.setText(null);
-                    }
-                });
+                }, e -> {
+                    Log.e(AddProductOverviewFragment.class.getSimpleName(), "Error retrieving product state from server api.", e);
+                    binding.name.setText(StringUtils.EMPTY);
+                    binding.name.setActivated(true);
+                }));
         }
-    }
-
-    private AddProductActivity getAddProductActivity() {
-        return (AddProductActivity) activity;
     }
 
     @Override
@@ -663,80 +691,83 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         activity = getActivity();
     }
 
-    void next() {
+    private void next() {
         if (!areRequiredFieldsEmpty() && activity instanceof AddProductActivity) {
-            (getAddProductActivity()).proceed();
+            ((AddProductActivity) activity).proceed();
         }
     }
 
-    void addFrontImage() {
-        if (mImageUrl != null) {
-            frontImage = true;
-            if (photoFile != null) {
-                cropRotateImage(photoFile, getString(R.string.set_img_front));
-            } else {
-                disp.add(FileDownloader.download(requireContext(), mImageUrl)
+    private void onFrontImageClick() {
+        if (frontImageUrl == null) {
+            // No image, take one
+            onEditFrontImageClick();
+        } else {
+            // Image found, download it if necessary and edit it
+            isFrontImagePresent = true;
+            if (photoFile == null) {
+                disp.add(FileDownloader.download(requireContext(), frontImageUrl)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(file -> {
                         photoFile = file;
                         cropRotateImage(photoFile, getString(R.string.set_img_front));
                     }));
+            } else {
+                cropRotateImage(photoFile, getString(R.string.set_img_front));
             }
-        } else {
-            newFrontImage();
         }
     }
 
-    void newFrontImage() {
+    private void onEditFrontImageClick() {
         // add front image.
-        frontImage = true;
+        isFrontImagePresent = true;
         doChooseOrTakePhotos(getString(R.string.set_img_front));
     }
 
-    void addOtherImage() {
-        frontImage = false;
+    private void editOtherImage() {
+        isFrontImagePresent = false;
         doChooseOrTakePhotos(getString(R.string.take_more_pictures));
     }
 
     @Override
     protected void doOnPhotosPermissionGranted() {
-        if (frontImage) {
-            addOtherImage();
+        if (isFrontImagePresent) {
+            editOtherImage();
         } else {
-            addFrontImage();
+            onFrontImageClick();
         }
     }
 
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
-    public void getAllDetails(Map<String, String> targetMap) {
+    public void addAllFieldsToMap(Map<String, String> targetMap) {
         chipifyAllUnterminatedTokens();
-        if (activity instanceof AddProductActivity) {
-            targetMap.put(ApiFields.Keys.BARCODE, barcode);
-            targetMap.put(ApiFields.Keys.LANG, languageCode);
-            targetMap.put(ApiFields.Keys.LC, appLanguageCode);
-            String lc = (!languageCode.isEmpty()) ? languageCode : "en";
-            targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
-            targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
-            targetMap.put(ApiFields.Keys.ADD_BRANDS.substring(4), getValues(binding.brand));
-            targetMap.put(ApiFields.Keys.ADD_PACKAGING.substring(4), getValues(binding.packaging));
-            targetMap.put(ApiFields.Keys.ADD_CATEGORIES.substring(4), getValues(binding.categories));
-            targetMap.put(ApiFields.Keys.ADD_LABELS.substring(4), getValues(binding.label));
-            if (BuildConfig.FLAVOR.equals("obf")) {
-                targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
-            }
-            if (mImageUrl != null) {
-                targetMap.put("imageUrl", mImageUrl);
-            }
-            targetMap.put(ApiFields.Keys.ADD_ORIGINS.substring(4), getValues(binding.originOfIngredients));
-            targetMap.put(ApiFields.Keys.ADD_MANUFACTURING_PLACE.substring(4), binding.manufacturingPlace.getText().toString());
-            targetMap.put(ApiFields.Keys.ADD_EMB_CODE.substring(4), getValues(binding.embCode));
-            targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
-            targetMap.put(ApiFields.Keys.ADD_PURCHASE.substring(4), getValues(binding.countryWherePurchased));
-            targetMap.put(ApiFields.Keys.ADD_STORES.substring(4), getValues(binding.stores));
-            targetMap.put(ApiFields.Keys.ADD_COUNTRIES.substring(4), getValues(binding.countriesWhereSold));
+        if (!(activity instanceof AddProductActivity)) {
+            return;
         }
+        final String lc = LocaleHelper.getLCOrDefault(languageCode);
+        targetMap.put(ApiFields.Keys.BARCODE, barcode);
+        targetMap.put(ApiFields.Keys.LANG, lc);
+        targetMap.put(ApiFields.Keys.LC, appLanguageCode);
+        targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
+        targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
+        targetMap.put(ApiFields.Keys.BRANDS, getNachoValues(binding.brand));
+        targetMap.put(ApiFields.Keys.PACKAGING, getNachoValues(binding.packaging));
+        targetMap.put(ApiFields.Keys.CATEGORIES, getNachoValues(binding.categories));
+        targetMap.put(ApiFields.Keys.LABELS, getNachoValues(binding.label));
+        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
+            targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
+        }
+        if (frontImageUrl != null) {
+            targetMap.put("imageUrl", frontImageUrl);
+        }
+        targetMap.put(ApiFields.Keys.ORIGINS, getNachoValues(binding.originOfIngredients));
+        targetMap.put(ApiFields.Keys.MANUFACTURING_PLACES, binding.manufacturingPlace.getText().toString());
+        targetMap.put(ApiFields.Keys.EMB_CODES, getNachoValues(binding.embCode));
+        targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
+        targetMap.put(ApiFields.Keys.PURCHASE_PLACES, getNachoValues(binding.countryWherePurchased));
+        targetMap.put(ApiFields.Keys.STORES, getNachoValues(binding.stores));
+        targetMap.put(ApiFields.Keys.COUNTRIES, getNachoValues(binding.countriesWhereSold));
     }
 
     /**
@@ -757,53 +788,53 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         if (!TextUtils.isEmpty(languageCode)) {
             targetMap.put(ApiFields.Keys.LANG, languageCode);
         }
-        String lc = (!TextUtils.isEmpty(languageCode)) ? languageCode : "en";
+        String lc = LocaleHelper.getLCOrDefault(languageCode);
         if (EditTextUtils.isNotEmpty(binding.name) && EditTextUtils.isDifferent(binding.name, product != null ? product.getProductName(lc) : null)) {
             targetMap.put(ApiFields.Keys.lcProductNameKey(lc), binding.name.getText().toString());
         }
         if (EditTextUtils.isNotEmpty(binding.quantity) && EditTextUtils.isDifferent(binding.quantity, product != null ? product.getQuantity() : null)) {
             targetMap.put(ApiFields.Keys.QUANTITY, binding.quantity.getText().toString());
         }
-        if (!binding.brand.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.brand, extractProductBrandsChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.ADD_BRANDS, getValues(binding.brand));
+        if (EditTextUtils.areChipsDifferent(binding.brand, extractProductBrandsChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.BRANDS, getNachoValues(binding.brand));
         }
-        if (!binding.packaging.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.packaging, extractProductPackagingChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.ADD_PACKAGING, getValues(binding.packaging));
+        if (EditTextUtils.areChipsDifferent(binding.packaging, extractProductPackagingChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.PACKAGING, getNachoValues(binding.packaging));
         }
-        if (!binding.categories.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.categories, extractProductCategoriesChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.ADD_CATEGORIES, getValues(binding.categories));
+        if (EditTextUtils.areChipsDifferent(binding.categories, extractProductCategoriesChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.CATEGORIES, getNachoValues(binding.categories));
         }
-        if (!binding.label.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.label, extractProductTagsChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.ADD_LABELS, getValues(binding.label));
+        if (EditTextUtils.areChipsDifferent(binding.label, extractProductTagsChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.LABELS, getNachoValues(binding.label));
         }
         if (EditTextUtils.isNotEmpty(binding.periodOfTimeAfterOpening)) {
             targetMap.put(ApiFields.Keys.PERIODS_AFTER_OPENING, binding.periodOfTimeAfterOpening.getText().toString());
         }
-        if (mImageUrl != null) {
-            targetMap.put("imageUrl", mImageUrl);
+        if (frontImageUrl != null) {
+            targetMap.put("imageUrl", frontImageUrl);
         }
-        if (!binding.originOfIngredients.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.originOfIngredients, extractProductOriginsChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.ADD_ORIGINS, getValues(binding.originOfIngredients));
+        if (EditTextUtils.areChipsDifferent(binding.originOfIngredients, extractProductOriginsChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.ORIGINS, getNachoValues(binding.originOfIngredients));
         }
         if (EditTextUtils.isNotEmpty(binding.manufacturingPlace) && EditTextUtils
             .isDifferent(binding.manufacturingPlace, product != null ? product.getManufacturingPlaces() : null)) {
-            targetMap.put(ApiFields.Keys.ADD_MANUFACTURING_PLACE, binding.manufacturingPlace.getText().toString());
+            targetMap.put(ApiFields.Keys.MANUFACTURING_PLACES, binding.manufacturingPlace.getText().toString());
         }
-        if (!binding.embCode.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.embCode, extractProductEmbTagsChipsValues(product))) {
-            targetMap.put(ApiFields.Keys.ADD_EMB_CODE, getValues(binding.embCode));
+        if (EditTextUtils.areChipsDifferent(binding.embCode, extractProductEmbTagsChipsValues(product))) {
+            targetMap.put(ApiFields.Keys.EMB_CODES, getNachoValues(binding.embCode));
         }
-        if (EditTextUtils.isNotEmpty(binding.link) && EditTextUtils.isDifferent(binding.link, product != null ? product.getManufactureUrl() : null)) {
+        if (EditTextUtils.isNotEmpty(binding.link) && EditTextUtils.isDifferent(binding.link, product != null ? product.getManufacturerUrl() : null)) {
             targetMap.put(ApiFields.Keys.LINK, binding.link.getText().toString());
         }
-        if (!binding.countryWherePurchased.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.countryWherePurchased, extractProductPurchasePlaces(product))) {
-            targetMap.put(ApiFields.Keys.ADD_PURCHASE, getValues(binding.countryWherePurchased));
+        if (EditTextUtils.areChipsDifferent(binding.countryWherePurchased, extractProductPurchasePlaces(product))) {
+            targetMap.put(ApiFields.Keys.PURCHASE_PLACES, getNachoValues(binding.countryWherePurchased));
         }
-        if (!binding.stores.getChipValues().isEmpty() && EditTextUtils.areChipsDifferent(binding.stores, extractProductStoresChipValues(product))) {
-            targetMap.put(ApiFields.Keys.ADD_STORES, getValues(binding.stores));
+        if (EditTextUtils.areChipsDifferent(binding.stores, extractProductStoresChipValues(product))) {
+            targetMap.put(ApiFields.Keys.STORES, getNachoValues(binding.stores));
         }
-        if (!binding.countriesWhereSold.getChipValues().isEmpty() && EditTextUtils
-            .areChipsDifferent(binding.countriesWhereSold, extractProductCountriesTagsChipValues(product))) {
-            targetMap.put(ApiFields.Keys.ADD_COUNTRIES, getValues(binding.countriesWhereSold));
+        if (EditTextUtils.areChipsDifferent(binding.countriesWhereSold,
+            extractProductCountriesTagsChipValues(product))) {
+            targetMap.put(ApiFields.Keys.COUNTRIES, getNachoValues(binding.countriesWhereSold));
         }
     }
 
@@ -819,12 +850,13 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         }
     }
 
-    private String getValues(NachoTextView nachoTextView) {
-        List<String> list = nachoTextView.getChipValues();
-        return StringUtils.join(list, ",");
+    @NonNull
+    @Contract(pure = true)
+    private String getNachoValues(@NonNull NachoTextView nachoTextView) {
+        return StringUtils.join(nachoTextView.getChipValues(), ",");
     }
 
-    void toggleManufacturingSectionVisibility() {
+    private void toggleManufacturingSectionVisibility() {
         if (binding.manufacturingPlaceTil.getVisibility() != View.VISIBLE) {
             changeVisibilityManufacturingSectionTo(View.VISIBLE);
             binding.originOfIngredients.requestFocus();
@@ -844,7 +876,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         binding.hintLink2.setVisibility(visibility);
     }
 
-    void togglePurchasingSectionVisibility() {
+    private void togglePurchasingSectionVisibility() {
         if (binding.storesTil.getVisibility() != View.VISIBLE) {
             changePurchasingSectionVisibilityTo(View.VISIBLE);
             binding.countryWherePurchased.requestFocus();
@@ -861,14 +893,15 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         binding.countriesWhereSoldTil.setVisibility(visibility);
     }
 
-    void toastEmbCodeHint() {
+    private void showEmbCodeHintDialog() {
         new MaterialDialog.Builder(activity)
             .content(R.string.hint_emb_codes)
             .positiveText(R.string.ok_button)
+            .onPositive((dialog, which) -> dialog.dismiss())
             .show();
     }
 
-    void searchProductLink() {
+    private void searchProductLink() {
         String url = "https://www.google.com/search?q=" + barcode;
         if (!binding.brand.getChipAndTokenValues().isEmpty()) {
             List<String> brandNames = binding.brand.getChipAndTokenValues();
@@ -882,7 +915,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(url), new WebViewFallback());
     }
 
-    void scanProductLink() {
+    private void scanProductLink() {
         IntentIntegrator integrator = IntentIntegrator.forSupportFragment(this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
         integrator.setRequestCode(INTENT_INTEGRATOR_REQUEST_CODE);
@@ -890,7 +923,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         integrator.initiateScan();
     }
 
-    void selectProductLanguage() {
+    private void selectProductLanguage() {
         String[] localeValues = activity.getResources().getStringArray(R.array.languages_array);
         String[] localeLabels = new String[localeValues.length];
         List<String> finalLocalValues = new ArrayList<>();
@@ -913,7 +946,7 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
             .itemsCallbackSingleChoice(selectedIndex, (dialog, view, which, text) -> {
                 binding.name.setText(null);
                 if (activity instanceof AddProductActivity) {
-                    (getAddProductActivity()).setIngredients("set", null);
+                    ((AddProductActivity) activity).setIngredients("set", null);
                 }
                 setProductLanguage(finalLocalValues.get(which));
                 return true;
@@ -923,11 +956,11 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     /**
-     * Before moving next check if the required feilds are empty
+     * Before moving next check if the required fields are empty
      */
     public boolean areRequiredFieldsEmpty() {
-        if (mImageUrl == null || mImageUrl.equals("")) {
-            Toast.makeText(getContext(), R.string.add_at_least_one_picture, Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(frontImageUrl)) {
+            Snackbar.make(binding.getRoot(), R.string.add_at_least_one_picture, BaseTransientBottomBar.LENGTH_SHORT).show();
             binding.scrollView.fullScroll(View.FOCUS_UP);
             return true;
         } else {
@@ -936,30 +969,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
     }
 
     @Override
-    public void onPhotoReturned(File newPhotoFile) {
-        URI resultUri = newPhotoFile.toURI();
-        this.photoFile = newPhotoFile;
-        ProductImage image;
-        int position;
-        if (frontImage) {
-            image = new ProductImage(barcode, FRONT, newPhotoFile);
-            mImageUrl = newPhotoFile.getAbsolutePath();
-            newImageSelected = true;
-            position = 0;
-        } else {
-            image = new ProductImage(barcode, OTHER, newPhotoFile);
-            position = 3;
-        }
-        image.setFilePath(resultUri.getPath());
-        if (activity instanceof AddProductActivity) {
-            (getAddProductActivity()).addToPhotoMap(image, position);
-        }
-        hideImageProgress(false, StringUtils.EMPTY);
-    }
-
-    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        // Scanned QR code returned
         if (requestCode == INTENT_INTEGRATOR_REQUEST_CODE) {
             IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
             if (result.getContents() != null) {
@@ -967,8 +979,9 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
                 binding.link.requestFocus();
             }
         }
+        // Returning from editing image
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            frontImage = true;
+            isFrontImagePresent = true;
         }
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
     }
@@ -979,8 +992,8 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         }
         binding.imageProgress.setVisibility(View.VISIBLE);
         binding.imageProgressText.setVisibility(View.VISIBLE);
-        binding.btnAddImageFront.setVisibility(View.INVISIBLE);
-        binding.btnEditImageFront.setVisibility(View.INVISIBLE);
+        binding.imgFront.setVisibility(View.INVISIBLE);
+        binding.btnEditImgFront.setVisibility(View.INVISIBLE);
     }
 
     public void hideImageProgress(boolean errorInUploading, String message) {
@@ -989,14 +1002,14 @@ public class AddProductOverviewFragment extends BaseFragment implements PhotoRec
         }
         binding.imageProgress.setVisibility(View.GONE);
         binding.imageProgressText.setVisibility(View.GONE);
-        binding.btnAddImageFront.setVisibility(View.VISIBLE);
-        binding.btnEditImageFront.setVisibility(View.VISIBLE);
+        binding.imgFront.setVisibility(View.VISIBLE);
+        binding.btnEditImgFront.setVisibility(View.VISIBLE);
         if (!errorInUploading) {
             Picasso.get()
                 .load(photoFile)
                 .resize(dpsToPixels(50), dpsToPixels(50))
                 .centerInside()
-                .into(binding.btnAddImageFront);
+                .into(binding.imgFront);
         }
     }
 

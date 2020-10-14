@@ -52,11 +52,6 @@
             android:summary="@string/prefs_power_mode_summary"
             android:title="@string/prefs_power_mode" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="shakeScanMode"
-            android:summary="@string/shake_summary"
-            android:title="@string/shake_title" />
 
     </PreferenceCategory>
 
@@ -124,12 +119,12 @@
             android:summary="@string/fast_addition_mode"
             android:title="@string/fast_addition_mode_title" />
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="contributionTab"
             android:summary="@string/contribution_tab_summary"
             android:title="@string/contribution_tab_title" />
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="false"
             android:key="photoMode"
             android:summary="@string/preference_show_all_product_photos_summary"

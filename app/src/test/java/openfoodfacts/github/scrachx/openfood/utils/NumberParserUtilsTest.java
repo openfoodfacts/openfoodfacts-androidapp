@@ -2,59 +2,59 @@ package openfoodfacts.github.scrachx.openfood.utils;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 public class NumberParserUtilsTest {
-    private static final float defaultFloat = (float) 1.5;
-    private static final int defaultInt = 2;
+    private static final float DEFAULT_FLOAT = 1.5f;
+    private static final int DEFAULT_INT = 2;
 
     @Test
     public void getAsFloat_inIsNull() {
-        assertEquals(defaultFloat, NumberParserUtils.getAsFloat(null, defaultFloat), 0.0f);
+        assertThat(NumberParserUtils.getAsFloat(null, DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT);
     }
 
     @Test
     public void getAsFloat_inIsInt() {
-        assertEquals(3.0, NumberParserUtils.getAsFloat(3, defaultFloat), 0.0f);
+        assertThat(NumberParserUtils.getAsFloat(3, DEFAULT_FLOAT)).isWithin(0.0f).of(3.0f);
     }
 
     @Test
     public void getAsFloat_inIsStringNumber() {
-        assertEquals(3.0, NumberParserUtils.getAsFloat("3", defaultFloat), 0.0f);
+        assertThat(NumberParserUtils.getAsFloat("3", DEFAULT_FLOAT)).isWithin(0.0f).of(3.0f);
     }
 
     @Test
     public void getAsFloat_inIsStringChar() {
-        assertEquals(defaultFloat, NumberParserUtils.getAsFloat("a", defaultFloat), 0.0f);
+        assertThat(NumberParserUtils.getAsFloat("a", DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT);
     }
 
     @Test
     public void getAsFloat_inIsStringBlank() {
-        assertEquals(defaultFloat, NumberParserUtils.getAsFloat(" ", defaultFloat), 0.0f);
+        assertThat(NumberParserUtils.getAsFloat(" ", DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT);
     }
 
     @Test
     public void getAsInt_inIsNull() {
-        assertEquals(defaultInt, NumberParserUtils.getAsInt(null, defaultInt));
+        assertThat(NumberParserUtils.getAsInt(null, DEFAULT_INT)).isEqualTo(DEFAULT_INT);
     }
 
     @Test
     public void getAsInt_inIsFloat() {
-        assertEquals(3, NumberParserUtils.getAsInt(3.0, defaultInt));
+        assertThat(NumberParserUtils.getAsInt(3.0, DEFAULT_INT)).isEqualTo(3);
     }
 
     @Test
     public void getAsInt_inIsStringNumber() {
-        assertEquals(3, NumberParserUtils.getAsInt("3", defaultInt));
+        assertThat(NumberParserUtils.getAsInt("3", DEFAULT_INT)).isEqualTo(3);
     }
 
     @Test
     public void getAsInt_inIsStringChar() {
-        assertEquals(defaultInt, NumberParserUtils.getAsInt("a", defaultInt));
+        assertThat(NumberParserUtils.getAsInt("a", DEFAULT_INT)).isEqualTo(DEFAULT_INT);
     }
 
     @Test
     public void getAsInt_inIsStringBlank() {
-        assertEquals(defaultInt, NumberParserUtils.getAsInt(" ", defaultInt));
+        assertThat(NumberParserUtils.getAsInt(" ", DEFAULT_INT)).isEqualTo(DEFAULT_INT);
     }
 }

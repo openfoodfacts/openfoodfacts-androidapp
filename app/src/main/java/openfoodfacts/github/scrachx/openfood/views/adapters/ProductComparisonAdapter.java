@@ -19,6 +19,7 @@ package openfoodfacts.github.scrachx.openfood.views.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
 import android.util.TypedValue;
@@ -58,15 +59,14 @@ import io.reactivex.schedulers.Schedulers;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
-import openfoodfacts.github.scrachx.openfood.models.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem;
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevels;
 import openfoodfacts.github.scrachx.openfood.models.NutrimentLevel;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName;
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-import openfoodfacts.github.scrachx.openfood.utils.CompatibiltyUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 import openfoodfacts.github.scrachx.openfood.views.FullScreenActivityOpener;
@@ -84,7 +84,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
     private final OpenFoodAPIClient api;
     private boolean isLowBatteryMode = false;
     private final Context context;
-    private final CompositeDisposable disposable = new CompositeDisposable();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private final List<Product> productsToCompare;
     private final ProductRepository repository = ProductRepository.getInstance();
     private final ArrayList<ProductComparisonViewHolder> viewHolders = new ArrayList<>();
@@ -106,7 +106,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         }
 
         // Support synchronous scrolling
-        if (CompatibiltyUtils.isOnScrollChangeListenerAvailable()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             holder.listItemLayout.setOnScrollChangeListener((View.OnScrollChangeListener) (view, i, i1, i2, i3) -> {
                 for (ProductComparisonViewHolder viewHolder : viewHolders) {
                     viewHolder.listItemLayout.setScrollX(i);
@@ -196,12 +196,12 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         }
 
         // Open Food Facts specific
-        if (Utils.isFlavor(AppFlavors.OFF)) {
+        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             // NutriScore
-            int nutritionGradeResource = Utils.getImageGrade(product);
-            if (nutritionGradeResource != Utils.NO_DRAWABLE_RESOURCE) {
+            final Drawable nutritionGradeResource = Utils.getImageGradeDrawable(context, product);
+            if (nutritionGradeResource != null) {
                 holder.productComparisonImageGrade.setVisibility(View.VISIBLE);
-                holder.productComparisonImageGrade.setImageResource(nutritionGradeResource);
+                holder.productComparisonImageGrade.setImageDrawable(nutritionGradeResource);
             } else {
                 holder.productComparisonImageGrade.setVisibility(View.INVISIBLE);
             }
@@ -290,7 +290,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
             return;
         }
         final String languageCode = LocaleHelper.getLanguage(v.getContext());
-        disposable.add(
+        disp.add(
             Observable.fromArray(additivesTags.toArray(new String[0]))
                 .flatMapSingle(tag -> repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                     .flatMap(categoryName -> {
@@ -394,7 +394,7 @@ public class ProductComparisonAdapter extends RecyclerView.Adapter<ProductCompar
         Product product = productsToCompare.get(onPhotoReturnPosition);
         ProductImage image = new ProductImage(product.getCode(), FRONT, file);
         image.setFilePath(file.getAbsolutePath());
-        api.postImg(image, null);
+        disp.add(api.postImg(image).subscribe());
         String mUrlImage = file.getAbsolutePath();
         product.setImageUrl(mUrlImage);
         onPhotoReturnPosition = null;
