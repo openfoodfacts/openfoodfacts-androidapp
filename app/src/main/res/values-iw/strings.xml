@@ -392,7 +392,7 @@
     <string name="take_picture_front">צילום תמונה של החזית</string>
     <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
     <string name="take_more_pictures">צילום תמונות נוספות</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_extra_packaging_pictures">נא לצלם תמונות אריזה נוספות</string>
     <string name="txtSaturatedFat">שומן רווי</string>
     <string name="nutriscore_info_msg">מידע נוסף על ציון תזונתי</string>
     <string name="nova_info_msg">מידע נוסף על קבוצות NOVA</string>
