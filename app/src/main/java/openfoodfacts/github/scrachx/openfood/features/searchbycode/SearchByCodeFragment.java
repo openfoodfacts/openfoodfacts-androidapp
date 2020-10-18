@@ -44,18 +44,18 @@ public class SearchByCodeFragment extends NavigationBaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.editTextBarcode.setSelected(false);
-        api = new OpenFoodAPIClient(getActivity());
-        binding.buttonBarcode.setOnClickListener(v -> onSearchBarcodeProduct());
+        api = new OpenFoodAPIClient(requireActivity());
+        binding.buttonBarcode.setOnClickListener(v -> checkBarcodeThenSearch());
 
         if (requireActivity().getIntent() != null) {
             String barCode = requireActivity().getIntent().getStringExtra(BARCODE);
             if (StringUtils.isNotEmpty(barCode)) {
-                searchBarcode(barCode);
+                setBarcodeThenSearch(barCode);
             }
         }
     }
 
-    private void onSearchBarcodeProduct() {
+    private void checkBarcodeThenSearch() {
         Utils.hideKeyboard(requireActivity());
 
         final String barCodeTxt = binding.editTextBarcode.getText().toString();
@@ -72,14 +72,13 @@ public class SearchByCodeFragment extends NavigationBaseFragment {
         if (!ProductUtils.isBarcodeValid(barCodeTxt)) {
             binding.editTextBarcode.setError(getResources().getString(R.string.txtBarcodeNotValid));
         } else {
-
             api.openProduct(barCodeTxt, getActivity());
         }
     }
 
-    private void searchBarcode(String code) {
+    private void setBarcodeThenSearch(String code) {
         binding.editTextBarcode.setText(code, TextView.BufferType.EDITABLE);
-        onSearchBarcodeProduct();
+        checkBarcodeThenSearch();
     }
 
     @Override
@@ -99,7 +98,7 @@ public class SearchByCodeFragment extends NavigationBaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        final ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        final ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
         if (supportActionBar != null) {
             supportActionBar.setTitle(getString(R.string.search_by_barcode_drawer));
         }

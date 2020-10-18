@@ -393,7 +393,7 @@ public class ProductSearchActivity extends BaseActivity {
         String searchQuery = mSearchInfo.getSearchQuery();
         switch (mSearchInfo.getSearchType()) {
             case BRAND:
-                disp.add(apiClient.getProductsByBrandSingle(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
+                disp.add(apiClient.getProductsByBrand(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread())
                     .subscribe((search, throwable) ->
                         displaySearch(throwable == null,
                             search,
@@ -420,12 +420,13 @@ public class ProductSearchActivity extends BaseActivity {
                             R.string.txt_no_matching_additive_products)));
                 break;
             case STORE:
-                apiClient.getProductsByStore(searchQuery, pageAddress, (value, store) ->
-                    displaySearch(value, store, R.string.txt_no_matching_store_products));
+                apiClient.getProductsByStore(searchQuery, pageAddress);
                 break;
             case PACKAGING:
-                apiClient.getProductsByPackaging(searchQuery, pageAddress, (value, packaging) ->
-                    displaySearch(value, packaging, R.string.txt_no_matching_packaging_products));
+                disp.add(apiClient.getProductsByPackaging(searchQuery, pageAddress)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        displaySearch(throwable == null, search, R.string.txt_no_matching_packaging_products)));
                 break;
             case SEARCH:
                 if (ProductUtils.isBarcodeValid(searchQuery)) {
@@ -437,12 +438,16 @@ public class ProductSearchActivity extends BaseActivity {
                             displaySearch(throwable == null,
                                 search,
                                 R.string.txt_no_matching_products,
-                                R.string.txt_broaden_search)));
+                                R.string.txt_broaden_search))
+                    );
                 }
                 break;
             case LABEL:
-                api.getProductsByLabel(searchQuery, pageAddress, (value, label) ->
-                    displaySearch(value, label, R.string.txt_no_matching_label_products));
+                disp.add(api.getProductsByLabel(searchQuery, pageAddress)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        displaySearch(throwable == null, search, R.string.txt_no_matching_label_products))
+                );
                 break;
             case CATEGORY:
                 api.getProductsByCategory(searchQuery, pageAddress, (value, category) ->
@@ -495,14 +500,16 @@ public class ProductSearchActivity extends BaseActivity {
                 break;
 
             case 5:
-                disp.add(api.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress).subscribe((search, throwable) ->
+                disp.add(api.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress).observeOn(AndroidSchedulers.mainThread()).subscribe((search, throwable) ->
                     displaySearch(throwable == null, search, R.string.txt_no_matching_contributor_products)));
                 break;
 
             case 0:
             default:
-                api.getProductsByContributor(searchQuery, pageAddress, (value, category) ->
-                    displaySearch(value, category, R.string.txt_no_matching_contributor_products));
+                disp.add(api.getProductsByContributor(searchQuery, pageAddress)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((search, throwable) ->
+                        displaySearch(throwable == null, search, R.string.txt_no_matching_contributor_products)));
                 break;
         }
     }
