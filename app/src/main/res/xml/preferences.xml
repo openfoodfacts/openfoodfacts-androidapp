@@ -43,15 +43,13 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="startScan"
-            android:summaryOff="@string/prefs_scan_startup_summary"
-            android:summaryOn="Enabled"
+            android:summary="@string/prefs_scan_startup_summary"
             android:title="@string/prefs_scan_startup" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="powerMode"
-            android:summaryOff="@string/prefs_power_mode_summary"
-            android:summaryOn="Enabled"
+            android:summary="@string/prefs_power_mode_summary"
             android:title="@string/prefs_power_mode" />
 
 
@@ -79,8 +77,7 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="disableImageLoad"
-            android:summaryOff="@string/disable_image_loading"
-            android:summaryOn="Enabled"
+            android:summary="@string/disable_image_loading"
             android:title="@string/DisableLoadTitle" />
 
     </PreferenceCategory>
@@ -113,31 +110,25 @@
         <SwitchPreference
             android:defaultValue="true"
             android:key="cropNewImage"
-            android:summaryOff="@string/crop_new_image"
-            android:summaryOn="Enabled"
+            android:summary="@string/crop_new_image"
             android:title="@string/crop_new_image_title" />
 
         <SwitchPreference
             android:defaultValue="true"
             android:key="fastAdditionMode"
-            android:summaryOff="@string/fast_addition_mode"
-            android:summaryOn="Enabled"
+            android:summary="@string/fast_addition_mode"
             android:title="@string/fast_addition_mode_title" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="contributionTab"
-            android:summaryOff="@string/contribution_tab_summary"
-            android:summaryOn="Enabled"
+            android:summary="@string/contribution_tab_summary"
             android:title="@string/contribution_tab_title" />
         <SwitchPreference
             android:defaultValue="false"
-            android:id="@+id/photoModeSwitch"
             android:key="photoMode"
-            android:summaryOff="@string/preference_show_all_product_photos_summary"
-            android:summaryOn="Enabled"
+            android:summary="@string/preference_show_all_product_photos_summary"
             android:title="@string/preference_show_all_product_photos_title" />
-
 
     </PreferenceCategory>
 
