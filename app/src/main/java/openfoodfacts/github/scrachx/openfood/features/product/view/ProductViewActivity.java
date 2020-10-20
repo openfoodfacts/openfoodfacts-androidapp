@@ -182,7 +182,8 @@ public class ProductViewActivity extends BaseActivity implements OnRefreshListen
             .subscribe(state -> {
                 productState = state;
                 getIntent().putExtra(STATE_KEY, state);
-                if (productState != null) {
+                //Adding check on productState.getProduct() to avoid null pointer exception (happens in setViewPager()) when product not found
+                if (productState != null && productState.getProduct() != null) {
                     initViews();
                 } else {
                     finish();
