@@ -44,13 +44,13 @@
             android:defaultValue="false"
             android:key="startScan"
             android:summaryOff="@string/prefs_scan_startup_summary"
-            android:summaryOn="Enabled"
+            android:summaryOn="@string/enabled"
             android:title="@string/prefs_scan_startup" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="powerMode"
-            android:summaryOn="Enabled"
+            android:summaryOn="@string/enabled"
             android:summaryOff="@string/prefs_power_mode_summary"
             android:title="@string/prefs_power_mode" />
 
@@ -79,7 +79,7 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="disableImageLoad"
-            android:summaryOn="Enabled"
+            android:summaryOn="@string/enabled"
             android:summaryOff="@string/disable_image_loading"
             android:title="@string/DisableLoadTitle" />
 
@@ -113,27 +113,27 @@
         <SwitchPreference
             android:defaultValue="true"
             android:key="cropNewImage"
-            android:summaryOn="Enabled"
+            android:summaryOn="@string/enabled"
             android:summaryOff="@string/crop_new_image"
             android:title="@string/crop_new_image_title" />
 
         <SwitchPreference
             android:defaultValue="true"
             android:key="fastAdditionMode"
-            android:summaryOn="Enabled"
+            android:summaryOn="@string/enabled"
             android:summaryOff="@string/fast_addition_mode"
             android:title="@string/fast_addition_mode_title" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="contributionTab"
-            android:summaryOn="Enabled"
+            android:summaryOn="@string/enabled"
             android:summaryOff="@string/contribution_tab_summary"
             android:title="@string/contribution_tab_title" />
         <SwitchPreference
             android:defaultValue="false"
             android:key="photoMode"
-            android:summaryOn="Enabled"
+            android:summaryOn="@string/enabled"
             android:summaryOff="@string/preference_show_all_product_photos_summary"
             android:title="@string/preference_show_all_product_photos_title" />
 
