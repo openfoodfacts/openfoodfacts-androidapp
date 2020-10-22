@@ -195,7 +195,7 @@
     <string name="txtFat">Tuky</string>
     <string name="txtSugars">Cukry</string>
     <string name="hintBarcode">Čárový kód</string>
-    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtNutriScoreInfo">Zjistěte více o obsahu živin</string>
     <string name="hintLogin">Přihlašovací jméno</string>
     <string name="hintPass">Heslo</string>
     <string name="errorLogin">Přihlašovací jméno nebo heslo je chybné</string>
@@ -392,7 +392,7 @@
     <string name="take_picture_front">Vyfoťte přední stranu výrobku</string>
     <string name="take_picture_nutrition_table">Vyfotit nutriční tabulku</string>
     <string name="take_more_pictures">Vyfotit další obrázky</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_extra_packaging_pictures">Pořiďte další fotografie obalu</string>
     <string name="txtSaturatedFat">Nasycené tuky</string>
     <string name="nutriscore_info_msg">Další informace o Nutri-Score</string>
     <string name="nova_info_msg">Další informace o stupnici Nova</string>
@@ -719,7 +719,7 @@
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Přidat výrobky</string>
-    <string name="add_another_product">Add another product</string>
+    <string name="add_another_product">Přidat další produkt</string>
     <string name="add_nutrition_facts_for_nutriscore">Doplnit výživové údaje pro výpočet Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Porovnat</string>
     <string name="product_summary_action_add_to_list_button_label">Přidat na seznam</string>
@@ -728,7 +728,7 @@
     <string name="product_question_prompt">Tap here to answer</string>
     <string name="product_question_positive_response">Ano</string>
     <string name="product_question_negative_response">Ne</string>
-    <string name="product_question_ambiguous_response">Not sure</string>
+    <string name="product_question_ambiguous_response">Těžko říct</string>
     <string name="product_question_submit_message">Thank you for your contribution!</string>
     <string name="error_nutrient_entry">The value should be numeric. Example: &quot;1.5&quot;, &quot;2,0&quot;</string>
     <string name="error_nutrient_serving_data">The serving size value must be a positive value</string>
