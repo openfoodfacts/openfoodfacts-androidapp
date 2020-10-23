@@ -9,10 +9,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.utils.SearchInfo;
-import openfoodfacts.github.scrachx.openfood.features.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.features.ProductBrowsingListActivity;
 
 /**
  * Take screenshots...
@@ -20,13 +20,13 @@ import openfoodfacts.github.scrachx.openfood.features.ProductBrowsingListActivit
 @RunWith(AndroidJUnit4.class)
 public class TakeScreenshotIncompleteProductsTest extends AbstractScreenshotTest {
     @Rule
-    public ScreenshotActivityTestRule<ProductBrowsingListActivity> incompleteRule = new ScreenshotActivityTestRule<>(ProductBrowsingListActivity.class, "incompleteProducts",
+    public ScreenshotActivityTestRule<ProductSearchActivity> incompleteRule = new ScreenshotActivityTestRule<>(ProductSearchActivity.class, "incompleteProducts",
         createSearchIntent(SearchInfo.emptySearchInfo()));
 
     @NonNull
     private static Intent createSearchIntent(SearchInfo searchInfo) {
-        Intent intent = new Intent(OFFApplication.getInstance(), ProductBrowsingListActivity.class);
-        intent.putExtra(ProductBrowsingListActivity.SEARCH_INFO, searchInfo);
+        Intent intent = new Intent(OFFApplication.getInstance(), ProductSearchActivity.class);
+        intent.putExtra(ProductSearchActivity.SEARCH_INFO, searchInfo);
         return intent;
     }
 
