@@ -24,10 +24,10 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class TipBox extends LinearLayout {
     private boolean shouldAnimate;
-    private ImageView arrow;
+    private final ImageView arrow;
     private String identifier;
     private SharedPreferences prefs;
-    private TextView tipMessage;
+    private final TextView tipMessage;
 
     public TipBox(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);

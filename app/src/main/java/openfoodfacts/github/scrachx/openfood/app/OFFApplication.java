@@ -73,11 +73,6 @@ public class OFFApplication extends MultiDexApplication {
     }
 
     @Override
-    public void onTerminate() {
-        super.onTerminate();
-    }
-
-    @Override
     public void onCreate() {
         super.onCreate();
         setApplication(this);

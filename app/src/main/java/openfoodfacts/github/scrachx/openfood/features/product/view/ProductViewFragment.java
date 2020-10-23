@@ -38,7 +38,7 @@ public class ProductViewFragment extends Fragment implements OnRefreshListener {
     private ActivityProductBinding binding;
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient client;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private ProductState productState;
 
     @NonNull

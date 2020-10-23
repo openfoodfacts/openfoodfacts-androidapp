@@ -105,14 +105,14 @@ public class ProductEditNutritionFactsFragment extends BaseFragment {
     };
     private FragmentAddProductNutritionFactsBinding binding;
     private PhotoReceiverHandler photoReceiverHandler;
-    //index list stores the index of other nutrients which are used.
-    private Set<Integer> index = new HashSet<>();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private Activity activity;
     private File photoFile;
     private String productCode;
     private OfflineSavedProduct mOfflineSavedProduct;
     private String imagePath;
-    private CompositeDisposable disp = new CompositeDisposable();
+    //index list stores the index of other nutrients which are used.
+    private final Set<Integer> index = new HashSet<>();
     private Product product;
 
     @Override

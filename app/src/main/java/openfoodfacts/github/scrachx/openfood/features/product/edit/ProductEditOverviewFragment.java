@@ -106,13 +106,13 @@ public class ProductEditOverviewFragment extends BaseFragment {
     private Activity activity;
     private FragmentAddProductOverviewBinding binding;
     private String appLanguageCode;
-    private List<String> categories = new ArrayList<>();
+    private final List<String> categories = new ArrayList<>();
     private String barcode;
     private ProductsAPI client;
-    private List<String> countries = new ArrayList<>();
+    private final List<String> countries = new ArrayList<>();
     private boolean editionMode;
     private boolean isFrontImagePresent;
-    private List<String> labels = new ArrayList<>();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private String languageCode;
     private CategoryNameDao categoryNameDao;
     private CountryNameDao countryNameDao;
@@ -120,7 +120,7 @@ public class ProductEditOverviewFragment extends BaseFragment {
     private LabelNameDao labelNameDao;
     private OfflineSavedProduct savedProduct;
     private TagDao tagDao;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private final List<String> labels = new ArrayList<>();
     private File photoFile;
     private PhotoReceiverHandler photoReceiverHandler;
     private Product product;

@@ -69,7 +69,7 @@ public class AllergensAlertFragment extends NavigationBaseFragment {
     private AllergensAdapter mAdapter;
     private SharedPreferences mSettings;
     private ProductRepository productRepository;
-    private CompositeDisposable dispCont = new CompositeDisposable();
+    private final CompositeDisposable dispCont = new CompositeDisposable();
     private View currentView;
     private DataObserver mDataObserver;
 
