@@ -97,7 +97,9 @@ public class HomeFragment extends NavigationBaseFragment {
     @Override
     public void onDestroy() {
         // Stop the call to server to get total product count and tagline
-        compDisp.dispose();
+        if (compDisp != null) {
+            compDisp.dispose();
+        }
         binding = null;
         super.onDestroy();
     }
