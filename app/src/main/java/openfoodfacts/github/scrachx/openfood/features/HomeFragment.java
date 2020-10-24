@@ -64,7 +64,7 @@ public class HomeFragment extends NavigationBaseFragment {
     private static final String LOG_TAG = HomeFragment.class.getSimpleName();
     private FragmentHomeBinding binding;
     private ProductsAPI api;
-    private CompositeDisposable compDisp;
+    private final CompositeDisposable compDisp = new CompositeDisposable();
     private String taglineURL;
     private SharedPreferences sharedPrefs;
 
@@ -78,7 +78,6 @@ public class HomeFragment extends NavigationBaseFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        compDisp = new CompositeDisposable();
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -97,9 +96,7 @@ public class HomeFragment extends NavigationBaseFragment {
     @Override
     public void onDestroy() {
         // Stop the call to server to get total product count and tagline
-        if (compDisp != null) {
-            compDisp.dispose();
-        }
+        compDisp.dispose();
         binding = null;
         super.onDestroy();
     }
