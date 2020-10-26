@@ -61,7 +61,7 @@ If you don't have time to contribute code, you're very welcome to
 
 ## Help translate Open Food Facts in your language
 
-You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup): <br>
+You can help translate Open Food Facts and the app at (no technical knowledge required, takes a minute to signup):<br>
 https://translate.openfoodfacts.org
 
 ## Installation
