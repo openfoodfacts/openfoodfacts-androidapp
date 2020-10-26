@@ -34,6 +34,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -159,6 +162,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private SummaryProductPresenter summaryProductPresenter;
     private Disposable hintBarcodeDisp;
     private CompositeDisposable commonDisp;
+    ActivityResultLauncher<Intent> productActivityResultLauncher = registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(),
+        (ActivityResultCallback<ActivityResult>) result -> {
+            setShownProduct(lastBarcode);
+        });
 
     /**
      * Used by screenshot tests.
@@ -491,11 +499,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private void navigateToProductAddition(Product product) {
         Intent intent = new Intent(ContinuousScanActivity.this, ProductEditActivity.class);
         intent.putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, product);
-        registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == RESULT_OK) {
-                setShownProduct(lastBarcode);
-            }
-        }).launch(intent);
+        productActivityResultLauncher.launch(intent);
     }
 
     private void showAllViews() {
