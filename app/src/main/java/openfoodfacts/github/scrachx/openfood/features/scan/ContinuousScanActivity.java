@@ -165,7 +165,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> productActivityResultLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
         (ActivityResultCallback<ActivityResult>) result -> {
-            setShownProduct(lastBarcode);
+            if (result.getResultCode() == RESULT_OK) {
+                setShownProduct(lastBarcode);
+            }
         });
 
     /**

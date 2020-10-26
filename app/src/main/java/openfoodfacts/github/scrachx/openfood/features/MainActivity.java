@@ -162,8 +162,8 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private CompositeDisposable disp;
     ActivityResultLauncher<Void> loginActivityResultLauncher = registerForActivityResult(
         new LoginActivity.LoginContract(),
-        (ActivityResultCallback<Boolean>) result -> {
-            if (result){
+        (ActivityResultCallback<Boolean>) isLoggedIn -> {
+            if (isLoggedIn) {
                 updateConnectedState();
             }
         });
