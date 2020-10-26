@@ -18,14 +18,14 @@ import org.junit.runner.RunWith;
 import java.util.Collection;
 import java.util.Locale;
 
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter;
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotsLocaleProvider;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-import openfoodfacts.github.scrachx.openfood.features.OFFApplication;
 
 /**
- * Take screenshots...
+ * Take screenshots...buil
  */
 @RunWith(AndroidJUnit4.class)
 public abstract class AbstractScreenshotTest {

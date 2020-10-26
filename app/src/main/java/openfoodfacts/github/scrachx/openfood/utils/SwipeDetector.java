@@ -23,53 +23,48 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 public class SwipeDetector implements View.OnTouchListener {
+    public static final String LOG_TAG = "SwipeDetector";
+    public static final String ERR_NO_LISTENER_MSG = "please pass SwipeDetector.onSwipeEvent Interface instance";
     private int minDistance = 100;
     private float downX, downY, upX, upY;
-    private final View v;
-    private OnSwipeEventListener swipeEventListener;
+    private final OnSwipeEventListener swipeEventListener;
+    private final View view;
 
-    public SwipeDetector(@NonNull View v) {
-        this.v = v;
-        v.setOnTouchListener(this);
-    }
-
-    public void setOnSwipeListener(OnSwipeEventListener listener) {
-        try {
-            swipeEventListener = listener;
-        } catch (ClassCastException e) {
-            Log.e("ClassCastException", "please pass SwipeDetector.onSwipeEvent Interface instance", e);
-        }
+    public SwipeDetector(@NonNull View view, OnSwipeEventListener listener) {
+        this.view = view;
+        this.swipeEventListener = listener;
+        view.setOnTouchListener(this);
     }
 
     public void onRightToLeftSwipe() {
         if (swipeEventListener != null) {
-            swipeEventListener.onSwipeEventDetected(v, SwipeTypeEnum.RIGHT_TO_LEFT);
+            swipeEventListener.onSwipeEventDetected(view, SwipeTypeEnum.RIGHT_TO_LEFT);
         } else {
-            Log.e("SwipeDetector error", "please pass SwipeDetector.onSwipeEvent Interface instance");
+            Log.e(LOG_TAG, ERR_NO_LISTENER_MSG);
         }
     }
 
     public void onLeftToRightSwipe() {
         if (swipeEventListener != null) {
-            swipeEventListener.onSwipeEventDetected(v, SwipeTypeEnum.LEFT_TO_RIGHT);
+            swipeEventListener.onSwipeEventDetected(view, SwipeTypeEnum.LEFT_TO_RIGHT);
         } else {
-            Log.e("SwipeDetector error", "please pass SwipeDetector.onSwipeEvent Interface instance");
+            Log.e(LOG_TAG, ERR_NO_LISTENER_MSG);
         }
     }
 
     public void onTopToBottomSwipe() {
         if (swipeEventListener != null) {
-            swipeEventListener.onSwipeEventDetected(v, SwipeTypeEnum.TOP_TO_BOTTOM);
+            swipeEventListener.onSwipeEventDetected(view, SwipeTypeEnum.TOP_TO_BOTTOM);
         } else {
-            Log.e("SwipeDetector error", "please pass SwipeDetector.onSwipeEvent Interface instance");
+            Log.e(LOG_TAG, ERR_NO_LISTENER_MSG);
         }
     }
 
     public void onBottomToTopSwipe() {
         if (swipeEventListener != null) {
-            swipeEventListener.onSwipeEventDetected(v, SwipeTypeEnum.BOTTOM_TO_TOP);
+            swipeEventListener.onSwipeEventDetected(view, SwipeTypeEnum.BOTTOM_TO_TOP);
         } else {
-            Log.e("SwipeDetector error", "please pass SwipeDetector.onSwipeEvent Interface instance");
+            Log.e(LOG_TAG, ERR_NO_LISTENER_MSG);
         }
     }
 

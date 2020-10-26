@@ -15,7 +15,7 @@ import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
 
 public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
-    private ProductsAPI client;
+    private final ProductsAPI client;
     private final ArrayList<String> periodsList;
 
     public PeriodAfterOpeningAutoCompleteAdapter(Context context, int textViewResourceId) {
