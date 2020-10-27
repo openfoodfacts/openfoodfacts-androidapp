@@ -42,6 +42,8 @@ import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -158,6 +160,13 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private String barcode;
     private PrefManager prefManager;
     private CompositeDisposable disp;
+    ActivityResultLauncher<Void> loginActivityResultLauncher = registerForActivityResult(
+        new LoginActivity.LoginContract(),
+        (ActivityResultCallback<Boolean>) isLoggedIn -> {
+            if (isLoggedIn) {
+                updateConnectedState();
+            }
+        });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -334,11 +343,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         break;
 
                     case ITEM_LOGIN:
-                        registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
-                            if (isLoggedIn) {
-                                updateConnectedState();
-                            }
-                        }).launch(null);
+                        loginActivityResultLauncher.launch(null);
                         break;
 
                     case ITEM_ALERT:

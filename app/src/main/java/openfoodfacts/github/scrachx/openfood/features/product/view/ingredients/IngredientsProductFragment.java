@@ -32,6 +32,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -107,6 +111,22 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
      **/
     private boolean isLowBatteryMode = false;
     private PhotoReceiverHandler photoReceiverHandler;
+    ActivityResultLauncher<Product> productActivityResultLauncher = registerForActivityResult(
+        new ProductEditActivity.EditProductSendUpdatedImg(),
+        (ActivityResultCallback<Boolean>) result -> {
+            if (result) {
+                onRefresh();
+            }
+        });
+    ActivityResultLauncher<Void> loginActivityResultLauncher = registerForActivityResult(
+        new LoginActivity.LoginContract(),
+        (ActivityResultCallback<Boolean>) result -> {
+            ProductEditActivity.start(getContext(),
+                activityProductState,
+                sendUpdatedIngredientsImage,
+                extractIngredients);
+        });
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -425,11 +445,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             } else {
                 activityProductState = FragmentUtils.getStateFromArguments(this);
                 if (activityProductState != null) {
-                    registerForActivityResult(new ProductEditActivity.EditProductSendUpdatedImg(), result -> {
-                        if (result) {
-                            onRefresh();
-                        }
-                    }).launch(activityProductState.getProduct());
+                    productActivityResultLauncher.launch(activityProductState.getProduct());
                 }
             }
         }
@@ -499,11 +515,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             .positiveText(R.string.txtSignIn)
             .negativeText(R.string.dialog_cancel)
             .onPositive((dialog, which) -> {
-                registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn ->
-                    ProductEditActivity.start(getContext(),
-                        activityProductState,
-                        sendUpdatedIngredientsImage,
-                        extractIngredients)).launch(null);
+                loginActivityResultLauncher.launch(null);
                 dialog.dismiss();
             })
             .onNegative((dialog, which) -> dialog.dismiss())
