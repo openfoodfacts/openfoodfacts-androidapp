@@ -141,8 +141,8 @@ dependencies {
     testImplementation("junit:junit:4.13.1")
     testImplementation("org.mockito:mockito-core:3.5.13")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.19.0")
-    testImplementation("com.google.truth:truth:1.0.1")
-    testImplementation("com.google.truth.extensions:truth-java8-extension:1.0.1")
+    testImplementation("com.google.truth:truth:1.1")
+    testImplementation("com.google.truth.extensions:truth-java8-extension:1.1")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
