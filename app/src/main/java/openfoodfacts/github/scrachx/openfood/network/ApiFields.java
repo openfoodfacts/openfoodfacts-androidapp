@@ -20,6 +20,8 @@ import androidx.annotation.NonNull;
 
 import org.jetbrains.annotations.Contract;
 
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+
 /**
  * This class lists all fields, field prefixes and suffixes and default values used by the api.
  * We discourage the use of string literals through the code and we recommend creating a field here so that it can be updated on API change.
@@ -157,6 +159,7 @@ public final class ApiFields {
         public static final String STORES = "stores";
         public static final String STATUS = "status";
         public static final String NUTRITION_GRADE = "nutrition_grades_tags";
+        public static final ProductImageField[] TYPE_IMAGE = { ProductImageField.FRONT, ProductImageField.INGREDIENTS, ProductImageField.NUTRITION, ProductImageField.PACKAGING };
 
         private Keys() {
 

@@ -70,7 +70,6 @@ public class EnvironmentProductFragment extends BaseFragment {
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Log.i("Mohsin", product.getImagePackagingUrl(langCode));
                 Utils.picassoBuilder(getContext())
                     .load(product.getImagePackagingUrl(langCode))
                     .into(binding.imageViewPackaging);

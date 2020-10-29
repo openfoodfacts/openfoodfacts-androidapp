@@ -39,11 +39,11 @@ import com.squareup.picasso.Callback;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageActivity;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -73,6 +73,7 @@ import smartdevelop.ir.eram.showcaseviewlib.GuideView;
 
 import static android.Manifest.permission.CAMERA;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.TYPE_IMAGE;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA;
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
@@ -87,7 +88,6 @@ public class ImagesManageActivity extends BaseActivity {
     private static final int REQUEST_UNSELECT_IMAGE_AFTER_LOGIN = 4;
     public static final int REQUEST_EDIT_IMAGE = 1000;
     private static final int REQUEST_CHOOSE_IMAGE = 1001;
-    private static final List<ProductImageField> TYPE_IMAGE = Arrays.asList(ProductImageField.FRONT, ProductImageField.INGREDIENTS, ProductImageField.NUTRITION, ProductImageField.PACKAGING);
     private ActivityFullScreenImageBinding binding;
     private OpenFoodAPIClient client;
     private File lastViewedImage;
@@ -183,7 +183,7 @@ public class ImagesManageActivity extends BaseActivity {
 
         loadLanguage();
 
-        binding.comboImageType.setSelection(TYPE_IMAGE.indexOf(getSelectedType()));
+        binding.comboImageType.setSelection(ArrayUtils.indexOf(TYPE_IMAGE, getSelectedType()));
         updateProductImagesInfo(null);
         onRefresh(false);
     }
@@ -595,7 +595,7 @@ public class ImagesManageActivity extends BaseActivity {
         if (getProduct() == null) {
             return;
         }
-        ProductImageField newTypeSelected = TYPE_IMAGE.get(binding.comboImageType.getSelectedItemPosition());
+        ProductImageField newTypeSelected = TYPE_IMAGE[binding.comboImageType.getSelectedItemPosition()];
         final ProductImageField selectedType = getSelectedType();
         if (newTypeSelected.equals(selectedType)) {
             return;
