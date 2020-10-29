@@ -111,15 +111,15 @@
         <item>חומצה ארוסית (22:1 n-9)</item>
         <item>פלואוריד</item>
         <item>פרוקטוז</item>
-        <item>חומצה גמא לינולאית / GLA ‏(18:3 n-6)</item>
+        <item>חומצה גמא לינולאית / GLA ‏(‎18:3 n-6)</item>
         <item>גלוקוז</item>
-        <item>חומצה איקוסנואית (20:1 n-9)</item>
+        <item>חומצה איקוסנואית (‎20:1 n-9)</item>
         <item>יוד</item>
         <item>ברזל</item>
         <item>לקטוז</item>
         <item>חומצה לאורית (12:0)</item>
         <item>חומצה ליגנוצרית (24:0)</item>
-        <item>חומצה לינולאית / LA ‏(18:2 n-6)</item>
+        <item>חומצה לינולאית / LA ‏(‎18:2 n-6)</item>
         <item>מגנזיום</item>
         <item>מלטודקסטרין</item>
         <item>מלטוז</item>
@@ -130,9 +130,9 @@
         <item>שומן חד בלתי רווי</item>
         <item>חומצת מונטאניק (28:0)</item>
         <item>חומצה מיריסטית (14:0)</item>
-        <item>חומצה נרוונית (24:1 n-9)</item>
+        <item>חומצה נרוונית (‎24:1 n-9)</item>
         <item>נוקלאוטידים</item>
-        <item>חומצה אולאית (18:1 n-9)</item>
+        <item>חומצה אולאית (‎18:1 n-9)</item>
         <item>חומצות שומן אומגה 3</item>
         <item>חומצות שומן אומגה 6</item>
         <item>חומצות שומן אומגה 9</item>
@@ -220,7 +220,7 @@
     <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
     <string name="create_account">הרשמה</string>
     <string name="home_drawer">ראשי</string>
-    <string name="install">התקנה</string>
+    <string name="install">התקנת</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">חיפוש</string>
@@ -267,6 +267,7 @@
     <string name="user_ask_rate_app">מצוין! אנו בטוחים שכולם ישמחו לשמוע מה דעתך על היישומון!</string>
     <string name="rate_app">דירוג היישומון</string>
     <string name="no_thx">לא, תודה</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">היסטוריה</string>
     <string name="clear_history">פינוי ההיסטוריה</string>
@@ -391,6 +392,7 @@
     <string name="take_picture_front">צילום תמונה של החזית</string>
     <string name="take_picture_nutrition_table">צילום תמונה של טבלת הערכים</string>
     <string name="take_more_pictures">צילום תמונות נוספות</string>
+    <string name="take_extra_packaging_pictures">נא לצלם תמונות אריזה נוספות</string>
     <string name="txtSaturatedFat">שומן רווי</string>
     <string name="nutriscore_info_msg">מידע נוסף על ציון תזונתי</string>
     <string name="nova_info_msg">מידע נוסף על קבוצות NOVA</string>
@@ -458,7 +460,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world-he.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">כללי</string>
     <string name="preference_header_network">רשת</string>
     <string name="preference_header_contributing">התנדבות</string>
@@ -785,7 +787,6 @@
     <string name="white_check_image_descr">סימון לבן</string>
     <string name="hint_packaging">דוגמאות: פלסטיק, נייר, זכוכית</string>
     <string name="risk_alcohol_consumption">צריכה מופרזת של אלכוהול מסוכנת לבריאות, יש לצרוך בכמות מתונה</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">בחירת סוג תמונה</string>
     <string name="content_image_type">נא לבחור על איזו תמונה לעבוד</string>
@@ -808,4 +809,5 @@
     <string name="brand_hint">דוגמאות: קוקה קולה, נסטלה וכו׳…</string>
     <string name="sign_in_or_register">כניסה או הרשמה</string>
     <string name="hunger_game_call_to_action">סיוג בסיווג של עוד %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts הוא מסד נתונים פתוח המכיל למעלה מ־%1$s מוצרי מזון (כולל אלו שתרמת) עם רכיבים, חומרים מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תוויות המוצרים.</string>
 </resources>

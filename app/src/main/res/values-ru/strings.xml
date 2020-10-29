@@ -22,13 +22,13 @@
         <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">%d second ago</item>
+        <item quantity="one">%d секунд назад</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">%d minute ago</item>
+        <item quantity="one">%d минут назад</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
         <item quantity="other">%d minutes ago</item>
@@ -267,6 +267,7 @@
     <string name="user_ask_rate_app">Замечательно! Поделитесь с друзьями своим мнением о приложении!</string>
     <string name="rate_app">Оцените приложение</string>
     <string name="no_thx">Нет, спасибо</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">История</string>
     <string name="clear_history">Очистить историю</string>
@@ -391,6 +392,7 @@
     <string name="take_picture_front">Сделайте общее фото</string>
     <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
     <string name="take_more_pictures">Сделайте дополнительные фото</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Насыщенные жиры</string>
     <string name="nutriscore_info_msg">Узнайте больше о Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
@@ -458,7 +460,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world-ru.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Основныe</string>
     <string name="preference_header_network">Сеть</string>
     <string name="preference_header_contributing">Помощь проекту</string>
@@ -785,7 +787,6 @@
     <string name="white_check_image_descr">Белая галочка</string>
     <string name="hint_packaging">Примеры: пластик, бумага, стекло</string>
     <string name="risk_alcohol_consumption">Чрезмерное потребление алкоголя (которое должно потребляться умеренно) вредно для здоровья</string>
-    <string name="check_first_time">проверьте_первый_раз</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Выберите тип изображения</string>
     <string name="content_image_type">Выбрать фото для работы</string>
@@ -808,4 +809,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

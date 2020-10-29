@@ -54,21 +54,20 @@ lane :release do
         skip_upload_screenshots: true
     )
 
+
     sentry_create_release(
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
-        version: 'off-android@'+versionName+'.'+versionCode,
-        app_identifier: PACKAGE_NAME,
+        version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
         finalize: false # Release will be finalized by the "daily" lane, when the version is in production
     )
 
     sentry_set_commits(
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
-        version: 'off-android@'+versionName+'.'+versionCode,
-        app_identifier: PACKAGE_NAME, # pass in the bundle_identifer of your app
+        version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
         auto: true, # enable completely automated commit management
-        clear: false, # clear all current commits from the release
+        clear: false # clear all current commits from the release
     )
 end
 
@@ -77,11 +76,9 @@ lane :daily do
     PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
     versionName = google_play_track_version_name(track: 'production')
     versionCode = google_play_track_version_codes(track: 'production').max
-
     sentry_finalize_release(
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
-        version: 'off-android@'+versionName+'.'+versionCode,
-        app_identifier: PACKAGE_NAME
+        version: versionName + '+' + versionCode
     )
 end

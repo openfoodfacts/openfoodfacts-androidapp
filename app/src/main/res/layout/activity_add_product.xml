@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.AddProductActivity">
+        tools:context=".features.product.edit.ProductEditActivity">
 
         <View
             android:id="@+id/overview_indicator"

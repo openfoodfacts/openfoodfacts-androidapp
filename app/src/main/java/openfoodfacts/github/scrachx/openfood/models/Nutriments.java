@@ -131,74 +131,77 @@ public class Nutriments implements Serializable {
     public static final String PHOSPHORUS = "phosphorus";
     public static final String IRON = "iron";
     public static final String MAGNESIUM = "magnesium";
-    public static final Map<String, Integer> MINERALS_MAP = new HashMap<String, Integer>() {{
-        put(Nutriments.SILICA, R.string.silica);
-        put(Nutriments.BICARBONATE, R.string.bicarbonate);
-        put(Nutriments.POTASSIUM, R.string.potassium);
-        put(Nutriments.CHLORIDE, R.string.chloride);
-        put(Nutriments.CALCIUM, R.string.calcium);
-        put(Nutriments.PHOSPHORUS, R.string.phosphorus);
-        put(Nutriments.IRON, R.string.iron);
-        put(Nutriments.MAGNESIUM, R.string.magnesium);
-        put(Nutriments.ZINC, R.string.zinc);
-        put(Nutriments.COPPER, R.string.copper);
-        put(Nutriments.MANGANESE, R.string.manganese);
-        put(Nutriments.FLUORIDE, R.string.fluoride);
-        put(Nutriments.SELENIUM, R.string.selenium);
-        put(Nutriments.CHROMIUM, R.string.chromium);
-        put(Nutriments.MOLYBDENUM, R.string.molybdenum);
-        put(Nutriments.IODINE, R.string.iodine);
-        put(Nutriments.CAFFEINE, R.string.caffeine);
-        put(Nutriments.TAURINE, R.string.taurine);
-        put(Nutriments.PH, R.string.ph);
-        put(Nutriments.FRUITS_VEGETABLES_NUTS, R.string.fruits_vegetables_nuts);
-        put(Nutriments.COLLAGEN_MEAT_PROTEIN_RATIO, R.string.collagen_meat_protein_ratio);
-        put(Nutriments.COCOA, R.string.cocoa);
-        put(Nutriments.CHLOROPHYL, R.string.chlorophyl);
-    }};
-    public static final Map<String, Integer> FAT_MAP = new HashMap<String, Integer>() {{
-        put(Nutriments.SATURATED_FAT, R.string.nutrition_satured_fat);
-        put(Nutriments.MONOUNSATURATED_FAT, R.string.nutrition_monounsaturatedFat);
-        put(Nutriments.POLYUNSATURATED_FAT, R.string.nutrition_polyunsaturatedFat);
-        put(Nutriments.OMEGA_3_FAT, R.string.nutrition_omega3);
-        put(Nutriments.OMEGA_6_FAT, R.string.nutrition_omega6);
-        put(Nutriments.OMEGA_9_FAT, R.string.nutrition_omega9);
-        put(Nutriments.TRANS_FAT, R.string.nutrition_trans_fat);
-        put(Nutriments.CHOLESTEROL, R.string.nutrition_cholesterol);
-    }};
-    public static final Map<String, Integer> CARBO_MAP = new HashMap<String, Integer>() {{
-        put(Nutriments.SUGARS, R.string.nutrition_sugars);
-        put(Nutriments.SUCROSE, R.string.nutrition_sucrose);
-        put(Nutriments.GLUCOSE, R.string.nutrition_glucose);
-        put(Nutriments.FRUCTOSE, R.string.nutrition_fructose);
-        put(Nutriments.LACTOSE, R.string.nutrition_lactose);
-        put(Nutriments.MALTOSE, R.string.nutrition_maltose);
-        put(Nutriments.MALTODEXTRINS, R.string.nutrition_maltodextrins);
-    }};
-    public static final Map<String, Integer> PROT_MAP = new HashMap<String, Integer>() {{
-        put(Nutriments.CASEIN, R.string.nutrition_casein);
-        put(Nutriments.SERUM_PROTEINS, R.string.nutrition_serum_proteins);
-        put(Nutriments.NUCLEOTIDES, R.string.nutrition_nucleotides);
-    }};
-    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<String, Integer>() {{
-        put(Nutriments.VITAMIN_A, R.string.vitamin_a);
-        put(Nutriments.BETA_CAROTENE, R.string.vitamin_a);
-        put(Nutriments.VITAMIN_D, R.string.vitamin_d);
-        put(Nutriments.VITAMIN_E, R.string.vitamin_e);
-        put(Nutriments.VITAMIN_K, R.string.vitamin_k);
-        put(Nutriments.VITAMIN_C, R.string.vitamin_c);
-        put(Nutriments.VITAMIN_B1, R.string.vitamin_b1);
-        put(Nutriments.VITAMIN_B2, R.string.vitamin_b2);
-        put(Nutriments.VITAMIN_PP, R.string.vitamin_pp);
-        put(Nutriments.VITAMIN_B6, R.string.vitamin_b6);
-        put(Nutriments.VITAMIN_B9, R.string.vitamin_b9);
-        put(Nutriments.VITAMIN_B12, R.string.vitamin_b12);
-        put(Nutriments.BIOTIN, R.string.biotin);
-        put(Nutriments.PANTOTHENIC_ACID, R.string.pantothenic_acid);
-    }};
+    public static final Map<String, Integer> MINERALS_MAP = new HashMap<>();
+    public static final Map<String, Integer> FAT_MAP = new HashMap<>();
+    public static final Map<String, Integer> CARBO_MAP = new HashMap<>();
+    public static final Map<String, Integer> PROT_MAP = new HashMap<>();
+    public static final Map<String, Integer> VITAMINS_MAP = new HashMap<>();
+
+    static {
+        MINERALS_MAP.put(Nutriments.SILICA, R.string.silica);
+        MINERALS_MAP.put(Nutriments.BICARBONATE, R.string.bicarbonate);
+        MINERALS_MAP.put(Nutriments.POTASSIUM, R.string.potassium);
+        MINERALS_MAP.put(Nutriments.CHLORIDE, R.string.chloride);
+        MINERALS_MAP.put(Nutriments.CALCIUM, R.string.calcium);
+        MINERALS_MAP.put(Nutriments.PHOSPHORUS, R.string.phosphorus);
+        MINERALS_MAP.put(Nutriments.IRON, R.string.iron);
+        MINERALS_MAP.put(Nutriments.MAGNESIUM, R.string.magnesium);
+        MINERALS_MAP.put(Nutriments.ZINC, R.string.zinc);
+        MINERALS_MAP.put(Nutriments.COPPER, R.string.copper);
+        MINERALS_MAP.put(Nutriments.MANGANESE, R.string.manganese);
+        MINERALS_MAP.put(Nutriments.FLUORIDE, R.string.fluoride);
+        MINERALS_MAP.put(Nutriments.SELENIUM, R.string.selenium);
+        MINERALS_MAP.put(Nutriments.CHROMIUM, R.string.chromium);
+        MINERALS_MAP.put(Nutriments.MOLYBDENUM, R.string.molybdenum);
+        MINERALS_MAP.put(Nutriments.IODINE, R.string.iodine);
+        MINERALS_MAP.put(Nutriments.CAFFEINE, R.string.caffeine);
+        MINERALS_MAP.put(Nutriments.TAURINE, R.string.taurine);
+        MINERALS_MAP.put(Nutriments.PH, R.string.ph);
+        MINERALS_MAP.put(Nutriments.FRUITS_VEGETABLES_NUTS, R.string.fruits_vegetables_nuts);
+        MINERALS_MAP.put(Nutriments.COLLAGEN_MEAT_PROTEIN_RATIO, R.string.collagen_meat_protein_ratio);
+        MINERALS_MAP.put(Nutriments.COCOA, R.string.cocoa);
+        MINERALS_MAP.put(Nutriments.CHLOROPHYL, R.string.chlorophyl);
+
+        FAT_MAP.put(Nutriments.SATURATED_FAT, R.string.nutrition_satured_fat);
+        FAT_MAP.put(Nutriments.MONOUNSATURATED_FAT, R.string.nutrition_monounsaturatedFat);
+        FAT_MAP.put(Nutriments.POLYUNSATURATED_FAT, R.string.nutrition_polyunsaturatedFat);
+        FAT_MAP.put(Nutriments.OMEGA_3_FAT, R.string.nutrition_omega3);
+        FAT_MAP.put(Nutriments.OMEGA_6_FAT, R.string.nutrition_omega6);
+        FAT_MAP.put(Nutriments.OMEGA_9_FAT, R.string.nutrition_omega9);
+        FAT_MAP.put(Nutriments.TRANS_FAT, R.string.nutrition_trans_fat);
+        FAT_MAP.put(Nutriments.CHOLESTEROL, R.string.nutrition_cholesterol);
+
+        CARBO_MAP.put(Nutriments.SUGARS, R.string.nutrition_sugars);
+        CARBO_MAP.put(Nutriments.SUCROSE, R.string.nutrition_sucrose);
+        CARBO_MAP.put(Nutriments.GLUCOSE, R.string.nutrition_glucose);
+        CARBO_MAP.put(Nutriments.FRUCTOSE, R.string.nutrition_fructose);
+        CARBO_MAP.put(Nutriments.LACTOSE, R.string.nutrition_lactose);
+        CARBO_MAP.put(Nutriments.MALTOSE, R.string.nutrition_maltose);
+        CARBO_MAP.put(Nutriments.MALTODEXTRINS, R.string.nutrition_maltodextrins);
+
+        PROT_MAP.put(Nutriments.CASEIN, R.string.nutrition_casein);
+        PROT_MAP.put(Nutriments.SERUM_PROTEINS, R.string.nutrition_serum_proteins);
+        PROT_MAP.put(Nutriments.NUCLEOTIDES, R.string.nutrition_nucleotides);
+
+        VITAMINS_MAP.put(Nutriments.VITAMIN_A, R.string.vitamin_a);
+        VITAMINS_MAP.put(Nutriments.BETA_CAROTENE, R.string.vitamin_a);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_D, R.string.vitamin_d);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_E, R.string.vitamin_e);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_K, R.string.vitamin_k);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_C, R.string.vitamin_c);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_B1, R.string.vitamin_b1);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_B2, R.string.vitamin_b2);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_PP, R.string.vitamin_pp);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_B6, R.string.vitamin_b6);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_B9, R.string.vitamin_b9);
+        VITAMINS_MAP.put(Nutriments.VITAMIN_B12, R.string.vitamin_b12);
+        VITAMINS_MAP.put(Nutriments.BIOTIN, R.string.biotin);
+        VITAMINS_MAP.put(Nutriments.PANTOTHENIC_ACID, R.string.pantothenic_acid);
+    }
+
     private final Map<String, Object> additionalProperties = new HashMap<>();
-    private boolean containsVitamins;
     private boolean containsMinerals;
+    private boolean containsVitamins;
 
     @NonNull
     public String getEnergyKjValue(final boolean isDataPerServing) {
@@ -318,14 +321,14 @@ public class Nutriments implements Serializable {
     }
 
     public static class Nutriment {
-        private final String key;
-        private final String name;
         private final String for100g;
         private final String forServing;
-        @NonNull
-        private final String unit;
+        private final String key;
         @NonNull
         private final String modifier;
+        private final String name;
+        @NonNull
+        private final String unit;
 
         Nutriment(@NonNull String key, String name, String for100g, String forServing, @NonNull String unit, @NonNull String modifier) {
             this.key = key;

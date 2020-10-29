@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
     <string name="txtHome">Open Pet Food Facts是一个宠物食品数据库，包含了宠物食品的成分、营养成分、营养事实… 汪汪。汪汪。</string>
     <string name="slide_1_title">为宠物食品的透明度做贡献</string>
     <string name="slide_1_desc">扫描产品，拍照，让宠物食品透明化</string>
@@ -36,12 +36,12 @@
     <string name="tagline">free pet food products database</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Pet Food Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Pet Food Facts</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="category_game_btn">帮助分类产品</string>
     <!-- TODO add true support instead of overriding strings -->
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_category_prompt_text">添加类别以帮助完成产品</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">我的产品</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="intent_filter_share_label">Add to Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".

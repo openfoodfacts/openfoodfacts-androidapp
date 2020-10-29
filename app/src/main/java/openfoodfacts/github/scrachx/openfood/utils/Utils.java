@@ -62,9 +62,12 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.squareup.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.Contract;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -81,20 +84,22 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
+import okhttp3.TlsVersion;
 import okhttp3.logging.HttpLoggingInterceptor;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper;
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback;
+import openfoodfacts.github.scrachx.openfood.features.LoginActivity;
+import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity;
+import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity;
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker;
 import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import openfoodfacts.github.scrachx.openfood.models.Product;
-import openfoodfacts.github.scrachx.openfood.views.ContinuousScanActivity;
-import openfoodfacts.github.scrachx.openfood.views.LoginActivity;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
@@ -250,6 +255,10 @@ public class Utils {
         }
     }
 
+
+    /**
+     * Returns the Nutri-Score graphic asset given the grade
+     */
     @DrawableRes
     public static int getImageGrade(@Nullable String grade) {
 
@@ -292,6 +301,9 @@ public class Utils {
         return getImageGradeDrawable(context, product == null ? null : product.getNutritionGradeFr());
     }
 
+    /**
+     * Returns the NOVA group explanation given the group
+     */
     public static String getNovaGroupExplanation(@Nullable String novaGroup, @NonNull Context context) {
 
         if (novaGroup == null) {
@@ -328,6 +340,9 @@ public class Utils {
         return result;
     }
 
+    /**
+     * Returns the NOVA group graphic asset given the group
+     */
     public static int getNovaGroupDrawable(@Nullable Product product) {
         return getNovaGroupDrawable(product == null ? null : product.getNovaGroups());
     }
@@ -494,11 +509,23 @@ public class Utils {
     }
 
     public static OkHttpClient httpClientBuilder() {
+        // Our servers don't support TLS 1.3 therefore we need to create custom connectionSpec
+        // with the correct ciphers to support network requests successfully on Android 7
+        ConnectionSpec connectionSpecModernTLS = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+            .tlsVersions(TlsVersion.TLS_1_2)
+            .cipherSuites(
+                CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+                CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
+                CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
+            .build();
+
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
             .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
             .readTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
             .writeTimeout(RW_TIMEOUT, TimeUnit.MILLISECONDS)
-            .connectionSpecs(Arrays.asList(ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS));
+            .connectionSpecs(Arrays.asList(connectionSpecModernTLS, ConnectionSpec.COMPATIBLE_TLS));
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
@@ -506,6 +533,12 @@ public class Utils {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC));
         }
         return builder.build();
+    }
+
+    public static Picasso picassoBuilder(Context context) {
+        return new Picasso.Builder(context)
+            .downloader(new OkHttp3Downloader(Utils.httpClientBuilder()))
+            .build();
     }
 
     public static boolean isUserLoggedIn(@NonNull Context context) {
@@ -570,7 +603,7 @@ public class Utils {
             clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(@NonNull View view) {
-                    ProductBrowsingListActivity.start(activity, text, type);
+                    ProductSearchActivity.start(activity, text, type);
                 }
             };
         } else {
@@ -686,12 +719,15 @@ public class Utils {
         }
     }
 
+    @Contract(pure = true)
     @Nullable
     @SafeVarargs
-    public static <T> T firstNotNull(T... args) {
-        for (T arg : args) {
-            if (arg != null) {
-                return arg;
+    public static <T> T firstNotNull(@Nullable T... args) {
+        if (args != null) {
+            for (T arg : args) {
+                if (arg != null) {
+                    return arg;
+                }
             }
         }
         return null;

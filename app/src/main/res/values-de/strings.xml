@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">Großartig! Lassen Sie andere wissen, was Sie von dieser App halten!</string>
     <string name="rate_app">App bewerten</string>
     <string name="no_thx">Nein, danke</string>
+    <string name="feedback_form_url">https://forms.gle/xMRR2fjHQwsTNLmh7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Verlauf</string>
     <string name="clear_history">Verlauf leeren</string>
@@ -381,6 +382,7 @@
     <string name="take_picture_front">Machen Sie ein Foto von der Vorderseite</string>
     <string name="take_picture_nutrition_table">Foto der Nährwerttabelle aufnehmen</string>
     <string name="take_more_pictures">Weitere Fotos aufnehmen</string>
+    <string name="take_extra_packaging_pictures">Zusätzliche Fotos der Verpackung aufnehmen</string>
     <string name="txtSaturatedFat">Gesättigte Fettsäuren</string>
     <string name="nutriscore_info_msg">Mehr über Nutri-Score erfahren</string>
     <string name="nova_info_msg">Mehr über Nova erfahren</string>
@@ -462,7 +464,7 @@
     <string name="choose_resolution">Auflösung wählen</string>
     <string name="pref_resolution_summary">Auflösung für das Hochladen von Fotos auswählen</string>
     <string name="image_upload_resolution">Größe der Fotos beim Hochladen</string>
-    <string name="wikidata_information">Weitergehen</string>
+    <string name="wikidata_information">Fortfahren</string>
     <string name="wikidata_unavailable">Es gibt noch keine Wikipedia-Seite in Ihrer Sprache.</string>
     <string name="Wikipedia">Auf Wikipedia ansehen</string>
     <string name="Browse_Products">Produkte durchsuchen</string>
@@ -546,7 +548,7 @@
     <string name="preferences">Einstellungen</string>
     <string name="OFFlogo">Logo von Open Food Fact</string>
     <string name="loading_product">Produkt „%s” wird geladen</string>
-    <string name="image_not_defined_for_language">Kein Foto für die ausgewählte Sprache. Sie können eine neue hinzufügen.</string>
+    <string name="image_not_defined_for_language">Kein Foto für die ausgewählte Sprache. Sie können ein neues hinzufügen</string>
     <string name="error_adding_ingredients">Beim Versuch, Produktzutaten hinzuzufügen, ist ein Fehler aufgetreten</string>
     <string name="unable_to_extract_ingredients">Die Zutaten können nicht aus dem Bild extrahiert werden</string>
     <string name="error_adding_nutrition_facts">Beim Versuch, Nährwertangaben für Produkte hinzuzufügen, ist ein Fehler aufgetreten</string>
@@ -773,7 +775,6 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="white_check_image_descr">Weißer Haken</string>
     <string name="hint_packaging">Beispiele: Kunststoff, Papier, Glas</string>
     <string name="risk_alcohol_consumption">Übermäßiger Alkoholkonsum ist gesundheitsschädlich und sollte deshalb nur maßvoll konsumiert werden.</string>
-    <string name="check_first_time">check_first_time</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Grafiktyp auswählen</string>
     <string name="content_image_type">Zu bearbeitendes Foto auswählen</string>
@@ -796,4 +797,5 @@ Sie können außerdem Produkte zu dieser Liste hinzufügen, indem Sie sie durchs
     <string name="brand_hint">Beispiele: CocaCola, Nestle, usw …</string>
     <string name="sign_in_or_register">Anmelden oder registrieren</string>
     <string name="hunger_game_call_to_action">Mithelfen beim Klassifizieren weiterer %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts ist eine offene Datenbank mit mehr als %1$s Lebensmittelprodukten (plus diejenigen, die Sie beitragen werden).</string>
 </resources>

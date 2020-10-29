@@ -66,6 +66,7 @@ public interface ProductsAPI {
                                            @FieldMap Map<String, String> parameters,
                                            @Field(ApiFields.Keys.USER_COMMENT) String comment);
 
+    @Deprecated
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
     Call<ProductState> getShortProductByBarcode(@Path("barcode") String barcode,
                                                 @Header("User-Agent") String header);
@@ -84,6 +85,7 @@ public interface ProductsAPI {
     @GET("api/v0/product/{barcode}.json?fields=ingredients")
     Single<JsonNode> getIngredientsByBarcode(@Path("barcode") String barcode);
 
+    @Deprecated
     @Multipart
     @POST("/cgi/product_image_upload.pl")
     Call<JsonNode> saveImage(@PartMap Map<String, RequestBody> fields);
@@ -116,90 +118,118 @@ public interface ProductsAPI {
                                             @Path("page") int page,
                                             @Query("fields") String fields);
 
+    /**
+     * call API service to return products using Additives
+     *
+     * @param additive search query for products
+     * @param page number of pages
+     */
     @GET("additive/{additive}/{page}.json")
-    Call<Search> getProductsByAdditive(@Path("additive") String additive,
-                                       @Path("page") int page,
-                                       @Query("fields") String fields);
+    Single<Search> getProductsByAdditive(@Path("additive") String additive,
+                                         @Path("page") int page,
+                                         @Query("fields") String fields);
 
+    @Deprecated
     @GET("allergen/{allergen}/{page}.json")
     Call<Search> getProductsByAllergen(@Path("allergen") String allergen,
                                        @Path("page") int page,
                                        @Query("fields") String fields);
 
+    @Deprecated
     @GET("country/{country}/{page}.json")
     Call<Search> getProductsByCountry(@Path("country") String country,
                                       @Path("page") int page,
                                       @Query("fields") String fields);
 
+    @Deprecated
     @GET("origin/{origin}/{page}.json")
     Call<Search> getProductsByOrigin(@Path("origin") String origin,
                                      @Path("page") int page,
                                      @Query("fields") String fields);
 
+    @Deprecated
     @GET("manufacturing-place/{manufacturing-place}/{page}.json")
     Call<Search> getProductsByManufacturingPlace(@Path("manufacturing-place") String manufacturingPlace,
                                                  @Path("page") int page,
                                                  @Query("fields") String fields);
 
+    @Deprecated
     @GET("store/{store}/{page}.json")
     Call<Search> getProductByStores(@Path("store") String store,
                                     @Path("page") int page,
                                     @Query("fields") String fields);
 
+    @Deprecated
     @GET("packaging/{packaging}/{page}.json")
     Call<Search> getProductByPackaging(@Path("packaging") String packaging,
                                        @Path("page") int page,
                                        @Query("fields") String fields);
 
+    @Deprecated
     @GET("label/{label}/{page}.json")
     Call<Search> getProductByLabel(@Path("label") String label,
                                    @Path("page") int page,
                                    @Query("fields") String fields);
 
+    @Deprecated
     @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
     Call<Search> getProductByCategory(@Path("category") String category,
                                       @Path("page") int page);
 
+    @Deprecated
     @GET("contributor/{Contributor}/{page}.json?nocache=1")
     Call<Search> searchProductsByContributor(@Path("Contributor") String contributor,
                                              @Path("page") int page);
 
+    @Deprecated
     @GET("language/{language}.json")
     Call<Search> byLanguage(@Path("language") String language);
 
+    @Deprecated
     @GET("label/{label}.json")
     Call<Search> byLabel(@Path("label") String label);
 
+    @Deprecated
     @GET("category/{category}.json")
     Call<Search> byCategory(@Path("category") String category);
 
+    @Deprecated
     @GET("state/{state}.json")
     Call<Search> byState(@Path("state") String state, @Query("fields") String fields);
 
+    @Deprecated
     @GET("packaging/{packaging}.json")
     Call<Search> byPackaging(@Path("packaging") String packaging);
 
+    @Deprecated
     @GET("brand/{brand}.json")
     Call<Search> byBrand(@Path("brand") String brand);
 
+    @Deprecated
     @GET("purchase-place/{purchasePlace}.json")
     Call<Search> byPurchasePlace(@Path("purchasePlace") String purchasePlace);
 
+    @Deprecated
     @GET("store/{store}.json")
     Call<Search> byStore(@Path("store") String store);
 
+    @Deprecated
     @GET("country/{country}.json")
     Call<Search> byCountry(@Path("country") String country);
 
+    @Deprecated
     @GET("trace/{trace}.json")
     Call<Search> byTrace(@Path("trace") String trace);
 
+    @Deprecated
     @GET("packager-code/{PackagerCode}.json")
     Call<Search> byPackagerCode(@Path("PackagerCode") String packagerCode);
 
+    @Deprecated
     @GET("city/{City}.json")
     Call<Search> byCity(@Path("City") String city);
 
+    @Deprecated
     @GET("nutrition-grade/{NutritionGrade}.json")
     Call<Search> byNutritionGrade(@Path("NutritionGrade") String nutritionGrade);
 
@@ -209,15 +239,18 @@ public interface ProductsAPI {
     @GET("contributor/{Contributor}.json?nocache=1")
     Single<Search> byContributor(@Path("Contributor") String contributor);
 
+    @Deprecated
     @GET("contributor/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getToBeCompletedProductsByContributor(@Path("Contributor") String contributor, @Path("page") int page);
 
+    @Deprecated
     @GET("/photographer/{Contributor}/{page}.json?nocache=1")
     Call<Search> getPicturesContributedProducts(@Path("Contributor") String contributor, @Path("page") int page);
 
     @GET("photographer/{Photographer}.json?nocache=1")
     Single<Search> byPhotographer(@Path("Photographer") String photographer);
 
+    @Deprecated
     @GET("photographer/{Contributor}/state/to-be-completed/{page}.json?nocache=1")
     Call<Search> getPicturesContributedIncompleteProducts(@Path("Contributor") String contributor,
                                                           @Path("page") int page);
@@ -225,6 +258,7 @@ public interface ProductsAPI {
     @GET("informer/{Informer}.json?nocache=1")
     Single<Search> byInformer(@Path("Informer") String informer);
 
+    @Deprecated
     @GET("informer/{Contributor}/{page}.json?nocache=1")
     Call<Search> getInfoAddedProducts(@Path("Contributor") String contributor, @Path("page") int page);
 
@@ -240,6 +274,7 @@ public interface ProductsAPI {
     @GET("unknown-nutrient/{UnknownNutrient}.json")
     Single<Search> byUnknownNutrient(@Path("UnknownNutrient") String unknownNutrient);
 
+    @Deprecated
     @GET("additive/{Additive}.json")
     Call<Search> byAdditive(@Path("Additive") String additive, @Query("fields") String fields);
 
@@ -251,12 +286,14 @@ public interface ProductsAPI {
                                       @Path("page") int page,
                                       @Query("fields") String fields);
 
-    /**
+    /*
      * Open Beauty Facts experimental and specific APIs
      */
+    @Deprecated
     @GET("period-after-opening/{PeriodAfterOpening}.json")
     Call<Search> byPeriodAfterOpening(@Path("PeriodAfterOpening") String periodAfterOpening);
 
+    @Deprecated
     @GET("ingredient/{ingredient}.json")
     Call<Search> byIngredient(@Path("ingredient") String ingredient);
 
@@ -267,10 +304,10 @@ public interface ProductsAPI {
     Single<Search> getIncompleteProducts(@Path("page") int page, @Query("fields") String fields);
 
     /**
-     * This method gives the # of products on Open Food Facts
+     * This method is used to get the number of products on Open X Facts
      */
     @GET("/1.json?fields=null")
-    Single<Search> getTotalProductCount(@Header("User-Agent") String header);
+    Single<JsonNode> getTotalProductCount(@Header("User-Agent") String header);
 
     /**
      * This method gives the news in all languages
@@ -289,10 +326,12 @@ public interface ProductsAPI {
     /**
      * This method is to crop images server side
      */
+    @Deprecated
     @GET("/cgi/product_image_crop.pl")
     Call<String> editImages(@Query(ApiFields.Keys.BARCODE) String code,
                             @QueryMap Map<String, String> fields);
 
+    @Deprecated
     @GET("/cgi/product_image_unselect.pl")
     Call<String> unSelectImage(@Query(ApiFields.Keys.BARCODE) String code,
                                @QueryMap Map<String, String> fields);

@@ -257,6 +257,7 @@
     <string name="user_ask_rate_app">crwdns127744:0crwdne127744:0</string>
     <string name="rate_app">crwdns127746:0crwdne127746:0</string>
     <string name="no_thx">crwdns127748:0crwdne127748:0</string>
+    <string name="feedback_form_url">crwdns127750:0crwdne127750:0</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">crwdns127752:0crwdne127752:0</string>
     <string name="clear_history">crwdns127754:0crwdne127754:0</string>
@@ -381,6 +382,7 @@
     <string name="take_picture_front">crwdns127990:0crwdne127990:0</string>
     <string name="take_picture_nutrition_table">crwdns127992:0crwdne127992:0</string>
     <string name="take_more_pictures">crwdns127994:0crwdne127994:0</string>
+    <string name="take_extra_packaging_pictures">crwdns152880:0crwdne152880:0</string>
     <string name="txtSaturatedFat">crwdns127996:0crwdne127996:0</string>
     <string name="nutriscore_info_msg">crwdns127998:0crwdne127998:0</string>
     <string name="nova_info_msg">crwdns140560:0crwdne140560:0</string>
@@ -462,7 +464,7 @@
     <string name="choose_resolution">crwdns128144:0crwdne128144:0</string>
     <string name="pref_resolution_summary">crwdns128146:0crwdne128146:0</string>
     <string name="image_upload_resolution">crwdns128148:0crwdne128148:0</string>
-    <string name="wikidata_information">crwdns128150:0crwdne128150:0</string>
+    <string name="wikidata_information">crwdns148234:0crwdne148234:0</string>
     <string name="wikidata_unavailable">crwdns128152:0crwdne128152:0</string>
     <string name="Wikipedia">crwdns128154:0crwdne128154:0</string>
     <string name="Browse_Products">crwdns128156:0crwdne128156:0</string>
@@ -772,7 +774,6 @@
     <string name="white_check_image_descr">crwdns128736:0crwdne128736:0</string>
     <string name="hint_packaging">crwdns128738:0crwdne128738:0</string>
     <string name="risk_alcohol_consumption">crwdns128740:0crwdne128740:0</string>
-    <string name="check_first_time">crwdns128742:0crwdne128742:0</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">crwdns128744:0crwdne128744:0</string>
     <string name="content_image_type">crwdns128746:0crwdne128746:0</string>
@@ -795,4 +796,5 @@
     <string name="brand_hint">crwdns140574:0crwdne140574:0</string>
     <string name="sign_in_or_register">crwdns128782:0crwdne128782:0</string>
     <string name="hunger_game_call_to_action">crwdns140576:0%1$scrwdne140576:0</string>
+    <string name="txtHomeOnline">crwdns148916:0%1$scrwdne148916:0</string>
 </resources>

@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -25,6 +27,7 @@ import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.images.ImageSize;
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
@@ -114,7 +117,7 @@ public class Product implements Serializable {
     @JsonProperty(ApiFields.Keys.LAST_MODIFIED_TIME)
     private String lastModifiedTime;
     @JsonProperty(ApiFields.Keys.LINK)
-    private String manufactureUrl;
+    private String manufacturerUrl;
     @JsonProperty(ApiFields.Keys.MANUFACTURING_PLACES)
     private String manufacturingPlaces;
     @JsonProperty(ApiFields.Keys.MINERALS_TAGS)
@@ -171,15 +174,6 @@ public class Product implements Serializable {
         this.additionalProperties.put(name, value);
     }
 
-    public String getProductName(String languageCode) {
-        String result = getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode);
-        if (result != null) {
-            return result;
-        } else {
-            return getProductName();
-        }
-    }
-
     public boolean hasProductNameIn(String languageCode) {
         return additionalProperties.get(ApiFields.Keys.lcProductNameKey(languageCode)) != null;
     }
@@ -194,7 +188,7 @@ public class Product implements Serializable {
     }
 
     public String getIngredientsText(String languageCode) {
-        String result = getFieldForLanguage("ingredients_text", languageCode);
+        String result = getFieldForLanguage(ApiFields.Keys.INGREDIENTS_TEXT, languageCode);
         if (result != null) {
             return result;
         } else {
@@ -223,7 +217,7 @@ public class Product implements Serializable {
     @Nullable
     private String getFieldForLanguage(@NonNull String field, @NonNull String languageCode) {
         // First try the passed language
-        if (!languageCode.equals("en") && additionalProperties.get(field + "_" + languageCode) != null
+        if (!ApiFields.Defaults.DEFAULT_LANGUAGE.equals(languageCode) && additionalProperties.get(field + "_" + languageCode) != null
             && isNotBlank(additionalProperties.get(field + "_" + languageCode).toString())) {
             return additionalProperties.get(field + "_" + languageCode)
                 .toString()
@@ -398,8 +392,8 @@ public class Product implements Serializable {
     /**
      * @return The manufactureUrl
      */
-    public String getManufactureUrl() {
-        return manufactureUrl;
+    public String getManufacturerUrl() {
+        return manufacturerUrl;
     }
 
     /**
@@ -458,7 +452,11 @@ public class Product implements Serializable {
     /**
      * @return The nutriments
      */
+    @NonNull
     public Nutriments getNutriments() {
+        if (nutriments == null) {
+            nutriments = new Nutriments();
+        }
         return nutriments;
     }
 
@@ -499,11 +497,36 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The productName
+     * Get the default product name.
+     *
+     * @return The default product name
      */
     @Nullable
     public String getProductName() {
         return productName;
+    }
+
+    /**
+     * Get the product name for the specified language code. If null return default product name.
+     *
+     * @param languageCode The language code for the language we get the product in.
+     * @return The product name for the specified language code.
+     *     If null returns default product name.
+     * @see #getProductName()
+     */
+    @Nullable
+    public String getProductName(final String languageCode) {
+        String result = getFieldForLanguage(ApiFields.Keys.PRODUCT_NAME, languageCode);
+        if (result != null) {
+            return result;
+        } else {
+            return getProductName();
+        }
+    }
+
+    @Nullable
+    public String getLocalProductName(final Context context) {
+        return getProductName(LocaleHelper.getLanguage(context));
     }
 
     /**
@@ -546,7 +569,7 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The stores
+     * @return The stores where the product is sold.
      */
     @Nullable
     public String getStores() {
@@ -557,7 +580,8 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The nutritionGradeFr
+     * @return The NutriScore as specified by the
+     *     {@link ApiFields.Keys#NUTRITION_GRADE_FR} api field.
      */
     @Nullable
     public String getNutritionGradeFr() {
@@ -572,7 +596,7 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The countries
+     * @return The countries where the product is sold.
      */
     @Nullable
     public String getCountries() {

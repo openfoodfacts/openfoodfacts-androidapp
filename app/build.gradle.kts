@@ -42,24 +42,24 @@ dependencies {
     implementation("androidx.browser:browser:1.2.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.work:work-runtime:2.4.0")
-    implementation("androidx.concurrent:concurrent-futures:1.0.0")
+    implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("com.google.android.material:material:1.2.0")
+    implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.annotation:annotation:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0-rc1")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
     implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.fragment:fragment:1.3.0-alpha07")
-    implementation("androidx.activity:activity:1.2.0-alpha07")
+    implementation("androidx.fragment:fragment:1.3.0-beta01")
+    implementation("androidx.activity:activity:1.2.0-beta01")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.preference:preference:1.1.1")
 
     //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
-    annotationProcessor("com.google.dagger:dagger-compiler:2.28.3")
-    implementation("com.google.dagger:dagger:2.28.3")
+    annotationProcessor("com.google.dagger:dagger-compiler:2.29.1")
+    implementation("com.google.dagger:dagger:2.29.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
@@ -77,9 +77,9 @@ dependencies {
     implementation("org.apache.commons:commons-csv:1.4")
 
     //Serialization/Deserialization
-    implementation("com.fasterxml.jackson.core:jackson-core:2.11.2")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.2")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.2")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.11.3")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.3")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.3")
 
     //Database
     implementation("org.greenrobot:greendao:3.3.0")
@@ -135,27 +135,27 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:2.3.0")
+    implementation("io.sentry:sentry-android:3.0.0")
 
     // Unit Testing
-    testImplementation("junit:junit:4.13")
-    testImplementation("org.mockito:mockito-core:3.5.0")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.18.1")
+    testImplementation("junit:junit:4.13.1")
+    testImplementation("org.mockito:mockito-core:3.5.13")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.19.0")
     testImplementation("com.google.truth:truth:1.0.1")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.0.1")
 
     // Instrumented tests
-    androidTestUtil("androidx.test:orchestrator:1.2.0")
+    androidTestUtil("androidx.test:orchestrator:1.3.0")
 
-    androidTestImplementation("androidx.test:runner:1.2.0")
-    androidTestImplementation("androidx.test:rules:1.2.0")
+    androidTestImplementation("androidx.test:runner:1.3.0")
+    androidTestImplementation("androidx.test:rules:1.3.0")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.1")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
 
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-intents:3.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-web:3.2.0")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.2.0") {
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-web:3.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.3.0") {
         exclude(group = "com.android.support", module = "appcompat-v7")
         exclude(group = "com.android.support", module = "support-v4")
         exclude(group = "com.android.support", module = "design")
@@ -198,7 +198,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        ndk?.abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        ndk.abiFilters("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
 
         multiDexEnabled = true
         // jackOptions.enabled = true
@@ -232,6 +232,10 @@ android {
 
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
+        }
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
         }
 
         create("screenshots") {
@@ -294,7 +298,7 @@ android {
 
     compileOptions {
         // Flag to enable support for the new language APIs
-        coreLibraryDesugaringEnabled = true
+        isCoreLibraryDesugaringEnabled = true
         // Sets Java compatibility to Java 8
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

@@ -11,7 +11,7 @@
     <!-- For fr, Replace by https://world-fr.openpetfoodfacts.org/contributeur/ -->
     <string name="website_contributor">https://world-uz.openpetfoodfacts.org/contributor/</string>
     <string name="terms_url">https://world-uz.openpetfoodfacts.org/terms-of-use</string>
-    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$d pet food products (plus the ones you will contribute) Woof. Woof.</string>
+    <string name="txtHomeOnline">Open Pet Food Facts is a database of more than %1$s pet food products (plus the ones you will contribute) Woof. Woof.</string>
     <string name="txtHome">Open Pet Food Facts - bu uy hayvonlari uchun turli ingredientlarga, ozuqaviy qoʻshimichalarga boy ozuqa mahsulotlarining maʼlumotlar omboridir... Vuf. Vuf.</string>
     <string name="slide_1_title">Uy hayvonlari uchun ozuqalarning shaffofligiga oʻz hissasini qoʻshish</string>
     <string name="slide_1_desc">Mahsulotlarni koʻzdan kechiring, ularni rasmga oling va uy hayvonlari uchun ozuqalarini shaffofligini taʻminlang</string>

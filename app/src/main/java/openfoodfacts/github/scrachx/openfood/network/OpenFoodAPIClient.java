@@ -39,6 +39,9 @@ import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity;
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity;
 import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct;
@@ -52,12 +55,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct;
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao;
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
+import openfoodfacts.github.scrachx.openfood.utils.InstallationUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.AddProductActivity;
-import openfoodfacts.github.scrachx.openfood.views.InstallationUtils;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.views.product.ProductActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -78,7 +78,7 @@ public class OpenFoodAPIClient {
     @NonNull
     private final ProductsAPI api;
     @NonNull
-    private final Context mContext;
+    private final Context context;
     private static final String FIELDS_TO_FETCH_FACETS = String
         .format("brands,%s,product_name,image_small_url,quantity,nutrition_grades_tags,code", getLocaleProductNameField());
 
@@ -106,7 +106,7 @@ public class OpenFoodAPIClient {
         }
         mHistoryProductDao = Utils.getDaoSession().getHistoryProductDao();
         mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
-        mContext = context;
+        this.context = context;
     }
 
     /**
@@ -196,11 +196,12 @@ public class OpenFoodAPIClient {
     }
 
     private String getAllFields() {
-        String[] allFieldsArray = OFFApplication.getInstance().getResources().getStringArray(R.array.product_all_fields_array);
-        Set<String> fields = new HashSet<>(Arrays.asList(allFieldsArray));
+        String[] allFields = context.getResources().getStringArray(R.array.product_all_fields_array);
+        String[] fieldsToLocalize = context.getResources().getStringArray(R.array.fields_array);
+
+        Set<String> fields = new HashSet<>(Arrays.asList(allFields));
         String langCode = LocaleHelper.getLanguage(OFFApplication.getInstance().getApplicationContext());
-        String[] fieldsToLocalizedArray = OFFApplication.getInstance().getResources().getStringArray(R.array.fields_array);
-        for (String fieldToLocalize : fieldsToLocalizedArray) {
+        for (String fieldToLocalize : fieldsToLocalize) {
             fields.add(fieldToLocalize + "_" + langCode);
             fields.add(fieldToLocalize + "_en");
         }
@@ -215,7 +216,7 @@ public class OpenFoodAPIClient {
             .negativeText(R.string.txtNo)
             .onPositive((dialog, which) -> {
                 if (!activity.isFinishing()) {
-                    Intent intent = new Intent(activity, AddProductActivity.class);
+                    Intent intent = new Intent(activity, ProductEditActivity.class);
                     ProductState st = new ProductState();
                     Product pd = new Product();
                     pd.setCode(barcode);
@@ -307,7 +308,7 @@ public class OpenFoodAPIClient {
                     if (callback != null) {
                         callback.accept(productState);
                     } else {
-                        ProductActivity.start(activity, productState);
+                        ProductViewActivity.start(activity, productState);
                     }
                 }
             }
@@ -333,7 +334,7 @@ public class OpenFoodAPIClient {
     }
 
     /**
-     * Open the product in {@link ProductActivity} if the barcode exist.
+     * Open the product in {@link ProductViewActivity} if the barcode exist.
      * Also add it in the history if the product exist.
      *
      * @param barcode product barcode
@@ -687,7 +688,7 @@ public class OpenFoodAPIClient {
                             mHistoryProductDao.insertOrReplace(hp);
                         }
 
-                        mContext.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply();
+                        context.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply();
                     }
 
                     @Override
@@ -748,25 +749,9 @@ public class OpenFoodAPIClient {
      *
      * @param additive search query for products
      * @param page number of pages
-     * @param onAdditiveCallback object of OnAdditiveCallback interface
      */
-    public void getProductsByAdditive(final String additive, final int page, final ApiCallbacks.OnAdditiveCallback onAdditiveCallback) {
-
-        api.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onAdditiveCallback.onAdditiveResponse(true, response.body());
-                } else {
-                    onAdditiveCallback.onAdditiveResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onAdditiveCallback.onAdditiveResponse(false, null);
-            }
-        });
+    public Single<Search> getProductsByAdditive(final String additive, final int page) {
+        return api.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS);
     }
 
     public void getProductsByAllergen(final String allergen, final int page, final ApiCallbacks.OnAllergensCallback onAllergensCallback) {

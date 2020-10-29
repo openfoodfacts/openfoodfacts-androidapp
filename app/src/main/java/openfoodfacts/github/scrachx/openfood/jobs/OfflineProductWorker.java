@@ -15,8 +15,8 @@ import androidx.work.WorkManager;
 import androidx.work.WorkerParameters;
 
 import io.reactivex.Single;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class OfflineProductWorker extends RxWorker {
     private static final String WORK_TAG = "OFFLINE_WORKER_TAG";

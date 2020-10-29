@@ -31,11 +31,13 @@ import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import openfoodfacts.github.scrachx.openfood.views.OFFApplication;
 
 public class LoadTaxonomiesWorker extends RxWorker {
+    private static final String LOG_TAG = LoadTaxonomiesWorker.class.getSimpleName();
+
     /**
      * @param appContext The application {@link Context}
      * @param workerParams Parameters to setup the internal state of this worker
@@ -63,12 +65,12 @@ public class LoadTaxonomiesWorker extends RxWorker {
         syncObservables.add(productRepository.reloadAdditivesFromServer().subscribeOn(Schedulers.io()).ignoreElement());
         syncObservables.add(productRepository.reloadCategoriesFromServer().subscribeOn(Schedulers.io()).ignoreElement());
 
-        return Completable.merge(syncObservables).subscribeOn(Schedulers.io())
+        return Completable.merge(syncObservables)
             .toSingle(() -> {
                 settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false).apply();
                 return Result.success();
             }).onErrorReturn(throwable -> {
-                Log.e(LoadTaxonomiesWorker.class.getSimpleName(), "can't load products", throwable);
+                Log.e(LOG_TAG, "Cannot download taxonomies from server.", throwable);
                 return Result.failure();
             });
     }

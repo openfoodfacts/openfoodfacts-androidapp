@@ -352,6 +352,7 @@
         <item>origins</item>
         <item>stores</item>
         <item>nutrition_grade_fr</item>
+        <item>nutrition_grades_tags</item>
         <item>nutrient_levels</item>
         <item>countries</item>
         <item>countries_tags</item>
@@ -511,7 +512,7 @@
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
     <string name="no_thx">No thanks</string>
-    <string name="feedback_form_url" translatable="false">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
 
     <!-- Scan history -->
     <string name="scan_history_drawer">History</string>
@@ -640,6 +641,7 @@
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">Take a photo of the nutrition table</string>
     <string name="take_more_pictures">Take more photos</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Saturated fat</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
@@ -1062,7 +1064,7 @@
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
-    <string name="check_first_time">check_first_time</string>
+    <string name="check_first_time" translatable="false">check_first_time</string>
 
     <!--ShowcaseView Strings-->
     <string name="title_image_type">Select Image Type</string>
@@ -1086,4 +1088,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>

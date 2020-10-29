@@ -39,11 +39,11 @@ Maailman elintarvikkeiden, kosmetiikan ja lemmikkien elintarvikkeiden keräämin
 
 Joten aloimme luomaan ei yhtä, vaan 77000:ta erillistä uutta tietokantaa! 
 
-Open Products Facts tulee olemaan erittäin kunnianhimoinen hanke. Here are a few of them: 
+Open Products Facts tulee olemaan erittäin kunnianhimoinen hanke. Tässä on muutama niistä: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - Suurin avoin väriliitutietokanta
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - Suurin avoin miniatyyrielintarviketietokanta
 
 Open ??? Facts - Suurin avoin ???-tietokanta
 

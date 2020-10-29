@@ -20,6 +20,10 @@ import androidx.annotation.NonNull;
 
 import org.jetbrains.annotations.Contract;
 
+/**
+ * This class lists all fields, field prefixes and suffixes and default values used by the api.
+ * We discourage the use of string literals through the code and we recommend creating a field here so that it can be updated on API change.
+ */
 public final class ApiFields {
     private ApiFields() {
     }
@@ -158,13 +162,13 @@ public final class ApiFields {
 
         @NonNull
         @Contract(pure = true)
-        public static String lcProductNameKey(String lang) {
+        public static String lcProductNameKey(final String lang) {
             return Prefix.PRODUCT_NAME + lang;
         }
 
         @NonNull
         @Contract(pure = true)
-        public static String lcIngredientsKey(String lang) {
+        public static String lcIngredientsKey(final String lang) {
             return Prefix.INGREDIENTS_TEXT + lang;
         }
     }

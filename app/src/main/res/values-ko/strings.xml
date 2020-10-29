@@ -19,16 +19,16 @@
         <item quantity="other"> Open Foods Facts 에 기부되기를 기다리는 오프라인 제품이 %d 있습니다.</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="other">%d seconds ago</item>
+        <item quantity="other">%d 초 전</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="other">%d minutes ago</item>
+        <item quantity="other">%d 분 전</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="other">%d hours ago</item>
+        <item quantity="other">%d 시간 전</item>
     </plurals>
     <plurals name="days">
-        <item quantity="other">%d days ago</item>
+        <item quantity="other">%d 일 전</item>
     </plurals>
     <string name="action_about">정보</string>
     <string name="action_discover">발견</string>
@@ -252,6 +252,7 @@
     <string name="user_ask_rate_app">좋아요! 다른 사람들에게 당신이 이 앱에 대해 어떻게 생각하는지 알려주세요!</string>
     <string name="rate_app">앱 평가</string>
     <string name="no_thx">아니요, 괜찮아요</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">최근 기록</string>
     <string name="clear_history">방문 기록 삭제</string>
@@ -376,6 +377,7 @@
     <string name="take_picture_front">정면 사진 찍기</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">포화 지방</string>
     <string name="nutriscore_info_msg">Nutri-Score에 대해 더 알아보기</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
@@ -443,7 +445,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://world-ko.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">일반</string>
     <string name="preference_header_network">네트워크</string>
     <string name="preference_header_contributing">도움 보내기</string>
@@ -586,7 +588,7 @@
     <string name="traces">흔적</string>
     <string name="traces_hint">\'~를 미량 함유할 수 있음\', \'~를 사용하는 공장에서 제조 됨\' 등과 같이 언급된 성분을 표시하십시오. \n예시 : 우유, 글루텐, 견과류</string>
     <string name="nutrition_facts_not_specified">영양성분표가 제품에 명시되어 있지 않습니다.</string>
-    <string name="nutrition_facts_picture">Nutrition Facts photo</string>
+    <string name="nutrition_facts_picture">영양성분표 사진</string>
     <string name="front_short_picture">앞</string>
     <string name="other_picture">다른 사진</string>
     <string name="for_100g_100ml">100g / 100ml 당</string>
@@ -767,7 +769,6 @@
     <string name="white_check_image_descr">화이트 체크</string>
     <string name="hint_packaging">예 : 플라스틱, 종이, 유리</string>
     <string name="risk_alcohol_consumption">과도한 알코올 섭취는 건강에 해로우며, 적당히 섭취해야 합니다</string>
-    <string name="check_first_time">처음 확인하다</string>
     <!--ShowcaseView Strings-->
     <string name="title_image_type">이미지 유형 선택</string>
     <string name="content_image_type">작업 할 사진을 선택하십시오</string>
@@ -790,4 +791,5 @@
     <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
 </resources>
