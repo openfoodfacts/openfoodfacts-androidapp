@@ -233,7 +233,7 @@
     <string name="create_account">تسجيل الدخول</string>
     <string name="home_drawer">الصفحة الرئيسية</string>
     <string name="install">تثبيت</string>
-    <string name="open_beauty_drawer">افتح حقائق الجمال</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">بحث</string>
     <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
