@@ -90,7 +90,7 @@ import static openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListen
 public class PreferencesFragment extends PreferenceFragmentCompat implements INavigationItem, SharedPreferences.OnSharedPreferenceChangeListener {
     @NonNull
     public static final String LOGIN_PREF = "login";
-    private CompositeDisposable disp = new CompositeDisposable();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private NavigationDrawerListener navigationDrawerListener;
 
     @NonNull

@@ -69,7 +69,7 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
     private static final int ACTIVITY_CHOOSE_FILE = 123;
     private ProductListsAdapter adapter;
     private ActivityProductListsBinding binding;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private List<ProductLists> productLists;
     private ProductListsDao productListsDao;
 

@@ -154,7 +154,7 @@ public class LoginActivity extends BaseActivity {
     private CustomTabActivityHelper customTabActivityHelper;
     private Uri userLoginUri;
     private Uri resetPasswordUri;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private final CompositeDisposable disp = new CompositeDisposable();
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

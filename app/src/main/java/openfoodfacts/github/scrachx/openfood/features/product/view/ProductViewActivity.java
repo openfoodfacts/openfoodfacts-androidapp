@@ -70,7 +70,7 @@ public class ProductViewActivity extends BaseActivity implements OnRefreshListen
     private ActivityProductBinding binding;
     private ProductFragmentPagerAdapter adapterResult;
     private OpenFoodAPIClient client;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private ProductState productState;
 
     public static void start(Context context, @NonNull ProductState productState) {
@@ -182,7 +182,8 @@ public class ProductViewActivity extends BaseActivity implements OnRefreshListen
             .subscribe(state -> {
                 productState = state;
                 getIntent().putExtra(STATE_KEY, state);
-                if (productState != null) {
+                //Adding check on productState.getProduct() to avoid null pointer exception (happens in setViewPager()) when product not found
+                if (productState != null && productState.getProduct() != null) {
                     initViews();
                 } else {
                     finish();

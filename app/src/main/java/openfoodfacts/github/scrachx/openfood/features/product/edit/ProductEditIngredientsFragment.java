@@ -83,10 +83,10 @@ public class ProductEditIngredientsFragment extends BaseFragment {
     private Activity activity;
     private File photoFile;
     private String code;
-    private List<String> allergens = new ArrayList<>();
+    private final List<String> allergens = new ArrayList<>();
     private OfflineSavedProduct mOfflineSavedProduct;
     private HashMap<String, String> productDetails = new HashMap<>();
-    private CompositeDisposable disp = new CompositeDisposable();
+    private final CompositeDisposable disp = new CompositeDisposable();
     private String imagePath;
     private boolean editProduct;
     private Product product;

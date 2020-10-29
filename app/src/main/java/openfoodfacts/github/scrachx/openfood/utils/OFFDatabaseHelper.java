@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import org.greenrobot.greendao.database.Database;
 
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster;
@@ -179,7 +181,7 @@ public class OFFDatabaseHelper extends DaoMaster.OpenHelper {
         }
     }
 
-    private boolean isFieldExist(Database db, String tableName, String fieldName) {
+    private boolean isFieldExist(@NonNull Database db, String tableName, String fieldName) {
         boolean isExist = false;
         String query = String.format("PRAGMA table_info(%s)", tableName);
         Cursor res = db.rawQuery(query, null);

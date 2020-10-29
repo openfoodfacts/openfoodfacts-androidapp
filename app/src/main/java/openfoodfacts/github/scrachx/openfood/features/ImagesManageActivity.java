@@ -162,7 +162,7 @@ public class ImagesManageActivity extends BaseActivity {
             //delaying the transition until the view has been laid out
             postponeEnterTransition();
         }
-        new SwipeDetector(binding.imageViewFullScreen).setOnSwipeListener((v, swipeType) -> {
+        new SwipeDetector(binding.imageViewFullScreen, (view, swipeType) -> {
             if (swipeType == SwipeDetector.SwipeTypeEnum.LEFT_TO_RIGHT) {
                 incrementImageType(-1);
             } else if (swipeType == SwipeDetector.SwipeTypeEnum.RIGHT_TO_LEFT) {

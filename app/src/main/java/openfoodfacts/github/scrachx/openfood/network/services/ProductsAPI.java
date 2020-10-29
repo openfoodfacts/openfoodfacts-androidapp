@@ -153,33 +153,29 @@ public interface ProductsAPI {
                                                  @Path("page") int page,
                                                  @Query("fields") String fields);
 
-    @Deprecated
     @GET("store/{store}/{page}.json")
-    Call<Search> getProductByStores(@Path("store") String store,
-                                    @Path("page") int page,
-                                    @Query("fields") String fields);
+    Single<Search> getProductByStores(@Path("store") String store,
+                                      @Path("page") int page,
+                                      @Query("fields") String fields);
 
-    @Deprecated
     @GET("packaging/{packaging}/{page}.json")
-    Call<Search> getProductByPackaging(@Path("packaging") String packaging,
-                                       @Path("page") int page,
-                                       @Query("fields") String fields);
+    Single<Search> getProductByPackaging(@Path("packaging") String packaging,
+                                         @Path("page") int page,
+                                         @Query("fields") String fields);
 
-    @Deprecated
     @GET("label/{label}/{page}.json")
-    Call<Search> getProductByLabel(@Path("label") String label,
-                                   @Path("page") int page,
-                                   @Query("fields") String fields);
+    Single<Search> getProductByLabel(@Path("label") String label,
+                                     @Path("page") int page,
+                                     @Query("fields") String fields);
 
     @Deprecated
     @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
     Call<Search> getProductByCategory(@Path("category") String category,
                                       @Path("page") int page);
 
-    @Deprecated
     @GET("contributor/{Contributor}/{page}.json?nocache=1")
-    Call<Search> searchProductsByContributor(@Path("Contributor") String contributor,
-                                             @Path("page") int page);
+    Single<Search> searchProductsByContributor(@Path("Contributor") String contributor,
+                                               @Path("page") int page);
 
     @Deprecated
     @GET("language/{language}.json")

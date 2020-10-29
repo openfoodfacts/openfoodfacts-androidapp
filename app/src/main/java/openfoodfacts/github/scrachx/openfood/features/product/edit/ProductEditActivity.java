@@ -81,20 +81,20 @@ public class ProductEditActivity extends AppCompatActivity {
     public static final String KEY_IS_EDITING = "is_edition";
     public static final String KEY_EDIT_OFFLINE_PRODUCT = "edit_offline_product";
     public static final String KEY_STATE = "state";
-    private ProductEditPhotosFragment addProductPhotosFragment = new ProductEditPhotosFragment();
-    private ProductEditIngredientsFragment productEditIngredientsFragment = new ProductEditIngredientsFragment();
-    private ProductEditNutritionFactsFragment productEditNutritionFactsFragment = new ProductEditNutritionFactsFragment();
-    private ProductEditOverviewFragment productEditOverviewFragment = new ProductEditOverviewFragment();
+    private final ProductEditPhotosFragment addProductPhotosFragment = new ProductEditPhotosFragment();
+    private final CompositeDisposable disp = new CompositeDisposable();
+    private final Bundle fragmentsBundle = new Bundle();
+    private final String[] imagesFilePath = new String[3];
     @Inject
     ProductsAPI api;
     private ActivityAddProductBinding binding;
-    private CompositeDisposable disp = new CompositeDisposable();
+    private final ProductEditIngredientsFragment productEditIngredientsFragment = new ProductEditIngredientsFragment();
     private boolean editingMode;
-    private Bundle fragmentsBundle = new Bundle();
+    private final ProductEditNutritionFactsFragment productEditNutritionFactsFragment = new ProductEditNutritionFactsFragment();
     private boolean imageFrontUploaded;
     private boolean imageIngredientsUploaded;
     private boolean imageNutritionFactsUploaded;
-    private String[] imagesFilePath = new String[3];
+    private final ProductEditOverviewFragment productEditOverviewFragment = new ProductEditOverviewFragment();
     private Map<String, String> initialValues;
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product mProduct;
@@ -102,6 +102,7 @@ public class ProductEditActivity extends AppCompatActivity {
     private OfflineSavedProduct offlineSavedProduct;
     private final Map<String, String> productDetails = new HashMap<>();
 
+    @NonNull
     public static File getCameraPicLocation(Context context) {
         File cacheDir = context.getCacheDir();
         if (isExternalStorageWritable()) {

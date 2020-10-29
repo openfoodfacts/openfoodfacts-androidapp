@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 public class PrefManager {
     private static final int PRIVATE_MODE = 0;
-    private SharedPreferences pref;
+    private final SharedPreferences pref;
     private static final String PREF_NAME = "open-facts-welcome";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String FIRST_TIME_LAUNCH_TIME = "FirstTimeLaunchTime";
