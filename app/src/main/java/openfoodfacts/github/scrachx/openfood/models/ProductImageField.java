@@ -8,7 +8,7 @@ import java.util.Locale;
  * Kind of Product Image
  */
 public enum ProductImageField {
-    FRONT, INGREDIENTS, NUTRITION, OTHER;
+    FRONT, INGREDIENTS, NUTRITION, PACKAGING, OTHER;
 
     @Override
     @JsonValue

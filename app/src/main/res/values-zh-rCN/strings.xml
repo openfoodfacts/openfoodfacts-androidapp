@@ -746,7 +746,7 @@
     <string name="ingredient_analysis_tip">单击下面的图标以了解有关该产品的更多信息并选择您感兴趣的信息。</string>
     <string name="got_it">Got it!</string>
     <string name="onboarding_hint_msg">提示： %s </string>
-    <string name="ingredient_image_edit_tip">点击图像以缩放，更改，裁剪，旋转并更多…</string>
+    <string name="image_edit_tip">点击图像以缩放，更改，裁剪，旋转并更多…</string>
     <string name="ingredients_in_this_product_are">该产品中的成分为 %1$s。</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">显示 %1$s 状态</string>

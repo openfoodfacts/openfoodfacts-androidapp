@@ -751,7 +751,7 @@
     <string name="ingredient_analysis_tip">Ürün hakkında daha fazla bilgi edinmek ve ilgilendiğiniz bilgileri seçmek için aşağıdaki simgelere tıklayın.</string>
     <string name="got_it">Anladım!</string>
     <string name="onboarding_hint_msg">İpucu: %s </string>
-    <string name="ingredient_image_edit_tip">Yakınlaştırmak, değiştirmek, kırpmak, döndürmek ve daha fazlası için resme dokunun…</string>
+    <string name="image_edit_tip">Yakınlaştırmak, değiştirmek, kırpmak, döndürmek ve daha fazlası için resme dokunun…</string>
     <string name="ingredients_in_this_product_are">Bu ürünün içindeki malzemeler %1$s.</string>
     <string name="ingredients_in_this_product">Bu ürünün içindeki %1$s olan malzemeler:</string>
     <string name="display_analysis_tag_status">%1$s durumunu göster</string>

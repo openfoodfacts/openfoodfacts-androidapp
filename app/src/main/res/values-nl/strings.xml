@@ -751,7 +751,7 @@
     <string name="ingredient_analysis_tip">Klik op onderstaande pictogrammen om meer te weten te komen over het product en om informatie te selecteren waarin je geïnteresseerd bent.</string>
     <string name="got_it">Ik snap het!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tik op de afbeelding om in te zoomen, te wijzigen, bij te snijden, te draaien en meer…</string>
+    <string name="image_edit_tip">Tik op de afbeelding om in te zoomen, te wijzigen, bij te snijden, te draaien en meer…</string>
     <string name="ingredients_in_this_product_are">Ingrediënten in dit product zijn %1$s.</string>
     <string name="ingredients_in_this_product">Ingrediënten in dit product die %1$s zijn:</string>
     <string name="display_analysis_tag_status">Status %1$s weergeven</string>

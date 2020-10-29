@@ -482,6 +482,10 @@ public class ProductEditActivity extends AppCompatActivity {
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
             imagesFilePath[2] = image.getFilePath();
         }
+        if (image.getImguploadPackaging() != null) {
+            imgMap.put("imgupload_packaging\"; filename=\"packaging_" + lang + ".png\"", image.getImguploadPackaging());
+            imagesFilePath[3] = image.getFilePath();
+        }
         if (image.getImguploadOther() != null) {
             imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
         }

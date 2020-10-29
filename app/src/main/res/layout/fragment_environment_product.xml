@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -26,6 +27,54 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/nav_bar_height">
+
+
+                <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
+                    android:id="@+id/packagingImagetipBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    app:arrowAlignment="center"
+                    app:arrowMarginStart="0dp"
+                    app:shouldDisplayImmediately="false"
+                    app:backgroundColor="@android:color/holo_green_light"
+                    app:textColor="@android:color/white"
+                    android:visibility="gone"
+                    app:identifier="recycling_image_tip_box"
+                    app:message="@string/image_edit_tip" />
+
+                <ImageButton
+                    android:id="@+id/image_view_packaging"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/spacing_normal"
+                    android:layout_marginRight="@dimen/spacing_normal"
+                    android:adjustViewBounds="true"
+                    android:layout_marginTop="@dimen/spacing_tiny"
+                    android:background="?android:selectableItemBackground"
+                    android:maxHeight="120dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
+
+                <TextView
+                    android:id="@+id/addPhotoLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/take_picture_recycling"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/extract_recycling_prompt"
+                    style="@style/ButtonBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/spacing_normal"
+                    android:text="@string/extract_recycling_prompt"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/carbon_footprint_cv"

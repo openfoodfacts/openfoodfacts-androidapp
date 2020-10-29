@@ -55,6 +55,8 @@ public class ImageKeyHelper {
                 return R.string.edit_front_image;
             case NUTRITION:
                 return R.string.edit_nutrition_image;
+            case PACKAGING:
+                return R.string.edit_packaging_image;
             case INGREDIENTS:
                 return R.string.edit_ingredients_image;
             default:
@@ -70,6 +72,8 @@ public class ImageKeyHelper {
                 return R.string.nutrition_facts;
             case INGREDIENTS:
                 return R.string.ingredients;
+            case PACKAGING:
+                return R.string.recycling;
             default:
                 return R.string.other_picture;
         }

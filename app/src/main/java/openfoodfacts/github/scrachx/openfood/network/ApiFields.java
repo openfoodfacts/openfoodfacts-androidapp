@@ -110,6 +110,7 @@ public final class ApiFields {
         public static final String IMAGE_NUTRITION_URL = "image_nutrition_url";
         public static final String IMAGE_FRONT_URL = "image_front_url";
         public static final String IMAGE_INGREDIENTS_URL = "image_ingredients_url";
+        public static final String IMAGE_PACKAGING_URL = "image_packaging_url";
         public static final String ADDITIVES_TAGS = "additives_tags";
         public static final String CATEGORIES_TAGS = "categories_tags";
         public static final String INGREDIENTS_TEXT = "ingredients_text";

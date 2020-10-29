@@ -777,7 +777,7 @@
     <string name="ingredient_analysis_tip">انقر على الأيقونات أدناه لمعرفة المزيد عن المنتج وتحديد المعلومات التي تهتم بها.</string>
     <string name="got_it">فهِمت!</string>
     <string name="onboarding_hint_msg">تلميح: %s </string>
-    <string name="ingredient_image_edit_tip">اضغط على الصورة لتكبيرها وتغييرها واقتصاصها وتدويرها والمزيد…</string>
+    <string name="image_edit_tip">اضغط على الصورة لتكبيرها وتغييرها واقتصاصها وتدويرها والمزيد…</string>
     <string name="ingredients_in_this_product_are">المكونات في هذا المنتج هي %1$s.</string>
     <string name="ingredients_in_this_product">المكونات في هذا المنتج هي %1$s.</string>
     <string name="display_analysis_tag_status">عرض حالة %1$s</string>

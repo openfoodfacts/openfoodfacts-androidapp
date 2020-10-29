@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.environment;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +13,27 @@ import androidx.annotation.Nullable;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProductBinding;
+import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener;
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductState;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
+import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.PACKAGING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class EnvironmentProductFragment extends BaseFragment {
     private FragmentEnvironmentProductBinding binding;
     private ProductState activityProductState;
+    private String mUrlImage;
+    /**
+     * boolean to determine if image should be loaded or not
+     **/
+    private boolean isLowBatteryMode = false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,10 +50,35 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        String langCode = LocaleHelper.getLanguage(getContext());
         activityProductState = FragmentUtils.requireStateFromArguments(this);
+
+        binding.imageViewPackaging.setOnClickListener(v -> openFullScreen());
+
+        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
+        if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
+            isLowBatteryMode = true;
+        }
 
         final Product product = activityProductState.getProduct();
         Nutriments nutriments = product.getNutriments();
+
+        if (isNotBlank(product.getImagePackagingUrl(langCode))) {
+            binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)));
+            binding.packagingImagetipBox.loadToolTip();
+            binding.addPhotoLabel.setVisibility(View.GONE);
+
+            // Load Image if isLowBatteryMode is false
+            if (!isLowBatteryMode) {
+                Log.i("Mohsin", product.getImagePackagingUrl(langCode));
+                Utils.picassoBuilder(getContext())
+                    .load(product.getImagePackagingUrl(langCode))
+                    .into(binding.imageViewPackaging);
+            } else {
+                binding.imageViewPackaging.setVisibility(View.GONE);
+            }
+            mUrlImage = product.getImagePackagingUrl(langCode);
+        }
 
         if (nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
             Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
@@ -59,6 +95,8 @@ public class EnvironmentProductFragment extends BaseFragment {
             } else {
                 binding.environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard()));
             }
+        } else {
+            binding.environmentInfoCv.setVisibility(View.GONE);
         }
 
         if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
@@ -82,5 +120,17 @@ public class EnvironmentProductFragment extends BaseFragment {
     public void refreshView(ProductState productState) {
         super.refreshView(productState);
         activityProductState = productState;
+    }
+
+    private void openFullScreen() {
+        if (mUrlImage != null && activityProductState != null && activityProductState.getProduct() != null) {
+            FullScreenActivityOpener.openForUrl(this, activityProductState.getProduct(), PACKAGING, mUrlImage, binding.imageViewPackaging);
+        } else {
+            newPackagingImage();
+        }
+    }
+
+    public void newPackagingImage() {
+        doChooseOrTakePhotos(getString(R.string.recycling_picture));
     }
 }
