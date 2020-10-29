@@ -382,6 +382,7 @@
     <string name="take_picture_front">Ön fotoğrafını çekin</string>
     <string name="take_picture_nutrition_table">Beslenme tablosunun resmini çekin</string>
     <string name="take_more_pictures">Daha fazla resim çek</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Doymuş yağ</string>
     <string name="nutriscore_info_msg">Nutri-Score hakkında daha fazla bilgi edinin</string>
     <string name="nova_info_msg">Roller hakkında daha fazla bilgi edinin</string>
@@ -796,5 +797,5 @@
     <string name="brand_hint">Örnekler: Coca-Cola, Nestle vb…</string>
     <string name="sign_in_or_register">Oturum aç / Kayıt ol</string>
     <string name="hunger_game_call_to_action">Daha fazla sınıflandırmaya yardımcı olun %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts, %1$s fazla gıda ürününün (artı sizin katkıda bulunacaklarınız) açık bir veritabanıdır.</string>
 </resources>

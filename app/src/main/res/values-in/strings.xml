@@ -324,7 +324,7 @@
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">porsi</string>
     <string name="nutrition_monounsaturatedFat">Lemak tak jenuh Mono</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega9</string>
@@ -377,6 +377,7 @@
     <string name="take_picture_front">Take a photo of the front</string>
     <string name="take_picture_nutrition_table">ambil gambar nutrisi</string>
     <string name="take_more_pictures">memfoto</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">Lemak jenuh</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>

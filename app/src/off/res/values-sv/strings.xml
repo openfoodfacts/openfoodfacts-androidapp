@@ -15,7 +15,7 @@
     <string name="slide_1_desc">Skanna produkter, ta en bild, skapa livsmedelstransparens</string>
     <string name="slide_2_title">Få fakta</string>
     <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
-    <string name="slide_3_title">Få Nutriscore</string>
+    <string name="slide_3_title">Få Nutri-Score</string>
     <string name="slide_3_desc">En syntetisk bild av dina favoritprodukters näringsegenskaper</string>
     <string name="slide_4_title">Fungerar offline</string>
     <string name="slide_4_desc">Du kan lägga till nya produkter även om du inte har en internetanslutning just nu</string>
