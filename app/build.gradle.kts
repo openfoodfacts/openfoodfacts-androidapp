@@ -191,7 +191,7 @@ android {
         applicationId = "openfoodfacts.github.scrachx.openfood"
 
         minSdkVersion(16)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
 
         versionCode = 350
         versionName = "3.5.0"
