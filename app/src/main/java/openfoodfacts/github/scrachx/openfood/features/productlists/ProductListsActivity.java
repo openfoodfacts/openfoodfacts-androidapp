@@ -115,6 +115,8 @@ public class ProductListsActivity extends BaseActivity implements SwipeControlle
         binding.productListsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.productListsRecyclerView.setAdapter(adapter);
 
+        binding.tipBox.loadToolTip();
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             Product productToAdd = (Product) bundle.get("product");
