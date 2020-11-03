@@ -34,6 +34,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -127,6 +129,15 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private CustomTabsIntent customTabsIntent;
     private CompositeDisposable disp;
     private boolean hasCategoryInsightQuestion = false;
+    private String insightId;
+    private AnnotationAnswer annotation;
+    ActivityResultLauncher<Void> loginActivityResultLauncher = registerForActivityResult(
+        new LoginActivity.LoginContract(),
+        (ActivityResultCallback<Boolean>) isLoggedIn -> {
+            if (isLoggedIn) {
+                processInsight(insightId, annotation);
+            }
+        });
 
     private void onImageListenerComplete() {
         binding.uploadingImageProgress.setVisibility(GONE);
@@ -661,19 +672,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     }
 
     public void sendProductInsights(String insightId, AnnotationAnswer annotation) {
+        this.insightId = insightId;
+        this.annotation = annotation;
         if (Utils.isUserLoggedIn(requireActivity())) {
             processInsight(insightId, annotation);
         } else {
             new MaterialDialog.Builder(requireActivity())
                 .title(getString(R.string.sign_in_to_answer))
                 .positiveText(getString(R.string.sign_in_or_register))
-                .onPositive((dialog, which) ->
-                    registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
-                        if (isLoggedIn) {
-                            dialog.dismiss();
-                            processInsight(insightId, annotation);
-                        }
-                    }).launch(null))
+                .onPositive((dialog, which) -> {
+                    loginActivityResultLauncher.launch(null);
+                    dialog.dismiss();
+                })
                 .neutralText(R.string.dialog_cancel)
                 .onNeutral((dialog, which) -> dialog.dismiss())
                 .show();
