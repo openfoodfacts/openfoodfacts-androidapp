@@ -378,6 +378,7 @@
     <string name="take_picture_front">拍摄正面照片</string>
     <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍摄更多照片</string>
+    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
     <string name="txtSaturatedFat">饱和脂肪</string>
     <string name="nutriscore_info_msg">了解有关Nutri-Score的更多信息</string>
     <string name="nova_info_msg">了解有关NOVA组的更多信息</string>
