@@ -70,6 +70,8 @@ public class Product implements Serializable {
     private String creator;
     @JsonProperty(ApiFields.Keys.CUSTOMER_SERVICE)
     private String customerService;
+    @JsonProperty(ApiFields.Keys.ECOSCORE)
+    private String ecoscore;
     @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
     private final List<String> editorsTags = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.EMB_CODES_TAGS)
@@ -793,5 +795,10 @@ public class Product implements Serializable {
             .append("productName", productName)
             .append("additional_properties", additionalProperties)
             .toString();
+    }
+
+    @Nullable
+    public String getEcoscore() {
+        return ecoscore;
     }
 }

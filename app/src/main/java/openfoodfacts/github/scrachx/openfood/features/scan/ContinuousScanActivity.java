@@ -34,8 +34,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -113,6 +111,7 @@ import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE;
 
 public class ContinuousScanActivity extends AppCompatActivity {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
@@ -162,9 +161,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private SummaryProductPresenter summaryProductPresenter;
     private Disposable hintBarcodeDisp;
     private CompositeDisposable commonDisp;
-    ActivityResultLauncher<Intent> productActivityResultLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Intent> productActivityResultLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
-        (ActivityResultCallback<ActivityResult>) result -> {
+        result -> {
             if (result.getResultCode() == RESULT_OK) {
                 setShownProduct(lastBarcode);
             }
@@ -269,6 +268,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     binding.quickViewProductNotFound.setVisibility(GONE);
                     binding.quickViewProductNotFoundButton.setVisibility(GONE);
 
+                    // Set product name, prefer offline
                     if (offlineSavedProduct != null && !TextUtils.isEmpty(offlineSavedProduct.getName())) {
                         binding.quickViewName.setText(offlineSavedProduct.getName());
                     } else if (product.getProductName() == null || product.getProductName().equals("")) {
@@ -276,6 +276,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewName.setText(product.getProductName());
                     }
+
+                    // Set product additives
                     List<String> addTags = product.getAdditivesTags();
                     if (!addTags.isEmpty()) {
                         binding.quickViewAdditives.setText(getResources().getQuantityString(R.plurals.productAdditives, addTags.size(), addTags.size()));
@@ -285,6 +287,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         binding.quickViewAdditives.setText(getString(R.string.productAdditivesUnknown));
                     }
 
+                    // Set product image, if not present show default one
                     final String imageUrl = Utils.firstNotEmpty(offlineSavedProduct != null ? offlineSavedProduct.getImageFrontLocalUrl() : null,
                         product.getImageUrl(LocaleHelper.getLanguage(getBaseContext())));
                     if (imageUrl != null) {
@@ -308,16 +311,17 @@ public class ContinuousScanActivity extends AppCompatActivity {
                                     }
                                 });
                         } catch (IllegalStateException e) {
-                            //could happen if Picasso is not instantiated correctly...
+                            // Could happen if Picasso is not instantiated correctly...
                             Log.w(LOG_TAG, e.getMessage(), e);
                         }
                     } else {
                         binding.quickViewImage.setImageDrawable(errorDrawable);
                         binding.quickViewImageProgress.setVisibility(GONE);
                     }
-                    // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
+
+                    // Show nutriscore in quickView only if app flavour is OFF and the product has one
                     if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNutritionGradeTag() != null) {
-                        if (Utils.getImageGrade(product.getNutritionGradeTag()) != Utils.NO_DRAWABLE_RESOURCE) {
+                        if (Utils.getImageGrade(product.getNutritionGradeTag()) != NO_DRAWABLE_RESOURCE) {
                             binding.quickViewNutriScore.setVisibility(VISIBLE);
                             binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
                         } else {
@@ -326,10 +330,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewNutriScore.setVisibility(GONE);
                     }
-                    // Hide nova group from quickView if app flavour is not OFF or there is no nova group
+
+                    // Show nova group in quickView only if app flavour is OFF and the product has one
                     if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNovaGroups() != null) {
                         final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
-                        if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
+                        if (novaGroupDrawable != NO_DRAWABLE_RESOURCE) {
                             binding.quickViewNovaGroup.setVisibility(VISIBLE);
                             binding.quickViewAdditives.setVisibility(VISIBLE);
                             binding.quickViewNovaGroup.setImageResource(novaGroupDrawable);
@@ -339,13 +344,24 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewNovaGroup.setVisibility(GONE);
                     }
-                    int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
-                    if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+
+                    // If the product has an ecoscore, show it instead of the CO2 icon
+                    int ecoscoreRes = Utils.getImageEcoscore(product);
+                    if (ecoscoreRes != NO_DRAWABLE_RESOURCE) {
                         binding.quickViewCo2Icon.setVisibility(VISIBLE);
-                        binding.quickViewCo2Icon.setImageResource(environmentImpactResource);
+                        binding.quickViewCo2Icon.setImageResource(ecoscoreRes);
                     } else {
-                        binding.quickViewCo2Icon.setVisibility(INVISIBLE);
+                        // Show CO2 icon
+                        int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
+                        if (environmentImpactResource != NO_DRAWABLE_RESOURCE) {
+                            binding.quickViewCo2Icon.setVisibility(VISIBLE);
+                            binding.quickViewCo2Icon.setImageResource(environmentImpactResource);
+                        } else {
+                            binding.quickViewCo2Icon.setVisibility(INVISIBLE);
+                        }
                     }
+
+                    // Create the product view fragment and add it to the layout
                     ProductViewFragment newProductViewFragment = ProductViewFragment.newInstance(productState);
 
                     getSupportFragmentManager()
