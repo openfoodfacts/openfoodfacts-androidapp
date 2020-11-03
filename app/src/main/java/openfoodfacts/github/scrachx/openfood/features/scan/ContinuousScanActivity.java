@@ -233,10 +233,13 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
                 binding.quickViewProgress.setVisibility(GONE);
                 binding.quickViewProgressText.setVisibility(GONE);
+
                 if (productState.getStatus() == 0) {
                     tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found);
                 } else {
                     product = productState.getProduct();
+
+                    // If we're here from comparison -> add product, return to comparison activity
                     if (getIntent().getBooleanExtra(INTENT_KEY_COMPARE, false)) {
                         Intent intent = new Intent(ContinuousScanActivity.this, ProductCompareActivity.class);
                         intent.putExtra("product_found", true);
@@ -251,6 +254,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
 
+                    // Add product to scan history
                     productDisp = client.addToHistory(product).subscribeOn(Schedulers.io()).subscribe();
 
                     showAllViews();
@@ -968,7 +972,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             }
 
             lastBarcode = result.getText();
-            if (!(isFinishing())) {
+            if (!isFinishing()) {
                 setShownProduct(lastBarcode);
             }
         }
