@@ -45,10 +45,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
@@ -101,7 +99,6 @@ public class ProductEditActivity extends AppCompatActivity {
     private OfflineSavedProductDao mOfflineSavedProductDao;
     private Product mProduct;
     private ToUploadProductDao mToUploadProductDao;
-    private OfflineSavedProduct offlineSavedProduct;
     private final Map<String, String> productDetails = new HashMap<>();
 
     @NonNull
@@ -127,8 +124,11 @@ public class ProductEditActivity extends AppCompatActivity {
         return true;
     }
 
-    public static void clearCachedCameraPic(Context context) {
+    private static void clearCameraCachedPics(Context context) {
         File[] files = getCameraPicLocation(context).listFiles();
+        if (files == null) {
+            return;
+        }
         for (File file : files) {
             if (file.delete()) {
                 Log.i(LOGGER_TAG, "Deleted cached photo");
@@ -152,7 +152,8 @@ public class ProductEditActivity extends AppCompatActivity {
         }
     }
 
-    public static Map<String, String> buildImageQueryMap(JsonNode jsonNode) {
+    @NonNull
+    public static Map<String, String> buildImageQueryMap(@NonNull JsonNode jsonNode) {
         String imagefield = jsonNode.get("imagefield").asText();
         String imgid = jsonNode.get("image").get("imgid").asText();
         Map<String, String> queryMap = new HashMap<>();
@@ -272,7 +273,7 @@ public class ProductEditActivity extends AppCompatActivity {
         mToUploadProductDao = Utils.getDaoSession().getToUploadProductDao();
         mOfflineSavedProductDao = Utils.getDaoSession().getOfflineSavedProductDao();
         final ProductState productState = (ProductState) getIntent().getSerializableExtra(KEY_STATE);
-        offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra(KEY_EDIT_OFFLINE_PRODUCT);
+        OfflineSavedProduct offlineSavedProduct = (OfflineSavedProduct) getIntent().getSerializableExtra(KEY_EDIT_OFFLINE_PRODUCT);
         Product mEditProduct = (Product) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT);
 
         if (getIntent().getBooleanExtra(KEY_PERFORM_OCR, false)) {
@@ -318,7 +319,7 @@ public class ProductEditActivity extends AppCompatActivity {
 
         disp.dispose();
 
-        clearCachedCameraPic(this);
+        clearCameraCachedPics(this);
         binding = null;
     }
 
@@ -501,98 +502,78 @@ public class ProductEditActivity extends AppCompatActivity {
     }
 
     private void savePhoto(Map<String, RequestBody> imgMap, ProductImage image, int position, boolean ocr) {
-        api.saveImageSingle(imgMap)
+        disp.add(api.saveImageSingle(imgMap)
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe(disposable -> showImageProgress(position))
-            .subscribe(new SingleObserver<JsonNode>() {
-                @Override
-                public void onSubscribe(Disposable d) {
-                    disp.add(d);
-                }
-
-                @Override
-                public void onSuccess(JsonNode jsonNode) {
-                    String status = jsonNode.get("status").asText();
-                    if (status.equals("status not ok")) {
-                        String error = jsonNode.get("error").asText();
-                        final boolean alreadySent = error.equals("This picture has already been sent.");
-                        if (alreadySent && ocr) {
-                            hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
-                            performOCR(image.getBarcode(), "ingredients_" + getProductLanguageForEdition());
-                        } else {
-                            hideImageProgress(position, true, error);
-                        }
-                    } else {
-                        if (image.getImageField() == ProductImageField.FRONT) {
-                            imageFrontUploaded = true;
-                        } else if (image.getImageField() == ProductImageField.INGREDIENTS) {
-                            imageIngredientsUploaded = true;
-                        } else if (image.getImageField() == ProductImageField.NUTRITION) {
-                            imageNutritionFactsUploaded = true;
-                        }
+            .doOnSubscribe(d -> {
+                showImageProgress(position);
+            })
+            .subscribe(jsonNode -> {
+                String status = jsonNode.get("status").asText();
+                if (status.equals("status not ok")) {
+                    String error = jsonNode.get("error").asText();
+                    final boolean alreadySent = error.equals("This picture has already been sent.");
+                    if (alreadySent && ocr) {
                         hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
-                        String imagefield = jsonNode.get("imagefield").asText();
-                        String imgid = jsonNode.get("image").get("imgid").asText();
-                        if (position != 3 && position != 4) {
-                            // Not OTHER image
-                            setPhoto(image, imagefield, imgid, ocr);
-                        }
-                    }
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    // A network error happened
-                    if (e instanceof IOException) {
-                        hideImageProgress(position, false, getString(R.string.no_internet_connection));
-                        Log.e(LOGGER_TAG, e.getMessage());
-                        if (image.getImageField() == ProductImageField.OTHER) {
-                            ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
-                            mToUploadProductDao.insertOrReplace(product);
-                        }
+                        performOCR(image.getBarcode(), "ingredients_" + getProductLanguageForEdition());
                     } else {
-                        hideImageProgress(position, true, e.getMessage());
-                        Log.i(this.getClass().getSimpleName(), e.getMessage());
-                        Toast.makeText(OFFApplication.getInstance(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        hideImageProgress(position, true, error);
+                    }
+                } else {
+                    if (image.getImageField() == ProductImageField.FRONT) {
+                        imageFrontUploaded = true;
+                    } else if (image.getImageField() == ProductImageField.INGREDIENTS) {
+                        imageIngredientsUploaded = true;
+                    } else if (image.getImageField() == ProductImageField.NUTRITION) {
+                        imageNutritionFactsUploaded = true;
+                    }
+                    hideImageProgress(position, false, getString(R.string.image_uploaded_successfully));
+                    String imagefield = jsonNode.get("imagefield").asText();
+                    String imgid = jsonNode.get("image").get("imgid").asText();
+                    if (position != 3 && position != 4) {
+                        // Not OTHER image
+                        setPhoto(image, imagefield, imgid, ocr);
                     }
                 }
-            });
+            }, e -> {
+                // A network error happened
+                if (e instanceof IOException) {
+                    hideImageProgress(position, false, getString(R.string.no_internet_connection));
+                    Log.e(LOGGER_TAG, e.getMessage());
+                    if (image.getImageField() == ProductImageField.OTHER) {
+                        ToUploadProduct product = new ToUploadProduct(image.getBarcode(), image.getFilePath(), image.getImageField().toString());
+                        mToUploadProductDao.insertOrReplace(product);
+                    }
+                } else {
+                    hideImageProgress(position, true, e.getMessage());
+                    Log.i(this.getClass().getSimpleName(), e.getMessage());
+                    Toast.makeText(OFFApplication.getInstance(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }));
     }
 
-    private void setPhoto(ProductImage image, String imagefield, String imgid, boolean ocr) {
+    private void setPhoto(@NonNull ProductImage image, String imagefield, String imgid, boolean ocr) {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("imgid", imgid);
         queryMap.put("id", imagefield);
-        api.editImageSingle(image.getBarcode(), queryMap)
+        disp.add(api.editImageSingle(image.getBarcode(), queryMap)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new SingleObserver<JsonNode>() {
-                @Override
-                public void onSubscribe(Disposable d) {
-
+            .subscribe(jsonNode -> {
+                String status = jsonNode.get("status").asText();
+                if (ocr && status.equals("status ok")) {
+                    performOCR(image.getBarcode(), imagefield);
                 }
-
-                @Override
-                public void onSuccess(JsonNode jsonNode) {
-                    String status = jsonNode.get("status").asText();
-                    if (ocr && status.equals("status ok")) {
-                        performOCR(image.getBarcode(), imagefield);
+            }, throwable -> {
+                if (throwable instanceof IOException) {
+                    if (ocr) {
+                        View view = findViewById(R.id.coordinator_layout);
+                        Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
+                            .setAction(R.string.txt_try_again, v -> setPhoto(image, imagefield, imgid, true)).show();
                     }
+                } else {
+                    Log.i(this.getClass().getSimpleName(), throwable.getMessage());
+                    Toast.makeText(OFFApplication.getInstance(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
-                @Override
-                public void onError(Throwable e) {
-                    if (e instanceof IOException) {
-                        if (ocr) {
-                            View view = findViewById(R.id.coordinator_layout);
-                            Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
-                                .setAction(R.string.txt_try_again, v -> setPhoto(image, imagefield, imgid, true)).show();
-                        }
-                    } else {
-                        Log.i(this.getClass().getSimpleName(), e.getMessage());
-                        Toast.makeText(OFFApplication.getInstance(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            }));
     }
 
     public void performOCR(String code, String imageField) {
