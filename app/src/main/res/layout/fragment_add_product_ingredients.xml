@@ -57,12 +57,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:layout_marginLeft="@dimen/padding_large"
-                android:layout_marginRight="@dimen/padding_large"
                 android:text="@string/update_image"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/btnAddImageIngredients"
                 app:layout_constraintStart_toEndOf="@id/btnAddImageIngredients"
-                app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients" />
+                app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients"
+                tools:visibility="visible" />
 
             <ProgressBar
                 android:id="@+id/imageProgress"
@@ -149,18 +149,19 @@
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
                 app:layout_constraintTop_toBottomOf="@id/traces"
-                app:layout_constraintTop_toTopOf="@id/ingredients_list" />
+                app:layout_constraintTop_toTopOf="@id/ingredients_list"
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/ingredients_list_verified"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_small"
-                android:tint="@color/brand_green_dark"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:srcCompat="@drawable/ic_check_white_24dp"
+                app:tint="@color/brand_green_dark"
                 tools:visibility="visible" />
 
             <ProgressBar

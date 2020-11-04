@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
@@ -103,7 +105,7 @@ public class ProductEditActivity extends AppCompatActivity {
     private final Map<String, String> productDetails = new HashMap<>();
 
     @NonNull
-    public static File getCameraPicLocation(Context context) {
+    public static File getCameraPicLocation(@NonNull Context context) {
         File cacheDir = context.getCacheDir();
         if (isExternalStorageWritable()) {
             cacheDir = context.getExternalCacheDir();
@@ -117,6 +119,12 @@ public class ProductEditActivity extends AppCompatActivity {
             }
         }
         return dir;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.product_edit_menu, menu);
+        return true;
     }
 
     public static void clearCachedCameraPic(Context context) {
@@ -199,8 +207,9 @@ public class ProductEditActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
             new MaterialDialog.Builder(this)
                 .content(R.string.save_product)
                 .positiveText(R.string.txtSave)
@@ -208,6 +217,10 @@ public class ProductEditActivity extends AppCompatActivity {
                 .onPositive((dialog, which) -> checkFieldsThenSave())
                 .onNegative((dialog, which) -> finish())
                 .show();
+            return true;
+        } else if (itemId == R.id.save_product) {
+            checkFieldsThenSave();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -599,10 +612,10 @@ public class ProductEditActivity extends AppCompatActivity {
                 productEditIngredientsFragment.hideOCRProgress();
                 if (throwable instanceof IOException) {
                     View view = findViewById(R.id.coordinator_layout);
-                    Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
+                    Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, BaseTransientBottomBar.LENGTH_INDEFINITE)
                         .setAction(R.string.txt_try_again, v -> performOCR(code, imageField)).show();
                 } else {
-                    Log.i(this.getClass().getSimpleName(), throwable.getMessage(), throwable);
+                    Log.e(this.getClass().getSimpleName(), throwable.getMessage(), throwable);
                     Toast.makeText(ProductEditActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }));
