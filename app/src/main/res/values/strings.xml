@@ -875,7 +875,7 @@
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
-    <string name="recycling">Recycling</string>
+    <string name="packaging">Recycling</string>
     <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>

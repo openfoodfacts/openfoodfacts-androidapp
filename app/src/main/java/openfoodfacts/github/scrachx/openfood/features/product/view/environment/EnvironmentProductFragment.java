@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.environment;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +78,7 @@ public class EnvironmentProductFragment extends BaseFragment {
             mUrlImage = product.getImagePackagingUrl(langCode);
         }
 
-        if (nutriments != null && nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
+        if (nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
             Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
             binding.textCarbonFootprint.setText(bold(getString(R.string.textCarbonFootprint)));
             binding.textCarbonFootprint.append(carbonFootprintNutriment.getFor100gInUnits());

@@ -342,6 +342,8 @@ public class Product implements Serializable {
                 return getImageIngredientsUrl();
             case NUTRITION:
                 return getImageNutritionUrl();
+            case PACKAGING:
+                return getImagePackagingUrl();
             case OTHER:
                 return null;
         }
@@ -396,7 +398,7 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return The imageRecyclingUrl
+     * @return The imagePackagingUrl
      */
     public String getImagePackagingUrl() {
         return imagePackagingUrl;
