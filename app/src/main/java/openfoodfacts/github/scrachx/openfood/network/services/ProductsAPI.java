@@ -129,29 +129,25 @@ public interface ProductsAPI {
                                          @Path("page") int page,
                                          @Query("fields") String fields);
 
-    @Deprecated
     @GET("allergen/{allergen}/{page}.json")
-    Call<Search> getProductsByAllergen(@Path("allergen") String allergen,
+    Single<Search> getProductsByAllergen(@Path("allergen") String allergen,
+                                         @Path("page") int page,
+                                         @Query("fields") String fields);
+
+    @GET("country/{country}/{page}.json")
+    Single<Search> getProductsByCountry(@Path("country") String country,
+                                        @Path("page") int page,
+                                        @Query("fields") String fields);
+
+    @GET("origin/{origin}/{page}.json")
+    Single<Search> getProductsByOrigin(@Path("origin") String origin,
                                        @Path("page") int page,
                                        @Query("fields") String fields);
 
-    @Deprecated
-    @GET("country/{country}/{page}.json")
-    Call<Search> getProductsByCountry(@Path("country") String country,
-                                      @Path("page") int page,
-                                      @Query("fields") String fields);
-
-    @Deprecated
-    @GET("origin/{origin}/{page}.json")
-    Call<Search> getProductsByOrigin(@Path("origin") String origin,
-                                     @Path("page") int page,
-                                     @Query("fields") String fields);
-
-    @Deprecated
     @GET("manufacturing-place/{manufacturing-place}/{page}.json")
-    Call<Search> getProductsByManufacturingPlace(@Path("manufacturing-place") String manufacturingPlace,
-                                                 @Path("page") int page,
-                                                 @Query("fields") String fields);
+    Single<Search> getProductsByManufacturingPlace(@Path("manufacturing-place") String manufacturingPlace,
+                                                   @Path("page") int page,
+                                                   @Query("fields") String fields);
 
     @GET("store/{store}/{page}.json")
     Single<Search> getProductByStores(@Path("store") String store,
@@ -168,10 +164,9 @@ public interface ProductsAPI {
                                      @Path("page") int page,
                                      @Query("fields") String fields);
 
-    @Deprecated
     @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
-    Call<Search> getProductByCategory(@Path("category") String category,
-                                      @Path("page") int page);
+    Single<Search> getProductByCategory(@Path("category") String category,
+                                        @Path("page") int page);
 
     @GET("contributor/{Contributor}/{page}.json?nocache=1")
     Single<Search> searchProductsByContributor(@Path("Contributor") String contributor,
@@ -321,16 +316,35 @@ public interface ProductsAPI {
 
     /**
      * This method is to crop images server side
+     *
+     * @deprecated use {@link #editImageSingle(String, Map)} instead.
      */
     @Deprecated
     @GET("/cgi/product_image_crop.pl")
     Call<String> editImages(@Query(ApiFields.Keys.BARCODE) String code,
                             @QueryMap Map<String, String> fields);
 
+    /**
+     * This method is to crop images server side
+     */
+    @Deprecated
+    @GET("/cgi/product_image_crop.pl")
+    Single<String> editImagesSingle(@Query(ApiFields.Keys.BARCODE) String code,
+                                    @QueryMap Map<String, String> fields);
+
+    /**
+     * @param code
+     * @param fields
+     * @deprecated use {@link #unSelectImageSingle(String, Map)} instead.
+     */
     @Deprecated
     @GET("/cgi/product_image_unselect.pl")
     Call<String> unSelectImage(@Query(ApiFields.Keys.BARCODE) String code,
                                @QueryMap Map<String, String> fields);
+
+    @GET("/cgi/product_image_unselect.pl")
+    Single<String> unSelectImageSingle(@Query(ApiFields.Keys.BARCODE) String code,
+                                       @QueryMap Map<String, String> fields);
 
     @GET
     Single<ResponseBody> downloadFile(@Url String fileUrl);

@@ -126,8 +126,7 @@ public class ProductEditOverviewFragment extends BaseFragment {
     private Product product;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentAddProductOverviewBinding.inflate(inflater);
         return binding.getRoot();
     }

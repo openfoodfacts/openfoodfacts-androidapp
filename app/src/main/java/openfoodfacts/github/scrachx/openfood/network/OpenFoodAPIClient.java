@@ -424,23 +424,8 @@ public class OpenFoodAPIClient {
         });
     }
 
-    public void getProductsByCountry(String country, final int page, final ApiCallbacks.OnCountryCallback onCountryCallback) {
-        api.getProductsByCountry(country, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onCountryCallback.onCountryResponse(true, response.body());
-                } else {
-                    onCountryCallback.onCountryResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-
-                onCountryCallback.onCountryResponse(false, null);
-            }
-        });
+    public Single<Search> getProductsByCountry(String country, final int page) {
+        return api.getProductsByCountry(country, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io());
     }
 
     /**
@@ -473,22 +458,8 @@ public class OpenFoodAPIClient {
         return imgMap;
     }
 
-    public void getProductsByCategory(String category, final int page, final ApiCallbacks.OnCategoryCallback onCategoryCallback) {
-        api.getProductByCategory(category, page).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onCategoryCallback.onCategoryResponse(true, response.body());
-                } else {
-                    onCategoryCallback.onCategoryResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onCategoryCallback.onCategoryResponse(false, null);
-            }
-        });
+    public Single<Search> getProductsByCategory(String category, final int page) {
+        return api.getProductByCategory(category, page).subscribeOn(Schedulers.io());
     }
 
     public Single<Search> getProductsByLabel(String label, final int page) {
@@ -642,8 +613,8 @@ public class OpenFoodAPIClient {
         };
     }
 
-    public void getProductsByOrigin(final String origin, final int page, final ApiCallbacks.OnStoreCallback onStoreCallback) {
-        api.getProductsByOrigin(origin, page, FIELDS_TO_FETCH_FACETS).enqueue(createStoreCallback(onStoreCallback));
+    public Single<Search> getProductsByOrigin(final String origin, final int page) {
+        return api.getProductsByOrigin(origin, page, FIELDS_TO_FETCH_FACETS);
     }
 
     public void syncOldHistory() {
@@ -687,8 +658,8 @@ public class OpenFoodAPIClient {
         return api.getInfoAddedIncompleteProductsSingle(contributor, page).subscribeOn(Schedulers.io());
     }
 
-    public void getProductsByManufacturingPlace(final String manufacturingPlace, final int page, final ApiCallbacks.OnStoreCallback onStoreCallback) {
-        api.getProductsByManufacturingPlace(manufacturingPlace, page, FIELDS_TO_FETCH_FACETS).enqueue(createStoreCallback(onStoreCallback));
+    public Single<Search> getProductsByManufacturingPlace(final String manufacturingPlace, final int page) {
+        return api.getProductsByManufacturingPlace(manufacturingPlace, page, FIELDS_TO_FETCH_FACETS);
     }
 
     public Callback<Search> createStoreCallback(ApiCallbacks.OnStoreCallback onStoreCallback) {
@@ -739,22 +710,8 @@ public class OpenFoodAPIClient {
         return api.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS);
     }
 
-    public void getProductsByAllergen(final String allergen, final int page, final ApiCallbacks.OnAllergensCallback onAllergensCallback) {
-        api.getProductsByAllergen(allergen, page, FIELDS_TO_FETCH_FACETS).enqueue(new Callback<Search>() {
-            @Override
-            public void onResponse(@NonNull Call<Search> call, @NonNull Response<Search> response) {
-                if (response.isSuccessful()) {
-                    onAllergensCallback.onAllergensResponse(true, response.body());
-                } else {
-                    onAllergensCallback.onAllergensResponse(false, null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Search> call, @NonNull Throwable t) {
-                onAllergensCallback.onAllergensResponse(false, null);
-            }
-        });
+    public Single<Search> getProductsByAllergen(final String allergen, final int page) {
+        return api.getProductsByAllergen(allergen, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io());
     }
 
     public void getToBeCompletedProductsByContributor(String contributor, final int page, final ApiCallbacks.OnContributorCallback onContributorCallback) {
