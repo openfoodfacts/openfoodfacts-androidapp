@@ -408,6 +408,7 @@
         <item>recycling_instructions_to_discard</item>
         <item>recycling_instructions_to_recycle</item>
         <item>warning</item>
+        <item>attribute_groups</item>
         <item>customer_service</item>
         <item>image_front_url</item>
         <item>image_ingredients_url</item>
