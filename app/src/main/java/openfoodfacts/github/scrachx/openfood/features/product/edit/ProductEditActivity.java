@@ -34,7 +34,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -150,16 +149,6 @@ public class ProductEditActivity extends AppCompatActivity {
                 view.setBackgroundResource(R.drawable.stage_complete);
                 break;
         }
-    }
-
-    @NonNull
-    public static Map<String, String> buildImageQueryMap(@NonNull JsonNode jsonNode) {
-        String imagefield = jsonNode.get("imagefield").asText();
-        String imgid = jsonNode.get("image").get("imgid").asText();
-        Map<String, String> queryMap = new HashMap<>();
-        queryMap.put("imgid", imgid);
-        queryMap.put("id", imagefield);
-        return queryMap;
     }
 
     public static void start(Context context, @Nullable ProductState state) {
