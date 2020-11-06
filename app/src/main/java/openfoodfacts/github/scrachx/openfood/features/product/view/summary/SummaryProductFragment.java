@@ -246,7 +246,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             }
 
             @Override
-            public void onError(Throwable error) {
+            public void onError(@NonNull Throwable error) {
                 onImageListenerError(error);
             }
         }));

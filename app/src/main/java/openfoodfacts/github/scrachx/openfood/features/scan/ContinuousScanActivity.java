@@ -58,7 +58,6 @@ import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.IconicsSize;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
-import com.squareup.picasso.Callback;
 
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.eventbus.EventBus;
@@ -287,38 +286,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         binding.quickViewAdditives.setText(getString(R.string.productAdditivesUnknown));
                     }
 
-                    // Set product image, if not present show default one
-                    final String imageUrl = Utils.firstNotEmpty(offlineSavedProduct != null ? offlineSavedProduct.getImageFrontLocalUrl() : null,
-                        product.getImageUrl(LocaleHelper.getLanguage(getBaseContext())));
-                    if (imageUrl != null) {
-                        try {
-                            Utils.picassoBuilder(this)
-                                .load(imageUrl)
-                                .error(errorDrawable)
-                                .into(binding.quickViewImage, new Callback() {
-                                    @Override
-                                    public void onSuccess() {
-                                        if (binding != null) {
-                                            binding.quickViewImageProgress.setVisibility(GONE);
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onError(Exception ex) {
-                                        if (binding != null) {
-                                            binding.quickViewImageProgress.setVisibility(GONE);
-                                        }
-                                    }
-                                });
-                        } catch (IllegalStateException e) {
-                            // Could happen if Picasso is not instantiated correctly...
-                            Log.w(LOG_TAG, e.getMessage(), e);
-                        }
-                    } else {
-                        binding.quickViewImage.setImageDrawable(errorDrawable);
-                        binding.quickViewImageProgress.setVisibility(GONE);
-                    }
-
                     // Show nutriscore in quickView only if app flavour is OFF and the product has one
                     if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNutritionGradeTag() != null) {
                         if (Utils.getImageGrade(product.getNutritionGradeTag()) != NO_DRAWABLE_RESOURCE) {
@@ -346,19 +313,17 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     }
 
                     // If the product has an ecoscore, show it instead of the CO2 icon
-                    int ecoscoreRes = Utils.getImageEcoscore(product);
-                    if (ecoscoreRes != NO_DRAWABLE_RESOURCE) {
+                    binding.quickViewEcoscoreIcon.setVisibility(GONE);
+                    binding.quickViewCo2Icon.setVisibility(GONE);
+                    int ecoScoreRes = Utils.getImageEcoscore(product);
+                    int co2Res = Utils.getImageEnvironmentImpact(product);
+
+                    if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
+                        binding.quickViewEcoscoreIcon.setImageResource(ecoScoreRes);
+                        binding.quickViewEcoscoreIcon.setVisibility(VISIBLE);
+                    } else if (co2Res != Utils.NO_DRAWABLE_RESOURCE) {
+                        binding.quickViewCo2Icon.setImageResource(co2Res);
                         binding.quickViewCo2Icon.setVisibility(VISIBLE);
-                        binding.quickViewCo2Icon.setImageResource(ecoscoreRes);
-                    } else {
-                        // Show CO2 icon
-                        int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
-                        if (environmentImpactResource != NO_DRAWABLE_RESOURCE) {
-                            binding.quickViewCo2Icon.setVisibility(VISIBLE);
-                            binding.quickViewCo2Icon.setImageResource(environmentImpactResource);
-                        } else {
-                            binding.quickViewCo2Icon.setVisibility(INVISIBLE);
-                        }
                     }
 
                     // Create the product view fragment and add it to the layout
@@ -481,28 +446,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
             binding.quickViewName.setText(R.string.productNameNull);
         }
 
-        String imageFront = offlineSavedProduct.getImageFrontLocalUrl();
-
-        if (!TextUtils.isEmpty(imageFront)) {
-            Utils.picassoBuilder(this)
-                .load(imageFront)
-                .error(errorDrawable)
-                .into(binding.quickViewImage, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        binding.quickViewImageProgress.setVisibility(GONE);
-                    }
-
-                    @Override
-                    public void onError(Exception ex) {
-                        binding.quickViewImageProgress.setVisibility(GONE);
-                    }
-                });
-        } else {
-            binding.quickViewImage.setImageDrawable(errorDrawable);
-            binding.quickViewImageProgress.setVisibility(GONE);
-        }
-
         binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         binding.txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text));
         binding.txtProductCallToAction.setText(R.string.product_not_complete);
@@ -526,11 +469,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     private void showAllViews() {
         binding.quickViewSlideUpIndicator.setVisibility(VISIBLE);
-        binding.quickViewImage.setVisibility(VISIBLE);
         binding.quickViewName.setVisibility(VISIBLE);
         binding.frameLayout.setVisibility(VISIBLE);
         binding.quickViewAdditives.setVisibility(VISIBLE);
-        binding.quickViewImageProgress.setVisibility(VISIBLE);
         if (!isAnalysisTagsEmpty) {
             binding.quickViewTags.setVisibility(VISIBLE);
         } else {
@@ -543,7 +484,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.quickViewProgress.setVisibility(GONE);
         binding.quickViewProgressText.setVisibility(GONE);
         binding.quickViewSlideUpIndicator.setVisibility(GONE);
-        binding.quickViewImage.setVisibility(GONE);
         binding.quickViewName.setVisibility(GONE);
         binding.frameLayout.setVisibility(GONE);
         binding.quickViewAdditives.setVisibility(GONE);
@@ -552,7 +492,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.quickViewCo2Icon.setVisibility(GONE);
         binding.quickViewProductNotFound.setVisibility(GONE);
         binding.quickViewProductNotFoundButton.setVisibility(GONE);
-        binding.quickViewImageProgress.setVisibility(GONE);
         binding.txtProductCallToAction.setVisibility(GONE);
         binding.quickViewTags.setVisibility(GONE);
     }
