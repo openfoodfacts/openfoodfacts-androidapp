@@ -50,6 +50,10 @@ import retrofit2.http.Url;
  * All REST methods such as GET, POST, PUT, UPDATE, DELETE can be stated in here.
  */
 public interface ProductsAPI {
+    /**
+     * @deprecated use {@link #getProductByBarcodeSingle(String, String, String)}
+     */
+    @Deprecated
     @GET("api/v0/product/{barcode}.json")
     Call<ProductState> getProductByBarcode(@Path("barcode") String barcode,
                                            @Query("fields") String fields,

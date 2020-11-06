@@ -279,8 +279,7 @@ public class OpenFoodAPIClient {
      */
     // TODO: This is not part of the client, move it to another class (preferably a utility class)
     public void openProduct(final String barcode, final Activity activity, @Nullable final Consumer<ProductState> callback) {
-        String fieldParam = getAllFields();
-        api.getProductByBarcode(barcode, fieldParam, Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<ProductState>() {
+        api.getProductByBarcode(barcode, getAllFields(), Utils.getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(new Callback<ProductState>() {
             @Override
             public void onResponse(@NonNull Call<ProductState> call, @NonNull Response<ProductState> response) {
                 if (activity == null && callback == null) {

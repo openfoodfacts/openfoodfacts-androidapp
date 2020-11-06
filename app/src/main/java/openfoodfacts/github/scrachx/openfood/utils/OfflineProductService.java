@@ -239,19 +239,4 @@ public class OfflineProductService {
         imgMap.put("imagefield", imageField);
         return imgMap;
     }
-
-    private static Map<String, String> buildQueryMap(JsonNode jsonNode, String login) {
-        Map<String, String> queryMap = buildImageQueryMap(jsonNode);
-        queryMap.put("comment", OpenFoodAPIClient.getCommentToUpload(login));
-        return queryMap;
-    }
-
-    private static Map<String, String> buildImageQueryMap(JsonNode jsonNode) {
-        String imagefield = jsonNode.get("imagefield").asText();
-        String imgid = jsonNode.get("image").get("imgid").asText();
-        Map<String, String> queryMap = new HashMap<>();
-        queryMap.put("imgid", imgid);
-        queryMap.put("id", imagefield);
-        return queryMap;
-    }
 }
