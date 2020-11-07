@@ -703,6 +703,7 @@
     <string name="settings_country_title">crwdns128608:0crwdne128608:0</string>
     <string name="txt_no_nutrition_data">crwdns128610:0crwdne128610:0</string>
     <string name="image_prompt_language">crwdns128612:0crwdne128612:0</string>
+    <string name="swipe_delete_tip">crwdns153022:0crwdne153022:0</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">crwdns128614:0crwdne128614:0</string>
@@ -797,4 +798,5 @@
     <string name="sign_in_or_register">crwdns128782:0crwdne128782:0</string>
     <string name="hunger_game_call_to_action">crwdns140576:0%1$scrwdne140576:0</string>
     <string name="txtHomeOnline">crwdns148916:0%1$scrwdne148916:0</string>
+    <string name="enabled">crwdns153024:0crwdne153024:0</string>
 </resources>
