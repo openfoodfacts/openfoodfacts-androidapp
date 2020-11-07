@@ -704,6 +704,7 @@
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
     <string name="image_prompt_language">Tire uma foto dos ingredientes em</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Adicionar produtos</string>
@@ -798,4 +799,5 @@
     <string name="sign_in_or_register">Entrar ou registrar-se</string>
     <string name="hunger_game_call_to_action">Ajude a classificar mais %1$s</string>
     <string name="txtHomeOnline">O Open Food Facts é um banco de dados aberto com mais de %1$s produtos alimentícios (além daqueles que você irá contribuir).</string>
+    <string name="enabled">Enabled</string>
 </resources>
