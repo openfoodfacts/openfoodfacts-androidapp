@@ -16,8 +16,8 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one"> You have 1 offline product waiting to be contributed to Open Food Facts</item>
-        <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">%d second ago</item>
@@ -131,7 +131,7 @@
         <item>pH</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Potassium</item>
         <item>Selenium</item>
         <item>Serum proteins</item>
@@ -163,7 +163,7 @@
     <string name="txtBarcode">Գծակոդ՝</string>
     <string name="txtCategories">Ստորոգություններ՝</string>
     <string name="txtLabels">Labels, certifications, awards :</string>
-    <string name="txtEMB">EMB Code:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Բաղադրամասեր՝</string>
     <string name="Donate">Donate</string>
     <string name="Donation">Click here to donate to Open Food Facts</string>
