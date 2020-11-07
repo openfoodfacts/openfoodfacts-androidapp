@@ -7,12 +7,12 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
+Pilih produk yang baik untuk Anda
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
 - You can easily compare as many products as you want, side by side by simply scanning them. 
 
-▶ And good for the planet!
+Dan baik untuk bumi!
 - The carbon impact of your food
 - Get a sense of how much of your daily carbon quota you're using for food
 - Based on the footprints computed for France by ADEME.
