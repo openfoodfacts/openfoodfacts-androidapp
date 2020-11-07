@@ -1,4 +1,4 @@
-Imbas produk makanan atau kod barnya untuk perolehi data tentang fakta ramuan, aditif dan nutrisi.
+Imbas produk makanan atau kod bar untuk memperolehi data tentang fakta ramuan, aditif dan nutrisi.
 
 ▶ Find & Compare more than 800.000 products
 
