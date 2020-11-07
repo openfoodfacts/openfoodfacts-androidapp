@@ -493,7 +493,7 @@
     <string name="DisableLoadTitle">Disable image loading</string>
     <string name="by_title">Titel</string>
     <string name="by_brand">Merk</string>
-    <string name="by_barcode">Barcode</string>
+    <string name="by_barcode">Streepjescode</string>
     <string name="by_time">Recent bekeken</string>
     <string name="sort">Sorteer</string>
     <string name="by_nutrition_grade">Voedingsgraad</string>
@@ -734,7 +734,7 @@
     <string name="cant_edit_image_not_yet_uploaded">De nieuwe afbeelding is nog niet geüpload. Wacht alsjeblieft voordat je het bewerkt</string>
     <string name="unselect_image">Foto deselecteren</string>
     <string name="choose_default_language">Selecteer producttaal</string>
-    <string name="barcode">Barcode</string>
+    <string name="barcode">Streepjescode</string>
     <string name="productAdditivesNone">Geen additieven</string>
     <string name="error_uploading_photo">Er ging iets mis tijdens het uploaden van een nieuwe foto</string>
     <string name="import_csv_to_list">Importeer een CSV-bestand van de Open Food Facts-lijst</string>
