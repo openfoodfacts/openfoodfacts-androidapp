@@ -596,7 +596,7 @@
     <string name="per_serving">ต่อหน่วยบริโภค</string>
     <string name="serving_size">ขนาดให้บริการ</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
-    <string name="add_a_nutrient">Add a nutrient</string>
+    <string name="add_a_nutrient">เพิ่มสารอาหารอื่นๆ</string>
     <string name="add_this_product">Add this product</string>
     <string name="product_picture">Product Picture</string>
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
