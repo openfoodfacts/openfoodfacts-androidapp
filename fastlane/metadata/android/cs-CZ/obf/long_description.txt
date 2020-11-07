@@ -18,8 +18,8 @@
 - The app loads only the strict necessary to reduce data and battery consumption
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your cosmetics, your data ***
-- Your data is yours, and is never sent online
+*** Vaše kosmetika, vaše data ***
+- Vaše data jsou Vaše a nikdy nejsou odesílána online
 - Aplikaci můžete používat anonymně
 - Můžete exportovat vlastní historii skenování
 
