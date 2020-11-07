@@ -2,7 +2,7 @@ Nuo ovat Play kaupassa näkyvien kuvakaappausten iskulauseita. Pidä ne lyhyenä
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fi
 
 =====================
-V2-kuvakaappaukset
+V2 screenshots
 =====================
 
 Lue tuotteita
@@ -38,35 +38,35 @@ Tehokas
 Ravintosisältö
 
 =====================
-V3-kuvakaappaukset
+V3 screenshots
 =====================
 
-Valitse tuotteita jotka ovat hyväksi sinulle ja 🌍 planeetalle!
+Valitse tuotteita jotka ovat hyväksi sinulle ja planeetalle!
 
-✔ Ultranopea viivakoodinluku
+Ultranopea viivakoodinlukija
 
 ✔ Maailmanlaajuinen ruokakauppa taskussasi
 
-Ravinnollinen laatu
+Ravintosisältö
 
-Ultrajalostetut ruoat
+Ultraprosessoidut ruoat
 
 Hiilijalanjälki
 
 Vertaa helposti ennen ostamista
 
-Luo ostoslistoja, saantilistoja…
+Create shopping lists, intake lists…
 
-Löydä ja vertaile yli 750 000 tuotetta.
+Yli 750 000 tuotetta vertailtavana ja tutkittavana.
 
 
 
-Rajaton ja täysin yksityinen lukuhistoria
+Rajaton ja täysin yksityinen skannaushistoria
 
-Pyyhkäise saadaksesi vieläkin enemmän yksityiskohtia
+Swipe for even more details
 
-Aseta allergeenivaroituksia
+Set Allergen Alerts
 
-Liity maailmanlaajuiseen liikkeeseemme elintarvikkeiden läpinäkyvyydelle
+Join our global movement for food transparency
 
 world.openfoodfacts.org/contribute
