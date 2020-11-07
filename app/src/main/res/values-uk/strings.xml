@@ -482,10 +482,10 @@
     <string name="additive_string">Добавка</string>
     <string name="allergen_string">Алерген</string>
     <string name="search_string">Шукати</string>
-    <string name="country_string">Countries where sold</string>
+    <string name="country_string">Країни, в яких продається:</string>
     <string name="store_subtitle">Магазин</string>
-    <string name="packaging_subtitle">Packaging</string>
-    <string name="packaging_string">Packaging</string>
+    <string name="packaging_subtitle">Упаковка</string>
+    <string name="packaging_string">Упаковка</string>
     <string name="label_string">Мітка</string>
     <string name="category_string">Категорія</string>
     <string name="connection">Підключено</string>
@@ -603,7 +603,7 @@
     <string name="extracting_ingredients">Extracting ingredients</string>
     <string name="looksGood">Looks Good</string>
     <string name="skip_ingredients">Too Bad \n Skip Ingredients</string>
-    <string name="traces">Traces</string>
+    <string name="traces">Сліди</string>
     <string name="traces_hint">Indicate ingredients from mentions like \'May contain traces of\', \'Made in a factory that also uses\', etc. \nExamples: Milk, Gluten, Nuts</string>
     <string name="nutrition_facts_not_specified">Nutrition facts are not specified on the product.</string>
     <string name="nutrition_facts_picture">Nutrition Facts photo</string>
@@ -611,7 +611,7 @@
     <string name="other_picture">Other Picture</string>
     <string name="for_100g_100ml">For 100g / 100ml</string>
     <string name="per_serving">В одній порції</string>
-    <string name="serving_size">Serving size</string>
+    <string name="serving_size">Розмір порції</string>
     <string name="alcohol_unit" formatted="false">% vol / °</string>
     <string name="add_a_nutrient">Add a nutrient</string>
     <string name="add_this_product">Add this product</string>
@@ -619,16 +619,16 @@
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Product Details</string>
     <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
+    <string name="quantity">Кількість</string>
     <string name="labels">Labels</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Origin of ingredients</string>
+    <string name="origin_of_ingredients">Походження інгредієнтів</string>
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
     <string name="country_where_purchased">Country where purchased</string>
-    <string name="stores">Stores</string>
+    <string name="stores">Магазини</string>
     <string name="additional_pictures">Additional Pictures</string>
     <string name="hint_product_pictures">(Add more pictures of the product. eg: recycling instructions, labels etc.)</string>
     <string name="uploading_image">Sending the photo</string>
@@ -713,7 +713,7 @@
     <string name="search_history_pref_dialog_content">Delete local search history?</string>
     <string name="settings_country_dialog_title">Select your country</string>
     <string name="settings_country_summary">Change your selected country</string>
-    <string name="settings_country_title">Country</string>
+    <string name="settings_country_title">Countries where sold</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
