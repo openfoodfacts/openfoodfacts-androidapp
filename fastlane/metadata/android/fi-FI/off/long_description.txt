@@ -1,4 +1,4 @@
-Lue elintarvikkeita tai niiden viivakoodi saadaksesi tietoja ainesosista, lisäaineista ja ravintoarvoista.
+Lue elintarvikkeita, tai niiden viivakoodeja, saadaksesi tietoja aineosista, lisäaineista ja ravintosisällöistä.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -22,7 +22,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 ▶ Contribute to Food Transparency
 - Open Food Facts on kaikkien tuottama elintarviketietokanta kaikille.
-- Voit käyttää sitä parempien ruokavalintojen tekemiseen, ja koska se on avointa tietoa, kuka tahansa voi uudelleenkäyttää sitä mihin tahansa tarkoitukseen.
+- Voit käyttää sitä parempien ruokavalintojen tekemiseen, ja koska se on avointa tietoa, kuka tahansa voi uudelleen käyttää sitä mihin tahansa tarkoitukseen.
 - Open Food Facts on voittoa tavoittelematon hanke, jonka ovat kehittäneet tuhannet vapaaehtoiset ympäri maailmaa. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin.
 - You can start contributing today by adding a product from your fridge.
 
@@ -33,7 +33,7 @@ Create shopping lists, track what you've eaten and easily share and export your 
 - Open Food Facts auttaa sinua ymmärtämään pikkupräntit tuotteiden etiketeissä. You will be able to find:
 - hiilijalanjäljen (hiilidioksidipäästöt) ja pakkausmateriaalin (sekä kierrätysohjeet),
 - Nutriscoren (ravinnollinen arvosana), ravintoaineet, rasvan / rasvapitoisuuden, tyydyttyneet rasvahapot, hiilihydraatit, sokerit, kuidut, proteiinit sekä suolan ja natriumin.
-- tuotemerkit, allergeenit, etiketit (bio, gluteeniton, vegaani, kasvis, halal, kosher ...), jäljitettävyystiedot (pakkauskoodit, ainesosien alkuperät)
+- tuotemerkit, allergeenit, etiketit (luomu, gluteeniton, vegaani, kasvis, halal, kosher ...), jäljitettävyystiedot (pakkauskoodit, ainesosien alkuperät)
 - Viineistä ja oluista löydät alkoholipitoisuuden.
 
 
@@ -73,4 +73,4 @@ Open Food Facts on myös verkossa osoitteessa https://world.openfoodfacts.org
 Kysymykset, palaute: contact@openfoodfacts.org
 
 
-Kosmetiikkatuotteille voit asentaa Open Beauty Factsin, lemmikkieläinten elintarvikkeille Open Pet Food Factsin ja kaikille muille tuotteille Open Products Factsin.
+Kosmetiikkatuotteille voit asentaa Open Beauty Factsin, lemmikkien elintarvikkeille Open Pet Food Factsin, ja kaikille muille tuotteille Open Products Factsin.
