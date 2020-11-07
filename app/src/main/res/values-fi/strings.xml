@@ -382,7 +382,7 @@
     <string name="take_picture_front">Ota kuva edestä</string>
     <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
     <string name="take_more_pictures">Ota lisää kuvia</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_extra_packaging_pictures">Ota ylimääräisiä kuvia pakkauksesta</string>
     <string name="txtSaturatedFat">Tyydyttynyt rasva</string>
     <string name="nutriscore_info_msg">Lisätietoja Nutri-Scoresta</string>
     <string name="nova_info_msg">Lisätietoja Novasta</string>
@@ -704,6 +704,7 @@
     <string name="settings_country_title">Maa</string>
     <string name="txt_no_nutrition_data">Tuotteen pakkauksessa ei ole ravintosisältöä. Jos tämä on muuttunut, voit muokata tuotetta.</string>
     <string name="image_prompt_language">Ota valokuva ainesosista kielellä</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Lisää tuotteita</string>
@@ -798,4 +799,5 @@
     <string name="sign_in_or_register">Kirjaudu sisään tai rekisteröidy</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts on avoin tietokanta, joka sisältää yli %1$s elintarviketta (plus ne jotka lisäät).</string>
+    <string name="enabled">Enabled</string>
 </resources>
