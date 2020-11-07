@@ -22,7 +22,7 @@ Gönüllüler tarafından yürütülen Open Food Facts projesini keşfetmek içi
 
 ▶ Gıda Şeffaflığına Katkıda Bulunun
 -Open Food Facts, herkes tarafından herkes için oluşturulan bir gıda ürünleri veritabanıdır.
--Daha iyi gıda tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
+- Daha iyi gıda tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
 -Open Food Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta.
 - Bugün buzdolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz.
 
