@@ -187,7 +187,7 @@
     <string name="txtNutrientLevel100ml">טבלת ערכים תזונתיים ל־100 מ״ל:</string>
     <string name="txtNutritionLevelLow">בכמות נמוכה</string>
     <string name="txtNutritionLevelModerate">בכמות מתונה</string>
-    <string name="txtNutritionLevelHigh">בכמות גדולה</string>
+    <string name="txtNutritionLevelHigh">בכמות גבוהה</string>
     <string name="txtSave">שמירה</string>
     <string name="txtSignIn">כניסה</string>
     <string name="txtToastSaved">המשתמש נשמר</string>
@@ -716,6 +716,7 @@
     <string name="settings_country_title">מדינה</string>
     <string name="txt_no_nutrition_data">למוצר זה אינו פירוט תזונתי על האריזה. אם מצב זה השתנה, ניתן לערוך את המוצר.</string>
     <string name="image_prompt_language">צילום הרכיבים של</string>
+    <string name="swipe_delete_tip">ניתן למחוק רשימה על ידי גרירתה לימין.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">הוספת מוצרים</string>
@@ -810,4 +811,5 @@
     <string name="sign_in_or_register">כניסה או הרשמה</string>
     <string name="hunger_game_call_to_action">סיוג בסיווג של עוד %1$s</string>
     <string name="txtHomeOnline">Open Food Facts הוא מסד נתונים פתוח המכיל למעלה מ־%1$s מוצרי מזון (כולל אלו שתרמת) עם רכיבים, חומרים מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תוויות המוצרים.</string>
+    <string name="enabled">מופעל</string>
 </resources>
