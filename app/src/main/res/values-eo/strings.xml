@@ -213,7 +213,7 @@
     <string name="install">Install</string>
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
-    <string name="search_drawer">Search</string>
+    <string name="search_drawer">Serĉi</string>
     <string name="search_by_barcode_drawer">Type barcode</string>
     <string name="category_drawer">Kategorioj</string>
     <string name="search_by_category">Kategorio</string>
@@ -228,7 +228,7 @@
     <string name="title_dialog_alert">Add alert</string>
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">Bone</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Nuligi</string>
     <string name="login_button">Username</string>
     <string name="create_account_button">Create Account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
@@ -242,9 +242,9 @@
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
-    <string name="user">user</string>
+    <string name="user">uzanto</string>
     <string name="error_field_required">This field is required.</string>
-    <string name="action_preferences">Preferences</string>
+    <string name="action_preferences">Agordoj</string>
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
@@ -328,8 +328,8 @@
     <string name="for_100g">Po 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
     <string name="nutrition_omega3">Omego-3</string>
     <string name="nutrition_omega6">Omego-6</string>
     <string name="nutrition_omega9">Omego-9</string>
@@ -422,7 +422,7 @@
     <string name="preference_enable_mobile_data_summary_off">Upload new products using WiFi only</string>
     <string name="device_on_mobile_data_warning_title">Information</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
-    <string name="device_on_mobile_data_warning_positive">Preferences</string>
+    <string name="device_on_mobile_data_warning_positive">Agordoj</string>
     <string name="device_on_mobile_data_warning_negative">Upload anyway</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Choose language</string>
@@ -545,7 +545,7 @@
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
-    <string name="preferences">Preferences</string>
+    <string name="preferences">Agordoj</string>
     <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
@@ -582,7 +582,7 @@
     <string name="overview">Resumo</string>
     <string name="ingredients">Ingrediencoj</string>
     <string name="nutrition_facts">Nutrition Facts</string>
-    <string name="your_version">Yours</string>
+    <string name="your_version">Via</string>
     <string name="ingredients_picture">Ingredients Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
@@ -704,6 +704,7 @@
     <string name="settings_country_title">Lando</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
@@ -798,4 +799,5 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="enabled">Enabled</string>
 </resources>
