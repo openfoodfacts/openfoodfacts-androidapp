@@ -704,7 +704,7 @@
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <string name="image_prompt_language">Tag et foto af ingredienserne i</string>
-    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
+    <string name="swipe_delete_tip">En liste kan slettes ved at stryge den til venstre.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Tilføj produkter</string>
@@ -797,7 +797,7 @@
     <string name="product_front_image">Produktbillede front</string>
     <string name="brand_hint">Eksempler: CocaCola, Nestle mv.…</string>
     <string name="sign_in_or_register">Log ind eller tilmeld</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action">Hjælp med at klassificere flere %1$s</string>
     <string name="txtHomeOnline">Open Food Facts er en åben database med flere end %1$s fødevarerprodukter (plus dem, du vil bidrage med).</string>
-    <string name="enabled">Enabled</string>
+    <string name="enabled">Aktiveret</string>
 </resources>
