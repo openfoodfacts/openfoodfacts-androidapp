@@ -225,7 +225,7 @@
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Vyhľadať</string>
     <string name="search_by_barcode_drawer">Zadajte čiarový kód</string>
-    <string name="category_drawer">Categories</string>
+    <string name="category_drawer">Kategórie</string>
     <string name="search_by_category">Kategória</string>
     <string name="scan_search">Nasnímať čiarový kód</string>
     <string name="user_drawer">Používateľ</string>
@@ -484,8 +484,8 @@
     <string name="search_string">Vyhľadať</string>
     <string name="country_string">Country</string>
     <string name="store_subtitle">Predajňa</string>
-    <string name="packaging_subtitle">Packaging</string>
-    <string name="packaging_string">Packaging</string>
+    <string name="packaging_subtitle">Balenie</string>
+    <string name="packaging_string">Balenie</string>
     <string name="label_string">Štítok</string>
     <string name="category_string">Kategória</string>
     <string name="connection">Pripojené</string>
@@ -619,11 +619,11 @@
     <string name="one_photo_compulsory">(one photo is compulsory to add a new product)</string>
     <string name="product_details">Podrobnosti o výrobku</string>
     <string name="product_name">Product name</string>
-    <string name="quantity">Quantity</string>
+    <string name="quantity">Množstvo</string>
     <string name="labels">Štítky</string>
     <string name="period_of_time_after_opening">Period of time after opening</string>
     <string name="manufacturing_details">Manufacturing Details</string>
-    <string name="origin_of_ingredients">Origin of ingredients</string>
+    <string name="origin_of_ingredients">Pôvod surovín</string>
     <string name="manufacturing_place">Manufacturing place</string>
     <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Purchasing Details</string>
