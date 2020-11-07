@@ -26,6 +26,6 @@ Phụ gia mỹ phẩm, F.I.L. mã, số CI, INCI (International Nomenclature of 
 Lưu ý: Open Beauty Fact đang được xây dựng, trang web và ứng dụng dựa trên Thông tin thực phẩm mở và các thay đổi sẽ được thực hiện để tính đến các đặc tính của mỹ phẩm.
 
 Open Beauty Fact cũng có sẵn trên web tại https://world.openbeautyfacts.org
-Câu hỏi và phản hồi: contact@openfoodfacts.org
+Câu hỏi, phản hồi: contact@openfoodfacts.org
 
 Đối với thực phẩm cho con người, bạn có thể cài đặt Sự kiện thực phẩm mở, cho thức ăn vật nuôi, Sự kiện thực phẩm dành cho thú cưng và cho tất cả các sản phẩm khác, Sự kiện sản phẩm mở.
