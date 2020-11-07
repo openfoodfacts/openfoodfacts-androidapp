@@ -22,7 +22,7 @@ Open Food Facts je otevřená databáze potravinářských produktů s přísada
 - You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Your products, your data ***
-- Your personal data is yours, and is never sent online
+- Vaše osobní data jsou Vaše a nikdy nejsou odesílána online
 - Aplikaci můžete používat anonymně
 - Můžete exportovat vlastní historii skenování
 
@@ -39,7 +39,7 @@ Collecting the world's food, cosmetic and pet food was so passé. With the insan
 
 So we set up to create not 1, but other 77000 separate new databases ! 
 
-Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+Open Products Facts will be an extremely ambitious project. Zde je několik z nich: 
 
 Open Crayons Facts - The largest open database of coloring crayons
 
