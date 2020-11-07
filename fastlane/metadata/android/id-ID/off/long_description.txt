@@ -21,9 +21,9 @@ Dan baik untuk bumi!
 
 
 ▶ Contribute to Food Transparency
-Open food facts adalah basis data produk makanan yang dibuat oleh semua orang, untuk siapapun.
-Anda bisa menggunakannya untuk membuat pilihan makanan yang lebih baik, dan karena itu merupakan data terbuka, siapapun bisa menggunakannya kembali untuk kepentingan apapun.
-Open Food Facts adalah sebuah proyek nirlaba yang dikembangkan oleh ribuan relawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
+Open Food Facts adalah database produk makanan yang dibuat semua orang untuk semua.
+Anda dapat menggunakan untuk membuat pilihan makanan lebih baik, semua orang bisa menggunakan kembali untuk tujuan apapun.
+Open Food Facts adalah proyek nirlaba dikembangkan oleh ratusan relawan dari suruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
