@@ -392,7 +392,7 @@
     <string name="take_picture_front">Zrób główne zdjęcie produktu</string>
     <string name="take_picture_nutrition_table">Zrób zdjęcie tabeli wartości odżywczej</string>
     <string name="take_more_pictures">Zrób więcej zdjęć</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_extra_packaging_pictures">Zrób dodatkowe zdjęcia opakowań</string>
     <string name="txtSaturatedFat">Tłuszcz nasycony</string>
     <string name="nutriscore_info_msg">Dowiedz się więcej o Nutri-Score</string>
     <string name="nova_info_msg">Dowiedz się więcej o grupach NOVA</string>
@@ -716,6 +716,7 @@
     <string name="settings_country_title">Kraj</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
     <string name="image_prompt_language">Zrób zdjęcie składników</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Dodaj produkty</string>
@@ -810,4 +811,5 @@
     <string name="sign_in_or_register">Zaloguj się lub zarejestruj</string>
     <string name="hunger_game_call_to_action">Pomóż sklasyfikować więcej %1$s</string>
     <string name="txtHomeOnline">Open Food Facts to otwarta baza danych zawierająca więcej niż %1$s produktów spożywczych (plus te, które wnosisz).</string>
+    <string name="enabled">Enabled</string>
 </resources>
