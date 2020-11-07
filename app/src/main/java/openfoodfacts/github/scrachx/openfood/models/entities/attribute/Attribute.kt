@@ -12,7 +12,7 @@ data class Attribute(
         @JsonProperty("description_short") var descriptionShort: String?,
         @JsonProperty("status") var status: String,
         @JsonProperty("icon_url") var iconUrl: String?,
-        @JsonProperty("title") var title: String,
+        @JsonProperty("title") var title: String?,
         @JsonProperty("name") var name: String?,
         @JsonProperty("description") var description: String?,
         @JsonProperty("debug") var debug: String?

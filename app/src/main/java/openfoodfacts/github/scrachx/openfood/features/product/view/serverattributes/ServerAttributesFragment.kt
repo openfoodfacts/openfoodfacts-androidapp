@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentServerAttributesBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
@@ -30,12 +29,9 @@ class ServerAttributesFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val attributes = productState.product.getLocalAttributeGroups(requireContext())
-                .mapNotNull { it.attributes }
-                .flatMap { it.asList() }
-        Log.i("ServerAttributes", attributes.toString())
+        val attributeGroups = productState.product.getLocalAttributeGroups(requireContext())
+        Log.i("ServerAttributes", attributeGroups.toString())
 
-        binding.attrsList.layoutManager = LinearLayoutManager(requireContext())
-        binding.attrsList.adapter = AttributeAdapter(attributes)
+        binding.attrsList.setAdapter(AttributeGroupsAdapter(attributeGroups, requireActivity()))
     }
 }
