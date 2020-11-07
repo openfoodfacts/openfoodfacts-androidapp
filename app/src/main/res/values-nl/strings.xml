@@ -704,6 +704,7 @@
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dit product biedt geen voedingsinformatie op de verpakking. Als dit veranderd is, kunt je het product bewerken.</string>
     <string name="image_prompt_language">Maak een foto van de ingrediëntenlijst</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
@@ -798,4 +799,5 @@
     <string name="sign_in_or_register">Aanmelden of registreren</string>
     <string name="hunger_game_call_to_action">Help meer %1$s te classificeren</string>
     <string name="txtHomeOnline">Open Food Facts is een open database met meer dan %1$s voedingsproducten (plus uw bijdragen).</string>
+    <string name="enabled">Enabled</string>
 </resources>
