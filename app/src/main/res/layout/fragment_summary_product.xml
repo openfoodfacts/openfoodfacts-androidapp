@@ -257,19 +257,19 @@
                         android:layout_height="wrap_content"
                         app:arrowAlignment="start"
                         app:arrowMarginStart="0dp"
-                        app:shouldDisplayImmediately="true"
                         app:identifier="ingredient_analysis_tip_box"
-                        app:message="@string/ingredient_analysis_tip" />
+                        app:message="@string/ingredient_analysis_tip"
+                        app:shouldDisplayImmediately="true" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/analysis_tags"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginStart="@dimen/spacing_large"
-                        android:layout_marginEnd="@dimen/spacing_large"
-                        android:layout_marginRight="@dimen/spacing_large"
                         android:layout_marginLeft="@dimen/spacing_large"
                         android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginEnd="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:background="@null"
                         android:orientation="horizontal"
@@ -288,7 +288,7 @@
                     <LinearLayout
                         android:id="@+id/grades_wrapper"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="80dp"
                         android:gravity="center"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -298,7 +298,7 @@
                         <ImageView
                             android:id="@+id/imageGrade"
                             android:layout_width="wrap_content"
-                            android:layout_height="80dp"
+                            android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:adjustViewBounds="true"
@@ -312,7 +312,7 @@
                         <ImageView
                             android:id="@+id/nova_group"
                             android:layout_width="wrap_content"
-                            android:layout_height="80dp"
+                            android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:adjustViewBounds="true"
@@ -331,7 +331,19 @@
                             android:adjustViewBounds="true"
                             android:maxHeight="60dp"
                             android:scaleType="fitCenter"
+                            android:visibility="gone"
+                            tools:visibility="visible"
                             tools:srcCompat="@drawable/ic_co2_high_24dp" />
+
+                        <ImageView
+                            android:id="@+id/ecoscore_icon"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="true"
+                            android:visibility="gone"
+                            tools:src="@drawable/ic_ecoscore_a"
+                            tools:visibility="visible" />
                     </LinearLayout>
 
                     <Button

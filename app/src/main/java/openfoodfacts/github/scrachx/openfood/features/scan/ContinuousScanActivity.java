@@ -34,8 +34,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -60,7 +58,6 @@ import com.mikepenz.iconics.IconicsColor;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.IconicsSize;
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial;
-import com.squareup.picasso.Callback;
 
 import org.apache.commons.lang.StringUtils;
 import org.greenrobot.eventbus.EventBus;
@@ -113,6 +110,7 @@ import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE;
 
 public class ContinuousScanActivity extends AppCompatActivity {
     private static final int LOGIN_ACTIVITY_REQUEST_CODE = 2;
@@ -162,9 +160,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
     private SummaryProductPresenter summaryProductPresenter;
     private Disposable hintBarcodeDisp;
     private CompositeDisposable commonDisp;
-    ActivityResultLauncher<Intent> productActivityResultLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Intent> productActivityResultLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
-        (ActivityResultCallback<ActivityResult>) result -> {
+        result -> {
             if (result.getResultCode() == RESULT_OK) {
                 setShownProduct(lastBarcode);
             }
@@ -233,10 +231,13 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
                 binding.quickViewProgress.setVisibility(GONE);
                 binding.quickViewProgressText.setVisibility(GONE);
+
                 if (productState.getStatus() == 0) {
                     tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found);
                 } else {
                     product = productState.getProduct();
+
+                    // If we're here from comparison -> add product, return to comparison activity
                     if (getIntent().getBooleanExtra(INTENT_KEY_COMPARE, false)) {
                         Intent intent = new Intent(ContinuousScanActivity.this, ProductCompareActivity.class);
                         intent.putExtra("product_found", true);
@@ -251,6 +252,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
 
+                    // Add product to scan history
                     productDisp = client.addToHistory(product).subscribeOn(Schedulers.io()).subscribe();
 
                     showAllViews();
@@ -265,6 +267,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     binding.quickViewProductNotFound.setVisibility(GONE);
                     binding.quickViewProductNotFoundButton.setVisibility(GONE);
 
+                    // Set product name, prefer offline
                     if (offlineSavedProduct != null && !TextUtils.isEmpty(offlineSavedProduct.getName())) {
                         binding.quickViewName.setText(offlineSavedProduct.getName());
                     } else if (product.getProductName() == null || product.getProductName().equals("")) {
@@ -272,6 +275,8 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewName.setText(product.getProductName());
                     }
+
+                    // Set product additives
                     List<String> addTags = product.getAdditivesTags();
                     if (!addTags.isEmpty()) {
                         binding.quickViewAdditives.setText(getResources().getQuantityString(R.plurals.productAdditives, addTags.size(), addTags.size()));
@@ -281,39 +286,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
                         binding.quickViewAdditives.setText(getString(R.string.productAdditivesUnknown));
                     }
 
-                    final String imageUrl = Utils.firstNotEmpty(offlineSavedProduct != null ? offlineSavedProduct.getImageFrontLocalUrl() : null,
-                        product.getImageUrl(LocaleHelper.getLanguage(getBaseContext())));
-                    if (imageUrl != null) {
-                        try {
-                            Utils.picassoBuilder(this)
-                                .load(imageUrl)
-                                .error(errorDrawable)
-                                .into(binding.quickViewImage, new Callback() {
-                                    @Override
-                                    public void onSuccess() {
-                                        if (binding != null) {
-                                            binding.quickViewImageProgress.setVisibility(GONE);
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onError(Exception ex) {
-                                        if (binding != null) {
-                                            binding.quickViewImageProgress.setVisibility(GONE);
-                                        }
-                                    }
-                                });
-                        } catch (IllegalStateException e) {
-                            //could happen if Picasso is not instantiated correctly...
-                            Log.w(LOG_TAG, e.getMessage(), e);
-                        }
-                    } else {
-                        binding.quickViewImage.setImageDrawable(errorDrawable);
-                        binding.quickViewImageProgress.setVisibility(GONE);
-                    }
-                    // Hide nutriScore from quickView if app flavour is not OFF or there is no nutriscore
+                    // Show nutriscore in quickView only if app flavour is OFF and the product has one
                     if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNutritionGradeTag() != null) {
-                        if (Utils.getImageGrade(product.getNutritionGradeTag()) != Utils.NO_DRAWABLE_RESOURCE) {
+                        if (Utils.getImageGrade(product.getNutritionGradeTag()) != NO_DRAWABLE_RESOURCE) {
                             binding.quickViewNutriScore.setVisibility(VISIBLE);
                             binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.getNutritionGradeFr()));
                         } else {
@@ -322,10 +297,11 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewNutriScore.setVisibility(GONE);
                     }
-                    // Hide nova group from quickView if app flavour is not OFF or there is no nova group
+
+                    // Show nova group in quickView only if app flavour is OFF and the product has one
                     if (AppFlavors.isFlavors(AppFlavors.OFF) && product.getNovaGroups() != null) {
                         final int novaGroupDrawable = Utils.getNovaGroupDrawable(product);
-                        if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
+                        if (novaGroupDrawable != NO_DRAWABLE_RESOURCE) {
                             binding.quickViewNovaGroup.setVisibility(VISIBLE);
                             binding.quickViewAdditives.setVisibility(VISIBLE);
                             binding.quickViewNovaGroup.setImageResource(novaGroupDrawable);
@@ -335,13 +311,22 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     } else {
                         binding.quickViewNovaGroup.setVisibility(GONE);
                     }
-                    int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
-                    if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+
+                    // If the product has an ecoscore, show it instead of the CO2 icon
+                    binding.quickViewEcoscoreIcon.setVisibility(GONE);
+                    binding.quickViewCo2Icon.setVisibility(GONE);
+                    int ecoScoreRes = Utils.getImageEcoscore(product);
+                    int co2Res = Utils.getImageEnvironmentImpact(product);
+
+                    if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
+                        binding.quickViewEcoscoreIcon.setImageResource(ecoScoreRes);
+                        binding.quickViewEcoscoreIcon.setVisibility(VISIBLE);
+                    } else if (co2Res != Utils.NO_DRAWABLE_RESOURCE) {
+                        binding.quickViewCo2Icon.setImageResource(co2Res);
                         binding.quickViewCo2Icon.setVisibility(VISIBLE);
-                        binding.quickViewCo2Icon.setImageResource(environmentImpactResource);
-                    } else {
-                        binding.quickViewCo2Icon.setVisibility(INVISIBLE);
                     }
+
+                    // Create the product view fragment and add it to the layout
                     ProductViewFragment newProductViewFragment = ProductViewFragment.newInstance(productState);
 
                     getSupportFragmentManager()
@@ -461,28 +446,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
             binding.quickViewName.setText(R.string.productNameNull);
         }
 
-        String imageFront = offlineSavedProduct.getImageFrontLocalUrl();
-
-        if (!TextUtils.isEmpty(imageFront)) {
-            Utils.picassoBuilder(this)
-                .load(imageFront)
-                .error(errorDrawable)
-                .into(binding.quickViewImage, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        binding.quickViewImageProgress.setVisibility(GONE);
-                    }
-
-                    @Override
-                    public void onError(Exception ex) {
-                        binding.quickViewImageProgress.setVisibility(GONE);
-                    }
-                });
-        } else {
-            binding.quickViewImage.setImageDrawable(errorDrawable);
-            binding.quickViewImageProgress.setVisibility(GONE);
-        }
-
         binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         binding.txtProductCallToAction.setBackground(ContextCompat.getDrawable(ContinuousScanActivity.this, R.drawable.rounded_quick_view_text));
         binding.txtProductCallToAction.setText(R.string.product_not_complete);
@@ -506,11 +469,9 @@ public class ContinuousScanActivity extends AppCompatActivity {
 
     private void showAllViews() {
         binding.quickViewSlideUpIndicator.setVisibility(VISIBLE);
-        binding.quickViewImage.setVisibility(VISIBLE);
         binding.quickViewName.setVisibility(VISIBLE);
         binding.frameLayout.setVisibility(VISIBLE);
         binding.quickViewAdditives.setVisibility(VISIBLE);
-        binding.quickViewImageProgress.setVisibility(VISIBLE);
         if (!isAnalysisTagsEmpty) {
             binding.quickViewTags.setVisibility(VISIBLE);
         } else {
@@ -523,7 +484,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.quickViewProgress.setVisibility(GONE);
         binding.quickViewProgressText.setVisibility(GONE);
         binding.quickViewSlideUpIndicator.setVisibility(GONE);
-        binding.quickViewImage.setVisibility(GONE);
         binding.quickViewName.setVisibility(GONE);
         binding.frameLayout.setVisibility(GONE);
         binding.quickViewAdditives.setVisibility(GONE);
@@ -532,7 +492,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
         binding.quickViewCo2Icon.setVisibility(GONE);
         binding.quickViewProductNotFound.setVisibility(GONE);
         binding.quickViewProductNotFoundButton.setVisibility(GONE);
-        binding.quickViewImageProgress.setVisibility(GONE);
         binding.txtProductCallToAction.setVisibility(GONE);
         binding.quickViewTags.setVisibility(GONE);
     }
@@ -968,7 +927,7 @@ public class ContinuousScanActivity extends AppCompatActivity {
             }
 
             lastBarcode = result.getText();
-            if (!(isFinishing())) {
+            if (!isFinishing()) {
                 setShownProduct(lastBarcode);
             }
         }

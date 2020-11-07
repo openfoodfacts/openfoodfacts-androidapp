@@ -255,7 +255,6 @@ public class Utils {
         }
     }
 
-
     /**
      * Returns the Nutri-Score graphic asset given the grade
      */
@@ -380,7 +379,8 @@ public class Utils {
         }
     }
 
-    public static int getImageEnvironmentImpact(Product product) {
+    @DrawableRes
+    public static int getImageEnvironmentImpact(@Nullable Product product) {
         if (product == null) {
             return NO_DRAWABLE_RESOURCE;
         }
@@ -401,34 +401,49 @@ public class Utils {
         }
     }
 
-    public static int getSmallImageGrade(@Nullable String grade) {
-        int drawable = NO_DRAWABLE_RESOURCE;
+    public static int getImageEcoscore(@Nullable Product product) {
+        if (product == null) {
+            return NO_DRAWABLE_RESOURCE;
+        }
+        String ecoscore = product.getEcoscore();
+        if (ecoscore == null) {
+            return NO_DRAWABLE_RESOURCE;
+        }
+        switch (ecoscore) {
+            case "a":
+                return R.drawable.ic_ecoscore_a;
+            case "b":
+                return R.drawable.ic_ecoscore_b;
+            case "c":
+                return R.drawable.ic_ecoscore_c;
+            case "d":
+                return R.drawable.ic_ecoscore_d;
+            case "e":
+                return R.drawable.ic_ecoscore_e;
+            default:
+                return NO_DRAWABLE_RESOURCE;
+        }
+    }
 
+    public static int getSmallImageGrade(@Nullable String grade) {
         if (grade == null) {
-            return drawable;
+            return NO_DRAWABLE_RESOURCE;
         }
 
         switch (grade.toLowerCase(Locale.getDefault())) {
             case "a":
-                drawable = R.drawable.ic_nutriscore_small_a;
-                break;
+                return R.drawable.ic_nutriscore_small_a;
             case "b":
-                drawable = R.drawable.ic_nutriscore_small_b;
-                break;
+                return R.drawable.ic_nutriscore_small_b;
             case "c":
-                drawable = R.drawable.ic_nutriscore_small_c;
-                break;
+                return R.drawable.ic_nutriscore_small_c;
             case "d":
-                drawable = R.drawable.ic_nutriscore_small_d;
-                break;
+                return R.drawable.ic_nutriscore_small_d;
             case "e":
-                drawable = R.drawable.ic_nutriscore_small_e;
-                break;
+                return R.drawable.ic_nutriscore_small_e;
             default:
-                break;
+                return NO_DRAWABLE_RESOURCE;
         }
-
-        return drawable;
     }
 
     public static Bitmap getBitmapFromDrawable(@NonNull Context context, @DrawableRes int drawableId) {

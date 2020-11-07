@@ -121,7 +121,8 @@
                     android:background="#77000000"
                     android:orientation="horizontal"
                     android:visibility="gone"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:visibility="visible" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -170,51 +171,20 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/quickView_name">
 
-                        <ImageView
-                            android:id="@+id/quickView_image"
-                            android:layout_width="80dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginRight="16dp"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitCenter"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/quickView_nutriScore"
-                            app:layout_constraintHorizontal_bias="0.52"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:ignore="ContentDescription"
-                            tools:layout_constraintStart_toStartOf="parent"
-                            tools:src="@drawable/ic_crowdsourcing_icon" />
-
-                        <ProgressBar
-                            android:id="@+id/quickView_imageProgress"
-                            android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/horizontal_margin"
-                            android:layout_marginLeft="@dimen/horizontal_margin"
-                            android:padding="@dimen/activity_horizontal_margin"
-                            android:visibility="visible"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:visibility="gone" />
-
 
                         <ImageView
                             android:id="@+id/quickView_nutriScore"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
                             android:layout_marginEnd="4dp"
                             android:layout_marginRight="4dp"
                             android:adjustViewBounds="true"
                             android:scaleType="fitStart"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/quickView_additives"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toEndOf="@+id/quickView_image"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintWidth_percent="0.4"
                             tools:ignore="ContentDescription"
@@ -231,21 +201,20 @@
                             app:layout_constraintStart_toStartOf="@+id/quickView_additives"
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="ContentDescription"
-                            tools:srcCompat="@drawable/ic_nova_group_1"
-                            tools:visibility="gone" />
+                            tools:srcCompat="@drawable/ic_nova_group_1" />
 
                         <ImageView
                             android:id="@+id/quickView_co2_icon"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
                             android:layout_marginLeft="4dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp"
                             android:adjustViewBounds="true"
+                            android:maxWidth="60dp"
                             android:scaleType="fitCenter"
+                            android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/quickView_ecoscore_icon"
                             app:layout_constraintStart_toEndOf="@+id/quickView_additives"
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="ContentDescription"
@@ -262,6 +231,21 @@
                             app:layout_constraintStart_toEndOf="@+id/quickView_nutriScore"
                             app:layout_constraintTop_toBottomOf="@id/quickView_novaGroup"
                             tools:text="3 additives" />
+
+                        <ImageView
+                            android:id="@+id/quickView_ecoscore_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/quickView_co2_icon"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_ecoscore_a" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <ProgressBar
