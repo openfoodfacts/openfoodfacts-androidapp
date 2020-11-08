@@ -7,7 +7,7 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-▶あなたにぴったりの製品を選んでください
+▶ Choose the products that are good for you
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
 - You can easily compare as many products as you want, side by side by simply scanning them. 
@@ -60,8 +60,8 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 
 ▶ Set up allergen alerts on products
 -牛乳、グルテン、卵、大豆、ナッツ、魚、セロリ、マスタード、二酸化硫黄と亜硫酸塩、ピーナッツ、ゴマ、甲殻類、軟体動物またはルピナスアレルギー？
--Open Food Factsを使用して食品の初期スクリーニングを行うことにより、ショッピングをスピードアップします。
--情報が100％正確でなく、検出が100％正確でない可能性があることに注意してください。 そのため、パッケージを使用して、常に自分で再確認してください。
+- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
 
 ▶ Say hello and/or join us!
