@@ -2,10 +2,10 @@
 
 - Bugun Labaran Lissafi Kwarewar kayan kwalliyar kayan kwaskwarima wanda kowa yayi, domin kowa.
 - Kuna iya amfani da shi don yin zaɓin mafi kyawun kayan kwalliya, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
-- Bugun Kayan Fata na Kyauta wani shiri ne wanda ba riba ba wanda dubunnan masu ba da agaji na duniya suka kirkira. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban. 
+- Bugun Kayan Fata na Kyauta wani shiri ne wanda ba riba ba wanda dubunnan masu ba da agaji na duniya suka kirkira. We have lots of exciting projects you can contribute to in many different ways. 
 - Kuna iya fara ba da gudummawa a yau ta ƙara samfurin daga akwatin kyan kwalliyar ku. 
 
-*** Samu Labaran ***
+*** Get the Facts ***
 
 - Kayan shafawa, Fil. lambobi, CI-lambobi, INCI (Nasashen Duniya na Kayan kwaskwarima), jerin abubuwan samarwa, abubuwan ƙira, lambobin shiryawa... 
 - Bude kyawawan Labaran Shakewa yana taimaka maka wajen sanya kyakkyawan ma'anar buga takardu akan abubuwan samfuri.
@@ -14,18 +14,18 @@ Ba kwa buƙatar zama chemist ba ko kuma ku koyi latin babu kuma don fitar da jer
 - Muna tsammanin zai iya zama da amfani ga mutanen da ke da yanayin fata kamar ƙaiƙayi, psoriasis, eczema… don yin zaɓin mafi kyawun kayan kwalliya.
 
 *** Yana aiki da kyau a kowane yanayi ***
-- Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
+- You can add new products, even if you don't have an Internet connection right now.
 - shiga app din na da tsananin dole don rage bayanai dakuma amfani da batir
 - Ba kwa buƙatar kamara don duba samfur. Hakanan zaka iya buga lambar birni idan bakada kyamarar koda da matsala tare da ita.
 
 *** Kayan kwalliyar ku, bayanan ku ***
-- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
-- Kuna iya amfani da app ba tare da sani ba
-- Kuna iya fitarwa da tarihin bincikenku
+- Your data is yours, and is never sent online
+- You can use the app anonymously
+- You can export your scan history
 
 Lura: Ana gina Fina-Finan Kyau Masu Kyau, shafin da aikace-aikacen sun dogara ne akan Abincin Abinci na Open kuma za a yi canje-canje don yin la’akari da ƙayyadaddun kayan kwalliya.
 
 Bude Shafin Farko kuma ana samunsu ta yanar gizo akan https://world.openbeautyfacts.org
-Tambayoyi, amsawa: kakira@openfoodfacts.org
+Questions, feedback : contact@openfoodfacts.org
 
 Don abincin ɗan adam, zaku iya shigar da Buɗaɗan Abinci na Abinci, don abincin abinci, Abin buɗe Bayanin Abinci na Pet, da na sauran samfurori, Bude samfuran Fasa.
