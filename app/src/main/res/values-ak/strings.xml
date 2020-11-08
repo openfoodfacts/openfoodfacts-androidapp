@@ -39,7 +39,7 @@
     <string name="action_discover">Discover</string>
     <string name="contribute">How to contribute</string>
     <string name="action_find">Find</string>
-    <string name="product_incomplete_message">This product is not complete. As a result, we couldn\'t do the allergen check.</string>
+    <string name="product_incomplete_message">The ingredient list of this product is not complete. As a result, the allergen alert is not shown.</string>
     <string name="product_allergen_prompt">This product contains:</string>
     <string name="no_offline_data">You\'re all done</string>
     <string name="first_offline">Products added offline will appear here</string>
