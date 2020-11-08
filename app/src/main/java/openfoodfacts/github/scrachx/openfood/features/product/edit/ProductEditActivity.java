@@ -51,7 +51,7 @@ import okhttp3.RequestBody;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.databinding.ActivityAddProductBinding;
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding;
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductFragmentPagerAdapter;
 import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker;
@@ -86,7 +86,7 @@ public class ProductEditActivity extends AppCompatActivity {
     private final String[] imagesFilePath = new String[3];
     @Inject
     ProductsAPI api;
-    private ActivityAddProductBinding binding;
+    private ActivityEditProductBinding binding;
     private final ProductEditIngredientsFragment productEditIngredientsFragment = new ProductEditIngredientsFragment();
     private boolean editingMode;
     private final ProductEditNutritionFactsFragment productEditNutritionFactsFragment = new ProductEditNutritionFactsFragment();
@@ -240,7 +240,7 @@ public class ProductEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Setup view binding
-        binding = ActivityAddProductBinding.inflate(getLayoutInflater());
+        binding = ActivityEditProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Setup onclick listeners
