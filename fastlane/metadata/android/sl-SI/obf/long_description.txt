@@ -2,10 +2,10 @@
 
 - Open Beauty Facts je zbirka kozmetičnih izdelkov, ki so jo izdelali vsi, za vse.
 - Lahko jo uporabite za boljše kozmetične odločitve, in ker je to odprta zbirka, jo lahko kdorkoli ponovno uporabi za kakršenkoli namen.
-- Open Beauty Facts je neprofitni projekt, ki ga je razvilo na tisoče prostovoljcev z vsega sveta. Imamo veliko zanimivih projektov, pri katerih lahko sodelujete na več različnih načinov. 
+- Open Beauty Facts je neprofitni projekt, ki ga je razvilo na tisoče prostovoljcev z vsega sveta. We have lots of exciting projects you can contribute to in many different ways. 
 - Sodelujete lahko že danes, tako da dodate izdelek iz vaše kozmetične omare. 
 
-*** Pridobite dejstva***
+*** Get the Facts ***
 
 - Aditivi v kozmetiki, F.I.L. kode, številke CI, INCI (mednarodna nomenklatura kozmetičnih sestavin), seznam sestavin, alergeni, oznake embalaže... 
 - Open Beauty Facts vam pomagajo razumeti smisel drobnega tiska na nalepkah izdelkov.
@@ -14,14 +14,14 @@
 - Menimo, da je lahko koristno za ljudi s kožnimi boleznimi, kot so akne, luskavica, ekcemi… da bi lahko izbrali boljše kozmetične izdelke.
 
 *** Dobro deluje v vseh pogojih ***
-- lahko dodate nove izdelke, tudi če trenutno nimate internetne povezave.
+- You can add new products, even if you don't have an Internet connection right now.
 - Aplikacija naloži le nujno potrebne inf. za zmanjšanje porabe podatkov in baterije
 - Za iskanje izdelka ne potrebujete fotoaparata. Črtno kodo lahko tudi vtipkate, če nimate fotoaparata ali imate težave z njim.
 
 *** Vaša kozmetika, vaši podatki ***
-- Vaši podatki so vaši in se nikoli ne pošljejo na splet
-- Aplikacijo lahko uporabljate anonimno
-- Zgodovino optičnega branja lahko izvozite
+- Your data is yours, and is never sent online
+- You can use the app anonymously
+- You can export your scan history
 
 Opomba: Open Beauty Facts spletno mesto in aplikacija temeljita na Open Food Facts, pri čemer se upoštevajo posebnosti kozmetike.
 
