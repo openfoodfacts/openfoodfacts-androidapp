@@ -75,9 +75,9 @@
     <!-- nutrition weight units -->
     <!-- all weight units -->
     <string-array name="weight_all_units">
+        <item>g</item>
         <item>mg</item>
-        <item>kg</item>
-        <item>μg</item>
+        <item>µg</item>
         <item>% DDD</item>
         <item>IU</item>
     </string-array>
@@ -173,7 +173,7 @@
     <string name="txtBarcode">Čárový kód :</string>
     <string name="txtCategories">Kategorie:</string>
     <string name="txtLabels">Označení, certifikáty, ocenění:</string>
-    <string name="txtEMB">Kód EMB:</string>
+    <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Složení:</string>
     <string name="Donate">Podpořit</string>
     <string name="Donation">Kliknutím sem podpoříte Open Food Facts</string>
@@ -625,7 +625,7 @@
     <string name="manufacturing_details">Výrobní informace</string>
     <string name="origin_of_ingredients">Původ přísad</string>
     <string name="manufacturing_place">Země původu</string>
-    <string name="emb_code">Kód EMB</string>
+    <string name="emb_code">Traceability Code</string>
     <string name="purchasing_details">Podrobnosti o nákupu</string>
     <string name="country_where_purchased">Země nákupu</string>
     <string name="stores">Prodejna</string>
@@ -805,7 +805,7 @@
     <string name="content_exit">Stisknutím se vrátíte k produktu</string>
     <string name="icon_label">Ikona štítků</string>
     <string name="icon_categories">Ikona kategorií</string>
-    <string name="icon_emb">EMB code icon</string>
+    <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Přední strana výrobku</string>
     <string name="brand_hint">Například: Kofola, Opavia…</string>
     <string name="sign_in_or_register">Přihlaste se nebo se zaregistrujte</string>
