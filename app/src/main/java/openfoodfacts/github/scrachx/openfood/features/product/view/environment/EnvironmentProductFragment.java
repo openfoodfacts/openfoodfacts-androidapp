@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.environment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -10,15 +12,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
+
+import io.reactivex.disposables.CompositeDisposable;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProductBinding;
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener;
+import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity;
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity;
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity;
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment;
+import openfoodfacts.github.scrachx.openfood.images.ProductImage;
 import openfoodfacts.github.scrachx.openfood.models.Nutriments;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductState;
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient;
 import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils;
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
+import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.PACKAGING;
@@ -26,22 +39,36 @@ import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class EnvironmentProductFragment extends BaseFragment {
+    private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
+    private CompositeDisposable disp;
+    private PhotoReceiverHandler photoReceiverHandler;
     private FragmentEnvironmentProductBinding binding;
     private ProductState activityProductState;
     private String mUrlImage;
+    private String barcode;
+    private OpenFoodAPIClient api;
     /**
      * boolean to determine if image should be loaded or not
      **/
     private boolean isLowBatteryMode = false;
+    private Product product;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        disp = new CompositeDisposable();
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        api = new OpenFoodAPIClient(requireActivity());
         binding = FragmentEnvironmentProductBinding.inflate(inflater);
         return binding.getRoot();
     }
 
     @Override
     public void onDestroy() {
+        disp.dispose();
         super.onDestroy();
         binding = null;
     }
@@ -49,17 +76,19 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        photoReceiverHandler = new PhotoReceiverHandler(this::loadPackagingPhoto);
         String langCode = LocaleHelper.getLanguage(getContext());
         activityProductState = FragmentUtils.requireStateFromArguments(this);
 
-        binding.imageViewPackaging.setOnClickListener(v -> openFullScreen());
+        binding.imageViewPackaging.setOnClickListener(this::openFullScreen);
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true;
         }
 
-        final Product product = activityProductState.getProduct();
+        product = activityProductState.getProduct();
+        barcode = product.getCode();
         Nutriments nutriments = product.getNutriments();
 
         if (isNotBlank(product.getImagePackagingUrl(langCode))) {
@@ -120,7 +149,7 @@ public class EnvironmentProductFragment extends BaseFragment {
         activityProductState = productState;
     }
 
-    private void openFullScreen() {
+    private void openFullScreen(View v) {
         if (mUrlImage != null && activityProductState != null && activityProductState.getProduct() != null) {
             FullScreenActivityOpener.openForUrl(this, activityProductState.getProduct(), PACKAGING, mUrlImage, binding.imageViewPackaging);
         } else {
@@ -130,5 +159,41 @@ public class EnvironmentProductFragment extends BaseFragment {
 
     public void newPackagingImage() {
         doChooseOrTakePhotos(getString(R.string.recycling_picture));
+    }
+
+    public void loadPackagingPhoto(File photoFile) {
+        // Create a new instance of ProductImage so we can load to server
+        ProductImage image = new ProductImage(barcode, PACKAGING, photoFile);
+        image.setFilePath(photoFile.getAbsolutePath());
+        // Load to server
+        disp.add(api.postImg(image).subscribe());
+        // Load into view
+        binding.addPhotoLabel.setVisibility(View.GONE);
+        mUrlImage = photoFile.getAbsolutePath();
+
+        Picasso.get()
+            .load(photoFile)
+            .fit()
+            .into(binding.imageViewPackaging);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data);
+        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && isUserLoggedIn()) {
+            startEditProduct();
+        }
+        if (ImagesManageActivity.isImageModified(requestCode, resultCode)
+            && getActivity() instanceof ProductViewActivity) {
+            ((ProductViewActivity) getActivity()).onRefresh();
+        }
+    }
+
+    private void startEditProduct() {
+        Intent intent = new Intent(getActivity(), ProductEditActivity.class);
+        intent.putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, product);
+        startActivity(intent);
     }
 }
