@@ -17,7 +17,7 @@ Go further with Wikipedia
 
 輕易瞭解營養成分
 
-過敏原警報
+Set Allergen Alerts
 
 Get alternatives for your favorite foods
 
@@ -35,7 +35,7 @@ Become an actor of food transparency
 
 強大
 
-營養成分
+Nutritional quality
 
 =====================
 V3 screenshots
