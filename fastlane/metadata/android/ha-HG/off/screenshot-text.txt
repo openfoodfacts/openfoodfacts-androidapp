@@ -7,7 +7,7 @@ V2 screenshots
 
 Duba kayan
 
-Sami Nutriscore
+Get the Nutriscore
 
 Cikakken tarihin bincikenku, cikakken mai zaman kansa & wanda ake iya fitarwa
 
@@ -17,7 +17,7 @@ Saita faɗakarwar allergen
 
 Abinci mai gina jiki, mai sauki
 
-Allergen faɗakarwa
+Allergen alert
 
 Nemi madadin abincin da kuka fi so
 
@@ -31,11 +31,11 @@ Wikipedia na Abincin dabbobi
 
 Wikipedia na samfura
 
-Kayan mahadi
+Ingredients
 
 Mai karfi
 
-Bayanan abinci mai gina jiki
+Nutrition facts
 
 =====================
 V3 screenshots
