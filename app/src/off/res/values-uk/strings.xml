@@ -28,9 +28,9 @@
     <string name="translate_help_title">Допоможіть перекласти Open Food Facts</string>
     <string name="translate_help_summary">Перекладіть базу даних Open Food Facts на свою мову - технічних знань не потрібно</string>
     <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Інформація про вашу алергію ніколи не буде відправлена на сервер Open Food Facts. Крім того, майте на увазі, що дані продукту можуть бути неточними, і виявлення може бути не 100% точності, тому будь-ласка, перевірьте двічі!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->
     <string name="tagline">the free food products database</string>
-    <string name="product_not_found">Продукту %1$s ще не існує у Open Food Facts. Ви можете додати його?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="currently_on_version">Currently on Open Food Facts</string>
 </resources>
