@@ -1,4 +1,4 @@
-A bincika samfuran abinci ko lambar lambar su don samun bayanai akan sinadaran, abubuwan ƙarawa da gaskiyar abubuwan abinci.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,9 +21,9 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Bude Abubuwan Abinci shine tsarin samar da abinci wanda kowa yake yi, don kowa.
-- Kuna iya amfani da shi don yin zaɓin abinci mafi kyau, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
-- Batun Abinci na Abinci wani shiri ne na riba wanda dubunnan masu ba da agaji suka kirkira daga sassan duniya. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban.
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
@@ -31,10 +31,10 @@ Create shopping lists, track what you've eaten and easily share and export your 
 
 ▶ Get the Facts
 -Open Food Facts yana taimako ne wajen gano kyauwun abu. You will be able to find:
-- ƙafafun carbon (ƙirar CO2) da marufi (tare da umarnin sake yin amfani da su),
-- Nutriscore (ci abinci mai gina jiki), abinci mai gina jiki,/ mai sa jiki, carbohydrates, sugars, fiber, furotin da gishiri da kuma sodium.
-- nau'ikan kaya, kayan ƙira, abubuwan alamomi (bio, gluten free, vegan, mai cin ganyayyaki, halal, kosher ...), bayanan ganowa (lambobin shirya kayan, asalin abubuwan da ake amfani da su)
-- A kan ruwan inabi da giya, zaku sami abun ciki na barasa.
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
 
 
 ▶ Based on Science, helping back Science!
@@ -50,11 +50,11 @@ Create shopping lists, track what you've eaten and easily share and export your 
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
-- Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
+- You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
+- Your data is yours, and is never sent online
 - Kuna iya amfani da app ba tare da sani ba
 - Kuna iya fitarwa da tarihin bincikenku
 
@@ -70,7 +70,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 Open Food Facts yana samuwa a yanar gizo a http://world.openfoodfacts.org
 
 
-Tambayoyi, amsawa: kakira@openfoodfacts.org
+Questions, feedback : contact@openfoodfacts.org
 
 
 Domin kayan kwalliya, zaka iya sa Open Beauty Facts, domin abincin dabbobi, Open Pet Facts, da kuma sauran abubuwa, Open Products Facts.
