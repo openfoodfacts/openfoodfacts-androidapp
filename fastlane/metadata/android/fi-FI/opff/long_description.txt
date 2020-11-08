@@ -8,11 +8,11 @@ Tutustuaksesi Open Pet Food Facts -hankkeeseen, vieraile osoitteessa https://wor
 
 - Open Pet Food Facts on kaikkien tekemä tietokanta lemmikkien elintarvikkeille, kaikille.
 - Voit käyttää sitä tehdäksesi parempia valintoja lemmikkien elintarvikkeissa, ja koska se on avointa dataa, kuka tahansa voi uudelleen käyttää sitä mihin tahansa tarkoitukseen.
-- Open Pet Food Facts on voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin. 
+- Open Pet Food Facts on voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. We have lots of exciting projects you can contribute to in many different ways. 
 - Voit aloittaa osallistumisen tänään lisäämällä tuotteen lemmikkisi ruokakaapista. 
 
 
-*** Tiedä tosiseikat ***
+*** Get the Facts ***
 
 Voit myös löytää (tuotteiden pakkausmerkintöjen mukaan):
 - ainesosaluettelon (mukaan lukien tuhkapitoisuuden)
@@ -20,15 +20,15 @@ Voit myös löytää (tuotteiden pakkausmerkintöjen mukaan):
 - tuotemerkit, allergeenit, merkit (luomu, vegaani...)
 - Se toimii koiranruoalla (koiran kuivaruoka & koiran märkäruoka), kissanruoalla, kaninruoalla, käärmeenruoalla, kalanruoalla, linnunruoalla, hevosenruoalla, tai millä tahansa lempieläimesi ruoalla.
 
-*** Toimii hyvin kaikissa olosuhteissa ***
-- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
-- Sovellus lataa vain kaikista välttämättömimmän, tiedonsiirron ja akun kulutuksen vähentämiseksi
-- Et tarvitse kameraa hakeaksesi tuotetta. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
+*** Works well in any condition ***
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption
+- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
 
 *** Sinun lemmikkisi elintarvikkeet, sinun tietosi ***
 - Henkilökohtaiset tietosi ovat sinun, ja niitä ei koskaan lähetetä verkkoon
-- Voit käyttää sovellusta nimettömästi
-- Voit viedä lukuhistoriasi
+- You can use the app anonymously
+- You can export your scan history
 
 
 Ihmisten elintarvikkeille voit asentaa Open Food Factsin, kosmetiikalle Open Beauty Factsin, ja kaikille muille tuotteille Open Products Factsin.
