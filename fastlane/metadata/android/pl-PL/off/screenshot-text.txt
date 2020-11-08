@@ -17,7 +17,7 @@ Uruchom ostrzeżenia o alergenach
 
 Odżywianie, uproszczone
 
-Ostrzeżenie o alergenach
+Allergen alert
 
 Znajdź alternatywę dla swoich ulubionych potraw
 
@@ -35,7 +35,7 @@ Składniki
 
 Potężny
 
-Wartości odżywcze
+Wikipedia żywności
 
 =====================
 V3 zrzuty ekranu
