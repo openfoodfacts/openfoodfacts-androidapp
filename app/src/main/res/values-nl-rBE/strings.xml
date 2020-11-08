@@ -747,7 +747,7 @@
     <string name="closeZoom">Klik om zoom te sluiten</string>
     <string name="imageFullscreen">Inzoomen</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">Close</string>
+    <string name="close_button">Sluit</string>
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Klik op de onderstaande pictogrammen om meer te weten te komen over het product en om de informatie te selecteren waar je geïnteresseerd in bent.</string>
     <string name="got_it">Ik snap het!</string>
