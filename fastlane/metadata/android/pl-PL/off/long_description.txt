@@ -61,7 +61,7 @@ Możesz eksportować historię skanowania
 ▶ Zdefiniuj ostrzeżenia dotyczące produktów mogących powodować alergie
 - Alergia na mleko, gluten, jaja, soja, orzechy, ryby, seler, gorczyca, dwutlenek siarki i siarczyny, orzeszki ziemne, nasiona sezamu, skorupiaki, mięczaki lub łubin?
 - Zwiększ wydajność swoich zakupów przeprowadzając wstępną kontrolę produktów spożywczych przy pomocy Open Food Facts.
-- Bądź ostrożny, informacje o produkcie mogą, nie były w 100% dokładne, natomiast sam proces rozpoznawania może nie być w 100% skuteczny. Dlatego zawsze sprawdzaj podwójnie, porównując dane w aplikacji z informacją na opakowaniu.
+- Bądź ostrożny, informacje o produkcie mogą, nie były w 100% dokładne, natomiast sam proces rozpoznawania może nie być w 100% skuteczny. So always double check by yourself, with the packaging.
 
 
 ▶ Przywitaj się i dołącz do nas!
