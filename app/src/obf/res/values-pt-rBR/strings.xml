@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
-    <string name="website">https://world.openbeautyfacts.org/</string>
+    <string name="website">https://world-pt.openbeautyfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
     <string name="website_contribute">https://world-pt.openbeautyfacts.org/contribuir</string>
     <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
