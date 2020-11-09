@@ -46,6 +46,6 @@
     <string name="intent_filter_share_label">Dodaj do Open Pet Food Facts</string>
     <string name="txt_info_eaten_products">Będziesz mógł dodać produkt do tej listy skanując produkty, przeciągając kartę produktu i klikając \"Produkty do zakupu\".
         Możesz również dodać produkty do tej listy, przeszukując je i klikając przycisk + w prawym górnym rogu strony produktu.</string>
-    <string name="OFFlogo">Open Pet Food Facts logo</string>
+    <string name="OFFlogo">Otwórz logo Fakty dotyczące karmy dla zwierząt</string>
     <string name="brand_hint">Przykłady: Purina, Whiskas, itp…</string>
 </resources>
