@@ -29,7 +29,7 @@
     </plurals>
     <plurals name="minutes">
         <item quantity="one">%d minutę temu</item>
-        <item quantity="few">%d minutę temu</item>
+        <item quantity="few">%d minuty temu</item>
         <item quantity="many">%d minutę temu</item>
         <item quantity="other">%d minut temu</item>
     </plurals>
@@ -51,7 +51,7 @@
     <string name="action_find">Znajdź</string>
     <string name="product_incomplete_message">Lista składników tego produktu nie jest kompletna. Wobec czego ostrzeżenie o alergenach nie jest wyświetlane.</string>
     <string name="product_allergen_prompt">Produkt zawiera:</string>
-    <string name="no_offline_data">Wszystko gotowe</string>
+    <string name="no_offline_data">Brak danych w trybie offline</string>
     <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
