@@ -558,7 +558,7 @@
     <string name="autofocus">Samodejno ostrenje</string>
     <string name="initial_loading">Začetno nalaganje</string>
     <string name="preferences">Nastavitve</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Logotip odprta dejstva o hrani</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">Za izbran jezik ni slike. Lahko jo dodate.</string>
     <string name="error_adding_ingredients">Nekaj je šlo narobe med poskusom dodajanja sestavin izdelka</string>
