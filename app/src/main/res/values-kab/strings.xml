@@ -540,7 +540,7 @@
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Scan sound</string>
-    <string name="trouble_scanning">Trouble Scanning?</string>
+    <string name="trouble_scanning">Ugur deg ufraḍ?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
@@ -559,7 +559,7 @@
     <string name="product_language">Product language : </string>
     <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Official website</string>
-    <string name="scan_QR_code">Scan QR Code for product website</string>
+    <string name="scan_QR_code">Freḍ tangalt QR i usmel web n ufaris</string>
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
