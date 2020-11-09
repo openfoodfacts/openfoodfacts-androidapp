@@ -7,7 +7,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=he
 
 סריקת מוצרים
 
-Get the Nutriscore
+קבלת ה־Nutriscore
 
 היסטוריית הסריקה שלך, פרטית לחלוטין וניתנת לייצוא
 
@@ -17,7 +17,7 @@ Get the Nutriscore
 
 רכיב תזונתי, מפושט
 
-Allergen alert
+התראת אלרגנים
 
 קבלת חלופות למוצרי המזון האהובים עליך
 
@@ -31,11 +31,11 @@ Allergen alert
 
 ויקיפדיה של מוצרים
 
-Ingredients
+רכיבים
 
 רב עצמה
 
-Nutrition facts
+עובדות תזונתיות
 
 =====================
 צילומי מסך מגרסה 3
