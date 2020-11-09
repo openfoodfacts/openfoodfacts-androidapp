@@ -46,31 +46,31 @@ Scan food products or their barcode to obtain data on ingredients, additives and
 - The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
 
 
-▶ Offline Scan: Scan in ANY condition! (בקרוב)
+◀ סריקה בלתי מקוונת: להמשיך לסרוק בכל מצב! (בקרוב)
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
-▶ Your food, your data
-- Your data is yours, and is never sent online
+◀ המזון שלך, הנתונים שלך
+- הנתונים שלך הם שלך והם אף פעם לא נשלחים לאינטרנט
 - ניתן להשתמש ביישומון בעילום שם
 - ניתן לייצא את היסטוריית הסריקות שלך
 
-▶ Set up allergen alerts on products
+◀ הגדרת אזהרות אלרגנים על מוצרים
 - יש לך רגישות לחלב, גלוטן, ביצים, פולי סויה, אגוזים, דגים, סלרי, חרדל, גופרית דו־חמצנית וסולפיטים, בוטנים, זרעי שומשום, סרטנים, רכיכות או תורמוס?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- ניתן לערוך קניות בזריזות על ידי שיקוף ראשוני של המזון שלך עם Open Food Facts.
 - נא לשים לב כי המידע אינו מדויק ב־100% והזיהוי אינו מדויק ב־100%. לכן, תמיד כדאי לבדוק היטב באופן עצמאי ולקרוא בעיון את האריזה.
 
 
-▶ Say hello and/or join us!
+◀ נשמח להכיר אותך ו/או לצרף אותך אלינו!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+מיזם Open Food Facts זמין גם דרך אתר האינטרנט https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+שאלות, משוב: contact@openfoodfacts.org
 
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
