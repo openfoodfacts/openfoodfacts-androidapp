@@ -379,7 +379,7 @@
     <string name="take_picture">Scatta una foto</string>
     <string name="choose_picture_from_gallery">Dalla galleria</string>
     <string name="take_picture_ingredients">Prendi una foto degli ingredienti</string>
-    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
+    <string name="take_picture_recycling">Scatta una foto delle istruzioni per il riciclaggio</string>
     <string name="take_picture_front">Scatta una foto della parte anteriore</string>
     <string name="take_picture_nutrition_table">Prendi una foto della tabella nutrizionale</string>
     <string name="take_more_pictures">Fai ulteriori foto</string>
@@ -628,7 +628,7 @@
     <string name="uploading_front_image">Caricamento immagine frontale</string>
     <string name="edit_front_image">Modifica la foto frontale</string>
     <string name="edit_nutrition_image">Modifica la foto nutrizionale</string>
-    <string name="edit_packaging_image">Edit the recycling photo</string>
+    <string name="edit_packaging_image">Modifica la foto del riciclaggio</string>
     <string name="edit_ingredients_image">Modifica la foto degli ingredienti</string>
     <string name="edit_other_image">Modifica la foto</string>
     <string name="sign_in_to_edit">Accedi per modificare un prodotto.</string>
