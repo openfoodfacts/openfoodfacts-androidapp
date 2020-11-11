@@ -379,7 +379,7 @@
     <string name="take_picture">Prendre une photo</string>
     <string name="choose_picture_from_gallery">Depuis la galerie</string>
     <string name="take_picture_ingredients">Prendre une photo des ingrédients</string>
-    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
+    <string name="take_picture_recycling">Prendre une photo des instructions de recyclage</string>
     <string name="take_picture_front">Prendre une photo de l’avant</string>
     <string name="take_picture_nutrition_table">Prendre une photo du tableau nutritionnel</string>
     <string name="take_more_pictures">Prendre plus de photos</string>
@@ -585,8 +585,8 @@
     <string name="nutrition_facts">Composition nutritionnelle</string>
     <string name="your_version">Vous</string>
     <string name="ingredients_picture">Photo de la liste des ingrédients</string>
-    <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
+    <string name="packaging">Recyclage</string>
+    <string name="recycling_picture">Image du recyclage</string>
     <string name="take_ingredients_picture_to_extract">(Veuillez prendre une photo des ingrédients pour les extraire automatiquement)</string>
     <string name="ingredients_list">Liste des ingrédients</string>
     <string name="ingredients_hint">Conserver l\'ordre, indiquer le % lorsqu\'il est précisé, séparer par une virgule ou - , utiliser les ( ) pour les ingrédients d\'un ingrédient, indiquer les allergènes entre _</string>
@@ -628,7 +628,7 @@
     <string name="uploading_front_image">Envoi de l\'image principale</string>
     <string name="edit_front_image">Modifier la photo avant</string>
     <string name="edit_nutrition_image">Modifier la photo de la nutrition</string>
-    <string name="edit_packaging_image">Edit the recycling photo</string>
+    <string name="edit_packaging_image">Editer la photo du recyclage</string>
     <string name="edit_ingredients_image">Modifier la photo des ingrédients</string>
     <string name="edit_other_image">Modifier la photo</string>
     <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
@@ -668,7 +668,7 @@
     <string name="update_image">Envoyer une image mise à jour</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extraire les ingrédients</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
+    <string name="extract_recycling_prompt">Extraire les instructions de recyclage</string>
     <string name="add_nutrient_prompt_text">Ajouter les informations nutritionnelles pour calculer le Nutri-Score</string>
     <string name="add_category_prompt_text">Ajouter la catégorie pour calculer le Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Ajouter les informations nutritionnelles et la catégorie pour calculer le Nutri-Score</string>
