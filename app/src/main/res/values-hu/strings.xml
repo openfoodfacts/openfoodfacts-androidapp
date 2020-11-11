@@ -379,6 +379,7 @@
     <string name="take_picture">Fotó készítése</string>
     <string name="choose_picture_from_gallery">Kiválasztás galériából</string>
     <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Készíts egy képet az elejéről</string>
     <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
     <string name="take_more_pictures">Készítsen további képeket</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Tápértékadatok</string>
     <string name="your_version">A tied</string>
     <string name="ingredients_picture">Összetevők képe</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Kérem, készítsen egy képet az összetevőkről, hogy be tudja olvasni róla szöveget a program)</string>
     <string name="ingredients_list">Összetevők</string>
     <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a [%s]zázalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon () (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
@@ -626,6 +629,7 @@
     <string name="uploading_front_image">Elölnézeti fotó feltöltése</string>
     <string name="edit_front_image">Elölnézeti kép szerkesztése</string>
     <string name="edit_nutrition_image">Tápérték adatok kép szerkesztése</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Összetevők kép szerkesztése</string>
     <string name="edit_other_image">Kép szerkesztése</string>
     <string name="sign_in_to_edit">Kérjük, jelentkezzen be egy termék szerkesztéséhez.</string>
@@ -665,6 +669,7 @@
     <string name="update_image">Frissített kép küldése</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Összetevők kiolvasása</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Adjon hozzá tápérték adatokat a Nutri-Score kiszámításához</string>
     <string name="add_category_prompt_text">Adjon hozzá egy kategóriát a Nutri-Score kiszámításához</string>
     <string name="add_nutrient_category_prompt_text">Adjon hozzá tápérték adatokat és egy kategóriát a Nutri-Score kiszámításához</string>
@@ -753,7 +758,7 @@
     <string name="ingredient_analysis_tip">Kattintson az alábbi ikonokra, ha többet szeretne megtudni a termékről, és kiválasztani, hogy melyik információ érdekli.</string>
     <string name="got_it">Rendben!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
+    <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">A termék összetevői %1$s.</string>
     <string name="ingredients_in_this_product">A termék összetevői amik %1$s:</string>
     <string name="display_analysis_tag_status">%1$s állapot megjelenítése</string>
