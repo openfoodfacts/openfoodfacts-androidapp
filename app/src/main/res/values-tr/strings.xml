@@ -379,6 +379,7 @@
     <string name="take_picture">Fotoğraf çek</string>
     <string name="choose_picture_from_gallery">Galeriden</string>
     <string name="take_picture_ingredients">Malzemelerin fotoğrafını çekin</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Ön fotoğrafını çekin</string>
     <string name="take_picture_nutrition_table">Beslenme tablosunun resmini çekin</string>
     <string name="take_more_pictures">Daha fazla resim çek</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Besin Değerleri</string>
     <string name="your_version">Seninki</string>
     <string name="ingredients_picture">İçindekiler Resmi</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Lütfen otomatik olarak almak için içindekilerin bir fotoğrafını çekin)</string>
     <string name="ingredients_list">İçindekiler Listesi</string>
     <string name="ingredients_hint">Sırasını koruyun, varsa %\'sini belirtin, virgül ile ayırın ya da - kullanın, bir malzemenin içindekileri belirtmek için () kullanın, alerjenlerin etrafını _ ile çevirin</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Ön fotoğrafı düzenleyin</string>
     <string name="edit_nutrition_image">Beslenme fotoğrafını düzenleyin</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">İçindekiler fotoğrafını düzenleyin</string>
     <string name="edit_other_image">Fotoğrafı düzenle</string>
     <string name="sign_in_to_edit">Ürün düzenlemek için lütfen oturum açın.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Güncellenmiş Bir Resim Gönder</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">İçindekileri çıkartın</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Nutri-Score hesaplamak için besin değerlerini ekleyin</string>
     <string name="add_category_prompt_text">Nutri-Score hesaplamak için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Nutri-Score hesaplamak için bir kategori ve besin değerlerini ekleyin</string>
@@ -752,7 +757,7 @@
     <string name="ingredient_analysis_tip">Ürün hakkında daha fazla bilgi edinmek ve ilgilendiğiniz bilgileri seçmek için aşağıdaki simgelere tıklayın.</string>
     <string name="got_it">Anladım!</string>
     <string name="onboarding_hint_msg">İpucu: %s </string>
-    <string name="ingredient_image_edit_tip">Yakınlaştırmak, değiştirmek, kırpmak, döndürmek ve daha fazlası için resme dokunun…</string>
+    <string name="image_edit_tip">Yakınlaştırmak, değiştirmek, kırpmak, döndürmek ve daha fazlası için resme dokunun…</string>
     <string name="ingredients_in_this_product_are">Bu ürünün içindeki malzemeler %1$s.</string>
     <string name="ingredients_in_this_product">Bu ürünün içindeki %1$s olan malzemeler:</string>
     <string name="display_analysis_tag_status">%1$s durumunu göster</string>
