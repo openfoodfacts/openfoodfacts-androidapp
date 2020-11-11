@@ -40,7 +40,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class EnvironmentProductFragment extends BaseFragment {
     private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
-    private CompositeDisposable disp;
+    private final CompositeDisposable disp = new CompositeDisposable();
     private PhotoReceiverHandler photoReceiverHandler;
     private FragmentEnvironmentProductBinding binding;
     private ProductState activityProductState;
@@ -56,12 +56,11 @@ public class EnvironmentProductFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        disp = new CompositeDisposable();
+        api = new OpenFoodAPIClient(requireActivity());
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        api = new OpenFoodAPIClient(requireActivity());
         binding = FragmentEnvironmentProductBinding.inflate(inflater);
         return binding.getRoot();
     }
