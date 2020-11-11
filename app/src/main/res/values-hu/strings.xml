@@ -752,7 +752,7 @@
     <string name="ingredient_analysis_tip">Kattintson az alábbi ikonokra, ha többet szeretne megtudni a termékről, és kiválasztani, hogy melyik információ érdekli.</string>
     <string name="got_it">Rendben!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
+    <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">A termék összetevői %1$s.</string>
     <string name="ingredients_in_this_product">A termék összetevői amik %1$s:</string>
     <string name="display_analysis_tag_status">%1$s állapot megjelenítése</string>

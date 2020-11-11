@@ -50,6 +50,7 @@ public class IngredientsWithTagDialogFragment extends DialogFragment {
     private static final String NAME_KEY = "name";
     private static final String INGREDIENTS_IMAGE_URL_KEY = "ingredients_image_url";
     private static final String INGREDIENTS_KEY = "ingredients";
+    private static final String PACKAGING_IMAGE_URL_KEY = "packaging_image_url";
     private static final String MISSING_INGREDIENTS_KEY = "missing_ingredients";
     private static final String PHOTOS_TO_BE_VALIDATED_KEY = "photos_to_be_validated";
     private static final String AMBIGUOUS_INGREDIENT_KEY = "ambiguous_ingredient";
