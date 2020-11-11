@@ -17,6 +17,7 @@ public class ProductImage {
     private final RequestBody imguploadFront;
     private final RequestBody imguploadIngredients;
     private final RequestBody imguploadNutrition;
+    private final RequestBody imguploadPackaging;
     private final RequestBody imguploadOther;
     private String filePath;
     private final String barcode;
@@ -37,18 +38,28 @@ public class ProductImage {
                 this.imguploadFront = createImageRequest(image);
                 this.imguploadIngredients = null;
                 this.imguploadNutrition = null;
+                this.imguploadPackaging = null;
                 this.imguploadOther = null;
                 break;
             case INGREDIENTS:
                 this.imguploadIngredients = createImageRequest(image);
                 this.imguploadFront = null;
                 this.imguploadNutrition = null;
+                this.imguploadPackaging = null;
                 this.imguploadOther = null;
                 break;
             case NUTRITION:
                 this.imguploadNutrition = createImageRequest(image);
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
+                this.imguploadPackaging = null;
+                this.imguploadOther = null;
+                break;
+            case PACKAGING:
+                this.imguploadNutrition = null;
+                this.imguploadFront = null;
+                this.imguploadIngredients = null;
+                this.imguploadPackaging = createImageRequest(image);
                 this.imguploadOther = null;
                 break;
             case OTHER:
@@ -56,11 +67,13 @@ public class ProductImage {
                 this.imguploadNutrition = null;
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
+                this.imguploadPackaging = null;
                 break;
             default:
                 this.imguploadNutrition = null;
                 this.imguploadFront = null;
                 this.imguploadIngredients = null;
+                this.imguploadPackaging = null;
                 this.imguploadOther = null;
                 break;
         }
@@ -95,6 +108,10 @@ public class ProductImage {
 
     public RequestBody getImguploadNutrition() {
         return imguploadNutrition;
+    }
+
+    public RequestBody getImguploadPackaging() {
+        return imguploadPackaging;
     }
 
     public RequestBody getImguploadOther() {

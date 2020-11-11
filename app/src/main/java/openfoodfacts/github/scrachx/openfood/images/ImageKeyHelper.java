@@ -1,11 +1,13 @@
 package openfoodfacts.github.scrachx.openfood.images;
 
 import android.os.Bundle;
+
+import org.apache.commons.lang.StringUtils;
+
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.Product;
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
-import org.apache.commons.lang.StringUtils;
 
 public class ImageKeyHelper {
     public static final String IMAGE_URL = "imageurl";
@@ -55,6 +57,8 @@ public class ImageKeyHelper {
                 return R.string.edit_front_image;
             case NUTRITION:
                 return R.string.edit_nutrition_image;
+            case PACKAGING:
+                return R.string.edit_packaging_image;
             case INGREDIENTS:
                 return R.string.edit_ingredients_image;
             default:
@@ -70,6 +74,8 @@ public class ImageKeyHelper {
                 return R.string.nutrition_facts;
             case INGREDIENTS:
                 return R.string.ingredients;
+            case PACKAGING:
+                return R.string.packaging;
             default:
                 return R.string.other_picture;
         }

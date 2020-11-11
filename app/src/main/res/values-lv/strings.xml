@@ -757,7 +757,7 @@
     <string name="ingredient_analysis_tip">Noklikšķiniet uz tālāk esošajām ikonām, lai uzzinātu vairāk par produktu un izvēlētos interesējošo informāciju.</string>
     <string name="got_it">Sapratu!</string>
     <string name="onboarding_hint_msg">Padoms: %s </string>
-    <string name="ingredient_image_edit_tip">Pieskarieties attēlam, lai to tuvinātu, mainītu, apgrieztu, pagrieztu un vēl vairāk…</string>
+    <string name="image_edit_tip">Pieskarieties attēlam, lai to tuvinātu, mainītu, apgrieztu, pagrieztu un vēl vairāk…</string>
     <string name="ingredients_in_this_product_are">Šī produkta sastāvdaļas ir %1$s.</string>
     <string name="ingredients_in_this_product">Šī produkta sastāvdaļas, kas ir %1$s:</string>
     <string name="display_analysis_tag_status">Parādīt statusu %1$s</string>

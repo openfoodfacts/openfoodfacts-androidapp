@@ -751,7 +751,7 @@
     <string name="ingredient_analysis_tip">Clique nos ícones abaixo para saber mais sobre o produto e selecionar em quais informações está interessado.</string>
     <string name="got_it">Entendido!</string>
     <string name="onboarding_hint_msg">Dica: %s </string>
-    <string name="ingredient_image_edit_tip">Toque na imagem para ampliá-la, alterá-la, cortá-la, girá-la e mais…</string>
+    <string name="image_edit_tip">Toque na imagem para ampliá-la, alterá-la, cortá-la, girá-la e mais…</string>
     <string name="ingredients_in_this_product_are">Os ingredientes deste produto são %1$s.</string>
     <string name="ingredients_in_this_product">Ingredientes neste produto que são %1$s:</string>
     <string name="display_analysis_tag_status">Exibir status de %1$s</string>
