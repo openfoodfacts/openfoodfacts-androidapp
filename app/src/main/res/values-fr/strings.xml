@@ -628,7 +628,7 @@
     <string name="uploading_front_image">Envoi de l\'image principale</string>
     <string name="edit_front_image">Modifier la photo avant</string>
     <string name="edit_nutrition_image">Modifier la photo de la nutrition</string>
-    <string name="edit_packaging_image">Editer la photo du recyclage</string>
+    <string name="edit_packaging_image">Éditer la photo du recyclage</string>
     <string name="edit_ingredients_image">Modifier la photo des ingrédients</string>
     <string name="edit_other_image">Modifier la photo</string>
     <string name="sign_in_to_edit">Veuillez vous connecter pour modifier un produit.</string>
