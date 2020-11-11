@@ -379,6 +379,7 @@
     <string name="take_picture">Maak een foto</string>
     <string name="choose_picture_from_gallery">Uit Galerij</string>
     <string name="take_picture_ingredients">Maak een foto van de ingrediënten</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Maak een foto van de voorkant</string>
     <string name="take_picture_nutrition_table">Maak een foto van de voedingstabel</string>
     <string name="take_more_pictures">Maak meer foto\'s</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Voedingswaarden</string>
     <string name="your_version">Jouw</string>
     <string name="ingredients_picture">Foto van de ingrediëntenlijst</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Maak een foto van de ingrediënten om ze automatisch te herkennen)</string>
     <string name="ingredients_list">Ingrediëntenlijst</string>
     <string name="ingredients_hint">Behoud de volgorde, geef het percentage indien vermeld, gescheiden met komma\'s of \'-\', gebruik () voor de ingrediënten van een ingrediënt, vermeld allergenen tussen \'_\' zoals bijvoorbeeld _melk_</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Foto van voorkant aan het uploaden</string>
     <string name="edit_front_image">Bewerk de foto van de voorkant</string>
     <string name="edit_nutrition_image">Bewerk de foto met voedingswaarden</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Bewerk de foto met ingrediënten</string>
     <string name="edit_other_image">Foto bewerken</string>
     <string name="sign_in_to_edit">Log in om een product te bewerken.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Stuur een bijgewerkte afbeelding</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Herken de ingrediënten</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
     <string name="add_category_prompt_text">Voeg een categorie toe om de Nutri-Score te berekenen</string>
     <string name="add_nutrient_category_prompt_text">Voeg voedingsfeiten en een categorie toe om de Nutri-Score te berekenen</string>
@@ -752,7 +757,7 @@
     <string name="ingredient_analysis_tip">Klik op onderstaande pictogrammen om meer te weten te komen over het product en om informatie te selecteren waarin je geïnteresseerd bent.</string>
     <string name="got_it">Ik snap het!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tik op de afbeelding om in te zoomen, te wijzigen, bij te snijden, te draaien en meer…</string>
+    <string name="image_edit_tip">Tik op de afbeelding om in te zoomen, te wijzigen, bij te snijden, te draaien en meer…</string>
     <string name="ingredients_in_this_product_are">Ingrediënten in dit product zijn %1$s.</string>
     <string name="ingredients_in_this_product">Ingrediënten in dit product die %1$s zijn:</string>
     <string name="display_analysis_tag_status">Status %1$s weergeven</string>
