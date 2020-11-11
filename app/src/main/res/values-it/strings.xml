@@ -379,6 +379,7 @@
     <string name="take_picture">Scatta una foto</string>
     <string name="choose_picture_from_gallery">Dalla galleria</string>
     <string name="take_picture_ingredients">Prendi una foto degli ingredienti</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Scatta una foto della parte anteriore</string>
     <string name="take_picture_nutrition_table">Prendi una foto della tabella nutrizionale</string>
     <string name="take_more_pictures">Fai ulteriori foto</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Informazioni nutrizionali</string>
     <string name="your_version">Tuoi</string>
     <string name="ingredients_picture">Foto degli ingredienti</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Fai una foto degli ingredienti per estrarli automaticamente)</string>
     <string name="ingredients_list">Lista degli ingredienti</string>
     <string name="ingredients_hint">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Caricamento immagine frontale</string>
     <string name="edit_front_image">Modifica la foto frontale</string>
     <string name="edit_nutrition_image">Modifica la foto nutrizionale</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Modifica la foto degli ingredienti</string>
     <string name="edit_other_image">Modifica la foto</string>
     <string name="sign_in_to_edit">Accedi per modificare un prodotto.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Invia un\'immagine aggiornata</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Aggiungi i valori nutrizionali per calcolare il Nutri-Score</string>
     <string name="add_category_prompt_text">Aggiungi una categoria per calcolare il Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Aggiungi i valori nutrizionali e una categoria per calcolare il Nutri-Score</string>
@@ -752,7 +757,7 @@
     <string name="ingredient_analysis_tip">Fai clic sulle icone sottostanti per ulteriori informazioni sul prodotto e per selezionare le informazioni che ti interessano.</string>
     <string name="got_it">Capito!</string>
     <string name="onboarding_hint_msg">Suggerimento: %s </string>
-    <string name="ingredient_image_edit_tip">Tocca l\'immagine per ingrandirla, modificarla, ritagliarla, ruotarla e altro ancora…</string>
+    <string name="image_edit_tip">Tocca l\'immagine per ingrandirla, modificarla, ritagliarla, ruotarla e altro ancora…</string>
     <string name="ingredients_in_this_product_are">Gli ingredienti di questo prodotto sono %1$s.</string>
     <string name="ingredients_in_this_product">Gli ingredienti di questo prodotto che sono %1$s:</string>
     <string name="display_analysis_tag_status">Mostra stato %1$s</string>
