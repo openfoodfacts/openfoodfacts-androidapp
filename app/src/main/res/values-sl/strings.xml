@@ -389,6 +389,7 @@
     <string name="take_picture">Fotografiraj</string>
     <string name="choose_picture_from_gallery">Iz galerije</string>
     <string name="take_picture_ingredients">Fotografiraj sestavine</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Naredi sliko spredaj</string>
     <string name="take_picture_nutrition_table">Naredi posnetek iz tabele sestavin</string>
     <string name="take_more_pictures">Naredite več slik</string>
@@ -596,6 +597,8 @@
     <string name="nutrition_facts">Dejstva o hranilni vrednosti</string>
     <string name="your_version">Vaše</string>
     <string name="ingredients_picture">Slika sestavin</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Prosim, posnamite sliko sestavin, za samodejno branje)</string>
     <string name="ingredients_list">Seznam sestavin</string>
     <string name="ingredients_hint">Naj bo urejeno, navedite %, če je naveden, ločite z vejico ali uporabite -, uporabite () za sestavine od sestavin, obkrožite alergene z _</string>
@@ -637,6 +640,7 @@
     <string name="uploading_front_image">Nalaganje sprednje slike</string>
     <string name="edit_front_image">Uredite sprednjo fotografijo</string>
     <string name="edit_nutrition_image">Uredite prehransko fotografijo</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Uredite fotografijo sestavin</string>
     <string name="edit_other_image">Uredite fotografijo</string>
     <string name="sign_in_to_edit">Prijavite se, če želite urediti izdelek.</string>
@@ -676,6 +680,7 @@
     <string name="update_image">Pošlji posodobljeno sliko</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Preberi sestavine</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Dodajte prehranska dejstva za izračun Nutri-Score</string>
     <string name="add_category_prompt_text">Dodaj kategorijo za izračun Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Dodaj prehranska dejstva za izračun Nutri-Score</string>
@@ -764,7 +769,7 @@
     <string name="ingredient_analysis_tip">Kliknite na spodnje ikone, če želite izvedeti več o izdelku in izbrati, katere informacije vas zanimajo.</string>
     <string name="got_it">Razumem!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
+    <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
