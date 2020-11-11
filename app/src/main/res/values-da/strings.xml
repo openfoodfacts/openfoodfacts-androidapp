@@ -379,6 +379,7 @@
     <string name="take_picture">Tag et foto</string>
     <string name="choose_picture_from_gallery">Fra Galleri</string>
     <string name="take_picture_ingredients">Tag et foto af ingredienserne</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Tag et foto af forsiden</string>
     <string name="take_picture_nutrition_table">Tag et foto af ernæringsoversigten</string>
     <string name="take_more_pictures">Tag flere billeder</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Ernæringsfakta</string>
     <string name="your_version">Dine</string>
     <string name="ingredients_picture">Ingrediensfoto</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
     <string name="ingredients_list">Ingrediensoversigt</string>
     <string name="ingredients_hint">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Uploader forsidefoto</string>
     <string name="edit_front_image">Refigér forsidefoto</string>
     <string name="edit_nutrition_image">Refigér ernæringsfoto</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Uploader ingrediensfoto</string>
     <string name="edit_other_image">Redigér foto</string>
     <string name="sign_in_to_edit">Log ind for at redigere et produkt.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Send et opdateret billede</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Tilføj næringsfakta og en kategori til beregning af Nutri-Score</string>
@@ -752,7 +757,7 @@
     <string name="ingredient_analysis_tip">Klik på ikonerne herunder for at få mere at vide om produktet, og vælge hvilke oplysninger du er interesseret i.</string>
     <string name="got_it">Forstået!</string>
     <string name="onboarding_hint_msg">Tip: %s </string>
-    <string name="ingredient_image_edit_tip">Tryk på fotoet for at zoome, ændre, beskære, rotere mv.…</string>
+    <string name="image_edit_tip">Tryk på fotoet for at zoome, ændre, beskære, rotere mv.…</string>
     <string name="ingredients_in_this_product_are">Ingredienser i dette produkt udgør %1$s.</string>
     <string name="ingredients_in_this_product">Ingredienser i dette produkt udgør %1$s:</string>
     <string name="display_analysis_tag_status">Vis %1$s-status</string>
