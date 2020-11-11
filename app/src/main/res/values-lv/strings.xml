@@ -384,6 +384,7 @@
     <string name="take_picture">Uzņemt fotogrāfiju</string>
     <string name="choose_picture_from_gallery">No galerijas</string>
     <string name="take_picture_ingredients">Nofotografēt sastāvdaļas</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Nofotografējiet priekšpusi</string>
     <string name="take_picture_nutrition_table">Fotografēt uzturvērtības tabulu</string>
     <string name="take_more_pictures">Uzņemt papildus fotogrāfijas</string>
@@ -590,6 +591,8 @@
     <string name="nutrition_facts">Uztura fakti</string>
     <string name="your_version">Jūsu</string>
     <string name="ingredients_picture">Sastāvdaļas attēls</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Lūdzu, nofotografējiet sastāvdaļas, lai tās automātiski izvilktu)</string>
     <string name="ingredients_list">Sastāvdaļu saraksts</string>
     <string name="ingredients_hint">Saglabājiet pasūtījumu, norādiet%, kad norādīts, atdaliet ar komatu vai lietojiet -, sastāvdaļu sastāvdaļām izmantojiet (), ieskaujiet alergēnus ar _</string>
@@ -631,6 +634,7 @@
     <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Rediģējiet priekšējo fotoattēlu</string>
     <string name="edit_nutrition_image">Rediģējiet uztura fotoattēlu</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Rediģējiet sastāvdaļu fotoattēlu</string>
     <string name="edit_other_image">Rediģējiet fotoattēlu</string>
     <string name="sign_in_to_edit">Lūdzu, pierakstieties, lai rediģētu produktu.</string>
@@ -670,6 +674,7 @@
     <string name="update_image">Nosūtiet atjauninātu attēlu</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Ekstrakta sastāvdaļas</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Lai aprēķinātu Nutri-Score, pievienojiet faktus par uzturvērtību</string>
     <string name="add_category_prompt_text">Pievienojiet kategoriju, lai aprēķinātu Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Pievienojiet uzturvērtības faktus un kategoriju, lai aprēķinātu Nutri-Score</string>
@@ -758,7 +763,7 @@
     <string name="ingredient_analysis_tip">Noklikšķiniet uz tālāk esošajām ikonām, lai uzzinātu vairāk par produktu un izvēlētos interesējošo informāciju.</string>
     <string name="got_it">Sapratu!</string>
     <string name="onboarding_hint_msg">Padoms: %s </string>
-    <string name="ingredient_image_edit_tip">Pieskarieties attēlam, lai to tuvinātu, mainītu, apgrieztu, pagrieztu un vēl vairāk…</string>
+    <string name="image_edit_tip">Pieskarieties attēlam, lai to tuvinātu, mainītu, apgrieztu, pagrieztu un vēl vairāk…</string>
     <string name="ingredients_in_this_product_are">Šī produkta sastāvdaļas ir %1$s.</string>
     <string name="ingredients_in_this_product">Šī produkta sastāvdaļas, kas ir %1$s:</string>
     <string name="display_analysis_tag_status">Parādīt statusu %1$s</string>
