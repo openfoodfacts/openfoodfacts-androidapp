@@ -4,10 +4,10 @@ Open Products Facts is an open database of all products in the world.
 
 - Open Products Facts הוא מסד נתוני מוצרים שנוצר על ידי כולם, למען כולם.
 - ניתן להשתמש במסד הנתונים כדי לקחת החלטות טובות יותר וכיוון שמדובר בנתונים פתוחים, כל אחד יכול לגזור את מסד הנתונים לכל מטרה שהיא.
-- Open Products Facts הוא מיזם ללא כוונת רווח שפותח על ידי אלפי מתנדבים מכל רחבי העולם. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts הוא מיזם ללא כוונת רווח שפותח על ידי אלפי מתנדבים מכל רחבי העולם. יש לנו המון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות. 
 - ניתן להתחיל לתרום עוד היום על ידי הוספת המוצר הראשון שלך. 
 
-*** Get the Facts ***
+*** להכיר את העובדות ***
 - עם Open Products Facts סוף סוף אפשר להבין את כל הקשקושים שכתובים על תוויות המוצרים.
 
 *** לאסוף את כללללללל הדברים ***
@@ -16,20 +16,20 @@ Open Products Facts is an open database of all products in the world.
 - Open Miniature Food Facts - מסד הנתונים הגדול ביותר למוצרי מזון מזעריים
 - Open ??? Facts - יצירת מסד נתונים משלך :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** עובד מצוין בכל מצב ***
+- ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
+- היישומון טוען רק את מה שנחוץ לו כדי לצמצם את צריכת תקשורת הנתונים והסוללה
+- אין צורך במצלמה כדי לחפש מוצר. ניתן גם להקליד את הברקוד אם אין לך מצלמה או אם נתקלת בתקלה כלשהי.
 
 *** המוצרים שלך, הנתונים שלך ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- הנתונים האישיים שלך הם שלך והם אף פעם לא נשלחים לאינטרנט
+- ניתן להשתמש ביישומון בצורה אלמונית
+- יש לך אפשרות לייצא את היסטוריית הסריקה שלך
 
 בשביל מזון, ניתן להתקין את Open Food Facts, לקוסמטיקה יש את Open Beauty Facts ולמזון לחיות מחמד יש את Open Pet Food Facts.
 
 Open Products Facts זמין גם כאתר לדפדפן בכתובת https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+שאלות, משוב: contact@openfoodfacts.org
 
 *** הרשומה המקורית מאחד באפריל ***
 
@@ -39,11 +39,11 @@ Questions, feedback : contact@openfoodfacts.org
 
 אז התכוננו ליצירת לא 1 אלא 77,000 מסדי נתונים חדשים שונים! 
 
-Open Products Facts מתעתד להיות מיזם שאפתני במיוחד. Here are a few of them: 
+Open Products Facts מתעתד להיות מיזם שאפתני במיוחד. להלן מגוון מימושים נוספים: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - מס הנתונים הפתוח הגדול ביותר לעפרונות צבעוניים
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - מסד הנתונים הגדול ביותר של מוצרי מזון מיניאטוריים
 
 Open ??? Facts - מסד הנתונים הגדול ביותר לתיעוד ???
 
