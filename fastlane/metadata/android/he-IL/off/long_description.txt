@@ -7,51 +7,51 @@ Scan food products or their barcode to obtain data on ingredients, additives and
 
 כדי לחקור על מיזם Open Food Facts שמופעל לחלוטין על ידי מתנדבים, נא לבקר בכתובת https://world.openfoodfacts.org
 
-▶ Choose the products that are good for you
-- The Nutri-Score grade, from "A" to "E" >> Nutritional quality
-- The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
+◀ לבחור את המוצרים שעושים טוב לך
+- ציון ה־Nutri-Score, מ־„A” עד „E” >> איכות תזונתית
+- קבוצת ה־NOVA, מ־„1” עד „4” >> זיהוי מזון מעובד במיוחד
 - ניתן להשוות בקלות בין כמה מוצרים שרק מעניין אותך להשוות ביניהם, זה לצד זה פשוט בזכות סריקתם. 
 
-▶ And good for the planet!
-- The carbon impact of your food
-- Get a sense of how much of your daily carbon quota you're using for food
-- Based on the footprints computed for France by ADEME.
-- Join us and help us to bring the Carbon Impact to your country!
-- To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
+◀ ולכדור הארץ!
+- ההשפעה הפחמנית של המזון שלך
+- קבלת תחושה על המיכסה הפחמנית היומית שנפלטת עקב המזון שצרכת
+- בהתאם לטביעות הרגל שמחושבות עבור צרפת על ידי ADEME.
+- אפשר להצטרף אלינו ולסייע לנו לקדם את ההשפעה הפחמנית במדינה שלך!
+- כדי להציג טביעת רגל פחמנית, למוצר חייבת להיות רשימת רכיבים מלאה עם אחוזי בשר או דג לצד כמות
 
 
-▶ Contribute to Food Transparency
+◀ תרומה לשקיפות המזון
 - Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
-- You can start contributing today by adding a product from your fridge.
+- Open Food Facts הוא מיזם ללא מטרות רווח אותו מפתחים אלפי מתנדבים מכל רחבי העולם. יש לנו המון מיזמים מלהיבים שניתן לתרום להם במגוון דרכים שונות.
+- ניתן להתחיל לתרום כבר היום על ידי הוספת מוצרים מהמקרר שלך.
 
 ◀ יצירת רשימות
 יצירת רשימות קניות, מעקב אחר המזון הנצרך עם אפשרות לשיתוף ולייצוא של הרשימות שלך.
 
-▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+◀ להכיר את העובדות
+- Open Food Facts helps you to make sense of the fine print on products labels. ניתן למצוא:
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+- על יינות ובירות ניתן למצוא את תכולת האלכוהול.
 
 
-▶ Based on Science, helping back Science!
+◀ מבוסס על מדע, מסייע למדע בחזרה!
 
-- We don't make up things. We rely on peer-reviewed science.
+- אנחנו לא ממציאים דברים. אנו נסמכים על מדע שנסקר על ידי עמיתינו.
 - The Nutri-Score has been created by the independent French team led by Professor Hercberg.
-- The NOVA groups on food processing have been designed by the international team of Professor Monteiro.
+- קבוצות ה־NOVA על עיבוד מזון תוכננו על ידי הצוות הבינלאומי של פרופסור מונטניירו.
 - You can get a synthesis of EFSA exposure levels on food additives.
-- The Open Food Facts community is collaborating with research teams across the planet to improve nutrition research that benefits all.
+- קהילת Open Food Facts משתפת פעולה עם קבוצות מחקר בכל רחבי העולם כדי לשפר את המחקר התזונתי למען כולם.
 
 
 ◀ סריקה בלתי מקוונת: להמשיך לסרוק בכל מצב! (בקרוב)
-Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
+סריקה במהירות האור (אפילו במטוס, בצוללת או בסופר)
 
-- The whole planet, in your pocket !
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption.
+- כל העולם, אצלך בכיס!
+- ניתן להוסיף מוצרים חדשים, אפילו אם אין לך חיבור לאינטרנט כרגע.
+- היישומון טוען רק את מה שנחוץ לו כדי לצמצם את צריכת תקשורת הנתונים והסוללה.
 
 ◀ המזון שלך, הנתונים שלך
 - הנתונים שלך הם שלך והם אף פעם לא נשלחים לאינטרנט
