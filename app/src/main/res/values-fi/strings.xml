@@ -379,6 +379,7 @@
     <string name="take_picture">Ota kuva</string>
     <string name="choose_picture_from_gallery">Galleriasta</string>
     <string name="take_picture_ingredients">Ota kuva aineksista</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Ota kuva edestä</string>
     <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
     <string name="take_more_pictures">Ota lisää kuvia</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Ravintosisältö</string>
     <string name="your_version">Sinun</string>
     <string name="ingredients_picture">Kuva ainesosista</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Ota kuva aineosista, jotta ne voidaan poimia automaattisesti)</string>
     <string name="ingredients_list">Ainesosaluettelo</string>
     <string name="ingredients_hint">Säilytä järjestys. Ilmaise prosenttiosuus, jos ilmoitettu. Erottele pilkulla tai väliviivalla. Käytä sulkuja () ainesosan ainesosille. Laita allergeenit kahden alaviivan väliin esim. _maito_</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Lähetetään etukuvaa</string>
     <string name="edit_front_image">Muokkaa etukuvaa</string>
     <string name="edit_nutrition_image">Muokkaa kuvaa ravintosisällöstä</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Muokkaa kuvaa ainesosista</string>
     <string name="edit_other_image">Muokkaa kuvaa</string>
     <string name="sign_in_to_edit">Kirjaudu sisään muokataksesi tuotetta.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Lähetä päivitetty kuva</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Poimi ainesosat</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Scoren laskemiseksi</string>
     <string name="add_category_prompt_text">Lisää tuoteluokka Nutri-Scoren laskemiseksi</string>
     <string name="add_nutrient_category_prompt_text">Lisää ravintosisältö ja luokitus Nutri-Scoren laskemiseksi</string>
@@ -752,7 +757,7 @@
     <string name="ingredient_analysis_tip">Napsauttamalla alla olevia kuvakkeita saat lisätietoja tuotteesta, ja voit valita tiedot joista olet kiinnostunut.</string>
     <string name="got_it">Selvä!</string>
     <string name="onboarding_hint_msg">Vihje: %s </string>
-    <string name="ingredient_image_edit_tip">Kosketa kuvaa zoomataksesi, muuttaaksesi, rajataksesi, kiertääksesi jne… sitä</string>
+    <string name="image_edit_tip">Kosketa kuvaa zoomataksesi, muuttaaksesi, rajataksesi, kiertääksesi jne… sitä</string>
     <string name="ingredients_in_this_product_are">Tämän tuotteen ainesosat ovat %1$s.</string>
     <string name="ingredients_in_this_product">Tämän tuotteen ainesosat, jotka ovat %1$s:</string>
     <string name="display_analysis_tag_status">Näytä tila %1$s</string>
