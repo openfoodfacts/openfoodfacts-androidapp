@@ -375,6 +375,7 @@
     <string name="take_picture">拍张照片</string>
     <string name="choose_picture_from_gallery">从画廊</string>
     <string name="take_picture_ingredients">拍摄营养成分</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">拍摄正面照片</string>
     <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍摄更多照片</string>
@@ -579,6 +580,8 @@
     <string name="nutrition_facts">营养成分表</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
@@ -620,6 +623,7 @@
     <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">编辑正面照片</string>
     <string name="edit_nutrition_image">编辑营养照片</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">编辑成分照片</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">请登录以编辑产品</string>
@@ -659,6 +663,7 @@
     <string name="update_image">发送更新的图像</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">提取成分</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">添加营养成分以计算Nutri-Score</string>
     <string name="add_category_prompt_text">添加类别以计算Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">添加营养成分和类别以计算Nutri-Score</string>
@@ -747,7 +752,7 @@
     <string name="ingredient_analysis_tip">单击下面的图标以了解有关该产品的更多信息并选择您感兴趣的信息。</string>
     <string name="got_it">Got it!</string>
     <string name="onboarding_hint_msg">提示： %s </string>
-    <string name="ingredient_image_edit_tip">点击图像以缩放，更改，裁剪，旋转并更多…</string>
+    <string name="image_edit_tip">点击图像以缩放，更改，裁剪，旋转并更多…</string>
     <string name="ingredients_in_this_product_are">该产品中的成分为 %1$s。</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">显示 %1$s 状态</string>
