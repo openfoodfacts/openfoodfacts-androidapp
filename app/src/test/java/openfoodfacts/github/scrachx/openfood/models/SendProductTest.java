@@ -22,6 +22,7 @@ public class SendProductTest {
     private static final String IMG_UPLOAD_FRONT = "img front";
     private static final String IMG_UPLOAD_INGREDIENTS = "ingredients";
     private static final String IMG_UPLOAD_NUTRITION = "nutrition";
+    private static final String IMG_UPLOAD_PACKAGING = "packaging";
     private static final String LANG = "EN";
     private SendProduct sendProduct;
 
@@ -51,7 +52,7 @@ public class SendProductTest {
     @Test
     public void copy_copiesFromAnotherSendProduct() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING);
         SendProduct product2 = new SendProduct();
         product2.copy(product1);
         assertThat(product2.getBarcode()).isEqualTo(BARCODE);
@@ -68,29 +69,29 @@ public class SendProductTest {
     @Test
     public void isEqualWithEqualProducts_returnsTrue() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING);
         SendProduct product2 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING);
         assertThat(product1.isEqual(product2)).isTrue();
     }
 
     @Test
     public void isEqualWithProductsDifferById_returnsTrue() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING);
         Long id = 567L;
         SendProduct product2 = new SendProduct(id, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+                IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING);
         assertThat(product1.isEqual(product2)).isTrue();
     }
 
     @Test
     public void isEqualWithDifferentProducts_returnsFalse() {
         SendProduct product1 = new SendProduct(ID, BARCODE, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT, IMG_UPLOAD_FRONT,
-            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING);
         String differentBarcode = "different barcode";
         SendProduct product2 = new SendProduct(ID, differentBarcode, LANG, NAME, BRANDS, WEIGHT, WEIGHT_UNIT,
-            IMG_UPLOAD_FRONT, IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION);
+            IMG_UPLOAD_FRONT, IMG_UPLOAD_INGREDIENTS, IMG_UPLOAD_NUTRITION, IMG_UPLOAD_PACKAGING);
         assertThat(product1.isEqual(product2)).isFalse();
     }
 }
