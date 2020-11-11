@@ -28,15 +28,15 @@
         <item quantity="other">%d நிமிடங்கள் முன்னர்</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d hour ago</item>
-        <item quantity="other">%d hours ago</item>
+        <item quantity="one">%d மணிநேரத்திற்கு முன்பு</item>
+        <item quantity="other">%d மணிநேரத்திற்கு முன்</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">%d day ago</item>
-        <item quantity="other">%d days ago</item>
+        <item quantity="one">%d நாளுக்கு முன்பு</item>
+        <item quantity="other">%d நாட்களுக்கு முன்பு</item>
     </plurals>
     <string name="action_about">இதைப் பற்றி</string>
-    <string name="action_discover">Discover</string>
+    <string name="action_discover">கண்டுபிடி</string>
     <string name="contribute">எவ்வாறு பங்களிப்பது</string>
     <string name="action_find">கண்டுபிடி</string>
     <string name="product_incomplete_message">இத்தயாரிப்பு முழுமை பெறவில்லை. இதன் விளைவாக, நாங்கள் ஒவ்வாமை பரிசோதனையைச் செய்ய முடியவில்லை.</string>
@@ -50,7 +50,7 @@
         <item>Ingredients</item>
         <item>ஊட்டச்சத்து</item>
         <item>ஊட்டச்சத்து அட்டவணை</item>
-        <item>Environment</item>
+        <item>சுற்றுச்சூழல்</item>
     </string-array>
     <!-- New Nav Drawer Product Menu Items -->
     <string-array name="nav_drawer_new_items_product">
@@ -110,8 +110,8 @@
         <item>Lauric acid (12:0)</item>
         <item>Lignoceric acid (24:0)</item>
         <item>Linoleic acid / LA (18:2 n-6)</item>
-        <item>Magnesium</item>
-        <item>Maltodextrins</item>
+        <item>மக்னீசியம்</item>
+        <item>மால்டோடெக்ஸ்ட்ரின்கள்</item>
         <item>மால்டோசு</item>
         <item>மாங்கனீசு</item>
         <item>Mead acid (20:3 n-9)</item>
@@ -121,7 +121,7 @@
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
-        <item>Nucleotides</item>
+        <item>நியூக்ளியோடைடுகள்</item>
         <item>Oleic acid (18:1 n-9)</item>
         <item>Omega 3 fatty acids</item>
         <item>Omega 6 fatty acids</item>
@@ -129,18 +129,18 @@
         <item>Palmitic acid (16:0)</item>
         <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
         <item>pH</item>
-        <item>Phosphorus</item>
+        <item>பாசுபரசு</item>
         <item>Sugar alcohols (Polyols)</item>
         <item>Poly unsaturated fat</item>
         <item>பொட்டாசியம்</item>
         <item>செலினியம்</item>
         <item>சீரம் புரதங்கள்</item>
         <item>சிலிக்கா</item>
-        <item>Starch</item>
-        <item>Stearic acid (18:0)</item>
+        <item>ஸ்டார்ச்</item>
+        <item>ஸ்டீரிக் அமிலம் (18: 0)</item>
         <item>சுக்ரோசு</item>
         <item>டவுரின்</item>
-        <item>Trans fat</item>
+        <item>டிரான்ஸ் கொழுப்பு</item>
         <item>வைட்டமின் ஏ</item>
         <item>வைட்டமின் பி1 (தியாமின்)</item>
         <item>வைட்டமின் பி12 (கோபாலமின்)</item>
@@ -242,25 +242,25 @@
     <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">கடவுச்சொல்லில் குறைந்தது 6 எழுத்துகளாவது இருக்க வேண்டும்.</string>
-    <string name="user">user</string>
+    <string name="user">பயனர்</string>
     <string name="error_field_required">This field is required.</string>
-    <string name="action_preferences">Preferences</string>
+    <string name="action_preferences">விருப்பத்தேர்வுகள்</string>
     <string name="prefs_scan_startup">Scan on startup</string>
     <string name="prefs_scan_startup_summary">This option if selected will start scan when app is opened.</string>
     <string name="prefs_power_mode">Power mode scan</string>
     <string name="prefs_power_mode_summary">Quickly scan products in a supermarket to see which ones are not in the database.</string>
-    <string name="prefs_language">Language</string>
-    <string name="prefs_language_summary">Change language</string>
+    <string name="prefs_language">மொழி</string>
+    <string name="prefs_language_summary">மொழியை மாற்றவும்</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
     <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
     <string name="rate_app">Rate app</string>
-    <string name="no_thx">No thanks</string>
+    <string name="no_thx">வேண்டாம் நன்றி</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
-    <string name="scan_history_drawer">History</string>
-    <string name="clear_history">Clear history</string>
+    <string name="scan_history_drawer">வரலாறு</string>
+    <string name="clear_history">வரலாற்றை அழி</string>
     <string name="title_clear_history_dialog">Clear</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">CSV ஏற்றுமதி</string>
@@ -268,7 +268,7 @@
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">No Brand</string>
-    <string name="no_title">No Title</string>
+    <string name="no_title">தலைப்பில்லை</string>
     <!-- Nutrition info tab -->
     <string name="display_fact">Nutrition facts table for %1$s of this product</string>
     <string name="check_facts">சரிப்பார்</string>
@@ -279,9 +279,9 @@
     <string name="calculate_nutrition_facts">Calculate Nutrition Facts</string>
     <string name="nutrition_carbohydrate">Carbohydrate</string>
     <string name="nutrition_cholesterol">இரத்தக்கொழுப்பு</string>
-    <string name="nutrition_energy">Energy</string>
-    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
-    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+    <string name="nutrition_energy">ஆற்றல்</string>
+    <string name="nutrition_energy_kcal">கலோரிகளில் ஆற்றல் (கிலோகலோரி)</string>
+    <string name="nutrition_energy_kj">ஜூல்களில் ஆற்றல் (கிலோஜூல்)</string>
     <string name="nutrition_energy_short_name">Energy</string>
     <string name="nutrition_fat">கொழுப்பு</string>
     <string name="nutrition_fiber">உணவுவகை நார்ச்சத்து</string>
@@ -303,8 +303,8 @@
     <string name="contribution_without_account">You can sign-in or create an account to keep your contributions</string>
     <string name="textCarbonFootprint">Carbon footprint / CO2 emissions: </string>
     <string name="action_search">தேடுக</string>
-    <string name="search_hint">Search a product</string>
-    <string name="number_of_results">Number of results: </string>
+    <string name="search_hint">ஒரு பொருளினைத் தேடுங்கள்</string>
+    <string name="number_of_results">பொருட்களின் எண்ணிக்கை: </string>
     <string name="number_of_products">பொருட்களின் எண்ணிக்கை: </string>
     <string name="txt_no_matching__category_products">Oh no, we don’t have any product in this category, can you add one?</string>
     <string name="txt_no_matching_allergen_products">Oh no, we don’t have any products with this allergen, can you add one?</string>
@@ -319,8 +319,8 @@
     <string name="txt_no_matching_products">We haven\'t found any matching products.\nYou can try :</string>
     <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">Sorry, something went wrong…</string>
-    <string name="txt_try_again">Try again</string>
-    <string name="nutrition_lactose">Lactose</string>
+    <string name="txt_try_again">மீண்டும் முயற்சிக்கவும்</string>
+    <string name="nutrition_lactose">லாக்டோசு</string>
     <string name="nutrition_casein">கேசீன்</string>
     <string name="nutrition_maltodextrins">Maltodextrins</string>
     <string name="nutrition_serum_proteins">Serum Proteins</string>
@@ -346,8 +346,8 @@
     <string name="vitamin_c">வைட்டமின் சி</string>
     <string name="vitamin_b1">வைட்டமின் பி1</string>
     <string name="vitamin_b2">வைட்டமின் பி2</string>
-    <string name="vitamin_pp">Vitamin PP</string>
-    <string name="vitamin_b6">Vitamin B6</string>
+    <string name="vitamin_pp">வைட்டமின் பிபி</string>
+    <string name="vitamin_b6">வைட்டமின் பி6</string>
     <string name="vitamin_b9">Vitamin B9</string>
     <string name="vitamin_b12">Vitamin B12</string>
     <string name="biotin">பயோட்டின்</string>
@@ -368,14 +368,14 @@
     <string name="selenium">Selenium</string>
     <string name="chromium">குரோமியம்</string>
     <string name="molybdenum">Molybdenum</string>
-    <string name="iodine">Iodine</string>
+    <string name="iodine">கருமயிலம்</string>
     <string name="caffeine">காஃபின்</string>
-    <string name="taurine">Taurine</string>
+    <string name="taurine">டவுரின்</string>
     <string name="ph">pH</string>
-    <string name="fruits_vegetables_nuts">Fruits, vegetables, nuts</string>
+    <string name="fruits_vegetables_nuts">பழங்கள், காய்கறிகள், கொட்டைகள்</string>
     <string name="collagen_meat_protein_ratio">Collagen meat protein ratio</string>
-    <string name="cocoa">Cocoa</string>
-    <string name="chlorophyl">Chlorophyl</string>
+    <string name="cocoa">கோகோ</string>
+    <string name="chlorophyl">குளோரோபில்</string>
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
