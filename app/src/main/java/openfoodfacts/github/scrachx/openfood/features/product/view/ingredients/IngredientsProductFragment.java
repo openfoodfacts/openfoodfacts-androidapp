@@ -213,7 +213,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
         presenter.loadAdditives();
 
         if (isNotBlank(product.getImageIngredientsUrl(langCode))) {
-            binding.ingredientImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.ingredient_image_edit_tip)));
+            binding.ingredientImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)));
             binding.ingredientImagetipBox.loadToolTip();
             binding.addPhotoLabel.setVisibility(View.GONE);
             binding.changeIngImg.setVisibility(View.VISIBLE);

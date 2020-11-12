@@ -20,6 +20,8 @@ import androidx.annotation.NonNull;
 
 import org.jetbrains.annotations.Contract;
 
+import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
+
 /**
  * This class lists all fields, field prefixes and suffixes and default values used by the api.
  * We discourage the use of string literals through the code and we recommend creating a field here so that it can be updated on API change.
@@ -87,6 +89,7 @@ public final class ApiFields {
         public static final String ADD_BRANDS = "add_brands";
         public static final String BRANDS = "brands";
         public static final String LC = "lc";
+        public static final String ECOSCORE = "ecoscore_grade";
         public static final String PERIODS_AFTER_OPENING = "periods_after_opening";
         public static final String EMB_CODES = "emb_codes";
         public static final String LINK = "link";
@@ -109,6 +112,7 @@ public final class ApiFields {
         public static final String IMAGE_NUTRITION_URL = "image_nutrition_url";
         public static final String IMAGE_FRONT_URL = "image_front_url";
         public static final String IMAGE_INGREDIENTS_URL = "image_ingredients_url";
+        public static final String IMAGE_PACKAGING_URL = "image_packaging_url";
         public static final String ADDITIVES_TAGS = "additives_tags";
         public static final String CATEGORIES_TAGS = "categories_tags";
         public static final String INGREDIENTS_TEXT = "ingredients_text";
@@ -155,6 +159,7 @@ public final class ApiFields {
         public static final String STORES = "stores";
         public static final String STATUS = "status";
         public static final String NUTRITION_GRADE = "nutrition_grades_tags";
+        public static final ProductImageField[] TYPE_IMAGE = { ProductImageField.FRONT, ProductImageField.INGREDIENTS, ProductImageField.NUTRITION, ProductImageField.PACKAGING };
 
         private Keys() {
 

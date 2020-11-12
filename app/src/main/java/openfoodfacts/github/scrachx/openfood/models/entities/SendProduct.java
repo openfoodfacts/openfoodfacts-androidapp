@@ -41,6 +41,8 @@ SendProduct implements Serializable {
     private String imgupload_ingredients;
     @JsonIgnore
     private String imgupload_nutrition;
+    @JsonIgnore
+    private String imgupload_packaging;
     @JsonProperty(ApiFields.Keys.USER_ID)
     @Transient
     private String userId;
@@ -50,8 +52,8 @@ SendProduct implements Serializable {
     public SendProduct() {
     }
 
-    @Generated(hash = 994048396)
-    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients, String imgupload_nutrition) {
+    @Generated(hash = 88998839)
+    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients, String imgupload_nutrition, String imgupload_packaging) {
         this.id = id;
         this.barcode = barcode;
         this.lang = lang;
@@ -62,6 +64,7 @@ SendProduct implements Serializable {
         this.imgupload_front = imgupload_front;
         this.imgupload_ingredients = imgupload_ingredients;
         this.imgupload_nutrition = imgupload_nutrition;
+        this.imgupload_packaging = imgupload_packaging;
     }
 
     public String getUserId() {
@@ -152,6 +155,14 @@ SendProduct implements Serializable {
         this.imgupload_nutrition = imgupload_nutrition;
     }
 
+    public String getImgupload_packaging() {
+        return imgupload_packaging;
+    }
+
+    public void setImgupload_packaging(String imgupload_packaging) {
+        this.imgupload_packaging = imgupload_packaging;
+    }
+
     /**
      * Compress the image according to the {@link ProductImageField}.
      * Add a "_small" prefix in the image name after the compression
@@ -165,6 +176,9 @@ SendProduct implements Serializable {
                 break;
             case INGREDIENTS:
                 this.imgupload_ingredients = Utils.compressImage(this.imgupload_ingredients);
+                break;
+            case PACKAGING:
+                this.imgupload_packaging = Utils.compressImage(this.imgupload_packaging);
                 break;
             case FRONT:
                 this.imgupload_front = Utils.compressImage(this.imgupload_front);
@@ -200,6 +214,7 @@ SendProduct implements Serializable {
         this.imgupload_front = sp.getImgupload_front();
         this.imgupload_ingredients = sp.getImgupload_ingredients();
         this.imgupload_nutrition = sp.getImgupload_nutrition();
+        this.imgupload_packaging = sp.getImgupload_packaging();
         this.lang = sp.getLang();
     }
 
@@ -207,8 +222,8 @@ SendProduct implements Serializable {
         return (equalityOfString(this.barcode, sp.getBarcode()) && equalityOfString(this.name, sp.getName()) && equalityOfString(this.brands, sp
                 .getBrands()) && equalityOfString(this.weight, sp.getWeight()) && equalityOfString(this.weight_unit, sp.getWeight_unit()) &&
                 equalityOfString(this.imgupload_front, sp.getImgupload_front()) && equalityOfString(this.imgupload_nutrition, sp
-                .getImgupload_nutrition
-                ()) && equalityOfString(this.imgupload_ingredients, sp.getImgupload_ingredients()));
+                .getImgupload_nutrition()) && equalityOfString(this.imgupload_packaging, sp.getImgupload_packaging()) &&
+                equalityOfString(this.imgupload_ingredients, sp.getImgupload_ingredients()));
     }
 
     private boolean equalityOfString(String a, String b) {

@@ -188,8 +188,8 @@ public class OpenFoodAPIClient {
         mHistoryProductDao.insertOrReplace(hp);
     }
 
-    public Single<ProductState> getProductStateFull(final String barcode, String header) {
-        return api.getProductByBarcodeSingle(barcode, getAllFields(), Utils.getUserAgent(header))
+    public Single<ProductState> getProductStateFull(final String barcode, String customHeader) {
+        return api.getProductByBarcodeSingle(barcode, getAllFields(), Utils.getUserAgent(customHeader))
             .subscribeOn(Schedulers.io());
     }
 
@@ -447,6 +447,9 @@ public class OpenFoodAPIClient {
         }
         if (image.getImguploadNutrition() != null) {
             imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + PNG_EXT, image.getImguploadNutrition());
+        }
+        if (image.getImguploadPackaging() != null) {
+            imgMap.put("imgupload_packaging\"; filename=\"packaging_" + lang + PNG_EXT, image.getImguploadPackaging());
         }
         if (image.getImguploadOther() != null) {
             imgMap.put("imgupload_other\"; filename=\"other_" + lang + PNG_EXT, image.getImguploadOther());

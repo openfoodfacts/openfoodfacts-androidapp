@@ -104,11 +104,8 @@ public class ProductViewActivity extends BaseActivity implements OnRefreshListen
 
         if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             adapter.addFragment(FragmentUtils.applyBundle(new NutritionProductFragment(), fBundle), menuTitles[2]);
-            if ((productState.getProduct().getNutriments() != null &&
-                productState.getProduct().getNutriments().contains(Nutriments.CARBON_FOOTPRINT)) ||
-                (productState.getProduct().getEnvironmentInfocard() != null && !productState.getProduct().getEnvironmentInfocard().isEmpty())) {
-                adapter.addFragment(FragmentUtils.applyBundle(new EnvironmentProductFragment(), fBundle), "Environment");
-            }
+            adapter.addFragment(FragmentUtils.applyBundle(new EnvironmentProductFragment(), fBundle), menuTitles[4]);
+
             if (isPhotoMode(activity)) {
                 adapter.addFragment(FragmentUtils.applyBundle(new ProductPhotosFragment(), fBundle), newMenuTitles[0]);
             }

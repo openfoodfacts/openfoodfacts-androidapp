@@ -70,6 +70,8 @@ public class Product implements Serializable {
     private String creator;
     @JsonProperty(ApiFields.Keys.CUSTOMER_SERVICE)
     private String customerService;
+    @JsonProperty(ApiFields.Keys.ECOSCORE)
+    private String ecoscore;
     @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
     private final List<String> editorsTags = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.EMB_CODES_TAGS)
@@ -85,6 +87,8 @@ public class Product implements Serializable {
     private String imageFrontUrl;
     @JsonProperty(ApiFields.Keys.IMAGE_INGREDIENTS_URL)
     private String imageIngredientsUrl;
+    @JsonProperty(ApiFields.Keys.IMAGE_PACKAGING_URL)
+    private String imagePackagingUrl;
     @JsonProperty(ApiFields.Keys.IMAGE_NUTRITION_URL)
     private String imageNutritionUrl;
     @JsonProperty(ApiFields.Keys.IMAGE_SMALL_URL)
@@ -202,6 +206,15 @@ public class Product implements Serializable {
             return result;
         } else {
             return getImageIngredientsUrl();
+        }
+    }
+
+    public String getImagePackagingUrl(String languageCode) {
+        String result = getSelectedImage(languageCode, ProductImageField.PACKAGING, ImageSize.DISPLAY);
+        if (StringUtils.isNotBlank(result)) {
+            return result;
+        } else {
+            return getImagePackagingUrl();
         }
     }
 
@@ -329,6 +342,8 @@ public class Product implements Serializable {
                 return getImageIngredientsUrl();
             case NUTRITION:
                 return getImageNutritionUrl();
+            case PACKAGING:
+                return getImagePackagingUrl();
             case OTHER:
                 return null;
         }
@@ -380,6 +395,13 @@ public class Product implements Serializable {
      */
     public String getImageIngredientsUrl() {
         return imageIngredientsUrl;
+    }
+
+    /**
+     * @return The imagePackagingUrl
+     */
+    public String getImagePackagingUrl() {
+        return imagePackagingUrl;
     }
 
     /**
@@ -793,5 +815,10 @@ public class Product implements Serializable {
             .append("productName", productName)
             .append("additional_properties", additionalProperties)
             .toString();
+    }
+
+    @Nullable
+    public String getEcoscore() {
+        return ecoscore;
     }
 }

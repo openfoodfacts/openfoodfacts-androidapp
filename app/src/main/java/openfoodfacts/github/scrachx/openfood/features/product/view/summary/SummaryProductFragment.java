@@ -212,8 +212,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             ProductImage image = new ProductImage(barcode, field, photoFile);
             image.setFilePath(photoFile.getAbsolutePath());
             uploadImage(image);
-            if(!sendOther)
+            if (!sendOther) {
                 loadPhoto(photoFile);
+            }
         });
 
         binding.imageViewFront.setOnClickListener(v -> openFrontImageFullscreen());
@@ -233,6 +234,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     /**
      * Starts uploading image to backend
+     *
      * @param image image to upload
      */
     private void uploadImage(@NonNull ProductImage image) {
@@ -242,8 +244,9 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
             public void onComplete() {
                 onImageListenerComplete();
             }
+
             @Override
-            public void onError(Throwable error) {
+            public void onError(@NonNull Throwable error) {
                 onImageListenerError(error);
             }
         }));
@@ -251,6 +254,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
     /**
      * Sets photo as current front image and displays it
+     *
      * @param photoFile file to set
      */
     private void loadPhoto(@NonNull File photoFile) {
@@ -449,7 +453,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
 
             refreshNutriScore();
             refreshNovaIcon();
-            refreshCo2Icon();
+            refreshCO2OrEcoscoreIcon();
             refreshScoresLayout();
         } else {
             binding.scoresLayout.setVisibility(GONE);
@@ -503,13 +507,18 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
     }
 
-    private void refreshCo2Icon() {
+    private void refreshCO2OrEcoscoreIcon() {
+        binding.ecoscoreIcon.setVisibility(GONE);
+        binding.co2Icon.setVisibility(GONE);
+
+        int ecoScoreRes = Utils.getImageEcoscore(product);
         int environmentImpactResource = Utils.getImageEnvironmentImpact(product);
-        if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
-            binding.co2Icon.setVisibility(VISIBLE);
+        if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
+            binding.ecoscoreIcon.setImageResource(ecoScoreRes);
+            binding.ecoscoreIcon.setVisibility(VISIBLE);
+        } else if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
             binding.co2Icon.setImageResource(environmentImpactResource);
-        } else {
-            binding.co2Icon.setVisibility(GONE);
+            binding.co2Icon.setVisibility(VISIBLE);
         }
     }
 
