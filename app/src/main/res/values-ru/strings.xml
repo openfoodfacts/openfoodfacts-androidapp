@@ -389,6 +389,7 @@
     <string name="take_picture">Сфотографируйте</string>
     <string name="choose_picture_from_gallery">Из галереи</string>
     <string name="take_picture_ingredients">Сделайте фото состава</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Сделайте общее фото</string>
     <string name="take_picture_nutrition_table">Сделайте фото энерг. ценности</string>
     <string name="take_more_pictures">Сделайте дополнительные фото</string>
@@ -596,6 +597,8 @@
     <string name="nutrition_facts">Пищевая ценность</string>
     <string name="your_version">Ваши</string>
     <string name="ingredients_picture">Изображение ингредиентов</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Сделайте снимок ингредиентов, чтобы извлечь их автоматически)</string>
     <string name="ingredients_list">Список ингредиентов</string>
     <string name="ingredients_hint">Сохраняйте порядок, указывайте %, там где они указаны, разделяйте запятыми или -, используйте () для состава ингредиентов, окружайте аллергены _ например, _молоко_</string>
@@ -637,6 +640,7 @@
     <string name="uploading_front_image">Загрузка изображения лицевой стороны</string>
     <string name="edit_front_image">Редактировать фото лицевой стороны</string>
     <string name="edit_nutrition_image">Редактировать лицевое фото</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Редактировать фото ингредиентов</string>
     <string name="edit_other_image">Редактировать фото</string>
     <string name="sign_in_to_edit">Войдите, чтобы отредактировать продукт.</string>
@@ -676,6 +680,7 @@
     <string name="update_image">Отправить обновленное изображение</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Распознать ингредиенты</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Добавьте факты о питании, чтобы вычислить Nutri-Score</string>
     <string name="add_category_prompt_text">Добавьте категорию для вычисления Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Добавьте факты о питании и категорию, чтобы вычислить Nutri-Score</string>
@@ -716,6 +721,7 @@
     <string name="settings_country_title">Страна</string>
     <string name="txt_no_nutrition_data">Этот продукт не имеет никакой информации о питании на упаковке. Если это изменилось, вы можете отредактировать продукт.</string>
     <string name="image_prompt_language">Сделайте фото состава в</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Добавьте продукты</string>
@@ -810,4 +816,5 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="enabled">Enabled</string>
 </resources>
