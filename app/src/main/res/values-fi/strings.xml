@@ -379,10 +379,11 @@
     <string name="take_picture">Ota kuva</string>
     <string name="choose_picture_from_gallery">Galleriasta</string>
     <string name="take_picture_ingredients">Ota kuva aineksista</string>
+    <string name="take_picture_recycling">Ota kuva kierrätysohjeista</string>
     <string name="take_picture_front">Ota kuva edestä</string>
     <string name="take_picture_nutrition_table">Ota kuva ravintosisällöstä</string>
     <string name="take_more_pictures">Ota lisää kuvia</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_extra_packaging_pictures">Ota ylimääräisiä kuvia pakkauksesta</string>
     <string name="txtSaturatedFat">Tyydyttynyt rasva</string>
     <string name="nutriscore_info_msg">Lisätietoja Nutri-Scoresta</string>
     <string name="nova_info_msg">Lisätietoja Novasta</string>
@@ -441,7 +442,7 @@
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world-fi.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
-    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <string name="faq_url">https://world-fi.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world-fi.openfoodfacts.org/hunger-game</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Ravintosisältö</string>
     <string name="your_version">Sinun</string>
     <string name="ingredients_picture">Kuva ainesosista</string>
+    <string name="packaging">Kierrätys</string>
+    <string name="recycling_picture">Kierrätyskuva</string>
     <string name="take_ingredients_picture_to_extract">(Ota kuva aineosista, jotta ne voidaan poimia automaattisesti)</string>
     <string name="ingredients_list">Ainesosaluettelo</string>
     <string name="ingredients_hint">Säilytä järjestys. Ilmaise prosenttiosuus, jos ilmoitettu. Erottele pilkulla tai väliviivalla. Käytä sulkuja () ainesosan ainesosille. Laita allergeenit kahden alaviivan väliin esim. _maito_</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Lähetetään etukuvaa</string>
     <string name="edit_front_image">Muokkaa etukuvaa</string>
     <string name="edit_nutrition_image">Muokkaa kuvaa ravintosisällöstä</string>
+    <string name="edit_packaging_image">Muokkaa kierrätyskuvaa</string>
     <string name="edit_ingredients_image">Muokkaa kuvaa ainesosista</string>
     <string name="edit_other_image">Muokkaa kuvaa</string>
     <string name="sign_in_to_edit">Kirjaudu sisään muokataksesi tuotetta.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Lähetä päivitetty kuva</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Poimi ainesosat</string>
+    <string name="extract_recycling_prompt">Poimi kierrätysohjeet</string>
     <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Scoren laskemiseksi</string>
     <string name="add_category_prompt_text">Lisää tuoteluokka Nutri-Scoren laskemiseksi</string>
     <string name="add_nutrient_category_prompt_text">Lisää ravintosisältö ja luokitus Nutri-Scoren laskemiseksi</string>
@@ -704,6 +709,7 @@
     <string name="settings_country_title">Maa</string>
     <string name="txt_no_nutrition_data">Tuotteen pakkauksessa ei ole ravintosisältöä. Jos tämä on muuttunut, voit muokata tuotetta.</string>
     <string name="image_prompt_language">Ota valokuva ainesosista kielellä</string>
+    <string name="swipe_delete_tip">Voit poistaa luettelon pyyhkäisemällä sitä vasemmalle.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Lisää tuotteita</string>
@@ -798,4 +804,5 @@
     <string name="sign_in_or_register">Kirjaudu sisään tai rekisteröidy</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts on avoin tietokanta, joka sisältää yli %1$s elintarviketta (plus ne jotka lisäät).</string>
+    <string name="enabled">Käytössä</string>
 </resources>

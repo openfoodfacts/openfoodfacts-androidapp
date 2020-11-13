@@ -379,10 +379,11 @@
     <string name="take_picture">Maak een foto</string>
     <string name="choose_picture_from_gallery">Uit Galerij</string>
     <string name="take_picture_ingredients">Maak een foto van de ingrediënten</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Maak een foto van de voorkant</string>
     <string name="take_picture_nutrition_table">Maak een foto van de voedingstabel</string>
     <string name="take_more_pictures">Maak meer foto\'s</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_extra_packaging_pictures">Neem extra foto\'s van de verpakking</string>
     <string name="txtSaturatedFat">Verzadigd vet</string>
     <string name="nutriscore_info_msg">Meer informatie over de Nutri-Score</string>
     <string name="nova_info_msg">Meer informatie over NOVA groepen</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Voedingswaarden</string>
     <string name="your_version">Jouw</string>
     <string name="ingredients_picture">Foto van de ingrediëntenlijst</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Maak een foto van de ingrediënten om ze automatisch te herkennen)</string>
     <string name="ingredients_list">Ingrediëntenlijst</string>
     <string name="ingredients_hint">Behoud de volgorde, geef het percentage indien vermeld, gescheiden met komma\'s of \'-\', gebruik () voor de ingrediënten van een ingrediënt, vermeld allergenen tussen \'_\' zoals bijvoorbeeld _melk_</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Foto van voorkant aan het uploaden</string>
     <string name="edit_front_image">Bewerk de foto van de voorkant</string>
     <string name="edit_nutrition_image">Bewerk de foto met voedingswaarden</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Bewerk de foto met ingrediënten</string>
     <string name="edit_other_image">Foto bewerken</string>
     <string name="sign_in_to_edit">Log in om een product te bewerken.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Stuur een bijgewerkte afbeelding</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingrediënten</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Voeg voedingsfeiten toe om de Nutri-Score te berekenen</string>
     <string name="add_category_prompt_text">Voeg een categorie toe om de Nutri-Score te berekenen</string>
     <string name="add_nutrient_category_prompt_text">Voeg voedingsfeiten en een categorie toe om de Nutri-Score te berekenen</string>
@@ -704,6 +709,7 @@
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dit product bevat geen voedingswaarde-informatie op de verpakking. Als dit is veranderd, kan je het product bewerken.</string>
     <string name="image_prompt_language">Maak een foto van de ingrediëntenlijst</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Voeg producten toe</string>
@@ -746,7 +752,7 @@
     <string name="closeZoom">Klik om zoom te sluiten</string>
     <string name="imageFullscreen">Inzoomen</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">Close</string>
+    <string name="close_button">Sluit</string>
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Klik op de onderstaande pictogrammen om meer te weten te komen over het product en om de informatie te selecteren waar je geïnteresseerd in bent.</string>
     <string name="got_it">Ik snap het!</string>
@@ -798,4 +804,5 @@
     <string name="sign_in_or_register">Aanmelden of registreren</string>
     <string name="hunger_game_call_to_action">Help meer %1$s te classificeren</string>
     <string name="txtHomeOnline">Open Food Facts is een open database met meer dan %1$s voedingsproducten (plus uw bijdragen).</string>
+    <string name="enabled">Enabled</string>
 </resources>

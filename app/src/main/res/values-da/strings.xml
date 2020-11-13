@@ -379,6 +379,7 @@
     <string name="take_picture">Tag et foto</string>
     <string name="choose_picture_from_gallery">Fra Galleri</string>
     <string name="take_picture_ingredients">Tag et foto af ingredienserne</string>
+    <string name="take_picture_recycling">Tag et foto af genbrugsinstruktionerne</string>
     <string name="take_picture_front">Tag et foto af forsiden</string>
     <string name="take_picture_nutrition_table">Tag et foto af ernæringsoversigten</string>
     <string name="take_more_pictures">Tag flere billeder</string>
@@ -584,9 +585,11 @@
     <string name="nutrition_facts">Ernæringsfakta</string>
     <string name="your_version">Dine</string>
     <string name="ingredients_picture">Ingrediensfoto</string>
+    <string name="packaging">Genbrug</string>
+    <string name="recycling_picture">Genbrugsfoto</string>
     <string name="take_ingredients_picture_to_extract">(Tag venligst et foto af ingredienserne for automatisk at udtrække dem)</string>
     <string name="ingredients_list">Ingrediensoversigt</string>
-    <string name="ingredients_hint">Bevar rækkefølgen, angiv %-forholdet, når det er oplyst, adskil med et komma eller -, benyt () til delingredienser i en ingrediens, omkrans allergener med _</string>
+    <string name="ingredients_hint">Behold rækkefølgen, angiv %, når det angives, adskilt med komma eller brug -, brug () til ingredienser i en ingrediens, omgiv allergener med _</string>
     <string name="extract_ingredients">Udtræk ingredienser</string>
     <string name="extracting_ingredients">Uddrager ingredienser</string>
     <string name="looksGood">Ser godt ud</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Uploader forsidefoto</string>
     <string name="edit_front_image">Refigér forsidefoto</string>
     <string name="edit_nutrition_image">Refigér ernæringsfoto</string>
+    <string name="edit_packaging_image">Redigér genbrugsfoto</string>
     <string name="edit_ingredients_image">Uploader ingrediensfoto</string>
     <string name="edit_other_image">Redigér foto</string>
     <string name="sign_in_to_edit">Log ind for at redigere et produkt.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Send et opdateret billede</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Udtræk ingredienser</string>
+    <string name="extract_recycling_prompt">Udtræk genbrugsinstruktioner</string>
     <string name="add_nutrient_prompt_text">Tilføj ernæringsfakta for at beregne Nutri-Score</string>
     <string name="add_category_prompt_text">Tilføj en kategori for at beregne Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Tilføj næringsfakta og en kategori til beregning af Nutri-Score</string>
@@ -704,6 +709,7 @@
     <string name="settings_country_title">Land</string>
     <string name="txt_no_nutrition_data">Dette produkt har ingen næringsoplysninger på emballagen. Hvis dette er ændret, kan du redigere produktet.</string>
     <string name="image_prompt_language">Tag et foto af ingredienserne i</string>
+    <string name="swipe_delete_tip">En liste kan slettes ved at stryge den til venstre.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Tilføj produkter</string>
@@ -796,6 +802,7 @@
     <string name="product_front_image">Produktbillede front</string>
     <string name="brand_hint">Eksempler: CocaCola, Nestle mv.…</string>
     <string name="sign_in_or_register">Log ind eller tilmeld</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
+    <string name="hunger_game_call_to_action">Hjælp med at klassificere flere %1$s</string>
     <string name="txtHomeOnline">Open Food Facts er en åben database med flere end %1$s fødevarerprodukter (plus dem, du vil bidrage med).</string>
+    <string name="enabled">Aktiveret</string>
 </resources>

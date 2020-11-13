@@ -379,6 +379,7 @@
     <string name="take_picture">Fotó készítése</string>
     <string name="choose_picture_from_gallery">Kiválasztás galériából</string>
     <string name="take_picture_ingredients">Kép készítése az összetevőkről</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Készíts egy képet az elejéről</string>
     <string name="take_picture_nutrition_table">Kép készítése a tápanyagtáblázatról</string>
     <string name="take_more_pictures">Készítsen további képeket</string>
@@ -584,9 +585,11 @@
     <string name="nutrition_facts">Tápértékadatok</string>
     <string name="your_version">A tied</string>
     <string name="ingredients_picture">Összetevők képe</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Kérem, készítsen egy képet az összetevőkről, hogy be tudja olvasni róla szöveget a program)</string>
     <string name="ingredients_list">Összetevők</string>
-    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a % (százalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon () (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
+    <string name="ingredients_hint">Ne módosítsa a sorrendet. Jelölje a [%s]zázalékos) mennyiséget, ha az meg van adva. Elválasztáshoz használjon vesszőt vagy - (kötőjelet). Használjon () (zárójelet) egy összetevő összetevőinek felsorolásához. Az allergéneket legyenek _ (alulvonások) között, például: _tej_</string>
     <string name="extract_ingredients">Összetevők kiolvasása</string>
     <string name="extracting_ingredients">Összetevők kiolvasása</string>
     <string name="looksGood">Jónak tűnik</string>
@@ -626,6 +629,7 @@
     <string name="uploading_front_image">Elölnézeti fotó feltöltése</string>
     <string name="edit_front_image">Elölnézeti kép szerkesztése</string>
     <string name="edit_nutrition_image">Tápérték adatok kép szerkesztése</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Összetevők kép szerkesztése</string>
     <string name="edit_other_image">Kép szerkesztése</string>
     <string name="sign_in_to_edit">Kérjük, jelentkezzen be egy termék szerkesztéséhez.</string>
@@ -665,6 +669,7 @@
     <string name="update_image">Frissített kép küldése</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Összetevők kiolvasása</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Adjon hozzá tápérték adatokat a Nutri-Score kiszámításához</string>
     <string name="add_category_prompt_text">Adjon hozzá egy kategóriát a Nutri-Score kiszámításához</string>
     <string name="add_nutrient_category_prompt_text">Adjon hozzá tápérték adatokat és egy kategóriát a Nutri-Score kiszámításához</string>
@@ -705,6 +710,7 @@
     <string name="settings_country_title">Ország</string>
     <string name="txt_no_nutrition_data">Ez a termék nem tartalmaz tápértéketadatokat a csomagoláson. Ha ez megváltozott, akkor szerkessze a terméket.</string>
     <string name="image_prompt_language">Készítsen egy fotót az összetevőkről ezen a nyelven:</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Termékek hozzáadása</string>
@@ -799,4 +805,5 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="enabled">Enabled</string>
 </resources>
