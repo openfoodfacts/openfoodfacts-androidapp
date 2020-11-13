@@ -374,6 +374,7 @@
     <string name="take_picture">사진 촬영</string>
     <string name="choose_picture_from_gallery">갤러리에서 선택</string>
     <string name="take_picture_ingredients">Take a picture of the ingredients</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">정면 사진 찍기</string>
     <string name="take_picture_nutrition_table">Take a picture of the nutrition table</string>
     <string name="take_more_pictures">Take more pictures</string>
@@ -578,6 +579,8 @@
     <string name="nutrition_facts">영양 성분 정보</string>
     <string name="your_version">당신의 것</string>
     <string name="ingredients_picture">성분 목록의 그림</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(성분을 자동으로 추출하려면 사진을 촬영하십시오)</string>
     <string name="ingredients_list">성분 목록</string>
     <string name="ingredients_hint">순서를 유지하고, 지정된 경우 %를 표시하고, 쉼표로 구분하거나-성분의 성분에 ()를 사용하며 _로 알레르겐을 둘러싸십시오.</string>
@@ -619,6 +622,7 @@
     <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">앞면 사진 편집</string>
     <string name="edit_nutrition_image">영양 사진 편집</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">성분 사진 편집</string>
     <string name="edit_other_image">사진 편집</string>
     <string name="sign_in_to_edit">제품을 편집 하시려면 로그인 하세요.</string>
@@ -658,6 +662,7 @@
     <string name="update_image">업데이트된 이미지 보내기</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">성분 추출</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">영양 성분을 추가하여 Nutri-Score 계산</string>
     <string name="add_category_prompt_text">Nutri-Score를 계산하기 위한 카테고리 추가</string>
     <string name="add_nutrient_category_prompt_text">영양 성분 및 카테고리를 추가하여 Nutri-Score 계산</string>
@@ -698,6 +703,7 @@
     <string name="settings_country_title">국가</string>
     <string name="txt_no_nutrition_data">이 제품 포장에는 영양 정보가 없습니다. 변경된 경우 제품을 편집할 수 있습니다.</string>
     <string name="image_prompt_language">성분의 사진을 촬영</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">제품 추가</string>
@@ -792,4 +798,5 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="enabled">Enabled</string>
 </resources>

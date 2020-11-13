@@ -379,6 +379,7 @@
     <string name="take_picture">Feu una foto</string>
     <string name="choose_picture_from_gallery">Des de la galeria</string>
     <string name="take_picture_ingredients">Feu una foto dels ingredients</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Feu una foto del davant</string>
     <string name="take_picture_nutrition_table">Feu una foto de la taula nutricional</string>
     <string name="take_more_pictures">Feu més fotos</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Informació nutricional</string>
     <string name="your_version">Les vostres</string>
     <string name="ingredients_picture">Imatge dels ingredients</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(feu una fotografia dels ingredients per extreure\'ls automàticament)</string>
     <string name="ingredients_list">Llista d\'ingredients</string>
     <string name="ingredients_hint">Manteniu l\'ordre, indiqueu el % quan s\'especifica, separat per una coma o -, utilitzeu () pels ingredients d\'un ingredient, els al·lèrgens envoltats amb _</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">S\'està carregant la imatge frontal</string>
     <string name="edit_front_image">Edita la foto del davant</string>
     <string name="edit_nutrition_image">Edita la foto de la taula nutricional</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Edita la foto dels ingredients</string>
     <string name="edit_other_image">Edita la foto</string>
     <string name="sign_in_to_edit">Inicieu la sessió per editar un producte.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Envieu una imatge actualitzada</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extreu els ingredients</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Afegiu informació nutricional per calcular el Nutri-Score</string>
     <string name="add_category_prompt_text">Afegiu una categoria per calcular Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Afegiu informació nutricional i una categoria per calcular Nutri-Score</string>
@@ -704,6 +709,7 @@
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">Aquest producte no conté informació nutricional a l’envàs. Si això ha canviat, podeu editar el producte.</string>
     <string name="image_prompt_language">Feu una foto dels ingredients a</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Afegiu productes</string>
@@ -798,4 +804,5 @@
     <string name="sign_in_or_register">Inicieu la sessió o registreu-vos</string>
     <string name="hunger_game_call_to_action">Ajudeu a classificar millor %1$s</string>
     <string name="txtHomeOnline">Open Food Facts és una base de dades oberta de més de %1$s productes alimentaris (més els que hi aportareu).</string>
+    <string name="enabled">Enabled</string>
 </resources>

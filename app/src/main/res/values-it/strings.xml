@@ -379,6 +379,7 @@
     <string name="take_picture">Scatta una foto</string>
     <string name="choose_picture_from_gallery">Dalla galleria</string>
     <string name="take_picture_ingredients">Prendi una foto degli ingredienti</string>
+    <string name="take_picture_recycling">Scatta una foto delle istruzioni per il riciclaggio</string>
     <string name="take_picture_front">Scatta una foto della parte anteriore</string>
     <string name="take_picture_nutrition_table">Prendi una foto della tabella nutrizionale</string>
     <string name="take_more_pictures">Fai ulteriori foto</string>
@@ -584,6 +585,8 @@
     <string name="nutrition_facts">Informazioni nutrizionali</string>
     <string name="your_version">Tuoi</string>
     <string name="ingredients_picture">Foto degli ingredienti</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(Fai una foto degli ingredienti per estrarli automaticamente)</string>
     <string name="ingredients_list">Lista degli ingredienti</string>
     <string name="ingredients_hint">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
@@ -625,6 +628,7 @@
     <string name="uploading_front_image">Caricamento immagine frontale</string>
     <string name="edit_front_image">Modifica la foto frontale</string>
     <string name="edit_nutrition_image">Modifica la foto nutrizionale</string>
+    <string name="edit_packaging_image">Modifica la foto del riciclaggio</string>
     <string name="edit_ingredients_image">Modifica la foto degli ingredienti</string>
     <string name="edit_other_image">Modifica la foto</string>
     <string name="sign_in_to_edit">Accedi per modificare un prodotto.</string>
@@ -664,6 +668,7 @@
     <string name="update_image">Invia un\'immagine aggiornata</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">Aggiungi i valori nutrizionali per calcolare il Nutri-Score</string>
     <string name="add_category_prompt_text">Aggiungi una categoria per calcolare il Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Aggiungi i valori nutrizionali e una categoria per calcolare il Nutri-Score</string>
@@ -704,6 +709,7 @@
     <string name="settings_country_title">Paese</string>
     <string name="txt_no_nutrition_data">Questo prodotto non ha alcuna informazione nutrizionale sulla confezione. Se questo è cambiato, puoi modificare il prodotto.</string>
     <string name="image_prompt_language">Scatta una foto degli ingredienti in</string>
+    <string name="swipe_delete_tip">Puoi eliminare un elenco facendolo scorrere a sinistra.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Inserisci prodotti</string>
@@ -798,4 +804,5 @@
     <string name="sign_in_or_register">Accedi o registrati</string>
     <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
     <string name="txtHomeOnline">Open Food Facts è un database aperto contenente più di %1$s prodotti alimentari (più quelli che aggiungerai).</string>
+    <string name="enabled">Abilitato</string>
 </resources>

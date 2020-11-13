@@ -374,6 +374,7 @@
     <string name="take_picture">写真を撮る</string>
     <string name="choose_picture_from_gallery">ギャラリーから</string>
     <string name="take_picture_ingredients">原材料の写真を撮ります</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">正面の写真を撮る</string>
     <string name="take_picture_nutrition_table">栄養成分表の写真を撮ります</string>
     <string name="take_more_pictures">もっと写真を撮ります</string>
@@ -578,6 +579,8 @@
     <string name="nutrition_facts">栄養成分表</string>
     <string name="your_version">あなたのもの</string>
     <string name="ingredients_picture">原材料の写真</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
     <string name="take_ingredients_picture_to_extract">(自動的に抽出するために原材料の写真を撮ってください)</string>
     <string name="ingredients_list">原材料一覧</string>
     <string name="ingredients_hint">順序を守り、指定されたときは % を示し、カンマまたは - で区切り、原材料中の原材料は () を使用し、アレルゲンは _ で囲みます</string>
@@ -619,6 +622,7 @@
     <string name="uploading_front_image">正面画像をアップロードしています</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Edit the photo</string>
     <string name="sign_in_to_edit">商品を編集するにはログインしてください。</string>
@@ -658,6 +662,7 @@
     <string name="update_image">更新された画像を送信</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">原材料を抽出</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
     <string name="add_nutrient_prompt_text">栄養成分を追加してニュートリスコアを計算する</string>
     <string name="add_category_prompt_text">カテゴリーを追加してニュートリスコアを計算する</string>
     <string name="add_nutrient_category_prompt_text">栄養成分とカテゴリーを追加してニュートリスコアを計算する</string>
@@ -698,6 +703,7 @@
     <string name="settings_country_title">国</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
@@ -792,4 +798,5 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="enabled">Enabled</string>
 </resources>
