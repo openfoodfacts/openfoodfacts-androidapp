@@ -32,10 +32,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -111,28 +108,25 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
      **/
     private boolean isLowBatteryMode = false;
     private PhotoReceiverHandler photoReceiverHandler;
-    ActivityResultLauncher<Product> productActivityResultLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Void> loginLauncher = registerForActivityResult(
+        new LoginActivity.LoginContract(),
+        result -> ProductEditActivity.start(getContext(),
+            activityProductState,
+            sendUpdatedIngredientsImage,
+            extractIngredients));
+    private final ActivityResultLauncher<Product> updateImagesLauncher = registerForActivityResult(
         new ProductEditActivity.EditProductSendUpdatedImg(),
-        (ActivityResultCallback<Boolean>) result -> {
+        result -> {
             if (result) {
                 onRefresh();
             }
         });
-    ActivityResultLauncher<Void> loginActivityResultLauncher = registerForActivityResult(
-        new LoginActivity.LoginContract(),
-        (ActivityResultCallback<Boolean>) result -> {
-            ProductEditActivity.start(getContext(),
-                activityProductState,
-                sendUpdatedIngredientsImage,
-                extractIngredients);
-        });
-
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         customTabActivityHelper = new CustomTabActivityHelper();
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
 
         activityProductState = FragmentUtils.requireStateFromArguments(this);
     }
@@ -445,7 +439,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             } else {
                 activityProductState = FragmentUtils.getStateFromArguments(this);
                 if (activityProductState != null) {
-                    productActivityResultLauncher.launch(activityProductState.getProduct());
+                    updateImagesLauncher.launch(activityProductState.getProduct());
                 }
             }
         }
@@ -515,7 +509,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             .positiveText(R.string.txtSignIn)
             .negativeText(R.string.dialog_cancel)
             .onPositive((dialog, which) -> {
-                loginActivityResultLauncher.launch(null);
+                loginLauncher.launch(null);
                 dialog.dismiss();
             })
             .onNegative((dialog, which) -> dialog.dismiss())

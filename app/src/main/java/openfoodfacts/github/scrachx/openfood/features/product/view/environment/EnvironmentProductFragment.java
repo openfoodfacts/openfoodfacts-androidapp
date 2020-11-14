@@ -106,8 +106,8 @@ public class EnvironmentProductFragment extends BaseFragment {
             mUrlImage = product.getImagePackagingUrl(langCode);
         }
 
-        if (nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
-            Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
+        Nutriments.Nutriment carbonFootprintNutriment = nutriments.get(Nutriments.CARBON_FOOTPRINT);
+        if (carbonFootprintNutriment != null) {
             binding.textCarbonFootprint.setText(bold(getString(R.string.textCarbonFootprint)));
             binding.textCarbonFootprint.append(carbonFootprintNutriment.getFor100gInUnits());
             binding.textCarbonFootprint.append(carbonFootprintNutriment.getUnit());
