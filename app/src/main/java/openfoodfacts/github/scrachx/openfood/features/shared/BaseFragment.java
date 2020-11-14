@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,6 +55,28 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
      * an image width can't be less than 640. See https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577
      */
     public static final int MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF = 640;
+    private final ActivityResultLauncher<String[]> cameraPermissionRequestLauncher = registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(),
+        results -> {
+            if (!Utils.isAllGranted(results)) {
+                // Tell the user how to give permission
+                new MaterialDialog.Builder(requireActivity())
+                    .title(R.string.permission_title)
+                    .content(R.string.permission_denied)
+                    .negativeText(R.string.txtNo)
+                    .positiveText(R.string.txtYes)
+                    .onPositive((dialog, which) -> {
+                        Intent intent = new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", requireActivity().getPackageName(), null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                    })
+                    .show();
+            } else {
+                // Callback
+                doOnPhotosPermissionGranted();
+            }
+        });
     private OnRefreshListener refreshListener;
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -106,27 +129,7 @@ public abstract class BaseFragment extends Fragment implements SwipeRefreshLayou
             return;
         }
         // Ask for permissions
-        registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), results -> {
-            if (!Utils.isAllGranted(results)) {
-                // Tell the user how to give permission
-                new MaterialDialog.Builder(requireActivity())
-                    .title(R.string.permission_title)
-                    .content(R.string.permission_denied)
-                    .negativeText(R.string.txtNo)
-                    .positiveText(R.string.txtYes)
-                    .onPositive((dialog, which) -> {
-                        Intent intent = new Intent();
-                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", requireActivity().getPackageName(), null);
-                        intent.setData(uri);
-                        startActivity(intent);
-                    })
-                    .show();
-            } else {
-                // Callback
-                doOnPhotosPermissionGranted();
-            }
-        }).launch(new String[]{CAMERA});
+        cameraPermissionRequestLauncher.launch(new String[]{CAMERA});
     }
 
     protected void doOnPhotosPermissionGranted() {

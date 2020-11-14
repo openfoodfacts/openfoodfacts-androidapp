@@ -32,10 +32,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.browser.customtabs.CustomTabsIntent;
@@ -92,47 +89,49 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
-    private FragmentIngredientsProductBinding binding;
-    private AllergenNameDao mAllergenNameDao;
-    private OpenFoodAPIClient client;
-    private String mUrlImage;
     private ProductState activityProductState;
     private String barcode;
-    private SendProduct mSendProduct;
-    private WikiDataApiClient wikidataClient;
+    private FragmentIngredientsProductBinding binding;
+    private OpenFoodAPIClient client;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
-    private IIngredientsProductPresenter.Actions presenter;
-    private boolean extractIngredients = false;
-    private boolean sendUpdatedIngredientsImage = false;
     private final CompositeDisposable disp = new CompositeDisposable();
+    private boolean ingredientExtracted = false;
     /**
      * boolean to determine if image should be loaded or not
      **/
     private boolean isLowBatteryMode = false;
+    private AllergenNameDao mAllergenNameDao;
+    private SendProduct mSendProduct;
+    private String mUrlImage;
+    private final ActivityResultLauncher<Product> performOCRLauncher = registerForActivityResult(new ProductEditActivity.EditProductPerformOCR(), result -> {
+        if (result) {
+            onRefresh();
+        }
+    });
     private PhotoReceiverHandler photoReceiverHandler;
-    ActivityResultLauncher<Product> productActivityResultLauncher = registerForActivityResult(
+    private IIngredientsProductPresenter.Actions presenter;
+    private boolean sendUpdatedIngredientsImage = false;
+    private final ActivityResultLauncher<Void> loginLauncher = registerForActivityResult(
+        new LoginActivity.LoginContract(),
+        result -> ProductEditActivity.start(getContext(),
+            activityProductState,
+            sendUpdatedIngredientsImage,
+            ingredientExtracted));
+    private final ActivityResultLauncher<Product> updateImagesLauncher = registerForActivityResult(
         new ProductEditActivity.EditProductSendUpdatedImg(),
-        (ActivityResultCallback<Boolean>) result -> {
+        result -> {
             if (result) {
                 onRefresh();
             }
         });
-    ActivityResultLauncher<Void> loginActivityResultLauncher = registerForActivityResult(
-        new LoginActivity.LoginContract(),
-        (ActivityResultCallback<Boolean>) result -> {
-            ProductEditActivity.start(getContext(),
-                activityProductState,
-                sendUpdatedIngredientsImage,
-                extractIngredients);
-        });
-
+    private WikiDataApiClient wikidataClient;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         customTabActivityHelper = new CustomTabActivityHelper();
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(getContext(), customTabActivityHelper.getSession());
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.getSession());
 
         activityProductState = FragmentUtils.requireStateFromArguments(this);
     }
@@ -445,7 +444,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             } else {
                 activityProductState = FragmentUtils.getStateFromArguments(this);
                 if (activityProductState != null) {
-                    productActivityResultLauncher.launch(activityProductState.getProduct());
+                    updateImagesLauncher.launch(activityProductState.getProduct());
                 }
             }
         }
@@ -494,18 +493,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     public void extractIngredients() {
-        extractIngredients = true;
+        ingredientExtracted = true;
         final SharedPreferences settings = requireActivity().getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         if (login.isEmpty()) {
             showSignInDialog();
         } else {
             activityProductState = FragmentUtils.requireStateFromArguments(this);
-            registerForActivityResult(new ProductEditActivity.EditProductPerformOCR(), result -> {
-                if (result) {
-                    onRefresh();
-                }
-            }).launch(activityProductState.getProduct());
+            performOCRLauncher.launch(activityProductState.getProduct());
         }
     }
 
@@ -515,7 +510,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
             .positiveText(R.string.txtSignIn)
             .negativeText(R.string.dialog_cancel)
             .onPositive((dialog, which) -> {
-                loginActivityResultLauncher.launch(null);
+                loginLauncher.launch(null);
                 dialog.dismiss();
             })
             .onNegative((dialog, which) -> dialog.dismiss())

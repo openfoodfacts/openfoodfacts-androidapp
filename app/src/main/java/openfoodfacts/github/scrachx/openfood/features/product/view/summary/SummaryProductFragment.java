@@ -34,7 +34,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -121,23 +120,38 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
     private static final int EDIT_PRODUCT_AFTER_LOGIN = 1;
     private static final int EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3;
     private static final int EDIT_REQUEST_CODE = 2;
-    private OpenFoodAPIClient client;
-    private WikiDataApiClient wikidataCLient;
+    private AnnotationAnswer annotation;
     private String barcode;
     private FragmentSummaryProductBinding binding;
+    private OpenFoodAPIClient client;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
     private CompositeDisposable disp;
     private boolean hasCategoryInsightQuestion = false;
     private String insightId;
-    private AnnotationAnswer annotation;
-    ActivityResultLauncher<Void> loginActivityResultLauncher = registerForActivityResult(
+    //boolean to determine if image should be loaded or not
+    private boolean isLowBatteryMode = false;
+    private TagDao mTagDao;
+    private String mUrlImage;
+    private Uri nutritionScoreUri;
+    private PhotoReceiverHandler photoReceiverHandler;
+    private ISummaryProductPresenter.Actions presenter;
+    private Product product;
+    private Question productQuestion = null;
+    private final ActivityResultLauncher<Void> loginLauncher = registerForActivityResult(
         new LoginActivity.LoginContract(),
-        (ActivityResultCallback<Boolean>) isLoggedIn -> {
+        isLoggedIn -> {
             if (isLoggedIn) {
                 processInsight(insightId, annotation);
             }
         });
+    private ProductState productState;
+    private boolean sendOther = false;
+    //boolean to determine if category prompt should be shown
+    private boolean showCategoryPrompt = false;
+    //boolean to determine if nutrient prompt should be shown
+    private boolean showNutrientPrompt = false;
+    private WikiDataApiClient wikidataCLient;
 
     private void onImageListenerComplete() {
         binding.uploadingImageProgress.setVisibility(GONE);
@@ -159,22 +173,6 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         }
         Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
     }
-
-    //boolean to determine if image should be loaded or not
-    private boolean isLowBatteryMode = false;
-    private TagDao mTagDao;
-    private String mUrlImage;
-    private Uri nutritionScoreUri;
-    private PhotoReceiverHandler photoReceiverHandler;
-    private ISummaryProductPresenter.Actions presenter;
-    private Product product;
-    private Question productQuestion = null;
-    private boolean sendOther = false;
-    //boolean to determine if category prompt should be shown
-    private boolean showCategoryPrompt = false;
-    //boolean to determine if nutrient prompt should be shown
-    private boolean showNutrientPrompt = false;
-    private ProductState productState;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -471,6 +469,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
         if (binding.novaGroup.getVisibility() == GONE &&
             binding.co2Icon.getVisibility() == GONE &&
             binding.imageGrade.getVisibility() == GONE &&
+            binding.ecoscoreIcon.getVisibility() == GONE &&
             binding.addNutriscorePrompt.getVisibility() == GONE) {
             binding.scoresLayout.setVisibility(GONE);
         } else {
@@ -690,7 +689,7 @@ public class SummaryProductFragment extends BaseFragment implements CustomTabAct
                 .title(getString(R.string.sign_in_to_answer))
                 .positiveText(getString(R.string.sign_in_or_register))
                 .onPositive((dialog, which) -> {
-                    loginActivityResultLauncher.launch(null);
+                    loginLauncher.launch(null);
                     dialog.dismiss();
                 })
                 .neutralText(R.string.dialog_cancel)
