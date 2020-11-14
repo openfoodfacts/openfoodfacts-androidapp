@@ -89,31 +89,35 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class IngredientsProductFragment extends BaseFragment implements IIngredientsProductPresenter.View {
     public static final Pattern INGREDIENT_PATTERN = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+");
-    private FragmentIngredientsProductBinding binding;
-    private AllergenNameDao mAllergenNameDao;
-    private OpenFoodAPIClient client;
-    private String mUrlImage;
     private ProductState activityProductState;
     private String barcode;
-    private SendProduct mSendProduct;
-    private WikiDataApiClient wikidataClient;
+    private FragmentIngredientsProductBinding binding;
+    private OpenFoodAPIClient client;
     private CustomTabActivityHelper customTabActivityHelper;
     private CustomTabsIntent customTabsIntent;
-    private IIngredientsProductPresenter.Actions presenter;
-    private boolean extractIngredients = false;
-    private boolean sendUpdatedIngredientsImage = false;
     private final CompositeDisposable disp = new CompositeDisposable();
+    private boolean ingredientExtracted = false;
     /**
      * boolean to determine if image should be loaded or not
      **/
     private boolean isLowBatteryMode = false;
+    private AllergenNameDao mAllergenNameDao;
+    private SendProduct mSendProduct;
+    private String mUrlImage;
+    private final ActivityResultLauncher<Product> performOCRLauncher = registerForActivityResult(new ProductEditActivity.EditProductPerformOCR(), result -> {
+        if (result) {
+            onRefresh();
+        }
+    });
     private PhotoReceiverHandler photoReceiverHandler;
+    private IIngredientsProductPresenter.Actions presenter;
+    private boolean sendUpdatedIngredientsImage = false;
     private final ActivityResultLauncher<Void> loginLauncher = registerForActivityResult(
         new LoginActivity.LoginContract(),
         result -> ProductEditActivity.start(getContext(),
             activityProductState,
             sendUpdatedIngredientsImage,
-            extractIngredients));
+            ingredientExtracted));
     private final ActivityResultLauncher<Product> updateImagesLauncher = registerForActivityResult(
         new ProductEditActivity.EditProductSendUpdatedImg(),
         result -> {
@@ -121,6 +125,7 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
                 onRefresh();
             }
         });
+    private WikiDataApiClient wikidataClient;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -488,18 +493,14 @@ public class IngredientsProductFragment extends BaseFragment implements IIngredi
     }
 
     public void extractIngredients() {
-        extractIngredients = true;
+        ingredientExtracted = true;
         final SharedPreferences settings = requireActivity().getSharedPreferences("login", 0);
         final String login = settings.getString("user", "");
         if (login.isEmpty()) {
             showSignInDialog();
         } else {
             activityProductState = FragmentUtils.requireStateFromArguments(this);
-            registerForActivityResult(new ProductEditActivity.EditProductPerformOCR(), result -> {
-                if (result) {
-                    onRefresh();
-                }
-            }).launch(activityProductState.getProduct());
+            performOCRLauncher.launch(activityProductState.getProduct());
         }
     }
 
