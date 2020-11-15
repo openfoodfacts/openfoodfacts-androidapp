@@ -42,7 +42,6 @@ import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -144,27 +143,32 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private static final int WEEK_IN_MS = 60 * 60 * 24 * 7 * 1000;
     public static final String PRODUCT_SEARCH_KEY = "product_search";
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private String barcode;
     private ActivityMainBinding binding;
-    private AccountHeader headerResult = null;
-    private Drawer drawerResult = null;
-    private MenuItem searchMenuItem;
+    private Uri contributeUri;
     private CustomTabActivityHelper customTabActivityHelper;
     /**
      * Used to re-create the fragment after activity recreation
      */
     private CustomTabsIntent customTabsIntent;
-    private Uri userAccountUri;
-    private Uri contributeUri;
     private Uri discoverUri;
-    private Uri userContributeUri;
-    private String barcode;
-    private PrefManager prefManager;
     private CompositeDisposable disp;
-    ActivityResultLauncher<Void> loginActivityResultLauncher = registerForActivityResult(
-        new LoginActivity.LoginContract(),
-        (ActivityResultCallback<Boolean>) isLoggedIn -> {
+    private Drawer drawerResult = null;
+    private AccountHeader headerResult = null;
+    private PrefManager prefManager;
+    private MenuItem searchMenuItem;
+    private Uri userAccountUri;
+    private final ActivityResultLauncher<Void> loginThenUpdateLauncher = registerForActivityResult(
+        new LoginActivity.LoginContract(), isLoggedIn -> {
             if (isLoggedIn) {
                 updateConnectedState();
+            }
+        });
+    private Uri userContributeUri;
+    private final ActivityResultLauncher<Void> loginThenContributionsLauncher = registerForActivityResult(
+        new LoginActivity.LoginContract(), isLoggedIn -> {
+            if (isLoggedIn) {
+                openMyContributionsInBrowser();
             }
         });
 
@@ -343,7 +347,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                         break;
 
                     case ITEM_LOGIN:
-                        loginActivityResultLauncher.launch(null);
+                        loginThenUpdateLauncher.launch(null);
                         break;
 
                     case ITEM_ALERT:
@@ -590,11 +594,7 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
                 .onPositive((dialog, which) -> CustomTabActivityHelper.openCustomTab(MainActivity.this, customTabsIntent, Uri.parse(getString(R
                     .string.website) + "cgi/user.pl"), new WebViewFallback()))
                 .onNeutral((dialog, which) ->
-                    registerForActivityResult(new LoginActivity.LoginContract(), isLoggedIn -> {
-                        if (isLoggedIn) {
-                            openMyContributionsInBrowser();
-                        }
-                    }).launch(null))
+                    loginThenContributionsLauncher.launch(null))
                 .show();
         }
     }
