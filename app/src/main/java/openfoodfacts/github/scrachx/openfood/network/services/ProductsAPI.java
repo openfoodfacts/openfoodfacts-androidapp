@@ -176,57 +176,44 @@ public interface ProductsAPI {
     Single<Search> searchProductsByContributor(@Path("Contributor") String contributor,
                                                @Path("page") int page);
 
-    @Deprecated
     @GET("language/{language}.json")
-    Call<Search> byLanguage(@Path("language") String language);
+    Single<Search> getProductsByLanguage(@Path("language") String language);
 
-    @Deprecated
     @GET("label/{label}.json")
-    Call<Search> byLabel(@Path("label") String label);
+    Single<Search> getProductsByLabel(@Path("label") String label);
 
-    @Deprecated
     @GET("category/{category}.json")
-    Call<Search> byCategory(@Path("category") String category);
+    Single<Search> getProductsByCategory(@Path("category") String category);
 
-    @Deprecated
     @GET("state/{state}.json")
-    Call<Search> byState(@Path("state") String state, @Query("fields") String fields);
+    Single<Search> getProductsByState(@Path("state") String state, @Query("fields") String fields);
 
-    @Deprecated
     @GET("packaging/{packaging}.json")
-    Call<Search> byPackaging(@Path("packaging") String packaging);
+    Single<Search> getProductsByPackaging(@Path("packaging") String packaging);
 
-    @Deprecated
     @GET("brand/{brand}.json")
-    Call<Search> byBrand(@Path("brand") String brand);
+    Single<Search> getProductsByBrand(@Path("brand") String brand);
 
-    @Deprecated
     @GET("purchase-place/{purchasePlace}.json")
-    Call<Search> byPurchasePlace(@Path("purchasePlace") String purchasePlace);
+    Single<Search> getProductsByPurchasePlace(@Path("purchasePlace") String purchasePlace);
 
-    @Deprecated
     @GET("store/{store}.json")
-    Call<Search> byStore(@Path("store") String store);
+    Single<Search> getProductsByStore(@Path("store") String store);
 
-    @Deprecated
     @GET("country/{country}.json")
-    Call<Search> byCountry(@Path("country") String country);
+    Single<Search> byCountry(@Path("country") String country);
 
-    @Deprecated
     @GET("trace/{trace}.json")
-    Call<Search> byTrace(@Path("trace") String trace);
+    Single<Search> getProductsByTrace(@Path("trace") String trace);
 
-    @Deprecated
     @GET("packager-code/{PackagerCode}.json")
-    Call<Search> byPackagerCode(@Path("PackagerCode") String packagerCode);
+    Single<Search> byPackagerCode(@Path("PackagerCode") String packagerCode);
 
-    @Deprecated
     @GET("city/{City}.json")
-    Call<Search> byCity(@Path("City") String city);
+    Single<Search> byCity(@Path("City") String city);
 
-    @Deprecated
     @GET("nutrition-grade/{NutritionGrade}.json")
-    Call<Search> byNutritionGrade(@Path("NutritionGrade") String nutritionGrade);
+    Single<Search> byNutritionGrade(@Path("NutritionGrade") String nutritionGrade);
 
     @GET("nutrient-level/{NutrientLevel}.json")
     Single<Search> byNutrientLevel(@Path("NutrientLevel") String nutrientLevel);
@@ -269,9 +256,8 @@ public interface ProductsAPI {
     @GET("unknown-nutrient/{UnknownNutrient}.json")
     Single<Search> byUnknownNutrient(@Path("UnknownNutrient") String unknownNutrient);
 
-    @Deprecated
     @GET("additive/{Additive}.json")
-    Call<Search> byAdditive(@Path("Additive") String additive, @Query("fields") String fields);
+    Single<Search> getProductsByAdditive(@Path("Additive") String additive, @Query("fields") String fields);
 
     @GET("code/{Code}.json")
     Single<Search> byCode(@Path("Code") String code);
@@ -286,11 +272,10 @@ public interface ProductsAPI {
      */
     @Deprecated
     @GET("period-after-opening/{PeriodAfterOpening}.json")
-    Call<Search> byPeriodAfterOpening(@Path("PeriodAfterOpening") String periodAfterOpening);
+    Call<Search> getProductsByPeriodAfterOpening(@Path("PeriodAfterOpening") String periodAfterOpening);
 
-    @Deprecated
     @GET("ingredient/{ingredient}.json")
-    Call<Search> byIngredient(@Path("ingredient") String ingredient);
+    Single<Search> getProductsByIngredient(@Path("ingredient") String ingredient);
 
     /**
      * This method gives a list of incomplete products

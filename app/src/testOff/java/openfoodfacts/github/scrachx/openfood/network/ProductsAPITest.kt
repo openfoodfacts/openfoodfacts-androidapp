@@ -9,161 +9,121 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import org.junit.BeforeClass
 import org.junit.Test
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
-import java.io.IOException
+import java.time.Duration
 
 class ProductsAPITest {
     @Test
-    @Throws(Exception::class)
     fun byLanguage() {
-        val searchResponse = prodClient.byLanguage("italian").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByLanguage("italian").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byLabel() {
-        val searchResponse = prodClient.byLabel("utz-certified").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByLabel("utz-certified").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byCategory() {
-        val searchResponse = prodClient.byCategory("baby-foods").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByCategory("baby-foods").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byState() {
         val fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags"
-        val searchResponse = prodClient.byState("complete", fieldsToFetchFacets).execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByState("complete", fieldsToFetchFacets).blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byPackaging() {
-        val searchResponse = prodClient.byPackaging("cardboard").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByPackaging("cardboard").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byBrand() {
-        val searchResponse = prodClient.byBrand("monoprix").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByBrand("monoprix").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byPurchasePlace() {
-        val searchResponse = prodClient.byPurchasePlace("marseille-5").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByPurchasePlace("marseille-5").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byStore() {
-        val searchResponse = prodClient.byStore("super-u").execute()
-        Truth.assertThat(searchResponse)
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByStore("super-u").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byCountry() {
-        val searchResponse = prodClient.byCountry("france").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.byCountry("france").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byIngredient() {
-        val searchResponse = prodClient.byIngredient("sucre").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByIngredient("sucre").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
     @Test
-    @Throws(Exception::class)
     fun byTrace() {
-        val searchResponse = prodClient.byIngredient("eggs").execute()
-        Truth.assertThat(searchResponse).isNotNull()
-        val search = searchResponse.body()
+        val search = prodClient.getProductsByTrace("eggs").blockingGet()
         Truth.assertThat(search).isNotNull()
         Truth.assertThat(search!!.products).isNotNull()
     }
 
-    @Throws(Exception::class)
     @Test
     fun productByTrace_eggs_productsFound() {
-        val response = prodClient.byTrace("eggs").execute()
+        val response = prodClient.getProductsByTrace("eggs").blockingGet()
         assertProductsFound(response)
     }
 
-    @Throws(Exception::class)
     @Test
     fun productByPackagerCode_emb35069c_productsFound() {
-        val response = prodClient.byPackagerCode("emb-35069c").execute()
+        val response = prodClient.byPackagerCode("emb-35069c").blockingGet()
         assertProductsFound(response)
     }
 
-    @Throws(Exception::class)
     @Test
     fun productByNutritionGrade_a_productsFound() {
-        val res = prodClient.byNutritionGrade("a").execute()
+        val res = prodClient.byNutritionGrade("a").blockingGet()
         assertProductsFound(res)
     }
 
-    @Throws(Exception::class)
     @Test
     fun productByCity_Paris_noProductFound() {
-        val response = prodClient.byCity("paris").execute()
+        val response = prodClient.byCity("paris").blockingGet()
         assertNoProductsFound(response)
     }
 
-    @Throws(Exception::class)
     @Test
     fun productByAdditive_e301_productsFound() {
         val fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags"
-        val response = prodClient.byAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).execute()
+        val response = prodClient.getProductsByAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).blockingGet()
         assertProductsFound(response)
     }
 
-    @Throws(Exception::class)
     @Test
     fun product_notFound() {
         val barcode = "457457457"
@@ -175,7 +135,6 @@ class ProductsAPITest {
     }
 
     @Test
-    @Throws(IOException::class)
     fun post_product() {
         val product = SendProduct()
         product.barcode = "1234567890"
@@ -223,6 +182,8 @@ class ProductsAPITest {
         fun setupClient() {
             val httpClientWithAuth = OkHttpClient.Builder()
                     .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                    .connectTimeout(Duration.ZERO)
+                    .readTimeout(Duration.ZERO)
                     .addInterceptor {
                         val origReq = it.request()
                         it.proceed(origReq.newBuilder()
@@ -241,22 +202,16 @@ class ProductsAPITest {
                     .create(ProductsAPI::class.java)
         }
 
-        private fun assertProductsFound(response: Response<Search>) {
-            Truth.assertThat(response).isNotNull()
-            Truth.assertThat(response.isSuccessful).isTrue()
-            val search = response.body()
-            val products = search!!.products
+        private fun assertProductsFound(search: Search) {
+            val products = search.products
             Truth.assertThat(products).isNotNull()
             Truth.assertThat(search.count.toInt()).isGreaterThan(0)
             Truth.assertThat(products.isEmpty()).isFalse()
         }
 
-        private fun assertNoProductsFound(response: Response<Search>) {
-            Truth.assertThat(response).isNotNull()
-            Truth.assertThat(response.isSuccessful).isTrue()
-            val search = response.body()
+        private fun assertNoProductsFound(search: Search) {
             Truth.assertThat(search).isNotNull()
-            val products = search!!.products
+            val products = search.products
             Truth.assertThat(products.isEmpty()).isTrue()
             Truth.assertThat(search.count.toInt()).isEqualTo(0)
         }
