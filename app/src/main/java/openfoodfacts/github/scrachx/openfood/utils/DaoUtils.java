@@ -17,6 +17,7 @@ public class DaoUtils {
         // Utility class
     }
 
+    @NonNull
     @Contract(pure = true)
     public static <T> Single<List<T>> logDownload(@NonNull Single<List<T>> single, Taxonomy taxonomy) {
         return single.doOnSuccess(ts -> Log.i(Taxonomy.class.getName() + "getTaxonomyData", "refreshed taxonomy '" + taxonomy + "' from server"));
