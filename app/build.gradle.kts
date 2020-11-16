@@ -27,6 +27,8 @@ plugins {
     id("org.greenrobot.greendao")
     id("io.sentry.android.gradle")
     id("kotlin-android")
+    kotlin("kapt")
+
 }
 
 fun obtainTestBuildType(): String {
@@ -60,7 +62,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
-    annotationProcessor("com.google.dagger:dagger-compiler:2.29.1")
+    kapt("com.google.dagger:dagger-compiler:2.29.1")
     implementation("com.google.dagger:dagger:2.29.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
