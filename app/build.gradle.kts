@@ -193,7 +193,7 @@ android {
         minSdkVersion(16)
         targetSdkVersion(30)
 
-        versionCode = 350
+        versionCode = 402
         versionName = "3.5.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
