@@ -36,7 +36,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 import static openfoodfacts.github.scrachx.openfood.models.ProductImageField.PACKAGING;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.bold;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
 public class EnvironmentProductFragment extends BaseFragment {
     private static final int EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1;
@@ -90,7 +90,7 @@ public class EnvironmentProductFragment extends BaseFragment {
         barcode = product.getCode();
         Nutriments nutriments = product.getNutriments();
 
-        if (isNotBlank(product.getImagePackagingUrl(langCode))) {
+        if (isNotEmpty(product.getImagePackagingUrl(langCode))) {
             binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)));
             binding.packagingImagetipBox.loadToolTip();
             binding.addPhotoLabel.setVisibility(View.GONE);
@@ -115,26 +115,29 @@ public class EnvironmentProductFragment extends BaseFragment {
             binding.carbonFootprintCv.setVisibility(View.GONE);
         }
 
-        if (product.getEnvironmentInfocard() != null && !product.getEnvironmentInfocard().isEmpty()) {
+        final String environmentInfocard = product.getEnvironmentInfocard();
+        if (environmentInfocard != null && !environmentInfocard.isEmpty()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                binding.environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard(), Html.FROM_HTML_MODE_COMPACT));
+                binding.environmentInfoText.append(Html.fromHtml(environmentInfocard, Html.FROM_HTML_MODE_COMPACT));
             } else {
-                binding.environmentInfoText.append(Html.fromHtml(product.getEnvironmentInfocard()));
+                binding.environmentInfoText.append(Html.fromHtml(environmentInfocard));
             }
         } else {
             binding.environmentInfoCv.setVisibility(View.GONE);
         }
 
-        if (product.getRecyclingInstructionsToDiscard() != null && !product.getRecyclingInstructionsToDiscard().isEmpty()) {
+        String recyclingInstructionsToDiscard = product.getRecyclingInstructionsToDiscard();
+        if (recyclingInstructionsToDiscard != null && !recyclingInstructionsToDiscard.isEmpty()) {
             binding.recyclingInstructionToDiscard.setText(bold("Recycling instructions - To discard: "));
-            binding.recyclingInstructionToDiscard.append(product.getRecyclingInstructionsToDiscard());
+            binding.recyclingInstructionToDiscard.append(recyclingInstructionsToDiscard);
         } else {
             binding.recyclingInstructionsDiscardCv.setVisibility(View.GONE);
         }
 
-        if (product.getRecyclingInstructionsToRecycle() != null && !product.getRecyclingInstructionsToRecycle().isEmpty()) {
+        String recyclingInstructionsToRecycle = product.getRecyclingInstructionsToRecycle();
+        if (recyclingInstructionsToRecycle != null && !recyclingInstructionsToRecycle.isEmpty()) {
             binding.recyclingInstructionToRecycle.setText(bold("Recycling instructions - To recycle:"));
-            binding.recyclingInstructionToRecycle.append(product.getRecyclingInstructionsToRecycle());
+            binding.recyclingInstructionToRecycle.append(recyclingInstructionsToRecycle);
         } else {
             binding.recyclingInstructionsRecycleCv.setVisibility(View.GONE);
         }
