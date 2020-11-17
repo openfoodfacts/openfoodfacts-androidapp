@@ -40,7 +40,7 @@ class EnvironmentProductFragment : BaseFragment() {
      */
     private var isLowBatteryMode = false
     private var mUrlImage: String? = null
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
+    private lateinit var photoReceiverHandler: PhotoReceiverHandler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         api = OpenFoodAPIClient(requireActivity())
@@ -68,9 +68,12 @@ class EnvironmentProductFragment : BaseFragment() {
         if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true
         }
+
         val product = productState.product
         val nutriments = product.nutriments
-        if (product.getImagePackagingUrl(langCode).isNotBlank()) {
+
+        val imagePackagingUrl = product.getImagePackagingUrl(langCode) ?: ""
+        if (imagePackagingUrl.isNotBlank()) {
             binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)))
             binding.packagingImagetipBox.loadToolTip()
             binding.addPhotoLabel.visibility = View.GONE
@@ -78,12 +81,12 @@ class EnvironmentProductFragment : BaseFragment() {
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
                 Utils.picassoBuilder(context)
-                        .load(product.getImagePackagingUrl(langCode))
+                        .load(imagePackagingUrl)
                         .into(binding.imageViewPackaging)
             } else {
                 binding.imageViewPackaging.visibility = View.GONE
             }
-            mUrlImage = product.getImagePackagingUrl(langCode)
+            mUrlImage = imagePackagingUrl
         }
 
         val carbonFootprintNutriment = nutriments[Nutriments.CARBON_FOOTPRINT]
@@ -95,27 +98,30 @@ class EnvironmentProductFragment : BaseFragment() {
             binding.carbonFootprintCv.visibility = View.GONE
         }
 
-        if (product.environmentInfocard != null && product.environmentInfocard.isNotEmpty()) {
+        val environmentInfocard = product.environmentInfocard ?: ""
+        if (environmentInfocard.isNotEmpty()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                binding.environmentInfoText.append(Html.fromHtml(product.environmentInfocard, Html.FROM_HTML_MODE_COMPACT))
+                binding.environmentInfoText.append(Html.fromHtml(environmentInfocard, Html.FROM_HTML_MODE_COMPACT))
             } else {
                 @Suppress("DEPRECATION")
-                binding.environmentInfoText.append(Html.fromHtml(product.environmentInfocard))
+                binding.environmentInfoText.append(Html.fromHtml(environmentInfocard))
             }
         } else {
             binding.environmentInfoCv.visibility = View.GONE
         }
 
-        if (product.recyclingInstructionsToDiscard != null && product.recyclingInstructionsToDiscard.isNotEmpty()) {
+        val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard ?: ""
+        if (recyclingInstructionsToDiscard.isNotEmpty()) {
             binding.recyclingInstructionToDiscard.text = Utils.bold("Recycling instructions - To discard: ")
-            binding.recyclingInstructionToDiscard.append(product.recyclingInstructionsToDiscard)
+            binding.recyclingInstructionToDiscard.append(recyclingInstructionsToDiscard)
         } else {
             binding.recyclingInstructionsDiscardCv.visibility = View.GONE
         }
 
-        if (product.recyclingInstructionsToRecycle != null && product.recyclingInstructionsToRecycle.isNotEmpty()) {
+        val recyclingInstructionsToRecycle = product.recyclingInstructionsToRecycle ?: ""
+        if (recyclingInstructionsToRecycle.isNotEmpty()) {
             binding.recyclingInstructionToRecycle.text = Utils.bold("Recycling instructions - To recycle:")
-            binding.recyclingInstructionToRecycle.append(product.recyclingInstructionsToRecycle)
+            binding.recyclingInstructionToRecycle.append(recyclingInstructionsToRecycle)
         } else {
             binding.recyclingInstructionsRecycleCv.visibility = View.GONE
         }
@@ -161,7 +167,7 @@ class EnvironmentProductFragment : BaseFragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         // TODO: 15/11/2020 find a way to use ActivityResultApi
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
         if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && isUserLoggedIn) {
             startEditProduct()
         }

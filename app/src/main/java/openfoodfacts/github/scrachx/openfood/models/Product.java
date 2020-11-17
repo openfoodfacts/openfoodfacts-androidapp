@@ -209,6 +209,7 @@ public class Product implements Serializable {
         }
     }
 
+    @Nullable
     public String getImagePackagingUrl(String languageCode) {
         String result = getSelectedImage(languageCode, ProductImageField.PACKAGING, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(result)) {
