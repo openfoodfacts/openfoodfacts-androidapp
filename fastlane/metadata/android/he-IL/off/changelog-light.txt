@@ -8,27 +8,27 @@
 
 
 ======
-גרסה 2 ! כל מתנדבי המיזם עבדו קשה על סמך ההצעות שלכם. אנחנו תנועה יותר גלובלית מאי פעם. פרטיהם של חצי מיליון מוצרים שוחררו, 182 מדינות למעלה מעשרת אלפים תורמים כולל אותך :-)
-1. NutriScore עבור כל המוצרים בעולם
-2. היסטוריה ניתנת לייצור, לעיניך בלבד
-3. אזהרות אלרגנים
-4. ניתן לגעת בתוספים כדי לחקור אותם עם ויקיפדיה.
-5. צילום תמונות, לקחת חלק בשקיפות מזון
-6. הרבה יותר מהיר, אפילו ברשת דור שני. אפשר לתרום גם ללא חיבור לאינטרנט
-7. לא נדרשת הרשמה
-8. נשאר קליל כשהיה :)
+v2! All OFF volunteers have worked hard, based on your suggestions. אנחנו תנועה יותר גלובלית מאי פעם. 500 אלף מוצרים יצאו לחופשי, 182 מדינות, למעלה מעשרת אלפים מתנדבים, כולל אותך :-)
+1. ה־NutriScore לכל המוצרים בעולם
+2. היסטורייה שניתן לייצא, לעיניך בלבד
+3. התראות אלרגנים
+4. Tap additives to explore with Wikipedia.
+5. Take photos, be part of food transparency
+6. הרבה יותר מהיר, אפילו בחיבור דור 2. ניתן לתרום גם ללא חיבור לאינטרנט
+7. אין צורך בהרשמה
+8. קליל כבעבר :)
 
-גרסה 2.8! אחרי ההשקה העצמתית של V2, כל מתנדבי OFF המשיכו לעבוד קשה בהתאם להצעות שלך. כרגע אנו מונים 570 אלף מוצרים חופשיים מ־182 שנתרמו על ידי למעלה מעשרת אלפי תורמים כולל אותך 🙂
-1. בנינו מחדש את כל חוויית הוספת המוצר (עכשיו זה גם עובד ללא חיבור). (תודות ל־Huzaifa)
-2. מהיום ניתן לקבל עובדות תזונתיות על המנה שבחרת לאכול (Rutvik)
-3. מהיום אנו מחשבים קבוצות NOVA בנוסף ל־Nutriscore‏ (Huzaifa)
-4. סדר וניקיון (על ידי Rutvik & Salfai)
+v2.8! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+1. We rebuilt the whole product addition experience (and it even works offline). (תודה ל־Huzaifa)
+2. You can now get nutrition facts for the portion you're eating (Rutvik)
+3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+4. Housecleaning (by Rutvik & Salfai)
 5. 🌎 קוריאנית ואינדונזית
 
-2.8.8! חשבת שנסתפק בהוספת מוצרים? כל המתנדבים של OFF המשיכו בעבודתם הקשה. 590 אלף מוצרים, 182 מדינות, למעלה מעשרת אלפים תורמים כולל. אותך 🙂
-1. מהיום ניתן לערוך כל מוצר עם החשבון שלך ב־OFF. יש ללחוץ על ✏️ בדף מוצר כדי לערוך אותו.
-2. 🌍 סלובקית, עברית, ספרדית, ערבית, הולנדית, הונגרית וגם וייטנאמית (translate.openfoodfacts.org כדי לסייע לנו)
-3. Open Food Facts הוא מאמץ שיתופי שמופעל לחלוטין על ידי מתנדבים: באפשרותך לתרום זמן (world.openfoodfacts.org/contribute) או כסף (donate.openfoodfacts.org)
+2.8.8 ! Thought we would stop at product addition ? כל מתנדבי OFF לא הפסיקו לעבוד קשה. 590 אלף מוצרים, 182 מדינות, למעלה מעשרת אלפים מתנדבים, כולל אותך 🙂
+1. מעתה יש לך אפשרות לערוך כל מוצר שהוא עם החשבון שלך ב־OFF. ניתן ללחוץ על ✏️ בעמוד של מוצר כלשהו כדי לערוך.
+2. 🌍 סלובקית, עברית, ספרדית, ערבית, הולנדית, הונגרית ווייטנאמית (translate.openfoodfacts.org כדי לסייע)
+3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
 
