@@ -1,4 +1,4 @@
-Nuskaitykite maisto produktus ar jų brūkšninius kodus, kad gautumėte duomenų apie sudedamąsias dalis, priedus ir mitybos faktus.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,7 +21,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- „Open Food Facts“ yra maisto produktų duomenų bazė, kurta visų ir skirta visiems.
+- Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
 - You can start contributing today by adding a product from your fridge.
