@@ -1,4 +1,4 @@
-A bincika samfuran abinci ko lambar lambar su don samun bayanai akan sinadaran, abubuwan ƙarawa da gaskiyar abubuwan abinci.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -30,7 +30,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- Open Food Facts helps you to make sense of the fine print on products labels. Za ku iya samun:
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
 - brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
@@ -50,13 +50,13 @@ Create shopping lists, track what you've eaten and easily share and export your 
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
-- Kuna iya ƙara sabbin samfura, koda kuwa ba ku da haɗin Intanet a yanzu.
+- You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Bayananka naka ne, kuma ba a taɓa aika shi ta yanar gizo ba
-- Kuna iya amfani da app ba tare da sani ba
-- Kuna iya fitarwa da tarihin bincikenku
+- Your data is yours, and is never sent online
+- You can use the app anonymously
+- You can export your scan history
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
