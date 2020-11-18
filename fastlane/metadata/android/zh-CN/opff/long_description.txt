@@ -8,22 +8,22 @@
 
 - Open Pet Food Facts 是一个由大家共同建立，同时服务于大家的宠物食品数据库。
 - Open Pet Food Facts 是一个由大家共同建立，同时服务于大家的宠物食品数据库。 你可以用它来做更好的宠物食品，由于它是开放数据，任何人都可以重复使用。
-- Open Pet Food Facts是一个由来自全世界数以千计的志愿者开发的非盈利项目。 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 我们也有很多激动人心的项目，让你有可以通过多种方式参与其中 
-从今天起你可以通过购买我们的宠物产品为这个项目出份力。 
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- You can start contributing today by adding a product from your pet's cupboard. 
 
 
 ***您的宠物食物，您的数据***
 
-您也可以找到（根据产品上的指示）:
+You will also be able to find (according to the indications present on the products):
 - 配料表（含灰含量） - 营养成分信息，营养含量限值…
 - 配料表（含灰含量） - 营养成分信息，营养含量限值…
 - 营养成分信息，营养含量限值… - 品牌，过敏原，标签（有机，纯天然...）
-适用于狗粮（干/湿）、猫食、蛇食、鱼食、鸟食、马食或任何你喜爱的动物的食物。
+- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
 
-在任何情况下都有效
-- 即使没有连接互联网，你也可以添加新的产品。
-- 应用程序仅加载严格必要以减少数据及电量消耗
-- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。 如果您没有相机或相机出了问题，也可以输入条形码。
+*** Works well in any condition ***
+- You can add new products, even if you don't have an Internet connection right now.
+- The app loads only the strict necessary to reduce data and battery consumption
+- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。 You can also type the barcode if you lack a camera or have an issue with it.
 
 ***您的宠物食物，您的数据*** - 您的个人数据只属于您，永远不会被上传。
 - 您的个人数据只属于您，永远不会被上传。 - 您可以匿名使用该应用
