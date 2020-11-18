@@ -1,13 +1,13 @@
-Open Products Facts is an open database of all products in the world.
+Open Products Facts on avoin tietokanta kaikista tuotteista maailmassa.
 
 *** Lisää tuotteiden läpinäkyvyyttä ***
 
 - Open Products Facts on kaikkien tekemä tuotetietokanta, kaikille.
 - Voit käyttää sitä tekemään parempia valintoja, ja koska se on avointa dataa, kuka tahansa voi käyttää sitä mihin tahansa tarkoitukseen.
-- Open Products Facts voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Products Facts voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin. 
 - Voit aloittaa osallistumisen tänään lisäämällä ensimmäisen tuotteesi. 
 
-*** Get the Facts ***
+*** Näe faktat ***
 - Open Products Facts auttaa sinua ymmärtämään tuotteiden etikettien pikkupräntin.
 
 *** Kerää KAAAAIIKKI asiat ***
@@ -16,20 +16,20 @@ Open Products Facts is an open database of all products in the world.
 - Open Miniature Food Facts - Suurin avoin miniatyyrielintarviketietokanta
 - Open ??? Facts - Luo oma avoin tietokantasi :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Toimii hyvin kaikissa olosuhteissa ***
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
+- Sovellus lataa vain ehdottoman välttämättömät datasiirron ja akun kulutuksen vähentämiseksi
+- Tuotteen etsimiseen ei tarvita kameraa. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
 
 *** Sinun tuotteesi, sinun tietosi ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Henkilötietosi ovat sinun, eikä niitä koskaan lähetetä verkossa
+- Voit käyttää sovellusta nimettömästi
+- Voit viedä lukuhistoriasi
 
 Elintarvikkeille voit asentaa Open Food Factsin, kosmetiikalle Open Beauty Factsin, ja lemmikkien elintarvikkeille Open Pet Food Factsin.
 
 Open Products Facts on myös saatavilla verkossa osoitteessa https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Kysymykset, palaute: contact@openfoodfacts.org
 
 *** Alkuperäinen aprillipilalistaus ***
 
