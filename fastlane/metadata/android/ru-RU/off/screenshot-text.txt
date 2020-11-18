@@ -1,4 +1,4 @@
-Это теги, показываемые над скриншотами в Play Store. Не делайте их слишком длинными или сложными.
+Это теги, показываемые над скриншотами в Play Store. Keep them short and attractive.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 =====================
@@ -17,7 +17,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 Питательность, кратко
 
-Предупреждение об аллергенах
+Allergen alert
 
 Найдите альтернативу для ваших любимых блюд
 
