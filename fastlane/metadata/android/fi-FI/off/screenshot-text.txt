@@ -2,12 +2,12 @@ Nuo ovat Play kaupassa näkyvien kuvakaappausten iskulauseita. Pidä ne lyhyenä
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fi
 
 =====================
-V2 screenshots
+V2-kuvakaappaukset
 =====================
 
 Lue tuotteita
 
-Get the Nutriscore
+Saa Nutriscore
 
 Täysi lukuhistoria, täysin yksityinen ja vietävä
 
@@ -17,7 +17,7 @@ Aseta allergeenivaroituksia
 
 Ravinto, yksinkertaistettuna
 
-Allergen alert
+Allergeenihälytys
 
 Saa vaihtoehtoja lempiruoillesi
 
@@ -31,14 +31,14 @@ Lemmikkien elintarvikkeiden Wikipedia
 
 Tuotteiden Wikipedia
 
-Ingredients
+Ainesosat
 
 Tehokas
 
-Nutrition facts
+Ravintotiedot
 
 =====================
-V3 screenshots
+V3-kuvakaappaukset
 =====================
 
 Valitse tuotteita jotka ovat hyväksi sinulle ja planeetalle!
