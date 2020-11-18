@@ -1,41 +1,41 @@
-To so slogani, ki so prikazani nad posnetki zaslona v trgovini Google Play. Naj bodo kratki in privlačni.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=sl
+Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 Posnetki zaslona V2
 =====================
 
-Skeniraj izdelke
+Scan products
 
-Pridobi Nutriscore
+Get the Nutriscore
 
-Vaša celotna zgodovina skeniranja, popolnoma zasebna in izvozna
+Your full scan history, fully private & exportable
 
-Pojdi naprej z Wikipedijo
+Go further with Wikipedia
 
-Nastavi opozorila za alergene
+Set allergen alerts
 
-Prehrana, poenostavljena
+Nutrition, simplified
 
-Opozorilo na alergene
+Allergen alert
 
-Poišči nadomestila za vaša najljubša živila
+Get alternatives for your favorite foods
 
-Postanite udeleženec preglednosti hrane
+Become an actor of food transparency
 
-Wikipedia za hrano
+Wikipedia for Food
 
-Wikipedia za kozmetiko
+Wikipedia for Cosmetics
 
-Wikipedia za hrano za hišne živali
+Wikipedia for Pet Food
 
-Wikipedija izdelkov
+Wikipedia of Products
 
-Sestavine
+Ingredients
 
-Zmogljiva
+Powerful
 
-Dejstva o hranilni vrednosti
+Nutrition facts
 
 =====================
 Posnetki zaslona V3
