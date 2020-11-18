@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=zh-hk
 V2 screenshots
 =====================
 
-掃描產品
+Scan products
 
 取得Nutri-Score
 
@@ -15,7 +15,7 @@ Go further with Wikipedia
 
 Set Allergen Alerts
 
-輕易瞭解營養成分
+Nutrition, simplified
 
 Set Allergen Alerts
 
@@ -31,9 +31,9 @@ Become an actor of food transparency
 
 產品的維基百科 成分 強大
 
-成分
+Ingredients
 
-強大
+Powerful
 
 Nutritional quality
 
