@@ -11,15 +11,15 @@ Wersja 3
 v2 ! Wszyscy wolontariusze ciężko pracowali, opierając się na waszych sugestiach. Jesteśmy ruchem bardziej globalnym niż kiedykolwiek. 590k products, 182 countries, 10K+ contributors, incl. ciebie :-)
 6. Skala NutriScore dla produktów z całego świata
 6. Możliwość eksportowania historii tylko dla siebie
-6. Ostrzeżenia o alergenach
+6. Allergen alerts
 6. Kliknij w dodatek, by go poznać dzięki Wikipedii.
 6. Rób zdjęcia, przyczyń się do przejrzystości żywności
 6. O wiele szybciej, nawet przez 2G. Możesz wnieść wkład nawet bez połączenia
 7. Nie wymagamy logowania
 8. Tak lekko jak poprzednio :)
 
-v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-6. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
+v2.8! Po ogromnej aktualizacji do wersji V2 wszyscy zgłaszający pracowali ciężko w oparciu o wasze sugestie. Posiadamy informacje o ponad 570 tyś. produktach ze 182. krajów od ponad 10 tyś. użytkowników, w tym: Ciebie🙂
+6. Przebudowaliśmy sposób dodawania produktów (który teraz działa również offline). (dzięki Huzaifa)
 6. You can now get nutrition facts for the portion you're eating (Rutvik)
 6. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
 6. Housecleaning (by Rutvik & Salfai)
