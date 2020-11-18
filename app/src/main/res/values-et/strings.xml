@@ -117,7 +117,7 @@
         <item>Mead acid (20:3 n-9)</item>
         <item>Melissic acid (30:0)</item>
         <item>Molübdeen</item>
-        <item>Monounsaturated fat</item>
+        <item>Mono unsaturated fat</item>
         <item>Montanic acid (28:0)</item>
         <item>Myristic acid (14:0)</item>
         <item>Nervonic acid (24:1 n-9)</item>
@@ -131,7 +131,7 @@
         <item>pH</item>
         <item>Fosfor</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Polyunsaturated fat</item>
+        <item>Poly unsaturated fat</item>
         <item>Kaalium</item>
         <item>Seleen</item>
         <item>Serum proteins</item>
@@ -328,7 +328,7 @@
     <string name="for_100g">For 100 g</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Portsjoni kohta</string>
-    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
     <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
