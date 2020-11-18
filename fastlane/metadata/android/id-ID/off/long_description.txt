@@ -1,4 +1,4 @@
-Pindai produk makanan atau kode batangnya untuk mendapatkan data tentang bahan, aditif, dan fakta nutrisi.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -23,7 +23,7 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 ▶ Contribute to Food Transparency
 - Open Food Facts is a food products database made by everyone, for everyone.
 - You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
@@ -50,13 +50,13 @@ Create shopping lists, track what you've eaten and easily share and export your 
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
-- Bisa menambahkan produk, bahkan tanpa koneksi internet.
+- You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Datamu adalah milikmu, tidak akan diunggah
-- Bisa menggunakan aplikasi secara anonim
-- Bisa mengekspor riwayat pemindaian
+- Your data is yours, and is never sent online
+- You can use the app anonymously
+- You can export your scan history
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
@@ -70,7 +70,7 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Pertanyaan, umpan balik: contact@openfoodfacts.org
+Questions, feedback : contact@openfoodfacts.org
 
 
 For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
