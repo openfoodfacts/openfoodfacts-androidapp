@@ -1,2 +1,2 @@
-1. NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
-2. Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
+1. NOWOŚĆ: możesz teraz zobaczyć status produktów wegańskich, wegetariańskich i oleju palmowego na podstawie ich listy składników. Więcej analiz będzie dodawanych z czasem. Wyślij nam e-mail, aby powiedzieć nam, co chcesz zobaczyć :-) 
+2. Porządkowanie i poprawki kilku problemów zgłoszonych na adres contact@openfoodfacts.org
