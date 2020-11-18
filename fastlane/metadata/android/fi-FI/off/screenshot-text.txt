@@ -55,7 +55,7 @@ Hiilijalanjälki
 
 Vertaa helposti ennen ostamista
 
-Create shopping lists, intake lists…
+Luo ostoslistoja, saantiluetteloita…
 
 Yli 750 000 tuotetta vertailtavana ja tutkittavana.
 
@@ -63,10 +63,10 @@ Yli 750 000 tuotetta vertailtavana ja tutkittavana.
 
 Rajaton ja täysin yksityinen skannaushistoria
 
-Swipe for even more details
+Pyyhkäise saadaksesi vielä enemmän lisätietoja
 
-Set Allergen Alerts
+Aseta allergeenihälytyksiä
 
-Join our global movement for food transparency
+Liity maailmanlaajuiseen liikkeesemme elintarvikkeiden avoimuuden puolesta
 
-world.openfoodfacts.org/contribute
+world-fi.openfoodfacts.org/contribute
