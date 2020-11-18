@@ -7,6 +7,14 @@ on:
     branches: [develop]
 
 jobs:
+  cancel:
+    name: Cancel Previous Runs
+    runs-on: ubuntu-latest
+    steps:
+      - name: cancel running workflows
+        uses: everphone-gmbh/cancel-previous-workflows@v5
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
   test:
     name: Run Unit Tests
     runs-on: ubuntu-20.04
