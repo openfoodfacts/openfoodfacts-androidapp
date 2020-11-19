@@ -16,11 +16,10 @@ lane :release do
     PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
     gradle_file = "./app/build.gradle.kts"
 
-    localVersionName = android_get_version_name(gradle_file: gradle_file)
-    UI.important "Local is v#{localVersionName}"
+    #fetch versionName from current release branch name
+    versionName = version_to_use_from_git_branch(gitBranch: git_branch).to_s
+    UI.important "Using versionName #{versionName}"
 
-    #fetch versionName from playstore and bump minor if needed
-    versionName = play_store_version_to_upload_to(minimumVersionName: localVersionName).to_s
     #fetch versionCode from playstore and bump it
     versionCode = play_store_version_code_to_upload_to().to_s
 
@@ -59,7 +58,7 @@ lane :release do
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
         version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
-        finalize: false # Release will be finalized by the "daily" lane, when the version is in production
+        finalize: false # Release will be finalized by the "finalize_sentry" lane, when the version is in production
     )
 
     sentry_set_commits(
@@ -72,13 +71,13 @@ lane :release do
 end
 
 desc 'Check the version currently in production and mark it as "finalized"'
-lane :daily do
+lane :finalize_sentry do
     PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
     versionName = google_play_track_version_name(track: 'production')
     versionCode = google_play_track_version_codes(track: 'production').max
     sentry_finalize_release(
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
-        version: versionName + '+' + versionCode
+        version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
     )
 end

@@ -1,5 +1,14 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
+3.5.0
+- New: Help collect photos of recycling and packaging information ! Go to the new Environment tab on the complete product page. This will be helpful to compute the new environmental grade Eco-Score.
+- New button to take additional photos of the product (useful to get more blue questions)
+- Complete fix for Android 7. Sorry about that :-)
+- Producers: you can send necessary product information in advance of the launch of the Eco-Score thanks to https://world.pro.openfoodfacts.org
+
+3.4.3
+- Dark mode: lighter on your eyes, lighter on your battery
+
 3.3
 - Adding or editing a product is now instant in every condition, offline, online or bad connexion.
 - You now are properly credited for your answers to blue questions
