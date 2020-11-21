@@ -159,7 +159,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.attachBaseContext(LocaleHelper.onCreate(newBase))
     }
 
-    private val nextItem = binding.viewPager.currentItem + 1
+    private val nextItem get() = binding.viewPager.currentItem + 1
 
     private fun changeStatusBarColor() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {

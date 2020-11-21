@@ -512,6 +512,7 @@ class ProductSearchActivity : BaseActivity() {
          * @param searchTitle the title used in the activity for this search query
          * @param type the type of search
          */
+        @JvmStatic
         fun start(context: Context, searchQuery: String?, searchTitle: String?, type: SearchType?) {
             start(context, SearchInfo(searchQuery, searchTitle, type))
         }
@@ -519,6 +520,7 @@ class ProductSearchActivity : BaseActivity() {
         /**
          * @see [start]
          */
+        @JvmStatic
         fun start(context: Context, searchQuery: String?, type: SearchType?) {
             start(context, searchQuery, searchQuery, type)
         }
@@ -526,6 +528,7 @@ class ProductSearchActivity : BaseActivity() {
         /**
          * @see [start]
          */
+        @JvmStatic
         private fun start(context: Context, searchInfo: SearchInfo) {
             val intent = Intent(context, ProductSearchActivity::class.java)
             intent.putExtra(SEARCH_INFO, searchInfo)

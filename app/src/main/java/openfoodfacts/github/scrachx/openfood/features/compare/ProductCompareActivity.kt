@@ -40,7 +40,7 @@ class ProductCompareActivity : BaseActivity() {
         title = getString(R.string.compare_products)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        photoReceiverHandler = PhotoReceiverHandler(productComparisonAdapter::setImageOnPhotoReturn)
+
 
         var productsToCompare = mutableListOf<Product>()
         if (intent.extras != null && intent.getBooleanExtra(KEY_PRODUCT_FOUND, false)) {
@@ -55,6 +55,8 @@ class ProductCompareActivity : BaseActivity() {
 
         productComparisonAdapter = ProductCompareAdapter(productsToCompare, this)
         binding.productComparisonRv.adapter = productComparisonAdapter
+
+        photoReceiverHandler = PhotoReceiverHandler(productComparisonAdapter::setImageOnPhotoReturn)
 
         val finalProductsToCompare = productsToCompare
         binding.productComparisonButton.setOnClickListener {

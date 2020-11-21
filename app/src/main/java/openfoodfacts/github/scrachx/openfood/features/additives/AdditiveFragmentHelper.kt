@@ -100,9 +100,9 @@ object AdditiveFragmentHelper {
         }
     }
 
-    private fun onWikiNoResponse(additive: AdditiveName, activity: FragmentActivity?) {
+    private fun onWikiNoResponse(additive: AdditiveName, activity: FragmentActivity) {
         if (additive.hasOverexposureData()) {
-            if (activity != null && !activity.isFinishing) {
+            if (!activity.isFinishing) {
                 BottomScreenCommon.showBottomSheet(null, additive,
                         activity.supportFragmentManager)
             }
@@ -111,22 +111,20 @@ object AdditiveFragmentHelper {
         }
     }
 
-    private fun getOnWikiResponse(activity: FragmentActivity?, additive: AdditiveName): (JsonNode) -> Unit {
-        return { result: JsonNode? ->
-            if (result != null) {
-                if (activity != null && !activity.isFinishing) {
+    private fun getOnWikiResponse(activity: FragmentActivity, additive: AdditiveName) = { result: JsonNode? ->
+        if (result != null) {
+            if (!activity.isFinishing) {
+                BottomScreenCommon.showBottomSheet(result, additive,
+                        activity.supportFragmentManager)
+            }
+        } else {
+            if (additive.hasOverexposureData()) {
+                if (!activity.isFinishing) {
                     BottomScreenCommon.showBottomSheet(result, additive,
                             activity.supportFragmentManager)
                 }
             } else {
-                if (additive.hasOverexposureData()) {
-                    if (activity != null && !activity.isFinishing) {
-                        BottomScreenCommon.showBottomSheet(result, additive,
-                                activity.supportFragmentManager)
-                    }
-                } else {
-                    ProductSearchActivity.start(activity, additive.additiveTag, additive.name, SearchType.ADDITIVE)
-                }
+                ProductSearchActivity.start(activity, additive.additiveTag, additive.name, SearchType.ADDITIVE)
             }
         }
     }
