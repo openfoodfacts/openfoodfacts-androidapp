@@ -689,6 +689,7 @@ public class Product implements Serializable {
     /**
      * @return The imageUrl
      */
+    @Nullable
     private String getImageUrl() {
         return imageUrl;
     }
@@ -697,6 +698,7 @@ public class Product implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    @Nullable
     public String getImageUrl(String languageCode) {
         String url = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.DISPLAY);
         if (StringUtils.isNotBlank(url)) {

@@ -110,6 +110,10 @@ import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
+import static openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.KEY_COMPARE_PRODUCT;
+import static openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.KEY_PRODUCTS_TO_COMPARE;
+import static openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.KEY_PRODUCT_ALREADY_EXISTS;
+import static openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.KEY_PRODUCT_FOUND;
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE;
 
 public class ContinuousScanActivity extends AppCompatActivity {
@@ -125,8 +129,6 @@ public class ContinuousScanActivity extends AppCompatActivity {
         BarcodeFormat.CODE_128,
         BarcodeFormat.ITF
     );
-    public static final String INTENT_KEY_COMPARE = "compare_product";
-    public static final String INTENT_KEY_PRODUCTS_TO_COMPARE = "products_to_compare";
     public static final String SETTING_RING = "ring";
     public static final String SETTING_FLASH = "flash";
     public static final String SETTING_FOCUS = "focus";
@@ -238,16 +240,16 @@ public class ContinuousScanActivity extends AppCompatActivity {
                     product = productState.getProduct();
 
                     // If we're here from comparison -> add product, return to comparison activity
-                    if (getIntent().getBooleanExtra(INTENT_KEY_COMPARE, false)) {
+                    if (getIntent().getBooleanExtra(KEY_COMPARE_PRODUCT, false)) {
                         Intent intent = new Intent(ContinuousScanActivity.this, ProductCompareActivity.class);
-                        intent.putExtra("product_found", true);
-                        ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().getSerializable(INTENT_KEY_PRODUCTS_TO_COMPARE);
+                        intent.putExtra(KEY_PRODUCT_FOUND, true);
+                        ArrayList<Product> productsToCompare = (ArrayList<Product>) getIntent().getExtras().getSerializable(KEY_PRODUCTS_TO_COMPARE);
                         if (productsToCompare.contains(product)) {
-                            intent.putExtra("product_already_exists", true);
+                            intent.putExtra(KEY_PRODUCT_ALREADY_EXISTS, true);
                         } else {
                             productsToCompare.add(product);
                         }
-                        intent.putExtra(INTENT_KEY_PRODUCTS_TO_COMPARE, productsToCompare);
+                        intent.putExtra(KEY_PRODUCTS_TO_COMPARE, productsToCompare);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
