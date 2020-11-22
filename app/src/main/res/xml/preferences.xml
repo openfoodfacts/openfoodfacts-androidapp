@@ -14,6 +14,13 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
+            android:defaultValue="@string/follow_system"
+            android:dialogTitle="Change application theme"
+            android:key="applicationThemePreference"
+            android:title="Application theme"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
             android:defaultValue="@string/kcal"
             android:dialogTitle="@string/energy_pref_title"
             android:key="energyUnitPreference"
