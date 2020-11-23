@@ -523,6 +523,7 @@ public class Utils {
         isUploadJobInitialised = true;
     }
 
+    @NonNull
     public static OkHttpClient httpClientBuilder() {
         // Our servers don't support TLS 1.3 therefore we need to create custom connectionSpec
         // with the correct ciphers to support network requests successfully on Android 7

@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.fasterxml.jackson.databind.JsonNode
+import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
@@ -37,7 +38,8 @@ object AdditiveFragmentHelper {
             additives: List<AdditiveName>,
             additiveProduct: TextView,
             apiClientForWikiData: WikiDataApiClient,
-            fragment: BaseFragment
+            fragment: BaseFragment,
+            compositeDisposable: CompositeDisposable
     ) = with(additiveProduct) {
         text = Utils.bold(fragment.getString(R.string.txtAdditives))
         movementMethod = LinkMovementMethod.getInstance()
@@ -46,10 +48,10 @@ object AdditiveFragmentHelper {
         isClickable = true
         movementMethod = LinkMovementMethod.getInstance()
         for (i in 0 until additives.size - 1) {
-            append(getAdditiveTag(additives[i], apiClientForWikiData, fragment))
+            append(getAdditiveTag(additives[i], apiClientForWikiData, fragment, compositeDisposable))
             append("\n")
         }
-        append(getAdditiveTag(additives[additives.size - 1], apiClientForWikiData, fragment))
+        append(getAdditiveTag(additives[additives.size - 1], apiClientForWikiData, fragment, compositeDisposable))
     }
 
     /**
@@ -59,12 +61,14 @@ object AdditiveFragmentHelper {
      * @param apiClientForWikiData object of WikidataApiClient
      * @param fragment holds a reference to the calling fragment
      */
-    private fun getAdditiveTag(additive: AdditiveName, apiClientForWikiData: WikiDataApiClient, fragment: BaseFragment): CharSequence {
+    private fun getAdditiveTag(additive: AdditiveName, apiClientForWikiData: WikiDataApiClient, fragment: BaseFragment, compositeDisposable: CompositeDisposable): CharSequence {
         val activity = fragment.requireActivity()
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (additive.isWikiDataIdPresent) {
-                    apiClientForWikiData.doSomeThing(additive.wikiDataId, getOnWikiResponse(activity, additive))
+                    compositeDisposable.add(apiClientForWikiData.doSomeThing(additive.wikiDataId).subscribe { result ->
+                        getOnWikiResponse(activity, additive)(result)
+                    })
                 } else {
                     onWikiNoResponse(additive, activity)
                 }
@@ -101,31 +105,16 @@ object AdditiveFragmentHelper {
     }
 
     private fun onWikiNoResponse(additive: AdditiveName, activity: FragmentActivity) {
-        if (additive.hasOverexposureData()) {
-            if (!activity.isFinishing) {
-                BottomScreenCommon.showBottomSheet(null, additive,
-                        activity.supportFragmentManager)
-            }
+        if (additive.hasOverexposureData() && !activity.isFinishing) {
+            BottomScreenCommon.showBottomSheet(null, additive, activity.supportFragmentManager)
         } else {
             ProductSearchActivity.start(activity, additive.additiveTag, additive.name, SearchType.ADDITIVE)
         }
     }
 
-    private fun getOnWikiResponse(activity: FragmentActivity, additive: AdditiveName) = { result: JsonNode? ->
-        if (result != null) {
-            if (!activity.isFinishing) {
-                BottomScreenCommon.showBottomSheet(result, additive,
-                        activity.supportFragmentManager)
-            }
-        } else {
-            if (additive.hasOverexposureData()) {
-                if (!activity.isFinishing) {
-                    BottomScreenCommon.showBottomSheet(result, additive,
-                            activity.supportFragmentManager)
-                }
-            } else {
-                ProductSearchActivity.start(activity, additive.additiveTag, additive.name, SearchType.ADDITIVE)
-            }
+    private fun getOnWikiResponse(activity: FragmentActivity, additive: AdditiveName) = { result: JsonNode ->
+        if (!activity.isFinishing) {
+            BottomScreenCommon.showBottomSheet(result, additive, activity.supportFragmentManager)
         }
     }
 }
