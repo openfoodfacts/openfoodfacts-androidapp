@@ -3,7 +3,10 @@ package openfoodfacts.github.scrachx.openfood.utils;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import org.jetbrains.annotations.Contract;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,6 +43,8 @@ public class InstallationUtils {
         return sID;
     }
 
+    @NonNull
+    @Contract("_ -> new")
     private static String readInstallationFile(File installation) throws IOException {
         try (RandomAccessFile f = new RandomAccessFile(installation, "r")) {
             byte[] bytes = new byte[(int) f.length()];
@@ -60,7 +65,8 @@ public class InstallationUtils {
         }
     }
 
-    public static String getHashedString(String s) {
+    @NonNull
+    public static String getHashedString(@NonNull String s) {
         try {
             // Create MD5 Hash
             MessageDigest digest = MessageDigest.getInstance("MD5");

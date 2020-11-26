@@ -13,59 +13,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package openfoodfacts.github.scrachx.openfood.features.adapters
 
-package openfoodfacts.github.scrachx.openfood.features.adapters;
+import android.content.Context
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import androidx.core.content.ContextCompat
+import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.LanguageData
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+class LanguageDataAdapter(
+        context: Context,
+        resource: Int,
+        objects: List<LanguageData?>
+) : ArrayAdapter<Any?>(context, resource, objects) {
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-
-import java.util.List;
-
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper;
-
-public class LanguageDataAdapter extends ArrayAdapter {
-    public LanguageDataAdapter(@NonNull Context context, int resource, @NonNull List<LocaleHelper.LanguageData> objects) {
-        super(context, resource, objects);
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val view = super.getView(position, convertView, parent) as TextView
+        val data = getItem(position) as LanguageData?
+        view.setTextColor(ContextCompat.getColor(context, if (data!!.isSupported) R.color.white else R.color.orange))
+        return view
     }
 
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        TextView v = (TextView) super.getView(position, convertView, parent);
-        LocaleHelper.LanguageData data = (LocaleHelper.LanguageData) getItem(position);
-        v.setTextColor(ContextCompat.getColor(getContext(), data.isSupported() ? R.color.white : R.color.orange));
-        return v;
-    }
-
-    public int getPosition(String code) {
-        int nb = getCount();
+    fun getPosition(code: String?): Int {
         if (code != null) {
-            for (int i = 0; i < nb; i++) {
-                if (code.equals(((LocaleHelper.LanguageData) getItem(i)).getCode())) {
-                    return i;
+            for (i in 0 until count) {
+                if (code == (getItem(i) as LanguageData?)!!.code) {
+                    return i
                 }
             }
         }
-        return -1;
+        return -1
     }
 
-    @Override
-    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        TextView v = (TextView) super.getDropDownView(position, convertView, parent);
-        LocaleHelper.LanguageData data = (LocaleHelper.LanguageData) getItem(position);
-        if (data.isSupported()) {
-            v.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val view = super.getDropDownView(position, convertView, parent) as TextView
+        val data = getItem(position) as LanguageData?
+        if (data!!.isSupported) {
+            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
         } else {
-            v.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0);
+            view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
         }
-        return v;
+        return view
     }
 }

@@ -99,9 +99,8 @@ class HomeFragment : NavigationBaseFragment() {
     }
 
     @NavigationDrawerType
-    override fun getNavigationDrawerType(): Int {
-        return NavigationDrawerListener.ITEM_HOME
-    }
+    override fun getNavigationDrawerType(): Int = NavigationDrawerListener.ITEM_HOME
+
 
     private val loginLauncher = registerForActivityResult(LoginContract()) { }
 

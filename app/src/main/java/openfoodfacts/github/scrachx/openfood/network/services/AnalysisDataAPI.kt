@@ -1,98 +1,96 @@
-package openfoodfacts.github.scrachx.openfood.network.services;
+package openfoodfacts.github.scrachx.openfood.network.services
+
+import io.reactivex.Single
+import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditivesWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagsWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigsWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoriesWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper
+import retrofit2.http.GET
 
 /*
-  Created by Lobster on 03.03.18.
- */
-
-import java.util.List;
-
-import io.reactivex.Single;
-import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditivesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergensWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper;
-import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper;
-import retrofit2.http.GET;
-
-/**
+ Created by Lobster on 03.03.18.
+*/ /**
  * API calls for loading static multilingual data
  * This calls should be used as rare as possible, because they load Big Data
  */
-public interface AnalysisDataAPI {
-    String LABELS_JSON = "data/taxonomies/labels.json";
-    String COUNTRIES_JSON = "data/taxonomies/countries.json";
-    String CATEGORIES_JSON = "data/taxonomies/categories.json";
-    String ADDITIVES_JSON = "data/taxonomies/additives.json";
-    String INGREDIENTS_JSON = "data/taxonomies/ingredients.json";
-    String ALLERGENS_JSON = "data/taxonomies/allergens.json";
-    String ANALYSIS_TAG_JSON = "data/taxonomies/ingredients_analysis.json";
-    String ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json";
-    String TAGS_JSON = "data/taxonomies/packager-codes.json";
-    String INVALID_BARCODES_JSON = "data/invalid-barcodes.json";
-    String VITAMINS_JSON = "data/taxonomies/vitamins.json";
-    String ADDITIVES_CLASSES_JSON = "data/taxonomies/additives_classes.json";
-    String NUCLEOTIDES_JSON = "data/taxonomies/nucleotides.json";
-    String NUTRIENT_LEVELS_JSON = "data/taxonomies/nutrient_levels.json";
-    String LANGUAGES_JSON = "data/taxonomies/languages.json";
-    String STATES_JSON = "data/taxonomies/states.json";
-    String MINERALS_JSON = "data/taxonomies/minerals.json";
-    String NUTRIENTS_JSON = "data/taxonomies/nutrients.json";
-
+interface AnalysisDataAPI {
     @GET(LABELS_JSON)
-    Single<LabelsWrapper> getLabels();
+    fun getLabels(): Single<LabelsWrapper>
 
     @GET(ALLERGENS_JSON)
-    Single<AllergensWrapper> getAllergens();
+    fun getAllergens(): Single<AllergensWrapper>
 
     @GET(INGREDIENTS_JSON)
-    Single<IngredientsWrapper> getIngredients();
+    fun getIngredients(): Single<IngredientsWrapper>
 
     @GET(ADDITIVES_JSON)
-    Single<AdditivesWrapper> getAdditives();
+    fun getAdditives(): Single<AdditivesWrapper>
 
     @GET(COUNTRIES_JSON)
-    Single<CountriesWrapper> getCountries();
+    fun getCountries(): Single<CountriesWrapper>
 
     @GET(CATEGORIES_JSON)
-    Single<CategoriesWrapper> getCategories();
+    fun getCategories(): Single<CategoriesWrapper>
 
     @GET(TAGS_JSON)
-    Single<TagsWrapper> getTags();
+    fun getTags(): Single<TagsWrapper>
 
     @GET(INVALID_BARCODES_JSON)
-    Single<List<String>> getInvalidBarcodes();
+    fun getInvalidBarcodes(): Single<List<String>>
 
     @GET(VITAMINS_JSON)
-    Single<CategoriesWrapper> getVitamins();
+    fun getVitamins(): Single<CategoriesWrapper>
 
     @GET(ADDITIVES_CLASSES_JSON)
-    Single<CategoriesWrapper> getAdditivesClasses();
+    fun getAdditivesClasses(): Single<CategoriesWrapper>
 
     @GET(NUCLEOTIDES_JSON)
-    Single<CategoriesWrapper> getNucleotides();
+    fun getNucleotides(): Single<CategoriesWrapper>
 
     @GET(NUTRIENT_LEVELS_JSON)
-    Single<CategoriesWrapper> getNutrientLevels();
+    fun getNutrientLevels(): Single<CategoriesWrapper>
 
     @GET(LANGUAGES_JSON)
-    Single<CategoriesWrapper> getLanguages();
+    fun getLanguages(): Single<CategoriesWrapper>
 
     @GET(NUTRIENTS_JSON)
-    Single<CategoriesWrapper> getNutrients();
+    fun getNutrients(): Single<CategoriesWrapper>
 
     @GET(MINERALS_JSON)
-    Single<CategoriesWrapper> getMinerals();
+    fun getMinerals(): Single<CategoriesWrapper>
 
     @GET(STATES_JSON)
-    Single<CategoriesWrapper> getStates();
+    fun getStates(): Single<CategoriesWrapper>
 
     @GET(ANALYSIS_TAG_JSON)
-    Single<AnalysisTagsWrapper> getAnalysisTags();
+    fun getAnalysisTags(): Single<AnalysisTagsWrapper>
 
     @GET(ANALYSIS_TAG_CONFIG_JSON)
-    Single<AnalysisTagConfigsWrapper> getAnalysisTagConfigs();
+    fun getAnalysisTagConfigs(): Single<AnalysisTagConfigsWrapper>
+
+    companion object {
+        const val LABELS_JSON = "data/taxonomies/labels.json"
+        const val COUNTRIES_JSON = "data/taxonomies/countries.json"
+        const val CATEGORIES_JSON = "data/taxonomies/categories.json"
+        const val ADDITIVES_JSON = "data/taxonomies/additives.json"
+        const val INGREDIENTS_JSON = "data/taxonomies/ingredients.json"
+        const val ALLERGENS_JSON = "data/taxonomies/allergens.json"
+        const val ANALYSIS_TAG_JSON = "data/taxonomies/ingredients_analysis.json"
+        const val ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json"
+        const val TAGS_JSON = "data/taxonomies/packager-codes.json"
+        const val INVALID_BARCODES_JSON = "data/invalid-barcodes.json"
+        const val VITAMINS_JSON = "data/taxonomies/vitamins.json"
+        const val ADDITIVES_CLASSES_JSON = "data/taxonomies/additives_classes.json"
+        const val NUCLEOTIDES_JSON = "data/taxonomies/nucleotides.json"
+        const val NUTRIENT_LEVELS_JSON = "data/taxonomies/nutrient_levels.json"
+        const val LANGUAGES_JSON = "data/taxonomies/languages.json"
+        const val STATES_JSON = "data/taxonomies/states.json"
+        const val MINERALS_JSON = "data/taxonomies/minerals.json"
+        const val NUTRIENTS_JSON = "data/taxonomies/nutrients.json"
+    }
 }

@@ -29,7 +29,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.I
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils.requireProductState
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
 class ProductViewFragment : Fragment(), OnRefreshListener {
     private var _binding: ActivityProductBinding? = null

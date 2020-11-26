@@ -37,7 +37,7 @@ class IngredientsProductPresenter(
         private val view: IIngredientsProductPresenter.View
 ) : IIngredientsProductPresenter.Actions {
     private val disposable = CompositeDisposable()
-    private val repository = ProductRepository.getInstance()
+    private val repository = ProductRepository.instance
 
     override fun loadAdditives() {
         val additivesTags = product.additivesTags

@@ -1,51 +1,25 @@
-package openfoodfacts.github.scrachx.openfood.features.adapters;
+package openfoodfacts.github.scrachx.openfood.features.adapters
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
+import openfoodfacts.github.scrachx.openfood.models.ProductState
 
-import java.util.ArrayList;
-import java.util.List;
-
-import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment;
-import openfoodfacts.github.scrachx.openfood.models.ProductState;
-
-public class ProductFragmentPagerAdapter extends FragmentStateAdapter {
-    private final List<BaseFragment> fragments;
-    private final List<String> tabsTitles;
-
-    public ProductFragmentPagerAdapter(FragmentActivity fragmentActivity) {
-        super(fragmentActivity);
-        this.fragments = new ArrayList<>();
-        this.tabsTitles = new ArrayList<>();
+class ProductFragmentPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+    private val fragments = mutableListOf<BaseFragment>()
+    private val tabsTitles = mutableListOf<String>()
+    fun addFragment(fragment: BaseFragment, tabTitle: String) {
+        fragments.add(fragment)
+        tabsTitles.add(tabTitle)
     }
 
-    public void addFragment(BaseFragment fragment, String tabTitle) {
-        this.fragments.add(fragment);
-        this.tabsTitles.add(tabTitle);
-    }
+    override fun createFragment(i: Int) = fragments[i]
 
-    @NonNull
-    @Override
-    public Fragment createFragment(int i) {
-        return fragments.get(i);
-    }
+    override fun getItemCount() = fragments.size
 
-    @Override
-    public int getItemCount() {
-        return fragments.size();
-    }
+    fun getPageTitle(position: Int) = tabsTitles[position]
 
-    public CharSequence getPageTitle(int position) {
-        return tabsTitles.get(position);
-    }
-
-    public void refresh(ProductState productState) {
-        for (BaseFragment f : fragments) {
-            if (f.isAdded()) {
-                f.refreshView(productState);
-            }
-        }
+    fun refresh(productState: ProductState?) {
+        fragments.filter { it.isAdded }.forEach { it.refreshView(productState) }
     }
 }

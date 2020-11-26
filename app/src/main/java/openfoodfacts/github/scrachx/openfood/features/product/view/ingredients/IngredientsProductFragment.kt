@@ -106,7 +106,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         super.onAttach(context)
         customTabActivityHelper = CustomTabActivityHelper()
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
-        productState = FragmentUtils.requireStateFromArguments(this)
+        productState = requireStateFromArguments(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -118,7 +118,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        productState = FragmentUtils.requireStateFromArguments(this)
+        productState = requireStateFromArguments(this)
         binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0)
         binding.changeIngImg.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
         binding.changeIngImg.setOnClickListener { changeIngImage() }
@@ -136,7 +136,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (arguments != null) {
             mSendProduct = requireArguments().getSerializable("sendProduct") as SendProduct?
         }
-        mAllergenNameDao = Utils.getDaoSession().allergenNameDao
+        mAllergenNameDao = Utils.daoSession.allergenNameDao
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
@@ -270,7 +270,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                     ).subscribe { result ->
                         val activity = activity
                         if (activity?.isFinishing == false) {
-                            BottomScreenCommon.showBottomSheet(result, allergen, activity.supportFragmentManager)
+                            showBottomSheet(result, allergen, activity.supportFragmentManager)
                         }
                     })
                 } else {
@@ -369,7 +369,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             if (TextUtils.isEmpty(login)) {
                 showSignInDialog()
             } else {
-                productState = FragmentUtils.requireStateFromArguments(this)
+                productState = requireStateFromArguments(this)
                 updateImagesLauncher.launch(productState.product)
             }
         }
@@ -419,7 +419,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (login!!.isEmpty()) {
             showSignInDialog()
         } else {
-            productState = FragmentUtils.requireStateFromArguments(this)
+            productState = requireStateFromArguments(this)
             performOCRLauncher.launch(productState.product)
         }
     }

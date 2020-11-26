@@ -42,7 +42,7 @@ class SummaryProductPresenter(
         private val view: ISummaryProductPresenter.View
 ) : ISummaryProductPresenter.Actions, Disposable {
     private val disposable = CompositeDisposable()
-    private val repository = ProductRepository.getInstance()
+    private val repository = ProductRepository.instance
     override fun loadAdditives() {
         val additivesTags = product.additivesTags
         if (additivesTags != null && additivesTags.isNotEmpty()) {

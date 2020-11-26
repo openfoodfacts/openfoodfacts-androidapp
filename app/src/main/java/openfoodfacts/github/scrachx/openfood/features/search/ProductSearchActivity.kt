@@ -192,7 +192,7 @@ class ProductSearchActivity : BaseActivity() {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val actualCountryTag = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "")
         if ("" == actualCountryTag) {
-            disp!!.add(ProductRepository.getInstance().getCountryByCC2OrWorld(LocaleHelper.getLocale().country)
+            disp!!.add(ProductRepository.instance.getCountryByCC2OrWorld(LocaleHelper.getLocale().country)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { mayCountry: Optional<Country> -> setupUrlHungerGames(if (mayCountry.isPresent) mayCountry.get().tag else "en:world") })
         } else {

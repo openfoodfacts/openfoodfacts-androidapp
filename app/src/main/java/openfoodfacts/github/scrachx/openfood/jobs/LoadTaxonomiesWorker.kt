@@ -33,7 +33,7 @@ class LoadTaxonomiesWorker
  */
 (appContext: Context, workerParams: WorkerParameters) : RxWorker(appContext, workerParams) {
     override fun createWork(): Single<Result> {
-        val productRepository = ProductRepository.getInstance()
+        val productRepository = ProductRepository.instance
         val settings = OFFApplication.getInstance().getSharedPreferences("prefs", 0)
 
         // We use completable because we only care about state (error or completed), not returned value

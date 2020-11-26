@@ -1,14 +1,11 @@
-package openfoodfacts.github.scrachx.openfood.dagger;
+package openfoodfacts.github.scrachx.openfood.dagger
 
-import javax.inject.Qualifier;
+import javax.inject.Qualifier
 
-public class Qualifiers {
+class Qualifiers {
+    @Qualifier
+    annotation class ForApplication
 
     @Qualifier
-    public @interface ForApplication {
-    }
-
-    @Qualifier
-    public @interface ForActivity {
-    }
+    annotation class ForActivity
 }

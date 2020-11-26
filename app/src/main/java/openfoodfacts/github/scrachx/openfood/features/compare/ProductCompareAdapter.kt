@@ -60,7 +60,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
     private val api = OpenFoodAPIClient(activity)
     private var isLowBatteryMode = false
     private val disp = CompositeDisposable()
-    private val repository = ProductRepository.getInstance()
+    private val repository = ProductRepository.instance
     private val viewHolders = mutableListOf<ProductComparisonViewHolder>()
     private var onPhotoReturnPosition: Int? = null
 

@@ -1,15 +1,15 @@
-package openfoodfacts.github.scrachx.openfood.dagger.module;
+package openfoodfacts.github.scrachx.openfood.dagger.module
 
-import dagger.Module;
-import dagger.Provides;
-import openfoodfacts.github.scrachx.openfood.dagger.FragmentScope;
-import openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel;
+import dagger.Module
+import dagger.Provides
+import openfoodfacts.github.scrachx.openfood.dagger.FragmentScope
+import openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel
 
 @Module
-public class FragmentModule {
+class FragmentModule {
     @FragmentScope
     @Provides
-    CategoryFragmentViewModel provideCategoryFragmentViewModel() {
-        return new CategoryFragmentViewModel();
+    fun provideCategoryFragmentViewModel(): CategoryFragmentViewModel {
+        return CategoryFragmentViewModel()
     }
 }

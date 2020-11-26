@@ -51,7 +51,7 @@ import java.net.HttpCookie
 class LoginActivity : BaseActivity() {
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
-    private val apiClient = CommonApiManager.getInstance().productsApi
+    private val apiClient = CommonApiManager.instance.productsApi
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private var userLoginUri: Uri? = null
     private var resetPasswordUri: Uri? = null

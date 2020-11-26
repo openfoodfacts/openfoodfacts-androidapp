@@ -1,76 +1,55 @@
-package openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete;
+package openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete
 
-import android.content.Context;
-import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
+import android.content.Context
+import android.widget.ArrayAdapter
+import android.widget.Filter
+import android.widget.Filterable
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
+import org.apache.commons.lang.StringUtils
+import java.util.*
 
-import androidx.annotation.NonNull;
+class EmbCodeAutoCompleteAdapter(
+        context: Context?,
+        textViewResourceId: Int
+) : ArrayAdapter<String>(context!!, textViewResourceId), Filterable {
+    private val client = productsApi
+    private val codeList: MutableList<String> = arrayListOf()
 
-import org.apache.commons.lang.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+    override fun getCount() = codeList.size
 
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
-
-public class EmbCodeAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
-    private final ProductsAPI client;
-    private final List<String> codeList;
-
-    public EmbCodeAutoCompleteAdapter(Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
-        client = CommonApiManager.getInstance().getProductsApi();
-        codeList = new ArrayList<>();
+    override fun getItem(position: Int): String {
+        return if (position < 0 || position >= codeList.size) StringUtils.EMPTY else codeList[position]
     }
 
-    @Override
-    public int getCount() {
-        return codeList.size();
-    }
+    override fun getFilter() = object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
 
-    @Override
-    public String getItem(int position) {
-        if (position < 0 || position >= codeList.size()) {
-            return StringUtils.EMPTY;
+            // if no value typed, return
+            if (constraint == null) {
+                return FilterResults().apply {
+                    count = 0
+                }
+            }
+            // Retrieve the autocomplete results from server.
+            val list = client.getEMBCodeSuggestions(constraint.toString()).blockingGet()
+
+            // Assign the data to the FilterResults
+            return FilterResults().apply {
+                values = list
+                count = list.size
+            }
         }
-        return codeList.get(position);
+
+        override fun publishResults(constraint: CharSequence, results: FilterResults?) {
+            if (results != null && results.count > 0) {
+                codeList.clear()
+                codeList.addAll((results.values as ArrayList<String>))
+                notifyDataSetChanged()
+            } else {
+                notifyDataSetInvalidated()
+            }
+        }
     }
 
-    @NonNull
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                FilterResults filterResults = new FilterResults();
-                filterResults.count = 0;
-
-                // if no value typed, return
-                if (constraint == null) {
-                    return filterResults;
-                }
-                // Retrieve the autocomplete results from server.
-                ArrayList<String> list = client.getEMBCodeSuggestions(constraint.toString()).blockingGet();
-
-                // Assign the data to the FilterResults
-                filterResults.values = list;
-                filterResults.count = list.size();
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                if (results != null && results.count > 0) {
-                    codeList.clear();
-                    //noinspection unchecked
-                    codeList.addAll((ArrayList<String>) results.values);
-                    notifyDataSetChanged();
-                } else {
-                    notifyDataSetInvalidated();
-                }
-            }
-        };
-    }
 }

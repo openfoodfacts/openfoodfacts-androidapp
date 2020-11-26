@@ -13,75 +13,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package openfoodfacts.github.scrachx.openfood.features.adapters
 
-package openfoodfacts.github.scrachx.openfood.features.adapters;
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+class AllergensAdapter(
+        private val mProductRepository: ProductRepository,
+        allergens: MutableList<AllergenName>?
+) : RecyclerView.Adapter<AllergensAdapter.CustomViewHolder>() {
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
+    var allergens: MutableList<AllergenName> = allergens ?: mutableListOf()
 
-import java.util.ArrayList;
-import java.util.List;
 
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository;
-
-public class AllergensAdapter extends RecyclerView.Adapter<AllergensAdapter.CustomViewHolder> {
-    private final ProductRepository mProductRepository;
-    private List<AllergenName> mAllergens;
-
-    public AllergensAdapter(@NonNull ProductRepository productRepository, @Nullable List<AllergenName> allergens) {
-        mProductRepository = productRepository;
-        setAllergens(allergens);
+    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val messageButton: Button = itemView.findViewById(R.id.delete_button)
+        val nameTextView: TextView = itemView.findViewById(R.id.allergen_name)
     }
 
-    public void setAllergens(@Nullable List<AllergenName> allergens) {
-        mAllergens = allergens != null ? allergens : new ArrayList<>();
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
+        val context = parent.context
+        val inflater = LayoutInflater.from(context)
+        val contactView = inflater.inflate(R.layout.item_allergens, parent, false)
+        return CustomViewHolder(contactView)
     }
 
-    public static class CustomViewHolder extends RecyclerView.ViewHolder {
-        final Button messageButton;
-        final TextView nameTextView;
-
-        public CustomViewHolder(View itemView) {
-            super(itemView);
-            nameTextView = itemView.findViewById(R.id.allergen_name);
-            messageButton = itemView.findViewById(R.id.delete_button);
+    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+        val allergen = allergens[position]
+        val textView = holder.nameTextView
+        textView.text = allergen.name.substring(allergen.name.indexOf(':') + 1)
+        val button = holder.messageButton
+        button.setText(R.string.delete_txt)
+        button.setOnClickListener {
+            allergens.removeAt(holder.adapterPosition)
+            notifyItemRemoved(holder.adapterPosition)
+            mProductRepository.setAllergenEnabled(allergen.allergenTag, false)
         }
     }
 
-    @Override
-    public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View contactView = inflater.inflate(R.layout.item_allergens, parent, false);
-        return new CustomViewHolder(contactView);
-    }
-
-    @Override
-    public void onBindViewHolder(final CustomViewHolder holder, final int position) {
-        final AllergenName allergen = mAllergens.get(position);
-        TextView textView = holder.nameTextView;
-        textView.setText(allergen.getName().substring(allergen.getName().indexOf(':') + 1));
-        Button button = holder.messageButton;
-        button.setText(R.string.delete_txt);
-        button.setOnClickListener(v -> {
-            mAllergens.remove(holder.getAdapterPosition());
-            notifyItemRemoved(holder.getAdapterPosition());
-            mProductRepository.setAllergenEnabled(allergen.getAllergenTag(), false);
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return mAllergens.size();
-    }
+    override fun getItemCount() = allergens.size
 }

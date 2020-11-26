@@ -1,50 +1,18 @@
-package openfoodfacts.github.scrachx.openfood.network;
+package openfoodfacts.github.scrachx.openfood.network
 
-import openfoodfacts.github.scrachx.openfood.models.Search;
+import openfoodfacts.github.scrachx.openfood.models.Search
 
-public class ApiCallbacks {
-    @FunctionalInterface
-    public interface OnAllergensCallback {
-        void onAllergensResponse(boolean value, Search allergen);
+class ApiCallbacks {
+
+    fun interface OnStoreCallback {
+        fun onStoreResponse(value: Boolean, store: Search?)
     }
 
-    @FunctionalInterface
-    public interface OnStoreCallback {
-        void onStoreResponse(boolean value, Search store);
+    fun interface OnEditImageCallback {
+        fun onEditResponse(value: Boolean, response: String?)
     }
 
-    @FunctionalInterface
-    public interface OnPackagingCallback {
-        void onPackagingResponse(boolean value, Search packaging);
-    }
-
-    @FunctionalInterface
-    public interface OnAdditiveCallback {
-        void onAdditiveResponse(boolean value, Search brand);
-    }
-
-    @FunctionalInterface
-    public interface OnEditImageCallback {
-        void onEditResponse(boolean value, String response);
-    }
-
-    @FunctionalInterface
-    public interface OnCountryCallback {
-        void onCountryResponse(boolean value, Search country);
-    }
-
-    @FunctionalInterface
-    public interface OnLabelCallback {
-        void onLabelResponse(boolean value, Search label);
-    }
-
-    @FunctionalInterface
-    public interface OnCategoryCallback {
-        void onCategoryResponse(boolean value, Search category);
-    }
-
-    @FunctionalInterface
-    public interface OnContributorCallback {
-        void onContributorResponse(boolean value, Search contributor);
+    fun interface OnContributorCallback {
+        fun onContributorResponse(value: Boolean, contributor: Search?)
     }
 }

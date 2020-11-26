@@ -79,7 +79,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
 
         // OnClick
         binding.btnAdd.setOnClickListener { addAllergen() }
-        productRepository = ProductRepository.getInstance()
+        productRepository = ProductRepository
         mDataObserver = DataObserver()
         productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().language)
         val language = LocaleHelper.getLanguage(requireActivity())
@@ -87,7 +87,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ allergens ->
-                    mAllergensEnabled = allergens
+                    mAllergensEnabled = allergens.toMutableList()
                     mAdapter = AllergensAdapter(productRepository, mAllergensEnabled)
                     binding.allergensRecycle.adapter = mAdapter
                     binding.allergensRecycle.layoutManager = LinearLayoutManager(view.context)
@@ -115,8 +115,10 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ allergens ->
-                        allergens.sortWith { a1: AllergenName, a2: AllergenName -> a1.name.compareTo(a2.name, ignoreCase = true) }
-                        val allergensNames = allergens.map { it.name }
+
+                        val allergensNames = allergens
+                                .sortedWith { a1, a2 -> a1.name.compareTo(a2.name, ignoreCase = true) }
+                                .map { it.name }
 
                         MaterialDialog.Builder(currentView.context).apply {
                             title(R.string.title_dialog_alert)
@@ -128,7 +130,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                                 binding.allergensRecycle.scrollToPosition(mAdapter!!.itemCount - 1)
                             }
                         }.show()
-                    }) { obj: Throwable -> obj.printStackTrace() })
+                    }) { it.printStackTrace() })
         } else {
             val cm = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetwork = cm.activeNetworkInfo
@@ -146,7 +148,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                         .toObservable()
                         .subscribe({
                             editor.putBoolean("errorAllergens", false).apply()
-                            mAdapter?.setAllergens(mAllergensEnabled)
+                            mAdapter?.allergens = mAllergensEnabled!!
                             mAdapter?.notifyDataSetChanged()
                             updateAllergenDao()
                             addAllergen()
@@ -173,7 +175,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
         dispCont.add(productRepository.getAllergensByEnabledAndLanguageCode(true, language)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ allergens: MutableList<AllergenName>? -> mAllergensEnabled = allergens }) { e: Throwable? -> Log.e(AllergensAlertFragment::class.java.simpleName, "getAllergensByEnabledAndLanguageCode", e) })
+                .subscribe({ allergens -> mAllergensEnabled = allergens.toMutableList() }) { e: Throwable? -> Log.e(AllergensAlertFragment::class.java.simpleName, "getAllergensByEnabledAndLanguageCode", e) })
         dispCont.add(productRepository.getAllergensByLanguageCode(language)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

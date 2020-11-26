@@ -14,8 +14,8 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
+import openfoodfacts.github.scrachx.openfood.utils.requireStateFromArguments
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -37,7 +37,7 @@ class ContributorsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        refreshView(FragmentUtils.requireStateFromArguments(this))
+        refreshView(requireStateFromArguments(this))
     }
 
     override fun refreshView(productState: ProductState) {

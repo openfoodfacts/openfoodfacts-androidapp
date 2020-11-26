@@ -8,50 +8,48 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 
-object BottomScreenCommon {
-    fun showBottomSheet(result: JsonNode?,
-                        additive: AdditiveName,
+private fun showBottomSheet(result: JsonNode?,
+                        id: Long?,
+                        name: String?,
+                        searchType: SearchType,
+                        fragmentTag: String,
                         fragmentManager: FragmentManager) {
-        showBottomSheet(result, additive.id,
-                additive.name,
-                SearchType.ADDITIVE, "additive_details_fragment",
-                fragmentManager)
-    }
+    ProductAttributeFragment.newInstance(result, id!!, searchType, name)
+            .show(fragmentManager, fragmentTag)
+}
 
-    fun showBottomSheet(result: JsonNode,
-                        label: LabelName,
-                        fragmentManager: FragmentManager) {
-        showBottomSheet(result, label.id,
-                label.name,
-                SearchType.LABEL, "label_details_fragment",
-                fragmentManager)
-    }
+fun showBottomSheet(result: JsonNode,
+                    allergen: AllergenName,
+                    fragmentManager: FragmentManager) {
+    showBottomSheet(result, allergen.id,
+            allergen.name,
+            SearchType.ALLERGEN, "allergen_details_fragment",
+            fragmentManager)
+}
 
-    fun showBottomSheet(result: JsonNode,
-                        category: CategoryName,
-                        fragmentManager: FragmentManager) {
-        showBottomSheet(result, category.id,
-                category.name,
-                SearchType.CATEGORY, "category_details_fragment",
-                fragmentManager)
-    }
+fun showBottomSheet(result: JsonNode,
+                    category: CategoryName,
+                    fragmentManager: FragmentManager) {
+    showBottomSheet(result, category.id,
+            category.name,
+            SearchType.CATEGORY, "category_details_fragment",
+            fragmentManager)
+}
 
-    fun showBottomSheet(result: JsonNode,
-                        allergen: AllergenName,
-                        fragmentManager: FragmentManager) {
-        showBottomSheet(result, allergen.id,
-                allergen.name,
-                SearchType.ALLERGEN, "allergen_details_fragment",
-                fragmentManager)
-    }
+fun showBottomSheet(result: JsonNode,
+                    label: LabelName,
+                    fragmentManager: FragmentManager) {
+    showBottomSheet(result, label.id,
+            label.name,
+            SearchType.LABEL, "label_details_fragment",
+            fragmentManager)
+}
 
-    private fun showBottomSheet(result: JsonNode?,
-                                id: Long?,
-                                name: String?,
-                                searchType: SearchType,
-                                fragmentTag: String,
-                                fragmentManager: FragmentManager) {
-        ProductAttributeFragment.newInstance(result, id!!, searchType, name)
-                .show(fragmentManager, fragmentTag)
-    }
+fun showBottomSheet(result: JsonNode?,
+                    additive: AdditiveName,
+                    fragmentManager: FragmentManager) {
+    showBottomSheet(result, additive.id,
+            additive.name,
+            SearchType.ADDITIVE, "additive_details_fragment",
+            fragmentManager)
 }

@@ -18,9 +18,9 @@ import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivi
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
-import openfoodfacts.github.scrachx.openfood.utils.BottomScreenCommon
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
 /**
  * Helper class for additive fragment
@@ -106,7 +106,7 @@ object AdditiveFragmentHelper {
 
     private fun onWikiNoResponse(additive: AdditiveName, activity: FragmentActivity) {
         if (additive.hasOverexposureData() && !activity.isFinishing) {
-            BottomScreenCommon.showBottomSheet(null, additive, activity.supportFragmentManager)
+            showBottomSheet(null, additive, activity.supportFragmentManager)
         } else {
             ProductSearchActivity.start(activity, additive.additiveTag, additive.name, SearchType.ADDITIVE)
         }
@@ -114,7 +114,7 @@ object AdditiveFragmentHelper {
 
     private fun getOnWikiResponse(activity: FragmentActivity, additive: AdditiveName) = { result: JsonNode ->
         if (!activity.isFinishing) {
-            BottomScreenCommon.showBottomSheet(result, additive, activity.supportFragmentManager)
+            showBottomSheet(result, additive, activity.supportFragmentManager)
         }
     }
 }

@@ -1,18 +1,16 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models
 
-import com.fasterxml.jackson.annotation.JsonValue;
-
-import java.util.Locale;
+import com.fasterxml.jackson.annotation.JsonValue
+import java.util.Locale.ROOT
 
 /**
  * Kind of Product Image
  */
-public enum ProductImageField {
+enum class ProductImageField {
     FRONT, INGREDIENTS, NUTRITION, PACKAGING, OTHER;
 
-    @Override
     @JsonValue
-    public String toString() {
-        return this.name().toLowerCase(Locale.getDefault());
+    override fun toString(): String {
+        return name.toLowerCase(ROOT)
     }
 }

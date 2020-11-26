@@ -1,79 +1,67 @@
-package openfoodfacts.github.scrachx.openfood.dagger.module;
+package openfoodfacts.github.scrachx.openfood.dagger.module
 
-import android.content.Context;
-
-import javax.inject.Singleton;
-
-import dagger.Module;
-import dagger.Provides;
-import io.reactivex.schedulers.Schedulers;
-import okhttp3.OkHttpClient;
-import openfoodfacts.github.scrachx.openfood.BuildConfig;
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.category.CategoryRepository;
-import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper;
-import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService;
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.jackson.JacksonConverterFactory;
-
-import static openfoodfacts.github.scrachx.openfood.dagger.Qualifiers.ForApplication;
+import android.content.Context
+import dagger.Module
+import dagger.Provides
+import io.reactivex.schedulers.Schedulers
+import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
+import openfoodfacts.github.scrachx.openfood.category.CategoryRepository
+import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper
+import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService
+import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers.ForApplication
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
+import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
+import openfoodfacts.github.scrachx.openfood.utils.Utils.httpClientBuilder
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.jackson.JacksonConverterFactory
+import javax.inject.Singleton
 
 @Module
-public class AppModule {
-    private static final OkHttpClient httpClient = Utils.httpClientBuilder();
-    private final OFFApplication application;
-
-    public AppModule(OFFApplication application) {
-        this.application = application;
-    }
-
+class AppModule(private val application: OFFApplication) {
     @Provides
     @Singleton
-    OFFApplication provideTrainLineApplication() {
-        return application;
+    fun provideTrainLineApplication(): OFFApplication {
+        return application
     }
 
     @Provides
     @ForApplication
     @Singleton
-    Context provideApplicationContext() {
-        return application;
+    fun provideApplicationContext(): Context {
+        return application
     }
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit() {
-        return new Retrofit.Builder()
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
                 .baseUrl(BuildConfig.OFWEBSITE)
                 .client(httpClient)
                 .addConverterFactory(JacksonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-                .build();
+                .build()
     }
 
     @Provides
-    CategoryNetworkService provideCategoryNetworkService(Retrofit retrofit) {
-        return retrofit.create(CategoryNetworkService.class);
-    }
-
-    @Provides
-    @Singleton
-    CategoryRepository provideCategoryRepository(CategoryNetworkService networkService, CategoryMapper mapper) {
-        return new CategoryRepository(networkService, mapper);
+    fun provideCategoryNetworkService(retrofit: Retrofit): CategoryNetworkService {
+        return retrofit.create(CategoryNetworkService::class.java)
     }
 
     @Provides
     @Singleton
-    ProductsAPI provideOpenFactsApiClient() {
-        return new Retrofit.Builder()
-            .baseUrl(BuildConfig.HOST)
-            .client(httpClient)
-            .addConverterFactory(JacksonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-            .build()
-            .create(ProductsAPI.class);
+    fun provideCategoryRepository(networkService: CategoryNetworkService, mapper: CategoryMapper): CategoryRepository {
+        return CategoryRepository(networkService, mapper)
+    }
+
+    @Provides
+    @Singleton
+    fun provideOpenFactsApiClient(): ProductsAPI {
+        return productsApi
+    }
+
+    companion object {
+        private val httpClient = httpClientBuilder()
     }
 }

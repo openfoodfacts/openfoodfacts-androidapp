@@ -77,7 +77,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils.requireProductState
 import org.apache.commons.lang.StringUtils
 import java.io.File
 import java.util.*
@@ -681,7 +680,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
                     disp.add(wikidataClient.doSomeThing(label.wikiDataId).subscribe { result ->
                         val activity = activity
                         if (activity?.isFinishing == false) {
-                            BottomScreenCommon.showBottomSheet(result, label, activity.supportFragmentManager)
+                            showBottomSheet(result, label, activity.supportFragmentManager)
                         }
                     })
                 } else {

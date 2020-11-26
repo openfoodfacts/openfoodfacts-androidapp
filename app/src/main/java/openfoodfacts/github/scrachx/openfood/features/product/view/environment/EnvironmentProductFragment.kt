@@ -22,10 +22,10 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.requireStateFromArguments
 import java.io.File
 
 class EnvironmentProductFragment : BaseFragment() {
@@ -61,7 +61,7 @@ class EnvironmentProductFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         photoReceiverHandler = PhotoReceiverHandler(this::loadPackagingPhoto)
         val langCode = LocaleHelper.getLanguage(context)
-        productState = FragmentUtils.requireStateFromArguments(this)
+        productState = requireStateFromArguments(this)
         binding.imageViewPackaging.setOnClickListener { openFullScreen() }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true

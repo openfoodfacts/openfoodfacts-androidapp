@@ -14,7 +14,7 @@ object FileUtils {
     }
 
     @JvmStatic
-    fun isAbsolute(url: String?): Boolean {
+    fun isAbsoluteUrl(url: String?): Boolean {
         return url?.startsWith("/") == true
     }
 

@@ -1,7 +1,6 @@
-package openfoodfacts.github.scrachx.openfood.dagger;
+package openfoodfacts.github.scrachx.openfood.dagger
 
-import javax.inject.Scope;
+import javax.inject.Scope
 
 @Scope
-public @interface ActivityScope {
-}
+annotation class ActivityScope 

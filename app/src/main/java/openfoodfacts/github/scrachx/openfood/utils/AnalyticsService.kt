@@ -10,8 +10,8 @@ object AnalyticsService {
         Sentry.configureScope { scope: Scope -> scope.setTag("flavor", BuildConfig.FLAVOR) }
     }
 
-    fun log(key: String?, value: String?) {
-        Sentry.setTag(key!!, value!!)
+    fun log(key: String, value: String) {
+        Sentry.setTag(key, value)
     }
 
     fun record(exception: Exception?) {

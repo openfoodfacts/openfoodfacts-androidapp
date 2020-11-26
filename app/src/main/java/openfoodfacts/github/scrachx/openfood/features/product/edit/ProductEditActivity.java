@@ -469,25 +469,25 @@ public class ProductEditActivity extends AppCompatActivity {
         imgMap.put("code", image.getCode());
         RequestBody imageField = createTextPlain(image.getImageField().toString() + '_' + lang);
         imgMap.put("imagefield", imageField);
-        if (image.getImguploadFront() != null) {
+        if (image.getImgFront() != null) {
             imagesFilePath[0] = image.getFilePath();
-            imgMap.put("imgupload_front\"; filename=\"front_" + lang + ".png\"", image.getImguploadFront());
+            imgMap.put("imgupload_front\"; filename=\"front_" + lang + ".png\"", image.getImgFront());
         }
-        if (image.getImguploadIngredients() != null) {
-            imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImguploadIngredients());
+        if (image.getImgIngredients() != null) {
+            imgMap.put("imgupload_ingredients\"; filename=\"ingredients_" + lang + ".png\"", image.getImgIngredients());
             ocr = true;
             imagesFilePath[1] = image.getFilePath();
         }
-        if (image.getImguploadNutrition() != null) {
-            imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImguploadNutrition());
+        if (image.getImgNutrition() != null) {
+            imgMap.put("imgupload_nutrition\"; filename=\"nutrition_" + lang + ".png\"", image.getImgNutrition());
             imagesFilePath[2] = image.getFilePath();
         }
-        if (image.getImguploadPackaging() != null) {
-            imgMap.put("imgupload_packaging\"; filename=\"packaging_" + lang + ".png\"", image.getImguploadPackaging());
+        if (image.getImgPackaging() != null) {
+            imgMap.put("imgupload_packaging\"; filename=\"packaging_" + lang + ".png\"", image.getImgPackaging());
             imagesFilePath[3] = image.getFilePath();
         }
-        if (image.getImguploadOther() != null) {
-            imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImguploadOther());
+        if (image.getImgOther() != null) {
+            imgMap.put("imgupload_other\"; filename=\"other_" + lang + ".png\"", image.getImgOther());
         }
         // Attribute the upload to the connected user
         addLoginPasswordInfo(imgMap);
@@ -604,7 +604,7 @@ public class ProductEditActivity extends AppCompatActivity {
                 productEditIngredientsFragment.hideImageProgress(errorUploading, message);
                 break;
             case 2:
-                productEditNutritionFactsFragment.hideImageProgress(errorUploading, message);
+                productEditNutritionFactsFragment.hideImageProgress(errorUploading);
                 break;
             case 3:
                 productEditOverviewFragment.hideOtherImageProgress(errorUploading, message);

@@ -1,61 +1,41 @@
-package openfoodfacts.github.scrachx.openfood.features.adapters;
+package openfoodfacts.github.scrachx.openfood.features.adapters
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem
 
-import androidx.annotation.NonNull;
-
-import org.apache.commons.lang.StringUtils;
-
-import java.util.List;
-
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
-
-public class CalculatedNutrimentsGridAdapter extends NutrimentsGridAdapter {
-    private static final int TYPE_HEADER = 0;
-    private static final int TYPE_ITEM = 1;
-    private final List<NutrimentListItem> nutrimentListItems;
-
-    public CalculatedNutrimentsGridAdapter(List<NutrimentListItem> nutrimentListItems) {
-        super(nutrimentListItems);
-        this.nutrimentListItems = nutrimentListItems;
-    }
-
-    @Override
-    public NutrimentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        boolean isViewTypeHeader = viewType == TYPE_HEADER;
-
-        int layoutResourceId = isViewTypeHeader ? R.layout.nutrition_fact_header_calc : R.layout.nutriment_item_list;
-        View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
-
-        if (isViewTypeHeader) {
-            boolean displayServing = false;
-            for (NutrimentListItem nutriment : nutrimentListItems) {
-                final CharSequence servingValue = nutriment.getServingValue();
-                if (servingValue != null && !StringUtils.isBlank(servingValue.toString())) {
-                    displayServing = true;
+class CalculatedNutrimentsGridAdapter(private val nutrimentListItems: List<NutrimentListItem>) : NutrimentsGridAdapter(nutrimentListItems) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NutrimentViewHolder {
+        val isViewTypeHeader = viewType == TYPE_HEADER
+        val layoutResourceId = if (isViewTypeHeader) R.layout.nutrition_fact_header_calc else R.layout.nutriment_item_list
+        val v = LayoutInflater.from(parent.context).inflate(layoutResourceId, parent, false)
+        return if (isViewTypeHeader) {
+            var displayServing = false
+            for (nutriment in nutrimentListItems) {
+                val servingValue = nutriment.servingValue
+                if (servingValue != null && !servingValue.isNullOrBlank()) {
+                    displayServing = true
                 }
             }
-            return new NutrimentHeaderViewHolder(v, displayServing);
+            NutrimentHeaderViewHolder(v, displayServing)
         } else {
-            return new NutrimentListViewHolder(v);
+            NutrimentListViewHolder(v)
         }
     }
 
-    @Override
-    public void onBindViewHolder(NutrimentViewHolder holder, int position) {
-        if (!(holder instanceof NutrimentListViewHolder)) {
-            return;
+    override fun onBindViewHolder(holder: NutrimentViewHolder, position: Int) {
+        if (holder !is NutrimentListViewHolder) {
+            return
         }
-
-        NutrimentListItem item = nutrimentListItems.get(position);
-        NutrimentListViewHolder nutrimentListViewHolder = (NutrimentListViewHolder) holder;
-        nutrimentListViewHolder.fillNutrimentValue(item);
-        nutrimentListViewHolder.fillServingValue(item);
-        holder.setIsRecyclable(false);
+        val item = nutrimentListItems[position]
+        holder.fillNutrimentValue(item)
+        holder.fillServingValue(item)
+        holder.setIsRecyclable(false)
     }
 
+    companion object {
+        private const val TYPE_HEADER = 0
+        private const val TYPE_ITEM = 1
+    }
 }
-

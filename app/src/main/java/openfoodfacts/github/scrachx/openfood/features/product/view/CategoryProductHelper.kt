@@ -14,9 +14,9 @@ import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivi
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
-import openfoodfacts.github.scrachx.openfood.utils.BottomScreenCommon
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
 class CategoryProductHelper(
         private val categoryText: TextView,
@@ -67,7 +67,7 @@ class CategoryProductHelper(
                         if (result != null) {
                             val activity = baseFragment.activity
                             if (activity != null && !activity.isFinishing) {
-                                BottomScreenCommon.showBottomSheet(result, category, activity.supportFragmentManager)
+                                showBottomSheet(result, category, activity.supportFragmentManager)
                                 return@subscribe
                             }
                         }

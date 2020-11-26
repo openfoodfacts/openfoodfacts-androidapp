@@ -1,27 +1,18 @@
-package openfoodfacts.github.scrachx.openfood.dagger.module;
+package openfoodfacts.github.scrachx.openfood.dagger.module
 
-import android.content.Context;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import dagger.Module;
-import dagger.Provides;
-import openfoodfacts.github.scrachx.openfood.dagger.ActivityScope;
-import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers.ForActivity;
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import dagger.Module
+import dagger.Provides
+import openfoodfacts.github.scrachx.openfood.dagger.ActivityScope
+import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers.ForActivity
 
 @Module
-public class ActivityModule {
-    private final AppCompatActivity activity;
-
-    public ActivityModule(AppCompatActivity activity) {
-        this.activity = activity;
-    }
-
+class ActivityModule(private val activity: AppCompatActivity) {
     @Provides
     @ForActivity
     @ActivityScope
-    Context provideActivityContext() {
-        return activity;
+    fun provideActivityContext(): Context {
+        return activity
     }
-
 }

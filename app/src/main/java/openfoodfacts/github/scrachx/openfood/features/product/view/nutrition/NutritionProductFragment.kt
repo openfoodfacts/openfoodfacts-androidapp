@@ -123,7 +123,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         binding.calculateNutritionFacts.setOnClickListener { calculateNutritionFacts() }
         binding.getNutriscorePrompt.setOnClickListener { onNutriScoreButtonClick() }
         binding.newAdd.setOnClickListener { newNutritionImage() }
-        refreshView(FragmentUtils.requireStateFromArguments(this))
+        refreshView(requireStateFromArguments(this))
     }
 
     override fun refreshView(productState: ProductState) {

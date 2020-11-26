@@ -13,71 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package openfoodfacts.github.scrachx.openfood.features.adapters
 
-package openfoodfacts.github.scrachx.openfood.features.adapters;
+import android.net.Uri
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+import com.squareup.picasso.Picasso
+import openfoodfacts.github.scrachx.openfood.R
 
-import android.net.Uri;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
-
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
-import java.util.Objects;
-
-import openfoodfacts.github.scrachx.openfood.R;
-
-public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
-    private final List<Uri> mPhotos;
-
-    public PhotosAdapter(List<Uri> mPhotos) {
-        this.mPhotos = mPhotos;
+class PhotosAdapter(private val mPhotos: List<Uri>) : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val imageView = LayoutInflater.from(parent.context)
+                .inflate(R.layout.dialog_photo_item, parent, false) as ImageView
+        return ViewHolder(imageView)
     }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ImageView photo = (ImageView) LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.dialog_photo_item, parent, false);
-        return new PhotosAdapter.ViewHolder(photo);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ImageView imageView = holder.getImageView();
-        VectorDrawableCompat drawableCompat = Objects.requireNonNull(
-            VectorDrawableCompat.create(
-                holder.getImageView().getResources(),
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val imageView = holder.imageView
+        val drawableCompat = VectorDrawableCompat.create(
+                holder.imageView.resources,
                 R.drawable.ic_product_silhouette,
                 null
-            )
-        );
+        )
 
         Picasso.get()
-            .load(mPhotos.get(position))
-            .placeholder(drawableCompat)
-            .error(R.drawable.error_image)
-            .into(imageView);
+                .load(mPhotos[position])
+                .placeholder(drawableCompat!!)
+                .error(R.drawable.error_image)
+                .into(imageView)
     }
 
-    @Override
-    public int getItemCount() {
-        return mPhotos.size();
+    override fun getItemCount(): Int {
+        return mPhotos.size
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        public ViewHolder(View itemView) {
-            super(itemView);
-        }
-
-        ImageView getImageView() {
-            return (ImageView) itemView;
-        }
+    class ViewHolder(view: ImageView) : RecyclerView.ViewHolder(view) {
+        val imageView = view
     }
 }

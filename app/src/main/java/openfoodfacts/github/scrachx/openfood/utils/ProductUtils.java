@@ -21,7 +21,7 @@ public class ProductUtils {
 
     }
 
-    public static boolean isPerServingInLiter(Product product) {
+    public static boolean isPerServingInLiter(@NonNull Product product) {
         return StringUtils.containsIgnoreCase(product.getServingSize(), Units.UNIT_LITER);
     }
 
@@ -48,6 +48,7 @@ public class ProductUtils {
         return new OpenFoodAPIClient(context).getProductStateFull(offlineSavedProduct.getBarcode());
     }
 
+    @NonNull
     public static Single<Product> toOnlineProduct(@NonNull OfflineSavedProduct offlineSavedProduct, @NonNull Context context) {
         return toState(offlineSavedProduct, context).map(ProductState::getProduct);
     }

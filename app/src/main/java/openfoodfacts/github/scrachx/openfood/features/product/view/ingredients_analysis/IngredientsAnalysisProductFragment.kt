@@ -32,8 +32,8 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductIngredient
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils.requireProductState
-import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils.requireStateFromArguments
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
+import openfoodfacts.github.scrachx.openfood.utils.requireStateFromArguments
 
 class IngredientsAnalysisProductFragment : BaseFragment() {
     private var _binding: FragmentIngredientsAnalysisProductBinding? = null

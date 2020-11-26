@@ -37,7 +37,7 @@ class CategoryRepositoryTest {
     @Before
     fun setup() {
         Mockito.`when`(mapper.fromNetwork(ArgumentMatchers.any())).thenReturn(Arrays.asList(category, category, category))
-        Mockito.`when`(networkService.categories).thenReturn(Single.just(response))
+        Mockito.`when`(networkService.getCategories()).thenReturn(Single.just(response))
         repository = CategoryRepository(networkService, mapper)
     }
 

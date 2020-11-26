@@ -1,141 +1,102 @@
-package openfoodfacts.github.scrachx.openfood.features.adapters;
+package openfoodfacts.github.scrachx.openfood.features.adapters
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import org.apache.commons.lang.StringUtils;
-
-import java.util.List;
-
-import openfoodfacts.github.scrachx.openfood.R;
-import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem;
-
-import static android.view.View.GONE;
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.features.adapters.NutrimentsGridAdapter.NutrimentViewHolder
+import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem
+import org.apache.commons.lang.StringUtils
 
 /**
  * @author herau
  */
-public class NutrimentsGridAdapter extends RecyclerView.Adapter<NutrimentsGridAdapter.NutrimentViewHolder> {
-    private static final int TYPE_HEADER = 0;
-    private static final int TYPE_ITEM = 1;
-    private final List<NutrimentListItem> nutrimentListItems;
+open class NutrimentsGridAdapter(private val nutrimentListItems: List<NutrimentListItem>) : RecyclerView.Adapter<NutrimentViewHolder>() {
 
-    public NutrimentsGridAdapter(List<NutrimentListItem> nutrimentListItems) {
-        super();
-        this.nutrimentListItems = nutrimentListItems;
-    }
-
-    @Override
-    public NutrimentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        boolean isViewTypeHeader = viewType == TYPE_HEADER;
-
-        int layoutResourceId = isViewTypeHeader ? R.layout.nutriment_item_list_header : R.layout.nutriment_item_list;
-        View v = LayoutInflater.from(parent.getContext()).inflate(layoutResourceId, parent, false);
-
-        if (isViewTypeHeader) {
-            boolean displayServing = false;
-            for (NutrimentListItem nutriment : nutrimentListItems) {
-                final CharSequence servingValue = nutriment.getServingValue();
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NutrimentViewHolder {
+        val isViewTypeHeader = viewType == TYPE_HEADER
+        val layoutResourceId = if (isViewTypeHeader) R.layout.nutriment_item_list_header else R.layout.nutriment_item_list
+        val v = LayoutInflater.from(parent.context).inflate(layoutResourceId, parent, false)
+        return if (isViewTypeHeader) {
+            var displayServing = false
+            for (nutriment in nutrimentListItems) {
+                val servingValue = nutriment.servingValue
                 if (servingValue != null && !StringUtils.isBlank(servingValue.toString())) {
-                    displayServing = true;
+                    displayServing = true
                 }
             }
-            return new NutrimentHeaderViewHolder(v, displayServing);
+            NutrimentHeaderViewHolder(v, displayServing)
         } else {
-            return new NutrimentListViewHolder(v);
+            NutrimentListViewHolder(v)
         }
     }
 
-    @Override
-    public void onBindViewHolder(NutrimentViewHolder holder, int position) {
-        if (holder instanceof NutrimentHeaderViewHolder) {
-            NutrimentListItem item = nutrimentListItems.get(position);
-            NutrimentHeaderViewHolder nutrimentViewHolder = (NutrimentHeaderViewHolder) holder;
-            nutrimentViewHolder.vNutrimentValue.setText(item.shouldDisplayVolumeHeader() ? R.string.for_100ml : R.string.for_100g);
+    override fun onBindViewHolder(holder: NutrimentViewHolder, position: Int) {
+        if (holder is NutrimentHeaderViewHolder) {
+            val item = nutrimentListItems[position]
+            holder.vNutrimentValue.setText(if (item.shouldDisplayVolumeHeader()) R.string.for_100ml else R.string.for_100g)
         }
-        if (!(holder instanceof NutrimentListViewHolder)) {
-            return;
+        if (holder !is NutrimentListViewHolder) {
+            return
         }
-
-        NutrimentListItem item = nutrimentListItems.get(position);
-
-        NutrimentListViewHolder nutrimentListViewHolder = (NutrimentListViewHolder) holder;
-        nutrimentListViewHolder.fillNutrimentValue(item);
-        nutrimentListViewHolder.fillServingValue(item);
+        val item = nutrimentListItems[position]
+        holder.fillNutrimentValue(item)
+        holder.fillServingValue(item)
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return isPositionHeader(position) ? TYPE_HEADER : TYPE_ITEM;
+    override fun getItemViewType(position: Int): Int {
+        return if (isPositionHeader(position)) TYPE_HEADER else TYPE_ITEM
     }
 
-    boolean isPositionHeader(int position) {
-        return position == 0;
-    }
+    private fun isPositionHeader(position: Int) = position == 0
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+    override fun getItemId(position: Int) = position.toLong()
 
-    @Override
-    public int getItemCount() {
-        return nutrimentListItems.size();
-    }
+    override fun getItemCount() = nutrimentListItems.size
 
-    public abstract static class NutrimentViewHolder extends RecyclerView.ViewHolder {
-        public NutrimentViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
-    }
+    abstract class NutrimentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    static class NutrimentListViewHolder extends NutrimentViewHolder {
-        private final TextView vNutrimentName;
-        private final TextView vNutrimentServingValue;
-        private final TextView vNutrimentValue;
-
-        public NutrimentListViewHolder(View v) {
-            super(v);
-            vNutrimentName = v.findViewById(R.id.nutriment_name);
-            vNutrimentValue = v.findViewById(R.id.nutriment_value);
-            vNutrimentServingValue = v.findViewById(R.id.nutriment_serving_value);
-        }
-
-        void fillNutrimentValue(NutrimentListItem item) {
-            vNutrimentName.setText(item.getTitle());
+    internal class NutrimentListViewHolder(v: View) : NutrimentViewHolder(v) {
+        private val vNutrimentName: TextView = v.findViewById(R.id.nutriment_name)
+        private val vNutrimentServingValue: TextView = v.findViewById(R.id.nutriment_serving_value)
+        private val vNutrimentValue: TextView = v.findViewById(R.id.nutriment_value)
+        fun fillNutrimentValue(item: NutrimentListItem) {
+            vNutrimentName.text = item.title
             vNutrimentValue.append(String.format("%s %s %s",
-                item.getModifier(),
-                item.getValue(),
-                item.getUnit()));
+                    item.modifier,
+                    item.value,
+                    item.unit))
         }
 
-        void fillServingValue(NutrimentListItem item) {
-            final CharSequence servingValue = item.getServingValue();
+        fun fillServingValue(item: NutrimentListItem) {
+            val servingValue = item.servingValue
             if (StringUtils.isBlank(servingValue.toString())) {
-                vNutrimentServingValue.setVisibility(GONE);
+                vNutrimentServingValue.visibility = View.GONE
             } else {
                 vNutrimentServingValue.append(String.format("%s %s %s",
-                    item.getModifier(),
-                    servingValue,
-                    item.getUnit()));
+                        item.modifier,
+                        servingValue,
+                        item.unit))
+            }
+        }
+
+    }
+
+    internal class NutrimentHeaderViewHolder(itemView: View, displayServing: Boolean) : NutrimentViewHolder(itemView) {
+        val vNutrimentValue: TextView = itemView.findViewById(R.id.nutriment_value)
+        private val nutrimentServingValue: TextView = itemView.findViewById(R.id.nutriment_serving_value)
+
+        init {
+            if (!displayServing) {
+                nutrimentServingValue.visibility = View.GONE
             }
         }
     }
 
-    static class NutrimentHeaderViewHolder extends NutrimentViewHolder {
-        final TextView vNutrimentValue;
-
-        public NutrimentHeaderViewHolder(View itemView, boolean displayServing) {
-            super(itemView);
-            vNutrimentValue = itemView.findViewById(R.id.nutriment_value);
-            if (!displayServing) {
-                itemView.findViewById(R.id.nutriment_serving_value).setVisibility(GONE);
-            }
-        }
+    companion object {
+        private const val TYPE_HEADER = 0
+        private const val TYPE_ITEM = 1
     }
 }

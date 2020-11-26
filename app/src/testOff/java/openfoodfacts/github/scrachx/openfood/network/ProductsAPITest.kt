@@ -152,7 +152,7 @@ class ProductsAPITest {
 
 
         val body = devClientWithAuth
-                .saveProductSingle(product.barcode, productDetails, OpenFoodAPIClient.getCommentToUpload())
+                .saveProductSingle(product.barcode, productDetails, OpenFoodAPIClient.commentToUpload)
                 .blockingGet()
         Truth.assertThat(body.status).isEqualTo(1)
         Truth.assertThat(body.statusVerbose).isEqualTo("fields saved")
@@ -192,7 +192,7 @@ class ProductsAPITest {
                                 .method(origReq.method(), origReq.body()).build())
                     }
                     .build()
-            prodClient = CommonApiManager.getInstance().productsApi
+            prodClient = CommonApiManager.instance.productsApi
             devClientWithAuth = Retrofit.Builder()
                     .baseUrl(DEV_API)
                     .addConverterFactory(JacksonConverterFactory.create())

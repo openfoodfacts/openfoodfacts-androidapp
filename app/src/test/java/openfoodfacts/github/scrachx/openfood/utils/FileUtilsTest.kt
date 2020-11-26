@@ -19,11 +19,11 @@ class FileUtilsTest {
 
     @Test
     fun isAbsolute_true() {
-        Truth.assertThat(FileUtils.isAbsolute(absoluteURL)).isTrue()
+        Truth.assertThat(FileUtils.isAbsoluteUrl(absoluteURL)).isTrue()
     }
 
     @Test
     fun isAbsolute_false() {
-        Truth.assertThat(FileUtils.isAbsolute(localURL)).isFalse()
+        Truth.assertThat(FileUtils.isAbsoluteUrl(localURL)).isFalse()
     }
 }

@@ -15,7 +15,7 @@ import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils.requireProductState
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
 /**
  * @author prajwalm

@@ -1,73 +1,54 @@
-package openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete;
+package openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete
 
-import android.content.Context;
-import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
+import android.content.Context
+import android.widget.ArrayAdapter
+import android.widget.Filter
+import android.widget.Filterable
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager
+import org.apache.commons.lang.StringUtils
+import java.util.*
 
-import androidx.annotation.NonNull;
-
-import org.apache.commons.lang.StringUtils;
-
-import java.util.ArrayList;
-
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager;
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI;
-
-public class PeriodAfterOpeningAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
-    private final ProductsAPI client;
-    private final ArrayList<String> periodsList;
-
-    public PeriodAfterOpeningAutoCompleteAdapter(Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
-        client = CommonApiManager.getInstance().getProductsApi();
-        periodsList = new ArrayList<>();
+class PeriodAfterOpeningAutoCompleteAdapter(
+        context: Context?,
+        textViewResourceId: Int
+) : ArrayAdapter<String>(context!!, textViewResourceId), Filterable {
+    private val client = CommonApiManager.productsApi
+    private val periodsList = arrayListOf<String>()
+    override fun getCount(): Int {
+        return periodsList.size
     }
 
-    @Override
-    public int getCount() {
-        return periodsList.size();
+    override fun getItem(position: Int): String {
+        return if (position < 0 || position >= periodsList.size) {
+            StringUtils.EMPTY
+        } else periodsList[position]
     }
 
-    @Override
-    public String getItem(int position) {
-        if (position < 0 || position >= periodsList.size()) {
-            return StringUtils.EMPTY;
+    override fun getFilter() = object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filterResults = FilterResults()
+            filterResults.count = 0
+            if (constraint == null) {
+                return filterResults
+            }
+            // Retrieve the autocomplete results from server.
+            val list = client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet()
+
+            // Assign the data to the FilterResults
+            filterResults.values = list
+            filterResults.count = list.size
+            return filterResults
         }
-        return periodsList.get(position);
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            if (results != null && results.count > 0) {
+                periodsList.clear()
+                periodsList.addAll((results.values as ArrayList<String>))
+                notifyDataSetChanged()
+            } else {
+                notifyDataSetInvalidated()
+            }
+        }
     }
 
-    @NonNull
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                FilterResults filterResults = new FilterResults();
-                filterResults.count = 0;
-                if (constraint == null) {
-                    return filterResults;
-                }
-                // Retrieve the autocomplete results from server.
-                ArrayList<String> list = client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet();
-
-                // Assign the data to the FilterResults
-                filterResults.values = list;
-                filterResults.count = list.size();
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                if (results != null && results.count > 0) {
-                    periodsList.clear();
-                    //noinspection unchecked
-                    periodsList.addAll((ArrayList<String>) results.values);
-                    notifyDataSetChanged();
-                } else {
-                    notifyDataSetInvalidated();
-                }
-            }
-        };
-    }
 }
