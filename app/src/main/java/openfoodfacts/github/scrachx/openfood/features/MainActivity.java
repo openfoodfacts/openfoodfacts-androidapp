@@ -99,6 +99,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import kotlin.Unit;
 import openfoodfacts.github.scrachx.openfood.AppFlavors;
 import openfoodfacts.github.scrachx.openfood.BuildConfig;
 import openfoodfacts.github.scrachx.openfood.R;
@@ -158,14 +159,14 @@ public class MainActivity extends BaseActivity implements NavigationDrawerListen
     private PrefManager prefManager;
     private MenuItem searchMenuItem;
     private Uri userAccountUri;
-    private final ActivityResultLauncher<Void> loginThenUpdateLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Unit> loginThenUpdateLauncher = registerForActivityResult(
         new LoginActivity.LoginContract(), isLoggedIn -> {
             if (isLoggedIn) {
                 updateConnectedState();
             }
         });
     private Uri userContributeUri;
-    private final ActivityResultLauncher<Void> loginThenContributionsLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Unit> loginThenContributionsLauncher = registerForActivityResult(
         new LoginActivity.LoginContract(), isLoggedIn -> {
             if (isLoggedIn) {
                 openMyContributionsInBrowser();

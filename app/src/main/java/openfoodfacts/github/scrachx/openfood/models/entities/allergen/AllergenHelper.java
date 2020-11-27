@@ -1,6 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.allergen;
 
+import androidx.annotation.NonNull;
+
 import org.apache.commons.collections.CollectionUtils;
+import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,11 +40,14 @@ public class AllergenHelper {
     private AllergenHelper() {
     }
 
+    @NonNull
+    @Contract(" -> new")
     private static Data createEmpty() {
         return new Data(false, Collections.emptyList());
     }
 
-    public static Data computeUserAllergen(Product product, List<AllergenName> userAllergens) {
+    @NonNull
+    public static Data computeUserAllergen(Product product, @NonNull List<? extends AllergenName> userAllergens) {
         if (userAllergens.isEmpty()) {
             return createEmpty();
         }

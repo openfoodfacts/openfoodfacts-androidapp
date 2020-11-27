@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.CheckBoxPreference;
@@ -145,6 +146,25 @@ public class PreferencesFragment extends PreferenceFragmentCompat implements INa
                 configuration.setLocale(LocaleHelper.getLocale((String) locale));
                 activity.recreate();
             }
+            return true;
+        });
+
+        ListPreference applicationThemePreference = requirePreference("applicationThemePreference");
+
+        String[] applicationThemeEntries = getResources().getStringArray(R.array.application_theme_entries);
+
+        applicationThemePreference.setEntries(R.array.application_theme_entries);
+        applicationThemePreference.setEntryValues(R.array.application_theme_entries);
+
+        applicationThemePreference.setOnPreferenceChangeListener((preference, value) -> {
+            if (value.equals(applicationThemeEntries[1])) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            } else if (value.equals(applicationThemeEntries[2])) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+            }
+
             return true;
         });
 

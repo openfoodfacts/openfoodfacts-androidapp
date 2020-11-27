@@ -31,3 +31,13 @@ def play_store_version_to_upload_to(minimumVersionName: '0.0.1')
     }
     return versionParsed.to_s
 end
+
+def version_to_use_from_git_branch(gitBranch:)
+    if gitBranch =~ /release\/[0-9]+\.[0-9]+\.[0-9]+/
+        gitBranchVersion = gitBranch.split('release/')[1]
+        gitBranchVersionParsed = Versionomy.parse(gitBranchVersion)
+        puts "Using version name #{gitBranchVersionParsed} (from current branch name #{gitBranch})"
+        return gitBranchVersionParsed
+    end
+    FastlaneCore::UI.user_error!("ERROR: we are not on a release/x.y.z branch, no version could be inferred.")
+end

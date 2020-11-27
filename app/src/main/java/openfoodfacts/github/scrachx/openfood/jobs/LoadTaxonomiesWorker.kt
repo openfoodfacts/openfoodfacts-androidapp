@@ -20,13 +20,11 @@ import android.util.Log
 import androidx.work.RxWorker
 import androidx.work.WorkerParameters
 import io.reactivex.Completable
-import io.reactivex.CompletableSource
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils
-import java.util.*
 
 class LoadTaxonomiesWorker
 /**
@@ -39,7 +37,7 @@ class LoadTaxonomiesWorker
         val settings = OFFApplication.getInstance().getSharedPreferences("prefs", 0)
 
         // We use completable because we only care about state (error or completed), not returned value
-        val syncObservables: MutableList<CompletableSource> = ArrayList()
+        val syncObservables = mutableListOf<Completable>()
         syncObservables.add(productRepository.reloadLabelsFromServer().subscribeOn(Schedulers.io()).ignoreElement())
         syncObservables.add(productRepository.reloadTagsFromServer().subscribeOn(Schedulers.io()).ignoreElement())
         syncObservables.add(productRepository.reloadInvalidBarcodesFromServer().subscribeOn(Schedulers.io()).ignoreElement())
@@ -54,7 +52,7 @@ class LoadTaxonomiesWorker
                 .toSingle {
                     settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false).apply()
                     Result.success()
-                }.onErrorReturn { throwable: Throwable? ->
+                }.onErrorReturn { throwable ->
                     Log.e(LOG_TAG, "Cannot download taxonomies from server.", throwable)
                     Result.failure()
                 }
