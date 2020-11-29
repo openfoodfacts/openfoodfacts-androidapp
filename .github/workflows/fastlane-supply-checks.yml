@@ -1,0 +1,9 @@
+on: [pull_request]
+jobs:
+  # required to run on Linux because this is a docker container action
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v1
+    - uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
+      with:
+        fastlaneDir: ./fastlane # optional. default is './fastlane'
