@@ -71,10 +71,10 @@ class CategoryProductHelper(
                                 return@subscribe
                             }
                         }
-                        start(baseFragment.requireContext(), category.categoryTag, category.name, SearchType.CATEGORY)
+                        start(baseFragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
                     })
                 } else {
-                    start(baseFragment.requireContext(), category.categoryTag, category.name, SearchType.CATEGORY)
+                    start(baseFragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
                 }
             }
         }

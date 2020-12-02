@@ -19,7 +19,6 @@ import java.io.File
 import java.util.*
 
 class OfflineProductService private constructor() {
-    private val apiClient = CommonApiManager.instance.productsApi
 
     private object Loader {
         // static synchronized singleton
@@ -80,7 +79,7 @@ class OfflineProductService private constructor() {
 
         Log.d(LOG_TAG, "Uploading data for product ${product.barcode}: $productDetails")
         try {
-            val productState = apiClient
+            val productState = CommonApiManager.productsApi
                     .saveProductSingle(product.barcode, productDetails, OpenFoodAPIClient.commentToUpload)
                     .blockingGet()
             val isResponseOk = productState.status == 1L
@@ -114,7 +113,7 @@ class OfflineProductService private constructor() {
         val image = ProductImage.createImageRequest(File(imageFilePath))
         imgMap["""imgupload_$imageType"; filename="${imageType}_${product.language}.png""""] = image
         return try {
-            val jsonNode = apiClient.saveImageSingle(imgMap)
+            val jsonNode = CommonApiManager.productsApi.saveImageSingle(imgMap)
                     .blockingGet()
             val status = jsonNode["status"].asText()
             if (status == "status not ok") {
@@ -142,7 +141,7 @@ class OfflineProductService private constructor() {
 
     companion object {
         private val LOG_TAG = this::class.simpleName!!
-        private val offlineProductDAO = OFFApplication.getDaoSession().offlineSavedProductDao
+        private val offlineProductDAO = OFFApplication.daoSession.offlineSavedProductDao
 
         fun sharedInstance(): OfflineProductService {
             return Loader.INSTANCE

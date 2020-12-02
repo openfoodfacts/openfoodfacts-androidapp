@@ -42,17 +42,16 @@ class SummaryProductPresenter(
         private val view: ISummaryProductPresenter.View
 ) : ISummaryProductPresenter.Actions, Disposable {
     private val disposable = CompositeDisposable()
-    private val repository = ProductRepository.instance
     override fun loadAdditives() {
         val additivesTags = product.additivesTags
         if (additivesTags != null && additivesTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
+            val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
             disposable.add(Observable.fromArray(*additivesTags.toTypedArray())
                     .flatMapSingle { tag: String? ->
-                        repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
+                        ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                                 .flatMap { categoryName: AdditiveName ->
                                     if (categoryName.isNull) {
-                                        return@flatMap repository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                                        return@flatMap ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
                                     } else {
                                         return@flatMap Single.just(categoryName)
                                     }
@@ -79,8 +78,8 @@ class SummaryProductPresenter(
     }
 
     override fun loadAllergens(runIfError: Runnable?) {
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
-        disposable.add(repository.getAllergensByEnabledAndLanguageCode(true, languageCode)
+        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        disposable.add(ProductRepository.getAllergensByEnabledAndLanguageCode(true, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ allergens -> view.showAllergens(allergens) }) { e: Throwable? ->
@@ -92,13 +91,13 @@ class SummaryProductPresenter(
     override fun loadCategories() {
         val categoriesTags = product.categoriesTags
         if (categoriesTags != null && categoriesTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
+            val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
             disposable.add(Observable.fromArray(*categoriesTags.toTypedArray())
                     .flatMapSingle { tag: String? ->
-                        repository.getCategoryByTagAndLanguageCode(tag, languageCode)
+                        ProductRepository.getCategoryByTagAndLanguageCode(tag, languageCode)
                                 .flatMap { categoryName: CategoryName ->
                                     return@flatMap if (categoryName.isNull) {
-                                        repository.getCategoryByTagAndDefaultLanguageCode(tag)
+                                        ProductRepository.getCategoryByTagAndDefaultLanguageCode(tag)
                                     } else {
                                         Single.just(categoryName)
                                     }
@@ -126,14 +125,14 @@ class SummaryProductPresenter(
     override fun loadLabels() {
         val labelsTags = product.labelsTags
         if (labelsTags != null && labelsTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
+            val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
             disposable.add(
                     Observable.fromArray(*labelsTags.toTypedArray())
                             .flatMapSingle { tag: String? ->
-                                repository.getLabelByTagAndLanguageCode(tag, languageCode)
+                                ProductRepository.getLabelByTagAndLanguageCode(tag, languageCode)
                                         .flatMap { labelName: LabelName ->
                                             if (labelName.isNull) {
-                                                return@flatMap repository.getLabelByTagAndDefaultLanguageCode(tag)
+                                                return@flatMap ProductRepository.getLabelByTagAndDefaultLanguageCode(tag)
                                             } else {
                                                 return@flatMap Single.just(labelName)
                                             }
@@ -161,8 +160,8 @@ class SummaryProductPresenter(
     }
 
     override fun loadProductQuestion() {
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
-        disposable.add(repository.getSingleProductQuestion(product.code, languageCode)
+        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        disposable.add(ProductRepository.getSingleProductQuestion(product.code, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ view.showProductQuestion(it) })
@@ -175,10 +174,10 @@ class SummaryProductPresenter(
             return
         }
         val analysisTags = product.ingredientsAnalysisTags
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
+        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
         if (analysisTags != null && analysisTags.isNotEmpty()) {
             disposable.add(Observable.fromIterable(analysisTags)
-                    .flatMapMaybe { tag: String? -> repository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode) }
+                    .flatMapMaybe { tag: String? -> ProductRepository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode) }
                     .toList()
                     .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
                     .subscribeOn(Schedulers.io())
@@ -194,7 +193,7 @@ class SummaryProductPresenter(
                         view.showLabelsState(ProductInfoState.EMPTY)
                     })
         } else {
-            disposable.add(repository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
+            disposable.add(ProductRepository.getUnknownAnalysisTagConfigsByLanguageCode(languageCode)
                     .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -211,8 +210,8 @@ class SummaryProductPresenter(
         }
     }
 
-    override fun annotateInsight(insightId: String?, annotation: AnnotationAnswer?) {
-        disposable.add(repository.annotateInsight(insightId, annotation)
+    override fun annotateInsight(insightId: String, annotation: AnnotationAnswer) {
+        disposable.add(ProductRepository.annotateInsight(insightId, annotation)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ annotationResponse -> view.showAnnotatedInsightToast(annotationResponse) })

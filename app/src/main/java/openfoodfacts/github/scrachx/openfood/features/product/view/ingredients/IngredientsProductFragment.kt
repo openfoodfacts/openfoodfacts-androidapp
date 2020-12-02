@@ -78,7 +78,6 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
      * boolean to determine if image should be loaded or not
      */
     private var isLowBatteryMode = false
-    private var mAllergenNameDao: AllergenNameDao? = null
     private var mSendProduct: SendProduct? = null
     var ingredients: String? = null
         private set
@@ -91,7 +90,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private lateinit var presenter: IIngredientsProductPresenter.Actions
     private var sendUpdatedIngredientsImage = false
     private val loginLauncher = registerForActivityResult(LoginContract()) {
-        ProductEditActivity.start(context,
+        ProductEditActivity.start(requireContext(),
                 productState,
                 sendUpdatedIngredientsImage,
                 ingredientExtracted)
@@ -101,24 +100,18 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             onRefresh()
         }
     }
-    private lateinit var wikidataClient: WikiDataApiClient
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        customTabActivityHelper = CustomTabActivityHelper()
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
-        productState = requireStateFromArguments(this)
-    }
+    private val wikidataClient = WikiDataApiClient()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         client = OpenFoodAPIClient(requireContext())
-        wikidataClient = WikiDataApiClient()
         _binding = FragmentIngredientsProductBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        productState = requireStateFromArguments(this)
+        productState = requireProductState()
         binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0)
         binding.changeIngImg.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
         binding.changeIngImg.setOnClickListener { changeIngImage() }
@@ -129,20 +122,25 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         refreshView(productState)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        customTabActivityHelper = CustomTabActivityHelper()
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
+        productState = requireProductState()
+    }
+
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
         this.productState = productState
         val langCode = LocaleHelper.getLanguage(context)
-        if (arguments != null) {
-            mSendProduct = requireArguments().getSerializable("sendProduct") as SendProduct?
-        }
-        mAllergenNameDao = Utils.daoSession.allergenNameDao
+
+        if (arguments != null) mSendProduct = getSendProduct()
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true
         }
-        val product = this.productState.product
+        val product = this.productState.product!!
         presenter = IngredientsProductPresenter(product, this)
         val vitaminTagsList = product.vitaminTags
         val aminoAcidTagsList = product.aminoAcidTags
@@ -192,12 +190,12 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (mSendProduct != null && StringUtils.isNotBlank(mSendProduct!!.imgupload_ingredients)) {
             binding.addPhotoLabel.visibility = View.GONE
             ingredients = mSendProduct!!.imgupload_ingredients
-            Picasso.get().load(FileUtils.LOCALE_FILE_SCHEME + ingredients).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
+            Picasso.get().load(LOCALE_FILE_SCHEME + ingredients).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
         }
         val allergens = allergens
         if (!product.getIngredientsText(langCode).isNullOrEmpty()) {
             binding.cvTextIngredientProduct.visibility = View.VISIBLE
-            var txtIngredients = SpannableStringBuilder(product.getIngredientsText(langCode).replace("_", ""))
+            var txtIngredients = SpannableStringBuilder(product.getIngredientsText(langCode)!!.replace("_", ""))
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens)
             if (TextUtils.isEmpty(product.getIngredientsText(langCode))) {
                 binding.extractIngredientsPrompt.visibility = View.VISIBLE
@@ -219,13 +217,16 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             binding.textTraceProduct.movementMethod = LinkMovementMethod.getInstance()
             binding.textTraceProduct.text = Utils.bold(getString(R.string.txtTraces))
             binding.textTraceProduct.append(" ")
-            val traces = product.traces.split(",").toTypedArray()
-            for (i in traces.indices) {
-                val trace = traces[i]
-                if (i > 0) {
-                    binding.textTraceProduct.append(", ")
-                }
-                binding.textTraceProduct.append(Utils.getClickableText(getTracesName(language, trace), trace, SearchType.TRACE, activity, customTabsIntent))
+            val traces = product.traces!!.split(",")
+            traces.withIndex().forEach { (i, trace) ->
+                if (i > 0) binding.textTraceProduct.append(", ")
+                binding.textTraceProduct.append(Utils.getClickableText(
+                        getTracesName(language, trace),
+                        trace,
+                        SearchType.TRACE,
+                        activity,
+                        customTabsIntent
+                ))
             }
         } else {
             binding.cvTextTraceProduct.visibility = View.GONE
@@ -245,16 +246,15 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     private fun getTracesName(languageCode: String, tag: String): String {
-        val allergenName = mAllergenNameDao!!.queryBuilder().where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+        val allergenName = Utils.daoSession.allergenNameDao.queryBuilder()
+                .where(AllergenNameDao.Properties.AllergenTag.eq(tag), AllergenNameDao.Properties.LanguageCode.eq(languageCode))
                 .unique()
-        return if (allergenName != null) {
-            allergenName.name
-        } else tag
+        return if (allergenName != null) allergenName.name else tag
     }
 
     private fun buildStringBuilder(stringList: List<String>, prefix: String) = StringBuilder().apply {
         append(prefix)
-        for (otherSubstance in stringList) {
+        stringList.forEach { otherSubstance ->
             append(trimLanguagePartFromString(otherSubstance))
             append(", ")
         }
@@ -274,7 +274,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                         }
                     })
                 } else {
-                    start(context!!, allergen.allergenTag, allergen.name, SearchType.ALLERGEN)
+                    start(context!!, SearchType.ALLERGEN, allergen.allergenTag, allergen.name)
                 }
             }
         }
@@ -351,11 +351,6 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
     }
 
-    override fun onDestroy() {
-        disp.dispose()
-        _binding = null
-        super.onDestroy()
-    }
 
     fun changeIngImage() {
         sendUpdatedIngredientsImage = true
@@ -369,7 +364,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             if (TextUtils.isEmpty(login)) {
                 showSignInDialog()
             } else {
-                productState = requireStateFromArguments(this)
+                productState = requireProductState()
                 updateImagesLauncher.launch(productState.product)
             }
         }
@@ -396,7 +391,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     private val allergens: List<String>
         get() {
-            val allergens = productState.product.allergensTags
+            val allergens = productState.product!!.allergensTags
             return if (productState.product == null || allergens == null || allergens.isEmpty()) {
                 emptyList()
             } else {
@@ -405,7 +400,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
 
     private fun novaMethodLinkDisplay() {
-        if (productState.product != null && productState.product.novaGroups != null) {
+        if (productState.product != null && productState.product!!.novaGroups != null) {
             val uri = Uri.parse(getString(R.string.url_nova_groups))
             val tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), tabsIntent, uri, WebViewFallback())
@@ -419,7 +414,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (login!!.isEmpty()) {
             showSignInDialog()
         } else {
-            productState = requireStateFromArguments(this)
+            productState = requireProductState()
             performOCRLauncher.launch(productState.product)
         }
     }
@@ -430,7 +425,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             positiveText(R.string.txtSignIn)
             negativeText(R.string.dialog_cancel)
             onPositive { dialog, _ ->
-                loginLauncher.launch(null)
+                loginLauncher.launch(Unit)
                 dialog.dismiss()
             }
             onNegative { dialog, _ -> dialog.dismiss() }
@@ -441,7 +436,13 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     private fun openFullScreen() {
         if (ingredients != null && productState.product != null) {
-            FullScreenActivityOpener.openForUrl(this, productState.product, ProductImageField.INGREDIENTS, ingredients, binding.imageViewIngredients)
+            FullScreenActivityOpener.openForUrl(
+                    this,
+                    productState.product!!,
+                    ProductImageField.INGREDIENTS,
+                    ingredients,
+                    binding.imageViewIngredients,
+            )
         } else {
             newIngredientImage()
         }
@@ -477,6 +478,8 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     override fun onDestroyView() {
         presenter.dispose()
+        disp.dispose()
+        _binding = null
         super.onDestroyView()
     }
 

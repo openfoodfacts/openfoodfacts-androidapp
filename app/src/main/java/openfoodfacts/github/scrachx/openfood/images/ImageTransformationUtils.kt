@@ -4,13 +4,10 @@ import android.graphics.Matrix
 import android.graphics.Rect
 import android.graphics.RectF
 import android.util.Log
-import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper.getImageStringKey
-import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper.getImageUrl
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.utils.NumberParserUtils.getAsFloat
-import openfoodfacts.github.scrachx.openfood.utils.NumberParserUtils.getAsInt
-import org.apache.commons.lang.StringUtils
+import openfoodfacts.github.scrachx.openfood.utils.getAsFloat
+import openfoodfacts.github.scrachx.openfood.utils.getAsInt
 import kotlin.math.ceil
 
 class ImageTransformationUtils {
@@ -74,7 +71,7 @@ class ImageTransformationUtils {
         private const val BOTTOM = "y2"
         private const val ANGLE = "angle"
         @JvmStatic
-        fun addTransformToMap(newServerTransformation: ImageTransformationUtils, imgMap: MutableMap<String?, String?>) {
+        fun addTransformToMap(newServerTransformation: ImageTransformationUtils, imgMap: MutableMap<String, String?>) {
             imgMap[ANGLE] = newServerTransformation.rotationInDegree.toString()
             val cropRectangle = newServerTransformation.cropRectangle
             if (cropRectangle != null) {
@@ -110,8 +107,8 @@ class ImageTransformationUtils {
         private fun applyRotationOnCropRectangle(product: Product, productImageField: ProductImageField?, language: String?, res: ImageTransformationUtils, inverse: Boolean) {
             // if a crop and a rotation is done, we should rotate the cropped rectangle
             val imageKey = getImageStringKey(productImageField!!, language!!)
-            val imageDetails = product.getImageDetails(imageKey)
-            val initImageId = imageDetails[ImageKeyHelper.IMG_ID] as String?
+            val imageDetails = product.getImageDetails(imageKey)!!
+            val initImageId = imageDetails[IMG_ID] as String
             val imageDetailsInitImage = product.getImageDetails(initImageId)
             if (imageDetailsInitImage != null) {
                 val sizes = imageDetailsInitImage["sizes"] as Map<String, Map<String, *>>?
@@ -151,17 +148,14 @@ class ImageTransformationUtils {
         @JvmStatic
         fun getInitialServerTransformation(product: Product, productImageField: ProductImageField?, language: String?): ImageTransformationUtils {
             val imageKey = getImageStringKey(productImageField!!, language!!)
-            val imageDetails = product.getImageDetails(imageKey)
             val res = ImageTransformationUtils()
-            if (imageDetails == null) {
-                return res
-            }
-            val initImageId = imageDetails[ImageKeyHelper.IMG_ID] as String?
-            if (StringUtils.isBlank(initImageId)) {
-                return res
-            }
+            val imageDetails = product.getImageDetails(imageKey) ?: return res
+
+            val initImageId = imageDetails[IMG_ID] as String?
+            if (initImageId.isNullOrBlank()) return res
+
             res.initImageId = initImageId
-            res.initImageUrl = getImageUrl(product.code, initImageId!!, ImageKeyHelper.IMAGE_EDIT_SIZE_FILE)
+            res.initImageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE_FILE)
             res.rotationInDegree = getImageRotation(imageDetails)
             val initCrop = getImageCropRect(imageDetails)
             if (initCrop != null) {
@@ -192,12 +186,12 @@ class ImageTransformationUtils {
         }
 
         /**
-         * @param this@getDimension the map of sizes
+         * Get the specified key from the map of sizes
          * @param key the key
          * @return NO_VALUE if can't parse the size
          */
         private fun Map<String, Map<String, *>>.getDimension(key: String): Int {
-            val value = (this[ImageKeyHelper.IMAGE_EDIT_SIZE] ?: error(""))[key] ?: return NO_VALUE
+            val value = (this[IMAGE_EDIT_SIZE] ?: error(""))[key] ?: return NO_VALUE
             return if (value is Number) {
                 value.toInt()
             } else value.toString().toInt()
@@ -224,16 +218,16 @@ class ImageTransformationUtils {
          * @param imgDetails
          * @return the angle in degree from the map.
          */
-        private fun getImageRotation(imgDetails: Map<String?, *>): Int {
+        private fun getImageRotation(imgDetails: Map<String, *>): Int {
             return getAsInt(imgDetails, ANGLE, 0)
         }
 
-        private fun getImageCropRect(imgDetails: Map<String?, *>): RectF? {
+        private fun getImageCropRect(imgDetails: Map<String, *>): RectF? {
             val x1 = getAsFloat(imgDetails, LEFT, Float.NaN)
             val x2 = getAsFloat(imgDetails, RIGHT, Float.NaN)
             val y1 = getAsFloat(imgDetails, TOP, Float.NaN)
             val y2 = getAsFloat(imgDetails, BOTTOM, Float.NaN)
-            return if (!java.lang.Float.isNaN(x1) && !java.lang.Float.isNaN(x2) && !java.lang.Float.isNaN(y1) && !java.lang.Float.isNaN(y2) && x2 > x1 && y2 > y1) {
+            return if (!x1.isNaN() && !x2.isNaN() && !y1.isNaN() && !y2.isNaN() && x2 > x1 && y2 > y1) {
                 RectF(x1, y1, x2, y2)
             } else null
         }

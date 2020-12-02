@@ -33,9 +33,9 @@ class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
         }
         val fragmentActivity = fragment?.activity
         val mainActivity = activity ?: fragmentActivity
-        val fragmentContext = fragment?.requireContext() ?: OFFApplication.getInstance()
+        val fragmentContext = fragment?.requireContext() ?: OFFApplication.instance
         val mainContext = activity ?: fragmentContext
-        val preferences = PreferenceManager.getDefaultSharedPreferences(OFFApplication.getInstance())
+        val preferences = PreferenceManager.getDefaultSharedPreferences(OFFApplication.instance)
         val cropActionEnabled = preferences == null || preferences.getBoolean("cropNewImage", true)
         EasyImage.handleActivityResult(requestCode, resultCode, data, mainActivity, object : DefaultCallback() {
             override fun onImagePickerError(e: Exception, source: ImageSource, type: Int) {

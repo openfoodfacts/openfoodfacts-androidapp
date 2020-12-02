@@ -13,7 +13,7 @@ import com.squareup.picasso.Callback
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityZoomImageBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import java.util.*
 
@@ -37,14 +37,14 @@ class ImageZoomActivity : BaseActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.setTitle(R.string.imageFullscreen)
-        loadImage(intent.getStringExtra(ImageKeyHelper.IMAGE_URL))
+        loadImage(intent.getStringExtra(IMAGE_URL))
     }
 
     companion object {
         @JvmStatic
         fun start(context: Context, imageUrl: String) {
             context.startActivity(Intent(context, ImageZoomActivity::class.java).apply {
-                putExtra(ImageKeyHelper.IMAGE_URL, imageUrl)
+                putExtra(IMAGE_URL, imageUrl)
             })
         }
     }

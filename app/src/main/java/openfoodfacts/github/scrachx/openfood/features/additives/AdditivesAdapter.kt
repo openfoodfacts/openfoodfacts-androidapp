@@ -11,10 +11,10 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNa
 /**
  * Created by prajwalm on 16/04/18.
  */
-class AdditivesAdapter(private val additives: List<AdditiveName>, private val clickListener: ClickListener?) : RecyclerView.Adapter<AdditiveViewHolder>() {
-    interface ClickListener {
-        fun onClick(position: Int, name: String?)
-    }
+class AdditivesAdapter(
+        private val additives: List<AdditiveName>,
+        private val clickListener: ((Int, String) -> Unit)?
+) : RecyclerView.Adapter<AdditiveViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdditiveViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.additives_item, parent, false)
@@ -27,14 +27,12 @@ class AdditivesAdapter(private val additives: List<AdditiveName>, private val cl
         holder.itemView.setOnClickListener {
             if (clickListener != null) {
                 val pos = holder.adapterPosition
-                clickListener.onClick(pos, additives[pos].name)
+                clickListener.invoke(pos, additives[pos].name)
             }
         }
     }
 
-    override fun getItemCount(): Int {
-        return additives.size
-    }
+    override fun getItemCount() = additives.size
 }
 
 class AdditiveViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

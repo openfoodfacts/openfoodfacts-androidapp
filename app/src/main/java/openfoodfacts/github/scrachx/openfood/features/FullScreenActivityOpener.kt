@@ -9,14 +9,15 @@ import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_URL
 import openfoodfacts.github.scrachx.openfood.images.ImageSize
+import openfoodfacts.github.scrachx.openfood.images.createImageBundle
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.FileUtils.isAbsoluteUrl
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
+import openfoodfacts.github.scrachx.openfood.utils.isAbsoluteUrl
 import org.apache.commons.lang.StringUtils
 
 /**
@@ -47,7 +48,13 @@ object FullScreenActivityOpener {
         }
     }
 
-    fun openForUrl(activity: Activity?, product: Product, imageType: ProductImageField, mUrlImage: String?, mImageFront: View?) {
+    fun openForUrl(
+            activity: Activity?,
+            product: Product,
+            imageType: ProductImageField,
+            mUrlImage: String?,
+            mImageFront: View?
+    ) {
         if (activity == null) return
         startActivity(activity, mImageFront, createIntent(activity.baseContext, product, imageType, mUrlImage))
     }
@@ -65,23 +72,23 @@ object FullScreenActivityOpener {
             return
         }
         val intent = Intent(activity, ImageZoomActivity::class.java)
-        intent.putExtra(ImageKeyHelper.IMAGE_URL, mUrlImage)
+        intent.putExtra(IMAGE_URL, mUrlImage)
         startActivity(activity, mImageFront, intent)
     }
 
     private fun createIntent(context: Context?, product: Product, imageType: ProductImageField, mUrlImage: String?): Intent {
         val intent = Intent(context, ImagesManageActivity::class.java)
         var language = getLanguage(context)
-        if (!product.isLanguageSupported(language) && StringUtils.isNotBlank(product.lang)) {
+        if (!product.isLanguageSupported(language) && !product.lang.isNullOrBlank()) {
             language = product.lang
         }
-        intent.putExtras(ImageKeyHelper.createImageBundle(imageType, product, language, mUrlImage))
+        intent.putExtras(createImageBundle(imageType, product, language, mUrlImage))
         return intent
     }
 
     private fun loadImageServerUrl(fragment: Fragment, product: Product, imageType: ProductImageField, mImageFront: View) {
         val client = OpenFoodAPIClient(fragment.requireContext())
-        client.getProductImages(product.code) { newState: ProductState ->
+        client.getProductImages(product.code).subscribe { newState: ProductState ->
             val newStateProduct = newState.product
             if (newStateProduct != null) {
                 val language = getLanguage(fragment.context)
@@ -93,5 +100,6 @@ object FullScreenActivityOpener {
                 }
             }
         }
+
     }
 }

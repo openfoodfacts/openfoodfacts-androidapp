@@ -9,21 +9,21 @@ class FileUtilsTest {
 
     @Test
     fun fileIsLocal_true() {
-        Truth.assertThat(FileUtils.isLocaleFile(localURL)).isTrue()
+        Truth.assertThat(isLocaleFile(localURL)).isTrue()
     }
 
     @Test
     fun fileIsLocal_false() {
-        Truth.assertThat(FileUtils.isLocaleFile(absoluteURL)).isFalse()
+        Truth.assertThat(isLocaleFile(absoluteURL)).isFalse()
     }
 
     @Test
     fun isAbsolute_true() {
-        Truth.assertThat(FileUtils.isAbsoluteUrl(absoluteURL)).isTrue()
+        Truth.assertThat(isAbsoluteUrl(absoluteURL)).isTrue()
     }
 
     @Test
     fun isAbsolute_false() {
-        Truth.assertThat(FileUtils.isAbsoluteUrl(localURL)).isFalse()
+        Truth.assertThat(isAbsoluteUrl(localURL)).isFalse()
     }
 }

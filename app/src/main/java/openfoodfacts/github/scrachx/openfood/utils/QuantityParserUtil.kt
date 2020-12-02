@@ -3,117 +3,79 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.util.Log
 import android.widget.Spinner
 import android.widget.TextView
-import org.apache.commons.lang.StringUtils
 
-object QuantityParserUtil {
-    @JvmStatic
-    fun isModifierEqualsToGreaterThan(view: CustomValidatingEditTextView): Boolean {
-        return isModifierEqualsToGreaterThan(view.modSpinner)
-    }
+fun isModifierEqualsToGreaterThan(view: CustomValidatingEditTextView) = isModifierEqualsToGreaterThan(view.modSpinner!!)
 
-    @JvmStatic
-    fun isModifierEqualsToGreaterThan(text: Spinner): Boolean {
-        return Modifier.GREATER_THAN == Modifier.MODIFIERS[text.selectedItemPosition]
-    }
+fun isModifierEqualsToGreaterThan(text: Spinner) = GREATER_THAN == MODIFIERS[text.selectedItemPosition]
 
-    @JvmStatic
-    fun isBlank(editText: TextView): Boolean {
-        return StringUtils.isBlank(editText.text.toString())
-    }
+fun TextView.isBlank() = text.toString().isBlank()
 
-    fun isNotBlank(editText: TextView): Boolean {
-        return !isBlank(editText)
-    }
+fun TextView.isNotBlank() = !isBlank()
 
-    /**
-     * @param editText the textview
-     * @return the float value or null if not correct
-     * @see .getFloatValue
-     */
-    @JvmStatic
-    fun getFloatValue(editText: TextView): Float? {
-        if (editText.text == null) {
-            return null
-        }
-        val text = editText.text.toString()
-        return getFloatValue(text)
-    }
-
-    @JvmStatic
-    fun getFloatValueOrDefault(editText: TextView, defaultValue: Float): Float {
-        val res = getFloatValue(editText)
-        return res ?: defaultValue
-    }
-
-    /**
-     * @param editText the textview
-     * @return the float value or null if not correct
-     * @see .getFloatValue
-     */
-    @JvmStatic
-    fun getDoubleValue(editText: TextView): Double? {
-        if (editText.text == null) {
-            return null
-        }
-        val text = editText.text.toString()
-        return getDoubleValue(text)
-    }
-
-    @JvmStatic
-    fun containFloatValue(editText: TextView?): Boolean {
-        return editText != null && containFloatValue(editText.text.toString())
-    }
-
-    @JvmStatic
-    fun containFloatValue(text: String?) = getFloatValue(text) != null
-
-    fun containDoubleValue(text: String?): Boolean {
-        return getDoubleValue(text) != null
-    }
-
-    /**
-     * Retrieve the float value from strings like "> 1.03"
-     *
-     * @param initText value to parse
-     * @return the float value or null if not correct
-     */
-    @JvmStatic
-    fun getFloatValue(initText: String?): Float? {
-        val result = getDoubleValue(initText)
-        return result?.toFloat()
-    }
-
-    /**
-     * Retrieve the float value from strings like "> 1.03"
-     *
-     * @param initText value to parse
-     * @return the float value or null if not correct
-     */
-    fun getDoubleValue(initText: String?): Double? {
-        if (StringUtils.isBlank(initText)) {
-            return null
-        }
-        var text = StringUtils.trim(initText)
-        text = replaceCommaByDot(text)
-        try {
-            return text.toDouble()
-        } catch (ex: NumberFormatException) {
-            Log.d("Utils", "can't parse text: $text")
-        }
+/**
+ * @param this@getFloatValue the textview
+ * @return the float value or null if not correct
+ * @see .getFloatValue
+ */
+fun TextView.getFloatValue(): Float? {
+    if (text == null) {
         return null
     }
-
-    /**
-     * For french input "," is used instead of "."
-     *
-     * @param text
-     * @return text with , replaced by .
-     */
-    private fun replaceCommaByDot(text: String): String {
-        if (text.contains(",")) {
-            return StringUtils.replace(text, ",", ".")
-        }
-        return text
-    }
-
+    val text = text.toString()
+    return getFloatValue(text)
 }
+
+/**
+ * For french input "," is used instead of "."
+ *
+ * @param str
+ * @return text with , replaced by .
+ */
+private fun replaceCommaByDot(str: String) = if (str.contains(",")) str.replace(",", ".") else str
+
+/**
+ * Retrieve the float value from strings like "> 1.03"
+ *
+ * @param initText value to parse
+ * @return the float value or null if not correct
+ */
+fun getDoubleValue(initText: String?): Double? {
+    if (initText.isNullOrBlank()) {
+        return null
+    }
+    try {
+        return replaceCommaByDot(initText.trim()).toDouble()
+    } catch (ex: NumberFormatException) {
+        Log.w("Utils", "can't parse text: ${replaceCommaByDot(initText.trim())}")
+    }
+    return null
+}
+
+/**
+ * Retrieve the float value from strings like "> 1.03"
+ *
+ * @param initText value to parse
+ * @return the float value or null if not correct
+ */
+fun getFloatValue(initText: String?) = getDoubleValue(initText)?.toFloat()
+
+fun containFloatValue(text: String?) = getFloatValue(text) != null
+
+fun containDoubleValue(text: String?) = getDoubleValue(text) != null
+
+fun containFloatValue(editText: TextView?) = editText != null && containFloatValue(editText.text.toString())
+
+/**
+ * @param editText the textview
+ * @return the float value or null if not correct
+ * @see .getFloatValue
+ */
+fun getDoubleValue(editText: TextView): Double? {
+    if (editText.text == null) {
+        return null
+    }
+    val text = editText.text.toString()
+    return getDoubleValue(text)
+}
+
+fun getFloatValueOrDefault(editText: TextView, defaultValue: Float) = editText.getFloatValue() ?: defaultValue

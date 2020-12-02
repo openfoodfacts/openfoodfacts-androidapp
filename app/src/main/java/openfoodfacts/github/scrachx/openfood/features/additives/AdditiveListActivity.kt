@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityAdditivesExplorerBinding
-import openfoodfacts.github.scrachx.openfood.features.additives.AdditivesAdapter.ClickListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
@@ -24,7 +23,7 @@ import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
 import java.util.*
 
-class AdditiveListActivity : BaseActivity(), ClickListener {
+class AdditiveListActivity : BaseActivity() {
     private var _binding: ActivityAdditivesExplorerBinding? = null
     private val binding get() = _binding!!
     private var additives = mutableListOf<AdditiveName>()
@@ -40,7 +39,7 @@ class AdditiveListActivity : BaseActivity(), ClickListener {
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setTitle(R.string.additives)
-        val daoSession = Utils.getDaoSession()
+        val daoSession = Utils.daoSession
         val asyncSessionAdditives = daoSession.startAsyncSession()
         val additiveNameDao = daoSession.additiveNameDao
         val languageCode = LocaleHelper.getLanguage(this)
@@ -50,23 +49,23 @@ class AdditiveListActivity : BaseActivity(), ClickListener {
         asyncSessionAdditives.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
             additives = operation.result as MutableList<AdditiveName>
             additives.sortWith { additive1: AdditiveName, additive2: AdditiveName ->
-                val s1 = additive1.name.toLowerCase(Locale.ROOT).replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)").toTypedArray()[1]
-                val s2 = additive2.name.toLowerCase(Locale.ROOT).replace('x', '0').split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)").toTypedArray()[1]
+                val s1 = additive1.name.toLowerCase(Locale.ROOT).replace('x', '0').split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
+                val s2 = additive2.name.toLowerCase(Locale.ROOT).replace('x', '0').split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()[1]
                 Integer.valueOf(s1).compareTo(Integer.valueOf(s2))
             }
             if (isFinishing) {
                 return@AsyncOperationListener
             }
             binding.additiveRecyclerView.layoutManager = LinearLayoutManager(this@AdditiveListActivity)
-            binding.additiveRecyclerView.adapter = AdditivesAdapter(additives, this@AdditiveListActivity)
+            binding.additiveRecyclerView.adapter = AdditivesAdapter(additives, this@AdditiveListActivity::onClick)
             binding.additiveRecyclerView.addItemDecoration(DividerItemDecoration(this@AdditiveListActivity, DividerItemDecoration.VERTICAL))
         }
         selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0)
         install(this, binding.navigationBottomInclude.bottomNavigation)
     }
 
-    override fun onClick(position: Int, name: String?) {
-        ProductSearchActivity.start(this, name, SearchType.ADDITIVE)
+    fun onClick(position: Int, name: String) {
+        ProductSearchActivity.start(this, SearchType.ADDITIVE, name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -95,7 +94,7 @@ class AdditiveListActivity : BaseActivity(), ClickListener {
                             }
                         }
                     }
-                    binding.additiveRecyclerView.adapter = AdditivesAdapter(suggestedAdditives, this@AdditiveListActivity)
+                    binding.additiveRecyclerView.adapter = AdditivesAdapter(suggestedAdditives, this@AdditiveListActivity::onClick)
                     binding.additiveRecyclerView.adapter!!.notifyDataSetChanged()
                     return false
                 }

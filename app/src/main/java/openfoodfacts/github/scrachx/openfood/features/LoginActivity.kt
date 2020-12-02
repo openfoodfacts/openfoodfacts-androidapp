@@ -51,7 +51,6 @@ import java.net.HttpCookie
 class LoginActivity : BaseActivity() {
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
-    private val apiClient = CommonApiManager.instance.productsApi
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private var userLoginUri: Uri? = null
     private var resetPasswordUri: Uri? = null
@@ -89,7 +88,7 @@ class LoginActivity : BaseActivity() {
         val snackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, BaseTransientBottomBar.LENGTH_LONG)
                 .apply { show() }
         binding.btnLogin.isClickable = false
-        disp.add(apiClient.signIn(login, password, "Sign-in")
+        disp.add(CommonApiManager.productsApi.signIn(login, password, "Sign-in")
                 .subscribeOn(Schedulers.io()) // Network operation
                 .observeOn(AndroidSchedulers.mainThread()) // We need to modify view
                 .subscribe({ response: Response<ResponseBody> ->
@@ -165,7 +164,7 @@ class LoginActivity : BaseActivity() {
 
         // prefetch the uri
         customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper.setConnectionCallback(object : CustomTabActivityHelper.ConnectionCallback {
+        customTabActivityHelper.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
             override fun onCustomTabsConnected() {
                 binding.btnCreateAccount.isEnabled = true
             }
@@ -174,7 +173,7 @@ class LoginActivity : BaseActivity() {
                 //TODO find out what do do with it
                 binding.btnCreateAccount.isEnabled = false
             }
-        })
+        }
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null)
         binding.btnCreateAccount.isEnabled = true
         val settings = getSharedPreferences("login", 0)
@@ -219,7 +218,7 @@ class LoginActivity : BaseActivity() {
 
     override fun onDestroy() {
         disp.dispose()
-        customTabActivityHelper.setConnectionCallback(null)
+        customTabActivityHelper.connectionCallback = null
         _binding = null
         super.onDestroy()
     }

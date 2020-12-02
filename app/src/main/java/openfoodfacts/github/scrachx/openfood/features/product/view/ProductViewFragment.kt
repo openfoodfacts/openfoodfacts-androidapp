@@ -44,7 +44,7 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
         super.onDestroy()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         if (resources.getBoolean(R.bool.portrait_only)) {
             requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
@@ -87,7 +87,7 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
     }
 
     override fun onRefresh() {
-        disp.add(client.getProductStateFull(productState.product.code)
+        disp.add(client.getProductStateFull(productState.product!!.code)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ newState ->
                     productState = newState

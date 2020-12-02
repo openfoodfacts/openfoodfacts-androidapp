@@ -37,17 +37,16 @@ class IngredientsProductPresenter(
         private val view: IIngredientsProductPresenter.View
 ) : IIngredientsProductPresenter.Actions {
     private val disposable = CompositeDisposable()
-    private val repository = ProductRepository.instance
 
     override fun loadAdditives() {
         val additivesTags = product.additivesTags
         if (additivesTags != null && additivesTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
+            val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
             disposable.add(Observable.fromArray(*additivesTags.toTypedArray())
                     .flatMapSingle { tag: String? ->
-                        repository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName: AdditiveName ->
+                        ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode).flatMap { categoryName: AdditiveName ->
                             if (categoryName.isNull) {
-                                return@flatMap repository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                                return@flatMap ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
                             } else {
                                 return@flatMap Single.just(categoryName)
                             }
@@ -77,12 +76,12 @@ class IngredientsProductPresenter(
     override fun loadAllergens() {
         val allergenTags = product.allergensTags
         if (allergenTags != null && allergenTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
+            val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
             disposable.add(Observable.fromArray(*allergenTags.toTypedArray())
                     .flatMapSingle { tag: String? ->
-                        repository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->
+                        ProductRepository.getAllergenByTagAndLanguageCode(tag, languageCode).flatMap { allergenName: AllergenName ->
                             if (allergenName.isNull) {
-                                return@flatMap repository.getAllergenByTagAndDefaultLanguageCode(tag)
+                                return@flatMap ProductRepository.getAllergenByTagAndDefaultLanguageCode(tag)
                             } else {
                                 return@flatMap Single.just(allergenName)
                             }

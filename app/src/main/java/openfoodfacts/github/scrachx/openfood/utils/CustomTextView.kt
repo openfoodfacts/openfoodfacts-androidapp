@@ -18,7 +18,7 @@ class CustomTextView : AppCompatTextView {
         initAttrs(context, attrs)
     }
 
-    fun initAttrs(context: Context, attrs: AttributeSet?) {
+    private fun initAttrs(context: Context, attrs: AttributeSet?) {
         if (attrs == null) return
         val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView)
         var drawableLeft: Drawable? = null

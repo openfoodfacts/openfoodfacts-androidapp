@@ -62,7 +62,7 @@ class HomeFragment : NavigationBaseFragment() {
     private val compDisp = CompositeDisposable()
     private var taglineURL: String? = null
     private var sharedPrefs: SharedPreferences? = null
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -86,10 +86,10 @@ class HomeFragment : NavigationBaseFragment() {
         // chrome custom tab init
         val customTabsIntent: CustomTabsIntent
         val customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper.setConnectionCallback(object : CustomTabActivityHelper.ConnectionCallback {
+        customTabActivityHelper.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
             override fun onCustomTabsConnected() {}
             override fun onCustomTabsDisconnected() {}
-        })
+        }
         val dailyFoodFactUri = Uri.parse(taglineURL)
         customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null)
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireActivity(),
@@ -105,7 +105,7 @@ class HomeFragment : NavigationBaseFragment() {
     private val loginLauncher = registerForActivityResult(LoginContract()) { }
 
     private fun checkUserCredentials() {
-        val settings = OFFApplication.getInstance().getSharedPreferences("login", 0)
+        val settings = OFFApplication.instance.getSharedPreferences("login", 0)
         val login = settings.getString("user", "")
         val password = settings.getString("pass", "")
         Log.d(LOG_TAG, "Checking user saved credentials...")
@@ -135,7 +135,7 @@ class HomeFragment : NavigationBaseFragment() {
                             title(R.string.alert_dialog_warning_title)
                             content(R.string.alert_dialog_warning_msg_user)
                             positiveText(R.string.txtOk)
-                            onPositive { _, _ -> loginLauncher.launch(null) }
+                            onPositive { _, _ -> loginLauncher.launch(Unit) }
                             show()
                         }
 

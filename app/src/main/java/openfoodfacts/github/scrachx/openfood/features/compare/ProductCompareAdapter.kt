@@ -40,6 +40,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
@@ -60,7 +61,6 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
     private val api = OpenFoodAPIClient(activity)
     private var isLowBatteryMode = false
     private val disp = CompositeDisposable()
-    private val repository = ProductRepository.instance
     private val viewHolders = mutableListOf<ProductComparisonViewHolder>()
     private var onPhotoReturnPosition: Int? = null
 
@@ -132,7 +132,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         }
 
         // Name
-        if (StringUtils.isNotBlank(product.productName)) {
+        if (!product.productName.isNullOrBlank()) {
             holder.productNameTextView.text = product.productName
         } else {
             //TODO: product name placeholder text goes here
@@ -149,21 +149,22 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         }
 
         // Brands
-        if (StringUtils.isNotBlank(product.brands)) {
+        val brands = product.brands
+        if (!brands.isNullOrBlank()) {
             holder.productBrandTextView.text = Utils.bold(activity.getString(R.string.compare_brands))
             holder.productBrandTextView.append(" ")
-            val brands = product.brands!!.split(",").toTypedArray()
-            for (i in 0 until brands.size - 1) {
-                holder.productBrandTextView.append(brands[i].trim { it <= ' ' })
+            val brandsList = brands.split(",").toTypedArray()
+            for (i in 0 until brandsList.size - 1) {
+                holder.productBrandTextView.append(brandsList[i].trim { it <= ' ' })
                 holder.productBrandTextView.append(", ")
             }
-            holder.productBrandTextView.append(brands[brands.size - 1].trim { it <= ' ' })
+            holder.productBrandTextView.append(brandsList[brandsList.size - 1].trim { it <= ' ' })
         } else {
             //TODO: product brand placeholder goes here
         }
 
         // Open Food Facts specific
-        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
+        if (isFlavors(AppFlavors.OFF)) {
             // NutriScore
             val nutritionGradeResource = Utils.getImageGradeDrawable(activity, product)
             if (nutritionGradeResource != null) {
@@ -200,10 +201,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         }
 
         // Additives
-        val additivesTags = product.additivesTags
-        if (additivesTags != null && !additivesTags.isEmpty()) {
-            loadAdditives(product, holder.productComparisonAdditiveText)
-        }
+        if (product.additivesTags.isNotEmpty()) loadAdditives(product, holder.productComparisonAdditiveText)
 
         // Full product button
         holder.fullProductButton.setOnClickListener { view: View? ->
@@ -239,20 +237,20 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         }
     }
 
-    private fun loadAdditives(product: Product?, v: View) {
+    private fun loadAdditives(product: Product, v: View) {
         val additivesBuilder = StringBuilder()
-        val additivesTags = product!!.additivesTags
-        if (additivesTags == null || additivesTags.isEmpty()) {
+        val additivesTags = product.additivesTags
+        if (additivesTags.isEmpty()) {
             return
         }
         val languageCode = LocaleHelper.getLanguage(v.context)
         disp.add(
                 Observable.fromArray(*additivesTags.toTypedArray())
                         .flatMapSingle { tag: String? ->
-                            repository.getAdditiveByTagAndLanguageCode(tag, languageCode)
+                            return@flatMapSingle ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                                     .flatMap { categoryName: AdditiveName ->
                                         if (categoryName.isNull) {
-                                            return@flatMap repository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                                            return@flatMap ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
                                         } else {
                                             return@flatMap Single.just(categoryName)
                                         }
@@ -304,7 +302,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
                         activity.getString(R.string.compare_fat),
                         fatNutriment.displayStringFor100g,
                         fatNutrimentLevel,
-                        fat.imageLevel))
+                        fat.getImageLevel()))
             }
             val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
             if (saturatedFat != null && saturatedFatNutriment != null) {
@@ -313,7 +311,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
                         activity.getString(R.string.compare_saturated_fat),
                         saturatedFatNutriment.displayStringFor100g,
                         saturatedFatLocalize,
-                        saturatedFat.imageLevel))
+                        saturatedFat.getImageLevel()))
             }
             val sugarsNutriment = nutriments[Nutriments.SUGARS]
             if (sugars != null && sugarsNutriment != null) {
@@ -322,7 +320,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
                         activity.getString(R.string.compare_sugars),
                         sugarsNutriment.displayStringFor100g,
                         sugarsLocalize,
-                        sugars.imageLevel))
+                        sugars.getImageLevel()))
             }
             val saltNutriment = nutriments[Nutriments.SALT]
             if (salt != null && saltNutriment != null) {
@@ -331,7 +329,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
                         activity.getString(R.string.compare_salt),
                         saltNutriment.displayStringFor100g,
                         saltLocalize,
-                        salt.imageLevel
+                        salt.getImageLevel()
                 ))
             }
         }
@@ -344,7 +342,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         image.filePath = file.absolutePath
         disp.add(api.postImg(image).subscribe())
         val mUrlImage = file.absolutePath
-        product.setImageUrl(mUrlImage)
+        product.imageUrl = mUrlImage
         onPhotoReturnPosition = null
         notifyDataSetChanged()
     }
@@ -371,10 +369,9 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
     /**
      * helper method
      */
-    private fun dpsToPixel(dps: Int): Int {
-        val r = activity.resources
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dps + 100f, r.displayMetrics).toInt()
-    }
+    private fun dpsToPixel(dps: Int) =
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dps + 100f, activity.resources.displayMetrics)
+                    .toInt()
 
 }
 

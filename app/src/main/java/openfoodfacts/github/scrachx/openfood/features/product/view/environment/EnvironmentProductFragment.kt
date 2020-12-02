@@ -25,7 +25,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.Utils
-import openfoodfacts.github.scrachx.openfood.utils.requireStateFromArguments
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import java.io.File
 
 class EnvironmentProductFragment : BaseFragment() {
@@ -46,22 +46,16 @@ class EnvironmentProductFragment : BaseFragment() {
         api = OpenFoodAPIClient(requireActivity())
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentEnvironmentProductBinding.inflate(inflater)
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        disp.dispose()
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         photoReceiverHandler = PhotoReceiverHandler(this::loadPackagingPhoto)
         val langCode = LocaleHelper.getLanguage(context)
-        productState = requireStateFromArguments(this)
+        productState = this.requireProductState()
         binding.imageViewPackaging.setOnClickListener { openFullScreen() }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
@@ -69,11 +63,11 @@ class EnvironmentProductFragment : BaseFragment() {
             isLowBatteryMode = true
         }
 
-        val product = productState.product
+        val product = productState.product!!
         val nutriments = product.nutriments
 
-        val imagePackagingUrl = product.getImagePackagingUrl(langCode) ?: ""
-        if (imagePackagingUrl.isNotBlank()) {
+        val imagePackagingUrl = product.getImagePackagingUrl(langCode)
+        if (!imagePackagingUrl.isNullOrBlank()) {
             binding.packagingImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)))
             binding.packagingImagetipBox.loadToolTip()
             binding.addPhotoLabel.visibility = View.GONE
@@ -98,8 +92,8 @@ class EnvironmentProductFragment : BaseFragment() {
             binding.carbonFootprintCv.visibility = View.GONE
         }
 
-        val environmentInfocard = product.environmentInfocard ?: ""
-        if (environmentInfocard.isNotEmpty()) {
+        val environmentInfocard = product.environmentInfoCard
+        if (!environmentInfocard.isNullOrEmpty()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 binding.environmentInfoText.append(Html.fromHtml(environmentInfocard, Html.FROM_HTML_MODE_COMPACT))
             } else {
@@ -110,16 +104,16 @@ class EnvironmentProductFragment : BaseFragment() {
             binding.environmentInfoCv.visibility = View.GONE
         }
 
-        val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard ?: ""
-        if (recyclingInstructionsToDiscard.isNotEmpty()) {
+        val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard
+        if (!recyclingInstructionsToDiscard.isNullOrEmpty()) {
             binding.recyclingInstructionToDiscard.text = Utils.bold("Recycling instructions - To discard: ")
             binding.recyclingInstructionToDiscard.append(recyclingInstructionsToDiscard)
         } else {
             binding.recyclingInstructionsDiscardCv.visibility = View.GONE
         }
 
-        val recyclingInstructionsToRecycle = product.recyclingInstructionsToRecycle ?: ""
-        if (recyclingInstructionsToRecycle.isNotEmpty()) {
+        val recyclingInstructionsToRecycle = product.recyclingInstructionsToRecycle
+        if (!recyclingInstructionsToRecycle.isNullOrEmpty()) {
             binding.recyclingInstructionToRecycle.text = Utils.bold("Recycling instructions - To recycle:")
             binding.recyclingInstructionToRecycle.append(recyclingInstructionsToRecycle)
         } else {
@@ -129,6 +123,12 @@ class EnvironmentProductFragment : BaseFragment() {
         refreshView(productState)
     }
 
+    override fun onDestroyView() {
+        disp.dispose()
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
         this.productState = productState
@@ -136,7 +136,13 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun openFullScreen() {
         if (mUrlImage != null && productState.product != null) {
-            FullScreenActivityOpener.openForUrl(this, productState.product, ProductImageField.PACKAGING, mUrlImage, binding.imageViewPackaging)
+            FullScreenActivityOpener.openForUrl(
+                    this,
+                    productState.product!!,
+                    ProductImageField.PACKAGING,
+                    mUrlImage,
+                    binding.imageViewPackaging,
+            )
         } else {
             newPackagingImage()
         }
@@ -148,7 +154,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
     private fun loadPackagingPhoto(photoFile: File) {
         // Create a new instance of ProductImage so we can load to server
-        val image = ProductImage(productState.product.code, ProductImageField.PACKAGING, photoFile)
+        val image = ProductImage(productState.product!!.code, ProductImageField.PACKAGING, photoFile)
         image.filePath = photoFile.absolutePath
 
         // Load to server
@@ -171,8 +177,8 @@ class EnvironmentProductFragment : BaseFragment() {
         if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && isUserLoggedIn) {
             startEditProduct()
         }
-        if (ImagesManageActivity.isImageModified(requestCode, resultCode) && activity is ProductViewActivity) {
-            (activity as ProductViewActivity).onRefresh()
+        if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
+            (activity as? ProductViewActivity)?.onRefresh()
         }
     }
 

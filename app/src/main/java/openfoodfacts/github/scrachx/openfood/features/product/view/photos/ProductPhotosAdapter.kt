@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity
-import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper
+import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -30,7 +30,7 @@ class ProductPhotosAdapter(
         private val onImageClick: (Int) -> Unit
 ) : RecyclerView.Adapter<ProductPhotoViewHolder>() {
     private val barcode = product.code
-    private val imgMap = hashMapOf<String, String>()
+    private val imgMap = hashMapOf<String, String?>()
     private val openFoodAPIClient = OpenFoodAPIClient(activity)
 
 
@@ -55,7 +55,7 @@ class ProductPhotosAdapter(
     }
 
 
-    fun displaySetImageName(response: String) {
+    fun displaySetImageName(response: String?) {
         val jsonObject = Utils.createJsonObject(response)
         val imageName: String
         imageName = try {
@@ -76,25 +76,25 @@ class ProductPhotosAdapter(
 
     private inner class PopupItemClickListener(private val position: Int) : PopupMenu.OnMenuItemClickListener {
         override fun onMenuItemClick(item: MenuItem): Boolean {
-            val imgIdKey = ImageKeyHelper.IMG_ID
+            val imgIdKey = IMG_ID
             when (item.itemId) {
                 R.id.set_ingredient_image -> {
                     imgMap[imgIdKey] = images[position]
-                    imgMap[ImageKeyHelper.PRODUCT_BARCODE] = barcode
-                    imgMap[ImageKeyHelper.IMAGE_STRING_ID] = ImageKeyHelper.getImageStringKey(ProductImageField.INGREDIENTS, product)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String -> displaySetImageName(response) }
+                    imgMap[PRODUCT_BARCODE] = barcode
+                    imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.INGREDIENTS)
+                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
                 }
                 R.id.set_nutrition_image -> {
                     imgMap[imgIdKey] = images[position]
-                    imgMap[ImageKeyHelper.PRODUCT_BARCODE] = barcode
-                    imgMap[ImageKeyHelper.IMAGE_STRING_ID] = ImageKeyHelper.getImageStringKey(ProductImageField.NUTRITION, product)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String -> displaySetImageName(response) }
+                    imgMap[PRODUCT_BARCODE] = barcode
+                    imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.NUTRITION)
+                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
                 }
                 R.id.set_front_image -> {
                     imgMap[imgIdKey] = images[position]
-                    imgMap[ImageKeyHelper.PRODUCT_BARCODE] = barcode
-                    imgMap[ImageKeyHelper.IMAGE_STRING_ID] = ImageKeyHelper.getImageStringKey(ProductImageField.FRONT, product)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String -> displaySetImageName(response) }
+                    imgMap[PRODUCT_BARCODE] = barcode
+                    imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.FRONT)
+                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
                 }
                 R.id.report_image -> activity.startActivity(Intent.createChooser(
                         Intent(Intent.ACTION_SEND).apply {

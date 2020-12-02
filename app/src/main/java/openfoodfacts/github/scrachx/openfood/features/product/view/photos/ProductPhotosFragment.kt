@@ -33,7 +33,7 @@ class ProductPhotosFragment : BaseFragment() {
         openFoodAPIClient = OpenFoodAPIClient(requireActivity())
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProductPhotosBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,7 +41,7 @@ class ProductPhotosFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val productState = requireProductState()
-        val product = productState.product
+        val product = productState.product!!
         disp.add(openFoodAPIClient.rawAPI.getProductImages(product.code)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ node: ObjectNode? ->
@@ -64,7 +64,7 @@ class ProductPhotosFragment : BaseFragment() {
                     }
                     binding.imagesRecycler.adapter = adapter
                     binding.imagesRecycler.layoutManager = GridLayoutManager(context, 3)
-                }) { e: Throwable? -> Log.e(Companion.LOG_TAG, "cannot download images from server", e) })
+                }) { e: Throwable? -> Log.e(LOG_TAG, "cannot download images from server", e) })
     }
 
     override fun onDestroyView() {

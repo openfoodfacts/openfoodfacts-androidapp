@@ -35,7 +35,7 @@ class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : R
         @JvmStatic
         fun scheduleSync() {
             val constPics = Constraints.Builder()
-            if (PreferenceManager.getDefaultSharedPreferences(OFFApplication.getInstance()).getBoolean("enableMobileDataUpload", true)) {
+            if (PreferenceManager.getDefaultSharedPreferences(OFFApplication.instance).getBoolean("enableMobileDataUpload", true)) {
                 constPics.setRequiredNetworkType(NetworkType.CONNECTED)
             } else {
                 constPics.setRequiredNetworkType(NetworkType.UNMETERED)
@@ -51,7 +51,7 @@ class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : R
                     .setInputData(inputData(true))
                     .setConstraints(constPics.build())
                     .build()
-            WorkManager.getInstance(OFFApplication.getInstance())
+            WorkManager.getInstance(OFFApplication.instance)
                     .beginUniqueWork(WORK_TAG, ExistingWorkPolicy.REPLACE, uploadDataWorkRequest)
                     .then(uploadPicturesWorkRequest)
                     .enqueue()

@@ -30,7 +30,10 @@ import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.BatteryManager
 import android.os.Environment
-import android.text.*
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.text.style.ClickableSpan
 import android.text.style.StyleSpan
 import android.util.Log
@@ -65,7 +68,6 @@ import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.utils.SearchTypeUrls.getUrl
-import org.apache.commons.collections.CollectionUtils
 import org.apache.commons.lang.StringUtils
 import org.jetbrains.annotations.Contract
 import org.json.JSONException
@@ -76,6 +78,7 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.ceil
 
 object Utils {
+    private const val REQUIRED_SIZE = 1200
     private const val CONNECTION_TIMEOUT = 5000
     private const val RW_TIMEOUT = 30000
     const val SPACE = " "
@@ -96,13 +99,11 @@ object Utils {
      * @param tags the styled span objects to apply to the content
      * such as android.text.style.StyleSpan
      */
-    private fun apply(content: Array<out CharSequence>, vararg tags: Any): String {
-        return SpannableStringBuilder().let {
-            openTags(it, tags)
-            content.forEach { item -> it.append(item) }
-            closeTags(it, tags)
-            toString()
-        }
+    private fun apply(content: Array<out CharSequence>, vararg tags: StyleSpan) = SpannableStringBuilder().let {
+        openTags(it, tags)
+        content.forEach { item -> it.append(item) }
+        closeTags(it, tags)
+        it.toString()
     }
 
     /**
@@ -110,8 +111,8 @@ object Utils {
      * Spannable object so that future text appended to the text will have the styling
      * applied to it. Do not call this method directly.
      */
-    private fun openTags(text: Spannable, tags: Array<out Any>) {
-        for (tag in tags) {
+    private fun openTags(text: Spannable, tags: Array<out StyleSpan>) {
+        tags.forEach { tag ->
             text.setSpan(tag, 0, 0, Spanned.SPAN_MARK_MARK)
         }
     }
@@ -121,7 +122,7 @@ object Utils {
      * endpoint-exclusive so that future text appended to the end will not take
      * on the same styling. Do not call this method directly.
      */
-    private fun closeTags(text: Spannable, tags: Array<out Any>) {
+    private fun closeTags(text: Spannable, tags: Array<out StyleSpan>) {
         tags.forEach { tag ->
             if (text.length > 0) {
                 text.setSpan(tag, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -135,9 +136,14 @@ object Utils {
      * Returns a CharSequence that applies boldface to the concatenation
      * of the specified CharSequence objects.
      */
-    fun bold(vararg content: CharSequence): String {
-        return apply(content, StyleSpan(Typeface.BOLD))
-    }
+    @JvmStatic
+    fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD))
+
+    @JvmStatic
+    fun italic(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.ITALIC))
+
+    @JvmStatic
+    fun boldItalic(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD_ITALIC))
 
     fun hideKeyboard(activity: Activity) {
         val view = activity.currentFocus ?: return
@@ -145,6 +151,7 @@ object Utils {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
+    @JvmStatic
     fun compressImage(fileUrl: String): String? {
         val decodedBitmap = decodeFile(File(fileUrl))
         if (decodedBitmap == null) {
@@ -175,7 +182,7 @@ object Utils {
             BitmapFactory.decodeStream(FileInputStream(f), null, o)
 
             // The new size we want to scale to
-            val REQUIRED_SIZE = 1200
+
 
             // Find the correct scale value. It should be the power of 2.
             var scale = 1
@@ -302,8 +309,8 @@ object Utils {
             return getSmallImageGrade(null as String?)
         }
         // Prefer the global tag to the FR tag
-        return if (product.nutritionGradeTag != null) {
-            getSmallImageGrade(product.nutritionGradeTag)
+        return if (product.getNutritionGradeTag() != null) {
+            getSmallImageGrade(product.getNutritionGradeTag())
         } else {
             getSmallImageGrade(product.nutritionGradeFr)
         }
@@ -311,14 +318,12 @@ object Utils {
 
     @DrawableRes
     fun getImageEnvironmentImpact(product: Product?): Int {
-        if (product == null) {
-            return NO_DRAWABLE_RESOURCE
-        }
+        if (product == null) return NO_DRAWABLE_RESOURCE
+
         val tags = product.environmentImpactLevelTags
-        if (CollectionUtils.isEmpty(tags)) {
-            return NO_DRAWABLE_RESOURCE
-        }
-        return when (tags[0]!!.replace("\"", "")) {
+        if (tags.isNullOrEmpty()) return NO_DRAWABLE_RESOURCE
+
+        return when (tags[0].replace("\"", "")) {
             "en:high" -> R.drawable.ic_co2_high_24dp
             "en:low" -> R.drawable.ic_co2_low_24dp
             "en:medium" -> R.drawable.ic_co2_medium_24dp
@@ -372,29 +377,31 @@ object Utils {
      * @param value float value
      * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
      */
+    @JvmStatic
     fun getRoundNumber(value: String): String {
         if ("0" == value) {
             return value
         }
-        if (TextUtils.isEmpty(value)) {
+        if (value.isEmpty()) {
             return "?"
         }
-        val strings = value.split("\\.").toTypedArray()
+        val strings = value.split(".")
         return if (strings.size == 1 || strings.size == 2 && strings[1].length <= 2) {
             value
-        } else String.format(Locale.getDefault(), "%.2f", java.lang.Double.valueOf(value))
+        } else String.format(Locale.getDefault(), "%.2f", value.toDouble())
     }
 
     /**
      * @see Utils.getRoundNumber
      */
+    @JvmStatic
     fun getRoundNumber(value: Float): String {
         return getRoundNumber(value.toString())
     }
 
     @get:JvmStatic
     val daoSession: DaoSession
-        get() = OFFApplication.getDaoSession()
+        get() = OFFApplication.daoSession
 
     /**
      * Check if the device has a camera installed.
@@ -508,7 +515,7 @@ object Utils {
         clickableSpan = if (url == null) {
             object : ClickableSpan() {
                 override fun onClick(view: View) {
-                    start(activity!!, text, type)
+                    start(activity!!, type, text)
                 }
             }
         } else {
@@ -605,7 +612,7 @@ object Utils {
      * @param response Takes a string
      * @return Returns a Json object
      */
-    fun createJsonObject(response: String): JSONObject? {
+    fun createJsonObject(response: String?): JSONObject? {
         return try {
             JSONObject(response)
         } catch (e: JSONException) {
@@ -625,12 +632,14 @@ object Utils {
         return null
     }
 
+    @JvmStatic
     fun firstNotEmpty(vararg args: String?): String? {
         return args.firstOrNull { it != null && it.isNotEmpty() }
     }
 
+    @JvmStatic
     fun getModifierNonDefault(modifier: String): String {
-        return if (modifier == Modifier.DEFAULT_MODIFIER) "" else modifier
+        return if (modifier == DEFAULT_MODIFIER) "" else modifier
     }
 
     @JvmStatic

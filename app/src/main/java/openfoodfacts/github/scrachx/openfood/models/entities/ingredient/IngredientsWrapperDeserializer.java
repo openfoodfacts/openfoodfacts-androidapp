@@ -43,9 +43,6 @@ public class IngredientsWrapperDeserializer extends StdDeserializer<IngredientsW
             }
         }
 
-        IngredientsWrapper wrapper = new IngredientsWrapper();
-        wrapper.setIngredients(ingredients);
-
-        return wrapper;
+        return new IngredientsWrapper(ingredients);
     }
 }

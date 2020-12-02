@@ -13,7 +13,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.browser.customtabs.CustomTabsIntent
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
@@ -50,10 +50,10 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
                 false)
         val customTabActivityHelper = CustomTabActivityHelper()
 
-        customTabActivityHelper.setConnectionCallback(object : CustomTabActivityHelper.ConnectionCallback {
+        customTabActivityHelper.connectionCallback=object : CustomTabActivityHelper.ConnectionCallback {
             override fun onCustomTabsConnected() {}
             override fun onCustomTabsDisconnected() {}
-        })
+        }
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
         val bottomSheetDescription = view.findViewById<TextView>(R.id.description)
         val bottomSheetTitle = view.findViewById<TextView>(R.id.titleBottomSheet)
@@ -65,21 +65,21 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
             val wikiLink: String?
             val arguments = requireArguments()
 
-            val result = ObjectMapper().readTree(arguments.getString(ARG_OBJECT))
+            val result = jacksonObjectMapper().readTree(arguments.getString(ARG_OBJECT))
             val description = result?.get("descriptions")
             val siteLinks = result?.get("sitelinks")
             descriptionString = description?.let { getDescription(it) } ?: ""
             wikiLink = siteLinks?.let { getWikiLink(it) } ?: ""
-            val title = arguments.getString(ARG_TITLE)
+            val title = arguments.getString(ARG_TITLE) as String
             bottomSheetTitle.text = title
-            val searchType = arguments.getSerializable(ARG_SEARCH_TYPE) as SearchType?
+            val searchType = arguments.getSerializable(ARG_SEARCH_TYPE) as SearchType
             if (descriptionString.isNotEmpty()) {
                 bottomSheetDescription.text = descriptionString
                 bottomSheetDescription.visibility = View.VISIBLE
             } else {
                 bottomSheetDescription.visibility = View.GONE
             }
-            buttonToBrowseProducts.setOnClickListener { start(requireContext(), title, searchType) }
+            buttonToBrowseProducts.setOnClickListener { start(requireContext(), searchType, title) }
             if (wikiLink.isNotEmpty()) {
                 wikipediaButton.setOnClickListener { openInCustomTab(wikiLink) }
                 wikipediaButton.visibility = View.VISIBLE
@@ -88,7 +88,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
             }
             val id = arguments.getLong(ARG_ID)
             if (SearchType.ADDITIVE == searchType) {
-                val dao = Utils.getDaoSession().additiveNameDao
+                val dao = Utils.daoSession.additiveNameDao
                 val additiveName = dao.queryBuilder()
                         .where(AdditiveNameDao.Properties.Id.eq(id)).unique()
                 updateContent(view, additiveName)
@@ -181,7 +181,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     private fun getDescription(map: JsonNode): String? {
         var descriptionString: String? = null
 
-        val languageCode = LocaleHelper.getLanguage(OFFApplication.getInstance())
+        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
         if (languageCode != null && map[languageCode] != null) {
             descriptionString = map[languageCode]["value"].asText()
         }

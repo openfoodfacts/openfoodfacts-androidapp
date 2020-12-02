@@ -37,7 +37,7 @@ class WikiDataApiClient
      * @param code WikiData ID of additive/ingredient/category/label
      */
     fun doSomeThing(code: String?): Single<JsonNode> {
-        return wikidataAPI.getWikiCategory(code).observeOn(Schedulers.io()).map {
+        return wikidataAPI.getWikiCategory(code).map {
             it["entities"][code]
         }
     }

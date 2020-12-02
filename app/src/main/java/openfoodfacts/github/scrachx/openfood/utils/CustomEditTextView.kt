@@ -22,7 +22,7 @@ class CustomEditTextView : AppCompatEditText {
         initAttrs(context, attrs)
     }
 
-    fun initAttrs(context: Context, attrs: AttributeSet?) {
+    private fun initAttrs(context: Context, attrs: AttributeSet?) {
         if (attrs != null) {
             val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomEditTextView)
             var drawableLeft: Drawable? = null

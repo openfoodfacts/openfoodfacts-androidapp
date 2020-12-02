@@ -56,7 +56,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     private lateinit var currentView: View
     private var mDataObserver: DataObserver? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setHasOptionsMenu(true)
         _binding = FragmentAlertAllergensBinding.inflate(inflater)
         return binding.root

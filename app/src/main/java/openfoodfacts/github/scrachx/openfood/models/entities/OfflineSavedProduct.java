@@ -21,13 +21,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
-import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtilsKt;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
-@Entity(indexes = {
-    @Index(value = "barcode", unique = true)
-})
-
+@Entity(indexes = {@Index(value = "barcode", unique = true)})
 public class OfflineSavedProduct implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -114,7 +111,7 @@ public class OfflineSavedProduct implements Serializable {
     public String getImageFrontLocalUrl() {
         String localUrl = getProductDetailsMap().get(ApiFields.Keys.IMAGE_FRONT);
         if (!TextUtils.isEmpty(localUrl)) {
-            return FileUtils.LOCALE_FILE_SCHEME + localUrl;
+            return FileUtilsKt.LOCALE_FILE_SCHEME + localUrl;
         }
         return null;
     }

@@ -109,7 +109,7 @@ object LocaleHelper {
      */
     @JvmStatic
     fun setLocale(locale: Locale?): Context {
-        return setLocale(OFFApplication.getInstance(), locale)
+        return setLocale(OFFApplication.instance, locale)
     }
 
     @JvmStatic
@@ -122,15 +122,10 @@ object LocaleHelper {
     }
 
     @JvmStatic
-    fun getLCOrDefault(languageCode: String?): String {
-        return if (!languageCode.isNullOrEmpty()) {
-            languageCode
-        } else {
-            ApiFields.Defaults.DEFAULT_LANGUAGE
-        }
-    }
+    fun getLCOrDefault(languageCode: String?) =
+            if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
 
-    fun getLocale(context: Context? = OFFApplication.getInstance()): Locale {
+    fun getLocale(context: Context? = OFFApplication.instance): Locale {
         var locale: Locale? = null
         if (context != null) {
             val resources = context.resources
@@ -170,7 +165,7 @@ object LocaleHelper {
         if (!locale.contains("+")) {
             return Locale(language, country)
         }
-        localeParts = locale.split("\\+").toTypedArray()
+        localeParts = locale.split("+").toTypedArray()
         language = localeParts[1]
         val script = localeParts[2]
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

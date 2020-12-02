@@ -23,7 +23,7 @@ class CustomButtonView : AppCompatButton {
         initAttrs(context, attrs)
     }
 
-    fun initAttrs(context: Context, attrs: AttributeSet?) {
+    private fun initAttrs(context: Context, attrs: AttributeSet?) {
         if (attrs != null) {
             val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomButtonView)
             var drawableLeft: Drawable? = null

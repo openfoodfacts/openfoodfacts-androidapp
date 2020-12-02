@@ -20,7 +20,7 @@ class ProductImage(code: String?, field: ProductImageField, image: File?, val la
     val barcode: String?
     val imageField: ProductImageField
 
-    constructor(code: String?, field: ProductImageField, image: File?) : this(code, field, image, getLanguage(OFFApplication.getInstance()))
+    constructor(code: String?, field: ProductImageField, image: File?) : this(code, field, image, getLanguage(OFFApplication.instance))
 
     companion object {
         fun createImageRequest(image: File?): RequestBody {

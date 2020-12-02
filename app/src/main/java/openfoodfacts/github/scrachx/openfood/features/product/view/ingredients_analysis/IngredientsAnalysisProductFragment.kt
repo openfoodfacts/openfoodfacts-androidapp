@@ -33,7 +33,6 @@ import openfoodfacts.github.scrachx.openfood.models.ProductIngredient
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
-import openfoodfacts.github.scrachx.openfood.utils.requireStateFromArguments
 
 class IngredientsAnalysisProductFragment : BaseFragment() {
     private var _binding: FragmentIngredientsAnalysisProductBinding? = null
@@ -50,12 +49,12 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val productState = requireStateFromArguments(this)
-        product = productState.product
+        val productState = this.requireProductState()
+        product = productState.product!!
         api = OpenFoodAPIClient(requireActivity())
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentIngredientsAnalysisProductBinding.inflate(inflater)
         return binding.root
     }
@@ -78,7 +77,7 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
-        product = productState.product
+        product = productState.product!!
         adapter?.notifyDataSetChanged()
     }
 }

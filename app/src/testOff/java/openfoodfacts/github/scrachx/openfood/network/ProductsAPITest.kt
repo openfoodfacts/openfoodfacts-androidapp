@@ -192,7 +192,7 @@ class ProductsAPITest {
                                 .method(origReq.method(), origReq.body()).build())
                     }
                     .build()
-            prodClient = CommonApiManager.instance.productsApi
+            prodClient = CommonApiManager.productsApi
             devClientWithAuth = Retrofit.Builder()
                     .baseUrl(DEV_API)
                     .addConverterFactory(JacksonConverterFactory.create())

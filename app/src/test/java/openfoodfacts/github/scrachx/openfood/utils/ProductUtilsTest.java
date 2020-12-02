@@ -16,23 +16,23 @@ public class ProductUtilsTest {
         Product mockProd = mock(Product.class);
 
         when(mockProd.getServingSize()).thenReturn("3l");
-        assertThat(ProductUtils.isPerServingInLiter(mockProd)).isTrue();
+        assertThat(ProductUtilsKt.isPerServingInLiter(mockProd)).isTrue();
 
         when(mockProd.getServingSize()).thenReturn("3oz");
-        assertThat(ProductUtils.isPerServingInLiter(mockProd)).isFalse();
+        assertThat(ProductUtilsKt.isPerServingInLiter(mockProd)).isFalse();
     }
 
     @Test
     public void isBarcodeValid() {
         // Debug value
-        assertThat(ProductUtils.isBarcodeValid("1")).isTrue();
+        assertThat(ProductUtilsKt.isBarcodeValid("1")).isTrue();
 
         // Incorrect values
-        assertThat(ProductUtils.isBarcodeValid("2")).isFalse();
-        assertThat(ProductUtils.isBarcodeValid("123456789")).isFalse();
-        assertThat(ProductUtils.isBarcodeValid("test")).isFalse();
-        assertThat(ProductUtils.isBarcodeValid("")).isFalse();
-        assertThat(ProductUtils.isBarcodeValid(null)).isFalse();
+        assertThat(ProductUtilsKt.isBarcodeValid("2")).isFalse();
+        assertThat(ProductUtilsKt.isBarcodeValid("123456789")).isFalse();
+        assertThat(ProductUtilsKt.isBarcodeValid("test")).isFalse();
+        assertThat(ProductUtilsKt.isBarcodeValid("")).isFalse();
+        assertThat(ProductUtilsKt.isBarcodeValid(null)).isFalse();
 
         // Correct values
         Arrays.stream(new String[]{
@@ -136,6 +136,6 @@ public class ProductUtilsTest {
             "9510371184373",
             "9528722036004",
             "9634827116517"
-        }).forEach(bar -> assertThat(ProductUtils.isBarcodeValid(bar)).isTrue());
+        }).forEach(bar -> assertThat(ProductUtilsKt.isBarcodeValid(bar)).isTrue());
     }
 }

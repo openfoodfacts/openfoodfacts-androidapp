@@ -28,7 +28,7 @@ interface NavigationDrawerListener {
     )
     annotation class NavigationDrawerType
 
-    fun setItemSelected(@NavigationDrawerType type: Int?)
+    fun setItemSelected(@NavigationDrawerType type: Int)
 
     companion object {
         const val ITEM_USER = 0

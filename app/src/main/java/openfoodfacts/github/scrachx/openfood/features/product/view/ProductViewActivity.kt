@@ -153,20 +153,22 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
     @Subscribe
     fun onEventBusProductNeedsRefreshEvent(event: ProductNeedsRefreshEvent) {
-        if (event.barcode == productState!!.product.code) {
+        if (event.barcode == productState!!.product!!.code) {
             onRefresh()
         }
     }
 
     override fun onRefresh() {
-        client.openProduct(productState!!.product.code, this)
+        client.openProduct(productState!!.product!!.code, this)
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        productState = intent.getSerializableExtra(STATE_KEY) as ProductState?
-        adapterResult!!.refresh(productState)
+        productState = (intent.getSerializableExtra(STATE_KEY) as ProductState).also {
+            adapterResult!!.refresh(it)
+        }
+
     }
 
     override fun onStart() {
@@ -210,7 +212,6 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         private const val LOGIN_ACTIVITY_REQUEST_CODE = 1
         const val STATE_KEY = "state"
 
-        @JvmStatic
         fun start(context: Context, productState: ProductState) {
             val starter = Intent(context, ProductViewActivity::class.java)
             starter.putExtra(STATE_KEY, productState)

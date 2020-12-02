@@ -8,9 +8,9 @@ import org.jetbrains.annotations.Contract
  * Class that contains search information
  */
 class SearchInfo : Parcelable {
-    var searchQuery: String?
-    var searchTitle: String?
-    var searchType: SearchType?
+    var searchQuery: String
+    var searchTitle: String
+    var searchType: SearchType
 
     /**
      * Constructor for search information used by [ProductSearchActivity]
@@ -19,27 +19,17 @@ class SearchInfo : Parcelable {
      * @param mSearchTitle title of the search
      * @param mSearchType type of search
      */
-    constructor(mSearchQuery: String?, mSearchTitle: String?, mSearchType: SearchType?) {
+    constructor(mSearchType: SearchType, mSearchQuery: String, mSearchTitle: String = mSearchQuery) {
         searchQuery = mSearchQuery
         searchTitle = mSearchTitle
         searchType = mSearchType
     }
 
-    /**
-     * Constructor where search query is the same as search title
-     *
-     * @see .SearchInfo
-     */
-    constructor(mSearchQuery: String?, mSearchType: SearchType?) {
-        searchQuery = mSearchQuery
-        searchTitle = mSearchQuery
-        searchType = mSearchType
-    }
 
     private constructor(parcel: Parcel) {
-        searchQuery = parcel.readString()
-        searchTitle = parcel.readString()
-        searchType = parcel.readSerializable() as SearchType?
+        searchQuery = parcel.readString()!!
+        searchTitle = parcel.readString()!!
+        searchType = parcel.readSerializable() as SearchType
     }
 
     /**
@@ -61,7 +51,7 @@ class SearchInfo : Parcelable {
          * @return search info for an incomplete product
          */
         @Contract(value = " -> new", pure = true)
-        fun emptySearchInfo() = SearchInfo("", "", SearchType.INCOMPLETE_PRODUCT)
+        fun emptySearchInfo() = SearchInfo(SearchType.INCOMPLETE_PRODUCT, "", "")
 
         override fun createFromParcel(parcel: Parcel): SearchInfo {
             return SearchInfo(parcel)

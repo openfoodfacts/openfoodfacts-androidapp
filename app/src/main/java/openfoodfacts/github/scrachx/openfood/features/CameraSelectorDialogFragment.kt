@@ -28,12 +28,16 @@ class CameraSelectorDialogFragment : DialogFragment() {
         for (i in 0 until numberOfCameras) {
             val info = CameraInfo()
             Camera.getCameraInfo(i, info)
-            if (info.facing == CameraInfo.CAMERA_FACING_FRONT) {
-                cameraNames[i] = "Front Facing"
-            } else if (info.facing == CameraInfo.CAMERA_FACING_BACK) {
-                cameraNames[i] = "Rear Facing"
-            } else {
-                cameraNames[i] = "Camera ID: $i"
+            when (info.facing) {
+                CameraInfo.CAMERA_FACING_FRONT -> {
+                    cameraNames[i] = "Front Facing"
+                }
+                CameraInfo.CAMERA_FACING_BACK -> {
+                    cameraNames[i] = "Rear Facing"
+                }
+                else -> {
+                    cameraNames[i] = "Camera ID: $i"
+                }
             }
             if (i == mCameraId) {
                 checkedIndex = i

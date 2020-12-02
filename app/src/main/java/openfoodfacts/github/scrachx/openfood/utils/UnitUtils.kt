@@ -32,6 +32,7 @@ object UnitUtils {
         }
     }
 
+    @JvmStatic
     fun convertToGrams(a: Float, unit: String?): Float {
         return convertToGrams(a.toDouble(), unit).toFloat()
     }
@@ -58,6 +59,7 @@ object UnitUtils {
 
     }
 
+    @JvmStatic
     fun convertFromGram(valueInGramOrMl: Float, targetUnit: String?): Float {
         return convertFromGram(valueInGramOrMl.toDouble(), targetUnit).toFloat()
     }

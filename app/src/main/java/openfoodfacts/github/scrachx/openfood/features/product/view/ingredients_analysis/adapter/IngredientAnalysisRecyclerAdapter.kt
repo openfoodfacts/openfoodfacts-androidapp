@@ -24,8 +24,8 @@ class IngredientAnalysisRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: IngredientAnalysisViewHolder, position: Int) {
-        val text = productIngredients[position].text
-        val id = productIngredients[position].id.replace("\"", "")
+        val text = productIngredients[position].text!!
+        val id = productIngredients[position].id!!.replace("\"", "")
         val name = text.replace("\"", "") //removes quotations
         holder.tvIngredientName.text = name
         holder.tvIngredientName.setOnClickListener {

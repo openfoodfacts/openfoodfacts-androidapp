@@ -23,6 +23,10 @@ import org.jetbrains.annotations.Contract
  * We discourage the use of string literals through the code and we recommend creating a field here so that it can be updated on API change.
  */
 object ApiFields {
+    object StateTags {
+        const val CATEGORIES_TO_BE_COMPLETED = "en:categories-to-be-completed"
+        const val NUTRITION_FACTS_TO_BE_COMPLETED = "en:nutrition-facts-to-be-completed"
+    }
     object Prefix {
         const val PRODUCT_NAME = "product_name_"
         const val INGREDIENTS_TEXT = "ingredients_text_"
@@ -61,6 +65,7 @@ object ApiFields {
          * For other languages see [.lcProductNameKey]
          */
         const val PRODUCT_NAME = "product_name"
+        const val NUTRIMENTS = "nutriments"
         const val LANG = "lang"
         const val IMAGE_FRONT = "image_front"
         const val IMAGE_FRONT_UPLOADED = "image_front_uploaded"

@@ -1,5 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.network
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI
@@ -11,16 +12,18 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
 
 /*
-* Created by Lobster on 03.03.18.
+* Created by  on
 */
 /**
  * Initializes all the required API Services
+ * @author Lobster
+ * @since 03.03.18
  */
 object CommonApiManager {
-    val analysisDataApi: AnalysisDataAPI by lazy {createProductApiService()}
+    val analysisDataApi: AnalysisDataAPI by lazy { createProductApiService() }
     val productsApi: ProductsAPI by lazy { createOpenFoodApiService() }
     val robotoffApi: RobotoffAPI by lazy { createRobotoffApiService() }
-    private val jacksonConverterFactory: JacksonConverterFactory = JacksonConverterFactory.create()
+    private val jacksonConverterFactory = JacksonConverterFactory.create(jacksonObjectMapper())
 
 
     /**

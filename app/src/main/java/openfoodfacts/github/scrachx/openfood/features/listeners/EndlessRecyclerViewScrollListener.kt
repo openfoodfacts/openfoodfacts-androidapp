@@ -40,7 +40,7 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
         visibleThreshold *= layoutManager.spanCount
     }
 
-    fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
+    private fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
         var maxSize = 0
         for (i in lastVisibleItemPositions.indices) {
             if (i == 0) {

@@ -16,14 +16,12 @@ object EditTextUtils {
     /**
      * @return true if the edit text string value is empty
      */
-    @JvmStatic
-    fun isEmpty(editText: EditText?) = getContent(editText).isNullOrEmpty()
+    fun EditText?.isEmpty() = getContent(this).isNullOrEmpty()
 
     /**
      * @return true if the edit text string value is not empty
      */
-    @JvmStatic
-    fun isNotEmpty(editText: EditText?) = !isEmpty(editText)
+    fun EditText?.isNotEmpty() = !isEmpty()
 
     @JvmStatic
     fun isDifferent(textView: EditText, toCompare: String?): Boolean {
@@ -37,15 +35,8 @@ object EditTextUtils {
     }
 
     @JvmStatic
-    fun areChipsDifferent(nachoTextView: NachoTextView, toCompare: MutableList<String>): Boolean {
-        val nachoValues = nachoTextView.chipValues
-        nachoValues.sortWith { obj, anotherString -> obj.compareTo(anotherString) }
-        toCompare.sortWith { obj, anotherString -> obj.compareTo(anotherString) }
-
-        // Using StringUtils because null element -> ""
-        val nachoString = nachoTextView.chipValues.joinToString (",")
-        val toCompareString = toCompare.joinToString(",")
-        return nachoString != toCompareString
+    fun areChipsDifferent(nachoTextView: NachoTextView, toCompare: List<String>): Boolean {
+        return nachoTextView.chipValues.toTypedArray().contentEquals(toCompare.toTypedArray())
     }
 
     @JvmStatic

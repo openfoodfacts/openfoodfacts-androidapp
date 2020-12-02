@@ -207,7 +207,7 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
         progressDialog.show()
         disp.add(Observable.create { emitter: ObservableEmitter<Int?> ->
             disp.add(Single.fromCallable {
-                val yourListedProductDao = Utils.getDaoSession().yourListedProductDao
+                val yourListedProductDao = Utils.daoSession.yourListedProductDao
                 val list: MutableList<YourListedProduct> = ArrayList()
                 try {
                     CSVParser(InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader()).use { csvParser ->
@@ -264,7 +264,7 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
 
         @JvmStatic
         fun getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
-            val productListsDao = Utils.getDaoSession().productListsDao
+            val productListsDao = Utils.daoSession.productListsDao
             if (productListsDao.loadAll().isEmpty()) {
                 val eatenList = ProductLists(context.getString(R.string.txt_eaten_products), 0)
                 productListsDao.insert(eatenList)

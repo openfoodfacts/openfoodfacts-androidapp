@@ -8,8 +8,8 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper
-import openfoodfacts.github.scrachx.openfood.images.ImageKeyHelper.getImageUrl
+import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE_FILE
+import openfoodfacts.github.scrachx.openfood.images.getImageUrl
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import java.util.function.Consumer
 
@@ -24,7 +24,7 @@ class ProductImagesSelectionAdapter(private val context: Context, private val im
 
     fun getImageUrl(position: Int): String {
         val imageName = images[position]
-        return getImageUrl(barcode, imageName, ImageKeyHelper.IMAGE_EDIT_SIZE_FILE)
+        return getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE_FILE)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {

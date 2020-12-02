@@ -24,7 +24,7 @@ object DeserializerHelper {
      */
     @JvmStatic
     fun extractMapFromJsonNode(namesNode: JsonNode): Map<String, String> {
-        val names: MutableMap<String, String> = hashMapOf()
+        val names = hashMapOf<String, String>()
         val nameNodeIterator = namesNode.fields()
         while (nameNodeIterator.hasNext()) {
             val nameNode = nameNodeIterator.next()
@@ -43,11 +43,9 @@ object DeserializerHelper {
      */
     @JvmStatic
     fun extractChildNodeAsText(subNode: Map.Entry<String?, JsonNode>, key: String?): List<String> {
-        return subNode.value[key]?.toList()?.map { parentNode: JsonNode ->
-            if (Log.isLoggable(LOG_TAG, Log.INFO)) {
-                Log.i(LOG_TAG, "extractChildNodeAsText, ajout de ${parentNode.asText()}")
-            }
-            return@map parentNode.asText()
+        return subNode.value[key]?.toList()?.map {
+            if (Log.isLoggable(LOG_TAG, Log.INFO)) Log.i(LOG_TAG, "ExtractChildNodeAsText, ajout de ${it.asText()}")
+            return@map it.asText()
         } ?: listOf()
     }
 

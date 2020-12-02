@@ -84,10 +84,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
-import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
-import openfoodfacts.github.scrachx.openfood.utils.ProductUtils
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import java.io.IOException
@@ -128,7 +125,7 @@ class ContinuousScanActivity : AppCompatActivity() {
             StartActivityForResult()
     ) { result: ActivityResult ->
         if (result.resultCode == RESULT_OK) {
-            setShownProduct(lastBarcode)
+            lastBarcode?.let { setShownProduct(it) }
         }
     }
 
@@ -137,7 +134,7 @@ class ContinuousScanActivity : AppCompatActivity() {
      *
      * @param barcode barcode to serach
      */
-    fun showProduct(barcode: String?) {
+    fun showProduct(barcode: String) {
         productShowing = true
         binding.barcodeScanner.visibility = View.GONE
         binding.barcodeScanner.pause()
@@ -156,7 +153,7 @@ class ContinuousScanActivity : AppCompatActivity() {
      *
      * @param barcode Barcode to be searched
      */
-    private fun setShownProduct(barcode: String?) {
+    private fun setShownProduct(barcode: String) {
         if (isFinishing) {
             return
         }
@@ -189,9 +186,9 @@ class ContinuousScanActivity : AppCompatActivity() {
                     binding.quickViewProgress.visibility = View.GONE
                     binding.quickViewProgressText.visibility = View.GONE
                     if (productState.status == 0L) {
-                        tryDisplayOffline(offlineSavedProduct, barcode!!, R.string.product_not_found)
+                        tryDisplayOffline(offlineSavedProduct, barcode, R.string.product_not_found)
                     } else {
-                        val product = productState.product
+                        val product = productState.product!!
                         this.product = product
 
                         // If we're here from comparison -> add product, return to comparison activity
@@ -245,8 +242,8 @@ class ContinuousScanActivity : AppCompatActivity() {
                         }
 
                         // Show nutriscore in quickView only if app flavour is OFF and the product has one
-                        if (isFlavors(AppFlavors.OFF) && product.nutritionGradeTag != null) {
-                            if (Utils.getImageGrade(product.nutritionGradeTag) != Utils.NO_DRAWABLE_RESOURCE) {
+                        if (isFlavors(AppFlavors.OFF) && product.getNutritionGradeTag() != null) {
+                            if (Utils.getImageGrade(product.getNutritionGradeTag()) != Utils.NO_DRAWABLE_RESOURCE) {
                                 binding.quickViewNutriScore.visibility = View.VISIBLE
                                 binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.nutritionGradeFr))
                             } else {
@@ -300,7 +297,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                             val offlineSavedProduct = mOfflineSavedProductDao!!.queryBuilder()
                                     .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
                                     .unique()
-                            tryDisplayOffline(offlineSavedProduct, barcode!!, R.string.addProductOffline)
+                            tryDisplayOffline(offlineSavedProduct, barcode, R.string.addProductOffline)
                             binding.quickView.setOnClickListener { navigateToProductAddition(barcode) }
                         } else {
                             binding.quickViewProgress.visibility = View.GONE
@@ -373,11 +370,11 @@ class ContinuousScanActivity : AppCompatActivity() {
     private fun showProductNotFound(text: String) {
         hideAllViews()
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        binding.quickView.setOnClickListener { navigateToProductAddition(lastBarcode) }
+        binding.quickView.setOnClickListener { lastBarcode?.let { code -> navigateToProductAddition(code) } }
         binding.quickViewProductNotFound.text = text
         binding.quickViewProductNotFound.visibility = View.VISIBLE
         binding.quickViewProductNotFoundButton.visibility = View.VISIBLE
-        binding.quickViewProductNotFoundButton.setOnClickListener { navigateToProductAddition(lastBarcode) }
+        binding.quickViewProductNotFoundButton.setOnClickListener { lastBarcode?.let { code -> navigateToProductAddition(code) } }
     }
 
     private fun showProductFullScreen() {
@@ -405,7 +402,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
-    private fun navigateToProductAddition(productBarcode: String?) {
+    private fun navigateToProductAddition(productBarcode: String) {
         val pd = Product()
         pd.code = productBarcode
         navigateToProductAddition(pd)
@@ -491,6 +488,7 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     @Subscribe
     fun onEventBusProductNeedsRefreshEvent(event: ProductNeedsRefreshEvent) {
+        val lastBarcode = lastBarcode ?: return
         if (event.barcode == lastBarcode) {
             runOnUiThread { setShownProduct(lastBarcode) }
         }
@@ -511,7 +509,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        OFFApplication.getAppComponent().inject(this)
+        OFFApplication.appComponent.inject(this)
         client = OpenFoodAPIClient(this)
         commonDisp = CompositeDisposable()
         super.onCreate(savedInstanceState)
@@ -547,8 +545,8 @@ class ContinuousScanActivity : AppCompatActivity() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         bottomSheetCallback = QuickViewCallback()
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
-        mInvalidBarcodeDao = Utils.getDaoSession().invalidBarcodeDao
-        mOfflineSavedProductDao = Utils.getDaoSession().offlineSavedProductDao
+        mInvalidBarcodeDao = Utils.daoSession.invalidBarcodeDao
+        mOfflineSavedProductDao = Utils.daoSession.offlineSavedProductDao
         cameraPref = getSharedPreferences("camera", 0).also {
             beepActive = it.getBoolean(SETTING_RING, false)
             flashActive = it.getBoolean(SETTING_FLASH, false)
@@ -686,8 +684,6 @@ class ContinuousScanActivity : AppCompatActivity() {
                         binding.quickViewSearchByBarcode.requestFocus()
                     }
                     R.id.toggleCamera -> toggleCamera()
-                    else -> {
-                    }
                 }
                 true
             }
@@ -706,7 +702,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == ImagesManageActivity.REQUEST_EDIT_IMAGE && (resultCode == RESULT_OK || resultCode == RESULT_CANCELED)) {
-            setShownProduct(lastBarcode)
+            lastBarcode?.let { setShownProduct(it) }
         } else if (resultCode == RESULT_OK && requestCode == LOGIN_ACTIVITY_REQUEST_CODE) {
             navigateToProductAddition(product)
         }
@@ -795,7 +791,7 @@ class ContinuousScanActivity : AppCompatActivity() {
 
                 // For debug only: the barcode 1 is used for test
                 if ((barcodeText.length > 2 || ApiFields.Defaults.DEBUG_BARCODE == barcodeText)
-                        && ProductUtils.isBarcodeValid(barcodeText)) {
+                        && isBarcodeValid(barcodeText)) {
                     lastBarcode = barcodeText
                     textView.visibility = View.GONE
                     setShownProduct(barcodeText)
@@ -826,10 +822,12 @@ class ContinuousScanActivity : AppCompatActivity() {
             if (beepActive) {
                 beepManager!!.playBeepSound()
             }
-            lastBarcode = result.text
-            if (!isFinishing) {
-                setShownProduct(lastBarcode)
+            lastBarcode = result.text.also{
+                if (!isFinishing) {
+                    setShownProduct(it)
+                }
             }
+
         }
 
         override fun possibleResultPoints(resultPoints: List<ResultPoint>) {

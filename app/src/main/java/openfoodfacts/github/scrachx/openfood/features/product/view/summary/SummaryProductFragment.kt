@@ -120,7 +120,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     override fun onAttach(context: Context) {
         super.onAttach(context)
         customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper!!.setConnectionCallback(this)
+        customTabActivityHelper!!.connectionCallback=this
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
 
     }
@@ -131,7 +131,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         wikidataClient = WikiDataApiClient()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentSummaryProductBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -179,7 +179,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         binding.uploadingImageProgressText.visibility = View.GONE
         var context = context
         if (context == null) {
-            context = OFFApplication.getInstance()
+            context = OFFApplication.instance
         }
         Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
     }
@@ -230,7 +230,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     override fun refreshView(productState: ProductState) {
         this.productState = productState
-        product = productState.product
+        product = productState.product!!
         presenter = SummaryProductPresenter(product, this)
         binding.categoriesText.text = Utils.bold(getString(R.string.txtCategories))
         binding.labelsText.text = Utils.bold(getString(R.string.txtLabels))
@@ -258,7 +258,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         binding.textAdditiveProduct.text = Utils.bold(getString(R.string.txtAdditives))
         presenter.loadAdditives()
         presenter.loadAnalysisTags()
-        mTagDao = Utils.getDaoSession().tagDao
+        mTagDao = Utils.daoSession.tagDao
         barcode = product.code
         val langCode = LocaleHelper.getLanguage(context)
         val imageUrl = product.getImageUrl(langCode)
@@ -310,7 +310,13 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
                 if (i > 0) {
                     binding.embText.append(", ")
                 }
-                binding.embText.append(Utils.getClickableText(getEmbCode(embTag).trim { it <= ' ' }, getEmbUrl(embTag), SearchType.EMB, activity, customTabsIntent))
+                binding.embText.append(Utils.getClickableText(
+                        getEmbCode(embTag).trim { it <= ' ' },
+                        getEmbUrl(embTag),
+                        SearchType.EMB,
+                        activity,
+                        customTabsIntent
+                ))
             }
         } else {
             binding.embText.visibility = View.GONE
@@ -340,8 +346,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
                 sugars = nutrientLevels.sugars
                 salt = nutrientLevels.salt
             }
-            val inVolume = ProductUtils.isPerServingInLiter(product)
-            binding.textNutrientTxt.setText(if (inVolume) R.string.txtNutrientLevel100ml else R.string.txtNutrientLevel100g)
+            val servingInL = product.isPerServingInLiter()
+            binding.textNutrientTxt.setText(if (servingInL != true) R.string.txtNutrientLevel100g else R.string.txtNutrientLevel100ml)
             if (fat != null || salt != null || saturatedFat != null || sugars != null) {
                 // prefetch the URL
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri))
@@ -350,40 +356,40 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
                 binding.cvNutritionLights.visibility = View.VISIBLE
                 val fatNutriment = nutriments[Nutriments.FAT]
                 if (fat != null && fatNutriment != null) {
-                    val fatNutrimentLevel = fat.getLocalize(context)
+                    val fatNutrimentLevel = fat.getLocalize(requireContext())
                     levelItem.add(NutrientLevelItem(getString(R.string.txtFat),
                             fatNutriment.displayStringFor100g,
                             fatNutrimentLevel,
-                            fat.imageLevel))
+                            fat.getImageLevel()))
                 }
                 val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
                 if (saturatedFat != null && saturatedFatNutriment != null) {
-                    val saturatedFatLocalize = saturatedFat.getLocalize(context)
+                    val saturatedFatLocalize = saturatedFat.getLocalize(requireContext())
                     levelItem.add(NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatNutriment.displayStringFor100g,
                             saturatedFatLocalize,
-                            saturatedFat.imageLevel))
+                            saturatedFat.getImageLevel()))
                 }
                 val sugarsNutriment = nutriments[Nutriments.SUGARS]
                 if (sugars != null && sugarsNutriment != null) {
-                    val sugarsLocalize = sugars.getLocalize(context)
+                    val sugarsLocalize = sugars.getLocalize(requireContext())
                     levelItem.add(NutrientLevelItem(getString(R.string.txtSugars),
                             sugarsNutriment.displayStringFor100g,
                             sugarsLocalize,
-                            sugars.imageLevel))
+                            sugars.getImageLevel()))
                 }
                 val saltNutriment = nutriments[Nutriments.SALT]
                 if (salt != null && saltNutriment != null) {
-                    val saltLocalize = salt.getLocalize(context)
+                    val saltLocalize = salt.getLocalize(requireContext())
                     levelItem.add(NutrientLevelItem(getString(R.string.txtSalt),
                             saltNutriment.displayStringFor100g,
                             saltLocalize,
-                            salt.imageLevel))
+                            salt.getImageLevel()))
                 }
             } else {
                 binding.cvNutritionLights.visibility = View.GONE
             }
             binding.listNutrientLevels.layoutManager = LinearLayoutManager(context)
-            binding.listNutrientLevels.adapter = NutrientLevelListAdapter(context, levelItem)
+            binding.listNutrientLevels.adapter = NutrientLevelListAdapter(requireContext(), levelItem)
             refreshNutriScore()
             refreshNovaIcon()
             refreshCO2OrEcoscoreIcon()
@@ -457,8 +463,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         showCategoryPrompt = statesTags.contains("en:categories-to-be-completed") && !hasCategoryInsightQuestion
         showNutrientPrompt = statesTags.contains("en:nutrition-facts-to-be-completed") && product.noNutritionData != "on"
 
-        Log.e(LOG_TAG, "Show category prompt: $showCategoryPrompt")
-        Log.e(LOG_TAG, "Show nutrient prompt: $showNutrientPrompt")
+        Log.d(LOG_TAG, "Show category prompt: $showCategoryPrompt")
+        Log.d(LOG_TAG, "Show nutrient prompt: $showNutrientPrompt")
 
         binding.addNutriscorePrompt.visibility = View.VISIBLE
         when {
@@ -538,7 +544,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         if (isRemoving) {
             return
         }
-        if (!question.isEmpty) {
+        if (!question.isEmpty()) {
             productQuestion = question
             binding.productQuestionText.text = "${question.question}\n${question.value}"
             binding.productQuestionLayout.visibility = View.VISIBLE
@@ -593,7 +599,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
                 title(getString(R.string.sign_in_to_answer))
                 positiveText(getString(R.string.sign_in_or_register))
                 onPositive { dialog: MaterialDialog, _: DialogAction? ->
-                    loginLauncher.launch(null)
+                    loginLauncher.launch(Unit)
                     dialog.dismiss()
                 }
                 neutralText(R.string.dialog_cancel)
@@ -605,7 +611,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     private fun processInsight(insightId: String?, annotation: AnnotationAnswer?) {
-        presenter.annotateInsight(insightId, annotation)
+        presenter.annotateInsight(insightId!!, annotation!!)
         Log.d(LOG_TAG, "Annotation $annotation received for insight $insightId")
         binding.productQuestionLayout.visibility = View.GONE
         productQuestion = null
@@ -660,9 +666,9 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         }
     }
 
-    private fun getEmbUrl(embTag: String): String? {
+    private fun getEmbUrl(embTag: String): String {
         val tag = mTagDao!!.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()
-        return tag?.name
+        return tag.name
     }
 
     private fun getEmbCode(embTag: String): String {
@@ -684,7 +690,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
                         }
                     })
                 } else {
-                    ProductSearchActivity.start(requireContext(), label.labelTag, label.name, SearchType.LABEL)
+                    ProductSearchActivity.start(requireContext(), SearchType.LABEL, label.labelTag, label.name)
                 }
             }
         }
@@ -759,7 +765,14 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
         // Set recycler view
         val addToListRecyclerView: RecyclerView = dialogView.findViewById(R.id.rv_dialogAddToList)
-        val addToListAdapter = DialogAddToListAdapter(activity, productLists, productBarcode, productName, productDetails, imageUrl)
+        val addToListAdapter = DialogAddToListAdapter(
+                activity,
+                productLists,
+                productBarcode,
+                productName.orEmpty(),
+                productDetails,
+                imageUrl!!
+        )
         addToListRecyclerView.layoutManager = LinearLayoutManager(activity)
         addToListRecyclerView.adapter = addToListAdapter
 
@@ -788,11 +801,13 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     private fun openFrontImageFullscreen() {
         if (mUrlImage != null) {
-            FullScreenActivityOpener.openForUrl(this,
+            FullScreenActivityOpener.openForUrl(
+                    this,
                     product,
                     ProductImageField.FRONT,
                     mUrlImage,
-                    binding.imageViewFront)
+                    binding.imageViewFront,
+            )
         } else {
             // take a picture
             newFrontImage()

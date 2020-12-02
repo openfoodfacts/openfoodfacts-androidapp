@@ -20,7 +20,6 @@ import android.util.Log
 import com.squareup.picasso.Picasso
 import io.reactivex.Maybe
 import io.reactivex.Single
-import io.reactivex.functions.Function
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.*
@@ -28,12 +27,10 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.*
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTag
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao
-import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.category.*
-import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryDao
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao
@@ -88,7 +85,7 @@ object ProductRepository {
 
     fun loadLabels(lastModifiedDate: Long): Single<List<Label>> {
         return analysisDataApi.getLabels()
-                .map<List<Label>>(Function { obj: LabelsWrapper -> obj.map() })
+                .map { it.map() }
                 .doOnSuccess { labels: List<Label> ->
                     saveLabels(labels)
                     updateLastDownloadDateInSettings(Taxonomy.LABEL, lastModifiedDate)
@@ -106,7 +103,7 @@ object ProductRepository {
 
     fun loadTags(lastModifiedDate: Long): Single<List<Tag>> {
         return analysisDataApi.getTags()
-                .map<List<Tag>>(Function { obj: TagsWrapper -> obj.tags })
+                .map<List<Tag>>({ obj: TagsWrapper -> obj.tags })
                 .doOnSuccess { tags: List<Tag> ->
                     saveTags(tags)
                     updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate)
@@ -117,20 +114,12 @@ object ProductRepository {
         return getTaxonomyData(Taxonomy.INVALID_BARCODES, this, true, invalidBarcodeDao)
     }
 
-    fun loadInvalidBarcodes(lastModifiedDate: Long): Single<List<InvalidBarcode>> {
-        return analysisDataApi.getInvalidBarcodes()
-                .map(Function<List<String?>?, List<InvalidBarcode>> { strings: List<String?>? ->
-                    val toSave: MutableList<InvalidBarcode> = ArrayList(strings!!.size)
-                    for (string in strings) {
-                        toSave.add(InvalidBarcode(string))
-                    }
-                    toSave
-                })
-                .doOnSuccess { invalidBarcodes: List<InvalidBarcode> ->
-                    saveInvalidBarcodes(invalidBarcodes)
-                    updateLastDownloadDateInSettings(Taxonomy.INVALID_BARCODES, lastModifiedDate)
-                }
-    }
+    fun loadInvalidBarcodes(lastModifiedDate: Long) = analysisDataApi.getInvalidBarcodes()
+            .map { strings -> strings.mapTo(mutableListOf()) { InvalidBarcode(it) }.toList() }
+            .doOnSuccess { invalidBarcodes: List<InvalidBarcode> ->
+                saveInvalidBarcodes(invalidBarcodes)
+                updateLastDownloadDateInSettings(Taxonomy.INVALID_BARCODES, lastModifiedDate)
+            }
 
     /**
      * Load allergens from the server or local database
@@ -147,7 +136,7 @@ object ProductRepository {
 
     fun loadAllergens(lastModifiedDate: Long): Single<List<Allergen>> {
         return analysisDataApi.getAllergens()
-                .map<List<Allergen>>(Function { obj: AllergensWrapper -> obj.map() })
+                .map { it.map() }
                 .doOnSuccess { allergens: List<Allergen> ->
                     saveAllergens(allergens)
                     updateLastDownloadDateInSettings(Taxonomy.ALLERGEN, lastModifiedDate)
@@ -165,7 +154,7 @@ object ProductRepository {
 
     fun loadCountries(lastModifiedDate: Long): Single<List<Country>> {
         return analysisDataApi.getCountries()
-                .map<List<Country>>(Function { obj: CountriesWrapper -> obj.map() })
+                .map { it.map() }
                 .doOnSuccess { countries: List<Country> ->
                     saveCountries(countries)
                     updateLastDownloadDateInSettings(Taxonomy.COUNTRY, lastModifiedDate)
@@ -186,7 +175,7 @@ object ProductRepository {
 
     fun loadCategories(lastModifiedDate: Long): Single<List<Category>> {
         return analysisDataApi.getCategories()
-                .map<List<Category>>(Function { obj: CategoriesWrapper -> obj.map() })
+                .map<List<Category>>({ obj: CategoriesWrapper -> obj.map() })
                 .doOnSuccess { categories: List<Category> ->
                     saveCategories(categories)
                     updateLastDownloadDateInSettings(Taxonomy.CATEGORY, lastModifiedDate)
@@ -212,7 +201,7 @@ object ProductRepository {
 
     fun loadAdditives(lastModifiedDate: Long): Single<List<Additive>> {
         return analysisDataApi.getAdditives()
-                .map<List<Additive>>(Function { obj: AdditivesWrapper -> obj.map() })
+                .map { it.map() }
                 .doOnSuccess { additives: List<Additive> ->
                     saveAdditives(additives)
                     updateLastDownloadDateInSettings(Taxonomy.ADDITIVE, lastModifiedDate)
@@ -235,7 +224,7 @@ object ProductRepository {
 
     fun loadIngredients(lastModifiedDate: Long): Single<List<Ingredient>> {
         return analysisDataApi.getIngredients()
-                .map<List<Ingredient>>(Function { obj: IngredientsWrapper -> obj.map() })
+                .map { it.map() }
                 .doOnSuccess { ingredients: List<Ingredient> ->
                     saveIngredients(ingredients)
                     updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate)
@@ -249,7 +238,7 @@ object ProductRepository {
      * @param lastDownload Date of last update on Long format
      */
     private fun updateLastDownloadDateInSettings(taxonomy: Taxonomy, lastDownload: Long) {
-        val mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0)
+        val mSettings = OFFApplication.instance.getSharedPreferences("prefs", 0)
         mSettings.edit().putLong(taxonomy.lastDownloadTimeStampPreferenceId, lastDownload).apply()
         Log.i(TAG, "Set lastDownload of $taxonomy to $lastDownload")
     }
@@ -406,10 +395,11 @@ object ProductRepository {
         ingredientDao.deleteAll()
         ingredientNameDao.deleteAll()
         ingredientsRelationDao.deleteAll()
-        val daoSession = OFFApplication.getDaoSession()
-        daoSession.database.execSQL(
-                "update sqlite_sequence set seq=0 where name in ('" + ingredientDao.tablename + "', '" + ingredientNameDao.tablename + "', '" + ingredientsRelationDao
-                        .tablename + "')")
+        val daoSession = OFFApplication.daoSession
+        daoSession.database.execSQL("""update sqlite_sequence set seq=0 where name in 
+            |('${ingredientDao.tablename}', 
+            |'${ingredientNameDao.tablename}', 
+            |'${ingredientsRelationDao.tablename}')""".trimMargin())
     }
 
     /**
@@ -699,9 +689,9 @@ object ProductRepository {
      * @param annotation is the annotation to be used
      * @return The annotated insight response
      */
-    fun annotateInsight(insightId: String?, annotation: AnnotationAnswer): Single<AnnotationResponse> {
+    fun annotateInsight(insightId: String, annotation: AnnotationAnswer): Single<AnnotationResponse> {
         // if the user is logged in, send the auth, otherwise make it anonymous
-        val userPref = OFFApplication.getInstance().getSharedPreferences("login", 0)
+        val userPref = OFFApplication.instance.getSharedPreferences("login", 0)
         val user = userPref.getString("user", "")?.trim { it <= ' ' } ?: ""
         val pass = userPref.getString("pass", "")?.trim { it <= ' ' } ?: ""
         return if (user.isNotBlank() && pass.isNotBlank()) {
@@ -723,7 +713,7 @@ object ProductRepository {
 
     fun loadAnalysisTags(lastModifiedDate: Long): Single<List<AnalysisTag>> {
         return analysisDataApi.getAnalysisTags()
-                .map<List<AnalysisTag>>(Function { obj: AnalysisTagsWrapper -> obj.map() })
+                .map { it.map() }
                 .doOnSuccess { analysisTags: List<AnalysisTag> ->
                     saveAnalysisTags(analysisTags)
                     updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate)
@@ -826,7 +816,7 @@ object ProductRepository {
         }
     }
 
-    fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String): Single<List<AnalysisTagConfig?>> {
+    fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String): Single<List<AnalysisTagConfig>> {
         return Single.fromCallable {
             val analysisTagConfigs = analysisTagConfigDao.queryBuilder()
                     .where(StringCondition(AnalysisTagConfigDao.Properties.AnalysisTag.columnName + " LIKE \"%unknown%\"")).list()
@@ -845,7 +835,7 @@ object ProductRepository {
      * Constructor of the class which is used to initialize objects.
      */
     init {
-        val daoSession = OFFApplication.getDaoSession()
+        val daoSession = OFFApplication.daoSession
         db = daoSession.database
         labelDao = daoSession.labelDao
         labelNameDao = daoSession.labelNameDao

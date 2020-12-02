@@ -16,10 +16,10 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 import static com.google.common.truth.Truth.assertThat;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH;
 import static openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_GERMAN;
-import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestData.PEANUTS_DE;
-import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestData.PEANUTS_EN;
-import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestData.UNIQUE_ALLERGEN_ID_1;
-import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestData.UNIQUE_ALLERGEN_ID_2;
+import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestDataKt.PEANUTS_DE;
+import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestDataKt.PEANUTS_EN;
+import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestDataKt.UNIQUE_ALLERGEN_ID_1;
+import static openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenResponseTestDataKt.UNIQUE_ALLERGEN_ID_2;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 

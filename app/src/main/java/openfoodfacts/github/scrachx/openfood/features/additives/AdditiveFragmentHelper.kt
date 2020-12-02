@@ -108,7 +108,7 @@ object AdditiveFragmentHelper {
         if (additive.hasOverexposureData() && !activity.isFinishing) {
             showBottomSheet(null, additive, activity.supportFragmentManager)
         } else {
-            ProductSearchActivity.start(activity, additive.additiveTag, additive.name, SearchType.ADDITIVE)
+            ProductSearchActivity.start(activity, SearchType.ADDITIVE, additive.additiveTag, additive.name)
         }
     }
 

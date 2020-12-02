@@ -1,6 +1,8 @@
 
 package openfoodfacts.github.scrachx.openfood.models.entities.analysistag;
 
+import androidx.annotation.NonNull;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -26,7 +28,7 @@ public class AnalysisTagsWrapperDeserializer extends StdDeserializer<AnalysisTag
     }
 
     @Override
-    public AnalysisTagsWrapper deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
+    public AnalysisTagsWrapper deserialize(@NonNull JsonParser jp, DeserializationContext ctxt) throws IOException {
         List<AnalysisTagResponse> analysisTags = new ArrayList<>();
 
         JsonNode mainNode = jp.getCodec().readTree(jp);
@@ -49,9 +51,6 @@ public class AnalysisTagsWrapperDeserializer extends StdDeserializer<AnalysisTag
             }
         }
 
-        AnalysisTagsWrapper wrapper = new AnalysisTagsWrapper();
-        wrapper.setAnalysisTags(analysisTags);
-
-        return wrapper;
+        return new AnalysisTagsWrapper(analysisTags);
     }
 }

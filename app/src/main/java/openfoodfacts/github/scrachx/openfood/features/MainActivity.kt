@@ -97,6 +97,26 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.onCreate
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.setLocale
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.*
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADVANCED_SEARCH
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ALERT
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_CATEGORIES
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_COMPARE
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_CONTRIBUTE
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_HISTORY
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_HOME
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_INCOMPLETE_PRODUCTS
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_LOGIN
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_LOGOUT
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_MANAGE_ACCOUNT
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_MY_CONTRIBUTIONS
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_OBF
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_PREFERENCES
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_SCAN
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_SEARCH_BY_CODE
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_USER
+import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isApplicationInstalled
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
@@ -134,7 +154,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private val loginThenContributionsLauncher = registerForActivityResult(
             LoginContract()) { isLoggedIn: Boolean ->
         if (isLoggedIn) {
-            openMyContributionsInBrowser()
+            openMyContributionsInSearchActivity()
         }
     }
 
@@ -154,10 +174,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         // chrome custom tab init
         customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper!!.setConnectionCallback(object : CustomTabActivityHelper.ConnectionCallback {
+        customTabActivityHelper!!.connectionCallback =object : CustomTabActivityHelper.ConnectionCallback {
             override fun onCustomTabsConnected() {}
             override fun onCustomTabsDisconnected() {}
-        })
+        }
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(this,
                 customTabActivityHelper!!.session)
 
@@ -169,7 +189,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 .addProfiles(profile)
                 .withOnAccountHeaderProfileImageListener(object : AccountHeader.OnAccountHeaderProfileImageListener {
                     override fun onProfileImageClick(view: View, profile: IProfile<*>, current: Boolean): Boolean {
-                        if (!isUserLoggedIn) {
+                        if (!isUserLoggedIn()) {
                             startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                         }
                         return false
@@ -181,7 +201,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 })
                 .withOnAccountHeaderSelectionViewClickListener(object : AccountHeader.OnAccountHeaderSelectionViewClickListener {
                     override fun onClick(view: View, profile: IProfile<*>): Boolean {
-                        if (!isUserLoggedIn) {
+                        if (!isUserLoggedIn()) {
                             startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                         }
                         return false
@@ -211,7 +231,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         // Add Manage Account profile if the user is connected
         val preferences = getSharedPreferences(PreferencesFragment.LOGIN_PREF, 0)
         val userSessionPrefs = preferences.getString("user_session", null)
-        val isUserConnected = isUserLoggedIn && userSessionPrefs != null
+        val isUserConnected = isUserLoggedIn() && userSessionPrefs != null
         if (isUserConnected) {
             updateProfileForCurrentUser()
         }
@@ -270,13 +290,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             ITEM_SCAN -> openScan()
                             ITEM_COMPARE -> ProductCompareActivity.start(this@MainActivity)
                             ITEM_HISTORY -> ScanHistoryActivity.start(this@MainActivity)
-                            ITEM_LOGIN -> loginThenUpdateLauncher.launch(null)
+                            ITEM_LOGIN -> loginThenUpdateLauncher.launch(Unit)
                             ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
                             ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
                             ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent!!, discoverUri!!, WebViewFallback())
                             ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent!!, contributeUri!!, WebViewFallback())
                             ITEM_INCOMPLETE_PRODUCTS ->                         // Search and display the products to be completed by moving to ProductBrowsingListActivity
-                                start(this@MainActivity, "", SearchType.INCOMPLETE_PRODUCT)
+                                start(this@MainActivity, SearchType.INCOMPLETE_PRODUCT, "")
                             ITEM_OBF -> {
                                 val otherOFAppInstalled = isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)
                                 if (otherOFAppInstalled) {
@@ -336,7 +356,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         drawerResult.actionBarDrawerToggle!!.isDrawerIndicatorEnabled = true
 
         // Add Drawer items for the connected user
-        drawerResult.addItemsAtPosition(drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS.toLong()), if (isUserLoggedIn) logoutDrawerItem else loginDrawerItem)
+        drawerResult.addItemsAtPosition(drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS.toLong()), if (isUserLoggedIn()) logoutDrawerItem else loginDrawerItem)
         when {
             isFlavors(AppFlavors.OBF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
@@ -389,7 +409,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         // prefetch uris
         contributeUri = Uri.parse(getString(R.string.website_contribute))
         discoverUri = Uri.parse(getString(R.string.website_discover))
-        userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin)
+        userContributeUri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
         customTabActivityHelper!!.mayLaunchUrl(contributeUri, null, null)
         customTabActivityHelper!!.mayLaunchUrl(discoverUri, null, null)
         customTabActivityHelper!!.mayLaunchUrl(userContributeUri, null, null)
@@ -452,7 +472,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     private fun updateProfileForCurrentUser() {
         headerResult!!.updateProfile(userProfile)
-        if (isUserLoggedIn) {
+        if (isUserLoggedIn()) {
             if (headerResult!!.profiles != null && headerResult!!.profiles!!.size < 2) {
                 headerResult!!.addProfiles(getProfileSettingDrawerItem())
             }
@@ -462,8 +482,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun openMyContributions() {
-        if (isUserLoggedIn) {
-            openMyContributionsInBrowser()
+        if (isUserLoggedIn()) {
+            openMyContributionsInSearchActivity()
         } else {
             MaterialDialog.Builder(this@MainActivity)
                     .title(R.string.contribute)
@@ -471,20 +491,20 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     .positiveText(R.string.create_account_button)
                     .neutralText(R.string.login_button)
                     .onPositive { _, _ -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent!!, Uri.parse(getString(R.string.website) + "cgi/user.pl"), WebViewFallback()) }
-                    .onNeutral { _, _ -> loginThenContributionsLauncher.launch(null) }
+                    .onNeutral { _, _ -> loginThenContributionsLauncher.launch(Unit) }
                     .show()
         }
     }
 
-    private fun openMyContributionsInBrowser() {
-        val userLogin = userLogin
+    private fun openMyContributionsInSearchActivity() {
+        val userLogin = getUserLogin()
         userContributeUri = Uri.parse(getString(R.string.website_contributor) + userLogin)
-        start(this, userLogin, SearchType.CONTRIBUTOR)
+        start(this, SearchType.CONTRIBUTOR, userLogin!!)
     }
 
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
-        val userLogin = userLogin
-        val userSession = userSession
+        val userLogin = getUserLogin()
+        val userSession = getUserSession()
         userAccountUri = Uri.parse("${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession")
         customTabActivityHelper!!.mayLaunchUrl(userAccountUri, null, null)
         return ProfileSettingDrawerItem()
@@ -597,7 +617,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         customTabActivityHelper!!.bindCustomTabsService(this)
         prefManager = PrefManager(this)
         if (isFlavors(AppFlavors.OFF)
-                && isUserLoggedIn
+                && isUserLoggedIn()
                 && !prefManager!!.isFirstTimeLaunch
                 && !prefManager!!.userAskedToRate) {
             val firstTimeLaunchTime = prefManager!!.firstTimeLaunchTime
@@ -662,7 +682,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     override fun onDestroy() {
-        customTabActivityHelper!!.setConnectionCallback(null)
+        customTabActivityHelper!!.connectionCallback=null
         disp.dispose()
         _binding = null
         super.onDestroy()
@@ -677,12 +697,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         val type = intent.type
         if (Intent.ACTION_SEARCH == intent.action) {
             Log.e("INTENT", "start activity")
-            val query = intent.getStringExtra(SearchManager.QUERY)
+            val query = intent.getStringExtra(SearchManager.QUERY) as String
             //Saves the most recent queries and adds it to the list of suggestions
             val suggestions = SearchRecentSuggestions(this,
                     SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE)
             suggestions.saveRecentQuery(query, null)
-            start(this, query, SearchType.SEARCH)
+            start(this, SearchType.SEARCH, query)
             if (searchMenuItem != null) {
                 searchMenuItem!!.collapseActionView()
             }
@@ -843,11 +863,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                                 image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)
                                 disp.add(api.postImg(image).subscribe())
                             } else {
-                                val pd = Product()
-                                pd.code = tempBarcode
-                                val st = ProductState()
-                                st.product = pd
-                                ProductEditActivity.start(this, st)
+                                val product = Product()
+                                product.code = tempBarcode
+                                val state = ProductState()
+                                state.product = product
+                                ProductEditActivity.start(this, state)
                             }
                         } else {
                             Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()

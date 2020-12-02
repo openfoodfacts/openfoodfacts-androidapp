@@ -34,7 +34,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
     var onDismissListener: ((DialogInterface) -> Unit)? = null
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = IngredientsWithTagBinding.inflate(inflater, container, false)
         requireDialog().window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         requireDialog().window!!.setGravity(Gravity.CENTER)
@@ -99,7 +99,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                         requireActivity(),  // activity
                         customTabsIntent,
                         Uri.parse(getString(R.string.help_translate_ingredients_link, Locale.getDefault().language))
-                ) { activity: Activity, uri: Uri? ->
+                ) { activity: Activity, uri: Uri ->
                     val i = Intent(Intent.ACTION_VIEW)
                     i.data = uri
                     activity.startActivity(i)

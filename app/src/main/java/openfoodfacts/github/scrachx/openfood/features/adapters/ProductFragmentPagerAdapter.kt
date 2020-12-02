@@ -19,7 +19,7 @@ class ProductFragmentPagerAdapter(fragmentActivity: FragmentActivity) : Fragment
 
     fun getPageTitle(position: Int) = tabsTitles[position]
 
-    fun refresh(productState: ProductState?) {
+    fun refresh(productState: ProductState) {
         fragments.filter { it.isAdded }.forEach { it.refreshView(productState) }
     }
 }

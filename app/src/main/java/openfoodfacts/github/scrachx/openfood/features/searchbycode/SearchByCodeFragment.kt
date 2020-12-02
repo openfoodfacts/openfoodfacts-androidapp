@@ -12,8 +12,8 @@ import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragm
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.ProductUtils
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.isBarcodeValid
 
 /**
  * @see R.layout.fragment_find_product
@@ -23,7 +23,7 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     private val binding get() = _binding!!
     private lateinit var api: OpenFoodAPIClient
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         api = OpenFoodAPIClient(requireActivity())
         _binding = FragmentFindProductBinding.inflate(inflater)
         return binding.root
@@ -58,10 +58,10 @@ class SearchByCodeFragment : NavigationBaseFragment() {
         val barCodeTxt = binding.editTextBarcode.text.toString()
         if (barCodeTxt.isEmpty()) {
             binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeRequire)
-        } else if (!ProductUtils.isBarcodeValid(barCodeTxt)) {
+        } else if (!isBarcodeValid(barCodeTxt)) {
             binding.editTextBarcode.error = resources.getString(R.string.txtBarcodeNotValid)
         } else {
-            api.openProduct(barCodeTxt, activity)
+            api.openProduct(barCodeTxt, requireActivity())
         }
     }
 

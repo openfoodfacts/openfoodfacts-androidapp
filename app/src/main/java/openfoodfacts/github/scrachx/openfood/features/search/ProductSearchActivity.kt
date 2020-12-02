@@ -50,7 +50,7 @@ class ProductSearchActivity : BaseActivity() {
     private var _binding: ActivityProductBrowsingListBinding? = null
     private val binding get() = _binding!!
     private var contributionType = 0
-    private var disp: CompositeDisposable? = null
+    private var disp = CompositeDisposable()
 
     /**
      * boolean to determine if image should be loaded or not
@@ -63,7 +63,7 @@ class ProductSearchActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        disp!!.dispose()
+        disp.dispose()
         _binding = null
     }
 
@@ -141,7 +141,6 @@ class ProductSearchActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        disp = CompositeDisposable()
         _binding = ActivityProductBrowsingListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarInclude.toolbar)
@@ -160,14 +159,14 @@ class ProductSearchActivity : BaseActivity() {
             // the user has entered the activity via a url
             val data = intent.data
             if (data != null) {
-                val paths: Array<String?> = data.toString().split("/").toTypedArray()
+                val paths = data.toString().split("/").toTypedArray()
                 mSearchInfo = SearchInfo.emptySearchInfo()
                 mSearchInfo.searchTitle = paths[4]
                 mSearchInfo.searchQuery = paths[4]
-                mSearchInfo.searchType = Objects.requireNonNull(SearchType.fromUrl(paths[3]))
-                if (paths[3] == "cgi" && paths[4] != null && paths[4]!!.contains("search.pl")) {
-                    mSearchInfo.searchTitle = data.getQueryParameter("search_terms")
-                    mSearchInfo.searchQuery = data.getQueryParameter("search_terms")
+                mSearchInfo.searchType = SearchType.fromUrl(paths[3])!!
+                if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
+                    mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
+                    mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
                     mSearchInfo.searchType = SearchType.SEARCH
                 }
             } else {
@@ -192,7 +191,7 @@ class ProductSearchActivity : BaseActivity() {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val actualCountryTag = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "")
         if ("" == actualCountryTag) {
-            disp!!.add(ProductRepository.instance.getCountryByCC2OrWorld(LocaleHelper.getLocale().country)
+            disp.add(ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocale().country)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { mayCountry: Optional<Country> -> setupUrlHungerGames(if (mayCountry.isPresent) mayCountry.get().tag else "en:world") })
         } else {
@@ -280,60 +279,88 @@ class ProductSearchActivity : BaseActivity() {
     fun loadDataFromAPI() {
         val searchQuery = mSearchInfo.searchQuery
         when (mSearchInfo.searchType) {
-            SearchType.BRAND -> startSearch(client.getProductsByBrand(searchQuery, pageAddress), R.string.txt_no_matching_brand_products)
-            SearchType.COUNTRY -> startSearch(client.getProductsByCountry(searchQuery, pageAddress), R.string.txt_no_matching_country_products)
-            SearchType.ORIGIN -> startSearch(client.getProductsByOrigin(searchQuery, pageAddress), R.string.txt_no_matching_country_products)
-            SearchType.MANUFACTURING_PLACE -> startSearch(client.getProductsByManufacturingPlace(searchQuery, pageAddress), R.string.txt_no_matching_country_products)
-            SearchType.ADDITIVE -> startSearch(client.getProductsByAdditive(searchQuery, pageAddress), R.string.txt_no_matching_additive_products)
-            SearchType.STORE -> startSearch(client.getProductsByStore(searchQuery, pageAddress), R.string.txt_no_matching_store_products)
-            SearchType.PACKAGING -> startSearch(client.getProductsByPackaging(searchQuery, pageAddress), R.string.txt_no_matching_packaging_products)
+            SearchType.BRAND -> client.getProductsByBrand(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_brand_products)
+
+            SearchType.COUNTRY -> client.getProductsByCountry(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_country_products)
+
+            SearchType.ORIGIN -> client.getProductsByOrigin(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_country_products)
+
+            SearchType.MANUFACTURING_PLACE -> client.getProductsByManufacturingPlace(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_country_products)
+
+            SearchType.ADDITIVE -> client.getProductsByAdditive(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_additive_products)
+
+            SearchType.STORE -> client.getProductsByStore(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_store_products)
+
+            SearchType.PACKAGING -> client.getProductsByPackaging(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_packaging_products)
+
             SearchType.SEARCH -> {
-                if (ProductUtils.isBarcodeValid(searchQuery)) {
+                if (isBarcodeValid(searchQuery)) {
                     client.openProduct(searchQuery, this)
                 } else {
-                    startSearch(client.searchProductsByName(searchQuery, pageAddress), R.string.txt_no_matching_products, R.string.txt_broaden_search)
+                    client.searchProductsByName(searchQuery, pageAddress)
+                            .startSearch(R.string.txt_no_matching_products, R.string.txt_broaden_search)
                 }
             }
-            SearchType.LABEL -> startSearch(client.getProductsByLabel(searchQuery, pageAddress), R.string.txt_no_matching_label_products)
-            SearchType.CATEGORY -> startSearch(client.getProductsByCategory(searchQuery, pageAddress), R.string.txt_no_matching__category_products)
-            SearchType.ALLERGEN -> startSearch(client.getProductsByAllergen(searchQuery, pageAddress), R.string.txt_no_matching_allergen_products)
+            SearchType.LABEL -> client.getProductsByLabel(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_label_products)
+
+            SearchType.CATEGORY -> client.getProductsByCategory(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching__category_products)
+
+            SearchType.ALLERGEN -> client.getProductsByAllergen(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_allergen_products)
+
             SearchType.CONTRIBUTOR -> loadDataForContributor(searchQuery)
-            SearchType.STATE -> startSearch(client.getProductsByStates(searchQuery, pageAddress), R.string.txt_no_matching_allergen_products)
+
+            SearchType.STATE -> client.getProductsByStates(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_allergen_products)
+
             SearchType.INCOMPLETE_PRODUCT -> {
                 // Get Products to be completed data and input it to loadData function
-                startSearch(client.getIncompleteProducts(pageAddress), R.string.txt_no_matching_incomplete_products)
+                client.getIncompleteProducts(pageAddress)
+                        .startSearch(R.string.txt_no_matching_incomplete_products)
             }
             else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
         }
     }
 
-    private fun startSearch(searchSingle: Single<Search>, @StringRes noMatchTextRes: Int) {
-        startSearch(searchSingle, noMatchTextRes, -1)
-    }
 
-    private fun startSearch(searchSingle: Single<Search>, @StringRes noMatchMsg: Int, @StringRes extendedMsg: Int) {
-        disp!!.add(searchSingle
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { search: Search?, throwable: Throwable? -> displaySearch(throwable == null, search, noMatchMsg, extendedMsg) })
+    private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
+        disp.add(observeOn(AndroidSchedulers.mainThread())
+                .subscribe { search, throwable ->
+                    displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
+                })
     }
 
     private fun loadDataForContributor(searchQuery: String) {
         when (contributionType) {
-            1 -> client.getToBeCompletedProductsByContributor(searchQuery, pageAddress) { value, category ->
-                displaySearch(value, category, R.string.txt_no_matching_contributor_products)
-            }
-            2 -> client.getPicturesContributedProducts(searchQuery, pageAddress) { value, category ->
-                displaySearch(value, category, R.string.txt_no_matching_contributor_products)
-            }
-            3 -> client.getPicturesContributedIncompleteProducts(searchQuery, pageAddress) { value: Boolean, category: Search? ->
-                displaySearch(value, category, R.string.txt_no_matching_contributor_products)
-            }
-            4 -> client.getInfoAddedProducts(searchQuery, pageAddress) { value, category ->
-                displaySearch(value, category, R.string.txt_no_matching_contributor_products)
-            }
-            5 -> startSearch(client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress), R.string.txt_no_matching_contributor_products)
-            0 -> startSearch(client.getProductsByContributor(searchQuery, pageAddress), R.string.txt_no_matching_contributor_products)
-            else -> startSearch(client.getProductsByContributor(searchQuery, pageAddress), R.string.txt_no_matching_contributor_products)
+            1 -> client.getToBeCompletedProductsByContributor(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_contributor_products)
+
+            2 -> client.getPicturesContributedProducts(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_contributor_products)
+
+            3 -> client.getPicturesContributedIncompleteProducts(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_contributor_products)
+
+            4 -> client.getInfoAddedProducts(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_contributor_products)
+
+            5 -> client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_contributor_products)
+
+            0 -> client.getProductsByContributor(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_contributor_products)
+
+            else -> client.getProductsByContributor(searchQuery, pageAddress)
+                    .startSearch(R.string.txt_no_matching_contributor_products)
         }
     }
 
@@ -342,15 +369,14 @@ class ProductSearchActivity : BaseActivity() {
         if (isResponseOk && response != null) {
             mCountProducts = response.count.toInt()
             if (pageAddress == 1) {
-                val number = NumberFormat.getInstance(Locale.getDefault())
-                        .format(response.count.toLong())
+                val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
                 binding.textCountProduct.text = resources.getString(R.string.number_of_results) + number
                 mProducts.addAll(response.products)
                 if (mProducts.size < mCountProducts) {
                     mProducts.add(null)
                 }
                 if (setupDone) {
-                    binding.productsRecyclerView.adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode)
+                    binding.productsRecyclerView.adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode, this)
                 }
                 setUpRecyclerView(mProducts)
             } else {
@@ -431,7 +457,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            val adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode)
+            val adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode, this)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)
@@ -513,16 +539,8 @@ class ProductSearchActivity : BaseActivity() {
          * @param type the type of search
          */
         @JvmStatic
-        fun start(context: Context, searchQuery: String?, searchTitle: String?, type: SearchType?) {
-            start(context, SearchInfo(searchQuery, searchTitle, type))
-        }
-
-        /**
-         * @see [start]
-         */
-        @JvmStatic
-        fun start(context: Context, searchQuery: String?, type: SearchType?) {
-            start(context, searchQuery, searchQuery, type)
+        fun start(context: Context, type: SearchType, searchQuery: String, searchTitle: String = searchQuery) {
+            start(context, SearchInfo(type, searchQuery, searchTitle))
         }
 
         /**

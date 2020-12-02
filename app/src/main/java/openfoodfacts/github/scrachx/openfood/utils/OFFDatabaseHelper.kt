@@ -42,12 +42,12 @@ class OFFDatabaseHelper : OpenHelper {
     }
 
     override fun onCreate(db: Database) {
-        Log.i(Companion.LOG_TAG, "Creating tables for schema version " + DaoMaster.SCHEMA_VERSION)
+        Log.i(LOG_TAG, "Creating tables for schema version " + DaoMaster.SCHEMA_VERSION)
         DaoMaster.createAllTables(db, true)
     }
 
     override fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
-        Log.i(Companion.LOG_TAG, "migrating schema from version $oldVersion to $newVersion")
+        Log.i(LOG_TAG, "migrating schema from version $oldVersion to $newVersion")
         //dropAllTables(db, true);
         for (migrateVersion in oldVersion + 1..newVersion) {
             migrateDB(db, migrateVersion)

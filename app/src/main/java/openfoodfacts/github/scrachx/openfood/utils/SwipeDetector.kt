@@ -27,22 +27,22 @@ class SwipeDetector(private val view: View, private val swipeEventListener: OnSw
     private var downY = 0f
     private var upX = 0f
     private var upY = 0f
-    fun onRightToLeftSwipe() {
+    private fun onRightToLeftSwipe() {
         swipeEventListener?.onSwipeEventDetected(view, SwipeTypeEnum.RIGHT_TO_LEFT)
                 ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
     }
 
-    fun onLeftToRightSwipe() {
+    private fun onLeftToRightSwipe() {
         swipeEventListener?.onSwipeEventDetected(view, SwipeTypeEnum.LEFT_TO_RIGHT)
                 ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
     }
 
-    fun onTopToBottomSwipe() {
+    private fun onTopToBottomSwipe() {
         swipeEventListener?.onSwipeEventDetected(view, SwipeTypeEnum.TOP_TO_BOTTOM)
                 ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
     }
 
-    fun onBottomToTopSwipe() {
+    private fun onBottomToTopSwipe() {
         swipeEventListener?.onSwipeEventDetected(view, SwipeTypeEnum.BOTTOM_TO_TOP)
                 ?: Log.e(LOG_TAG, ERR_NO_LISTENER_MSG)
     }
@@ -61,8 +61,8 @@ class SwipeDetector(private val view: View, private val swipeEventListener: OnSw
                 val deltaY = downY - upY
 
                 //HORIZONTAL SCROLL
-                if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                    if (Math.abs(deltaX) > minDistance) {
+                if (abs(deltaX) > abs(deltaY)) {
+                    if (abs(deltaX) > minDistance) {
                         // left or right
                         if (deltaX < 0) {
                             onLeftToRightSwipe()

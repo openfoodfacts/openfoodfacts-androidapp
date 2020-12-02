@@ -20,7 +20,7 @@ import java.util.List;
 
 import openfoodfacts.github.scrachx.openfood.R;
 import openfoodfacts.github.scrachx.openfood.models.SaveItem;
-import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtilsKt;
 
 public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveViewHolder> {
 
@@ -71,7 +71,7 @@ public class SaveListAdapter extends RecyclerView.Adapter<SaveListAdapter.SaveVi
             holder.progressBar.setVisibility(View.VISIBLE);
         }
         holder.txtTitle.setText(item.getTitle());
-        Picasso.get().load(FileUtils.LOCALE_FILE_SCHEME + item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
+        Picasso.get().load(FileUtilsKt.LOCALE_FILE_SCHEME + item.getUrl()).config(Bitmap.Config.RGB_565).into(holder.imgProduct);
         holder.txtBarcode.setText(item.getBarcode());
         holder.txtWeight.setText(item.getWeight());
         holder.txtBrand.setText(item.getBrand());

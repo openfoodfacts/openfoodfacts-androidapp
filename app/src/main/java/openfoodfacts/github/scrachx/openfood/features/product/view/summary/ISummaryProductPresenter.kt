@@ -31,7 +31,7 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 interface ISummaryProductPresenter {
     interface Actions {
         fun loadProductQuestion()
-        fun annotateInsight(insightId: String?, annotation: AnnotationAnswer?)
+        fun annotateInsight(insightId: String, annotation: AnnotationAnswer)
         fun loadAllergens(runIfError: Runnable?)
         fun loadCategories()
         fun loadLabels()

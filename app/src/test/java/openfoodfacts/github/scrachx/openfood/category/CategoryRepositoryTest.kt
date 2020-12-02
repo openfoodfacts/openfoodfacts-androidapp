@@ -14,7 +14,6 @@ import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import java.util.*
 
 /**
  * Created by Abdelali Eramli on 01/01/2018.
@@ -36,7 +35,7 @@ class CategoryRepositoryTest {
 
     @Before
     fun setup() {
-        Mockito.`when`(mapper.fromNetwork(ArgumentMatchers.any())).thenReturn(Arrays.asList(category, category, category))
+        Mockito.`when`(mapper.fromNetwork(ArgumentMatchers.any())).thenReturn(listOf(category, category, category))
         Mockito.`when`(networkService.getCategories()).thenReturn(Single.just(response))
         repository = CategoryRepository(networkService, mapper)
     }

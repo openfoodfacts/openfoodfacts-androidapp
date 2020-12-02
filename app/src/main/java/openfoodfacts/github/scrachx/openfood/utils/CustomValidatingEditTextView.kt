@@ -10,22 +10,20 @@ import com.google.android.material.textfield.TextInputLayout
 import openfoodfacts.github.scrachx.openfood.R
 
 class CustomValidatingEditTextView : AppCompatEditText {
-    private var textInputLayout: TextInputLayout? = null
-        get() {
-            if (field == null && textInputLayoutId != NO_ID) {
-                val view = rootView.findViewById<View>(textInputLayoutId)
-                if (view is TextInputLayout) {
-                    textInputLayout = view
-                } else {
-                    //configuration error we reset the id
-                    textInputLayoutId = NO_ID
-                    val attachedTo = if (view == null) "null" else view.javaClass.name
-                    Log.e(CustomValidatingEditTextView::class.simpleName,
-                            "The id $textInputLayoutId used in parentTextInputLayout should be linked to a TextInputLayout and not to $attachedTo")
-                }
+    private val textInputLayout: TextInputLayout? by lazy {
+        if (textInputLayoutId != NO_ID) {
+            val view = rootView.findViewById<View>(textInputLayoutId)
+            if (view is TextInputLayout) {
+                return@lazy view
+            } else {
+                //configuration error we reset the id
+                textInputLayoutId = NO_ID
+                val attachedTo = if (view == null) "null" else view.javaClass.name
+                error("The id $textInputLayoutId used in parentTextInputLayout should be linked to a TextInputLayout and not to $attachedTo")
             }
-            return field
         }
+        return@lazy null
+    }
     private var attachedModSpinnerId = NO_ID
     private var attachedUnitSpinnerId = NO_ID
     private var textInputLayoutId = NO_ID
@@ -61,10 +59,8 @@ class CustomValidatingEditTextView : AppCompatEditText {
         return@lazy null
     }
 
-    var entryName: String? = null
-        get() {
-            return field ?: fieldName ?: resources.getResourceEntryName(id)
-        }
+    var entryName: String = resources.getResourceEntryName(id)
+        get() = field ?: resources.getResourceEntryName(id)
 
     private var fieldName: String? = null
 
