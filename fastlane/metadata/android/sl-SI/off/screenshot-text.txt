@@ -7,7 +7,7 @@ Posnetki zaslona V2
 
 Skeniraj izdelke
 
-Get the Nutriscore
+Pridobi Nutriscore
 
 Vaša celotna zgodovina skeniranja, popolnoma zasebna in izvozna
 
@@ -17,7 +17,7 @@ Nastavi opozorila za alergene
 
 Prehrana, poenostavljena
 
-Allergen alert
+Opozorilo na alergene
 
 Poišči nadomestila za vaša najljubša živila
 
@@ -31,11 +31,11 @@ Wikipedia za hrano za hišne živali
 
 Wikipedija izdelkov
 
-Ingredients
+Sestavine
 
 Zmogljiva
 
-Nutrition facts
+Dejstva o hranilni vrednosti
 
 =====================
 Posnetki zaslona V3
