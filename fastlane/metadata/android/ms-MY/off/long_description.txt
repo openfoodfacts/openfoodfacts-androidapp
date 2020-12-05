@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Imbas produk makanan atau kod barnya untuk perolehi data tentang fakta ramuan, aditif dan nutrisi.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
+- Fakta Makanan Terbuka adalah pangkalan data yang dibuat oleh semua orang, untuk semua orang.
+- Anda boleh gunakannya untuk membuat pilihan makanan yang lebih baik, dan oleh sebab ia adalah data terbuka, sesiapa pun boleh ulang guna untuk sebarang tujuan.
+- Fakta Makanan Terbuka adalah projek bukan berasaskan keuntungan yang dibangunkan oleh ribuan sukarelawan dari seluruh dunia. Kami ada banyak projek menarik boleh anda sumbangkan dalam pelbagai cara.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
-- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
-- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
-- On wines and beers, you will find the alcohol content.
+- Fakta Makanan Terbuka membantu anda membuat pertimbangan munasabah maklumat tertera pada label produk. You will be able to find:
+- jejak karbon (pelepasan CO2) dan pembungkusan (serta arahan kitar semula),
+- Nutriscore (skor pemakanan), nutrien, lemak / kandungan lemak, asid lemak tepu, karbohidrat, gula, serat, protein dan garam dan natrium.
+- jenama, alergen, label (bio, bebas gluten, vegan, vegetarian, halal, kosher ...), maklumat kebolehkesanan (kod pembungkusan, packaging codes, asal-usul ramuan)
+- Pada wain dan bir, anda boleh dapati kandungan alkohol.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Fakta Makanan Terbuka juga boleh didapati pada web di https://world.openfoodfacts.org
 
 
-Questions, feedback : contact@openfoodfacts.org
+Pertanyaan, maklum balas: contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+Untuk kosmetik, anda boleh pasang Fakta Kecantikan Terbuka, untuk makanan haiwan peliharaan, Fakta Makanan Haiwan Peliharaan Terbuka, dan untuk semua produk lain, Fakta Produk Terbuka.

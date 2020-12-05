@@ -1,13 +1,13 @@
-Open Products Facts is an open database of all products in the world.
+Open Product Facts adalah basis data terbuka untuk semua produk di seluruh dunia.
 
 *** Berkontribusi untuk Transparansi Produk ***
 
 - Open Product Facts adalah basis data produk yang dibuat oleh semua orang untuk semua orang.
 - Dapat digunakan untuk membuat pilihan kosmetik yang lebih baik dan dapat digunakan oleh siapa saja untuk tujuan apa saja karena merupakan data terbuka.
-- Open Beauty Facts adalah proyek nirlaba yang dikembangkan oleh ribuan sukarelawan dari seluruh dunia. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Beauty Facts adalah proyek nirlaba yang dikembangkan oleh ribuan sukarelawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara. 
 - Anda dapat mulai berkontribusi hari ini dengan menambahkan produk pertama Anda. 
 
-*** Get the Facts ***
+*** Dapatkan faktanya ***
 - Open Beauty Facts membantu anda untuk memahami label kemasan produk.
 
 *** Kumpulkan Semuaaa hal ***
@@ -16,22 +16,22 @@ Open Products Facts is an open database of all products in the world.
 - Open Miniature Food Facts - data basis terbuka terbesar produk makanan miniatur
 - Open ??? Facts - Buat sendiri basis data milikmu :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Bekerja dengan baik di segala kondisi ***
+- Bisa menambahkan produk, bahkan tanpa koneksi internet.
+- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
+- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
 
 *** Produkmu, Datamu ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Datamu adalah milikmu, tidak akan diunggah
+- Bisa menggunakan aplikasi secara anonim
+- Bisa mengekspor riwayat pemindaian
 
 Open Food Facts untuk makanan.
 Open Beauty Facts untuk kosmetik.
 Open Pet Food Facts untuk makanan hewan.
 
 Open Product Facts juga tersedia di situs web di https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Pertanyaan, umpan balik: contact@openfoodfacts.org
 
 *** Daftar April's Fool Asli ***
 
@@ -41,11 +41,11 @@ Mengumpulkan makanan, kosmetik, dan makanan hewan peliharaan di seluruh dunia sa
 
 Jadi bukan hanya 1, tapi 77000 data basis terpisah lainnya telah dibuat! 
 
-Open Product Facts akan menjadi proyek yang sangat ambisius. Here are a few of them: 
+Open Product Facts akan menjadi proyek yang sangat ambisius. Beberapa diantaranya: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - basis data terbuka terbesar untuk krayon
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - data basis terbuka terbesar produk makanan miniatur
 
 Open ??? Facts - basis data terbuka untuk ???
 
