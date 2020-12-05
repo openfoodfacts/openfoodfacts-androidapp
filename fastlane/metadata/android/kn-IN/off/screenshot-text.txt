@@ -7,7 +7,7 @@ V2 screenshots
 
 Scan products
 
-Get the Nutriscore
+ನ್ಯೂಟ್ರಿಕೋರ್ ಪಡೆಯಿರಿ
 
 Your full scan history, fully private & exportable
 
@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+ಅಲರ್ಜಿನ್ ಎಚ್ಚರಿಕೆ
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+ಪದಾರ್ಥಗಳು
 
 Powerful
 
-Nutrition facts
+ಪೌಷ್ಟಿಕ ಅಂಶಗಳು
 
 =====================
 V3 screenshots

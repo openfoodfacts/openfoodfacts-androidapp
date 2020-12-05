@@ -7,7 +7,7 @@ V2 screenshots
 
 Scan products
 
-Get the Nutriscore
+Iegūstiet Nutriscore
 
 Your full scan history, fully private & exportable
 
@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+Alergēnu brīdinājumu
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+Sastāvdaļas
 
 Powerful
 
-Nutrition facts
+Uztura fakti
 
 =====================
 V3 screenshots
