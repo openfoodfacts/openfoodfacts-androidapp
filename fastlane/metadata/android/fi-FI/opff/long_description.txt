@@ -8,11 +8,11 @@ Tutustuaksesi Open Pet Food Facts -hankkeeseen, vieraile osoitteessa https://wor
 
 - Open Pet Food Facts on kaikkien tekemä tietokanta lemmikkien elintarvikkeille, kaikille.
 - Voit käyttää sitä tehdäksesi parempia valintoja lemmikkien elintarvikkeissa, ja koska se on avointa dataa, kuka tahansa voi uudelleen käyttää sitä mihin tahansa tarkoitukseen.
-- Open Pet Food Facts on voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin. 
+- Open Pet Food Facts on voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin. 
 - Voit aloittaa osallistumisen tänään lisäämällä tuotteen lemmikkisi ruokakaapista. 
 
 
-***Näe faktat***
+*** Tiedä tosiseikat ***
 
 Voit myös löytää (tuotteiden pakkausmerkintöjen mukaan):
 - ainesosaluettelon (mukaan lukien tuhkapitoisuuden)
@@ -21,9 +21,9 @@ Voit myös löytää (tuotteiden pakkausmerkintöjen mukaan):
 - Se toimii koiranruoalla (koiran kuivaruoka & koiran märkäruoka), kissanruoalla, kaninruoalla, käärmeenruoalla, kalanruoalla, linnunruoalla, hevosenruoalla, tai millä tahansa lempieläimesi ruoalla.
 
 *** Toimii hyvin kaikissa olosuhteissa ***
-- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
-- Sovellus lataa vain ehdottoman välttämättömät datasiirron ja akun kulutuksen vähentämiseksi
-- Tuotteen etsimiseen ei tarvita kameraa. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
+- Sovellus lataa vain kaikista välttämättömimmän, tiedonsiirron ja akun kulutuksen vähentämiseksi
+- Et tarvitse kameraa hakeaksesi tuotetta. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
 
 *** Sinun lemmikkisi elintarvikkeet, sinun tietosi ***
 - Henkilökohtaiset tietosi ovat sinun, ja niitä ei koskaan lähetetä verkkoon

@@ -1,4 +1,4 @@
-- Open Products Facts is a products database made by everyone, for everyone.
+Open Products Facts is an open database of all products in the world.
 
 *** Contribute to Product Transparency ***
 
@@ -45,7 +45,7 @@ Open Crayons Facts - The largest open database of coloring crayons
 
 Open Miniature Food Facts - The largest open database of miniature food products
 
-- Open ??? Open X Facts - The largest open database of Y
+Open ??? Facts - The largest open database of ???
 
 Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
 
