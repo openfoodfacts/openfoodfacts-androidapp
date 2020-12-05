@@ -7,7 +7,7 @@ V2 screenshots
 
 Skanna produkter
 
-Get the Nutriscore
+Få Nutriscore
 
 Your full scan history, fully private & exportable
 
@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+Allergenvarning
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia av produkter
 
-Ingredients
+Ingredienser
 
 Kraftfull
 
-Nutrition facts
+Näringsfakta
 
 =====================
 V3 screenshots

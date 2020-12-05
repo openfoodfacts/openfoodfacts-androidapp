@@ -7,7 +7,7 @@ V2 screenshots
 
 Scanați produsul
 
-Get the Nutriscore
+Obțineți NutriScore
 
 Istoricul complet de scanare, complet privat și exportabil
 
@@ -17,7 +17,7 @@ Setați alerte pentru alergeni
 
 Nutriție, simplificată
 
-Allergen alert
+Alertă alergeni
 
 Obțineți alternative pentru mâncarea preferată
 
@@ -31,11 +31,11 @@ Wikipedia pentru Mâncare pentru Animale
 
 Wikipedia Produse
 
-Ingredients
+Ingrediente
 
 Puternic
 
-Nutrition facts
+Valori nutriționale
 
 =====================
 V3 screenshots

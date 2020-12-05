@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+Peringatan bahan alergi
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+Bahan
 
 Powerful
 
-Nutrition facts
+tabel nutrisi
 
 =====================
 V3 screenshots
