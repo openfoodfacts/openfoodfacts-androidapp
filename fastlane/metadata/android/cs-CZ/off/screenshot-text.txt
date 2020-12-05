@@ -7,7 +7,7 @@ V2 screenshots
 
 Snímání zboží
 
-Get the Nutriscore
+Získejte Nutriční skóre
 
 Vaše úplná historie snímání, zcela soukromá & exportovatelná
 
@@ -17,7 +17,7 @@ Nastavte si upozornění na alergeny
 
 Výživa jednoduše
 
-Allergen alert
+Hlídání alergenů
 
 Získejte alternativy pro vaše oblíbené potraviny
 
@@ -31,11 +31,11 @@ Wikipedie pro potraviny mazlíčků
 
 Wikipedie výrobků
 
-Ingredients
+Složení
 
 Mocný
 
-Nutrition facts
+Nutriční hodnoty
 
 =====================
 V3 screenshots

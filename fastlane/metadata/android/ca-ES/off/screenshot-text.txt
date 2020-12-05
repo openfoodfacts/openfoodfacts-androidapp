@@ -7,7 +7,7 @@ V2 screenshots
 
 Escanegeu productes
 
-Get the Nutriscore
+Obteniu la Puntuació Nutricional
 
 El vostre historial complet d'escaneig, totalment privat i exportable
 
@@ -17,7 +17,7 @@ Establiu alertes sobre al·lèrgens
 
 Nutrició simplificada
 
-Allergen alert
+Alerta d'al·lèrgens
 
 Obteniu alternatives per als vostres aliments preferits
 
@@ -35,7 +35,7 @@ Ingredients
 
 Potent
 
-Nutrition facts
+Informació nutricional
 
 =====================
 V3 screenshots
