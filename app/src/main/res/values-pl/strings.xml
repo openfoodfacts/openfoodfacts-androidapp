@@ -30,13 +30,13 @@
     <plurals name="minutes">
         <item quantity="one">%d minutę temu</item>
         <item quantity="few">%d minuty temu</item>
-        <item quantity="many">%d minutę temu</item>
+        <item quantity="many">%d minut temu</item>
         <item quantity="other">%d minut temu</item>
     </plurals>
     <plurals name="hours">
         <item quantity="one">%d godzinę temu</item>
-        <item quantity="few">%d godzinę temu</item>
-        <item quantity="many">%d godzinę temu</item>
+        <item quantity="few">%d godzin temu</item>
+        <item quantity="many">%d godzin temu</item>
         <item quantity="other">%d godzin temu</item>
     </plurals>
     <plurals name="days">
