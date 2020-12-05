@@ -17,7 +17,7 @@ Ezarri alergenoen alertak
 
 Nutrition, simplified
 
-Allergen alert
+Alergenoen alerta
 
 Get alternatives for your favorite foods
 
@@ -31,7 +31,7 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+Osagaiak
 
 Powerful
 

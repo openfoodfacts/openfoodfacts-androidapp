@@ -7,7 +7,7 @@ V2 screenshots
 
 Escanear productos
 
-Get the Nutriscore
+Obteña o Nutriscore
 
 O seu historial completo de escaneos, completamente privado e exportable
 
@@ -17,7 +17,7 @@ Establecer alertas de alérxenos
 
 Nutrición, simplificada
 
-Allergen alert
+Alerta de alérxenos
 
 Obteña alternativas aos seus alimentos favoritos
 
@@ -31,11 +31,11 @@ Wikipedia para Alimento de mascotas
 
 Wikipedia para Produtos
 
-Ingredients
+Ingredientes
 
 Potente
 
-Nutrition facts
+Información nutricional
 
 =====================
 V3 screenshots

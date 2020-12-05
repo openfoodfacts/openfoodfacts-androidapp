@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+هشدار وجود آلرژن
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+مواد تشکیل دهنده
 
 Powerful
 
-Nutrition facts
+ارزش غذایی
 
 =====================
 V3 screenshots

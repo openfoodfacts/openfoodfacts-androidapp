@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+Ειδοποίηση για αλλεργιογόνο
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+Συστατικά
 
 Powerful
 
-Nutrition facts
+Διατροφικά στοιχεία
 
 =====================
 V3 screenshots
