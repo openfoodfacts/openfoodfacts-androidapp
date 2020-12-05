@@ -7,7 +7,7 @@ V2 screenshots
 
 Termékek beolvasása
 
-Get the Nutriscore
+Kapja meg a Nutriscore-t
 
 Az ön teljes beolvasási előzményei, teljesen magán és exportálható
 
@@ -17,7 +17,7 @@ Allergén riasztások beállítása
 
 Tápanyag, egyszerűsített
 
-Allergen alert
+Allergén riasztás
 
 Kapjon alternatívát a kedvenc élelmiszereire
 
@@ -31,11 +31,11 @@ Wikipedia az Állateledelekhez
 
 Wikipedia a Termékekhez
 
-Ingredients
+Összetevők
 
 Erős
 
-Nutrition facts
+Tápértékadatok
 
 =====================
 V3 screenshots
