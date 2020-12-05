@@ -7,7 +7,7 @@ V2-skærmfotos
 
 Skan produkter
 
-Get the Nutriscore
+Få næringssoren
 
 Din fulde skanningshistorik, helt privat og eksporterbar
 
@@ -17,7 +17,7 @@ Indstil allergenadvarsler
 
 Ernæring, forenklet
 
-Allergen alert
+Allergenadvarsel
 
 Få alternativer til dine yndlingsretter
 
@@ -31,11 +31,11 @@ Wikipedia for Ddrefoder
 
 Wikipedia over produkter
 
-Ingredients
+Ingredienser
 
 Kraftfuld
 
-Nutrition facts
+Ernæringsindhold
 
 =====================
 V3-skærmfotos

@@ -4,10 +4,10 @@ Open Products Facts is an open database of all products in the world.
 
 - Open Food Facts és una base de dades de productes creada per tothom, per a tothom.
 - Podeu utilitzar-la per a millorar la vostra tria i, com que les dades són obertes, qualsevol persona pot tornar-la a utilitzar per a qualsevol propòsit.
-- Open Food Facts és un projecte sense ànim de lucre, desenvolupat per milers de persones voluntàries de tot el món. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Food Facts és un projecte sense ànim de lucre, desenvolupat per milers de persones voluntàries de tot el món. Tenim molts projectes interessants en els que hi podeu contribuir de moltes maneres diferents. 
 - Podeu començar a contribuir avui afegint el vostre primer producte. 
 
-*** Get the Facts ***
+*** Obteniu les Dades ***
 - Open Products Facts us ajuda a entendre la lletra petita que hi ha en les etiquetes dels productes.
 
 *** Recull TOOOOTES les coses ***
@@ -16,20 +16,20 @@ Open Products Facts is an open database of all products in the world.
 - Open Miniature Food Facts - La base de dades oberta més gran de productes alimentaris en miniatura
 - Open ??? Facts - Creeu la vostra pròpia base de dades oberta :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Funciona bé en qualsevol condició ***
+- Podeu afegir nous productes, fins i tot si ara mateix no teniu una connexió a Internet.
+- L'aplicació només carrega l'estrictament necessari per a reduir les dades i el consum de la bateria
+- No necessiteu una càmera per buscar un producte. També podeu escriure el codi de barres si no teniu cap càmera o no us funciona.
 
 *** Els vostres productes, les vostres dades ***
 - Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Podeu utilitzar l'aplicació de forma anònima
+- Podeu exportar el vostre historial d'escaneig
 
 Per als aliments, podeu instal·lar Open Food Facts, per als productes cosmètics, Open Beauty Facts i per als aliments per a animals domèstics, Open Pet Food Facts.
 
 Open Products Facts també està disponible a internet, a l'adreça https://es-ca.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Preguntes, comentaris : contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
 

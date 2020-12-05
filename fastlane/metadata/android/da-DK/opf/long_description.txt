@@ -1,13 +1,13 @@
-Open Products Facts is an open database of all products in the world.
+Open Products Facts er en åben database over alle verdena produkter.
 
 *** Bidrag til produktgennemsigtighed ***
 
 - Open Products Facts er en produktdatabase udarbejdet af alle, for alle.
 - Du kan benytte den til at foretage bedre valg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
-- Open Product Facts er et nonprofit-projekt, der er udviklet af tusindvis af frivillige fra hele verden. We have lots of exciting projects you can contribute to in many different ways. 
+- Open Product Facts er et nonprofit-projekt, der er udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
 - Du kan begynde at bidrage i dag ved at tilføje dit første produkt. 
 
-*** Get the Facts ***
+*** Få faktaene ***
 - Open Product Facts hjælper dig med at forstå det med småt på produktetiketterne.
 
 *** Indsaml ALLE tingene ***
@@ -16,20 +16,20 @@ Open Products Facts is an open database of all products in the world.
 - Open Miniature Food Facts - Den største åbne database over miniaturefødevarer
 - Åben??? Fakta - Opret din egen åbne database :-)
 
-*** Works well in any condition ***
-- You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
-- You don't need a camera to look up a product. You can also type the barcode if you lack a camera or have an issue with it.
+*** Fungerer godt i enhver tilstand ***
+- Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
+- App'en indlæser kun det strengt nødvendige for at reducere data- og batteriforbrug
+- Du behøver ikke et kamera til at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
 
 *** Dine produkterer, dine data ***
-- Your personal data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Dine personlige data er dine, og de lægges aldrig online
+- Du kan benytte app'en anonymt
+- Du kan eksportere din skanningshistorik
 
 Til fødevarer kan du installere Open Food Facts, til kosmetik Open Beauty Facts og til kæledyrsfoder Open Pet Food Facts.
 
 Open Product Facts er også tilgængelig på Internet via https://world.openproductsfacts.org
-Questions, feedback : contact@openfoodfacts.org
+Spørgsmål, feedback: contact@openfoodfacts.org
 
 *** Oprindelig Aprilsnar-oversigt ***
 
@@ -39,11 +39,11 @@ Indsamling af verdens fødevare-, kosmetik- og kæledyrsfoderprodukter var så p
 
 Så vi satter os for at oprette ikke 1, men yderligere 7.7000 nye, separate databaser! 
 
-Open Product Fakta vil være et ekstremt ambitiøst projekt. Here are a few of them: 
+Open Product Fakta vil være et ekstremt ambitiøst projekt. Her er et par af dem: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayon Facts - Den største åbne database over farvekridt
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - Den største åbne database over miniaturefødevarer
 
 - Åben??? Fakta - Den største åbne database over???
 
