@@ -1,0 +1,19 @@
+name: Supply Checks
+
+
+on:
+  push:
+    branches:
+      - '*'
+      - '!develop'
+      - '!master'
+      - '!release/*'
+jobs:
+  checks:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checks
+      - uses: actions/checkout@v1
+      - uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
+        with:
+          fastlaneDir: ./fastlane # optional. default is './fastlane'

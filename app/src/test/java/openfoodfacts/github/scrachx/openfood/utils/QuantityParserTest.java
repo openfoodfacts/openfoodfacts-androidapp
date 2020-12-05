@@ -14,22 +14,22 @@ import static org.mockito.Mockito.when;
 public class QuantityParserTest {
     @Test
     public void testWithEmptyValues() {
-        assertThat(QuantityParserUtil.getFloatValue((String) null)).isNull();
-        assertThat(QuantityParserUtil.getFloatValue("")).isNull();
-        assertThat(QuantityParserUtil.getFloatValue("   ")).isNull();
-        assertThat(QuantityParserUtil.getFloatValue((String) null)).isNull();
-        assertThat(QuantityParserUtil.getFloatValue("")).isNull();
-        assertThat(QuantityParserUtil.getFloatValue(" ")).isNull();
+        assertThat(QuantityParserUtilKt.getFloatValue((String) null)).isNull();
+        assertThat(QuantityParserUtilKt.getFloatValue("")).isNull();
+        assertThat(QuantityParserUtilKt.getFloatValue("   ")).isNull();
+        assertThat(QuantityParserUtilKt.getFloatValue((String) null)).isNull();
+        assertThat(QuantityParserUtilKt.getFloatValue("")).isNull();
+        assertThat(QuantityParserUtilKt.getFloatValue(" ")).isNull();
     }
 
     @Test
     public void testIsGreaterThan() {
         Spinner mockSpinner = mock(Spinner.class);
         when(mockSpinner.getSelectedItemPosition()).thenReturn(2);
-        assertThat(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner)).isTrue();
+        assertThat(QuantityParserUtilKt.isModifierEqualsToGreaterThan(mockSpinner)).isTrue();
         when(mockSpinner.getSelectedItemPosition()).thenReturn(1);
-        assertThat(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner)).isFalse();
+        assertThat(QuantityParserUtilKt.isModifierEqualsToGreaterThan(mockSpinner)).isFalse();
         when(mockSpinner.getSelectedItemPosition()).thenReturn(0);
-        assertThat(QuantityParserUtil.isModifierEqualsToGreaterThan(mockSpinner)).isFalse();
+        assertThat(QuantityParserUtilKt.isModifierEqualsToGreaterThan(mockSpinner)).isFalse();
     }
 }

@@ -17,32 +17,24 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 /**
  * Created by Lobster on 04.03.18.
  */
-@Entity(indexes = {
-    @Index(value = "tag", unique = true)
-})
+@Entity(indexes = {@Index(value = "tag", unique = true)})
 public class Category {
-
     @Id(autoincrement = true)
     private Long id;
-
     @Unique
     private String tag;
-
     @Unique
     private String wikiDataId;
-
     private Boolean isWikiDataIdPresent;
     @ToMany(joinProperties = {
-            @JoinProperty(name = "tag", referencedName = "categoryTag")
+        @JoinProperty(name = "tag", referencedName = "categoryTag")
     })
     private List<CategoryName> names;
-
     /**
      * Used to resolve relations
      */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
-
     /**
      * Used for active entity operations.
      */
@@ -174,11 +166,12 @@ public class Category {
         this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
-    /** called by internal mechanisms, do not call yourself. */
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
     @Generated(hash = 503476761)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getCategoryDao() : null;
     }
-
 }

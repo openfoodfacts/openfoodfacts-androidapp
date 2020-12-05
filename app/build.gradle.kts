@@ -26,6 +26,9 @@ plugins {
     id("de.timfreiheit.resourceplaceholders.plugin")
     id("org.greenrobot.greendao")
     id("io.sentry.android.gradle")
+    id("kotlin-android")
+    kotlin("kapt")
+
 }
 
 fun obtainTestBuildType(): String {
@@ -48,17 +51,19 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.annotation:annotation:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.fragment:fragment:1.3.0-beta01")
-    implementation("androidx.activity:activity:1.2.0-beta01")
+    implementation("androidx.fragment:fragment-ktx:1.3.0-beta01")
+    implementation("androidx.activity:activity-ktx:1.2.0-beta01")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.preference:preference:1.1.1")
+    implementation("androidx.preference:preference-ktx:1.1.1")
 
     //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
-    annotationProcessor("com.google.dagger:dagger-compiler:2.29.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
+    kapt("com.google.dagger:dagger-compiler:2.29.1")
     implementation("com.google.dagger:dagger:2.29.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
@@ -170,7 +175,7 @@ dependencies {
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.10")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.1")
 }
 
 

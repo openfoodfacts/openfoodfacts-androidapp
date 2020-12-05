@@ -10,9 +10,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 /**
  * Created by jayanth on 22/2/18.
  */
-@Entity(indexes = {
-    @Index(value = "id", unique = true)
-})
+@Entity(indexes = {@Index(value = "id", unique = true)})
 public class ToUploadProduct {
     @Id
     private Long id;

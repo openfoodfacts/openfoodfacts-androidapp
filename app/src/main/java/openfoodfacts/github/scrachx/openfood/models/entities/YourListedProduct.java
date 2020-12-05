@@ -6,9 +6,7 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Property;
 
-@Entity(indexes = {
-    @Index(value = "listId, barcode", unique = true)
-})
+@Entity(indexes = {@Index(value = "listId, barcode", unique = true)})
 public class YourListedProduct {
     @Id(autoincrement = true)
     Long id;

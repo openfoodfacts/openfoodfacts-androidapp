@@ -1,20 +1,15 @@
 package openfoodfacts.github.scrachx.openfood.models;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 
 import java.io.Serializable;
-import org.greenrobot.greendao.annotation.Generated;
 
-@Entity(indexes = {
-    @Index(value = "barcode", unique = true)
-})
-
+@Entity(indexes = {@Index(value = "barcode", unique = true)})
 public class InvalidBarcode implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     @Id
     private String barcode;
 
