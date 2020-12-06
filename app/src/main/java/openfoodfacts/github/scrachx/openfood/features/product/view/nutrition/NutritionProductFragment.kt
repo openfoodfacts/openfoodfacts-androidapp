@@ -182,7 +182,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             } else if (servingSize.contains("oz", true) && settingsPreference.getString("volumeUnitPreference", "l") == "l") {
                 servingSize = UnitUtils.getServingInL(servingSize)
             }
-            binding.textServingSize.text = Utils.bold(getString(R.string.txtServingSize))
+            binding.textServingSize.text = bold(getString(R.string.txtServingSize))
             binding.textServingSize.append(" ")
             binding.textServingSize.append(servingSize)
         }
@@ -383,7 +383,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     }
 
     private fun drawNutritionGrade() {
-        val nutritionGrade = Utils.getImageGradeDrawable(requireActivity(), product)
+        val nutritionGrade = getImageGradeDrawable(requireActivity(), product)
         if (nutritionGrade != null) {
             binding.imageGradeLayout.visibility = View.VISIBLE
             binding.imageGrade.setImageDrawable(nutritionGrade)
@@ -451,7 +451,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         } else {
             // take a picture
             if (ContextCompat.checkSelfPermission(requireActivity(), permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(requireActivity(), arrayOf(permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             } else {
                 EasyImage.openCamera(this, 0)
             }
@@ -511,7 +511,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
-        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && isUserLoggedIn) {
+        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && requireActivity().isUserLoggedIn()) {
             startEditProduct()
         }
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)
@@ -534,8 +534,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
     private fun onNutriScoreButtonClick() {
         if (AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OBF)) {
-            if (isUserNotLoggedIn) {
-                Utils.startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE, requireActivity())
+            if (!requireActivity().isUserLoggedIn()) {
+                startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE, requireActivity())
             } else {
                 startEditProduct()
             }

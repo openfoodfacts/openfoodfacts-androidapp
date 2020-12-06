@@ -15,9 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.shared
 
-import android.app.Activity
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -30,25 +28,14 @@ import openfoodfacts.github.scrachx.openfood.dagger.component.ActivityComponent
 import openfoodfacts.github.scrachx.openfood.dagger.module.ActivityModule
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.onCreate
-import openfoodfacts.github.scrachx.openfood.utils.Utils
-import org.apache.commons.lang.StringUtils
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 
 abstract class BaseActivity : AppCompatActivity() {
     var activityComponent: ActivityComponent? = null
         private set
 
     companion object {
-        private fun getLoginPreferences(activity: Activity): SharedPreferences? {
-            return activity.getSharedPreferences("login", 0)
-        }
-
-        fun isUserLoggedIn(activity: Activity?): Boolean {
-            if (activity == null) {
-                return false
-            }
-            val login = getLoginPreferences(activity)!!.getString("user", "")
-            return StringUtils.isNotBlank(login)
-        }
 
         init {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
@@ -69,14 +56,10 @@ abstract class BaseActivity : AppCompatActivity() {
         onCreate(this)
     }
 
-    fun isUserLoggedIn() = isUserLoggedIn(this)
-
     fun getUserLogin(): String? {
         val preferences = getLoginPreferences()
         return preferences?.getString("user", null)
     }
-
-    private fun getLoginPreferences() = getLoginPreferences(this)
 
     fun getUserSession(): String? {
         val preferences = getLoginPreferences()
@@ -85,7 +68,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA
+        if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA
                 && grantResults.isNotEmpty()
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             startActivity(Intent(this@BaseActivity, ContinuousScanActivity::class.java).apply {
@@ -94,3 +77,4 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 }
+

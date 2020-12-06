@@ -34,9 +34,9 @@ import openfoodfacts.github.scrachx.openfood.utils.InstallationUtils
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getUserAgent
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getVersionName
 import openfoodfacts.github.scrachx.openfood.utils.Utils.httpClientBuilder
+import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
 import org.jetbrains.annotations.Contract
 import retrofit2.Call
 import retrofit2.Callback
@@ -62,7 +62,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
     /**
      * @return This api service gets products of provided brand.
      */
-    var rawAPI: ProductsAPI = if (customApiUrl != null) {
+    var rawAPI = if (customApiUrl != null) {
         Retrofit.Builder()
                 .baseUrl(customApiUrl)
                 .client(httpClientBuilder())
@@ -184,9 +184,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
         })
     }
 
-    fun getIngredients(product: Product): Single<List<ProductIngredient>> {
-        return getIngredients(product.code)
-    }
+    fun getIngredients(product: Product) = getIngredients(product.code)
 
     fun searchProductsByName(name: String?, page: Int): Single<Search> {
         val productNameLocale = localeProductNameField
@@ -220,9 +218,8 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
         }
     }
 
-    fun getProductsByCountry(country: String?, page: Int): Single<Search> {
-        return rawAPI.getProductsByCountry(country, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io())
-    }
+    fun getProductsByCountry(country: String?, page: Int) =
+            rawAPI.getProductsByCountry(country, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io())
 
     /**
      * Returns a map for images uploaded for product/ingredients/nutrition/other images
@@ -255,13 +252,11 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
         return imgMap
     }
 
-    fun getProductsByCategory(category: String?, page: Int): Single<Search> {
-        return rawAPI.getProductByCategory(category, page).subscribeOn(Schedulers.io())
-    }
+    fun getProductsByCategory(category: String?, page: Int) =
+            rawAPI.getProductByCategory(category, page)
 
-    fun getProductsByLabel(label: String?, page: Int): Single<Search> {
-        return rawAPI.getProductByLabel(label, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io())
-    }
+    fun getProductsByLabel(label: String?, page: Int) =
+            rawAPI.getProductByLabel(label, page, FIELDS_TO_FETCH_FACETS)
 
     /**
      * Add a product to ScanHistory asynchronously
@@ -270,9 +265,8 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
         return Completable.fromAction { addToHistorySync(mHistoryProductDao, product) }
     }
 
-    fun getProductsByContributor(contributor: String?, page: Int): Single<Search> {
-        return rawAPI.searchProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
-    }
+    fun getProductsByContributor(contributor: String?, page: Int) =
+            rawAPI.searchProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
 
     /**
      * upload images in offline mode
@@ -361,9 +355,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
     }
 
     private fun setDefaultImageFromServerResponse(body: JsonNode, image: ProductImage): Completable {
-        val queryMap: MutableMap<String, String?> = HashMap()
-        queryMap["imgid"] = body["image"]["imgid"].asText()
-        queryMap["id"] = body["imagefield"].asText()
+        val queryMap = hashMapOf(
+                "imgid" to body["image"]["imgid"].asText(),
+                "id" to body["imagefield"].asText()
+        )
         return rawAPI.editImageSingle(image.barcode, addUserInfo(queryMap))
                 .flatMapCompletable { jsonNode: JsonNode ->
                     if ("status ok" == jsonNode[ApiFields.Keys.STATUS].asText()) {
@@ -382,7 +377,6 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
      * Unselect the image from the product code.
      *
      * @param code code of the product
-     * @param onEditImageCallback
      */
     fun unSelectImage(code: String?, field: ProductImageField?, language: String?): Single<String> {
         val imgMap: MutableMap<String, String?> = HashMap()
@@ -403,9 +397,8 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
         }
     }
 
-    fun getProductsByOrigin(origin: String?, page: Int): Single<Search> {
-        return rawAPI.getProductsByOrigin(origin, page, FIELDS_TO_FETCH_FACETS)
-    }
+    fun getProductsByOrigin(origin: String?, page: Int) =
+            rawAPI.getProductsByOrigin(origin, page, FIELDS_TO_FETCH_FACETS)
 
     fun syncOldHistory() {
         historySyncDisp?.dispose()

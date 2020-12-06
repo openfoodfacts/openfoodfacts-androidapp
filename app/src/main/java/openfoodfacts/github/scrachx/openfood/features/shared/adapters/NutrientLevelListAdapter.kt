@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter.NutrientViewHolder
 import openfoodfacts.github.scrachx.openfood.models.NutrientLevelItem
-import openfoodfacts.github.scrachx.openfood.utils.Utils.bold
+import openfoodfacts.github.scrachx.openfood.utils.bold
 
 class NutrientLevelListAdapter(
         private val context: Context,

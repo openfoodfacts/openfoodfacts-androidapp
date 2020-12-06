@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 class FileUtilsTest {
@@ -9,21 +9,21 @@ class FileUtilsTest {
 
     @Test
     fun fileIsLocal_true() {
-        Truth.assertThat(isLocaleFile(localURL)).isTrue()
+        assertThat(isLocaleFile(localURL)).isTrue()
     }
 
     @Test
     fun fileIsLocal_false() {
-        Truth.assertThat(isLocaleFile(absoluteURL)).isFalse()
+        assertThat(isLocaleFile(absoluteURL)).isFalse()
     }
 
     @Test
     fun isAbsolute_true() {
-        Truth.assertThat(isAbsoluteUrl(absoluteURL)).isTrue()
+        assertThat(isAbsoluteUrl(absoluteURL)).isTrue()
     }
 
     @Test
     fun isAbsolute_false() {
-        Truth.assertThat(isAbsoluteUrl(localURL)).isFalse()
+        assertThat(isAbsoluteUrl(localURL)).isFalse()
     }
 }

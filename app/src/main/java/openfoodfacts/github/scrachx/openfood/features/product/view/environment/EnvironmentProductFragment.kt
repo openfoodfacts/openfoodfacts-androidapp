@@ -22,10 +22,7 @@ import openfoodfacts.github.scrachx.openfood.models.Nutriments
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
-import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.Utils
-import openfoodfacts.github.scrachx.openfood.utils.requireProductState
+import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
 
 class EnvironmentProductFragment : BaseFragment() {
@@ -85,7 +82,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val carbonFootprintNutriment = nutriments[Nutriments.CARBON_FOOTPRINT]
         if (carbonFootprintNutriment != null) {
-            binding.textCarbonFootprint.text = Utils.bold(getString(R.string.textCarbonFootprint))
+            binding.textCarbonFootprint.text = bold(getString(R.string.textCarbonFootprint))
             binding.textCarbonFootprint.append(carbonFootprintNutriment.for100gInUnits)
             binding.textCarbonFootprint.append(carbonFootprintNutriment.unit)
         } else {
@@ -106,7 +103,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard
         if (!recyclingInstructionsToDiscard.isNullOrEmpty()) {
-            binding.recyclingInstructionToDiscard.text = Utils.bold("Recycling instructions - To discard: ")
+            binding.recyclingInstructionToDiscard.text = bold("Recycling instructions - To discard: ")
             binding.recyclingInstructionToDiscard.append(recyclingInstructionsToDiscard)
         } else {
             binding.recyclingInstructionsDiscardCv.visibility = View.GONE
@@ -114,7 +111,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val recyclingInstructionsToRecycle = product.recyclingInstructionsToRecycle
         if (!recyclingInstructionsToRecycle.isNullOrEmpty()) {
-            binding.recyclingInstructionToRecycle.text = Utils.bold("Recycling instructions - To recycle:")
+            binding.recyclingInstructionToRecycle.text = bold("Recycling instructions - To recycle:")
             binding.recyclingInstructionToRecycle.append(recyclingInstructionsToRecycle)
         } else {
             binding.recyclingInstructionsRecycleCv.visibility = View.GONE
@@ -174,7 +171,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
         // TODO: 15/11/2020 find a way to use ActivityResultApi
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
-        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && isUserLoggedIn) {
+        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && requireActivity().isUserLoggedIn()) {
             startEditProduct()
         }
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {

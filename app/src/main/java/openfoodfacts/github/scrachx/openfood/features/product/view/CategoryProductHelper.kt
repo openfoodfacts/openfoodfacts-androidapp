@@ -16,6 +16,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNa
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.bold
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
 class CategoryProductHelper(
@@ -29,7 +30,7 @@ class CategoryProductHelper(
         private set
 
     fun showCategories() {
-        categoryText.text = Utils.bold(baseFragment.getString(R.string.txtCategories))
+        categoryText.text = bold(baseFragment.getString(R.string.txtCategories))
         categoryText.movementMethod = LinkMovementMethod.getInstance()
         categoryText.append(" ")
         categoryText.isClickable = true

@@ -57,16 +57,14 @@ class AdditiveListActivity : BaseActivity() {
                 return@AsyncOperationListener
             }
             binding.additiveRecyclerView.layoutManager = LinearLayoutManager(this@AdditiveListActivity)
-            binding.additiveRecyclerView.adapter = AdditivesAdapter(additives, this@AdditiveListActivity::onClick)
+            binding.additiveRecyclerView.adapter = AdditivesAdapter(additives) { _, name -> onClick(name) }
             binding.additiveRecyclerView.addItemDecoration(DividerItemDecoration(this@AdditiveListActivity, DividerItemDecoration.VERTICAL))
         }
         selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0)
         install(this, binding.navigationBottomInclude.bottomNavigation)
     }
 
-    fun onClick(position: Int, name: String) {
-        ProductSearchActivity.start(this, SearchType.ADDITIVE, name)
-    }
+    fun onClick(name: String) = ProductSearchActivity.start(this, SearchType.ADDITIVE, name)
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -94,7 +92,7 @@ class AdditiveListActivity : BaseActivity() {
                             }
                         }
                     }
-                    binding.additiveRecyclerView.adapter = AdditivesAdapter(suggestedAdditives, this@AdditiveListActivity::onClick)
+                    binding.additiveRecyclerView.adapter = AdditivesAdapter(suggestedAdditives) { _, name -> onClick(name) }
                     binding.additiveRecyclerView.adapter!!.notifyDataSetChanged()
                     return false
                 }

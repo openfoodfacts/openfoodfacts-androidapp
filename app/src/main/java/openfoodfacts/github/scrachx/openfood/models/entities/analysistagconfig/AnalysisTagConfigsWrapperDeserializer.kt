@@ -27,7 +27,6 @@ class AnalysisTagConfigsWrapperDeserializer : StdDeserializer<AnalysisTagConfigs
             val color = subNode.value[DeserializerHelper.COLOR_KEY].asText()
             analysisTagConfigs.add(AnalysisTagConfig(subNode.key, type, icon, color))
         }
-        val wrapper = AnalysisTagConfigsWrapper(analysisTagConfigs)
-        return wrapper
+        return AnalysisTagConfigsWrapper(analysisTagConfigs)
     }
 }

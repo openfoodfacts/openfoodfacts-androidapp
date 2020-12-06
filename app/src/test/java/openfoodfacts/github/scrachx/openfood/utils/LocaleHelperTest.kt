@@ -1,50 +1,46 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package openfoodfacts.github.scrachx.openfood.utils
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-
-import org.junit.Test;
-import org.mockito.Mockito;
-
-import java.util.Locale;
-
-import static com.google.common.truth.Truth.assertThat;
+import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
+import com.google.common.truth.Truth.assertThat
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
+import org.junit.Test
+import org.mockito.Mockito.mock
+import java.util.*
+import org.mockito.Mockito.`when` as mockitoWhen
 
 /**
  * Created by n27 on 4/4/17.
  */
-public class LocaleHelperTest {
+class LocaleHelperTest {
     @Test
-    public void getLocale_fr() {
-        Locale locale = LocaleHelper.getLocale("fr");
-        assertThat(locale).isEqualTo(Locale.FRENCH);
+    fun getLocale_fr() {
+        assertThat(getLocale("fr")).isEqualTo(Locale.FRENCH)
     }
 
     @Test
-    public void getLocale_en() {
-        Locale locale = LocaleHelper.getLocale("en");
-        assertThat(locale).isEqualTo(Locale.ENGLISH);
+    fun getLocale_en() {
+        assertThat(getLocale("en")).isEqualTo(Locale.ENGLISH)
     }
 
     @Test
-    public void getLocale_en_US() {
-        Locale locale = LocaleHelper.getLocale("en-US");
-        assertThat(locale).isEqualTo(Locale.US);
+    fun getLocale_en_US() {
+        assertThat(getLocale("en-US")).isEqualTo(Locale.US)
     }
 
     @Test
-    public void getLocale_FromContext(){
-        Context context = Mockito.mock(Context.class);
-        Resources resources = Mockito.mock(Resources.class);
-        Configuration configuration = Mockito.mock(Configuration.class);
+    fun getLocale_FromContext() {
+        val context = mock(Context::class.java)
+        val resources = mock(Resources::class.java)
+        mockitoWhen(context.resources).thenReturn(resources)
 
-        Locale locale = LocaleHelper.getLocale("en-US");
-        configuration.locale = locale;
+        val locale = getLocale("en-US")
+        val configuration = mock(Configuration::class.java).apply {
+            this.locale = locale
+        }
+        mockitoWhen(resources.configuration).thenReturn(configuration)
 
-        Mockito.when(context.getResources()).thenReturn(resources);
-        Mockito.when(resources.getConfiguration()).thenReturn(configuration);
-
-        assertThat(LocaleHelper.getLocale(context)).isEqualTo(locale);
+        assertThat(getLocale(context)).isEqualTo(locale)
     }
 }

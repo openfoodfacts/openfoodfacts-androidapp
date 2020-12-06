@@ -25,8 +25,7 @@ object CommonBottomListenerInstaller {
     }
 
     @JvmStatic
-    fun install(activity: Activity, bottomNavigationView: BottomNavigationView) {
-        bottomNavigationView.setOnNavigationItemSelectedListener(CommonBottomListener(activity))
-    }
+    fun install(activity: Activity, bottomNavigationView: BottomNavigationView) =
+            bottomNavigationView.setOnNavigationItemSelectedListener(CommonBottomListener(activity))
 
 }

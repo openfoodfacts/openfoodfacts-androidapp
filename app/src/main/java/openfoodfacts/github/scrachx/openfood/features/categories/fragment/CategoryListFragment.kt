@@ -34,7 +34,7 @@ class CategoryListFragment : MvvmFragment<CategoryFragmentViewModel, FragmentCom
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCategoryListBinding.inflate(layoutInflater, container, false)
         fastScroller = binding.fastScroller
         return binding.root

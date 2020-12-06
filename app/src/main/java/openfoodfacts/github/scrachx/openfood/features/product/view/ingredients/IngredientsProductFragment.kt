@@ -148,25 +148,25 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         val otherNutritionTags = product.otherNutritionTags
         if (vitaminTagsList.isNotEmpty()) {
             binding.cvVitaminsTagsText.visibility = View.VISIBLE
-            binding.vitaminsTagsText.text = Utils.bold(getString(R.string.vitamin_tags_text))
-            binding.vitaminsTagsText.append(buildStringBuilder(vitaminTagsList, Utils.SPACE))
+            binding.vitaminsTagsText.text = bold(getString(R.string.vitamin_tags_text))
+            binding.vitaminsTagsText.append(buildStringBuilder(vitaminTagsList, SPACE))
         }
         if (aminoAcidTagsList.isNotEmpty()) {
             binding.cvAminoAcidTagsText.visibility = View.VISIBLE
-            binding.aminoAcidTagsText.text = Utils.bold(getString(R.string.amino_acid_tags_text))
-            binding.aminoAcidTagsText.append(buildStringBuilder(aminoAcidTagsList, Utils.SPACE))
+            binding.aminoAcidTagsText.text = bold(getString(R.string.amino_acid_tags_text))
+            binding.aminoAcidTagsText.append(buildStringBuilder(aminoAcidTagsList, SPACE))
         }
         if (mineralTags.isNotEmpty()) {
             binding.cvMineralTagsText.visibility = View.VISIBLE
-            binding.mineralTagsText.text = Utils.bold(getString(R.string.mineral_tags_text))
-            binding.mineralTagsText.append(buildStringBuilder(mineralTags, Utils.SPACE))
+            binding.mineralTagsText.text = bold(getString(R.string.mineral_tags_text))
+            binding.mineralTagsText.append(buildStringBuilder(mineralTags, SPACE))
         }
         if (otherNutritionTags.isNotEmpty()) {
             binding.otherNutritionTags.visibility = View.VISIBLE
-            binding.otherNutritionTags.text = Utils.bold(getString(R.string.other_tags_text))
-            binding.otherNutritionTags.append(buildStringBuilder(otherNutritionTags, Utils.SPACE))
+            binding.otherNutritionTags.text = bold(getString(R.string.other_tags_text))
+            binding.otherNutritionTags.append(buildStringBuilder(otherNutritionTags, SPACE))
         }
-        binding.textAdditiveProduct.text = Utils.bold(getString(R.string.txtAdditives))
+        binding.textAdditiveProduct.text = bold(getString(R.string.txtAdditives))
         presenter.loadAdditives()
 
         if (StringUtils.isNotBlank(product.getImageIngredientsUrl(langCode))) {
@@ -215,7 +215,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             val language = LocaleHelper.getLanguage(context)
             binding.cvTextTraceProduct.visibility = View.VISIBLE
             binding.textTraceProduct.movementMethod = LinkMovementMethod.getInstance()
-            binding.textTraceProduct.text = Utils.bold(getString(R.string.txtTraces))
+            binding.textTraceProduct.text = bold(getString(R.string.txtTraces))
             binding.textTraceProduct.append(" ")
             val traces = product.traces!!.split(",")
             traces.withIndex().forEach { (i, trace) ->
@@ -316,7 +316,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                 }
             }
         }
-        ssb.insert(0, Utils.bold(getString(R.string.txtIngredients) + ' '))
+        ssb.insert(0, bold(getString(R.string.txtIngredients) + ' '))
         return ssb
     }
 
@@ -336,7 +336,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     override fun showAllergens(allergens: List<AllergenName>) {
         binding.textSubstanceProduct.movementMethod = LinkMovementMethod.getInstance()
-        binding.textSubstanceProduct.text = Utils.bold(getString(R.string.txtSubstances))
+        binding.textSubstanceProduct.text = bold(getString(R.string.txtSubstances))
         binding.textSubstanceProduct.append(" ")
         var i = 0
         val lastIdx = allergens.size - 1

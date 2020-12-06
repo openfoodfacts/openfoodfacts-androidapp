@@ -9,6 +9,7 @@ import openfoodfacts.github.scrachx.openfood.features.viewmodel.BaseViewModel
 abstract class MvvmFragment<T :  BaseViewModel, U> : Fragment() {
     protected val component: U? by lazy {createComponent()}
     private val compositeDisposable = CompositeDisposable()
+
     @CallSuper
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

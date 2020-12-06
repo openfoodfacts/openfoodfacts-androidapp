@@ -1,60 +1,61 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package openfoodfacts.github.scrachx.openfood.utils
 
-import org.junit.Test;
+import com.google.common.truth.Truth.assertThat
+import org.junit.Test
 
-import static com.google.common.truth.Truth.assertThat;
-
-public class NumberParserUtilsTest {
-    private static final float DEFAULT_FLOAT = 1.5f;
-    private static final int DEFAULT_INT = 2;
-
+class NumberParserUtilsTest {
     @Test
-    public void getAsFloat_inIsNull() {
-        assertThat(NumberParserUtilsKt.getAsFloat(null, DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT);
+    fun getAsFloat_inIsNull() {
+        assertThat(getAsFloat(null, DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT)
     }
 
     @Test
-    public void getAsFloat_inIsInt() {
-        assertThat(NumberParserUtilsKt.getAsFloat(3, DEFAULT_FLOAT)).isWithin(0.0f).of(3.0f);
+    fun getAsFloat_inIsInt() {
+        assertThat(getAsFloat(3, DEFAULT_FLOAT)).isWithin(0.0f).of(3.0f)
     }
 
     @Test
-    public void getAsFloat_inIsStringNumber() {
-        assertThat(NumberParserUtilsKt.getAsFloat("3", DEFAULT_FLOAT)).isWithin(0.0f).of(3.0f);
+    fun getAsFloat_inIsStringNumber() {
+        assertThat(getAsFloat("3", DEFAULT_FLOAT)).isWithin(0.0f).of(3.0f)
     }
 
     @Test
-    public void getAsFloat_inIsStringChar() {
-        assertThat(NumberParserUtilsKt.getAsFloat("a", DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT);
+    fun getAsFloat_inIsStringChar() {
+        assertThat(getAsFloat("a", DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT)
     }
 
     @Test
-    public void getAsFloat_inIsStringBlank() {
-        assertThat(NumberParserUtilsKt.getAsFloat(" ", DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT);
+    fun getAsFloat_inIsStringBlank() {
+        assertThat(getAsFloat(" ", DEFAULT_FLOAT)).isWithin(0.0f).of(DEFAULT_FLOAT)
     }
 
     @Test
-    public void getAsInt_inIsNull() {
-        assertThat(NumberParserUtilsKt.getAsInt(null, DEFAULT_INT)).isEqualTo(DEFAULT_INT);
+    fun getAsInt_inIsNull() {
+        assertThat(getAsInt(null, DEFAULT_INT)).isEqualTo(DEFAULT_INT)
     }
 
     @Test
-    public void getAsInt_inIsFloat() {
-        assertThat(NumberParserUtilsKt.getAsInt(3.0, DEFAULT_INT)).isEqualTo(3);
+    fun getAsInt_inIsFloat() {
+        assertThat(getAsInt(3.0, DEFAULT_INT)).isEqualTo(3)
     }
 
     @Test
-    public void getAsInt_inIsStringNumber() {
-        assertThat(NumberParserUtilsKt.getAsInt("3", DEFAULT_INT)).isEqualTo(3);
+    fun getAsInt_inIsStringNumber() {
+        assertThat(getAsInt("3", DEFAULT_INT)).isEqualTo(3)
     }
 
     @Test
-    public void getAsInt_inIsStringChar() {
-        assertThat(NumberParserUtilsKt.getAsInt("a", DEFAULT_INT)).isEqualTo(DEFAULT_INT);
+    fun getAsInt_inIsStringChar() {
+        assertThat(getAsInt("a", DEFAULT_INT)).isEqualTo(DEFAULT_INT)
     }
 
     @Test
-    public void getAsInt_inIsStringBlank() {
-        assertThat(NumberParserUtilsKt.getAsInt(" ", DEFAULT_INT)).isEqualTo(DEFAULT_INT);
+    fun getAsInt_inIsStringBlank() {
+        assertThat(getAsInt(" ", DEFAULT_INT)).isEqualTo(DEFAULT_INT)
+    }
+
+    companion object {
+        private const val DEFAULT_FLOAT = 1.5f
+        private const val DEFAULT_INT = 2
     }
 }

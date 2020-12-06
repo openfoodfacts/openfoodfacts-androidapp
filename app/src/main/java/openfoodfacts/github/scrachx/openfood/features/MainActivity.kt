@@ -458,10 +458,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         .neutralText(R.string.txtOk)
                         .show().setOnDismissListener {
                             ActivityCompat.requestPermissions(this@MainActivity, arrayOf(Manifest.permission.CAMERA),
-                                    Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                                    MY_PERMISSIONS_REQUEST_CAMERA)
                         }
             } else {
-                ActivityCompat.requestPermissions(this@MainActivity, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                ActivityCompat.requestPermissions(this@MainActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
         } else {
             val intent = Intent(this@MainActivity, ContinuousScanActivity::class.java)
@@ -742,7 +742,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         updateProfileForCurrentUser()
         drawerResult.removeItem(ITEM_LOGIN.toLong())
         drawerResult.removeItem(ITEM_LOGOUT.toLong())
-        drawerResult.addItemAtPosition(if (super.isUserLoggedIn()) logoutDrawerItem else loginDrawerItem, drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS.toLong()))
+        drawerResult.addItemAtPosition(if (this@MainActivity.isUserLoggedIn()) logoutDrawerItem else loginDrawerItem, drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS.toLong()))
     }
 
     private fun handleSendImage(intent: Intent) {

@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import com.google.common.truth.Truth.assertThat
-import openfoodfacts.github.scrachx.openfood.models.Units
 import openfoodfacts.github.scrachx.openfood.models.Units.ENERGY_KCAL
 import openfoodfacts.github.scrachx.openfood.models.Units.ENERGY_KJ
 import openfoodfacts.github.scrachx.openfood.models.Units.UNIT_CENTILITRE
@@ -87,7 +86,7 @@ class UnitUtilTest {
     fun testConvertToKiloCalories() {
         assertThat(convertToKiloCalories(100, ENERGY_KJ)).isEqualTo(23)
         assertThat(convertToKiloCalories(100, ENERGY_KCAL)).isEqualTo(100)
-        Assert.assertThrows<IllegalArgumentException>(IllegalArgumentException::class.java, ThrowingRunnable { convertToKiloCalories(1, Units.UNIT_GRAM) })
+        Assert.assertThrows<IllegalArgumentException>(IllegalArgumentException::class.java, ThrowingRunnable { convertToKiloCalories(1, UNIT_GRAM) })
     }
 
     @Test

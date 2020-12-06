@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.R
@@ -58,7 +59,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         Utils.picassoBuilder(activity)
                 .load(iconUrl)
                 .into(binding.icon)
-        binding.iconFrame.background = resources.getDrawable(R.drawable.rounded_button).apply {
+        binding.iconFrame.background = ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.rounded_button, requireActivity().theme)?.apply {
             setColorFilter(Color.parseColor(color), PorterDuff.Mode.SRC_IN)
         }
         binding.title.text = name

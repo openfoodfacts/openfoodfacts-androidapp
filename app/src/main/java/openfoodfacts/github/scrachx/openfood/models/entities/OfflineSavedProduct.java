@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -152,6 +153,7 @@ public class OfflineSavedProduct implements Serializable {
         this.isDataUploaded = isDataUploaded;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "OfflineSavedProduct{" +

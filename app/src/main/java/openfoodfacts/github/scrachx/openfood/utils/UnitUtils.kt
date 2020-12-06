@@ -18,18 +18,10 @@ object UnitUtils {
      * @return return the converted value
      */
     @JvmStatic
-    fun convertToKiloCalories(value: Int, originalUnit: String): Int {
-        return when {
-            originalUnit.equals(Units.ENERGY_KJ, ignoreCase = true) -> {
-                (value / KJ_PER_KCAL).toInt()
-            }
-            originalUnit.equals(Units.ENERGY_KCAL, ignoreCase = true) -> {
-                value
-            }
-            else -> {
-                throw IllegalArgumentException("energyUnit is neither Units.ENERGY_KCAL nor Units.ENERGY_KJ")
-            }
-        }
+    fun convertToKiloCalories(value: Int, originalUnit: String) = when {
+        originalUnit.equals(Units.ENERGY_KJ, ignoreCase = true) -> (value / KJ_PER_KCAL).toInt()
+        originalUnit.equals(Units.ENERGY_KCAL, ignoreCase = true) -> value
+        else -> throw IllegalArgumentException("energyUnit is neither Units.ENERGY_KCAL nor Units.ENERGY_KJ")
     }
 
     @JvmStatic
@@ -44,19 +36,16 @@ object UnitUtils {
      * @param unitOfValue represents milligrams, 2 represents micrograms
      * @return return the converted value
      */
-    fun convertToGrams(value: Double, unitOfValue: String?): Double {
-        return when {
-            Units.UNIT_MILLIGRAM.equals(unitOfValue, ignoreCase = true) -> value / 1000
-            Units.UNIT_MICROGRAM.equals(unitOfValue, ignoreCase = true) -> value / 1000000
-            Units.UNIT_KILOGRAM.equals(unitOfValue, ignoreCase = true) -> value * 1000
-            Units.UNIT_LITER.equals(unitOfValue, ignoreCase = true) -> value * 1000
-            Units.UNIT_DECILITRE.equals(unitOfValue, ignoreCase = true) -> value * 100
-            Units.UNIT_CENTILITRE.equals(unitOfValue, ignoreCase = true) -> value * 10
-            Units.UNIT_MILLILITRE.equals(unitOfValue, ignoreCase = true) -> value
-            //TODO : what about % DV and IU
-            else -> value
-        }
-
+    fun convertToGrams(value: Double, unitOfValue: String?) = when {
+        Units.UNIT_MILLIGRAM.equals(unitOfValue, ignoreCase = true) -> value / 1000
+        Units.UNIT_MICROGRAM.equals(unitOfValue, ignoreCase = true) -> value / 1000000
+        Units.UNIT_KILOGRAM.equals(unitOfValue, ignoreCase = true) -> value * 1000
+        Units.UNIT_LITER.equals(unitOfValue, ignoreCase = true) -> value * 1000
+        Units.UNIT_DECILITRE.equals(unitOfValue, ignoreCase = true) -> value * 100
+        Units.UNIT_CENTILITRE.equals(unitOfValue, ignoreCase = true) -> value * 10
+        Units.UNIT_MILLILITRE.equals(unitOfValue, ignoreCase = true) -> value
+        //TODO : what about % DV and IU
+        else -> value
     }
 
     @JvmStatic
@@ -64,26 +53,20 @@ object UnitUtils {
         return convertFromGram(valueInGramOrMl.toDouble(), targetUnit).toFloat()
     }
 
-    fun convertFromGram(valueInGramOrMl: Double, targetUnit: String?): Double {
-        return when (targetUnit) {
-            Units.UNIT_KILOGRAM, Units.UNIT_LITER -> valueInGramOrMl / 1000
-            Units.UNIT_MILLIGRAM -> valueInGramOrMl * 1000
-            Units.UNIT_MICROGRAM -> valueInGramOrMl * 1000000
-            Units.UNIT_DECILITRE -> valueInGramOrMl / 100
-            Units.UNIT_CENTILITRE -> valueInGramOrMl / 10
-            else -> valueInGramOrMl
-        }
+    fun convertFromGram(valueInGramOrMl: Double, targetUnit: String?) = when (targetUnit) {
+        Units.UNIT_KILOGRAM, Units.UNIT_LITER -> valueInGramOrMl / 1000
+        Units.UNIT_MILLIGRAM -> valueInGramOrMl * 1000
+        Units.UNIT_MICROGRAM -> valueInGramOrMl * 1000000
+        Units.UNIT_DECILITRE -> valueInGramOrMl / 100
+        Units.UNIT_CENTILITRE -> valueInGramOrMl / 10
+        else -> valueInGramOrMl
     }
 
     @JvmStatic
-    fun saltToSodium(saltValue: Double): Double {
-        return saltValue / SALT_PER_SODIUM
-    }
+    fun saltToSodium(saltValue: Double): Double = saltValue / SALT_PER_SODIUM
 
     @JvmStatic
-    fun sodiumToSalt(sodiumValue: Double): Double {
-        return sodiumValue * SALT_PER_SODIUM
-    }
+    fun sodiumToSalt(sodiumValue: Double) = sodiumValue * SALT_PER_SODIUM
 
     /**
      * Function which returns volume in oz if parameter is in cl, ml, or l
@@ -128,18 +111,16 @@ object UnitUtils {
      * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
      */
     @JvmStatic
-    fun getServingInL(servingSize: String): String {
-        return when {
-            servingSize.contains("oz", true) -> {
-                val regex = Pattern.compile("(\\d+(?:\\.\\d+)?)")
-                val matcher = regex.matcher(servingSize)
-                matcher.find()
-                var value = matcher.group(1).toFloat()
-                value /= OZ_PER_L
-                "$value l"
-            }
-            else -> servingSize
+    fun getServingInL(servingSize: String): String = when {
+        servingSize.contains("oz", true) -> {
+            val regex = Pattern.compile("(\\d+(?:\\.\\d+)?)")
+            val matcher = regex.matcher(servingSize)
+            matcher.find()
+            var value = matcher.group(1).toFloat()
+            value /= OZ_PER_L
+            "$value l"
         }
         // TODO: HANDLE OTHER CASES eg. not in L nor oz
+        else -> servingSize
     }
 }

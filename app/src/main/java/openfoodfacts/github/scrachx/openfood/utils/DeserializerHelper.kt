@@ -25,11 +25,7 @@ object DeserializerHelper {
     @JvmStatic
     fun extractMapFromJsonNode(namesNode: JsonNode): Map<String, String> {
         val names = hashMapOf<String, String>()
-        val nameNodeIterator = namesNode.fields()
-        while (nameNodeIterator.hasNext()) {
-            val nameNode = nameNodeIterator.next()
-            names[nameNode.key] = nameNode.value.asText()
-        }
+        namesNode.fields().forEach { names[it.key] = it.value.asText() }
         return names
     }
 

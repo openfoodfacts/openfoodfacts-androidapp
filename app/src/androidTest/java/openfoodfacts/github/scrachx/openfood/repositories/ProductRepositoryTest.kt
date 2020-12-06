@@ -1,132 +1,115 @@
-package openfoodfacts.github.scrachx.openfood.repositories;
+package openfoodfacts.github.scrachx.openfood.repositories
 
-import android.content.SharedPreferences;
-import android.util.Log;
-
-import androidx.test.filters.SmallTest;
-
-import org.greenrobot.greendao.database.Database;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication;
-import openfoodfacts.github.scrachx.openfood.models.DaoSession;
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen;
-import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName;
-
-import static org.junit.Assert.*;
+import android.util.Log
+import androidx.test.filters.SmallTest
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.daoSession
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.instance
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.Allergen
+import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
+import org.junit.AfterClass
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.BeforeClass
+import org.junit.Test
+import java.util.*
 
 /**
  * Created by Lobster on 05.03.18.
  */
 @SmallTest
-public class ProductRepositoryTest {
-    private static final String TEST_ALLERGEN_TAG = "en:lupin";
-    private static final String TEST_LANGUAGE_CODE = "es";
-    private static final String TEST_ALLERGEN_NAME = "Altramuces";
-    private static ProductRepository productRepository;
-
-    @BeforeClass
-    public static void cleanAllergens() {
-        clearDatabase();
-        productRepository = (ProductRepository) ProductRepository.getInstance();
-        productRepository.saveAllergens(createAllergens());
-    }
-
-    private static void clearDatabase() {
-        DaoSession daoSession = OFFApplication.getDaoSession();
-        Database db = daoSession.getDatabase();
-        db.beginTransaction();
-        try {
-            daoSession.getAllergenDao().deleteAll();
-            db.setTransactionSuccessful();
-        } catch (Exception e) {
-            Log.e("openfoodfacts.github.scrachx.openfood.repositories.ProductRepositoryTest", "error in transaction", e);
-        } finally {
-            db.endTransaction();
-        }
-    }
-
-    @AfterClass
-    public static void close() {
-        clearDatabase();
-    }
-
+class ProductRepositoryTest {
     @Test
-    public void testGetAllergens() {
-        SharedPreferences mSettings = OFFApplication.getInstance().getSharedPreferences("prefs", 0);
-        boolean isDownloadActivated = mSettings.getBoolean(Taxonomy.ALLERGEN.getDownloadActivatePreferencesId(), false);
+    fun testGetAllergens() {
+        val mSettings = instance.getSharedPreferences("prefs", 0)
+        val isDownloadActivated = mSettings.getBoolean(Taxonomy.ALLERGEN.downloadActivatePreferencesId, false)
+        val allergens = ProductRepository.reloadAllergensFromServer().blockingGet()
+        assertNotNull(allergens)
         if (!isDownloadActivated) {
-            List<Allergen> allergens = productRepository.reloadAllergensFromServer().blockingGet();
-            assertNotNull(allergens);
-            assertEquals(0, allergens.size());
+            assertEquals(0, allergens.size.toLong())
         } else {
-            List<Allergen> allergens = productRepository.reloadAllergensFromServer().blockingGet();
-
-            assertNotNull(allergens);
-            assertEquals(2, allergens.size());
-
-            Allergen allergen = allergens.get(0);
-            assertEquals(TEST_ALLERGEN_TAG, allergen.getTag());
-
-            List<AllergenName> allergenNames = allergen.getNames();
-            assertEquals(3, allergenNames.size());
-
-            AllergenName allergenName = allergenNames.get(0);
-            assertEquals(allergenName.getAllergenTag(), allergen.getTag());
-            assertEquals(TEST_LANGUAGE_CODE, allergenName.getLanguageCode());
-            assertEquals(TEST_ALLERGEN_NAME, allergenName.getName());
+            assertEquals(2, allergens.size.toLong())
+            val allergen = allergens[0]
+            assertEquals(TEST_ALLERGEN_TAG, allergen.tag)
+            val allergenNames = allergen.names
+            assertEquals(3, allergenNames.size.toLong())
+            val allergenName = allergenNames[0]
+            assertEquals(allergenName.allergenTag, allergen.tag)
+            assertEquals(TEST_LANGUAGE_CODE, allergenName.languageCode)
+            assertEquals(TEST_ALLERGEN_NAME, allergenName.name)
         }
     }
 
     @Test
-    public void testGetEnabledAllergens() {
-        List<Allergen> allergens = productRepository.getEnabledAllergens();
-
-        assertNotNull(allergens);
-        assertEquals(1, allergens.size());
-        assertEquals(TEST_ALLERGEN_TAG, allergens.get(0).getTag());
+    fun testGetEnabledAllergens() {
+        val allergens = ProductRepository.enabledAllergens
+        assertNotNull(allergens)
+        assertEquals(1, allergens.size.toLong())
+        assertEquals(TEST_ALLERGEN_TAG, allergens[0].tag)
     }
 
     @Test
-    public void testGetAllergensByEnabledAndLanguageCode() {
-        List<AllergenName> enabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(true, TEST_LANGUAGE_CODE).blockingGet();
-        List<AllergenName> notEnabledAllergenNames = productRepository.getAllergensByEnabledAndLanguageCode(false, TEST_LANGUAGE_CODE).blockingGet();
-
-        assertNotNull(enabledAllergenNames);
-        assertNotNull(notEnabledAllergenNames);
-
-        assertEquals(1, enabledAllergenNames.size());
-        assertEquals(1, notEnabledAllergenNames.size());
-
-        assertEquals(TEST_ALLERGEN_NAME, enabledAllergenNames.get(0).getName());
-        assertEquals("Molluschi", notEnabledAllergenNames.get(0).getName());
+    fun testGetAllergensByEnabledAndLanguageCode() {
+        val enabledAllergenNames = ProductRepository.getAllergensByEnabledAndLanguageCode(true, TEST_LANGUAGE_CODE).blockingGet()
+        val notEnabledAllergenNames = ProductRepository.getAllergensByEnabledAndLanguageCode(false, TEST_LANGUAGE_CODE).blockingGet()
+        assertNotNull(enabledAllergenNames)
+        assertNotNull(notEnabledAllergenNames)
+        assertEquals(1, enabledAllergenNames.size.toLong())
+        assertEquals(1, notEnabledAllergenNames.size.toLong())
+        assertEquals(TEST_ALLERGEN_NAME, enabledAllergenNames[0].name)
+        assertEquals("Molluschi", notEnabledAllergenNames[0].name)
     }
 
     @Test
-    public void testGetAllergensByLanguageCode() {
-        List<AllergenName> allergenNames = productRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).blockingGet();
-
-        assertNotNull(allergenNames);
-        assertEquals(2, allergenNames.size());
+    fun testGetAllergensByLanguageCode() {
+        val allergenNames = ProductRepository.getAllergensByLanguageCode(TEST_LANGUAGE_CODE).blockingGet()
+        assertNotNull(allergenNames)
+        assertEquals(2, allergenNames.size.toLong())
     }
 
-    private static List<Allergen> createAllergens() {
-        Allergen allergen1 = new Allergen(TEST_ALLERGEN_TAG, new ArrayList<>());
-        allergen1.setEnabled(true);
-        allergen1.getNames().add(new AllergenName(allergen1.getTag(), TEST_LANGUAGE_CODE, TEST_ALLERGEN_NAME));
-        allergen1.getNames().add(new AllergenName(allergen1.getTag(), "bg", "Лупина"));
-        allergen1.getNames().add(new AllergenName(allergen1.getTag(), "fr", "Lupin"));
+    companion object {
+        private const val TEST_ALLERGEN_TAG = "en:lupin"
+        private const val TEST_LANGUAGE_CODE = "es"
+        private const val TEST_ALLERGEN_NAME = "Altramuces"
 
-        Allergen allergen2 = new Allergen("en:molluscs", new ArrayList<>());
-        allergen2.getNames().add(new AllergenName(allergen2.getTag(), TEST_LANGUAGE_CODE, "Molluschi"));
-        allergen2.getNames().add(new AllergenName(allergen2.getTag(), "en", "Mollusques"));
+        @BeforeClass
+        fun cleanAllergens() {
+            clearDatabase()
+            ProductRepository.saveAllergens(createAllergens())
+        }
 
-        return Arrays.asList(allergen1, allergen2);
+        private fun clearDatabase() {
+            val daoSession = daoSession
+            val db = daoSession.database
+            db.beginTransaction()
+            try {
+                daoSession.allergenDao.deleteAll()
+                db.setTransactionSuccessful()
+            } catch (e: Exception) {
+                Log.e("openfoodfacts.github.scrachx.openfood.repositories.ProductRepositoryTest", "error in transaction", e)
+            } finally {
+                db.endTransaction()
+            }
+        }
+
+        @AfterClass
+        fun close() {
+            clearDatabase()
+        }
+
+        private fun createAllergens(): List<Allergen> {
+            val allergen1 = Allergen(TEST_ALLERGEN_TAG, ArrayList()).apply {
+                enabled = true
+                names.add(AllergenName(tag, TEST_LANGUAGE_CODE, TEST_ALLERGEN_NAME))
+                names.add(AllergenName(tag, "bg", "Лупина"))
+                names.add(AllergenName(tag, "fr", "Lupin"))
+            }
+
+            val allergen2 = Allergen("en:molluscs", ArrayList()).apply {
+                names.add(AllergenName(tag, TEST_LANGUAGE_CODE, "Molluschi"))
+                names.add(AllergenName(tag, "en", "Mollusques"))
+            }
+
+            return listOf(allergen1, allergen2)
+        }
     }
 }

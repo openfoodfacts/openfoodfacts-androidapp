@@ -18,6 +18,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import java.util.*
@@ -69,11 +70,11 @@ class ProductCompareActivity : BaseActivity() {
                                 .neutralText(R.string.txtOk)
                                 .onNeutral { _: MaterialDialog?, _: DialogAction? ->
                                     ActivityCompat
-                                            .requestPermissions(this@ProductCompareActivity, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                                            .requestPermissions(this@ProductCompareActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
                                 }
                                 .show()
                     } else {
-                        ActivityCompat.requestPermissions(this@ProductCompareActivity, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                        ActivityCompat.requestPermissions(this@ProductCompareActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
                     }
                 } else {
                     startActivity(Intent(this@ProductCompareActivity, ContinuousScanActivity::class.java).apply {

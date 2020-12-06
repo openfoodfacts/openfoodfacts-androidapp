@@ -37,8 +37,8 @@ import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.Utils.dpsToPixel
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File

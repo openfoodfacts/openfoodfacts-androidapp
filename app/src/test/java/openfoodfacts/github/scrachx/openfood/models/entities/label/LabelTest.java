@@ -106,6 +106,7 @@ public class LabelTest {
         verify(mockLabelDao).update(mLabel);
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test
     public void resetNames_callsGetLabelNameDao() {
         mLabel.__setDaoSession(mockDaoSession);

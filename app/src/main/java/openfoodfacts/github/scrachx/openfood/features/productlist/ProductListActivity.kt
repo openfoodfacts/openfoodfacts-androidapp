@@ -108,7 +108,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         }
 
         val locale = getLanguage(this)
-        if (prodToAdd != null && prodToAdd.code != null && prodToAdd.productName != null && prodToAdd.getImageSmallUrl(locale) != null) {
+        if (prodToAdd?.code != null && prodToAdd.productName != null && prodToAdd.getImageSmallUrl(locale) != null) {
             val barcode = prodToAdd.code
             val productName = prodToAdd.productName
             val productDetails = getProductBrandsQuantityDetails(prodToAdd)
@@ -233,7 +233,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
                                 .neutralText(R.string.txtOk)
                                 .show()
                     } else {
-                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), Utils.MY_PERMISSIONS_REQUEST_STORAGE)
+                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_STORAGE)
                     }
                 } else {
                     exportCSV()
@@ -292,10 +292,10 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
                         .title(R.string.action_about)
                         .content(R.string.permission_camera)
                         .neutralText(R.string.txtOk)
-                        .onNeutral { _: MaterialDialog?, _: DialogAction? -> ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA) }
+                        .onNeutral { _: MaterialDialog?, _: DialogAction? -> ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
                         .show()
             } else {
-                ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
         } else {
             val intent = Intent(this, ContinuousScanActivity::class.java)

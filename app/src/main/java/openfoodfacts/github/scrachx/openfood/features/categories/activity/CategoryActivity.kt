@@ -43,11 +43,9 @@ class CategoryActivity : BaseActivity() {
         _binding = null
     }
 
-    private fun openHungerGame() {
-        CustomTabsIntent.Builder()
-                .build()
-                .launchUrl(this@CategoryActivity, Uri.parse(getString(R.string.hunger_game_url)))
-    }
+    private fun openHungerGame() = CustomTabsIntent.Builder()
+            .build()
+            .launchUrl(this@CategoryActivity, Uri.parse(getString(R.string.hunger_game_url)))
 
     companion object {
         fun start(context: Context) = context.startActivity(Intent(context, CategoryActivity::class.java))

@@ -265,10 +265,10 @@ class ProductSearchActivity : BaseActivity() {
                         .title(R.string.action_about)
                         .content(R.string.permission_camera)
                         .neutralText(R.string.txtOk)
-                        .onNeutral { _, _ -> ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA) }
+                        .onNeutral { _, _ -> ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
                         .show()
             } else {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
         } else {
             val intent = Intent(this, ContinuousScanActivity::class.java)

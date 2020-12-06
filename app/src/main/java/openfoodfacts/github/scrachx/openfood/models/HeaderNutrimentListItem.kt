@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models
 
-import openfoodfacts.github.scrachx.openfood.utils.Utils.bold
+import openfoodfacts.github.scrachx.openfood.utils.bold
 
 /**
  * Group of NutrimentListItem with bold values

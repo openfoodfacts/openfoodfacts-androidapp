@@ -94,7 +94,7 @@ class CustomTabActivityHelper : ServiceConnectionCallback {
         return session != null && session.mayLaunchUrl(uri!!, extras, otherLikelyBundles)
     }
 
-    override fun onServiceConnected(client: CustomTabsClient?) {
+    override fun onServiceConnected(client: CustomTabsClient) {
         mClient = client
         mClient!!.warmup(0L)
         if (connectionCallback != null) {

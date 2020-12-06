@@ -25,7 +25,6 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsSession
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getBitmapFromDrawable
-import java.util.*
 
 /**
  * Helper class for Custom Tabs.
@@ -84,34 +83,28 @@ object CustomTabsHelper {
 
         // Get all apps that can handle VIEW intents.
         val resolvedActivityList = pm.queryIntentActivities(activityIntent, 0)
-        val packagesSupportingCustomTabs: MutableList<String?> = ArrayList()
-        for (info in resolvedActivityList) {
-            val serviceIntent = Intent()
-            serviceIntent.action = ACTION_CUSTOM_TABS_CONNECTION
-            serviceIntent.setPackage(info.activityInfo.packageName)
-            if (pm.resolveService(serviceIntent, 0) != null) {
-                packagesSupportingCustomTabs.add(info.activityInfo.packageName)
+        val packagesSupportingCustomTabs = resolvedActivityList.mapNotNull { info ->
+            val serviceIntent = Intent().apply {
+                action = ACTION_CUSTOM_TABS_CONNECTION
+                setPackage(info.activityInfo.packageName)
             }
+            return if (pm.resolveService(serviceIntent, 0) != null) info.activityInfo.packageName else null
         }
 
         // Now packagesSupportingCustomTabs contains all apps that can handle both VIEW intents
         // and service calls.
-        if (packagesSupportingCustomTabs.isEmpty()) {
-            sPackageNameToUse = null
-        } else if (packagesSupportingCustomTabs.size == 1) {
-            sPackageNameToUse = packagesSupportingCustomTabs[0]
-        } else if (!TextUtils.isEmpty(defaultViewHandlerPackageName)
-                && !hasSpecializedHandlerIntents(context, activityIntent)
-                && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName)) {
-            sPackageNameToUse = defaultViewHandlerPackageName
-        } else if (packagesSupportingCustomTabs.contains(STABLE_PACKAGE)) {
-            sPackageNameToUse = STABLE_PACKAGE
-        } else if (packagesSupportingCustomTabs.contains(BETA_PACKAGE)) {
-            sPackageNameToUse = BETA_PACKAGE
-        } else if (packagesSupportingCustomTabs.contains(DEV_PACKAGE)) {
-            sPackageNameToUse = DEV_PACKAGE
-        } else if (packagesSupportingCustomTabs.contains(LOCAL_PACKAGE)) {
-            sPackageNameToUse = LOCAL_PACKAGE
+        when {
+            packagesSupportingCustomTabs.isEmpty() -> sPackageNameToUse = null
+            packagesSupportingCustomTabs.size == 1 -> sPackageNameToUse = packagesSupportingCustomTabs[0]
+            !TextUtils.isEmpty(defaultViewHandlerPackageName)
+                    && !hasSpecializedHandlerIntents(context, activityIntent)
+                    && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName) -> {
+                sPackageNameToUse = defaultViewHandlerPackageName
+            }
+            packagesSupportingCustomTabs.contains(STABLE_PACKAGE) -> sPackageNameToUse = STABLE_PACKAGE
+            packagesSupportingCustomTabs.contains(BETA_PACKAGE) -> sPackageNameToUse = BETA_PACKAGE
+            packagesSupportingCustomTabs.contains(DEV_PACKAGE) -> sPackageNameToUse = DEV_PACKAGE
+            packagesSupportingCustomTabs.contains(LOCAL_PACKAGE) -> sPackageNameToUse = LOCAL_PACKAGE
         }
         return sPackageNameToUse
     }
@@ -126,17 +119,11 @@ object CustomTabsHelper {
         try {
             val pm = context.packageManager
             val handlers = pm.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER)
-            if (handlers == null || handlers.size == 0) {
-                return false
-            }
+            if (handlers.isEmpty()) return false
             for (resolveInfo in handlers) {
                 val filter = resolveInfo.filter ?: continue
-                if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) {
-                    continue
-                }
-                if (resolveInfo.activityInfo == null) {
-                    continue
-                }
+                if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) continue
+                if (resolveInfo.activityInfo == null) continue
                 return true
             }
         } catch (e: RuntimeException) {

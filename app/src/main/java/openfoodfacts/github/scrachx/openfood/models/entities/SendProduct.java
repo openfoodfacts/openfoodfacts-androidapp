@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models.entities;
 
+import androidx.annotation.NonNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,8 +20,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Entity(indexes = {@Index(value = "barcode", unique = true)})
-public class
-SendProduct implements Serializable {
+public class SendProduct implements Serializable {
     private static final long serialVersionUID = 2L;
     @Id
     private Long id;
@@ -168,7 +169,7 @@ SendProduct implements Serializable {
      *
      * @param field
      */
-    public void compress(ProductImageField field) {
+    public void compress(@NonNull ProductImageField field) {
         switch (field) {
             case NUTRITION:
                 this.imgupload_nutrition = Utils.compressImage(this.imgupload_nutrition);
@@ -204,7 +205,7 @@ SendProduct implements Serializable {
         this.id = id;
     }
 
-    public void copy(SendProduct sp) {
+    public void copy(@NonNull SendProduct sp) {
         this.barcode = sp.getBarcode();
         this.name = sp.getName();
         this.brands = sp.getBrands();

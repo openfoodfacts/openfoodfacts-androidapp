@@ -1,94 +1,89 @@
-package openfoodfacts.github.scrachx.openfood.models;
+package openfoodfacts.github.scrachx.openfood.models
 
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.filters.SmallTest;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct;
-import openfoodfacts.github.scrachx.openfood.network.ApiFields;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNull;
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SmallTest
+import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
+import openfoodfacts.github.scrachx.openfood.network.ApiFields
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
 
 /**
- * Tests for {@link OfflineSavedProduct}
+ * Tests for [OfflineSavedProduct]
  */
-
 @SmallTest
-@RunWith(AndroidJUnit4.class)
-public class OfflineSavedProductTest {
-
-    private static final String BARCODE = "8888888888";
-    private static final String LANG = "en";
-    private static final String PRODUCT_NAME = "product name";
-    private static final String QUANTITY = "200g";
-    private static final String BRAND = "testing brand";
-    private static final String PACKAGING = "carton";
-    private static final String LABELS = "Halal, Brown Dot India";
-    private static final String CATEGORIES = "Meats";
-    private static final String EMB_CODE = "FR 40.001.053 EC";
-    private static final String STORES = "store, store 2";
-    private static final String COUNTRIES_WHERE_SOLD = "India, France";
-    private static final String INGREDIENTS = "Maltodextrin, buttermilk, salt, monosodium glutamate, lactic acid, dried garlic, dried onion, spices, natural flavors (soy).";
-    private static final String TRACES = "Gluten";
-    private static final String SERVING_SIZE = "75g";
-    private static final String ENERGY = "520";
-    private static final String ENERGY_UNIT = "kcal";
-    private static final String FAT = "25";
-    private static final String FAT_UNIT = "g";
-
-    private OfflineSavedProduct offlineSavedProduct;
+@RunWith(AndroidJUnit4::class)
+class OfflineSavedProductTest {
+    private lateinit var offlineSavedProduct: OfflineSavedProduct
 
     @Before
-    public void setup() {
-        offlineSavedProduct = new OfflineSavedProduct();
+    fun setup() {
+        offlineSavedProduct = OfflineSavedProduct()
     }
 
     @Test
-    public void getBarcodeWithNullBarcode_returnsNull() {
-        assertNull(offlineSavedProduct.getBarcode());
+    fun getBarcodeWithNullBarcode_returnsNull() {
+        assertNull(offlineSavedProduct.barcode)
     }
 
     @Test
-    public void getBarcode_returnsBarcode() {
-        offlineSavedProduct.setBarcode(BARCODE);
-        assertEquals(BARCODE, offlineSavedProduct.getBarcode());
+    fun getBarcode_returnsBarcode() {
+        offlineSavedProduct.barcode = BARCODE
+        assertEquals(BARCODE, offlineSavedProduct.barcode)
     }
 
     @Test
-    public void getProductDetailsMapWithNullDetails_returnsNull() {
-        assertNull(offlineSavedProduct.getProductDetailsMap());
+    fun getProductDetailsMapWithNullDetails_returnsNull() {
+        assertNull(offlineSavedProduct.productDetailsMap)
     }
 
     @Test
-    public void getProductDetailsMap_returnsProductDetailsMap() {
-        Map<String, String> productDetails = new HashMap<>();
-        productDetails.put(ApiFields.Keys.LANG, LANG);
-        productDetails.put(ApiFields.Keys.PRODUCT_NAME, PRODUCT_NAME);
-        productDetails.put(ApiFields.Keys.QUANTITY, QUANTITY);
-        productDetails.put(ApiFields.Keys.BRANDS, BRAND);
-        productDetails.put("packaging", PACKAGING);
-        productDetails.put("categories", CATEGORIES);
-        productDetails.put("labels", LABELS);
-        productDetails.put("emb_codes", EMB_CODE);
-        productDetails.put("stores", STORES);
-        productDetails.put("countries", COUNTRIES_WHERE_SOLD);
-        productDetails.put("ingredients_text", INGREDIENTS);
-        productDetails.put("traces", TRACES);
-        productDetails.put("serving_size", SERVING_SIZE);
-        productDetails.put("nutrition_data_per", ApiFields.Defaults.NUTRITION_DATA_PER_100G);
-        productDetails.put("nutriment_energy", ENERGY);
-        productDetails.put("nutriment_energy_unit", ENERGY_UNIT);
-        productDetails.put("nutriment_fat", FAT);
-        productDetails.put("nutriment_fat_unit", FAT_UNIT);
-        offlineSavedProduct.setProductDetailsMap(productDetails);
-        assertEquals(productDetails, offlineSavedProduct.getProductDetailsMap());
+    fun getProductDetailsMap_returnsProductDetailsMap() {
+        val productDetails = hashMapOf(
+                ApiFields.Keys.LANG to LANG,
+                ApiFields.Keys.PRODUCT_NAME to PRODUCT_NAME,
+                ApiFields.Keys.QUANTITY to QUANTITY,
+                ApiFields.Keys.BRANDS to BRAND,
+                ApiFields.Keys.PACKAGING to PACKAGING,
+                ApiFields.Keys.CATEGORIES to CATEGORIES,
+                ApiFields.Keys.LABELS to LABELS,
+                ApiFields.Keys.EMB_CODES to EMB_CODE,
+                ApiFields.Keys.STORES to STORES,
+                ApiFields.Keys.COUNTRIES to COUNTRIES_WHERE_SOLD,
+                ApiFields.Keys.INGREDIENTS_TEXT to INGREDIENTS,
+                ApiFields.Keys.TRACES to TRACES,
+                ApiFields.Keys.SERVING_SIZE to SERVING_SIZE,
+                ApiFields.Keys.NUTRITION_DATA_PER to ApiFields.Defaults.NUTRITION_DATA_PER_100G,
+                ApiFields.Keys.NUTRIMENT_ENERGY to ENERGY,
+                ApiFields.Keys.NUTRIMENT_ENERGY_UNIT to ENERGY_UNIT,
+                ApiFields.Keys.NUTRIMENT_FAT to FAT,
+                ApiFields.Keys.NUTRIMENT_FAT_UNIT to FAT_UNIT
+        )
+
+        offlineSavedProduct.setProductDetailsMap(productDetails)
+        assertEquals(productDetails, offlineSavedProduct.productDetailsMap)
     }
 
+    companion object {
+        private const val BARCODE = "8888888888"
+        private const val LANG = "en"
+        private const val PRODUCT_NAME = "product name"
+        private const val QUANTITY = "200g"
+        private const val BRAND = "testing brand"
+        private const val PACKAGING = "carton"
+        private const val LABELS = "Halal, Brown Dot India"
+        private const val CATEGORIES = "Meats"
+        private const val EMB_CODE = "FR 40.001.053 EC"
+        private const val STORES = "store, store 2"
+        private const val COUNTRIES_WHERE_SOLD = "India, France"
+        private const val INGREDIENTS = "Maltodextrin, buttermilk, salt, monosodium glutamate, lactic acid, dried garlic, dried onion, spices, natural flavors (soy)."
+        private const val TRACES = "Gluten"
+        private const val SERVING_SIZE = "75g"
+        private const val ENERGY = "520"
+        private const val ENERGY_UNIT = "kcal"
+        private const val FAT = "25"
+        private const val FAT_UNIT = "g"
+    }
 }

@@ -46,7 +46,7 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
 import retrofit2.Response
 import java.io.IOException
 import java.text.NumberFormat
@@ -159,7 +159,7 @@ class HomeFragment : NavigationBaseFragment() {
 
     private fun refreshProductCount(oldCount: Int) {
         Log.d(LOG_TAG, "Refreshing total product count...")
-        compDisp.add(api.getTotalProductCount(Utils.getUserAgent())
+        compDisp.add(api.getTotalProductCount(getUserAgent())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { setProductCount(oldCount) }
@@ -197,7 +197,7 @@ class HomeFragment : NavigationBaseFragment() {
      * get tag line url from OpenFoodAPIService
      */
     private fun refreshTagline() {
-        compDisp.add(api.getTagline(Utils.getUserAgent())
+        compDisp.add(api.getTagline(getUserAgent())
                 .subscribeOn(Schedulers.io()) // io for network
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
                 .subscribe({ models: ArrayList<TaglineLanguageModel> ->

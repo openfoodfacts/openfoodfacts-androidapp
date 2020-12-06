@@ -2,18 +2,15 @@ package openfoodfacts.github.scrachx.openfood.models
 
 import com.fasterxml.jackson.annotation.*
 import java.io.Serializable
-import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder("page_size", "count", "skip", "page", "products")
 data class Search(
         /**
-         * @param pageSize
          * The page_size
          */
         @JsonProperty("page_size") val pageSize: String,
         /**
-         * @param count
          * The count
          */
         @JsonProperty("count") val count: String,
@@ -32,7 +29,7 @@ data class Search(
 ) : Serializable {
 
     @JsonIgnore
-    private val additionalProperties: MutableMap<String, Any> = hashMapOf()
+    private val additionalProperties = hashMapOf<String, Any>()
 
     @JsonAnyGetter
     fun getAdditionalProperties(): Map<String, Any> {

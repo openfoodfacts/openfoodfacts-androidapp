@@ -103,7 +103,7 @@ object ProductRepository {
 
     fun loadTags(lastModifiedDate: Long): Single<List<Tag>> {
         return analysisDataApi.getTags()
-                .map<List<Tag>>({ obj: TagsWrapper -> obj.tags })
+                .map<List<Tag>> { obj: TagsWrapper -> obj.tags }
                 .doOnSuccess { tags: List<Tag> ->
                     saveTags(tags)
                     updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate)
@@ -175,7 +175,7 @@ object ProductRepository {
 
     fun loadCategories(lastModifiedDate: Long): Single<List<Category>> {
         return analysisDataApi.getCategories()
-                .map<List<Category>>({ obj: CategoriesWrapper -> obj.map() })
+                .map { obj: CategoriesWrapper -> obj.map() }
                 .doOnSuccess { categories: List<Category> ->
                     saveCategories(categories)
                     updateLastDownloadDateInSettings(Taxonomy.CATEGORY, lastModifiedDate)

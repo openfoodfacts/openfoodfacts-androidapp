@@ -75,7 +75,6 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import openfoodfacts.github.scrachx.openfood.utils.Utils.dpsToPixel
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getUserAgent
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.apache.commons.lang.StringUtils
 import org.greenrobot.greendao.async.AsyncOperation

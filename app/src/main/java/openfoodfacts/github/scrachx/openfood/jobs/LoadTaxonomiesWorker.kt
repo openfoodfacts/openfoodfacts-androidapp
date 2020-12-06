@@ -21,7 +21,6 @@ import androidx.work.RxWorker
 import androidx.work.WorkerParameters
 import io.reactivex.Completable
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils
@@ -36,17 +35,18 @@ class LoadTaxonomiesWorker
         val settings = OFFApplication.instance.getSharedPreferences("prefs", 0)
 
         // We use completable because we only care about state (error or completed), not returned value
-        val syncObservables = mutableListOf<Completable>()
-        syncObservables.add(ProductRepository.reloadLabelsFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadTagsFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadInvalidBarcodesFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadAllergensFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadIngredientsFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadAnalysisTagConfigsFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadAnalysisTagsFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadCountriesFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadAdditivesFromServer().subscribeOn(Schedulers.io()).ignoreElement())
-        syncObservables.add(ProductRepository.reloadCategoriesFromServer().subscribeOn(Schedulers.io()).ignoreElement())
+        val syncObservables = mutableListOf<Completable>(
+                ProductRepository.reloadLabelsFromServer().ignoreElement(),
+                ProductRepository.reloadTagsFromServer().ignoreElement(),
+                ProductRepository.reloadInvalidBarcodesFromServer().ignoreElement(),
+                ProductRepository.reloadAllergensFromServer().ignoreElement(),
+                ProductRepository.reloadIngredientsFromServer().ignoreElement(),
+                ProductRepository.reloadAnalysisTagConfigsFromServer().ignoreElement(),
+                ProductRepository.reloadAnalysisTagsFromServer().ignoreElement(),
+                ProductRepository.reloadCountriesFromServer().ignoreElement(),
+                ProductRepository.reloadAdditivesFromServer().ignoreElement(),
+                ProductRepository.reloadCategoriesFromServer().ignoreElement()
+        )
         return Completable.merge(syncObservables)
                 .toSingle {
                     settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false).apply()
@@ -58,6 +58,6 @@ class LoadTaxonomiesWorker
     }
 
     companion object {
-        private val LOG_TAG = LoadTaxonomiesWorker::class.java.simpleName
+        private val LOG_TAG = LoadTaxonomiesWorker::class.simpleName
     }
 }

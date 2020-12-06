@@ -27,6 +27,7 @@ object ApiFields {
         const val CATEGORIES_TO_BE_COMPLETED = "en:categories-to-be-completed"
         const val NUTRITION_FACTS_TO_BE_COMPLETED = "en:nutrition-facts-to-be-completed"
     }
+
     object Prefix {
         const val PRODUCT_NAME = "product_name_"
         const val INGREDIENTS_TEXT = "ingredients_text_"
@@ -97,6 +98,11 @@ object ApiFields {
         const val PURCHASE_PLACES = "purchase_places"
         const val OTHER_INFORMATION = "other_information"
         const val TRACES_TAGS = "traces_tags"
+        const val TRACES = "traces"
+        const val NUTRIMENT_ENERGY = "nutriment_energy"
+        const val NUTRIMENT_FAT = "nutriment_fat"
+        const val NUTRIMENT_ENERGY_UNIT = "nutriment_energy_unit"
+        const val NUTRIMENT_FAT_UNIT = "nutriment_fat_unit"
         const val IMAGE_SMALL_URL = "image_small_url"
         const val IMAGE_NUTRITION_URL = "image_nutrition_url"
         const val IMAGE_FRONT_URL = "image_front_url"
@@ -154,6 +160,7 @@ object ApiFields {
                 ProductImageField.NUTRITION,
                 ProductImageField.PACKAGING
         )
+
         @JvmStatic
         @Contract(pure = true)
         fun lcProductNameKey(lang: String): String {

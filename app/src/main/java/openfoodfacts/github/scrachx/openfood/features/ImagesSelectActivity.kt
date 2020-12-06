@@ -37,10 +37,11 @@ import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc
 import openfoodfacts.github.scrachx.openfood.images.PRODUCT_BARCODE
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAGE
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.Utils.MY_PERMISSIONS_REQUEST_STORAGE
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isAllGranted
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
+import openfoodfacts.github.scrachx.openfood.utils.isAllGranted
+import openfoodfacts.github.scrachx.openfood.utils.isUserLoggedIn
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 

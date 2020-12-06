@@ -92,7 +92,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class ContinuousScanActivity : AppCompatActivity() {
-    private var beepManager: BeepManager? = null
+    private lateinit var beepManager: BeepManager
     private var _binding: ActivityContinuousScanBinding? = null
     private val binding get() = _binding!!
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>
@@ -779,9 +779,8 @@ class ContinuousScanActivity : AppCompatActivity() {
     private inner class BarcodeInputListener : OnEditorActionListener {
         override fun onEditorAction(textView: TextView, actionId: Int, event: KeyEvent): Boolean {
             // When user search from "having trouble" edit text
-            if (actionId != EditorInfo.IME_ACTION_SEARCH) {
-                return false
-            }
+            if (actionId != EditorInfo.IME_ACTION_SEARCH) return false
+
             Utils.hideKeyboard(this@ContinuousScanActivity)
             hideSystemUI()
 
@@ -806,9 +805,8 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     private inner class BarcodeScannerCallback : BarcodeCallback {
         override fun barcodeResult(result: BarcodeResult) {
-            if (hintBarcodeDisp != null) {
-                hintBarcodeDisp!!.dispose()
-            }
+            hintBarcodeDisp?.dispose()
+
             if (result.text == null || result.text.isEmpty() || result.text == lastBarcode) {
                 // Prevent duplicate scans
                 return
@@ -820,7 +818,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                 return
             }
             if (beepActive) {
-                beepManager!!.playBeepSound()
+                beepManager.playBeepSound()
             }
             lastBarcode = result.text.also{
                 if (!isFinishing) {
@@ -851,6 +849,6 @@ class ContinuousScanActivity : AppCompatActivity() {
         const val SETTING_RING = "ring"
         const val SETTING_FLASH = "flash"
         const val SETTING_FOCUS = "focus"
-        val LOG_TAG: String = ContinuousScanActivity::class.java.simpleName
+        val LOG_TAG = ContinuousScanActivity::class.simpleName!!
     }
 }

@@ -33,7 +33,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshView
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isAllGranted
+import openfoodfacts.github.scrachx.openfood.utils.isAllGranted
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
@@ -62,12 +62,6 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
     private var refreshListener: OnRefreshListener? = null
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnRefreshListener) {
-            refreshListener = context
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -77,10 +71,12 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
         }
     }
 
-    protected val isUserLoggedIn: Boolean
-        get() = BaseActivity.isUserLoggedIn(activity)
-    protected val isUserNotLoggedIn: Boolean
-        get() = !isUserLoggedIn
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnRefreshListener) {
+            refreshListener = context
+        }
+    }
 
     override fun onRefresh() {
         if (refreshListener != null) {
@@ -104,6 +100,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
 
     protected open fun doOnPhotosPermissionGranted() {}
+
     protected fun cropRotateImage(image: File?, title: String?) {
         val uri = Uri.fromFile(image)
         CropImage.activity(uri)

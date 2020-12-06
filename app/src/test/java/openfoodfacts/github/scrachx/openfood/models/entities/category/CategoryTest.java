@@ -119,6 +119,7 @@ public class CategoryTest {
         verify(mockCategoryDao).update(mCategory);
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test
     public void resetNames_callsGetLabelNameDao() {
         mCategory.__setDaoSession(mockDaoSession);

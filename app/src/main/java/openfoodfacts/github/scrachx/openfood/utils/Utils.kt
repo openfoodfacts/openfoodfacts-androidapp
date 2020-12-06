@@ -68,7 +68,6 @@ import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.utils.SearchTypeUrls.getUrl
-import org.apache.commons.lang.StringUtils
 import org.jetbrains.annotations.Contract
 import org.json.JSONException
 import org.json.JSONObject
@@ -78,12 +77,6 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.ceil
 
 object Utils {
-    private const val REQUIRED_SIZE = 1200
-    private const val CONNECTION_TIMEOUT = 5000
-    private const val RW_TIMEOUT = 30000
-    const val SPACE = " "
-    const val MY_PERMISSIONS_REQUEST_CAMERA = 1
-    const val MY_PERMISSIONS_REQUEST_STORAGE = 2
     private const val UPLOAD_JOB_TAG = "upload_saved_product_job"
     private var isUploadJobInitialised = false
     const val HEADER_USER_AGENT_SCAN = "Scan"
@@ -91,64 +84,14 @@ object Utils {
     const val NO_DRAWABLE_RESOURCE = 0
     const val FORCE_REFRESH_TAXONOMIES = "force_refresh_taxonomies"
 
-    /**
-     * Returns a CharSequence that concatenates the specified array of CharSequence
-     * objects and then applies a list of zero or more tags to the entire range.
-     *
-     * @param content an array of character sequences to apply a style to
-     * @param tags the styled span objects to apply to the content
-     * such as android.text.style.StyleSpan
-     */
-    private fun apply(content: Array<out CharSequence>, vararg tags: StyleSpan) = SpannableStringBuilder().let {
-        openTags(it, tags)
-        content.forEach { item -> it.append(item) }
-        closeTags(it, tags)
-        it.toString()
-    }
-
-    /**
-     * Iterates over an array of tags and applies them to the beginning of the specified
-     * Spannable object so that future text appended to the text will have the styling
-     * applied to it. Do not call this method directly.
-     */
-    private fun openTags(text: Spannable, tags: Array<out StyleSpan>) {
-        tags.forEach { tag ->
-            text.setSpan(tag, 0, 0, Spanned.SPAN_MARK_MARK)
-        }
-    }
-
-    /**
-     * "Closes" the specified tags on a Spannable by updating the spans to be
-     * endpoint-exclusive so that future text appended to the end will not take
-     * on the same styling. Do not call this method directly.
-     */
-    private fun closeTags(text: Spannable, tags: Array<out StyleSpan>) {
-        tags.forEach { tag ->
-            if (text.length > 0) {
-                text.setSpan(tag, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            } else {
-                text.removeSpan(tag)
-            }
-        }
-    }
-
-    /**
-     * Returns a CharSequence that applies boldface to the concatenation
-     * of the specified CharSequence objects.
-     */
-    @JvmStatic
-    fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD))
-
-    @JvmStatic
     fun italic(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.ITALIC))
 
-    @JvmStatic
     fun boldItalic(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD_ITALIC))
 
     fun hideKeyboard(activity: Activity) {
         val view = activity.currentFocus ?: return
-        val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
+        (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                .hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     @JvmStatic
@@ -160,7 +103,7 @@ object Utils {
         }
         val smallFileFront = File(fileUrl.replace(".png", "_small.png"))
         try {
-            FileOutputStream(smallFileFront).use { fOutFront -> decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutFront) }
+            FileOutputStream(smallFileFront).use { stream -> decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream) }
         } catch (e: IOException) {
             Log.e("COMPRESS_IMAGE", e.message, e)
         }
@@ -172,99 +115,51 @@ object Utils {
     }
 
     /**
-     * Decodes image and scales it to reduce memory consumption
-     */
-    private fun decodeFile(f: File): Bitmap? {
-        try {
-            // Decode image size
-            val o = BitmapFactory.Options()
-            o.inJustDecodeBounds = true
-            BitmapFactory.decodeStream(FileInputStream(f), null, o)
-
-            // The new size we want to scale to
-
-
-            // Find the correct scale value. It should be the power of 2.
-            var scale = 1
-            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
-                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
-                scale *= 2
-            }
-
-            // Decode with inSampleSize
-            val o2 = BitmapFactory.Options()
-            o2.inSampleSize = scale
-            return BitmapFactory.decodeStream(FileInputStream(f), null, o2)
-        } catch (e: FileNotFoundException) {
-            Log.e(Utils::class.simpleName, "Error while decoding file $f", e)
-        }
-        return null
-    }
-
-    /**
      * Check if a certain application is installed on a device.
      *
      * @param context the applications context.
      * @param packageName the package name that you want to check.
      * @return true if the application is installed, false otherwise.
      */
-    fun isApplicationInstalled(context: Context, packageName: String?): Boolean {
-        val pm = context.packageManager
-        return try {
-            // Check if the package name exists, if exception is thrown, package name does not
-            // exist.
-            pm.getPackageInfo(packageName!!, PackageManager.GET_ACTIVITIES)
-            true
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
-        }
+    fun isApplicationInstalled(context: Context, packageName: String) = try {
+        // Check if the package name exists, if exception is thrown, package name does not
+        // exist.
+        context.packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
+        true
+    } catch (e: PackageManager.NameNotFoundException) {
+        false
     }
 
     /**
      * Returns the Nutri-Score graphic asset given the grade
      */
     @DrawableRes
-    fun getImageGrade(grade: String?): Int {
-        return if (grade == null) {
-            NO_DRAWABLE_RESOURCE
-        } else when (grade.toLowerCase(Locale.getDefault())) {
-            "a" -> R.drawable.ic_nutriscore_a
-            "b" -> R.drawable.ic_nutriscore_b
-            "c" -> R.drawable.ic_nutriscore_c
-            "d" -> R.drawable.ic_nutriscore_d
-            "e" -> R.drawable.ic_nutriscore_e
-            else -> NO_DRAWABLE_RESOURCE
-        }
+    fun getImageGrade(grade: String?) = if (grade == null) {
+        NO_DRAWABLE_RESOURCE
+    } else when (grade.toLowerCase(Locale.getDefault())) {
+        "a" -> R.drawable.ic_nutriscore_a
+        "b" -> R.drawable.ic_nutriscore_b
+        "c" -> R.drawable.ic_nutriscore_c
+        "d" -> R.drawable.ic_nutriscore_d
+        "e" -> R.drawable.ic_nutriscore_e
+        else -> NO_DRAWABLE_RESOURCE
     }
 
     fun getImageGrade(product: Product?): Int {
         return getImageGrade(product?.nutritionGradeFr)
     }
 
-    fun getImageGradeDrawable(context: Context, grade: String?): Drawable? {
-        val gradeID = getImageGrade(grade)
-        return if (gradeID == NO_DRAWABLE_RESOURCE) {
-            null
-        } else VectorDrawableCompat.create(context.resources, gradeID, null)
-    }
-
-    fun getImageGradeDrawable(context: Context, product: Product?): Drawable? {
-        return getImageGradeDrawable(context, product?.nutritionGradeFr)
-    }
-
     /**
      * Returns the NOVA group explanation given the group
      */
-    fun getNovaGroupExplanation(novaGroup: String?, context: Context): String {
-        return if (novaGroup == null) {
-            ""
-        } else when (novaGroup) {
-            "1" -> context.resources.getString(R.string.nova_grp1_msg)
-            "2" -> context.resources.getString(R.string.nova_grp2_msg)
-            "3" -> context.resources.getString(R.string.nova_grp3_msg)
-            "4" -> context.resources.getString(R.string.nova_grp4_msg)
-            else -> ""
-        }
+    fun getNovaGroupExplanation(novaGroup: String?, context: Context) = if (novaGroup == null) {
+        ""
+    } else when (novaGroup) {
+        "1" -> context.resources.getString(R.string.nova_grp1_msg)
+        "2" -> context.resources.getString(R.string.nova_grp2_msg)
+        "3" -> context.resources.getString(R.string.nova_grp3_msg)
+        "4" -> context.resources.getString(R.string.nova_grp4_msg)
+        else -> ""
     }
 
     @JvmStatic
@@ -286,33 +181,27 @@ object Utils {
     /**
      * Returns the NOVA group graphic asset given the group
      */
-    fun getNovaGroupDrawable(product: Product?): Int {
-        return getNovaGroupDrawable(product?.novaGroups)
-    }
+    @DrawableRes
+    fun getNovaGroupDrawable(product: Product?) = getNovaGroupDrawable(product?.novaGroups)
 
     @DrawableRes
-    fun getNovaGroupDrawable(novaGroup: String?): Int {
-        return if (novaGroup == null) {
-            NO_DRAWABLE_RESOURCE
-        } else when (novaGroup) {
-            "1" -> R.drawable.ic_nova_group_1
-            "2" -> R.drawable.ic_nova_group_2
-            "3" -> R.drawable.ic_nova_group_3
-            "4" -> R.drawable.ic_nova_group_4
-            else -> NO_DRAWABLE_RESOURCE
-        }
+    fun getNovaGroupDrawable(novaGroup: String?) = if (novaGroup == null) {
+        NO_DRAWABLE_RESOURCE
+    } else when (novaGroup) {
+        "1" -> R.drawable.ic_nova_group_1
+        "2" -> R.drawable.ic_nova_group_2
+        "3" -> R.drawable.ic_nova_group_3
+        "4" -> R.drawable.ic_nova_group_4
+        else -> NO_DRAWABLE_RESOURCE
     }
 
     @JvmStatic
     fun getSmallImageGrade(product: Product?): Int {
-        if (product == null) {
-            return getSmallImageGrade(null as String?)
-        }
-        // Prefer the global tag to the FR tag
-        return if (product.getNutritionGradeTag() != null) {
-            getSmallImageGrade(product.getNutritionGradeTag())
-        } else {
-            getSmallImageGrade(product.nutritionGradeFr)
+        return when {
+            product == null -> getSmallImageGrade(null as String?)
+            // Prefer the global tag to the FR tag
+            product.getNutritionGradeTag() != null -> getSmallImageGrade(product.getNutritionGradeTag())
+            else -> getSmallImageGrade(product.nutritionGradeFr)
         }
     }
 
@@ -331,32 +220,26 @@ object Utils {
         }
     }
 
-    fun getImageEcoscore(product: Product?): Int {
-        if (product == null) {
-            return NO_DRAWABLE_RESOURCE
-        }
-        val ecoscore = product.ecoscore ?: return NO_DRAWABLE_RESOURCE
-        return when (ecoscore) {
-            "a" -> R.drawable.ic_ecoscore_a
-            "b" -> R.drawable.ic_ecoscore_b
-            "c" -> R.drawable.ic_ecoscore_c
-            "d" -> R.drawable.ic_ecoscore_d
-            "e" -> R.drawable.ic_ecoscore_e
-            else -> NO_DRAWABLE_RESOURCE
-        }
+    fun getImageEcoscore(product: Product?) = if (product == null) {
+        NO_DRAWABLE_RESOURCE
+    } else when (product.ecoscore) {
+        "a" -> R.drawable.ic_ecoscore_a
+        "b" -> R.drawable.ic_ecoscore_b
+        "c" -> R.drawable.ic_ecoscore_c
+        "d" -> R.drawable.ic_ecoscore_d
+        "e" -> R.drawable.ic_ecoscore_e
+        else -> NO_DRAWABLE_RESOURCE
     }
 
-    fun getSmallImageGrade(grade: String?): Int {
-        return if (grade == null) {
-            NO_DRAWABLE_RESOURCE
-        } else when (grade.toLowerCase(Locale.getDefault())) {
-            "a" -> R.drawable.ic_nutriscore_small_a
-            "b" -> R.drawable.ic_nutriscore_small_b
-            "c" -> R.drawable.ic_nutriscore_small_c
-            "d" -> R.drawable.ic_nutriscore_small_d
-            "e" -> R.drawable.ic_nutriscore_small_e
-            else -> NO_DRAWABLE_RESOURCE
-        }
+    fun getSmallImageGrade(grade: String?) = if (grade == null) {
+        NO_DRAWABLE_RESOURCE
+    } else when (grade.toLowerCase(Locale.getDefault())) {
+        "a" -> R.drawable.ic_nutriscore_small_a
+        "b" -> R.drawable.ic_nutriscore_small_b
+        "c" -> R.drawable.ic_nutriscore_small_c
+        "d" -> R.drawable.ic_nutriscore_small_d
+        "e" -> R.drawable.ic_nutriscore_small_e
+        else -> NO_DRAWABLE_RESOURCE
     }
 
     @JvmStatic
@@ -379,25 +262,23 @@ object Utils {
      */
     @JvmStatic
     fun getRoundNumber(value: String): String {
-        if ("0" == value) {
-            return value
-        }
-        if (value.isEmpty()) {
-            return "?"
-        }
         val strings = value.split(".")
-        return if (strings.size == 1 || strings.size == 2 && strings[1].length <= 2) {
-            value
-        } else String.format(Locale.getDefault(), "%.2f", value.toDouble())
+        return when {
+            value.isEmpty() -> {
+                "?"
+            }
+            "0" == value || (strings.size == 1 || strings.size == 2 && strings[1].length <= 2) -> {
+                value
+            }
+            else -> String.format(Locale.getDefault(), "%.2f", value.toDouble())
+        }
+
     }
 
     /**
      * @see Utils.getRoundNumber
      */
-    @JvmStatic
-    fun getRoundNumber(value: Float): String {
-        return getRoundNumber(value.toString())
-    }
+    fun getRoundNumber(value: Float) = getRoundNumber(value.toString())
 
     @get:JvmStatic
     val daoSession: DaoSession
@@ -462,12 +343,6 @@ object Utils {
         return Picasso.Builder(context!!)
                 .downloader(OkHttp3Downloader(httpClientBuilder()))
                 .build()
-    }
-
-    fun isUserLoggedIn(context: Context): Boolean {
-        val settings = context.getSharedPreferences("login", 0)
-        val login = settings.getString("user", "")
-        return StringUtils.isNotEmpty(login)
     }
 
     /**
@@ -598,17 +473,6 @@ object Utils {
     }
 
     /**
-     * @param type Type of call (Search or Scan)
-     * @return Returns the header to be put in network call
-     */
-    @JvmStatic
-    fun getUserAgent(type: String): String {
-        return "${getUserAgent()} $type"
-    }
-
-    fun getUserAgent(): String = BuildConfig.APP_NAME + " Official Android App " + BuildConfig.VERSION_NAME
-
-    /**
      * @param response Takes a string
      * @return Returns a Json object
      */
@@ -651,41 +515,140 @@ object Utils {
         return (dps * scale + 0.5f).toInt()
     }
 
-    /**
-     * Ask to login before editing product
-     */
-    fun startLoginToEditAnd(requestCode: Int, activity: Activity?) {
-        if (activity == null) {
-            return
-        }
-        MaterialDialog.Builder(activity)
-                .title(R.string.sign_in_to_edit)
-                .positiveText(R.string.txtSignIn)
-                .negativeText(R.string.dialog_cancel)
-                .onPositive { dialog, _ ->
-                    val intent = Intent(activity, LoginActivity::class.java)
-                    activity.startActivityForResult(intent, requestCode)
-                    dialog.dismiss()
-                }
-                .onNegative { dialog, _ -> dialog.dismiss() }
-                .build().show()
-    }
+}
 
-    @JvmStatic
-    fun isAllGranted(grantResults: IntArray): Boolean {
-        if (grantResults.isEmpty()) {
+fun isAllGranted(grantResults: Map<String?, Boolean?>): Boolean {
+    return grantResults.containsValue(false)
+}
+
+fun isAllGranted(grantResults: IntArray): Boolean {
+    if (grantResults.isEmpty()) {
+        return false
+    }
+    for (result in grantResults) {
+        if (result != PackageManager.PERMISSION_GRANTED) {
             return false
         }
-        for (result in grantResults) {
-            if (result != PackageManager.PERMISSION_GRANTED) {
-                return false
-            }
-        }
-        return true
     }
+    return true
+}
 
-    @JvmStatic
-    fun isAllGranted(grantResults: Map<String?, Boolean?>): Boolean {
-        return grantResults.containsValue(false)
+/**
+ * Ask to login before editing product
+ */
+fun startLoginToEditAnd(requestCode: Int, activity: Activity?) {
+    if (activity == null) {
+        return
+    }
+    MaterialDialog.Builder(activity)
+            .title(R.string.sign_in_to_edit)
+            .positiveText(R.string.txtSignIn)
+            .negativeText(R.string.dialog_cancel)
+            .onPositive { dialog, _ ->
+                val intent = Intent(activity, LoginActivity::class.java)
+                activity.startActivityForResult(intent, requestCode)
+                dialog.dismiss()
+            }
+            .onNegative { dialog, _ -> dialog.dismiss() }
+            .build().show()
+}
+
+/**
+ * @param type Type of call (Search or Scan)
+ * @return Returns the header to be put in network call
+ */
+fun getUserAgent(type: String) = "${getUserAgent()} $type"
+fun getUserAgent() = "${BuildConfig.APP_NAME} Official Android App ${BuildConfig.VERSION_NAME}"
+
+/**
+ * Decodes image and scales it to reduce memory consumption
+ */
+private fun decodeFile(f: File): Bitmap? {
+    try {
+        // Decode image size
+        val o = BitmapFactory.Options()
+        o.inJustDecodeBounds = true
+        BitmapFactory.decodeStream(FileInputStream(f), null, o)
+
+        // The new size we want to scale to
+
+
+        // Find the correct scale value. It should be the power of 2.
+        var scale = 1
+        while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+            scale *= 2
+        }
+
+        // Decode with inSampleSize
+        val o2 = BitmapFactory.Options()
+        o2.inSampleSize = scale
+        return BitmapFactory.decodeStream(FileInputStream(f), null, o2)
+    } catch (e: FileNotFoundException) {
+        Log.e(Utils::class.simpleName, "Error while decoding file $f", e)
+    }
+    return null
+}
+
+fun getImageGradeDrawable(context: Context, grade: String?): Drawable? {
+    val gradeID = Utils.getImageGrade(grade)
+    return if (gradeID == Utils.NO_DRAWABLE_RESOURCE) {
+        null
+    } else VectorDrawableCompat.create(context.resources, gradeID, null)
+}
+
+fun getImageGradeDrawable(context: Context, product: Product?): Drawable? {
+    return getImageGradeDrawable(context, product?.nutritionGradeFr)
+}
+
+private const val REQUIRED_SIZE = 1200
+private const val CONNECTION_TIMEOUT = 5000
+private const val RW_TIMEOUT = 30000
+const val SPACE = " "
+const val MY_PERMISSIONS_REQUEST_CAMERA = 1
+const val MY_PERMISSIONS_REQUEST_STORAGE = 2
+
+/**
+ * Returns a CharSequence that concatenates the specified array of CharSequence
+ * objects and then applies a list of zero or more tags to the entire range.
+ *
+ * @param content an array of character sequences to apply a style to
+ * @param tags the styled span objects to apply to the content
+ * such as android.text.style.StyleSpan
+ */
+private fun apply(content: Array<out CharSequence>, vararg tags: StyleSpan) = SpannableStringBuilder().let {
+    openTags(it, tags)
+    content.forEach { item -> it.append(item) }
+    closeTags(it, tags)
+    it.toString()
+}
+
+/**
+ * Iterates over an array of tags and applies them to the beginning of the specified
+ * Spannable object so that future text appended to the text will have the styling
+ * applied to it. Do not call this method directly.
+ */
+private fun openTags(text: Spannable, tags: Array<out StyleSpan>) {
+    tags.forEach { text.setSpan(it, 0, 0, Spanned.SPAN_MARK_MARK) }
+}
+
+/**
+ * "Closes" the specified tags on a Spannable by updating the spans to be
+ * endpoint-exclusive so that future text appended to the end will not take
+ * on the same styling. Do not call this method directly.
+ */
+private fun closeTags(text: Spannable, tags: Array<out StyleSpan>) {
+    tags.forEach {
+        if (text.length > 0) {
+            text.setSpan(it, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        } else {
+            text.removeSpan(it)
+        }
     }
 }
+
+/**
+ * Returns a CharSequence that applies boldface to the concatenation
+ * of the specified CharSequence objects.
+ */
+fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD))

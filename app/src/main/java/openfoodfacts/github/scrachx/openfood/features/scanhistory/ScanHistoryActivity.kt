@@ -43,14 +43,11 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
-import openfoodfacts.github.scrachx.openfood.utils.SwipeController
-import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
-import openfoodfacts.github.scrachx.openfood.utils.getCsvFolderName
 import org.apache.commons.collections.CollectionUtils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVPrinter
@@ -201,7 +198,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
                                 .neutralText(R.string.txtOk)
                                 .show()
                     } else {
-                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), Utils.MY_PERMISSIONS_REQUEST_STORAGE)
+                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_STORAGE)
                     }
                 } else {
                     exportCSV()
@@ -251,7 +248,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == Utils.MY_PERMISSIONS_REQUEST_STORAGE) {
+        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 exportCSV()
             } else {
@@ -268,7 +265,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
                         }
                         .show()
             }
-        } else if (requestCode == Utils.MY_PERMISSIONS_REQUEST_CAMERA
+        } else if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA
                 && grantResults.isNotEmpty()
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             startActivity(Intent(this@ScanHistoryActivity, ContinuousScanActivity::class.java).apply {
@@ -290,10 +287,10 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
                             .title(R.string.action_about)
                             .content(R.string.permission_camera)
                             .neutralText(R.string.txtOk)
-                            .onNeutral { _: MaterialDialog?, _: DialogAction? -> ActivityCompat.requestPermissions(this@ScanHistoryActivity, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA) }
+                            .onNeutral { _: MaterialDialog?, _: DialogAction? -> ActivityCompat.requestPermissions(this@ScanHistoryActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
                             .show()
                 } else {
-                    ActivityCompat.requestPermissions(this@ScanHistoryActivity, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                    ActivityCompat.requestPermissions(this@ScanHistoryActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
                 }
             } else {
                 val intent = Intent(this@ScanHistoryActivity, ContinuousScanActivity::class.java)

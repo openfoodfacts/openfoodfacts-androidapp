@@ -1,17 +1,16 @@
 package openfoodfacts.github.scrachx.openfood.features.scanhistory
 
 import android.content.Context
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
-import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem
@@ -25,7 +24,6 @@ class ScanHistoryAdapter(
         private val isLowBatteryMode: Boolean,
         private val list: MutableList<HistoryItem> = mutableListOf(),
 ) : RecyclerView.Adapter<ScanHistoryHolder>() {
-    private val res: Resources = context.resources
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanHistoryHolder {
         //Inflate the layout, initialize the View Holder
         val v = LayoutInflater.from(parent.context).inflate(R.layout.history_list_item, parent, false)
@@ -42,7 +40,7 @@ class ScanHistoryAdapter(
         holder.txtBarcode.text = item.barcode
         holder.txtProductDetails.text = productBrandsQuantityDetails
         when {
-            AppFlavors.isFlavors(OPF, OPFF, OBF) -> {
+            isFlavors(OPF, OPFF, OBF) -> {
                 holder.imgNutritionGrade.visibility = View.GONE
             }
             getSmallImageGrade(item.nutritionGrade) != 0 -> {
@@ -105,16 +103,16 @@ class ScanHistoryAdapter(
         val days = TimeUnit.MILLISECONDS.toDays(duration)
         when {
             seconds < 60 -> {
-                holder.txtDate.text = res.getQuantityString(R.plurals.seconds, seconds.toInt(), seconds.toInt())
+                holder.txtDate.text = context.resources.getQuantityString(R.plurals.seconds, seconds.toInt(), seconds.toInt())
             }
             minutes < 60 -> {
-                holder.txtDate.text = res.getQuantityString(R.plurals.minutes, minutes.toInt(), minutes.toInt())
+                holder.txtDate.text = context.resources.getQuantityString(R.plurals.minutes, minutes.toInt(), minutes.toInt())
             }
             hours < 24 -> {
-                holder.txtDate.text = res.getQuantityString(R.plurals.hours, hours.toInt(), hours.toInt())
+                holder.txtDate.text = context.resources.getQuantityString(R.plurals.hours, hours.toInt(), hours.toInt())
             }
             else -> {
-                holder.txtDate.text = res.getQuantityString(R.plurals.days, days.toInt(), days.toInt())
+                holder.txtDate.text = context.resources.getQuantityString(R.plurals.days, days.toInt(), days.toInt())
             }
         }
     }

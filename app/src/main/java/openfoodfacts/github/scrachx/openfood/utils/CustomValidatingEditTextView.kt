@@ -60,7 +60,6 @@ class CustomValidatingEditTextView : AppCompatEditText {
     }
 
     var entryName: String = resources.getResourceEntryName(id)
-        get() = field ?: resources.getResourceEntryName(id)
 
     private var fieldName: String? = null
 

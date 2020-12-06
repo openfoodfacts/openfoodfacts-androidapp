@@ -49,8 +49,7 @@ import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.*
 import org.apache.commons.lang.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
@@ -105,7 +104,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
             } else {
                 // take a picture
                 if (ContextCompat.checkSelfPermission(activity, permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(activity, arrayOf(permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                    ActivityCompat.requestPermissions(activity, arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
                 } else {
                     onPhotoReturnPosition = position
                     if (Utils.isHardwareCameraInstalled(activity)) {
@@ -140,7 +139,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
 
         // Quantity
         if (StringUtils.isNotBlank(product.quantity)) {
-            holder.productQuantityTextView.text = Utils.bold(
+            holder.productQuantityTextView.text = bold(
                     activity.getString(R.string.compare_quantity)
             )
             holder.productQuantityTextView.append(' '.toString() + product.quantity)
@@ -151,7 +150,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         // Brands
         val brands = product.brands
         if (!brands.isNullOrBlank()) {
-            holder.productBrandTextView.text = Utils.bold(activity.getString(R.string.compare_brands))
+            holder.productBrandTextView.text = bold(activity.getString(R.string.compare_brands))
             holder.productBrandTextView.append(" ")
             val brandsList = brands.split(",").toTypedArray()
             for (i in 0 until brandsList.size - 1) {
@@ -166,7 +165,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         // Open Food Facts specific
         if (isFlavors(AppFlavors.OFF)) {
             // NutriScore
-            val nutritionGradeResource = Utils.getImageGradeDrawable(activity, product)
+            val nutritionGradeResource = getImageGradeDrawable(activity, product)
             if (nutritionGradeResource != null) {
                 holder.productComparisonImageGrade.visibility = View.VISIBLE
                 holder.productComparisonImageGrade.setImageDrawable(nutritionGradeResource)
@@ -262,7 +261,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ additives: List<AdditiveName> ->
                             if (additives.isNotEmpty()) {
-                                additivesBuilder.append(Utils.bold(activity.getString(R.string.compare_additives)))
+                                additivesBuilder.append(bold(activity.getString(R.string.compare_additives)))
                                 additivesBuilder.append(" ")
                                 additivesBuilder.append("\n")
                                 for (i in 0 until additives.size - 1) {

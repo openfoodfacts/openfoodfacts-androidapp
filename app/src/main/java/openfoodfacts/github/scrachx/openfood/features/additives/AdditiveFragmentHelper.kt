@@ -20,6 +20,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNa
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.bold
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
 /**
@@ -41,7 +42,7 @@ object AdditiveFragmentHelper {
             fragment: BaseFragment,
             compositeDisposable: CompositeDisposable
     ) = with(additiveProduct) {
-        text = Utils.bold(fragment.getString(R.string.txtAdditives))
+        text = bold(fragment.getString(R.string.txtAdditives))
         movementMethod = LinkMovementMethod.getInstance()
         append(" ")
         append("\n")

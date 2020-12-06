@@ -87,7 +87,7 @@ class Product : Serializable {
     /**
      *  The countries where the product is sold.
      */
-    private val countries: String? = null
+    val countries: String? = null
         get() = field?.replace(",", ", ")
 
     @JsonProperty(ApiFields.Keys.COUNTRIES_TAGS)

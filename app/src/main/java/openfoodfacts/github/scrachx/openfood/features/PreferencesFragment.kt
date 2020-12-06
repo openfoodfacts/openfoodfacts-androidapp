@@ -35,13 +35,15 @@ import androidx.preference.*
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
@@ -59,7 +61,6 @@ import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import org.apache.commons.lang.StringUtils
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
@@ -92,7 +93,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         for (i in localeValues.indices) {
             val current = getLocale(localeValues[i])
             if (current != null) {
-                localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current))
+                localeLabels[i] = current.getDisplayName(current).capitalize(Locale.getDefault())
                 finalLocalLabels.add(localeLabels[i])
                 finalLocalValues.add(localeValues[i])
             }
@@ -137,7 +138,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                         suggestions.clearHistory()
                     }
                     .neutralText(R.string.dialog_cancel)
-                    .onNeutral { dialog: MaterialDialog, which: DialogAction? -> dialog.dismiss() }
+                    .onNeutral { dialog, _ -> dialog.dismiss() }
                     .show()
             true
         }
@@ -169,7 +170,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
             true
         }
-        requirePreference<Preference>("contact_team").onPreferenceClickListener = Preference.OnPreferenceClickListener { preference: Preference? ->
+        requirePreference<Preference>("contact_team").onPreferenceClickListener = Preference.OnPreferenceClickListener {
             val contactIntent = Intent(Intent.ACTION_SENDTO)
             contactIntent.data = Uri.parse(getString(R.string.off_mail))
             contactIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -181,7 +182,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             true
         }
         val rateus = requirePreference<Preference>("RateUs")
-        rateus.onPreferenceClickListener = Preference.OnPreferenceClickListener { preference: Preference? ->
+        rateus.onPreferenceClickListener = Preference.OnPreferenceClickListener {
             try {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.packageName)))
             } catch (e: ActivityNotFoundException) {
@@ -208,7 +209,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         val volumeUnits = requireActivity().resources.getStringArray(R.array.volume_units)
         volumeUnitPreference.entries = volumeUnits
         volumeUnitPreference.entryValues = volumeUnits
-        volumeUnitPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference: Preference?, newValue: Any? ->
+        volumeUnitPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
             settings.edit().putString("volumeUnitPreference", newValue as String?).apply()
             Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             true
@@ -236,16 +237,12 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         } catch (e: PackageManager.NameNotFoundException) {
             Log.e(PreferencesFragment::class.java.simpleName, "onCreatePreferences", e)
         }
-        if (isFlavors(AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)) {
+        if (isFlavors(OFF, OBF, OPFF)) {
             getAnalysisTagConfigs(daoSession)
         } else {
             val preferenceScreen = preferenceScreen
-            preferenceScreen.removePreference(requirePreference(preferenceScreen, "display_category"))
+            preferenceScreen.removePreference(preferenceScreen.requirePreference("display_category"))
         }
-    }
-
-    private fun <T : Preference?> requirePreference(key: String): T {
-        return requirePreference(this, key)
     }
 
     private fun buildDisplayCategory(configs: List<AnalysisTagConfig>?) {

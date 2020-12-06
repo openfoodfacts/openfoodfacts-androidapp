@@ -1,35 +1,35 @@
-package openfoodfacts.github.scrachx.openfood.utils;
+package openfoodfacts.github.scrachx.openfood.utils
 
-import android.widget.Spinner;
-
-import org.junit.Test;
-
-import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import android.widget.Spinner
+import com.google.common.truth.Truth.assertThat
+import org.junit.Test
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when` as mockitoWhen
 
 /**
  *
  */
-public class QuantityParserTest {
+class QuantityParserTest {
     @Test
-    public void testWithEmptyValues() {
-        assertThat(QuantityParserUtilKt.getFloatValue((String) null)).isNull();
-        assertThat(QuantityParserUtilKt.getFloatValue("")).isNull();
-        assertThat(QuantityParserUtilKt.getFloatValue("   ")).isNull();
-        assertThat(QuantityParserUtilKt.getFloatValue((String) null)).isNull();
-        assertThat(QuantityParserUtilKt.getFloatValue("")).isNull();
-        assertThat(QuantityParserUtilKt.getFloatValue(" ")).isNull();
+    fun testWithEmptyValues() {
+        assertThat(getFloatValue(null)).isNull()
+        assertThat(getFloatValue("")).isNull()
+        assertThat(getFloatValue("   ")).isNull()
+        assertThat(getFloatValue(null)).isNull()
+        assertThat(getFloatValue("")).isNull()
+        assertThat(getFloatValue(" ")).isNull()
     }
 
     @Test
-    public void testIsGreaterThan() {
-        Spinner mockSpinner = mock(Spinner.class);
-        when(mockSpinner.getSelectedItemPosition()).thenReturn(2);
-        assertThat(QuantityParserUtilKt.isModifierEqualsToGreaterThan(mockSpinner)).isTrue();
-        when(mockSpinner.getSelectedItemPosition()).thenReturn(1);
-        assertThat(QuantityParserUtilKt.isModifierEqualsToGreaterThan(mockSpinner)).isFalse();
-        when(mockSpinner.getSelectedItemPosition()).thenReturn(0);
-        assertThat(QuantityParserUtilKt.isModifierEqualsToGreaterThan(mockSpinner)).isFalse();
+    fun testIsGreaterThan() {
+        val mockSpinner = mock(Spinner::class.java)
+        mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(2)
+        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isTrue()
+
+        mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(1)
+        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isFalse()
+
+        mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(0)
+        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isFalse()
     }
 }

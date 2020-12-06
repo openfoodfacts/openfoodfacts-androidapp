@@ -82,6 +82,7 @@ import java.io.File
 import java.util.*
 
 class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View {
+    private val disp = CompositeDisposable()
     private var annotation: AnnotationAnswer? = null
     private var barcode: String? = null
     private var _binding: FragmentSummaryProductBinding? = null
@@ -89,7 +90,6 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     private lateinit var client: OpenFoodAPIClient
     private var customTabActivityHelper: CustomTabActivityHelper? = null
     private var customTabsIntent: CustomTabsIntent? = null
-    private val disp = CompositeDisposable()
     private var hasCategoryInsightQuestion = false
     private var insightId: String? = null
 
@@ -232,8 +232,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         this.productState = productState
         product = productState.product!!
         presenter = SummaryProductPresenter(product, this)
-        binding.categoriesText.text = Utils.bold(getString(R.string.txtCategories))
-        binding.labelsText.text = Utils.bold(getString(R.string.txtLabels))
+        binding.categoriesText.text = bold(getString(R.string.txtCategories))
+        binding.labelsText.text = bold(getString(R.string.txtLabels))
 
         //refresh visibility of UI components
         binding.textBrandProduct.visibility = View.VISIBLE
@@ -255,7 +255,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         presenter.loadCategories()
         presenter.loadLabels()
         presenter.loadProductQuestion()
-        binding.textAdditiveProduct.text = Utils.bold(getString(R.string.txtAdditives))
+        binding.textAdditiveProduct.text = bold(getString(R.string.txtAdditives))
         presenter.loadAdditives()
         presenter.loadAnalysisTags()
         mTagDao = Utils.daoSession.tagDao
@@ -301,9 +301,9 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         } else {
             binding.textBrandProduct.visibility = View.GONE
         }
-        if (product.embTags != null && product.embTags.toString().trim { it <= ' ' } != "[]") {
+        if (product.embTags.isNotEmpty() && product.embTags.toString().trim { it <= ' ' } != "[]") {
             binding.embText.movementMethod = LinkMovementMethod.getInstance()
-            binding.embText.text = Utils.bold(getString(R.string.txtEMB))
+            binding.embText.text = bold(getString(R.string.txtEMB))
             binding.embText.append(" ")
             val embTags = product.embTags.toString().replace("[", "").replace("]", "").split(", ").toTypedArray()
             embTags.withIndex().forEach { (i, embTag) ->
@@ -352,7 +352,6 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
                 // prefetch the URL
                 nutritionScoreUri = Uri.parse(getString(R.string.nutriscore_uri))
                 customTabActivityHelper!!.mayLaunchUrl(nutritionScoreUri, null, null)
-                val context = this.context
                 binding.cvNutritionLights.visibility = View.VISIBLE
                 val fatNutriment = nutriments[Nutriments.FAT]
                 if (fat != null && fatNutriment != null) {
@@ -415,7 +414,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     private fun refreshNutriScore() {
-        val nutritionGradeResource = Utils.getImageGradeDrawable(requireContext(), product)
+        val nutritionGradeResource = getImageGradeDrawable(requireContext(), product)
         if (nutritionGradeResource != null) {
             binding.imageGrade.visibility = View.VISIBLE
             binding.imageGrade.setImageDrawable(nutritionGradeResource)
@@ -592,7 +591,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     private fun sendProductInsights(insightId: String?, annotation: AnnotationAnswer?) {
         this.insightId = insightId
         this.annotation = annotation
-        if (Utils.isUserLoggedIn(requireActivity())) {
+        if (requireActivity().isUserLoggedIn()) {
             processInsight(insightId, annotation)
         } else {
             MaterialDialog.Builder(requireActivity()).run {
@@ -629,7 +628,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     override fun showLabels(labels: List<LabelName>) {
-        binding.labelsText.text = Utils.bold(getString(R.string.txtLabels))
+        binding.labelsText.text = bold(getString(R.string.txtLabels))
         binding.labelsText.isClickable = true
         binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
         binding.labelsText.append(" ")
@@ -701,8 +700,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     private fun onAddNutriScorePromptClick() {
         if (isFlavors(OFF)) {
-            if (isUserNotLoggedIn) {
-                Utils.startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN, requireActivity())
+            if (!requireActivity().isUserLoggedIn()) {
+                startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN, requireActivity())
             } else {
                 editProductNutriscore()
             }
@@ -736,8 +735,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     private fun onEditProductButtonClick() {
-        if (isUserNotLoggedIn) {
-            Utils.startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN, requireActivity())
+        if (!requireActivity().isUserLoggedIn()) {
+            startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN, requireActivity())
         } else {
             editProduct()
         }
@@ -829,10 +828,10 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
             (activity as ProductViewActivity?)!!.onRefresh()
         }
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && isUserLoggedIn) {
+            if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && requireActivity().isUserLoggedIn()) {
                 editProduct()
             }
-            if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && isUserLoggedIn) {
+            if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && requireActivity().isUserLoggedIn()) {
                 editProductNutriscore()
             }
         }
