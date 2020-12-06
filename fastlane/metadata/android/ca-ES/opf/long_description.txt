@@ -1,4 +1,4 @@
-Open Food Facts és una base de dades oberta de productes amb ingredients, al·lèrgens, dades nutricionals i totes les peces d'informació que es poden trobar a les etiquetes dels productes.
+Open Products Facts is an open database of all products in the world.
 
 *** Contribuïu a la transparència dels productes ***
 

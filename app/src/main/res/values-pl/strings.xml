@@ -29,7 +29,7 @@
     </plurals>
     <plurals name="minutes">
         <item quantity="one">%d minutę temu</item>
-        <item quantity="few">%d minuty temu</item>  <!-- for values 2,3,4 and 102,103,104 etc. -->
+        <item quantity="few">%d minuty temu</item>
         <item quantity="many">%d minut temu</item>
         <item quantity="other">%d minut temu</item>
     </plurals>
@@ -51,7 +51,7 @@
     <string name="action_find">Znajdź</string>
     <string name="product_incomplete_message">Lista składników tego produktu nie jest kompletna. Wobec czego ostrzeżenie o alergenach nie jest wyświetlane.</string>
     <string name="product_allergen_prompt">Produkt zawiera:</string>
-    <string name="no_offline_data">Brak danych w trybie offline</string> <!-- wszystko gotowe == everything ready -->
+    <string name="no_offline_data">Brak danych w trybie offline</string>
     <string name="first_offline">Tu pojawią się produkty dodane w trybie offline</string>
     <!-- Image Upload -->
     <!-- Nav Drawer Product Menu Items -->
@@ -721,7 +721,7 @@
     <string name="settings_country_title">Kraj</string>
     <string name="txt_no_nutrition_data">Ten produkt nie ma informacji o wartościach odżywczych na opakowaniu. Jeśli to się zmieniło, możesz go edytować.</string>
     <string name="image_prompt_language">Zrób zdjęcie składników</string>
-    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
+    <string name="swipe_delete_tip">Możesz usunąć listę przesuwając ją w lewo.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Dodaj produkty</string>
@@ -816,5 +816,5 @@
     <string name="sign_in_or_register">Zaloguj się lub zarejestruj</string>
     <string name="hunger_game_call_to_action">Pomóż sklasyfikować więcej %1$s</string>
     <string name="txtHomeOnline">Open Food Facts to otwarta baza danych zawierająca więcej niż %1$s produktów spożywczych (plus te, które wnosisz).</string>
-    <string name="enabled">Enabled</string>
+    <string name="enabled">Włączone</string>
 </resources>

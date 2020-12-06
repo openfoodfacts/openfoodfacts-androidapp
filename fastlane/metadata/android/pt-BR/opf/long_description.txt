@@ -39,11 +39,11 @@ Colecionar alimentos, cosméticos e alimentos para animais de estimação do mun
 
 Então, criamos para criar não 1, mas outros 77000 novos bancos de dados separados! 
 
-O Open Products Facts será um projecto extremamente ambicioso. Here are a few of them: 
+O Open Products Facts será um projecto extremamente ambicioso. Eis alguns deles: 
 
-Open Crayons Facts - The largest open database of coloring crayons
+Open Crayons Facts - O maior banco de dados aberto de lápis de cor
 
-Open Miniature Food Facts - The largest open database of miniature food products
+Open Miniature Food Facts - O maior banco de dados aberto de produtos alimentícios em miniatura
 
 Open ??? Facts - O maior banco de dados aberto de ???
 
