@@ -1,2 +1,2 @@
-1. NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
-2. Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
+1. NOU: ara podeu veure l'estat dels productes vegans, vegetarians i d'oli de palma segons la seva llista d'ingredients. Amb el pas del temps s’afegiran més anàlisis. Envieu-nos un missatge per dir-nos què voleu veure :-) 
+2. Neteja de l'app amb solucions per a diversos problemes que heu informat a contact@openfoodfacts.org
