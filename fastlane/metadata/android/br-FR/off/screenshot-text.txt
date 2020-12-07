@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 V2 screenshots
 =====================
 
-Skanañ produioù
+Scan products
 
 Get the Nutriscore
 
@@ -23,7 +23,7 @@ Get alternatives for your favorite foods
 
 Become an actor of food transparency
 
-Wikipedia evit ar Boued
+Wikipedia for Pet Food
 
 Wikipedia for Cosmetics
 
@@ -31,7 +31,7 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Aozennoù
+Ingredients
 
 Powerful
 
