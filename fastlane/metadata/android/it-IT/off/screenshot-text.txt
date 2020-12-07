@@ -2,7 +2,7 @@ Quelle sono le tagline mostrate sopra gli screenshot nel playstore. Tienili cort
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=it
 
 =====================
-Screenshot V2
+=====================
 =====================
 
 Scansiona prodotti
@@ -13,7 +13,7 @@ La cronologia completa della scansione, totalmente privata ed esportabile
 
 Vai oltre con Wikipedia
 
-Imposta allerte allergeni
+Imposta avvisi allergeni
 
 Nutrizione, semplificata
 
