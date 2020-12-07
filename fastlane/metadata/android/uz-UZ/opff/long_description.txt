@@ -1,18 +1,18 @@
-Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Uy hayvonlari uchun oziq-ovqat mahsulotlarini yoki ularning shtrix-kodini skanerlash orqali ingredientlar, qo'shimchalar va oziqlanish faktlari to'g'risida ma'lumot oling.
 
-The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+Ilova allaqachon uy hayvonlari uchun ochiq va ochiq ma'lumotlar bazasida mavjud bo'lgan 600 dan ortiq uy hayvonlari uchun oziq-ovqat mahsulotlarini ko'rish, shuningdek etishmayotgan mahsulotlar uchun rasm va ma'lumotlar qo'shish imkonini beradi.
 
-To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+Ochiq uy hayvonlari uchun oziq-ovqat faktlari loyihasini topish uchun https://world.openpetfoodfacts.org saytiga tashrif buyuring
 
-***Contribute to Pet Food Transparency***
+*** Uy hayvonlari uchun oziq-ovqat mahsulotlarining shaffofligiga hissa qo'shing ***
 
-- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
-- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
-- You can start contributing today by adding a product from your pet's cupboard. 
+- Ochiq uy hayvonlari uchun oziq-ovqat faktlari - bu uy hayvonlari uchun oziq-ovqat mahsulotlari ma'lumotlar bazasi, bu hamma tomonidan, hamma uchun tuzilgan.
+- Siz undan uy hayvonlari uchun oziq-ovqat mahsulotlarini yaxshiroq tanlash uchun foydalanishingiz mumkin va ochiq ma'lumotlar bo'lgani uchun har kim uni har qanday maqsadda qayta ishlatishi mumkin.
+- Ochiq uy hayvonlari uchun oziq-ovqat faktlari - bu dunyodagi minglab ko'ngillilar tomonidan ishlab chiqilgan notijorat loyihadir. Bizda turli xil hissa qo'shadigan ko'plab qiziqarli loyihalar mavjud. 
+- Siz o'z hissangizni bugun chorva mollari shkafidan mahsulot qo'shib boshlashingiz mumkin. 
 
 
-*** Get the Facts ***
+*** Faktlarni bilib oling ***
 
 You will also be able to find (according to the indications present on the products):
 - list of ingredients (including ash content)
