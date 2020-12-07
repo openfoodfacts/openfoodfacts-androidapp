@@ -1,6 +1,6 @@
 Wersja 3
 ====
-1. Łatwiej jest dodawać nowe produkty i poznać Nutri-Score
+1. Łatwiej można dodawać nowe produkty i uzyskać wynik Nutri-Score
 2. Twórz (także eksportuj) swoje listy produktów (zakupy, jedzenie…)
 3. Skanując produkty jeden po drugim możesz porównać je na jednej stronie.
 4. Całkowicie przeprojektowana strona produktu, przesuń kartę, aby ją zobaczyć
@@ -8,7 +8,7 @@ Wersja 3
 
 
 ======
-v2 ! Wszyscy wolontariusze ciężko pracowali, opierając się na waszych sugestiach. Jesteśmy ruchem bardziej globalnym niż kiedykolwiek. Dodano 500 tysięcy produktów, 182 kraje, ponad 10 tysięcy uczestników wliczając ciebie :-)
+v2 ! Wszyscy wolontariusze ciężko pracowali, opierając się na waszych sugestiach. Jesteśmy ruchem bardziej globalnym niż kiedykolwiek. 590k produktów, 182 krajów, 10K+ contributors, wliczając ciebie :-)
 1. Skala NutriScore dla produktów z całego świata
 2. Możliwość eksportowania historii tylko dla siebie
 3. Ostrzeżenia o alergenach
@@ -18,17 +18,17 @@ v2 ! Wszyscy wolontariusze ciężko pracowali, opierając się na waszych sugest
 7. Nie wymagamy logowania
 8. Tak lekko jak poprzednio :)
 
-v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
-1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
-2. You can now get nutrition facts for the portion you're eating (Rutvik)
-3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
-4. Housecleaning (by Rutvik & Salfai)
-5. 🌎 Korean & Indonesian
+v2.8 ! Po ogromnej aktualizacji do wersji V2 wszyscy zgłaszający pracowali ciężko w oparciu o wasze sugestie. Posiadamy informacje o ponad 570 tyś. produktach ze 182. krajów od ponad 10 tyś. użytkowników, w tym: Ciebie🙂
+1. Przebudowaliśmy sposób dodawania produktów (działa teraz również offline). (dzięki Huzaifa)
+2. Teraz możesz uzyskać dane żywieniowe dla porcji, którą zjadasz (Rutvik)
+3. Teraz oprócz Nutriscore obliczamy grupy NOVA (Huzaifa)
+4. Sprzątanie domu (przez Rutvik & Salfai)
+5. 🌎 koreański i indonezyjski
 
-2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
-1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
-2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
-3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+2.8.8 ! Myśleliśmy, że zatrzymamy się na dodaniu produktu? Wszyscy wolontariusze OFF w dalszym ciągu ciężko pracują. 590k produktów, 182 krajów, 10K+ contributors, wliczając Ciebie🙂
+1. Możesz teraz za pomocą konta OFF edytować dowolny produkt. Kliknij ✏️ na stronie produktu, aby edytować.
+2. 🌍 słowacki, hebrajski, hiszpański, arabski, holenderski, węgierski i wietnamski (pomoc w tłumaczeniu.openfoodfacts.org)
+3. Open Food Facts jest projektem w pełni funkcjonującym na zasadzie życzliwości ludzi dobrej woli: możesz nas wspomóc: czasem (world.openfoodfacts.org/contribute) lub pieniądzmi (donate.openfoodfacts.org)
 
 
 
