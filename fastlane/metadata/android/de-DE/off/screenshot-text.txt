@@ -1,19 +1,19 @@
 Das sind die Beschriftungen, die über den Screenshots im Playstore angezeigt werden. Halten Sie sie kurz und attraktiv.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=de
 
-════════════════
+=====================
 V2 Bildschirmfotos
-════════════════
+=====================
 
 Produkte erfassen
 
-„Nutri-Score” (franz. Nahrungsmittelampel) abrufen
+Hole dir den Nutriscore
 
 Ihr vollständiger Verlauf eingelesener Produkte, vollständig privat und exportierbar
 
 Weiter geht's mit Wikipedia
 
-Allergenwarnungen festlegen
+Allergen-Warnung
 
 Ernährung, vereinfacht
 
@@ -37,9 +37,9 @@ Leistungsfähig
 
 Nährwertangaben
 
-════════════════
+=====================
 V3 Bildschirmfotos
-════════════════
+=====================
 
 Wählen Sie die Produkte, die gut für Sie und für den 🌍 Planeten sind!
 
