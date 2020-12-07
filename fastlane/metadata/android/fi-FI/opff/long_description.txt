@@ -1,34 +1,34 @@
-Lue lemmikkien elintarvikkeita, tai niiden viivakoodeja, saadaksesi tietoa ainesosista, lisäaineista ja ravintosisällöistä.
+Lue lemmikkien ruokatuotteita tai niiden viivakoodit saadaksesi tietoa ainesosista, lisäaineista ja ravintosisällöistä.
 
-Sovelluksella voi katsoa yli 600:a lemmikkien elintarviketta, jotka ovat jo vapaassa ja avoimessa Open Pet Food Facts -tietokannassa, ja myös lisätä kuvia ja tietoja puuttuville tuotteille.
+Sovelluksen avulla voidaan tarkastella yli 600 tuotetta, jotka ovat jo vapaassa ja avoimessa Open Pet Food Facts -tietokannassa, sekä lisätä kuvia ja tietoja puuttuville tuotteille.
 
-Tutustuaksesi Open Pet Food Facts -hankkeeseen, vieraile osoitteessa https://world.openpetfoodfacts.org
+Tutustu vapaaehtoisten ylläpitämään Open Pet Food Facts -hankkeeseen osoitteessa https://world-fi.openpetfoodfacts.org
 
-***Lisää lemmikkien elintarvikkeiden läpinäkyvyyttä***
+***Edistä lemmikkieläinten ruoan läpinäkyvyyttä***
 
-- Open Pet Food Facts on kaikkien tekemä tietokanta lemmikkien elintarvikkeille, kaikille.
-- Voit käyttää sitä tehdäksesi parempia valintoja lemmikkien elintarvikkeissa, ja koska se on avointa dataa, kuka tahansa voi uudelleen käyttää sitä mihin tahansa tarkoitukseen.
-- Open Pet Food Facts on voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin. 
+- Open Pet Food Facts on kaikkien tekemä lemmikkieläinten ruokien tietokanta kaikille.
+- Voit käyttää sitä parempiin lemmikkieläinten ruokavalintoihin, ja koska se on avointa dataa, kuka tahansa voi käyttää sitä uudelleen mihin tahansa tarkoitukseen.
+- Open Pet Food Facts on voittoa tavoittelematon hanke, jonka ovat kehittäneet tuhannet vapaaehtoiset ympäri maailmaa. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin. 
 - Voit aloittaa osallistumisen tänään lisäämällä tuotteen lemmikkisi ruokakaapista. 
 
 
-*** Tiedä tosiseikat ***
+***Näe faktat***
 
-Voit myös löytää (tuotteiden pakkausmerkintöjen mukaan):
-- ainesosaluettelon (mukaan lukien tuhkapitoisuuden)
-- ravinnollisen tiedot, ravinnolliset liikennevalot…
+Löydät myös (sen mukaan, mitä merkintöjä tuotteissa on):
+- ainesosaluettelon (mukaan lukien tuhkapitoisuus)
+- ravintotiedot, ravintovalot…
 - tuotemerkit, allergeenit, merkit (luomu, vegaani...)
-- Se toimii koiranruoalla (koiran kuivaruoka & koiran märkäruoka), kissanruoalla, kaninruoalla, käärmeenruoalla, kalanruoalla, linnunruoalla, hevosenruoalla, tai millä tahansa lempieläimesi ruoalla.
+- Se toimii koiranruokien (kuiva koiranruoka ja märkä koiranruoka), kissanruokien, kaninruokien, käärmeiden ruokien, kalanruokien, linnunruokien, hevosenruokien tai minkä tahansa suosikkieläimesi ruoan kanssa.
 
 *** Toimii hyvin kaikissa olosuhteissa ***
-- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
-- Sovellus lataa vain kaikista välttämättömimmän, tiedonsiirron ja akun kulutuksen vähentämiseksi
-- Et tarvitse kameraa hakeaksesi tuotetta. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
+- Sovellus lataa vain ehdottoman välttämättömät datasiirron ja akun kulutuksen vähentämiseksi
+- Tuotteen etsimiseen ei tarvita kameraa. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
 
-*** Sinun lemmikkisi elintarvikkeet, sinun tietosi ***
-- Henkilökohtaiset tietosi ovat sinun, ja niitä ei koskaan lähetetä verkkoon
+*** Sinun lemmikkieläinten ruokasi, sinun tietosi ***
+- Henkilötietosi ovat sinun, eikä niitä koskaan lähetetä verkossa
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 
 
-Ihmisten elintarvikkeille voit asentaa Open Food Factsin, kosmetiikalle Open Beauty Factsin, ja kaikille muille tuotteille Open Products Factsin.
+Ihmisten ruoalle voit asentaa Open Food Factsin, kosmetiikalle Open Beauty Factsin ja kaikille muille tuotteille Open Products Factsin.
