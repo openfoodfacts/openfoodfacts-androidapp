@@ -1,7 +1,7 @@
-Los 25K voluntarios de OFF siguen trabajando duro: 1,4M productos, 182 países 🙂
-1. OFF se hace grande en los EE. UU.: ¡237k productos con Nutri-Score!
+Los 25 mill voluntarios de OFF siguen trabajando duro: 1,4 millones de productos, en 182 países 🙂
+1. OFF se hace grande en los EE. UU.: ¡237 mil productos con Nutri-Score!
 2. Modo oscuro: más ligero para tus ojos, más ligero para tu batería
-3. Ayuda a calcular Nutri-Score & Eco-Score: deslice hacia arriba para encontar las preguntas azules y firma tus respuestas.
+3. Ayuda a calcular Nutri-Score & Eco-Score: desliza para encontrar preguntas y obtén crédito por tus respuestas.
 4. Grandes mejoras para los veganos y vegetarianos, y en la detección de aceite de palma.
-5. Edición inmediata del producto, incluso con mala o nula conexión
-6. La página 'Productos para completar' (menú de la derecha) es ahora en tiempo real.
+5. Edición inmediata del producto, incluso sin conexión a internet.
+6. La página 'Productos a completar' (en el menú de la derecha) se actualiza en tiempo real.
