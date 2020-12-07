@@ -30,11 +30,11 @@
     <string name="translate_help_title">Ajude a traduzir o Open Products Facts</string>
     <string name="translate_help_summary">Traga o Open Products Facts para a sua língua - não são necessários conhecimentos técnicos</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo que esteja desligado da Internet, e poderá enviá-los para o Open Products Facts mais tarde. Os produtos digitalizados irão aparecer aqui e poderá enviá-los utilizando o botão abaixo.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação sobre as suas alergias nunca serão enviadas para o servidor do Open Products Facts. Além disso, tenha em conta que os dados dos produtos podem não ser rigorosos e a deteção pode não ser 100% aiável, por isso confirme 2 vezes! </string>
     <!-- OPF tagline in different languages -->
     <string name="version_string">Open Products Facts Android App</string>
-    <string name="tagline">the free product database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+    <string name="tagline">a base de dados de produtos livre</string>
+    <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Products Facts. Pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente em Open Products Facts</string>
     <string name="category_game_btn">Ajude a categorizar produtos</string>
     <!-- TODO add true support instead of overriding strings -->
