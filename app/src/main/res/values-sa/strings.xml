@@ -136,7 +136,7 @@
         <item>pH</item>
         <item>Phosphorus</item>
         <item>Sugar alcohols (Polyols)</item>
-        <item>Poly unsaturated fat</item>
+        <item>Polyunsaturated fat</item>
         <item>Potassium</item>
         <item>Selenium</item>
         <item>Serum proteins</item>
@@ -244,7 +244,7 @@
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
     <string name="permission_title">Permission information</string>
     <string name="permission_denied">Please activate permission in the settings</string>
-    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate internet connection.</string>
+    <string name="info_download_data_connection">You need to download some data to get this functionality working. Please activate your internet connection.</string>
     <!-- Strings related to login -->
     <string name="error_invalid_password">The password needs to be at least 6 characters long.</string>
     <string name="user">user</string>
@@ -334,7 +334,7 @@
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
     <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -399,7 +399,7 @@
     <string name="scan_shortcut_short_label">Scan</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">Search</string>
-    <string name="barcode_shortcut_long_label">Search By Barcode</string>
+    <string name="barcode_shortcut_long_label">Search by barcode</string>
     <string name="history_shortcut_short_label">History</string>
     <string name="history_shortcut_long_label">History</string>
     <string name="contributions_shortcut_short_label">Contributions</string>
@@ -452,7 +452,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
-    <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-sa.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">General</string>
@@ -673,7 +673,7 @@
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">Open Food Facts Android app</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
