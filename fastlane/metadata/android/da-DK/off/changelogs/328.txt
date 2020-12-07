@@ -1,2 +1,2 @@
-1. NYT: Du kan nu se vegansk, vegetarisk og palmeolie statusser på produkter baseret på deres ingredienslister. Yderligere analyse tilføjes over tid. Send os en e-mail for at fortælle os, hvad du gerne vil se :-) 
-2. Husrengøring med rettelser til flere problemer, som du rapporterede til contact@openfoodfacts.org
+1. NEW: you can now see the vegan, vegetarian and palm oil status of products, based on their ingredient list. More analysis will be added over time. Send us a mail to tell us what you'd like to see :-) 
+2. Housecleaning with fixes for several issues that you reported to contact@openfoodfacts.org
