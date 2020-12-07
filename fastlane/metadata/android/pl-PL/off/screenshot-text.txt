@@ -11,17 +11,17 @@ Uzyskaj wynik Nutri-Score
 
 Pełna historia skanowania, w pełni prywatna i eksportowalna
 
-Dalej z Wikipedią
+Idź dalej z Wikipedią
 
 Uruchom ostrzeżenia o alergenach
 
 Odżywianie, uproszczone
 
-Ostrzeżenie o alergenach
+Ostrzeżenia o alergenach
 
 Znajdź alternatywę dla swoich ulubionych potraw
 
-Zostań uczestnikiem działań mających na celu popularyzację wiedzy na temat żywności
+Stań się kontrolerem przejrzystości jedzenia
 
 Wikipedia żywności
 
@@ -35,7 +35,7 @@ Składniki
 
 Potężny
 
-Wartości odżywcze
+Wikipedia żywności
 
 =====================
 V3 zrzuty ekranu
