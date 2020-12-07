@@ -23,28 +23,28 @@
         <item quantity="other"> You have %d offline products waiting to be contributed to Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">1 soicind ó shin</item>
+        <item quantity="one">%d second ago</item>
         <item quantity="two">%d seconds ago</item>
         <item quantity="few">%d seconds ago</item>
         <item quantity="many">%d seconds ago</item>
         <item quantity="other">%d seconds ago</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">1 nóiméad ó shin</item>
+        <item quantity="one">%d minute ago</item>
         <item quantity="two">%d minutes ago</item>
         <item quantity="few">%d minutes ago</item>
         <item quantity="many">%d minutes ago</item>
         <item quantity="other">%d minutes ago</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">1 uair an chloig ó shin</item>
+        <item quantity="one">%d hour ago</item>
         <item quantity="two">%d hours ago</item>
         <item quantity="few">%d hours ago</item>
         <item quantity="many">%d hours ago</item>
         <item quantity="other">%d hours ago</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">1 lá ó shin</item>
+        <item quantity="one">%d day ago</item>
         <item quantity="two">%d days ago</item>
         <item quantity="few">%d days ago</item>
         <item quantity="many">%d days ago</item>
