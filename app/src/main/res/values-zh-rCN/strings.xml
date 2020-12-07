@@ -16,8 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="other">您有 1 个离线产品等待贡献到 Open Food Facts。
-您有%d 个离线产品等待贡献到 Open Food Facts。</item>
+        <item quantity="other">您有%d个离线产品未贡献到Open Food Facts。</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="other">%d 秒前</item>
@@ -231,8 +230,8 @@
     <string name="title_info_dialog">它是如何工作的？</string>
     <string name="text_offline_info_dialog">您可以在离线时扫描产品，稍后将其添加到 Open Food Facts 中。您扫描的所有产品都会显示在这里，可以按下面的按钮发送它们。</string>
     <string name="permission_camera">需要相机权限才能扫描条形码及拍照。</string>
-    <string name="no_camera_dialog_title">找不到相机</string>
-    <string name="no_camera_dialog_content">您的设备没有相机。您将无法扫描任何条形码。</string>
+    <string name="no_camera_dialog_title">无法识别相机</string>
+    <string name="no_camera_dialog_content">您的设备没有相机。您将无法扫描任何条码。</string>
     <string name="permission_title">权限信息</string>
     <string name="permission_denied">请激活设置中的权限</string>
     <string name="info_download_data_connection">你需要下载一些数据才能使用该功能，请激活网络连接。</string>
@@ -248,11 +247,11 @@
     <string name="prefs_language">语言</string>
     <string name="prefs_language_summary">更改语言</string>
     <!-- Strings related to feedback dialog -->
-    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_enjoying_app">您对Open Food Facts满意吗？</string>
     <string name="user_ask_show_feedback_form">我们很遗憾听到这个消息！你能告诉我们发生了什么吗？</string>
     <string name="user_ask_rate_app">大！让其他人知道您对这个应用程式的看法！</string>
     <string name="rate_app">Rate app</string>
-    <string name="no_thx">不用了，谢谢</string>
+    <string name="no_thx">不用了</string>
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">历史记录</string>
@@ -277,7 +276,7 @@
     <string name="nutrition_cholesterol">胆固醇</string>
     <string name="nutrition_energy">能量</string>
     <string name="nutrition_energy_kcal">卡路里热量（千卡）</string>
-    <string name="nutrition_energy_kj">焦耳能量（kJ）</string>
+    <string name="nutrition_energy_kj">焦耳能量（千焦）</string>
     <string name="nutrition_energy_short_name">能量</string>
     <string name="nutrition_fat">脂肪</string>
     <string name="nutrition_fiber">膳食纤维</string>
@@ -372,19 +371,19 @@
     <string name="collagen_meat_protein_ratio">胶原蛋白比例</string>
     <string name="cocoa">可可粉</string>
     <string name="chlorophyl">叶绿素</string>
-    <string name="take_picture">拍张照片</string>
-    <string name="choose_picture_from_gallery">从画廊</string>
+    <string name="take_picture">拍照</string>
+    <string name="choose_picture_from_gallery">从相册选择</string>
     <string name="take_picture_ingredients">拍摄营养成分</string>
     <string name="take_picture_front">拍摄正面照片</string>
     <string name="take_picture_nutrition_table">拍摄营养成分</string>
     <string name="take_more_pictures">拍摄更多照片</string>
     <string name="txtSaturatedFat">饱和脂肪</string>
-    <string name="nutriscore_info_msg">了解有关Nutri-Score的更多信息</string>
+    <string name="nutriscore_info_msg">了解关于Nutri-Score的更多信息</string>
     <string name="nova_info_msg">了解有关NOVA组的更多信息</string>
-    <string name="nova_grp1_msg">第一组-未加工或最低加工的食物</string>
-    <string name="nova_grp2_msg">第2组-加工过的烹饪原料</string>
-    <string name="nova_grp3_msg">第3组-加工食品</string>
-    <string name="nova_grp4_msg">第4组-超加工食品和饮料产品</string>
+    <string name="nova_grp1_msg">一类：较少或未加工的食品</string>
+    <string name="nova_grp2_msg">二类：配料受加工</string>
+    <string name="nova_grp3_msg">三类：加工食品</string>
+    <string name="nova_grp4_msg">四类：超加工食品和饮料</string>
     <!-- String related to App Shortcuts -->
     <string name="disabled_message">快捷方式不可用</string>
     <string name="scan_shortcut_short_label">掃描</string>
@@ -411,7 +410,7 @@
     <string name="device_offline_dialog_negative">忽略</string>
     <string name="device_offline_dialog_positive">设置</string>
     <string name="scan_first_product">扫描第一个产品</string>
-    <string name="preference_delete_search_history">成功删除历史记录</string>
+    <string name="preference_delete_search_history">历史记录已删除</string>
     <string name="preference_enable_mobile_data_title">移动数据下上传</string>
     <string name="preference_enable_mobile_data_summary_on">使用移动数据和 WiFi 上传新产品</string>
     <string name="preference_enable_mobile_data_summary_off">仅使用 WiFi 上传新产品</string>
@@ -419,7 +418,7 @@
     <string name="device_on_mobile_data_warning_message">您已禁止上传移动数据，请连接到WiFi或更改其首选项</string>
     <string name="device_on_mobile_data_warning_positive">偏好</string>
     <string name="device_on_mobile_data_warning_negative">继续上传</string>
-    <string name="changes_saved">更改已成功保存</string>
+    <string name="changes_saved">更改已保存</string>
     <string name="preference_choose_language_dialog_title">选择语言</string>
     <string name="FAQ">常问问题</string>
     <string name="FrequentlyAskedQuestions">常见问题</string>
@@ -455,7 +454,7 @@
     <string name="confirm_logout">确认注销</string>
     <string name="logout_dialog_content">你确定要注销吗？</string>
     <string name="dialog_cancel">取消</string>
-    <string name="dialog_create">Create</string>
+    <string name="dialog_create">创建</string>
     <string name="choose_resolution">选择分辨率</string>
     <string name="pref_resolution_summary">为图片上传选择一个分辨率</string>
     <string name="image_upload_resolution">图像上传分辨率</string>
