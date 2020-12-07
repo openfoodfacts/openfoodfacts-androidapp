@@ -35,11 +35,11 @@ Open Miniature Food Facts - מסד הנתונים הגדול ביותר של מ�
 
 אתמול בבוקר, צוות Open Food Facts התעורר לחדשות מרעישות. 
 
-Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+Collecting the world's food, cosmetic and pet food was so passé. בזכות ההתקדמות הפסיכית שעשינו בשנה החולפת, סביר להניח שאנחנו קרובים מתמיד להשלמת המשימה שלנו לאיסוף כל המוצרי המזון והטיפוח בעולם, לא?
 
 לכן נערכנו לא כדי ליצור 1 אלא 77,000 מסדי נתונים חדשים נפרדים! 
 
-Open Products Facts will be an extremely ambitious project. להלן מגוון מימושים נוספים: 
+Open Products Facts יהיה מיזם שאפתני למדי. להלן מגוון מימושים נוספים: 
 
 Open Crayons Facts - מס הנתונים הפתוח הגדול ביותר לעפרונות צבעוניים
 
