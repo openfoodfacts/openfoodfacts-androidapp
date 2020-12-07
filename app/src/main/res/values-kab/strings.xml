@@ -186,7 +186,7 @@
     <string name="txtSugars">Sskeṛ</string>
     <string name="hintBarcode">Tangalt s yifeggagen</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="hintLogin">Isem n useqdac</string>
+    <string name="hintLogin">Kcem</string>
     <string name="hintPass">Tasarut</string>
     <string name="errorLogin">Tɣelṭeḍ deg tuqqna neɣ deg tsarut</string>
     <string name="errorWeb">Ur nezmir ara ad nekcem ar Internet. Tesɛiḍ uguren deg tuqqna?</string>
@@ -229,7 +229,7 @@
     <string name="select_camera">Select a Camera</string>
     <string name="ok_button">OK</string>
     <string name="cancel_button">Ssefex</string>
-    <string name="login_button">Isem n useqdac</string>
+    <string name="login_button">Kcem</string>
     <string name="create_account_button">Asnulfu n umiḍan</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">How does it work?</string>
@@ -264,7 +264,7 @@
     <string name="title_clear_history_dialog">Sfeḍ</string>
     <string name="text_clear_history_dialog">Do you want to clear all your scan history?</string>
     <string name="export_csv_history">Export CSV</string>
-    <string name="txt_exporting_history">Exporting history...</string>
+    <string name="txt_exporting_history">Exporting history…</string>
     <string name="txt_history_exported">History exported</string>
     <string name="permision_write_external_storage">Write external storage permission is needed to export history.</string>
     <string name="no_brand">No Brand</string>
@@ -328,8 +328,8 @@
     <string name="for_100g">I 100 n yigṛammen</string>
     <string name="for_100ml">For 100 ml</string>
     <string name="serving">Per serving</string>
-    <string name="nutrition_monounsaturatedFat">Mono unsaturated fat</string>
-    <string name="nutrition_polyunsaturatedFat">Poly unsaturated fat</string>
+    <string name="nutrition_monounsaturatedFat">Monounsaturated fat</string>
+    <string name="nutrition_polyunsaturatedFat">Polyunsaturated fat</string>
     <string name="nutrition_omega3">Omega 3</string>
     <string name="nutrition_omega6">Omega 6</string>
     <string name="nutrition_omega9">Omega 9</string>
@@ -390,7 +390,7 @@
     <string name="nova_grp3_msg">Group 3 - Processed foods</string>
     <string name="nova_grp4_msg">Group 4 - Ultra-processed food and drink products</string>
     <!-- String related to App Shortcuts -->
-    <string name="disabled_message">Shortcut Not Available</string>
+    <string name="disabled_message">The shortcut is not available.</string>
     <string name="scan_shortcut_short_label">Semḍen</string>
     <string name="scan_shortcut_long_label">Scan Product</string>
     <string name="barcode_shortcut_short_label">Nadi</string>
@@ -454,8 +454,8 @@
     <string name="preference_header_network">Azeṭṭa</string>
     <string name="preference_header_contributing">Attekki</string>
     <string name="scan_first_string">Your viewed product history will be listed here.\nThis history is for your eyes only and is stored locally.</string>
-    <string name="log_in">Isem n useqdac</string>
-    <string name="login_true">Already logged in!</string>
+    <string name="log_in">Kcem</string>
+    <string name="login_true">You are already logged in.</string>
     <string name="confirm_logout">Confirm Logout</string>
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Ssefex</string>
@@ -539,7 +539,7 @@
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
     <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Scan sound</string>
-    <string name="trouble_scanning">Trouble Scanning?</string>
+    <string name="trouble_scanning">Ugur deg ufraḍ?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
     <string name="switch_camera">Switch camera</string>
     <string name="autofocus">Autofocus</string>
@@ -558,7 +558,7 @@
     <string name="product_language">Product language : </string>
     <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Official website</string>
-    <string name="scan_QR_code">Scan QR Code for product website</string>
+    <string name="scan_QR_code">Freḍ tangalt QR i usmel web n ufaris</string>
     <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
     <string name="image_uploaded_successfully">Image uploaded successfully</string>
     <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
