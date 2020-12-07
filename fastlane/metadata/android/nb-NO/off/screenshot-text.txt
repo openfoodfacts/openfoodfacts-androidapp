@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergenadvarsel
+Allergen alert
 
 Get alternatives for your favorite foods
 
@@ -35,7 +35,7 @@ Ingredienser
 
 Powerful
 
-Ernæringsinnhold
+Nutrition facts
 
 =====================
 V3 screenshots
