@@ -1,19 +1,19 @@
 
 ==================
-Uusi natiiviversio Open Food Factsista. Kaikki Open Food Factsin vapaaehtoiset ovat tehneet paljon työtä sen eteen, teidän ehdotuksiin ja palautteisiin perustuen :)
+Uusi natiiviversio Open Food Factsista. Kaikki Open Food Facts -vapaaehtoiset ovat tehneet ahkerasti töitä ehdotustenne ja palautteenne perusteella :)
 ==================
-* Open Food Facts on nyt globaalimpi liike kuin koskaan enemmin. 500 000:ta tuotetta vapautettu, 10 000:ta rekisteröitynyttä osallistujaa, 182 maata. Liitytkö mukaan?
+* Open Food Facts on nyt globaalimpi liike kuin koskaan. 500k tuotetta vapautettu, 10k rekisteröitynyttä osallistujaa, 182 maata. Liitytkö joukkoomme?
 ==================
 Mitä uutta?
 ==================
-1. Saat 360:n asteen kuvan: ravinto, ainesosat, ja kaikki elintarvikefaktat, näppärästi ja selkeästi esitettynä.
-2. Saa "NutriScore"-ravintoarvosana kaikille maailman tuotteille. Vertaile helposti tuotteita. Helpompaa kuin ravintotaulukoiden tulkinta.
-3. Saa ylimääräistä tietoa Wikipediasta. Napsauta elintarvikeluokkaa, lisäainetta… oppiaksesi lisää, ja nähdäksesi samankaltaisia tuotteita.
-4. Voit asettaa allergeenivaroituksia (varmista aina kuitenkin itse etiketistä!)
-5. Saat nyt lukuhistorian, jonka voit viedä, ja joka ei koskaan poistu puhelimestasi
-6. Voit koska vain heiluttaa puhelintasi sovelluksessa aloittaaksesi lukemisen
-7. Voit nyt lisätä uusia tuotteita vaikka olisit yhteydettömässä tilassa
-8. Voit nyt auttaa lempituotteidesi täydentämistä suoraan sovelluksesta: ota kuvia, täytä tietoja, mahdollista elintarvikkeiden läpinäkyvyys
-9. Kaikki on myös paljon nopeampaa. Tuotteet latautuvat salamannopeasti, jopa huonoilla mobiiliyhteyksillä.
-10. Emme ole vieläkään kiinnostuneita henkilökohtaisista tiedoistasi. Sinun ei tarvitse luoda tiliä lukeaksesi ja osallistuaksesi.
-Ekstra! Kaikista uusista asioista huolimatta, sovellus on edelleen yhtä kevyt. Tallennustilan määrä puhelimessasi on pyhää.
+1. Saat 360-kuvan: ravitsemus, ainesosat ja kaikki ruokatiedot, siististi ja selkeästi esiteltynä.
+2. Saa NutriScore-ravintoarvosana kaikille tuotteille maailmassa. Vertaa tuotteita helposti. Helpompaa kuin ravintotaulukoiden purkaminen.
+3. Saa lisätietoja Wikipediasta. Napsauta ruokaluokkaa, lisäainetta… saadaksesi lisätietoja ja nähdäksesi samankaltaisia tuotteita.
+4. Voit asettaa allergeenihälytyksiä (tarkista kuitenkin itse varsinaisesta etiketistä!)
+5. Saat nyt lukuhistorian, jonka voit viedä, eikä se koskaan lähde puhelimestasi
+6. Voit ravistaa puhelinta milloin tahansa sovelluksessa aloittaaksesi lukemisen
+7. Voit nyt lisätä uusia tuotteita myös ilman yhteyttä
+8. Voit nyt auttaa täydentämään suosikkiruokiasi suoraan sovelluksesta: ota kuvia, täytä tietoja, tee ruoasta läpinäkyvämpää
+9. Kaikki on myös paljon nopeampaa. Tuotteet latautuvat räjähtävän nopeasti, jopa huonolla mobiiliyhteydellä.
+10. Emme vieläkään ole kiinnostuneita henkilötiedoistasi. Sinun ei tarvitse rekisteröityä lukeaksesi ja osallistuaksesi.
+Extra! Kaikista uusista asioista huolimatta sovellus on yhtä kevyt kuin ennenkin. Puhelimesi jäljellä oleva tila on pyhää.
