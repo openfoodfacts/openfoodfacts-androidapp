@@ -1,11 +1,11 @@
 
-═══════════════
+==================
 Neue native Version von Open Food Facts. Alle Freiwilligen von Open Food Facts haben hart daran gearbeitet, basierend auf Ihren Vorschlägen und Ihrem Feedback 🙂
-═══════════════
-🟊 Open Food Facts ist heute eine globalere Bewegung denn je. 500.00 freigegebene Produkte, 10.000 registrierte Mitwirkende, 182 Länder. Möchten Sie sich uns anschließen?
-═══════════════
+==================
+🟊 Open Food Facts ist heute eine globalere Bewegung denn je. 500.000 freigegebene Produkte, 10.000 registrierte Mitwirkende, 182 Länder. Möchten Sie sich uns anschließen?
+==================
 Was gibt es Neues?
-═══════════════
+==================
 1. Sie erhalten einen vollständigen Überblick: Ernährung, Zutaten und alle Fakten zu Lebensmitteln, sauber und übersichtlich dargestellt.
 2. „NutriScore”-Nährwertqualität für alle Produkte der Welt abrufen. Produkte einfach vergleichen. Einfacher als das Entziffern von Ernährungstabellen.
 3. Zusätzliche Informationen von Wikipedia abrufen. Klicken Sie auf eine Lebensmittelkategorie, einen Zusatzstoff …, um mehr zu erfahren und ähnliche Produkte anzuzeigen.
