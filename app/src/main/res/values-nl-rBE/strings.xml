@@ -745,7 +745,7 @@
     <string name="closeZoom">Klik om zoom te sluiten</string>
     <string name="imageFullscreen">Inzoomen</string>
     <!-- Used for product ingredients analysis tags -->
-    <string name="close_button">Close</string>
+    <string name="close_button">Sluit</string>
     <string name="tip_message">TIP: %1$s </string>
     <string name="ingredient_analysis_tip">Klik op de onderstaande pictogrammen om meer te weten te komen over het product en om de informatie te selecteren waar je geïnteresseerd in bent.</string>
     <string name="got_it">Ik snap het!</string>
@@ -771,7 +771,7 @@
     <string name="compare_quantity">Hoeveelheid:</string>
     <string name="load_ingredient_detection_data">Laad detectiegegevens van ingrediënten</string>
     <string name="load_ingredient_detection_data_summary">Er zijn geen gegevens voor de detectie van ingrediënten gevonden, probeer deze te laden van de server</string>
-    <string name="white_check_image_descr">A white check</string>
+    <string name="white_check_image_descr">Een blanco cheque</string>
     <string name="hint_packaging">Voorbeelden: plastic, papier, glas</string>
     <string name="risk_alcohol_consumption">Overmatig alcoholgebruik is schadelijk voor de gezondheid en moet met mate worden geconsumeerd</string>
     <!--ShowcaseView Strings-->
@@ -796,5 +796,5 @@
     <string name="brand_hint">Voorbeelden: Coca-Cola, Nestlé, enz…</string>
     <string name="sign_in_or_register">Aanmelden of registreren</string>
     <string name="hunger_game_call_to_action">Help meer %1$s te classificeren</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is een open database met meer dan %1$s voedingsproducten (plus uw bijdragen).</string>
 </resources>
