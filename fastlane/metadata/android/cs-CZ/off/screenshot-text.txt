@@ -1,41 +1,41 @@
-To jsou štítky zobrazené nad snímky obrazovky v playstore. Uchovávejte je krátké a atraktivní.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=cs
+Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
 =====================
 
-Snímání zboží
+Scan products
 
-Získejte Nutriční skóre
+Get the Nutriscore
 
-Vaše úplná historie snímání, zcela soukromá & exportovatelná
+Your full scan history, fully private & exportable
 
-Zjistěte více s Wikipedií
+Go further with Wikipedia
 
-Nastavte si upozornění na alergeny
+Set allergen alerts
 
-Výživa jednoduše
+Nutrition, simplified
 
-Hlídání alergenů
+Allergen alert
 
-Získejte alternativy pro vaše oblíbené potraviny
+Get alternatives for your favorite foods
 
-Staňte se hybatelem férovosti potravin
+Become an actor of food transparency
 
-Wikipedie pro potraviny
+Wikipedia for Food
 
-Wikipedie pro kosmetiku
+Wikipedia for Cosmetics
 
-Wikipedie pro potraviny mazlíčků
+Wikipedia for Pet Food
 
-Wikipedie výrobků
+Wikipedia of Products
 
-Složení
+Ingredients
 
-Mocný
+Powerful
 
-Nutriční hodnoty
+Nutrition facts
 
 =====================
 V3 screenshots
