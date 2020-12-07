@@ -1,4 +1,4 @@
-Open Food Facts یک پایگاه داده برای محصولات خوراکی شامل مواد تشکیل دهنده ، آلرژن هاو تمام موارد دیگری که ما روی محصولات میتوانیم پیدا کنیم است.
+Open Products Facts is an open database of all products in the world.
 
 *** Contribute to Product Transparency ***
 
