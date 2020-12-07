@@ -47,21 +47,21 @@ Create shopping lists, track what you've eaten and easily share and export your 
 
 
 ▶ Offline Scan: Scan in ANY condition! (coming soon)
-不論您在飛機上、潛水艇裏或在逛超市，您都可以以光速掃描產品
+Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
-▶ 您的食物，您的數據
-- 您的數據是您的，永遠不會上載網上
-- 您可以匿名使用應用程式
-- 您可以匯出掃描紀錄
+▶ Get the Facts
+- Your data is yours, and is never sent online
+- 您可以匿名使用應用程式 - 您可以匯出掃描紀錄
+- 您可以匿名使用應用程式 - 您可以匯出掃描紀錄
 
-▶ 設置產品過敏原警告
-- 對牛奶、麩質、雞蛋、大豆、堅果、魚、芹菜、芥末、二氧化硫和亞硫酸鹽、花生、芝麻籽、海鮮、軟體動物或羽扇豆過敏？
+- 您可以匯出掃描紀錄 ▶ 設置產品過敏原警告
+- Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
 - Speed up your shopping by doing an initial screening of your food with Open Food Facts.
-- 請注意，過敏資料和偵測未必完全準確。 因此，請仔細檢查食品包裝上的過敏原資料。
+- Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
 
 ▶ Say hello and/or join us!
