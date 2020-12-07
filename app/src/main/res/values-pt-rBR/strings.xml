@@ -16,8 +16,8 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
-        <item quantity="one">Você tem um produto offline aguardando ser contribuído para o Open Food Facts</item>
-        <item quantity="other">Você tem %d produtos offline aguardando serem contribuídos para o Open Food Facts</item>
+        <item quantity="one">Você tem 1 produto off-line esperando para ser adicionado ao Open Food Facts</item>
+        <item quantity="other">Tem %d produto(s) off-line esperando para serem adicionados ao Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
         <item quantity="one">%d segundo atrás</item>
@@ -231,7 +231,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="login_button">Nome de Utilizador</string>
     <string name="create_account_button">Criar uma conta</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Food Facts. Além disso, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% precisa; então, por favor, verifique por si mesmo!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação sobre suas alergias nunca será compartilhada com o servidor do Open Beauty Facts. Além disso, atenção ao fato que os dados dos produtos podem ser imprecisos, e a detecção não é 100% a precisa, então por favor verifique!</string>
     <string name="title_info_dialog">Como é que isto funciona?</string>
     <string name="text_offline_info_dialog">Poderá digitalizar produtos enquanto estiver offline para, mais tarde, adicioná-los ao Open Food Facts. Os produtos serão mostrados aqui e poderá enviá-los usando o botão abaixo.</string>
     <string name="permission_camera">A permissão da câmara é necessária para digitalizar códigos de barras e tirar fotos.</string>
@@ -270,7 +270,7 @@
     <string name="no_brand">Sem Marca</string>
     <string name="no_title">Sem Título</string>
     <!-- Nutrition info tab -->
-    <string name="display_fact">Tabela de fatos nutricionais para %1$s deste produto</string>
+    <string name="display_fact">Tabela de informações nutricionais para %1$s deste produto</string>
     <string name="check_facts">Verifique</string>
     <string name="nutrition">Nutrição</string>
     <string name="calculated_nutrition">Nutrição Calculada</string>
@@ -438,9 +438,9 @@
     <string name="TermsOfUse">Termos e privacidade</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://pt-br.openfoodfacts.org/termos-de-uso</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
-    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <string name="faq_url">https://pt-br.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world-pt.openfoodfacts.org/hunger-game</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
@@ -536,7 +536,7 @@
         <item quantity="other">%d aditivos</item>
     </plurals>
     <string name="product_not_complete">Este produto ainda não está completo. \nPode adicionar alguns detalhes?</string>
-    <string name="addProductOffline">Você parece offline. Adicionar o produto %s usando o modo offline?</string>
+    <string name="addProductOffline">Você parece estar offline. Adicionar o produto %s usando o modo offline?</string>
     <string name="product_not_found">O produto %1$s que você digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
     <string name="scan_sound">Som ao digitalizar</string>
     <string name="trouble_scanning">Problemas digitalizando?</string>
@@ -655,7 +655,7 @@
     <string name="some_people">Algumas pessoas\n(mais de 5%)</string>
     <string name="safety_and_exposure_assessment">Avaliação de segurança e exposição</string>
     <string name="risk_of_exposure">Risco de exposição</string>
-    <string name="efsa_warning_high_risk">The European Food Safety Authority (EFSA) has determined that some population groups have a high risk of consuming too much %1$s.</string>
+    <string name="efsa_warning_high_risk">A Autoridade Europeia para a Segurança dos Alimentos (EFSA) determinou que alguns grupos populacionais têm alto risco de consumir muito %1$s.</string>
     <string name="legend_noael">dose acima com efeito adverso observado (NOAEL)</string>
     <string name="legend_adi">acima de ingestão diária aceitável (ADI)</string>
     <string name="max_energy_val_msg">Este valor está acima de 2000 kcal por 100g. Você pode corrigi-lo?</string>
@@ -743,23 +743,23 @@
     <string name="history_network_error">O produto não pôde ser carregado. Por favor, tente novamente quando estiver online novamente.</string>
     <string name="cant_modify_if_refreshing">Por favor, aguarde até que o envio termine</string>
     <string name="closeZoom">Clicar para fechar o zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">Ampliar</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Fechar</string>
-    <string name="tip_message">TIP: %1$s </string>
+    <string name="tip_message">DICA: %1$s </string>
     <string name="ingredient_analysis_tip">Clique nos ícones abaixo para saber mais sobre o produto e selecionar em quais informações está interessado.</string>
     <string name="got_it">Entendido!</string>
-    <string name="onboarding_hint_msg">Hint: %s </string>
-    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
-    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
-    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
-    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="onboarding_hint_msg">Dica: %s </string>
+    <string name="ingredient_image_edit_tip">Toque na imagem para ampliá-la, alterá-la, cortá-la, girá-la e mais…</string>
+    <string name="ingredients_in_this_product_are">Os ingredientes deste produto são %1$s.</string>
+    <string name="ingredients_in_this_product">Ingredientes neste produto que são %1$s:</string>
+    <string name="display_analysis_tag_status">Exibir status de %1$s</string>
     <string name="preference_header_display">Mostrar</string>
     <string name="unknown_status_no_translation">Não foi possível avaliar o estado do produto devido a ingredientes não reconhecidos.</string>
     <string name="help_translate_ingredients">Ajude a traduzir os ingredientes no seu idioma</string>
     <string name="unknown_status_missing_ingredients">Não foi possível avaliar o estado do produto devido à falta de ingredientes.</string>
     <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
-    <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status</string>
+    <string name="help_extract_ingredients">Ajude a extrair os ingredientes para obter o estado de %1$s</string>
     <string name="add_photo_to_extract_ingredients">Adicione uma foto para começar a extrair os ingredientes</string>
     <string name="product_already_exists_in_comparison">O produto já existe na lista de comparação</string>
     <string name="compare_brands">Marcas:</string>
@@ -791,10 +791,10 @@
     <string name="content_exit">Pressione aqui para retornar ao produto</string>
     <string name="icon_label">Ícone de rótulos</string>
     <string name="icon_categories">Ícone de categorias</string>
-    <string name="icon_emb">Traceability code icon</string>
+    <string name="icon_emb">Ícone de código de rastreabilidade</string>
     <string name="product_front_image">Imagem frontal do produto</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
-    <string name="sign_in_or_register">Sign in or register</string>
-    <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="brand_hint">Exemplos: Coca-Cola, Nestlé, etc…</string>
+    <string name="sign_in_or_register">Entrar ou registrar-se</string>
+    <string name="hunger_game_call_to_action">Ajude a classificar mais %1$s</string>
+    <string name="txtHomeOnline">O Open Food Facts é um banco de dados aberto com mais de %1$s produtos alimentícios (além daqueles que você irá contribuir).</string>
 </resources>
