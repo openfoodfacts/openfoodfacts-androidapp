@@ -39,7 +39,7 @@ Erstellen Sie Einkaufslisten, verfolgen Sie, was Sie gegessen haben, und teilen 
 
 ▶ Basierend auf Wissenschaft, hilft es der Wissenschaft zurück!
 
-- Wir denken uns das nicht aus. Wir stützen uns auf eine von Experten begutachtete Wissenschaft.
+- Wir erfinden keine Dinge. Wir stützen uns auf eine von Experten begutachtete Wissenschaft.
 • Der Nutri-Score wurde von dem unabhängigen französischen Team um Professor Hercberg erstellt.
 • Die NOVA-Gruppen zur Lebensmittelverarbeitung wurden vom internationalen Team von Professor Monteiro entworfen.
 • Sie können eine Synthese der EFSA-Expositionswerte für Lebensmittelzusatzstoffe erhalten.
