@@ -20,19 +20,19 @@
         <item quantity="other">Hai %d prodotti nella coda offline in attesa di essere contribuito a Open Food Facts</item>
     </plurals>
     <plurals name="seconds">
-        <item quantity="one">Un secondo fa</item>
+        <item quantity="one">%d secondo fa</item>
         <item quantity="other">%d secondi fa</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">Minuto fa%d</item>
+        <item quantity="one">%d minuto fa</item>
         <item quantity="other">%d minuti fa</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">Un\' ora fa</item>
+        <item quantity="one">%d ora fa</item>
         <item quantity="other">%d ore fa</item>
     </plurals>
     <plurals name="days">
-        <item quantity="one">Un giorno fa</item>
+        <item quantity="one">%d giorno fa</item>
         <item quantity="other">%d giorni fa</item>
     </plurals>
     <string name="action_about">Informazioni</string>
@@ -227,7 +227,7 @@
     <string name="your_lists">Le tue liste</string>
     <string name="title_dialog_alert">Aggiungi allarme</string>
     <string name="select_camera">Seleziona una fotocamera</string>
-    <string name="ok_button">Ok</string>
+    <string name="ok_button">OK</string>
     <string name="cancel_button">Annulla</string>
     <string name="login_button">Nome utente</string>
     <string name="create_account_button">Crea account</string>
@@ -384,7 +384,7 @@
     <string name="take_more_pictures">Fai ulteriori foto</string>
     <string name="txtSaturatedFat">Grassi saturi</string>
     <string name="nutriscore_info_msg">Ulteriori informazioni su Punteggio-Nutri</string>
-    <string name="nova_info_msg">Ulteriori informazioni sui gruppi NOVA</string>
+    <string name="nova_info_msg">Scopri di più sui gruppi NOVA</string>
     <string name="nova_grp1_msg">Gruppo 1 - Alimenti non trasformati o minimamente trasformati</string>
     <string name="nova_grp2_msg">Gruppo 2 - Ingredienti culinari elaborati</string>
     <string name="nova_grp3_msg">Gruppo 3 - Alimenti trasformati</string>
@@ -420,7 +420,7 @@
     <string name="preference_enable_mobile_data_summary_on">Carica nuovi prodotti utilizzando i dati mobili e WiFi</string>
     <string name="preference_enable_mobile_data_summary_off">Carica nuovi prodotti solo tramite WiFi</string>
     <string name="device_on_mobile_data_warning_title">Informazioni</string>
-    <string name="device_on_mobile_data_warning_message">Hai disabilitato il caricamento sui dati mobili, connettiti al WiFi o modificalo nelle preferenze</string>
+    <string name="device_on_mobile_data_warning_message">Il caricamento di dati sulla rete mobile è disattivato. Connettiti al Wi-Fi o modificalo nelle preferenze</string>
     <string name="device_on_mobile_data_warning_positive">Impostazioni</string>
     <string name="device_on_mobile_data_warning_negative">Carica comunque</string>
     <string name="changes_saved">Modifiche salvate correttamente</string>
@@ -758,7 +758,7 @@
     <string name="unknown_status_no_translation">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti non riconosciuti.</string>
     <string name="help_translate_ingredients">Aiuta a tradurre gli ingredienti nella tua lingua</string>
     <string name="unknown_status_missing_ingredients">Non siamo riusciti a valutare lo stato del prodotto a causa di ingredienti mancanti.</string>
-    <string name="unknown_status_ambiguous_ingredients">Non è stato possibile valutare lo stato del prodotto a causa di ingredienti ambigui: <![CDATA[<b>%1$s</b>]]></string>
+    <string name="unknown_status_ambiguous_ingredients">Impossibile valutare lo stato del prodotto a causa di ingredienti ambigui: <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Aiuta ad estrarre gli ingredienti per ottenere lo stato di %1$s.</string>
     <string name="add_photo_to_extract_ingredients">Aggiungi una foto per iniziare ad estrarre gli ingredienti</string>
     <string name="product_already_exists_in_comparison">Il prodotto esiste già nell\'elenco di confronto</string>
@@ -791,9 +791,9 @@
     <string name="content_exit">Premi qui per tornare al prodotto</string>
     <string name="icon_label">Icona etichette</string>
     <string name="icon_categories">Icona categorie</string>
-    <string name="icon_emb">Icona del codice di tracciabilità</string>
+    <string name="icon_emb">Icona codice di tracciabilità</string>
     <string name="product_front_image">Immagine frontale prodotto</string>
-    <string name="brand_hint">Esempi: Coca-Cola, Nestlé, ecc…</string>
+    <string name="brand_hint">Esempi: Coca-Cola, Nestle, ecc…</string>
     <string name="sign_in_or_register">Accedi o registrati</string>
     <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
     <string name="txtHomeOnline">Open Food Facts è un database aperto contenente più di %1$s prodotti alimentari (più quelli che aggiungerai).</string>
