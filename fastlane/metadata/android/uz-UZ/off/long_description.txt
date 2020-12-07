@@ -1,4 +1,4 @@
-Oziq-ovqat yoki shtrixkodni skanerdan o'tkazing va tarkibiy qismlari, ozuqaviy qiymati va qo'shimchalari haqida bilib oling.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
