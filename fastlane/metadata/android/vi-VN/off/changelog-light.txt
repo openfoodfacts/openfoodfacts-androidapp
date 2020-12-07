@@ -8,27 +8,27 @@ VERSION 3
 
 
 ======
-v2! Tất cả tình nguyện viên OFF đã làm việc chăm chỉ, dựa trên những lời gợi ý của bạn. Chúng tôi đang có những bước tiến toàn cầu hơn bao giờ hết. Bao gồm 500 ngàn sản phẩm tung ra trên 182 quốc gia và hơn 10 ngàn người đóng góp. Và cả bạn :-)
-1. NutriScore cho tất cả các sản phẩm trên toàn cầu
-2. Lịch sử chỉ bạn có thể nhìn thấy
-3. Cảnh báo dị ứng
-4. Nhấn thêm vào để khám phá với Wikipedia.
-5. Chụp ảnh, là một phần của sự minh bạch thực phẩm
-6. Nhanh hơn, kể cả khi sử dụng mạng 2G. Bạn có thể đóng góp ngay cả khi không có kết nối
-7. Không yêu cầu đăng nhập
-8. Nhẹ như trước :)
+v2 ! All OFF volunteers have worked hard, based on your suggestions. We're a more global movement than ever. 500k products freed, 182 countries, 10K+ contributors, incl. you :-)
+1. The NutriScore for all products in the world
+2. Exportable history, for your eyes only
+3. Allergen alerts
+4. Tap additives to explore with Wikipedia.
+5. Take photos, be part of food transparency
+6. Much faster, even on 2G. You can even contribute with no connection
+7. No sign-up required
+8. As light as before :)
 
-v2.8! Sau sự kiện khủng V2, tất cả tình nguyện viên OFF đều vẫn làm việc chăm chỉ, dựa trên lời gợi ý của bạn. Chúng tôi đã tung ra tổng cộng 570 ngàn sản phẩm trên 182 quốc gia bởi hơn 10 ngàn người đóng góp. Và cả bạn 🙂
-1. Chúng tôi đã tái xây dựng toàn bộ trải nghiệm bổ sung sản phẩm (và thậm chí hoạt động kể cả khi ngoại tuyến). (Cảm ơn Huzaifa)
-2. Bây giờ bạn có thể biết được thông tin dinh dưỡng cho khẩu phần mà bạn đang ăn (Rutvik)
-3. Chúng tôi hiện tai đang tính toán thêm các nhóm NOVA vào Nutriscore (Huzaifa)
-4. Dọn dẹp nhà cửa (bởi Rutvik và Salfai)
-5. 🌎 Tiếng Hàn và tiếng Indonesia
+v2.8 ! After the massive V2, all OFF volunteers kept working hard, based on your suggestions. We now clock at 570k products freed from 182 countries by 10K+ contributors, incl. you 🙂
+1. We rebuilt the whole product addition experience (and it even works offline). (thanks Huzaifa)
+2. You can now get nutrition facts for the portion you're eating (Rutvik)
+3. We now compute NOVA groups in addition to the Nutriscore (Huzaifa)
+4. Housecleaning (by Rutvik & Salfai)
+5. 🌎 Korean & Indonesian
 
-2.8.8! Chúng tôi sẽ ngừng cung cấp sản phẩm? Tất cả tình nguyện viên OFF đều đang làm việc chăm chỉ. Bao gồm 590 ngàn sản phẩm tung ra trên 182 quốc gia và hơn 10 ngàn người đóng góp. Và cả bạn 🙂
-1. Giờ bạn có thể chỉnh sửa bất cứ sản phẩm nào với tài khoản OFF của bạn. Nhấn vào ✏️ trên trang sản phẩm để chỉnh sửa.
-2. Tiếng Slovak, tiếng Do Thái, tiếng Tây Ban Nha, tiếng Ả Rập, tiếng Hà Lan, tiếng Hungary và tiếng Việt (dịch.openfoodfacts.org để giúp đỡ)
-3. Sự kiện thực phẩm mở là một nỗ lực hoàn toàn tự nguyện: Bạn có thể quyên góp thời gian (world.openfoodfacts.org/contribution) hoặc tiền (donate.openfoodfacts.org)
+2.8.8 ! Thought we would stop at product addition ? All OFF volunteers kept working hard. 590k products, 182 countries, 10K+ contributors, incl. you 🙂
+1. You can now edit any product with your OFF account. Click on ✏️ on a product page to edit.
+2. 🌍 Slovak, Hebrew, Spanish, Arabic, Dutch, Hungarian and Vietnamese (translate.openfoodfacts.org to help)
+3. Open Food Facts is a fully volunteer-run effort: You can donate time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
 
 
 
