@@ -28,11 +28,11 @@
     <string name="translate_help_title">Ajude a traduzir o Open Beauty Facts</string>
     <string name="translate_help_summary">Traga o banco de dados do Open Beauty Facts para o seu idioma - não é necessário conhecimento técnico</string>
     <string name="text_offline_info_dialog">Digitalize os produtos mesmo quando estiver offline, para adicioná-los posteriormente ao Open Beauty Facts. Os produtos digitalizados aparecerão aqui e você poderá enviá-los usando o botão abaixo.</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">A informação das suas alergias nunca será enviada para o servidor da Open Beauty Facts. Adicionalmente, tenha cuidado com potenciais erros nos dados e a detecção, que poderá não ser 100% arecisa, por favor confirme sempre por si mesmo! </string>
     <!-- OBF tagline in different languages -->
-    <string name="version_string">Open Beauty Facts Android App</string>
-    <string name="tagline">the free cosmetics database</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Beauty Facts. Can you add it?</string>
+    <string name="version_string">Aplicação para Android Open Beauty Facts</string>
+    <string name="tagline">a base de dados de cosméticos livre</string>
+    <string name="product_not_found">O produto %1$s que digitalizou ainda não existe no Open Food Facts. Pode adicioná-lo?</string>
     <string name="currently_on_version">Atualmente no Open Beauty Facts</string>
     <string name="category_game_btn">Ajude a categorizar produtos</string>
     <!-- TODO add true support instead of overriding strings -->
@@ -40,10 +40,10 @@
     <string name="add_category_prompt_text">Adicione uma categoria para ajudar a completar o produto</string>
     <string name="add_nutrient_category_prompt_text">Adicione uma categoria e mais detalhes para ajudar a completar o produto</string>
     <string name="required_to_compute_nutriscore"></string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Os Produtos que tenho</string>
     <string name="txt_products_to_buy">Produtos para comprar</string>
-    <string name="intent_filter_share_label">Add to Open Beauty Facts</string>
-    <string name="brand_hint">Examples: Nivea, L\'Oréal, etc…</string>
+    <string name="intent_filter_share_label">Adicionar a Open Beauty Facts</string>
+    <string name="brand_hint">Exemplos: Nivea, L\'Oréal, etc…</string>
     <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="OFFlogo">Open Beauty Facts logo</string>
