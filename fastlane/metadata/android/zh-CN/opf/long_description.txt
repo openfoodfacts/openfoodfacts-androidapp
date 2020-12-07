@@ -19,16 +19,16 @@
 在任何情况下都有效
 - 即使没有连接互联网，你也可以添加新的产品。
 - 应用程序仅加载严格必要以减少数据及电量消耗
-- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。 *** Your products, your data *** You can also type the barcode if you lack a camera or have an issue with it.
+- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。 - 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以输入条形码。 *** Your products, your data *** You can also type the barcode if you lack a camera or have an issue with it.
 
-*** Your products, your data ***
+- 您的个人数据只属于您，永远不会被上传。
 - 您的个人数据只属于您，永远不会被上传。
 - 您可以匿名使用该应用
 - 您可以导出历史记录
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
-
 Open Products Facts is also available on the web at https://world.openproductsfacts.org
+
+提问，反馈：
 提问，反馈： contact@openfoodfacts.org
 
 *** Original April's Fool Listing ***
