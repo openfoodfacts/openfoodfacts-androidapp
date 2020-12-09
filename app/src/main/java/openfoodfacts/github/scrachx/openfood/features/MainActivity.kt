@@ -252,15 +252,21 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     }
                 })
                 .addDrawerItems(
-                        PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(ITEM_HOME.toLong()),
+                        PrimaryDrawerItem().withName(R.string.home_drawer)
+                                .withIcon(GoogleMaterial.Icon.gmd_home)
+                                .withIdentifier(ITEM_HOME.toLong()),
                         SectionDrawerItem().withName(R.string.search_drawer),
-                        PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer).withIcon(GoogleMaterial.Icon.gmd_dialpad).withIdentifier(ITEM_SEARCH_BY_CODE.toLong()),
+                        PrimaryDrawerItem().withName(R.string.search_by_barcode_drawer)
+                                .withIcon(GoogleMaterial.Icon.gmd_dialpad)
+                                .withIdentifier(ITEM_SEARCH_BY_CODE.toLong()),
                         PrimaryDrawerItem().withName(R.string.search_by_category).withIcon(GoogleMaterial.Icon.gmd_filter_list).withIdentifier(ITEM_CATEGORIES.toLong()).withSelectable(false),
                         PrimaryDrawerItem().withName(R.string.additives).withIcon(R.drawable.ic_additives).withIdentifier(ITEM_ADDITIVES.toLong())
                                 .withSelectable(false),
                         PrimaryDrawerItem().withName(R.string.scan_search).withIcon(R.drawable.barcode_grey_24dp).withIdentifier(ITEM_SCAN.toLong()).withSelectable(false),
                         PrimaryDrawerItem().withName(R.string.compare_products).withIcon(GoogleMaterial.Icon.gmd_swap_horiz).withIdentifier(ITEM_COMPARE.toLong()).withSelectable(false),
-                        PrimaryDrawerItem().withName(R.string.advanced_search_title).withIcon(GoogleMaterial.Icon.gmd_insert_chart).withIdentifier(ITEM_ADVANCED_SEARCH.toLong())
+                        PrimaryDrawerItem().withName(R.string.advanced_search_title)
+                                .withIcon(GoogleMaterial.Icon.gmd_insert_chart)
+                                .withIdentifier(ITEM_ADVANCED_SEARCH.toLong())
                                 .withSelectable(false),
                         PrimaryDrawerItem().withName(R.string.scan_history_drawer).withIcon(GoogleMaterial.Icon.gmd_history).withIdentifier(ITEM_HISTORY.toLong()).withSelectable(false),
                         SectionDrawerItem().withName(R.string.user_drawer).withIdentifier(USER_ID),

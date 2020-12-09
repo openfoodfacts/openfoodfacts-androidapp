@@ -12,17 +12,13 @@ import openfoodfacts.github.scrachx.openfood.R
  * Based on
  * [](http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw></a>
  ) */
-class CustomEditTextView : AppCompatEditText {
-    constructor(context: Context?) : super(context!!)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        initAttrs(context, attrs)
-    }
+class CustomEditTextView @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : AppCompatEditText(context, attrs, defStyleAttr) {
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        initAttrs(context, attrs)
-    }
-
-    private fun initAttrs(context: Context, attrs: AttributeSet?) {
+    init {
         if (attrs != null) {
             val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomEditTextView)
             var drawableLeft: Drawable? = null
@@ -52,4 +48,5 @@ class CustomEditTextView : AppCompatEditText {
             attributeArray.recycle()
         }
     }
+
 }

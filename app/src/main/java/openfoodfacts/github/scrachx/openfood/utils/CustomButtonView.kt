@@ -10,20 +10,18 @@ import openfoodfacts.github.scrachx.openfood.R
 
 /**
  * Based on
- * [](http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw></a>
-  and <a href=)//medium.com/@elye.project/better-way-of-declaring-custom-view-attributes-23f876c28534>this
+ * [this](https://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw)
+ * and
+ * [this](https://medium.com/@elye.project/better-way-of-declaring-custom-view-attributes-23f876c28534)
  */
-class CustomButtonView : AppCompatButton {
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        initAttrs(context, attrs)
-    }
+class CustomButtonView @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : AppCompatButton(context, attrs, defStyleAttr) {
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        initAttrs(context, attrs)
-    }
 
-    private fun initAttrs(context: Context, attrs: AttributeSet?) {
+    init {
         if (attrs != null) {
             val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomButtonView)
             var drawableLeft: Drawable? = null
@@ -49,4 +47,5 @@ class CustomButtonView : AppCompatButton {
             attributeArray.recycle()
         }
     }
+
 }

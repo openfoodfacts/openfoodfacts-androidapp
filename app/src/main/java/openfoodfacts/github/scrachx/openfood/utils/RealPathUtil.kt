@@ -15,18 +15,15 @@ import android.provider.MediaStore
  * Retrieves path of a file from a content Uri.
  * From https://github.com/tatocaster
  */
+@Suppress("FunctionName")
 object RealPathUtil {
     fun getRealPath(context: Context, fileUri: Uri) =
             // SDK >= 11 && SDK < 19
-            if (Build.VERSION.SDK_INT < 19) {
-                getRealPathFromURI_API11to18(context, fileUri)
-            } else {
-                getRealPathFromURI_API19(context, fileUri)
-            }
+            if (Build.VERSION.SDK_INT < 19) getRealPathFromURI_API11to18(context, fileUri)
+            else getRealPathFromURI_API19(context, fileUri)
 
     @Suppress("DEPRECATION")
-    @SuppressLint("NewApi")
-    fun getRealPathFromURI_API11to18(context: Context?, contentUri: Uri?): String? {
+    private fun getRealPathFromURI_API11to18(context: Context?, contentUri: Uri?): String? {
         var result: String? = null
         val cursor = CursorLoader(
                 context,
@@ -55,7 +52,7 @@ object RealPathUtil {
      * @author paulburke
      */
     @SuppressLint("NewApi")
-    fun getRealPathFromURI_API19(context: Context, uri: Uri): String? {
+    private fun getRealPathFromURI_API19(context: Context, uri: Uri): String? {
         val isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
 
         // DocumentProvider
@@ -117,16 +114,12 @@ object RealPathUtil {
      * @param selectionArgs (Optional) Selection arguments used in the query.
      * @return The value of the _data column, which is typically a file path.
      */
-    fun getDataColumn(context: Context, uri: Uri?, selection: String?,
-                      selectionArgs: Array<String>?): String? {
+    private fun getDataColumn(context: Context, uri: Uri?, selection: String?, selectionArgs: Array<String>?): String? {
         var cursor: Cursor? = null
         val column = "_data"
-        val projection = arrayOf(
-                column
-        )
+        val projection = arrayOf(column)
         try {
-            cursor = context.contentResolver.query(uri!!, projection, selection, selectionArgs,
-                    null)
+            cursor = context.contentResolver.query(uri!!, projection, selection, selectionArgs, null)
             if (cursor != null && cursor.moveToFirst()) {
                 val index = cursor.getColumnIndexOrThrow(column)
                 return cursor.getString(index)
@@ -141,31 +134,23 @@ object RealPathUtil {
      * @param uri The Uri to check.
      * @return Whether the Uri authority is ExternalStorageProvider.
      */
-    fun isExternalStorageDocument(uri: Uri): Boolean {
-        return "com.android.externalstorage.documents" == uri.authority
-    }
+    private fun isExternalStorageDocument(uri: Uri) = uri.authority == "com.android.externalstorage.documents"
 
     /**
      * @param uri The Uri to check.
      * @return Whether the Uri authority is DownloadsProvider.
      */
-    fun isDownloadsDocument(uri: Uri): Boolean {
-        return "com.android.providers.downloads.documents" == uri.authority
-    }
+    private fun isDownloadsDocument(uri: Uri) = uri.authority == "com.android.providers.downloads.documents"
 
     /**
      * @param uri The Uri to check.
      * @return Whether the Uri authority is MediaProvider.
      */
-    fun isMediaDocument(uri: Uri): Boolean {
-        return "com.android.providers.media.documents" == uri.authority
-    }
+    private fun isMediaDocument(uri: Uri) = uri.authority == "com.android.providers.media.documents"
 
     /**
      * @param uri The Uri to check.
      * @return Whether the Uri authority is Google Photos.
      */
-    fun isGooglePhotosUri(uri: Uri): Boolean {
-        return "com.google.android.apps.photos.content" == uri.authority
-    }
+    private fun isGooglePhotosUri(uri: Uri) = uri.authority == "com.google.android.apps.photos.content"
 }

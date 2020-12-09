@@ -159,22 +159,24 @@ class ProductSearchActivity : BaseActivity() {
             // the user has entered the activity via a url
             val data = intent.data
             if (data != null) {
-                val paths = data.toString().split("/").toTypedArray()
+                // TODO: If we open advanced search from app it redirects here
+                val paths = data.toString().split("/")
                 mSearchInfo = SearchInfo.emptySearchInfo()
-                mSearchInfo.searchTitle = paths[4]
-                mSearchInfo.searchQuery = paths[4]
-                mSearchInfo.searchType = SearchType.fromUrl(paths[3])!!
                 if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
                     mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
                     mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
                     mSearchInfo.searchType = SearchType.SEARCH
+                } else {
+                    mSearchInfo.searchTitle = paths[4]
+                    mSearchInfo.searchQuery = paths[4]
+                    mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SearchType.SEARCH
                 }
             } else {
-                Log.i(javaClass.simpleName, "No data was passed in with URL. Exiting.")
+                Log.i(Companion.LOG_TAG, "No data was passed in with URL. Exiting.")
                 finish()
             }
         } else {
-            Log.e(javaClass.simpleName, "No data passed to the activity. Exiting.")
+            Log.e(Companion.LOG_TAG, "No data passed to the activity. Exiting.")
             finish()
         }
         newSearchQuery()
@@ -552,5 +554,7 @@ class ProductSearchActivity : BaseActivity() {
             intent.putExtra(SEARCH_INFO, searchInfo)
             context.startActivity(intent)
         }
+
+        private val LOG_TAG: String = ProductSearchActivity::class.simpleName!!
     }
 }

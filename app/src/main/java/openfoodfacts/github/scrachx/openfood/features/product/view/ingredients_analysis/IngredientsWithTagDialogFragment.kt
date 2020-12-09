@@ -56,7 +56,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         val ambiguousIngredient = arguments.getString(AMBIGUOUS_INGREDIENT_KEY)
         val ingredientsImageUrl = arguments.getString(INGREDIENTS_IMAGE_URL_KEY)
 
-        Utils.picassoBuilder(activity)
+        Utils.picassoBuilder(requireContext())
                 .load(iconUrl)
                 .into(binding.icon)
         binding.iconFrame.background = ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.rounded_button, requireActivity().theme)?.apply {
@@ -83,7 +83,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient))
             binding.helpNeeded.visibility = View.GONE
         } else if (showHelpTranslate && arguments.getBoolean(MISSING_INGREDIENTS_KEY, false)) {
-            Utils.picassoBuilder(activity)
+            Utils.picassoBuilder(requireContext())
                     .load(ingredientsImageUrl)
                     .into(binding.image)
             binding.image.setOnClickListener { goToExtract() }

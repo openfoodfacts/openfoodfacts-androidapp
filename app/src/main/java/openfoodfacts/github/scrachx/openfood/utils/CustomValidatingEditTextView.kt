@@ -9,7 +9,11 @@ import androidx.appcompat.widget.AppCompatEditText
 import com.google.android.material.textfield.TextInputLayout
 import openfoodfacts.github.scrachx.openfood.R
 
-class CustomValidatingEditTextView : AppCompatEditText {
+class CustomValidatingEditTextView @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : AppCompatEditText(context, attrs, defStyleAttr) {
     private val textInputLayout: TextInputLayout? by lazy {
         if (textInputLayoutId != NO_ID) {
             val view = rootView.findViewById<View>(textInputLayoutId)
@@ -63,29 +67,6 @@ class CustomValidatingEditTextView : AppCompatEditText {
 
     private var fieldName: String? = null
 
-    @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
-        initAttrs(context, attrs)
-    }
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        initAttrs(context, attrs)
-    }
-
-    private fun initAttrs(context: Context, attrs: AttributeSet?) {
-        if (attrs == null) {
-            return
-        }
-        val attributeArray = context.obtainStyledAttributes(
-                attrs,
-                R.styleable.CustomValidatingEditTextView
-        )
-        textInputLayoutId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_parentTextInputLayout, NO_ID)
-        attachedUnitSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedUnitSpinner, NO_ID)
-        attachedModSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedModSpinner, NO_ID)
-        fieldName = attributeArray.getString(R.styleable.CustomValidatingEditTextView_fieldName)
-        attributeArray.recycle()
-    }
 
     fun showError(message: String?) {
         val currentTil = textInputLayout
@@ -111,6 +92,20 @@ class CustomValidatingEditTextView : AppCompatEditText {
 
     val isValid: Boolean
         get() = !isError
+
+    init {
+        if (attrs != null) {
+            val attributeArray = context.obtainStyledAttributes(
+                    attrs,
+                    R.styleable.CustomValidatingEditTextView
+            )
+            textInputLayoutId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_parentTextInputLayout, NO_ID)
+            attachedUnitSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedUnitSpinner, NO_ID)
+            attachedModSpinnerId = attributeArray.getResourceId(R.styleable.CustomValidatingEditTextView_attachedModSpinner, NO_ID)
+            fieldName = attributeArray.getString(R.styleable.CustomValidatingEditTextView_fieldName)
+            attributeArray.recycle()
+        }
+    }
 
 
 }

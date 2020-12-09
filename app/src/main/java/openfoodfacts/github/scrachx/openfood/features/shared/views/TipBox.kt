@@ -56,13 +56,11 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
                 requestLayout()
             }
 
-            override fun willChangeBounds(): Boolean {
-                return true
-            }
+            override fun willChangeBounds() = true
         }
 
         // Expansion speed of 1dp/ms
-        anim.duration = ((targetHeight / context.resources.displayMetrics.density).roundToLong())
+        anim.duration = (targetHeight / context.resources.displayMetrics.density).roundToLong()
         startAnimation(anim)
     }
 
@@ -86,9 +84,7 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
                 }
             }
 
-            override fun willChangeBounds(): Boolean {
-                return true
-            }
+            override fun willChangeBounds() = true
         }
 
         // Collapse speed of 1dp/ms
@@ -98,9 +94,7 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
 
     fun loadToolTip() {
         val show = prefs.getBoolean(identifier, true)
-        if (!show) {
-            return
-        }
+        if (!show) return
         viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
             override fun onPreDraw(): Boolean {
                 val handler = rootView.handler ?: return true

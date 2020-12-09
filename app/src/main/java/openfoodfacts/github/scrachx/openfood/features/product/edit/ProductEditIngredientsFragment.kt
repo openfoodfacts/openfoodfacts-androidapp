@@ -55,8 +55,8 @@ import openfoodfacts.github.scrachx.openfood.utils.LOCALE_FILE_SCHEME
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.Utils
-import openfoodfacts.github.scrachx.openfood.utils.Utils.dpsToPixel
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
+import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
 import org.apache.commons.lang.StringUtils
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
@@ -210,7 +210,7 @@ class ProductEditIngredientsFragment : BaseFragment() {
         if (newImageIngredientsUrl != null && newImageIngredientsUrl.isNotEmpty()) {
             binding.imageProgress.visibility = View.VISIBLE
             imagePath = newImageIngredientsUrl
-            picassoBuilder(activity)
+            picassoBuilder(requireContext())
                     .load(newImageIngredientsUrl)
                     .resize(dps50ToPixels(), dps50ToPixels())
                     .centerInside()
@@ -279,7 +279,7 @@ class ProductEditIngredientsFragment : BaseFragment() {
         if (productDetails != null) {
             if (imageIngredients != null) {
                 binding.imageProgress.visibility = View.VISIBLE
-                picassoBuilder(activity)
+                picassoBuilder(requireContext())
                         .load(LOCALE_FILE_SCHEME + imageIngredients)
                         .resize(dps50ToPixels(), dps50ToPixels())
                         .centerInside()

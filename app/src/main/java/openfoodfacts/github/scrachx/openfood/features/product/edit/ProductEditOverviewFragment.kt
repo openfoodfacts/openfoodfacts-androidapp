@@ -74,7 +74,6 @@ import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.Utils.dpsToPixel
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.apache.commons.lang.StringUtils
 import org.greenrobot.greendao.async.AsyncOperation
@@ -350,7 +349,7 @@ class ProductEditOverviewFragment : BaseFragment() {
             frontImageUrl = imageFrontUrl
             binding.imageProgress.visibility = View.VISIBLE
             binding.btnEditImgFront.visibility = View.INVISIBLE
-            picassoBuilder(activity)
+            picassoBuilder(requireContext())
                     .load(imageFrontUrl)
                     .resize(dpsToPixel(50, activity), dpsToPixel(50, activity))
                     .centerInside()

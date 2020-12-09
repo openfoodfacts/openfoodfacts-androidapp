@@ -23,7 +23,7 @@ import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
-import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel
+import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import retrofit2.Call
 import retrofit2.Response
@@ -308,7 +308,7 @@ interface ProductsAPI {
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-" + BuildConfig.FLAVOR + ".json")
-    fun getTagline(@Header("User-Agent") header: String?): Single<ArrayList<TaglineLanguageModel>>
+    fun getTagline(@Header("User-Agent") header: String?): Single<ArrayList<TagLineLanguage>>
 
     /**
      * Returns images for the current product

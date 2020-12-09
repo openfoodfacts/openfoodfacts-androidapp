@@ -39,10 +39,12 @@ class SearchByCodeFragment : NavigationBaseFragment() {
         binding.editTextBarcode.isSelected = false
         binding.buttonBarcode.setOnClickListener { checkBarcodeThenSearch() }
 
-
-        val intent = requireActivity().intent
-        val barCode = intent.getStringExtra(INTENT_KEY_BARCODE)
-        if (!barCode.isNullOrEmpty()) {
+        // Get barcode from intent or saved instance or from arguments, in this order
+        var barCode = requireActivity().intent.getStringExtra(INTENT_KEY_BARCODE)
+        if (barCode.isNullOrBlank()) {
+            barCode = savedInstanceState?.getString(INTENT_KEY_BARCODE) ?: arguments?.getString(INTENT_KEY_BARCODE)
+        }
+        if (!barCode.isNullOrBlank()) {
             setBarcodeThenSearch(barCode)
         }
 
@@ -79,5 +81,10 @@ class SearchByCodeFragment : NavigationBaseFragment() {
 
     companion object {
         const val INTENT_KEY_BARCODE = "barcode"
+        fun newInstance(barcode: String) = SearchByCodeFragment().apply {
+            arguments = Bundle().apply {
+                putString(INTENT_KEY_BARCODE, barcode)
+            }
+        }
     }
 }

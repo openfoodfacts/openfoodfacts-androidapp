@@ -51,8 +51,6 @@ import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.hasUnit
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isDifferent
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isNotEmpty
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
-import openfoodfacts.github.scrachx.openfood.utils.Utils.dpsToPixel
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getViewsByType
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.apache.commons.lang.ObjectUtils
 import org.apache.commons.lang.StringUtils
@@ -410,7 +408,7 @@ class ProductEditNutritionFactsFragment : BaseFragment() {
      * @param path path of the image
      */
     private fun loadNutritionsImage(path: String) {
-        picassoBuilder(activity)
+        picassoBuilder(requireContext())
                 .load(path)
                 .resize(dpsToPixel(50, getActivity()), dpsToPixel(50, getActivity()))
                 .centerInside()
@@ -562,7 +560,7 @@ class ProductEditNutritionFactsFragment : BaseFragment() {
 
     fun updateSodiumValue() {
         if (requireActivity().currentFocus === binding.salt) {
-            val saltValue = getDoubleValue(binding.salt)
+            val saltValue = binding.salt.getDoubleValue()
             if (saltValue != null) {
                 val sodiumValue = UnitUtils.saltToSodium(saltValue)
                 binding.sodium.setText(sodiumValue.toString())
@@ -572,7 +570,7 @@ class ProductEditNutritionFactsFragment : BaseFragment() {
 
     fun updateSaltValue() {
         if (requireActivity().currentFocus === binding.sodium) {
-            val sodiumValue = getDoubleValue(binding.sodium)
+            val sodiumValue = binding.sodium.getDoubleValue()
             if (sodiumValue != null) {
                 val saltValue = UnitUtils.sodiumToSalt(sodiumValue)
                 binding.salt.setText(saltValue.toString())
@@ -734,7 +732,7 @@ class ProductEditNutritionFactsFragment : BaseFragment() {
         get() {
             var reference = 100f
             if (binding.radioGroup.checkedRadioButtonId != R.id.for100g_100ml) {
-                reference = getFloatValueOrDefault(binding.servingSize, reference)
+                reference = binding.servingSize.getFloatValueOr(reference)
                 reference = UnitUtils.convertToGrams(reference, SERVING_UNITS[binding.servingSize.unitSpinner!!.selectedItemPosition])
             }
             return reference
@@ -843,8 +841,8 @@ class ProductEditNutritionFactsFragment : BaseFragment() {
         if (ValueState.NOT_VALID == res) {
             return res
         }
-        var carbsValue = getFloatValueOrDefault(binding.carbohydrates, 0f)
-        var sugarValue = getFloatValueOrDefault(binding.sugars, 0f)
+        var carbsValue = binding.carbohydrates.getFloatValueOr(0f)
+        var sugarValue = binding.sugars.getFloatValueOr(0f)
         // check that value of (sugar + starch) is not greater than value of carbohydrates
         //convert all the values to grams
         carbsValue = convertToGrams(carbsValue, binding.carbohydrates.unitSpinner!!.selectedItemPosition)
@@ -866,7 +864,7 @@ class ProductEditNutritionFactsFragment : BaseFragment() {
             if (isDataPer100g) {
                 return ValueState.VALID
             }
-            val value = getFloatValueOrDefault(binding.servingSize, 0f)
+            val value = binding.servingSize.getFloatValueOr(0f)
             if (value <= 0) {
                 editText.showError(getString(R.string.error_nutrient_serving_data))
                 return ValueState.NOT_VALID

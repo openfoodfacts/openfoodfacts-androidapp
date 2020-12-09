@@ -12,7 +12,7 @@ class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : R
     override fun createWork(): Single<Result> {
         val includeImages = inputData.getBoolean(KEY_INCLUDE_IMAGES, false)
         Log.d(WORK_TAG, "[START] doWork with includeImages: $includeImages")
-        return OfflineProductService.sharedInstance().uploadAll(includeImages).map { shouldRetry ->
+        return OfflineProductService.uploadAll(includeImages).map { shouldRetry ->
             if (shouldRetry) {
                 Log.d(WORK_TAG, "[RETRY] doWork with includeImages: $includeImages")
                 return@map Result.retry()

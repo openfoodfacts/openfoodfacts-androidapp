@@ -34,9 +34,9 @@ import openfoodfacts.github.scrachx.openfood.utils.InstallationUtils
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getVersionName
 import openfoodfacts.github.scrachx.openfood.utils.Utils.httpClientBuilder
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
+import openfoodfacts.github.scrachx.openfood.utils.getVersionName
 import org.jetbrains.annotations.Contract
 import retrofit2.Call
 import retrofit2.Callback

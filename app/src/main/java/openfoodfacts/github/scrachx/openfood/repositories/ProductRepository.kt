@@ -678,7 +678,7 @@ object ProductRepository {
                     if (questions.isNotEmpty()) {
                         return@map questions[0]
                     }
-                    QuestionsState.EMPTY_QUESTION
+                    return@map Question()
                 }
     }
 

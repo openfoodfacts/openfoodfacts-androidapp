@@ -10,7 +10,5 @@ enum class ProductImageField {
     FRONT, INGREDIENTS, NUTRITION, PACKAGING, OTHER;
 
     @JsonValue
-    override fun toString(): String {
-        return name.toLowerCase(ROOT)
-    }
+    override fun toString() = name.toLowerCase(ROOT)
 }

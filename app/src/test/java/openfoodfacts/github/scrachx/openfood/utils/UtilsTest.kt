@@ -6,35 +6,35 @@ import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
 import org.junit.Test
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import java.util.*
+import org.mockito.Mockito.`when` as mockitoWhen
 
 class UtilsTest {
     @Test
-    fun getImageGrade() {
+    fun testGetImageGrade() {
         val mockProduct = mock(Product::class.java)
 
-        `when`(mockProduct.nutritionGradeFr).thenReturn("a")
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_a)
+        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("a")
+        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_a)
 
-        `when`(mockProduct.nutritionGradeFr).thenReturn("b")
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_b)
+        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("b")
+        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_b)
 
-        `when`(mockProduct.nutritionGradeFr).thenReturn("c")
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_c)
+        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("c")
+        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_c)
 
-        `when`(mockProduct.nutritionGradeFr).thenReturn("d")
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_d)
+        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("d")
+        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_d)
 
-        `when`(mockProduct.nutritionGradeFr).thenReturn("e")
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(R.drawable.ic_nutriscore_e)
+        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("e")
+        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_e)
 
-        `when`(mockProduct.nutritionGradeFr).thenReturn("")
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
+        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("")
+        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
 
-        `when`(mockProduct.nutritionGradeFr).thenReturn(null)
-        assertThat(Utils.getImageGrade(mockProduct)).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
+        mockitoWhen(mockProduct.nutritionGradeFr).thenReturn(null)
+        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
     }
 
     @Test
@@ -61,15 +61,15 @@ class UtilsTest {
         val mockCtx = mock(Context::class.java)
         val mockPM = mock(PackageManager::class.java)
 
-        `when`(mockCtx.packageManager).thenReturn(mockPM)
+        mockitoWhen(mockCtx.packageManager).thenReturn(mockPM)
 
         // Test for best condition
-        `when`(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
+        mockitoWhen(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
                 .thenReturn(true)
         assertThat(Utils.isHardwareCameraInstalled(mockCtx)).isTrue()
 
         // False condition
-        `when`(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
+        mockitoWhen(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
                 .thenReturn(false)
 
         assertThat(Utils.isHardwareCameraInstalled(mockCtx)).isFalse()

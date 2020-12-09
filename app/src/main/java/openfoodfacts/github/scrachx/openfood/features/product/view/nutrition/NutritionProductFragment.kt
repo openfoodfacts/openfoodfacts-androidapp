@@ -212,13 +212,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Utils.picassoBuilder(context)
+                Utils.picassoBuilder(requireContext())
                         .load(product.getImageNutritionUrl(langCode))
                         .into(binding.imageViewNutrition)
             } else {
                 binding.imageViewNutrition.visibility = View.GONE
             }
-            Utils.picassoBuilder(context)
+            Utils.picassoBuilder(requireContext())
                     .load(product.getImageNutritionUrl(langCode))
                     .into(binding.imageViewNutrition)
             nutrientsImageUrl = product.getImageNutritionUrl(langCode)
@@ -383,7 +383,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     }
 
     private fun drawNutritionGrade() {
-        val nutritionGrade = getImageGradeDrawable(requireActivity(), product)
+        val nutritionGrade = product.getImageGradeDrawable(requireActivity())
         if (nutritionGrade != null) {
             binding.imageGradeLayout.visibility = View.VISIBLE
             binding.imageGrade.setImageDrawable(nutritionGrade)

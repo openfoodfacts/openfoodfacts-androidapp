@@ -107,7 +107,7 @@ class CategoryProductHelper(
             )
             append(riskAlcoholConsumption)
             setSpan(
-                    ForegroundColorSpan(Utils.getColor(baseFragment.context, R.color.red)),
+                    ForegroundColorSpan(Utils.getColor(baseFragment.requireContext(), R.color.red)),
                     length - riskAlcoholConsumption.length,
                     length,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE

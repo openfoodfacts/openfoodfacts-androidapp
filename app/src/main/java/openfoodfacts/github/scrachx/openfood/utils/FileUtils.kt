@@ -7,13 +7,9 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import org.jetbrains.annotations.Contract
 
-fun isLocaleFile(url: String?): Boolean {
-    return url?.startsWith(LOCALE_FILE_SCHEME) == true
-}
+fun isLocaleFile(url: String?) = url?.startsWith(LOCALE_FILE_SCHEME) ?: false
 
-fun isAbsoluteUrl(url: String?): Boolean {
-    return url?.startsWith("/") == true
-}
+fun isAbsoluteUrl(url: String?) = url?.startsWith("/") ?: false
 
 @Contract(pure = true)
 fun getCsvFolderName() = when (BuildConfig.FLAVOR) {

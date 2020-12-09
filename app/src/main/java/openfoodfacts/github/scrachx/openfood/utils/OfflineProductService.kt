@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
-import android.text.TextUtils
 import android.util.Log
 import io.reactivex.Single
 import okhttp3.MediaType
@@ -18,12 +17,7 @@ import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.util.*
 
-class OfflineProductService private constructor() {
-
-    private object Loader {
-        // static synchronized singleton
-        val INSTANCE = OfflineProductService()
-    }
+object OfflineProductService {
 
     /**
      * @return true if there is still products to upload, false otherwise
@@ -139,48 +133,39 @@ class OfflineProductService private constructor() {
         }
     }
 
-    companion object {
-        private val LOG_TAG = this::class.simpleName!!
-        private val offlineProductDAO = OFFApplication.daoSession.offlineSavedProductDao
+    private val LOG_TAG = OfflineProductService::class.simpleName!!
+    private val offlineProductDAO = OFFApplication.daoSession.offlineSavedProductDao
 
-        fun sharedInstance(): OfflineProductService {
-            return Loader.INSTANCE
-        }
+    fun getOfflineProductByBarcode(barcode: String?): OfflineSavedProduct =
+            offlineProductDAO.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode)).unique()
 
-        @JvmStatic
-        fun getOfflineProductByBarcode(barcode: String?): OfflineSavedProduct {
-            return offlineProductDAO.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode)).unique()
-        }
+    private val listOfflineProducts = offlineProductDAO.queryBuilder()
+            .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
+            .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
+            .list()
+    private val listOfflineProductsWithoutDataSynced = offlineProductDAO.queryBuilder()
+            .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
+            .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
+            .where(OfflineSavedProductDao.Properties.IsDataUploaded.notEq(true))
+            .list()
 
-        private val listOfflineProducts = offlineProductDAO.queryBuilder()
-                .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
-                .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
-                .list()
-        private val listOfflineProductsWithoutDataSynced = offlineProductDAO.queryBuilder()
-                .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
-                .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
-                .where(OfflineSavedProductDao.Properties.IsDataUploaded.notEq(true))
-                .list()
-
-        private fun imageTypeFromImageField(imageField: ProductImageField) = when (imageField) {
-            ProductImageField.FRONT -> "front"
-            ProductImageField.INGREDIENTS -> "ingredients"
-            ProductImageField.NUTRITION -> "nutrition"
-            else -> "other"
-        }
-
-        private fun needImageUpload(productDetails: HashMap<String, String>, imageType: String): Boolean {
-            val imageUploaded = "true" == productDetails["image_${imageType}_uploaded"]
-            val imageFilePath = productDetails["image_$imageType"]
-            return !imageUploaded && !TextUtils.isEmpty(imageFilePath)
-        }
-
-        private fun createRequestBodyMap(code: String, productDetails: HashMap<String, String>, front: ProductImageField): MutableMap<String, RequestBody> {
-            val barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
-            val imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), "${front}_${productDetails["lang"]}")
-
-            return hashMapOf("code" to barcode, "imagefield" to imageField)
-        }
+    private fun imageTypeFromImageField(imageField: ProductImageField) = when (imageField) {
+        ProductImageField.FRONT -> "front"
+        ProductImageField.INGREDIENTS -> "ingredients"
+        ProductImageField.NUTRITION -> "nutrition"
+        else -> "other"
     }
 
+    private fun needImageUpload(productDetails: HashMap<String, String>, imageType: String): Boolean {
+        val imageUploaded = productDetails["image_${imageType}_uploaded"].toBoolean()
+        val imageFilePath = productDetails["image_$imageType"]
+        return !(imageUploaded || imageFilePath.isNullOrEmpty())
+    }
+
+    private fun createRequestBodyMap(code: String, productDetails: HashMap<String, String>, front: ProductImageField): MutableMap<String, RequestBody> {
+        val barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
+        val imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), "${front}_${productDetails["lang"]}")
+
+        return hashMapOf("code" to barcode, "imagefield" to imageField)
+    }
 }

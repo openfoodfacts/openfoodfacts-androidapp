@@ -9,8 +9,8 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.DEFAULT_MODIFIER
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertFromGram
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertToGrams
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getModifierNonDefault
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
+import openfoodfacts.github.scrachx.openfood.utils.getModifierNonDefault
 import org.apache.commons.lang.StringUtils
 import org.jetbrains.annotations.Contract
 import java.io.Serializable

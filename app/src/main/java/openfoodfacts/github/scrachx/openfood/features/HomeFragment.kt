@@ -40,7 +40,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
-import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel
+import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
@@ -200,7 +200,7 @@ class HomeFragment : NavigationBaseFragment() {
         compDisp.add(api.getTagline(getUserAgent())
                 .subscribeOn(Schedulers.io()) // io for network
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
-                .subscribe({ models: ArrayList<TaglineLanguageModel> ->
+                .subscribe({ models: ArrayList<TagLineLanguage> ->
                     val locale = LocaleHelper.getLocale(context)
                     val localAsString = locale.toString()
                     var isLanguageFound = false
@@ -209,15 +209,15 @@ class HomeFragment : NavigationBaseFragment() {
                         val languageCountry = tagLine.language
                         if (!isExactLanguageFound && (languageCountry == localAsString || languageCountry.contains(localAsString))) {
                             isExactLanguageFound = languageCountry == localAsString
-                            taglineURL = tagLine.taglineModel.url
-                            binding.tvDailyFoodFact.text = tagLine.taglineModel.message
+                            taglineURL = tagLine.tagLine.url
+                            binding.tvDailyFoodFact.text = tagLine.tagLine.message
                             binding.tvDailyFoodFact.visibility = View.VISIBLE
                             isLanguageFound = true
                         }
                     }
                     if (!isLanguageFound) {
-                        taglineURL = models[models.size - 1].taglineModel.url
-                        binding.tvDailyFoodFact.text = models[models.size - 1].taglineModel.message
+                        taglineURL = models[models.size - 1].tagLine.url
+                        binding.tvDailyFoodFact.text = models[models.size - 1].tagLine.message
                         binding.tvDailyFoodFact.visibility = View.VISIBLE
                     }
                 }) { e -> Log.e(LOG_TAG, "Could not retrieve tag-line from server.", e) })

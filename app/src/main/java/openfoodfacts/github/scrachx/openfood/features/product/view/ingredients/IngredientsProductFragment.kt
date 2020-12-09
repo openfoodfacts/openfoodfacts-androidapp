@@ -177,7 +177,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Utils.picassoBuilder(context)
+                Utils.picassoBuilder(requireContext())
                         .load(product.getImageIngredientsUrl(langCode))
                         .into(binding.imageViewIngredients)
             } else {
@@ -231,10 +231,11 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         } else {
             binding.cvTextTraceProduct.visibility = View.GONE
         }
-        if (product.novaGroups != null) {
+        val novaGroups = product.novaGroups
+        if (novaGroups != null) {
             binding.novaLayout.visibility = View.VISIBLE
-            binding.novaExplanation.text = Utils.getNovaGroupExplanation(product.novaGroups, requireContext())
-            binding.novaGroup.setImageResource(Utils.getNovaGroupDrawable(product))
+            binding.novaExplanation.text = Utils.getNovaGroupExplanation(novaGroups, requireContext()) ?: ""
+            binding.novaGroup.setImageResource(product.getNovaGroupDrawable())
             binding.novaGroup.setOnClickListener {
                 val uri = Uri.parse(getString(R.string.url_nova_groups))
                 val tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)

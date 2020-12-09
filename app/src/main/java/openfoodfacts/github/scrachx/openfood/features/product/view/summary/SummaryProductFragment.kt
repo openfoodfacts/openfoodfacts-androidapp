@@ -267,7 +267,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Utils.picassoBuilder(context)
+                Utils.picassoBuilder(requireContext())
                         .load(imageUrl)
                         .into(binding.imageViewFront)
             } else {
@@ -414,7 +414,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     private fun refreshNutriScore() {
-        val nutritionGradeResource = getImageGradeDrawable(requireContext(), product)
+        val nutritionGradeResource = product.getImageGradeDrawable(requireContext())
         if (nutritionGradeResource != null) {
             binding.imageGrade.visibility = View.VISIBLE
             binding.imageGrade.setImageDrawable(nutritionGradeResource)
@@ -430,7 +430,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     private fun refreshNovaIcon() {
         if (product.novaGroups != null) {
             binding.novaGroup.visibility = View.VISIBLE
-            binding.novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.novaGroups))
+            binding.novaGroup.setImageResource(product.getNovaGroupDrawable())
             binding.novaGroup.setOnClickListener {
                 val uri = Uri.parse(getString(R.string.url_nova_groups))
                 val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
@@ -445,8 +445,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     private fun refreshCO2OrEcoscoreIcon() {
         binding.ecoscoreIcon.visibility = View.GONE
         binding.co2Icon.visibility = View.GONE
-        val ecoScoreRes = Utils.getImageEcoscore(product)
-        val environmentImpactResource = Utils.getImageEnvironmentImpact(product)
+        val ecoScoreRes = product.getEcoscoreDrawable()
+        val environmentImpactResource = product.getCO2Drawable()
         if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
             binding.ecoscoreIcon.setImageResource(ecoScoreRes)
             binding.ecoscoreIcon.visibility = View.VISIBLE
@@ -545,7 +545,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         }
         if (!question.isEmpty()) {
             productQuestion = question
-            binding.productQuestionText.text = "${question.question}\n${question.value}"
+            binding.productQuestionText.text = "${question.questionText}\n${question.value}"
             binding.productQuestionLayout.visibility = View.VISIBLE
             hasCategoryInsightQuestion = question.insightType == "category"
         } else {
@@ -562,7 +562,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         productQuestion?.let {
             QuestionDialog(requireActivity()).run {
                 backgroundColor = (R.color.colorPrimaryDark)
-                question = productQuestion!!.question
+                question = productQuestion!!.questionText
                 value = productQuestion!!.value
                 onPositiveFeedback = { dialog: QuestionDialog ->
                     //init POST request

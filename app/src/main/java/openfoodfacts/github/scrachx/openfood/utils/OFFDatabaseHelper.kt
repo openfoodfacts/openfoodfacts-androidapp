@@ -30,16 +30,12 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import org.greenrobot.greendao.database.Database
 
-class OFFDatabaseHelper : OpenHelper {
-    private val settings: SharedPreferences?
-
-    constructor(context: Context, name: String?, factory: CursorFactory?) : super(context, name, factory) {
-        settings = context.getSharedPreferences("prefs", 0)
-    }
-
-    constructor(context: Context, name: String?) : super(context, name) {
-        settings = context.getSharedPreferences("prefs", 0)
-    }
+class OFFDatabaseHelper @JvmOverloads constructor(
+        context: Context,
+        name: String?,
+        factory: CursorFactory? = null
+) : OpenHelper(context, name, factory) {
+    private val settings: SharedPreferences? = context.getSharedPreferences("prefs", 0)
 
     override fun onCreate(db: Database) {
         Log.i(LOG_TAG, "Creating tables for schema version " + DaoMaster.SCHEMA_VERSION)

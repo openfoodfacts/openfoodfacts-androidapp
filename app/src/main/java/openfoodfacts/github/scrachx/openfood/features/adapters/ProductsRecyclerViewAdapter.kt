@@ -16,8 +16,8 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAct
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.localeProductNameField
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getSmallImageGrade
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreSmallDrawable
 import org.apache.commons.lang.StringUtils
 
 /**
@@ -82,7 +82,7 @@ class ProductsRecyclerViewAdapter(
             holder.vProductName.text = productNameInLocale
         }
         val brandsQuantityDetails = getProductBrandsQuantityDetails(product)
-        val gradeResource = getSmallImageGrade(product)
+        val gradeResource = product.getNutriScoreSmallDrawable()
         if (gradeResource != 0) {
             holder.vProductGrade.visibility = View.VISIBLE
             holder.vProductGrade.setImageResource(gradeResource)

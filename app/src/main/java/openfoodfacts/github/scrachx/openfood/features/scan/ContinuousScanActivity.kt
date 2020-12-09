@@ -243,9 +243,9 @@ class ContinuousScanActivity : AppCompatActivity() {
 
                         // Show nutriscore in quickView only if app flavour is OFF and the product has one
                         if (isFlavors(AppFlavors.OFF) && product.getNutritionGradeTag() != null) {
-                            if (Utils.getImageGrade(product.getNutritionGradeTag()) != Utils.NO_DRAWABLE_RESOURCE) {
+                            if (getNutriScoreDrawable(product.getNutritionGradeTag()) != Utils.NO_DRAWABLE_RESOURCE) {
                                 binding.quickViewNutriScore.visibility = View.VISIBLE
-                                binding.quickViewNutriScore.setImageResource(Utils.getImageGrade(product.nutritionGradeFr))
+                                binding.quickViewNutriScore.setImageResource(getNutriScoreDrawable(product.nutritionGradeFr))
                             } else {
                                 binding.quickViewNutriScore.visibility = View.INVISIBLE
                             }
@@ -255,7 +255,7 @@ class ContinuousScanActivity : AppCompatActivity() {
 
                         // Show nova group in quickView only if app flavour is OFF and the product has one
                         if (isFlavors(AppFlavors.OFF) && product.novaGroups != null) {
-                            val novaGroupDrawable = Utils.getNovaGroupDrawable(product)
+                            val novaGroupDrawable = product.getNovaGroupDrawable()
                             if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
                                 binding.quickViewNovaGroup.visibility = View.VISIBLE
                                 binding.quickViewAdditives.visibility = View.VISIBLE
@@ -270,8 +270,8 @@ class ContinuousScanActivity : AppCompatActivity() {
                         // If the product has an ecoscore, show it instead of the CO2 icon
                         binding.quickViewEcoscoreIcon.visibility = View.GONE
                         binding.quickViewCo2Icon.visibility = View.GONE
-                        val ecoScoreRes = Utils.getImageEcoscore(product)
-                        val co2Res = Utils.getImageEnvironmentImpact(product)
+                        val ecoScoreRes = product.getEcoscoreDrawable()
+                        val co2Res = product.getCO2Drawable()
                         if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
                             binding.quickViewEcoscoreIcon.setImageResource(ecoScoreRes)
                             binding.quickViewEcoscoreIcon.visibility = View.VISIBLE

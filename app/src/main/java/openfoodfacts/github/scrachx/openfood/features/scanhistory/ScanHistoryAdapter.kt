@@ -14,7 +14,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getSmallImageGrade
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -43,8 +42,8 @@ class ScanHistoryAdapter(
             isFlavors(OPF, OPFF, OBF) -> {
                 holder.imgNutritionGrade.visibility = View.GONE
             }
-            getSmallImageGrade(item.nutritionGrade) != 0 -> {
-                holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(context, getSmallImageGrade(item.nutritionGrade)))
+            getNutriScoreSmallDrawable(item.nutritionGrade) != 0 -> {
+                holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(context, getNutriScoreSmallDrawable(item.nutritionGrade)))
             }
             else -> {
                 holder.imgNutritionGrade.visibility = View.INVISIBLE

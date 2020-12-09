@@ -1,6 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.models
 
-import com.fasterxml.jackson.annotation.*
+import com.fasterxml.jackson.annotation.JsonAnyGetter
+import com.fasterxml.jackson.annotation.JsonAnySetter
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.fasterxml.jackson.annotation.JsonProperty
+import org.apache.commons.lang.builder.ToStringBuilder
 import java.io.Serializable
 import java.util.*
 
@@ -16,27 +20,21 @@ class NutrientLevels : Serializable {
     @JsonProperty("saturated-fat")
     var saturatedFat: NutrimentLevel? = null
 
-    @JsonIgnore
-    private val additionalProperties: MutableMap<String, Any> = HashMap()
-    @JsonAnyGetter
-    fun getAdditionalProperties(): Map<String, Any> {
-        return additionalProperties
-    }
+    @get:JsonAnyGetter
+    val additionalProperties: MutableMap<String, Any> = HashMap()
 
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any) {
         additionalProperties[name] = value
     }
 
-    override fun toString(): String {
-        return """NutrientLevels{
-            |salt='$salt', 
-            |fat='$fat', 
-            |sugars='$sugars', 
-            |saturatedFat='$saturatedFat', 
-            |additionalProperties=$additionalProperties
-            |}""".trimMargin()
-    }
+    override fun toString() = ToStringBuilder(this)
+            .append(salt)
+            .append(fat)
+            .append(sugars)
+            .append(saturatedFat)
+            .append(additionalProperties)
+            .toString()
 
     companion object {
         private const val serialVersionUID = 1L

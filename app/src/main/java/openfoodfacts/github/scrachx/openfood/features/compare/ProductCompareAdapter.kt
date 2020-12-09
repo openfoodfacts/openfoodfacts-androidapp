@@ -165,7 +165,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         // Open Food Facts specific
         if (isFlavors(AppFlavors.OFF)) {
             // NutriScore
-            val nutritionGradeResource = getImageGradeDrawable(activity, product)
+            val nutritionGradeResource = product.getImageGradeDrawable(activity)
             if (nutritionGradeResource != null) {
                 holder.productComparisonImageGrade.visibility = View.VISIBLE
                 holder.productComparisonImageGrade.setImageDrawable(nutritionGradeResource)
@@ -175,13 +175,13 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
 
             // Nova group
             if (product.novaGroups != null) {
-                holder.productComparisonNovaGroup.setImageResource(Utils.getNovaGroupDrawable(product.novaGroups))
+                holder.productComparisonNovaGroup.setImageResource(product.getNovaGroupDrawable())
             } else {
                 holder.productComparisonNovaGroup.visibility = View.INVISIBLE
             }
 
             // Environment impact
-            val environmentImpactResource = Utils.getImageEnvironmentImpact(product)
+            val environmentImpactResource = product.getCO2Drawable()
             if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
                 holder.productComparisonCo2Icon.visibility = View.VISIBLE
                 holder.productComparisonCo2Icon.setImageResource(environmentImpactResource)

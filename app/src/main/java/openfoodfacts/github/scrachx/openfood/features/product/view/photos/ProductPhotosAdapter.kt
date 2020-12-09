@@ -16,7 +16,7 @@ import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.createJsonObject
 import org.json.JSONException
 
 /**
@@ -56,7 +56,7 @@ class ProductPhotosAdapter(
 
 
     fun displaySetImageName(response: String?) {
-        val jsonObject = Utils.createJsonObject(response)
+        val jsonObject = createJsonObject(response)
         val imageName: String
         imageName = try {
             jsonObject!!.getString("imagefield")
