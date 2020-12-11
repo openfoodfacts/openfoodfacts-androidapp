@@ -163,12 +163,12 @@ class ProductSearchActivity : BaseActivity() {
                 mSearchInfo = SearchInfo.emptySearchInfo()
                 mSearchInfo.searchTitle = paths[4]
                 mSearchInfo.searchQuery = paths[4]
-                mSearchInfo.searchType = SearchType.fromUrl(paths[3])!!
                 if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
                     mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
                     mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
                     mSearchInfo.searchType = SearchType.SEARCH
-                }
+                } else
+                    mSearchInfo.searchType = SearchType.fromUrl(paths[3])!!
             } else {
                 Log.i(javaClass.simpleName, "No data was passed in with URL. Exiting.")
                 finish()
