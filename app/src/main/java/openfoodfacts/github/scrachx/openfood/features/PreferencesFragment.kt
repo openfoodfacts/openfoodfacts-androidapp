@@ -81,7 +81,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         item.isVisible = false
     }
 
-    override fun onCreatePreferences(bundle: Bundle, rootKey: String) {
+    override fun onCreatePreferences(bundle: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         setHasOptionsMenu(true)
         val activity = requireActivity()
