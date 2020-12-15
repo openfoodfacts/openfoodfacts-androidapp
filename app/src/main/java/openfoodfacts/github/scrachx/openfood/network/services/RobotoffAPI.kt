@@ -7,7 +7,7 @@ import retrofit2.http.*
 
 interface RobotoffAPI {
     @GET("api/v1/questions/{barcode}")
-    fun getProductQuestion(
+    fun getProductQuestions(
             @Path("barcode") barcode: String?,
             @Query("lang") langCode: String?,
             @Query("count") count: Int?

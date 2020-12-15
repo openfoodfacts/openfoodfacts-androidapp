@@ -29,7 +29,7 @@ import openfoodfacts.github.scrachx.openfood.features.viewmodel.BaseViewModel
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.allCategoriesByDefaultLanguageCode
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.getAllCategoriesByDefaultLanguageCode
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.getAllCategoriesByLanguageCode
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.net.UnknownHostException
@@ -60,7 +60,7 @@ class CategoryFragmentViewModel : BaseViewModel() {
                 }
                 .flatMap { categoryNames: List<CategoryName> ->
                     if (categoryNames.isEmpty()) {
-                        return@flatMap allCategoriesByDefaultLanguageCode
+                        return@flatMap getAllCategoriesByDefaultLanguageCode()
                     } else {
                         return@flatMap Single.just(categoryNames)
                     }

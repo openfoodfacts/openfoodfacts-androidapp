@@ -521,7 +521,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
         if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE
                 && resultCode == Activity.RESULT_OK
-                && requireActivity().isUserLoggedIn()) {
+                && requireActivity().isUserSet()) {
             startEditProduct()
         }
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
@@ -544,7 +544,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private fun onNutriScoreButtonClick() {
         if (!AppFlavors.isFlavors(AppFlavors.OFF, AppFlavors.OBF)) return
 
-        if (requireActivity().isUserLoggedIn()) {
+        if (requireActivity().isUserSet()) {
             startEditProduct()
         } else {
             startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE, requireActivity())

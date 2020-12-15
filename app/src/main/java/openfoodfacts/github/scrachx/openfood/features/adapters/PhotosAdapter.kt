@@ -46,9 +46,7 @@ class PhotosAdapter(private val mPhotos: List<Uri>) : RecyclerView.Adapter<Photo
                 .into(imageView)
     }
 
-    override fun getItemCount(): Int {
-        return mPhotos.size
-    }
+    override fun getItemCount() = mPhotos.size
 
     class ViewHolder(view: ImageView) : RecyclerView.ViewHolder(view) {
         val imageView = view

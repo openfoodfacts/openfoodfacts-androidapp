@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models
 
 import com.fasterxml.jackson.annotation.*
 import org.apache.commons.lang.builder.ToStringBuilder
+import org.apache.commons.lang.builder.ToStringStyle
 import java.io.Serializable
 import java.util.*
 
@@ -11,44 +12,29 @@ class ProductIngredient : Serializable {
     /**
      * The text
      */
-    var text: String? = null
+    @JsonProperty("text")
+    lateinit var text: String
 
     /**
      * The id
      */
-    var id: String? = null
+    @JsonProperty("id")
+    lateinit var id: String
 
     /**
      * The rank, set -1 if no rank returned
      */
+    @JsonProperty("rank")
     var rank: Long = 0
 
     /**
      * The percent
      */
+    @JsonProperty("percent")
     var percent: String? = null
 
     @JsonIgnore
     private val additionalProperties: MutableMap<String, Any> = HashMap()
-    fun withText(text: String?): ProductIngredient {
-        this.text = text
-        return this
-    }
-
-    fun withId(id: String?): ProductIngredient {
-        this.id = id
-        return this
-    }
-
-    fun withRank(rank: Long): ProductIngredient {
-        this.rank = rank
-        return this
-    }
-
-    fun withPercent(percent: String?): ProductIngredient {
-        this.percent = percent
-        return this
-    }
 
     @JsonAnyGetter
     fun getAdditionalProperties() = additionalProperties
@@ -58,12 +44,7 @@ class ProductIngredient : Serializable {
         additionalProperties[name] = value
     }
 
-    fun withAdditionalProperty(name: String, value: Any): ProductIngredient {
-        additionalProperties[name] = value
-        return this
-    }
-
-    override fun toString() = ToStringBuilder(this)
+    override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("text", text)
             .append("id", id)
             .append("rank", rank)

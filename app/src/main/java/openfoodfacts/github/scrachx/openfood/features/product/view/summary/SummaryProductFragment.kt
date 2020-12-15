@@ -53,7 +53,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentSummaryProductB
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.LoginContract
-import openfoodfacts.github.scrachx.openfood.features.adapters.DialogAddToListAdapter
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
@@ -606,7 +605,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun sendProductInsights(insightId: String?, annotation: AnnotationAnswer?) {
         this.insightId = insightId
         this.annotation = annotation
-        if (requireActivity().isUserLoggedIn()) {
+        if (requireActivity().isUserSet()) {
             processInsight(insightId, annotation)
         } else {
             MaterialDialog.Builder(requireActivity()).run {
@@ -714,7 +713,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun onAddNutriScorePromptClick() {
         if (isFlavors(OFF)) {
-            if (!requireActivity().isUserLoggedIn()) {
+            if (!requireActivity().isUserSet()) {
                 startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN, requireActivity())
             } else {
                 editProductNutriscore()
@@ -749,7 +748,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun onEditProductButtonClick() {
-        if (!requireActivity().isUserLoggedIn()) {
+        if (!requireActivity().isUserSet()) {
             startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN, requireActivity())
         } else {
             editProduct()
@@ -835,10 +834,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             (activity as ProductViewActivity?)!!.onRefresh()
         }
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && requireActivity().isUserLoggedIn()) {
+            if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && requireActivity().isUserSet()) {
                 editProduct()
             }
-            if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && requireActivity().isUserLoggedIn()) {
+            if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && requireActivity().isUserSet()) {
                 editProductNutriscore()
             }
         }

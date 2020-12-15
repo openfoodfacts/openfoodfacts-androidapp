@@ -19,7 +19,6 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.bold
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
@@ -91,8 +90,8 @@ object AdditiveFragmentHelper {
                         if (isHighRisk) fragment.getString(R.string.overexposure_high)
                         else fragment.getString(R.string.overexposure_moderate)
                 val riskWarningColor =
-                        if (isHighRisk) Utils.getColor(activity, R.color.overexposure_high)
-                        else Utils.getColor(activity, R.color.overexposure_moderate)
+                        if (isHighRisk) ContextCompat.getColor(activity, R.color.overexposure_high)
+                        else ContextCompat.getColor(activity, R.color.overexposure_moderate)
 
                 riskIcon!!.setBounds(0, 0, riskIcon.intrinsicWidth, riskIcon.intrinsicHeight)
                 val iconSpan = ImageSpan(riskIcon, DynamicDrawableSpan.ALIGN_BOTTOM)

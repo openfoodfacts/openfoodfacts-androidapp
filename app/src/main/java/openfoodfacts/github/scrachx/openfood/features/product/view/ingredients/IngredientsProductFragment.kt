@@ -72,7 +72,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private var _binding: FragmentIngredientsProductBinding? = null
     private val binding get() = _binding!!
 
-    private val loginPref by lazy { requireActivity().getSharedPreferences("login", 0) }
+    private val loginPref by lazy { requireActivity().getLoginPreferences() }
     private val client by lazy { OpenFoodAPIClient(requireContext()) }
     private val wikidataClient by lazy { WikiDataApiClient() }
     private val disp by lazy { CompositeDisposable() }
@@ -397,7 +397,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     fun extractIngredients() {
         ingredientExtracted = true
-        val settings = requireActivity().getSharedPreferences("login", 0)
+        val settings = requireActivity().getLoginPreferences()
         if (settings.getString("user", "")!!.isEmpty()) {
             showSignInDialog()
         } else {

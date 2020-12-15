@@ -111,8 +111,6 @@ object Utils {
         return smallFileFront.toString()
     }
 
-    fun getColor(context: Context, id: Int) = ContextCompat.getColor(context, id)
-
     /**
      * Check if a certain application is installed on a device.
      *

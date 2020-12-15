@@ -41,7 +41,7 @@ import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_STORAG
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.isAllGranted
-import openfoodfacts.github.scrachx.openfood.utils.isUserLoggedIn
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
@@ -121,7 +121,7 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     private fun updateButtonAccept() {
-        val visible = isUserLoggedIn() && adapter!!.isSelectionDone()
+        val visible = isUserSet() && adapter!!.isSelectionDone()
         binding.btnAcceptSelection.visibility = if (visible) View.VISIBLE else View.INVISIBLE
         binding.txtInfo.visibility = binding.btnAcceptSelection.visibility
     }

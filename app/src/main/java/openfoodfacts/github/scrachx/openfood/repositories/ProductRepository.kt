@@ -15,12 +15,13 @@
  */
 package openfoodfacts.github.scrachx.openfood.repositories
 
-import android.util.Base64
 import android.util.Log
 import androidx.core.content.edit
 import com.squareup.picasso.Picasso
 import io.reactivex.Maybe
 import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers
+import okhttp3.Credentials
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.*
@@ -43,6 +44,7 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.analysisDataApi
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.robotoffApi
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesManager.getTaxonomyData
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import org.greenrobot.greendao.database.Database
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
 import java.util.*
@@ -220,7 +222,7 @@ object ProductRepository {
     private fun updateLastDownloadDateInSettings(taxonomy: Taxonomy, lastDownload: Long) {
         OFFApplication.instance.getSharedPreferences("prefs", 0)
                 .edit { putLong(taxonomy.lastDownloadTimeStampPreferenceId, lastDownload) }
-        Log.i(TAG, "Set lastDownload of $taxonomy to $lastDownload")
+        Log.i(LOG_TAG, "Set lastDownload of $taxonomy to $lastDownload")
     }
 
     /**
@@ -240,7 +242,7 @@ object ProductRepository {
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
-            Log.e(TAG, "saveLabels", e)
+            Log.e(LOG_TAG, "saveLabels", e)
         } finally {
             db.endTransaction()
         }
@@ -280,7 +282,7 @@ object ProductRepository {
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
-            Log.e(TAG, "saveAllergens", e)
+            Log.e(LOG_TAG, "saveAllergens", e)
         } finally {
             db.endTransaction()
         }
@@ -303,7 +305,7 @@ object ProductRepository {
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
-            Log.e(TAG, "saveAdditives", e)
+            Log.e(LOG_TAG, "saveAdditives", e)
         } finally {
             db.endTransaction()
         }
@@ -326,7 +328,7 @@ object ProductRepository {
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
-            Log.e(TAG, "saveCountries", e)
+            Log.e(LOG_TAG, "saveCountries", e)
         } finally {
             db.endTransaction()
         }
@@ -351,7 +353,7 @@ object ProductRepository {
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
-            Log.e(TAG, "saveCategories", e)
+            Log.e(LOG_TAG, "saveCategories", e)
         } finally {
             db.endTransaction()
         }
@@ -398,7 +400,7 @@ object ProductRepository {
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
-            Log.e(TAG, "saveIngredients", e)
+            Log.e(LOG_TAG, "saveIngredients", e)
         } finally {
             db.endTransaction()
         }
@@ -505,34 +507,17 @@ object ProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated category name
      */
-    fun getCategoryByTagAndLanguageCode(categoryTag: String?, languageCode: String?): Single<CategoryName> {
-        return Single.fromCallable {
-            val categoryName = categoryNameDao.queryBuilder()
-                    .where(
-                            CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
-                            CategoryNameDao.Properties.LanguageCode.eq(languageCode)
-                    ).unique()
-            if (categoryName != null) {
-                return@fromCallable categoryName
-            } else {
-                val emptyCategoryName = CategoryName()
-                emptyCategoryName.name = categoryTag
-                emptyCategoryName.categoryTag = categoryTag
-                emptyCategoryName.isWikiDataIdPresent = false
-                return@fromCallable emptyCategoryName
+    fun getCategoryByTagAndLanguageCode(categoryTag: String?, languageCode: String = ApiFields.Defaults.DEFAULT_LANGUAGE): Single<CategoryName> =
+            Single.fromCallable {
+                categoryNameDao.queryBuilder().where(
+                        CategoryNameDao.Properties.CategoryTag.eq(categoryTag),
+                        CategoryNameDao.Properties.LanguageCode.eq(languageCode)
+                ).unique() ?: CategoryName().apply {
+                    this.name = categoryTag
+                    this.categoryTag = categoryTag
+                    this.isWikiDataIdPresent = false
+                }
             }
-        }
-    }
-
-    /**
-     * Loads translated category from the local database by unique tag of category and default language code
-     *
-     * @param categoryTag is a unique Id of category
-     * @return The translated category name
-     */
-    fun getCategoryByTagAndDefaultLanguageCode(categoryTag: String?): Single<CategoryName> {
-        return getCategoryByTagAndLanguageCode(categoryTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
-    }
 
     /**
      * Loads list of translated category names from the local database by language code
@@ -540,13 +525,11 @@ object ProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated list of category name
      */
-    fun getAllCategoriesByLanguageCode(languageCode: String?): Single<List<CategoryName>> {
-        return Single.fromCallable {
-            categoryNameDao.queryBuilder()
-                    .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
-                    .orderAsc(CategoryNameDao.Properties.Name)
-                    .list()
-        }
+    fun getAllCategoriesByLanguageCode(languageCode: String?): Single<List<CategoryName>> = Single.fromCallable {
+        categoryNameDao.queryBuilder()
+                .where(CategoryNameDao.Properties.LanguageCode.eq(languageCode))
+                .orderAsc(CategoryNameDao.Properties.Name)
+                .list()
     }
 
     /**
@@ -554,8 +537,7 @@ object ProductRepository {
      *
      * @return The list of category name
      */
-    val allCategoriesByDefaultLanguageCode: Single<List<CategoryName>>
-        get() = getAllCategoriesByLanguageCode(ApiFields.Defaults.DEFAULT_LANGUAGE)
+    fun getAllCategoriesByDefaultLanguageCode(): Single<List<CategoryName>> = getAllCategoriesByLanguageCode(ApiFields.Defaults.DEFAULT_LANGUAGE)
 
     /**
      * Loads translated and selected/unselected allergens.
@@ -564,26 +546,15 @@ object ProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The list of allergen names
      */
-    fun getAllergensByEnabledAndLanguageCode(isEnabled: Boolean?, languageCode: String?): Single<List<AllergenName>> {
-        return Single.fromCallable {
-            val allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list()
-            if (allergens != null) {
-                val allergenNames: MutableList<AllergenName> = ArrayList()
-                for (allergen in allergens) {
-                    val name = allergenNameDao.queryBuilder()
-                            .where(
-                                    AllergenNameDao.Properties.AllergenTag.eq(allergen.tag),
-                                    AllergenNameDao.Properties.LanguageCode.eq(languageCode)
-                            ).unique()
-                    if (name != null) {
-                        allergenNames.add(name)
-                    }
-                }
-                return@fromCallable allergenNames
-            }
-            emptyList()
+    fun getAllergensByEnabledAndLanguageCode(isEnabled: Boolean?, languageCode: String?): Single<List<AllergenName>> = Single.fromCallable {
+        val allergens = allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq(isEnabled)).list() ?: return@fromCallable emptyList()
+        allergens.mapNotNull {
+            allergenNameDao.queryBuilder().where(
+                    AllergenNameDao.Properties.AllergenTag.eq(it.tag),
+                    AllergenNameDao.Properties.LanguageCode.eq(languageCode)
+            ).unique()
         }
-    }
+    }.subscribeOn(Schedulers.io())
 
     /**
      * Loads all translated allergens.
@@ -591,13 +562,11 @@ object ProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The list of translated allergen names
      */
-    fun getAllergensByLanguageCode(languageCode: String?): Single<List<AllergenName>> {
-        return Single.fromCallable {
-            allergenNameDao.queryBuilder()
-                    .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
-                    .list()
-        }
-    }
+    fun getAllergensByLanguageCode(languageCode: String?) = Single.fromCallable {
+        allergenNameDao.queryBuilder()
+                .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+                .list()
+    }.subscribeOn(Schedulers.io())
 
     /**
      * Loads translated allergen from the local database by unique tag of allergen and language code
@@ -606,23 +575,21 @@ object ProductRepository {
      * @param languageCode is a 2-digit language code
      * @return The translated allergen name
      */
-    fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): Single<AllergenName> {
-        return Single.fromCallable {
-            val allergenName = allergenNameDao.queryBuilder()
-                    .where(AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
-                            AllergenNameDao.Properties.LanguageCode.eq(languageCode))
-                    .unique()
-            if (allergenName != null) {
-                return@fromCallable allergenName
-            } else {
-                val emptyAllergenName = AllergenName()
-                emptyAllergenName.name = allergenTag
-                emptyAllergenName.allergenTag = allergenTag
-                emptyAllergenName.isWikiDataIdPresent = false
-                return@fromCallable emptyAllergenName
-            }
+    fun getAllergenByTagAndLanguageCode(allergenTag: String?, languageCode: String?): Single<AllergenName> = Single.fromCallable {
+        val allergenName = allergenNameDao.queryBuilder()
+                .where(AllergenNameDao.Properties.AllergenTag.eq(allergenTag),
+                        AllergenNameDao.Properties.LanguageCode.eq(languageCode))
+                .unique()
+        if (allergenName != null) {
+            return@fromCallable allergenName
+        } else {
+            val emptyAllergenName = AllergenName()
+            emptyAllergenName.name = allergenTag
+            emptyAllergenName.allergenTag = allergenTag
+            emptyAllergenName.isWikiDataIdPresent = false
+            return@fromCallable emptyAllergenName
         }
-    }
+    }.subscribeOn(Schedulers.io())
 
     /**
      * Loads translated allergen from the local database by unique tag of allergen and default language code
@@ -630,9 +597,8 @@ object ProductRepository {
      * @param allergenTag is a unique Id of allergen
      * @return The translated allergen name
      */
-    fun getAllergenByTagAndDefaultLanguageCode(allergenTag: String?): Single<AllergenName> {
-        return getAllergenByTagAndLanguageCode(allergenTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
-    }
+    fun getAllergenByTagAndDefaultLanguageCode(allergenTag: String?): Single<AllergenName> =
+            getAllergenByTagAndLanguageCode(allergenTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
 
     /**
      * Loads Robotoff question from the local database by code and lang of question.
@@ -641,16 +607,9 @@ object ProductRepository {
      * @param lang is language of the question
      * @return The single question
      */
-    fun getSingleProductQuestion(code: String?, lang: String?): Single<Question> {
-        return robotoffApi.getProductQuestion(code, lang, 1)
-                .map { obj: QuestionsState -> obj.questions }
-                .map { questions: List<Question> ->
-                    if (questions.isNotEmpty()) {
-                        return@map questions[0]
-                    }
-                    return@map Question()
-                }
-    }
+    fun getSingleProductQuestion(code: String?, lang: String?): Maybe<Question> = robotoffApi.getProductQuestions(code, lang, 1)
+            .map { obj: QuestionsState -> obj.questions }
+            .flatMapMaybe { questions -> if (questions.isNotEmpty()) Maybe.just(questions[0]) else Maybe.empty() }
 
     /**
      * Annotate the Robotoff insight response using insight id and annotation
@@ -661,14 +620,13 @@ object ProductRepository {
      */
     fun annotateInsight(insightId: String, annotation: AnnotationAnswer): Single<AnnotationResponse> {
         // if the user is logged in, send the auth, otherwise make it anonymous
-        val userPref = OFFApplication.instance.getSharedPreferences("login", 0)
-        val user = userPref.getString("user", "")?.trim { it <= ' ' } ?: ""
-        val pass = userPref.getString("pass", "")?.trim { it <= ' ' } ?: ""
-        return if (user.isNotBlank() && pass.isNotBlank()) {
-            val baseAuth = "Basic " + Base64.encodeToString("$user:$pass".toByteArray(), Base64.NO_WRAP)
-            robotoffApi.annotateInsight(insightId, annotation.result, baseAuth)
-        } else {
+        val user = OFFApplication.instance.getLoginPreferences().getString("user", "")?.trim { it <= ' ' } ?: ""
+        val pass = OFFApplication.instance.getLoginPreferences().getString("pass", "")?.trim { it <= ' ' } ?: ""
+
+        return if (user.isBlank() || pass.isBlank()) {
             robotoffApi.annotateInsight(insightId, annotation.result)
+        } else {
+            robotoffApi.annotateInsight(insightId, annotation.result, Credentials.basic(user, pass, Charsets.UTF_8))
         }
     }
 
@@ -677,18 +635,15 @@ object ProductRepository {
      *
      * @return The analysis tags in the product.
      */
-    fun reloadAnalysisTagsFromServer(): Single<List<AnalysisTag>> {
-        return getTaxonomyData(Taxonomy.ANALYSIS_TAGS, this, true, analysisTagDao)
-    }
+    fun reloadAnalysisTagsFromServer(): Single<List<AnalysisTag>> =
+            getTaxonomyData(Taxonomy.ANALYSIS_TAGS, this, true, analysisTagDao)
 
-    fun loadAnalysisTags(lastModifiedDate: Long): Single<List<AnalysisTag>> {
-        return analysisDataApi.getAnalysisTags()
-                .map { it.map() }
-                .doOnSuccess { analysisTags: List<AnalysisTag> ->
-                    saveAnalysisTags(analysisTags)
-                    updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate)
-                }
-    }
+    fun loadAnalysisTags(lastModifiedDate: Long): Single<List<AnalysisTag>> = analysisDataApi.getAnalysisTags()
+            .map { it.map() }
+            .doOnSuccess { analysisTags: List<AnalysisTag> ->
+                saveAnalysisTags(analysisTags)
+                updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAGS, lastModifiedDate)
+            }
 
     /**
      * AnalysisTags saving to local database
@@ -709,24 +664,21 @@ object ProductRepository {
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
-            Log.e(TAG, "saveAnalysisTags", e)
+            Log.e(LOG_TAG, "saveAnalysisTags", e)
         } finally {
             db.endTransaction()
         }
     }
 
-    fun reloadAnalysisTagConfigsFromServer(): Single<List<AnalysisTagConfig>> {
-        return getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, this, true, analysisTagConfigDao)
-    }
+    fun reloadAnalysisTagConfigsFromServer(): Single<List<AnalysisTagConfig>> =
+            getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, this, true, analysisTagConfigDao)
 
-    fun loadAnalysisTagConfigs(lastModifiedDate: Long): Single<List<AnalysisTagConfig>> {
-        return analysisDataApi.getAnalysisTagConfigs()
-                .map<List<AnalysisTagConfig>> { obj: AnalysisTagConfigsWrapper -> obj.map() }
-                .doOnSuccess { analysisTagConfigs: List<AnalysisTagConfig> ->
-                    saveAnalysisTagConfigs(analysisTagConfigs)
-                    updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAG_CONFIG, lastModifiedDate)
-                }
-    }
+    fun loadAnalysisTagConfigs(lastModifiedDate: Long): Single<List<AnalysisTagConfig>> = analysisDataApi.getAnalysisTagConfigs()
+            .map<List<AnalysisTagConfig>> { obj: AnalysisTagConfigsWrapper -> obj.map() }
+            .doOnSuccess { analysisTagConfigs: List<AnalysisTagConfig> ->
+                saveAnalysisTagConfigs(analysisTagConfigs)
+                updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAG_CONFIG, lastModifiedDate)
+            }
 
     private fun saveAnalysisTagConfigs(analysisTagConfigs: List<AnalysisTagConfig>) {
         db.beginTransaction()
@@ -737,7 +689,7 @@ object ProductRepository {
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
-            Log.e(TAG, "saveAnalysisTagConfigs", e)
+            Log.e(LOG_TAG, "saveAnalysisTagConfigs", e)
         } finally {
             db.endTransaction()
         }
@@ -745,18 +697,18 @@ object ProductRepository {
 
     private fun updateAnalysisTagConfig(analysisTagConfig: AnalysisTagConfig?, languageCode: String) {
         if (analysisTagConfig != null) {
-            var analysisTagName = analysisTagNameDao.queryBuilder()
-                    .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
-                            AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
-                    .unique()
+            var analysisTagName = analysisTagNameDao.queryBuilder().where(
+                    AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
+                    AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode)
+            ).unique()
             if (analysisTagName == null) {
-                analysisTagName = analysisTagNameDao.queryBuilder()
-                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
-                                AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE))
-                        .unique()
+                analysisTagName = analysisTagNameDao.queryBuilder().where(
+                        AnalysisTagNameDao.Properties.AnalysisTag.eq(analysisTagConfig.analysisTag),
+                        AnalysisTagNameDao.Properties.LanguageCode.eq(ApiFields.Defaults.DEFAULT_LANGUAGE)
+                ).unique()
             }
             analysisTagConfig.name = analysisTagName
-            val type = "en:" + analysisTagConfig.type
+            val type = "en:${analysisTagConfig.type}"
             var analysisTagTypeName = analysisTagNameDao.queryBuilder()
                     .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
                             AnalysisTagNameDao.Properties.LanguageCode.eq(languageCode))
@@ -776,54 +728,47 @@ object ProductRepository {
      * @param languageCode
      * @return [Maybe.empty] if no analysis tag found
      */
-    fun getAnalysisTagConfigByTagAndLanguageCode(analysisTag: String?, languageCode: String): Maybe<AnalysisTagConfig> {
-        return Maybe.fromCallable {
-            val analysisTagConfig = analysisTagConfigDao.queryBuilder()
-                    .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
-                    .unique()
-            updateAnalysisTagConfig(analysisTagConfig, languageCode)
-            analysisTagConfig
-        }
-    }
+    fun getAnalysisTagConfigByTagAndLanguageCode(analysisTag: String?, languageCode: String): Maybe<AnalysisTagConfig> = Maybe.fromCallable {
+        val analysisTagConfig = analysisTagConfigDao.queryBuilder()
+                .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
+                .unique()
+        updateAnalysisTagConfig(analysisTagConfig, languageCode)
+        analysisTagConfig
+    }.subscribeOn(Schedulers.io())
 
-    fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String): Single<List<AnalysisTagConfig>> {
-        return Single.fromCallable {
-            val analysisTagConfigs = analysisTagConfigDao.queryBuilder()
-                    .where(StringCondition(AnalysisTagConfigDao.Properties.AnalysisTag.columnName + " LIKE \"%unknown%\"")).list()
-            for (analysisTagConfig in analysisTagConfigs) {
-                updateAnalysisTagConfig(analysisTagConfig, languageCode)
-            }
-            analysisTagConfigs
-        }
-    }
+    fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String): Single<List<AnalysisTagConfig>> = Single.fromCallable {
+        val analysisTagConfigs = analysisTagConfigDao.queryBuilder()
+                .where(StringCondition("""${AnalysisTagConfigDao.Properties.AnalysisTag.columnName} LIKE "%unknown%"""")).list()
+        analysisTagConfigs.forEach { analysisTagConfig -> updateAnalysisTagConfig(analysisTagConfig, languageCode) }
+        analysisTagConfigs
+    }.subscribeOn(Schedulers.io())
 
 
-    private val TAG = ProductRepository::class.simpleName
+    private val LOG_TAG = ProductRepository::class.simpleName
 
 
     /**
      * Constructor of the class which is used to initialize objects.
      */
     init {
-        val daoSession = OFFApplication.daoSession
-        db = daoSession.database
-        labelDao = daoSession.labelDao
-        labelNameDao = daoSession.labelNameDao
-        tagDao = daoSession.tagDao
-        invalidBarcodeDao = daoSession.invalidBarcodeDao
-        allergenDao = daoSession.allergenDao
-        allergenNameDao = daoSession.allergenNameDao
-        additiveDao = daoSession.additiveDao
-        additiveNameDao = daoSession.additiveNameDao
-        countryDao = daoSession.countryDao
-        countryNameDao = daoSession.countryNameDao
-        categoryDao = daoSession.categoryDao
-        categoryNameDao = daoSession.categoryNameDao
-        ingredientDao = daoSession.ingredientDao
-        ingredientNameDao = daoSession.ingredientNameDao
-        ingredientsRelationDao = daoSession.ingredientsRelationDao
-        analysisTagDao = daoSession.analysisTagDao
-        analysisTagNameDao = daoSession.analysisTagNameDao
-        analysisTagConfigDao = daoSession.analysisTagConfigDao
+        db = OFFApplication.daoSession.database
+        labelDao = OFFApplication.daoSession.labelDao
+        labelNameDao = OFFApplication.daoSession.labelNameDao
+        tagDao = OFFApplication.daoSession.tagDao
+        invalidBarcodeDao = OFFApplication.daoSession.invalidBarcodeDao
+        allergenDao = OFFApplication.daoSession.allergenDao
+        allergenNameDao = OFFApplication.daoSession.allergenNameDao
+        additiveDao = OFFApplication.daoSession.additiveDao
+        additiveNameDao = OFFApplication.daoSession.additiveNameDao
+        countryDao = OFFApplication.daoSession.countryDao
+        countryNameDao = OFFApplication.daoSession.countryNameDao
+        categoryDao = OFFApplication.daoSession.categoryDao
+        categoryNameDao = OFFApplication.daoSession.categoryNameDao
+        ingredientDao = OFFApplication.daoSession.ingredientDao
+        ingredientNameDao = OFFApplication.daoSession.ingredientNameDao
+        ingredientsRelationDao = OFFApplication.daoSession.ingredientsRelationDao
+        analysisTagDao = OFFApplication.daoSession.analysisTagDao
+        analysisTagNameDao = OFFApplication.daoSession.analysisTagNameDao
+        analysisTagConfigDao = OFFApplication.daoSession.analysisTagConfigDao
     }
 }

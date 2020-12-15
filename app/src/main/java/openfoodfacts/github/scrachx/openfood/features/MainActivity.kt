@@ -143,22 +143,16 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private var discoverUri: Uri? = null
     private val disp = CompositeDisposable()
     private lateinit var drawerResult: Drawer
-    private var headerResult: AccountHeader? = null
+    private lateinit var headerResult: AccountHeader
     private var prefManager: PrefManager? = null
     private var searchMenuItem: MenuItem? = null
     private var userAccountUri: Uri? = null
-    private val loginThenUpdateLauncher = registerForActivityResult(LoginContract()) { isLoggedIn: Boolean ->
-        if (isLoggedIn) {
-            updateConnectedState()
-        }
-    }
+    private val loginThenUpdateLauncher = registerForActivityResult(LoginContract())
+    { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
+
     private var userContributeUri: Uri? = null
-    private val loginThenContributionsLauncher = registerForActivityResult(
-            LoginContract()) { isLoggedIn: Boolean ->
-        if (isLoggedIn) {
-            openMyContributionsInSearchActivity()
-        }
-    }
+    private val loginThenContributionsLauncher = registerForActivityResult(LoginContract())
+    { isLoggedIn -> if (isLoggedIn) openMyContributionsInSearchActivity() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -167,6 +161,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         }
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         hideKeyboard(this)
         val profile = userProfile
         setLocale(this, getLanguage(this))
@@ -191,9 +186,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 .addProfiles(profile)
                 .withOnAccountHeaderProfileImageListener(object : AccountHeader.OnAccountHeaderProfileImageListener {
                     override fun onProfileImageClick(view: View, profile: IProfile<*>, current: Boolean): Boolean {
-                        if (!isUserLoggedIn()) {
-                            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                        }
+                        if (!isUserSet()) startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                         return false
                     }
 
@@ -203,9 +196,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 })
                 .withOnAccountHeaderSelectionViewClickListener(object : AccountHeader.OnAccountHeaderSelectionViewClickListener {
                     override fun onClick(view: View, profile: IProfile<*>): Boolean {
-                        if (!isUserLoggedIn()) {
-                            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                        }
+                        if (!isUserSet()) startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                         return false
                     }
                 })
@@ -231,18 +222,16 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         headerResult = accountHeaderBuilder.build()
 
         // Add Manage Account profile if the user is connected
-        val preferences = getSharedPreferences(PreferencesFragment.LOGIN_PREF, 0)
-        val userSessionPrefs = preferences.getString("user_session", null)
-        val isUserConnected = isUserLoggedIn() && userSessionPrefs != null
-        if (isUserConnected) {
+        if (isUserSet() && getUserSession() != null) {
             updateProfileForCurrentUser()
         }
+
         //Create the drawer
         drawerResult = DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(binding.toolbarInclude.toolbar)
                 .withHasStableIds(true)
-                .withAccountHeader(headerResult!!) //set the AccountHeader we created earlier for the header
+                .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .withOnDrawerListener(object : Drawer.OnDrawerListener {
                     override fun onDrawerOpened(drawerView: View) {
                         hideKeyboard(this@MainActivity)
@@ -364,7 +353,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         drawerResult.actionBarDrawerToggle!!.isDrawerIndicatorEnabled = true
 
         // Add Drawer items for the connected user
-        drawerResult.addItemsAtPosition(drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS.toLong()), if (isUserLoggedIn()) logoutDrawerItem else loginDrawerItem)
+        drawerResult.addItemsAtPosition(drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS.toLong()), if (isUserSet()) logoutDrawerItem else loginDrawerItem)
         when {
             isFlavors(AppFlavors.OBF) -> {
                 drawerResult.removeItem(ITEM_ALERT.toLong())
@@ -386,11 +375,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             drawerResult.updateName(ITEM_OBF.toLong(), StringHolder(getString(R.string.open_other_flavor_drawer)))
         }
 
-        // Remove scan item if the device does not have a camera, for example, Chromebooks or
-        // Fire devices
-        if (!isHardwareCameraInstalled(this)) {
-            drawerResult.removeItem(ITEM_SCAN.toLong())
-        }
+        // Remove scan item if the device does not have a camera, for example, Chromebooks or Fire devices
+        if (!isHardwareCameraInstalled(this)) drawerResult.removeItem(ITEM_SCAN.toLong())
 
 //        //if you have many different types of DrawerItems you can magically pre-cache those items
 //        // to get a better scroll performance
@@ -399,13 +385,13 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 //        new RecyclerViewCacheUtil<IDrawerItem>().withCacheSize(2).apply(result.getRecyclerView(),
 //            result.getDrawerItems());
 
-        //only set the active selection or active profile if we do not recreate the activity
+        // Only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
             // set the selection to the item with the identifier 1
             drawerResult.setSelection(ITEM_HOME.toLong(), false)
 
             //set the active profile
-            headerResult!!.activeProfile = profile
+            headerResult.activeProfile = profile
         }
         val settings = PreferenceManager.getDefaultSharedPreferences(this)
         if (settings.getBoolean("startScan", false)) {
@@ -439,8 +425,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         val mSharedPref = applicationContext.getSharedPreferences("prefs", 0)
         val isOldHistoryDataSynced = mSharedPref.getBoolean("is_old_history_data_synced", false)
         if (!isOldHistoryDataSynced && isNetworkConnected(this)) {
-            val apiClient = OpenFoodAPIClient(this)
-            apiClient.syncOldHistory()
+            OpenFoodAPIClient(this).syncOldHistory()
         }
         selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0)
         install(this, binding.bottomNavigationInclude.bottomNavigation)
@@ -448,11 +433,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun swapToHomeFragment() {
-        val fragmentManager = supportFragmentManager
-        fragmentManager.addOnBackStackChangedListener {}
-        fragmentManager.commit {
-            replace(R.id.fragment_container, HomeFragment())
-        }
+        supportFragmentManager.addOnBackStackChangedListener {}
+        supportFragmentManager.commit { replace(R.id.fragment_container, HomeFragment()) }
         binding.toolbarInclude.toolbar.title = BuildConfig.APP_NAME
     }
 
@@ -479,18 +461,18 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun updateProfileForCurrentUser() {
-        headerResult!!.updateProfile(userProfile)
-        if (isUserLoggedIn()) {
-            if (headerResult!!.profiles != null && headerResult!!.profiles!!.size < 2) {
-                headerResult!!.addProfiles(getProfileSettingDrawerItem())
+        headerResult.updateProfile(userProfile)
+        if (isUserSet()) {
+            if (headerResult.profiles != null && headerResult.profiles!!.size < 2) {
+                headerResult.addProfiles(getProfileSettingDrawerItem())
             }
         } else {
-            headerResult!!.removeProfileByIdentifier(ITEM_MANAGE_ACCOUNT.toLong())
+            headerResult.removeProfileByIdentifier(ITEM_MANAGE_ACCOUNT.toLong())
         }
     }
 
     private fun openMyContributions() {
-        if (isUserLoggedIn()) {
+        if (isUserSet()) {
             openMyContributionsInSearchActivity()
         } else {
             MaterialDialog.Builder(this@MainActivity)
@@ -540,7 +522,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             newState = it.saveInstanceState(newState)
         }
         //add the values which need to be saved from the accountHeader to the bundle
-        headerResult?.let {
+        headerResult.let {
             newState = it.saveInstanceState(newState)
         }
         super.onSaveInstanceState(newState)
@@ -625,7 +607,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         customTabActivityHelper!!.bindCustomTabsService(this)
         prefManager = PrefManager(this)
         if (isFlavors(AppFlavors.OFF)
-                && isUserLoggedIn()
+                && isUserSet()
                 && !prefManager!!.isFirstTimeLaunch
                 && !prefManager!!.userAskedToRate) {
             val firstTimeLaunchTime = prefManager!!.firstTimeLaunchTime
@@ -750,7 +732,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         updateProfileForCurrentUser()
         drawerResult.removeItem(ITEM_LOGIN.toLong())
         drawerResult.removeItem(ITEM_LOGOUT.toLong())
-        drawerResult.addItemAtPosition(if (this@MainActivity.isUserLoggedIn()) logoutDrawerItem else loginDrawerItem, drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS.toLong()))
+        drawerResult.addItemAtPosition(if (this@MainActivity.isUserSet()) logoutDrawerItem else loginDrawerItem, drawerResult.getPosition(ITEM_MY_CONTRIBUTIONS.toLong()))
     }
 
     private fun handleSendImage(intent: Intent) {

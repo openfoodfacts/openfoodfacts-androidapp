@@ -34,13 +34,10 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProductDao
 import openfoodfacts.github.scrachx.openfood.network.ApiCallbacks.*
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
-import openfoodfacts.github.scrachx.openfood.utils.InstallationUtils
+import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.httpClientBuilder
-import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
-import openfoodfacts.github.scrachx.openfood.utils.getVersionName
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -348,15 +345,14 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
                             mHistoryProductDao.insertOrReplace(hp)
                         }
                         context.getSharedPreferences("prefs", 0).edit {
-                            putBoolean("is_old_history_data_synced", true).apply()
+                            putBoolean("is_old_history_data_synced", true)
                         }
                     }.ignoreElement().subscribe().addTo(historySyncDisp)
         }
     }
 
-    fun getInfoAddedIncompleteProductsSingle(contributor: String?, page: Int): Single<Search> {
-        return rawAPI.getInfoAddedIncompleteProductsSingle(contributor, page)
-    }
+    fun getInfoAddedIncompleteProductsSingle(contributor: String?, page: Int) =
+            rawAPI.getInfoAddedIncompleteProductsSingle(contributor, page)
 
     fun getProductsByManufacturingPlace(manufacturingPlace: String?, page: Int) =
             rawAPI.getProductsByManufacturingPlace(manufacturingPlace, page, FIELDS_TO_FETCH_FACETS)
@@ -468,14 +464,14 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
          * @param imgMap The map to fill
          */
         fun addUserInfo(imgMap: MutableMap<String, String?> = mutableMapOf()): Map<String, String?> {
-            val settings = OFFApplication.instance.getSharedPreferences("login", 0)
+            val settings = OFFApplication.instance.getLoginPreferences()
 
-            settings.getString("user", "")?.let {
+            settings.getString("user", null)?.let {
                 imgMap[ApiFields.Keys.USER_COMMENT] = getCommentToUpload(it)
                 if (it.isNotBlank()) imgMap[ApiFields.Keys.USER_ID] = it
             }
 
-            settings.getString("pass", "")?.let {
+            settings.getString("pass", null)?.let {
                 if (it.isNotBlank()) imgMap[ApiFields.Keys.USER_PASS] = it
             }
 

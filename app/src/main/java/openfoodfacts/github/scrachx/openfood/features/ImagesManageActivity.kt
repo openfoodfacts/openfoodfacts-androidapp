@@ -443,7 +443,7 @@ class ImagesManageActivity : BaseActivity() {
             return true
         }
         //if user not logged in, we force to log
-        if (!isUserLoggedIn()) {
+        if (!isUserSet()) {
             startActivityForResult(Intent(this, LoginActivity::class.java), loginRequestCode)
             return true
         }
@@ -594,7 +594,7 @@ class ImagesManageActivity : BaseActivity() {
         // Delete downloaded local file
         deleteLocalFiles()
         // if the selected language is not the same than current image we can't modify: only add
-        if (!isUserLoggedIn() || !updateLanguageStatus() || dataFromCropActivity == null) {
+        if (!isUserSet() || !updateLanguageStatus() || dataFromCropActivity == null) {
             return
         }
         if (resultCode == RESULT_OK) {

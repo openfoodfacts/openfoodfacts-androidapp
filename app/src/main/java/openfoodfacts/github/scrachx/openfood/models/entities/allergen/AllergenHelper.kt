@@ -12,17 +12,15 @@ object AllergenHelper {
         if (userAllergens.isEmpty()) return createEmpty()
 
         if (!product.statesTags.contains("en:ingredients-completed")) return Data(true, emptyList<String>())
-        
+
         val productAllergens = HashSet(product.allergensHierarchy)
         productAllergens.addAll(product.tracesTags)
-        val allergenMatch: MutableSet<String?> = TreeSet()
-        userAllergens
-                .filter { productAllergens.contains(it.allergenTag) }
-                .mapTo(allergenMatch) { it.name }
-        return Data(false, Collections.unmodifiableList(ArrayList(allergenMatch)))
+        val allergenMatch = TreeSet<String?>()
+        userAllergens.filter { productAllergens.contains(it.allergenTag) }.mapTo(allergenMatch) { it.name }
+        return Data(false, allergenMatch.toList())
     }
 
-    class Data(val isIncomplete: Boolean, val allergens: List<String?>) {
+    data class Data(val isIncomplete: Boolean, val allergens: List<String?>) {
         val isEmpty get() = !isIncomplete && allergens.isEmpty()
     }
 }

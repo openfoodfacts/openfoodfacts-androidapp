@@ -43,7 +43,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.appComponent
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
-import openfoodfacts.github.scrachx.openfood.features.adapters.ProductFragmentPagerAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -61,6 +61,7 @@ import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService.getOffl
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import java.io.File
 import java.io.IOException
@@ -240,7 +241,7 @@ class ProductEditActivity : AppCompatActivity() {
     }
 
     private fun addLoginPasswordInfo(imgMap: MutableMap<String, RequestBody?>) {
-        val settings = getSharedPreferences("login", 0)
+        val settings = getLoginPreferences()
         val login = settings.getString("user", "") ?: ""
         val password = settings.getString("pass", "") ?: ""
         if (login.isNotEmpty() && password.isNotEmpty()) {
@@ -321,7 +322,7 @@ class ProductEditActivity : AppCompatActivity() {
     }
 
     private fun addLoginInfoToProductDetails(targetMap: MutableMap<String, String?>) {
-        val settings = getSharedPreferences("login", 0)
+        val settings = getLoginPreferences()
         val login = settings.getString("user", "") ?: ""
         val password = settings.getString("pass", "") ?: ""
         if (login.isNotEmpty() && password.isNotEmpty()) {

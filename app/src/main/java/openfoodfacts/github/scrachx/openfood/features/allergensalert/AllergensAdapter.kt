@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features.adapters
+package openfoodfacts.github.scrachx.openfood.features.allergensalert
 
 import android.view.LayoutInflater
 import android.view.View
@@ -27,13 +27,11 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 
 class AllergensAdapter(
         private val repository: ProductRepository,
-        private val allergens: MutableList<AllergenName> = mutableListOf()
+        var allergens: MutableList<AllergenName> = mutableListOf()
 ) : RecyclerView.Adapter<AllergensAdapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val context = parent.context
-        val inflater = LayoutInflater.from(context)
-        val contactView = inflater.inflate(R.layout.item_allergens, parent, false)
+        val contactView = LayoutInflater.from(parent.context).inflate(R.layout.item_allergens, parent, false)
         return CustomViewHolder(contactView)
     }
 

@@ -33,6 +33,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.edit
 import androidx.preference.*
+import androidx.preference.Preference.OnPreferenceClickListener
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
@@ -40,6 +41,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
@@ -78,26 +80,28 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        val item = menu.findItem(R.id.action_search)
-        item.isVisible = false
+        menu.findItem(R.id.action_search).isVisible = false
     }
 
     override fun onCreatePreferences(bundle: Bundle, rootKey: String) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         setHasOptionsMenu(true)
+
         val activity = requireActivity()
         val settings = activity.getSharedPreferences("prefs", 0)
+
+        val finalLocalValues = ArrayList<String>()
+        val finalLocalLabels = ArrayList<String?>()
+
         val localeValues = activity.resources.getStringArray(R.array.languages_array)
         val localeLabels = arrayOfNulls<String>(localeValues.size)
-        val finalLocalValues: MutableList<String> = ArrayList()
-        val finalLocalLabels: MutableList<String?> = ArrayList()
-        for (i in localeValues.indices) {
+
+        localeValues.indices.forEach { i ->
             val current = getLocale(localeValues[i])
-            if (current != null) {
-                localeLabels[i] = current.getDisplayName(current).capitalize(Locale.getDefault())
-                finalLocalLabels.add(localeLabels[i])
-                finalLocalValues.add(localeValues[i])
-            }
+            localeLabels[i] = current.getDisplayName(current).capitalize(Locale.getDefault())
+            finalLocalLabels.add(localeLabels[i])
+            finalLocalValues.add(localeValues[i])
+
         }
         val languagePreference = requirePreference<ListPreference>("Locale.Helper.Selected.Language")
         languagePreference.entries = finalLocalLabels.toTypedArray()
@@ -111,25 +115,21 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
             true
         }
-        val applicationThemePreference = requirePreference<ListPreference>("applicationThemePreference")
-        val applicationThemeEntries = resources.getStringArray(R.array.application_theme_entries)
-        applicationThemePreference.setEntries(R.array.application_theme_entries)
-        applicationThemePreference.setEntryValues(R.array.application_theme_entries)
-        applicationThemePreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, value ->
-            when (value) {
-                applicationThemeEntries[1] -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        val appThemeEntries = resources.getStringArray(R.array.application_theme_entries)
+        requirePreference<ListPreference>("applicationThemePreference").let {
+            it.setEntries(R.array.application_theme_entries)
+            it.setEntryValues(R.array.application_theme_entries)
+            it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, value ->
+                when (value) {
+                    appThemeEntries[1] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    appThemeEntries[2] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 }
-                applicationThemeEntries[2] -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                }
-                else -> {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                }
+                true
             }
-            true
         }
-        requirePreference<Preference>("deleteSearchHistoryPreference").onPreferenceClickListener = Preference.OnPreferenceClickListener {
+
+        requirePreference<Preference>("deleteSearchHistoryPreference").onPreferenceClickListener = OnPreferenceClickListener {
             MaterialDialog.Builder(activity)
                     .content(R.string.search_history_pref_dialog_content)
                     .positiveText(R.string.delete_txt)
@@ -143,35 +143,39 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                     .show()
             true
         }
+
+        val countryLabels = ArrayList<String>()
+        val countryTags = ArrayList<String>()
+
         val countryPreference = requirePreference<ListPreference>(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)
-        val countryLabels: MutableList<String> = ArrayList()
-        val countryTags: MutableList<String> = ArrayList()
-        val daoSession = OFFApplication.daoSession
-        val asyncSessionCountries = daoSession.startAsyncSession()
-        val countryNameDao = daoSession.countryNameDao
+
+        val asyncSessionCountries = OFFApplication.daoSession.startAsyncSession()
+        val countryNameDao = OFFApplication.daoSession.countryNameDao
+
+        // Set query finish listener
         asyncSessionCountries.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
             val countryNames = operation.result as List<CountryName>
-            for (i in countryNames.indices) {
+            countryNames.indices.forEach { i ->
                 countryLabels.add(countryNames[i].name)
                 countryTags.add(countryNames[i].countyTag)
             }
             countryPreference.entries = countryLabels.toTypedArray()
             countryPreference.entryValues = countryTags.toTypedArray()
         }
+        // Execute query
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
                 .where(CountryNameDao.Properties.LanguageCode.eq(getLanguage(getActivity())))
                 .orderAsc(CountryNameDao.Properties.Name).build())
+
         countryPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference: Preference, newValue: Any? ->
             if (preference is ListPreference && preference.getKey() == LocaleHelper.USER_COUNTRY_PREFERENCE_KEY) {
                 val country = newValue as String?
-                settings.edit {
-                    putString(preference.getKey(), country)
-                }
+                settings.edit { putString(preference.getKey(), country) }
                 Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             }
             true
         }
-        requirePreference<Preference>("contact_team").onPreferenceClickListener = Preference.OnPreferenceClickListener {
+        requirePreference<Preference>("contact_team").onPreferenceClickListener = OnPreferenceClickListener {
             val contactIntent = Intent(Intent.ACTION_SENDTO)
             contactIntent.data = Uri.parse(getString(R.string.off_mail))
             contactIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -182,8 +186,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
             true
         }
-        val rateus = requirePreference<Preference>("RateUs")
-        rateus.onPreferenceClickListener = Preference.OnPreferenceClickListener {
+        requirePreference<Preference>("RateUs").onPreferenceClickListener = OnPreferenceClickListener {
             try {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.packageName)))
             } catch (e: ActivityNotFoundException) {
@@ -192,11 +195,11 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             true
         }
         requirePreference<Preference>("FAQ").onPreferenceClickListener =
-                Preference.OnPreferenceClickListener { openWebCustomTab(R.string.faq_url) }
+                OnPreferenceClickListener { openWebCustomTab(R.string.faq_url) }
         requirePreference<Preference>("Terms").onPreferenceClickListener =
-                Preference.OnPreferenceClickListener { openWebCustomTab(R.string.terms_url) }
+                OnPreferenceClickListener { openWebCustomTab(R.string.terms_url) }
         requirePreference<Preference>("local_translate_help").onPreferenceClickListener =
-                Preference.OnPreferenceClickListener { openWebCustomTab(R.string.translate_url) }
+                OnPreferenceClickListener { openWebCustomTab(R.string.translate_url) }
         val energyUnitPreference = requirePreference<ListPreference>("energyUnitPreference")
         val energyUnits = requireActivity().resources.getStringArray(R.array.energy_units)
         energyUnitPreference.entries = energyUnits
@@ -224,9 +227,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             true
         }
-        if (isFlavors(AppFlavors.OPF)) {
-            requirePreference<Preference>("photoMode").isVisible = false
-        }
+
+        // Disable photo mode for OpenProductFacts
+        if (isFlavors(AppFlavors.OPF)) requirePreference<Preference>("photoMode").isVisible = false
 
         // Preference to show version name
         val versionPref = requirePreference<Preference>("Version")
@@ -236,10 +239,10 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             val version = pInfo.versionName
             versionPref.summary = getString(R.string.version_string) + " " + version
         } catch (e: PackageManager.NameNotFoundException) {
-            Log.e(PreferencesFragment::class.java.simpleName, "onCreatePreferences", e)
+            Log.e(PreferencesFragment::class.simpleName, "onCreatePreferences", e)
         }
         if (isFlavors(OFF, OBF, OPFF)) {
-            getAnalysisTagConfigs(daoSession)
+            getAnalysisTagConfigs(OFFApplication.daoSession)
         } else {
             val preferenceScreen = preferenceScreen
             preferenceScreen.removePreference(preferenceScreen.requirePreference("display_category"))
@@ -247,12 +250,11 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     }
 
     private fun buildDisplayCategory(configs: List<AnalysisTagConfig>?) {
-        if (!isAdded) {
-            return
-        }
+        if (!isAdded) return
+
         val preferenceScreen = preferenceScreen
         val displayCategory = preferenceScreen.findPreference<PreferenceCategory>("display_category")
-                ?: throw IllegalStateException("Display category preference does not exist.")
+                ?: throw error("Display category preference does not exist.")
         displayCategory.removeAll()
         preferenceScreen.addPreference(displayCategory)
 
@@ -261,7 +263,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             val preference = Preference(preferenceScreen.context)
             preference.setTitle(R.string.load_ingredient_detection_data)
             preference.setSummary(R.string.load_ingredient_detection_data_summary)
-            preference.onPreferenceClickListener = Preference.OnPreferenceClickListener { pref: Preference ->
+            preference.onPreferenceClickListener = OnPreferenceClickListener { pref: Preference ->
                 pref.onPreferenceClickListener = null
                 val manager = WorkManager.getInstance(requireContext())
                 val request = OneTimeWorkRequest.from(LoadTaxonomiesWorker::class.java)
@@ -285,14 +287,14 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             displayCategory.addPreference(preference)
         } else {
             configs.forEach { config ->
-                val preference = CheckBoxPreference(preferenceScreen.context)
-                preference.key = config.type
-                preference.setDefaultValue(true)
-                preference.summary = null
-                preference.summaryOn = null
-                preference.summaryOff = null
-                preference.title = getString(R.string.display_analysis_tag_status, config.typeName.toLowerCase(Locale.getDefault()))
-                displayCategory.addPreference(preference)
+                displayCategory.addPreference(CheckBoxPreference(preferenceScreen.context).apply {
+                    key = config.type
+                    setDefaultValue(true)
+                    summary = null
+                    summaryOn = null
+                    summaryOff = null
+                    title = getString(R.string.display_analysis_tag_status, config.typeName.toLowerCase(Locale.getDefault()))
+                })
             }
         }
         displayCategory.isVisible = true
@@ -306,15 +308,13 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     }
 
     @NavigationDrawerType
-    override fun getNavigationDrawerType(): Int {
-        return NavigationDrawerListener.ITEM_PREFERENCES
-    }
+    override fun getNavigationDrawerType() = NavigationDrawerListener.ITEM_PREFERENCES
 
     override fun onResume() {
         super.onResume()
         try {
-            val activity = activity as AppCompatActivity?
-            if (activity != null && activity.supportActionBar != null) {
+            val activity = activity as? AppCompatActivity
+            if (activity?.supportActionBar != null) {
                 activity.supportActionBar!!.title = getString(R.string.action_preferences)
             }
         } catch (e: NullPointerException) {
@@ -334,36 +334,40 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        if ("enableMobileDataUpload" == key) {
-            scheduleSync()
+        when (key) {
+            "enableMobileDataUpload" -> scheduleSync()
         }
     }
 
     private fun getAnalysisTagConfigs(daoSession: DaoSession) {
         val language = getLanguage(requireContext())
-        disp.add(Single.fromCallable {
+        Single.fromCallable {
             val analysisTagConfigDao = daoSession.analysisTagConfigDao
             val analysisTagConfigs = analysisTagConfigDao.queryBuilder()
                     .where(StringCondition("1 GROUP BY type"))
                     .orderAsc(AnalysisTagConfigDao.Properties.Type).build().list()
             val analysisTagNameDao = daoSession.analysisTagNameDao
             for (config in analysisTagConfigs) {
-                val type = "en:" + config.type
+                val type = "en:${config.type}"
                 var analysisTagTypeName = analysisTagNameDao.queryBuilder()
-                        .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
-                                AnalysisTagNameDao.Properties.LanguageCode.eq(language))
-                        .unique()
+                        .where(
+                                AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                                AnalysisTagNameDao.Properties.LanguageCode.eq(language),
+                        ).unique()
                 if (analysisTagTypeName == null) {
                     analysisTagTypeName = analysisTagNameDao.queryBuilder()
-                            .where(AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
-                                    AnalysisTagNameDao.Properties.LanguageCode.eq("en"))
-                            .unique()
+                            .where(
+                                    AnalysisTagNameDao.Properties.AnalysisTag.eq(type),
+                                    AnalysisTagNameDao.Properties.LanguageCode.eq("en")
+                            ).unique()
                 }
                 config.typeName = if (analysisTagTypeName != null) analysisTagTypeName.name else config.type
             }
             analysisTagConfigs
-        }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe { configs: List<AnalysisTagConfig>? -> buildDisplayCategory(configs) })
+        }.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { configs -> buildDisplayCategory(configs) }
+                .addTo(disp)
     }
 
     companion object {

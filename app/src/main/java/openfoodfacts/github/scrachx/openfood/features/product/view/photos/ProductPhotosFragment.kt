@@ -15,7 +15,7 @@ import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.isUserLoggedIn
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
 /**
@@ -52,7 +52,7 @@ class ProductPhotosFragment : BaseFragment() {
                     val imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(node!!)
 
                     //Check if user is logged in
-                    adapter = ProductPhotosAdapter(requireActivity(), product, requireActivity().isUserLoggedIn(), imageNames) { position ->
+                    adapter = ProductPhotosAdapter(requireActivity(), product, requireActivity().isUserSet(), imageNames) { position ->
                         // Retrieves url of the image clicked to open FullScreenActivity
                         var barcodePattern = product.code
                         if (barcodePattern.length > 8) {

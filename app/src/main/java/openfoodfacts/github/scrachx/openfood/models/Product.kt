@@ -10,8 +10,10 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang.builder.ToStringBuilder
+import org.apache.commons.lang.builder.ToStringStyle
 import java.io.Serializable
 import java.util.*
+import kotlin.collections.ArrayList
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -43,7 +45,7 @@ class Product : Serializable {
     val allergensHierarchy: ArrayList<String> = arrayListOf()
 
     @JsonProperty(ApiFields.Keys.ALLERGENS_TAGS)
-    val allergensTags: List<String>? = null
+    val allergensTags: List<String> = ArrayList()
 
     /**
      * @return The aminoAcidTags
@@ -480,7 +482,7 @@ class Product : Serializable {
         return if (nutritionGradeTags != null && nutritionGradeTags.isNotEmpty()) nutritionGradeTags[0] else null
     }
 
-    override fun toString() = ToStringBuilder(this)
+    override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("code", code)
             .append("productName", productName)
             .append("additional_properties", additionalProperties)

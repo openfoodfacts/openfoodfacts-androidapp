@@ -27,7 +27,6 @@ interface IIngredientsProductPresenter {
     interface Actions: Disposable {
         fun loadAdditives()
         fun loadAllergens()
-        override fun dispose()
     }
 
     interface View {

@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.models
 
 import com.fasterxml.jackson.annotation.*
 import org.apache.commons.lang.builder.ToStringBuilder
+import org.apache.commons.lang.builder.ToStringStyle
 import java.io.Serializable
 import java.util.*
 
@@ -73,9 +74,10 @@ class ProductState : Serializable {
         return this
     }
 
-    override fun toString() = ToStringBuilder(this)
+    override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("statusVerbose", statusVerbose)
             .append("status", status)
+            .append("product", product)
             .append("code", code)
             .append("additionalProperties", additionalProperties)
             .toString()

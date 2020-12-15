@@ -15,7 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features
 
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -30,10 +29,10 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.fasterxml.jackson.databind.JsonNode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
@@ -46,8 +45,8 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
-import retrofit2.Response
 import java.io.IOException
 import java.text.NumberFormat
 import java.util.*
@@ -55,13 +54,17 @@ import java.util.*
 /**
  * @see R.layout.fragment_home
  */
-class HomeFragment : NavigationBaseFragment() {
+class HomeFragment : NavigationBaseFragment(), Disposable {
+    private val disp = CompositeDisposable()
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var api: ProductsAPI
-    private val disp = CompositeDisposable()
+    private val sharedPrefs by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
+
     private var taglineURL: String? = null
-    private lateinit var sharedPrefs: SharedPreferences
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -70,14 +73,13 @@ class HomeFragment : NavigationBaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         api = OpenFoodAPIClient(requireActivity()).rawAPI
-        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireActivity())
         binding.tvDailyFoodFact.setOnClickListener { openDailyFoodFacts() }
         checkUserCredentials()
     }
 
     override fun onDestroy() {
         // Stop the call to server to get total product count and tagline
-        disp.dispose()
+        this.dispose()
         _binding = null
         super.onDestroy()
     }
@@ -104,7 +106,7 @@ class HomeFragment : NavigationBaseFragment() {
     private val loginLauncher = registerForActivityResult(LoginContract()) { }
 
     private fun checkUserCredentials() {
-        val settings = OFFApplication.instance.getSharedPreferences("login", 0)
+        val settings = requireActivity().getLoginPreferences()
 
         val login = settings.getString("user", null)
         val password = settings.getString("pass", null)
@@ -115,10 +117,11 @@ class HomeFragment : NavigationBaseFragment() {
             return
         }
 
-        disp.add(api.signIn(login, password, "Sign-in")
+        api.signIn(login, password, "Sign-in")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response: Response<ResponseBody> ->
+                .doOnError { e -> Log.e(LOG_TAG, "Cannot check user credentials.", e) }
+                .subscribe { response ->
                     val htmlBody: String = try {
                         response.body()!!.string()
                     } catch (e: IOException) {
@@ -141,8 +144,7 @@ class HomeFragment : NavigationBaseFragment() {
                         }
 
                     }
-                })
-                { e -> Log.e(LOG_TAG, "Cannot check user credentials.", e) })
+                }.addTo(disp)
     }
 
     override fun onResume() {
@@ -157,13 +159,13 @@ class HomeFragment : NavigationBaseFragment() {
 
     private fun refreshProductCount(oldCount: Int) {
         Log.d(LOG_TAG, "Refreshing total product count...")
-        disp.add(api.getTotalProductCount(getUserAgent())
+        api.getTotalProductCount(getUserAgent())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { setProductCount(oldCount) }
-                .doOnError { e: Throwable? ->
+                .doOnError {
                     setProductCount(oldCount)
-                    Log.e(LOG_TAG, "Could not retrieve product count from server.", e)
+                    Log.e(LOG_TAG, "Could not retrieve product count from server.", it)
                 }
                 .subscribe { resp: JsonNode ->
                     val totalProductCount = resp["count"].asInt(0)
@@ -173,8 +175,7 @@ class HomeFragment : NavigationBaseFragment() {
                         putInt("productCount", totalProductCount)
                         apply()
                     }
-                }
-        )
+                }.addTo(disp)
     }
 
     /**
@@ -194,7 +195,7 @@ class HomeFragment : NavigationBaseFragment() {
      * get tag line url from OpenFoodAPIService
      */
     private fun refreshTagLine() {
-        disp.add(api.getTagline(getUserAgent())
+        api.getTagline(getUserAgent())
                 .subscribeOn(Schedulers.io()) // io for network
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
                 .doOnError { e -> Log.e(LOG_TAG, "Could not retrieve tag-line from server.", e) }
@@ -216,7 +217,7 @@ class HomeFragment : NavigationBaseFragment() {
                         binding.tvDailyFoodFact.text = languages.last().tagLine.message
                     }
                     binding.tvDailyFoodFact.visibility = View.VISIBLE
-                })
+                }.addTo(disp)
     }
 
     companion object {
@@ -227,4 +228,8 @@ class HomeFragment : NavigationBaseFragment() {
             arguments = Bundle()
         }
     }
+
+    override fun dispose() = disp.dispose()
+
+    override fun isDisposed() = disp.isDisposed
 }

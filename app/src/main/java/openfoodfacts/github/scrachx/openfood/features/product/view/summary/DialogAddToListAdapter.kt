@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.features.adapters
+package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.adapters.DialogAddToListAdapter.ListViewHolder
+import openfoodfacts.github.scrachx.openfood.features.product.view.summary.DialogAddToListAdapter.ListViewHolder
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct

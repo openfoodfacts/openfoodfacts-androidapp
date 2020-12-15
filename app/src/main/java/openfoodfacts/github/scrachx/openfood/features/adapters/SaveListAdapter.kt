@@ -26,15 +26,19 @@ class SaveListAdapter(private val context: Context, private val saveItems: List<
 
     override fun onBindViewHolder(holder: SaveViewHolder, position: Int) {
         val (title, fieldsCompleted, url, barcode, weight, brand) = saveItems[position]
-        if (fieldsCompleted < 10) {
-            holder.percentageCompleted.progressDrawable.setColorFilter(
-                    Color.RED, PorterDuff.Mode.MULTIPLY)
-        } else if (fieldsCompleted >= 10 && fieldsCompleted < 19) {
-            holder.percentageCompleted.progressDrawable.setColorFilter(
-                    Color.YELLOW, PorterDuff.Mode.MULTIPLY)
-        } else {
-            holder.percentageCompleted.progressDrawable.setColorFilter(
-                    Color.GREEN, PorterDuff.Mode.MULTIPLY)
+        when {
+            fieldsCompleted < 10 -> {
+                holder.percentageCompleted.progressDrawable.setColorFilter(
+                        Color.RED, PorterDuff.Mode.MULTIPLY)
+            }
+            fieldsCompleted in 10..18 -> {
+                holder.percentageCompleted.progressDrawable.setColorFilter(
+                        Color.YELLOW, PorterDuff.Mode.MULTIPLY)
+            }
+            else -> {
+                holder.percentageCompleted.progressDrawable.setColorFilter(
+                        Color.GREEN, PorterDuff.Mode.MULTIPLY)
+            }
         }
         holder.percentageCompleted.progress = fieldsCompleted
         var percentageValue = fieldsCompleted * 100 / 25
@@ -53,13 +57,9 @@ class SaveListAdapter(private val context: Context, private val saveItems: List<
         holder.txtBrand.text = brand
     }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
+    override fun getItemId(position: Int) = position.toLong()
 
-    override fun getItemCount(): Int {
-        return saveItems.size
-    }
+    override fun getItemCount() = saveItems.size
 
     interface SaveClickInterface {
         fun onClick(position: Int)
@@ -67,34 +67,23 @@ class SaveListAdapter(private val context: Context, private val saveItems: List<
     }
 
     inner class SaveViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener, OnLongClickListener {
-        val imgProduct: ImageView
-        val percentageCompleted: ProgressBar
-        val progressBar: ProgressBar
-        val txtBarcode: TextView
-        val txtBrand: TextView
-        val txtPercentage: TextView
-        val txtTitle: TextView
-        val txtWeight: TextView
-        override fun onClick(view: View) {
-            val pos = adapterPosition
-            mSaveClickInterface.onClick(pos)
-        }
+        val imgProduct: ImageView = itemView.findViewById(R.id.imgSaveProduct)
+        val percentageCompleted: ProgressBar = itemView.findViewById(R.id.percentage_completed)
+        val progressBar: ProgressBar = itemView.findViewById(R.id.offlineUploadProgressBar)
+        val txtBarcode: TextView = itemView.findViewById(R.id.barcodeSave)
+        val txtBrand: TextView = itemView.findViewById(R.id.offlineBrand)
+        val txtPercentage: TextView = itemView.findViewById(R.id.txt_percentage)
+        val txtTitle: TextView = itemView.findViewById(R.id.titleSave)
+        val txtWeight: TextView = itemView.findViewById(R.id.offlineWeight)
+
+        override fun onClick(view: View) = mSaveClickInterface.onClick(adapterPosition)
 
         override fun onLongClick(view: View): Boolean {
-            val pos = adapterPosition
-            mSaveClickInterface.onLongClick(pos)
+            mSaveClickInterface.onLongClick(adapterPosition)
             return true
         }
 
         init {
-            percentageCompleted = itemView.findViewById(R.id.percentage_completed)
-            txtPercentage = itemView.findViewById(R.id.txt_percentage)
-            txtTitle = itemView.findViewById(R.id.titleSave)
-            txtBarcode = itemView.findViewById(R.id.barcodeSave)
-            imgProduct = itemView.findViewById(R.id.imgSaveProduct)
-            txtWeight = itemView.findViewById(R.id.offlineWeight)
-            txtBrand = itemView.findViewById(R.id.offlineBrand)
-            progressBar = itemView.findViewById(R.id.offlineUploadProgressBar)
             itemView.setOnClickListener(this)
             itemView.setOnLongClickListener(this)
         }

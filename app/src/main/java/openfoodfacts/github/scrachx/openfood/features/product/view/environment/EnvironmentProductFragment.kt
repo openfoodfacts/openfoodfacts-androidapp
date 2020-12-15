@@ -167,7 +167,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
         // TODO: 15/11/2020 find a way to use ActivityResultApi
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
-        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && requireActivity().isUserLoggedIn()) {
+        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && requireActivity().isUserSet()) {
             startEditProduct()
         }
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {

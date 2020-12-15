@@ -75,6 +75,7 @@ object LocaleHelper {
 
     private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
     const val USER_COUNTRY_PREFERENCE_KEY = "user_country"
+
     fun onCreate(context: Context): Context {
         val lang = getLanguageInPreferences(context, Locale.getDefault().language)
         return setLocale(context, lang)
@@ -156,9 +157,8 @@ object LocaleHelper {
      */
     @JvmStatic
     fun getLocale(locale: String?): Locale {
-        if (locale == null) {
-            return Locale.getDefault()
-        }
+        if (locale == null) return Locale.getDefault()
+
         var localeParts = locale.split("-").toTypedArray()
         var language = localeParts[0]
         val country = if (localeParts.size == 2) localeParts[1] else ""

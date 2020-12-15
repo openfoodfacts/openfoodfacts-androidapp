@@ -16,7 +16,6 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
-import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.bold
 import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 
@@ -104,7 +103,7 @@ class CategoryProductHelper(
             )
             it.append(riskAlcoholConsumption)
             it.setSpan(
-                    ForegroundColorSpan(Utils.getColor(baseFragment.requireContext(), R.color.red)),
+                    ForegroundColorSpan(ContextCompat.getColor(baseFragment.requireContext(), R.color.red)),
                     it.length - riskAlcoholConsumption.length,
                     it.length,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
