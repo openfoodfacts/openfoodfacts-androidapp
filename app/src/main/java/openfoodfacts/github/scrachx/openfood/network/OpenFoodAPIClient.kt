@@ -5,12 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.edit
 import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.reactivex.Completable
 import io.reactivex.Single
-import io.reactivex.disposables.Disposable
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -19,6 +22,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_STRING_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -37,10 +41,6 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.httpClientBuilder
 import openfoodfacts.github.scrachx.openfood.utils.getUserAgent
 import openfoodfacts.github.scrachx.openfood.utils.getVersionName
-import org.jetbrains.annotations.Contract
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -48,71 +48,60 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.io.File
 import java.io.IOException
 import java.util.*
-import java.util.function.Consumer
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.Companion.start as startProductViewActivity
 
 /**
  * API Client for all API callbacks
  */
 class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, customApiUrl: String? = null) {
-    private var historySyncDisp: Disposable? = null
+    private var historySyncDisp = CompositeDisposable()
     private val mHistoryProductDao = daoSession.historyProductDao
     private val mToUploadProductDao = daoSession.toUploadProductDao
 
     /**
      * @return This api service gets products of provided brand.
      */
-    var rawAPI = if (customApiUrl != null) {
+    var rawAPI: ProductsAPI = if (customApiUrl == null) productsApi
+    else {
         Retrofit.Builder()
                 .baseUrl(customApiUrl)
                 .client(httpClientBuilder())
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
                 .create(ProductsAPI::class.java)
-    } else {
-        productsApi
     }
 
-    fun getProductStateFull(barcode: String?, customHeader: String?) =
-            rawAPI.getProductByBarcodeSingle(barcode, allFields, getUserAgent(customHeader!!))
+    fun getProductStateFull(barcode: String?, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH) =
+            rawAPI.getProductByBarcodeSingle(barcode, getAllFields(), getUserAgent(customHeader))
 
-    fun getProductStateFull(barcode: String?) =
-            rawAPI.getProductByBarcodeSingle(barcode, allFields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+    private fun getAllFields(): String {
+        val allFields = context.resources.getStringArray(R.array.product_all_fields_array)
+        val fieldsToLocalize = context.resources.getStringArray(R.array.fields_array)
+        val langCode = getLanguage(OFFApplication.instance.applicationContext)
 
-    private val allFields: String
-        get() {
-            val allFields = context.resources.getStringArray(R.array.product_all_fields_array)
-            val fieldsToLocalize = context.resources.getStringArray(R.array.fields_array)
-            val fields: MutableSet<String?> = allFields.toMutableSet()
-            val langCode = getLanguage(OFFApplication.instance.applicationContext)
-            for (fieldToLocalize in fieldsToLocalize) {
-                fields.add("${fieldToLocalize}_$langCode")
-                fields.add("${fieldToLocalize}_en")
-            }
-            return fields.joinToString(",")
+        val fields = allFields.toMutableSet()
+        fieldsToLocalize.forEach { fieldToLocalize ->
+            fields.add("${fieldToLocalize}_$langCode")
+            fields.add("${fieldToLocalize}_en")
         }
-
-    fun productNotFoundDialogBuilder(activity: Activity, barcode: String): MaterialDialog.Builder {
-        return MaterialDialog.Builder(activity)
-                .title(R.string.txtDialogsTitle)
-                .content(R.string.txtDialogsContent)
-                .positiveText(R.string.txtYes)
-                .negativeText(R.string.txtNo)
-                .onPositive { _: MaterialDialog?, _: DialogAction? ->
-                    if (!activity.isFinishing) {
-                        val intent = Intent(activity, ProductEditActivity::class.java)
-                        val st = ProductState()
-                        val pd = Product()
-                        pd.code = barcode
-                        st.product = pd
-                        intent.putExtra("state", st)
-                        activity.startActivity(intent)
-                        activity.finish()
-                    }
-                }
+        return fields.joinToString(",")
     }
+
+    fun productNotFoundDialogBuilder(activity: Activity, barcode: String) = MaterialDialog.Builder(activity)
+            .title(R.string.txtDialogsTitle)
+            .content(R.string.txtDialogsContent)
+            .positiveText(R.string.txtYes)
+            .negativeText(R.string.txtNo)
+            .onPositive { _: MaterialDialog?, _: DialogAction? ->
+                activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
+                    putExtra(KEY_STATE, ProductState().apply {
+                        product = Product().apply { code = barcode }
+                    })
+                })
+                activity.finish()
+            }
 
     /**
      * Open the product activity if the barcode exist.
@@ -121,13 +110,11 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
      * @param barcode product barcode
      */
     fun getProductImages(barcode: String): Single<ProductState> {
-        val allFieldsArray = OFFApplication.instance.resources.getStringArray(R.array.product_images_fields_array)
-        val fields = allFieldsArray.toMutableSet()
-        val langCode = getLanguage(OFFApplication.instance.applicationContext)
-        fields += "product_name_$langCode"
+        val fieldsSet = OFFApplication.instance.resources.getStringArray(R.array.product_images_fields_array)
+                .toMutableSet() + "product_name_${getLanguage(OFFApplication.instance.applicationContext)}"
         return rawAPI.getProductByBarcodeSingle(
                 barcode,
-                fields.joinToString(","),
+                fieldsSet.joinToString(","),
                 getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
         )
     }
@@ -140,55 +127,31 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
      * @param barcode product barcode
      * @param activity
      */
-    @JvmOverloads
-    fun openProduct(barcode: String, activity: Activity, callback: Consumer<ProductState?>? = null) {
-        rawAPI.getProductByBarcode(barcode, allFields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(object : Callback<ProductState?> {
-            override fun onResponse(call: Call<ProductState?>, response: Response<ProductState?>) {
-                if (activity.isFinishing) {
-                    return
-                }
-                val productState = response.body()
-                if (productState == null) {
-                    Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
-                    return
-                }
-                if (productState.status == 0L) {
-                    productNotFoundDialogBuilder(activity, barcode)
-                            .onNegative { _, _ -> activity.onBackPressed() }
-                            .show()
-                } else {
-                    addToHistory(productState.product!!).subscribe()
-                    if (callback != null) {
-                        callback.accept(productState)
-                    } else {
-                        startProductViewActivity(activity, productState)
+    fun openProduct(barcode: String, activity: Activity) =
+            rawAPI.getProductByBarcodeSingle(barcode, getAllFields(), getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+                    .doOnError {
+                        if (it is IOException) {
+                            Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
+                            return@doOnError
+                        } else {
+                            productNotFoundDialogBuilder(activity, barcode).show()
+                        }
                     }
-                }
-            }
-
-            override fun onFailure(call: Call<ProductState?>, t: Throwable) {
-                if (activity.isFinishing) {
-                    return
-                }
-                val isNetwork = t is IOException
-                if (callback != null) {
-                    val res = ProductState()
-                    res.status = 0
-                    res.statusVerbose = if (isNetwork) activity.resources.getString(R.string.errorWeb) else t.message
-                    callback.accept(res)
-                }
-                if (!isNetwork) {
-                    productNotFoundDialogBuilder(activity, barcode).show()
-                }
-            }
-        })
-    }
+                    .subscribe { state ->
+                        if (state.status == 0L) {
+                            productNotFoundDialogBuilder(activity, barcode)
+                                    .onNegative { _, _ -> activity.onBackPressed() }
+                                    .show()
+                        } else {
+                            addToHistory(state.product!!).blockingAwait()
+                            startProductViewActivity(activity, state)
+                        }
+                    }
 
     fun getIngredients(product: Product) = getIngredients(product.code)
 
     fun searchProductsByName(name: String?, page: Int): Single<Search> {
-        val productNameLocale = localeProductNameField
-        val fields = "selected_images,image_small_url,product_name,brands,quantity,code,nutrition_grade_fr,$productNameLocale"
+        val fields = "selected_images,image_small_url,product_name,brands,quantity,code,nutrition_grade_fr,$localeProductNameField"
         return rawAPI.searchProductByName(fields, name, page)
     }
 
@@ -197,24 +160,15 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
      * @return a single containing a list of product ingredients (can be empty)
      */
     fun getIngredients(barcode: String?): Single<List<ProductIngredient>> {
-        return rawAPI.getIngredientsByBarcode(barcode).map { node: JsonNode ->
-            val ingredientsJsonNode = node.findValue("ingredients") ?: return@map emptyList()
-            val productIngredients = ArrayList<ProductIngredient>()
-
-            // add ingredients to list from json
-            for (ingredient in ingredientsJsonNode) {
-                val productIngredient = ProductIngredient()
-                productIngredient.id = ingredientsJsonNode.findValue("id").toString()
-                productIngredient.text = ingredientsJsonNode.findValue("text").toString()
-                val rankNode = ingredientsJsonNode.findValue("rank")
-                if (rankNode == null) {
-                    productIngredient.rank = -1
-                } else {
-                    productIngredient.rank = rankNode.toString().toLong()
+        return rawAPI.getIngredientsByBarcode(barcode).map { status: JsonNode ->
+            status["product"]["ingredients"]?.map { ingredient ->
+                ProductIngredient().apply {
+                    id = ingredient["id"].asText()
+                    text = ingredient["text"].asText()
+                    val rankNode = ingredient["rank"]
+                    rank = rankNode?.asLong(-1) ?: -1
                 }
-                productIngredients.add(productIngredient)
-            }
-            productIngredients
+            } ?: emptyList()
         }
     }
 
@@ -228,27 +182,27 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
      */
     private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
-        val imgMap: MutableMap<String, RequestBody?> = HashMap()
-        imgMap["code"] = image.code
-        imgMap["imagefield"] = image.field
+        val imgMap = hashMapOf("code" to image.code, "imagefield" to image.field)
         if (image.imgFront != null) {
-            imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront
+            imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
         }
         if (image.imgIngredients != null) {
-            imgMap["""imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""] = image.imgIngredients
+            imgMap["""imgupload_ingredients"; filename="ingredients_$lang$PNG_EXT"""] = image.imgIngredients!!
         }
         if (image.imgNutrition != null) {
-            imgMap["""imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""] = image.imgNutrition
+            imgMap["""imgupload_nutrition"; filename="nutrition_$lang$PNG_EXT"""] = image.imgNutrition!!
         }
         if (image.imgPackaging != null) {
-            imgMap["""imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""] = image.imgPackaging
+            imgMap["""imgupload_packaging"; filename="packaging_$lang$PNG_EXT"""] = image.imgPackaging!!
         }
         if (image.imgOther != null) {
-            imgMap["""imgupload_other"; filename="other_$lang$PNG_EXT"""] = image.imgOther
+            imgMap["""imgupload_other"; filename="other_$lang$PNG_EXT"""] = image.imgOther!!
         }
 
         // Attribute the upload to the connected user
-        fillWithUserLoginInfo(imgMap)
+        addUserInfo().forEach { (key, value) ->
+            imgMap[key] = RequestBody.create(MediaType.parse(MIME_TEXT), value)
+        }
         return imgMap
     }
 
@@ -261,9 +215,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product): Completable {
-        return Completable.fromAction { addToHistorySync(mHistoryProductDao, product) }
-    }
+    fun addToHistory(product: Product) = Completable.fromAction { addToHistorySync(mHistoryProductDao, product) }
 
     fun getProductsByContributor(contributor: String?, page: Int) =
             rawAPI.searchProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
@@ -273,53 +225,43 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
      *
      * @return ListenableFuture
      */
-    fun uploadOfflineImages(): Completable {
-        return Single.fromCallable<List<Completable>> {
-            val toUploadProductList = mToUploadProductDao.queryBuilder()
-                    .where(ToUploadProductDao.Properties.Uploaded.eq(false))
-                    .list()
-            val totalSize = toUploadProductList.size
-            val imagesUploading: MutableList<Completable> = ArrayList()
-            for (i in 0 until totalSize) {
-                val uploadProduct = toUploadProductList[i]
-                var imageFile: File
-                imageFile = try {
-                    File(uploadProduct.imageFilePath)
-                } catch (e: Exception) {
-                    Log.e("OfflineUploadingTask", "doInBackground", e)
-                    continue
-                }
-                val productImage = ProductImage(uploadProduct.barcode,
-                        uploadProduct.productField, imageFile)
-                imagesUploading.add(rawAPI.saveImageSingle(getUploadableMap(productImage))
-                        .flatMapCompletable { jsonNode: JsonNode? ->
-                            if (jsonNode != null) {
-                                Log.d("onResponse", jsonNode.toString())
-                                if (!jsonNode.isObject) {
-                                    return@flatMapCompletable Completable.error(IOException("jsonNode is not an object"))
-                                } else if (jsonNode[ApiFields.Keys.STATUS].asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
-                                    mToUploadProductDao.delete(uploadProduct)
-                                    return@flatMapCompletable Completable.error(IOException(ApiFields.Defaults.STATUS_NOT_OK))
+    fun uploadOfflineImages() = Single.fromCallable {
+        mToUploadProductDao.queryBuilder()
+                .where(ToUploadProductDao.Properties.Uploaded.eq(false))
+                .list()
+                .mapNotNull { product ->
+                    val imageFile = try {
+                        File(product.imageFilePath)
+                    } catch (e: Exception) {
+                        Log.e("OfflineUploadingTask", "doInBackground", e)
+                        return@mapNotNull null
+                    }
+                    val productImage = ProductImage(product.barcode, product.productField, imageFile)
+                    return@mapNotNull rawAPI.saveImageSingle(getUploadableMap(productImage))
+                            .flatMapCompletable { jsonNode: JsonNode? ->
+                                if (jsonNode != null) {
+                                    Log.d("onResponse", jsonNode.toString())
+                                    if (!jsonNode.isObject) {
+                                        return@flatMapCompletable Completable.error(IOException("jsonNode is not an object"))
+                                    } else if (jsonNode[ApiFields.Keys.STATUS].asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
+                                        mToUploadProductDao.delete(product)
+                                        return@flatMapCompletable Completable.error(IOException(ApiFields.Defaults.STATUS_NOT_OK))
+                                    } else {
+                                        mToUploadProductDao.delete(product)
+                                        return@flatMapCompletable Completable.complete()
+                                    }
                                 } else {
-                                    mToUploadProductDao.delete(uploadProduct)
-                                    return@flatMapCompletable Completable.complete()
+                                    return@flatMapCompletable Completable.error(IOException("jsonNode is null"))
                                 }
-                            } else {
-                                return@flatMapCompletable Completable.error(IOException("jsonNode is null"))
                             }
-                        })
-            }
-            imagesUploading
-        }.flatMapCompletable { Completable.merge(it) }
-    }
+                }
+    }.flatMapCompletable { Completable.merge(it) }
 
-    fun getProductsByPackaging(packaging: String?, page: Int): Single<Search> {
-        return rawAPI.getProductByPackaging(packaging, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io())
-    }
+    fun getProductsByPackaging(packaging: String?, page: Int): Single<Search> =
+            rawAPI.getProductByPackaging(packaging, page, FIELDS_TO_FETCH_FACETS)
 
-    fun getProductsByStore(store: String?, page: Int): Single<Search> {
-        return rawAPI.getProductByStores(store, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io())
-    }
+    fun getProductsByStore(store: String?, page: Int): Single<Search> =
+            rawAPI.getProductByStores(store, page, FIELDS_TO_FETCH_FACETS)
 
     /**
      * Search for products using bran name
@@ -327,9 +269,8 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
      * @param brand search query for product
      * @param page page numbers
      */
-    fun getProductsByBrand(brand: String?, page: Int): Single<Search> {
-        return rawAPI.getProductByBrandsSingle(brand, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io())
-    }
+    fun getProductsByBrand(brand: String?, page: Int): Single<Search> =
+            rawAPI.getProductByBrandsSingle(brand, page, FIELDS_TO_FETCH_FACETS)
 
     @JvmOverloads
     fun postImg(image: ProductImage, setAsDefault: Boolean = false): Completable {
@@ -369,8 +310,8 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
                 }
     }
 
-    fun editImage(code: String?, imgMap: MutableMap<String, String?>, onEditImageCallback: OnEditImageCallback) {
-        rawAPI.editImages(code, addUserInfo(imgMap)).enqueue(createCallback(onEditImageCallback))
+    fun editImage(code: String?, imgMap: MutableMap<String, String?>): Single<String> {
+        return rawAPI.editImages(code, addUserInfo(imgMap))
     }
 
     /**
@@ -384,34 +325,16 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
         return rawAPI.unSelectImage(code, addUserInfo(imgMap))
     }
 
-    @Contract(value = "_ -> new", pure = true)
-    private fun createCallback(onEditImageCallback: OnEditImageCallback): Callback<String?> {
-        return object : Callback<String?> {
-            override fun onResponse(call: Call<String?>, response: Response<String?>) {
-                onEditImageCallback.onEditResponse(true, response.body())
-            }
-
-            override fun onFailure(call: Call<String?>, t: Throwable) {
-                onEditImageCallback.onEditResponse(false, null)
-            }
-        }
-    }
-
     fun getProductsByOrigin(origin: String?, page: Int) =
             rawAPI.getProductsByOrigin(origin, page, FIELDS_TO_FETCH_FACETS)
 
     fun syncOldHistory() {
-        historySyncDisp?.dispose()
-        historySyncDisp = Completable.fromAction {
-            val historyProducts = mHistoryProductDao.loadAll()
-            val size = historyProducts.size
-            for (i in 0 until size) {
-                val historyProduct = historyProducts[i]
-                rawAPI.getShortProductByBarcode(historyProduct.barcode, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)).enqueue(object : Callback<ProductState?> {
-                    override fun onResponse(call: Call<ProductState?>, response: Response<ProductState?>) {
-                        val s = response.body()
-                        if (s != null && s.status != 0L) {
-                            val product = s.product!!
+        historySyncDisp.clear()
+        mHistoryProductDao.loadAll().forEach { historyProduct ->
+            rawAPI.getShortProductByBarcode(historyProduct.barcode, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+                    .map { state ->
+                        if (state.status != 0L) {
+                            val product = state.product!!
                             val hp = HistoryProduct(
                                     product.productName,
                                     product.brands,
@@ -424,24 +347,19 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
                             hp.lastSeen = historyProduct.lastSeen
                             mHistoryProductDao.insertOrReplace(hp)
                         }
-                        context.getSharedPreferences("prefs", 0).edit().putBoolean("is_old_history_data_synced", true).apply()
-                    }
-
-                    override fun onFailure(call: Call<ProductState?>, t: Throwable) {
-                        // ignored
-                    }
-                })
-            }
-        }.subscribe()
+                        context.getSharedPreferences("prefs", 0).edit {
+                            putBoolean("is_old_history_data_synced", true).apply()
+                        }
+                    }.ignoreElement().subscribe().addTo(historySyncDisp)
+        }
     }
 
     fun getInfoAddedIncompleteProductsSingle(contributor: String?, page: Int): Single<Search> {
         return rawAPI.getInfoAddedIncompleteProductsSingle(contributor, page)
     }
 
-    fun getProductsByManufacturingPlace(manufacturingPlace: String?, page: Int): Single<Search> {
-        return rawAPI.getProductsByManufacturingPlace(manufacturingPlace, page, FIELDS_TO_FETCH_FACETS)
-    }
+    fun getProductsByManufacturingPlace(manufacturingPlace: String?, page: Int) =
+            rawAPI.getProductsByManufacturingPlace(manufacturingPlace, page, FIELDS_TO_FETCH_FACETS)
 
     /**
      * call API service to return products using Additives
@@ -449,21 +367,17 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
      * @param additive search query for products
      * @param page number of pages
      */
-    fun getProductsByAdditive(additive: String?, page: Int): Single<Search> {
-        return rawAPI.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS)
-    }
+    fun getProductsByAdditive(additive: String?, page: Int) =
+            rawAPI.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS)
 
-    fun getProductsByAllergen(allergen: String?, page: Int): Single<Search> {
-        return rawAPI.getProductsByAllergen(allergen, page, FIELDS_TO_FETCH_FACETS)
-    }
+    fun getProductsByAllergen(allergen: String?, page: Int) =
+            rawAPI.getProductsByAllergen(allergen, page, FIELDS_TO_FETCH_FACETS)
 
-    fun getToBeCompletedProductsByContributor(contributor: String?, page: Int): Single<Search> {
-        return rawAPI.getToBeCompletedProductsByContributor(contributor, page)
-    }
+    fun getToBeCompletedProductsByContributor(contributor: String?, page: Int) =
+            rawAPI.getToBeCompletedProductsByContributor(contributor, page)
 
-    fun getPicturesContributedProducts(contributor: String?, page: Int): Single<Search> {
-        return rawAPI.getPicturesContributedProducts(contributor, page)
-    }
+    fun getPicturesContributedProducts(contributor: String?, page: Int) =
+            rawAPI.getPicturesContributedProducts(contributor, page)
 
     fun getPicturesContributedIncompleteProducts(contributor: String?, page: Int) =
             rawAPI.getPicturesContributedIncompleteProducts(contributor, page)
@@ -492,10 +406,9 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
                 AppFlavors.OFF -> StringBuilder("Official Open Food Facts Android app")
                 else -> StringBuilder("Official Open Food Facts Android app")
             }
-            val instance = OFFApplication.instance
-            comment.append(" ").append(getVersionName(instance))
+            comment.append(" ").append(getVersionName(OFFApplication.instance))
             if (login.isNullOrEmpty()) {
-                comment.append(" (Added by ").append(InstallationUtils.id(instance)).append(")")
+                comment.append(" (Added by ").append(InstallationUtils.id(OFFApplication.instance)).append(")")
             }
             return comment.toString()
         }
@@ -518,15 +431,16 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
          */
         fun addToHistorySync(mHistoryProductDao: HistoryProductDao, product: Product) {
             val historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.code)).list()
-            val hp = HistoryProduct(product.productName,
+            val hp = HistoryProduct(
+                    product.productName,
                     product.brands,
                     product.getImageSmallUrl(getLanguage(OFFApplication.instance)),
                     product.code,
                     product.quantity,
-                    product.nutritionGradeFr)
-            if (historyProducts.isNotEmpty()) {
-                hp.id = historyProducts[0].id
-            }
+                    product.nutritionGradeFr
+            )
+            if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
+
             mHistoryProductDao.insertOrReplace(hp)
         }
 
@@ -534,25 +448,18 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
         fun addToHistorySync(mHistoryProductDao: HistoryProductDao, offlineSavedProduct: OfflineSavedProduct) {
             val historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(offlineSavedProduct.barcode)).list()
             val productDetails = offlineSavedProduct.productDetailsMap
-            val hp = HistoryProduct(offlineSavedProduct.name,
+            val hp = HistoryProduct(
+                    offlineSavedProduct.name,
                     productDetails[ApiFields.Keys.ADD_BRANDS],
                     offlineSavedProduct.imageFrontLocalUrl,
                     offlineSavedProduct.barcode,
                     productDetails[ApiFields.Keys.QUANTITY],
-                    null)
+                    null,
+            )
             if (historyProducts.isNotEmpty()) {
                 hp.id = historyProducts[0].id
             }
             mHistoryProductDao.insertOrReplace(hp)
-        }
-
-        // TODO: Move it to utility class
-        fun fillWithUserLoginInfo(imgMap: MutableMap<String, RequestBody?>): String? {
-            val values = addUserInfo(hashMapOf())
-            values.forEach { (key, value) ->
-                imgMap[key] = RequestBody.create(MediaType.parse(MIME_TEXT), value)
-            }
-            return values[ApiFields.Keys.USER_ID]
         }
 
         /**
@@ -560,7 +467,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
          *
          * @param imgMap The map to fill
          */
-        fun addUserInfo(imgMap: MutableMap<String, String?>): Map<String, String?> {
+        fun addUserInfo(imgMap: MutableMap<String, String?> = mutableMapOf()): Map<String, String?> {
             val settings = OFFApplication.instance.getSharedPreferences("login", 0)
 
             settings.getString("user", "")?.let {

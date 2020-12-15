@@ -290,32 +290,24 @@ class ProductEditOverviewFragment : BaseFragment() {
     }
 
     @Contract("null -> new")
-    private fun extractProductCountriesTagsChipValues(product: Product?): List<String> {
-        return product?.countriesTags?.map { getCountryName(appLanguageCode, it) } ?: emptyList()
-    }
+    private fun extractProductCountriesTagsChipValues(product: Product?) =
+            product?.countriesTags?.map { getCountryName(appLanguageCode, it) } ?: emptyList()
 
     @Contract("null -> new")
-    private fun extractProductStoresChipValues(product: Product?): List<String> {
-        return product?.stores?.split(Regex("\\s*,\\s*")) ?: emptyList()
-    }
+    private fun extractProductStoresChipValues(product: Product?) =
+            product?.stores?.split(Regex("\\s*,\\s*")) ?: emptyList()
 
     @Contract("null -> new")
-    private fun extractProductPurchasePlaces(product: Product?): List<String> {
-        return product?.purchasePlaces?.split(Regex("\\s*,\\s*")) ?: emptyList()
-    }
+    private fun extractProductPurchasePlaces(product: Product?) =
+            product?.purchasePlaces?.split(Regex("\\s*,\\s*")) ?: emptyList()
 
     @Contract("null -> new")
-    private fun extractProductEmbTagsChipsValues(product: Product?): List<String> {
-        if (product?.embTags == null) {
-            return emptyList()
-        }
-        return product.embTags.toString()
-                .replace("[", "")
-                .replace("]", "")
-                .split(", ")
-                .map { getEmbCode(it) }
-
-    }
+    private fun extractProductEmbTagsChipsValues(product: Product?): List<String> = (product?.embTags ?: emptyList())
+            .toString()
+            .replace("[", "")
+            .replace("]", "")
+            .split(", ")
+            .map { getEmbCode(it) }
 
     @Contract("null -> new")
     private fun extractProductOriginsChipsValues(product: Product?) =
@@ -547,7 +539,7 @@ class ProductEditOverviewFragment : BaseFragment() {
         languageCode = lang
         val current = getLocale(lang)
         binding.language.setText(R.string.product_language)
-        binding.language.append(StringUtils.capitalize(current!!.getDisplayName(current)))
+        binding.language.append(StringUtils.capitalize(current.getDisplayName(current)))
         if (activity is ProductEditActivity) {
             (activity as ProductEditActivity).setProductLanguage(lang)
         }

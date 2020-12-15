@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
@@ -29,32 +30,28 @@ class CategoryProductHelper(
     var containsAlcohol = false
         private set
 
-    fun showCategories() {
-        categoryText.text = bold(baseFragment.getString(R.string.txtCategories))
-        categoryText.movementMethod = LinkMovementMethod.getInstance()
-        categoryText.append(" ")
-        categoryText.isClickable = true
-        categoryText.movementMethod = LinkMovementMethod.getInstance()
+    fun showCategories() = categoryText.let {
+        it.text = bold(baseFragment.getString(R.string.txtCategories))
+        it.movementMethod = LinkMovementMethod.getInstance()
+        it.append(" ")
+        it.isClickable = true
+        it.movementMethod = LinkMovementMethod.getInstance()
         if (categories.isEmpty()) {
-            categoryText.visibility = View.GONE
+            it.visibility = View.GONE
         } else {
-            categoryText.visibility = View.VISIBLE
+            it.visibility = View.VISIBLE
             // Add all the categories to text view and link them to wikidata is possible
-            var i = 0
-            val lastIndex = categories.size - 1
-            while (i <= lastIndex) {
-                val category = categories[i]
+            for (category in categories) {
                 val categoryName = getCategoriesTag(category)
                 // Add category name to text view
-                categoryText.append(categoryName)
+                it.append(categoryName)
+
                 // Add a comma if not the last item
-                if (i != lastIndex) {
-                    categoryText.append(", ")
-                }
+                if (category != categories.last()) it.append(", ")
+
                 if (category.categoryTag != null && category.categoryTag == "en:alcoholic-beverages") {
                     containsAlcohol = true
                 }
-                i++
             }
         }
     }
@@ -64,7 +61,7 @@ class CategoryProductHelper(
         val clickableSpan: ClickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (category.isWikiDataIdPresent == true) {
-                    disp.add(apiClient.doSomeThing(category.wikiDataId).subscribe { result ->
+                    apiClient.doSomeThing(category.wikiDataId).subscribe { result ->
                         if (result != null) {
                             val activity = baseFragment.activity
                             if (activity != null && !activity.isFinishing) {
@@ -73,7 +70,7 @@ class CategoryProductHelper(
                             }
                         }
                         start(baseFragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
-                    })
+                    }.addTo(disp)
                 } else {
                     start(baseFragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
                 }
@@ -97,19 +94,19 @@ class CategoryProductHelper(
         }
         val riskAlcoholConsumption = baseFragment.getString(R.string.risk_alcohol_consumption)
         alcoholAlertText.visibility = View.VISIBLE
-        alcoholAlertText.text = SpannableStringBuilder().apply {
-            append("- ")
-            setSpan(
+        alcoholAlertText.text = SpannableStringBuilder().also {
+            it.append("- ")
+            it.setSpan(
                     ImageSpan(alcoholAlertIcon, DynamicDrawableSpan.ALIGN_BOTTOM),
                     0,
                     1,
                     Spanned.SPAN_INCLUSIVE_INCLUSIVE
             )
-            append(riskAlcoholConsumption)
-            setSpan(
+            it.append(riskAlcoholConsumption)
+            it.setSpan(
                     ForegroundColorSpan(Utils.getColor(baseFragment.requireContext(), R.color.red)),
-                    length - riskAlcoholConsumption.length,
-                    length,
+                    it.length - riskAlcoholConsumption.length,
+                    it.length,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }

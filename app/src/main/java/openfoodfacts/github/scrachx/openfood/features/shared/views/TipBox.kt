@@ -9,6 +9,7 @@ import android.view.animation.Transformation
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.R
 import kotlin.math.roundToLong
@@ -139,7 +140,9 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         prefs = PreferenceManager.getDefaultSharedPreferences(getContext())
         findViewById<View>(R.id.gotItBtn).setOnClickListener {
             hide()
-            prefs.edit().putBoolean(identifier, false).apply()
+            prefs.edit {
+                putBoolean(identifier, false)
+            }
         }
         tipMessageView.setTextColor(toolTipTextColor)
         findViewById<View>(R.id.tipBoxContainer).setBackgroundColor(toolTipBackgroundColor)

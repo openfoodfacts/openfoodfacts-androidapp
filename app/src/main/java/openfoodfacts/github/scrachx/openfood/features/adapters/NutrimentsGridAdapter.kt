@@ -12,7 +12,7 @@ import org.apache.commons.lang.StringUtils
 /**
  * @author herau
  */
-open class NutrimentsGridAdapter(private val nutrimentListItems: List<NutrimentListItem>) : RecyclerView.Adapter<NutrimentViewHolder>() {
+open class NutrimentsGridAdapter(private val nutrimentListItems: List<NutrimentListItem>) : RecyclerView.Adapter<NutrimentsGridAdapter.NutrimentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NutrimentViewHolder {
         val isViewTypeHeader = viewType == TYPE_HEADER
@@ -23,23 +23,21 @@ open class NutrimentsGridAdapter(private val nutrimentListItems: List<NutrimentL
             var displayServing = false
             for (nutriment in nutrimentListItems) {
                 val servingValue = nutriment.servingValue
-                if (servingValue != null && !StringUtils.isBlank(servingValue.toString())) {
-                    displayServing = true
-                }
+                if (servingValue.isBlank()) displayServing = true
             }
-            NutrimentHeaderViewHolder(v, displayServing)
+            NutrimentViewHolder.NutrimentHeaderViewHolder(v, displayServing)
         } else {
-            NutrimentListViewHolder(v)
+            NutrimentViewHolder.NutrimentListViewHolder(v)
         }
     }
 
     override fun onBindViewHolder(holder: NutrimentViewHolder, position: Int) {
         when (holder) {
-            is NutrimentHeaderViewHolder -> {
+            is NutrimentViewHolder.NutrimentHeaderViewHolder -> {
                 val item = nutrimentListItems[position]
                 holder.vNutrimentValue.setText(if (item.displayVolumeHeader) R.string.for_100ml else R.string.for_100g)
             }
-            is NutrimentListViewHolder -> {
+            is NutrimentViewHolder.NutrimentListViewHolder -> {
                 val item = nutrimentListItems[position]
                 holder.fillNutrimentValue(item)
                 holder.fillServingValue(item)
@@ -62,40 +60,43 @@ open class NutrimentsGridAdapter(private val nutrimentListItems: List<NutrimentL
         private const val TYPE_HEADER = 0
         private const val TYPE_ITEM = 1
     }
-}
 
-sealed class NutrimentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-internal class NutrimentListViewHolder(v: View) : NutrimentViewHolder(v) {
-    private val vNutrimentName: TextView = v.findViewById(R.id.nutriment_name)
-    private val vNutrimentServingValue: TextView = v.findViewById(R.id.nutriment_serving_value)
-    private val vNutrimentValue: TextView = v.findViewById(R.id.nutriment_value)
 
-    fun fillNutrimentValue(item: NutrimentListItem) {
-        vNutrimentName.text = item.title
-        vNutrimentValue.append("${item.modifier} ${item.value} ${item.unit}")
-    }
+    sealed class NutrimentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        internal class NutrimentListViewHolder(v: View) : NutrimentViewHolder(v) {
+            private val vNutrimentName: TextView = v.findViewById(R.id.nutriment_name)
+            private val vNutrimentServingValue: TextView = v.findViewById(R.id.nutriment_serving_value)
+            private val vNutrimentValue: TextView = v.findViewById(R.id.nutriment_value)
 
-    fun fillServingValue(item: NutrimentListItem) {
-        val servingValue = item.servingValue
-        if (StringUtils.isBlank(servingValue.toString())) {
-            vNutrimentServingValue.visibility = View.GONE
-        } else {
-            vNutrimentServingValue.append(String.format("%s %s %s",
-                    item.modifier,
-                    servingValue,
-                    item.unit))
+            fun fillNutrimentValue(item: NutrimentListItem) {
+                vNutrimentName.text = item.title
+                vNutrimentValue.append("${item.modifier} ${item.value} ${item.unit}")
+            }
+
+            fun fillServingValue(item: NutrimentListItem) {
+                val servingValue = item.servingValue
+                if (StringUtils.isBlank(servingValue.toString())) {
+                    vNutrimentServingValue.visibility = View.GONE
+                } else {
+                    vNutrimentServingValue.append(String.format("%s %s %s",
+                            item.modifier,
+                            servingValue,
+                            item.unit))
+                }
+            }
+        }
+
+        internal class NutrimentHeaderViewHolder(itemView: View, displayServing: Boolean) : NutrimentViewHolder(itemView) {
+            val vNutrimentValue: TextView = itemView.findViewById(R.id.nutriment_value)
+            private val nutrimentServingValue: TextView = itemView.findViewById(R.id.nutriment_serving_value)
+
+            init {
+                if (!displayServing) {
+                    nutrimentServingValue.visibility = View.GONE
+                }
+            }
         }
     }
-
 }
 
-internal class NutrimentHeaderViewHolder(itemView: View, displayServing: Boolean) : NutrimentViewHolder(itemView) {
-    val vNutrimentValue: TextView = itemView.findViewById(R.id.nutriment_value)
-    private val nutrimentServingValue: TextView = itemView.findViewById(R.id.nutriment_serving_value)
 
-    init {
-        if (!displayServing) {
-            nutrimentServingValue.visibility = View.GONE
-        }
-    }
-}

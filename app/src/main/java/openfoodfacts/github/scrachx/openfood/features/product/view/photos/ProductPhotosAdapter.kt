@@ -10,6 +10,9 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.images.*
@@ -28,10 +31,11 @@ class ProductPhotosAdapter(
         private val isLoggedIn: Boolean,
         private val images: List<String>,
         private val onImageClick: (Int) -> Unit
-) : RecyclerView.Adapter<ProductPhotoViewHolder>() {
+) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
     private val barcode = product.code
     private val imgMap = hashMapOf<String, String?>()
     private val openFoodAPIClient = OpenFoodAPIClient(activity)
+    private val disp = CompositeDisposable()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPhotoViewHolder {
@@ -82,19 +86,26 @@ class ProductPhotosAdapter(
                     imgMap[imgIdKey] = images[position]
                     imgMap[PRODUCT_BARCODE] = barcode
                     imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.INGREDIENTS)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
+                    openFoodAPIClient.editImage(product.code, imgMap)
+                            .subscribe { response -> displaySetImageName(response) }
+                            .addTo(disp)
                 }
                 R.id.set_nutrition_image -> {
                     imgMap[imgIdKey] = images[position]
                     imgMap[PRODUCT_BARCODE] = barcode
                     imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.NUTRITION)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
+                    openFoodAPIClient.editImage(product.code, imgMap)
+                            .subscribe { response -> displaySetImageName(response) }
+                            .addTo(disp)
+
                 }
                 R.id.set_front_image -> {
                     imgMap[imgIdKey] = images[position]
                     imgMap[PRODUCT_BARCODE] = barcode
                     imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.FRONT)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
+                    openFoodAPIClient.editImage(product.code, imgMap)
+                            .subscribe { response -> displaySetImageName(response) }
+                            .addTo(disp)
                 }
                 R.id.report_image -> activity.startActivity(Intent.createChooser(
                         Intent(Intent.ACTION_SEND).apply {
@@ -104,8 +115,6 @@ class ProductPhotosAdapter(
                             putExtra(Intent.EXTRA_SUBJECT, "Photo report for product $barcode")
                             putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product $barcode")
                         }, "Send mail"))
-                else -> {
-                }
             }
             return true
         }
@@ -114,4 +123,8 @@ class ProductPhotosAdapter(
     companion object {
         private val LOG_TAG = this::class.simpleName!!
     }
+
+    override fun dispose() = disp.dispose()
+
+    override fun isDisposed() = disp.isDisposed
 }

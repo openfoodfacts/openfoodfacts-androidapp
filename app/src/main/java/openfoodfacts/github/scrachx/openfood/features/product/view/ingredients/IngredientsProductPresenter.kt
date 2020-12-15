@@ -40,7 +40,7 @@ class IngredientsProductPresenter(
 
     override fun loadAdditives() {
         val additivesTags = product.additivesTags
-        if (additivesTags != null && additivesTags.isNotEmpty()) {
+        if (additivesTags.isNotEmpty()) {
             val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
             disposable.add(Observable.fromArray(*additivesTags.toTypedArray())
                     .flatMapSingle { tag: String? ->
@@ -107,9 +107,6 @@ class IngredientsProductPresenter(
         }
     }
 
-    override fun dispose() {
-        if (!disposable.isDisposed) {
-            disposable.clear()
-        }
-    }
+    override fun dispose() = disposable.dispose()
+    override fun isDisposed() = disposable.isDisposed
 }

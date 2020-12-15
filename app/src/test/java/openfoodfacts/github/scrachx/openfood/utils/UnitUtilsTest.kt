@@ -25,7 +25,7 @@ import org.junit.function.ThrowingRunnable
 /**
  *
  */
-class UnitUtilTest {
+class UnitUtilsTest {
     @Test
     fun testGetServingInL() {
         assertThat(getServingInL("1l")).isEqualTo("1l")

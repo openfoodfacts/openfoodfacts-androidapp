@@ -26,11 +26,9 @@ class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : R
     companion object {
         private const val WORK_TAG = "OFFLINE_WORKER_TAG"
         const val KEY_INCLUDE_IMAGES = "includeImages"
-        private fun inputData(includeImages: Boolean): Data {
-            return Data.Builder()
-                    .putBoolean(KEY_INCLUDE_IMAGES, includeImages)
-                    .build()
-        }
+        private fun inputData(includeImages: Boolean) = Data.Builder()
+                .putBoolean(KEY_INCLUDE_IMAGES, includeImages)
+                .build()
 
         @JvmStatic
         fun scheduleSync() {

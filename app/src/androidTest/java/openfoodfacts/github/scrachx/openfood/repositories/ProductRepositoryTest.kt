@@ -77,6 +77,9 @@ class ProductRepositoryTest {
             ProductRepository.saveAllergens(createAllergens())
         }
 
+        @AfterClass
+        fun close() = clearDatabase()
+
         private fun clearDatabase() {
             val daoSession = daoSession
             val db = daoSession.database
@@ -89,11 +92,6 @@ class ProductRepositoryTest {
             } finally {
                 db.endTransaction()
             }
-        }
-
-        @AfterClass
-        fun close() {
-            clearDatabase()
         }
 
         private fun createAllergens(): List<Allergen> {

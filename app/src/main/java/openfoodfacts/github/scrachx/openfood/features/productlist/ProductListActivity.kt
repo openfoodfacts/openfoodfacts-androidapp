@@ -48,7 +48,6 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstall
 import org.apache.commons.collections.CollectionUtils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVPrinter
-import org.apache.commons.lang.StringUtils
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -87,6 +86,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         super.onCreate(savedInstanceState)
         _binding = ActivityYourListedProductsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
@@ -101,10 +101,10 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         val bundle = intent.extras
         var prodToAdd: Product? = null
         if (bundle != null) {
-            listID = bundle.getLong("listId")
-            listName = bundle.getString("listName")
+            listID = bundle.getLong(KEY_LIST_ID)
+            listName = bundle.getString(KEY_LIST_NAME)
             title = listName
-            prodToAdd = bundle["product"] as Product?
+            prodToAdd = bundle[KEY_PRODUCT_TO_ADD] as Product?
         }
 
         val locale = getLanguage(this)
@@ -166,7 +166,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             "grade" -> {
 
                 //get list of HistoryProduct items for the YourListProduct items
-                val gradesConditions = products!!.map {HistoryProductDao.Properties.Barcode.eq(it.barcode)  }.toTypedArray()
+                val gradesConditions = products!!.map { HistoryProductDao.Properties.Barcode.eq(it.barcode) }.toTypedArray()
                 val historyProductsGrade: List<HistoryProduct>
                 val qbGrade = historyProductDao!!.queryBuilder()
                 if (gradesConditions.size > 1) {
@@ -263,7 +263,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
                         else -> "time"
                     }
                     sortProducts()
-                    adapter = ProductListAdapter(this, products ?: mutableListOf(), isLowBatteryMode)
+                    adapter = ProductListAdapter(this, products ?: emptyList(), isLowBatteryMode)
                     binding.rvYourListedProducts.adapter = adapter
                 }
                 builder.show()
@@ -351,13 +351,20 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
     }
 
     override fun onBackPressed() {
-        val data = Intent()
-        data.putExtra("update", true)
-        setResult(RESULT_OK, data)
+        setResult(RESULT_OK, Intent().apply { putExtra("update", true) })
         super.onBackPressed()
     }
 
     companion object {
+
+        @JvmStatic
+        fun start(context: Context, listID: Long, listName: String) {
+            context.startActivity(Intent(context, ProductListActivity::class.java).apply {
+                putExtra(KEY_LIST_ID, listID)
+                putExtra(KEY_LIST_NAME, listName)
+            })
+        }
+
         fun createNotification(f: File?, downloadIntent: Intent, context: Context): NotificationManager {
             val csvUri = FileProvider.getUriForFile(context, context.packageName + ".provider", f!!)
             downloadIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -382,23 +389,23 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
 
 
         @JvmStatic
-        fun getProductBrandsQuantityDetails(p: Product): String {
-            return getProductBrandsQuantityDetails(p.brands, p.quantity)
-        }
+        fun getProductBrandsQuantityDetails(p: Product) = getProductBrandsQuantityDetails(p.brands, p.quantity)
 
-        fun getProductBrandsQuantityDetails(p: HistoryItem): String {
-            return getProductBrandsQuantityDetails(p.brands, p.quantity)
-        }
+        fun getProductBrandsQuantityDetails(p: HistoryItem) = getProductBrandsQuantityDetails(p.brands, p.quantity)
 
         private fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
             val stringBuilder = StringBuilder()
             if (!brands.isNullOrEmpty()) {
-                stringBuilder.append(StringUtils.capitalize(brands.split(",").toTypedArray()[0].trim { it <= ' ' }))
+                stringBuilder.append(brands.split(",").toTypedArray()[0].trim { it <= ' ' }.capitalize(Locale.ROOT))
             }
             if (!quantity.isNullOrEmpty()) {
                 stringBuilder.append(" - ").append(quantity)
             }
             return stringBuilder.toString()
         }
+
+        private const val KEY_LIST_ID = "listId"
+        private const val KEY_LIST_NAME = "listName"
+        private const val KEY_PRODUCT_TO_ADD = "product"
     }
 }

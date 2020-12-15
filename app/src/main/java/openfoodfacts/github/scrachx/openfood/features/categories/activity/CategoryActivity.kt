@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.fragment.app.commitNow
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityCategoryBinding
 import openfoodfacts.github.scrachx.openfood.features.categories.fragment.CategoryListFragment
@@ -33,7 +34,7 @@ class CategoryActivity : BaseActivity() {
         binding.gameButton.setOnClickListener { openHungerGame() }
 
         // set fragment container view
-        supportFragmentManager.beginTransaction().add(R.id.fragment, CategoryListFragment()).commitNow()
+        supportFragmentManager.commitNow { add(R.id.fragment, CategoryListFragment()) }
         selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0)
         install(this, binding.bottomNavigationInclude.bottomNavigation)
     }

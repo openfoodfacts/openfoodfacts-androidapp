@@ -34,6 +34,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductIngredientsBinding
@@ -92,12 +93,12 @@ class ProductEditIngredientsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File ->
-            val uri = newPhotoFile.toURI()
+        photoReceiverHandler = PhotoReceiverHandler {
+            val uri = it.toURI()
             imagePath = uri.path
             newImageSelected = true
-            photoFile = newPhotoFile
-            val image = ProductImage(code, ProductImageField.INGREDIENTS, newPhotoFile)
+            photoFile = it
+            val image = ProductImage(code, ProductImageField.INGREDIENTS, it)
             image.filePath = uri.path
             if (activity is ProductEditActivity) {
                 (activity as ProductEditActivity).addToPhotoMap(image, 1)
@@ -129,12 +130,12 @@ class ProductEditIngredientsFragment : BaseFragment() {
                 toggleExtractIngredientsButtonVisibility()
             }
         })
-        val b = arguments
-        if (b != null) {
+        val bundle = arguments
+        if (bundle != null) {
             mAllergenNameDao = Utils.daoSession.allergenNameDao
-            product = b.getSerializable("product") as Product?
-            mOfflineSavedProduct = b.getSerializable("edit_offline_product") as OfflineSavedProduct?
-            editProduct = b.getBoolean(ProductEditActivity.KEY_IS_EDITING)
+            product = bundle.getSerializable("product") as Product?
+            mOfflineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
+            editProduct = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
             if (product != null) {
                 code = product!!.code
             }
@@ -149,12 +150,9 @@ class ProductEditIngredientsFragment : BaseFragment() {
                 val enabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("fastAdditionMode", false)
                 enableFastAdditionMode(enabled)
             }
-            if (b.getBoolean("perform_ocr")) {
-                onClickExtractIngredients()
-            }
-            if (b.getBoolean("send_updated")) {
-                onClickBtnEditImageIngredients()
-            }
+            if (bundle.getBoolean("perform_ocr")) onClickExtractIngredients()
+
+            if (bundle.getBoolean("send_updated")) onClickBtnEditImageIngredients()
         } else {
             Toast.makeText(activity, R.string.error_adding_ingredients, Toast.LENGTH_SHORT).show()
             requireActivity().finish()
@@ -336,29 +334,25 @@ class ProductEditIngredientsFragment : BaseFragment() {
     }
 
     private fun addIngredientsImage() {
-        if (imagePath != null) {
+        if (imagePath == null) {
+            onClickBtnEditImageIngredients()
+        } else {
             if (photoFile != null) {
                 cropRotateImage(photoFile, getString(R.string.ingredients_picture))
             } else {
-                disp.add(download(requireContext(), imagePath!!)
+                download(requireContext(), imagePath!!)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file: File? ->
                             photoFile = file
                             cropRotateImage(photoFile, getString(R.string.ingredients_picture))
-                        })
+                        }.addTo(disp)
             }
-        } else {
-            onClickBtnEditImageIngredients()
         }
     }
 
-    private fun onClickBtnEditImageIngredients() {
-        doChooseOrTakePhotos(getString(R.string.ingredients_picture))
-    }
+    private fun onClickBtnEditImageIngredients() = doChooseOrTakePhotos(getString(R.string.ingredients_picture))
 
-    override fun doOnPhotosPermissionGranted() {
-        onClickBtnEditImageIngredients()
-    }
+    override fun doOnPhotosPermissionGranted() = onClickBtnEditImageIngredients()
 
     operator fun next() {
         val fragmentActivity: Activity? = getActivity()
@@ -445,9 +439,7 @@ class ProductEditIngredientsFragment : BaseFragment() {
      * Displays progress bar and hides other views util image is still loading
      */
     fun showImageProgress() {
-        if (!isAdded) {
-            return
-        }
+        if (!isAdded) return
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE
         binding.imageProgressText.setText(R.string.toastSending)
@@ -513,7 +505,5 @@ class ProductEditIngredientsFragment : BaseFragment() {
         binding.ocrProgressText.visibility = View.GONE
     }
 
-    private fun dps50ToPixels(): Int {
-        return dpsToPixel(50, getActivity())
-    }
+    private fun dps50ToPixels() = dpsToPixel(50, getActivity())
 }

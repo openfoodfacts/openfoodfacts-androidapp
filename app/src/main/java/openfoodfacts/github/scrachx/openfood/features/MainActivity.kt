@@ -39,8 +39,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.commit
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -174,7 +176,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         // chrome custom tab init
         customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper!!.connectionCallback =object : CustomTabActivityHelper.ConnectionCallback {
+        customTabActivityHelper!!.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
             override fun onCustomTabsConnected() {}
             override fun onCustomTabsDisconnected() {}
         }
@@ -348,10 +350,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             }
                         }
                         if (newFragment != null) {
-                            supportFragmentManager.beginTransaction()
-                                    .replace(R.id.fragment_container, newFragment)
-                                    .addToBackStack(null)
-                                    .commit()
+                            supportFragmentManager.commit {
+                                replace(R.id.fragment_container, newFragment)
+                                addToBackStack(null)
+                            }
                         }
                         return false
                     }
@@ -448,9 +450,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private fun swapToHomeFragment() {
         val fragmentManager = supportFragmentManager
         fragmentManager.addOnBackStackChangedListener {}
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, HomeFragment())
-                .commit()
+        fragmentManager.commit {
+            replace(R.id.fragment_container, HomeFragment())
+        }
         binding.toolbarInclude.toolbar.title = BuildConfig.APP_NAME
     }
 
@@ -527,7 +529,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      * Remove user login info
      */
     private fun logout() {
-        getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit().clear().apply()
+        getSharedPreferences(PreferencesFragment.LOGIN_PREF, MODE_PRIVATE).edit { clear() }
         updateConnectedState()
     }
 
@@ -688,7 +690,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     override fun onDestroy() {
-        customTabActivityHelper!!.connectionCallback=null
+        customTabActivityHelper!!.connectionCallback = null
         disp.dispose()
         _binding = null
         super.onDestroy()
@@ -920,10 +922,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         val manager = supportFragmentManager
         val fragmentPopped = manager.popBackStackImmediate(backStateName, 0)
         if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) {
-            val ft = manager.beginTransaction()
-            ft.replace(R.id.fragment_container, fragment, backStateName)
-            ft.addToBackStack(backStateName)
-            ft.commit()
+            manager.commit {
+                replace(R.id.fragment_container, fragment, backStateName)
+                addToBackStack(backStateName)
+            }
         }
         if (title != null) {
             supportActionBar?.title = title

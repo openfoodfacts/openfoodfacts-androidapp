@@ -31,12 +31,14 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.LanguageDataAdapter
@@ -180,9 +182,7 @@ class ImagesManageActivity : BaseActivity() {
                         5 -> startShowCase(getString(R.string.title_unselect_photo), getString(R.string.content_unselect_photo), R.id.btnUnselectImage, 6)
                         6 -> startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btn_done, 7)
                         7 -> {
-                            val editor = settings!!.edit()
-                            editor.putBoolean(getString(R.string.check_first_time), false)
-                            editor.apply()
+                            settings!!.edit { putBoolean(getString(R.string.check_first_time), false) }
                         }
                     }
                 }
@@ -190,13 +190,8 @@ class ImagesManageActivity : BaseActivity() {
                 .show()
     }
 
-    private fun generateImageTypeNames(): List<String> {
-        val images: MutableList<String> = ArrayList()
-        for (type in ApiFields.Keys.TYPE_IMAGE) {
-            images.add(resources.getString(getResourceId(type)))
-        }
-        return images
-    }
+    private fun generateImageTypeNames() =
+            ApiFields.Keys.TYPE_IMAGE.map { resources.getString(getResourceId(it)) }
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
@@ -238,9 +233,7 @@ class ImagesManageActivity : BaseActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
         binding.comboLanguages.adapter = adapter
         selectedIndex = find(languageForImage, currentLanguage)
-        if (selectedIndex >= 0) {
-            binding.comboLanguages.setSelection(selectedIndex)
-        }
+        if (selectedIndex >= 0) binding.comboLanguages.setSelection(selectedIndex)
         updateLanguageStatus()
         updateSelectDefaultLanguageAction()
     }
@@ -404,7 +397,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun onSelectDefaultLanguage() {
-        val lang = getLocale(product!!.lang)!!.language
+        val lang = getLocale(product!!.lang).language
         getLanguageData(lang, true)
         val position = (binding.comboLanguages.adapter as LanguageDataAdapter).getPosition(lang)
         if (position >= 0) {
@@ -476,7 +469,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun updateSelectDefaultLanguageAction() {
-        val isDefault = product!!.lang != null && getCurrentLanguage() == getLocale(product!!.lang)!!.language
+        val isDefault = product!!.lang != null && getCurrentLanguage() == getLocale(product!!.lang).language
         binding.btnChooseDefaultLanguage.visibility = if (isDefault) View.INVISIBLE else View.VISIBLE
     }
 
@@ -490,15 +483,15 @@ class ImagesManageActivity : BaseActivity() {
         //the rotation/crop set on the server
         val transformation = getScreenTransformation(product!!, productImageField, language)
         //the first time, the images properties are not loaded...
-        if (transformation.isEmpty) {
+        if (transformation.isEmpty()) {
             updateProductImagesInfo { editPhoto(productImageField, getScreenTransformation(product, productImageField, language)) }
         }
         editPhoto(productImageField, transformation)
     }
 
     private fun editPhoto(productImageField: ProductImageField?, transformation: ImageTransformationUtils) {
-        if (transformation.isNotEmpty) {
-            disp.add(download(this, transformation.initImageUrl!!)
+        if (transformation.isNotEmpty()) {
+            disp.add(download(this, transformation.imageUrl!!)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { file: File? ->
                         //to delete the file after:
@@ -614,7 +607,7 @@ class ImagesManageActivity : BaseActivity() {
             if (isModified) {
                 startRefresh(getString(R.string.toastSending))
                 val imgMap = hashMapOf<String, String?>()
-                imgMap[IMG_ID] = newServerTransformation.initImageId
+                imgMap[IMG_ID] = newServerTransformation.imageId
                 addTransformToMap(newServerTransformation, imgMap)
                 postEditImage(imgMap)
             } else {
@@ -628,12 +621,12 @@ class ImagesManageActivity : BaseActivity() {
         imgMap[PRODUCT_BARCODE] = code
         imgMap[IMAGE_STRING_ID] = getImageStringKey(getSelectedType(), getCurrentLanguage())
         binding.imageViewFullScreen.visibility = View.INVISIBLE
-        client.editImage(code, imgMap) { value, _ ->
-            if (value) {
+        client.editImage(code, imgMap).subscribe { value ->
+            if (value != null) {
                 setResult(RESULTCODE_MODIFIED)
             }
             reloadProduct()
-        }
+        }.addTo(disp)
     }
 
     private fun deleteLocalFiles() {

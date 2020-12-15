@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.commit
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import openfoodfacts.github.scrachx.openfood.R
@@ -35,7 +36,10 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
             }
             R.id.home_page, R.id.home -> {
                 if (isCurrentActivity(WelcomeActivity::class.java) || isCurrentActivity(MainActivity::class.java)) {
-                    (currentActivity as FragmentActivity).supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).addToBackStack(null).commit()
+                    (currentActivity as FragmentActivity).supportFragmentManager.commit {
+                        replace(R.id.fragment_container, HomeFragment())
+                        addToBackStack(null)
+                    }
                     return true
                 }
                 currentActivity.startActivity(createIntent(MainActivity::class.java))

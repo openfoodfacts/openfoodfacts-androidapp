@@ -48,7 +48,7 @@ object CustomTabsHelper {
      */
     fun getCustomTabsIntent(context: Context, session: CustomTabsSession?): CustomTabsIntent {
         val icon = getBitmapFromDrawable(context, R.drawable.ic_arrow_back_black)
-        //TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
+        // TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
         return CustomTabsIntent.Builder(session)
                 .setShowTitle(true) // to override if not default theme value
                 //                .setToolbarColor(resources.getColor(R.color.md_light_appbar))
@@ -69,9 +69,8 @@ object CustomTabsHelper {
      */
     @JvmStatic
     fun getPackageNameToUse(context: Context): String? {
-        if (sPackageNameToUse != null) {
-            return sPackageNameToUse
-        }
+        if (sPackageNameToUse != null) return sPackageNameToUse
+
         val pm = context.packageManager
         // Get default VIEW intent handler.
         val activityIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.com"))

@@ -53,8 +53,13 @@ class ProductEditPhotosFragment : BaseFragment() {
     private val binding get() = _binding!!
     private var photoReceiverHandler: PhotoReceiverHandler? = null
     private var code: String? = null
-    private var activity: Activity? = null
+    private lateinit var activity: Activity
     private var photoFile: File? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        activity = requireActivity()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddProductPhotosBinding.inflate(inflater, container, false)
@@ -73,11 +78,11 @@ class ProductEditPhotosFragment : BaseFragment() {
                 (activity as ProductEditActivity).addToPhotoMap(image, 4)
             }
         }
-        val b = arguments
-        if (b != null) {
-            val product = b.getSerializable("product") as Product?
-            val offlineSavedProduct = b.getSerializable("edit_offline_product") as OfflineSavedProduct?
-            val editionMode = b.getBoolean(ProductEditActivity.KEY_IS_EDITING)
+        val bundle = arguments
+        if (bundle != null) {
+            val product = bundle.getSerializable("product") as Product?
+            val offlineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
+            val editionMode = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
             if (product != null) {
                 code = product.code
             }
@@ -90,11 +95,6 @@ class ProductEditPhotosFragment : BaseFragment() {
             Toast.makeText(activity, R.string.error_adding_product_photos, Toast.LENGTH_SHORT).show()
             requireActivity().finish()
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        activity = getActivity()
     }
 
     override fun onDestroyView() {

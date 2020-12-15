@@ -79,15 +79,12 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
 
     override fun onRefresh() {
-        if (refreshListener != null) {
-            refreshListener!!.onRefresh()
-        }
+        refreshListener?.onRefresh()
     }
 
+
     override fun refreshView(productState: ProductState) {
-        if (swipeRefreshLayout != null) {
-            swipeRefreshLayout!!.isRefreshing = false
-        }
+        swipeRefreshLayout?.isRefreshing = false
     }
 
     protected fun doChooseOrTakePhotos(title: String?) {

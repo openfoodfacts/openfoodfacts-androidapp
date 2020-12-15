@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
 import android.os.Build
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
@@ -56,10 +57,9 @@ object LocaleHelper {
     fun setLocale(context: Context, locale: Locale?): Context {
         if (locale == null) return context
         var newContext = context
-        PreferenceManager.getDefaultSharedPreferences(newContext)
-                .edit()
-                .putString(SELECTED_LANGUAGE, locale.language)
-                .apply()
+        PreferenceManager.getDefaultSharedPreferences(newContext).edit {
+            putString(SELECTED_LANGUAGE, locale.language)
+        }
         Locale.setDefault(locale)
         val resources = newContext.resources
         val configuration = resources.configuration
@@ -100,7 +100,7 @@ object LocaleHelper {
 
     @JvmStatic
     fun getLanguageData(code: String?, supported: Boolean): LanguageData? {
-        val locale = getLocale(code) ?: return null
+        val locale = getLocale(code)
         return LanguageData(locale.language, StringUtils.capitalize(locale.getDisplayName(locale)), supported)
     }
 
@@ -141,7 +141,7 @@ object LocaleHelper {
 
     @JvmStatic
     fun setLocale(context: Context, language: String?): Context {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().run {
+        PreferenceManager.getDefaultSharedPreferences(context).edit {
             putString(SELECTED_LANGUAGE, language)
             apply()
         }
@@ -155,7 +155,7 @@ object LocaleHelper {
      * @return Locale from locale string
      */
     @JvmStatic
-    fun getLocale(locale: String?): Locale? {
+    fun getLocale(locale: String?): Locale {
         if (locale == null) {
             return Locale.getDefault()
         }
@@ -176,7 +176,7 @@ object LocaleHelper {
                     return checkLocale
                 }
             }
-            return null
+            return Locale.getDefault()
         }
     }
 

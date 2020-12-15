@@ -1,7 +1,9 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import io.reactivex.Single
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -21,7 +23,7 @@ fun OfflineSavedProduct.toOnlineProduct(context: Context): Single<Product> {
 fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true)
 
 @DrawableRes
-fun Product?.getCO2Drawable(): Int {
+fun Product?.getCO2Resource(): Int {
     if (this == null) return Utils.NO_DRAWABLE_RESOURCE
 
     val tags = environmentImpactLevelTags
@@ -36,15 +38,7 @@ fun Product?.getCO2Drawable(): Int {
 }
 
 @DrawableRes
-fun Product?.getNutriScoreSmallDrawable() = when {
-    this == null -> getNutriScoreSmallDrawable(null as String?)
-    // Prefer the global tag to the FR tag
-    getNutritionGradeTag() != null -> getNutriScoreSmallDrawable(getNutritionGradeTag())
-    else -> getNutriScoreSmallDrawable(nutritionGradeFr)
-}
-
-@DrawableRes
-fun Product?.getEcoscoreDrawable() = when (this?.ecoscore) {
+fun Product?.getEcoscoreResource() = when (this?.ecoscore) {
     "a" -> R.drawable.ic_ecoscore_a
     "b" -> R.drawable.ic_ecoscore_b
     "c" -> R.drawable.ic_ecoscore_c
@@ -54,8 +48,13 @@ fun Product?.getEcoscoreDrawable() = when (this?.ecoscore) {
 }
 
 @DrawableRes
-fun Product?.getNutriScoreDrawable() = getNutriScoreDrawable(this?.nutritionGradeFr)
-fun Product?.getImageGradeDrawable(context: Context) = getImageGradeDrawable(context, this?.nutritionGradeFr)
+fun Product?.getNutriScoreResource() = getNutriScoreResource(this?.nutritionGradeFr)
+
+fun Product?.getImageGradeDrawable(context: Context): Drawable? {
+    val gradeID = getNutriScoreResource(this?.nutritionGradeFr)
+    return if (gradeID == Utils.NO_DRAWABLE_RESOURCE) null
+    else VectorDrawableCompat.create(context.resources, gradeID, null)
+}
 
 /**
  * Returns the NOVA group graphic asset given the group

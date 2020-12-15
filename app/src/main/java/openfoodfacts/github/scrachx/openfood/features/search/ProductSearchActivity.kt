@@ -335,10 +335,9 @@ class ProductSearchActivity : BaseActivity() {
 
 
     private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
-        disp.add(observeOn(AndroidSchedulers.mainThread())
-                .subscribe { search, throwable ->
-                    displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
-                })
+        disp.add(observeOn(AndroidSchedulers.mainThread()).subscribe { search, throwable ->
+            displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
+        })
     }
 
     private fun loadDataForContributor(searchQuery: String) {
@@ -367,29 +366,29 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     private fun loadData(isResponseOk: Boolean, response: Search?) {
-        val mProducts = mutableListOf<Product?>()
+        val products = mutableListOf<Product?>()
         if (isResponseOk && response != null) {
             mCountProducts = response.count.toInt()
             if (pageAddress == 1) {
                 val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
                 binding.textCountProduct.text = resources.getString(R.string.number_of_results) + number
-                mProducts.addAll(response.products)
-                if (mProducts.size < mCountProducts) {
-                    mProducts.add(null)
+                products.addAll(response.products)
+                if (products.size < mCountProducts) {
+                    products.add(null)
                 }
                 if (setupDone) {
-                    binding.productsRecyclerView.adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode, this)
+                    binding.productsRecyclerView.adapter = ProductsRecyclerViewAdapter(products, isLowBatteryMode, this)
                 }
-                setUpRecyclerView(mProducts)
+                setUpRecyclerView(products)
             } else {
-                if (mProducts.size - 1 < mCountProducts + 1) {
-                    val posStart = mProducts.size
-                    mProducts.removeAt(mProducts.size - 1)
-                    mProducts.addAll(response.products)
-                    if (mProducts.size < mCountProducts) {
-                        mProducts.add(null)
+                if (products.size - 1 < mCountProducts + 1) {
+                    val posStart = products.size
+                    products.removeAt(products.size - 1)
+                    products.addAll(response.products)
+                    if (products.size < mCountProducts) {
+                        products.add(null)
                     }
-                    binding.productsRecyclerView.adapter?.notifyItemRangeChanged(posStart - 1, mProducts.size - 1)
+                    binding.productsRecyclerView.adapter?.notifyItemRangeChanged(posStart - 1, products.size - 1)
                 }
             }
         } else {
@@ -409,9 +408,7 @@ class ProductSearchActivity : BaseActivity() {
      */
     private fun showEmptySearch(@StringRes message: Int, @StringRes extendedMessage: Int) {
         binding.textNoResults.setText(message)
-        if (extendedMessage != -1) {
-            binding.textExtendSearch.setText(extendedMessage)
-        }
+        if (extendedMessage != -1) binding.textExtendSearch.setText(extendedMessage)
         binding.noResultsLayout.visibility = View.VISIBLE
         binding.noResultsLayout.bringToFront()
         binding.productsRecyclerView.visibility = View.INVISIBLE

@@ -35,7 +35,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Picasso
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
@@ -60,51 +62,45 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import org.apache.commons.lang.StringUtils
 import java.io.File
 import java.util.regex.Pattern
 
 class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.View {
-    private lateinit var productState: ProductState
     private var _binding: FragmentIngredientsProductBinding? = null
     private val binding get() = _binding!!
-    private var client: OpenFoodAPIClient? = null
-    private var customTabActivityHelper: CustomTabActivityHelper? = null
-    private var customTabsIntent: CustomTabsIntent? = null
-    private val disp = CompositeDisposable()
+
+    private val loginPref by lazy { requireActivity().getSharedPreferences("login", 0) }
+    private val client by lazy { OpenFoodAPIClient(requireContext()) }
+    private val wikidataClient by lazy { WikiDataApiClient() }
+    private val disp by lazy { CompositeDisposable() }
+
+    private val performOCRLauncher = registerForActivityResult(EditProductPerformOCR())
+    { result -> if (result) onRefresh() }
+    private val updateImagesLauncher = registerForActivityResult(EditProductSendUpdatedImg())
+    { result -> if (result) onRefresh() }
+    private val loginLauncher = registerForActivityResult(LoginContract())
+    { ProductEditActivity.start(requireContext(), productState, sendUpdatedIngredientsImage, ingredientExtracted) }
+
+    private lateinit var productState: ProductState
+    private lateinit var customTabActivityHelper: CustomTabActivityHelper
+    private lateinit var customTabsIntent: CustomTabsIntent
+    private lateinit var presenter: IIngredientsProductPresenter.Actions
+    private lateinit var photoReceiverHandler: PhotoReceiverHandler
+
     private var ingredientExtracted = false
 
-    /**
-     * boolean to determine if image should be loaded or not
-     */
+    /** boolean to determine if image should be loaded or not */
     private var isLowBatteryMode = false
     private var mSendProduct: SendProduct? = null
     var ingredients: String? = null
         private set
-    private val performOCRLauncher = registerForActivityResult(EditProductPerformOCR()) { result: Boolean ->
-        if (result) {
-            onRefresh()
-        }
-    }
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
-    private lateinit var presenter: IIngredientsProductPresenter.Actions
     private var sendUpdatedIngredientsImage = false
-    private val loginLauncher = registerForActivityResult(LoginContract()) {
-        ProductEditActivity.start(requireContext(),
-                productState,
-                sendUpdatedIngredientsImage,
-                ingredientExtracted)
-    }
-    private val updateImagesLauncher = registerForActivityResult(EditProductSendUpdatedImg()) { result ->
-        if (result) {
-            onRefresh()
-        }
-    }
-    private val wikidataClient = WikiDataApiClient()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        client = OpenFoodAPIClient(requireContext())
         _binding = FragmentIngredientsProductBinding.inflate(inflater)
         return binding.root
     }
@@ -125,7 +121,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     override fun onAttach(context: Context) {
         super.onAttach(context)
         customTabActivityHelper = CustomTabActivityHelper()
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
         productState = requireProductState()
     }
 
@@ -137,7 +133,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (arguments != null) mSendProduct = getSendProduct()
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
+        if (isDisableImageLoad(requireContext()) && isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true
         }
         val product = this.productState.product!!
@@ -238,7 +234,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             binding.novaGroup.setImageResource(product.getNovaGroupDrawable())
             binding.novaGroup.setOnClickListener {
                 val uri = Uri.parse(getString(R.string.url_nova_groups))
-                val tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
+                val tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
                 CustomTabActivityHelper.openCustomTab(requireActivity(), tabsIntent, uri, WebViewFallback())
             }
         } else {
@@ -266,14 +262,14 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         val clickableSpan: ClickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (allergen.isWikiDataIdPresent) {
-                    disp.add(wikidataClient.doSomeThing(
+                    wikidataClient.doSomeThing(
                             allergen.wikiDataId
                     ).subscribe { result ->
                         val activity = activity
                         if (activity?.isFinishing == false) {
                             showBottomSheet(result, allergen, activity.supportFragmentManager)
                         }
-                    })
+                    }.addTo(disp)
                 } else {
                     start(context!!, SearchType.ALLERGEN, allergen.allergenTag, allergen.name)
                 }
@@ -284,8 +280,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
         // If allergen is not in the taxonomy list then italicize it
         if (!allergen.isNotNull) {
-            val iss = StyleSpan(Typeface.ITALIC) //Span to make text italic
-            ssb.setSpan(iss, 0, ssb.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            ssb.setSpan(StyleSpan(Typeface.ITALIC), 0, ssb.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
         return ssb
     }
@@ -294,31 +289,29 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
      * @return the string after trimming the language code from the tags
      * like it returns folic-acid for en:folic-acid
      */
-    private fun trimLanguagePartFromString(string: String): String {
-        return string.substring(3)
-    }
+    private fun trimLanguagePartFromString(string: String) = string.substring(3)
 
     private fun setSpanBoldBetweenTokens(text: CharSequence, allergens: List<String>): SpannableStringBuilder {
-        val ssb = SpannableStringBuilder(text)
-        val m = INGREDIENT_PATTERN.matcher(ssb)
-        while (m.find()) {
-            val tm = m.group()
-            val allergenValue = tm.replace("[(),.-]+".toRegex(), "")
-            for (allergen in allergens) {
-                if (allergen.equals(allergenValue, ignoreCase = true)) {
-                    var start = m.start()
-                    var end = m.end()
-                    if (tm.contains("(")) {
-                        start += 1
-                    } else if (tm.contains(")")) {
-                        end -= 1
+        return SpannableStringBuilder(text).also {
+            val m = INGREDIENT_PATTERN.matcher(it)
+            while (m.find()) {
+                val tm = m.group()
+                val allergenValue = tm.replace("[(),.-]+".toRegex(), "")
+                for (allergen in allergens) {
+                    if (allergen.equals(allergenValue, ignoreCase = true)) {
+                        var start = m.start()
+                        var end = m.end()
+                        if (tm.contains("(")) {
+                            start += 1
+                        } else if (tm.contains(")")) {
+                            end -= 1
+                        }
+                        it.setSpan(StyleSpan(Typeface.BOLD), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                     }
-                    ssb.setSpan(StyleSpan(Typeface.BOLD), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                 }
             }
+            it.insert(0, bold(getString(R.string.txtIngredients) + ' '))
         }
-        ssb.insert(0, bold(getString(R.string.txtIngredients) + ' '))
-        return ssb
     }
 
     override fun showAdditives(additives: List<AdditiveName>) {
@@ -358,25 +351,19 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (activity == null) {
             return
         }
-        val viewPager: ViewPager2 = requireActivity().findViewById(R.id.pager)
-        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
-            val settings = requireActivity().getSharedPreferences("login", 0)
-            val login = settings.getString("user", "")
-            if (TextUtils.isEmpty(login)) {
+        val viewPager = requireActivity().findViewById<ViewPager2>(R.id.pager)
+        if (isFlavors(AppFlavors.OFF)) {
+            if (loginPref.getString("user", "").isNullOrEmpty()) {
                 showSignInDialog()
             } else {
                 productState = requireProductState()
                 updateImagesLauncher.launch(productState.product)
             }
         }
-        if (AppFlavors.isFlavors(AppFlavors.OPFF)) {
-            viewPager.currentItem = 4
-        }
-        if (AppFlavors.isFlavors(AppFlavors.OBF)) {
-            viewPager.currentItem = 1
-        }
-        if (AppFlavors.isFlavors(AppFlavors.OPF)) {
-            viewPager.currentItem = 0
+        when {
+            isFlavors(AppFlavors.OPFF) -> viewPager.currentItem = 4
+            isFlavors(AppFlavors.OBF) -> viewPager.currentItem = 1
+            isFlavors(AppFlavors.OPF) -> viewPager.currentItem = 0
         }
     }
 
@@ -403,7 +390,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private fun novaMethodLinkDisplay() {
         if (productState.product != null && productState.product!!.novaGroups != null) {
             val uri = Uri.parse(getString(R.string.url_nova_groups))
-            val tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
+            val tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), tabsIntent, uri, WebViewFallback())
         }
     }
@@ -411,8 +398,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     fun extractIngredients() {
         ingredientExtracted = true
         val settings = requireActivity().getSharedPreferences("login", 0)
-        val login = settings.getString("user", "")
-        if (login!!.isEmpty()) {
+        if (settings.getString("user", "")!!.isEmpty()) {
             showSignInDialog()
         } else {
             productState = requireProductState()
@@ -460,7 +446,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private fun onPhotoReturned(newPhotoFile: File) {
         val image = ProductImage(productState.code, ProductImageField.INGREDIENTS, newPhotoFile)
         image.filePath = newPhotoFile.absolutePath
-        disp.add(client!!.postImg(image).subscribe())
+        client.postImg(image).subscribe().addTo(disp)
         binding.addPhotoLabel.visibility = View.GONE
         ingredients = newPhotoFile.absolutePath
         Picasso.get()
@@ -474,7 +460,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
             onRefresh()
         }
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     override fun onDestroyView() {

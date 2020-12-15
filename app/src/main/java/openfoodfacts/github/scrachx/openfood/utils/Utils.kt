@@ -25,7 +25,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.BatteryManager
@@ -47,7 +46,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.preference.PreferenceManager
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.OkHttp3Downloader
@@ -407,13 +405,6 @@ private fun decodeFile(f: File): Bitmap? {
     return null
 }
 
-fun getImageGradeDrawable(context: Context, grade: String?): Drawable? {
-    val gradeID = getNutriScoreDrawable(grade)
-    return if (gradeID == Utils.NO_DRAWABLE_RESOURCE) {
-        null
-    } else VectorDrawableCompat.create(context.resources, gradeID, null)
-}
-
 private const val REQUIRED_SIZE = 1200
 private const val CONNECTION_TIMEOUT = 5000
 private const val RW_TIMEOUT = 30000
@@ -470,7 +461,7 @@ fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD)
  * Returns the Nutri-Score graphic asset given the grade
  */
 @DrawableRes
-fun getNutriScoreDrawable(grade: String?) = when (grade?.toLowerCase(Locale.getDefault())) {
+fun getNutriScoreResource(grade: String?) = when (grade?.toLowerCase(Locale.getDefault())) {
     "a" -> R.drawable.ic_nutriscore_a
     "b" -> R.drawable.ic_nutriscore_b
     "c" -> R.drawable.ic_nutriscore_c
@@ -490,8 +481,8 @@ private val LOG_TAG = Utils::class.simpleName!!
  * @param context The context
  * @return Returns the version name of the app
  */
-fun getVersionName(context: Context?): String = try {
-    val pInfo = context!!.packageManager.getPackageInfo(context.packageName, 0)
+fun getVersionName(context: Context): String = try {
+    val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
     pInfo.versionName
 } catch (e: PackageManager.NameNotFoundException) {
     Log.e(LOG_TAG, "getVersionName", e)

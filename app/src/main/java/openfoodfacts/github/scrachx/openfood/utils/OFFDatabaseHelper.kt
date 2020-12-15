@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase.CursorFactory
 import android.util.Log
+import androidx.core.content.edit
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster.OpenHelper
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
@@ -51,7 +52,7 @@ class OFFDatabaseHelper @JvmOverloads constructor(
 
         //db model has changed we need to invalidate and reload taxonomies
         if (settings != null && oldVersion != newVersion) {
-            settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, true).apply()
+            settings.edit { putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, true) }
         }
     }
 

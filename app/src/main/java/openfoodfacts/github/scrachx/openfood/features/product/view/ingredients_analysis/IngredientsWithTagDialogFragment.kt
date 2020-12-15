@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.DialogFragment
 import androidx.preference.PreferenceManager
@@ -67,7 +68,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             text = getString(R.string.display_analysis_tag_status, typeName.toLowerCase(Locale.getDefault()))
             isChecked = prefs.getBoolean(type, true)
             setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-                prefs.edit().putBoolean(type, isChecked).apply()
+                prefs.edit { putBoolean(type, isChecked) }
             }
         }
         var messageToBeShown = Html.fromHtml(getString(R.string.ingredients_in_this_product_are, name!!.toLowerCase()))

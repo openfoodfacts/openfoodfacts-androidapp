@@ -26,17 +26,9 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 
 class AllergensAdapter(
-        private val mProductRepository: ProductRepository,
-        allergens: MutableList<AllergenName>?
+        private val repository: ProductRepository,
+        private val allergens: MutableList<AllergenName> = mutableListOf()
 ) : RecyclerView.Adapter<AllergensAdapter.CustomViewHolder>() {
-
-    var allergens: MutableList<AllergenName> = allergens ?: mutableListOf()
-
-
-    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val messageButton: Button = itemView.findViewById(R.id.delete_button)
-        val nameTextView: TextView = itemView.findViewById(R.id.allergen_name)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val context = parent.context
@@ -47,16 +39,19 @@ class AllergensAdapter(
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val allergen = allergens[position]
-        val textView = holder.nameTextView
-        textView.text = allergen.name.substring(allergen.name.indexOf(':') + 1)
-        val button = holder.messageButton
-        button.setText(R.string.delete_txt)
-        button.setOnClickListener {
+        holder.nameTextView.text = allergen.name.substring(allergen.name.indexOf(':') + 1)
+        holder.messageButton.setText(R.string.delete_txt)
+        holder.messageButton.setOnClickListener {
             allergens.removeAt(holder.adapterPosition)
             notifyItemRemoved(holder.adapterPosition)
-            mProductRepository.setAllergenEnabled(allergen.allergenTag, false)
+            repository.setAllergenEnabled(allergen.allergenTag, false)
         }
     }
 
     override fun getItemCount() = allergens.size
+
+    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val messageButton: Button = itemView.findViewById(R.id.delete_button)
+        val nameTextView: TextView = itemView.findViewById(R.id.allergen_name)
+    }
 }

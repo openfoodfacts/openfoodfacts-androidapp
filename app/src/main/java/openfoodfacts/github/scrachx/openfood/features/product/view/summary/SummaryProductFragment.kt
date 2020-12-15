@@ -41,6 +41,7 @@ import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -77,11 +78,13 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
+import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import org.apache.commons.lang.StringUtils
 import java.io.File
 import java.util.*
 
-class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View {
+class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private val disp = CompositeDisposable()
     private var annotation: AnnotationAnswer? = null
     private var barcode: String? = null
@@ -119,8 +122,17 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper!!.connectionCallback=this
+        customTabActivityHelper = CustomTabActivityHelper().apply {
+            connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
+                override fun onCustomTabsConnected() {
+                    binding.imageGrade.isClickable = true
+                }
+
+                override fun onCustomTabsDisconnected() {
+                    binding.imageGrade.isClickable = false
+                }
+            }
+        }
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
 
     }
@@ -158,17 +170,17 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         binding.actionShareButton.setOnClickListener { onShareProductButtonClick() }
         binding.actionCompareButton.setOnClickListener { onCompareProductButtonClick() }
         binding.addNutriscorePrompt.setOnClickListener { onAddNutriScorePromptClick() }
-        binding.productQuestionDismiss.setOnClickListener { productQuestionDismiss() }
+        binding.productQuestionDismiss.setOnClickListener { hideQuestionLayout() }
         binding.productQuestionLayout.setOnClickListener { onProductQuestionClick() }
         productState = requireProductState()
         refreshView(productState)
 
         presenter = SummaryProductPresenter(product, this)
+        presenter.addTo(disp)
     }
 
 
     override fun onDestroyView() {
-        presenter.dispose()
         disp.dispose()
         super.onDestroyView()
         _binding = null
@@ -232,6 +244,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         this.productState = productState
         product = productState.product!!
         presenter = SummaryProductPresenter(product, this)
+        presenter.addTo(disp)
         binding.categoriesText.text = bold(getString(R.string.txtCategories))
         binding.labelsText.text = bold(getString(R.string.txtLabels))
 
@@ -245,7 +258,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         binding.labelsIcon.visibility = View.VISIBLE
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(requireActivity()) && Utils.isBatteryLevelLow(requireContext())) {
+        if (isDisableImageLoad(requireActivity()) && isBatteryLevelLow(requireContext())) {
             isLowBatteryMode = true
         }
 
@@ -414,10 +427,10 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     private fun refreshNutriScore() {
-        val nutritionGradeResource = product.getImageGradeDrawable(requireContext())
-        if (nutritionGradeResource != null) {
+        val gradeDrawable = product.getImageGradeDrawable(requireContext())
+        if (gradeDrawable != null) {
             binding.imageGrade.visibility = View.VISIBLE
-            binding.imageGrade.setImageDrawable(nutritionGradeResource)
+            binding.imageGrade.setImageDrawable(gradeDrawable)
             binding.imageGrade.setOnClickListener {
                 val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
                 CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri!!, WebViewFallback())
@@ -445,8 +458,10 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     private fun refreshCO2OrEcoscoreIcon() {
         binding.ecoscoreIcon.visibility = View.GONE
         binding.co2Icon.visibility = View.GONE
-        val ecoScoreRes = product.getEcoscoreDrawable()
-        val environmentImpactResource = product.getCO2Drawable()
+
+        val ecoScoreRes = product.getEcoscoreResource()
+        val environmentImpactResource = product.getCO2Resource()
+
         if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
             binding.ecoscoreIcon.setImageResource(ecoScoreRes)
             binding.ecoscoreIcon.visibility = View.VISIBLE
@@ -540,9 +555,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     override fun showProductQuestion(question: Question) {
-        if (isRemoving) {
-            return
-        }
+        if (isRemoving) return
+
         if (!question.isEmpty()) {
             productQuestion = question
             binding.productQuestionText.text = "${question.questionText}\n${question.value}"
@@ -552,6 +566,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
             binding.productQuestionLayout.visibility = View.GONE
             productQuestion = null
         }
+
         if (isFlavors(OFF)) {
             refreshNutriScorePrompt()
             refreshScoresLayout()
@@ -618,12 +633,11 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     override fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse) {
         if (annotationResponse.status == "updated" && activity != null) {
-            val toast = Snackbar.make(binding.root, R.string.product_question_submit_message, BaseTransientBottomBar.LENGTH_SHORT)
-            toast.show()
+            Snackbar.make(binding.root, R.string.product_question_submit_message, BaseTransientBottomBar.LENGTH_SHORT).show()
         }
     }
 
-    private fun productQuestionDismiss() {
+    private fun hideQuestionLayout() {
         binding.productQuestionLayout.visibility = View.GONE
     }
 
@@ -785,13 +799,6 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         }
     }
 
-    override fun onCustomTabsConnected() {
-        binding.imageGrade.isClickable = true
-    }
-
-    override fun onCustomTabsDisconnected() {
-        binding.imageGrade.isClickable = false
-    }
 
     private fun takeMorePicture() {
         sendOther = true

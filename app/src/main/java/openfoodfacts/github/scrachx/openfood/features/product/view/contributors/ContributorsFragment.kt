@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentContributorsBinding
-import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
@@ -129,7 +129,7 @@ class ContributorsFragment : BaseFragment() {
     companion object {
         fun newInstance(productState: ProductState) = ContributorsFragment().apply {
             arguments = Bundle().apply {
-                putSerializable(ProductViewActivity.STATE_KEY, productState)
+                putSerializable(KEY_STATE, productState)
             }
         }
     }

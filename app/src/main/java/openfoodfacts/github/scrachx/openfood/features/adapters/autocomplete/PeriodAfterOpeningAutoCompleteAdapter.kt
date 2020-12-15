@@ -18,26 +18,22 @@ class PeriodAfterOpeningAutoCompleteAdapter(
         return periodsList.size
     }
 
-    override fun getItem(position: Int): String {
-        return if (position < 0 || position >= periodsList.size) {
-            StringUtils.EMPTY
-        } else periodsList[position]
-    }
+    override fun getItem(position: Int) =
+            if (position < 0 || position >= periodsList.size) StringUtils.EMPTY else periodsList[position]
 
     override fun getFilter() = object : Filter() {
         override fun performFiltering(constraint: CharSequence?): FilterResults {
-            val filterResults = FilterResults()
-            filterResults.count = 0
-            if (constraint == null) {
-                return filterResults
-            }
+            // If no search, 0 results
+            if (constraint == null) return FilterResults().apply { count = 0 }
+
             // Retrieve the autocomplete results from server.
             val list = client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet()
 
             // Assign the data to the FilterResults
-            filterResults.values = list
-            filterResults.count = list.size
-            return filterResults
+            return FilterResults().apply {
+                values = list
+                count = list.size
+            }
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {

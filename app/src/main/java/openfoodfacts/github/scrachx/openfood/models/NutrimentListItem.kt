@@ -1,40 +1,28 @@
 package openfoodfacts.github.scrachx.openfood.models
 
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
-import org.apache.commons.lang.StringUtils
 
-open class NutrimentListItem {
-    val displayVolumeHeader: Boolean
-    val modifier: String?
-    val servingValue: String?
-    val title: String?
-    val unit: String?
-    val value: String?
+/**
+ * Use a round value for value and servingValue parameters
+ *
+ * @param title name of nutriment
+ * @param value value of nutriment per 100g
+ * @param servingValue value of nutriment per serving
+ * @param unit unit of nutriment
+ * @param modifier one of the following: "<", ">", or "~"
+ */
+open class NutrimentListItem(
+        val title: String?,
+        value: String?,
+        servingValue: String?,
+        val unit: String?,
+        val modifier: String?,
+        val displayVolumeHeader: Boolean = false
+) {
+    val servingValue = if (servingValue.isNullOrBlank()) "" else getRoundNumber(servingValue)
+    val value = value?.let { getRoundNumber(it) } ?: ""
 
-    constructor(displayVolumeHeader: Boolean) {
-        this.displayVolumeHeader = displayVolumeHeader
-        title = null
-        value = null
-        servingValue = null
-        unit = null
-        modifier = null
-    }
+    constructor(displayVolumeHeader: Boolean) :
+            this(null, null, null, null, null, displayVolumeHeader)
 
-    /**
-     * Use a round value for value and servingValue parameters
-     *
-     * @param title name of nutriment
-     * @param value value of nutriment per 100g
-     * @param servingValue value of nutriment per serving
-     * @param unit unit of nutriment
-     * @param modifier one of the following: "<", ">", or "~"
-     */
-    constructor(title: String?, value: String?, servingValue: String?, unit: String?, modifier: String?) {
-        this.title = title
-        this.value = getRoundNumber(value!!)
-        this.servingValue = if (StringUtils.isBlank(servingValue)) StringUtils.EMPTY else getRoundNumber(servingValue!!)
-        this.unit = unit
-        this.modifier = modifier
-        displayVolumeHeader = false
-    }
 }

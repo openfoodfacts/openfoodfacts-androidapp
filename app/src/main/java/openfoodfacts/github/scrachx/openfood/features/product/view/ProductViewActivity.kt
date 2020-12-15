@@ -41,6 +41,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.contributors.ContributorsFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.environment.EnvironmentProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.IngredientsProductFragment
@@ -54,6 +55,8 @@ import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefresh
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.applyBundle
+import openfoodfacts.github.scrachx.openfood.utils.getProductState
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -78,7 +81,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
         client = OpenFoodAPIClient(this)
 
-        productState = intent.getSerializableExtra(STATE_KEY) as ProductState?
+        productState = getProductState()
         when {
             intent.action == Intent.ACTION_VIEW -> {
                 // handle opening the app via product page url
@@ -106,17 +109,17 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     private fun loadProductDataFromUrl(barcode: String) {
         disp.add(client.getProductStateFull(barcode, Utils.HEADER_USER_AGENT_SCAN)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ state: ProductState? ->
-                    productState = state
-                    intent.putExtra(STATE_KEY, state)
+                .subscribe({ pState: ProductState? ->
+                    productState = pState
+                    intent.putExtra(KEY_STATE, pState)
                     //Adding check on productState.getProduct() to avoid null pointer exception (happens in setViewPager()) when product not found
                     if (productState != null && productState!!.product != null) {
                         initViews()
                     } else {
                         finish()
                     }
-                }) { e: Throwable? ->
-                    Log.i(javaClass.simpleName, "Failed to load product data", e)
+                }) { e ->
+                    Log.w(this::class.simpleName, "Failed to load product data.", e)
                     finish()
                 })
     }
@@ -165,10 +168,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        productState = (intent.getSerializableExtra(STATE_KEY) as ProductState).also {
-            adapterResult!!.refresh(it)
-        }
-
+        productState = requireProductState().also { adapterResult!!.refresh(it) }
     }
 
     override fun onStart() {
@@ -210,26 +210,27 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
     companion object {
         private const val LOGIN_ACTIVITY_REQUEST_CODE = 1
-        const val STATE_KEY = "state"
 
         fun start(context: Context, productState: ProductState) {
-            val starter = Intent(context, ProductViewActivity::class.java)
-            starter.putExtra(STATE_KEY, productState)
-            context.startActivity(starter)
+            context.startActivity(Intent(context, ProductViewActivity::class.java).apply {
+                putExtra(KEY_STATE, productState)
+            })
         }
 
         /**
          * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
          */
         @JvmStatic
-        fun setupViewPager(viewPager: ViewPager2,
-                           adapter: ProductFragmentPagerAdapter,
-                           productState: ProductState,
-                           activity: Activity): ProductFragmentPagerAdapter {
+        fun setupViewPager(
+                viewPager: ViewPager2,
+                adapter: ProductFragmentPagerAdapter,
+                productState: ProductState,
+                activity: Activity
+        ): ProductFragmentPagerAdapter {
             val menuTitles = activity.resources.getStringArray(R.array.nav_drawer_items_product)
             val newMenuTitles = activity.resources.getStringArray(R.array.nav_drawer_new_items_product)
             val fBundle = Bundle().apply {
-                putSerializable(STATE_KEY, productState)
+                putSerializable(KEY_STATE, productState)
             }
             adapter.addFragment(SummaryProductFragment().applyBundle(fBundle), menuTitles[0])
             val preferences = PreferenceManager.getDefaultSharedPreferences(activity)

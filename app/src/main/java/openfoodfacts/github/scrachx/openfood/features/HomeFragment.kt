@@ -18,13 +18,13 @@ package openfoodfacts.github.scrachx.openfood.features
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.fasterxml.jackson.databind.JsonNode
@@ -59,9 +59,9 @@ class HomeFragment : NavigationBaseFragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var api: ProductsAPI
-    private val compDisp = CompositeDisposable()
+    private val disp = CompositeDisposable()
     private var taglineURL: String? = null
-    private var sharedPrefs: SharedPreferences? = null
+    private lateinit var sharedPrefs: SharedPreferences
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -77,7 +77,7 @@ class HomeFragment : NavigationBaseFragment() {
 
     override fun onDestroy() {
         // Stop the call to server to get total product count and tagline
-        compDisp.dispose()
+        disp.dispose()
         _binding = null
         super.onDestroy()
     }
@@ -99,85 +99,82 @@ class HomeFragment : NavigationBaseFragment() {
     }
 
     @NavigationDrawerType
-    override fun getNavigationDrawerType(): Int = NavigationDrawerListener.ITEM_HOME
-
+    override fun getNavigationDrawerType() = NavigationDrawerListener.ITEM_HOME
 
     private val loginLauncher = registerForActivityResult(LoginContract()) { }
 
     private fun checkUserCredentials() {
         val settings = OFFApplication.instance.getSharedPreferences("login", 0)
-        val login = settings.getString("user", "")
-        val password = settings.getString("pass", "")
+
+        val login = settings.getString("user", null)
+        val password = settings.getString("pass", null)
+
         Log.d(LOG_TAG, "Checking user saved credentials...")
-        if (TextUtils.isEmpty(login) || TextUtils.isEmpty(password)) {
+        if (login.isNullOrEmpty() || password.isNullOrEmpty()) {
             Log.d(LOG_TAG, "User is not logged in.")
             return
         }
-        compDisp.add(api.signIn(login, password, "Sign-in")
+
+        disp.add(api.signIn(login, password, "Sign-in")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response: Response<ResponseBody> ->
-                    val htmlNoParsed: String = try {
+                    val htmlBody: String = try {
                         response.body()!!.string()
                     } catch (e: IOException) {
                         Log.e(LOG_TAG, "I/O Exception while checking user saved credentials.", e)
                         return@subscribe
                     }
-                    if (htmlNoParsed.contains("Incorrect user name or password.")
-                            || htmlNoParsed.contains("See you soon!")) {
+                    if (htmlBody.contains("Incorrect user name or password.")
+                            || htmlBody.contains("See you soon!")) {
                         Log.w(LOG_TAG, "Cannot validate login, deleting saved credentials and asking the user to log back in.")
-                        with(settings.edit()) {
+                        settings.edit {
                             putString("user", "")
                             putString("pass", "")
-                            apply()
                         }
-                        with(MaterialDialog.Builder(requireActivity())) {
-                            title(R.string.alert_dialog_warning_title)
-                            content(R.string.alert_dialog_warning_msg_user)
-                            positiveText(R.string.txtOk)
-                            onPositive { _, _ -> loginLauncher.launch(Unit) }
-                            show()
+                        MaterialDialog.Builder(requireActivity()).let {
+                            it.title(R.string.alert_dialog_warning_title)
+                            it.content(R.string.alert_dialog_warning_msg_user)
+                            it.positiveText(R.string.txtOk)
+                            it.onPositive { _, _ -> loginLauncher.launch(Unit) }
+                            it.show()
                         }
 
                     }
                 })
-                { throwable -> Log.e(HomeFragment::class.java.name, "Cannot check user credentials.", throwable) })
+                { e -> Log.e(LOG_TAG, "Cannot check user credentials.", e) })
     }
 
     override fun onResume() {
         super.onResume()
-        val productCount = sharedPrefs!!.getInt("productCount", 0)
+        val productCount = sharedPrefs.getInt("productCount", 0)
+
         refreshProductCount(productCount)
-        refreshTagline()
-        if (activity is AppCompatActivity) {
-            val actionBar = (activity as AppCompatActivity?)!!.supportActionBar
-            if (actionBar != null) {
-                actionBar.title = ""
-            }
-        }
+        refreshTagLine()
+
+        (activity as? AppCompatActivity)?.supportActionBar?.let { it.title = "" }
     }
 
     private fun refreshProductCount(oldCount: Int) {
         Log.d(LOG_TAG, "Refreshing total product count...")
-        compDisp.add(api.getTotalProductCount(getUserAgent())
+        disp.add(api.getTotalProductCount(getUserAgent())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { setProductCount(oldCount) }
-                .subscribe({ json: JsonNode ->
-                    val totalProductCount = json["count"].asInt(0)
-                    Log.d(LOG_TAG, String.format(
-                            "Refreshed total product count. There are %d products on the database.",
-                            totalProductCount
-                    ))
-                    setProductCount(totalProductCount)
-                    val editor = sharedPrefs!!.edit()
-                    editor.putInt("productCount", totalProductCount)
-                    editor.apply()
-                }
-                ) { e: Throwable? ->
+                .doOnError { e: Throwable? ->
                     setProductCount(oldCount)
                     Log.e(LOG_TAG, "Could not retrieve product count from server.", e)
-                })
+                }
+                .subscribe { resp: JsonNode ->
+                    val totalProductCount = resp["count"].asInt(0)
+                    Log.d(LOG_TAG, "Refreshed total product count. There are $totalProductCount products on the database.")
+                    setProductCount(totalProductCount)
+                    sharedPrefs.edit {
+                        putInt("productCount", totalProductCount)
+                        apply()
+                    }
+                }
+        )
     }
 
     /**
@@ -196,35 +193,34 @@ class HomeFragment : NavigationBaseFragment() {
     /**
      * get tag line url from OpenFoodAPIService
      */
-    private fun refreshTagline() {
-        compDisp.add(api.getTagline(getUserAgent())
+    private fun refreshTagLine() {
+        disp.add(api.getTagline(getUserAgent())
                 .subscribeOn(Schedulers.io()) // io for network
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
-                .subscribe({ models: ArrayList<TagLineLanguage> ->
-                    val locale = LocaleHelper.getLocale(context)
-                    val localAsString = locale.toString()
+                .doOnError { e -> Log.e(LOG_TAG, "Could not retrieve tag-line from server.", e) }
+                .subscribe { languages: List<TagLineLanguage> ->
+                    val localAsString = LocaleHelper.getLocale(context).toString()
                     var isLanguageFound = false
                     var isExactLanguageFound = false
-                    for (tagLine in models) {
+                    languages.forEach { tagLine ->
                         val languageCountry = tagLine.language
                         if (!isExactLanguageFound && (languageCountry == localAsString || languageCountry.contains(localAsString))) {
                             isExactLanguageFound = languageCountry == localAsString
                             taglineURL = tagLine.tagLine.url
                             binding.tvDailyFoodFact.text = tagLine.tagLine.message
-                            binding.tvDailyFoodFact.visibility = View.VISIBLE
                             isLanguageFound = true
                         }
                     }
                     if (!isLanguageFound) {
-                        taglineURL = models[models.size - 1].tagLine.url
-                        binding.tvDailyFoodFact.text = models[models.size - 1].tagLine.message
-                        binding.tvDailyFoodFact.visibility = View.VISIBLE
+                        taglineURL = languages.last().tagLine.url
+                        binding.tvDailyFoodFact.text = languages.last().tagLine.message
                     }
-                }) { e -> Log.e(LOG_TAG, "Could not retrieve tag-line from server.", e) })
+                    binding.tvDailyFoodFact.visibility = View.VISIBLE
+                })
     }
 
     companion object {
-        private val LOG_TAG = HomeFragment::class.java.simpleName
+        private val LOG_TAG = HomeFragment::class.simpleName!!
 
         @JvmStatic
         fun newInstance() = HomeFragment().apply {

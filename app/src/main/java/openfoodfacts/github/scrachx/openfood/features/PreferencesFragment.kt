@@ -31,6 +31,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.edit
 import androidx.preference.*
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
@@ -163,9 +164,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         countryPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference: Preference, newValue: Any? ->
             if (preference is ListPreference && preference.getKey() == LocaleHelper.USER_COUNTRY_PREFERENCE_KEY) {
                 val country = newValue as String?
-                val editor = settings.edit()
-                editor.putString(preference.getKey(), country)
-                editor.apply()
+                settings.edit {
+                    putString(preference.getKey(), country)
+                }
                 Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             }
             true
@@ -201,7 +202,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         energyUnitPreference.entries = energyUnits
         energyUnitPreference.entryValues = energyUnits
         energyUnitPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
-            settings.edit().putString("energyUnitPreference", newValue as String?).apply()
+            settings.edit { putString("energyUnitPreference", newValue as String?) }
             Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             true
         }
@@ -210,7 +211,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         volumeUnitPreference.entries = volumeUnits
         volumeUnitPreference.entryValues = volumeUnits
         volumeUnitPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
-            settings.edit().putString("volumeUnitPreference", newValue as String?).apply()
+            settings.edit { putString("volumeUnitPreference", newValue as String?) }
             Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             true
         }
@@ -219,7 +220,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         imageUploadPref.entries = values
         imageUploadPref.entryValues = values
         imageUploadPref.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
-            settings.edit().putString("imageUpload", newValue as String?).apply()
+            settings.edit { putString("imageUpload", newValue as String?) }
             Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             true
         }

@@ -24,7 +24,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNa
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 
-open class SummaryProductPresenterView : ISummaryProductPresenter.View {
+open class AbstractSummaryProductPresenter : ISummaryProductPresenter.View {
     override fun showAllergens(allergens: List<AllergenName>) {
         //empty impl
     }

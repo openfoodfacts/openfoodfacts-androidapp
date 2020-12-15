@@ -1,7 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.network
 
-import com.fasterxml.jackson.databind.JsonNode
-import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.network.services.WikidataAPI
@@ -36,11 +34,7 @@ class WikiDataApiClient
      *
      * @param code WikiData ID of additive/ingredient/category/label
      */
-    fun doSomeThing(code: String?): Single<JsonNode> {
-        return wikidataAPI.getWikiCategory(code).map {
-            it["entities"][code]
-        }
-    }
+    fun doSomeThing(code: String?) = wikidataAPI.getWikiCategory(code).map { it["entities"][code] }
 
     companion object {
         private val httpClient = Utils.httpClientBuilder()

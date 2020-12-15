@@ -23,9 +23,7 @@ class ProductImage(code: String?, field: ProductImageField, image: File?, val la
     constructor(code: String?, field: ProductImageField, image: File?) : this(code, field, image, getLanguage(OFFApplication.instance))
 
     companion object {
-        fun createImageRequest(image: File?): RequestBody {
-            return RequestBody.create(MediaType.parse("image/*"), image)
-        }
+        fun createImageRequest(image: File?) = RequestBody.create(MediaType.parse("image/*"), image)
     }
 
     init {

@@ -1,6 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.features.productlists
 
-import android.app.Activity
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -10,11 +11,11 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 
 class ProductListsAdapter(
-        private val activity: Activity,
+        internal val context: Context,
         private val productLists: MutableList<ProductLists>
 ) : RecyclerView.Adapter<ProductListsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListsViewHolder {
-        val view = activity.layoutInflater.inflate(R.layout.your_product_lists_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.your_product_lists_item, parent, false)
         return ProductListsViewHolder(view)
     }
 
@@ -23,16 +24,11 @@ class ProductListsAdapter(
         holder.tvListTitle.text = listName
 
         val numOfProducts = productLists[position].products.size
-        holder.tvNumOfProducts.text = productLists[position].numOfProducts.toString()
-
         productLists[position].numOfProducts = numOfProducts.toLong()
-
-        val listId = productLists[position].id
+        holder.tvNumOfProducts.text = numOfProducts.toString()
     }
 
-    override fun getItemCount(): Int {
-        return productLists.size
-    }
+    override fun getItemCount() = productLists.size
 
     fun remove(data: ProductLists) {
         val position = productLists.indexOf(data)

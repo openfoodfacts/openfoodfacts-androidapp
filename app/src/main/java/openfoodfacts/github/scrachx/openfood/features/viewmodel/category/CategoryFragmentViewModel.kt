@@ -22,6 +22,7 @@ import androidx.databinding.ObservableInt
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.viewmodel.BaseViewModel
@@ -41,7 +42,7 @@ class CategoryFragmentViewModel : BaseViewModel() {
     private val categories: MutableList<CategoryName> = arrayListOf()
     val filteredCategories = ObservableField(mutableListOf<CategoryName>())
     val showProgress: ObservableInt = ObservableInt(View.VISIBLE)
-    val showOffline: ObservableInt= ObservableInt(View.GONE)
+    val showOffline: ObservableInt = ObservableInt(View.GONE)
 
 
     override fun subscribe(subscriptions: CompositeDisposable) {
@@ -52,7 +53,7 @@ class CategoryFragmentViewModel : BaseViewModel() {
      * Generates a network call for showing categories in CategoryFragment
      */
     fun refreshCategories() {
-        subscriptions?.add(getAllCategoriesByLanguageCode(getLanguage(OFFApplication.instance))
+        getAllCategoriesByLanguageCode(getLanguage(OFFApplication.instance))
                 .doOnSubscribe {
                     showOffline.set(View.GONE)
                     showProgress.set(View.VISIBLE)
@@ -66,7 +67,7 @@ class CategoryFragmentViewModel : BaseViewModel() {
                 }
                 .flatMap { categoryNames: List<CategoryName> ->
                     if (categoryNames.isEmpty()) {
-                        return@flatMap ProductRepository.categories
+                        return@flatMap ProductRepository.getCategories()
                                 .flatMap { categories: List<Category> -> Single.just(extractCategoriesNames(categories)) }
                     } else {
                         return@flatMap Single.just(categoryNames)
@@ -74,18 +75,18 @@ class CategoryFragmentViewModel : BaseViewModel() {
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ categoryList: List<CategoryName> ->
-                    categories.addAll(categoryList)
-                    filteredCategories.set(categoryList.toMutableList())
-                    showProgress.set(View.GONE)
-                }
-                ) { throwable: Throwable? ->
+                .doOnError { throwable: Throwable? ->
                     Log.e(CategoryFragmentViewModel::class.java.canonicalName, "Error loading categories", throwable)
                     if (throwable is UnknownHostException) {
                         showOffline.set(View.VISIBLE)
                         showProgress.set(View.GONE)
                     }
-                })?: error("Cannot refresh view while not binded.")
+                }
+                .subscribe { categoryList: List<CategoryName> ->
+                    categories.addAll(categoryList)
+                    filteredCategories.set(categoryList.toMutableList())
+                    showProgress.set(View.GONE)
+                }.addTo(subscriptions ?: error("Cannot refresh view while not binded."))
     }
 
     /**

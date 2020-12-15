@@ -57,10 +57,11 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.addToHistorySync
-import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService.Companion.getOfflineProductByBarcode
+import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService.getOfflineProductByBarcode
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isExternalStorageWritable
+import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import java.io.File
 import java.io.IOException
 import java.util.*
@@ -167,7 +168,7 @@ class ProductEditActivity : AppCompatActivity() {
         }
         mToUploadProductDao = daoSession.toUploadProductDao
         mOfflineSavedProductDao = daoSession.offlineSavedProductDao
-        val productState = intent.getSerializableExtra(KEY_STATE) as ProductState?
+        val productState = getProductState()
         var offlineSavedProduct = intent.getSerializableExtra(KEY_EDIT_OFFLINE_PRODUCT) as OfflineSavedProduct?
         val mEditProduct = intent.getSerializableExtra(KEY_EDIT_PRODUCT) as Product?
         if (intent.getBooleanExtra(KEY_PERFORM_OCR, false)) {
@@ -222,7 +223,7 @@ class ProductEditActivity : AppCompatActivity() {
         adapterResult.addFragment(productEditIngredientsFragment, "Ingredients")
 
         // If on off or opff, add Nutrition Facts fragment
-        if (isNutritionDataAvailable) {
+        if (isNutritionDataAvailable()) {
             productEditNutritionFactsFragment.arguments = fragmentsBundle
             adapterResult.addFragment(productEditNutritionFactsFragment, "Nutrition Facts")
         } else if (isFlavors(AppFlavors.OBF, AppFlavors.OPF)) {
@@ -252,7 +253,7 @@ class ProductEditActivity : AppCompatActivity() {
     private fun saveProduct() {
         productEditOverviewFragment.addUpdatedFieldsToMap(productDetails)
         productEditIngredientsFragment.addUpdatedFieldsTomap(productDetails)
-        if (isNutritionDataAvailable) {
+        if (isNutritionDataAvailable()) {
             productEditNutritionFactsFragment.addUpdatedFieldsToMap(productDetails)
         }
         addLoginInfoToProductDetails(productDetails)
@@ -301,7 +302,7 @@ class ProductEditActivity : AppCompatActivity() {
     private fun checkFieldsThenSave() {
         if (editingMode) {
             // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-            if (isNutritionDataAvailable && productEditNutritionFactsFragment.containsInvalidValue()) {
+            if (isNutritionDataAvailable() && productEditNutritionFactsFragment.containsInvalidValue()) {
                 // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
                 binding.viewpager.setCurrentItem(2, true)
             } else {
@@ -311,7 +312,7 @@ class ProductEditActivity : AppCompatActivity() {
             // add mode, check if we have required fields
             if (productEditOverviewFragment.areRequiredFieldsEmpty()) {
                 binding.viewpager.setCurrentItem(0, true)
-            } else if (isNutritionDataAvailable && productEditNutritionFactsFragment.containsInvalidValue()) {
+            } else if (isNutritionDataAvailable() && productEditNutritionFactsFragment.containsInvalidValue()) {
                 binding.viewpager.setCurrentItem(2, true)
             } else {
                 saveProduct()
@@ -579,8 +580,9 @@ class ProductEditActivity : AppCompatActivity() {
 
         @JvmOverloads
         fun start(context: Context, state: ProductState?, sendUpdated: Boolean = false, performOcr: Boolean = false) {
-            val starter = Intent(context, ProductEditActivity::class.java)
-            starter.putExtra(KEY_STATE, state)
+            val starter = Intent(context, ProductEditActivity::class.java).apply {
+                putExtra(KEY_STATE, state)
+            }
             if (sendUpdated) {
                 starter.putExtra(KEY_SEND_UPDATED, true)
             }
@@ -590,7 +592,6 @@ class ProductEditActivity : AppCompatActivity() {
             context.startActivity(starter)
         }
 
-        private val isNutritionDataAvailable: Boolean
-            get() = isFlavors(AppFlavors.OFF, AppFlavors.OPFF)
+        private fun isNutritionDataAvailable() = isFlavors(AppFlavors.OFF, AppFlavors.OPFF)
     }
 }

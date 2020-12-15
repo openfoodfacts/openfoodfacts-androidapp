@@ -13,43 +13,42 @@ import openfoodfacts.github.scrachx.openfood.features.welcome.WelcomeActivity
 import pl.aprilapps.easyphotopicker.EasyImage
 
 class SplashActivity : BaseActivity(), ISplashActivity.View {
-    private var _binding: ActivitySplashBinding? = null
-    private val binding get() = _binding!!
-    private lateinit var taglines: Array<String>
+    private val binding by lazy { ActivitySplashBinding.inflate(layoutInflater) }
 
     /*
     To show different slogans below the logo while content is being downloaded.
      */
-    private val changeTagline = object : Runnable {
+    private fun getTaglineRunnable(taglines: Array<String>) = object : Runnable {
         var i = 0
         override fun run() {
-            i++
-            if (i > taglines.size - 1) {
-                i = 0
-            }
-            if (!isFinishing) {
-                binding.tagline.text = taglines[i]
+            while (!isFinishing) {
+                binding.tagline.text = taglines[i++.rem(taglines.size)]
                 binding.tagline.postDelayed(this, 1500)
             }
         }
     }
 
+    private val controller: SplashController by lazy {
+        SplashController(getSharedPreferences("prefs", 0), this, this)
+    }
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-        taglines = resources.getStringArray(R.array.taglines_array)
-        binding.tagline.post(changeTagline)
-        val presenter = SplashController(getSharedPreferences("prefs", 0), this, this)
-        presenter.refreshData()
+        val taglines = resources.getStringArray(R.array.taglines_array)
+
+        binding.tagline.post(getTaglineRunnable(taglines))
+
+        controller.refreshData()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
+        controller.dispose()
     }
 
     override fun navigateToMainActivity() {

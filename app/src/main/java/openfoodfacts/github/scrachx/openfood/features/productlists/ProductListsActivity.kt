@@ -32,6 +32,7 @@ import io.reactivex.ObservableEmitter
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
@@ -69,8 +70,10 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityProductListsBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
         setTitle(R.string.your_lists)
+
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         install(this, binding.bottomNavigation.bottomNavigation)
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
@@ -145,10 +148,8 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
      * Check if listname already in products lists.
      */
     private fun checkListNameExist(listName: String): Boolean {
-        for (productList in productLists) {
-            if (productList.listName == listName) {
-                return true
-            }
+        productLists.forEach { productList ->
+            if (productList.listName == listName) return true
         }
         return false
     }
@@ -162,7 +163,7 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
                 val inputStream = contentResolver.openInputStream(data!!.data!!)
                 parseCSV(inputStream)
             } catch (e: Exception) {
-                Log.e(ProductListsActivity::class.java.simpleName, "Error importing CSV: " + e.message)
+                Log.e(ProductListsActivity::class.simpleName, "Error importing CSV.", e)
             }
         }
     }
@@ -184,9 +185,7 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if (id == R.id.action_import_csv) {
-            selectCSVFile()
-        }
+        if (id == R.id.action_import_csv) selectCSVFile()
         return super.onOptionsItemSelected(item)
     }
 
@@ -205,8 +204,8 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
     private fun parseCSV(inputStream: InputStream?) {
         val progressDialog = ProgressDialog(this@ProductListsActivity)
         progressDialog.show()
-        disp.add(Observable.create { emitter: ObservableEmitter<Int?> ->
-            disp.add(Single.fromCallable {
+        Observable.create { emitter: ObservableEmitter<Int?> ->
+            Single.fromCallable {
                 val yourListedProductDao = Utils.daoSession.yourListedProductDao
                 val list: MutableList<YourListedProduct> = ArrayList()
                 try {
@@ -225,12 +224,13 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
                                 lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record[2])).list()
                             }
                             id = lists[0].id
-                            val yourListedProduct = YourListedProduct()
-                            yourListedProduct.barcode = record[0]
-                            yourListedProduct.productName = record[1]
-                            yourListedProduct.listName = record[2]
-                            yourListedProduct.productDetails = record[3]
-                            yourListedProduct.listId = id
+                            val yourListedProduct = YourListedProduct().apply {
+                                barcode = record[0]
+                                productName = record[1]
+                                listName = record[2]
+                                productDetails = record[3]
+                                listId = id
+                            }
                             list.add(yourListedProduct)
                             count++
                             emitter.onNext((count.toFloat() * 100 / size.toFloat()).toInt())
@@ -242,15 +242,15 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
                     Log.e("ParseCSV", e.message, e)
                     return@fromCallable false
                 }
-            }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe { success: Boolean ->
+            }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe { success ->
                 progressDialog.dismiss()
                 if (success) {
                     Toast.makeText(this@ProductListsActivity, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@ProductListsActivity, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show()
                 }
-            })
-        }.subscribe { value: Int? -> progressDialog.progress = value!! })
+            }.addTo(disp)
+        }.subscribe { value -> progressDialog.progress = value!! }.addTo(disp)
     }
 
     companion object {

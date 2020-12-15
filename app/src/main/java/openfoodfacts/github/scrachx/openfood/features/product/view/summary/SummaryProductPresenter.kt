@@ -20,7 +20,6 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -40,11 +39,12 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
 class SummaryProductPresenter(
         private val product: Product,
         private val view: ISummaryProductPresenter.View
-) : ISummaryProductPresenter.Actions, Disposable {
+) : ISummaryProductPresenter.Actions {
     private val disposable = CompositeDisposable()
+
     override fun loadAdditives() {
         val additivesTags = product.additivesTags
-        if (additivesTags != null && additivesTags.isNotEmpty()) {
+        if (additivesTags.isNotEmpty()) {
             val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
             disposable.add(Observable.fromArray(*additivesTags.toTypedArray())
                     .flatMapSingle { tag: String? ->
@@ -175,7 +175,7 @@ class SummaryProductPresenter(
         }
         val analysisTags = product.ingredientsAnalysisTags
         val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        if (analysisTags != null && analysisTags.isNotEmpty()) {
+        if (analysisTags.isNotEmpty()) {
             disposable.add(Observable.fromIterable(analysisTags)
                     .flatMapMaybe { tag: String? -> ProductRepository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode) }
                     .toList()
@@ -218,11 +218,7 @@ class SummaryProductPresenter(
                 { e: Throwable? -> Log.e(this@SummaryProductPresenter.javaClass.simpleName, "annotateInsight", e) })
     }
 
-    override fun dispose() {
-        disposable.dispose()
-    }
+    override fun dispose() = disposable.dispose()
 
-    override fun isDisposed(): Boolean {
-        return disposable.isDisposed
-    }
+    override fun isDisposed() = disposable.isDisposed
 }

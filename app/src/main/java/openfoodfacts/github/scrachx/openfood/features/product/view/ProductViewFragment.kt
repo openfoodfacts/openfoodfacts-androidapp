@@ -22,6 +22,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.Companion.onOptionsItemSelected
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.Companion.setupViewPager
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
@@ -39,9 +40,9 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
     private val disp = CompositeDisposable()
     private lateinit var productState: ProductState
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
         disp.dispose()
-        super.onDestroy()
+        super.onDestroyView()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -82,9 +83,7 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
                 requireActivity())
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return onOptionsItemSelected(requireActivity(), item)
-    }
+    override fun onOptionsItemSelected(item: MenuItem) = onOptionsItemSelected(requireActivity(), item)
 
     override fun onRefresh() {
         disp.add(client.getProductStateFull(productState.product!!.code)
@@ -97,9 +96,7 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
     }
 
     fun bottomSheetWillGrow() {
-        if (adapterResult == null || adapterResult!!.itemCount == 0) {
-            return
-        }
+        if (adapterResult?.itemCount == 0) return
         // without this, the view can be centered vertically on initial show. we force the scroll to top !
         if (adapterResult!!.createFragment(0) is SummaryProductFragment) {
             val productFragment = adapterResult!!.createFragment(0) as SummaryProductFragment
@@ -108,9 +105,7 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
     }
 
     fun showIngredientsTab(action: ShowIngredientsAction) {
-        if (adapterResult == null || adapterResult!!.itemCount == 0) {
-            return
-        }
+        if (adapterResult?.itemCount == 0) return
         for (i in 0 until adapterResult!!.itemCount) {
             val fragment = adapterResult!!.createFragment(i)
             if (fragment is IngredientsProductFragment) {
@@ -131,7 +126,7 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
         @JvmStatic
         fun newInstance(productState: ProductState) = ProductViewFragment().apply {
             arguments = Bundle().apply {
-                putSerializable(ProductViewActivity.STATE_KEY, productState)
+                putSerializable(KEY_STATE, productState)
             }
         }
     }

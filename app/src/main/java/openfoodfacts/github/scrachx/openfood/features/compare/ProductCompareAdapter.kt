@@ -34,10 +34,10 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
-import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -181,7 +181,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
             }
 
             // Environment impact
-            val environmentImpactResource = product.getCO2Drawable()
+            val environmentImpactResource = product.getCO2Resource()
             if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
                 holder.productComparisonCo2Icon.visibility = View.VISIBLE
                 holder.productComparisonCo2Icon.setImageResource(environmentImpactResource)
@@ -204,34 +204,32 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
 
         // Full product button
         holder.fullProductButton.setOnClickListener { view: View? ->
-            if (product != null) {
-                val barcode = product.code
-                if (Utils.isNetworkConnected(activity)) {
-                    api.openProduct(barcode, activity)
-                    try {
-                        val view1 = activity.currentFocus
-                        if (view != null) {
-                            val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                            imm.hideSoftInputFromWindow(view1!!.windowToken, 0)
-                        }
-                    } catch (e: NullPointerException) {
-                        Log.e(ProductCompareAdapter::class.java.simpleName, "setOnClickListener", e)
+            val barcode = product.code
+            if (Utils.isNetworkConnected(activity)) {
+                api.openProduct(barcode, activity)
+                try {
+                    val view1 = activity.currentFocus
+                    if (view != null) {
+                        val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(view1!!.windowToken, 0)
                     }
-                } else {
-                    MaterialDialog.Builder(activity).apply {
-                        title(R.string.device_offline_dialog_title)
-                        content(R.string.connectivity_check)
-                        positiveText(R.string.txt_try_again)
-                        negativeText(R.string.dismiss)
-                        onPositive { _, _ ->
-                            if (Utils.isNetworkConnected(context)) {
-                                api.openProduct(barcode, context as Activity)
-                            } else {
-                                Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }.show()
+                } catch (e: NullPointerException) {
+                    Log.e(ProductCompareAdapter::class.java.simpleName, "setOnClickListener", e)
                 }
+            } else {
+                MaterialDialog.Builder(activity).apply {
+                    title(R.string.device_offline_dialog_title)
+                    content(R.string.connectivity_check)
+                    positiveText(R.string.txt_try_again)
+                    negativeText(R.string.dismiss)
+                    onPositive { _, _ ->
+                        if (Utils.isNetworkConnected(context)) {
+                            api.openProduct(barcode, context as Activity)
+                        } else {
+                            Toast.makeText(context, R.string.device_offline_dialog_title, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }.show()
             }
         }
     }
@@ -244,7 +242,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         }
         val languageCode = LocaleHelper.getLanguage(v.context)
         disp.add(
-                Observable.fromArray(*additivesTags.toTypedArray())
+                additivesTags.toTypedArray().toObservable()
                         .flatMapSingle { tag: String? ->
                             return@flatMapSingle ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode)
                                     .flatMap { categoryName: AdditiveName ->
@@ -259,7 +257,8 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
                         .toList()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ additives: List<AdditiveName> ->
+                        .doOnError { Log.e(ProductCompareAdapter::class.java.simpleName, "loadAdditives", it) }
+                        .subscribe { additives: List<AdditiveName> ->
                             if (additives.isNotEmpty()) {
                                 additivesBuilder.append(bold(activity.getString(R.string.compare_additives)))
                                 additivesBuilder.append(" ")
@@ -272,8 +271,8 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
                                 (v as TextView).text = additivesBuilder.toString()
                                 setMaxCardHeight()
                             }
-                        })
-                        { e -> Log.e(ProductCompareAdapter::class.java.simpleName, "loadAdditives", e) }
+                        }
+
         )
     }
 
@@ -368,9 +367,11 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
     /**
      * helper method
      */
-    private fun dpsToPixel(dps: Int) =
-            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dps + 100f, activity.resources.displayMetrics)
-                    .toInt()
+    private fun dpsToPixel(dps: Int) = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dps + 100f,
+            activity.resources.displayMetrics
+    ).toInt()
 
 }
 

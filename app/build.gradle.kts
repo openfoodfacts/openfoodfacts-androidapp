@@ -18,6 +18,7 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        google()
         maven(url = "https://jitpack.io")
     }
 }
@@ -27,22 +28,26 @@ plugins {
     id("org.greenrobot.greendao")
     id("io.sentry.android.gradle")
     id("kotlin-android")
-    kotlin("kapt")
-
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 fun obtainTestBuildType(): String {
     // To activate  screenshots buildType in IDE; uncomment next line and comment other
     // otherwise the folder androidTestScreenshots is not recognized as a test folder.
-    //val result = "screenshots"
-    val result = "debug"
+    val result = "screenshots"
+    //val result = "debug"
 
     return project.properties.getOrDefault("testBuildType", result) as String
 }
 
 dependencies {
+    // Android KTX
+    implementation("androidx.fragment:fragment-ktx:1.3.0-beta02")
+    implementation("androidx.activity:activity-ktx:1.2.0-beta02")
+    implementation("androidx.preference:preference-ktx:1.1.1")
     //Android
-    implementation("androidx.browser:browser:1.2.0")
+    implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.work:work-runtime:2.4.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
@@ -53,21 +58,19 @@ dependencies {
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.fragment:fragment-ktx:1.3.0-beta01")
-    implementation("androidx.activity:activity-ktx:1.2.0-beta01")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.preference:preference-ktx:1.1.1")
 
     //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
     kapt("com.google.dagger:dagger-compiler:2.29.1")
     implementation("com.google.dagger:dagger:2.29.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
+    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.19")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
@@ -152,10 +155,14 @@ dependencies {
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
 
-    androidTestImplementation("androidx.test:runner:1.3.0")
+    androidTestImplementation("androidx.test:runner:1.3.0") {
+        exclude("junit")
+    }
     androidTestImplementation("androidx.test:rules:1.3.0")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2") {
+        exclude("junit")
+    }
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.3.0")
@@ -309,6 +316,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     lintOptions {
         isAbortOnError = false
         disable("MissingTranslation")
@@ -338,6 +349,9 @@ android {
 greendao {
     schemaVersion(18)
 }
+
+
+
 
 
 

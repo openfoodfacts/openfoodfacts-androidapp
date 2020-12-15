@@ -15,6 +15,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.models.HistoryItem
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
+import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreSmallDrawable
 import java.util.*
 import java.util.concurrent.TimeUnit
 

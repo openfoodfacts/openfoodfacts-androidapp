@@ -74,9 +74,7 @@ class SearchByCodeFragment : NavigationBaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        (requireActivity() as AppCompatActivity).supportActionBar?.title =
-                getString(R.string.search_by_barcode_drawer)
-
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.search_by_barcode_drawer)
     }
 
     companion object {

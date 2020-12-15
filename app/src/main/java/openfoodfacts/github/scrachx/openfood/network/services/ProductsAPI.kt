@@ -57,12 +57,11 @@ interface ProductsAPI {
                           @FieldMap parameters: Map<String?, @JvmSuppressWildcards String?>?,
                           @Field(ApiFields.Keys.USER_COMMENT) comment: String?): Single<ProductState>
 
-    @Deprecated("")
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
     fun getShortProductByBarcode(
             @Path("barcode") barcode: String?,
             @Header("User-Agent") header: String?
-    ): Call<ProductState>
+    ): Single<ProductState>
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
     fun searchProductByName(
@@ -326,7 +325,7 @@ interface ProductsAPI {
     fun editImages(
             @Query(ApiFields.Keys.BARCODE) code: String?,
             @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
-    ): Call<String>
+    ): Single<String>
 
     /**
      * This method is to crop images server side

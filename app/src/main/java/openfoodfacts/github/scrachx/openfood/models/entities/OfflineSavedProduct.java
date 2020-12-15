@@ -37,12 +37,12 @@ public class OfflineSavedProduct implements Serializable {
     private boolean isDataUploaded;
     private String productDetails;
 
-    @Generated(hash = 39695213)
-    public OfflineSavedProduct(Long id, String barcode, String productDetails, boolean isDataUploaded) {
-        this.id = id;
+    @Generated(hash = 51718877)
+    public OfflineSavedProduct(String barcode, Long id, boolean isDataUploaded, String productDetails) {
         this.barcode = barcode;
-        this.productDetails = productDetails;
+        this.id = id;
         this.isDataUploaded = isDataUploaded;
+        this.productDetails = productDetails;
     }
 
     @Generated(hash = 403273060)

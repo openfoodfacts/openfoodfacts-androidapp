@@ -24,6 +24,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.core.content.edit
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -91,7 +92,11 @@ class LoginActivity : BaseActivity() {
         disp.add(CommonApiManager.productsApi.signIn(login, password, "Sign-in")
                 .subscribeOn(Schedulers.io()) // Network operation
                 .observeOn(AndroidSchedulers.mainThread()) // We need to modify view
-                .subscribe({ response: Response<ResponseBody> ->
+                .doOnError { t ->
+                    Toast.makeText(this, this.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
+                    Log.e(javaClass.simpleName, "onFailure", t)
+                }
+                .subscribe { response: Response<ResponseBody> ->
                     if (!response.isSuccessful) {
                         Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
                         return@subscribe
@@ -102,7 +107,7 @@ class LoginActivity : BaseActivity() {
                         Log.e("LOGIN", "Unable to parse the login response page", e)
                         return@subscribe
                     }
-                    val editor = this@LoginActivity.getSharedPreferences("login", 0).edit()
+                    val pref = this@LoginActivity.getSharedPreferences("login", 0)
                     if (htmlNoParsed == null
                             || htmlNoParsed.contains("Incorrect user name or password.")
                             || htmlNoParsed.contains("See you soon!")) {
@@ -119,26 +124,22 @@ class LoginActivity : BaseActivity() {
                                 val cookieValues = httpCookie.value.split("&").toTypedArray()
                                 var i = 0
                                 while (i < cookieValues.size) {
-                                    editor.putString(cookieValues[i], cookieValues[++i])
+                                    pref.edit { putString(cookieValues[i], cookieValues[++i]) }
                                     i++
                                 }
                                 break
                             }
                         }
                         Snackbar.make(binding.loginLinearlayout, R.string.connection, BaseTransientBottomBar.LENGTH_LONG).show()
-                        with(editor) {
+                        pref.edit {
                             putString("user", login)
                             putString("pass", password)
-                            apply()
                         }
                         binding.txtInfoLogin.setTextColor(resources.getColor(R.color.green_500))
                         binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
                         setResult(RESULT_OK)
                         finish()
                     }
-                }) { t: Throwable? ->
-                    Toast.makeText(this, this.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
-                    Log.e(javaClass.simpleName, "onFailure", t)
                 })
         binding.btnLogin.isClickable = true
     }

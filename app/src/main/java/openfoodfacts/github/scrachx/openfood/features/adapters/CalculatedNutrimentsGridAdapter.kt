@@ -11,23 +11,18 @@ class CalculatedNutrimentsGridAdapter(private val nutrimentListItems: List<Nutri
         val layoutResourceId = if (isViewTypeHeader) R.layout.nutrition_fact_header_calc else R.layout.nutriment_item_list
         val v = LayoutInflater.from(parent.context).inflate(layoutResourceId, parent, false)
         return if (isViewTypeHeader) {
-            var displayServing = false
-            for (nutriment in nutrimentListItems) {
-                val servingValue = nutriment.servingValue
-                if (servingValue != null && !servingValue.isNullOrBlank()) {
-                    displayServing = true
-                }
-            }
-            NutrimentHeaderViewHolder(v, displayServing)
+            val displayServing = nutrimentListItems
+                    .map { it.servingValue }
+                    .any { it.isNotBlank() }
+            NutrimentViewHolder.NutrimentHeaderViewHolder(v, displayServing)
         } else {
-            NutrimentListViewHolder(v)
+            NutrimentViewHolder.NutrimentListViewHolder(v)
         }
     }
 
     override fun onBindViewHolder(holder: NutrimentViewHolder, position: Int) {
-        if (holder !is NutrimentListViewHolder) {
-            return
-        }
+        if (holder !is NutrimentViewHolder.NutrimentListViewHolder) return
+
         val item = nutrimentListItems[position]
         holder.fillNutrimentValue(item)
         holder.fillServingValue(item)

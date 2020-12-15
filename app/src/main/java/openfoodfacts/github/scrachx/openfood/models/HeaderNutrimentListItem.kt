@@ -13,9 +13,13 @@ class HeaderNutrimentListItem : NutrimentListItem {
      * @param servingValue
      * @param unit
      */
-    constructor(title: CharSequence, value: CharSequence,
-                servingValue: CharSequence, unit: CharSequence,
-                modifier: CharSequence) : super(bold(title), bold(value), bold(servingValue), bold(unit), bold(modifier))
+    constructor(
+            title: CharSequence,
+            value: CharSequence,
+            servingValue: CharSequence,
+            unit: CharSequence,
+            modifier: CharSequence
+    ) : super(bold(title), bold(value), bold(servingValue), bold(unit), bold(modifier))
 
     /**
      * Header with only bold title

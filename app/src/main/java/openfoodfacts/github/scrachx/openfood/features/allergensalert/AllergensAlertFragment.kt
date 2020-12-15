@@ -22,6 +22,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.afollestad.materialdialogs.MaterialDialog
@@ -110,7 +111,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      * Add an allergen to be checked for when browsing products.
      */
     private fun addAllergen() {
-        if (mAllergensEnabled != null && mAllergensFromDao != null && mAllergensFromDao!!.isNotEmpty()) {
+        if (mAllergensEnabled != null && mAllergensFromDao?.isNotEmpty() == true) {
             dispCont.add(productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(requireActivity()))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -141,21 +142,19 @@ class AllergensAlertFragment : NavigationBaseFragment() {
                 lt.setBackgroundColor(requireActivity().resources.getColor(R.color.blue))
                 lt.setTextColor(requireActivity().resources.getColor(R.color.white))
                 lt.show()
-                val editor = mSettings.edit()
-                dispCont.add(productRepository.allergens
-                        .subscribeOn(Schedulers.io())
+                dispCont.add(productRepository.getAllergens()
                         .observeOn(AndroidSchedulers.mainThread())
-                        .toObservable()
-                        .subscribe({
-                            editor.putBoolean("errorAllergens", false).apply()
+                        .doOnError {
+                            mSettings.edit { putBoolean("errorAllergens", true) }
+                            lt.error()
+                        }
+                        .subscribe { _ ->
+                            mSettings.edit { putBoolean("errorAllergens", false) }
                             mAdapter?.allergens = mAllergensEnabled!!
                             mAdapter?.notifyDataSetChanged()
                             updateAllergenDao()
                             addAllergen()
                             lt.success()
-                        }) {
-                            editor.putBoolean("errorAllergens", true).apply()
-                            lt.error()
                         })
             } else {
                 MaterialDialog.Builder(currentView.context).apply {

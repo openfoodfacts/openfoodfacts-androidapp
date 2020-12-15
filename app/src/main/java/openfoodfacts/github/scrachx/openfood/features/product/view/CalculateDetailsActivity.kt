@@ -77,7 +77,7 @@ class CalculateDetailsActivity : BaseActivity() {
         if (energyKcal != null) {
             nutrimentListItems.add(
                     NutrimentListItem(getString(R.string.nutrition_energy_short_name),
-                            calculateCalories(weight, spinnerValue),
+                            calculateCalories(weight, spinnerValue).toString(),
                             energyKcal.forServingInUnits,
                             Units.ENERGY_KCAL,
                             nutriments.getModifierIfNotDefault(Nutriments.ENERGY_KCAL)))
@@ -86,7 +86,7 @@ class CalculateDetailsActivity : BaseActivity() {
         if (energyKj != null) {
             nutrimentListItems.add(
                     NutrimentListItem(getString(R.string.nutrition_energy_short_name),
-                            calculateKj(weight, spinnerValue),
+                            calculateKj(weight, spinnerValue).toString(),
                             energyKj.forServingInUnits,
                             Units.ENERGY_KJ.toLowerCase(Locale.getDefault()),
                             nutriments.getModifierIfNotDefault(Nutriments.ENERGY_KJ)))
@@ -155,26 +155,28 @@ class CalculateDetailsActivity : BaseActivity() {
             val nutriment = nutriments[key]
             if (nutriment != null) {
                 val modifier = nutriments.getModifier(key)
-                NutrimentListItem(getString(value),
+                NutrimentListItem(
+                        getString(value),
                         nutriment.getForAnyValue(weight, spinnerValue),
                         nutriment.forServingInUnits,
                         nutriment.unit,
-                        if (DEFAULT_MODIFIER == modifier) "" else modifier)
+                        if (DEFAULT_MODIFIER == modifier) "" else modifier
+                )
             } else null
         }
 
     }
 
-    private fun calculateCalories(weight: Float, unit: String?): String {
+    private fun calculateCalories(weight: Float, unit: String?): Float {
         val caloriePer100g = product.nutriments[Nutriments.ENERGY_KCAL]!!.for100gInUnits.toFloat()
         val weightInG = convertToGrams(weight, unit)
-        return (caloriePer100g / 100 * weightInG).toString()
+        return caloriePer100g / 100 * weightInG
     }
 
-    private fun calculateKj(weight: Float, unit: String?): String {
+    private fun calculateKj(weight: Float, unit: String?): Float {
         val caloriePer100g = product.nutriments[Nutriments.ENERGY_KJ]!!.for100gInUnits.toFloat()
         val weightInG = convertToGrams(weight, unit)
-        return (caloriePer100g / 100 * weightInG).toString()
+        return caloriePer100g / 100 * weightInG
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

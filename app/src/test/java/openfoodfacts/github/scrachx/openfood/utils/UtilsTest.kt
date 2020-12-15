@@ -16,25 +16,25 @@ class UtilsTest {
         val mockProduct = mock(Product::class.java)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("a")
-        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_a)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_a)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("b")
-        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_b)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_b)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("c")
-        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_c)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_c)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("d")
-        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_d)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_d)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("e")
-        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(R.drawable.ic_nutriscore_e)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_e)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("")
-        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn(null)
-        assertThat(mockProduct.getNutriScoreDrawable()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
     }
 
     @Test

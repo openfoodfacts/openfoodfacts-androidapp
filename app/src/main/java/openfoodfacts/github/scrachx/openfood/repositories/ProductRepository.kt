@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.repositories
 
 import android.util.Base64
 import android.util.Log
+import androidx.core.content.edit
 import com.squareup.picasso.Picasso
 import io.reactivex.Maybe
 import io.reactivex.Single
@@ -38,7 +39,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.*
 import openfoodfacts.github.scrachx.openfood.models.entities.label.*
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
-import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.analysisDataApi
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.robotoffApi
@@ -79,44 +79,35 @@ object ProductRepository {
      *
      * @return The list of Labels.
      */
-    fun reloadLabelsFromServer(): Single<List<Label>> {
-        return getTaxonomyData(Taxonomy.LABEL, this, true, labelDao)
-    }
+    fun reloadLabelsFromServer(): Single<List<Label>> =
+            getTaxonomyData(Taxonomy.LABEL, this, true, labelDao)
 
-    fun loadLabels(lastModifiedDate: Long): Single<List<Label>> {
-        return analysisDataApi.getLabels()
-                .map { it.map() }
-                .doOnSuccess { labels: List<Label> ->
-                    saveLabels(labels)
-                    updateLastDownloadDateInSettings(Taxonomy.LABEL, lastModifiedDate)
-                }
-    }
+    fun loadLabels(lastModifiedDate: Long): Single<List<Label>> = analysisDataApi.getLabels()
+            .map { it.map() }
+            .doOnSuccess { labels: List<Label> ->
+                saveLabels(labels)
+                updateLastDownloadDateInSettings(Taxonomy.LABEL, lastModifiedDate)
+            }
 
     /**
      * Load tags from the server or local database
      *
      * @return The list of Tags.
      */
-    fun reloadTagsFromServer(): Single<List<Tag>> {
-        return getTaxonomyData(Taxonomy.TAGS, this, true, tagDao)
-    }
+    fun reloadTagsFromServer(): Single<List<Tag>> = getTaxonomyData(Taxonomy.TAGS, this, true, tagDao)
 
-    fun loadTags(lastModifiedDate: Long): Single<List<Tag>> {
-        return analysisDataApi.getTags()
-                .map<List<Tag>> { obj: TagsWrapper -> obj.tags }
-                .doOnSuccess { tags: List<Tag> ->
-                    saveTags(tags)
-                    updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate)
-                }
-    }
+    fun loadTags(lastModifiedDate: Long): Single<List<Tag>> = analysisDataApi.getTags()
+            .map { it.tags }
+            .doOnSuccess {
+                saveTags(it)
+                updateLastDownloadDateInSettings(Taxonomy.TAGS, lastModifiedDate)
+            }
 
-    fun reloadInvalidBarcodesFromServer(): Single<List<InvalidBarcode>> {
-        return getTaxonomyData(Taxonomy.INVALID_BARCODES, this, true, invalidBarcodeDao)
-    }
+    fun reloadInvalidBarcodesFromServer(): Single<List<InvalidBarcode>> = getTaxonomyData(Taxonomy.INVALID_BARCODES, this, true, invalidBarcodeDao)
 
     fun loadInvalidBarcodes(lastModifiedDate: Long) = analysisDataApi.getInvalidBarcodes()
-            .map { strings -> strings.mapTo(mutableListOf()) { InvalidBarcode(it) }.toList() }
-            .doOnSuccess { invalidBarcodes: List<InvalidBarcode> ->
+            .map { strings -> strings.map { InvalidBarcode(it) } }
+            .doOnSuccess { invalidBarcodes ->
                 saveInvalidBarcodes(invalidBarcodes)
                 updateLastDownloadDateInSettings(Taxonomy.INVALID_BARCODES, lastModifiedDate)
             }
@@ -126,52 +117,44 @@ object ProductRepository {
      *
      * @return The allergens in the product.
      */
-    fun reloadAllergensFromServer(): Single<List<Allergen>> {
-        // FIXME: this returns 404
-        return getTaxonomyData(Taxonomy.ALLERGEN, this, true, allergenDao)
-    }
+    fun reloadAllergensFromServer(): Single<List<Allergen>> =
+            // FIXME: this returns 404
+            getTaxonomyData(Taxonomy.ALLERGEN, this, true, allergenDao)
 
-    val allergens: Single<List<Allergen>>
-        get() = getTaxonomyData(Taxonomy.ALLERGEN, this, false, allergenDao)
+    fun getAllergens(): Single<List<Allergen>> =
+            getTaxonomyData(Taxonomy.ALLERGEN, this, false, allergenDao)
 
-    fun loadAllergens(lastModifiedDate: Long): Single<List<Allergen>> {
-        return analysisDataApi.getAllergens()
-                .map { it.map() }
-                .doOnSuccess { allergens: List<Allergen> ->
-                    saveAllergens(allergens)
-                    updateLastDownloadDateInSettings(Taxonomy.ALLERGEN, lastModifiedDate)
-                }
-    }
+    fun loadAllergens(lastModifiedDate: Long): Single<List<Allergen>> = analysisDataApi.getAllergens()
+            .map { it.map() }
+            .doOnSuccess { allergens: List<Allergen> ->
+                saveAllergens(allergens)
+                updateLastDownloadDateInSettings(Taxonomy.ALLERGEN, lastModifiedDate)
+            }
 
     /**
      * Load countries from the server or local database
      *
      * @return The list of countries.
      */
-    fun reloadCountriesFromServer(): Single<List<Country>> {
-        return getTaxonomyData(Taxonomy.COUNTRY, this, true, countryDao)
-    }
+    fun reloadCountriesFromServer(): Single<List<Country>> =
+            getTaxonomyData(Taxonomy.COUNTRY, this, true, countryDao)
 
-    fun loadCountries(lastModifiedDate: Long): Single<List<Country>> {
-        return analysisDataApi.getCountries()
-                .map { it.map() }
-                .doOnSuccess { countries: List<Country> ->
-                    saveCountries(countries)
-                    updateLastDownloadDateInSettings(Taxonomy.COUNTRY, lastModifiedDate)
-                }
-    }
+    fun loadCountries(lastModifiedDate: Long): Single<List<Country>> = analysisDataApi.getCountries()
+            .map { it.map() }
+            .doOnSuccess { countries: List<Country> ->
+                saveCountries(countries)
+                updateLastDownloadDateInSettings(Taxonomy.COUNTRY, lastModifiedDate)
+            }
 
     /**
      * Load categories from the server or local database
      *
      * @return The list of categories.
      */
-    fun reloadCategoriesFromServer(): Single<List<Category>> {
-        return getTaxonomyData(Taxonomy.CATEGORY, this, true, categoryDao)
-    }
+    fun reloadCategoriesFromServer(): Single<List<Category>> =
+            getTaxonomyData(Taxonomy.CATEGORY, this, true, categoryDao)
 
-    val categories: Single<List<Category>>
-        get() = getTaxonomyData(Taxonomy.CATEGORY, this, false, categoryDao)
+    fun getCategories(): Single<List<Category>> = getTaxonomyData(Taxonomy.CATEGORY, this, false, categoryDao)
 
     fun loadCategories(lastModifiedDate: Long): Single<List<Category>> {
         return analysisDataApi.getCategories()
@@ -218,18 +201,15 @@ object ProductRepository {
      *
      * @return The ingredients in the product.
      */
-    fun reloadIngredientsFromServer(): Single<List<Ingredient>> {
-        return getTaxonomyData(Taxonomy.INGREDIENT, this, true, ingredientDao)
-    }
+    fun reloadIngredientsFromServer(): Single<List<Ingredient>> =
+            getTaxonomyData(Taxonomy.INGREDIENT, this, true, ingredientDao)
 
-    fun loadIngredients(lastModifiedDate: Long): Single<List<Ingredient>> {
-        return analysisDataApi.getIngredients()
-                .map { it.map() }
-                .doOnSuccess { ingredients: List<Ingredient> ->
-                    saveIngredients(ingredients)
-                    updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate)
-                }
-    }
+    fun loadIngredients(lastModifiedDate: Long): Single<List<Ingredient>> = analysisDataApi.getIngredients()
+            .map { it.map() }
+            .doOnSuccess { ingredients: List<Ingredient> ->
+                saveIngredients(ingredients)
+                updateLastDownloadDateInSettings(Taxonomy.INGREDIENT, lastModifiedDate)
+            }
 
     /**
      * This function set lastDownloadtaxonomy setting
@@ -238,8 +218,8 @@ object ProductRepository {
      * @param lastDownload Date of last update on Long format
      */
     private fun updateLastDownloadDateInSettings(taxonomy: Taxonomy, lastDownload: Long) {
-        val mSettings = OFFApplication.instance.getSharedPreferences("prefs", 0)
-        mSettings.edit().putLong(taxonomy.lastDownloadTimeStampPreferenceId, lastDownload).apply()
+        OFFApplication.instance.getSharedPreferences("prefs", 0)
+                .edit { putLong(taxonomy.lastDownloadTimeStampPreferenceId, lastDownload) }
         Log.i(TAG, "Set lastDownload of $taxonomy to $lastDownload")
     }
 
@@ -254,11 +234,9 @@ object ProductRepository {
     private fun saveLabels(labels: List<Label>) {
         db.beginTransaction()
         try {
-            for (label in labels) {
+            labels.forEach { label ->
                 labelDao.insertOrReplace(label)
-                for (labelName in label.names) {
-                    labelNameDao.insertOrReplace(labelName)
-                }
+                label.names.forEach { labelNameDao.insertOrReplace(it) }
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -273,9 +251,7 @@ object ProductRepository {
      *
      * @param tags The list of tags to be saved.
      */
-    private fun saveTags(tags: List<Tag>) {
-        tagDao.insertOrReplaceInTx(tags)
-    }
+    private fun saveTags(tags: List<Tag>) = tagDao.insertOrReplaceInTx(tags)
 
     /**
      * Invalid Barcodess saving to local database. Will clear all previous invalid barcodes stored before.
@@ -298,11 +274,9 @@ object ProductRepository {
     fun saveAllergens(allergens: List<Allergen>) {
         db.beginTransaction()
         try {
-            for (allergen in allergens) {
+            allergens.forEach { allergen ->
                 allergenDao.insertOrReplace(allergen)
-                for (allergenName in allergen.names) {
-                    allergenNameDao.insertOrReplace(allergenName)
-                }
+                allergen.names.forEach { allergenNameDao.insertOrReplace(it) }
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -323,11 +297,9 @@ object ProductRepository {
     private fun saveAdditives(additives: List<Additive>) {
         db.beginTransaction()
         try {
-            for (additive in additives) {
+            additives.forEach { additive ->
                 additiveDao.insertOrReplace(additive)
-                for (allergenName in additive.names) {
-                    additiveNameDao.insertOrReplace(allergenName)
-                }
+                additive.names.forEach { additiveNameDao.insertOrReplace(it) }
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -348,11 +320,9 @@ object ProductRepository {
     private fun saveCountries(countries: List<Country>) {
         db.beginTransaction()
         try {
-            for (country in countries) {
+            countries.forEach { country ->
                 countryDao.insertOrReplace(country)
-                for (countryName in country.names) {
-                    countryNameDao.insertOrReplace(countryName)
-                }
+                country.names.forEach { countryNameDao.insertOrReplace(it) }
             }
             db.setTransactionSuccessful()
         } catch (e: Exception) {
