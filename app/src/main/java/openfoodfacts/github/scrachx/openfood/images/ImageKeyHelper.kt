@@ -26,14 +26,17 @@ fun getLanguageCodeFromUrl(field: ProductImageField?, url: String?): String? {
     else StringUtils.substringBefore(StringUtils.substringAfterLast(url, field.toString() + "_"), ".")
 }
 
-fun createImageBundle(imageType: ProductImageField?, product: Product?, language: String?, imageUrl: String?): Bundle {
-    return Bundle().apply {
-        putString(IMAGE_URL, imageUrl)
-        if (product != null) {
-            putSerializable(PRODUCT, product)
-            putSerializable(IMAGE_TYPE, imageType)
-            putString(LANGUAGE, language)
-        }
+fun createImageBundle(
+        imageType: ProductImageField?,
+        product: Product?,
+        language: String?,
+        imageUrl: String?
+) = Bundle().apply {
+    putString(IMAGE_URL, imageUrl)
+    if (product != null) {
+        putSerializable(PRODUCT, product)
+        putSerializable(IMAGE_TYPE, imageType)
+        putString(LANGUAGE, language)
     }
 }
 

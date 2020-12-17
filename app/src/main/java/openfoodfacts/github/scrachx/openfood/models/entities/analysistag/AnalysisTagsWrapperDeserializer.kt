@@ -1,56 +1,39 @@
+package openfoodfacts.github.scrachx.openfood.models.entities.analysistag
 
-package openfoodfacts.github.scrachx.openfood.models.entities.analysistag;
-
-import androidx.annotation.NonNull;
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper;
+import com.fasterxml.jackson.core.JsonParser
+import com.fasterxml.jackson.databind.DeserializationContext
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer
+import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper
+import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper.extractMapFromJsonNode
+import java.io.IOException
+import java.util.*
 
 /**
- * Custom deserializer for {@link AnalysisTagsWrapper AnalysisTagsWrapper}
+ * Custom deserializer for [AnalysisTagsWrapper]
  *
  * @author Rares
  */
-public class AnalysisTagsWrapperDeserializer extends StdDeserializer<AnalysisTagsWrapper> {
-    public AnalysisTagsWrapperDeserializer() {
-        super(AnalysisTagsWrapper.class);
-    }
+class AnalysisTagsWrapperDeserializer : StdDeserializer<AnalysisTagsWrapper>(AnalysisTagsWrapper::class.java) {
+    @Throws(IOException::class)
+    override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): AnalysisTagsWrapper {
+        val analysisTags: MutableList<AnalysisTagResponse> = ArrayList()
+        val mainNode = jp.codec.readTree<JsonNode>(jp)
 
-    @Override
-    public AnalysisTagsWrapper deserialize(@NonNull JsonParser jp, DeserializationContext ctxt) throws IOException {
-        List<AnalysisTagResponse> analysisTags = new ArrayList<>();
-
-        JsonNode mainNode = jp.getCodec().readTree(jp);
-        Iterator<Map.Entry<String, JsonNode>> mainNodeIterator = mainNode.fields();
-
+        val mainNodeIterator = mainNode.fields()
         while (mainNodeIterator.hasNext()) {
-            final Map.Entry<String, JsonNode> subNode = mainNodeIterator.next();
-            JsonNode namesNode = subNode.getValue().get(DeserializerHelper.NAMES_KEY);
-
+            val subNode = mainNodeIterator.next()
+            val namesNode = subNode.value[DeserializerHelper.NAMES_KEY]
             if (namesNode != null) {
-                Map<String, String> names = DeserializerHelper.extractMapFromJsonNode(namesNode);
-
-                Map<String, String> showIngredients = new HashMap<>();
-                JsonNode showIngredientsNode = subNode.getValue().get(DeserializerHelper.SHOW_INGREDIENTS_KEY);
-                if(showIngredientsNode != null) {
-                    showIngredients = DeserializerHelper.extractMapFromJsonNode(showIngredientsNode);
+                val names = extractMapFromJsonNode(namesNode)
+                var showIngredients: Map<String, String> = HashMap()
+                val showIngredientsNode = subNode.value[DeserializerHelper.SHOW_INGREDIENTS_KEY]
+                if (showIngredientsNode != null) {
+                    showIngredients = extractMapFromJsonNode(showIngredientsNode)
                 }
-
-                analysisTags.add(new AnalysisTagResponse(subNode.getKey(), names, showIngredients));
+                analysisTags.add(AnalysisTagResponse(subNode.key, names, showIngredients))
             }
         }
-
-        return new AnalysisTagsWrapper(analysisTags);
+        return AnalysisTagsWrapper(analysisTags)
     }
 }

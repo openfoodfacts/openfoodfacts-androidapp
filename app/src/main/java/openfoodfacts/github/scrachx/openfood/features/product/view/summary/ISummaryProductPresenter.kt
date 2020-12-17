@@ -33,7 +33,7 @@ interface ISummaryProductPresenter {
     interface Actions : Disposable {
         fun loadProductQuestion()
         fun annotateInsight(insightId: String, annotation: AnnotationAnswer)
-        fun loadAllergens(runIfError: Runnable?)
+        fun loadAllergens(runIfError: (() -> Unit)?)
         fun loadCategories()
         fun loadLabels()
         fun loadAdditives()

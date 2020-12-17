@@ -1,48 +1,37 @@
-package openfoodfacts.github.scrachx.openfood.models.entities.ingredient;
+package openfoodfacts.github.scrachx.openfood.models.entities.ingredient
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper;
+import com.fasterxml.jackson.core.JsonParser
+import com.fasterxml.jackson.databind.DeserializationContext
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer
+import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper
+import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper.extractChildNodeAsText
+import openfoodfacts.github.scrachx.openfood.utils.DeserializerHelper.extractMapFromJsonNode
+import java.io.IOException
+import java.util.*
 
 /**
- * Custom deserializer for {@link IngredientsWrapper IngredientsWrapper}
+ * Custom deserializer for [IngredientsWrapper]
  *
  * @author dobriseb 2018-12-21 inspired by AllergensWrapperDeserializer
  */
-public class IngredientsWrapperDeserializer extends StdDeserializer<IngredientsWrapper> {
-    public IngredientsWrapperDeserializer() {
-        super(IngredientsWrapper.class);
-    }
-
-    @Override
-    public IngredientsWrapper deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
-        List<IngredientResponse> ingredients = new ArrayList<>();
-
-        JsonNode mainNode = jp.getCodec().readTree(jp);
-        Iterator<Map.Entry<String, JsonNode>> mainNodeIterator = mainNode.fields();
-
+class IngredientsWrapperDeserializer : StdDeserializer<IngredientsWrapper>(IngredientsWrapper::class.java) {
+    @Throws(IOException::class)
+    override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): IngredientsWrapper {
+        val ingredients = ArrayList<IngredientResponse>()
+        val mainNode = jp.codec.readTree<JsonNode>(jp)
+        val mainNodeIterator = mainNode.fields()
         while (mainNodeIterator.hasNext()) {
-            Map.Entry<String, JsonNode> subNode = mainNodeIterator.next();
-            JsonNode namesNode = subNode.getValue().get(DeserializerHelper.NAMES_KEY);
-
+            val subNode = mainNodeIterator.next()
+            val namesNode = subNode.value[DeserializerHelper.NAMES_KEY]
             if (namesNode != null) {
-                Map<String, String> names = DeserializerHelper.extractMapFromJsonNode(namesNode);
-                List<String> parents = DeserializerHelper.extractChildNodeAsText(subNode, DeserializerHelper.PARENTS_KEY);
-                List<String> children = DeserializerHelper.extractChildNodeAsText(subNode, DeserializerHelper.CHILDREN_KEY);
-                String wikiData = (Boolean) subNode.getValue().has(DeserializerHelper.WIKIDATA_KEY) ? subNode.getValue().get(DeserializerHelper.WIKIDATA_KEY).toString() : null;
-                ingredients.add(new IngredientResponse(subNode.getKey(), names, parents, children, wikiData));
+                val names = extractMapFromJsonNode(namesNode)
+                val parents = extractChildNodeAsText(subNode, DeserializerHelper.PARENTS_KEY)
+                val children = extractChildNodeAsText(subNode, DeserializerHelper.CHILDREN_KEY)
+                val wikiData = if (subNode.value.has(DeserializerHelper.WIKIDATA_KEY)) subNode.value[DeserializerHelper.WIKIDATA_KEY].toString() else null
+                ingredients.add(IngredientResponse(subNode.key!!, names, parents, children, wikiData))
             }
         }
-
-        return new IngredientsWrapper(ingredients);
+        return IngredientsWrapper(ingredients)
     }
 }

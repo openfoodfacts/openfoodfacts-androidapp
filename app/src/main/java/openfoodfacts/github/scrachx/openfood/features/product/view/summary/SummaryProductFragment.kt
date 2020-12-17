@@ -33,7 +33,6 @@ import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -84,31 +83,47 @@ import java.io.File
 import java.util.*
 
 class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
-    private val disp = CompositeDisposable()
-    private var annotation: AnnotationAnswer? = null
-    private var barcode: String? = null
     private var _binding: FragmentSummaryProductBinding? = null
     private val binding get() = _binding!!
+
+    private val disp = CompositeDisposable()
+
     private lateinit var client: OpenFoodAPIClient
+    private lateinit var wikidataClient: WikiDataApiClient
+
+    private lateinit var presenter: ISummaryProductPresenter.Actions
+    private lateinit var mTagDao: TagDao
+    private lateinit var product: Product
+
+    private var annotation: AnnotationAnswer? = null
     private var customTabActivityHelper: CustomTabActivityHelper? = null
     private var customTabsIntent: CustomTabsIntent? = null
     private var hasCategoryInsightQuestion = false
+
     private var insightId: String? = null
 
     //boolean to determine if image should be loaded or not
     private var isLowBatteryMode = false
-    private var mTagDao: TagDao? = null
     private var mUrlImage: String? = null
     private var nutritionScoreUri: Uri? = null
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
-    private lateinit var presenter: ISummaryProductPresenter.Actions
-    private lateinit var product: Product
-    private var productQuestion: Question? = null
-    private val loginLauncher = registerForActivityResult(LoginContract()) { isLoggedIn: Boolean ->
-        if (isLoggedIn) {
-            processInsight(insightId, annotation)
+
+    private var photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File ->
+        //the pictures are uploaded with the correct path
+        val resultUri = newPhotoFile.toURI()
+        val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
+        val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
+        val image = ProductImage(product.code, field, photoFile)
+        image.filePath = photoFile.absolutePath
+        uploadImage(image)
+        if (!sendOther) {
+            loadPhoto(photoFile)
         }
     }
+    private var productQuestion: Question? = null
+
+    private val loginThenProcessInsight = registerForActivityResult(LoginContract())
+    { isLoggedIn -> if (isLoggedIn) processInsight() }
+
     private lateinit var productState: ProductState
     private var sendOther = false
 
@@ -117,7 +132,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     /**boolean to determine if nutrient prompt should be shown*/
     private var showNutrientPrompt = false
-    private lateinit var wikidataClient: WikiDataApiClient
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -140,6 +154,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         super.onCreate(savedInstanceState)
         client = OpenFoodAPIClient(requireActivity())
         wikidataClient = WikiDataApiClient()
+        mTagDao = Utils.daoSession.tagDao
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -149,18 +165,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File ->
-            //the pictures are uploaded with the correct path
-            val resultUri = newPhotoFile.toURI()
-            val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
-            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
-            val image = ProductImage(barcode, field, photoFile)
-            image.filePath = photoFile.absolutePath
-            uploadImage(image)
-            if (!sendOther) {
-                loadPhoto(photoFile)
-            }
-        }
+
         binding.imageViewFront.setOnClickListener { openFrontImageFullscreen() }
         binding.buttonNewFrontImage.setOnClickListener { newFrontImage() }
         binding.buttonMorePictures.setOnClickListener { takeMorePicture() }
@@ -169,7 +174,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.actionShareButton.setOnClickListener { onShareProductButtonClick() }
         binding.actionCompareButton.setOnClickListener { onCompareProductButtonClick() }
         binding.addNutriscorePrompt.setOnClickListener { onAddNutriScorePromptClick() }
-        binding.productQuestionDismiss.setOnClickListener { hideQuestionLayout() }
+        binding.productQuestionDismiss.setOnClickListener {
+            binding.productQuestionLayout.visibility = View.GONE
+        }
         binding.productQuestionLayout.setOnClickListener { onProductQuestionClick() }
         productState = requireProductState()
         refreshView(productState)
@@ -270,8 +277,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.textAdditiveProduct.text = bold(getString(R.string.txtAdditives))
         presenter.loadAdditives()
         presenter.loadAnalysisTags()
-        mTagDao = Utils.daoSession.tagDao
-        barcode = product.code
+
         val langCode = LocaleHelper.getLanguage(context)
         val imageUrl = product.getImageUrl(langCode)
         if (!imageUrl.isNullOrBlank()) {
@@ -606,25 +612,29 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         this.insightId = insightId
         this.annotation = annotation
         if (requireActivity().isUserSet()) {
-            processInsight(insightId, annotation)
+            processInsight()
         } else {
             MaterialDialog.Builder(requireActivity()).run {
                 title(getString(R.string.sign_in_to_answer))
                 positiveText(getString(R.string.sign_in_or_register))
-                onPositive { dialog: MaterialDialog, _: DialogAction? ->
-                    loginLauncher.launch(Unit)
+                onPositive { dialog, _ ->
+                    loginThenProcessInsight.launch(Unit)
                     dialog.dismiss()
                 }
                 neutralText(R.string.dialog_cancel)
-                onNeutral { dialog: MaterialDialog, _: DialogAction? -> dialog.dismiss() }
+                onNeutral { dialog, _ -> dialog.dismiss() }
                 show()
             }
 
         }
     }
 
-    private fun processInsight(insightId: String?, annotation: AnnotationAnswer?) {
-        presenter.annotateInsight(insightId!!, annotation!!)
+    private fun processInsight() {
+        val insightId = this.insightId ?: error("Property 'insightId' not set.")
+        val annotation = this.annotation ?: error("Property 'annotation' not set.")
+
+        presenter.annotateInsight(insightId, annotation)
+
         Log.d(LOG_TAG, "Annotation $annotation received for insight $insightId")
         binding.productQuestionLayout.visibility = View.GONE
         productQuestion = null
@@ -636,20 +646,16 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    private fun hideQuestionLayout() {
-        binding.productQuestionLayout.visibility = View.GONE
-    }
-
     override fun showLabels(labels: List<LabelName>) {
         binding.labelsText.text = bold(getString(R.string.txtLabels))
         binding.labelsText.isClickable = true
         binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
         binding.labelsText.append(" ")
-        for (i in 0 until labels.size - 1) {
+        (0 until labels.size - 1).forEach { i ->
             binding.labelsText.append(getLabelTag(labels[i]))
             binding.labelsText.append(", ")
         }
-        binding.labelsText.append(getLabelTag(labels[labels.size - 1]))
+        binding.labelsText.append(getLabelTag(labels.last()))
     }
 
     override fun showCategoriesState(state: ProductInfoState) {
@@ -678,17 +684,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    private fun getEmbUrl(embTag: String): String {
-        val tag = mTagDao!!.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()
-        return tag.name
-    }
+    private fun getEmbUrl(embTag: String) =
+            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().name
 
-    private fun getEmbCode(embTag: String): String {
-        val tag = mTagDao!!.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()
-        return if (tag != null) {
-            tag.name
-        } else embTag
-    }
+    private fun getEmbCode(embTag: String) =
+            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
 
     private fun getLabelTag(label: LabelName): CharSequence {
         val spannableStringBuilder = SpannableStringBuilder()
@@ -827,7 +827,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
         val shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK
                 || ImagesManageActivity.isImageModified(requestCode, resultCode))
         if (shouldRefresh && activity is ProductViewActivity) {

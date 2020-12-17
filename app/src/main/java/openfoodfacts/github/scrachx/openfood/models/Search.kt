@@ -29,12 +29,8 @@ data class Search(
 ) : Serializable {
 
     @JsonIgnore
-    private val additionalProperties = hashMapOf<String, Any>()
-
-    @JsonAnyGetter
-    fun getAdditionalProperties(): Map<String, Any> {
-        return additionalProperties
-    }
+    @get:JsonAnyGetter
+    val additionalProperties: HashMap<String, Any> = hashMapOf()
 
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any) {

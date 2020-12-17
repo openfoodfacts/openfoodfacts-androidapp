@@ -96,7 +96,8 @@ object ProductRepository {
      *
      * @return The list of Tags.
      */
-    fun reloadTagsFromServer(): Single<List<Tag>> = getTaxonomyData(Taxonomy.TAGS, this, true, tagDao)
+    fun reloadTagsFromServer(): Single<List<Tag>> =
+            getTaxonomyData(Taxonomy.TAGS, this, true, tagDao)
 
     fun loadTags(lastModifiedDate: Long): Single<List<Tag>> = analysisDataApi.getTags()
             .map { it.tags }

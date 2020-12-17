@@ -18,7 +18,7 @@ import java.util.*
 class LabelsWrapperDeserializer : StdDeserializer<LabelsWrapper>(LabelsWrapper::class.java) {
     @Throws(IOException::class)
     override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): LabelsWrapper {
-        val labels: MutableList<LabelResponse> = ArrayList()
+        val labels = ArrayList<LabelResponse>()
         val mainNode = jp.codec.readTree<JsonNode>(jp)
         val mainNodeIterator = mainNode.fields()
         while (mainNodeIterator.hasNext()) {

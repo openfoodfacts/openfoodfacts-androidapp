@@ -6,6 +6,7 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI
 import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.network.services.RobotoffAPI
+import openfoodfacts.github.scrachx.openfood.network.services.WikidataAPI
 import openfoodfacts.github.scrachx.openfood.utils.Utils.httpClientBuilder
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -46,6 +47,15 @@ object CommonApiManager {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
                 .create(RobotoffAPI::class.java)
+    }
+    val wikidataApi: WikidataAPI by lazy {
+        Retrofit.Builder()
+                .baseUrl(BuildConfig.WIKIDATA)
+                .client(httpClientBuilder())
+                .addConverterFactory(jacksonConverterFactory)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .build()
+                .create(WikidataAPI::class.java)
     }
     private val jacksonConverterFactory = JacksonConverterFactory.create(jacksonObjectMapper())
 

@@ -14,8 +14,7 @@ class CategoryMapperTest {
     @Test
     @Throws(IOException::class)
     fun fromNetworkFullResponseCategoryList() {
-        val mapper = jacksonObjectMapper()
-        val response = mapper.readValue(readTextFileFromResources("mock_categories.json", this.javaClass.classLoader!!), CategoryResponse::class.java)
+        val response = jacksonObjectMapper().readValue(readTextFileFromResources("mock_categories.json", this.javaClass.classLoader!!), CategoryResponse::class.java)
         val categories = CategoryMapper().fromNetwork(response.tags)
         assertThat(response.tags).hasSize(categories.size)
     }

@@ -50,7 +50,10 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 /**
  * API Client for all API callbacks
  */
-class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, customApiUrl: String? = null) {
+class OpenFoodAPIClient @JvmOverloads constructor(
+        private val context: Context,
+        customEndpointUrl: String? = null
+) {
     private var historySyncDisp = CompositeDisposable()
     private val mHistoryProductDao = daoSession.historyProductDao
     private val mToUploadProductDao = daoSession.toUploadProductDao
@@ -58,10 +61,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(private val context: Context, 
     /**
      * @return This api service gets products of provided brand.
      */
-    var rawAPI: ProductsAPI = if (customApiUrl == null) productsApi
+    val rawAPI: ProductsAPI = if (customEndpointUrl == null) productsApi
     else {
         Retrofit.Builder()
-                .baseUrl(customApiUrl)
+                .baseUrl(customEndpointUrl)
                 .client(httpClientBuilder())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))

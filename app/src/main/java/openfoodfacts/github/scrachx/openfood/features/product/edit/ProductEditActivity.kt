@@ -546,7 +546,7 @@ class ProductEditActivity : AppCompatActivity() {
         const val KEY_STATE = "state"
         private fun getCameraPicLocation(context: Context): File {
             var cacheDir = context.cacheDir
-            if (isExternalStorageWritable) {
+            if (isExternalStorageWritable()) {
                 cacheDir = context.externalCacheDir
             }
             val dir = File(cacheDir, "EasyImage")

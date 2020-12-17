@@ -161,7 +161,7 @@ object Utils {
         return when {
             value.isEmpty() -> "?"
             "0" == value || (strings.size == 1 || strings.size == 2 && strings[1].length <= 2) -> value
-            else -> String.format(Locale.getDefault(), "%.2f", value.toDouble())
+            else -> "%.2f".format(Locale.getDefault(), value.toDouble())
         }
 
     }
@@ -248,7 +248,7 @@ object Utils {
     fun makeOrGetPictureDirectory(context: Context): File {
         // determine the profile directory
         var dir = context.filesDir
-        if (isExternalStorageWritable) {
+        if (isExternalStorageWritable()) {
             dir = context.getExternalFilesDir(null)
         }
         val picDir = File(dir, "Pictures")
@@ -258,18 +258,16 @@ object Utils {
         // creates the directory if not present yet
         val mkdir = picDir.mkdirs()
         if (!mkdir) {
-            Log.e(Utils::class.java.simpleName, "Can create dir $picDir")
+            Log.e(Utils::class.simpleName, "Can create dir $picDir")
         }
         return picDir
     }
 
-    val isExternalStorageWritable: Boolean
-        get() = Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
+    fun isExternalStorageWritable() = Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
 
     @JvmStatic
-    fun getOutputPicUri(context: Context): Uri {
-        return Uri.fromFile(File(makeOrGetPictureDirectory(context), System.currentTimeMillis().toString() + ".jpg"))
-    }
+    fun getOutputPicUri(context: Context): Uri =
+            Uri.fromFile(File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg"))
 
     fun getClickableText(text: String, urlParameter: String, type: SearchType?, activity: Activity?, customTabsIntent: CustomTabsIntent?): CharSequence {
         val clickableSpan: ClickableSpan
@@ -469,6 +467,7 @@ fun getNutriScoreResource(grade: String?) = when (grade?.toLowerCase(Locale.getD
 }
 
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
+
 fun dpsToPixel(dps: Int, activity: Activity?) =
         if (activity == null) 0
         else (dps * activity.resources.displayMetrics.density + 0.5f).toInt()

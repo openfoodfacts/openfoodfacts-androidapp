@@ -13,5 +13,5 @@ class AnalysisTagConfigsWrapper(var analysisTagConfigs: List<AnalysisTagConfig>)
     /**
      * @return A list of AnalysisTagConfig objects
      */
-    fun map() = analysisTagConfigs.toMutableList()
+    fun map() = analysisTagConfigs.toList()
 }

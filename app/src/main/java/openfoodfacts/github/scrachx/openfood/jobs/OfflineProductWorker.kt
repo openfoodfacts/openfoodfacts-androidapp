@@ -15,10 +15,10 @@ class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : R
         return OfflineProductService.uploadAll(includeImages).map { shouldRetry ->
             if (shouldRetry) {
                 Log.d(WORK_TAG, "[RETRY] doWork with includeImages: $includeImages")
-                return@map Result.retry()
+                Result.retry()
             } else {
                 Log.d(WORK_TAG, "[SUCCESS] doWork with includeImages: $includeImages")
-                return@map Result.success()
+                Result.success()
             }
         }
     }

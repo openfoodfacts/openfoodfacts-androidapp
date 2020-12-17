@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.allergen
 
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_ENGLISH
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH
 import org.junit.Before
@@ -25,14 +25,14 @@ class AllergenResponseTest {
 
         // TODO: expected this to be the allergen ID but a string to constructor actually makes it
         // the tag. Should update AllergenResponse to fix that.
-        Truth.assertThat(allergen.tag).isEqualTo(UNIQUE_ALLERGEN_ID_1)
-        Truth.assertThat(allergen.names).hasSize(2)
-        Truth.assertThat(allergen.names[0].allergenTag).isEqualTo(UNIQUE_ALLERGEN_ID_1)
-        Truth.assertThat(allergen.names[0].name).isEqualTo(PEANUTS_EN)
-        Truth.assertThat(allergen.names[0].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
-        Truth.assertThat(allergen.names[1].allergenTag).isEqualTo(UNIQUE_ALLERGEN_ID_1)
-        Truth.assertThat(allergen.names[1].name).isEqualTo(PEANUTS_FR)
-        Truth.assertThat(allergen.names[1].languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
+        assertThat(allergen.tag).isEqualTo(UNIQUE_ALLERGEN_ID_1)
+        assertThat(allergen.names).hasSize(2)
+        assertThat(allergen.names[0].allergenTag).isEqualTo(UNIQUE_ALLERGEN_ID_1)
+        assertThat(allergen.names[0].name).isEqualTo(PEANUTS_EN)
+        assertThat(allergen.names[0].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(allergen.names[1].allergenTag).isEqualTo(UNIQUE_ALLERGEN_ID_1)
+        assertThat(allergen.names[1].name).isEqualTo(PEANUTS_FR)
+        assertThat(allergen.names[1].languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
     }
 
     @Test
@@ -40,6 +40,6 @@ class AllergenResponseTest {
         val wikiDataCode = "Q12345"
         val allergenResponse = AllergenResponse(UNIQUE_ALLERGEN_ID_1, nameMap, wikiDataCode)
         val allergen = allergenResponse.map()
-        Truth.assertThat(allergen.wikiDataId).isEqualTo(wikiDataCode)
+        assertThat(allergen.wikiDataId).isEqualTo(wikiDataCode)
     }
 }

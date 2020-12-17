@@ -45,48 +45,48 @@ class SummaryProductPresenter(
 
     override fun loadAdditives() {
         val additivesTags = product.additivesTags
-        if (additivesTags.isNotEmpty()) {
-            val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-            additivesTags.toObservable()
-                    .flatMapSingle { tag: String? ->
-                        ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode)
-                                .flatMap { categoryName: AdditiveName ->
-                                    if (categoryName.isNull) {
-                                        return@flatMap ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                                    } else {
-                                        return@flatMap Single.just(categoryName)
-                                    }
-                                }
-                    }
-                    .filter { it.isNotNull }
-                    .toList()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnSubscribe { view.showAdditivesState(ProductInfoState.LOADING) }
-                    .doOnError {
-                        Log.e(SummaryProductPresenter::class.java.simpleName, "loadAdditives", it)
-                        view.showAdditivesState(ProductInfoState.EMPTY)
-                    }
-                    .subscribe { additives ->
-                        if (additives.isEmpty()) {
-                            view.showAdditivesState(ProductInfoState.EMPTY)
-                        } else {
-                            view.showAdditives(additives)
-                        }
-                    }.addTo(disp)
-        } else {
+        if (additivesTags.isEmpty()) {
             view.showAdditivesState(ProductInfoState.EMPTY)
+            return
         }
-    }
 
-    override fun loadAllergens(runIfError: Runnable?) {
         val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        ProductRepository.getAllergensByEnabledAndLanguageCode(true, languageCode)
+        additivesTags.toObservable()
+                .flatMapSingle { tag: String? ->
+                    ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode)
+                            .flatMap { categoryName: AdditiveName ->
+                                if (categoryName.isNull) {
+                                    return@flatMap ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                                } else {
+                                    return@flatMap Single.just(categoryName)
+                                }
+                            }
+                }
+                .filter { it.isNotNull }
+                .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { view.showAdditivesState(ProductInfoState.LOADING) }
                 .doOnError {
-                    runIfError?.run()
-                    Log.e(SummaryProductPresenter::class.java.simpleName, "loadAllergens", it)
+                    Log.e(SummaryProductPresenter::class.java.simpleName, "loadAdditives", it)
+                    view.showAdditivesState(ProductInfoState.EMPTY)
+                }
+                .subscribe { additives ->
+                    if (additives.isEmpty()) {
+                        view.showAdditivesState(ProductInfoState.EMPTY)
+                    } else {
+                        view.showAdditives(additives)
+                    }
+                }.addTo(disp)
+    }
+
+    override fun loadAllergens(runIfError: (() -> Unit)?) {
+        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        ProductRepository.getAllergensByEnabledAndLanguageCode(true, languageCode)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError {
+                    runIfError?.invoke()
+                    Log.e(SummaryProductPresenter::class.simpleName, "LoadAllergens", it)
                 }
                 .subscribe { allergens -> view.showAllergens(allergens) }
                 .addTo(disp)
@@ -108,9 +108,9 @@ class SummaryProductPresenter(
                                 }
                     }
                     .toList()
-                    .doOnSubscribe { view.showCategoriesState(ProductInfoState.LOADING) }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe { view.showCategoriesState(ProductInfoState.LOADING) }
                     .doOnError {
                         Log.e(SummaryProductPresenter::class.java.simpleName, "loadCategories", it)
                         view.showCategoriesState(ProductInfoState.EMPTY)
@@ -144,10 +144,10 @@ class SummaryProductPresenter(
                     }
                     .filter { obj: LabelName? -> obj != null && obj.isNotNull }
                     .toList()
-                    .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .doOnError { e: Throwable? ->
+                    .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
+                    .doOnError { e ->
                         Log.e(SummaryProductPresenter::class.java.simpleName, "loadLabels", e)
                         view.showLabelsState(ProductInfoState.EMPTY)
                     }
@@ -169,7 +169,7 @@ class SummaryProductPresenter(
         ProductRepository.getSingleProductQuestion(product.code, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(this@SummaryProductPresenter.javaClass.simpleName, "loadProductQuestion", it) }
+                .doOnError { Log.e(this@SummaryProductPresenter::class.simpleName, "loadProductQuestion", it) }
                 .subscribe { question -> view.showProductQuestion(question) }
                 .addTo(disp)
 
@@ -219,8 +219,8 @@ class SummaryProductPresenter(
         ProductRepository.annotateInsight(insightId, annotation)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { Log.e(this@SummaryProductPresenter.javaClass.simpleName, "annotateInsight", it) }
-                .subscribe { annotationResponse -> view.showAnnotatedInsightToast(annotationResponse) }
+                .doOnError { Log.e(this@SummaryProductPresenter::class.simpleName, "annotateInsight", it) }
+                .subscribe { response -> view.showAnnotatedInsightToast(response) }
                 .addTo(disp)
     }
 

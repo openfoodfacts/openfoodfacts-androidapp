@@ -39,25 +39,6 @@ class ProductState : Serializable {
 
     @JsonIgnore
     private val additionalProperties: MutableMap<String, Any> = HashMap()
-    fun withStatusVerbose(statusVerbose: String?): ProductState {
-        this.statusVerbose = statusVerbose
-        return this
-    }
-
-    fun withStatus(status: Long): ProductState {
-        this.status = status
-        return this
-    }
-
-    fun withProduct(product: Product?): ProductState {
-        this.product = product
-        return this
-    }
-
-    fun withCode(code: String?): ProductState {
-        this.code = code
-        return this
-    }
 
     @JsonAnyGetter
     fun getAdditionalProperties(): Map<String, Any> {
@@ -67,11 +48,6 @@ class ProductState : Serializable {
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any) {
         additionalProperties[name] = value
-    }
-
-    fun withAdditionalProperty(name: String, value: Any): ProductState {
-        additionalProperties[name] = value
-        return this
     }
 
     override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)

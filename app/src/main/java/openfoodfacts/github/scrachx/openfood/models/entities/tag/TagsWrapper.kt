@@ -7,15 +7,12 @@ import java.util.*
 @JsonPropertyOrder("tags")
 class TagsWrapper {
     @JsonProperty("tags")
-    var tags: List<Tag>? = null
+    lateinit var tags: List<Tag>
 
     @JsonIgnore
-    private val additionalProperties = HashMap<String, Any>()
+    @get:JsonAnyGetter
+    val additionalProperties = HashMap<String, Any>()
 
-    @JsonAnyGetter
-    fun getAdditionalProperties(): Map<String, Any> {
-        return additionalProperties
-    }
 
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any) {
