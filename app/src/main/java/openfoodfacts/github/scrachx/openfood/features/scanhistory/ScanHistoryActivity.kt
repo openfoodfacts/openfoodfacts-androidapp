@@ -35,7 +35,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
@@ -48,7 +48,6 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
-import org.apache.commons.collections.CollectionUtils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVPrinter
 import java.io.File
@@ -97,7 +96,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
             fillView()
             binding.srRefreshHistoryScanList.isRefreshing = false
         }
-        install(this, binding.navigationBottom.bottomNavigation)
+        binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
     }
 
     override fun onStart() {
@@ -107,8 +106,8 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
     }
 
     override fun onRightClicked(position: Int) {
-        if (CollectionUtils.isNotEmpty(listHistoryProducts)) {
-            mHistoryProductDao.delete(listHistoryProducts!![position])
+        if (!listHistoryProducts.isNullOrEmpty()) {
+            mHistoryProductDao.delete(listHistoryProducts[position])
         }
         adapter!!.remove(productItems[position])
         adapter!!.notifyItemRemoved(position)
@@ -276,7 +275,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
 
     public override fun onResume() {
         super.onResume()
-        selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.history_bottom_nav)
+        binding.navigationBottom.bottomNavigation.selectNavigationItem(R.id.history_bottom_nav)
     }
 
     private fun onScanFirst() {

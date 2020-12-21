@@ -22,8 +22,6 @@ enum class SearchType(val url: String) {
     MANUFACTURING_PLACE("url");
 
     companion object {
-        fun fromUrl(url: String?): SearchType? {
-            return values().firstOrNull { it.url.equals(url, ignoreCase = true) }
-        }
+        fun fromUrl(url: String?) = values().firstOrNull { it.url.equals(url, ignoreCase = true) }
     }
 }

@@ -11,12 +11,10 @@ private fun parseDouble(number: String?, defaultValue: Double): Double {
 }
 
 fun getAsInt(number: Any?, defaultValue: Int): Int {
-    if (number == null) {
-        return defaultValue
-    }
-    return if (number is Number) {
-        number.toInt()
-    } else parseDouble(number.toString(), defaultValue.toDouble()).toInt()
+    if (number == null) return defaultValue
+
+    return if (number is Number) number.toInt()
+    else parseDouble(number.toString(), defaultValue.toDouble()).toInt()
 }
 
 fun getAsInt(imgDetails: Map<String, *>?, key: String?, defaultValue: Int): Int {
@@ -35,7 +33,6 @@ fun getAsFloat(number: Any?, defaultValue: Float): Float {
     if (number == null) {
         return defaultValue
     }
-    return if (number is Number) {
-        number.toFloat()
-    } else parseDouble(number.toString(), defaultValue.toDouble()).toFloat()
+    return if (number is Number) number.toFloat()
+    else parseDouble(number.toString(), defaultValue.toDouble()).toFloat()
 }

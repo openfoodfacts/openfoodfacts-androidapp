@@ -30,7 +30,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnal
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.adapter.IngredientAnalysisRecyclerAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductIngredient
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
@@ -38,16 +37,13 @@ import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 class IngredientsAnalysisProductFragment : BaseFragment() {
     private var _binding: FragmentIngredientsAnalysisProductBinding? = null
     private val binding get() = _binding!!
-    private lateinit var api: OpenFoodAPIClient
-    private lateinit var product: Product
-    private var adapter: IngredientAnalysisRecyclerAdapter? = null
+
     private val disp = CompositeDisposable()
 
-    override fun onDestroy() {
-        disp.dispose()
-        _binding = null
-        super.onDestroy()
-    }
+    private lateinit var api: OpenFoodAPIClient
+    private lateinit var product: Product
+
+    private var adapter: IngredientAnalysisRecyclerAdapter? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -65,7 +61,7 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
         api.getIngredients(product)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Toast.makeText(activity, requireActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show() }
-                .subscribe { ingredients: List<ProductIngredient> ->
+                .subscribe { ingredients ->
                     adapter = IngredientAnalysisRecyclerAdapter(ingredients, requireActivity())
                     binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
                     binding.ingredientAnalysisRecyclerView.adapter = adapter
@@ -74,6 +70,12 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
         if (intent != null && intent.extras != null) {
             refreshView(requireProductState())
         }
+    }
+
+    override fun onDestroyView() {
+        disp.dispose()
+        _binding = null
+        super.onDestroyView()
     }
 
     override fun refreshView(productState: ProductState) {

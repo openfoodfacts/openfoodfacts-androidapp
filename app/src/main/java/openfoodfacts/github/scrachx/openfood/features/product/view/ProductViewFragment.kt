@@ -11,13 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
@@ -35,36 +34,43 @@ import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 class ProductViewFragment : Fragment(), OnRefreshListener {
     private var _binding: ActivityProductBinding? = null
     private val binding get() = _binding!!
-    private var adapterResult: ProductFragmentPagerAdapter? = null
-    private lateinit var client: OpenFoodAPIClient
-    private val disp = CompositeDisposable()
-    private lateinit var productState: ProductState
 
-    override fun onDestroyView() {
-        disp.dispose()
-        super.onDestroyView()
-    }
+    private val disp = CompositeDisposable()
+
+    private lateinit var client: OpenFoodAPIClient
+    private lateinit var adapterResult: ProductFragmentPagerAdapter
+    private lateinit var productState: ProductState
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         if (resources.getBoolean(R.bool.portrait_only)) {
             requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
         _binding = ActivityProductBinding.inflate(inflater)
-        binding.toolbar.visibility = View.GONE
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         client = OpenFoodAPIClient(requireActivity())
         productState = requireProductState()
+
+        binding.toolbar.visibility = View.GONE
 
         adapterResult = setupViewPager(binding.pager)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             binding.pager.isNestedScrollingEnabled = true
         }
-        TabLayoutMediator(binding.tabs, binding.pager) { tab: TabLayout.Tab, position: Int ->
-            tab.text = adapterResult!!.getPageTitle(position)
+        TabLayoutMediator(binding.tabs, binding.pager) { tab, position ->
+            tab.text = adapterResult.getPageTitle(position)
         }.attach()
 
-        selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0)
-        install(requireActivity(), binding.navigationBottomInclude.bottomNavigation)
-        return binding.root
+        binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(0)
+        binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(requireActivity())
+    }
+
+    override fun onDestroyView() {
+        disp.dispose()
+        super.onDestroyView()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -76,12 +82,12 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
         }
     }
 
-    private fun setupViewPager(viewPager: ViewPager2): ProductFragmentPagerAdapter {
-        return setupViewPager(viewPager,
-                ProductFragmentPagerAdapter(requireActivity()),
-                productState,
-                requireActivity())
-    }
+    private fun setupViewPager(viewPager: ViewPager2) = setupViewPager(
+            viewPager,
+            ProductFragmentPagerAdapter(requireActivity()),
+            productState,
+            requireActivity(),
+    )
 
     override fun onOptionsItemSelected(item: MenuItem) = onOptionsItemSelected(requireActivity(), item)
 
@@ -90,24 +96,24 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ newState ->
                     productState = newState
-                    adapterResult!!.refresh(newState)
-                }) { adapterResult!!.refresh(productState) }
+                    adapterResult.refresh(newState)
+                }) { adapterResult.refresh(productState) }
         )
     }
 
     fun bottomSheetWillGrow() {
-        if (adapterResult?.itemCount == 0) return
+        if (adapterResult.itemCount == 0) return
         // without this, the view can be centered vertically on initial show. we force the scroll to top !
-        if (adapterResult!!.createFragment(0) is SummaryProductFragment) {
-            val productFragment = adapterResult!!.createFragment(0) as SummaryProductFragment
+        if (adapterResult.createFragment(0) is SummaryProductFragment) {
+            val productFragment = adapterResult.createFragment(0) as SummaryProductFragment
             productFragment.resetScroll()
         }
     }
 
     fun showIngredientsTab(action: ShowIngredientsAction) {
-        if (adapterResult?.itemCount == 0) return
-        for (i in 0 until adapterResult!!.itemCount) {
-            val fragment = adapterResult!!.createFragment(i)
+        if (adapterResult.itemCount == 0) return
+        for (i in 0 until adapterResult.itemCount) {
+            val fragment = adapterResult.createFragment(i)
             if (fragment is IngredientsProductFragment) {
                 binding.pager.currentItem = i
                 if (action === ShowIngredientsAction.PERFORM_OCR) {

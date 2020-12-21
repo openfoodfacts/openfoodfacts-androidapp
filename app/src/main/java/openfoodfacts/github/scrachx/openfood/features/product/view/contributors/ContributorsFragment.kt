@@ -28,6 +28,7 @@ import java.util.*
 class ContributorsFragment : BaseFragment() {
     private var _binding: FragmentContributorsBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var productState: ProductState
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -95,16 +96,15 @@ class ContributorsFragment : BaseFragment() {
         val unixSeconds = dateTime.toLong()
         val date = Date(unixSeconds * 1000L)
         val sdf = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
-        val sdf2 = SimpleDateFormat("HH:mm:ss a", Locale.getDefault())
-        sdf2.timeZone = TimeZone.getTimeZone("CET")
+        val sdf2 = SimpleDateFormat("HH:mm:ss a", Locale.getDefault()).apply {
+            timeZone = TimeZone.getTimeZone("CET")
+        }
         return sdf.format(date) to sdf2.format(date)
     }
 
     private fun getContributorsTag(contributor: String): CharSequence {
         val clickableSpan: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                start(context!!, SearchType.CONTRIBUTOR, contributor)
-            }
+            override fun onClick(view: View) = start(requireContext(), SearchType.CONTRIBUTOR, contributor)
         }
         return SpannableStringBuilder().apply {
             append(contributor)
@@ -115,9 +115,7 @@ class ContributorsFragment : BaseFragment() {
 
     private fun getStatesTag(state: String): CharSequence {
         val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) {
-                start(requireContext(), SearchType.STATE, state)
-            }
+            override fun onClick(view: View) = start(requireContext(), SearchType.STATE, state)
         }
         return SpannableStringBuilder().apply {
             append(state)

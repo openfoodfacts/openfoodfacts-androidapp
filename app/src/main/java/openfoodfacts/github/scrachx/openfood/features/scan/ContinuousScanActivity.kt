@@ -65,7 +65,7 @@ import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
@@ -486,7 +486,7 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.scan_bottom_nav)
+        binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.scan_bottom_nav)
         if (quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume()
         }
@@ -577,7 +577,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         binding.barcodeScanner.decodeContinuous(barcodeScanCallback)
         beepManager = BeepManager(this)
         binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener)
-        install(this, binding.bottomNavigation.bottomNavigation)
+        binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
     }
 
     private fun setupPopupMenu() {

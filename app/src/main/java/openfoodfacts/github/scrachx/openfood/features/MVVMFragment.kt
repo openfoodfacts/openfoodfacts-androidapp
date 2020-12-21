@@ -6,25 +6,21 @@ import androidx.fragment.app.Fragment
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.features.viewmodel.BaseViewModel
 
-abstract class MvvmFragment<T :  BaseViewModel, U> : Fragment() {
-    protected val component: U? by lazy {createComponent()}
+abstract class MVVMFragment<T : BaseViewModel, U> : Fragment() {
+    protected val component: U? by lazy { createComponent() }
     private val compositeDisposable = CompositeDisposable()
 
     @CallSuper
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         inject()
     }
 
     @CallSuper
     override fun onStart() {
         super.onStart()
-        bindViewModel()
-        bindProperties(compositeDisposable)
-    }
-
-    private fun bindViewModel() {
         viewModel.bind()
+        bindProperties(compositeDisposable)
     }
 
     @CallSuper

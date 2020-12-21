@@ -19,17 +19,14 @@ class LabelsWrapperDeserializer : StdDeserializer<LabelsWrapper>(LabelsWrapper::
     @Throws(IOException::class)
     override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): LabelsWrapper {
         val labels = ArrayList<LabelResponse>()
-        val mainNode = jp.codec.readTree<JsonNode>(jp)
-        val mainNodeIterator = mainNode.fields()
-        while (mainNodeIterator.hasNext()) {
-            val subNode = mainNodeIterator.next()
-            val namesNode = subNode.value[DeserializerHelper.NAMES_KEY]
+        jp.codec.readTree<JsonNode>(jp).fields().forEach { (key, value) ->
+            val namesNode = value[DeserializerHelper.NAMES_KEY]
             if (namesNode != null) {
                 val names = extractMapFromJsonNode(namesNode)
-                if (subNode.value.has(DeserializerHelper.WIKIDATA_KEY)) {
-                    labels.add(LabelResponse(subNode.key, names, subNode.value[DeserializerHelper.WIKIDATA_KEY].toString()))
+                if (value.has(DeserializerHelper.WIKIDATA_KEY)) {
+                    labels.add(LabelResponse(key, names, value[DeserializerHelper.WIKIDATA_KEY].toString()))
                 } else {
-                    labels.add(LabelResponse(subNode.key, names))
+                    labels.add(LabelResponse(key, names))
                 }
             }
         }

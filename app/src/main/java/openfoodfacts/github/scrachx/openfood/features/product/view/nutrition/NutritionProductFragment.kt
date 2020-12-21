@@ -268,7 +268,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Fat
         val fat2 = nutriments[FAT]
         if (fat2 != null) {
-            nutrimentListItems.add(HeaderNutrimentListItem(getString(R.string.nutrition_fat),
+            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_fat),
                     fat2.for100gInUnits,
                     fat2.forServingInUnits,
                     fat2.unit,
@@ -279,7 +279,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Carbohydrates
         val carbohydrates = nutriments[Nutriments.CARBOHYDRATES]
         if (carbohydrates != null) {
-            nutrimentListItems.add(HeaderNutrimentListItem(getString(R.string.nutrition_carbohydrate),
+            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_carbohydrate),
                     carbohydrates.for100gInUnits,
                     carbohydrates.forServingInUnits,
                     carbohydrates.unit,
@@ -293,7 +293,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         // Proteins
         val proteins = nutriments[Nutriments.PROTEINS]
         if (proteins != null) {
-            nutrimentListItems.add(HeaderNutrimentListItem(getString(R.string.nutrition_proteins),
+            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_proteins),
                     proteins.for100gInUnits,
                     proteins.forServingInUnits,
                     proteins.unit,
@@ -311,13 +311,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
         // Vitamins
         if (nutriments.hasVitamins()) {
-            nutrimentListItems.add(HeaderNutrimentListItem(getString(R.string.nutrition_vitamins)))
+            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_vitamins)))
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.VITAMINS_MAP))
         }
 
         // Minerals
         if (nutriments.hasMinerals()) {
-            nutrimentListItems.add(HeaderNutrimentListItem(getString(R.string.nutrition_minerals)))
+            nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_minerals)))
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.MINERALS_MAP))
         }
         binding.nutrimentsRecyclerView.adapter = NutrimentsGridAdapter(nutrimentListItems)
@@ -555,8 +555,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         Intent(activity, ProductEditActivity::class.java).apply {
             putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, product)
             //adds the information about the prompt when navigating the user to the edit the product
-            putExtra(ProductEditActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt)
-            putExtra(ProductEditActivity.MODIFY_NUTRITION_PROMPT, showNutritionPrompt)
+            putExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, showCategoryPrompt)
+            putExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, showNutritionPrompt)
             startActivity(this)
         }
     }

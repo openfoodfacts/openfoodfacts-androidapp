@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.additive
 
+import openfoodfacts.github.scrachx.openfood.models.entities.EntityResponse
+
 /**
  * Created by Lobster on 04.03.18.
  */
@@ -8,7 +10,7 @@ class AdditiveResponse(
         private val names: Map<String, String>,
         private val overexposureRisk: String?,
         private var wikiDataCode: String? = null
-) {
+) : EntityResponse<Additive> {
     private var exposureMeanGreaterThanAdi: String? = null
     private var exposureMeanGreaterThanNoael: String? = null
     private var exposure95ThGreaterThanAdi: String? = null
@@ -27,7 +29,7 @@ class AdditiveResponse(
         this.exposureMeanGreaterThanNoael = exposureMeanGreaterThanNoael
     }
 
-    fun map(): Additive {
+    override fun map(): Additive {
         val additive: Additive
         if (wikiDataCode != null) {
             additive = Additive(tag, arrayListOf(), overexposureRisk, wikiDataCode)

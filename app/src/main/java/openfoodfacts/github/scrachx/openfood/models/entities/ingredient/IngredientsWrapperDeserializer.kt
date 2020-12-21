@@ -19,17 +19,14 @@ class IngredientsWrapperDeserializer : StdDeserializer<IngredientsWrapper>(Ingre
     @Throws(IOException::class)
     override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): IngredientsWrapper {
         val ingredients = ArrayList<IngredientResponse>()
-        val mainNode = jp.codec.readTree<JsonNode>(jp)
-        val mainNodeIterator = mainNode.fields()
-        while (mainNodeIterator.hasNext()) {
-            val subNode = mainNodeIterator.next()
-            val namesNode = subNode.value[DeserializerHelper.NAMES_KEY]
+        jp.codec.readTree<JsonNode>(jp).fields().forEach {
+            val namesNode = it.value[DeserializerHelper.NAMES_KEY]
             if (namesNode != null) {
                 val names = extractMapFromJsonNode(namesNode)
-                val parents = extractChildNodeAsText(subNode, DeserializerHelper.PARENTS_KEY)
-                val children = extractChildNodeAsText(subNode, DeserializerHelper.CHILDREN_KEY)
-                val wikiData = if (subNode.value.has(DeserializerHelper.WIKIDATA_KEY)) subNode.value[DeserializerHelper.WIKIDATA_KEY].toString() else null
-                ingredients.add(IngredientResponse(subNode.key!!, names, parents, children, wikiData))
+                val parents = extractChildNodeAsText(it, DeserializerHelper.PARENTS_KEY)
+                val children = extractChildNodeAsText(it, DeserializerHelper.CHILDREN_KEY)
+                val wikiData = if (it.value.has(DeserializerHelper.WIKIDATA_KEY)) it.value[DeserializerHelper.WIKIDATA_KEY].toString() else null
+                ingredients.add(IngredientResponse(it.key!!, names, parents, children, wikiData))
             }
         }
         return IngredientsWrapper(ingredients)

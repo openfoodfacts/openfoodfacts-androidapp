@@ -13,26 +13,23 @@ object ImageNameJsonParser {
     fun extractImagesNameSortedByUploadTimeDesc(rootNode: JsonNode): List<String> {
         // a json object referring to images
         return rootNode["product"]["images"]?.fields()
-                ?.asSequence<MutableMap.MutableEntry<String, JsonNode>>()
+                ?.asSequence()
                 ?.toList().orEmpty()
-                .mapNotNull { image ->
-                    val imageName = image.key
+                .mapNotNull { (imageName, value) ->
                     // do not include images with contain nutrients, ingredients or other in their names
                     // as they are duplicate and do not load as well
                     if (!isNameAccepted(imageName)) {
                         return@mapNotNull null
                     }
-                    return@mapNotNull NameUploadedTimeKey(imageName, image.value["uploaded_t"].asLong())
+                    return@mapNotNull NameUploadedTimeKey(imageName, value["uploaded_t"].asLong())
                 }.sorted().map { it.name }
     }
 
-    private fun isNameAccepted(namesString: String): Boolean {
-        return namesString.isNotBlank()
-                && !namesString.contains("n")
-                && !namesString.contains("f")
-                && !namesString.contains("i")
-                && !namesString.contains("o")
-    }
+    private fun isNameAccepted(namesString: String) = namesString.isNotBlank()
+            && !namesString.contains("n")
+            && !namesString.contains("f")
+            && !namesString.contains("i")
+            && !namesString.contains("o")
 
     private data class NameUploadedTimeKey(
             val name: String,

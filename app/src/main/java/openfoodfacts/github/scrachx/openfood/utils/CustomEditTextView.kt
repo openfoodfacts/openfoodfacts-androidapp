@@ -10,8 +10,8 @@ import openfoodfacts.github.scrachx.openfood.R
 
 /**
  * Based on
- * [](http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw></a>
- ) */
+ * [StackOverflow](http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw)
+ */
 class CustomEditTextView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,

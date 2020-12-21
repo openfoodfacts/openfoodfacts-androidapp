@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import org.jetbrains.annotations.Contract
 
 /**

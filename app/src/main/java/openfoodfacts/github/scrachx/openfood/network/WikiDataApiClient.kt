@@ -18,7 +18,7 @@ class WikiDataApiClient(customEndpointUrl: String? = null) {
     else {
         Retrofit.Builder()
                 .baseUrl(customEndpointUrl)
-                .client(httpClient)
+                .client(Utils.httpClientBuilder())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
@@ -31,9 +31,5 @@ class WikiDataApiClient(customEndpointUrl: String? = null) {
      * @param code WikiData ID of additive/ingredient/category/label
      */
     fun doSomeThing(code: String?) = wikidataAPI.getWikiCategory(code).map { it["entities"][code] }
-
-    companion object {
-        private val httpClient = Utils.httpClientBuilder()
-    }
 
 }

@@ -39,10 +39,10 @@ import java.util.*
  * Created by Abdelali Eramli on 27/12/2017.
  */
 class CategoryFragmentViewModel : BaseViewModel() {
-    private val categories: MutableList<CategoryName> = arrayListOf()
-    val filteredCategories = ObservableField(mutableListOf<CategoryName>())
-    val showProgress: ObservableInt = ObservableInt(View.VISIBLE)
-    val showOffline: ObservableInt = ObservableInt(View.GONE)
+    private val allCategories = mutableListOf<CategoryName>()
+    val shownCategories = ObservableField(mutableListOf<CategoryName>())
+    val showProgress = ObservableInt(View.VISIBLE)
+    val showOffline = ObservableInt(View.GONE)
 
 
     override fun subscribe(subscriptions: CompositeDisposable) {
@@ -58,33 +58,32 @@ class CategoryFragmentViewModel : BaseViewModel() {
                     showOffline.set(View.GONE)
                     showProgress.set(View.VISIBLE)
                 }
-                .flatMap { categoryNames: List<CategoryName> ->
+                .flatMap { categoryNames ->
                     if (categoryNames.isEmpty()) {
                         return@flatMap getAllCategoriesByDefaultLanguageCode()
                     } else {
                         return@flatMap Single.just(categoryNames)
                     }
                 }
-                .flatMap { categoryNames: List<CategoryName> ->
+                .flatMap { categoryNames ->
                     if (categoryNames.isEmpty()) {
-                        return@flatMap ProductRepository.getCategories()
-                                .flatMap { categories: List<Category> -> Single.just(extractCategoriesNames(categories)) }
+                        return@flatMap ProductRepository.getCategories().map { categories -> extractCategoriesNames(categories) }
                     } else {
                         return@flatMap Single.just(categoryNames)
                     }
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { throwable: Throwable? ->
-                    Log.e(CategoryFragmentViewModel::class.java.canonicalName, "Error loading categories", throwable)
-                    if (throwable is UnknownHostException) {
+                .doOnError {
+                    Log.e(CategoryFragmentViewModel::class.java.canonicalName, "Error loading categories", it)
+                    if (it is UnknownHostException) {
                         showOffline.set(View.VISIBLE)
                         showProgress.set(View.GONE)
                     }
                 }
-                .subscribe { categoryList: List<CategoryName> ->
-                    categories.addAll(categoryList)
-                    filteredCategories.set(categoryList.toMutableList())
+                .subscribe { categoryList ->
+                    allCategories.addAll(categoryList)
+                    shownCategories.set(categoryList.toMutableList())
                     showProgress.set(View.GONE)
                 }.addTo(subscriptions ?: error("Cannot refresh view while not binded."))
     }
@@ -104,10 +103,9 @@ class CategoryFragmentViewModel : BaseViewModel() {
      *
      * @param query string which is used to query for category names
      */
-    fun searchCategories(query: String?) {
-        filteredCategories.set(categories
-                .filter { it.name != null && it.name!!.toLowerCase(Locale.getDefault()).startsWith(query!!) }
-                .toMutableList()
-        )
-    }
+    fun searchCategories(query: String?) = shownCategories.set(
+            allCategories
+                    .filter { it.name != null && it.name!!.toLowerCase(Locale.getDefault()).startsWith(query!!) }
+                    .toMutableList()
+    )
 }

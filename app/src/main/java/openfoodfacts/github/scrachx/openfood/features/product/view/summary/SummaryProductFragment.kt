@@ -725,8 +725,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val intent = Intent(activity, ProductEditActivity::class.java)
         intent.putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, product)
         //adds the information about the prompt when navigating the user to the edit the product
-        intent.putExtra(ProductEditActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt)
-        intent.putExtra(ProductEditActivity.MODIFY_NUTRITION_PROMPT, showNutrientPrompt)
+        intent.putExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, showCategoryPrompt)
+        intent.putExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, showNutrientPrompt)
         startActivity(intent)
     }
 

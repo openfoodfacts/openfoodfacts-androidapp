@@ -25,8 +25,8 @@ class IngredientAnalysisRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: IngredientAnalysisViewHolder, position: Int) {
-        val id = productIngredients[position].id!!.replace("\"", "")
-        val name = productIngredients[position].text!!.replace("\"", "") //removes quotations
+        val id = productIngredients[position].id.replace("\"", "")
+        val name = productIngredients[position].text.replace("\"", "") //removes quotations
         holder.tvIngredientName.text = name
         holder.tvIngredientName.setOnClickListener {
             val customTabsIntent = CustomTabsIntent.Builder().build().apply {
@@ -41,7 +41,6 @@ class IngredientAnalysisRecyclerAdapter(
     }
 
     override fun getItemCount() = productIngredients.size
-
-    override fun onCustomTabsConnected() {}
-    override fun onCustomTabsDisconnected() {}
+    override fun onCustomTabsConnected() = Unit
+    override fun onCustomTabsDisconnected() = Unit
 }

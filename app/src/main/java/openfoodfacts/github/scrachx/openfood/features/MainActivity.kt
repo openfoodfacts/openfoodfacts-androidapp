@@ -79,7 +79,7 @@ import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveListActi
 import openfoodfacts.github.scrachx.openfood.features.allergensalert.AllergensAlertFragment
 import openfoodfacts.github.scrachx.openfood.features.categories.activity.CategoryActivity
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
@@ -280,7 +280,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             ITEM_HOME -> newFragment = HomeFragment.newInstance()
                             ITEM_SEARCH_BY_CODE -> {
                                 newFragment = SearchByCodeFragment()
-                                selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0)
+                                binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
                             }
                             ITEM_CATEGORIES -> CategoryActivity.start(this@MainActivity)
                             ITEM_ADDITIVES -> AdditiveListActivity.start(this@MainActivity)
@@ -427,8 +427,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         if (!isOldHistoryDataSynced && isNetworkConnected(this)) {
             OpenFoodAPIClient(this).syncOldHistory()
         }
-        selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0)
-        install(this, binding.bottomNavigationInclude.bottomNavigation)
+        binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
+        binding.bottomNavigationInclude.bottomNavigation.installBottomNavigation(this)
         handleIntent(intent)
     }
 
@@ -718,7 +718,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     public override fun onResume() {
         super.onResume()
-        selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, R.id.home_page)
+        binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(R.id.home_page)
 
         // change drawer menu item from "install" to "open" when navigating back from play store.
         if (isApplicationInstalled(this@MainActivity, BuildConfig.OFOTHERLINKAPP)) {

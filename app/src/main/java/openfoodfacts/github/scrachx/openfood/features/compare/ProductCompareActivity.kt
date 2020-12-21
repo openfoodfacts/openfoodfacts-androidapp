@@ -13,7 +13,7 @@ import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -84,7 +84,7 @@ class ProductCompareActivity : BaseActivity() {
                 }
             }
         }
-        install(this, binding.navigationBottomInclude.bottomNavigation)
+        binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -94,7 +94,7 @@ class ProductCompareActivity : BaseActivity() {
 
     public override fun onResume() {
         super.onResume()
-        selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, R.id.compare_products)
+        binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(R.id.compare_products)
     }
 
     companion object {

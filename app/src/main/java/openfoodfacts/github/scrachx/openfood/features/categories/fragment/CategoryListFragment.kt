@@ -12,16 +12,14 @@ import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.dagger.component.FragmentComponent
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentCategoryListBinding
-import openfoodfacts.github.scrachx.openfood.features.MvvmFragment
+import openfoodfacts.github.scrachx.openfood.features.MVVMFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.features.shared.layouts.FastScroller
 import openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel
 import openfoodfacts.github.scrachx.openfood.utils.SearchSuggestionProvider
 import java.util.*
 import javax.inject.Inject
 
-class CategoryListFragment : MvvmFragment<CategoryFragmentViewModel, FragmentComponent?>() {
-    var fastScroller: FastScroller? = null
+class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentComponent?>() {
 
     @Inject
     override lateinit var viewModel: CategoryFragmentViewModel
@@ -36,7 +34,6 @@ class CategoryListFragment : MvvmFragment<CategoryFragmentViewModel, FragmentCom
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCategoryListBinding.inflate(layoutInflater, container, false)
-        fastScroller = binding.fastScroller
         return binding.root
     }
 
@@ -45,21 +42,21 @@ class CategoryListFragment : MvvmFragment<CategoryFragmentViewModel, FragmentCom
         super.onDestroyView()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.recycler.setHasFixedSize(true)
         binding.recycler.layoutManager = LinearLayoutManager(context)
         binding.recycler.addItemDecoration(DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL))
-        binding.viewModel = viewModel
-        fastScroller!!.setRecyclerView(binding.recycler)
+        binding.viewModel = this.viewModel
+        binding.fastScroller.setRecyclerView(binding.recycler)
         binding.recycler.viewTreeObserver.addOnGlobalLayoutListener {
-            if ((binding.viewModel as CategoryFragmentViewModel).filteredCategories.get()!!.isEmpty()) {
-                fastScroller!!.visibility = View.GONE
+            if (this.viewModel.shownCategories.get()?.isEmpty() == true) {
+                binding.fastScroller.visibility = View.GONE
             } else {
-                fastScroller!!.visibility = View.VISIBLE
+                binding.fastScroller.visibility = View.VISIBLE
                 // check for an empty item in the start of the list
-                if (viewModel.filteredCategories.get()!![0].name!!.isEmpty()) {
-                    viewModel.filteredCategories.get()!!.removeAt(0)
+                if (viewModel.shownCategories.get()!![0].name!!.isEmpty()) {
+                    viewModel.shownCategories.get()!!.removeAt(0)
                     binding.recycler.adapter!!.notifyItemRemoved(0)
                     binding.recycler.adapter!!.notifyItemRangeChanged(0, binding.recycler.adapter!!.itemCount)
                 }
@@ -75,14 +72,17 @@ class CategoryListFragment : MvvmFragment<CategoryFragmentViewModel, FragmentCom
         val searchView = searchMenuItem.actionView as SearchView
         // TODO: 26/07/2020 use resources
         searchView.queryHint = "Search for a food category"
-        if (searchManager.getSearchableInfo(requireActivity().componentName) == null) {
-            return
-        }
+
+        if (searchManager.getSearchableInfo(requireActivity().componentName) == null) return
+
         searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                val suggestions = SearchRecentSuggestions(context,
-                        SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE)
+                val suggestions = SearchRecentSuggestions(
+                        context,
+                        SearchSuggestionProvider.AUTHORITY,
+                        SearchSuggestionProvider.MODE
+                )
                 suggestions.saveRecentQuery(query, null)
                 return false
             }
@@ -100,7 +100,5 @@ class CategoryListFragment : MvvmFragment<CategoryFragmentViewModel, FragmentCom
 
     override fun inject() = component!!.inject(this)
 
-    override fun bindProperties(compositeDisposable: CompositeDisposable?) {
-        // Not used here
-    }
+    override fun bindProperties(compositeDisposable: CompositeDisposable?) = Unit // Not used here
 }

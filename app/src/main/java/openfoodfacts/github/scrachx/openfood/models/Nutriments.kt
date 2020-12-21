@@ -252,10 +252,7 @@ class Nutriments : Serializable {
      *
      * @return The nutriment modifier if different from [DEFAULT_MODIFIER], otherwise an empty string `""`
      */
-    fun getModifierIfNotDefault(nutrimentName: String): String {
-        val modifier = getModifier(nutrimentName)
-        return getModifierNonDefault(modifier)
-    }
+    fun getModifierIfNotDefault(nutrimentName: String) = getModifierNonDefault(getModifier(nutrimentName))
     
 
     private fun getAdditionalProperty(nutrimentName: String, suffix: String, defaultValue: String = StringUtils.EMPTY) =

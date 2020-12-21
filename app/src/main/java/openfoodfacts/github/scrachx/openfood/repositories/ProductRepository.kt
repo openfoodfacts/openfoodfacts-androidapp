@@ -161,7 +161,7 @@ object ProductRepository {
 
     fun loadCategories(lastModifiedDate: Long): Single<List<Category>> {
         return analysisDataApi.getCategories()
-                .map { obj: CategoriesWrapper -> obj.map() }
+                .map { obj -> obj.map() }
                 .doOnSuccess { categories: List<Category> ->
                     saveCategories(categories)
                     updateLastDownloadDateInSettings(Taxonomy.CATEGORY, lastModifiedDate)

@@ -32,7 +32,6 @@ import androidx.core.content.ContextCompat
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding
-import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -48,13 +47,15 @@ import java.io.File
  *
  * @see R.layout.fragment_add_product_photos
  */
-class ProductEditPhotosFragment : BaseFragment() {
+class ProductEditPhotosFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductPhotosBinding? = null
     private val binding get() = _binding!!
+
     private var photoReceiverHandler: PhotoReceiverHandler? = null
     private var code: String? = null
-    private lateinit var activity: Activity
     private var photoFile: File? = null
+
+    private lateinit var activity: Activity
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -66,13 +67,16 @@ class ProductEditPhotosFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun allValid() = true
+    override fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>) = Unit
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnAddOtherImage.setOnClickListener { addOtherImage() }
         binding.btnAdd.setOnClickListener { next() }
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File? ->
+        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile ->
             photoFile = newPhotoFile
-            val image = ProductImage(code, ProductImageField.OTHER, photoFile)
+            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile)
             image.filePath = photoFile!!.toURI().path
             if (activity is ProductEditActivity) {
                 (activity as ProductEditActivity).addToPhotoMap(image, 4)
@@ -110,13 +114,6 @@ class ProductEditPhotosFragment : BaseFragment() {
         }
     }
 
-    private operator fun next() {
-        val fragmentActivity = getActivity()
-        if (fragmentActivity is ProductEditActivity) {
-            fragmentActivity.proceed()
-        }
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
@@ -143,19 +140,20 @@ class ProductEditPhotosFragment : BaseFragment() {
      * Load image into the image view and add it to tableLayout
      */
     private fun addImageRow() {
-        val image = TableRow(activity)
+        val row = TableRow(activity)
         val lp = TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixel(100, getActivity()))
         lp.topMargin = dpsToPixel(10, getActivity())
-        val imageView = ImageView(activity)
+        val imageView = ImageView(activity).apply {
+            adjustViewBounds = true
+            scaleType = ImageView.ScaleType.FIT_CENTER
+            layoutParams = lp
+        }
         Picasso.get()
                 .load(photoFile!!)
                 .resize(dpsToPixel(100, getActivity()), dpsToPixel(100, getActivity()))
                 .centerInside()
                 .into(imageView)
-        imageView.adjustViewBounds = true
-        imageView.scaleType = ImageView.ScaleType.FIT_CENTER
-        imageView.layoutParams = lp
-        image.addView(imageView)
-        binding.tableLayout.addView(image)
+        row.addView(imageView)
+        binding.tableLayout.addView(row)
     }
 }

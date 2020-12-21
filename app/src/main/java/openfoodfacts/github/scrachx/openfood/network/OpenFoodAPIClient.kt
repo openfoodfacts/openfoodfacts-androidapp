@@ -13,6 +13,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType
@@ -127,7 +128,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      * @param barcode product barcode
      * @param activity
      */
-    fun openProduct(barcode: String, activity: Activity) =
+    fun openProduct(barcode: String, activity: Activity): Disposable =
             rawAPI.getProductByBarcodeSingle(barcode, getAllFields(), getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .doOnError {
                         if (it is IOException) {

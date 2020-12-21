@@ -215,8 +215,8 @@ class ImagesManageActivity : BaseActivity() {
         val currentLanguage = getCurrentLanguage()
         val productImageField = getSelectedType()
         val addedLanguages: MutableSet<String?> = HashSet(product.getAvailableLanguageForImage(productImageField, ImageSize.DISPLAY))
-        val languageForImage: MutableList<LanguageData?> = getLanguageData(addedLanguages, true)
-        var selectedIndex = find(languageForImage, currentLanguage)
+        val languageForImage: MutableList<LanguageData> = getLanguageData(addedLanguages, true)
+        var selectedIndex = languageForImage.find(currentLanguage)
         if (selectedIndex < 0) {
             addedLanguages.add(currentLanguage)
             languageForImage.add(getLanguageData(currentLanguage, false))
@@ -232,7 +232,7 @@ class ImagesManageActivity : BaseActivity() {
         val adapter = LanguageDataAdapter(this, R.layout.simple_spinner_item_white, languageForImage)
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
         binding.comboLanguages.adapter = adapter
-        selectedIndex = find(languageForImage, currentLanguage)
+        selectedIndex = languageForImage.find(currentLanguage)
         if (selectedIndex >= 0) binding.comboLanguages.setSelection(selectedIndex)
         updateLanguageStatus()
         updateSelectDefaultLanguageAction()

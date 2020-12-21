@@ -57,7 +57,7 @@ object CommonApiManager {
                 .build()
                 .create(WikidataAPI::class.java)
     }
-    private val jacksonConverterFactory = JacksonConverterFactory.create(jacksonObjectMapper())
+    private val jacksonConverterFactory by lazy { JacksonConverterFactory.create(jacksonObjectMapper()) }
 
 
 }

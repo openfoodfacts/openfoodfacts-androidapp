@@ -17,21 +17,18 @@ import java.util.*
 class AnalysisTagsWrapperDeserializer : StdDeserializer<AnalysisTagsWrapper>(AnalysisTagsWrapper::class.java) {
     @Throws(IOException::class)
     override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): AnalysisTagsWrapper {
-        val analysisTags: MutableList<AnalysisTagResponse> = ArrayList()
-        val mainNode = jp.codec.readTree<JsonNode>(jp)
+        val analysisTags = ArrayList<AnalysisTagResponse>()
 
-        val mainNodeIterator = mainNode.fields()
-        while (mainNodeIterator.hasNext()) {
-            val subNode = mainNodeIterator.next()
-            val namesNode = subNode.value[DeserializerHelper.NAMES_KEY]
+        jp.codec.readTree<JsonNode>(jp).fields().forEach { (key, value) ->
+            val namesNode = value[DeserializerHelper.NAMES_KEY]
             if (namesNode != null) {
                 val names = extractMapFromJsonNode(namesNode)
                 var showIngredients: Map<String, String> = HashMap()
-                val showIngredientsNode = subNode.value[DeserializerHelper.SHOW_INGREDIENTS_KEY]
+                val showIngredientsNode = value[DeserializerHelper.SHOW_INGREDIENTS_KEY]
                 if (showIngredientsNode != null) {
                     showIngredients = extractMapFromJsonNode(showIngredientsNode)
                 }
-                analysisTags.add(AnalysisTagResponse(subNode.key, names, showIngredients))
+                analysisTags.add(AnalysisTagResponse(key, names, showIngredients))
             }
         }
         return AnalysisTagsWrapper(analysisTags)

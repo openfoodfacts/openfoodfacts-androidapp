@@ -9,7 +9,7 @@ import openfoodfacts.github.scrachx.openfood.utils.bold
  * @param servingValue
  * @param unit
  */
-class HeaderNutrimentListItem(
+class BoldNutrimentListItem(
         title: CharSequence,
         value: CharSequence = "",
         servingValue: CharSequence = "",

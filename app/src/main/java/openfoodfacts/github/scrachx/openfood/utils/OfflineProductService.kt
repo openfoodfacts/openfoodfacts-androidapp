@@ -11,7 +11,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProductDao
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import org.greenrobot.eventbus.EventBus
 import java.io.File
@@ -22,31 +22,29 @@ object OfflineProductService {
     /**
      * @return true if there is still products to upload, false otherwise
      */
-    fun uploadAll(includeImages: Boolean): Single<Boolean> {
-        return Single.fromCallable {
-            listOfflineProducts.forEach { product ->
-                if (product.barcode.isNullOrEmpty()) {
-                    Log.d(LOG_TAG, "Ignore product because empty barcode: $product")
-                    return@forEach
-                }
-                Log.d(LOG_TAG, "Start treating of product $product")
-
-                var ok = addProductToServerIfNeeded(product)
-                if (includeImages) {
-                    ok = ok && uploadImageIfNeeded(product, ProductImageField.FRONT)
-                    ok = ok && uploadImageIfNeeded(product, ProductImageField.INGREDIENTS)
-                    ok = ok && uploadImageIfNeeded(product, ProductImageField.NUTRITION)
-                    if (ok) {
-                        offlineProductDAO.deleteByKey(product.id)
-                    }
-                }
-
+    fun uploadAll(includeImages: Boolean) = Single.fromCallable {
+        getListOfflineProducts().forEach { product ->
+            if (product.barcode.isNullOrEmpty()) {
+                Log.d(LOG_TAG, "Ignore product because empty barcode: $product")
+                return@forEach
             }
+            Log.d(LOG_TAG, "Start treating of product $product")
+
+            var ok = addProductToServerIfNeeded(product)
             if (includeImages) {
-                return@fromCallable listOfflineProducts.isNotEmpty()
+                ok = ok && uploadImageIfNeededSync(product, ProductImageField.FRONT)
+                ok = ok && uploadImageIfNeededSync(product, ProductImageField.INGREDIENTS)
+                ok = ok && uploadImageIfNeededSync(product, ProductImageField.NUTRITION)
+                if (ok) {
+                    offlineProductDAO.deleteByKey(product.id)
+                }
             }
-            return@fromCallable listOfflineProductsWithoutDataSynced.isNotEmpty()
+
         }
+        if (includeImages) {
+            return@fromCallable getListOfflineProducts().isNotEmpty()
+        }
+        return@fromCallable getListOfflineProductsWithoutDataSynced().isNotEmpty()
     }
 
     /**
@@ -64,7 +62,6 @@ object OfflineProductService {
             remove(ApiFields.Keys.IMAGE_FRONT)
             remove(ApiFields.Keys.IMAGE_INGREDIENTS)
             remove(ApiFields.Keys.IMAGE_NUTRITION)
-
             // Remove the status of the images from the HashMap before uploading the product details
             remove(ApiFields.Keys.IMAGE_FRONT_UPLOADED)
             remove(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED)
@@ -73,11 +70,10 @@ object OfflineProductService {
 
         Log.d(LOG_TAG, "Uploading data for product ${product.barcode}: $productDetails")
         try {
-            val productState = CommonApiManager.productsApi
+            val productState = productsApi
                     .saveProductSingle(product.barcode, productDetails, OpenFoodAPIClient.commentToUpload)
                     .blockingGet()
-            val isResponseOk = productState.status == 1L
-            if (isResponseOk) {
+            if (productState.status == 1L) {
                 product.isDataUploaded = true
                 offlineProductDAO.insertOrReplace(product)
                 Log.i(LOG_TAG, "Product ${product.barcode} uploaded.")
@@ -92,23 +88,21 @@ object OfflineProductService {
         return false
     }
 
-    private fun uploadImageIfNeeded(product: OfflineSavedProduct, imageField: ProductImageField): Boolean {
+    private fun uploadImageIfNeededSync(product: OfflineSavedProduct, imageField: ProductImageField): Boolean {
         val imageType = imageTypeFromImageField(imageField)
-        val code = product.barcode
         val productDetails = product.productDetailsMap
         val imageFilePath = productDetails["image_$imageType"]
         if (imageFilePath == null || !needImageUpload(productDetails, imageType)) {
             // no need or nothing to upload
-            Log.d(LOG_TAG, "No need to upload image_$imageType for product $code")
+            Log.d(LOG_TAG, "No need to upload image_$imageType for product ${product.barcode}")
             return true
         }
-        Log.d(LOG_TAG, "Uploading image_$imageType for product $code")
-        val imgMap = createRequestBodyMap(code, productDetails, imageField)
+        Log.d(LOG_TAG, "Uploading image_$imageType for product ${product.barcode}")
+        val imgMap = createRequestBodyMap(product.barcode, productDetails, imageField)
         val image = ProductImage.createImageRequest(File(imageFilePath))
         imgMap["""imgupload_$imageType"; filename="${imageType}_${product.language}.png""""] = image
         return try {
-            val jsonNode = CommonApiManager.productsApi.saveImageSingle(imgMap)
-                    .blockingGet()
+            val jsonNode = productsApi.saveImageSingle(imgMap).blockingGet()
             val status = jsonNode["status"].asText()
             if (status == "status not ok") {
                 val error = jsonNode["error"].asText()
@@ -124,8 +118,8 @@ object OfflineProductService {
             productDetails["image_${imageType}_uploaded"] = "true"
             product.setProductDetailsMap(productDetails)
             offlineProductDAO.insertOrReplace(product)
-            Log.d(LOG_TAG, "Uploaded image_$imageType for product $code")
-            EventBus.getDefault().post(ProductNeedsRefreshEvent(code))
+            Log.d(LOG_TAG, "Uploaded image_$imageType for product ${product.barcode}")
+            EventBus.getDefault().post(ProductNeedsRefreshEvent(product.barcode))
             true
         } catch (e: Exception) {
             Log.e(LOG_TAG, e.message, e)
@@ -139,11 +133,12 @@ object OfflineProductService {
     fun getOfflineProductByBarcode(barcode: String?): OfflineSavedProduct =
             offlineProductDAO.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode)).unique()
 
-    private val listOfflineProducts = offlineProductDAO.queryBuilder()
+    private fun getListOfflineProducts() = offlineProductDAO.queryBuilder()
             .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
             .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
             .list()
-    private val listOfflineProductsWithoutDataSynced = offlineProductDAO.queryBuilder()
+
+    private fun getListOfflineProductsWithoutDataSynced() = offlineProductDAO.queryBuilder()
             .where(OfflineSavedProductDao.Properties.Barcode.isNotNull)
             .where(OfflineSavedProductDao.Properties.Barcode.notEq(""))
             .where(OfflineSavedProductDao.Properties.IsDataUploaded.notEq(true))
@@ -159,7 +154,7 @@ object OfflineProductService {
     private fun needImageUpload(productDetails: HashMap<String, String>, imageType: String): Boolean {
         val imageUploaded = productDetails["image_${imageType}_uploaded"].toBoolean()
         val imageFilePath = productDetails["image_$imageType"]
-        return !(imageUploaded || imageFilePath.isNullOrEmpty())
+        return !imageUploaded && !imageFilePath.isNullOrEmpty()
     }
 
     private fun createRequestBodyMap(code: String, productDetails: HashMap<String, String>, front: ProductImageField): MutableMap<String, RequestBody> {

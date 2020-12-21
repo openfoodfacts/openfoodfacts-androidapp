@@ -22,7 +22,7 @@ import openfoodfacts.github.scrachx.openfood.utils.showBottomSheet
 class CategoryProductHelper(
         private val categoryText: TextView,
         private val categories: List<CategoryName>,
-        private val baseFragment: BaseFragment,
+        private val fragment: BaseFragment,
         private val apiClient: WikiDataApiClient,
         private val disp: CompositeDisposable
 ) {
@@ -30,7 +30,7 @@ class CategoryProductHelper(
         private set
 
     fun showCategories() = categoryText.let {
-        it.text = bold(baseFragment.getString(R.string.txtCategories))
+        it.text = bold(fragment.getString(R.string.txtCategories))
         it.movementMethod = LinkMovementMethod.getInstance()
         it.append(" ")
         it.isClickable = true
@@ -62,16 +62,16 @@ class CategoryProductHelper(
                 if (category.isWikiDataIdPresent == true) {
                     apiClient.doSomeThing(category.wikiDataId).subscribe { result ->
                         if (result != null) {
-                            val activity = baseFragment.activity
+                            val activity = fragment.activity
                             if (activity != null && !activity.isFinishing) {
                                 showBottomSheet(result, category, activity.supportFragmentManager)
                                 return@subscribe
                             }
                         }
-                        start(baseFragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
+                        start(fragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
                     }.addTo(disp)
                 } else {
-                    start(baseFragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
+                    start(fragment.requireContext(), SearchType.CATEGORY, category.categoryTag!!, category.name!!)
                 }
             }
         }
@@ -86,12 +86,12 @@ class CategoryProductHelper(
 
     fun showAlcoholAlert(alcoholAlertText: TextView) {
         val alcoholAlertIcon = ContextCompat.getDrawable(
-                baseFragment.requireContext(),
+                fragment.requireContext(),
                 R.drawable.ic_alert_alcoholic_beverage
         )!!.apply {
             setBounds(0, 0, intrinsicWidth, intrinsicHeight)
         }
-        val riskAlcoholConsumption = baseFragment.getString(R.string.risk_alcohol_consumption)
+        val riskAlcoholConsumption = fragment.getString(R.string.risk_alcohol_consumption)
         alcoholAlertText.visibility = View.VISIBLE
         alcoholAlertText.text = SpannableStringBuilder().also {
             it.append("- ")
@@ -103,7 +103,7 @@ class CategoryProductHelper(
             )
             it.append(riskAlcoholConsumption)
             it.setSpan(
-                    ForegroundColorSpan(ContextCompat.getColor(baseFragment.requireContext(), R.color.red)),
+                    ForegroundColorSpan(ContextCompat.getColor(fragment.requireContext(), R.color.red)),
                     it.length - riskAlcoholConsumption.length,
                     it.length,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE

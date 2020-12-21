@@ -18,14 +18,11 @@ class AnalysisTagConfigsWrapperDeserializer : StdDeserializer<AnalysisTagConfigs
     @Throws(IOException::class)
     override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): AnalysisTagConfigsWrapper {
         val analysisTagConfigs: MutableList<AnalysisTagConfig> = ArrayList()
-        val mainNode = jp.codec.readTree<JsonNode>(jp)
-        val mainNodeIterator = mainNode.fields()
-        while (mainNodeIterator.hasNext()) {
-            val subNode = mainNodeIterator.next()
-            val type = subNode.value[DeserializerHelper.TYPE_KEY].asText()
-            val icon = subNode.value[DeserializerHelper.ICON_KEY].asText()
-            val color = subNode.value[DeserializerHelper.COLOR_KEY].asText()
-            analysisTagConfigs.add(AnalysisTagConfig(subNode.key, type, icon, color))
+        jp.codec.readTree<JsonNode>(jp).fields().forEach { (key, value) ->
+            val type = value[DeserializerHelper.TYPE_KEY].asText()
+            val icon = value[DeserializerHelper.ICON_KEY].asText()
+            val color = value[DeserializerHelper.COLOR_KEY].asText()
+            analysisTagConfigs.add(AnalysisTagConfig(key, type, icon, color))
         }
         return AnalysisTagConfigsWrapper(analysisTagConfigs)
     }

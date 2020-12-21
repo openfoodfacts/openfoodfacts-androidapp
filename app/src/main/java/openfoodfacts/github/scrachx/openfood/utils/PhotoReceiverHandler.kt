@@ -28,9 +28,8 @@ class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
     }
 
     fun onActivityResult(activity: Activity?, fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) {
-        if (onCropResult(requestCode, resultCode, data)) {
-            return
-        }
+        if (onCropResult(requestCode, resultCode, data)) return
+
         val fragmentActivity = fragment?.activity
         val mainActivity = activity ?: fragmentActivity
         val fragmentContext = fragment?.requireContext() ?: OFFApplication.instance
@@ -87,8 +86,7 @@ class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
 
         val result = CropImage.getActivityResult(data)
         if (resultCode == Activity.RESULT_OK && result.uri != null) {
-            val resultUri = result.uri
-            photoReceiver(File(resultUri.path))
+            photoReceiver(File(result.uri.path))
         } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
             Log.w(PhotoReceiverHandler::class.simpleName, "Can't process photo", result.error)
         }

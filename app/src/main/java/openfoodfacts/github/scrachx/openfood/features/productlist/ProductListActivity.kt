@@ -29,7 +29,7 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -45,7 +45,6 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
-import org.apache.commons.collections.CollectionUtils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVPrinter
 import java.io.File
@@ -153,8 +152,8 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         }
 
         this.productList = productList
-        selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0)
-        install(this, binding.bottomNavigation.bottomNavigation)
+        binding.bottomNavigation.bottomNavigation.selectNavigationItem(0)
+        binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
 
     }
 
@@ -305,18 +304,17 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
     }
 
     fun exportCSV() {
-        val folderMain = getCsvFolderName()
+        val csvFolderName = getCsvFolderName()
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show()
-        val baseDir = File(Environment.getExternalStorageDirectory(), folderMain)
+        val baseDir = File(Environment.getExternalStorageDirectory(), csvFolderName)
         if (!baseDir.exists()) {
             baseDir.mkdirs()
         }
         val productListName = productList!!.listName
-        val fileName = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT) + "-" + productListName + "-" + SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date()) + ".csv"
-        val f = File(baseDir, fileName)
+        val fileName = "${BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)}-$productListName-${SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())}.csv"
         var isDownload: Boolean
         try {
-            CSVPrinter(FileWriter(f), CSVFormat.DEFAULT.withHeader(*resources.getStringArray(R.array.your_products_headers))).use { writer ->
+            CSVPrinter(FileWriter(File(baseDir, fileName)), CSVFormat.DEFAULT.withHeader(*resources.getStringArray(R.array.your_products_headers))).use { writer ->
                 val listProducts = productList!!.products
                 for (product in listProducts) {
                     writer.printRecord(product.barcode, product.productName, product.listName, product.productDetails)
@@ -326,10 +324,10 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             }
         } catch (e: IOException) {
             isDownload = false
-            Log.e(ProductListActivity::class.java.simpleName, "exportCSV", e)
+            Log.e(ProductListActivity::class.simpleName, "exportCSV", e)
         }
         val downloadIntent = Intent(Intent.ACTION_VIEW)
-        val notificationManager = createNotification(f, downloadIntent, this)
+        val notificationManager = createNotification(File(baseDir, fileName), downloadIntent, this)
         if (isDownload) {
             val builder = NotificationCompat.Builder(this, "export_channel")
                     .setContentTitle(getString(R.string.notify_title))
@@ -341,7 +339,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
     }
 
     override fun onRightClicked(position: Int) {
-        if (CollectionUtils.isNotEmpty(products)) {
+        if (!products.isNullOrEmpty()) {
             val productToRemove = products!![position]
             yourListedProductDao!!.delete(productToRemove)
             adapter!!.remove(productToRemove)
@@ -387,7 +385,6 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             return notificationManager
         }
 
-
         @JvmStatic
         fun getProductBrandsQuantityDetails(p: Product) = getProductBrandsQuantityDetails(p.brands, p.quantity)
 
@@ -404,8 +401,8 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             return stringBuilder.toString()
         }
 
-        private const val KEY_LIST_ID = "listId"
-        private const val KEY_LIST_NAME = "listName"
-        private const val KEY_PRODUCT_TO_ADD = "product"
+        const val KEY_LIST_ID = "listId"
+        const val KEY_LIST_NAME = "listName"
+        const val KEY_PRODUCT_TO_ADD = "product"
     }
 }

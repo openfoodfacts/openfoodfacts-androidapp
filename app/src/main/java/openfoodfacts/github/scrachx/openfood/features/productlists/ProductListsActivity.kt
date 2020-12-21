@@ -36,10 +36,13 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_ID
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_NAME
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_PRODUCT_TO_ADD
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
@@ -48,7 +51,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions
 import openfoodfacts.github.scrachx.openfood.utils.Utils
-import org.apache.commons.collections.CollectionUtils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.InputStream
@@ -73,73 +75,79 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
 
         setContentView(binding.root)
         setTitle(R.string.your_lists)
-
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        install(this, binding.bottomNavigation.bottomNavigation)
+
+        binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
+
         productListsDao = getProductListsDaoWithDefaultList(this)
         productLists = productListsDao.loadAll()
+
         adapter = ProductListsAdapter(this, productLists)
+
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
+
         binding.tipBox.loadToolTip()
+
         val bundle = intent.extras
         if (bundle != null) {
-            val productToAdd = bundle["product"] as Product?
+            val productToAdd = bundle[KEY_PRODUCT] as Product?
             showCreateListDialog(productToAdd)
         }
+
         binding.productListsRecyclerView.addOnItemTouchListener(
-                RecyclerItemClickListener(this@ProductListsActivity) { _, position ->
+                RecyclerItemClickListener(this) { _, position ->
                     val id = productLists[position].id
                     val listName = productLists[position].listName
-                    val intent = Intent(this, ProductListActivity::class.java)
-                    intent.putExtra("listId", id)
-                    intent.putExtra("listName", listName)
-                    startActivityForResult(intent, 1)
+                    Intent(this, ProductListActivity::class.java).apply {
+                        putExtra(KEY_LIST_ID, id)
+                        putExtra(KEY_LIST_NAME, listName)
+                        startActivityForResult(this, 1)
+                    }
                 }
         )
-        val swipeController = SwipeController(this, this@ProductListsActivity)
-        val itemTouchhelper = ItemTouchHelper(swipeController)
-        itemTouchhelper.attachToRecyclerView(binding.productListsRecyclerView)
-        binding.fabAdd.setOnClickListener { showCreateListDialog(null) }
+        val swipeController = SwipeController(this, this)
+        val itemTouchHelper = ItemTouchHelper(swipeController)
+        itemTouchHelper.attachToRecyclerView(binding.productListsRecyclerView)
+
+        binding.fabAdd.setOnClickListener { showCreateListDialog() }
     }
 
-    private fun showCreateListDialog(productToAdd: Product?) {
+    private fun showCreateListDialog(productToAdd: Product? = null) {
         MaterialDialog.Builder(this)
                 .title(R.string.txt_create_new_list)
                 .alwaysCallInputCallback()
-                .input(R.string.create_new_list_list_name, R.string.empty, false) { dialog: MaterialDialog, listName: CharSequence ->
+                .input(R.string.create_new_list_list_name, R.string.empty, false) { dialog, listName ->
                     // validate if there is another list with the same name
-                    val inputField = dialog.inputEditText
-                    val isAlreadyIn = checkListNameExist(listName.toString())
-                    if (inputField != null) {
-                        inputField.error = if (isAlreadyIn) resources.getString(R.string.error_duplicate_listname) else null
-                    }
-                    dialog.getActionButton(DialogAction.POSITIVE).isEnabled = !isAlreadyIn
+                    val cannotAdd = checkListNameExist(listName.toString())
+
+                    dialog.inputEditText?.error = if (cannotAdd) resources.getString(R.string.error_duplicate_listname) else null
+                    dialog.getActionButton(DialogAction.POSITIVE).isEnabled = !cannotAdd
                 }
                 .positiveText(R.string.dialog_create)
                 .negativeText(R.string.dialog_cancel)
                 .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
                     Log.d("CreateListDialog", "Positive clicked")
-                    val inputEditText = dialog.inputEditText
-                    if (inputEditText == null) {
-                        dialog.dismiss()
-                        return@onPositive
-                    }
+                    val inputEditText = dialog.inputEditText!!
                     val listName = inputEditText.text.toString()
                     val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
+
                     productLists.add(productList)
                     productListsDao.insert(productList)
+
+                    adapter.notifyDataSetChanged()
+
                     if (productToAdd != null) {
                         val id = productList.id
-                        val intent = Intent(this@ProductListsActivity, ProductListActivity::class.java)
-                        intent.putExtra("listId", id)
-                        intent.putExtra("listName", listName)
-                        intent.putExtra("product", productToAdd)
-                        startActivityForResult(intent, 1)
+                        Intent(this@ProductListsActivity, ProductListActivity::class.java).apply {
+                            putExtra(KEY_LIST_ID, id)
+                            putExtra(KEY_LIST_NAME, listName)
+                            putExtra(KEY_PRODUCT_TO_ADD, productToAdd)
+                            startActivityForResult(this, 1)
+                        }
                     } else {
                         dialog.dismiss()
-                        adapter.notifyDataSetChanged()
                     }
                 }.show()
     }
@@ -147,12 +155,8 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
     /**
      * Check if listname already in products lists.
      */
-    private fun checkListNameExist(listName: String): Boolean {
-        productLists.forEach { productList ->
-            if (productList.listName == listName) return true
-        }
-        return false
-    }
+    private fun checkListNameExist(listName: String) =
+            productLists.firstOrNull { it.listName == listName } != null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -169,7 +173,7 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
     }
 
     override fun onRightClicked(position: Int) {
-        if (CollectionUtils.isNotEmpty(productLists)) {
+        if (!productLists.isNullOrEmpty()) {
             val productToRemove = productLists[position]
             productListsDao.delete(productToRemove)
             adapter.remove(productToRemove)
@@ -184,21 +188,22 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.action_import_csv) selectCSVFile()
+        when (item.itemId) {
+            R.id.action_import_csv -> selectCSVFile()
+        }
         return super.onOptionsItemSelected(item)
     }
 
     private fun selectCSVFile() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.addCategory(Intent.CATEGORY_OPENABLE)
-        intent.type = "text/csv"
-        startActivityForResult(Intent.createChooser(intent, getString(R.string.open_csv)), ACTIVITY_CHOOSE_FILE)
+        startActivityForResult(Intent.createChooser(Intent(Intent.ACTION_GET_CONTENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "text/csv"
+        }, getString(R.string.open_csv)), ACTIVITY_CHOOSE_FILE)
     }
 
     public override fun onResume() {
         super.onResume()
-        selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists)
+        binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.my_lists)
     }
 
     private fun parseCSV(inputStream: InputStream?) {
@@ -255,21 +260,23 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
 
     companion object {
         private const val ACTIVITY_CHOOSE_FILE = 123
+        private const val KEY_PRODUCT = "product"
 
         @JvmStatic
-        fun start(context: Context) {
-            val starter = Intent(context, ProductListsActivity::class.java)
-            context.startActivity(starter)
-        }
+        fun start(context: Context, productToAdd: Product?) = context.startActivity(
+                Intent(context, ProductListsActivity::class.java).apply {
+                    putExtra(KEY_PRODUCT, productToAdd)
+                })
+
+        @JvmStatic
+        fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
 
         @JvmStatic
         fun getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
             val productListsDao = Utils.daoSession.productListsDao
             if (productListsDao.loadAll().isEmpty()) {
-                val eatenList = ProductLists(context.getString(R.string.txt_eaten_products), 0)
-                productListsDao.insert(eatenList)
-                val toBuyList = ProductLists(context.getString(R.string.txt_products_to_buy), 0)
-                productListsDao.insert(toBuyList)
+                productListsDao.insert(ProductLists(context.getString(R.string.txt_eaten_products), 0))
+                productListsDao.insert(ProductLists(context.getString(R.string.txt_products_to_buy), 0))
             }
             return productListsDao
         }

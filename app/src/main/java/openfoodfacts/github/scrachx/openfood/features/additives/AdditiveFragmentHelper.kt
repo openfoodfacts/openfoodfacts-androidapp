@@ -40,18 +40,18 @@ object AdditiveFragmentHelper {
             apiClientForWikiData: WikiDataApiClient,
             fragment: BaseFragment,
             compositeDisposable: CompositeDisposable
-    ) = with(additiveProduct) {
+    ) = additiveProduct.run {
         text = bold(fragment.getString(R.string.txtAdditives))
         movementMethod = LinkMovementMethod.getInstance()
         append(" ")
         append("\n")
         isClickable = true
         movementMethod = LinkMovementMethod.getInstance()
-        for (i in 0 until additives.size - 1) {
-            append(getAdditiveTag(additives[i], apiClientForWikiData, fragment, compositeDisposable))
+        additives.dropLast(1).forEach {
+            append(getAdditiveTag(it, apiClientForWikiData, fragment, compositeDisposable))
             append("\n")
         }
-        append(getAdditiveTag(additives[additives.size - 1], apiClientForWikiData, fragment, compositeDisposable))
+        append(getAdditiveTag(additives.last(), apiClientForWikiData, fragment, compositeDisposable))
     }
 
     /**

@@ -23,7 +23,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
-import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.StyleSpan
@@ -88,7 +87,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var customTabsIntent: CustomTabsIntent
     private lateinit var presenter: IIngredientsProductPresenter.Actions
-    private lateinit var photoReceiverHandler: PhotoReceiverHandler
+    private val photoReceiverHandler: PhotoReceiverHandler = PhotoReceiverHandler { onPhotoReturned(it) }
 
     private var ingredientExtracted = false
 
@@ -107,15 +106,15 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        productState = requireProductState()
         binding.extractIngredientsPrompt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_blue_18dp, 0, 0, 0)
         binding.changeIngImg.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
+
         binding.changeIngImg.setOnClickListener { changeIngImage() }
         binding.novaMethodLink.setOnClickListener { novaMethodLinkDisplay() }
         binding.extractIngredientsPrompt.setOnClickListener { extractIngredients() }
         binding.imageViewIngredients.setOnClickListener { openFullScreen() }
-        photoReceiverHandler = PhotoReceiverHandler(this@IngredientsProductFragment::onPhotoReturned)
-        refreshView(productState)
+
+        refreshView(requireProductState())
     }
 
     override fun onAttach(context: Context) {
@@ -137,7 +136,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             isLowBatteryMode = true
         }
         val product = this.productState.product!!
-        presenter = IngredientsProductPresenter(product, this)
+        presenter = IngredientsProductPresenter(product, this).apply { addTo(disp) }
         val vitaminTagsList = product.vitaminTags
         val aminoAcidTagsList = product.aminoAcidTags
         val mineralTags = product.mineralTags
@@ -183,37 +182,37 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
 
         //useful when this fragment is used in offline saving
-        if (mSendProduct != null && StringUtils.isNotBlank(mSendProduct!!.imgupload_ingredients)) {
+        if (mSendProduct != null && !mSendProduct!!.imgupload_ingredients.isNullOrBlank()) {
             binding.addPhotoLabel.visibility = View.GONE
             ingredients = mSendProduct!!.imgupload_ingredients
             Picasso.get().load(LOCALE_FILE_SCHEME + ingredients).config(Bitmap.Config.RGB_565).into(binding.imageViewIngredients)
         }
-        val allergens = allergens
+        val allergens = getAllergens()
         if (!product.getIngredientsText(langCode).isNullOrEmpty()) {
             binding.cvTextIngredientProduct.visibility = View.VISIBLE
             var txtIngredients = SpannableStringBuilder(product.getIngredientsText(langCode)!!.replace("_", ""))
             txtIngredients = setSpanBoldBetweenTokens(txtIngredients, allergens)
-            if (TextUtils.isEmpty(product.getIngredientsText(langCode))) {
+            if (product.getIngredientsText(langCode).isNullOrEmpty()) {
                 binding.extractIngredientsPrompt.visibility = View.VISIBLE
             }
-            val ingredientsListAt = 0.coerceAtLeast(txtIngredients.toString().indexOf(":"))
+            val ingredientsListAt = txtIngredients.toString().indexOf(":").coerceAtLeast(0)
             if (txtIngredients.toString().substring(ingredientsListAt).trim { it <= ' ' }.isNotEmpty()) {
                 binding.textIngredientProduct.text = txtIngredients
             }
         } else {
             binding.cvTextIngredientProduct.visibility = View.GONE
-            if (StringUtils.isNotBlank(product.getImageIngredientsUrl(langCode))) {
+            if (!product.getImageIngredientsUrl(langCode).isNullOrBlank()) {
                 binding.extractIngredientsPrompt.visibility = View.VISIBLE
             }
         }
         presenter.loadAllergens()
-        if (!StringUtils.isBlank(product.traces)) {
+        if (!product.traces.isNullOrBlank()) {
             val language = LocaleHelper.getLanguage(context)
             binding.cvTextTraceProduct.visibility = View.VISIBLE
             binding.textTraceProduct.movementMethod = LinkMovementMethod.getInstance()
             binding.textTraceProduct.text = bold(getString(R.string.txtTraces))
             binding.textTraceProduct.append(" ")
-            val traces = product.traces!!.split(",")
+            val traces = product.traces.split(",")
             traces.withIndex().forEach { (i, trace) ->
                 if (i > 0) binding.textTraceProduct.append(", ")
                 binding.textTraceProduct.append(Utils.getClickableText(
@@ -271,7 +270,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                         }
                     }.addTo(disp)
                 } else {
-                    start(context!!, SearchType.ALLERGEN, allergen.allergenTag, allergen.name)
+                    start(requireContext(), SearchType.ALLERGEN, allergen.allergenTag, allergen.name)
                 }
             }
         }
@@ -332,25 +331,17 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         binding.textSubstanceProduct.movementMethod = LinkMovementMethod.getInstance()
         binding.textSubstanceProduct.text = bold(getString(R.string.txtSubstances))
         binding.textSubstanceProduct.append(" ")
-        var i = 0
-        val lastIdx = allergens.size - 1
-        while (i <= lastIdx) {
-            val allergen = allergens[i]
+        allergens.withIndex().forEach { (i, allergen) ->
             binding.textSubstanceProduct.append(getAllergensTag(allergen))
             // Add comma if not the last item
-            if (i != lastIdx) {
-                binding.textSubstanceProduct.append(", ")
-            }
-            i++
+            if (i != allergens.lastIndex) binding.textSubstanceProduct.append(", ")
         }
     }
 
 
     fun changeIngImage() {
         sendUpdatedIngredientsImage = true
-        if (activity == null) {
-            return
-        }
+        if (activity == null) return
         val viewPager = requireActivity().findViewById<ViewPager2>(R.id.pager)
         if (isFlavors(AppFlavors.OFF)) {
             if (loginPref.getString("user", "").isNullOrEmpty()) {
@@ -377,15 +368,10 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         }
     }
 
-    private val allergens: List<String>
-        get() {
-            val allergens = productState.product!!.allergensTags
-            return if (productState.product == null || allergens == null || allergens.isEmpty()) {
-                emptyList()
-            } else {
-                allergens
-            }
-        }
+    private fun getAllergens(): List<String> {
+        val allergens = productState.product!!.allergensTags
+        return if (productState.product != null && allergens.isNotEmpty()) allergens else emptyList()
+    }
 
     private fun novaMethodLinkDisplay() {
         if (productState.product != null && productState.product!!.novaGroups != null) {
@@ -444,7 +430,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     private fun onPhotoReturned(newPhotoFile: File) {
-        val image = ProductImage(productState.code, ProductImageField.INGREDIENTS, newPhotoFile)
+        val image = ProductImage(productState.code!!, ProductImageField.INGREDIENTS, newPhotoFile)
         image.filePath = newPhotoFile.absolutePath
         client.postImg(image).subscribe().addTo(disp)
         binding.addPhotoLabel.visibility = View.GONE
@@ -464,7 +450,6 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     override fun onDestroyView() {
-        presenter.dispose()
         disp.dispose()
         _binding = null
         super.onDestroyView()

@@ -25,12 +25,13 @@ import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductsRecyclerViewAdapter
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.EndlessRecyclerViewScrollListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
@@ -185,8 +186,8 @@ class ProductSearchActivity : BaseActivity() {
         if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
             isLowBatteryMode = true
         }
-        selectNavigationItem(binding.navigationBottom.bottomNavigation, 0)
-        install(this, binding.navigationBottom.bottomNavigation)
+        binding.navigationBottom.bottomNavigation.selectNavigationItem(0)
+        binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
     }
 
     private fun setupHungerGames() {
@@ -335,9 +336,9 @@ class ProductSearchActivity : BaseActivity() {
 
 
     private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
-        disp.add(observeOn(AndroidSchedulers.mainThread()).subscribe { search, throwable ->
+        observeOn(AndroidSchedulers.mainThread()).subscribe { search, throwable ->
             displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
-        })
+        }.addTo(disp)
     }
 
     private fun loadDataForContributor(searchQuery: String) {
@@ -357,9 +358,6 @@ class ProductSearchActivity : BaseActivity() {
             5 -> client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_contributor_products)
 
-            0 -> client.getProductsByContributor(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_contributor_products)
-
             else -> client.getProductsByContributor(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_contributor_products)
         }
@@ -372,7 +370,7 @@ class ProductSearchActivity : BaseActivity() {
             if (pageAddress == 1) {
                 val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
                 binding.textCountProduct.text = resources.getString(R.string.number_of_results) + number
-                products.addAll(response.products)
+                products += response.products
                 if (products.size < mCountProducts) {
                     products.add(null)
                 }
@@ -384,9 +382,9 @@ class ProductSearchActivity : BaseActivity() {
                 if (products.size - 1 < mCountProducts + 1) {
                     val posStart = products.size
                     products.removeAt(products.size - 1)
-                    products.addAll(response.products)
+                    products += response.products
                     if (products.size < mCountProducts) {
-                        products.add(null)
+                        products += null
                     }
                     binding.productsRecyclerView.adapter?.notifyItemRangeChanged(posStart - 1, products.size - 1)
                 }
@@ -437,10 +435,10 @@ class ProductSearchActivity : BaseActivity() {
             } catch (e: NumberFormatException) {
                 throw NumberFormatException("Cannot parse ${response.count}.")
             }
-            if (isResponseSuccessful && count == 0) {
-                showEmptySearch(emptyMessage, extendedMessage)
-            } else {
+            if (!isResponseSuccessful || count != 0) {
                 loadData(isResponseSuccessful, response)
+            } else {
+                showEmptySearch(emptyMessage, extendedMessage)
             }
         }
     }
@@ -484,7 +482,7 @@ class ProductSearchActivity : BaseActivity() {
                             imm.hideSoftInputFromWindow(viewWithFocus.windowToken, 0)
                         }
                     } catch (e: NullPointerException) {
-                        Log.e(ProductSearchActivity::class.java.simpleName, "addOnItemTouchListener", e)
+                        Log.e(ProductSearchActivity::class.simpleName, "addOnItemTouchListener", e)
                     }
                 } else {
                     MaterialDialog.Builder(this@ProductSearchActivity).apply {

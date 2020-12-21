@@ -35,17 +35,7 @@ import java.util.*
  * Created by gunhansancar on 07/10/15.
  */
 object LocaleHelper {
-    @JvmStatic
-    fun find(availableLanguages: List<LanguageData?>, language: String?): Int {
-        if (language != null) {
-            availableLanguages.filterNotNull().withIndex().forEach { (i, availableLanguage) ->
-                if (language == availableLanguage.code) {
-                    return i
-                }
-            }
-        }
-        return -1
-    }
+    fun List<LanguageData>.find(language: String) = filterNotNull().indexOfFirst { language == it.code }
 
     /**
      * Used by screenshots generator.
@@ -54,8 +44,7 @@ object LocaleHelper {
      * @param locale
      */
     @JvmStatic
-    fun setLocale(context: Context, locale: Locale?): Context {
-        if (locale == null) return context
+    fun setLocale(context: Context, locale: Locale): Context {
         var newContext = context
         PreferenceManager.getDefaultSharedPreferences(newContext).edit {
             putString(SELECTED_LANGUAGE, locale.language)
@@ -87,20 +76,11 @@ object LocaleHelper {
     }
 
     @JvmStatic
-    fun getLanguageData(codes: Collection<String?>?, supported: Boolean): MutableList<LanguageData?> {
-        val res = arrayListOf<LanguageData>()
-        codes?.forEach {
-            val languageData = getLanguageData(it, supported)
-            if (languageData != null) {
-                res.add(languageData)
-            }
-        }
-        res.sort()
-        return res.toMutableList()
-    }
+    fun getLanguageData(codes: Collection<String?>, supported: Boolean): MutableList<LanguageData> =
+            codes.map { getLanguageData(it, supported) }.sorted().toMutableList()
 
     @JvmStatic
-    fun getLanguageData(code: String?, supported: Boolean): LanguageData? {
+    fun getLanguageData(code: String?, supported: Boolean): LanguageData {
         val locale = getLocale(code)
         return LanguageData(locale.language, StringUtils.capitalize(locale.getDisplayName(locale)), supported)
     }
@@ -109,9 +89,7 @@ object LocaleHelper {
      * Used by screenshots test
      */
     @JvmStatic
-    fun setLocale(locale: Locale?): Context {
-        return setLocale(OFFApplication.instance, locale)
-    }
+    fun setLocale(locale: Locale) = setLocale(OFFApplication.instance, locale)
 
     @JvmStatic
     fun getLanguage(context: Context?): String {
@@ -162,21 +140,17 @@ object LocaleHelper {
         var localeParts = locale.split("-").toTypedArray()
         var language = localeParts[0]
         val country = if (localeParts.size == 2) localeParts[1] else ""
-        if (!locale.contains("+")) {
-            return Locale(language, country)
-        }
+        if (!locale.contains("+")) return Locale(language, country)
+
         localeParts = locale.split("+").toTypedArray()
         language = localeParts[1]
         val script = localeParts[2]
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return Locale.Builder().setLanguage(language).setRegion(country).setScript(script).build()
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Locale.Builder().setLanguage(language).setRegion(country).setScript(script).build()
         } else {
-            Locale.getAvailableLocales().forEach { checkLocale ->
-                if (checkLocale.isO3Language == language && checkLocale.country == country && checkLocale.variant == "") {
-                    return checkLocale
-                }
-            }
-            return Locale.getDefault()
+            Locale.getAvailableLocales().firstOrNull {
+                it.isO3Language == language && it.country == country && it.variant == ""
+            } ?: Locale.getDefault()
         }
     }
 
@@ -193,25 +167,12 @@ object LocaleHelper {
             val name: String,
             val isSupported: Boolean
     ) : Comparable<LanguageData> {
-        override fun toString(): String {
-            return "$name [$code]"
-        }
+        override fun toString() = "$name [$code]"
 
-        override fun equals(other: Any?): Boolean {
-            if (other == null) {
-                return false
-            }
-            return if (LanguageData::class.java == other.javaClass) {
-                code == (other as LanguageData).code
-            } else false
-        }
+        override fun equals(other: Any?) = other is LanguageData && this.code == other.code
 
-        override fun hashCode(): Int {
-            return code.hashCode()
-        }
+        override fun hashCode() = code.hashCode()
 
-        override fun compareTo(other: LanguageData): Int {
-            return name.compareTo(other.name)
-        }
+        override fun compareTo(other: LanguageData) = name.compareTo(other.name)
     }
 }

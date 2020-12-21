@@ -68,8 +68,6 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.SearchTypeUrls.getUrl
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
-import org.json.JSONException
-import org.json.JSONObject
 import java.io.*
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -489,27 +487,11 @@ fun getVersionName(context: Context): String = try {
     "(version unknown)"
 }
 
-/**
- * @param response Takes a string
- * @return Returns a Json object
- */
-fun createJsonObject(response: String?): JSONObject? {
-    return try {
-        JSONObject(response!!)
-    } catch (e: JSONException) {
-        Log.e(LOG_TAG, "createJsonObject", e)
-        null
-    } catch (e: NullPointerException) {
-        Log.e(LOG_TAG, "createJsonObject", e)
-        null
-    }
-}
-
-fun <T : View?> getViewsByType(root: ViewGroup, typeClass: Class<T>): List<T> {
+fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
     val result = ArrayList<T>()
-    root.children.forEach { child ->
+    children.forEach { child ->
         if (child is ViewGroup) {
-            result.addAll(getViewsByType(child, typeClass))
+            result.addAll(child.getViewsByType(typeClass))
         }
         if (typeClass.isInstance(child)) {
             result.add(typeClass.cast(child))

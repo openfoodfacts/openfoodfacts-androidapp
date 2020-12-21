@@ -10,10 +10,9 @@ import androidx.fragment.app.commitNow
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityCategoryBinding
 import openfoodfacts.github.scrachx.openfood.features.categories.fragment.CategoryListFragment
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import java.util.*
 
 class CategoryActivity : BaseActivity() {
     private var _binding: ActivityCategoryBinding? = null
@@ -35,8 +34,9 @@ class CategoryActivity : BaseActivity() {
 
         // set fragment container view
         supportFragmentManager.commitNow { add(R.id.fragment, CategoryListFragment()) }
-        selectNavigationItem(binding.bottomNavigationInclude.bottomNavigation, 0)
-        install(this, binding.bottomNavigationInclude.bottomNavigation)
+
+        binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
+        binding.bottomNavigationInclude.bottomNavigation.installBottomNavigation(this)
     }
 
     override fun onDestroy() {
@@ -46,7 +46,7 @@ class CategoryActivity : BaseActivity() {
 
     private fun openHungerGame() = CustomTabsIntent.Builder()
             .build()
-            .launchUrl(this@CategoryActivity, Uri.parse(getString(R.string.hunger_game_url)))
+            .launchUrl(this, Uri.parse(getString(R.string.hunger_game_url)))
 
     companion object {
         fun start(context: Context) = context.startActivity(Intent(context, CategoryActivity::class.java))
