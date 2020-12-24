@@ -23,7 +23,7 @@ import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
  * @author herau & itchix
  */
 class ProductsRecyclerViewAdapter(
-        private val products: List<Product?>,
+        val products: List<Product?>,
         private val isLowBatteryMode: Boolean,
         private val context: Context
 ) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.ProductsListViewHolder>() {

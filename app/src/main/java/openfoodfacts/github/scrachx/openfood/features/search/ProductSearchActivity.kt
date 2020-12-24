@@ -39,7 +39,6 @@ import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivit
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.Search
-import openfoodfacts.github.scrachx.openfood.models.entities.country.Country
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
@@ -59,6 +58,7 @@ class ProductSearchActivity : BaseActivity() {
     private var isLowBatteryMode = false
     private var mCountProducts = 0
     private lateinit var mSearchInfo: SearchInfo
+    private lateinit var adapter: ProductsRecyclerViewAdapter
     private var pageAddress = 1
     private var setupDone = false
 
@@ -194,9 +194,10 @@ class ProductSearchActivity : BaseActivity() {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val actualCountryTag = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "")
         if ("" == actualCountryTag) {
-            disp.add(ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocale().country)
+            ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocale().country)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { mayCountry: Optional<Country> -> setupUrlHungerGames(if (mayCountry.isPresent) mayCountry.get().tag else "en:world") })
+                    .subscribe { mayCountry -> setupUrlHungerGames(if (mayCountry.isPresent) mayCountry.get().tag else "en:world") }
+                    .addTo(disp)
         } else {
             setupUrlHungerGames(actualCountryTag)
         }
@@ -375,7 +376,8 @@ class ProductSearchActivity : BaseActivity() {
                     products.add(null)
                 }
                 if (setupDone) {
-                    binding.productsRecyclerView.adapter = ProductsRecyclerViewAdapter(products, isLowBatteryMode, this)
+                    adapter = ProductsRecyclerViewAdapter(products, isLowBatteryMode, this)
+                    binding.productsRecyclerView.adapter = adapter
                 }
                 setUpRecyclerView(products)
             } else {
@@ -386,7 +388,7 @@ class ProductSearchActivity : BaseActivity() {
                     if (products.size < mCountProducts) {
                         products += null
                     }
-                    binding.productsRecyclerView.adapter?.notifyItemRangeChanged(posStart - 1, products.size - 1)
+                    adapter.notifyItemRangeChanged(posStart - 1, products.size - 1)
                 }
             }
         } else {
@@ -454,7 +456,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            val adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode, this)
+            adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode, this)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)
@@ -470,19 +472,18 @@ class ProductSearchActivity : BaseActivity() {
                 }
             })
             binding.productsRecyclerView.addOnItemTouchListener(RecyclerItemClickListener(this) { _, position ->
-                val product = (binding.productsRecyclerView.adapter as ProductsRecyclerViewAdapter?)?.getProduct(position)
-                        ?: return@RecyclerItemClickListener
+                val product = adapter.getProduct(position) ?: return@RecyclerItemClickListener
                 val barcode = product.code
-                if (Utils.isNetworkConnected(this@ProductSearchActivity)) {
-                    client.openProduct(barcode, this@ProductSearchActivity)
+                if (Utils.isNetworkConnected(this)) {
+                    client.openProduct(barcode, this)
                     try {
-                        val viewWithFocus = this@ProductSearchActivity.currentFocus
+                        val viewWithFocus = currentFocus
                         if (viewWithFocus != null) {
-                            val imm = this@ProductSearchActivity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                             imm.hideSoftInputFromWindow(viewWithFocus.windowToken, 0)
                         }
                     } catch (e: NullPointerException) {
-                        Log.e(ProductSearchActivity::class.simpleName, "addOnItemTouchListener", e)
+                        Log.e(LOG_TAG, "addOnItemTouchListener", e)
                     }
                 } else {
                     MaterialDialog.Builder(this@ProductSearchActivity).apply {

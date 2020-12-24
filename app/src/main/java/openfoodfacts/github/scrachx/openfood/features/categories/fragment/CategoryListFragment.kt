@@ -33,13 +33,8 @@ class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentCom
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentCategoryListBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentCategoryListBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        _binding = null
-        super.onDestroyView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,6 +58,11 @@ class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentCom
             }
         }
         binding.offlineView.findViewById<View>(R.id.buttonToRefresh).setOnClickListener { viewModel.refreshCategories() }
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -93,7 +93,6 @@ class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentCom
             }
         })
     }
-
 
     override fun createComponent() =
             (requireActivity() as BaseActivity).activityComponent!!.plusFragmentComponent()!!
