@@ -65,7 +65,7 @@ dependencies {
     implementation("androidx.work:work-rxjava2:2.4.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
-    kapt("com.google.dagger:dagger-compiler:2.29.1")
+    kapt("com.google.dagger:dagger-compiler:2.30.1")
     implementation("com.google.dagger:dagger:2.29.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
@@ -143,7 +143,7 @@ dependencies {
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:3.1.2")
+    implementation("io.sentry:sentry-android:3.2.0")
 
     // Unit Testing
     testImplementation("junit:junit:4.13.1")
