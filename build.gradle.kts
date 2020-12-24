@@ -18,6 +18,7 @@
 
 buildscript {
     val kotlinVersion by extra("1.4.21")
+    val jacksonVersion by extra("2.12.0")
     repositories {
         google()
         mavenCentral()

@@ -57,7 +57,6 @@ import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
-import org.apache.commons.lang.StringUtils
 import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
 import java.util.*
@@ -383,8 +382,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             val languageCode = (activity as ProductEditActivity).getProductLanguageForEdition()
             val lc = if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
             targetMap[lcIngredientsKey(lc)] = binding.ingredientsList.text.toString()
-            val list = binding.traces.chipValues
-            val string = StringUtils.join(list, ",")
+            val string = binding.traces.chipValues.joinToString(",")
             targetMap[ApiFields.Keys.ADD_TRACES.substring(4)] = string
         }
     }

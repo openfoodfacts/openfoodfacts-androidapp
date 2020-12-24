@@ -48,7 +48,7 @@ import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isContentDiffer
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isNotEmpty
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import java.io.File
 import java.text.Collator
 import java.util.*

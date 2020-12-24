@@ -5,7 +5,7 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import java.util.*
 
 class EmbCodeAutoCompleteAdapter(

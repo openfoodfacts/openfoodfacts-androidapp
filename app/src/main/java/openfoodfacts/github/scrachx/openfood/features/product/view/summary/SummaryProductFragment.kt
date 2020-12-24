@@ -78,7 +78,6 @@ import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
-import org.apache.commons.lang.StringUtils
 import java.io.File
 import java.util.*
 
@@ -300,12 +299,12 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         } else {
             binding.textNameProduct.visibility = View.GONE
         }
-        if (StringUtils.isNotBlank(product.quantity)) {
+        if (!product.quantity.isNullOrBlank()) {
             binding.textQuantityProduct.text = product.quantity
         } else {
             binding.textQuantityProduct.visibility = View.GONE
         }
-        if (StringUtils.isNotBlank(product.brands)) {
+        if (product.brands.isNullOrBlank()) {
             binding.textBrandProduct.isClickable = true
             binding.textBrandProduct.movementMethod = LinkMovementMethod.getInstance()
             binding.textBrandProduct.text = ""

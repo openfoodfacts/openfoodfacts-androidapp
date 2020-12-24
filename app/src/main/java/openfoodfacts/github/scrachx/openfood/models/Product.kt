@@ -8,9 +8,8 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
-import org.apache.commons.lang.StringUtils
-import org.apache.commons.lang.builder.ToStringBuilder
-import org.apache.commons.lang.builder.ToStringStyle
+import org.apache.commons.lang3.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
@@ -399,7 +398,7 @@ class Product : Serializable {
 
     fun getImageSmallUrl(languageCode: String?): String? {
         val image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
-        return if (StringUtils.isNotBlank(image)) {
+        return if (!image.isNullOrBlank()) {
             image
         } else imageSmallUrl
     }
@@ -412,7 +411,7 @@ class Product : Serializable {
                 val imagesByLocale = images[size.name.toLowerCase(Locale.ROOT)] as Map<String?, String>?
                 if (imagesByLocale != null) {
                     val url = imagesByLocale[languageCode]
-                    if (StringUtils.isNotBlank(url)) {
+                    if (!url.isNullOrBlank()) {
                         return url
                     }
                 }

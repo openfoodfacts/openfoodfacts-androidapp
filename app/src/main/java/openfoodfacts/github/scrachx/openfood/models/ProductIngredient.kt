@@ -1,8 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models
 
 import com.fasterxml.jackson.annotation.*
-import org.apache.commons.lang.builder.ToStringBuilder
-import org.apache.commons.lang.builder.ToStringStyle
+import org.apache.commons.lang3.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
 import java.util.*
 

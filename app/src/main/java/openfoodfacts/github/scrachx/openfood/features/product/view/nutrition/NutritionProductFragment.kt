@@ -74,7 +74,6 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
-import org.apache.commons.lang.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import java.util.*
@@ -229,7 +228,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
 
         //useful when this fragment is used in offline saving
-        if (mSendProduct != null && StringUtils.isNotBlank(mSendProduct!!.imgupload_nutrition)) {
+        if (mSendProduct != null && mSendProduct!!.imgupload_nutrition.isNotBlank()) {
             binding.addPhotoLabel.visibility = GONE
             nutrientsImageUrl = mSendProduct!!.imgupload_nutrition
             Picasso.get().load(LOCALE_FILE_SCHEME + nutrientsImageUrl).config(Bitmap.Config.RGB_565).into(binding.imageViewNutrition)

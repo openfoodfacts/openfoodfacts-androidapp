@@ -63,7 +63,6 @@ import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
-import org.apache.commons.lang.StringUtils
 import java.io.File
 import java.util.regex.Pattern
 
@@ -164,7 +163,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         binding.textAdditiveProduct.text = bold(getString(R.string.txtAdditives))
         presenter.loadAdditives()
 
-        if (StringUtils.isNotBlank(product.getImageIngredientsUrl(langCode))) {
+        if (!product.getImageIngredientsUrl(langCode).isNullOrBlank()) {
             binding.ingredientImagetipBox.setTipMessage(getString(R.string.onboarding_hint_msg, getString(R.string.image_edit_tip)))
             binding.ingredientImagetipBox.loadToolTip()
             binding.addPhotoLabel.visibility = View.GONE

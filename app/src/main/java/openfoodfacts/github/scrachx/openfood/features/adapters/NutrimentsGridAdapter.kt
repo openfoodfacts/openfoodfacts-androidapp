@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem
-import org.apache.commons.lang.StringUtils
 
 /**
  * @author herau
@@ -75,7 +74,7 @@ open class NutrimentsGridAdapter(private val nutrimentListItems: List<NutrimentL
 
             fun fillServingValue(item: NutrimentListItem) {
                 val servingValue = item.servingValue
-                if (StringUtils.isBlank(servingValue.toString())) {
+                if (servingValue.isBlank()) {
                     vNutrimentServingValue.visibility = View.GONE
                 } else {
                     vNutrimentServingValue.append(String.format("%s %s %s",

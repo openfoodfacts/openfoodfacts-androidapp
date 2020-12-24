@@ -8,7 +8,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.utils.getAsFloat
 import openfoodfacts.github.scrachx.openfood.utils.getAsInt
-import org.apache.commons.lang.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringBuilder
 import kotlin.math.ceil
 
 class ImageTransformationUtils {

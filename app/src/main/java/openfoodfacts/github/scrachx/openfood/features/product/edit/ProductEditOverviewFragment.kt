@@ -76,7 +76,7 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import org.greenrobot.greendao.async.AsyncOperation
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.jetbrains.annotations.Contract
@@ -537,7 +537,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         languageCode = lang
         val current = getLocale(lang)
         binding.language.setText(R.string.product_language)
-        binding.language.append(StringUtils.capitalize(current.getDisplayName(current)))
+        binding.language.append(current.getDisplayName(current).capitalize())
         if (activity is ProductEditActivity) {
             (activity as ProductEditActivity).setProductLanguage(lang)
         }
@@ -739,9 +739,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     ).forEach { it.chipifyAllUnterminatedTokens() }
 
     @Contract(pure = true)
-    private fun getNachoValues(nachoTextView: NachoTextView): String {
-        return StringUtils.join(nachoTextView.chipValues, ",")
-    }
+    private fun getNachoValues(nachoTextView: NachoTextView) = nachoTextView.chipValues.joinToString(",")
 
     private fun toggleManufacturingSectionVisibility() {
         if (binding.manufacturingPlaceTil.visibility != View.VISIBLE) {
@@ -821,11 +819,9 @@ class ProductEditOverviewFragment : ProductEditFragment() {
                 selectedIndex = i
             }
             val current = getLocale(localeValues[i])
-            if (current != null) {
-                localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current))
-                finalLocalLabels.add(localeLabels[i])
-                finalLocalValues.add(localeValues[i])
-            }
+            localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current))
+            finalLocalLabels.add(localeLabels[i])
+            finalLocalValues.add(localeValues[i])
         }
         MaterialDialog.Builder(requireActivity())
                 .title(R.string.preference_choose_language_dialog_title)

@@ -64,7 +64,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
     kapt("com.google.dagger:dagger-compiler:2.30.1")
     implementation("com.google.dagger:dagger:2.29.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
@@ -80,14 +80,16 @@ dependencies {
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
 
-    //scheduling jobs
-    implementation("commons-lang:commons-lang:2.6")
+    // Apache commons
+    implementation("org.apache.commons:commons-lang3:3.11")
+    implementation("org.apache.commons:commons-text:1.9")
     implementation("org.apache.commons:commons-csv:1.4")
+    implementation("commons-validator:commons-validator:1.7")
 
     //Serialization/Deserialization
-    implementation("com.fasterxml.jackson.core:jackson-core:2.11.3")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.3")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.3")
+    implementation("com.fasterxml.jackson.core:jackson-core:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${rootProject.extra["jacksonVersion"]}")
 
     //Database
     implementation("org.greenrobot:greendao:3.3.0")
@@ -107,8 +109,6 @@ dependencies {
     }
     implementation("com.google.zxing:core:3.3.0")
 
-    // Apache
-    implementation("commons-validator:commons-validator:1.6")
 
     // UI Component : Custom Toast
     implementation("net.steamcrafted:load-toast:1.0.12")
@@ -147,7 +147,7 @@ dependencies {
 
     // Unit Testing
     testImplementation("junit:junit:4.13.1")
-    testImplementation("org.mockito:mockito-core:3.5.13")
+    testImplementation("org.mockito:mockito-core:3.6.28")
     testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.22.0")
     testImplementation("com.google.truth:truth:1.1")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1")

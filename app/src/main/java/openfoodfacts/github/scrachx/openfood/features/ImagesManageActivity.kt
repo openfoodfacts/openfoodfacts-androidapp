@@ -63,8 +63,7 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.OnSwipeEventListener
 import openfoodfacts.github.scrachx.openfood.utils.SwipeDetector.SwipeTypeEnum
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
-import org.apache.commons.lang.ArrayUtils
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import smartdevelop.ir.eram.showcaseviewlib.GuideView
 import java.io.File
@@ -154,7 +153,7 @@ class ImagesManageActivity : BaseActivity() {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
         product?.let { loadLanguage(it) }
-        binding.comboImageType.setSelection(ArrayUtils.indexOf(ApiFields.Keys.TYPE_IMAGE, getSelectedType()))
+        binding.comboImageType.setSelection(ApiFields.Keys.TYPE_IMAGE.indexOf(getSelectedType()))
         updateProductImagesInfo(null)
         onRefresh(false)
     }
@@ -285,7 +284,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun loadImage(imageUrl: String) {
-        if (StringUtils.isNotEmpty(imageUrl)) {
+        if (imageUrl.isNotEmpty()) {
             var url = imageUrl
             if (isAbsoluteUrl(url)) {
                 url = "file://$url"
@@ -575,7 +574,7 @@ class ImagesManageActivity : BaseActivity() {
                 //photo choosed from gallery
                 if (file != null) {
                     onPhotoReturned(file)
-                } else if (StringUtils.isNotBlank(imgId)) {
+                } else if (!imgId.isNullOrBlank()) {
                     val imgMap = hashMapOf<String, String?>()
                     imgMap[IMG_ID] = imgId
                     postEditImage(imgMap)

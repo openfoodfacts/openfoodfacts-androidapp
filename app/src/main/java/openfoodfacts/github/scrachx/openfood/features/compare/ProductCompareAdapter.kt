@@ -50,7 +50,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveNa
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
-import org.apache.commons.lang.StringUtils
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import java.util.*
@@ -138,7 +137,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         }
 
         // Quantity
-        if (StringUtils.isNotBlank(product.quantity)) {
+        if (!product.quantity.isNullOrBlank()) {
             holder.productQuantityTextView.text = bold(
                     activity.getString(R.string.compare_quantity)
             )

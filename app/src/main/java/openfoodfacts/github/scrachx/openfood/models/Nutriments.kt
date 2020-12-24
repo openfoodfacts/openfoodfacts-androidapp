@@ -13,7 +13,7 @@ import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertFromGram
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertToGrams
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
 import openfoodfacts.github.scrachx.openfood.utils.getModifierNonDefault
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import org.jetbrains.annotations.Contract
 import java.io.Serializable
 import java.util.*

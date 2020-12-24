@@ -21,7 +21,6 @@ import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
-import org.apache.commons.lang.StringUtils
 import java.util.*
 
 /**
@@ -82,7 +81,7 @@ object LocaleHelper {
     @JvmStatic
     fun getLanguageData(code: String?, supported: Boolean): LanguageData {
         val locale = getLocale(code)
-        return LanguageData(locale.language, StringUtils.capitalize(locale.getDisplayName(locale)), supported)
+        return LanguageData(locale.language, locale.getDisplayName(locale).capitalize(), supported)
     }
 
     /**
