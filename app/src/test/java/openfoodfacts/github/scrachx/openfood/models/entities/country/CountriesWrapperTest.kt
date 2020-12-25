@@ -7,40 +7,34 @@ import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.GERMANY_FR
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.USA_EN
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameTestData.USA_FR
-import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 
 /**
  * Tests for [CountriesWrapper]
  */
 class CountriesWrapperTest {
-    private var mCountriesWrapper: CountriesWrapper? = null
+    lateinit var mCountriesWrapper: CountriesWrapper
     lateinit var countries: List<Country>
-    lateinit var country1: Country
-    lateinit var country2: Country
+    lateinit var usaCountry: Country
+    lateinit var gerCountry: Country
 
-    @Before
+    @BeforeClass
     fun setup() {
-        val usaNamesMap = hashMapOf(
-                LANGUAGE_CODE_ENGLISH to USA_EN,
-                LANGUAGE_CODE_FRENCH to USA_FR
-        )
-        val usaCC2Map = hashMapOf(LANGUAGE_CODE_ENGLISH to "US")
-        val usaCC3Map = hashMapOf(LANGUAGE_CODE_ENGLISH to "USA")
-        val countryResponse1 = CountryResponse(USA_COUNTRY_TAG, usaNamesMap, usaCC2Map, usaCC3Map)
-        val germanyNamesMap: MutableMap<String, String> = hashMapOf(
-                LANGUAGE_CODE_ENGLISH to GERMANY_EN,
-                LANGUAGE_CODE_FRENCH to GERMANY_FR
-        )
+        val usaNamesMap = mapOf(LANGUAGE_CODE_ENGLISH to USA_EN, LANGUAGE_CODE_FRENCH to USA_FR)
+        val usaCC2Map = mapOf(LANGUAGE_CODE_ENGLISH to "US")
+        val usaCC3Map = mapOf(LANGUAGE_CODE_ENGLISH to "USA")
+        val usaResponse = CountryResponse(USA_COUNTRY_TAG, usaNamesMap, usaCC2Map, usaCC3Map)
 
-        val gerCC2Map = hashMapOf(LANGUAGE_CODE_ENGLISH to "DE")
-        val gerCC3Map = hashMapOf(LANGUAGE_CODE_ENGLISH to "DEU")
-        val countryResponse2 = CountryResponse(GERMANY_COUNTRY_TAG, germanyNamesMap, gerCC2Map, gerCC3Map)
-        mCountriesWrapper = CountriesWrapper(listOf(countryResponse1, countryResponse2))
+        val gerNamesMap = mapOf(LANGUAGE_CODE_ENGLISH to GERMANY_EN, LANGUAGE_CODE_FRENCH to GERMANY_FR)
+        val gerCC2Map = mapOf(LANGUAGE_CODE_ENGLISH to "DE")
+        val gerCC3Map = mapOf(LANGUAGE_CODE_ENGLISH to "DEU")
+        val gerResponse = CountryResponse(GERMANY_COUNTRY_TAG, gerNamesMap, gerCC2Map, gerCC3Map)
 
-        countries = mCountriesWrapper!!.map().also {
-            country1 = it[0]
-            country2 = it[1]
+        mCountriesWrapper = CountriesWrapper(listOf(usaResponse, gerResponse))
+        countries = mCountriesWrapper.map().also {
+            usaCountry = it[0]
+            gerCountry = it[1]
         }
     }
 
@@ -51,34 +45,38 @@ class CountriesWrapperTest {
 
     @Test
     fun map_returnsListOfCountries_CountryTagsAreCorrect() {
-        assertThat(country1.tag).isEqualTo(USA_COUNTRY_TAG)
-        assertThat(country1.names).hasSize(2)
-        assertThat(countries[1].tag).isEqualTo(GERMANY_COUNTRY_TAG)
-        assertThat(countries[1].names).hasSize(2)
+        assertThat(usaCountry.tag).isEqualTo(USA_COUNTRY_TAG)
+        assertThat(usaCountry.names).hasSize(2)
+
+        assertThat(gerCountry.tag).isEqualTo(GERMANY_COUNTRY_TAG)
+        assertThat(gerCountry.names).hasSize(2)
     }
 
     @Test
     fun map_returnsListOfCountries_SubCountryTagsAreCorrect() {
-        assertThat(country1.names[0].countyTag).isEqualTo(USA_COUNTRY_TAG)
-        assertThat(country1.names[1].countyTag).isEqualTo(USA_COUNTRY_TAG)
-        assertThat(country2.names[0].countyTag).isEqualTo(GERMANY_COUNTRY_TAG)
-        assertThat(country2.names[1].countyTag).isEqualTo(GERMANY_COUNTRY_TAG)
+        assertThat(usaCountry.names[0].countyTag).isEqualTo(USA_COUNTRY_TAG)
+        assertThat(usaCountry.names[1].countyTag).isEqualTo(USA_COUNTRY_TAG)
+
+        assertThat(gerCountry.names[0].countyTag).isEqualTo(GERMANY_COUNTRY_TAG)
+        assertThat(gerCountry.names[1].countyTag).isEqualTo(GERMANY_COUNTRY_TAG)
     }
 
     @Test
     fun map_returnsListOfCountries_SubLanguageCodesAreCorrect() {
-        assertThat(country1.names[0].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
-        assertThat(country1.names[1].languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
-        assertThat(country2.names[0].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
-        assertThat(country2.names[1].languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
+        assertThat(usaCountry.names[0].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(usaCountry.names[1].languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
+
+        assertThat(gerCountry.names[0].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(gerCountry.names[1].languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
     }
 
     @Test
     fun map_returnsListOfCountries_SubNamesAreCorrect() {
-        assertThat(country1.names[0].name).isEqualTo(USA_EN)
-        assertThat(country1.names[1].name).isEqualTo(USA_FR)
-        assertThat(country2.names[0].name).isEqualTo(GERMANY_EN)
-        assertThat(country2.names[1].name).isEqualTo(GERMANY_FR)
+        assertThat(usaCountry.names[0].name).isEqualTo(USA_EN)
+        assertThat(usaCountry.names[1].name).isEqualTo(USA_FR)
+
+        assertThat(gerCountry.names[0].name).isEqualTo(GERMANY_EN)
+        assertThat(gerCountry.names[1].name).isEqualTo(GERMANY_FR)
     }
 
     companion object {

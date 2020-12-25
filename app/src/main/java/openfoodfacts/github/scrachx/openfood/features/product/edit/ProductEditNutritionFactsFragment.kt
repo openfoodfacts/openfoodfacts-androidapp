@@ -41,6 +41,8 @@ import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
+import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
+import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.getContent
 import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.hasUnit
@@ -312,11 +314,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 // Splits the serving size into value and unit. Example: "15g" into "15" and "g"
                 updateServingSizeFrom(servingSize)
             }
-            val editViews = (view as ViewGroup?)!!.getViewsByType(CustomValidatingEditTextView::class.java)
-            for (view in editViews) {
+            (binding.root as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java).forEach { view ->
                 val nutrientShortName = view.entryName
                 if (nutrientShortName == binding.servingSize.entryName) {
-                    continue
+                    return@forEach
                 }
                 val nutrientCompleteName = getCompleteEntryName(view)
                 val value = productDetails[nutrientCompleteName]
@@ -352,8 +353,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private fun updateSelectedDataPer(value: String) {
         binding.radioGroup.clearCheck()
         when (value) {
-            ApiFields.Defaults.NUTRITION_DATA_PER_100G -> binding.radioGroup.check(R.id.for100g_100ml)
-            ApiFields.Defaults.NUTRITION_DATA_PER_SERVING -> binding.radioGroup.check(R.id.per_serving)
+            NUTRITION_DATA_PER_100G -> binding.radioGroup.check(R.id.for100g_100ml)
+            NUTRITION_DATA_PER_SERVING -> binding.radioGroup.check(R.id.per_serving)
             else -> throw IllegalArgumentException("value is neither 100g nor serving")
         }
         binding.radioGroup.jumpDrawablesToCurrentState()
@@ -644,9 +645,9 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     private fun addNutrientsModeToMap(targetMap: MutableMap<String, String?>) {
         if (isDataPer100g) {
-            targetMap[ApiFields.Keys.NUTRITION_DATA_PER] = ApiFields.Defaults.NUTRITION_DATA_PER_100G
+            targetMap[ApiFields.Keys.NUTRITION_DATA_PER] = NUTRITION_DATA_PER_100G
         } else if (isDataPerServing) {
-            targetMap[ApiFields.Keys.NUTRITION_DATA_PER] = ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
+            targetMap[ApiFields.Keys.NUTRITION_DATA_PER] = NUTRITION_DATA_PER_SERVING
         }
     }
 

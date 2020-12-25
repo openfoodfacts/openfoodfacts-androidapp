@@ -19,7 +19,7 @@ buildscript {
         mavenCentral()
         jcenter()
         google()
-        maven(url = "https://jitpack.io")
+        maven("https://jitpack.io")
     }
 }
 plugins {
@@ -42,29 +42,30 @@ fun obtainTestBuildType(): String {
 }
 
 dependencies {
+    // Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
+
     // Android KTX
     implementation("androidx.fragment:fragment-ktx:1.3.0-rc01")
     implementation("androidx.activity:activity-ktx:1.2.0-rc01")
     implementation("androidx.preference:preference-ktx:1.1.1")
-    //Android
-    implementation("androidx.browser:browser:1.3.0")
+
+    // AndroidX
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.work:work-runtime:2.4.0")
+    implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.multidex:multidex:2.0.1")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-
-    //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.work:work-runtime:2.4.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
+
+
     kapt("com.google.dagger:dagger-compiler:2.30.1")
     implementation("com.google.dagger:dagger:2.30.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
@@ -77,8 +78,10 @@ dependencies {
     //Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
+
 
     // Apache commons
     implementation("org.apache.commons:commons-lang3:3.11")
@@ -86,16 +89,20 @@ dependencies {
     implementation("org.apache.commons:commons-csv:1.8")
     implementation("commons-validator:commons-validator:1.7")
 
-    //Serialization/Deserialization
+    // Serialization/Deserialization
     implementation("com.fasterxml.jackson.core:jackson-core:${rootProject.extra["jacksonVersion"]}")
     implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
     implementation("com.fasterxml.jackson.core:jackson-annotations:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
 
-    //Database
-    implementation("org.greenrobot:greendao:3.3.0")
+
+    // Database
+    implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
 
     //Event bus
     implementation("org.greenrobot:eventbus:3.2.0")
+
+    implementation("com.google.android.material:material:1.2.1")
 
     //Image Loading
     implementation("com.squareup.picasso:picasso:2.71828")
@@ -104,11 +111,8 @@ dependencies {
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
 
     //Barcode and QR Scanner
-    implementation("com.journeyapps:zxing-android-embedded:3.6.0") {
-        isTransitive = false
-    }
     implementation("com.google.zxing:core:3.3.0")
-
+    implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
     // UI Component : Custom Toast
     implementation("net.steamcrafted:load-toast:1.0.12")
@@ -122,21 +126,16 @@ dependencies {
     }
 
     // UI Component : Material Drawer
-    implementation("com.mikepenz:materialdrawer:7.0.0") {
-        isTransitive = true
-    }
-
-    // UI Component : Adapters
+    implementation("com.mikepenz:materialdrawer:7.0.0") { isTransitive = true }
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation("com.mikepenz:fastadapter-commons:3.3.1@aar")
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
 
     // UI Component : Font Icons
     implementation("com.mikepenz:iconics-core:4.0.2@aar")
     implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
     implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0") {
-        exclude(group = "com.android.support", module = "appcompat-v7")
+        exclude("com.android.support", "appcompat-v7")
     }
 
     // UI Component : Chips Input
@@ -175,6 +174,7 @@ dependencies {
     }
     androidTestImplementation("com.jraska:falcon:2.1.1")
     androidTestImplementation("tools.fastlane:screengrab:1.2.0")
+
     resourcePlaceholders {
         files = listOf("xml/shortcuts.xml")
     }
@@ -218,7 +218,7 @@ android {
 
     signingConfigs {
         create("release") {
-            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
+            if (System.getenv("CI_RELEASE")?.toBoolean() == true) { // CI=true is exported by github action
                 val storeFilePath = System.getenv("SIGN_STORE_PATH")
                 if (storeFilePath != null) {
                     storeFile = file(storeFilePath)
@@ -345,10 +345,7 @@ android {
     }
 }
 
-
-greendao {
-    schemaVersion(18)
-}
+greendao { schemaVersion(18) }
 
 
 
