@@ -17,45 +17,40 @@ import java.io.IOException
  * write response to the disk.
  */
 object FileDownloader {
+    private val LOG_TAG = FileDownloader::class.simpleName
+
     /**
      * Downloads a file from the given fileUrl.
      * If file is found write to disk and then return it via [Maybe].
      *
-     *
      * Network operations are done via [Schedulers.io]
      *
-     *
-     *
      * To use the result for UI updated remember to *OBSERVE ON [AndroidSchedulers.mainThread]*
-     *
      *
      * @param context
      * @param fileUrl provides the URL of the file to download.
      * @return [Maybe]
      */
     @JvmStatic
-    fun download(context: Context, fileUrl: String): Maybe<File> {
-        return CommonApiManager
-                .productsApi
-                .downloadFile(fileUrl)
-                .flatMapMaybe { responseBody: ResponseBody? ->
-                    if (responseBody != null) {
-                        Log.d(FileDownloader::class.java.simpleName, "server contacted and has file")
-                        val writtenToDisk = writeResponseBodyToDiskSync(context, responseBody, fileUrl)
-                        if (writtenToDisk != null) {
-                            Log.d(FileDownloader::class.java.simpleName, "file download was a success $writtenToDisk")
-                            return@flatMapMaybe Maybe.just(writtenToDisk)
-                        } else {
-                            return@flatMapMaybe Maybe.empty<File>()
-                        }
+    fun download(context: Context, fileUrl: String) = CommonApiManager.productsApi
+            .downloadFile(fileUrl)
+            .flatMapMaybe { responseBody: ResponseBody? ->
+                if (responseBody != null) {
+                    Log.d(LOG_TAG, "server contacted and has file")
+                    val writtenToDisk = writeResponseBodyToDiskSync(context, responseBody, fileUrl)
+                    if (writtenToDisk != null) {
+                        Log.d(LOG_TAG, "file download was a success $writtenToDisk")
+                        return@flatMapMaybe Maybe.just(writtenToDisk)
                     } else {
-                        Log.d(FileDownloader::class.java.simpleName, "server contact failed")
                         return@flatMapMaybe Maybe.empty<File>()
                     }
+                } else {
+                    Log.d(LOG_TAG, "server contact failed")
+                    return@flatMapMaybe Maybe.empty<File>()
                 }
-                .doOnError { Log.e(FileDownloader::class.java.simpleName, "error") }
-                .subscribeOn(Schedulers.io()) // IO operation -> Schedulers.io()
-    }
+            }
+            .doOnError { Log.e(LOG_TAG, "error", it) }
+            .subscribeOn(Schedulers.io()) // IO operation -> Schedulers.io()
 
     /**
      * A method to write the response body to disk.
@@ -85,7 +80,7 @@ object FileDownloader {
                 }
             }
         } catch (e: IOException) {
-            Log.w(FileDownloader::class.java.simpleName, "writeResponseBodyToDisk", e)
+            Log.w(LOG_TAG, "writeResponseBodyToDisk", e)
             return null
         }
     }

@@ -22,8 +22,9 @@ class SwipeController(
 ) : ItemTouchHelper.Callback() {
     private val backgroundColor: Int = ResourcesCompat.getColor(context.resources, R.color.material_red, context.theme)
     private val deleteDrawable: Drawable = ContextCompat.getDrawable(context, R.drawable.ic_delete_white_24dp)!!
-    private val mBackground: ColorDrawable = ColorDrawable()
-    private val mClearPaint: Paint = Paint().apply {
+    private val mBackground = ColorDrawable()
+
+    private val mClearPaint = Paint().apply {
         xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
     }
 

@@ -43,8 +43,8 @@ fun obtainTestBuildType(): String {
 
 dependencies {
     // Android KTX
-    implementation("androidx.fragment:fragment-ktx:1.3.0-beta02")
-    implementation("androidx.activity:activity-ktx:1.2.0-beta02")
+    implementation("androidx.fragment:fragment-ktx:1.3.0-rc01")
+    implementation("androidx.activity:activity-ktx:1.2.0-rc01")
     implementation("androidx.preference:preference-ktx:1.1.1")
     //Android
     implementation("androidx.browser:browser:1.3.0")
@@ -66,7 +66,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
     kapt("com.google.dagger:dagger-compiler:2.30.1")
-    implementation("com.google.dagger:dagger:2.29.1")
+    implementation("com.google.dagger:dagger:2.30.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
@@ -83,7 +83,7 @@ dependencies {
     // Apache commons
     implementation("org.apache.commons:commons-lang3:3.11")
     implementation("org.apache.commons:commons-text:1.9")
-    implementation("org.apache.commons:commons-csv:1.4")
+    implementation("org.apache.commons:commons-csv:1.8")
     implementation("commons-validator:commons-validator:1.7")
 
     //Serialization/Deserialization

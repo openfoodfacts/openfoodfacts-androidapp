@@ -5,7 +5,7 @@ import io.reactivex.Single
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.utils.Utils
-import openfoodfacts.github.scrachx.openfood.utils.isDaoEmpty
+import openfoodfacts.github.scrachx.openfood.utils.isEmpty
 import openfoodfacts.github.scrachx.openfood.utils.logDownload
 import org.greenrobot.greendao.AbstractDao
 import java.io.IOException
@@ -72,7 +72,7 @@ object TaxonomiesManager {
         val forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false)
 
         // If database is empty or we have to force update, download it
-        if (isDaoEmpty(dao!!) || forceUpdate) {
+        if (dao!!.isEmpty() || forceUpdate) {
             // Table is empty, no need check for update, just load taxonomy
             return download(taxonomy, repository)
         } else if (checkUpdate) {

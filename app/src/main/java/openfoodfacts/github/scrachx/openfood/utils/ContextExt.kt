@@ -6,4 +6,5 @@ import openfoodfacts.github.scrachx.openfood.features.PreferencesFragment
 
 fun Context.isUserSet() = !getLoginPreferences().getString("user", null).isNullOrBlank()
 
-fun Context.getLoginPreferences(mode: Int = 0): SharedPreferences = getSharedPreferences(PreferencesFragment.LOGIN_PREF, mode)
+fun Context.getLoginPreferences(mode: Int = 0): SharedPreferences =
+        getSharedPreferences(PreferencesFragment.LOGIN_PREF, mode)

@@ -9,10 +9,10 @@ import org.jetbrains.annotations.Contract
 /**
  * Checks whether table is empty
  *
- * @param dao checks records count of any table
+ * @param this@isDaoEmpty checks records count of any table
  */
 @Contract(pure = true)
-fun isDaoEmpty(dao: AbstractDao<*, *>) = dao.count() == 0L
+fun AbstractDao<*, *>.isEmpty() = count() == 0L
 
 @Contract(pure = true)
 fun <T> logDownload(single: Single<List<T>?>, taxonomy: Taxonomy) = single.doOnSuccess {

@@ -4,21 +4,15 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-import io.reactivex.Single
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Units
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 
-fun OfflineSavedProduct.toState(context: Context): Single<ProductState> {
-    return OpenFoodAPIClient(context).getProductStateFull(barcode)
-}
+fun OfflineSavedProduct.toState(context: Context) = OpenFoodAPIClient(context).getProductStateFull(barcode)
 
-fun OfflineSavedProduct.toOnlineProduct(context: Context): Single<Product> {
-    return toState(context).map { obj: ProductState -> obj.product }
-}
+fun OfflineSavedProduct.toOnlineProduct(context: Context) = toState(context).map { it.product }
 
 fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true)
 

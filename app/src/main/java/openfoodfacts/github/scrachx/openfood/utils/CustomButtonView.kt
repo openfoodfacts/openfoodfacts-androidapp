@@ -20,7 +20,6 @@ class CustomButtonView @JvmOverloads constructor(
         defStyleAttr: Int = 0
 ) : AppCompatButton(context, attrs, defStyleAttr) {
 
-
     init {
         if (attrs != null) {
             val attributeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomButtonView)

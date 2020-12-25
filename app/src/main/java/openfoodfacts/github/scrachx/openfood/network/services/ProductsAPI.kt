@@ -348,5 +348,5 @@ interface ProductsAPI {
     ): Single<String>
 
     @GET
-    fun downloadFile(@Url fileUrl: String?): Single<ResponseBody>
+    fun downloadFile(@Url fileUrl: String?): Single<ResponseBody?>
 }
