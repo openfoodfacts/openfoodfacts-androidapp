@@ -173,11 +173,11 @@ class ProductSearchActivity : BaseActivity() {
                     mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SearchType.SEARCH
                 }
             } else {
-                Log.i(Companion.LOG_TAG, "No data was passed in with URL. Exiting.")
+                Log.i(LOG_TAG, "No data was passed in with URL. Exiting.")
                 finish()
             }
         } else {
-            Log.e(Companion.LOG_TAG, "No data passed to the activity. Exiting.")
+            Log.e(LOG_TAG, "No data passed to the activity. Exiting.")
             finish()
         }
         newSearchQuery()

@@ -31,7 +31,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.Analysi
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistag.AnalysisTagNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfig
 import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigDao
-import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.AnalysisTagConfigsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.category.*
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryDao
@@ -45,7 +44,6 @@ import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.analysisDa
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.robotoffApi
 import openfoodfacts.github.scrachx.openfood.repositories.TaxonomiesManager.getTaxonomyData
 import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
-import org.greenrobot.greendao.database.Database
 import org.greenrobot.greendao.query.WhereCondition.StringCondition
 import java.util.*
 
@@ -67,7 +65,6 @@ object ProductRepository {
     private val categoryNameDao: CategoryNameDao
     private val countryDao: CountryDao
     private val countryNameDao: CountryNameDao
-    private val db: Database
     private val ingredientDao: IngredientDao
     private val ingredientNameDao: IngredientNameDao
     private val ingredientsRelationDao: IngredientsRelationDao
@@ -235,17 +232,17 @@ object ProductRepository {
      * Label and LabelName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveLabels(labels: List<Label>) {
-        db.beginTransaction()
+        OFFApplication.daoSession.database.beginTransaction()
         try {
             labels.forEach { label ->
                 labelDao.insertOrReplace(label)
                 label.names.forEach { labelNameDao.insertOrReplace(it) }
             }
-            db.setTransactionSuccessful()
+            OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveLabels", e)
         } finally {
-            db.endTransaction()
+            OFFApplication.daoSession.database.endTransaction()
         }
     }
 
@@ -275,17 +272,17 @@ object ProductRepository {
      * Allergen and AllergenName has One-To-Many relationship, therefore we need to save them separately.
      */
     fun saveAllergens(allergens: List<Allergen>) {
-        db.beginTransaction()
+        OFFApplication.daoSession.database.beginTransaction()
         try {
             allergens.forEach { allergen ->
                 allergenDao.insertOrReplace(allergen)
                 allergen.names.forEach { allergenNameDao.insertOrReplace(it) }
             }
-            db.setTransactionSuccessful()
+            OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveAllergens", e)
         } finally {
-            db.endTransaction()
+            OFFApplication.daoSession.database.endTransaction()
         }
     }
 
@@ -298,17 +295,17 @@ object ProductRepository {
      * Additive and AdditiveName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveAdditives(additives: List<Additive>) {
-        db.beginTransaction()
+        OFFApplication.daoSession.database.beginTransaction()
         try {
             additives.forEach { additive ->
                 additiveDao.insertOrReplace(additive)
                 additive.names.forEach { additiveNameDao.insertOrReplace(it) }
             }
-            db.setTransactionSuccessful()
+            OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveAdditives", e)
         } finally {
-            db.endTransaction()
+            OFFApplication.daoSession.database.endTransaction()
         }
     }
 
@@ -321,17 +318,17 @@ object ProductRepository {
      * Country and CountryName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveCountries(countries: List<Country>) {
-        db.beginTransaction()
+        OFFApplication.daoSession.database.beginTransaction()
         try {
             countries.forEach { country ->
                 countryDao.insertOrReplace(country)
                 country.names.forEach { countryNameDao.insertOrReplace(it) }
             }
-            db.setTransactionSuccessful()
+            OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveCountries", e)
         } finally {
-            db.endTransaction()
+            OFFApplication.daoSession.database.endTransaction()
         }
     }
 
@@ -344,7 +341,7 @@ object ProductRepository {
      * Category and CategoryName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveCategories(categories: List<Category>) {
-        db.beginTransaction()
+        OFFApplication.daoSession.database.beginTransaction()
         try {
             for (category in categories) {
                 categoryDao.insertOrReplace(category)
@@ -352,11 +349,11 @@ object ProductRepository {
                     categoryNameDao.insertOrReplace(categoryName)
                 }
             }
-            db.setTransactionSuccessful()
+            OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveCategories", e)
         } finally {
-            db.endTransaction()
+            OFFApplication.daoSession.database.endTransaction()
         }
     }
 
@@ -385,7 +382,7 @@ object ProductRepository {
      * Ingredient and IngredientName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveIngredients(ingredients: List<Ingredient>) {
-        db.beginTransaction()
+        OFFApplication.daoSession.database.beginTransaction()
         try {
             for (ingredient in ingredients) {
                 ingredientDao.insertOrReplace(ingredient)
@@ -399,11 +396,11 @@ object ProductRepository {
                     ingredientsRelationDao.insertOrReplace(ingredientsRelation)
                 }
             }
-            db.setTransactionSuccessful()
+            OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveIngredients", e)
         } finally {
-            db.endTransaction()
+            OFFApplication.daoSession.database.endTransaction()
         }
     }
 
@@ -655,7 +652,7 @@ object ProductRepository {
      * AnalysisTag and AnalysisTagName has One-To-Many relationship, therefore we need to save them separately.
      */
     private fun saveAnalysisTags(tags: List<AnalysisTag>) {
-        db.beginTransaction()
+        OFFApplication.daoSession.database.beginTransaction()
         try {
             tags.forEach { tag ->
                 analysisTagDao.insertOrReplace(tag)
@@ -663,11 +660,11 @@ object ProductRepository {
                     analysisTagNameDao.insertOrReplace(name)
                 }
             }
-            db.setTransactionSuccessful()
+            OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveAnalysisTags", e)
         } finally {
-            db.endTransaction()
+            OFFApplication.daoSession.database.endTransaction()
         }
     }
 
@@ -675,24 +672,24 @@ object ProductRepository {
             getTaxonomyData(Taxonomy.ANALYSIS_TAG_CONFIG, this, true, analysisTagConfigDao)
 
     fun loadAnalysisTagConfigs(lastModifiedDate: Long): Single<List<AnalysisTagConfig>> = analysisDataApi.getAnalysisTagConfigs()
-            .map<List<AnalysisTagConfig>> { obj: AnalysisTagConfigsWrapper -> obj.map() }
+            .map { it.map() }
             .doOnSuccess { analysisTagConfigs: List<AnalysisTagConfig> ->
                 saveAnalysisTagConfigs(analysisTagConfigs)
                 updateLastDownloadDateInSettings(Taxonomy.ANALYSIS_TAG_CONFIG, lastModifiedDate)
             }
 
     private fun saveAnalysisTagConfigs(analysisTagConfigs: List<AnalysisTagConfig>) {
-        db.beginTransaction()
+        OFFApplication.daoSession.database.beginTransaction()
         try {
             for (analysisTagConfig in analysisTagConfigs) {
                 Picasso.get().load(analysisTagConfig.iconUrl).fetch()
                 analysisTagConfigDao.insertOrReplace(analysisTagConfig)
             }
-            db.setTransactionSuccessful()
+            OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveAnalysisTagConfigs", e)
         } finally {
-            db.endTransaction()
+            OFFApplication.daoSession.database.endTransaction()
         }
     }
 
@@ -752,7 +749,6 @@ object ProductRepository {
      * Constructor of the class which is used to initialize objects.
      */
     init {
-        db = OFFApplication.daoSession.database
         labelDao = OFFApplication.daoSession.labelDao
         labelNameDao = OFFApplication.daoSession.labelNameDao
         tagDao = OFFApplication.daoSession.tagDao

@@ -31,13 +31,13 @@ class CategoryResponseTest {
         val categoryName1 = category.names[0]
         assertThat(categoryName1.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
         assertThat(categoryName1.name).isEqualTo(GUMMY_BEARS_EN)
-        assertThat(categoryName1.categoryTag).isEqualTo(Companion.CATEGORY_TAG)
+        assertThat(categoryName1.categoryTag).isEqualTo(CATEGORY_TAG)
         assertThat(categoryName1.isWikiDataIdPresent).isFalse()
         assertThat(categoryName1.wikiDataId).isEqualTo(null)
         val categoryName2 = category.names[1]
         assertThat(categoryName2.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
         assertThat(categoryName2.name).isEqualTo(GUMMY_BEARS_FR)
-        assertThat(categoryName2.categoryTag).isEqualTo(Companion.CATEGORY_TAG)
+        assertThat(categoryName2.categoryTag).isEqualTo(CATEGORY_TAG)
         assertThat(categoryName2.isWikiDataIdPresent).isFalse()
         assertThat(categoryName2.wikiDataId).isEqualTo(null)
     }

@@ -167,7 +167,6 @@ public class SendProduct implements Serializable {
      * Compress the image according to the {@link ProductImageField}.
      * Add a "_small" prefix in the image name after the compression
      *
-     * @param field
      */
     public void compress(@NonNull ProductImageField field) {
         switch (field) {

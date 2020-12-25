@@ -35,7 +35,7 @@ class CategoryNameTest {
     }
 
     @Test
-    fun getWikiDataIdWithEnAndQuote_returnsPartOfIdInBetweenFivePositionsPastEnAndQuote(): Unit {
+    fun getWikiDataIdWithEnAndQuote_returnsPartOfIdInBetweenFivePositionsPastEnAndQuote() {
         val wikiDataId = "somethingenmoreofit\"otherstuff"
         mCategoryName.wikiDataId = wikiDataId
         assertThat(mCategoryName.wikiDataId).isEqualTo("eofit")

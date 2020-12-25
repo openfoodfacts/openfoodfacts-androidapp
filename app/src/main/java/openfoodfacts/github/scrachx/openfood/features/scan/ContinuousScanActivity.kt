@@ -161,8 +161,8 @@ class ContinuousScanActivity : AppCompatActivity() {
         summaryProductPresenter?.dispose()
 
         // First, try to show if we have an offline saved product in the db
-        offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(barcode).also {
-            showOfflineSavedDetails(it)
+        offlineSavedProduct = OfflineProductService.getOfflineProductByBarcode(barcode).also { product ->
+            product?.let { showOfflineSavedDetails(it) }
         }
 
         // Then query the online db
@@ -176,10 +176,10 @@ class ContinuousScanActivity : AppCompatActivity() {
                     binding.quickViewProgressText.visibility = View.VISIBLE
                     binding.quickViewProgressText.text = getString(R.string.loading_product, barcode)
                 }
-                .doOnError { e ->
+                .doOnError {
                     try {
                         // A network error happened
-                        if (e is IOException) {
+                        if (it is IOException) {
                             hideAllViews()
                             val offlineSavedProduct = mOfflineSavedProductDao!!.queryBuilder()
                                     .where(OfflineSavedProductDao.Properties.Barcode.eq(barcode))
@@ -192,7 +192,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                             val errorMessage = Toast.makeText(this, R.string.txtConnectionError, Toast.LENGTH_LONG)
                             errorMessage.setGravity(Gravity.CENTER, 0, 0)
                             errorMessage.show()
-                            Log.i(LOG_TAG, e.message, e)
+                            Log.i(LOG_TAG, it.message, it)
                         }
                     } catch (err: Exception) {
                         Log.w(LOG_TAG, err.message, err)

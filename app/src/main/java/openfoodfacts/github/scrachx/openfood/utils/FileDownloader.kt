@@ -25,7 +25,7 @@ object FileDownloader {
      *
      * Network operations are done via [Schedulers.io]
      *
-     * To use the result for UI updated remember to *OBSERVE ON [AndroidSchedulers.mainThread]*
+     * To use the result for UI updated remember to *OBSERVE ON MAIN THREAD*
      *
      * @param context
      * @param fileUrl provides the URL of the file to download.

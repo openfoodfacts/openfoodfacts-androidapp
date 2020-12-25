@@ -346,8 +346,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     }
 
     /**
-     * @param value [ApiFiels.Defaults.NUTRITION_DATA_PER_100G] or [ApiFields.Defaults.NUTRITION_DATA_PER_SERVING]
-     * @throws IllegalArgumentException if [value] is neither [ApiFiels.Defaults.NUTRITION_DATA_PER_100G] nor [ApiFields.Defaults.NUTRITION_DATA_PER_SERVING]
+     * @param value [ApiFields.Defaults.NUTRITION_DATA_PER_100G] or [ApiFields.Defaults.NUTRITION_DATA_PER_SERVING]
+     * @throws IllegalArgumentException if [value] is neither [ApiFields.Defaults.NUTRITION_DATA_PER_100G] nor [ApiFields.Defaults.NUTRITION_DATA_PER_SERVING]
      */
     private fun updateSelectedDataPer(value: String) {
         binding.radioGroup.clearCheck()
@@ -439,10 +439,10 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     private fun CustomValidatingEditTextView.checkAsGram(value: Float): ValueState {
         val valid = convertToGrams(value, unitSpinner!!.selectedItemPosition) <= referenceValueInGram
-        if (!valid) {
+        return if (!valid) {
             this.showError(getString(R.string.max_nutrient_val_msg))
-            return ValueState.NOT_VALID
-        } else return ValueState.VALID
+            ValueState.NOT_VALID
+        } else ValueState.VALID
     }
 
     private fun CustomValidatingEditTextView.checkValue() {
@@ -755,8 +755,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     /**
      * Validate the value of carbohydrate using carbs value and sugar value
-     *
-     * @param this@checkCarbohydrate CustomValidatingEditTextView for retrieving the value enterd by the user
      * @param value quality value with known prefix
      */
     private fun CustomValidatingEditTextView.checkCarbohydrate(value: Float): ValueState {
@@ -802,8 +800,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     /**
      * Validate oh value according to [Nutriments.PH]
-     *
-     * @param this@checkPh [CustomValidatingEditTextView] to get the value inputted from user
      * @param value quality value with known prefix
      */
     private fun CustomValidatingEditTextView.checkPh(value: Float): ValueState {

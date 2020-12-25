@@ -90,19 +90,20 @@ class OpenFoodAPIClient @JvmOverloads constructor(
         return fields.joinToString(",")
     }
 
-    fun productNotFoundDialogBuilder(activity: Activity, barcode: String) = MaterialDialog.Builder(activity)
-            .title(R.string.txtDialogsTitle)
-            .content(R.string.txtDialogsContent)
-            .positiveText(R.string.txtYes)
-            .negativeText(R.string.txtNo)
-            .onPositive { _: MaterialDialog?, _: DialogAction? ->
-                activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
-                    putExtra(KEY_STATE, ProductState().apply {
-                        product = Product().apply { code = barcode }
-                    })
-                })
-                activity.finish()
-            }
+    fun productNotFoundDialogBuilder(activity: Activity, barcode: String): MaterialDialog.Builder =
+            MaterialDialog.Builder(activity)
+                    .title(R.string.txtDialogsTitle)
+                    .content(R.string.txtDialogsContent)
+                    .positiveText(R.string.txtYes)
+                    .negativeText(R.string.txtNo)
+                    .onPositive { _: MaterialDialog?, _: DialogAction? ->
+                        activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
+                            putExtra(KEY_STATE, ProductState().apply {
+                                product = Product().apply { code = barcode }
+                            })
+                        })
+                        activity.finish()
+                    }
 
     /**
      * Open the product activity if the barcode exist.

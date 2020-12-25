@@ -7,9 +7,8 @@ import androidx.test.rule.ActivityTestRule
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.setLocale
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 import org.junit.Assert
-import java.util.function.Consumer
 
 class ScreenshotActivityTestRule<T : Activity?>
 @JvmOverloads constructor(

@@ -23,7 +23,6 @@ fun getFloatValue(initText: String?) = getDoubleValue(initText)?.toFloat()
 fun containFloatValue(text: String?) = getFloatValue(text) != null
 
 /**
- * @param this@getFloatValue the textview
  * @return the float value or null if not correct
  * @see .getFloatValue
  */
@@ -55,7 +54,6 @@ fun getDoubleValue(initText: String?): Double? {
 fun containDoubleValue(text: String?) = getDoubleValue(text) != null
 
 /**
- * @param this@getDoubleValue the textview
  * @return the float value or null if not correct
  * @see .getFloatValue
  */
