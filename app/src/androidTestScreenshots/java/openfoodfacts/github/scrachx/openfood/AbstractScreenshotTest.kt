@@ -65,7 +65,7 @@ abstract class AbstractScreenshotTest {
     companion object {
         const val ACTION_NAME = "actionName"
         private val LOG_TAG = AbstractScreenshotTest::class.java.simpleName
-        private var initLocale: Locale? = null
+        private lateinit var initLocale: Locale
 
         @BeforeClass
         fun initLanguage() {
