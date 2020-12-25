@@ -111,7 +111,7 @@ dependencies {
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
 
     //Barcode and QR Scanner
-    implementation("com.google.zxing:core:3.3.0")
+    implementation("com.google.zxing:core:3.4.1")
     implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
     // UI Component : Custom Toast
