@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentServerAttributesBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
-import openfoodfacts.github.scrachx.openfood.utils.FragmentUtils
+import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
 class ServerAttributesFragment : BaseFragment() {
     private lateinit var productState: ProductState
@@ -16,12 +16,10 @@ class ServerAttributesFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        productState = FragmentUtils.requireStateFromArguments(this)
+        productState = requireProductState()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentServerAttributesBinding.inflate(inflater)
         return binding.root
     }
@@ -29,7 +27,7 @@ class ServerAttributesFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val attributeGroups = productState.product.getLocalAttributeGroups(requireContext())
+        val attributeGroups = productState.product!!.getLocalAttributeGroups(requireContext())
         Log.i("ServerAttributes", attributeGroups.toString())
 
         binding.attrsList.setAdapter(AttributeGroupsAdapter(attributeGroups, requireActivity()))

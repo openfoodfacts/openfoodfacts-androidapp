@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class AttributeGroup(
-        @JsonProperty("id") var id: String?,
-        @JsonProperty("name") var name: String?,
-        @JsonProperty("warning") var warning: String?,
-        @JsonProperty("attributes") var attributes: Array<Attribute>?,
+        @JsonProperty("id") val id: String?,
+        @JsonProperty("name") val name: String?,
+        @JsonProperty("warning") val warning: String?,
+        @JsonProperty("attributes") val attributes: Array<Attribute>?,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
