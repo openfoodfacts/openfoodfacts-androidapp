@@ -130,7 +130,7 @@ object OfflineProductService {
     private val LOG_TAG = OfflineProductService::class.simpleName!!
     private val offlineProductDAO = OFFApplication.daoSession.offlineSavedProductDao
 
-    fun getOfflineProductByBarcode(barcode: String?): OfflineSavedProduct =
+    fun getOfflineProductByBarcode(barcode: String): OfflineSavedProduct? =
             offlineProductDAO.queryBuilder().where(OfflineSavedProductDao.Properties.Barcode.eq(barcode)).unique()
 
     private fun getListOfflineProducts() = offlineProductDAO.queryBuilder()
