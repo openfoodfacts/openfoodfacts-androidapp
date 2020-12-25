@@ -218,7 +218,7 @@ public class SendProduct implements Serializable {
         this.lang = sp.getLang();
     }
 
-    public boolean isEqual(SendProduct sp) {
+    public boolean isEqual(@NonNull SendProduct sp) {
         return (equalityOfString(this.barcode, sp.getBarcode()) && equalityOfString(this.name, sp.getName()) && equalityOfString(this.brands, sp
             .getBrands()) && equalityOfString(this.weight, sp.getWeight()) && equalityOfString(this.weight_unit, sp.getWeight_unit()) &&
             equalityOfString(this.imgupload_front, sp.getImgupload_front()) && equalityOfString(this.imgupload_nutrition, sp
