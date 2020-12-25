@@ -567,7 +567,7 @@ object ProductRepository {
         allergenNameDao.queryBuilder()
                 .where(AllergenNameDao.Properties.LanguageCode.eq(languageCode))
                 .list()
-    }.subscribeOn(Schedulers.io())
+    }
 
     /**
      * Loads translated allergen from the local database by unique tag of allergen and language code
