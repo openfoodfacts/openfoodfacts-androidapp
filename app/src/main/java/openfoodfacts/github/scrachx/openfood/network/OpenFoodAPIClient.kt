@@ -56,8 +56,6 @@ class OpenFoodAPIClient @JvmOverloads constructor(
         customEndpointUrl: String? = null
 ) {
     private var historySyncDisp = CompositeDisposable()
-    private val mHistoryProductDao = daoSession.historyProductDao
-    private val mToUploadProductDao = daoSession.toUploadProductDao
 
     /**
      * @return This api service gets products of provided brand.
@@ -217,7 +215,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = Completable.fromAction { addToHistorySync(mHistoryProductDao, product) }
+    fun addToHistory(product: Product) = Completable.fromAction { addToHistorySync(daoSession.historyProductDao, product) }
 
     fun getProductsByContributor(contributor: String?, page: Int) =
             rawAPI.searchProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
@@ -228,7 +226,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      * @return ListenableFuture
      */
     fun uploadOfflineImages() = Single.fromCallable {
-        mToUploadProductDao.queryBuilder()
+        daoSession.toUploadProductDao.queryBuilder()
                 .where(ToUploadProductDao.Properties.Uploaded.eq(false))
                 .list()
                 .mapNotNull { product ->
@@ -246,10 +244,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                                     if (!jsonNode.isObject) {
                                         return@flatMapCompletable Completable.error(IOException("jsonNode is not an object"))
                                     } else if (jsonNode[ApiFields.Keys.STATUS].asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
-                                        mToUploadProductDao.delete(product)
+                                        daoSession.toUploadProductDao.delete(product)
                                         return@flatMapCompletable Completable.error(IOException(ApiFields.Defaults.STATUS_NOT_OK))
                                     } else {
-                                        mToUploadProductDao.delete(product)
+                                        daoSession.toUploadProductDao.delete(product)
                                         return@flatMapCompletable Completable.complete()
                                     }
                                 } else {
@@ -293,7 +291,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     }
                 }.doOnError {
                     val product = ToUploadProduct(image.barcode, image.filePath, image.imageField.toString())
-                    mToUploadProductDao.insertOrReplace(product)
+                    daoSession.toUploadProductDao.insertOrReplace(product)
                 }
     }
 
@@ -332,7 +330,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
 
     fun syncOldHistory() {
         historySyncDisp.clear()
-        mHistoryProductDao.loadAll().forEach { historyProduct ->
+        daoSession.historyProductDao.loadAll().forEach { historyProduct ->
             rawAPI.getShortProductByBarcode(historyProduct.barcode, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .map { state ->
                         if (state.status != 0L) {
@@ -347,7 +345,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                             )
                             Log.d("syncOldHistory", hp.toString())
                             hp.lastSeen = historyProduct.lastSeen
-                            mHistoryProductDao.insertOrReplace(hp)
+                            daoSession.historyProductDao.insertOrReplace(hp)
                         }
                         context.getSharedPreferences("prefs", 0).edit {
                             putBoolean("is_old_history_data_synced", true)

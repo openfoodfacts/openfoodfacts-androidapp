@@ -16,11 +16,50 @@ import kotlin.math.roundToLong
 
 class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
-    var shouldAnimate: Boolean
+    private var shouldAnimate: Boolean
     private val arrowView: ImageView
-    var identifier: String?
-    private val prefs: SharedPreferences
+    private val identifier: String
+    private val prefs: SharedPreferences by lazy { PreferenceManager.getDefaultSharedPreferences(getContext()) }
     private val tipMessageView: TextView
+
+    init {
+        inflate(context, R.layout.tip_box, this)
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.TipBox)
+        identifier = attributes.getString(R.styleable.TipBox_identifier)
+                ?: throw InflateException("Tip box identifier not set!!!")
+        shouldAnimate = attributes.getBoolean(R.styleable.TipBox_animate, true)
+        val message = attributes.getString(R.styleable.TipBox_message)
+        val marginStart = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginStart, 0)
+        val marginEnd = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginEnd, 0)
+        val arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START)
+        val canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false)
+        val toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor, resources.getColor(R.color.md_black_1000))
+        val toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor, resources.getColor(R.color.brand_light_blue))
+        attributes.recycle()
+
+        tipMessageView = findViewById(R.id.tipMessage)
+        tipMessageView.setTextColor(toolTipTextColor)
+        if (message != null) {
+            tipMessageView.text = context.getString(R.string.tip_message, message)
+        }
+
+        arrowView = findViewById(R.id.arrow)
+        arrowView.setColorFilter(toolTipBackgroundColor)
+        setArrowAlignment(arrowAlignment, marginStart, marginEnd)
+
+        visibility = GONE
+
+        findViewById<View>(R.id.gotItBtn).setOnClickListener {
+            hide()
+            prefs.edit {
+                putBoolean(identifier, false)
+            }
+        }
+
+        findViewById<View>(R.id.tipBoxContainer).setBackgroundColor(toolTipBackgroundColor)
+
+        if (canDisplayImmediately) loadToolTip()
+    }
 
 
     fun setTipMessage(message: CharSequence?) {
@@ -113,43 +152,4 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
             visibility = GONE
         }
     }
-
-    init {
-        inflate(context, R.layout.tip_box, this)
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.TipBox)
-        identifier = attributes.getString(R.styleable.TipBox_identifier)
-        if (identifier == null) {
-            throw InflateException("Tip box identifier not set!!!")
-        }
-        shouldAnimate = attributes.getBoolean(R.styleable.TipBox_animate, true)
-        tipMessageView = findViewById(R.id.tipMessage)
-        val message = attributes.getString(R.styleable.TipBox_message)
-        if (message != null) {
-            tipMessageView.text = context.getString(R.string.tip_message, message)
-        }
-        val marginStart = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginStart, 0)
-        val marginEnd = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginEnd, 0)
-        val arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START)
-        val canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false)
-        val toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor, resources.getColor(R.color.md_black_1000))
-        val toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor, resources.getColor(R.color.brand_light_blue))
-        attributes.recycle()
-        arrowView = findViewById(R.id.arrow)
-        setArrowAlignment(arrowAlignment, marginStart, marginEnd)
-        visibility = GONE
-        prefs = PreferenceManager.getDefaultSharedPreferences(getContext())
-        findViewById<View>(R.id.gotItBtn).setOnClickListener {
-            hide()
-            prefs.edit {
-                putBoolean(identifier, false)
-            }
-        }
-        tipMessageView.setTextColor(toolTipTextColor)
-        findViewById<View>(R.id.tipBoxContainer).setBackgroundColor(toolTipBackgroundColor)
-        arrowView.setColorFilter(toolTipBackgroundColor)
-        if (canDisplayImmediately) {
-            loadToolTip()
-        }
-    }
-
 }

@@ -37,6 +37,7 @@ class SplashController internal constructor(
         private val activity: SplashActivity
 ) : Controller {
     private val disp = CompositeDisposable()
+
     private fun activateDownload(taxonomy: Taxonomy) {
         settings.edit { putBoolean(taxonomy.downloadActivatePreferencesId, true) }
     }

@@ -3,10 +3,14 @@ package openfoodfacts.github.scrachx.openfood.models
 import android.content.Context
 import com.fasterxml.jackson.annotation.*
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import openfoodfacts.github.scrachx.openfood.images.ImageSize
+import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
@@ -480,6 +484,13 @@ class Product : Serializable {
         val nutritionGradeTags = additionalProperties[ApiFields.Keys.NUTRITION_GRADE] as List<String>?
         return if (nutritionGradeTags != null && nutritionGradeTags.isNotEmpty()) nutritionGradeTags[0] else null
     }
+
+    fun getAttributeGroups(locale: Locale): List<AttributeGroup> {
+        val attributeGroups = additionalProperties["${ApiFields.Keys.ATTRIBUTE_GROUPS}_${locale.language}"] as String
+        return jacksonObjectMapper().readValue(attributeGroups)
+    }
+
+    fun getLocalAttributeGroups(context: Context) = getAttributeGroups(getLocale(context))
 
     override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("code", code)

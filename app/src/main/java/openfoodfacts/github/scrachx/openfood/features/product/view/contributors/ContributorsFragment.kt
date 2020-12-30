@@ -72,7 +72,7 @@ class ContributorsFragment : BaseFragment() {
                 binding.otherEditorsTxt.append(getContributorsTag(editor).subSequence(0, editor.length))
                 binding.otherEditorsTxt.append(", ")
             }
-            binding.otherEditorsTxt.append(getContributorsTag(product.editors[product.editors.size - 1]))
+            binding.otherEditorsTxt.append(getContributorsTag(product.editors.last()))
         } else {
             binding.otherEditorsTxt.visibility = View.INVISIBLE
         }
@@ -81,8 +81,8 @@ class ContributorsFragment : BaseFragment() {
             binding.statesTxt.movementMethod = LinkMovementMethod.getInstance()
             binding.statesTxt.text = ""
             product.statesTags.forEach { stateTag ->
-                binding.statesTxt.append(getStatesTag(stateTag.split(":")[1]))
-                binding.statesTxt.append("\n ")
+                binding.statesTxt.append(getStatesTag(stateTag.split(":").component2()))
+                binding.statesTxt.append("\n")
             }
         }
     }
@@ -95,7 +95,9 @@ class ContributorsFragment : BaseFragment() {
     private fun getDateTime(dateTime: String): Pair<String, String> {
         val unixSeconds = dateTime.toLong()
         val date = Date(unixSeconds * 1000L)
-        val sdf = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
+        val sdf = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).apply {
+            timeZone = TimeZone.getTimeZone("CET")
+        }
         val sdf2 = SimpleDateFormat("HH:mm:ss a", Locale.getDefault()).apply {
             timeZone = TimeZone.getTimeZone("CET")
         }
@@ -103,7 +105,7 @@ class ContributorsFragment : BaseFragment() {
     }
 
     private fun getContributorsTag(contributor: String): CharSequence {
-        val clickableSpan: ClickableSpan = object : ClickableSpan() {
+        val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) = start(requireContext(), SearchType.CONTRIBUTOR, contributor)
         }
         return SpannableStringBuilder().apply {
@@ -120,7 +122,6 @@ class ContributorsFragment : BaseFragment() {
         return SpannableStringBuilder().apply {
             append(state)
             setSpan(clickableSpan, 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            append(" ")
         }
     }
 

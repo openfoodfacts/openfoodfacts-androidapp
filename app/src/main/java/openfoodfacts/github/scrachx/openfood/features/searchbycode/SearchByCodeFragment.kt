@@ -24,18 +24,18 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     private lateinit var api: OpenFoodAPIClient
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        api = OpenFoodAPIClient(requireActivity())
         _binding = FragmentFindProductBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        api = OpenFoodAPIClient(requireActivity())
         binding.editTextBarcode.isSelected = false
         binding.buttonBarcode.setOnClickListener { checkBarcodeThenSearch() }
 
@@ -68,9 +68,7 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     }
 
     @NavigationDrawerType
-    override fun getNavigationDrawerType(): Int {
-        return NavigationDrawerListener.ITEM_SEARCH_BY_CODE
-    }
+    override fun getNavigationDrawerType() = NavigationDrawerListener.ITEM_SEARCH_BY_CODE
 
     override fun onResume() {
         super.onResume()

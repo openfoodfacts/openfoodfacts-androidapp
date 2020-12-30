@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.DialogAction
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.afollestad.materialdialogs.MaterialDialog
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductComparisonBinding
@@ -26,12 +26,9 @@ import java.util.*
 class ProductCompareActivity : BaseActivity() {
     private var _binding: ActivityProductComparisonBinding? = null
     private val binding get() = _binding!!
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
+
     private lateinit var productComparisonAdapter: ProductCompareAdapter
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
+    private lateinit var photoReceiverHandler: PhotoReceiverHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +38,7 @@ class ProductCompareActivity : BaseActivity() {
         title = getString(R.string.compare_products)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
-
-        var productsToCompare = mutableListOf<Product>()
+        var productsToCompare = arrayListOf<Product>()
         if (intent.extras != null && intent.getBooleanExtra(KEY_PRODUCT_FOUND, false)) {
             productsToCompare = intent.extras?.getSerializable(KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
             if (intent.getBooleanExtra(KEY_PRODUCT_ALREADY_EXISTS, false)) {
@@ -51,10 +46,8 @@ class ProductCompareActivity : BaseActivity() {
             }
         }
 
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.productComparisonRv.layoutManager = layoutManager
-
         productComparisonAdapter = ProductCompareAdapter(productsToCompare, this)
+        binding.productComparisonRv.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
         binding.productComparisonRv.adapter = productComparisonAdapter
 
         photoReceiverHandler = PhotoReceiverHandler(productComparisonAdapter::setImageOnPhotoReturn)
@@ -68,9 +61,8 @@ class ProductCompareActivity : BaseActivity() {
                                 .title(R.string.action_about)
                                 .content(R.string.permission_camera)
                                 .neutralText(R.string.txtOk)
-                                .onNeutral { _: MaterialDialog?, _: DialogAction? ->
-                                    ActivityCompat
-                                            .requestPermissions(this@ProductCompareActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+                                .onNeutral { _, _ ->
+                                    ActivityCompat.requestPermissions(this@ProductCompareActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
                                 }
                                 .show()
                     } else {
@@ -79,7 +71,7 @@ class ProductCompareActivity : BaseActivity() {
                 } else {
                     startActivity(Intent(this@ProductCompareActivity, ContinuousScanActivity::class.java).apply {
                         putExtra(KEY_COMPARE_PRODUCT, true)
-                        putExtra(KEY_PRODUCTS_TO_COMPARE, finalProductsToCompare.toTypedArray())
+                        putExtra(KEY_PRODUCTS_TO_COMPARE, finalProductsToCompare)
                     })
                 }
             }
@@ -87,14 +79,19 @@ class ProductCompareActivity : BaseActivity() {
         binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(this)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
-    }
-
     public override fun onResume() {
         super.onResume()
         binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(R.id.compare_products)
+    }
+
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     companion object {
@@ -105,18 +102,13 @@ class ProductCompareActivity : BaseActivity() {
 
         @JvmStatic
         fun start(context: Context, product: Product) {
-            val intent = Intent(context, ProductCompareActivity::class.java)
-            intent.putExtra(KEY_PRODUCT_FOUND, true)
-            val productsToCompare = ArrayList<Product>()
-            productsToCompare.add(product)
-            intent.putExtra(KEY_PRODUCTS_TO_COMPARE, productsToCompare)
-            context.startActivity(intent)
+            context.startActivity(Intent(context, ProductCompareActivity::class.java).apply {
+                putExtra(KEY_PRODUCT_FOUND, true)
+                putExtra(KEY_PRODUCTS_TO_COMPARE, arrayListOf(product))
+            })
         }
 
         @JvmStatic
-        fun start(context: Context) {
-            val starter = Intent(context, ProductCompareActivity::class.java)
-            context.startActivity(starter)
-        }
+        fun start(context: Context) = context.startActivity(Intent(context, ProductCompareActivity::class.java))
     }
 }

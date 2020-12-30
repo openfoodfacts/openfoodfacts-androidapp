@@ -19,7 +19,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.text.TextUtils
 import android.util.Log
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsSession
@@ -57,7 +56,7 @@ object CustomTabsHelper {
     }
 
     /**
-     * Goes through all apps that handle VIEW intents and have a warmup service. Picks
+     * Goes through all apps that handle VIEW intents and have a warm up service. Picks
      * the one chosen by the user if there is one, otherwise makes a best effort to return a
      * valid package name.
      *
@@ -82,7 +81,7 @@ object CustomTabsHelper {
 
         // Get all apps that can handle VIEW intents.
         val resolvedActivityList = pm.queryIntentActivities(activityIntent, 0)
-        val packagesSupportingCustomTabs = resolvedActivityList.mapNotNull { info ->
+        val packagesSupportingCustomTabs: List<String?> = resolvedActivityList.mapNotNull { info ->
             val serviceIntent = Intent().apply {
                 action = ACTION_CUSTOM_TABS_CONNECTION
                 setPackage(info.activityInfo.packageName)
@@ -95,7 +94,7 @@ object CustomTabsHelper {
         when {
             packagesSupportingCustomTabs.isEmpty() -> sPackageNameToUse = null
             packagesSupportingCustomTabs.size == 1 -> sPackageNameToUse = packagesSupportingCustomTabs[0]
-            !TextUtils.isEmpty(defaultViewHandlerPackageName)
+            !defaultViewHandlerPackageName.isNullOrEmpty()
                     && !hasSpecializedHandlerIntents(context, activityIntent)
                     && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName) -> {
                 sPackageNameToUse = defaultViewHandlerPackageName
@@ -134,6 +133,8 @@ object CustomTabsHelper {
     /**
      * @return All possible chrome package names that provide custom tabs feature.
      */
-    val packages: Array<String>
-        get() = arrayOf("", STABLE_PACKAGE, BETA_PACKAGE, DEV_PACKAGE, LOCAL_PACKAGE)
+    /**
+     * @return All possible chrome package names that provide custom tabs feature.
+     */
+    val packages = listOf("", STABLE_PACKAGE, BETA_PACKAGE, DEV_PACKAGE, LOCAL_PACKAGE)
 }

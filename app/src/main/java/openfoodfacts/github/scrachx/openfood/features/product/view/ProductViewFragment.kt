@@ -105,8 +105,7 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
         if (adapterResult.itemCount == 0) return
         // without this, the view can be centered vertically on initial show. we force the scroll to top !
         if (adapterResult.createFragment(0) is SummaryProductFragment) {
-            val productFragment = adapterResult.createFragment(0) as SummaryProductFragment
-            productFragment.resetScroll()
+            (adapterResult.createFragment(0) as SummaryProductFragment).resetScroll()
         }
     }
 

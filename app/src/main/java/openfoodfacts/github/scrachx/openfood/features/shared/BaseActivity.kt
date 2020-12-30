@@ -36,7 +36,6 @@ abstract class BaseActivity : AppCompatActivity() {
         private set
 
     companion object {
-
         init {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }

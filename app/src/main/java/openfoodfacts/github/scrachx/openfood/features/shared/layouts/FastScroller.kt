@@ -32,10 +32,10 @@ import openfoodfacts.github.scrachx.openfood.R
  * Created by Manav on 2/28/2018.
  */
 class FastScroller : LinearLayout {
-    private val handleHider = HandleHider()
-    private val scrollListener: ScrollListener = ScrollListener()
-    private var bubble: View? = null
-    private var handle: View? = null
+    private val handleHider = { hideHandle() }
+    private val scrollListener = ScrollListener()
+    private lateinit var bubble: View
+    private lateinit var handle: View
     private var recyclerView: RecyclerView? = null
     private var currentHeight = 0
     private var currentAnimator: AnimatorSet? = null
@@ -62,20 +62,20 @@ class FastScroller : LinearLayout {
         currentHeight = h
     }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        if (event.action == MotionEvent.ACTION_DOWN || event.action == MotionEvent.ACTION_MOVE) {
+    override fun onTouchEvent(event: MotionEvent) = when (event.action) {
+        MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
             setPosition(event.y)
-            if (currentAnimator != null) {
-                currentAnimator!!.cancel()
-            }
+            currentAnimator?.cancel()
+
             handler.removeCallbacks(handleHider)
             setRecyclerViewPosition(event.y)
-            return true
-        } else if (event.action == MotionEvent.ACTION_UP) {
-            handler.postDelayed(handleHider, HANDLE_HIDE_DELAY.toLong())
-            return true
+            true
         }
-        return super.onTouchEvent(event)
+        MotionEvent.ACTION_UP -> {
+            handler.postDelayed(handleHider, HANDLE_HIDE_DELAY.toLong())
+            true
+        }
+        else -> super.onTouchEvent(event)
     }
 
     fun setRecyclerView(recyclerView: RecyclerView) {
@@ -84,65 +84,47 @@ class FastScroller : LinearLayout {
     }
 
     private fun setRecyclerViewPosition(y: Float) {
-        if (recyclerView != null) {
-            val itemCount = recyclerView!!.adapter!!.itemCount
-            val proportion = when {
-                bubble!!.y == 0f -> {
-                    0f
-                }
-                bubble!!.y + bubble!!.height >= currentHeight - TRACK_SNAP_RANGE -> {
-                    1f
-                }
-                else -> {
-                    y / currentHeight.toFloat()
-                }
-            }
-            val targetPos = getValueInRange(0, itemCount - 1, (proportion * itemCount.toFloat()).toInt())
-            recyclerView!!.scrollToPosition(targetPos)
+        if (recyclerView == null) return
+        val itemCount = recyclerView!!.adapter!!.itemCount
+        val proportion = when {
+            bubble.y == 0f -> 0f
+            bubble.y + bubble.height >= currentHeight - TRACK_SNAP_RANGE -> 1f
+            else -> y / currentHeight.toFloat()
         }
-    }
-
-    private fun getValueInRange(min: Int, max: Int, value: Int): Int {
-        val minimum = min.coerceAtLeast(value)
-        return minimum.coerceAtMost(max)
+        val targetPos = (proportion * itemCount).toInt().coerceIn(0, itemCount - 1)
+        recyclerView!!.scrollToPosition(targetPos)
     }
 
     private fun setPosition(y: Float) {
         val position = y / currentHeight
-        val bubbleHeight = bubble!!.height
-        bubble!!.y = getValueInRange(0, currentHeight - bubbleHeight, ((currentHeight - bubbleHeight) * position).toInt()).toFloat()
-        val handleHeight = handle!!.height
-        handle!!.y = getValueInRange(0, currentHeight - handleHeight, ((currentHeight - handleHeight) * position).toInt()).toFloat()
+        val shouldBe = currentHeight - bubble.height
+        bubble.y = (shouldBe * position).coerceIn(0f, shouldBe.toFloat())
+        val i = currentHeight - handle.height
+        (i * position).toInt().coerceIn(0, i).toFloat().also { handle.y = it }
     }
 
     private fun hideHandle() {
         currentAnimator = AnimatorSet()
-        handle!!.pivotX = handle!!.width.toFloat()
-        handle!!.pivotY = handle!!.height.toFloat()
-        val shrinkerX: Animator = ObjectAnimator.ofFloat(handle, SCALE_X, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
-        val shrinkerY: Animator = ObjectAnimator.ofFloat(handle, SCALE_Y, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
-        val alpha: Animator = ObjectAnimator.ofFloat(handle, ALPHA, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
+        handle.pivotX = handle.width.toFloat()
+        handle.pivotY = handle.height.toFloat()
+        val shrinkerX = ObjectAnimator.ofFloat(handle, SCALE_X, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
+        val shrinkerY = ObjectAnimator.ofFloat(handle, SCALE_Y, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
+        val alpha = ObjectAnimator.ofFloat(handle, ALPHA, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
         currentAnimator!!.playTogether(shrinkerX, shrinkerY, alpha)
         currentAnimator!!.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
                 super.onAnimationEnd(animation)
-                handle!!.visibility = INVISIBLE
+                handle.visibility = INVISIBLE
                 currentAnimator = null
             }
 
             override fun onAnimationCancel(animation: Animator) {
                 super.onAnimationCancel(animation)
-                handle!!.visibility = INVISIBLE
+                handle.visibility = INVISIBLE
                 currentAnimator = null
             }
         })
         currentAnimator!!.start()
-    }
-
-    private inner class HandleHider : Runnable {
-        override fun run() {
-            hideHandle()
-        }
     }
 
     private inner class ScrollListener : RecyclerView.OnScrollListener() {
@@ -152,13 +134,10 @@ class FastScroller : LinearLayout {
             val visibleRange = recyclerView!!.childCount
             val lastVisiblePosition = firstVisiblePosition + visibleRange
             val itemCount = recyclerView!!.adapter!!.itemCount
-            val position: Int
-            position = when {
+            val position = when {
                 firstVisiblePosition == 0 -> 0
                 lastVisiblePosition == itemCount - 1 -> itemCount - 1
-                else -> {
-                    firstVisiblePosition
-                }
+                else -> firstVisiblePosition
             }
             val proportion = position.toFloat() / itemCount
             setPosition(currentHeight * proportion)

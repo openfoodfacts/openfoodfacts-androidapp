@@ -53,10 +53,14 @@ import java.net.HttpCookie
 class LoginActivity : BaseActivity() {
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
+
+    private val disp = CompositeDisposable()
+
     private var userLoginUri: Uri? = null
     private var resetPasswordUri: Uri? = null
-    private val disp = CompositeDisposable()
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -66,7 +70,6 @@ class LoginActivity : BaseActivity() {
             else -> false
         }
     }
-
 
     private fun doAttemptLogin() {
         Utils.hideKeyboard(this)

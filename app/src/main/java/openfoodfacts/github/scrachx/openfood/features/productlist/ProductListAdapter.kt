@@ -20,10 +20,9 @@ import openfoodfacts.github.scrachx.openfood.utils.CustomTextView
 
 class ProductListAdapter(
         private val context: Context,
-        products: List<YourListedProduct>,
+        val products: MutableList<YourListedProduct>,
         private val isLowBatteryMode: Boolean
 ) : RecyclerView.Adapter<YourListProductsViewHolder>() {
-    private val products = products.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             YourListProductsViewHolder(LayoutInflater.from(context)

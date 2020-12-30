@@ -218,41 +218,42 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             true
         }
-        val imageUploadPref = requirePreference<ListPreference>("ImageUpload")
         val values = requireActivity().resources.getStringArray(R.array.upload_image)
-        imageUploadPref.entries = values
-        imageUploadPref.entryValues = values
-        imageUploadPref.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
-            settings.edit { putString("imageUpload", newValue as String?) }
-            Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
-            true
+        requirePreference<ListPreference>("ImageUpload").let {
+            it.entries = values
+            it.entryValues = values
+            it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+                settings.edit { putString("imageUpload", newValue as String?) }
+                Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+                true
+            }
         }
+
 
         // Disable photo mode for OpenProductFacts
         if (isFlavors(AppFlavors.OPF)) requirePreference<Preference>("photoMode").isVisible = false
 
         // Preference to show version name
-        val versionPref = requirePreference<Preference>("Version")
-        versionPref.isEnabled = false
-        try {
-            val pInfo = activity.packageManager.getPackageInfo(activity.packageName, 0)
-            val version = pInfo.versionName
-            versionPref.summary = getString(R.string.version_string) + " " + version
-        } catch (e: PackageManager.NameNotFoundException) {
-            Log.e(PreferencesFragment::class.simpleName, "onCreatePreferences", e)
-        }
-        if (isFlavors(OFF, OBF, OPFF)) {
-            getAnalysisTagConfigs(OFFApplication.daoSession)
-        } else {
-            val preferenceScreen = preferenceScreen
-            preferenceScreen.removePreference(preferenceScreen.requirePreference("display_category"))
+        requirePreference<Preference>("Version").let {
+            it.isEnabled = false
+            try {
+                val pInfo = activity.packageManager.getPackageInfo(activity.packageName, 0)
+                val version = pInfo.versionName
+                it.summary = getString(R.string.version_string) + " " + version
+            } catch (e: PackageManager.NameNotFoundException) {
+                Log.e(PreferencesFragment::class.simpleName, "onCreatePreferences", e)
+            }
+            if (isFlavors(OFF, OBF, OPFF)) {
+                getAnalysisTagConfigs(OFFApplication.daoSession)
+            } else {
+                preferenceScreen.removePreference(preferenceScreen.requirePreference("display_category"))
+            }
         }
     }
 
     private fun buildDisplayCategory(configs: List<AnalysisTagConfig>?) {
         if (!isAdded) return
 
-        val preferenceScreen = preferenceScreen
         val displayCategory = preferenceScreen.findPreference<PreferenceCategory>("display_category")
                 ?: throw error("Display category preference does not exist.")
         displayCategory.removeAll()
@@ -287,7 +288,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             displayCategory.addPreference(preference)
         } else {
             configs.forEach { config ->
-                displayCategory.addPreference(CheckBoxPreference(preferenceScreen.context).apply {
+                displayCategory.addPreference(CheckBoxPreference(this.preferenceScreen.context).apply {
                     key = config.type
                     setDefaultValue(true)
                     summary = null
@@ -313,12 +314,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
     override fun onResume() {
         super.onResume()
         try {
-            val activity = activity as? AppCompatActivity
-            if (activity?.supportActionBar != null) {
-                activity.supportActionBar!!.title = getString(R.string.action_preferences)
-            }
+            (this.activity as? AppCompatActivity)?.supportActionBar!!.title = getString(R.string.action_preferences)
         } catch (e: NullPointerException) {
-            Log.e(javaClass.simpleName, "on resume error", e)
+            Log.e(this::class.simpleName, "on resume error", e)
         }
         preferenceManager.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
     }
@@ -372,8 +370,6 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
 
     companion object {
         const val LOGIN_PREF = "login"
-        fun newInstance(): PreferencesFragment = PreferencesFragment().apply {
-            arguments = Bundle()
-        }
+        fun newInstance() = PreferencesFragment().apply { arguments = Bundle() }
     }
 }
