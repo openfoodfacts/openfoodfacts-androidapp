@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.features
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.hardware.Camera
 import android.hardware.Camera.CameraInfo
 import android.os.Bundle
@@ -10,12 +9,13 @@ import androidx.fragment.app.DialogFragment
 import openfoodfacts.github.scrachx.openfood.R
 
 class CameraSelectorDialogFragment : DialogFragment() {
-    interface CameraSelectorDialogListener {
+    fun interface CameraSelectorDialogListener {
         fun onCameraSelected(cameraId: Int)
     }
 
     private var mCameraId = 0
     private var mListener: CameraSelectorDialogListener? = null
+
     override fun onCreate(state: Bundle?) {
         super.onCreate(state)
         retainInstance = true
@@ -45,11 +45,14 @@ class CameraSelectorDialogFragment : DialogFragment() {
         }
         val builder = AlertDialog.Builder(activity)
         // Set the dialog title
-        builder.setTitle(R.string.select_camera) // Specify the list array, the items to be selected by default (null for none),
+        builder.setTitle(R.string.select_camera)
+                // Specify the list array, the items to be selected by default (null for none),
                 // and the listener through which to receive callbacks when items are selected
-                .setSingleChoiceItems(cameraNames, checkedIndex
-                ) { _: DialogInterface?, which: Int -> mCameraId = which } // Set the action buttons
-                .setPositiveButton(R.string.ok_button) { _: DialogInterface?, _: Int ->
+                .setSingleChoiceItems(cameraNames, checkedIndex) { _, which ->
+                    mCameraId = which
+                }
+                // Set the action buttons
+                .setPositiveButton(R.string.ok_button) { _, _ ->
                     // User clicked OK, so save the mSelectedIndices results somewhere
                     // or return them to the component that opened the dialog
                     mListener?.onCameraSelected(mCameraId)

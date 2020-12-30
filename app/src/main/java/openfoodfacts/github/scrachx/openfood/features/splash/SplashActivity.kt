@@ -61,7 +61,7 @@ class SplashActivity : BaseActivity(), ISplashActivity.View {
         finish()
     }
 
-    override fun showLoading() {}
+    override fun showLoading() = Unit
     override fun hideLoading(isError: Boolean) {
         if (isError) {
             Handler(Looper.getMainLooper()).post {

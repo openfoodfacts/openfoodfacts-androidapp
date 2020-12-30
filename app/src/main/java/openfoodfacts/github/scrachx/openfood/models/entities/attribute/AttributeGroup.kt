@@ -8,30 +8,5 @@ data class AttributeGroup(
         @JsonProperty("id") val id: String?,
         @JsonProperty("name") val name: String?,
         @JsonProperty("warning") val warning: String?,
-        @JsonProperty("attributes") val attributes: Array<Attribute>?,
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as AttributeGroup
-
-        if (id != other.id) return false
-        if (name != other.name) return false
-        if (warning != other.warning) return false
-        if (attributes != null) {
-            if (other.attributes == null) return false
-            if (!attributes.contentEquals(other.attributes)) return false
-        } else if (other.attributes != null) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = id?.hashCode() ?: 0
-        result = 31 * result + (name?.hashCode() ?: 0)
-        result = 31 * result + (warning?.hashCode() ?: 0)
-        result = 31 * result + (attributes?.contentHashCode() ?: 0)
-        return result
-    }
-}
+        @JsonProperty("attributes") val attributes: List<Attribute>?,
+)

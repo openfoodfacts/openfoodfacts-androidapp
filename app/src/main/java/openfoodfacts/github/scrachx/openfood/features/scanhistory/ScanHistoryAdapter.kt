@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.scanhistory
 
-import android.content.Context
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,26 +13,25 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
-import openfoodfacts.github.scrachx.openfood.models.HistoryItem
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreSmallDrawable
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 class ScanHistoryAdapter(
-        private val context: Context,
+        internal val activity: Activity,
         private val isLowBatteryMode: Boolean,
-        private val list: MutableList<HistoryItem> = mutableListOf(),
+        val products: MutableList<HistoryProduct>,
 ) : RecyclerView.Adapter<ScanHistoryHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScanHistoryHolder {
-        //Inflate the layout, initialize the View Holder
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.history_list_item, parent, false)
-        return ScanHistoryHolder(v, context)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.history_list_item, parent, false)
+        return ScanHistoryHolder(view, activity)
     }
 
     override fun onBindViewHolder(holder: ScanHistoryHolder, position: Int) {
 
-        val item = list[position]
+        val item = products[position]
         val productBrandsQuantityDetails = ProductListActivity.getProductBrandsQuantityDetails(item)
 
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
@@ -44,7 +43,7 @@ class ScanHistoryAdapter(
                 holder.imgNutritionGrade.visibility = View.GONE
             }
             getNutriScoreSmallDrawable(item.nutritionGrade) != 0 -> {
-                holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(context, getNutriScoreSmallDrawable(item.nutritionGrade)))
+                holder.imgNutritionGrade.setImageDrawable(ContextCompat.getDrawable(activity, getNutriScoreSmallDrawable(item.nutritionGrade)))
             }
             else -> {
                 holder.imgNutritionGrade.visibility = View.INVISIBLE
@@ -54,7 +53,7 @@ class ScanHistoryAdapter(
 
         // Load Image if isBatteryLoad is false
         if (!isLowBatteryMode) {
-            picassoBuilder(context)
+            picassoBuilder(activity)
                     .load(item.url)
                     .placeholder(R.drawable.placeholder_thumb)
                     .error(R.drawable.ic_no_red_24dp)
@@ -64,56 +63,44 @@ class ScanHistoryAdapter(
                         override fun onSuccess() {
                             holder.historyImageProgressbar.visibility = View.GONE
                         }
-
                         override fun onError(ex: Exception) {
                             holder.historyImageProgressbar.visibility = View.GONE
                         }
                     })
         } else {
-            holder.imgProduct.background = context.resources.getDrawable(R.drawable.placeholder_thumb)
+            holder.imgProduct.background = ContextCompat.getDrawable(activity, R.drawable.placeholder_thumb)
             holder.historyImageProgressbar.visibility = View.INVISIBLE
         }
-        val date = list[position].time
+        val date = products[position].lastSeen
         calcTime(date, holder)
     }
 
-    override fun getItemCount(): Int {
-        //returns the number of elements the RecyclerView will display
-        return list.size
-    }
+    override fun getItemCount() = products.size
 
     // Insert a new item to the RecyclerView on a predefined position
-    fun insert(position: Int, data: HistoryItem) {
-        list.add(position, data)
+    fun insert(position: Int, data: HistoryProduct) {
+        products.add(position, data)
         notifyItemInserted(position)
     }
 
     // Remove a RecyclerView item containing a specified Data object
-    fun remove(data: HistoryItem) {
-        val position = list.indexOf(data)
-        list.removeAt(position)
+    fun removeAndNotify(data: HistoryProduct) {
+        val position = products.indexOf(data)
+        products.removeAt(position)
         notifyItemRemoved(position)
     }
 
-    private fun calcTime(date: Date?, holder: ScanHistoryHolder) {
-        val duration = Date().time - date!!.time
+    private fun calcTime(date: Date, holder: ScanHistoryHolder) {
+        val duration = Date().time - date.time
         val seconds = TimeUnit.MILLISECONDS.toSeconds(duration)
         val minutes = TimeUnit.MILLISECONDS.toMinutes(duration)
         val hours = TimeUnit.MILLISECONDS.toHours(duration)
         val days = TimeUnit.MILLISECONDS.toDays(duration)
-        when {
-            seconds < 60 -> {
-                holder.txtDate.text = context.resources.getQuantityString(R.plurals.seconds, seconds.toInt(), seconds.toInt())
-            }
-            minutes < 60 -> {
-                holder.txtDate.text = context.resources.getQuantityString(R.plurals.minutes, minutes.toInt(), minutes.toInt())
-            }
-            hours < 24 -> {
-                holder.txtDate.text = context.resources.getQuantityString(R.plurals.hours, hours.toInt(), hours.toInt())
-            }
-            else -> {
-                holder.txtDate.text = context.resources.getQuantityString(R.plurals.days, days.toInt(), days.toInt())
-            }
+        holder.txtDate.text = when {
+            seconds < 60 -> activity.resources.getQuantityString(R.plurals.seconds, seconds.toInt(), seconds.toInt())
+            minutes < 60 -> activity.resources.getQuantityString(R.plurals.minutes, minutes.toInt(), minutes.toInt())
+            hours < 24 -> activity.resources.getQuantityString(R.plurals.hours, hours.toInt(), hours.toInt())
+            else -> activity.resources.getQuantityString(R.plurals.days, days.toInt(), days.toInt())
         }
     }
 

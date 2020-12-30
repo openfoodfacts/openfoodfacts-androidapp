@@ -49,6 +49,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.I
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsAnalysisProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.nutrition.NutritionProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.photos.ProductPhotosFragment
+import openfoodfacts.github.scrachx.openfood.features.product.view.serverattributes.ServerAttributesFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.ProductState
@@ -263,6 +264,9 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
             if (preferences.getBoolean("contributionTab", false)) {
                 adapter.addFragment(ContributorsFragment.newInstance(productState), activity.getString(R.string.contribution_tab))
             }
+
+            if (isFlavors(OFF)) adapter.addFragment(ServerAttributesFragment().applyBundle(fBundle), "Server attributes")
+
             viewPager.adapter = adapter
             return adapter
         }

@@ -23,6 +23,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.DialogAction
@@ -58,12 +59,14 @@ import java.io.InputStreamReader
 import java.util.*
 
 class ProductListsActivity : BaseActivity(), SwipeControllerActions {
-    private lateinit var adapter: ProductListsAdapter
     private var _binding: ActivityProductListsBinding? = null
     private val binding get() = _binding!!
-    private val disp = CompositeDisposable()
-    private lateinit var productLists: MutableList<ProductLists>
+
+    private lateinit var adapter: ProductListsAdapter
     private lateinit var productListsDao: ProductListsDao
+
+    private val disp = CompositeDisposable()
+
     override fun onDestroy() {
         disp.dispose()
         super.onDestroy()
@@ -81,7 +84,7 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
 
         productListsDao = getProductListsDaoWithDefaultList(this)
-        productLists = productListsDao.loadAll()
+        val productLists = productListsDao.loadAll().toMutableList()
 
         adapter = ProductListsAdapter(this, productLists)
 
@@ -133,7 +136,7 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
                     val listName = inputEditText.text.toString()
                     val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
 
-                    productLists.add(productList)
+                    adapter.lists.add(productList)
                     productListsDao.insert(productList)
 
                     adapter.notifyDataSetChanged()
@@ -156,25 +159,27 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
      * Check if listname already in products lists.
      */
     private fun checkListNameExist(listName: String) =
-            productLists.firstOrNull { it.listName == listName } != null
+            adapter.lists.firstOrNull { it.listName == listName } != null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == RESULT_OK && data!!.extras!!.getBoolean("update")) {
             adapter.notifyDataSetChanged()
-        } else if (requestCode == ACTIVITY_CHOOSE_FILE && resultCode == RESULT_OK) {
-            try {
-                val inputStream = contentResolver.openInputStream(data!!.data!!)
-                parseCSV(inputStream)
-            } catch (e: Exception) {
-                Log.e(ProductListsActivity::class.simpleName, "Error importing CSV.", e)
-            }
+        }
+    }
+
+    private val chooseFileContract = registerForActivityResult(ActivityResultContracts.OpenDocument())
+    { uri ->
+        try {
+            parseCSV(contentResolver.openInputStream(uri))
+        } catch (e: Exception) {
+            Log.e(ProductListsActivity::class.simpleName, "Error importing CSV.", e)
         }
     }
 
     override fun onRightClicked(position: Int) {
-        if (!productLists.isNullOrEmpty()) {
-            val productToRemove = productLists[position]
+        if (!adapter.lists.isNullOrEmpty()) {
+            val productToRemove = adapter.lists[position]
             productListsDao.delete(productToRemove)
             adapter.remove(productToRemove)
             adapter.notifyItemRemoved(position)
@@ -187,18 +192,16 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_import_csv -> selectCSVFile()
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_import_csv -> {
+            openCSVToImport()
+            true
         }
-        return super.onOptionsItemSelected(item)
+        else -> super.onOptionsItemSelected(item)
     }
 
-    private fun selectCSVFile() {
-        startActivityForResult(Intent.createChooser(Intent(Intent.ACTION_GET_CONTENT).apply {
-            addCategory(Intent.CATEGORY_OPENABLE)
-            type = "text/csv"
-        }, getString(R.string.open_csv)), ACTIVITY_CHOOSE_FILE)
+    private fun openCSVToImport() {
+        chooseFileContract.launch(arrayOf("text/csv"))
     }
 
     public override fun onResume() {
@@ -212,19 +215,18 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
         Observable.create { emitter: ObservableEmitter<Int?> ->
             Single.fromCallable {
                 val yourListedProductDao = Utils.daoSession.yourListedProductDao
-                val list: MutableList<YourListedProduct> = ArrayList()
+                val list = ArrayList<YourListedProduct>()
                 try {
                     CSVParser(InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader()).use { csvParser ->
-                        val result = csvParser.records
-                        val size = result.size
+                        val size = csvParser.records.size
                         var count = 0
                         var id: Long
-                        for (record in result) {
+                        csvParser.records.forEach { record ->
                             var lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record[2])).list()
                             if (lists.isEmpty()) {
                                 //create new list
                                 val productList = ProductLists(record[2], 0)
-                                productLists.add(productList)
+                                adapter.lists.add(productList)
                                 productListsDao.insert(productList)
                                 lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record[2])).list()
                             }
@@ -238,7 +240,7 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
                             }
                             list.add(yourListedProduct)
                             count++
-                            emitter.onNext((count.toFloat() * 100 / size.toFloat()).toInt())
+                            emitter.onNext(count * 100 / size)
                         }
                         yourListedProductDao.insertOrReplaceInTx(list)
                         return@fromCallable true

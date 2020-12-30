@@ -29,6 +29,7 @@ class CustomTabActivityHelper : ServiceConnectionCallback {
     private var mCustomTabsSession: CustomTabsSession? = null
     private var mClient: CustomTabsClient? = null
     private var mConnection: CustomTabsServiceConnection? = null
+
     /**
      * Callback to be called when connected or disconnected from the Custom Tabs Service.
      *
@@ -87,27 +88,23 @@ class CustomTabActivityHelper : ServiceConnectionCallback {
      * @see CustomTabsSession.mayLaunchUrl
      */
     fun mayLaunchUrl(uri: Uri?, extras: Bundle?, otherLikelyBundles: List<Bundle?>?): Boolean {
-        if (mClient == null) {
-            return false
-        }
+        if (mClient == null) return false
+
         val session = session
         return session != null && session.mayLaunchUrl(uri!!, extras, otherLikelyBundles)
     }
 
     override fun onServiceConnected(client: CustomTabsClient) {
-        mClient = client
-        mClient!!.warmup(0L)
-        if (connectionCallback != null) {
-            connectionCallback!!.onCustomTabsConnected()
-        }
+        mClient = client.apply { warmup(0L) }
+
+        connectionCallback?.onCustomTabsConnected()
     }
 
     override fun onServiceDisconnected() {
         mClient = null
         mCustomTabsSession = null
-        if (connectionCallback != null) {
-            connectionCallback!!.onCustomTabsDisconnected()
-        }
+
+        connectionCallback?.onCustomTabsDisconnected()
     }
 
     /**
@@ -139,17 +136,19 @@ class CustomTabActivityHelper : ServiceConnectionCallback {
 
     companion object {
         /**
-         * Opens the URL on a Custom Tab if possible. Otherwise fallsback to opening it on a WebView.
+         * Opens the URL on a Custom Tab if possible. Otherwise falls back to opening it on a WebView.
          *
          * @param activity The host activity.
          * @param customTabsIntent a CustomTabsIntent to be used if Custom Tabs is available.
          * @param uri the Uri to be opened.
          * @param fallback a CustomTabFallback to be used if Custom Tabs is not available.
          */
-        fun openCustomTab(activity: Activity,
-                          customTabsIntent: CustomTabsIntent,
-                          uri: Uri,
-                          fallback: CustomTabFallback?) {
+        fun openCustomTab(
+                activity: Activity,
+                customTabsIntent: CustomTabsIntent,
+                uri: Uri,
+                fallback: CustomTabFallback?
+        ) {
             val packageName = getPackageNameToUse(activity)
 
             //If we cant find a package name, it means theres no browser that supports

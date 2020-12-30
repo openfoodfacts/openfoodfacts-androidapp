@@ -37,6 +37,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
@@ -335,11 +336,11 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
 
     fun setImageOnPhotoReturn(file: File) {
         val product = productsToCompare[onPhotoReturnPosition!!]
-        val image = ProductImage(product.code, ProductImageField.FRONT, file)
-        image.filePath = file.absolutePath
-        disp.add(api.postImg(image).subscribe())
-        val mUrlImage = file.absolutePath
-        product.imageUrl = mUrlImage
+        val image = ProductImage(product.code, ProductImageField.FRONT, file).apply {
+            filePath = file.absolutePath
+        }
+        api.postImg(image).subscribe().addTo(disp)
+        product.imageUrl = file.absolutePath
         onPhotoReturnPosition = null
         notifyDataSetChanged()
     }

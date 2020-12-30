@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.models.entities.attribute.Attribute
 import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 
@@ -20,21 +18,15 @@ class AttributeGroupsAdapter(
 ) : BaseExpandableListAdapter() {
     override fun getGroupCount() = attributeGroups.count()
 
-    override fun getChildrenCount(groupPosition: Int): Int {
-        return attributeGroups[groupPosition].attributes?.size
-                ?: throw ArrayIndexOutOfBoundsException("$groupPosition is greater than ${attributeGroups.count()}")
-    }
+    override fun getChildrenCount(groupPosition: Int) = attributeGroups[groupPosition].attributes?.count()
+            ?: throw ArrayIndexOutOfBoundsException("$groupPosition is greater than ${attributeGroups.count()}")
 
-    override fun getGroup(groupPosition: Int): AttributeGroup {
-        return attributeGroups[groupPosition]
-    }
-
-    override fun getChild(groupPosition: Int, childPosition: Int): Attribute {
-        return attributeGroups[groupPosition].attributes?.get(childPosition)
-                ?: throw ArrayIndexOutOfBoundsException("$groupPosition is greater than ${attributeGroups.count()}")
-    }
+    override fun getGroup(groupPosition: Int) = attributeGroups[groupPosition]
 
     override fun getGroupId(groupPosition: Int) = getGroup(groupPosition).id.hashCode().toLong()
+
+    override fun getChild(groupPosition: Int, childPosition: Int) = attributeGroups[groupPosition].attributes?.get(childPosition)
+            ?: throw ArrayIndexOutOfBoundsException("$groupPosition is greater than ${attributeGroups.count()}")
 
     override fun getChildId(groupPosition: Int, childPosition: Int) =
             getChild(groupPosition, childPosition).id.hashCode().toLong()
@@ -63,7 +55,7 @@ class AttributeGroupsAdapter(
         val iconView = childView.findViewById(R.id.logo_view) as ImageView
         val iconUrl = child.iconUrl
         if (iconUrl != null) {
-            Utils.picassoBuilder(activity).load(iconUrl.replace(".svg", ".png")).into(iconView)
+            Utils.picassoBuilder(activity).load(iconUrl.replaceAfterLast(".", "png")).into(iconView)
         } else {
             iconView.visibility = GONE
         }
@@ -73,11 +65,3 @@ class AttributeGroupsAdapter(
 
     override fun isChildSelectable(groupPosition: Int, childPosition: Int) = true
 }
-
-
-class AttributeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var icon: ImageView = itemView.findViewById(R.id.logo_view)
-    var title: TextView = itemView.findViewById(R.id.title_text)
-    var shortDesc: TextView = itemView.findViewById(R.id.short_desc_text)
-}
-

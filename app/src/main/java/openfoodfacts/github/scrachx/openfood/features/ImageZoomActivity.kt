@@ -23,20 +23,24 @@ import java.util.*
 class ImageZoomActivity : BaseActivity() {
     private var _binding: ActivityZoomImageBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var attacher: PhotoViewAttacher
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityZoomImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
+
         attacher = PhotoViewAttacher(binding.imageViewFullScreen)
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //delaying the transition until the view has been laid out
             postponeEnterTransition()
         }
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.toolbar.setTitle(R.string.imageFullscreen)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setTitle(R.string.imageFullscreen)
+
         loadImage(intent.getStringExtra(IMAGE_URL))
     }
 
@@ -87,9 +91,7 @@ class ImageZoomActivity : BaseActivity() {
 
                         override fun onError(ex: Exception) {
                             // Activity could have been destroyed while we load the image
-                            if (isFinishing) {
-                                return
-                            }
+                            if (isFinishing) return
                             binding.imageViewFullScreen.visibility = View.VISIBLE
                             Toast.makeText(this@ImageZoomActivity, resources.getString(R.string.txtConnectionError), Toast.LENGTH_LONG).show()
                             stopRefresh()

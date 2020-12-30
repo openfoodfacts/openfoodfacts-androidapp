@@ -1,7 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.scanhistory
 
 import android.app.Activity
-import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 
-class ScanHistoryHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView) {
+class ScanHistoryHolder(itemView: View, internal val activity: Activity) : RecyclerView.ViewHolder(itemView) {
     val txtDate: TextView = itemView.findViewById(R.id.dateView)
     val txtTitle: TextView = itemView.findViewById(R.id.titleHistory)
     val txtBarcode: TextView = itemView.findViewById(R.id.barcodeHistory)
@@ -21,7 +20,7 @@ class ScanHistoryHolder(itemView: View, private val context: Context) : Recycler
 
     init {
         itemView.setOnClickListener {
-            OpenFoodAPIClient(context).openProduct(txtBarcode.text.toString(), (it.context as Activity))
+            OpenFoodAPIClient(activity).openProduct(txtBarcode.text.toString(), activity)
         }
     }
 }

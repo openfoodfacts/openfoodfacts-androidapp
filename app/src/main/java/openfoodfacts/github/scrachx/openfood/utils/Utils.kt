@@ -189,10 +189,7 @@ object Utils {
 
         val periodicity = TimeUnit.MINUTES.toSeconds(30).toInt()
         val uploadWorkRequest = OneTimeWorkRequest.Builder(SavedProductUploadWorker::class.java)
-                .setConstraints(Constraints.Builder()
-                        .setRequiredNetworkType(NetworkType.UNMETERED)
-                        .build()
-                )
+                .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
                 .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
         WorkManager.getInstance(context!!).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
 

@@ -46,31 +46,31 @@ import java.text.NumberFormat
 import java.util.*
 
 class ProductSearchActivity : BaseActivity() {
-    private lateinit var client: OpenFoodAPIClient
     private var _binding: ActivityProductBrowsingListBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var client: OpenFoodAPIClient
+    private lateinit var mSearchInfo: SearchInfo
+    private lateinit var adapter: ProductsRecyclerViewAdapter
+
     private var contributionType = 0
     private var disp = CompositeDisposable()
 
     /**
      * boolean to determine if image should be loaded or not
      */
-    private var isLowBatteryMode = false
-    private var mCountProducts = 0
-    private lateinit var mSearchInfo: SearchInfo
-    private lateinit var adapter: ProductsRecyclerViewAdapter
-    private var pageAddress = 1
+    private var lowBatteryMode = false
     private var setupDone = false
+    private var mCountProducts = 0
+    private var pageAddress = 1
 
     override fun onDestroy() {
-        super.onDestroy()
         disp.dispose()
         _binding = null
+        super.onDestroy()
     }
 
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onCreate(newBase))
-    }
+    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase))
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -84,14 +84,10 @@ class ProductSearchActivity : BaseActivity() {
                 return true
             }
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                return true
-            }
+            override fun onQueryTextChange(newText: String) = true
         })
         searchMenuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-            override fun onMenuItemActionExpand(item: MenuItem): Boolean {
-                return true
-            }
+            override fun onMenuItemActionExpand(item: MenuItem) = true
 
             override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
                 supportActionBar?.title = ""
@@ -100,8 +96,7 @@ class ProductSearchActivity : BaseActivity() {
             }
         })
         if (SearchType.CONTRIBUTOR == mSearchInfo.searchType) {
-            val contributionItem = menu.findItem(R.id.action_set_type)
-            contributionItem.isVisible = true
+            menu.findItem(R.id.action_set_type).isVisible = true
         }
         return true
     }
@@ -184,7 +179,7 @@ class ProductSearchActivity : BaseActivity() {
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
         if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
-            isLowBatteryMode = true
+            lowBatteryMode = true
         }
         binding.navigationBottom.bottomNavigation.selectNavigationItem(0)
         binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
@@ -243,7 +238,7 @@ class ProductSearchActivity : BaseActivity() {
                 // TODO: 26/07/2020 use resources
                 supportActionBar?.setSubtitle("State")
             }
-            else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
+            else -> error("No match case found for ${mSearchInfo.searchType}")
         }
         client = OpenFoodAPIClient(this@ProductSearchActivity, BuildConfig.OFWEBSITE)
         binding.progressBar.visibility = View.VISIBLE
@@ -326,11 +321,10 @@ class ProductSearchActivity : BaseActivity() {
             SearchType.STATE -> client.getProductsByStates(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_allergen_products)
 
-            SearchType.INCOMPLETE_PRODUCT -> {
-                // Get Products to be completed data and input it to loadData function
-                client.getIncompleteProducts(pageAddress)
-                        .startSearch(R.string.txt_no_matching_incomplete_products)
-            }
+            // Get Products to be completed data and input it to loadData function
+            SearchType.INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
+                    .startSearch(R.string.txt_no_matching_incomplete_products)
+
             else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
         }
     }
@@ -370,13 +364,13 @@ class ProductSearchActivity : BaseActivity() {
             mCountProducts = response.count.toInt()
             if (pageAddress == 1) {
                 val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
-                binding.textCountProduct.text = resources.getString(R.string.number_of_results) + number
+                binding.textCountProduct.text = "${resources.getString(R.string.number_of_results)}$number"
                 products += response.products
                 if (products.size < mCountProducts) {
-                    products.add(null)
+                    products += null
                 }
                 if (setupDone) {
-                    adapter = ProductsRecyclerViewAdapter(products, isLowBatteryMode, this)
+                    adapter = ProductsRecyclerViewAdapter(products, lowBatteryMode, this)
                     binding.productsRecyclerView.adapter = adapter
                 }
                 setUpRecyclerView(products)
@@ -427,21 +421,23 @@ class ProductSearchActivity : BaseActivity() {
      * @param emptyMessage message to display if there are no results
      * @param extendedMessage extended message to display if there are no results
      */
-    private fun displaySearch(isResponseSuccessful: Boolean, response: Search?,
-                              @StringRes emptyMessage: Int, @StringRes extendedMessage: Int = -1) {
-        if (response == null) {
-            loadData(isResponseSuccessful, null)
+    private fun displaySearch(
+            isResponseSuccessful: Boolean,
+            response: Search?,
+            @StringRes emptyMessage: Int,
+            @StringRes extendedMessage: Int = -1
+    ) = if (response == null) {
+        loadData(isResponseSuccessful, null)
+    } else {
+        val count = try {
+            response.count.toInt()
+        } catch (e: NumberFormatException) {
+            throw NumberFormatException("Cannot parse ${response.count}.")
+        }
+        if (!isResponseSuccessful || count != 0) {
+            loadData(isResponseSuccessful, response)
         } else {
-            val count = try {
-                response.count.toInt()
-            } catch (e: NumberFormatException) {
-                throw NumberFormatException("Cannot parse ${response.count}.")
-            }
-            if (!isResponseSuccessful || count != 0) {
-                loadData(isResponseSuccessful, response)
-            } else {
-                showEmptySearch(emptyMessage, extendedMessage)
-            }
+            showEmptySearch(emptyMessage, extendedMessage)
         }
     }
 
@@ -456,7 +452,7 @@ class ProductSearchActivity : BaseActivity() {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode, this)
+            adapter = ProductsRecyclerViewAdapter(mProducts, lowBatteryMode, this)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)
@@ -546,11 +542,11 @@ class ProductSearchActivity : BaseActivity() {
          */
         @JvmStatic
         private fun start(context: Context, searchInfo: SearchInfo) {
-            val intent = Intent(context, ProductSearchActivity::class.java)
-            intent.putExtra(SEARCH_INFO, searchInfo)
-            context.startActivity(intent)
+            context.startActivity(Intent(context, ProductSearchActivity::class.java).apply {
+                putExtra(SEARCH_INFO, searchInfo)
+            })
         }
 
-        private val LOG_TAG: String = ProductSearchActivity::class.simpleName!!
+        private val LOG_TAG: String = this::class.simpleName!!
     }
 }
