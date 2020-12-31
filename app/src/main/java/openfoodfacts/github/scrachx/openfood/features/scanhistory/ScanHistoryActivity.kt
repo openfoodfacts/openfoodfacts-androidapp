@@ -36,7 +36,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCsvContract
+import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
@@ -44,8 +44,6 @@ import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
 import java.io.File
 import java.time.LocalDate
@@ -58,7 +56,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
     /**
      * boolean to determine if image should be loaded or not
      */
-    private val isLowBatteryMode by lazy { isDisableImageLoad(this) && isBatteryLevelLow(this) }
+    private val isLowBatteryMode by lazy { this.isDisableImageLoad() && this.isBatteryLevelLow() }
 
     private lateinit var adapter: ScanHistoryAdapter
 
@@ -261,7 +259,7 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    val fileWriterLauncher = registerForActivityResult(CreateCsvContract())
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract())
     { writeHistoryToFile(this, adapter.products, it?.toFile() ?: error("File path must not be null.")) }
 
     private fun startScan() {

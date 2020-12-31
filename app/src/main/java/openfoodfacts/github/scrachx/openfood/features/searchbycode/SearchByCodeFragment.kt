@@ -21,7 +21,7 @@ import openfoodfacts.github.scrachx.openfood.utils.isBarcodeValid
 class SearchByCodeFragment : NavigationBaseFragment() {
     private var _binding: FragmentFindProductBinding? = null
     private val binding get() = _binding!!
-    private lateinit var api: OpenFoodAPIClient
+    private val api by lazy { OpenFoodAPIClient(requireActivity()) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentFindProductBinding.inflate(inflater)
@@ -35,7 +35,6 @@ class SearchByCodeFragment : NavigationBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        api = OpenFoodAPIClient(requireActivity())
         binding.editTextBarcode.isSelected = false
         binding.buttonBarcode.setOnClickListener { checkBarcodeThenSearch() }
 

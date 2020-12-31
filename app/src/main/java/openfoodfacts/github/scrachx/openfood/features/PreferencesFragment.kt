@@ -87,13 +87,12 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         setPreferencesFromResource(R.xml.preferences, rootKey)
         setHasOptionsMenu(true)
 
-        val activity = requireActivity()
-        val settings = activity.getSharedPreferences("prefs", 0)
+        val settings = requireActivity().getSharedPreferences("prefs", 0)
 
-        val finalLocalValues = ArrayList<String>()
-        val finalLocalLabels = ArrayList<String?>()
+        val finalLocalValues = arrayListOf<String>()
+        val finalLocalLabels = arrayListOf<String?>()
 
-        val localeValues = activity.resources.getStringArray(R.array.languages_array)
+        val localeValues = requireActivity().resources.getStringArray(R.array.languages_array)
         val localeLabels = arrayOfNulls<String>(localeValues.size)
 
         localeValues.indices.forEach { i ->
@@ -107,11 +106,11 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         languagePreference.entries = finalLocalLabels.toTypedArray()
         languagePreference.entryValues = finalLocalValues.toTypedArray()
         languagePreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _: Preference?, locale: Any? ->
-            val configuration = activity.resources.configuration
+            val configuration = requireActivity().resources.configuration
             Toast.makeText(context, getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 configuration.setLocale(getLocale(locale as String?))
-                activity.recreate()
+                requireActivity().recreate()
             }
             true
         }
@@ -130,7 +129,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
 
         requirePreference<Preference>("deleteSearchHistoryPreference").onPreferenceClickListener = OnPreferenceClickListener {
-            MaterialDialog.Builder(activity)
+            MaterialDialog.Builder(requireActivity())
                     .content(R.string.search_history_pref_dialog_content)
                     .positiveText(R.string.delete_txt)
                     .onPositive { _, _ ->
@@ -164,7 +163,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
         // Execute query
         asyncSessionCountries.queryList(countryNameDao.queryBuilder()
-                .where(CountryNameDao.Properties.LanguageCode.eq(getLanguage(getActivity())))
+                .where(CountryNameDao.Properties.LanguageCode.eq(getLanguage(requireActivity())))
                 .orderAsc(CountryNameDao.Properties.Name).build())
 
         countryPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference: Preference, newValue: Any? ->
@@ -182,15 +181,15 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             try {
                 startActivity(contactIntent)
             } catch (e: ActivityNotFoundException) {
-                Toast.makeText(getActivity(), R.string.email_not_found, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), R.string.email_not_found, Toast.LENGTH_SHORT).show()
             }
             true
         }
         requirePreference<Preference>("RateUs").onPreferenceClickListener = OnPreferenceClickListener {
             try {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.packageName)))
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + requireActivity().packageName)))
             } catch (e: ActivityNotFoundException) {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + activity.packageName)))
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + requireActivity().packageName)))
             }
             true
         }
@@ -206,7 +205,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         energyUnitPreference.entryValues = energyUnits
         energyUnitPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
             settings.edit { putString("energyUnitPreference", newValue as String?) }
-            Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             true
         }
         val volumeUnitPreference = requirePreference<ListPreference>("volumeUnitPreference")
@@ -215,7 +214,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         volumeUnitPreference.entryValues = volumeUnits
         volumeUnitPreference.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
             settings.edit { putString("volumeUnitPreference", newValue as String?) }
-            Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
             true
         }
         val values = requireActivity().resources.getStringArray(R.array.upload_image)
@@ -224,7 +223,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             it.entryValues = values
             it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
                 settings.edit { putString("imageUpload", newValue as String?) }
-                Toast.makeText(getActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
                 true
             }
         }
@@ -237,7 +236,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         requirePreference<Preference>("Version").let {
             it.isEnabled = false
             try {
-                val pInfo = activity.packageManager.getPackageInfo(activity.packageName, 0)
+                val pInfo = requireActivity().packageManager.getPackageInfo(requireActivity().packageName, 0)
                 val version = pInfo.versionName
                 it.summary = getString(R.string.version_string) + " " + version
             } catch (e: PackageManager.NameNotFoundException) {

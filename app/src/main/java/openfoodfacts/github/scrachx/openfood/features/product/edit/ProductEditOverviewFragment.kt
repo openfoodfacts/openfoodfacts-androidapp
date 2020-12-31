@@ -865,7 +865,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         binding.btnEditImgFront.visibility = View.INVISIBLE
     }
 
-    fun hideImageProgress(errorInUploading: Boolean, message: String?) {
+    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
         if (!isAdded) {
             return
         }

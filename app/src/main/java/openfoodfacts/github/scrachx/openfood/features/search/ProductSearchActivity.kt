@@ -102,37 +102,40 @@ class ProductSearchActivity : BaseActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish()
-            return true
-        }
-        if (item.itemId == R.id.action_set_type) {
-            val contributionTypes = arrayOf(
-                    getString(R.string.products_added),
-                    getString(R.string.products_incomplete),
-                    getString(R.string.product_pictures_contributed),
-                    getString(R.string.picture_contributed_incomplete),
-                    getString(R.string.product_info_added),
-                    getString(R.string.product_info_tocomplete)
-            )
-            MaterialDialog.Builder(this).apply {
-                title(R.string.show_by)
-                items(*contributionTypes)
-                itemsCallback { _, _, position, _ ->
-                    when (position) {
-                        1, 2, 3, 4, 5 -> {
-                            contributionType = position
-                            newSearchQuery()
-                        }
-                        else -> {
-                            contributionType = 0
-                            newSearchQuery()
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            R.id.action_set_type -> {
+                val contributionTypes = arrayOf(
+                        getString(R.string.products_added),
+                        getString(R.string.products_incomplete),
+                        getString(R.string.product_pictures_contributed),
+                        getString(R.string.picture_contributed_incomplete),
+                        getString(R.string.product_info_added),
+                        getString(R.string.product_info_tocomplete)
+                )
+                MaterialDialog.Builder(this).apply {
+                    title(R.string.show_by)
+                    items(*contributionTypes)
+                    itemsCallback { _, _, position, _ ->
+                        when (position) {
+                            1, 2, 3, 4, 5 -> {
+                                contributionType = position
+                                newSearchQuery()
+                            }
+                            else -> {
+                                contributionType = 0
+                                newSearchQuery()
+                            }
                         }
                     }
-                }
-            }.show()
+                }.show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -178,7 +181,7 @@ class ProductSearchActivity : BaseActivity() {
         newSearchQuery()
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
+        if (isDisableImageLoad() && isBatteryLevelLow()) {
             lowBatteryMode = true
         }
         binding.navigationBottom.bottomNavigation.selectNavigationItem(0)

@@ -53,12 +53,13 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
-import java.util.*
 
-class ProductCompareAdapter(private val productsToCompare: List<Product>, internal val activity: Activity) : RecyclerView.Adapter<ProductComparisonViewHolder>() {
+class ProductCompareAdapter(
+        private val productsToCompare: List<Product>,
+        internal val activity: Activity
+) : RecyclerView.Adapter<ProductComparisonViewHolder>() {
     private val addProductButton = activity.findViewById<Button>(R.id.product_comparison_button)
-    private val api = OpenFoodAPIClient(activity)
-    private var isLowBatteryMode = false
+    private val api by lazy { OpenFoodAPIClient(activity) }
     private val disp = CompositeDisposable()
     private val viewHolders = mutableListOf<ProductComparisonViewHolder>()
     private var onPhotoReturnPosition: Int? = null
@@ -67,6 +68,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         val v = LayoutInflater.from(parent.context).inflate(R.layout.product_comparison_list_item, parent, false)
         val viewHolder = ProductComparisonViewHolder(v)
         viewHolders.add(viewHolder)
+
         return viewHolder
     }
 
@@ -78,11 +80,8 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
 
         // Support synchronous scrolling
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            holder.listItemLayout.setOnScrollChangeListener { _: View?, scrollX: Int, scrollY: Int, _: Int, _: Int ->
-                for (viewHolder in viewHolders) {
-                    viewHolder.listItemLayout.scrollX = scrollX
-                    viewHolder.listItemLayout.scrollY = scrollY
-                }
+            holder.listItemLayout.setOnScrollChangeListener { _, scrollX, scrollY, _, _ ->
+                viewHolders.forEach { it.listItemLayout.scrollTo(scrollX, scrollY) }
             }
         }
 
@@ -117,11 +116,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
         }
         if (!imageUrl.isNullOrBlank()) {
             holder.productComparisonLabel.visibility = View.INVISIBLE
-            if (Utils.isDisableImageLoad(activity) && Utils.isBatteryLevelLow(activity)) {
-                isLowBatteryMode = true
-            }
-            // Load Image if isLowBatteryMode is false
-            if (!isLowBatteryMode) {
+            if (!activity.isLowBatteryMode()) {
                 Utils.picassoBuilder(activity)
                         .load(imageUrl)
                         .into(holder.productComparisonImage)
@@ -214,7 +209,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
                         imm.hideSoftInputFromWindow(view1!!.windowToken, 0)
                     }
                 } catch (e: NullPointerException) {
-                    Log.e(ProductCompareAdapter::class.java.simpleName, "setOnClickListener", e)
+                    Log.e(ProductCompareAdapter::class.simpleName, "setOnClickListener", e)
                 }
             } else {
                 MaterialDialog.Builder(activity).apply {
@@ -235,51 +230,44 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
     }
 
     private fun loadAdditives(product: Product, v: View) {
-        val additivesBuilder = StringBuilder()
-        val additivesTags = product.additivesTags
-        if (additivesTags.isEmpty()) {
-            return
-        }
-        val languageCode = LocaleHelper.getLanguage(v.context)
-        disp.add(
-                additivesTags.toTypedArray().toObservable()
-                        .flatMapSingle { tag: String? ->
-                            return@flatMapSingle ProductRepository.getAdditiveByTagAndLanguageCode(tag, languageCode)
-                                    .flatMap { categoryName: AdditiveName ->
-                                        if (categoryName.isNull) {
-                                            return@flatMap ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
-                                        } else {
-                                            return@flatMap Single.just(categoryName)
-                                        }
-                                    }
-                        }
-                        .filter { it.isNotNull }
-                        .toList()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .doOnError { Log.e(ProductCompareAdapter::class.java.simpleName, "loadAdditives", it) }
-                        .subscribe { additives: List<AdditiveName> ->
-                            if (additives.isNotEmpty()) {
-                                additivesBuilder.append(bold(activity.getString(R.string.compare_additives)))
-                                additivesBuilder.append(" ")
-                                additivesBuilder.append("\n")
-                                for (i in 0 until additives.size - 1) {
-                                    additivesBuilder.append(additives[i].name)
-                                    additivesBuilder.append("\n")
+        if (product.additivesTags.isEmpty()) return
+        product.additivesTags.toObservable()
+                .flatMapSingle { tag ->
+                    ProductRepository.getAdditiveByTagAndLanguageCode(tag, LocaleHelper.getLanguage(activity))
+                            .flatMap { categoryName: AdditiveName ->
+                                if (categoryName.isNull) {
+                                    ProductRepository.getAdditiveByTagAndDefaultLanguageCode(tag)
+                                } else {
+                                    Single.just(categoryName)
                                 }
-                                additivesBuilder.append(additives[additives.size - 1].name)
-                                (v as TextView).text = additivesBuilder.toString()
-                                setMaxCardHeight()
                             }
+                }
+                .filter { it.isNotNull }
+                .toList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError { Log.e(ProductCompareAdapter::class.simpleName, "loadAdditives", it) }
+                .subscribe { additives: List<AdditiveName> ->
+                    if (additives.isNotEmpty()) {
+                        val additivesBuilder = StringBuilder()
+                        additivesBuilder.append(bold(activity.getString(R.string.compare_additives)))
+                        additivesBuilder.append(" ")
+                        additivesBuilder.append("\n")
+                        for (i in 0 until additives.size - 1) {
+                            additivesBuilder.append(additives[i].name)
+                            additivesBuilder.append("\n")
                         }
-
-        )
+                        additivesBuilder.append(additives[additives.size - 1].name)
+                        (v as TextView).text = additivesBuilder.toString()
+                        setMaxCardHeight()
+                    }
+                }.addTo(disp)
     }
 
     override fun getItemCount() = productsToCompare.size
 
     private fun loadLevelItems(product: Product?): List<NutrientLevelItem> {
-        val levelItem: MutableList<NutrientLevelItem> = ArrayList()
+        val levelItem = arrayListOf<NutrientLevelItem>()
         val nutriments = product!!.nutriments
         val nutrientLevels = product.nutrientLevels
         var fat: NutrimentLevel? = null
@@ -292,7 +280,7 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
             sugars = nutrientLevels.sugars
             salt = nutrientLevels.salt
         }
-        if (!(fat == null && salt == null && saturatedFat == null && sugars == null)) {
+        if (fat != null || salt != null || saturatedFat != null || sugars != null) {
             val fatNutriment = nutriments[Nutriments.FAT]
             if (fat != null && fatNutriment != null) {
                 val fatNutrimentLevel = fat.getLocalize(activity)
@@ -336,9 +324,8 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
 
     fun setImageOnPhotoReturn(file: File) {
         val product = productsToCompare[onPhotoReturnPosition!!]
-        val image = ProductImage(product.code, ProductImageField.FRONT, file).apply {
-            filePath = file.absolutePath
-        }
+        val image = ProductImage(product.code, ProductImageField.FRONT, file).apply { filePath = file.absolutePath }
+
         api.postImg(image).subscribe().addTo(disp)
         product.imageUrl = file.absolutePath
         onPhotoReturnPosition = null
@@ -347,20 +334,20 @@ class ProductCompareAdapter(private val productsToCompare: List<Product>, intern
 
     private fun setMaxCardHeight() {
         //getting all the heights of CardViews
-        val productDetailsHeight = ArrayList<Int>()
-        val productNutrientsHeight = ArrayList<Int>()
-        val productAdditivesHeight = ArrayList<Int>()
-        for (current in viewHolders) {
-            productDetailsHeight.add(current.productComparisonDetailsCv.height)
-            productNutrientsHeight.add(current.productComparisonNutrientCv.height)
-            productAdditivesHeight.add(current.productComparisonAdditiveText.height)
+        val productDetailsHeight = arrayListOf<Int>()
+        val productNutrientsHeight = arrayListOf<Int>()
+        val productAdditivesHeight = arrayListOf<Int>()
+        viewHolders.forEach {
+            productDetailsHeight.add(it.productComparisonDetailsCv.height)
+            productNutrientsHeight.add(it.productComparisonNutrientCv.height)
+            productAdditivesHeight.add(it.productComparisonAdditiveText.height)
         }
 
         //setting all the heights to be the maximum
-        for (current in viewHolders) {
-            current.productComparisonDetailsCv.minimumHeight = Collections.max(productDetailsHeight)
-            current.productComparisonNutrientCv.minimumHeight = Collections.max(productNutrientsHeight)
-            current.productComparisonAdditiveText.height = dpsToPixel(Collections.max(productAdditivesHeight))
+        viewHolders.forEach {
+            it.productComparisonDetailsCv.minimumHeight = productDetailsHeight.maxOrNull()!!
+            it.productComparisonNutrientCv.minimumHeight = productNutrientsHeight.maxOrNull()!!
+            it.productComparisonAdditiveText.height = dpsToPixel(productAdditivesHeight.maxOrNull()!!)
         }
     }
 

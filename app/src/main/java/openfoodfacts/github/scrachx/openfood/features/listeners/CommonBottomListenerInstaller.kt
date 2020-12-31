@@ -15,12 +15,10 @@ object CommonBottomListenerInstaller {
     )
 
 
-    fun BottomNavigationView.selectNavigationItem(itemId: Int) {
-        if (itemId in NAV_ITEMS) {
-            menu.findItem(itemId).isChecked = true
-        } else {
-            menu.getItem(0).isCheckable = false
-        }
+    fun BottomNavigationView.selectNavigationItem(itemId: Int) = if (itemId in NAV_ITEMS) {
+        menu.findItem(itemId).isChecked = true
+    } else {
+        menu.getItem(0).isCheckable = false
     }
 
     fun BottomNavigationView.installBottomNavigation(activity: Activity) =

@@ -57,7 +57,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun getUserLogin() = getLoginPreferences().getString("user", null)
 
-    fun getUserSession(): String? = getLoginPreferences().getString("user_session", null)
+    fun getUserSession() = getLoginPreferences().getString("user_session", null)
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

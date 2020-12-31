@@ -19,7 +19,6 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -27,7 +26,6 @@ import android.graphics.Canvas
 import android.graphics.Typeface
 import android.net.ConnectivityManager
 import android.net.Uri
-import android.os.BatteryManager
 import android.os.Environment
 import android.text.Spannable
 import android.text.SpannableString
@@ -45,7 +43,6 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
-import androidx.preference.PreferenceManager
 import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.OkHttp3Downloader
@@ -71,7 +68,6 @@ import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
 import java.io.*
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.math.ceil
 
 private const val LOG_TAG_COMPRESS = "COMPRESS_IMAGE"
 
@@ -285,25 +281,6 @@ object Utils {
         spannableText.setSpan(clickableSpan, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         return spannableText
     }
-
-    /**
-     * Function which returns true if the battery level is low
-     *
-     * @param context the context
-     * @return true if battery is low or false if battery in not low
-     */
-    fun isBatteryLevelLow(context: Context): Boolean {
-        val ifilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-        val batteryStatus = context.registerReceiver(null, ifilter) ?: throw IllegalStateException("cannot get battery level")
-        val level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
-        val scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
-        val batteryPct = level / scale.toFloat() * 100
-        Log.i("BATTERYSTATUS", batteryPct.toString())
-        return ceil(batteryPct.toDouble()) <= 15
-    }
-
-    fun isDisableImageLoad(context: Context) = PreferenceManager.getDefaultSharedPreferences(context)
-            .getBoolean("disableImageLoad", false)
 
     /**
      * Function to open ContinuousScanActivity to facilitate scanning

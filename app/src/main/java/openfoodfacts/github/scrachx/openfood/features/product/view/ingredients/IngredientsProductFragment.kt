@@ -61,8 +61,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenNa
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import java.io.File
 import java.util.regex.Pattern
 
@@ -90,11 +88,11 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     private var ingredientExtracted = false
 
-    /** boolean to determine if image should be loaded or not */
-    private var isLowBatteryMode = false
     private var mSendProduct: SendProduct? = null
+
     var ingredients: String? = null
         private set
+
     private var sendUpdatedIngredientsImage = false
 
 
@@ -130,10 +128,6 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
         if (arguments != null) mSendProduct = getSendProduct()
 
-        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (isDisableImageLoad(requireContext()) && isBatteryLevelLow(requireContext())) {
-            isLowBatteryMode = true
-        }
         val product = this.productState.product!!
         presenter = IngredientsProductPresenter(product, this).apply { addTo(disp) }
         val vitaminTagsList = product.vitaminTags
@@ -170,7 +164,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             binding.changeIngImg.visibility = View.VISIBLE
 
             // Load Image if isLowBatteryMode is false
-            if (!isLowBatteryMode) {
+            if (!requireContext().isBatteryLevelLow()) {
                 Utils.picassoBuilder(requireContext())
                         .load(product.getImageIngredientsUrl(langCode))
                         .into(binding.imageViewIngredients)

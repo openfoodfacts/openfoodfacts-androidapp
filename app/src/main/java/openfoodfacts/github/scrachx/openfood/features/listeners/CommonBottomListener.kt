@@ -25,9 +25,7 @@ import openfoodfacts.github.scrachx.openfood.utils.Utils
 class CommonBottomListener internal constructor(private val currentActivity: Activity) : BottomNavigationView.OnNavigationItemSelectedListener {
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.scan_bottom_nav -> {
-                openScanActivity()
-            }
+            R.id.scan_bottom_nav -> openScanActivity()
             R.id.compare_products -> {
                 if (isCurrentActivity(ProductCompareActivity::class.java)) {
                     return true
@@ -69,11 +67,13 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
         }
         // If no camera is installed, alert the user
         if (!Utils.isHardwareCameraInstalled(currentActivity)) {
-            MaterialDialog.Builder(currentActivity)
-                    .title(R.string.no_camera_dialog_title)
-                    .content(R.string.no_camera_dialog_content)
-                    .neutralText(R.string.txtOk)
-                    .show()
+            MaterialDialog.Builder(currentActivity).run {
+                title(R.string.no_camera_dialog_title)
+                content(R.string.no_camera_dialog_content)
+                neutralText(R.string.txtOk)
+                show()
+            }
+
             return
         }
         // Otherwise check permissions and go to continuous scan activity

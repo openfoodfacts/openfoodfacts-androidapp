@@ -30,7 +30,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.afollestad.materialdialogs.MaterialDialog
-import com.fasterxml.jackson.databind.JsonNode
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -72,15 +71,19 @@ class ProductEditActivity : AppCompatActivity() {
 
     private val disp = CompositeDisposable()
     private val fragmentsBundle = Bundle()
+
     private val addProductPhotosFragment = ProductEditPhotosFragment()
     private val nutritionFactsFragment = ProductEditNutritionFactsFragment()
     private val ingredientsFragment = ProductEditIngredientsFragment()
     private val editOverviewFragment = ProductEditOverviewFragment()
+
     private val imagesFilePath = arrayOfNulls<String>(3)
+
     private var editingMode = false
     private var imageFrontUploaded = false
     private var imageIngredientsUploaded = false
     private var imageNutritionFactsUploaded = false
+
     var initialValues: MutableMap<String, String?>? = null
         private set
 
@@ -116,24 +119,22 @@ class ProductEditActivity : AppCompatActivity() {
                 .show()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                MaterialDialog.Builder(this)
-                        .content(R.string.save_product)
-                        .positiveText(R.string.txtSave)
-                        .negativeText(R.string.txt_discard)
-                        .onPositive { _, _ -> checkFieldsThenSave() }
-                        .onNegative { _, _ -> finish() }
-                        .show()
-                return true
-            }
-            R.id.save_product -> {
-                checkFieldsThenSave()
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            MaterialDialog.Builder(this)
+                    .content(R.string.save_product)
+                    .positiveText(R.string.txtSave)
+                    .negativeText(R.string.txt_discard)
+                    .onPositive { _, _ -> checkFieldsThenSave() }
+                    .onNegative { _, _ -> finish() }
+                    .show()
+            true
         }
+        R.id.save_product -> {
+            checkFieldsThenSave()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 
     private fun selectPage(position: Int) = when (position) {
@@ -222,7 +223,7 @@ class ProductEditActivity : AppCompatActivity() {
         adapterResult.addFragment(ingredientsFragment, "Ingredients")
 
         // If on off or opff, add Nutrition Facts fragment
-        if (isOFFOrOPFF()) {
+        if (isFlavors(AppFlavors.OFF, AppFlavors.OPFF)) {
             nutritionFactsFragment.arguments = fragmentsBundle
             adapterResult.addFragment(nutritionFactsFragment, "Nutrition Facts")
         } else if (isFlavors(AppFlavors.OBF, AppFlavors.OPF)) {
@@ -251,7 +252,7 @@ class ProductEditActivity : AppCompatActivity() {
     private fun saveProduct() {
         editOverviewFragment.addUpdatedFieldsToMap(productDetails)
         ingredientsFragment.addUpdatedFieldsToMap(productDetails)
-        if (isOFFOrOPFF()) {
+        if (isFlavors(AppFlavors.OFF, AppFlavors.OPFF)) {
             nutritionFactsFragment.addUpdatedFieldsToMap(productDetails)
         }
         addLoginInfoToProductDetails(productDetails)
@@ -301,7 +302,7 @@ class ProductEditActivity : AppCompatActivity() {
     private fun checkFieldsThenSave() {
         if (editingMode) {
             // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-            if (isOFFOrOPFF() && nutritionFactsFragment.anyInvalid()) {
+            if (isFlavors(AppFlavors.OFF, AppFlavors.OPFF) && nutritionFactsFragment.anyInvalid()) {
                 // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
                 binding.viewpager.setCurrentItem(2, true)
             } else {
@@ -311,7 +312,7 @@ class ProductEditActivity : AppCompatActivity() {
             // add mode, check if we have required fields
             if (editOverviewFragment.anyInvalid()) {
                 binding.viewpager.setCurrentItem(0, true)
-            } else if (isOFFOrOPFF() && nutritionFactsFragment.anyInvalid()) {
+            } else if (isFlavors(AppFlavors.OFF, AppFlavors.OPFF) && nutritionFactsFragment.anyInvalid()) {
                 binding.viewpager.setCurrentItem(2, true)
             } else {
                 saveProduct()
@@ -338,8 +339,8 @@ class ProductEditActivity : AppCompatActivity() {
     fun addToPhotoMap(image: ProductImage, position: Int) {
         val lang = getProductLanguageForEdition()
         var ocr = false
+        val imgMap = hashMapOf<String, RequestBody?>()
         val imageField = createTextPlain("${image.imageField}_$lang")
-        val imgMap = HashMap<String, RequestBody?>()
         imgMap[ApiFields.Keys.BARCODE] = image.code
         imgMap["imagefield"] = imageField
         if (image.imgFront != null) {
@@ -381,8 +382,8 @@ class ProductEditActivity : AppCompatActivity() {
                             daoSession.toUploadProductDao!!.insertOrReplace(product)
                         }
                     } else {
-                        hideImageProgress(position, true, it.message)
-                        Log.i(this.javaClass.simpleName, it.message!!)
+                        hideImageProgress(position, true, it.message ?: "Empty error.")
+                        Log.i(this::class.simpleName, it.message ?: "Empty error.")
                         Toast.makeText(OFFApplication.instance, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -420,65 +421,65 @@ class ProductEditActivity : AppCompatActivity() {
                 }.addTo(disp)
     }
 
-    private fun setPhoto(image: ProductImage, imagefield: String, imgid: String, ocr: Boolean) {
-        val queryMap: MutableMap<String, String> = hashMapOf(
-                "imgid" to imgid,
-                "id" to imagefield
-        )
+    private fun setPhoto(image: ProductImage, imagefield: String, imgid: String, performOCR: Boolean) {
+        val queryMap = hashMapOf("imgid" to imgid, "id" to imagefield)
+
         productsApi.editImageSingle(image.barcode, queryMap)
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { e: Throwable ->
+                .doOnError { e ->
                     if (e is IOException) {
-                        if (ocr) {
+                        if (performOCR) {
                             val view = findViewById<View>(R.id.coordinator_layout)
                             Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
                                     .setAction(R.string.txt_try_again) { setPhoto(image, imagefield, imgid, true) }.show()
                         }
                     } else {
-                        Log.i(this.javaClass.simpleName, e.message!!)
-                        Toast.makeText(OFFApplication.instance, e.message, Toast.LENGTH_SHORT).show()
+                        Log.i(this::class.simpleName, e.message!!)
+                        Toast.makeText(this@ProductEditActivity, e.message, Toast.LENGTH_SHORT).show()
                     }
                 }
-                .subscribe { jsonNode: JsonNode ->
+                .subscribe { jsonNode ->
                     val status = jsonNode["status"].asText()
-                    if (ocr && status == "status ok") {
+                    if (performOCR && status == "status ok") {
                         performOCR(image.barcode, imagefield)
                     }
                 }.addTo(disp)
     }
 
     fun performOCR(code: String?, imageField: String?) {
-        productsApi.getIngredients(code, imageField)
+        productsApi.performOCR(code, imageField)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { ingredientsFragment.showOCRProgress() }
-                .doOnError { throwable: Throwable ->
+                .doOnError {
                     ingredientsFragment.hideOCRProgress()
-                    if (throwable is IOException) {
+                    if (it is IOException) {
                         val view = findViewById<View>(R.id.coordinator_layout)
                         Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, BaseTransientBottomBar.LENGTH_INDEFINITE)
-                                .setAction(R.string.txt_try_again) { performOCR(code, imageField) }.show()
+                                .setAction(R.string.txt_try_again) { performOCR(code, imageField) }
+                                .show()
                     } else {
-                        Log.e(this.javaClass.simpleName, throwable.message, throwable)
-                        Toast.makeText(this@ProductEditActivity, throwable.message, Toast.LENGTH_SHORT).show()
+                        Log.e(this::class.simpleName, it.message, it)
+                        Toast.makeText(this@ProductEditActivity, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
-                .subscribe { jsonNode: JsonNode ->
+                .subscribe { node ->
                     ingredientsFragment.hideOCRProgress()
-                    val status = jsonNode["status"].toString()
+                    val status = node["status"].toString()
                     if (status == "0") {
-                        val ocrResult = jsonNode["ingredients_text_from_image"].asText()
+                        val ocrResult = node["ingredients_text_from_image"].asText()
                         ingredientsFragment.setIngredients(status, ocrResult)
                     } else {
                         ingredientsFragment.setIngredients(status, null)
                     }
-                }.addTo(disp)
+                }
+                .addTo(disp)
     }
 
-    private fun hideImageProgress(position: Int, errorUploading: Boolean, message: String?) {
+    private fun hideImageProgress(position: Int, errorUploading: Boolean, message: String) {
         when (position) {
             0 -> editOverviewFragment.hideImageProgress(errorUploading, message)
             1 -> ingredientsFragment.hideImageProgress(errorUploading, message)
-            2 -> nutritionFactsFragment.hideImageProgress(errorUploading)
+            2 -> nutritionFactsFragment.hideImageProgress(errorUploading, message)
             3 -> editOverviewFragment.hideOtherImageProgress(errorUploading, message)
             4 -> addProductPhotosFragment.hideImageProgress(errorUploading, message)
         }
@@ -509,16 +510,13 @@ class ProductEditActivity : AppCompatActivity() {
             ingredientsFragment.setIngredients(status, ingredients)
 
     class EditProductPerformOCR : ActivityResultContract<Product?, Boolean>() {
-        override fun createIntent(context: Context, product: Product?): Intent {
-            return Intent(context, ProductEditActivity::class.java).apply {
-                putExtra(KEY_EDIT_PRODUCT, product)
-                putExtra(KEY_PERFORM_OCR, true)
-            }
-        }
+        override fun createIntent(context: Context, product: Product?) =
+                Intent(context, ProductEditActivity::class.java).apply {
+                    putExtra(KEY_EDIT_PRODUCT, product)
+                    putExtra(KEY_PERFORM_OCR, true)
+                }
 
-        override fun parseResult(resultCode: Int, intent: Intent?): Boolean {
-            return resultCode == RESULT_OK
-        }
+        override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
 
     class EditProductSendUpdatedImg : ActivityResultContract<Product?, Boolean>() {
@@ -580,14 +578,12 @@ class ProductEditActivity : AppCompatActivity() {
 
         @JvmOverloads
         fun start(context: Context, state: ProductState?, sendUpdated: Boolean = false, performOcr: Boolean = false) {
-            val starter = Intent(context, ProductEditActivity::class.java).apply {
+            Intent(context, ProductEditActivity::class.java).apply {
                 putExtra(KEY_STATE, state)
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
                 if (performOcr) putExtra(KEY_PERFORM_OCR, true)
                 context.startActivity(this)
             }
         }
-
-        private fun isOFFOrOPFF() = isFlavors(AppFlavors.OFF, AppFlavors.OPFF)
     }
 }

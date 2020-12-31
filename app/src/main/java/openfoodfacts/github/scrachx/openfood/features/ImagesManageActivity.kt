@@ -17,7 +17,6 @@ package openfoodfacts.github.scrachx.openfood.features
 
 import android.Manifest.permission
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -75,44 +74,46 @@ import java.util.*
 class ImagesManageActivity : BaseActivity() {
     private var _binding: ActivityFullScreenImageBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var client: OpenFoodAPIClient
+
+    private val disp = CompositeDisposable()
+
     private var lastViewedImage: File? = null
     private var attacher: PhotoViewAttacher? = null
-    private var settings: SharedPreferences? = null
-    private var disp = CompositeDisposable()
+    private val settings by lazy { getSharedPreferences("prefs", 0) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        disp = CompositeDisposable()
         client = OpenFoodAPIClient(this)
         _binding = ActivityFullScreenImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         // Setup onclick listeners
-        binding.btnDone.setOnClickListener { v: View? -> onExit() }
-        binding.btnUnselectImage.setOnClickListener { v: View? -> unSelectImage() }
-        binding.btnChooseImage.setOnClickListener { v: View? -> onChooseImage() }
-        binding.btnAddImage.setOnClickListener { v: View? -> onAddImage() }
-        binding.btnChooseDefaultLanguage.setOnClickListener { v: View? -> onSelectDefaultLanguage() }
-        binding.btnEditImage.setOnClickListener { v: View? -> onStartEditExistingImage() }
+        binding.btnDone.setOnClickListener { onExit() }
+        binding.btnUnselectImage.setOnClickListener { unSelectImage() }
+        binding.btnChooseImage.setOnClickListener { selectImage() }
+        binding.btnAddImage.setOnClickListener { addImage() }
+        binding.btnChooseDefaultLanguage.setOnClickListener { selectDefaultLanguage() }
+        binding.btnEditImage.setOnClickListener { onStartEditExistingImage() }
+
         binding.comboLanguages.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
                 onLanguageChanged()
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit // Do nothing
         }
+
         binding.comboImageType.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
                 onImageTypeChanged()
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit // Do nothing
         }
-        settings = getSharedPreferences("prefs", 0).also {
+        settings.let {
             if (it.getBoolean(getString(R.string.check_first_time), true)) {
                 startShowCase(getString(R.string.title_image_type), getString(R.string.content_image_type), R.id.comboImageType, 1)
             }
@@ -128,27 +129,17 @@ class ImagesManageActivity : BaseActivity() {
             postponeEnterTransition()
         }
         SwipeDetector(binding.imageViewFullScreen, object : OnSwipeEventListener {
-            override fun onSwipeEventDetected(v: View?, swipeType: SwipeTypeEnum?) {
-                when {
-                    swipeType === SwipeTypeEnum.LEFT_TO_RIGHT -> {
-                        incrementImageType(-1)
-                    }
-                    swipeType === SwipeTypeEnum.RIGHT_TO_LEFT -> {
-                        incrementImageType(1)
-                    }
-                    swipeType === SwipeTypeEnum.TOP_TO_BOTTOM -> {
-                        onRefresh(true)
-                    }
-                    else -> {
-                        stopRefresh()
-                    }
-                }
+            override fun onSwipeEventDetected(v: View?, swipeType: SwipeTypeEnum?) = when (swipeType) {
+                SwipeTypeEnum.LEFT_TO_RIGHT -> incrementImageType(-1)
+                SwipeTypeEnum.RIGHT_TO_LEFT -> incrementImageType(1)
+                SwipeTypeEnum.TOP_TO_BOTTOM -> onRefresh(true)
+                else -> stopRefresh()
             }
         })
         val adapter = ArrayAdapter(this, R.layout.simple_spinner_item_white, generateImageTypeNames())
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
         binding.comboImageType.adapter = adapter
-        setSupportActionBar(binding.toolbar)
+
         if (supportActionBar != null) {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
@@ -159,9 +150,9 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         disp.dispose()
         _binding = null
+        super.onDestroy()
     }
 
     private fun startShowCase(title: String, content: String, viewId: Int, type: Int) {
@@ -180,9 +171,7 @@ class ImagesManageActivity : BaseActivity() {
                         4 -> startShowCase(getString(R.string.title_edit_photo), getString(R.string.content_edit_photo), R.id.btnEditImage, 5)
                         5 -> startShowCase(getString(R.string.title_unselect_photo), getString(R.string.content_unselect_photo), R.id.btnUnselectImage, 6)
                         6 -> startShowCase(getString(R.string.title_exit), getString(R.string.content_exit), R.id.btn_done, 7)
-                        7 -> {
-                            settings!!.edit { putBoolean(getString(R.string.check_first_time), false) }
-                        }
+                        7 -> settings!!.edit { putBoolean(getString(R.string.check_first_time), false) }
                     }
                 }
                 .build()
@@ -221,12 +210,8 @@ class ImagesManageActivity : BaseActivity() {
             languageForImage.add(getLanguageData(currentLanguage, false))
         }
         val localeValues = resources.getStringArray(R.array.languages_array)
-        val otherNotSupportedCode: MutableList<String?> = ArrayList()
-        for (local in localeValues) {
-            if (!addedLanguages.contains(local)) {
-                otherNotSupportedCode.add(local)
-            }
-        }
+        val otherNotSupportedCode = localeValues.filter { it !in addedLanguages }
+
         languageForImage.addAll(getLanguageData(otherNotSupportedCode, false))
         val adapter = LanguageDataAdapter(this, R.layout.simple_spinner_item_white, languageForImage)
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice)
@@ -271,7 +256,7 @@ class ImagesManageActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        updateToolbarTitle(product)
+        updateToolbarTitle(getProduct())
     }
 
     private fun onRefresh(reloadProduct: Boolean) {
@@ -318,7 +303,7 @@ class ImagesManageActivity : BaseActivity() {
     private fun reloadProduct() {
         if (isFinishing) return
 
-        product?.let {
+        getProduct()?.let {
             startRefresh(getString(R.string.loading_product, "${it.getLocalProductName(this)}..."))
             disp.add(client.getProductImages(it.code).subscribe { newState: ProductState ->
                 val newProduct = newState.product
@@ -354,7 +339,7 @@ class ImagesManageActivity : BaseActivity() {
      * Could be improved by loading only the field "images".
      */
     private fun updateProductImagesInfo(toDoAfter: Runnable?) {
-        product?.let {
+        getProduct()?.let {
             disp.add(client.getProductImages(it.code).subscribe { newState: ProductState ->
                 val newStateProduct = newState.product
                 if (newStateProduct != null) {
@@ -380,8 +365,7 @@ class ImagesManageActivity : BaseActivity() {
         updateLanguageStatus()
     }
 
-    private val isRefreshing: Boolean
-        get() = binding.progressBar.visibility == View.VISIBLE
+    private fun isRefreshing() = binding.progressBar.visibility == View.VISIBLE
 
     /**
      * @param text
@@ -395,8 +379,8 @@ class ImagesManageActivity : BaseActivity() {
         }
     }
 
-    private fun onSelectDefaultLanguage() {
-        val lang = getLocale(product!!.lang).language
+    private fun selectDefaultLanguage() {
+        val lang = getLocale(getProduct()!!.lang).language
         getLanguageData(lang, true)
         val position = (binding.comboLanguages.adapter as LanguageDataAdapter).getPosition(lang)
         if (position >= 0) {
@@ -414,20 +398,17 @@ class ImagesManageActivity : BaseActivity() {
             return
         }
         startRefresh(getString(R.string.unselect_image))
-        disp.add(client.unSelectImage(product!!.code, getSelectedType(), getCurrentLanguage()).subscribe({
-            setResult(RESULTCODE_MODIFIED)
-            reloadProduct()
-        }, { reloadProduct() }))
+        client.unSelectImage(getProduct()!!.code, getSelectedType(), getCurrentLanguage())
+                .doOnError { reloadProduct() }
+                .subscribe { _ ->
+                    setResult(RESULTCODE_MODIFIED)
+                    reloadProduct()
+                }.addTo(disp)
     }
 
-    private fun onChooseImage() {
-        if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) {
-            return
-        }
-        val intent = Intent(this, ImagesSelectActivity::class.java)
-        intent.putExtra(PRODUCT_BARCODE, product!!.code)
-        intent.putExtra(ImagesSelectActivity.TOOLBAR_TITLE, binding.toolbar.title)
-        startActivityForResult(intent, REQUEST_CHOOSE_IMAGE)
+    private fun selectImage() {
+        if (cannotEdit(REQUEST_CHOOSE_IMAGE_AFTER_LOGIN)) return
+        selectImageLauncher.launch(getProduct()!!.code)
     }
 
     /**
@@ -437,7 +418,7 @@ class ImagesManageActivity : BaseActivity() {
      * @return true if user **cannot edit**, false otherwise.
      */
     private fun cannotEdit(loginRequestCode: Int): Boolean {
-        if (isRefreshing) {
+        if (isRefreshing()) {
             Toast.makeText(this, R.string.cant_modify_if_refreshing, Toast.LENGTH_SHORT).show()
             return true
         }
@@ -449,10 +430,9 @@ class ImagesManageActivity : BaseActivity() {
         return false
     }
 
-    private fun onAddImage() {
-        if (cannotEdit(REQUEST_ADD_IMAGE_AFTER_LOGIN)) {
-            return
-        }
+    private fun addImage() {
+        if (cannotEdit(REQUEST_ADD_IMAGE_AFTER_LOGIN)) return
+
         if (ContextCompat.checkSelfPermission(this, permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
         } else {
@@ -463,12 +443,12 @@ class ImagesManageActivity : BaseActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA && isAllGranted(grantResults)) {
-            onAddImage()
+            addImage()
         }
     }
 
     private fun updateSelectDefaultLanguageAction() {
-        val isDefault = product!!.lang != null && getCurrentLanguage() == getLocale(product!!.lang).language
+        val isDefault = getProduct()!!.lang != null && getCurrentLanguage() == getLocale(getProduct()!!.lang).language
         binding.btnChooseDefaultLanguage.visibility = if (isDefault) View.INVISIBLE else View.VISIBLE
     }
 
@@ -476,12 +456,12 @@ class ImagesManageActivity : BaseActivity() {
         if (cannotEdit(REQUEST_EDIT_IMAGE_AFTER_LOGIN)) {
             return
         }
-        val product = product
         val productImageField = getSelectedType()
         val language = getCurrentLanguage()
-        //the rotation/crop set on the server
-        val transformation = getScreenTransformation(product!!, productImageField, language)
-        //the first time, the images properties are not loaded...
+        val product = this.getProduct()!!
+        // The rotation/crop set on the server
+        val transformation = getScreenTransformation(product, productImageField, language)
+        // The first time, the images properties are not loaded...
         if (transformation.isEmpty()) {
             updateProductImagesInfo { editPhoto(productImageField, getScreenTransformation(product, productImageField, language)) }
         }
@@ -490,22 +470,21 @@ class ImagesManageActivity : BaseActivity() {
 
     private fun editPhoto(productImageField: ProductImageField?, transformation: ImageTransformationUtils) {
         if (transformation.isNotEmpty()) {
-            disp.add(download(this, transformation.imageUrl!!)
+            download(this, transformation.imageUrl!!)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { file: File? ->
                         //to delete the file after:
                         lastViewedImage = file
                         cropRotateExistingImageOnServer(file, getString(getResourceIdForEditAction(productImageField!!)), transformation)
-                    })
+                    }.addTo(disp)
         }
     }
 
-    private val product: Product?
-        get() = intent.getSerializableExtra(PRODUCT) as Product?
+    private fun getProduct() = intent.getSerializableExtra(PRODUCT) as Product?
 
     private fun onLanguageChanged() {
         val data = binding.comboLanguages.selectedItem as LanguageData
-        val product = product
+        val product = getProduct()
         if (data.code != getCurrentLanguage()) {
             intent.putExtra(LANGUAGE, data.code)
             intent.putExtra(IMAGE_URL, getImageUrlToDisplay(product!!))
@@ -519,7 +498,7 @@ class ImagesManageActivity : BaseActivity() {
             ?: error("Cannot initialize ${this::class.simpleName} without IMAGE_TYPE")
 
     private fun onImageTypeChanged() {
-        product?.let {
+        getProduct()?.let {
             val newTypeSelected = ApiFields.Keys.TYPE_IMAGE[binding.comboImageType.selectedItemPosition]
             val selectedType = getSelectedType()
             if (newTypeSelected == selectedType) {
@@ -555,33 +534,25 @@ class ImagesManageActivity : BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
-            REQUEST_EDIT_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) {
-                onStartEditExistingImage()
-            }
-            REQUEST_ADD_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) {
-                onAddImage()
-            }
-            REQUEST_CHOOSE_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) {
-                onChooseImage()
-            }
-            REQUEST_UNSELECT_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) {
-                unSelectImage()
-            }
             REQUEST_EDIT_IMAGE -> applyEditExistingImage(resultCode, data)
-            REQUEST_CHOOSE_IMAGE -> if (resultCode == RESULT_OK && data != null) {
-                val file = data.getSerializableExtra(IMAGE_FILE) as File?
-                val imgId = data.getStringExtra(IMG_ID)
-                //photo choosed from gallery
-                if (file != null) {
-                    onPhotoReturned(file)
-                } else if (!imgId.isNullOrBlank()) {
-                    val imgMap = hashMapOf<String, String?>()
-                    imgMap[IMG_ID] = imgId
-                    postEditImage(imgMap)
-                }
-            }
-            else -> PhotoReceiverHandler { newPhotoFile -> onPhotoReturned(newPhotoFile) }
+            REQUEST_EDIT_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) onStartEditExistingImage()
+            REQUEST_ADD_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) addImage()
+            REQUEST_CHOOSE_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) selectImage()
+            REQUEST_UNSELECT_IMAGE_AFTER_LOGIN -> if (resultCode == RESULT_OK) unSelectImage()
+            else -> PhotoReceiverHandler { onPhotoReturned(it) }
                     .onActivityResult(this, requestCode, resultCode, data)
+        }
+    }
+
+    private val selectImageLauncher = registerForActivityResult(ImagesSelectActivity.Companion.SelectImageContract(binding.toolbar.title.toString()))
+    { (imgId, file) ->
+        //photo choosed from gallery
+        if (file != null) {
+            onPhotoReturned(file)
+        } else if (!imgId.isNullOrBlank()) {
+            val imgMap = hashMapOf<String, String?>()
+            imgMap[IMG_ID] = imgId
+            postEditImage(imgMap)
         }
     }
 
@@ -599,7 +570,7 @@ class ImagesManageActivity : BaseActivity() {
         if (resultCode == RESULT_OK) {
             startRefresh(StringUtils.EMPTY)
             val result = CropImage.getActivityResult(dataFromCropActivity)
-            val product = product
+            val product = getProduct()
             val currentServerTransformation = getInitialServerTransformation(product!!, getSelectedType(), getCurrentLanguage())
             val newServerTransformation = toServerTransformation(ImageTransformationUtils(result.rotation, result.cropRect), product, getSelectedType(), getCurrentLanguage())
             val isModified = currentServerTransformation != newServerTransformation
@@ -616,7 +587,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun postEditImage(imgMap: HashMap<String, String?>) {
-        val code = product!!.code
+        val code = getProduct()!!.code
         imgMap[PRODUCT_BARCODE] = code
         imgMap[IMAGE_STRING_ID] = getImageStringKey(getSelectedType(), getCurrentLanguage())
         binding.imageViewFullScreen.visibility = View.INVISIBLE
@@ -629,13 +600,13 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun deleteLocalFiles() {
-        if (lastViewedImage != null) {
-            val deleted = lastViewedImage!!.delete()
-            if (!deleted) {
-                Log.w(ImagesManageActivity::class.java.simpleName, String.format("Cannot delete file %s.", lastViewedImage!!.absolutePath))
-            } else {
-                lastViewedImage = null
-            }
+        if (lastViewedImage == null) return
+
+        val deleted = lastViewedImage!!.delete()
+        if (!deleted) {
+            Log.w(ImagesManageActivity::class.java.simpleName, String.format("Cannot delete file %s.", lastViewedImage!!.absolutePath))
+        } else {
+            lastViewedImage = null
         }
     }
 
@@ -661,16 +632,18 @@ class ImagesManageActivity : BaseActivity() {
      */
     private fun onPhotoReturned(newPhotoFile: File) {
         startRefresh(getString(R.string.uploading_image))
-        val image = ProductImage(product!!.code, getSelectedType(), newPhotoFile, getCurrentLanguage())
+        val image = ProductImage(getProduct()!!.code, getSelectedType(), newPhotoFile, getCurrentLanguage())
         image.filePath = newPhotoFile.absolutePath
-        disp.add(client.postImg(image, true).observeOn(AndroidSchedulers.mainThread()).subscribe({
-            reloadProduct()
-            setResult(RESULTCODE_MODIFIED)
-        }) { throwable: Throwable ->
-            Toast.makeText(this@ImagesManageActivity, throwable.message, Toast.LENGTH_LONG).show()
-            Log.e(ImagesManageActivity::class.java.simpleName, throwable.message, throwable)
-            stopRefresh()
-        })
+        client.postImg(image, true).observeOn(AndroidSchedulers.mainThread())
+                .doOnError {
+                    Toast.makeText(this@ImagesManageActivity, it.message, Toast.LENGTH_LONG).show()
+                    Log.e(ImagesManageActivity::class.java.simpleName, it.message, it)
+                    stopRefresh()
+                }
+                .subscribe {
+                    reloadProduct()
+                    setResult(RESULTCODE_MODIFIED)
+                }.addTo(disp)
     }
 
     companion object {
@@ -680,9 +653,8 @@ class ImagesManageActivity : BaseActivity() {
         private const val REQUEST_CHOOSE_IMAGE_AFTER_LOGIN = 3
         private const val REQUEST_UNSELECT_IMAGE_AFTER_LOGIN = 4
         const val REQUEST_EDIT_IMAGE = 1000
-        private const val REQUEST_CHOOSE_IMAGE = 1001
-        fun isImageModified(requestCode: Int, resultCode: Int): Boolean {
-            return requestCode == REQUEST_EDIT_IMAGE && resultCode == RESULTCODE_MODIFIED
-        }
+
+        fun isImageModified(requestCode: Int, resultCode: Int) =
+                requestCode == REQUEST_EDIT_IMAGE && resultCode == RESULTCODE_MODIFIED
     }
 }

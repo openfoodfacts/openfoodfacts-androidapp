@@ -39,9 +39,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentHomeBinding
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
-import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
@@ -60,7 +58,7 @@ class HomeFragment : NavigationBaseFragment(), Disposable {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var api: ProductsAPI
+    private val api by lazy { OpenFoodAPIClient(requireActivity()).rawAPI }
     private val sharedPrefs by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
 
     private var taglineURL: String? = null
@@ -72,7 +70,6 @@ class HomeFragment : NavigationBaseFragment(), Disposable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        api = OpenFoodAPIClient(requireActivity()).rawAPI
         binding.tvDailyFoodFact.setOnClickListener { openDailyFoodFacts() }
         checkUserCredentials()
     }
@@ -89,15 +86,21 @@ class HomeFragment : NavigationBaseFragment(), Disposable {
         val customTabsIntent: CustomTabsIntent
         val customTabActivityHelper = CustomTabActivityHelper()
         customTabActivityHelper.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
-            override fun onCustomTabsConnected() {}
-            override fun onCustomTabsDisconnected() {}
+            override fun onCustomTabsConnected() = Unit
+            override fun onCustomTabsDisconnected() = Unit
         }
         val dailyFoodFactUri = Uri.parse(taglineURL)
         customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null)
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireActivity(),
-                customTabActivityHelper.session)
-        CustomTabActivityHelper.openCustomTab(requireActivity(),
-                customTabsIntent, dailyFoodFactUri, WebViewFallback())
+        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(
+                requireActivity(),
+                customTabActivityHelper.session,
+        )
+        CustomTabActivityHelper.openCustomTab(
+                requireActivity(),
+                customTabsIntent,
+                dailyFoodFactUri,
+                WebViewFallback()
+        )
     }
 
     @NavigationDrawerType
@@ -120,7 +123,7 @@ class HomeFragment : NavigationBaseFragment(), Disposable {
         api.signIn(login, password, "Sign-in")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { e -> Log.e(LOG_TAG, "Cannot check user credentials.", e) }
+                .doOnError { Log.e(LOG_TAG, "Cannot check user credentials.", it) }
                 .subscribe { response ->
                     val htmlBody: String = try {
                         response.body()!!.string()
@@ -198,8 +201,8 @@ class HomeFragment : NavigationBaseFragment(), Disposable {
         api.getTagline(getUserAgent())
                 .subscribeOn(Schedulers.io()) // io for network
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
-                .doOnError { e -> Log.e(LOG_TAG, "Could not retrieve tag-line from server.", e) }
-                .subscribe { languages: List<TagLineLanguage> ->
+                .doOnError { Log.e(LOG_TAG, "Could not retrieve tag-line from server.", it) }
+                .subscribe { languages ->
                     val localAsString = LocaleHelper.getLocale(context).toString()
                     var isLanguageFound = false
                     var isExactLanguageFound = false

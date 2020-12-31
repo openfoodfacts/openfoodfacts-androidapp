@@ -61,14 +61,12 @@ class LoginActivity : BaseActivity() {
     private var userLoginUri: Uri? = null
     private var resetPasswordUri: Uri? = null
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                super.onBackPressed()
-                true
-            }
-            else -> false
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            super.onBackPressed()
+            true
         }
+        else -> false
     }
 
     private fun doAttemptLogin() {

@@ -126,10 +126,10 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         addImageRow()
     }
 
-    fun hideImageProgress(errorUploading: Boolean, message: String?) {
+    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
         binding.imageProgress.visibility = View.GONE
         binding.btnAddOtherImage.visibility = View.VISIBLE
-        if (errorUploading) {
+        if (errorInUploading) {
             binding.imageProgressText.visibility = View.GONE
         } else {
             binding.imageProgressText.setText(R.string.image_uploaded_successfully)

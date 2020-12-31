@@ -46,11 +46,10 @@ class ImageZoomActivity : BaseActivity() {
 
     companion object {
         @JvmStatic
-        fun start(context: Context, imageUrl: String) {
-            context.startActivity(Intent(context, ImageZoomActivity::class.java).apply {
-                putExtra(IMAGE_URL, imageUrl)
-            })
-        }
+        fun start(context: Context, imageUrl: String) =
+                context.startActivity(Intent(context, ImageZoomActivity::class.java).apply {
+                    putExtra(IMAGE_URL, imageUrl)
+                })
     }
 
     override fun onResume() {

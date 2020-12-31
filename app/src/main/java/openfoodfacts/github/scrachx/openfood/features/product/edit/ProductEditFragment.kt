@@ -14,4 +14,6 @@ abstract class ProductEditFragment : BaseFragment() {
      * adds only those fields to the query map which have changed.
      */
     abstract fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>)
+
+    abstract fun hideImageProgress(errorInUploading: Boolean, message: String)
 }

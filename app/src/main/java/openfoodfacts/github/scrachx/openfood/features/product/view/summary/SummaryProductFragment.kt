@@ -76,8 +76,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import java.io.File
 import java.util.*
 
@@ -263,7 +261,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.labelsIcon.visibility = View.VISIBLE
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (isDisableImageLoad(requireActivity()) && isBatteryLevelLow(requireContext())) {
+        if (requireActivity().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
             isLowBatteryMode = true
         }
 

@@ -26,9 +26,9 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import com.fasterxml.jackson.databind.node.ObjectNode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductImagesListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductImagesSelectionAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -46,9 +46,10 @@ import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 class ImagesSelectActivity : BaseActivity() {
-    private var adapter: ProductImagesSelectionAdapter? = null
     private var _binding: ActivityProductImagesListBinding? = null
     private val binding get() = _binding!!
+
+    private var adapter: ProductImagesSelectionAdapter? = null
     private val disp = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,20 +71,20 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     private fun loadProductImages(code: String?) {
-        disp.add(productsApi.getProductImages(code)
+        productsApi.getProductImages(code)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ node: ObjectNode? ->
-                    val imageNames = extractImagesNameSortedByUploadTimeDesc(node!!)
-                    if (supportActionBar != null) {
-                        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-                    }
+                .doOnError { Log.e(LOG_TAG, "cannot download images from server", it) }
+                .subscribe { node ->
+                    val imageNames = extractImagesNameSortedByUploadTimeDesc(node)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
                     //Check if user is logged in
                     adapter = ProductImagesSelectionAdapter(this, imageNames, code!!)
-                    { pos -> setSelectedImage(pos) }
+                    { setSelectedImage(it) }
+
                     binding.imagesRecycler.adapter = adapter
                     binding.imagesRecycler.layoutManager = GridLayoutManager(this, 3)
-                }) { e: Throwable? -> Log.e(LOG_TAG, "cannot download images from server", e) })
+                }.addTo(disp)
     }
 
     private fun setSelectedImage(selectedPosition: Int) {
@@ -101,14 +102,13 @@ class ImagesSelectActivity : BaseActivity() {
         binding.imagesRecycler.visibility = View.VISIBLE
     }
 
-    private fun onClickOnExpandedImage() {
-        onCloseZoom()
-    }
+    private fun onClickOnExpandedImage() = onCloseZoom()
 
     private fun onBtnAcceptSelection() {
-        val intent = Intent()
-        intent.putExtra(IMG_ID, adapter!!.getSelectedImageName())
-        setResult(RESULT_OK, intent)
+        setResult(RESULT_OK, Intent().apply {
+            putExtra(IMG_ID, adapter!!.getSelectedImageName())
+
+        })
         finish()
     }
 
@@ -127,9 +127,9 @@ class ImagesSelectActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         disp.dispose()
         _binding = null
+        super.onDestroy()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -159,27 +159,22 @@ class ImagesSelectActivity : BaseActivity() {
         const val TOOLBAR_TITLE = "TOOLBAR_TITLE"
         private val LOG_TAG = ImagesSelectActivity::class.java.simpleName
 
-        class SelectImageContract(private val toolbarTitle: String) : ActivityResultContract<String, File?>() {
-            override fun createIntent(context: Context, barcode: String): Intent {
-                return Intent().apply {
-                    putExtra(TOOLBAR_TITLE, toolbarTitle)
-                    putExtra(PRODUCT_BARCODE, barcode)
-                }
+        class SelectImageContract(private val toolbarTitle: String) : ActivityResultContract<String, Pair<String?, File?>>() {
+            override fun createIntent(context: Context, barcode: String) = Intent().apply {
+                putExtra(TOOLBAR_TITLE, toolbarTitle)
+                putExtra(PRODUCT_BARCODE, barcode)
             }
 
-            override fun parseResult(resultCode: Int, intent: Intent?): File? {
-                if (resultCode != RESULT_OK) return null
-                return intent?.getSerializableExtra(IMAGE_FILE) as File?
-            }
+            override fun parseResult(resultCode: Int, intent: Intent?) =
+                    if (resultCode != RESULT_OK) null to null
+                    else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
 
         }
 
         @JvmStatic
-        fun start(context: Context, toolbarTitle: String, productCode: String) {
-            context.startActivity(Intent(context, this::class.java).apply {
-                putExtra(TOOLBAR_TITLE, toolbarTitle)
-                putExtra(PRODUCT_BARCODE, productCode)
-            })
-        }
+        fun start(context: Context, toolbarTitle: String, productCode: String) = context.startActivity(Intent(context, this::class.java).apply {
+            putExtra(TOOLBAR_TITLE, toolbarTitle)
+            putExtra(PRODUCT_BARCODE, productCode)
+        })
     }
 }

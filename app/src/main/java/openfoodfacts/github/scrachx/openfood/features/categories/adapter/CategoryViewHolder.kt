@@ -10,7 +10,7 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType
  * Created by Abdelali Eramli on 27/12/2017.
  */
 class CategoryViewHolder(private val binding: CategoryRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(category: CategoryName) {
+    fun sbind(category: CategoryName) {
         binding.category = category
         binding.root.setOnClickListener {
             start(it.context, SearchType.CATEGORY, category.categoryTag!!, category.name!!)

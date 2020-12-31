@@ -427,7 +427,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
      * @param errorInUploading boolean variable is true, if there is an error while showing image
      * @param message error message in case of failure to display image
      */
-    fun hideImageProgress(errorInUploading: Boolean, message: String?) {
+    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
         binding.imageProgress.visibility = View.INVISIBLE
         binding.imageProgressText.visibility = View.GONE
         binding.btnAddImageIngredients.visibility = View.VISIBLE

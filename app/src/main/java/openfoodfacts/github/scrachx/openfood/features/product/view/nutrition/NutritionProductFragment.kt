@@ -72,8 +72,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.SendProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 import java.util.*
@@ -191,7 +189,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             binding.textServingSize.append(servingSize)
         }
 
-        if (isDisableImageLoad(requireContext()) && isBatteryLevelLow(requireContext())) {
+        if (requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
             isLowBatteryMode = true
         }
 

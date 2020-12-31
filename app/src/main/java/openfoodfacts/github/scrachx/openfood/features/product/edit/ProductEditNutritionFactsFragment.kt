@@ -876,7 +876,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
     }
 
-    fun hideImageProgress(errorInUploading: Boolean) {
+    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
         if (!isAdded) return
         binding.imageProgress.visibility = View.GONE
         binding.imageProgressText.visibility = View.GONE

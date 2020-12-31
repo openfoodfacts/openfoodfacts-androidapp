@@ -41,8 +41,6 @@ import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
 import java.io.File
 import java.time.LocalDate
@@ -72,7 +70,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        if (isDisableImageLoad(this) && isBatteryLevelLow(this)) isLowBatteryMode = true
+        if (this.isDisableImageLoad() && this.isBatteryLevelLow()) isLowBatteryMode = true
 
         // OnClick
         binding.scanFirstYourListedProduct.setOnClickListener { onFirstScan() }
@@ -299,7 +297,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    val fileWriterLauncher = registerForActivityResult(CreateCsvContract())
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract())
     { writeListToFile(this, productList, it?.toFile() ?: error("File path must not be null.")) }
 
     private fun exportAsCSV() {

@@ -97,7 +97,7 @@ interface ProductsAPI {
     ): Single<JsonNode>
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
-    fun getIngredients(
+    fun performOCR(
             @Query(ApiFields.Keys.BARCODE) code: String?,
             @Query("id") id: String?
     ): Single<JsonNode>

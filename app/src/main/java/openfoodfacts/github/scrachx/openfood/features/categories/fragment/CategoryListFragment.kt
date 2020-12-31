@@ -70,6 +70,7 @@ class CategoryListFragment : MVVMFragment<CategoryFragmentViewModel, FragmentCom
         val searchManager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchMenuItem = menu.findItem(R.id.action_search)
         val searchView = searchMenuItem.actionView as SearchView
+
         // TODO: 26/07/2020 use resources
         searchView.queryHint = "Search for a food category"
 
