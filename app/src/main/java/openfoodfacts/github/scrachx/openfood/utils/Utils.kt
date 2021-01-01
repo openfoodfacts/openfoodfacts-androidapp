@@ -132,9 +132,8 @@ object Utils {
         else -> null
     }
 
-    @JvmStatic
-    fun getBitmapFromDrawable(context: Context, @DrawableRes drawableId: Int): Bitmap? {
-        val drawable = AppCompatResources.getDrawable(context, drawableId) ?: return null
+    fun Context.getBitmapFromDrawable(@DrawableRes drawableId: Int): Bitmap? {
+        val drawable = AppCompatResources.getDrawable(this, drawableId) ?: return null
         val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         drawable.setBounds(0, 0, canvas.width, canvas.height)
