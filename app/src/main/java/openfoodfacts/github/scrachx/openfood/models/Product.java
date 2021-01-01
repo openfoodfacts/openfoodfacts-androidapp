@@ -72,6 +72,8 @@ public class Product implements Serializable {
     private String customerService;
     @JsonProperty(ApiFields.Keys.ECOSCORE)
     private String ecoscore;
+    @JsonProperty(ApiFields.Keys.ECOSCORE_ALPHA)
+    private String ecoscore_alpha;
     @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
     private final List<String> editorsTags = new ArrayList<>();
     @JsonProperty(ApiFields.Keys.EMB_CODES_TAGS)
