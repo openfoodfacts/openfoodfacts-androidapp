@@ -2,13 +2,13 @@ package openfoodfacts.github.scrachx.openfood.features.productlist
 
 import android.app.Activity
 import android.content.Context
-import android.net.ConnectivityManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -20,22 +20,21 @@ import openfoodfacts.github.scrachx.openfood.utils.CustomTextView
 
 class ProductListAdapter(
         private val context: Context,
-        private val products: MutableList<YourListedProduct>,
+        val products: MutableList<YourListedProduct>,
         private val isLowBatteryMode: Boolean
 ) : RecyclerView.Adapter<YourListProductsViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YourListProductsViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.your_listed_products_item, parent, false)
-        return YourListProductsViewHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            YourListProductsViewHolder(LayoutInflater.from(context)
+                    .inflate(R.layout.your_listed_products_item, parent, false))
 
     override fun onBindViewHolder(holder: YourListProductsViewHolder, position: Int) {
         holder.imgProgressBar.visibility = View.VISIBLE
-        val productName = products[position].productName
-        val barcode = products[position].barcode
-        holder.tvTitle.text = productName
+
+        holder.tvTitle.text = products[position].productName
         holder.tvDetails.text = products[position].productDetails
-        holder.tvBarcode.text = barcode
+        holder.tvBarcode.text = products[position].barcode
+
         if (!isLowBatteryMode) {
             Picasso.get()
                     .load(products[position].imageUrl)
@@ -53,23 +52,17 @@ class ProductListAdapter(
                         }
                     })
         } else {
-            holder.imgProduct.background = context.resources.getDrawable(R.drawable.placeholder_thumb)
+            holder.imgProduct.background = ResourcesCompat.getDrawable(context.resources, R.drawable.placeholder_thumb, context.theme)
             holder.imgProgressBar.visibility = View.INVISIBLE
         }
-        holder.itemView.setOnClickListener { v: View ->
-            val cm = v.context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val activeNetwork = cm.activeNetworkInfo
-            val isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting
-            if (isConnected) {
-                val api = OpenFoodAPIClient(v.context)
-                api.openProduct(barcode, (v.context as Activity))
-            }
+        holder.itemView.setOnClickListener {
+            OpenFoodAPIClient(it.context).openProduct(products[position].barcode, (it.context as Activity))
         }
     }
 
-    fun remove(data: YourListedProduct) {
-        val position = products.indexOf(data)
-        products.remove(data)
+    fun remove(product: YourListedProduct) {
+        val position = products.indexOf(product)
+        products.remove(product)
         notifyItemRemoved(position)
     }
 

@@ -18,17 +18,14 @@ class AllergensWrapperDeserializer : StdDeserializer<AllergensWrapper>(Allergens
     @Throws(IOException::class)
     override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): AllergensWrapper {
         val allergens = arrayListOf<AllergenResponse>()
-        val mainNode = jp.codec.readTree<JsonNode>(jp)
-        val mainNodeIterator = mainNode.fields()
-        while (mainNodeIterator.hasNext()) {
-            val subNode = mainNodeIterator.next()
-            val namesNode = subNode.value[DeserializerHelper.NAMES_KEY]
+        jp.codec.readTree<JsonNode>(jp).fields().forEach { (key, value) ->
+            val namesNode = value[DeserializerHelper.NAMES_KEY]
             if (namesNode != null) {
                 val names = extractMapFromJsonNode(namesNode)
-                if (subNode.value.has(DeserializerHelper.WIKIDATA_KEY)) {
-                    allergens.add(AllergenResponse(subNode.key, names, subNode.value[DeserializerHelper.WIKIDATA_KEY].toString()))
+                if (value.has(DeserializerHelper.WIKIDATA_KEY)) {
+                    allergens.add(AllergenResponse(key, names, value[DeserializerHelper.WIKIDATA_KEY].toString()))
                 } else {
-                    allergens.add(AllergenResponse(subNode.key, names))
+                    allergens.add(AllergenResponse(key, names))
                 }
             }
         }

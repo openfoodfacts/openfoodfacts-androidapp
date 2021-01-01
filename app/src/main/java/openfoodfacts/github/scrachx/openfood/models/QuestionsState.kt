@@ -9,7 +9,6 @@ data class QuestionsState(
 ) : Serializable {
 
     companion object {
-        val EMPTY_QUESTION = Question()
         private const val serialVersionUID = 1L
     }
 }

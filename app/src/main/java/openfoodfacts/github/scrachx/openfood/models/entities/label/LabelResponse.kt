@@ -1,32 +1,18 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.label
 
+import openfoodfacts.github.scrachx.openfood.models.entities.EntityResponse
+
 /**
  * Created by Lobster on 03.03.18.
  */
-class LabelResponse {
-    var code: String
-    var names: Map<String, String>
-    var wikiDataCode: String? = null
-        private set
-    var wikiDataIdPresent = false
-        private set
-
-    constructor(code: String, names: Map<String, String>, wikiDataCode: String?) {
-        this.code = code
-        this.wikiDataCode = wikiDataCode
-        this.names = names
-        wikiDataIdPresent = true
-    }
-
-    constructor(code: String, names: Map<String, String>) {
-        this.code = code
-        this.names = names
-        wikiDataIdPresent = false
-    }
-
-    fun map(): Label {
+class LabelResponse(
+        private var code: String,
+        private var names: Map<String, String>,
+        private val wikiDataCode: String? = null
+) : EntityResponse<Label> {
+    override fun map(): Label {
         val label: Label
-        if (wikiDataIdPresent) {
+        if (wikiDataCode != null) {
             label = Label(code, arrayListOf(), wikiDataCode)
             names.forEach { (key, value) ->
                 label.names.add(LabelName(label.tag, key, value, wikiDataCode))

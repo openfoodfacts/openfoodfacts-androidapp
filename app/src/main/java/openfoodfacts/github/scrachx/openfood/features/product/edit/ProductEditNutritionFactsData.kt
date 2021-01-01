@@ -7,6 +7,7 @@ fun getCompleteEntryName(editText: CustomValidatingEditTextView) = PREFIX_NUTRIM
 fun getShortName(longName: String) = longName.removePrefix(PREFIX_NUTRIMENT_LONG_NAME)
 
 private const val PREFIX_NUTRIMENT_LONG_NAME = "nutriment_"
+
 val PARAMS_OTHER_NUTRIENTS = listOf(
         PREFIX_NUTRIMENT_LONG_NAME + "alpha-linolenic-acid",
         PREFIX_NUTRIMENT_LONG_NAME + "arachidic-acid",

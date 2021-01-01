@@ -56,19 +56,19 @@ object InstallationUtils {
         }
     }
 
-    fun getHashedString(s: String): String {
+    private fun getHashedString(str: String): String {
         try {
             // Create MD5 Hash
-            val digest = MessageDigest.getInstance("MD5")
-            digest.update(s.toByteArray())
-            val messageDigest = digest.digest()
+            val messageDigest = MessageDigest.getInstance("MD5").apply {
+                update(str.toByteArray())
+            }.digest()
 
             // Create Hex String
-            val hexString = StringBuilder()
-            for (b in messageDigest) hexString.append(Integer.toHexString(0xFF and b.toInt()))
-            return hexString.toString()
+            return StringBuilder().also {
+                messageDigest.forEach { b -> it.append(Integer.toHexString(0xFF and b.toInt())) }
+            }.toString()
         } catch (e: NoSuchAlgorithmException) {
-            Log.e(InstallationUtils::class.java.simpleName, "getHashedString $s", e)
+            Log.e(InstallationUtils::class.simpleName, "getHashedString $str", e)
         }
         return ""
     }

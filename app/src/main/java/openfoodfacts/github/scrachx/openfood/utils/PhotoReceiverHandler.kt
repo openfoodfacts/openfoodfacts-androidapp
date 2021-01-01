@@ -28,9 +28,8 @@ class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
     }
 
     fun onActivityResult(activity: Activity?, fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) {
-        if (onCropResult(requestCode, resultCode, data)) {
-            return
-        }
+        if (onCropResult(requestCode, resultCode, data)) return
+
         val fragmentActivity = fragment?.activity
         val mainActivity = activity ?: fragmentActivity
         val fragmentContext = fragment?.requireContext() ?: OFFApplication.instance
@@ -65,23 +64,16 @@ class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
                                 .start(activity)
                     }
                 } else {
-                    for (image in imageFiles) {
-                        photoReceiver(image)
-                    }
+                    imageFiles.forEach { photoReceiver(it) }
                 }
             }
 
             override fun onCanceled(source: ImageSource, type: Int) {
                 //Cancel handling, you might wanna remove taken photo if it was canceled
-                if (source == ImageSource.CAMERA) {
-                    val photoFile = EasyImage.lastlyTakenButCanceledPhoto(mainContext)
-                    if (photoFile != null) {
-                        val deleted = photoFile.delete()
-                        if (!deleted) {
-                            Log.w(PhotoReceiverHandler::class.java.simpleName, "photo file not deleted " + photoFile.absolutePath)
-                        }
-                    }
-                }
+                if (source != ImageSource.CAMERA) return
+                val photoFile = EasyImage.lastlyTakenButCanceledPhoto(mainContext) ?: return
+                if (photoFile.delete()) return
+                Log.w(PhotoReceiverHandler::class.simpleName, "Cannot delete photo file ${photoFile.absolutePath}")
             }
         })
     }
@@ -90,16 +82,14 @@ class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
      * A method called after cropping the image to process that image.
      */
     private fun onCropResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            val result = CropImage.getActivityResult(data)
-            if (resultCode == Activity.RESULT_OK && result.uri != null) {
-                val resultUri = result.uri
-                photoReceiver(File(resultUri.path))
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Log.w(PhotoReceiverHandler::class.simpleName, "Can't process photo", result.error)
-            }
-            return true
+        if (requestCode != CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) return false
+
+        val result = CropImage.getActivityResult(data)
+        if (resultCode == Activity.RESULT_OK && result.uri != null) {
+            photoReceiver(File(result.uri.path!!))
+        } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+            Log.w(PhotoReceiverHandler::class.simpleName, "Can't process photo", result.error)
         }
-        return false
+        return true
     }
 }

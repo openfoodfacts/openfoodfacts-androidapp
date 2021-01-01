@@ -22,23 +22,24 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import net.steamcrafted.loadtoast.LoadToast
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAlertAllergensBinding
-import openfoodfacts.github.scrachx.openfood.features.adapters.AllergensAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.NavigationBaseFragment
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.NavigationDrawerType
-import java.util.*
 
 /**
  * @see R.layout.fragment_alert_allergens
@@ -47,14 +48,13 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     private var _binding: FragmentAlertAllergensBinding? = null
     private val binding get() = _binding!!
 
+    private val disp = CompositeDisposable()
     private var mAllergensEnabled: MutableList<AllergenName>? = null
-    private var mAllergensFromDao: List<AllergenName>? = null
-    private var mAdapter: AllergensAdapter? = null
+    private var allergensFromDao: List<AllergenName>? = null
+
+    private lateinit var adapter: AllergensAdapter
     private lateinit var mSettings: SharedPreferences
-    private lateinit var productRepository: ProductRepository
-    private val dispCont = CompositeDisposable()
-    private lateinit var currentView: View
-    private var mDataObserver: DataObserver? = null
+    private lateinit var dataObserver: DataObserver
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setHasOptionsMenu(true)
@@ -62,11 +62,52 @@ class AllergensAlertFragment : NavigationBaseFragment() {
         return binding.root
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        dispCont.dispose()
-        binding.allergensRecycle.adapter!!.unregisterAdapterDataObserver(mDataObserver!!)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // OnClick
+        binding.btnAdd.setOnClickListener { addAllergen() }
+        dataObserver = DataObserver()
+
+        val language = LocaleHelper.getLanguage(requireActivity())
+
+        ProductRepository.getAllergensByEnabledAndLanguageCode(true, language)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError { Log.e(LOG_TAG, "getAllergensByEnabledAndLanguageCode", it) }
+                .subscribe { allergens ->
+                    mAllergensEnabled = allergens.toMutableList()
+                    adapter = AllergensAdapter(ProductRepository, mAllergensEnabled!!)
+
+                    binding.allergensRecycle.adapter = adapter
+                    binding.allergensRecycle.layoutManager = LinearLayoutManager(view.context)
+                    binding.allergensRecycle.setHasFixedSize(true)
+                    adapter.registerAdapterDataObserver(dataObserver)
+                    dataObserver.onChanged()
+                }
+                .addTo(disp)
+
+        ProductRepository.getAllergensByLanguageCode(language)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError { Log.e(LOG_TAG, "getAllergensByLanguageCode", it) }
+                .subscribe { allergens -> allergensFromDao = allergens }
+                .addTo(disp)
+        mSettings = requireActivity().getSharedPreferences("prefs", 0)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        try {
+            (requireActivity() as? AppCompatActivity)!!.supportActionBar!!.setTitle(getString(R.string.alert_drawer))
+        } catch (e: IllegalStateException) {
+            Log.e(AllergensAlertFragment::class.simpleName, "onResume", e)
+        }
+    }
+
+    override fun onDestroyView() {
+        disp.dispose()
+        adapter.unregisterAdapterDataObserver(dataObserver)
         _binding = null
+        super.onDestroyView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -74,91 +115,58 @@ class AllergensAlertFragment : NavigationBaseFragment() {
         menu.findItem(R.id.action_search).isVisible = false
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // OnClick
-        binding.btnAdd.setOnClickListener { addAllergen() }
-        productRepository = ProductRepository
-        mDataObserver = DataObserver()
-        productRepository.getAllergensByEnabledAndLanguageCode(true, Locale.getDefault().language)
-        val language = LocaleHelper.getLanguage(requireActivity())
-        dispCont.add(productRepository.getAllergensByEnabledAndLanguageCode(true, language)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ allergens ->
-                    mAllergensEnabled = allergens.toMutableList()
-                    mAdapter = AllergensAdapter(productRepository, mAllergensEnabled)
-                    binding.allergensRecycle.adapter = mAdapter
-                    binding.allergensRecycle.layoutManager = LinearLayoutManager(view.context)
-                    binding.allergensRecycle.setHasFixedSize(true)
-                    mAdapter!!.registerAdapterDataObserver(mDataObserver!!)
-                    mDataObserver!!.onChanged()
-                })
-                { e -> Log.e(AllergensAlertFragment::class.java.simpleName, "getAllergensByEnabledAndLanguageCode", e) })
-
-        dispCont.add(productRepository.getAllergensByLanguageCode(language)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ allergens -> mAllergensFromDao = allergens })
-                { e: Throwable? -> Log.e(AllergensAlertFragment::class.java.simpleName, "getAllergensByLanguageCode", e) })
-        currentView = view
-        mSettings = requireActivity().getSharedPreferences("prefs", 0)
-    }
-
     /**
      * Add an allergen to be checked for when browsing products.
      */
     private fun addAllergen() {
-        if (mAllergensEnabled != null && mAllergensFromDao != null && mAllergensFromDao!!.isNotEmpty()) {
-            dispCont.add(productRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(requireActivity()))
+        if (mAllergensEnabled != null && allergensFromDao?.isNotEmpty() == true) {
+            ProductRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(requireActivity()))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({ allergens ->
-
+                    .doOnError { it.printStackTrace() }
+                    .subscribe { allergens ->
                         val allergensNames = allergens
-                                .sortedWith { a1, a2 -> a1.name.compareTo(a2.name, ignoreCase = true) }
                                 .map { it.name }
+                                .sortedWith { name1, name2 -> name1.compareTo(name2, true) }
 
-                        MaterialDialog.Builder(currentView.context).apply {
+                        MaterialDialog.Builder(requireContext()).apply {
                             title(R.string.title_dialog_alert)
                             items(allergensNames)
                             itemsCallback { _, _, position, _ ->
-                                productRepository.setAllergenEnabled(allergens[position].allergenTag, true)
+                                ProductRepository.setAllergenEnabled(allergens[position].allergenTag, true)
                                 mAllergensEnabled!!.add(allergens[position])
-                                mAdapter!!.notifyItemInserted(mAllergensEnabled!!.size - 1)
-                                binding.allergensRecycle.scrollToPosition(mAdapter!!.itemCount - 1)
+                                adapter.notifyItemInserted(mAllergensEnabled!!.size - 1)
+                                binding.allergensRecycle.scrollToPosition(adapter.itemCount - 1)
                             }
                         }.show()
-                    }) { it.printStackTrace() })
+                    }.addTo(disp)
         } else {
             val cm = requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetwork = cm.activeNetworkInfo
             val isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting
             if (isConnected) {
-                val lt = LoadToast(context)
-                lt.setText(requireActivity().getString(R.string.toast_retrieving))
-                lt.setBackgroundColor(requireActivity().resources.getColor(R.color.blue))
-                lt.setTextColor(requireActivity().resources.getColor(R.color.white))
-                lt.show()
-                val editor = mSettings.edit()
-                dispCont.add(productRepository.allergens
-                        .subscribeOn(Schedulers.io())
+                val lt = LoadToast(context).apply {
+                    setText(requireActivity().getString(R.string.toast_retrieving))
+                    setBackgroundColor(ResourcesCompat.getColor(requireContext().resources, R.color.blue, requireContext().theme))
+                    setTextColor(ResourcesCompat.getColor(requireActivity().resources, R.color.white, requireContext().theme))
+                }.show()
+
+                ProductRepository.getAllergens()
                         .observeOn(AndroidSchedulers.mainThread())
-                        .toObservable()
-                        .subscribe({
-                            editor.putBoolean("errorAllergens", false).apply()
-                            mAdapter?.allergens = mAllergensEnabled!!
-                            mAdapter?.notifyDataSetChanged()
+                        .doOnError {
+                            mSettings.edit { putBoolean("errorAllergens", true) }
+                            lt.error()
+                        }
+                        .subscribe { _ ->
+                            mSettings.edit { putBoolean("errorAllergens", false) }
+                            adapter.allergens = mAllergensEnabled!!
+                            adapter.notifyDataSetChanged()
                             updateAllergenDao()
                             addAllergen()
                             lt.success()
-                        }) {
-                            editor.putBoolean("errorAllergens", true).apply()
-                            lt.error()
-                        })
+                        }.addTo(disp)
             } else {
-                MaterialDialog.Builder(currentView.context).apply {
+                MaterialDialog.Builder(requireContext()).apply {
                     title(R.string.title_dialog_alert)
                     content(R.string.info_download_data_connection)
                     neutralText(R.string.txtOk)
@@ -172,42 +180,26 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      */
     private fun updateAllergenDao() {
         val language = LocaleHelper.getLanguage(context)
-        dispCont.add(productRepository.getAllergensByEnabledAndLanguageCode(true, language)
-                .subscribeOn(Schedulers.io())
+        ProductRepository.getAllergensByEnabledAndLanguageCode(true, language)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ allergens -> mAllergensEnabled = allergens.toMutableList() }) { e: Throwable? -> Log.e(AllergensAlertFragment::class.java.simpleName, "getAllergensByEnabledAndLanguageCode", e) })
-        dispCont.add(productRepository.getAllergensByLanguageCode(language)
-                .subscribeOn(Schedulers.io())
+                .doOnError { Log.e(AllergensAlertFragment::class.simpleName, "getAllergensByEnabledAndLanguageCode", it) }
+                .subscribe { allergens -> mAllergensEnabled = allergens.toMutableList() }
+                .addTo(disp)
+        ProductRepository.getAllergensByLanguageCode(language)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ allergens: List<AllergenName>? -> mAllergensFromDao = allergens }) { e: Throwable? -> Log.e(AllergensAlertFragment::class.java.simpleName, "getAllergensByLanguageCode", e) })
+                .doOnError { Log.e(AllergensAlertFragment::class.simpleName, "getAllergensByLanguageCode", it) }
+                .subscribe { allergens -> allergensFromDao = allergens.toMutableList() }
+                .addTo(disp)
     }
 
     @NavigationDrawerType
-    override fun getNavigationDrawerType(): Int {
-        return NavigationDrawerListener.ITEM_ALERT
-    }
+    override fun getNavigationDrawerType() = NavigationDrawerListener.ITEM_ALERT
 
-    override fun onResume() {
-        super.onResume()
-        try {
-            (requireActivity() as AppCompatActivity).supportActionBar!!.setTitle(getString(R.string.alert_drawer))
-        } catch (e: IllegalStateException) {
-            Log.e(AllergensAlertFragment::class.java.simpleName, "onResume", e)
-        }
-    }
 
     /**
      * Data observer of the Recycler Views
      */
     internal inner class DataObserver : AdapterDataObserver() {
-        private fun setAppropriateView() {
-            if (mAdapter != null) {
-                val isListEmpty = mAdapter!!.itemCount == 0
-                binding.emptyAllergensView.visibility = if (isListEmpty) View.VISIBLE else View.GONE
-                binding.allergensRecycle.visibility = if (isListEmpty) View.GONE else View.VISIBLE
-            }
-        }
-
         override fun onChanged() {
             super.onChanged()
             setAppropriateView()
@@ -222,13 +214,18 @@ class AllergensAlertFragment : NavigationBaseFragment() {
             super.onItemRangeRemoved(positionStart, itemCount)
             setAppropriateView()
         }
+
+        private fun setAppropriateView() {
+            val isListEmpty = adapter.itemCount == 0
+            binding.emptyAllergensView.visibility = if (isListEmpty) View.VISIBLE else View.GONE
+            binding.allergensRecycle.visibility = if (isListEmpty) View.GONE else View.VISIBLE
+        }
     }
 
     companion object {
+        private val LOG_TAG = this::class.simpleName
 
         @JvmStatic
-        fun newInstance() = AllergensAlertFragment().apply {
-            arguments = Bundle()
-        }
+        fun newInstance() = AllergensAlertFragment().apply { arguments = Bundle() }
     }
 }

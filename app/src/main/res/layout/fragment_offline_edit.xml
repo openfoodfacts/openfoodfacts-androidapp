@@ -52,7 +52,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:visibility="invisible">
+                tools:visibility="gone">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/relativeLayout4"
@@ -117,7 +117,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@id/buttonSendAll"
@@ -134,7 +134,6 @@
                     android:layout_marginTop="@dimen/padding_normal"
                     android:layout_marginEnd="@dimen/padding_normal"
                     android:layout_marginRight="@dimen/padding_normal"
-                    android:layout_marginBottom="@dimen/padding_normal"
                     android:gravity="center"
                     android:text="@string/no_offline_data"
                     android:textColor="@color/grey_500"
@@ -147,7 +146,6 @@
                     android:layout_height="@dimen/img_width_height"
                     android:layout_marginStart="@dimen/padding_normal"
                     android:layout_marginLeft="@dimen/padding_normal"
-                    android:layout_marginTop="@dimen/padding_normal"
                     android:layout_marginEnd="@dimen/padding_normal"
                     android:layout_marginRight="@dimen/padding_normal"
                     android:layout_marginBottom="@dimen/padding_normal"
@@ -167,7 +165,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:visibility="invisible">
+                tools:visibility="gone">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/listOfflineSave"
@@ -178,9 +176,9 @@
             </LinearLayout>
 
 
-            <openfoodfacts.github.scrachx.openfood.utils.CustomButtonView
+            <Button
                 android:id="@+id/buttonSendAll"
-                style="@style/DefaultButtonText"
+                style="@style/ButtonBorder"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_gravity="center"

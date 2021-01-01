@@ -24,12 +24,13 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.core.content.edit
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxkotlin.addTo
 import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
@@ -38,8 +39,9 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityLoginBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.network.CommonApiManager
+import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.getLoginPreferences
 import retrofit2.Response
 import java.io.IOException
 import java.net.HttpCookie
@@ -51,23 +53,26 @@ import java.net.HttpCookie
 class LoginActivity : BaseActivity() {
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
+
+    private val disp = CompositeDisposable()
+
     private var userLoginUri: Uri? = null
     private var resetPasswordUri: Uri? = null
-    private val disp = CompositeDisposable()
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                super.onBackPressed()
-                true
-            }
-            else -> false
-        }
-    }
 
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            super.onBackPressed()
+            true
+        }
+        else -> false
+    }
 
     private fun doAttemptLogin() {
         Utils.hideKeyboard(this)
+
+        // Start checks
         val login = binding.loginInput.text.toString()
         val password = binding.passInput.text.toString()
         if (login.isBlank()) {
@@ -85,13 +90,19 @@ class LoginActivity : BaseActivity() {
             binding.passInput.requestFocus()
             return
         }
+        // End checks
+
         val snackbar = Snackbar.make(binding.loginLinearlayout, R.string.toast_retrieving, BaseTransientBottomBar.LENGTH_LONG)
                 .apply { show() }
         binding.btnLogin.isClickable = false
-        disp.add(CommonApiManager.productsApi.signIn(login, password, "Sign-in")
-                .subscribeOn(Schedulers.io()) // Network operation
+
+        productsApi.signIn(login, password, "Sign-in")
                 .observeOn(AndroidSchedulers.mainThread()) // We need to modify view
-                .subscribe({ response: Response<ResponseBody> ->
+                .doOnError {
+                    Toast.makeText(this, this.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
+                    Log.e(this::class.simpleName, "onFailure", it)
+                }
+                .subscribe { response: Response<ResponseBody> ->
                     if (!response.isSuccessful) {
                         Toast.makeText(this@LoginActivity, R.string.errorWeb, Toast.LENGTH_LONG).show()
                         return@subscribe
@@ -102,7 +113,7 @@ class LoginActivity : BaseActivity() {
                         Log.e("LOGIN", "Unable to parse the login response page", e)
                         return@subscribe
                     }
-                    val editor = this@LoginActivity.getSharedPreferences("login", 0).edit()
+                    val pref = this@LoginActivity.getSharedPreferences("login", 0)
                     if (htmlNoParsed == null
                             || htmlNoParsed.contains("Incorrect user name or password.")
                             || htmlNoParsed.contains("See you soon!")) {
@@ -119,27 +130,23 @@ class LoginActivity : BaseActivity() {
                                 val cookieValues = httpCookie.value.split("&").toTypedArray()
                                 var i = 0
                                 while (i < cookieValues.size) {
-                                    editor.putString(cookieValues[i], cookieValues[++i])
+                                    pref.edit { putString(cookieValues[i], cookieValues[++i]) }
                                     i++
                                 }
                                 break
                             }
                         }
                         Snackbar.make(binding.loginLinearlayout, R.string.connection, BaseTransientBottomBar.LENGTH_LONG).show()
-                        with(editor) {
+                        pref.edit {
                             putString("user", login)
                             putString("pass", password)
-                            apply()
                         }
                         binding.txtInfoLogin.setTextColor(resources.getColor(R.color.green_500))
                         binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
                         setResult(RESULT_OK)
                         finish()
                     }
-                }) { t: Throwable? ->
-                    Toast.makeText(this, this.getString(R.string.errorWeb), Toast.LENGTH_LONG).show()
-                    Log.e(javaClass.simpleName, "onFailure", t)
-                })
+                }.addTo(disp)
         binding.btnLogin.isClickable = true
     }
 
@@ -155,9 +162,9 @@ class LoginActivity : BaseActivity() {
         binding.btnLogin.setOnClickListener { doAttemptLogin() }
         binding.btnCreateAccount.setOnClickListener { doRegister() }
         binding.btnForgotPass.setOnClickListener { doForgotPassword() }
-        title = getString(R.string.txtSignIn)
         setSupportActionBar(binding.toolbarLayout.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.txtSignIn)
 
         userLoginUri = Uri.parse(getString(R.string.website) + "cgi/user.pl")
         resetPasswordUri = Uri.parse(getString(R.string.website) + "cgi/reset_password.pl")
@@ -176,16 +183,16 @@ class LoginActivity : BaseActivity() {
         }
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null)
         binding.btnCreateAccount.isEnabled = true
-        val settings = getSharedPreferences("login", 0)
-        val loginS = settings.getString(resources.getString(R.string.user), resources.getString(R.string.txt_anonymous))
-        if (resources.getString(R.string.user) == loginS) {
+
+        val loginS = getLoginPreferences().getString(resources.getString(R.string.user), resources.getString(R.string.txt_anonymous))
+        if (loginS == resources.getString(R.string.user)) {
             MaterialDialog.Builder(this).apply {
                 title(R.string.log_in)
                 content(R.string.login_true)
                 neutralText(R.string.ok_button)
+                onNeutral { _, _ -> finish() }
                 show()
             }
-
         }
     }
 

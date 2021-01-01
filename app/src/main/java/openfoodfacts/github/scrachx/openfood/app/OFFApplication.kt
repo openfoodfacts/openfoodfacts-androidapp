@@ -58,16 +58,12 @@ class OFFApplication : MultiDexApplication() {
         QueryBuilder.LOG_SQL = DEBUG
         appComponent = init(AppModule(this))
         appComponent.inject(this)
-        RxJavaPlugins.setErrorHandler { throwable: Throwable ->
-            var e = throwable
-            if (e is UndeliverableException) {
-                e = e.cause!!
-            }
-            when (e) {
+        RxJavaPlugins.setErrorHandler {
+            when (it) {
                 is IOException -> {
 
                     // fine, irrelevant network problem or API that throws on cancellation
-                    Log.i(LOG_TAG, "network exception", e)
+                    Log.i(LOG_TAG, "network exception", it)
                     return@setErrorHandler
                 }
                 is InterruptedException -> {
@@ -77,10 +73,11 @@ class OFFApplication : MultiDexApplication() {
                 is NullPointerException, is IllegalArgumentException, is IllegalStateException -> {
                     // that's likely a bug in the application
                     Thread.currentThread().uncaughtExceptionHandler
-                            .uncaughtException(Thread.currentThread(), e)
+                            .uncaughtException(Thread.currentThread(), it)
                     return@setErrorHandler
                 }
-                else -> Log.w(LOG_TAG, "Undeliverable exception received, not sure what to do", e)
+                is UndeliverableException ->
+                    Log.w(LOG_TAG, "Undeliverable exception received, not sure what to do", it.cause!!)
             }
         }
     }

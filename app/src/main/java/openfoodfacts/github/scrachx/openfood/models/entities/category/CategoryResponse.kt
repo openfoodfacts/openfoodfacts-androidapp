@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.category
 
+import openfoodfacts.github.scrachx.openfood.models.entities.EntityResponse
+
 /**
  * Created by Lobster on 04.03.18.
  */
@@ -7,9 +9,9 @@ class CategoryResponse(
         private val code: String,
         private val names: Map<String, String>,
         private var wikiDataCode: String? = null
-) {
+) : EntityResponse<Category> {
 
-    fun map(): Category {
+    override fun map(): Category {
         val category: Category
         if (wikiDataCode != null) {
             category = Category(code, arrayListOf(), wikiDataCode)

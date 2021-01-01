@@ -423,7 +423,8 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/section_manufacturing_details">
+                app:layout_constraintTop_toBottomOf="@id/section_manufacturing_details"
+                tools:visibility="visible">
 
                 <com.hootsuite.nachos.NachoTextView
                     android:id="@+id/origin_of_ingredients"
@@ -445,8 +446,30 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
 
-                    tools:visibility="visible" />
+                    />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/origin_warning"
+                style="@style/EditHint.Important"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/required_for_ecoscore"
+                app:layout_constraintEnd_toEndOf="@id/origin_of_ingredients_til"
+                app:layout_constraintStart_toStartOf="@id/origin_of_ingredients_til"
+                app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients_til" />
+
+            <TextView
+                android:id="@+id/origin_hint"
+                style="@style/EditHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/hint_origin"
+                app:layout_constraintEnd_toEndOf="@id/origin_of_ingredients_til"
+                app:layout_constraintStart_toStartOf="@id/origin_of_ingredients_til"
+                app:layout_constraintTop_toBottomOf="@id/origin_warning" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/manufacturing_place_til"
@@ -458,7 +481,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients_til">
+                app:layout_constraintTop_toBottomOf="@id/origin_hint">
 
                 <EditText
                     android:id="@+id/manufacturing_place"

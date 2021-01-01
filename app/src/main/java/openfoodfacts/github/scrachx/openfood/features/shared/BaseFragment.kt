@@ -39,8 +39,11 @@ import java.io.File
 
 abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
     private val cameraPermissionRequestLauncher = registerForActivityResult(RequestMultiplePermissions())
-    { results: Map<String?, Boolean?>? ->
-        if (!isAllGranted(results!!)) {
+    { results ->
+        if (isAllGranted(results)) {
+            // Callback
+            doOnPhotosPermissionGranted()
+        } else {
             // Tell the user how to give permission
             MaterialDialog.Builder(requireActivity())
                     .title(R.string.permission_title)
@@ -48,16 +51,12 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
                     .negativeText(R.string.txtNo)
                     .positiveText(R.string.txtYes)
                     .onPositive { _, _ ->
-                        val intent = Intent()
-                        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                        val uri = Uri.fromParts("package", requireActivity().packageName, null)
-                        intent.data = uri
-                        startActivity(intent)
+                        startActivity(Intent().apply {
+                            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                            data = Uri.fromParts("package", requireActivity().packageName, null)
+                        })
                     }
                     .show()
-        } else {
-            // Callback
-            doOnPhotosPermissionGranted()
         }
     }
     private var refreshListener: OnRefreshListener? = null
@@ -66,9 +65,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         swipeRefreshLayout = view.findViewById(R.id.swipeRefresh)
-        if (swipeRefreshLayout != null) {
-            swipeRefreshLayout!!.setOnRefreshListener(this)
-        }
+        swipeRefreshLayout?.setOnRefreshListener(this)
     }
 
     override fun onAttach(context: Context) {
@@ -79,15 +76,12 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
 
     override fun onRefresh() {
-        if (refreshListener != null) {
-            refreshListener!!.onRefresh()
-        }
+        refreshListener?.onRefresh()
     }
 
+
     override fun refreshView(productState: ProductState) {
-        if (swipeRefreshLayout != null) {
-            swipeRefreshLayout!!.isRefreshing = false
-        }
+        swipeRefreshLayout?.isRefreshing = false
     }
 
     protected fun doChooseOrTakePhotos(title: String?) {
@@ -99,7 +93,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
         cameraPermissionRequestLauncher.launch(arrayOf(permission.CAMERA))
     }
 
-    protected open fun doOnPhotosPermissionGranted() {}
+    protected open fun doOnPhotosPermissionGranted() = Unit
 
     protected fun cropRotateImage(image: File?, title: String?) {
         val uri = Uri.fromFile(image)

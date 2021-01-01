@@ -1,30 +1,23 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.analysistag
 
-import java.util.*
+import openfoodfacts.github.scrachx.openfood.models.entities.EntityResponse
 
 /**
  * Intermediate class between [AnalysisTagsWrapper] and [AnalysisTag]
  *
  * @author Rares
  */
-class AnalysisTagResponse
-/**
- * Constructor.
- *
- * @param uniqueAnalysisTagId
- * @param namesMap
- * @param showIngredientsMap
- */(
+class AnalysisTagResponse(
         private val uniqueAnalysisTagID: String,
-        private val namesMap: Map<String, String?>,
+        private val namesMap: Map<String, String>,
         private val showIngredientsMap: Map<String, String>
-) {
+) : EntityResponse<AnalysisTag> {
     /**
      * Converts an AnalysisTagResponse object into a new AnalysisTag object.
      *
      * @return The newly constructed AnalysisTag object.
      */
-    fun map(): AnalysisTag {
+    override fun map(): AnalysisTag {
         val analysisTag = AnalysisTag(uniqueAnalysisTagID, arrayListOf())
         namesMap.forEach { (key, value) ->
             var showIngredients = showIngredientsMap[key]

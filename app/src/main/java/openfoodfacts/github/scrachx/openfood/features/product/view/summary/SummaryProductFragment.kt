@@ -33,7 +33,6 @@ import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -41,6 +40,7 @@ import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -52,7 +52,6 @@ import openfoodfacts.github.scrachx.openfood.databinding.FragmentSummaryProductB
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.LoginContract
-import openfoodfacts.github.scrachx.openfood.features.adapters.DialogAddToListAdapter
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
@@ -77,36 +76,51 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import org.apache.commons.lang.StringUtils
 import java.io.File
 import java.util.*
 
-class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.ConnectionCallback, ISummaryProductPresenter.View {
-    private val disp = CompositeDisposable()
-    private var annotation: AnnotationAnswer? = null
-    private var barcode: String? = null
+class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var _binding: FragmentSummaryProductBinding? = null
     private val binding get() = _binding!!
+
+    private val disp = CompositeDisposable()
+
     private lateinit var client: OpenFoodAPIClient
+    private lateinit var wikidataClient: WikiDataApiClient
+
+    private lateinit var presenter: ISummaryProductPresenter.Actions
+    private lateinit var mTagDao: TagDao
+    private lateinit var product: Product
+
+    private var annotation: AnnotationAnswer? = null
     private var customTabActivityHelper: CustomTabActivityHelper? = null
     private var customTabsIntent: CustomTabsIntent? = null
     private var hasCategoryInsightQuestion = false
+
     private var insightId: String? = null
 
     //boolean to determine if image should be loaded or not
     private var isLowBatteryMode = false
-    private var mTagDao: TagDao? = null
     private var mUrlImage: String? = null
     private var nutritionScoreUri: Uri? = null
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
-    private lateinit var presenter: ISummaryProductPresenter.Actions
-    private lateinit var product: Product
-    private var productQuestion: Question? = null
-    private val loginLauncher = registerForActivityResult(LoginContract()) { isLoggedIn: Boolean ->
-        if (isLoggedIn) {
-            processInsight(insightId, annotation)
+
+    private var photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File ->
+        //the pictures are uploaded with the correct path
+        val resultUri = newPhotoFile.toURI()
+        val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
+        val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
+        val image = ProductImage(product.code, field, photoFile)
+        image.filePath = photoFile.absolutePath
+        uploadImage(image)
+        if (!sendOther) {
+            loadPhoto(photoFile)
         }
     }
+    private var productQuestion: Question? = null
+
+    private val loginThenProcessInsight = registerForActivityResult(LoginContract())
+    { isLoggedIn -> if (isLoggedIn) processInsight() }
+
     private lateinit var productState: ProductState
     private var sendOther = false
 
@@ -115,12 +129,20 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     /**boolean to determine if nutrient prompt should be shown*/
     private var showNutrientPrompt = false
-    private lateinit var wikidataClient: WikiDataApiClient
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper!!.connectionCallback=this
+        customTabActivityHelper = CustomTabActivityHelper().apply {
+            connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
+                override fun onCustomTabsConnected() {
+                    binding.imageGrade.isClickable = true
+                }
+
+                override fun onCustomTabsDisconnected() {
+                    binding.imageGrade.isClickable = false
+                }
+            }
+        }
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
 
     }
@@ -129,6 +151,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         super.onCreate(savedInstanceState)
         client = OpenFoodAPIClient(requireActivity())
         wikidataClient = WikiDataApiClient()
+        mTagDao = Utils.daoSession.tagDao
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -138,18 +162,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File ->
-            //the pictures are uploaded with the correct path
-            val resultUri = newPhotoFile.toURI()
-            val photoFile = if (sendOther) newPhotoFile else File(resultUri.path)
-            val field = if (sendOther) ProductImageField.OTHER else ProductImageField.FRONT
-            val image = ProductImage(barcode, field, photoFile)
-            image.filePath = photoFile.absolutePath
-            uploadImage(image)
-            if (!sendOther) {
-                loadPhoto(photoFile)
-            }
-        }
+
         binding.imageViewFront.setOnClickListener { openFrontImageFullscreen() }
         binding.buttonNewFrontImage.setOnClickListener { newFrontImage() }
         binding.buttonMorePictures.setOnClickListener { takeMorePicture() }
@@ -158,17 +171,19 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         binding.actionShareButton.setOnClickListener { onShareProductButtonClick() }
         binding.actionCompareButton.setOnClickListener { onCompareProductButtonClick() }
         binding.addNutriscorePrompt.setOnClickListener { onAddNutriScorePromptClick() }
-        binding.productQuestionDismiss.setOnClickListener { productQuestionDismiss() }
+        binding.productQuestionDismiss.setOnClickListener {
+            binding.productQuestionLayout.visibility = View.GONE
+        }
         binding.productQuestionLayout.setOnClickListener { onProductQuestionClick() }
         productState = requireProductState()
         refreshView(productState)
 
         presenter = SummaryProductPresenter(product, this)
+        presenter.addTo(disp)
     }
 
 
     override fun onDestroyView() {
-        presenter.dispose()
         disp.dispose()
         super.onDestroyView()
         _binding = null
@@ -232,6 +247,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         this.productState = productState
         product = productState.product!!
         presenter = SummaryProductPresenter(product, this)
+        presenter.addTo(disp)
         binding.categoriesText.text = bold(getString(R.string.txtCategories))
         binding.labelsText.text = bold(getString(R.string.txtLabels))
 
@@ -245,7 +261,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         binding.labelsIcon.visibility = View.VISIBLE
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(requireActivity()) && Utils.isBatteryLevelLow(requireContext())) {
+        if (requireActivity().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
             isLowBatteryMode = true
         }
 
@@ -258,8 +274,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         binding.textAdditiveProduct.text = bold(getString(R.string.txtAdditives))
         presenter.loadAdditives()
         presenter.loadAnalysisTags()
-        mTagDao = Utils.daoSession.tagDao
-        barcode = product.code
+
         val langCode = LocaleHelper.getLanguage(context)
         val imageUrl = product.getImageUrl(langCode)
         if (!imageUrl.isNullOrBlank()) {
@@ -267,7 +282,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Utils.picassoBuilder(context)
+                Utils.picassoBuilder(requireContext())
                         .load(imageUrl)
                         .into(binding.imageViewFront)
             } else {
@@ -282,12 +297,12 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         } else {
             binding.textNameProduct.visibility = View.GONE
         }
-        if (StringUtils.isNotBlank(product.quantity)) {
+        if (!product.quantity.isNullOrBlank()) {
             binding.textQuantityProduct.text = product.quantity
         } else {
             binding.textQuantityProduct.visibility = View.GONE
         }
-        if (StringUtils.isNotBlank(product.brands)) {
+        if (product.brands.isNullOrBlank()) {
             binding.textBrandProduct.isClickable = true
             binding.textBrandProduct.movementMethod = LinkMovementMethod.getInstance()
             binding.textBrandProduct.text = ""
@@ -414,10 +429,10 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     private fun refreshNutriScore() {
-        val nutritionGradeResource = getImageGradeDrawable(requireContext(), product)
-        if (nutritionGradeResource != null) {
+        val gradeDrawable = product.getImageGradeDrawable(requireContext())
+        if (gradeDrawable != null) {
             binding.imageGrade.visibility = View.VISIBLE
-            binding.imageGrade.setImageDrawable(nutritionGradeResource)
+            binding.imageGrade.setImageDrawable(gradeDrawable)
             binding.imageGrade.setOnClickListener {
                 val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
                 CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri!!, WebViewFallback())
@@ -430,7 +445,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     private fun refreshNovaIcon() {
         if (product.novaGroups != null) {
             binding.novaGroup.visibility = View.VISIBLE
-            binding.novaGroup.setImageResource(Utils.getNovaGroupDrawable(product.novaGroups))
+            binding.novaGroup.setImageResource(product.getNovaGroupDrawable())
             binding.novaGroup.setOnClickListener {
                 val uri = Uri.parse(getString(R.string.url_nova_groups))
                 val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
@@ -445,8 +460,10 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     private fun refreshCO2OrEcoscoreIcon() {
         binding.ecoscoreIcon.visibility = View.GONE
         binding.co2Icon.visibility = View.GONE
-        val ecoScoreRes = Utils.getImageEcoscore(product)
-        val environmentImpactResource = Utils.getImageEnvironmentImpact(product)
+
+        val ecoScoreRes = product.getEcoscoreResource()
+        val environmentImpactResource = product.getCO2Resource()
+
         if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
             binding.ecoscoreIcon.setImageResource(ecoScoreRes)
             binding.ecoscoreIcon.visibility = View.VISIBLE
@@ -540,18 +557,18 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     override fun showProductQuestion(question: Question) {
-        if (isRemoving) {
-            return
-        }
+        if (isRemoving) return
+
         if (!question.isEmpty()) {
             productQuestion = question
-            binding.productQuestionText.text = "${question.question}\n${question.value}"
+            binding.productQuestionText.text = "${question.questionText}\n${question.value}"
             binding.productQuestionLayout.visibility = View.VISIBLE
             hasCategoryInsightQuestion = question.insightType == "category"
         } else {
             binding.productQuestionLayout.visibility = View.GONE
             productQuestion = null
         }
+
         if (isFlavors(OFF)) {
             refreshNutriScorePrompt()
             refreshScoresLayout()
@@ -562,7 +579,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         productQuestion?.let {
             QuestionDialog(requireActivity()).run {
                 backgroundColor = (R.color.colorPrimaryDark)
-                question = productQuestion!!.question
+                question = productQuestion!!.questionText
                 value = productQuestion!!.value
                 onPositiveFeedback = { dialog: QuestionDialog ->
                     //init POST request
@@ -591,26 +608,30 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     private fun sendProductInsights(insightId: String?, annotation: AnnotationAnswer?) {
         this.insightId = insightId
         this.annotation = annotation
-        if (requireActivity().isUserLoggedIn()) {
-            processInsight(insightId, annotation)
+        if (requireActivity().isUserSet()) {
+            processInsight()
         } else {
             MaterialDialog.Builder(requireActivity()).run {
                 title(getString(R.string.sign_in_to_answer))
                 positiveText(getString(R.string.sign_in_or_register))
-                onPositive { dialog: MaterialDialog, _: DialogAction? ->
-                    loginLauncher.launch(Unit)
+                onPositive { dialog, _ ->
+                    loginThenProcessInsight.launch(Unit)
                     dialog.dismiss()
                 }
                 neutralText(R.string.dialog_cancel)
-                onNeutral { dialog: MaterialDialog, _: DialogAction? -> dialog.dismiss() }
+                onNeutral { dialog, _ -> dialog.dismiss() }
                 show()
             }
 
         }
     }
 
-    private fun processInsight(insightId: String?, annotation: AnnotationAnswer?) {
-        presenter.annotateInsight(insightId!!, annotation!!)
+    private fun processInsight() {
+        val insightId = this.insightId ?: error("Property 'insightId' not set.")
+        val annotation = this.annotation ?: error("Property 'annotation' not set.")
+
+        presenter.annotateInsight(insightId, annotation)
+
         Log.d(LOG_TAG, "Annotation $annotation received for insight $insightId")
         binding.productQuestionLayout.visibility = View.GONE
         productQuestion = null
@@ -618,13 +639,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     override fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse) {
         if (annotationResponse.status == "updated" && activity != null) {
-            val toast = Snackbar.make(binding.root, R.string.product_question_submit_message, BaseTransientBottomBar.LENGTH_SHORT)
-            toast.show()
+            Snackbar.make(binding.root, R.string.product_question_submit_message, BaseTransientBottomBar.LENGTH_SHORT).show()
         }
-    }
-
-    private fun productQuestionDismiss() {
-        binding.productQuestionLayout.visibility = View.GONE
     }
 
     override fun showLabels(labels: List<LabelName>) {
@@ -632,11 +648,11 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         binding.labelsText.isClickable = true
         binding.labelsText.movementMethod = LinkMovementMethod.getInstance()
         binding.labelsText.append(" ")
-        for (i in 0 until labels.size - 1) {
+        (0 until labels.size - 1).forEach { i ->
             binding.labelsText.append(getLabelTag(labels[i]))
             binding.labelsText.append(", ")
         }
-        binding.labelsText.append(getLabelTag(labels[labels.size - 1]))
+        binding.labelsText.append(getLabelTag(labels.last()))
     }
 
     override fun showCategoriesState(state: ProductInfoState) {
@@ -665,17 +681,11 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         }
     }
 
-    private fun getEmbUrl(embTag: String): String {
-        val tag = mTagDao!!.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()
-        return tag.name
-    }
+    private fun getEmbUrl(embTag: String) =
+            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().name
 
-    private fun getEmbCode(embTag: String): String {
-        val tag = mTagDao!!.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()
-        return if (tag != null) {
-            tag.name
-        } else embTag
-    }
+    private fun getEmbCode(embTag: String) =
+            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
 
     private fun getLabelTag(label: LabelName): CharSequence {
         val spannableStringBuilder = SpannableStringBuilder()
@@ -700,7 +710,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     private fun onAddNutriScorePromptClick() {
         if (isFlavors(OFF)) {
-            if (!requireActivity().isUserLoggedIn()) {
+            if (!requireActivity().isUserSet()) {
                 startLoginToEditAnd(EDIT_PRODUCT_NUTRITION_AFTER_LOGIN, requireActivity())
             } else {
                 editProductNutriscore()
@@ -712,8 +722,8 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         val intent = Intent(activity, ProductEditActivity::class.java)
         intent.putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, product)
         //adds the information about the prompt when navigating the user to the edit the product
-        intent.putExtra(ProductEditActivity.MODIFY_CATEGORY_PROMPT, showCategoryPrompt)
-        intent.putExtra(ProductEditActivity.MODIFY_NUTRITION_PROMPT, showNutrientPrompt)
+        intent.putExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, showCategoryPrompt)
+        intent.putExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, showNutrientPrompt)
         startActivity(intent)
     }
 
@@ -735,7 +745,7 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
     }
 
     private fun onEditProductButtonClick() {
-        if (!requireActivity().isUserLoggedIn()) {
+        if (!requireActivity().isUserSet()) {
             startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN, requireActivity())
         } else {
             editProduct()
@@ -785,13 +795,6 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
         }
     }
 
-    override fun onCustomTabsConnected() {
-        binding.imageGrade.isClickable = true
-    }
-
-    override fun onCustomTabsDisconnected() {
-        binding.imageGrade.isClickable = false
-    }
 
     private fun takeMorePicture() {
         sendOther = true
@@ -821,17 +824,17 @@ class SummaryProductFragment : BaseFragment(), CustomTabActivityHelper.Connectio
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
         val shouldRefresh = (requestCode == EDIT_REQUEST_CODE && resultCode == Activity.RESULT_OK
                 || ImagesManageActivity.isImageModified(requestCode, resultCode))
         if (shouldRefresh && activity is ProductViewActivity) {
             (activity as ProductViewActivity?)!!.onRefresh()
         }
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && requireActivity().isUserLoggedIn()) {
+            if (requestCode == EDIT_PRODUCT_AFTER_LOGIN && requireActivity().isUserSet()) {
                 editProduct()
             }
-            if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && requireActivity().isUserLoggedIn()) {
+            if (requestCode == EDIT_PRODUCT_NUTRITION_AFTER_LOGIN && requireActivity().isUserSet()) {
                 editProductNutriscore()
             }
         }

@@ -10,9 +10,7 @@ object FileTestUtils {
     @Throws(IOException::class)
     fun readTextFileFromResources(filepath: String, classLoader: ClassLoader): String {
         classLoader.getResourceAsStream(filepath).use { stream ->
-            if (stream == null) {
-                throw FileNotFoundException("file not found: $filepath")
-            }
+            if (stream == null) throw FileNotFoundException("File not found: $filepath")
             BufferedReader(InputStreamReader(stream, StandardCharsets.UTF_8)).use { reader ->
                 val sb = StringBuilder()
                 var line: String?

@@ -22,13 +22,14 @@ import androidx.databinding.ObservableInt
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.viewmodel.BaseViewModel
 import openfoodfacts.github.scrachx.openfood.models.entities.category.Category
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
-import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.allCategoriesByDefaultLanguageCode
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.getAllCategoriesByDefaultLanguageCode
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository.getAllCategoriesByLanguageCode
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.net.UnknownHostException
@@ -38,10 +39,10 @@ import java.util.*
  * Created by Abdelali Eramli on 27/12/2017.
  */
 class CategoryFragmentViewModel : BaseViewModel() {
-    private val categories: MutableList<CategoryName> = arrayListOf()
-    val filteredCategories = ObservableField(mutableListOf<CategoryName>())
-    val showProgress: ObservableInt = ObservableInt(View.VISIBLE)
-    val showOffline: ObservableInt= ObservableInt(View.GONE)
+    private val allCategories = mutableListOf<CategoryName>()
+    val shownCategories = ObservableField(mutableListOf<CategoryName>())
+    val showProgress = ObservableInt(View.VISIBLE)
+    val showOffline = ObservableInt(View.GONE)
 
 
     override fun subscribe(subscriptions: CompositeDisposable) {
@@ -52,40 +53,39 @@ class CategoryFragmentViewModel : BaseViewModel() {
      * Generates a network call for showing categories in CategoryFragment
      */
     fun refreshCategories() {
-        subscriptions?.add(getAllCategoriesByLanguageCode(getLanguage(OFFApplication.instance))
+        getAllCategoriesByLanguageCode(getLanguage(OFFApplication.instance))
                 .doOnSubscribe {
                     showOffline.set(View.GONE)
                     showProgress.set(View.VISIBLE)
                 }
-                .flatMap { categoryNames: List<CategoryName> ->
+                .flatMap { categoryNames ->
                     if (categoryNames.isEmpty()) {
-                        return@flatMap allCategoriesByDefaultLanguageCode
+                        return@flatMap getAllCategoriesByDefaultLanguageCode()
                     } else {
                         return@flatMap Single.just(categoryNames)
                     }
                 }
-                .flatMap { categoryNames: List<CategoryName> ->
+                .flatMap { categoryNames ->
                     if (categoryNames.isEmpty()) {
-                        return@flatMap ProductRepository.categories
-                                .flatMap { categories: List<Category> -> Single.just(extractCategoriesNames(categories)) }
+                        return@flatMap ProductRepository.getCategories().map { categories -> extractCategoriesNames(categories) }
                     } else {
                         return@flatMap Single.just(categoryNames)
                     }
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ categoryList: List<CategoryName> ->
-                    categories.addAll(categoryList)
-                    filteredCategories.set(categoryList.toMutableList())
-                    showProgress.set(View.GONE)
-                }
-                ) { throwable: Throwable? ->
-                    Log.e(CategoryFragmentViewModel::class.java.canonicalName, "Error loading categories", throwable)
-                    if (throwable is UnknownHostException) {
+                .doOnError {
+                    Log.e(CategoryFragmentViewModel::class.java.canonicalName, "Error loading categories", it)
+                    if (it is UnknownHostException) {
                         showOffline.set(View.VISIBLE)
                         showProgress.set(View.GONE)
                     }
-                })?: error("Cannot refresh view while not binded.")
+                }
+                .subscribe { categoryList ->
+                    allCategories.addAll(categoryList)
+                    shownCategories.set(categoryList.toMutableList())
+                    showProgress.set(View.GONE)
+                }.addTo(subscriptions ?: error("Cannot refresh view while not binded."))
     }
 
     /**
@@ -103,10 +103,9 @@ class CategoryFragmentViewModel : BaseViewModel() {
      *
      * @param query string which is used to query for category names
      */
-    fun searchCategories(query: String?) {
-        filteredCategories.set(categories
-                .filter { it.name != null && it.name!!.toLowerCase(Locale.getDefault()).startsWith(query!!) }
-                .toMutableList()
-        )
-    }
+    fun searchCategories(query: String?) = shownCategories.set(
+            allCategories
+                    .filter { it.name != null && it.name!!.toLowerCase(Locale.getDefault()).startsWith(query!!) }
+                    .toMutableList()
+    )
 }

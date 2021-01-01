@@ -53,6 +53,7 @@ object ApiFields {
     }
 
     object Keys {
+        const val ATTRIBUTE_GROUPS: String = "attribute_groups"
         const val NO_NUTRITION_DATA = "no_nutrition_data"
 
         /**

@@ -8,6 +8,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.utils.getAsFloat
 import openfoodfacts.github.scrachx.openfood.utils.getAsInt
+import org.apache.commons.lang3.builder.ToStringBuilder
 import kotlin.math.ceil
 
 class ImageTransformationUtils {
@@ -18,9 +19,9 @@ class ImageTransformationUtils {
         private set
     var cropRectangle: Rect? = null
         private set
-    var initImageUrl: String? = null
+    var imageUrl: String? = null
         private set
-    var initImageId: String? = null
+    var imageId: String? = null
         private set
 
     private constructor()
@@ -29,22 +30,22 @@ class ImageTransformationUtils {
         this.cropRectangle = cropRectangle
     }
 
-    override fun toString() =
-            """ImageTransformation{rotationInDegree=$rotationInDegree,
-                | cropRectangle=$cropRectangle,
-                |  initImageUrl='$initImageUrl'}""".trimMargin()
+    override fun toString() = ToStringBuilder(this)
+            .append(rotationInDegree)
+            .append(cropRectangle)
+            .append(imageUrl)
+            .toString()
+
 
     override fun hashCode(): Int {
         var result = rotationInDegree
         result = 31 * result + if (cropRectangle != null) cropRectangle.hashCode() else 0
-        result = 31 * result + if (initImageUrl != null) initImageUrl.hashCode() else 0
+        result = 31 * result + if (imageUrl != null) imageUrl.hashCode() else 0
         return result
     }
 
-    val isEmpty
-        get() = initImageUrl.isNullOrBlank()
-    val isNotEmpty: Boolean
-        get() = !isEmpty
+    fun isEmpty() = imageUrl.isNullOrBlank()
+    fun isNotEmpty(): Boolean = !isEmpty()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) {
@@ -60,7 +61,7 @@ class ImageTransformationUtils {
         if (if (cropRectangle != null) cropRectangle != that.cropRectangle else that.cropRectangle != null) {
             return false
         }
-        return if (initImageUrl != null) initImageUrl == that.initImageUrl else that.initImageUrl == null
+        return if (imageUrl != null) imageUrl == that.imageUrl else that.imageUrl == null
     }
 
     companion object {
@@ -70,6 +71,7 @@ class ImageTransformationUtils {
         private const val TOP = "y1"
         private const val BOTTOM = "y2"
         private const val ANGLE = "angle"
+
         @JvmStatic
         fun addTransformToMap(newServerTransformation: ImageTransformationUtils, imgMap: MutableMap<String, String?>) {
             imgMap[ANGLE] = newServerTransformation.rotationInDegree.toString()
@@ -91,7 +93,7 @@ class ImageTransformationUtils {
         @JvmStatic
         fun getScreenTransformation(product: Product, productImageField: ProductImageField?, language: String?): ImageTransformationUtils {
             val res = getInitialServerTransformation(product, productImageField, language)
-            if (res.isEmpty) {
+            if (res.isEmpty()) {
                 return res
             }
 
@@ -148,20 +150,20 @@ class ImageTransformationUtils {
         @JvmStatic
         fun getInitialServerTransformation(product: Product, productImageField: ProductImageField?, language: String?): ImageTransformationUtils {
             val imageKey = getImageStringKey(productImageField!!, language!!)
-            val res = ImageTransformationUtils()
-            val imageDetails = product.getImageDetails(imageKey) ?: return res
+            val imageDetails = product.getImageDetails(imageKey) ?: return  ImageTransformationUtils()
 
             val initImageId = imageDetails[IMG_ID] as String?
-            if (initImageId.isNullOrBlank()) return res
+            if (initImageId.isNullOrBlank()) return  ImageTransformationUtils()
 
-            res.initImageId = initImageId
-            res.initImageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE_FILE)
-            res.rotationInDegree = getImageRotation(imageDetails)
-            val initCrop = getImageCropRect(imageDetails)
-            if (initCrop != null) {
-                res.cropRectangle = toRect(initCrop)
+            return ImageTransformationUtils().apply {
+                imageId = initImageId
+                imageUrl = getImageUrl(product.code, initImageId, IMAGE_EDIT_SIZE_FILE)
+                rotationInDegree = getImageRotation(imageDetails)
+                val initCrop = getImageCropRect(imageDetails)
+                if (initCrop != null) {
+                    cropRectangle = toRect(initCrop)
+                }
             }
-            return res
         }
 
         /**
@@ -174,7 +176,7 @@ class ImageTransformationUtils {
         fun toServerTransformation(screenTransformation: ImageTransformationUtils, product: Product, productImageField: ProductImageField?,
                                    language: String?): ImageTransformationUtils {
             val res = getInitialServerTransformation(product, productImageField, language)
-            if (res.isEmpty) {
+            if (res.isEmpty()) {
                 return res
             }
             res.rotationInDegree = screenTransformation.rotationInDegree
@@ -208,9 +210,9 @@ class ImageTransformationUtils {
                 null
             } else RectF(
                     init.left.toFloat(),
-                    ceil(init.top.toDouble()).toFloat(),
-                    ceil(init.right.toDouble()).toFloat(),
-                    ceil(init.bottom.toDouble()).toFloat()
+                    init.top.toFloat(),
+                    init.right.toFloat(),
+                    init.bottom.toFloat()
             )
         }
 

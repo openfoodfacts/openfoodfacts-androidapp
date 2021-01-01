@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase.CursorFactory
 import android.util.Log
+import androidx.core.content.edit
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster.OpenHelper
 import openfoodfacts.github.scrachx.openfood.models.InvalidBarcodeDao
@@ -30,16 +31,12 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import org.greenrobot.greendao.database.Database
 
-class OFFDatabaseHelper : OpenHelper {
-    private val settings: SharedPreferences?
-
-    constructor(context: Context, name: String?, factory: CursorFactory?) : super(context, name, factory) {
-        settings = context.getSharedPreferences("prefs", 0)
-    }
-
-    constructor(context: Context, name: String?) : super(context, name) {
-        settings = context.getSharedPreferences("prefs", 0)
-    }
+class OFFDatabaseHelper @JvmOverloads constructor(
+        context: Context,
+        name: String,
+        factory: CursorFactory? = null
+) : OpenHelper(context, name, factory) {
+    private val settings: SharedPreferences by lazy { context.getSharedPreferences("prefs", 0) }
 
     override fun onCreate(db: Database) {
         Log.i(LOG_TAG, "Creating tables for schema version " + DaoMaster.SCHEMA_VERSION)
@@ -49,13 +46,12 @@ class OFFDatabaseHelper : OpenHelper {
     override fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
         Log.i(LOG_TAG, "migrating schema from version $oldVersion to $newVersion")
         //dropAllTables(db, true);
-        for (migrateVersion in oldVersion + 1..newVersion) {
-            migrateDB(db, migrateVersion)
-        }
+
+        for (migrateVersion in oldVersion + 1..newVersion) migrateDB(db, migrateVersion)
 
         //db model has changed we need to invalidate and reload taxonomies
-        if (settings != null && oldVersion != newVersion) {
-            settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, true).apply()
+        if (oldVersion != newVersion) {
+            settings.edit { putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, true) }
         }
     }
 
@@ -68,7 +64,7 @@ class OFFDatabaseHelper : OpenHelper {
      * @param migrateVersion
      */
     private fun migrateDB(db: Database, migrateVersion: Int) {
-        Log.e("MIGRATE VERSION", "" + migrateVersion)
+        Log.e("MIGRATE VERSION", migrateVersion.toString())
         when (migrateVersion) {
             2 -> db.execSQL("ALTER TABLE send_product ADD COLUMN 'lang' TEXT NOT NULL DEFAULT 'fr';")
             3 -> ToUploadProductDao.createTable(db, true)
@@ -92,38 +88,33 @@ class OFFDatabaseHelper : OpenHelper {
                 CategoryNameDao.createTable(db, true)
             }
             7 -> {
-                val newColumns = arrayOf("wiki_data_id", "is_wiki_data_id_present")
-                val updatedTables = arrayOf("additive_name", "additive", "category_name", "category", "label_name", "label")
-                for (table in updatedTables) {
-                    for (column in newColumns) {
-                        if (!isFieldExist(db, table, column)) {
-                            db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT NOT NULL DEFAULT '';", table, column))
-                        }
-                    }
+                val newColumns = listOf("wiki_data_id", "is_wiki_data_id_present")
+                val updatedTables = listOf("additive_name", "additive", "category_name", "category", "label_name", "label")
+                updatedTables.forEach { table ->
+                    newColumns.filterNot { isFieldExist(db, table, it) }
+                            .forEach { column ->
+                                db.execSQL("ALTER TABLE $table ADD COLUMN '$column' TEXT NOT NULL DEFAULT '';")
+                            }
                 }
             }
             8 -> {
                 OfflineSavedProductDao.createTable(db, true)
             }
             9 -> {
-                val newColumns = arrayOf("overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
-                        "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael")
-                val updatedTables = arrayOf("additive_name", "additive")
-                for (table in updatedTables) {
-                    for (column in newColumns) {
-                        if (!isFieldExist(db, table, column)) {
-                            db.execSQL(String.format("ALTER TABLE %s ADD COLUMN '%s' TEXT;", table, column))
-                        }
-                    }
+                arrayOf("additive_name", "additive").forEach { table ->
+                    arrayOf("overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
+                            "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael")
+                            .filterNot { isFieldExist(db, table, it) }
+                            .forEach { db.execSQL("ALTER TABLE $table ADD COLUMN '$it' TEXT;") }
                 }
             }
             10 -> {
                 arrayOf("allergen_name", "allergen").forEach { table ->
-                    arrayOf("WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT").forEach { column ->
-                        if (!isFieldExist(db, table, column)) {
-                            db.execSQL("ALTER TABLE $table ADD COLUMN '$column' TEXT NOT NULL DEFAULT '';")
-                        }
-                    }
+                    arrayOf("WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT")
+                            .filterNot { isFieldExist(db, table, it) }
+                            .forEach { column ->
+                                db.execSQL("ALTER TABLE $table ADD COLUMN '$column' TEXT NOT NULL DEFAULT '';")
+                            }
                 }
             }
             11 -> {
@@ -148,17 +139,13 @@ class OFFDatabaseHelper : OpenHelper {
     }
 
     private fun isFieldExist(db: Database, tableName: String, fieldName: String): Boolean {
-        var isExist = false
-        val query = "PRAGMA table_info($tableName)"
-        val res = db.rawQuery(query, null)
+        val res = db.rawQuery("PRAGMA table_info($tableName)", null)
         res.moveToFirst()
         do {
             val currentColumn = res.getString(1)
-            if (currentColumn == fieldName) {
-                isExist = true
-            }
+            if (currentColumn == fieldName) return true
         } while (res.moveToNext())
-        return isExist
+        return false
     }
 
     companion object {

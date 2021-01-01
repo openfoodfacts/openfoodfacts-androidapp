@@ -27,24 +27,23 @@ class ProductIngredientTest {
             this.setAdditionalProperty(additionalPropertyName, additionalPropertyValue)
         }
 
-        val expectedString = """Ingredient{
-            |text='$text', 
-            |id='$id', 
-            |rank=$rank, 
-            |percent='$percent', 
-            |additionalProperties=$additionalProperties
-            |}""".trimMargin()
+        val expectedString = "ProductIngredient[text=$text," +
+                "id=$id," +
+                "rank=$rank," +
+                "percent=$percent," +
+                "additionalProperties=$additionalProperties]"
         assertThat(productIngredient.toString()).isEqualTo(expectedString)
     }
 
     @Test
     fun productIngredientWithAdditionalProperty() {
-        val productIngredient = ProductIngredient()
-        productIngredient.text = "Ketchup"
-        productIngredient.id = "ketchup_id"
-        productIngredient.rank = 300L
-        productIngredient.percent = "20%"
-        productIngredient.withAdditionalProperty("Sweetness", "90")
+        val productIngredient = ProductIngredient().apply {
+            text = "Ketchup"
+            id = "ketchup_id"
+            rank = 300L
+            percent = "20%"
+            setAdditionalProperty("Sweetness", "90")
+        }
         val returnedMap = productIngredient.getAdditionalProperties()
         assertThat(returnedMap["Sweetness"]).isEqualTo("90")
     }

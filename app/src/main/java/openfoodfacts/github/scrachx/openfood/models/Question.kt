@@ -17,7 +17,7 @@ class Question : Serializable {
     val value: String? = null
 
     @JsonProperty("question")
-    val question: String? = null
+    val questionText: String? = null
 
     @JsonProperty("insight_id")
     val insightId: String? = null
@@ -32,7 +32,7 @@ class Question : Serializable {
     val imageUrl: String? = null
 
     @JsonIgnore
-    fun isEmpty() = question.isNullOrEmpty()
+    fun isEmpty() = questionText.isNullOrEmpty()
 
     companion object {
         private const val serialVersionUID = 1L

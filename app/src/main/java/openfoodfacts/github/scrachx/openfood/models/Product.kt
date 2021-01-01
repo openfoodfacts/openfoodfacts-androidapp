@@ -3,15 +3,20 @@ package openfoodfacts.github.scrachx.openfood.models
 import android.content.Context
 import com.fasterxml.jackson.annotation.*
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import openfoodfacts.github.scrachx.openfood.images.ImageSize
+import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
-import org.apache.commons.lang.StringUtils
-import org.apache.commons.lang.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
 import java.util.*
+import kotlin.collections.ArrayList
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -43,7 +48,7 @@ class Product : Serializable {
     val allergensHierarchy: ArrayList<String> = arrayListOf()
 
     @JsonProperty(ApiFields.Keys.ALLERGENS_TAGS)
-    val allergensTags: List<String>? = null
+    val allergensTags: List<String> = ArrayList()
 
     /**
      * @return The aminoAcidTags
@@ -397,7 +402,7 @@ class Product : Serializable {
 
     fun getImageSmallUrl(languageCode: String?): String? {
         val image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
-        return if (StringUtils.isNotBlank(image)) {
+        return if (!image.isNullOrBlank()) {
             image
         } else imageSmallUrl
     }
@@ -410,7 +415,7 @@ class Product : Serializable {
                 val imagesByLocale = images[size.name.toLowerCase(Locale.ROOT)] as Map<String?, String>?
                 if (imagesByLocale != null) {
                     val url = imagesByLocale[languageCode]
-                    if (StringUtils.isNotBlank(url)) {
+                    if (!url.isNullOrBlank()) {
                         return url
                     }
                 }
@@ -480,7 +485,14 @@ class Product : Serializable {
         return if (nutritionGradeTags != null && nutritionGradeTags.isNotEmpty()) nutritionGradeTags[0] else null
     }
 
-    override fun toString() = ToStringBuilder(this)
+    fun getAttributeGroups(locale: Locale): List<AttributeGroup> {
+        val attributeGroups = additionalProperties["${ApiFields.Keys.ATTRIBUTE_GROUPS}_${locale.language}"] as String
+        return jacksonObjectMapper().readValue(attributeGroups)
+    }
+
+    fun getLocalAttributeGroups(context: Context) = getAttributeGroups(getLocale(context))
+
+    override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("code", code)
             .append("productName", productName)
             .append("additional_properties", additionalProperties)

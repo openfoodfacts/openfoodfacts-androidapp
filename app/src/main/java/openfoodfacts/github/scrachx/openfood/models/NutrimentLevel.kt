@@ -37,6 +37,6 @@ enum class NutrimentLevel {
 
     companion object {
         @JsonCreator
-        fun fromJson(level: String) = if (level.isBlank()) null else valueOf(level.toUpperCase(Locale.getDefault()))
+        fun fromJson(level: String) = if (level.isNotBlank()) valueOf(level.toUpperCase(Locale.getDefault())) else null
     }
 }

@@ -19,16 +19,13 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.Uri
-import android.os.BatteryManager
 import android.os.Environment
 import android.text.Spannable
 import android.text.SpannableString
@@ -45,8 +42,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.preference.PreferenceManager
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+import androidx.core.view.children
 import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.OkHttp3Downloader
@@ -66,15 +62,14 @@ import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivit
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
-import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.SearchTypeUrls.getUrl
-import org.jetbrains.annotations.Contract
-import org.json.JSONException
-import org.json.JSONObject
+import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
 import java.io.*
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.math.ceil
+
+private const val LOG_TAG_COMPRESS = "COMPRESS_IMAGE"
 
 object Utils {
     private const val UPLOAD_JOB_TAG = "upload_saved_product_job"
@@ -98,20 +93,16 @@ object Utils {
     fun compressImage(fileUrl: String): String? {
         val decodedBitmap = decodeFile(File(fileUrl))
         if (decodedBitmap == null) {
-            Log.e("COMPRESS_IMAGE", "$fileUrl not found")
+            Log.e(LOG_TAG_COMPRESS, "$fileUrl not found")
             return null
         }
         val smallFileFront = File(fileUrl.replace(".png", "_small.png"))
         try {
             FileOutputStream(smallFileFront).use { stream -> decodedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream) }
         } catch (e: IOException) {
-            Log.e("COMPRESS_IMAGE", e.message, e)
+            Log.e(LOG_TAG_COMPRESS, e.message, e)
         }
         return smallFileFront.toString()
-    }
-
-    fun getColor(context: Context?, id: Int): Int {
-        return ContextCompat.getColor(context!!, id)
     }
 
     /**
@@ -131,122 +122,19 @@ object Utils {
     }
 
     /**
-     * Returns the Nutri-Score graphic asset given the grade
-     */
-    @DrawableRes
-    fun getImageGrade(grade: String?) = if (grade == null) {
-        NO_DRAWABLE_RESOURCE
-    } else when (grade.toLowerCase(Locale.getDefault())) {
-        "a" -> R.drawable.ic_nutriscore_a
-        "b" -> R.drawable.ic_nutriscore_b
-        "c" -> R.drawable.ic_nutriscore_c
-        "d" -> R.drawable.ic_nutriscore_d
-        "e" -> R.drawable.ic_nutriscore_e
-        else -> NO_DRAWABLE_RESOURCE
-    }
-
-    fun getImageGrade(product: Product?): Int {
-        return getImageGrade(product?.nutritionGradeFr)
-    }
-
-    /**
      * Returns the NOVA group explanation given the group
      */
-    fun getNovaGroupExplanation(novaGroup: String?, context: Context) = if (novaGroup == null) {
-        ""
-    } else when (novaGroup) {
+    fun getNovaGroupExplanation(novaGroup: String, context: Context) = when (novaGroup) {
         "1" -> context.resources.getString(R.string.nova_grp1_msg)
         "2" -> context.resources.getString(R.string.nova_grp2_msg)
         "3" -> context.resources.getString(R.string.nova_grp3_msg)
         "4" -> context.resources.getString(R.string.nova_grp4_msg)
-        else -> ""
+        else -> null
     }
 
-    @JvmStatic
-    fun <T : View?> getViewsByType(root: ViewGroup, typeClass: Class<T>): List<T> {
-        val result = ArrayList<T>()
-        val childCount = root.childCount
-        for (i in 0 until childCount) {
-            val child = root.getChildAt(i)
-            if (child is ViewGroup) {
-                result.addAll(getViewsByType(child, typeClass))
-            }
-            if (typeClass.isInstance(child)) {
-                result.add(typeClass.cast(child))
-            }
-        }
-        return result
-    }
-
-    /**
-     * Returns the NOVA group graphic asset given the group
-     */
-    @DrawableRes
-    fun getNovaGroupDrawable(product: Product?) = getNovaGroupDrawable(product?.novaGroups)
-
-    @DrawableRes
-    fun getNovaGroupDrawable(novaGroup: String?) = if (novaGroup == null) {
-        NO_DRAWABLE_RESOURCE
-    } else when (novaGroup) {
-        "1" -> R.drawable.ic_nova_group_1
-        "2" -> R.drawable.ic_nova_group_2
-        "3" -> R.drawable.ic_nova_group_3
-        "4" -> R.drawable.ic_nova_group_4
-        else -> NO_DRAWABLE_RESOURCE
-    }
-
-    @JvmStatic
-    fun getSmallImageGrade(product: Product?): Int {
-        return when {
-            product == null -> getSmallImageGrade(null as String?)
-            // Prefer the global tag to the FR tag
-            product.getNutritionGradeTag() != null -> getSmallImageGrade(product.getNutritionGradeTag())
-            else -> getSmallImageGrade(product.nutritionGradeFr)
-        }
-    }
-
-    @DrawableRes
-    fun getImageEnvironmentImpact(product: Product?): Int {
-        if (product == null) return NO_DRAWABLE_RESOURCE
-
-        val tags = product.environmentImpactLevelTags
-        if (tags.isNullOrEmpty()) return NO_DRAWABLE_RESOURCE
-
-        return when (tags[0].replace("\"", "")) {
-            "en:high" -> R.drawable.ic_co2_high_24dp
-            "en:low" -> R.drawable.ic_co2_low_24dp
-            "en:medium" -> R.drawable.ic_co2_medium_24dp
-            else -> NO_DRAWABLE_RESOURCE
-        }
-    }
-
-    fun getImageEcoscore(product: Product?) = if (product == null) {
-        NO_DRAWABLE_RESOURCE
-    } else when (product.ecoscore) {
-        "a" -> R.drawable.ic_ecoscore_a
-        "b" -> R.drawable.ic_ecoscore_b
-        "c" -> R.drawable.ic_ecoscore_c
-        "d" -> R.drawable.ic_ecoscore_d
-        "e" -> R.drawable.ic_ecoscore_e
-        else -> NO_DRAWABLE_RESOURCE
-    }
-
-    fun getSmallImageGrade(grade: String?) = if (grade == null) {
-        NO_DRAWABLE_RESOURCE
-    } else when (grade.toLowerCase(Locale.getDefault())) {
-        "a" -> R.drawable.ic_nutriscore_small_a
-        "b" -> R.drawable.ic_nutriscore_small_b
-        "c" -> R.drawable.ic_nutriscore_small_c
-        "d" -> R.drawable.ic_nutriscore_small_d
-        "e" -> R.drawable.ic_nutriscore_small_e
-        else -> NO_DRAWABLE_RESOURCE
-    }
-
-    @JvmStatic
-    fun getBitmapFromDrawable(context: Context, @DrawableRes drawableId: Int): Bitmap? {
-        val drawable = AppCompatResources.getDrawable(context, drawableId) ?: return null
-        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable
-                .intrinsicHeight, Bitmap.Config.ARGB_8888)
+    fun Context.getBitmapFromDrawable(@DrawableRes drawableId: Int): Bitmap? {
+        val drawable = AppCompatResources.getDrawable(this, drawableId) ?: return null
+        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         drawable.setBounds(0, 0, canvas.width, canvas.height)
         drawable.draw(canvas)
@@ -264,13 +152,9 @@ object Utils {
     fun getRoundNumber(value: String): String {
         val strings = value.split(".")
         return when {
-            value.isEmpty() -> {
-                "?"
-            }
-            "0" == value || (strings.size == 1 || strings.size == 2 && strings[1].length <= 2) -> {
-                value
-            }
-            else -> String.format(Locale.getDefault(), "%.2f", value.toDouble())
+            value.isEmpty() -> "?"
+            "0" == value || (strings.size == 1 || strings.size == 2 && strings[1].length <= 2) -> value
+            else -> "%.2f".format(Locale.getDefault(), value.toDouble())
         }
 
     }
@@ -289,26 +173,21 @@ object Utils {
      *
      * @return true if installed, false otherwise.
      */
-    fun isHardwareCameraInstalled(context: Context): Boolean {
-        return context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
-    }
+    fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
 
     /**
      * Schedules job to download when network is available
      */
     @Synchronized
     fun scheduleProductUploadJob(context: Context?) {
-        if (isUploadJobInitialised) {
-            return
-        }
+        if (isUploadJobInitialised) return
+
         val periodicity = TimeUnit.MINUTES.toSeconds(30).toInt()
         val uploadWorkRequest = OneTimeWorkRequest.Builder(SavedProductUploadWorker::class.java)
-                .setConstraints(Constraints.Builder()
-                        .setRequiredNetworkType(NetworkType.UNMETERED)
-                        .build()
-                )
+                .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
                 .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
         WorkManager.getInstance(context!!).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
+
         isUploadJobInitialised = true
     }
 
@@ -339,11 +218,9 @@ object Utils {
     }
 
     @JvmStatic
-    fun picassoBuilder(context: Context?): Picasso {
-        return Picasso.Builder(context!!)
-                .downloader(OkHttp3Downloader(httpClientBuilder()))
-                .build()
-    }
+    fun picassoBuilder(context: Context): Picasso = Picasso.Builder(context)
+            .downloader(OkHttp3Downloader(httpClientBuilder()))
+            .build()
 
     /**
      * Check if the user is connected to a network. This can be any network.
@@ -361,7 +238,7 @@ object Utils {
     fun makeOrGetPictureDirectory(context: Context): File {
         // determine the profile directory
         var dir = context.filesDir
-        if (isExternalStorageWritable) {
+        if (isExternalStorageWritable()) {
             dir = context.getExternalFilesDir(null)
         }
         val picDir = File(dir, "Pictures")
@@ -371,18 +248,16 @@ object Utils {
         // creates the directory if not present yet
         val mkdir = picDir.mkdirs()
         if (!mkdir) {
-            Log.e(Utils::class.java.simpleName, "Can create dir $picDir")
+            Log.e(Utils::class.simpleName, "Can create dir $picDir")
         }
         return picDir
     }
 
-    val isExternalStorageWritable: Boolean
-        get() = Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
+    fun isExternalStorageWritable() = Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
 
     @JvmStatic
-    fun getOutputPicUri(context: Context): Uri {
-        return Uri.fromFile(File(makeOrGetPictureDirectory(context), System.currentTimeMillis().toString() + ".jpg"))
-    }
+    fun getOutputPicUri(context: Context): Uri =
+            Uri.fromFile(File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg"))
 
     fun getClickableText(text: String, urlParameter: String, type: SearchType?, activity: Activity?, customTabsIntent: CustomTabsIntent?): CharSequence {
         val clickableSpan: ClickableSpan
@@ -404,27 +279,6 @@ object Utils {
         val spannableText = SpannableString(text)
         spannableText.setSpan(clickableSpan, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         return spannableText
-    }
-
-    /**
-     * Function which returns true if the battery level is low
-     *
-     * @param context the context
-     * @return true if battery is low or false if battery in not low
-     */
-    fun isBatteryLevelLow(context: Context): Boolean {
-        val ifilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-        val batteryStatus = context.registerReceiver(null, ifilter) ?: throw IllegalStateException("cannot get battery level")
-        val level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
-        val scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
-        val batteryPct = level / scale.toFloat() * 100
-        Log.i("BATTERYSTATUS", batteryPct.toString())
-        return ceil(batteryPct.toDouble()) <= 15
-    }
-
-    fun isDisableImageLoad(context: Context): Boolean {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getBoolean("disableImageLoad", false)
     }
 
     /**
@@ -453,93 +307,21 @@ object Utils {
         }
     }
 
-    /**
-     * @param context The context
-     * @return Returns the version name of the app
-     */
     @JvmStatic
-
-    fun getVersionName(context: Context?): String {
-        return try {
-            val pInfo = context!!.packageManager.getPackageInfo(context.packageName, 0)
-            pInfo.versionName
-        } catch (e: PackageManager.NameNotFoundException) {
-            Log.e(Utils::class.java.simpleName, "getVersionName", e)
-            "(version unknown)"
-        } catch (e: NullPointerException) {
-            Log.e(Utils::class.java.simpleName, "getVersionName", e)
-            "(version unknown)"
-        }
-    }
-
-    /**
-     * @param response Takes a string
-     * @return Returns a Json object
-     */
-    fun createJsonObject(response: String?): JSONObject? {
-        return try {
-            JSONObject(response)
-        } catch (e: JSONException) {
-            Log.e(Utils::class.java.simpleName, "createJsonObject", e)
-            null
-        }
-    }
-
-    @Contract(pure = true)
-    @SafeVarargs
-    fun <T> firstNotNull(vararg args: T?): T? {
-        for (arg in args) {
-            if (arg != null) {
-                return arg
-            }
-        }
-        return null
-    }
-
-    @JvmStatic
-    fun firstNotEmpty(vararg args: String?): String? {
-        return args.firstOrNull { it != null && it.isNotEmpty() }
-    }
-
-    @JvmStatic
-    fun getModifierNonDefault(modifier: String): String {
-        return if (modifier == DEFAULT_MODIFIER) "" else modifier
-    }
-
-    @JvmStatic
-    fun dpsToPixel(dps: Int, activity: Activity?): Int {
-        if (activity == null) {
-            return 0
-        }
-        val scale = activity.resources.displayMetrics.density
-        return (dps * scale + 0.5f).toInt()
-    }
+    fun firstNotEmpty(vararg args: String?) = args.firstOrNull { it != null && it.isNotEmpty() }
 
 }
 
-fun isAllGranted(grantResults: Map<String?, Boolean?>): Boolean {
-    return grantResults.containsValue(false)
-}
+fun isAllGranted(grantResults: Map<String?, Boolean?>) = grantResults.containsValue(false)
 
-fun isAllGranted(grantResults: IntArray): Boolean {
-    if (grantResults.isEmpty()) {
-        return false
-    }
-    for (result in grantResults) {
-        if (result != PackageManager.PERMISSION_GRANTED) {
-            return false
-        }
-    }
-    return true
-}
+fun isAllGranted(grantResults: IntArray) =
+        grantResults.isNotEmpty() && grantResults.none { it != PackageManager.PERMISSION_GRANTED }
 
 /**
  * Ask to login before editing product
  */
 fun startLoginToEditAnd(requestCode: Int, activity: Activity?) {
-    if (activity == null) {
-        return
-    }
+    if (activity == null) return
     MaterialDialog.Builder(activity)
             .title(R.string.sign_in_to_edit)
             .positiveText(R.string.txtSignIn)
@@ -588,17 +370,6 @@ private fun decodeFile(f: File): Bitmap? {
         Log.e(Utils::class.simpleName, "Error while decoding file $f", e)
     }
     return null
-}
-
-fun getImageGradeDrawable(context: Context, grade: String?): Drawable? {
-    val gradeID = Utils.getImageGrade(grade)
-    return if (gradeID == Utils.NO_DRAWABLE_RESOURCE) {
-        null
-    } else VectorDrawableCompat.create(context.resources, gradeID, null)
-}
-
-fun getImageGradeDrawable(context: Context, product: Product?): Drawable? {
-    return getImageGradeDrawable(context, product?.nutritionGradeFr)
 }
 
 private const val REQUIRED_SIZE = 1200
@@ -652,3 +423,87 @@ private fun closeTags(text: Spannable, tags: Array<out StyleSpan>) {
  * of the specified CharSequence objects.
  */
 fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD))
+
+/**
+ * Returns the Nutri-Score graphic asset given the grade
+ */
+@DrawableRes
+fun getNutriScoreResource(grade: String?) = when (grade?.toLowerCase(Locale.getDefault())) {
+    "a" -> R.drawable.ic_nutriscore_a
+    "b" -> R.drawable.ic_nutriscore_b
+    "c" -> R.drawable.ic_nutriscore_c
+    "d" -> R.drawable.ic_nutriscore_d
+    "e" -> R.drawable.ic_nutriscore_e
+    else -> Utils.NO_DRAWABLE_RESOURCE
+}
+
+fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
+
+fun dpsToPixel(dps: Int, activity: Activity?) =
+        if (activity == null) 0
+        else (dps * activity.resources.displayMetrics.density + 0.5f).toInt()
+
+private val LOG_TAG = Utils::class.simpleName!!
+
+/**
+ * @param context The context
+ * @return Returns the version name of the app
+ */
+fun getVersionName(context: Context): String = try {
+    val pInfo = context.packageManager.getPackageInfo(context.packageName, 0)
+    pInfo.versionName
+} catch (e: PackageManager.NameNotFoundException) {
+    Log.e(LOG_TAG, "getVersionName", e)
+    "(version unknown)"
+} catch (e: NullPointerException) {
+    Log.e(LOG_TAG, "getVersionName", e)
+    "(version unknown)"
+}
+
+fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
+    val result = mutableListOf<T>()
+    children.forEach { child ->
+        if (child is ViewGroup) {
+            result.addAll(child.getViewsByType(typeClass))
+        }
+        if (typeClass.isInstance(child)) {
+            result += typeClass.cast(child)
+        }
+    }
+    return result
+}
+
+/**
+ * @param barcode
+ * @return true if valid according to [EAN13CheckDigit.EAN13_CHECK_DIGIT]
+ * and if the barcode doesn't start will 977/978/979 (Book barcode)
+ */
+fun isBarcodeValid(barcode: String?): Boolean {
+    // For debug only: the barcode '1' is used for test:
+    if (ApiFields.Defaults.DEBUG_BARCODE == barcode) return true
+    return barcode != null
+            && EAN13CheckDigit.EAN13_CHECK_DIGIT.isValid(barcode)
+            && barcode.length > 3
+            && (!barcode.substring(0, 3).contains("977")
+            || !barcode.substring(0, 3).contains("978")
+            || !barcode.substring(0, 3).contains("979"))
+}
+
+@DrawableRes
+fun getNutriScoreSmallDrawable(grade: String?) = when (grade?.toLowerCase(Locale.ROOT)) {
+    "a" -> R.drawable.ic_nutriscore_small_a
+    "b" -> R.drawable.ic_nutriscore_small_b
+    "c" -> R.drawable.ic_nutriscore_small_c
+    "d" -> R.drawable.ic_nutriscore_small_d
+    "e" -> R.drawable.ic_nutriscore_small_e
+    else -> R.drawable.ic_nutriscore_small_unknown
+}
+
+@DrawableRes
+fun getNovaGroupDrawable(novaGroup: String?) = when (novaGroup) {
+    "1" -> R.drawable.ic_nova_group_1
+    "2" -> R.drawable.ic_nova_group_2
+    "3" -> R.drawable.ic_nova_group_3
+    "4" -> R.drawable.ic_nova_group_4
+    else -> Utils.NO_DRAWABLE_RESOURCE
+}

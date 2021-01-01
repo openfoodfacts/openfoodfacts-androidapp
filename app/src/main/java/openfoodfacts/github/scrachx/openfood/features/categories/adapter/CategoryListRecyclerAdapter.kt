@@ -17,5 +17,5 @@ class CategoryListRecyclerAdapter(private val categories: List<CategoryName>) : 
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) = holder.bind(categories[position])
 
-    override fun getItemCount() = categories.size
+    override fun getItemCount() = categories.count()
 }

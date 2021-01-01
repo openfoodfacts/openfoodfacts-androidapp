@@ -6,16 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.fasterxml.jackson.databind.node.ObjectNode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentProductPhotosBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ImageNameJsonParser
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.isUserLoggedIn
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
 /**
@@ -25,9 +25,10 @@ import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 class ProductPhotosFragment : BaseFragment() {
     private var _binding: FragmentProductPhotosBinding? = null
     private val binding get() = _binding!!
-    private lateinit var openFoodAPIClient: OpenFoodAPIClient
+
     private val disp = CompositeDisposable()
-    private var adapter: ProductPhotosAdapter? = null
+
+    private lateinit var openFoodAPIClient: OpenFoodAPIClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +44,16 @@ class ProductPhotosFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         val productState = requireProductState()
         val product = productState.product!!
-        disp.add(openFoodAPIClient.rawAPI.getProductImages(product.code)
+        openFoodAPIClient.rawAPI
+                .getProductImages(product.code)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ node: ObjectNode? ->
+                .doOnError { Log.e(LOG_TAG, "Cannot download images from server", it) }
+                .subscribe { node ->
                     binding.progress.hide()
                     val imageNames = ImageNameJsonParser.extractImagesNameSortedByUploadTimeDesc(node!!)
 
                     //Check if user is logged in
-                    adapter = ProductPhotosAdapter(requireActivity(), product, requireActivity().isUserLoggedIn(), imageNames) { position ->
+                    val adapter = ProductPhotosAdapter(requireActivity(), product, requireActivity().isUserSet(), imageNames) { position ->
                         // Retrieves url of the image clicked to open FullScreenActivity
                         var barcodePattern = product.code
                         if (barcodePattern.length > 8) {
@@ -62,10 +65,10 @@ class ProductPhotosFragment : BaseFragment() {
                             }
                         }
                         openFullScreen("${BuildConfig.STATICURL}/images/products/$barcodePattern/${imageNames[position]}.jpg")
-                    }
+                    }.apply { addTo(disp) }
                     binding.imagesRecycler.adapter = adapter
                     binding.imagesRecycler.layoutManager = GridLayoutManager(context, 3)
-                }) { e: Throwable? -> Log.e(LOG_TAG, "cannot download images from server", e) })
+                }.addTo(disp)
     }
 
     override fun onDestroyView() {
@@ -86,6 +89,6 @@ class ProductPhotosFragment : BaseFragment() {
     }
 
     companion object {
-        private val LOG_TAG = ProductPhotosFragment::class.java.simpleName
+        private val LOG_TAG = ProductPhotosFragment::class.simpleName
     }
 }

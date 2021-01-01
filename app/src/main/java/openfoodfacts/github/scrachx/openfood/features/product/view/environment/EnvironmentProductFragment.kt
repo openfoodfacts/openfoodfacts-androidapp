@@ -27,7 +27,7 @@ import java.io.File
 
 class EnvironmentProductFragment : BaseFragment() {
     private lateinit var productState: ProductState
-    private lateinit var api: OpenFoodAPIClient
+    private val api: OpenFoodAPIClient by lazy { OpenFoodAPIClient(requireActivity()) }
     private var _binding: FragmentEnvironmentProductBinding? = null
     private val binding get() = _binding!!
     private val disp = CompositeDisposable()
@@ -38,10 +38,6 @@ class EnvironmentProductFragment : BaseFragment() {
     private var isLowBatteryMode = false
     private var mUrlImage: String? = null
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        api = OpenFoodAPIClient(requireActivity())
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentEnvironmentProductBinding.inflate(inflater)
@@ -56,7 +52,7 @@ class EnvironmentProductFragment : BaseFragment() {
         binding.imageViewPackaging.setOnClickListener { openFullScreen() }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
+        if (requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
             isLowBatteryMode = true
         }
 
@@ -71,7 +67,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
             // Load Image if isLowBatteryMode is false
             if (!isLowBatteryMode) {
-                Utils.picassoBuilder(context)
+                Utils.picassoBuilder(requireContext())
                         .load(imagePackagingUrl)
                         .into(binding.imageViewPackaging)
             } else {
@@ -171,7 +167,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
         // TODO: 15/11/2020 find a way to use ActivityResultApi
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
-        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && requireActivity().isUserLoggedIn()) {
+        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK && requireActivity().isUserSet()) {
             startEditProduct()
         }
         if (ImagesManageActivity.isImageModified(requestCode, resultCode)) {
@@ -180,9 +176,9 @@ class EnvironmentProductFragment : BaseFragment() {
     }
 
     private fun startEditProduct() {
-        val intent = Intent(activity, ProductEditActivity::class.java)
-        intent.putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, productState.product)
-        startActivity(intent)
+        startActivity(Intent(activity, ProductEditActivity::class.java).apply {
+            putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, this@EnvironmentProductFragment.productState.product)
+        })
     }
 
     companion object {

@@ -1,7 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models
 
 import com.fasterxml.jackson.annotation.*
-import org.apache.commons.lang.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringBuilder
+import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
 import java.util.*
 
@@ -38,25 +39,6 @@ class ProductState : Serializable {
 
     @JsonIgnore
     private val additionalProperties: MutableMap<String, Any> = HashMap()
-    fun withStatusVerbose(statusVerbose: String?): ProductState {
-        this.statusVerbose = statusVerbose
-        return this
-    }
-
-    fun withStatus(status: Long): ProductState {
-        this.status = status
-        return this
-    }
-
-    fun withProduct(product: Product?): ProductState {
-        this.product = product
-        return this
-    }
-
-    fun withCode(code: String?): ProductState {
-        this.code = code
-        return this
-    }
 
     @JsonAnyGetter
     fun getAdditionalProperties(): Map<String, Any> {
@@ -68,14 +50,10 @@ class ProductState : Serializable {
         additionalProperties[name] = value
     }
 
-    fun withAdditionalProperty(name: String, value: Any): ProductState {
-        additionalProperties[name] = value
-        return this
-    }
-
-    override fun toString() = ToStringBuilder(this)
+    override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("statusVerbose", statusVerbose)
             .append("status", status)
+            .append("product", product)
             .append("code", code)
             .append("additionalProperties", additionalProperties)
             .toString()

@@ -17,6 +17,7 @@ package openfoodfacts.github.scrachx.openfood.jobs
 
 import android.content.Context
 import android.util.Log
+import androidx.core.content.edit
 import androidx.work.RxWorker
 import androidx.work.WorkerParameters
 import io.reactivex.Completable
@@ -25,12 +26,11 @@ import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 
-class LoadTaxonomiesWorker
 /**
  * @param appContext The application [Context]
  * @param workerParams Parameters to setup the internal state of this worker
  */
-(appContext: Context, workerParams: WorkerParameters) : RxWorker(appContext, workerParams) {
+class LoadTaxonomiesWorker(appContext: Context, workerParams: WorkerParameters) : RxWorker(appContext, workerParams) {
     override fun createWork(): Single<Result> {
         val settings = OFFApplication.instance.getSharedPreferences("prefs", 0)
 
@@ -49,7 +49,7 @@ class LoadTaxonomiesWorker
         )
         return Completable.merge(syncObservables)
                 .toSingle {
-                    settings.edit().putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false).apply()
+                    settings.edit { putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false) }
                     Result.success()
                 }.onErrorReturn { throwable ->
                     Log.e(LOG_TAG, "Cannot download taxonomies from server.", throwable)

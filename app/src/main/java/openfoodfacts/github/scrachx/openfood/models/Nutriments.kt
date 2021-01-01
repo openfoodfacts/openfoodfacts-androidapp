@@ -5,13 +5,15 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonAnySetter
 import com.fasterxml.jackson.annotation.JsonInclude
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.ENERGY_KCAL
+import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.ENERGY_KJ
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.DEFAULT_MODIFIER
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertFromGram
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertToGrams
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getModifierNonDefault
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
-import org.apache.commons.lang.StringUtils
+import openfoodfacts.github.scrachx.openfood.utils.getModifierNonDefault
+import org.apache.commons.lang3.StringUtils
 import org.jetbrains.annotations.Contract
 import java.io.Serializable
 import java.util.*
@@ -208,21 +210,6 @@ class Nutriments : Serializable {
     private val additionalProperties: MutableMap<String, Any?> = HashMap()
     private var containsMinerals = false
     private var containsVitamins = false
-    fun getEnergyKjValue(isDataPerServing: Boolean): String {
-        return if (isDataPerServing) {
-            getServing(ENERGY_KJ)
-        } else {
-            get100g(ENERGY_KJ)
-        }
-    }
-
-    fun getEnergyKcalValue(isDataPerServing: Boolean): String {
-        return if (isDataPerServing) {
-            getServing(ENERGY_KCAL)
-        } else {
-            get100g(ENERGY_KCAL)
-        }
-    }
 
     operator fun get(nutrimentName: String): Nutriment? {
         return if (nutrimentName.isEmpty() || additionalProperties[nutrimentName] == null) {
@@ -245,16 +232,12 @@ class Nutriments : Serializable {
     /**
      * @return [StringUtils.EMPTY] if there is no serving value for the specified nutriment
      */
-    fun getServing(nutrimentName: String): String {
-        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.SERVING)
-    }
+    fun getServing(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.SERVING)
 
     /**
      * @return [StringUtils.EMPTY] if there is no serving value for the specified nutriment
      */
-    fun get100g(nutrimentName: String): String {
-        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.VALUE_100G)
-    }
+    fun get100g(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.VALUE_100G)
 
     fun getUnit(nutrimentName: String): String {
         return getAdditionalProperty(nutrimentName, ApiFields.Suffix.UNIT, DEFAULT_UNIT)
@@ -269,10 +252,7 @@ class Nutriments : Serializable {
      *
      * @return The nutriment modifier if different from [DEFAULT_MODIFIER], otherwise an empty string `""`
      */
-    fun getModifierIfNotDefault(nutrimentName: String): String {
-        val modifier = getModifier(nutrimentName)
-        return getModifierNonDefault(modifier)
-    }
+    fun getModifierIfNotDefault(nutrimentName: String) = getModifierNonDefault(getModifier(nutrimentName))
     
 
     private fun getAdditionalProperty(nutrimentName: String, suffix: String, defaultValue: String = StringUtils.EMPTY) =
@@ -363,7 +343,7 @@ class Nutriments : Serializable {
          * @return nutriment value for a given amount of this product
          */
         fun getForAnyValue(userSetServing: Float, otherUnit: String?): String {
-            val strValue = for100gInUnits
+            val strValue = this.for100gInUnits
             if (strValue.isEmpty() || strValue.contains("%")) {
                 return strValue
             }
@@ -376,5 +356,21 @@ class Nutriments : Serializable {
             }
             return StringUtils.EMPTY
         }
+    }
+}
+
+fun Nutriments.getEnergyKcalValue(isDataPerServing: Boolean): String {
+    return if (isDataPerServing) {
+        getServing(ENERGY_KCAL)
+    } else {
+        get100g(ENERGY_KCAL)
+    }
+}
+
+fun Nutriments.getEnergyKjValue(isDataPerServing: Boolean): String {
+    return if (isDataPerServing) {
+        getServing(ENERGY_KJ)
+    } else {
+        get100g(ENERGY_KJ)
     }
 }
