@@ -90,6 +90,7 @@ public final class ApiFields {
         public static final String BRANDS = "brands";
         public static final String LC = "lc";
         public static final String ECOSCORE = "ecoscore_grade";
+        public static final String ECOSCORE_ALPHA = "ecoscore_alpha";
         public static final String PERIODS_AFTER_OPENING = "periods_after_opening";
         public static final String EMB_CODES = "emb_codes";
         public static final String LINK = "link";
