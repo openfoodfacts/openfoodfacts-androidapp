@@ -18,7 +18,7 @@ class EmbCodeAutoCompleteAdapter(
     override fun getCount() = codeList.size
 
     override fun getItem(position: Int) =
-            if (position < 0 || position >= codeList.size) StringUtils.EMPTY else codeList[position]
+            if (position in 0..codeList.size) codeList[position] else StringUtils.EMPTY
 
     override fun getFilter() = object : Filter() {
         override fun performFiltering(constraint: CharSequence?): FilterResults {
@@ -39,7 +39,7 @@ class EmbCodeAutoCompleteAdapter(
         override fun publishResults(constraint: CharSequence, results: FilterResults?) {
             if (results != null && results.count > 0) {
                 codeList.clear()
-                codeList.addAll((results.values as ArrayList<String>))
+                codeList += results.values as ArrayList<String>
                 notifyDataSetChanged()
             } else {
                 notifyDataSetInvalidated()

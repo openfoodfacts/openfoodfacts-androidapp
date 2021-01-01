@@ -39,12 +39,12 @@ class OFFDatabaseHelper @JvmOverloads constructor(
     private val settings: SharedPreferences by lazy { context.getSharedPreferences("prefs", 0) }
 
     override fun onCreate(db: Database) {
-        Log.i(LOG_TAG, "Creating tables for schema version " + DaoMaster.SCHEMA_VERSION)
+        Log.i(LOG_TAG, "Creating tables for schema version ${DaoMaster.SCHEMA_VERSION}")
         DaoMaster.createAllTables(db, true)
     }
 
     override fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
-        Log.i(LOG_TAG, "migrating schema from version $oldVersion to $newVersion")
+        Log.i(LOG_TAG, "Migrating schema from version $oldVersion to $newVersion")
         //dropAllTables(db, true);
 
         for (migrateVersion in oldVersion + 1..newVersion) migrateDB(db, migrateVersion)
@@ -56,7 +56,7 @@ class OFFDatabaseHelper @JvmOverloads constructor(
     }
 
     /**
-     * in case of android.database.sqlite.SQLiteException, the schema version is
+     * In case of android.database.sqlite.SQLiteException, the schema version is
      * left untouched just fix the code in the version case and push a new
      * release
      *

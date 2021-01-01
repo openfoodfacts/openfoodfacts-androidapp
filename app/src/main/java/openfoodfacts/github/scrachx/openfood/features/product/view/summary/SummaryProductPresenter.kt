@@ -182,7 +182,7 @@ class SummaryProductPresenter(
         val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
         if (analysisTags.isNotEmpty()) {
             analysisTags.toObservable()
-                    .flatMapMaybe { tag: String? -> ProductRepository.getAnalysisTagConfigByTagAndLanguageCode(tag, languageCode) }
+                    .flatMapMaybe { ProductRepository.getAnalysisTagConfigByTagAndLanguageCode(it, languageCode) }
                     .toList()
                     .doOnSubscribe { view.showLabelsState(ProductInfoState.LOADING) }
                     .observeOn(AndroidSchedulers.mainThread())

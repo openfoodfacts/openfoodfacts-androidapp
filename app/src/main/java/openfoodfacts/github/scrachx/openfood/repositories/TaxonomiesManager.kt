@@ -13,7 +13,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 object TaxonomiesManager {
-    const val TAXONOMY_NO_INTERNET = -9999L
+    private const val TAXONOMY_NO_INTERNET = -9999L
     private val LOG_TAG = TaxonomiesManager::class.java.simpleName
 
     /**
@@ -21,27 +21,25 @@ object TaxonomiesManager {
      *
      * @param taxonomy The taxonomy to check
      * @return The timestamp of the last changes date of the taxonomy.json on the server
-     * or [.TAXONOMY_NO_INTERNET] if there is no connection to the server.
+     * or [TAXONOMY_NO_INTERNET] if there is no connection to the server.
      */
-    fun getLastModifiedDateFromServer(taxonomy: Taxonomy): Single<Long> {
-        return Single.fromCallable {
-            var lastModifiedDate: Long
-            val baseUrl = BuildConfig.OFWEBSITE
-            val taxoUrl = URL(baseUrl + taxonomy.jsonUrl)
-            try {
-                val httpCon = taxoUrl.openConnection() as HttpURLConnection
-                lastModifiedDate = httpCon.lastModified
-                httpCon.disconnect()
-            } catch (e: IOException) {
-                //Problem
-                Log.e(LOG_TAG, String.format(
-                        "Could not get last modified date from server for taxonomy %s.",
-                        taxonomy.name), e)
-                lastModifiedDate = TAXONOMY_NO_INTERNET
-            }
-            Log.i(LOG_TAG, "Last modified date for taxonomy \"$taxonomy\" is $lastModifiedDate")
-            return@fromCallable lastModifiedDate
+    fun getLastModifiedDateFromServer(taxonomy: Taxonomy): Single<Long> = Single.fromCallable {
+        var lastModifiedDate: Long
+        val baseUrl = BuildConfig.OFWEBSITE
+        val taxoUrl = URL(baseUrl + taxonomy.jsonUrl)
+        try {
+            val httpCon = taxoUrl.openConnection() as HttpURLConnection
+            lastModifiedDate = httpCon.lastModified
+            httpCon.disconnect()
+        } catch (e: IOException) {
+            //Problem
+            Log.e(LOG_TAG, String.format(
+                    "Could not get last modified date from server for taxonomy %s.",
+                    taxonomy.name), e)
+            lastModifiedDate = TAXONOMY_NO_INTERNET
         }
+        Log.i(LOG_TAG, "Last modified date for taxonomy \"$taxonomy\" is $lastModifiedDate")
+        return@fromCallable lastModifiedDate
     }
 
     /**
@@ -56,9 +54,12 @@ object TaxonomiesManager {
      * @param <T> type of taxonomy
      */
     @JvmStatic
-    fun <T> getTaxonomyData(taxonomy: Taxonomy, repository: ProductRepository,
-                            checkUpdate: Boolean,
-                            dao: AbstractDao<T, *>?): Single<List<T>> {
+    fun <T> getTaxonomyData(
+            taxonomy: Taxonomy,
+            repository: ProductRepository,
+            checkUpdate: Boolean,
+            dao: AbstractDao<T, *>
+    ): Single<List<T>> {
         // WARNING: Before "return" all code is executed on MAIN THREAD
         val mSettings = OFFApplication.instance.getSharedPreferences("prefs", 0)
 
@@ -72,7 +73,7 @@ object TaxonomiesManager {
         val forceUpdate = mSettings.getBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false)
 
         // If database is empty or we have to force update, download it
-        if (dao!!.isEmpty() || forceUpdate) {
+        if (dao.isEmpty() || forceUpdate) {
             // Table is empty, no need check for update, just load taxonomy
             return download(taxonomy, repository)
         } else if (checkUpdate) {
@@ -84,21 +85,22 @@ object TaxonomiesManager {
         return Single.just(emptyList())
     }
 
-    private fun <T> download(taxonomy: Taxonomy, repository: ProductRepository): Single<List<T>> {
-        return getLastModifiedDateFromServer(taxonomy).flatMap { lastModifiedDate: Long ->
-            if (lastModifiedDate != TAXONOMY_NO_INTERNET) {
-                return@flatMap logDownload(taxonomy.load(repository, lastModifiedDate), taxonomy)
-            }
-            Single.just(emptyList())
-        }
+    private fun <T> download(
+            taxonomy: Taxonomy,
+            repository: ProductRepository
+    ): Single<List<T>> = getLastModifiedDateFromServer(taxonomy).flatMap { lastMod: Long ->
+        if (lastMod != TAXONOMY_NO_INTERNET)
+            logDownload(taxonomy.load(repository, lastMod), taxonomy)
+        else Single.just(emptyList())
     }
 
-    private fun <T> checkAndDownloadIfNewer(taxonomy: Taxonomy, repository: ProductRepository, localDownloadTime: Long): Single<List<T>> {
-        return getLastModifiedDateFromServer(taxonomy).flatMap { lastModifiedDateFromServer: Long ->
-            if (lastModifiedDateFromServer == 0L || lastModifiedDateFromServer > localDownloadTime) {
-                return@flatMap logDownload(taxonomy.load(repository, lastModifiedDateFromServer), taxonomy)
-            }
-            Single.just(emptyList())
-        }
+    private fun <T> checkAndDownloadIfNewer(
+            taxonomy: Taxonomy,
+            repository: ProductRepository,
+            localDownloadTime: Long
+    ): Single<List<T>> = getLastModifiedDateFromServer(taxonomy).flatMap { lastModRemote: Long ->
+        if (lastModRemote == 0L || lastModRemote > localDownloadTime)
+            logDownload(taxonomy.load(repository, lastModRemote), taxonomy)
+        else Single.just(emptyList())
     }
 }

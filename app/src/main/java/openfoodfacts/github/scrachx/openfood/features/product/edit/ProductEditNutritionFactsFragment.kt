@@ -44,10 +44,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_100G
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.getContent
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.hasUnit
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isContentDifferent
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isNotEmpty
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.apache.commons.lang3.StringUtils
@@ -181,7 +177,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     private fun checkAllValues() = allEditViews.forEach { it.checkValue() }
 
-    override fun allValid() = allEditViews.none { it.isError }
+    override fun allValid() = allEditViews.none { it.isError() }
 
     private fun requireAddProductActivity() = requireActivity() as ProductEditActivity
 
@@ -447,7 +443,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     }
 
     private fun CustomValidatingEditTextView.checkValue() {
-        val wasValid = isError
+        val wasValid = isError()
         //if no value, we suppose it's valid
         if (isBlank()) {
             cancelError()
@@ -464,7 +460,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 }
             }
         }
-        if (wasValid != isValid) {
+        if (wasValid != isValid()) {
             updateNextBtnState()
         }
     }

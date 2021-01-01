@@ -19,13 +19,11 @@ import java.io.File
  * A class for handling photo receiver
  */
 class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
-    fun onActivityResult(fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) {
-        onActivityResult(null, fragment, requestCode, resultCode, data)
-    }
+    fun onActivityResult(fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) =
+            onActivityResult(null, fragment, requestCode, resultCode, data)
 
-    fun onActivityResult(activity: Activity?, requestCode: Int, resultCode: Int, data: Intent?) {
-        onActivityResult(activity, null, requestCode, resultCode, data)
-    }
+    fun onActivityResult(activity: Activity?, requestCode: Int, resultCode: Int, data: Intent?) =
+            onActivityResult(activity, null, requestCode, resultCode, data)
 
     fun onActivityResult(activity: Activity?, fragment: Fragment?, requestCode: Int, resultCode: Int, data: Intent?) {
         if (onCropResult(requestCode, resultCode, data)) return

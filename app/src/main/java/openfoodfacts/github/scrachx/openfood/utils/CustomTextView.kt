@@ -37,8 +37,8 @@ class CustomTextView @JvmOverloads constructor(
                 if (drawableBottomId != -1) drawableBottom = AppCompatResources.getDrawable(context, drawableBottomId)
                 if (drawableTopId != -1) drawableTop = AppCompatResources.getDrawable(context, drawableTopId)
             }
-            setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom)
             attributeArray.recycle()
+            setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom)
         }
     }
 

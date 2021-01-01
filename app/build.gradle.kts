@@ -49,6 +49,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.3.0-rc01")
     implementation("androidx.activity:activity-ktx:1.2.0-rc01")
     implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.core:core-ktx:1.3.2")
+
 
     // AndroidX
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -64,7 +66,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.work:work-runtime:2.4.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
-    implementation ("androidx.startup:startup-runtime:1.0.0")
+    implementation("androidx.startup:startup-runtime:1.0.0")
 
 
     kapt("com.google.dagger:dagger-compiler:2.30.1")

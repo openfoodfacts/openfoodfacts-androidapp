@@ -9,7 +9,5 @@ import openfoodfacts.github.scrachx.openfood.features.viewmodel.category.Categor
 class FragmentModule {
     @FragmentScope
     @Provides
-    fun provideCategoryFragmentViewModel(): CategoryFragmentViewModel {
-        return CategoryFragmentViewModel()
-    }
+    fun provideCategoryFragmentViewModel(): CategoryFragmentViewModel = CategoryFragmentViewModel()
 }

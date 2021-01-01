@@ -35,7 +35,7 @@ class LoadTaxonomiesWorker(appContext: Context, workerParams: WorkerParameters) 
         val settings = OFFApplication.instance.getSharedPreferences("prefs", 0)
 
         // We use completable because we only care about state (error or completed), not returned value
-        val syncObservables = mutableListOf<Completable>(
+        val syncObservables = listOf<Completable>(
                 ProductRepository.reloadLabelsFromServer().ignoreElement(),
                 ProductRepository.reloadTagsFromServer().ignoreElement(),
                 ProductRepository.reloadInvalidBarcodesFromServer().ignoreElement(),
@@ -51,8 +51,8 @@ class LoadTaxonomiesWorker(appContext: Context, workerParams: WorkerParameters) 
                 .toSingle {
                     settings.edit { putBoolean(Utils.FORCE_REFRESH_TAXONOMIES, false) }
                     Result.success()
-                }.onErrorReturn { throwable ->
-                    Log.e(LOG_TAG, "Cannot download taxonomies from server.", throwable)
+                }.onErrorReturn {
+                    Log.e(LOG_TAG, "Cannot download taxonomies from server.", it)
                     Result.failure()
                 }
     }

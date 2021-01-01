@@ -12,7 +12,7 @@ import openfoodfacts.github.scrachx.openfood.R
  * Based on
  * [StackOverflow](http://stackoverflow.com/questions/35761636/is-it-possible-to-use-vectordrawable-in-buttons-and-textviews-using-androiddraw)
  */
-class CustomEditTextView @JvmOverloads constructor(
+class CustomEditTextView(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0

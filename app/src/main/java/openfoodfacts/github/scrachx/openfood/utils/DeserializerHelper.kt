@@ -28,8 +28,6 @@ object DeserializerHelper {
         return names
     }
 
-    private val LOG_TAG = DeserializerHelper::class.simpleName!!
-
     /**
      * Extracts child nodes from a map of subnodes
      *
@@ -43,4 +41,5 @@ object DeserializerHelper {
                 it.asText()
             } ?: listOf()
 
+    private val LOG_TAG = DeserializerHelper::class.simpleName!!
 }

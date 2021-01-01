@@ -22,7 +22,7 @@ class CustomValidatingEditTextView @JvmOverloads constructor(
             } else {
                 //configuration error we reset the id
                 textInputLayoutId = NO_ID
-                val attachedTo = if (view == null) "null" else view.javaClass.name
+                val attachedTo = if (view == null) "null" else view.javaClass.simpleName
                 error("The id $textInputLayoutId used in parentTextInputLayout should be linked to a TextInputLayout and not to $attachedTo")
             }
         }
@@ -40,7 +40,7 @@ class CustomValidatingEditTextView @JvmOverloads constructor(
         } else {
             //configuration error we reset the id
             attachedModSpinnerId = NO_ID
-            val attachedTo = if (view == null) "null" else view.javaClass.name
+            val attachedTo = if (view == null) "null" else view.javaClass.simpleName
             Log.e(CustomValidatingEditTextView::class.simpleName, "The id $attachedUnitSpinnerId used in attachedSpinner should be linked to a Spinner and not to $attachedTo")
         }
         return@lazy null
@@ -79,19 +79,13 @@ class CustomValidatingEditTextView @JvmOverloads constructor(
     }
 
     fun cancelError() {
-        if (textInputLayout != null) {
-            textInputLayout!!.isErrorEnabled = false
-            textInputLayout!!.error = null
-        }
+        textInputLayout?.isErrorEnabled = false
+        textInputLayout?.error = null
     }
 
-    val isError: Boolean
-        get() {
-            return textInputLayout != null && textInputLayout!!.error != null
-        }
+    fun isError() = textInputLayout != null && textInputLayout!!.error != null
 
-    val isValid: Boolean
-        get() = !isError
+    fun isValid() = !isError()
 
     init {
         if (attrs != null) {

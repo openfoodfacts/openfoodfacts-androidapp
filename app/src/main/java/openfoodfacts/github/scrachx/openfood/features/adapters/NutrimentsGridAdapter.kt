@@ -11,7 +11,9 @@ import openfoodfacts.github.scrachx.openfood.models.NutrimentListItem
 /**
  * @author herau
  */
-open class NutrimentsGridAdapter(private val nutrimentListItems: List<NutrimentListItem>) : RecyclerView.Adapter<NutrimentsGridAdapter.NutrimentViewHolder>() {
+open class NutrimentsGridAdapter(
+        private val nutrimentListItems: List<NutrimentListItem>
+) : RecyclerView.Adapter<NutrimentsGridAdapter.NutrimentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NutrimentViewHolder {
         val isViewTypeHeader = viewType == TYPE_HEADER

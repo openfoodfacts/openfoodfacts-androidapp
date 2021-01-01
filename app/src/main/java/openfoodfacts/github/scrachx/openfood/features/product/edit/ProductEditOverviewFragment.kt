@@ -67,10 +67,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.areChipsDifferent
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.getContent
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isContentDifferent
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isNotEmpty
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage

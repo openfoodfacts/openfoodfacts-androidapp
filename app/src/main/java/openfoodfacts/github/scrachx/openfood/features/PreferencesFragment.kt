@@ -95,11 +95,11 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         val localeValues = requireActivity().resources.getStringArray(R.array.languages_array)
         val localeLabels = arrayOfNulls<String>(localeValues.size)
 
-        localeValues.indices.forEach { i ->
-            val current = getLocale(localeValues[i])
+        localeValues.withIndex().forEach { (i, value) ->
+            val current = getLocale(value)
             localeLabels[i] = current.getDisplayName(current).capitalize(Locale.getDefault())
             finalLocalLabels.add(localeLabels[i])
-            finalLocalValues.add(localeValues[i])
+            finalLocalValues.add(value)
 
         }
         val languagePreference = requirePreference<ListPreference>("Locale.Helper.Selected.Language")
@@ -114,6 +114,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             }
             true
         }
+
         val appThemeEntries = resources.getStringArray(R.array.application_theme_entries)
         requirePreference<ListPreference>("applicationThemePreference").let {
             it.setEntries(R.array.application_theme_entries)
@@ -129,22 +130,23 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         }
 
         requirePreference<Preference>("deleteSearchHistoryPreference").onPreferenceClickListener = OnPreferenceClickListener {
-            MaterialDialog.Builder(requireActivity())
-                    .content(R.string.search_history_pref_dialog_content)
-                    .positiveText(R.string.delete_txt)
-                    .onPositive { _, _ ->
-                        Toast.makeText(context, getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show()
-                        val suggestions = SearchRecentSuggestions(context, SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE)
-                        suggestions.clearHistory()
-                    }
-                    .neutralText(R.string.dialog_cancel)
-                    .onNeutral { dialog, _ -> dialog.dismiss() }
-                    .show()
+            MaterialDialog.Builder(requireActivity()).run {
+                content(R.string.search_history_pref_dialog_content)
+                positiveText(R.string.delete_txt)
+                onPositive { _, _ ->
+                    Toast.makeText(context, getString(R.string.preference_delete_search_history), Toast.LENGTH_SHORT).show()
+                    val suggestions = SearchRecentSuggestions(context, SearchSuggestionProvider.AUTHORITY, SearchSuggestionProvider.MODE)
+                    suggestions.clearHistory()
+                }
+                neutralText(R.string.dialog_cancel)
+                onNeutral { dialog, _ -> dialog.dismiss() }
+                show()
+            }
             true
         }
 
-        val countryLabels = ArrayList<String>()
-        val countryTags = ArrayList<String>()
+        val countryLabels = mutableListOf<String>()
+        val countryTags = mutableListOf<String>()
 
         val countryPreference = requirePreference<ListPreference>(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY)
 
@@ -154,9 +156,9 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         // Set query finish listener
         asyncSessionCountries.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
             val countryNames = operation.result as List<CountryName>
-            countryNames.indices.forEach { i ->
-                countryLabels.add(countryNames[i].name)
-                countryTags.add(countryNames[i].countyTag)
+            countryNames.forEach { countryName ->
+                countryLabels.add(countryName.name)
+                countryTags.add(countryName.countyTag)
             }
             countryPreference.entries = countryLabels.toTypedArray()
             countryPreference.entryValues = countryTags.toTypedArray()

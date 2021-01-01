@@ -12,19 +12,17 @@ import java.util.concurrent.atomic.AtomicReference
  * This class receives list of all categories using CategoryNetworkService
  */
 class CategoryRepository(private val networkService: CategoryNetworkService, private val mapper: CategoryMapper) {
-    private val memoryCache: AtomicReference<List<Category>?> = AtomicReference()
+    private val memoryCache = AtomicReference<List<Category>?>()
 
     /**
      * Calling this function retrieves list of all categories from NetworkService
      */
-    fun retrieveAll(): Single<List<Category>?> {
-        return if (memoryCache.get() != null) {
-            Single.just(memoryCache.get())
-        } else networkService.getCategories()
-                .map { categoryResponse -> mapper.fromNetwork(categoryResponse.tags) }
-                .doOnSuccess { newValue -> memoryCache.set(newValue) }
-                .doOnError { throwable -> Log.w(CategoryRepository::class.java.simpleName, "Can't get categories", throwable) }
-                .subscribeOn(Schedulers.io())
-    }
+    fun retrieveAll() = if (memoryCache.get() != null) {
+        Single.just(memoryCache.get())
+    } else networkService.getCategories()
+            .map { categoryResponse -> mapper.fromNetwork(categoryResponse.tags) }
+            .doOnSuccess { memoryCache.set(it) }
+            .doOnError { Log.w(CategoryRepository::class.java.simpleName, "Can't get categories", it) }
+            .subscribeOn(Schedulers.io())
 
 }

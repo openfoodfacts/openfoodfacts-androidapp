@@ -12,11 +12,9 @@ class PeriodAfterOpeningAutoCompleteAdapter(
         context: Context?,
         textViewResourceId: Int
 ) : ArrayAdapter<String>(context!!, textViewResourceId), Filterable {
-    private val client = CommonApiManager.productsApi
-    private val periodsList = arrayListOf<String>()
-    override fun getCount(): Int {
-        return periodsList.size
-    }
+    private val periodsList = mutableListOf<String>()
+
+    override fun getCount() = periodsList.size
 
     override fun getItem(position: Int) =
             if (position < 0 || position >= periodsList.size) StringUtils.EMPTY else periodsList[position]
@@ -27,7 +25,7 @@ class PeriodAfterOpeningAutoCompleteAdapter(
             if (constraint == null) return FilterResults().apply { count = 0 }
 
             // Retrieve the autocomplete results from server.
-            val list = client.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet()
+            val list = CommonApiManager.productsApi.getPeriodAfterOpeningSuggestions(constraint.toString()).blockingGet()
 
             // Assign the data to the FilterResults
             return FilterResults().apply {
@@ -39,7 +37,7 @@ class PeriodAfterOpeningAutoCompleteAdapter(
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
             if (results != null && results.count > 0) {
                 periodsList.clear()
-                periodsList.addAll((results.values as ArrayList<String>))
+                periodsList += results.values as ArrayList<String>
                 notifyDataSetChanged()
             } else {
                 notifyDataSetInvalidated()
