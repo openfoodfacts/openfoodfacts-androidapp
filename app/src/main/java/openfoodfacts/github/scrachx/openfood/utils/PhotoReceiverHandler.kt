@@ -86,7 +86,7 @@ class PhotoReceiverHandler(private val photoReceiver: (File) -> Unit) {
 
         val result = CropImage.getActivityResult(data)
         if (resultCode == Activity.RESULT_OK && result.uri != null) {
-            photoReceiver(File(result.uri.path))
+            photoReceiver(File(result.uri.path!!))
         } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
             Log.w(PhotoReceiverHandler::class.simpleName, "Can't process photo", result.error)
         }

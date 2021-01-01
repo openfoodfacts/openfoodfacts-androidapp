@@ -461,13 +461,13 @@ fun getVersionName(context: Context): String = try {
 }
 
 fun <T : View?> ViewGroup.getViewsByType(typeClass: Class<T>): List<T> {
-    val result = ArrayList<T>()
+    val result = mutableListOf<T>()
     children.forEach { child ->
         if (child is ViewGroup) {
             result.addAll(child.getViewsByType(typeClass))
         }
         if (typeClass.isInstance(child)) {
-            result.add(typeClass.cast(child))
+            result += typeClass.cast(child)
         }
     }
     return result

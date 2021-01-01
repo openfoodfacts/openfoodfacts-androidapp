@@ -52,7 +52,7 @@ class EnvironmentProductFragment : BaseFragment() {
         binding.imageViewPackaging.setOnClickListener { openFullScreen() }
 
         // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(requireContext()) && Utils.isBatteryLevelLow(requireContext())) {
+        if (requireContext().isDisableImageLoad() && requireContext().isBatteryLevelLow()) {
             isLowBatteryMode = true
         }
 

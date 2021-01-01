@@ -14,29 +14,6 @@ import org.junit.Test
  * Tests for [CountriesWrapper]
  */
 class CountriesWrapperTest {
-    lateinit var mCountriesWrapper: CountriesWrapper
-    lateinit var countries: List<Country>
-    lateinit var usaCountry: Country
-    lateinit var gerCountry: Country
-
-    @BeforeClass
-    fun setup() {
-        val usaNamesMap = mapOf(LANGUAGE_CODE_ENGLISH to USA_EN, LANGUAGE_CODE_FRENCH to USA_FR)
-        val usaCC2Map = mapOf(LANGUAGE_CODE_ENGLISH to "US")
-        val usaCC3Map = mapOf(LANGUAGE_CODE_ENGLISH to "USA")
-        val usaResponse = CountryResponse(USA_COUNTRY_TAG, usaNamesMap, usaCC2Map, usaCC3Map)
-
-        val gerNamesMap = mapOf(LANGUAGE_CODE_ENGLISH to GERMANY_EN, LANGUAGE_CODE_FRENCH to GERMANY_FR)
-        val gerCC2Map = mapOf(LANGUAGE_CODE_ENGLISH to "DE")
-        val gerCC3Map = mapOf(LANGUAGE_CODE_ENGLISH to "DEU")
-        val gerResponse = CountryResponse(GERMANY_COUNTRY_TAG, gerNamesMap, gerCC2Map, gerCC3Map)
-
-        mCountriesWrapper = CountriesWrapper(listOf(usaResponse, gerResponse))
-        countries = mCountriesWrapper.map().also {
-            usaCountry = it[0]
-            gerCountry = it[1]
-        }
-    }
 
     @Test
     fun map_returnsListOfCountries_ListHasCorrectSize() {
@@ -82,5 +59,29 @@ class CountriesWrapperTest {
     companion object {
         private const val USA_COUNTRY_TAG = "usa"
         private const val GERMANY_COUNTRY_TAG = "germany"
+        private lateinit var mCountriesWrapper: CountriesWrapper
+        private lateinit var countries: List<Country>
+        private lateinit var usaCountry: Country
+        private lateinit var gerCountry: Country
+
+        @JvmStatic
+        @BeforeClass
+        fun setup() {
+            val usaNamesMap = mapOf(LANGUAGE_CODE_ENGLISH to USA_EN, LANGUAGE_CODE_FRENCH to USA_FR)
+            val usaCC2Map = mapOf(LANGUAGE_CODE_ENGLISH to "US")
+            val usaCC3Map = mapOf(LANGUAGE_CODE_ENGLISH to "USA")
+            val usaResponse = CountryResponse(USA_COUNTRY_TAG, usaNamesMap, usaCC2Map, usaCC3Map)
+
+            val gerNamesMap = mapOf(LANGUAGE_CODE_ENGLISH to GERMANY_EN, LANGUAGE_CODE_FRENCH to GERMANY_FR)
+            val gerCC2Map = mapOf(LANGUAGE_CODE_ENGLISH to "DE")
+            val gerCC3Map = mapOf(LANGUAGE_CODE_ENGLISH to "DEU")
+            val gerResponse = CountryResponse(GERMANY_COUNTRY_TAG, gerNamesMap, gerCC2Map, gerCC3Map)
+
+            mCountriesWrapper = CountriesWrapper(listOf(usaResponse, gerResponse))
+            countries = mCountriesWrapper.map().also {
+                usaCountry = it[0]
+                gerCountry = it[1]
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.content.Context
 import android.os.Build
 import androidx.core.content.edit
+import androidx.core.os.ConfigurationCompat
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
@@ -81,7 +82,7 @@ object LocaleHelper {
     @JvmStatic
     fun getLanguageData(code: String?, supported: Boolean): LanguageData {
         val locale = getLocale(code)
-        return LanguageData(locale.language, locale.getDisplayName(locale).capitalize(), supported)
+        return LanguageData(locale.language, locale.getDisplayName(locale).capitalize(Locale.ROOT), supported)
     }
 
     /**
@@ -94,7 +95,7 @@ object LocaleHelper {
     fun getLanguage(context: Context?): String {
         var lang = getLanguageInPreferences(context, Locale.getDefault().language)
         if (lang.contains("-")) {
-            lang = lang.split("-").toTypedArray()[0]
+            lang = lang.split("-")[0]
         }
         return lang
     }
@@ -110,7 +111,7 @@ object LocaleHelper {
             if (resources != null) {
                 val configuration = resources.configuration
                 if (configuration != null) {
-                    locale = configuration.locale
+                    locale = ConfigurationCompat.getLocales(configuration)[0]
                 }
             }
         }

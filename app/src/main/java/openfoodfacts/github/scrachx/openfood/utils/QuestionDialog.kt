@@ -43,10 +43,10 @@ class QuestionDialog(private val mContext: Context) {
 
     @ColorRes
     var backgroundColor = 0
-    private val mIconColor = mContext.resources.getColor(R.color.gray)
+    private val mIconColor = ResourcesCompat.getColor(mContext.resources, R.color.gray, mContext.theme)
+    private val mIcon = ResourcesCompat.getDrawable(mContext.resources, R.drawable.ic_feedback_black_24dp, mContext.theme)
     var question: String? = null
     var value: String? = null
-    private val mIcon = ResourcesCompat.getDrawable(mContext.resources, R.drawable.ic_feedback_black_24dp, mContext.theme)
 
 
     var onPositiveFeedback: ((QuestionDialog) -> Unit)? = null

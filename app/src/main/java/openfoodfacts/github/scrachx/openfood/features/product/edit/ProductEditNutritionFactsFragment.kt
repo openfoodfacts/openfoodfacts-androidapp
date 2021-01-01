@@ -132,7 +132,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val image = ProductImage(productCode!!, ProductImageField.NUTRITION, newPhotoFile)
             image.filePath = resultUri.path
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
-            hideImageProgress(false)
+            hideImageProgress(false, "")
         }
         binding.btnAddANutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0)
         val bundle = arguments
