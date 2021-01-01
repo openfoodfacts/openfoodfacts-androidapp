@@ -161,6 +161,7 @@ class ProductSearchActivity : BaseActivity() {
                 // TODO: If we open advanced search from app it redirects here
                 val paths = data.toString().split("/")
                 mSearchInfo = SearchInfo.emptySearchInfo()
+
                 if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
                     mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
                     mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
@@ -170,6 +171,7 @@ class ProductSearchActivity : BaseActivity() {
                     mSearchInfo.searchQuery = paths[4]
                     mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SearchType.SEARCH
                 }
+              
             } else {
                 Log.i(LOG_TAG, "No data was passed in with URL. Exiting.")
                 finish()

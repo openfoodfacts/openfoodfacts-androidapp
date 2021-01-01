@@ -83,7 +83,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
         menu.findItem(R.id.action_search).isVisible = false
     }
 
-    override fun onCreatePreferences(bundle: Bundle, rootKey: String) {
+    override fun onCreatePreferences(bundle: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         setHasOptionsMenu(true)
 
