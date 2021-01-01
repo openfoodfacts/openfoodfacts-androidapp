@@ -38,7 +38,7 @@ class ProductCompareActivity : BaseActivity() {
         title = getString(R.string.compare_products)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        var productsToCompare = arrayListOf<Product>()
+        var productsToCompare = ArrayList<Product>()
         if (intent.extras != null && intent.getBooleanExtra(KEY_PRODUCT_FOUND, false)) {
             productsToCompare = intent.extras?.getSerializable(KEY_PRODUCTS_TO_COMPARE) as ArrayList<Product>
             if (intent.getBooleanExtra(KEY_PRODUCT_ALREADY_EXISTS, false)) {

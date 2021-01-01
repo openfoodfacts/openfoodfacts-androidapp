@@ -36,7 +36,6 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding
-import openfoodfacts.github.scrachx.openfood.features.MainActivity
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
@@ -86,6 +85,8 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
         client = OpenFoodAPIClient(this)
 
+        productState = requireProductState()
+
         when {
             intent.action == Intent.ACTION_VIEW -> {
                 // handle opening the app via product page url
@@ -94,11 +95,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                 productState = ProductState()
                 loadProductDataFromUrl(paths[4])
             }
-            productState == null -> {
-                //no state-> we can't display anything. we go back to home.
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
+            productState == null -> error("ProductViewActivity requires a state to be passed")
             else -> initViews()
         }
     }

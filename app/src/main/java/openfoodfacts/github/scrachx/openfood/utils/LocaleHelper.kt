@@ -88,10 +88,8 @@ object LocaleHelper {
     /**
      * Used by screenshots test
      */
-    @JvmStatic
     fun setLocale(locale: Locale) = setLocale(OFFApplication.instance, locale)
 
-    @JvmStatic
     fun getLanguage(context: Context?): String {
         var lang = getLanguageInPreferences(context, Locale.getDefault().language)
         if (lang.contains("-")) {
@@ -100,7 +98,6 @@ object LocaleHelper {
         return lang
     }
 
-    @JvmStatic
     fun getLCOrDefault(languageCode: String?) =
             if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
 

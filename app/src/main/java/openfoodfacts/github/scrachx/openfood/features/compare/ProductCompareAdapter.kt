@@ -26,11 +26,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
-import androidx.cardview.widget.CardView
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
@@ -43,6 +43,7 @@ import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.databinding.ProductComparisonListItemBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -62,11 +63,12 @@ class ProductCompareAdapter(
     private val api by lazy { OpenFoodAPIClient(activity) }
     private val disp = CompositeDisposable()
     private val viewHolders = mutableListOf<ProductComparisonViewHolder>()
+
     private var onPhotoReturnPosition: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductComparisonViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.product_comparison_list_item, parent, false)
-        val viewHolder = ProductComparisonViewHolder(v)
+        val binding = ProductComparisonListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val viewHolder = ProductComparisonViewHolder(binding)
         viewHolders.add(viewHolder)
 
         return viewHolder
@@ -74,32 +76,38 @@ class ProductCompareAdapter(
 
     override fun onBindViewHolder(holder: ProductComparisonViewHolder, position: Int) {
         if (productsToCompare.isEmpty()) {
-            holder.listItemLayout.visibility = View.GONE
+            holder.binding.productComparisonListItemLayout.visibility = View.GONE
             return
         }
 
         // Support synchronous scrolling
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            holder.listItemLayout.setOnScrollChangeListener { _, scrollX, scrollY, _, _ ->
-                viewHolders.forEach { it.listItemLayout.scrollTo(scrollX, scrollY) }
+            holder.binding.productComparisonListItemLayout.setOnScrollChangeListener { _, scrollX, scrollY, _, _ ->
+                viewHolders.forEach { it.binding.productComparisonListItemLayout.scrollTo(scrollX, scrollY) }
             }
         }
 
         val product = productsToCompare[position]
 
         // Set the visibility of UI components
-        holder.productNameTextView.visibility = View.VISIBLE
-        holder.productQuantityTextView.visibility = View.VISIBLE
-        holder.productBrandTextView.visibility = View.VISIBLE
+        holder.binding.productComparisonName.visibility = View.VISIBLE
+        holder.binding.productComparisonQuantity.visibility = View.VISIBLE
+        holder.binding.productComparisonBrand.visibility = View.VISIBLE
 
         // Modify the text on the button for adding products
         addProductButton?.setText(R.string.add_another_product)
 
         // Image
         val imageUrl = product.getImageUrl(LocaleHelper.getLanguage(activity))
-        holder.productComparisonImage.setOnClickListener {
+        holder.binding.productComparisonImage.setOnClickListener {
             if (imageUrl != null) {
-                FullScreenActivityOpener.openForUrl(activity, product, ProductImageField.FRONT, imageUrl, holder.productComparisonImage)
+                FullScreenActivityOpener.openForUrl(
+                        activity,
+                        product,
+                        ProductImageField.FRONT,
+                        imageUrl,
+                        holder.binding.productComparisonImage
+                )
             } else {
                 // take a picture
                 if (ContextCompat.checkSelfPermission(activity, permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -115,29 +123,26 @@ class ProductCompareAdapter(
             }
         }
         if (!imageUrl.isNullOrBlank()) {
-            holder.productComparisonLabel.visibility = View.INVISIBLE
+            holder.binding.productComparisonLabel.visibility = View.INVISIBLE
             if (!activity.isLowBatteryMode()) {
                 Utils.picassoBuilder(activity)
                         .load(imageUrl)
-                        .into(holder.productComparisonImage)
+                        .into(holder.binding.productComparisonImage)
             } else {
-                holder.productComparisonImage.visibility = View.GONE
+                holder.binding.productComparisonImage.visibility = View.GONE
             }
         }
 
         // Name
         if (!product.productName.isNullOrBlank()) {
-            holder.productNameTextView.text = product.productName
+            holder.binding.productComparisonName.text = product.productName
         } else {
             //TODO: product name placeholder text goes here
         }
 
         // Quantity
         if (!product.quantity.isNullOrBlank()) {
-            holder.productQuantityTextView.text = bold(
-                    activity.getString(R.string.compare_quantity)
-            )
-            holder.productQuantityTextView.append(' '.toString() + product.quantity)
+            holder.binding.productComparisonQuantity.text = "${bold(activity.getString(R.string.compare_quantity))} ${product.quantity}"
         } else {
             //TODO: product quantity placeholder goes here
         }
@@ -145,14 +150,14 @@ class ProductCompareAdapter(
         // Brands
         val brands = product.brands
         if (!brands.isNullOrBlank()) {
-            holder.productBrandTextView.text = bold(activity.getString(R.string.compare_brands))
-            holder.productBrandTextView.append(" ")
-            val brandsList = brands.split(",").toTypedArray()
-            for (i in 0 until brandsList.size - 1) {
-                holder.productBrandTextView.append(brandsList[i].trim { it <= ' ' })
-                holder.productBrandTextView.append(", ")
+            holder.binding.productComparisonBrand.text = bold(activity.getString(R.string.compare_brands))
+            holder.binding.productComparisonBrand.append(" ")
+            val brandsList = brands.split(",")
+            for (brand in brandsList.dropLast(1)) {
+                holder.binding.productComparisonBrand.append(brand.trim { it <= ' ' })
+                holder.binding.productComparisonBrand.append(", ")
             }
-            holder.productBrandTextView.append(brandsList[brandsList.size - 1].trim { it <= ' ' })
+            holder.binding.productComparisonBrand.append(brandsList.last().trim { it <= ' ' })
         } else {
             //TODO: product brand placeholder goes here
         }
@@ -162,52 +167,58 @@ class ProductCompareAdapter(
             // NutriScore
             val nutritionGradeResource = product.getImageGradeDrawable(activity)
             if (nutritionGradeResource != null) {
-                holder.productComparisonImageGrade.visibility = View.VISIBLE
-                holder.productComparisonImageGrade.setImageDrawable(nutritionGradeResource)
+                holder.binding.productComparisonImageGrade.visibility = View.VISIBLE
+                holder.binding.productComparisonImageGrade.setImageDrawable(nutritionGradeResource)
             } else {
-                holder.productComparisonImageGrade.visibility = View.INVISIBLE
+                holder.binding.productComparisonImageGrade.visibility = View.INVISIBLE
             }
 
             // Nova group
             if (product.novaGroups != null) {
-                holder.productComparisonNovaGroup.setImageResource(product.getNovaGroupDrawable())
+                holder.binding.productComparisonNovaGroup.setImageResource(product.getNovaGroupDrawable())
             } else {
-                holder.productComparisonNovaGroup.visibility = View.INVISIBLE
+                holder.binding.productComparisonNovaGroup.visibility = View.INVISIBLE
             }
 
             // Environment impact
             val environmentImpactResource = product.getCO2Resource()
-            if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
-                holder.productComparisonCo2Icon.visibility = View.VISIBLE
-                holder.productComparisonCo2Icon.setImageResource(environmentImpactResource)
-            } else {
-                holder.productComparisonCo2Icon.visibility = View.GONE
+            val ecoScoreRes = product.getEcoscoreResource()
+            when {
+                ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE -> {
+                    holder.binding.productComparisonCo2Icon.visibility = View.VISIBLE
+                    holder.binding.productComparisonCo2Icon.setImageResource(ecoScoreRes)
+                }
+                environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE -> {
+                    holder.binding.productComparisonCo2Icon.visibility = View.VISIBLE
+                    holder.binding.productComparisonCo2Icon.setImageResource(environmentImpactResource)
+                }
+                else -> {
+                    holder.binding.productComparisonCo2Icon.visibility = View.GONE
+                }
             }
 
             // Nutriments
-            holder.nutrientsRecyclerView.visibility = View.VISIBLE
-            holder.productComparisonNutrientText.text = activity.getString(R.string.txtNutrientLevel100g)
-            holder.nutrientsRecyclerView.layoutManager = LinearLayoutManager(activity)
-            holder.nutrientsRecyclerView.adapter = NutrientLevelListAdapter(activity, loadLevelItems(product))
+            holder.binding.productComparisonTextNutrientTxt.text = activity.getString(R.string.txtNutrientLevel100g)
+            holder.binding.productComparisonListNutrientLevels.visibility = View.VISIBLE
+            holder.binding.productComparisonListNutrientLevels.layoutManager = LinearLayoutManager(activity)
+            holder.binding.productComparisonListNutrientLevels.adapter = NutrientLevelListAdapter(activity, loadLevelItems(product))
         } else {
-            holder.productComparisonScoresLayout.visibility = View.GONE
-            holder.productComparisonNutrientCv.visibility = View.GONE
+            holder.binding.productComparisonScoresLayout.visibility = View.GONE
+            holder.binding.productComparisonNutrientCv.visibility = View.GONE
         }
 
         // Additives
-        if (product.additivesTags.isNotEmpty()) loadAdditives(product, holder.productComparisonAdditiveText)
+        if (product.additivesTags.isNotEmpty()) loadAdditives(product, holder.binding.productComparisonAdditiveText)
 
         // Full product button
-        holder.fullProductButton.setOnClickListener { view: View? ->
+        holder.binding.fullProductButton.setOnClickListener {
             val barcode = product.code
             if (Utils.isNetworkConnected(activity)) {
                 api.openProduct(barcode, activity)
                 try {
                     val view1 = activity.currentFocus
-                    if (view != null) {
-                        val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                        imm.hideSoftInputFromWindow(view1!!.windowToken, 0)
-                    }
+                    val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(view1!!.windowToken, 0)
                 } catch (e: NullPointerException) {
                     Log.e(ProductCompareAdapter::class.simpleName, "setOnClickListener", e)
                 }
@@ -247,17 +258,17 @@ class ProductCompareAdapter(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(ProductCompareAdapter::class.simpleName, "loadAdditives", it) }
-                .subscribe { additives: List<AdditiveName> ->
+                .subscribe { additives ->
                     if (additives.isNotEmpty()) {
                         val additivesBuilder = StringBuilder()
                         additivesBuilder.append(bold(activity.getString(R.string.compare_additives)))
                         additivesBuilder.append(" ")
                         additivesBuilder.append("\n")
-                        for (i in 0 until additives.size - 1) {
-                            additivesBuilder.append(additives[i].name)
+                        additives.dropLast(1).forEach { additive ->
+                            additivesBuilder.append(additive.name)
                             additivesBuilder.append("\n")
                         }
-                        additivesBuilder.append(additives[additives.size - 1].name)
+                        additivesBuilder.append(additives.last().name)
                         (v as TextView).text = additivesBuilder.toString()
                         setMaxCardHeight()
                     }
@@ -266,10 +277,12 @@ class ProductCompareAdapter(
 
     override fun getItemCount() = productsToCompare.size
 
-    private fun loadLevelItems(product: Product?): List<NutrientLevelItem> {
-        val levelItem = arrayListOf<NutrientLevelItem>()
-        val nutriments = product!!.nutriments
+    private fun loadLevelItems(product: Product): List<NutrientLevelItem> {
+        val levelItem = mutableListOf<NutrientLevelItem>()
+
+        val nutriments = product.nutriments
         val nutrientLevels = product.nutrientLevels
+
         var fat: NutrimentLevel? = null
         var saturatedFat: NutrimentLevel? = null
         var sugars: NutrimentLevel? = null
@@ -338,16 +351,16 @@ class ProductCompareAdapter(
         val productNutrientsHeight = arrayListOf<Int>()
         val productAdditivesHeight = arrayListOf<Int>()
         viewHolders.forEach {
-            productDetailsHeight.add(it.productComparisonDetailsCv.height)
-            productNutrientsHeight.add(it.productComparisonNutrientCv.height)
-            productAdditivesHeight.add(it.productComparisonAdditiveText.height)
+            productDetailsHeight.add(it.binding.productComparisonDetailsCv.height)
+            productNutrientsHeight.add(it.binding.productComparisonNutrientCv.height)
+            productAdditivesHeight.add(it.binding.productComparisonAdditiveText.height)
         }
 
         //setting all the heights to be the maximum
         viewHolders.forEach {
-            it.productComparisonDetailsCv.minimumHeight = productDetailsHeight.maxOrNull()!!
-            it.productComparisonNutrientCv.minimumHeight = productNutrientsHeight.maxOrNull()!!
-            it.productComparisonAdditiveText.height = dpsToPixel(productAdditivesHeight.maxOrNull()!!)
+            it.binding.productComparisonDetailsCv.minimumHeight = productDetailsHeight.maxOrNull()!!
+            it.binding.productComparisonNutrientCv.minimumHeight = productNutrientsHeight.maxOrNull()!!
+            it.binding.productComparisonAdditiveText.height = dpsToPixel(productAdditivesHeight.maxOrNull()!!)
         }
     }
 
@@ -362,26 +375,10 @@ class ProductCompareAdapter(
 
 }
 
-class ProductComparisonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val fullProductButton: Button = view.findViewById(R.id.full_product_button)
-    val listItemLayout: NestedScrollView = view.findViewById(R.id.product_comparison_list_item_layout)
-    val nutrientsRecyclerView: RecyclerView = view.findViewById(R.id.product_comparison_listNutrientLevels)
-    val productBrandTextView: TextView = view.findViewById(R.id.product_comparison_brand)
-    val productComparisonAdditiveCv: CardView = view.findViewById(R.id.product_comparison_additive)
-    val productComparisonAdditiveText: TextView = view.findViewById(R.id.product_comparison_additive_text)
-    val productComparisonCo2Icon: ImageView = view.findViewById(R.id.product_comparison_co2_icon)
-    val productComparisonDetailsCv: CardView = view.findViewById(R.id.product_comparison_details_cv)
-    val productComparisonImage: ImageButton = view.findViewById(R.id.product_comparison_image)
-    val productComparisonImageGrade: ImageView = view.findViewById(R.id.product_comparison_imageGrade)
-    val productComparisonLabel: TextView = view.findViewById(R.id.product_comparison_label)
-    val productComparisonNovaGroup: ImageView = view.findViewById(R.id.product_comparison_nova_group)
-    val productComparisonNutrientCv: CardView = view.findViewById(R.id.product_comparison_nutrient_cv)
-    val productComparisonNutrientText: TextView = view.findViewById(R.id.product_comparison_textNutrientTxt)
-    val productComparisonScoresLayout: RelativeLayout = view.findViewById(R.id.product_comparison_scores_layout)
-    val productNameTextView: TextView = view.findViewById(R.id.product_comparison_name)
-    val productQuantityTextView: TextView = view.findViewById(R.id.product_comparison_quantity)
-
+class ProductComparisonViewHolder(
+        val binding: ProductComparisonListItemBinding
+) : RecyclerView.ViewHolder(binding.root) {
     init {
-        fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0)
+        binding.fullProductButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fullscreen_blue_18dp, 0, 0, 0)
     }
 }
