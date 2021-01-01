@@ -64,6 +64,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.work:work-runtime:2.4.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
+    implementation ("androidx.startup:startup-runtime:1.0.0")
 
 
     kapt("com.google.dagger:dagger-compiler:2.30.1")
