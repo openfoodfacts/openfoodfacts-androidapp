@@ -1,4 +1,4 @@
-name: Crowdin Action
+name: Crowdin Sync
 
 on:
   push:
@@ -6,10 +6,10 @@ on:
 
 jobs:
   synchronize-with-crowdin:
+    name: Synchronize with crowdin
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Checkout
       uses: actions/checkout@v2
 
