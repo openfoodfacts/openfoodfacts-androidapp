@@ -31,10 +31,10 @@ class UtilsTest {
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_e)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("")
-        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_unknown)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn(null)
-        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_unknown)
     }
 
     @Test
