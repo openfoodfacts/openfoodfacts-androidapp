@@ -17,9 +17,7 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 /**
  * Created by Lobster on 04.03.18.
  */
-@Entity(indexes = {
-    @Index(value = "tag", unique = true)
-})
+@Entity(indexes = {@Index(value = "tag", unique = true)})
 public class Country {
     @Id(autoincrement = true)
     private Long id;

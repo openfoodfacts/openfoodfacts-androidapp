@@ -1,7 +1,7 @@
 Todos os 25 mil voluntários ficaram trabalhando duro: 1,4M produtos, 182 países 🙂
 1. O DESCONTO é grande nos EUA: 237 mil produtos com o Nutri-Score !
 2. Modo escuro: mais leve para seus olhos, mais leve para sua bateria
-3. Help compute Nutri-Score & Eco-Score: slide up for blue questions & get credited for your answers.
+3. Ajude a calcular o Nutri-Score e o Eco-Score: deslize para cima para ver perguntas azuis e seja creditado pelas suas respostas.
 4. Grandes melhorias na detecção de óleo vegano, vegetariano & de palma.
 5. Edição instantânea do produto, mesmo com rede ruim ou sem rede
 6. A página Produtos a serem concluídos (menu à direita) agora está em tempo real.

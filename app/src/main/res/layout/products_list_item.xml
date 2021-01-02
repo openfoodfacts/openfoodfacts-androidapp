@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/saveRel"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="100dp"
     android:background="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
@@ -11,20 +12,21 @@
     <FrameLayout
         android:id="@+id/searchImgFrame"
         android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/spacing_normal"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:layout_marginTop="@dimen/spacing_normal"
-        android:layout_marginEnd="@dimen/spacing_normal"
-        android:layout_marginRight="@dimen/spacing_normal">
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgProduct"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            tools:scaleType="centerCrop"
             tools:src="@drawable/header" />
 
         <ProgressBar
@@ -36,51 +38,90 @@
             android:visibility="visible" />
     </FrameLayout>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/searchImgFrame"
-        android:layout_alignTop="@+id/searchImgFrame"
-        android:layout_marginEnd="@dimen/spacing_large"
-        android:layout_marginRight="@dimen/spacing_large"
-        android:layout_toLeftOf="@id/imgGrade"
-        android:layout_toRightOf="@id/searchImgFrame"
-        android:columnCount="1"
-        android:layout_toStartOf="@id/imgGrade"
-        android:layout_toEndOf="@id/searchImgFrame"
-        android:rowCount="2">
+    <TextView
+        android:id="@+id/nameProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ellipsize="marquee"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:textAlignment="gravity"
+        android:textSize="@dimen/font_large"
+        app:layout_constraintBottom_toTopOf="@+id/productDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchImgFrame"
+        app:layout_constraintTop_toTopOf="@+id/searchImgFrame"
+        tools:text="Product name with a long long long description" />
 
-        <TextView
-            android:id="@+id/nameProduct"
-            android:layout_width="fill_parent"
-            android:layout_row="0"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:textAlignment="gravity"
-            android:textSize="@dimen/font_large"
-            tools:text="Product name with a long long long description" />
+    <TextView
+        android:id="@+id/productDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ellipsize="end"
+        android:gravity="start|top"
+        android:singleLine="true"
+        android:textSize="@dimen/font_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchImgFrame"
+        app:layout_constraintTop_toBottomOf="@+id/nameProduct"
+        tools:text="Product details which are also sometimes very long" />
 
-        <TextView
-            android:id="@+id/productDetails"
-            android:layout_width="fill_parent"
-            android:layout_row="1"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:textSize="@dimen/font_normal"
-            tools:text="Product details which are also sometimes very long" />
-
-    </GridLayout>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgGrade"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+    <ImageView
+        android:id="@+id/imgNutriscore"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="@dimen/spacing_small"
-        tools:src="@drawable/ic_nutriscore_small_a" />
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:adjustViewBounds="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgNova"
+        app:layout_constraintTop_toBottomOf="@+id/productDetails"
+        app:srcCompat="@drawable/ic_nutriscore_a"
+        tools:visibility="visible" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/imgEcoscore"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:adjustViewBounds="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productDetails"
+        app:srcCompat="@drawable/ic_ecoscore_a"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/imgNova"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:adjustViewBounds="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgEcoscore"
+        app:layout_constraintTop_toBottomOf="@+id/productDetails"
+        app:srcCompat="@drawable/ic_nova_group_1"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

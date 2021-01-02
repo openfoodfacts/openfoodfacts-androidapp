@@ -20,56 +20,63 @@
             layout="@layout/toolbar" />
 
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/navigation_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_include"
-            tools:visibility="invisible">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
 
 
             <TextView
                 android:id="@+id/textCountProduct"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/padding_short"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:paddingTop="@dimen/padding_too_short"
-                android:paddingRight="@dimen/padding_short"
                 android:paddingBottom="@dimen/padding_too_short"
                 android:text="@string/number_of_products"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_hunger_games" />
 
             <Button
                 android:id="@+id/btn_hunger_games"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/brand_yellow"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_small"
                 android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipe_refresh"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textCountProduct">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/products_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/materialize_baseline_grid_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     tools:listitem="@layout/products_list_item">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/offlineCloudLinearLayout"
@@ -81,8 +88,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_include"
-            tools:visibility="gone">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
 
             <ImageView
                 android:id="@+id/sadCloud"
@@ -137,8 +143,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_include"
-            tools:visibility="visible">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
 
             <TextView
                 android:id="@+id/textNoResults"

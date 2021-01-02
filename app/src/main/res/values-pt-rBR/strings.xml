@@ -383,7 +383,7 @@
     <string name="take_picture_front">Tirar foto frontal</string>
     <string name="take_picture_nutrition_table">Tirar foto à tabela nutricional</string>
     <string name="take_more_pictures">Tirar mais fotos</string>
-    <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+    <string name="take_extra_packaging_pictures">Tire fotos adicionais de embalagens</string>
     <string name="txtSaturatedFat">Gordura saturada</string>
     <string name="nutriscore_info_msg">Saiba mais sobre o Nutri-Score</string>
     <string name="nova_info_msg">Saiba mais sobre os grupos NOVA</string>
@@ -440,9 +440,9 @@
     <string name="TermsOfUse">Termos e privacidade</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world-pt.openfoodfacts.org/termos-de-utilizacao</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
-    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <string name="faq_url">https://world-pt.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
     <string name="hunger_game_url">https://world-pt.openfoodfacts.org/hunger-game</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
@@ -668,7 +668,7 @@
     <string name="update_image">Envie uma imagem atualizada</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extrair ingredientes</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
+    <string name="extract_recycling_prompt">Extrair instruções de reciclagem</string>
     <string name="add_nutrient_prompt_text">Adicione fatos nutricionais para calcular o Nutri-Score</string>
     <string name="add_category_prompt_text">Adicione uma categoria para calcular o Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Adicione fatos nutricionais e uma categoria para calcular o Nutri-Score</string>
@@ -709,7 +709,7 @@
     <string name="settings_country_title">País</string>
     <string name="txt_no_nutrition_data">Este produto não tem nenhuma informação nutricional na embalagem. Se isso mudou, você pode editar o produto.</string>
     <string name="image_prompt_language">Tire uma foto dos ingredientes em</string>
-    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
+    <string name="swipe_delete_tip">Você pode excluir uma lista deslizando para a esquerda.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Adicionar produtos</string>
@@ -750,7 +750,7 @@
     <string name="history_network_error">O produto não pôde ser carregado. Por favor, tente novamente quando estiver online novamente.</string>
     <string name="cant_modify_if_refreshing">Por favor, aguarde até que o envio termine</string>
     <string name="closeZoom">Clicar para fechar o zoom</string>
-    <string name="imageFullscreen">Zoom</string>
+    <string name="imageFullscreen">Ampliar</string>
     <!-- Used for product ingredients analysis tags -->
     <string name="close_button">Fechar</string>
     <string name="tip_message">DICA: %1$s </string>
@@ -804,5 +804,5 @@
     <string name="sign_in_or_register">Entrar ou registrar-se</string>
     <string name="hunger_game_call_to_action">Ajude a classificar mais %1$s</string>
     <string name="txtHomeOnline">O Open Food Facts é um banco de dados aberto com mais de %1$s produtos alimentícios (além daqueles que você irá contribuir).</string>
-    <string name="enabled">Enabled</string>
+    <string name="enabled">Habilitado</string>
 </resources>

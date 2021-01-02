@@ -585,8 +585,8 @@
     <string name="nutrition_facts">Informazioni nutrizionali</string>
     <string name="your_version">Tuoi</string>
     <string name="ingredients_picture">Foto degli ingredienti</string>
-    <string name="packaging">Recycling</string>
-    <string name="recycling_picture">Recycling Picture</string>
+    <string name="packaging">Riciclaggio</string>
+    <string name="recycling_picture">Immagine del Riciclaggio</string>
     <string name="take_ingredients_picture_to_extract">(Fai una foto degli ingredienti per estrarli automaticamente)</string>
     <string name="ingredients_list">Lista degli ingredienti</string>
     <string name="ingredients_hint">Mantenere l\'ordine, indicare la % quando specificata, separare con una virgola oppure -, utilizzare () per indicare gli ingredienti di un ingrediente, segnalare gli allergeni con _</string>
@@ -668,7 +668,7 @@
     <string name="update_image">Invia un\'immagine aggiornata</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Estrai ingredienti</string>
-    <string name="extract_recycling_prompt">Extract recycling instructions</string>
+    <string name="extract_recycling_prompt">Estrai istruzioni di riciclaggio</string>
     <string name="add_nutrient_prompt_text">Aggiungi i valori nutrizionali per calcolare il Nutri-Score</string>
     <string name="add_category_prompt_text">Aggiungi una categoria per calcolare il Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Aggiungi i valori nutrizionali e una categoria per calcolare il Nutri-Score</string>

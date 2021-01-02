@@ -1,7 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.models
 
 import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.common.truth.Truth
 import org.junit.Before
 import org.junit.Test
@@ -23,7 +23,7 @@ class NutrientLevelsTest {
 
     @Test
     fun jsonSerialization_ok() {
-        val jsonNode = ObjectMapper().valueToTree<JsonNode>(nutrientLevels)
+        val jsonNode = jacksonObjectMapper().valueToTree<JsonNode>(nutrientLevels)
         Truth.assertThat(jsonNode["fat"].asText()).isEqualTo(NutrimentLevel.LOW.toString())
         Truth.assertThat(jsonNode["salt"].asText()).isEqualTo(NutrimentLevel.MODERATE.toString())
         Truth.assertThat(jsonNode["saturated-fat"].asText()).isEqualTo(NutrimentLevel.HIGH.toString())
@@ -33,7 +33,7 @@ class NutrientLevelsTest {
     @Test
     @Throws(Exception::class)
     fun jsonDeserialization_ok() {
-        val objectMapper = ObjectMapper()
+        val objectMapper = jacksonObjectMapper()
         val nutrientLevelsResult = objectMapper.treeToValue(
                 objectMapper.createObjectNode()
                         .put("fat", "low")

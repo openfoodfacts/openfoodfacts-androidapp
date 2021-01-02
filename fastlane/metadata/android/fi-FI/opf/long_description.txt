@@ -1,13 +1,13 @@
-Open Products Facts on avoin tietokanta kaikille maailman tuotteille.
+Open Products Facts on avoin tietokanta kaikista tuotteista maailmassa.
 
 *** Lisää tuotteiden läpinäkyvyyttä ***
 
 - Open Products Facts on kaikkien tekemä tuotetietokanta, kaikille.
 - Voit käyttää sitä tekemään parempia valintoja, ja koska se on avointa dataa, kuka tahansa voi käyttää sitä mihin tahansa tarkoitukseen.
-- Open Products Facts voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin. 
+- Open Products Facts voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin. 
 - Voit aloittaa osallistumisen tänään lisäämällä ensimmäisen tuotteesi. 
 
-*** Tiedä tosiseikat ***
+*** Näe faktat ***
 - Open Products Facts auttaa sinua ymmärtämään tuotteiden etikettien pikkupräntin.
 
 *** Kerää KAAAAIIKKI asiat ***
@@ -17,12 +17,12 @@ Open Products Facts on avoin tietokanta kaikille maailman tuotteille.
 - Open ??? Facts - Luo oma avoin tietokantasi :-)
 
 *** Toimii hyvin kaikissa olosuhteissa ***
-- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
-- Sovellus lataa vain kaikista välttämättömimmän, tiedonsiirron ja akun kulutuksen vähentämiseksi
-- Et tarvitse kameraa hakeaksesi tuotetta. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
+- Sovellus lataa vain ehdottoman välttämättömät datasiirron ja akun kulutuksen vähentämiseksi
+- Tuotteen etsimiseen ei tarvita kameraa. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
 
 *** Sinun tuotteesi, sinun tietosi ***
-- Henkilökohtaiset tietosi ovat sinun, ja niitä ei koskaan lähetetä verkkoon
+- Henkilötietosi ovat sinun, eikä niitä koskaan lähetetä verkossa
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 

@@ -126,7 +126,7 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 
 ## Copyright and License
 
-    Copyright 2016-2020 Open Food Facts
+    Copyright 2016-2021 Open Food Facts
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

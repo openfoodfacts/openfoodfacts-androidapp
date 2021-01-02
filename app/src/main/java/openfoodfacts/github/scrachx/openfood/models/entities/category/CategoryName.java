@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.category;
 
-
 import androidx.annotation.Nullable;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -12,23 +11,14 @@ import org.greenrobot.greendao.annotation.Keep;
 /**
  * Created by Lobster on 04.03.18.
  */
-
-@Entity(indexes = {
-        @Index(value = "languageCode, categoryTag", unique = true)
-})
+@Entity(indexes = {@Index(value = "languageCode, categoryTag", unique = true)})
 public class CategoryName {
-
     @Id(autoincrement = true)
     Long id;
-
     private String categoryTag;
-
     private String languageCode;
-
     private String name;
-
     private String wikiDataId;
-
     private Boolean isWikiDataIdPresent;
 
     @Generated(hash = 1992623652)
@@ -103,17 +93,17 @@ public class CategoryName {
 
     @Nullable
     public String getWikiDataId() {
-        if(this.wikiDataId==null){
-            return "null";
+        if (this.wikiDataId == null) {
+            return null;
         }
         String res = this.wikiDataId;
         int startIndex = res.indexOf("en");
-        startIndex= startIndex + 5;
+        startIndex = startIndex + 5;
         int lastIndex = res.lastIndexOf('\"');
-        if(startIndex<3 || lastIndex < 3 ){
+        if (startIndex < 3 || lastIndex < 3) {
             return res;
         }
-        res = res.substring(startIndex,lastIndex);
+        res = res.substring(startIndex, lastIndex);
         return res;
     }
 

@@ -1,65 +1,65 @@
-Lue elintarvikkeita tai niiden viivakoodi saadaksesi tietoja ainesosista, lisäaineista ja ravintoarvoista.
+Lue elintarvikkeita tai niiden viivakoodit saadaksesi tietoa ainesosista, lisäaineista ja ravintosisällöistä.
 
-▶ Löydä ja vertaile yli 800 000 tuotetta
+▶ Löydä ja vertaa yli 800 000 tuotetta
 
-Sovellus antaa mahdollisuuden tarkastella 800 000 avoimeen Open Food Facts -tietokantaan jo sisältyvää tuotetta (mukaan lukien 175 000 Yhdysvalloissa), sekä lisätä kuvia ja tietoja uusista tuotteista.
+Sovelluksen avulla voi tarkastella 800 000 tuotetta (mukaan lukien 175 000 Yhdysvalloissa), jotka ovat jo vapaassa ja avoimessa Open Food Facts -tietokannassa, sekä lisätä kuvia ja tietoja uusille tuotteille.
 
 
-Tutustu vapaaehtoisten ylläpitämään Open Food Facts -hankkeeseen osoitteessa https://world.openfoodfacts.org
+Tutustu vapaaehtoisten ylläpitämään Open Food Facts -hankkeeseen osoitteessa https://world-fi.openfoodfacts.org
 
 ▶ Valitse tuotteet, jotka ovat sinulle hyväksi
-- Nutri-Score-arvosana, A-E >> Ravinnollinen laatu
-- NOVA-ryhmä, 1-4 >> Löydä ultrajalostetut elintarvikkeet
-- Yksinkertaisesti lukemalla ne voit helposti vertailla vierekkäin niin monta tuotetta kuin haluat. 
+- Nutri-Score-arvosana, "A" - "E" >> Ravinnollinen laatu
+- NOVA-ryhmä, "1" - "4" >> Löydä ultrajalostettu ruoka
+- Voit helposti verrata niin monta tuotetta kuin haluat vierekkäin yksinkertaisesti lukemalla ne. 
 
 ▶ Ja hyväksi planeetalle!
 - Ruokasi hiilivaikutus
-- Saat käsityksen siitä, kuinka suuren osan päivittäisestä hiilikiintiöstäsi käytät ruokaan
+- Saa käsitys siitä, kuinka paljon päivittäisestä hiilikiintiöstäsi käytät ruokaan
 - Perustuu ADEME:n Ranskalle laskemiin jalanjälkiin.
-- Liity mukaan, ja auta meitä tuomaan hiilivaikutus maahasi!
-- Tuotteella on oltava lihan tai kalan prosenttiosuuden sisältävä ainesosaluettelo, sekä määrä, hiilivaikutuksen näyttämiseksi
+- Liity mukaan ja auta meitä tuomaan hiilivaikutus maahasi!
+- Hiilivaikutuksen ilmaisemiseksi tuotteella on oltava määrä ja täydellinen ainesosaluettelo, jossa on % lihaa tai kalaa
 
 
-▶ Edistä elintarvikkeiden läpinäkyvyyttä
-- Open Food Facts on kaikkien tuottama elintarviketietokanta kaikille.
-- Voit käyttää sitä parempien ruokavalintojen tekemiseen, ja koska se on avointa tietoa, kuka tahansa voi uudelleenkäyttää sitä mihin tahansa tarkoitukseen.
-- Open Food Facts on voittoa tavoittelematon hanke, jonka ovat kehittäneet tuhannet vapaaehtoiset ympäri maailmaa. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin.
+▶ Edistä ruoan läpinäkyvyyttä
+- Open Food Facts on kaikkien tekemä elintarviketietokanta kaikille.
+- Voit käyttää sitä parempiin ruokavalintoihin, ja koska se on avointa dataa, kuka tahansa voi käyttää sitä uudelleen mihin tahansa tarkoitukseen.
+- Open Food Facts on voittoa tavoittelematon hanke, jonka ovat kehittäneet tuhannet vapaaehtoiset ympäri maailmaa. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin.
 - Voit aloittaa osallistumisen tänään lisäämällä tuotteen jääkaapistasi.
 
 ▶ Luo luetteloita
-Luo ostoslistoja, seuraa mitä olet syönyt, ja jaa ja vie helposti luettelosi.
+Luo ostoslistoja, seuraa mitä olet syönyt, ja jaa ja vie luettelosi helposti.
 
-▶ Tiedä tosiseikat
-- Open Food Facts auttaa sinua ymmärtämään pikkupräntit tuotteiden etiketeissä. Löydät:
-- hiilijalanjäljen (hiilidioksidipäästöt) ja pakkausmateriaalin (sekä kierrätysohjeet),
-- Nutriscoren (ravinnollinen arvosana), ravintoaineet, rasvan / rasvapitoisuuden, tyydyttyneet rasvahapot, hiilihydraatit, sokerit, kuidut, proteiinit sekä suolan ja natriumin.
-- tuotemerkit, allergeenit, etiketit (bio, gluteeniton, vegaani, kasvis, halal, kosher ...), jäljitettävyystiedot (pakkauskoodit, ainesosien alkuperät)
+▶ Näe faktat
+- Open Food Facts auttaa sinua ymmärtämään tuotteiden etiketeissä olevan pikkupräntin. Löydät:
+- hiilijalanjäljen (CO2-päästöt) ja pakkaukset (sekä kierrätysohjeet),
+- Nutriscoren (ravintopisteet), ravintoaineet, rasvan / rasvapitoisuuden, tyydyttyneet rasvahapot, hiilihydraatit, sokerit, kuidut, proteiinin sekä suolan ja natriumin.
+- tuotemerkit, allergeenit, merkit (luomu, gluteeniton, vegaani, vegetaari, halal, kosher ...), jäljitettävyystiedot (pakkauskoodit, ainesosien alkuperät)
 - Viineistä ja oluista löydät alkoholipitoisuuden.
 
 
-▶ Perustuu tieteeseen, auttaa tiedettä!
+▶ Perustuu tieteeseen ja auttaa tiedettä!
 
 - Emme keksi asioita. Luotamme vertaisarvioituun tieteeseen.
-- Nutri-Scoren on luonut riippumaton ranskalainen ryhmä, jota johtaa professori Hercberg.
-- NOVA-ryhmät elintarvikkeiden jalostuksesta on suunnitellut professori Monteiron kansainvälinen ryhmä.
-- Saat yhteenvedon Euroopan elintarviketurvallisuusviranomaisten (EFSA) elintarvikelisäaineiden altistustasoista.
-- Open Food Facts -yhteisö tekee yhteistyötä koko maapallon tutkimusryhmien kanssa, parantaakseen ravitsemustutkimusta, josta on hyötyä kaikille.
+- Nutri-Scoren on luonut professori Hercbergin johtama riippumaton ranskalainen ryhmä.
+- Ruoan jalostuksen NOVA-ryhmät on suunnitellut professori Monteiron kansainvälinen ryhmä.
+- Saat yhteenvedon elintarvikelisäaineiden EFSA-altistustasoista.
+- Open Food Facts -yhteisö tekee yhteistyötä ympäri planeettaa toimivien tutkimusryhmien kanssa parantaakseen ravintotutkimusta, joka hyödyttää kaikkia.
 
 
-▶ Lukeminen yhteydettömässä tilassa: Lue KAIKISSA olosuhteissa! (tulossa pian)
-Lue valon nopeudella (vaikka olisitkin lentokoneessa, sukellusveneessä tai supermarketissa)
+▶ Yhteydetön lukeminen: Lue MISSÄ TAHANSA olosuhteissa! (tulossa pian)
+Lue valon nopeudella (vaikka olisit lentokoneessa, sukellusveneessä tai supermarketissa)
 
-- Koko planeetta taskussasi!
-- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
-- Sovellus lataa vain kaikkein välttämättömimmän, tiedonsiirron ja akunkulutuksen vähentämiseksi.
+- Koko planeetta, taskussasi!
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
+- Sovellus lataa vain ehdottoman välttämättömät datasiirron ja akun kulutuksen vähentämiseksi.
 
 ▶ Sinun ruokasi, sinun tietosi
-- Tietosi ovat sinun, eikä niitä koskaan lähetetä verkkoon
+- Tietosi ovat sinun, eikä niitä koskaan lähetetä verkossa
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 
 ▶ Aseta allergeenivaroitukset tuotteille
-- Maito-, gluteeni-, muna-, soijapapu-, pähkinä., kala-, selleri-, sinappi-, rikkidioksidi ja sulfiitit -, maapähkinä-, seesaminsiemen-, äyriäis-, nilviäis- tai lupiiniallergia?
+- Maito-, gluteeni-, muna-, soijapapu-, pähkinä-, kala-, selleri-, sinappi-, rikkidioksidi ja sulfiitit -, maapähkinä-, seesaminsiemen-, äyriäis-, nilviäis- tai lupiiniallergia?
 - Nopeuta ostoksiasi tekemällä ensin seulonta Open Food Factsilla.
 - Ole varovainen, sillä tiedot eivät välttämättä ole 100% tarkkoja, ja havaitseminen ei välttämättä ole 100% tarkkaa. Joten varmista aina tiedot pakkauksesta.
 
@@ -67,10 +67,10 @@ Lue valon nopeudella (vaikka olisitkin lentokoneessa, sukellusveneessä tai supe
 ▶ Sano hei ja/tai liity joukkoon!
 
 
-Open Food Facts on myös verkossa osoitteessa https://world.openfoodfacts.org
+Open Food Facts on saatavilla myös verkossa osoitteessa https://world-fi.openfoodfacts.org
 
 
 Kysymykset, palaute: contact@openfoodfacts.org
 
 
-Kosmetiikkatuotteille voit asentaa Open Beauty Factsin, lemmikkieläinten elintarvikkeille Open Pet Food Factsin ja kaikille muille tuotteille Open Products Factsin.
+Kosmetiikalle voit asentaa Open Beauty Factsin, lemmikkieläinten ruoalle Open Pet Food Factsin ja kaikille muille tuotteille Open Products Factsin.

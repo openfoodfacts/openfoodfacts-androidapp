@@ -78,6 +78,6 @@ lane :finalize_sentry do
     sentry_finalize_release(
         org_slug: 'openfoodfacts',
         project_slug: 'openfoodfacts-android',
-        version: PACKAGE_NAME + '@' + versionName + '+' + versionCode,
+        version: PACKAGE_NAME + '@' + versionName.to_s + '+' + versionCode.to_s,
     )
 end

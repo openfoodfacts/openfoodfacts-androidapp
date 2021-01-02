@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.commit
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import openfoodfacts.github.scrachx.openfood.R
@@ -18,6 +19,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsA
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
 import openfoodfacts.github.scrachx.openfood.features.welcome.WelcomeActivity
+import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 
 class CommonBottomListener internal constructor(private val currentActivity: Activity) : BottomNavigationView.OnNavigationItemSelectedListener {
@@ -32,8 +34,10 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
             }
             R.id.home_page, R.id.home -> {
                 if (isCurrentActivity(WelcomeActivity::class.java) || isCurrentActivity(MainActivity::class.java)) {
-                    (currentActivity as FragmentActivity).supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).addToBackStack(null)
-                            .commit()
+                    (currentActivity as FragmentActivity).supportFragmentManager.commit {
+                        replace(R.id.fragment_container, HomeFragment())
+                        addToBackStack(null)
+                    }
                     return true
                 }
                 currentActivity.startActivity(createIntent(MainActivity::class.java))
@@ -63,11 +67,13 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
         }
         // If no camera is installed, alert the user
         if (!Utils.isHardwareCameraInstalled(currentActivity)) {
-            MaterialDialog.Builder(currentActivity)
-                    .title(R.string.no_camera_dialog_title)
-                    .content(R.string.no_camera_dialog_content)
-                    .neutralText(R.string.txtOk)
-                    .show()
+            MaterialDialog.Builder(currentActivity).run {
+                title(R.string.no_camera_dialog_title)
+                content(R.string.no_camera_dialog_content)
+                neutralText(R.string.txtOk)
+                show()
+            }
+
             return
         }
         // Otherwise check permissions and go to continuous scan activity
@@ -81,11 +87,11 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
                             ActivityCompat.requestPermissions(
                                     currentActivity,
                                     arrayOf(Manifest.permission.CAMERA),
-                                    Utils.MY_PERMISSIONS_REQUEST_CAMERA
+                                    MY_PERMISSIONS_REQUEST_CAMERA
                             )
                         }.show()
             } else {
-                ActivityCompat.requestPermissions(currentActivity, arrayOf(Manifest.permission.CAMERA), Utils.MY_PERMISSIONS_REQUEST_CAMERA)
+                ActivityCompat.requestPermissions(currentActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
         } else {
             val intent = createIntent(ContinuousScanActivity::class.java)
@@ -96,13 +102,9 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
 
     ////////////////////
     // Utility functions
-    private fun isCurrentActivity(activityClass: Class<out Activity?>): Boolean {
-        return currentActivity.javaClass == activityClass
-    }
+    private fun isCurrentActivity(activityClass: Class<out Activity?>) = currentActivity.javaClass == activityClass
 
-    private fun createIntent(activityClass: Class<out Activity?>): Intent {
-        return Intent(currentActivity, activityClass).apply {
-            addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-        }
+    private fun createIntent(activityClass: Class<out Activity?>) = Intent(currentActivity, activityClass).apply {
+        addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
     }
 }

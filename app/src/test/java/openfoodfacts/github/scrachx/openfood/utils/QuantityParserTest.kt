@@ -1,0 +1,35 @@
+package openfoodfacts.github.scrachx.openfood.utils
+
+import android.widget.Spinner
+import com.google.common.truth.Truth.assertThat
+import org.junit.Test
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when` as mockitoWhen
+
+/**
+ *
+ */
+class QuantityParserTest {
+    @Test
+    fun testWithEmptyValues() {
+        assertThat(getFloatValue(null)).isNull()
+        assertThat(getFloatValue("")).isNull()
+        assertThat(getFloatValue("   ")).isNull()
+        assertThat(getFloatValue(null)).isNull()
+        assertThat(getFloatValue("")).isNull()
+        assertThat(getFloatValue(" ")).isNull()
+    }
+
+    @Test
+    fun testIsGreaterThan() {
+        val mockSpinner = mock(Spinner::class.java)
+        mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(2)
+        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isTrue()
+
+        mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(1)
+        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isFalse()
+
+        mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(0)
+        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isFalse()
+    }
+}

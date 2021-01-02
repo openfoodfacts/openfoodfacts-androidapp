@@ -4,8 +4,10 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -21,28 +23,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
-import openfoodfacts.github.scrachx.openfood.utils.FileUtils;
-import openfoodfacts.github.scrachx.openfood.utils.Utils;
+import openfoodfacts.github.scrachx.openfood.utils.FileUtilsKt;
 
-@Entity(indexes = {
-    @Index(value = "barcode", unique = true)
-})
+import static openfoodfacts.github.scrachx.openfood.utils.Utils.firstNotEmpty;
 
+@Entity(indexes = {@Index(value = "barcode", unique = true)})
 public class OfflineSavedProduct implements Serializable {
     private static final long serialVersionUID = 1L;
+    private String barcode;
     @Id
     private Long id;
-    private String barcode;
-    private String productDetails;
     @Index
     private boolean isDataUploaded;
+    private String productDetails;
 
-    @Generated(hash = 39695213)
-    public OfflineSavedProduct(Long id, String barcode, String productDetails, boolean isDataUploaded) {
-        this.id = id;
+    @Generated(hash = 51718877)
+    public OfflineSavedProduct(String barcode, Long id, boolean isDataUploaded, String productDetails) {
         this.barcode = barcode;
-        this.productDetails = productDetails;
+        this.id = id;
         this.isDataUploaded = isDataUploaded;
+        this.productDetails = productDetails;
     }
 
     @Generated(hash = 403273060)
@@ -76,6 +76,18 @@ public class OfflineSavedProduct implements Serializable {
         return null;
     }
 
+    public void setProductDetailsMap(Map<String, String> detailsMap) {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(bos);
+            out.writeObject(detailsMap);
+            out.flush();
+            this.productDetails = Base64.encodeToString(bos.toByteArray(), Base64.DEFAULT);
+        } catch (IOException e) {
+            Log.e(OfflineSavedProduct.class.getSimpleName(), "setProductDetailsMap", e);
+        }
+    }
+
     @Nullable
     public String getLanguage() {
         return getProductDetailsMap().get(ApiFields.Keys.LANG);
@@ -83,16 +95,16 @@ public class OfflineSavedProduct implements Serializable {
 
     @Nullable
     public String getName() {
-        HashMap<String, String> map = getProductDetailsMap();
-        String language = Utils.firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
-        return Utils.firstNotEmpty(map.get(ApiFields.Keys.lcProductNameKey(language)), map.get(ApiFields.Keys.lcProductNameKey("en")));
+        final HashMap<String, String> map = getProductDetailsMap();
+        final String language = firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
+        return firstNotEmpty(map.get(ApiFields.Keys.lcProductNameKey(language)), map.get(ApiFields.Keys.lcProductNameKey("en")));
     }
 
     @Nullable
     public String getIngredients() {
-        HashMap<String, String> map = getProductDetailsMap();
-        String language = Utils.firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
-        return Utils.firstNotEmpty(map.get(ApiFields.Keys.lcIngredientsKey(language)), map.get(ApiFields.Keys.lcIngredientsKey("en")));
+        final HashMap<String, String> map = getProductDetailsMap();
+        final String language = firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
+        return firstNotEmpty(map.get(ApiFields.Keys.lcIngredientsKey(language)), map.get(ApiFields.Keys.lcIngredientsKey("en")));
     }
 
     @Nullable
@@ -114,21 +126,9 @@ public class OfflineSavedProduct implements Serializable {
     public String getImageFrontLocalUrl() {
         String localUrl = getProductDetailsMap().get(ApiFields.Keys.IMAGE_FRONT);
         if (!TextUtils.isEmpty(localUrl)) {
-            return FileUtils.LOCALE_FILE_SCHEME + localUrl;
+            return FileUtilsKt.LOCALE_FILE_SCHEME + localUrl;
         }
         return null;
-    }
-
-    public void setProductDetailsMap(Map<String, String> detailsMap) {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(bos);
-            out.writeObject(detailsMap);
-            out.flush();
-            this.productDetails = Base64.encodeToString(bos.toByteArray(), Base64.DEFAULT);
-        } catch (IOException e) {
-            Log.e(OfflineSavedProduct.class.getSimpleName(), "setProductDetailsMap", e);
-        }
     }
 
     public String getProductDetails() {
@@ -155,13 +155,14 @@ public class OfflineSavedProduct implements Serializable {
         this.isDataUploaded = isDataUploaded;
     }
 
+    @NonNull
     @Override
     public String toString() {
-        return "OfflineSavedProduct{" +
-            "id=" + id +
-            ", barcode='" + barcode + '\'' +
-            ", isDataUploaded=" + isDataUploaded +
-            ", map='" + getProductDetailsMap().toString() + '\'' +
-            '}';
+        return new ToStringBuilder(this)
+            .append(id)
+            .append(barcode)
+            .append(isDataUploaded)
+            .append(getProductDetailsMap().toString())
+            .toString();
     }
 }

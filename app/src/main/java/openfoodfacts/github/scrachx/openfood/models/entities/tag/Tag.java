@@ -12,16 +12,13 @@ import org.greenrobot.greendao.annotation.Index;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "name",
-        "products",
-        "url",
-        "id"
+    "name",
+    "products",
+    "url",
+    "id"
 })
-@Entity(indexes = {
-        @Index(value = "id", unique = true)
-})
+@Entity(indexes = {@Index(value = "id", unique = true)})
 public class Tag {
-
     @JsonProperty("name")
     private String name;
     @JsonProperty("products")

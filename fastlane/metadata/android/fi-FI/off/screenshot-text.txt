@@ -17,7 +17,7 @@ Aseta allergeenivaroituksia
 
 Ravinto, yksinkertaistettuna
 
-Allergeenivaroitus
+Allergeenihälytys
 
 Saa vaihtoehtoja lempiruoillesi
 
@@ -35,38 +35,38 @@ Ainesosat
 
 Tehokas
 
-Ravintosisältö
+Ravintotiedot
 
 =====================
 V3-kuvakaappaukset
 =====================
 
-Valitse tuotteita jotka ovat hyväksi sinulle ja 🌍 planeetalle!
+Valitse tuotteita jotka ovat hyväksi sinulle ja planeetalle!
 
-✔ Ultranopea viivakoodinluku
+Ultranopea viivakoodinlukija
 
 ✔ Maailmanlaajuinen ruokakauppa taskussasi
 
-Ravinnollinen laatu
+Ravintosisältö
 
-Ultrajalostetut ruoat
+Ultraprosessoidut ruoat
 
 Hiilijalanjälki
 
 Vertaa helposti ennen ostamista
 
-Luo ostoslistoja, saantilistoja…
+Luo ostoslistoja, saantiluetteloita…
 
-Löydä ja vertaile yli 750 000 tuotetta.
+Yli 750 000 tuotetta vertailtavana ja tutkittavana.
 
 
 
-Rajaton ja täysin yksityinen lukuhistoria
+Rajaton ja täysin yksityinen skannaushistoria
 
-Pyyhkäise saadaksesi vieläkin enemmän yksityiskohtia
+Pyyhkäise saadaksesi vielä enemmän lisätietoja
 
-Aseta allergeenivaroituksia
+Aseta allergeenihälytyksiä
 
-Liity maailmanlaajuiseen liikkeeseemme elintarvikkeiden läpinäkyvyydelle
+Liity maailmanlaajuiseen liikkeesemme elintarvikkeiden avoimuuden puolesta
 
-world.openfoodfacts.org/contribute
+world-fi.openfoodfacts.org/contribute
