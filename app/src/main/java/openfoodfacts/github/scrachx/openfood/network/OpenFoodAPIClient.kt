@@ -172,7 +172,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
     }
 
     fun getProductsByCountry(country: String?, page: Int) =
-            rawAPI.getProductsByCountry(country, page, FIELDS_TO_FETCH_FACETS).subscribeOn(Schedulers.io())
+            rawAPI.getProductsByCountry(country, page, fieldsToFetchFacets).subscribeOn(Schedulers.io())
 
     /**
      * Returns a map for images uploaded for product/ingredients/nutrition/other images
@@ -209,7 +209,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
             rawAPI.getProductByCategory(category, page)
 
     fun getProductsByLabel(label: String?, page: Int) =
-            rawAPI.getProductByLabel(label, page, FIELDS_TO_FETCH_FACETS)
+            rawAPI.getProductByLabel(label, page, fieldsToFetchFacets)
 
     /**
      * Add a product to ScanHistory asynchronously
@@ -257,10 +257,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
     }.flatMapCompletable { Completable.merge(it) }
 
     fun getProductsByPackaging(packaging: String?, page: Int): Single<Search> =
-            rawAPI.getProductByPackaging(packaging, page, FIELDS_TO_FETCH_FACETS)
+            rawAPI.getProductByPackaging(packaging, page, fieldsToFetchFacets)
 
     fun getProductsByStore(store: String?, page: Int): Single<Search> =
-            rawAPI.getProductByStores(store, page, FIELDS_TO_FETCH_FACETS)
+            rawAPI.getProductByStores(store, page, fieldsToFetchFacets)
 
     /**
      * Search for products using bran name
@@ -269,7 +269,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      * @param page page numbers
      */
     fun getProductsByBrand(brand: String?, page: Int): Single<Search> =
-            rawAPI.getProductByBrandsSingle(brand, page, FIELDS_TO_FETCH_FACETS)
+            rawAPI.getProductByBrandsSingle(brand, page, fieldsToFetchFacets)
 
     @JvmOverloads
     fun postImg(image: ProductImage, setAsDefault: Boolean = false): Completable {
@@ -325,7 +325,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
     }
 
     fun getProductsByOrigin(origin: String?, page: Int) =
-            rawAPI.getProductsByOrigin(origin, page, FIELDS_TO_FETCH_FACETS)
+            rawAPI.getProductsByOrigin(origin, page, fieldsToFetchFacets)
 
     fun syncOldHistory() {
         historySyncDisp.clear()
@@ -357,7 +357,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
             rawAPI.getInfoAddedIncompleteProductsSingle(contributor, page)
 
     fun getProductsByManufacturingPlace(manufacturingPlace: String?, page: Int) =
-            rawAPI.getProductsByManufacturingPlace(manufacturingPlace, page, FIELDS_TO_FETCH_FACETS)
+            rawAPI.getProductsByManufacturingPlace(manufacturingPlace, page, fieldsToFetchFacets)
 
     /**
      * call API service to return products using Additives
@@ -366,10 +366,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      * @param page number of pages
      */
     fun getProductsByAdditive(additive: String?, page: Int) =
-            rawAPI.getProductsByAdditive(additive, page, FIELDS_TO_FETCH_FACETS)
+            rawAPI.getProductsByAdditive(additive, page, fieldsToFetchFacets)
 
     fun getProductsByAllergen(allergen: String?, page: Int) =
-            rawAPI.getProductsByAllergen(allergen, page, FIELDS_TO_FETCH_FACETS)
+            rawAPI.getProductsByAllergen(allergen, page, fieldsToFetchFacets)
 
     fun getToBeCompletedProductsByContributor(contributor: String?, page: Int) =
             rawAPI.getToBeCompletedProductsByContributor(contributor, page)
@@ -382,14 +382,16 @@ class OpenFoodAPIClient @JvmOverloads constructor(
 
     fun getInfoAddedProducts(contributor: String?, page: Int) = rawAPI.getInfoAddedProducts(contributor, page)
 
-    fun getIncompleteProducts(page: Int) = rawAPI.getIncompleteProducts(page, FIELDS_TO_FETCH_FACETS)
+    fun getIncompleteProducts(page: Int) = rawAPI.getIncompleteProducts(page, fieldsToFetchFacets)
 
-    fun getProductsByStates(state: String?, page: Int) = rawAPI.getProductsByState(state, page, FIELDS_TO_FETCH_FACETS)
+    fun getProductsByStates(state: String?, page: Int) = rawAPI.getProductsByState(state, page, fieldsToFetchFacets)
 
     companion object {
         const val MIME_TEXT = "text/plain"
         const val PNG_EXT = ".png\""
-        private val FIELDS_TO_FETCH_FACETS = "brands,$localeProductNameField,product_name,image_small_url,quantity,nutrition_grades_tags,code"
+
+        private val fieldsToFetchFacets: String
+            get() = "brands,$localeProductNameField,product_name,image_small_url,quantity,nutrition_grades_tags,code"
 
         /**
          * Uploads comment by users
@@ -411,15 +413,11 @@ class OpenFoodAPIClient @JvmOverloads constructor(
             return comment.toString()
         }
 
-        val commentToUpload: String
+        val defaultCommentToUpload: String
             get() = getCommentToUpload("")
 
-        @JvmStatic
         val localeProductNameField: String
-            get() {
-                val locale = getLanguage(OFFApplication.instance)
-                return "product_name_$locale"
-            }
+            get() = "product_name_${getLanguage(OFFApplication.instance)}"
 
         /**
          * Add a product to ScanHistory synchronously

@@ -20,10 +20,10 @@ data class Search(
 
     @JsonIgnore
     @get:JsonAnyGetter
-    val additionalProperties: HashMap<String, Any> = hashMapOf()
+    val additionalProperties: HashMap<String, Any?> = hashMapOf()
 
     @JsonAnySetter
-    fun setAdditionalProperty(name: String, value: Any) {
+    fun setAdditionalProperty(name: String, value: Any?) {
         additionalProperties[name] = value
     }
 
