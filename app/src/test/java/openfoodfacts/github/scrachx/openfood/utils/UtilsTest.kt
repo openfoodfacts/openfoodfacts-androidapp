@@ -31,29 +31,25 @@ class UtilsTest {
         assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_e)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn("")
-        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_unknown)
 
         mockitoWhen(mockProduct.nutritionGradeFr).thenReturn(null)
-        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(Utils.NO_DRAWABLE_RESOURCE)
+        assertThat(mockProduct.getNutriScoreResource()).isEqualTo(R.drawable.ic_nutriscore_unknown)
     }
 
     @Test
     fun getRoundNumber() {
-        /* TODO: Fix method before testing
-        assertThat(Utils.getRoundNumber("")).isEqualTo("?");
-        assertThat(Utils.getRoundNumber(null)).isEqualTo("?");
-        // TODO: Something for string
-        // assertThat(Utils.getRoundNumber("test")).isEqualTo("?");
-        assertThat(Utils.getRoundNumber("0")).isEqualTo("0");
-        assertThat(Utils.getRoundNumber(0)).isEqualTo("0");
-        assertThat(Utils.getRoundNumber(1)).isEqualTo("1");
-        assertThat(Utils.getRoundNumber(1.7f)).isEqualTo("1.7");
-        assertThat(Utils.getRoundNumber(1.75f)).isEqualTo("1.75");
-        assertThat(Utils.getRoundNumber(1.754f)).isEqualTo("1.75");
-        assertThat(Utils.getRoundNumber(1.756f)).isEqualTo("1.76");
-        assertThat(Utils.getRoundNumber(1.756f)).isEqualTo("1.76");
-
-         */
+        assertThat(Utils.getRoundNumber("")).isEqualTo("?")
+        assertThat(Utils.getRoundNumber("test")).isEqualTo("?")
+        assertThat(Utils.getRoundNumber("0")).isEqualTo("0")
+        assertThat(Utils.getRoundNumber(0.0f)).isEqualTo("0")
+        assertThat(Utils.getRoundNumber(1.00f)).isEqualTo("1")
+        val enLocale = Locale("en")
+        assertThat(Utils.getRoundNumber(1.70f, enLocale)).isEqualTo("1.7")
+        assertThat(Utils.getRoundNumber(1.75f, enLocale)).isEqualTo("1.75")
+        assertThat(Utils.getRoundNumber(1.754f, enLocale)).isEqualTo("1.75")
+        assertThat(Utils.getRoundNumber(1.756f, enLocale)).isEqualTo("1.76")
+        assertThat(Utils.getRoundNumber(1.756f, enLocale)).isEqualTo("1.76")
     }
 
     @Test
