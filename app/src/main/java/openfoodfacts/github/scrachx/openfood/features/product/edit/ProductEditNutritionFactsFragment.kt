@@ -364,7 +364,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private fun loadNutritionImage(path: String) {
         picassoBuilder(requireContext())
                 .load(path)
-                .resize(dpsToPixel(50, getActivity()), dpsToPixel(50, getActivity()))
+                .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
                 .centerInside()
                 .into(binding.btnAddImageNutritionFacts, object : Callback {
                     override fun onSuccess() = afterNutritionImgLoaded()
@@ -881,7 +881,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (!errorInUploading) {
             picassoBuilder(requireContext())
                     .load(photoFile!!)
-                    .resize(dpsToPixel(50, getActivity()), dpsToPixel(50, getActivity()))
+                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
                     .centerInside()
                     .into(binding.btnAddImageNutritionFacts)
         }

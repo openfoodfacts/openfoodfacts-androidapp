@@ -17,13 +17,15 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
+import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
 
 /**
  * @author herau & itchix
  */
 class ProductsRecyclerViewAdapter(
-        val products: List<Product?>,
+        val products: MutableList<Product?>,
         private val isLowBatteryMode: Boolean,
         private val context: Context
 ) : RecyclerView.Adapter<ProductsRecyclerViewAdapter.ProductsListViewHolder>() {
@@ -40,10 +42,10 @@ class ProductsRecyclerViewAdapter(
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         if (holder !is ProductsListViewHolder.ProductViewHolder) return
-        holder.imgSearchProgress.visibility = View.VISIBLE
+        holder.imageProgress.visibility = View.VISIBLE
         val imageSmallUrl = products[position]!!.getImageSmallUrl(getLanguage(context))
         if (imageSmallUrl == null) {
-            holder.imgSearchProgress.visibility = View.GONE
+            holder.imageProgress.visibility = View.GONE
         }
 
         // Load Image if isLowBatteryMode is false
@@ -54,34 +56,51 @@ class ProductsRecyclerViewAdapter(
                     .error(R.drawable.error_image)
                     .fit()
                     .centerCrop()
-                    .into(holder.imgProductFront, object : Callback {
+                    .into(holder.productFrontImg, object : Callback {
                         override fun onSuccess() {
-                            holder.imgSearchProgress.visibility = View.GONE
+                            holder.imageProgress.visibility = View.GONE
                         }
 
                         override fun onError(ex: Exception) {
-                            holder.imgSearchProgress.visibility = View.GONE
+                            holder.imageProgress.visibility = View.GONE
                         }
                     })
         } else {
-            Picasso.get().load(R.drawable.placeholder_thumb).into(holder.imgProductFront)
-            holder.imgSearchProgress.visibility = View.INVISIBLE
+            Picasso.get().load(R.drawable.placeholder_thumb).into(holder.productFrontImg)
+            holder.imageProgress.visibility = View.INVISIBLE
         }
         val product = products[position]
-        holder.txtProductName.text = product?.productName ?: ""
+
+        // Set product name
+        holder.productName.text = product?.productName ?: context.getString(R.string.productNameNull)
         val productNameInLocale = product?.additionalProperties?.get(localeProductNameField) as String?
         if (!productNameInLocale.isNullOrBlank()) {
-            holder.txtProductName.text = productNameInLocale
+            holder.productName.text = productNameInLocale
         }
-        val brandsQuantityDetails = product?.let { getProductBrandsQuantityDetails(it) }
-        val gradeResource = product.getNutriScoreResource()
-        if (gradeResource == NO_DRAWABLE_RESOURCE) {
-            holder.imgProductGrade.visibility = View.INVISIBLE
-        } else {
-            holder.imgProductGrade.visibility = View.VISIBLE
-            holder.imgProductGrade.setImageResource(gradeResource)
+
+        // Set product description
+        holder.productDetails.text = product?.let { getProductBrandsQuantityDetails(it) }
+
+        // Set nutriscore icon
+        val nutriRes = product.getNutriScoreResource()
+        if (nutriRes != NO_DRAWABLE_RESOURCE) {
+            holder.productNutriscore.setImageResource(nutriRes)
+            holder.productNutriscore.visibility = View.VISIBLE
         }
-        holder.txtProductDetails.text = brandsQuantityDetails
+
+        // Set nova icon
+        val novaRes = product.getNovaGroupResource()
+        if (novaRes != NO_DRAWABLE_RESOURCE) {
+            holder.productNova.setImageResource(novaRes)
+            holder.productNova.visibility = View.VISIBLE
+        }
+
+        // Set ecoscore icon
+        val ecoRes = product.getEcoscoreResource()
+        if (ecoRes != NO_DRAWABLE_RESOURCE) {
+            holder.productEcoscore.setImageResource(ecoRes)
+            holder.productEcoscore.visibility = View.VISIBLE
+        }
     }
 
     fun getProduct(position: Int) = products[position]
@@ -102,15 +121,15 @@ class ProductsRecyclerViewAdapter(
          * you provide access to all the views for a data item in a view holder
          */
         internal class ProductViewHolder(view: View) : ProductsListViewHolder(view) {
-            val txtProductName: TextView = view.findViewById(R.id.nameProduct)
-            val txtProductDetails: TextView = view.findViewById(R.id.productDetails)
-            val imgProductGrade: ImageView = view.findViewById(R.id.imgGrade)
-            val imgProductFront: ImageView = view.findViewById(R.id.imgProduct)
-            val imgSearchProgress: ProgressBar = view.findViewById(R.id.searchImgProgressbar)
+            val productName: TextView = view.findViewById(R.id.nameProduct)
+            val productDetails: TextView = view.findViewById(R.id.productDetails)
+            val productNutriscore: ImageView = view.findViewById(R.id.imgNutriscore)
+            val productFrontImg: ImageView = view.findViewById(R.id.imgProduct)
+            val imageProgress: ProgressBar = view.findViewById(R.id.searchImgProgressbar)
+            val productEcoscore: ImageView = view.findViewById(R.id.imgEcoscore)
+            val productNova: ImageView = view.findViewById(R.id.imgNova)
         }
-
     }
-
 }
 
 

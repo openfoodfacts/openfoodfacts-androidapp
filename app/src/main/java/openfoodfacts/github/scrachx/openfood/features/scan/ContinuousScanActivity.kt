@@ -308,7 +308,7 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     private fun quickViewCheckNova(product: Product) {
         if (isFlavors(AppFlavors.OFF) && product.novaGroups != null) {
-            val novaGroupDrawable = product.getNovaGroupDrawable()
+            val novaGroupDrawable = product.getNovaGroupResource()
             if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
                 binding.quickViewNovaGroup.visibility = View.VISIBLE
                 binding.quickViewAdditives.visibility = View.VISIBLE

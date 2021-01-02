@@ -76,6 +76,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import java.io.File
 import java.util.*
 
@@ -445,7 +446,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private fun refreshNovaIcon() {
         if (product.novaGroups != null) {
             binding.novaGroup.visibility = View.VISIBLE
-            binding.novaGroup.setImageResource(product.getNovaGroupDrawable())
+            binding.novaGroup.setImageResource(product.getNovaGroupResource())
             binding.novaGroup.setOnClickListener {
                 val uri = Uri.parse(getString(R.string.url_nova_groups))
                 val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper!!.session)
@@ -464,10 +465,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val ecoScoreRes = product.getEcoscoreResource()
         val environmentImpactResource = product.getCO2Resource()
 
-        if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
+        if (ecoScoreRes != NO_DRAWABLE_RESOURCE) {
             binding.ecoscoreIcon.setImageResource(ecoScoreRes)
             binding.ecoscoreIcon.visibility = View.VISIBLE
-        } else if (environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE) {
+        } else if (environmentImpactResource != NO_DRAWABLE_RESOURCE) {
             binding.co2Icon.setImageResource(environmentImpactResource)
             binding.co2Icon.visibility = View.VISIBLE
         }

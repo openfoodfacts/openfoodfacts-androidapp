@@ -223,7 +223,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         if (novaGroups != null) {
             binding.novaLayout.visibility = View.VISIBLE
             binding.novaExplanation.text = Utils.getNovaGroupExplanation(novaGroups, requireContext()) ?: ""
-            binding.novaGroup.setImageResource(product.getNovaGroupDrawable())
+            binding.novaGroup.setImageResource(product.getNovaGroupResource())
             binding.novaGroup.setOnClickListener {
                 val uri = Uri.parse(getString(R.string.url_nova_groups))
                 val tabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)

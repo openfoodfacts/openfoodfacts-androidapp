@@ -340,7 +340,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             binding.btnEditImgFront.visibility = View.INVISIBLE
             picassoBuilder(requireContext())
                     .load(imageFrontUrl)
-                    .resize(dpsToPixel(50, activity), dpsToPixel(50, activity))
+                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
                     .centerInside()
                     .into(binding.imgFront, object : Callback {
                         override fun onSuccess() {
@@ -406,7 +406,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
                 frontImageUrl = savedProduct!!.imageFrontLocalUrl
                 Picasso.get()
                         .load(frontImageUrl)
-                        .resize(dpsToPixel(50, activity), dpsToPixel(50, activity))
+                        .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
                         .centerInside()
                         .into(binding.imgFront, object : Callback {
                             override fun onSuccess() {
@@ -872,7 +872,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (!errorInUploading) {
             Picasso.get()
                     .load(photoFile!!)
-                    .resize(dpsToPixel(50, activity), dpsToPixel(50, activity))
+                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
                     .centerInside()
                     .into(binding.imgFront)
         }

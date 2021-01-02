@@ -195,7 +195,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             imagePath = newImageIngredientsUrl
             picassoBuilder(requireContext())
                     .load(newImageIngredientsUrl)
-                    .resize(dps50ToPixels(), dps50ToPixels())
+                    .resize(dps50ToPixels, dps50ToPixels)
                     .centerInside()
                     .into(binding.btnAddImageIngredients, object : Callback {
                         override fun onSuccess() {
@@ -263,7 +263,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
                 binding.imageProgress.visibility = View.VISIBLE
                 picassoBuilder(requireContext())
                         .load(LOCALE_FILE_SCHEME + getImageIngredients())
-                        .resize(dps50ToPixels(), dps50ToPixels())
+                        .resize(dps50ToPixels, dps50ToPixels)
                         .centerInside()
                         .into(binding.btnAddImageIngredients, object : Callback {
                             override fun onSuccess() {
@@ -428,7 +428,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         if (!errorInUploading) {
             Picasso.get()
                     .load(photoFile!!)
-                    .resize(dps50ToPixels(), dps50ToPixels())
+                    .resize(dps50ToPixels, dps50ToPixels)
                     .centerInside()
                     .into(binding.btnAddImageIngredients)
         }
@@ -469,5 +469,5 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         binding.ocrProgressText.visibility = View.GONE
     }
 
-    private fun dps50ToPixels() = dpsToPixel(50, activity)
+    private val dps50ToPixels by lazy { dpsToPixel(50, requireContext()) }
 }

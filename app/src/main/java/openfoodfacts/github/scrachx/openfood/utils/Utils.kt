@@ -428,20 +428,19 @@ fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD)
  * Returns the Nutri-Score graphic asset given the grade
  */
 @DrawableRes
-fun getNutriScoreResource(grade: String?) = when (grade?.toLowerCase(Locale.getDefault())) {
-    "a" -> R.drawable.ic_nutriscore_a
-    "b" -> R.drawable.ic_nutriscore_b
-    "c" -> R.drawable.ic_nutriscore_c
-    "d" -> R.drawable.ic_nutriscore_d
-    "e" -> R.drawable.ic_nutriscore_e
+fun getNutriScoreResource(grade: String?, vertical: Boolean = false) = when (grade?.toLowerCase(Locale.ROOT)) {
+    "a" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_a else R.drawable.ic_nutriscore_a
+    "b" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_b else R.drawable.ic_nutriscore_b
+    "c" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_c else R.drawable.ic_nutriscore_c
+    "d" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_d else R.drawable.ic_nutriscore_d
+    "e" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_e else R.drawable.ic_nutriscore_e
     else -> Utils.NO_DRAWABLE_RESOURCE
 }
 
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
-fun dpsToPixel(dps: Int, activity: Activity?) =
-        if (activity == null) 0
-        else (dps * activity.resources.displayMetrics.density + 0.5f).toInt()
+fun dpsToPixel(dps: Int, context: Context) =
+        (dps * context.resources.displayMetrics.density + 0.5f).toInt()
 
 private val LOG_TAG = Utils::class.simpleName!!
 
@@ -500,7 +499,7 @@ fun getNutriScoreSmallDrawable(grade: String?) = when (grade?.toLowerCase(Locale
 }
 
 @DrawableRes
-fun getNovaGroupDrawable(novaGroup: String?) = when (novaGroup) {
+fun getNovaGroupResource(novaGroup: String?) = when (novaGroup) {
     "1" -> R.drawable.ic_nova_group_1
     "2" -> R.drawable.ic_nova_group_2
     "3" -> R.drawable.ic_nova_group_3

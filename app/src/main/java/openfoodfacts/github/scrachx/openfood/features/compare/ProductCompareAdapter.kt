@@ -175,7 +175,7 @@ class ProductCompareAdapter(
 
             // Nova group
             if (product.novaGroups != null) {
-                holder.binding.productComparisonNovaGroup.setImageResource(product.getNovaGroupDrawable())
+                holder.binding.productComparisonNovaGroup.setImageResource(product.getNovaGroupResource())
             } else {
                 holder.binding.productComparisonNovaGroup.visibility = View.INVISIBLE
             }

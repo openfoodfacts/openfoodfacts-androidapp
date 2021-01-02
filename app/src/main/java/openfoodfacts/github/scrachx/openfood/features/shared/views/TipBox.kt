@@ -49,7 +49,7 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
             prefs.edit { putBoolean(identifier, false) }
         }
 
-        findViewById<View>(R.id.tipBoxContainer).setBackgroundColor(toolTipBackgroundColor)
+        binding.tipBoxContainer.setBackgroundColor(toolTipBackgroundColor)
 
         if (canDisplayImmediately) loadToolTip()
     }

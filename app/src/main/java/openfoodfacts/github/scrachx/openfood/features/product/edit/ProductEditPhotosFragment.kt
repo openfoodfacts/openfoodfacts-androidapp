@@ -141,8 +141,8 @@ class ProductEditPhotosFragment : ProductEditFragment() {
      */
     private fun addImageRow() {
         val row = TableRow(activity)
-        val lp = TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixel(100, getActivity()))
-        lp.topMargin = dpsToPixel(10, getActivity())
+        val lp = TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixel(100, requireContext()))
+        lp.topMargin = dpsToPixel(10, requireContext())
         val imageView = ImageView(activity).apply {
             adjustViewBounds = true
             scaleType = ImageView.ScaleType.FIT_CENTER
@@ -150,7 +150,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         }
         Picasso.get()
                 .load(photoFile!!)
-                .resize(dpsToPixel(100, getActivity()), dpsToPixel(100, getActivity()))
+                .resize(dpsToPixel(100, requireContext()), dpsToPixel(100, requireContext()))
                 .centerInside()
                 .into(imageView)
         row.addView(imageView)

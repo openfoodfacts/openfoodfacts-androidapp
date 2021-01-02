@@ -370,7 +370,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         private fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
             val builder = StringBuilder()
             if (!brands.isNullOrEmpty()) {
-                builder.append(brands.split(",").toTypedArray()[0].trim { it <= ' ' }.capitalize(Locale.ROOT))
+                builder.append(brands.split(",")[0].trim { it <= ' ' }.capitalize(Locale.ROOT))
             }
             if (!quantity.isNullOrEmpty()) {
                 builder.append(" - ").append(quantity)
