@@ -434,7 +434,7 @@ fun getNutriScoreResource(grade: String?, vertical: Boolean = false) = when (gra
     "c" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_c else R.drawable.ic_nutriscore_c
     "d" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_d else R.drawable.ic_nutriscore_d
     "e" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_e else R.drawable.ic_nutriscore_e
-    else -> Utils.NO_DRAWABLE_RESOURCE
+    else -> if (vertical) Utils.NO_DRAWABLE_RESOURCE else R.drawable.ic_nutriscore_unknown
 }
 
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
@@ -504,5 +504,5 @@ fun getNovaGroupResource(novaGroup: String?) = when (novaGroup) {
     "2" -> R.drawable.ic_nova_group_2
     "3" -> R.drawable.ic_nova_group_3
     "4" -> R.drawable.ic_nova_group_4
-    else -> Utils.NO_DRAWABLE_RESOURCE
+    else -> R.drawable.ic_nova_group_unknown
 }

@@ -39,7 +39,7 @@ fun Product?.getEcoscoreResource() = when (this?.ecoscore) {
     "c" -> R.drawable.ic_ecoscore_c
     "d" -> R.drawable.ic_ecoscore_d
     "e" -> R.drawable.ic_ecoscore_e
-    else -> NO_DRAWABLE_RESOURCE
+    else -> R.drawable.ic_ecoscore_unknown
 }
 
 @DrawableRes
