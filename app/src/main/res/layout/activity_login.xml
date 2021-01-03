@@ -125,7 +125,7 @@
                 android:gravity="center"
                 android:paddingTop="@dimen/padding_short"
                 android:paddingBottom="4dp"
-                android:textColor="@color/green_500"
+                android:textColor="@color/grey_500"
                 android:textSize="@dimen/font_normal"
                 android:visibility="gone"/>
 

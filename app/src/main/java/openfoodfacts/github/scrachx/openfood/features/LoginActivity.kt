@@ -33,7 +33,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import okhttp3.ResponseBody
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -161,7 +162,7 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
 
         // check flavour and show helper text for user account
-        if (!AppFlavors.isFlavors(AppFlavors.OFF)) {
+        if (!isFlavors(OFF)) {
             binding.txtLoginHelper.setText(R.string.txtloginHelper)
             binding.txtLoginHelper.visibility = View.VISIBLE
         }
