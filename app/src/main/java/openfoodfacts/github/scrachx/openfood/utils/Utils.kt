@@ -66,6 +66,8 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.SearchTypeUrls.getUrl
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
 import java.io.*
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -143,26 +145,26 @@ object Utils {
 
     /**
      * Return a round float value **with 2 decimals**
+     *
      * **BE CAREFUL:** THE METHOD DOESN'T CHECK THE NUMBER AS A NUMBER.
      *
      * @param value float value
      * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
      */
-    @JvmStatic
-    fun getRoundNumber(value: String): String {
-        val strings = value.split(".")
+    fun getRoundNumber(value: String, locale: Locale = Locale.getDefault()): String {
         return when {
             value.isEmpty() -> "?"
-            "0" == value || (strings.size == 1 || strings.size == 2 && strings[1].length <= 2) -> value
-            else -> "%.2f".format(Locale.getDefault(), value.toDouble())
+            value == "0" -> value
+            else -> value.toDoubleOrNull()
+                    ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
+                    ?: "?"
         }
-
     }
 
     /**
      * @see Utils.getRoundNumber
      */
-    fun getRoundNumber(value: Float) = getRoundNumber(value.toString())
+    fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
 
     @get:JvmStatic
     val daoSession: DaoSession

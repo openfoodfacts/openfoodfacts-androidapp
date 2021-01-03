@@ -99,32 +99,32 @@ class ProductsAPITest {
     @Test
     fun productByTrace_eggs_productsFound() {
         val response = prodClient.getProductsByTrace("eggs").blockingGet() as Search
-        assertProductsFound(response)
+        response.assertProductsFound()
     }
 
     @Test
     fun productByPackagerCode_emb35069c_productsFound() {
         val response = prodClient.byPackagerCode("emb-35069c").blockingGet() as Search
-        assertProductsFound(response)
+        response.assertProductsFound()
     }
 
     @Test
     fun productByNutritionGrade_a_productsFound() {
         val res = prodClient.byNutritionGrade("a").blockingGet() as Search
-        assertProductsFound(res)
+        res.assertProductsFound()
     }
 
     @Test
     fun productByCity_Paris_noProductFound() {
         val response = prodClient.byCity("paris").blockingGet() as Search
-        assertNoProductsFound(response)
+        response.assertNoProductsFound()
     }
 
     @Test
     fun productByAdditive_e301_productsFound() {
         val fieldsToFetchFacets = "brands,product_name,image_small_url,quantity,nutrition_grades_tags"
         val response = prodClient.getProductsByAdditive("e301-sodium-ascorbate", fieldsToFetchFacets).blockingGet() as Search
-        assertProductsFound(response)
+        response.assertProductsFound()
     }
 
     @Test
@@ -164,7 +164,7 @@ class ProductsAPITest {
 
 
         val body = devClientWithAuth
-                .saveProductSingle(product.barcode, productDetails, OpenFoodAPIClient.commentToUpload)
+                .saveProductSingle(product.barcode, productDetails, "Automated test")
                 .blockingGet() as ProductState
 
         assertThat(body.status).isEqualTo(1)
@@ -219,14 +219,14 @@ class ProductsAPITest {
                     .create(ProductsAPI::class.java)
         }
 
-        private fun assertProductsFound(search: Search) {
-            assertThat(search.count.toInt()).isGreaterThan(0)
-            assertThat(search.products).isNotEmpty()
+        private fun Search.assertProductsFound() {
+            assertThat(count.toInt()).isGreaterThan(0)
+            assertThat(products).isNotEmpty()
         }
 
-        private fun assertNoProductsFound(search: Search) {
-            assertThat(search.products).isNotEmpty()
-            assertThat(search.count.toInt()).isEqualTo(0)
+        private fun Search.assertNoProductsFound() {
+            assertThat(count.toInt()).isEqualTo(0)
+            assertThat(products).isEmpty()
         }
     }
 }

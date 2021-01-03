@@ -71,7 +71,7 @@ object OfflineProductService {
         Log.d(LOG_TAG, "Uploading data for product ${product.barcode}: $productDetails")
         try {
             val productState = productsApi
-                    .saveProductSingle(product.barcode, productDetails, OpenFoodAPIClient.commentToUpload)
+                    .saveProductSingle(product.barcode, productDetails, OpenFoodAPIClient.defaultCommentToUpload)
                     .blockingGet()
             if (productState.status == 1L) {
                 product.isDataUploaded = true
