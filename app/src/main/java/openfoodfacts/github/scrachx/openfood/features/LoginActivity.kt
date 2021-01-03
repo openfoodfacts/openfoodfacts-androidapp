@@ -22,6 +22,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.content.edit
@@ -32,6 +33,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import okhttp3.ResponseBody
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -157,6 +160,12 @@ class LoginActivity : BaseActivity() {
         }
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // check flavour and show helper text for user account
+        if (!isFlavors(OFF)) {
+            binding.txtLoginHelper.setText(R.string.txtloginHelper)
+            binding.txtLoginHelper.visibility = View.VISIBLE
+        }
 
         // Setup view listeners
         binding.btnLogin.setOnClickListener { doAttemptLogin() }

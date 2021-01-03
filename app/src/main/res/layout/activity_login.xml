@@ -117,6 +117,18 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/txt_login_helper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="@dimen/padding_short"
+                android:paddingBottom="4dp"
+                android:textColor="@color/grey_500"
+                android:textSize="@dimen/font_normal"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
