@@ -91,7 +91,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
     private lateinit var product: Product
-    private lateinit var customTabsIntent: CustomTabsIntent
 
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
     private lateinit var customTabsIntent: CustomTabsIntent
