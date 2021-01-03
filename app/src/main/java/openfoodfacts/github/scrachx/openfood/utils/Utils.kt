@@ -261,26 +261,29 @@ object Utils {
     fun getOutputPicUri(context: Context): Uri =
             Uri.fromFile(File(makeOrGetPictureDirectory(context), "${System.currentTimeMillis()}.jpg"))
 
-    fun getClickableText(text: String, urlParameter: String, type: SearchType?, activity: Activity?, customTabsIntent: CustomTabsIntent?): CharSequence {
-        val clickableSpan: ClickableSpan
-        val url = getUrl(type!!)
-        clickableSpan = if (url == null) {
-            object : ClickableSpan() {
-                override fun onClick(view: View) {
-                    start(activity!!, type, text)
-                }
-            }
-        } else {
-            val uri = Uri.parse(url + urlParameter)
-            object : ClickableSpan() {
-                override fun onClick(textView: View) {
-                    CustomTabActivityHelper.openCustomTab(activity!!, customTabsIntent!!, uri, WebViewFallback())
-                }
-            }
+    fun getClickableText(
+            text: String,
+            urlParameter: String,
+            type: SearchType,
+            activity: Activity,
+            customTabsIntent: CustomTabsIntent
+    ): CharSequence {
+        val url = getUrl(type)
+
+        val clickableSpan = if (url == null) object : ClickableSpan() {
+            override fun onClick(view: View) = start(activity, type, text)
+
+        } else object : ClickableSpan() {
+            override fun onClick(textView: View) = CustomTabActivityHelper.openCustomTab(
+                    activity,
+                    customTabsIntent,
+                    Uri.parse(url + urlParameter),
+                    WebViewFallback()
+            )
         }
-        val spannableText = SpannableString(text)
-        spannableText.setSpan(clickableSpan, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        return spannableText
+        return SpannableString(text).apply {
+            setSpan(clickableSpan, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
     }
 
     /**
