@@ -9,7 +9,7 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.utils.getAsFloat
 import openfoodfacts.github.scrachx.openfood.utils.getAsInt
 import org.apache.commons.lang3.builder.ToStringBuilder
-import kotlin.math.ceil
+import kotlin.math.roundToInt
 
 class ImageTransformationUtils {
     /**
@@ -72,7 +72,6 @@ class ImageTransformationUtils {
         private const val BOTTOM = "y2"
         private const val ANGLE = "angle"
 
-        @JvmStatic
         fun addTransformToMap(newServerTransformation: ImageTransformationUtils, imgMap: MutableMap<String, String?>) {
             imgMap[ANGLE] = newServerTransformation.rotationInDegree.toString()
             val cropRectangle = newServerTransformation.cropRectangle
@@ -90,12 +89,13 @@ class ImageTransformationUtils {
          * @param language the language
          * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
          */
-        @JvmStatic
-        fun getScreenTransformation(product: Product, productImageField: ProductImageField?, language: String?): ImageTransformationUtils {
+        fun getScreenTransformation(
+                product: Product,
+                productImageField: ProductImageField,
+                language: String
+        ): ImageTransformationUtils {
             val res = getInitialServerTransformation(product, productImageField, language)
-            if (res.isEmpty()) {
-                return res
-            }
+            if (res.isEmpty()) return res
 
             // if we want to perform a rotation + a crop, we have to rotate the crop area.
             // Open Food Facts applies the crop on the rotated image and the Android library applies the crop before the rotation... so we should
@@ -106,9 +106,15 @@ class ImageTransformationUtils {
             return res
         }
 
-        private fun applyRotationOnCropRectangle(product: Product, productImageField: ProductImageField?, language: String?, res: ImageTransformationUtils, inverse: Boolean) {
+        private fun applyRotationOnCropRectangle(
+                product: Product,
+                productImageField: ProductImageField,
+                language: String,
+                res: ImageTransformationUtils,
+                inverse: Boolean
+        ) {
             // if a crop and a rotation is done, we should rotate the cropped rectangle
-            val imageKey = getImageStringKey(productImageField!!, language!!)
+            val imageKey = getImageStringKey(productImageField, language)
             val imageDetails = product.getImageDetails(imageKey)!!
             val initImageId = imageDetails[IMG_ID] as String
             val imageDetailsInitImage = product.getImageDetails(initImageId)
@@ -147,13 +153,16 @@ class ImageTransformationUtils {
             }
         }
 
-        @JvmStatic
-        fun getInitialServerTransformation(product: Product, productImageField: ProductImageField?, language: String?): ImageTransformationUtils {
+        fun getInitialServerTransformation(
+                product: Product,
+                productImageField: ProductImageField?,
+                language: String?
+        ): ImageTransformationUtils {
             val imageKey = getImageStringKey(productImageField!!, language!!)
-            val imageDetails = product.getImageDetails(imageKey) ?: return  ImageTransformationUtils()
+            val imageDetails = product.getImageDetails(imageKey) ?: return ImageTransformationUtils()
 
             val initImageId = imageDetails[IMG_ID] as String?
-            if (initImageId.isNullOrBlank()) return  ImageTransformationUtils()
+            if (initImageId.isNullOrBlank()) return ImageTransformationUtils()
 
             return ImageTransformationUtils().apply {
                 imageId = initImageId
@@ -172,9 +181,12 @@ class ImageTransformationUtils {
          * @param language the language
          * @return the image transformation containing the initial url and the transformation (rotation/crop) for screen
          */
-        @JvmStatic
-        fun toServerTransformation(screenTransformation: ImageTransformationUtils, product: Product, productImageField: ProductImageField?,
-                                   language: String?): ImageTransformationUtils {
+        fun toServerTransformation(
+                screenTransformation: ImageTransformationUtils,
+                product: Product,
+                productImageField: ProductImageField,
+                language: String
+        ): ImageTransformationUtils {
             val res = getInitialServerTransformation(product, productImageField, language)
             if (res.isEmpty()) {
                 return res
@@ -199,39 +211,37 @@ class ImageTransformationUtils {
             } else value.toString().toInt()
         }
 
-        private fun toRect(init: RectF?): Rect? {
-            return if (init == null) {
-                null
-            } else Rect(ceil(init.left.toDouble()).toInt(), ceil(init.top.toDouble()).toInt(), ceil(init.right.toDouble()).toInt(), ceil(init.bottom.toDouble()).toInt())
-        }
+        private fun toRect(init: RectF?) =
+                if (init == null) null
+                else Rect(
+                        init.left.roundToInt(),
+                        init.top.roundToInt(),
+                        init.right.roundToInt(),
+                        init.bottom.roundToInt()
+                )
 
-        private fun toRectF(init: Rect?): RectF? {
-            return if (init == null) {
-                null
-            } else RectF(
-                    init.left.toFloat(),
-                    init.top.toFloat(),
-                    init.right.toFloat(),
-                    init.bottom.toFloat()
-            )
-        }
+        private fun toRectF(init: Rect?) =
+                if (init == null) null
+                else RectF(
+                        init.left.toFloat(),
+                        init.top.toFloat(),
+                        init.right.toFloat(),
+                        init.bottom.toFloat()
+                )
 
         /**
          * @param imgDetails
          * @return the angle in degree from the map.
          */
-        private fun getImageRotation(imgDetails: Map<String, *>): Int {
-            return getAsInt(imgDetails, ANGLE, 0)
-        }
+        private fun getImageRotation(imgDetails: Map<String, *>) = getAsInt(imgDetails, ANGLE, 0)
 
         private fun getImageCropRect(imgDetails: Map<String, *>): RectF? {
             val x1 = getAsFloat(imgDetails, LEFT, Float.NaN)
             val x2 = getAsFloat(imgDetails, RIGHT, Float.NaN)
             val y1 = getAsFloat(imgDetails, TOP, Float.NaN)
             val y2 = getAsFloat(imgDetails, BOTTOM, Float.NaN)
-            return if (!x1.isNaN() && !x2.isNaN() && !y1.isNaN() && !y2.isNaN() && x2 > x1 && y2 > y1) {
-                RectF(x1, y1, x2, y2)
-            } else null
+            return if (x1.isNaN() || x2.isNaN() || y1.isNaN() || y2.isNaN() || x2 <= x1 || y2 <= y1) null
+            else RectF(x1, y1, x2, y2)
         }
     }
 }

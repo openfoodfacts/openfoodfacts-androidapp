@@ -442,10 +442,8 @@ class Product : Serializable {
         return emptyList()
     }
 
-    fun getImageDetails(imageKey: String): Map<String, *>? {
-        val images = additionalProperties[ApiFields.Keys.IMAGES] as Map<String, Map<String, *>>?
-        return images?.get(imageKey)
-    }
+    fun getImageDetails(imageKey: String) =
+            (additionalProperties[ApiFields.Keys.IMAGES] as Map<String, Map<String, *>>?)?.get(imageKey)
 
 
     fun isLanguageSupported(languageCode: String?): Boolean {
