@@ -3,8 +3,8 @@ package openfoodfacts.github.scrachx.openfood.models
 import android.content.Context
 import com.fasterxml.jackson.annotation.*
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import com.fasterxml.jackson.module.kotlin.convertValue
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
 import openfoodfacts.github.scrachx.openfood.images.ImageSize
 import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
@@ -486,8 +486,8 @@ class Product : Serializable {
     }
 
     fun getAttributeGroups(locale: Locale): List<AttributeGroup> {
-        val attributeGroups = additionalProperties["${ApiFields.Keys.ATTRIBUTE_GROUPS}_${locale.language}"] as String
-        return jacksonObjectMapper().readValue(attributeGroups)
+        val attributeGroups = additionalProperties["${ApiFields.Keys.ATTRIBUTE_GROUPS}_${locale.language}"] as Any
+        return jacksonObjectMapper().convertValue(attributeGroups)
     }
 
     fun getLocalAttributeGroups(context: Context) = getAttributeGroups(getLocale(context))

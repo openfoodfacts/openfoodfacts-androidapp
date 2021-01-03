@@ -683,7 +683,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun getEmbUrl(embTag: String) =
-            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().name
+            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().name ?: embTag
 
     private fun getEmbCode(embTag: String) =
             mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
