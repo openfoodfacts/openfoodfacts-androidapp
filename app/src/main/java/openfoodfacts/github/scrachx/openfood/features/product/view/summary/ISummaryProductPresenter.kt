@@ -45,7 +45,7 @@ interface ISummaryProductPresenter {
         fun showProductQuestion(question: Question)
         fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse)
         fun showCategories(categories: List<CategoryName>)
-        fun showLabels(labels: List<LabelName>)
+        fun showLabels(labelNames: List<LabelName>)
         fun showCategoriesState(state: ProductInfoState)
         fun showLabelsState(state: ProductInfoState)
         fun showAdditives(additives: List<AdditiveName>)

@@ -58,6 +58,7 @@ import openfoodfacts.github.scrachx.openfood.features.adapters.NutrimentsGridAda
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.CalculateDetailsActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
+import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductFragment.Companion.EDIT_PRODUCT_AFTER_LOGIN
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -516,7 +517,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
-        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE
+        if (requestCode == EDIT_PRODUCT_AFTER_LOGIN
                 && resultCode == Activity.RESULT_OK
                 && requireActivity().isUserSet()) {
             startEditProduct()
@@ -544,7 +545,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         if (requireActivity().isUserSet()) {
             startEditProduct()
         } else {
-            startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE, requireActivity())
+            startLoginToEditAnd(EDIT_PRODUCT_AFTER_LOGIN, requireActivity())
         }
     }
 
@@ -558,7 +559,4 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
     }
 
-    companion object {
-        private const val EDIT_PRODUCT_AFTER_LOGIN_REQUEST_CODE = 1
-    }
 }

@@ -41,7 +41,7 @@ open class AbstractSummaryProductPresenter : ISummaryProductPresenter.View {
         //empty impl
     }
 
-    override fun showLabels(labels: List<LabelName>) {
+    override fun showLabels(labelNames: List<LabelName>) {
         //empty impl
     }
 
