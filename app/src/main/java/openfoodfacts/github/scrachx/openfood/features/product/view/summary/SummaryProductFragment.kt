@@ -92,10 +92,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private lateinit var presenter: ISummaryProductPresenter.Actions
     private lateinit var mTagDao: TagDao
     private lateinit var product: Product
+    private lateinit var customTabsIntent: CustomTabsIntent
 
     private var annotation: AnnotationAnswer? = null
     private var customTabActivityHelper: CustomTabActivityHelper? = null
-    private var customTabsIntent: CustomTabsIntent? = null
     private var hasCategoryInsightQuestion = false
 
     private var insightId: String? = null
@@ -247,8 +247,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun refreshView(productState: ProductState) {
         this.productState = productState
         product = productState.product!!
-        presenter = SummaryProductPresenter(product, this)
-        presenter.addTo(disp)
+        presenter = SummaryProductPresenter(product, this).also { it.addTo(disp) }
         binding.categoriesText.text = bold(getString(R.string.txtCategories))
         binding.labelsText.text = bold(getString(R.string.txtLabels))
 
@@ -312,7 +311,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 if (i > 0) {
                     binding.textBrandProduct.append(", ")
                 }
-                binding.textBrandProduct.append(Utils.getClickableText(brand.trim { it <= ' ' }, "", SearchType.BRAND, activity, customTabsIntent))
+                binding.textBrandProduct.append(Utils.getClickableText(
+                        brand.trim { it <= ' ' },
+                        "",
+                        SearchType.BRAND,
+                        requireActivity(),
+                        customTabsIntent
+                ))
             }
         } else {
             binding.textBrandProduct.visibility = View.GONE
@@ -321,16 +326,20 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             binding.embText.movementMethod = LinkMovementMethod.getInstance()
             binding.embText.text = bold(getString(R.string.txtEMB))
             binding.embText.append(" ")
-            val embTags = product.embTags.toString().replace("[", "").replace("]", "").split(", ").toTypedArray()
+
+            val embTags = product.embTags.toString()
+                    .replace("[", "")
+                    .replace("]", "")
+                    .split(", ")
+
             embTags.withIndex().forEach { (i, embTag) ->
-                if (i > 0) {
-                    binding.embText.append(", ")
-                }
+                if (i > 0) binding.embText.append(", ")
+
                 binding.embText.append(Utils.getClickableText(
                         getEmbCode(embTag).trim { it <= ' ' },
-                        getEmbUrl(embTag),
+                        getEmbUrl(embTag) ?: "",
                         SearchType.EMB,
-                        activity,
+                        requireActivity(),
                         customTabsIntent
                 ))
             }
@@ -340,13 +349,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
 
         // if the device does not have a camera, hide the button
-        try {
-            if (!Utils.isHardwareCameraInstalled(requireActivity())) {
-                binding.buttonMorePictures.visibility = View.GONE
-            }
-        } catch (e: NullPointerException) {
-            Log.d(javaClass.simpleName, e.toString())
+        if (!Utils.isHardwareCameraInstalled(requireActivity())) {
+            binding.buttonMorePictures.visibility = View.GONE
         }
+
         if (isFlavors(OFF)) {
             binding.scoresLayout.visibility = View.VISIBLE
             val levelItem: MutableList<NutrientLevelItem> = ArrayList()
@@ -362,6 +368,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 sugars = nutrientLevels.sugars
                 salt = nutrientLevels.salt
             }
+
             val servingInL = product.isPerServingInLiter()
             binding.textNutrientTxt.setText(if (servingInL != true) R.string.txtNutrientLevel100g else R.string.txtNutrientLevel100ml)
             if (fat != null || salt != null || saturatedFat != null || sugars != null) {
@@ -683,7 +690,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun getEmbUrl(embTag: String) =
-            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().name
+            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
 
     private fun getEmbCode(embTag: String) =
             mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
