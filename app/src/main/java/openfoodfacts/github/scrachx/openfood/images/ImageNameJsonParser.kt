@@ -18,10 +18,8 @@ object ImageNameJsonParser {
                 .mapNotNull { (imageName, value) ->
                     // do not include images with contain nutrients, ingredients or other in their names
                     // as they are duplicate and do not load as well
-                    if (!isNameAccepted(imageName)) {
-                        return@mapNotNull null
-                    }
-                    return@mapNotNull NameUploadedTimeKey(imageName, value["uploaded_t"].asLong())
+                    if (!isNameAccepted(imageName)) null
+                    else NameUploadedTimeKey(imageName, value["uploaded_t"].asLong())
                 }.sorted().map { it.name }
     }
 
@@ -39,11 +37,10 @@ object ImageNameJsonParser {
         /**
          * to be ordered from newer to older.
          */
-        override fun compareTo(other: NameUploadedTimeKey): Int {
-            val deltaInTime = other.timestamp - timestamp
-            return when {
-                deltaInTime > 0 -> 1
-                deltaInTime < 0 -> -1
+        override fun compareTo(other: NameUploadedTimeKey) = (other.timestamp - timestamp).let {
+            when {
+                it > 0 -> 1
+                it < 0 -> -1
                 else -> name.compareTo(other.name)
             }
         }

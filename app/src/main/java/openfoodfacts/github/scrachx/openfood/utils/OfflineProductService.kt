@@ -159,7 +159,10 @@ object OfflineProductService {
 
     private fun createRequestBodyMap(code: String, productDetails: HashMap<String, String>, front: ProductImageField): MutableMap<String, RequestBody> {
         val barcode = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
-        val imageField = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), "${front}_${productDetails["lang"]}")
+        val imageField = RequestBody.create(
+                MediaType.parse(OpenFoodAPIClient.MIME_TEXT),
+                "${front}_${productDetails["lang"]}"
+        )
 
         return hashMapOf("code" to barcode, "imagefield" to imageField)
     }
