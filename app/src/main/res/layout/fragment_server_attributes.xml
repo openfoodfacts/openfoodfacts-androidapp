@@ -11,6 +11,7 @@
         android:id="@+id/attrs_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="56dp"
         tools:listitem="@layout/attribute_group_item" />
 
 

@@ -262,7 +262,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                 adapter.addFragment(ContributorsFragment.newInstance(productState), activity.getString(R.string.contribution_tab))
             }
 
-            if (isFlavors(OFF)) adapter.addFragment(ServerAttributesFragment().applyBundle(fBundle), "Server attributes")
+            if (isFlavors(OFF)) adapter.addFragment(ServerAttributesFragment().applyBundle(fBundle), "Synthesis")
 
             viewPager.adapter = adapter
             return adapter
