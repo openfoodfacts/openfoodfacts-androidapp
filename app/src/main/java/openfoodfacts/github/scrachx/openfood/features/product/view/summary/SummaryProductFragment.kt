@@ -310,7 +310,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         } else {
             binding.textBrandProduct.visibility = View.GONE
         }
-        if (product.embTags.isNotEmpty() && product.embTags.toString().trim { it <= ' ' } != "[]") {
+        if (!product.embTags.isNullOrEmpty() && product.embTags.toString().trim { it <= ' ' } != "[]") {
             binding.embText.movementMethod = LinkMovementMethod.getInstance()
             binding.embText.text = bold(getString(R.string.txtEMB))
             binding.embText.append(" ")
@@ -667,8 +667,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    private fun getEmbUrl(embTag: String) =
-            mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
+    private fun getEmbUrl(embTag: String) :String? {
+        if(mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).list().isEmpty()) return null
+        return mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
+    }
 
     private fun getEmbCode(embTag: String) =
             mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()?.name ?: embTag
