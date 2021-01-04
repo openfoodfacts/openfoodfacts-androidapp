@@ -34,19 +34,14 @@ object FileDownloader {
     @JvmStatic
     fun download(context: Context, fileUrl: String) = CommonApiManager.productsApi
             .downloadFile(fileUrl)
-            .flatMapMaybe { responseBody: ResponseBody? ->
-                if (responseBody != null) {
-                    Log.d(LOG_TAG, "server contacted and has file")
-                    val writtenToDisk = writeResponseBodyToDiskSync(context, responseBody, fileUrl)
-                    if (writtenToDisk != null) {
-                        Log.d(LOG_TAG, "file download was a success $writtenToDisk")
-                        return@flatMapMaybe Maybe.just(writtenToDisk)
-                    } else {
-                        return@flatMapMaybe Maybe.empty<File>()
-                    }
+            .flatMapMaybe { responseBody ->
+                Log.d(LOG_TAG, "server contacted and has file")
+                val writtenToDisk = writeResponseBodyToDiskSync(context, responseBody, fileUrl)
+                if (writtenToDisk != null) {
+                    Log.d(LOG_TAG, "file download was a success $writtenToDisk")
+                    Maybe.just(writtenToDisk)
                 } else {
-                    Log.d(LOG_TAG, "server contact failed")
-                    return@flatMapMaybe Maybe.empty<File>()
+                    Maybe.empty()
                 }
             }
             .doOnError { Log.e(LOG_TAG, "error", it) }

@@ -41,7 +41,7 @@ class ProductRepositoryTest {
 
     @Test
     fun testGetEnabledAllergens() {
-        val allergens = ProductRepository.enabledAllergens
+        val allergens = ProductRepository.getEnabledAllergens()
         assertNotNull(allergens)
         assertEquals(1, allergens.size.toLong())
         assertEquals(TEST_ALLERGEN_TAG, allergens[0].tag)

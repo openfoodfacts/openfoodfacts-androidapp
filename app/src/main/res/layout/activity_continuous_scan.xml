@@ -111,8 +111,7 @@
                 app:behavior_hideable="true"
                 app:behavior_peekHeight="@dimen/scan_summary_peek_large"
                 app:layout_behavior="@string/bottom_sheet_behavior"
-                tools:ignore="MissingPrefix"
-                tools:visibility="visible">
+                tools:ignore="MissingPrefix">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/quickView_tags"
@@ -178,8 +177,8 @@
                             android:layout_height="0dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginLeft="16dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginRight="4dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
                             android:adjustViewBounds="true"
                             android:scaleType="fitStart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -234,18 +233,20 @@
 
                         <ImageView
                             android:id="@+id/quickView_ecoscore_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginLeft="4dp"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
                             android:layout_marginEnd="16dp"
                             android:layout_marginRight="16dp"
+                            android:adjustViewBounds="true"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/quickView_co2_icon"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_ecoscore_a" />
+                            app:srcCompat="@drawable/ic_ecoscore_a"
+                            tools:visibility="visible" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <ProgressBar

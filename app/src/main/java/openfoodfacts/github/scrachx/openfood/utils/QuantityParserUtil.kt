@@ -41,20 +41,18 @@ fun TextView.containFloatValue() = containFloatValue(text?.toString())
  * @param initText value to parse
  * @return the float value or null if not correct
  */
-fun getDoubleValue(initText: String?): Double? {
-    if (initText.isNullOrBlank()) return null
-    try {
-        return initText.trim().replace(",", ".").toDouble()
-    } catch (ex: NumberFormatException) {
-        Log.w("Utils", "Can't parse text '$initText'")
-    }
-    return null
+fun getDoubleValue(initText: String?) = if (initText.isNullOrBlank()) null
+else try {
+    initText.trim().replace(",", ".").toDouble()
+} catch (ex: NumberFormatException) {
+    Log.w("Utils", "Can't parse text '$initText'")
+    null
 }
 
 fun containDoubleValue(text: String?) = getDoubleValue(text) != null
 
 /**
  * @return the float value or null if not correct
- * @see .getFloatValue
+ * @see [getFloatValue]
  */
 fun TextView.getDoubleValue() = getDoubleValue(text?.toString())

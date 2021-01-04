@@ -212,7 +212,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
                         getTracesName(language, trace),
                         trace,
                         SearchType.TRACE,
-                        activity,
+                        requireActivity(),
                         customTabsIntent
                 ))
             }

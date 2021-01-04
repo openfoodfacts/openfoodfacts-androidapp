@@ -441,9 +441,12 @@ class ContinuousScanActivity : AppCompatActivity() {
         binding.quickViewName.visibility = View.GONE
         binding.frameLayout.visibility = View.GONE
         binding.quickViewAdditives.visibility = View.GONE
+
         binding.quickViewNutriScore.visibility = View.GONE
         binding.quickViewNovaGroup.visibility = View.GONE
         binding.quickViewCo2Icon.visibility = View.GONE
+        binding.quickViewEcoscoreIcon.visibility = View.GONE
+
         binding.quickViewProductNotFound.visibility = View.GONE
         binding.quickViewProductNotFoundButton.visibility = View.GONE
         binding.txtProductCallToAction.visibility = View.GONE
@@ -455,9 +458,7 @@ class ContinuousScanActivity : AppCompatActivity() {
 
         // Dispose all RxJava disposable
         productDisp?.dispose()
-
         hintBarcodeDisp?.dispose()
-
         commonDisp.dispose()
 
         // Remove bottom sheet callback as it uses binding
@@ -668,9 +669,8 @@ class ContinuousScanActivity : AppCompatActivity() {
                     }
                     R.id.troubleScanning -> {
                         hideAllViews()
-                        if (hintBarcodeDisp != null) {
-                            hintBarcodeDisp!!.dispose()
-                        }
+                        hintBarcodeDisp?.dispose()
+
                         binding.quickView.setOnClickListener(null)
                         binding.quickViewSearchByBarcode.text = null
                         binding.quickViewSearchByBarcode.visibility = View.VISIBLE

@@ -35,7 +35,7 @@ import java.util.*
  * Created by gunhansancar on 07/10/15.
  */
 object LocaleHelper {
-    fun List<LanguageData>.find(language: String) = filterNotNull().indexOfFirst { language == it.code }
+    fun List<LanguageData>.find(language: String) = indexOfFirst { language == it.code }
 
     /**
      * Used by screenshots generator.
@@ -65,25 +65,16 @@ object LocaleHelper {
     private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
     const val USER_COUNTRY_PREFERENCE_KEY = "user_country"
 
-    fun onCreate(context: Context): Context {
-        val lang = getLanguageInPreferences(context, Locale.getDefault().language)
-        return setLocale(context, lang)
-    }
-
-    fun onCreate(context: Context, defaultLanguage: String): Context {
-        val lang = getLanguageInPreferences(context, defaultLanguage)
-        return setLocale(context, lang)
-    }
+    fun onCreate(context: Context, defaultLanguage: String = Locale.getDefault().language) =
+            setLocale(context, getLanguageInPreferences(context, defaultLanguage))
 
     @JvmStatic
-    fun getLanguageData(codes: Collection<String?>, supported: Boolean): MutableList<LanguageData> =
+    fun getLanguageData(codes: Collection<String?>, supported: Boolean) =
             codes.map { getLanguageData(it, supported) }.sorted().toMutableList()
 
     @JvmStatic
-    fun getLanguageData(code: String?, supported: Boolean): LanguageData {
-        val locale = getLocale(code)
-        return LanguageData(locale.language, locale.getDisplayName(locale).capitalize(Locale.ROOT), supported)
-    }
+    fun getLanguageData(code: String?, supported: Boolean) =
+            getLocale(code).let { LanguageData(it.language, it.getDisplayName(it).capitalize(Locale.ROOT), supported) }
 
     /**
      * Used by screenshots test
@@ -152,9 +143,7 @@ object LocaleHelper {
     }
 
     private fun getLanguageInPreferences(context: Context?, defaultLanguage: String): String {
-        if (context == null) {
-            return defaultLanguage
-        }
+        if (context == null) return defaultLanguage
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage) ?: defaultLanguage
     }

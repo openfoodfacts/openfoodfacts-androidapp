@@ -120,8 +120,8 @@ object ProductRepository {
 
     fun loadCountries(lastModifiedDate: Long): Single<List<Country>> = analysisDataApi.getCountries()
             .map { it.map() }
-            .doOnSuccess { countries: List<Country> ->
-                saveCountries(countries)
+            .doOnSuccess {
+                saveCountries(it)
                 updateLastDownloadDateInSettings(Taxonomy.COUNTRY, lastModifiedDate)
             }
 
@@ -137,8 +137,8 @@ object ProductRepository {
 
     fun loadCategories(lastModifiedDate: Long) = analysisDataApi.getCategories()
             .map { it.map() }
-            .doOnSuccess { categories: List<Category> ->
-                saveCategories(categories)
+            .doOnSuccess {
+                saveCategories(it)
                 updateLastDownloadDateInSettings(Taxonomy.CATEGORY, lastModifiedDate)
             }
 
@@ -147,8 +147,10 @@ object ProductRepository {
      *
      * @return The list of allergens.
      */
-    val enabledAllergens: List<Allergen>
-        get() = OFFApplication.daoSession.allergenDao.queryBuilder().where(AllergenDao.Properties.Enabled.eq("true")).list()
+    fun getEnabledAllergens(): List<Allergen> =
+            OFFApplication.daoSession.allergenDao.queryBuilder()
+                    .where(AllergenDao.Properties.Enabled.eq("true"))
+                    .list()
 
     /**
      * Load additives from the server or local database
@@ -234,7 +236,7 @@ object ProductRepository {
      */
     private fun saveInvalidBarcodes(invalidBarcodes: List<InvalidBarcode>) {
         OFFApplication.daoSession.invalidBarcodeDao.deleteAll()
-        OFFApplication.daoSession.invalidBarcodeDao.insertOrReplaceInTx(invalidBarcodes)
+        OFFApplication.daoSession.invalidBarcodeDao.insertInTx(invalidBarcodes)
     }
 
     /**
@@ -317,10 +319,10 @@ object ProductRepository {
     private fun saveCategories(categories: List<Category>) {
         OFFApplication.daoSession.database.beginTransaction()
         try {
-            for (category in categories) {
+            categories.forEach { category ->
                 OFFApplication.daoSession.categoryDao.insertOrReplace(category)
-                for (categoryName in category.names) {
-                    OFFApplication.daoSession.categoryNameDao.insertOrReplace(categoryName)
+                category.names.forEach { name ->
+                    OFFApplication.daoSession.categoryNameDao.insertOrReplace(name)
                 }
             }
             OFFApplication.daoSession.database.setTransactionSuccessful()
@@ -410,12 +412,12 @@ object ProductRepository {
      */
     fun getLabelByTagAndLanguageCode(labelTag: String?, languageCode: String?): Single<LabelName> {
         return Single.fromCallable {
-            val labelName = OFFApplication.daoSession.labelNameDao.queryBuilder()
+            OFFApplication.daoSession.labelNameDao.queryBuilder()
                     .where(
                             LabelNameDao.Properties.LabelTag.eq(labelTag),
                             LabelNameDao.Properties.LanguageCode.eq(languageCode)
                     ).unique()
-            labelName ?: LabelName()
+                    ?: LabelName()
         }
     }
 
@@ -436,12 +438,12 @@ object ProductRepository {
      * @return The translated additive name
      */
     fun getAdditiveByTagAndLanguageCode(additiveTag: String?, languageCode: String?) = Single.fromCallable {
-        val additiveName = OFFApplication.daoSession.additiveNameDao.queryBuilder()
+        OFFApplication.daoSession.additiveNameDao.queryBuilder()
                 .where(
                         AdditiveNameDao.Properties.AdditiveTag.eq(additiveTag),
                         AdditiveNameDao.Properties.LanguageCode.eq(languageCode)
                 ).unique()
-        additiveName ?: AdditiveName()
+                ?: AdditiveName()
     }
 
     /**
@@ -450,16 +452,17 @@ object ProductRepository {
      * @param additiveTag is a unique Id of additive
      * @return The translated additive tag
      */
-    fun getAdditiveByTagAndDefaultLanguageCode(additiveTag: String?): Single<AdditiveName> {
-        return getAdditiveByTagAndLanguageCode(additiveTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
-    }
+    fun getAdditiveByTagAndDefaultLanguageCode(additiveTag: String?) =
+            getAdditiveByTagAndLanguageCode(additiveTag, ApiFields.Defaults.DEFAULT_LANGUAGE)
 
-    val countries: Single<List<Country>>
-        get() = getTaxonomyData(Taxonomy.COUNTRY, this, false, OFFApplication.daoSession.countryDao)
+    fun getCountries() =
+            getTaxonomyData(Taxonomy.COUNTRY, this, false, OFFApplication.daoSession.countryDao)
 
-    fun getCountryByCC2OrWorld(cc2: String?) = countries.flatMapMaybe { countries ->
-        countries.asSequence().filter { it.cc2.equals(cc2, ignoreCase = true) }
-                .firstOrNull().let { if (it == null) Maybe.empty() else Maybe.just(it) }
+    fun getCountryByCC2OrWorld(cc2: String?) = getCountries().flatMapMaybe { countries ->
+        countries.asSequence()
+                .filter { it.cc2.equals(cc2, ignoreCase = true) }
+                .firstOrNull()
+                .let { if (it == null) Maybe.empty() else Maybe.just(it) }
     }
 
     /**
@@ -619,8 +622,8 @@ object ProductRepository {
         try {
             tags.forEach { tag ->
                 OFFApplication.daoSession.analysisTagDao.insertOrReplace(tag)
-                tag.names.forEach { name ->
-                    OFFApplication.daoSession.analysisTagNameDao.insertOrReplace(name)
+                tag.names.forEach {
+                    OFFApplication.daoSession.analysisTagNameDao.insertOrReplace(it)
                 }
             }
             OFFApplication.daoSession.database.setTransactionSuccessful()
@@ -644,9 +647,9 @@ object ProductRepository {
     private fun saveAnalysisTagConfigs(analysisTagConfigs: List<AnalysisTagConfig>) {
         OFFApplication.daoSession.database.beginTransaction()
         try {
-            for (analysisTagConfig in analysisTagConfigs) {
-                Picasso.get().load(analysisTagConfig.iconUrl).fetch()
-                OFFApplication.daoSession.analysisTagConfigDao.insertOrReplace(analysisTagConfig)
+            analysisTagConfigs.forEach {
+                Picasso.get().load(it.iconUrl).fetch()
+                OFFApplication.daoSession.analysisTagConfigDao.insertOrReplace(it)
             }
             OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -690,23 +693,17 @@ object ProductRepository {
      * @return [Maybe.empty] if no analysis tag found
      */
     fun getAnalysisTagConfigByTagAndLanguageCode(analysisTag: String?, languageCode: String) = Maybe.fromCallable {
-        val analysisTagConfig = OFFApplication.daoSession.analysisTagConfigDao.queryBuilder()
+        OFFApplication.daoSession.analysisTagConfigDao.queryBuilder()
                 .where(AnalysisTagConfigDao.Properties.AnalysisTag.eq(analysisTag))
-                .unique()
-        updateAnalysisTagConfig(analysisTagConfig, languageCode)
-        analysisTagConfig
+                .unique().also { updateAnalysisTagConfig(it, languageCode) }
     }.subscribeOn(Schedulers.io())
 
-    fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String): Single<List<AnalysisTagConfig>> = Single.fromCallable {
-        val analysisTagConfigs = OFFApplication.daoSession.analysisTagConfigDao.queryBuilder()
+    fun getUnknownAnalysisTagConfigsByLanguageCode(languageCode: String) = Single.fromCallable {
+        OFFApplication.daoSession.analysisTagConfigDao.queryBuilder()
                 .where(StringCondition("""${AnalysisTagConfigDao.Properties.AnalysisTag.columnName} LIKE "%unknown%""""))
-                .list()
-        analysisTagConfigs.forEach { updateAnalysisTagConfig(it, languageCode) }
-        analysisTagConfigs
+                .list().onEach { updateAnalysisTagConfig(it, languageCode) }
     }.subscribeOn(Schedulers.io())
 
 
     private val LOG_TAG = ProductRepository::class.simpleName
-
-
 }

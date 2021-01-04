@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.CheckResult
 import androidx.core.app.NotificationCompat
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -28,6 +29,7 @@ fun isLocaleFile(url: String?) = url?.startsWith(LOCALE_FILE_SCHEME) ?: false
 fun isAbsoluteUrl(url: String?) = url?.startsWith("/") ?: false
 
 @Contract(pure = true)
+@CheckResult
 fun getCsvFolderName() = when (BuildConfig.FLAVOR) {
     OPFF -> "Open Pet Food Facts"
     OPF -> "Open Products Facts"
