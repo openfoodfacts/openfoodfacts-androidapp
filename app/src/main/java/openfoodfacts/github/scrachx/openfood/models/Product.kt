@@ -11,7 +11,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
@@ -22,7 +21,7 @@ import kotlin.collections.ArrayList
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Product : Serializable {
     @get:JsonAnyGetter
-    val additionalProperties = hashMapOf<String, Any?>()
+    val additionalProperties = HashMap<String, Any?>()
 
 
     @JsonAnySetter

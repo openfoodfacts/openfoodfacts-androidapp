@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.*
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
-import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder("status_verbose", "status", "product", "code")
@@ -15,35 +14,26 @@ class ProductState : Serializable {
      */
     @JsonProperty("status_verbose")
     var statusVerbose: String? = null
-    /**
-     * The status
-     */
+
     /**
      * The status
      */
     var status: Long = 0
-    /**
-     * The product
-     */
+
     /**
      * The product
      */
     var product: Product? = null
-    /**
-     * The code
-     */
+
     /**
      * The code
      */
     var code: String? = null
 
     @JsonIgnore
-    private val additionalProperties: MutableMap<String, Any> = HashMap()
+    @get:JsonAnyGetter
+    val additionalProperties = HashMap<String, Any>()
 
-    @JsonAnyGetter
-    fun getAdditionalProperties(): Map<String, Any> {
-        return additionalProperties
-    }
 
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any) {

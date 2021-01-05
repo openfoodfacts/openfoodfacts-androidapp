@@ -71,7 +71,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                 .create(ProductsAPI::class.java)
     }
 
-    fun getProductStateFull(barcode: String?, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH) =
+    fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH) =
             rawAPI.getProductByBarcodeSingle(barcode, getAllFields(), getUserAgent(customHeader))
 
     private fun getAllFields(): String {
