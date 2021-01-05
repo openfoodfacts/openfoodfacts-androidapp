@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
@@ -92,13 +93,14 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
     override fun onOptionsItemSelected(item: MenuItem) = onOptionsItemSelected(requireActivity(), item)
 
     override fun onRefresh() {
-        disp.add(client.getProductStateFull(productState.product!!.code)
+        client.getProductStateFull(productState.product!!.code)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ newState ->
+                .doOnError { adapterResult.refresh(productState) }
+                .subscribe { newState ->
                     productState = newState
                     adapterResult.refresh(newState)
-                }) { adapterResult.refresh(productState) }
-        )
+                }.addTo(disp)
+
     }
 
     fun bottomSheetWillGrow() {
