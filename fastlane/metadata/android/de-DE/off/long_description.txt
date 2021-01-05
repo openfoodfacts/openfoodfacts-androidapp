@@ -21,16 +21,16 @@ Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken
 
 
 ▶ Beitrag zur Lebensmitteltransparenz
-• Open Food Facts ist eine Lebensmitteldatenbank, die von jedermann für alle erstellt wurde.
-• Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
-• Open Food Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können.
-• Sie können noch heute damit beginnen, einen Beitrag zu leisten, indem Sie ein Produkt aus Ihrem Kühlschrank hinzufügen.
+• Open Products Facts ist eine Produktdatenbank, die von jedermann für alle erstellt wurde.
+• Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
+• Open Products Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können.
+• Sie können noch heute beginnen, indem Sie Ihr erstes Produkt hinzufügen.
 
 ▶ Listen erstellen
 Erstellen Sie Einkaufslisten, verfolgen Sie, was Sie gegessen haben, und teilen und exportieren Sie einfach Ihre Listen.
 
 ▶ Rufen Sie die Fakten auf
-• Open Food Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Sie können finden:
+• Open Products Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Sie können finden:
 • CO₂-Fußabdruck (CO2-Emissionen) und Verpackung (sowie Verwertungshinweise),
 • Nutri-Score (Nährwertbewertung), Nährstoffe, Fett/Fettgehalt, gesättigte Fettsäuren, Kohlenhydrate, Zucker, Ballaststoffe, Eiweiß und Salz und Natrium.
 • Marken, Allergene, Etiketten (Bio, Glutenfrei, Vegan, Vegetarisch, Halal, Koscher …), Rückverfolgbarkeitsinformationen (Verpackungscodes, Herkunft der Zutaten)
@@ -54,7 +54,7 @@ Mit Lichtgeschwindigkeit erfassen (auch wenn Sie sich in einem Flugzeug, U-Boot 
 • Die App lädt nur das Notwendigste, um den Daten- und Batterieverbrauch zu reduzieren.
 
 ▶ Ihre Nahrungsmittel — Ihre Daten
-• Ihre Daten gehören Ihnen und werden niemals online gesendet
+• Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihren Erfassungsverlauf exportieren
 
@@ -73,4 +73,4 @@ Open Food Facts ist auch im Internet verfügbar unter https://world.openfoodfact
 Fragen und Rückmeldungen: contact@openfoodfacts.org
 
 
-Für Kosmetik können Sie „Open Beauty Facts”, für Tierfutter „Open Pet Food Facts” und für alle anderen Produkte „Open Products Facts” installieren.
+Für Lebensmittel können Sie „Open Food Facts”, für Kosmetika „Open Beauty Facts” und für Tiernahrung „Open Pet Food Facts” installieren.

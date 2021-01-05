@@ -21,16 +21,16 @@ Pour découvrir le projet Open Food Facts mené par des volontaires, rendez-vous
 
 
 ▶ Contribuez à la transparence alimentaire
-- Open Food Facts est une base de données de produits alimentaires faite par tout le monde, pour tout le monde.
-- Vous pouvez l'utiliser pour faire de meilleurs choix alimentaires, et comme ces données sont ouvertes, n'importe qui peut les réutiliser pour n'importe quel but.
-- Open Food Facts est un projet à but non lucratif développé par des milliers de bénévoles du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons.
-- Vous pouvez commencer à contribuer aujourd'hui en ajoutant un produit de votre frigo.
+- Open Products Facts est une base de données de produits faite par tout le monde, pour tout le monde.
+- Vous pouvez l'utiliser pour faire de meilleurs choix, et comme ce sont des données ouvertes, n'importe qui peut le réutiliser pour n'importe quel but.
+- Open Products Facts est un projet à but non lucratif développé par des milliers de volontaires du monde entier. Nous avons beaucoup de projets passionnants auxquels vous pouvez contribuer de différentes façons.
+- Vous pouvez commencer à contribuer aujourd'hui en ajoutant votre premier produit.
 
 ▶ Créez des listes
 Créez des listes de courses, suivez ce que vous avez mangé, partagez et exportez facilement vos listes.
 
 ▶ Obtenez les faits
-- Open Food Facts vous aide à comprendre les petits caractères sur les étiquettes des produits. Vous pourrez trouver :
+- Open Products Facts vous aide à donner un sens aux petits caractères sur les étiquettes des produits. Vous pourrez trouver :
 - l'empreinte carbone (émissions de CO2) et l'emballage (ainsi que les instructions de recyclage),
 - le Nutriscore (score nutritionnel), les nutriments, la teneur en graisses / graisses, acides gras saturés, glucides, sucres, fibres, protéines et sel et sodium.
 - marques, allergènes, labels (bio, sans gluten, végétalien, végétarien, halal, casher ...), informations de traçabilité (codes Emb, origine des ingrédients)
@@ -54,7 +54,7 @@ Scannez à la vitesse de la lumière (même si vous êtes dans un avion, sous-ma
 - L'application ne charge que le strict nécessaire pour réduire la consommation de données et de batterie.
 
 ▶ Votre nourriture, vos données
-- Vos données vous appartiennent et ne sont jamais envoyées en ligne
+- Vos données personnelles vous appartiennent et ne sont jamais envoyées en ligne
 - Vous pouvez utiliser l'application anonymement
 - Vous pouvez exporter votre historique de scans
 
@@ -73,4 +73,4 @@ Open Food Facts est également disponible sur le Web à l'adresse https://world-
 Questions, commentaires: contact@openfoodfacts.org
 
 
-Pour les cosmétiques, vous pouvez installer Open Beauty Facts, pour les aliments pour animaux de compagnie, Open Pet Food Facts, et pour tous les autres produits, Open Products Facts.
+Pour la nourriture, vous pouvez installer Open Food Facts, pour les cosmétiques, Open Beauty Facts, et pour les aliments pour animaux de compagnie, Open Pet Food Facts.

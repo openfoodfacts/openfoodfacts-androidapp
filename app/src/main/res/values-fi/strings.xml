@@ -72,6 +72,12 @@
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
+    <!-- Application theme settings -->
+    <string-array name="application_theme_entries">
+        <item>@string/follow_system</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
+    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -163,14 +169,14 @@
     <string name="txtBarcode">Viivakoodi:</string>
     <string name="txtCategories">Tuoteluokat:</string>
     <string name="txtLabels">Merkit, sertifikaatit, palkinnot:</string>
-    <string name="txtEMB">EMB-koodi:</string>
+    <string name="txtEMB">Jäljitettävyyskoodit:</string>
     <string name="txtIngredients">Ainesosaluettelo:</string>
     <string name="Donate">Lahjoita</string>
     <string name="Donation">Napsauta tästä lahjoittaaksesi Open Food Factsille</string>
     <string name="txtSubstances">Allergioita tai intoleransseja aiheuttavat aineet ja tuotteet:</string>
     <string name="txtAdditives">Lisäaineet:</string>
     <string name="txtTraces">Jäämät:</string>
-    <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä :</string>
+    <string name="txtMayBeFromPalmOilProduct">Ainesosat, jotka voivat olla peräisin palmuöljystä:</string>
     <string name="txtPalmOilProduct">Palmuöljyperäiset ainesosat:</string>
     <string name="txtServingSize">Annoskoko:</string>
     <string name="txtNutrientLevel100g">Ravintosisältö per 100 g:</string>
@@ -186,6 +192,7 @@
     <string name="txtSugars">Sokerit</string>
     <string name="hintBarcode">Viivakoodi</string>
     <string name="txtNutriScoreInfo">Opi lisää ravintoainepitoisuuksista</string>
+    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Käyttäjätunnus</string>
     <string name="hintPass">Salasana</string>
     <string name="errorLogin">Käyttäjätunnus tai salasana virheellinen</string>
@@ -193,7 +200,7 @@
     <string name="uploadLater">Kuva lähetetään, kun verkko on käytettävissä</string>
     <string name="txtInfoLoginOk">Käyttäjä tallennettu</string>
     <string name="txtInfoLoginNo">Käyttäjää ei tallennettu</string>
-    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Factsissa. Lisäähän se.</string>
+    <string name="txtDialogsContent">Luettua tuotetta ei vielä ole Open Products Factsissa. Lisääthän sen.</string>
     <string name="txtYes">Kyllä</string>
     <string name="txtNo">Ei</string>
     <string name="hintBrand">Tuotemerkki</string>
@@ -207,7 +214,7 @@
     <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Virheellinen viivakoodi</string>
-    <string name="msg_share">Katso tätä tuotetta Open Food Factsissa:</string>
+    <string name="msg_share">Katso tätä tuotetta Open Products Factsissa:</string>
     <string name="create_account">Rekisteröidy</string>
     <string name="home_drawer">Koti</string>
     <string name="install">Asenna</string>
@@ -231,9 +238,9 @@
     <string name="cancel_button">Peruuta</string>
     <string name="login_button">Kirjaudu</string>
     <string name="create_account_button">Luo tili</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100% arkka, joten tarkista itse!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <string name="title_info_dialog">Miten se toimii?</string>
-    <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
+    <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Products Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
     <string name="permission_camera">Lupaa käyttää kameraa vaaditaan viivakoodien lukemiseen ja kuvien ottamiseen.</string>
     <string name="no_camera_dialog_title">Kameraa ei löytynyt</string>
     <string name="no_camera_dialog_content">Laitteessasi ei ole kameraa. Et voi lukea viivakoodeja.</string>
@@ -317,7 +324,7 @@
     <string name="txt_no_matching_incomplete_products">Meillä ei ole keskeneräisiä tuotteita! Lisätäänkö uusi tuote?</string>
     <string name="txt_no_matching_contributor_products">Voi ei, meillä ei ole tuotteita tältä osallistujalta, voitko lisätä yhden?</string>
     <string name="txt_no_matching_products">Emme löytäneet vastaavia tuotteita.\nVoit kokeilla:</string>
-    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Food Facts -sivulle</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Products Factsiin</string>
     <string name="something_went_wrong">Pahoittelut, jokin meni vikaan…</string>
     <string name="txt_try_again">Yritä uudelleen</string>
     <string name="nutrition_lactose">Laktoosi</string>
@@ -429,8 +436,8 @@
     <string name="preference_choose_language_dialog_title">Valitse kieli</string>
     <string name="FAQ">UKK</string>
     <string name="FrequentlyAskedQuestions">Usein Kysytyt Kysymykset</string>
-    <string name="translate_help_title">Auta kääntämään Open Food Factsia</string>
-    <string name="translate_help_summary">Tuo Open Food Facts kielellesi - teknistä tietoa ei vaadita</string>
+    <string name="translate_help_title">Auta kääntämään Open Products Factsia</string>
+    <string name="translate_help_summary">Tuo Open Products Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
     <string name="please_check_your_connection">Tarkista internetyhteytesi.</string>
     <string name="advanced_search_title">Tarkennettu haku &amp; kaaviot</string>
     <string name="compare_products">Vertaa tuotteita</string>
@@ -440,7 +447,7 @@
     <string name="TermsOfUse">Käyttöehdot ja yksityisyys</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world-fi.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world-fi.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world-fi.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -451,7 +458,7 @@
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world-fi.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
-    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="url_nutrient_values">https://fi.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Yleiset</string>
     <string name="preference_header_network">Verkko</string>
     <string name="preference_header_contributing">Osallistu</string>
@@ -524,6 +531,7 @@
     <string name="last_editor_history">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
     <string name="other_editors">Tuotesivua on muokannut myös </string>
     <string name="contribution_tab">Muokkaukset</string>
+    <string name="synthesis_tab">Yhteenveto</string>
     <string name="contribution_tab_summary">Näytä käyttäjän osallistumisvälilehti tuotteissa</string>
     <string name="contribution_tab_title">Näytä osallistumisvälilehti</string>
     <string name="txtDialogsTitle">Tietoja</string>
@@ -539,7 +547,7 @@
     </plurals>
     <string name="product_not_complete">Tämä tuote ei ole vielä valmis. \nVoitko lisätä joitain yksityiskohtia?</string>
     <string name="addProductOffline">Vaikutat olevan offline-tilassa. Lisää tuote %s offline-tilassa?</string>
-    <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Food Factsissa. Voitko lisätä sen?</string>
+    <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Products Factsissa. Voitko lisätä sen?</string>
     <string name="scan_sound">Lukuääni</string>
     <string name="trouble_scanning">Vaikeuksia lukemisessa?</string>
     <string name="barcode_hint">Vaikeuksia lukemisessa? Syötä viivakoodi</string>
@@ -547,7 +555,7 @@
     <string name="autofocus">Automaattitarkennus</string>
     <string name="initial_loading">Alustava lataus</string>
     <string name="preferences">Asetukset</string>
-    <string name="OFFlogo">Open Food Facts -logo</string>
+    <string name="OFFlogo">Open Products Facts -logo</string>
     <string name="loading_product">Ladataan tuotetta %s</string>
     <string name="image_not_defined_for_language">Valitulle kielelle ei ole kuvaa. Voit lisätä uuden</string>
     <string name="error_adding_ingredients">Jokin meni vikaan tuotteen ainesosien lisäyksessä</string>
@@ -640,7 +648,7 @@
     <string name="contribution_by">Lähettäjä</string>
     <string name="title_activity_product">Otsikko</string>
     <string name="description_activity_product">kuvaus</string>
-    <string name="intent_filter_share_label">Lisää Open Food Factsiin</string>
+    <string name="intent_filter_share_label">Lisää Open Products Factsiin</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Suuri ylialtistumisen riski</string>
     <string name="overexposure_moderate">Kohtalainen ylialtistumisen riski</string>
@@ -669,11 +677,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Poimi ainesosat</string>
     <string name="extract_recycling_prompt">Poimi kierrätysohjeet</string>
-    <string name="add_nutrient_prompt_text">Lisää ravintosisältö Nutri-Scoren laskemiseksi</string>
-    <string name="add_category_prompt_text">Lisää tuoteluokka Nutri-Scoren laskemiseksi</string>
-    <string name="add_nutrient_category_prompt_text">Lisää ravintosisältö ja luokitus Nutri-Scoren laskemiseksi</string>
-    <string name="category_game_btn">Auta luokittelemaan tuotteita, jotta Nutri-Score voidaan laskea</string>
-    <string name="version_string">Open Food Facts Android-sovellus</string>
+    <string name="add_nutrient_prompt_text">Lisää ravintosisältö ravintoainetasojen laskemiseksi</string>
+    <string name="add_category_prompt_text">Lisää luokka auttaaksesi täydentämään tuotteen</string>
+    <string name="add_nutrient_category_prompt_text">Lisää luokka ja ravintosisältö auttaaksesi täydentämään tuotteen</string>
+    <string name="category_game_btn">Auta luokittelemaan tuotteita</string>
+    <string name="version_string">Open Products Facts Android-sovellus</string>
     <string name="version">Versio</string>
     <string name="set_ingredient_img">Aseta ainesosakuvaksi</string>
     <string name="set_img_nutrients">Aseta ravintosisältökuvaksi</string>
@@ -693,12 +701,12 @@
     <string name="txt_create_new_list">Luo uusi luettelo</string>
     <string name="txt_add_to_new_list">Lisää uuteen luetteloon</string>
     <string name="create_new_list_list_name">Luettelon nimi</string>
-    <string name="txt_eaten_products">Syödyt tuotteet</string>
+    <string name="txt_eaten_products">Omistamani tuotteet</string>
     <string name="txt_products_to_buy">Ostettavat tuotteet</string>
     <string name="txt_exporting_your_listed_products">Viedään tuotteitasi…</string>
     <string name="txt_your_listed_products_exported">Tuotteesi on viety</string>
     <string name="txt_discard">Hävitä</string>
-    <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Syön tätä\".
+    <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Ostettavat tuotteet\".
         Voit lisätä tuotteita tähän luetteloon etsimällä niitä, ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="txt_info_your_listed_products">Voit lisätä tuotteita tähän luetteloon etsimällä niitä ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="search_history_pref_title">Poista paikallinen hakuhistoria</string>
@@ -800,9 +808,15 @@
     <string name="icon_categories">Tuoteluokat-kuvake</string>
     <string name="icon_emb">EMB-koodi-kuvake</string>
     <string name="product_front_image">Tuotteen etukuva</string>
-    <string name="brand_hint">Esimerkkejä: CocaCola, Nestle jne…</string>
+    <string name="brand_hint">Esimerkkejä: Nike, Apple jne…</string>
     <string name="sign_in_or_register">Kirjaudu sisään tai rekisteröidy</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts on avoin tietokanta, joka sisältää yli %1$s elintarviketta (plus ne jotka lisäät).</string>
+    <string name="txtHomeOnline">Open Products Food Facts on tietokanta, joka sisältää yli %1$s tuotetta (plus ne jotka lisäät).</string>
     <string name="enabled">Käytössä</string>
+    <!-- Application theme settings -->
+    <string name="follow_system">Järjestelmän teema</string>
+    <string name="day">Päivä</string>
+    <string name="night">Yö</string>
+    <string name="required_for_ecoscore">(Vaaditaan Eco-Scoren laskemiseksi)</string>
+    <string name="hint_origin">Esimerkkejä: Yhdysvallat, Ranska, Italia</string>
 </resources>

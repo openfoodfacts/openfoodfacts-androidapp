@@ -1,72 +1,72 @@
-Aquelas são as tags acima dos prints na playstore. Deixe-os curtos e atrativos.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=pt-br
+Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
-V2 capturas de ecrã
+V2 screenshots
 =====================
 
-Escanear produtos
+Scan products
 
-Obtenha o Nutriscore
+Get the Nutriscore
 
-Seu histórico de escaneio completo, totalmente privado e exportável
+Your full scan history, fully private & exportable
 
-Vá a fundo com Wikipedia
+Go further with Wikipedia
 
-Colocar alertas de alérgeno
+Set allergen alerts
 
-Nutrição, simplificado
+Nutrition, simplified
 
-Alerta de alergénos
+Allergen alert
 
-Tenha alternativas para suas comidas preferidas
+Get alternatives for your favorite foods
 
-Transforme-se em um ator de transparência alimentar
+Become an actor of food transparency
 
-Wikipedia para comida
+Wikipedia for Food
 
-Wikipedia para Cosméticos
+Wikipedia for Cosmetics
 
-Wikipedia para Comida de Animais
+Wikipedia for Pet Food
 
-Wikipedia de Produtos
+Wikipedia of Products
 
-Ingredientes
+Ingredients
 
-Poderoso
+Powerful
 
-Informação nutricional
+Nutrition facts
 
 =====================
-V3 capturas de ecrã
+V3 screenshots
 =====================
 
-Escolha os produtos que são bons para você e para o 🌍 planeta!
+Choose the products that are good for you and for the 🌍 planet !
 
 ✔ Ultra-fast barcode scan
 
-✔ Um supermercado global no seu bolso
+✔ A global supermarket in your pocket
 
-Qualidade nutricional
+Nutritional quality
 
-Alimentos ultraprocessados
+Ultra-processed foods
 
-Impacto de carbono
+Carbon impact
 
-Compare facilmente antes de comprar
+Compare easily before you buy
 
-Crie listas de compras, listas de consumo…
+Create shopping lists, intake lists…
 
-Encontre e compare mais de 750 000 produtos.
+Find and compare over 750 000 products.
 
 
 
-Histórico de digitalizações ilimitado e totalmente privado
+Unlimited and fully-private scan history
 
-Deslize para mais detalhes
+Swipe for even more details
 
-Alerta de alergénos
+Set Allergen Alerts
 
-Junte-se ao nosso movimento global para a transparência alimentar
+Join our global movement for food transparency
 
-br.openfoodfacts.org/contribute
+world.openfoodfacts.org/contribute

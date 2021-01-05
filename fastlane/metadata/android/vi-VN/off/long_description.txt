@@ -1,4 +1,4 @@
-Quét thực phẩm hoặc mã vạch của chúng để lấy dữ liệu về thành phần, chất phụ gia và dinh dưỡng.
+Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Open Food Facts là một cơ sở dữ liệu về thực phẩm được thực hiện bởi mọi người và phục vụ cho tất cả.
-Là một dữ liệu mở, bạn dùng nó để lựa chọn thực phẩm và cũng có thể cho nhiều mục địch khác.
-- Open Facts Facts là một dự án phi lợi nhuận được phát triển bởi hàng ngàn tình nguyện viên từ khắp nơi trên thế giới. Chúng tôi có rất nhiều dự án thú vị mà bạn có thể đóng góp theo nhiều cách khác nhau.
+- Open Food Facts is a food products database made by everyone, for everyone.
+- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Food Facts giúp bạn hiểu những thứ hào nhoáng được in trên bao bì. You will be able to find:
-Hàm lượng carbon (phơi nhiễm CO2) và việc đóng gói (cũng như hướng dẫn tái chế),
-- Chỉ số dinh dưỡng, chất bổ, chất béo, a-xít béo bão hòa, Cacbohydrat, đường, chất sơ, protein, muối và natri.
-- thương hiệu, chất gây dị ứng. nhãn (tiểu sử, không gluten, người ăn chay trường, người ăn chay, thực phẩm của Hồi giáo, thực phẩm của người Do Thái...) khả năng truy xuất nguồn gốc (mã đóng gói, nguyên liệu gốc)
-- Với rượu và bia, bạn sẽ có chỉ số cồn.
+- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
+- Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
+- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- On wines and beers, you will find the alcohol content.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Open Food Facts có trên web tại địa chỉ https://world-vi.openfoodfacts.org
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
 
 
-Câu hỏi và phản hồi: contact@openfoodfacts.org
+Questions, feedback : contact@openfoodfacts.org
 
 
-Với mỹ phẩm, hãy cài đặt Open Beauty Facts, với thực phẩm cho thú cưng và với mọi hàng hóa khác, hãy dùng Open Beauty Facts.
+For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

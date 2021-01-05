@@ -2,26 +2,26 @@ Dat zijn de slogans die boven de screenshots in de playstore worden getoond. Hou
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=nl
 
 =====================
-V2 schermafbeeldingen
+V2 screenshots
 =====================
 
 Scan producten
 
-Krijg de Nutriscore
+Krijg de Nutri-Score
 
-Je hele scangeschiedenis, totaal privé en exporteerbaar
+Je volledige scan geschiedenis, helemaal privé & exporteerbaar
 
 Ga verder met Wikipedia
 
-Stel allergeenwaarschuwingen in
+Set allergen alerts
 
 Voeding, vereenvoudigd
 
-Stel allergeenwaarschuwingen in
+Allergen alert
 
-Krijg alternatieven voor je favoriete voedingsmiddelen
+Bekijk alternatieven voor je favoriete levensmiddelen
 
-Word een speler voor voedseltransparantie
+Become an actor of food transparency
 
 Wikipedia voor voedsel
 
@@ -35,10 +35,10 @@ Ingrediënten
 
 Krachtig
 
-Krachtig Voedingswaarden
+Nutrition facts
 
 =====================
-V3 schermafbeeldingen
+V3 screenshots
 =====================
 
 Kies de producten die goed zijn voor u en voor de 🌍 planeet!
@@ -47,7 +47,7 @@ Kies de producten die goed zijn voor u en voor de 🌍 planeet!
 
 ✔ Een wereldwijde supermarkt in uw zak
 
-Krachtig Voedingswaarden
+Nutritional quality
 
 Ultra-verwerkte voedingsmiddelen
 
@@ -65,7 +65,7 @@ Onbeperkte en volledige privé scan-geschiedenis
 
 Veeg voor nog meer details
 
-Allergenen alert
+Set Allergen Alerts
 
 Sluit je aan bij onze wereldwijde beweging voor inzichtelijkheid van voedsel
 

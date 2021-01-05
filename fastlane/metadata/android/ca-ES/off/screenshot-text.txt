@@ -1,41 +1,41 @@
-Aquestes són les etiquetes que es mostren a sobre de les captures de pantalla a la playstore. Manteniu-les curtes i atractives.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ca
+Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
 =====================
 
-Escanegeu productes
+Scan products
 
-Obteniu la Puntuació Nutricional
+Get the Nutriscore
 
-El vostre historial complet d'escaneig, totalment privat i exportable
+Your full scan history, fully private & exportable
 
-Aneu més enllà amb Viquipèdia
+Go further with Wikipedia
 
-Establiu alertes sobre al·lèrgens
+Set allergen alerts
 
-Nutrició simplificada
+Nutrition, simplified
 
-Alerta d'al·lèrgens
+Allergen alert
 
-Obteniu alternatives per als vostres aliments preferits
+Get alternatives for your favorite foods
 
-Convertiu-vos en actor de la transparència alimentària
+Become an actor of food transparency
 
-Viquipèdia per als aliments
+Wikipedia for Food
 
-Viquipèdia per a cosmètics
+Wikipedia for Cosmetics
 
-Viquipèdia per al menjar per a mascotes
+Wikipedia for Pet Food
 
-Viquipèdia de Productes
+Wikipedia of Products
 
 Ingredients
 
-Potent
+Powerful
 
-Informació nutricional
+Nutrition facts
 
 =====================
 V3 screenshots
@@ -49,7 +49,7 @@ Choose the products that are good for you and for the 🌍 planet !
 
 Nutritional quality
 
-Aliments ultraprocessats
+Ultra-processed foods
 
 Carbon impact
 

@@ -13,11 +13,11 @@ Nutriscore 가져 오기
 
 위키피디아와 함께 나아가십시오.
 
-알레르기 항원 경보
+Set allergen alerts
 
 영양, 단순하게
 
-알레르기 항원 경보
+Allergen alert
 
 좋아하는 음식에 대한 대안을 얻으십시오.
 
@@ -35,7 +35,7 @@ Nutriscore 가져 오기
 
 강력한
 
-영양 성분 표시
+Nutrition facts
 
 =====================
 영양 성분 표시 V3 스크린샷
@@ -63,9 +63,9 @@ Nutriscore 가져 오기
 
 무제한 및 개인 검색 기록
 
-더 자세한 내용을 보려면 스와이프
+Swipe for even more details
 
-알레르기 항원 경보
+Set Allergen Alerts
 
 식품 투명성을위한 글로벌 운동에 동참하십시오 world.openfoodfacts.org/contribute
 

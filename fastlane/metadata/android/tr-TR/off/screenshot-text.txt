@@ -5,7 +5,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=tr
 V2 ekran görüntüleri
 =====================
 
-Ürünleri tara
+Scan products
 
 Nutriscore'u öğren
 
@@ -13,7 +13,7 @@ Tam tarama geçmişiniz, tamamen size özel & dışa aktarılabilir
 
 Wikipedia ile daha ileri git
 
-Alerjen uyarıları ayarla
+Set allergen alerts
 
 Beslenme, basitleştirilmiş
 
@@ -31,7 +31,7 @@ Evcil Hayvan Besinlerinin Wikipedia'sı
 
 Ürünlerin Wikipedia'sı
 
-İçindekiler
+Ingredients
 
 Güçlü
 
@@ -65,7 +65,7 @@ Sınırsız ve tamamen özel tarama geçmişi
 
 Daha fazla ayrıntı için kaydırın
 
-Alerjen uyarıları ayarla
+Set Allergen Alerts
 
 Gıda şeffaflığı için küresel hareketimize katılın
 

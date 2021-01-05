@@ -1,72 +1,72 @@
-Det er overskrifterne vist ovenover skærmfotoene i Google Play. Hold dem korte og attraktive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=da
+Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
-V2-skærmfotos
+V2 screenshots
 =====================
 
-Skan produkter
+Scan products
 
-Få næringssoren
+Get the Nutriscore
 
-Din fulde skanningshistorik, helt privat og eksporterbar
+Your full scan history, fully private & exportable
 
-Gå videre med Wikipedia
+Go further with Wikipedia
 
-Indstil allergenadvarsler
+Set allergen alerts
 
-Ernæring, forenklet
+Nutrition, simplified
 
-Allergenadvarsel
+Allergen alert
 
-Få alternativer til dine yndlingsretter
+Get alternatives for your favorite foods
 
-Bliv medspilleri fødevarergennemsigtighed
+Become an actor of food transparency
 
-Wikipedia for Mad
+Wikipedia for Food
 
-Wikipedia for Kosmetik
+Wikipedia for Cosmetics
 
-Wikipedia for Ddrefoder
+Wikipedia for Pet Food
 
-Wikipedia over produkter
+Wikipedia of Products
 
-Ingredienser
+Ingredients
 
-Kraftfuld
+Powerful
 
-Ernæringsindhold
+Nutrition facts
 
 =====================
-V3-skærmfotos
+V3 screenshots
 =====================
 
-Vælg de produkter, som er gode for dig og for 🌍 planeten!
+Choose the products that are good for you and for the 🌍 planet !
 
-✔ Ultra-hurtig stregkodeskanning
+✔ Ultra-fast barcode scan
 
-✔ Et globalt supermarked i din lomme
+✔ A global supermarket in your pocket
 
-Ernæringsmæssig kvalitet
+Nutritional quality
 
-Ultraforarbejdede fødevarer
+Ultra-processed foods
 
-CO2-fodaftryk
+Carbon impact
 
-Sammenlign nemt, inden du køber
+Compare easily before you buy
 
-Opret indkøbslister, indtagslister…
+Create shopping lists, intake lists…
 
-Find og sammenlign flere end 750.000 produkter.
+Find and compare over 750 000 products.
 
 
 
-Ubegrænset og 100% privat skanningshistorik
+Unlimited and fully-private scan history
 
-Stryg for endnu flere detaljer
+Swipe for even more details
 
-Indstil allergenadvarsler
+Set Allergen Alerts
 
-Deltag i vores globale bevægelse for fødevaregennemsigtighed
+Join our global movement for food transparency
 
 world.openfoodfacts.org/contribute

@@ -1,5 +1,5 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=zh-cn
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
@@ -7,7 +7,7 @@ V2 screenshots
 
 Scan products
 
-获取营养评分
+Get the Nutriscore
 
 Your full scan history, fully private & exportable
 
@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-过敏原警告
+Allergen alert
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-成分
+Ingredients
 
 Powerful
 
-营养成分
+Nutrition facts
 
 =====================
 V3 screenshots

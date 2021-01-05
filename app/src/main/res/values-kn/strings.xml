@@ -72,6 +72,12 @@
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
+    <!-- Application theme settings -->
+    <string-array name="application_theme_entries">
+        <item>@string/follow_system</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
+    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -166,7 +172,7 @@
     <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">ಪದಾರ್ಥಗಳ ಪಟ್ಟಿ:</string>
     <string name="Donate">ಕಾಣಿಕೆ</string>
-    <string name="Donation">ಆಹಾರ ಸಂಗತಿಗಳನ್ನು ತೆರೆಯಲು ದಾನ ಮಾಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
+    <string name="Donation">ಉತ್ಪನ್ನಗಳ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಲು ದಾನ ಮಾಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
     <string name="txtSubstances">ಅಲರ್ಜಿಗಳು ಅಥವಾ ಅಸಹಿಷ್ಣುತೆಗಳಿಗೆ ಕಾರಣವಾಗುವ ಪದಾರ್ಥಗಳು ಅಥವಾ ಉತ್ಪನ್ನಗಳು:</string>
     <string name="txtAdditives">ಸೇರ್ಪಡೆಗಳು:</string>
     <string name="txtTraces">ಕುರುಹುಗಳು:</string>
@@ -186,6 +192,7 @@
     <string name="txtSugars">ಸಕ್ಕರೆಗಳು</string>
     <string name="hintBarcode">ಬಾರ್‌ ಕೋಡ್</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">ಬಳಕೆದಾರನ ಹೆಸರು</string>
     <string name="hintPass">ಪಾಸ್‌ವರ್ಡ್</string>
     <string name="errorLogin">ಲಾಗಿನ್ ಅಥವಾ ಪಾಸ್ವರ್ಡ್ ದೋಷ</string>
@@ -193,7 +200,7 @@
     <string name="uploadLater">ನೆಟ್ವರ್ಕ್ ಲಭ್ಯವಿದ್ದಾಗ ಚಿತ್ರವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಲಾಗುತ್ತದೆ</string>
     <string name="txtInfoLoginOk">ಬಳಕೆದಾರ ಉಳಿಸಲಾಗಿದೆ</string>
     <string name="txtInfoLoginNo">ಬಳಕೆದಾರ ಉಳಿಸಲಾಗಿದೆ</string>
-    <string name="txtDialogsContent">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾದ ಉತ್ಪನ್ನ ಇನ್ನೂ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಅದನ್ನು ಸೇರಿಸಿ.</string>
+    <string name="txtDialogsContent">ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ ಉತ್ಪನ್ನವು ಓಪನ್ ಪ್ರಾಡಕ್ಟ್ಸ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಅದನ್ನು ಸೇರಿಸಿ.</string>
     <string name="txtYes">ಹೌದು</string>
     <string name="txtNo">ಇಲ್ಲ</string>
     <string name="hintBrand">ಬ್ರ್ಯಾಂಡ್</string>
@@ -207,7 +214,7 @@
     <string name="txtBarcodeRequire">ಬಾರ್ಕೋಡ್ ಅಗತ್ಯವಿದೆ</string>
     <string name="txtOk">ಸರಿ</string>
     <string name="txtBarcodeNotValid">ಬಾರ್ಕೋಡ್ ಮಾನ್ಯವಾಗಿಲ್ಲ</string>
-    <string name="msg_share">ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಈ ಉತ್ಪನ್ನವನ್ನು ನೋಡಿ:</string>
+    <string name="msg_share">ಓಪನ್ ಉತ್ಪನ್ನಗಳು ಫ್ಯಾಕ್ಟ್ಸ್ನಲ್ಲಿ ಈ ಉತ್ಪನ್ನವನ್ನು ನೋಡಿ:</string>
     <string name="create_account">ಸೈನ್ ಅಪ್ ಮಾಡಿ</string>
     <string name="home_drawer">ಮುಖಪುಟ</string>
     <string name="install">Install</string>
@@ -231,9 +238,9 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">ಬಳಕೆದಾರನ ಹೆಸರು</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ?</string>
-    <string name="text_offline_info_dialog">ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗ ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಲು ಅವುಗಳನ್ನು ಸೇರಿಸಲು ನೀವು ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಬಹುದು. ನೀವು ಸ್ಕ್ಯಾನ್ ಮಾಡುವ ಎಲ್ಲಾ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ, ಮತ್ತು ನೀವು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
+    <string name="text_offline_info_dialog">ನಂತರ ನೀವು ಆಫ್ಲೈನ್ನಲ್ಲಿರುವಾಗಲೂ ಉತ್ಪನ್ನಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ನಂತರ ಅವುಗಳನ್ನು ಉತ್ಪನ್ನದ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಿರಿ. ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾದ ಉತ್ಪನ್ನಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ ಮತ್ತು ಕೆಳಗಿನ ಬಟನ್ ಬಳಸಿ ಅವುಗಳನ್ನು ಕಳುಹಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
     <string name="permission_camera">ಬಾರ್ಕೋಡ್ಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಕ್ಯಾಮೆರಾ ಅನುಮತಿ ಅಗತ್ಯವಿದೆ.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -317,7 +324,7 @@
     <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">ಯಾವುದೇ ಹೊಂದಿಕೆಯಾಗುವ ಉತ್ಪನ್ನಗಳನ್ನು ನಾವು ಕಂಡುಕೊಂಡಿಲ್ಲ. \ N ನೀವು ಪ್ರಯತ್ನಿಸಬಹುದು:</string>
-    <string name="txt_broaden_search">- ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸುವುದು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಆಹಾರದ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಿರಿ</string>
+    <string name="txt_broaden_search">- ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸುವುದು \ n- ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಮತ್ತು ಉತ್ಪನ್ನ ಫ್ಯಾಕ್ಟ್ಸ್ ಅನ್ನು ತೆರೆಯಿರಿ</string>
     <string name="something_went_wrong">ಕ್ಷಮಿಸಿ, ಏನೋ ತಪ್ಪಾಗಿದೆ…</string>
     <string name="txt_try_again">ಮರು ಯತ್ನಿಸಿ</string>
     <string name="nutrition_lactose">ಲ್ಯಾಕ್ಟೋಸ್</string>
@@ -429,8 +436,8 @@
     <string name="preference_choose_language_dialog_title">ಭಾಷೆ ಆಯ್ಕೆ</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು</string>
-    <string name="translate_help_title">ಆಹಾರದ ಸತ್ಯಗಳನ್ನು ತೆರೆಯಲು ಅನುವಾದಿಸಲು ಸಹಾಯ ಮಾಡಿ</string>
-    <string name="translate_help_summary">ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರಲು - ಯಾವುದೇ ತಾಂತ್ರಿಕ ಜ್ಞಾನ ಅಗತ್ಯವಿಲ್ಲ</string>
+    <string name="translate_help_title">ಉತ್ಪನ್ನ ಫ್ಯಾಕ್ಟ್ಸ್ ತೆರೆಯಿರಿ ಸಹಾಯ</string>
+    <string name="translate_help_summary">ಓಪನ್ ಪ್ರಾಡಕ್ಟ್ಸ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ನಿಮ್ಮ ಭಾಷೆಗೆ ತರಲು - ಯಾವುದೇ ತಾಂತ್ರಿಕ ಜ್ಞಾನ ಅಗತ್ಯವಿಲ್ಲ</string>
     <string name="please_check_your_connection">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
     <string name="advanced_search_title">ಸುಧಾರಿತ ಹುಡುಕಾಟ &amp; ಚಾರ್ಟ್ಗಳು</string>
     <string name="compare_products">Compare products</string>
@@ -440,7 +447,7 @@
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -524,6 +531,7 @@
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">ಉತ್ಪನ್ನ ಪುಟವು ಸಹ ಸಂಪಾದಿಸಿದೆ </string>
     <string name="contribution_tab">ಕೊಡುಗೆಗಳು</string>
+    <string name="synthesis_tab">Synthesis</string>
     <string name="contribution_tab_summary">ಉತ್ಪನ್ನಗಳೊಂದಿಗೆ ಬಳಕೆದಾರ ಕೊಡುಗೆಗಳ ಟ್ಯಾಬ್ ಅನ್ನು ತೋರಿಸಿ</string>
     <string name="contribution_tab_title">ಕೊಡುಗೆ ಟ್ಯಾಬ್ ತೋರಿಸಿ</string>
     <string name="txtDialogsTitle">ಮಾಹಿತಿ</string>
@@ -539,7 +547,7 @@
     </plurals>
     <string name="product_not_complete">ಈ ಉತ್ಪನ್ನ ಇನ್ನೂ ಪೂರ್ಣಗೊಂಡಿಲ್ಲ. \ n ನೀವು ಕೆಲವು ವಿವರಗಳನ್ನು ಸೇರಿಸಬಹುದೇ?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="scan_sound">ಸ್ಕ್ಯಾನ್ ಸೌಂಡ್</string>
     <string name="trouble_scanning">ತೊಂದರೆ ಸ್ಕ್ಯಾನಿಂಗ್?</string>
     <string name="barcode_hint">ತೊಂದರೆ ಸ್ಕ್ಯಾನಿಂಗ್? ಬಾರ್ಕೋಡ್ ನಮೂದಿಸಿ</string>
@@ -547,7 +555,7 @@
     <string name="autofocus">ಆಟೋಫೋಕಸ್</string>
     <string name="initial_loading">ಆರಂಭಿಕ ಲೋಡ್</string>
     <string name="preferences">ಆದ್ಯತೆಗಳು</string>
-    <string name="OFFlogo">ಆಹಾರ ಸಂಗತಿಗಳು ತೆರೆಯಿರಿ</string>
+    <string name="OFFlogo">Open Products Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">ಉತ್ಪನ್ನ ಪದಾರ್ಥಗಳನ್ನು ಸೇರಿಸಲು ಪ್ರಯತ್ನಿಸುವಾಗ ಯಾವುದೋ ತಪ್ಪು ಸಂಭವಿಸಿದೆ</string>
@@ -640,7 +648,7 @@
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">ಶೀರ್ಷಿಕೆ</string>
     <string name="description_activity_product">ವಿವರಣೆ</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">Add to Open Products Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
@@ -669,11 +677,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">ಪದಾರ್ಥಗಳನ್ನು ಹೊರತೆಗೆಯಿರಿ</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="category_game_btn">Help categorize products</string>
+    <string name="version_string">Open Products Facts Android App</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -693,13 +701,13 @@
     <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
     <string name="create_new_list_list_name">List Name</string>
-    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_eaten_products">Products I have</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">ತಿರಸ್ಕರಿಸು</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
@@ -800,9 +808,15 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
+    <!-- Application theme settings -->
+    <string name="follow_system">Follow system</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, French, Italy</string>
 </resources>

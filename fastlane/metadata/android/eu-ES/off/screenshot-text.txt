@@ -1,5 +1,5 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=eu
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
@@ -13,11 +13,11 @@ Your full scan history, fully private & exportable
 
 Go further with Wikipedia
 
-Ezarri alergenoen alertak
+Set allergen alerts
 
 Nutrition, simplified
 
-Alergenoen alerta
+Allergen alert
 
 Get alternatives for your favorite foods
 
@@ -31,7 +31,7 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Osagaiak
+Ingredients
 
 Powerful
 

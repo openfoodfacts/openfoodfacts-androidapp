@@ -17,7 +17,7 @@ Imposta avvisi allergeni
 
 Nutrizione, semplificata
 
-Allarme allergeni
+Avviso sugli allergeni
 
 Ottieni alternative per i tuoi alimenti preferiti
 
@@ -65,7 +65,7 @@ Cronologia di scansione illimitata e completamente privata
 
 Scorri per ulteriori dettagli
 
-Allarme allergeni
+Imposta Avvisi sugli Allergeni
 
 Unisciti al nostro movimento globale per la trasparenza alimentare
 

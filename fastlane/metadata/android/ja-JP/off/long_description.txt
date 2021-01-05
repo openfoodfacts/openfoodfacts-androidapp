@@ -2,10 +2,10 @@
 
 ▶ Find & Compare more than 800.000 products
 
-The app allows to view the 800.000 products (including 175.000 in the US) already contained in the free and open database Open Food Facts, and also to add pictures and data for new products.
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
 
 
-To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
 
 ▶ Choose the products that are good for you
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
@@ -20,20 +20,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 -カーボンインパクトを表示するには、肉または魚の割合と数量を含む完全な成分リストが製品に含まれている必要があります
 
 
-▶ Contribute to Food Transparency
-- Open Food Facts is a food products database made by everyone, for everyone.
-- You can use it to make better food choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Food Facts は、世界中の何千人ものボランティアによって開発された非営利プロジェクトです。 We have lots of exciting projects you can contribute to in many different ways. We have lots of exciting projects you can contribute to in many different ways.
-- You can start contributing today by adding a product from your fridge.
+***Contribute to Pet Food Transparency***
+- Open Products Facts is a products database made by everyone, for everyone.
+- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
+- You can start contributing today by adding your first product.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
-▶ Get the Facts
-- Open Food Facts helps you to make sense of the fine print on products labels. You will be able to find:
+*** Get the Facts ***
+- Open Products Facts helps you to make sense of the fine print on products labels. You will be able to find:
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- brands, allergens, labels (bio, gluten free, vegan, vegetarian, halal, kosher ...), traceability information (packaging codes, origins of ingredients)
+- list of ingredients (including ash content) - nutritional info, nutrition traffic lights… - brands, allergens, labels (organic, vegan...)
 - On wines and beers, you will find the alcohol content.
 
 
@@ -51,10 +51,10 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 
 - The whole planet, in your pocket !
 - 今インターネットに接続していなくても、新製品を追加できます.
-- The app loads only the strict necessary to reduce data and battery consumption.
+- The app loads only the strict necessary to reduce data and battery consumption
 
-▶ Your food, your data
-- Your data is yours, and is never sent online
+*** Your pet food, your data ***
+- Your personal data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
@@ -73,4 +73,4 @@ Open Food Facts is also available on the web at https://world.openfoodfacts.org
 Questions, feedback : contact@openfoodfacts.org
 
 
-For cosmetics, you can install Open Beauty Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.

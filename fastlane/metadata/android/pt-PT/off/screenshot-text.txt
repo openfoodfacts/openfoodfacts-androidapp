@@ -17,7 +17,7 @@ Definir alertas de alérgenos
 
 Nutrição simplificada
 
-Alerta de alergénio
+Allergen alert
 
 Obtenha alternativas para seus alimentos favoritos
 
@@ -65,7 +65,7 @@ Histórico de digitalizações ilimitado e totalmente privado
 
 Deslize para obter ainda mais detalhes
 
-Alerta de alergénio
+Set Allergen Alerts
 
 Junte-se ao nosso movimento global para a transparência alimentar
 
