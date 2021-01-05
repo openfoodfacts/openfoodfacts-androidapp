@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout source
-      - uses: actions/checkout@v1
+        uses: actions/checkout@v1
       
       - name: Checks
-      - uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
+        uses: ashutoshgngwr/validate-fastlane-supply-metadata@v1
         with:
           fastlaneDir: ./fastlane # optional. default is './fastlane'
