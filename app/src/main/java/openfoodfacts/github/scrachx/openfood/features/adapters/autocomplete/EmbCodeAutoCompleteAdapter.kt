@@ -36,7 +36,7 @@ class EmbCodeAutoCompleteAdapter(
             }
         }
 
-        override fun publishResults(constraint: CharSequence, results: FilterResults?) {
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
             if (results != null && results.count > 0) {
                 codeList.clear()
                 codeList += results.values as ArrayList<String>
