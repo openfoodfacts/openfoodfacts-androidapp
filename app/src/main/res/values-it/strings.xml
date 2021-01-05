@@ -712,7 +712,7 @@
     <string name="swipe_delete_tip">Puoi eliminare un elenco facendolo scorrere a sinistra.</string>
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
-    <string name="add_product">Inserisci prodotti</string>
+    <string name="add_product">Aggiungi</string>
     <string name="add_another_product">Aggiungi un altro prodotto</string>
     <string name="add_nutrition_facts_for_nutriscore">Aggiungi i valori nutrizionali per calcolare il Nutri-Score</string>
     <string name="product_summary_action_compare_button_label">Confronta</string>
