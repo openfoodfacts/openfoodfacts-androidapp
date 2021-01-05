@@ -430,9 +430,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             this.checkAlcohol(value),
             this.checkEnergyField(value),
             this.checkCarbohydrate(value),
-            this.checkPerServing(),
-            this.checkAsGram(value)
-    ).firstOrNull { it != ValueState.NOT_TESTED } ?: ValueState.NOT_TESTED
+            this.checkPerServing()
+    ).firstOrNull { it != ValueState.NOT_TESTED } ?: this.checkAsGram(value)
 
     private fun CustomValidatingEditTextView.checkAsGram(value: Float): ValueState {
         val valid = convertToGrams(value, unitSpinner!!.selectedItemPosition) <= referenceValueInGram
