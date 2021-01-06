@@ -122,7 +122,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isApplicationInstalled
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import java.io.File

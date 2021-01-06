@@ -114,7 +114,7 @@ class ProductCompareAdapter(
                     ActivityCompat.requestPermissions(activity, arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
                 } else {
                     onPhotoReturnPosition = position
-                    if (Utils.isHardwareCameraInstalled(activity)) {
+                    if (isHardwareCameraInstalled(activity)) {
                         EasyImage.openCamera(activity, 0)
                     } else {
                         EasyImage.openGallery(activity, 0, false)

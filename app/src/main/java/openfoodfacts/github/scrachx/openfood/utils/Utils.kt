@@ -172,13 +172,6 @@ object Utils {
         get() = OFFApplication.daoSession
 
     /**
-     * Check if the device has a camera installed.
-     *
-     * @return true if installed, false otherwise.
-     */
-    fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
-
-    /**
      * Schedules job to download when network is available
      */
     @Synchronized
@@ -512,3 +505,10 @@ fun getNovaGroupResource(novaGroup: String?) = when (novaGroup) {
     "4" -> R.drawable.ic_nova_group_4
     else -> R.drawable.ic_nova_group_unknown
 }
+
+/**
+ * Check if the device has a camera installed.
+ *
+ * @return true if installed, false otherwise.
+ */
+fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)

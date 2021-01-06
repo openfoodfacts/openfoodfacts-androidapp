@@ -75,9 +75,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import java.io.File
-import java.util.*
 
 class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var _binding: FragmentSummaryProductBinding? = null
@@ -290,15 +288,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         } else {
             binding.textQuantityProduct.visibility = View.GONE
         }
-        if (product.brands.isNullOrBlank()) {
+
+        val pBrands = product.brands
+        if (!pBrands.isNullOrBlank()) {
             binding.textBrandProduct.isClickable = true
             binding.textBrandProduct.movementMethod = LinkMovementMethod.getInstance()
             binding.textBrandProduct.text = ""
-            val brands = product.brands!!.split(",").toTypedArray()
-            brands.withIndex().forEach { (i, brand) ->
-                if (i > 0) {
-                    binding.textBrandProduct.append(", ")
-                }
+            pBrands.split(",").withIndex().forEach { (i, brand) ->
+                if (i > 0) binding.textBrandProduct.append(", ")
                 binding.textBrandProduct.append(Utils.getClickableText(
                         brand.trim { it <= ' ' },
                         "",
@@ -310,14 +307,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         } else {
             binding.textBrandProduct.visibility = View.GONE
         }
-        if (!product.embTags.isNullOrEmpty() && product.embTags.toString().trim { it <= ' ' } != "[]") {
+
+        if (product.embTags.isNotEmpty() && product.embTags.toString().trim { it <= ' ' } != "[]") {
             binding.embText.movementMethod = LinkMovementMethod.getInstance()
             binding.embText.text = bold(getString(R.string.txtEMB))
             binding.embText.append(" ")
 
             val embTags = product.embTags.toString()
-                    .replace("[", "")
-                    .replace("]", "")
+                    .replace("[", "").removeSurrounding("[", "]")
                     .split(", ")
 
             embTags.withIndex().forEach { (i, embTag) ->
@@ -337,13 +334,13 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
 
         // if the device does not have a camera, hide the button
-        if (!Utils.isHardwareCameraInstalled(requireActivity())) {
+        if (!isHardwareCameraInstalled(requireContext())) {
             binding.buttonMorePictures.visibility = View.GONE
         }
 
         if (isFlavors(OFF)) {
             binding.scoresLayout.visibility = View.VISIBLE
-            val levelItems: MutableList<NutrientLevelItem> = ArrayList()
+            val levelItems = mutableListOf<NutrientLevelItem>()
             val nutriments = product.nutriments
             val nutrientLevels = product.nutrientLevels
             var fat: NutrimentLevel? = null
@@ -366,39 +363,47 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 binding.cvNutritionLights.visibility = View.VISIBLE
                 val fatNutriment = nutriments[Nutriments.FAT]
                 if (fat != null && fatNutriment != null) {
-                    val fatNutrimentLevel = fat.getLocalize(requireContext())
-                    levelItems.add(NutrientLevelItem(getString(R.string.txtFat),
+                    levelItems += NutrientLevelItem(
+                            getString(R.string.txtFat),
                             fatNutriment.displayStringFor100g,
-                            fatNutrimentLevel,
-                            fat.getImageLevel()))
+                            fat.getLocalize(requireContext()),
+                            fat.getImageLevel(),
+                    )
                 }
                 val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
                 if (saturatedFat != null && saturatedFatNutriment != null) {
                     val saturatedFatLocalize = saturatedFat.getLocalize(requireContext())
-                    levelItems.add(NutrientLevelItem(getString(R.string.txtSaturatedFat), saturatedFatNutriment.displayStringFor100g,
+                    levelItems += NutrientLevelItem(
+                            getString(R.string.txtSaturatedFat),
+                            saturatedFatNutriment.displayStringFor100g,
                             saturatedFatLocalize,
-                            saturatedFat.getImageLevel()))
+                            saturatedFat.getImageLevel()
+                    )
                 }
                 val sugarsNutriment = nutriments[Nutriments.SUGARS]
                 if (sugars != null && sugarsNutriment != null) {
-                    val sugarsLocalize = sugars.getLocalize(requireContext())
-                    levelItems.add(NutrientLevelItem(getString(R.string.txtSugars),
+                    levelItems += NutrientLevelItem(
+                            getString(R.string.txtSugars),
                             sugarsNutriment.displayStringFor100g,
-                            sugarsLocalize,
-                            sugars.getImageLevel()))
+                            sugars.getLocalize(requireContext()),
+                            sugars.getImageLevel(),
+                    )
                 }
                 val saltNutriment = nutriments[Nutriments.SALT]
                 if (salt != null && saltNutriment != null) {
                     val saltLocalize = salt.getLocalize(requireContext())
-                    levelItems.add(NutrientLevelItem(getString(R.string.txtSalt),
+                    levelItems += NutrientLevelItem(
+                            getString(R.string.txtSalt),
                             saltNutriment.displayStringFor100g,
                             saltLocalize,
-                            salt.getImageLevel()))
+                            salt.getImageLevel(),
+                    )
                 }
             } else {
                 binding.cvNutritionLights.visibility = View.GONE
             }
-            binding.listNutrientLevels.layoutManager = LinearLayoutManager(context)
+
+            binding.listNutrientLevels.layoutManager = LinearLayoutManager(requireContext())
             binding.listNutrientLevels.adapter = NutrientLevelListAdapter(requireContext(), levelItems)
 
             refreshNutriScore()
@@ -422,7 +427,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun refreshScoresLayout() {
         binding.scoresLayout.visibility = if (binding.novaGroup.visibility != View.GONE
-                || binding.co2Icon.visibility != View.GONE
                 || binding.imageGrade.visibility != View.GONE
                 || binding.ecoscoreIcon.visibility != View.GONE
                 || binding.addNutriscorePrompt.visibility != View.GONE) View.VISIBLE else View.GONE
@@ -430,7 +434,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun refreshNutriScore() {
         binding.imageGrade.setImageResource(product.getNutriScoreResource())
-        binding.imageGrade.visibility = View.VISIBLE
         binding.imageGrade.setOnClickListener {
             val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri!!, WebViewFallback())
@@ -439,7 +442,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun refreshNovaIcon() {
         binding.novaGroup.setImageResource(product.getNovaGroupResource())
-        binding.novaGroup.visibility = View.VISIBLE
         binding.novaGroup.setOnClickListener {
             val uri = Uri.parse(getString(R.string.url_nova_groups))
             val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
@@ -448,19 +450,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun refreshCO2OrEcoscoreIcon() {
-        binding.ecoscoreIcon.visibility = View.GONE
-        binding.co2Icon.visibility = View.GONE
-
-        val ecoScoreRes = product.getEcoscoreResource()
-        val environmentImpactResource = product.getCO2Resource()
-
-        if (ecoScoreRes != NO_DRAWABLE_RESOURCE) {
-            binding.ecoscoreIcon.setImageResource(ecoScoreRes)
-            binding.ecoscoreIcon.visibility = View.VISIBLE
-        } else if (environmentImpactResource != NO_DRAWABLE_RESOURCE) {
-            binding.co2Icon.setImageResource(environmentImpactResource)
-            binding.co2Icon.visibility = View.VISIBLE
-        }
+        binding.ecoscoreIcon.setImageResource(product.getEcoscoreResource())
     }
 
     private fun refreshNutriScorePrompt() {
@@ -667,8 +657,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    private fun getEmbUrl(embTag: String) :String? {
-        if(mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).list().isEmpty()) return null
+    private fun getEmbUrl(embTag: String): String? {
+        if (mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).list().isEmpty()) return null
         return mTagDao.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique().url
     }
 

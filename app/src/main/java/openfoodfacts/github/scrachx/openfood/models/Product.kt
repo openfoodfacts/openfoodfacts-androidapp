@@ -57,8 +57,10 @@ class Product : Serializable {
     var aminoAcidTags: ArrayList<String> = arrayListOf()
 
 
-    val brands: String? = null
-        get() = field?.replace(",", ", ")
+    /**
+     * A string containing the brands, comma separated
+     */
+    var brands: String? = null
 
     /**
      * @return The brandsTags
