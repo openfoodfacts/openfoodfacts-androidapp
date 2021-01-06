@@ -522,10 +522,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     override fun showAllergens(allergens: List<AllergenName>) {
         val data = AllergenHelper.computeUserAllergen(product, allergens)
-        if (data.isEmpty) {
+        if (data.isEmpty()) {
             return
         }
-        if (data.isIncomplete) {
+        if (data.incomplete) {
             binding.productAllergenAlertText.setText(R.string.product_incomplete_message)
             binding.productAllergenAlertLayout.visibility = View.VISIBLE
             return

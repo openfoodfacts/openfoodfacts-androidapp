@@ -69,8 +69,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewFragment
-import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewFragment.Companion.newInstance
-import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment.Companion.newInstance
+import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.AbstractSummaryProductPresenter
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.IngredientAnalysisTagsAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductPresenter
@@ -260,7 +259,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         val addTags = product.additivesTags
                         binding.quickViewAdditives.text = when {
                             addTags.isNotEmpty() -> resources.getQuantityString(R.plurals.productAdditives, addTags.size, addTags.size)
-                            product.statesTags.contains("en:ingredients-completed") -> getString(R.string.productAdditivesNone)
+                            product.statesTags.contains(ApiFields.StateTags.INGREDIENTS_COMPLETED) -> getString(R.string.productAdditivesNone)
                             else -> getString(R.string.productAdditivesUnknown)
                         }
 
@@ -274,7 +273,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         quickViewCheckEcoScore(product)
 
                         // Create the product view fragment and add it to the layout
-                        val newProductViewFragment = newInstance(productState)
+                        val newProductViewFragment = ProductViewFragment.newInstance(productState)
                         supportFragmentManager.commit {
                             replace(R.id.frame_layout, newProductViewFragment)
                             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
@@ -284,56 +283,32 @@ class ContinuousScanActivity : AppCompatActivity() {
                 }
     }
 
-    private fun quickViewCheckEcoScore(product: Product) {
-        binding.quickViewEcoscoreIcon.visibility = View.GONE
-        binding.quickViewCo2Icon.visibility = View.GONE
-        val ecoScoreRes = product.getEcoscoreResource()
-        val co2Res = product.getCO2Resource()
-        if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
-            binding.quickViewEcoscoreIcon.setImageResource(ecoScoreRes)
-            binding.quickViewEcoscoreIcon.visibility = View.VISIBLE
-        } else if (co2Res != Utils.NO_DRAWABLE_RESOURCE) {
-            binding.quickViewCo2Icon.setImageResource(co2Res)
-            binding.quickViewCo2Icon.visibility = View.VISIBLE
-        }
-    }
-
-    private fun quickViewCheckNutriScore(product: Product) {
-        if (isFlavors(AppFlavors.OFF) && product.getNutritionGradeTag() != null
-                && getNutriScoreResource(product.getNutritionGradeTag()) != Utils.NO_DRAWABLE_RESOURCE) {
-            binding.quickViewNutriScore.visibility = View.VISIBLE
-            binding.quickViewNutriScore.setImageResource(getNutriScoreResource(product.nutritionGradeFr))
-            return
-        }
+    private fun quickViewCheckNutriScore(product: Product) = if (isFlavors(AppFlavors.OFF)) {
+        binding.quickViewNutriScore.visibility = View.VISIBLE
+        binding.quickViewNutriScore.setImageResource(product.getNutriScoreResource())
+    } else {
         binding.quickViewNutriScore.visibility = View.GONE
     }
 
-    private fun quickViewCheckNova(product: Product) {
-        if (isFlavors(AppFlavors.OFF) && product.novaGroups != null) {
-            val novaGroupDrawable = product.getNovaGroupResource()
-            if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
-                binding.quickViewNovaGroup.visibility = View.VISIBLE
-                binding.quickViewAdditives.visibility = View.VISIBLE
-                binding.quickViewNovaGroup.setImageResource(novaGroupDrawable)
-            } else {
-                binding.quickViewNovaGroup.visibility = View.INVISIBLE
-            }
-        } else {
-            binding.quickViewNovaGroup.visibility = View.GONE
-        }
+    private fun quickViewCheckNova(product: Product) = if (isFlavors(AppFlavors.OFF)) {
+        binding.quickViewNovaGroup.visibility = View.VISIBLE
+        binding.quickViewAdditives.visibility = View.VISIBLE
+        binding.quickViewNovaGroup.setImageResource(product.getNovaGroupResource())
+    } else {
+        binding.quickViewNovaGroup.visibility = View.GONE
+    }
+
+    private fun quickViewCheckEcoScore(product: Product) {
+        binding.quickViewEcoscoreIcon.setImageResource(product.getEcoscoreResource())
+        binding.quickViewEcoscoreIcon.visibility = View.VISIBLE
     }
 
     private fun tryDisplayOffline(
             offlineSavedProduct: OfflineSavedProduct?,
             barcode: String,
             @StringRes errorMsg: Int
-    ) {
-        if (offlineSavedProduct != null) {
-            showOfflineSavedDetails(offlineSavedProduct)
-        } else {
-            showProductNotFound(getString(errorMsg, barcode))
-        }
-    }
+    ) = if (offlineSavedProduct != null) showOfflineSavedDetails(offlineSavedProduct)
+    else showProductNotFound(getString(errorMsg, barcode))
 
     private fun setupSummary(product: Product) {
         binding.callToActionImageProgress.visibility = View.VISIBLE
@@ -342,7 +317,7 @@ class ContinuousScanActivity : AppCompatActivity() {
             override fun showAllergens(allergens: List<AllergenName>) {
                 val data = AllergenHelper.computeUserAllergen(product, allergens)
                 binding.callToActionImageProgress.visibility = View.GONE
-                if (data.isEmpty) {
+                if (data.isEmpty()) {
                     return
                 }
                 val iconicsDrawable = IconicsDrawable(this@ContinuousScanActivity, GoogleMaterial.Icon.gmd_warning)
@@ -350,7 +325,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         .size(IconicsSize.dp(24))
                 binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(iconicsDrawable, null, null, null)
                 binding.txtProductCallToAction.background = ContextCompat.getDrawable(this@ContinuousScanActivity, R.drawable.rounded_quick_view_text_warn)
-                binding.txtProductCallToAction.text = if (data.isIncomplete) {
+                binding.txtProductCallToAction.text = if (data.incomplete) {
                     getString(R.string.product_incomplete_message)
                 } else {
                     "${getString(R.string.product_allergen_prompt)}\n${data.allergens.joinToString(", ")}"
@@ -369,9 +344,10 @@ class ContinuousScanActivity : AppCompatActivity() {
                 val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags)
                 adapter.setOnItemClickListener { view: View?, _ ->
                     if (view == null) return@setOnItemClickListener
-                    val fragment = newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig)
-                    fragment.show(supportFragmentManager, "fragment_ingredients_with_tag")
-                    fragment.onDismissListener = { adapter.filterVisibleTags() }
+                    IngredientsWithTagDialogFragment.newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig).run {
+                        show(supportFragmentManager, "fragment_ingredients_with_tag")
+                        onDismissListener = { adapter.filterVisibleTags() }
+                    }
                 }
 
                 binding.quickViewTags.adapter = adapter

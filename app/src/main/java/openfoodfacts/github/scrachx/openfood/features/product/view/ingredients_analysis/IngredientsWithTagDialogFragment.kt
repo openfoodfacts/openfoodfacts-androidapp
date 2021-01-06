@@ -177,7 +177,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                 putString(NAME_KEY, config.name.name)
                 putString(INGREDIENTS_IMAGE_URL_KEY, product.imageIngredientsUrl)
 
-                if (product.ingredients == null || product.ingredients.isEmpty()) {
+                if (product.ingredients.isEmpty()) {
                     val statesTags = product.statesTags
                     var ingredientsToBeCompleted = false
                     var photosToBeValidated = false
