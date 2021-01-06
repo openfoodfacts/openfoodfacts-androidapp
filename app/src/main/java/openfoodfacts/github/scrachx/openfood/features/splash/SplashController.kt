@@ -23,6 +23,7 @@ import androidx.work.WorkManager
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.features.splash.ISplashActivity.Controller
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
@@ -43,7 +44,7 @@ class SplashController internal constructor(
     }
 
     private fun activateDownload(taxonomy: Taxonomy, vararg flavors: String) {
-        if (AppFlavors.isFlavors(*flavors)) {
+        if (isFlavors(*flavors)) {
             activateDownload(taxonomy)
         }
     }

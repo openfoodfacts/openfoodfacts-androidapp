@@ -32,8 +32,12 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         val marginEnd = attributes.getDimensionPixelSize(R.styleable.TipBox_arrowMarginEnd, 0)
         val arrowAlignment = attributes.getInt(R.styleable.TipBox_arrowAlignment, Gravity.START)
         val canDisplayImmediately = attributes.getBoolean(R.styleable.TipBox_shouldDisplayImmediately, false)
-        val toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor, ResourcesCompat.getColor(resources, R.color.md_black_1000, context.theme))
-        val toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor, resources.getColor(R.color.brand_light_blue))
+
+        val toolTipTextColor = attributes.getColor(R.styleable.TipBox_textColor,
+                ResourcesCompat.getColor(resources, R.color.md_black_1000, context.theme))
+
+        val toolTipBackgroundColor = attributes.getColor(R.styleable.TipBox_backgroundColor,
+                ResourcesCompat.getColor(resources, R.color.brand_light_blue, context.theme))
         attributes.recycle()
 
         binding.tipMessage.setTextColor(toolTipTextColor)
@@ -64,10 +68,10 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         if (alignment != Gravity.START && alignment != Gravity.CENTER_HORIZONTAL && alignment != Gravity.END) {
             alignment = Gravity.START
         }
-        val layoutParams = binding.arrow.layoutParams as LayoutParams
-        layoutParams.setMargins(marginStart, 0, marginEnd, 0)
-        layoutParams.gravity = alignment
-        binding.arrow.layoutParams = layoutParams
+        binding.arrow.layoutParams = (binding.arrow.layoutParams as LayoutParams).apply {
+            setMargins(marginStart, 0, marginEnd, 0)
+            gravity = alignment
+        }
     }
 
     private fun expand() {
@@ -97,17 +101,10 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         startAnimation(anim)
     }
 
-    fun show() {
-        if (shouldAnimate) {
-            expand()
-        } else {
-            visibility = VISIBLE
-        }
-    }
 
     private fun collapse() {
         val initialHeight = measuredHeight
-        val anim: Animation = object : Animation() {
+        val anim = object : Animation() {
             override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
                 if (interpolatedTime == 1f) {
                     visibility = GONE
@@ -138,11 +135,6 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         })
     }
 
-    private fun hide() {
-        if (shouldAnimate) {
-            collapse()
-        } else {
-            visibility = GONE
-        }
-    }
+    fun show() = if (shouldAnimate) expand() else visibility = VISIBLE
+    fun hide() = if (shouldAnimate) collapse() else visibility = GONE
 }

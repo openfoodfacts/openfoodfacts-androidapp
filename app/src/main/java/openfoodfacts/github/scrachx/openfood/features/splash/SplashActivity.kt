@@ -18,11 +18,11 @@ class SplashActivity : BaseActivity(), ISplashActivity.View {
     /*
     To show different slogans below the logo while content is being downloaded.
      */
-    private fun getTaglineRunnable(taglines: Array<String>) = object : Runnable {
+    private fun getTagLineRunnable(tagLines: Array<String>) = object : Runnable {
         var i = 0
         override fun run() {
             while (!isFinishing) {
-                binding.tagline.text = taglines[i++.rem(taglines.size)]
+                binding.tagline.text = tagLines[i++.rem(tagLines.size)]
                 binding.tagline.postDelayed(this, 1500)
             }
         }
@@ -41,14 +41,14 @@ class SplashActivity : BaseActivity(), ISplashActivity.View {
         }
         val taglines = resources.getStringArray(R.array.taglines_array)
 
-        binding.tagline.post(getTaglineRunnable(taglines))
+        binding.tagline.post(getTagLineRunnable(taglines))
 
         controller.refreshData()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         controller.dispose()
+        super.onDestroy()
     }
 
     override fun navigateToMainActivity() {

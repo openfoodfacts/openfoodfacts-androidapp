@@ -258,7 +258,6 @@
                 style="@style/ButtonFlat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="5dp"
                 android:text="@string/go_to_full_product_page"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
