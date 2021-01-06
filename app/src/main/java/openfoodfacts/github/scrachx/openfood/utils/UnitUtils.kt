@@ -59,10 +59,8 @@ object UnitUtils {
         else -> valueInGramOrMl
     }
 
-    @JvmStatic
     fun saltToSodium(saltValue: Double) = saltValue / SALT_PER_SODIUM
 
-    @JvmStatic
     fun sodiumToSalt(sodiumValue: Double) = sodiumValue * SALT_PER_SODIUM
 
     /**

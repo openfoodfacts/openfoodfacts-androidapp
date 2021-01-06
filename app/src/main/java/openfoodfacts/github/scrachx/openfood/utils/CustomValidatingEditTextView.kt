@@ -29,27 +29,23 @@ class CustomValidatingEditTextView @JvmOverloads constructor(
         }
     }
 
-    //configuration error we reset the id
     val modSpinner: Spinner? by lazy {
         val view = rootView.findViewById<View>(attachedModSpinnerId)
         if (view is Spinner) view
         else {
             // Configuration error we reset the id
             attachedModSpinnerId = NO_ID
-            val attachedTo = if (view == null) "null" else view::class.simpleName
-            error("The id $attachedUnitSpinnerId used in attachedSpinner should be linked to a Spinner and not to $attachedTo.")
+            null
         }
     }
 
-    //configuration error we reset the id
     val unitSpinner: Spinner? by lazy {
         val view = rootView.findViewById<View>(attachedUnitSpinnerId)
         if (view is Spinner) return@lazy view
         else {
             //configuration error we reset the id
             attachedUnitSpinnerId = NO_ID
-            val attachedTo = if (view == null) "null" else view::class.simpleName
-            error("The id $attachedUnitSpinnerId used in attachedSpinner should be linked to a Spinner and not to $attachedTo.")
+            null
         }
     }
 

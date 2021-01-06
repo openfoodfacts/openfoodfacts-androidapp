@@ -165,6 +165,7 @@ object Utils {
      * @see Utils.getRoundNumber
      */
     fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
+    fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
 
     @get:JvmStatic
     val daoSession: DaoSession
