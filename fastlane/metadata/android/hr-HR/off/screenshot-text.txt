@@ -1,5 +1,5 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=hr
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Sastojci
+Ingredients
 
 Powerful
 
-Nutritivne vrijednosti
+Nutrition facts
 
 =====================
 V3 screenshots

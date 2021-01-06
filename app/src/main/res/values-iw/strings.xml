@@ -82,6 +82,12 @@
         <item>יחידה בינלאומית</item>
     </string-array>
     <!-- nutrition comparison units -->
+    <!-- Application theme settings -->
+    <string-array name="application_theme_entries">
+        <item>@string/follow_system</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
+    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -176,7 +182,7 @@
     <string name="txtEMB">קודים למעקב:</string>
     <string name="txtIngredients">רשימת רכיבים:</string>
     <string name="Donate">תרומה</string>
-    <string name="Donation">יש ללחוץ כאן כדי לתרום ל־Open Food Facts</string>
+    <string name="Donation">יש ללחוץ כאן כדי לתרום ל־Open Products Facts</string>
     <string name="txtSubstances">חומרים או מוצרים שיכולים לגרום לרגשת או רגישות :</string>
     <string name="txtAdditives">תוספים :</string>
     <string name="txtTraces">עקבות :</string>
@@ -196,6 +202,7 @@
     <string name="txtSugars">סוכרים</string>
     <string name="hintBarcode">ברקוד</string>
     <string name="txtNutriScoreInfo">מידע נוסף על רמות חומרי ההזנה</string>
+    <string name="txtloginHelper">אם יש לך חשבון Open Food Facts, ניתן להיכנס אתו לכאן</string>
     <string name="hintLogin">שם משתמש</string>
     <string name="hintPass">ססמה</string>
     <string name="errorLogin">שם המשתמש או הססמה שגויים</string>
@@ -203,7 +210,7 @@
     <string name="uploadLater">התמונה תישלח ברגע שהרשת תהיה זמינה</string>
     <string name="txtInfoLoginOk">המשתמש נשמר</string>
     <string name="txtInfoLoginNo">המשתמש לא נשמר</string>
-    <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Food Facts. נא לסרוק אותו.</string>
+    <string name="txtDialogsContent">המוצר שסרקת לא קיים עדיין ב־Open Products Facts. נא לסרוק אותו.</string>
     <string name="txtYes">כן</string>
     <string name="txtNo">לא</string>
     <string name="hintBrand">מותג</string>
@@ -217,7 +224,7 @@
     <string name="txtBarcodeRequire">נדרש ברקוד</string>
     <string name="txtOk">אישור</string>
     <string name="txtBarcodeNotValid">הברקוד לא זמין</string>
-    <string name="msg_share">להלן מוצר מתוך Open Food Facts :</string>
+    <string name="msg_share">להלן מוצר מתוך Open Products Facts :</string>
     <string name="create_account">הרשמה</string>
     <string name="home_drawer">ראשי</string>
     <string name="install">התקנת</string>
@@ -241,9 +248,9 @@
     <string name="cancel_button">ביטול</string>
     <string name="login_button">שם משתמש</string>
     <string name="create_account_button">יצירת חשבון</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Food Facts server. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">נתוני האלרגיות שלך לא יישלחו לשרת של Open Products Facts. כמו כן, מוטב להיזהר כי נתונים של מוצרים עשויים להיות חלקיים והזיהוי עשוי להיות בלתי מדויק, לכן, מוטב לנקוט במשנה זהירות ולבדוק בדרך נוספת באופן עצמאי! </string>
     <string name="title_info_dialog">איך זה עובד?</string>
-    <string name="text_offline_info_dialog">ניתן לסרוק מוצרים ללא חיבור לאינטרנט ולהוסיף אותם למסד נתוני המזון הפתוח מאוחר יותר. כל המוצרים שנסרקים מופיעים כאן, תהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
+    <string name="text_offline_info_dialog">ניתן לסרוק מוצרים אפילו ללא חיבור לאינטרנט כדי להוסיף אותם ל־Open Products Facts בשלב מאוחר יותר. המוצרים שנסרקו יופיעו כאן ותהיה לך אפשרות לשלוח אותם בעזרת הכפתור שלהלן.</string>
     <string name="permission_camera">נדרשת הרשאה לשימוש במצלמה כדי לסרוק ברקודים ולצלם תמונות.</string>
     <string name="no_camera_dialog_title">מצלמה לא נמצאה</string>
     <string name="no_camera_dialog_content">למכשיר שלך אין מצלמה. לא תהיה לך אפשרות לסרוק ברקודים.</string>
@@ -327,7 +334,7 @@
     <string name="txt_no_matching_incomplete_products">אין מוצרים שלא הושלמו! ברצונך להוסיף מוצר חדש?</string>
     <string name="txt_no_matching_contributor_products">אבוי, אין לנו מוצרים שנתרמו על ידי המתנדב הזה, נוכל לבקש ממך להוסיף אחד?</string>
     <string name="txt_no_matching_products">לא מצאנו מוצרים מתאימים.\nניתן לנסות:</string>
-    <string name="txt_broaden_search">- להרחיב את החיפוש שלך \n- לסרוק ולהוסיף ל־Open Food Facts</string>
+    <string name="txt_broaden_search">- להרחיב את החיפוש שלך \n- לסרוק ולהוסיף ל־Open Products Facts</string>
     <string name="something_went_wrong">משהו השתבש, עמך הסליחה…</string>
     <string name="txt_try_again">נא לנסות שוב</string>
     <string name="nutrition_lactose">לקטוז</string>
@@ -439,8 +446,8 @@
     <string name="preference_choose_language_dialog_title">בחירת שפה</string>
     <string name="FAQ">שו״ת</string>
     <string name="FrequentlyAskedQuestions">שאלות ותשובות נפוצות</string>
-    <string name="translate_help_title">סיוע בתרגום Open Food Facts</string>
-    <string name="translate_help_summary">הנגשת מסד הנתונים של Open Food Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
+    <string name="translate_help_title">סיוע בתרגום Open Products Facts</string>
+    <string name="translate_help_summary">הנגשת מסד הנתונים של Open Products Facts לאנשים שדוברים את אותה השפה כמוך - לא נדרש ידע טכני</string>
     <string name="please_check_your_connection">נא לבדוק את החיבור שלך.</string>
     <string name="advanced_search_title">חיפוש ותרשימים ומתקדמים</string>
     <string name="compare_products">השוואת מוצרים</string>
@@ -450,14 +457,14 @@
     <string name="TermsOfUse">תנאי השירות ופרטיות</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://he.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
-    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <string name="faq_url">https://il.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://il.openfoodfacts.org/hunger-game</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
-    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <string name="nutriscore_uri">https://il.openfoodfacts.org/nutriscore</string>
     <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
     <string name="url_nova_groups">https://world.openfoodfacts.org/nova</string>
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
@@ -534,6 +541,7 @@
     <string name="last_editor_history">עריכת המוצר האחרונה נערכה ב־%1$s בשעה %2$s לפי שעון קיץ מרכז אירופה על ידי </string>
     <string name="other_editors">עמוד המוצר נערך גם על ידי </string>
     <string name="contribution_tab">תרומות</string>
+    <string name="synthesis_tab">סינתזה</string>
     <string name="contribution_tab_summary">הצגת לשונית תרומות משתמשים עם מוצרים</string>
     <string name="contribution_tab_title">הצגת לשונית תרומות</string>
     <string name="txtDialogsTitle">פרטים</string>
@@ -551,7 +559,7 @@
     </plurals>
     <string name="product_not_complete">מוצר זה טרם הושלם. \nנוכל לבקש ממך להוסיף עוד פרטים?</string>
     <string name="addProductOffline">כנראה שאין לך חיבור לאינטרנט. להוסיף את המוצר %s במצב בלתי מקוון?</string>
-    <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Food Facts. נוכל לבקש ממך להוסיף אותו?</string>
+    <string name="product_not_found">המוצר %1$s שסרקת לא קיים עדיין ב־Open Products Facts. נוכל לבקש ממך להוסיף אותו?</string>
     <string name="scan_sound">צליל סריקה</string>
     <string name="trouble_scanning">בעיה בסריקה?</string>
     <string name="barcode_hint">בעיה בסריקה? ניתן להקליד ברקוד</string>
@@ -559,7 +567,7 @@
     <string name="autofocus">מיקוד אוטומטי</string>
     <string name="initial_loading">טעינה ראשונית</string>
     <string name="preferences">העדפות</string>
-    <string name="OFFlogo">הלוגו של Open Food Facts</string>
+    <string name="OFFlogo">הלוגו של Open Products Facts</string>
     <string name="loading_product">המוצר %s נטען</string>
     <string name="image_not_defined_for_language">אין תמונה עבור השפה הנבחרת. ניתן להוסיף אחת חדשה</string>
     <string name="error_adding_ingredients">משהו השתבש במהלך הניסיון להוסיף רכיבים למוצר</string>
@@ -652,7 +660,7 @@
     <string name="contribution_by">תרומה של</string>
     <string name="title_activity_product">כותרת</string>
     <string name="description_activity_product">תיאור</string>
-    <string name="intent_filter_share_label">הוספה ל־Open Food Facts</string>
+    <string name="intent_filter_share_label">הוספה ל־Open Products Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">סיכון גבוה לחשיפת יתר</string>
     <string name="overexposure_moderate">סיכון בינוני לחשיפת יתר</string>
@@ -667,7 +675,7 @@
     <string name="adults">בוגרים</string>
     <string name="adults_age">18 עד 64</string>
     <string name="elderly">קשישים</string>
-    <string name="elderly_age">65+</string>
+    <string name="elderly_age">65 ומעלה</string>
     <string name="most_people">רוב האנשים\n(מעל 50%)</string>
     <string name="some_people">חלק מהאנשים\n(מעל 5%)</string>
     <string name="safety_and_exposure_assessment">הערכת בטיחות וחשיפה</string>
@@ -681,11 +689,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">חילוץ רכיבים</string>
     <string name="extract_recycling_prompt">חילוץ הנחיות מיחזור</string>
-    <string name="add_nutrient_prompt_text">יש להוסיף מפרט תזונתי כדי לחשב Nutri-Score</string>
-    <string name="add_category_prompt_text">יש להוסיף קטגוריה כדי לחשב Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">יש להוסיף מפרט תזונתי וקטגוריה כדי לחשב ציון תזונתי</string>
-    <string name="category_game_btn">נא לסייע לסדר את המוצרים בקטגוריות כדי לחשב Nutri-Score</string>
-    <string name="version_string">יישומון ה־Android של Open Food Facts</string>
+    <string name="add_nutrient_prompt_text">ניתן להוסיף עובדות תזונתיות כדי לחשב רמות הזנה</string>
+    <string name="add_category_prompt_text">ניתן להוסיף קטגוריה כדי לסייע בהשלמת תיעוד המוצר</string>
+    <string name="add_nutrient_category_prompt_text">ניתן להוסיף קטגוריה ועובדות תזונתיות כדי לסייע בהשלמת תיעוד המוצר</string>
+    <string name="category_game_btn">סיוע בסיווג מוצרים</string>
+    <string name="version_string">יישומון ה־Android של Open Products Facts</string>
     <string name="version">גרסה</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -705,13 +713,13 @@
     <string name="txt_create_new_list">יצירת רשימה חדשה</string>
     <string name="txt_add_to_new_list">הוספה לרשימה חדשה</string>
     <string name="create_new_list_list_name">שם רשימה</string>
-    <string name="txt_eaten_products">מוצרים נאכלים</string>
+    <string name="txt_eaten_products">מוצרים שיש לי</string>
     <string name="txt_products_to_buy">מוצרים לרכישה</string>
     <string name="txt_exporting_your_listed_products">המוצרים שלך מיוצאים…</string>
     <string name="txt_your_listed_products_exported">המוצרים שלך יוצאו</string>
     <string name="txt_discard">התעלמות</string>
-    <string name="txt_info_eaten_products">\"יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„נאכל כעת”.
-        כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.\"</string>
+    <string name="txt_info_eaten_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי סריקת מוצרים, גרירת הכרטיס למעלה ונגיעה ב־„מוצרים לרכישה”.
+        כמו כן, יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על כפתור ה־+ הפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="txt_info_your_listed_products">יתאפשר לך להוסיף מוצרים לרשימה זו על ידי חיפוש אחריהם ולחיצה על הכפתור + בפינה השמאלית העליונה של עמוד המוצר.</string>
     <string name="search_history_pref_title">מחיקת היסטוריית החיפוש המקומית</string>
     <string name="search_history_pref_summary">הסרת כל החיפושים שערכת דרך המכשיר הזה</string>
@@ -812,9 +820,15 @@
     <string name="icon_categories">סמל קטגוריות</string>
     <string name="icon_emb">סמל קוד מעקב</string>
     <string name="product_front_image">תמונת חזית המוצר</string>
-    <string name="brand_hint">דוגמאות: קוקה קולה, נסטלה וכו׳…</string>
+    <string name="brand_hint">דוגמאות: Nike,‏ Apple וכו׳…</string>
     <string name="sign_in_or_register">כניסה או הרשמה</string>
     <string name="hunger_game_call_to_action">סיוג בסיווג של עוד %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts הוא מסד נתונים פתוח המכיל למעלה מ־%1$s מוצרי מזון (כולל אלו שתרמת) עם רכיבים, חומרים מעוררי רגישות, עובדות תזונתיות וכל שביב מידע שניתן למצוא על תוויות המוצרים.</string>
+    <string name="txtHomeOnline">מסד הנתונים הפתוח Open Products Facts מכיל למעלה מ־%1$s מוצרים (בלי אלו שעוד יתווספו על ידיך).</string>
     <string name="enabled">מופעל</string>
+    <!-- Application theme settings -->
+    <string name="follow_system">כמו המערכת</string>
+    <string name="day">יום</string>
+    <string name="night">לילה</string>
+    <string name="required_for_ecoscore">(נדרש לטובת חישוב Eco-Score)</string>
+    <string name="hint_origin">דוגמאות: ארה״ב, צרפת, ישראל</string>
 </resources>

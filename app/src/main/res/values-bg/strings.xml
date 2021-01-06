@@ -72,6 +72,12 @@
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
+    <!-- Application theme settings -->
+    <string-array name="application_theme_entries">
+        <item>@string/follow_system</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
+    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -166,7 +172,7 @@
     <string name="txtEMB">EMB код:</string>
     <string name="txtIngredients">Списък на съставките :</string>
     <string name="Donate">Дарете</string>
-    <string name="Donation">Щракнете тук, за да направите дарение на Open Food Facts</string>
+    <string name="Donation">Click here to donate to Open Products Facts</string>
     <string name="txtSubstances">Вещества или продукти, причиняващи алергии или непоносимост :</string>
     <string name="txtAdditives">Добавки :</string>
     <string name="txtTraces">Следи :</string>
@@ -186,6 +192,7 @@
     <string name="txtSugars">Захар</string>
     <string name="hintBarcode">Баркод</string>
     <string name="txtNutriScoreInfo">Научете повече за нивата на хранителните вещества</string>
+    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Вход</string>
     <string name="hintPass">Парола</string>
     <string name="errorLogin">Грешно име или парола</string>
@@ -193,7 +200,7 @@
     <string name="uploadLater">Изображението ще бъде качено, когато е налична мрежа</string>
     <string name="txtInfoLoginOk">Потребителят е запазен</string>
     <string name="txtInfoLoginNo">Потребителят не е запазен</string>
-    <string name="txtDialogsContent">Продуктът, който сте сканирали, все още не съществува в Open Food Facts. Моля, добавете го.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
     <string name="txtYes">Да</string>
     <string name="txtNo">Не</string>
     <string name="hintBrand">Марка</string>
@@ -207,7 +214,7 @@
     <string name="txtBarcodeRequire">Необходим е баркод</string>
     <string name="txtOk">ОК</string>
     <string name="txtBarcodeNotValid">Баркодът не е валиден</string>
-    <string name="msg_share">Погледнете този продукт в Open Food Facts:</string>
+    <string name="msg_share">Look at this product on Open Products Facts :</string>
     <string name="create_account">Регистрирай се</string>
     <string name="home_drawer">Начало</string>
     <string name="install">Install</string>
@@ -231,9 +238,9 @@
     <string name="cancel_button">Отмени</string>
     <string name="login_button">Вход</string>
     <string name="create_account_button">Създай профил</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Вашата информация за алергиите никога няма да бъде изпратена на сървъра на Open Food Facts. Също така бъдете внимателни с това, че данните за продукта може да не са точни и откриването може да не е 100% точно, затова моля, проверете повторно сами! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Как работи това?</string>
-    <string name="text_offline_info_dialog">Можете да сканирате продукти, когато сте офлайн, за да ги добавите към Open Food Facts по-късно. Всички продукти, които сканирате, ще се показват тук и ще можете да ги изпратите, като използвате бутона по-долу.</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Необходимо е разрешение за камерата за сканиране на баркодове и заснемане на снимки.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -317,7 +324,7 @@
     <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">Не намерихме съвпадащи продукти.\n Можете да опитате :</string>
-    <string name="txt_broaden_search">- разширяване на търсенето ви \n- сканиране и добавяне към Open Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
     <string name="something_went_wrong">Съжаляваме, нещо се обърка…</string>
     <string name="txt_try_again">Опитайте пак</string>
     <string name="nutrition_lactose">Лактоза</string>
@@ -429,8 +436,8 @@
     <string name="preference_choose_language_dialog_title">Изберете език</string>
     <string name="FAQ">ЧЗВ</string>
     <string name="FrequentlyAskedQuestions">Често задавани въпроси</string>
-    <string name="translate_help_title">Помогнете за превода на Open Food Facts</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_title">Help translate Open Products Facts</string>
+    <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Моля проверете връзката си.</string>
     <string name="advanced_search_title">Разширено търсене &amp; Графики</string>
     <string name="compare_products">Сравни продукти</string>
@@ -440,7 +447,7 @@
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://bg.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -524,6 +531,7 @@
     <string name="last_editor_history">Последна редакция на страницата на продукта в %1$s на %2$s CEST от </string>
     <string name="other_editors">Страницата на продукта е редактирана също от </string>
     <string name="contribution_tab">Приноси</string>
+    <string name="synthesis_tab">Synthesis</string>
     <string name="contribution_tab_summary">Показване на раздела с потребителски приноси с продукти</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="txtDialogsTitle">Информация</string>
@@ -539,7 +547,7 @@
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
     <string name="scan_sound">Scan sound</string>
     <string name="trouble_scanning">Проблем със сканирането?</string>
     <string name="barcode_hint">Проблем със сканирането? Въведете баркода</string>
@@ -547,7 +555,7 @@
     <string name="autofocus">Автофокусиране</string>
     <string name="initial_loading">Първоначално зареждане</string>
     <string name="preferences">Предпочитания</string>
-    <string name="OFFlogo">Open Food Facts лого</string>
+    <string name="OFFlogo">Open Products Facts logo</string>
     <string name="loading_product">Зареждане на продукт %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Нещо се обърка, докато се опитвахме да добавим съставките на продукта</string>
@@ -642,7 +650,7 @@
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Заглавие</string>
     <string name="description_activity_product">описание</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">Add to Open Products Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
@@ -671,11 +679,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Извлечете съставките</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_category_prompt_text">Add a category to help complete the product</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="category_game_btn">Помогнете с категоризирането на продуктите</string>
+    <string name="version_string">Open Products Facts Android App</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -695,13 +703,13 @@
     <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
     <string name="create_new_list_list_name">List Name</string>
-    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_eaten_products">Products I have</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Отказ</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
@@ -802,9 +810,15 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="enabled">Enabled</string>
+    <!-- Application theme settings -->
+    <string name="follow_system">Follow system</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, French, Italy</string>
 </resources>
