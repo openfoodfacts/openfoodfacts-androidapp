@@ -324,7 +324,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     @Contract("null -> new")
     private fun extractProductBrandsChipsValues(product: Product?) =
-            product?.brands?.split(Regex("\\s*,\\s*")) ?: emptyList()
+            product?.brands?.split(',') ?: emptyList()
 
     /**
      * Loads front image of the product into the imageview
