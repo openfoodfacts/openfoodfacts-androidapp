@@ -91,6 +91,9 @@ jobs:
       - name: Workaround for Android Gradle plugin issue
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
 
+      - name: Increase memory limit for Gradle
+        run: "export GRADLE_OPTS=\"-Xmx4G\""
+
       - name: Run gradle android lint
         run: ./gradlew lint
 
