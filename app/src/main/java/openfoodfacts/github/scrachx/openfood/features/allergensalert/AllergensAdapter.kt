@@ -28,17 +28,16 @@ import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 class AllergensAdapter(
         private val repository: ProductRepository,
         var allergens: MutableList<AllergenName> = mutableListOf()
-) : RecyclerView.Adapter<AllergensAdapter.CustomViewHolder>() {
+) : RecyclerView.Adapter<AllergensAdapter.AllergenViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllergenViewHolder {
         val contactView = LayoutInflater.from(parent.context).inflate(R.layout.item_allergens, parent, false)
-        return CustomViewHolder(contactView)
+        return AllergenViewHolder(contactView)
     }
 
-    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AllergenViewHolder, position: Int) {
         val allergen = allergens[position]
-        holder.nameTextView.text = allergen.name.substring(allergen.name.indexOf(':') + 1)
-        holder.messageButton.setText(R.string.delete_txt)
+        holder.nameTextView.text = allergen.name
         holder.messageButton.setOnClickListener {
             allergens.removeAt(holder.adapterPosition)
             notifyItemRemoved(holder.adapterPosition)
@@ -48,7 +47,7 @@ class AllergensAdapter(
 
     override fun getItemCount() = allergens.size
 
-    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class AllergenViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageButton: Button = itemView.findViewById(R.id.delete_button)
         val nameTextView: TextView = itemView.findViewById(R.id.allergen_name)
     }

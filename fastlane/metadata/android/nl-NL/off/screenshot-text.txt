@@ -13,15 +13,15 @@ Je volledige scan geschiedenis, helemaal privé & exporteerbaar
 
 Ga verder met Wikipedia
 
-Set allergen alerts
+Stel allergeenwaarschuwingen in
 
 Voeding, vereenvoudigd
 
-Allergen alert
+Stel allergeenwaarschuwingen in
 
 Bekijk alternatieven voor je favoriete levensmiddelen
 
-Become an actor of food transparency
+Doe mee aan voedsel inzicht
 
 Wikipedia voor voedsel
 
@@ -35,10 +35,10 @@ Ingrediënten
 
 Krachtig
 
-Nutrition facts
+Krachtig Voedingswaarden
 
 =====================
-V3 screenshots
+V3 schermafbeeldingen
 =====================
 
 Kies de producten die goed zijn voor u en voor de 🌍 planeet!
@@ -47,7 +47,7 @@ Kies de producten die goed zijn voor u en voor de 🌍 planeet!
 
 ✔ Een wereldwijde supermarkt in uw zak
 
-Nutritional quality
+Krachtig Voedingswaarden
 
 Ultra-verwerkte voedingsmiddelen
 

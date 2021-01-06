@@ -1,4 +1,4 @@
-Scansiona prodotti alimentari per animali o i loro codici a barre per ottenere dati su ingredienti, additivi e valori nutrizionali.
+Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni, dati nutrizionali e tutti i frammenti d'informazione che si possono trovare sulle etichette dei prodotti.
 
 ▶ Trova e confronta più di 800.000 prodotti
 
@@ -20,7 +20,7 @@ Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfac
 - Per visualizzare l'impatto di carbonio, un prodotto deve avere una lista completa degli ingredienti con la % di carne o pesce e una quantità
 
 
-▶ Contribuisci alla trasparenza alimentare
+*** Contribuire alla trasparenza dei prodotti ***
 - Open Products Facts è un database di prodotti fatto da tutti per tutti.
 - Puoi usarlo per fare migliori scelte e dato che sono dati aperti, chiunque può riutilizzarli per ogni scopo.
 - Open Products Facts è un progetto no-profit sviluppato da migliaia di volontari da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi.
@@ -33,7 +33,7 @@ Crea liste della spesa, registra ciò che hai mangiato e condividi ed esporta fa
 - Open Products Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
 - l'impronta di carbonio (emissioni di CO2) e l'imballaggio (comprese le istruzioni per il riciclo),
 - il Nutriscore (punteggio nutrizionale), i nutrienti, il contenuto in grassi, gli acidi grassi saturi, i carboidrati, gli zuccheri, le fibre, le proteine, il sale e il sodio.
-- l'elenco degli ingredienti (compreso il contenuto di ceneri) - informazioni nutrizionali, semafori nutrizionali… - marche, allergeni, etichette (biologico, vegano...)
+- marche, allergeni, etichette (biologico, vegano...)
 - Su vini e birre troverai la gradazione alcolica.
 
 
@@ -53,24 +53,24 @@ Scansione alla velocità della luce (anche se sei su un aereo, sottomarino o sup
 - Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
 - L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
 
-▶ Il tuo cibo, i tuoi dati
+*** Il tuo cibo per animali, i tuoi dati ***
 - I tuoi dati personali sono tuoi e non vengono mai inviati online
 - Puoi usare l'app in modo anonimo
 - Puoi esportare la cronologia di scansione
 
 ▶ Imposta avvisi sugli allergeni nei prodotti
 - Latte, glutine, uova, soia, noci, pesce, sedano, senape, anidride solforosa e solfiti, arachidi, semi di sesamo, crostacei, molluschi o allergia al lupino?
-- Accelera i tuoi acquisti facendo una prima scansione del tuo cibo con Open Food Facts.
+- Open Miniature Facts - Il più grande database aperto di miniature di prodotti alimentari
 - Fai attenzione che le informazioni ed il rilevamento potrebbero non essere accurati al 100%. Quindi controlla sempre da solo, con la confezione.
 
 
 ▶ Saluta e/o unisciti a noi!
 
 
-Open Food Facts è anche disponibile sul web all'indirizzo https://world-it.openfoodfacts.org/
+Open Produts Facts è anche disponibile sul web ad https://world.openproductsfacts.org
 
 
 Per domande e feedback: contact@openfoodfacts.org
 
 
-Per il cibo, è possibile installare Open Food Facts, per i cosmetici, Open Beauty Facts e per alimenti per animali domestici, Open Pet Food Facts.
+Per il cibo è possibile installare Open Food Facts, per alimenti per animali domestici Open Pet Food Facts e per tutti gli altri prodotti Open Products Facts.

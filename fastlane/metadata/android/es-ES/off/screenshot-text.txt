@@ -1,72 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+Esos son los eslóganes que se muestran encima de las capturas de pantalla en la playstore. Mantenlos cortos y atractivos.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=es
 
 =====================
-V2 screenshots
+Capturas de pantalla versión 2
 =====================
 
-Scan products
+Escanea productos
 
-Get the Nutriscore
+Obtener el Nutriscore
 
-Your full scan history, fully private & exportable
+Tu historial de escaneo completo, totalmente privado y exportable
 
-Go further with Wikipedia
+Ve más allá con Wikipedia
 
-Set allergen alerts
+Configurar alertas de Allergen
 
-Nutrition, simplified
+Nutrición, simplificada
 
-Allergen alert
+Alerta de alérgenos
 
-Get alternatives for your favorite foods
+Obtén alternativas para tus comidas favoritas
 
-Become an actor of food transparency
+Conviértete en un actor de la transparencia alimentaria
 
-Wikipedia for Food
+Wikipedia para Comida
 
-Wikipedia for Cosmetics
+Wikipedia para Cosméticos
 
-Wikipedia for Pet Food
+Wikipedia para Comida para Mascotas
 
-Wikipedia of Products
+Wikipedia de Productos
 
-Ingredients
+Ingredientes
 
-Powerful
+Poderoso
 
-Nutrition facts
+Información nutricional
 
 =====================
-V3 screenshots
+Capturas de pantalla versión 3
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+¡Elija los productos que son buenos para usted y para el planeta 🌍!
 
-✔ Ultra-fast barcode scan
+Escaner código de barras ultrarrápido
 
-✔ A global supermarket in your pocket
+Un supermercado global en tu bolsillo
 
-Nutritional quality
+Calidad nutricional
 
-Ultra-processed foods
+Alimentos ultraprocesados
 
-Carbon impact
+Impacto de carbono
 
-Compare easily before you buy
+Compara fácilmente antes de comprar
 
-Create shopping lists, intake lists…
+Crea listas de compra, registros de ingesta,…
 
-Find and compare over 750 000 products.
+Encuentra y compara más de 750 000 productos.
 
 
 
-Unlimited and fully-private scan history
+Historial de escaneo ilimitado y completamente privado
 
-Swipe for even more details
+Desliza para más detalles
 
-Set Allergen Alerts
+Alerta de alérgenos
 
-Join our global movement for food transparency
+Únete a nuestro movimiento global para la transparencia alimentaria
 
 world.openfoodfacts.org/contribute

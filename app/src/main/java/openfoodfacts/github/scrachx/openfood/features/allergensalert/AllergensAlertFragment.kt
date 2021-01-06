@@ -54,7 +54,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
 
     private lateinit var adapter: AllergensAdapter
     private lateinit var mSettings: SharedPreferences
-    private lateinit var dataObserver: DataObserver
+    private val dataObserver by lazy { AllergensObserver() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         setHasOptionsMenu(true)
@@ -67,7 +67,6 @@ class AllergensAlertFragment : NavigationBaseFragment() {
 
         // OnClick
         binding.btnAdd.setOnClickListener { addAllergen() }
-        dataObserver = DataObserver()
 
         val language = LocaleHelper.getLanguage(requireActivity())
 
@@ -97,7 +96,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     override fun onResume() {
         super.onResume()
         try {
-            (requireActivity() as? AppCompatActivity)!!.supportActionBar!!.setTitle(getString(R.string.alert_drawer))
+            (requireActivity() as AppCompatActivity).supportActionBar!!.setTitle(getString(R.string.alert_drawer))
         } catch (e: IllegalStateException) {
             Log.e(AllergensAlertFragment::class.simpleName, "onResume", e)
         }
@@ -119,19 +118,16 @@ class AllergensAlertFragment : NavigationBaseFragment() {
      * Add an allergen to be checked for when browsing products.
      */
     private fun addAllergen() {
-        if (mAllergensEnabled != null && allergensFromDao?.isNotEmpty() == true) {
+        if (mAllergensEnabled != null && !allergensFromDao.isNullOrEmpty()) {
             ProductRepository.getAllergensByEnabledAndLanguageCode(false, LocaleHelper.getLanguage(requireActivity()))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnError { it.printStackTrace() }
+                    .map { allergens -> allergens.sortedBy { it.name } }
                     .subscribe { allergens ->
-                        val allergensNames = allergens
-                                .map { it.name }
-                                .sortedWith { name1, name2 -> name1.compareTo(name2, true) }
-
                         MaterialDialog.Builder(requireContext()).apply {
                             title(R.string.title_dialog_alert)
-                            items(allergensNames)
+                            items(allergens.map { it.name })
                             itemsCallback { _, _, position, _ ->
                                 ProductRepository.setAllergenEnabled(allergens[position].allergenTag, true)
                                 mAllergensEnabled!!.add(allergens[position])
@@ -199,7 +195,7 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     /**
      * Data observer of the Recycler Views
      */
-    internal inner class DataObserver : AdapterDataObserver() {
+    internal inner class AllergensObserver : AdapterDataObserver() {
         override fun onChanged() {
             super.onChanged()
             setAppropriateView()

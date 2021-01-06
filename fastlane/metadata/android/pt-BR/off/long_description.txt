@@ -20,9 +20,9 @@ Para explorar o projeto Open Food Facts realizado por voluntários, visite https
 Para expor o impacto do carbono um produto deve ter uma lista completa com a porcentagem e uma quantidade de carne ou peixe
 
 
-▶ Contribuir para a transparência alimentar
+*** Contribua para a transparência dos produtos ***
 - Open Food Facts é um banco de dados de produtos alimentícios feito por todos, para todos.
-- Você pode usá-lo para fazer melhores escolhas e, como se trata de dados abertos, qualquer pessoa pode reutilizá-lo para qualquer finalidade.
+- Você pode usá-lo para escolher melhor seus cosméticas, e como seu conteúdo é de acesso livre, qualquer um pode reutilizá-lo para qualquer finalidade.
 Open Product Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários ao redor do mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras.
 -Você pode começar contribuindo hoje adicionando seu primeiro produto.
 
@@ -30,10 +30,10 @@ Open Product Facts é um projeto sem fins lucrativos desenvolvido por milhares d
 Crie listas de compras, acompanhe o que você tem ingerido, compartilhe e exporte facilmente suas listas.
 
 ▶ Obtenha os Factos
-- Open Products Facts te ajuda a entender as letras miúdas nos rótulos dos produtos. Você será capaz de encontrar:
+- Open Products Facts te ajuda a entender as letras miúdas nos rótulos dos produtos. Você também poderá encontrar (de acordo com as indicações presentes nos produtos):
 Pegadas de carbono (emissões de CO2) e embalagens (assim como instruções para reciclagem),
 - Nutriscore (pontos nutricionais), nutrição, gordura/teor de gordura, ácidos graxos saturados, carboidratos, açúcares, fibra, proteína e sal e sódio.
-- marcas, alérgenos, rótulos (bio, sem glúten, vegano, vegetariano, halal, kosher...), informações de rastreabilidade (código de embalagem, origem de ingredientes)
+- marcas, alérgenos, rótulos (orgânicos, veganos...)
 - Em vinhos e cervejas, você encontrará teor alcoólico.
 
 
@@ -53,24 +53,24 @@ Digitalize à velocidade da luz (mesmo se você estiver num avião, submarino ou
 - Você pode adicionar novos produtos, mesmo se você não estiver conectado à Internet.
 - O aplicativo carrega apenas o estrito necessário para reduzir o consumo de dados e bateria.
 
-▶ Sua comida, seus dados
+***Seus alimentos de animais, seus dados***
 - Seus dados pessoais são seus e nunca serão enviados online
 - Você pode usar o aplicativo anonimamente
 - Você pode exportar seu histórico
 
 ▶ Configurar alertas de alérgenos em produtos
 - Leite, glúten, ovos, soja, nozes, peixe, aipo, mostarda, dióxido de enxofre e sulfitos, amendoim, sementes de gergelim, crustáceos, moluscos ou alergia de tremoços?
-- Acelere suas compras fazendo uma triagem inicial de sua comida com o Open Food Facts.
+- Open Miniature Food Facts - O maior banco de dados de comidas em miniatura
 - Tenha cuidado para que as informações não sejam 100% precisas e a detecção não seja 100% precisa. Portanto, verifique sempre por si mesmo, com a embalagem.
 
 
 ▶ Diga olá e / ou junte-se a nós!
 
 
-Open Food Facts também está disponível na internet em https://world.open.food.facts.org
+Open Products Facts também está disponivel na internet em https://world.openproductsfacts.org
 
 
 Perguntas, feedback: contato@openfoodfacts.org
 
 
-Para comida você pode baixar Open Food Facts, para cosméticos, Open Beauty Facts, e para pets, Open Pet Food Facts.
+Para comida humana, você pode instalar o Open Food Facts, para animais de estimação, o Open Pet Food Facts, e para todos os outros produtos, o Open Products Facts.

@@ -192,7 +192,7 @@
     <string name="txtSugars">Sokerit</string>
     <string name="hintBarcode">Viivakoodi</string>
     <string name="txtNutriScoreInfo">Opi lisää ravintoainepitoisuuksista</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
+    <string name="txtloginHelper">Jos sinulla on Open Food Facts -tili, voit kirjautua sisään täällä</string>
     <string name="hintLogin">Käyttäjätunnus</string>
     <string name="hintPass">Salasana</string>
     <string name="errorLogin">Käyttäjätunnus tai salasana virheellinen</string>

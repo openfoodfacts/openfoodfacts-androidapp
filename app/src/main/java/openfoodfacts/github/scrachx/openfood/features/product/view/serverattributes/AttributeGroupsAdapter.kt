@@ -37,9 +37,7 @@ class AttributeGroupsAdapter(
         val groupView = convertView ?: activity.layoutInflater.inflate(R.layout.attribute_group_item, parent, false)
         val group = getGroup(groupPosition)
 
-        (groupView.findViewById(R.id.title_text) as TextView).text = group.name
-
-        (groupView.findViewById(R.id.short_desc_text) as TextView).text = group.id
+        groupView.findViewById<TextView>(R.id.title_text).text = group.name
 
         return groupView
     }
@@ -48,11 +46,11 @@ class AttributeGroupsAdapter(
         val childView = convertView ?: activity.layoutInflater.inflate(R.layout.attribute_item, parent, false)
         val child = getChild(groupPosition, childPosition)
 
-        (childView.findViewById(R.id.title_text) as TextView).text = child.title.orEmpty()
+        childView.findViewById<TextView>(R.id.title_text).text = child.title.orEmpty()
 
-        (childView.findViewById(R.id.short_desc_text) as TextView).text = child.descriptionShort.orEmpty()
+        childView.findViewById<TextView>(R.id.short_desc_text).text = child.descriptionShort.orEmpty()
 
-        val iconView = childView.findViewById(R.id.logo_view) as ImageView
+        val iconView = childView.findViewById<ImageView>(R.id.logo_view)
         val iconUrl = child.iconUrl
         if (iconUrl != null) {
             Utils.picassoBuilder(activity).load(iconUrl.replaceAfterLast(".", "png")).into(iconView)

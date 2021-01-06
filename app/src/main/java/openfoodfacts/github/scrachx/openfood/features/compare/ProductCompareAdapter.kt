@@ -165,37 +165,13 @@ class ProductCompareAdapter(
         // Open Food Facts specific
         if (isFlavors(AppFlavors.OFF)) {
             // NutriScore
-            val nutritionGradeResource = product.getImageGradeDrawable(activity)
-            if (nutritionGradeResource != null) {
-                holder.binding.productComparisonImageGrade.visibility = View.VISIBLE
-                holder.binding.productComparisonImageGrade.setImageDrawable(nutritionGradeResource)
-            } else {
-                holder.binding.productComparisonImageGrade.visibility = View.INVISIBLE
-            }
+            holder.binding.productComparisonImageGrade.setImageResource(product.getNutriScoreResource())
 
             // Nova group
-            if (product.novaGroups != null) {
-                holder.binding.productComparisonNovaGroup.setImageResource(product.getNovaGroupResource())
-            } else {
-                holder.binding.productComparisonNovaGroup.visibility = View.INVISIBLE
-            }
+            holder.binding.productComparisonNovaGroup.setImageResource(product.getNovaGroupResource())
 
             // Environment impact
-            val environmentImpactResource = product.getCO2Resource()
-            val ecoScoreRes = product.getEcoscoreResource()
-            when {
-                ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE -> {
-                    holder.binding.productComparisonCo2Icon.visibility = View.VISIBLE
-                    holder.binding.productComparisonCo2Icon.setImageResource(ecoScoreRes)
-                }
-                environmentImpactResource != Utils.NO_DRAWABLE_RESOURCE -> {
-                    holder.binding.productComparisonCo2Icon.visibility = View.VISIBLE
-                    holder.binding.productComparisonCo2Icon.setImageResource(environmentImpactResource)
-                }
-                else -> {
-                    holder.binding.productComparisonCo2Icon.visibility = View.GONE
-                }
-            }
+            holder.binding.productComparisonCo2Icon.setImageResource(product.getEcoscoreResource())
 
             // Nutriments
             holder.binding.productComparisonTextNutrientTxt.text = activity.getString(R.string.txtNutrientLevel100g)

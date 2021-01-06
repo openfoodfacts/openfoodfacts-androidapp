@@ -45,6 +45,7 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITIO
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Defaults.NUTRITION_DATA_PER_SERVING
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
+import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import org.apache.commons.lang3.StringUtils
 import java.io.File
@@ -485,7 +486,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val saltValue = binding.salt.getDoubleValue()
             if (saltValue != null) {
                 val sodiumValue = UnitUtils.saltToSodium(saltValue)
-                binding.sodium.setText(sodiumValue.toString())
+                binding.sodium.setText(getRoundNumber(sodiumValue))
             }
         }
     }
@@ -495,7 +496,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             val sodiumValue = binding.sodium.getDoubleValue()
             if (sodiumValue != null) {
                 val saltValue = UnitUtils.sodiumToSalt(sodiumValue)
-                binding.salt.setText(saltValue.toString())
+                binding.salt.setText(getRoundNumber(saltValue))
             }
         }
     }

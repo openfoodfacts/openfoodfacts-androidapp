@@ -22,7 +22,7 @@ import kotlin.collections.ArrayList
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Product : Serializable {
     @get:JsonAnyGetter
-    val additionalProperties = hashMapOf<String, Any?>()
+    val additionalProperties = HashMap<String, Any?>()
 
 
     @JsonAnySetter

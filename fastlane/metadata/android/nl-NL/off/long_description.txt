@@ -1,4 +1,4 @@
-Scan barcodes van levensmiddelen om gegevens te krijgen over ingrediënten, additieven en voedingsfeiten.
+Open Food Facts is een open database van voedingsproducten met ingrediënten, allergenen, voedingsinformatie en alle informatie die we kunnen vinden op de etiketten van de producten.
 
 ▶ Zoek en vergelijk meer dan 800.000 producten
 
@@ -30,10 +30,10 @@ Maak lijsten
 Maak lijsten Maak lijsten Maak boodschappenlijstjes, houd bij wat je hebt gegeten en deel je lijsten eenvoudig en exporteer ze.
 
 ▶ Ken de feiten
-Open Products Facts helpt je om de kleine lettertjes op etiketten te begrijpen. Zo kan je vinden:
+Open Beauty Facts helpt je om de kleine lettertjes op etiketten te begrijpen. Je zal ook kunnen vinden (volgens de aanwijzingen op de producten):
 - de koolstofvoetafdruk (CO2-emissies) en verpakking (evenals recyclinginstructies),
 - Nutri-Score (voedingswaarde), voedingsstoffen, vetgehalte, verzadigde vetzuren, koolhydraten, suikers, vezels, eiwitten en zout,
-- merken, allergenen, logo's (bio, glutenvrij, veganistisch, vegetarisch, halal, kosjer ...), traceerbaarheidsinformatie (verpakkingscodes, oorsprong van ingrediënten),
+- merken, allergenen, labels (biologisch, veganistisch...)
 - en op wijnen en bieren vindt u het alcoholpercentage.
 
 
@@ -53,21 +53,21 @@ Scan met de snelheid van het licht (zelfs als u in een vliegtuig, onderzeeër of
 - Je kan nieuwe producten toevoegen, zelfs als je even geen internetverbinding hebt.
 - De app laadt alleen de strikt noodzakelijke gegevens om het batterijverbruik te verkleinen.
 
-▶ Jouw voedsel, jouw gegevens
+*** Jouw dierenvoeding, jouw gegevens ***
 - Je persoonlijke gegevens zijn van jou en worden nooit online verzonden
 - Je kunt de app anoniem gebruiken
 - Je kunt jouw scangeschiedenis exporteren
 
 Stel allergeenwaarschuwingen in
 - Voor een melk, gluten, eieren, sojabonen, noten, vis, selderij, mosterd, zwaveldioxide en sulfieten, pinda's, sesamzaad, schaaldieren, weekdieren of lupine-allergie
-- Versnel het boodschappen doen door een eerste screening van je voedsel uit te voeren.
+- Open Miniature Food Facts - De grootste open database van miniatuurvoedingsmiddelen
 - Wees voorzichtig: de gegevens kunnen niet 100% accuraat zijn en de detectie is wellicht niet 100% accuraat. Dus controleer altijd zelf de verpakking.
 
 
 ▶ Zeg hallo en/of word lid!
 
 
-Open Food Facts is ook beschikbaar op het web op https://world.openfoodfacts.org
+Open Products Facts is ook beschikbaar op internet op https://world.openproductsfacts.org
 
 
 Vragen, feedback: contact@openfoodfacts.org

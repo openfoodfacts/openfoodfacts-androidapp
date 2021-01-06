@@ -393,14 +393,15 @@ object ProductRepository {
      * @param isEnabled depends on whether user selected or unselected the allergen
      * @param allergenTag is unique Id of allergen
      */
-    fun setAllergenEnabled(allergenTag: String?, isEnabled: Boolean?) {
-        val allergen = OFFApplication.daoSession.allergenDao.queryBuilder()
+    fun setAllergenEnabled(allergenTag: String, isEnabled: Boolean) {
+        val allergenDao = OFFApplication.daoSession.allergenDao
+        allergenDao.queryBuilder()
                 .where(AllergenDao.Properties.Tag.eq(allergenTag))
                 .unique()
-        if (allergen != null) {
-            allergen.enabled = isEnabled
-            OFFApplication.daoSession.allergenDao.update(allergen)
-        }
+                ?.let {
+                    it.enabled = isEnabled
+                    allergenDao.update(it)
+                }
     }
 
     /**

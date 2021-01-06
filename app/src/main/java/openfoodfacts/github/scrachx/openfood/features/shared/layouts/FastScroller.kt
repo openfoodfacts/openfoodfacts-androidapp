@@ -29,7 +29,7 @@ import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 
 /**
- * Created by Manav on 2/28/2018.
+ * Created by Manav on 28/2/2018
  */
 class FastScroller : LinearLayout {
     private val handleHider = { hideHandle() }
@@ -72,7 +72,7 @@ class FastScroller : LinearLayout {
             true
         }
         MotionEvent.ACTION_UP -> {
-            handler.postDelayed(handleHider, HANDLE_HIDE_DELAY.toLong())
+            handler.postDelayed(handleHider, HANDLE_HIDE_DELAY)
             true
         }
         else -> super.onTouchEvent(event)
@@ -100,31 +100,32 @@ class FastScroller : LinearLayout {
         val shouldBe = currentHeight - bubble.height
         bubble.y = (shouldBe * position).coerceIn(0f, shouldBe.toFloat())
         val i = currentHeight - handle.height
-        (i * position).toInt().coerceIn(0, i).toFloat().also { handle.y = it }
+        (i * position).coerceIn(0f, i.toFloat()).also { handle.y = it }
     }
 
     private fun hideHandle() {
-        currentAnimator = AnimatorSet()
-        handle.pivotX = handle.width.toFloat()
-        handle.pivotY = handle.height.toFloat()
-        val shrinkerX = ObjectAnimator.ofFloat(handle, SCALE_X, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
-        val shrinkerY = ObjectAnimator.ofFloat(handle, SCALE_Y, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
-        val alpha = ObjectAnimator.ofFloat(handle, ALPHA, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION.toLong())
-        currentAnimator!!.playTogether(shrinkerX, shrinkerY, alpha)
-        currentAnimator!!.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator) {
-                super.onAnimationEnd(animation)
-                handle.visibility = INVISIBLE
-                currentAnimator = null
-            }
+        currentAnimator = AnimatorSet().also {
+            handle.pivotX = handle.width.toFloat()
+            handle.pivotY = handle.height.toFloat()
+            val shrinkerX = ObjectAnimator.ofFloat(handle, SCALE_X, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION)
+            val shrinkerY = ObjectAnimator.ofFloat(handle, SCALE_Y, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION)
+            val alpha = ObjectAnimator.ofFloat(handle, ALPHA, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION)
+            it.playTogether(shrinkerX, shrinkerY, alpha)
+            it.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    super.onAnimationEnd(animation)
+                    handle.visibility = INVISIBLE
+                    currentAnimator = null
+                }
 
-            override fun onAnimationCancel(animation: Animator) {
-                super.onAnimationCancel(animation)
-                handle.visibility = INVISIBLE
-                currentAnimator = null
-            }
-        })
-        currentAnimator!!.start()
+                override fun onAnimationCancel(animation: Animator) {
+                    super.onAnimationCancel(animation)
+                    handle.visibility = INVISIBLE
+                    currentAnimator = null
+                }
+            })
+            it.start()
+        }
     }
 
     private inner class ScrollListener : RecyclerView.OnScrollListener() {
@@ -145,8 +146,8 @@ class FastScroller : LinearLayout {
     }
 
     companion object {
-        private const val HANDLE_HIDE_DELAY = 1000
-        private const val HANDLE_ANIMATION_DURATION = 100
+        private const val HANDLE_HIDE_DELAY = 1000L
+        private const val HANDLE_ANIMATION_DURATION = 100L
         private const val TRACK_SNAP_RANGE = 5
         private const val SCALE_X = "scaleX"
         private const val SCALE_Y = "scaleY"

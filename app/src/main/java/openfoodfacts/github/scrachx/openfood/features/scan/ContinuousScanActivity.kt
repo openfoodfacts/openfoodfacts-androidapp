@@ -17,7 +17,6 @@ package openfoodfacts.github.scrachx.openfood.features.scan
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.hardware.Camera
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -35,14 +34,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior.from
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
 import com.google.zxing.client.android.BeepManager
@@ -70,8 +69,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomList
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewFragment
-import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewFragment.Companion.newInstance
-import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment.Companion.newInstance
+import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.AbstractSummaryProductPresenter
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.IngredientAnalysisTagsAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductPresenter
@@ -102,9 +100,11 @@ class ContinuousScanActivity : AppCompatActivity() {
     private lateinit var bottomSheetCallback: BottomSheetCallback
     private lateinit var errorDrawable: VectorDrawableCompat
 
-    private val barcodeInputListener: OnEditorActionListener = BarcodeInputListener()
-    private val barcodeScanCallback: BarcodeCallback = BarcodeScannerCallback()
+    private val barcodeInputListener = BarcodeInputListener()
+    private val barcodeScanCallback = BarcodeScannerCallback()
+
     private val client by lazy { OpenFoodAPIClient(this@ContinuousScanActivity) }
+    private val cameraPref by lazy { getSharedPreferences("camera", 0) }
 
     private val commonDisp = CompositeDisposable()
     private var productDisp: Disposable? = null
@@ -124,7 +124,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     private var product: Product? = null
     private var lastBarcode: String? = null
     private var productViewFragment: ProductViewFragment? = null
-    private var cameraPref: SharedPreferences? = null
+
     private var popupMenu: PopupMenu? = null
     private var summaryProductPresenter: SummaryProductPresenter? = null
 
@@ -136,6 +136,7 @@ class ContinuousScanActivity : AppCompatActivity() {
      *
      * @param barcode barcode to serach
      */
+    @Suppress("unused")
     fun showProduct(barcode: String) {
         productShowing = true
         binding.barcodeScanner.visibility = View.GONE
@@ -258,7 +259,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         val addTags = product.additivesTags
                         binding.quickViewAdditives.text = when {
                             addTags.isNotEmpty() -> resources.getQuantityString(R.plurals.productAdditives, addTags.size, addTags.size)
-                            product.statesTags.contains("en:ingredients-completed") -> getString(R.string.productAdditivesNone)
+                            product.statesTags.contains(ApiFields.StateTags.INGREDIENTS_COMPLETED) -> getString(R.string.productAdditivesNone)
                             else -> getString(R.string.productAdditivesUnknown)
                         }
 
@@ -272,7 +273,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         quickViewCheckEcoScore(product)
 
                         // Create the product view fragment and add it to the layout
-                        val newProductViewFragment = newInstance(productState)
+                        val newProductViewFragment = ProductViewFragment.newInstance(productState)
                         supportFragmentManager.commit {
                             replace(R.id.frame_layout, newProductViewFragment)
                             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
@@ -282,56 +283,32 @@ class ContinuousScanActivity : AppCompatActivity() {
                 }
     }
 
-    private fun quickViewCheckEcoScore(product: Product) {
-        binding.quickViewEcoscoreIcon.visibility = View.GONE
-        binding.quickViewCo2Icon.visibility = View.GONE
-        val ecoScoreRes = product.getEcoscoreResource()
-        val co2Res = product.getCO2Resource()
-        if (ecoScoreRes != Utils.NO_DRAWABLE_RESOURCE) {
-            binding.quickViewEcoscoreIcon.setImageResource(ecoScoreRes)
-            binding.quickViewEcoscoreIcon.visibility = View.VISIBLE
-        } else if (co2Res != Utils.NO_DRAWABLE_RESOURCE) {
-            binding.quickViewCo2Icon.setImageResource(co2Res)
-            binding.quickViewCo2Icon.visibility = View.VISIBLE
-        }
-    }
-
-    private fun quickViewCheckNutriScore(product: Product) {
-        if (isFlavors(AppFlavors.OFF) && product.getNutritionGradeTag() != null
-                && getNutriScoreResource(product.getNutritionGradeTag()) != Utils.NO_DRAWABLE_RESOURCE) {
-            binding.quickViewNutriScore.visibility = View.VISIBLE
-            binding.quickViewNutriScore.setImageResource(getNutriScoreResource(product.nutritionGradeFr))
-            return
-        }
+    private fun quickViewCheckNutriScore(product: Product) = if (isFlavors(AppFlavors.OFF)) {
+        binding.quickViewNutriScore.visibility = View.VISIBLE
+        binding.quickViewNutriScore.setImageResource(product.getNutriScoreResource())
+    } else {
         binding.quickViewNutriScore.visibility = View.GONE
     }
 
-    private fun quickViewCheckNova(product: Product) {
-        if (isFlavors(AppFlavors.OFF) && product.novaGroups != null) {
-            val novaGroupDrawable = product.getNovaGroupResource()
-            if (novaGroupDrawable != Utils.NO_DRAWABLE_RESOURCE) {
-                binding.quickViewNovaGroup.visibility = View.VISIBLE
-                binding.quickViewAdditives.visibility = View.VISIBLE
-                binding.quickViewNovaGroup.setImageResource(novaGroupDrawable)
-            } else {
-                binding.quickViewNovaGroup.visibility = View.INVISIBLE
-            }
-        } else {
-            binding.quickViewNovaGroup.visibility = View.GONE
-        }
+    private fun quickViewCheckNova(product: Product) = if (isFlavors(AppFlavors.OFF)) {
+        binding.quickViewNovaGroup.visibility = View.VISIBLE
+        binding.quickViewAdditives.visibility = View.VISIBLE
+        binding.quickViewNovaGroup.setImageResource(product.getNovaGroupResource())
+    } else {
+        binding.quickViewNovaGroup.visibility = View.GONE
+    }
+
+    private fun quickViewCheckEcoScore(product: Product) {
+        binding.quickViewEcoscoreIcon.setImageResource(product.getEcoscoreResource())
+        binding.quickViewEcoscoreIcon.visibility = View.VISIBLE
     }
 
     private fun tryDisplayOffline(
             offlineSavedProduct: OfflineSavedProduct?,
             barcode: String,
             @StringRes errorMsg: Int
-    ) {
-        if (offlineSavedProduct != null) {
-            showOfflineSavedDetails(offlineSavedProduct)
-        } else {
-            showProductNotFound(getString(errorMsg, barcode))
-        }
-    }
+    ) = if (offlineSavedProduct != null) showOfflineSavedDetails(offlineSavedProduct)
+    else showProductNotFound(getString(errorMsg, barcode))
 
     private fun setupSummary(product: Product) {
         binding.callToActionImageProgress.visibility = View.VISIBLE
@@ -340,7 +317,7 @@ class ContinuousScanActivity : AppCompatActivity() {
             override fun showAllergens(allergens: List<AllergenName>) {
                 val data = AllergenHelper.computeUserAllergen(product, allergens)
                 binding.callToActionImageProgress.visibility = View.GONE
-                if (data.isEmpty) {
+                if (data.isEmpty()) {
                     return
                 }
                 val iconicsDrawable = IconicsDrawable(this@ContinuousScanActivity, GoogleMaterial.Icon.gmd_warning)
@@ -348,7 +325,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         .size(IconicsSize.dp(24))
                 binding.txtProductCallToAction.setCompoundDrawablesWithIntrinsicBounds(iconicsDrawable, null, null, null)
                 binding.txtProductCallToAction.background = ContextCompat.getDrawable(this@ContinuousScanActivity, R.drawable.rounded_quick_view_text_warn)
-                binding.txtProductCallToAction.text = if (data.isIncomplete) {
+                binding.txtProductCallToAction.text = if (data.incomplete) {
                     getString(R.string.product_incomplete_message)
                 } else {
                     "${getString(R.string.product_allergen_prompt)}\n${data.allergens.joinToString(", ")}"
@@ -367,9 +344,10 @@ class ContinuousScanActivity : AppCompatActivity() {
                 val adapter = IngredientAnalysisTagsAdapter(this@ContinuousScanActivity, analysisTags)
                 adapter.setOnItemClickListener { view: View?, _ ->
                     if (view == null) return@setOnItemClickListener
-                    val fragment = newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig)
-                    fragment.show(supportFragmentManager, "fragment_ingredients_with_tag")
-                    fragment.onDismissListener = { adapter.filterVisibleTags() }
+                    IngredientsWithTagDialogFragment.newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig).run {
+                        show(supportFragmentManager, "fragment_ingredients_with_tag")
+                        onDismissListener = { adapter.filterVisibleTags() }
+                    }
                 }
 
                 binding.quickViewTags.adapter = adapter
@@ -506,7 +484,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     private fun hideSystemUI() {
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        WindowInsetsControllerCompat(window, binding.root).hide(WindowInsetsCompat.Type.statusBars())
         this.actionBar?.hide()
     }
 
@@ -528,6 +506,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                 ?: error("Could not create vector drawable.")
 
         binding.quickViewTags.isNestedScrollingEnabled = false
+
         window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
             if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {
                 // The system bars are visible.
@@ -552,11 +531,11 @@ class ContinuousScanActivity : AppCompatActivity() {
 
         bottomSheetCallback = QuickViewCallback()
         quickViewBehavior.addBottomSheetCallback(bottomSheetCallback)
-        cameraPref = getSharedPreferences("camera", 0).also {
+        cameraPref.let {
             beepActive = it.getBoolean(SETTING_RING, false)
             flashActive = it.getBoolean(SETTING_FLASH, false)
             autoFocusActive = it.getBoolean(SETTING_FOCUS, true)
-            cameraState = it.getInt("cameraState", 0)
+            cameraState = it.getInt(SETTING_STATE, 0)
         }
 
         // Setup barcode scanner
@@ -621,12 +600,12 @@ class ContinuousScanActivity : AppCompatActivity() {
         }
         settings.requestedCameraId = cameraState
         binding.barcodeScanner.barcodeView.cameraSettings = settings
-        cameraPref?.edit { putInt("cameraState", cameraState) }
+        cameraPref.edit { putInt(SETTING_STATE, cameraState) }
         binding.barcodeScanner.resume()
     }
 
     private fun toggleFlash() {
-        cameraPref?.edit {
+        cameraPref.edit {
             if (flashActive) {
                 binding.barcodeScanner.setTorchOff()
                 flashActive = false
@@ -648,7 +627,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                     R.id.toggleBeep -> {
                         beepActive = !beepActive
                         item.isChecked = beepActive
-                        cameraPref!!.edit {
+                        cameraPref.edit {
                             putBoolean(SETTING_RING, beepActive)
                             apply()
                         }
@@ -662,7 +641,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         settings.isAutoFocusEnabled = autoFocusActive
                         item.isChecked = autoFocusActive
 
-                        cameraPref!!.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
+                        cameraPref.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
 
                         binding.barcodeScanner.resume()
                         binding.barcodeScanner.barcodeView.cameraSettings = settings
@@ -769,7 +748,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     private inner class BarcodeInputListener : OnEditorActionListener {
-        override fun onEditorAction(textView: TextView, actionId: Int, event: KeyEvent): Boolean {
+        override fun onEditorAction(textView: TextView, actionId: Int, event: KeyEvent?): Boolean {
             // When user search from "having trouble" edit text
             if (actionId != EditorInfo.IME_ACTION_SEARCH) return false
 
@@ -777,20 +756,16 @@ class ContinuousScanActivity : AppCompatActivity() {
             hideSystemUI()
 
             // Check for barcode validity
-            if (textView.text.toString().isNotEmpty()) {
-                val barcodeText = textView.text.toString()
-
-                // For debug only: the barcode 1 is used for test
-                if ((barcodeText.length > 2 || ApiFields.Defaults.DEBUG_BARCODE == barcodeText)
-                        && isBarcodeValid(barcodeText)) {
-                    lastBarcode = barcodeText
-                    textView.visibility = View.GONE
-                    setShownProduct(barcodeText)
-                    return true
-                }
+            val barcodeText = textView.text.toString()
+            // For debug only: the barcode 1 is used for test
+            if (barcodeText.isEmpty() || (barcodeText.length <= 2 && ApiFields.Defaults.DEBUG_BARCODE != barcodeText) || !isBarcodeValid(barcodeText)) {
+                textView.requestFocus()
+                textView.error = getString(R.string.txtBarcodeNotValid)
+                return true
             }
-            textView.requestFocus()
-            Snackbar.make(binding.root, this@ContinuousScanActivity.getString(R.string.txtBarcodeNotValid), BaseTransientBottomBar.LENGTH_SHORT).show()
+            lastBarcode = barcodeText
+            textView.visibility = View.GONE
+            setShownProduct(barcodeText)
             return true
         }
     }
@@ -815,9 +790,8 @@ class ContinuousScanActivity : AppCompatActivity() {
 
         }
 
-        override fun possibleResultPoints(resultPoints: List<ResultPoint>) {
-            // Here possible results are useless but we must implement this
-        }
+        // Here possible results are useless but we must implement this
+        override fun possibleResultPoints(resultPoints: List<ResultPoint>) = Unit
     }
 
     companion object {
@@ -833,9 +807,10 @@ class ContinuousScanActivity : AppCompatActivity() {
                 BarcodeFormat.CODE_128,
                 BarcodeFormat.ITF
         )
-        const val SETTING_RING = "ring"
-        const val SETTING_FLASH = "flash"
-        const val SETTING_FOCUS = "focus"
+        private const val SETTING_RING = "ring"
+        private const val SETTING_FLASH = "flash"
+        private const val SETTING_FOCUS = "focus"
+        private const val SETTING_STATE = "cameraState"
         private val LOG_TAG = this::class.simpleName!!
     }
 }

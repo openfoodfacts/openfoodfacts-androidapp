@@ -20,7 +20,7 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 - To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
 
 
-***Contribute to Pet Food Transparency***
+*** Contribute to Product Transparency ***
 - Open Products Facts is a products database made by everyone, for everyone.
 - You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
 - Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways.
@@ -30,10 +30,10 @@ To discover the Open Pet Food Facts project, please visit https://world.openpetf
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Open Products Facts helps you to make sense of the fine print on products labels. You will be able to find:
+- Open Products Facts helps you to make sense of the fine print on products labels. You will also be able to find (according to the indications present on the products):
 - carbon footprint (CO2 emissions) and packaging (as well as recycling instructions),
 - Nutriscore (nutritional score), nutrients, fat / fat content, saturated fatty acids, carbohydrates, sugars, fiber, protein and salt and sodium.
-- list of ingredients (including ash content) - nutritional info, nutrition traffic lights… - brands, allergens, labels (organic, vegan...)
+- brands, allergens, labels (organic, vegan...)
 - On wines and beers, you will find the alcohol content.
 
 
@@ -53,24 +53,24 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 - You can add new products, even if you don't have an Internet connection right now.
 - The app loads only the strict necessary to reduce data and battery consumption
 
-*** Your pet food, your data ***
+*** Your cosmetics, your data ***
 - Your personal data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+- Open Miniature Food Facts - The largest open database of miniature food products
 - Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
 
 ▶ Say hello and/or join us!
 
 
-Open Food Facts is also available on the web at https://world.openfoodfacts.org
+Open Products Facts is also available on the web at https://world.openproductsfacts.org
 
 
 Questions, feedback : contact@openfoodfacts.org
 
 
-For food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for pet food, Open Pet Food Facts.
+For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.

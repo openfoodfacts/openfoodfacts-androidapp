@@ -2,10 +2,10 @@
 
 ▶查找和比较800.000多种产品
 
-该应用程序允许查看食品成分鉴定软件中已经包含800.000种产品（包括在美国的175000种）的免费开放数据库，还可以添加新产品的图片和数据。
+该应用允许查看已包含的超过600种免费及开放的宠物食品数据，还可以添加缺失产品的图片及数据信息。
 
 
-要想发现更多关于由志愿者运营的“食品成分鉴定”项目的信息，请访问https://world.openfoodfacts.org
+- Open Food Facts 是一个由全球数以千计的志愿者者开发的非盈利性项目。 我们有许多激动人心的项目，您可以通过多种不同的渠道来作出贡献。
 
 ▶选择适合您的产品
 -营养评分等级，从“A”到“E”>>营养质量
@@ -20,10 +20,10 @@
 -要显示碳影响，产品必须具有完整的成分清单，其中包含肉或鱼的百分比以及数量
 
 
-▶促进食品透明化
-- 食品成分鉴定是一个由大家共同建立，惠及每一个人的食品数据库。
-- 您可以使用它来做出更好的食物选择，并且由于它是公开数据，任何人都可以为了任何目的而重复利用。
-- Open Food Facts 是一个由全球数以千计的志愿者者开发的非盈利性项目。 我们有许多激动人心的项目，您可以通过多种不同的渠道来作出贡献。 We have lots of exciting projects you can contribute to in many different ways.
+***致力于宠物食品信息透明化***
+-Open Products Facts是集人人之力并为人人之利而建立的产品数据库。
+你可以通过它作出更好的化妆产品的选择，同时因为它是开放数据，任何人都可以使用它。
+Open Beauty Facts 是一个非盈利项目，由来自于全世界上千志愿者发行。 我们有许多激动人心的项目，您可以通过许多不同的方式为之贡献。 We have lots of exciting projects you can contribute to in many different ways.
 -您可以从今天添加您的第一个产品开始来做出贡献。
 
 ▶创建清单
@@ -33,7 +33,7 @@
 - 食品成分鉴定可帮助您了解产品标签上的各个细节。 您将能够找到： 您也可以找到（根据产品上的指示）:
 - 碳足迹（二氧化碳排放量）和包装信息（以及回收说明），
 -  Nutriscore（营养评分）、营养素、脂肪/脂肪含量、饱和脂肪酸、碳水化合物、糖分、纤维、蛋白质、以及盐和钠。
-- 品牌、过敏原、标签（简介、无麸质、纯素食、素食、清真、犹太...），可追溯性信息（包装规范、原料来源）
+- 品牌，过敏原，标签（有机，纯天然...）
 - 对于葡萄酒和啤酒产品，您能找到酒精含量信息。
 
 
@@ -53,21 +53,21 @@
 - 即使没有连接互联网，你也可以添加新的产品。
 - 应用程序仅加载必要信息以减少数据及电量消耗
 
-▶您的食物，您的数据
+***您的产品，您的数据***
 - 您的个人数据只属于您，永远不会被上传。
 - 您可以匿名使用该应用
 - 您可以导出历史记录
 
 ▶在产品上设置过敏原警报
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
+-Open Miniature Food Facts——最大的微型食品开放数据库
 - Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
 
 ▶ Say hello and/or join us!
 
 
-Open Food Facts 也可以在网站 https://world-zh.openfoodfacts.org 上找到
+Open Products Facts is also available on the web at https://world.openproductsfacts.org
 
 
 提问，反馈： contact@openfoodfacts.org

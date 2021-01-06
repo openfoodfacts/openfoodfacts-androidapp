@@ -7,21 +7,21 @@ V2 screenshots
 
 Scan producten
 
-Krijg de Nutri-Score
+Krijg de Nutriscore
 
-Je volledige scan geschiedenis, helemaal privé & exporteerbaar
+Je hele scangeschiedenis, totaal privé en exporteerbaar
 
 Ga verder met Wikipedia
 
-Set allergen alerts
+Allergenen alert
 
 Voeding, vereenvoudigd
 
-Allergen alert
+Stel allergeenwaarschuwingen in
 
-Bekijk alternatieven voor je favoriete levensmiddelen
+Krijg alternatieven voor je favoriete voedingsmiddelen
 
-Become an actor of food transparency
+Word een speler voor voedseltransparantie
 
 Wikipedia voor voedsel
 
@@ -35,10 +35,10 @@ Ingrediënten
 
 Krachtig
 
-Nutrition facts
+Krachtig Voedingswaarden
 
 =====================
-V3 screenshots
+V3 schermafbeeldingen
 =====================
 
 Kies de producten die goed zijn voor u en voor de 🌍 planeet!
@@ -47,7 +47,7 @@ Kies de producten die goed zijn voor u en voor de 🌍 planeet!
 
 ✔ Een wereldwijde supermarkt in uw zak
 
-Nutritional quality
+Krachtig Voedingswaarden
 
 Ultra-verwerkte voedingsmiddelen
 
@@ -65,7 +65,7 @@ Onbeperkte en volledige privé scan-geschiedenis
 
 Veeg voor nog meer details
 
-Set Allergen Alerts
+Stel allergeenwaarschuwingen in
 
 Sluit je aan bij onze wereldwijde beweging voor inzichtelijkheid van voedsel
 

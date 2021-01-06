@@ -17,11 +17,11 @@ Uruchom ostrzeżenia o alergenach
 
 Odżywianie, uproszczone
 
-Allergen alert
+Ostrzeżenie o alergenach
 
 Znajdź alternatywę dla swoich ulubionych potraw
 
-Become an actor of food transparency
+Dołącz do naszego ruchu na rzecz globalnej przejrzystości żywności
 
 Wikipedia żywności
 
@@ -35,7 +35,7 @@ Składniki
 
 Potężny
 
-Nutrition facts
+Jakość żywności
 
 =====================
 V3 zrzuty ekranu
@@ -47,7 +47,7 @@ Wybierz produkty, które są dobre dla Ciebie i 🌍planety!
 
 ✔ Globalny supermarket w twojej kieszeni
 
-Jakość żywności
+Żywność wysoko przetworzona
 
 Żywność wysoko przetworzona
 
@@ -65,7 +65,7 @@ Nieograniczona i w pełni prywatna historia skanowania
 
 Przesuń, aby uzyskać więcej szczegółów
 
-Set Allergen Alerts
+Stwórz ostrzeżenia o alergenach
 
 Dołącz do naszego ruchu na rzecz globalnej przejrzystości żywności
 

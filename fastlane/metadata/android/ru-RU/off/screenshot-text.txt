@@ -1,72 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+Это теги, показываемые над скриншотами в Play Store. Keep them short and attractive.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 =====================
-V2 screenshots
+Скриншоты V2
 =====================
 
-Scan products
+Сканируйте продукты
 
-Get the Nutriscore
+Получите Nutriscore
 
-Your full scan history, fully private & exportable
+Полная история сканирования, полностью приватная и экспортируемая
 
-Go further with Wikipedia
+Узнайте больше с Википедией
 
-Set allergen alerts
+Установите предупреждения о аллергенах
 
-Nutrition, simplified
+Питательность, кратко
 
-Allergen alert
+Предупреждение об аллергенах
 
-Get alternatives for your favorite foods
+Найдите альтернативу для ваших любимых блюд
 
-Become an actor of food transparency
+Станьте участником пищевой прозрачности
 
-Wikipedia for Food
+Википедия для продуктов питания
 
-Wikipedia for Cosmetics
+Википедия для косметики
 
-Wikipedia for Pet Food
+Википедия для кормов для домашних животных
 
-Wikipedia of Products
+Википедия для продуктов
 
-Ingredients
+Ингредиенты
 
-Powerful
+Мощное
 
-Nutrition facts
+Пищевые свойства
 
 =====================
-V3 screenshots
+Скриншоты V3
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+Выбирайте продукты, которые хороши для вас и для планеты 🌍!
 
-✔ Ultra-fast barcode scan
+✔ Сверхбыстрое сканирование штрих-кода
 
-✔ A global supermarket in your pocket
+✔ Огромный супермаркет в вашем кармане
 
-Nutritional quality
+Пищевая и энергетическая ценность
 
 Ultra-processed foods
 
-Carbon impact
+Влияние углерода
 
-Compare easily before you buy
+Легко сравните перед покупкой
 
-Create shopping lists, intake lists…
+Создание списков покупок, списков рассылки…
 
-Find and compare over 750 000 products.
+Найдите и сравните более 750 000 продуктов.
 
 
 
-Unlimited and fully-private scan history
+Неограниченная и полностью приватная история сканирования
 
-Swipe for even more details
+Свайп для подробностей
 
-Set Allergen Alerts
+Установите предупреждения о аллергенах
 
-Join our global movement for food transparency
+Присоединяйтесь к нашему глобальному движению за прозрачность продуктов питания
 
 world.openfoodfacts.org/contribute

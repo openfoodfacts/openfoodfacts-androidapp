@@ -127,7 +127,7 @@
                 android:layout_marginTop="@dimen/spacing_small"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/bg_edittext"
-                android:gravity="center_vertical"
+                android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:minHeight="150dp"
                 android:nextFocusDown="@id/traces"
@@ -149,8 +149,7 @@
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
                 app:layout_constraintTop_toBottomOf="@id/traces"
-                app:layout_constraintTop_toTopOf="@id/ingredients_list"
-                tools:visibility="visible" />
+                app:layout_constraintTop_toTopOf="@id/ingredients_list" />
 
             <ImageView
                 android:id="@+id/ingredients_list_verified"
@@ -161,8 +160,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:srcCompat="@drawable/ic_check_white_24dp"
-                app:tint="@color/brand_green_dark"
-                tools:visibility="visible" />
+                app:tint="@color/brand_green_dark" />
 
             <ProgressBar
                 android:id="@+id/ocr_progress"
@@ -173,8 +171,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
-                app:layout_constraintTop_toTopOf="@id/ingredients_list"
-                tools:visibility="visible" />
+                app:layout_constraintTop_toTopOf="@id/ingredients_list" />
 
             <TextView
                 android:id="@+id/ocr_progress_text"
@@ -185,8 +182,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/ocr_progress"
                 app:layout_constraintStart_toStartOf="@id/ocr_progress"
-                app:layout_constraintTop_toBottomOf="@id/ocr_progress"
-                tools:visibility="visible" />
+                app:layout_constraintTop_toBottomOf="@id/ocr_progress" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"

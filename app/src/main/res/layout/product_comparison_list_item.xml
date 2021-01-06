@@ -80,8 +80,9 @@
                         android:layout_marginRight="@dimen/spacing_normal"
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        tools:text="Product name" />
 
                     <TextView
                         android:id="@+id/product_comparison_brand"
@@ -93,7 +94,8 @@
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:padding="@dimen/padding_too_short"
                         android:textIsSelectable="true"
-                        android:textSize="@dimen/font_normal" />
+                        android:textSize="@dimen/font_normal"
+                        tools:text="Brand: OpenFoodFacts" />
 
                     <TextView
                         android:id="@+id/product_comparison_quantity"
@@ -114,12 +116,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_comparison_details_cv"
-                tools:visibility="visible">
+                app:layout_constraintTop_toBottomOf="@id/product_comparison_details_cv">
 
                 <ImageView
                     android:id="@+id/product_comparison_imageGrade"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
@@ -128,18 +129,18 @@
                     android:layout_marginRight="4dp"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:adjustViewBounds="true"
-                    android:maxWidth="180dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/product_comparison_nova_group"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintEnd_toStartOf="@id/product_comparison_nova_group"
+                    app:layout_constraintHorizontal_weight="2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_constraintHorizontal_weight="2"
                     tools:src="@drawable/ic_nutriscore_a" />
 
                 <ImageView
                     android:id="@+id/product_comparison_nova_group"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginLeft="4dp"
@@ -151,14 +152,14 @@
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/product_comparison_co2_icon"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/product_comparison_imageGrade"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/ic_nova_group_1" />
 
                 <ImageView
                     android:id="@+id/product_comparison_co2_icon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginLeft="4dp"
@@ -170,10 +171,10 @@
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/product_comparison_nova_group"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@id/product_comparison_nova_group"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@drawable/ic_co2_high_24dp" />
+                    tools:srcCompat="@drawable/ic_ecoscore_unknown" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -257,7 +258,6 @@
                 style="@style/ButtonFlat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="5dp"
                 android:text="@string/go_to_full_product_page"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
