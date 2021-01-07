@@ -701,7 +701,7 @@
     <string name="txt_create_new_list">Skapa en ny lista</string>
     <string name="txt_add_to_new_list">Lägg till en ny lista</string>
     <string name="create_new_list_list_name">Lista Namn</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Produkter att köpa</string>
     <string name="txt_exporting_your_listed_products">Exportera dina produkter…</string>
     <string name="txt_your_listed_products_exported">Dina produkter har exporterats</string>

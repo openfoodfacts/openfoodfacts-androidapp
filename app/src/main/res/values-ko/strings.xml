@@ -802,7 +802,7 @@
     <string name="icon_categories">카테고리 아이콘</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">제품 전면 이미지</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts는 %1$s개 이상의 제품(및 기여할 제품)을 포함한 공개 데이터베이스입니다.</string>

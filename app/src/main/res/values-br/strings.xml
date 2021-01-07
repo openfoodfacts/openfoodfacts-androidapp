@@ -695,10 +695,10 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="category_game_btn">Help categorize products</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
+    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
+    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Handelv</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
@@ -719,7 +719,7 @@
     <string name="txt_create_new_list">Krouiñ ur roll nevez</string>
     <string name="txt_add_to_new_list">Ouzhpennañ d\'ur roll nevez</string>
     <string name="create_new_list_list_name">Anv ar roll</string>
-    <string name="txt_eaten_products">Products I have</string>
+    <string name="txt_eaten_products">Eaten products</string>
     <string name="txt_products_to_buy">Produioù da brenañ</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
@@ -826,7 +826,7 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
