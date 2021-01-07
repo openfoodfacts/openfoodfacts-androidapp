@@ -1,41 +1,41 @@
-Ezek a feliratok a playstore-ban szereplő képernyőképek felett láthatóak. Legyenek rövidek és lényegretörőek.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=hu
+Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
 =====================
 
-Termékek beolvasása
+Scan products
 
-Kapja meg a Nutriscore-t
+Get the Nutriscore
 
-Az ön teljes beolvasási előzményei, teljesen magán és exportálható
+Your full scan history, fully private & exportable
 
-Továbblépés a Wikipedia-val
+Go further with Wikipedia
 
-Allergén riasztások beállítása
+Set allergen alerts
 
-Tápanyag, egyszerűsített
+Nutrition, simplified
 
-Allergén riasztás
+Allergen alert
 
-Kapjon alternatívát a kedvenc élelmiszereire
+Get alternatives for your favorite foods
 
-Legyen egy szereplője az élelmiszer átláthatóságnak
+Become an actor of food transparency
 
-Wikipedia az Élelmiszerekhez
+Wikipedia for Food
 
-Wikipedia a Kozmetikumokhoz
+Wikipedia for Cosmetics
 
-Wikipedia az Állateledelekhez
+Wikipedia for Pet Food
 
-Wikipedia a Termékekhez
+Wikipedia of Products
 
-Összetevők
+Ingredients
 
-Erős
+Powerful
 
-Tápértékadatok
+Nutrition facts
 
 =====================
 V3 screenshots
@@ -49,7 +49,7 @@ Choose the products that are good for you and for the 🌍 planet !
 
 Nutritional quality
 
-Többszörösen feldolgozott élelmiszerek
+Ultra-processed foods
 
 Carbon impact
 

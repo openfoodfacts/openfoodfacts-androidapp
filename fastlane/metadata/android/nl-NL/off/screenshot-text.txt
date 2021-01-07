@@ -2,7 +2,7 @@ Dat zijn de slogans die boven de screenshots in de playstore worden getoond. Hou
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=nl
 
 =====================
-V2 schermafbeeldingen
+V2 screenshots
 =====================
 
 Scan producten
@@ -17,7 +17,7 @@ Stel allergeenwaarschuwingen in
 
 Voeding, vereenvoudigd
 
-Allergeenwaarschuwing
+Stel allergeenwaarschuwingen in
 
 Bekijk alternatieven voor je favoriete levensmiddelen
 
@@ -65,7 +65,7 @@ Onbeperkte en volledige privé scan-geschiedenis
 
 Veeg voor nog meer details
 
-Stel allergeenwaarschuwingen in
+Set Allergen Alerts
 
 Sluit je aan bij onze wereldwijde beweging voor inzichtelijkheid van voedsel
 

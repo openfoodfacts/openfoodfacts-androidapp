@@ -1,1 +1,1 @@
-Escanegeu productes alimentaris per a desxifrar les etiquetes: ingredients, additius i dades nutricionals
+La base de dades oberta de productes

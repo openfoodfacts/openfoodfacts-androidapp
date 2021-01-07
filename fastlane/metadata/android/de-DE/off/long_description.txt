@@ -5,7 +5,7 @@ Lebensmittel erfassen oder deren Barcode einlesen, um Daten über Inhaltsstoffe,
 Die App ermöglicht es, die 800.000 Produkte (davon 175.000 in den USA) anzuzeigen, die bereits in der kostenlosen und offenen Datenbank Open Food Facts enthalten sind, sowie Fotos und Daten für neue Produkte hinzuzufügen.
 
 
-Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken, besuchen Sie https://world.openfoodfacts.org
+Gestern Morgen erwachte das Open Food Facts Team zu einer erstaunlichen Enthüllung.
 
 ▶ Wählen Sie die Produkte aus, die gut für Sie sind
 • Die Nutri-Score-Klasse, von „A” bis „E” ➜ Nährwertqualität
@@ -21,19 +21,19 @@ Um das von Freiwilligen unterstützte Projekt „Open Food Facts” zu entdecken
 
 
 ▶ Beitrag zur Lebensmitteltransparenz
-• Open Food Facts ist eine Lebensmitteldatenbank, die von jedermann für alle erstellt wurde.
-• Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen, und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
-• Open Food Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können.
-• Sie können noch heute damit beginnen, einen Beitrag zu leisten, indem Sie ein Produkt aus Ihrem Kühlschrank hinzufügen.
+• Open Products Facts ist eine Produktdatenbank, die von jedermann für alle erstellt wurde.
+• Sie können sie verwenden, um bessere Lebensmittelauswahlen zu treffen und da es sich um offene Daten handelt, kann jeder sie für jeden Zweck weiterverwenden.
+• Open Products Facts ist ein gemeinnütziges Projekt, das von Tausenden von Freiwilligen aus der ganzen Welt entwickelt wurde. Wir haben viele spannende Projekte, zu denen Sie auf vielfältige Weise beitragen können.
+• Sie können noch heute beginnen, indem Sie Ihr erstes Produkt hinzufügen.
 
 ▶ Listen erstellen
 Erstellen Sie Einkaufslisten, verfolgen Sie, was Sie gegessen haben, und teilen und exportieren Sie einfach Ihre Listen.
 
-▶ Rufen Sie die Fakten auf
-• Open Food Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Sie können finden:
+★★★ Fakten abrufen ★★★
+• Open Products Facts hilft Ihnen, das Kleingedruckte auf Produktetiketten zu verstehen. Sie können finden:
 • CO₂-Fußabdruck (CO2-Emissionen) und Verpackung (sowie Verwertungshinweise),
 • Nutri-Score (Nährwertbewertung), Nährstoffe, Fett/Fettgehalt, gesättigte Fettsäuren, Kohlenhydrate, Zucker, Ballaststoffe, Eiweiß und Salz und Natrium.
-• Marken, Allergene, Etiketten (Bio, Glutenfrei, Vegan, Vegetarisch, Halal, Koscher …), Rückverfolgbarkeitsinformationen (Verpackungscodes, Herkunft der Zutaten)
+• Marken, Allergene, Etiketten (Bio, Vegan …)
 • Auf Weinen und Bieren finden Sie den Alkoholgehalt.
 
 
@@ -53,8 +53,8 @@ Mit Lichtgeschwindigkeit erfassen (auch wenn Sie sich in einem Flugzeug, U-Boot 
 • Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
 • Die App lädt nur das Notwendigste, um den Daten- und Batterieverbrauch zu reduzieren.
 
-▶ Ihre Nahrungsmittel — Ihre Daten
-• Ihre Daten gehören Ihnen und werden niemals online gesendet
+★★★ Ihr Tierfutter — Ihre Daten ★★★
+• Ihre persönlichen Daten gehören Ihnen und werden niemals online gesendet
 • Sie können die Anwendung auch anonym verwenden
 • Sie können Ihren Erfassungsverlauf exportieren
 
@@ -67,10 +67,10 @@ Mit Lichtgeschwindigkeit erfassen (auch wenn Sie sich in einem Flugzeug, U-Boot 
 ▶ Sagen Sie einfach nur Hallo und/oder schließen Sie sich uns an!
 
 
-Open Food Facts ist auch im Internet verfügbar unter https://world.openfoodfacts.org
+Open Products Facts ist auch im Internet verfügbar unter https://world.openproductsfacts.org
 
 
 Fragen und Rückmeldungen: contact@openfoodfacts.org
 
 
-Für Kosmetik können Sie „Open Beauty Facts”, für Tierfutter „Open Pet Food Facts” und für alle anderen Produkte „Open Products Facts” installieren.
+Hinweis: Open Beauty Facts befindet sich im Aufbau, die Seite und die Anwendung basieren auf Open Food Facts und es werden Änderungen vorgenommen, um den Besonderheiten der Kosmetik Rechnung tragen zu können.

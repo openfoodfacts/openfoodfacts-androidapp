@@ -1,41 +1,41 @@
-Acestea sunt marcajele afișate mai sus de capturile de ecran din playstore. Păstrați-le scurte și atractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ro
+Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
 =====================
 
-Scanați produsul
+Scan products
 
-Obțineți NutriScore
+Get the Nutriscore
 
-Istoricul complet de scanare, complet privat și exportabil
+Your full scan history, fully private & exportable
 
-Mergeți mai departe cu Wikipedia
+Go further with Wikipedia
 
-Setați alerte pentru alergeni
+Set allergen alerts
 
-Nutriție, simplificată
+Nutrition, simplified
 
-Alertă alergeni
+Allergen alert
 
-Obțineți alternative pentru mâncarea preferată
+Get alternatives for your favorite foods
 
-Deveniți un actor al transparenței alimentare
+Become an actor of food transparency
 
-Wikipedia pentru Mâncare
+Wikipedia for Food
 
-Wikipedia pentru Cosmetice
+Wikipedia for Cosmetics
 
-Wikipedia pentru Mâncare pentru Animale
+Wikipedia for Pet Food
 
-Wikipedia Produse
+Wikipedia of Products
 
-Ingrediente
+Ingredients
 
-Puternic
+Powerful
 
-Valori nutriționale
+Nutrition facts
 
 =====================
 V3 screenshots

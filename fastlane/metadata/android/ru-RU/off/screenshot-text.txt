@@ -1,4 +1,4 @@
-Это теги, показываемые над скриншотами в Play Store. Не делайте их слишком длинными или сложными.
+Это теги, показываемые над скриншотами в Play Store. Keep them short and attractive.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 =====================
@@ -35,7 +35,7 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 Мощное
 
-Пищевая и энергетическая ценность
+Пищевые свойства
 
 =====================
 Скриншоты V3
@@ -47,9 +47,9 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=ru
 
 ✔ Огромный супермаркет в вашем кармане
 
-Пищевые свойства
+Пищевая и энергетическая ценность
 
-Ультра-трансформированные продукты
+Ultra-processed foods
 
 Влияние углерода
 
