@@ -167,7 +167,7 @@
     <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Daftar komposisi :</string>
     <string name="Donate">Donasi</string>
-    <string name="Donation">Click here to donate to Open Products Facts</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="txtSubstances">Zat atau produk yang menyebabkan alergi atau intoleransi penyakit</string>
     <string name="txtAdditives">Bahan tambahan :</string>
     <string name="txtTraces">Jejak :</string>
@@ -195,7 +195,7 @@
     <string name="uploadLater">Gambar akan diunggah ketika jaringan tersedia</string>
     <string name="txtInfoLoginOk">Pengguna yang disimpan</string>
     <string name="txtInfoLoginNo">Pengguna belum disimpan</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Ya</string>
     <string name="txtNo">Tidak</string>
     <string name="hintBrand">Merek</string>
@@ -209,7 +209,7 @@
     <string name="txtBarcodeRequire">kode batang dibutuhkan</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Kode batang tidak valid</string>
-    <string name="msg_share">Look at this product on Open Products Facts :</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Daftar</string>
     <string name="home_drawer">Beranda</string>
     <string name="install">Install</string>
@@ -233,9 +233,9 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">Nama pengguna</string>
     <string name="create_account_button">Create Account</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Bagaimana ini bekerja?</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">kamera membutuhkan izin untuk memindah kode batang dan mengambil gambar</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -319,7 +319,7 @@
     <string name="txt_no_matching_incomplete_products">Kami sudah memiliki produk lengkap, anda masih akan menambakan produk baru lagi?</string>
     <string name="txt_no_matching_contributor_products">Oh maaf, kami tidak memiliki produk dari kontributor ini, bisakah anda menambakan satu?</string>
     <string name="txt_no_matching_products">Kami belum menemukan produk yang cocok. \nAnda dapat mencoba:</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">Maaf, sesuatu tidak beres…</string>
     <string name="txt_try_again">coba kembali</string>
     <string name="nutrition_lactose">laxtosa</string>
@@ -431,8 +431,8 @@
     <string name="preference_choose_language_dialog_title">Pilih bahasa</string>
     <string name="FAQ">Pertanyaan Umum</string>
     <string name="FrequentlyAskedQuestions">Pertanyaan Umum</string>
-    <string name="translate_help_title">Help translate Open Products Facts</string>
-    <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Mohon periksa koneksi jaringan anda.</string>
     <string name="advanced_search_title">Pencarian lanjutan &amp; grafik</string>
     <string name="compare_products">Compare products</string>
@@ -541,7 +541,7 @@
     </plurals>
     <string name="product_not_complete">Produk ini belum selesai. \nBisa tambahkan detail lain?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Suara pemindai</string>
     <string name="trouble_scanning">Pemindaian bermasalah?</string>
     <string name="barcode_hint">Kesulitan memindai? Masukkan barcode</string>
@@ -549,7 +549,7 @@
     <string name="autofocus">Fokus otomatis</string>
     <string name="initial_loading">Pemuatan awal</string>
     <string name="preferences">pengaturan</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
@@ -642,7 +642,7 @@
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Judul</string>
     <string name="description_activity_product">description</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Memiliki risiko tinggi terhadap paparan berlebih</string>
     <string name="overexposure_moderate">Memiliki risiko menengah terhadap paparan berlebih</string>
@@ -675,7 +675,7 @@
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="category_game_btn">Help categorize products</string>
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -805,7 +805,7 @@
     <string name="brand_hint">Examples: Nike, Apple, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>

@@ -200,7 +200,7 @@
     <string name="uploadLater">Kuva lähetetään, kun verkko on käytettävissä</string>
     <string name="txtInfoLoginOk">Käyttäjä tallennettu</string>
     <string name="txtInfoLoginNo">Käyttäjää ei tallennettu</string>
-    <string name="txtDialogsContent">Luettua tuotetta ei vielä ole Open Products Factsissa. Lisääthän sen.</string>
+    <string name="txtDialogsContent">Luettua tuotetta ei vielä ole Open Food Factsissa. Lisääthän sen.</string>
     <string name="txtYes">Kyllä</string>
     <string name="txtNo">Ei</string>
     <string name="hintBrand">Tuotemerkki</string>
@@ -214,7 +214,7 @@
     <string name="txtBarcodeRequire">Viivakoodi vaaditaan</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Virheellinen viivakoodi</string>
-    <string name="msg_share">Katso tätä tuotetta Open Products Factsissa:</string>
+    <string name="msg_share">Katso tätä tuotetta Open Food Factsissa:</string>
     <string name="create_account">Rekisteröidy</string>
     <string name="home_drawer">Koti</string>
     <string name="install">Asenna</string>
@@ -238,9 +238,9 @@
     <string name="cancel_button">Peruuta</string>
     <string name="login_button">Kirjaudu</string>
     <string name="create_account_button">Luo tili</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Products Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100%:n tarkka, joten tarkista itse! </string>
     <string name="title_info_dialog">Miten se toimii?</string>
-    <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Products Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
+    <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
     <string name="permission_camera">Lupaa käyttää kameraa vaaditaan viivakoodien lukemiseen ja kuvien ottamiseen.</string>
     <string name="no_camera_dialog_title">Kameraa ei löytynyt</string>
     <string name="no_camera_dialog_content">Laitteessasi ei ole kameraa. Et voi lukea viivakoodeja.</string>
@@ -324,7 +324,7 @@
     <string name="txt_no_matching_incomplete_products">Meillä ei ole keskeneräisiä tuotteita! Lisätäänkö uusi tuote?</string>
     <string name="txt_no_matching_contributor_products">Voi ei, meillä ei ole tuotteita tältä osallistujalta, voitko lisätä yhden?</string>
     <string name="txt_no_matching_products">Emme löytäneet vastaavia tuotteita.\nVoit kokeilla:</string>
-    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Products Factsiin</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue ja lisää se Open Food Factsiin</string>
     <string name="something_went_wrong">Pahoittelut, jokin meni vikaan…</string>
     <string name="txt_try_again">Yritä uudelleen</string>
     <string name="nutrition_lactose">Laktoosi</string>
@@ -436,8 +436,8 @@
     <string name="preference_choose_language_dialog_title">Valitse kieli</string>
     <string name="FAQ">UKK</string>
     <string name="FrequentlyAskedQuestions">Usein Kysytyt Kysymykset</string>
-    <string name="translate_help_title">Auta kääntämään Open Products Factsia</string>
-    <string name="translate_help_summary">Tuo Open Products Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
+    <string name="translate_help_title">Auta kääntämään Open Food Factsia</string>
+    <string name="translate_help_summary">Tuo Open Food Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
     <string name="please_check_your_connection">Tarkista internetyhteytesi.</string>
     <string name="advanced_search_title">Tarkennettu haku &amp; kaaviot</string>
     <string name="compare_products">Vertaa tuotteita</string>
@@ -547,7 +547,7 @@
     </plurals>
     <string name="product_not_complete">Tämä tuote ei ole vielä valmis. \nVoitko lisätä joitain yksityiskohtia?</string>
     <string name="addProductOffline">Vaikutat olevan offline-tilassa. Lisää tuote %s offline-tilassa?</string>
-    <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Products Factsissa. Voitko lisätä sen?</string>
+    <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Food Factsissa. Voitko lisätä sen?</string>
     <string name="scan_sound">Lukuääni</string>
     <string name="trouble_scanning">Vaikeuksia lukemisessa?</string>
     <string name="barcode_hint">Vaikeuksia lukemisessa? Syötä viivakoodi</string>
@@ -555,7 +555,7 @@
     <string name="autofocus">Automaattitarkennus</string>
     <string name="initial_loading">Alustava lataus</string>
     <string name="preferences">Asetukset</string>
-    <string name="OFFlogo">Open Products Facts -logo</string>
+    <string name="OFFlogo">Open Food Facts -logo</string>
     <string name="loading_product">Ladataan tuotetta %s</string>
     <string name="image_not_defined_for_language">Valitulle kielelle ei ole kuvaa. Voit lisätä uuden</string>
     <string name="error_adding_ingredients">Jokin meni vikaan tuotteen ainesosien lisäyksessä</string>
@@ -648,7 +648,7 @@
     <string name="contribution_by">Lähettäjä</string>
     <string name="title_activity_product">Otsikko</string>
     <string name="description_activity_product">kuvaus</string>
-    <string name="intent_filter_share_label">Lisää Open Products Factsiin</string>
+    <string name="intent_filter_share_label">Lisää Open Food Factsiin</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Suuri ylialtistumisen riski</string>
     <string name="overexposure_moderate">Kohtalainen ylialtistumisen riski</string>
@@ -681,7 +681,7 @@
     <string name="add_category_prompt_text">Lisää luokka auttaaksesi täydentämään tuotteen</string>
     <string name="add_nutrient_category_prompt_text">Lisää luokka ja ravintosisältö auttaaksesi täydentämään tuotteen</string>
     <string name="category_game_btn">Auta luokittelemaan tuotteita</string>
-    <string name="version_string">Open Products Facts Android-sovellus</string>
+    <string name="version_string">Open Food Facts Android-sovellus</string>
     <string name="version">Versio</string>
     <string name="set_ingredient_img">Aseta ainesosakuvaksi</string>
     <string name="set_img_nutrients">Aseta ravintosisältökuvaksi</string>

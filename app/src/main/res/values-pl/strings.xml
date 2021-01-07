@@ -250,7 +250,7 @@
     <string name="create_account_button">Załóż konto</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Twoje informacje o alergiach nigdy nie zostaną wysłane na serwer Open Food Facts. Należy także uważać, że dane produktów mogą nie być dokładne, a wykrywanie może nie być 100% a, więc dokładnie sprawdź sam!</string>
     <string name="title_info_dialog">Jak to działa?</string>
-    <string name="text_offline_info_dialog">Możesz skanować produkty w trybie offline, aby później dodać je do Open Products Facts. Zeskanowane produkty pojawią się tutaj i będziesz mógł je wysłać za pomocą przycisku poniżej.</string>
+    <string name="text_offline_info_dialog">Możesz skanować produkty w trybie offline, aby później dodać je do Open Food Facts. Zeskanowane produkty pojawią się tutaj i będziesz mógł je wysłać za pomocą przycisku poniżej.</string>
     <string name="permission_camera">Potrzebujesz zezwolenia do skanowania kodów kreskowych i fotografowania.</string>
     <string name="no_camera_dialog_title">Nie znaleziono aparatu</string>
     <string name="no_camera_dialog_content">Twoje urządzenie nie posiada aparatu. Nie będziesz w stanie zeskanować żadnego kodu kreskowego.</string>
@@ -823,7 +823,7 @@
     <string name="brand_hint">Przykłady: Nike, Apple itp…</string>
     <string name="sign_in_or_register">Zaloguj się lub zarejestruj</string>
     <string name="hunger_game_call_to_action">Pomóż sklasyfikować więcej %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts to otwarta baza danych więcej niż %1$s produktów (plus te, które pomogą Ci w działaniu).</string>
+    <string name="txtHomeOnline">Open Food Facts to otwarta baza danych więcej niż %1$s produktów (plus te, które pomogą Ci w działaniu).</string>
     <string name="enabled">Włączone</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>

@@ -167,7 +167,7 @@
     <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">ส่วนผสมรายการ :</string>
     <string name="Donate">บริจาค</string>
-    <string name="Donation">Click here to donate to Open Products Facts</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="txtSubstances">สารก่อภูมิแพ้อาหาร :</string>
     <string name="txtAdditives">สารเติมแต่ง :</string>
     <string name="txtTraces">สารเจือปน :</string>
@@ -195,7 +195,7 @@
     <string name="uploadLater">รูปภาพจะถูกอัพโหลดเมื่อเครือข่ายพร้อมใช้งาน</string>
     <string name="txtInfoLoginOk">บันทึกผู้ใช้แล้ว</string>
     <string name="txtInfoLoginNo">ไม่ได้บันทึกผู้ใช้</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">ถูกต้อง</string>
     <string name="txtNo">ไม่ใช่</string>
     <string name="hintBrand">ยี่ห้อสินค้า</string>
@@ -209,7 +209,7 @@
     <string name="txtBarcodeRequire">ต้องการบาร์โค้ด</string>
     <string name="txtOk">ตกลง</string>
     <string name="txtBarcodeNotValid">บาร์โค้ดไม่ถูกต้อง</string>
-    <string name="msg_share">Look at this product on Open Products Facts :</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">สมัครสมาชิก</string>
     <string name="home_drawer">หน้าหลัก</string>
     <string name="install">Install</string>
@@ -233,9 +233,9 @@
     <string name="cancel_button">Cancel</string>
     <string name="login_button">ชื่อผู้ใช้</string>
     <string name="create_account_button">สร้างบัญชีผู้ใช้</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">มันทำงานอย่างไร?</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
     <string name="permission_camera">จำเป็นต้องได้รับอนุญาตจากกล้องเพื่อสแกนบาร์โค้ดและถ่ายภาพ</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -319,7 +319,7 @@
     <string name="txt_no_matching_incomplete_products">เราไม่มีผลิตภัณฑ์ที่ไม่สมบูรณ์! เพิ่มผลิตภัณฑ์ใหม่หรือไม่?</string>
     <string name="txt_no_matching_contributor_products">ไม่พบผลิตภัณฑ์ที่มาจากผู้ใช้คนนี้ คุณสามารถเพิ่มเติมได้เอง</string>
     <string name="txt_no_matching_products">เราไม่พบผลิตภัณฑ์ที่ตรงกัน\nคุณสามารถลอง:</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">ขอโทษด้วย ระบบมีปัญหาบางอย่าง</string>
     <string name="txt_try_again">ลองอีกครั้ง</string>
     <string name="nutrition_lactose">แลคโตส</string>
@@ -431,8 +431,8 @@
     <string name="preference_choose_language_dialog_title">Choose language</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
-    <string name="translate_help_title">Help translate Open Products Facts</string>
-    <string name="translate_help_summary">Bring the Open Products Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_title">Help translate Open Food Facts</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
@@ -541,7 +541,7 @@
     </plurals>
     <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
     <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Scan sound</string>
     <string name="trouble_scanning">Trouble Scanning?</string>
     <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
@@ -549,7 +549,7 @@
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Initial loading</string>
     <string name="preferences">ตั้งค่า</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Loading product %s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
@@ -642,7 +642,7 @@
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Title</string>
     <string name="description_activity_product">description</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
@@ -675,7 +675,7 @@
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="category_game_btn">Help categorize products</string>
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -805,7 +805,7 @@
     <string name="brand_hint">Examples: Nike, Apple, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>

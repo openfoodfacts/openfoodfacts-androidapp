@@ -172,7 +172,7 @@
     <string name="txtEMB">İzlenebilirlik kodları:</string>
     <string name="txtIngredients">İçindekiler listesi :</string>
     <string name="Donate">Bağış Yapın</string>
-    <string name="Donation">Open Products Facts\'e bağışta bulunmak için buraya tıklayınız</string>
+    <string name="Donation">Open Food Facts\'e bağışta bulunmak için buraya tıklayınız</string>
     <string name="txtSubstances">Alerjiye veya intoleransa neden olan maddeler veya ürünler :</string>
     <string name="txtAdditives">Katkı maddeleri :</string>
     <string name="txtTraces">İzler :</string>
@@ -200,7 +200,7 @@
     <string name="uploadLater">Ağ kullanılabilir olduğunda resim yüklenecek</string>
     <string name="txtInfoLoginOk">Kullanıcı kaydedildi</string>
     <string name="txtInfoLoginNo">Kullanıcı kaydedilemedi</string>
-    <string name="txtDialogsContent">Taradığınız ürün henüz Open Products Facts\'te mevcut değil. Lütfen ekleyin.</string>
+    <string name="txtDialogsContent">Taradığınız ürün henüz Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
     <string name="txtYes">Evet</string>
     <string name="txtNo">Hayır</string>
     <string name="hintBrand">Marka</string>
@@ -214,7 +214,7 @@
     <string name="txtBarcodeRequire">Barkod gerekli</string>
     <string name="txtOk">Tamam</string>
     <string name="txtBarcodeNotValid">Barkod geçerli değil</string>
-    <string name="msg_share">Bu ürüne Open Products Facts\'te bak :</string>
+    <string name="msg_share">Bu ürüne Open Food Facts\'te bak :</string>
     <string name="create_account">Kaydol</string>
     <string name="home_drawer">Ana Sayfa</string>
     <string name="install">Yükle</string>
@@ -238,9 +238,9 @@
     <string name="cancel_button">İptal</string>
     <string name="login_button">Kullanıcı adı</string>
     <string name="create_account_button">Hesap Oluştur</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji Bilgileriniz asla Open Products Facts sunucusuna gönderilmeyecektir. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın %100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji Bilgileriniz asla Open Food Facts sunucusuna gönderilmeyecektir. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın %100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
     <string name="title_info_dialog">Nasıl çalışır?</string>
-    <string name="text_offline_info_dialog">Ürünleri Open Products Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
+    <string name="text_offline_info_dialog">Ürünleri Open Food Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
     <string name="permission_camera">Barkodları taramak ve fotoğraf çekmek için kamera izni gerekiyor.</string>
     <string name="no_camera_dialog_title">Kamera bulunamadı</string>
     <string name="no_camera_dialog_content">Cihazınızın kamerası yok. Herhangi bir barkodu tarayamayacaksınız.</string>
@@ -324,7 +324,7 @@
     <string name="txt_no_matching_incomplete_products">Tamamlanmamış bir ürünümüz yok! Yeni bir ürün ekle?</string>
     <string name="txt_no_matching_contributor_products">Yo hayır, bu katılımcıdan hiç ürünümüz yok, bir tane ekleyebilir misin?</string>
     <string name="txt_no_matching_products">Eşleşen bir ürün bulamadık. \nŞunu deneyebilirsiniz:</string>
-    <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Products Facts\'e ekle</string>
+    <string name="txt_broaden_search">- aramanız genişletiliyor \n- tara ve Open Food Facts\'e ekle</string>
     <string name="something_went_wrong">Üzgünüm, bir şeyler yanlış gitti…</string>
     <string name="txt_try_again">Tekrar deneyin</string>
     <string name="nutrition_lactose">Laktoz</string>
@@ -436,8 +436,8 @@
     <string name="preference_choose_language_dialog_title">Dil seçin</string>
     <string name="FAQ">SSS</string>
     <string name="FrequentlyAskedQuestions">Sıkça Sorulan Sorular</string>
-    <string name="translate_help_title">Open Products Facts\'i tercüme etmeye yardım edin</string>
-    <string name="translate_help_summary">Open Products Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
+    <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardım edin</string>
+    <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
     <string name="please_check_your_connection">Bağlantınızı kontrol ediniz.</string>
     <string name="advanced_search_title">Gelişmiş Arama &amp; Grafikler</string>
     <string name="compare_products">Ürünleri karşılaştırın</string>
@@ -648,7 +648,7 @@
     <string name="contribution_by">Katkıda bulunan</string>
     <string name="title_activity_product">Başlık</string>
     <string name="description_activity_product">açıklama</string>
-    <string name="intent_filter_share_label">Open Products Facts\'e ekle</string>
+    <string name="intent_filter_share_label">Open Food Facts\'e ekle</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Aşırı maruz kalma riski yüksek</string>
     <string name="overexposure_moderate">Orta derecede aşırı maruz kalma riski</string>
@@ -681,7 +681,7 @@
     <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
     <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve besin değerlerini ekleyin</string>
     <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
-    <string name="version_string">Open Products Facts Android Uygulaması</string>
+    <string name="version_string">Open Food Facts Android Uygulaması</string>
     <string name="version">Versiyon</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -811,7 +811,7 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="brand_hint">Örnekler: Nike, Apple vb.</string>
     <string name="sign_in_or_register">Oturum aç / Kayıt ol</string>
     <string name="hunger_game_call_to_action">Daha fazla sınıflandırmaya yardımcı olun %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>

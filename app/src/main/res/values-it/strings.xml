@@ -172,7 +172,7 @@
     <string name="txtEMB">Codici di intraccibilita:</string>
     <string name="txtIngredients">Lista degli ingredienti:</string>
     <string name="Donate">Effettua una donazione</string>
-    <string name="Donation">Clicca qui per donare a Open Products Facts</string>
+    <string name="Donation">Clicca qui per donare a Open Food Facts</string>
     <string name="txtSubstances">Sostanze o prodotti che causano allergie o intolleranze:</string>
     <string name="txtAdditives">Additivi:</string>
     <string name="txtTraces">Tracce:</string>
@@ -200,7 +200,7 @@
     <string name="uploadLater">L\'immagine verrà caricata quando la rete sarà disponibile</string>
     <string name="txtInfoLoginOk">Utente salvato</string>
     <string name="txtInfoLoginNo">Utente non salvato</string>
-    <string name="txtDialogsContent">Il prodotto che hai scansionato non è ancora presente in Open Products Facts. Per favore aggiungilo.</string>
+    <string name="txtDialogsContent">Il prodotto che hai scansionato non è ancora presente in Open Food Facts. Per favore aggiungilo.</string>
     <string name="txtYes">Sì</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marche</string>
@@ -214,7 +214,7 @@
     <string name="txtBarcodeRequire">Codice a barre necessario</string>
     <string name="txtOk">Ok</string>
     <string name="txtBarcodeNotValid">Codice a barre non valido</string>
-    <string name="msg_share">Guarda questo prodotto su Open Products Facts:</string>
+    <string name="msg_share">Guarda questo prodotto su Open Food Facts:</string>
     <string name="create_account">Registrati</string>
     <string name="home_drawer">Homepage</string>
     <string name="install">Installa</string>
@@ -240,7 +240,7 @@
     <string name="create_account_button">Crea account</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Le informazioni sulle tue allergie non saranno mai inviate al server di Oper Products Facts. Inoltre, fai attenzione perché le informazioni sui prodotti potrebbero non essere accurate al 100%, quindi ricorda sempre di controllare! </string>
     <string name="title_info_dialog">Come funziona?</string>
-    <string name="text_offline_info_dialog">Scansione i prodotti anche quando sei offline così che possano essere aggiunti a Open Products Facts successivamente. I prodotti scansionati appariranno qui e potrai inviarli utilizzando il pulsante sottostante.</string>
+    <string name="text_offline_info_dialog">Scansione i prodotti anche quando sei offline così che possano essere aggiunti a Open Food Facts successivamente. I prodotti scansionati appariranno qui e potrai inviarli utilizzando il pulsante sottostante.</string>
     <string name="permission_camera">L\'autorizzazione Fotocamera è necessaria per scansionare i codici a barre e scattare foto.</string>
     <string name="no_camera_dialog_title">Fotocamera non trovata</string>
     <string name="no_camera_dialog_content">Il dispositivo non ha una fotocamera. Non potrai eseguire la scansione di alcun codice a barre.</string>
@@ -324,7 +324,7 @@
     <string name="txt_no_matching_incomplete_products">Non abbiamo prodotti incompleti! Aggiungere un nuovo prodotto?</string>
     <string name="txt_no_matching_contributor_products">Oh no, non abbiamo alcun prodotto da questo contributore, puoi aggiungerne uno?</string>
     <string name="txt_no_matching_products">Non abbiamo trovato prodotti corrispondenti. \nPuoi provare:</string>
-    <string name="txt_broaden_search">- amplia la tua ricerca \n- scan e aggiungila su Open Products Facts</string>
+    <string name="txt_broaden_search">- amplia la tua ricerca \n- scan e aggiungila su Open Food Facts</string>
     <string name="something_went_wrong">Scusa, qualcosa è andato storto…</string>
     <string name="txt_try_again">Riprova</string>
     <string name="nutrition_lactose">Lattosio</string>
@@ -436,8 +436,8 @@
     <string name="preference_choose_language_dialog_title">Scegli la lingua</string>
     <string name="FAQ">Domande frequenti</string>
     <string name="FrequentlyAskedQuestions">Domande poste frequentemente</string>
-    <string name="translate_help_title">Aiuta a tradurre Open Products Facts</string>
-    <string name="translate_help_summary">Porta il database di Open Products Facts nella tua lingua - non è richiesta alcuna conoscenza tecnica</string>
+    <string name="translate_help_title">Aiuta a tradurre Open Food Facts</string>
+    <string name="translate_help_summary">Porta il database di Open Food Facts nella tua lingua - non è richiesta alcuna conoscenza tecnica</string>
     <string name="please_check_your_connection">Controlla la connessione.</string>
     <string name="advanced_search_title">Ricerca avanzata &amp; grafici</string>
     <string name="compare_products">Compara prodotti</string>
@@ -547,7 +547,7 @@
     </plurals>
     <string name="product_not_complete">Questo prodotto non è ancora completo. \nPuoi aggiungere alcuni dettagli?</string>
     <string name="addProductOffline">Sembri offline. Aggiungi il prodotto %s utilizzando la modalità offline?</string>
-    <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Products Facts. Puoi aggiungerlo?</string>
+    <string name="product_not_found">Il prodotto %1$s scansionato non esiste ancora in Open Food Facts. Puoi aggiungerlo?</string>
     <string name="scan_sound">Suono di scansione</string>
     <string name="trouble_scanning">Problemi di scansione?</string>
     <string name="barcode_hint">Problemi di scansione? Inserisci il codice a barre</string>
@@ -555,7 +555,7 @@
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Caricamento iniziale</string>
     <string name="preferences">Impostazioni</string>
-    <string name="OFFlogo">Logo Open Products Facts</string>
+    <string name="OFFlogo">Logo Open Food Facts</string>
     <string name="loading_product">Caricamento del prodotto %s</string>
     <string name="image_not_defined_for_language">Nessuna immagine per la lingua selezionata. Puoi aggiungerne uno nuovo</string>
     <string name="error_adding_ingredients">Qualcosa è andato storto durante il tentativo di aggiunta degli ingredienti del prodotto</string>
@@ -648,7 +648,7 @@
     <string name="contribution_by">Contributori</string>
     <string name="title_activity_product">Titolo</string>
     <string name="description_activity_product">descrizione</string>
-    <string name="intent_filter_share_label">Aggiungi a Open Products Facts</string>
+    <string name="intent_filter_share_label">Aggiungi a Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Alto rischio di sovraesposizione</string>
     <string name="overexposure_moderate">Moderato rischio di sovraesposizione</string>
@@ -681,7 +681,7 @@
     <string name="add_category_prompt_text">Aggiungi una categoria per aiutare a completare il prodotto</string>
     <string name="add_nutrient_category_prompt_text">Aggiungi una categoria ed i valori nutrizionali per aiutare a completare il prodotto</string>
     <string name="category_game_btn">Aiuta a categorizzare i prodotti</string>
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Versione</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -811,7 +811,7 @@
     <string name="brand_hint">Esempi: Nike, Apple, ecc…</string>
     <string name="sign_in_or_register">Accedi o registrati</string>
     <string name="hunger_game_call_to_action">Aiuta a classificarne di più %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts è un database aperto di più di %1$s prodotti (più quelli con cui contribuirai).</string>
+    <string name="txtHomeOnline">Open Food Facts è un database aperto di più di %1$s prodotti (più quelli con cui contribuirai).</string>
     <string name="enabled">Abilitato</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
