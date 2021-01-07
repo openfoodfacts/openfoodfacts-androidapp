@@ -10,6 +10,7 @@ import openfoodfacts.github.scrachx.openfood.models.Units
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
+import java.util.*
 
 fun OfflineSavedProduct.toState(context: Context) = OpenFoodAPIClient(context).getProductStateFull(barcode)
 
@@ -33,7 +34,7 @@ fun Product?.getCO2Resource(): Int {
 }
 
 @DrawableRes
-fun Product?.getEcoscoreResource() = when (this?.ecoscore) {
+fun Product?.getEcoscoreResource() = when (this?.ecoscore?.toLowerCase(Locale.ROOT)) {
     "a" -> R.drawable.ic_ecoscore_a
     "b" -> R.drawable.ic_ecoscore_b
     "c" -> R.drawable.ic_ecoscore_c
@@ -43,7 +44,14 @@ fun Product?.getEcoscoreResource() = when (this?.ecoscore) {
 }
 
 @DrawableRes
-fun Product?.getNutriScoreResource(vertical: Boolean = false) = getNutriScoreResource(this?.nutritionGradeFr, vertical)
+fun Product?.getNutriScoreResource(vertical: Boolean = false) = when (this?.nutritionGradeFr?.toLowerCase(Locale.ROOT)) {
+    "a" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_a else R.drawable.ic_nutriscore_a
+    "b" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_b else R.drawable.ic_nutriscore_b
+    "c" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_c else R.drawable.ic_nutriscore_c
+    "d" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_d else R.drawable.ic_nutriscore_d
+    "e" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_e else R.drawable.ic_nutriscore_e
+    else -> if (vertical) NO_DRAWABLE_RESOURCE else R.drawable.ic_nutriscore_unknown
+}
 
 fun Product?.getImageGradeDrawable(context: Context, vertical: Boolean = false): Drawable? {
     val gradeID = this.getNutriScoreResource(vertical)
@@ -55,4 +63,10 @@ fun Product?.getImageGradeDrawable(context: Context, vertical: Boolean = false):
  * Returns the NOVA group graphic asset given the group
  */
 @DrawableRes
-fun Product?.getNovaGroupResource() = getNovaGroupResource(this?.novaGroups)
+fun Product?.getNovaGroupResource() = when (this?.novaGroups) {
+    "1" -> R.drawable.ic_nova_group_1
+    "2" -> R.drawable.ic_nova_group_2
+    "3" -> R.drawable.ic_nova_group_3
+    "4" -> R.drawable.ic_nova_group_4
+    else -> R.drawable.ic_nova_group_unknown
+}
