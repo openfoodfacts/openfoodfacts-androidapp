@@ -675,7 +675,7 @@
     <string name="add_category_prompt_text">아직 완성되지 않은 제품의 카테고리 추가하기</string>
     <string name="add_nutrient_category_prompt_text">아직 완성되지 않은 제품의 영양 정보와 카테고리를 추가하기</string>
     <string name="category_game_btn">제품 분류 도움말</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">Open Food Facts Android app</string>
     <string name="version">버전</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>

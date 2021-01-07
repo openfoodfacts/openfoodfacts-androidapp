@@ -675,7 +675,7 @@
     <string name="add_category_prompt_text">Add a category to help complete the product</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="category_game_btn">商品の分類にご協力ください</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">Open Food Facts Android app</string>
     <string name="version">バージョン</string>
     <string name="set_ingredient_img">原材料画像として設定</string>
     <string name="set_img_nutrients">栄養成分画像として設定</string>

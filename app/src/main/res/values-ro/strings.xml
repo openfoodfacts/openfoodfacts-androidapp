@@ -687,7 +687,7 @@
     <string name="add_category_prompt_text">Adăugați o categorie pentru a ajuta la completarea produsului</string>
     <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
     <string name="category_game_btn">Ajutați la catalogarea produselor</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="version_string">Open Food Facts Android app</string>
     <string name="version">Versiune</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
