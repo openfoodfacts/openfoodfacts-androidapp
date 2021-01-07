@@ -153,14 +153,21 @@ class ImagesSelectActivity : BaseActivity() {
         }
     }
 
+
     companion object {
         const val TOOLBAR_TITLE = "TOOLBAR_TITLE"
         private val LOG_TAG = ImagesSelectActivity::class.simpleName
 
+        @JvmStatic
+        fun start(context: Context, toolbarTitle: String, productCode: String) = context.startActivity(Intent(context, this::class.java).apply {
+            putExtra(TOOLBAR_TITLE, toolbarTitle)
+            putExtra(PRODUCT_BARCODE, productCode)
+        })
+
         class SelectImageContract(
                 private val toolbarTitle: String
         ) : ActivityResultContract<String, Pair<String?, File?>>() {
-            override fun createIntent(context: Context, barcode: String) = Intent().apply {
+            override fun createIntent(context: Context, barcode: String) = Intent(context, ImagesSelectActivity::class.java).apply {
                 putExtra(TOOLBAR_TITLE, toolbarTitle)
                 putExtra(PRODUCT_BARCODE, barcode)
             }
@@ -170,11 +177,5 @@ class ImagesSelectActivity : BaseActivity() {
                     else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
 
         }
-
-        @JvmStatic
-        fun start(context: Context, toolbarTitle: String, productCode: String) = context.startActivity(Intent(context, this::class.java).apply {
-            putExtra(TOOLBAR_TITLE, toolbarTitle)
-            putExtra(PRODUCT_BARCODE, productCode)
-        })
     }
 }
