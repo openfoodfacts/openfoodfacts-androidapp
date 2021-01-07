@@ -205,12 +205,6 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    class LoginContract : ActivityResultContract<Unit, Boolean>() {
-        override fun createIntent(context: Context, input: Unit) = Intent(context, LoginActivity::class.java)
-
-        override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
-    }
-
     private fun doRegister() {
         val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(baseContext, customTabActivityHelper.session)
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, userLoginUri!!, WebViewFallback())
@@ -237,5 +231,13 @@ class LoginActivity : BaseActivity() {
         customTabActivityHelper.connectionCallback = null
         _binding = null
         super.onDestroy()
+    }
+
+    companion object {
+        class LoginContract : ActivityResultContract<Unit, Boolean>() {
+            override fun createIntent(context: Context, input: Unit) = Intent(context, LoginActivity::class.java)
+
+            override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
+        }
     }
 }

@@ -74,7 +74,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityMainBinding
-import openfoodfacts.github.scrachx.openfood.features.LoginActivity.LoginContract
+import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.adapters.PhotosAdapter
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveListActivity
 import openfoodfacts.github.scrachx.openfood.features.allergensalert.AllergensAlertFragment
