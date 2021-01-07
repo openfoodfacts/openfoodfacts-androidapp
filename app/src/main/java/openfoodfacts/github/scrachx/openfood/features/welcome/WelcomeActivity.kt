@@ -21,18 +21,20 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityWelcomeBinding
 import openfoodfacts.github.scrachx.openfood.features.MainActivity
-import openfoodfacts.github.scrachx.openfood.features.welcome.WelcomeActivity
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager
 
@@ -53,7 +55,7 @@ class WelcomeActivity : AppCompatActivity() {
     private lateinit var prefManager: PrefManager
     private var lastPage = false
 
-    private val viewPagerPageChangeListener: OnPageChangeListener = object : OnPageChangeListener {
+    private val viewPagerPageChangeListener = object : OnPageChangeListener {
         override fun onPageSelected(position: Int) {
             addBottomDots(position)
             if (position == layouts.size - 1) {
@@ -77,7 +79,7 @@ class WelcomeActivity : AppCompatActivity() {
          * dragging it means that the user is trying to go to the next page on right from the last page and
          * hence MainActivity is started in this case.
          */
-        override fun onPageScrolled(arg0: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
             if (lastPage && positionOffset == 0f && currentState == ViewPager.SCROLL_STATE_DRAGGING) {
                 launchHomeScreen()
             }
@@ -88,11 +90,6 @@ class WelcomeActivity : AppCompatActivity() {
         }
     }
     private var currentState = 0
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
@@ -106,24 +103,25 @@ class WelcomeActivity : AppCompatActivity() {
             launchHomeScreen()
             finish()
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        }
-        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, binding.root).hide(WindowInsetsCompat.Type.statusBars())
+
         layouts = intArrayOf(
                 R.layout.welcome_slide1,
                 R.layout.welcome_slide2,
                 R.layout.welcome_slide3,
                 R.layout.welcome_slide4
         )
+
         addBottomDots(0)
         changeStatusBarColor()
-        val welcomePageAdapter = WelcomePageAdapter(layoutInflater, layouts)
-        binding.viewPager.adapter = welcomePageAdapter
+
+        binding.viewPager.adapter = WelcomePageAdapter(layoutInflater, layouts)
         binding.viewPager.addOnPageChangeListener(viewPagerPageChangeListener)
         binding.btnSkip.setOnClickListener { launchHomeScreen() }
+
         binding.btnNext.setOnClickListener {
-            val nextItem = nextItem
             if (nextItem < layouts.size) {
                 binding.viewPager.currentItem = nextItem
             } else {
@@ -132,20 +130,26 @@ class WelcomeActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
+    }
+
     private fun addBottomDots(currentPage: Int) {
-        val dots = arrayOfNulls<TextView>(layouts.size)
         val colorsActive = resources.getIntArray(R.array.array_dot_active)
         val colorsInactive = resources.getIntArray(R.array.array_dot_inactive)
+
         binding.layoutDots.removeAllViews()
-        for (i in dots.indices) {
-            dots[i] = TextView(this)
-            dots[i]!!.text = Html.fromHtml("&#8226;")
-            dots[i]!!.textSize = 35f
-            dots[i]!!.setTextColor(colorsInactive[currentPage])
-            binding.layoutDots.addView(dots[i])
+        val dots = (1..layouts.size).map {
+            TextView(this).apply {
+                text = HtmlCompat.fromHtml("&#8226;", HtmlCompat.FROM_HTML_MODE_COMPACT)
+                textSize = 35f
+                setTextColor(colorsInactive[currentPage])
+                binding.layoutDots.addView(this)
+            }
         }
         if (dots.isNotEmpty()) {
-            dots[currentPage]!!.setTextColor(colorsActive[currentPage])
+            dots[currentPage].setTextColor(colorsActive[currentPage])
         }
     }
 
@@ -162,10 +166,7 @@ class WelcomeActivity : AppCompatActivity() {
     private val nextItem get() = binding.viewPager.currentItem + 1
 
     private fun changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            return
-        }
-        val window = window
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.TRANSPARENT
     }

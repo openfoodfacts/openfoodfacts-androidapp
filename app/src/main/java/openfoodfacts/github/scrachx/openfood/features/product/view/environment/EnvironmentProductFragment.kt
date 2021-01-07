@@ -2,12 +2,11 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.environment
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import com.squareup.picasso.Picasso
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
@@ -87,12 +86,7 @@ class EnvironmentProductFragment : BaseFragment() {
 
         val environmentInfocard = product.environmentInfoCard
         if (!environmentInfocard.isNullOrEmpty()) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                binding.environmentInfoText.append(Html.fromHtml(environmentInfocard, Html.FROM_HTML_MODE_COMPACT))
-            } else {
-                @Suppress("DEPRECATION")
-                binding.environmentInfoText.append(Html.fromHtml(environmentInfocard))
-            }
+            binding.environmentInfoText.append(HtmlCompat.fromHtml(environmentInfocard, HtmlCompat.FROM_HTML_MODE_COMPACT))
         } else {
             binding.environmentInfoCv.visibility = View.GONE
         }

@@ -3,12 +3,12 @@ package openfoodfacts.github.scrachx.openfood.features.product.view
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -58,9 +58,8 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
         binding.toolbar.visibility = View.GONE
 
         adapterResult = setupViewPager(binding.pager)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            binding.pager.isNestedScrollingEnabled = true
-        }
+        ViewCompat.setNestedScrollingEnabled(binding.pager, true)
+
         TabLayoutMediator(binding.tabs, binding.pager) { tab, position ->
             tab.text = adapterResult.getPageTitle(position)
         }.attach()
