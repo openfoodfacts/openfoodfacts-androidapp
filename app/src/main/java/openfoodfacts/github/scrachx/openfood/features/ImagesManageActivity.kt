@@ -268,8 +268,11 @@ class ImagesManageActivity : BaseActivity() {
         }
     }
 
-    private fun loadImage(imageUrl: String) {
-        if (imageUrl.isNotEmpty()) {
+    private fun loadImage(imageUrl: String?) {
+        if (imageUrl.isNullOrEmpty()) {
+            binding.imageViewFullScreen.setImageDrawable(null)
+            stopRefresh()
+        } else {
             var url = imageUrl
             if (isAbsoluteUrl(url)) {
                 url = "file://$url"
@@ -291,9 +294,6 @@ class ImagesManageActivity : BaseActivity() {
                             stopRefresh()
                         }
                     })
-        } else {
-            binding.imageViewFullScreen.setImageDrawable(null)
-            stopRefresh()
         }
     }
 
@@ -305,7 +305,7 @@ class ImagesManageActivity : BaseActivity() {
 
         getProduct()?.let {
             startRefresh(getString(R.string.loading_product, "${it.getLocalProductName(this)}..."))
-            disp.add(client.getProductImages(it.code).subscribe { newState: ProductState ->
+            disp.add(client.getProductImages(it.code).observeOn(AndroidSchedulers.mainThread()).subscribe { newState: ProductState ->
                 val newProduct = newState.product
                 var imageReloaded = false
 
@@ -315,7 +315,7 @@ class ImagesManageActivity : BaseActivity() {
                     intent.putExtra(PRODUCT, newProduct)
                     val newImgUrl = getImageUrlToDisplay(newProduct)
                     loadLanguage(newProduct)
-                    if (imgUrl != newImgUrl) {
+                    if (imgUrl == null || imgUrl != newImgUrl) {
                         intent.putExtra(IMAGE_URL, newImgUrl)
                         loadImage(newImgUrl)
                         imageReloaded = true
@@ -340,7 +340,7 @@ class ImagesManageActivity : BaseActivity() {
      */
     private fun updateProductImagesInfo(toDoAfter: Runnable?) {
         getProduct()?.let {
-            disp.add(client.getProductImages(it.code).subscribe { newState: ProductState ->
+            disp.add(client.getProductImages(it.code).observeOn(AndroidSchedulers.mainThread()).subscribe { newState: ProductState ->
                 val newStateProduct = newState.product
                 if (newStateProduct != null) {
                     intent.putExtra(PRODUCT, newStateProduct)
@@ -350,8 +350,8 @@ class ImagesManageActivity : BaseActivity() {
         }
     }
 
-    private fun getImageUrlToDisplay(product: Product): String {
-        return product.getSelectedImage(getCurrentLanguage(), getSelectedType(), ImageSize.DISPLAY)!!
+    private fun getImageUrlToDisplay(product: Product): String? {
+        return product.getSelectedImage(getCurrentLanguage(), getSelectedType(), ImageSize.DISPLAY)
     }
 
     private val currentImageUrl: String?
@@ -544,7 +544,7 @@ class ImagesManageActivity : BaseActivity() {
         }
     }
 
-    private val selectImageLauncher = registerForActivityResult(ImagesSelectActivity.Companion.SelectImageContract(binding.toolbar.title.toString()))
+    private val selectImageLauncher = registerForActivityResult(ImagesSelectActivity.Companion.SelectImageContract(""))
     { (imgId, file) ->
         //photo choosed from gallery
         if (file != null) {

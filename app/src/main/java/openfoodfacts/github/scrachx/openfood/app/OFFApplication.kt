@@ -60,6 +60,8 @@ class OFFApplication : MultiDexApplication() {
         appComponent.inject(this)
         RxJavaPlugins.setErrorHandler {
             when (it) {
+                is UndeliverableException ->
+                    Log.w(LOG_TAG, "Undeliverable exception received, not sure what to do", it.cause)
                 is IOException -> {
 
                     // fine, irrelevant network problem or API that throws on cancellation
@@ -76,8 +78,6 @@ class OFFApplication : MultiDexApplication() {
                             .uncaughtException(Thread.currentThread(), it)
                     return@setErrorHandler
                 }
-                is UndeliverableException ->
-                    Log.w(LOG_TAG, "Undeliverable exception received, not sure what to do", it.cause!!)
             }
         }
     }
