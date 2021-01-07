@@ -15,7 +15,6 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAct
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.localeProductNameField
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.Utils.NO_DRAWABLE_RESOURCE
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
 import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
@@ -83,24 +82,21 @@ class ProductsRecyclerViewAdapter(
 
         // Set nutriscore icon
         val nutriRes = product.getNutriScoreResource()
-        if (nutriRes != NO_DRAWABLE_RESOURCE) {
-            holder.productNutriscore.setImageResource(nutriRes)
-            holder.productNutriscore.visibility = View.VISIBLE
-        }
+        holder.productNutriscore.setImageResource(nutriRes)
+        holder.productNutriscore.visibility = View.VISIBLE
+
 
         // Set nova icon
         val novaRes = product.getNovaGroupResource()
-        if (novaRes != NO_DRAWABLE_RESOURCE) {
-            holder.productNova.setImageResource(novaRes)
-            holder.productNova.visibility = View.VISIBLE
-        }
+        holder.productNova.setImageResource(novaRes)
+        holder.productNova.visibility = View.VISIBLE
+
 
         // Set ecoscore icon
         val ecoRes = product.getEcoscoreResource()
-        if (ecoRes != NO_DRAWABLE_RESOURCE) {
-            holder.productEcoscore.setImageResource(ecoRes)
-            holder.productEcoscore.visibility = View.VISIBLE
-        }
+        holder.productEcoscore.setImageResource(ecoRes)
+        holder.productEcoscore.visibility = View.VISIBLE
+
     }
 
     fun getProduct(position: Int) = products[position]

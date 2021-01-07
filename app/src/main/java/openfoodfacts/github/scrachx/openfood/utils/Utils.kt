@@ -172,13 +172,6 @@ object Utils {
         get() = OFFApplication.daoSession
 
     /**
-     * Check if the device has a camera installed.
-     *
-     * @return true if installed, false otherwise.
-     */
-    fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)
-
-    /**
      * Schedules job to download when network is available
      */
     @Synchronized
@@ -430,19 +423,6 @@ private fun closeTags(text: Spannable, tags: Array<out StyleSpan>) {
  */
 fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD))
 
-/**
- * Returns the Nutri-Score graphic asset given the grade
- */
-@DrawableRes
-fun getNutriScoreResource(grade: String?, vertical: Boolean = false) = when (grade?.toLowerCase(Locale.ROOT)) {
-    "a" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_a else R.drawable.ic_nutriscore_a
-    "b" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_b else R.drawable.ic_nutriscore_b
-    "c" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_c else R.drawable.ic_nutriscore_c
-    "d" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_d else R.drawable.ic_nutriscore_d
-    "e" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_e else R.drawable.ic_nutriscore_e
-    else -> if (vertical) Utils.NO_DRAWABLE_RESOURCE else R.drawable.ic_nutriscore_unknown
-}
-
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
 fun dpsToPixel(dps: Int, context: Context) =
@@ -504,11 +484,9 @@ fun getNutriScoreSmallDrawable(grade: String?) = when (grade?.toLowerCase(Locale
     else -> R.drawable.ic_nutriscore_small_unknown
 }
 
-@DrawableRes
-fun getNovaGroupResource(novaGroup: String?) = when (novaGroup) {
-    "1" -> R.drawable.ic_nova_group_1
-    "2" -> R.drawable.ic_nova_group_2
-    "3" -> R.drawable.ic_nova_group_3
-    "4" -> R.drawable.ic_nova_group_4
-    else -> R.drawable.ic_nova_group_unknown
-}
+/**
+ * Check if the device has a camera installed.
+ *
+ * @return true if installed, false otherwise.
+ */
+fun isHardwareCameraInstalled(context: Context) = context.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)

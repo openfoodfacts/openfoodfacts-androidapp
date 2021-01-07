@@ -2,11 +2,11 @@ package openfoodfacts.github.scrachx.openfood.features
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.github.chrisbanes.photoview.PhotoViewAttacher
 import com.squareup.picasso.Callback
@@ -34,23 +34,15 @@ class ImageZoomActivity : BaseActivity() {
 
         attacher = PhotoViewAttacher(binding.imageViewFullScreen)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            //delaying the transition until the view has been laid out
-            postponeEnterTransition()
-        }
+        //delaying the transition until the view has been laid out
+        ActivityCompat.postponeEnterTransition(this)
+
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setTitle(R.string.imageFullscreen)
 
         loadImage(intent.getStringExtra(IMAGE_URL))
     }
 
-    companion object {
-        @JvmStatic
-        fun start(context: Context, imageUrl: String) =
-                context.startActivity(Intent(context, ImageZoomActivity::class.java).apply {
-                    putExtra(IMAGE_URL, imageUrl)
-                })
-    }
 
     override fun onResume() {
         binding.toolbar.setTitle(R.string.imageFullscreen)
@@ -79,9 +71,7 @@ class ImageZoomActivity : BaseActivity() {
                     .into(binding.imageViewFullScreen, object : Callback {
                         override fun onSuccess() {
                             // Activity could have been destroyed while we load the image
-                            if (isFinishing) {
-                                return
-                            }
+                            if (isFinishing) return
                             attacher.update()
                             scheduleStartPostponedTransition(binding.imageViewFullScreen)
                             binding.imageViewFullScreen.visibility = View.VISIBLE
@@ -105,12 +95,10 @@ class ImageZoomActivity : BaseActivity() {
     }
 
 
-    private fun startRefresh(text: String?) {
+    private fun startRefresh(text: String) {
         binding.progressBar.visibility = View.VISIBLE
-        if (text != null) {
-            binding.textInfo.setTextColor(ContextCompat.getColor(this, R.color.white))
-            binding.textInfo.text = text
-        }
+        binding.textInfo.setTextColor(ContextCompat.getColor(this, R.color.white))
+        binding.textInfo.text = text
     }
 
     /**
@@ -121,11 +109,18 @@ class ImageZoomActivity : BaseActivity() {
         sharedElement.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
             override fun onPreDraw(): Boolean {
                 sharedElement.viewTreeObserver.removeOnPreDrawListener(this)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    startPostponedEnterTransition()
-                }
+                ActivityCompat.startPostponedEnterTransition(this@ImageZoomActivity)
                 return true
             }
+        })
+    }
+
+    companion object {
+        fun start(
+                context: Context,
+                imageUrl: String
+        ) = context.startActivity(Intent(context, ImageZoomActivity::class.java).apply {
+            putExtra(IMAGE_URL, imageUrl)
         })
     }
 }

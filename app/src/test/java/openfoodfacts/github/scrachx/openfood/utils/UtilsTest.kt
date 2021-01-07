@@ -62,13 +62,13 @@ class UtilsTest {
         // Test for best condition
         mockitoWhen(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
                 .thenReturn(true)
-        assertThat(Utils.isHardwareCameraInstalled(mockCtx)).isTrue()
+        assertThat(isHardwareCameraInstalled(mockCtx)).isTrue()
 
         // False condition
         mockitoWhen(mockPM.hasSystemFeature(PackageManager.FEATURE_CAMERA))
                 .thenReturn(false)
 
-        assertThat(Utils.isHardwareCameraInstalled(mockCtx)).isFalse()
+        assertThat(isHardwareCameraInstalled(mockCtx)).isFalse()
     }
 
     @Test

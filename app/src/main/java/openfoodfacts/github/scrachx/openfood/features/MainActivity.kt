@@ -74,7 +74,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityMainBinding
-import openfoodfacts.github.scrachx.openfood.features.LoginActivity.LoginContract
+import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.adapters.PhotosAdapter
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveListActivity
 import openfoodfacts.github.scrachx.openfood.features.allergensalert.AllergensAlertFragment
@@ -122,7 +122,6 @@ import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Comp
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_YOUR_LISTS
 import openfoodfacts.github.scrachx.openfood.utils.Utils.hideKeyboard
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isApplicationInstalled
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
 import openfoodfacts.github.scrachx.openfood.utils.Utils.isNetworkConnected
 import openfoodfacts.github.scrachx.openfood.utils.Utils.scheduleProductUploadJob
 import java.io.File

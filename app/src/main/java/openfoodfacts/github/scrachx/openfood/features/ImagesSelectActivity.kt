@@ -54,23 +54,23 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         _binding = ActivityProductImagesListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setSupportActionBar(binding.toolbar)
-        binding.closeZoom.setOnClickListener { onCloseZoom() }
-        binding.expandedImage.setOnClickListener { onClickOnExpandedImage() }
-        binding.btnAcceptSelection.setOnClickListener { onBtnAcceptSelection() }
-        binding.btnChooseImage.setOnClickListener { onBtnChooseImage() }
+        supportActionBar!!.title = intent.getStringExtra(TOOLBAR_TITLE)
+
+        binding.closeZoom.setOnClickListener { closeZoom() }
+        binding.expandedImage.setOnClickListener { closeZoom() }
+        binding.btnAcceptSelection.setOnClickListener { acceptSelection() }
+        binding.btnChooseImage.setOnClickListener { chooseImage() }
 
         // Get intent data
-        val intent = intent
-        val code = intent.getStringExtra(PRODUCT_BARCODE)
-        binding.toolbar.title = intent.getStringExtra(TOOLBAR_TITLE)
+        val code = intent.getStringExtra(PRODUCT_BARCODE) ?: error("Cannot start activity without product barcode.")
         loadProductImages(code)
     }
 
-    private fun loadProductImages(code: String?) {
+    private fun loadProductImages(code: String) {
         productsApi.getProductImages(code)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(LOG_TAG, "cannot download images from server", it) }
@@ -79,7 +79,7 @@ class ImagesSelectActivity : BaseActivity() {
                     supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
                     //Check if user is logged in
-                    adapter = ProductImagesSelectionAdapter(this, imageNames, code!!)
+                    adapter = ProductImagesSelectionAdapter(this, imageNames, code)
                     { setSelectedImage(it) }
 
                     binding.imagesRecycler.adapter = adapter
@@ -97,14 +97,12 @@ class ImagesSelectActivity : BaseActivity() {
         updateButtonAccept()
     }
 
-    private fun onCloseZoom() {
+    private fun closeZoom() {
         binding.zoomContainer.visibility = View.INVISIBLE
         binding.imagesRecycler.visibility = View.VISIBLE
     }
 
-    private fun onClickOnExpandedImage() = onCloseZoom()
-
-    private fun onBtnAcceptSelection() {
+    private fun acceptSelection() {
         setResult(RESULT_OK, Intent().apply {
             putExtra(IMG_ID, adapter!!.getSelectedImageName())
 
@@ -112,7 +110,7 @@ class ImagesSelectActivity : BaseActivity() {
         finish()
     }
 
-    private fun onBtnChooseImage() {
+    private fun chooseImage() {
         if (ContextCompat.checkSelfPermission(this, permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(permission.READ_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_STORAGE)
         } else {
@@ -140,7 +138,7 @@ class ImagesSelectActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        PhotoReceiverHandler { newPhotoFile: File? ->
+        PhotoReceiverHandler { newPhotoFile ->
             setResult(RESULT_OK, Intent().apply {
                 putExtra(IMAGE_FILE, newPhotoFile)
             })
@@ -151,16 +149,25 @@ class ImagesSelectActivity : BaseActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && isAllGranted(grantResults)) {
-            onBtnChooseImage()
+            chooseImage()
         }
     }
 
+
     companion object {
         const val TOOLBAR_TITLE = "TOOLBAR_TITLE"
-        private val LOG_TAG = ImagesSelectActivity::class.java.simpleName
+        private val LOG_TAG = ImagesSelectActivity::class.simpleName
 
-        class SelectImageContract(private val toolbarTitle: String) : ActivityResultContract<String, Pair<String?, File?>>() {
-            override fun createIntent(context: Context, barcode: String) = Intent().apply {
+        @JvmStatic
+        fun start(context: Context, toolbarTitle: String, productCode: String) = context.startActivity(Intent(context, this::class.java).apply {
+            putExtra(TOOLBAR_TITLE, toolbarTitle)
+            putExtra(PRODUCT_BARCODE, productCode)
+        })
+
+        class SelectImageContract(
+                private val toolbarTitle: String
+        ) : ActivityResultContract<String, Pair<String?, File?>>() {
+            override fun createIntent(context: Context, barcode: String) = Intent(context, ImagesSelectActivity::class.java).apply {
                 putExtra(TOOLBAR_TITLE, toolbarTitle)
                 putExtra(PRODUCT_BARCODE, barcode)
             }
@@ -170,11 +177,5 @@ class ImagesSelectActivity : BaseActivity() {
                     else intent?.getStringExtra(IMG_ID) to intent?.getSerializableExtra(IMAGE_FILE) as File?
 
         }
-
-        @JvmStatic
-        fun start(context: Context, toolbarTitle: String, productCode: String) = context.startActivity(Intent(context, this::class.java).apply {
-            putExtra(TOOLBAR_TITLE, toolbarTitle)
-            putExtra(PRODUCT_BARCODE, productCode)
-        })
     }
 }

@@ -20,7 +20,7 @@ import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivit
 import openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity
 import openfoodfacts.github.scrachx.openfood.features.welcome.WelcomeActivity
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 
 class CommonBottomListener internal constructor(private val currentActivity: Activity) : BottomNavigationView.OnNavigationItemSelectedListener {
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -66,7 +66,7 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
             return
         }
         // If no camera is installed, alert the user
-        if (!Utils.isHardwareCameraInstalled(currentActivity)) {
+        if (!isHardwareCameraInstalled(currentActivity)) {
             MaterialDialog.Builder(currentActivity).run {
                 title(R.string.no_camera_dialog_title)
                 content(R.string.no_camera_dialog_content)

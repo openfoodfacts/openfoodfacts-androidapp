@@ -308,9 +308,7 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:scaleType="fitCenter"
-                            android:visibility="gone"
-                            tools:src="@drawable/ic_nutriscore_a"
-                            tools:visibility="visible" />
+                            tools:src="@drawable/ic_nutriscore_a" />
 
                         <ImageView
                             android:id="@+id/nova_group"
@@ -323,24 +321,7 @@
                             android:layout_weight="1"
                             android:adjustViewBounds="true"
                             android:padding="5dp"
-                            android:visibility="gone"
-                            tools:src="@drawable/ic_nova_group_1"
-                            tools:visibility="visible" />
-
-                        <ImageView
-                            android:id="@+id/co2_icon"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginLeft="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginRight="4dp"
-                            android:layout_weight="1"
-                            android:adjustViewBounds="true"
-                            android:maxHeight="60dp"
-                            android:scaleType="fitCenter"
-                            android:visibility="gone"
-                            tools:srcCompat="@drawable/ic_co2_high_24dp" />
+                            tools:src="@drawable/ic_nova_group_1" />
 
                         <ImageView
                             android:id="@+id/ecoscore_icon"
@@ -352,9 +333,7 @@
                             android:layout_marginRight="8dp"
                             android:layout_weight="1"
                             android:adjustViewBounds="true"
-                            android:visibility="gone"
-                            tools:src="@drawable/ic_ecoscore_a"
-                            tools:visibility="visible" />
+                            tools:src="@drawable/ic_ecoscore_a" />
                     </LinearLayout>
 
                     <Button

@@ -20,7 +20,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.isHardwareCameraInstalled
 import java.util.*
 
 class ProductCompareActivity : BaseActivity() {
@@ -54,7 +54,7 @@ class ProductCompareActivity : BaseActivity() {
 
         val finalProductsToCompare = productsToCompare
         binding.productComparisonButton.setOnClickListener {
-            if (Utils.isHardwareCameraInstalled(this@ProductCompareActivity)) {
+            if (isHardwareCameraInstalled(this@ProductCompareActivity)) {
                 if (ContextCompat.checkSelfPermission(this@ProductCompareActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(this@ProductCompareActivity, Manifest.permission.CAMERA)) {
                         MaterialDialog.Builder(this@ProductCompareActivity)
