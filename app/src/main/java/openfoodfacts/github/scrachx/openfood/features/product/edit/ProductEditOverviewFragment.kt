@@ -750,6 +750,8 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     private fun changeVisibilityManufacturingSectionTo(visibility: Int) {
         binding.originOfIngredientsTil.visibility = visibility
+        binding.originWarning.visibility = visibility
+        binding.originHint.visibility = visibility
         binding.manufacturingPlaceTil.visibility = visibility
         binding.embCodeTil.visibility = visibility
         binding.linkTil.visibility = visibility

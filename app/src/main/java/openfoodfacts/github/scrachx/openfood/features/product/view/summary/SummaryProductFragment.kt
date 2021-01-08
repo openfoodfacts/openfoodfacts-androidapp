@@ -314,7 +314,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             binding.embText.append(" ")
 
             val embTags = product.embTags.toString()
-                    .replace("[", "").removeSurrounding("[", "]")
+                    .removeSurrounding("[", "]")
                     .split(", ")
 
             embTags.withIndex().forEach { (i, embTag) ->
