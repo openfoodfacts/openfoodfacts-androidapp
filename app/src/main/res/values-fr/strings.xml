@@ -805,9 +805,9 @@
     <string name="hunger_game_call_to_action">Aider à classer plus de: %1$s</string>
     <string name="txtHomeOnline">Open Food Facts est une base de données ouverte de plus de %1$s produits alimentaires (plus ceux que vous contribuerez).</string>
     <string name="enabled">Activé</string>
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="follow_system">Suivre le système</string>
+    <string name="day">Jour</string>
+    <string name="night">Nuit</string>
+    <string name="required_for_ecoscore">(Requis pour calculer l\'Eco-Score)</string>
+    <string name="hint_origin">Exemples: USA, France, Italie</string>
 </resources>
