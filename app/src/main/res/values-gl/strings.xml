@@ -437,7 +437,7 @@
     <string name="FAQ">PMF</string>
     <string name="FrequentlyAskedQuestions">Preguntas Máis Frecuentes</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Por favor, comprobe a conexión.</string>
     <string name="advanced_search_title">Busca Avanzada &amp; Gráficos</string>
     <string name="compare_products">Compare products</string>

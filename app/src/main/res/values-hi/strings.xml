@@ -437,7 +437,7 @@
     <string name="FAQ">ऍफ़ ऐ क्यू</string>
     <string name="FrequentlyAskedQuestions">अक्सर पूछे जाने वाले सवाल</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">कृपया अपना कनेक्शन जाँचें</string>
     <string name="advanced_search_title">उन्नत खोज और चार्ट्स</string>
     <string name="compare_products">Compare products</string>

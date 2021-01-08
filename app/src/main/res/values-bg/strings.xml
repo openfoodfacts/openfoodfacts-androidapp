@@ -437,7 +437,7 @@
     <string name="FAQ">ЧЗВ</string>
     <string name="FrequentlyAskedQuestions">Често задавани въпроси</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Моля проверете връзката си.</string>
     <string name="advanced_search_title">Разширено търсене &amp; Графики</string>
     <string name="compare_products">Сравни продукти</string>
