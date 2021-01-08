@@ -1,72 +1,72 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+To so slogani, ki so prikazani nad posnetki zaslona v trgovini Google Play. Naj bodo kratki in privlačni.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=sl
 
 =====================
-V2 screenshots
+Posnetki zaslona V2
 =====================
 
-Scan products
+Skeniraj izdelke
 
-Get the Nutriscore
+Pridobi Nutriscore
 
-Your full scan history, fully private & exportable
+Vaša celotna zgodovina skeniranja, popolnoma zasebna in izvozna
 
-Go further with Wikipedia
+Pojdi naprej z Wikipedijo
 
-Set allergen alerts
+Nastavi opozorila za alergene
 
-Nutrition, simplified
+Prehrana, poenostavljena
 
-Allergen alert
+Opozorilo na alergene
 
-Get alternatives for your favorite foods
+Poišči nadomestila za vaša najljubša živila
 
-Become an actor of food transparency
+Postanite udeleženec preglednosti hrane
 
-Wikipedia for Food
+Wikipedia za hrano
 
-Wikipedia for Cosmetics
+Wikipedia za kozmetiko
 
-Wikipedia for Pet Food
+Wikipedia za hrano za hišne živali
 
-Wikipedia of Products
+Wikipedija izdelkov
 
-Ingredients
+Sestavine
 
-Powerful
+Zmogljiva
 
-Nutrition facts
+Dejstva o hranilni vrednosti
 
 =====================
-V3 screenshots
+Posnetki zaslona V3
 =====================
 
-Choose the products that are good for you and for the 🌍 planet !
+Izberite izdelke, ki so dobri za vas in za planet 🌍!
 
-✔ Ultra-fast barcode scan
+✔ Ultra-hiter pregled črtne kode
 
-✔ A global supermarket in your pocket
+Globalni supermarket v žepu
 
-Nutritional quality
+Kakovost hrane
 
-Ultra-processed foods
+Ultra predelana živila
 
-Carbon impact
+Učinek ogljika
 
-Compare easily before you buy
+Preprosto primerjajte, preden kupite
 
-Create shopping lists, intake lists…
+Ustvarite nakupovalne sezname, sezname za vnos…
 
-Find and compare over 750 000 products.
+Poiščite in primerjajte več kot 750 000 izdelkov.
 
 
 
-Unlimited and fully-private scan history
+Zgodovina neomejenega in povsem zasebnega skeniranja
 
-Swipe for even more details
+Povlecite še za več podrobnosti
 
-Set Allergen Alerts
+Nastavi opozorila za alergene
 
-Join our global movement for food transparency
+Pridružite se globalnemu gibanju za preglednost hrane
 
 world.openfoodfacts.org/contribute

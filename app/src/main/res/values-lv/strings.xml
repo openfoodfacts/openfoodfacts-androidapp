@@ -77,12 +77,6 @@
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
-    <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -197,7 +191,6 @@
     <string name="txtSugars">Cukurs</string>
     <string name="hintBarcode">Svītrkods</string>
     <string name="txtNutriScoreInfo">Uzziniet vairāk par uzturvielu līmeni</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Username</string>
     <string name="hintPass">Parole</string>
     <string name="errorLogin">Lietotāja vai paroles kļūda</string>
@@ -243,9 +236,9 @@
     <string name="cancel_button">Atcelt</string>
     <string name="login_button">Username</string>
     <string name="create_account_button">Izveidot profilu</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informācija par alerģijām nekad netiks nosūtīta uz Open Food Facts serveri. Tāpat uzmanieties, lai produkta dati varētu nebūt precīzi un to noteikšana varētu nebūt 100% accurate, tāpēc, lūdzu, pārbaudiet pats!</string>
     <string name="title_info_dialog">Kā tas darbojas?</string>
-    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">Iespējams skenēt produktus bezsaistes režīmā, lai pievienotu tos Open Food Facts vēlāk, kad interneta savienojums ir pieejams. visi produkti kuri tiks noskenēti, būs redzami šeit. Lai nosūtītu produktus, izmantojiet pogu zemāk.</string>
     <string name="permission_camera">Piekļuve kamerai ir nepieciešama, lai skenētu svītrkodus un uzņemtu attēlus.</string>
     <string name="no_camera_dialog_title">Kamera nav atrasta</string>
     <string name="no_camera_dialog_content">Jūsu ierīcē nav kameras. Jūs nevarēsit skenēt nevienu svītrkodu.</string>
@@ -441,8 +434,8 @@
     <string name="preference_choose_language_dialog_title">Izvēlies valodu</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Bieži uzdotie jautājumi</string>
-    <string name="translate_help_title">Palīdziet tulkot \"Open Food Facts\"</string>
-    <string name="translate_help_summary">Iegūstiet Open Food Facts savā valoda- tehniskās zināšanas nav nepieciešamas</string>
+    <string name="translate_help_title">Palīdziet tulkot \"open Food Facts\"</string>
+    <string name="translate_help_summary">Iegūstiet Open Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
     <string name="please_check_your_connection">Lūdzu, pārbaudiet savu savienojumu.</string>
     <string name="advanced_search_title">Izvērstā meklēšana &amp; Diagrammas</string>
     <string name="compare_products">Salīdzināt produktus</string>
@@ -536,7 +529,6 @@
     <string name="last_editor_history">Pēdējais produkta lapas labojums: %1$s plkst. %2$s CEST līdz %3$s </string>
     <string name="other_editors">Produkta lapa ir arī rediģējis </string>
     <string name="contribution_tab">Iemaksas</string>
-    <string name="synthesis_tab">Synthesis</string>
     <string name="contribution_tab_summary">Rādīt lietotāju iemaksu tabulu ar produktiem</string>
     <string name="contribution_tab_title">Rādīt cilni Ieguldījums</string>
     <string name="txtDialogsTitle">Informācija</string>
@@ -553,7 +545,7 @@
     </plurals>
     <string name="product_not_complete">Šis produkts vēl nav pabeigts. \nVai varat pievienot sīkāku informāciju?</string>
     <string name="addProductOffline">Šķiet, ka esat bezsaistē. Vai pievienot produktu %s izmantojot bezsaistes režīmu?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="product_not_found">Skenētais produkts %1$s vēl nav pieejams vietnē Open Food Facts. Vai varat to pievienot?</string>
     <string name="scan_sound">Skenēt skaņu</string>
     <string name="trouble_scanning">Vai ir problēmas ar skenēšanu?</string>
     <string name="barcode_hint">Vai ir problēmas ar skenēšanu? Ievadiet svītrkodu</string>
@@ -561,7 +553,7 @@
     <string name="autofocus">Autofokuss</string>
     <string name="initial_loading">Sākotnējā ielāde</string>
     <string name="preferences">Iestatījumi</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logotips</string>
     <string name="loading_product">Notiek produkta ielāde %s</string>
     <string name="image_not_defined_for_language">Atlasītajai valodai nav attēla. Jūs varat pievienot jaunu</string>
     <string name="error_adding_ingredients">Mēģinot pievienot produkta sastāvdaļas, radās kļūda</string>
@@ -654,7 +646,7 @@
     <string name="contribution_by">Autors</string>
     <string name="title_activity_product">Virsraksts</string>
     <string name="description_activity_product">apraksts</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">Pievienojiet Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Augsts ekspozīcijas risks</string>
     <string name="overexposure_moderate">Mērens pārmērīgas iedarbības risks</string>
@@ -683,11 +675,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Ekstrakta sastāvdaļas</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android app</string>
+    <string name="add_nutrient_prompt_text">Lai aprēķinātu Nutri-Score, pievienojiet faktus par uzturvērtību</string>
+    <string name="add_category_prompt_text">Pievienojiet kategoriju, lai aprēķinātu Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">Pievienojiet uzturvērtības faktus un kategoriju, lai aprēķinātu Nutri-Score</string>
+    <string name="category_game_btn">Palīdziet kategorizēt produktus, lai aprēķinātu Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Versija</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -707,13 +699,13 @@
     <string name="txt_create_new_list">Izveidojiet jaunu sarakstu</string>
     <string name="txt_add_to_new_list">Pievienot jaunam sarakstam</string>
     <string name="create_new_list_list_name">Saraksta nosaukums</string>
-    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_eaten_products">Ēsti produkti</string>
     <string name="txt_products_to_buy">Produkti, kurus iegādāties</string>
     <string name="txt_exporting_your_listed_products">Produktu eksportēšana…</string>
     <string name="txt_your_listed_products_exported">Jūsu produkti ir eksportēti</string>
     <string name="txt_discard">Atcelt</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">Jūs varēsiet pievienot produktus šim sarakstam, meklējot tos un noklikšķinot uz pogas + produkta lapas augšējā labajā stūrī.</string>
     <string name="search_history_pref_title">Dzēst vietējās meklēšanas vēsturi</string>
     <string name="search_history_pref_summary">Noņemiet visus meklējumus, ko veicāt šajā ierīcē</string>
@@ -814,15 +806,9 @@
     <string name="icon_categories">Kategoriju ikona</string>
     <string name="icon_emb">Izsekojamības koda ikona</string>
     <string name="product_front_image">Produkta priekšējais attēls</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Piemēri: Coca-Cola, Nestle utt…</string>
     <string name="sign_in_or_register">Pierakstieties vai reģistrējieties</string>
     <string name="hunger_game_call_to_action">Palīdziet klasificēt vairāk %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts ir atvērta datu bāze, kurā ir vairāk nekā %1$s pārtikas produktu (kā arī tie, ar kuriem jūs piedalīsities).</string>
     <string name="enabled">Enabled</string>
-    <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
 </resources>

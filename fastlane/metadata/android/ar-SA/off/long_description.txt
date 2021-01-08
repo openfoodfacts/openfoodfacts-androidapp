@@ -20,20 +20,20 @@
 - To display a Carbon Impact, a product must have a complete ingredient list with % of meat or fish and a quantity
 
 
-*** Contribute to Product Transparency ***
-- Open Products Facts is a products database made by everyone, for everyone.
-- You can use it to make better choices, and as it is open data, anyone can re-use it for any purpose.
-- Open Products Facts is a non-profit project developed by thousands of volunteers from around the world. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة.
-- You can start contributing today by adding your first product.
+▶ Contribute to Food Transparency
+- الحقائق الغذائية المفتوحة هي قاعدة بيانات مفتوحة للمنتجات الغذائية التي اسهم فيها الجميع ، للجميع.
+- يمكنك استخدامه لصنع خيارات غذائية أفضل ، وباعتباره بيانات مفتوحة للجميع ، يمكن لأي شخص إعادة استخدامه لأي غرض.
+- حقائق غذائية مفتوحة هو مشروع غير ربحي وضعه الآلاف من المتطوعين من جميع أنحاء العالم. لدينا الكثير من المشاريع المثيرة التي يمكنك المساهمة فيها بطرق عديدة ومختلفة.
+- You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
-*** احصل على الحقائق ***
-- Open Products Facts helps you to make sense of the fine print on products labels. يمكنك أيضاً العثور على (وفقاً للمؤشرات الموجودة على المنتجات):
+▶ Get the Facts
+- حقائق غذائية مفتوحة يساعدك على فهم التفاصيل الدقيقة المطبوعة على تسميات المنتجات. You will be able to find:
 - البصمة الكربونية (انبعاثات ثاني أكسيد الكربون) والتعبئة (بالإضافة إلى تعليمات إعادة التدوير) ،
 - نيوترى إسكور (النتيجة الغذائية) ، والمغذيات ، والدهون / محتوى الدهون ، والأحماض الدهنية المشبعة ، والكربوهيدرات ، والسكريات ، والألياف ، والبروتين والملح والصوديوم.
-- العلامات التجارية والمواد المثيرة للحساسية والملصقات(العضوية ، نباتي...)
+- العلامات التجارية ، المواد المثيرة للحساسية ، التفاصيل (السيرة الذاتية ، الخالية من الجلوتين ، نباتي ، نباتي صرف، حلال ...) ، معلومات التتبع (رموز التعبئة ، أصول المكونات)
 - على الخمور و المشروبات الروحية ، ستجد محتوى الكحول.
 
 
@@ -51,26 +51,26 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 
 - The whole planet, in your pocket !
 - You can add new products, even if you don't have an Internet connection right now.
-- The app loads only the strict necessary to reduce data and battery consumption
+- The app loads only the strict necessary to reduce data and battery consumption.
 
-*** Your products, your data ***
-- بياناتك الشخصية تخصك وحدك ، ولا يتم إرسالها أبدًا عبر الإنترنت
+▶ Your food, your data
+- Your data is yours, and is never sent online
 - You can use the app anonymously
 - You can export your scan history
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?
-- Open Miniature Food Facts - The largest open database of miniature food products
+- Speed up your shopping by doing an initial screening of your food with Open Food Facts.
 - Be careful that the information may not be 100% accurate, and detection may not be 100% accurate. So always double check by yourself, with the packaging.
 
 
 ◄ قُل "مرحبًا" و/أو انضم لنا!
 
 
-Open Products Facts is also available on the web at https://world.openproductsfacts.org
+حقائق الغذاء المفتوحة متاحة أيضا على شبكة الإنترنت في https://world.openfoodfacts.org
 
 
 للأسئلة و التعليقات: contact@openfoodfacts.org
 
 
-For human food, you can install Open Food Facts, for pet food, Open Pet Food Facts, and for all other products, Open Products Facts.
+بالنسبة لمستحضرات التجميل ، يمكنك تحميل Open Beauty Facts ، للحصول على أغذية الحيوانات الأليفة ، وOpen Pet Food Facts ، وبالنسبة لجميع المنتجات الأخرى ، Open Products Facts.

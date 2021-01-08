@@ -72,12 +72,6 @@
         <item>NE</item>
     </string-array>
     <!-- nutrition comparison units -->
-    <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -192,7 +186,6 @@
     <string name="txtSugars">Cukrok</string>
     <string name="hintBarcode">Vonalkód</string>
     <string name="txtNutriScoreInfo">Tudjon meg többet a tápanyagszintekről</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Felhasználónév</string>
     <string name="hintPass">Jelszó</string>
     <string name="errorLogin">Hibás felhasználónév vagy jelszó</string>
@@ -214,7 +207,7 @@
     <string name="txtBarcodeRequire">Vonalkód szükséges</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Érvénytelen vonalkód</string>
-    <string name="msg_share">Nézze meg a terméket az Open Food Facts adatbázisában:</string>
+    <string name="msg_share">Nézd meg ezt a terméket az Open Food Facts adatbázisában:</string>
     <string name="create_account">Regisztráció</string>
     <string name="home_drawer">Kezdőlap</string>
     <string name="install">Telepítés</string>
@@ -238,9 +231,9 @@
     <string name="cancel_button">Mégse</string>
     <string name="login_button">Bejelentkezés</string>
     <string name="create_account_button">Fiók létrehozása</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az érzékelés talán nem 100% as pontosságú, ezért kérjük, alaposan ellenőrizzen! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Az Ön allergén információi soha nem lesznek elküldve az Open Food Facts szerverének. Legyen óvatos, a termék adatai nem feltétlenül pontosak és az felismerés talán nem 100% as pontosságú, ezért kérjük, alaposan ellenőrizzen!</string>
     <string name="title_info_dialog">Hogyan működik?</string>
-    <string name="text_offline_info_dialog">Olvassa be a termékeket akkor is, amikor kapcsolat nélküli módban van, hogy később hozzáadja azokat az Open Food Facts-hez. A beolvasott termékek itt fognak megjelenni és az alábbi gomb használatával elküldheti őket.</string>
+    <string name="text_offline_info_dialog">Kapcsolat nélküli módban is beolvashat termékeket, hogy később hozzáadja azokat az Open Food Facts-hez. Az összes beolvasott termék itt fog megjelenni és az alábbi gomb használatával elküldheti őket.</string>
     <string name="permission_camera">Kamera használati engedély szükséges a vonalkódok beolvasásához és képek készítéséhez.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -447,7 +440,7 @@
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world-hu.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://hu.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -531,7 +524,6 @@
     <string name="last_editor_history">Termékoldalt legutóbb szerkesztette %1$s ekkor: %2$s, %3$s (CEST) </string>
     <string name="other_editors">A termékoldalt szerkesztette még </string>
     <string name="contribution_tab">Hozzájárulások</string>
-    <string name="synthesis_tab">Synthesis</string>
     <string name="contribution_tab_summary">Felhasználói hozzájárulások fül megjelenítése a termékekkel</string>
     <string name="contribution_tab_title">Hozzájárulások fül megjelenítése</string>
     <string name="txtDialogsTitle">Információ</string>
@@ -555,7 +547,7 @@
     <string name="autofocus">Autofókusz</string>
     <string name="initial_loading">Kezdeti betöltés</string>
     <string name="preferences">Beállítások</string>
-    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="OFFlogo">Open Food Facts embléma</string>
     <string name="loading_product">%s termék betöltése</string>
     <string name="image_not_defined_for_language">Nincs kép a kiválasztott nyelven. Adjon hozzá egy újat</string>
     <string name="error_adding_ingredients">Valami hiba történt a termékösszetevők hozzáadása közben</string>
@@ -649,7 +641,7 @@
     <string name="contribution_by">Hozzájárult</string>
     <string name="title_activity_product">Cím</string>
     <string name="description_activity_product">leírás</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">Hozzáadás az Open Food Facts-hez</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Magas a túlfogyasztás kockázata</string>
     <string name="overexposure_moderate">Közepes a túlfogyasztás kockázata</string>
@@ -678,11 +670,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Összetevők kiolvasása</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
-    <string name="add_category_prompt_text">Add a category to help complete the product</string>
-    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
-    <string name="category_game_btn">Segítsen kategorizálni a termékeket</string>
-    <string name="version_string">Open Food Facts Android app</string>
+    <string name="add_nutrient_prompt_text">Adjon hozzá tápérték adatokat a Nutri-Score kiszámításához</string>
+    <string name="add_category_prompt_text">Adjon hozzá egy kategóriát a Nutri-Score kiszámításához</string>
+    <string name="add_nutrient_category_prompt_text">Adjon hozzá tápérték adatokat és egy kategóriát a Nutri-Score kiszámításához</string>
+    <string name="category_game_btn">Segítsen kategorizálni a termékeket a Nutri-Score kiszámításához</string>
+    <string name="version_string">Open Food Factcs Android-alkalmazás</string>
     <string name="version">Verzió</string>
     <string name="set_ingredient_img">Kép beállítása összetevő fotónak</string>
     <string name="set_img_nutrients">Kép beállítása tápérték fotónak</string>
@@ -702,13 +694,13 @@
     <string name="txt_create_new_list">Hozzon létre egy új listát</string>
     <string name="txt_add_to_new_list">Adja hozzá az új listájához</string>
     <string name="create_new_list_list_name">Lista neve</string>
-    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_eaten_products">Elfogyasztott termékek</string>
     <string name="txt_products_to_buy">Megvásárolandó termékek</string>
     <string name="txt_exporting_your_listed_products">Termékei exportálása…</string>
     <string name="txt_your_listed_products_exported">A termékei exportálásra kerültek</string>
     <string name="txt_discard">Elvet</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">Felvehet termékeket erre a listára a termékek beolvasásával, a termékkártya felhúzásával, majd a „Listához adás” és „Elfogyasztott termékek” gombot megnyomva.
+        Felvehet termékeket erre a listára úgy, hogy rákeres egy termékre, majd megnyomja a + gombot a termékoldal jobb felső sarkában.</string>
     <string name="txt_info_your_listed_products">Termékeket adhat hozzá ehhez a listához a kereséssel és a termék jobb oldalán található + gombra kattintva.</string>
     <string name="search_history_pref_title">Keresési előzmények törlése</string>
     <string name="search_history_pref_summary">Távolítsa el az ezen az eszközön végzett összes keresési előzményt</string>
@@ -809,15 +801,9 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
-    <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
 </resources>

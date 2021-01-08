@@ -1,13 +1,13 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=sv
 
 =====================
 V2 screenshots
 =====================
 
-Scan products
+Skanna produkter
 
-Get the Nutriscore
+Få Nutriscore
 
 Your full scan history, fully private & exportable
 
@@ -17,25 +17,25 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+Allergenvarning
 
 Get alternatives for your favorite foods
 
 Become an actor of food transparency
 
-Wikipedia for Food
+Wikipedia för mat
 
-Wikipedia for Cosmetics
+Wikipedia för kosmetika
 
 Wikipedia for Pet Food
 
-Wikipedia of Products
+Wikipedia av produkter
 
-Ingredients
+Ingredienser
 
-Powerful
+Kraftfull
 
-Nutrition facts
+Näringsfakta
 
 =====================
 V3 screenshots

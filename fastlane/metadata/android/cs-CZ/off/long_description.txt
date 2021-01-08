@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Naskenujte potraviny, nebo jejich čárové kódy, abyste získali informaci o jejich složení, přídatných látkách a výživové hodnotě.
 
 ▶ Find & Compare more than 800.000 products
 
@@ -55,8 +55,8 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 
 ▶ Your food, your data
 - Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Aplikaci můžete používat anonymně
+- Můžete exportovat vlastní historii skenování
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?

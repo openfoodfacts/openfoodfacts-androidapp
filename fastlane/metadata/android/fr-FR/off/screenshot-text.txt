@@ -1,9 +1,9 @@
 Ceci sont les slogans affichés au-dessus des captures d'écran dans le Playstore. Gardez-les concis et attrayants.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fr
 
-=====================
+======================
 Captures d'écran V2
-=====================
+======================
 
 Scannez des produits
 
@@ -17,7 +17,7 @@ Définir des alertes d'allergènes
 
 La nutrition, simplifiée
 
-Allergen alert
+Alerte allergènes
 
 Trouvez des alternatives pour vos aliments préférés
 
@@ -37,9 +37,9 @@ Puissant
 
 Informations nutritionnelles
 
-=====================
+======================
 Captures d'écran V3
-=====================
+======================
 
 Choisissez les produits qui sont bons pour vous et pour la planète!
 
@@ -65,7 +65,7 @@ Historique de scan illimité et entièrement privé
 
 Faites glisser pour voir plus de détails
 
-Set Allergen Alerts
+Alerte allergènes
 
 Rejoignez notre mouvement mondial pour la transparence alimentaire
 

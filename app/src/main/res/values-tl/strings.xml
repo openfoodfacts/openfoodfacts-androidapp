@@ -72,12 +72,6 @@
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
-    <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -192,7 +186,6 @@
     <string name="txtSugars">Mga asukal</string>
     <string name="hintBarcode">Barcode</string>
     <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Username</string>
     <string name="hintPass">Password</string>
     <string name="errorLogin">Kamalian sa login o password</string>
@@ -200,7 +193,7 @@
     <string name="uploadLater">Image will be uploaded when network is available</string>
     <string name="txtInfoLoginOk">User saved</string>
     <string name="txtInfoLoginNo">User ay hindi na save</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
+    <string name="txtDialogsContent">Ang produktong iyong na scan ay hindi pa ng exist sa Open Food Facts. Paki dagdag ito.</string>
     <string name="txtYes">Oo</string>
     <string name="txtNo">Hindi</string>
     <string name="hintBrand">Brand</string>
@@ -214,7 +207,7 @@
     <string name="txtBarcodeRequire">Kailangan ang barcode</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Hindi wasto ang barcode</string>
-    <string name="msg_share">Look at this product on Open Food Facts :</string>
+    <string name="msg_share">Tingnan ang produktong ito sa Open Food Facts :</string>
     <string name="create_account">Mag Sign-up</string>
     <string name="home_drawer">Home</string>
     <string name="install">Install</string>
@@ -240,7 +233,7 @@
     <string name="create_account_button">Lumikha ng Akawnt</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <string name="title_info_dialog">Paano ito gumagana?</string>
-    <string name="text_offline_info_dialog">You can scan products when you\'re offline to add them to Open Food Facts later. All the products you scan will appear here, and you\'ll be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">Maaari mong i-scan ang mga produkto kapag offline ka upang idagdag ang mga ito sa Open Food Fact sa ibang pagkakataon. Ang lahat ng mga produkto na iyong i-scan ay lilitaw dito, at magagawa mong ipadala ang mga ito gamit ang pindutan sa ibaba.</string>
     <string name="permission_camera">Kinakailangan ang pahintulot ng kamera upang i-scan ang mga barcode at kumuha ng mga larawan.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -437,7 +430,7 @@
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Frequently Asked Questions</string>
     <string name="translate_help_title">Help translate Open Food Facts</string>
-    <string name="translate_help_summary">Bring Open Food Facts to your language - no technical knowledge required</string>
+    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">Please check your connection.</string>
     <string name="advanced_search_title">Advanced Search &amp; Charts</string>
     <string name="compare_products">Compare products</string>
@@ -531,7 +524,6 @@
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Product page also edited by </string>
     <string name="contribution_tab">Contributions</string>
-    <string name="synthesis_tab">Synthesis</string>
     <string name="contribution_tab_summary">Show user contributions tab with products</string>
     <string name="contribution_tab_title">Show contribution tab</string>
     <string name="txtDialogsTitle">Impormasyon</string>
@@ -681,7 +673,7 @@
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android app</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -706,8 +698,8 @@
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Discard</string>
-    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
@@ -813,10 +805,4 @@
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
-    <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
 </resources>

@@ -50,13 +50,13 @@ Create shopping lists, track what you've eaten and easily share and export your 
 Scan at the speed of light (even if you’re on a plane, submarine or supermarket)
 
 - The whole planet, in your pocket !
-- You can add new products, even if you don't have an Internet connection right now.
+- Ungangeza imikhiqizo emisha, noma ngabe awunawo uxhumano lwe-inthanethi okwamanje.
 - The app loads only the strict necessary to reduce data and battery consumption.
 
 ▶ Your food, your data
-- Your data is yours, and is never sent online
-- You can use the app anonymously
-- You can export your scan history
+- Idatha yakho ingeyakho, futhi ayithunyelwanga ku-intanethi
+- Ungasebenzisa uhlelo lokusebenza ngokungaziwa
+- Ungathumela umlando wakho wokuskena
 
 ▶ Set up allergen alerts on products
 - Milk, Gluten, Eggs, Soybeans, Nuts, Fish, Celery, Mustard, Sulphur dioxide and sulphites, Peanuts, Sesame seeds, Crustaceans, Molluscs or Lupin allergy ?

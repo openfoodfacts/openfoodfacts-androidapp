@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+এলার্জেন সতর্কতা
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+উপকরণসমূহ
 
 Powerful
 
-Nutrition facts
+পুষ্টি তথ্য
 
 =====================
 V3 screenshots

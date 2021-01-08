@@ -1,41 +1,41 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+To jsou štítky zobrazené nad snímky obrazovky v playstore. Uchovávejte je krátké a atraktivní.
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=cs
 
 =====================
 V2 screenshots
 =====================
 
-Scan products
+Snímání zboží
 
-Get the Nutriscore
+Získejte Nutriční skóre
 
-Your full scan history, fully private & exportable
+Vaše úplná historie snímání, zcela soukromá & exportovatelná
 
-Go further with Wikipedia
+Zjistěte více s Wikipedií
 
-Set allergen alerts
+Nastavte si upozornění na alergeny
 
-Nutrition, simplified
+Výživa jednoduše
 
-Allergen alert
+Hlídání alergenů
 
-Get alternatives for your favorite foods
+Získejte alternativy pro vaše oblíbené potraviny
 
-Become an actor of food transparency
+Staňte se hybatelem férovosti potravin
 
-Wikipedia for Food
+Wikipedie pro potraviny
 
-Wikipedia for Cosmetics
+Wikipedie pro kosmetiku
 
-Wikipedia for Pet Food
+Wikipedie pro potraviny mazlíčků
 
-Wikipedia of Products
+Wikipedie výrobků
 
-Ingredients
+Složení
 
-Powerful
+Mocný
 
-Nutrition facts
+Nutriční hodnoty
 
 =====================
 V3 screenshots
@@ -43,7 +43,7 @@ V3 screenshots
 
 Choose the products that are good for you and for the 🌍 planet !
 
-✔ Ultra-fast barcode scan
+✔ Rychlé skenování čárových kódů
 
 ✔ A global supermarket in your pocket
 

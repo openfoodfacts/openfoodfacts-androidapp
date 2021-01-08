@@ -1,5 +1,5 @@
 Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
-https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
+https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fa
 
 =====================
 V2 screenshots
@@ -17,7 +17,7 @@ Set allergen alerts
 
 Nutrition, simplified
 
-Allergen alert
+هشدار وجود آلرژن
 
 Get alternatives for your favorite foods
 
@@ -31,11 +31,11 @@ Wikipedia for Pet Food
 
 Wikipedia of Products
 
-Ingredients
+مواد تشکیل دهنده
 
 Powerful
 
-Nutrition facts
+ارزش غذایی
 
 =====================
 V3 screenshots

@@ -1,41 +1,41 @@
-Those are the taglines shown above the screenshots in the playstore. Keep them short and attractive.
+Esas son as informacións mostradas nas capturas de pantalla na tenda playstore. Manteñaas curtas e atraíntes.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 
 =====================
 V2 screenshots
 =====================
 
-Scan products
+Escanear productos
 
-Get the Nutriscore
+Obteña o Nutriscore
 
-Your full scan history, fully private & exportable
+O seu historial completo de escaneos, completamente privado e exportable
 
-Go further with Wikipedia
+Máis info na Wikipedia
 
-Set allergen alerts
+Establecer alertas de alérxenos
 
-Nutrition, simplified
+Nutrición, simplificada
 
-Allergen alert
+Alerta de alérxenos
 
-Get alternatives for your favorite foods
+Obteña alternativas aos seus alimentos favoritos
 
 Become an actor of food transparency
 
-Wikipedia for Food
+Wikipedia para Alimentos
 
-Wikipedia for Cosmetics
+Wikipedia para Cosméticos
 
-Wikipedia for Pet Food
+Wikipedia para Alimento de mascotas
 
-Wikipedia of Products
+Wikipedia para Produtos
 
-Ingredients
+Ingredientes
 
-Powerful
+Potente
 
-Nutrition facts
+Información nutricional
 
 =====================
 V3 screenshots

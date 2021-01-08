@@ -72,12 +72,6 @@
         <item>IU</item>
     </string-array>
     <!-- nutrition comparison units -->
-    <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -192,7 +186,6 @@
     <string name="txtSugars">Şeker</string>
     <string name="hintBarcode">Barkod</string>
     <string name="txtNutriScoreInfo">Besin seviyeleri hakkında daha fazla bilgi edinin</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Kullanıcı adı</string>
     <string name="hintPass">Şifre</string>
     <string name="errorLogin">Giriş veya parola hatası</string>
@@ -200,7 +193,7 @@
     <string name="uploadLater">Ağ kullanılabilir olduğunda resim yüklenecek</string>
     <string name="txtInfoLoginOk">Kullanıcı kaydedildi</string>
     <string name="txtInfoLoginNo">Kullanıcı kaydedilemedi</string>
-    <string name="txtDialogsContent">Taradığınız ürün henüz Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
+    <string name="txtDialogsContent">Aradığınız ürün Open Food Facts\'te mevcut değil. Lütfen ekleyin.</string>
     <string name="txtYes">Evet</string>
     <string name="txtNo">Hayır</string>
     <string name="hintBrand">Marka</string>
@@ -238,9 +231,9 @@
     <string name="cancel_button">İptal</string>
     <string name="login_button">Kullanıcı adı</string>
     <string name="create_account_button">Hesap Oluştur</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji Bilgileriniz asla Open Food Facts sunucusuna gönderilmeyecektir. Aynı zamanda ürün verilerinin kesin olmayabileceği ve algılamanın %100 hassas olmayabileceği konusunda dikkatli olun, bu yüzden lüften kendiniz iki kere kontrol edin!</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Alerji bilgileriniz kesinlikle Open Food Facts sunucusuna gönderilmeyecektir. Ayrıca, ürün bilgileri ve ürün tespitinde hatalar olabileceği için kendiniz tekrar kontrol ediniz!</string>
     <string name="title_info_dialog">Nasıl çalışır?</string>
-    <string name="text_offline_info_dialog">Ürünleri Open Food Facts\'e daha sonra ekleyebilmek için çevrimdışı olduğunuzda dahi tarayın. Taranan ürünler burada görünecek ve aşağıdaki butonu kullanarak gönderebileceksiniz.</string>
+    <string name="text_offline_info_dialog">Ürünleri daha sonra Open Food Facts\'e eklemek için çevrimdışı olduğunuzda tarayabilirsiniz. Taradığınız tüm ürünler burada görünecek ve aşağıdaki düğmeyi kullanarak gönderebileceksiniz.</string>
     <string name="permission_camera">Barkodları taramak ve fotoğraf çekmek için kamera izni gerekiyor.</string>
     <string name="no_camera_dialog_title">Kamera bulunamadı</string>
     <string name="no_camera_dialog_content">Cihazınızın kamerası yok. Herhangi bir barkodu tarayamayacaksınız.</string>
@@ -436,8 +429,8 @@
     <string name="preference_choose_language_dialog_title">Dil seçin</string>
     <string name="FAQ">SSS</string>
     <string name="FrequentlyAskedQuestions">Sıkça Sorulan Sorular</string>
-    <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardım edin</string>
-    <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize kazandırın - teknik bilgi gerektirmez</string>
+    <string name="translate_help_title">Open Food Facts\'i tercüme etmeye yardımcı olun</string>
+    <string name="translate_help_summary">Open Food Facts veritabanını kendi dilinize çevirin - teknik bilgi gerektirmez</string>
     <string name="please_check_your_connection">Bağlantınızı kontrol ediniz.</string>
     <string name="advanced_search_title">Gelişmiş Arama &amp; Grafikler</string>
     <string name="compare_products">Ürünleri karşılaştırın</string>
@@ -447,7 +440,7 @@
     <string name="TermsOfUse">Şartlar ve Gizlilik</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world-tr.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -531,7 +524,6 @@
     <string name="last_editor_history">Ürün sayfası en son %1$s %2$s CEST\'te %3$s tarafından düzenlendi </string>
     <string name="other_editors">Ürün sayfası ayrıca … tarafından düzenlendi</string>
     <string name="contribution_tab">Katkıda Bulunulanlar</string>
-    <string name="synthesis_tab">Synthesis</string>
     <string name="contribution_tab_summary">Kullanıcı ürün katkıları sekmesini göster</string>
     <string name="contribution_tab_title">Katkı sekmesini göster</string>
     <string name="txtDialogsTitle">Bilgi</string>
@@ -547,7 +539,7 @@
     </plurals>
     <string name="product_not_complete">Bu ürün henüz tamamlanmadı. \nBiraz detay ekleyebilir misiniz?</string>
     <string name="addProductOffline">Çevrimdışı görünüyorsun. %s ürününü çevrimdışı modda eklemek ister misiniz?</string>
-    <string name="product_not_found">Taradığın ürün henüz Open Beauty Facts\'de bulunmamaktadır. Onu sen ekleyebilir misin?</string>
+    <string name="product_not_found">Taradığınız %1$s ürünü henüz Open Food Facts\'te mevcut değil. Ekleyebilir misiniz?</string>
     <string name="scan_sound">Sesi Tara</string>
     <string name="trouble_scanning">Tarama sorun mu var?</string>
     <string name="barcode_hint">Tarama sorun mu var? Barkod Girin</string>
@@ -555,7 +547,7 @@
     <string name="autofocus">Otomatik odaklama</string>
     <string name="initial_loading">Açılış yükleniyor</string>
     <string name="preferences">Tercihler</string>
-    <string name="OFFlogo">Open Pet Food Facts amblemi</string>
+    <string name="OFFlogo">Open Food Facts logosu</string>
     <string name="loading_product">Ürün yükleniyor %s</string>
     <string name="image_not_defined_for_language">Seçilen dil için resim yok. Yeni bir tane ekleyebilirsiniz</string>
     <string name="error_adding_ingredients">Ürün içeriğini eklemeye çalışırken bir hata oluştu</string>
@@ -677,11 +669,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">İçindekileri çıkartın</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Besin ögesi seviyelerini hesaplamak için besin değerlerini ekleyin</string>
-    <string name="add_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ekleyin</string>
-    <string name="add_nutrient_category_prompt_text">Ürünü tamamlamaya yardım etmek için bir kategori ve besin değerlerini ekleyin</string>
-    <string name="category_game_btn">Ürünleri kategorize etmeye yardım edin</string>
-    <string name="version_string">Open Food Facts Android Uygulaması</string>
+    <string name="add_nutrient_prompt_text">Nutri-Score hesaplamak için besin değerlerini ekleyin</string>
+    <string name="add_category_prompt_text">Nutri-Score hesaplamak için bir kategori ekleyin</string>
+    <string name="add_nutrient_category_prompt_text">Nutri-Score hesaplamak için bir kategori ve besin değerlerini ekleyin</string>
+    <string name="category_game_btn">Nutri-Score hesaplamak için ürünleri kategorilere ayırmaya yardım edin</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="version">Versiyon</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -701,13 +693,13 @@
     <string name="txt_create_new_list">Yeni liste oluştur</string>
     <string name="txt_add_to_new_list">Yeni bir listeye ekle</string>
     <string name="create_new_list_list_name">Liste Adı</string>
-    <string name="txt_eaten_products">Sahip olduğum ürünler</string>
+    <string name="txt_eaten_products">Yenilen ürünler</string>
     <string name="txt_products_to_buy">Satın alınacak ürünler</string>
     <string name="txt_exporting_your_listed_products">Ürünleriniz Dışa Aktarılıyor…</string>
     <string name="txt_your_listed_products_exported">Ürünleriniz dışa aktarıldı</string>
     <string name="txt_discard">Sil</string>
-    <string name="txt_info_eaten_products">Bu listeye ürün eklemeniz ürünleri tarayarak, ürün kartını yukarıya sürükleyip \"Satın alınacak ürünler\"e tıklayarak mümkün olacaktır.
-Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstündeki + butonuna tıklayarak ürünleri ekleyebilirsiniz.</string>
+    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">Ürünleri arayarak ve ürün sayfasının sağ üst kısmındaki + düğmesine tıklayarak onları bu listeye ekleyebilirsiniz.</string>
     <string name="search_history_pref_title">Yerel arama geçmişini sil</string>
     <string name="search_history_pref_summary">Bu cihazda yaptığınız tüm aramaları kaldırın</string>
@@ -808,15 +800,9 @@ Aynı zamanda bu listeye ürünleri arayarak ve ürün sayfasının sağ üstün
     <string name="icon_categories">Katagori simgeleri</string>
     <string name="icon_emb">İzlenebilirlik kodu simgesi</string>
     <string name="product_front_image">Ürünün ön taraf resmi</string>
-    <string name="brand_hint">Örnekler: Nike, Apple vb.</string>
+    <string name="brand_hint">Örnekler: Coca-Cola, Nestle vb…</string>
     <string name="sign_in_or_register">Oturum aç / Kayıt ol</string>
     <string name="hunger_game_call_to_action">Daha fazla sınıflandırmaya yardımcı olun %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts, %1$s fazla gıda ürününün (artı sizin katkıda bulunacaklarınız) açık bir veritabanıdır.</string>
     <string name="enabled">Enabled</string>
-    <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
 </resources>

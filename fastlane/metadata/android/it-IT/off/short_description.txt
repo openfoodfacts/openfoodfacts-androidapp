@@ -1,1 +1,1 @@
-Il database aperto dei prodotti
+Fai una scansione dei prodotti per decifrarne l'etichetta: ingredienti, additivi e valori nutrizionali

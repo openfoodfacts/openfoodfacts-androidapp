@@ -92,12 +92,6 @@
         <item>وحدة دولية</item>
     </string-array>
     <!-- nutrition comparison units -->
-    <!-- Application theme settings -->
-    <string-array name="application_theme_entries">
-        <item>@string/follow_system</item>
-        <item>@string/day</item>
-        <item>@string/night</item>
-    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -214,7 +208,6 @@
     <string name="txtSugars">السكريات</string>
     <string name="hintBarcode">الرمز الشريطي</string>
     <string name="txtNutriScoreInfo">تعلم المزيد عن المستويات الغذائية</string>
-    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">تسجيل الدخول</string>
     <string name="hintPass">كلمة المرور</string>
     <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>
@@ -222,7 +215,7 @@
     <string name="uploadLater">سيتم تحميل الصورة عندما تكون الشبكة متاحة</string>
     <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
     <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
-    <string name="txtDialogsContent">المنتج الذي قمت بمسحه ضوئياً غير موجود حتى الآن في Open Open Facts. يرجى إضافته.</string>
+    <string name="txtDialogsContent">المنتج الذي تم مسحه غير موجود حتى الآن في Open Food Facts. الرجاء إضافته.</string>
     <string name="txtYes">نعم</string>
     <string name="txtNo">لا</string>
     <string name="hintBrand">العلامة التجارية</string>
@@ -236,7 +229,7 @@
     <string name="txtBarcodeRequire">الرمز الشريطي مطلوب</string>
     <string name="txtOk">موافق</string>
     <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
-    <string name="msg_share">انظر إلى هذا المنتج على Open Food Facts :</string>
+    <string name="msg_share">انظر لهذا المنتج على Open Food Facts:</string>
     <string name="create_account">تسجيل الدخول</string>
     <string name="home_drawer">الصفحة الرئيسية</string>
     <string name="install">تثبيت</string>
@@ -260,9 +253,9 @@
     <string name="cancel_button">إلغاء</string>
     <string name="login_button">تسجيل الدخول</string>
     <string name="create_account_button">إنشاء حساب</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلوماتك الشخصية إلى خادم Open Food Facts. أيضاً كن حذراً بأن بيانات المنتج قد تكون غير دقيقة، و الكشف قد لا يكون دقيقاً بنسبة 100٪ ، لذا نرجو منك إعادة التحقق منها بنفسك! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلومات الحساسية الخاصة بك إلى Open Food Facts. أيضاً، احذر من أن بيانات المنتج قد لا تكون دقيقة، وقد لا يكون الكشف دقيقاً 100%، لذا يرجى التحقق مرة أخرى بنفسك! </string>
     <string name="title_info_dialog">كيف يعمل؟</string>
-    <string name="text_offline_info_dialog">قم بمسح المنتجات ضوئياً حتى في حالة عدم الاتصال بالإنترنت لإضافتها إلى Open Food Facts لاحقاً. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
+    <string name="text_offline_info_dialog">يمكنك مسح المنتجات ضوئيا عندما كنت تكون غير متصل بالإنترنت لإضافتها لاحقا إلى Open Food Facts. ستظهر جميع المنتجات التي فحصتها هنا، وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="permission_camera">تصريح الكاميرا مطلوب لمسح شفرة المنتجات والتقاط الصور.</string>
     <string name="no_camera_dialog_title">لم يتم العثور على الكاميرا</string>
     <string name="no_camera_dialog_content">جهازك ليس به كاميرا. لن تتمكن من مسح أي رمز شريطي ضوئيًا.</string>
@@ -346,7 +339,7 @@
     <string name="txt_no_matching_incomplete_products">ليس لدينا أي منتجات غير مكتملة! إضافة منتج جديد؟</string>
     <string name="txt_no_matching_contributor_products">لا ، ليس لدينا أي منتجات من هذا المساهم ، هل يمكنك إضافة واحدة؟</string>
     <string name="txt_no_matching_products">لم نعثر على أي منتجات مطابقة. \n يمكنك تجربة:</string>
-    <string name="txt_broaden_search">- توسيع نطاق البحث \n- مسح ضوئي وإضافته إلى Open Food Facts</string>
+    <string name="txt_broaden_search">-توسيع نطاق \n-البحث الخاص بك امسح و إضفه إلى Open Food Facts</string>
     <string name="something_went_wrong">عذراً، حدث خطأ ما…</string>
     <string name="txt_try_again">أعد المحاولة</string>
     <string name="nutrition_lactose">اللاكتوز</string>
@@ -458,8 +451,8 @@
     <string name="preference_choose_language_dialog_title">اختر اللغة</string>
     <string name="FAQ">الأسئلة المتكررة</string>
     <string name="FrequentlyAskedQuestions">‮الأسئلة المتكررة</string>
-    <string name="translate_help_title">ساعد في ترجمة Open Food Facts</string>
-    <string name="translate_help_summary">ترجم قاعدة بيانات Open Food Facts إلى لغتك - لا يتطلب خبره تقنيه</string>
+    <string name="translate_help_title">المساعدة في ترجمة Open Food Facts</string>
+    <string name="translate_help_summary">قم تحويل قاعدة بيانات Open Food Facts إلى لغتك - دون الحاجة إلى معرفة فنية</string>
     <string name="please_check_your_connection">يرجى التحقق من اتصالك.</string>
     <string name="advanced_search_title">بحث متقدم &amp;</string>
     <string name="compare_products">قارن بين المنتجات</string>
@@ -553,7 +546,6 @@
     <string name="last_editor_history">التعديل الأخير من صفحة المنتج على %1$s في %2$s CEST بواسطة </string>
     <string name="other_editors">تم تعديل المنتج أيضاً بواسطة </string>
     <string name="contribution_tab">مساهمات</string>
-    <string name="synthesis_tab">Synthesis</string>
     <string name="contribution_tab_summary">عرض تابه مساهمات المستخدم مع المنتجات</string>
     <string name="contribution_tab_title">إظهار تابه المساهمة</string>
     <string name="txtDialogsTitle">معلومات</string>
@@ -573,7 +565,7 @@
     </plurals>
     <string name="product_not_complete">هذا المنتج لم يكتمل بعد. \n هل يمكنك إضافة بعض التفاصيل؟</string>
     <string name="addProductOffline">يبدو أنك غير متصل. أضف المنتج %s باستخدام الوضع الغير متصل بالشبكة؟</string>
-    <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Food Facts. هل يمكنك إضافته؟</string>
+    <string name="product_not_found">المنتج %1$s الذي تم مسحه غير موجود حتى الآن في الحقائق الغذائية المفتوحة. هل يمكنك إضافته؟</string>
     <string name="scan_sound">مسح الصوت</string>
     <string name="trouble_scanning">عطل في المسح؟</string>
     <string name="barcode_hint">عطل في المسح؟ أدخل الباركود</string>
@@ -581,7 +573,7 @@
     <string name="autofocus">ضبط تلقائي للصورة</string>
     <string name="initial_loading">التمهيد للتحميل</string>
     <string name="preferences">الخيارات</string>
-    <string name="OFFlogo">فتح شعار الحقائق للمنتجات</string>
+    <string name="OFFlogo">شعار الحقائق الغذائية المفتوحة</string>
     <string name="loading_product">يتم تحميل المنتج %s</string>
     <string name="image_not_defined_for_language">لا توجد صورة للغة المختارة. يمكنك إضافة واحدة جديدة</string>
     <string name="error_adding_ingredients">حدث خطأ ما أثناء محاولة إضافة مكونات المنتج</string>
@@ -674,7 +666,7 @@
     <string name="contribution_by">مساهمة من قبل</string>
     <string name="title_activity_product">العنوان</string>
     <string name="description_activity_product">وصف</string>
-    <string name="intent_filter_share_label">أضف إلى حقائق المنتجات المفتوحة</string>
+    <string name="intent_filter_share_label">أضف إلى حقائق الطعام المفتوح</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">ارتفاع خطر التعرض المفرط</string>
     <string name="overexposure_moderate">خطر معتدل من التعرض المفرط</string>
@@ -703,11 +695,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">استخراج المكونات</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">أضف حقائق غذائية لحساب مستويات المغذيات</string>
-    <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
-    <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد الحقائق التغذية للمساعدة في إكمال المنتج</string>
-    <string name="category_game_btn">المساعدة في تصنيف المنتجات</string>
-    <string name="version_string">افتح تطبيق Open Food Facts على Android</string>
+    <string name="add_nutrient_prompt_text">أضف حقائق غذائية لحساب Nutri-Score</string>
+    <string name="add_category_prompt_text">أضف فئة لحساب Nutri-Score</string>
+    <string name="add_nutrient_category_prompt_text">أضف حقائق غذائية وفئة لحساب Nutri-Score</string>
+    <string name="category_game_btn">المساعدة في تصنيف المنتجات لحساب Nutri-Score</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="version">الإصدار</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -727,13 +719,13 @@
     <string name="txt_create_new_list">قم بإنشاء قائمة جديدة</string>
     <string name="txt_add_to_new_list">قم بإنشاء قائمة جديدة</string>
     <string name="create_new_list_list_name">اسم القائمة</string>
-    <string name="txt_eaten_products">المنتجات التي أملكها</string>
+    <string name="txt_eaten_products">منتجات تؤكل</string>
     <string name="txt_products_to_buy">منتجات للشراء</string>
     <string name="txt_exporting_your_listed_products">تصدير منتجاتك…</string>
     <string name="txt_your_listed_products_exported">تم تصدير المنتجات الخاصة بك</string>
     <string name="txt_discard">تجاهل</string>
-    <string name="txt_info_eaten_products">ستتمكن من إضافة منتج إلى هذه القائمة عن طريق مسح المنتجات وسحب بطاقة المنتج لأعلى والنقر على \"المنتجات المراد شراؤها\".
-        ستتمكن أيضًا من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
+    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">ستتمكن من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
     <string name="search_history_pref_title">حذف سجل البحث المحلي</string>
     <string name="search_history_pref_summary">قم بإزالة جميع عمليات البحث التي أجريتها على هذا الجهاز</string>
@@ -834,15 +826,9 @@
     <string name="icon_categories">أيقونة الفئات</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">الصورة اﻷمامية للمنتج</string>
-    <string name="brand_hint">أمثلة: Nike ، Apple ، إلخ…</string>
+    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
     <string name="sign_in_or_register">تسجيل الدخول أو التسجيل</string>
     <string name="hunger_game_call_to_action">ساعد في تصنيف المزيد %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
+    <string name="txtHomeOnline">Open Food Facts هي قاعدة بيانات مفتوحة لأكثر من %1$s المنتجات الغذائية (بالإضافة إلى المنتجات التي ستساهم بها).</string>
     <string name="enabled">Enabled</string>
-    <!-- Application theme settings -->
-    <string name="follow_system">Follow system</string>
-    <string name="day">Day</string>
-    <string name="night">Night</string>
-    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
 </resources>

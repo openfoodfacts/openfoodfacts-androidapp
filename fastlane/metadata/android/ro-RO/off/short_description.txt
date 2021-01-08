@@ -1,1 +1,1 @@
-Baza de date deschisă a produselor
+Scan food products to decrypt labels: ingredients, additives and nutrition facts
