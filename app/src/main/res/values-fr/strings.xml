@@ -616,7 +616,7 @@
     <string name="manufacturing_details">Détails de fabrication</string>
     <string name="origin_of_ingredients">Origine des ingrédients</string>
     <string name="manufacturing_place">Lieu de fabrication</string>
-    <string name="emb_code">Code EMB</string>
+    <string name="emb_code">Code de traçabilité</string>
     <string name="purchasing_details">Détails d\'achat</string>
     <string name="country_where_purchased">Pays d\'achat</string>
     <string name="stores">Magasins</string>
@@ -805,4 +805,9 @@
     <string name="hunger_game_call_to_action">Aider à classer plus de: %1$s</string>
     <string name="txtHomeOnline">Open Food Facts est une base de données ouverte de plus de %1$s produits alimentaires (plus ceux que vous contribuerez).</string>
     <string name="enabled">Activé</string>
+    <string name="follow_system">Follow system</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, French, Italy</string>
 </resources>
