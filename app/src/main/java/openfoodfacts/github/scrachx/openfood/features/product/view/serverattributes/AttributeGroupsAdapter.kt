@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.entities.attribute.AttributeGroup
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 
 
 class AttributeGroupsAdapter(
@@ -44,16 +44,18 @@ class AttributeGroupsAdapter(
 
     override fun getChildView(groupPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup?): View {
         val childView = convertView ?: activity.layoutInflater.inflate(R.layout.attribute_item, parent, false)
-        val child = getChild(groupPosition, childPosition)
+        val attribute = getChild(groupPosition, childPosition)
 
-        childView.findViewById<TextView>(R.id.title_text).text = child.title.orEmpty()
+        childView.findViewById<TextView>(R.id.title_text).text = attribute.title.orEmpty()
 
-        childView.findViewById<TextView>(R.id.short_desc_text).text = child.descriptionShort.orEmpty()
+        childView.findViewById<TextView>(R.id.short_desc_text).text = attribute.descriptionShort.orEmpty()
 
         val iconView = childView.findViewById<ImageView>(R.id.logo_view)
-        val iconUrl = child.iconUrl
-        if (iconUrl != null) {
-            Utils.picassoBuilder(activity).load(iconUrl.replaceAfterLast(".", "png")).into(iconView)
+        val iconUrl = attribute.iconUrl
+        if (!iconUrl.isNullOrEmpty()) {
+            picassoBuilder(activity)
+                    .load(iconUrl.replaceAfterLast(".", "png"))
+                    .into(iconView)
         } else {
             iconView.visibility = GONE
         }

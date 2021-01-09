@@ -95,6 +95,10 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     private var sendUpdatedIngredientsImage = false
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        productState = requireProductState()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentIngredientsProductBinding.inflate(inflater)
@@ -111,7 +115,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
         binding.extractIngredientsPrompt.setOnClickListener { extractIngredients() }
         binding.imageViewIngredients.setOnClickListener { openFullScreen() }
 
-        refreshView(requireProductState())
+        refreshView(productState)
     }
 
     override fun onAttach(context: Context) {

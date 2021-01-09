@@ -18,7 +18,7 @@ class WikiDataApiClient(customEndpointUrl: String? = null) {
     else {
         Retrofit.Builder()
                 .baseUrl(customEndpointUrl)
-                .client(Utils.httpClientBuilder())
+                .client(Utils.defaultHttpClient)
                 .addConverterFactory(JacksonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()

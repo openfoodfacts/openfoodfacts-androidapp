@@ -47,10 +47,7 @@ import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
-import okhttp3.CipherSuite
-import okhttp3.ConnectionSpec
-import okhttp3.OkHttpClient
-import okhttp3.TlsVersion
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
@@ -61,7 +58,6 @@ import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.jobs.SavedProductUploadWorker
-import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.SearchTypeUrls.getUrl
 import org.apache.commons.validator.routines.checkdigit.EAN13CheckDigit
@@ -151,14 +147,12 @@ object Utils {
      * @param value float value
      * @return round value **with 2 decimals** or 0 if the value is empty or equals to 0
      */
-    fun getRoundNumber(value: String, locale: Locale = Locale.getDefault()): String {
-        return when {
-            value.isEmpty() -> "?"
-            value == "0" -> value
-            else -> value.toDoubleOrNull()
-                    ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
-                    ?: "?"
-        }
+    fun getRoundNumber(value: String, locale: Locale = Locale.getDefault()) = when {
+        value.isEmpty() -> "?"
+        value == "0" -> value
+        else -> value.toDoubleOrNull()
+                ?.let { DecimalFormat("##.##", DecimalFormatSymbols(locale)).format(it) }
+                ?: "?"
     }
 
     /**
@@ -167,28 +161,25 @@ object Utils {
     fun getRoundNumber(value: Float, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
     fun getRoundNumber(value: Double, locale: Locale = Locale.getDefault()) = getRoundNumber(value.toString(), locale)
 
-    @get:JvmStatic
-    val daoSession: DaoSession
-        get() = OFFApplication.daoSession
+    val daoSession get() = OFFApplication.daoSession
 
     /**
      * Schedules job to download when network is available
      */
     @Synchronized
-    fun scheduleProductUploadJob(context: Context?) {
+    fun scheduleProductUploadJob(context: Context) {
         if (isUploadJobInitialised) return
 
         val periodicity = TimeUnit.MINUTES.toSeconds(30).toInt()
         val uploadWorkRequest = OneTimeWorkRequest.Builder(SavedProductUploadWorker::class.java)
                 .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build())
                 .setInitialDelay(periodicity.toLong(), TimeUnit.SECONDS).build()
-        WorkManager.getInstance(context!!).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
+        WorkManager.getInstance(context).enqueueUniqueWork(UPLOAD_JOB_TAG, ExistingWorkPolicy.KEEP, uploadWorkRequest)
 
         isUploadJobInitialised = true
     }
 
-    @JvmStatic
-    fun httpClientBuilder(): OkHttpClient {
+    private fun defaultHttpBuilder(): OkHttpClient.Builder {
         // Our servers don't support TLS 1.3 therefore we need to create custom connectionSpec
         // with the correct ciphers to support network requests successfully on Android 7
         val connectionSpecModernTLS = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
@@ -210,12 +201,20 @@ object Utils {
         } else {
             builder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
         }
-        return builder.build()
+        return builder
     }
 
-    @JvmStatic
+    val defaultHttpClient: OkHttpClient by lazy { defaultHttpBuilder().build() }
+
+    fun buildCachedHttpClient(context: Context): OkHttpClient {
+        val maxSize: Long = 50 * 1024 * 1024
+        return defaultHttpBuilder()
+                .cache(Cache(File(context.cacheDir, "http-cache"), maxSize))
+                .build()
+    }
+
     fun picassoBuilder(context: Context): Picasso = Picasso.Builder(context)
-            .downloader(OkHttp3Downloader(httpClientBuilder()))
+            .downloader(OkHttp3Downloader(buildCachedHttpClient(context)))
             .build()
 
     /**
