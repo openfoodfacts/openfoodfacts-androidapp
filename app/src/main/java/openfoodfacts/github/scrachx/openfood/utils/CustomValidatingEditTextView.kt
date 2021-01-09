@@ -9,11 +9,16 @@ import androidx.appcompat.widget.AppCompatEditText
 import com.google.android.material.textfield.TextInputLayout
 import openfoodfacts.github.scrachx.openfood.R
 
-class CustomValidatingEditTextView @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-) : AppCompatEditText(context, attrs, defStyleAttr) {
+class CustomValidatingEditTextView : AppCompatEditText {
+
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        init(attrs)
+    }
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr){
+        init(attrs)
+    }
+
     private var attachedModSpinnerId = NO_ID
     private var attachedUnitSpinnerId = NO_ID
     private var textInputLayoutId = NO_ID
@@ -74,7 +79,7 @@ class CustomValidatingEditTextView @JvmOverloads constructor(
 
     fun isValid() = !isError()
 
-    init {
+     fun init( attrs:AttributeSet){
         attrs?.let {
             context.obtainStyledAttributes(it, R.styleable.CustomValidatingEditTextView).run {
                 textInputLayoutId = getResourceId(R.styleable.CustomValidatingEditTextView_parentTextInputLayout, NO_ID)
