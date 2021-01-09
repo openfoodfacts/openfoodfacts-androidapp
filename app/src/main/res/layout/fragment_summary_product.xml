@@ -332,7 +332,7 @@
                             android:layout_marginLeft="4dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginRight="8dp"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:adjustViewBounds="true"
                             tools:src="@drawable/ic_ecoscore_a" />
                     </LinearLayout>
