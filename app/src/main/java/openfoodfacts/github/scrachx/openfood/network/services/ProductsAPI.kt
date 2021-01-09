@@ -343,7 +343,7 @@ interface ProductsAPI {
      */
     @GET("/cgi/product_image_unselect.pl")
     fun unSelectImage(
-            @Query(ApiFields.Keys.BARCODE) code: String?,
+            @Query(ApiFields.Keys.BARCODE) code: String,
             @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
     ): Single<String>
 

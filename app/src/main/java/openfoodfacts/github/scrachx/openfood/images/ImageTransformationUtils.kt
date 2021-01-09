@@ -72,7 +72,7 @@ class ImageTransformationUtils {
         private const val BOTTOM = "y2"
         private const val ANGLE = "angle"
 
-        fun addTransformToMap(newServerTransformation: ImageTransformationUtils, imgMap: MutableMap<String, String?>) {
+        fun addTransformToMap(newServerTransformation: ImageTransformationUtils, imgMap: MutableMap<String, String>) {
             imgMap[ANGLE] = newServerTransformation.rotationInDegree.toString()
             val cropRectangle = newServerTransformation.cropRectangle
             if (cropRectangle != null) {

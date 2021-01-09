@@ -33,7 +33,7 @@ class ProductPhotosAdapter(
         private val onImageClick: (Int) -> Unit
 ) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
     private val barcode = product.code
-    private val imgMap = hashMapOf<String, String?>()
+    private val imgMap = hashMapOf<String, String>()
     private val openFoodAPIClient = OpenFoodAPIClient(context)
     private val disp = CompositeDisposable()
 

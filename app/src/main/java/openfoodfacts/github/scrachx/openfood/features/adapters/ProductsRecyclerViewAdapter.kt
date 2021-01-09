@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.getProductBrandsQuantityDetails
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.localeProductNameField
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.getLocaleProductNameField
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
@@ -72,7 +72,7 @@ class ProductsRecyclerViewAdapter(
 
         // Set product name
         holder.productName.text = product?.productName ?: context.getString(R.string.productNameNull)
-        val productNameInLocale = product?.additionalProperties?.get(localeProductNameField) as String?
+        val productNameInLocale = product?.additionalProperties?.get(getLocaleProductNameField()) as String?
         if (!productNameInLocale.isNullOrBlank()) {
             holder.productName.text = productNameInLocale
         }

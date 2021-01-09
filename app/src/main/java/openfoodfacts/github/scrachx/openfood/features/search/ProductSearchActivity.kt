@@ -55,22 +55,72 @@ class ProductSearchActivity : BaseActivity() {
 
     private var contributionType = 0
     private var disp = CompositeDisposable()
+    private val lowBatteryMode by lazy { isDisableImageLoad() && isBatteryLevelLow() }
 
     /**
      * boolean to determine if image should be loaded or not
      */
-    private var lowBatteryMode = false
     private var setupDone = false
     private var mCountProducts = 0
     private var pageAddress = 1
+
+    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase))
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        _binding = ActivityProductBrowsingListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbarInclude.toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        // OnClick
+        binding.buttonTryAgain.setOnClickListener { reloadSearch() }
+        binding.addProduct.setOnClickListener { addProduct() }
+
+        binding.textCountProduct.visibility = View.INVISIBLE
+
+        // Get the search information (query, title, type) that we will use in this activity
+        val extras = intent.extras
+        if (extras != null) {
+            mSearchInfo = extras.getParcelable(SEARCH_INFO) ?: SearchInfo.emptySearchInfo()
+        } else if (Intent.ACTION_VIEW == intent.action) {
+            // the user has entered the activity via a url
+            val data = intent.data
+            if (data != null) {
+                // TODO: If we open advanced search from app it redirects here
+                val paths = data.toString().split("/")
+                mSearchInfo = SearchInfo.emptySearchInfo()
+
+                if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
+                    mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
+                    mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
+                    mSearchInfo.searchType = SearchType.SEARCH
+                } else {
+                    mSearchInfo.searchTitle = paths[4]
+                    mSearchInfo.searchQuery = paths[4]
+                    mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SearchType.SEARCH
+                }
+
+            } else {
+                Log.i(LOG_TAG, "No data was passed in with URL. Exiting.")
+                finish()
+            }
+        } else {
+            Log.e(LOG_TAG, "No data passed to the activity. Exiting.")
+            finish()
+        }
+        newSearchQuery()
+
+        binding.navigationBottom.bottomNavigation.selectNavigationItem(0)
+        binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
+    }
 
     override fun onDestroy() {
         disp.dispose()
         _binding = null
         super.onDestroy()
     }
-
-    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase))
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -136,59 +186,6 @@ class ProductSearchActivity : BaseActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        _binding = ActivityProductBrowsingListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbarInclude.toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        // OnClick
-        binding.buttonTryAgain.setOnClickListener { reloadSearch() }
-        binding.addProduct.setOnClickListener { addProduct() }
-
-        binding.textCountProduct.visibility = View.INVISIBLE
-
-        // Get the search information (query, title, type) that we will use in this activity
-        val extras = intent.extras
-        if (extras != null) {
-            mSearchInfo = extras.getParcelable(SEARCH_INFO) ?: SearchInfo.emptySearchInfo()
-        } else if (Intent.ACTION_VIEW == intent.action) {
-            // the user has entered the activity via a url
-            val data = intent.data
-            if (data != null) {
-                // TODO: If we open advanced search from app it redirects here
-                val paths = data.toString().split("/")
-                mSearchInfo = SearchInfo.emptySearchInfo()
-
-                if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
-                    mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
-                    mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
-                    mSearchInfo.searchType = SearchType.SEARCH
-                } else {
-                    mSearchInfo.searchTitle = paths[4]
-                    mSearchInfo.searchQuery = paths[4]
-                    mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SearchType.SEARCH
-                }
-
-            } else {
-                Log.i(LOG_TAG, "No data was passed in with URL. Exiting.")
-                finish()
-            }
-        } else {
-            Log.e(LOG_TAG, "No data passed to the activity. Exiting.")
-            finish()
-        }
-        newSearchQuery()
-
-        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (isDisableImageLoad() && isBatteryLevelLow()) {
-            lowBatteryMode = true
-        }
-        binding.navigationBottom.bottomNavigation.selectNavigationItem(0)
-        binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
     }
 
     private fun setupHungerGames() {

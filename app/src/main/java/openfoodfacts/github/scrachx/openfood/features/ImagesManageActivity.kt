@@ -438,7 +438,7 @@ class ImagesManageActivity : BaseActivity() {
     }
 
     private fun updateSelectDefaultLanguageAction() {
-        val isDefault = getProduct()!!.lang != null && getCurrentLanguage() == getLocale(getProduct()!!.lang).language
+        val isDefault = getProduct()?.lang != null && getCurrentLanguage() == getLocale(getProduct()!!.lang).language
         binding.btnChooseDefaultLanguage.visibility = if (isDefault) View.INVISIBLE else View.VISIBLE
     }
 
@@ -540,7 +540,7 @@ class ImagesManageActivity : BaseActivity() {
         if (file != null) {
             onPhotoReturned(file)
         } else if (!imgId.isNullOrBlank()) {
-            postEditImage(hashMapOf(IMG_ID to imgId))
+            postEditImage(mutableMapOf(IMG_ID to imgId))
         }
     }
 
@@ -564,7 +564,7 @@ class ImagesManageActivity : BaseActivity() {
             val isModified = currentServerTransformation != newServerTransformation
             if (isModified) {
                 startRefresh(getString(R.string.toastSending))
-                val imgMap = hashMapOf(IMG_ID to newServerTransformation.imageId)
+                val imgMap = mutableMapOf(IMG_ID to newServerTransformation.imageId!!)
                 addTransformToMap(newServerTransformation, imgMap)
                 postEditImage(imgMap)
             } else {
@@ -573,7 +573,7 @@ class ImagesManageActivity : BaseActivity() {
         }
     }
 
-    private fun postEditImage(imgMap: MutableMap<String, String?>) {
+    private fun postEditImage(imgMap: MutableMap<String, String>) {
         val code = getProduct()!!.code
         imgMap[PRODUCT_BARCODE] = code
         imgMap[IMAGE_STRING_ID] = getImageStringKey(getSelectedType(), getCurrentLanguage())

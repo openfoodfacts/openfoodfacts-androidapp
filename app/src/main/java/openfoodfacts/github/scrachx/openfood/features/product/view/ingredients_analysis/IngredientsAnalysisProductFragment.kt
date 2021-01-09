@@ -32,6 +32,7 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
 class IngredientsAnalysisProductFragment : BaseFragment() {
@@ -66,10 +67,8 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
                     binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
                     binding.ingredientAnalysisRecyclerView.adapter = adapter
                 }.addTo(disp)
-        val intent = requireActivity().intent
-        if (intent != null && intent.extras != null) {
-            refreshView(requireProductState())
-        }
+
+        getProductState()?.let { refreshView(it) }
     }
 
     override fun onDestroyView() {
