@@ -273,7 +273,8 @@
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:background="@null"
                         android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/product_ingredient_analysis_tag" />
 
                 </LinearLayout>
 

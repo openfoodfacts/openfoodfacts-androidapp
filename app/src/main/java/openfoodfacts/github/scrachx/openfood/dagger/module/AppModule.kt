@@ -10,7 +10,7 @@ import openfoodfacts.github.scrachx.openfood.category.mapper.CategoryMapper
 import openfoodfacts.github.scrachx.openfood.category.network.CategoryNetworkService
 import openfoodfacts.github.scrachx.openfood.dagger.Qualifiers.ForApplication
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
-import openfoodfacts.github.scrachx.openfood.utils.Utils.httpClientBuilder
+import openfoodfacts.github.scrachx.openfood.utils.Utils.defaultHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -50,6 +50,6 @@ class AppModule(private val application: OFFApplication) {
     fun provideOpenFactsApiClient() = productsApi
 
     companion object {
-        private val httpClient = httpClientBuilder()
+        private val httpClient = defaultHttpClient
     }
 }

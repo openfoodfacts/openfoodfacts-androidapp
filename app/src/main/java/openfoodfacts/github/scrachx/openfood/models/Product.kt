@@ -171,10 +171,10 @@ class Product : Serializable {
     var imageUrl: String? = null
 
     @JsonProperty(ApiFields.Keys.INGREDIENTS)
-    val ingredients: ArrayList<LinkedHashMap<String, String>> = arrayListOf()
+    val ingredients = arrayListOf<LinkedHashMap<String, String>>()
 
     @JsonProperty(ApiFields.Keys.INGREDIENTS_ANALYSIS_TAGS)
-    val ingredientsAnalysisTags: ArrayList<String> = arrayListOf()
+    val ingredientsAnalysisTags = arrayListOf<String>()
 
     /**
      * @return The ingredientsFromOrThatMayBeFromPalmOilN

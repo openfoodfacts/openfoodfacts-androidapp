@@ -500,7 +500,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         requireActivity().runOnUiThread {
             binding.analysisContainer.visibility = View.VISIBLE
             val adapter = IngredientAnalysisTagsAdapter(requireContext(), analysisTags)
-            adapter.setOnItemClickListener { view: View, _: Int ->
+            adapter.setOnItemClickListener { view, _ ->
                 val fragment = IngredientsWithTagDialogFragment
                         .newInstance(product, view.getTag(R.id.analysis_tag_config) as AnalysisTagConfig)
                 fragment.show(childFragmentManager, "fragment_ingredients_with_tag")

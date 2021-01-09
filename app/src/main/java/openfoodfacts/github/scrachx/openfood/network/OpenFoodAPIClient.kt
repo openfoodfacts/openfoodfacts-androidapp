@@ -37,7 +37,7 @@ import openfoodfacts.github.scrachx.openfood.network.services.ProductsAPI
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
-import openfoodfacts.github.scrachx.openfood.utils.Utils.httpClientBuilder
+import openfoodfacts.github.scrachx.openfood.utils.Utils.defaultHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -63,7 +63,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
     else {
         Retrofit.Builder()
                 .baseUrl(customEndpointUrl)
-                .client(httpClientBuilder())
+                .client(defaultHttpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
