@@ -57,7 +57,7 @@ interface ProductsAPI {
                           @FieldMap parameters: Map<String?, @JvmSuppressWildcards String?>?,
                           @Field(ApiFields.Keys.USER_COMMENT) comment: String?): Single<ProductState>
 
-    @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
+    @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutriscore_grade,ecoscore_grade,nova_groups,code")
     fun getShortProductByBarcode(
             @Path("barcode") barcode: String?,
             @Header("User-Agent") header: String?
@@ -166,7 +166,7 @@ interface ProductsAPI {
                           @Path("page") page: Int,
                           @Query("fields") fields: String?): Single<Search>
 
-    @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,nutrition_grade_fr,code")
+    @GET("category/{category}/{page}.json?fields=product_name,brands,quantity,image_small_url,code,nutriscore_grade,ecoscore_grade,nova_groups")
     fun getProductByCategory(
             @Path("category") category: String?,
             @Path("page") page: Int
