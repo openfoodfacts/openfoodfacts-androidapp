@@ -431,11 +431,15 @@ class ContinuousScanActivity : AppCompatActivity() {
         binding.quickViewTags.visibility = View.GONE
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        productDisp?.dispose()
+    }
+
     override fun onDestroy() {
         summaryProductPresenter?.dispose()
 
         // Dispose all RxJava disposable
-        productDisp?.dispose()
         hintBarcodeDisp?.dispose()
         commonDisp.dispose()
 
