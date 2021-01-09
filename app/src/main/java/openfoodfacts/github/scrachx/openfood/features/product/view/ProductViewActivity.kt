@@ -105,6 +105,11 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         EventBus.getDefault().register(this)
     }
 
+    override fun onResume() {
+        super.onResume()
+        productState = requireProductState().also { adapterResult!!.refresh(it) }
+    }
+
     override fun onStop() {
         EventBus.getDefault().unregister(this)
         super.onStop()
@@ -180,7 +185,6 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        productState = requireProductState().also { adapterResult!!.refresh(it) }
     }
 
 

@@ -11,7 +11,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
@@ -214,7 +213,7 @@ class Product : Serializable {
     val labelsTags: List<String>? = null
 
     @JsonProperty(ApiFields.Keys.LANG)
-    val lang: String? = null
+    lateinit var lang: String
 
     @JsonProperty(ApiFields.Keys.LAST_MODIFIED_BY)
     val lastModifiedBy: String? = null

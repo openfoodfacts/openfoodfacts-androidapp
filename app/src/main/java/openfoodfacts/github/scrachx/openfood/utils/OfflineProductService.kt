@@ -13,6 +13,7 @@ import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefresh
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.getCommentToUpload
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.util.*
@@ -71,7 +72,7 @@ object OfflineProductService {
         Log.d(LOG_TAG, "Uploading data for product ${product.barcode}: $productDetails")
         try {
             val productState = productsApi
-                    .saveProductSingle(product.barcode, productDetails, OpenFoodAPIClient.defaultCommentToUpload)
+                    .saveProductSingle(product.barcode, productDetails, getCommentToUpload())
                     .blockingGet()
             if (productState.status == 1L) {
                 product.isDataUploaded = true

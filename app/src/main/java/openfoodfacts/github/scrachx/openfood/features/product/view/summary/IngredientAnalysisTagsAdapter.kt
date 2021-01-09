@@ -34,7 +34,7 @@ class IngredientAnalysisTagsAdapter(private val context: Context, private val ta
                 .load(tag.iconUrl)
                 .into(holder.icon)
 
-        holder.itemView.background = ResourcesCompat.getDrawable(
+        holder.background.background = ResourcesCompat.getDrawable(
                 context.resources,
                 R.drawable.rounded_button,
                 context.theme
@@ -42,7 +42,7 @@ class IngredientAnalysisTagsAdapter(private val context: Context, private val ta
             colorFilter = createBlendModeColorFilterCompat(Color.parseColor(tag.color), BlendModeCompat.SRC_IN)
         }
 
-        holder.itemView.setTag(R.id.analysis_tag_config, tag)
+        holder.background.setTag(R.id.analysis_tag_config, tag)
     }
 
     // total number of rows
@@ -50,6 +50,7 @@ class IngredientAnalysisTagsAdapter(private val context: Context, private val ta
 
     // stores and recycles views as they are scrolled off screen
     inner class IngredientAnalysisTagsViewHolder internal constructor(val itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        val background = itemView
         val icon: ImageView = itemView.findViewById(R.id.icon)
 
         override fun onClick(view: View) {
