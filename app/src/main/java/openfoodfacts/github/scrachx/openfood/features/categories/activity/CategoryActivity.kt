@@ -25,9 +25,10 @@ class CategoryActivity : BaseActivity() {
         }
         _binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setSupportActionBar(binding.toolbarInclude.toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setTitle(R.string.category_drawer)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // chrome custom tab for category hunger game
         binding.gameButton.setOnClickListener { openHungerGame() }
@@ -40,8 +41,8 @@ class CategoryActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         _binding = null
+        super.onDestroy()
     }
 
     private fun openHungerGame() = CustomTabsIntent.Builder()

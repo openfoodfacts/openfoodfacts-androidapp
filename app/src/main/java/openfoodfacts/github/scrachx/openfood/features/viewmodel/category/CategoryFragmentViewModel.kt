@@ -45,9 +45,7 @@ class CategoryFragmentViewModel : BaseViewModel() {
     val showOffline = ObservableInt(View.GONE)
 
 
-    override fun subscribe(subscriptions: CompositeDisposable) {
-        refreshCategories()
-    }
+    override fun subscribe(subscriptions: CompositeDisposable) = refreshCategories()
 
     /**
      * Generates a network call for showing categories in CategoryFragment
@@ -58,18 +56,18 @@ class CategoryFragmentViewModel : BaseViewModel() {
                     showOffline.set(View.GONE)
                     showProgress.set(View.VISIBLE)
                 }
-                .flatMap { categoryNames ->
-                    if (categoryNames.isEmpty()) {
-                        return@flatMap getAllCategoriesByDefaultLanguageCode()
+                .flatMap {
+                    if (it.isEmpty()) {
+                        getAllCategoriesByDefaultLanguageCode()
                     } else {
-                        return@flatMap Single.just(categoryNames)
+                        Single.just(it)
                     }
                 }
-                .flatMap { categoryNames ->
-                    if (categoryNames.isEmpty()) {
-                        return@flatMap ProductRepository.getCategories().map { categories -> extractCategoriesNames(categories) }
+                .flatMap {
+                    if (it.isEmpty()) {
+                        ProductRepository.getCategories().map(this::extractCategoriesNames)
                     } else {
-                        return@flatMap Single.just(categoryNames)
+                        Single.just(it)
                     }
                 }
                 .subscribeOn(Schedulers.io())
@@ -103,9 +101,9 @@ class CategoryFragmentViewModel : BaseViewModel() {
      *
      * @param query string which is used to query for category names
      */
-    fun searchCategories(query: String?) = shownCategories.set(
+    fun searchCategories(query: String) = shownCategories.set(
             allCategories
-                    .filter { it.name != null && it.name!!.toLowerCase(Locale.getDefault()).startsWith(query!!) }
+                    .filter { it.name?.toLowerCase(Locale.getDefault())?.startsWith(query) == true }
                     .toMutableList()
     )
 }

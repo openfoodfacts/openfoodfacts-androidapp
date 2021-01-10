@@ -21,7 +21,9 @@ fun EditText.isContentDifferent(toCompare: String?): Boolean {
  */
 fun EditText?.isEmpty() = this.getContent().isNullOrEmpty()
 
-fun NachoTextView.areChipsDifferent(toCompare: List<String>) =
-        chipValues.toTypedArray().contentEquals(toCompare.toTypedArray())
+fun NachoTextView.areChipsEquals(toCompare: List<String>) =
+        chipValues.toTypedArray() contentEquals toCompare.toTypedArray()
+
+fun NachoTextView.areChipsDifferent(toCompare: List<String>) = !areChipsEquals(toCompare)
 
 fun CustomValidatingEditTextView.hasUnit() = entryName != Nutriments.PH && entryName != Nutriments.ALCOHOL

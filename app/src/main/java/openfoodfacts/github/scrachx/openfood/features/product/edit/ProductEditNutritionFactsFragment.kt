@@ -352,7 +352,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         when (value) {
             NUTRITION_DATA_PER_100G -> binding.radioGroup.check(R.id.for100g_100ml)
             NUTRITION_DATA_PER_SERVING -> binding.radioGroup.check(R.id.per_serving)
-            else -> throw IllegalArgumentException("value is neither 100g nor serving")
+            else -> throw IllegalArgumentException("Value is neither $NUTRITION_DATA_PER_100G nor $NUTRITION_DATA_PER_SERVING")
         }
         binding.radioGroup.jumpDrawablesToCurrentState()
     }
