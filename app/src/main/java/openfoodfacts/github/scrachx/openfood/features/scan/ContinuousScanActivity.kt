@@ -511,12 +511,10 @@ class ContinuousScanActivity : AppCompatActivity() {
 
         binding.quickViewTags.isNestedScrollingEnabled = false
 
-        window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
-            if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {
-                // The system bars are visible.
-                hideSystemUI()
-            }
-        }
+
+        // The system bars are visible.
+        hideSystemUI()
+
         hintBarcodeDisp = Completable.timer(15, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnComplete {

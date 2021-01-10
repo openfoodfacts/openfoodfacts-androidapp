@@ -15,7 +15,8 @@ class CustomValidatingEditTextView : AppCompatEditText {
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(attrs)
     }
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr){
+
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         init(attrs)
     }
 
@@ -79,15 +80,13 @@ class CustomValidatingEditTextView : AppCompatEditText {
 
     fun isValid() = !isError()
 
-     fun init( attrs:AttributeSet){
-        attrs?.let {
-            context.obtainStyledAttributes(it, R.styleable.CustomValidatingEditTextView).run {
-                textInputLayoutId = getResourceId(R.styleable.CustomValidatingEditTextView_parentTextInputLayout, NO_ID)
-                attachedUnitSpinnerId = getResourceId(R.styleable.CustomValidatingEditTextView_attachedUnitSpinner, NO_ID)
-                attachedModSpinnerId = getResourceId(R.styleable.CustomValidatingEditTextView_attachedModSpinner, NO_ID)
-                fieldName = getString(R.styleable.CustomValidatingEditTextView_fieldName)
-                recycle()
-            }
+    fun init(attrs: AttributeSet) {
+        context.obtainStyledAttributes(attrs, R.styleable.CustomValidatingEditTextView).run {
+            textInputLayoutId = getResourceId(R.styleable.CustomValidatingEditTextView_parentTextInputLayout, NO_ID)
+            attachedUnitSpinnerId = getResourceId(R.styleable.CustomValidatingEditTextView_attachedUnitSpinner, NO_ID)
+            attachedModSpinnerId = getResourceId(R.styleable.CustomValidatingEditTextView_attachedModSpinner, NO_ID)
+            fieldName = getString(R.styleable.CustomValidatingEditTextView_fieldName)
+            recycle()
         }
     }
 }

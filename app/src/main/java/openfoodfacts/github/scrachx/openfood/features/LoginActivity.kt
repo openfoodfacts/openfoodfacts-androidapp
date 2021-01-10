@@ -25,6 +25,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -122,7 +123,7 @@ class LoginActivity : BaseActivity() {
                             || htmlNoParsed.contains("See you soon!")) {
                         Snackbar.make(binding.loginLinearlayout, R.string.errorLogin, BaseTransientBottomBar.LENGTH_LONG).show()
                         binding.passInput.setText("")
-                        binding.txtInfoLogin.setTextColor(resources.getColor(R.color.red))
+                        binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.red))
                         binding.txtInfoLogin.setText(R.string.txtInfoLoginNo)
                         snackbar.dismiss()
                     } else {
@@ -130,7 +131,7 @@ class LoginActivity : BaseActivity() {
                         for (httpCookie in HttpCookie.parse(response.headers()["set-cookie"])) {
                             // Example format of set-cookie: session=user_session&S0MeR@nD0MSECRETk3Y&user_id&testuser; domain=.openfoodfacts.org; path=/
                             if (BuildConfig.HOST.contains(httpCookie.domain) && httpCookie.path == "/") {
-                                val cookieValues = httpCookie.value.split("&").toTypedArray()
+                                val cookieValues = httpCookie.value.split("&")
                                 var i = 0
                                 while (i < cookieValues.size) {
                                     pref.edit { putString(cookieValues[i], cookieValues[++i]) }
@@ -144,7 +145,7 @@ class LoginActivity : BaseActivity() {
                             putString("user", login)
                             putString("pass", password)
                         }
-                        binding.txtInfoLogin.setTextColor(resources.getColor(R.color.green_500))
+                        binding.txtInfoLogin.setTextColor(ContextCompat.getColor(this, R.color.green_500))
                         binding.txtInfoLogin.setText(R.string.txtInfoLoginOk)
                         setResult(RESULT_OK)
                         finish()
