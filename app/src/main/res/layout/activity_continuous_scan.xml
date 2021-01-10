@@ -182,7 +182,7 @@
                             android:adjustViewBounds="true"
                             android:scaleType="fitStart"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/quickView_additives"
+                            app:layout_constraintEnd_toStartOf="@+id/quickView_novaGroup"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintWidth_percent="0.4"
@@ -196,8 +196,8 @@
                             android:adjustViewBounds="true"
                             android:scaleType="fitCenter"
                             app:layout_constraintBottom_toTopOf="@id/quickView_additives"
-                            app:layout_constraintEnd_toEndOf="@id/quickView_additives"
-                            app:layout_constraintStart_toStartOf="@+id/quickView_additives"
+                            app:layout_constraintEnd_toStartOf="@id/quickView_co2_icon"
+                            app:layout_constraintStart_toEndOf="@id/quickView_nutriScore"
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="ContentDescription"
                             tools:srcCompat="@drawable/ic_nova_group_1" />
@@ -214,7 +214,7 @@
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/quickView_ecoscore_icon"
-                            app:layout_constraintStart_toEndOf="@+id/quickView_additives"
+                            app:layout_constraintStart_toEndOf="@+id/quickView_novaGroup"
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="ContentDescription"
                             tools:srcCompat="@drawable/ic_co2_high_24dp" />
