@@ -38,6 +38,8 @@ import io.reactivex.rxkotlin.addTo
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
@@ -223,7 +225,7 @@ class ProductEditActivity : AppCompatActivity() {
         adapterResult.addFragment(ingredientsFragment, "Ingredients")
 
         // If on off or opff, add Nutrition Facts fragment
-        if (isFlavors(AppFlavors.OFF, AppFlavors.OPFF)) {
+        if (isFlavors(OFF, OPFF)) {
             nutritionFactsFragment.arguments = fragmentsBundle
             adapterResult.addFragment(nutritionFactsFragment, "Nutrition Facts")
         } else if (isFlavors(AppFlavors.OBF, AppFlavors.OPF)) {
@@ -252,18 +254,16 @@ class ProductEditActivity : AppCompatActivity() {
     private fun saveProduct() {
         editOverviewFragment.addUpdatedFieldsToMap(productDetails)
         ingredientsFragment.addUpdatedFieldsToMap(productDetails)
-        if (isFlavors(AppFlavors.OFF, AppFlavors.OPFF)) {
+        if (isFlavors(OFF, OPFF)) {
             nutritionFactsFragment.addUpdatedFieldsToMap(productDetails)
         }
         addLoginInfoToProductDetails(productDetails)
         saveProductOffline()
     }
 
-    fun proceed() {
-        if (binding.viewpager.currentItem < 2) {
-            binding.viewpager.setCurrentItem(binding.viewpager.currentItem + 1, true)
-        } else checkFieldsThenSave()
-    }
+    fun proceed() = if (binding.viewpager.currentItem < 2) {
+        binding.viewpager.setCurrentItem(binding.viewpager.currentItem + 1, true)
+    } else checkFieldsThenSave()
 
     /**
      * Save the current product in the offline db
@@ -299,25 +299,19 @@ class ProductEditActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun checkFieldsThenSave() {
-        if (editingMode) {
-            // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
-            if (isFlavors(AppFlavors.OFF, AppFlavors.OPFF) && nutritionFactsFragment.anyInvalid()) {
-                // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
-                binding.viewpager.setCurrentItem(2, true)
-            } else {
-                saveProduct()
-            }
-        } else {
-            // add mode, check if we have required fields
-            if (editOverviewFragment.anyInvalid()) {
-                binding.viewpager.setCurrentItem(0, true)
-            } else if (isFlavors(AppFlavors.OFF, AppFlavors.OPFF) && nutritionFactsFragment.anyInvalid()) {
-                binding.viewpager.setCurrentItem(2, true)
-            } else {
-                saveProduct()
-            }
-        }
+    private fun checkFieldsThenSave() = if (editingMode) {
+        // edit mode, therefore do not check whether front image is empty or not however do check the nutrition facts values.
+        if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+            // If there are any invalid field and there is nutrition data, scroll to the nutrition fragment
+            binding.viewpager.setCurrentItem(2, true)
+        } else saveProduct()
+    } else {
+        // add mode, check if we have required fields
+        if (editOverviewFragment.anyInvalid()) {
+            binding.viewpager.setCurrentItem(0, true)
+        } else if (isFlavors(OFF, OPFF) && nutritionFactsFragment.anyInvalid()) {
+            binding.viewpager.setCurrentItem(2, true)
+        } else saveProduct()
     }
 
     private fun addLoginInfoToProductDetails(targetMap: MutableMap<String, String?>) {

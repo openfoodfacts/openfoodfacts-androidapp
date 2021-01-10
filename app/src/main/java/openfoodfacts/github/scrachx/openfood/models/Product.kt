@@ -11,7 +11,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
@@ -382,32 +381,22 @@ class Product : Serializable {
         return if (!result.isNullOrBlank()) result else imageNutritionUrl
     }
 
-    private fun getFieldForLanguage(field: String, languageCode: String): String? {
-        // First try the passed language
-        return if (ApiFields.Defaults.DEFAULT_LANGUAGE != languageCode
-                && additionalProperties["${field}_$languageCode"] != null
-                && additionalProperties["${field}_$languageCode"].toString().isNotBlank()) {
-            additionalProperties["${field}_$languageCode"]
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'")
-        } else if (additionalProperties["${field}_en"] != null
-                && additionalProperties["${field}_en"].toString().isNotBlank()) { // Then try english
-            additionalProperties["${field}_en"]
-                    .toString()
-                    .replace("\\'", "'")
-                    .replace("&quot", "'")
-        } else {
-            null
-        }
-    }
+    private fun getFieldForLanguage(field: String, languageCode: String) =
+            additionalProperties["${field}_$languageCode"] // First try the passed language
+                    ?.toString()
+                    ?.ifBlank { null }
+                    ?.replace("\\'", "'")
+                    ?.replace("&quot", "'")
+                    ?: additionalProperties["${field}_${ApiFields.Defaults.DEFAULT_LANGUAGE}"] // Then try english
+                            ?.toString()
+                            ?.ifBlank { null }
+                            ?.replace("\\'", "'")
+                            ?.replace("&quot", "'")
 
-    fun getImageSmallUrl(languageCode: String?): String? {
-        val image = getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
-        return if (!image.isNullOrBlank()) {
-            image
-        } else imageSmallUrl
-    }
+
+    fun getImageSmallUrl(languageCode: String?) =
+            getSelectedImage(languageCode, ProductImageField.FRONT, ImageSize.SMALL)
+                    ?.ifBlank { null } ?: imageSmallUrl
 
     fun getSelectedImage(languageCode: String?, type: ProductImageField, size: ImageSize): String? {
         var images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String?, Map<*, *>>?
