@@ -20,9 +20,9 @@ class CategoryRepository(private val networkService: CategoryNetworkService, pri
     fun retrieveAll() = if (memoryCache.get() != null) {
         Single.just(memoryCache.get())
     } else networkService.getCategories()
-            .map { categoryResponse -> mapper.fromNetwork(categoryResponse.tags) }
+            .map { mapper.fromNetwork(it.tags) }
             .doOnSuccess { memoryCache.set(it) }
-            .doOnError { Log.w(CategoryRepository::class.java.simpleName, "Can't get categories", it) }
+            .doOnError { Log.w(CategoryRepository::class.simpleName, "Can't get categories", it) }
             .subscribeOn(Schedulers.io())
 
 }

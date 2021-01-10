@@ -8,5 +8,5 @@ import retrofit2.http.GET
  */
 interface CategoryNetworkService {
     @GET("categories.json")
-    fun getCategories(): Single<CategoryResponse?>
+    fun getCategories(): Single<CategoryResponse>
 }

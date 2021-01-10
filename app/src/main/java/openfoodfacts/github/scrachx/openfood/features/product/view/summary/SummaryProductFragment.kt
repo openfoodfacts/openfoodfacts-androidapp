@@ -278,15 +278,12 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
 
         //TODO use OpenFoodApiService to fetch product by packaging, brands, categories etc
-        if (product.getProductName(langCode) != null) {
-            binding.textNameProduct.text = product.getProductName(langCode)
-        } else {
-            binding.textNameProduct.visibility = View.GONE
-        }
+        binding.textNameProduct.text = product.getProductName(langCode) ?: getString(R.string.productNameNull)
+
         if (!product.quantity.isNullOrBlank()) {
             binding.textQuantityProduct.text = product.quantity
         } else {
-            binding.textQuantityProduct.visibility = View.GONE
+            binding.textQuantityProduct.visibility = View.INVISIBLE
         }
 
         val pBrands = product.brands

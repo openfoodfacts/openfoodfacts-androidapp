@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 /**
  * Class for response received from CategoryNetworkService class
  */
-class CategoryResponse @JvmOverloads constructor(
+data class CategoryResponse @JvmOverloads constructor(
         val count: Int = 0,
         val tags: List<Tag> = emptyList()
 ) {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    class Tag @JvmOverloads constructor(
+    data class Tag @JvmOverloads constructor(
             val id: String = "",
             val name: String = "",
             val url: String = "",
