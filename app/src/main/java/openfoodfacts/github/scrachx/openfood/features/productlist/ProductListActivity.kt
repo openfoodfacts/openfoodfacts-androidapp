@@ -89,7 +89,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         if (prodToAdd?.code != null && prodToAdd.productName != null && prodToAdd.getImageSmallUrl(locale) != null) {
             val barcode = prodToAdd.code
             val productName = prodToAdd.productName
-            val productDetails = getProductBrandsQuantityDetails(prodToAdd)
+            val productDetails = prodToAdd.getProductBrandsQuantityDetails()
             val imageUrl = prodToAdd.getImageSmallUrl(locale)
             val product = YourListedProduct()
             product.barcode = barcode
@@ -361,12 +361,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             return notificationManager
         }
 
-        @JvmStatic
-        fun getProductBrandsQuantityDetails(p: Product) = getProductBrandsQuantityDetails(p.brands, p.quantity)
-
-        fun getProductBrandsQuantityDetails(p: HistoryProduct) = getProductBrandsQuantityDetails(p.brands, p.quantity)
-
-        private fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
+        fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
             val builder = StringBuilder()
             if (!brands.isNullOrEmpty()) {
                 builder.append(brands.split(",")[0].trim { it <= ' ' }.capitalize(Locale.ROOT))

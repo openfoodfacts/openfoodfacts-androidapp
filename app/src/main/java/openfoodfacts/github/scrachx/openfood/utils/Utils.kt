@@ -473,16 +473,6 @@ fun isBarcodeValid(barcode: String?): Boolean {
             || !barcode.substring(0, 3).contains("979"))
 }
 
-@DrawableRes
-fun getNutriScoreSmallDrawable(grade: String?) = when (grade?.toLowerCase(Locale.ROOT)) {
-    "a" -> R.drawable.ic_nutriscore_small_a
-    "b" -> R.drawable.ic_nutriscore_small_b
-    "c" -> R.drawable.ic_nutriscore_small_c
-    "d" -> R.drawable.ic_nutriscore_small_d
-    "e" -> R.drawable.ic_nutriscore_small_e
-    else -> R.drawable.ic_nutriscore_small_unknown
-}
-
 /**
  * Check if the device has a camera installed.
  *

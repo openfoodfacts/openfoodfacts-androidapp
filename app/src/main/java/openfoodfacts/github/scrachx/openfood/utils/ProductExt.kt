@@ -5,6 +5,8 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
+import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.Units
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
@@ -18,20 +20,7 @@ fun OfflineSavedProduct.toOnlineProduct(context: Context) = toState(context).map
 
 fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true)
 
-@DrawableRes
-fun Product?.getCO2Resource(): Int {
-    if (this == null) return NO_DRAWABLE_RESOURCE
-
-    val tags = environmentImpactLevelTags
-    if (tags.isNullOrEmpty()) return NO_DRAWABLE_RESOURCE
-
-    return when (tags[0].replace("\"", "")) {
-        "en:high" -> R.drawable.ic_co2_high_24dp
-        "en:low" -> R.drawable.ic_co2_low_24dp
-        "en:medium" -> R.drawable.ic_co2_medium_24dp
-        else -> NO_DRAWABLE_RESOURCE
-    }
-}
+fun Product.getProductBrandsQuantityDetails() = ProductListActivity.getProductBrandsQuantityDetails(brands, quantity)
 
 @DrawableRes
 fun Product?.getEcoscoreResource() = when (this?.ecoscore?.toLowerCase(Locale.ROOT)) {
@@ -43,8 +32,12 @@ fun Product?.getEcoscoreResource() = when (this?.ecoscore?.toLowerCase(Locale.RO
     else -> R.drawable.ic_ecoscore_unknown
 }
 
+
 @DrawableRes
-fun Product?.getNutriScoreResource(vertical: Boolean = false) = when (this?.nutritionGradeFr?.toLowerCase(Locale.ROOT)) {
+private fun getResourceFromNutri(
+        nutriscore: String?,
+        vertical: Boolean,
+) = when (nutriscore?.toLowerCase(Locale.ROOT)) {
     "a" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_a else R.drawable.ic_nutriscore_a
     "b" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_b else R.drawable.ic_nutriscore_b
     "c" -> if (vertical) R.drawable.ic_nutriscore_vertical_border_c else R.drawable.ic_nutriscore_c
@@ -53,20 +46,31 @@ fun Product?.getNutriScoreResource(vertical: Boolean = false) = when (this?.nutr
     else -> if (vertical) NO_DRAWABLE_RESOURCE else R.drawable.ic_nutriscore_unknown
 }
 
+@DrawableRes
+fun Product?.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutri(this?.nutritionGradeFr, vertical)
+
+@DrawableRes
+fun HistoryProduct.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutri(nutritionGrade, vertical)
+
 fun Product?.getImageGradeDrawable(context: Context, vertical: Boolean = false): Drawable? {
     val gradeID = this.getNutriScoreResource(vertical)
     return if (gradeID == NO_DRAWABLE_RESOURCE) null
     else VectorDrawableCompat.create(context.resources, gradeID, context.theme)
 }
 
-/**
- * Returns the NOVA group graphic asset given the group
- */
 @DrawableRes
-fun Product?.getNovaGroupResource() = when (this?.novaGroups) {
+private fun getResourceFromNova(novaGroup: String?) = when (novaGroup) {
     "1" -> R.drawable.ic_nova_group_1
     "2" -> R.drawable.ic_nova_group_2
     "3" -> R.drawable.ic_nova_group_3
     "4" -> R.drawable.ic_nova_group_4
     else -> R.drawable.ic_nova_group_unknown
 }
+
+/**
+ * Returns the NOVA group graphic asset given the group
+ */
+@DrawableRes
+fun Product?.getNovaGroupResource() = getResourceFromNova(this?.novaGroups)
+
+

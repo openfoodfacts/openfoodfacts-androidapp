@@ -57,7 +57,6 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.view.CategoryProductHelper
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
-import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity.Companion.getProductListsDaoWithDefaultList
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
@@ -740,7 +739,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val productBarcode = product.code
         val productName = product.productName
         val imageUrl = product.getImageSmallUrl(LocaleHelper.getLanguage(activity))
-        val productDetails = ProductListActivity.getProductBrandsQuantityDetails(product)
+        val productDetails = product.getProductBrandsQuantityDetails()
         val addToListDialog = MaterialDialog.Builder(activity)
                 .title(R.string.add_to_product_lists)
                 .customView(R.layout.dialog_add_to_list, true)
