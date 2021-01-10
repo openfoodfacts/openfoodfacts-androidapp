@@ -31,7 +31,7 @@ object UnitUtils {
      * Converts a given quantity's unitOfValue to grams.
      *
      * @param value The value to be converted
-     * @param unitOfValue represents milligrams, 2 represents micrograms
+     * @param unitOfValue must be a unit from [Units]
      * @return return the converted value
      */
     fun convertToGrams(value: Double, unitOfValue: String?) = when {
