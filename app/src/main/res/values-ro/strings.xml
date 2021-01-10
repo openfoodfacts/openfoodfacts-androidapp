@@ -177,7 +177,7 @@
     <string name="txtEMB">Codul EMB:</string>
     <string name="txtIngredients">Ingrediente:</string>
     <string name="Donate">Donează</string>
-    <string name="Donation">Faceți click aici pentru a face o donație către Open Food Facts</string>
+    <string name="Donation">Apăsă aici pentru a face o donație către Open Products Facts</string>
     <string name="txtSubstances">Substanțe care provoacă alergii sau intoleranțe:</string>
     <string name="txtAdditives">Aditivi alimentari:</string>
     <string name="txtTraces">Urme de:</string>
@@ -197,6 +197,7 @@
     <string name="txtSugars">Zaharuri</string>
     <string name="hintBarcode">Cod de bare</string>
     <string name="txtNutriScoreInfo">Află mai multe despre valorile nutriționale</string>
+    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
     <string name="hintLogin">Conectați-vă</string>
     <string name="hintPass">Parolă</string>
     <string name="errorLogin">Numele de utilizator sau parola sunt incorecte</string>
@@ -204,7 +205,7 @@
     <string name="uploadLater">Imaginea va fi încărcată când va fi disponibilă o conexiune la internet</string>
     <string name="txtInfoLoginOk">Utilizator salvat</string>
     <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
-    <string name="txtDialogsContent">Produsul scanat nu există în baza de date Open Food Facts. Doriți să-l adăugați?</string>
+    <string name="txtDialogsContent">Produsul pe care l-ai sanat încă nu există în Open Products Facts. Te rog să îl adaugi tu.</string>
     <string name="txtYes">Da</string>
     <string name="txtNo">Nu</string>
     <string name="hintBrand">Marca</string>
@@ -218,7 +219,7 @@
     <string name="txtBarcodeRequire">Codul de bare este obligatoriu</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
-    <string name="msg_share">Privește acest produs pe Open Food Facts:</string>
+    <string name="msg_share">Vizualizează acest produs în Open Products Facts :</string>
     <string name="create_account">Înregistrare</string>
     <string name="home_drawer">Pagina de start</string>
     <string name="install">Install</string>
@@ -242,9 +243,9 @@
     <string name="cancel_button">Anulare</string>
     <string name="login_button">Conectați-vă</string>
     <string name="create_account_button">Creează cont</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Products Facts. Totodată, fi atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% aorectă, așa că te rog să verifici și tu personal acele produse! </string>
     <string name="title_info_dialog">Cum funcționează?</string>
-    <string name="text_offline_info_dialog">Puteți scana produse cand sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de dedesubt.</string>
+    <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Products Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
     <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
     <string name="no_camera_dialog_title">Camera not found</string>
     <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
@@ -328,7 +329,7 @@
     <string name="txt_no_matching_incomplete_products">Nu avem niciun produs incomplet! Adăugați un produs nou?</string>
     <string name="txt_no_matching_contributor_products">Din păcate, nu avem niciun produs de la acest colaborator, puteți adăuga unul?</string>
     <string name="txt_no_matching_products">Nu am găsit niciun produs similar.\nPuteți încerca:</string>
-    <string name="txt_broaden_search">- extinderea căutării dvs.\n- scanați și adăugați-l la Open Food Facts</string>
+    <string name="txt_broaden_search">- extinderea căutării tale \n- scanează-l și adaugă-l în Open Products Facts</string>
     <string name="something_went_wrong">Ne pare rău, ceva nu a funcționat corespunzător…</string>
     <string name="txt_try_again">Încercaţi din nou</string>
     <string name="nutrition_lactose">Lactoză</string>
@@ -440,8 +441,8 @@
     <string name="preference_choose_language_dialog_title">Alegeți limba</string>
     <string name="FAQ">FAQ</string>
     <string name="FrequentlyAskedQuestions">Întrebări Frecvente</string>
-    <string name="translate_help_title">Ajută la traducerea informațiilor din Open Food Facts</string>
-    <string name="translate_help_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
+    <string name="translate_help_title">Ajută la traducerea aplicației Open Products Facts</string>
+    <string name="translate_help_summary">Ajută la traducerea bazei de date Open Products Facts în limba ta - nu sunt necesare cunoștințe tehnice</string>
     <string name="please_check_your_connection">Te rog verifică conexiunea ta.</string>
     <string name="advanced_search_title">Cautare avansată &amp; Grafice</string>
     <string name="compare_products">Compară produse</string>
@@ -451,7 +452,7 @@
     <string name="TermsOfUse">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -535,6 +536,7 @@
     <string name="last_editor_history">Ultima editare a paginii produsului %1$s la %2$s CEST de </string>
     <string name="other_editors">Pagina produsului totodată editată și de </string>
     <string name="contribution_tab">Contribuții</string>
+    <string name="synthesis_tab">Synthesis</string>
     <string name="contribution_tab_summary">Afișează panoul de contribuție cu produse a utilizatorului</string>
     <string name="contribution_tab_title">Afișează panoul de contribuții</string>
     <string name="txtDialogsTitle">Informaţii</string>
@@ -551,7 +553,7 @@
     </plurals>
     <string name="product_not_complete">Acest produs încă nu este complet.\nÎi poți adăuga tu câteva detalii?</string>
     <string name="addProductOffline">Pari a fi deconectat. Adaugi produsul %s folosind modul offline?</string>
-    <string name="product_not_found">Produsul %1$s pe care l-ai scanat încă nu există în Open Food Facts. Îl poți adăuga tu?</string>
+    <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Products Facts. Îl poți adăuga tu?</string>
     <string name="scan_sound">Scanează sunetul</string>
     <string name="trouble_scanning">Probleme cu scanarea?</string>
     <string name="barcode_hint">Probleme cu scanarea? Introduce manual codul de bare</string>
@@ -559,7 +561,7 @@
     <string name="autofocus">Autofocalizare</string>
     <string name="initial_loading">Încărcare inițială</string>
     <string name="preferences">Preferințe</string>
-    <string name="OFFlogo">Sigla Open Food Facts</string>
+    <string name="OFFlogo">Open Products Facts logo</string>
     <string name="loading_product">Se încarcă produse%s</string>
     <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
     <string name="error_adding_ingredients">Au apărut probleme în timp ce încercaţi să adăugaţi ingredientele produsului</string>
@@ -652,7 +654,7 @@
     <string name="contribution_by">Contribution by</string>
     <string name="title_activity_product">Titlu</string>
     <string name="description_activity_product">descriere</string>
-    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <string name="intent_filter_share_label">Add to Open Products Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">High risk of over exposure</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
@@ -681,11 +683,11 @@
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extrageți ingredientele</string>
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
-    <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
-    <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
-    <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
-    <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
-    <string name="version_string">Open Food Facts Android App</string>
+    <string name="add_nutrient_prompt_text">Add nutrition facts to compute nutrient levels</string>
+    <string name="add_category_prompt_text">Adăugați o categorie pentru a ajuta la completarea produsului</string>
+    <string name="add_nutrient_category_prompt_text">Add a category and nutrition facts to help complete the product</string>
+    <string name="category_game_btn">Ajutați la catalogarea produselor</string>
+    <string name="version_string">Open Products Facts Android App</string>
     <string name="version">Versiune</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
@@ -705,13 +707,13 @@
     <string name="txt_create_new_list">Create a new list</string>
     <string name="txt_add_to_new_list">Add to a new list</string>
     <string name="create_new_list_list_name">List Name</string>
-    <string name="txt_eaten_products">Eaten products</string>
+    <string name="txt_eaten_products">Products I have</string>
     <string name="txt_products_to_buy">Products to buy</string>
     <string name="txt_exporting_your_listed_products">Exporting Your Products…</string>
     <string name="txt_your_listed_products_exported">Your products have been exported</string>
     <string name="txt_discard">Renunță</string>
-    <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
-        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
     <string name="search_history_pref_title">Delete local search history</string>
     <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
@@ -775,7 +777,7 @@
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="preference_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
-    <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
+    <string name="help_translate_ingredients">Ajută la traducerea ingredientelor în limba ta</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
     <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
     <string name="help_extract_ingredients">Help extract the ingredients to get the %1$s status.</string>
@@ -812,10 +814,10 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: CocaCola, Nestle, etc…</string>
+    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>

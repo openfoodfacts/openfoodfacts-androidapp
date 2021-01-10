@@ -1,1 +1,1 @@
-Escanea productos alimenticios para descifrar las etiquetas: ingredientes, aditivos y datos nutricionales
+La base de datos de productos abiertos
