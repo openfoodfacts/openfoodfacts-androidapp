@@ -11,11 +11,13 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
+import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -33,7 +35,7 @@ class Product : Serializable {
      * @return The additivesTags
      */
     @JsonProperty(ApiFields.Keys.ADDITIVES_TAGS)
-    val additivesTags: ArrayList<String> = arrayListOf()
+    val additivesTags = arrayListOf<String>()
 
     /**
      * @return The allergens
@@ -44,16 +46,16 @@ class Product : Serializable {
      * @return The allergensHierarchy
      */
     @JsonProperty(ApiFields.Keys.ALLERGENS_HIERARCHY)
-    val allergensHierarchy: ArrayList<String> = arrayListOf()
+    val allergensHierarchy = arrayListOf<String>()
 
     @JsonProperty(ApiFields.Keys.ALLERGENS_TAGS)
-    val allergensTags: List<String> = ArrayList()
+    val allergensTags = arrayListOf<String>()
 
     /**
      * @return The aminoAcidTags
      */
     @JsonProperty(ApiFields.Keys.AMINO_ACIDS_TAGS)
-    var aminoAcidTags: ArrayList<String> = arrayListOf()
+    var aminoAcidTags = arrayListOf<String>()
 
 
     /**
@@ -65,7 +67,7 @@ class Product : Serializable {
      * @return The brandsTags
      */
     @JsonProperty(ApiFields.Keys.BRANDS_TAGS)
-    val brandsTags: ArrayList<String> = arrayListOf()
+    val brandsTags = arrayListOf<String>()
 
     /**
      * @return The categoriesTags

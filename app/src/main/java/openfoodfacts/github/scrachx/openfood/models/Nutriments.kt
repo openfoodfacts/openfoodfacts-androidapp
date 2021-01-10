@@ -253,7 +253,7 @@ class Nutriments : Serializable {
      * @return The nutriment modifier if different from [DEFAULT_MODIFIER], otherwise an empty string `""`
      */
     fun getModifierIfNotDefault(nutrimentName: String) = getModifierNonDefault(getModifier(nutrimentName))
-    
+
 
     private fun getAdditionalProperty(nutrimentName: String, suffix: String, defaultValue: String = StringUtils.EMPTY) =
             additionalProperties[nutrimentName + suffix]?.toString() ?: defaultValue
@@ -287,7 +287,7 @@ class Nutriments : Serializable {
             unit: String,
             val modifier: String
     ) {
-        val unit: String = getRealUnit(unit)
+        val unit = getRealUnit(unit)
         val displayStringFor100g: String
             get() {
                 val builder = StringBuilder()
@@ -311,15 +311,13 @@ class Nutriments : Serializable {
          * Returns the amount of nutriment per 100g
          * of product in the units stored in [Nutriment.unit]
          */
-        val for100gInUnits: String
-            get() = getValueInUnits(for100g, unit)
+        val for100gInUnits get() = getValueInUnits(for100g, unit)
 
         /**
          * Returns the amount of nutriment per serving
          * of product in the units stored in [Nutriment.unit]
          */
-        val forServingInUnits: String
-            get() = getValueInUnits(forServing, unit)
+        val forServingInUnits get() = getValueInUnits(forServing, unit)
 
         private fun getValueInUnits(valueInGramOrMl: String, unit: String): String {
             if (valueInGramOrMl.isBlank()) {
@@ -343,34 +341,22 @@ class Nutriments : Serializable {
          * @return nutriment value for a given amount of this product
          */
         fun getForAnyValue(userSetServing: Float, otherUnit: String?): String {
-            val strValue = this.for100gInUnits
-            if (strValue.isEmpty() || strValue.contains("%")) {
-                return strValue
-            }
-            try {
+            val strValue = for100gInUnits
+            if (strValue.isEmpty() || strValue.contains("%")) return strValue
+            return try {
                 val valueFor100g = strValue.toFloat()
                 val portionInGram = convertToGrams(userSetServing, otherUnit)
-                return getRoundNumber(valueFor100g / 100 * portionInGram)
-            } catch (fmt: NumberFormatException) {
-                Log.w(Nutriments::class.java.simpleName, "getForAnyValue can't parse value $strValue", fmt)
+                getRoundNumber(valueFor100g / 100 * portionInGram)
+            } catch (e: NumberFormatException) {
+                Log.w(Nutriments::class.simpleName, "Can't parse value '$strValue'", e)
+                StringUtils.EMPTY
             }
-            return StringUtils.EMPTY
         }
     }
 }
 
-fun Nutriments.getEnergyKcalValue(isDataPerServing: Boolean): String {
-    return if (isDataPerServing) {
-        getServing(ENERGY_KCAL)
-    } else {
-        get100g(ENERGY_KCAL)
-    }
-}
+fun Nutriments.getEnergyKcalValue(isDataPerServing: Boolean) =
+        if (isDataPerServing) getServing(ENERGY_KCAL) else get100g(ENERGY_KCAL)
 
-fun Nutriments.getEnergyKjValue(isDataPerServing: Boolean): String {
-    return if (isDataPerServing) {
-        getServing(ENERGY_KJ)
-    } else {
-        get100g(ENERGY_KJ)
-    }
-}
+fun Nutriments.getEnergyKjValue(isDataPerServing: Boolean) =
+        if (isDataPerServing) getServing(ENERGY_KJ) else get100g(ENERGY_KJ)
