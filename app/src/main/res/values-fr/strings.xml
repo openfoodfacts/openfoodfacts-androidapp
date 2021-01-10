@@ -510,7 +510,7 @@
     <string name="no_barcode">Nous n\'avons détecté aucun code-barres</string>
     <string name="enter_barcode">Veuillez saisir le code-barres ci-dessous</string>
     <string name="format_error">Mauvais format de code-barres ou code QR</string>
-    <string name="code_detected">Nous n\'avons détecté aucun code-barres</string>
+    <string name="code_detected">Code-barre détecté</string>
     <string name="do_you_want_to">Voulez-vous ajouter des photos à ce code-barres ?</string>
     <string name="bottomNav_history">Historique</string>
     <string name="products_added">Les produits que vous avez ajoutés ou modifiés</string>
