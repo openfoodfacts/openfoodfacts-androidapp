@@ -471,6 +471,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         Log.d(LOG_TAG, "Show labels prompt: $showLabelsPrompt")
         Log.d(LOG_TAG, "Show origins prompt: $showOriginsPrompt")
 
+        Log.i("inside", "statesTags = $statesTags" )
+        Log.i("inside", "ecoscore = " + product.ecoscore)
+        Log.i("inside", "product.ecoscore.equals "  + product.ecoscore.equals("unknown", true))
+        Log.i("inside", "ecoscore is null or empty " + product.ecoscore.isNullOrEmpty())
+        if(statesTags.contains("en:categories-completed") && product.ecoscore.isNullOrEmpty().or(product.ecoscore.equals("unknown", true))){
+            binding.tipBoxEcoScore.loadToolTip()
+        }
+
         binding.addNutriscorePrompt.visibility = View.VISIBLE
         when {
             showNutrientPrompt && showCategoryPrompt -> {

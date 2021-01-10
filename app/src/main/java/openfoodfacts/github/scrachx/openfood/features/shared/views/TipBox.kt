@@ -12,14 +12,16 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.res.getStringOrThrow
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
 import openfoodfacts.github.scrachx.openfood.databinding.TipBoxBinding
+import openfoodfacts.github.scrachx.openfood.databinding.TipBoxBindingImpl
 import kotlin.math.roundToLong
 
 class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
     private val prefs: SharedPreferences by lazy { PreferenceManager.getDefaultSharedPreferences(getContext()) }
 
-    private val binding = TipBoxBinding.inflate(LayoutInflater.from(context), this, false)
+    private val binding = TipBoxBinding.inflate(LayoutInflater.from(context), this, true)
     private val shouldAnimate: Boolean
     private val identifier: String
 
