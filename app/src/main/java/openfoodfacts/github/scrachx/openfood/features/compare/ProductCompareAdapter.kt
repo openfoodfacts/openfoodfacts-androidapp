@@ -273,39 +273,42 @@ class ProductCompareAdapter(
             val fatNutriment = nutriments[Nutriments.FAT]
             if (fat != null && fatNutriment != null) {
                 val fatNutrimentLevel = fat.getLocalize(activity)
-                levelItem.add(NutrientLevelItem(
+                levelItem += NutrientLevelItem(
                         activity.getString(R.string.compare_fat),
                         fatNutriment.displayStringFor100g,
                         fatNutrimentLevel,
-                        fat.getImageLevel()))
+                        fat.getImgRes()
+                )
             }
             val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 val saturatedFatLocalize = saturatedFat.getLocalize(activity)
-                levelItem.add(NutrientLevelItem(
+                levelItem += NutrientLevelItem(
                         activity.getString(R.string.compare_saturated_fat),
                         saturatedFatNutriment.displayStringFor100g,
                         saturatedFatLocalize,
-                        saturatedFat.getImageLevel()))
+                        saturatedFat.getImgRes()
+                )
             }
             val sugarsNutriment = nutriments[Nutriments.SUGARS]
             if (sugars != null && sugarsNutriment != null) {
                 val sugarsLocalize = sugars.getLocalize(activity)
-                levelItem.add(NutrientLevelItem(
+                levelItem += NutrientLevelItem(
                         activity.getString(R.string.compare_sugars),
                         sugarsNutriment.displayStringFor100g,
                         sugarsLocalize,
-                        sugars.getImageLevel()))
+                        sugars.getImgRes()
+                )
             }
             val saltNutriment = nutriments[Nutriments.SALT]
             if (salt != null && saltNutriment != null) {
                 val saltLocalize = salt.getLocalize(activity)
-                levelItem.add(NutrientLevelItem(
+                levelItem += NutrientLevelItem(
                         activity.getString(R.string.compare_salt),
                         saltNutriment.displayStringFor100g,
                         saltLocalize,
-                        salt.getImageLevel()
-                ))
+                        salt.getImgRes()
+                )
             }
         }
         return levelItem

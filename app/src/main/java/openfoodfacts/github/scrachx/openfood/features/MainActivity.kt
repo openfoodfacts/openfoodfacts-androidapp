@@ -60,6 +60,7 @@ import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.*
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IProfile
+import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -134,8 +135,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private val binding get() = _binding!!
 
     private val disp = CompositeDisposable()
-
-    private var barcode: String? = null
 
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
@@ -233,14 +232,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .withOnDrawerListener(object : Drawer.OnDrawerListener {
-                    override fun onDrawerOpened(drawerView: View) {
-                        hideKeyboard(this@MainActivity)
-                    }
-
-                    override fun onDrawerClosed(drawerView: View) {}
-                    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                        hideKeyboard(this@MainActivity)
-                    }
+                    override fun onDrawerSlide(drawerView: View, slideOffset: Float) = hideKeyboard(this@MainActivity)
+                    override fun onDrawerOpened(drawerView: View) = hideKeyboard(this@MainActivity)
+                    override fun onDrawerClosed(drawerView: View) = Unit
                 })
                 .addDrawerItems(
                         PrimaryDrawerItem().withName(R.string.home_drawer).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(ITEM_HOME.toLong()),
@@ -748,9 +742,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     }
 
     private fun chooseDialog(selectedImagesArray: List<Uri>) {
-        detectBarcodeInImages(selectedImagesArray).observeOn(AndroidSchedulers.mainThread()).subscribe { isBarCodePresent: Boolean ->
-            if (isBarCodePresent) {
-                createAlertDialog(false, barcode!!, selectedImagesArray)
+        detectBarcodeInImages(selectedImagesArray).observeOn(AndroidSchedulers.mainThread()).subscribe { barcodes ->
+            if (barcodes.isNotEmpty()) {
+                createAlertDialog(false, barcodes.first(), selectedImagesArray)
             } else {
                 createAlertDialog(true, "", selectedImagesArray)
             }
@@ -762,8 +756,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      *
      * @param selectedImages
      */
-    private fun detectBarcodeInImages(selectedImages: List<Uri>): Single<Boolean> {
-        return Observable.fromIterable(selectedImages).map { uri: Uri ->
+    private fun detectBarcodeInImages(selectedImages: List<Uri>): Single<MutableList<String>> {
+        return Observable.fromIterable(selectedImages).flatMapMaybe { uri ->
             var bMap: Bitmap? = null
             try {
                 contentResolver.openInputStream(uri).use { bMap = BitmapFactory.decodeStream(it) }
@@ -772,7 +766,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
             } catch (e: IOException) {
                 Log.e(MainActivity::class.java.simpleName, "IO error during bitmap stream decoding: " + e.message, e)
             }
-            //decoding bitmap
+            // Decoding bitmap
             if (bMap != null) {
                 val intArray = IntArray(bMap!!.width * bMap!!.height)
                 bMap!!.getPixels(intArray, 0, bMap!!.width, 0, 0, bMap!!.width, bMap!!.height)
@@ -785,20 +779,17 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                     decodeHints[DecodeHintType.PURE_BARCODE] = java.lang.Boolean.TRUE
                     val decodedResult = reader.decode(bitmap, decodeHints)
                     if (decodedResult != null) {
-                        barcode = decodedResult.text
-                    }
-                    if (barcode != null) {
-                        return@map true
+                        return@flatMapMaybe Maybe.just(decodedResult.text)
                     }
                 } catch (e: FormatException) {
                     Toast.makeText(applicationContext, getString(R.string.format_error), Toast.LENGTH_SHORT).show()
-                    Log.e(MainActivity::class.java.simpleName, "Error decoding bitmap into barcode: " + e.message)
+                    Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: " + e.message)
                 } catch (e: Exception) {
-                    Log.e(MainActivity::class.java.simpleName, "Error decoding bitmap into barcode: " + e.message)
+                    Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: " + e.message)
                 }
             }
-            false
-        }.filter { it }.first(false).subscribeOn(Schedulers.computation())
+            return@flatMapMaybe Maybe.empty()
+        }.toList().subscribeOn(Schedulers.computation())
     }
 
     private fun createAlertDialog(hasEditText: Boolean, barcode: String, imgUris: List<Uri>) {
@@ -833,7 +824,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         val activeNetwork = cm.activeNetworkInfo
                         val tempBarcode = if (hasEditText) barcodeEditText.text.toString() else barcode
                         if (tempBarcode.isNotEmpty()) {
-                            dialog.cancel()
+                            dialog.dismiss()
                             if (activeNetwork != null && activeNetwork.isConnectedOrConnecting) {
                                 val imageFile = File(RealPathUtil.getRealPath(this@MainActivity, selected))
                                 image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)

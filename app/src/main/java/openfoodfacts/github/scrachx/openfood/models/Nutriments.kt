@@ -129,7 +129,7 @@ class Nutriments : Serializable {
         const val MAGNESIUM = "magnesium"
 
         @JvmField
-        val MINERALS_MAP: MutableMap<String, Int> = hashMapOf(
+        val MINERALS_MAP = mapOf(
                 SILICA to R.string.silica,
                 BICARBONATE to R.string.bicarbonate,
                 POTASSIUM to R.string.potassium,
@@ -158,7 +158,7 @@ class Nutriments : Serializable {
         )
 
         @JvmField
-        val FAT_MAP: MutableMap<String, Int> = hashMapOf(
+        val FAT_MAP = mapOf(
                 SATURATED_FAT to R.string.nutrition_satured_fat,
                 MONOUNSATURATED_FAT to R.string.nutrition_monounsaturatedFat,
                 POLYUNSATURATED_FAT to R.string.nutrition_polyunsaturatedFat,
@@ -170,7 +170,7 @@ class Nutriments : Serializable {
         )
 
         @JvmField
-        val CARBO_MAP: MutableMap<String, Int> = hashMapOf(
+        val CARBO_MAP = mapOf(
                 SUGARS to R.string.nutrition_sugars,
                 SUCROSE to R.string.nutrition_sucrose,
                 GLUCOSE to R.string.nutrition_glucose,
@@ -181,14 +181,14 @@ class Nutriments : Serializable {
         )
 
         @JvmField
-        val PROT_MAP: MutableMap<String, Int> = hashMapOf(
+        val PROT_MAP = mapOf(
                 CASEIN to R.string.nutrition_casein,
                 SERUM_PROTEINS to R.string.nutrition_serum_proteins,
                 NUCLEOTIDES to R.string.nutrition_nucleotides
         )
 
         @JvmField
-        val VITAMINS_MAP: MutableMap<String, Int> = hashMapOf(
+        val VITAMINS_MAP = mapOf(
                 VITAMIN_A to R.string.vitamin_a,
                 BETA_CAROTENE to R.string.vitamin_a,
                 VITAMIN_D to R.string.vitamin_d,
@@ -207,24 +207,21 @@ class Nutriments : Serializable {
 
     }
 
-    private val additionalProperties: MutableMap<String, Any?> = HashMap()
-    private var containsMinerals = false
-    private var containsVitamins = false
 
     operator fun get(nutrimentName: String): Nutriment? {
-        return if (nutrimentName.isEmpty() || additionalProperties[nutrimentName] == null) {
-            null
-        } else try {
-            Nutriment(nutrimentName,
+        return if (nutrimentName.isEmpty() || additionalProperties[nutrimentName] == null) null
+        else try {
+            Nutriment(
+                    nutrimentName,
                     additionalProperties[nutrimentName].toString(),
                     get100g(nutrimentName),
                     getServing(nutrimentName),
                     getUnit(nutrimentName),
-                    getModifier(nutrimentName))
+                    getModifier(nutrimentName)
+            )
         } catch (e: NullPointerException) {
             // In case one of the getters was unable to get data as string
-            val stacktrace = Log.getStackTraceString(e)
-            Log.e("NUTRIMENTS-MODEL", stacktrace)
+            Log.e(Nutriments::class.simpleName, Log.getStackTraceString(e))
             null
         }
     }
@@ -239,18 +236,20 @@ class Nutriments : Serializable {
      */
     fun get100g(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.VALUE_100G)
 
-    fun getUnit(nutrimentName: String): String {
-        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.UNIT, DEFAULT_UNIT)
-    }
+    /**
+     * @return [DEFAULT_UNIT] if there is no unit for the specified nutriment
+     */
+    fun getUnit(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.UNIT, DEFAULT_UNIT)
 
-    fun getModifier(nutrimentName: String): String {
-        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.MODIFIER, DEFAULT_MODIFIER)
-    }
+    /**
+     * @return [DEFAULT_MODIFIER] if there is no modifier for the specified nutriment
+     */
+    fun getModifier(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.MODIFIER, DEFAULT_MODIFIER)
 
     /**
      * Get the nutriment modifier if it is different from [DEFAULT_MODIFIER]
      *
-     * @return The nutriment modifier if different from [DEFAULT_MODIFIER], otherwise an empty string `""`
+     * @return The nutriment modifier if different from [DEFAULT_MODIFIER], otherwise an empty string
      */
     fun getModifierIfNotDefault(nutrimentName: String) = getModifierNonDefault(getModifier(nutrimentName))
 
@@ -260,22 +259,22 @@ class Nutriments : Serializable {
 
     operator fun contains(nutrimentName: String) = additionalProperties.containsKey(nutrimentName)
 
-    fun hasVitamins() = containsVitamins
 
-    fun hasMinerals() = containsMinerals
+    var hasMinerals = false
+        private set
+    var hasVitamins = false
+        private set
 
-    @JsonAnyGetter
-    fun getAdditionalProperties(): Map<String, Any?> {
-        return additionalProperties
-    }
+    @get:JsonAnyGetter
+    val additionalProperties = HashMap<String, Any?>()
 
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any?) {
         additionalProperties[name] = value
         if (VITAMINS_MAP.containsKey(name)) {
-            containsVitamins = true
+            hasVitamins = true
         } else if (MINERALS_MAP.containsKey(name)) {
-            containsMinerals = true
+            hasMinerals = true
         }
     }
 

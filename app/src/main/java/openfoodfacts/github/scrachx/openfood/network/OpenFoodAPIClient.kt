@@ -291,8 +291,11 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                         throw IOException("body is not an object")
                     }
                 }.doOnError {
-                    val product = ToUploadProduct(image.barcode, image.filePath, image.imageField.toString())
-                    daoSession.toUploadProductDao.insertOrReplace(product)
+                    daoSession.toUploadProductDao.insertOrReplace(ToUploadProduct(
+                            image.barcode,
+                            image.filePath,
+                            image.imageField.toString()
+                    ))
                 }
     }
 

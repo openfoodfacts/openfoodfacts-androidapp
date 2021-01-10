@@ -364,7 +364,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                             getString(R.string.txtFat),
                             fatNutriment.displayStringFor100g,
                             fat.getLocalize(requireContext()),
-                            fat.getImageLevel(),
+                            fat.getImgRes(),
                     )
                 }
                 val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
@@ -374,7 +374,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                             getString(R.string.txtSaturatedFat),
                             saturatedFatNutriment.displayStringFor100g,
                             saturatedFatLocalize,
-                            saturatedFat.getImageLevel()
+                            saturatedFat.getImgRes()
                     )
                 }
                 val sugarsNutriment = nutriments[Nutriments.SUGARS]
@@ -383,7 +383,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                             getString(R.string.txtSugars),
                             sugarsNutriment.displayStringFor100g,
                             sugars.getLocalize(requireContext()),
-                            sugars.getImageLevel(),
+                            sugars.getImgRes(),
                     )
                 }
                 val saltNutriment = nutriments[Nutriments.SALT]
@@ -393,7 +393,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                             getString(R.string.txtSalt),
                             saltNutriment.displayStringFor100g,
                             saltLocalize,
-                            salt.getImageLevel(),
+                            salt.getImgRes(),
                     )
                 }
             } else {

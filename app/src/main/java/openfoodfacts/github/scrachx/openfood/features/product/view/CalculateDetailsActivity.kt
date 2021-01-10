@@ -142,13 +142,13 @@ class CalculateDetailsActivity : BaseActivity() {
         nutrimentListItems.addAll(getNutrimentItems(nutriments, nutriMap))
 
         // Vitamins
-        if (nutriments.hasVitamins()) {
+        if (nutriments.hasVitamins) {
             nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_vitamins))
             nutrimentListItems += getNutrimentItems(nutriments, Nutriments.VITAMINS_MAP)
         }
 
         // Minerals
-        if (nutriments.hasMinerals()) {
+        if (nutriments.hasMinerals) {
             nutrimentListItems += BoldNutrimentListItem(getString(R.string.nutrition_minerals))
             nutrimentListItems += getNutrimentItems(nutriments, Nutriments.MINERALS_MAP)
         }

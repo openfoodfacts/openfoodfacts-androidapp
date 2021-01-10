@@ -10,7 +10,7 @@ import java.io.File
 
 class ProductImage(code: String, field: ProductImageField, image: File, val language: String?) {
     val code: RequestBody = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
-    val field: RequestBody = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), field.toString() + '_' + language)
+    val field: RequestBody = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), "${field}_$language")
     var imgFront: RequestBody? = null
     var imgIngredients: RequestBody? = null
     var imgNutrition: RequestBody? = null

@@ -9,19 +9,15 @@ import java.io.Serializable
 import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-class NutrientLevels : Serializable {
-
-    var salt: NutrimentLevel? = null
-
-    var fat: NutrimentLevel? = null
-
-    var sugars: NutrimentLevel? = null
-
-    @JsonProperty("saturated-fat")
-    var saturatedFat: NutrimentLevel? = null
+data class NutrientLevels(
+        @JsonProperty("salt") var salt: NutrimentLevel? = null,
+        @JsonProperty("fat") var fat: NutrimentLevel? = null,
+        @JsonProperty("sugars") var sugars: NutrimentLevel? = null,
+        @JsonProperty("saturated-fat") var saturatedFat: NutrimentLevel? = null,
+) : Serializable {
 
     @get:JsonAnyGetter
-    val additionalProperties: MutableMap<String, Any> = HashMap()
+    val additionalProperties = HashMap<String, Any>()
 
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any) {

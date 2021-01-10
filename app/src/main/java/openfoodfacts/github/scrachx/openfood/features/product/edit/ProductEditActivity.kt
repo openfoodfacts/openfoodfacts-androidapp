@@ -372,8 +372,11 @@ class ProductEditActivity : AppCompatActivity() {
                         hideImageProgress(position, false, getString(R.string.no_internet_connection))
                         Log.e(LOGGER_TAG, it.message!!)
                         if (image.imageField === ProductImageField.OTHER) {
-                            val product = ToUploadProduct(image.barcode, image.filePath, image.imageField.toString())
-                            daoSession.toUploadProductDao!!.insertOrReplace(product)
+                            daoSession.toUploadProductDao!!.insertOrReplace(ToUploadProduct(
+                                    image.barcode,
+                                    image.filePath,
+                                    image.imageField.toString()
+                            ))
                         }
                     } else {
                         hideImageProgress(position, true, it.message ?: "Empty error.")

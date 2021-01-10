@@ -22,7 +22,7 @@ fun getImageStringKey(field: ProductImageField, language: String) = "${field}_$l
 
 fun getLanguageCodeFromUrl(field: ProductImageField?, url: String?): String? {
     return if (url.isNullOrBlank() || field == null) null
-    else url.substringAfterLast(field.toString() + "_").substringBefore(".")
+    else url.substringAfterLast("${field}_").substringBefore(".")
 }
 
 fun createImageBundle(

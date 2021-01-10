@@ -72,13 +72,13 @@ class NutrimentsTest {
     @Test
     fun setAdditionalPropertyWithMineralName_setsHasMineralsTrue() {
         nutriments.setAdditionalProperty(Nutriments.SILICA, Nutriments.SILICA)
-        assertThat(nutriments.hasMinerals()).isTrue()
+        assertThat(nutriments.hasMinerals).isTrue()
     }
 
     @Test
     fun setAdditionalPropertyWithVitaminName_setsHasVitaminsTrue() {
         nutriments.setAdditionalProperty(Nutriments.VITAMIN_A, Nutriments.VITAMIN_A)
-        assertThat(nutriments.hasVitamins()).isTrue()
+        assertThat(nutriments.hasVitamins).isTrue()
     }
 
     @Test

@@ -403,7 +403,7 @@ class Product : Serializable {
     fun getSelectedImage(languageCode: String?, type: ProductImageField, size: ImageSize): String? {
         var images = additionalProperties[ApiFields.Keys.SELECTED_IMAGES] as Map<String?, Map<*, *>>?
         if (images != null) {
-            images = images[type.name.toLowerCase(Locale.ROOT)] as Map<String?, Map<*, *>>?
+            images = images[type.toString()] as Map<String?, Map<*, *>>?
             if (images != null) {
                 val imagesByLocale = images[size.name.toLowerCase(Locale.ROOT)] as Map<String?, String>?
                 if (imagesByLocale != null) {

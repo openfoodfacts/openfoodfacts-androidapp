@@ -317,13 +317,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         nutrimentListItems.addAll(getNutrimentItems(nutriments, map))
 
         // Vitamins
-        if (nutriments.hasVitamins()) {
+        if (nutriments.hasVitamins) {
             nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_vitamins)))
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.VITAMINS_MAP))
         }
 
         // Minerals
-        if (nutriments.hasMinerals()) {
+        if (nutriments.hasMinerals) {
             nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_minerals)))
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.MINERALS_MAP))
         }
@@ -347,7 +347,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
 
         if (fat == null && salt == null && saturatedFat == null && sugars == null) {
             binding.nutrientLevelsCardView.visibility = GONE
-            levelItemList.add(NutrientLevelItem("", "", "", NO_ID))
+            levelItemList += NutrientLevelItem("", "", "", NO_ID)
             binding.imageGrade.visibility = GONE
         } else {
             // prefetch the uri
@@ -363,7 +363,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                         getString(R.string.txtFat),
                         fatNutriment.displayStringFor100g,
                         fatNutrimentLevel,
-                        fat.getImageLevel(),
+                        fat.getImgRes(),
                 )
             }
 
@@ -374,7 +374,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                         getString(R.string.txtSaturatedFat),
                         saturatedFatNutriment.displayStringFor100g,
                         saturatedFatLocalize,
-                        saturatedFat.getImageLevel(),
+                        saturatedFat.getImgRes(),
                 )
             }
 
@@ -385,7 +385,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                         getString(R.string.txtSugars),
                         sugarsNutriment.displayStringFor100g,
                         sugarsLocalize,
-                        sugars.getImageLevel(),
+                        sugars.getImgRes(),
                 )
             }
 
@@ -395,7 +395,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                         getString(R.string.txtSalt),
                         saltNutriment.displayStringFor100g,
                         salt.getLocalize(requireActivity()),
-                        salt.getImageLevel()
+                        salt.getImgRes()
                 )
             }
             drawNutritionGrade()
