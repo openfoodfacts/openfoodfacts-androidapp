@@ -184,7 +184,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
         var descriptionString: String? = null
 
         val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        if (languageCode != null && map[languageCode] != null) {
+        if (map[languageCode] != null) {
             descriptionString = map[languageCode]["value"].asText()
         }
 

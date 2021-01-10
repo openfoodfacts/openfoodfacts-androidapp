@@ -76,19 +76,19 @@ object UnitUtils {
         return when {
             servingSize.contains("ml", true) -> {
                 matcher.find()
-                var value = matcher.group(1).toFloat()
+                var value = matcher.group(1)!!.toFloat()
                 value *= OZ_PER_L / 1000
                 "${getRoundNumber(value)} oz"
             }
             servingSize.contains("cl", true) -> {
                 matcher.find()
-                var value = matcher.group(1).toFloat()
+                var value = matcher.group(1)!!.toFloat()
                 value *= OZ_PER_L / 100
                 "${getRoundNumber(value)} oz"
             }
             servingSize.contains("l", true) -> {
                 matcher.find()
-                var value = matcher.group(1).toFloat()
+                var value = matcher.group(1)!!.toFloat()
                 value *= OZ_PER_L
                 "${getRoundNumber(value)} oz"
 
@@ -111,7 +111,7 @@ object UnitUtils {
             val regex = Pattern.compile("(\\d+(?:\\.\\d+)?)")
             val matcher = regex.matcher(servingSize)
             matcher.find()
-            var value = matcher.group(1).toFloat()
+            var value = matcher.group(1)!!.toFloat()
             value /= OZ_PER_L
             "$value l"
         }

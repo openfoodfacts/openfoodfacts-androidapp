@@ -16,7 +16,7 @@ fun getResourceId(field: ProductImageField) = when (field) {
     else -> R.string.other_picture
 }
 
-fun Product.getImageStringKey(field: ProductImageField) = lang?.let { getImageStringKey(field, it) }
+fun Product.getImageStringKey(field: ProductImageField) = getImageStringKey(field, lang)
 
 fun getImageStringKey(field: ProductImageField, language: String) = "${field}_$language"
 

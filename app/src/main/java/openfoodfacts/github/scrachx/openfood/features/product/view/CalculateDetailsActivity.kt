@@ -122,7 +122,6 @@ class CalculateDetailsActivity : BaseActivity() {
         // Proteins
         val proteins = nutriments[Nutriments.PROTEINS]
         if (proteins != null) {
-            val modifier = nutriments.getModifier(Nutriments.PROTEINS)
             nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_proteins),
                     proteins.getForAnyValue(weight, spinnerValue),
                     proteins.forServingInUnits,
