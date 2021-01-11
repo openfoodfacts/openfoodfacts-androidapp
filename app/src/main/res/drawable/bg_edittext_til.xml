@@ -1,3 +1,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:top="@dimen/floating_hint_margin" android:bottom="@dimen/spacing_tiny" android:drawable="@drawable/bg_edittext"/>
+    <item
+        android:bottom="@dimen/spacing_tiny"
+        android:drawable="@drawable/bg_edittext"
+        android:top="@dimen/floating_hint_margin" />
 </layer-list>

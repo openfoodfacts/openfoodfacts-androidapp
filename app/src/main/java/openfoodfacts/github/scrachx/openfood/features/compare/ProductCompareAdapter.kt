@@ -153,7 +153,7 @@ class ProductCompareAdapter(
             holder.binding.productComparisonBrand.text = bold(activity.getString(R.string.compare_brands))
             holder.binding.productComparisonBrand.append(" ")
             val brandsList = brands.split(",")
-            for (brand in brandsList.dropLast(1)) {
+            brandsList.dropLast(1).forEach { brand ->
                 holder.binding.productComparisonBrand.append(brand.trim { it <= ' ' })
                 holder.binding.productComparisonBrand.append(", ")
             }
@@ -251,10 +251,10 @@ class ProductCompareAdapter(
                 }.addTo(disp)
     }
 
-    override fun getItemCount() = productsToCompare.size
+    override fun getItemCount() = productsToCompare.count()
 
     private fun loadLevelItems(product: Product): List<NutrientLevelItem> {
-        val levelItem = mutableListOf<NutrientLevelItem>()
+        val levelItems = mutableListOf<NutrientLevelItem>()
 
         val nutriments = product.nutriments
         val nutrientLevels = product.nutrientLevels
@@ -273,7 +273,7 @@ class ProductCompareAdapter(
             val fatNutriment = nutriments[Nutriments.FAT]
             if (fat != null && fatNutriment != null) {
                 val fatNutrimentLevel = fat.getLocalize(activity)
-                levelItem += NutrientLevelItem(
+                levelItems += NutrientLevelItem(
                         activity.getString(R.string.compare_fat),
                         fatNutriment.displayStringFor100g,
                         fatNutrimentLevel,
@@ -283,7 +283,7 @@ class ProductCompareAdapter(
             val saturatedFatNutriment = nutriments[Nutriments.SATURATED_FAT]
             if (saturatedFat != null && saturatedFatNutriment != null) {
                 val saturatedFatLocalize = saturatedFat.getLocalize(activity)
-                levelItem += NutrientLevelItem(
+                levelItems += NutrientLevelItem(
                         activity.getString(R.string.compare_saturated_fat),
                         saturatedFatNutriment.displayStringFor100g,
                         saturatedFatLocalize,
@@ -293,7 +293,7 @@ class ProductCompareAdapter(
             val sugarsNutriment = nutriments[Nutriments.SUGARS]
             if (sugars != null && sugarsNutriment != null) {
                 val sugarsLocalize = sugars.getLocalize(activity)
-                levelItem += NutrientLevelItem(
+                levelItems += NutrientLevelItem(
                         activity.getString(R.string.compare_sugars),
                         sugarsNutriment.displayStringFor100g,
                         sugarsLocalize,
@@ -303,7 +303,7 @@ class ProductCompareAdapter(
             val saltNutriment = nutriments[Nutriments.SALT]
             if (salt != null && saltNutriment != null) {
                 val saltLocalize = salt.getLocalize(activity)
-                levelItem += NutrientLevelItem(
+                levelItems += NutrientLevelItem(
                         activity.getString(R.string.compare_salt),
                         saltNutriment.displayStringFor100g,
                         saltLocalize,
@@ -311,7 +311,7 @@ class ProductCompareAdapter(
                 )
             }
         }
-        return levelItem
+        return levelItems
     }
 
     fun setImageOnPhotoReturn(file: File) {
