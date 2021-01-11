@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.images.IMAGE_EDIT_SIZE_FILE
 import openfoodfacts.github.scrachx.openfood.images.getImageUrl
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
 
 class ProductPhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val editBtn: Button = itemView.findViewById(R.id.buttonOptions)
@@ -18,7 +18,7 @@ class ProductPhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     fun setImage(imageName: String, barcode: String, context: Context) {
         val finalUrlString = getImageUrl(barcode, imageName, IMAGE_EDIT_SIZE_FILE)
         Log.d(LOG_TAG, "Loading image $finalUrlString...")
-        Utils.picassoBuilder(context)
+        picassoBuilder(context)
                 .load(finalUrlString)
                 .resize(400, 400)
                 .centerInside()
