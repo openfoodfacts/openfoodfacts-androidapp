@@ -55,6 +55,11 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
             prefs.edit { putBoolean(identifier, false) }
         }
 
+        binding.closePrompt.setOnClickListener{
+            hide()
+            prefs.edit { putBoolean(identifier, false) }
+        }
+
         binding.tipBoxContainer.setBackgroundColor(toolTipBackgroundColor)
 
         if (canDisplayImmediately) loadToolTip()
@@ -84,7 +89,10 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
 
         // Older versions of android (pre API 21) cancel animations for views with a height of 0.
         layoutParams.height = 1
-        visibility = VISIBLE
+        if(identifier!= "couldnot_compute_ecoscore_prompt_text")
+            binding.tipBox.visibility = VISIBLE
+        else
+            binding.tipBox2.visibility = VISIBLE
         val anim: Animation = object : Animation() {
             override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
                 if (interpolatedTime == 1f) {
@@ -137,6 +145,14 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         })
     }
 
-    fun show() = if (shouldAnimate) expand() else visibility = VISIBLE
+    fun show() {
+        if (shouldAnimate) return expand()
+        else {
+            if(identifier!= "couldnot_compute_ecoscore_prompt_text")
+                binding.tipBox.visibility = VISIBLE
+            else
+                binding.tipBox2.visibility = VISIBLE
+        }}
+
     fun hide() = if (shouldAnimate) collapse() else visibility = GONE
 }
