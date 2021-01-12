@@ -33,7 +33,6 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.viewpager2.widget.ViewPager2
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Picasso
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -71,7 +70,6 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private val loginPref by lazy { requireActivity().getLoginPreferences() }
     private val client by lazy { OpenFoodAPIClient(requireContext()) }
     private val wikidataClient by lazy { WikiDataApiClient() }
-    private val disp by lazy { CompositeDisposable() }
 
     private val performOCRLauncher = registerForActivityResult(EditProductPerformOCR())
     { result -> if (result) onRefresh() }
@@ -447,9 +445,8 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     override fun onDestroyView() {
-        disp.dispose()
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     companion object {

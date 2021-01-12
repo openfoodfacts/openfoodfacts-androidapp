@@ -28,7 +28,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import net.steamcrafted.loadtoast.LoadToast
@@ -48,7 +47,6 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     private var _binding: FragmentAlertAllergensBinding? = null
     private val binding get() = _binding!!
 
-    private val disp = CompositeDisposable()
     private var mAllergensEnabled: MutableList<AllergenName>? = null
     private var allergensFromDao: List<AllergenName>? = null
 
@@ -103,10 +101,9 @@ class AllergensAlertFragment : NavigationBaseFragment() {
     }
 
     override fun onDestroyView() {
-        disp.dispose()
+        super.onDestroyView()
         adapter.unregisterAdapterDataObserver(dataObserver)
         _binding = null
-        super.onDestroyView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -28,8 +28,6 @@ import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.fasterxml.jackson.databind.JsonNode
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
@@ -52,8 +50,7 @@ import java.util.*
 /**
  * @see R.layout.fragment_home
  */
-class HomeFragment : NavigationBaseFragment(), Disposable {
-    private val disp = CompositeDisposable()
+class HomeFragment : NavigationBaseFragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -74,11 +71,10 @@ class HomeFragment : NavigationBaseFragment(), Disposable {
         checkUserCredentials()
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
         // Stop the call to server to get total product count and tagline
-        this.dispose()
+        super.onDestroyView()
         _binding = null
-        super.onDestroy()
     }
 
     private fun openDailyFoodFacts() {
@@ -226,13 +222,6 @@ class HomeFragment : NavigationBaseFragment(), Disposable {
     companion object {
         private val LOG_TAG = HomeFragment::class.simpleName!!
 
-        @JvmStatic
-        fun newInstance() = HomeFragment().apply {
-            arguments = Bundle()
-        }
+        fun newInstance() = HomeFragment().apply { arguments = Bundle() }
     }
-
-    override fun dispose() = disp.dispose()
-
-    override fun isDisposed() = disp.isDisposed
 }

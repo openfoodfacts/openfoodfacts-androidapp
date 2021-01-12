@@ -23,7 +23,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnalysisProductBinding
@@ -38,8 +37,6 @@ import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 class IngredientsAnalysisProductFragment : BaseFragment() {
     private var _binding: FragmentIngredientsAnalysisProductBinding? = null
     private val binding get() = _binding!!
-
-    private val disp = CompositeDisposable()
 
     private lateinit var api: OpenFoodAPIClient
     private lateinit var product: Product
@@ -72,9 +69,8 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        disp.dispose()
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     override fun refreshView(productState: ProductState) {

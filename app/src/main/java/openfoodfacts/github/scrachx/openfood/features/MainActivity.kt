@@ -138,8 +138,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
     private val contributeUri: Uri by lazy { Uri.parse(getString(R.string.website_contribute)) }
     private val discoverUri: Uri by lazy { Uri.parse(getString(R.string.website_discover)) }
-    private val userContributeUri: Uri
-        get() = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
+    private fun getUserContributeUri(): Uri = Uri.parse(getString(R.string.website_contributor) + getUserLogin())
 
     /**
      * Used to re-create the fragment after activity recreation
@@ -167,7 +166,6 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         setContentView(binding.root)
 
         hideKeyboard(this)
-        val profile = getUserProfile()
         setLanguageInPrefs(this, getLanguage(this))
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
@@ -182,6 +180,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(this, customTabActivityHelper.session)
 
         // Create the AccountHeader
+        val profile = getUserProfile()
         var accountHeaderBuilder = AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
@@ -399,7 +398,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         customTabActivityHelper.mayLaunchUrl(discoverUri, null, null)
 
-        customTabActivityHelper.mayLaunchUrl(userContributeUri, null, null)
+        customTabActivityHelper.mayLaunchUrl(getUserContributeUri(), null, null)
 
         when (intent.action) {
             CONTRIBUTIONS_SHORTCUT -> openMyContributions()
@@ -707,7 +706,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      * This moves the main activity to the barcode entry fragment.
      */
     private fun swapToSearchByCode() =
-            changeFragment(SearchByCodeFragment(), resources.getString(R.string.search_by_barcode_drawer), ITEM_SEARCH_BY_CODE.toLong())
+            changeFragment(SearchByCodeFragment(), ITEM_SEARCH_BY_CODE.toLong(), resources.getString(R.string.search_by_barcode_drawer))
 
     override fun setItemSelected(@NavigationDrawerType type: Int) = drawerResult.setSelection(type.toLong(), false)
 
@@ -814,33 +813,34 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         }
 
         // set dialog message
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton(R.string.txtYes) { dialog, _ ->
-                    for (selected in imgUris) {
-                        val api = OpenFoodAPIClient(this@MainActivity)
-                        var image: ProductImage
-                        val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-                        val activeNetwork = cm.activeNetworkInfo
-                        val tempBarcode = if (hasEditText) barcodeEditText.text.toString() else barcode
-                        if (tempBarcode.isNotEmpty()) {
-                            dialog.dismiss()
-                            if (activeNetwork != null && activeNetwork.isConnectedOrConnecting) {
-                                val imageFile = File(RealPathUtil.getRealPath(this@MainActivity, selected))
-                                image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)
-                                api.postImg(image).subscribe().addTo(disp)
-                            } else {
-                                val state = ProductState().apply { product = Product().apply { code = tempBarcode } }
-                                ProductEditActivity.start(this, state)
-                            }
+        alertDialogBuilder.run {
+            setCancelable(false)
+            setPositiveButton(R.string.txtYes) { dialog, _ ->
+                imgUris.forEach { selected ->
+                    val api = OpenFoodAPIClient(this@MainActivity)
+                    val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+                    val activeNetwork = cm.activeNetworkInfo
+                    val tempBarcode = if (hasEditText) barcodeEditText.text.toString() else barcode
+                    if (tempBarcode.isNotEmpty()) {
+                        dialog.dismiss()
+                        if (activeNetwork != null && activeNetwork.isConnectedOrConnecting) {
+                            val imageFile = File(RealPathUtil.getRealPath(this@MainActivity, selected))
+                            val image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)
+                            api.postImg(image).subscribe().addTo(disp)
                         } else {
-                            Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
+                            val state = ProductState().apply { product = Product().apply { code = tempBarcode } }
+                            ProductEditActivity.start(this@MainActivity, state)
                         }
+                    } else {
+                        Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()
                     }
                 }
-                .setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.cancel() }
-                .create()
-                .show()
+            }
+            setNegativeButton(R.string.txtNo) { dialog, _ -> dialog.cancel() }
+            create()
+            show()
+        }
+
     }
 
     /**
@@ -855,7 +855,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      *
      * @since 06/16/18
      */
-    private fun changeFragment(fragment: Fragment, title: String?, drawerName: Long) {
+    private fun changeFragment(fragment: Fragment, drawerName: Long, title: String? = null) {
         changeFragment(fragment, title)
         drawerResult.setSelection(drawerName)
     }
@@ -873,11 +873,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
      */
     @JvmOverloads
     fun changeFragment(fragment: Fragment, title: String? = null) {
-        val backStateName = fragment.javaClass.name
-        val manager = supportFragmentManager
-        val fragmentPopped = manager.popBackStackImmediate(backStateName, 0)
-        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null) {
-            manager.commit {
+        val backStateName = fragment::class.simpleName
+        val fragmentPopped = supportFragmentManager.popBackStackImmediate(backStateName, 0)
+        if (!fragmentPopped && supportFragmentManager.findFragmentByTag(backStateName) == null) {
+            supportFragmentManager.commit {
                 replace(R.id.fragment_container, fragment, backStateName)
                 addToBackStack(backStateName)
             }

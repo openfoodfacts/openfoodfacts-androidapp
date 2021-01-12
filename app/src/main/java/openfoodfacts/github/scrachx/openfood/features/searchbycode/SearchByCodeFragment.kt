@@ -29,8 +29,8 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     }
 
     override fun onDestroyView() {
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

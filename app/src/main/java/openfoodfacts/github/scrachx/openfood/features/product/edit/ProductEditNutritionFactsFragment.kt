@@ -33,7 +33,6 @@ import android.widget.AdapterView.OnItemSelectedListener
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Callback
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding
@@ -64,7 +63,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductNutritionFactsBinding? = null
     private val binding get() = _binding!!
     private var photoReceiverHandler: PhotoReceiverHandler? = null
-    private val disp = CompositeDisposable()
     private var activity: Activity? = null
     private var photoFile: File? = null
     private var productCode: String? = null
@@ -169,7 +167,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        disp.dispose()
         _binding = null
     }
 

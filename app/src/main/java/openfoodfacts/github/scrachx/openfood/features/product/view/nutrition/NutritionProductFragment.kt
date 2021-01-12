@@ -44,7 +44,6 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
@@ -83,7 +82,6 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     private var _binding: FragmentNutritionProductBinding? = null
     private val binding get() = _binding!!
 
-    private var disp = CompositeDisposable()
     private var photoReceiverHandler = PhotoReceiverHandler { loadNutritionPhoto(it) }
 
     private lateinit var api: OpenFoodAPIClient
@@ -137,9 +135,8 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
     }
 
     override fun onDestroyView() {
-        disp.dispose()
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
 

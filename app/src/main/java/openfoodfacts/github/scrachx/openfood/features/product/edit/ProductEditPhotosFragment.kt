@@ -102,8 +102,8 @@ class ProductEditPhotosFragment : ProductEditFragment() {
     }
 
     override fun onDestroyView() {
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     private fun addOtherImage() {

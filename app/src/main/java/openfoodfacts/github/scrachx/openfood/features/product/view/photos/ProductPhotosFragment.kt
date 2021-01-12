@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentProductPhotosBinding
@@ -24,8 +23,6 @@ import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 class ProductPhotosFragment : BaseFragment() {
     private var _binding: FragmentProductPhotosBinding? = null
     private val binding get() = _binding!!
-
-    private val disp = CompositeDisposable()
 
     private lateinit var openFoodAPIClient: OpenFoodAPIClient
 
@@ -71,9 +68,8 @@ class ProductPhotosFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        disp.dispose()
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     /**

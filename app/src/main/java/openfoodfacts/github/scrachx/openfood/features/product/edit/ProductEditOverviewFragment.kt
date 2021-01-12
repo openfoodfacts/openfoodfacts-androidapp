@@ -37,7 +37,6 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
@@ -96,7 +95,6 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     private var barcode: String? = null
     private var editionMode = false
     private var isFrontImagePresent = false
-    private val disp = CompositeDisposable()
     private var languageCode: String? = null
     private var frontImageUrl: String? = null
     private var savedProduct: OfflineSavedProduct? = null
@@ -207,9 +205,8 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     }
 
     override fun onDestroyView() {
-        disp.dispose()
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     /**

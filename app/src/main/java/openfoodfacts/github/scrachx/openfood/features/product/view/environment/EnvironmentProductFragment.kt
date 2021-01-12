@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import com.squareup.picasso.Picasso
-import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentEnvironmentProductBinding
 import openfoodfacts.github.scrachx.openfood.features.FullScreenActivityOpener
@@ -29,7 +28,6 @@ class EnvironmentProductFragment : BaseFragment() {
     private val api: OpenFoodAPIClient by lazy { OpenFoodAPIClient(requireActivity()) }
     private var _binding: FragmentEnvironmentProductBinding? = null
     private val binding get() = _binding!!
-    private val disp = CompositeDisposable()
 
     /**
      * boolean to determine if image should be loaded or not
@@ -111,7 +109,6 @@ class EnvironmentProductFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        disp.dispose()
         super.onDestroyView()
         _binding = null
     }

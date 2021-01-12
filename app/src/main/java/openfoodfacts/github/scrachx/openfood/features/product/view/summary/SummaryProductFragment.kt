@@ -38,7 +38,6 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
@@ -79,8 +78,6 @@ import java.io.File
 class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var _binding: FragmentSummaryProductBinding? = null
     private val binding get() = _binding!!
-
-    private val disp = CompositeDisposable()
 
     private lateinit var client: OpenFoodAPIClient
     private lateinit var wikidataClient: WikiDataApiClient
@@ -180,9 +177,8 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     override fun onDestroyView() {
-        disp.dispose()
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     private fun onImageListenerError(error: Throwable) {

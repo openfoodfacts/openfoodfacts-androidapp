@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.afollestad.materialdialogs.MaterialDialog
 import com.theartofdev.edmodo.cropper.CropImage
+import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshView
@@ -38,6 +39,7 @@ import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
+
     private val cameraPermissionRequestLauncher = registerForActivityResult(RequestMultiplePermissions())
     { results ->
         if (isAllGranted(results)) {
@@ -61,6 +63,16 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
     private var refreshListener: OnRefreshListener? = null
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
+
+    protected val disp = CompositeDisposable()
+
+    /**
+     * Dispose [disp] and then call super
+     */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        disp.dispose()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -108,18 +120,21 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
                 .start(requireContext(), this)
     }
 
-    private fun canTakePhotos(): Boolean {
-        return ContextCompat.checkSelfPermission(requireContext(), permission.CAMERA) == PackageManager.PERMISSION_GRANTED
-    }
+    private fun canTakePhotos() =
+            ContextCompat.checkSelfPermission(requireContext(), permission.CAMERA) == PackageManager.PERMISSION_GRANTED
 
     companion object {
         /**
-         * an image height can't be less than 160. See https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577
+         * An image height can't be less than 160.
+         *
+         * [See this code in ProductOpener](https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577)
          */
         const val MIN_CROP_RESULT_HEIGHT_ACCEPTED_BY_OFF = 160
 
         /**
-         * an image width can't be less than 640. See https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577
+         * An image width can't be less than 640.
+         *
+         * [See this code in ProductOpener](https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577)
          */
         const val MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF = 640
     }

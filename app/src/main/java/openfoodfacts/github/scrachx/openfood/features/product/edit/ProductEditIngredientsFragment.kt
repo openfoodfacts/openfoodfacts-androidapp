@@ -31,7 +31,6 @@ import com.hootsuite.nachos.validator.ChipifyingNachoValidator
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
@@ -70,7 +69,6 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private val allergens: MutableList<String> = ArrayList()
     private var mOfflineSavedProduct: OfflineSavedProduct? = null
     private var productDetails: HashMap<String, String?>? = hashMapOf()
-    private val disp = CompositeDisposable()
     private var imagePath: String? = null
     private var editProduct = false
     private var product: Product? = null
@@ -231,9 +229,8 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     }
 
     override fun onDestroyView() {
-        disp.dispose()
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     /**
