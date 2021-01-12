@@ -215,7 +215,7 @@ class Product : Serializable {
     val labelsTags: List<String>? = null
 
     @JsonProperty(ApiFields.Keys.LANG)
-    lateinit var lang: String
+    var lang: String = Locale.getDefault().language
 
     @JsonProperty(ApiFields.Keys.LAST_MODIFIED_BY)
     val lastModifiedBy: String? = null

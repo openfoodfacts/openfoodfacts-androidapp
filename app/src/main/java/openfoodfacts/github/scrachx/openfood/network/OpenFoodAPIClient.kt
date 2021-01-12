@@ -101,7 +101,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     .onPositive { _: MaterialDialog?, _: DialogAction? ->
                         activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
                             putExtra(KEY_STATE, ProductState().apply {
-                                product = Product().apply { code = barcode }
+                                product = Product().apply {
+                                    code = barcode
+                                    lang = getLanguage(activity)
+                                }
                             })
                         })
                         activity.finish()
