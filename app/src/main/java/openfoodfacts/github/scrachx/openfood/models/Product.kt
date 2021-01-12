@@ -10,7 +10,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.attribute.Attribute
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
 import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
@@ -481,7 +481,7 @@ class Product : Serializable {
         return jacksonObjectMapper().convertValue(attributeGroups)
     }
 
-    fun getLocalAttributeGroups(context: Context) = getAttributeGroups(getLocale(context))
+    fun getLocalAttributeGroups(context: Context) = getAttributeGroups(getLocaleFromContext(context))
 
     override fun toString() = ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
             .append("code", code)

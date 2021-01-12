@@ -203,7 +203,7 @@ class HomeFragment : NavigationBaseFragment(), Disposable {
                 .observeOn(AndroidSchedulers.mainThread()) // Move to main thread for UI changes
                 .doOnError { Log.e(LOG_TAG, "Could not retrieve tag-line from server.", it) }
                 .subscribe { languages ->
-                    val localAsString = LocaleHelper.getLocale(context).toString()
+                    val localAsString = LocaleHelper.getLocaleFromContext(context).toString()
                     var isLanguageFound = false
                     var isExactLanguageFound = false
                     languages.forEach { tagLine ->
