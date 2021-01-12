@@ -83,9 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/exposureEvalTable"
                 android:layout_marginBottom="@dimen/spacing_small"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:weightSum="100">
-
 
                 <Button
                     android:id="@+id/wikipediaButton"
