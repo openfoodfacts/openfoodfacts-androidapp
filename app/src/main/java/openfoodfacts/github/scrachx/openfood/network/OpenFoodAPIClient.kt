@@ -21,6 +21,7 @@ import okhttp3.RequestBody
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
@@ -73,8 +74,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
         }
     }
 
-    fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH) =
-            rawAPI.getProductByBarcodeSingle(barcode, getAllFields(), getUserAgent(customHeader))
+    fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<ProductState> {
+        AnalyticsService.setBarcode(barcode)
+        return rawAPI.getProductByBarcodeSingle(barcode, getAllFields(), getUserAgent(customHeader))
+    }
 
     private fun getAllFields(): String {
         val allFields = context.resources.getStringArray(R.array.product_all_fields_array)
@@ -98,7 +101,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     .onPositive { _: MaterialDialog?, _: DialogAction? ->
                         activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
                             putExtra(KEY_STATE, ProductState().apply {
-                                product = Product().apply { code = barcode }
+                                product = Product().apply {
+                                    code = barcode
+                                    lang = getLanguage(activity)
+                                }
                             })
                         })
                         activity.finish()

@@ -6,6 +6,7 @@ import android.content.res.Resources
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.LanguageData
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
 import org.junit.Test
 import org.mockito.Mockito.mock
 import java.util.*
@@ -35,7 +36,7 @@ class LocaleHelperTest {
         }
         mockitoWhen(resources.configuration).thenReturn(configuration)
 
-        assertThat(getLocale(context)).isEqualTo(locale)
+        assertThat(getLocaleFromContext(context)).isEqualTo(locale)
     }
 
     @Test

@@ -99,7 +99,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.onCreate
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.setLocale
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.setLanguageInPrefs
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.*
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ABOUT
 import openfoodfacts.github.scrachx.openfood.utils.NavigationDrawerListener.Companion.ITEM_ADDITIVES
@@ -168,7 +168,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
 
         hideKeyboard(this)
         val profile = getUserProfile()
-        setLocale(this, getLanguage(this))
+        setLanguageInPrefs(this, getLanguage(this))
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         swapToHomeFragment()

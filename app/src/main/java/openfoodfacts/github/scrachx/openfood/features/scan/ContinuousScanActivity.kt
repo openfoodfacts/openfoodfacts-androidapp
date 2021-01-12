@@ -137,7 +137,7 @@ class ContinuousScanActivity : AppCompatActivity() {
      * @param barcode barcode to serach
      */
     @Suppress("unused")
-    fun showProduct(barcode: String) {
+    internal fun showProduct(barcode: String) {
         productShowing = true
         binding.barcodeScanner.visibility = View.GONE
         binding.barcodeScanner.pause()
@@ -390,7 +390,10 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     private fun navigateToProductAddition(productBarcode: String) {
-        navigateToProductAddition(Product().apply { code = productBarcode })
+        navigateToProductAddition(Product().apply {
+            code = productBarcode
+            lang = LocaleHelper.getLanguage(this@ContinuousScanActivity)
+        })
     }
 
     private fun navigateToProductAddition(product: Product?) {
@@ -431,66 +434,6 @@ class ContinuousScanActivity : AppCompatActivity() {
         binding.quickViewTags.visibility = View.GONE
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        productDisp?.dispose()
-    }
-
-    override fun onDestroy() {
-        summaryProductPresenter?.dispose()
-
-        // Dispose all RxJava disposable
-        hintBarcodeDisp?.dispose()
-        commonDisp.dispose()
-
-        // Remove bottom sheet callback as it uses binding
-        quickViewBehavior.removeBottomSheetCallback(bottomSheetCallback)
-        _binding = null
-        super.onDestroy()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        EventBus.getDefault().register(this)
-    }
-
-    override fun onStop() {
-        EventBus.getDefault().unregister(this)
-        super.onStop()
-    }
-
-    override fun onPause() {
-        binding.barcodeScanner.pause()
-        super.onPause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.scan_bottom_nav)
-        if (quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
-            binding.barcodeScanner.resume()
-        }
-    }
-
-    @Subscribe
-    fun onEventBusProductNeedsRefreshEvent(event: ProductNeedsRefreshEvent) {
-        val lastBarcode = lastBarcode ?: return
-        if (event.barcode == lastBarcode) {
-            runOnUiThread { setShownProduct(lastBarcode) }
-        }
-    }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        //status bar will remain visible if user presses home and then reopens the activity
-        // hence hiding status bar again
-        hideSystemUI()
-    }
-
-    private fun hideSystemUI() {
-        WindowInsetsControllerCompat(window, binding.root).hide(WindowInsetsCompat.Type.statusBars())
-        this.actionBar?.hide()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         OFFApplication.appComponent.inject(this)
@@ -557,6 +500,69 @@ class ContinuousScanActivity : AppCompatActivity() {
         binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener)
         binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
     }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.scan_bottom_nav)
+        if (quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+            binding.barcodeScanner.resume()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        productDisp?.dispose()
+    }
+
+    override fun onPause() {
+        binding.barcodeScanner.pause()
+        super.onPause()
+    }
+
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        summaryProductPresenter?.dispose()
+
+        // Dispose all RxJava disposable
+        hintBarcodeDisp?.dispose()
+        commonDisp.dispose()
+
+        // Remove bottom sheet callback as it uses binding
+        quickViewBehavior.removeBottomSheetCallback(bottomSheetCallback)
+        _binding = null
+        super.onDestroy()
+    }
+
+
+    @Subscribe
+    fun onEventBusProductNeedsRefreshEvent(event: ProductNeedsRefreshEvent) {
+        val lastBarcode = lastBarcode ?: return
+        if (event.barcode == lastBarcode) {
+            runOnUiThread { setShownProduct(lastBarcode) }
+        }
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        //status bar will remain visible if user presses home and then reopens the activity
+        // hence hiding status bar again
+        hideSystemUI()
+    }
+
+    private fun hideSystemUI() {
+        WindowInsetsControllerCompat(window, binding.root).hide(WindowInsetsCompat.Type.statusBars())
+        this.actionBar?.hide()
+    }
+
 
     private fun setupPopupMenu() {
         popupMenu = PopupMenu(this, binding.buttonMore).also {

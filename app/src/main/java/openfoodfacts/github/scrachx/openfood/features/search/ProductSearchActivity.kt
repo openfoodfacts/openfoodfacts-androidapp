@@ -192,7 +192,7 @@ class ProductSearchActivity : BaseActivity() {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val actualCountryTag = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "")
         if ("" == actualCountryTag) {
-            ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocale().country)
+            ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
                     .observeOn(AndroidSchedulers.mainThread())
                     .map { it.tag }
                     .defaultIfEmpty("en:world")

@@ -35,7 +35,50 @@ import java.util.*
  * Created by gunhansancar on 07/10/15.
  */
 object LocaleHelper {
+    private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
+
     fun List<LanguageData>.find(language: String) = indexOfFirst { language == it.code }
+
+    const val USER_COUNTRY_PREFERENCE_KEY = "user_country"
+
+    fun onCreate(context: Context, defaultLanguage: String = Locale.getDefault().language) =
+            setLanguageInPrefs(context, getLanguageInPreferences(context, defaultLanguage))
+
+    fun getLanguageData(codes: Collection<String?>, supported: Boolean) =
+            codes.map { getLanguageData(it, supported) }.sorted().toMutableList()
+
+    fun getLanguageData(code: String?, supported: Boolean) =
+            getLocale(code).let { LanguageData(it.language, it.getDisplayName(it).capitalize(Locale.ROOT), supported) }
+
+    /**
+     * Used by screenshots test
+     */
+    internal fun setLanguageInPrefs(locale: Locale) = setContextLanguage(OFFApplication.instance, locale)
+
+    fun getLanguage(context: Context?): String {
+        var lang = getLanguageInPreferences(context, Locale.getDefault().language)
+        if (lang.contains("-")) {
+            lang = lang.split("-")[0]
+        }
+        return lang
+    }
+
+    fun getLCOrDefault(languageCode: String?) =
+            if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
+
+    fun getLocaleFromContext(context: Context? = OFFApplication.instance): Locale {
+        var locale: Locale? = null
+        if (context != null) {
+            val resources = context.resources
+            if (resources != null) {
+                val configuration = resources.configuration
+                if (configuration != null) {
+                    locale = ConfigurationCompat.getLocales(configuration)[0]
+                }
+            }
+        }
+        return locale ?: Locale.getDefault()
+    }
 
     /**
      * Used by screenshots generator.
@@ -43,8 +86,7 @@ object LocaleHelper {
      * @param context
      * @param locale
      */
-    @JvmStatic
-    fun setLocale(context: Context, locale: Locale): Context {
+    fun setContextLanguage(context: Context, locale: Locale): Context {
         var newContext = context
         PreferenceManager.getDefaultSharedPreferences(newContext).edit {
             putString(SELECTED_LANGUAGE, locale.language)
@@ -62,57 +104,12 @@ object LocaleHelper {
         return newContext
     }
 
-    private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
-    const val USER_COUNTRY_PREFERENCE_KEY = "user_country"
-
-    fun onCreate(context: Context, defaultLanguage: String = Locale.getDefault().language) =
-            setLocale(context, getLanguageInPreferences(context, defaultLanguage))
-
-    @JvmStatic
-    fun getLanguageData(codes: Collection<String?>, supported: Boolean) =
-            codes.map { getLanguageData(it, supported) }.sorted().toMutableList()
-
-    @JvmStatic
-    fun getLanguageData(code: String?, supported: Boolean) =
-            getLocale(code).let { LanguageData(it.language, it.getDisplayName(it).capitalize(Locale.ROOT), supported) }
-
-    /**
-     * Used by screenshots test
-     */
-    fun setLocale(locale: Locale) = setLocale(OFFApplication.instance, locale)
-
-    fun getLanguage(context: Context?): String {
-        var lang = getLanguageInPreferences(context, Locale.getDefault().language)
-        if (lang.contains("-")) {
-            lang = lang.split("-")[0]
-        }
-        return lang
-    }
-
-    fun getLCOrDefault(languageCode: String?) =
-            if (!languageCode.isNullOrEmpty()) languageCode else ApiFields.Defaults.DEFAULT_LANGUAGE
-
-    fun getLocale(context: Context? = OFFApplication.instance): Locale {
-        var locale: Locale? = null
-        if (context != null) {
-            val resources = context.resources
-            if (resources != null) {
-                val configuration = resources.configuration
-                if (configuration != null) {
-                    locale = ConfigurationCompat.getLocales(configuration)[0]
-                }
-            }
-        }
-        return locale ?: Locale.getDefault()
-    }
-
-    @JvmStatic
-    fun setLocale(context: Context, language: String?): Context {
+    fun setLanguageInPrefs(context: Context, language: String?): Context {
         PreferenceManager.getDefaultSharedPreferences(context).edit {
             putString(SELECTED_LANGUAGE, language)
             apply()
         }
-        return setLocale(context, getLocale(language))
+        return setContextLanguage(context, getLocale(language))
     }
 
     /**
@@ -121,7 +118,6 @@ object LocaleHelper {
      * @param locale language
      * @return Locale from locale string
      */
-    @JvmStatic
     fun getLocale(locale: String?): Locale {
         if (locale == null) return Locale.getDefault()
 
@@ -142,11 +138,9 @@ object LocaleHelper {
         }
     }
 
-    private fun getLanguageInPreferences(context: Context?, defaultLanguage: String): String {
-        if (context == null) return defaultLanguage
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        return preferences.getString(SELECTED_LANGUAGE, defaultLanguage) ?: defaultLanguage
-    }
+    private fun getLanguageInPreferences(context: Context?, defaultLanguage: String) = context?.let {
+        PreferenceManager.getDefaultSharedPreferences(it).getString(SELECTED_LANGUAGE, defaultLanguage)
+    } ?: defaultLanguage
 
     class LanguageData internal constructor(
             val code: String,
