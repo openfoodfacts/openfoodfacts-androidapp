@@ -2,9 +2,5 @@ package openfoodfacts.github.scrachx.openfood.test
 
 import java.util.*
 
-data class ScreenshotParameter(
-        val locale: Locale,
-        var productCodes: List<String>
-) {
-    override fun toString() = "country: ${locale.country}; language: ${locale.language}"
-}
+
+data class ScreenshotParameter(val locale: Locale, var productCodes: List<String>)

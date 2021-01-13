@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
-import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.setLocale
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.PrefManager
 import org.apache.commons.lang3.StringUtils
 import org.junit.Assert
@@ -24,7 +24,10 @@ class ScreenshotActivityTestRule<T : Activity?>
         try {
             runOnUiThread {
                 PrefManager(OFFApplication.instance).isFirstTimeLaunch = firstTimeLaunched
-                setLocale(InstrumentationRegistry.getInstrumentation().targetContext, screenshotParameter!!.locale)
+                LocaleHelper.setContextLanguage(
+                        InstrumentationRegistry.getInstrumentation().targetContext,
+                        screenshotParameter!!.locale
+                )
             }
         } catch (throwable: Throwable) {
             throwable.printStackTrace()
