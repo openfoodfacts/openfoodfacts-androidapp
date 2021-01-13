@@ -19,7 +19,6 @@ import android.content.Context
 import android.content.Intent
 import android.hardware.Camera
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.*
 import android.view.Gravity.CENTER
@@ -143,11 +142,6 @@ class ContinuousScanActivity : AppCompatActivity() {
         binding.barcodeScanner.pause()
         binding.imageForScreenshotGenerationOnly.visibility = View.VISIBLE
         setShownProduct(barcode)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        productDisp?.dispose()
-        super.onSaveInstanceState(outState, outPersistentState)
     }
 
     /**
@@ -515,8 +509,8 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
         productDisp?.dispose()
+        super.onSaveInstanceState(outState)
     }
 
     override fun onPause() {
