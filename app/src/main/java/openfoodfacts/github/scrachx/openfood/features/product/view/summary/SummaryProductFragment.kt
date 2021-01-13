@@ -425,11 +425,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     }
 
     private fun refreshNutriScore() {
-        binding.imageGrade.setImageResource(product.getNutriScoreResource())
-        binding.imageGrade.setOnClickListener {
-            val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
-            CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, nutritionScoreUri!!, WebViewFallback())
-        }
+        val nutriScoreResource = product.getNutriScoreResource()
+        binding.imageGrade.setImageResource(nutriScoreResource)
+        binding.imageGrade.setOnClickListener(nutritionScoreUri?.let { uri ->
+            {
+                val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
+                CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
+            }
+        })
     }
 
     private fun refreshNovaIcon() {
