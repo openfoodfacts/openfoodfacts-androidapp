@@ -50,7 +50,7 @@ abstract class AbstractScreenshotTest {
 
     private fun changeLocale(parameter: ScreenshotParameter, context: Context = OFFApplication.instance) {
         Log.d(LOG_TAG, "Change parameters to $parameter")
-        LocaleHelper.setLocale(context, parameter.locale)
+        LocaleHelper.setContextLanguage(context, parameter.locale)
     }
 
     protected fun startForAllLocales(
@@ -69,12 +69,12 @@ abstract class AbstractScreenshotTest {
 
         @BeforeClass
         fun initLanguage() {
-            initLocale = LocaleHelper.getLocale()
+            initLocale = LocaleHelper.getLocaleFromContext()
         }
 
         @AfterClass
         fun resetLanguage() {
-            LocaleHelper.setLocale(initLocale)
+            LocaleHelper.setLanguageInPrefs(initLocale)
         }
     }
 }
