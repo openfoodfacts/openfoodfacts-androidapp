@@ -9,8 +9,11 @@ abstract class BaseViewModel {
     var subscriptions: CompositeDisposable? = null
     fun bind() {
         unbind()
-        subscriptions = CompositeDisposable()
-        subscribe(subscriptions!!)
+        CompositeDisposable().also {
+            subscriptions = it
+            subscribe(it)
+        }
+
     }
 
     fun unbind() {

@@ -16,12 +16,14 @@
 package openfoodfacts.github.scrachx.openfood.features.splash
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.features.splash.ISplashActivity.Controller
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
@@ -30,14 +32,19 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by Lobster on 03.03.18.
  */
-class SplashController internal constructor(private val settings: SharedPreferences, private val view: ISplashActivity.View, private val activity: SplashActivity) : Controller {
+class SplashController internal constructor(
+        private val settings: SharedPreferences,
+        private val view: ISplashActivity.View,
+        private val activity: SplashActivity
+) : Controller {
     private val disp = CompositeDisposable()
+
     private fun activateDownload(taxonomy: Taxonomy) {
-        settings.edit().putBoolean(taxonomy.downloadActivatePreferencesId, true).apply()
+        settings.edit { putBoolean(taxonomy.downloadActivatePreferencesId, true) }
     }
 
     private fun activateDownload(taxonomy: Taxonomy, vararg flavors: String) {
-        if (AppFlavors.isFlavors(*flavors)) {
+        if (isFlavors(*flavors)) {
             activateDownload(taxonomy)
         }
     }
@@ -55,34 +62,30 @@ class SplashController internal constructor(private val settings: SharedPreferen
 
         //first run ever off this application, whatever the version
         val firstRun = settings.getBoolean("firstRun", true)
-        if (firstRun) {
-            with(settings.edit()) {
-                putBoolean("firstRun", false)
-                apply()
-            }
-        }
+        if (firstRun) settings.edit { putBoolean("firstRun", false) }
+
         // The service will load server resources only if newer than already downloaded...
         val request = OneTimeWorkRequest.from(LoadTaxonomiesWorker::class.java)
-        val manager = WorkManager.getInstance(activity)
-        manager.enqueue(request)
-        manager.getWorkInfoByIdLiveData(request.id).observe(activity, { workInfo: WorkInfo? ->
-            if (workInfo != null && workInfo.state == WorkInfo.State.RUNNING) {
-                view.showLoading()
-            } else if (workInfo != null) {
-                view.hideLoading(workInfo.state == WorkInfo.State.FAILED)
-            }
-        })
+        WorkManager.getInstance(activity).let {
+            it.enqueue(request)
+            it.getWorkInfoByIdLiveData(request.id).observe(activity, { workInfo: WorkInfo? ->
+                if (workInfo != null && workInfo.state == WorkInfo.State.RUNNING) {
+                    view.showLoading()
+                } else if (workInfo != null) {
+                    view.hideLoading(workInfo.state == WorkInfo.State.FAILED)
+                }
+            })
+        }
+
         // The 6000 delay is to show one loop of the multilingual logo. I asked for it ~ Pierre
         if (firstRun) {
-            disp.add(Completable.timer(6, TimeUnit.SECONDS).subscribe {
-                view.navigateToMainActivity()
-            })
+            disp.add(Completable.timer(6, TimeUnit.SECONDS).subscribe { view.navigateToMainActivity() })
         } else {
             view.navigateToMainActivity()
         }
     }
 
-    override fun onDestroy() {
-        disp.dispose()
-    }
+    override fun dispose() = disp.dispose()
+
+    override fun isDisposed() = disp.isDisposed
 }

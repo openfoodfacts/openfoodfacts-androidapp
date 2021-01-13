@@ -23,6 +23,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.DialogAction
@@ -32,13 +33,17 @@ import io.reactivex.ObservableEmitter
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_ID
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_NAME
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_PRODUCT_TO_ADD
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
@@ -47,7 +52,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions
 import openfoodfacts.github.scrachx.openfood.utils.Utils
-import org.apache.commons.collections.CollectionUtils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
 import java.io.InputStream
@@ -55,12 +59,14 @@ import java.io.InputStreamReader
 import java.util.*
 
 class ProductListsActivity : BaseActivity(), SwipeControllerActions {
-    private lateinit var adapter: ProductListsAdapter
     private var _binding: ActivityProductListsBinding? = null
     private val binding get() = _binding!!
-    private val disp = CompositeDisposable()
-    private lateinit var productLists: MutableList<ProductLists>
+
+    private lateinit var adapter: ProductListsAdapter
     private lateinit var productListsDao: ProductListsDao
+
+    private val disp = CompositeDisposable()
+
     override fun onDestroy() {
         disp.dispose()
         super.onDestroy()
@@ -69,74 +75,82 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityProductListsBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
         setTitle(R.string.your_lists)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        install(this, binding.bottomNavigation.bottomNavigation)
+
+        binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
         binding.fabAdd.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)
+
         productListsDao = getProductListsDaoWithDefaultList(this)
-        productLists = productListsDao.loadAll()
+        val productLists = productListsDao.loadAll().toMutableList()
+
         adapter = ProductListsAdapter(this, productLists)
+
         binding.productListsRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.productListsRecyclerView.adapter = adapter
+
         binding.tipBox.loadToolTip()
+
         val bundle = intent.extras
         if (bundle != null) {
-            val productToAdd = bundle["product"] as Product?
+            val productToAdd = bundle[KEY_PRODUCT] as Product?
             showCreateListDialog(productToAdd)
         }
+
         binding.productListsRecyclerView.addOnItemTouchListener(
-                RecyclerItemClickListener(this@ProductListsActivity) { _, position ->
+                RecyclerItemClickListener(this) { _, position ->
                     val id = productLists[position].id
                     val listName = productLists[position].listName
-                    val intent = Intent(this, ProductListActivity::class.java)
-                    intent.putExtra("listId", id)
-                    intent.putExtra("listName", listName)
-                    startActivityForResult(intent, 1)
+                    Intent(this, ProductListActivity::class.java).apply {
+                        putExtra(KEY_LIST_ID, id)
+                        putExtra(KEY_LIST_NAME, listName)
+                        startActivityForResult(this, 1)
+                    }
                 }
         )
-        val swipeController = SwipeController(this, this@ProductListsActivity)
-        val itemTouchhelper = ItemTouchHelper(swipeController)
-        itemTouchhelper.attachToRecyclerView(binding.productListsRecyclerView)
-        binding.fabAdd.setOnClickListener { showCreateListDialog(null) }
+        val swipeController = SwipeController(this, this)
+        val itemTouchHelper = ItemTouchHelper(swipeController)
+        itemTouchHelper.attachToRecyclerView(binding.productListsRecyclerView)
+
+        binding.fabAdd.setOnClickListener { showCreateListDialog() }
     }
 
-    private fun showCreateListDialog(productToAdd: Product?) {
+    private fun showCreateListDialog(productToAdd: Product? = null) {
         MaterialDialog.Builder(this)
                 .title(R.string.txt_create_new_list)
                 .alwaysCallInputCallback()
-                .input(R.string.create_new_list_list_name, R.string.empty, false) { dialog: MaterialDialog, listName: CharSequence ->
+                .input(R.string.create_new_list_list_name, R.string.empty, false) { dialog, listName ->
                     // validate if there is another list with the same name
-                    val inputField = dialog.inputEditText
-                    val isAlreadyIn = checkListNameExist(listName.toString())
-                    if (inputField != null) {
-                        inputField.error = if (isAlreadyIn) resources.getString(R.string.error_duplicate_listname) else null
-                    }
-                    dialog.getActionButton(DialogAction.POSITIVE).isEnabled = !isAlreadyIn
+                    val cannotAdd = checkListNameExist(listName.toString())
+
+                    dialog.inputEditText?.error = if (cannotAdd) resources.getString(R.string.error_duplicate_listname) else null
+                    dialog.getActionButton(DialogAction.POSITIVE).isEnabled = !cannotAdd
                 }
                 .positiveText(R.string.dialog_create)
                 .negativeText(R.string.dialog_cancel)
                 .onPositive { dialog, _ ->  // this enable to avoid dismissing dialog if list name already exist
                     Log.d("CreateListDialog", "Positive clicked")
-                    val inputEditText = dialog.inputEditText
-                    if (inputEditText == null) {
-                        dialog.dismiss()
-                        return@onPositive
-                    }
+                    val inputEditText = dialog.inputEditText!!
                     val listName = inputEditText.text.toString()
                     val productList = ProductLists(listName, if (productToAdd != null) 1 else 0)
-                    productLists.add(productList)
+
+                    adapter.lists.add(productList)
                     productListsDao.insert(productList)
+
+                    adapter.notifyDataSetChanged()
+
                     if (productToAdd != null) {
                         val id = productList.id
-                        val intent = Intent(this@ProductListsActivity, ProductListActivity::class.java)
-                        intent.putExtra("listId", id)
-                        intent.putExtra("listName", listName)
-                        intent.putExtra("product", productToAdd)
-                        startActivityForResult(intent, 1)
+                        Intent(this@ProductListsActivity, ProductListActivity::class.java).apply {
+                            putExtra(KEY_LIST_ID, id)
+                            putExtra(KEY_LIST_NAME, listName)
+                            putExtra(KEY_PRODUCT_TO_ADD, productToAdd)
+                            startActivityForResult(this, 1)
+                        }
                     } else {
                         dialog.dismiss()
-                        adapter.notifyDataSetChanged()
                     }
                 }.show()
     }
@@ -144,32 +158,28 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
     /**
      * Check if listname already in products lists.
      */
-    private fun checkListNameExist(listName: String): Boolean {
-        for (productList in productLists) {
-            if (productList.listName == listName) {
-                return true
-            }
-        }
-        return false
-    }
+    private fun checkListNameExist(listName: String) =
+            adapter.lists.firstOrNull { it.listName == listName } != null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == RESULT_OK && data!!.extras!!.getBoolean("update")) {
             adapter.notifyDataSetChanged()
-        } else if (requestCode == ACTIVITY_CHOOSE_FILE && resultCode == RESULT_OK) {
-            try {
-                val inputStream = contentResolver.openInputStream(data!!.data!!)
-                parseCSV(inputStream)
-            } catch (e: Exception) {
-                Log.e(ProductListsActivity::class.java.simpleName, "Error importing CSV: " + e.message)
-            }
+        }
+    }
+
+    private val chooseFileContract = registerForActivityResult(ActivityResultContracts.OpenDocument())
+    { uri ->
+        try {
+            parseCSV(contentResolver.openInputStream(uri))
+        } catch (e: Exception) {
+            Log.e(ProductListsActivity::class.simpleName, "Error importing CSV.", e)
         }
     }
 
     override fun onRightClicked(position: Int) {
-        if (CollectionUtils.isNotEmpty(productLists)) {
-            val productToRemove = productLists[position]
+        if (!adapter.lists.isNullOrEmpty()) {
+            val productToRemove = adapter.lists[position]
             productListsDao.delete(productToRemove)
             adapter.remove(productToRemove)
             adapter.notifyItemRemoved(position)
@@ -182,58 +192,55 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.action_import_csv) {
-            selectCSVFile()
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_import_csv -> {
+            openCSVToImport()
+            true
         }
-        return super.onOptionsItemSelected(item)
+        else -> super.onOptionsItemSelected(item)
     }
 
-    private fun selectCSVFile() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.addCategory(Intent.CATEGORY_OPENABLE)
-        intent.type = "text/csv"
-        startActivityForResult(Intent.createChooser(intent, getString(R.string.open_csv)), ACTIVITY_CHOOSE_FILE)
+    private fun openCSVToImport() {
+        chooseFileContract.launch(arrayOf("text/csv"))
     }
 
     public override fun onResume() {
         super.onResume()
-        selectNavigationItem(binding.bottomNavigation.bottomNavigation, R.id.my_lists)
+        binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.my_lists)
     }
 
     private fun parseCSV(inputStream: InputStream?) {
         val progressDialog = ProgressDialog(this@ProductListsActivity)
         progressDialog.show()
-        disp.add(Observable.create { emitter: ObservableEmitter<Int?> ->
-            disp.add(Single.fromCallable {
+        Observable.create { emitter: ObservableEmitter<Int?> ->
+            Single.fromCallable {
                 val yourListedProductDao = Utils.daoSession.yourListedProductDao
-                val list: MutableList<YourListedProduct> = ArrayList()
+                val list = ArrayList<YourListedProduct>()
                 try {
                     CSVParser(InputStreamReader(inputStream), CSVFormat.DEFAULT.withFirstRecordAsHeader()).use { csvParser ->
-                        val result = csvParser.records
-                        val size = result.size
+                        val size = csvParser.records.size
                         var count = 0
                         var id: Long
-                        for (record in result) {
+                        csvParser.records.forEach { record ->
                             var lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record[2])).list()
                             if (lists.isEmpty()) {
                                 //create new list
                                 val productList = ProductLists(record[2], 0)
-                                productLists.add(productList)
+                                adapter.lists.add(productList)
                                 productListsDao.insert(productList)
                                 lists = productListsDao.queryBuilder().where(ProductListsDao.Properties.ListName.eq(record[2])).list()
                             }
                             id = lists[0].id
-                            val yourListedProduct = YourListedProduct()
-                            yourListedProduct.barcode = record[0]
-                            yourListedProduct.productName = record[1]
-                            yourListedProduct.listName = record[2]
-                            yourListedProduct.productDetails = record[3]
-                            yourListedProduct.listId = id
+                            val yourListedProduct = YourListedProduct().apply {
+                                barcode = record[0]
+                                productName = record[1]
+                                listName = record[2]
+                                productDetails = record[3]
+                                listId = id
+                            }
                             list.add(yourListedProduct)
                             count++
-                            emitter.onNext((count.toFloat() * 100 / size.toFloat()).toInt())
+                            emitter.onNext(count * 100 / size)
                         }
                         yourListedProductDao.insertOrReplaceInTx(list)
                         return@fromCallable true
@@ -242,34 +249,36 @@ class ProductListsActivity : BaseActivity(), SwipeControllerActions {
                     Log.e("ParseCSV", e.message, e)
                     return@fromCallable false
                 }
-            }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe { success: Boolean ->
+            }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe { success ->
                 progressDialog.dismiss()
                 if (success) {
                     Toast.makeText(this@ProductListsActivity, getString(R.string.toast_import_csv), Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@ProductListsActivity, getString(R.string.toast_import_csv_error), Toast.LENGTH_SHORT).show()
                 }
-            })
-        }.subscribe { value: Int? -> progressDialog.progress = value!! })
+            }.addTo(disp)
+        }.subscribe { value -> progressDialog.progress = value!! }.addTo(disp)
     }
 
     companion object {
         private const val ACTIVITY_CHOOSE_FILE = 123
+        private const val KEY_PRODUCT = "product"
 
         @JvmStatic
-        fun start(context: Context) {
-            val starter = Intent(context, ProductListsActivity::class.java)
-            context.startActivity(starter)
-        }
+        fun start(context: Context, productToAdd: Product?) = context.startActivity(
+                Intent(context, ProductListsActivity::class.java).apply {
+                    putExtra(KEY_PRODUCT, productToAdd)
+                })
+
+        @JvmStatic
+        fun start(context: Context) = context.startActivity(Intent(context, ProductListsActivity::class.java))
 
         @JvmStatic
         fun getProductListsDaoWithDefaultList(context: Context): ProductListsDao {
             val productListsDao = Utils.daoSession.productListsDao
             if (productListsDao.loadAll().isEmpty()) {
-                val eatenList = ProductLists(context.getString(R.string.txt_eaten_products), 0)
-                productListsDao.insert(eatenList)
-                val toBuyList = ProductLists(context.getString(R.string.txt_products_to_buy), 0)
-                productListsDao.insert(toBuyList)
+                productListsDao.insert(ProductLists(context.getString(R.string.txt_eaten_products), 0))
+                productListsDao.insert(ProductLists(context.getString(R.string.txt_products_to_buy), 0))
             }
             return productListsDao
         }

@@ -1,46 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tipBoxContainer"
-        android:background="@color/brand_light_blue"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tipMessage"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/tipBoxContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/spacing_normal"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:textColor="@color/md_black_1000"
-            tools:text="Test test test test!" />
+            android:background="@color/brand_light_blue"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
-        <TextView
-            android:id="@+id/gotItBtn"
-            style="@style/ButtonRounded"
+            <TextView
+                android:id="@+id/tipMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_normal"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:textColor="@color/md_black_1000"
+                tools:text="Test test test test!" />
+
+            <TextView
+                android:id="@+id/gotItBtn"
+                style="@style/ButtonRounded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/got_it" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@string/got_it" />
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_tip_box_down_arrow"
+            app:tint="@color/brand_light_blue"
+            tools:ignore="ContentDescription" />
+
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/ic_tip_box_down_arrow"
-        tools:ignore="ContentDescription"
-        app:tint="@color/brand_light_blue" />
-
-</LinearLayout>
+</layout>

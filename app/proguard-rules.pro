@@ -16,30 +16,22 @@
 #   public *;
 #}
 
--keep class com.bluelinelabs.logansquare.** { *; }
--keep @com.bluelinelabs.logansquare.annotation.JsonObject class *
 -keep class **$$JsonObjectMapper { *; }
--keep class openfoodfacts.github.scrachx.openfood.models.** { *; }
--keep class openfoodfacts.github.scrachx.openfood.network.deserializers.** { *; }
+-keep class openfoodfacts.github.scrachx.openfood.network.services.* { *; }
 
-#Keep Jackson classes ( https://sourceforge.net/p/proguard/discussion/182456/thread/e4d73acf/ )
+# Keep Jackson classes ( https://sourceforge.net/p/proguard/discussion/182456/thread/e4d73acf/ )
 -keepnames class org.codehaus.jackson.** { *; }
 -keepnames class com.fasterxml.jackson.** { *; }
 -keepnames interface com.fasterxml.jackson.** { *; }
 
-#Keep Android Support Library
--keep public class android.support.v7.widget.** { *; }
--keep public class android.support.v7.internal.widget.** { *; }
--keep public class android.support.v7.internal.view.menu.** { *; }
-# to display labels on the BottomNavigationView
--keepclassmembers class android.support.design.internal.BottomNavigationMenuView {
-    boolean mShiftingMode;
-}
-# for stack-traces
+# To display labels on the BottomNavigationView
+-keep class com.google.android.material.bottomnavigation.BottomNavigationMenuView
+
+# For stack-traces
 -keepattributes SourceFile,LineNumberTable
 -ignorewarnings
 
-# for event bus
+# EventBus
 -keepattributes *Annotation*
 -keepclassmembers class * {
     @org.greenrobot.eventbus.Subscribe <methods>;
@@ -48,3 +40,11 @@
 -keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
     <init>(java.lang.Throwable);
 }
+
+# GreenDAO generated classes
+-keepclassmembers class * extends org.greenrobot.greendao.AbstractDao {
+public static java.lang.String TABLENAME;
+}
+-keep class **$Properties { *; }
+# GreenDAO entities
+-keep class openfoodfacts.github.scrachx.openfood.models.** { *; }

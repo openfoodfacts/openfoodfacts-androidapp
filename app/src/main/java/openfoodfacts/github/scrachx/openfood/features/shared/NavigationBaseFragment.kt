@@ -44,9 +44,7 @@ abstract class NavigationBaseFragment : BaseFragment(), INavigationItem {
      */
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is NavigationDrawerListener) {
-            navigationDrawerListener = context
-        }
+        (context as? NavigationDrawerListener)?.let { navigationDrawerListener = it }
     }
 
     /**
@@ -58,8 +56,6 @@ abstract class NavigationBaseFragment : BaseFragment(), INavigationItem {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (navigationDrawerListener != null) {
-            navigationDrawerListener!!.setItemSelected(getNavigationDrawerType())
-        }
+        navigationDrawerListener?.setItemSelected(getNavigationDrawerType())
     }
 }

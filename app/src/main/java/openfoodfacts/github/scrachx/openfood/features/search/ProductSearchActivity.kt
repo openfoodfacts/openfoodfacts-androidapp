@@ -25,12 +25,13 @@ import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductBrowsingListBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.ProductsRecyclerViewAdapter
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.listeners.EndlessRecyclerViewScrollListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.RecyclerItemClickListener
@@ -38,7 +39,6 @@ import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivit
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.Search
-import openfoodfacts.github.scrachx.openfood.models.entities.country.Country
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
 import openfoodfacts.github.scrachx.openfood.utils.*
@@ -46,29 +46,80 @@ import java.text.NumberFormat
 import java.util.*
 
 class ProductSearchActivity : BaseActivity() {
-    private lateinit var client: OpenFoodAPIClient
     private var _binding: ActivityProductBrowsingListBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var client: OpenFoodAPIClient
+    private lateinit var mSearchInfo: SearchInfo
+    private lateinit var adapter: ProductsRecyclerViewAdapter
+
     private var contributionType = 0
     private var disp = CompositeDisposable()
+    private val lowBatteryMode by lazy { isDisableImageLoad() && isBatteryLevelLow() }
 
     /**
      * boolean to determine if image should be loaded or not
      */
-    private var isLowBatteryMode = false
-    private var mCountProducts = 0
-    private lateinit var mSearchInfo: SearchInfo
-    private var pageAddress = 1
     private var setupDone = false
+    private var mCountProducts = 0
+    private var pageAddress = 1
 
-    override fun onDestroy() {
-        super.onDestroy()
-        disp.dispose()
-        _binding = null
+    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(LocaleHelper.onCreate(newBase))
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        _binding = ActivityProductBrowsingListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbarInclude.toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        // OnClick
+        binding.buttonTryAgain.setOnClickListener { reloadSearch() }
+        binding.addProduct.setOnClickListener { addProduct() }
+
+        binding.textCountProduct.visibility = View.INVISIBLE
+
+        // Get the search information (query, title, type) that we will use in this activity
+        val extras = intent.extras
+        if (extras != null) {
+            mSearchInfo = extras.getParcelable(SEARCH_INFO) ?: SearchInfo.emptySearchInfo()
+        } else if (Intent.ACTION_VIEW == intent.action) {
+            // the user has entered the activity via a url
+            val data = intent.data
+            if (data != null) {
+                // TODO: If we open advanced search from app it redirects here
+                val paths = data.toString().split("/")
+                mSearchInfo = SearchInfo.emptySearchInfo()
+
+                if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
+                    mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
+                    mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
+                    mSearchInfo.searchType = SearchType.SEARCH
+                } else {
+                    mSearchInfo.searchTitle = paths[4]
+                    mSearchInfo.searchQuery = paths[4]
+                    mSearchInfo.searchType = SearchType.fromUrl(paths[3]) ?: SearchType.SEARCH
+                }
+
+            } else {
+                Log.i(LOG_TAG, "No data was passed in with URL. Exiting.")
+                finish()
+            }
+        } else {
+            Log.e(LOG_TAG, "No data passed to the activity. Exiting.")
+            finish()
+        }
+        newSearchQuery()
+
+        binding.navigationBottom.bottomNavigation.selectNavigationItem(0)
+        binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
     }
 
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.onCreate(newBase))
+    override fun onDestroy() {
+        disp.dispose()
+        _binding = null
+        super.onDestroy()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -83,14 +134,10 @@ class ProductSearchActivity : BaseActivity() {
                 return true
             }
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                return true
-            }
+            override fun onQueryTextChange(newText: String) = true
         })
         searchMenuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-            override fun onMenuItemActionExpand(item: MenuItem): Boolean {
-                return true
-            }
+            override fun onMenuItemActionExpand(item: MenuItem) = true
 
             override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
                 supportActionBar?.title = ""
@@ -99,101 +146,58 @@ class ProductSearchActivity : BaseActivity() {
             }
         })
         if (SearchType.CONTRIBUTOR == mSearchInfo.searchType) {
-            val contributionItem = menu.findItem(R.id.action_set_type)
-            contributionItem.isVisible = true
+            menu.findItem(R.id.action_set_type).isVisible = true
         }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish()
-            return true
-        }
-        if (item.itemId == R.id.action_set_type) {
-            val contributionTypes = arrayOf(
-                    getString(R.string.products_added),
-                    getString(R.string.products_incomplete),
-                    getString(R.string.product_pictures_contributed),
-                    getString(R.string.picture_contributed_incomplete),
-                    getString(R.string.product_info_added),
-                    getString(R.string.product_info_tocomplete)
-            )
-            MaterialDialog.Builder(this).apply {
-                title(R.string.show_by)
-                items(*contributionTypes)
-                itemsCallback { _, _, position, _ ->
-                    when (position) {
-                        1, 2, 3, 4, 5 -> {
-                            contributionType = position
-                            newSearchQuery()
-                        }
-                        else -> {
-                            contributionType = 0
-                            newSearchQuery()
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            R.id.action_set_type -> {
+                val contributionTypes = arrayOf(
+                        getString(R.string.products_added),
+                        getString(R.string.products_incomplete),
+                        getString(R.string.product_pictures_contributed),
+                        getString(R.string.picture_contributed_incomplete),
+                        getString(R.string.product_info_added),
+                        getString(R.string.product_info_tocomplete)
+                )
+                MaterialDialog.Builder(this).apply {
+                    title(R.string.show_by)
+                    items(*contributionTypes)
+                    itemsCallback { _, _, position, _ ->
+                        when (position) {
+                            1, 2, 3, 4, 5 -> {
+                                contributionType = position
+                                newSearchQuery()
+                            }
+                            else -> {
+                                contributionType = 0
+                                newSearchQuery()
+                            }
                         }
                     }
-                }
-            }.show()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        _binding = ActivityProductBrowsingListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbarInclude.toolbar)
-
-        // OnClick
-        binding.buttonTryAgain.setOnClickListener { setup() }
-        binding.addProduct.setOnClickListener { addProduct() }
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        binding.textCountProduct.visibility = View.INVISIBLE
-
-        // Get the search information (query, title, type) that we will use in this activity
-        val extras = intent.extras
-        if (extras != null) {
-            mSearchInfo = extras.getParcelable(SEARCH_INFO) ?: SearchInfo.emptySearchInfo()
-        } else if (Intent.ACTION_VIEW == intent.action) {
-            // the user has entered the activity via a url
-            val data = intent.data
-            if (data != null) {
-                val paths = data.toString().split("/").toTypedArray()
-                mSearchInfo = SearchInfo.emptySearchInfo()
-                mSearchInfo.searchTitle = paths[4]
-                mSearchInfo.searchQuery = paths[4]
-                mSearchInfo.searchType = SearchType.fromUrl(paths[3])!!
-                if (paths[3] == "cgi" && paths[4].contains("search.pl")) {
-                    mSearchInfo.searchTitle = data.getQueryParameter("search_terms") ?: ""
-                    mSearchInfo.searchQuery = data.getQueryParameter("search_terms") ?: ""
-                    mSearchInfo.searchType = SearchType.SEARCH
-                }
-            } else {
-                Log.i(javaClass.simpleName, "No data was passed in with URL. Exiting.")
-                finish()
+                }.show()
+                true
             }
-        } else {
-            Log.e(javaClass.simpleName, "No data passed to the activity. Exiting.")
-            finish()
+            else -> super.onOptionsItemSelected(item)
         }
-        newSearchQuery()
-
-        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (Utils.isDisableImageLoad(this) && Utils.isBatteryLevelLow(this)) {
-            isLowBatteryMode = true
-        }
-        selectNavigationItem(binding.navigationBottom.bottomNavigation, 0)
-        install(this, binding.navigationBottom.bottomNavigation)
     }
 
     private fun setupHungerGames() {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
         val actualCountryTag = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "")
         if ("" == actualCountryTag) {
-            disp.add(ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocale().country)
+            ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { mayCountry: Optional<Country> -> setupUrlHungerGames(if (mayCountry.isPresent) mayCountry.get().tag else "en:world") })
+                    .map { it.tag }
+                    .defaultIfEmpty("en:world")
+                    .subscribe { setupUrlHungerGames(it) }
+                    .addTo(disp)
         } else {
             setupUrlHungerGames(actualCountryTag)
         }
@@ -225,32 +229,33 @@ class ProductSearchActivity : BaseActivity() {
                 supportActionBar!!.subtitle = getString(R.string.category_string)
                 setupHungerGames()
             }
-            SearchType.COUNTRY -> supportActionBar?.setSubtitle(R.string.country_string)
-            SearchType.ORIGIN -> supportActionBar?.setSubtitle(R.string.origin_of_ingredients)
-            SearchType.MANUFACTURING_PLACE -> supportActionBar?.setSubtitle(R.string.manufacturing_place)
-            SearchType.ADDITIVE -> supportActionBar?.setSubtitle(R.string.additive_string)
-            SearchType.SEARCH -> supportActionBar?.setSubtitle(R.string.search_string)
-            SearchType.STORE -> supportActionBar?.setSubtitle(R.string.store_subtitle)
-            SearchType.PACKAGING -> supportActionBar?.setSubtitle(R.string.packaging_subtitle)
-            SearchType.CONTRIBUTOR -> supportActionBar?.setSubtitle(getString(R.string.contributor_string))
-            SearchType.ALLERGEN -> supportActionBar?.setSubtitle(getString(R.string.allergen_string))
-            SearchType.INCOMPLETE_PRODUCT -> supportActionBar?.setTitle(getString(R.string.products_to_be_completed))
+            SearchType.COUNTRY -> supportActionBar!!.setSubtitle(R.string.country_string)
+            SearchType.ORIGIN -> supportActionBar!!.setSubtitle(R.string.origin_of_ingredients)
+            SearchType.MANUFACTURING_PLACE -> supportActionBar!!.setSubtitle(R.string.manufacturing_place)
+            SearchType.ADDITIVE -> supportActionBar!!.setSubtitle(R.string.additive_string)
+            SearchType.SEARCH -> supportActionBar!!.setSubtitle(R.string.search_string)
+            SearchType.STORE -> supportActionBar!!.setSubtitle(R.string.store_subtitle)
+            SearchType.PACKAGING -> supportActionBar!!.setSubtitle(R.string.packaging_subtitle)
+            SearchType.CONTRIBUTOR -> supportActionBar!!.subtitle = getString(R.string.contributor_string)
+            SearchType.ALLERGEN -> supportActionBar!!.subtitle = getString(R.string.allergen_string)
+            SearchType.INCOMPLETE_PRODUCT -> supportActionBar!!.title = getString(R.string.products_to_be_completed)
             SearchType.STATE -> {
                 // TODO: 26/07/2020 use resources
-                supportActionBar?.setSubtitle("State")
+                supportActionBar!!.subtitle = "State"
             }
-            else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
+            else -> error("No match case found for ${mSearchInfo.searchType}")
         }
         client = OpenFoodAPIClient(this@ProductSearchActivity, BuildConfig.OFWEBSITE)
         binding.progressBar.visibility = View.VISIBLE
-        setup()
+        reloadSearch()
     }
 
-    fun setup() {
+    private fun reloadSearch() {
         binding.offlineCloudLinearLayout.visibility = View.INVISIBLE
         binding.textCountProduct.visibility = View.INVISIBLE
-        pageAddress = 1
         binding.noResultsLayout.visibility = View.INVISIBLE
+
+        pageAddress = 1
         loadDataFromAPI()
     }
 
@@ -322,21 +327,19 @@ class ProductSearchActivity : BaseActivity() {
             SearchType.STATE -> client.getProductsByStates(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_allergen_products)
 
-            SearchType.INCOMPLETE_PRODUCT -> {
-                // Get Products to be completed data and input it to loadData function
-                client.getIncompleteProducts(pageAddress)
-                        .startSearch(R.string.txt_no_matching_incomplete_products)
-            }
+            // Get Products to be completed data and input it to loadData function
+            SearchType.INCOMPLETE_PRODUCT -> client.getIncompleteProducts(pageAddress)
+                    .startSearch(R.string.txt_no_matching_incomplete_products)
+
             else -> Log.e("Products Browsing", "No match case found for " + mSearchInfo.searchType)
         }
     }
 
 
     private fun Single<Search>.startSearch(@StringRes noMatchMsg: Int, @StringRes extendedMsg: Int = -1) {
-        disp.add(observeOn(AndroidSchedulers.mainThread())
-                .subscribe { search, throwable ->
-                    displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
-                })
+        observeOn(AndroidSchedulers.mainThread()).subscribe { search, throwable ->
+            displaySearch(throwable == null, search, noMatchMsg, extendedMsg)
+        }.addTo(disp)
     }
 
     private fun loadDataForContributor(searchQuery: String) {
@@ -356,67 +359,73 @@ class ProductSearchActivity : BaseActivity() {
             5 -> client.getInfoAddedIncompleteProductsSingle(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_contributor_products)
 
-            0 -> client.getProductsByContributor(searchQuery, pageAddress)
-                    .startSearch(R.string.txt_no_matching_contributor_products)
-
             else -> client.getProductsByContributor(searchQuery, pageAddress)
                     .startSearch(R.string.txt_no_matching_contributor_products)
         }
     }
 
-    private fun loadData(isResponseOk: Boolean, response: Search?) {
-        val mProducts = mutableListOf<Product?>()
+    private fun showResponse(isResponseOk: Boolean, response: Search?) {
         if (isResponseOk && response != null) {
-            mCountProducts = response.count.toInt()
-            if (pageAddress == 1) {
-                val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
-                binding.textCountProduct.text = resources.getString(R.string.number_of_results) + number
-                mProducts.addAll(response.products)
-                if (mProducts.size < mCountProducts) {
-                    mProducts.add(null)
-                }
-                if (setupDone) {
-                    binding.productsRecyclerView.adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode, this)
-                }
-                setUpRecyclerView(mProducts)
-            } else {
-                if (mProducts.size - 1 < mCountProducts + 1) {
-                    val posStart = mProducts.size
-                    mProducts.removeAt(mProducts.size - 1)
-                    mProducts.addAll(response.products)
-                    if (mProducts.size < mCountProducts) {
-                        mProducts.add(null)
-                    }
-                    binding.productsRecyclerView.adapter?.notifyItemRangeChanged(posStart - 1, mProducts.size - 1)
-                }
-            }
+            showSuccessfulResponse(response)
         } else {
-            binding.swipeRefresh.isRefreshing = false
-            binding.productsRecyclerView.visibility = View.INVISIBLE
-            binding.progressBar.visibility = View.INVISIBLE
-            binding.offlineCloudLinearLayout.visibility = View.VISIBLE
+            showOfflineCloud()
         }
     }
 
+    private fun showSuccessfulResponse(response: Search) {
+        mCountProducts = response.count.toInt()
+        if (pageAddress == 1) {
+            val number = NumberFormat.getInstance(Locale.getDefault()).format(response.count.toLong())
+            binding.textCountProduct.text = "${resources.getString(R.string.number_of_results)} $number"
+            val products: MutableList<Product?> = response.products.toMutableList()
+            if (products.size < mCountProducts) {
+                products += null
+            }
+            if (setupDone) {
+                adapter = ProductsRecyclerViewAdapter(products, lowBatteryMode, this)
+                binding.productsRecyclerView.adapter = adapter
+            }
+            setUpRecyclerView(products)
+        } else if (adapter.products.size - 1 < mCountProducts + 1) {
+            val posStart = adapter.itemCount
+            adapter.products.removeAt(adapter.itemCount - 1)
+            adapter.products += response.products
+            if (adapter.products.size < mCountProducts) {
+                adapter.products += null
+            }
+            adapter.notifyItemRangeChanged(posStart - 1, adapter.products.size - 1)
+        }
+    }
+
+    private fun showOfflineCloud() {
+        binding.swipeRefresh.isRefreshing = false
+        binding.textCountProduct.visibility = View.GONE
+        binding.productsRecyclerView.visibility = View.INVISIBLE
+        binding.progressBar.visibility = View.INVISIBLE
+        binding.offlineCloudLinearLayout.visibility = View.VISIBLE
+    }
+
     /**
-     * Shows UI indicating that no matching products were found. Called by
-     * [.displaySearch] and [.displaySearch]
+     * Shows UI indicating that no matching products were found.
+     *
+     * Called by [displaySearch].
      *
      * @param message message to display when there are no results for given search
      * @param extendedMessage additional message to display, -1 if no message is displayed
      */
-    private fun showEmptySearch(@StringRes message: Int, @StringRes extendedMessage: Int) {
-        binding.textNoResults.setText(message)
-        if (extendedMessage != -1) {
-            binding.textExtendSearch.setText(extendedMessage)
-        }
-        binding.noResultsLayout.visibility = View.VISIBLE
-        binding.noResultsLayout.bringToFront()
+    private fun showEmptyResponse(@StringRes message: Int, @StringRes extendedMessage: Int) {
+        binding.swipeRefresh.isRefreshing = false
+
         binding.productsRecyclerView.visibility = View.INVISIBLE
         binding.progressBar.visibility = View.INVISIBLE
         binding.offlineCloudLinearLayout.visibility = View.INVISIBLE
         binding.textCountProduct.visibility = View.GONE
-        binding.swipeRefresh.isRefreshing = false
+
+        binding.textNoResults.setText(message)
+        if (extendedMessage != -1) binding.textExtendSearch.setText(extendedMessage)
+        binding.noResultsLayout.bringToFront()
+        binding.noResultsLayout.visibility = View.VISIBLE
+
     }
 
     /**
@@ -428,36 +437,40 @@ class ProductSearchActivity : BaseActivity() {
      * @param emptyMessage message to display if there are no results
      * @param extendedMessage extended message to display if there are no results
      */
-    private fun displaySearch(isResponseSuccessful: Boolean, response: Search?,
-                              @StringRes emptyMessage: Int, @StringRes extendedMessage: Int = -1) {
-        if (response == null) {
-            loadData(isResponseSuccessful, null)
+    private fun displaySearch(
+            isResponseSuccessful: Boolean,
+            response: Search?,
+            @StringRes emptyMessage: Int,
+            @StringRes extendedMessage: Int = -1
+    ) = if (response == null) {
+        showResponse(isResponseSuccessful, null)
+    } else {
+        val count = try {
+            response.count.toInt()
+        } catch (e: NumberFormatException) {
+            throw NumberFormatException("Cannot parse ${response.count}.")
+        }
+        if (!isResponseSuccessful || count != 0) {
+            showResponse(isResponseSuccessful, response)
         } else {
-            val count = try {
-                response.count.toInt()
-            } catch (e: NumberFormatException) {
-                throw NumberFormatException("Cannot parse ${response.count}.")
-            }
-            if (isResponseSuccessful && count == 0) {
-                showEmptySearch(emptyMessage, extendedMessage)
-            } else {
-                loadData(isResponseSuccessful, response)
-            }
+            showEmptyResponse(emptyMessage, extendedMessage)
         }
     }
 
     private fun setUpRecyclerView(mProducts: MutableList<Product?>) {
-        binding.progressBar.visibility = View.INVISIBLE
         binding.swipeRefresh.isRefreshing = false
-        binding.textCountProduct.visibility = View.VISIBLE
+
+        binding.progressBar.visibility = View.INVISIBLE
         binding.offlineCloudLinearLayout.visibility = View.INVISIBLE
+
+        binding.textCountProduct.visibility = View.VISIBLE
         binding.productsRecyclerView.visibility = View.VISIBLE
 
         if (!setupDone) {
             binding.productsRecyclerView.setHasFixedSize(true)
             val mLayoutManager = LinearLayoutManager(this@ProductSearchActivity, LinearLayoutManager.VERTICAL, false)
             binding.productsRecyclerView.layoutManager = mLayoutManager
-            val adapter = ProductsRecyclerViewAdapter(mProducts, isLowBatteryMode, this)
+            adapter = ProductsRecyclerViewAdapter(mProducts, lowBatteryMode, this)
             binding.productsRecyclerView.adapter = adapter
             val dividerItemDecoration = DividerItemDecoration(binding.productsRecyclerView.context, DividerItemDecoration.VERTICAL)
             binding.productsRecyclerView.addItemDecoration(dividerItemDecoration)
@@ -473,19 +486,18 @@ class ProductSearchActivity : BaseActivity() {
                 }
             })
             binding.productsRecyclerView.addOnItemTouchListener(RecyclerItemClickListener(this) { _, position ->
-                val product = (binding.productsRecyclerView.adapter as ProductsRecyclerViewAdapter?)?.getProduct(position)
-                        ?: return@RecyclerItemClickListener
+                val product = adapter.getProduct(position) ?: return@RecyclerItemClickListener
                 val barcode = product.code
-                if (Utils.isNetworkConnected(this@ProductSearchActivity)) {
-                    client.openProduct(barcode, this@ProductSearchActivity)
+                if (Utils.isNetworkConnected(this)) {
+                    client.openProduct(barcode, this)
                     try {
-                        val viewWithFocus = this@ProductSearchActivity.currentFocus
+                        val viewWithFocus = currentFocus
                         if (viewWithFocus != null) {
-                            val imm = this@ProductSearchActivity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                             imm.hideSoftInputFromWindow(viewWithFocus.windowToken, 0)
                         }
                     } catch (e: NullPointerException) {
-                        Log.e(ProductSearchActivity::class.java.simpleName, "addOnItemTouchListener", e)
+                        Log.e(LOG_TAG, "addOnItemTouchListener", e)
                     }
                 } else {
                     MaterialDialog.Builder(this@ProductSearchActivity).apply {
@@ -510,7 +522,7 @@ class ProductSearchActivity : BaseActivity() {
                 adapter.notifyDataSetChanged()
                 binding.textCountProduct.text = resources.getString(R.string.number_of_results)
                 pageAddress = 1
-                setup()
+                reloadSearch()
                 if (binding.swipeRefresh.isRefreshing) {
                     binding.swipeRefresh.isRefreshing = false
                 }
@@ -520,7 +532,7 @@ class ProductSearchActivity : BaseActivity() {
         binding.swipeRefresh.setOnRefreshListener {
             binding.swipeRefresh.isRefreshing = true
             pageAddress = 1
-            setup()
+            reloadSearch()
         }
     }
 
@@ -548,9 +560,11 @@ class ProductSearchActivity : BaseActivity() {
          */
         @JvmStatic
         private fun start(context: Context, searchInfo: SearchInfo) {
-            val intent = Intent(context, ProductSearchActivity::class.java)
-            intent.putExtra(SEARCH_INFO, searchInfo)
-            context.startActivity(intent)
+            context.startActivity(Intent(context, ProductSearchActivity::class.java).apply {
+                putExtra(SEARCH_INFO, searchInfo)
+            })
         }
+
+        private val LOG_TAG: String = this::class.simpleName!!
     }
 }

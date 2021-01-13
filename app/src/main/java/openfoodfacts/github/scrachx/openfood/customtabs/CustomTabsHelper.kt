@@ -19,7 +19,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.text.TextUtils
 import android.util.Log
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsSession
@@ -46,18 +45,16 @@ object CustomTabsHelper {
      * @param session optional custom tabs session - could be null
      * @return CustomTabsIntent
      */
-    fun getCustomTabsIntent(context: Context, session: CustomTabsSession?): CustomTabsIntent {
-        val icon = getBitmapFromDrawable(context, R.drawable.ic_arrow_back_black)
-        //TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
-        return CustomTabsIntent.Builder(session)
-                .setShowTitle(true) // to override if not default theme value
-                //                .setToolbarColor(resources.getColor(R.color.md_light_appbar))
-                .setCloseButtonIcon(icon!!)
-                .build()
-    }
+    fun getCustomTabsIntent(context: Context, session: CustomTabsSession?) =
+            // TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
+            CustomTabsIntent.Builder(session)
+                    .setShowTitle(true) // to override if not default theme value
+                    //.setToolbarColor(resources.getColor(R.color.md_light_appbar))
+                    .setCloseButtonIcon(context.getBitmapFromDrawable(R.drawable.ic_arrow_back_black)!!)
+                    .build()
 
     /**
-     * Goes through all apps that handle VIEW intents and have a warmup service. Picks
+     * Goes through all apps that handle VIEW intents and have a warm up service. Picks
      * the one chosen by the user if there is one, otherwise makes a best effort to return a
      * valid package name.
      *
@@ -69,9 +66,8 @@ object CustomTabsHelper {
      */
     @JvmStatic
     fun getPackageNameToUse(context: Context): String? {
-        if (sPackageNameToUse != null) {
-            return sPackageNameToUse
-        }
+        if (sPackageNameToUse != null) return sPackageNameToUse
+
         val pm = context.packageManager
         // Get default VIEW intent handler.
         val activityIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.com"))
@@ -83,7 +79,7 @@ object CustomTabsHelper {
 
         // Get all apps that can handle VIEW intents.
         val resolvedActivityList = pm.queryIntentActivities(activityIntent, 0)
-        val packagesSupportingCustomTabs = resolvedActivityList.mapNotNull { info ->
+        val packagesSupportingCustomTabs: List<String?> = resolvedActivityList.mapNotNull { info ->
             val serviceIntent = Intent().apply {
                 action = ACTION_CUSTOM_TABS_CONNECTION
                 setPackage(info.activityInfo.packageName)
@@ -95,8 +91,8 @@ object CustomTabsHelper {
         // and service calls.
         when {
             packagesSupportingCustomTabs.isEmpty() -> sPackageNameToUse = null
-            packagesSupportingCustomTabs.size == 1 -> sPackageNameToUse = packagesSupportingCustomTabs[0]
-            !TextUtils.isEmpty(defaultViewHandlerPackageName)
+            packagesSupportingCustomTabs.count() == 1 -> sPackageNameToUse = packagesSupportingCustomTabs[0]
+            !defaultViewHandlerPackageName.isNullOrEmpty()
                     && !hasSpecializedHandlerIntents(context, activityIntent)
                     && packagesSupportingCustomTabs.contains(defaultViewHandlerPackageName) -> {
                 sPackageNameToUse = defaultViewHandlerPackageName
@@ -120,10 +116,10 @@ object CustomTabsHelper {
             val pm = context.packageManager
             val handlers = pm.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER)
             if (handlers.isEmpty()) return false
-            for (resolveInfo in handlers) {
-                val filter = resolveInfo.filter ?: continue
-                if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) continue
-                if (resolveInfo.activityInfo == null) continue
+            handlers.forEach { resolveInfo ->
+                val filter = resolveInfo.filter ?: return@forEach
+                if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) return@forEach
+                if (resolveInfo.activityInfo == null) return@forEach
                 return true
             }
         } catch (e: RuntimeException) {
@@ -132,9 +128,9 @@ object CustomTabsHelper {
         return false
     }
 
+
     /**
-     * @return All possible chrome package names that provide custom tabs feature.
+     * All possible chrome package names that provide custom tabs feature.
      */
-    val packages: Array<String>
-        get() = arrayOf("", STABLE_PACKAGE, BETA_PACKAGE, DEV_PACKAGE, LOCAL_PACKAGE)
+    val packages = listOf("", STABLE_PACKAGE, BETA_PACKAGE, DEV_PACKAGE, LOCAL_PACKAGE)
 }

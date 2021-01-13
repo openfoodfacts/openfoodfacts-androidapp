@@ -43,14 +43,16 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
     private var spElderlyImage: AppCompatImageView? = null
     private var customTabsIntent: CustomTabsIntent? = null
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_product_attribute_details, container,
                 false)
         val customTabActivityHelper = CustomTabActivityHelper()
 
-        customTabActivityHelper.connectionCallback=object : CustomTabActivityHelper.ConnectionCallback {
+        customTabActivityHelper.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
             override fun onCustomTabsConnected() {}
             override fun onCustomTabsDisconnected() {}
         }
@@ -182,7 +184,7 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
         var descriptionString: String? = null
 
         val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        if (languageCode != null && map[languageCode] != null) {
+        if (map[languageCode] != null) {
             descriptionString = map[languageCode]["value"].asText()
         }
 

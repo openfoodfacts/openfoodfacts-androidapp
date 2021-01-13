@@ -1,33 +1,21 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.additive
 
+import openfoodfacts.github.scrachx.openfood.models.entities.EntityResponse
+
 /**
  * Created by Lobster on 04.03.18.
  */
-class AdditiveResponse {
-    private val isWikiDataIdPresent: Boolean
-    private val names: Map<String, String>
-    private var wikiDataCode: String? = null
-    private val overexposureRisk: String?
-    private val tag: String
+class AdditiveResponse(
+        private val tag: String,
+        private val names: Map<String, String>,
+        private val overexposureRisk: String?,
+        private var wikiDataCode: String? = null
+) : EntityResponse<Additive> {
     private var exposureMeanGreaterThanAdi: String? = null
     private var exposureMeanGreaterThanNoael: String? = null
     private var exposure95ThGreaterThanAdi: String? = null
     private var exposure95ThGreaterThanNoael: String? = null
 
-    constructor(tag: String, names: Map<String, String>, overexposureRisk: String?, wikiDataCode: String?) {
-        this.tag = tag
-        this.names = names
-        this.wikiDataCode = wikiDataCode
-        this.overexposureRisk = overexposureRisk
-        isWikiDataIdPresent = true
-    }
-
-    constructor(tag: String, names: Map<String, String>, overexposureRisk: String?) {
-        this.tag = tag
-        this.names = names
-        this.overexposureRisk = overexposureRisk
-        isWikiDataIdPresent = false
-    }
 
     fun setExposureEvalMap(
             exposure95ThGreaterThanAdi: String?,
@@ -41,9 +29,9 @@ class AdditiveResponse {
         this.exposureMeanGreaterThanNoael = exposureMeanGreaterThanNoael
     }
 
-    fun map(): Additive {
+    override fun map(): Additive {
         val additive: Additive
-        if (isWikiDataIdPresent) {
+        if (wikiDataCode != null) {
             additive = Additive(tag, arrayListOf(), overexposureRisk, wikiDataCode)
             names.forEach { (key, value) ->
                 val additiveName = AdditiveName(additive.tag, key, value, overexposureRisk, wikiDataCode)

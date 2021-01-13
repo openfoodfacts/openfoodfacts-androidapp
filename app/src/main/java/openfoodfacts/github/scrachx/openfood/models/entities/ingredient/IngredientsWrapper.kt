@@ -1,6 +1,8 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.ingredient
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import openfoodfacts.github.scrachx.openfood.models.entities.EntityResponse
+import openfoodfacts.github.scrachx.openfood.models.entities.EntityWrapper
 
 /**
  * JSON from URL https://ssl-api.openfoodfacts.org/data/taxonomies/ingredients.json
@@ -8,10 +10,4 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize
  * @author dobriseb 2018-12-21 inspired by AllergensWrapper
  */
 @JsonDeserialize(using = IngredientsWrapperDeserializer::class)
-class IngredientsWrapper(var ingredients: List<IngredientResponse>) {
-
-    /**
-     * @return A list of Ingredient objects
-     */
-    fun map() = ingredients.map { it.map() }
-}
+class IngredientsWrapper(ingredients: List<EntityResponse<Ingredient>>) : EntityWrapper<Ingredient>(ingredients)

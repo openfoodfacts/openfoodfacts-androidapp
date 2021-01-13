@@ -28,30 +28,22 @@ class LanguageDataAdapter(
         context: Context,
         resource: Int,
         objects: List<LanguageData?>
-) : ArrayAdapter<Any?>(context, resource, objects) {
+) : ArrayAdapter<LanguageData?>(context, resource, objects) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = super.getView(position, convertView, parent) as TextView
-        val data = getItem(position) as LanguageData?
+        val data = getItem(position)
         view.setTextColor(ContextCompat.getColor(context, if (data!!.isSupported) R.color.white else R.color.orange))
         return view
     }
 
-    fun getPosition(code: String?): Int {
-        if (code != null) {
-            for (i in 0 until count) {
-                if (code == (getItem(i) as LanguageData?)!!.code) {
-                    return i
-                }
-            }
-        }
-        return -1
-    }
+    fun getPosition(code: String) =
+            (0 until count).firstOrNull { getItem(it)?.code == code } ?: -1
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = super.getDropDownView(position, convertView, parent) as TextView
-        val data = getItem(position) as LanguageData?
-        if (data!!.isSupported) {
+        val data = getItem(position) as LanguageData
+        if (data.isSupported) {
             view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
         } else {
             view.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_plus_blue_24, 0, 0, 0)

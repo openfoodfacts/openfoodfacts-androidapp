@@ -5,7 +5,6 @@ import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import org.apache.commons.lang.StringUtils
 import org.jetbrains.annotations.Contract
 
 @Contract(pure = true)
@@ -17,25 +16,27 @@ fun getResourceId(field: ProductImageField) = when (field) {
     else -> R.string.other_picture
 }
 
-fun Product.getImageStringKey(field: ProductImageField) = lang?.let { getImageStringKey(field, it) }
+fun Product.getImageStringKey(field: ProductImageField) = getImageStringKey(field, lang)
 
 fun getImageStringKey(field: ProductImageField, language: String) = "${field}_$language"
 
 fun getLanguageCodeFromUrl(field: ProductImageField?, url: String?): String? {
     return if (url.isNullOrBlank() || field == null) null
-    else
-        StringUtils.substringBefore(StringUtils.substringAfterLast(url, field.toString() + "_"), ".")
+    else url.substringAfterLast("${field}_").substringBefore(".")
 }
 
-fun createImageBundle(imageType: ProductImageField?, product: Product?, language: String?, imageUrl: String?): Bundle {
-    val bundle = Bundle()
-    bundle.putString(IMAGE_URL, imageUrl)
+fun createImageBundle(
+        imageType: ProductImageField?,
+        product: Product?,
+        language: String?,
+        imageUrl: String?
+) = Bundle().apply {
+    putString(IMAGE_URL, imageUrl)
     if (product != null) {
-        bundle.putSerializable(PRODUCT, product)
-        bundle.putSerializable(IMAGE_TYPE, imageType)
-        bundle.putString(LANGUAGE, language)
+        putSerializable(PRODUCT, product)
+        putSerializable(IMAGE_TYPE, imageType)
+        putString(LANGUAGE, language)
     }
-    return bundle
 }
 
 @Contract(pure = true)

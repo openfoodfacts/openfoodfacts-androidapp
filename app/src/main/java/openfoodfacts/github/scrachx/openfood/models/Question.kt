@@ -6,33 +6,18 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Question : Serializable {
-    @JsonProperty("barcode")
-    val code: String? = null
-
-    @JsonProperty("type")
-    val type: String? = null
-
-    @JsonProperty("value")
-    val value: String? = null
-
-    @JsonProperty("question")
-    val question: String? = null
-
-    @JsonProperty("insight_id")
-    val insightId: String? = null
-
-    @JsonProperty("insight_type")
-    val insightType: String? = null
-
-    @JsonProperty("source_image_url")
-    val sourceImageUrl: String? = null
-
-    @JsonProperty("image_url")
-    val imageUrl: String? = null
-
+data class Question(
+        @JsonProperty("barcode") val code: String? = null,
+        @JsonProperty("type") val type: String? = null,
+        @JsonProperty("value") val value: String? = null,
+        @JsonProperty("question") val questionText: String? = null,
+        @JsonProperty("insight_id") val insightId: String? = null,
+        @JsonProperty("insight_type") val insightType: String? = null,
+        @JsonProperty("source_image_url") val sourceImageUrl: String? = null,
+        @JsonProperty("image_url") val imageUrl: String? = null,
+) : Serializable {
     @JsonIgnore
-    fun isEmpty() = question.isNullOrEmpty()
+    fun isEmpty() = questionText.isNullOrEmpty()
 
     companion object {
         private const val serialVersionUID = 1L

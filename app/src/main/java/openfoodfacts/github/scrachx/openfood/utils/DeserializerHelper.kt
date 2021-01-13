@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.util.Log
 import com.fasterxml.jackson.databind.JsonNode
-import java.util.*
 
 object DeserializerHelper {
     const val NAMES_KEY = "name"
@@ -29,8 +28,6 @@ object DeserializerHelper {
         return names
     }
 
-    private val LOG_TAG = DeserializerHelper::class.simpleName!!
-
     /**
      * Extracts child nodes from a map of subnodes
      *
@@ -38,11 +35,11 @@ object DeserializerHelper {
      * @param key get the JsonNode for the given key
      */
     @JvmStatic
-    fun extractChildNodeAsText(subNode: Map.Entry<String?, JsonNode>, key: String?): List<String> {
-        return subNode.value[key]?.toList()?.map {
-            if (Log.isLoggable(LOG_TAG, Log.INFO)) Log.i(LOG_TAG, "ExtractChildNodeAsText, ajout de ${it.asText()}")
-            return@map it.asText()
-        } ?: listOf()
-    }
+    fun extractChildNodeAsText(subNode: Map.Entry<String?, JsonNode>, key: String?) =
+            subNode.value[key]?.toList()?.map {
+                if (Log.isLoggable(LOG_TAG, Log.INFO)) Log.i(LOG_TAG, "ExtractChildNodeAsText, ajout de ${it.asText()}")
+                it.asText()
+            } ?: listOf()
 
+    private val LOG_TAG = DeserializerHelper::class.simpleName!!
 }

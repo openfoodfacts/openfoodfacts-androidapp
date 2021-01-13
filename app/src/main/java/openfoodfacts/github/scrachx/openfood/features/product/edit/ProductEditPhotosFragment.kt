@@ -32,14 +32,13 @@ import androidx.core.content.ContextCompat
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductPhotosBinding
-import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.utils.MY_PERMISSIONS_REQUEST_CAMERA
 import openfoodfacts.github.scrachx.openfood.utils.PhotoReceiverHandler
-import openfoodfacts.github.scrachx.openfood.utils.Utils.dpsToPixel
+import openfoodfacts.github.scrachx.openfood.utils.dpsToPixel
 import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
@@ -48,36 +47,46 @@ import java.io.File
  *
  * @see R.layout.fragment_add_product_photos
  */
-class ProductEditPhotosFragment : BaseFragment() {
+class ProductEditPhotosFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductPhotosBinding? = null
     private val binding get() = _binding!!
+
     private var photoReceiverHandler: PhotoReceiverHandler? = null
     private var code: String? = null
-    private var activity: Activity? = null
     private var photoFile: File? = null
+
+    private lateinit var activity: Activity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        activity = requireActivity()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddProductPhotosBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    override fun allValid() = true
+    override fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>) = Unit
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnAddOtherImage.setOnClickListener { addOtherImage() }
         binding.btnAdd.setOnClickListener { next() }
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File? ->
+        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile ->
             photoFile = newPhotoFile
-            val image = ProductImage(code, ProductImageField.OTHER, photoFile)
+            val image = ProductImage(code!!, ProductImageField.OTHER, newPhotoFile)
             image.filePath = photoFile!!.toURI().path
             if (activity is ProductEditActivity) {
                 (activity as ProductEditActivity).addToPhotoMap(image, 4)
             }
         }
-        val b = arguments
-        if (b != null) {
-            val product = b.getSerializable("product") as Product?
-            val offlineSavedProduct = b.getSerializable("edit_offline_product") as OfflineSavedProduct?
-            val editionMode = b.getBoolean(ProductEditActivity.KEY_IS_EDITING)
+        val bundle = arguments
+        if (bundle != null) {
+            val product = bundle.getSerializable("product") as Product?
+            val offlineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
+            val editionMode = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
             if (product != null) {
                 code = product.code
             }
@@ -92,14 +101,9 @@ class ProductEditPhotosFragment : BaseFragment() {
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        activity = getActivity()
-    }
-
     override fun onDestroyView() {
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     private fun addOtherImage() {
@@ -107,13 +111,6 @@ class ProductEditPhotosFragment : BaseFragment() {
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
         } else {
             EasyImage.openCamera(this, 0)
-        }
-    }
-
-    private operator fun next() {
-        val fragmentActivity = getActivity()
-        if (fragmentActivity is ProductEditActivity) {
-            fragmentActivity.proceed()
         }
     }
 
@@ -129,10 +126,10 @@ class ProductEditPhotosFragment : BaseFragment() {
         addImageRow()
     }
 
-    fun hideImageProgress(errorUploading: Boolean, message: String?) {
+    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
         binding.imageProgress.visibility = View.GONE
         binding.btnAddOtherImage.visibility = View.VISIBLE
-        if (errorUploading) {
+        if (errorInUploading) {
             binding.imageProgressText.visibility = View.GONE
         } else {
             binding.imageProgressText.setText(R.string.image_uploaded_successfully)
@@ -143,19 +140,20 @@ class ProductEditPhotosFragment : BaseFragment() {
      * Load image into the image view and add it to tableLayout
      */
     private fun addImageRow() {
-        val image = TableRow(activity)
-        val lp = TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixel(100, getActivity()))
-        lp.topMargin = dpsToPixel(10, getActivity())
-        val imageView = ImageView(activity)
+        val row = TableRow(activity)
+        val lp = TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpsToPixel(100, requireContext()))
+        lp.topMargin = dpsToPixel(10, requireContext())
+        val imageView = ImageView(activity).apply {
+            adjustViewBounds = true
+            scaleType = ImageView.ScaleType.FIT_CENTER
+            layoutParams = lp
+        }
         Picasso.get()
                 .load(photoFile!!)
-                .resize(dpsToPixel(100, getActivity()), dpsToPixel(100, getActivity()))
+                .resize(dpsToPixel(100, requireContext()), dpsToPixel(100, requireContext()))
                 .centerInside()
                 .into(imageView)
-        imageView.adjustViewBounds = true
-        imageView.scaleType = ImageView.ScaleType.FIT_CENTER
-        imageView.layoutParams = lp
-        image.addView(imageView)
-        binding.tableLayout.addView(image)
+        row.addView(imageView)
+        binding.tableLayout.addView(row)
     }
 }

@@ -14,7 +14,7 @@ import java.io.IOException
 class AdditivesWrapperDeserializer : StdDeserializer<AdditivesWrapper>(AdditivesWrapper::class.java) {
     @Throws(IOException::class)
     override fun deserialize(jp: JsonParser, ctxt: DeserializationContext): AdditivesWrapper {
-        val additives = arrayListOf<AdditiveResponse>()
+        val additives = mutableListOf<AdditiveResponse>()
         val mainNode = jp.codec.readTree<JsonNode>(jp)
         val mainNodeIterator = mainNode.fields()
         while (mainNodeIterator.hasNext()) {
@@ -55,7 +55,7 @@ class AdditivesWrapperDeserializer : StdDeserializer<AdditivesWrapper>(Additives
                 additives.add(additiveResponse)
             }
         }
-        return AdditivesWrapper(additives)
+        return AdditivesWrapper(additives.toList())
     }
 
     companion object {

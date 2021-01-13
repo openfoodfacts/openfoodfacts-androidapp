@@ -26,6 +26,8 @@ object ApiFields {
     object StateTags {
         const val CATEGORIES_TO_BE_COMPLETED = "en:categories-to-be-completed"
         const val NUTRITION_FACTS_TO_BE_COMPLETED = "en:nutrition-facts-to-be-completed"
+
+        const val INGREDIENTS_COMPLETED = "en:ingredients-completed"
     }
 
     object Prefix {
@@ -53,6 +55,7 @@ object ApiFields {
     }
 
     object Keys {
+        const val ATTRIBUTE_GROUPS: String = "attribute_groups"
         const val NO_NUTRITION_DATA = "no_nutrition_data"
 
         /**

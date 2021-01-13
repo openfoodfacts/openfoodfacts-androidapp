@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityAdditivesExplorerBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
@@ -60,8 +60,8 @@ class AdditiveListActivity : BaseActivity() {
             binding.additiveRecyclerView.adapter = AdditivesAdapter(additives) { _, name -> onClick(name) }
             binding.additiveRecyclerView.addItemDecoration(DividerItemDecoration(this@AdditiveListActivity, DividerItemDecoration.VERTICAL))
         }
-        selectNavigationItem(binding.navigationBottomInclude.bottomNavigation, 0)
-        install(this, binding.navigationBottomInclude.bottomNavigation)
+        binding.navigationBottomInclude.bottomNavigation.selectNavigationItem(0)
+        binding.navigationBottomInclude.bottomNavigation.installBottomNavigation(this)
     }
 
     fun onClick(name: String) = ProductSearchActivity.start(this, SearchType.ADDITIVE, name)

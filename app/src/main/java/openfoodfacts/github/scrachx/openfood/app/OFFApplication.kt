@@ -25,12 +25,12 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.app.AnalyticsService.init
 import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent
 import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent.Initializer.init
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
-import openfoodfacts.github.scrachx.openfood.utils.AnalyticsService.init
 import openfoodfacts.github.scrachx.openfood.utils.OFFDatabaseHelper
 import org.greenrobot.greendao.query.QueryBuilder
 import java.io.IOException
@@ -58,16 +58,14 @@ class OFFApplication : MultiDexApplication() {
         QueryBuilder.LOG_SQL = DEBUG
         appComponent = init(AppModule(this))
         appComponent.inject(this)
-        RxJavaPlugins.setErrorHandler { throwable: Throwable ->
-            var e = throwable
-            if (e is UndeliverableException) {
-                e = e.cause!!
-            }
-            when (e) {
+        RxJavaPlugins.setErrorHandler {
+            when (it) {
+                is UndeliverableException ->
+                    Log.w(LOG_TAG, "Undeliverable exception received, not sure what to do", it.cause)
                 is IOException -> {
 
                     // fine, irrelevant network problem or API that throws on cancellation
-                    Log.i(LOG_TAG, "network exception", e)
+                    Log.i(LOG_TAG, "network exception", it)
                     return@setErrorHandler
                 }
                 is InterruptedException -> {
@@ -77,10 +75,9 @@ class OFFApplication : MultiDexApplication() {
                 is NullPointerException, is IllegalArgumentException, is IllegalStateException -> {
                     // that's likely a bug in the application
                     Thread.currentThread().uncaughtExceptionHandler
-                            .uncaughtException(Thread.currentThread(), e)
+                            .uncaughtException(Thread.currentThread(), it)
                     return@setErrorHandler
                 }
-                else -> Log.w(LOG_TAG, "Undeliverable exception received, not sure what to do", e)
             }
         }
     }

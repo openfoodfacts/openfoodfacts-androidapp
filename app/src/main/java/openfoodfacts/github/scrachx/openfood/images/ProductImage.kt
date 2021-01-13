@@ -8,9 +8,9 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import java.io.File
 
-class ProductImage(code: String?, field: ProductImageField, image: File?, val language: String?) {
+class ProductImage(code: String, field: ProductImageField, image: File, val language: String?) {
     val code: RequestBody = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), code)
-    val field: RequestBody = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), field.toString() + '_' + language)
+    val field: RequestBody = RequestBody.create(MediaType.parse(OpenFoodAPIClient.MIME_TEXT), "${field}_$language")
     var imgFront: RequestBody? = null
     var imgIngredients: RequestBody? = null
     var imgNutrition: RequestBody? = null
@@ -20,12 +20,10 @@ class ProductImage(code: String?, field: ProductImageField, image: File?, val la
     val barcode: String?
     val imageField: ProductImageField
 
-    constructor(code: String?, field: ProductImageField, image: File?) : this(code, field, image, getLanguage(OFFApplication.instance))
+    constructor(code: String, field: ProductImageField, image: File) : this(code, field, image, getLanguage(OFFApplication.instance))
 
     companion object {
-        fun createImageRequest(image: File?): RequestBody {
-            return RequestBody.create(MediaType.parse("image/*"), image)
-        }
+        fun createImageRequest(image: File): RequestBody = RequestBody.create(MediaType.parse("image/*"), image)
     }
 
     init {

@@ -1,6 +1,5 @@
 package openfoodfacts.github.scrachx.openfood.features.categories.adapter
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.databinding.CategoryRecyclerItemBinding
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
@@ -13,11 +12,8 @@ import openfoodfacts.github.scrachx.openfood.utils.SearchType
 class CategoryViewHolder(private val binding: CategoryRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(category: CategoryName) {
         binding.category = category
-        binding.root.setOnClickListener { v: View ->
-            start(v.context,
-                    SearchType.CATEGORY, category.categoryTag!!,
-                    category.name!!
-            )
+        binding.root.setOnClickListener {
+            start(it.context, SearchType.CATEGORY, category.categoryTag!!, category.name!!)
         }
         binding.executePendingBindings()
     }

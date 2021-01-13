@@ -1,10 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.models
 
-import androidx.annotation.IntegerRes
+import androidx.annotation.DrawableRes
 
 data class NutrientLevelItem(
         val category: String,
         val value: String,
         val label: String,
-        @IntegerRes val icon: Int
+        @DrawableRes val icon: Int
 )

@@ -8,22 +8,49 @@ import org.junit.Test
 import java.io.IOException
 
 class AllergenTest {
-    lateinit var json: String
-    lateinit var allergensWrapper: AllergensWrapper
     lateinit var allergens: List<Allergen>
 
     @Before
     @Throws(IOException::class)
     fun setUp() {
         //language=JSON
-        json = """{"en:lupin":{"name":{"es":"Altramuces","nl":"Lupine","et":"Lupiin","de":"Lupinen","fi":"Lupiinit","sv":"Lupin","lt":"Lubinai","mt":"Lupina","da":"Lupin"}},"en:molluscs":{"name":{"it":"Molluschi","fr":"Mollusques","lv":"Gliemji","pt":"Moluscos","nl":"Weekdieren","et":"Molluskid","de":"Weichtiere","es":"Moluscos","ga":"Moilisc","mt":"Molluski","lt":"Moliuskai","en":"Molluscs"}}}"""
-        allergensWrapper = jacksonObjectMapper().readValue(json)
-        allergens = allergensWrapper.map()
+        val json = """{
+  "en:lupin": {
+    "name": {
+      "es": "Altramuces",
+      "nl": "Lupine",
+      "et": "Lupiin",
+      "de": "Lupinen",
+      "fi": "Lupiinit",
+      "sv": "Lupin",
+      "lt": "Lubinai",
+      "mt": "Lupina",
+      "da": "Lupin"
+    }
+  },
+  "en:molluscs": {
+    "name": {
+      "it": "Molluschi",
+      "fr": "Mollusques",
+      "lv": "Gliemji",
+      "pt": "Moluscos",
+      "nl": "Weekdieren",
+      "et": "Molluskid",
+      "de": "Weichtiere",
+      "es": "Moluscos",
+      "ga": "Moilisc",
+      "mt": "Molluski",
+      "lt": "Moliuskai",
+      "en": "Molluscs"
+    }
+  }
+}"""
+        allergens = jacksonObjectMapper().readValue<AllergensWrapper>(json).map()
     }
 
     @Test
     fun deserialization_success() {
-        assertThat(allergensWrapper.allergens).hasSize(2)
+        assertThat(allergens).hasSize(2)
     }
 
     @Test

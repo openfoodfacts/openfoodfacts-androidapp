@@ -262,7 +262,6 @@
                     android:background="@drawable/bg_edittext_til"
                     android:gravity="center_vertical"
                     android:hint="@string/packaging_string"
-                    android:inputType="text"
                     android:minHeight="50dp"
                     android:nextFocusDown="@id/categories"
                     android:paddingTop="@dimen/floating_hint_margin_nacho"
@@ -347,7 +346,6 @@
                     android:gravity="center_vertical"
                     android:hint="@string/labels"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
                     android:minHeight="50dp"
                     android:nextFocusDown="@id/period_of_time_after_opening"
                     android:paddingTop="@dimen/floating_hint_margin_nacho"
@@ -443,10 +441,31 @@
                     app:chipHeight="30dp"
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
-                    tools:visibility="visible" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/origin_warning"
+                style="@style/EditHint.Important"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/required_for_ecoscore"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients_til"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/origin_hint"
+                style="@style/EditHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_origin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/origin_warning"
+                android:visibility="gone"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/manufacturing_place_til"
@@ -458,7 +477,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients_til">
+                app:layout_constraintTop_toBottomOf="@id/origin_hint">
 
                 <EditText
                     android:id="@+id/manufacturing_place"

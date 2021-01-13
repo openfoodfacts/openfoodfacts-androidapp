@@ -15,6 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 
+import io.reactivex.disposables.Disposable
 import openfoodfacts.github.scrachx.openfood.models.AnnotationAnswer
 import openfoodfacts.github.scrachx.openfood.models.AnnotationResponse
 import openfoodfacts.github.scrachx.openfood.models.Question
@@ -29,13 +30,12 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
  * Created by Lobster on 17.03.18.
  */
 interface ISummaryProductPresenter {
-    interface Actions {
+    interface Actions : Disposable {
         fun loadProductQuestion()
         fun annotateInsight(insightId: String, annotation: AnnotationAnswer)
-        fun loadAllergens(runIfError: Runnable?)
+        fun loadAllergens(runIfError: (() -> Unit)?)
         fun loadCategories()
         fun loadLabels()
-        fun dispose()
         fun loadAdditives()
         fun loadAnalysisTags()
     }
@@ -45,7 +45,7 @@ interface ISummaryProductPresenter {
         fun showProductQuestion(question: Question)
         fun showAnnotatedInsightToast(annotationResponse: AnnotationResponse)
         fun showCategories(categories: List<CategoryName>)
-        fun showLabels(labels: List<LabelName>)
+        fun showLabels(labelNames: List<LabelName>)
         fun showCategoriesState(state: ProductInfoState)
         fun showLabelsState(state: ProductInfoState)
         fun showAdditives(additives: List<AdditiveName>)

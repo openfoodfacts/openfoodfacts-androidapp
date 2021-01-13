@@ -37,9 +37,10 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
@@ -49,11 +50,11 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverviewBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete.EmbCodeAutoCompleteAdapter
 import openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete.PeriodAfterOpeningAutoCompleteAdapter
-import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryName
 import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNameDao
@@ -66,18 +67,12 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.productsApi
 import openfoodfacts.github.scrachx.openfood.utils.*
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.areChipsDifferent
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.getContent
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isDifferent
-import openfoodfacts.github.scrachx.openfood.utils.EditTextUtils.isNotEmpty
 import openfoodfacts.github.scrachx.openfood.utils.FileDownloader.download
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLCOrDefault
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocale
-import openfoodfacts.github.scrachx.openfood.utils.Utils.dpsToPixel
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
-import org.apache.commons.lang.StringUtils
-import org.greenrobot.greendao.async.AsyncOperation
+import org.apache.commons.lang3.StringUtils
 import org.greenrobot.greendao.async.AsyncOperationListener
 import org.jetbrains.annotations.Contract
 import java.io.File
@@ -86,26 +81,24 @@ import java.util.*
 /**
  * Product Overview fragment of AddProductActivity
  */
-class ProductEditOverviewFragment : BaseFragment() {
+class ProductEditOverviewFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductOverviewBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var appLanguageCode: String
+    private lateinit var photoReceiverHandler: PhotoReceiverHandler
+
     private val categories = arrayListOf<String?>()
-    private var barcode: String? = null
     private val countries = arrayListOf<String>()
+    private val labels = arrayListOf<String>()
+
+    private var barcode: String? = null
     private var editionMode = false
     private var isFrontImagePresent = false
-    private val disp = CompositeDisposable()
     private var languageCode: String? = null
-    private var categoryNameDao: CategoryNameDao? = null
-    private var countryNameDao: CountryNameDao? = null
     private var frontImageUrl: String? = null
-    private var labelNameDao: LabelNameDao? = null
     private var savedProduct: OfflineSavedProduct? = null
-    private var tagDao: TagDao? = null
-    private val labels = arrayListOf<String>()
     private var photoFile: File? = null
-    private var photoReceiverHandler: PhotoReceiverHandler? = null
     private var product: Product? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -115,34 +108,29 @@ class ProductEditOverviewFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tagDao = Utils.daoSession.tagDao
-        categoryNameDao = Utils.daoSession.categoryNameDao
-        labelNameDao = Utils.daoSession.labelNameDao
-        countryNameDao = Utils.daoSession.countryNameDao
-        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile: File ->
-            val resultUri = newPhotoFile.toURI()
+        photoReceiverHandler = PhotoReceiverHandler { newPhotoFile ->
             photoFile = newPhotoFile
             val image: ProductImage
             val position: Int
             if (isFrontImagePresent) {
-                image = ProductImage(barcode, ProductImageField.FRONT, newPhotoFile)
+                image = ProductImage(barcode!!, ProductImageField.FRONT, newPhotoFile)
                 frontImageUrl = newPhotoFile.absolutePath
                 position = 0
             } else {
-                image = ProductImage(barcode, ProductImageField.OTHER, newPhotoFile)
+                image = ProductImage(barcode!!, ProductImageField.OTHER, newPhotoFile)
                 position = 3
             }
-            image.filePath = resultUri.path
-            if (activity is ProductEditActivity) {
-                (activity as ProductEditActivity).addToPhotoMap(image, position)
-            }
+            image.filePath = newPhotoFile.toURI().path
+            (activity as? ProductEditActivity)?.addToPhotoMap(image, position)
+
             hideImageProgress(false, StringUtils.EMPTY)
         }
         binding.btnOtherPictures.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_a_photo_blue_18dp, 0, 0, 0)
+
         binding.btnNext.setOnClickListener { next() }
-        binding.imgFront.setOnClickListener { onFrontImageClick() }
-        binding.btnEditImgFront.setOnClickListener { onEditFrontImageClick() }
-        binding.btnOtherPictures.setOnClickListener { editOtherImage() }
+        binding.imgFront.setOnClickListener { openFrontImage() }
+        binding.btnEditImgFront.setOnClickListener { chooseOrTakeFrontImage() }
+        binding.btnOtherPictures.setOnClickListener { chooseOrTakeOtherImage() }
         binding.sectionManufacturingDetails.setOnClickListener { toggleManufacturingSectionVisibility() }
         binding.sectionPurchasingDetails.setOnClickListener { togglePurchasingSectionVisibility() }
         binding.hintEmbCode.setOnClickListener { showEmbCodeHintDialog() }
@@ -151,56 +139,63 @@ class ProductEditOverviewFragment : BaseFragment() {
         binding.language.setOnClickListener { selectProductLanguage() }
 
         //checks the information about the prompt clicked and takes action accordingly
-        if (requireActivity().intent.getBooleanExtra(ProductEditActivity.MODIFY_CATEGORY_PROMPT, false)) {
+        if (requireActivity().intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_CATEGORY_PROMPT, false)) {
             binding.categories.requestFocus()
-        } else if (requireActivity().intent.getBooleanExtra(ProductEditActivity.MODIFY_NUTRITION_PROMPT, false)) {
+        } else if (requireActivity().intent.getBooleanExtra(ProductEditActivity.KEY_MODIFY_NUTRITION_PROMPT, false)) {
             (requireActivity() as ProductEditActivity).proceed()
         }
         appLanguageCode = getLanguage(activity)
         val args = arguments
-        if (args != null) {
-            product = args.getSerializable("product") as Product?
-            savedProduct = args.getSerializable("edit_offline_product") as OfflineSavedProduct?
-            editionMode = args.getBoolean(ProductEditActivity.KEY_IS_EDITING)
-            binding.barcode.setText(R.string.txtBarcode)
-            binding.language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0)
-            binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
-            binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
-            if (product != null) {
-                barcode = product!!.code
-            }
-            if (editionMode && product != null) {
-                barcode = product!!.code
-                var languageToUse = product!!.lang
-                if (product!!.isLanguageSupported(appLanguageCode)) {
-                    languageToUse = appLanguageCode
-                }
-                preFillProductValues(getLCOrDefault(languageToUse))
-            } else if (savedProduct != null) {
-                barcode = savedProduct!!.barcode
-                preFillValuesFromOffline()
-            } else {
-                //addition
-                val fastAdditionMode = PreferenceManager.getDefaultSharedPreferences(requireContext()).getBoolean("fastAdditionMode", false)
-                enableFastAdditionMode(fastAdditionMode)
-            }
-            binding.barcode.append(" ")
-            binding.barcode.append(barcode)
-            if (isFlavors(AppFlavors.OBF, AppFlavors.OPF)) {
-                binding.btnOtherPictures.visibility = View.GONE
-            }
-            if (args.getBoolean("perform_ocr")) {
-                (activity as ProductEditActivity?)!!.proceed()
-            }
-            if (args.getBoolean("send_updated")) {
-                (activity as ProductEditActivity?)!!.proceed()
-            }
-        } else {
+        if (args == null) {
             Toast.makeText(activity, R.string.error_adding_product_details, Toast.LENGTH_SHORT).show()
             requireActivity().finish()
+            return
         }
+
+        product = args.getSerializable("product") as Product?
+        savedProduct = args.getSerializable("edit_offline_product") as OfflineSavedProduct?
+        editionMode = args.getBoolean(ProductEditActivity.KEY_IS_EDITING)
+
+        binding.barcode.setText(R.string.txtBarcode)
+        binding.language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0)
+        binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        if (product != null) {
+            barcode = product!!.code
+        }
+        if (editionMode && product != null) {
+            barcode = product!!.code
+            var languageToUse = product!!.lang
+            if (product!!.isLanguageSupported(appLanguageCode)) {
+                languageToUse = appLanguageCode
+            }
+            preFillProductValues(getLCOrDefault(languageToUse))
+        } else if (savedProduct != null) {
+            barcode = savedProduct!!.barcode
+            preFillValuesFromOffline()
+        } else {
+            //addition
+            val fastAdditionMode = PreferenceManager.getDefaultSharedPreferences(requireContext()).getBoolean("fastAdditionMode", false)
+            enableFastAdditionMode(fastAdditionMode)
+        }
+
+        binding.barcode.append(" ")
+        binding.barcode.append(barcode)
+
+        if (isFlavors(OBF, OPF)) {
+            binding.btnOtherPictures.visibility = View.GONE
+        }
+        if (args.getBoolean(KEY_PERFORM_OCR)) {
+            (activity as ProductEditActivity).proceed()
+        }
+        if (args.getBoolean(KEY_SEND_UPDATED)) {
+            (activity as ProductEditActivity).proceed()
+        }
+
         initializeChips()
+
         setupAutoSuggestion()
+
         if (activity is ProductEditActivity && (activity as ProductEditActivity).initialValues != null) {
             addAllFieldsToMap((activity as ProductEditActivity).initialValues!!)
         }
@@ -210,9 +205,8 @@ class ProductEditOverviewFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        disp.dispose()
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 
     /**
@@ -291,32 +285,22 @@ class ProductEditOverviewFragment : BaseFragment() {
     }
 
     @Contract("null -> new")
-    private fun extractProductCountriesTagsChipValues(product: Product?): List<String> {
-        return product?.countriesTags?.map { getCountryName(appLanguageCode, it) } ?: emptyList()
-    }
+    private fun extractProductCountriesTagsChipValues(product: Product?) =
+            product?.countriesTags?.map { getCountryName(appLanguageCode, it) } ?: emptyList()
 
     @Contract("null -> new")
-    private fun extractProductStoresChipValues(product: Product?): List<String> {
-        return product?.stores?.split(Regex("\\s*,\\s*")) ?: emptyList()
-    }
+    private fun extractProductStoresChipValues(product: Product?) =
+            product?.stores?.split(',')?.map { it.trim() } ?: emptyList()
 
     @Contract("null -> new")
-    private fun extractProductPurchasePlaces(product: Product?): List<String> {
-        return product?.purchasePlaces?.split(Regex("\\s*,\\s*")) ?: emptyList()
-    }
+    private fun extractProductPurchasePlaces(product: Product?) =
+            product?.purchasePlaces?.split(',')?.map { it.trim() } ?: emptyList()
 
     @Contract("null -> new")
-    private fun extractProductEmbTagsChipsValues(product: Product?): List<String> {
-        if (product?.embTags == null) {
-            return emptyList()
-        }
-        return product.embTags.toString()
-                .replace("[", "")
-                .replace("]", "")
-                .split(", ")
-                .map { getEmbCode(it) }
-
-    }
+    private fun extractProductEmbTagsChipsValues(product: Product?) = (product?.embTags ?: emptyList())
+            .toString().removeSurrounding("[", "]")
+            .split(",")
+            .map { getEmbCode(it.trim()) }
 
     @Contract("null -> new")
     private fun extractProductOriginsChipsValues(product: Product?) =
@@ -332,11 +316,11 @@ class ProductEditOverviewFragment : BaseFragment() {
 
     @Contract("null -> new")
     private fun extractProductPackagingChipsValues(product: Product?) =
-            product?.packaging?.split(Regex("\\s*,\\s*")) ?: emptyList()
+            product?.packaging?.split(',')?.map { it.trim() } ?: emptyList()
 
     @Contract("null -> new")
     private fun extractProductBrandsChipsValues(product: Product?) =
-            product?.brands?.split(Regex("\\s*,\\s*")) ?: emptyList()
+            product?.brands?.split(',')?.map { it.trim() } ?: emptyList()
 
     /**
      * Loads front image of the product into the imageview
@@ -350,18 +334,14 @@ class ProductEditOverviewFragment : BaseFragment() {
             frontImageUrl = imageFrontUrl
             binding.imageProgress.visibility = View.VISIBLE
             binding.btnEditImgFront.visibility = View.INVISIBLE
-            picassoBuilder(activity)
+            picassoBuilder(requireContext())
                     .load(imageFrontUrl)
-                    .resize(dpsToPixel(50, activity), dpsToPixel(50, activity))
+                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
                     .centerInside()
                     .into(binding.imgFront, object : Callback {
-                        override fun onSuccess() {
-                            frontImageLoaded()
-                        }
+                        override fun onSuccess() = frontImageLoaded()
 
-                        override fun onError(ex: Exception) {
-                            frontImageLoaded()
-                        }
+                        override fun onError(ex: Exception) = frontImageLoaded()
                     })
         }
     }
@@ -371,23 +351,26 @@ class ProductEditOverviewFragment : BaseFragment() {
      * @param tag the complete tag. example en:india
      * @return returns the name of the country if found in the db or else returns the tag itself.
      */
-    private fun getCountryName(languageCode: String?, tag: String): String {
-        val countryName = countryNameDao!!.queryBuilder().where(CountryNameDao.Properties.CountyTag.eq(tag), CountryNameDao.Properties.LanguageCode.eq(languageCode))
-                .unique()
-        return if (countryName != null) {
-            countryName.name
-        } else tag
-    }
+    private fun getCountryName(languageCode: String?, tag: String) =
+            Utils.daoSession.countryNameDao.queryBuilder()
+                    .where(
+                            CountryNameDao.Properties.CountyTag.eq(tag),
+                            CountryNameDao.Properties.LanguageCode.eq(languageCode)
+                    )
+                    .unique()?.name ?: tag
 
     /**
      * @param languageCode 2 letter language code. example de, en etc.
      * @param tag the complete tag. example de:hoher-omega-3-gehalt
      * @return returns the name of the label if found in the db or else returns the tag itself.
      */
-    private fun getLabelName(languageCode: String?, tag: String): String {
-        val labelName = labelNameDao!!.queryBuilder().where(LabelNameDao.Properties.LabelTag.eq(tag), LabelNameDao.Properties.LanguageCode.eq(languageCode)).unique()
-        return if (labelName != null) labelName.name else tag
-    }
+    private fun getLabelName(languageCode: String?, tag: String) =
+            Utils.daoSession.labelNameDao.queryBuilder()
+                    .where(
+                            LabelNameDao.Properties.LabelTag.eq(tag),
+                            LabelNameDao.Properties.LanguageCode.eq(languageCode)
+                    ).unique()
+                    ?.name ?: tag
 
     /**
      * @param languageCode 2 letter language code. example en, fr etc.
@@ -395,19 +378,20 @@ class ProductEditOverviewFragment : BaseFragment() {
      * @return returns the name of the category (example Plant-based foods and beverages) if found in the db or else returns the tag itself.
      */
     private fun getCategoryName(languageCode: String?, tag: String): String {
-        val categoryName = categoryNameDao!!
+        return Utils.daoSession.categoryNameDao
                 .queryBuilder()
-                .where(CategoryNameDao.Properties.CategoryTag.eq(tag), CategoryNameDao.Properties.LanguageCode.eq(languageCode))
-                .unique()
-        return categoryName?.name ?: tag
+                .where(
+                        CategoryNameDao.Properties.CategoryTag.eq(tag),
+                        CategoryNameDao.Properties.LanguageCode.eq(languageCode)
+                ).unique()
+                ?.name ?: tag
     }
 
-    private fun getEmbCode(embTag: String): String {
-        val tag = tagDao!!.queryBuilder().where(TagDao.Properties.Id.eq(embTag)).unique()
-        return if (tag != null) {
-            tag.name
-        } else embTag
-    }
+    private fun getEmbCode(embTag: String) =
+            Utils.daoSession.tagDao.queryBuilder()
+                    .where(TagDao.Properties.Id.eq(embTag))
+                    .unique()
+                    ?.name ?: embTag
 
     /**
      * Pre fill the fields if the product is already present in SavedProductOffline db.
@@ -421,7 +405,7 @@ class ProductEditOverviewFragment : BaseFragment() {
                 frontImageUrl = savedProduct!!.imageFrontLocalUrl
                 Picasso.get()
                         .load(frontImageUrl)
-                        .resize(dpsToPixel(50, activity), dpsToPixel(50, activity))
+                        .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
                         .centerInside()
                         .into(binding.imgFront, object : Callback {
                             override fun onSuccess() {
@@ -444,21 +428,21 @@ class ProductEditOverviewFragment : BaseFragment() {
             if (productDetails[ApiFields.Keys.QUANTITY] != null) {
                 binding.quantity.setText(productDetails[ApiFields.Keys.QUANTITY])
             }
-            prefillChip(productDetails, ApiFields.Keys.BRANDS, binding.brand)
-            prefillChip(productDetails, ApiFields.Keys.PACKAGING, binding.packaging)
-            prefillChip(productDetails, ApiFields.Keys.CATEGORIES, binding.categories)
-            prefillChip(productDetails, ApiFields.Keys.LABELS, binding.label)
-            prefillChip(productDetails, ApiFields.Keys.ORIGINS, binding.originOfIngredients)
+            preFillChip(productDetails, ApiFields.Keys.BRANDS, binding.brand)
+            preFillChip(productDetails, ApiFields.Keys.PACKAGING, binding.packaging)
+            preFillChip(productDetails, ApiFields.Keys.CATEGORIES, binding.categories)
+            preFillChip(productDetails, ApiFields.Keys.LABELS, binding.label)
+            preFillChip(productDetails, ApiFields.Keys.ORIGINS, binding.originOfIngredients)
             if (productDetails[ApiFields.Keys.MANUFACTURING_PLACES] != null) {
                 binding.manufacturingPlace.setText(productDetails[ApiFields.Keys.MANUFACTURING_PLACES])
             }
-            prefillChip(productDetails, ApiFields.Keys.EMB_CODES, binding.embCode)
+            preFillChip(productDetails, ApiFields.Keys.EMB_CODES, binding.embCode)
             if (productDetails[ApiFields.Keys.LINK] != null) {
                 binding.link.setText(productDetails[ApiFields.Keys.LINK])
             }
-            prefillChip(productDetails, ApiFields.Keys.ADD_PURCHASE, binding.countryWherePurchased)
-            prefillChip(productDetails, ApiFields.Keys.ADD_STORES, binding.stores)
-            prefillChip(productDetails, ApiFields.Keys.ADD_COUNTRIES, binding.countriesWhereSold)
+            preFillChip(productDetails, ApiFields.Keys.ADD_PURCHASE, binding.countryWherePurchased)
+            preFillChip(productDetails, ApiFields.Keys.ADD_STORES, binding.stores)
+            preFillChip(productDetails, ApiFields.Keys.ADD_COUNTRIES, binding.countriesWhereSold)
         }
     }
 
@@ -467,9 +451,9 @@ class ProductEditOverviewFragment : BaseFragment() {
         binding.btnEditImgFront.visibility = View.VISIBLE
     }
 
-    private fun prefillChip(productDetails: Map<String, String?>, paramName: String, nachoTextView: NachoTextView) {
+    private fun preFillChip(productDetails: Map<String, String?>, paramName: String, nachoTextView: NachoTextView) {
         productDetails[paramName]?.let {
-            val chipValues = it.split(Regex("\\s*,\\s*"))
+            val chipValues = it.split(',').map(String::trim)
             nachoTextView.setText(chipValues)
         }
     }
@@ -487,54 +471,57 @@ class ProductEditOverviewFragment : BaseFragment() {
      * Auto load suggestions into various NachoTextViews
      */
     private fun setupAutoSuggestion() {
-        val daoSession = OFFApplication.daoSession
-        val asyncSessionCountries = daoSession.startAsyncSession()
-        val asyncSessionLabels = daoSession.startAsyncSession()
-        val asyncSessionCategories = daoSession.startAsyncSession()
-        val labelNameDao = daoSession.labelNameDao
-        val countryNameDao = daoSession.countryNameDao
-        val categoryNameDao = daoSession.categoryNameDao
-        asyncSessionCountries.queryList(countryNameDao.queryBuilder()
+        val asyncSessionCountries = OFFApplication.daoSession.startAsyncSession()
+        val asyncSessionLabels = OFFApplication.daoSession.startAsyncSession()
+        val asyncSessionCategories = OFFApplication.daoSession.startAsyncSession()
+
+        asyncSessionCountries.queryList(OFFApplication.daoSession.countryNameDao.queryBuilder()
                 .where(CountryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CountryNameDao.Properties.Name).build())
-        asyncSessionLabels.queryList(labelNameDao.queryBuilder()
+
+        asyncSessionLabels.queryList(OFFApplication.daoSession.labelNameDao.queryBuilder()
                 .where(LabelNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(LabelNameDao.Properties.Name).build())
-        asyncSessionCategories.queryList(categoryNameDao.queryBuilder()
+
+        asyncSessionCategories.queryList(OFFApplication.daoSession.categoryNameDao.queryBuilder()
                 .where(CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CategoryNameDao.Properties.Name).build())
-        asyncSessionCountries.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
+
+        asyncSessionCountries.listenerMainThread = AsyncOperationListener { operation ->
             countries.clear()
-            for (name in operation.result as List<CountryName>) {
-                countries.add(name.name)
-            }
-            val adapter = ArrayAdapter(requireActivity(),
-                    android.R.layout.simple_dropdown_item_1line, countries)
+            (operation.result as List<CountryName>).mapTo(countries) { it.name }
+
+            val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_dropdown_item_1line, countries)
             val embAdapter = EmbCodeAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line)
+
             binding.originOfIngredients.setAdapter(adapter)
             binding.countryWherePurchased.setAdapter(adapter)
             binding.countriesWhereSold.setAdapter(adapter)
             binding.embCode.setAdapter(embAdapter)
         }
-        asyncSessionLabels.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
+        asyncSessionLabels.listenerMainThread = AsyncOperationListener { operation ->
             labels.clear()
-            for (name in operation.result as List<LabelName>) {
-                labels.add(name.name)
-            }
-            binding.label.setAdapter(ArrayAdapter(requireActivity(),
-                    android.R.layout.simple_dropdown_item_1line, labels))
+            (operation.result as List<LabelName>).mapTo(labels) { it.name }
+            binding.label.setAdapter(ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_dropdown_item_1line,
+                    labels
+            ))
         }
-        asyncSessionCategories.listenerMainThread = AsyncOperationListener { operation: AsyncOperation ->
+        asyncSessionCategories.listenerMainThread = AsyncOperationListener { operation ->
             categories.clear()
-            for (name in operation.result as List<CategoryName>) {
-                categories.add(name.name)
-            }
-            binding.categories.setAdapter<ArrayAdapter<String>>(ArrayAdapter(requireActivity(),
-                    android.R.layout.simple_dropdown_item_1line, categories))
+            (operation.result as List<CategoryName>).mapTo(categories) { it.name }
+            binding.categories.setAdapter(ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_dropdown_item_1line,
+                    categories
+            ))
         }
-        if (isFlavors(AppFlavors.OBF)) {
+
+        if (isFlavors(OBF)) {
             binding.periodOfTimeAfterOpeningTil.visibility = View.VISIBLE
-            val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(activity, android.R.layout.simple_dropdown_item_1line)
+            val customAdapter = PeriodAfterOpeningAutoCompleteAdapter(activity,
+                    android.R.layout.simple_dropdown_item_1line)
             binding.periodOfTimeAfterOpening.setAdapter(customAdapter)
         }
     }
@@ -548,21 +535,26 @@ class ProductEditOverviewFragment : BaseFragment() {
         languageCode = lang
         val current = getLocale(lang)
         binding.language.setText(R.string.product_language)
-        binding.language.append(StringUtils.capitalize(current!!.getDisplayName(current)))
-        if (activity is ProductEditActivity) {
-            (activity as ProductEditActivity).setProductLanguage(lang)
-        }
+        binding.language.append(current.getDisplayName(current).capitalize(Locale.getDefault()))
+
+        (activity as? ProductEditActivity)?.setProductLanguage(lang)
+
         if (editionMode) {
             loadFrontImage(lang)
             val fields = "ingredients_text_$lang,product_name_$lang"
-            disp.add(productsApi.getProductByBarcodeSingle(product!!.code, fields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            productsApi.getProductByBarcodeSingle(product!!.code, fields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe {
                         binding.name.setText(getString(R.string.txtLoading))
                         binding.name.isActivated = false
                     }
-                    .subscribe({ productState: ProductState ->
+                    .doOnError {
+                        Log.e(ProductEditOverviewFragment::class.java.simpleName, "Error retrieving product state from server api.", it)
+                        binding.name.setText(StringUtils.EMPTY)
+                        binding.name.isActivated = true
+                    }
+                    .subscribe { productState ->
                         if (productState.status != 1L) {
                             Log.e(ProductEditOverviewFragment::class.simpleName,
                                     "Retrieved product with code ${productState.code}, but status was not successful.")
@@ -583,71 +575,61 @@ class ProductEditOverviewFragment : BaseFragment() {
                         } else {
                             binding.name.setText(StringUtils.EMPTY)
                             binding.name.isActivated = true
-                            if (activity is ProductEditActivity) {
-                                (activity as ProductEditActivity).setIngredients("set", null)
-                            }
+                            (activity as? ProductEditActivity)?.setIngredients("set", null)
                         }
-                    }) { e: Throwable? ->
-                        Log.e(ProductEditOverviewFragment::class.java.simpleName, "Error retrieving product state from server api.", e)
-                        binding.name.setText(StringUtils.EMPTY)
-                        binding.name.isActivated = true
-                    })
+                    }.addTo(disp)
         }
     }
 
-    private operator fun next() {
-        if (!areRequiredFieldsEmpty() && activity is ProductEditActivity) {
-            (activity as ProductEditActivity).proceed()
-        }
+    override fun allValid() = if (!frontImageUrl.isNullOrEmpty()) true
+    else {
+        Snackbar.make(binding.root, R.string.add_at_least_one_picture, BaseTransientBottomBar.LENGTH_SHORT).show()
+        binding.scrollView.fullScroll(View.FOCUS_UP)
+        false
     }
 
-    private fun onFrontImageClick() {
+    private fun openFrontImage() {
         if (frontImageUrl == null) {
             // No image, take one
-            onEditFrontImageClick()
+            chooseOrTakeFrontImage()
         } else {
             // Image found, download it if necessary and edit it
             isFrontImagePresent = true
             if (photoFile == null) {
-                disp.add(download(requireContext(), frontImageUrl!!)
+                download(requireContext(), frontImageUrl!!)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { file: File? ->
                             photoFile = file
                             cropRotateImage(photoFile, getString(R.string.set_img_front))
-                        })
+                        }.addTo(disp)
             } else {
                 cropRotateImage(photoFile, getString(R.string.set_img_front))
             }
         }
     }
 
-    private fun onEditFrontImageClick() {
+    private fun chooseOrTakeFrontImage() {
         // add front image.
         isFrontImagePresent = true
         doChooseOrTakePhotos(getString(R.string.set_img_front))
     }
 
-    private fun editOtherImage() {
+    private fun chooseOrTakeOtherImage() {
         isFrontImagePresent = false
         doChooseOrTakePhotos(getString(R.string.take_more_pictures))
     }
 
-    override fun doOnPhotosPermissionGranted() {
-        if (isFrontImagePresent) {
-            editOtherImage()
-        } else {
-            onFrontImageClick()
-        }
-    }
+    override fun doOnPhotosPermissionGranted() =
+            if (isFrontImagePresent) chooseOrTakeOtherImage()
+            else openFrontImage()
 
     /**
      * adds all the fields to the query map even those which are null or empty.
      */
     private fun addAllFieldsToMap(targetMap: MutableMap<String, String?>) {
         chipifyAllUnterminatedTokens()
-        if (activity !is ProductEditActivity) {
-            return
-        }
+        if (activity !is ProductEditActivity) return
+
         val lc = getLCOrDefault(languageCode)
         targetMap[ApiFields.Keys.BARCODE] = barcode
         targetMap[ApiFields.Keys.LANG] = lc
@@ -658,7 +640,7 @@ class ProductEditOverviewFragment : BaseFragment() {
         targetMap[ApiFields.Keys.PACKAGING] = getNachoValues(binding.packaging)
         targetMap[ApiFields.Keys.CATEGORIES] = getNachoValues(binding.categories)
         targetMap[ApiFields.Keys.LABELS] = getNachoValues(binding.label)
-        if (isFlavors(AppFlavors.OBF)) {
+        if (isFlavors(OBF)) {
             targetMap[ApiFields.Keys.PERIODS_AFTER_OPENING] = binding.periodOfTimeAfterOpening.text.toString()
         }
         if (frontImageUrl != null) {
@@ -676,61 +658,59 @@ class ProductEditOverviewFragment : BaseFragment() {
     /**
      * adds only those fields to the query map which have changed.
      */
-    fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>) {
+    override fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>) {
         chipifyAllUnterminatedTokens()
-        // Check for activity
-        if (activity !is ProductEditActivity) {
-            return
-        }
-        barcode?.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.BARCODE] = it }
 
+        if (activity !is ProductEditActivity) return
+
+        barcode?.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.BARCODE] = it }
+        languageCode?.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.LANG] = it }
         appLanguageCode.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.LC] = it }
 
-        languageCode?.let { if (it.isNotEmpty()) targetMap[ApiFields.Keys.LANG] = it }
-
         val lc = getLCOrDefault(languageCode)
-        if (binding.name.isNotEmpty() && isDifferent(binding.name, if (product != null) product!!.getProductName(lc) else null)) {
+        if (binding.name.isNotEmpty() && binding.name.isContentDifferent(if (product != null) product!!.getProductName(lc) else null)) {
             targetMap[lcProductNameKey(lc)] = binding.name.text.toString()
         }
-        if (binding.quantity.isNotEmpty() && isDifferent(binding.quantity, if (product != null) product!!.quantity else null)) {
+        if (binding.quantity.isNotEmpty() && binding.quantity.isContentDifferent(if (product != null) product!!.quantity else null)) {
             targetMap[ApiFields.Keys.QUANTITY] = binding.quantity.text.toString()
         }
-        if (areChipsDifferent(binding.brand, extractProductBrandsChipsValues(product))) {
+        if (binding.brand.areChipsDifferent(extractProductBrandsChipsValues(product))) {
             targetMap[ApiFields.Keys.BRANDS] = getNachoValues(binding.brand)
         }
-        if (areChipsDifferent(binding.packaging, extractProductPackagingChipsValues(product))) {
+        if (binding.packaging.areChipsDifferent(extractProductPackagingChipsValues(product))) {
             targetMap[ApiFields.Keys.PACKAGING] = getNachoValues(binding.packaging)
         }
-        if (areChipsDifferent(binding.categories, extractProductCategoriesChipsValues(product))) {
+        if (binding.categories.areChipsDifferent(extractProductCategoriesChipsValues(product))) {
             targetMap[ApiFields.Keys.CATEGORIES] = getNachoValues(binding.categories)
         }
-        if (areChipsDifferent(binding.label, extractProductTagsChipsValues(product))) {
+        if (binding.label.areChipsDifferent(extractProductTagsChipsValues(product))) {
             targetMap[ApiFields.Keys.LABELS] = getNachoValues(binding.label)
         }
         if (binding.periodOfTimeAfterOpening.isNotEmpty()) {
             targetMap[ApiFields.Keys.PERIODS_AFTER_OPENING] = binding.periodOfTimeAfterOpening.text.toString()
         }
         frontImageUrl?.let { targetMap["imageUrl"] = it }
-        if (areChipsDifferent(binding.originOfIngredients, extractProductOriginsChipsValues(product))) {
+        if (binding.originOfIngredients.areChipsDifferent(extractProductOriginsChipsValues(product))) {
             targetMap[ApiFields.Keys.ORIGINS] = getNachoValues(binding.originOfIngredients)
         }
-        if (binding.manufacturingPlace.isNotEmpty() && isDifferent(binding.manufacturingPlace, if (product != null) product!!.manufacturingPlaces else null)) {
+        if (binding.manufacturingPlace.isNotEmpty()
+                && binding.manufacturingPlace.isContentDifferent(if (product != null) product!!.manufacturingPlaces else null)) {
             targetMap[ApiFields.Keys.MANUFACTURING_PLACES] = binding.manufacturingPlace.text.toString()
         }
-        if (areChipsDifferent(binding.embCode, extractProductEmbTagsChipsValues(product))) {
+        if (binding.embCode.areChipsDifferent(extractProductEmbTagsChipsValues(product))) {
             targetMap[ApiFields.Keys.EMB_CODES] = getNachoValues(binding.embCode)
         }
-        if (binding.link.isNotEmpty() && isDifferent(binding.link, if (product != null) product!!.manufacturerUrl else null)) {
+        if (binding.link.isNotEmpty()
+                && binding.link.isContentDifferent(if (product != null) product!!.manufacturerUrl else null)) {
             targetMap[ApiFields.Keys.LINK] = binding.link.text.toString()
         }
-        if (areChipsDifferent(binding.countryWherePurchased, extractProductPurchasePlaces(product))) {
+        if (binding.countryWherePurchased.areChipsDifferent(extractProductPurchasePlaces(product))) {
             targetMap[ApiFields.Keys.PURCHASE_PLACES] = getNachoValues(binding.countryWherePurchased)
         }
-        if (areChipsDifferent(binding.stores, extractProductStoresChipValues(product))) {
+        if (binding.stores.areChipsDifferent(extractProductStoresChipValues(product))) {
             targetMap[ApiFields.Keys.STORES] = getNachoValues(binding.stores)
         }
-        if (areChipsDifferent(binding.countriesWhereSold,
-                        extractProductCountriesTagsChipValues(product))) {
+        if (binding.countriesWhereSold.areChipsDifferent(extractProductCountriesTagsChipValues(product))) {
             targetMap[ApiFields.Keys.COUNTRIES] = getNachoValues(binding.countriesWhereSold)
         }
     }
@@ -738,24 +718,20 @@ class ProductEditOverviewFragment : BaseFragment() {
     /**
      * Chipifies all existing plain text in all the NachoTextViews.
      */
-    private fun chipifyAllUnterminatedTokens() {
-        arrayOf(
-                binding.brand,
-                binding.packaging,
-                binding.categories,
-                binding.label,
-                binding.originOfIngredients,
-                binding.embCode,
-                binding.countryWherePurchased,
-                binding.stores,
-                binding.countriesWhereSold
-        ).forEach { it.chipifyAllUnterminatedTokens() }
-    }
+    private fun chipifyAllUnterminatedTokens() = listOf(
+            binding.brand,
+            binding.packaging,
+            binding.categories,
+            binding.label,
+            binding.originOfIngredients,
+            binding.embCode,
+            binding.countryWherePurchased,
+            binding.stores,
+            binding.countriesWhereSold
+    ).forEach { it.chipifyAllUnterminatedTokens() }
 
     @Contract(pure = true)
-    private fun getNachoValues(nachoTextView: NachoTextView): String {
-        return StringUtils.join(nachoTextView.chipValues, ",")
-    }
+    private fun getNachoValues(nachoTextView: NachoTextView) = nachoTextView.chipValues.joinToString(",")
 
     private fun toggleManufacturingSectionVisibility() {
         if (binding.manufacturingPlaceTil.visibility != View.VISIBLE) {
@@ -770,6 +746,8 @@ class ProductEditOverviewFragment : BaseFragment() {
 
     private fun changeVisibilityManufacturingSectionTo(visibility: Int) {
         binding.originOfIngredientsTil.visibility = visibility
+        binding.originWarning.visibility = visibility
+        binding.originHint.visibility = visibility
         binding.manufacturingPlaceTil.visibility = visibility
         binding.embCodeTil.visibility = visibility
         binding.linkTil.visibility = visibility
@@ -809,10 +787,10 @@ class ProductEditOverviewFragment : BaseFragment() {
             url = "$url ${brandNames.joinToString(" ")}"
         }
         if (binding.name.isNotEmpty()) {
-            url = "$url ${getContent(binding.name)}"
+            url = "$url ${binding.name.getContent()}"
         }
         url = "$url ${getString(R.string.official_website)}"
-        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireActivity().baseContext, null)
+        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireActivity(), null)
         CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, Uri.parse(url), WebViewFallback())
     }
 
@@ -827,46 +805,31 @@ class ProductEditOverviewFragment : BaseFragment() {
     private fun selectProductLanguage() {
         val localeValues = requireActivity().resources.getStringArray(R.array.languages_array)
         val localeLabels = arrayOfNulls<String>(localeValues.size)
-        val finalLocalValues: MutableList<String> = ArrayList()
-        val finalLocalLabels: MutableList<String?> = ArrayList()
+        val finalLocalValues = ArrayList<String>()
+        val finalLocalLabels = ArrayList<String?>()
         var selectedIndex = 0
-        for (i in localeValues.indices) {
-            if (localeValues[i] == languageCode) {
+        localeValues.withIndex().forEach { (i, localeCode) ->
+            if (localeCode == languageCode) {
                 selectedIndex = i
             }
-            val current = getLocale(localeValues[i])
-            if (current != null) {
-                localeLabels[i] = StringUtils.capitalize(current.getDisplayName(current))
-                finalLocalLabels.add(localeLabels[i])
-                finalLocalValues.add(localeValues[i])
-            }
+            val current = getLocale(localeCode)
+            localeLabels[i] = current.getDisplayName(current).capitalize(Locale.ROOT)
+            finalLocalLabels.add(localeCode)
+            finalLocalValues.add(localeCode)
         }
-        MaterialDialog.Builder(requireActivity())
+        MaterialDialog.Builder(requireContext())
                 .title(R.string.preference_choose_language_dialog_title)
                 .items(finalLocalLabels)
                 .itemsCallbackSingleChoice(selectedIndex) { _, _, which, _ ->
                     binding.name.text = null
-                    if (activity is ProductEditActivity) {
-                        (activity as ProductEditActivity).setIngredients("set", null)
-                    }
+
+                    (activity as? ProductEditActivity)?.setIngredients("set", null)
+
                     setProductLanguage(finalLocalValues[which])
                     true
                 }
                 .positiveText(R.string.ok_button)
                 .show()
-    }
-
-    /**
-     * Before moving next check if the required fields are empty
-     */
-    fun areRequiredFieldsEmpty(): Boolean {
-        return if (TextUtils.isEmpty(frontImageUrl)) {
-            Snackbar.make(binding.root, R.string.add_at_least_one_picture, BaseTransientBottomBar.LENGTH_SHORT).show()
-            binding.scrollView.fullScroll(View.FOCUS_UP)
-            true
-        } else {
-            false
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -883,23 +846,19 @@ class ProductEditOverviewFragment : BaseFragment() {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             isFrontImagePresent = true
         }
-        photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
+        photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
     fun showImageProgress() {
-        if (!isAdded) {
-            return
-        }
+        if (!isAdded) return
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE
         binding.imgFront.visibility = View.INVISIBLE
         binding.btnEditImgFront.visibility = View.INVISIBLE
     }
 
-    fun hideImageProgress(errorInUploading: Boolean, message: String?) {
-        if (!isAdded) {
-            return
-        }
+    override fun hideImageProgress(errorInUploading: Boolean, message: String) {
+        if (!isAdded) return
         binding.imageProgress.visibility = View.GONE
         binding.imageProgressText.visibility = View.GONE
         binding.imgFront.visibility = View.VISIBLE
@@ -907,7 +866,7 @@ class ProductEditOverviewFragment : BaseFragment() {
         if (!errorInUploading) {
             Picasso.get()
                     .load(photoFile!!)
-                    .resize(dpsToPixel(50, activity), dpsToPixel(50, activity))
+                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
                     .centerInside()
                     .into(binding.imgFront)
         }

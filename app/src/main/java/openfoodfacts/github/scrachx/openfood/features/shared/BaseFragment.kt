@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.afollestad.materialdialogs.MaterialDialog
 import com.theartofdev.edmodo.cropper.CropImage
+import io.reactivex.disposables.CompositeDisposable
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListener
 import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshView
@@ -38,9 +39,13 @@ import pl.aprilapps.easyphotopicker.EasyImage
 import java.io.File
 
 abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, OnRefreshView {
+
     private val cameraPermissionRequestLauncher = registerForActivityResult(RequestMultiplePermissions())
-    { results: Map<String?, Boolean?>? ->
-        if (!isAllGranted(results!!)) {
+    { results ->
+        if (isAllGranted(results)) {
+            // Callback
+            doOnPhotosPermissionGranted()
+        } else {
             // Tell the user how to give permission
             MaterialDialog.Builder(requireActivity())
                     .title(R.string.permission_title)
@@ -48,27 +53,31 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
                     .negativeText(R.string.txtNo)
                     .positiveText(R.string.txtYes)
                     .onPositive { _, _ ->
-                        val intent = Intent()
-                        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                        val uri = Uri.fromParts("package", requireActivity().packageName, null)
-                        intent.data = uri
-                        startActivity(intent)
+                        startActivity(Intent().apply {
+                            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                            data = Uri.fromParts("package", requireActivity().packageName, null)
+                        })
                     }
                     .show()
-        } else {
-            // Callback
-            doOnPhotosPermissionGranted()
         }
     }
     private var refreshListener: OnRefreshListener? = null
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
 
+    protected val disp = CompositeDisposable()
+
+    /**
+     * Dispose [disp] and then call super
+     */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        disp.dispose()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         swipeRefreshLayout = view.findViewById(R.id.swipeRefresh)
-        if (swipeRefreshLayout != null) {
-            swipeRefreshLayout!!.setOnRefreshListener(this)
-        }
+        swipeRefreshLayout?.setOnRefreshListener(this)
     }
 
     override fun onAttach(context: Context) {
@@ -79,15 +88,12 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
     }
 
     override fun onRefresh() {
-        if (refreshListener != null) {
-            refreshListener!!.onRefresh()
-        }
+        refreshListener?.onRefresh()
     }
 
+
     override fun refreshView(productState: ProductState) {
-        if (swipeRefreshLayout != null) {
-            swipeRefreshLayout!!.isRefreshing = false
-        }
+        swipeRefreshLayout?.isRefreshing = false
     }
 
     protected fun doChooseOrTakePhotos(title: String?) {
@@ -99,7 +105,7 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
         cameraPermissionRequestLauncher.launch(arrayOf(permission.CAMERA))
     }
 
-    protected open fun doOnPhotosPermissionGranted() {}
+    protected open fun doOnPhotosPermissionGranted() = Unit
 
     protected fun cropRotateImage(image: File?, title: String?) {
         val uri = Uri.fromFile(image)
@@ -114,18 +120,21 @@ abstract class BaseFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, 
                 .start(requireContext(), this)
     }
 
-    private fun canTakePhotos(): Boolean {
-        return ContextCompat.checkSelfPermission(requireContext(), permission.CAMERA) == PackageManager.PERMISSION_GRANTED
-    }
+    private fun canTakePhotos() =
+            ContextCompat.checkSelfPermission(requireContext(), permission.CAMERA) == PackageManager.PERMISSION_GRANTED
 
     companion object {
         /**
-         * an image height can't be less than 160. See https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577
+         * An image height can't be less than 160.
+         *
+         * [See this code in ProductOpener](https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577)
          */
         const val MIN_CROP_RESULT_HEIGHT_ACCEPTED_BY_OFF = 160
 
         /**
-         * an image width can't be less than 640. See https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577
+         * An image width can't be less than 640.
+         *
+         * [See this code in ProductOpener](https://github.com/openfoodfacts/openfoodfacts-server/blob/5bee6b8d3cad19bedd7e4194848682805b90728c/lib/ProductOpener/Images.pm#L577)
          */
         const val MIN_CROP_RESULT_WIDTH_ACCEPTED_BY_OFF = 640
     }

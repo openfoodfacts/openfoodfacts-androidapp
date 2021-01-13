@@ -21,19 +21,15 @@ class ProductStateTest {
                 PROPERTY_KEY_1 to PROPERTY_VALUE_1,
                 PROPERTY_KEY_2 to PROPERTY_VALUE_2
         )
-        val checkString = "State{statusVerbose='%s', status=%d, product=%s, code='%s', additionalProperties=%s}".format(
-                STATUS_VERBOSE,
-                STATUS,
-                PRODUCT,
-                CODE,
-                additionalProperties)
+        val checkString = "ProductState[statusVerbose=$STATUS_VERBOSE,status=$STATUS,product=$PRODUCT,code=$CODE,additionalProperties=$additionalProperties]"
+
         assertThat(productState.toString()).isEqualTo(checkString)
     }
 
     companion object {
         private const val STATUS_VERBOSE = "verbose status"
         private const val STATUS = 45L
-        private val PRODUCT = Product()
+        private val PRODUCT = Product().apply { code = CODE }
         private const val CODE = "code"
         private const val PROPERTY_KEY_1 = "prop_key_1"
         private const val PROPERTY_VALUE_1 = "value_1"

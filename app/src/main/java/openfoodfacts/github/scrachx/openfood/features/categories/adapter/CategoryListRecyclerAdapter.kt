@@ -11,11 +11,15 @@ import openfoodfacts.github.scrachx.openfood.models.entities.category.CategoryNa
  */
 class CategoryListRecyclerAdapter(private val categories: List<CategoryName>) : RecyclerView.Adapter<CategoryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val binding = CategoryRecyclerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = CategoryRecyclerItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+        )
         return CategoryViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) = holder.bind(categories[position])
 
-    override fun getItemCount() = categories.size
+    override fun getItemCount() = categories.count()
 }

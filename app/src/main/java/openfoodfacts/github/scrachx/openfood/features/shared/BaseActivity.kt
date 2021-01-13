@@ -36,7 +36,6 @@ abstract class BaseActivity : AppCompatActivity() {
         private set
 
     companion object {
-
         init {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         }
@@ -56,15 +55,9 @@ abstract class BaseActivity : AppCompatActivity() {
         onCreate(this)
     }
 
-    fun getUserLogin(): String? {
-        val preferences = getLoginPreferences()
-        return preferences?.getString("user", null)
-    }
+    fun getUserLogin() = getLoginPreferences().getString("user", null)
 
-    fun getUserSession(): String? {
-        val preferences = getLoginPreferences()
-        return preferences!!.getString("user_session", null)
-    }
+    fun getUserSession() = getLoginPreferences().getString("user_session", null)
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

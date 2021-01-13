@@ -1,112 +1,116 @@
 package openfoodfacts.github.scrachx.openfood.features.product.view.photos
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.google.android.material.snackbar.Snackbar
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity
 import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.Utils
+import openfoodfacts.github.scrachx.openfood.utils.isUserSet
 import org.json.JSONException
 
 /**
  * Created by prajwalm on 10/09/18.
  */
 class ProductPhotosAdapter(
-        private val activity: FragmentActivity,
+        private val context: Context,
         private val product: Product,
-        private val isLoggedIn: Boolean,
         private val images: List<String>,
-        private val onImageClick: (Int) -> Unit
-) : RecyclerView.Adapter<ProductPhotoViewHolder>() {
-    private val barcode = product.code
-    private val imgMap = hashMapOf<String, String?>()
-    private val openFoodAPIClient = OpenFoodAPIClient(activity)
+        private val snackView: View? = null,
+        private val onImageClick: (Int) -> Unit,
+
+        ) : RecyclerView.Adapter<ProductPhotoViewHolder>(), Disposable {
+    private val isLoggedIn = context.isUserSet()
+    private val openFoodAPIClient = OpenFoodAPIClient(context)
+    private val disp = CompositeDisposable()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPhotoViewHolder {
-        return ProductPhotoViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.images_item, parent, false))
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.images_item, parent, false)
+        return ProductPhotoViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ProductPhotoViewHolder, position: Int) = holder.run {
-        setImage(this@ProductPhotosAdapter.images[position], barcode, activity)
+        setImage(this@ProductPhotosAdapter.images[position], product.code, context)
         setOnImageListener { onImageClick(it) }
         setOnEditListener {
-            if (isLoggedIn) {
-                PopupMenu(activity, holder.itemView).let {
+            if (!isLoggedIn) {
+                context.startActivity(Intent(context, LoginActivity::class.java))
+            } else {
+                PopupMenu(context, holder.itemView).let {
                     it.inflate(R.menu.menu_image_edit)
                     it.setOnMenuItemClickListener(PopupItemClickListener(position))
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) it.setForceShowIcon(true)
                     it.show()
                 }
-            } else {
-                activity.startActivity(Intent(activity, LoginActivity::class.java))
             }
         }
     }
 
 
     fun displaySetImageName(response: String?) {
-        val jsonObject = Utils.createJsonObject(response)
-        val imageName: String
-        imageName = try {
-            jsonObject!!.getString("imagefield")
+        val imageName = try {
+            jacksonObjectMapper().readTree(response)!!["imagefield"].asText()
         } catch (e: JSONException) {
             Log.e(LOG_TAG, "displaySetImageName", e)
-            Toast.makeText(activity, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
             return
         } catch (e: NullPointerException) {
             Log.e(LOG_TAG, "displaySetImageName", e)
-            Toast.makeText(activity, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Error while setting image from response $response", Toast.LENGTH_LONG).show()
             return
         }
-        Toast.makeText(activity, "${activity.getString(R.string.set_image_name)} $imageName", Toast.LENGTH_LONG).show()
+        val txt = "${context.getString(R.string.set_image_name)} $imageName"
+        if (snackView == null) Toast.makeText(context, txt, Toast.LENGTH_LONG).show()
+        else Snackbar.make(snackView, txt, Snackbar.LENGTH_LONG).show()
     }
 
-    override fun getItemCount() = images.size
 
     private inner class PopupItemClickListener(private val position: Int) : PopupMenu.OnMenuItemClickListener {
         override fun onMenuItemClick(item: MenuItem): Boolean {
-            val imgIdKey = IMG_ID
-            when (item.itemId) {
-                R.id.set_ingredient_image -> {
-                    imgMap[imgIdKey] = images[position]
-                    imgMap[PRODUCT_BARCODE] = barcode
-                    imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.INGREDIENTS)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
+            val imgMap = mutableMapOf(
+                    IMG_ID to images[position],
+                    PRODUCT_BARCODE to product.code
+            )
+            imgMap[IMAGE_STRING_ID] = when (item.itemId) {
+                R.id.report_image -> {
+                    context.startActivity(Intent.createChooser(
+                            Intent(Intent.ACTION_SEND).apply {
+                                data = Uri.parse("mailto:")
+                                type = OpenFoodAPIClient.MIME_TEXT
+                                putExtra(Intent.EXTRA_EMAIL, "Open Food Facts <contact@openfoodfacts.org>")
+                                putExtra(Intent.EXTRA_SUBJECT, "Photo report for product ${product.code}")
+                                putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product ${product.code}")
+                            }, context.getString(R.string.report_email_chooser_title)))
+                    return true
                 }
-                R.id.set_nutrition_image -> {
-                    imgMap[imgIdKey] = images[position]
-                    imgMap[PRODUCT_BARCODE] = barcode
-                    imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.NUTRITION)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
-                }
-                R.id.set_front_image -> {
-                    imgMap[imgIdKey] = images[position]
-                    imgMap[PRODUCT_BARCODE] = barcode
-                    imgMap[IMAGE_STRING_ID] = product.getImageStringKey(ProductImageField.FRONT)
-                    openFoodAPIClient.editImage(product.code, imgMap) { _: Boolean, response: String? -> displaySetImageName(response) }
-                }
-                R.id.report_image -> activity.startActivity(Intent.createChooser(
-                        Intent(Intent.ACTION_SEND).apply {
-                            data = Uri.parse("mailto:")
-                            type = OpenFoodAPIClient.MIME_TEXT
-                            putExtra(Intent.EXTRA_EMAIL, "Open Food Facts <contact@openfoodfacts.org>")
-                            putExtra(Intent.EXTRA_SUBJECT, "Photo report for product $barcode")
-                            putExtra(Intent.EXTRA_TEXT, "I've spotted a problematic photo for product $barcode")
-                        }, "Send mail"))
-                else -> {
-                }
+
+                R.id.set_ingredient_image -> product.getImageStringKey(ProductImageField.INGREDIENTS)
+                R.id.set_recycling_image -> product.getImageStringKey(ProductImageField.PACKAGING)
+                R.id.set_nutrition_image -> product.getImageStringKey(ProductImageField.NUTRITION)
+                R.id.set_front_image -> product.getImageStringKey(ProductImageField.FRONT)
+                else -> product.getImageStringKey(ProductImageField.OTHER)
             }
+            openFoodAPIClient.editImage(product.code, imgMap)
+                    .subscribe { response -> displaySetImageName(response) }
+                    .addTo(disp)
             return true
         }
     }
@@ -114,4 +118,8 @@ class ProductPhotosAdapter(
     companion object {
         private val LOG_TAG = this::class.simpleName!!
     }
+
+    override fun getItemCount() = images.count()
+    override fun dispose() = disp.dispose()
+    override fun isDisposed() = disp.isDisposed
 }

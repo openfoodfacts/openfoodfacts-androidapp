@@ -3,7 +3,6 @@ package openfoodfacts.github.scrachx.openfood.features.productlist
 import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -16,24 +15,23 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.net.toFile
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityYourListedProductsBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.models.HistoryItem
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -41,57 +39,37 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
+import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
-import org.apache.commons.collections.CollectionUtils
-import org.apache.commons.csv.CSVFormat
-import org.apache.commons.csv.CSVPrinter
-import org.apache.commons.lang.StringUtils
 import java.io.File
-import java.io.FileWriter
-import java.io.IOException
-import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 import kotlin.properties.Delegates
 
 class ProductListActivity : BaseActivity(), SwipeControllerActions {
     private var _binding: ActivityYourListedProductsBinding? = null
     private val binding get() = _binding!!
-    private var productList: ProductLists? = null
-    private var products: MutableList<YourListedProduct>? = null
-    private val yourListedProductDao = daoSession.yourListedProductDao
-    private val historyProductDao = daoSession.historyProductDao
+
     private var listID by Delegates.notNull<Long>()
-    private var adapter: ProductListAdapter? = null
+    private lateinit var productList: ProductLists
+    private lateinit var adapter: ProductListAdapter
+
     private var isLowBatteryMode = false
     private var listName: String? = null
-    private var emptyList = false
     private var isEatenList = false
-    private var sortType = "none"
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_your_listed_products, menu)
-        menu.findItem(R.id.action_export_all_listed_products).isVisible = !emptyList
-        menu.findItem(R.id.action_sort_listed_products).isVisible = !emptyList
-        return true
-    }
+    private var sortType = NONE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityYourListedProductsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        if (isDisableImageLoad(this) && isBatteryLevelLow(this)) isLowBatteryMode = true
+        if (this.isDisableImageLoad() && this.isBatteryLevelLow()) isLowBatteryMode = true
 
         // OnClick
         binding.scanFirstYourListedProduct.setOnClickListener { onFirstScan() }
@@ -101,17 +79,17 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         val bundle = intent.extras
         var prodToAdd: Product? = null
         if (bundle != null) {
-            listID = bundle.getLong("listId")
-            listName = bundle.getString("listName")
+            listID = bundle.getLong(KEY_LIST_ID)
+            listName = bundle.getString(KEY_LIST_NAME)
             title = listName
-            prodToAdd = bundle["product"] as Product?
+            prodToAdd = bundle[KEY_PRODUCT_TO_ADD] as Product?
         }
 
         val locale = getLanguage(this)
         if (prodToAdd?.code != null && prodToAdd.productName != null && prodToAdd.getImageSmallUrl(locale) != null) {
             val barcode = prodToAdd.code
             val productName = prodToAdd.productName
-            val productDetails = getProductBrandsQuantityDetails(prodToAdd)
+            val productDetails = prodToAdd.getProductBrandsQuantityDetails()
             val imageUrl = prodToAdd.getImageSmallUrl(locale)
             val product = YourListedProduct()
             product.barcode = barcode
@@ -120,7 +98,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             product.productName = productName
             product.productDetails = productDetails
             product.imageUrl = imageUrl
-            yourListedProductDao.insertOrReplace(product)
+            daoSession.yourListedProductDao.insertOrReplace(product)
         }
 
         val productList = daoSession.productListsDao.load(listID)
@@ -135,150 +113,162 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         }
         binding.rvYourListedProducts.layoutManager = LinearLayoutManager(this)
         binding.rvYourListedProducts.setHasFixedSize(false)
-        products = productList.products.toMutableList()
-
-
-        products?.let {
-            if (it.isEmpty()) {
-                emptyList = true
-                binding.tvInfoYourListedProducts.visibility = View.VISIBLE
-                binding.scanFirstYourListedProduct.visibility = View.VISIBLE
-                setInfo(binding.tvInfoYourListedProducts)
-            }
-            adapter = ProductListAdapter(this, it, isLowBatteryMode)
-            binding.rvYourListedProducts.adapter = adapter
-            val swipeController = SwipeController(this, this@ProductListActivity)
-            val itemTouchHelper = ItemTouchHelper(swipeController)
-            itemTouchHelper.attachToRecyclerView(binding.rvYourListedProducts)
-        }
 
         this.productList = productList
-        selectNavigationItem(binding.bottomNavigation.bottomNavigation, 0)
-        install(this, binding.bottomNavigation.bottomNavigation)
 
-    }
-
-    private fun sortProducts() {
-        when (sortType) {
-            "title" -> products!!.sortWith { p1, p2 -> p1!!.productName.compareTo(p2!!.productName, ignoreCase = true) }
-            "brand" -> products!!.sortWith { p1, p2 -> p1!!.productDetails.compareTo(p2!!.productDetails, ignoreCase = true) }
-            "barcode" -> products!!.sortWith { p1, p2 -> p1!!.barcode.compareTo(p2!!.barcode, ignoreCase = true) }
-            "grade" -> {
-
-                //get list of HistoryProduct items for the YourListProduct items
-                val gradesConditions = products!!.map {HistoryProductDao.Properties.Barcode.eq(it.barcode)  }.toTypedArray()
-                val historyProductsGrade: List<HistoryProduct>
-                val qbGrade = historyProductDao!!.queryBuilder()
-                if (gradesConditions.size > 1) {
-                    qbGrade.whereOr(gradesConditions[0], gradesConditions[1], *gradesConditions.copyOfRange(2, gradesConditions.size))
-                } else {
-                    qbGrade.where(gradesConditions[0])
-                }
-                historyProductsGrade = qbGrade.list()
-                products!!.sortWith { p1: YourListedProduct, p2: YourListedProduct ->
-                    var g1 = "E"
-                    var g2 = "E"
-                    for (h in historyProductsGrade) {
-                        if (h.barcode == p1.barcode && h.nutritionGrade != null) {
-                            g1 = h.nutritionGrade
-                        }
-                        if (h.barcode == p2.barcode && h.nutritionGrade != null) {
-                            g2 = h.nutritionGrade
-                        }
-                    }
-                    g1.compareTo(g2, ignoreCase = true)
-                }
-            }
-            "time" -> {
-                //get list of HistoryProduct items for the YourListProduct items
-                val times = products!!.map { HistoryProductDao.Properties.Barcode.eq(it.barcode) }.toTypedArray()
-
-                val historyProductsTime: List<HistoryProduct>
-                val qbTime = historyProductDao!!.queryBuilder()
-                qbTime.whereOr(times[0], times[1], *times.copyOfRange(2, times.size))
-                historyProductsTime = qbTime.list()
-                products!!.sortWith { p1: YourListedProduct, p2: YourListedProduct ->
-                    var d1 = Date(0)
-                    var d2 = Date(0)
-                    for (h in historyProductsTime) {
-                        if (h.barcode == p1.barcode && h.lastSeen != null) {
-                            d1 = h.lastSeen
-                        }
-                        if (h.barcode == p2.barcode && h.lastSeen != null) {
-                            d2 = h.lastSeen
-                        }
-                    }
-                    d2.compareTo(d1)
-                }
-            }
-            else -> products!!.sortWith { _, _ -> 0 }
+        if (productList.products.isEmpty()) {
+            binding.tvInfoYourListedProducts.visibility = View.VISIBLE
+            binding.scanFirstYourListedProduct.visibility = View.VISIBLE
+            setInfo(binding.tvInfoYourListedProducts)
         }
+        adapter = ProductListAdapter(this, productList.products.toMutableList(), isLowBatteryMode)
+        binding.rvYourListedProducts.adapter = adapter
+
+        ItemTouchHelper(SwipeController(this, this@ProductListActivity))
+                .attachToRecyclerView(binding.rvYourListedProducts)
+
+        binding.bottomNavigation.bottomNavigation.selectNavigationItem(0)
+        binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
+
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                val data = Intent()
-                data.putExtra("update", true)
-                setResult(RESULT_OK, data)
-                finish()
-                true
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_your_listed_products, menu)
+        menu.findItem(R.id.action_export_all_listed_products).isVisible = adapter.products.isNotEmpty()
+        menu.findItem(R.id.action_sort_listed_products).isVisible = adapter.products.isNotEmpty()
+        return true
+    }
+
+    private fun MutableList<YourListedProduct>.customSortBy(sortType: SortType) = when (sortType) {
+        TITLE -> sortBy { it.productName }
+        BRAND -> sortBy { it.productDetails }
+        BARCODE -> sortBy { it.barcode }
+        GRADE -> {
+
+            //get list of HistoryProduct items for the YourListProduct items
+            val gradesConditions = map { HistoryProductDao.Properties.Barcode.eq(it.barcode) }.toTypedArray()
+            val historyProductsGrade: List<HistoryProduct>
+            val qbGrade = daoSession.historyProductDao!!.queryBuilder()
+            if (gradesConditions.size > 1) {
+                qbGrade.whereOr(gradesConditions[0], gradesConditions[1], *gradesConditions.copyOfRange(2, gradesConditions.size))
+            } else {
+                qbGrade.where(gradesConditions[0])
             }
-            R.id.action_export_all_listed_products -> {
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                        MaterialDialog.Builder(this)
-                                .title(R.string.action_about)
-                                .content(R.string.permision_write_external_storage)
-                                .neutralText(R.string.txtOk)
-                                .show()
-                    } else {
-                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_STORAGE)
+            historyProductsGrade = qbGrade.list()
+            sortWith { p1, p2 ->
+                var g1 = "E"
+                var g2 = "E"
+                historyProductsGrade.forEach { h ->
+                    if (h.barcode == p1.barcode && h.nutritionGrade != null) {
+                        g1 = h.nutritionGrade
                     }
-                } else {
-                    exportCSV()
+                    if (h.barcode == p2.barcode && h.nutritionGrade != null) {
+                        g2 = h.nutritionGrade
+                    }
                 }
-                true
+                g1.compareTo(g2, ignoreCase = true)
             }
-            R.id.action_sort_listed_products -> {
-                val builder = MaterialDialog.Builder(this)
-                builder.title(R.string.sort_by)
+        }
+        TIME -> {
+            //get list of HistoryProduct items for the YourListProduct items
+            val times = map { HistoryProductDao.Properties.Barcode.eq(it.barcode) }.toTypedArray()
+
+            val historyProductsTime: List<HistoryProduct>
+            val qbTime = daoSession.historyProductDao!!.queryBuilder()
+            qbTime.whereOr(times[0], times[1], *times.copyOfRange(2, times.size))
+            historyProductsTime = qbTime.list()
+            sortWith { p1: YourListedProduct, p2: YourListedProduct ->
+                var d1 = Date(0)
+                var d2 = Date(0)
+                historyProductsTime.forEach {
+                    if (it.barcode == p1.barcode && it.lastSeen != null) {
+                        d1 = it.lastSeen
+                    }
+                    if (it.barcode == p2.barcode && it.lastSeen != null) {
+                        d2 = it.lastSeen
+                    }
+                }
+                d2.compareTo(d1)
+            }
+        }
+        else -> sortWith { _, _ -> 0 }
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            setResult(RESULT_OK, Intent().apply {
+                putExtra("update", true)
+            })
+            finish()
+            true
+        }
+        R.id.action_export_all_listed_products -> {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    MaterialDialog.Builder(this)
+                            .title(R.string.action_about)
+                            .content(R.string.permision_write_external_storage)
+                            .neutralText(R.string.txtOk)
+                            .show()
+                } else {
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_STORAGE)
+                }
+            } else {
+                exportAsCSV()
+            }
+            true
+        }
+        R.id.action_sort_listed_products -> {
+            MaterialDialog.Builder(this).run {
+                title(R.string.sort_by)
                 val sortTypes = if (isFlavors(AppFlavors.OFF)) {
-                    arrayOf(getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(
-                            R.string.by_barcode), getString(R.string.by_time))
+                    arrayOf(
+                            getString(R.string.by_title),
+                            getString(R.string.by_brand),
+                            getString(R.string.by_nutrition_grade),
+                            getString(
+                                    R.string.by_barcode),
+                            getString(R.string.by_time)
+                    )
                 } else {
-                    arrayOf(getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_time), getString(R.string.by_barcode))
+                    arrayOf(
+                            getString(R.string.by_title),
+                            getString(R.string.by_brand),
+                            getString(R.string.by_time),
+                            getString(R.string.by_barcode)
+                    )
                 }
-                builder.items(*sortTypes)
-                builder.itemsCallback { _: MaterialDialog?, _: View?, position: Int, _: CharSequence? ->
+                items(*sortTypes)
+                itemsCallback { _, _, position, _ ->
                     sortType = when (position) {
-                        0 -> "title"
-                        1 -> "brand"
-                        2 -> if (isFlavors(AppFlavors.OFF)) {
-                            "grade"
-                        } else {
-                            "time"
-                        }
-                        3 -> "barcode"
-                        else -> "time"
+                        0 -> TITLE
+                        1 -> BRAND
+                        2 -> if (isFlavors(AppFlavors.OFF)) GRADE else TIME
+                        3 -> BARCODE
+                        else -> TIME
                     }
-                    sortProducts()
-                    adapter = ProductListAdapter(this, products ?: mutableListOf(), isLowBatteryMode)
+                    adapter.products.customSortBy(sortType)
+                    adapter.notifyDataSetChanged()
                     binding.rvYourListedProducts.adapter = adapter
                 }
-                builder.show()
-                true
+                show()
             }
-            else -> super.onOptionsItemSelected(item)
+            true
         }
+        else -> super.onOptionsItemSelected(item)
     }
 
-    private fun setInfo(view: TextView) {
-        if (isEatenList) {
-            view.setText(R.string.txt_info_eaten_products)
-        } else {
-            view.setText(R.string.txt_info_your_listed_products)
-        }
+
+    private fun setInfo(view: TextView) = if (isEatenList) {
+        view.setText(R.string.txt_info_eaten_products)
+    } else {
+        view.setText(R.string.txt_info_your_listed_products)
     }
 
     private fun onFirstScan() {
@@ -288,12 +278,13 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         }
         if (ContextCompat.checkSelfPermission(baseContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                MaterialDialog.Builder(this)
-                        .title(R.string.action_about)
-                        .content(R.string.permission_camera)
-                        .neutralText(R.string.txtOk)
-                        .onNeutral { _: MaterialDialog?, _: DialogAction? -> ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
-                        .show()
+                MaterialDialog.Builder(this).run {
+                    title(R.string.action_about)
+                    content(R.string.permission_camera)
+                    neutralText(R.string.txtOk)
+                    onNeutral { _, _ -> ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
+                    show()
+                }
             } else {
                 ActivityCompat.requestPermissions(this@ProductListActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
@@ -304,62 +295,52 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
         }
     }
 
-    fun exportCSV() {
-        val folderMain = getCsvFolderName()
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract())
+    { writeListToFile(this, productList, it?.toFile() ?: error("File path must not be null.")) }
+
+    private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show()
-        val baseDir = File(Environment.getExternalStorageDirectory(), folderMain)
-        if (!baseDir.exists()) {
-            baseDir.mkdirs()
-        }
-        val productListName = productList!!.listName
-        val fileName = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT) + "-" + productListName + "-" + SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date()) + ".csv"
-        val f = File(baseDir, fileName)
-        var isDownload: Boolean
-        try {
-            CSVPrinter(FileWriter(f), CSVFormat.DEFAULT.withHeader(*resources.getStringArray(R.array.your_products_headers))).use { writer ->
-                val listProducts = productList!!.products
-                for (product in listProducts) {
-                    writer.printRecord(product.barcode, product.productName, product.listName, product.productDetails)
-                }
-                Toast.makeText(this, R.string.txt_your_listed_products_exported, Toast.LENGTH_LONG).show()
-                isDownload = true
-            }
-        } catch (e: IOException) {
-            isDownload = false
-            Log.e(ProductListActivity::class.java.simpleName, "exportCSV", e)
-        }
-        val downloadIntent = Intent(Intent.ACTION_VIEW)
-        val notificationManager = createNotification(f, downloadIntent, this)
-        if (isDownload) {
-            val builder = NotificationCompat.Builder(this, "export_channel")
-                    .setContentTitle(getString(R.string.notify_title))
-                    .setContentText(getString(R.string.notify_content))
-                    .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
-                    .setSmallIcon(R.mipmap.ic_launcher)
-            notificationManager.notify(8, builder.build())
+
+        val listName = productList.listName
+        val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
+        val date = LocalDate.now()
+        val fileName = "$flavor-${listName}_$date.csv"
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            fileWriterLauncher.launch(fileName)
+        } else {
+            val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
+            if (!baseDir.exists()) baseDir.mkdirs()
+            writeListToFile(this, productList, File(baseDir, fileName))
         }
     }
 
     override fun onRightClicked(position: Int) {
-        if (CollectionUtils.isNotEmpty(products)) {
-            val productToRemove = products!![position]
-            yourListedProductDao!!.delete(productToRemove)
-            adapter!!.remove(productToRemove)
-            adapter!!.notifyItemRemoved(position)
-            adapter!!.notifyItemRangeChanged(position, adapter!!.itemCount)
-        }
+        if (adapter.products.isEmpty()) return
+        val productToRemove = adapter.products[position]
+
+        daoSession.yourListedProductDao!!.delete(productToRemove)
+        adapter.remove(productToRemove)
     }
 
     override fun onBackPressed() {
-        val data = Intent()
-        data.putExtra("update", true)
-        setResult(RESULT_OK, data)
+        setResult(RESULT_OK, Intent().apply { putExtra("update", true) })
         super.onBackPressed()
     }
 
     companion object {
-        fun createNotification(f: File?, downloadIntent: Intent, context: Context): NotificationManager {
-            val csvUri = FileProvider.getUriForFile(context, context.packageName + ".provider", f!!)
+
+        @JvmStatic
+        fun start(context: Context, listID: Long, listName: String) {
+            context.startActivity(Intent(context, ProductListActivity::class.java).apply {
+                putExtra(KEY_LIST_ID, listID)
+                putExtra(KEY_LIST_NAME, listName)
+            })
+        }
+
+        fun createNotification(f: File, downloadIntent: Intent, context: Context): NotificationManager {
+            val csvUri = FileProvider.getUriForFile(context, "${context.packageName}.provider", f)
             downloadIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             downloadIntent.setDataAndType(csvUri, "text/csv")
             downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -371,7 +352,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val channelId = "export_channel"
-                val channelName: CharSequence = context.getString(R.string.notification_channel_name)
+                val channelName = context.getString(R.string.notification_channel_name)
                 val importance = NotificationManager.IMPORTANCE_DEFAULT
                 val notificationChannel = NotificationChannel(channelId, channelName, importance)
                 notificationChannel.description = context.getString(R.string.notify_channel_description)
@@ -380,25 +361,19 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             return notificationManager
         }
 
-
-        @JvmStatic
-        fun getProductBrandsQuantityDetails(p: Product): String {
-            return getProductBrandsQuantityDetails(p.brands, p.quantity)
-        }
-
-        fun getProductBrandsQuantityDetails(p: HistoryItem): String {
-            return getProductBrandsQuantityDetails(p.brands, p.quantity)
-        }
-
-        private fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
-            val stringBuilder = StringBuilder()
+        fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
+            val builder = StringBuilder()
             if (!brands.isNullOrEmpty()) {
-                stringBuilder.append(StringUtils.capitalize(brands.split(",").toTypedArray()[0].trim { it <= ' ' }))
+                builder.append(brands.split(",")[0].trim { it <= ' ' }.capitalize(Locale.ROOT))
             }
             if (!quantity.isNullOrEmpty()) {
-                stringBuilder.append(" - ").append(quantity)
+                builder.append(" - ").append(quantity)
             }
-            return stringBuilder.toString()
+            return builder.toString()
         }
+
+        const val KEY_LIST_ID = "listId"
+        const val KEY_LIST_NAME = "listName"
+        const val KEY_PRODUCT_TO_ADD = "product"
     }
 }

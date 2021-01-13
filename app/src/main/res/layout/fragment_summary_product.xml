@@ -273,7 +273,8 @@
                         android:layout_marginBottom="@dimen/spacing_tiny"
                         android:background="@null"
                         android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/product_ingredient_analysis_tag" />
 
                 </LinearLayout>
 
@@ -297,53 +298,43 @@
 
                         <ImageView
                             android:id="@+id/imageGrade"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_weight="2"
                             android:adjustViewBounds="true"
                             android:clickable="true"
                             android:focusable="true"
-                            android:maxHeight="90dp"
                             android:scaleType="fitCenter"
-                            tools:src="@drawable/ic_nutriscore_a"
-                            tools:visibility="visible" />
+                            tools:src="@drawable/ic_nutriscore_a" />
 
                         <ImageView
                             android:id="@+id/nova_group"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_weight="1"
                             android:adjustViewBounds="true"
-                            android:maxHeight="80dp"
                             android:padding="5dp"
-                            android:scaleType="fitCenter"
-                            tools:src="@drawable/ic_nova_group_1"
-                            tools:visibility="visible" />
-
-                        <ImageView
-                            android:id="@+id/co2_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="60dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:adjustViewBounds="true"
-                            android:maxHeight="60dp"
-                            android:scaleType="fitCenter"
-                            android:visibility="gone"
-                            tools:visibility="visible"
-                            tools:srcCompat="@drawable/ic_co2_high_24dp" />
+                            tools:src="@drawable/ic_nova_group_1" />
 
                         <ImageView
                             android:id="@+id/ecoscore_icon"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_weight="2"
                             android:adjustViewBounds="true"
-                            android:visibility="gone"
-                            tools:src="@drawable/ic_ecoscore_a"
-                            tools:visibility="visible" />
+                            tools:src="@drawable/ic_ecoscore_a" />
                     </LinearLayout>
 
                     <Button
@@ -521,7 +512,9 @@
                                 android:id="@+id/categories_icon"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
+                                android:layout_gravity="center_vertical"
                                 android:contentDescription="@string/icon_categories"
+                                android:minHeight="40dp"
                                 android:padding="4dp"
                                 android:scaleType="fitCenter"
                                 app:layout_constraintEnd_toStartOf="@+id/categories_text"
@@ -553,8 +546,8 @@
                                 android:id="@+id/labels_icon"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
+                                android:layout_gravity="center_vertical"
                                 android:contentDescription="@string/icon_label"
-                                android:minWidth="30dp"
                                 android:scaleType="fitCenter"
                                 app:layout_constraintEnd_toStartOf="@+id/labels_text"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -587,6 +580,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
 
+                                android:layout_gravity="center_vertical"
                                 android:contentDescription="@string/icon_emb"
                                 android:minWidth="30dp"
                                 android:scaleType="fitCenter"

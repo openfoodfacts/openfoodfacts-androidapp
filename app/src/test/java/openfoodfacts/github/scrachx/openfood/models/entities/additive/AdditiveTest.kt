@@ -12,7 +12,6 @@ import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import java.util.*
 import org.mockito.Mockito.`when` as mockitoWhen
 
 /**
@@ -24,28 +23,28 @@ class AdditiveTest {
     private val mockDaoSession: DaoSession? = null
 
     @Mock
-    private val mockAdditiveDao: AdditiveDao? = null
+    private lateinit var mockAdditiveDao: AdditiveDao
 
     @Mock
-    private val mockAdditiveNameDao: AdditiveNameDao? = null
+    private lateinit var mockAdditiveNameDao: AdditiveNameDao
     private lateinit var mAdditive: Additive
 
     @Before
     fun setup() {
         mockitoWhen(mockDaoSession!!.additiveNameDao).thenReturn(mockAdditiveNameDao)
         mockitoWhen(mockDaoSession.additiveDao).thenReturn(mockAdditiveDao)
-        mockitoWhen(mockAdditiveNameDao!!._queryAdditive_Names(ArgumentMatchers.any()))
+        mockitoWhen(mockAdditiveNameDao._queryAdditive_Names(ArgumentMatchers.any()))
                 .thenReturn(listOf(ADDITIVE_NAME_1, ADDITIVE_NAME_2))
         mAdditive = Additive()
     }
 
     @Test
-    fun getNamesWithNullNamesAndNullDaoSession_throwsDaoException(): Unit {
+    fun getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
         Assert.assertThrows<DaoException>(DaoException::class.java, ThrowingRunnable { mAdditive.names })
     }
 
     @Test
-    fun getNamesWithNullNamesAndNonNullDaoSession_setsNamesFromAdditiveNamesDao(): Unit {
+    fun getNamesWithNullNamesAndNonNullDaoSession_setsNamesFromAdditiveNamesDao() {
         mAdditive.__setDaoSession(mockDaoSession)
         val names = mAdditive.names
         assertThat(names).hasSize(2)

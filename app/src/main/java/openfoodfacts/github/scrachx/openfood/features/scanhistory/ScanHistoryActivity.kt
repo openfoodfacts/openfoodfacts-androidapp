@@ -1,74 +1,99 @@
 package openfoodfacts.github.scrachx.openfood.features.scanhistory
 
 import android.Manifest
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
-import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toFile
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import io.reactivex.Completable
-import io.reactivex.CompletableSource
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityHistoryScanBinding
-import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.install
+import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
-import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
+import openfoodfacts.github.scrachx.openfood.features.productlist.CreateCSVContract
 import openfoodfacts.github.scrachx.openfood.features.scan.ContinuousScanActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseActivity
-import openfoodfacts.github.scrachx.openfood.models.HistoryItem
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProductDao
 import openfoodfacts.github.scrachx.openfood.utils.*
+import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isBatteryLevelLow
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isDisableImageLoad
-import openfoodfacts.github.scrachx.openfood.utils.Utils.isHardwareCameraInstalled
-import org.apache.commons.collections.CollectionUtils
-import org.apache.commons.csv.CSVFormat
-import org.apache.commons.csv.CSVPrinter
 import java.io.File
-import java.io.FileWriter
-import java.io.IOException
-import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
     private var _binding: ActivityHistoryScanBinding? = null
     private val binding get() = _binding!!
-    private lateinit var productItems: MutableList<HistoryItem>
-    private var emptyHistory = false
-    private lateinit var mHistoryProductDao: HistoryProductDao
-    private var adapter: ScanHistoryAdapter? = null
-    private var disposable: Disposable? = null
-    private val listHistoryProducts: List<HistoryProduct>? = null
 
-    //boolean to determine if image should be loaded or not
-    private var isLowBatteryMode = false
+    /**
+     * boolean to determine if image should be loaded or not
+     */
+    private val isLowBatteryMode by lazy { this.isDisableImageLoad() && this.isBatteryLevelLow() }
+
+    private lateinit var adapter: ScanHistoryAdapter
+
+    private var sortType = NONE
+    private var dbDisp: Disposable? = null
+
+
+    private val storagePermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { isGranted ->
+        if (isGranted) {
+            exportAsCSV()
+        } else {
+            MaterialDialog.Builder(this).run {
+                title(R.string.permission_title)
+                content(R.string.permission_denied)
+                negativeText(R.string.txtNo)
+                positiveText(R.string.txtYes)
+                onPositive { _, _ ->
+                    startActivity(Intent().apply {
+                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                        data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
+                    })
+                }
+                onNegative { dialog, _ -> dialog.dismiss() }
+                show()
+            }
+        }
+    }
+
+    private val cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+    { isGranted ->
+        if (isGranted) {
+            startActivity(Intent(this@ScanHistoryActivity, ContinuousScanActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            })
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,27 +102,26 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
         }
         _binding = ActivityHistoryScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         title = getString(R.string.scan_history_drawer)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.scanFirst.setOnClickListener { onScanFirst() }
+        adapter = ScanHistoryAdapter(this@ScanHistoryActivity, isLowBatteryMode, mutableListOf())
+        binding.listHistoryScan.adapter = adapter
+        binding.listHistoryScan.layoutManager = LinearLayoutManager(this@ScanHistoryActivity)
+        val swipeController = SwipeController(this@ScanHistoryActivity, this@ScanHistoryActivity)
+        ItemTouchHelper(swipeController).attachToRecyclerView(binding.listHistoryScan)
 
-        // If Battery Level is low and the user has checked the Disable Image in Preferences , then set isLowBatteryMode to true
-        if (isDisableImageLoad(this) && isBatteryLevelLow(this)) {
-            isLowBatteryMode = true
-        }
-
-        mHistoryProductDao = daoSession.historyProductDao
-        productItems = mutableListOf()
         setInfo()
+
+        binding.scanFirst.setOnClickListener { startScan() }
         binding.srRefreshHistoryScanList.setOnRefreshListener {
-            mHistoryProductDao = daoSession.historyProductDao
-            productItems = mutableListOf()
+            adapter.products.clear()
             setInfo()
             fillView()
             binding.srRefreshHistoryScanList.isRefreshing = false
         }
-        install(this, binding.navigationBottom.bottomNavigation)
+        binding.navigationBottom.bottomNavigation.installBottomNavigation(this)
     }
 
     override fun onStart() {
@@ -106,196 +130,158 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
         fillView()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        dbDisp?.dispose()
+        _binding = null
+    }
+
     override fun onRightClicked(position: Int) {
-        if (CollectionUtils.isNotEmpty(listHistoryProducts)) {
-            mHistoryProductDao.delete(listHistoryProducts!![position])
+        if (adapter.products.isNotEmpty()) {
+            daoSession.historyProductDao.delete(adapter.products[position])
         }
-        adapter!!.remove(productItems[position])
-        adapter!!.notifyItemRemoved(position)
-        adapter!!.notifyItemRangeChanged(position, adapter!!.itemCount)
-        if (adapter!!.itemCount == 0) {
+        adapter.removeAndNotify(adapter.products[position])
+        if (adapter.itemCount == 0) {
             binding.emptyHistoryInfo.visibility = View.VISIBLE
             binding.scanFirst.visibility = View.VISIBLE
         }
     }
 
-    private fun exportCSV() {
-        val folderMain = getCsvFolderName()
-        Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
-        val baseDir = File(Environment.getExternalStorageDirectory(), folderMain)
-        if (!baseDir.exists()) {
-            baseDir.mkdirs()
-        }
-        Log.d("dir", baseDir.toString())
-        val fileName = "${BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)}-${SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())}.csv"
-        val csvFile = File(baseDir, fileName)
-        var isDownload = false
-        try {
-            CSVPrinter(FileWriter(csvFile), CSVFormat.DEFAULT.withHeader(*resources.getStringArray(R.array.headers))).use { writer ->
-                for (hp in mHistoryProductDao.loadAll()) {
-                    writer.printRecord(hp.barcode, hp.title, hp.brands)
-                }
-                Toast.makeText(this, R.string.txt_history_exported, Toast.LENGTH_LONG).show()
-                isDownload = true
-            }
-        } catch (e: IOException) {
-            Log.e(LOG_TAG, "Can't export to $csvFile.", e)
-        }
-        val downloadIntent = Intent(Intent.ACTION_VIEW)
-        val notificationManager = ProductListActivity.createNotification(csvFile, downloadIntent, this)
-        if (isDownload) {
-            val builder = NotificationCompat.Builder(this, "export_channel")
-                    .setContentTitle(getString(R.string.notify_title))
-                    .setContentText(getString(R.string.notify_content))
-                    .setContentIntent(PendingIntent.getActivity(this, 4, downloadIntent, 0))
-                    .setSmallIcon(R.mipmap.ic_launcher)
-            notificationManager.notify(7, builder.build())
-        }
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_history, menu)
-        menu.findItem(R.id.action_export_all_history).isVisible = !emptyHistory
-        menu.findItem(R.id.action_remove_all_history).isVisible = !emptyHistory
+        menu.findItem(R.id.action_export_all_history).isVisible = adapter.itemCount != 0
+        menu.findItem(R.id.action_remove_all_history).isVisible = adapter.itemCount != 0
         return true
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        disposable?.dispose()
-        _binding = null
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                NavUtils.navigateUpFromSameTask(this)
-                true
-            }
-            R.id.action_remove_all_history -> {
-                MaterialDialog.Builder(this)
-                        .title(R.string.title_clear_history_dialog)
-                        .content(R.string.text_clear_history_dialog)
-                        .onPositive { _, _ ->
-                            mHistoryProductDao.deleteAll()
-                            productItems.clear()
-                            val adapter = binding.listHistoryScan.adapter
-                            adapter?.notifyDataSetChanged()
-                            binding.emptyHistoryInfo.visibility = View.VISIBLE
-                            binding.scanFirst.visibility = View.VISIBLE
-                        }
-                        .positiveText(R.string.txtYes)
-                        .negativeText(R.string.txtNo)
-                        .show()
-                true
-            }
-            R.id.action_export_all_history -> {
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                        MaterialDialog.Builder(this)
-                                .title(R.string.action_about)
-                                .content(R.string.permision_write_external_storage)
-                                .neutralText(R.string.txtOk)
-                                .show()
-                    } else {
-                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_STORAGE)
-                    }
-                } else {
-                    exportCSV()
-                }
-                true
-            }
-            R.id.sort_history -> {
-                val builder = MaterialDialog.Builder(this)
-                builder.title(R.string.sort_by)
-                val sortTypes = if (BuildConfig.FLAVOR == "off") {
-                    arrayOf(getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_nutrition_grade), getString(
-                            R.string.by_barcode), getString(R.string.by_time))
-                } else {
-                    arrayOf(getString(R.string.by_title), getString(R.string.by_brand), getString(R.string.by_time), getString(R.string.by_barcode))
-                }
-                builder.items(*sortTypes)
-                builder.itemsCallback { _, _, position, _ ->
-                    when (position) {
-                        0 -> {
-                            SORT_TYPE = "title"
-                            fillView()
-                        }
-                        1 -> {
-                            SORT_TYPE = "brand"
-                            fillView()
-                        }
-                        2 -> {
-                            SORT_TYPE = if (AppFlavors.isFlavors(OFF)) "grade" else "time"
-                            fillView()
-                        }
-                        3 -> {
-                            SORT_TYPE = "barcode"
-                            fillView()
-                        }
-                        else -> {
-                            SORT_TYPE = "time"
-                            fillView()
-                        }
-                    }
-                }
-                builder.show()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            NavUtils.navigateUpFromSameTask(this)
+            true
         }
-    }
+        R.id.action_remove_all_history -> {
+            MaterialDialog.Builder(this).run {
+                title(R.string.title_clear_history_dialog)
+                content(R.string.text_clear_history_dialog)
+                onPositive { _, _ ->
+                    daoSession.historyProductDao.deleteAll()
+                    adapter.products.clear()
+                    adapter.notifyDataSetChanged()
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                exportCSV()
+                    binding.emptyHistoryInfo.visibility = View.VISIBLE
+                    binding.scanFirst.visibility = View.VISIBLE
+                }
+                positiveText(R.string.txtYes)
+                negativeText(R.string.txtNo)
+                show()
+            }
+            true
+        }
+        R.id.action_export_all_history -> {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    MaterialDialog.Builder(this).run {
+                        title(R.string.action_about)
+                        content(R.string.permision_write_external_storage)
+                        positiveText(R.string.txtOk)
+                        onPositive { _, _ ->
+                            storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        }
+                        show()
+                    }
+                } else {
+                    storagePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                }
             } else {
-                MaterialDialog.Builder(this)
-                        .title(R.string.permission_title)
-                        .content(R.string.permission_denied)
-                        .negativeText(R.string.txtNo)
-                        .positiveText(R.string.txtYes)
-                        .onPositive { _, _ ->
-                            startActivity(Intent().apply {
-                                action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                                data = Uri.fromParts("package", this@ScanHistoryActivity.packageName, null)
-                            })
-                        }
-                        .show()
+                exportAsCSV()
             }
-        } else if (requestCode == MY_PERMISSIONS_REQUEST_CAMERA
-                && grantResults.isNotEmpty()
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            startActivity(Intent(this@ScanHistoryActivity, ContinuousScanActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            })
+            true
         }
+        R.id.sort_history -> {
+            MaterialDialog.Builder(this).run {
+                title(R.string.sort_by)
+                val sortTypes = if (BuildConfig.FLAVOR == "off") {
+                    arrayOf(
+                            getString(R.string.by_title),
+                            getString(R.string.by_brand),
+                            getString(R.string.by_nutrition_grade),
+                            getString(R.string.by_barcode),
+                            getString(R.string.by_time)
+                    )
+                } else {
+                    arrayOf(
+                            getString(R.string.by_title),
+                            getString(R.string.by_brand),
+                            getString(R.string.by_time),
+                            getString(R.string.by_barcode)
+                    )
+                }
+                items(*sortTypes)
+                itemsCallback { _, _, position, _ ->
+                    sortType = when (position) {
+                        0 -> TITLE
+                        1 -> BRAND
+                        2 -> if (isFlavors(OFF)) GRADE else TIME
+                        3 -> BARCODE
+                        else -> TIME
+                    }
+                    fillView()
+                }
+                show()
+            }
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
+
 
     public override fun onResume() {
         super.onResume()
-        selectNavigationItem(binding.navigationBottom.bottomNavigation, R.id.history_bottom_nav)
+        binding.navigationBottom.bottomNavigation.selectNavigationItem(R.id.history_bottom_nav)
     }
 
-    private fun onScanFirst() {
-        if (isHardwareCameraInstalled(baseContext)) {
-            if (ContextCompat.checkSelfPermission(baseContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this@ScanHistoryActivity, Manifest.permission.CAMERA)) {
-                    MaterialDialog.Builder(this)
-                            .title(R.string.action_about)
-                            .content(R.string.permission_camera)
-                            .neutralText(R.string.txtOk)
-                            .onNeutral { _: MaterialDialog?, _: DialogAction? -> ActivityCompat.requestPermissions(this@ScanHistoryActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA) }
-                            .show()
-                } else {
-                    ActivityCompat.requestPermissions(this@ScanHistoryActivity, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
+    private fun exportAsCSV() {
+        Toast.makeText(this, R.string.txt_exporting_history, Toast.LENGTH_LONG).show()
+
+        val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
+        val date = LocalDate.now()
+        val fileName = "$flavor-history_$date.csv"
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            fileWriterLauncher.launch(fileName)
+        } else {
+            val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
+            if (!baseDir.exists()) baseDir.mkdirs()
+            writeHistoryToFile(this, adapter.products, File(baseDir, fileName))
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract())
+    { writeHistoryToFile(this, adapter.products, it?.toFile() ?: error("File path must not be null.")) }
+
+    private fun startScan() {
+        if (!isHardwareCameraInstalled(baseContext)) return
+        val perm = Manifest.permission.CAMERA
+        if (ContextCompat.checkSelfPermission(baseContext, perm) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
+                MaterialDialog.Builder(this).run {
+                    title(R.string.action_about)
+                    content(R.string.permission_camera)
+                    positiveText(R.string.txtOk)
+                    onPositive { _, _ ->
+                        cameraPermLauncher.launch(perm)
+                    }
+                    show()
                 }
             } else {
-                val intent = Intent(this@ScanHistoryActivity, ContinuousScanActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
+                cameraPermLauncher.launch(perm)
+            }
+        } else {
+            Intent(this, ContinuousScanActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(this)
             }
         }
     }
@@ -308,110 +294,66 @@ class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
      * Function to compare history items based on title, brand, barcode, time and nutrition grade
      *
      * @param sortType String to determine type of sorting
-     * @param productItems List of history items to be sorted
      */
-    private fun sort(sortType: String, productItems: MutableList<HistoryItem>) {
-        when (sortType) {
-            "title" -> productItems.sortWith { item1: HistoryItem, item2: HistoryItem ->
-                var title1 = item1.title
-                if (title1.isNullOrEmpty())
-                    title1 = resources.getString(R.string.no_title)
-
-                var title2 = item2.title
-                if (title2.isNullOrEmpty())
-                    title2 = resources.getString(R.string.no_title)
-
-                title1.compareTo(title2, ignoreCase = true)
-            }
-            "brand" -> productItems.sortWith { historyItem: HistoryItem, t1: HistoryItem ->
-                if (TextUtils.isEmpty(historyItem.brands)) {
-                    historyItem.brands = resources.getString(R.string.no_brand)
-                }
-                if (TextUtils.isEmpty(t1.brands)) {
-                    t1.brands = resources.getString(R.string.no_brand)
-                }
-                historyItem.brands!!.compareTo(t1.brands!!, ignoreCase = true)
-            }
-            "barcode" -> productItems.sortWith { (_, _, _, barcode1), (_, _, _, barcode2) ->
-                barcode1.compareTo(barcode2)
-            }
-            "grade" -> productItems.sortWith { (_, _, _, _, _, _, nutritionGrade1), (_, _, _, _, _, _, nutritionGrade2) ->
-                val nGrade1 = nutritionGrade1 ?: "E"
-                val nGrade2 = nutritionGrade2 ?: "E"
-                nGrade1.compareTo(nGrade2, ignoreCase = true)
-            }
-            else -> productItems.sortWith { _: HistoryItem?, _: HistoryItem? -> 0 }
+    private fun MutableList<HistoryProduct>.customSortBy(sortType: SortType) = when (sortType) {
+        TITLE -> sortWith { item1, item2 ->
+            if (item1.title.isNullOrEmpty()) item1.title = resources.getString(R.string.no_title)
+            if (item2.title.isNullOrEmpty()) item2.title = resources.getString(R.string.no_title)
+            item1.title.compareTo(item2.title, true)
         }
+
+        BRAND -> sortWith { item1, item2 ->
+            if (item1.brands.isNullOrEmpty()) item1.brands = resources.getString(R.string.no_brand)
+            if (item2.brands.isNullOrEmpty()) item2.brands = resources.getString(R.string.no_brand)
+            item1.brands!!.compareTo(item2.brands!!, true)
+        }
+        BARCODE -> sortBy { it.barcode }
+        GRADE -> sortBy { it.nutritionGrade }
+        TIME -> sortBy { it.lastSeen }
+        NONE -> sortWith { _, _ -> 0 }
     }
 
     private fun fillView() {
-        disposable?.dispose()
-        disposable = fillViewCompletable.doOnSubscribe { Log.i(LOG_TAG, "Task fillview started...") }
+        dbDisp?.dispose()
+        dbDisp = getFillViewCompletable()
+                .doOnSubscribe { Log.i(LOG_TAG, "Task fillview started...") }
                 .subscribe { Log.i(LOG_TAG, "Task fillview ended.") }
 
     }
 
-    // Change ui on main thread
-    // Switch for db operations
-    // Change ui on main thread
-    private val fillViewCompletable: Completable
-        get() {
-            val refreshAct = Completable.fromAction {
-                if (binding.srRefreshHistoryScanList.isRefreshing) {
-                    binding.historyProgressbar.visibility = View.GONE
-                } else {
-                    binding.historyProgressbar.visibility = View.VISIBLE
-                }
-            }
-            val dbSingle = Single.fromCallable {
-                productItems.clear()
-                val historyProducts = mHistoryProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list()
-                historyProducts.forEach { historyProduct ->
-                    productItems.add(HistoryItem(
-                            historyProduct.title,
-                            historyProduct.brands,
-                            historyProduct.url,
-                            historyProduct.barcode,
-                            historyProduct.lastSeen,
-                            historyProduct.quantity,
-                            historyProduct.nutritionGrade
-                    ))
-                }
-                historyProducts
-            }
-            val updateUiFunc = fun(historyProducts: List<HistoryProduct>): CompletableSource {
-                if (historyProducts.isEmpty()) {
-                    emptyHistory = true
-                    binding.historyProgressbar.visibility = View.GONE
-                    binding.emptyHistoryInfo.visibility = View.VISIBLE
-                    binding.scanFirst.visibility = View.VISIBLE
-                    invalidateOptionsMenu()
-                    return Completable.complete()
-                }
-                sort(SORT_TYPE, productItems)
-                adapter = ScanHistoryAdapter(this@ScanHistoryActivity, isLowBatteryMode, productItems)
-                binding.listHistoryScan.adapter = adapter
-                binding.listHistoryScan.layoutManager = LinearLayoutManager(this@ScanHistoryActivity)
-                binding.historyProgressbar.visibility = View.GONE
-                val swipeController = SwipeController(this@ScanHistoryActivity, this@ScanHistoryActivity)
-                val itemTouchhelper = ItemTouchHelper(swipeController)
-                itemTouchhelper.attachToRecyclerView(binding.listHistoryScan)
-                return Completable.complete()
-            }
-            return refreshAct.subscribeOn(AndroidSchedulers.mainThread()) // Change ui on main thread
-                    .observeOn(Schedulers.io()) // Switch for db operations
-                    .andThen(dbSingle)
-                    .observeOn(AndroidSchedulers.mainThread()) // Change ui on main thread
-                    .flatMapCompletable(updateUiFunc)
+    private fun getFillViewCompletable(): Completable {
+        val refreshAct = Completable.fromAction {
+            binding.historyProgressbar.visibility =
+                    if (binding.srRefreshHistoryScanList.isRefreshing) View.GONE else View.VISIBLE
         }
+        val getProducts = Single.fromCallable {
+            daoSession.historyProductDao.queryBuilder().orderDesc(HistoryProductDao.Properties.LastSeen).list()
+        }
+        return refreshAct.subscribeOn(AndroidSchedulers.mainThread()) // Change ui on main thread
+                .observeOn(Schedulers.io()) // Switch for db operations
+                .andThen(getProducts)
+                .observeOn(AndroidSchedulers.mainThread()) // Change ui on main thread
+                .flatMapCompletable { newProducts: List<HistoryProduct> ->
+                    adapter.products.clear()
+                    if (newProducts.isEmpty()) {
+                        binding.historyProgressbar.visibility = View.GONE
+                        binding.emptyHistoryInfo.visibility = View.VISIBLE
+                        binding.scanFirst.visibility = View.VISIBLE
+                        invalidateOptionsMenu()
+                        return@flatMapCompletable Completable.complete()
+                    }
+                    adapter.products.addAll(newProducts)
+                    adapter.products.customSortBy(sortType)
+                    adapter.notifyDataSetChanged()
+                    binding.historyProgressbar.visibility = View.GONE
+                    return@flatMapCompletable Completable.complete()
+                }
+    }
 
     companion object {
-        private var SORT_TYPE = "none"
-        fun start(context: Context) {
-            val starter = Intent(context, ScanHistoryActivity::class.java)
-            context.startActivity(starter)
-        }
+        fun start(context: Context) = context.startActivity(Intent(context, ScanHistoryActivity::class.java))
 
-        private val LOG_TAG = ScanHistoryActivity::class.simpleName
+        val LOG_TAG = ScanHistoryActivity::class.simpleName
     }
+
 }

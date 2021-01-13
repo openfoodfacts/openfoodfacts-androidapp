@@ -23,34 +23,29 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentIngredientsAnalysisProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.adapter.IngredientAnalysisRecyclerAdapter
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.Product
-import openfoodfacts.github.scrachx.openfood.models.ProductIngredient
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.utils.getProductState
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 
 class IngredientsAnalysisProductFragment : BaseFragment() {
     private var _binding: FragmentIngredientsAnalysisProductBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var api: OpenFoodAPIClient
     private lateinit var product: Product
+
     private var adapter: IngredientAnalysisRecyclerAdapter? = null
-    private val disp = CompositeDisposable()
-    override fun onDestroy() {
-        disp.dispose()
-        _binding = null
-        super.onDestroy()
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val productState = this.requireProductState()
-        product = productState.product!!
+        product = requireProductState().product!!
         api = OpenFoodAPIClient(requireActivity())
     }
 
@@ -61,18 +56,21 @@ class IngredientsAnalysisProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        disp.add(api.getIngredients(product).observeOn(AndroidSchedulers.mainThread()).subscribe(
-                { ingredients: List<ProductIngredient> ->
+        api.getIngredients(product)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError { Toast.makeText(activity, requireActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show() }
+                .subscribe { ingredients ->
                     adapter = IngredientAnalysisRecyclerAdapter(ingredients, requireActivity())
                     binding.ingredientAnalysisRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
                     binding.ingredientAnalysisRecyclerView.adapter = adapter
-                }
-        ) { Toast.makeText(activity, requireActivity().getString(R.string.errorWeb), Toast.LENGTH_LONG).show() }
-        )
-        val intent = requireActivity().intent
-        if (intent != null && intent.extras != null) {
-            refreshView(requireProductState())
-        }
+                }.addTo(disp)
+
+        getProductState()?.let { refreshView(it) }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun refreshView(productState: ProductState) {

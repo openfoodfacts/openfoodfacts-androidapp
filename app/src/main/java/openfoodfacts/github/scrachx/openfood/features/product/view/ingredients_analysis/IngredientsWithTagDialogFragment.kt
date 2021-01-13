@@ -4,19 +4,20 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Bundle
-import android.text.Html
 import android.text.TextUtils
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.DialogFragment
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.R
@@ -34,13 +35,13 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
     private val binding get() = _binding!!
     var onDismissListener: ((DialogInterface) -> Unit)? = null
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = IngredientsWithTagBinding.inflate(inflater, container, false)
         requireDialog().window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         requireDialog().window!!.setGravity(Gravity.CENTER)
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,44 +57,44 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         val ambiguousIngredient = arguments.getString(AMBIGUOUS_INGREDIENT_KEY)
         val ingredientsImageUrl = arguments.getString(INGREDIENTS_IMAGE_URL_KEY)
 
-        Utils.picassoBuilder(activity)
+        Utils.picassoBuilder(requireContext())
                 .load(iconUrl)
                 .into(binding.icon)
         binding.iconFrame.background = ResourcesCompat.getDrawable(requireActivity().resources, R.drawable.rounded_button, requireActivity().theme)?.apply {
-            setColorFilter(Color.parseColor(color), PorterDuff.Mode.SRC_IN)
+            colorFilter = BlendModeColorFilterCompat.createBlendModeColorFilterCompat(Color.parseColor(color), BlendModeCompat.SRC_IN)
         }
         binding.title.text = name
-        with(binding.cb) {
-            text = getString(R.string.display_analysis_tag_status, typeName.toLowerCase(Locale.getDefault()))
-            isChecked = prefs.getBoolean(type, true)
-            setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-                prefs.edit().putBoolean(type, isChecked).apply()
+        binding.cb.let {
+            it.text = getString(R.string.display_analysis_tag_status, typeName.toLowerCase(Locale.getDefault()))
+            it.isChecked = prefs.getBoolean(type, true)
+            it.setOnCheckedChangeListener { _, isChecked ->
+                prefs.edit { putBoolean(type, isChecked) }
             }
         }
-        var messageToBeShown = Html.fromHtml(getString(R.string.ingredients_in_this_product_are, name!!.toLowerCase()))
+        var messageToBeShown = HtmlCompat.fromHtml(getString(R.string.ingredients_in_this_product_are, name!!.toLowerCase()), HtmlCompat.FROM_HTML_MODE_LEGACY)
         val showHelpTranslate = tag != null && tag.contains("unknown")
 
         if (arguments.getBoolean(PHOTOS_TO_BE_VALIDATED_KEY, false)) {
-            messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_missing_ingredients))
+            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.image.setImageResource(R.drawable.ic_add_a_photo_dark_48dp)
             binding.image.setOnClickListener { goToAddPhoto() }
-            binding.helpNeeded.text = Html.fromHtml(getString(R.string.add_photo_to_extract_ingredients))
+            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.add_photo_to_extract_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener { goToAddPhoto() }
         } else if (tag != null && ambiguousIngredient != null) {
-            messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient))
+            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_ambiguous_ingredients, ambiguousIngredient), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.visibility = View.GONE
         } else if (showHelpTranslate && arguments.getBoolean(MISSING_INGREDIENTS_KEY, false)) {
-            Utils.picassoBuilder(activity)
+            Utils.picassoBuilder(requireContext())
                     .load(ingredientsImageUrl)
                     .into(binding.image)
             binding.image.setOnClickListener { goToExtract() }
-            messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_missing_ingredients))
-            binding.helpNeeded.text = Html.fromHtml(getString(R.string.help_extract_ingredients, typeName.toLowerCase()))
+            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.help_extract_ingredients, typeName.toLowerCase()), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener { goToExtract() }
             binding.helpNeeded.visibility = View.VISIBLE
         } else if (showHelpTranslate) {
-            messageToBeShown = Html.fromHtml(getString(R.string.unknown_status_no_translation))
-            binding.helpNeeded.text = Html.fromHtml(getString(R.string.help_translate_ingredients))
+            messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_no_translation), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.help_translate_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener {
                 val customTabsIntent = CustomTabsIntent.Builder().build()
                 CustomTabActivityHelper.openCustomTab(
@@ -110,7 +111,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         } else {
             binding.image.visibility = View.GONE
             if (!TextUtils.isEmpty(ingredients)) {
-                messageToBeShown = Html.fromHtml("${getString(R.string.ingredients_in_this_product, name.toLowerCase(Locale.getDefault()))}$ingredients")
+                messageToBeShown = HtmlCompat.fromHtml("${getString(R.string.ingredients_in_this_product, name.toLowerCase(Locale.getDefault()))}$ingredients", HtmlCompat.FROM_HTML_MODE_LEGACY)
             }
             binding.helpNeeded.visibility = View.GONE
         }
@@ -139,18 +140,16 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
     private fun goToExtract() {
         dismiss()
         when (requireActivity()) {
-            is ContinuousScanActivity -> {
-                (activity as ContinuousScanActivity).showIngredientsTab(ProductViewActivity.ShowIngredientsAction.PERFORM_OCR)
-            }
-            is ProductViewActivity -> {
-                (activity as ProductViewActivity).showIngredientsTab(ProductViewActivity.ShowIngredientsAction.PERFORM_OCR)
-            }
+            is ContinuousScanActivity -> (activity as ContinuousScanActivity)
+                    .showIngredientsTab(ProductViewActivity.ShowIngredientsAction.PERFORM_OCR)
+            is ProductViewActivity -> (activity as ProductViewActivity)
+                    .showIngredientsTab(ProductViewActivity.ShowIngredientsAction.PERFORM_OCR)
         }
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        onDismissListener?.let { it(dialog) }
+        onDismissListener?.invoke(dialog)
     }
 
     companion object {
@@ -178,7 +177,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
                 putString(NAME_KEY, config.name.name)
                 putString(INGREDIENTS_IMAGE_URL_KEY, product.imageIngredientsUrl)
 
-                if (product.ingredients == null || product.ingredients.isEmpty()) {
+                if (product.ingredients.isEmpty()) {
                     val statesTags = product.statesTags
                     var ingredientsToBeCompleted = false
                     var photosToBeValidated = false

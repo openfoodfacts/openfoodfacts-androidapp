@@ -21,22 +21,22 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
 
     // True if we are still waiting for the last set of data to load.
     private var loading = true
-    private val mLayoutManager: RecyclerView.LayoutManager
+    private val layoutManager: RecyclerView.LayoutManager
 
     // Sets the starting page index
     private val startingPageIndex = 1
 
     constructor(layoutManager: LinearLayoutManager) {
-        mLayoutManager = layoutManager
+        this.layoutManager = layoutManager
     }
 
     constructor(layoutManager: GridLayoutManager) {
-        mLayoutManager = layoutManager
+        this.layoutManager = layoutManager
         visibleThreshold *= layoutManager.spanCount
     }
 
     constructor(layoutManager: StaggeredGridLayoutManager) {
-        mLayoutManager = layoutManager
+        this.layoutManager = layoutManager
         visibleThreshold *= layoutManager.spanCount
     }
 
@@ -57,18 +57,18 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
     // but first we check if we are waiting for the previous load to finish.
     override fun onScrolled(view: RecyclerView, dx: Int, dy: Int) {
         var lastVisibleItemPosition = 0
-        val totalItemCount = mLayoutManager.itemCount
-        when (mLayoutManager) {
+        val totalItemCount = layoutManager.itemCount
+        when (layoutManager) {
             is StaggeredGridLayoutManager -> {
-                val lastVisibleItemPositions = mLayoutManager.findLastVisibleItemPositions(null)
+                val lastVisibleItemPositions = layoutManager.findLastVisibleItemPositions(null)
                 // get maximum element within the list
                 lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions)
             }
             is GridLayoutManager -> {
-                lastVisibleItemPosition = mLayoutManager.findLastVisibleItemPosition()
+                lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
             }
             is LinearLayoutManager -> {
-                lastVisibleItemPosition = mLayoutManager.findLastVisibleItemPosition()
+                lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
             }
         }
 
@@ -81,6 +81,7 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
                 loading = true
             }
         }
+
         // If it’s still loading, we check to see if the dataset count has
         // changed, if so we conclude it has finished loading and update the current page
         // number and total item count.

@@ -72,6 +72,12 @@
         <item>UI</item>
     </string-array>
     <!-- nutrition comparison units -->
+    <!-- Application theme settings -->
+    <string-array name="application_theme_entries">
+        <item>@string/follow_system</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
+    </string-array>
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -504,7 +510,7 @@
     <string name="no_barcode">Nous n\'avons détecté aucun code-barres</string>
     <string name="enter_barcode">Veuillez saisir le code-barres ci-dessous</string>
     <string name="format_error">Mauvais format de code-barres ou code QR</string>
-    <string name="code_detected">Nous n\'avons détecté aucun code-barres</string>
+    <string name="code_detected">Code-barre détecté</string>
     <string name="do_you_want_to">Voulez-vous ajouter des photos à ce code-barres ?</string>
     <string name="bottomNav_history">Historique</string>
     <string name="products_added">Les produits que vous avez ajoutés ou modifiés</string>
@@ -616,7 +622,7 @@
     <string name="manufacturing_details">Détails de fabrication</string>
     <string name="origin_of_ingredients">Origine des ingrédients</string>
     <string name="manufacturing_place">Lieu de fabrication</string>
-    <string name="emb_code">Code EMB</string>
+    <string name="emb_code">Code de traçabilité</string>
     <string name="purchasing_details">Détails d\'achat</string>
     <string name="country_where_purchased">Pays d\'achat</string>
     <string name="stores">Magasins</string>
@@ -805,4 +811,9 @@
     <string name="hunger_game_call_to_action">Aider à classer plus de: %1$s</string>
     <string name="txtHomeOnline">Open Food Facts est une base de données ouverte de plus de %1$s produits alimentaires (plus ceux que vous contribuerez).</string>
     <string name="enabled">Activé</string>
+    <string name="follow_system">Suivre le système</string>
+    <string name="day">Jour</string>
+    <string name="night">Nuit</string>
+    <string name="required_for_ecoscore">(Requis pour calculer l\'Eco-Score)</string>
+    <string name="hint_origin">Exemples: USA, France, Italie</string>
 </resources>

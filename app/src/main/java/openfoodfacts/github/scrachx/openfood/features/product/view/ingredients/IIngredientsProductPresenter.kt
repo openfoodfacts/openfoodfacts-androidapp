@@ -15,6 +15,7 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients
 
+import io.reactivex.disposables.Disposable
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
 import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
@@ -23,10 +24,9 @@ import openfoodfacts.github.scrachx.openfood.utils.ProductInfoState
  * Created by Lobster on 17.03.18.
  */
 interface IIngredientsProductPresenter {
-    interface Actions {
+    interface Actions: Disposable {
         fun loadAdditives()
         fun loadAllergens()
-        fun dispose()
     }
 
     interface View {

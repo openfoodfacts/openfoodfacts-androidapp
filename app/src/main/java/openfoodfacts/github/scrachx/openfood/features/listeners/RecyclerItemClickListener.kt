@@ -17,9 +17,7 @@ class RecyclerItemClickListener(
         private val onItemClick: (view: View, position: Int) -> Unit
 ) : OnItemTouchListener {
     private val mGestureDetector = GestureDetector(context, object : SimpleOnGestureListener() {
-        override fun onSingleTapUp(e: MotionEvent): Boolean {
-            return true
-        }
+        override fun onSingleTapUp(e: MotionEvent) = true
     })
 
     override fun onInterceptTouchEvent(view: RecyclerView, e: MotionEvent): Boolean {
@@ -30,7 +28,6 @@ class RecyclerItemClickListener(
         return false
     }
 
-    override fun onTouchEvent(view: RecyclerView, motionEvent: MotionEvent) {}
-    override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
-
+    override fun onTouchEvent(view: RecyclerView, motionEvent: MotionEvent) = Unit
+    override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) = Unit
 }

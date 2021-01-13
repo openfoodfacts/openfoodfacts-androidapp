@@ -5,13 +5,15 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonAnySetter
 import com.fasterxml.jackson.annotation.JsonInclude
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.ENERGY_KCAL
+import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.ENERGY_KJ
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.DEFAULT_MODIFIER
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertFromGram
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertToGrams
-import openfoodfacts.github.scrachx.openfood.utils.Utils.getModifierNonDefault
 import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
-import org.apache.commons.lang.StringUtils
+import openfoodfacts.github.scrachx.openfood.utils.getModifierNonDefault
+import org.apache.commons.lang3.StringUtils
 import org.jetbrains.annotations.Contract
 import java.io.Serializable
 import java.util.*
@@ -127,7 +129,7 @@ class Nutriments : Serializable {
         const val MAGNESIUM = "magnesium"
 
         @JvmField
-        val MINERALS_MAP: MutableMap<String, Int> = hashMapOf(
+        val MINERALS_MAP = mapOf(
                 SILICA to R.string.silica,
                 BICARBONATE to R.string.bicarbonate,
                 POTASSIUM to R.string.potassium,
@@ -156,7 +158,7 @@ class Nutriments : Serializable {
         )
 
         @JvmField
-        val FAT_MAP: MutableMap<String, Int> = hashMapOf(
+        val FAT_MAP = mapOf(
                 SATURATED_FAT to R.string.nutrition_satured_fat,
                 MONOUNSATURATED_FAT to R.string.nutrition_monounsaturatedFat,
                 POLYUNSATURATED_FAT to R.string.nutrition_polyunsaturatedFat,
@@ -168,7 +170,7 @@ class Nutriments : Serializable {
         )
 
         @JvmField
-        val CARBO_MAP: MutableMap<String, Int> = hashMapOf(
+        val CARBO_MAP = mapOf(
                 SUGARS to R.string.nutrition_sugars,
                 SUCROSE to R.string.nutrition_sucrose,
                 GLUCOSE to R.string.nutrition_glucose,
@@ -179,14 +181,14 @@ class Nutriments : Serializable {
         )
 
         @JvmField
-        val PROT_MAP: MutableMap<String, Int> = hashMapOf(
+        val PROT_MAP = mapOf(
                 CASEIN to R.string.nutrition_casein,
                 SERUM_PROTEINS to R.string.nutrition_serum_proteins,
                 NUCLEOTIDES to R.string.nutrition_nucleotides
         )
 
         @JvmField
-        val VITAMINS_MAP: MutableMap<String, Int> = hashMapOf(
+        val VITAMINS_MAP = mapOf(
                 VITAMIN_A to R.string.vitamin_a,
                 BETA_CAROTENE to R.string.vitamin_a,
                 VITAMIN_D to R.string.vitamin_d,
@@ -205,39 +207,21 @@ class Nutriments : Serializable {
 
     }
 
-    private val additionalProperties: MutableMap<String, Any?> = HashMap()
-    private var containsMinerals = false
-    private var containsVitamins = false
-    fun getEnergyKjValue(isDataPerServing: Boolean): String {
-        return if (isDataPerServing) {
-            getServing(ENERGY_KJ)
-        } else {
-            get100g(ENERGY_KJ)
-        }
-    }
-
-    fun getEnergyKcalValue(isDataPerServing: Boolean): String {
-        return if (isDataPerServing) {
-            getServing(ENERGY_KCAL)
-        } else {
-            get100g(ENERGY_KCAL)
-        }
-    }
 
     operator fun get(nutrimentName: String): Nutriment? {
-        return if (nutrimentName.isEmpty() || additionalProperties[nutrimentName] == null) {
-            null
-        } else try {
-            Nutriment(nutrimentName,
+        return if (nutrimentName.isEmpty() || additionalProperties[nutrimentName] == null) null
+        else try {
+            Nutriment(
+                    nutrimentName,
                     additionalProperties[nutrimentName].toString(),
                     get100g(nutrimentName),
                     getServing(nutrimentName),
                     getUnit(nutrimentName),
-                    getModifier(nutrimentName))
+                    getModifier(nutrimentName)
+            )
         } catch (e: NullPointerException) {
             // In case one of the getters was unable to get data as string
-            val stacktrace = Log.getStackTraceString(e)
-            Log.e("NUTRIMENTS-MODEL", stacktrace)
+            Log.e(Nutriments::class.simpleName, Log.getStackTraceString(e))
             null
         }
     }
@@ -245,57 +229,52 @@ class Nutriments : Serializable {
     /**
      * @return [StringUtils.EMPTY] if there is no serving value for the specified nutriment
      */
-    fun getServing(nutrimentName: String): String {
-        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.SERVING)
-    }
+    fun getServing(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.SERVING)
 
     /**
      * @return [StringUtils.EMPTY] if there is no serving value for the specified nutriment
      */
-    fun get100g(nutrimentName: String): String {
-        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.VALUE_100G)
-    }
+    fun get100g(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.VALUE_100G)
 
-    fun getUnit(nutrimentName: String): String {
-        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.UNIT, DEFAULT_UNIT)
-    }
+    /**
+     * @return [DEFAULT_UNIT] if there is no unit for the specified nutriment
+     */
+    fun getUnit(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.UNIT, DEFAULT_UNIT)
 
-    fun getModifier(nutrimentName: String): String {
-        return getAdditionalProperty(nutrimentName, ApiFields.Suffix.MODIFIER, DEFAULT_MODIFIER)
-    }
+    /**
+     * @return [DEFAULT_MODIFIER] if there is no modifier for the specified nutriment
+     */
+    fun getModifier(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.MODIFIER, DEFAULT_MODIFIER)
 
     /**
      * Get the nutriment modifier if it is different from [DEFAULT_MODIFIER]
      *
-     * @return The nutriment modifier if different from [DEFAULT_MODIFIER], otherwise an empty string `""`
+     * @return The nutriment modifier if different from [DEFAULT_MODIFIER], otherwise an empty string
      */
-    fun getModifierIfNotDefault(nutrimentName: String): String {
-        val modifier = getModifier(nutrimentName)
-        return getModifierNonDefault(modifier)
-    }
-    
+    fun getModifierIfNotDefault(nutrimentName: String) = getModifierNonDefault(getModifier(nutrimentName))
+
 
     private fun getAdditionalProperty(nutrimentName: String, suffix: String, defaultValue: String = StringUtils.EMPTY) =
             additionalProperties[nutrimentName + suffix]?.toString() ?: defaultValue
 
     operator fun contains(nutrimentName: String) = additionalProperties.containsKey(nutrimentName)
 
-    fun hasVitamins() = containsVitamins
 
-    fun hasMinerals() = containsMinerals
+    var hasMinerals = false
+        private set
+    var hasVitamins = false
+        private set
 
-    @JsonAnyGetter
-    fun getAdditionalProperties(): Map<String, Any?> {
-        return additionalProperties
-    }
+    @get:JsonAnyGetter
+    val additionalProperties = HashMap<String, Any?>()
 
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any?) {
         additionalProperties[name] = value
         if (VITAMINS_MAP.containsKey(name)) {
-            containsVitamins = true
+            hasVitamins = true
         } else if (MINERALS_MAP.containsKey(name)) {
-            containsMinerals = true
+            hasMinerals = true
         }
     }
 
@@ -307,7 +286,7 @@ class Nutriments : Serializable {
             unit: String,
             val modifier: String
     ) {
-        val unit: String = getRealUnit(unit)
+        val unit = getRealUnit(unit)
         val displayStringFor100g: String
             get() {
                 val builder = StringBuilder()
@@ -331,15 +310,13 @@ class Nutriments : Serializable {
          * Returns the amount of nutriment per 100g
          * of product in the units stored in [Nutriment.unit]
          */
-        val for100gInUnits: String
-            get() = getValueInUnits(for100g, unit)
+        val for100gInUnits get() = getValueInUnits(for100g, unit)
 
         /**
          * Returns the amount of nutriment per serving
          * of product in the units stored in [Nutriment.unit]
          */
-        val forServingInUnits: String
-            get() = getValueInUnits(forServing, unit)
+        val forServingInUnits get() = getValueInUnits(forServing, unit)
 
         private fun getValueInUnits(valueInGramOrMl: String, unit: String): String {
             if (valueInGramOrMl.isBlank()) {
@@ -364,17 +341,21 @@ class Nutriments : Serializable {
          */
         fun getForAnyValue(userSetServing: Float, otherUnit: String?): String {
             val strValue = for100gInUnits
-            if (strValue.isEmpty() || strValue.contains("%")) {
-                return strValue
-            }
-            try {
+            if (strValue.isEmpty() || strValue.contains("%")) return strValue
+            return try {
                 val valueFor100g = strValue.toFloat()
                 val portionInGram = convertToGrams(userSetServing, otherUnit)
-                return getRoundNumber(valueFor100g / 100 * portionInGram)
-            } catch (fmt: NumberFormatException) {
-                Log.w(Nutriments::class.java.simpleName, "getForAnyValue can't parse value $strValue", fmt)
+                getRoundNumber(valueFor100g / 100 * portionInGram)
+            } catch (e: NumberFormatException) {
+                Log.w(Nutriments::class.simpleName, "Can't parse value '$strValue'", e)
+                StringUtils.EMPTY
             }
-            return StringUtils.EMPTY
         }
     }
 }
+
+fun Nutriments.getEnergyKcalValue(isDataPerServing: Boolean) =
+        if (isDataPerServing) getServing(ENERGY_KCAL) else get100g(ENERGY_KCAL)
+
+fun Nutriments.getEnergyKjValue(isDataPerServing: Boolean) =
+        if (isDataPerServing) getServing(ENERGY_KJ) else get100g(ENERGY_KJ)

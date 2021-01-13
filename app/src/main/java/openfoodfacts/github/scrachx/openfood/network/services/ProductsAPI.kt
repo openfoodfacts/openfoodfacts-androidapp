@@ -23,7 +23,7 @@ import okhttp3.ResponseBody
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.Search
-import openfoodfacts.github.scrachx.openfood.models.TaglineLanguageModel
+import openfoodfacts.github.scrachx.openfood.models.TagLineLanguage
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import retrofit2.Call
 import retrofit2.Response
@@ -57,12 +57,11 @@ interface ProductsAPI {
                           @FieldMap parameters: Map<String?, @JvmSuppressWildcards String?>?,
                           @Field(ApiFields.Keys.USER_COMMENT) comment: String?): Single<ProductState>
 
-    @Deprecated("")
     @GET("api/v0/product/{barcode}.json?fields=image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code")
     fun getShortProductByBarcode(
             @Path("barcode") barcode: String?,
             @Header("User-Agent") header: String?
-    ): Call<ProductState>
+    ): Single<ProductState>
 
     @GET("cgi/search.pl?search_simple=1&json=1&action=process")
     fun searchProductByName(
@@ -98,7 +97,7 @@ interface ProductsAPI {
     ): Single<JsonNode>
 
     @GET("/cgi/ingredients.pl?process_image=1&ocr_engine=google_cloud_vision")
-    fun getIngredients(
+    fun performOCR(
             @Query(ApiFields.Keys.BARCODE) code: String?,
             @Query("id") id: String?
     ): Single<JsonNode>
@@ -308,7 +307,7 @@ interface ProductsAPI {
      * This method gives the news in all languages
      */
     @GET("/files/tagline/tagline-" + BuildConfig.FLAVOR + ".json")
-    fun getTagline(@Header("User-Agent") header: String?): Single<ArrayList<TaglineLanguageModel>>
+    fun getTagline(@Header("User-Agent") header: String?): Single<ArrayList<TagLineLanguage>>
 
     /**
      * Returns images for the current product
@@ -326,7 +325,7 @@ interface ProductsAPI {
     fun editImages(
             @Query(ApiFields.Keys.BARCODE) code: String?,
             @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
-    ): Call<String>
+    ): Single<String>
 
     /**
      * This method is to crop images server side
@@ -344,7 +343,7 @@ interface ProductsAPI {
      */
     @GET("/cgi/product_image_unselect.pl")
     fun unSelectImage(
-            @Query(ApiFields.Keys.BARCODE) code: String?,
+            @Query(ApiFields.Keys.BARCODE) code: String,
             @QueryMap fields: Map<String, @JvmSuppressWildcards String?>?
     ): Single<String>
 

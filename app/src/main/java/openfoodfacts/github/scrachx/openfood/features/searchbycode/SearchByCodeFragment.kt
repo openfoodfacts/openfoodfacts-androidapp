@@ -21,10 +21,9 @@ import openfoodfacts.github.scrachx.openfood.utils.isBarcodeValid
 class SearchByCodeFragment : NavigationBaseFragment() {
     private var _binding: FragmentFindProductBinding? = null
     private val binding get() = _binding!!
-    private lateinit var api: OpenFoodAPIClient
+    private val api by lazy { OpenFoodAPIClient(requireActivity()) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        api = OpenFoodAPIClient(requireActivity())
         _binding = FragmentFindProductBinding.inflate(inflater)
         return binding.root
     }
@@ -39,10 +38,12 @@ class SearchByCodeFragment : NavigationBaseFragment() {
         binding.editTextBarcode.isSelected = false
         binding.buttonBarcode.setOnClickListener { checkBarcodeThenSearch() }
 
-
-        val intent = requireActivity().intent
-        val barCode = intent.getStringExtra(INTENT_KEY_BARCODE)
-        if (!barCode.isNullOrEmpty()) {
+        // Get barcode from intent or saved instance or from arguments, in this order
+        var barCode = requireActivity().intent.getStringExtra(INTENT_KEY_BARCODE)
+        if (barCode.isNullOrBlank()) {
+            barCode = savedInstanceState?.getString(INTENT_KEY_BARCODE) ?: arguments?.getString(INTENT_KEY_BARCODE)
+        }
+        if (!barCode.isNullOrBlank()) {
             setBarcodeThenSearch(barCode)
         }
 
@@ -66,18 +67,19 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     }
 
     @NavigationDrawerType
-    override fun getNavigationDrawerType(): Int {
-        return NavigationDrawerListener.ITEM_SEARCH_BY_CODE
-    }
+    override fun getNavigationDrawerType() = NavigationDrawerListener.ITEM_SEARCH_BY_CODE
 
     override fun onResume() {
         super.onResume()
-        (requireActivity() as AppCompatActivity).supportActionBar?.title =
-                getString(R.string.search_by_barcode_drawer)
-
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.search_by_barcode_drawer)
     }
 
     companion object {
         const val INTENT_KEY_BARCODE = "barcode"
+        fun newInstance(barcode: String) = SearchByCodeFragment().apply {
+            arguments = Bundle().apply {
+                putString(INTENT_KEY_BARCODE, barcode)
+            }
+        }
     }
 }

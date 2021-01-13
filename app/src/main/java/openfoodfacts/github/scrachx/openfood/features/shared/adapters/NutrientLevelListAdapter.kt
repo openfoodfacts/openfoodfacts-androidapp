@@ -19,19 +19,20 @@ class NutrientLevelListAdapter(
         private val nutrientLevelItems: List<NutrientLevelItem>
 ) : RecyclerView.Adapter<NutrientViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NutrientViewHolder {
-        return NutrientViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.nutrient_lvl_list_item, parent, false))
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            NutrientViewHolder(LayoutInflater.from(parent.context)
+                    .inflate(R.layout.nutrient_lvl_list_item, parent, false))
 
     override fun onBindViewHolder(holder: NutrientViewHolder, position: Int) {
         val (category, value, label, icon) = nutrientLevelItems[position]
+
         if (icon == NO_ID) {
             holder.imgIcon.visibility = View.GONE
         } else {
             holder.imgIcon.setImageDrawable(AppCompatResources.getDrawable(context, icon))
             holder.imgIcon.visibility = View.VISIBLE
         }
+
         holder.txtTitle.let {
             it.text = ""
             it.append(value)
@@ -40,7 +41,6 @@ class NutrientLevelListAdapter(
             it.append("\n")
             it.append(label)
         }
-
     }
 
     override fun getItemId(position: Int) = position.toLong()

@@ -18,7 +18,8 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
-        maven(url = "https://jitpack.io")
+        google()
+        maven("https://jitpack.io")
     }
 }
 plugins {
@@ -27,8 +28,8 @@ plugins {
     id("org.greenrobot.greendao")
     id("io.sentry.android.gradle")
     id("kotlin-android")
-    kotlin("kapt")
-
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 fun obtainTestBuildType(): String {
@@ -41,56 +42,70 @@ fun obtainTestBuildType(): String {
 }
 
 dependencies {
-    //Android
-    implementation("androidx.browser:browser:1.2.0")
+    // Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlinVersion"]}")
+
+    // Android KTX
+    implementation("androidx.fragment:fragment-ktx:1.3.0-rc01")
+    implementation("androidx.activity:activity-ktx:1.2.0-rc01")
+    implementation("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.core:core-ktx:1.5.0-alpha05")
+
+
+    // AndroidX
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.work:work-runtime:2.4.0")
+    implementation("androidx.browser:browser:1.3.0")
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("com.google.android.material:material:1.2.1")
     implementation("androidx.annotation:annotation:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.multidex:multidex:2.0.1")
-    implementation("androidx.fragment:fragment-ktx:1.3.0-beta01")
-    implementation("androidx.activity:activity-ktx:1.2.0-beta01")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
-    implementation("androidx.preference:preference-ktx:1.1.1")
-
-    //DI
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.work:work-runtime:2.4.0")
     implementation("androidx.work:work-rxjava2:2.4.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
-    kapt("com.google.dagger:dagger-compiler:2.29.1")
-    implementation("com.google.dagger:dagger:2.29.1")
+    implementation("androidx.startup:startup-runtime:1.0.0")
+
+
+    kapt("com.google.dagger:dagger-compiler:2.30.1")
+    implementation("com.google.dagger:dagger:2.30.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
 
     //Rx
-    implementation("io.reactivex.rxjava2:rxjava:2.2.19")
+    implementation("io.reactivex.rxjava2:rxkotlin:2.4.0")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.20")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
 
     //Networking
     implementation("com.squareup.retrofit2:retrofit:2.6.4")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.4")
+    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.4")
     implementation("com.squareup.okhttp3:logging-interceptor:3.12.11")
 
-    //scheduling jobs
-    implementation("commons-lang:commons-lang:2.6")
-    implementation("org.apache.commons:commons-csv:1.4")
 
-    //Serialization/Deserialization
-    implementation("com.fasterxml.jackson.core:jackson-core:2.11.3")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.3")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.3")
+    // Apache commons
+    implementation("org.apache.commons:commons-lang3:3.11")
+    implementation("org.apache.commons:commons-text:1.9")
+    implementation("org.apache.commons:commons-csv:1.8")
+    implementation("commons-validator:commons-validator:1.7")
 
-    //Database
-    implementation("org.greenrobot:greendao:3.3.0")
+    // Serialization/Deserialization
+    implementation("com.fasterxml.jackson.core:jackson-core:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.core:jackson-databind:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${rootProject.extra["jacksonVersion"]}")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:${rootProject.extra["jacksonVersion"]}")
+
+
+    // Database
+    implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
 
     //Event bus
     implementation("org.greenrobot:eventbus:3.2.0")
+
+    implementation("com.google.android.material:material:1.2.1")
 
     //Image Loading
     implementation("com.squareup.picasso:picasso:2.71828")
@@ -99,13 +114,8 @@ dependencies {
     implementation("com.github.jkwiecien:EasyImage:1.4.0")
 
     //Barcode and QR Scanner
-    implementation("com.journeyapps:zxing-android-embedded:3.6.0") {
-        isTransitive = false
-    }
     implementation("com.google.zxing:core:3.3.0")
-
-    // Apache
-    implementation("commons-validator:commons-validator:1.6")
+    implementation("com.journeyapps:zxing-android-embedded:3.6.0") { isTransitive = false }
 
     // UI Component : Custom Toast
     implementation("net.steamcrafted:load-toast:1.0.12")
@@ -119,43 +129,42 @@ dependencies {
     }
 
     // UI Component : Material Drawer
-    implementation("com.mikepenz:materialdrawer:7.0.0") {
-        isTransitive = true
-    }
-
-    // UI Component : Adapters
+    implementation("com.mikepenz:materialdrawer:7.0.0") { isTransitive = true }
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation("com.mikepenz:fastadapter-commons:3.3.1@aar")
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
 
     // UI Component : Font Icons
     implementation("com.mikepenz:iconics-core:4.0.2@aar")
-    implementation("com.mikepenz:google-material-typeface:3.0.1.4.original-kotlin@aar")
+    implementation("com.mikepenz:google-material-typeface:3.0.1.6.original-kotlin@aar")
     implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0") {
-        exclude(group = "com.android.support", module = "appcompat-v7")
+        exclude("com.android.support", "appcompat-v7")
     }
 
     // UI Component : Chips Input
     implementation("com.hootsuite.android:nachos:1.2.0")
 
     // Crash analytics
-    implementation("io.sentry:sentry-android:3.1.2")
+    implementation("io.sentry:sentry-android:3.2.0")
 
     // Unit Testing
     testImplementation("junit:junit:4.13.1")
-    testImplementation("org.mockito:mockito-core:3.5.13")
-    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.19.0")
+    testImplementation("org.mockito:mockito-core:3.6.28")
+    testImplementation("net.javacrumbs.json-unit:json-unit-fluent:2.22.0")
     testImplementation("com.google.truth:truth:1.1")
     testImplementation("com.google.truth.extensions:truth-java8-extension:1.1")
 
     // Instrumented tests
     androidTestUtil("androidx.test:orchestrator:1.3.0")
 
-    androidTestImplementation("androidx.test:runner:1.3.0")
+    androidTestImplementation("androidx.test:runner:1.3.0") {
+        exclude("junit")
+    }
     androidTestImplementation("androidx.test:rules:1.3.0")
 
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2") {
+        exclude("junit")
+    }
 
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.3.0")
@@ -168,14 +177,13 @@ dependencies {
     }
     androidTestImplementation("com.jraska:falcon:2.1.1")
     androidTestImplementation("tools.fastlane:screengrab:1.2.0")
+
     resourcePlaceholders {
         files = listOf("xml/shortcuts.xml")
     }
 
     // ShowCaseView dependency
     implementation("com.github.mreram:showcaseview:1.0.5")
-
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.1")
 }
 
 
@@ -198,8 +206,8 @@ android {
         minSdkVersion(16)
         targetSdkVersion(30)
 
-        versionCode = 350
-        versionName = "3.5.0"
+        versionCode = 362
+        versionName = "3.6.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -211,7 +219,7 @@ android {
 
     signingConfigs {
         create("release") {
-            if ("true" == System.getenv("CI_RELEASE")) { // CI=true is exported by github action
+            if (System.getenv("CI_RELEASE")?.toBoolean() == true) { // CI=true is exported by github action
                 val storeFilePath = System.getenv("SIGN_STORE_PATH")
                 if (storeFilePath != null) {
                     storeFile = file(storeFilePath)
@@ -302,11 +310,13 @@ android {
     }
 
     compileOptions {
-        // Flag to enable support for the new language APIs
-        isCoreLibraryDesugaringEnabled = true
         // Sets Java compatibility to Java 8
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     lintOptions {
@@ -334,10 +344,10 @@ android {
     }
 }
 
+greendao { schemaVersion(18) }
 
-greendao {
-    schemaVersion(18)
-}
+
+
 
 
 

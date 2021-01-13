@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_
 
 import android.app.Activity
 import android.net.Uri
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -19,14 +20,13 @@ class IngredientAnalysisRecyclerAdapter(
 ) : RecyclerView.Adapter<IngredientAnalysisViewHolder>(), CustomTabActivityHelper.ConnectionCallback {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientAnalysisViewHolder {
-        val view = activity.layoutInflater.inflate(R.layout.ingredient_analysis_list_item, parent, false)
+        val view = LayoutInflater.from(activity).inflate(R.layout.ingredient_analysis_list_item, parent, false)
         return IngredientAnalysisViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: IngredientAnalysisViewHolder, position: Int) {
-        val text = productIngredients[position].text!!
-        val id = productIngredients[position].id!!.replace("\"", "")
-        val name = text.replace("\"", "") //removes quotations
+        val id = productIngredients[position].id.replace("\"", "")
+        val name = productIngredients[position].text.replace("\"", "") //removes quotations
         holder.tvIngredientName.text = name
         holder.tvIngredientName.setOnClickListener {
             val customTabsIntent = CustomTabsIntent.Builder().build().apply {
@@ -41,7 +41,6 @@ class IngredientAnalysisRecyclerAdapter(
     }
 
     override fun getItemCount() = productIngredients.size
-
-    override fun onCustomTabsConnected() {}
-    override fun onCustomTabsDisconnected() {}
+    override fun onCustomTabsConnected() = Unit
+    override fun onCustomTabsDisconnected() = Unit
 }
