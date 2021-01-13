@@ -158,7 +158,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
         }
 
         val nutriments = product.nutriments
-        if (!nutriments.contains(Nutriments.CARBON_FOOTPRINT)) {
+        if (Nutriments.CARBON_FOOTPRINT !in nutriments) {
             binding.textCarbonFootprint.visibility = GONE
         }
         setupNutrientItems(nutriments)
@@ -258,7 +258,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                     nutriments.getEnergyKcalValue(false),
                     nutriments.getEnergyKcalValue(true),
                     Units.ENERGY_KCAL,
-                    nutriments.getModifierIfNotDefault(Nutriments.ENERGY_KCAL)))
+                    energyKcal.getModifierIfNotDefault()))
         }
         val energyKj = nutriments[Nutriments.ENERGY_KJ]
         if (energyKj != null) {
@@ -266,7 +266,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                     nutriments.getEnergyKjValue(false),
                     nutriments.getEnergyKjValue(true),
                     Units.ENERGY_KJ,
-                    nutriments.getModifierIfNotDefault(Nutriments.ENERGY_KJ)))
+                    energyKj.getModifierIfNotDefault()))
         }
 
         // Fat
@@ -276,7 +276,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                     fat2.for100gInUnits,
                     fat2.forServingInUnits,
                     fat2.unit,
-                    nutriments.getModifierIfNotDefault(FAT)))
+                    fat2.getModifierIfNotDefault()))
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.FAT_MAP))
         }
 
@@ -287,7 +287,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                     carbohydrates.for100gInUnits,
                     carbohydrates.forServingInUnits,
                     carbohydrates.unit,
-                    nutriments.getModifierIfNotDefault(Nutriments.CARBOHYDRATES)))
+                    carbohydrates.getModifierIfNotDefault()))
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.CARBO_MAP))
         }
 
@@ -301,7 +301,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                     proteins.for100gInUnits,
                     proteins.forServingInUnits,
                     proteins.unit,
-                    nutriments.getModifierIfNotDefault(Nutriments.PROTEINS)))
+                    proteins.getModifierIfNotDefault()))
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.PROT_MAP))
         }
 
@@ -447,7 +447,7 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
                     nutriment.for100gInUnits,
                     nutriment.forServingInUnits,
                     if (value == R.string.ph) "" else nutriment.unit,
-                    nutriments.getModifierIfNotDefault(key),
+                    nutriment.getModifierIfNotDefault(),
             )
         }
     }

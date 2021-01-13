@@ -91,27 +91,18 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.for100g100ml.setOnClickListener { checkAllValues() }
         binding.btnAddANutrient.setOnClickListener { displayAddNutrientDialog() }
         binding.salt.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) = updateSodiumValue()
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
-            override fun afterTextChanged(s: Editable) {
-                updateSodiumValue()
-            }
         })
         binding.spinnerSaltComp.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
-                updateSodiumMod()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // This is not possible
-            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) = updateSodiumMod()
+            override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
         }
         binding.sodium.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) = updateSaltValue()
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
-            override fun afterTextChanged(s: Editable) {
-                updateSaltValue()
-            }
         })
         binding.spinnerSodiumComp.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) = updateSaltMod()
@@ -212,13 +203,17 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
         // Fill default nutriments fields
         (view as ViewGroup).getViewsByType(CustomValidatingEditTextView::class.java).forEach { view ->
-            val nutrientShortName = view.entryName
+            var nutrientShortName = view.entryName
+
+            // Workaround for saturated-fat
+            if (nutrientShortName == "saturated_fat") nutrientShortName = "saturated-fat"
+
             // Skip serving size and energy view, we already filled them
             if (view === binding.servingSize || view === binding.energyKcal || view === binding.energyKj) return@forEach
 
             // Get the value
-            val value = if (isDataPer100g) nutriments.get100g(nutrientShortName) else nutriments.getServing(nutrientShortName)
-            if (value.isEmpty()) return@forEach
+            val value = if (isDataPer100g) nutriments[nutrientShortName]?.for100g else nutriments[nutrientShortName]?.forServing
+            if (value.isNullOrEmpty()) return@forEach
 
             view.setText(value)
             view.unitSpinner?.setSelection(getSelectedUnitFromShortName(nutriments, nutrientShortName))
@@ -228,15 +223,13 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         // Set the values of all the other nutrients if defined and create new row in the tableLayout.
         PARAMS_OTHER_NUTRIENTS.withIndex().forEach { (i, nutrient) ->
             val nutrientShortName = getShortName(nutrient)
-            val value = if (isDataPer100g) nutriments.get100g(nutrientShortName) else nutriments.getServing(nutrientShortName)
-            if (value.isEmpty()) {
-                return@forEach
-            }
+            val value = if (isDataPer100g) nutriments[nutrientShortName]?.for100g else nutriments[nutrientShortName]?.forServing
+            if (value.isNullOrEmpty()) return@forEach
             val unitIndex = getSelectedUnitFromShortName(nutriments, nutrientShortName)
             val modIndex = getSelectedModifierFromShortName(nutriments, nutrientShortName)
             index.add(i)
-            val nutrients = resources.getStringArray(R.array.nutrients_array)
-            addNutrientRow(i, nutrients[i], true, value, unitIndex, modIndex)
+            val nutrientNames = resources.getStringArray(R.array.nutrients_array)
+            addNutrientRow(i, nutrientNames[i], true, value, unitIndex, modIndex)
         }
     }
 
@@ -253,26 +246,17 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         loadNutritionImage(imagePath!!)
     }
 
-    private fun getSelectedUnitFromShortName(nutriments: Nutriments, nutrientShortName: String): Int {
-        val unit = nutriments.getUnit(nutrientShortName)
-        return getSelectedUnit(nutrientShortName, unit)
-    }
+    private fun getSelectedUnitFromShortName(nutriments: Nutriments, nutrientShortName: String): Int =
+            getSelectedUnit(nutrientShortName, nutriments[nutrientShortName]?.unit)
 
-    private fun getSelectedUnit(nutrientShortName: String?, unit: String?): Int {
-        var unitSelectedIndex = 0
-        if (unit != null) {
-            unitSelectedIndex = if (Nutriments.ENERGY_KCAL == nutrientShortName || Nutriments.ENERGY_KJ == nutrientShortName) {
-                throw IllegalArgumentException("Nutrient cannot be energy")
-            } else {
-                getPositionInAllUnitArray(unit)
-            }
-        }
-        return unitSelectedIndex
-    }
+    private fun getSelectedUnit(nutrientShortName: String?, unit: String?) = if (unit != null) {
+        if (Nutriments.ENERGY_KCAL == nutrientShortName || Nutriments.ENERGY_KJ == nutrientShortName)
+            throw IllegalArgumentException("Nutrient cannot be energy")
+        else getPositionInAllUnitArray(unit)
+    } else 0
 
-    private fun getSelectedModifierFromShortName(nutriments: Nutriments, nutrientShortName: String): Int {
-        return getPositionInModifierArray(nutriments.getModifier(nutrientShortName))
-    }
+    private fun getSelectedModifierFromShortName(nutriments: Nutriments, nutrientShortName: String): Int =
+            getPositionInModifierArray(nutriments[nutrientShortName]?.modifier ?: "")
 
     private fun updateServingSizeFrom(servingSize: String) {
         val part = servingSize.split(Regex("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")).toTypedArray()

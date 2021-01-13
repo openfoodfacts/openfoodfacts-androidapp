@@ -82,7 +82,7 @@ class CalculateDetailsActivity : BaseActivity() {
                     calculateCalories(weight, spinnerValue).toString(),
                     energyKcal.forServingInUnits,
                     Units.ENERGY_KCAL,
-                    nutriments.getModifierIfNotDefault(Nutriments.ENERGY_KCAL),
+                    energyKcal.getModifierIfNotDefault(),
             )
         }
         val energyKj = nutriments[Nutriments.ENERGY_KJ]
@@ -92,7 +92,7 @@ class CalculateDetailsActivity : BaseActivity() {
                     calculateKj(weight, spinnerValue).toString(),
                     energyKj.forServingInUnits,
                     Units.ENERGY_KJ.toLowerCase(Locale.getDefault()),
-                    nutriments.getModifierIfNotDefault(Nutriments.ENERGY_KJ),
+                    energyKj.getModifierIfNotDefault(),
             )
         }
 
@@ -101,10 +101,10 @@ class CalculateDetailsActivity : BaseActivity() {
         if (fat != null) {
             nutrimentListItems += BoldNutrimentListItem(
                     getString(R.string.nutrition_fat),
-                    fat.getForAnyValue(weight, spinnerValue),
+                    fat.getForPortion(weight, spinnerValue),
                     fat.forServingInUnits,
                     fat.unit,
-                    nutriments.getModifierIfNotDefault(Nutriments.FAT)
+                    fat.getModifierIfNotDefault()
             )
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.FAT_MAP))
         }
@@ -114,10 +114,10 @@ class CalculateDetailsActivity : BaseActivity() {
         if (carbohydrates != null) {
             nutrimentListItems += BoldNutrimentListItem(
                     getString(R.string.nutrition_carbohydrate),
-                    carbohydrates.getForAnyValue(weight, spinnerValue),
+                    carbohydrates.getForPortion(weight, spinnerValue),
                     carbohydrates.forServingInUnits,
                     carbohydrates.unit,
-                    nutriments.getModifierIfNotDefault(Nutriments.CARBOHYDRATES)
+                    carbohydrates.getModifierIfNotDefault()
             )
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.CARBO_MAP))
         }
@@ -130,10 +130,10 @@ class CalculateDetailsActivity : BaseActivity() {
         if (proteins != null) {
             nutrimentListItems += BoldNutrimentListItem(
                     getString(R.string.nutrition_proteins),
-                    proteins.getForAnyValue(weight, spinnerValue),
+                    proteins.getForPortion(weight, spinnerValue),
                     proteins.forServingInUnits,
                     proteins.unit,
-                    nutriments.getModifierIfNotDefault(Nutriments.PROTEINS)
+                    proteins.getModifierIfNotDefault()
             )
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.PROT_MAP))
         }
@@ -161,10 +161,10 @@ class CalculateDetailsActivity : BaseActivity() {
             if (nutriment != null) {
                 NutrimentListItem(
                         getString(value),
-                        nutriment.getForAnyValue(weight, spinnerValue),
+                        nutriment.getForPortion(weight, spinnerValue),
                         nutriment.forServingInUnits,
                         nutriment.unit,
-                        nutriments.getModifierIfNotDefault(key)
+                        nutriment.getModifierIfNotDefault()
                 )
             } else null
         }

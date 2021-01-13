@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonAnyGetter
 import com.fasterxml.jackson.annotation.JsonAnySetter
 import com.fasterxml.jackson.annotation.JsonInclude
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.ENERGY_KCAL
-import openfoodfacts.github.scrachx.openfood.models.Nutriments.Companion.ENERGY_KJ
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.utils.DEFAULT_MODIFIER
 import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.convertFromGram
@@ -207,51 +205,52 @@ class Nutriments : Serializable {
 
     }
 
+    @get:JsonAnyGetter
+    val additionalProperties = HashMap<String, Any?>()
 
-    operator fun get(nutrimentName: String): Nutriment? {
-        return if (nutrimentName.isEmpty() || additionalProperties[nutrimentName] == null) null
-        else try {
-            Nutriment(
-                    nutrimentName,
-                    additionalProperties[nutrimentName].toString(),
-                    get100g(nutrimentName),
-                    getServing(nutrimentName),
-                    getUnit(nutrimentName),
-                    getModifier(nutrimentName)
-            )
-        } catch (e: NullPointerException) {
-            // In case one of the getters was unable to get data as string
-            Log.e(Nutriments::class.simpleName, Log.getStackTraceString(e))
-            null
+    fun getEnergyKcalValue(isDataPerServing: Boolean) =
+            if (isDataPerServing) getServing(ENERGY_KCAL)
+            else get100g(ENERGY_KCAL)
+
+    fun getEnergyKjValue(isDataPerServing: Boolean) =
+            if (isDataPerServing) getServing(ENERGY_KJ)
+            else get100g(ENERGY_KJ)
+
+    @JsonAnySetter
+    fun setAdditionalProperty(name: String, value: Any?) {
+        additionalProperties[name] = value
+        if (VITAMINS_MAP.containsKey(name)) {
+            hasVitamins = true
+        } else if (MINERALS_MAP.containsKey(name)) {
+            hasMinerals = true
         }
     }
 
-    /**
-     * @return [StringUtils.EMPTY] if there is no serving value for the specified nutriment
-     */
-    fun getServing(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.SERVING)
+    operator fun get(nutrimentName: String) = if (nutrimentName.isEmpty()
+            || additionalProperties[nutrimentName] == null) null
+    else Nutriment(
+            nutrimentName,
+            additionalProperties[nutrimentName].toString(),
+            get100g(nutrimentName),
+            getServing(nutrimentName),
+            getUnit(nutrimentName),
+            getModifier(nutrimentName)
+    )
+
 
     /**
      * @return [StringUtils.EMPTY] if there is no serving value for the specified nutriment
      */
-    fun get100g(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.VALUE_100G)
+    private fun getServing(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.SERVING)
 
     /**
-     * @return [DEFAULT_UNIT] if there is no unit for the specified nutriment
+     * @return [StringUtils.EMPTY] if there is no serving value for the specified nutriment
      */
-    fun getUnit(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.UNIT, DEFAULT_UNIT)
+    private fun get100g(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.VALUE_100G)
 
-    /**
-     * @return [DEFAULT_MODIFIER] if there is no modifier for the specified nutriment
-     */
-    fun getModifier(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.MODIFIER, DEFAULT_MODIFIER)
+    private fun getUnit(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.UNIT, DEFAULT_UNIT)
 
-    /**
-     * Get the nutriment modifier if it is different from [DEFAULT_MODIFIER]
-     *
-     * @return The nutriment modifier if different from [DEFAULT_MODIFIER], otherwise an empty string
-     */
-    fun getModifierIfNotDefault(nutrimentName: String) = getModifierNonDefault(getModifier(nutrimentName))
+    private fun getModifier(nutrimentName: String) = getAdditionalProperty(nutrimentName, ApiFields.Suffix.MODIFIER, DEFAULT_MODIFIER)
 
 
     private fun getAdditionalProperty(nutrimentName: String, suffix: String, defaultValue: String = StringUtils.EMPTY) =
@@ -265,97 +264,76 @@ class Nutriments : Serializable {
     var hasVitamins = false
         private set
 
-    @get:JsonAnyGetter
-    val additionalProperties = HashMap<String, Any?>()
-
-    @JsonAnySetter
-    fun setAdditionalProperty(name: String, value: Any?) {
-        additionalProperties[name] = value
-        if (VITAMINS_MAP.containsKey(name)) {
-            hasVitamins = true
-        } else if (MINERALS_MAP.containsKey(name)) {
-            hasMinerals = true
-        }
-    }
 
     class Nutriment internal constructor(
             val key: String,
             val name: String,
-            private val for100g: String,
-            private val forServing: String,
+            val for100g: String,
+            val forServing: String,
             unit: String,
             val modifier: String
     ) {
+        fun getModifierIfNotDefault() = getModifierNonDefault(modifier)
         val unit = getRealUnit(unit)
+
         val displayStringFor100g: String
             get() {
                 val builder = StringBuilder()
-                val mod = getModifierNonDefault(modifier)
-                if (mod != "") {
-                    builder.append(mod).append(" ")
-                }
+                getModifierNonDefault(modifier).takeIf { it.isNotEmpty() }?.let { builder.append(it).append(" ") }
                 return builder.append(getRoundNumber(for100gInUnits)).append(" ").append(unit).toString()
             }
-
-        /**
-         * All the values given by the api are in gram. For all unit it's possible to convert back to th
-         *
-         * @param unit the initial unit
-         * @return if the unit is % DV, the api gives the value in g
-         */
-        @Contract(pure = true)
-        private fun getRealUnit(unit: String) = if (unit.contains("%")) Units.UNIT_GRAM else unit
 
         /**
          * Returns the amount of nutriment per 100g
          * of product in the units stored in [Nutriment.unit]
          */
-        val for100gInUnits get() = getValueInUnits(for100g, unit)
+        val for100gInUnits get() = getValueInUnits(this.for100g, this.unit)
 
         /**
          * Returns the amount of nutriment per serving
          * of product in the units stored in [Nutriment.unit]
          */
-        val forServingInUnits get() = getValueInUnits(forServing, unit)
-
-        private fun getValueInUnits(valueInGramOrMl: String, unit: String): String {
-            if (valueInGramOrMl.isBlank()) {
-                return StringUtils.EMPTY
-            }
-            if (valueInGramOrMl.isEmpty() || unit == Units.UNIT_GRAM) {
-                return valueInGramOrMl
-            }
-            var value = valueInGramOrMl.toFloat()
-            value = convertFromGram(value, unit)
-            return getRoundNumber(value)
-        }
+        val forServingInUnits get() = getValueInUnits(this.forServing, this.unit)
 
         /**
          * Calculates the nutriment value for a given amount of this product. For example,
          * calling getForAnyValue(1, "kg") will give you the amount of this nutriment
          * given 1 kg of the product.
          *
-         * @param userSetServing amount of this product used to calculate nutriment value
-         * @param otherUnit units in either "g", "kg", or "mg" to define userSetServing
+         * @param portion amount of this product used to calculate nutriment value
+         * @param portionUnit units in either "g", "kg", or "mg" to define userSetServing
          * @return nutriment value for a given amount of this product
          */
-        fun getForAnyValue(userSetServing: Float, otherUnit: String?): String {
+        fun getForPortion(portion: Float, portionUnit: String?): String {
             val strValue = for100gInUnits
             if (strValue.isEmpty() || strValue.contains("%")) return strValue
             return try {
                 val valueFor100g = strValue.toFloat()
-                val portionInGram = convertToGrams(userSetServing, otherUnit)
+                val portionInGram = convertToGrams(portion, portionUnit)
                 getRoundNumber(valueFor100g / 100 * portionInGram)
             } catch (e: NumberFormatException) {
                 Log.w(Nutriments::class.simpleName, "Can't parse value '$strValue'", e)
                 StringUtils.EMPTY
             }
         }
+
+        companion object {
+            private fun getValueInUnits(valueInGramOrMl: String, unit: String) = when {
+                valueInGramOrMl.isBlank() -> StringUtils.EMPTY
+                valueInGramOrMl.isEmpty() || unit == Units.UNIT_GRAM -> valueInGramOrMl
+
+                else -> getRoundNumber(convertFromGram(valueInGramOrMl.toFloat(), unit))
+            }
+
+            /**
+             * All the values given by the api are in gram. For all unit it's possible to convert back to th
+             *
+             * @param unit the initial unit
+             * @return if the unit is % DV, the api gives the value in g
+             */
+            @Contract(pure = true)
+            private fun getRealUnit(unit: String) = if ("%" !in unit) unit else Units.UNIT_GRAM
+        }
     }
+
 }
-
-fun Nutriments.getEnergyKcalValue(isDataPerServing: Boolean) =
-        if (isDataPerServing) getServing(ENERGY_KCAL) else get100g(ENERGY_KCAL)
-
-fun Nutriments.getEnergyKjValue(isDataPerServing: Boolean) =
-        if (isDataPerServing) getServing(ENERGY_KJ) else get100g(ENERGY_KJ)
