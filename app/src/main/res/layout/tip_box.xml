@@ -13,29 +13,27 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/tip_box_2"
+            android:id="@+id/tip_box_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/green_300"
             android:orientation="horizontal"
             android:paddingTop="@dimen/spacing_tiny"
             android:paddingBottom="@dimen/spacing_tiny"
-            android:visibility="gone"
             tools:visibility="visible">
 
             <LinearLayout
-                android:id="@+id/bottom_sheet_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/close_prompt"
-                android:layout_toStartOf="@id/close_prompt"
+                android:layout_toRightOf="@id/close_box_icon"
+                android:layout_toStartOf="@id/close_box_icon"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/product_question_text"
+                    android:id="@+id/tipMessage_Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/spacing_small"
@@ -48,18 +46,20 @@
                     android:id="@+id/mail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/spacing_tiny"
                     android:paddingStart="@dimen/spacing_small"
                     android:paddingLeft="@dimen/spacing_small"
                     android:paddingEnd="@dimen/spacing_tiny"
                     android:paddingRight="@dimen/spacing_tiny"
                     android:paddingBottom="@dimen/spacing_small"
-                    tools:text="@string/off_mail"
+                    android:text="@string/off_mail"
                     android:textAlignment="center"
-                    android:textColor="@color/grey_300" />
+                    android:textColor="@color/md_blue_A700" />
+
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/close_prompt"
+                android:id="@+id/close_box_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -72,7 +72,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/tip_box"
+            android:id="@+id/tip_box_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -87,7 +87,7 @@
                 android:padding="12dp">
 
                 <TextView
-                    android:id="@+id/tipMessage"
+                    android:id="@+id/tipMessage_Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/spacing_normal"

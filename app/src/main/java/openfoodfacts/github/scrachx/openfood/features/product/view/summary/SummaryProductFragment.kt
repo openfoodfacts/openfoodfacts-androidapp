@@ -129,6 +129,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     /**boolean to determine if nutrient prompt should be shown*/
     private var showNutrientPrompt = false
 
+    /**boolean to determine if eco score prompt should be shown*/
+    private var showEcoScorePrompt = false
+
     /**boolean to determine if labels prompt should be shown*/
     private var showLabelsPrompt = false
 
@@ -463,19 +466,17 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         val statesTags = product.statesTags
         showCategoryPrompt = statesTags.contains("en:categories-to-be-completed") && !hasCategoryInsightQuestion
         showNutrientPrompt = statesTags.contains("en:nutrition-facts-to-be-completed") && product.noNutritionData != "on"
+        showEcoScorePrompt = statesTags.contains("en:categories-completed") && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown", true))
         showLabelsPrompt = statesTags.contains("en:labels-to-be-completed")
         showOriginsPrompt = statesTags.contains("en:origins-to-be-completed")
 
         Log.d(LOG_TAG, "Show category prompt: $showCategoryPrompt")
         Log.d(LOG_TAG, "Show nutrient prompt: $showNutrientPrompt")
+        Log.d(LOG_TAG, "Show Eco Score prompt: $showEcoScorePrompt")
         Log.d(LOG_TAG, "Show labels prompt: $showLabelsPrompt")
         Log.d(LOG_TAG, "Show origins prompt: $showOriginsPrompt")
 
-        Log.i("inside", "statesTags = $statesTags" )
-        Log.i("inside", "ecoscore = " + product.ecoscore)
-        Log.i("inside", "product.ecoscore.equals "  + product.ecoscore.equals("unknown", true))
-        Log.i("inside", "ecoscore is null or empty " + product.ecoscore.isNullOrEmpty())
-        if(statesTags.contains("en:categories-completed") && product.ecoscore.isNullOrEmpty().or(product.ecoscore.equals("unknown", true))){
+        if(showEcoScorePrompt){
             binding.tipBoxEcoScore.loadToolTip()
         }
 

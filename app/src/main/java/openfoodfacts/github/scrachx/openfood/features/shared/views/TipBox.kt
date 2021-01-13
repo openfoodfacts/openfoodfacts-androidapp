@@ -1,20 +1,22 @@
 package openfoodfacts.github.scrachx.openfood.features.shared.views
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.util.AttributeSet
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.Transformation
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.res.getStringOrThrow
 import androidx.preference.PreferenceManager
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.databinding.ActivityFullScreenImageBinding
 import openfoodfacts.github.scrachx.openfood.databinding.TipBoxBinding
-import openfoodfacts.github.scrachx.openfood.databinding.TipBoxBindingImpl
 import kotlin.math.roundToLong
 
 class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
@@ -42,11 +44,22 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
                 ResourcesCompat.getColor(resources, R.color.brand_light_blue, context.theme))
         attributes.recycle()
 
-        binding.tipMessage.setTextColor(toolTipTextColor)
-        binding.tipMessage.text = context.getString(R.string.tip_message, message)
+        // if identifier != "showEcoScorePrompt" , set values to button Tip Box
+        // else. set value to icon tip box
+        if(identifier!= "showEcoScorePrompt"){
+            binding.tipBoxIcon.visibility= View.GONE
+            binding.tipMessageButton.setTextColor(toolTipTextColor)
+            binding.tipMessageButton.text = context.getString(R.string.tip_message, message)
+            binding.tipBoxContainer.setBackgroundColor(toolTipBackgroundColor)
 
-        binding.arrow.setColorFilter(toolTipBackgroundColor)
-        setArrowAlignment(arrowAlignment, marginStart, marginEnd)
+            binding.arrow.setColorFilter(toolTipBackgroundColor)
+            setArrowAlignment(arrowAlignment, marginStart, marginEnd)
+        } else{
+            binding.tipBoxButton.visibility = View.GONE
+            binding.tipMessageIcon.setTextColor(toolTipTextColor)
+            binding.tipMessageIcon.text = message
+            binding.tipBoxIcon.setBackgroundColor(toolTipBackgroundColor)
+        }
 
         visibility = GONE
 
@@ -55,19 +68,32 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
             prefs.edit { putBoolean(identifier, false) }
         }
 
-        binding.closePrompt.setOnClickListener{
+        binding.closeBoxIcon.setOnClickListener {
             hide()
             prefs.edit { putBoolean(identifier, false) }
         }
 
-        binding.tipBoxContainer.setBackgroundColor(toolTipBackgroundColor)
+        binding.mail.setOnClickListener {
+            val contactIntent = Intent(Intent.ACTION_SENDTO)
+            contactIntent.data = Uri.parse("mailto:contact@openfoodfacts.org")
+            contactIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            try {
+                context.startActivity(contactIntent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(getContext(), R.string.email_not_found, Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
         if (canDisplayImmediately) loadToolTip()
     }
 
 
     fun setTipMessage(message: CharSequence?) {
-        binding.tipMessage.text = message
+        if (identifier != "showEcoScorePrompt")
+            binding.tipMessageButton.text = context.getString(R.string.tip_message, message)
+        else
+            binding.tipMessageIcon.text = message
     }
 
     fun setArrowAlignment(arrowAlignment: Int, marginStart: Int, marginEnd: Int) {
@@ -89,10 +115,7 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
 
         // Older versions of android (pre API 21) cancel animations for views with a height of 0.
         layoutParams.height = 1
-        if(identifier!= "couldnot_compute_ecoscore_prompt_text")
-            binding.tipBox.visibility = VISIBLE
-        else
-            binding.tipBox2.visibility = VISIBLE
+        visibility = VISIBLE
         val anim: Animation = object : Animation() {
             override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
                 if (interpolatedTime == 1f) {
@@ -145,14 +168,6 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         })
     }
 
-    fun show() {
-        if (shouldAnimate) return expand()
-        else {
-            if(identifier!= "couldnot_compute_ecoscore_prompt_text")
-                binding.tipBox.visibility = VISIBLE
-            else
-                binding.tipBox2.visibility = VISIBLE
-        }}
-
+    fun show() = if (shouldAnimate) expand() else visibility = VISIBLE
     fun hide() = if (shouldAnimate) collapse() else visibility = GONE
 }
