@@ -90,13 +90,13 @@ class NutrimentsTest {
     fun containsWithAvailableElement_returnsTrue() {
         nutriments.setAdditionalProperty(VITAMIN_A, VITAMIN_A)
         assertThat(VITAMIN_A in nutriments).isTrue()
-        assertThat(nutriments.hasVitamins()).isTrue()
+        assertThat(nutriments.hasVitamins).isTrue()
     }
 
     @Test
     fun containsWithNonExistentElement_returnsFalse() {
         assertThat(VITAMIN_B1 in nutriments).isFalse()
-        assertThat(nutriments.hasVitamins()).isFalse()
+        assertThat(nutriments.hasVitamins).isFalse()
     }
 
     companion object {
