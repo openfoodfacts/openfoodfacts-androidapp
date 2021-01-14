@@ -85,18 +85,9 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
         client = OpenFoodAPIClient(this)
 
-        productState = requireProductState()
-
-        when {
-            intent.action == Intent.ACTION_VIEW -> {
-                // handle opening the app via product page url
-                val data = intent.data
-                val paths = data.toString().split("/").toTypedArray() // paths[4]
-                productState = ProductState()
-                loadProductDataFromUrl(paths[4])
-            }
-            productState == null -> error("ProductViewActivity requires a state to be passed")
-            else -> initViews()
+        if (!checkIntentAction()) {
+            productState = requireProductState()
+            initViews()
         }
     }
 
@@ -107,7 +98,9 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
     override fun onResume() {
         super.onResume()
-        productState = requireProductState().also { adapterResult!!.refresh(it) }
+        // To check if the activity is resumed and new product is opened through a deep link. If not, then only we can call requireProductState()
+        if (!checkIntentAction())
+            productState = requireProductState().also { adapterResult!!.refresh(it) }
     }
 
     override fun onStop() {
@@ -210,6 +203,20 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
     enum class ShowIngredientsAction {
         PERFORM_OCR, SEND_UPDATED
+    }
+
+    // to check if an product is opened through a deep link (from browser)
+    private fun checkIntentAction(): Boolean {
+        return when (intent.action) {
+            Intent.ACTION_VIEW -> {
+                val data = intent.data
+                val paths = data.toString().split("/").toTypedArray() // paths[4]
+                productState = ProductState()
+                loadProductDataFromUrl(paths[4])
+                true
+            }
+            else -> false
+        }
     }
 
     companion object {
