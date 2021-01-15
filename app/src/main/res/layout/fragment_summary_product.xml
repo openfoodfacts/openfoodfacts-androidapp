@@ -62,17 +62,16 @@
                         <LinearLayout
                             android:id="@+id/header_product_details_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/spacing_small"
                             android:layout_marginRight="@dimen/spacing_small"
                             android:gravity="center_vertical"
                             android:orientation="vertical"
-                            app:layout_constraintBottom_toBottomOf="@+id/front_picture_layout"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/front_picture_layout"
                             app:layout_constraintRight_toLeftOf="@id/front_picture_layout"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/front_picture_layout">
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <TextView
                                 android:id="@+id/textNameProduct"
