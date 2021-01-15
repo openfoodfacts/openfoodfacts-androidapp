@@ -446,6 +446,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun refreshCO2OrEcoscoreIcon() {
         binding.ecoscoreIcon.setImageResource(product.getEcoscoreResource())
+        binding.ecoscoreIcon.setOnClickListener{
+            val uri = Uri.parse(getString(R.string.ecoscore_url))
+            val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
+            CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
+        }
     }
 
     private fun refreshNutriScorePrompt() {
