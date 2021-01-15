@@ -238,7 +238,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      */
     fun loadNutritionImage() {
         photoFile = null
-        val newImageNutritionUrl = product!!.getImageNutritionUrl(requireAddProductActivity().getProductLanguageForEdition())
+        val newImageNutritionUrl = product?.getImageNutritionUrl(requireAddProductActivity().getProductLanguageForEdition())
         if (newImageNutritionUrl.isNullOrEmpty()) return
 
         binding.imageProgress.visibility = View.VISIBLE
