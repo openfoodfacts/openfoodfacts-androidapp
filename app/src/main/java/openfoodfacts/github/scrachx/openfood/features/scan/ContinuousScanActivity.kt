@@ -292,9 +292,11 @@ class ContinuousScanActivity : AppCompatActivity() {
         binding.quickViewNovaGroup.visibility = View.GONE
     }
 
-    private fun quickViewCheckEcoScore(product: Product) {
+    private fun quickViewCheckEcoScore(product: Product) = if (isFlavors(AppFlavors.OFF)) {
         binding.quickViewEcoscoreIcon.setImageResource(product.getEcoscoreResource())
         binding.quickViewEcoscoreIcon.visibility = View.VISIBLE
+    } else {
+        binding.quickViewEcoscoreIcon.visibility = View.GONE
     }
 
     private fun tryDisplayOffline(
