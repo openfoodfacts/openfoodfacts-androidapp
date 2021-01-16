@@ -240,12 +240,12 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             try {
                 val pInfo = requireActivity().packageManager.getPackageInfo(requireActivity().packageName, 0)
                 val version = pInfo.versionName
-                val versionCode = if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.P){
+                val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                     pInfo.longVersionCode
                 } else {
                     pInfo.versionCode
                 }
-                it.summary = getString(R.string.version_string) + " " + version+" ("+ versionCode + ")"
+                it.summary = String.format(getString(R.string.version_string) + " %s (%d)", version, versionCode)
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.e(PreferencesFragment::class.simpleName, "onCreatePreferences", e)
             }
