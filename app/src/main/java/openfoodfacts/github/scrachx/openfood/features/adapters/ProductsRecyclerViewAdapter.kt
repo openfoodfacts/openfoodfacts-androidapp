@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import openfoodfacts.github.scrachx.openfood.BuildConfig
+import openfoodfacts.github.scrachx.openfood.AppFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient.Companion.getLocaleProductNameField
@@ -81,7 +81,7 @@ class ProductsRecyclerViewAdapter(
         // Set product description
         holder.productDetails.text = product?.getProductBrandsQuantityDetails()
 
-        if(BuildConfig.FLAVOR == "off") {
+        if (AppFlavors.isFlavors(AppFlavors.OFF)) {
             // Set nutriscore icon
             val nutriRes = product.getNutriScoreResource()
             holder.productNutriscore.setImageResource(nutriRes)
