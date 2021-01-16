@@ -125,6 +125,14 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     /**boolean to determine if nutrient prompt should be shown*/
     private var showNutrientPrompt = false
 
+    /**boolean to determine if eco score prompt should be shown*/
+    private var showEcoScorePrompt = false
+
+    /**boolean to determine if labels prompt should be shown*/
+    private var showLabelsPrompt = false
+
+    /**boolean to determine if origins prompt should be shown*/
+    private var showOriginsPrompt = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -247,7 +255,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.labelsIcon.visibility = View.VISIBLE
 
         // Checks the product states_tags to determine which prompt to be shown
-        refreshNutriScorePrompt()
+        refreshStatesTagsPrompt()
         presenter.loadAllergens(null)
         presenter.loadCategories()
         presenter.loadLabels()
@@ -453,19 +461,29 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
     }
 
-    private fun refreshNutriScorePrompt() {
+    private fun refreshStatesTagsPrompt() {
         //checks the product states_tags to determine which prompt to be shown
         val statesTags = product.statesTags
         showCategoryPrompt = statesTags.contains("en:categories-to-be-completed") && !hasCategoryInsightQuestion
         showNutrientPrompt = statesTags.contains("en:nutrition-facts-to-be-completed") && product.noNutritionData != "on"
+        showEcoScorePrompt = statesTags.contains("en:categories-completed") && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown", true))
+        showLabelsPrompt = statesTags.contains("en:labels-to-be-completed")
+        showOriginsPrompt = statesTags.contains("en:origins-to-be-completed")
 
         Log.d(LOG_TAG, "Show category prompt: $showCategoryPrompt")
         Log.d(LOG_TAG, "Show nutrient prompt: $showNutrientPrompt")
+        Log.d(LOG_TAG, "Show Eco Score prompt: $showEcoScorePrompt")
+        Log.d(LOG_TAG, "Show labels prompt: $showLabelsPrompt")
+        Log.d(LOG_TAG, "Show origins prompt: $showOriginsPrompt")
+
+        if(showEcoScorePrompt){
+            binding.tipBoxEcoScore.loadToolTip()
+        }
 
         binding.addNutriscorePrompt.visibility = View.VISIBLE
         when {
             showNutrientPrompt && showCategoryPrompt -> {
-                // Both true
+                // showNutrientPrompt and showCategoryPrompt true
                 binding.addNutriscorePrompt.text = getString(R.string.add_nutrient_category_prompt_text)
             }
             showNutrientPrompt -> {
@@ -477,6 +495,23 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
                 binding.addNutriscorePrompt.text = getString(R.string.add_category_prompt_text)
             }
             else -> binding.addNutriscorePrompt.visibility = View.GONE
+        }
+
+        binding.addLabelOriginPrompt.visibility = View.VISIBLE
+        when {
+            showLabelsPrompt && showOriginsPrompt -> {
+                // showLabelsPrompt and showOriginsPrompt true
+                binding.addLabelOriginPrompt.text = getString(R.string.add_labels_origins_prompt_text)
+            }
+            showLabelsPrompt -> {
+                // showLabelsPrompt true
+                binding.addLabelOriginPrompt.text = getString(R.string.add_labels_prompt_text)
+            }
+            showOriginsPrompt -> {
+                // showOriginsPrompt true
+                binding.addLabelOriginPrompt.text = getString(R.string.add_origins_prompt_text)
+            }
+            else -> binding.addLabelOriginPrompt.visibility = View.GONE
         }
     }
 
@@ -550,7 +585,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         }
 
         if (isFlavors(OFF)) {
-            refreshNutriScorePrompt()
+            refreshStatesTagsPrompt()
             refreshScoresLayout()
         }
     }
