@@ -45,7 +45,8 @@ class LoadTaxonomiesWorker(appContext: Context, workerParams: WorkerParameters) 
                 ProductRepository.reloadAnalysisTagsFromServer().ignoreElement(),
                 ProductRepository.reloadCountriesFromServer().ignoreElement(),
                 ProductRepository.reloadAdditivesFromServer().ignoreElement(),
-                ProductRepository.reloadCategoriesFromServer().ignoreElement()
+                ProductRepository.reloadCategoriesFromServer().ignoreElement(),
+                ProductRepository.reloadStatesFromServer().ignoreElement()
         )
         return Completable.merge(syncObservables)
                 .toSingle {
