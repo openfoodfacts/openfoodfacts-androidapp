@@ -15,4 +15,10 @@ class BoldNutrimentListItem(
         servingValue: CharSequence = "",
         unit: CharSequence = "",
         modifier: CharSequence = ""
-) : NutrimentListItem(bold(title), bold(value), bold(servingValue), bold(unit), bold(modifier))
+) : NutrimentListItem(
+        bold(title),
+        bold(value),
+        bold(servingValue),
+        bold(unit),
+        bold(modifier)
+)

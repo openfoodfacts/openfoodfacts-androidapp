@@ -26,8 +26,11 @@ public class ToUploadProduct {
     }
 
     @Generated(hash = 499343655)
-    public ToUploadProduct(Long id, String barcode, String imageFilePath,
-                           boolean uploaded, String field) {
+    public ToUploadProduct(Long id,
+                           String barcode,
+                           String imageFilePath,
+                           boolean uploaded,
+                           String field) {
         this.id = id;
         this.barcode = barcode;
         this.imageFilePath = imageFilePath;

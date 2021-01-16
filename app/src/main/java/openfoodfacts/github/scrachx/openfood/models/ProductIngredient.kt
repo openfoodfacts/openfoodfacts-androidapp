@@ -8,36 +8,19 @@ import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder("text", "id", "rank", "percent")
-class ProductIngredient : Serializable {
-    /**
-     * The text
-     */
-    @JsonProperty("text")
-    lateinit var text: String
+data class ProductIngredient(
+        @JsonProperty("text") val text: String,
+        @JsonProperty("id") val id: String,
+        /**
+         * The rank, set -1 if no rank returned
+         */
+        @JsonProperty("rank") val rank: Long = 0,
+        @JsonProperty("percent") val percent: String? = null
+) : Serializable {
 
-    /**
-     * The id
-     */
-    @JsonProperty("id")
-    lateinit var id: String
 
-    /**
-     * The rank, set -1 if no rank returned
-     */
-    @JsonProperty("rank")
-    var rank: Long = 0
-
-    /**
-     * The percent
-     */
-    @JsonProperty("percent")
-    var percent: String? = null
-
-    @JsonIgnore
-    private val additionalProperties: MutableMap<String, Any> = HashMap()
-
-    @JsonAnyGetter
-    fun getAdditionalProperties() = additionalProperties
+    @get:JsonAnyGetter
+    val additionalProperties = HashMap<String, Any>()
 
     @JsonAnySetter
     fun setAdditionalProperty(name: String, value: Any) {
