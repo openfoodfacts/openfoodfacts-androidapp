@@ -32,7 +32,7 @@ class IngredientAnalysisRecyclerAdapter(
             val customTabsIntent = CustomTabsIntent.Builder().build().apply {
                 intent.putExtra("android.intent.extra.REFERRER", Uri.parse("android-app://" + activity.packageName))
             }
-            CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse(activity.getString(R.string.website) + "ingredient/" + id), WebViewFallback())
+            CustomTabActivityHelper.openCustomTab(activity, customTabsIntent, Uri.parse("${activity.getString(R.string.website)}ingredient/$id"), WebViewFallback())
         }
     }
 

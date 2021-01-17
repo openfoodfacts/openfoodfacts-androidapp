@@ -25,8 +25,8 @@
     <string name="not_support_books">Polo momento non se admiten libros en Open Food Facts</string>
     <string name="txt_broaden_search">- ampliar a busca \n- escanear e engadir a Open Food Facts</string>
     <string name="Donation">Pulse aquí para doar a Open Food Facts</string>
-    <string name="translate_help_title">Axude a traducir Open Food Facts</string>
-    <string name="translate_help_summary">Traduza a base de datos Open Food Facts ao seu idioma - non se requiren habilidades técnicas</string>
+    <string name="pref_help_translate_title">Axude a traducir Open Food Facts</string>
+    <string name="pref_help_translate_summary">Traduza a base de datos Open Food Facts ao seu idioma - non se requiren habilidades técnicas</string>
     <string name="text_offline_info_dialog">Escanee os produtos incluso si non ten conexión e engádaos a Open Food Facts máis tarde. Os produtos escaneados aparecerán aquí e poderá envialos utilizando o botón inferior.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
     <!-- OFF tagline in different languages -->

@@ -256,12 +256,12 @@
     <string name="user">lietotājs</string>
     <string name="error_field_required">Šis lauks ir obligāts.</string>
     <string name="action_preferences">Iestatījumi</string>
-    <string name="prefs_scan_startup">Skenēt startēšanas laikā</string>
-    <string name="prefs_scan_startup_summary">Aktivizējot šo opciju lietotne sāks skenēt, kad tiks atvērta.</string>
-    <string name="prefs_power_mode">Ātrā skenēšana</string>
-    <string name="prefs_power_mode_summary">Skenēt lielveikala produktu, lai noskaidrotu vai tas ir iekļauts datubāzē.</string>
-    <string name="prefs_language">Valoda</string>
-    <string name="prefs_language_summary">Pāriet uz citu valodu</string>
+    <string name="pref_scan_startup_title">Skenēt startēšanas laikā</string>
+    <string name="pref_scan_startup_summary">Aktivizējot šo opciju lietotne sāks skenēt, kad tiks atvērta.</string>
+    <string name="pref_power_mode_title">Ātrā skenēšana</string>
+    <string name="pref_power_mode_summary">Skenēt lielveikala produktu, lai noskaidrotu vai tas ir iekļauts datubāzē.</string>
+    <string name="pref_language_title">Valoda</string>
+    <string name="pref_language_summary">Pāriet uz citu valodu</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Vai jūs izbaudāt savu pieredzi ar Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">Mums žēl to dzirdēt! Vai jūs varētu pastāstīt, kas notika?</string>
@@ -307,9 +307,9 @@
     <string name="action_manage_account">Pārvaldīt kontu</string>
     <string name="action_contributes">Jūsu ieguldījums</string>
     <string name="choose_energy_unit">Uztura tabulai izvēlieties vēlamās enerģijas vienības</string>
-    <string name="energy_pref_title">Vēlamā enerģijas vienība</string>
+    <string name="pref_energy_unit_title">Vēlamā enerģijas vienība</string>
     <string name="choose_volume_unit">Uztura tabulai izvēlieties vēlamās tilpuma vienības</string>
-    <string name="volume_pref_title">Vēlamā skaļuma vienība</string>
+    <string name="pref_volume_unit_title">Vēlamā skaļuma vienība</string>
     <string name="logout_drawer">Izlogoties</string>
     <string name="contribution_without_account">Varat ielogoties vai izveidot kontu, lai saglabātu savu ieguldījumu</string>
     <string name="textCarbonFootprint">Oglekļa dioksīda emisijas / CO2 emisijas: </string>
@@ -416,8 +416,8 @@
     <string name="next">NĀKAMAIS</string>
     <string name="skip">SKAITS</string>
     <string name="start">SAPRATU</string>
-    <string name="contact">Kontakti</string>
-    <string name="contact_summary">Sazināties ar komandu</string>
+    <string name="pref_contact_us_title">Kontakti</string>
+    <string name="pref_contact_us_summary">Sazināties ar komandu</string>
     <string name="email_not_found">E-pasta aplikācija netika atrasta</string>
     <string name="airplane_mode_active_dialog_title">Lidmašīnas režīms ir iespējots</string>
     <string name="airplane_mode_active_dialog_message">Lidmašīnas režīms ir iespējots, lūdzu, atspējojiet šo, lai turpinātu.</string>
@@ -428,27 +428,27 @@
     <string name="device_offline_dialog_negative">Atcelt</string>
     <string name="device_offline_dialog_positive">Iestatījumi</string>
     <string name="scan_first_product">Skenējiet pirmo produktu</string>
-    <string name="preference_delete_search_history">Veiksmīgi izdzēsta vēsture</string>
-    <string name="preference_enable_mobile_data_title">Augšupielādēt ar mobilajiem datiem</string>
-    <string name="preference_enable_mobile_data_summary_on">Augšupielādējiet jaunus produktus, izmantojot mobilos datus &amp; WiFi</string>
-    <string name="preference_enable_mobile_data_summary_off">Augšupielādējiet jaunus produktus, izmantojot tikai Wi-Fi</string>
+    <string name="pref_delete_history">Veiksmīgi izdzēsta vēsture</string>
+    <string name="pref_enable_mobile_data_title">Augšupielādēt ar mobilajiem datiem</string>
+    <string name="pref_enable_mobile_data_summary_on">Augšupielādējiet jaunus produktus, izmantojot mobilos datus &amp; WiFi</string>
+    <string name="pref_enable_mobile_data_summary_off">Augšupielādējiet jaunus produktus, izmantojot tikai Wi-Fi</string>
     <string name="device_on_mobile_data_warning_title">Informācija</string>
     <string name="device_on_mobile_data_warning_message">Jūs esat atspējojis augšupielādi mobilajos datos. Lūdzu, izveidojiet savienojumu ar WiFi vai mainiet to preferencēs</string>
     <string name="device_on_mobile_data_warning_positive">Iestatījumi</string>
     <string name="device_on_mobile_data_warning_negative">Vienmēr augšupielādēt</string>
     <string name="changes_saved">Izmaiņas veiksmīgi saglabātas</string>
     <string name="preference_choose_language_dialog_title">Izvēlies valodu</string>
-    <string name="FAQ">FAQ</string>
-    <string name="FrequentlyAskedQuestions">Bieži uzdotie jautājumi</string>
-    <string name="translate_help_title">Palīdziet tulkot \"open Food Facts\"</string>
-    <string name="translate_help_summary">Iegūstiet Open Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
+    <string name="pref_faq_title">FAQ</string>
+    <string name="pref_faq_summary">Bieži uzdotie jautājumi</string>
+    <string name="pref_help_translate_title">Palīdziet tulkot \"open Food Facts\"</string>
+    <string name="pref_help_translate_summary">Iegūstiet Open Food Facts savā valodāaaaaaa a- tehniskās zināšanas nav nepieciešamas</string>
     <string name="please_check_your_connection">Lūdzu, pārbaudiet savu savienojumu.</string>
     <string name="advanced_search_title">Izvērstā meklēšana &amp; Diagrammas</string>
     <string name="compare_products">Salīdzināt produktus</string>
     <string name="connectivity_check">Lūdzu, pārbaudiet savu interneta savienojumu</string>
     <string name="dismiss">Atcelt</string>
-    <string name="Terms">Noteikumi</string>
-    <string name="TermsOfUse">Noteikumi un konfidencialitāte</string>
+    <string name="pref_terms_title">Noteikumi</string>
+    <string name="pref_terms_summary">Noteikumi un konfidencialitāte</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -464,8 +464,8 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-lv.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Vispārīgs</string>
-    <string name="preference_header_network">Tīkls</string>
-    <string name="preference_header_contributing">Ieguldījums</string>
+    <string name="pref_header_network">Tīkls</string>
+    <string name="pref_header_contributing">Ieguldījums</string>
     <string name="scan_first_string">Šeit tiks parādīta jūsu skatīto produktu vēsture. Šī vēsture ir paredzēta tikai jūsu apskatei un tiek saglabāta lokāli.</string>
     <string name="log_in">Pieslēgties</string>
     <string name="login_true">Jau esat ielogojies!</string>
@@ -473,9 +473,9 @@
     <string name="logout_dialog_content">Vai tiešām vēlaties izrakstīties?</string>
     <string name="dialog_cancel">Atcelt</string>
     <string name="dialog_create">Izveidot</string>
-    <string name="choose_resolution">Izvēlieties rezolūciju</string>
+    <string name="pref_resolution_dialog_title">Izvēlieties rezolūciju</string>
     <string name="pref_resolution_summary">Izvēlieties izšķirtspēju attēla augšupielādei</string>
-    <string name="image_upload_resolution">Attēla augšupielādes izšķirtspēja</string>
+    <string name="pref_resolution_title">Attēla augšupielādes izšķirtspēja</string>
     <string name="wikidata_information">Ejot tālāk</string>
     <string name="wikidata_unavailable">Jūsu valodā vēl nav nevienas Vikipēdijas lapas.</string>
     <string name="Wikipedia">Skatīt Wikipēdijā</string>
@@ -492,8 +492,8 @@
     <string name="category_string">Kategorija</string>
     <string name="connection">Savienots</string>
     <string name="contributor_string">Atbalstītājs</string>
-    <string name="Rate_Us">Parādiet savu atbalstu</string>
-    <string name="Rate_Us_title">Novērtējiet mūsu lietotni</string>
+    <string name="pref_rate_us_summary">Parādiet savu atbalstu</string>
+    <string name="pref_rate_us_title">Novērtējiet mūsu lietotni</string>
     <string name="app_disabled_text">Pieteikums ir atspējots</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Vitamīni:</string>
@@ -501,8 +501,8 @@
     <string name="mineral_tags_text">Minerālvielas:</string>
     <string name="other_tags_text">Citas vielas:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Atspējot attēla ielādi, ja baterijas līmenis ir zems</string>
-    <string name="DisableLoadTitle">Atspējot attēla ielādi</string>
+    <string name="pref_low_battery_summary">Atspējot attēla ielādi, ja baterijas līmenis ir zems</string>
+    <string name="pref_low_battery_title">Atspējot attēla ielādi</string>
     <string name="by_title">Virsraksts</string>
     <string name="by_brand">Zīmols</string>
     <string name="by_barcode">Svītrkods</string>
@@ -535,11 +535,11 @@
     <string name="last_editor_history">Pēdējais produkta lapas labojums: %1$s plkst. %2$s CEST līdz %3$s </string>
     <string name="other_editors">Produkta lapa ir arī rediģējis </string>
     <string name="contribution_tab">Iemaksas</string>
-    <string name="contribution_tab_summary">Rādīt lietotāju iemaksu tabulu ar produktiem</string>
-    <string name="contribution_tab_title">Rādīt cilni Ieguldījums</string>
+    <string name="pref_contribution_tab_summary">Rādīt lietotāju iemaksu tabulu ar produktiem</string>
+    <string name="pref_contribution_tab_title">Rādīt cilni Ieguldījums</string>
     <string name="txtDialogsTitle">Informācija</string>
-    <string name="preference_show_all_product_photos_title">Parādīt visus produktu fotoattēlus</string>
-    <string name="preference_show_all_product_photos_summary">Rādīt visus produktu fotoattēlus, kas iesniegti atsevišķā cilnē</string>
+    <string name="pref_show_product_photos_title">Parādīt visus produktu fotoattēlus</string>
+    <string name="pref_show_product_photos_summary">Rādīt visus produktu fotoattēlus, kas iesniegti atsevišķā cilnē</string>
     <string name="offline_product_addition_title">Pievienojiet jaunu produktu</string>
     <string name="productNameNull">Vārds nav zināms</string>
     <string name="productAdditivesUnknown"></string>
@@ -686,7 +686,7 @@
     <string name="add_nutrient_category_prompt_text">Pievienojiet uzturvērtības faktus un kategoriju, lai aprēķinātu Nutri-Score</string>
     <string name="category_game_btn">Palīdziet kategorizēt produktus, lai aprēķinātu Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Versija</string>
+    <string name="pref_version_title">Versija</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -694,10 +694,10 @@
     <string name="detected_ingredients">Konstatētās sastāvdaļas</string>
     <string name="txtConnectionError">Mēs nevarējām lejupielādēt noteiktus datus. Tas var būt saistīts ar savienojuma kļūdu.</string>
     <string name="set_image_name">Veiksmīgi iestatiet attēlu kā</string>
-    <string name="fast_addition_mode_title">Ātra pievienošanas režīms</string>
-    <string name="fast_addition_mode">Ļauj ātri pievienot produktus ar mazāk atribūtiem</string>
-    <string name="crop_new_image_title">Apgrieziet jaunus attēlus</string>
-    <string name="crop_new_image">Ļauj apgriešanas darbību jauniem attēliem</string>
+    <string name="pref_fast_addition_title">Ātra pievienošanas režīms</string>
+    <string name="pref_fast_addition_summary">Ļauj ātri pievienot produktus ar mazāk atribūtiem</string>
+    <string name="pref_crop_new_images_title">Apgrieziet jaunus attēlus</string>
+    <string name="pref_crop_new_images_summary">Ļauj apgriešanas darbību jauniem attēliem</string>
     <string name="addtive_search">Meklējiet piedevu</string>
     <string name="additives">Piedevas</string>
     <!--used for product_lists implementation-->
@@ -713,12 +713,12 @@
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">Jūs varēsiet pievienot produktus šim sarakstam, meklējot tos un noklikšķinot uz pogas + produkta lapas augšējā labajā stūrī.</string>
-    <string name="search_history_pref_title">Dzēst vietējās meklēšanas vēsturi</string>
-    <string name="search_history_pref_summary">Noņemiet visus meklējumus, ko veicāt šajā ierīcē</string>
-    <string name="search_history_pref_dialog_content">Vai dzēst vietējās meklēšanas vēsturi?</string>
-    <string name="settings_country_dialog_title">Atlasiet savu valsti</string>
-    <string name="settings_country_summary">Mainiet izvēlēto valsti</string>
-    <string name="settings_country_title">Valsts</string>
+    <string name="pref_delete_history_title">Dzēst vietējās meklēšanas vēsturi</string>
+    <string name="pref_delete_history_summary">Noņemiet visus meklējumus, ko veicāt šajā ierīcē</string>
+    <string name="pref_delete_history_dialog_content">Vai dzēst vietējās meklēšanas vēsturi?</string>
+    <string name="pref_country_dialog_title">Atlasiet savu valsti</string>
+    <string name="pref_country_summary">Mainiet izvēlēto valsti</string>
+    <string name="pref_country_title">Valsts</string>
     <string name="txt_no_nutrition_data">Šim produktam uz iepakojuma nav informācijas par uzturvērtību. Ja tas ir mainījies, varat rediģēt produktu.</string>
     <string name="image_prompt_language">Nofotografējiet sastāvdaļas</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
@@ -773,7 +773,7 @@
     <string name="ingredients_in_this_product_are">Šī produkta sastāvdaļas ir %1$s.</string>
     <string name="ingredients_in_this_product">Šī produkta sastāvdaļas, kas ir %1$s:</string>
     <string name="display_analysis_tag_status">Parādīt statusu %1$s</string>
-    <string name="preference_header_display">Displejs</string>
+    <string name="pref_header_display">Displejs</string>
     <string name="unknown_status_no_translation">Mēs nevarējām novērtēt produkta statusu neatpazītu sastāvdaļu dēļ.</string>
     <string name="help_translate_ingredients">Palīdziet tulkot sastāvdaļas jūsu valodā</string>
     <string name="unknown_status_missing_ingredients">Mēs nevarējām novērtēt produkta statusu sastāvdaļu trūkuma dēļ.</string>
