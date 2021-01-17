@@ -246,12 +246,12 @@
     <string name="user">사용자</string>
     <string name="error_field_required">필수 기재 항목입니다.</string>
     <string name="action_preferences">환경 설정</string>
-    <string name="prefs_scan_startup">시작할 때 실행</string>
-    <string name="prefs_scan_startup_summary">이 옵션을 선택하면 앱이 열릴 때 스캔이 시작됩니다.</string>
-    <string name="prefs_power_mode">전원 모드 스캔</string>
-    <string name="prefs_power_mode_summary">슈퍼마켓에서 제품을 신속하게 스캔하여 데이터베이스에 없는 제품을 확인합니다.</string>
-    <string name="prefs_language">언어</string>
-    <string name="prefs_language_summary">언어 변경</string>
+    <string name="pref_scan_startup_title">시작할 때 실행</string>
+    <string name="pref_scan_startup_summary">이 옵션을 선택하면 앱이 열릴 때 스캔이 시작됩니다.</string>
+    <string name="pref_power_mode_title">전원 모드 스캔</string>
+    <string name="pref_power_mode_summary">슈퍼마켓에서 제품을 신속하게 스캔하여 데이터베이스에 없는 제품을 확인합니다.</string>
+    <string name="pref_language_title">언어</string>
+    <string name="pref_language_summary">언어 변경</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Open Food Facts에 만족하십니까?</string>
     <string name="user_ask_show_feedback_form">유감입니다! 무슨 일이 있었는지 말씀해 주실 수 있을까요?</string>
@@ -297,9 +297,9 @@
     <string name="action_manage_account">계정 관리</string>
     <string name="action_contributes">기부금</string>
     <string name="choose_energy_unit">영양표에 사용할 에너지 단위를 선택하세요.</string>
-    <string name="energy_pref_title">선호 체중 단위</string>
+    <string name="pref_energy_unit_title">선호 체중 단위</string>
     <string name="choose_volume_unit">영양표에 사용할 볼륨 단위를 선택하세요.</string>
-    <string name="volume_pref_title">선호 볼륨 단위</string>
+    <string name="pref_volume_unit_title">선호 볼륨 단위</string>
     <string name="logout_drawer">로그아웃</string>
     <string name="contribution_without_account">로그인하거나 계정을 만들어서 기부를 유지할 수 있습니다.</string>
     <string name="textCarbonFootprint">탄소 발자국 / CO2 배출량: </string>
@@ -406,8 +406,8 @@
     <string name="next">다음</string>
     <string name="skip">건너뛰기</string>
     <string name="start">확인</string>
-    <string name="contact">문의</string>
-    <string name="contact_summary">팀에게 문의하기</string>
+    <string name="pref_contact_us_title">문의</string>
+    <string name="pref_contact_us_summary">팀에게 문의하기</string>
     <string name="email_not_found">이메일 응용 프로그램을 찾을 수 없음</string>
     <string name="airplane_mode_active_dialog_title">비행기 모드 활성화</string>
     <string name="airplane_mode_active_dialog_message">비행기 모드로 설정되어있습니다. 계속하려면 해제하시기 바랍니다.</string>
@@ -418,27 +418,27 @@
     <string name="device_offline_dialog_negative">무시</string>
     <string name="device_offline_dialog_positive">설정</string>
     <string name="scan_first_product">Scan First Product</string>
-    <string name="preference_delete_search_history">기록을 성공적으로 삭제</string>
-    <string name="preference_enable_mobile_data_title">모바일 테이터를 사용하여 업로드하기</string>
-    <string name="preference_enable_mobile_data_summary_on">모바일 데이터 &amp; WiFi를 사용하여 새 제품 업로드하기</string>
-    <string name="preference_enable_mobile_data_summary_off">WiFi 만 사용하여 새 제품 업로드하기</string>
+    <string name="pref_delete_history">기록을 성공적으로 삭제</string>
+    <string name="pref_enable_mobile_data_title">모바일 테이터를 사용하여 업로드하기</string>
+    <string name="pref_enable_mobile_data_summary_on">모바일 데이터 &amp; WiFi를 사용하여 새 제품 업로드하기</string>
+    <string name="pref_enable_mobile_data_summary_off">WiFi 만 사용하여 새 제품 업로드하기</string>
     <string name="device_on_mobile_data_warning_title">정보</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">환경 설정</string>
     <string name="device_on_mobile_data_warning_negative">강제 업로드</string>
     <string name="changes_saved">변경 사항이 성공적으로 저장되었습니다</string>
     <string name="preference_choose_language_dialog_title">언어 선택</string>
-    <string name="FAQ">FAQ</string>
-    <string name="FrequentlyAskedQuestions">자주 묻는 질문</string>
-    <string name="translate_help_title">Open Food Facts 번역 도움말</string>
-    <string name="translate_help_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
+    <string name="pref_faq_title">FAQ</string>
+    <string name="pref_faq_summary">자주 묻는 질문</string>
+    <string name="pref_help_translate_title">Open Food Facts 번역 도움말</string>
+    <string name="pref_help_translate_summary">Bring the Open Food Facts database to your language - no technical knowledge required</string>
     <string name="please_check_your_connection">네트워크 연결을 확인하십시오.</string>
     <string name="advanced_search_title">고급 검색 &amp; 차트</string>
     <string name="compare_products">상품 비교</string>
     <string name="connectivity_check">인터넷 연결을 확인하십시오.</string>
     <string name="dismiss">무시</string>
-    <string name="Terms">약관</string>
-    <string name="TermsOfUse">이용 약관</string>
+    <string name="pref_terms_title">약관</string>
+    <string name="pref_terms_summary">이용 약관</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -454,8 +454,8 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world-ko.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">일반</string>
-    <string name="preference_header_network">네트워크</string>
-    <string name="preference_header_contributing">도움 보내기</string>
+    <string name="pref_header_network">네트워크</string>
+    <string name="pref_header_contributing">도움 보내기</string>
     <string name="scan_first_string">본 제품 내역이 여기에 표시됩니다.\n이 내역은 나만 볼 수 있으며 로컬로 저장됩니다.</string>
     <string name="log_in">로그인</string>
     <string name="login_true">이미 로그인했습니다!</string>
@@ -463,9 +463,9 @@
     <string name="logout_dialog_content">로그아웃 하겠습니까?</string>
     <string name="dialog_cancel">취소</string>
     <string name="dialog_create">만들기</string>
-    <string name="choose_resolution">해상도 선택</string>
+    <string name="pref_resolution_dialog_title">해상도 선택</string>
     <string name="pref_resolution_summary">업로드하는 이미지 해상도 설정</string>
-    <string name="image_upload_resolution">이미지 업로드 해상도</string>
+    <string name="pref_resolution_title">이미지 업로드 해상도</string>
     <string name="wikidata_information">더 알아보기</string>
     <string name="wikidata_unavailable">당신의 언어로 된 위키백과 페이지가 없습니다.</string>
     <string name="Wikipedia">Wikipedia에서 보기</string>
@@ -482,8 +482,8 @@
     <string name="category_string">카테고리</string>
     <string name="connection">연결되었습니다.</string>
     <string name="contributor_string">기여자</string>
-    <string name="Rate_Us">응원하기</string>
-    <string name="Rate_Us_title">앱 별점 평가</string>
+    <string name="pref_rate_us_summary">응원하기</string>
+    <string name="pref_rate_us_title">앱 별점 평가</string>
     <string name="app_disabled_text">어플리케이션 사용이 불가합니다.</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">비타민:</string>
@@ -491,8 +491,8 @@
     <string name="mineral_tags_text">미네랄:</string>
     <string name="other_tags_text">다른 물질 :</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Disable image loading when battery is low</string>
-    <string name="DisableLoadTitle">Disable image loading</string>
+    <string name="pref_low_battery_summary">Disable image loading when battery is low</string>
+    <string name="pref_low_battery_title">Disable image loading</string>
     <string name="by_title">타이틀</string>
     <string name="by_brand">브랜드</string>
     <string name="by_barcode">바코드</string>
@@ -525,11 +525,11 @@
     <string name="last_editor_history">%1$s 시에 %2$s CEST에서 %3$s 가 제품의 페이지를 마지막으로 편집</string>
     <string name="other_editors">상품 페이지는 다음 사람들에 의해 수정되었습니다.</string>
     <string name="contribution_tab">기여</string>
-    <string name="contribution_tab_summary">제품의 사용자 기여도 탭 보이기</string>
-    <string name="contribution_tab_title">기여도 탭 보이기</string>
+    <string name="pref_contribution_tab_summary">제품의 사용자 기여도 탭 보이기</string>
+    <string name="pref_contribution_tab_title">기여도 탭 보이기</string>
     <string name="txtDialogsTitle">정보</string>
-    <string name="preference_show_all_product_photos_title">모든 제품 사진 표시</string>
-    <string name="preference_show_all_product_photos_summary">별도의 탭에 제출된 모든 제품 사진 표시</string>
+    <string name="pref_show_product_photos_title">모든 제품 사진 표시</string>
+    <string name="pref_show_product_photos_summary">별도의 탭에 제출된 모든 제품 사진 표시</string>
     <string name="offline_product_addition_title">새 상품 추가</string>
     <string name="productNameNull">알 수 없는 이름</string>
     <string name="productAdditivesUnknown"></string>
@@ -674,7 +674,7 @@
     <string name="add_nutrient_category_prompt_text">영양 성분 및 카테고리를 추가하여 Nutri-Score 계산</string>
     <string name="category_game_btn">Nutri-Score를 계산하기위한 제품 분류 지원</string>
     <string name="version_string">Open Food Facts 안드로이드 App</string>
-    <string name="version">버전</string>
+    <string name="pref_version_title">버전</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -682,10 +682,10 @@
     <string name="detected_ingredients">검출된 성분</string>
     <string name="txtConnectionError">특정 데이터를 다운로드할 수 없습니다. 연결 오류 때문일 수 있습니다.</string>
     <string name="set_image_name">이미지를 성공적으로 설정</string>
-    <string name="fast_addition_mode_title">빠른 추가 모드</string>
-    <string name="fast_addition_mode">속성이 적은 제품을 빠르게 추가 할 수 있습니다</string>
-    <string name="crop_new_image_title">새로운 이미지 자르기</string>
-    <string name="crop_new_image">새로운 이미지에서 자르기 동작 가능</string>
+    <string name="pref_fast_addition_title">빠른 추가 모드</string>
+    <string name="pref_fast_addition_summary">속성이 적은 제품을 빠르게 추가 할 수 있습니다</string>
+    <string name="pref_crop_new_images_title">새로운 이미지 자르기</string>
+    <string name="pref_crop_new_images_summary">새로운 이미지에서 자르기 동작 가능</string>
     <string name="addtive_search">첨가물 검색</string>
     <string name="additives">식품 첨가물</string>
     <!--used for product_lists implementation-->
@@ -701,12 +701,12 @@
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">제품을 검색하고 제품 페이지 오른쪽 상단의 + 버튼을 클릭하여 이 목록에 제품을 추가 할 수 있습니다.</string>
-    <string name="search_history_pref_title">전체 검색기록 삭제</string>
-    <string name="search_history_pref_summary">이 장치에서 수행한 모든 검색을 제거하십시오.</string>
-    <string name="search_history_pref_dialog_content">Delete local search history?</string>
-    <string name="settings_country_dialog_title">국가를 선택하세요.</string>
-    <string name="settings_country_summary">선택한 국가 변경</string>
-    <string name="settings_country_title">국가</string>
+    <string name="pref_delete_history_title">전체 검색기록 삭제</string>
+    <string name="pref_delete_history_summary">이 장치에서 수행한 모든 검색을 제거하십시오.</string>
+    <string name="pref_delete_history_dialog_content">Delete local search history?</string>
+    <string name="pref_country_dialog_title">국가를 선택하세요.</string>
+    <string name="pref_country_summary">선택한 국가 변경</string>
+    <string name="pref_country_title">국가</string>
     <string name="txt_no_nutrition_data">이 제품 포장에는 영양 정보가 없습니다. 변경된 경우 제품을 편집할 수 있습니다.</string>
     <string name="image_prompt_language">성분의 사진을 촬영</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
@@ -761,7 +761,7 @@
     <string name="ingredients_in_this_product_are">이 제품의 성분은 %1$s입니다.</string>
     <string name="ingredients_in_this_product">이 제품의 성분은 %1$s입니다:</string>
     <string name="display_analysis_tag_status">%1$s 상태 표시</string>
-    <string name="preference_header_display">화면</string>
+    <string name="pref_header_display">화면</string>
     <string name="unknown_status_no_translation"> 인식되지 않는 성분 때문에 제품의 상태를 평가할 수 없습니다.</string>
     <string name="help_translate_ingredients">귀하의 언어로 성분를 번역하도록 도와주세요</string>
     <string name="unknown_status_missing_ingredients">성분이 누락되어 제품 상태를 평가할 수 없습니다.</string>

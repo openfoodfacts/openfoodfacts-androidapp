@@ -190,7 +190,7 @@ class ProductSearchActivity : BaseActivity() {
 
     private fun setupHungerGames() {
         val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
-        val actualCountryTag = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "")
+        val actualCountryTag = sharedPref.getString(getString(R.string.pref_country_key), "")
         if ("" == actualCountryTag) {
             ProductRepository.getCountryByCC2OrWorld(LocaleHelper.getLocaleFromContext().country)
                     .observeOn(AndroidSchedulers.mainThread())
