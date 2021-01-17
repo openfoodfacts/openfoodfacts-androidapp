@@ -28,6 +28,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredie
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsRelationDao
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelDao
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao
+import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesDao
+import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import org.greenrobot.greendao.database.Database
 
@@ -134,6 +136,10 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             18 -> {
                 db.execSQL("ALTER TABLE COUNTRY ADD COLUMN 'CC2' TEXT")
                 db.execSQL("ALTER TABLE COUNTRY ADD COLUMN 'CC3' TEXT")
+            }
+            19 -> {
+                StatesDao.createTable(db, true)
+                StatesNameDao.createTable(db, true)
             }
         }
     }

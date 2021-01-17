@@ -9,6 +9,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.category.Categories
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper
 import retrofit2.http.GET
 
@@ -65,7 +66,7 @@ interface AnalysisDataAPI {
     fun getMinerals(): Single<CategoriesWrapper>
 
     @GET(STATES_JSON)
-    fun getStates(): Single<CategoriesWrapper>
+    fun getStates(): Single<StatesWrapper>
 
     @GET(ANALYSIS_TAG_JSON)
     fun getAnalysisTags(): Single<AnalysisTagsWrapper>

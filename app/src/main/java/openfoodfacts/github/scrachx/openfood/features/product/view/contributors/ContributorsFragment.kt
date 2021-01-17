@@ -5,15 +5,25 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.toObservable
+import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentContributorsBinding
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
+import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductState
+import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
+import openfoodfacts.github.scrachx.openfood.repositories.ProductRepository
+import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper
 import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
 import java.text.SimpleDateFormat
@@ -34,6 +44,11 @@ class ContributorsFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentContributorsBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        disp.clear()
+        super.onDestroyView()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -77,14 +92,9 @@ class ContributorsFragment : BaseFragment() {
             binding.otherEditorsTxt.visibility = View.INVISIBLE
         }
 
-        if (product.statesTags.isNotEmpty()) {
-            binding.statesTxt.movementMethod = LinkMovementMethod.getInstance()
-            binding.statesTxt.text = ""
-            product.statesTags.forEach { stateTag ->
-                binding.statesTxt.append(getStatesTag(stateTag.split(":").component2()))
-                binding.statesTxt.append("\n")
-            }
-        }
+        // function to show states tags
+        showStatesTags(product)
+
     }
 
     /**
@@ -115,14 +125,47 @@ class ContributorsFragment : BaseFragment() {
         }
     }
 
-    private fun getStatesTag(state: String): CharSequence {
+    private fun getStatesTag(stateName: String, stateTag: String): CharSequence {
         val clickableSpan = object : ClickableSpan() {
-            override fun onClick(view: View) = start(requireContext(), SearchType.STATE, state)
+            override fun onClick(view: View) = start(requireContext(), SearchType.STATE, stateTag)
         }
         return SpannableStringBuilder().apply {
-            append(state)
+            append(stateName)
             setSpan(clickableSpan, 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
+    }
+
+    private fun showStatesTags(product:Product) {
+        val statesTags = product.statesTags
+        if (statesTags.isEmpty()) {
+            return
+        }
+
+        val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
+        statesTags.toObservable()
+                .flatMapSingle { tag: String ->
+                    ProductRepository.getStatesByTagAndLanguageCode(tag, languageCode)
+                }
+                .toList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError { e: Throwable? ->
+                    Log.e(ContributorsFragment::class.simpleName, "loadStatesTags", e)
+                    binding.statesTxt.visibility = View.GONE
+                }
+                .subscribe { states: List<StatesName> ->
+                    if (states.isEmpty()) {
+                        binding.statesTxt.visibility = View.GONE
+                    } else {
+                        binding.statesTxt.movementMethod = LinkMovementMethod.getInstance()
+                        binding.statesTxt.text = ""
+                        states.forEach { state ->
+                            binding.statesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
+                            binding.statesTxt.append("\n")
+                        }
+                    }
+                }.addTo(disp)
+
     }
 
     companion object {

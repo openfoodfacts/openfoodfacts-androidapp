@@ -344,7 +344,7 @@ android {
     }
 }
 
-greendao { schemaVersion(18) }
+greendao { schemaVersion(19) }
 
 
 

@@ -28,6 +28,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient;
 import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
+import openfoodfacts.github.scrachx.openfood.models.entities.states.States;
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 
@@ -91,6 +92,12 @@ public enum Taxonomy {
         @Override
         public Single<List<InvalidBarcode>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadInvalidBarcodes(lastModifiedDate);
+        }
+    },
+    STATES(AnalysisDataAPI.STATES_JSON) {
+        @Override
+        public Single<List<States>> load(ProductRepository repository, long lastModifiedDate){
+            return repository.loadStates(lastModifiedDate);
         }
     };
     private final String jsonUrl;
