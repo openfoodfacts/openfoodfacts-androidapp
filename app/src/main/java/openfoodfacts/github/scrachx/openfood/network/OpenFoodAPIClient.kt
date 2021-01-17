@@ -18,7 +18,10 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.BuildConfig
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
@@ -169,13 +172,12 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      */
     // TODO: This or the field inside Product.kt?
     fun getIngredients(barcode: String?) = rawAPI.getIngredientsByBarcode(barcode).map { productState ->
-        productState["product"][ApiFields.Keys.INGREDIENTS]?.map { ingredient ->
-            ProductIngredient().apply {
-                id = ingredient["id"].asText()
-                text = ingredient["text"].asText()
-                val rankNode = ingredient["rank"]
-                rank = rankNode?.asLong(-1) ?: -1
-            }
+        productState["product"][ApiFields.Keys.INGREDIENTS]?.map {
+            ProductIngredient(
+                    it["id"].asText(),
+                    it["text"].asText(),
+                    it["rank"]?.asLong(-1)!!
+            )
         } ?: emptyList()
     }
 
@@ -407,10 +409,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
          */
         fun getCommentToUpload(login: String? = null): String {
             val comment = when (BuildConfig.FLAVOR) {
-                AppFlavors.OBF -> StringBuilder("Official Open Beauty Facts Android app")
-                AppFlavors.OPFF -> StringBuilder("Official Open Pet Food Facts Android app")
-                AppFlavors.OPF -> StringBuilder("Official Open Products Facts Android app")
-                AppFlavors.OFF -> StringBuilder("Official Open Food Facts Android app")
+                OBF -> StringBuilder("Official Open Beauty Facts Android app")
+                OPFF -> StringBuilder("Official Open Pet Food Facts Android app")
+                OPF -> StringBuilder("Official Open Products Facts Android app")
+                OFF -> StringBuilder("Official Open Food Facts Android app")
                 else -> StringBuilder("Official Open Food Facts Android app")
             }
             comment.append(" ").append(getVersionName(OFFApplication.instance))
@@ -429,7 +431,9 @@ class OpenFoodAPIClient @JvmOverloads constructor(
          * @param product
          */
         fun addToHistorySync(mHistoryProductDao: HistoryProductDao, product: Product) {
-            val historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.code)).list()
+            val historyProducts = mHistoryProductDao.queryBuilder()
+                    .where(HistoryProductDao.Properties.Barcode.eq(product.code))
+                    .list()
             val hp = HistoryProduct(
                     product.productName,
                     product.brands,
@@ -439,7 +443,6 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     product.nutritionGradeFr
             )
             if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
-
             mHistoryProductDao.insertOrReplace(hp)
         }
 
@@ -455,9 +458,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     productDetails[ApiFields.Keys.QUANTITY],
                     null,
             )
-            if (historyProducts.isNotEmpty()) {
-                hp.id = historyProducts[0].id
-            }
+            if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
             mHistoryProductDao.insertOrReplace(hp)
         }
 

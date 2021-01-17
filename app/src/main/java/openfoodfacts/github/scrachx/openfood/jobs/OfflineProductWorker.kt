@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.preference.PreferenceManager
 import androidx.work.*
 import io.reactivex.Single
+import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.utils.OfflineProductService
 
@@ -33,7 +34,8 @@ class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : R
         @JvmStatic
         fun scheduleSync() {
             val constPics = Constraints.Builder()
-            if (PreferenceManager.getDefaultSharedPreferences(OFFApplication.instance).getBoolean("enableMobileDataUpload", true)) {
+            val context = OFFApplication.instance
+            if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context.getString(R.string.pref_enable_mobile_data_key), true)) {
                 constPics.setRequiredNetworkType(NetworkType.CONNECTED)
             } else {
                 constPics.setRequiredNetworkType(NetworkType.UNMETERED)
@@ -49,7 +51,7 @@ class OfflineProductWorker(context: Context, workerParams: WorkerParameters) : R
                     .setInputData(inputData(true))
                     .setConstraints(constPics.build())
                     .build()
-            WorkManager.getInstance(OFFApplication.instance)
+            WorkManager.getInstance(context)
                     .beginUniqueWork(WORK_TAG, ExistingWorkPolicy.REPLACE, uploadDataWorkRequest)
                     .then(uploadPicturesWorkRequest)
                     .enqueue()

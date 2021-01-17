@@ -59,6 +59,7 @@ class SplashController internal constructor(
         activateDownload(Taxonomy.ALLERGEN, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)
         activateDownload(Taxonomy.ANALYSIS_TAGS, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)
         activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)
+        activateDownload(Taxonomy.STATES, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)
 
         //first run ever off this application, whatever the version
         val firstRun = settings.getBoolean("firstRun", true)

@@ -25,8 +25,8 @@
     <string name="not_support_books">图书目前未被 Open Food Facts 支持</string>
     <string name="txt_broaden_search">- 扩大您的搜索 \n- 扫描并将其添加到 Open Food Facts</string>
     <string name="Donation">点击此处捐助给 Open Food Facts</string>
-    <string name="translate_help_title">帮助翻译 Open Food Facts</string>
-    <string name="translate_help_summary">将 Open Food Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
+    <string name="pref_help_translate_title">帮助翻译 Open Food Facts</string>
+    <string name="pref_help_translate_summary">将 Open Food Facts 数据库带到您的语言 - 没有技术性的知识要求</string>
     <string name="text_offline_info_dialog">离线时扫描产品，稍后再将其添加到 Open Food Facts 中。扫描的所有产品都会显示在这里，您可以按下面的按钮发送它们。</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">您的过敏信息将永远不会发送到Open Food Facts服务器。另外，请注意，产品数据可能不准确，并且检测结果可能不是100% a准确，因此请您自己仔细检查！</string>
     <!-- OFF tagline in different languages -->

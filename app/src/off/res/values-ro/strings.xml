@@ -25,8 +25,8 @@
     <string name="not_support_books">Cărțile momentan nu sunt suportate de către Open Food Facts</string>
     <string name="txt_broaden_search">- extinderea căutării dvs.\n- scanați și adăugați-l la Open Food Facts</string>
     <string name="Donation">Faceți click aici pentru a face o donație către Open Food Facts</string>
-    <string name="translate_help_title">Ajută la traducerea informațiilor din Open Food Facts</string>
-    <string name="translate_help_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
+    <string name="pref_help_translate_title">Ajută la traducerea informațiilor din Open Food Facts</string>
+    <string name="pref_help_translate_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
     <string name="text_offline_info_dialog">Scanați produsele când sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de mai jos.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
     <!-- OFF tagline in different languages -->

@@ -231,7 +231,6 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
         /**
          * CAREFUL ! YOU MUST INSTANTIATE YOUR OWN ADAPTERRESULT BEFORE CALLING THIS METHOD
          */
-        @JvmStatic
         fun setupViewPager(
                 viewPager: ViewPager2,
                 adapter: ProductFragmentPagerAdapter,
@@ -243,55 +242,51 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
 
             val fBundle = Bundle().apply { putSerializable(KEY_STATE, productState) }
 
-            adapter.addFragment(SummaryProductFragment().applyBundle(fBundle), titles[0])
+            adapter.add(SummaryProductFragment.newInstance(productState), titles[0])
             val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
 
             // Add Ingredients fragment for off, obf and opff
             if (isFlavors(OFF, OBF, OPFF)) {
-                adapter.addFragment(IngredientsProductFragment().applyBundle(fBundle), titles[1])
+                adapter.add(IngredientsProductFragment.newInstance(productState), titles[1])
             }
             if (isFlavors(OFF)) {
-                adapter.addFragment(NutritionProductFragment().applyBundle(fBundle), titles[2])
-                adapter.addFragment(EnvironmentProductFragment().applyBundle(fBundle), titles[4])
+                adapter.add(NutritionProductFragment().applyBundle(fBundle), titles[2])
+                adapter.add(EnvironmentProductFragment().applyBundle(fBundle), titles[4])
                 if (isPhotoMode(activity)) {
-                    adapter.addFragment(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
+                    adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
                 }
+                adapter.add(ServerAttributesFragment.newInstance(productState), activity.getString(R.string.synthesis_tab))
             } else if (isFlavors(OPFF)) {
-                adapter.addFragment(NutritionProductFragment().applyBundle(fBundle), titles[2])
+                adapter.add(NutritionProductFragment().applyBundle(fBundle), titles[2])
                 if (isPhotoMode(activity)) {
-                    adapter.addFragment(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
+                    adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
                 }
             } else if (isFlavors(OBF)) {
                 if (isPhotoMode(activity)) {
-                    adapter.addFragment(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
+                    adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
                 }
-                adapter.addFragment(IngredientsAnalysisProductFragment().applyBundle(fBundle), newTitles[1])
+                adapter.add(IngredientsAnalysisProductFragment().applyBundle(fBundle), newTitles[1])
             } else if (isFlavors(OPF)) {
-                adapter.addFragment(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
+                adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
             }
-            if (preferences.getBoolean("contributionTab", false)) {
-                adapter.addFragment(ContributorsFragment.newInstance(productState), activity.getString(R.string.contribution_tab))
+            if (preferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
+                adapter.add(ContributorsFragment.newInstance(productState), activity.getString(R.string.contribution_tab))
             }
-
-            if (isFlavors(OFF)) adapter.addFragment(ServerAttributesFragment().applyBundle(fBundle), activity.getString(R.string.synthesis_tab))
 
             viewPager.adapter = adapter
             return adapter
         }
 
         private fun isPhotoMode(activity: Activity) =
-                PreferenceManager.getDefaultSharedPreferences(activity).getBoolean("photoMode", false)
+                PreferenceManager.getDefaultSharedPreferences(activity).getBoolean(activity.getString(R.string.pref_show_product_photos_key), false)
 
-        @JvmStatic
-        fun onOptionsItemSelected(activity: Activity, item: MenuItem): Boolean {
-            return when (item.itemId) {
-                android.R.id.home -> {
-                    // Respond to the action bar's Up/Home button
-                    activity.finish()
-                    true
-                }
-                else -> false
+        fun onOptionsItemSelected(activity: Activity, item: MenuItem) = when (item.itemId) {
+            android.R.id.home -> {
+                // Respond to the action bar's Up/Home button
+                activity.finish()
+                true
             }
+            else -> false
         }
     }
 }

@@ -261,12 +261,12 @@
     <string name="user">користувач</string>
     <string name="error_field_required">Це поле є обов\'язковим.</string>
     <string name="action_preferences">Налаштування</string>
-    <string name="prefs_scan_startup">Відкривати при запуску</string>
-    <string name="prefs_scan_startup_summary">Цей параметр буде відкривати екран для сканування коду товару одразу після відкриття програми.</string>
-    <string name="prefs_power_mode">Швидке сканування</string>
-    <string name="prefs_power_mode_summary">Швидке сканування товарів в супермаркеті, щоб побачити, які з них не знаходяться в базі даних.</string>
-    <string name="prefs_language">Мова</string>
-    <string name="prefs_language_summary">Змінити мову</string>
+    <string name="pref_scan_startup_title">Відкривати при запуску</string>
+    <string name="pref_scan_startup_summary">Цей параметр буде відкривати екран для сканування коду товару одразу після відкриття програми.</string>
+    <string name="pref_power_mode_title">Швидке сканування</string>
+    <string name="pref_power_mode_summary">Швидке сканування товарів в супермаркеті, щоб побачити, які з них не знаходяться в базі даних.</string>
+    <string name="pref_language_title">Мова</string>
+    <string name="pref_language_summary">Змінити мову</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Вам подобається Open Food Facts?</string>
     <string name="user_ask_show_feedback_form">Нам дуже шкода це чути! Розкажіть нам, що трапилося?</string>
@@ -312,9 +312,9 @@
     <string name="action_manage_account">Управління акаунтом</string>
     <string name="action_contributes">Ваш внесок</string>
     <string name="choose_energy_unit">Виберіть бажані одиниці енергії для таблиці харчування</string>
-    <string name="energy_pref_title">Бажана одиниця енергії</string>
+    <string name="pref_energy_unit_title">Бажана одиниця енергії</string>
     <string name="choose_volume_unit">Виберіть бажані одиниці об\'єму для таблиці харчування</string>
-    <string name="volume_pref_title">Бажана одиниця об\'єму</string>
+    <string name="pref_volume_unit_title">Бажана одиниця об\'єму</string>
     <string name="logout_drawer">Вийти</string>
     <string name="contribution_without_account">Вам потрібно увійти або створити обліковий запис, щоб побачити свої внески</string>
     <string name="textCarbonFootprint">Викиди вуглецю / CO2: </string>
@@ -421,8 +421,8 @@
     <string name="next">ДАЛІ</string>
     <string name="skip">ПРОПУСТИТИ</string>
     <string name="start">ЗРОЗУМІЛО</string>
-    <string name="contact">Зв\'язатися</string>
-    <string name="contact_summary">Зв\'язатися з командою</string>
+    <string name="pref_contact_us_title">Зв\'язатися</string>
+    <string name="pref_contact_us_summary">Зв\'язатися з командою</string>
     <string name="email_not_found">Жодних програм електронної пошти не знайдено</string>
     <string name="airplane_mode_active_dialog_title">Активований \"Режим польоту\"</string>
     <string name="airplane_mode_active_dialog_message">Будь ласка, вимкніть \"Режим польоту\", щоб продовжити.</string>
@@ -433,27 +433,27 @@
     <string name="device_offline_dialog_negative">Закрити</string>
     <string name="device_offline_dialog_positive">Налаштування</string>
     <string name="scan_first_product">Проскануй перший товар</string>
-    <string name="preference_delete_search_history">Successfully deleted history</string>
-    <string name="preference_enable_mobile_data_title">Завантажувати дані на девайс</string>
-    <string name="preference_enable_mobile_data_summary_on">Завантажте нові товари за допомогою даних з девайсу та WiFi</string>
-    <string name="preference_enable_mobile_data_summary_off">Завантажувати нові товари лише за допомогою WiFi</string>
+    <string name="pref_delete_history">Successfully deleted history</string>
+    <string name="pref_enable_mobile_data_title">Завантажувати дані на девайс</string>
+    <string name="pref_enable_mobile_data_summary_on">Завантажте нові товари за допомогою даних з девайсу та WiFi</string>
+    <string name="pref_enable_mobile_data_summary_off">Завантажувати нові товари лише за допомогою WiFi</string>
     <string name="device_on_mobile_data_warning_title">Інформація</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Налаштування</string>
     <string name="device_on_mobile_data_warning_negative">Все одно завантажити</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Оберіть мову</string>
-    <string name="FAQ">FAQ</string>
-    <string name="FrequentlyAskedQuestions">Часті Питання</string>
-    <string name="translate_help_title">Допоможіть перекласти Open Food Facts</string>
-    <string name="translate_help_summary">Перекладіть базу даних Open Food Facts на свою мову - технічних знань не потрібно</string>
+    <string name="pref_faq_title">FAQ</string>
+    <string name="pref_faq_summary">Часті Питання</string>
+    <string name="pref_help_translate_title">Допоможіть перекласти Open Food Facts</string>
+    <string name="pref_help_translate_summary">Перекладіть базу даних Open Food Facts на свою мову - технічних знань не потрібно</string>
     <string name="please_check_your_connection">Будь ласка, перевірте інтернет.</string>
     <string name="advanced_search_title">Розширений Пошук та Графіки</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Будь ласка, перевірте підключення до інтернету</string>
     <string name="dismiss">Закрити</string>
-    <string name="Terms">Умови</string>
-    <string name="TermsOfUse">Terms and Privacy</string>
+    <string name="pref_terms_title">Умови</string>
+    <string name="pref_terms_summary">Terms and Privacy</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -469,8 +469,8 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Загальні</string>
-    <string name="preference_header_network">Мережа</string>
-    <string name="preference_header_contributing">Зробити внесок</string>
+    <string name="pref_header_network">Мережа</string>
+    <string name="pref_header_contributing">Зробити внесок</string>
     <string name="scan_first_string">Тут відображується історія переглянутих Вами продуктів.\nЦей список зберігається виключно локально в призначений для перегляду лише Вами.</string>
     <string name="log_in">Ім\'я користувача</string>
     <string name="login_true">Already logged in!</string>
@@ -478,9 +478,9 @@
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Скасувати</string>
     <string name="dialog_create">Create</string>
-    <string name="choose_resolution">Choose Resolution</string>
+    <string name="pref_resolution_dialog_title">Choose Resolution</string>
     <string name="pref_resolution_summary">Виберіть роздільну здатність для завантаження зображення</string>
-    <string name="image_upload_resolution">Роздільна здатність зображення для завантаження</string>
+    <string name="pref_resolution_title">Роздільна здатність зображення для завантаження</string>
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">Наразі у Вікіпедії не існує сторінки Вашою мовою.</string>
     <string name="Wikipedia">Переглянути у Вікіпедії</string>
@@ -497,8 +497,8 @@
     <string name="category_string">Категорія</string>
     <string name="connection">Підключено</string>
     <string name="contributor_string">Учасник</string>
-    <string name="Rate_Us">Підтримати</string>
-    <string name="Rate_Us_title">Оцінити наш додаток</string>
+    <string name="pref_rate_us_summary">Підтримати</string>
+    <string name="pref_rate_us_title">Оцінити наш додаток</string>
     <string name="app_disabled_text">Додаток вимкнено</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Вітаміни:</string>
@@ -506,8 +506,8 @@
     <string name="mineral_tags_text">Мінерали:</string>
     <string name="other_tags_text">Інші речовини:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Disable image loading when battery is low</string>
-    <string name="DisableLoadTitle">Disable image loading</string>
+    <string name="pref_low_battery_summary">Disable image loading when battery is low</string>
+    <string name="pref_low_battery_title">Disable image loading</string>
     <string name="by_title">Найменування</string>
     <string name="by_brand">Виробник</string>
     <string name="by_barcode">Код товару</string>
@@ -540,11 +540,11 @@
     <string name="last_editor_history">Останнє редагування сторінки продукту %1$s %2$s в %3$s CEST </string>
     <string name="other_editors">Сторінка продукту також відредагована </string>
     <string name="contribution_tab">Внески</string>
-    <string name="contribution_tab_summary">Показувати вкладку внесків користувача з товарами</string>
-    <string name="contribution_tab_title">Показувати вкладку з внеском</string>
+    <string name="pref_contribution_tab_summary">Показувати вкладку внесків користувача з товарами</string>
+    <string name="pref_contribution_tab_title">Показувати вкладку з внеском</string>
     <string name="txtDialogsTitle">Інформація</string>
-    <string name="preference_show_all_product_photos_title">Показувати всі фотографії товару</string>
-    <string name="preference_show_all_product_photos_summary">Показувати всі фотографії товару в окремій вкладці</string>
+    <string name="pref_show_product_photos_title">Показувати всі фотографії товару</string>
+    <string name="pref_show_product_photos_summary">Показувати всі фотографії товару в окремій вкладці</string>
     <string name="offline_product_addition_title">Додати новий продукт</string>
     <string name="productNameNull">Назва невідома</string>
     <string name="productAdditivesUnknown"></string>
@@ -692,7 +692,7 @@
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
-    <string name="version">Version</string>
+    <string name="pref_version_title">Version</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -700,10 +700,10 @@
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Successfully set the image as</string>
-    <string name="fast_addition_mode_title">Fast Addition Mode</string>
-    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
-    <string name="crop_new_image_title">Crop new images</string>
-    <string name="crop_new_image">Enables crop action on new images</string>
+    <string name="pref_fast_addition_title">Fast Addition Mode</string>
+    <string name="pref_fast_addition_summary">Enables fast addition of products with fewer attributes</string>
+    <string name="pref_crop_new_images_title">Crop new images</string>
+    <string name="pref_crop_new_images_summary">Enables crop action on new images</string>
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
     <!--used for product_lists implementation-->
@@ -719,12 +719,12 @@
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
-    <string name="search_history_pref_title">Delete local search history</string>
-    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
-    <string name="search_history_pref_dialog_content">Delete local search history?</string>
-    <string name="settings_country_dialog_title">Select your country</string>
-    <string name="settings_country_summary">Change your selected country</string>
-    <string name="settings_country_title">Country</string>
+    <string name="pref_delete_history_title">Delete local search history</string>
+    <string name="pref_delete_history_summary">Remove all the searches that you performed on this device</string>
+    <string name="pref_delete_history_dialog_content">Delete local search history?</string>
+    <string name="pref_country_dialog_title">Select your country</string>
+    <string name="pref_country_summary">Change your selected country</string>
+    <string name="pref_country_title">Country</string>
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
@@ -779,7 +779,7 @@
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
-    <string name="preference_header_display">Display</string>
+    <string name="pref_header_display">Display</string>
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>

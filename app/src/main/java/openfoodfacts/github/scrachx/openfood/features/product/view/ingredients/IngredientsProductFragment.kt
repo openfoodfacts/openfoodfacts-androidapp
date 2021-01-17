@@ -46,6 +46,7 @@ import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.LoginContract
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.EditProductPerformOCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.EditProductSendUpdatedImg
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
@@ -451,5 +452,10 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
 
     companion object {
         val INGREDIENT_PATTERN: Pattern = Pattern.compile("[\\p{L}\\p{Nd}(),.-]+")
+        fun newInstance(productState: ProductState) = IngredientsProductFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(KEY_STATE, productState)
+            }
+        }
     }
 }

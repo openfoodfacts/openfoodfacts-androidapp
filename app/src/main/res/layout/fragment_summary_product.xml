@@ -62,17 +62,16 @@
                         <LinearLayout
                             android:id="@+id/header_product_details_layout"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/spacing_small"
                             android:layout_marginRight="@dimen/spacing_small"
                             android:gravity="center_vertical"
                             android:orientation="vertical"
-                            app:layout_constraintBottom_toBottomOf="@+id/front_picture_layout"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/front_picture_layout"
                             app:layout_constraintRight_toLeftOf="@id/front_picture_layout"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/front_picture_layout">
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <TextView
                                 android:id="@+id/textNameProduct"
@@ -344,7 +343,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="@dimen/spacing_normal"
-                        android:layout_marginTop="8dp"
                         android:visibility="gone"
                         app:drawableLeftCompat="@drawable/ic_add_box_blue_18dp"
                         app:drawableStartCompat="@drawable/ic_add_box_blue_18dp"
@@ -353,6 +351,34 @@
                         app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"
                         tools:text="@string/add_nutrition_facts_for_nutriscore"
                         tools:visibility="visible" />
+
+                    <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
+                        android:id="@+id/tipBoxEcoScore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:identifier="showEcoScorePrompt"
+                        app:backgroundColor="@color/md_light_green_500"
+                        app:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/add_nutriscore_prompt"
+                        app:message="@string/couldnot_compute_ecoscore_prompt_text"
+                        app:shouldDisplayImmediately="false" />
+
+                    <TextView
+                        android:id="@+id/add_label_origin_prompt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_normal"
+                        android:visibility="gone"
+                        android:gravity="center"
+                        android:textSize="@dimen/font_normal"
+                        android:padding="@dimen/padding_too_short"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tipBoxEcoScore"
+                        tools:text="@string/add_origins_prompt_text"
+                        tools:visibility="visible"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

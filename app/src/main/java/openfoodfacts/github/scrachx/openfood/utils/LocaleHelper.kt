@@ -20,6 +20,7 @@ import android.os.Build
 import androidx.core.content.edit
 import androidx.core.os.ConfigurationCompat
 import androidx.preference.PreferenceManager
+import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import java.util.*
@@ -35,11 +36,9 @@ import java.util.*
  * Created by gunhansancar on 07/10/15.
  */
 object LocaleHelper {
-    private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
+    private val SELECTED_LANGUAGE by lazy { OFFApplication.instance.getString(R.string.pref_language_key) }
 
     fun List<LanguageData>.find(language: String) = indexOfFirst { language == it.code }
-
-    const val USER_COUNTRY_PREFERENCE_KEY = "user_country"
 
     fun onCreate(context: Context, defaultLanguage: String = Locale.getDefault().language) =
             setLanguageInPrefs(context, getLanguageInPreferences(context, defaultLanguage))

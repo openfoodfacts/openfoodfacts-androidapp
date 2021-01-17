@@ -56,7 +56,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
@@ -277,14 +277,14 @@ class ContinuousScanActivity : AppCompatActivity() {
                 }
     }
 
-    private fun quickViewCheckNutriScore(product: Product) = if (isFlavors(AppFlavors.OFF)) {
+    private fun quickViewCheckNutriScore(product: Product) = if (isFlavors(OFF)) {
         binding.quickViewNutriScore.visibility = View.VISIBLE
         binding.quickViewNutriScore.setImageResource(product.getNutriScoreResource())
     } else {
         binding.quickViewNutriScore.visibility = View.GONE
     }
 
-    private fun quickViewCheckNova(product: Product) = if (isFlavors(AppFlavors.OFF)) {
+    private fun quickViewCheckNova(product: Product) = if (isFlavors(OFF)) {
         binding.quickViewNovaGroup.visibility = View.VISIBLE
         binding.quickViewAdditives.visibility = View.VISIBLE
         binding.quickViewNovaGroup.setImageResource(product.getNovaGroupResource())
@@ -311,9 +311,7 @@ class ContinuousScanActivity : AppCompatActivity() {
             override fun showAllergens(allergens: List<AllergenName>) {
                 val data = AllergenHelper.computeUserAllergen(product, allergens)
                 binding.callToActionImageProgress.visibility = View.GONE
-                if (data.isEmpty()) {
-                    return
-                }
+                if (data.isEmpty()) return
                 val iconicsDrawable = IconicsDrawable(this@ContinuousScanActivity, GoogleMaterial.Icon.gmd_warning)
                         .color(IconicsColor.colorInt(ContextCompat.getColor(this@ContinuousScanActivity, R.color.white)))
                         .size(IconicsSize.dp(24))

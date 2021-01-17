@@ -251,12 +251,12 @@
     <string name="user">käyttäjä</string>
     <string name="error_field_required">Tämä kenttä on pakollinen.</string>
     <string name="action_preferences">Asetukset</string>
-    <string name="prefs_scan_startup">Viivakoodinluku käynnistäessä</string>
-    <string name="prefs_scan_startup_summary">Tämän asetuksen ollessa päällä viivakoodinluku aloitetaan, kun sovellus avataan.</string>
-    <string name="prefs_power_mode">Pikalukutila</string>
-    <string name="prefs_power_mode_summary">Lue tuotteita supermarketissa nopeasti nähdäksesi, mitkä niistä eivät ole tietokannassa.</string>
-    <string name="prefs_language">Kieli</string>
-    <string name="prefs_language_summary">Vaihda kieli</string>
+    <string name="pref_scan_startup_title">Viivakoodinluku käynnistäessä</string>
+    <string name="pref_scan_startup_summary">Tämän asetuksen ollessa päällä viivakoodinluku aloitetaan, kun sovellus avataan.</string>
+    <string name="pref_power_mode_title">Pikalukutila</string>
+    <string name="pref_power_mode_summary">Lue tuotteita supermarketissa nopeasti nähdäksesi, mitkä niistä eivät ole tietokannassa.</string>
+    <string name="pref_language_title">Kieli</string>
+    <string name="pref_language_summary">Vaihda kieli</string>
     <!-- Strings related to feedback dialog -->
     <string name="user_enjoying_app">Nautitko kokemuksestasi Open Food Factsin kanssa?</string>
     <string name="user_ask_show_feedback_form">Ikävä kuulla! Voitko kertoa meille mitä tapahtui?</string>
@@ -302,9 +302,9 @@
     <string name="action_manage_account">Tilin asetukset</string>
     <string name="action_contributes">Osallistumisesi</string>
     <string name="choose_energy_unit">Valitse ensisijainen energiayksikkö ravintotiedoille</string>
-    <string name="energy_pref_title">Ensisijainen energiayksikkö</string>
+    <string name="pref_energy_unit_title">Ensisijainen energiayksikkö</string>
     <string name="choose_volume_unit">Valitse ensisijaiset tilavuusyksiköt ravintotiedoille</string>
-    <string name="volume_pref_title">Ensisijainen tilavuusyksikkö</string>
+    <string name="pref_volume_unit_title">Ensisijainen tilavuusyksikkö</string>
     <string name="logout_drawer">Kirjaudu ulos</string>
     <string name="contribution_without_account">Kirjaudu sisään, tai luo Open Food Facts -tili säilyttääksesi osallistumisesi</string>
     <string name="textCarbonFootprint">Hiilijalanjälki / CO2-päästöt: </string>
@@ -411,8 +411,8 @@
     <string name="next">SEURAAVA</string>
     <string name="skip">OHITA</string>
     <string name="start">SELVÄ</string>
-    <string name="contact">Yhteystiedot</string>
-    <string name="contact_summary">Ota yhteyttä tiimiin</string>
+    <string name="pref_contact_us_title">Yhteystiedot</string>
+    <string name="pref_contact_us_summary">Ota yhteyttä tiimiin</string>
     <string name="email_not_found">Sähköpostisovellusta ei löytynyt</string>
     <string name="airplane_mode_active_dialog_title">Lentokonetila käytössä</string>
     <string name="airplane_mode_active_dialog_message">Lentokonetila on käytössä. Poista se käytöstä jatkaaksesi.</string>
@@ -423,27 +423,27 @@
     <string name="device_offline_dialog_negative">Hylkää</string>
     <string name="device_offline_dialog_positive">Asetukset</string>
     <string name="scan_first_product">Lue ensimmäinen tuotteesi</string>
-    <string name="preference_delete_search_history">Historian poisto onnistui</string>
-    <string name="preference_enable_mobile_data_title">Lataa mobiilidatalla</string>
-    <string name="preference_enable_mobile_data_summary_on">Lähetä uusia tuotteita mobiilidatalla &amp; WiFi-yhteydellä</string>
-    <string name="preference_enable_mobile_data_summary_off">Lataa uusia tuotteita vain WiFi-yhteydellä</string>
+    <string name="pref_delete_history">Historian poisto onnistui</string>
+    <string name="pref_enable_mobile_data_title">Lataa mobiilidatalla</string>
+    <string name="pref_enable_mobile_data_summary_on">Lähetä uusia tuotteita mobiilidatalla &amp; WiFi-yhteydellä</string>
+    <string name="pref_enable_mobile_data_summary_off">Lataa uusia tuotteita vain WiFi-yhteydellä</string>
     <string name="device_on_mobile_data_warning_title">Tietoja</string>
     <string name="device_on_mobile_data_warning_message">Lähettäminen mobiilidatalla on poistettu käytöstä. Muodosta yhteys langattomaan verkkoon, tai muuta tilannetta asetuksissa</string>
     <string name="device_on_mobile_data_warning_positive">Asetukset</string>
     <string name="device_on_mobile_data_warning_negative">Lähetä joka tapauksessa</string>
     <string name="changes_saved">Muutokset tallennettu</string>
     <string name="preference_choose_language_dialog_title">Valitse kieli</string>
-    <string name="FAQ">UKK</string>
-    <string name="FrequentlyAskedQuestions">Usein Kysytyt Kysymykset</string>
-    <string name="translate_help_title">Auta kääntämään Open Food Factsia</string>
-    <string name="translate_help_summary">Tuo Open Food Facts kielellesi - teknistä tietoa ei vaadita</string>
+    <string name="pref_faq_title">UKK</string>
+    <string name="pref_faq_summary">Usein Kysytyt Kysymykset</string>
+    <string name="pref_help_translate_title">Auta kääntämään Open Food Factsia</string>
+    <string name="pref_help_translate_summary">Tuo Open Food Facts kielellesi - teknistä tietoa ei vaadita</string>
     <string name="please_check_your_connection">Tarkista internetyhteytesi.</string>
     <string name="advanced_search_title">Tarkennettu haku &amp; kaaviot</string>
     <string name="compare_products">Vertaa tuotteita</string>
     <string name="connectivity_check">Tarkista Internet-yhteytesi</string>
     <string name="dismiss">Hylkää</string>
-    <string name="Terms">Ehdot</string>
-    <string name="TermsOfUse">Käyttöehdot ja yksityisyys</string>
+    <string name="pref_terms_title">Ehdot</string>
+    <string name="pref_terms_summary">Käyttöehdot ja yksityisyys</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world-fi.openfoodfacts.org/terms-of-use</string>
@@ -459,8 +459,8 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Yleiset</string>
-    <string name="preference_header_network">Verkko</string>
-    <string name="preference_header_contributing">Osallistu</string>
+    <string name="pref_header_network">Verkko</string>
+    <string name="pref_header_contributing">Osallistu</string>
     <string name="scan_first_string">Katseltujen tuotteiden historia luetellaan tässä.\nTämä historia on tarkoitettu vain sinulle ja tallennetaan paikallisesti.</string>
     <string name="log_in">Käyttäjätunnus</string>
     <string name="login_true">Olet jo kirjautunut sisään.</string>
@@ -468,9 +468,9 @@
     <string name="logout_dialog_content">Haluatko varmasti kirjautua ulos Open Food Facts -osallistujatililtäsi?</string>
     <string name="dialog_cancel">Peruuta</string>
     <string name="dialog_create">Luo</string>
-    <string name="choose_resolution">Valitse tarkkuus</string>
+    <string name="pref_resolution_dialog_title">Valitse tarkkuus</string>
     <string name="pref_resolution_summary">Valitse tarkkuus kuvan lähettämiseen</string>
-    <string name="image_upload_resolution">Lähetettävän kuvan tarkkuus</string>
+    <string name="pref_resolution_title">Lähetettävän kuvan tarkkuus</string>
     <string name="wikidata_information">Syvemmälle</string>
     <string name="wikidata_unavailable">Kielelläsi ei vielä ole Wikipedia-sivua.</string>
     <string name="Wikipedia">Näytä Wikipediassa</string>
@@ -487,8 +487,8 @@
     <string name="category_string">Tuoteluokka</string>
     <string name="connection">Yhdistetty</string>
     <string name="contributor_string">Osallistuja</string>
-    <string name="Rate_Us">Näytä tukesi</string>
-    <string name="Rate_Us_title">Arvostele sovelluksemme</string>
+    <string name="pref_rate_us_summary">Näytä tukesi</string>
+    <string name="pref_rate_us_title">Arvostele sovelluksemme</string>
     <string name="app_disabled_text">Sovellus on poistettu käytöstä</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Vitamiinit:</string>
@@ -496,8 +496,8 @@
     <string name="mineral_tags_text">Mineraalit:</string>
     <string name="other_tags_text">Muut aineet:</string>
     <!--shared element transition key-->
-    <string name="disable_image_loading">Ota kuvien lataaminen pois käytöstä, kun akku on vähissä</string>
-    <string name="DisableLoadTitle">Poista kuvien lataaminen käytöstä</string>
+    <string name="pref_low_battery_summary">Ota kuvien lataaminen pois käytöstä, kun akku on vähissä</string>
+    <string name="pref_low_battery_title">Poista kuvien lataaminen käytöstä</string>
     <string name="by_title">Otsikko</string>
     <string name="by_brand">Tuotemerkki</string>
     <string name="by_barcode">Viivakoodi</string>
@@ -530,11 +530,11 @@
     <string name="last_editor_history">Viimeisimmän tuotesivun muokkauksen %1$s kello %2$s CEST teki %3$s </string>
     <string name="other_editors">Tuotesivua on muokannut myös </string>
     <string name="contribution_tab">Muokkaukset</string>
-    <string name="contribution_tab_summary">Näytä käyttäjän osallistumisvälilehti tuotteissa</string>
-    <string name="contribution_tab_title">Näytä osallistumisvälilehti</string>
+    <string name="pref_contribution_tab_summary">Näytä käyttäjän osallistumisvälilehti tuotteissa</string>
+    <string name="pref_contribution_tab_title">Näytä osallistumisvälilehti</string>
     <string name="txtDialogsTitle">Tietoja</string>
-    <string name="preference_show_all_product_photos_title">Näytä kaikki tuotekuvat</string>
-    <string name="preference_show_all_product_photos_summary">Näytä kaikki lähetetyt tuotekuvat erillisessä välilehdessä</string>
+    <string name="pref_show_product_photos_title">Näytä kaikki tuotekuvat</string>
+    <string name="pref_show_product_photos_summary">Näytä kaikki lähetetyt tuotekuvat erillisessä välilehdessä</string>
     <string name="offline_product_addition_title">Lisää uusi tuote</string>
     <string name="productNameNull">Tuntematon nimi</string>
     <string name="productAdditivesUnknown"></string>
@@ -680,7 +680,7 @@
     <string name="add_nutrient_category_prompt_text">Lisää ravintosisältö ja luokitus Nutri-Scoren laskemiseksi</string>
     <string name="category_game_btn">Auta luokittelemaan tuotteita, jotta Nutri-Score voidaan laskea</string>
     <string name="version_string">Open Food Facts Android-sovellus</string>
-    <string name="version">Versio</string>
+    <string name="pref_version_title">Versio</string>
     <string name="set_ingredient_img">Aseta ainesosakuvaksi</string>
     <string name="set_img_nutrients">Aseta ravintosisältökuvaksi</string>
     <string name="set_img_front">Aseta etukuvaksi</string>
@@ -688,10 +688,10 @@
     <string name="detected_ingredients">Havaitut ainesosat</string>
     <string name="txtConnectionError">Tiettyjä tietoja ei voitu ladata. Tämä voi johtua yhteysvirheestä.</string>
     <string name="set_image_name">Kuva asetettu rooliin</string>
-    <string name="fast_addition_mode_title">Pikalisäystila</string>
-    <string name="fast_addition_mode">Mahdollistaa tuotteiden nopean lisäämisen vähemmillä määritteillä</string>
-    <string name="crop_new_image_title">Rajaa uusia kuvia</string>
-    <string name="crop_new_image">Mahdollistaa uusien kuvien rajauksen</string>
+    <string name="pref_fast_addition_title">Pikalisäystila</string>
+    <string name="pref_fast_addition_summary">Mahdollistaa tuotteiden nopean lisäämisen vähemmillä määritteillä</string>
+    <string name="pref_crop_new_images_title">Rajaa uusia kuvia</string>
+    <string name="pref_crop_new_images_summary">Mahdollistaa uusien kuvien rajauksen</string>
     <string name="addtive_search">Etsi lisäaine</string>
     <string name="additives">Lisäaineet</string>
     <!--used for product_lists implementation-->
@@ -707,12 +707,12 @@
     <string name="txt_info_eaten_products">Voit lisätä tuotteita tähän luetteloon liu\'uttamalla luetun tuotteen tuotekortin ylöspäin, ja napauttamalla \"Syön tätä\".
         Voit lisätä tuotteita tähän luetteloon etsimällä niitä, ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
     <string name="txt_info_your_listed_products">Voit lisätä tuotteita tähän luetteloon etsimällä niitä ja napsauttamalla + -painiketta tuotesivun oikeassa yläkulmassa.</string>
-    <string name="search_history_pref_title">Poista paikallinen hakuhistoria</string>
-    <string name="search_history_pref_summary">Poista kaikki tällä laitteella tekemäsi haut</string>
-    <string name="search_history_pref_dialog_content">Poista paikallinen hakuhistoria?</string>
-    <string name="settings_country_dialog_title">Valitse maasi</string>
-    <string name="settings_country_summary">Vaihda valitsemasi maa</string>
-    <string name="settings_country_title">Maa</string>
+    <string name="pref_delete_history_title">Poista paikallinen hakuhistoria</string>
+    <string name="pref_delete_history_summary">Poista kaikki tällä laitteella tekemäsi haut</string>
+    <string name="pref_delete_history_dialog_content">Poista paikallinen hakuhistoria?</string>
+    <string name="pref_country_dialog_title">Valitse maasi</string>
+    <string name="pref_country_summary">Vaihda valitsemasi maa</string>
+    <string name="pref_country_title">Maa</string>
     <string name="txt_no_nutrition_data">Tuotteen pakkauksessa ei ole ravintosisältöä. Jos tämä on muuttunut, voit muokata tuotetta.</string>
     <string name="image_prompt_language">Ota valokuva ainesosista kielellä</string>
     <string name="swipe_delete_tip">Voit poistaa luettelon pyyhkäisemällä sitä vasemmalle.</string>
@@ -767,7 +767,7 @@
     <string name="ingredients_in_this_product_are">Tämän tuotteen ainesosat ovat %1$s.</string>
     <string name="ingredients_in_this_product">Tämän tuotteen ainesosat, jotka ovat %1$s:</string>
     <string name="display_analysis_tag_status">Näytä tila %1$s</string>
-    <string name="preference_header_display">Näytä</string>
+    <string name="pref_header_display">Näytä</string>
     <string name="unknown_status_no_translation">Tuotteen tilaa ei voitu arvioida tunnistamattomien ainesosien takia.</string>
     <string name="help_translate_ingredients">Auta kääntämään ainesosat kielellesi</string>
     <string name="unknown_status_missing_ingredients">Tuotteen tilaa ei voitu arvioida puuttuvien ainesosien takia.</string>

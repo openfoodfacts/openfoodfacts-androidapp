@@ -2,7 +2,6 @@ package openfoodfacts.github.scrachx.openfood.models
 
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
-import java.util.*
 
 /**
  * Tests for [ProductIngredient]
@@ -16,16 +15,10 @@ class ProductIngredientTest {
         val percent = "20%"
         val additionalPropertyName = "Saltiness"
         val additionalPropertyValue = "100"
-        val additionalProperties: MutableMap<String, Any> = HashMap()
-        additionalProperties[additionalPropertyName] = additionalPropertyValue
+        val additionalProperties = hashMapOf<String, Any>(additionalPropertyName to additionalPropertyValue)
 
-        val productIngredient = ProductIngredient().apply {
-            this.text = text
-            this.id = id
-            this.rank = rank
-            this.percent = percent
-            this.setAdditionalProperty(additionalPropertyName, additionalPropertyValue)
-        }
+        val productIngredient = ProductIngredient(text, id, rank, percent)
+                .apply { setAdditionalProperty(additionalPropertyName, additionalPropertyValue) }
 
         val expectedString = "ProductIngredient[text=$text," +
                 "id=$id," +
@@ -37,24 +30,14 @@ class ProductIngredientTest {
 
     @Test
     fun productIngredientWithAdditionalProperty() {
-        val productIngredient = ProductIngredient().apply {
-            text = "Ketchup"
-            id = "ketchup_id"
-            rank = 300L
-            percent = "20%"
-            setAdditionalProperty("Sweetness", "90")
-        }
-        val returnedMap = productIngredient.getAdditionalProperties()
-        assertThat(returnedMap["Sweetness"]).isEqualTo("90")
+        val productIngredient = ProductIngredient("Ketchup", "ketchup_id", 300L, "20%")
+                .apply { setAdditionalProperty("Sweetness", "90") }
+        assertThat(productIngredient.additionalProperties["Sweetness"]).isEqualTo("90")
     }
 
     @Test
     fun productIngredientGetters() {
-        val productIngredient = ProductIngredient()
-        productIngredient.text = "Mustard"
-        productIngredient.id = "mustard_id"
-        productIngredient.rank = 200L
-        productIngredient.percent = "25%"
+        val productIngredient = ProductIngredient("Mustard", "mustard_id", 200L, "25%")
         assertThat(productIngredient.text).isEqualTo("Mustard")
         assertThat(productIngredient.id).isEqualTo("mustard_id")
         assertThat(productIngredient.rank).isEqualTo(200L)

@@ -200,7 +200,7 @@ class Product : Serializable {
      * @return The ingredientsThatMayBeFromPalmOilTags
      */
     @JsonProperty(ApiFields.Keys.INGREDIENTS_MAY_PALM_OIL_TAGS)
-    val ingredientsThatMayBeFromPalmOilTags: ArrayList<String> = arrayListOf()
+    val ingredientsThatMayBeFromPalmOilTags = arrayListOf<String>()
 
     /**
      * @return The labels hierarchy
@@ -239,7 +239,7 @@ class Product : Serializable {
      * @return The mineralsTags
      */
     @JsonProperty(ApiFields.Keys.MINERALS_TAGS)
-    var mineralTags: ArrayList<String> = arrayListOf()
+    var mineralTags = arrayListOf<String>()
 
     @JsonProperty(ApiFields.Keys.NO_NUTRITION_DATA)
     val noNutritionData: String? = null
@@ -284,7 +284,8 @@ class Product : Serializable {
      * @return The otherNutritionTags
      */
     @JsonProperty(ApiFields.Keys.OTHER_NUTRITIONAL_SUBSTANCES_TAGS)
-    var otherNutritionTags: ArrayList<String> = arrayListOf()
+    var otherNutritionTags = arrayListOf<String>()
+
     val packaging: String? = null
         get() = field?.replace(",", ", ")
 
@@ -328,7 +329,7 @@ class Product : Serializable {
      * @return The statesTags
      */
     @JsonProperty(ApiFields.Keys.STATES_TAGS)
-    val statesTags: List<String> = arrayListOf()
+    val statesTags = arrayListOf<String>()
 
     val stores: String? = null
         get() = field?.replace(",", ", ")
@@ -353,7 +354,7 @@ class Product : Serializable {
      * @return The vitaminTags
      */
     @JsonProperty(ApiFields.Keys.VITAMINS_TAGS)
-    var vitaminTags: ArrayList<String> = arrayListOf()
+    var vitaminTags = arrayListOf<String>()
 
     @JsonProperty(ApiFields.Keys.WARNING)
     val warning: String? = null

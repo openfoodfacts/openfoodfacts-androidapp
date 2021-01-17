@@ -275,7 +275,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             val chipValues = extractProductCountriesTagsChipValues(product).toMutableList()
             //Also add the country set by the user in preferences
             val sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
-            val savedCountry = sharedPref.getString(LocaleHelper.USER_COUNTRY_PREFERENCE_KEY, "") ?: ""
+            val savedCountry = sharedPref.getString(getString(R.string.pref_country_key), "") ?: ""
 
             if (savedCountry.isNotEmpty()) chipValues.add(savedCountry)
 

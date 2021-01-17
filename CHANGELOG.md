@@ -1,5 +1,13 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
+3.6.0
+- Eco-Score
+- Display all 3 scores in search, facets, recent changes
+- Display Eco-Score official logo in history
+- Stability fixes
+- Attributes system
+- Allow to select packaging image from Photos tab
+
 3.5.0
 - New: Help collect photos of recycling and packaging information ! Go to the new Environment tab on the complete product page. This will be helpful to compute the new environmental grade Eco-Score.
 - New button to take additional photos of the product (useful to get more blue questions)
