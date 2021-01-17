@@ -53,6 +53,7 @@ import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.Lo
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.CategoryProductHelper
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
@@ -875,5 +876,11 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         private const val EDIT_PRODUCT_NUTRITION_AFTER_LOGIN = 3
         private const val EDIT_REQUEST_CODE = 2
         private val LOG_TAG = this::class.simpleName!!
+
+        fun newInstance(productState: ProductState) = SummaryProductFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(KEY_STATE, productState)
+            }
+        }
     }
 }

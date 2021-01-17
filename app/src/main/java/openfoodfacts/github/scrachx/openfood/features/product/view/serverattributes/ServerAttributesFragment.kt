@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentServerAttributesBinding
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.utils.requireProductState
@@ -31,5 +32,13 @@ class ServerAttributesFragment : BaseFragment() {
         Log.i("ServerAttributes", attributeGroups.toString())
 
         binding.attrsList.setAdapter(AttributeGroupsAdapter(attributeGroups, requireActivity()))
+    }
+
+    companion object {
+        fun newInstance(productState: ProductState) = ServerAttributesFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(KEY_STATE, productState)
+            }
+        }
     }
 }

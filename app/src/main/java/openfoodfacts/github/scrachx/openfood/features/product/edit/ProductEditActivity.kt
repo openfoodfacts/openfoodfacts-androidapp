@@ -37,8 +37,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -46,6 +47,7 @@ import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.appComponent
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
+import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
 import openfoodfacts.github.scrachx.openfood.models.Product
@@ -219,20 +221,26 @@ class ProductEditActivity : AppCompatActivity() {
         // Initialize fragments
         val adapterResult = ProductFragmentPagerAdapter(this)
         fragmentsBundle.putSerializable("product", mProduct)
+
         editOverviewFragment.arguments = fragmentsBundle
         ingredientsFragment.arguments = fragmentsBundle
-        adapterResult.addFragment(editOverviewFragment, "Overview")
-        adapterResult.addFragment(ingredientsFragment, "Ingredients")
+
+        adapterResult.add(editOverviewFragment, R.string.overview)
+        adapterResult.add(ingredientsFragment, R.string.ingredients)
 
         // If on off or opff, add Nutrition Facts fragment
-        if (isFlavors(OFF, OPFF)) {
-            nutritionFactsFragment.arguments = fragmentsBundle
-            adapterResult.addFragment(nutritionFactsFragment, "Nutrition Facts")
-        } else if (isFlavors(AppFlavors.OBF, AppFlavors.OPF)) {
-            binding.textNutritionFactsIndicator.setText(R.string.photos)
-            addProductPhotosFragment.arguments = fragmentsBundle
-            adapterResult.addFragment(addProductPhotosFragment, "Photos")
+        when {
+            isFlavors(OFF, OPFF) -> {
+                nutritionFactsFragment.arguments = fragmentsBundle
+                adapterResult.add(nutritionFactsFragment, R.string.nutrition_facts)
+            }
+            isFlavors(OBF, OPF) -> {
+                binding.textNutritionFactsIndicator.setText(R.string.photos)
+                addProductPhotosFragment.arguments = fragmentsBundle
+                adapterResult.add(addProductPhotosFragment, R.string.photos)
+            }
         }
+
         viewPager.offscreenPageLimit = 2
         viewPager.adapter = adapterResult
     }
@@ -362,7 +370,7 @@ class ProductEditActivity : AppCompatActivity() {
         savePhoto(imgMap, image, position, ocr)
     }
 
-    private fun savePhoto(imgMap: Map<String, RequestBody?>, image: ProductImage, position: Int, ocr: Boolean) {
+    private fun savePhoto(imgMap: Map<String, RequestBody?>, image: ProductImage, position: Int, performOCR: Boolean) {
         productsApi.saveImageSingle(imgMap)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { showImageProgress(position) }
@@ -389,7 +397,7 @@ class ProductEditActivity : AppCompatActivity() {
                     if (status == "status not ok") {
                         val error = jsonNode["error"].asText()
                         val alreadySent = error == "This picture has already been sent."
-                        if (alreadySent && ocr) {
+                        if (alreadySent && performOCR) {
                             hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
                             performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}")
                         } else {
@@ -408,18 +416,18 @@ class ProductEditActivity : AppCompatActivity() {
                             }
                         }
                         hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
-                        val imagefield = jsonNode["imagefield"].asText()
-                        val imgid = jsonNode["image"]["imgid"].asText()
+                        val imageField = jsonNode["imagefield"].asText()
+                        val imgId = jsonNode["image"]["imgid"].asText()
                         if (position != 3 && position != 4) {
                             // Not OTHER image
-                            setPhoto(image, imagefield, imgid, ocr)
+                            setPhoto(image, imageField, imgId, performOCR)
                         }
                     }
                 }.addTo(disp)
     }
 
-    private fun setPhoto(image: ProductImage, imagefield: String, imgid: String, performOCR: Boolean) {
-        val queryMap = hashMapOf("imgid" to imgid, "id" to imagefield)
+    private fun setPhoto(image: ProductImage, imageField: String, imgId: String, performOCR: Boolean) {
+        val queryMap = mapOf(IMG_ID to imgId, "id" to imageField)
 
         productsApi.editImageSingle(image.barcode, queryMap)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -428,7 +436,7 @@ class ProductEditActivity : AppCompatActivity() {
                         if (performOCR) {
                             val view = findViewById<View>(R.id.coordinator_layout)
                             Snackbar.make(view, R.string.no_internet_unable_to_extract_ingredients, Snackbar.LENGTH_INDEFINITE)
-                                    .setAction(R.string.txt_try_again) { setPhoto(image, imagefield, imgid, true) }.show()
+                                    .setAction(R.string.txt_try_again) { setPhoto(image, imageField, imgId, true) }.show()
                         }
                     } else {
                         Log.i(this::class.simpleName, e.message!!)
@@ -438,7 +446,7 @@ class ProductEditActivity : AppCompatActivity() {
                 .subscribe { jsonNode ->
                     val status = jsonNode["status"].asText()
                     if (performOCR && status == "status ok") {
-                        performOCR(image.barcode, imagefield)
+                        performOCR(image.barcode, imageField)
                     }
                 }.addTo(disp)
     }
