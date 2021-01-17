@@ -1,0 +1,3 @@
+- Minor design improvements.
+- Deep link is now working again!
+- Fixed lots of sneaky bugs.
