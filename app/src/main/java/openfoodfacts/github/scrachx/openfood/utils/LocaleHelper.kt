@@ -36,7 +36,7 @@ import java.util.*
  * Created by gunhansancar on 07/10/15.
  */
 object LocaleHelper {
-    private val SELECTED_LANGUAGE = OFFApplication.instance.getString(R.string.pref_language_key)
+    private val SELECTED_LANGUAGE by lazy { OFFApplication.instance.getString(R.string.pref_language_key) }
 
     fun List<LanguageData>.find(language: String) = indexOfFirst { language == it.code }
 
