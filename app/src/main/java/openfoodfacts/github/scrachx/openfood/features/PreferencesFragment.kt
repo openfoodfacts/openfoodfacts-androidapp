@@ -32,6 +32,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.edit
+import androidx.core.content.pm.PackageInfoCompat
 import androidx.preference.*
 import androidx.preference.Preference.OnPreferenceClickListener
 import androidx.work.OneTimeWorkRequest
@@ -240,12 +241,8 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             try {
                 val pInfo = requireActivity().packageManager.getPackageInfo(requireActivity().packageName, 0)
                 val version = pInfo.versionName
-                val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    pInfo.longVersionCode
-                } else {
-                    pInfo.versionCode
-                }
-                it.summary = String.format(getString(R.string.version_string) + " %s (%d)", version, versionCode)
+                val versionCode = PackageInfoCompat.getLongVersionCode(pInfo)
+                it.summary = "${getString(R.string.version_string)} $version ($versionCode)"
             } catch (e: PackageManager.NameNotFoundException) {
                 Log.e(PreferencesFragment::class.simpleName, "onCreatePreferences", e)
             }
