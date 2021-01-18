@@ -1,6 +1,6 @@
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
-import openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 
 fun getCompleteEntryName(editText: CustomValidatingEditTextView) = PREFIX_NUTRIMENT_LONG_NAME + editText.entryName
 

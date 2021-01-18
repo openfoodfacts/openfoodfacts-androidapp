@@ -35,7 +35,7 @@
             app:layout_constraintStart_toEndOf="@+id/spinner_mod"
             app:layout_constraintTop_toTopOf="parent">
 
-            <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+            <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
                 android:id="@+id/value"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"

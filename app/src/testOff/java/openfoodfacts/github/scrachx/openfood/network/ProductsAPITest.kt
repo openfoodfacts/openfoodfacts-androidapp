@@ -104,19 +104,19 @@ class ProductsAPITest {
 
     @Test
     fun productByPackagerCode_emb35069c_productsFound() {
-        val response = prodClient.byPackagerCode("emb-35069c").blockingGet() as Search
+        val response = prodClient.getProductsByPackagerCode("emb-35069c").blockingGet() as Search
         response.assertProductsFound()
     }
 
     @Test
     fun productByNutritionGrade_a_productsFound() {
-        val res = prodClient.byNutritionGrade("a").blockingGet() as Search
+        val res = prodClient.getProductsByNutriScore("a").blockingGet() as Search
         res.assertProductsFound()
     }
 
     @Test
     fun productByCity_Paris_noProductFound() {
-        val response = prodClient.byCity("paris").blockingGet() as Search
+        val response = prodClient.getProducsByCity("paris").blockingGet() as Search
         response.assertNoProductsFound()
     }
 
@@ -130,7 +130,7 @@ class ProductsAPITest {
     @Test
     fun product_notFound() {
         val barcode = "457457457"
-        prodClient.getProductByBarcodeSingle(
+        prodClient.getProductByBarcode(
                 barcode,
                 "code",
                 getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
@@ -164,14 +164,14 @@ class ProductsAPITest {
 
 
         val body = devClientWithAuth
-                .saveProductSingle(product.barcode, productDetails, "Automated test")
+                .saveProduct(product.barcode, productDetails, "Automated test")
                 .blockingGet() as ProductState
 
         assertThat(body.status).isEqualTo(1)
         assertThat(body.statusVerbose).isEqualTo("fields saved")
 
         val fields = "product_name,brands,brands_tags,quantity"
-        val response = devClientWithAuth.getProductByBarcodeSingle(
+        val response = devClientWithAuth.getProductByBarcode(
                 product.barcode,
                 fields,
                 getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)

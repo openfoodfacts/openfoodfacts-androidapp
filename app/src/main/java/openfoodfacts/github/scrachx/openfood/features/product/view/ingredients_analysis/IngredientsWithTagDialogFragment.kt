@@ -209,7 +209,7 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
         private fun getMatchingIngredientsText(product: Product, ingredients: Array<String>): String? {
             val matchingIngredients = product.ingredients
                     .filter { ingredients[1] == it[ingredients[0]] }
-                    .mapNotNull { it["text"] }
+                    .mapNotNull { it["text"] as String? }
                     .map { it.toLowerCase(Locale.getDefault()).replace("_", "") }
             return if (matchingIngredients.isEmpty()) null
             else StringBuilder().apply {

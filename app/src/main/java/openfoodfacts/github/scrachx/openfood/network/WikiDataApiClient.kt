@@ -30,6 +30,6 @@ class WikiDataApiClient(customEndpointUrl: String? = null) {
      *
      * @param code WikiData ID of additive/ingredient/category/label
      */
-    fun doSomeThing(code: String?) = wikidataAPI.getWikiCategory(code).map { it["entities"][code] }
+    fun doSomeThing(code: String) = wikidataAPI.getWikiCategory(code).map { it["entities"][code] }
 
 }

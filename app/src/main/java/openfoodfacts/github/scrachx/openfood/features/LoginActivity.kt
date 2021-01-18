@@ -181,16 +181,10 @@ class LoginActivity : BaseActivity() {
 
         // prefetch the uri
         customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
-            override fun onCustomTabsConnected() {
-                binding.btnCreateAccount.isEnabled = true
-            }
-
-            override fun onCustomTabsDisconnected() {
-                //TODO find out what do do with it
-                binding.btnCreateAccount.isEnabled = false
-            }
-        }
+        customTabActivityHelper.setConnectionCallback(
+                onConnected = { binding.btnCreateAccount.isEnabled = true },
+                onDisconnected = { binding.btnCreateAccount.isEnabled = false }
+        )
         customTabActivityHelper.mayLaunchUrl(userLoginUri, null, null)
         binding.btnCreateAccount.isEnabled = true
 

@@ -75,9 +75,7 @@ class AdditiveListActivity : BaseActivity() {
         if (searchManager.getSearchableInfo(this.componentName) != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(this.componentName))
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String): Boolean {
-                    return false
-                }
+                override fun onQueryTextSubmit(query: String) = false
 
                 override fun onQueryTextChange(query: String): Boolean {
                     val suggestedAdditives = mutableListOf<AdditiveName>()

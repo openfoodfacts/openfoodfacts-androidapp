@@ -14,9 +14,9 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAdapter.YourListProductsViewHolder
+import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
-import openfoodfacts.github.scrachx.openfood.utils.CustomTextView
 
 class ProductListAdapter(
         private val context: Context,

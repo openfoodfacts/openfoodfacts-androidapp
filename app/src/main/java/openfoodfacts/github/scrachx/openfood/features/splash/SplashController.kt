@@ -22,11 +22,15 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
-import openfoodfacts.github.scrachx.openfood.AppFlavors
+import io.reactivex.rxkotlin.addTo
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.features.splash.ISplashActivity.Controller
 import openfoodfacts.github.scrachx.openfood.jobs.LoadTaxonomiesWorker
 import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy
+import openfoodfacts.github.scrachx.openfood.repositories.Taxonomy.*
 import java.util.concurrent.TimeUnit
 
 /**
@@ -50,16 +54,16 @@ class SplashController internal constructor(
     }
 
     override fun refreshData() {
-        activateDownload(Taxonomy.CATEGORY)
-        activateDownload(Taxonomy.TAGS)
-        activateDownload(Taxonomy.INVALID_BARCODES)
-        activateDownload(Taxonomy.ADDITIVE, AppFlavors.OFF, AppFlavors.OBF)
-        activateDownload(Taxonomy.COUNTRY, AppFlavors.OFF, AppFlavors.OBF)
-        activateDownload(Taxonomy.LABEL, AppFlavors.OFF, AppFlavors.OBF)
-        activateDownload(Taxonomy.ALLERGEN, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)
-        activateDownload(Taxonomy.ANALYSIS_TAGS, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)
-        activateDownload(Taxonomy.ANALYSIS_TAG_CONFIG, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)
-        activateDownload(Taxonomy.STATES, AppFlavors.OFF, AppFlavors.OBF, AppFlavors.OPFF)
+        activateDownload(CATEGORY)
+        activateDownload(TAGS)
+        activateDownload(INVALID_BARCODES)
+        activateDownload(ADDITIVE, OFF, OBF)
+        activateDownload(COUNTRY, OFF, OBF)
+        activateDownload(LABEL, OFF, OBF)
+        activateDownload(ALLERGEN, OFF, OBF, OPFF)
+        activateDownload(ANALYSIS_TAGS, OFF, OBF, OPFF)
+        activateDownload(ANALYSIS_TAG_CONFIG, OFF, OBF, OPFF)
+        activateDownload(STATES, OFF, OBF, OPFF)
 
         //first run ever off this application, whatever the version
         val firstRun = settings.getBoolean("firstRun", true)
@@ -80,7 +84,7 @@ class SplashController internal constructor(
 
         // The 6000 delay is to show one loop of the multilingual logo. I asked for it ~ Pierre
         if (firstRun) {
-            disp.add(Completable.timer(6, TimeUnit.SECONDS).subscribe { view.navigateToMainActivity() })
+            Completable.timer(6, TimeUnit.SECONDS).subscribe { view.navigateToMainActivity() }.addTo(disp)
         } else {
             view.navigateToMainActivity()
         }

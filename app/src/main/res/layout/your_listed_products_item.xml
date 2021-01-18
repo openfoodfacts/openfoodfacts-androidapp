@@ -70,7 +70,7 @@
             tools:text="Ferrero" />
 
 
-        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
             android:id="@+id/barcodeYourListedProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

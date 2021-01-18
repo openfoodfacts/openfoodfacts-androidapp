@@ -22,11 +22,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.afollestad.materialdialogs.MaterialDialog
-import com.fasterxml.jackson.databind.JsonNode
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -79,15 +77,11 @@ class HomeFragment : NavigationBaseFragment() {
 
     private fun openDailyFoodFacts() {
         // chrome custom tab init
-        val customTabsIntent: CustomTabsIntent
-        val customTabActivityHelper = CustomTabActivityHelper()
-        customTabActivityHelper.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
-            override fun onCustomTabsConnected() = Unit
-            override fun onCustomTabsDisconnected() = Unit
-        }
         val dailyFoodFactUri = Uri.parse(taglineURL)
-        customTabActivityHelper.mayLaunchUrl(dailyFoodFactUri, null, null)
-        customTabsIntent = CustomTabsHelper.getCustomTabsIntent(
+        val customTabActivityHelper = CustomTabActivityHelper().apply {
+            mayLaunchUrl(dailyFoodFactUri, null, null)
+        }
+        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(
                 requireActivity(),
                 customTabActivityHelper.session,
         )
@@ -148,7 +142,7 @@ class HomeFragment : NavigationBaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        val productCount = sharedPrefs.getInt("productCount", 0)
+        val productCount = sharedPrefs.getInt(PRODUCT_COUNT_KEY, 0)
 
         refreshProductCount(productCount)
         refreshTagLine()
@@ -158,20 +152,20 @@ class HomeFragment : NavigationBaseFragment() {
 
     private fun refreshProductCount(oldCount: Int) {
         Log.d(LOG_TAG, "Refreshing total product count...")
+
         api.getTotalProductCount(getUserAgent())
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { setProductCount(oldCount) }
                 .doOnError {
                     setProductCount(oldCount)
                     Log.e(LOG_TAG, "Could not retrieve product count from server.", it)
                 }
-                .subscribe { resp: JsonNode ->
-                    val totalProductCount = resp["count"].asInt(0)
+                .subscribe { resp ->
+                    val totalProductCount = resp.count.toInt()
                     Log.d(LOG_TAG, "Refreshed total product count. There are $totalProductCount products on the database.")
                     setProductCount(totalProductCount)
                     sharedPrefs.edit {
-                        putInt("productCount", totalProductCount)
+                        putInt(PRODUCT_COUNT_KEY, totalProductCount)
                         apply()
                     }
                 }.addTo(disp)
@@ -221,7 +215,7 @@ class HomeFragment : NavigationBaseFragment() {
 
     companion object {
         private val LOG_TAG = HomeFragment::class.simpleName!!
-
+        private const val PRODUCT_COUNT_KEY = "productCount"
         fun newInstance() = HomeFragment().apply { arguments = Bundle() }
     }
 }

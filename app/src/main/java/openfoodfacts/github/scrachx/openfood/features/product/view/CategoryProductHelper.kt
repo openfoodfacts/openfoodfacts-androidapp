@@ -57,10 +57,10 @@ class CategoryProductHelper(
 
     private fun getCategoriesTag(category: CategoryName): CharSequence {
         val spannableStringBuilder = SpannableStringBuilder()
-        val clickableSpan: ClickableSpan = object : ClickableSpan() {
+        val clickableSpan = object : ClickableSpan() {
             override fun onClick(view: View) {
                 if (category.isWikiDataIdPresent == true) {
-                    apiClient.doSomeThing(category.wikiDataId).subscribe { result ->
+                    apiClient.doSomeThing(category.wikiDataId!!).subscribe { result ->
                         if (result != null) {
                             val activity = fragment.activity
                             if (activity != null && !activity.isFinishing) {

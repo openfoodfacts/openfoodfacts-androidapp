@@ -1,7 +1,8 @@
-package openfoodfacts.github.scrachx.openfood.utils
+package openfoodfacts.github.scrachx.openfood.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import openfoodfacts.github.scrachx.openfood.utils.SearchType
 import org.jetbrains.annotations.Contract
 
 /**

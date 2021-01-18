@@ -30,12 +30,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
+import androidx.core.widget.doAfterTextChanged
 import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Callback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding
+import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
@@ -55,7 +57,7 @@ import java.util.*
  * @see R.layout.fragment_add_product_nutrition_facts
  */
 class ProductEditNutritionFactsFragment : ProductEditFragment() {
-    private val keyListener: NumberKeyListener = object : NumberKeyListener() {
+    private val keyListener = object : NumberKeyListener() {
         override fun getInputType() = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
 
         override fun getAcceptedChars() = charArrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.')
@@ -90,27 +92,20 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         binding.btnAdd.setOnClickListener { next() }
         binding.for100g100ml.setOnClickListener { checkAllValues() }
         binding.btnAddANutrient.setOnClickListener { displayAddNutrientDialog() }
-        binding.salt.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) = updateSodiumValue()
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
-        })
+
+        binding.salt.doAfterTextChanged { updateSodiumValue() }
         binding.spinnerSaltComp.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) = updateSodiumMod()
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
         }
-        binding.sodium.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) = updateSaltValue()
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
-        })
+        binding.sodium.doAfterTextChanged { updateSaltValue() }
+
         binding.spinnerSodiumComp.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) = updateSaltMod()
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit // This is not possible
         }
-        binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked ->
-            onCheckedChanged(isChecked)
-        }
+        binding.checkboxNoNutritionData.setOnCheckedChangeListener { _, isChecked -> toggleNoNutritionData(isChecked) }
+
         photoReceiverHandler = PhotoReceiverHandler { newPhotoFile ->
             val resultUri = newPhotoFile.toURI()
             imagePath = resultUri.path
@@ -482,12 +477,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
     }
 
-    private fun onCheckedChanged(isChecked: Boolean) {
-        if (isChecked) {
-            binding.nutritionFactsLayout.visibility = View.GONE
-        } else {
-            binding.nutritionFactsLayout.visibility = View.VISIBLE
-        }
+    private fun toggleNoNutritionData(isChecked: Boolean) {
+        binding.nutritionFactsLayout.visibility = if (isChecked) View.GONE else View.VISIBLE
     }
 
     /**
@@ -783,7 +774,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private fun CustomValidatingEditTextView.checkPh(value: Float): ValueState {
         if (Nutriments.PH == entryName) {
             val maxPhValue = 14.0
-            if (value > maxPhValue || value >= maxPhValue && isModifierEqualsToGreaterThan(this)) {
+            if (value > maxPhValue || value >= maxPhValue && this.isModifierEqualsToGreaterThan()) {
                 setText(maxPhValue.toString())
             }
             return ValueState.VALID

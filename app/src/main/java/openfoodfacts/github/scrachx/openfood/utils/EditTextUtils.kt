@@ -2,6 +2,7 @@ package openfoodfacts.github.scrachx.openfood.utils
 
 import android.widget.EditText
 import com.hootsuite.nachos.NachoTextView
+import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.models.Nutriments
 
 fun EditText?.getContent() = this?.text?.toString()

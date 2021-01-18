@@ -46,15 +46,15 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
 
         // if identifier != "showEcoScorePrompt" , set values to button Tip Box
         // else. set value to icon tip box
-        if(identifier!= "showEcoScorePrompt"){
-            binding.tipBoxIcon.visibility= View.GONE
+        if (identifier != "showEcoScorePrompt") {
+            binding.tipBoxIcon.visibility = View.GONE
             binding.tipMessageButton.setTextColor(toolTipTextColor)
             binding.tipMessageButton.text = context.getString(R.string.tip_message, message)
             binding.tipBoxContainer.setBackgroundColor(toolTipBackgroundColor)
 
             binding.arrow.setColorFilter(toolTipBackgroundColor)
             setArrowAlignment(arrowAlignment, marginStart, marginEnd)
-        } else{
+        } else {
             binding.tipBoxButton.visibility = View.GONE
             binding.tipMessageIcon.setTextColor(toolTipTextColor)
             binding.tipMessageIcon.text = message
@@ -97,10 +97,10 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
     }
 
     fun setArrowAlignment(arrowAlignment: Int, marginStart: Int, marginEnd: Int) {
-        var alignment = arrowAlignment
-        if (alignment != Gravity.START && alignment != Gravity.CENTER_HORIZONTAL && alignment != Gravity.END) {
-            alignment = Gravity.START
-        }
+        val alignment = if (arrowAlignment != Gravity.START
+                && arrowAlignment != Gravity.CENTER_HORIZONTAL
+                && arrowAlignment != Gravity.END) Gravity.START
+        else arrowAlignment
         binding.arrow.layoutParams = (binding.arrow.layoutParams as LayoutParams).apply {
             setMargins(marginStart, 0, marginEnd, 0)
             gravity = alignment
@@ -116,7 +116,7 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
         // Older versions of android (pre API 21) cancel animations for views with a height of 0.
         layoutParams.height = 1
         visibility = VISIBLE
-        val anim: Animation = object : Animation() {
+        val anim = object : Animation() {
             override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
                 if (interpolatedTime == 1f) {
                     layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
@@ -127,10 +127,11 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
             }
 
             override fun willChangeBounds() = true
+        }.apply {
+            // Expansion speed of 1dp/ms
+            duration = (targetHeight / context.resources.displayMetrics.density).roundToLong()
         }
 
-        // Expansion speed of 1dp/ms
-        anim.duration = (targetHeight / context.resources.displayMetrics.density).roundToLong()
         startAnimation(anim)
     }
 
@@ -148,10 +149,11 @@ class TipBox(context: Context, attrs: AttributeSet?) : LinearLayout(context, att
             }
 
             override fun willChangeBounds() = true
+        }.apply {
+            // Collapse speed of 1dp/ms
+            duration = (initialHeight / context.resources.displayMetrics.density).roundToLong()
         }
 
-        // Collapse speed of 1dp/ms
-        anim.duration = (initialHeight / context.resources.displayMetrics.density).roundToLong()
         startAnimation(anim)
     }
 

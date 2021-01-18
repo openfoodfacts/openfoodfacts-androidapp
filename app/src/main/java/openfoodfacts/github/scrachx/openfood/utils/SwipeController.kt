@@ -18,7 +18,7 @@ import openfoodfacts.github.scrachx.openfood.R
  */
 class SwipeController(
         context: Context,
-        private val swipeController: SwipeControllerActions
+        private val swipeController: Actions
 ) : ItemTouchHelper.Callback() {
     private val backgroundColor: Int = ResourcesCompat.getColor(context.resources, R.color.material_red, context.theme)
     private val deleteDrawable: Drawable = ContextCompat.getDrawable(context, R.drawable.ic_delete_white_24dp)!!
@@ -78,4 +78,12 @@ class SwipeController(
     }
 
     override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder) = 0.7f
+
+
+    /**
+     * Created by Mehrosh.Mehboob on 20-Feb-18.
+     */
+    fun interface Actions {
+        fun onRightClicked(position: Int)
+    }
 }

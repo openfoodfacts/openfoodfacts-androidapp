@@ -36,6 +36,16 @@ class CustomTabActivityHelper : ServiceConnectionCallback {
      */
     var connectionCallback: ConnectionCallback? = null
 
+    fun setConnectionCallback(
+            onConnected: () -> Unit = {},
+            onDisconnected: () -> Unit = {}
+    ) {
+        connectionCallback = object : ConnectionCallback {
+            override fun onCustomTabsConnected() = onConnected()
+            override fun onCustomTabsDisconnected() = onDisconnected()
+        }
+    }
+
 
     /**
      * Unbinds the Activity from the Custom Tabs Service.
@@ -43,9 +53,7 @@ class CustomTabActivityHelper : ServiceConnectionCallback {
      * @param activity the activity that is connected to the service.
      */
     fun unbindCustomTabsService(activity: Activity) {
-        if (mConnection == null) {
-            return
-        }
+        if (mConnection == null) return
         activity.unbindService(mConnection!!)
         mClient = null
         mCustomTabsSession = null

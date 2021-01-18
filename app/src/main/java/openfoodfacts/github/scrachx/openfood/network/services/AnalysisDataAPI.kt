@@ -74,24 +74,27 @@ interface AnalysisDataAPI {
     @GET(ANALYSIS_TAG_CONFIG_JSON)
     fun getAnalysisTagConfigs(): Single<AnalysisTagConfigsWrapper>
 
+
     companion object {
-        const val LABELS_JSON = "data/taxonomies/labels.json"
-        const val COUNTRIES_JSON = "data/taxonomies/countries.json"
-        const val CATEGORIES_JSON = "data/taxonomies/categories.json"
-        const val ADDITIVES_JSON = "data/taxonomies/additives.json"
-        const val INGREDIENTS_JSON = "data/taxonomies/ingredients.json"
-        const val ALLERGENS_JSON = "data/taxonomies/allergens.json"
-        const val ANALYSIS_TAG_JSON = "data/taxonomies/ingredients_analysis.json"
-        const val ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json"
-        const val TAGS_JSON = "data/taxonomies/packager-codes.json"
+        private const val PREFIX = "data/taxonomies"
+        const val LABELS_JSON = "$PREFIX/labels.json"
+        const val COUNTRIES_JSON = "$PREFIX/countries.json"
+        const val CATEGORIES_JSON = "$PREFIX/categories.json"
+        const val ADDITIVES_JSON = "$PREFIX/additives.json"
+        const val INGREDIENTS_JSON = "$PREFIX/ingredients.json"
+        const val ALLERGENS_JSON = "$PREFIX/allergens.json"
+        const val ANALYSIS_TAG_JSON = "$PREFIX/ingredients_analysis.json"
+        const val TAGS_JSON = "$PREFIX/packager-codes.json"
+        const val VITAMINS_JSON = "$PREFIX/vitamins.json"
+        const val ADDITIVES_CLASSES_JSON = "$PREFIX/additives_classes.json"
+        const val NUCLEOTIDES_JSON = "$PREFIX/nucleotides.json"
+        const val NUTRIENT_LEVELS_JSON = "$PREFIX/nutrient_levels.json"
+        const val LANGUAGES_JSON = "$PREFIX/languages.json"
+        const val STATES_JSON = "$PREFIX/states.json"
+        const val MINERALS_JSON = "$PREFIX/minerals.json"
+        const val NUTRIENTS_JSON = "$PREFIX/nutrients.json"
+
         const val INVALID_BARCODES_JSON = "data/invalid-barcodes.json"
-        const val VITAMINS_JSON = "data/taxonomies/vitamins.json"
-        const val ADDITIVES_CLASSES_JSON = "data/taxonomies/additives_classes.json"
-        const val NUCLEOTIDES_JSON = "data/taxonomies/nucleotides.json"
-        const val NUTRIENT_LEVELS_JSON = "data/taxonomies/nutrient_levels.json"
-        const val LANGUAGES_JSON = "data/taxonomies/languages.json"
-        const val STATES_JSON = "data/taxonomies/states.json"
-        const val MINERALS_JSON = "data/taxonomies/minerals.json"
-        const val NUTRIENTS_JSON = "data/taxonomies/nutrients.json"
+        const val ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json"
     }
 }

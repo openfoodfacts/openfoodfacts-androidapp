@@ -399,7 +399,7 @@ class ProductEditActivity : AppCompatActivity() {
                         val alreadySent = error == "This picture has already been sent."
                         if (alreadySent && performOCR) {
                             hideImageProgress(position, false, getString(R.string.image_uploaded_successfully))
-                            performOCR(image.barcode, "ingredients_${getProductLanguageForEdition()}")
+                            performOCR(image.barcode!!, "ingredients_${getProductLanguageForEdition()}")
                         } else {
                             hideImageProgress(position, true, error)
                         }
@@ -446,12 +446,12 @@ class ProductEditActivity : AppCompatActivity() {
                 .subscribe { jsonNode ->
                     val status = jsonNode["status"].asText()
                     if (performOCR && status == "status ok") {
-                        performOCR(image.barcode, imageField)
+                        performOCR(image.barcode!!, imageField)
                     }
                 }.addTo(disp)
     }
 
-    fun performOCR(code: String?, imageField: String?) {
+    fun performOCR(code: String, imageField: String) {
         productsApi.performOCR(code, imageField)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { ingredientsFragment.showOCRProgress() }

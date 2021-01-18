@@ -15,8 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.shared.layouts
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
@@ -25,6 +23,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.LinearLayout
+import androidx.core.animation.addListener
 import androidx.recyclerview.widget.RecyclerView
 import openfoodfacts.github.scrachx.openfood.R
 
@@ -111,19 +110,16 @@ class FastScroller : LinearLayout {
             val shrinkerY = ObjectAnimator.ofFloat(handle, SCALE_Y, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION)
             val alpha = ObjectAnimator.ofFloat(handle, ALPHA, 1f, 0f).setDuration(HANDLE_ANIMATION_DURATION)
             it.playTogether(shrinkerX, shrinkerY, alpha)
-            it.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    super.onAnimationEnd(animation)
-                    handle.visibility = INVISIBLE
-                    currentAnimator = null
-                }
-
-                override fun onAnimationCancel(animation: Animator) {
-                    super.onAnimationCancel(animation)
-                    handle.visibility = INVISIBLE
-                    currentAnimator = null
-                }
-            })
+            it.addListener(
+                    onEnd = {
+                        handle.visibility = INVISIBLE
+                        currentAnimator = null
+                    },
+                    onCancel = {
+                        handle.visibility = INVISIBLE
+                        currentAnimator = null
+                    }
+            )
             it.start()
         }
     }

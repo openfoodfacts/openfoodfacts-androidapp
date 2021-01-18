@@ -58,7 +58,7 @@
             tools:text="tagline goes here..." />
 
         <TextView
-            android:id="@+id/text_loading"
+            android:id="@+id/loading_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
@@ -75,7 +75,7 @@
             android:indeterminate="true"
             app:layout_constraintEnd_toEndOf="@id/logo"
             app:layout_constraintStart_toStartOf="@id/logo"
-            app:layout_constraintTop_toBottomOf="@id/text_loading" />
+            app:layout_constraintTop_toBottomOf="@id/loading_txt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

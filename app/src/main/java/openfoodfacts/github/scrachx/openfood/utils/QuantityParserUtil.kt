@@ -3,10 +3,11 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.util.Log
 import android.widget.Spinner
 import android.widget.TextView
+import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 
-fun isModifierEqualsToGreaterThan(view: CustomValidatingEditTextView) = isModifierEqualsToGreaterThan(view.modSpinner!!)
+fun CustomValidatingEditTextView.isModifierEqualsToGreaterThan() = modSpinner!!.isModifierEqualsToGreaterThan()
 
-fun isModifierEqualsToGreaterThan(text: Spinner) = GREATER_THAN == MODIFIERS[text.selectedItemPosition]
+fun Spinner.isModifierEqualsToGreaterThan() = GREATER_THAN == MODIFIERS[selectedItemPosition]
 
 fun TextView.isBlank() = text.toString().isBlank()
 
@@ -20,8 +21,6 @@ fun TextView.isNotBlank() = !isBlank()
  */
 fun getFloatValue(initText: String?) = getDoubleValue(initText)?.toFloat()
 
-fun containFloatValue(text: String?) = getFloatValue(text) != null
-
 /**
  * @return the float value or null if not correct
  * @see .getFloatValue
@@ -32,8 +31,6 @@ fun TextView.getFloatValue(): Float? {
 }
 
 fun TextView.getFloatValueOr(defaultValue: Float) = getFloatValue() ?: defaultValue
-
-fun TextView.containFloatValue() = containFloatValue(text?.toString())
 
 /**
  * Retrieve the float value from strings like "> 1.03"
@@ -48,9 +45,6 @@ else try {
     Log.w("Utils", "Can't parse text '$initText'")
     null
 }
-
-fun containDoubleValue(text: String?) = getDoubleValue(text) != null
-
 /**
  * @return the float value or null if not correct
  * @see [getFloatValue]

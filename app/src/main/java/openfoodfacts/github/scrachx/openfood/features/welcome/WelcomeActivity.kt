@@ -51,14 +51,20 @@ class WelcomeActivity : AppCompatActivity() {
     private var _binding: ActivityWelcomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var layouts: IntArray
+    private val layouts = intArrayOf(
+            R.layout.welcome_slide1,
+            R.layout.welcome_slide2,
+            R.layout.welcome_slide3,
+            R.layout.welcome_slide4
+    )
     private lateinit var prefManager: PrefManager
     private var lastPage = false
 
     private val viewPagerPageChangeListener = object : OnPageChangeListener {
+        private var currentState = 0
         override fun onPageSelected(position: Int) {
-            addBottomDots(position)
-            if (position == layouts.size - 1) {
+            refreshBottomDots(position)
+            if (position == layouts.lastIndex) {
                 binding.btnNext.text = getString(R.string.start)
                 binding.btnSkip.visibility = View.GONE
                 lastPage = true
@@ -89,7 +95,7 @@ class WelcomeActivity : AppCompatActivity() {
             currentState = state
         }
     }
-    private var currentState = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
@@ -107,14 +113,7 @@ class WelcomeActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, binding.root).hide(WindowInsetsCompat.Type.statusBars())
 
-        layouts = intArrayOf(
-                R.layout.welcome_slide1,
-                R.layout.welcome_slide2,
-                R.layout.welcome_slide3,
-                R.layout.welcome_slide4
-        )
-
-        addBottomDots(0)
+        refreshBottomDots(0)
         changeStatusBarColor()
 
         binding.viewPager.adapter = WelcomePageAdapter(layoutInflater, layouts)
@@ -135,7 +134,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    private fun addBottomDots(currentPage: Int) {
+    private fun refreshBottomDots(currentPage: Int) {
         val colorsActive = resources.getIntArray(R.array.array_dot_active)
         val colorsInactive = resources.getIntArray(R.array.array_dot_inactive)
 
@@ -148,9 +147,8 @@ class WelcomeActivity : AppCompatActivity() {
                 binding.layoutDots.addView(this)
             }
         }
-        if (dots.isNotEmpty()) {
             dots[currentPage].setTextColor(colorsActive[currentPage])
-        }
+
     }
 
     private fun launchHomeScreen() {
@@ -172,7 +170,6 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     companion object {
-        @JvmStatic
         fun start(context: Context) {
             val starter = Intent(context, WelcomeActivity::class.java)
             context.startActivity(starter)

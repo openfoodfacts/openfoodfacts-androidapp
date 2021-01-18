@@ -87,7 +87,7 @@
             tools:text="Ferrero" />
 
 
-        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
             android:id="@+id/barcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
             tools:text="123456789" />
 
 
-        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
             android:id="@+id/lastScan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

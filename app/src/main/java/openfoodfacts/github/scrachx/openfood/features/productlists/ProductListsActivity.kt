@@ -50,7 +50,6 @@ import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
-import openfoodfacts.github.scrachx.openfood.utils.SwipeControllerActions
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVParser
@@ -58,7 +57,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 import java.util.*
 
-class ProductListsActivity : BaseActivity(), SwipeControllerActions {
+class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityProductListsBinding? = null
     private val binding get() = _binding!!
 

@@ -2,8 +2,7 @@ package openfoodfacts.github.scrachx.openfood.features.splash
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.view.View
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import openfoodfacts.github.scrachx.openfood.R
@@ -22,13 +21,13 @@ class SplashActivity : BaseActivity(), ISplashActivity.View {
         var i = 0
         override fun run() {
             while (!isFinishing) {
-                binding.tagline.text = tagLines[i++.rem(tagLines.size)]
+                binding.tagline.text = tagLines[i++ % tagLines.size]
                 binding.tagline.postDelayed(this, 1500)
             }
         }
     }
 
-    private val controller: SplashController by lazy {
+    private val controller by lazy {
         SplashController(getSharedPreferences("prefs", 0), this, this)
     }
 
@@ -39,8 +38,8 @@ class SplashActivity : BaseActivity(), ISplashActivity.View {
         if (resources.getBoolean(R.bool.portrait_only)) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
-        val taglines = resources.getStringArray(R.array.taglines_array)
 
+        val taglines = resources.getStringArray(R.array.taglines_array)
         binding.tagline.post(getTagLineRunnable(taglines))
 
         controller.refreshData()
@@ -61,10 +60,16 @@ class SplashActivity : BaseActivity(), ISplashActivity.View {
         finish()
     }
 
-    override fun showLoading() = Unit
+    override fun showLoading() {
+        runOnUiThread {
+            binding.loading = View.VISIBLE
+        }
+    }
+
     override fun hideLoading(isError: Boolean) {
-        if (isError) {
-            Handler(Looper.getMainLooper()).post {
+        runOnUiThread {
+            binding.loading = View.GONE
+            if (isError) {
                 Snackbar.make(binding.root, R.string.errorWeb, BaseTransientBottomBar.LENGTH_LONG).show()
             }
         }
