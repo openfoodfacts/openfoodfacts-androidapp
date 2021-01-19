@@ -336,6 +336,21 @@
                             tools:src="@drawable/ic_ecoscore_a" />
                     </LinearLayout>
 
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/list_chips"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_small"
+                        app:chipSpacingHorizontal="4dp"
+                        app:chipSpacingVertical="4dp"
+                        app:layout_constraintEnd_toStartOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"/>
+
+
                     <Button
                         android:id="@+id/add_nutriscore_prompt"
                         style="@style/ButtonBorder"
@@ -348,7 +363,7 @@
                         app:drawableStartCompat="@drawable/ic_add_box_blue_18dp"
                         app:layout_constraintEnd_toStartOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"
+                        app:layout_constraintTop_toBottomOf="@+id/list_chips"
                         tools:text="@string/add_nutrition_facts_for_nutriscore"
                         tools:visibility="visible" />
 
@@ -356,6 +371,7 @@
                         android:id="@+id/tipBoxEcoScore"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
                         app:identifier="showEcoScorePrompt"
                         app:backgroundColor="@color/md_light_green_500"
                         app:textColor="@color/white"

@@ -18,6 +18,8 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.summary
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -34,6 +36,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -57,6 +60,9 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.view.CategoryProductHelper
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_ID
+import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_NAME
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity.Companion.getProductListsDaoWithDefaultList
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
@@ -64,6 +70,8 @@ import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
+import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenHelper
 import openfoodfacts.github.scrachx.openfood.models.entities.allergen.AllergenName
@@ -75,6 +83,7 @@ import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import java.io.File
+import kotlin.random.Random
 
 class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     private var _binding: FragmentSummaryProductBinding? = null
@@ -254,6 +263,9 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.embIcon.visibility = View.VISIBLE
         binding.labelsText.visibility = View.VISIBLE
         binding.labelsIcon.visibility = View.VISIBLE
+
+        // Checks if the product belongs in any of the user's list and dislays them as chips if it does
+        showListChips()
 
         // Checks the product states_tags to determine which prompt to be shown
         refreshStatesTagsPrompt()
@@ -460,6 +472,44 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
         }
+    }
+
+    private fun showListChips() {
+
+        // remove the existing childviews on chip group if any
+        binding.listChips.removeAllViews()
+
+        val listDao: YourListedProductDao = OFFApplication.daoSession.yourListedProductDao
+
+        //Query to check if the product belons in any of thr user's list
+        val queryResult : List<YourListedProduct> = listDao.queryBuilder()
+                .where(YourListedProductDao.Properties.Barcode.eq(product.code)).list()
+
+        if (queryResult.isNullOrEmpty()) {
+            binding.listChips.visibility = View.GONE
+            return
+        }
+
+        binding.listChips.visibility = View.VISIBLE
+        queryResult.forEach{ list->
+            val chip = Chip(context)
+            chip.text = list.listName
+
+            // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
+            val chipColor: Int = Color.rgb(Random.nextInt(180),Random.nextInt(180),Random.nextInt(180) )
+            chip.chipBackgroundColor = ColorStateList.valueOf(chipColor)
+            chip.setTextColor(Color.WHITE)
+
+            // open list when the user clicks on chip
+            chip.setOnClickListener {
+                activity?.startActivity(Intent(activity, ProductListActivity::class.java).apply {
+                    putExtra(KEY_LIST_ID, list.listId)
+                    putExtra(KEY_LIST_NAME, list.listName)
+                })
+            }
+            binding.listChips.addView(chip)
+        }
+
     }
 
     private fun refreshStatesTagsPrompt() {
