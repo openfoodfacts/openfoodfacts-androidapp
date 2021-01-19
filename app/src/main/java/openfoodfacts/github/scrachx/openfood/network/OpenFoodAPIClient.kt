@@ -152,7 +152,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                                     .onNegative { _, _ -> activity.onBackPressed() }
                                     .show()
                         } else {
-                            addToHistory(state.product!!).blockingAwait()
+                            addToHistory(state.product!!).subscribe()
                             startProductViewActivity(activity, state)
                         }
                     }
@@ -221,7 +221,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = Completable.fromAction { addToHistorySync(daoSession.historyProductDao, product) }
+    fun addToHistory(product: Product) = Completable.fromAction { daoSession.historyProductDao.addToHistorySync(product) }
 
     fun getProductsByContributor(contributor: String, page: Int) =
             rawAPI.getProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
@@ -347,7 +347,9 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                                     product.getImageSmallUrl(getLanguage(context)),
                                     product.code,
                                     product.quantity,
-                                    product.nutritionGradeFr
+                                    product.nutritionGradeFr,
+                                    product.ecoscore,
+                                    product.novaGroups
                             )
                             Log.d("syncOldHistory", hp.toString())
                             hp.lastSeen = historyProduct.lastSeen
@@ -422,12 +424,9 @@ class OpenFoodAPIClient @JvmOverloads constructor(
 
         /**
          * Add a product to ScanHistory synchronously
-         *
-         * @param mHistoryProductDao
-         * @param product
          */
-        fun addToHistorySync(mHistoryProductDao: HistoryProductDao, product: Product) {
-            val historyProducts = mHistoryProductDao.queryBuilder()
+        fun HistoryProductDao.addToHistorySync(product: Product) {
+            val historyProducts = queryBuilder()
                     .where(HistoryProductDao.Properties.Barcode.eq(product.code))
                     .list()
             val hp = HistoryProduct(
@@ -436,26 +435,29 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     product.getImageSmallUrl(getLanguage(OFFApplication.instance)),
                     product.code,
                     product.quantity,
-                    product.nutritionGradeFr
+                    product.nutritionGradeFr,
+                    product.ecoscore,
+                    product.novaGroups
             )
             if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
-            mHistoryProductDao.insertOrReplace(hp)
+            insertOrReplace(hp)
         }
 
-        @JvmStatic
-        fun addToHistorySync(mHistoryProductDao: HistoryProductDao, offlineSavedProduct: OfflineSavedProduct) {
-            val historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(offlineSavedProduct.barcode)).list()
-            val productDetails = offlineSavedProduct.productDetailsMap
+        fun HistoryProductDao.addToHistorySync(product: OfflineSavedProduct) {
+            val historyProducts = queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.barcode)).list()
+            val productDetails = product.productDetailsMap
             val hp = HistoryProduct(
-                    offlineSavedProduct.name,
-                    productDetails[ApiFields.Keys.ADD_BRANDS],
-                    offlineSavedProduct.imageFrontLocalUrl,
-                    offlineSavedProduct.barcode,
-                    productDetails[ApiFields.Keys.QUANTITY],
+                    product.name,
+                    productDetails?.get(ApiFields.Keys.ADD_BRANDS),
+                    product.imageFrontLocalUrl,
+                    product.barcode,
+                    productDetails?.get(ApiFields.Keys.QUANTITY),
                     null,
+                    null,
+                    null
             )
             if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
-            mHistoryProductDao.insertOrReplace(hp)
+            insertOrReplace(hp)
         }
 
         /**

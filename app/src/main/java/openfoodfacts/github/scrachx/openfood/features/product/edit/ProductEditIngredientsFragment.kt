@@ -17,7 +17,6 @@ package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,7 +66,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private var code: String? = null
     private val allergens: MutableList<String> = ArrayList()
     private var mOfflineSavedProduct: OfflineSavedProduct? = null
-    private var productDetails: HashMap<String, String?>? = hashMapOf()
+    private var productDetails = mutableMapOf<String, String?>()
     private var imagePath: String? = null
     private var product: Product? = null
     private var newImageSelected = false
@@ -151,7 +150,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         }
     }
 
-    private fun getImageIngredients() = productDetails!![ApiFields.Keys.IMAGE_INGREDIENTS]
+    private fun getImageIngredients() = productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]
 
     private fun getAddProductActivity() = activity as ProductEditActivity?
 
@@ -241,32 +240,31 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
     private fun preFillValuesForOffline() {
-        productDetails = mOfflineSavedProduct!!.productDetailsMap
-        if (productDetails != null) {
-            if (getImageIngredients() != null) {
-                binding.imageProgress.visibility = View.VISIBLE
-                picassoBuilder(requireContext())
-                        .load(LOCALE_FILE_SCHEME + getImageIngredients())
-                        .resize(dps50ToPixels, dps50ToPixels)
-                        .centerInside()
-                        .into(binding.btnAddImageIngredients, object : Callback {
-                            override fun onSuccess() {
-                                binding.imageProgress.visibility = View.GONE
-                            }
+        mOfflineSavedProduct!!.productDetailsMap?.toMutableMap()?.let { productDetails = it }
+        if (getImageIngredients() != null) {
+            binding.imageProgress.visibility = View.VISIBLE
+            picassoBuilder(requireContext())
+                    .load(LOCALE_FILE_SCHEME + getImageIngredients())
+                    .resize(dps50ToPixels, dps50ToPixels)
+                    .centerInside()
+                    .into(binding.btnAddImageIngredients, object : Callback {
+                        override fun onSuccess() {
+                            binding.imageProgress.visibility = View.GONE
+                        }
 
-                            override fun onError(ex: Exception) {
-                                binding.imageProgress.visibility = View.GONE
-                            }
-                        })
-            }
-            val ingredientsText = mOfflineSavedProduct!!.ingredients
-            if (!TextUtils.isEmpty(ingredientsText)) {
-                binding.ingredientsList.setText(ingredientsText)
-            }
-            if (productDetails!![ApiFields.Keys.ADD_TRACES] != null) {
-                val chipValues = productDetails!![ApiFields.Keys.ADD_TRACES]!!.split(Regex("\\s*,\\s*"))
-                binding.traces.setText(chipValues)
-            }
+                        override fun onError(ex: Exception) {
+                            binding.imageProgress.visibility = View.GONE
+                        }
+                    })
+        }
+        mOfflineSavedProduct!!.ingredients.let {
+            if (!it.isNullOrEmpty()) binding.ingredientsList.setText(it)
+        }
+
+
+        productDetails[ApiFields.Keys.ADD_TRACES]?.let {
+            val chipValues = it.split(Regex("\\s*,\\s*"))
+            binding.traces.setText(chipValues)
         }
     }
 

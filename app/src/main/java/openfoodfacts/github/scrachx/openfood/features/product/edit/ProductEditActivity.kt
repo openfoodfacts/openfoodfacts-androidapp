@@ -196,12 +196,12 @@ class ProductEditActivity : AppCompatActivity() {
             fragmentsBundle.putSerializable(KEY_EDIT_OFFLINE_PRODUCT, offlineSavedProduct)
             // Save the already existing images in productDetails for UI
             imagesFilePath[0] = offlineSavedProduct.imageFront
-            imagesFilePath[1] = offlineSavedProduct.productDetailsMap[ApiFields.Keys.IMAGE_INGREDIENTS]
-            imagesFilePath[2] = offlineSavedProduct.productDetailsMap[ApiFields.Keys.IMAGE_NUTRITION]
+            imagesFilePath[1] = offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_INGREDIENTS)
+            imagesFilePath[2] = offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_NUTRITION)
             // get the status of images from productDetailsMap, whether uploaded or not
-            imageFrontUploaded = "true" == offlineSavedProduct.productDetailsMap[ApiFields.Keys.IMAGE_FRONT_UPLOADED]
-            imageIngredientsUploaded = "true" == offlineSavedProduct.productDetailsMap[ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED]
-            imageNutritionFactsUploaded = "true" == offlineSavedProduct.productDetailsMap[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED]
+            imageFrontUploaded = "true" == offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_FRONT_UPLOADED)
+            imageIngredientsUploaded = "true" == offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED)
+            imageNutritionFactsUploaded = "true" == offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED)
         }
         if (productState == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show()
@@ -294,12 +294,12 @@ class ProductEditActivity : AppCompatActivity() {
         }
         val toSaveOfflineProduct = OfflineSavedProduct().apply {
             this.barcode = this@ProductEditActivity.productDetails["code"]
-            this.setProductDetailsMap(this@ProductEditActivity.productDetails)
+            this.productDetailsMap = this@ProductEditActivity.productDetails
         }
         daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOfflineProduct)
 
         scheduleSync()
-        addToHistorySync(daoSession.historyProductDao, toSaveOfflineProduct)
+        daoSession.historyProductDao.addToHistorySync(toSaveOfflineProduct)
 
         Toast.makeText(this, R.string.productSavedToast, Toast.LENGTH_SHORT).show()
         hideKeyboard(this)

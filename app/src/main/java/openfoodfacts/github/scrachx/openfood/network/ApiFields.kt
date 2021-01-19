@@ -166,14 +166,10 @@ object ApiFields {
 
         @JvmStatic
         @Contract(pure = true)
-        fun lcProductNameKey(lang: String): String {
-            return Prefix.PRODUCT_NAME + lang
-        }
+        fun lcProductNameKey(lang: String) = "${Prefix.PRODUCT_NAME}$lang"
 
         @JvmStatic
         @Contract(pure = true)
-        fun lcIngredientsKey(lang: String): String {
-            return Prefix.INGREDIENTS_TEXT + lang
-        }
+        fun lcIngredientsKey(lang: String) = "${Prefix.INGREDIENTS_TEXT}$lang"
     }
 }

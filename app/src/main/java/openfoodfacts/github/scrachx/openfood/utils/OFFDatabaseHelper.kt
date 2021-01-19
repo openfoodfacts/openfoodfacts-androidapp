@@ -103,16 +103,16 @@ class OFFDatabaseHelper @JvmOverloads constructor(
                 OfflineSavedProductDao.createTable(db, true)
             }
             9 -> {
-                arrayOf("additive_name", "additive").forEach { table ->
-                    arrayOf("overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
+                listOf("additive_name", "additive").forEach { table ->
+                    listOf("overexposure_risk", "exposure_mean_greater_than_adi", "exposure_mean_greater_than_noael",
                             "exposure95_th_greater_than_adi", "exposure95_th_greater_than_noael")
                             .filterNot { isFieldExist(db, table, it) }
                             .forEach { db.execSQL("ALTER TABLE $table ADD COLUMN '$it' TEXT;") }
                 }
             }
             10 -> {
-                arrayOf("allergen_name", "allergen").forEach { table ->
-                    arrayOf("WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT")
+                listOf("allergen_name", "allergen").forEach { table ->
+                    listOf("WIKI_DATA_ID", "IS_WIKI_DATA_ID_PRESENT")
                             .filterNot { isFieldExist(db, table, it) }
                             .forEach { column ->
                                 db.execSQL("ALTER TABLE $table ADD COLUMN '$column' TEXT NOT NULL DEFAULT '';")
@@ -134,12 +134,16 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             16 -> InvalidBarcodeDao.createTable(db, true)
             17 -> db.execSQL("ALTER TABLE OFFLINE_SAVED_PRODUCT ADD COLUMN 'IS_DATA_UPLOADED' BOOLEAN NOT NULL DEFAULT FALSE;")
             18 -> {
-                db.execSQL("ALTER TABLE COUNTRY ADD COLUMN 'CC2' TEXT")
-                db.execSQL("ALTER TABLE COUNTRY ADD COLUMN 'CC3' TEXT")
+                db.execSQL("ALTER TABLE COUNTRY ADD COLUMN 'CC2' TEXT;")
+                db.execSQL("ALTER TABLE COUNTRY ADD COLUMN 'CC3' TEXT;")
             }
             19 -> {
                 StatesDao.createTable(db, true)
                 StatesNameDao.createTable(db, true)
+            }
+            20 -> {
+                db.execSQL("ALTER TABLE HISTORY_PRODUCT ADD COLUMN 'ECOSCORE' TEXT;")
+                db.execSQL("ALTER TABLE HISTORY_PRODUCT ADD COLUMN 'NOVA_GROUP' TEXT;")
             }
         }
     }

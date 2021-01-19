@@ -22,8 +22,9 @@ fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true
 
 fun Product.getProductBrandsQuantityDetails() = ProductListActivity.getProductBrandsQuantityDetails(brands, quantity)
 
+
 @DrawableRes
-fun Product?.getEcoscoreResource() = when (this?.ecoscore?.toLowerCase(Locale.ROOT)) {
+private fun getResourceFromEcoscore(ecoscore: String?) = when (ecoscore?.toLowerCase(Locale.ROOT)) {
     "a" -> R.drawable.ic_ecoscore_a
     "b" -> R.drawable.ic_ecoscore_b
     "c" -> R.drawable.ic_ecoscore_c
@@ -32,9 +33,15 @@ fun Product?.getEcoscoreResource() = when (this?.ecoscore?.toLowerCase(Locale.RO
     else -> R.drawable.ic_ecoscore_unknown
 }
 
+@DrawableRes
+fun Product?.getEcoscoreResource() = getResourceFromEcoscore(this?.ecoscore)
 
 @DrawableRes
-private fun getResourceFromNutri(
+fun HistoryProduct?.getEcoscoreResource() = getResourceFromEcoscore(this?.ecoscore)
+
+
+@DrawableRes
+private fun getResourceFromNutriScore(
         nutriscore: String?,
         vertical: Boolean,
 ) = when (nutriscore?.toLowerCase(Locale.ROOT)) {
@@ -47,10 +54,10 @@ private fun getResourceFromNutri(
 }
 
 @DrawableRes
-fun Product?.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutri(this?.nutritionGradeFr, vertical)
+fun Product?.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(this?.nutritionGradeFr, vertical)
 
 @DrawableRes
-fun HistoryProduct.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutri(nutritionGrade, vertical)
+fun HistoryProduct.getNutriScoreResource(vertical: Boolean = false) = getResourceFromNutriScore(nutritionGrade, vertical)
 
 fun Product?.getImageGradeDrawable(context: Context, vertical: Boolean = false): Drawable? {
     val gradeID = this.getNutriScoreResource(vertical)
@@ -72,5 +79,8 @@ private fun getResourceFromNova(novaGroup: String?) = when (novaGroup) {
  */
 @DrawableRes
 fun Product?.getNovaGroupResource() = getResourceFromNova(this?.novaGroups)
+
+@DrawableRes
+fun HistoryProduct?.getNovaGroupResource() = getResourceFromNova(this?.novaGroup)
 
 
