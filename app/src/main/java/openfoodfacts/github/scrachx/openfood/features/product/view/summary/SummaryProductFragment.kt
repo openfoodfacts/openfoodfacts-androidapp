@@ -33,6 +33,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
@@ -82,6 +84,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.network.WikiDataApiClient
 import openfoodfacts.github.scrachx.openfood.utils.*
+import org.greenrobot.greendao.async.AsyncOperationListener
 import java.io.File
 import kotlin.random.Random
 
@@ -479,37 +482,38 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         // remove the existing childviews on chip group if any
         binding.listChips.removeAllViews()
 
-        val listDao: YourListedProductDao = OFFApplication.daoSession.yourListedProductDao
+        val asyncSessionList = OFFApplication.daoSession.startAsyncSession()
+        asyncSessionList.queryList(OFFApplication.daoSession.yourListedProductDao.queryBuilder()
+                .where(YourListedProductDao.Properties.Barcode.eq(product.code)).build())
 
-        //Query to check if the product belons in any of thr user's list
-        val queryResult : List<YourListedProduct> = listDao.queryBuilder()
-                .where(YourListedProductDao.Properties.Barcode.eq(product.code)).list()
+        val queryResult= arrayListOf<YourListedProduct>()
+        asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
+            (operation.result as List<YourListedProduct> ).mapTo(queryResult) {it}
 
-        if (queryResult.isNullOrEmpty()) {
-            binding.listChips.visibility = View.GONE
-            return
-        }
+            if (!queryResult.isNullOrEmpty()) {
+                queryResult.forEach{ list->
+                    val chip = Chip(context)
+                    chip.text = list.listName
 
-        binding.listChips.visibility = View.VISIBLE
-        queryResult.forEach{ list->
-            val chip = Chip(context)
-            chip.text = list.listName
+                    // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
+                    val chipColor: Int = Color.rgb(Random.nextInt(180),Random.nextInt(180),Random.nextInt(180) )
+                    chip.chipBackgroundColor = ColorStateList.valueOf(chipColor)
+                    chip.setTextColor(Color.WHITE)
 
-            // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
-            val chipColor: Int = Color.rgb(Random.nextInt(180),Random.nextInt(180),Random.nextInt(180) )
-            chip.chipBackgroundColor = ColorStateList.valueOf(chipColor)
-            chip.setTextColor(Color.WHITE)
-
-            // open list when the user clicks on chip
-            chip.setOnClickListener {
-                activity?.startActivity(Intent(activity, ProductListActivity::class.java).apply {
-                    putExtra(KEY_LIST_ID, list.listId)
-                    putExtra(KEY_LIST_NAME, list.listName)
-                })
+                    // open list when the user clicks on chip
+                    chip.setOnClickListener {
+                        activity?.startActivity(Intent(activity, ProductListActivity::class.java).apply {
+                            putExtra(KEY_LIST_ID, list.listId)
+                            putExtra(KEY_LIST_NAME, list.listName)
+                        })
+                    }
+                    binding.listChips.addView(chip)
+                }
+                binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources,R.color.grey_300,null)
+                binding.actionButtonsLayout.updatePadding(bottom=0,top=0)
+                binding.listChips.visibility = View.VISIBLE
             }
-            binding.listChips.addView(chip)
         }
-
     }
 
     private fun refreshStatesTagsPrompt() {

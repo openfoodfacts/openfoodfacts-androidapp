@@ -151,6 +151,7 @@
                     <LinearLayout
                         android:id="@+id/action_compare_button_layout"
                         style="@style/ActionButtonLayout"
+                        android:padding="@dimen/spacing_tiny"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -174,6 +175,7 @@
                     <LinearLayout
                         android:id="@+id/action_add_to_list_button_layout"
                         style="@style/ActionButtonLayout"
+                        android:padding="@dimen/spacing_tiny"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -196,6 +198,7 @@
                     <LinearLayout
                         android:id="@+id/action_edit_button_layout"
                         style="@style/ActionButtonLayout"
+                        android:padding="@dimen/spacing_tiny"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -219,6 +222,7 @@
                     <LinearLayout
                         android:id="@+id/action_share_button_layout"
                         style="@style/ActionButtonLayout"
+                        android:padding="@dimen/spacing_tiny"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constrainedWidth="true"
@@ -241,6 +245,25 @@
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/list_chips_sv"
+                    android:layout_width="match_parent"
+                    android:background="@color/grey_300"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/list_chips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:paddingStart="@dimen/padding_short"
+                        android:paddingEnd="@dimen/padding_short"
+                        app:singleLine="true" />
+
+                </HorizontalScrollView>
 
                 <LinearLayout
                     android:id="@+id/analysisContainer"
@@ -336,29 +359,6 @@
                             tools:src="@drawable/ic_ecoscore_a" />
                     </LinearLayout>
 
-
-                    <HorizontalScrollView
-                        android:id="@+id/list_chips_sv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scrollbars="none"
-                        app:layout_constraintEnd_toStartOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/grades_wrapper">
-
-                        <com.google.android.material.chip.ChipGroup
-                            android:id="@+id/list_chips"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            tools:visibility="visible"
-                            android:paddingStart="@dimen/padding_short"
-                            android:paddingEnd="@dimen/padding_short"
-                            app:singleLine="true" />
-
-                    </HorizontalScrollView>
-
-
                     <Button
                         android:id="@+id/add_nutriscore_prompt"
                         style="@style/ButtonBorder"
@@ -371,7 +371,7 @@
                         app:drawableStartCompat="@drawable/ic_add_box_blue_18dp"
                         app:layout_constraintEnd_toStartOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/list_chips_sv"
+                        app:layout_constraintTop_toBottomOf="@+id/grades_wrapper"
                         tools:text="@string/add_nutrition_facts_for_nutriscore"
                         tools:visibility="visible" />
 
