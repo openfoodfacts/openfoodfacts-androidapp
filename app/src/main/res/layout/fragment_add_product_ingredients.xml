@@ -25,9 +25,13 @@
                 style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/ingredients_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,33 +40,42 @@
                 style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/take_ingredients_picture_to_extract"
-                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture" />
 
             <ImageView
                 android:id="@+id/btnAddImageIngredients"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="@dimen/spacing_small"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="8dp"
                 android:background="?android:selectableItemBackground"
-                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
                 app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
 
             <Button
                 android:id="@+id/btnEditImageIngredients"
                 style="@style/ButtonBorder"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginLeft="@dimen/padding_large"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/update_image"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/btnAddImageIngredients"
-                app:layout_constraintStart_toEndOf="@id/btnAddImageIngredients"
-                app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients"
-                tools:visibility="visible" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnAddImageIngredients"
+                app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients" />
 
             <ProgressBar
                 android:id="@+id/imageProgress"
@@ -70,20 +83,24 @@
                 android:layout_height="50dp"
                 android:layout_margin="@dimen/spacing_small"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
-                app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
-                tools:visibility="visible" />
+                app:layout_constraintBottom_toBottomOf="@+id/btnAddImageIngredients"
+                app:layout_constraintEnd_toEndOf="@+id/btnAddImageIngredients"
+                app:layout_constraintStart_toStartOf="@+id/btnAddImageIngredients"
+                app:layout_constraintTop_toTopOf="@+id/btnAddImageIngredients" />
 
             <TextView
                 android:id="@+id/imageProgressText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/toastSending"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/imageProgress"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageProgress"
+                app:layout_constraintStart_toEndOf="@+id/btnAddImageIngredients"
                 app:layout_constraintTop_toTopOf="@id/imageProgress"
                 tools:visibility="visible" />
 
@@ -103,9 +120,15 @@
                 style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/ingredients_list"
-                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
             <TextView
@@ -184,13 +207,6 @@
                 app:layout_constraintStart_toStartOf="@id/ocr_progress"
                 app:layout_constraintTop_toBottomOf="@id/ocr_progress" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
             <Button
                 android:id="@+id/btn_looks_good"
                 style="@style/ButtonFlat.Green"
@@ -200,7 +216,7 @@
                 android:text="@string/looksGood"
                 android:textColor="@color/white"
                 android:visibility="gone"
-                app:layout_constraintEnd_toStartOf="@id/guideline"
+                app:layout_constraintEnd_toStartOf="@id/btn_skip_ingredients"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
                 app:layout_constraintTop_toBottomOf="@id/ingredients_list"
                 tools:visibility="visible" />
@@ -215,7 +231,7 @@
                 android:textColor="@color/white"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-                app:layout_constraintStart_toEndOf="@id/guideline"
+                app:layout_constraintStart_toEndOf="@+id/btn_looks_good"
                 app:layout_constraintTop_toBottomOf="@id/ingredients_list"
                 tools:visibility="visible" />
 
@@ -235,9 +251,15 @@
                 style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/traces"
-                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/grey_line2" />
 
             <TextView
@@ -245,9 +267,13 @@
                 style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/traces_hint"
-                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
-                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/section_traces" />
 
             <com.hootsuite.nachos.NachoTextView
@@ -276,6 +302,8 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/next"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/traces" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

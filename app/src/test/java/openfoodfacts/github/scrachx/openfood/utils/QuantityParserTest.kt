@@ -24,12 +24,12 @@ class QuantityParserTest {
     fun testIsGreaterThan() {
         val mockSpinner = mock(Spinner::class.java)
         mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(2)
-        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isTrue()
+        assertThat(mockSpinner.isModifierEqualsToGreaterThan()).isTrue()
 
         mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(1)
-        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isFalse()
+        assertThat(mockSpinner.isModifierEqualsToGreaterThan()).isFalse()
 
         mockitoWhen(mockSpinner.selectedItemPosition).thenReturn(0)
-        assertThat(isModifierEqualsToGreaterThan(mockSpinner)).isFalse()
+        assertThat(mockSpinner.isModifierEqualsToGreaterThan()).isFalse()
     }
 }

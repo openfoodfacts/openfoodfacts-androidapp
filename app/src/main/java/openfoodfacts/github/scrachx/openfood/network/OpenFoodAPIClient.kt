@@ -6,7 +6,6 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.edit
-import com.afollestad.materialdialogs.DialogAction
 import com.afollestad.materialdialogs.MaterialDialog
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -29,9 +28,7 @@ import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
-import openfoodfacts.github.scrachx.openfood.images.IMAGE_STRING_ID
-import openfoodfacts.github.scrachx.openfood.images.ProductImage
-import openfoodfacts.github.scrachx.openfood.images.getImageStringKey
+import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
@@ -79,7 +76,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
 
     fun getProductStateFull(barcode: String, customHeader: String = Utils.HEADER_USER_AGENT_SEARCH): Single<ProductState> {
         AnalyticsService.setBarcode(barcode)
-        return rawAPI.getProductByBarcodeSingle(barcode, getAllFields(), getUserAgent(customHeader))
+        return rawAPI.getProductByBarcode(barcode, getAllFields(), getUserAgent(customHeader))
     }
 
     private fun getAllFields(): String {
@@ -101,7 +98,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     .content(R.string.txtDialogsContent)
                     .positiveText(R.string.txtYes)
                     .negativeText(R.string.txtNo)
-                    .onPositive { _: MaterialDialog?, _: DialogAction? ->
+                    .onPositive { _, _ ->
                         activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
                             putExtra(KEY_STATE, ProductState().apply {
                                 product = Product().apply {
@@ -124,7 +121,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                 *context.resources.getStringArray(R.array.product_images_fields_array),
                 "product_name_${getLanguage(context)}"
         ).joinToString(",")
-        return rawAPI.getProductByBarcodeSingle(
+        return rawAPI.getProductByBarcode(
                 barcode,
                 fields,
                 getUserAgent(Utils.HEADER_USER_AGENT_SEARCH)
@@ -140,7 +137,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      * @param activity
      */
     fun openProduct(barcode: String, activity: Activity): Disposable =
-            rawAPI.getProductByBarcodeSingle(barcode, getAllFields(), getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            rawAPI.getProductByBarcode(barcode, getAllFields(), getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .doOnError {
                         if (it is IOException) {
                             Toast.makeText(activity, R.string.something_went_wrong, Toast.LENGTH_LONG).show()
@@ -155,7 +152,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                                     .onNegative { _, _ -> activity.onBackPressed() }
                                     .show()
                         } else {
-                            addToHistory(state.product!!).blockingAwait()
+                            addToHistory(state.product!!).subscribe()
                             startProductViewActivity(activity, state)
                         }
                     }
@@ -163,8 +160,8 @@ class OpenFoodAPIClient @JvmOverloads constructor(
     fun getIngredients(product: Product) = getIngredients(product.code)
 
 
-    fun searchProductsByName(name: String?, page: Int) =
-            rawAPI.searchProductByName(getFieldsToFetchFacets(), name, page)
+    fun searchProductsByName(name: String, page: Int) =
+            rawAPI.searchProductByName(name, getFieldsToFetchFacets(), page)
 
     /**
      * @param barcode
@@ -181,7 +178,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
         } ?: emptyList()
     }
 
-    fun getProductsByCountry(country: String?, page: Int) =
+    fun getProductsByCountry(country: String, page: Int) =
             rawAPI.getProductsByCountry(country, page, getFieldsToFetchFacets())
 
     /**
@@ -191,7 +188,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      */
     private fun getUploadableMap(image: ProductImage): Map<String, RequestBody?> {
         val lang = image.language
-        val imgMap = hashMapOf("code" to image.code, "imagefield" to image.field)
+        val imgMap = hashMapOf(PRODUCT_BARCODE to image.code, "imagefield" to image.field)
         if (image.imgFront != null) {
             imgMap["""imgupload_front"; filename="front_$lang$PNG_EXT"""] = image.imgFront!!
         }
@@ -215,19 +212,19 @@ class OpenFoodAPIClient @JvmOverloads constructor(
         return imgMap
     }
 
-    fun getProductsByCategory(category: String?, page: Int) =
+    fun getProductsByCategory(category: String, page: Int) =
             rawAPI.getProductByCategory(category, page)
 
-    fun getProductsByLabel(label: String?, page: Int) =
-            rawAPI.getProductByLabel(label, page, getFieldsToFetchFacets())
+    fun getProductsByLabel(label: String, page: Int) =
+            rawAPI.getProductsByLabel(label, page, getFieldsToFetchFacets())
 
     /**
      * Add a product to ScanHistory asynchronously
      */
-    fun addToHistory(product: Product) = Completable.fromAction { addToHistorySync(daoSession.historyProductDao, product) }
+    fun addToHistory(product: Product) = Completable.fromAction { daoSession.historyProductDao.addToHistorySync(product) }
 
-    fun getProductsByContributor(contributor: String?, page: Int) =
-            rawAPI.searchProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
+    fun getProductsByContributor(contributor: String, page: Int) =
+            rawAPI.getProductsByContributor(contributor, page).subscribeOn(Schedulers.io())
 
     /**
      * upload images in offline mode
@@ -266,10 +263,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                 }
     }.flatMapCompletable { Completable.merge(it) }
 
-    fun getProductsByPackaging(packaging: String?, page: Int): Single<Search> =
-            rawAPI.getProductByPackaging(packaging, page, getFieldsToFetchFacets())
+    fun getProductsByPackaging(packaging: String, page: Int): Single<Search> =
+            rawAPI.getProductsByPackaging(packaging, page, getFieldsToFetchFacets())
 
-    fun getProductsByStore(store: String?, page: Int): Single<Search> =
+    fun getProductsByStore(store: String, page: Int): Single<Search> =
             rawAPI.getProductByStores(store, page, getFieldsToFetchFacets())
 
     /**
@@ -278,25 +275,24 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      * @param brand search query for product
      * @param page page numbers
      */
-    fun getProductsByBrand(brand: String?, page: Int): Single<Search> =
-            rawAPI.getProductByBrandsSingle(brand, page, getFieldsToFetchFacets())
+    fun getProductsByBrand(brand: String, page: Int): Single<Search> =
+            rawAPI.getProductByBrands(brand, page, getFieldsToFetchFacets())
 
-    @JvmOverloads
     fun postImg(image: ProductImage, setAsDefault: Boolean = false): Completable {
         return rawAPI.saveImageSingle(getUploadableMap(image))
                 .flatMapCompletable { body: JsonNode ->
-                    if (body.isObject) {
-                        if (!body[ApiFields.Keys.STATUS].asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
-                            if (setAsDefault) {
-                                return@flatMapCompletable setDefaultImageFromServerResponse(body, image)
-                            } else {
-                                return@flatMapCompletable Completable.complete()
-                            }
-                        } else {
-                            throw IOException(body["error"].asText())
-                        }
-                    } else {
+                    if (!body.isObject) {
                         throw IOException("body is not an object")
+                    } else {
+                        if (body[ApiFields.Keys.STATUS].asText().contains(ApiFields.Defaults.STATUS_NOT_OK)) {
+                            throw IOException(body["error"].asText())
+                        } else {
+                            if (setAsDefault) {
+                                setDefaultImageFromServerResponse(body, image)
+                            } else {
+                                Completable.complete()
+                            }
+                        }
                     }
                 }.doOnError {
                     daoSession.toUploadProductDao.insertOrReplace(ToUploadProduct(
@@ -309,7 +305,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
 
     private fun setDefaultImageFromServerResponse(body: JsonNode, image: ProductImage): Completable {
         val queryMap = hashMapOf(
-                "imgid" to body["image"]["imgid"].asText(),
+                IMG_ID to body["image"][IMG_ID].asText(),
                 "id" to body["imagefield"].asText()
         )
         return rawAPI.editImageSingle(image.barcode, addUserInfo(queryMap))
@@ -322,8 +318,7 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                 }
     }
 
-    fun editImage(code: String?, imgMap: MutableMap<String, String>) =
-            rawAPI.editImages(code, addUserInfo(imgMap))
+    fun editImage(code: String, imgMap: MutableMap<String, String>) = rawAPI.editImages(code, addUserInfo(imgMap))
 
     /**
      * Unselect the image from the product code.
@@ -335,13 +330,14 @@ class OpenFoodAPIClient @JvmOverloads constructor(
         return rawAPI.unSelectImage(code, addUserInfo(imgMap))
     }
 
-    fun getProductsByOrigin(origin: String?, page: Int) =
+    fun getProductsByOrigin(origin: String, page: Int) =
             rawAPI.getProductsByOrigin(origin, page, getFieldsToFetchFacets())
 
     fun syncOldHistory() {
+        val fields = "image_small_url,product_name,brands,quantity,image_url,nutrition_grade_fr,code"
         historySyncDisp.clear()
         daoSession.historyProductDao.loadAll().forEach { historyProduct ->
-            rawAPI.getShortProductByBarcode(historyProduct.barcode, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            rawAPI.getProductByBarcode(historyProduct.barcode, fields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .map { state ->
                         if (state.status != 0L) {
                             val product = state.product!!
@@ -351,7 +347,9 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                                     product.getImageSmallUrl(getLanguage(context)),
                                     product.code,
                                     product.quantity,
-                                    product.nutritionGradeFr
+                                    product.nutritionGradeFr,
+                                    product.ecoscore,
+                                    product.novaGroups
                             )
                             Log.d("syncOldHistory", hp.toString())
                             hp.lastSeen = historyProduct.lastSeen
@@ -364,10 +362,10 @@ class OpenFoodAPIClient @JvmOverloads constructor(
         }
     }
 
-    fun getInfoAddedIncompleteProductsSingle(contributor: String?, page: Int) =
+    fun getInfoAddedIncompleteProductsSingle(contributor: String, page: Int) =
             rawAPI.getInfoAddedIncompleteProductsSingle(contributor, page)
 
-    fun getProductsByManufacturingPlace(manufacturingPlace: String?, page: Int) =
+    fun getProductsByManufacturingPlace(manufacturingPlace: String, page: Int) =
             rawAPI.getProductsByManufacturingPlace(manufacturingPlace, page, getFieldsToFetchFacets())
 
     /**
@@ -376,16 +374,16 @@ class OpenFoodAPIClient @JvmOverloads constructor(
      * @param additive search query for products
      * @param page number of pages
      */
-    fun getProductsByAdditive(additive: String?, page: Int) =
+    fun getProductsByAdditive(additive: String, page: Int) =
             rawAPI.getProductsByAdditive(additive, page, getFieldsToFetchFacets())
 
-    fun getProductsByAllergen(allergen: String?, page: Int) =
+    fun getProductsByAllergen(allergen: String, page: Int) =
             rawAPI.getProductsByAllergen(allergen, page, getFieldsToFetchFacets())
 
-    fun getToBeCompletedProductsByContributor(contributor: String?, page: Int) =
+    fun getToBeCompletedProductsByContributor(contributor: String, page: Int) =
             rawAPI.getToBeCompletedProductsByContributor(contributor, page)
 
-    fun getPicturesContributedProducts(contributor: String?, page: Int) =
+    fun getPicturesContributedProducts(contributor: String, page: Int) =
             rawAPI.getPicturesContributedProducts(contributor, page)
 
     fun getPicturesContributedIncompleteProducts(contributor: String?, page: Int) =
@@ -426,12 +424,9 @@ class OpenFoodAPIClient @JvmOverloads constructor(
 
         /**
          * Add a product to ScanHistory synchronously
-         *
-         * @param mHistoryProductDao
-         * @param product
          */
-        fun addToHistorySync(mHistoryProductDao: HistoryProductDao, product: Product) {
-            val historyProducts = mHistoryProductDao.queryBuilder()
+        fun HistoryProductDao.addToHistorySync(product: Product) {
+            val historyProducts = queryBuilder()
                     .where(HistoryProductDao.Properties.Barcode.eq(product.code))
                     .list()
             val hp = HistoryProduct(
@@ -440,26 +435,29 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     product.getImageSmallUrl(getLanguage(OFFApplication.instance)),
                     product.code,
                     product.quantity,
-                    product.nutritionGradeFr
+                    product.nutritionGradeFr,
+                    product.ecoscore,
+                    product.novaGroups
             )
             if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
-            mHistoryProductDao.insertOrReplace(hp)
+            insertOrReplace(hp)
         }
 
-        @JvmStatic
-        fun addToHistorySync(mHistoryProductDao: HistoryProductDao, offlineSavedProduct: OfflineSavedProduct) {
-            val historyProducts = mHistoryProductDao.queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(offlineSavedProduct.barcode)).list()
-            val productDetails = offlineSavedProduct.productDetailsMap
+        fun HistoryProductDao.addToHistorySync(product: OfflineSavedProduct) {
+            val historyProducts = queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.barcode)).list()
+            val productDetails = product.productDetailsMap
             val hp = HistoryProduct(
-                    offlineSavedProduct.name,
-                    productDetails[ApiFields.Keys.ADD_BRANDS],
-                    offlineSavedProduct.imageFrontLocalUrl,
-                    offlineSavedProduct.barcode,
-                    productDetails[ApiFields.Keys.QUANTITY],
+                    product.name,
+                    productDetails?.get(ApiFields.Keys.ADD_BRANDS),
+                    product.imageFrontLocalUrl,
+                    product.barcode,
+                    productDetails?.get(ApiFields.Keys.QUANTITY),
                     null,
+                    null,
+                    null
             )
             if (historyProducts.isNotEmpty()) hp.id = historyProducts[0].id
-            mHistoryProductDao.insertOrReplace(hp)
+            insertOrReplace(hp)
         }
 
         /**

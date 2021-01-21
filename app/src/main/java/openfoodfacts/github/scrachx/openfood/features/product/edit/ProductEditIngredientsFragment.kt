@@ -17,14 +17,12 @@ package openfoodfacts.github.scrachx.openfood.features.product.edit
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.preference.PreferenceManager
 import com.hootsuite.nachos.terminator.ChipTerminatorHandler
 import com.hootsuite.nachos.validator.ChipifyingNachoValidator
@@ -68,9 +66,8 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private var code: String? = null
     private val allergens: MutableList<String> = ArrayList()
     private var mOfflineSavedProduct: OfflineSavedProduct? = null
-    private var productDetails: HashMap<String, String?>? = hashMapOf()
+    private var productDetails = mutableMapOf<String, String?>()
     private var imagePath: String? = null
-    private var editProduct = false
     private var product: Product? = null
     private var newImageSelected = false
 
@@ -107,30 +104,24 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         binding.btnLooksGood.setOnClickListener { verifyIngredients() }
         binding.btnSkipIngredients.setOnClickListener { skipIngredients() }
         binding.btnExtractIngredients.setOnClickListener { extractIngredients() }
-        binding.ingredientsList.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit // Ignored
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit // Ignored
-
-            override fun afterTextChanged(s: Editable) = toggleOCRButtonVisibility()
-        })
+        binding.ingredientsList.doAfterTextChanged { toggleOCRButtonVisibility() }
 
         val bundle = arguments
         if (bundle != null) {
             mAllergenNameDao = Utils.daoSession.allergenNameDao
-            product = bundle.getSerializable("product") as Product?
-            mOfflineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
-            editProduct = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
+            product = getProductFromArgs()
+            mOfflineSavedProduct = getEditOfflineProductFromArgs()
             if (product != null) {
                 code = product!!.code
             }
-            if (editProduct && product != null) {
+            if (isEditingFromArgs && product != null) {
                 code = product!!.code
                 preFillProductValues()
             } else if (mOfflineSavedProduct != null) {
                 code = mOfflineSavedProduct!!.barcode
                 preFillValuesForOffline()
             } else {
-                //addition
+                // Fast addition
                 val enabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("fastAdditionMode", false)
                 enableFastAdditionMode(enabled)
             }
@@ -146,7 +137,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         if (binding.ingredientsList.isEmpty() && !imageIngredients.isNullOrEmpty()) {
             binding.btnExtractIngredients.visibility = View.VISIBLE
             imagePath = imageIngredients
-        } else if (editProduct
+        } else if (isEditingFromArgs
                 && binding.ingredientsList.isEmpty()
                 && !product!!.imageIngredientsUrl.isNullOrEmpty()) {
             binding.btnExtractIngredients.visibility = View.VISIBLE
@@ -159,7 +150,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
         }
     }
 
-    private fun getImageIngredients() = productDetails!![ApiFields.Keys.IMAGE_INGREDIENTS]
+    private fun getImageIngredients() = productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]
 
     private fun getAddProductActivity() = activity as ProductEditActivity?
 
@@ -196,13 +187,8 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
                     .resize(dps50ToPixels, dps50ToPixels)
                     .centerInside()
                     .into(binding.btnAddImageIngredients, object : Callback {
-                        override fun onSuccess() {
-                            imageLoaded()
-                        }
-
-                        override fun onError(ex: Exception) {
-                            imageLoaded()
-                        }
+                        override fun onSuccess() = imageLoaded()
+                        override fun onError(ex: Exception) = imageLoaded()
                     })
         }
     }
@@ -254,32 +240,31 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
     private fun preFillValuesForOffline() {
-        productDetails = mOfflineSavedProduct!!.productDetailsMap
-        if (productDetails != null) {
-            if (getImageIngredients() != null) {
-                binding.imageProgress.visibility = View.VISIBLE
-                picassoBuilder(requireContext())
-                        .load(LOCALE_FILE_SCHEME + getImageIngredients())
-                        .resize(dps50ToPixels, dps50ToPixels)
-                        .centerInside()
-                        .into(binding.btnAddImageIngredients, object : Callback {
-                            override fun onSuccess() {
-                                binding.imageProgress.visibility = View.GONE
-                            }
+        mOfflineSavedProduct!!.productDetailsMap?.toMutableMap()?.let { productDetails = it }
+        if (getImageIngredients() != null) {
+            binding.imageProgress.visibility = View.VISIBLE
+            picassoBuilder(requireContext())
+                    .load(LOCALE_FILE_SCHEME + getImageIngredients())
+                    .resize(dps50ToPixels, dps50ToPixels)
+                    .centerInside()
+                    .into(binding.btnAddImageIngredients, object : Callback {
+                        override fun onSuccess() {
+                            binding.imageProgress.visibility = View.GONE
+                        }
 
-                            override fun onError(ex: Exception) {
-                                binding.imageProgress.visibility = View.GONE
-                            }
-                        })
-            }
-            val ingredientsText = mOfflineSavedProduct!!.ingredients
-            if (!TextUtils.isEmpty(ingredientsText)) {
-                binding.ingredientsList.setText(ingredientsText)
-            }
-            if (productDetails!![ApiFields.Keys.ADD_TRACES] != null) {
-                val chipValues = productDetails!![ApiFields.Keys.ADD_TRACES]!!.split(Regex("\\s*,\\s*"))
-                binding.traces.setText(chipValues)
-            }
+                        override fun onError(ex: Exception) {
+                            binding.imageProgress.visibility = View.GONE
+                        }
+                    })
+        }
+        mOfflineSavedProduct!!.ingredients.let {
+            if (!it.isNullOrEmpty()) binding.ingredientsList.setText(it)
+        }
+
+
+        productDetails[ApiFields.Keys.ADD_TRACES]?.let {
+            val chipValues = it.split(Regex("\\s*,\\s*"))
+            binding.traces.setText(chipValues)
         }
     }
 
@@ -338,13 +323,13 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     private fun extractIngredients() {
         (activity as? ProductEditActivity)?.let {
             val imagePath = imagePath
-            if (imagePath != null && (!editProduct || newImageSelected)) {
+            if (imagePath != null && (!isEditingFromArgs || newImageSelected)) {
                 photoFile = File(imagePath)
                 val image = ProductImage(code!!, ProductImageField.INGREDIENTS, photoFile!!)
                 image.filePath = imagePath
                 (activity as ProductEditActivity).addToPhotoMap(image, 1)
             } else if (imagePath != null) {
-                (activity as ProductEditActivity).performOCR(code, "ingredients_" + (activity as ProductEditActivity).getProductLanguageForEdition())
+                (activity as ProductEditActivity).performOCR(code!!, "ingredients_" + (activity as ProductEditActivity).getProductLanguageForEdition())
             }
         }
     }
@@ -390,8 +375,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
             targetMap[lcIngredientsKey(lc)] = binding.ingredientsList.text.toString()
         }
         if (binding.traces.chipValues.isNotEmpty() && binding.traces.areChipsDifferent(extractTracesChipValues(product))) {
-            val string = binding.traces.chipValues.joinToString(",")
-            targetMap[ApiFields.Keys.ADD_TRACES] = string
+            targetMap[ApiFields.Keys.ADD_TRACES] = binding.traces.chipValues.joinToString(",")
         }
     }
 

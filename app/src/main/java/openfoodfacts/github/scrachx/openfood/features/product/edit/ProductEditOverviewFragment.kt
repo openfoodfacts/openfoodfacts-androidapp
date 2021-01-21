@@ -542,7 +542,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (editionMode) {
             loadFrontImage(lang)
             val fields = "ingredients_text_$lang,product_name_$lang"
-            productsApi.getProductByBarcodeSingle(product!!.code, fields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
+            productsApi.getProductByBarcode(product!!.code, fields, getUserAgent(Utils.HEADER_USER_AGENT_SEARCH))
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnSubscribe {

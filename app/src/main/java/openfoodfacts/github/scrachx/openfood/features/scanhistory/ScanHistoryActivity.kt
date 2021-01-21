@@ -48,7 +48,7 @@ import java.io.File
 import java.time.LocalDate
 import java.util.*
 
-class ScanHistoryActivity : BaseActivity(), SwipeControllerActions {
+class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityHistoryScanBinding? = null
     private val binding get() = _binding!!
 

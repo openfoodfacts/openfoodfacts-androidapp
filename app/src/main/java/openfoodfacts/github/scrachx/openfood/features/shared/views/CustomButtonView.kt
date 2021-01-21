@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.utils
+package openfoodfacts.github.scrachx.openfood.features.shared.views
 
 import android.content.Context
 import android.graphics.drawable.Drawable

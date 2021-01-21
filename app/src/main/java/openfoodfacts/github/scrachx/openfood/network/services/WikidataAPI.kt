@@ -11,5 +11,5 @@ import retrofit2.http.Path
  */
 interface WikidataAPI {
     @GET("{code}.json")
-    fun getWikiCategory(@Path("code") code: String?): Single<ObjectNode>
+    fun getWikiCategory(@Path("code") code: String): Single<ObjectNode>
 }

@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 import openfoodfacts.github.scrachx.openfood.network.ApiFields;
@@ -27,20 +26,21 @@ import openfoodfacts.github.scrachx.openfood.utils.FileUtilsKt;
 
 import static openfoodfacts.github.scrachx.openfood.utils.Utils.firstNotEmpty;
 
-@Entity(indexes = {@Index(value = "barcode", unique = true)})
+@Entity
 public class OfflineSavedProduct implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String barcode;
     @Id
     private Long id;
+    @Index(unique = true)
+    private String barcode;
     @Index
     private boolean isDataUploaded;
     private String productDetails;
 
-    @Generated(hash = 51718877)
-    public OfflineSavedProduct(String barcode, Long id, boolean isDataUploaded, String productDetails) {
-        this.barcode = barcode;
+    @Generated(hash = 17816421)
+    public OfflineSavedProduct(Long id, String barcode, boolean isDataUploaded, String productDetails) {
         this.id = id;
+        this.barcode = barcode;
         this.isDataUploaded = isDataUploaded;
         this.productDetails = productDetails;
     }
@@ -57,29 +57,28 @@ public class OfflineSavedProduct implements Serializable {
         this.barcode = barcode;
     }
 
-    public HashMap<String, String> getProductDetailsMap() {
-        if (this.getProductDetails() != null) {
+    @SuppressWarnings("unchecked")
+    @Nullable
+    public Map<String, String> getProductDetailsMap() {
+        if (this.productDetails == null) {
+            return null;
+        }
+        try (
             ByteArrayInputStream bis = new ByteArrayInputStream(Base64.decode(this.productDetails, Base64.DEFAULT));
-            try {
-                ObjectInputStream in = new ObjectInputStream(bis);
-                try {
-                    @SuppressWarnings("unchecked")
-                    HashMap<String, String> hashMap = (HashMap<String, String>) in.readObject();
-                    return hashMap;
-                } catch (ClassNotFoundException e) {
-                    Log.e(OfflineSavedProduct.class.getSimpleName(), "getProductDetailsMap", e);
-                }
-            } catch (IOException e) {
-                Log.e(OfflineSavedProduct.class.getSimpleName(), "getProductDetailsMap", e);
-            }
+            ObjectInputStream in = new ObjectInputStream(bis)
+        ) {
+            return (Map<String, String>) in.readObject();
+        } catch (ClassNotFoundException | IOException e) {
+            Log.e(OfflineSavedProduct.class.getSimpleName(), "getProductDetailsMap", e);
         }
         return null;
     }
 
     public void setProductDetailsMap(Map<String, String> detailsMap) {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        try {
-            ObjectOutputStream out = new ObjectOutputStream(bos);
+        try (
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(bos)
+        ) {
             out.writeObject(detailsMap);
             out.flush();
             this.productDetails = Base64.encodeToString(bos.toByteArray(), Base64.DEFAULT);
@@ -95,14 +94,14 @@ public class OfflineSavedProduct implements Serializable {
 
     @Nullable
     public String getName() {
-        final HashMap<String, String> map = getProductDetailsMap();
+        final Map<String, String> map = getProductDetailsMap();
         final String language = firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
         return firstNotEmpty(map.get(ApiFields.Keys.lcProductNameKey(language)), map.get(ApiFields.Keys.lcProductNameKey("en")));
     }
 
     @Nullable
     public String getIngredients() {
-        final HashMap<String, String> map = getProductDetailsMap();
+        final Map<String, String> map = getProductDetailsMap();
         final String language = firstNotEmpty(map.get(ApiFields.Keys.LANG), "en");
         return firstNotEmpty(map.get(ApiFields.Keys.lcIngredientsKey(language)), map.get(ApiFields.Keys.lcIngredientsKey("en")));
     }

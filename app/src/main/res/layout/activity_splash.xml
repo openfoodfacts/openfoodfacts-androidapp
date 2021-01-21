@@ -20,6 +20,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,24 +62,27 @@
             tools:text="tagline goes here..." />
 
         <TextView
-            android:id="@+id/text_loading"
+            android:id="@+id/loading_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:text="@string/initial_loading"
             android:textColor="?android:textColorPrimary"
+            android:visibility="@{loading, default = gone}"
             app:layout_constraintEnd_toEndOf="@id/logo"
             app:layout_constraintStart_toStartOf="@id/logo"
             app:layout_constraintTop_toBottomOf="@id/tagline" />
 
         <ProgressBar
+            android:id="@+id/loading_progress"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:indeterminate="true"
+            android:visibility="@{loading, default = gone}"
             app:layout_constraintEnd_toEndOf="@id/logo"
             app:layout_constraintStart_toStartOf="@id/logo"
-            app:layout_constraintTop_toBottomOf="@id/text_loading" />
+            app:layout_constraintTop_toBottomOf="@id/loading_txt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

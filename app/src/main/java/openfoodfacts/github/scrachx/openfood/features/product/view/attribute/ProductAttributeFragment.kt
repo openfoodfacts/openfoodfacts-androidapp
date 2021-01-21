@@ -51,11 +51,6 @@ class ProductAttributeFragment : BottomSheetDialogFragment() {
         val view = inflater.inflate(R.layout.fragment_product_attribute_details, container,
                 false)
         val customTabActivityHelper = CustomTabActivityHelper()
-
-        customTabActivityHelper.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
-            override fun onCustomTabsConnected() {}
-            override fun onCustomTabsDisconnected() {}
-        }
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
         val bottomSheetDescription = view.findViewById<TextView>(R.id.description)
         val bottomSheetTitle = view.findViewById<TextView>(R.id.titleBottomSheet)

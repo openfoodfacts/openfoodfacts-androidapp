@@ -62,6 +62,7 @@ import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsA
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.features.shared.adapters.NutrientLevelListAdapter
+import openfoodfacts.github.scrachx.openfood.features.shared.views.QuestionDialog
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.*
 import openfoodfacts.github.scrachx.openfood.models.entities.additive.AdditiveName
@@ -172,15 +173,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         customTabActivityHelper = CustomTabActivityHelper().apply {
-            connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
-                override fun onCustomTabsConnected() {
-                    binding.imageGrade.isClickable = true
-                }
-
-                override fun onCustomTabsDisconnected() {
-                    binding.imageGrade.isClickable = false
-                }
-            }
+            setConnectionCallback(
+                    onConnected = { binding.imageGrade.isClickable = true },
+                    onDisconnected = { binding.imageGrade.isClickable = false }
+            )
         }
         customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
     }
@@ -455,7 +451,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
 
     private fun refreshCO2OrEcoscoreIcon() {
         binding.ecoscoreIcon.setImageResource(product.getEcoscoreResource())
-        binding.ecoscoreIcon.setOnClickListener{
+        binding.ecoscoreIcon.setOnClickListener {
             val uri = Uri.parse(getString(R.string.ecoscore_url))
             val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(requireContext(), customTabActivityHelper.session)
             CustomTabActivityHelper.openCustomTab(requireActivity(), customTabsIntent, uri, WebViewFallback())
@@ -477,7 +473,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         Log.d(LOG_TAG, "Show labels prompt: $showLabelsPrompt")
         Log.d(LOG_TAG, "Show origins prompt: $showOriginsPrompt")
 
-        if(showEcoScorePrompt){
+        if (showEcoScorePrompt) {
             binding.tipBoxEcoScore.loadToolTip()
         }
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.utils
+package openfoodfacts.github.scrachx.openfood.features.shared.views
 
 import android.app.Dialog
 import android.content.Context

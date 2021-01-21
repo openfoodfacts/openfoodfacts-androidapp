@@ -166,7 +166,7 @@ class SummaryProductPresenter(
 
     override fun loadProductQuestion() {
         val languageCode = LocaleHelper.getLanguage(OFFApplication.instance)
-        ProductRepository.getSingleProductQuestion(product.code, languageCode)
+        ProductRepository.getProductQuestion(product.code, languageCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { Log.e(this@SummaryProductPresenter::class.simpleName, "loadProductQuestion", it) }

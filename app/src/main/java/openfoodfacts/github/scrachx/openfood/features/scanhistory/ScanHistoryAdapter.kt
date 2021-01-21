@@ -15,6 +15,8 @@ import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListAct
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.Utils.picassoBuilder
+import openfoodfacts.github.scrachx.openfood.utils.getEcoscoreResource
+import openfoodfacts.github.scrachx.openfood.utils.getNovaGroupResource
 import openfoodfacts.github.scrachx.openfood.utils.getNutriScoreResource
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -67,7 +69,8 @@ class ScanHistoryAdapter(
 
         if (isFlavors(OFF)) {
             holder.binding.nutriscore.setImageResource(hProduct.getNutriScoreResource())
-            // TODO: Add ecoscore and nova
+            holder.binding.ecoscore.setImageResource(hProduct.getEcoscoreResource())
+            holder.binding.novaGroup.setImageResource(hProduct.getNovaGroupResource())
         }
 
         holder.binding.root.setOnClickListener {

@@ -87,7 +87,7 @@
             tools:text="Ferrero" />
 
 
-        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
             android:id="@+id/barcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
             tools:text="123456789" />
 
 
-        <openfoodfacts.github.scrachx.openfood.utils.CustomTextView
+        <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomTextView
             android:id="@+id/lastScan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,7 +148,6 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:adjustViewBounds="true"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ecoscore"
             app:layout_constraintTop_toBottomOf="@+id/productDetails"
@@ -166,8 +165,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productDetails"
-            tools:srcCompat="@drawable/ic_ecoscore_a"
-            tools:visibility="gone" />
+            tools:srcCompat="@drawable/ic_ecoscore_a" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

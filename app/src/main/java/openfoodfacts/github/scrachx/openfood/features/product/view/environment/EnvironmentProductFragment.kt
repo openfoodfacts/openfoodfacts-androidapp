@@ -89,6 +89,15 @@ class EnvironmentProductFragment : BaseFragment() {
             binding.environmentInfoCv.visibility = View.GONE
         }
 
+        val packaging = product.packaging
+        if (!packaging.isNullOrEmpty()) {
+            binding.packagingText.text = bold(getString(R.string.packaging_environmentTab))
+            binding.packagingText.append(" ")
+            binding.packagingText.append(packaging.split(',').toString().removeSurrounding("[", "]"))
+        } else {
+            binding.packagingCv.visibility = View.GONE
+        }
+
         val recyclingInstructionsToDiscard = product.recyclingInstructionsToDiscard
         if (!recyclingInstructionsToDiscard.isNullOrEmpty()) {
             binding.recyclingInstructionToDiscard.text = bold("Recycling instructions - To discard: ")

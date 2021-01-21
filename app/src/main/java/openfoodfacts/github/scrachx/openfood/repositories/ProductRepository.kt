@@ -58,12 +58,12 @@ object ProductRepository {
      *
      * @return The list of Labels.
      */
-    fun reloadLabelsFromServer(): Single<List<Label>> =
+    fun reloadLabelsFromServer() =
             getTaxonomyData(Taxonomy.LABEL, this, true, OFFApplication.daoSession.labelDao)
 
-    fun loadLabels(lastModifiedDate: Long): Single<List<Label>> = analysisDataApi.getLabels()
+    fun loadLabels(lastModifiedDate: Long) = analysisDataApi.getLabels()
             .map { it.map() }
-            .doOnSuccess { labels: List<Label> ->
+            .doOnSuccess { labels ->
                 saveLabels(labels)
                 updateLastDownloadDateInSettings(Taxonomy.LABEL, lastModifiedDate)
             }
@@ -73,10 +73,10 @@ object ProductRepository {
      *
      * @return The list of Tags.
      */
-    fun reloadTagsFromServer(): Single<List<Tag>> =
+    fun reloadTagsFromServer() =
             getTaxonomyData(Taxonomy.TAGS, this, true, OFFApplication.daoSession.tagDao)
 
-    fun loadTags(lastModifiedDate: Long): Single<List<Tag>> = analysisDataApi.getTags()
+    fun loadTags(lastModifiedDate: Long) = analysisDataApi.getTags()
             .map { it.tags }
             .doOnSuccess {
                 saveTags(it)
@@ -132,7 +132,7 @@ object ProductRepository {
      *
      * @return The list of categories.
      */
-    fun reloadCategoriesFromServer(): Single<List<Category>> =
+    fun reloadCategoriesFromServer() =
             getTaxonomyData(Taxonomy.CATEGORY, this, true, OFFApplication.daoSession.categoryDao)
 
     fun getCategories() = getTaxonomyData(Taxonomy.CATEGORY, this, false, OFFApplication.daoSession.categoryDao)
@@ -631,7 +631,7 @@ object ProductRepository {
      * @param lang is language of the question
      * @return The single question
      */
-    fun getSingleProductQuestion(code: String?, lang: String?) = robotoffApi.getProductQuestions(code, lang, 1)
+    fun getProductQuestion(code: String, lang: String) = robotoffApi.getProductQuestions(code, lang, 1)
             .map { it.questions }
             .flatMapMaybe { if (it.isEmpty()) Maybe.empty() else Maybe.just(it[0]) }
 

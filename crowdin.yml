@@ -2,7 +2,7 @@ project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_PERSONAL_TOKEN
 files:
   - source: /app/src/main/res/values/strings.xml
-    translation: /app/src/main/res/values-%two_letters_code%/%original_file_name%
+    translation: /app/src/main/res/values-%android_code%/%original_file_name%
     languages_mapping:
       two_letters_code:
         pt-BR: pt-rBR
@@ -20,9 +20,9 @@ files:
         he: iw
         id: in
         yi: ji
-        
+
   - source: /app/src/obf/res/values/strings.xml
-    translation: /app/src/obf/res/values-%two_letters_code%/%original_file_name%
+    translation: /app/src/obf/res/values-%android_code%/%original_file_name%
     languages_mapping:
       two_letters_code:
         zh-CN: zh-rCN
@@ -39,9 +39,9 @@ files:
         he: iw
         id: in
         yi: ji
-        
+
   - source: /app/src/off/res/values/strings.xml
-    translation: /app/src/off/res/values-%two_letters_code%/%original_file_name%
+    translation: /app/src/off/res/values-%android_code%/%original_file_name%
     languages_mapping:
       two_letters_code:
         pt-BR: pt-rBR
@@ -57,9 +57,9 @@ files:
         he: iw
         id: in
         yi: ji
-        
+
   - source: /app/src/opff/res/values/strings.xml
-    translation: /app/src/opff/res/values-%two_letters_code%/strings.xml
+    translation: /app/src/opff/res/values-%android_code%/strings.xml
     languages_mapping:
       two_letters_code:
         zh-CN: zh-rCN
@@ -77,7 +77,7 @@ files:
         yi: ji
 
   - source: /app/src/opf/res/values/strings.xml
-    translation: /app/src/opf/res/values-%two_letters_code%/strings.xml
+    translation: /app/src/opf/res/values-%android_code%/strings.xml
     languages_mapping:
       two_letters_code:
         zh-CN: zh-rCN
@@ -102,19 +102,19 @@ files:
 
   - source: /fastlane/metadata/android/en-US/opff/long_description.txt
     translation: /fastlane/metadata/android/%locale%/opff/long_description.txt
-        
+
   - source: /fastlane/metadata/android/en-US/opf/long_description.txt
     translation: /fastlane/metadata/android/%locale%/opf/long_description.txt
 
   - source: /fastlane/metadata/android/en-US/off/short_description.txt
     translation: /fastlane/metadata/android/%locale%/off/short_description.txt
-        
+
   - source: /fastlane/metadata/android/en-US/obf/short_description.txt
     translation: /fastlane/metadata/android/%locale%/obf/short_description.txt
-    
+
   - source: /fastlane/metadata/android/en-US/opff/short_description.txt
     translation: /fastlane/metadata/android/%locale%/opff/short_description.txt
-        
+
   - source: /fastlane/metadata/android/en-US/opf/short_description.txt
     translation: /fastlane/metadata/android/%locale%/opf/short_description.txt
         
@@ -122,7 +122,7 @@ files:
     translation: /fastlane/metadata/android/%locale%/off/title.txt
     
   - source: /fastlane/metadata/android/en-US/off/changelogs/342.txt
-    translation: /fastlane/metadata/android/%locale%/off/changelogs/342.txt  
+    translation: /fastlane/metadata/android/%locale%/off/changelogs/342.txt
     
   - source: /fastlane/metadata/android/en-US/obf/title.txt
     translation: /fastlane/metadata/android/%locale%/obf/title.txt

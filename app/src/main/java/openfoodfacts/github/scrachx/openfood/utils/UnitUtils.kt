@@ -17,14 +17,12 @@ object UnitUtils {
      * @param originalUnit [Units.ENERGY_KCAL] or [Units.ENERGY_KJ]
      * @return return the converted value
      */
-    @JvmStatic
     fun convertToKiloCalories(value: Int, originalUnit: String) = when {
         originalUnit.equals(Units.ENERGY_KJ, true) -> (value / KJ_PER_KCAL).toInt()
         originalUnit.equals(Units.ENERGY_KCAL, true) -> value
         else -> throw IllegalArgumentException("energyUnit is neither Units.ENERGY_KCAL nor Units.ENERGY_KJ")
     }
 
-    @JvmStatic
     fun convertToGrams(value: Float, unit: String?) = convertToGrams(value.toDouble(), unit).toFloat()
 
     /**
@@ -46,7 +44,6 @@ object UnitUtils {
         else -> value
     }
 
-    @JvmStatic
     fun convertFromGram(valueInGramOrMl: Float, targetUnit: String?) =
             convertFromGram(valueInGramOrMl.toDouble(), targetUnit).toFloat()
 
@@ -69,7 +66,6 @@ object UnitUtils {
      * @param servingSize value to transform
      * @return volume in oz if servingSize is a volume parameter else return the the parameter unchanged
      */
-    @JvmStatic
     fun getServingInOz(servingSize: String): String {
         val regex = Pattern.compile("(\\d+(?:\\.\\d+)?)")
         val matcher = regex.matcher(servingSize)
@@ -105,7 +101,6 @@ object UnitUtils {
      * @param servingSize the value to transform: not null
      * @return volume in liter if input parameter is a volume parameter else return the parameter unchanged
      */
-    @JvmStatic
     fun getServingInL(servingSize: String): String = when {
         servingSize.contains("oz", true) -> {
             val regex = Pattern.compile("(\\d+(?:\\.\\d+)?)")

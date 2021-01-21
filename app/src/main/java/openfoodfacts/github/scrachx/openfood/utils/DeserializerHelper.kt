@@ -21,7 +21,6 @@ object DeserializerHelper {
      *
      * @param namesNode namesNode in Json response
      */
-    @JvmStatic
     fun extractMapFromJsonNode(namesNode: JsonNode): Map<String, String> {
         val names = hashMapOf<String, String>()
         namesNode.fields().forEach { names[it.key] = it.value.asText() }
@@ -34,7 +33,6 @@ object DeserializerHelper {
      * @param subNode map of subnodes
      * @param key get the JsonNode for the given key
      */
-    @JvmStatic
     fun extractChildNodeAsText(subNode: Map.Entry<String?, JsonNode>, key: String?) =
             subNode.value[key]?.toList()?.map {
                 if (Log.isLoggable(LOG_TAG, Log.INFO)) Log.i(LOG_TAG, "ExtractChildNodeAsText, ajout de ${it.asText()}")

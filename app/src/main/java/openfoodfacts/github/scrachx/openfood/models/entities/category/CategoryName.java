@@ -93,10 +93,10 @@ public class CategoryName {
 
     @Nullable
     public String getWikiDataId() {
-        if (this.wikiDataId == null) {
+        String res = this.wikiDataId;
+        if (res == null) {
             return null;
         }
-        String res = this.wikiDataId;
         int startIndex = res.indexOf("en");
         startIndex = startIndex + 5;
         int lastIndex = res.lastIndexOf('\"');

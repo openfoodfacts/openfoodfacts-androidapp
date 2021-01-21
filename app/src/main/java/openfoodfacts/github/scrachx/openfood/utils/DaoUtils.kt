@@ -17,5 +17,5 @@ fun AbstractDao<*, *>.isEmpty() = this.count() == 0L
 @Contract(pure = true)
 @CheckResult
 fun <T> logDownload(single: Single<List<T>?>, taxonomy: Taxonomy) = single.doOnSuccess {
-    Log.i(Taxonomy::class.java.name + "getTaxonomyData", "refreshed taxonomy '$taxonomy' from server")
+    Log.i(Taxonomy::class.simpleName + "getTaxonomyData", "refreshed taxonomy '$taxonomy' from server")
 }

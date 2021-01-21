@@ -150,7 +150,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private lateinit var prefManager: PrefManager
 
     private var searchMenuItem: MenuItem? = null
-    private var userAccountUri: Uri? = null
+    private var userSettingsURI: Uri? = null
 
     private val loginThenUpdate = registerForActivityResult(LoginContract())
     { isLoggedIn -> if (isLoggedIn) updateConnectedState() }
@@ -204,10 +204,12 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 .withOnAccountHeaderListener(object : AccountHeader.OnAccountHeaderListener {
                     override fun onProfileChanged(view: View?, profile: IProfile<*>, current: Boolean): Boolean {
                         if (profile is IDrawerItem<*> && profile.identifier == ITEM_MANAGE_ACCOUNT.toLong()) {
-                            CustomTabActivityHelper.openCustomTab(this@MainActivity,
+                            CustomTabActivityHelper.openCustomTab(
+                                    this@MainActivity,
                                     customTabsIntent,
-                                    userAccountUri!!,
-                                    WebViewFallback())
+                                    userSettingsURI!!,
+                                    WebViewFallback()
+                            )
                         }
                         return false
                     }
@@ -331,9 +333,9 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             }
 
                         }
-                        if (newFragment != null) {
+                        newFragment?.let {
                             supportFragmentManager.commit {
-                                replace(R.id.fragment_container, newFragment)
+                                replace(R.id.fragment_container, it)
                                 addToBackStack(null)
                             }
                         }
@@ -488,8 +490,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
     private fun getProfileSettingDrawerItem(): IProfile<ProfileSettingDrawerItem> {
         val userLogin = getUserLogin()
         val userSession = getUserSession()
-        userAccountUri = Uri.parse("${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession")
-        customTabActivityHelper.mayLaunchUrl(userAccountUri, null, null)
+        userSettingsURI = Uri.parse("${getString(R.string.website)}cgi/user.pl?type=edit&userid=$userLogin&user_id=$userLogin&user_session=$userSession")
+        customTabActivityHelper.mayLaunchUrl(userSettingsURI, null, null)
         return ProfileSettingDrawerItem().apply {
             withName(getString(R.string.action_manage_account))
             withIcon(GoogleMaterial.Icon.gmd_settings)
@@ -781,10 +783,10 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                         return@flatMapMaybe Maybe.just(decodedResult.text)
                     }
                 } catch (e: FormatException) {
-                    Toast.makeText(applicationContext, getString(R.string.format_error), Toast.LENGTH_SHORT).show()
-                    Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: " + e.message)
+                    Toast.makeText(this@MainActivity, getString(R.string.format_error), Toast.LENGTH_SHORT).show()
+                    Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
                 } catch (e: Exception) {
-                    Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: " + e.message)
+                    Log.e(MainActivity::class.simpleName, "Error decoding bitmap into barcode: ${e.message}")
                 }
             }
             return@flatMapMaybe Maybe.empty()
@@ -816,8 +818,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         alertDialogBuilder.run {
             setCancelable(false)
             setPositiveButton(R.string.txtYes) { dialog, _ ->
+                val api = OpenFoodAPIClient(this@MainActivity)
                 imgUris.forEach { selected ->
-                    val api = OpenFoodAPIClient(this@MainActivity)
                     val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
                     val activeNetwork = cm.activeNetworkInfo
                     val tempBarcode = if (hasEditText) barcodeEditText.text.toString() else barcode

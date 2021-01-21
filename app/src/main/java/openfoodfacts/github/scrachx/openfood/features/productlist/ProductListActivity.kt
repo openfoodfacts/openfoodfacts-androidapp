@@ -42,11 +42,11 @@ import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.SortType.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import java.io.File
-import java.time.LocalDate
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
-class ProductListActivity : BaseActivity(), SwipeControllerActions {
+class ProductListActivity : BaseActivity(), SwipeController.Actions {
     private var _binding: ActivityYourListedProductsBinding? = null
     private val binding get() = _binding!!
 
@@ -152,14 +152,13 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
 
             //get list of HistoryProduct items for the YourListProduct items
             val gradesConditions = map { HistoryProductDao.Properties.Barcode.eq(it.barcode) }.toTypedArray()
-            val historyProductsGrade: List<HistoryProduct>
             val qbGrade = daoSession.historyProductDao!!.queryBuilder()
             if (gradesConditions.size > 1) {
                 qbGrade.whereOr(gradesConditions[0], gradesConditions[1], *gradesConditions.copyOfRange(2, gradesConditions.size))
             } else {
                 qbGrade.where(gradesConditions[0])
             }
-            historyProductsGrade = qbGrade.list()
+            val historyProductsGrade = qbGrade.list()
             sortWith { p1, p2 ->
                 var g1 = "E"
                 var g2 = "E"
@@ -228,7 +227,7 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
             MaterialDialog.Builder(this).run {
                 title(R.string.sort_by)
                 val sortTypes = if (isFlavors(AppFlavors.OFF)) {
-                    arrayOf(
+                    listOf(
                             getString(R.string.by_title),
                             getString(R.string.by_brand),
                             getString(R.string.by_nutrition_grade),
@@ -237,14 +236,14 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
                             getString(R.string.by_time)
                     )
                 } else {
-                    arrayOf(
+                    listOf(
                             getString(R.string.by_title),
                             getString(R.string.by_brand),
                             getString(R.string.by_time),
                             getString(R.string.by_barcode)
                     )
                 }
-                items(*sortTypes)
+                items(sortTypes)
                 itemsCallback { _, _, position, _ ->
                     sortType = when (position) {
                         0 -> TITLE
@@ -304,12 +303,13 @@ class ProductListActivity : BaseActivity(), SwipeControllerActions {
 
         val listName = productList.listName
         val flavor = BuildConfig.FLAVOR.toUpperCase(Locale.ROOT)
-        val date = LocalDate.now()
+        val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         val fileName = "$flavor-${listName}_$date.csv"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             fileWriterLauncher.launch(fileName)
         } else {
+            @Suppress("DEPRECATION")
             val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
             if (!baseDir.exists()) baseDir.mkdirs()
             writeListToFile(this, productList, File(baseDir, fileName))

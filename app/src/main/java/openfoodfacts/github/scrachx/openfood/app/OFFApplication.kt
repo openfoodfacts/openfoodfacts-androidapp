@@ -63,7 +63,6 @@ class OFFApplication : MultiDexApplication() {
                 is UndeliverableException ->
                     Log.w(LOG_TAG, "Undeliverable exception received, not sure what to do", it.cause)
                 is IOException -> {
-
                     // fine, irrelevant network problem or API that throws on cancellation
                     Log.i(LOG_TAG, "network exception", it)
                     return@setErrorHandler
@@ -74,7 +73,7 @@ class OFFApplication : MultiDexApplication() {
                 }
                 is NullPointerException, is IllegalArgumentException, is IllegalStateException -> {
                     // that's likely a bug in the application
-                    Thread.currentThread().uncaughtExceptionHandler
+                    Thread.currentThread().uncaughtExceptionHandler!!
                             .uncaughtException(Thread.currentThread(), it)
                     return@setErrorHandler
                 }
@@ -84,7 +83,7 @@ class OFFApplication : MultiDexApplication() {
 
     companion object {
         private const val DEBUG = false
-        val LOG_TAG: String = OFFApplication::class.simpleName!!
+        val LOG_TAG = OFFApplication::class.simpleName!!
 
         @JvmStatic
         lateinit var daoSession: DaoSession
