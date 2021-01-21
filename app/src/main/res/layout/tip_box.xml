@@ -52,7 +52,7 @@
                     android:paddingEnd="@dimen/spacing_tiny"
                     android:paddingRight="@dimen/spacing_tiny"
                     android:paddingBottom="@dimen/spacing_small"
-                    android:text="@string/off_mail"
+                    android:text="@string/email"
                     android:textAlignment="center"
                     android:textColor="@color/md_blue_A700" />
 
