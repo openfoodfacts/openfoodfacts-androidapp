@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@file:Suppress("KotlinDeprecation")
 
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
@@ -108,9 +107,9 @@ class ProductEditActivity : AppCompatActivity() {
      * @param nutritionFactsStage change the state of nutrition facts indicator
      */
     private fun updateTimelineIndicator(overviewStage: Int, ingredientsStage: Int, nutritionFactsStage: Int) {
-        updateTimeLine(overviewStage, binding.overviewIndicator)
-        updateTimeLine(ingredientsStage, binding.ingredientsIndicator)
-        updateTimeLine(nutritionFactsStage, binding.nutritionFactsIndicator)
+        updateTimeLine(binding.overviewIndicator, overviewStage)
+        updateTimeLine(binding.ingredientsIndicator, ingredientsStage)
+        updateTimeLine(binding.nutritionFactsIndicator, nutritionFactsStage)
     }
 
     override fun onBackPressed() {
@@ -155,25 +154,21 @@ class ProductEditActivity : AppCompatActivity() {
         // Setup view binding
         _binding = ActivityEditProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setTitle(R.string.offline_product_addition_title)
 
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        }
+        setTitle(R.string.offline_product_addition_title)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Setup onclick listeners
         binding.overviewIndicator.setOnClickListener { switchToOverviewPage() }
         binding.ingredientsIndicator.setOnClickListener { switchToIngredientsPage() }
         binding.nutritionFactsIndicator.setOnClickListener { switchToNutritionFactsPage() }
         binding.viewpager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                selectPage(position)
-            }
+            override fun onPageSelected(position: Int) = selectPage(position)
         })
 
         val productState = getProductState()
         var offlineSavedProduct = intent.getSerializableExtra(KEY_EDIT_OFFLINE_PRODUCT) as OfflineSavedProduct?
+
         val mEditProduct = intent.getSerializableExtra(KEY_EDIT_PRODUCT) as Product?
         if (intent.getBooleanExtra(KEY_PERFORM_OCR, false)) {
             fragmentsBundle.putBoolean(KEY_PERFORM_OCR, true)
@@ -525,12 +520,11 @@ class ProductEditActivity : AppCompatActivity() {
     }
 
     class EditProductSendUpdatedImg : ActivityResultContract<Product?, Boolean>() {
-        override fun createIntent(context: Context, product: Product?): Intent {
-            return Intent(context, ProductEditActivity::class.java).apply {
-                putExtra(KEY_SEND_UPDATED, true)
-                putExtra(KEY_EDIT_PRODUCT, product)
-            }
-        }
+        override fun createIntent(context: Context, product: Product?) =
+                Intent(context, ProductEditActivity::class.java).apply {
+                    putExtra(KEY_SEND_UPDATED, true)
+                    putExtra(KEY_EDIT_PRODUCT, product)
+                }
 
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
@@ -552,28 +546,22 @@ class ProductEditActivity : AppCompatActivity() {
             if (isExternalStorageWritable()) {
                 cacheDir = context.externalCacheDir
             }
-            val dir = File(cacheDir, "EasyImage")
-            if (!dir.exists()) {
-                if (dir.mkdirs()) {
-                    Log.i(LOGGER_TAG, "Directory created")
-                } else {
-                    Log.i(LOGGER_TAG, "Couldn't create directory")
-                }
+            val picDir = File(cacheDir, "EasyImage")
+            if (!picDir.exists()) {
+                if (picDir.mkdirs()) Log.i(LOGGER_TAG, "Directory '${picDir.absolutePath}' created.")
+                else Log.i(LOGGER_TAG, "Couldn't create directory '${picDir.absolutePath}'.")
             }
-            return dir
+            return picDir
         }
 
         private fun clearCameraCachedPics(context: Context) {
-            (getCameraPicLocation(context).listFiles() ?: return).forEach { file ->
-                if (file.delete()) {
-                    Log.i(LOGGER_TAG, "Deleted cached photo")
-                } else {
-                    Log.i(LOGGER_TAG, "Couldn't delete cached photo")
-                }
+            (getCameraPicLocation(context).listFiles() ?: return).forEach {
+                if (it.delete()) Log.i(LOGGER_TAG, "Deleted cached photo '${it.absolutePath}'.")
+                else Log.i(LOGGER_TAG, "Couldn't delete cached photo '${it.absolutePath}'.")
             }
         }
 
-        private fun updateTimeLine(stage: Int, view: View) {
+        private fun updateTimeLine(view: View, stage: Int) {
             when (stage) {
                 0 -> view.setBackgroundResource(R.drawable.stage_inactive)
                 1 -> view.setBackgroundResource(R.drawable.stage_active)
@@ -581,10 +569,18 @@ class ProductEditActivity : AppCompatActivity() {
             }
         }
 
-        @JvmOverloads
-        fun start(context: Context, state: ProductState?, sendUpdated: Boolean = false, performOcr: Boolean = false) {
+        fun start(context: Context, state: ProductState, sendUpdated: Boolean = false, performOcr: Boolean = false) {
             Intent(context, ProductEditActivity::class.java).apply {
                 putExtra(KEY_STATE, state)
+                if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
+                if (performOcr) putExtra(KEY_PERFORM_OCR, true)
+                context.startActivity(this)
+            }
+        }
+
+        fun start(context: Context, offlineProduct: OfflineSavedProduct, sendUpdated: Boolean = false, performOcr: Boolean = false) {
+            Intent(context, ProductEditActivity::class.java).apply {
+                putExtra(KEY_EDIT_OFFLINE_PRODUCT, offlineProduct)
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
                 if (performOcr) putExtra(KEY_PERFORM_OCR, true)
                 context.startActivity(this)

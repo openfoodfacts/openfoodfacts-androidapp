@@ -93,7 +93,7 @@ class EnvironmentProductFragment : BaseFragment() {
         if (!packaging.isNullOrEmpty()) {
             binding.packagingText.text = bold(getString(R.string.packaging_environmentTab))
             binding.packagingText.append(" ")
-            binding.packagingText.append(packaging.split(',').toString().removeSurrounding("[","]") )
+            binding.packagingText.append(packaging.split(',').toString().removeSurrounding("[", "]"))
         } else {
             binding.packagingCv.visibility = View.GONE
         }

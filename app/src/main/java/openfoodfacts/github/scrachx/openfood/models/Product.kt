@@ -11,7 +11,6 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLocaleFromContext
-import openfoodfacts.github.scrachx.openfood.utils.ProductStringConverter
 import org.apache.commons.lang3.builder.ToStringBuilder
 import org.apache.commons.lang3.builder.ToStringStyle
 import java.io.Serializable
@@ -114,13 +113,13 @@ class Product : Serializable {
     val ecoscore: String? = null
 
     @JsonProperty(ApiFields.Keys.EDITORS_TAGS)
-    val editors: List<String> = ArrayList()
+    val editors = ArrayList<String>()
 
     /**
      * @return The Emb_codes
      */
     @JsonProperty(ApiFields.Keys.EMB_CODES_TAGS)
-    val embTags: List<Any> = ArrayList()
+    val embTags = ArrayList<Any>()
 
     @JsonProperty(ApiFields.Keys.ENVIRONMENT_IMPACT_LEVEL_TAGS)
     val environmentImpactLevelTags: List<String>? = null
