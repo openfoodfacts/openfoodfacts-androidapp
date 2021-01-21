@@ -63,8 +63,6 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.CategoryProdu
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients_analysis.IngredientsWithTagDialogFragment
 import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
-import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_ID
-import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity.Companion.KEY_LIST_NAME
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity
 import openfoodfacts.github.scrachx.openfood.features.productlists.ProductListsActivity.Companion.getProductListsDaoWithDefaultList
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
@@ -486,29 +484,22 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         asyncSessionList.queryList(OFFApplication.daoSession.yourListedProductDao.queryBuilder()
                 .where(YourListedProductDao.Properties.Barcode.eq(product.code)).build())
 
-        val queryResult= arrayListOf<YourListedProduct>()
         asyncSessionList.listenerMainThread = AsyncOperationListener { operation ->
-            (operation.result as List<YourListedProduct> ).mapTo(queryResult) {it}
+            Log.i("inside", "blshh " + operation.result)
+            (operation.result as List<YourListedProduct>).forEach{ list->
+                val chip = Chip(context)
+                chip.text = list.listName
 
-            if (!queryResult.isNullOrEmpty()) {
-                queryResult.forEach{ list->
-                    val chip = Chip(context)
-                    chip.text = list.listName
+                // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
+                val chipColor: Int = Color.rgb(Random.nextInt(180),Random.nextInt(180),Random.nextInt(180) )
+                chip.chipBackgroundColor = ColorStateList.valueOf(chipColor)
+                chip.setTextColor(Color.WHITE)
 
-                    // set a random color to the chip's background, we want a dark background as our text color is white so we will limit our rgb to 180
-                    val chipColor: Int = Color.rgb(Random.nextInt(180),Random.nextInt(180),Random.nextInt(180) )
-                    chip.chipBackgroundColor = ColorStateList.valueOf(chipColor)
-                    chip.setTextColor(Color.WHITE)
-
-                    // open list when the user clicks on chip
-                    chip.setOnClickListener {
-                        activity?.startActivity(Intent(activity, ProductListActivity::class.java).apply {
-                            putExtra(KEY_LIST_ID, list.listId)
-                            putExtra(KEY_LIST_NAME, list.listName)
-                        })
-                    }
-                    binding.listChips.addView(chip)
+                // open list when the user clicks on chip
+                chip.setOnClickListener {
+                    ProductListActivity.start(requireContext() ,list.listId,list.listName)
                 }
+                binding.listChips.addView(chip)
                 binding.actionAddToListButtonLayout.background = ResourcesCompat.getDrawable(resources,R.color.grey_300,null)
                 binding.actionButtonsLayout.updatePadding(bottom=0,top=0)
                 binding.listChips.visibility = View.VISIBLE
