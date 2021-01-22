@@ -23,13 +23,13 @@
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
+            android:contentDescription="@null"
+            app:flow_horizontalBias="0.5"
             app:layout_constraintBottom_toTopOf="@id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
             app:layout_constraintVertical_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:flow_horizontalBias="0.5"
-            android:contentDescription="@null"
             app:srcCompat="@drawable/ic_openfacts_logo_no_tagline" />
 
         <LinearLayout
@@ -42,7 +42,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
-            app:layout_constraintVertical_bias="0.3">
+            app:layout_constraintVertical_bias="0.32">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -122,11 +122,74 @@
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relTos"
+                android:layout_marginTop="20dp">
+
+                <CheckBox
+                    android:id="@+id/checkboxTos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:checked="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/checkboxTos"
+                    android:id="@+id/tvTos" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relFoodPro"
+                android:layout_marginTop="5dp">
+
+                <CheckBox
+                    android:id="@+id/checkboxFoodPro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:checked="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/checkboxFoodPro"
+                    android:text="@string/foodProducer" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relNewsLetter"
+                android:layout_marginTop="5dp">
+
+                <CheckBox
+                    android:id="@+id/checkboxNewsLetter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:checked="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/checkboxNewsLetter"
+                    android:text="@string/subsNewsLetter" />
+            </RelativeLayout>
+
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/rounded_button"
                 android:text="@string/signup"
                 android:textColor="@android:color/white" />
@@ -137,7 +200,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:padding="12sp"
+                android:padding="8sp"
                 android:text="@string/log_in"
                 android:textColor="@color/primary"
                 android:textStyle="bold" />

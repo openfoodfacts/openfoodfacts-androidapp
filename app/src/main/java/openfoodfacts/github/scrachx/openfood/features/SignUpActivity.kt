@@ -17,10 +17,20 @@ package openfoodfacts.github.scrachx.openfood.features
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
+import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
+import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivitySignupBinding
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 
@@ -32,6 +42,10 @@ class SignUpActivity : AppCompatActivity() {
     private var _binding: ActivitySignupBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var customTabActivityHelper: CustomTabActivityHelper
+
+    private var termsOfServiceUri: Uri? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (resources.getBoolean(R.bool.portrait_only)) {
@@ -39,43 +53,68 @@ class SignUpActivity : AppCompatActivity() {
         }
         _binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        termsOfServiceUri = Uri.parse(getString(R.string.tos_url))
 
         setSupportActionBar(binding.toolbarLayout.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title=getString(R.string.signup)
-        binding.btnSignup.setOnClickListener{ doAttemptSignUp()}
+        supportActionBar?.title = getString(R.string.signup)
+
+        customTabActivityHelper = CustomTabActivityHelper()
+        customTabActivityHelper.connectionCallback = object : CustomTabActivityHelper.ConnectionCallback {
+            override fun onCustomTabsConnected() {
+            }
+
+            override fun onCustomTabsDisconnected() {
+                //TODO find out what do do with it
+            }
+        }
+        customTabActivityHelper.mayLaunchUrl(termsOfServiceUri, null, null)
+
+        binding.relTos.setOnClickListener {
+            binding.checkboxTos.isChecked = !binding.checkboxTos.isChecked
+        }
+        binding.relFoodPro.setOnClickListener {
+            binding.checkboxFoodPro.isChecked = !binding.checkboxFoodPro.isChecked
+        }
+        binding.relNewsLetter.setOnClickListener {
+            binding.checkboxNewsLetter.isChecked = !binding.checkboxNewsLetter.isChecked
+        }
+        binding.btnSignup.setOnClickListener {
+            doAttemptSignUp()
+        }
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+        spanTos()
     }
 
-    private fun doAttemptSignUp(){
+    private fun doAttemptSignUp() {
         Utils.hideKeyboard(this)
 
-        val name=binding.signupName.text.toString()
-        val email=binding.signupInput.text.toString()
-        val username=binding.signupUserName.text.toString()
-        val password=binding.passInput.text.toString()
-        val confirmPassword=binding.passConfirmInput.text.toString()
+        val name = binding.signupName.text.toString()
+        val email = binding.signupInput.text.toString()
+        val username = binding.signupUserName.text.toString()
+        val password = binding.passInput.text.toString()
+        val confirmPassword = binding.passConfirmInput.text.toString()
 
-        if(name.isBlank()){
-            binding.signupName.error=getString(R.string.error_field_required)
+        if (name.isBlank()) {
+            binding.signupName.error = getString(R.string.error_field_required)
             binding.signupName.requestFocus()
             return
         }
-        if(email.isBlank()){
-            binding.signupInput.error=getString(R.string.error_field_required)
+        if (email.isBlank()) {
+            binding.signupInput.error = getString(R.string.error_field_required)
             binding.signupInput.requestFocus()
             return
         }
-        if(username.isBlank()){
-            binding.signupUserName.error=getString(R.string.error_field_required)
+        if (username.isBlank()) {
+            binding.signupUserName.error = getString(R.string.error_field_required)
             binding.signupUserName.requestFocus()
             return
         }
-        if(password.isBlank()){
-            binding.passInput.error=getString(R.string.error_field_required)
+        if (password.isBlank()) {
+            binding.passInput.error = getString(R.string.error_field_required)
             binding.passInput.requestFocus()
             return
         }
@@ -84,26 +123,48 @@ class SignUpActivity : AppCompatActivity() {
             binding.passInput.requestFocus()
             return
         }
-        if(confirmPassword.isBlank()){
-            binding.passConfirmInput.error=getString(R.string.error_field_required)
+        if (confirmPassword.isBlank()) {
+            binding.passConfirmInput.error = getString(R.string.error_field_required)
             binding.passConfirmInput.requestFocus()
             return
         }
-        if(password != confirmPassword){
+        if (password != confirmPassword) {
             binding.passConfirmInput.error = getText(R.string.confirm_password_error)
             binding.passConfirmInput.requestFocus()
+            return
+        }
+        if (!binding.checkboxTos.isChecked) {
+            Toast.makeText(this, getString(R.string.acceptTos), Toast.LENGTH_SHORT).show()
             return
         }
         // End checks
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 super.onBackPressed()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun spanTos() {
+        val stringTos = getString(R.string.tos)
+        val spannableString = SpannableString(stringTos)
+        val clickableSpan: ClickableSpan = object : ClickableSpan() {
+            override fun onClick(view: View) {
+                openTermsOfService()
+            }
+        }
+        spannableString.setSpan(clickableSpan, stringTos.indexOf("Terms"), stringTos.indexOf("Terms") + 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.tvTos.text = spannableString
+        binding.tvTos.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    private fun openTermsOfService() {
+        val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(baseContext, customTabActivityHelper.session)
+        CustomTabActivityHelper.openCustomTab(this, customTabsIntent, termsOfServiceUri!!, WebViewFallback())
     }
 }
