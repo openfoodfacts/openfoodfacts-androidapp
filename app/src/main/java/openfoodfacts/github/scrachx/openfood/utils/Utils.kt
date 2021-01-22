@@ -310,7 +310,7 @@ object Utils {
 
 }
 
-fun isAllGranted(grantResults: Map<String?, Boolean?>) = grantResults.containsValue(false)
+fun isAllGranted(grantResults: Map<String?, Boolean?>) = grantResults.containsValue(true)
 
 fun isAllGranted(grantResults: IntArray) =
         grantResults.isNotEmpty() && grantResults.none { it != PackageManager.PERMISSION_GRANTED }
