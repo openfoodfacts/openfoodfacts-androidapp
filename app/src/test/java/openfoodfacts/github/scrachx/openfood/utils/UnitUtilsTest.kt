@@ -21,6 +21,7 @@ import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.sodiumToSalt
 import org.junit.Assert
 import org.junit.Test
 import org.junit.function.ThrowingRunnable
+import java.util.*
 
 /**
  *
@@ -28,25 +29,24 @@ import org.junit.function.ThrowingRunnable
 class UnitUtilsTest {
     @Test
     fun testGetServingInL() {
-        assertThat(getServingInL("1l")).isEqualTo("1l")
-        assertThat(getServingInL("33.814oz")).isEqualTo("1.0 l")
-        assertThat(getServingInL("33.814 oz")).isEqualTo("1.0 l")
+        assertThat(getServingInL("1l", Locale.getDefault())).isEqualTo("1 l")
+        assertThat(getServingInL("33.814oz", Locale.getDefault())).isEqualTo("1 l")
+        assertThat(getServingInL("33.814 oz", Locale.getDefault())).isEqualTo("1 l")
     }
 
     @Test
     fun testGetServingInOz() {
-        assertThat(getServingInOz("1oz")).isEqualTo("1oz")
-        // DEPENDS ON LOCALE
-        /*
-        assertThat(UnitUtils.getServingInOz("0.0295735l")).isEqualTo("1.00 oz");
-        assertThat(UnitUtils.getServingInOz("0.0295735 l")).isEqualTo("1.00 oz");
+        assertThat(getServingInOz("1oz", Locale.getDefault())).isEqualTo("1 oz")
 
-        assertThat(UnitUtils.getServingInOz("2.95735cl")).isEqualTo("1 oz");
-        assertThat(UnitUtils.getServingInOz("2.95735 cl")).isEqualTo("1 oz");
+        assertThat(getServingInOz("0.0295735l", Locale.ENGLISH)).isEqualTo("1 oz")
+        assertThat(getServingInOz("0.0295735 l", Locale.ENGLISH)).isEqualTo("1 oz")
 
-        assertThat(UnitUtils.getServingInOz("29.5735ml")).isEqualTo("1 oz");
-        assertThat(UnitUtils.getServingInOz("29.5735 ml")).isEqualTo("1 oz");
-        */
+        assertThat(getServingInOz("2.95735cl", Locale.ENGLISH)).isEqualTo("1 oz")
+        assertThat(getServingInOz("2.95735 cl", Locale.ENGLISH)).isEqualTo("1 oz")
+
+        assertThat(getServingInOz("29.5735ml", Locale.ENGLISH)).isEqualTo("1 oz")
+        assertThat(getServingInOz("29.5735 ml", Locale.ENGLISH)).isEqualTo("1 oz")
+
     }
 
     // Not finished yet
@@ -55,7 +55,7 @@ class UnitUtilsTest {
         assertThat(convertFromGram(1f, UNIT_KILOGRAM)).isWithin(DELTA).of(0.001f)
         assertThat(convertFromGram(1f, UNIT_GRAM)).isWithin(DELTA).of(1f)
         assertThat(convertFromGram(1f, UNIT_MILLIGRAM)).isWithin(DELTA).of(1000f)
-        assertThat(convertFromGram(1f, UNIT_MICROGRAM)).isWithin(DELTA).of((1000 * 1000).toFloat())
+        assertThat(convertFromGram(1f, UNIT_MICROGRAM)).isWithin(DELTA).of(1000 * 1000f)
     }
 
     @Test

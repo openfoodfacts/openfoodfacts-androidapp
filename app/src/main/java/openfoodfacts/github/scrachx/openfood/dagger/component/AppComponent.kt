@@ -19,10 +19,8 @@ interface AppComponent {
     object Initializer {
         @JvmStatic
         @Synchronized
-        fun init(appModule: AppModule?): AppComponent {
-            return DaggerAppComponent.builder()
-                    .appModule(appModule)
-                    .build()
-        }
+        fun init(appModule: AppModule?): AppComponent = DaggerAppComponent.builder()
+                .appModule(appModule)
+                .build()
     }
 }

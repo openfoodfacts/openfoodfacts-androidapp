@@ -265,7 +265,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
     private fun preFillValuesFromOffline() {
-        val productDetails = mOfflineSavedProduct!!.productDetailsMap
+        val productDetails = mOfflineSavedProduct!!.productDetails
         if (productDetails != null) {
             if (productDetails["image_nutrition_facts"] != null) {
                 imagePath = productDetails["image_nutrition_facts"]

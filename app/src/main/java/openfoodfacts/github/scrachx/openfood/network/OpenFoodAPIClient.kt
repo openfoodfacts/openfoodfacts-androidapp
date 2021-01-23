@@ -445,13 +445,13 @@ class OpenFoodAPIClient @JvmOverloads constructor(
 
         fun HistoryProductDao.addToHistorySync(product: OfflineSavedProduct) {
             val historyProducts = queryBuilder().where(HistoryProductDao.Properties.Barcode.eq(product.barcode)).list()
-            val productDetails = product.productDetailsMap
+            val productDetails = product.productDetails
             val hp = HistoryProduct(
                     product.name,
-                    productDetails?.get(ApiFields.Keys.ADD_BRANDS),
+                    productDetails[ApiFields.Keys.ADD_BRANDS],
                     product.imageFrontLocalUrl,
                     product.barcode,
-                    productDetails?.get(ApiFields.Keys.QUANTITY),
+                    productDetails[ApiFields.Keys.QUANTITY],
                     null,
                     null,
                     null

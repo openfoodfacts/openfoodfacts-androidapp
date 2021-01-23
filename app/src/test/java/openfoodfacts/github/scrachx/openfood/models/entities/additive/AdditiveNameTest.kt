@@ -43,17 +43,27 @@ class AdditiveNameTest {
 
     @Test
     fun constructorWithWikiDataId_setsIsWikiDataIdPresentTrue() {
-        mAdditiveName = AdditiveName("AdditiveTag", "En", "Name",
-                null, "WikiDatId")
+        mAdditiveName = AdditiveName(
+                "AdditiveTag",
+                "En",
+                "Name",
+                null,
+                "WikiDatId"
+        )
         assertThat(mAdditiveName.isWikiDataIdPresent).isTrue()
     }
 
     @Test
     fun constructorsWithoutWikiDataId_setIsWikiDataIdPresentFalse() {
         // TODO: update empty constructor to set isWikiDataIdPresent to false
-        mAdditiveName = AdditiveName("AdditiveTag", "Language",
-                "Name", "no")
+        mAdditiveName = AdditiveName(
+                "AdditiveTag",
+                "Language",
+                "Name",
+                "no"
+        )
         assertThat(mAdditiveName.isWikiDataIdPresent).isFalse()
+
         mAdditiveName = AdditiveName("Name")
         assertThat(mAdditiveName.isWikiDataIdPresent).isFalse()
     }

@@ -537,9 +537,8 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     @Subscribe
     fun onEventBusProductNeedsRefreshEvent(event: ProductNeedsRefreshEvent) {
-        val lastBarcode = lastBarcode ?: return
         if (event.barcode == lastBarcode) {
-            runOnUiThread { setShownProduct(lastBarcode) }
+            runOnUiThread { setShownProduct(event.barcode) }
         }
     }
 

@@ -102,8 +102,10 @@ dependencies {
     // Database
     implementation("org.greenrobot:greendao:${rootProject.extra["greendaoVersion"]}")
 
-    //Event bus
-    implementation("org.greenrobot:eventbus:3.2.0")
+    // Event bus and index
+    val eventBusVersion = "3.2.0"
+    implementation("org.greenrobot:eventbus:$eventBusVersion")
+    kapt("org.greenrobot:eventbus-annotation-processor:$eventBusVersion")
 
     implementation("com.google.android.material:material:1.2.1")
 
@@ -341,6 +343,13 @@ android {
         // avoid "Method ... not mocked."
         unitTests.isReturnDefaultValues = true
         execution = "ANDROIDX_TEST_ORCHESTRATOR"
+
+    }
+}
+
+kapt {
+    arguments {
+        arg("eventBusIndex", "openfoodfacts.github.scrachx.openfood.app.OFFEventsIndex")
     }
 }
 

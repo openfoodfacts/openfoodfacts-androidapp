@@ -5,24 +5,24 @@ import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAG
 import openfoodfacts.github.scrachx.openfood.models.LanguageCodeTestData.LANGUAGE_CODE_FRENCH
 import org.junit.Before
 import org.junit.Test
-import java.util.*
 
 /**
  * Tests for [AdditiveResponse]
  */
 class AdditiveResponseTest {
-    private val mStringMap = HashMap<String, String>()
-    private lateinit var mAdditiveResponse: AdditiveResponse
+    private lateinit var mStringMap: Map<String, String>
 
     @Before
     fun setup() {
-        mStringMap[LANGUAGE_CODE_ENGLISH] = AdditiveResponseTestData.VINEGAR_EN
-        mStringMap[LANGUAGE_CODE_FRENCH] = AdditiveResponseTestData.VINEGAR_FR
+        mStringMap = mapOf(
+                LANGUAGE_CODE_ENGLISH to AdditiveResponseTestData.VINEGAR_EN,
+                LANGUAGE_CODE_FRENCH to AdditiveResponseTestData.VINEGAR_FR
+        )
     }
 
     @Test
     fun mapWithoutWikiDataId_returnsAdditiveWithNamesWithoutWikiDataId() {
-        mAdditiveResponse = AdditiveResponse(AdditiveResponseTestData.ADDITIVE_TAG, mStringMap, null)
+        val mAdditiveResponse = AdditiveResponse(AdditiveResponseTestData.ADDITIVE_TAG, mStringMap, null)
         val additive = mAdditiveResponse.map()
         assertThat(additive.tag).isEqualTo(AdditiveResponseTestData.ADDITIVE_TAG)
         assertThat(additive.names).hasSize(2)
@@ -40,7 +40,7 @@ class AdditiveResponseTest {
 
     @Test
     fun mapWithWikiDataId_returnsAdditiveWithNamesWithWikiDataId() {
-        mAdditiveResponse = AdditiveResponse(
+        val mAdditiveResponse = AdditiveResponse(
                 AdditiveResponseTestData.ADDITIVE_TAG,
                 mStringMap,
                 null,

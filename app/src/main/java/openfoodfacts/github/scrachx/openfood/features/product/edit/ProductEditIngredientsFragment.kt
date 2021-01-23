@@ -240,7 +240,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
     private fun preFillValuesForOffline() {
-        mOfflineSavedProduct!!.productDetailsMap?.toMutableMap()?.let { productDetails = it }
+        productDetails = mOfflineSavedProduct!!.productDetails.toMutableMap()
         if (getImageIngredients() != null) {
             binding.imageProgress.visibility = View.VISIBLE
             picassoBuilder(requireContext())

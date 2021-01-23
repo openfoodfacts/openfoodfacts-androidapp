@@ -13,7 +13,7 @@ class AllergenResponseTest {
     lateinit var nameMap: MutableMap<String, String>
     @Before
     fun setUp() {
-        nameMap = hashMapOf()
+        nameMap = mutableMapOf()
     }
 
     @Test

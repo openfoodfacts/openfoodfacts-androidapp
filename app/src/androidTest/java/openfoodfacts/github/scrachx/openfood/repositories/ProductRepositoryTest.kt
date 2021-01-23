@@ -88,7 +88,7 @@ class ProductRepositoryTest {
                 daoSession.allergenDao.deleteAll()
                 db.setTransactionSuccessful()
             } catch (e: Exception) {
-                Log.e("openfoodfacts.github.scrachx.openfood.repositories.ProductRepositoryTest", "error in transaction", e)
+                Log.e(this::class.simpleName, "Error in transaction.", e)
             } finally {
                 db.endTransaction()
             }

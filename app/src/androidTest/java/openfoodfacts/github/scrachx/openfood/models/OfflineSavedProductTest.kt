@@ -5,7 +5,6 @@ import androidx.test.filters.SmallTest
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,28 +19,23 @@ class OfflineSavedProductTest {
 
     @Before
     fun setup() {
-        offlineSavedProduct = OfflineSavedProduct()
+        offlineSavedProduct = OfflineSavedProduct(BARCODE, mapOf())
     }
 
     @Test
-    fun getBarcodeWithNullBarcode_returnsNull() {
-        assertNull(offlineSavedProduct.barcode)
+    fun getDetails_returnsEmptyMap() {
+        assertEquals(mapOf<String, String>(), offlineSavedProduct.productDetails)
     }
 
     @Test
     fun getBarcode_returnsBarcode() {
-        offlineSavedProduct.barcode = BARCODE
         assertEquals(BARCODE, offlineSavedProduct.barcode)
     }
 
     @Test
-    fun getProductDetailsMapWithNullDetails_returnsNull() {
-        assertNull(offlineSavedProduct.productDetailsMap)
-    }
-
-    @Test
     fun getProductDetailsMap_returnsProductDetailsMap() {
-        val productDetails = hashMapOf(
+
+        val productDetails = mapOf(
                 ApiFields.Keys.LANG to LANG,
                 ApiFields.Keys.PRODUCT_NAME to PRODUCT_NAME,
                 ApiFields.Keys.QUANTITY to QUANTITY,
@@ -61,9 +55,8 @@ class OfflineSavedProductTest {
                 ApiFields.Keys.NUTRIMENT_FAT to FAT,
                 ApiFields.Keys.NUTRIMENT_FAT_UNIT to FAT_UNIT
         )
-
-        offlineSavedProduct.setProductDetailsMap(productDetails)
-        assertEquals(productDetails, offlineSavedProduct.productDetailsMap)
+        offlineSavedProduct.productDetails = productDetails
+        assertEquals(productDetails, offlineSavedProduct.productDetails)
     }
 
     companion object {

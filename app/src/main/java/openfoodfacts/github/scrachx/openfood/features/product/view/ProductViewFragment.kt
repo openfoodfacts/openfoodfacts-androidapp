@@ -26,6 +26,8 @@ import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditAc
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.Companion.onOptionsItemSelected
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.Companion.setupViewPager
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction.PERFORM_OCR
+import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity.ShowIngredientsAction.SEND_UPDATED
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.IngredientsProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.summary.SummaryProductFragment
 import openfoodfacts.github.scrachx.openfood.models.ProductState
@@ -112,14 +114,13 @@ class ProductViewFragment : Fragment(), OnRefreshListener {
 
     fun showIngredientsTab(action: ShowIngredientsAction) {
         if (adapterResult.itemCount == 0) return
-        for (i in 0 until adapterResult.itemCount) {
+        (0 until adapterResult.itemCount).forEach { i ->
             val fragment = adapterResult.createFragment(i)
             if (fragment is IngredientsProductFragment) {
                 binding.pager.currentItem = i
-                if (action === ShowIngredientsAction.PERFORM_OCR) {
-                    fragment.extractIngredients()
-                } else if (action === ShowIngredientsAction.SEND_UPDATED) {
-                    fragment.changeIngImage()
+                when (action) {
+                    PERFORM_OCR -> fragment.extractIngredients()
+                    SEND_UPDATED -> fragment.changeIngImage()
                 }
                 return
             }

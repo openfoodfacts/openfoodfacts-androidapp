@@ -5,6 +5,8 @@ import android.content.pm.PackageManager
 import com.google.common.truth.Truth.assertThat
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.models.Product
+import openfoodfacts.github.scrachx.openfood.utils.UnitUtils.getServingInOz
+import openfoodfacts.github.scrachx.openfood.utils.Utils.getRoundNumber
 import org.junit.Test
 import org.mockito.Mockito.mock
 import java.util.*
@@ -39,17 +41,16 @@ class UtilsTest {
 
     @Test
     fun getRoundNumber() {
-        assertThat(Utils.getRoundNumber("")).isEqualTo("?")
-        assertThat(Utils.getRoundNumber("test")).isEqualTo("?")
-        assertThat(Utils.getRoundNumber("0")).isEqualTo("0")
-        assertThat(Utils.getRoundNumber(0.0f)).isEqualTo("0")
-        assertThat(Utils.getRoundNumber(1.00f)).isEqualTo("1")
-        val enLocale = Locale("en")
-        assertThat(Utils.getRoundNumber(1.70f, enLocale)).isEqualTo("1.7")
-        assertThat(Utils.getRoundNumber(1.75f, enLocale)).isEqualTo("1.75")
-        assertThat(Utils.getRoundNumber(1.754f, enLocale)).isEqualTo("1.75")
-        assertThat(Utils.getRoundNumber(1.756f, enLocale)).isEqualTo("1.76")
-        assertThat(Utils.getRoundNumber(1.756f, enLocale)).isEqualTo("1.76")
+        assertThat(getRoundNumber("")).isEqualTo("?")
+        assertThat(getRoundNumber("test")).isEqualTo("?")
+        assertThat(getRoundNumber("0")).isEqualTo("0")
+        assertThat(getRoundNumber(0.0f)).isEqualTo("0")
+        assertThat(getRoundNumber(1.00f)).isEqualTo("1")
+        assertThat(getRoundNumber(1.70f, Locale.ENGLISH)).isEqualTo("1.7")
+        assertThat(getRoundNumber(1.75f, Locale.ENGLISH)).isEqualTo("1.75")
+        assertThat(getRoundNumber(1.754f, Locale.ENGLISH)).isEqualTo("1.75")
+        assertThat(getRoundNumber(1.756f, Locale.ENGLISH)).isEqualTo("1.76")
+        assertThat(getRoundNumber(1.756f, Locale.ENGLISH)).isEqualTo("1.76")
     }
 
     @Test
@@ -73,19 +74,19 @@ class UtilsTest {
 
     @Test
     fun getServingInOz_from_ml() {
-        assertThat(UnitUtils.getServingInOz("100 ml"))
+        assertThat(getServingInOz("100 ml", Locale.getDefault()))
                 .isEqualTo(String.format(Locale.getDefault(), "%.2f", 3.38) + " oz")
     }
 
     @Test
     fun getServingInOz_from_cl() {
-        assertThat(UnitUtils.getServingInOz("250 cl"))
+        assertThat(getServingInOz("250 cl", Locale.getDefault()))
                 .isEqualTo(String.format(Locale.getDefault(), "%.2f", 84.53) + " oz")
     }
 
     @Test
     fun getServingInOz_from_l() {
-        assertThat(UnitUtils.getServingInOz("3 l"))
+        assertThat(getServingInOz("3 l", Locale.getDefault()))
                 .isEqualTo(String.format(Locale.getDefault(), "%.2f", 101.44) + " oz")
     }
 }

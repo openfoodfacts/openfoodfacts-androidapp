@@ -14,8 +14,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito
+import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.Mockito.`when` as mockitoWhen
 
 /**
  * Tests for [Label]
@@ -34,22 +35,22 @@ class LabelTest {
 
     @Before
     fun setup() {
-        Mockito.`when`(mockDaoSession!!.labelDao).thenReturn(mockLabelDao)
-        Mockito.`when`(mockDaoSession.labelNameDao).thenReturn(mockLabelNameDao)
+        mockitoWhen(mockDaoSession!!.labelDao).thenReturn(mockLabelDao)
+        mockitoWhen(mockDaoSession.labelNameDao).thenReturn(mockLabelNameDao)
         val labelName1 = LabelName(LABEL_TAG, LANGUAGE_CODE_ENGLISH, LABEL_NAME_EN)
         val labelName2 = LabelName(LABEL_TAG, LANGUAGE_CODE_FRENCH, LABEL_NAME_FR)
-        Mockito.`when`(mockLabelNameDao!!._queryLabel_Names(ArgumentMatchers.any()))
+        mockitoWhen(mockLabelNameDao!!._queryLabel_Names(ArgumentMatchers.any()))
                 .thenReturn(listOf(labelName1, labelName2))
         mLabel = Label()
     }
 
     @Test
-    fun getNamesWithNullNamesAndNullDaoSession_throwsDaoException(): Unit {
+    fun getNamesWithNullNamesAndNullDaoSession_throwsDaoException() {
         Assert.assertThrows(DaoException::class.java) { mLabel!!.names }
     }
 
     @Test
-    fun getNamesWithNullNamesAndNonNullDaoSession_getsNamesFromLabelNameDao(): Unit {
+    fun getNamesWithNullNamesAndNonNullDaoSession_getsNamesFromLabelNameDao() {
         mLabel!!.__setDaoSession(mockDaoSession)
         val labelNames = mLabel!!.names
         Truth.assertThat(labelNames).hasSize(2)
@@ -72,7 +73,7 @@ class LabelTest {
     fun deleteWithNonNullDaoSession_callsDeleteOnLabelDao() {
         mLabel!!.__setDaoSession(mockDaoSession)
         mLabel!!.delete()
-        Mockito.verify(mockLabelDao)!!.delete(mLabel)
+        verify(mockLabelDao)!!.delete(mLabel)
     }
 
     @Test
@@ -84,7 +85,7 @@ class LabelTest {
     fun refreshWithNonNullDaoSession_callsRefreshOnLabelDao() {
         mLabel!!.__setDaoSession(mockDaoSession)
         mLabel!!.refresh()
-        Mockito.verify(mockLabelDao)!!.refresh(mLabel)
+        verify(mockLabelDao)!!.refresh(mLabel)
     }
 
     @Test
@@ -96,7 +97,7 @@ class LabelTest {
     fun updateWithNonNullDaoSession_callsUpdateOnLabelDao() {
         mLabel!!.__setDaoSession(mockDaoSession)
         mLabel!!.update()
-        Mockito.verify(mockLabelDao)!!.update(mLabel)
+        verify(mockLabelDao)!!.update(mLabel)
     }
 
     @Test
@@ -104,6 +105,6 @@ class LabelTest {
         mLabel!!.__setDaoSession(mockDaoSession)
         mLabel!!.resetNames()
         mLabel!!.names
-        Mockito.verify(mockDaoSession)!!.labelNameDao
+        verify(mockDaoSession)!!.labelNameDao
     }
 }

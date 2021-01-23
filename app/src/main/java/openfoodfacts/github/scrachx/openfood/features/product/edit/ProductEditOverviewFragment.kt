@@ -397,7 +397,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      * Pre fill the fields if the product is already present in SavedProductOffline db.
      */
     private fun preFillValuesFromOffline() {
-        val productDetails = savedProduct!!.productDetailsMap
+        val productDetails = savedProduct!!.productDetails
         if (productDetails != null) {
             if (savedProduct!!.imageFrontLocalUrl != null) {
                 binding.imageProgress.visibility = View.VISIBLE

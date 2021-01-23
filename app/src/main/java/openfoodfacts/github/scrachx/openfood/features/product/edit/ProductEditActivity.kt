@@ -189,14 +189,16 @@ class ProductEditActivity : AppCompatActivity() {
             initialValues = mutableMapOf()
         } else if (offlineSavedProduct != null) {
             fragmentsBundle.putSerializable(KEY_EDIT_OFFLINE_PRODUCT, offlineSavedProduct)
+
             // Save the already existing images in productDetails for UI
             imagesFilePath[0] = offlineSavedProduct.imageFront
-            imagesFilePath[1] = offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_INGREDIENTS)
-            imagesFilePath[2] = offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_NUTRITION)
+            imagesFilePath[1] = offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_INGREDIENTS]
+            imagesFilePath[2] = offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_NUTRITION]
+
             // get the status of images from productDetailsMap, whether uploaded or not
-            imageFrontUploaded = "true" == offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_FRONT_UPLOADED)
-            imageIngredientsUploaded = "true" == offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED)
-            imageNutritionFactsUploaded = "true" == offlineSavedProduct.productDetailsMap?.get(ApiFields.Keys.IMAGE_NUTRITION_UPLOADED)
+            imageFrontUploaded = offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_FRONT_UPLOADED].toBoolean()
+            imageIngredientsUploaded = offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED].toBoolean()
+            imageNutritionFactsUploaded = offlineSavedProduct.productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED].toBoolean()
         }
         if (productState == null && offlineSavedProduct == null && mEditProduct == null) {
             Toast.makeText(this, R.string.error_adding_product, Toast.LENGTH_SHORT).show()
@@ -279,18 +281,19 @@ class ProductEditActivity : AppCompatActivity() {
 
         // Add the status of images to the productDetails, whether uploaded or not
         if (imageFrontUploaded) {
-            productDetails[ApiFields.Keys.IMAGE_FRONT_UPLOADED] = "true"
+            productDetails[ApiFields.Keys.IMAGE_FRONT_UPLOADED] = true.toString()
         }
         if (imageIngredientsUploaded) {
-            productDetails[ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED] = "true"
+            productDetails[ApiFields.Keys.IMAGE_INGREDIENTS_UPLOADED] = true.toString()
         }
         if (imageNutritionFactsUploaded) {
-            productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED] = "true"
+            productDetails[ApiFields.Keys.IMAGE_NUTRITION_UPLOADED] = true.toString()
         }
-        val toSaveOfflineProduct = OfflineSavedProduct().apply {
-            this.barcode = this@ProductEditActivity.productDetails["code"]
-            this.productDetailsMap = this@ProductEditActivity.productDetails
-        }
+        val barcode = this@ProductEditActivity.productDetails[ApiFields.Keys.BARCODE]!!
+        val toSaveOfflineProduct = OfflineSavedProduct(
+                barcode,
+                this@ProductEditActivity.productDetails
+        )
         daoSession.offlineSavedProductDao!!.insertOrReplace(toSaveOfflineProduct)
 
         scheduleSync()

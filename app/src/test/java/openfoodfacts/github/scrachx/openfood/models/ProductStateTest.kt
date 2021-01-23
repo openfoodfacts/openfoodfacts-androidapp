@@ -17,7 +17,7 @@ class ProductStateTest {
             setAdditionalProperty(PROPERTY_KEY_1, PROPERTY_VALUE_1)
             setAdditionalProperty(PROPERTY_KEY_2, PROPERTY_VALUE_2)
         }
-        val additionalProperties = hashMapOf<String, Any>(
+        val additionalProperties = mapOf<String, Any>(
                 PROPERTY_KEY_1 to PROPERTY_VALUE_1,
                 PROPERTY_KEY_2 to PROPERTY_VALUE_2
         )

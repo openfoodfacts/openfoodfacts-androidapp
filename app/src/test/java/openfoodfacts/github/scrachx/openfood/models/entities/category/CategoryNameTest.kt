@@ -43,8 +43,7 @@ class CategoryNameTest {
 
     @Test
     fun constructorWithWikiDataId_setsIsWikiDataIdPresentTrue() {
-        mCategoryName = CategoryName("Tag", "en",
-                "Name", "WikiDataId")
+        mCategoryName = CategoryName("Tag", "en", "Name", "WikiDataId")
         assertThat(mCategoryName.isWikiDataIdPresent).isTrue()
     }
 

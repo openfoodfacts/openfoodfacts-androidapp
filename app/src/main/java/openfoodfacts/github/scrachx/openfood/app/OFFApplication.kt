@@ -25,22 +25,25 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPFF
 import openfoodfacts.github.scrachx.openfood.BuildConfig
-import openfoodfacts.github.scrachx.openfood.app.AnalyticsService.init
 import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent
 import openfoodfacts.github.scrachx.openfood.dagger.component.AppComponent.Initializer.init
 import openfoodfacts.github.scrachx.openfood.dagger.module.AppModule
 import openfoodfacts.github.scrachx.openfood.models.DaoMaster
 import openfoodfacts.github.scrachx.openfood.models.DaoSession
 import openfoodfacts.github.scrachx.openfood.utils.OFFDatabaseHelper
+import org.greenrobot.eventbus.EventBus
 import org.greenrobot.greendao.query.QueryBuilder
 import java.io.IOException
+import openfoodfacts.github.scrachx.openfood.app.AnalyticsService.init as initAnalytics
 
 class OFFApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        init()
+        initAnalytics()
+
+        EventBus.builder().addIndex(OFFEventsIndex()).installDefaultEventBus()
 
         // Use only during development: DaoMaster.DevOpenHelper (Drops all table on Upgrade!)
         // Use only during production: OFFDatabaseHelper (see on Upgrade!)

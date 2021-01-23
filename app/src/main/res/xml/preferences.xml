@@ -30,7 +30,7 @@
         <ListPreference
             android:defaultValue="l"
             android:dialogTitle="@string/pref_volume_unit_title"
-            android:key="prefs_volume_unit_key"
+            android:key="@string/pref_volume_unit_key"
             android:title="@string/pref_volume_unit_title"
             app:useSimpleSummaryProvider="true" />
 
@@ -82,7 +82,8 @@
             android:defaultValue="false"
             android:key="@string/pref_low_battery_key"
             android:title="@string/pref_low_battery_title"
-            app:summary="@string/pref_low_battery_summary" />
+            android:summaryOn="@string/pref_low_battery_summary" />
+        android:summaryOff="@string/pref_low_battery_summary" />
 
     </PreferenceCategory>
 
@@ -107,32 +108,36 @@
         <Preference
             android:key="@string/pref_help_translate_key"
             android:title="@string/pref_help_translate_title"
-            app:summary="@string/pref_help_translate_summary" />
+            android:summary="@string/pref_help_translate_summary" />
 
 
         <SwitchPreference
             android:defaultValue="true"
             android:key="cropNewImage"
             android:title="@string/pref_crop_new_images_title"
-            app:summary="@string/pref_crop_new_images_summary" />
+            android:summaryOn="@string/pref_crop_new_images_summary" />
+        android:summaryOff="@string/pref_crop_new_images_summary" />
 
         <SwitchPreference
             android:defaultValue="true"
             android:key="@string/pref_fast_addition_key"
             android:title="@string/pref_fast_addition_title"
-            app:summary="@string/pref_fast_addition_summary" />
+            android:summaryOn="@string/pref_fast_addition_summary" />
+        android:summaryOff="@string/pref_fast_addition_summary" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="@string/pref_contribution_tab_key"
             android:title="@string/pref_contribution_tab_title"
-            app:summary="@string/pref_contribution_tab_summary" />
+            android:summaryOn="@string/pref_contribution_tab_summary" />
+        android:summaryOff="@string/pref_contribution_tab_summary" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="@string/pref_show_product_photos_key"
             android:title="@string/pref_show_product_photos_title"
-            app:summary="@string/pref_show_product_photos_summary" />
+            android:summaryOn="@string/pref_show_product_photos_summary" />
+        android:summaryOff="@string/pref_show_product_photos_summary" />
 
     </PreferenceCategory>
 

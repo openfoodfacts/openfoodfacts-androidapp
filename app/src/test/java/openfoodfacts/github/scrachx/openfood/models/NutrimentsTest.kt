@@ -82,7 +82,7 @@ class NutrimentsTest {
 
     @Test
     fun setAdditionalPropertyWithVitaminName_setsHasVitaminsTrue() {
-        nutriments.setAdditionalProperty(Nutriments.VITAMIN_A, Nutriments.VITAMIN_A)
+        nutriments.setAdditionalProperty(VITAMIN_A, VITAMIN_A)
         assertThat(nutriments.hasVitamins).isTrue()
     }
 

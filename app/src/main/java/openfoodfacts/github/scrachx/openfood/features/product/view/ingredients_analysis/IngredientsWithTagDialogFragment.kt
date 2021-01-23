@@ -87,11 +87,14 @@ class IngredientsWithTagDialogFragment : DialogFragment() {
             Utils.picassoBuilder(requireContext())
                     .load(ingredientsImageUrl)
                     .into(binding.image)
+
             binding.image.setOnClickListener { goToExtract() }
             messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_missing_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
-            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.help_extract_ingredients, typeName.toLowerCase()), HtmlCompat.FROM_HTML_MODE_LEGACY)
+
+            binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.help_extract_ingredients, typeName.toLowerCase(Locale.getDefault())), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.setOnClickListener { goToExtract() }
             binding.helpNeeded.visibility = View.VISIBLE
+
         } else if (showHelpTranslate) {
             messageToBeShown = HtmlCompat.fromHtml(getString(R.string.unknown_status_no_translation), HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.helpNeeded.text = HtmlCompat.fromHtml(getString(R.string.help_translate_ingredients), HtmlCompat.FROM_HTML_MODE_LEGACY)
