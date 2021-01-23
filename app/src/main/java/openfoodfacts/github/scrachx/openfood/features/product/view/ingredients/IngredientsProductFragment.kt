@@ -378,8 +378,8 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     fun extractIngredients() {
-        ingredientExtracted = true
         if (isAdded) {
+            ingredientExtracted = true
             val settings = requireActivity().getLoginPreferences()
             if (settings.getString("user", "")!!.isEmpty()) {
                 showSignInDialog()
