@@ -389,20 +389,6 @@
                         app:message="@string/couldnot_compute_ecoscore_prompt_text"
                         app:shouldDisplayImmediately="false" />
 
-                    <TextView
-                        android:id="@+id/add_label_origin_prompt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/spacing_normal"
-                        android:visibility="gone"
-                        android:gravity="center"
-                        android:textSize="@dimen/font_normal"
-                        android:padding="@dimen/padding_too_short"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tipBoxEcoScore"
-                        tools:text="@string/add_origins_prompt_text"
-                        tools:visibility="visible"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

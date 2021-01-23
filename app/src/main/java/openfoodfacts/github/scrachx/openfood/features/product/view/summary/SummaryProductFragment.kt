@@ -140,11 +140,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
     /**boolean to determine if eco score prompt should be shown*/
     private var showEcoScorePrompt = false
 
-    /**boolean to determine if labels prompt should be shown*/
-    private var showLabelsPrompt = false
-
-    /**boolean to determine if origins prompt should be shown*/
-    private var showOriginsPrompt = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -261,7 +256,7 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         binding.labelsText.visibility = View.VISIBLE
         binding.labelsIcon.visibility = View.VISIBLE
 
-        // Checks if the product belongs in any of the user's list and dislays them as chips if it does
+        // Checks if the product belongs in any of the user's list and displays them as chips if it does
         showListChips()
 
         // Checks the product states_tags to determine which prompt to be shown
@@ -509,14 +504,10 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
         showCategoryPrompt = statesTags.contains("en:categories-to-be-completed") && !hasCategoryInsightQuestion
         showNutrientPrompt = statesTags.contains("en:nutrition-facts-to-be-completed") && product.noNutritionData != "on"
         showEcoScorePrompt = statesTags.contains("en:categories-completed") && (product.ecoscore.isNullOrEmpty() || product.ecoscore.equals("unknown", true))
-        showLabelsPrompt = statesTags.contains("en:labels-to-be-completed")
-        showOriginsPrompt = statesTags.contains("en:origins-to-be-completed")
 
         Log.d(LOG_TAG, "Show category prompt: $showCategoryPrompt")
         Log.d(LOG_TAG, "Show nutrient prompt: $showNutrientPrompt")
         Log.d(LOG_TAG, "Show Eco Score prompt: $showEcoScorePrompt")
-        Log.d(LOG_TAG, "Show labels prompt: $showLabelsPrompt")
-        Log.d(LOG_TAG, "Show origins prompt: $showOriginsPrompt")
 
         if (showEcoScorePrompt) {
             binding.tipBoxEcoScore.loadToolTip()
@@ -539,22 +530,6 @@ class SummaryProductFragment : BaseFragment(), ISummaryProductPresenter.View {
             else -> binding.addNutriscorePrompt.visibility = View.GONE
         }
 
-        binding.addLabelOriginPrompt.visibility = View.VISIBLE
-        when {
-            showLabelsPrompt && showOriginsPrompt -> {
-                // showLabelsPrompt and showOriginsPrompt true
-                binding.addLabelOriginPrompt.text = getString(R.string.add_labels_origins_prompt_text)
-            }
-            showLabelsPrompt -> {
-                // showLabelsPrompt true
-                binding.addLabelOriginPrompt.text = getString(R.string.add_labels_prompt_text)
-            }
-            showOriginsPrompt -> {
-                // showOriginsPrompt true
-                binding.addLabelOriginPrompt.text = getString(R.string.add_origins_prompt_text)
-            }
-            else -> binding.addLabelOriginPrompt.visibility = View.GONE
-        }
     }
 
     override fun showAdditives(additives: List<AdditiveName>) {

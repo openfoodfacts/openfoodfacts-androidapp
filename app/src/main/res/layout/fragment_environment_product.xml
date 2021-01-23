@@ -76,11 +76,23 @@
                     android:visibility="gone"
                     tools:visibility="visible" />
 
+                <TextView
+                    android:id="@+id/add_label_origin_prompt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:textSize="@dimen/font_normal"
+                    android:padding="@dimen/padding_too_short"
+                    tools:text="@string/add_origins_prompt_text"
+                    tools:visibility="visible"/>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/carbon_footprint_cv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     app:cardElevation="4dp">
 
                     <TextView

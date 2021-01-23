@@ -17,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewAc
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Nutriments
+import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
 import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
@@ -29,12 +30,20 @@ class EnvironmentProductFragment : BaseFragment() {
     private var _binding: FragmentEnvironmentProductBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var product: Product
+
     /**
      * boolean to determine if image should be loaded or not
      */
     private var isLowBatteryMode = false
     private var mUrlImage: String? = null
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
+
+    /**boolean to determine if labels prompt should be shown*/
+    private var showLabelsPrompt = false
+
+    /**boolean to determine if origins prompt should be shown*/
+    private var showOriginsPrompt = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentEnvironmentProductBinding.inflate(inflater)
@@ -53,7 +62,7 @@ class EnvironmentProductFragment : BaseFragment() {
             isLowBatteryMode = true
         }
 
-        val product = productState.product!!
+        product = productState.product!!
         val nutriments = product.nutriments
 
         val imagePackagingUrl = product.getImagePackagingUrl(langCode)
@@ -125,6 +134,9 @@ class EnvironmentProductFragment : BaseFragment() {
     override fun refreshView(productState: ProductState) {
         super.refreshView(productState)
         this.productState = productState
+
+        refreshTagsPrompt()
+
     }
 
     private fun openFullScreen() {
@@ -160,6 +172,30 @@ class EnvironmentProductFragment : BaseFragment() {
                 .load(photoFile)
                 .fit()
                 .into(binding.imageViewPackaging)
+    }
+
+    //checks the product states_tags to determine which prompt to be shown
+    private fun refreshTagsPrompt() {
+        val statesTags = product.statesTags
+        showLabelsPrompt = statesTags.contains("en:labels-to-be-completed")
+        showOriginsPrompt = statesTags.contains("en:origins-to-be-completed")
+
+        binding.addLabelOriginPrompt.visibility = View.VISIBLE
+        when {
+            showLabelsPrompt && showOriginsPrompt -> {
+                // showLabelsPrompt and showOriginsPrompt true
+                binding.addLabelOriginPrompt.text = getString(R.string.add_labels_origins_prompt_text)
+            }
+            showLabelsPrompt -> {
+                // showLabelsPrompt true
+                binding.addLabelOriginPrompt.text = getString(R.string.add_labels_prompt_text)
+            }
+            showOriginsPrompt -> {
+                // showOriginsPrompt true
+                binding.addLabelOriginPrompt.text = getString(R.string.add_origins_prompt_text)
+            }
+            else -> binding.addLabelOriginPrompt.visibility = View.GONE
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
