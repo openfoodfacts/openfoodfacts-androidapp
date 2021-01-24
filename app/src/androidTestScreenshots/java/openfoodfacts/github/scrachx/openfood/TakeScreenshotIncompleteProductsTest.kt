@@ -6,7 +6,7 @@ import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotActivityTestRule
 import openfoodfacts.github.scrachx.openfood.test.ScreenshotParameter
-import openfoodfacts.github.scrachx.openfood.utils.SearchInfo
+import openfoodfacts.github.scrachx.openfood.models.SearchInfo
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
