@@ -190,7 +190,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_normal"
-                    android:text="@string/calculate_nutrition_facts" />
+                    android:text="@string/calculate_nutrition_facts"
+                    android:visibility="gone" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/serving_size_card_view"

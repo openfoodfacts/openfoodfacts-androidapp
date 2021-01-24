@@ -324,7 +324,13 @@ class NutritionProductFragment : BaseFragment(), CustomTabActivityHelper.Connect
             nutrimentListItems.add(BoldNutrimentListItem(getString(R.string.nutrition_minerals)))
             nutrimentListItems.addAll(getNutrimentItems(nutriments, Nutriments.MINERALS_MAP))
         }
-        binding.nutrimentsRecyclerView.adapter = NutrimentsGridAdapter(nutrimentListItems)
+
+        // Show nutrition table and nutrition per portion button if nutritional values are available
+        if (nutrimentListItems.size > 1) {
+            binding.calculateNutritionFacts.visibility = VISIBLE
+            binding.nutrimentsRecyclerView.adapter = NutrimentsGridAdapter(nutrimentListItems)
+        }
+
     }
 
     private fun setupNutrientItems(nutriments: Nutriments?) {
