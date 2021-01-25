@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package openfoodfacts.github.scrachx.openfood.features.product.edit
+package openfoodfacts.github.scrachx.openfood.features.product.edit.overview
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -50,8 +49,10 @@ import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductOverviewBinding
 import openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete.EmbCodeAutoCompleteAdapter
 import openfoodfacts.github.scrachx.openfood.features.adapters.autocomplete.PeriodAfterOpeningAutoCompleteAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_PERFORM_OCR
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_SEND_UPDATED
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
@@ -88,9 +89,9 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     private lateinit var appLanguageCode: String
     private lateinit var photoReceiverHandler: PhotoReceiverHandler
 
-    private val categories = arrayListOf<String?>()
-    private val countries = arrayListOf<String>()
-    private val labels = arrayListOf<String>()
+    private val categories = mutableListOf<String?>()
+    private val countries = mutableListOf<String>()
+    private val labels = mutableListOf<String>()
 
     private var barcode: String? = null
     private var editionMode = false
@@ -153,30 +154,31 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         }
 
         product = args.getSerializable("product") as Product?
-        savedProduct = args.getSerializable("edit_offline_product") as OfflineSavedProduct?
+        savedProduct = getEditOfflineProductFromArgs()
         editionMode = args.getBoolean(ProductEditActivity.KEY_IS_EDITING)
 
         binding.barcode.setText(R.string.txtBarcode)
         binding.language.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0)
         binding.sectionManufacturingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
         binding.sectionPurchasingDetails.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+
         if (product != null) {
             barcode = product!!.code
         }
+
         if (editionMode && product != null) {
             barcode = product!!.code
-            var languageToUse = product!!.lang
-            if (product!!.isLanguageSupported(appLanguageCode)) {
-                languageToUse = appLanguageCode
-            }
+
+            val languageToUse = if (product!!.isLanguageSupported(appLanguageCode)) appLanguageCode
+            else product!!.lang
+
             preFillProductValues(getLCOrDefault(languageToUse))
         } else if (savedProduct != null) {
             barcode = savedProduct!!.barcode
             preFillValuesFromOffline()
         } else {
-            //addition
-            val fastAdditionMode = PreferenceManager.getDefaultSharedPreferences(requireContext()).getBoolean("fastAdditionMode", false)
-            enableFastAdditionMode(fastAdditionMode)
+            // Addition
+            enableFastAdditionMode(requireContext().isFastAdditionMode())
         }
 
         binding.barcode.append(" ")
@@ -215,17 +217,17 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      * @param enable
      */
     private fun enableFastAdditionMode(enable: Boolean) {
-        var visibility = View.VISIBLE
-        if (enable) {
-            visibility = View.GONE
-        }
+        val visibility = if (enable) View.GONE else View.VISIBLE
+
         binding.sectionManufacturingDetails.visibility = visibility
         binding.sectionPurchasingDetails.visibility = visibility
         binding.packaging.visibility = visibility
         binding.label.visibility = visibility
         binding.periodOfTimeAfterOpeningTil.visibility = visibility
+
         changeVisibilityManufacturingSectionTo(visibility)
         changePurchasingSectionVisibilityTo(visibility)
+
         binding.greyLine2.visibility = visibility
         binding.greyLine3.visibility = visibility
         binding.greyLine4.visibility = visibility
@@ -398,52 +400,45 @@ class ProductEditOverviewFragment : ProductEditFragment() {
      */
     private fun preFillValuesFromOffline() {
         val productDetails = savedProduct!!.productDetails
-        if (productDetails != null) {
-            if (savedProduct!!.imageFrontLocalUrl != null) {
-                binding.imageProgress.visibility = View.VISIBLE
-                binding.btnEditImgFront.visibility = View.INVISIBLE
-                frontImageUrl = savedProduct!!.imageFrontLocalUrl
-                Picasso.get()
-                        .load(frontImageUrl)
-                        .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
-                        .centerInside()
-                        .into(binding.imgFront, object : Callback {
-                            override fun onSuccess() {
-                                frontImageLoaded()
-                            }
-
-                            override fun onError(ex: Exception) {
-                                frontImageLoaded()
-                            }
-                        })
-            }
-            val offLineProductLanguage = savedProduct!!.language
-            offLineProductLanguage?.let {
-                if (it.isNotEmpty()) setProductLanguage(it)
-            }
-            val offlineProductName = savedProduct!!.name
-            if (!TextUtils.isEmpty(offlineProductName)) {
-                binding.name.setText(offlineProductName)
-            }
-            if (productDetails[ApiFields.Keys.QUANTITY] != null) {
-                binding.quantity.setText(productDetails[ApiFields.Keys.QUANTITY])
-            }
-            preFillChip(productDetails, ApiFields.Keys.BRANDS, binding.brand)
-            preFillChip(productDetails, ApiFields.Keys.PACKAGING, binding.packaging)
-            preFillChip(productDetails, ApiFields.Keys.CATEGORIES, binding.categories)
-            preFillChip(productDetails, ApiFields.Keys.LABELS, binding.label)
-            preFillChip(productDetails, ApiFields.Keys.ORIGINS, binding.originOfIngredients)
-            if (productDetails[ApiFields.Keys.MANUFACTURING_PLACES] != null) {
-                binding.manufacturingPlace.setText(productDetails[ApiFields.Keys.MANUFACTURING_PLACES])
-            }
-            preFillChip(productDetails, ApiFields.Keys.EMB_CODES, binding.embCode)
-            if (productDetails[ApiFields.Keys.LINK] != null) {
-                binding.link.setText(productDetails[ApiFields.Keys.LINK])
-            }
-            preFillChip(productDetails, ApiFields.Keys.ADD_PURCHASE, binding.countryWherePurchased)
-            preFillChip(productDetails, ApiFields.Keys.ADD_STORES, binding.stores)
-            preFillChip(productDetails, ApiFields.Keys.ADD_COUNTRIES, binding.countriesWhereSold)
+        if (savedProduct!!.imageFrontLocalUrl != null) {
+            binding.imageProgress.visibility = View.VISIBLE
+            binding.btnEditImgFront.visibility = View.INVISIBLE
+            frontImageUrl = savedProduct!!.imageFrontLocalUrl
+            Picasso.get()
+                    .load(frontImageUrl)
+                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
+                    .centerInside()
+                    .into(binding.imgFront, object : Callback {
+                        override fun onSuccess() = frontImageLoaded()
+                        override fun onError(ex: Exception) = frontImageLoaded()
+                    })
         }
+        val offLineProductLanguage = savedProduct!!.language
+        offLineProductLanguage?.let {
+            if (it.isNotEmpty()) setProductLanguage(it)
+        }
+        val offlineProductName = savedProduct!!.name
+        if (!offlineProductName.isNullOrEmpty()) {
+            binding.name.setText(offlineProductName)
+        }
+        if (productDetails[ApiFields.Keys.QUANTITY] != null) {
+            binding.quantity.setText(productDetails[ApiFields.Keys.QUANTITY])
+        }
+        preFillChip(productDetails, ApiFields.Keys.BRANDS, binding.brand)
+        preFillChip(productDetails, ApiFields.Keys.PACKAGING, binding.packaging)
+        preFillChip(productDetails, ApiFields.Keys.CATEGORIES, binding.categories)
+        preFillChip(productDetails, ApiFields.Keys.LABELS, binding.label)
+        preFillChip(productDetails, ApiFields.Keys.ORIGINS, binding.originOfIngredients)
+        if (productDetails[ApiFields.Keys.MANUFACTURING_PLACES] != null) {
+            binding.manufacturingPlace.setText(productDetails[ApiFields.Keys.MANUFACTURING_PLACES])
+        }
+        preFillChip(productDetails, ApiFields.Keys.EMB_CODES, binding.embCode)
+        if (productDetails[ApiFields.Keys.LINK] != null) {
+            binding.link.setText(productDetails[ApiFields.Keys.LINK])
+        }
+        preFillChip(productDetails, ApiFields.Keys.ADD_PURCHASE, binding.countryWherePurchased)
+        preFillChip(productDetails, ApiFields.Keys.ADD_STORES, binding.stores)
+        preFillChip(productDetails, ApiFields.Keys.ADD_COUNTRIES, binding.countriesWhereSold)
     }
 
     private fun frontImageLoaded() {
@@ -458,13 +453,20 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         }
     }
 
-    private fun initializeChips() {
-        val nachoTextViews = arrayOf(binding.brand, binding.packaging, binding.categories, binding.label, binding.originOfIngredients, binding.embCode, binding.countryWherePurchased, binding.stores, binding.countriesWhereSold)
-        for (nachoTextView in nachoTextViews) {
-            nachoTextView.addChipTerminator(',', ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN)
-            nachoTextView.setNachoValidator(ChipifyingNachoValidator())
-            nachoTextView.enableEditChipOnTouch(false, true)
-        }
+    private fun initializeChips() = listOf(
+            binding.brand,
+            binding.packaging,
+            binding.categories,
+            binding.label,
+            binding.originOfIngredients,
+            binding.embCode,
+            binding.countryWherePurchased,
+            binding.stores,
+            binding.countriesWhereSold
+    ).forEach { nachoTextView ->
+        nachoTextView.addChipTerminator(',', ChipTerminatorHandler.BEHAVIOR_CHIPIFY_CURRENT_TOKEN)
+        nachoTextView.setNachoValidator(ChipifyingNachoValidator())
+        nachoTextView.enableEditChipOnTouch(false, true)
     }
 
     /**
@@ -849,7 +851,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         photoReceiverHandler.onActivityResult(this, requestCode, resultCode, data)
     }
 
-    fun showImageProgress() {
+    override fun showImageProgress() {
         if (!isAdded) return
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE

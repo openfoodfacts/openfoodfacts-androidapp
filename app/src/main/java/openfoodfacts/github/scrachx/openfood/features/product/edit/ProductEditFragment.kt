@@ -24,4 +24,6 @@ abstract class ProductEditFragment : BaseFragment() {
     abstract fun addUpdatedFieldsToMap(targetMap: MutableMap<String, String?>)
 
     abstract fun hideImageProgress(errorInUploading: Boolean, message: String)
+
+    abstract fun showImageProgress()
 }

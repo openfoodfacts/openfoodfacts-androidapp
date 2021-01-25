@@ -46,12 +46,12 @@ import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication.Companion.appComponent
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityEditProductBinding
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
+import openfoodfacts.github.scrachx.openfood.features.product.edit.overview.ProductEditOverviewFragment
 import openfoodfacts.github.scrachx.openfood.images.IMG_ID
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.models.entities.OfflineSavedProduct
 import openfoodfacts.github.scrachx.openfood.models.entities.ToUploadProduct
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
@@ -178,6 +178,7 @@ class ProductEditActivity : AppCompatActivity() {
         }
         if (productState != null) {
             mProduct = productState.product
+
             // Search if the barcode already exists in the OfflineSavedProducts db
             offlineSavedProduct = getOfflineProductByBarcode(productState.product!!.code)
         }
@@ -512,7 +513,7 @@ class ProductEditActivity : AppCompatActivity() {
     fun setIngredients(status: String?, ingredients: String?) =
             ingredientsFragment.setIngredients(status, ingredients)
 
-    class EditProductPerformOCR : ActivityResultContract<Product?, Boolean>() {
+    class PerformOCRContract : ActivityResultContract<Product?, Boolean>() {
         override fun createIntent(context: Context, product: Product?) =
                 Intent(context, ProductEditActivity::class.java).apply {
                     putExtra(KEY_EDIT_PRODUCT, product)
@@ -522,14 +523,28 @@ class ProductEditActivity : AppCompatActivity() {
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
     }
 
-    class EditProductSendUpdatedImg : ActivityResultContract<Product?, Boolean>() {
+    class SendUpdatedImgContract : ActivityResultContract<Product?, Boolean>() {
         override fun createIntent(context: Context, product: Product?) =
                 Intent(context, ProductEditActivity::class.java).apply {
-                    putExtra(KEY_SEND_UPDATED, true)
                     putExtra(KEY_EDIT_PRODUCT, product)
+                    putExtra(KEY_SEND_UPDATED, true)
                 }
 
         override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
+    }
+
+    open class EditProductContract : ActivityResultContract<Product, Boolean>() {
+        override fun createIntent(context: Context, input: Product) =
+                Intent(context, ProductEditActivity::class.java).apply {
+                    putExtra(KEY_EDIT_PRODUCT, input)
+                }
+
+        override fun parseResult(resultCode: Int, intent: Intent?) = resultCode == RESULT_OK
+    }
+
+    class AddProductContract : EditProductContract() {
+        override fun createIntent(context: Context, input: Product) =
+                super.createIntent(context, input).apply { putExtra(KEY_IS_NEW_PRODUCT, true) }
     }
 
     companion object {
@@ -539,9 +554,13 @@ class ProductEditActivity : AppCompatActivity() {
         const val KEY_SEND_UPDATED = "send_updated"
         const val KEY_MODIFY_NUTRITION_PROMPT = "modify_nutrition_prompt"
         const val KEY_MODIFY_CATEGORY_PROMPT = "modify_category_prompt"
-        const val KEY_EDIT_PRODUCT = "edit_product"
-        const val KEY_IS_EDITING = "is_edition"
+
         const val KEY_EDIT_OFFLINE_PRODUCT = "edit_offline_product"
+        const val KEY_EDIT_PRODUCT = "edit_product"
+
+        const val KEY_IS_NEW_PRODUCT = "is_new_product"
+
+        const val KEY_IS_EDITING = "is_edition"
         const val KEY_STATE = "state"
 
         private fun getCameraPicLocation(context: Context): File {
@@ -572,9 +591,9 @@ class ProductEditActivity : AppCompatActivity() {
             }
         }
 
-        fun start(context: Context, state: ProductState, sendUpdated: Boolean = false, performOcr: Boolean = false) {
+        fun start(context: Context, product: Product, sendUpdated: Boolean = false, performOcr: Boolean = false) {
             Intent(context, ProductEditActivity::class.java).apply {
-                putExtra(KEY_STATE, state)
+                putExtra(KEY_EDIT_PRODUCT, product)
                 if (sendUpdated) putExtra(KEY_SEND_UPDATED, true)
                 if (performOcr) putExtra(KEY_PERFORM_OCR, true)
                 context.startActivity(this)

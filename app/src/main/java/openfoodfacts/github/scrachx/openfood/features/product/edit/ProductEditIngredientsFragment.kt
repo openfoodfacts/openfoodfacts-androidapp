@@ -387,7 +387,7 @@ class ProductEditIngredientsFragment : ProductEditFragment() {
     /**
      * Displays progress bar and hides other views util image is still loading
      */
-    fun showImageProgress() {
+    override fun showImageProgress() {
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE
         binding.imageProgressText.setText(R.string.toastSending)

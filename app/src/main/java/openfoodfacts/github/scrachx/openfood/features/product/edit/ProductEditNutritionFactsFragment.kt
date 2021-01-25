@@ -121,7 +121,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         if (bundle != null) {
             product = bundle.getSerializable("product") as Product?
             mOfflineSavedProduct = bundle.getSerializable("edit_offline_product") as OfflineSavedProduct?
-            val productEdited: Boolean = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
+            val productEdited = bundle.getBoolean(ProductEditActivity.KEY_IS_EDITING)
             if (product != null) {
                 productCode = product!!.code
             }
@@ -824,7 +824,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         return ValueState.NOT_TESTED
     }
 
-    fun showImageProgress() {
+    override fun showImageProgress() {
         if (!isAdded) return
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE

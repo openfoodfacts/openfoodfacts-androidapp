@@ -47,8 +47,8 @@ import openfoodfacts.github.scrachx.openfood.features.LoginActivity.Companion.Lo
 import openfoodfacts.github.scrachx.openfood.features.additives.AdditiveFragmentHelper.showAdditives
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.EditProductPerformOCR
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.EditProductSendUpdatedImg
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.PerformOCRContract
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.SendUpdatedImgContract
 import openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity.Companion.start
 import openfoodfacts.github.scrachx.openfood.features.shared.BaseFragment
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -72,12 +72,12 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     private val client by lazy { OpenFoodAPIClient(requireContext()) }
     private val wikidataClient by lazy { WikiDataApiClient() }
 
-    private val performOCRLauncher = registerForActivityResult(EditProductPerformOCR())
+    private val performOCRLauncher = registerForActivityResult(PerformOCRContract())
     { result -> if (result) onRefresh() }
-    private val updateImagesLauncher = registerForActivityResult(EditProductSendUpdatedImg())
+    private val updateImagesLauncher = registerForActivityResult(SendUpdatedImgContract())
     { result -> if (result) onRefresh() }
     private val loginLauncher = registerForActivityResult(LoginContract())
-    { ProductEditActivity.start(requireContext(), productState, sendUpdatedIngredientsImage, ingredientExtracted) }
+    { ProductEditActivity.start(requireContext(), productState.product!!, sendUpdatedIngredientsImage, ingredientExtracted) }
 
     private lateinit var productState: ProductState
     private lateinit var customTabActivityHelper: CustomTabActivityHelper

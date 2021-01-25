@@ -26,7 +26,7 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
-import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
+import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_EDIT_PRODUCT
 import openfoodfacts.github.scrachx.openfood.features.product.view.ProductViewActivity
 import openfoodfacts.github.scrachx.openfood.images.*
 import openfoodfacts.github.scrachx.openfood.models.*
@@ -100,11 +100,9 @@ class OpenFoodAPIClient @JvmOverloads constructor(
                     .negativeText(R.string.txtNo)
                     .onPositive { _, _ ->
                         activity.startActivity(Intent(activity, ProductEditActivity::class.java).apply {
-                            putExtra(KEY_STATE, ProductState().apply {
-                                product = Product().apply {
-                                    code = barcode
-                                    lang = getLanguage(activity)
-                                }
+                            putExtra(KEY_EDIT_PRODUCT, Product().apply {
+                                code = barcode
+                                lang = getLanguage(activity)
                             })
                         })
                         activity.finish()

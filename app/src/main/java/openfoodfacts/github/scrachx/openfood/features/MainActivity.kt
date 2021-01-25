@@ -94,7 +94,6 @@ import openfoodfacts.github.scrachx.openfood.images.ProductImage
 import openfoodfacts.github.scrachx.openfood.jobs.OfflineProductWorker.Companion.scheduleSync
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.ProductImageField
-import openfoodfacts.github.scrachx.openfood.models.ProductState
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.LocaleHelper.getLanguage
@@ -830,8 +829,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             val image = ProductImage(tempBarcode, ProductImageField.OTHER, imageFile)
                             api.postImg(image).subscribe().addTo(disp)
                         } else {
-                            val state = ProductState().apply { product = Product().apply { code = tempBarcode } }
-                            ProductEditActivity.start(this@MainActivity, state)
+                            val product = Product().apply { code = tempBarcode }
+                            ProductEditActivity.start(this@MainActivity, product)
                         }
                     } else {
                         Toast.makeText(this@MainActivity, getString(R.string.sorry_msg), Toast.LENGTH_LONG).show()

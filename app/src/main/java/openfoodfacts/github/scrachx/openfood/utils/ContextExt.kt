@@ -31,7 +31,10 @@ fun Context.isBatteryLevelLow(): Boolean {
     return ceil(batteryPct.toDouble()) <= 15
 }
 
-fun Context.isDisableImageLoad() = PreferenceManager.getDefaultSharedPreferences(this)
-        .getBoolean("disableImageLoad", false)
+fun Context.isDisableImageLoad(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
+        .getBoolean("disableImageLoad", defValue)
 
 fun Context.isLowBatteryMode() = isDisableImageLoad() && isBatteryLevelLow()
+
+fun Context.isFastAdditionMode(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
+        .getBoolean("fastAdditionMode", defValue)

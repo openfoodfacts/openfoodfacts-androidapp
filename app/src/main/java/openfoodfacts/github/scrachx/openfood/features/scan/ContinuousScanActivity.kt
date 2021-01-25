@@ -27,7 +27,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
@@ -127,8 +126,8 @@ class ContinuousScanActivity : AppCompatActivity() {
     private var popupMenu: PopupMenu? = null
     private var summaryProductPresenter: SummaryProductPresenter? = null
 
-    private val productActivityResultLauncher = registerForActivityResult(StartActivityForResult())
-    { result -> if (result.resultCode == RESULT_OK) lastBarcode?.let { setShownProduct(it) } }
+    private val productActivityResultLauncher = registerForActivityResult(ProductEditActivity.EditProductContract())
+    { result -> if (result) lastBarcode?.let { setShownProduct(it) } }
 
     /**
      * Used by screenshot tests.
@@ -389,9 +388,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     private fun navigateToProductAddition(product: Product?) {
-        productActivityResultLauncher.launch(Intent(this, ProductEditActivity::class.java).apply {
-            putExtra(ProductEditActivity.KEY_EDIT_PRODUCT, product)
-        })
+        productActivityResultLauncher.launch(product)
     }
 
     private fun showAllViews() {

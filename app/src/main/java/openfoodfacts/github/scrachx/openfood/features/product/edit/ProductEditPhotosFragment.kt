@@ -119,7 +119,7 @@ class ProductEditPhotosFragment : ProductEditFragment() {
         photoReceiverHandler!!.onActivityResult(this, requestCode, resultCode, data)
     }
 
-    fun showImageProgress() {
+    override fun showImageProgress() {
         binding.imageProgress.visibility = View.VISIBLE
         binding.imageProgressText.visibility = View.VISIBLE
         binding.imageProgressText.setText(R.string.toastSending)
