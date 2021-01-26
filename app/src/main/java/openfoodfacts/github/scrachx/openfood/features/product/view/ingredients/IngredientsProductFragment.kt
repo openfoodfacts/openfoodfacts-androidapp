@@ -378,15 +378,14 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     fun extractIngredients() {
-        if (isAdded) {
-            ingredientExtracted = true
-            val settings = requireActivity().getLoginPreferences()
-            if (settings.getString("user", "")!!.isEmpty()) {
-                showSignInDialog()
-            } else {
-                productState = requireProductState()
-                performOCRLauncher.launch(productState.product)
-            }
+        if (!isAdded) return
+        ingredientExtracted = true
+        val settings = requireActivity().getLoginPreferences()
+        if (settings.getString("user", "")!!.isEmpty()) {
+            showSignInDialog()
+        } else {
+            productState = requireProductState()
+            performOCRLauncher.launch(productState.product)
         }
     }
 
