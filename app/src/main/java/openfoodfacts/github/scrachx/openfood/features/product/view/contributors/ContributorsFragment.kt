@@ -53,6 +53,13 @@ class ContributorsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.incompleteStates.setOnClickListener { toggleIncompleteStatesVisibility() }
+        binding.completeStates.setOnClickListener { toggleCompleteStatesVisibility() }
+
+        binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+
         refreshView(this.requireProductState())
     }
 
@@ -151,21 +158,57 @@ class ContributorsFragment : BaseFragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { e: Throwable? ->
                     Log.e(ContributorsFragment::class.simpleName, "loadStatesTags", e)
-                    binding.statesTxt.visibility = View.GONE
+                    binding.statesTagsCv.visibility = View.GONE
                 }
                 .subscribe { states: List<StatesName> ->
                     if (states.isEmpty()) {
-                        binding.statesTxt.visibility = View.GONE
+                        binding.statesTagsCv.visibility = View.GONE
                     } else {
-                        binding.statesTxt.movementMethod = LinkMovementMethod.getInstance()
-                        binding.statesTxt.text = ""
+                        binding.incompleteStatesTxt.movementMethod = LinkMovementMethod.getInstance()
+                        binding.incompleteStatesTxt.text = ""
+
+                        binding.completeStatesTxt.movementMethod = LinkMovementMethod.getInstance()
+                        binding.completeStatesTxt.text = ""
+
                         states.forEach { state ->
-                            binding.statesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
-                            binding.statesTxt.append("\n")
+                            if(isIncompleteState(state.statesTag)){
+                                binding.incompleteStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
+                                binding.incompleteStatesTxt.append("\n")
+                            }
+                            else{
+                                binding.completeStatesTxt.append(getStatesTag(state.name, state.statesTag.split(":").component2()))
+                                binding.completeStatesTxt.append("\n")
+                            }
                         }
                     }
                 }.addTo(disp)
 
+    }
+
+    private fun isIncompleteState(stateTag: String) :Boolean{
+
+        return stateTag.contains("to-be-completed") || stateTag.contains("to-be-uploaded") ||
+                                stateTag.contains("to-be-checked") || stateTag.contains("to-be-validated") || stateTag.contains("to-be-selected")
+        }
+
+    private fun toggleIncompleteStatesVisibility() {
+        if (binding.incompleteStatesTxt.visibility != View.VISIBLE) {
+            binding.incompleteStatesTxt.visibility = View.VISIBLE
+            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
+        } else {
+            binding.incompleteStatesTxt.visibility = View.GONE
+            binding.incompleteStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        }
+    }
+
+    private fun toggleCompleteStatesVisibility() {
+        if (binding.completeStatesTxt.visibility != View.VISIBLE) {
+            binding.completeStatesTxt.visibility = View.VISIBLE
+            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_grey_24dp, 0)
+        } else {
+            binding.completeStatesTxt.visibility = View.GONE
+            binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
+        }
     }
 
     companion object {
