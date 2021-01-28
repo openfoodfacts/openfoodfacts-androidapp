@@ -30,6 +30,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelDao
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesDao
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesNameDao
+import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreDao
+import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import org.greenrobot.greendao.database.Database
 
@@ -144,6 +146,10 @@ class OFFDatabaseHelper @JvmOverloads constructor(
             20 -> {
                 db.execSQL("ALTER TABLE HISTORY_PRODUCT ADD COLUMN 'ECOSCORE' TEXT;")
                 db.execSQL("ALTER TABLE HISTORY_PRODUCT ADD COLUMN 'NOVA_GROUP' TEXT;")
+            }
+            21 -> {
+                StoreDao.createTable(db, true)
+                StoreNameDao.createTable(db, true)
             }
         }
     }
