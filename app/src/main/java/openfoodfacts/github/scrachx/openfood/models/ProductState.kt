@@ -32,7 +32,7 @@ class ProductState : Serializable {
 
     @JsonIgnore
     @get:JsonAnyGetter
-    val additionalProperties = HashMap<String, Any>()
+    val additionalProperties = mutableMapOf<String, Any>()
 
 
     @JsonAnySetter
