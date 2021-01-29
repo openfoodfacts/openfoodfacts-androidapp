@@ -134,7 +134,6 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         binding.btnOtherPictures.setOnClickListener { chooseOrTakeOtherImage() }
         binding.sectionManufacturingDetails.setOnClickListener { toggleManufacturingSectionVisibility() }
         binding.sectionPurchasingDetails.setOnClickListener { togglePurchasingSectionVisibility() }
-        binding.hintEmbCode.setOnClickListener { showEmbCodeHintDialog() }
         binding.hintLink.setOnClickListener { searchProductLink() }
         binding.hintLink2.setOnClickListener { scanProductLink() }
         binding.language.setOnClickListener { selectProductLanguage() }
@@ -755,6 +754,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         binding.linkTil.visibility = visibility
         binding.hintLink.visibility = visibility
         binding.hintLink2.visibility = visibility
+        binding.traceHint.visibility = visibility
     }
 
     private fun togglePurchasingSectionVisibility() {
@@ -772,14 +772,6 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         binding.countryWherePurchasedTil.visibility = visibility
         binding.storesTil.visibility = visibility
         binding.countriesWhereSoldTil.visibility = visibility
-    }
-
-    private fun showEmbCodeHintDialog() {
-        MaterialDialog.Builder(requireActivity())
-                .content(R.string.hint_emb_codes)
-                .positiveText(R.string.ok_button)
-                .onPositive { dialog, _ -> dialog.dismiss() }
-                .show()
     }
 
     private fun searchProductLink() {

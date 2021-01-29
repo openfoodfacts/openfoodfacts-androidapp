@@ -467,10 +467,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/required_for_ecoscore"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients_til"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/origin_of_ingredients_til"
+                app:layout_constraintStart_toStartOf="@id/origin_of_ingredients_til"
+                app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients_til" />
 
             <TextView
                 android:id="@+id/origin_hint"
@@ -478,10 +478,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/hint_origin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/origin_warning"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/origin_of_ingredients_til"
+                app:layout_constraintStart_toStartOf="@id/origin_of_ingredients_til"
+                app:layout_constraintTop_toBottomOf="@id/origin_warning" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/manufacturing_place_til"
@@ -543,18 +543,16 @@
                     tools:visibility="visible" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
-                android:id="@+id/hint_emb_code"
-                android:layout_width="20dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="@dimen/horizontal_margin"
-                android:layout_marginRight="@dimen/horizontal_margin"
-                android:paddingTop="@dimen/spacing_small"
-                app:layout_constraintBottom_toBottomOf="@id/emb_code_til"
+            <TextView
+                android:id="@+id/trace_hint"
+                style="@style/EditHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_trace_code"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/emb_code_til"
-                app:layout_constraintTop_toTopOf="@id/emb_code_til"
-                app:srcCompat="@drawable/ic_help_outline_orange_24dp"
-                app:tint="@color/grey_600" />
+                app:layout_constraintStart_toStartOf="@id/emb_code_til"
+                app:layout_constraintTop_toBottomOf="@id/emb_code_til" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/link_til"
@@ -567,9 +565,9 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/emb_code_til">
+                app:layout_constraintTop_toBottomOf="@id/trace_hint">
 
-                <EditText
+            <EditText
                     android:id="@+id/link"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
