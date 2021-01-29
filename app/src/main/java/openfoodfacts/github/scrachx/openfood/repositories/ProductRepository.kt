@@ -216,7 +216,7 @@ object ProductRepository {
     fun loadStores(lastModifiedDate: Long): Single<List<Store>> = analysisDataApi.getStores()
             .map { it.map() }
             .doOnSuccess{
-                saveStore(it)
+                saveStores(it)
                 updateLastDownloadDateInSettings(Taxonomy.STORES,lastModifiedDate)
             }
 
@@ -446,7 +446,7 @@ object ProductRepository {
      *
      * store and storeName has One-To-Many relationship, therefore we need to save them separately.
      */
-    private fun saveStore(stores: List<Store>) {
+    private fun saveStores(stores: List<Store>) {
         OFFApplication.daoSession.database.beginTransaction()
         try {
             stores.forEach { store ->

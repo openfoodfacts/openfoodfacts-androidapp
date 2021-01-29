@@ -8,19 +8,17 @@ class StoreResponse (
     private var names: Map<String, String>,
     private val wikiDataCode: String? = null
 ) : EntityResponse<Store> {
-    override fun map(): Store {
-        val store: Store
-        if (wikiDataCode != null) {
-            store = Store(code, arrayListOf(), wikiDataCode)
+    override fun map() = if (wikiDataCode != null) {
+        Store(code, arrayListOf(), wikiDataCode).also {
             names.forEach { (key, value) ->
-                store.names.add(StoreName(store.tag, key, value, wikiDataCode))
-            }
-        } else {
-            store = Store(code, arrayListOf())
-            names.forEach { (key, value) ->
-                store.names.add(StoreName(store.tag, key, value))
+                it.names.add(StoreName(it.tag, key, value, wikiDataCode))
             }
         }
-        return store
+    } else {
+        Store(code, arrayListOf()).also {
+            names.forEach { (key, value) ->
+                it.names.add(StoreName(it.tag, key, value))
+            }
+        }
     }
 }
