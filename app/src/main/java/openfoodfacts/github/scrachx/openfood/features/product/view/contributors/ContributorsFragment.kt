@@ -46,11 +46,6 @@ class ContributorsFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onDestroyView() {
-        disp.clear()
-        super.onDestroyView()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -61,6 +56,11 @@ class ContributorsFragment : BaseFragment() {
         binding.completeStates.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_grey_24dp, 0)
 
         refreshView(this.requireProductState())
+    }
+
+    override fun onDestroyView() {
+        disp.clear()
+        super.onDestroyView()
     }
 
     override fun refreshView(productState: ProductState) {
