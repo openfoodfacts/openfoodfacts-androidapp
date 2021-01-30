@@ -33,6 +33,7 @@ import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabsHelper
 import openfoodfacts.github.scrachx.openfood.customtabs.WebViewFallback
 import openfoodfacts.github.scrachx.openfood.databinding.ActivitySignupBinding
 import openfoodfacts.github.scrachx.openfood.utils.Utils
+import java.util.regex.Pattern
 
 /**
  * A sign-up screen that offers sign-up via email/name/username/password.
@@ -45,6 +46,8 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var customTabActivityHelper: CustomTabActivityHelper
 
     private var termsOfServiceUri: Uri? = null
+
+    private lateinit var pattern: Pattern
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +73,7 @@ class SignUpActivity : AppCompatActivity() {
         }
         customTabActivityHelper.mayLaunchUrl(termsOfServiceUri, null, null)
 
-        binding.relTos.setOnClickListener {
+        binding.tvTos.setOnClickListener {
             binding.checkboxTos.isChecked = !binding.checkboxTos.isChecked
         }
         binding.relFoodPro.setOnClickListener {
@@ -108,8 +111,20 @@ class SignUpActivity : AppCompatActivity() {
             binding.signupInput.requestFocus()
             return
         }
+        pattern = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
+        if (!pattern.toRegex().matches(email)) {
+            binding.signupInput.error = getText(R.string.invalid_email)
+            binding.signupInput.requestFocus()
+            return
+        }
         if (username.isBlank()) {
             binding.signupUserName.error = getString(R.string.error_field_required)
+            binding.signupUserName.requestFocus()
+            return
+        }
+        pattern = Pattern.compile("^[a-z0-9]*$")
+        if (!pattern.toRegex().matches(username)) {
+            binding.signupUserName.error = getText(R.string.username_condition)
             binding.signupUserName.requestFocus()
             return
         }
@@ -158,7 +173,7 @@ class SignUpActivity : AppCompatActivity() {
                 openTermsOfService()
             }
         }
-        spannableString.setSpan(clickableSpan, stringTos.indexOf("Terms"), stringTos.indexOf("Terms") + 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(clickableSpan, stringTos.indexOf("terms"), stringTos.indexOf("terms") + 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.tvTos.text = spannableString
         binding.tvTos.movementMethod = LinkMovementMethod.getInstance()
     }
