@@ -20,7 +20,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NavUtils
 import androidx.core.content.ContextCompat
-import androidx.core.net.toFile
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -253,13 +252,15 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
         } else {
             val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
             if (!baseDir.exists()) baseDir.mkdirs()
-            writeHistoryToFile(this, adapter.products, File(baseDir, fileName))
+            val file = File(baseDir, fileName)
+            writeHistoryToFile(this, adapter.products, Uri.fromFile(file),file.outputStream())
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    val fileWriterLauncher = registerForActivityResult(CreateCSVContract())
-    { writeHistoryToFile(this, adapter.products, it?.toFile() ?: error("File path must not be null.")) }
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
+        writeHistoryToFile(this, adapter.products, it,contentResolver.openOutputStream(it)?: error("File path must not be null."))
+    }
 
     private fun startScan() {
         if (!isHardwareCameraInstalled(baseContext)) return
