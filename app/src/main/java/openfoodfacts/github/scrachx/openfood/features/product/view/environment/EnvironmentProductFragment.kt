@@ -95,8 +95,7 @@ class EnvironmentProductFragment : BaseFragment() {
         val environmentInfocard = product.environmentInfoCard
         if (!environmentInfocard.isNullOrEmpty()) {
             binding.environmentInfoText.append(HtmlCompat.fromHtml(environmentInfocard, HtmlCompat.FROM_HTML_MODE_COMPACT))
-            if (environmentInfocard.contains("ADEME"))
-                binding.environmentInfoText.movementMethod = LinkMovementMethod.getInstance()
+            binding.environmentInfoText.movementMethod = LinkMovementMethod.getInstance()
         } else {
             binding.environmentInfoCv.visibility = View.GONE
         }
