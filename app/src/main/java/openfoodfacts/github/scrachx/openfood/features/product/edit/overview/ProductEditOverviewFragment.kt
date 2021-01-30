@@ -134,8 +134,8 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         binding.btnOtherPictures.setOnClickListener { chooseOrTakeOtherImage() }
         binding.sectionManufacturingDetails.setOnClickListener { toggleManufacturingSectionVisibility() }
         binding.sectionPurchasingDetails.setOnClickListener { togglePurchasingSectionVisibility() }
-        binding.hintLink.setOnClickListener { searchProductLink() }
-        binding.hintLink2.setOnClickListener { scanProductLink() }
+        binding.extractUrlText.setOnClickListener { scanProductLink() }
+        binding.searchUrlText.setOnClickListener { searchProductLink() }
         binding.language.setOnClickListener { selectProductLanguage() }
 
         //checks the information about the prompt clicked and takes action accordingly
@@ -752,8 +752,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         binding.manufacturingPlaceTil.visibility = visibility
         binding.embCodeTil.visibility = visibility
         binding.linkTil.visibility = visibility
-        binding.hintLink.visibility = visibility
-        binding.hintLink2.visibility = visibility
+        binding.linearLayout.visibility = visibility
         binding.traceHint.visibility = visibility
     }
 

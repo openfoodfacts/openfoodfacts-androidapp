@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -581,29 +577,41 @@
                     tools:visibility="visible" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
-                android:id="@+id/hint_link"
-                android:layout_width="20dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="55dp"
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:gravity="center"
+                android:orientation="horizontal"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/link_til"
-                app:layout_constraintTop_toTopOf="@id/link_til"
-                app:srcCompat="@drawable/ic_search_dark"
-                app:tint="@color/grey_600" />
+                app:layout_constraintStart_toStartOf="@id/link_til"
+                app:layout_constraintTop_toBottomOf="@id/link_til">
 
-            <ImageView
-                android:id="@+id/hint_link_2"
-                android:layout_width="20dp"
-                android:layout_height="0dp"
-                android:layout_marginLeft="@dimen/spacing_tiny"
-                android:layout_marginTop="55dp"
-                android:layout_marginRight="@dimen/spacing_tiny"
-                android:visibility="gone"
-                app:layout_constraintEnd_toStartOf="@id/hint_link"
-                app:layout_constraintTop_toTopOf="@id/link_til"
-                app:srcCompat="@drawable/barcode_grey_24dp"
-                app:tint="@color/grey_600" />
+                <TextView
+                    android:id="@+id/extract_url_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/extract_url"
+                    android:textAlignment="center"
+                    android:textSize="12.5sp"
+                    app:drawableLeftCompat="@drawable/barcode_grey_24dp" />
+
+                <TextView
+                    android:id="@+id/search_url_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/search_url"
+                    android:textAlignment="center"
+                    android:textSize="12.5sp"
+                    app:drawableLeftCompat="@drawable/ic_search_dark" />
+            </LinearLayout>
 
             <View
                 android:id="@+id/grey_line3"
@@ -614,7 +622,7 @@
                 android:layout_marginRight="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hint_link_2" />
+                app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
             <TextView
                 android:id="@+id/section_purchasing_details"
