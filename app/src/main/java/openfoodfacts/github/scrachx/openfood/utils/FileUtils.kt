@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.utils
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.CheckResult
@@ -23,6 +24,7 @@ import org.jetbrains.annotations.Contract
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
+import java.io.OutputStream
 
 fun isLocaleFile(url: String?) = url?.startsWith(LOCALE_FILE_SCHEME) ?: false
 
@@ -38,11 +40,11 @@ fun getCsvFolderName() = when (BuildConfig.FLAVOR) {
     else -> "Open Food Facts"
 }
 
-fun writeListToFile(context: Context, productList: ProductLists, fileToWrite: File) {
+fun writeListToFile(context: Context, productList: ProductLists, csvUri: Uri,outputStream: OutputStream) {
     var success: Boolean
     try {
         CSVPrinter(
-                FileWriter(fileToWrite),
+                outputStream.bufferedWriter(),
                 CSVFormat.DEFAULT.withHeader(*context.resources.getStringArray(R.array.your_products_headers))
         ).use { writer ->
             productList.products.forEach {
@@ -54,11 +56,11 @@ fun writeListToFile(context: Context, productList: ProductLists, fileToWrite: Fi
         success = true
     } catch (e: IOException) {
         success = false
-        Log.e(ProductListActivity::class.simpleName, "Can't export to $fileToWrite.", e)
+        Log.e(ProductListActivity::class.simpleName, "Can't export to $csvUri.", e)
     }
 
     val downloadIntent = Intent(Intent.ACTION_VIEW)
-    val notificationManager = ProductListActivity.createNotification(fileToWrite, downloadIntent, context)
+    val notificationManager = ProductListActivity.createNotification(csvUri, downloadIntent, context)
     if (success) {
         val builder = NotificationCompat.Builder(context, "export_channel")
                 .setContentTitle(context.getString(R.string.notify_title))
@@ -69,20 +71,20 @@ fun writeListToFile(context: Context, productList: ProductLists, fileToWrite: Fi
     }
 }
 
-fun writeHistoryToFile(context: Context, productList: List<HistoryProduct>, fileToWrite: File) {
+fun writeHistoryToFile(context: Context, productList: List<HistoryProduct>, csvUri: Uri,outputStream: OutputStream) {
     var success = false
 
     try {
-        CSVPrinter(FileWriter(fileToWrite), CSVFormat.DEFAULT.withHeader(*context.resources.getStringArray(R.array.headers))).use { writer ->
+        CSVPrinter(outputStream.bufferedWriter(), CSVFormat.DEFAULT.withHeader(*context.resources.getStringArray(R.array.headers))).use { writer ->
             productList.forEach { writer.printRecord(it.barcode, it.title, it.brands) }
             Toast.makeText(context, R.string.txt_history_exported, Toast.LENGTH_LONG).show()
             success = true
         }
     } catch (e: IOException) {
-        Log.e(ScanHistoryActivity.LOG_TAG, "Can't export to $fileToWrite.", e)
+        Log.e(ScanHistoryActivity.LOG_TAG, "Can't export to $csvUri.", e)
     }
     val downloadIntent = Intent(Intent.ACTION_VIEW)
-    val notificationManager = ProductListActivity.createNotification(fileToWrite, downloadIntent, context)
+    val notificationManager = ProductListActivity.createNotification(csvUri, downloadIntent, context)
     if (success) {
         val builder = NotificationCompat.Builder(context, "export_channel")
                 .setContentTitle(context.getString(R.string.notify_title))
