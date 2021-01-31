@@ -64,6 +64,7 @@ class SplashController internal constructor(
         activateDownload(ANALYSIS_TAGS, OFF, OBF, OPFF)
         activateDownload(ANALYSIS_TAG_CONFIG, OFF, OBF, OPFF)
         activateDownload(STATES, OFF, OBF, OPFF)
+        activateDownload(STORES, OFF, OBF, OPFF)
 
         //first run ever off this application, whatever the version
         val firstRun = settings.getBoolean("firstRun", true)
