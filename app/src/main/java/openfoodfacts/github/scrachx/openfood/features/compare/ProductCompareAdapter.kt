@@ -93,6 +93,11 @@ class ProductCompareAdapter(
         holder.binding.productComparisonName.visibility = View.VISIBLE
         holder.binding.productComparisonQuantity.visibility = View.VISIBLE
         holder.binding.productComparisonBrand.visibility = View.VISIBLE
+        
+        // if the flavor is OpenProductsFacts hide the additives card
+        if (isFlavors(AppFlavors.OPF)) {
+            holder.binding.productComparisonAdditive.visibility = View.GONE
+        }
 
         // Modify the text on the button for adding products
         addProductButton?.setText(R.string.add_another_product)
