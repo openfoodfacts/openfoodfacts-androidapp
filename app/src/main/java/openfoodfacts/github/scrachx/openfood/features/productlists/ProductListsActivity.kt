@@ -36,6 +36,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.app.OFFApplication
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityProductListsBinding
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.installBottomNavigation
 import openfoodfacts.github.scrachx.openfood.features.listeners.CommonBottomListenerInstaller.selectNavigationItem
@@ -49,6 +50,7 @@ import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductLists
 import openfoodfacts.github.scrachx.openfood.models.entities.ProductListsDao
 import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProduct
+import openfoodfacts.github.scrachx.openfood.models.entities.YourListedProductDao
 import openfoodfacts.github.scrachx.openfood.utils.SwipeController
 import openfoodfacts.github.scrachx.openfood.utils.Utils
 import org.apache.commons.csv.CSVFormat
@@ -179,6 +181,13 @@ class ProductListsActivity : BaseActivity(), SwipeController.Actions {
     override fun onRightClicked(position: Int) {
         if (!adapter.lists.isNullOrEmpty()) {
             val productToRemove = adapter.lists[position]
+
+            // delete the product from YOUR_LISTED_PRODUCT_TABLE
+            val deleteQuery = OFFApplication.daoSession.yourListedProductDao.queryBuilder()
+                    .where(YourListedProductDao.Properties.ListId.eq(productToRemove.id)).buildDelete()
+            deleteQuery.executeDeleteWithoutDetachingEntities()
+            OFFApplication.daoSession.clear()
+
             productListsDao.delete(productToRemove)
             adapter.remove(productToRemove)
             adapter.notifyItemRemoved(position)
