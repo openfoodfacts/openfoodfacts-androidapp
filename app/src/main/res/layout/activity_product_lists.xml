@@ -26,7 +26,7 @@
             android:contentDescription="@string/add_a_list"
             android:text="@string/add_a_list"
             app:elevation="10dp"
-            app:layout_constraintBottom_toTopOf="@id/product_lists_recycler_view"
+            app:layout_constraintBottom_toTopOf="@id/tipBox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
