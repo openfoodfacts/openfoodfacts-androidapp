@@ -42,6 +42,7 @@ import openfoodfacts.github.scrachx.openfood.features.listeners.OnRefreshListene
 import openfoodfacts.github.scrachx.openfood.features.product.ProductFragmentPagerAdapter
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity
 import openfoodfacts.github.scrachx.openfood.features.product.edit.ProductEditActivity.Companion.KEY_STATE
+import openfoodfacts.github.scrachx.openfood.features.product.view.changes_history.ChangesHistoryProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.contributors.ContributorsFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.environment.EnvironmentProductFragment
 import openfoodfacts.github.scrachx.openfood.features.product.view.ingredients.IngredientsProductFragment
@@ -256,6 +257,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                     adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
                 }
                 adapter.add(ServerAttributesFragment.newInstance(productState), activity.getString(R.string.synthesis_tab))
+                adapter.add(ChangesHistoryProductFragment().applyBundle(fBundle), activity.getString(R.string.changes_history_tab))
             } else if (isFlavors(OPFF)) {
                 adapter.add(NutritionProductFragment().applyBundle(fBundle), titles[2])
                 if (isPhotoMode(activity)) {
