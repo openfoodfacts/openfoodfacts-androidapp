@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.feature.changelog
+package openfoodfacts.github.scrachx.openfood.features.changelog
 
 sealed class ChangelogListItem {
     data class Header(val version: String, val date: String) : ChangelogListItem()

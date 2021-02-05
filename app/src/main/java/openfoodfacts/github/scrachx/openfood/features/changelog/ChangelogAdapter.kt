@@ -1,4 +1,4 @@
-package openfoodfacts.github.scrachx.openfood.feature.changelog
+package openfoodfacts.github.scrachx.openfood.features.changelog
 
 import android.view.LayoutInflater
 import android.view.View
