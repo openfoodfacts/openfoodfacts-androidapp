@@ -39,6 +39,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -764,13 +765,14 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     private fun changeVisibilityManufacturingSectionTo(visibility: Int) {
         binding.originOfIngredientsTil.visibility = visibility
-        binding.originWarning.visibility = visibility
         binding.originHint.visibility = visibility
         binding.manufacturingPlaceTil.visibility = visibility
         binding.embCodeTil.visibility = visibility
         binding.linkTil.visibility = visibility
         binding.linearLayout.visibility = visibility
         binding.traceHint.visibility = visibility
+        if (isFlavors(OFF))
+            binding.originWarning.visibility = visibility
     }
 
     private fun togglePurchasingSectionVisibility() {
