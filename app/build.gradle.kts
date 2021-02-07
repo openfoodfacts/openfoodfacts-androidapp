@@ -353,7 +353,7 @@ kapt {
     }
 }
 
-greendao { schemaVersion(20) }
+greendao { schemaVersion(21) }
 
 
 

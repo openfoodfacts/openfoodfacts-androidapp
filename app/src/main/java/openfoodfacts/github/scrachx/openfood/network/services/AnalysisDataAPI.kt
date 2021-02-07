@@ -10,6 +10,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.country.CountriesWr
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.IngredientsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelsWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesWrapper
+import openfoodfacts.github.scrachx.openfood.models.entities.store.StoresWrapper
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagsWrapper
 import retrofit2.http.GET
 
@@ -68,6 +69,9 @@ interface AnalysisDataAPI {
     @GET(STATES_JSON)
     fun getStates(): Single<StatesWrapper>
 
+    @GET(STORES_JSON)
+    fun getStores(): Single<StoresWrapper>
+
     @GET(ANALYSIS_TAG_JSON)
     fun getAnalysisTags(): Single<AnalysisTagsWrapper>
 
@@ -93,7 +97,7 @@ interface AnalysisDataAPI {
         const val STATES_JSON = "$PREFIX/states.json"
         const val MINERALS_JSON = "$PREFIX/minerals.json"
         const val NUTRIENTS_JSON = "$PREFIX/nutrients.json"
-
+        const val STORES_JSON = "$PREFIX/stores.json"
         const val INVALID_BARCODES_JSON = "data/invalid-barcodes.json"
         const val ANALYSIS_TAG_CONFIG_JSON = "files/app/ingredients-analysis.json"
     }

@@ -424,8 +424,6 @@ fun bold(vararg content: CharSequence) = apply(content, StyleSpan(Typeface.BOLD)
 
 fun getModifierNonDefault(modifier: String) = if (modifier != DEFAULT_MODIFIER) modifier else ""
 
-fun dpsToPixel(dps: Int, context: Context) = (dps * context.resources.displayMetrics.density + 0.5f).toInt()
-
 private val LOG_TAG = Utils::class.simpleName!!
 
 /**

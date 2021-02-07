@@ -378,6 +378,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
     }
 
     fun extractIngredients() {
+        if (!isAdded) return
         ingredientExtracted = true
         val settings = requireContext().getLoginPreferences()
         if (settings.getString("user", "")!!.isEmpty()) {

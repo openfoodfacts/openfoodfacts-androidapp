@@ -796,6 +796,9 @@
     <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
     <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
     <string name="other_editors">Product page also edited by </string>
+    <string name="product_states">Product States</string>
+    <string name="incomplete_states">Incomplete States</string>
+    <string name="complete_states">Complete States</string>
     <string name="contribution_tab">Contributions</string>
     <string name="synthesis_tab">Synthesis</string>
 
@@ -829,6 +832,8 @@
     <string name="choose_nutrient">Choose a nutrient</string>
     <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
     <string name="hint_product_URL">Link of the official page of the product</string>
+    <string name="extract_url">Extract URL from QR-code</string>
+    <string name="search_url">Search for official page URL</string>
     <string name="product_language">Product language : </string>
     <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
     <string name="official_website">Official website</string>
@@ -1054,6 +1059,7 @@
     <string name="load_ingredient_detection_data_summary">No ingredient detection data has been found, try to load it from server</string>
     <string name="white_check_image_descr">A white check</string>
     <string name="hint_packaging">Examples: plastic, paper, glass</string>
+    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
     <string name="risk_alcohol_consumption">Excessive consumption of alcohol is harmful to health, to be consumed in moderation</string>
     <string name="check_first_time" translatable="false">check_first_time</string>
 
