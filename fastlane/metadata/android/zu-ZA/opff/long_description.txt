@@ -1,0 +1,34 @@
+Scan pet food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+
+To discover the Open Pet Food Facts project, please visit https://world.openpetfoodfacts.org
+
+***Contribute to Pet Food Transparency***
+
+- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
+- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. We have lots of exciting projects you can contribute to in many different ways. 
+- You can start contributing today by adding a product from your pet's cupboard. 
+
+
+*** Get the Facts ***
+
+You will also be able to find (according to the indications present on the products):
+- list of ingredients (including ash content)
+- nutritional info, nutrition traffic lights…
+- brands, allergens, labels (organic, vegan...)
+- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+
+*** Isebenza kahle nganoma yisiphi isimo ***
+- Ungangeza imikhiqizo emisha, noma ngabe awunawo uxhumano lwe-inthanethi okwamanje.
+- Uhlelo lokusebenza luthwala kuphela okudingekayo okunciphisa ukunciphisa idatha kanye nokusetshenziswa kwebhethri
+- Awudingi ikhamera ukuze ubuke umkhiqizo. Ungaphinda uthayiphe ibhakhodi uma ungenayo ikhamera noma unenkinga nayo.
+
+*** Your pet food, your data ***
+- Your personal data is yours, and is never sent online
+- Ungasebenzisa uhlelo lokusebenza ngokungaziwa
+- Ungathumela umlando wakho wokuskena
+
+
+For human food, you can install Open Food Facts, for cosmetics, Open Beauty Facts, and for all other products, Open Products Facts.

@@ -1,0 +1,41 @@
+name: Finalize Sentry release
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+
+jobs:
+  finalize-sentry-release:
+    name: Finalize Sentry release
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Decrypt api json file
+        run: cd ./fastlane/envfiles && ./decrypt_secrets.sh
+        env:
+          API_JSON_FILE_DECRYPTKEY: ${{ secrets.API_JSON_FILE_DECRYPTKEY }}
+          STORE_JKS_DECRYPTKEY: ${{ secrets.STORE_JKS_DECRYPTKEY }}
+
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1.1.2
+        with:
+          ruby-version: 2.6.x
+
+      - name: Install sentry-cli
+        run: curl -sL https://sentry.io/get-cli/ | bash
+
+      - name: Install Dependencies
+        run: gem install bundler && bundle install
+
+      - name: Run Fastlane finalize_sentry lane
+        run: bundle exec fastlane finalize_sentry
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          CI_RELEASE: true
+          SIGN_STORE_PATH: ../fastlane/envfiles/keystore.jks
+          SIGN_STORE_PASSWORD: ${{ secrets.SIGN_STORE_PASSWORD }}
+          SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
+          SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
+

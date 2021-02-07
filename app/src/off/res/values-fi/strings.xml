@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
+    <string name="website">https://world-fi.openfoodfacts.org/</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
+    <string name="website_contribute">https://world-fi.openfoodfacts.org/contribute</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
+    <string name="website_discover">https://world-fi.openfoodfacts.org/discover</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
+    <string name="website_product">https://world-fi.openfoodfacts.org/product/</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
+    <string name="website_contributor">https://world-fi.openfoodfacts.org/contributor/</string>
+    <string name="txtHome">Open Food Facts on avoin elintarviketietokanta.</string>
+    <string name="slide_1_title">Edistä elintarvikkeiden läpinäkyvyyttä</string>
+    <string name="slide_1_desc">Lue tuotteita, ota ne mukaan kuvaan, mahdollista elintarvikkeiden läpinäkyvyys</string>
+    <string name="slide_2_title">Tiedä tosiseikat</string>
+    <string name="slide_2_desc">Runsaasti tietoa luetusta tuotteesta, tulkittuna sinulle</string>
+    <string name="slide_3_title">Saa Nutri-Score</string>
+    <string name="slide_3_desc">Synteettinen näkymä lempielintarvikkeidesi ravinto-ominaisuuksista</string>
+    <string name="slide_4_title">Toimii offline-tilassa</string>
+    <string name="slide_4_desc">Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä</string>
+    <string name="txtDialogsContent">Lukemaasi tuotetta ei vielä ole Open Food Factsissa. Lisääthän sen.</string>
+    <string name="txtDialogsContentPowerMode">Lukemasi tuote on jo olemassa Open Food Factsissa.</string>
+    <string name="msg_share">Katso tätä tuotetta Open Food Factsissa:</string>
+    <string name="not_support_books">Open Food Facts ei tue kirjoja tällä hetkellä</string>
+    <string name="txt_broaden_search">- laajenna hakuasi \n- lue, ja lisää se Open Food Factsiin</string>
+    <string name="Donation">Napsauta tästä lahjoittaaksesi Open Food Factsille</string>
+    <string name="pref_help_translate_title">Auta kääntämään Open Food Factsia</string>
+    <string name="pref_help_translate_summary">Tuo Open Food Facts -tietokanta kielellesi - teknistä tietoa ei vaadita</string>
+    <string name="text_offline_info_dialog">Voit lukea tuotteita offline-tilassa lisätäksesi niitä myöhemmin Open Food Factsiin. Kaikki lukemasi tuotteet näkyvät täällä, ja voit lähettää ne alla olevan painikkeen avulla.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Allergiatietojasi ei koskaan lähetetä Open Food Facts -palvelimelle. Huomaa myös, että tuotetiedot eivät välttämättä ole tarkkoja tai täydellisiä, ja allergiatarkistus ei ehkä ole 100% arkka, joten tarkista itse!</string>
+    <!-- OFF tagline in different languages -->
+    <string name="tagline">vapaa elintarviketietokanta</string>
+    <string name="product_not_found">Luettua tuotetta %1$s ei vielä ole Open Food Factsissa. Voitko lisätä sen?</string>
+    <string name="currently_on_version">Tällä hetkellä Open Food Factsissa</string>
+</resources>

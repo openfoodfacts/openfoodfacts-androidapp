@@ -1,0 +1,34 @@
+Escanee los productos alimenticios para mascotas o sus códigos de barras para obtener información sobre los ingredientes, los aditivos y la información nutricional.
+
+La aplicación permite visualizar más de 600 productos alimenticios para mascotas que se encuentran en la base de datos de libre acceso "Open Pet Food Facts", y también permite añadir imágenes e información de los productos no presentes en la misma.
+
+Para saber más sobre el proyecto Open Pet Food Facts, por favor, visite https://world.openpetfoodfacts.org
+
+***Contribuye a la transparencia sobre productos alimenticios para mascotas***
+
+Open Pet Food Facts es una base de datos sobre productos alimenticios para mascotas hecha por todos y para todos.
+Puedes utilizarla para tomar mejores decisiones a la hora de comprar productos alimenticios para sus mascotas, y al ser de libre acceso, puede ser utilizada para cualquier propósito.
+- Open Pet Food Facts es un proyecto sin fines de lucro desarrollado por miles de voluntarios de todo el mundo. Tenemos muchos proyectos interesantes a los que puedes contribuir de diferentes maneras. 
+- Puedes comenzar a contribuir hoy agregando un producto de comida para mascotas. 
+
+
+*** Obtener los datos ***
+
+También podrá encontrar (de acuerdo con las indicaciones presentes en los productos):
+- Lista de ingredientes (incluido el contenido de cenizas)
+- Información nutricional, semáforos de nutrición…
+- marcas, alérgenos, etiquetas (orgánicas, veganas...)
+- Funciona con alimentos para perros (comida seca para perros y comida húmeda para perros), comida para gatos, para conejos, para serpientes, para peces, para aves, para caballos o cualquier comida para su animal favorito.
+
+*** Funciona bien en cualquier condición ***
+- Puedes agregar nuevos productos, incluso si no tienes una conexión a Internet en este momento.
+- La aplicación solo carga lo estrictamente necesario para reducir el consumo de datos y batería
+- No necesita una cámara para buscar un producto. También puede escribir el código de barras si le falta una cámara o si esta tiene algún problema.
+
+*** Tu comida de mascota, tus datos ***
+- Tus datos son tuyos y nunca se envían en línea
+- Puedes usar la aplicación de forma anónima
+- Puedes exportar tu historial de escaneo
+
+
+Para alimentos para humanos, puede instalar Open Food Facts, para cosméticos, Open Beauty Facts, y para otros productos, Open Products Facts.

@@ -1,0 +1,19 @@
+
+==================
+Nova versió nativa d'Open Food Facts. Tot el voluntariat d'Open Food Facts ha estat treballant intensament, sobre la base dels vostres suggeriments i comentaris :)
+==================
+* Open Food Facts ara és un moviment més global que mai. 500.000 productes alliberats, 10.000 col·laboradors registrats, 182 països. Ens acompanyeu?
+==================
+Què hi ha de nou?
+==================
+1. Obteniu la foto 360: nutrició, ingredients i totes les dades reals dels aliments, perfectament i clarament presentades.
+2. Obteniu la valoració "NutriScore" per a tots els productes del món. Compareu fàcilment els productes. La manera més fàcil de desxifrar les taules nutricionals.
+3. Obteniu informació addicional de la Viquipèdia. Feu clic a una categoria d'aliments, a un additiu... per obtenir-ne més informació i veure productes similars.
+4. Podeu configurar alertes d'al·lèrgens (comproveu sempre dues vegades l'etiqueta actual!)
+5. Obteniu un historial d'exploració que podeu exportar i que mai no sortirà del vostre telèfon
+6. Podeu sacsejar el telèfon en qualsevol moment des de l'aplicació per començar a escanejar
+7. Ara podeu afegir nous productes fins i tot quan esteu fora de línia
+8. Ara podeu ajudar a completar els vostres aliments preferits directament des de l'aplicació: fer fotos, omplir informació, fer que la transparència en els aliments sigui un fet
+9. Tot és també molt més ràpid. La càrrega de productes és molt ràpida, fins i tot amb una mala connexió mòbil.
+10. No estem interessats en les vostres dades personals. No cal inscriure's per escanejar i col·laborar.
+Extra! Malgrat totes les novetats, l'aplicació és tan lleugera com abans. L'espai que queda al telèfon és sagrat.

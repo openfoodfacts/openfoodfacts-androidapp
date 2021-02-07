@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="headers">
+        <item>Barcode</item>
+        <item>Name</item>
+        <item>Brands</item>
+    </string-array>
+    <string-array name="your_products_headers">
+        <item>Barcode</item>
+        <item>Product Name</item>
+        <item>List Name</item>
+        <item>Product Details</item>
+    </string-array>
+</resources>

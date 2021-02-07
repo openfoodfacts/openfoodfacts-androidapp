@@ -1,0 +1,19 @@
+
+==================
+New native version of Open Food Facts. All the Open Food Facts volunteers been working hard on it, based on your suggestions and feedback :)
+==================
+* Open Food Facts is now a more global movement than ever. 500k products freed, 10K registered contributors, 182 countries. Vil du bli med?
+==================
+Hva er nytt?
+==================
+1. Du får 360-gradersbildet: ernæring, ingredienser og alle matfakta, pent og tydelig presentert.
+2. Få "NutriScore" for alle produktene i verden. Sammenlign produkter enkelt. Enklere enn å dekryptere ernæringstabeller.
+3. Få ekstra informasjon fra Wikipedia. Klikk på en matkategori, et tilsetningsstoff… for å lære mer og se lignende produkter.
+4. Du kan få varsler om allergener (dobbeltsjekk alltid selve etiketten!)
+5. Du får nå en skannehistorikk du kan eksportere, og som aldri forlater telefonen
+6. Du kan riste telefonen når som helst, mens du er i appen, for å starte skanningen
+7. Du kan nå legge til nye produkter også når du er frakoblet
+8. You can now help complete your favorite foods directly from the app: take photos, fill info, make food transparency happen
+9. Alt er også mye raskere. Produkter lastes raskt, selv med dårlig nettforbindelse.
+10. Vi er fortsatt ikke interessert i dine personlige data. Du trenger ikke registrere deg for å skanne og bidra.
+Ekstra! Til tross for alle de nye tingene, er appen like lett som før. Plassen som er igjen på telefonen din er hellig.

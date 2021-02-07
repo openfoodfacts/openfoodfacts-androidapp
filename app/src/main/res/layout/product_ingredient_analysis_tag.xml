@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_margin="3dp"
+    android:background="@drawable/rounded_button"
+    android:tint="@color/white">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:tint="@color/white" />
+</FrameLayout>

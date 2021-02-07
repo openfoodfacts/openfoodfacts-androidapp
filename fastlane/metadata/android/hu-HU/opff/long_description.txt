@@ -1,0 +1,34 @@
+Olvassa be az állateledeleket vagy a vonalkódjukat, hogy megszerezze az adatokat azok összetevőiről, adalékanyagairól és tápértékadatairól.
+
+The app allows to view the over 600 pet food products already contained in the free and open database Open Pet Food Facts, and also to add pictures and data for missing products.
+
+Az Open Pet Food Facts program felfedezéséhez, kérjük, látogasson el a https://world.openpetfoodfacts.org weboldalra
+
+***Hozzájárulás az Állateledel Átláthatósághoz***
+
+- Open Pet Food Facts is a pet food products database made by everyone, for everyone.
+- You can use it to make better pet food choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Pet Food Facts is a non-profit project developed by thousands of volunteers from around the world. Rengeteg izgalmas projektünk van, amelyekkel sokféleképpen járulhat hozzá. 
+- You can start contributing today by adding a product from your pet's cupboard. 
+
+
+*** Kapja meg a Tényeket ***
+
+Megtudhatja még (a termékeken feltüntetett jelölések szerint):
+- list of ingredients (including ash content)
+- nutritional info, nutrition traffic lights…
+- brands, allergens, labels (organic, vegan...)
+- It works with dog food (dry dog food & wet dog food), cat food, rabbit food, snake food, fish food, bird food, horse food or any food for your favorite animal.
+
+*** Minden körülmény között jól működik ***
+- Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
+- Az alkalmazás csak a legszükségesebb dolgokat tölti be, hogy csökkentse az adat és akkumulátorhasználatot
+- Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
+
+*** Az ön állateledele, az ön adatai ***
+- Az ön személyes adatainak tulajdonosa ön és soha nem lesznek elküldve online
+- Az alkalmazást névtelenül használhatja
+- Exportálni tudja a beolvasási előzményeket
+
+
+Emberi élelmiszerekhez telepítheti az Open Food Facts-ot, kozmetikai termékekhez az Open Beauty Facts-ot és a többi termékhez az Open Products Facts-ot.

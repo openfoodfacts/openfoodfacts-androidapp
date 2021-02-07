@@ -1,0 +1,45 @@
+Categories:Sports & Health
+License:Apache-2.0
+Web Site:https://world.openpetfoodfacts.org/
+Source Code:https://github.com/openfoodfacts/openfoodfacts-androidapp
+Issue Tracker:https://github.com/openfoodfacts/openfoodfacts-androidapp/issues
+Changelog:https://github.com/openfoodfacts/openfoodfacts-androidapp/releases
+
+Name:Open Pet Food Facts
+Auto Name:Open Pet Food Facts
+Summary:Look up pet food ingredients, allergens, nutrition facts
+Description:
+Scan pet food products or their barcode to obtain data on ingredients, additives
+and nutrition facts.
+
+The app allows to view the over 100 pet products already contained in the free
+and open database Open Pet Food Facts, and also to add pictures and data for
+missing products.
+
+To discover the Open Pet Food Facts project, please visit
+[https://openpetfoodfacts.org].
+
+You will also be able to find (according to the indications present on the
+products): - PetScore (nutritional score for our 2, 4 and 6 legged Friends),
+nutritional info… - brands, allergens (catnip), labels (bio, fish free fish
+food...)
+
+Also, Open Pet Food Facts will soon replace OpenFoodFacts, with Dog, Cat, Bird
+or Fish domination.
+
+1 dog product uploaded as open data = 1 dog vote  Cats currently lead the game.
+.
+
+Repo Type:git
+Repo:https://github.com/openfoodfacts/openfoodfacts-androidapp
+
+Build:0.7.4,37
+    commit=f3ec64f9b0c29e46ec7cc73f537182640b5c4713
+    subdir=app
+    init=sed -i '/javaMaxHeapSize/d' build.gradle
+    gradle=opff
+
+Auto Update Mode:None
+Update Check Mode:RepoManifest
+Current Version:0.8.8
+Current Version Code:44

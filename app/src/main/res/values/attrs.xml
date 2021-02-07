@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="drawableLeftCompat" format="reference" />
+        <attr name="drawableRightCompat" format="reference" />
+        <attr name="drawableTopCompat" format="reference" />
+        <attr name="drawableBottomCompat" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="CustomEditTextView" parent="CustomView">
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableBottomCompat" />
+    </declare-styleable>
+    <declare-styleable name="CustomButtonView" parent="CustomView">
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableBottomCompat" />
+    </declare-styleable>
+    <declare-styleable name="CustomTextView" parent="CustomView">
+        <attr name="drawableLeftCompat" />
+        <attr name="drawableRightCompat" />
+        <attr name="drawableTopCompat" />
+        <attr name="drawableBottomCompat" />
+    </declare-styleable>
+    <declare-styleable name="CustomValidatingEditTextView">
+        <attr name="parentTextInputLayout" format="reference" />
+        <attr name="attachedUnitSpinner" format="reference" />
+        <attr name="attachedModSpinner" format="reference" />
+        <attr name="fieldName" format="string" />
+    </declare-styleable>
+    <declare-styleable name="TipBox">
+        <attr name="animate" format="boolean" />
+        <attr name="message" format="string" />
+        <attr name="identifier" format="string" />
+        <attr name="shouldDisplayImmediately" format="boolean"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="textColor" format="color"/>
+        <attr name="arrowMarginStart" format="dimension" />
+        <attr name="arrowMarginEnd" format="dimension" />
+        <attr name="arrowAlignment" format="string">
+            <flag name="start" value="8388611" />
+            <flag name="center" value="1" />
+            <flag name="end" value="8388613" />
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,76 @@
+Lue elintarvikkeita tai niiden viivakoodit saadaksesi tietoa ainesosista, lisäaineista ja ravintosisällöistä.
+
+▶ Löydä ja vertaa yli 800 000 tuotetta
+
+Sovelluksen avulla voi tarkastella 800 000 tuotetta (mukaan lukien 175 000 Yhdysvalloissa), jotka ovat jo vapaassa ja avoimessa Open Food Facts -tietokannassa, sekä lisätä kuvia ja tietoja uusille tuotteille.
+
+
+Tutustu vapaaehtoisten ylläpitämään Open Food Facts -hankkeeseen osoitteessa https://world-fi.openfoodfacts.org
+
+▶ Valitse tuotteet, jotka ovat sinulle hyväksi
+- Nutri-Score-arvosana, "A" - "E" >> Ravinnollinen laatu
+- NOVA-ryhmä, "1" - "4" >> Löydä ultrajalostettu ruoka
+- Voit helposti verrata niin monta tuotetta kuin haluat vierekkäin yksinkertaisesti lukemalla ne. 
+
+▶ Ja hyväksi planeetalle!
+- Ruokasi hiilivaikutus
+- Saa käsitys siitä, kuinka paljon päivittäisestä hiilikiintiöstäsi käytät ruokaan
+- Perustuu ADEME:n Ranskalle laskemiin jalanjälkiin.
+- Liity mukaan ja auta meitä tuomaan hiilivaikutus maahasi!
+- Hiilivaikutuksen ilmaisemiseksi tuotteella on oltava määrä ja täydellinen ainesosaluettelo, jossa on % lihaa tai kalaa
+
+
+▶ Edistä ruoan läpinäkyvyyttä
+- Open Food Facts on kaikkien tekemä elintarviketietokanta kaikille.
+- Voit käyttää sitä parempiin ruokavalintoihin, ja koska se on avointa dataa, kuka tahansa voi käyttää sitä uudelleen mihin tahansa tarkoitukseen.
+- Open Food Facts on voittoa tavoittelematon hanke, jonka ovat kehittäneet tuhannet vapaaehtoiset ympäri maailmaa. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin.
+- Voit aloittaa osallistumisen tänään lisäämällä tuotteen jääkaapistasi.
+
+▶ Luo luetteloita
+Luo ostoslistoja, seuraa mitä olet syönyt, ja jaa ja vie luettelosi helposti.
+
+▶ Näe faktat
+- Open Food Facts auttaa sinua ymmärtämään tuotteiden etiketeissä olevan pikkupräntin. Löydät:
+- hiilijalanjäljen (CO2-päästöt) ja pakkaukset (sekä kierrätysohjeet),
+- Nutriscoren (ravintopisteet), ravintoaineet, rasvan / rasvapitoisuuden, tyydyttyneet rasvahapot, hiilihydraatit, sokerit, kuidut, proteiinin sekä suolan ja natriumin.
+- tuotemerkit, allergeenit, merkit (luomu, gluteeniton, vegaani, vegetaari, halal, kosher ...), jäljitettävyystiedot (pakkauskoodit, ainesosien alkuperät)
+- Viineistä ja oluista löydät alkoholipitoisuuden.
+
+
+▶ Perustuu tieteeseen ja auttaa tiedettä!
+
+- Emme keksi asioita. Luotamme vertaisarvioituun tieteeseen.
+- Nutri-Scoren on luonut professori Hercbergin johtama riippumaton ranskalainen ryhmä.
+- Ruoan jalostuksen NOVA-ryhmät on suunnitellut professori Monteiron kansainvälinen ryhmä.
+- Saat yhteenvedon elintarvikelisäaineiden EFSA-altistustasoista.
+- Open Food Facts -yhteisö tekee yhteistyötä ympäri planeettaa toimivien tutkimusryhmien kanssa parantaakseen ravintotutkimusta, joka hyödyttää kaikkia.
+
+
+▶ Yhteydetön lukeminen: Lue MISSÄ TAHANSA olosuhteissa! (tulossa pian)
+Lue valon nopeudella (vaikka olisit lentokoneessa, sukellusveneessä tai supermarketissa)
+
+- Koko planeetta, taskussasi!
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
+- Sovellus lataa vain ehdottoman välttämättömät datasiirron ja akun kulutuksen vähentämiseksi.
+
+▶ Sinun ruokasi, sinun tietosi
+- Tietosi ovat sinun, eikä niitä koskaan lähetetä verkossa
+- Voit käyttää sovellusta nimettömästi
+- Voit viedä lukuhistoriasi
+
+▶ Aseta allergeenivaroitukset tuotteille
+- Maito-, gluteeni-, muna-, soijapapu-, pähkinä-, kala-, selleri-, sinappi-, rikkidioksidi ja sulfiitit -, maapähkinä-, seesaminsiemen-, äyriäis-, nilviäis- tai lupiiniallergia?
+- Nopeuta ostoksiasi tekemällä ensin seulonta Open Food Factsilla.
+- Ole varovainen, sillä tiedot eivät välttämättä ole 100% tarkkoja, ja havaitseminen ei välttämättä ole 100% tarkkaa. Joten varmista aina tiedot pakkauksesta.
+
+
+▶ Sano hei ja/tai liity joukkoon!
+
+
+Open Food Facts on saatavilla myös verkossa osoitteessa https://world-fi.openfoodfacts.org
+
+
+Kysymykset, palaute: contact@openfoodfacts.org
+
+
+Kosmetiikalle voit asentaa Open Beauty Factsin, lemmikkieläinten ruoalle Open Pet Food Factsin ja kaikille muille tuotteille Open Products Factsin.

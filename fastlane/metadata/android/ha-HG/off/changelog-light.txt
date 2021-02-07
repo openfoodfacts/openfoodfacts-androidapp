@@ -1,0 +1,34 @@
+VERSION 3
+====
+1. It's easier to contribute new products, and get the Nutri-Score
+1. Create (and export) your product lists (shopping, eating…)
+3. Compare products side by side by scanning them one after the other.
+4. Completely redesigned product page, slide the card up to discover it
+5. Open Food Facts is fully volunteer-run: you can contribute time (world.openfoodfacts.org/contribute) or money (donate.openfoodfacts.org)
+
+
+======
+v2 ! Dukkan masu ba da agaji na KASHE sun yi aiki tuƙuru, gwargwadon shawarwarinku. Muna motsi a duniya fiye da kowane lokaci. 500k kayayyakin da aka 'yanta, kasashe 182, masu bayar da gudummawar 10K +, incl. ku :-)
+1. NutriScore na duk samfuran da ke cikin duniya
+1. Tarihin da za a fitar, don idanunku ne kawai
+3. Allergen din sanarwa
+4. Matsa ƙarin abubuwa don bincika tare da Wikipedia.
+5. Dauki hotuna, dan zama ɗaya daga ma'anar abinci
+6. Mafi sauri sosai, har ma akan 2G. Kuna iya ba da gudummawa ba tare da haɗin gwiwa ba
+7. Babu buƙatar rajista
+8. Haske kamar yadda ya gabata :)
+
+v2.8 ! Bayan babban V2, duk masu ba da agajin kashe sun ci gaba da aiki tuƙuru, gwargwadon shawarwarinku. Yanzu muna agogo a samfuran 570k waɗanda aka 'yanta su daga 182 ƙasashe ta hanyar 10K + masu ba da gudummawa, incl. ku 🙂
+1. Mun sake gina duk kwarewar ƙarin samfurin (kuma har ila yau yana aiki a layi akashe). (godiya Huzaifa)
+1. A yanzu zaku iya samun abinci mai gina jiki game da abincin da kuke ci (Rutvik)
+3. Yanzu muna lissafin kungiyoyin NOVA da hadi da Nutriscore (Huzaifa)
+4. Goge-goge na gida (by Rutvik & Salfai)
+5. 🌎 Yaren Koriya & Indonesiyan
+
+2.8.8 ! Tsammani zamu dakatar da ƙari akan samfurin? Dukkan ma’aikatan agaji na kashe-kashe sun ci gaba da aiki tuƙuru. Samfuran 590k, kasashe 182, masu bada gudummawa 10K +, incl. ku 🙂
+1. A yanzu zaku iya shirya kowane kaya tare da asusun ku. Danna kan ✏️ a shafin shafi don gyara.
+1. 🌍 Slovak, Ibrananci, Spanish, Larabci, Dutch, Hungarian da Vietnamese (fassara.openfoodfacts.org don taimakawa)
+3. Bude kayan Abinci shine cikakken aikin bayar da gudummawa: Kuna iya ba da gudummawa ta lokaci (world.openfoodfacts.org/contribute) ko kuɗi (donate.openfoodfacts.org)
+
+
+

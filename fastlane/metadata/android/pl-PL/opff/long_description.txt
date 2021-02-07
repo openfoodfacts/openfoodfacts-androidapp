@@ -1,0 +1,34 @@
+Zeskanuj kod kreskowy z produktu dla zwierząt, aby uzyskać dane o jego: składzie, dodatkach i wartości odżywczej.
+
+Aplikacja umożliwia przeglądanie ponad 600 produktów karmy dla zwierząt domowych zawartych w bezpłatnej i otwartej bazie danych Open Pet Food Facts, a także na dodawanie zdjęć i danych dotyczących brakujących produktów.
+
+Aby poznać projekt Open Pet Food Facts, odwiedź https://world.openpetfoodfacts.org
+
+***Przyczyń się do przejrzystości Pet Food***
+
+- Open Pet Food Facts to baza danych produktów dla zwierząt domowych tworzona przez wszystkich dla każdego.
+- Możesz go wykorzystać do dokonywania lepszych wyborów dotyczących karmy dla zwierząt domowych, a ponieważ są to otwarte dane, każdy może je ponownie wykorzystać w dowolnym celu.
+- Open Pet Food Facts to projekt nienastawiony na zysk opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć. 
+- Możesz zacząć pomagać już dziś, dodając produkt z szafki Twojego zwierzaka. 
+
+
+***Poznaj fakty***
+
+Będziesz mógł również znaleźć (zgodnie ze wskazówkami umieszczonymi na produktach):
+- lista składników (w tym zawartość popiołu)
+- informacje o wartości odżywczej, sygnalizatory ruchu żywieniowego…
+- marki, alergeny, etykiety (organiczne, wegańskie...)
+- Działa z karmą dla psów (sucha i mokra karma dla psów), karma dla kotów, karma dla królików, karma dla węży, karma dla ryb, karma dla ptaków, karma dla koni lub dowolna karma dla Twojego ulubionego zwierzęcia.
+
+***Działa dobrze w każdej sytuacji***
+- Możesz dodać nowe produkty, nawet nie mając teraz połączenia.
+-W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy
+-Nie potrzebujesz aparatu, aby wyszukać produkt. Możesz również wpisać kod kreskowy, jeśli nie masz aparatu lub masz z nim problem.
+
+***Twoje jedzenie, twoje dane***
+- Twoje dane należą do Ciebie i nigdy nie będą przesyłane online
+Możesz korzystać anonimowo z aplikacji
+Możesz eksportować historię skanowania
+
+
+W przypadku żywności dla ludzi możesz zainstalować Open Food Facts, dla kosmetyków, Open Beauty Facts, a także dla wszystkich innych produktów, Open Products Facts.

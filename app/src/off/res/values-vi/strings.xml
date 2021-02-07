@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
+    <string name="website">https://vn.openfoodfacts.org/</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
+    <string name="website_contribute">https://vn.openfoodfacts.org/contribute</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
+    <string name="website_discover">https://vn.openfoodfacts.org/discover</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
+    <string name="website_product">https://vn.openfoodfacts.org/product/</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
+    <string name="website_contributor">https://vn.openfoodfacts.org/contributor/</string>
+    <string name="txtHome">Open Food Facts là một cơ sở dữ liệu về thực phẩm cùng nguyên liệu, chất gây dị ứng, thành phần dinh dưỡng và những mẩu thông tin khác trên bao bì của sản phẩm.</string>
+    <string name="slide_1_title">Đóng góp cho sự minh bạch của thực phẩm</string>
+    <string name="slide_1_desc">Scan sản phẩm, chụp chúng, tạo dựng sự minh bạch cho sản phẩm</string>
+    <string name="slide_2_title">Get the facts</string>
+    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
+    <string name="slide_3_title">Lấy điểm Nutri-Score</string>
+    <string name="slide_3_desc">Một cái nhìn tổng quan về đặc tính dinh dưỡng của sản phẩm mà bạn yêu thích</string>
+    <string name="slide_4_title">Works offline</string>
+    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+    <string name="txtDialogsContent">Sản phẩm bạn đã quét không tồn tại trong Sự Open Food Facts. Vui lòng thêm nó.</string>
+    <string name="txtDialogsContentPowerMode">Sản phẩm bạn scan đã có trên Open Food Facts.</string>
+    <string name="msg_share">Xem sản phẩm này trên Open Food Facts:</string>
+    <string name="not_support_books">Sách hiện không được hỗ trợ bởi Sự kiện Open Food Facts</string>
+    <string name="txt_broaden_search">- mở rộng tìm kiếm của bạn \ n- quét và thêm nó vào Open Food Facts</string>
+    <string name="Donation">Nhấn đây để quyên góp cho Open Food Facts</string>
+    <string name="pref_help_translate_title">Giúp dịch Open Food Facts</string>
+    <string name="pref_help_translate_summary">Mang cơ sở dữ liệu Sự Open Food Facts sang ngôn ngữ của bạn - không yêu cầu kiến ​​thức kỹ thuật</string>
+    <string name="text_offline_info_dialog">Scan sản phẩm ngay cả khi offline để thêm vào Open Food Fact sau. Sản phẩm đã scan sẽ xuất hiện ở đây và bạn có thể gửi chúng bằng nút ở bên dưới.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <!-- OFF tagline in different languages -->
+    <string name="tagline">the free food products database</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="currently_on_version">Gần đây trên Open Food Facts</string>
+</resources>

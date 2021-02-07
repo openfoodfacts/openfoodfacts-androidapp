@@ -1,0 +1,34 @@
+Digitalize produtos alimentares para animais para obter dados sobre ingredientes, aditivos e informação nutricional.
+
+O aplicativo permite ver mais de 600 alimentos para animais que já estão inseridos no banco de dados aberto e gratuito, Open Pet Food Facts, além de adicionar imagens e dados para produtos não catalogados.
+
+Para conhecer o projeto Open Pet Food Facts, visite https://world.openpetfoodfacts.org
+
+***Contribua para Transparência de Alimentos para Animais***
+
+- Open Pet Food Facts é um banco de dados com produtos alimentícios para animais, feito por todo mundo, para todo mundo.
+- Você pode utilizá-lo para fazer melhores escolhas de alimentos para animais e, por ser dados abertos, qualquer um pode reutilizar para qualquer proposta.
+- Open Pet Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
+- Você pode começar a contribuir hoje, adicionando informações de um produto do seu pet que esteja no armário. 
+
+
+*** Conheça os Fatos ***
+
+Você também poderá encontrar (de acordo com as indicações presentes nos produtos):
+- lista de ingredientes (incluindo matéria inorgânica)
+- informação nutricional, semáforo nutricional…
+- marcas, alérgenos, rótulos (orgânicos, veganos...)
+- Funciona para comida de cachorro (comida de cachorro seca e molhada), comida de gato, comida de coelho, comida de cobra, comida de peixe, comida de pássaro, comida de cavalo ou qualquer comida para seu animal favorito.
+
+*** Funciona bem em qualquer condição***
+- Você pode adicionar novos produtos, mesmo se você não estiver conectado à Internet.
+- O aplicativo abre apenas o estritamente necessário para reduzir o consumo de bateria e dados
+- Você não precisa de uma câmera para procurar um produto. Você pode digitar o código de barras se não tiver uma câmera ou caso esteja com problemas.
+
+***Seus alimentos de animais, seus dados***
+- Seus dados pessoais são seus e nunca serão enviados online
+- Você pode usar o aplicativo anonimamente
+- Você pode exportar seu histórico
+
+
+Para alimentos de humanos, você pode instalar Open Food Facts, para cosméticos, Open Beauty Facts e, para todos os outros produtos, Open Products Facts.

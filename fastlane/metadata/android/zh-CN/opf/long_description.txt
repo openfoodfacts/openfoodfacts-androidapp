@@ -1,0 +1,54 @@
+Open Products Facts 一个包含世界上所有产品的开放数据库。
+
+▶促进食品透明化
+
+-Open Products Facts是集人人之力并为人人之利而建立的产品数据库。
+- 您可以使用它来做出更好的食物选择，并且由于它是公开数据，任何人都可以为了任何目的而重复利用。
+- Open Food Facts 是一个由全球数以千计的志愿者者开发的非盈利性项目。 我们有许多激动人心的项目，您可以通过多种不同的渠道来作出贡献。 
+-您可以从今天添加您的第一个产品开始来做出贡献。 
+
+了解事实
+- Open Food Facts 可帮助您了解产品标签上的各个细节。
+
+收集所有信息
+您可以添加收藏中的所有项目
+Open Crayons Facts——最大的彩色蜡笔开放数据库
+-Open Miniature Food Facts——最大的微型食品开放数据库
+Open Food Facts——创建你自己的开放数据库
+
+***在任何情况下都可以正常工作***
+- 即使没有连接互联网，你也可以添加新的产品。
+- 应用程序仅加载必要信息以减少数据及电量消耗
+- 您无需相机来查找产品。 如果您没有相机或相机出了问题，也可以通过输入条形码查找信息。
+
+***您的产品，您的数据***
+- 您的个人数据只属于您，永远不会被上传。
+- 您可以匿名使用该应用
+- 您可以导出历史记录
+
+Open Products Facts is also available on the web at https://world.openproductsfacts.org
+
+提问，反馈：
+提问，反馈： contact@openfoodfacts.org
+
+*** Original April's Fool Listing ***
+
+Yesterday morning, the Open Food Facts team woke up to a stunning revelation. 
+
+Collecting the world's food, cosmetic and pet food was so passé. With the insane progress made over the past year, we must surely be close to completing our mission to collect all the food and cosmetic products in the world, right ?
+
+So we set up to create not 1, but other 77000 separate new databases ! 
+
+Open Products Facts will be an extremely ambitious project. Here are a few of them: 
+
+Open Crayons Facts - The largest open database of coloring crayons
+
+Open Miniature Food Facts - The largest open database of miniature food products
+
+Open ??? Facts - The largest open database of ???
+
+Tomorrow, we will select the 3 most sucessful databases, and we will start collecting all the matching products in the world.
+
+Will it be trash cans, télécartes, or mobile phones database ? 
+
+So if you like t-shirts, cooking books, origami paper or snow globes, start scanning using the Open Products Facts Android app on Google Play

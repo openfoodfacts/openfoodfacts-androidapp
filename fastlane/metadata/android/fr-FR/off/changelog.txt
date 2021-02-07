@@ -1,0 +1,19 @@
+
+==================
+Nouvelle version native Android d'Open Food Facts. Tous les bénévoles de Open Food Facts ont travaillé dur dessus, en fonction de vos suggestions et de vos commentaires :)
+==================
+* Open Food Facts est maintenant un mouvement plus global que jamais. 500 000 produits libérés, 10 000 contributeurs inscrits, 182 pays. Voulez-vous vous joindre à nous?
+==================
+Quoi de neuf ?
+==================
+1. Vous obtenez une vision à 360 degrés : nutrition, ingrédients et tout ce qui se rapporte à la nourriture, présenté nettement et clairement.
+2. Obtenez la note nutritionnelle "NutriScore" pour tous les produits du monde. Comparez facilement les produits. Plus simple que de déchiffrer des tables nutritionnelles.
+3. Récupérez des informations bonus sur Wikipédia. Cliquez sur une catégorie d'aliments, un additif... pour en apprendre plus et voir des produits similaires.
+4. Vous pouvez définir des alertes allergènes (vérifiez toujours l'étiquette vous-même!)
+5. Vous obtenez maintenant un historique de scans que vous pouvez exporter et qui ne quitte jamais votre téléphone
+6. Vous pouvez secouer votre téléphone à tout moment dans l'application pour commencer le scan
+7. Vous pouvez maintenant rajouter des produits à tout moment, même hors-ligne
+8. Vous pouvez maintenant aider à compléter vos aliments préférés directement à partir de l'application: prenez des photos, renseignez des informations, participez à la transparence alimentaire
+9. Tout est bien plus rapide. Les produits chargent à une vitesse folle, même si votre connexion mobile est mauvaise.
+10. Nous ne sommes toujours pas intéressés par vos données personnelles. Vous n'avez pas besoin de vous inscrire pour scanner et contribuer.
+Bonus ! Malgré toutes les nouveautés, l'application est aussi légère qu'avant. L'espace libre sur votre téléphone est sacré.

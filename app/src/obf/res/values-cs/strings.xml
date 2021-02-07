@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/ -->
+    <string name="website">https://world-cs.openbeautyfacts.org/</string>
+    <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contribuer -->
+    <string name="website_contribute">https://world-cs.openbeautyfacts.org/contribute</string>
+    <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/decouvrir -->
+    <string name="website_discover">https://world-cs.openbeautyfacts.org/discover</string>
+    <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/produit/ -->
+    <string name="website_product">https://world.openbeautyfacts.org/product/</string>
+    <!-- For fr, Replace by https://world-fr.openbeautyfacts.org/contributeur/ -->
+    <string name="website_contributor">https://world.openbeautyfacts.org/contributor/</string>
+    <string name="terms_url">https://world-cs.openbeautyfacts.org/terms-of-use</string>
+    <string name="txtHomeOnline">Open Beauty Facts is an open database of more than %1$s cosmetic products (plus the ones you will contribute) with ingredients, allergens, indicia and all the tidbits of information we can find on product labels.</string>
+    <string name="txtHome">Open Beauty Facts is a open and collaborative database of cosmetic products.</string>
+    <string name="slide_1_title">Contribute to Cosmetic transparency</string>
+    <string name="slide_1_desc">Scan products, take them in picture, make cosmetic transparency happen</string>
+    <string name="slide_2_title">Získejte fakta</string>
+    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
+    <string name="slide_3_title">Keep track of the product you use</string>
+    <string name="slide_3_desc">All the cosmetic you use, in one handy list you can export</string>
+    <string name="slide_4_title">Pracuje offline</string>
+    <string name="slide_4_desc">You can add new products, even if you don\'t have an Internet connection right now</string>
+    <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Beauty Facts. Přidejte jej prosím.</string>
+    <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Beauty Facts</string>
+    <string name="Donation">Kliknutím můžete přispět na Open Beauty Facts</string>
+    <string name="translate_help_title">Pomozte přeložit Open Beauty Facts</string>
+    <string name="translate_help_summary">Bring the Open Beauty Facts database to your language - no technical knowledge required</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Beauty Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Beauty Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <!-- OBF tagline in different languages -->
+    <string name="version_string">Android aplikace Open Beauty Facts</string>
+    <string name="tagline">svobodná databáze kosmetických výrobků</string>
+    <string name="product_not_found">Produkt %1$s, který jste naskenovali, ještě neexistuje v databázi Open Beauty Facts. Můžete jej prosím přidat?</string>
+    <string name="currently_on_version">Aktuálně na Open Beauty Facts</string>
+    <string name="category_game_btn">Pomozte roztřídit produkty</string>
+    <!-- TODO add true support instead of overriding strings -->
+    <string name="add_nutrient_prompt_text">Přidejte další podrobnosti pro dokončení produktu</string>
+    <string name="add_category_prompt_text">Přidejte kategorii, která pomůže produkt dokončit</string>
+    <string name="add_nutrient_category_prompt_text">Přidejte kategorii a další podrobnosti pro dokončení produktu</string>
+    <string name="required_to_compute_nutriscore"></string>
+    <string name="txt_eaten_products">Produkty, které mám</string>
+    <string name="txt_products_to_buy">Nákupní seznam</string>
+    <string name="intent_filter_share_label">Přidat do Open Beauty Facts</string>
+    <string name="brand_hint">Příklady: Nivea, L\'Oréal, atd…</string>
+    <string name="txt_info_eaten_products">You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"Products to buy\".
+        You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+    <string name="OFFlogo">Logo Open Beauty Facts</string>
+</resources>

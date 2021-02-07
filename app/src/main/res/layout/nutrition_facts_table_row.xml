@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/spinner_mod"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/top_margin_spinner_hint"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/spinner_weights_grey"
+            android:entries="@array/nutrition_comparison_units"
+            android:gravity="center_vertical"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/value_til"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/value_til" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/value_til"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:errorTextAppearance="@style/errorText"
+            app:layout_constraintEnd_toStartOf="@+id/spinner_unit"
+            app:layout_constraintStart_toEndOf="@+id/spinner_mod"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+                android:id="@+id/value"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/bg_edittext_til"
+                android:digits="0123456789.,"
+                android:gravity="center_vertical"
+                android:inputType="numberDecimal"
+                android:nextFocusDown="@id/saturated_fat"
+                android:singleLine="true"
+                app:attachedModSpinner="@id/spinner_mod"
+                app:attachedUnitSpinner="@id/spinner_unit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:parentTextInputLayout="@id/value_til" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spinner_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="@dimen/top_margin_spinner_hint"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/spinner_weights_grey"
+            android:entries="@array/nutrition_weight_units"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/value_til"
+            app:layout_constraintTop_toTopOf="@+id/value_til" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</TableRow>

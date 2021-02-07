@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/set_ingredient_image"
+        android:title="@string/set_ingredient_img" />
+
+    <item
+        android:id="@+id/set_nutrition_image"
+        android:title="@string/set_img_nutrients" />
+
+    <item
+        android:id="@+id/set_front_image"
+        android:title="@string/set_img_front" />
+
+    <item
+        android:id="@+id/set_recycling_image"
+        android:title="@string/set_img_recycling" />
+
+    <item
+        android:id="@+id/report_image"
+        android:icon="@drawable/ic_baseline_report_24"
+        android:title="@string/report_img" />
+
+
+</menu>

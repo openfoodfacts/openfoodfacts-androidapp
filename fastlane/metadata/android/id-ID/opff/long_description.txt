@@ -1,0 +1,36 @@
+Pindai produk makanan hewan peliharaan atau kode batangnya untuk mendapatkan data tentang bahan-bahan, bahan tambahan dan fakta nutrisi.
+
+Kamu bisa melihat lebih dari 600 produk makanan hewan peliharaan yang sudah ada dengan gratis, juga untuk menambahkan foto dan data untuk produk yang hilang.
+
+Untuk menemukan proyek Open Pet Food Facts, kunjungi https://world.openpetfoodfacts.org
+
+***Berkontribusi untuk Transparansi Makanan Hewan***
+
+- Open Beauty Facts adalah basis data produk makanan hewan peliharaan yang dibuat oleh semua orang untuk semua orang.
+- Dapat digunakan untuk membuat pilihan makanan hewan peliharaan yang lebih baik dan dapat digunakan oleh siapa saja untuk tujuan apa saja karena merupakan data terbuka.
+- Open Pet Food Facts adalah proyek nirlaba yang dikembangkan oleh ribuan sukarelawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara. 
+- Untuk memulai kontribusi, tambahkan sebuah produk di lemari hewan peliharaan anda. 
+
+
+*** Dapatkan faktanya ***
+
+Anda juga akan dapat menemukan (menurut indikasi yang ada pada produk):
+- Komposisi (termasuk kandungan abu)
+- info nutrisi
+- merek, alergen, label (organik, vegan)
+- Bekerja untuk makanan anjing (kering dan basah), makanan kucing, kelinci, ular, ikan, burung, kuda dan peliharaan favorit anda lainnya.
+
+*** Bekerja dengan baik di segala kondisi ***
+- Bisa menambahkan produk, bahkan tanpa koneksi internet.
+- Aplikasi hanya membuat hal yang diperlukan untuk mengurangi konsumsi data dan baterai
+- Tidak memerlukan kamera untuk mencari produk. Jika bermasalah dengan kamera, mengetik angka kode batang bisa dilakukan.
+
+*** Makanan hewan peliharaanmu, datamu ***
+- Datamu adalah milikmu, tidak akan diunggah
+- Bisa menggunakan aplikasi secara anonim
+- Bisa mengekspor riwayat pemindaian
+
+
+Pasang Open Food Facts untuk info makanan manusia.
+Pasang Open Beauty Facts untuk info kosmetik.
+Pasang Open Product Facts untuk info produk lainnya.

@@ -1,0 +1,31 @@
+***Hozzájárulás a Kozmetikai szer Átláthatósághoz***
+
+- Open Beauty Facts is a cosmetic products database made by everyone, for everyone.
+- You can use it to make better cosmetic choices, and as it is open data, anyone can re-use it for any purpose.
+- Open Beauty Facts is a non-profit project developed by thousands of volunteers from around the world. Rengeteg izgalmas projektünk van, amelyekkel sokféleképpen járulhat hozzá. 
+- You can start contributing today by adding a product from your cosmetic cupboard. 
+
+*** Kapja meg a Tényeket ***
+
+- Cosmetics additives, F.I.L. codes, CI-numbers, INCI (International Nomenclature of Cosmetic Ingredients), ingredient list, allergens, packaging codes... 
+- Open Beauty Facts helps you to make sense of the fine print on products labels.
+- You don't need to be a chemist and learn latin anymore to decypher an ingredient list :-)
+- You can scan: aftershaves, body lotions, creams, deodorant, eyeliner, foundation, fragrance, lipstick, makeup, mask, perfume, shampoo, soap, shower gel, nail polish and much more…
+- We think it can be useful for people with skin conditions like acne, psoriasis, eczema… to make better cosmetic choices.
+
+*** Minden körülmény között jól működik ***
+- Hozzáadhat új termékeket még akkor is, ha jelenleg nincs internet kapcsolata.
+- Az alkalmazás csak a legszükségesebb dolgokat tölti be, hogy csökkentse az adat és akkumulátorhasználatot
+- Nincs szüksége kamerára, hogy megkeressen egy terméket. Begépelheti a vonalkódot, ha nem rendelkezik kamerával vagy problémája van vele.
+
+*** Az ön kozmetikumai, az ön adatai ***
+- Az ön adatainak tulajdonosa ön és soha nem lesznek elküldve online
+- Az alkalmazást névtelenül használhatja
+- Exportálni tudja a beolvasási előzményeket
+
+Note: Open Beauty Facts is being built, the site and the application are based on Open Food Facts and changes will be made to take into account the specificities of cosmetics.
+
+Az Open Beauty Facts elérhető az interneten is a következő címen: https://world.openbeautyfacts.org
+Kérdések, visszajelzés: contact@openfoodfacts.org
+
+Emberi élelmiszerekhez telepítheti az Open Food Facts-ot, állateledelekhez az Open Pet Food Facts-ot és a többi termékhez az Open Products Facts-ot.

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/ -->
+    <string name="website">https://world-cs.openfoodfacts.org/</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contribuer -->
+    <string name="website_contribute">https://world-cs.openfoodfacts.org/contribute</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/decouvrir -->
+    <string name="website_discover">https://world-cs.openfoodfacts.org/discover</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/produit/ -->
+    <string name="website_product">https://world-cs.openfoodfacts.org/product/</string>
+    <!-- For fr, Replace by https://world-fr.openfoodfacts.org/contributeur/ -->
+    <string name="website_contributor">https://world-cs.openfoodfacts.org/contributor/</string>
+    <string name="txtHome">Open Food Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.</string>
+    <string name="slide_1_title">Přispěte k transparenci potravin</string>
+    <string name="slide_1_desc">Nasnímejte zboží, vyfoťte ho, zajistěte transparentnost potravin</string>
+    <string name="slide_2_title">Get the facts</string>
+    <string name="slide_2_desc">Extensive information about the product you\'ve scanned, deciphered for you</string>
+    <string name="slide_3_title">Získejte Nutriční skóre</string>
+    <string name="slide_3_desc">A synthetic view of the nutritional properties of your favorite food products</string>
+    <string name="slide_4_title">Pracuje offline</string>
+    <string name="slide_4_desc">Můžete přidat nové produkty, i když současně nemáte připojení k internetu</string>
+    <string name="txtDialogsContent">Produkt, který jste naskenovali, ještě neexistuje v databázi Open Food Facts. Přidejte jej prosím.</string>
+    <string name="txtDialogsContentPowerMode">Produkt, který jste naskenovali, již existuje v databázi Open Food Facts.</string>
+    <string name="msg_share">Podívejte se na tento produkt v Open Food Facts :</string>
+    <string name="not_support_books">Knihy nejsou aktuálně podporovány Open Food Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
+    <string name="Donation">Kliknutím sem podpoříte Open Food Facts</string>
+    <string name="pref_help_translate_title">Pomozte přeložit Open Food Facts</string>
+    <string name="pref_help_translate_summary">Přineste databázi Open Food Facts do vašeho jazyka - nejsou na to třeba žádné technické znalosti</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informace o vašich alergiích nebudou nikdy odeslány na server Open Food Facts. Také mějte na paměti že informace o produktech nemusejí být přesné, a detekce nemusí být 100 % ařesná, vše prosím sami dvakrát zkontrolujte!</string>
+    <!-- OFF tagline in different languages -->
+    <string name="tagline">svobodná databáze potravin</string>
+    <string name="product_not_found">Výrobek %1$s, který jste naskenovali, ještě není v databázi Open Food Facts. Můžete ho prosím přidat?</string>
+    <string name="currently_on_version">Současně na Open Food Facts</string>
+</resources>

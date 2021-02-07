@@ -1,0 +1,2 @@
+1. NOVO: agora pode ver o estado de produtos veganos, vegetarianos e óleo de palma, com base na sua lista de ingredientes. Mais análises serão adicionadas ao longo do tempo. Envie-nos um e-mail para nos dizer o que gostaria de ver :-) 
+2. Limpeza com correções para vários problemas que relatou para contact@openfoodfacts.org

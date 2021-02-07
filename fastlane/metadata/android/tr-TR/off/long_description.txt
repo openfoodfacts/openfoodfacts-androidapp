@@ -1,0 +1,76 @@
+İçerikler, katkı maddeleri ve beslenme gerçekleriyle ilgili bilgi almak için gıda ürünlerini veya barkodlarını okutun.
+
+▶ 800.000'den fazla ürünü Bul & Karşılaştır
+
+Uygulama, özgür ve açık veritabanı Open Food Facts'te bulunan 800.000 ürünü (ABD'deki 175.000 ürün dahil) görüntülemenize ve ayrıca yeni ürünler için resim ve veri eklemenize olanak tanır.
+
+
+Gönüllüler tarafından yürütülen Open Food Facts projesini keşfetmek için https://world-tr.openfoodfacts.org adresini ziyaret edin
+
+▶ Sizin için iyi olan ürünleri seçin
+- Nutri-Score derecesi, "A" den "E" ye kadar >> Beslenme kalitesi
+- NOVA grubu, "1" den "4" e kadar >> Aşırı işlenmiş yiyecekleri bulun
+- İstediğiniz kadar ürünü kolayca tarayarak yan yana kolayca karşılaştırabilirsiniz. 
+
+▶ Ve gezegen için iyi!
+- Yiyeceğinizin karbon etkisi
+- Günlük karbon kotanızın ne kadarını yiyecekler için kullandığınıza dair bir fikir edinin
+- Fransa için ADEME tarafından hesaplanan ayak izlerine dayanarak.
+- Bize katılın ve Karbon Etkisini ülkenize getirmemize yardım edin!
+- Karbon Etkisini gösterebilmek için, bir ürünün miktarı ile birlikte et veya balık yüzdesini içeren tam bir içindekiler listesine sahip olması gerekir
+
+
+▶ Gıda Şeffaflığına Katkıda Bulunun
+-Open Food Facts, herkes tarafından herkes için oluşturulan bir gıda ürünleri veritabanıdır.
+-Daha iyi gıda tercihleri yapmak için kullanılabileceği gibi, açık bir kaynak olduğu için herhangi biri istediği bir amaç için yeniden kullanabilir.
+-Open Food Facts dünyanın dört bir yanından, binlerce gönüllü tarafından geliştirilen ve kar amacı gütmeyen bir projedir. -Birçok farklı şekilde katkı sağlayabileceğiniz çok sayıda heyecan verici projelerimiz bulunmakta.
+- Bugün buzdolabınızdan bir ürün ekleyerek katkıda bulunmaya başlayabilirsiniz.
+
+▶ Listeler oluştur
+Alışveriş listeleri oluşturun, ne yediğinizi takip edin ve listelerinizi kolayca paylaşın ve dışa aktarın.
+
+▶ Gerçekleri Öğrenin
+-Open Food Facts size, ürün etiketlerindeki satır aralarını daha iyi anlayabilmenizde yardımcı olur. Neler bulacaksınız:
+-karbon ayakizi (CO2 salınımı) ve paketleme (geri dönüşüm talimatları vb.),
+-Nutriscore (besleyicilik değeri), besinler, yağ/yağ içeriği, doymuş yağ asitleri, karbonhidratlar, şekerler, lif, protein ve tuz ve sodyum.
+- markalar, alerjenler, etiketler (biyo, glutensiz, vegan, vejetaryen, helal, koşer...), izlenebilirlik bilgileri (ambalaj kodları, malzemelerin kaynağı)
+-Şaraplarda ve biralarda alkol içeriğini bulacaksınız.
+
+
+▶ Bilime dayanarak, karşılığında Bilime yardımcı olarak!
+
+- Hiçbir şeyi uydurmuyoruz. Biz hakemli bilime dayanıyoruz.
+- Nutri-Score, Profesör Hercberg liderliğindeki bağımsız Fransız ekibi tarafından oluşturuldu.
+- Gıda işleme konusundaki NOVA grupları, Profesör Monteiro'nun uluslararası ekibi tarafından tasarlandı.
+- Gıda katkı maddeleri üzerindeki EFSA maruz kalma seviyelerinin bir bileşimini alabilirsiniz.
+- Open Food Facts topluluğu, herkese fayda sağlayan beslenme araştırmalarını geliştirmek için gezegen üzerindeki araştırma ekipleriyle işbirliği yapıyor.
+
+
+▶ Çevrimdışı Tarama: HERHANGİ bir koşulda tarayın! (çok yakında)
+Işık hızında tarayın (uçakta, denizaltıda veya süpermarkette olsanız bile)
+
+- Bütün gezegen, cebinizde!
+- Şu an İnternet bağlantınız olmasa bile yeni ürünler ekleyebilirsiniz.
+- Uygulama veri ve pil kullanımını azaltmak için sadece gerekli olanları yükler.
+
+▶ Sizin yiyecekleriniz, sizin verileriniz
+- Verileriniz sizindir ve asla çevrimiçi gönderilmez
+- Uygulamayı anonim olarak kullanabilirsiniz
+- Tarama geçmişinizi dışa aktarabilirsiniz
+
+▶ Ürünlere alerjen uyarıları ayarlayın
+- Süt, Gluten, Yumurta, Soya fasulyesi, Kuruyemişler, Balık, Kereviz, Hardal, Kükürt dioksit ve sülfitler, Yerfıstığı, Susam, Kabuklu deniz canlıları, Yumuşakçalar veya Acı bakla alerjisi?
+- Yiyeceklerinizi önce Open Food Facts'te inceleyerek alışveriş deneyiminizi hızlandırın.
+- Bilgilerin %100 doğru olmayabileceğine ve tespitin %100 kesin olmama ihtimaline dikkat edin. Bu nedenle, ambalajı her zaman tekrardan kontrol edin.
+
+
+▶ Merhaba deyin ve/veya bize katılın!
+
+
+Open Food Facts aynı zamanda https://world-tr.openfoodfacts.org internet adresinde mevcuttur
+
+
+Sorular, geri bildirim : contact@openfoodfacts.org
+
+
+Kozmetik için Open Beauty Facts, evcil hayvan gıdaları için Open Pet Food Facts yüklenebilir. Geri kalan her şey için, Open Products Facts.

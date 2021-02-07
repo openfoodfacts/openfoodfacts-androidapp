@@ -1,0 +1,34 @@
+Digitalize produtos alimentares para animais para obter dados sobre ingredientes, aditivos e informação nutricional.
+
+O aplicativo permite visualizar os mais de 600 produtos alimentares para animais já contidos no banco de dados aberto e gratuito Open Pet Food Facts e também para adicionar fotos e dados de produtos em falta.
+
+Para descobrir o projeto Open Pet Food Facts, visite https://world.openpetfoodfacts.org
+
+***Contribuir para a transparência dos alimentos para animais ***
+
+- Open Pet Food Facts é um banco de dados de produtos alimentares para animais feito por todos, para todos.
+- Pode usá-lo para fazer melhores escolhas alimentares para animais e como são dados abertos, qualquer um pode reutilizá-lo para qualquer finalidade.
+- Open Pet Food Facts é um projeto sem fins lucrativos desenvolvido por milhares de voluntários em todo o mundo. Temos muitos projetos interessantes para os quais você pode contribuir de diversas maneiras. 
+- Pode começar a contribuir hoje, adicionando um produto do seu armário de alimentos para animais. 
+
+
+*** Conheça os fatos ***
+
+Poderá encontrar também (de acordo com as indicações presentes nos produtos):
+- lista de ingredientes (incluindo o teor de cinzas)
+- informação nutricional, luzes de tráfego de nutrição…
+- marcas, alérgenos, rótulos (orgânicos, veganos...)
+- Funciona com comida de cão (comida de cão seco e molhado), comida de gato, comida de coelho, comida de cobra, comida de peixe, comida de pássaro, comida de cavalo ou qualquer comida para seu animal favorito.
+
+*** Funciona bem em qualquer condição ***
+- Poderá adicionar novos produtos, mesmo sem ligação à Internet no momento.
+- A aplicação carrega apenas o rigor necessário para reduzir o consumo de dados e bateria
+- Não precisa de câmera para procurar um produto. Também pode digitar o código de barras se não tiver uma câmera ou tiver algum problema com ela.
+
+*** Sua comida para animais, seus dados ***
+- os seus dados são seus e nunca são enviados on-line
+- Pode usar o aplicativo anonimamente
+- Pode exportar seu histórico de digitalizações
+
+
+Para alimentação humana, você pode instalar o Open Food Facts, para cosméticos, Open Beauty Facts e para todos os outros produtos, Open Products Facts.

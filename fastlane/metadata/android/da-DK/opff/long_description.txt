@@ -1,0 +1,34 @@
+Skan kæledyrsfoderprodukter eller deres stregkode for at få data om ingredienser, tilsætningsstoffer og ernæringsdata.
+
+App'en giver mulighed for at se de flere end 600 kæledyrsfoderprodukter, som allerede er indeholdt i den gratis og åbne database Open Pet Food Facts samt tillige at tilføje fotos og data for manglende produkter.
+
+For at finde projektet Open Pet Food Facts, så besøg https://world.openpetfoodfacts.org
+
+***Bidrag til gennemsigtighed for kæledyrsfoder***
+
+- Open Pet Food Facts er en kæledyrsfoderproduktdatabase udarbejdet af alle, for alle.
+- Du kan benytte den til at foretage bedre kæledyrsfodervalg, og da det er åbne data, kan alle genbruge dem til ethvert formål.
+- Open Pet Food Facts er et nonprofit-projekt udviklet af tusindvis af frivillige fra hele verden. Vi har mange spændende projekter, du kan bidrage til på mange forskellige måder. 
+- Du kan begynde at bidrage i dag ved at tilføje et af dine kæledyrsfoderprodukter. 
+
+
+*** Få faktaene ***
+
+Du vil kunne finde (i henhold til indikationerne på produkterne):
+- liste over ingredienser (herunder askeindhold)
+- ernæringsmæssige oplysninger, næringslysregulering…
+- mærker, allergener, etiketter (økologisk, veganer...)
+- Det virker med hundefoder (konserves og tørkost), katte-, kanin-, slange-, fiske-, fuglefoder og hestefoder eller enhver anden type foder til dit yndlingsdyr.
+
+*** Fungerer godt i enhver tilstand ***
+- Du kan tilføje nye produkter, selv hvis du ikke har en tilgængelig Internetforbindelse.
+- App'en indlæser kun det strengt nødvendige for at reducere data- og batteriforbrug
+- Du behøver ikke et kamera til at slå et produkt op. Du kan også angive stregkoden, hvis du mangler et kamera eller har problemer med det.
+
+*** Dit kæledyrsfoder, dine data ***
+- Dine personlige data er dine, og de lægges aldrig online
+- Du kan benytte app'en anonymt
+- Du kan eksportere din skanningshistorik
+
+
+Til fødevare kan du installere Open Food Facts, til kosmetik Open Beauty Facts og for alle øvrige produkter Open Product Facts.
