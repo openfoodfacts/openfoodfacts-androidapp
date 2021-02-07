@@ -8,7 +8,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< HEAD
         tools:context=".features.product.view.ingredients_analysis.IngredientsAnalysisProductFragment">
+=======
+        tools:context="openfoodfacts.github.scrachx.openfood.views.product.ingredients_analysis.IngredientsAnalysisProductFragment">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <TextView
             android:id="@+id/tv_detected_ingredients"

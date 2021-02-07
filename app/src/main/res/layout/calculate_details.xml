@@ -11,7 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+<<<<<<< HEAD
         tools:context="openfoodfacts.github.scrachx.openfood.features.product.view.CalculateDetailsActivity">
+=======
+        tools:context="openfoodfacts.github.scrachx.openfood.views.product.CalculateDetails">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 
         <com.google.android.material.appbar.AppBarLayout

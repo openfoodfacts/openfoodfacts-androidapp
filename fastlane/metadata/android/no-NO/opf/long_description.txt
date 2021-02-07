@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Open Products Facts is an open database of all products in the world.
+=======
+Open Food Facts er en offentlig database for matprodukter med ingredienser, allergener, næringsfakta og all mulig informasjon som kan befinne seg på produktetiketter.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 *** Contribute to Product Transparency ***
 

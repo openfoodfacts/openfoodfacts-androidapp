@@ -17,6 +17,7 @@ import openfoodfacts.github.scrachx.openfood.models.DaoSession;
 /**
  * Created by Lobster on 04.03.18.
  */
+<<<<<<< HEAD
 @Entity(indexes = {@Index(value = "tag", unique = true)})
 public class Category {
     @Id(autoincrement = true)
@@ -30,11 +31,37 @@ public class Category {
         @JoinProperty(name = "tag", referencedName = "categoryTag")
     })
     private List<CategoryName> names;
+=======
+@Entity(indexes = {
+    @Index(value = "tag", unique = true)
+})
+public class Category {
+
+    @Id(autoincrement = true)
+    private Long id;
+
+    @Unique
+    private String tag;
+
+    @Unique
+    private String wikiDataId;
+
+    private Boolean isWikiDataIdPresent;
+    @ToMany(joinProperties = {
+            @JoinProperty(name = "tag", referencedName = "categoryTag")
+    })
+    private List<CategoryName> names;
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     /**
      * Used to resolve relations
      */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     /**
      * Used for active entity operations.
      */
@@ -166,12 +193,20 @@ public class Category {
         this.isWikiDataIdPresent = isWikiDataIdPresent;
     }
 
+<<<<<<< HEAD
     /**
      * called by internal mechanisms, do not call yourself.
      */
+=======
+    /** called by internal mechanisms, do not call yourself. */
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     @Generated(hash = 503476761)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getCategoryDao() : null;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 }

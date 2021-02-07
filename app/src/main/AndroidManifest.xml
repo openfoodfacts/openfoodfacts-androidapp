@@ -33,7 +33,11 @@
         android:required="false" />
 
     <application
+<<<<<<< HEAD
         android:name=".app.OFFApplication"
+=======
+        android:name=".views.OFFApplication"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -57,6 +61,7 @@
             android:name=".utils.SearchSuggestionProvider"
             android:authorities="${applicationId}.utils.SearchSuggestionProvider" />
 
+<<<<<<< HEAD
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
@@ -64,6 +69,10 @@
 
         <activity
             android:name=".features.splash.SplashActivity"
+=======
+        <activity
+            android:name=".views.splash.SplashActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -77,21 +86,39 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".features.MainActivity"
+=======
+            android:name=".views.MainActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:launchMode="singleTop"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+<<<<<<< HEAD
 
             <intent-filter android:label="@string/intent_filter_share_label">
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+=======
+            <intent-filter android:label="@string/intent_filter_share_label">
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 <data android:mimeType="image/*" />
             </intent-filter>
             <intent-filter android:label="@string/intent_filter_share_label">
                 <action android:name="android.intent.action.SEND" />
+<<<<<<< HEAD
                 <category android:name="android.intent.category.DEFAULT" />
+=======
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 <data android:mimeType="image/*" />
             </intent-filter>
 
@@ -100,14 +127,24 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".features.product.view.ProductViewActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".features.MainActivity"
+=======
+            android:name=".views.product.ProductActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".views.MainActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:windowSoftInputMode="stateUnchanged|adjustResize">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+<<<<<<< HEAD
                 android:value=".features.MainActivity" />
+=======
+                android:value=".views.MainActivity" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <intent-filter
                 android:autoVerify="true"
@@ -125,6 +162,7 @@
             </intent-filter>
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".features.LoginActivity"
             android:parentActivityName=".features.MainActivity"
             android:screenOrientation="portrait">
@@ -138,10 +176,26 @@
         <activity
             android:name=".features.scanhistory.ScanHistoryActivity"
             android:parentActivityName=".features.MainActivity"
+=======
+            android:name=".views.LoginActivity"
+            android:parentActivityName=".views.MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity" />
+        </activity>
+        <activity android:name=".views.ImagesManagementActivity" />
+        <activity android:name=".views.ImageZoomActivity" />
+        <activity android:name=".views.ImagesSelectionActivity" />
+        <activity
+            android:name=".views.HistoryScanActivity"
+            android:parentActivityName=".views.MainActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:theme="@style/OFFTheme"
             android:windowSoftInputMode="stateUnchanged|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+<<<<<<< HEAD
                 android:value=".features.MainActivity" />
         </activity>
         <activity
@@ -152,18 +206,38 @@
             android:name=".features.categories.activity.CategoryActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".features.MainActivity">
+=======
+                android:value=".views.MainActivity" />
+        </activity>
+        <activity
+            android:name=".views.ProductComparisonActivity"
+            android:parentActivityName=".views.MainActivity"
+            android:theme="@style/OFFTheme" />
+        <activity
+            android:name=".views.category.activity.CategoryActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".views.MainActivity">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+<<<<<<< HEAD
                 android:value=".features.MainActivity" />
+=======
+                android:value=".views.MainActivity" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+<<<<<<< HEAD
         <activity android:name=".features.welcome.WelcomeActivity" />
+=======
+        <activity android:name=".views.welcome.WelcomeActivity" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
@@ -179,7 +253,11 @@
         </provider>
 
         <activity
+<<<<<<< HEAD
             android:name=".features.search.ProductSearchActivity"
+=======
+            android:name=".views.ProductBrowsingListActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:theme="@style/OFFTheme.NoActionBar">
             <intent-filter
                 android:autoVerify="true"
@@ -241,12 +319,21 @@
             </intent-filter>
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".features.additives.AdditiveListActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".features.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".features.MainActivity" />
+=======
+            android:name=".views.AdditivesExplorer"
+            android:launchMode="singleTop"
+            android:parentActivityName=".views.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".views.MainActivity" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -258,6 +345,7 @@
         </activity>
 
         <activity
+<<<<<<< HEAD
             android:name=".features.scan.ContinuousScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/OFFTheme.NoActionBar" />
@@ -273,6 +361,23 @@
             android:parentActivityName=".features.MainActivity"
             android:theme="@style/OFFTheme" />
         <activity android:name=".features.productlist.ProductListActivity" />
+=======
+            android:name=".views.scan.ContinuousScanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/OFFTheme.NoActionBar" />
+        <activity
+            android:name=".views.AddProductActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/OFFTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".views.product.CalculateDetails" />
+
+        <activity
+            android:name=".views.ProductListsActivity"
+            android:parentActivityName=".views.MainActivity"
+            android:theme="@style/OFFTheme" />
+        <activity android:name=".views.YourListedProductsActivity" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     </application>
 
 </manifest>

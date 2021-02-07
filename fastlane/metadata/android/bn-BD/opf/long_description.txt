@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Open Products Facts is an open database of all products in the world.
+=======
+Open Food Facts এ উপাদানের উপাদান, এলার্জি, পুষ্টি সংক্রান্ত তথ্য এবং পণ্য লেবেলগুলিতে আমরা খুঁজে পেতে পারি এমন সব তথ্যগুলির সাথে খাদ্যের একটি খোলা ডাটাবেস।
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 *** Contribute to Product Transparency ***
 

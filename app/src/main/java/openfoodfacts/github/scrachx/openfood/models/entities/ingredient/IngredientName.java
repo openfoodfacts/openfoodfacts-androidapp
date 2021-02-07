@@ -9,8 +9,14 @@ import org.greenrobot.greendao.annotation.Keep;
 /**
  * Created by dobriseb on 2018.10.15.
  */
+<<<<<<< HEAD
 @Entity(indexes = {
     @Index(value = "languageCode, ingredientTag", unique = true)
+=======
+
+@Entity(indexes = {
+        @Index(value = "languageCode, ingredientTag", unique = true)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 })
 public class IngredientName {
     @Id(autoincrement = true)
@@ -18,6 +24,7 @@ public class IngredientName {
     private String ingredientTag;
     private String languageCode;
     private String name;
+<<<<<<< HEAD
 
     @Generated(hash = 302289181)
     public IngredientName(Long id, String ingredientTag, String languageCode,
@@ -70,4 +77,47 @@ public class IngredientName {
     public void setName(String name) {
         this.name = name;
     }
+=======
+@Generated(hash = 302289181)
+public IngredientName(Long id, String ingredientTag, String languageCode,
+        String name) {
+    this.id = id;
+    this.ingredientTag = ingredientTag;
+    this.languageCode = languageCode;
+    this.name = name;
+}
+@Keep
+public IngredientName(String ingredientTag, String languageCode, String name) {
+    this.ingredientTag = ingredientTag;
+    this.languageCode = languageCode;
+    this.name = name;
+}
+@Generated(hash = 177058686)
+public IngredientName() {
+}
+public Long getId() {
+    return this.id;
+}
+public void setId(Long id) {
+    this.id = id;
+}
+public String getIngredientTag() {
+    return this.ingredientTag;
+}
+public void setIngredientTag(String ingredientTag) {
+    this.ingredientTag = ingredientTag;
+}
+public String getLanguageCode() {
+    return this.languageCode;
+}
+public void setLanguageCode(String languageCode) {
+    this.languageCode = languageCode;
+}
+public String getName() {
+    return this.name;
+}
+public void setName(String name) {
+    this.name = name;
+}
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 }

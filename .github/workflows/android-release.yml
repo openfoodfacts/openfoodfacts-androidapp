@@ -6,8 +6,13 @@ on:
       - 'release/*'
 
 jobs:
+<<<<<<< HEAD
   testObf:
     name: OBF testing
+=======
+  test:
+    name: Run Android testing
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout sources
@@ -18,6 +23,7 @@ jobs:
         with:
           java-version: 1.8
 
+<<<<<<< HEAD
       - name: Unit tests
         uses: eskatos/gradle-command-action@v1
         with:
@@ -68,10 +74,17 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+=======
+      - name: Screenshots android tests
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: compileOffScreenshotsAndroidTestSources --stacktrace --info -PtestBuildType=screenshots
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
       - name: Unit tests
         uses: eskatos/gradle-command-action@v1
         with:
+<<<<<<< HEAD
           arguments: testOpffDebugUnitTest --stacktrace
 
   google-play-internal:
@@ -80,6 +93,12 @@ jobs:
       - testOff
       - testOpf
       - testOpff
+=======
+          arguments: testObfDebugUnitTest testOffDebugUnitTest testOpfDebugUnitTest testOpffDebugUnitTest --stacktrace
+
+  google-play-internal:
+    needs: test
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     name: Generate and deploy on Google Play
     runs-on: ubuntu-20.04
     steps:
@@ -101,7 +120,11 @@ jobs:
         run: "echo \"ndk.dir=${ANDROID_HOME}/ndk-bundle\" > local.properties"
 
       - name: Set up Ruby 2.6
+<<<<<<< HEAD
         uses: actions/setup-ruby@v1.1.2
+=======
+        uses: actions/setup-ruby@v1.1.1
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         with:
           ruby-version: 2.6.x
 

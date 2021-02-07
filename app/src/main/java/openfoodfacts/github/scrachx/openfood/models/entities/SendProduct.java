@@ -1,7 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.models.entities;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,8 +22,16 @@ import openfoodfacts.github.scrachx.openfood.network.ApiFields;
 import openfoodfacts.github.scrachx.openfood.utils.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
+<<<<<<< HEAD
 @Entity(indexes = {@Index(value = "barcode", unique = true)})
 public class SendProduct implements Serializable {
+=======
+@Entity(indexes = {
+    @Index(value = "barcode", unique = true)
+})
+public class
+SendProduct implements Serializable {
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     private static final long serialVersionUID = 2L;
     @Id
     private Long id;
@@ -40,8 +51,11 @@ public class SendProduct implements Serializable {
     private String imgupload_ingredients;
     @JsonIgnore
     private String imgupload_nutrition;
+<<<<<<< HEAD
     @JsonIgnore
     private String imgupload_packaging;
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     @JsonProperty(ApiFields.Keys.USER_ID)
     @Transient
     private String userId;
@@ -51,9 +65,14 @@ public class SendProduct implements Serializable {
     public SendProduct() {
     }
 
+<<<<<<< HEAD
     @Generated(hash = 88998839)
     public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients,
                        String imgupload_nutrition, String imgupload_packaging) {
+=======
+    @Generated(hash = 994048396)
+    public SendProduct(Long id, String barcode, String lang, String name, String brands, String weight, String weight_unit, String imgupload_front, String imgupload_ingredients, String imgupload_nutrition) {
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         this.id = id;
         this.barcode = barcode;
         this.lang = lang;
@@ -64,7 +83,10 @@ public class SendProduct implements Serializable {
         this.imgupload_front = imgupload_front;
         this.imgupload_ingredients = imgupload_ingredients;
         this.imgupload_nutrition = imgupload_nutrition;
+<<<<<<< HEAD
         this.imgupload_packaging = imgupload_packaging;
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     }
 
     public String getUserId() {
@@ -155,6 +177,7 @@ public class SendProduct implements Serializable {
         this.imgupload_nutrition = imgupload_nutrition;
     }
 
+<<<<<<< HEAD
     public String getImgupload_packaging() {
         return imgupload_packaging;
     }
@@ -163,12 +186,20 @@ public class SendProduct implements Serializable {
         this.imgupload_packaging = imgupload_packaging;
     }
 
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     /**
      * Compress the image according to the {@link ProductImageField}.
      * Add a "_small" prefix in the image name after the compression
      *
+<<<<<<< HEAD
      */
     public void compress(@NonNull ProductImageField field) {
+=======
+     * @param field
+     */
+    public void compress(ProductImageField field) {
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         switch (field) {
             case NUTRITION:
                 this.imgupload_nutrition = Utils.compressImage(this.imgupload_nutrition);
@@ -176,9 +207,12 @@ public class SendProduct implements Serializable {
             case INGREDIENTS:
                 this.imgupload_ingredients = Utils.compressImage(this.imgupload_ingredients);
                 break;
+<<<<<<< HEAD
             case PACKAGING:
                 this.imgupload_packaging = Utils.compressImage(this.imgupload_packaging);
                 break;
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             case FRONT:
                 this.imgupload_front = Utils.compressImage(this.imgupload_front);
                 break;
@@ -204,7 +238,11 @@ public class SendProduct implements Serializable {
         this.id = id;
     }
 
+<<<<<<< HEAD
     public void copy(@NonNull SendProduct sp) {
+=======
+    public void copy(SendProduct sp) {
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         this.barcode = sp.getBarcode();
         this.name = sp.getName();
         this.brands = sp.getBrands();
@@ -213,6 +251,7 @@ public class SendProduct implements Serializable {
         this.imgupload_front = sp.getImgupload_front();
         this.imgupload_ingredients = sp.getImgupload_ingredients();
         this.imgupload_nutrition = sp.getImgupload_nutrition();
+<<<<<<< HEAD
         this.imgupload_packaging = sp.getImgupload_packaging();
         this.lang = sp.getLang();
     }
@@ -223,6 +262,17 @@ public class SendProduct implements Serializable {
             equalityOfString(this.imgupload_front, sp.getImgupload_front()) && equalityOfString(this.imgupload_nutrition, sp
             .getImgupload_nutrition()) && equalityOfString(this.imgupload_packaging, sp.getImgupload_packaging()) &&
             equalityOfString(this.imgupload_ingredients, sp.getImgupload_ingredients()));
+=======
+        this.lang = sp.getLang();
+    }
+
+    public boolean isEqual(SendProduct sp) {
+        return (equalityOfString(this.barcode, sp.getBarcode()) && equalityOfString(this.name, sp.getName()) && equalityOfString(this.brands, sp
+                .getBrands()) && equalityOfString(this.weight, sp.getWeight()) && equalityOfString(this.weight_unit, sp.getWeight_unit()) &&
+                equalityOfString(this.imgupload_front, sp.getImgupload_front()) && equalityOfString(this.imgupload_nutrition, sp
+                .getImgupload_nutrition
+                ()) && equalityOfString(this.imgupload_ingredients, sp.getImgupload_ingredients()));
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     }
 
     private boolean equalityOfString(String a, String b) {

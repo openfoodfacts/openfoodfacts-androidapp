@@ -1,9 +1,20 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <stroke
+<<<<<<< HEAD
         android:width="1dp"
         android:color="@color/grey_400" />
     <padding
         android:left="@dimen/spacing_tiny"
         android:right="@dimen/spacing_tiny" />
     <corners android:radius="3dp" />
+=======
+            android:width="1dp"
+            android:color="@color/grey_400"/>
+    <padding
+            android:left="@dimen/spacing_tiny"
+            android:right="@dimen/spacing_tiny"
+    >
+    </padding>
+    <corners android:radius="3dp"/>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 </shape>

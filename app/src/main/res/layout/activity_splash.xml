@@ -20,11 +20,14 @@
 
     <data>
 
+<<<<<<< HEAD
         <import type="android.view.View" />
 
         <variable
             name="loading"
             type="Integer" />
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,27 +65,43 @@
             tools:text="tagline goes here..." />
 
         <TextView
+<<<<<<< HEAD
             android:id="@+id/loading_txt"
+=======
+            android:id="@+id/text_loading"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:text="@string/initial_loading"
             android:textColor="?android:textColorPrimary"
+<<<<<<< HEAD
             android:visibility="@{loading, default = gone}"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             app:layout_constraintEnd_toEndOf="@id/logo"
             app:layout_constraintStart_toStartOf="@id/logo"
             app:layout_constraintTop_toBottomOf="@id/tagline" />
 
         <ProgressBar
+<<<<<<< HEAD
             android:id="@+id/loading_progress"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:indeterminate="true"
+<<<<<<< HEAD
             android:visibility="@{loading, default = gone}"
             app:layout_constraintEnd_toEndOf="@id/logo"
             app:layout_constraintStart_toStartOf="@id/logo"
             app:layout_constraintTop_toBottomOf="@id/loading_txt" />
+=======
+            app:layout_constraintEnd_toEndOf="@id/logo"
+            app:layout_constraintStart_toStartOf="@id/logo"
+            app:layout_constraintTop_toBottomOf="@id/text_loading" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

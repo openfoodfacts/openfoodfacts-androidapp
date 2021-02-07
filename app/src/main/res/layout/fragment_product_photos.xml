@@ -1,11 +1,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
+<<<<<<< HEAD
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
@@ -13,10 +17,19 @@
         android:orientation="vertical"
         android:layout_marginBottom="@dimen/nav_bar_height"
         tools:context=".features.product.view.photos.ProductPhotosFragment">
+=======
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/nav_bar_height"
+        tools:context="openfoodfacts.github.scrachx.openfood.fragments.ProductPhotosFragment">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/imagesRecycler"
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,4 +49,13 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/images_item">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </RelativeLayout>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 </layout>

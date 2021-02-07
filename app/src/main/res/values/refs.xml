@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+<<<<<<< HEAD
     <item name="abc_search_dropdown_item_icons_2line" type="layout" tools:override="true">
         @layout/custom_search_suggestion
     </item>
+=======
+    <item name="abc_search_dropdown_item_icons_2line" type="layout" tools:override="true">@layout/custom_search_suggestion</item>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 </resources>

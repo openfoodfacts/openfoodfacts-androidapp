@@ -17,7 +17,11 @@ Stel allergeenwaarschuwingen in
 
 Voeding, vereenvoudigd
 
+<<<<<<< HEAD
 Stel allergeenwaarschuwingen in
+=======
+Allergenen alert
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Krijg alternatieven voor je favoriete voedingsmiddelen
 
@@ -35,7 +39,11 @@ Ingrediënten
 
 Krachtig
 
+<<<<<<< HEAD
 Krachtig Voedingswaarden
+=======
+Voedingswaarden
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 =====================
 V3 schermafbeeldingen

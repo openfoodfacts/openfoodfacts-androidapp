@@ -8,7 +8,11 @@
         android:shortcutShortLabel="@string/scan_shortcut_short_label">
         <intent
             android:action="SCAN"
+<<<<<<< HEAD
             android:targetClass="openfoodfacts.github.scrachx.openfood.features.MainActivity"
+=======
+            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:targetPackage="${applicationId}" />
         <categories android:name="${applicationId}" />
     </shortcut>
@@ -21,7 +25,11 @@
         android:shortcutShortLabel="@string/barcode_shortcut_short_label">
         <intent
             android:action="BARCODE"
+<<<<<<< HEAD
             android:targetClass="openfoodfacts.github.scrachx.openfood.features.MainActivity"
+=======
+            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:targetPackage="${applicationId}" />
         <categories android:name="${applicationId}" />
     </shortcut>
@@ -34,7 +42,11 @@
         android:shortcutShortLabel="@string/history_shortcut_short_label">
         <intent
             android:action="android.intent.action.VIEW"
+<<<<<<< HEAD
             android:targetClass="openfoodfacts.github.scrachx.openfood.features.scanhistory.ScanHistoryActivity"
+=======
+            android:targetClass="openfoodfacts.github.scrachx.openfood.views.HistoryScanActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:targetPackage="${applicationId}" />
         <categories android:name="${applicationId}" />
     </shortcut>
@@ -47,7 +59,11 @@
         android:shortcutShortLabel="@string/contributions_shortcut_short_label">
         <intent
             android:action="CONTRIBUTIONS"
+<<<<<<< HEAD
             android:targetClass="openfoodfacts.github.scrachx.openfood.features.MainActivity"
+=======
+            android:targetClass="openfoodfacts.github.scrachx.openfood.views.MainActivity"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:targetPackage="${applicationId}" />
         <categories android:name="${applicationId}" />
     </shortcut>

@@ -13,7 +13,11 @@ L'historique de vos scans, entièrement privé et exportable
 
 Allez plus loin avec Wikipédia
 
+<<<<<<< HEAD
 Définir des alertes d'allergènes
+=======
+Mettez des alertes allergènes
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 La nutrition, simplifiée
 
@@ -65,7 +69,11 @@ Historique de scan illimité et entièrement privé
 
 Faites glisser pour voir plus de détails
 
+<<<<<<< HEAD
 Alerte allergènes
+=======
+Définir des alertes d'allergènes
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Rejoignez notre mouvement mondial pour la transparence alimentaire
 

@@ -5,7 +5,11 @@ https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=en
 V2 screenshots
 =====================
 
+<<<<<<< HEAD
 Freḍ ifarisen
+=======
+Scan products
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Get the Nutriscore
 

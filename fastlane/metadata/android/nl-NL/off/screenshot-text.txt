@@ -35,7 +35,11 @@ Ingrediënten
 
 Krachtig
 
+<<<<<<< HEAD
 Krachtig Voedingswaarden
+=======
+Voedingswaarden
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 =====================
 V3 schermafbeeldingen

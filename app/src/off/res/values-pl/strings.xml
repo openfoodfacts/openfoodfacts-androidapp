@@ -25,6 +25,7 @@
     <string name="not_support_books">Open Food Facts obecnie nie obsługuje książek</string>
     <string name="txt_broaden_search">rozszerzenie zakresu wyszukiwania \n - zeskanuj i dodaj do Open Food Facts</string>
     <string name="Donation">Kliknij tu, by przekazać darowiznę na rzecz Open Food Facts</string>
+<<<<<<< HEAD
     <string name="pref_help_translate_title">Wspomóż tłumaczenie Open Food Facts</string>
     <string name="pref_help_translate_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
     <string name="text_offline_info_dialog">Skanuj nawet w trybie offline by dodać produkty później. Zeskanowane produkty pojawią się tutaj i wyślesz je poniższym przyciskiem.</string>
@@ -32,5 +33,14 @@
     <!-- OFF tagline in different languages -->
     <string name="tagline">ogólnodostępna baza danych o produktach żywnościowych</string>
     <string name="product_not_found">Zeskanowany produkt %1$s nie istnieje jeszcze w Open Food Facts. Czy możesz go dodać?</string>
+=======
+    <string name="translate_help_title">Wspomóż tłumaczenie Open Food Facts</string>
+    <string name="translate_help_summary">Otwórz bazę danych Open Food Facts na swój język - wiedza techniczna nie jest wymagana</string>
+    <string name="text_offline_info_dialog">Skanuj nawet w trybie offline by dodać produkty później. Zeskanowane produkty pojawią się tutaj i wyślesz je poniższym przyciskiem.</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <!-- OFF tagline in different languages -->
+    <string name="tagline">ogólnodostępna baza danych o produktach żywnościowych</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="currently_on_version">Aktualna wersja w Open Food Facts</string>
 </resources>

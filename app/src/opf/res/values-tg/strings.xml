@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/ -->
+<<<<<<< HEAD
     <string name="website">https://world.openproductsfacts.org/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
     <string name="website_contribute">https://world.openproductsfacts.org/contribute</string>
@@ -10,6 +11,17 @@
     <string name="website_product">https://world.openproductsfacts.org/product/</string>
     <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
     <string name="website_contributor">https://world.openproductsfacts.org/contributor/</string>
+=======
+    <string name="website">https://world.openfoodfacts.org/</string>
+    <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contribuer -->
+    <string name="website_contribute">https://world.openfoodfacts.org/contribute</string>
+    <!-- For fr, Replace by https://world-fr.openproductsdfacts.org/decouvrir -->
+    <string name="website_discover">https://world.openfoodfacts.org/discover</string>
+    <!-- For fr, Replace by https://world-fr.openproductsfacts.org/produit/ -->
+    <string name="website_product">https://world.openfoodfacts.org/product/</string>
+    <!-- For fr, Replace by https://world-fr.openproductsfacts.org/contributeur/ -->
+    <string name="website_contributor">https://world.openfoodfacts.org/contributor/</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
     <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="txtHome">Open Food Facts is an open database of food products with ingredients, allergens, nutrition facts and all the tidbits of information we can find on product labels.</string>

@@ -28,8 +28,11 @@ import openfoodfacts.github.scrachx.openfood.models.entities.category.Category;
 import openfoodfacts.github.scrachx.openfood.models.entities.country.Country;
 import openfoodfacts.github.scrachx.openfood.models.entities.ingredient.Ingredient;
 import openfoodfacts.github.scrachx.openfood.models.entities.label.Label;
+<<<<<<< HEAD
 import openfoodfacts.github.scrachx.openfood.models.entities.states.States;
 import openfoodfacts.github.scrachx.openfood.models.entities.store.Store;
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag;
 import openfoodfacts.github.scrachx.openfood.network.services.AnalysisDataAPI;
 
@@ -94,6 +97,7 @@ public enum Taxonomy {
         public Single<List<InvalidBarcode>> load(ProductRepository repository, long lastModifiedDate) {
             return repository.loadInvalidBarcodes(lastModifiedDate);
         }
+<<<<<<< HEAD
     },
     STATES(AnalysisDataAPI.STATES_JSON) {
         @Override
@@ -108,6 +112,9 @@ public enum Taxonomy {
         }
     };
 
+=======
+    };
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     private final String jsonUrl;
 
     Taxonomy(String jsonUrl) {

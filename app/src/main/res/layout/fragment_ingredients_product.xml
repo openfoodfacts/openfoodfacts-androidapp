@@ -27,7 +27,11 @@
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/nav_bar_height">
 
+<<<<<<< HEAD
                 <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
+=======
+                <openfoodfacts.github.scrachx.openfood.views.TipBox
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:id="@+id/ingredientImagetipBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -39,7 +43,11 @@
                     app:textColor="@android:color/white"
                     android:visibility="gone"
                     app:identifier="ingredient_image_tip_box"
+<<<<<<< HEAD
                     app:message="@string/image_edit_tip" />
+=======
+                    app:message="@string/ingredient_image_edit_tip" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
                 <ImageButton
                     android:id="@+id/imageViewIngredients"

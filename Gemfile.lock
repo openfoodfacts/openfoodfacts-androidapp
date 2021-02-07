@@ -1,17 +1,27 @@
 GEM
   remote: https://rubygems.org/
   specs:
+<<<<<<< HEAD
     CFPropertyList (3.0.3)
+=======
+    CFPropertyList (3.0.2)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     atomos (0.1.3)
     aws-eventstream (1.1.0)
+<<<<<<< HEAD
     aws-partitions (1.415.0)
     aws-sdk-core (3.110.0)
+=======
+    aws-partitions (1.343.0)
+    aws-sdk-core (3.104.0)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
+<<<<<<< HEAD
     aws-sdk-kms (1.40.0)
       aws-sdk-core (~> 3, >= 3.109.0)
       aws-sigv4 (~> 1.1)
@@ -22,6 +32,18 @@ GEM
     aws-sigv4 (1.2.2)
       aws-eventstream (~> 1, >= 1.0.2)
     babosa (1.0.4)
+=======
+    aws-sdk-kms (1.36.0)
+      aws-sdk-core (~> 3, >= 3.99.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.74.0)
+      aws-sdk-core (~> 3, >= 3.102.1)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.1)
+      aws-eventstream (~> 1, >= 1.0.2)
+    babosa (1.0.3)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     blockenspiel (0.5.0)
     claide (1.0.3)
     colored (1.2)
@@ -30,6 +52,7 @@ GEM
       highline (~> 1.7.2)
     declarative (0.0.20)
     declarative-option (0.1.0)
+<<<<<<< HEAD
     digest-crc (0.6.3)
       rake (>= 12.0.0, < 14.0.0)
     domain_name (0.5.20190701)
@@ -49,6 +72,24 @@ GEM
       faraday (~> 1.0)
     fastimage (2.2.1)
     fastlane (2.171.0)
+=======
+    digest-crc (0.6.1)
+      rake (~> 13.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    emoji_regex (3.0.0)
+    excon (0.75.0)
+    faraday (0.17.3)
+      multipart-post (>= 1.2, < 3)
+    faraday-cookie_jar (0.0.6)
+      faraday (>= 0.7.4)
+      http-cookie (~> 1.0.0)
+    faraday_middleware (0.14.0)
+      faraday (>= 0.7.4, < 1.0)
+    fastimage (2.1.7)
+    fastlane (2.152.0)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
       CFPropertyList (>= 2.3, < 4.0.0)
       addressable (>= 2.3, < 3.0.0)
       aws-sdk-s3 (~> 1.0)
@@ -59,9 +100,15 @@ GEM
       dotenv (>= 2.1.1, < 3.0.0)
       emoji_regex (>= 0.1, < 4.0)
       excon (>= 0.71.0, < 1.0.0)
+<<<<<<< HEAD
       faraday (~> 1.0)
       faraday-cookie_jar (~> 0.0.6)
       faraday_middleware (~> 1.0)
+=======
+      faraday (>= 0.17, < 1.0)
+      faraday-cookie_jar (~> 0.0.6)
+      faraday_middleware (>= 0.13.1, < 2.0)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
       fastimage (>= 2.1.0, < 3.0.0)
       gh_inspector (>= 1.1.2, < 2.0.0)
       google-api-client (>= 0.37.0, < 0.39.0)
@@ -87,7 +134,11 @@ GEM
     fastlane-plugin-get_version_code (0.2.0)
     fastlane-plugin-get_version_name (0.2.2)
     fastlane-plugin-increment_version_code (0.4.3)
+<<<<<<< HEAD
     fastlane-plugin-sentry (1.7.0)
+=======
+    fastlane-plugin-sentry (1.6.0)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     fastlane-plugin-versioning_android (0.1.0)
     gh_inspector (1.1.3)
     google-api-client (0.38.0)
@@ -101,17 +152,28 @@ GEM
     google-cloud-core (1.5.0)
       google-cloud-env (~> 1.0)
       google-cloud-errors (~> 1.0)
+<<<<<<< HEAD
     google-cloud-env (1.4.0)
       faraday (>= 0.17.3, < 2.0)
     google-cloud-errors (1.0.1)
     google-cloud-storage (1.29.2)
+=======
+    google-cloud-env (1.3.3)
+      faraday (>= 0.17.3, < 2.0)
+    google-cloud-errors (1.0.1)
+    google-cloud-storage (1.26.2)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
       addressable (~> 2.5)
       digest-crc (~> 0.4)
       google-api-client (~> 0.33)
       google-cloud-core (~> 1.2)
       googleauth (~> 0.9)
       mini_mime (~> 1.0)
+<<<<<<< HEAD
     googleauth (0.14.0)
+=======
+    googleauth (0.13.0)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
       faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.4, < 3.0)
       memoist (~> 0.16)
@@ -123,26 +185,43 @@ GEM
       domain_name (~> 0.5)
     httpclient (2.8.3)
     jmespath (1.4.0)
+<<<<<<< HEAD
     json (2.5.1)
     jwt (2.2.2)
     memoist (0.16.2)
     mini_magick (4.11.0)
+=======
+    json (2.3.1)
+    jwt (2.2.1)
+    memoist (0.16.2)
+    mini_magick (4.10.1)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     mini_mime (1.0.2)
     multi_json (1.15.0)
     multipart-post (2.0.0)
     nanaimo (0.3.0)
     naturally (2.2.0)
+<<<<<<< HEAD
     os (1.1.1)
     plist (3.6.0)
     public_suffix (4.0.6)
     rake (13.0.3)
+=======
+    os (1.1.0)
+    plist (3.5.0)
+    public_suffix (4.0.5)
+    rake (13.0.1)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
       uber (< 0.2.0)
     retriable (3.1.2)
     rouge (2.0.7)
+<<<<<<< HEAD
     ruby2_keywords (0.0.2)
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     rubyzip (2.3.0)
     security (0.1.3)
     signet (0.14.0)
@@ -169,7 +248,11 @@ GEM
     versionomy (0.5.0)
       blockenspiel (~> 0.5)
     word_wrap (1.0.0)
+<<<<<<< HEAD
     xcodeproj (1.19.0)
+=======
+    xcodeproj (1.17.1)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
       CFPropertyList (>= 2.3.3, < 4.0)
       atomos (~> 0.1.3)
       claide (>= 1.0.2, < 2.0)
@@ -177,7 +260,11 @@ GEM
       nanaimo (~> 0.3.0)
     xcpretty (0.3.0)
       rouge (~> 2.0.7)
+<<<<<<< HEAD
     xcpretty-travis-formatter (1.0.1)
+=======
+    xcpretty-travis-formatter (1.0.0)
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
       xcpretty (~> 0.2, >= 0.0.7)
 
 PLATFORMS
@@ -193,4 +280,8 @@ DEPENDENCIES
   versionomy
 
 BUNDLED WITH
+<<<<<<< HEAD
    1.17.3
+=======
+   1.17.2
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac

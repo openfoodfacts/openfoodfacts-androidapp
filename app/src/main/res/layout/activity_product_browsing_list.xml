@@ -13,26 +13,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+<<<<<<< HEAD
         tools:context="openfoodfacts.github.scrachx.openfood.features.search.ProductSearchActivity">
+=======
+        tools:context="openfoodfacts.github.scrachx.openfood.views.ProductBrowsingListActivity">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <include
             android:id="@+id/toolbar_include"
             layout="@layout/toolbar" />
 
 
+<<<<<<< HEAD
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+=======
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             app:layout_constraintBottom_toTopOf="@+id/navigation_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
             app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
+=======
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_include"
+            tools:visibility="invisible">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 
             <TextView
                 android:id="@+id/textCountProduct"
+<<<<<<< HEAD
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -50,17 +68,35 @@
             <Button
                 android:id="@+id/btn_hunger_games"
                 android:layout_width="0dp"
+=======
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/padding_short"
+                android:paddingTop="@dimen/padding_too_short"
+                android:paddingRight="@dimen/padding_short"
+                android:paddingBottom="@dimen/padding_too_short"
+                android:text="@string/number_of_products"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Button
+                android:id="@+id/btn_hunger_games"
+                android:layout_width="match_parent"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:layout_height="wrap_content"
                 android:background="@color/brand_yellow"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_small"
                 android:visibility="gone"
+<<<<<<< HEAD
                 app:layout_constraintEnd_toEndOf="parent"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipe_refresh"
+<<<<<<< HEAD
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -72,11 +108,25 @@
                     android:id="@+id/products_recycler_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+=======
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/products_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/materialize_baseline_grid_small"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     tools:listitem="@layout/products_list_item">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<<<<<<< HEAD
         </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+        </LinearLayout>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <LinearLayout
             android:id="@+id/offlineCloudLinearLayout"
@@ -88,7 +138,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
             app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
+=======
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_include"
+            tools:visibility="gone">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <ImageView
                 android:id="@+id/sadCloud"
@@ -143,7 +198,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+<<<<<<< HEAD
             app:layout_constraintTop_toBottomOf="@+id/toolbar_include">
+=======
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_include"
+            tools:visibility="visible">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <TextView
                 android:id="@+id/textNoResults"

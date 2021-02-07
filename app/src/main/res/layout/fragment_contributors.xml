@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+=======
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
     <data>
 
@@ -89,13 +93,17 @@
 
 
                 <androidx.cardview.widget.CardView
+<<<<<<< HEAD
                     android:id="@+id/states_tags_cv"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:padding="16dp"
                     app:cardElevation="4dp">
 
+<<<<<<< HEAD
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -198,6 +206,22 @@
                             android:background="@color/grey_400" />
 
                     </LinearLayout>
+=======
+                    <TextView
+                        android:id="@+id/states_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginRight="@dimen/spacing_normal"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:background="@drawable/textview_full"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:padding="@dimen/spacing_small"
+                        android:textColorLink="@color/light_blue_A700" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>

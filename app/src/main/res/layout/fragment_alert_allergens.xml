@@ -59,11 +59,14 @@
             android:id="@+id/emptyAllergensView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:gravity="center"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:orientation="vertical"
             android:padding="16dp"
             fab:layout_constraintBottom_toBottomOf="parent"
@@ -75,15 +78,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginBottom="8dp"
                 android:text="@string/alert_dialog_warning_title"
                 android:textAppearance="@style/EditHeader"
+=======
+                android:layout_marginBottom="16dp"
+                android:text="@string/alert_dialog_warning_title"
+                android:textColor="@color/md_black_1000"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:textSize="22sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:gravity="center_horizontal"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:text="@string/warning_alert_data"
                 android:textSize="16sp" />
 

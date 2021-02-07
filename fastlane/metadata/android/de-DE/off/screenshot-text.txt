@@ -65,7 +65,11 @@ Unbegrenzter und vollständig privater Verlauf der erfassten Produkte
 
 Wischen, um weitere Details anzuzeigen
 
+<<<<<<< HEAD
 Allergenwarnungen festlegen
+=======
+Allergen-Warnung
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Schließen Sie sich unserer globalen Bewegung für Transparenz bei Lebensmitteln an
 

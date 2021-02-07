@@ -13,7 +13,11 @@ Tu historial de escaneo completo, totalmente privado y exportable
 
 Ve más allá con Wikipedia
 
+<<<<<<< HEAD
 Alerta de alérgenos
+=======
+Establece alertas de alérgenos
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Nutrición, simplificada
 

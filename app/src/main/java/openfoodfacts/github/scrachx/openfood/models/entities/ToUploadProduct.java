@@ -10,7 +10,13 @@ import openfoodfacts.github.scrachx.openfood.models.ProductImageField;
 /**
  * Created by jayanth on 22/2/18.
  */
+<<<<<<< HEAD
 @Entity(indexes = {@Index(value = "id", unique = true)})
+=======
+@Entity(indexes = {
+    @Index(value = "id", unique = true)
+})
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 public class ToUploadProduct {
     @Id
     private Long id;
@@ -26,11 +32,16 @@ public class ToUploadProduct {
     }
 
     @Generated(hash = 499343655)
+<<<<<<< HEAD
     public ToUploadProduct(Long id,
                            String barcode,
                            String imageFilePath,
                            boolean uploaded,
                            String field) {
+=======
+    public ToUploadProduct(Long id, String barcode, String imageFilePath,
+                           boolean uploaded, String field) {
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         this.id = id;
         this.barcode = barcode;
         this.imageFilePath = imageFilePath;

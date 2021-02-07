@@ -77,7 +77,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:gravity="center"
                     android:text="@string/infants"
@@ -87,7 +91,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:gravity="center"
                     android:text="@string/toddlers"
@@ -97,7 +105,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:gravity="center"
                     android:text="@string/children"
@@ -107,7 +119,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:gravity="center"
                     android:text="@string/adolescents"
@@ -117,7 +133,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:gravity="center"
                     android:text="@string/adults"
@@ -127,7 +147,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:gravity="center"
                     android:text="@string/elderly"
                     android:textColor="@color/md_black_1000"
@@ -147,7 +171,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
@@ -157,7 +185,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
@@ -167,7 +199,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
@@ -177,7 +213,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
@@ -187,7 +227,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_marginRight="1dp"
                     android:background="@color/md_black_1000"
                     android:gravity="center"
@@ -197,7 +241,11 @@
 
                 <TextView
                     android:layout_width="84dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="32dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:background="@color/md_black_1000"
                     android:gravity="center"
                     android:text="@string/elderly_age"
@@ -212,7 +260,11 @@
 
                 <TextView
                     android:layout_width="96dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="64dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:gravity="center"
                     android:text="@string/most_people"
                     android:textColor="@color/md_black_1000"
@@ -275,7 +327,11 @@
 
                 <TextView
                     android:layout_width="96dp"
+<<<<<<< HEAD
                     android:layout_height="match_parent"
+=======
+                    android:layout_height="64dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:gravity="center"
                     android:text="@string/some_people"
                     android:textColor="@color/md_black_1000"

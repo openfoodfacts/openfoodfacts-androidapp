@@ -14,7 +14,11 @@
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+<<<<<<< HEAD
         tools:context=".features.product.edit.ProductEditPhotosFragment">
+=======
+        tools:context=".fragments.AddProductPhotosFragment">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

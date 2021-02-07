@@ -22,6 +22,10 @@
             android:gravity="center_vertical"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toStartOf="@+id/value_til"
+<<<<<<< HEAD
+=======
+            app:layout_constraintHorizontal_bias="0.5"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/value_til" />
 
@@ -33,9 +37,15 @@
             app:errorTextAppearance="@style/errorText"
             app:layout_constraintEnd_toStartOf="@+id/spinner_unit"
             app:layout_constraintStart_toEndOf="@+id/spinner_mod"
+<<<<<<< HEAD
             app:layout_constraintTop_toTopOf="parent">
 
             <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+            app:layout_constraintTop_toBottomOf="@+id/energy_kj_til">
+
+            <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:id="@+id/value"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -65,8 +75,16 @@
             android:entries="@array/nutrition_weight_units"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
+=======
+            app:layout_constraintHorizontal_bias="0.5"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             app:layout_constraintStart_toEndOf="@+id/value_til"
             app:layout_constraintTop_toTopOf="@+id/value_til" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+<<<<<<< HEAD
 </TableRow>
+=======
+</TableRow>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac

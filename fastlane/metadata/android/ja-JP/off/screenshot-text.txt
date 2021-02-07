@@ -17,7 +17,11 @@ Set allergen alerts
 
 Nutrition, simplified
 
+<<<<<<< HEAD
 Set allergen alerts
+=======
+アレルゲン警告
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Get alternatives for your favorite foods
 
@@ -65,7 +69,11 @@ Unlimited and fully-private scan history
 
 Swipe for even more details
 
+<<<<<<< HEAD
 Set allergen alerts
+=======
+Set Allergen Alerts
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Join our global movement for food transparency
 

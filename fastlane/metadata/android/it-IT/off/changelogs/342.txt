@@ -4,4 +4,8 @@ Tutti i 25k OFF volontari hanno continuato a lavorare sodo: 1,4 milioni di prodo
 3. Aiuta a calcolare Nutri-Score e Eco-Score: scorri verso l'alto per le domande blu e ricevi un riconoscimento per le tue risposte.
 4. Enormi miglioramenti al rilevamento di vegani, vegetariani e olio di palma.
 5. Edizione del prodotto istantanea anche con una rete lenta o assente
+<<<<<<< HEAD
 6. La pagina Prodotti da completare (menu a destra) è ora in tempo reale.
+=======
+6. La pagina Prodotti da completare (menu a destra) è ora in tempo reale.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac

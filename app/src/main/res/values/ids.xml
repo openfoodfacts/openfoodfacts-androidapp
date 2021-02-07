@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="menu_flash" type="id" />
@@ -7,4 +8,15 @@
     <item name="menu_about" type="id" />
     <item name="menu_problem_scanning" type="id" />
     <item name="analysis_tag_config" type="id" />
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="menu_flash" type="id" />
+    <item name="menu_ring" type="id" />
+    <item name="menu_auto_focus" type="id" />
+    <item name="menu_camera_selector" type="id" />
+    <item name="menu_about" type="id" />
+    <item name="menu_problem_scanning" type="id" />
+    <item name="analysis_tag_config" type="id" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 </resources>

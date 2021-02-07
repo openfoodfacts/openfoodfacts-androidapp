@@ -11,7 +11,11 @@
         android:id="@+id/login_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< HEAD
         tools:context=".features.LoginActivity">
+=======
+        tools:context=".views.LoginActivity">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <include
             android:id="@+id/toolbar_layout"
@@ -117,6 +121,7 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+<<<<<<< HEAD
             <TextView
                 android:id="@+id/txt_login_helper"
                 android:layout_width="match_parent"
@@ -129,6 +134,8 @@
                 android:textSize="@dimen/font_normal"
                 android:visibility="gone"/>
 
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

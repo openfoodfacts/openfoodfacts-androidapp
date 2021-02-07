@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< HEAD
+=======
+    <data>
+
+    </data>
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -11,7 +18,11 @@
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+<<<<<<< HEAD
         tools:context=".features.product.edit.overview.ProductEditOverviewFragment">
+=======
+        tools:context=".fragments.AddProductOverviewFragment">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,6 +33,7 @@
                 style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
@@ -29,6 +41,11 @@
                 android:text="@string/product_picture"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
+=======
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:text="@string/product_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +54,7 @@
                 style="@style/EditHint.Important"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
@@ -44,6 +62,11 @@
                 android:text="@string/one_photo_compulsory"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+                android:text="@string/one_photo_compulsory"
+                app:layout_constraintEnd_toEndOf="@id/name_til"
+                app:layout_constraintStart_toStartOf="@id/section_product_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/section_product_picture" />
 
             <ImageView
@@ -100,10 +123,15 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/spacing_small"
                 android:layout_marginTop="@dimen/spacing_small"
+<<<<<<< HEAD
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/grey_400"
                 app:layout_constraintEnd_toEndOf="parent"
+=======
+                android:layout_marginRight="@dimen/spacing_small"
+                android:background="@color/grey_400"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_front" />
 
@@ -112,6 +140,7 @@
                 style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="@dimen/spacing_small"
@@ -121,6 +150,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/product_details"
+                app:layout_constraintStart_toStartOf="@id/section_product_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
             <TextView
@@ -274,6 +308,10 @@
                     android:background="@drawable/bg_edittext_til"
                     android:gravity="center_vertical"
                     android:hint="@string/packaging_string"
+<<<<<<< HEAD
+=======
+                    android:inputType="text"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:minHeight="50dp"
                     android:nextFocusDown="@id/categories"
                     android:paddingTop="@dimen/floating_hint_margin_nacho"
@@ -358,6 +396,10 @@
                     android:gravity="center_vertical"
                     android:hint="@string/labels"
                     android:imeOptions="actionNext"
+<<<<<<< HEAD
+=======
+                    android:inputType="text"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:minHeight="50dp"
                     android:nextFocusDown="@id/period_of_time_after_opening"
                     android:paddingTop="@dimen/floating_hint_margin_nacho"
@@ -453,6 +495,7 @@
                     app:chipHeight="30dp"
                     app:chipTextColor="@color/grey_50"
                     app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
                     app:layout_constraintStart_toStartOf="parent"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -479,6 +522,13 @@
                 app:layout_constraintStart_toStartOf="@id/origin_of_ingredients_til"
                 app:layout_constraintTop_toBottomOf="@id/origin_warning" />
 
+=======
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    tools:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/manufacturing_place_til"
                 android:layout_width="0dp"
@@ -489,7 +539,11 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
                 app:layout_constraintTop_toBottomOf="@id/origin_hint">
+=======
+                app:layout_constraintTop_toBottomOf="@id/origin_of_ingredients_til">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
                 <EditText
                     android:id="@+id/manufacturing_place"
@@ -539,6 +593,7 @@
                     tools:visibility="visible" />
             </com.google.android.material.textfield.TextInputLayout>
 
+<<<<<<< HEAD
             <TextView
                 android:id="@+id/trace_hint"
                 style="@style/EditHint"
@@ -549,6 +604,20 @@
                 app:layout_constraintEnd_toEndOf="@id/emb_code_til"
                 app:layout_constraintStart_toStartOf="@id/emb_code_til"
                 app:layout_constraintTop_toBottomOf="@id/emb_code_til" />
+=======
+            <ImageView
+                android:id="@+id/hint_emb_code"
+                android:layout_width="20dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginRight="@dimen/horizontal_margin"
+                android:paddingTop="@dimen/spacing_small"
+                app:layout_constraintBottom_toBottomOf="@id/emb_code_til"
+                app:layout_constraintEnd_toEndOf="@id/emb_code_til"
+                app:layout_constraintTop_toTopOf="@id/emb_code_til"
+                app:srcCompat="@drawable/ic_help_outline_orange_24dp"
+                app:tint="@color/grey_600" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/link_til"
@@ -561,9 +630,15 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
                 app:layout_constraintTop_toBottomOf="@id/trace_hint">
 
             <EditText
+=======
+                app:layout_constraintTop_toBottomOf="@id/emb_code_til">
+
+                <EditText
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:id="@+id/link"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -577,6 +652,7 @@
                     tools:visibility="visible" />
             </com.google.android.material.textfield.TextInputLayout>
 
+<<<<<<< HEAD
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
@@ -612,6 +688,31 @@
                     android:textSize="12.5sp"
                     app:drawableLeftCompat="@drawable/ic_search_dark" />
             </LinearLayout>
+=======
+            <ImageView
+                android:id="@+id/hint_link"
+                android:layout_width="20dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="55dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/link_til"
+                app:layout_constraintTop_toTopOf="@id/link_til"
+                app:srcCompat="@drawable/ic_search_dark"
+                app:tint="@color/grey_600" />
+
+            <ImageView
+                android:id="@+id/hint_link_2"
+                android:layout_width="20dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/spacing_tiny"
+                android:layout_marginTop="55dp"
+                android:layout_marginRight="@dimen/spacing_tiny"
+                android:visibility="gone"
+                app:layout_constraintEnd_toStartOf="@id/hint_link"
+                app:layout_constraintTop_toTopOf="@id/link_til"
+                app:srcCompat="@drawable/barcode_grey_24dp"
+                app:tint="@color/grey_600" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <View
                 android:id="@+id/grey_line3"
@@ -622,7 +723,11 @@
                 android:layout_marginRight="@dimen/spacing_small"
                 android:background="@color/grey_400"
                 app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
                 app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+=======
+                app:layout_constraintTop_toBottomOf="@id/hint_link_2" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <TextView
                 android:id="@+id/section_purchasing_details"
@@ -792,12 +897,19 @@
                 android:id="@+id/btn_next"
                 style="@style/ButtonFlat"
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_marginTop="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/next"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+                android:layout_marginTop="@dimen/spacing_small"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/next"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/btn_other_pictures" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

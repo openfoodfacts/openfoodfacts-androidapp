@@ -1,13 +1,24 @@
+<<<<<<< HEAD
 Open Products Facts on avoin tietokanta kaikista tuotteista maailmassa.
+=======
+Open Products Facts on avoin tietokanta kaikille maailman tuotteille.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 *** Lisää tuotteiden läpinäkyvyyttä ***
 
 - Open Products Facts on kaikkien tekemä tuotetietokanta, kaikille.
 - Voit käyttää sitä tekemään parempia valintoja, ja koska se on avointa dataa, kuka tahansa voi käyttää sitä mihin tahansa tarkoitukseen.
+<<<<<<< HEAD
 - Open Products Facts voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä hankkeita, joihin voit osallistua monin eri tavoin. 
 - Voit aloittaa osallistumisen tänään lisäämällä ensimmäisen tuotteesi. 
 
 *** Näe faktat ***
+=======
+- Open Products Facts voittoa tavoittelematon hanke, jota kehittävät tuhannet vapaaehtoiset ympäri maailman. Meillä on paljon jännittäviä projekteja, joihin voit osallistua monin eri tavoin. 
+- Voit aloittaa osallistumisen tänään lisäämällä ensimmäisen tuotteesi. 
+
+*** Tiedä tosiseikat ***
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 - Open Products Facts auttaa sinua ymmärtämään tuotteiden etikettien pikkupräntin.
 
 *** Kerää KAAAAIIKKI asiat ***
@@ -17,12 +28,21 @@ Open Products Facts on avoin tietokanta kaikista tuotteista maailmassa.
 - Open ??? Facts - Luo oma avoin tietokantasi :-)
 
 *** Toimii hyvin kaikissa olosuhteissa ***
+<<<<<<< HEAD
 - Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä juuri nyt.
 - Sovellus lataa vain ehdottoman välttämättömät datasiirron ja akun kulutuksen vähentämiseksi
 - Tuotteen etsimiseen ei tarvita kameraa. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
 
 *** Sinun tuotteesi, sinun tietosi ***
 - Henkilötietosi ovat sinun, eikä niitä koskaan lähetetä verkossa
+=======
+- Voit lisätä uusia tuotteita, vaikka sinulla ei olisi Internet-yhteyttä tällä hetkellä.
+- Sovellus lataa vain kaikista välttämättömimmän, tiedonsiirron ja akun kulutuksen vähentämiseksi
+- Et tarvitse kameraa hakeaksesi tuotetta. Voit myös kirjoittaa viivakoodin, jos sinulla ei ole kameraa, tai sinulla on ongelmia sen kanssa.
+
+*** Sinun tuotteesi, sinun tietosi ***
+- Henkilökohtaiset tietosi ovat sinun, ja niitä ei koskaan lähetetä verkkoon
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 - Voit käyttää sovellusta nimettömästi
 - Voit viedä lukuhistoriasi
 

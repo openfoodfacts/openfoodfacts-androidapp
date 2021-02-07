@@ -16,6 +16,7 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="offline_notification_count">
+<<<<<<< HEAD
         <item quantity="one">У вас 1 оффлайн продукт, що чекає на внесення до бази Open Food Facts</item>
         <item quantity="few">У вас %d оффлайн продукти, що чекають на внесення до бази Open Food Facts</item>
         <item quantity="many">У вас %d оффлайн продуктів, що чекають на внесення до бази Open Food Facts</item>
@@ -44,6 +45,36 @@
         <item quantity="few">%d дня тому</item>
         <item quantity="many">%d днів тому</item>
         <item quantity="other">%d дня тому</item>
+=======
+        <item quantity="one">You have 1 offline product waiting to be contributed to Open Food Facts</item>
+        <item quantity="few">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="many">You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other">You have %d offline products waiting to be contributed to Open Food Facts</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="one">%d second ago</item>
+        <item quantity="few">%d seconds ago</item>
+        <item quantity="many">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d minute ago</item>
+        <item quantity="few">%d minutes ago</item>
+        <item quantity="many">%d minutes ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d hour ago</item>
+        <item quantity="few">%d hours ago</item>
+        <item quantity="many">%d hours ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="one">%d day ago</item>
+        <item quantity="few">%d days ago</item>
+        <item quantity="many">%d days ago</item>
+        <item quantity="other">%d days ago</item>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     </plurals>
     <string name="action_about">Про додаток</string>
     <string name="action_discover">Дізнатись більше</string>
@@ -82,12 +113,15 @@
         <item>Міжнародна одиниця</item>
     </string-array>
     <!-- nutrition comparison units -->
+<<<<<<< HEAD
     <!-- Application theme settings -->
     <string-array name="application_theme_entries">
         <item>@string/follow_system</item>
         <item>@string/day</item>
         <item>@string/night</item>
     </string-array>
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <!-- nutrients list
     do not change the order of the array as the items are paired with the String array
     PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
@@ -105,11 +139,16 @@
         <item>Капронова кислота (6:0)</item>
         <item>Каприлова кислота (8:0)</item>
         <item>Казеїн</item>
+<<<<<<< HEAD
         <item>Церотинова кислота (26:0)</item>
+=======
+        <item>Cerotic acid (26:0)</item>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         <item>Хлорид</item>
         <item>Холестерин</item>
         <item>Хром</item>
         <item>Мідь</item>
+<<<<<<< HEAD
         <item>Дигомо-гамма-ліноленова кислота / DGLA (20:3 n-6)</item>
         <item>Докозагексаєнова кислота / DHA (22:6 n-3)</item>
         <item>Ейкозапентаєнова кислота / EPA (20:5 n-3)</item>
@@ -120,16 +159,34 @@
         <item>Гамма-ліноленова кислота / GLA (18:3 n-6)</item>
         <item>Глюкоза</item>
         <item>Гондоїнова кислота (20:1 n-9)</item>
+=======
+        <item>Dihomo-gamma-linolenic acid / DGLA (20:3 n-6)</item>
+        <item>Docosahexaenoic acid / DHA (22:6 n-3)</item>
+        <item>Eicosapentaenoic acid / EPA (20:5 n-3)</item>
+        <item>Elaidic acid (18:1 n-9)</item>
+        <item>Erucic acid (22:1 n-9)</item>
+        <item>Фтор</item>
+        <item>Фруктоза</item>
+        <item>Gamma-linolenic acid / GLA (18:3 n-6)</item>
+        <item>Глюкоза</item>
+        <item>Gondoic acid (20:1 n-9)</item>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         <item>Йод</item>
         <item>Залізо</item>
         <item>Лактоза</item>
         <item>Лауринова кислота (12:0)</item>
+<<<<<<< HEAD
         <item>Лигноцеринова кислота (24:0)</item>
         <item>Лінолева кислота / LA (18:2 n-6)</item>
+=======
+        <item>Lignoceric acid (24:0)</item>
+        <item>Linoleic acid / LA (18:2 n-6)</item>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         <item>Магній</item>
         <item>Мальтодекстрини</item>
         <item>Мальтоза</item>
         <item>Марганець</item>
+<<<<<<< HEAD
         <item>Мідова кислота (20:3 n-9)</item>
         <item>Мелісова кислота (30:0)</item>
         <item>Молібден</item>
@@ -151,6 +208,29 @@
         <item>Калій</item>
         <item>Селен</item>
         <item>Білки сироватки</item>
+=======
+        <item>Mead acid (20:3 n-9)</item>
+        <item>Melissic acid (30:0)</item>
+        <item>Молібден</item>
+        <item>Мононенасичені жири</item>
+        <item>Montanic acid (28:0)</item>
+        <item>Myristic acid (14:0)</item>
+        <item>Nervonic acid (24:1 n-9)</item>
+        <item>Нуклеотиди</item>
+        <item>Oleic acid (18:1 n-9)</item>
+        <item>Омега 3 жирні кислоти</item>
+        <item>Омега 6 жирні кислоти</item>
+        <item>Омега 9 жирні кислоти</item>
+        <item>Palmitic acid (16:0)</item>
+        <item>Pantothenic acid / Pantothenate (Vitamin B5)</item>
+        <item>пШ</item>
+        <item>Фосфор</item>
+        <item>Sugar alcohols (Polyols)</item>
+        <item>Поліненасичені жири</item>
+        <item>Калій</item>
+        <item>Селен</item>
+        <item>Serum proteins</item>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         <item>Кремнезем</item>
         <item>Крохмаль</item>
         <item>Стеаринова кислота (18:0)</item>
@@ -175,11 +255,19 @@
     <string name="search_button">Шукати</string>
     <string name="alert_dialog_warning_title">Увага</string>
     <string name="alert_dialog_warning_msg_user">Ім\'я користувача/Пароль було змінено. Будь ласка, оновіть інформацію.</string>
+<<<<<<< HEAD
     <string name="toast_retrieving">Завантаження…</string>
     <string name="txtBarcode">Код товару:</string>
     <string name="txtCategories">Категорії:</string>
     <string name="txtLabels">Мітка, сертифікати, нагороди:</string>
     <string name="txtEMB">Коди відстежування:</string>
+=======
+    <string name="toast_retrieving">Loading…</string>
+    <string name="txtBarcode">Код товару:</string>
+    <string name="txtCategories">Категорії:</string>
+    <string name="txtLabels">Мітка, сертифікати, нагороди:</string>
+    <string name="txtEMB">Traceability codes:</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="txtIngredients">Склад:</string>
     <string name="Donate">Підтримати проект</string>
     <string name="Donation">Натисніть тут, щоб підтримати Open Food Facts</string>
@@ -190,7 +278,11 @@
     <string name="txtPalmOilProduct">Інгредієнти з пальмової олії:</string>
     <string name="txtServingSize">Розмір порції:</string>
     <string name="txtNutrientLevel100g">Харчова цінність 100г продукту:</string>
+<<<<<<< HEAD
     <string name="txtNutrientLevel100ml">Харчова цінність на 100мл :</string>
+=======
+    <string name="txtNutrientLevel100ml">Nutrient levels for 100ml :</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="txtNutritionLevelLow">мала кількість</string>
     <string name="txtNutritionLevelModerate">помірна кількість</string>
     <string name="txtNutritionLevelHigh">велика кількість</string>
@@ -201,7 +293,11 @@
     <string name="txtFat">Жири</string>
     <string name="txtSugars">Цукор</string>
     <string name="hintBarcode">Код товару</string>
+<<<<<<< HEAD
     <string name="txtNutriScoreInfo">Дізнайтеся більше про харчову цінність</string>
+=======
+    <string name="txtNutriScoreInfo">Learn more about the nutrient levels</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="hintLogin">Ім\'я користувача</string>
     <string name="hintPass">Пароль</string>
     <string name="errorLogin">Помилка логіна або пароля</string>
@@ -215,18 +311,30 @@
     <string name="hintBrand">Виробник</string>
     <string name="txtSendAll">Завантажити все</string>
     <string name="txtPictureNeededDialogNo">Скасувати</string>
+<<<<<<< HEAD
     <string name="toastSending">Вивантаження…</string>
     <string name="txtLoading">Loading…</string>
     <string name="txtDialogsContentDelete">Ви дійсно бажаєте видалити цей товар?</string>
     <string name="txtDialogsContentInfoSave">Товар збережено на Вашому пристрої, Ви можете редагувати його в меню \"Автономний режим\"</string>
     <string name="productSavedToast">Продукт збережено, дякуємо!</string>
+=======
+    <string name="toastSending">Uploading…</string>
+    <string name="txtLoading">Loading…</string>
+    <string name="txtDialogsContentDelete">Ви дійсно бажаєте видалити цей товар?</string>
+    <string name="txtDialogsContentInfoSave">Товар збережено на Вашому пристрої, Ви можете редагувати його в меню \"Автономний режим\"</string>
+    <string name="productSavedToast">Product saved, thanks!</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="txtBarcodeRequire">Необхіден код товару</string>
     <string name="txtOk">Добре</string>
     <string name="txtBarcodeNotValid">Некоректний код товару</string>
     <string name="msg_share">Подивіться на цей товар на \"Open Food Facts\":</string>
     <string name="create_account">Зареєструватися</string>
     <string name="home_drawer">Головна</string>
+<<<<<<< HEAD
     <string name="install">Встановити</string>
+=======
+    <string name="install">Install</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="open_beauty_drawer">Open Beauty Facts</string>
     <string name="open_food_drawer">Open Food Facts</string>
     <string name="search_drawer">Шукати</string>
@@ -247,12 +355,21 @@
     <string name="cancel_button">Скасувати</string>
     <string name="login_button">Ім\'я користувача</string>
     <string name="create_account_button">Створити обліковий запис</string>
+<<<<<<< HEAD
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Інформація про вашу алергію ніколи не буде відправлена на сервер Open Food Facts. Крім того, майте на увазі, що дані продукту можуть бути неточними, і виявлення може бути не 100% точності, тому будь-ласка, перевірьте двічі!</string>
     <string name="title_info_dialog">Як це працює?</string>
     <string name="text_offline_info_dialog">Ви можете сканувати товари, коли Ви знаходитесь у автономний режимі, щоб пізніше додати їх до Open Food Facts. Усі скановані товари відображатимуться тут, і ви зможете їх надіслати за допомогою кнопки нижче.</string>
     <string name="permission_camera">Дозвіл на використання камери необхідний для сканування кодів товарів та фотографування.</string>
     <string name="no_camera_dialog_title">Камеру не знайдено</string>
     <string name="no_camera_dialog_content">На вашому пристрої немає камери. Ви не зможете сканувати штрихкоди.</string>
+=======
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself!</string>
+    <string name="title_info_dialog">Як це працює?</string>
+    <string name="text_offline_info_dialog">Ви можете сканувати товари, коли Ви знаходитесь у автономний режимі, щоб пізніше додати їх до Open Food Facts. Усі скановані товари відображатимуться тут, і ви зможете їх надіслати за допомогою кнопки нижче.</string>
+    <string name="permission_camera">Дозвіл на використання камери необхідний для сканування кодів товарів та фотографування.</string>
+    <string name="no_camera_dialog_title">Camera not found</string>
+    <string name="no_camera_dialog_content">Your device does not have a camera. You won\'t be able to scan any barcode.</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="permission_title">Інформація про надання дозволу</string>
     <string name="permission_denied">Будь ласка, активуйте дозвіл у налаштуваннях</string>
     <string name="info_download_data_connection">Вам необхідно завантажити деякі дані, щоб ця функціональність запрацювала. Будь ласка, активуйте підключення до Інтернету.</string>
@@ -261,6 +378,7 @@
     <string name="user">користувач</string>
     <string name="error_field_required">Це поле є обов\'язковим.</string>
     <string name="action_preferences">Налаштування</string>
+<<<<<<< HEAD
     <string name="pref_scan_startup_title">Відкривати при запуску</string>
     <string name="pref_scan_startup_summary">Цей параметр буде відкривати екран для сканування коду товару одразу після відкриття програми.</string>
     <string name="pref_power_mode_title">Швидке сканування</string>
@@ -273,6 +391,20 @@
     <string name="user_ask_rate_app">Чудово! Дайте іншим знати, що ви думаєте про цей додаток!</string>
     <string name="rate_app">Оцініть додаток</string>
     <string name="no_thx">Ні, дякую</string>
+=======
+    <string name="prefs_scan_startup">Відкривати при запуску</string>
+    <string name="prefs_scan_startup_summary">Цей параметр буде відкривати екран для сканування коду товару одразу після відкриття програми.</string>
+    <string name="prefs_power_mode">Швидке сканування</string>
+    <string name="prefs_power_mode_summary">Швидке сканування товарів в супермаркеті, щоб побачити, які з них не знаходяться в базі даних.</string>
+    <string name="prefs_language">Мова</string>
+    <string name="prefs_language_summary">Змінити мову</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">Are you enjoying your experience with Open Food Facts?</string>
+    <string name="user_ask_show_feedback_form">We\'re sorry to hear that! Could you tell us what happened?</string>
+    <string name="user_ask_rate_app">Great! Let others know what you think of this app!</string>
+    <string name="rate_app">Rate app</string>
+    <string name="no_thx">No thanks</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
     <!-- Scan history -->
     <string name="scan_history_drawer">Історія</string>
@@ -280,13 +412,21 @@
     <string name="title_clear_history_dialog">Очистити</string>
     <string name="text_clear_history_dialog">Ви хочете очистити всю історію ваших сканувань?</string>
     <string name="export_csv_history">Зберегти у файл CSV</string>
+<<<<<<< HEAD
     <string name="txt_exporting_history">Експорт історії…</string>
+=======
+    <string name="txt_exporting_history">Exporting history…</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="txt_history_exported">Історію збережено</string>
     <string name="permision_write_external_storage">Щоб зберегти історію, необхідно дати дозвіл на збереження.</string>
     <string name="no_brand">Торгівельну марку не знайдено</string>
     <string name="no_title">Без назви</string>
     <!-- Nutrition info tab -->
+<<<<<<< HEAD
     <string name="display_fact">Таблиця харчових фактів для %1$s з цих продуктів</string>
+=======
+    <string name="display_fact">Nutrition facts table for %1$s of this product</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="check_facts">Перевірити</string>
     <string name="nutrition">Харчова цінність</string>
     <string name="calculated_nutrition">Розраховане харчування</string>
@@ -296,8 +436,13 @@
     <string name="nutrition_carbohydrate">Вуглеводи</string>
     <string name="nutrition_cholesterol">Холестерин</string>
     <string name="nutrition_energy">Енергетична цінність</string>
+<<<<<<< HEAD
     <string name="nutrition_energy_kcal">Енергія в калоріях (ккал)</string>
     <string name="nutrition_energy_kj">Енергія в джоулях (кДж)</string>
+=======
+    <string name="nutrition_energy_kcal">Energy in calories (kcal)</string>
+    <string name="nutrition_energy_kj">Energy in joules (kJ)</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="nutrition_energy_short_name">Енергетична цінність</string>
     <string name="nutrition_fat">Жири</string>
     <string name="nutrition_fiber">Харчові волокна</string>
@@ -312,9 +457,15 @@
     <string name="action_manage_account">Управління акаунтом</string>
     <string name="action_contributes">Ваш внесок</string>
     <string name="choose_energy_unit">Виберіть бажані одиниці енергії для таблиці харчування</string>
+<<<<<<< HEAD
     <string name="pref_energy_unit_title">Бажана одиниця енергії</string>
     <string name="choose_volume_unit">Виберіть бажані одиниці об\'єму для таблиці харчування</string>
     <string name="pref_volume_unit_title">Бажана одиниця об\'єму</string>
+=======
+    <string name="energy_pref_title">Бажана одиниця енергії</string>
+    <string name="choose_volume_unit">Виберіть бажані одиниці об\'єму для таблиці харчування</string>
+    <string name="volume_pref_title">Бажана одиниця об\'єму</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="logout_drawer">Вийти</string>
     <string name="contribution_without_account">Вам потрібно увійти або створити обліковий запис, щоб побачити свої внески</string>
     <string name="textCarbonFootprint">Викиди вуглецю / CO2: </string>
@@ -325,11 +476,19 @@
     <string name="txt_no_matching__category_products">О, ні, ми не маємо жодного продукту в цій категорії, чи можете додати один?</string>
     <string name="txt_no_matching_allergen_products">О, ні, ми не маємо продуктів з цим алергеном, чи можете додати один?</string>
     <string name="txt_no_matching_label_products">О, ні, ми не маємо продуктів з цією міткою, чи можете додати один?</string>
+<<<<<<< HEAD
     <string name="txt_no_matching_additive_products">О ні, ми не маємо продуктів з цією добавкою, чи можете додати один?</string>
     <string name="txt_no_matching_country_products">О ні, ми не маємо продуктів з цієї країни, чи можете додати один?</string>
     <string name="txt_no_matching_store_products">О ні, ми не маємо продуктів з цього магазину, чи можете додати один?</string>
     <string name="txt_no_matching_packaging_products">О ні, у нас немає продуктів з цією упаковкою, чи можете ви додати їх?</string>
     <string name="txt_no_matching_brand_products">О, ні у нас немає продуктів з таким упакуванням, чи можете ви додати один ?</string>
+=======
+    <string name="txt_no_matching_additive_products">Oh no, we don’t have any products with this additive, can you add one?</string>
+    <string name="txt_no_matching_country_products">Oh no, we don’t have any products from this country, can you add one?</string>
+    <string name="txt_no_matching_store_products">Oh no, we don’t have any products from this store, can you add one?</string>
+    <string name="txt_no_matching_packaging_products">Oh no, we don’t have any products with this packaging, can you add one?</string>
+    <string name="txt_no_matching_brand_products">Oh no, we don’t have any products with this brand, can you add one?</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">Ми не знайшли відповідних продуктів.\nВи можете спробувати:</string>
@@ -395,11 +554,17 @@
     <string name="take_picture">Take a photo</string>
     <string name="choose_picture_from_gallery">From gallery</string>
     <string name="take_picture_ingredients">Зробити фото інгредієнтів</string>
+<<<<<<< HEAD
     <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
     <string name="take_picture_front">Зробити фото товару</string>
     <string name="take_picture_nutrition_table">Зробити фото складу</string>
     <string name="take_more_pictures">Зробити більше фото</string>
     <string name="take_extra_packaging_pictures">Take extra photos of packaging</string>
+=======
+    <string name="take_picture_front">Зробити фото товару</string>
+    <string name="take_picture_nutrition_table">Зробити фото складу</string>
+    <string name="take_more_pictures">Зробити більше фото</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="txtSaturatedFat">Насичені жири</string>
     <string name="nutriscore_info_msg">Learn more about the Nutri-Score</string>
     <string name="nova_info_msg">Learn more about NOVA groups</string>
@@ -421,8 +586,13 @@
     <string name="next">ДАЛІ</string>
     <string name="skip">ПРОПУСТИТИ</string>
     <string name="start">ЗРОЗУМІЛО</string>
+<<<<<<< HEAD
     <string name="pref_contact_us_title">Зв\'язатися</string>
     <string name="pref_contact_us_summary">Зв\'язатися з командою</string>
+=======
+    <string name="contact">Зв\'язатися</string>
+    <string name="contact_summary">Зв\'язатися з командою</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="email_not_found">Жодних програм електронної пошти не знайдено</string>
     <string name="airplane_mode_active_dialog_title">Активований \"Режим польоту\"</string>
     <string name="airplane_mode_active_dialog_message">Будь ласка, вимкніть \"Режим польоту\", щоб продовжити.</string>
@@ -433,27 +603,46 @@
     <string name="device_offline_dialog_negative">Закрити</string>
     <string name="device_offline_dialog_positive">Налаштування</string>
     <string name="scan_first_product">Проскануй перший товар</string>
+<<<<<<< HEAD
     <string name="pref_delete_history">Successfully deleted history</string>
     <string name="pref_enable_mobile_data_title">Завантажувати дані на девайс</string>
     <string name="pref_enable_mobile_data_summary_on">Завантажте нові товари за допомогою даних з девайсу та WiFi</string>
     <string name="pref_enable_mobile_data_summary_off">Завантажувати нові товари лише за допомогою WiFi</string>
+=======
+    <string name="preference_delete_search_history">Successfully deleted history</string>
+    <string name="preference_enable_mobile_data_title">Завантажувати дані на девайс</string>
+    <string name="preference_enable_mobile_data_summary_on">Завантажте нові товари за допомогою даних з девайсу та WiFi</string>
+    <string name="preference_enable_mobile_data_summary_off">Завантажувати нові товари лише за допомогою WiFi</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="device_on_mobile_data_warning_title">Інформація</string>
     <string name="device_on_mobile_data_warning_message">You have disabled upload on mobile data , please connect to WiFi or change this in preferences</string>
     <string name="device_on_mobile_data_warning_positive">Налаштування</string>
     <string name="device_on_mobile_data_warning_negative">Все одно завантажити</string>
     <string name="changes_saved">Changes saved successfully</string>
     <string name="preference_choose_language_dialog_title">Оберіть мову</string>
+<<<<<<< HEAD
     <string name="pref_faq_title">FAQ</string>
     <string name="pref_faq_summary">Часті Питання</string>
     <string name="pref_help_translate_title">Допоможіть перекласти Open Food Facts</string>
     <string name="pref_help_translate_summary">Перекладіть базу даних Open Food Facts на свою мову - технічних знань не потрібно</string>
+=======
+    <string name="FAQ">FAQ</string>
+    <string name="FrequentlyAskedQuestions">Часті Питання</string>
+    <string name="translate_help_title">Допоможіть перекласти Open Food Facts</string>
+    <string name="translate_help_summary">Перекладіть базу даних Open Food Facts на свою мову - технічних знань не потрібно</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="please_check_your_connection">Будь ласка, перевірте інтернет.</string>
     <string name="advanced_search_title">Розширений Пошук та Графіки</string>
     <string name="compare_products">Compare products</string>
     <string name="connectivity_check">Будь ласка, перевірте підключення до інтернету</string>
     <string name="dismiss">Закрити</string>
+<<<<<<< HEAD
     <string name="pref_terms_title">Умови</string>
     <string name="pref_terms_summary">Terms and Privacy</string>
+=======
+    <string name="Terms">Умови</string>
+    <string name="TermsOfUse">Terms and Privacy</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
     <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
@@ -469,8 +658,13 @@
     <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
     <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
     <string name="preference_header_general">Загальні</string>
+<<<<<<< HEAD
     <string name="pref_header_network">Мережа</string>
     <string name="pref_header_contributing">Зробити внесок</string>
+=======
+    <string name="preference_header_network">Мережа</string>
+    <string name="preference_header_contributing">Зробити внесок</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="scan_first_string">Тут відображується історія переглянутих Вами продуктів.\nЦей список зберігається виключно локально в призначений для перегляду лише Вами.</string>
     <string name="log_in">Ім\'я користувача</string>
     <string name="login_true">Already logged in!</string>
@@ -478,9 +672,15 @@
     <string name="logout_dialog_content">Are you sure to log out ?</string>
     <string name="dialog_cancel">Скасувати</string>
     <string name="dialog_create">Create</string>
+<<<<<<< HEAD
     <string name="pref_resolution_dialog_title">Choose Resolution</string>
     <string name="pref_resolution_summary">Виберіть роздільну здатність для завантаження зображення</string>
     <string name="pref_resolution_title">Роздільна здатність зображення для завантаження</string>
+=======
+    <string name="choose_resolution">Choose Resolution</string>
+    <string name="pref_resolution_summary">Виберіть роздільну здатність для завантаження зображення</string>
+    <string name="image_upload_resolution">Роздільна здатність зображення для завантаження</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="wikidata_information">Going further</string>
     <string name="wikidata_unavailable">Наразі у Вікіпедії не існує сторінки Вашою мовою.</string>
     <string name="Wikipedia">Переглянути у Вікіпедії</string>
@@ -497,8 +697,13 @@
     <string name="category_string">Категорія</string>
     <string name="connection">Підключено</string>
     <string name="contributor_string">Учасник</string>
+<<<<<<< HEAD
     <string name="pref_rate_us_summary">Підтримати</string>
     <string name="pref_rate_us_title">Оцінити наш додаток</string>
+=======
+    <string name="Rate_Us">Підтримати</string>
+    <string name="Rate_Us_title">Оцінити наш додаток</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="app_disabled_text">Додаток вимкнено</string>
     <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
     <string name="vitamin_tags_text">Вітаміни:</string>
@@ -506,9 +711,15 @@
     <string name="mineral_tags_text">Мінерали:</string>
     <string name="other_tags_text">Інші речовини:</string>
     <!--shared element transition key-->
+<<<<<<< HEAD
     <string name="pref_low_battery_summary">Disable image loading when battery is low</string>
     <string name="pref_low_battery_title">Disable image loading</string>
     <string name="by_title">Найменування</string>
+=======
+    <string name="disable_image_loading">Disable image loading when battery is low</string>
+    <string name="DisableLoadTitle">Disable image loading</string>
+    <string name="by_title">Title</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="by_brand">Виробник</string>
     <string name="by_barcode">Код товару</string>
     <string name="by_time">Recently Viewed</string>
@@ -530,6 +741,7 @@
     <string name="product_info_added">Products you added information for</string>
     <string name="product_info_tocomplete">Products you added information for that need to be completed</string>
     <string name="show_by">Show</string>
+<<<<<<< HEAD
     <string name="notify_title">Експорт завершено</string>
     <string name="notify_content">Натисніть, щоб переглянути експортовані продукти</string>
     <string name="notification_channel_name">Експорт Сповіщення</string>
@@ -589,6 +801,67 @@
     <string name="yours">Ваш: </string>
     <string name="currently_on">В даний час на %s: </string>
     <string name="quantity_overwrite">Перезапис кількості</string>
+=======
+    <string name="notify_title">Export complete</string>
+    <string name="notify_content">Click to view exported products</string>
+    <string name="notification_channel_name">Export Notifications</string>
+    <string name="notify_channel_description">Notification to show exported file\'s location</string>
+    <string name="products_to_be_completed">Products to be completed</string>
+    <string name="offline_notification_title">Offline contributions you need to send</string>
+    <string name="creator_history">Product added on %1$s at %2$s CET by %3$s</string>
+    <string name="last_editor_history">Last edit of product page on %1$s at %2$s CEST by %3$s </string>
+    <string name="other_editors">Product page also edited by </string>
+    <string name="contribution_tab">Внески</string>
+    <string name="contribution_tab_summary">Show user contributions tab with products</string>
+    <string name="contribution_tab_title">Show contribution tab</string>
+    <string name="txtDialogsTitle">Інформація</string>
+    <string name="preference_show_all_product_photos_title">Show all product photos</string>
+    <string name="preference_show_all_product_photos_summary">Show all product photos submitted in a separate tab</string>
+    <string name="offline_product_addition_title">Add a new product</string>
+    <string name="productNameNull">Name unknown</string>
+    <string name="productAdditivesUnknown"></string>
+    <string name="productAdditivesTemplate">%1$d additives</string>
+    <plurals name="productAdditives">
+        <item quantity="one">%d additive</item>
+        <item quantity="few">%d additives</item>
+        <item quantity="many">%d additives</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
+    <string name="product_not_complete">This product is not yet complete. \nCan you add some details?</string>
+    <string name="addProductOffline">You seem offline. Add the product %s using the offline mode ?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
+    <string name="scan_sound">Scan sound</string>
+    <string name="trouble_scanning">Trouble Scanning?</string>
+    <string name="barcode_hint">Trouble Scanning? Enter Barcode</string>
+    <string name="switch_camera">Switch camera</string>
+    <string name="autofocus">Autofocus</string>
+    <string name="initial_loading">Initial loading</string>
+    <string name="preferences">Налаштування</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
+    <string name="loading_product">Loading product %s</string>
+    <string name="image_not_defined_for_language">No image for selected language. You can add a new one</string>
+    <string name="error_adding_ingredients">Something went wrong while trying to add product ingredients</string>
+    <string name="unable_to_extract_ingredients">Unable to extract ingredients from image</string>
+    <string name="error_adding_nutrition_facts">Something went wrong while trying to add product nutrition facts</string>
+    <string name="error_in_carbohydrate_value">Carbohydrates can\'t be less than the sum of sugar and starch</string>
+    <string name="choose_nutrient">Choose a nutrient</string>
+    <string name="error_adding_product_details">Something went wrong while trying to add product details</string>
+    <string name="hint_product_URL">Link of the official page of the product</string>
+    <string name="product_language">Product language : </string>
+    <string name="hint_emb_codes">Examples: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522, FSSL 10013011001409</string>
+    <string name="official_website">Official website</string>
+    <string name="scan_QR_code">Scan QR Code for product website</string>
+    <string name="add_at_least_one_picture">Please add at least one picture of this product before proceeding</string>
+    <string name="image_uploaded_successfully">Image uploaded successfully</string>
+    <string name="error_adding_product_photos">Something went wrong while trying to add product photos</string>
+    <string name="ingredients_overwrite">Ingredients overwrite</string>
+    <string name="choose_mine">Choose mine</string>
+    <string name="keep_previous_version">Keep previous version</string>
+    <string name="product_name_overwrite">Product name overwrite</string>
+    <string name="yours">Yours: </string>
+    <string name="currently_on">Currently on %s: </string>
+    <string name="quantity_overwrite">Quantity overwrite</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="link_overwrite">Link overwrite</string>
     <string name="save_product">Do you want to save the product?</string>
     <string name="error_adding_product">Something went wrong when adding the product</string>
@@ -603,8 +876,11 @@
     <string name="nutrition_facts">Nutrition Facts</string>
     <string name="your_version">Yours</string>
     <string name="ingredients_picture">Ingredients Picture</string>
+<<<<<<< HEAD
     <string name="packaging">Recycling</string>
     <string name="recycling_picture">Recycling Picture</string>
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="take_ingredients_picture_to_extract">(Please take a picture of the ingredients to automatically extract them)</string>
     <string name="ingredients_list">Ingredients List</string>
     <string name="ingredients_hint">Keep the order, indicate the % when specified, separate with a comma or use -, use () for ingredients of an ingredient, surround allergens with _</string>
@@ -646,6 +922,7 @@
     <string name="uploading_front_image">Uploading front image</string>
     <string name="edit_front_image">Edit the front photo</string>
     <string name="edit_nutrition_image">Edit the nutrition photo</string>
+<<<<<<< HEAD
     <string name="edit_packaging_image">Edit the recycling photo</string>
     <string name="edit_ingredients_image">Edit the ingredients photo</string>
     <string name="edit_other_image">Редагувати фотографію</string>
@@ -668,6 +945,29 @@
     <string name="toddlers_age">від 1 до 2</string>
     <string name="children">Діти</string>
     <string name="children_age">від 3 до 9</string>
+=======
+    <string name="edit_ingredients_image">Edit the ingredients photo</string>
+    <string name="edit_other_image">Edit the photo</string>
+    <string name="sign_in_to_edit">Please sign in to edit a product.</string>
+    <string name="sign_in_to_answer">Please sign in or register to answer an insight.</string>
+    <string name="hint_quantity">Examples: 2 l, 250 g, 1 kg, 25 cl, 6 fl oz, 1 pound</string>
+    <string name="edit_product_title">Edit a product</string>
+    <string name="nutrient_already_added">%s is already present in the nutrition facts</string>
+    <string name="save_edits">Save edits</string>
+    <string name="contribution_by">Contribution by</string>
+    <string name="title_activity_product">Title</string>
+    <string name="description_activity_product">description</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
+    <!-- Used for additive exposure evaluation table -->
+    <string name="overexposure_high">High risk of over exposure</string>
+    <string name="overexposure_moderate">Moderate risk of over exposure</string>
+    <string name="infants">Infants</string>
+    <string name="infants_age">&lt; 1</string>
+    <string name="toddlers">Toddlers</string>
+    <string name="toddlers_age">1 to 2</string>
+    <string name="children">Children</string>
+    <string name="children_age">3 to 9</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="adolescents">Adolescents</string>
     <string name="adolescents_age">10 to 17</string>
     <string name="adults">Adults</string>
@@ -686,13 +986,20 @@
     <string name="update_image">Send an Updated Image</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="extract_ingredients_prompt">Extract ingredients</string>
+<<<<<<< HEAD
     <string name="extract_recycling_prompt">Extract recycling instructions</string>
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="add_nutrient_prompt_text">Add nutrition facts to compute the Nutri-Score</string>
     <string name="add_category_prompt_text">Add a category to compute the Nutri-Score</string>
     <string name="add_nutrient_category_prompt_text">Add nutrition facts and a category to compute the Nutri-Score</string>
     <string name="category_game_btn">Help categorize products to compute the Nutri-Score</string>
     <string name="version_string">Open Food Facts Android App</string>
+<<<<<<< HEAD
     <string name="pref_version_title">Version</string>
+=======
+    <string name="version">Version</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -700,10 +1007,17 @@
     <string name="detected_ingredients">Detected Ingredients</string>
     <string name="txtConnectionError">We could not download certain data. This may be due to a connection error.</string>
     <string name="set_image_name">Successfully set the image as</string>
+<<<<<<< HEAD
     <string name="pref_fast_addition_title">Fast Addition Mode</string>
     <string name="pref_fast_addition_summary">Enables fast addition of products with fewer attributes</string>
     <string name="pref_crop_new_images_title">Crop new images</string>
     <string name="pref_crop_new_images_summary">Enables crop action on new images</string>
+=======
+    <string name="fast_addition_mode_title">Fast Addition Mode</string>
+    <string name="fast_addition_mode">Enables fast addition of products with fewer attributes</string>
+    <string name="crop_new_image_title">Crop new images</string>
+    <string name="crop_new_image">Enables crop action on new images</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="addtive_search">Search for a additive</string>
     <string name="additives">Additives</string>
     <!--used for product_lists implementation-->
@@ -719,6 +1033,7 @@
     <string name="txt_info_eaten_products">\"You\'ll be able to add product to this list by scanning products, dragging the product card up and tapping on \"I\'m eating this\".
         You\'ll also be able to add products to this list by searching them and clicking on the + button in the top right of the product page.\"</string>
     <string name="txt_info_your_listed_products">You\'ll be able to add products to this list by searching them and clicking on the + button in the top right of the product page.</string>
+<<<<<<< HEAD
     <string name="pref_delete_history_title">Delete local search history</string>
     <string name="pref_delete_history_summary">Remove all the searches that you performed on this device</string>
     <string name="pref_delete_history_dialog_content">Delete local search history?</string>
@@ -728,6 +1043,16 @@
     <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
     <string name="image_prompt_language">Take a photo of the ingredients in</string>
     <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
+=======
+    <string name="search_history_pref_title">Delete local search history</string>
+    <string name="search_history_pref_summary">Remove all the searches that you performed on this device</string>
+    <string name="search_history_pref_dialog_content">Delete local search history?</string>
+    <string name="settings_country_dialog_title">Select your country</string>
+    <string name="settings_country_summary">Change your selected country</string>
+    <string name="settings_country_title">Country</string>
+    <string name="txt_no_nutrition_data">This product doesn\'t have any nutrition information on the packaging. If this has changed, you can edit the product.</string>
+    <string name="image_prompt_language">Take a photo of the ingredients in</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <!-- Used for diets AddOn -->
     <string name="empty"></string>
     <string name="add_product">Add products</string>
@@ -775,11 +1100,19 @@
     <string name="ingredient_analysis_tip">Click on the icons below to learn more about the product and to select what information you are interested in.</string>
     <string name="got_it">Got it!</string>
     <string name="onboarding_hint_msg">Hint: %s </string>
+<<<<<<< HEAD
     <string name="image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
     <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
     <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
     <string name="display_analysis_tag_status">Display %1$s status</string>
     <string name="pref_header_display">Display</string>
+=======
+    <string name="ingredient_image_edit_tip">Tap on the image to zoom it, change it, crop it, rotate it and more…</string>
+    <string name="ingredients_in_this_product_are">Ingredients in this product are %1$s.</string>
+    <string name="ingredients_in_this_product">Ingredients in this product that are %1$s:</string>
+    <string name="display_analysis_tag_status">Display %1$s status</string>
+    <string name="preference_header_display">Display</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="unknown_status_no_translation">We couldn\'t assess the status of the product due to unrecognized ingredients.</string>
     <string name="help_translate_ingredients">Help translate the ingredients in your language</string>
     <string name="unknown_status_missing_ingredients">We couldn\'t assess the status of the product due to missing ingredients.</string>
@@ -822,6 +1155,7 @@
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
     <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s food products (plus the ones you will contribute).</string>
+<<<<<<< HEAD
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
@@ -829,4 +1163,6 @@
     <string name="night">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, French, Italy</string>
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 </resources>

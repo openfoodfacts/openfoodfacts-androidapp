@@ -30,6 +30,7 @@ Open Food Facts is a non-profit association of volunteers.
 
 Data about food is of public interest and has to be open. The complete database is published as open data and can be reused by anyone and for any use. Check-out the cool reuses or make your own!
 
+<<<<<<< HEAD
 
 ## Impact Roadmap
 ### Scanning 
@@ -49,6 +50,8 @@ Make category selection more intuitive for beginners #2951
 Improve suggestions by removing diacritics in the edit mode #2184
 
 
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 ## Test it on your phone or tablet
 
 | Open Food Facts on [Google Play](https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner)  | Open Food Facts on [F-Droid](https://f-droid.org/packages/openfoodfacts.github.scrachx.openfood/) | Open Food Facts on the [Web](https://world.openfoodfacts.org/) |Open Food Facts is also available on [iOS](https://ios.openfoodfacts.org)|
@@ -145,7 +148,11 @@ The project was initially started by [Scot Scriven](https://github.com/itchix), 
 
 ## Copyright and License
 
+<<<<<<< HEAD
     Copyright 2016-2021 Open Food Facts
+=======
+    Copyright 2016-2020 Open Food Facts
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

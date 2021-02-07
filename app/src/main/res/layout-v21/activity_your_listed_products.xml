@@ -10,7 +10,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< HEAD
         tools:context=".features.productlist.ProductListActivity">
+=======
+        tools:context=".views.YourListedProductsActivity">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"

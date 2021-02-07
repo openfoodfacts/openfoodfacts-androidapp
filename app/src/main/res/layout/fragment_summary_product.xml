@@ -62,16 +62,29 @@
                         <LinearLayout
                             android:id="@+id/header_product_details_layout"
                             android:layout_width="0dp"
+<<<<<<< HEAD
                             android:layout_height="wrap_content"
+=======
+                            android:layout_height="0dp"
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                             android:layout_marginEnd="@dimen/spacing_small"
                             android:layout_marginRight="@dimen/spacing_small"
                             android:gravity="center_vertical"
                             android:orientation="vertical"
+<<<<<<< HEAD
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/front_picture_layout"
                             app:layout_constraintRight_toLeftOf="@id/front_picture_layout"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
+=======
+                            app:layout_constraintBottom_toBottomOf="@+id/front_picture_layout"
+                            app:layout_constraintEnd_toStartOf="@id/front_picture_layout"
+                            app:layout_constraintRight_toLeftOf="@id/front_picture_layout"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/front_picture_layout">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
                             <TextView
                                 android:id="@+id/textNameProduct"
@@ -151,7 +164,10 @@
                     <LinearLayout
                         android:id="@+id/action_compare_button_layout"
                         style="@style/ActionButtonLayout"
+<<<<<<< HEAD
                         android:padding="@dimen/spacing_tiny"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -175,7 +191,10 @@
                     <LinearLayout
                         android:id="@+id/action_add_to_list_button_layout"
                         style="@style/ActionButtonLayout"
+<<<<<<< HEAD
                         android:padding="@dimen/spacing_tiny"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -198,7 +217,10 @@
                     <LinearLayout
                         android:id="@+id/action_edit_button_layout"
                         style="@style/ActionButtonLayout"
+<<<<<<< HEAD
                         android:padding="@dimen/spacing_tiny"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -222,7 +244,10 @@
                     <LinearLayout
                         android:id="@+id/action_share_button_layout"
                         style="@style/ActionButtonLayout"
+<<<<<<< HEAD
                         android:padding="@dimen/spacing_tiny"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constrainedWidth="true"
@@ -246,6 +271,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+<<<<<<< HEAD
                 <HorizontalScrollView
                     android:id="@+id/list_chips_sv"
                     android:layout_width="match_parent"
@@ -265,6 +291,8 @@
 
                 </HorizontalScrollView>
 
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 <LinearLayout
                     android:id="@+id/analysisContainer"
                     android:layout_width="match_parent"
@@ -273,21 +301,32 @@
                     android:visibility="gone"
                     tools:visibility="visible">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
+=======
+                    <openfoodfacts.github.scrachx.openfood.views.TipBox
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/tipBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:arrowAlignment="start"
                         app:arrowMarginStart="0dp"
+<<<<<<< HEAD
                         app:identifier="ingredient_analysis_tip_box"
                         app:message="@string/ingredient_analysis_tip"
                         app:shouldDisplayImmediately="true" />
+=======
+                        app:shouldDisplayImmediately="true"
+                        app:identifier="ingredient_analysis_tip_box"
+                        app:message="@string/ingredient_analysis_tip" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/analysis_tags"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginStart="@dimen/spacing_large"
+<<<<<<< HEAD
                         android:layout_marginLeft="@dimen/spacing_large"
                         android:layout_marginTop="@dimen/spacing_tiny"
                         android:layout_marginEnd="@dimen/spacing_large"
@@ -297,6 +336,16 @@
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/product_ingredient_analysis_tag" />
+=======
+                        android:layout_marginEnd="@dimen/spacing_large"
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:layout_marginLeft="@dimen/spacing_large"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:layout_marginBottom="@dimen/spacing_tiny"
+                        android:background="@null"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
                 </LinearLayout>
 
@@ -311,7 +360,11 @@
                     <LinearLayout
                         android:id="@+id/grades_wrapper"
                         android:layout_width="match_parent"
+<<<<<<< HEAD
                         android:layout_height="80dp"
+=======
+                        android:layout_height="match_parent"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:gravity="center"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -320,6 +373,7 @@
 
                         <ImageView
                             android:id="@+id/imageGrade"
+<<<<<<< HEAD
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
@@ -357,6 +411,43 @@
                             android:layout_weight="2"
                             android:adjustViewBounds="true"
                             tools:src="@drawable/ic_ecoscore_a" />
+=======
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:adjustViewBounds="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:maxHeight="90dp"
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_nutriscore_a"
+                            tools:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/nova_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="80dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="80dp"
+                            android:padding="5dp"
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_nova_group_1"
+                            tools:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/co2_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:adjustViewBounds="true"
+                            android:maxHeight="60dp"
+                            android:scaleType="fitCenter"
+                            tools:srcCompat="@drawable/ic_co2_high_24dp" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     </LinearLayout>
 
                     <Button
@@ -366,6 +457,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="@dimen/spacing_normal"
+<<<<<<< HEAD
+=======
+                        android:layout_marginTop="8dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:visibility="gone"
                         app:drawableLeftCompat="@drawable/ic_add_box_blue_18dp"
                         app:drawableStartCompat="@drawable/ic_add_box_blue_18dp"
@@ -375,6 +470,7 @@
                         tools:text="@string/add_nutrition_facts_for_nutriscore"
                         tools:visibility="visible" />
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.TipBox
                         android:id="@+id/tipBoxEcoScore"
                         android:layout_width="match_parent"
@@ -390,6 +486,8 @@
                         app:shouldDisplayImmediately="false" />
 
 
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <RelativeLayout
@@ -548,9 +646,13 @@
                                 android:id="@+id/categories_icon"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
+<<<<<<< HEAD
                                 android:layout_gravity="center_vertical"
                                 android:contentDescription="@string/icon_categories"
                                 android:minHeight="40dp"
+=======
+                                android:contentDescription="@string/icon_categories"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                                 android:padding="4dp"
                                 android:scaleType="fitCenter"
                                 app:layout_constraintEnd_toStartOf="@+id/categories_text"
@@ -582,8 +684,13 @@
                                 android:id="@+id/labels_icon"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
+<<<<<<< HEAD
                                 android:layout_gravity="center_vertical"
                                 android:contentDescription="@string/icon_label"
+=======
+                                android:contentDescription="@string/icon_label"
+                                android:minWidth="30dp"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                                 android:scaleType="fitCenter"
                                 app:layout_constraintEnd_toStartOf="@+id/labels_text"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -616,7 +723,10 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
 
+<<<<<<< HEAD
                                 android:layout_gravity="center_vertical"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                                 android:contentDescription="@string/icon_emb"
                                 android:minWidth="30dp"
                                 android:scaleType="fitCenter"
@@ -671,6 +781,7 @@
                 </LinearLayout>
 
                 <Button
+<<<<<<< HEAD
                     android:id="@+id/buttonNewFrontImage"
                     style="@style/ButtonBorder"
                     android:layout_width="match_parent"
@@ -683,13 +794,19 @@
                     app:drawableStartCompat="@drawable/ic_add_a_photo_blue_18dp" />
 
                 <Button
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:id="@+id/buttonMorePictures"
                     style="@style/ButtonBorder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/spacing_normal"
+<<<<<<< HEAD
                     android:text="@string/take_extra_packaging_pictures"
+=======
+                    android:text="@string/take_more_pictures"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     app:drawableLeftCompat="@drawable/ic_add_a_photo_blue_18dp"
                     app:drawableStartCompat="@drawable/ic_add_a_photo_blue_18dp" />
 

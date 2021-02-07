@@ -17,10 +17,13 @@
     <style name="EditHint.Important">
         <item name="android:textColor">@color/md_red_400</item>
     </style>
+<<<<<<< HEAD
 
     <style name="EditHeaderGreen">
         <item name="android:textColor">@color/brand_green_dark</item>
         <item name="android:textStyle">bold</item>
     </style>
 
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 </resources>

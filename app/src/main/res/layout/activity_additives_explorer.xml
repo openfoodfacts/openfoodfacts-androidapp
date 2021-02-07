@@ -12,7 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+<<<<<<< HEAD
         tools:context="openfoodfacts.github.scrachx.openfood.features.additives.AdditiveListActivity">
+=======
+        tools:context="openfoodfacts.github.scrachx.openfood.views.AdditivesExplorer">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <include
             android:id="@+id/toolbar_include"

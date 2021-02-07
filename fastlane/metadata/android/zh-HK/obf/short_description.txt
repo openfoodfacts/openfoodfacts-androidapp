@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 讓我們收集來自世界各地的化妝品產品資訊！
+=======
+Let's collect information on cosmetic products from all over the world !
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac

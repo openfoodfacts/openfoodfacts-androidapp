@@ -9,7 +9,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:fitsSystemWindows="true"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         android:layout_height="match_parent">
 
         <androidx.viewpager.widget.ViewPager

@@ -8,22 +8,36 @@
 
         <variable
             name="viewModel"
+<<<<<<< HEAD
             type="openfoodfacts.github.scrachx.openfood.features.viewmodel.category.CategoryFragmentViewModel" />
+=======
+            type="openfoodfacts.github.scrachx.openfood.views.viewmodel.category.CategoryFragmentViewModel" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< HEAD
         tools:context="openfoodfacts.github.scrachx.openfood.features.categories.fragment.CategoryListFragment">
+=======
+        tools:context="openfoodfacts.github.scrachx.openfood.views.category.fragment.CategoryListFragment">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+<<<<<<< HEAD
             app:categories="@{viewModel.shownCategories}"
             tools:listitem="@layout/category_recycler_item" />
 
         <openfoodfacts.github.scrachx.openfood.features.shared.layouts.FastScroller
+=======
+            app:categories="@{viewModel.filteredCategories}" />
+
+        <openfoodfacts.github.scrachx.openfood.FastScroller
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:id="@+id/fast_scroller"
             android:layout_width="24dp"
             android:layout_height="match_parent"
@@ -35,7 +49,11 @@
             android:visibility="@{viewModel.showOffline}" />
 
         <LinearLayout
+<<<<<<< HEAD
             android:layout_width="wrap_content"
+=======
+            android:layout_width="match_parent"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
@@ -43,7 +61,11 @@
             android:visibility="@{viewModel.showProgress}">
 
             <ProgressBar
+<<<<<<< HEAD
                 style="?android:attr/progressBarStyle"
+=======
+                style="?android:attr/progressBarStyleHorizontal"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:indeterminate="true" />

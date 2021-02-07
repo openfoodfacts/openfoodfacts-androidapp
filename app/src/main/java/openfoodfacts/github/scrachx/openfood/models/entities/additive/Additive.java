@@ -1,6 +1,10 @@
 package openfoodfacts.github.scrachx.openfood.models.entities.additive;
 
+<<<<<<< HEAD
 import org.apache.commons.lang3.BooleanUtils;
+=======
+import org.apache.commons.lang.BooleanUtils;
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;

@@ -13,10 +13,17 @@
 • Was Sie erfassen können: Rasierwasser, Körperlotionen, Cremes, Deodorant, Kajalstift, Grundierung, Duft, Lippenstift, Make-up, Maske, Parfüm, Shampoo, Seife, Duschgel, Nagellack und vieles mehr …
 • Wir denken, dass es für Menschen mit Hautkrankheiten wie Akne, Psoriasis (Schuppenflechte), Ekzem usw. nützlich sein kann, um bessere kosmetische Entscheidungen zu treffen.
 
+<<<<<<< HEAD
 nützlich sein kann, um bessere kosmetische Entscheidungen zu treffen.
 • Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
 • Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
 • Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren • Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
+=======
+★★★ Funktioniert gut in jedem Umfeld ★★★
+• Sie können neue Produkte hinzufügen, auch wenn gerade keine Internetverbindung besteht.
+• Die App lädt nur das absolut Notwendige, um den Daten- und Batterieverbrauch zu reduzieren
+• Sie benötigen keine Kamera, um ein Produkt nachzuschlagen Sie können den Strichcode auch manuell eingeben, wenn Ihnen eine Kamera fehlt oder Sie ein Problem damit haben.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 ★★★ Ihre Kosmetik — Ihre Daten ★★★
 • Ihre Daten gehören Ihnen und werden niemals online gesendet

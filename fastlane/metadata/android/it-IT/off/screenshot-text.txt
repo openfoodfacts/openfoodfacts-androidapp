@@ -13,7 +13,11 @@ La cronologia completa della scansione, totalmente privata ed esportabile
 
 Vai oltre con Wikipedia
 
+<<<<<<< HEAD
 Imposta avvisi allergeni
+=======
+Imposta allerte allergeni
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Nutrizione, semplificata
 
@@ -65,7 +69,11 @@ Cronologia di scansione illimitata e completamente privata
 
 Scorri per ulteriori dettagli
 
+<<<<<<< HEAD
 Allarme allergeni
+=======
+Imposta avvisi allergeni
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Unisciti al nostro movimento globale per la trasparenza alimentare
 

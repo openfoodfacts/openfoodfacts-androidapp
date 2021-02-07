@@ -99,7 +99,11 @@ public class LabelName {
 
     public String getWikiDataId() {
         if (this.wikiDataId == null) {
+<<<<<<< HEAD
             return null;
+=======
+            return "null";
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
         }
         String res = this.wikiDataId;
         int startIndex = res.indexOf("en");

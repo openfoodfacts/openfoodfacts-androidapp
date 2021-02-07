@@ -4,4 +4,8 @@ Kaikki 25 tuhatta OFF-vapaaehtoista jatkoivat ahkerasti työskentelyä: 1,4 milj
 3. Auta laskemaan Nutri-Score & Eco-Score: liu'uta ylös sinisiin kysymyksiin ja saa tunnustus vastauksistasi.
 4. Valtavia parannuksia vegaanisuuden, vegetaarisuuden ja palmuöljyn havaitsemiseen.
 5. Välitön tuotteen muokkaus jopa huonolla tai puuttuvalla verkolla
+<<<<<<< HEAD
 6. Täydennettävät tuotteet -sivu (valikko oikealla) on nyt reaaliaikainen.
+=======
+6. Täydennettävät tuotteet -sivu (valikko oikealla) on nyt reaaliaikainen.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac

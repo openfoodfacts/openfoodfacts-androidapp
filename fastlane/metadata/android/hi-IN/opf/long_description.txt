@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Open Products Facts is an open database of all products in the world.
+=======
+Open Food Facts सामग्री, एलर्जी, संकेत और सभी उत्पाद जानकारी के साथ सौंदर्य प्रसाधन उत्पादों का एक डाटाबेस है जिसे हम उत्पाद लेबल पर पा सकते हैं।
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 *** Contribute to Product Transparency ***
 

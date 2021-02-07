@@ -53,7 +53,11 @@
                 <ImageView
                     android:id="@+id/expandedImage"
                     android:layout_width="match_parent"
+<<<<<<< HEAD
                     android:layout_height="0dp"
+=======
+                    android:layout_height="wrap_content"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                     android:layout_weight="100" />
 
                 <TextView

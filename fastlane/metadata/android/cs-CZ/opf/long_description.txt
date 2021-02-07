@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Open Products Facts is an open database of all products in the world.
+=======
+Open Food Facts je otevřená databáze potravinářských produktů s přísadami, alergeny, nutričními fakty a všemi informacemi, které můžeme nalézt na etiketách produktů.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 *** Contribute to Product Transparency ***
 

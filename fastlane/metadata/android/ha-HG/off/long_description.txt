@@ -21,7 +21,11 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
+<<<<<<< HEAD
 - Open Food Facts is a food products database made by everyone, for everyone.
+=======
+-budedden Abinci wani nau'in abune wanda aka tarashi a ma'aji don kowa, saboda kowa.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 -zaka iya amfani dashi wajen inganta zaben abinci, saboda budedden ma'aji ne, kowa zai iya amfani dashi domin kowani bukata.
 -Budedden Abinci abu ne wanda yake bana kudi ba wanda dubunan mutane suka shirya shi kyauta a duniya baki daya. Munada da yawan abubuwan burgewa wanda zaka iya bada gudumuwa ga kowa ta hanyoyi da yawa.
 - You can start contributing today by adding a product from your fridge.
@@ -30,7 +34,11 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
+<<<<<<< HEAD
 -Open Food Facts yana taimako ne wajen gano kyauwun abu. You will be able to find:
+=======
+-Budedden Abinci yana taimako ne wajen gano kyauwun abu. You will be able to find:
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 -kabon takun kafa (CO2 turiri) da kuma rafe shi (da kuma sake amfani dashi),
 -Nutriscore (abun sinadarin), abun gina jiki, abunda ke kunshe da maiko / maiko, sunadarin sa jiki, sinadarin kabuhaidiret, sikari, tsimi, abun karin jini da kuma gishiri.
 -nau'uka, alegens, adadi (tarihi, rashin gulutan, me cin nama, me cin ganyayyaki, halali, koshar...), abun da ake iya ganowa na labarai ( kud din da aka sa mai, asalin kayan hade-haden)
@@ -67,11 +75,19 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
+<<<<<<< HEAD
 Open Food Facts yana samuwa a yanar gizo a http://world.openfoodfacts.org
+=======
+Open Food Facts is also available on the web at https://world.openfoodfacts.org
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 
 Tambayoyi, amsoshi : 
 contact@openfoodfacts.org
 
 
+<<<<<<< HEAD
 Domin kayan kwalliya, zaka iya sa Open Beauty Facts, domin abincin dabbobi, Open Pet Facts, da kuma sauran abubuwa, Open Products Facts.
+=======
+Domin kayan kwalliya, zaka iya sa Open Beauty Facts, domin abincin dabbobi, Open Pet Facts, da kuma sauran abubuwa, Open Product Facts.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac

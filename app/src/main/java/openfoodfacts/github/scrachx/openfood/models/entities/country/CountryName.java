@@ -9,12 +9,28 @@ import org.greenrobot.greendao.annotation.Keep;
 /**
  * Created by Lobster on 04.03.18.
  */
+<<<<<<< HEAD
 @Entity(indexes = {@Index(value = "languageCode, countyTag", unique = true)})
 public class CountryName {
     @Id(autoincrement = true)
     Long id;
     private String countyTag;
     private String languageCode;
+=======
+
+@Entity(indexes = {
+        @Index(value = "languageCode, countyTag", unique = true)
+})
+public class CountryName {
+
+    @Id(autoincrement = true)
+    Long id;
+
+    private String countyTag;
+
+    private String languageCode;
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     private String name;
 
     @Keep

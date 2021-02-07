@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Open Products Facts is an open database of all products in the world.
+=======
+Open Food Facts یک پایگاه داده برای محصولات خوراکی شامل مواد تشکیل دهنده ، آلرژن هاو تمام موارد دیگری که ما روی محصولات میتوانیم پیدا کنیم است.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 *** Contribute to Product Transparency ***
 

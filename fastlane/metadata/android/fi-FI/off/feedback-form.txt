@@ -2,4 +2,8 @@ Palautteesi Open Food Facts -sovelluksesta
 Luotamme palautteeseesi sovelluksen parantamiseksi. Voit vapaasti mainita kaiken, mikä ärsyttää sinua, oli se pientä tai isoa. 
 Jos pidät jostakin, voit kertoa myös sen.
 Syötä palautteesi tähän
+<<<<<<< HEAD
 Palautteesi on otettu asianmukaisesti huomioon ja lähetetty Android-sovelluksen vapaaehtoisryhmälle!
+=======
+Palautteesi on otettu asianmukaisesti huomioon ja lähetetty Android-sovelluksen vapaaehtoisryhmälle!
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac

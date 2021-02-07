@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Open Products Facts is an open database of all products in the world.
+=======
+Open Food Facts ay isang datos ng mga produktong pampaganda na may sangkap, allergens, nutrition facts at lahat nga mga impormasyon na makikita sa mga tanda ng produkto.
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 *** Contribute to Product Transparency ***
 

@@ -14,20 +14,31 @@
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+<<<<<<< HEAD
         tools:context=".features.product.edit.ProductEditNutritionFactsFragment">
+=======
+        tools:context=".fragments.AddProductNutritionFactsFragment">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+<<<<<<< HEAD
             <androidx.appcompat.widget.SwitchCompat
+=======
+            <CheckBox
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:id="@+id/checkbox_no_nutrition_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:text="@string/nutrition_facts_not_specified"
+<<<<<<< HEAD
                 android:textSize="16sp"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -160,7 +171,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/radio_group">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/serving_size"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -206,7 +221,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/serving_size_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/energy_kcal"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -252,7 +271,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/energy_kcal_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/energy_kj"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -308,7 +331,11 @@
                     app:layout_constraintStart_toEndOf="@id/spinner_fat_comp"
                     app:layout_constraintTop_toBottomOf="@id/energy_kj_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/fat"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -372,7 +399,11 @@
                     app:layout_constraintStart_toEndOf="@id/spinner_saturated_fat_comp"
                     app:layout_constraintTop_toBottomOf="@id/fat_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/saturated_fat"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -436,7 +467,11 @@
                     app:layout_constraintStart_toEndOf="@+id/spinner_carbohydrates_comp"
                     app:layout_constraintTop_toBottomOf="@id/saturated_fat_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/carbohydrates"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -499,7 +534,11 @@
                     app:layout_constraintStart_toEndOf="@+id/spinner_sugars_comp"
                     app:layout_constraintTop_toBottomOf="@id/carbohydrates_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/sugars"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -562,7 +601,11 @@
                     app:layout_constraintStart_toEndOf="@+id/spinner_fiber_comp"
                     app:layout_constraintTop_toBottomOf="@id/sugars_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/fiber"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -625,7 +668,11 @@
                     app:layout_constraintStart_toEndOf="@+id/spinner_proteins_comp"
                     app:layout_constraintTop_toBottomOf="@id/fiber_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/proteins"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -688,7 +735,11 @@
                     app:layout_constraintStart_toEndOf="@+id/spinner_salt_comp"
                     app:layout_constraintTop_toBottomOf="@id/proteins_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/salt"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -751,7 +802,11 @@
                     app:layout_constraintStart_toEndOf="@+id/spinner_sodium_comp"
                     app:layout_constraintTop_toBottomOf="@id/salt_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/sodium"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -815,7 +870,11 @@
                     app:layout_constraintStart_toEndOf="@+id/spinner_alcohol_comp"
                     app:layout_constraintTop_toBottomOf="@id/sodium_til">
 
+<<<<<<< HEAD
                     <openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
+=======
+                    <openfoodfacts.github.scrachx.openfood.utils.CustomValidatingEditTextView
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                         android:id="@+id/alcohol"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"

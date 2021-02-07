@@ -12,6 +12,7 @@ import org.greenrobot.greendao.annotation.Index;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+<<<<<<< HEAD
     "name",
     "products",
     "url",
@@ -19,6 +20,18 @@ import org.greenrobot.greendao.annotation.Index;
 })
 @Entity(indexes = {@Index(value = "id", unique = true)})
 public class Tag {
+=======
+        "name",
+        "products",
+        "url",
+        "id"
+})
+@Entity(indexes = {
+        @Index(value = "id", unique = true)
+})
+public class Tag {
+
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     @JsonProperty("name")
     private String name;
     @JsonProperty("products")

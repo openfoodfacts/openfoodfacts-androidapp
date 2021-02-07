@@ -1,5 +1,6 @@
 This is the Changelog. Please list changes here so that we can provide meaningful changelog for the application stores.
 
+<<<<<<< HEAD
 3.6.0
 - Eco-Score
 - Display all 3 scores in search, facets, recent changes
@@ -17,6 +18,8 @@ This is the Changelog. Please list changes here so that we can provide meaningfu
 3.4.3
 - Dark mode: lighter on your eyes, lighter on your battery
 
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 3.3
 - Adding or editing a product is now instant in every condition, offline, online or bad connexion.
 - You now are properly credited for your answers to blue questions

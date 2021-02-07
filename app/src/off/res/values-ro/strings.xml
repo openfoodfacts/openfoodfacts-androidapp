@@ -15,7 +15,11 @@
     <string name="slide_1_desc">Scanați produse, fotografiați-le, ajutați la concretizarea transparenței alimentelor</string>
     <string name="slide_2_title">Obțineți informații</string>
     <string name="slide_2_desc">Informații detaliate despre produsul pe care l-ați scanat, descifrate pentru dvs</string>
+<<<<<<< HEAD
     <string name="slide_3_title">Obțineți Nutri-Score</string>
+=======
+    <string name="slide_3_title">Obțineți NutriScore</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="slide_3_desc">O vedere de ansamblu asupra proprietăților nutriționale ale produselor dvs alimentare preferate</string>
     <string name="slide_4_title">Funcţionează offline</string>
     <string name="slide_4_desc">Poți adăuga produse noi, chiar dacă nu ești conectat la internet momentan</string>
@@ -25,8 +29,13 @@
     <string name="not_support_books">Cărțile momentan nu sunt suportate de către Open Food Facts</string>
     <string name="txt_broaden_search">- extinderea căutării dvs.\n- scanați și adăugați-l la Open Food Facts</string>
     <string name="Donation">Faceți click aici pentru a face o donație către Open Food Facts</string>
+<<<<<<< HEAD
     <string name="pref_help_translate_title">Ajută la traducerea informațiilor din Open Food Facts</string>
     <string name="pref_help_translate_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
+=======
+    <string name="translate_help_title">Ajută la traducerea informațiilor din Open Food Facts</string>
+    <string name="translate_help_summary">Aduceți baza de date Open Food Facts în limba dvs. - nu aveți nevoie de cunoștințe tehnice</string>
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
     <string name="text_offline_info_dialog">Scanați produsele când sunteți offline pentru a le adăuga la Open Food Facts mai târziu. Toate produsele scanate vor apărea aici, și le veți putea trimite folosind butonul de mai jos.</string>
     <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile dumneavostră nu vor fi trimise către serverele Open Food Facts. De asemenea, luați în considerare faptul că datele produselor si detectarea datelor pot fi imprecise, de aceea vă rugam sa le re-verificați dumneavoastră înșivă! </string>
     <!-- OFF tagline in different languages -->

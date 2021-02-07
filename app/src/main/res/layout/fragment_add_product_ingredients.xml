@@ -14,7 +14,11 @@
         android:clipToPadding="false"
         android:isScrollContainer="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+<<<<<<< HEAD
         tools:context=".features.product.edit.ProductEditIngredientsFragment">
+=======
+        tools:context=".fragments.AddProductIngredientsFragment">
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,6 +29,7 @@
                 style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
@@ -32,6 +37,11 @@
                 android:text="@string/ingredients_picture"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
+=======
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:text="@string/ingredients_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,6 +50,7 @@
                 style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
@@ -47,23 +58,35 @@
                 android:text="@string/take_ingredients_picture_to_extract"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+                android:text="@string/take_ingredients_picture_to_extract"
+                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/section_ingredients_picture" />
 
             <ImageView
                 android:id="@+id/btnAddImageIngredients"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+<<<<<<< HEAD
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="8dp"
                 android:background="?android:selectableItemBackground"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+                android:layout_margin="@dimen/spacing_small"
+                android:background="?android:selectableItemBackground"
+                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
                 app:srcCompat="@drawable/ic_add_a_photo_dark_48dp" />
 
             <Button
                 android:id="@+id/btnEditImageIngredients"
                 style="@style/ButtonBorder"
+<<<<<<< HEAD
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -75,6 +98,16 @@
                 app:layout_constraintBottom_toBottomOf="@id/btnAddImageIngredients"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnAddImageIngredients"
+=======
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="@dimen/padding_large"
+                android:layout_marginRight="@dimen/padding_large"
+                android:text="@string/update_image"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/btnAddImageIngredients"
+                app:layout_constraintStart_toEndOf="@id/btnAddImageIngredients"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toTopOf="@id/btnAddImageIngredients" />
 
             <ProgressBar
@@ -83,24 +116,38 @@
                 android:layout_height="50dp"
                 android:layout_margin="@dimen/spacing_small"
                 android:visibility="gone"
+<<<<<<< HEAD
                 app:layout_constraintBottom_toBottomOf="@+id/btnAddImageIngredients"
                 app:layout_constraintEnd_toEndOf="@+id/btnAddImageIngredients"
                 app:layout_constraintStart_toStartOf="@+id/btnAddImageIngredients"
                 app:layout_constraintTop_toTopOf="@+id/btnAddImageIngredients" />
+=======
+                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+                app:layout_constraintTop_toBottomOf="@id/hint_image_ingredients"
+                tools:visibility="visible" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <TextView
                 android:id="@+id/imageProgressText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
+=======
+                android:layout_margin="@dimen/spacing_small"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:text="@string/toastSending"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/imageProgress"
                 app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
                 app:layout_constraintStart_toEndOf="@+id/btnAddImageIngredients"
+=======
+                app:layout_constraintStart_toEndOf="@id/imageProgress"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toTopOf="@id/imageProgress"
                 tools:visibility="visible" />
 
@@ -120,6 +167,7 @@
                 style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="@dimen/spacing_small"
@@ -129,6 +177,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/ingredients_list"
+                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/grey_line1" />
 
             <TextView
@@ -150,7 +203,11 @@
                 android:layout_marginTop="@dimen/spacing_small"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="@drawable/bg_edittext"
+<<<<<<< HEAD
                 android:gravity="start|top"
+=======
+                android:gravity="center_vertical"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:inputType="textMultiLine"
                 android:minHeight="150dp"
                 android:nextFocusDown="@id/traces"
@@ -179,11 +236,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_small"
+<<<<<<< HEAD
+=======
+                android:tint="@color/brand_green_dark"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:srcCompat="@drawable/ic_check_white_24dp"
+<<<<<<< HEAD
                 app:tint="@color/brand_green_dark" />
+=======
+                tools:visibility="visible" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <ProgressBar
                 android:id="@+id/ocr_progress"
@@ -194,7 +259,12 @@
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
+<<<<<<< HEAD
                 app:layout_constraintTop_toTopOf="@id/ingredients_list" />
+=======
+                app:layout_constraintTop_toTopOf="@id/ingredients_list"
+                tools:visibility="visible" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <TextView
                 android:id="@+id/ocr_progress_text"
@@ -205,7 +275,19 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/ocr_progress"
                 app:layout_constraintStart_toStartOf="@id/ocr_progress"
+<<<<<<< HEAD
                 app:layout_constraintTop_toBottomOf="@id/ocr_progress" />
+=======
+                app:layout_constraintTop_toBottomOf="@id/ocr_progress"
+                tools:visibility="visible" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
             <Button
                 android:id="@+id/btn_looks_good"
@@ -216,7 +298,11 @@
                 android:text="@string/looksGood"
                 android:textColor="@color/white"
                 android:visibility="gone"
+<<<<<<< HEAD
                 app:layout_constraintEnd_toStartOf="@id/btn_skip_ingredients"
+=======
+                app:layout_constraintEnd_toStartOf="@id/guideline"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
                 app:layout_constraintTop_toBottomOf="@id/ingredients_list"
                 tools:visibility="visible" />
@@ -231,7 +317,11 @@
                 android:textColor="@color/white"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+<<<<<<< HEAD
                 app:layout_constraintStart_toEndOf="@+id/btn_looks_good"
+=======
+                app:layout_constraintStart_toEndOf="@id/guideline"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/ingredients_list"
                 tools:visibility="visible" />
 
@@ -251,6 +341,7 @@
                 style="@style/EditHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="@dimen/spacing_small"
@@ -260,6 +351,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/traces"
+                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/grey_line2" />
 
             <TextView
@@ -267,6 +363,7 @@
                 style="@style/EditHint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="16dp"
@@ -274,6 +371,11 @@
                 android:text="@string/traces_hint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+                android:text="@string/traces_hint"
+                app:layout_constraintEnd_toEndOf="@id/ingredients_list"
+                app:layout_constraintStart_toStartOf="@id/section_ingredients_picture"
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/section_traces" />
 
             <com.hootsuite.nachos.NachoTextView
@@ -302,8 +404,11 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/next"
+<<<<<<< HEAD
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+=======
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
                 app:layout_constraintTop_toBottomOf="@id/traces" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,11 @@ Aseta allergeenivaroituksia
 
 Ravinto, yksinkertaistettuna
 
+<<<<<<< HEAD
 Allergeenihälytys
+=======
+Allergeenivaroitus
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Saa vaihtoehtoja lempiruoillesi
 
@@ -35,12 +39,17 @@ Ainesosat
 
 Tehokas
 
+<<<<<<< HEAD
 Ravintotiedot
+=======
+Ravintosisältö
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 =====================
 V3-kuvakaappaukset
 =====================
 
+<<<<<<< HEAD
 Valitse tuotteita jotka ovat hyväksi sinulle ja planeetalle!
 
 Ultranopea viivakoodinlukija
@@ -50,11 +59,23 @@ Ultranopea viivakoodinlukija
 Ravintosisältö
 
 Ultraprosessoidut ruoat
+=======
+Valitse tuotteita jotka ovat hyväksi sinulle ja 🌍 planeetalle!
+
+✔ Ultranopea viivakoodinluku
+
+✔ Maailmanlaajuinen ruokakauppa taskussasi
+
+Ravinnollinen laatu
+
+Ultrajalostetut ruoat
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
 
 Hiilijalanjälki
 
 Vertaa helposti ennen ostamista
 
+<<<<<<< HEAD
 Luo ostoslistoja, saantiluetteloita…
 
 Yli 750 000 tuotetta vertailtavana ja tutkittavana.
@@ -70,3 +91,20 @@ Aseta allergeenihälytyksiä
 Liity maailmanlaajuiseen liikkeesemme elintarvikkeiden avoimuuden puolesta
 
 world-fi.openfoodfacts.org/contribute
+=======
+Luo ostoslistoja, saantilistoja…
+
+Löydä ja vertaile yli 750 000 tuotetta.
+
+
+
+Rajaton ja täysin yksityinen lukuhistoria
+
+Pyyhkäise saadaksesi vieläkin enemmän yksityiskohtia
+
+Aseta allergeenivaroituksia
+
+Liity maailmanlaajuiseen liikkeeseemme elintarvikkeiden läpinäkyvyydelle
+
+world.openfoodfacts.org/contribute
+>>>>>>> b73375553e6727f1ebb0cf7dd743c16efdcd16ac
