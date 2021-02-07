@@ -52,6 +52,10 @@
     <string name="pref_contribution_tab_summary">Show user contributions tab with products</string>
     <string name="pref_contribution_tab_title">Show contribution tab</string>
 
+    <string name="changes_history">changes_history</string>
+    <string name="changes_history_summary">Show history changes</string>
+    <string name="changes_history_title">Show history changes</string>
+
     <string name="pref_enable_mobile_data_key" translatable="false">enableMobileDataUpload</string>
     <string name="pref_enable_mobile_data_title">Upload on mobile data</string>
     <string name="pref_enable_mobile_data_summary_on">Upload new products using mobile data &amp; WiFi</string>

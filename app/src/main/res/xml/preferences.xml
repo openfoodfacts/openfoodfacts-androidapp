@@ -132,6 +132,13 @@
         android:summary=""
         android:title="@string/preference_header_network">
 
+        <changes_history
+            android:defaultValue="false"
+            android:key="@string/changes_history"
+            android:title="@string/changes_history_title"
+            android:summaryOn="@string/changes_history_summary" />
+        android:summaryOff="@string/changes_history_summary" />
+
         <SwitchPreference
             android:defaultValue="true"
             android:key="enableMobileDataUpload"

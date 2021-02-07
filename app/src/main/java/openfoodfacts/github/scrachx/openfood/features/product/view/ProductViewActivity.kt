@@ -257,7 +257,8 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                 }
                 adapter.add(ServerAttributesFragment.newInstance(productState), activity.getString(R.string.synthesis_tab))
             } else if (isFlavors(OPFF)) {
-                adapter.add(NutritionProductFragment().applyBundle(fBundle), titles[2])
+                if(adapter.add(NutritionProductFragment().applyBundle(fBundle), false){
+                        activity.getString(R.string.changes_history_tab))}
                 if (isPhotoMode(activity)) {
                     adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
                 }
@@ -271,6 +272,11 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
             }
             if (preferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
                 adapter.add(ContributorsFragment.newInstance(productState), activity.getString(R.string.contribution_tab))
+                if (preferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key),
+                                false)) {
+                    adapter.add(ContributorsFragment.newInstance(productState),
+                            activity.getString(R.string.contribution_tab))
+                }
             }
 
             viewPager.adapter = adapter
