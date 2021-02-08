@@ -38,3 +38,5 @@ fun Context.isLowBatteryMode() = isDisableImageLoad() && isBatteryLevelLow()
 
 fun Context.isFastAdditionMode(defValue: Boolean = false) = PreferenceManager.getDefaultSharedPreferences(this)
         .getBoolean("fastAdditionMode", defValue)
+
+fun Context.dpsToPixel(dps: Int) = (dps * resources.displayMetrics.density + 0.5f).toInt()

@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -18,8 +19,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
-import androidx.core.net.toFile
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -263,6 +262,16 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
         else -> super.onOptionsItemSelected(item)
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == MY_PERMISSIONS_REQUEST_STORAGE && grantResults.isNotEmpty()
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            exportAsCSV()
+        }
+
+    }
+
 
     private fun setInfo(view: TextView) = if (isEatenList) {
         view.setText(R.string.txt_info_eaten_products)
@@ -295,8 +304,9 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    val fileWriterLauncher = registerForActivityResult(CreateCSVContract())
-    { writeListToFile(this, productList, it?.toFile() ?: error("File path must not be null.")) }
+    val fileWriterLauncher = registerForActivityResult(CreateCSVContract()) {
+        writeListToFile(this, productList, it,contentResolver.openOutputStream(it) ?: error("File path must not be null."))
+    }
 
     private fun exportAsCSV() {
         Toast.makeText(this, R.string.txt_exporting_your_listed_products, Toast.LENGTH_LONG).show()
@@ -312,7 +322,8 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             @Suppress("DEPRECATION")
             val baseDir = File(Environment.getExternalStorageDirectory(), getCsvFolderName())
             if (!baseDir.exists()) baseDir.mkdirs()
-            writeListToFile(this, productList, File(baseDir, fileName))
+            val file = File(baseDir, fileName)
+            writeListToFile(this, productList,Uri.fromFile(file), file.outputStream())
         }
     }
 
@@ -339,8 +350,7 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             })
         }
 
-        fun createNotification(f: File, downloadIntent: Intent, context: Context): NotificationManager {
-            val csvUri = FileProvider.getUriForFile(context, "${context.packageName}.provider", f)
+        fun createNotification(csvUri: Uri, downloadIntent: Intent, context: Context): NotificationManager {
             downloadIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             downloadIntent.setDataAndType(csvUri, "text/csv")
             downloadIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)

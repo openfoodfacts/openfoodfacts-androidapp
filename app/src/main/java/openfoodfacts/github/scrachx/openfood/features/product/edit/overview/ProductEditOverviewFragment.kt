@@ -39,6 +39,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
@@ -63,6 +64,8 @@ import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryName
 import openfoodfacts.github.scrachx.openfood.models.entities.country.CountryNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelName
 import openfoodfacts.github.scrachx.openfood.models.entities.label.LabelNameDao
+import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreName
+import openfoodfacts.github.scrachx.openfood.models.entities.store.StoreNameDao
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.TagDao
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.ApiFields.Keys.lcProductNameKey
@@ -92,6 +95,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
     private val categories = mutableListOf<String?>()
     private val countries = mutableListOf<String>()
     private val labels = mutableListOf<String>()
+    private val stores = mutableListOf<String>()
 
     private var barcode: String? = null
     private var editionMode = false
@@ -134,9 +138,8 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         binding.btnOtherPictures.setOnClickListener { chooseOrTakeOtherImage() }
         binding.sectionManufacturingDetails.setOnClickListener { toggleManufacturingSectionVisibility() }
         binding.sectionPurchasingDetails.setOnClickListener { togglePurchasingSectionVisibility() }
-        binding.hintEmbCode.setOnClickListener { showEmbCodeHintDialog() }
-        binding.hintLink.setOnClickListener { searchProductLink() }
-        binding.hintLink2.setOnClickListener { scanProductLink() }
+        binding.extractUrlText.setOnClickListener { scanProductLink() }
+        binding.searchUrlText.setOnClickListener { searchProductLink() }
         binding.language.setOnClickListener { selectProductLanguage() }
 
         //checks the information about the prompt clicked and takes action accordingly
@@ -338,7 +341,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             binding.btnEditImgFront.visibility = View.INVISIBLE
             picassoBuilder(requireContext())
                     .load(imageFrontUrl)
-                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
+                    .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                     .centerInside()
                     .into(binding.imgFront, object : Callback {
                         override fun onSuccess() = frontImageLoaded()
@@ -406,7 +409,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
             frontImageUrl = savedProduct!!.imageFrontLocalUrl
             Picasso.get()
                     .load(frontImageUrl)
-                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
+                    .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                     .centerInside()
                     .into(binding.imgFront, object : Callback {
                         override fun onSuccess() = frontImageLoaded()
@@ -476,6 +479,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         val asyncSessionCountries = OFFApplication.daoSession.startAsyncSession()
         val asyncSessionLabels = OFFApplication.daoSession.startAsyncSession()
         val asyncSessionCategories = OFFApplication.daoSession.startAsyncSession()
+        val asyncSessionStores = OFFApplication.daoSession.startAsyncSession()
 
         asyncSessionCountries.queryList(OFFApplication.daoSession.countryNameDao.queryBuilder()
                 .where(CountryNameDao.Properties.LanguageCode.eq(appLanguageCode))
@@ -488,6 +492,10 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         asyncSessionCategories.queryList(OFFApplication.daoSession.categoryNameDao.queryBuilder()
                 .where(CategoryNameDao.Properties.LanguageCode.eq(appLanguageCode))
                 .orderDesc(CategoryNameDao.Properties.Name).build())
+
+        asyncSessionStores.queryList(OFFApplication.daoSession.storeNameDao.queryBuilder()
+                .where(StoreNameDao.Properties.LanguageCode.eq(appLanguageCode))
+                .orderDesc(StoreNameDao.Properties.Name).build())
 
         asyncSessionCountries.listenerMainThread = AsyncOperationListener { operation ->
             countries.clear()
@@ -517,6 +525,15 @@ class ProductEditOverviewFragment : ProductEditFragment() {
                     requireContext(),
                     android.R.layout.simple_dropdown_item_1line,
                     categories
+            ))
+        }
+        asyncSessionStores.listenerMainThread = AsyncOperationListener { operation ->
+            stores.clear()
+            (operation.result as List<StoreName>).mapTo(stores) { it.name }
+            binding.stores.setAdapter(ArrayAdapter(
+                    requireContext(),
+                    android.R.layout.simple_dropdown_item_1line,
+                    stores
             ))
         }
 
@@ -748,13 +765,14 @@ class ProductEditOverviewFragment : ProductEditFragment() {
 
     private fun changeVisibilityManufacturingSectionTo(visibility: Int) {
         binding.originOfIngredientsTil.visibility = visibility
-        binding.originWarning.visibility = visibility
         binding.originHint.visibility = visibility
         binding.manufacturingPlaceTil.visibility = visibility
         binding.embCodeTil.visibility = visibility
         binding.linkTil.visibility = visibility
-        binding.hintLink.visibility = visibility
-        binding.hintLink2.visibility = visibility
+        binding.linearLayout.visibility = visibility
+        binding.traceHint.visibility = visibility
+        if (isFlavors(OFF))
+            binding.originWarning.visibility = visibility
     }
 
     private fun togglePurchasingSectionVisibility() {
@@ -772,14 +790,6 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         binding.countryWherePurchasedTil.visibility = visibility
         binding.storesTil.visibility = visibility
         binding.countriesWhereSoldTil.visibility = visibility
-    }
-
-    private fun showEmbCodeHintDialog() {
-        MaterialDialog.Builder(requireActivity())
-                .content(R.string.hint_emb_codes)
-                .positiveText(R.string.ok_button)
-                .onPositive { dialog, _ -> dialog.dismiss() }
-                .show()
     }
 
     private fun searchProductLink() {
@@ -868,7 +878,7 @@ class ProductEditOverviewFragment : ProductEditFragment() {
         if (!errorInUploading) {
             Picasso.get()
                     .load(photoFile!!)
-                    .resize(dpsToPixel(50, requireContext()), dpsToPixel(50, requireContext()))
+                    .resize(requireContext().dpsToPixel(50), requireContext().dpsToPixel(50))
                     .centerInside()
                     .into(binding.imgFront)
         }

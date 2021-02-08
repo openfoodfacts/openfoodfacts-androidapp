@@ -37,6 +37,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.label.*
 import openfoodfacts.github.scrachx.openfood.models.entities.states.States
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesName
 import openfoodfacts.github.scrachx.openfood.models.entities.states.StatesNameDao
+import openfoodfacts.github.scrachx.openfood.models.entities.store.Store
 import openfoodfacts.github.scrachx.openfood.models.entities.tag.Tag
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.CommonApiManager.analysisDataApi
@@ -204,6 +205,20 @@ object ProductRepository {
                 updateLastDownloadDateInSettings(Taxonomy.STATES,lastModifiedDate)
             }
 
+    /**
+     * Load stores from the server or local database
+     *
+     * @return The list of stores.
+     */
+    fun reloadStoresFromServer(): Single<List<Store>> =
+            getTaxonomyData(Taxonomy.STORES, this, true, OFFApplication.daoSession.storeDao)
+
+    fun loadStores(lastModifiedDate: Long): Single<List<Store>> = analysisDataApi.getStores()
+            .map { it.map() }
+            .doOnSuccess{
+                saveStores(it)
+                updateLastDownloadDateInSettings(Taxonomy.STORES,lastModifiedDate)
+            }
 
     /**
      * This function set lastDownloadtaxonomy setting
@@ -418,6 +433,31 @@ object ProductRepository {
             OFFApplication.daoSession.database.setTransactionSuccessful()
         } catch (e: Exception) {
             Log.e(LOG_TAG, "saveStates", e)
+        } finally {
+            OFFApplication.daoSession.database.endTransaction()
+        }
+    }
+
+    /**
+     * Stores saving to local database
+     *
+     * @param stores The list of stores to be saved.
+     *
+     *
+     * store and storeName has One-To-Many relationship, therefore we need to save them separately.
+     */
+    private fun saveStores(stores: List<Store>) {
+        OFFApplication.daoSession.database.beginTransaction()
+        try {
+            stores.forEach { store ->
+                OFFApplication.daoSession.storeDao.insertOrReplace(store)
+                store.names.forEach {
+                    OFFApplication.daoSession.storeNameDao.insertOrReplace(it)
+                }
+            }
+            OFFApplication.daoSession.database.setTransactionSuccessful()
+        } catch (e: Exception) {
+            Log.e(LOG_TAG, "saveStores", e)
         } finally {
             OFFApplication.daoSession.database.endTransaction()
         }

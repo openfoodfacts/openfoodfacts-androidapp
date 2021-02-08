@@ -3,6 +3,7 @@ package openfoodfacts.github.scrachx.openfood.features.product.view.environment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -94,6 +95,7 @@ class EnvironmentProductFragment : BaseFragment() {
         val environmentInfocard = product.environmentInfoCard
         if (!environmentInfocard.isNullOrEmpty()) {
             binding.environmentInfoText.append(HtmlCompat.fromHtml(environmentInfocard, HtmlCompat.FROM_HTML_MODE_COMPACT))
+            binding.environmentInfoText.movementMethod = LinkMovementMethod.getInstance()
         } else {
             binding.environmentInfoCv.visibility = View.GONE
         }

@@ -41,6 +41,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OPF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.databinding.ProductComparisonListItemBinding
@@ -93,6 +94,11 @@ class ProductCompareAdapter(
         holder.binding.productComparisonName.visibility = View.VISIBLE
         holder.binding.productComparisonQuantity.visibility = View.VISIBLE
         holder.binding.productComparisonBrand.visibility = View.VISIBLE
+
+        // if the flavor is OpenProductsFacts hide the additives card
+        if (isFlavors(OPF)) {
+            holder.binding.productComparisonAdditive.visibility = View.GONE
+        }
 
         // Modify the text on the button for adding products
         addProductButton?.setText(R.string.add_another_product)
