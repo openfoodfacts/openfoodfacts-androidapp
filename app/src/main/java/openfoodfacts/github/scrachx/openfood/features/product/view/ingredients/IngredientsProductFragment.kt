@@ -35,6 +35,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.squareup.picasso.Picasso
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.AppFlavors
+import openfoodfacts.github.scrachx.openfood.AppFlavors.OBF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.customtabs.CustomTabActivityHelper
@@ -223,7 +224,7 @@ class IngredientsProductFragment : BaseFragment(), IIngredientsProductPresenter.
             binding.cvTextTraceProduct.visibility = View.GONE
         }
         val novaGroups = product.novaGroups
-        if (novaGroups != null) {
+        if (novaGroups != null && !isFlavors(OBF)) {
             binding.novaLayout.visibility = View.VISIBLE
             binding.novaExplanation.text = Utils.getNovaGroupExplanation(novaGroups, requireContext()) ?: ""
             binding.novaGroup.setImageResource(product.getNovaGroupResource())
