@@ -692,19 +692,27 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         editText.imeOptions = EditorInfo.IME_ACTION_DONE
         editText.requestFocus()
         if (preFillValues) {
-            editText.setText(value)
+            value?.takeIf { it != "0" }?.let { editText.setText(value) }
         }
 
         // Setup unit spinner
         val unitSpinner = rowView.findViewById<Spinner>(R.id.spinner_unit)
         val modSpinner = rowView.findViewById<Spinner>(R.id.spinner_mod)
-        if (Nutriments.PH == nutrientShortName) {
-            unitSpinner.visibility = View.INVISIBLE
-        } else if (Nutriments.STARCH == nutrientShortName) {
-            val arrayAdapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, requireActivity().resources.getStringArray(R.array.weights_array))
-            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            unitSpinner.adapter = arrayAdapter
-            starchEditText = editText
+        when (nutrientShortName) {
+            Nutriments.PH -> {
+                unitSpinner.visibility = View.INVISIBLE
+            }
+            Nutriments.STARCH -> {
+                val arrayAdapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, requireActivity().resources.getStringArray(R.array.weights_array))
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                unitSpinner.adapter = arrayAdapter
+                starchEditText = editText
+            }
+            Nutriments.VITAMIN_A -> {
+                val arrayAdapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, requireActivity().resources.getStringArray(R.array.weight_all_units))
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                unitSpinner.adapter = arrayAdapter
+            }
         }
         if (preFillValues) {
             unitSpinner.setSelection(unitSelectedIndex)
