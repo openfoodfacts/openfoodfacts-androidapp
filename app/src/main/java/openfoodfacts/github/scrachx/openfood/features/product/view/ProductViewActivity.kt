@@ -266,6 +266,7 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
                     adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
                 }
                 adapter.add(IngredientsAnalysisProductFragment().applyBundle(fBundle), newTitles[1])
+                adapter.add(ServerAttributesFragment.newInstance(productState), activity.getString(R.string.synthesis_tab))
             } else if (isFlavors(OPF)) {
                 adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
             }
