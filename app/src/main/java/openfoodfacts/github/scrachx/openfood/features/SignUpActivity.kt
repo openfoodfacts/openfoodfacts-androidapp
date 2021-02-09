@@ -78,6 +78,10 @@ class SignUpActivity : AppCompatActivity() {
         }
         binding.relFoodPro.setOnClickListener {
             binding.checkboxFoodPro.isChecked = !binding.checkboxFoodPro.isChecked
+            producerNameVisibility()
+        }
+        binding.checkboxFoodPro.setOnClickListener {
+            producerNameVisibility()
         }
         binding.relNewsLetter.setOnClickListener {
             binding.checkboxNewsLetter.isChecked = !binding.checkboxNewsLetter.isChecked
@@ -181,5 +185,12 @@ class SignUpActivity : AppCompatActivity() {
     private fun openTermsOfService() {
         val customTabsIntent = CustomTabsHelper.getCustomTabsIntent(baseContext, customTabActivityHelper.session)
         CustomTabActivityHelper.openCustomTab(this, customTabsIntent, termsOfServiceUri!!, WebViewFallback())
+    }
+
+    private fun producerNameVisibility() {
+        if (binding.checkboxFoodPro.isChecked)
+            binding.producerName.visibility = View.VISIBLE
+        else
+            binding.producerName.visibility = View.GONE
     }
 }
