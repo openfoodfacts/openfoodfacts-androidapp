@@ -1,4 +1,4 @@
-Scan food products or their barcode to obtain data on ingredients, additives and nutrition facts.
+Σάρωση των προϊόντων διατροφής ή του γραμμικού τους κώδικα για τη συλλογή στοιχείων σχετικά με τα συστατικά, τα πρόσθετα και τα στοιχεία διατροφής.
 
 ▶ Find & Compare more than 800.000 products
 
