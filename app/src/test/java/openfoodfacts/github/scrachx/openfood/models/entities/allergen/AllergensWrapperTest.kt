@@ -64,15 +64,15 @@ class AllergensWrapperTest {
     fun map_returnsListOfCorrectlyMappedSubAllergens_LanguageCode() {
         assertThat(allergen1.names[0].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
         assertThat(allergen1.names[1].languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
-        assertThat(allergen2.names[0].languageCode).isEqualTo(LANGUAGE_CODE_GERMAN)
-        assertThat(allergen2.names[1].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(allergen2.names[0].languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(allergen2.names[1].languageCode).isEqualTo(LANGUAGE_CODE_GERMAN)
     }
 
     @Test
     fun map_returnsListOfCorrectlyMappedSubAllergens_Names() {
         assertThat(allergen1.names[0].name).isEqualTo(PEANUTS_EN)
         assertThat(allergen1.names[1].name).isEqualTo(PEANUTS_FR)
-        assertThat(allergen2.names[0].name).isEqualTo(STRAWBERRY_DE)
-        assertThat(allergen2.names[1].name).isEqualTo(STRAWBERRY_EN)
+        assertThat(allergen2.names[0].name).isEqualTo(STRAWBERRY_EN)
+        assertThat(allergen2.names[1].name).isEqualTo(STRAWBERRY_DE)
     }
 }
