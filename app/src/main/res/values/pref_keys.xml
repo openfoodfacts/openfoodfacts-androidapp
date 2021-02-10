@@ -27,6 +27,7 @@
     <string name="pref_energy_unit_title">Preferred energy unit</string>
 
     <string name="pref_volume_unit_key" translatable="false">volumeUnitPreference</string>
+    <string name="pref_scanner_type_key" translatable="false">select_scanner</string>
     <string name="pref_volume_unit_title">Preferred volume unit</string>
 
     <string name="pref_delete_history_key" translatable="false">deleteSearchHistoryPreference</string>
@@ -96,5 +97,9 @@
 
     <string name="pref_crop_new_images_title">Crop new images</string>
     <string name="pref_crop_new_images_summary">Enables crop action on new images</string>
+
+    <string name="pref_mlkit">We included a new option to more reliably scan barcodes. While this scanner works on your device, using machine learning, please be aware that it is a proprietary component provided by Google, governed by this privacy policy, and that some limited telemetry might be sent back to Google’s servers to improve their software. As noted in the MLKit terms, this won’t include any information about the products you scan and the telemetry is anonymized. Choosing MLKit scanner implies that you accept those terms.
+Note: you can switch back at any time between the 2 scanners in the Settings.
+</string>
 
 </resources>

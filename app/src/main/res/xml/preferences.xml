@@ -48,6 +48,12 @@
 
         <SwitchPreference
             android:defaultValue="false"
+            android:key="@string/pref_scanner_type_key"
+            android:title="Use MLKit Scanner"
+            app:summary="Increase Scanning efficiency" />
+
+        <SwitchPreference
+            android:defaultValue="false"
             android:key="startScan"
             android:title="@string/pref_scan_startup_title"
             app:summary="@string/pref_scan_startup_summary" />

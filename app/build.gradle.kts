@@ -69,6 +69,12 @@ dependencies {
     implementation("androidx.startup:startup-runtime:1.0.0")
 
 
+    // ML Kit barcode Scanner
+    implementation ("com.google.mlkit:barcode-scanning:16.1.1")
+    // fotoapparat library
+    implementation ("io.fotoapparat:fotoapparat:2.7.0")
+
+
     kapt("com.google.dagger:dagger-compiler:2.30.1")
     implementation("com.google.dagger:dagger:2.30.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")

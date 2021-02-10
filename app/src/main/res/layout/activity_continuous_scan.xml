@@ -41,6 +41,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
+            <io.fotoapparat.view.CameraView
+                android:id="@+id/cameraView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
             <ImageView
                 android:id="@+id/button_more"
                 android:layout_width="25dp"

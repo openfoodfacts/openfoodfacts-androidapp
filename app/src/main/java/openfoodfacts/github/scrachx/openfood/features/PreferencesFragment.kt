@@ -150,6 +150,35 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
             true
         }
 
+        requirePreference<SwitchPreference>(getString(R.string.pref_scanner_type_key)).let {
+            it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+                if(newValue == true){
+                    MaterialDialog.Builder(requireActivity()).run {
+                        title("New: Enhanced “MLKit” scanner")
+                        content(R.string.pref_mlkit)
+                        positiveText("Proceed")
+                        onPositive { _, _ ->
+                            it.isChecked = false
+                            settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), newValue as Boolean) }
+                            Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
+                        }
+                        negativeText("Cancel")
+                        onNegative {
+                            dialog, _ -> dialog.dismiss()
+                            it.isChecked = false
+                            settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), false) }
+                        }
+                        show()
+                    }
+                }
+                else{
+                    it.isChecked = false
+                    settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), newValue as Boolean) }
+                }
+                true
+            }
+        }
+
         val countryLabels = mutableListOf<String>()
         val countryTags = mutableListOf<String>()
 
