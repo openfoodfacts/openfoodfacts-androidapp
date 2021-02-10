@@ -56,6 +56,11 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
      */
     private val isLowBatteryMode by lazy { this.isDisableImageLoad() && this.isBatteryLevelLow() }
 
+    /**
+     * boolean to determine if menu buttons should be visible or not
+     */
+    private var showMenuButtons = false
+
     private lateinit var adapter: ScanHistoryAdapter
 
     private var sortType = NONE
@@ -148,8 +153,9 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_history, menu)
-        menu.findItem(R.id.action_export_all_history).isVisible = adapter.itemCount != 0
-        menu.findItem(R.id.action_remove_all_history).isVisible = adapter.itemCount != 0
+        menu.findItem(R.id.action_export_all_history).isVisible = showMenuButtons
+        menu.findItem(R.id.action_remove_all_history).isVisible = showMenuButtons
+        menu.findItem(R.id.sort_history).isVisible = showMenuButtons
         return true
     }
 
@@ -167,6 +173,8 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
                     daoSession.historyProductDao.deleteAll()
                     adapter.products.clear()
                     adapter.notifyDataSetChanged()
+                    showMenuButtons = false
+                    invalidateOptionsMenu()
 
                     binding.emptyHistoryInfo.visibility = View.VISIBLE
                     binding.scanFirst.visibility = View.VISIBLE
@@ -340,9 +348,10 @@ class ScanHistoryActivity : BaseActivity(), SwipeController.Actions {
                         binding.historyProgressbar.visibility = View.GONE
                         binding.emptyHistoryInfo.visibility = View.VISIBLE
                         binding.scanFirst.visibility = View.VISIBLE
-                        invalidateOptionsMenu()
                         return@flatMapCompletable Completable.complete()
                     }
+                    showMenuButtons = true
+                    invalidateOptionsMenu()
                     adapter.products.addAll(newProducts)
                     adapter.products.customSortBy(sortType)
                     adapter.notifyDataSetChanged()
