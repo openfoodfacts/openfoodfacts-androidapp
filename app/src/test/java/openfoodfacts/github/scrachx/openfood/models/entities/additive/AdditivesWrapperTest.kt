@@ -13,7 +13,7 @@ import org.junit.Test
 class AdditivesWrapperTest {
     @Test
     fun map_returnsListOfCorrectlyMappedAdditives() {
-        val stringMap = hashMapOf(
+        val stringMap = mapOf(
                 LANGUAGE_CODE_ENGLISH to AdditiveResponseTestData.VINEGAR_EN,
                 LANGUAGE_CODE_FRENCH to AdditiveResponseTestData.VINEGAR_FR
         )
@@ -43,11 +43,11 @@ class AdditivesWrapperTest {
         assertThat(mA1Name1.additiveTag).isEqualTo(ADDITIVE_TAG)
         assertThat(mA1Name2.additiveTag).isEqualTo(ADDITIVE_TAG)
 
-        assertThat(mA1Name1.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
-        assertThat(mA1Name2.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(mA1Name1.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(mA1Name2.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
 
-        assertThat(mA1Name1.name).isEqualTo(AdditiveResponseTestData.VINEGAR_FR)
-        assertThat(mA1Name2.name).isEqualTo(AdditiveResponseTestData.VINEGAR_EN)
+        assertThat(mA1Name1.name).isEqualTo(AdditiveResponseTestData.VINEGAR_EN)
+        assertThat(mA1Name2.name).isEqualTo(AdditiveResponseTestData.VINEGAR_FR)
 
         assertThat(mA1Name1.isWikiDataIdPresent).isFalse()
         assertThat(mA1Name2.isWikiDataIdPresent).isFalse()
@@ -61,11 +61,11 @@ class AdditivesWrapperTest {
         assertThat(mA2Name1.additiveTag).isEqualTo(ADDITIVE_TAG)
         assertThat(mA2Name2.additiveTag).isEqualTo(ADDITIVE_TAG)
 
-        assertThat(mA2Name1.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
-        assertThat(mA2Name2.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(mA2Name1.languageCode).isEqualTo(LANGUAGE_CODE_ENGLISH)
+        assertThat(mA2Name2.languageCode).isEqualTo(LANGUAGE_CODE_FRENCH)
 
-        assertThat(mA2Name1.name).isEqualTo(AdditiveResponseTestData.VINEGAR_FR)
-        assertThat(mA2Name2.name).isEqualTo(AdditiveResponseTestData.VINEGAR_EN)
+        assertThat(mA2Name1.name).isEqualTo(AdditiveResponseTestData.VINEGAR_EN)
+        assertThat(mA2Name2.name).isEqualTo(AdditiveResponseTestData.VINEGAR_FR)
 
         assertThat(mA2Name1.isWikiDataIdPresent).isTrue()
         assertThat(mA2Name2.isWikiDataIdPresent).isTrue()
