@@ -131,7 +131,7 @@ dependencies {
     }
 
     // UI Component : Material Drawer
-    implementation("com.mikepenz:materialdrawer:7.0.0") { isTransitive = true }
+    implementation("com.mikepenz:materialdrawer:8.3.3") { isTransitive = true }
 
     //DO NOT UPDATE : RecyclerViewCacheUtil removed, needs rework
     implementation("com.mikepenz:fastadapter-commons:3.3.1@aar")
