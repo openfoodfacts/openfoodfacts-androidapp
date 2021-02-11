@@ -71,6 +71,7 @@ class QuestionDialog(private val mContext: Context) {
 
     fun show() {
         initiateListeners()
+        binding.reviewQuestion.text = question
         binding.reviewValue.text = value
         binding.positiveFeedbackText.text = mPositiveFeedbackText
         binding.postiveFeedbackIcon.setImageDrawable(mPositiveFeedbackIcon)
