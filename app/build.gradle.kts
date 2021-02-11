@@ -209,7 +209,7 @@ android {
         targetSdkVersion(30)
 
         versionCode = 431
-        versionName = "3.6.3"
+        versionName = "3.6.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
