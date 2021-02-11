@@ -1095,4 +1095,28 @@
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
     <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
+
+    <!-- Strings for camera settings. -->
+    <string name="pref_category_camera">Camera</string>
+    <string name="pref_key_rear_camera_preview_size" translatable="false">rcpvs</string>
+    <string name="pref_key_rear_camera_picture_size" translatable="false">rcpts</string>
+    <string name="pref_title_rear_camera_preview_size">Rear camera preview size</string>
+
+    <!-- Strings for barcode detection settings. -->
+    <string name="pref_category_barcode_detection">Barcode detection</string>
+    <string name="pref_key_barcode_reticle_width" translatable="false">barcode_brw</string>
+    <string name="pref_title_barcode_reticle_width">Barcode reticle width</string>
+    <string name="pref_summary_barcode_reticle_width" formatted="false">Relative to the camera view width, ranges from 50% to 95%</string>
+    <string name="pref_key_barcode_reticle_height" translatable="false">barcode_brh</string>
+    <string name="pref_title_barcode_reticle_height">Barcode reticle height</string>
+    <string name="pref_summary_barcode_reticle_height" formatted="false">Relative to the camera view height, ranges from 20% to 80%</string>
+    <string name="pref_key_enable_barcode_size_check" translatable="false">barcode_ebsc</string>
+    <string name="pref_title_enable_barcode_size_check">Enable barcode size check</string>
+    <string name="pref_summary_enable_barcode_size_check">Will prompt user to move camera closer if the detected barcode is too small</string>
+    <string name="pref_key_minimum_barcode_width" translatable="false">barcode_mbw</string>
+    <string name="pref_title_minimum_barcode_width">Minimum barcode width</string>
+    <string name="pref_summary_minimum_barcode_width" formatted="false">Relative to the reticle width, ranges from 20% to 80% (only applicable when barcode size check enabled)</string>
+    <string name="pref_key_delay_loading_barcode_result" translatable="false">barcode_dlbr</string>
+    <string name="pref_title_delay_loading_barcode_result">Delay loading barcode result</string>
+    <string name="pref_summary_delay_loading_barcode_result">Will show the loading spinner for 2s</string>
 </resources>

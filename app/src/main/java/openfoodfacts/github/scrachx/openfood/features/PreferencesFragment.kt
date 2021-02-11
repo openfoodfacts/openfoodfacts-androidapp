@@ -158,7 +158,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), INavigationItem, OnShare
                         content(R.string.pref_mlkit)
                         positiveText("Proceed")
                         onPositive { _, _ ->
-                            it.isChecked = false
+                            it.isChecked = true
                             settings.edit { putBoolean(getString(R.string.pref_scanner_type_key), newValue as Boolean) }
                             Toast.makeText(requireActivity(), getString(R.string.changes_saved), Toast.LENGTH_SHORT).show()
                         }

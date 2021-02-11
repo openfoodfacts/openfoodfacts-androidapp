@@ -17,11 +17,7 @@ package openfoodfacts.github.scrachx.openfood.features.scan
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.hardware.Camera
-import android.hardware.camera2.CameraCaptureSession
-import android.hardware.camera2.CameraDevice
-import android.hardware.camera2.CameraManager
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -40,12 +36,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
+import androidx.lifecycle.ViewModelProviders
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior.from
 import com.google.mlkit.vision.barcode.*
-import com.google.mlkit.vision.common.InputImage
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
 import com.google.zxing.client.android.BeepManager
@@ -56,11 +52,6 @@ import com.mikepenz.iconics.IconicsColor
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.IconicsSize
 import com.mikepenz.iconics.typeface.library.googlematerial.GoogleMaterial
-import io.fotoapparat.Fotoapparat
-import io.fotoapparat.configuration.CameraConfiguration
-import io.fotoapparat.configuration.UpdateConfiguration
-import io.fotoapparat.parameter.ScaleType
-import io.fotoapparat.selector.*
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -70,6 +61,11 @@ import openfoodfacts.github.scrachx.openfood.AppFlavors.OFF
 import openfoodfacts.github.scrachx.openfood.AppFlavors.isFlavors
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.app.OFFApplication
+import openfoodfacts.github.scrachx.openfood.camera.CameraSource
+import openfoodfacts.github.scrachx.openfood.camera.CameraSourcePreview
+import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay
+import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel
+import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel.*
 import openfoodfacts.github.scrachx.openfood.databinding.ActivityContinuousScanBinding
 import openfoodfacts.github.scrachx.openfood.features.ImagesManageActivity
 import openfoodfacts.github.scrachx.openfood.features.compare.ProductCompareActivity
@@ -92,6 +88,7 @@ import openfoodfacts.github.scrachx.openfood.models.entities.analysistagconfig.A
 import openfoodfacts.github.scrachx.openfood.models.eventbus.ProductNeedsRefreshEvent
 import openfoodfacts.github.scrachx.openfood.network.ApiFields
 import openfoodfacts.github.scrachx.openfood.network.OpenFoodAPIClient
+import openfoodfacts.github.scrachx.openfood.scanner.BarcodeProcessor
 import openfoodfacts.github.scrachx.openfood.utils.*
 import openfoodfacts.github.scrachx.openfood.utils.Utils.daoSession
 import org.greenrobot.eventbus.EventBus
@@ -117,7 +114,12 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     private val settings by lazy { getSharedPreferences("prefs", 0) }
 
-    private lateinit var fotoapparat: Fotoapparat
+    private var cameraSource: CameraSource? = null
+    private var preview: CameraSourcePreview? = null
+    private var graphicOverlay: GraphicOverlay? = null
+    private var workflowModel: WorkflowModel? = null
+    private var currentWorkflowState: WorkflowState? = null
+
 
     private val commonDisp = CompositeDisposable()
     private var productDisp: Disposable? = null
@@ -154,7 +156,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     internal fun showProduct(barcode: String) {
         productShowing = true
         binding.barcodeScanner.visibility = View.GONE
-        binding.cameraView.visibility = View.GONE
+        binding.cameraPreview.visibility = View.GONE
         binding.barcodeScanner.pause()
         binding.imageForScreenshotGenerationOnly.visibility = View.VISIBLE
         setShownProduct(barcode)
@@ -496,7 +498,7 @@ class ContinuousScanActivity : AppCompatActivity() {
 
         if (!useMLScanner) {
             binding.barcodeScanner.visibility = View.VISIBLE
-            binding.cameraView.visibility = View.GONE
+            binding.cameraPreview.visibility = View.GONE
             binding.barcodeScanner.barcodeView.decoderFactory = DefaultDecoderFactory(BARCODE_FORMATS)
             binding.barcodeScanner.setStatusText(null)
             binding.barcodeScanner.barcodeView.cameraSettings.run {
@@ -507,30 +509,22 @@ class ContinuousScanActivity : AppCompatActivity() {
             // Start continuous scanner
             binding.barcodeScanner.decodeContinuous(barcodeScanCallback)
             beepManager = BeepManager(this)
+
         } else {
             binding.barcodeScanner.visibility = View.GONE
-            binding.cameraView.visibility = View.VISIBLE
+            binding.cameraPreview.visibility = View.VISIBLE
 
-            val config = CameraConfiguration(
-                    flashMode = if(flashActive) torch() else off(),
-                    previewResolution = highestResolution(),                    // we want to have the highest possible preview resolution
-                    previewFpsRange = highestFps(),                             // we want to have the best frame rate
-                    focusMode = firstAvailable(                                 // use the first focus mode which is supported by device
-                                continuousFocusVideo(),
-                                autoFocus(),                                    // if continuous focus is not available on device, auto focus will be used
-                                fixed()                                         // if even auto focus is not available - fixed focus mode will be used
-                    ),
-                    frameProcessor = { frame ->
-                        processFrame(frame.image, frame.rotation, frame.size.height, frame.size.width)
-                    }
-            )
+            preview = binding.cameraPreview
+            graphicOverlay = findViewById<GraphicOverlay>(R.id.camera_preview_graphic_overlay).apply {
+//                setOnClickListener(this@Conti)
+                Log.i("inside","else-- before cameraSource")
+                cameraSource = CameraSource(this)
+                Log.i("inside","else-- after cameraSource")
 
-            fotoapparat = Fotoapparat(
-                    context = this,
-                    cameraConfiguration = config,
-                    scaleType = ScaleType.CenterCrop,
-                    view = binding.cameraView
-            )
+            }
+
+            setUpWorkflowModel()
+
         }
 
         binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener)
@@ -539,37 +533,67 @@ class ContinuousScanActivity : AppCompatActivity() {
         setupPopupMenu()
     }
 
-    private fun processFrame(byteArray:ByteArray, rotation:Int, height:Int, width:Int)
-    {
-        val inputImage = InputImage.fromByteArray(
-                byteArray,
-                width,
-                height,
-                rotation,
-                InputImage.IMAGE_FORMAT_NV21 // or IMAGE_FORMAT_YV12
-        )
+    private fun setUpWorkflowModel() {
+        workflowModel = ViewModelProviders.of(this).get(WorkflowModel::class.java)
 
-        val options = BarcodeScannerOptions.Builder()
-                .setBarcodeFormats(Barcode.FORMAT_UPC_A,
-                        Barcode.FORMAT_UPC_E,
-                        Barcode.FORMAT_EAN_13,
-                        Barcode.FORMAT_EAN_8,
-                        Barcode.FORMAT_CODE_39,
-                        Barcode.FORMAT_CODE_93,
-                        Barcode.FORMAT_CODE_128)
-                .build()
+        // Observes the workflow state changes, if happens, update the overlay view indicators and
+        // camera preview state.
+        workflowModel!!.workflowState.observe(this, androidx.lifecycle.Observer{ workflowState ->
+            if (workflowState == null ) {
+                return@Observer
+            }
 
-        val barcodeScanner = BarcodeScanning.getClient(options)
+            currentWorkflowState = workflowState
 
-        val task = barcodeScanner.process(inputImage)
-        task.addOnSuccessListener { barCodesList ->
-            for (barcodeObject in barCodesList) {
-                val barcodeValue  = barcodeObject.rawValue
-                Log.d("Barcode", "The code "+ barcodeValue.toString())
-                mlBarcodeCallback(barcodeValue)
+            when (workflowState) {
+                WorkflowState.DETECTING -> {
+                    startCameraPreview()
+                }
+                WorkflowState.CONFIRMING -> {
+                    startCameraPreview()
+                }
+                WorkflowState.SEARCHING -> {
+                    stopCameraPreview()
+                }
+                WorkflowState.DETECTED, WorkflowState.SEARCHED -> {
+                    stopCameraPreview()
+                }
+            }
+
+        })
+
+        workflowModel?.detectedBarcode?.observe(this, { barcode ->
+            if (barcode != null) {
+                mlBarcodeCallback(barcode.rawValue )
+                Log.i("inside","barcode "+barcode.rawValue)
+
+            }
+        })
+    }
+
+
+    private fun startCameraPreview() {
+        val workflowModel = this.workflowModel ?: return
+        val cameraSource = this.cameraSource ?: return
+        if (!workflowModel.isCameraLive) {
+            try {
+                workflowModel.markCameraLive()
+                preview?.start(cameraSource)
+            } catch (e: IOException) {
+                Log.e("ContinuousScanActivity", "Failed to start camera preview!", e)
+                cameraSource.release()
+                this.cameraSource = null
             }
         }
+    }
 
+    private fun stopCameraPreview() {
+        val workflowModel = this.workflowModel ?: return
+        if (workflowModel.isCameraLive) {
+            workflowModel.markCameraFrozen()
+//            flashButton?.isSelected = false
+            preview?.stop()
+        }
     }
 
     private fun mlBarcodeCallback(barcodeValue:String?){
@@ -590,19 +614,30 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
+        Log.i("inside","onstart")
         super.onStart()
-        if(useMLScanner) {
-            fotoapparat.start()
-        }
         EventBus.getDefault().register(this)
     }
 
     override fun onResume() {
+        Log.i("inside","onresume")
         super.onResume()
         binding.bottomNavigation.bottomNavigation.selectNavigationItem(R.id.scan_bottom_nav)
         if(!useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
             binding.barcodeScanner.resume()
         }
+        else if(useMLScanner && quickViewBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+            workflowModel?.markCameraFrozen()
+            currentWorkflowState = WorkflowState.NOT_STARTED
+            cameraSource?.setFrameProcessor(BarcodeProcessor(graphicOverlay!!, workflowModel!!))
+            workflowModel?.setWorkflowState(WorkflowState.DETECTING)
+        }
+    }
+
+    override fun onPostResume() {
+        super.onPostResume()
+        // Back to working state after the bottom sheet is dismissed.
+        ViewModelProviders.of(this).get(WorkflowModel::class.java).setWorkflowState(WorkflowState.DETECTING)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -614,19 +649,25 @@ class ContinuousScanActivity : AppCompatActivity() {
         if(!useMLScanner ) {
             binding.barcodeScanner.pause()
         }
+        else{
+            Log.i("inside","onPause")
+            currentWorkflowState = WorkflowState.NOT_STARTED
+            stopCameraPreview()
+        }
         super.onPause()
     }
 
     override fun onStop() {
         EventBus.getDefault().unregister(this)
-        if(useMLScanner) {
-            fotoapparat.stop()
-        }
         super.onStop()
     }
 
     override fun onDestroy() {
+        Log.i("inside","onDestroy")
         summaryProductPresenter?.dispose()
+
+        cameraSource?.release()
+        cameraSource = null
 
         // Dispose all RxJava disposable
         hintBarcodeDisp?.dispose()
@@ -705,23 +746,17 @@ class ContinuousScanActivity : AppCompatActivity() {
             binding.barcodeScanner.barcodeView.cameraSettings = settings
             cameraPref.edit { putInt(SETTING_STATE, cameraState) }
             binding.barcodeScanner.resume()
-        } else{
-            fotoapparat.switchTo(
-                    if ()
-                    lensPosition = front()
-            )
-
-
         }
+
     }
 
     private fun toggleFlash() {
         cameraPref.edit {
             if (flashActive) {
                 if(useMLScanner){
-                    fotoapparat.updateConfiguration(
-                            UpdateConfiguration( flashMode= off() )
-                    )
+//                    fotoapparat.updateConfiguration(
+//                            UpdateConfiguration( flashMode= off() )
+//                    )
                 }
                 else {
                     binding.barcodeScanner.setTorchOff()
@@ -731,9 +766,9 @@ class ContinuousScanActivity : AppCompatActivity() {
                 putBoolean(SETTING_FLASH, false)
             } else {
                 if(useMLScanner){
-                    fotoapparat.updateConfiguration(
-                            UpdateConfiguration( flashMode= torch() )
-                    )
+//                    fotoapparat.updateConfiguration(
+//                            UpdateConfiguration( flashMode= torch() )
+//                    )
                 }
                 else {
                     binding.barcodeScanner.setTorchOn()

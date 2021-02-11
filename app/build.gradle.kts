@@ -71,8 +71,8 @@ dependencies {
 
     // ML Kit barcode Scanner
     implementation ("com.google.mlkit:barcode-scanning:16.1.1")
-    // fotoapparat library
-    implementation ("io.fotoapparat:fotoapparat:2.7.0")
+    // ___ library
+    implementation ("android.arch.lifecycle:extensions:1.1.1")
 
 
     kapt("com.google.dagger:dagger-compiler:2.30.1")
