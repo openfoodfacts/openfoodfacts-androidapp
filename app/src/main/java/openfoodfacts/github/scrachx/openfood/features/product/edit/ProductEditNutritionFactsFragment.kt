@@ -15,8 +15,6 @@
  */
 package openfoodfacts.github.scrachx.openfood.features.product.edit
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -32,10 +30,12 @@ import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.core.widget.doAfterTextChanged
 import com.afollestad.materialdialogs.MaterialDialog
+import com.google.android.material.textfield.TextInputLayout
 import com.squareup.picasso.Callback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import openfoodfacts.github.scrachx.openfood.R
+import openfoodfacts.github.scrachx.openfood.app.AnalyticsService
 import openfoodfacts.github.scrachx.openfood.databinding.FragmentAddProductNutritionFactsBinding
 import openfoodfacts.github.scrachx.openfood.features.shared.views.CustomValidatingEditTextView
 import openfoodfacts.github.scrachx.openfood.images.ProductImage
@@ -71,7 +71,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
     private var _binding: FragmentAddProductNutritionFactsBinding? = null
     private val binding get() = _binding!!
     private var photoReceiverHandler: PhotoReceiverHandler? = null
-    private var activity: Activity? = null
     private var photoFile: File? = null
     private var productCode: String? = null
     private var mOfflineSavedProduct: OfflineSavedProduct? = null
@@ -87,7 +86,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentAddProductNutritionFactsBinding.inflate(inflater)
+        _binding = FragmentAddProductNutritionFactsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -146,8 +145,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 binding.radioGroup.jumpDrawablesToCurrentState()
             }
         } else {
-            Toast.makeText(activity, R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show()
-            requireActivity().finish()
+            closeScreenWithAlert()
         }
         binding.alcohol.imeOptions = EditorInfo.IME_ACTION_DONE
         binding.energyKcal.requestFocus()
@@ -156,8 +154,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             it.addValidListener()
             it.checkValue()
         }
-        if (getActivity() is ProductEditActivity && (getActivity() as ProductEditActivity?)!!.initialValues != null) {
-            addAllFieldsToMap((getActivity() as ProductEditActivity?)!!.initialValues!!)
+        (requireActivity() as? ProductEditActivity)?.initialValues?.let { values ->
+            addAllFieldsToMap(values)
         }
     }
 
@@ -377,11 +375,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
 
     private fun getPositionInServingUnitArray(unit: String) =
             SERVING_UNITS.indexOfFirst { it.equals(unit, ignoreCase = true) }.coerceAtLeast(0)
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        activity = getActivity()
-    }
 
     private fun addNutritionFactsImage() {
         val path = imagePath
@@ -646,16 +639,18 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         }
 
     private fun displayAddNutrientDialog() {
-        val origNutrients = resources.getStringArray(R.array.nutrients_array).toMutableList()
-        usedNutrientsIndexes.forEach { origNutrients.removeAt(it) }
-        origNutrients.sortWith(Collator.getInstance(Locale.getDefault()))
+        val nutrients = resources.getStringArray(R.array.nutrients_array)
+                .mapIndexedNotNull { index, nutrient ->
+                    if (usedNutrientsIndexes.contains(index)) null else nutrient
+                }
+                .sortedWith(Collator.getInstance(Locale.getDefault()))
 
         MaterialDialog.Builder(requireActivity())
                 .title(R.string.choose_nutrient)
-                .items(origNutrients)
+                .items(nutrients)
                 .itemsCallback { _, _, _, text ->
-                    usedNutrientsIndexes.add(origNutrients.indexOf(text))
-                    val textView = addNutrientRow(origNutrients.indexOf(text), text.toString())
+                    usedNutrientsIndexes.add(nutrients.indexOf(text))
+                    val textView = addNutrientRow(nutrients.indexOf(text), text.toString())
                     allEditViews.add(textView)
                     textView.addValidListener()
                 }
@@ -682,7 +677,8 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         val nutrientCompleteName = PARAMS_OTHER_NUTRIENTS[index]
         val rowView = layoutInflater.inflate(R.layout.nutrition_facts_table_row, binding.tableLayout, false) as TableRow
         val editText: CustomValidatingEditTextView = rowView.findViewById(R.id.value)
-        editText.hint = hint
+        val til: TextInputLayout = rowView.findViewById(R.id.value_til)
+        til.hint = hint
         val nutrientShortName = getShortName(nutrientCompleteName)
         editText.entryName = nutrientShortName
         editText.keyListener = keyListener
@@ -692,7 +688,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
         editText.imeOptions = EditorInfo.IME_ACTION_DONE
         editText.requestFocus()
         if (preFillValues) {
-            value?.takeIf { it != "0" }?.let { editText.setText(value) }
+            editText.setText(value)
         }
 
         // Setup unit spinner
@@ -708,18 +704,29 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 unitSpinner.adapter = arrayAdapter
                 starchEditText = editText
             }
-            Nutriments.VITAMIN_A -> {
+            Nutriments.VITAMIN_A, Nutriments.VITAMIN_D, Nutriments.VITAMIN_E -> {
                 val arrayAdapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_item, requireActivity().resources.getStringArray(R.array.weight_all_units))
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 unitSpinner.adapter = arrayAdapter
             }
         }
-        if (preFillValues) {
-            unitSpinner.setSelection(unitSelectedIndex)
-            modSpinner.setSelection(modSelectedIndex)
+        try {
+            if (preFillValues) {
+                unitSpinner.setSelection(unitSelectedIndex)
+                modSpinner.setSelection(modSelectedIndex)
+            }
+        } catch (t: Throwable) {
+            AnalyticsService.record(Throwable("Can't find weight units for nutriment: $nutrientShortName", t))
+            closeScreenWithAlert()
         }
+
         binding.tableLayout.addView(rowView)
         return editText
+    }
+
+    private fun closeScreenWithAlert() {
+        Toast.makeText(requireContext(), R.string.error_adding_nutrition_facts, Toast.LENGTH_SHORT).show()
+        requireActivity().finish()
     }
 
     /**
