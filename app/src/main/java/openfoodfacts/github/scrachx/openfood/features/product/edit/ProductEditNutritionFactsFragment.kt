@@ -126,7 +126,6 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             (activity as? ProductEditActivity)?.addToPhotoMap(image, 2)
             hideImageProgress(false, "")
         }
-        binding.btnAddANutrient.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_box_black_18dp, 0, 0, 0)
         val bundle = arguments
         lastEditText = binding.alcohol
         if (bundle != null) {

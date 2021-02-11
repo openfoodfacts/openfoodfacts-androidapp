@@ -20,6 +20,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsSession
 import openfoodfacts.github.scrachx.openfood.R
@@ -48,10 +49,17 @@ object CustomTabsHelper {
     fun getCustomTabsIntent(context: Context, session: CustomTabsSession?) =
             // TODO use mayLaunchUrl to improve performance like in MainActivity or LoginActivity
             CustomTabsIntent.Builder(session)
-                    .setShowTitle(true) // to override if not default theme value
-                    //.setToolbarColor(resources.getColor(R.color.md_light_appbar))
+                    .setShowTitle(true)
+                    .setColorScheme(getMode())
                     .setCloseButtonIcon(context.getBitmapFromDrawable(R.drawable.ic_arrow_back_black)!!)
                     .build()
+
+    private fun getMode() =
+            when (AppCompatDelegate.getDefaultNightMode()) {
+                AppCompatDelegate.MODE_NIGHT_NO -> CustomTabsIntent.COLOR_SCHEME_LIGHT
+                AppCompatDelegate.MODE_NIGHT_YES -> CustomTabsIntent.COLOR_SCHEME_DARK
+                else -> CustomTabsIntent.COLOR_SCHEME_SYSTEM
+            }
 
     /**
      * Goes through all apps that handle VIEW intents and have a warm up service. Picks
