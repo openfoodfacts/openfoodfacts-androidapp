@@ -1,4 +1,4 @@
-Nämä ovat Play Storen kuvakaappausten yläpuolella näkyvät iskulauseet. Pidä ne lyhyinä ja houkuttelevina.
+Nuo ovat Play kaupassa näkyvien kuvakaappausten iskulauseita. Pidä ne lyhyenä ja puoleensavetävänä.
 https://play.google.com/store/apps/details?id=org.openfoodfacts.scanner&hl=fi
 
 =====================
@@ -9,7 +9,7 @@ Lue tuotteita
 
 Saa Nutriscore
 
-Koko lukuhistoriasi, täysin yksityinen ja vietävissä
+Täysi lukuhistoria, täysin yksityinen ja vietävä
 
 Mene pidemmälle Wikipedian kanssa
 
@@ -17,17 +17,17 @@ Aseta allergeenivaroituksia
 
 Ravinto, yksinkertaistettuna
 
-Allergeenivaroitus
+Allergeenihälytys
 
-Saa vaihtoehtoja suosikkiruoillesi
+Saa vaihtoehtoja lempiruoillesi
 
-Ryhdy ruoan läpinäkyvyyden toimijaksi
+Vaikuta elintarvikkeiden läpinäkyvyyteen
 
 Ruoan Wikipedia
 
 Kosmetiikan Wikipedia
 
-Lemmikkieläinten ruokien Wikipedia
+Lemmikkien elintarvikkeiden Wikipedia
 
 Tuotteiden Wikipedia
 
@@ -41,32 +41,32 @@ Ravintotiedot
 V3-kuvakaappaukset
 =====================
 
-Valitse sinulle ja 🌍 planeetalle hyvät tuotteet!
+Valitse tuotteita jotka ovat hyväksi sinulle ja planeetalle!
 
-✔ Erittäin nopea viivakoodin lukeminen
+Ultranopea viivakoodinlukija
 
-✔ Maailmanlaajuinen supermarket taskussasi
+✔ Maailmanlaajuinen ruokakauppa taskussasi
 
-Ravinnollinen laatu
+Ravintosisältö
 
-Ultrajalostetut ruoat
+Ultraprosessoidut ruoat
 
-Hiilivaikutus
+Hiilijalanjälki
 
 Vertaa helposti ennen ostamista
 
 Luo ostoslistoja, saantiluetteloita…
 
-Löydä ja vertaa yli 750 000 tuotetta.
+Yli 750 000 tuotetta vertailtavana ja tutkittavana.
 
 
 
-Rajoittamaton ja täysin yksityinen lukuhistoria
+Rajaton ja täysin yksityinen skannaushistoria
 
-Pyyhkäise saadaksesi vieläkin enemmän lisätietoja
+Pyyhkäise saadaksesi vielä enemmän lisätietoja
 
-Aseta allergeenivaroituksia
+Aseta allergeenihälytyksiä
 
-Liity maailmanlaajuiseen liikkeesemme elintarvikkeiden avoimuudelle
+Liity maailmanlaajuiseen liikkeesemme elintarvikkeiden avoimuuden puolesta
 
 world-fi.openfoodfacts.org/contribute

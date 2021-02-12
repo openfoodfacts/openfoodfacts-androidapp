@@ -7,12 +7,12 @@ The app allows to view the 800.000 products (including 175.000 in the US) alread
 
 To discover the volunteer-run Open Food Facts project, visit https://world.openfoodfacts.org
 
-Pilih produk yang baik untuk Anda
+▶ Choose the products that are good for you
 - The Nutri-Score grade, from "A" to "E" >> Nutritional quality
 - The NOVA group, from "1" to "4" >> Find the Ultra-Processed food
 - You can easily compare as many products as you want, side by side by simply scanning them. 
 
-Dan baik untuk bumi!
+▶ And good for the planet!
 - The carbon impact of your food
 - Get a sense of how much of your daily carbon quota you're using for food
 - Based on the footprints computed for France by ADEME.
@@ -21,9 +21,9 @@ Dan baik untuk bumi!
 
 
 ▶ Contribute to Food Transparency
-Open Food Facts adalah database produk makanan yang dibuat semua orang untuk semua.
-Anda dapat menggunakan untuk membuat pilihan makanan lebih baik, semua orang bisa menggunakan kembali untuk tujuan apapun.
-Open Food Facts adalah proyek nirlaba dikembangkan oleh ratusan relawan dari suruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
+Open food facts adalah basis data produk makanan yang dibuat oleh semua orang, untuk siapapun.
+Anda bisa menggunakannya untuk membuat pilihan makanan yang lebih baik, dan karena itu merupakan data terbuka, siapapun bisa menggunakannya kembali untuk kepentingan apapun.
+Open Food Facts adalah sebuah proyek nirlaba yang dikembangkan oleh ribuan relawan dari seluruh dunia. Ada banyak proyek menyenangkan yang bisa diikuti dengan berbagai cara.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists

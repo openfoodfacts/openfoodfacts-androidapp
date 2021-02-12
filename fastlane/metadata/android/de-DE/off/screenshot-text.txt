@@ -7,7 +7,7 @@ V2 Bildschirmfotos
 
 Produkte erfassen
 
-Nährwertangaben
+„Nutri-Score” (franz. Nahrungsmittelampel) abrufen
 
 Ihr vollständiger Verlauf eingelesener Produkte, vollständig privat und exportierbar
 
@@ -35,7 +35,7 @@ Inhaltsstoffe
 
 Leistungsfähig
 
-Nahrungsqualität
+Nährwertangaben
 
 ════════════════
 V3 Bildschirmfotos

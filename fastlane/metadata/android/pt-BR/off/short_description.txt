@@ -1,1 +1,1 @@
-A base de dados de produtos aberta
+Digitalize produtos alimentares para descodificar o rótulo: ingredientes, aditivos e informação nutricional

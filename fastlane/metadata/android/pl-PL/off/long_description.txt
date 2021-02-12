@@ -1,11 +1,11 @@
-Open Food Facts jest otwartą bazą danych o produktach spożywczych, ze składnikami, alergenami, wartościami odżywczymi i wszystkimi informacjami które możemy znaleźć na etykietach produktów.
+Skanuj produkty lub ich kody kreskowe, by uzyskać dane o składzie, dodatkach i wartościach odżywczych.
 
 ▶ Znajdź i porównaj ponad 800 000 produktów
 
 Aplikacja pozwala przeglądać ponad 800.000 produktów (w tym 175.000 w USA) już znajdujących się w bazie wolnego i otwartego Open Food Facts jak i również dodać zdjęcia oraz dane dla nowych produktów.
 
 
-Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z całego świata.
+Aby zapoznać się z projektem Open Food Facts, który jest tworzony przez wolontariuszy, odwiedź https://world.openfoodfacts.org
 
 ▶ Wybierz produkty, które są dla Ciebie dobre
 - Klasa Nutri-Score, od "A" do "E" >> Jakość wartości odżywczej
@@ -20,20 +20,20 @@ Open Food Facts to projekt non-profit tworzony przez tysiące wolontariuszy z ca
 - Aby wyświetlić wpływ CO₂, dany produkt musi mieć kompletną listę składników z podaniem procentowej zawartości mięsa oraz ryb oraz wielkość porcji
 
 
-***Przyczyń się do przejrzystości Pet Food***
-- Open Products Facts to baza danych produktów tworzona przez wszystkich dla każdego.
-Ponieważ to są otwarte dane, możesz je wykorzystać w dowolnym celu.
-- Open Products Facts to projekt non-profit opracowany przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projektków do których możesz dołączyć.
-- Możesz zacząć wnosić swój wkład już dziś, dodając swój pierwszy produkt.
+▶ Przyczyń się do przejrzystości Żywność
+Open Food Facts to baza danych tworzona przez każdego dla wszystkich.
+Możesz z niej korzystać aby wybierać lepsze jedzenie. Ponieważ to są otwarte dane, możesz je wykorzystać w dowolnym celu.
+Open Food Facts to projekt nie dochodowy tworzony przez tysiące wolontariuszy z całego świata. Jest dużo ciekawych projectków do których możesz dołączyć.
+- Możesz zaangażować się już dzisiaj, dodając produkt z twojej lodówki.
 
 ▶ Tworzenie list
 Twórz listy zakupów, śledź to, co zjadłeś oraz łatwo udostępniaj i eksportuj swoje listy.
 
-***Poznaj fakty***
-Open Beauty Facts pomagają zrozumieć drobny tekst na etykietach. Będziesz mógł również znaleźć (zgodnie ze wskazówkami umieszczonymi na produktach):
+▶ Poznaj prawdę
+Open Food Facts pomaga zrozumieć drobny tekst na etykietach. Będziesz mógł znaleźć:
 - emisję dwutlenku węgla (CO2) i typ opakowania (oraz instrukcje dotyczące recycklingu),
 - Wynik Nutriscore (ocena wartośći odżywczej), składniki odżywcze, zawartość tłuszczu, nasycone kwasy tłuszczowe, węglowodany, cukry, błonnik, białko i sól oraz sód.
-- marki, alergeny, etykiety (organiczne, wegańskie...)
+- marki, alergeny, etykiety (bio, bezglutenowe, wegańskie, wegetariańskie, halal, koszerne ...), informacje o identyfikowalności (kody opakowań, pochodzenie składników)
 - Na winach i piwach znajdziesz zawartość alkoholu.
 
 
@@ -54,23 +54,23 @@ Skanuj z prędkością światła (nawet jeśli jesteś w samolocie, łodzi podwo
 - W celu ograniczenia zużycia danych, jak i lepszego zarządzania energią aplikacja ładuje tylko absolutnie niezbędne elementy.
 
 ▶ Twoje jedzenie, twoje dane
-- Twoje dane należą do Ciebie i nigdy nie będą przesyłane online
+Twoje dany nigdy nie są wysyłane online
 Możesz korzystać anonimowo z aplikacji
 Możesz eksportować historię skanowania
 
 ▶ Zdefiniuj ostrzeżenia dotyczące produktów mogących powodować alergie
 - Alergia na mleko, gluten, jaja, soja, orzechy, ryby, seler, gorczyca, dwutlenek siarki i siarczyny, orzeszki ziemne, nasiona sezamu, skorupiaki, mięczaki lub łubin?
-- Open Miniature Food Facts - Największa otwarta baza danych miniaturowych produktów spożywczych
+- Zwiększ wydajność swoich zakupów przeprowadzając wstępną kontrolę produktów spożywczych przy pomocy Open Food Facts.
 - Bądź ostrożny, informacje o produkcie mogą, nie były w 100% dokładne, natomiast sam proces rozpoznawania może nie być w 100% skuteczny. Dlatego zawsze sprawdzaj podwójnie, porównując dane w aplikacji z informacją na opakowaniu.
 
 
 ▶ Przywitaj się i dołącz do nas!
 
 
-Open Products Facts jest również dostępny w Internecie pod adresem https://world.openproductsfacts.org
+Open Food Facts jest także dostępne na stronie: https://world.openfoodfacts.org
 
 
 Pytania, opinie: contact@openfoodfacts.org
 
 
-Open Beauty Facts to baza produktów kosmetycznych tworzona przez każdego dla wszystkich.
+Dla kosmetyków możesz zainstalować Open Beauty Facts, dla jedzenia dla zwierząt, Open Pet Food Facts, a dla wszystkich produktów razem, Open Products Facts.

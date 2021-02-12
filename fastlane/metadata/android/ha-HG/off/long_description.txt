@@ -21,20 +21,20 @@ To discover the volunteer-run Open Food Facts project, visit https://world.openf
 
 
 ▶ Contribute to Food Transparency
-- Bude Abubuwan Abinci shine tsarin samar da abinci wanda kowa yake yi, don kowa.
-- Kuna iya amfani da shi don yin zaɓin abinci mafi kyau, kuma kamar yadda yake buɗe bayanan, kowa na iya sake amfani dashi don kowane dalili.
-- Batun Abinci na Abinci wani shiri ne na riba wanda dubunnan masu ba da agaji suka kirkira daga sassan duniya. Muna da ayyuka masu ban sha'awa da yawa waɗanda zaku iya ba da gudummawarsu ta hanyoyi daban-daban.
+- Open Food Facts is a food products database made by everyone, for everyone.
+-zaka iya amfani dashi wajen inganta zaben abinci, saboda budedden ma'aji ne, kowa zai iya amfani dashi domin kowani bukata.
+-Budedden Abinci abu ne wanda yake bana kudi ba wanda dubunan mutane suka shirya shi kyauta a duniya baki daya. Munada da yawan abubuwan burgewa wanda zaka iya bada gudumuwa ga kowa ta hanyoyi da yawa.
 - You can start contributing today by adding a product from your fridge.
 
 ▶ Create lists
 Create shopping lists, track what you've eaten and easily share and export your lists.
 
 ▶ Get the Facts
-- Bude abun Abinci dan zai taimaka muku wajen hankali da ingantaccen bugawa akan tasirin samfuran. Za ku iya samun:
-- ƙafafun carbon (ƙirar CO2) da marufi (tare da umarnin sake yin amfani da su),
-- Nutriscore (ci abinci mai gina jiki), abinci mai gina jiki,/ mai sa jiki, carbohydrates, sugars, fiber, furotin da gishiri da kuma sodium.
-- nau'ikan kaya, kayan ƙira, abubuwan alamomi (bio, gluten free, vegan, mai cin ganyayyaki, halal, kosher ...), bayanan ganowa (lambobin shirya kayan, asalin abubuwan da ake amfani da su)
-- A kan ruwan inabi da giya, zaku sami abun ciki na barasa.
+-Open Food Facts yana taimako ne wajen gano kyauwun abu. You will be able to find:
+-kabon takun kafa (CO2 turiri) da kuma rafe shi (da kuma sake amfani dashi),
+-Nutriscore (abun sinadarin), abun gina jiki, abunda ke kunshe da maiko / maiko, sunadarin sa jiki, sinadarin kabuhaidiret, sikari, tsimi, abun karin jini da kuma gishiri.
+-nau'uka, alegens, adadi (tarihi, rashin gulutan, me cin nama, me cin ganyayyaki, halali, koshar...), abun da ake iya ganowa na labarai ( kud din da aka sa mai, asalin kayan hade-haden)
+-Daga tsimi da kuma giya, zaka samu sinadaren jiya.
 
 
 ▶ Based on Science, helping back Science!
@@ -67,10 +67,11 @@ Scan at the speed of light (even if you’re on a plane, submarine or supermarke
 ▶ Say hello and/or join us!
 
 
-Bude Abinda Abinci ke ciki kuma ana samunsa ta yanar gizo akan https://world.openfoodfacts.org
+Open Food Facts yana samuwa a yanar gizo a http://world.openfoodfacts.org
 
 
-Tambayoyi, amsawa: kakira@openfoodfacts.org
+Tambayoyi, amsoshi : 
+contact@openfoodfacts.org
 
 
-Don kayan kwaskwarima, zaku iya shigar da Batun Kyawawan Kwarewa, don abincin dabbobi, Buɗe Abincin Abinci, da na sauran samfurori, Bude samfuran Fasa.
+Domin kayan kwalliya, zaka iya sa Open Beauty Facts, domin abincin dabbobi, Open Pet Facts, da kuma sauran abubuwa, Open Products Facts.

@@ -1,11 +1,11 @@
-Open Food Facts è un database di prodotti alimentari con ingredienti, allergeni, dati nutrizionali e tutti i frammenti d'informazione che si possono trovare sulle etichette dei prodotti.
+Fai una scansione dei prodotti alimentari o dei codici a barre per ottenere dati su ingredienti, additivi e valori nutrizionali.
 
 ▶ Trova e confronta più di 800.000 prodotti
 
-L'app consente di vedere gli oltre 600 alimenti per animali già contenuti nel database libero e aperto di Open Pet Food Facts e di aggiungere foto e dati per i prodotti mancanti.
+L'app consente di vedere gli 800.000 prodotti (compresi i 175.000 negli Stati Uniti) già contenuti nel database libero e aperto di Open Food Facts, nonché di aggiungere foto e dati per i nuovi prodotti.
 
 
-Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfacts.org
+Per scoprire il progetto volontario Open Food Facts, visita https://world.openfoodfacts.org
 
 ▶ Scegli i prodotti che ti fanno bene
 -Il grado del punteggio nutrizionale, da "A" a "E" >> Qualità nutrizionale
@@ -20,20 +20,20 @@ Per scoprire il progetto Open Pet Food Facts, visitare https://it.openpetfoodfac
 - Per visualizzare l'impatto di carbonio, un prodotto deve avere una lista completa degli ingredienti con la % di carne o pesce e una quantità
 
 
-*** Contribuire alla trasparenza dei prodotti ***
-- Open Products Facts è un database di prodotti fatto da tutti per tutti.
-- Puoi usarlo per fare migliori scelte e dato che sono dati aperti, chiunque può riutilizzarli per ogni scopo.
-- Open Products Facts è un progetto no-profit sviluppato da migliaia di volontari da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi.
-- Puoi iniziare a contribuire oggi aggiungendo il tuo primo prodotto.
+▶ Contribuisci alla trasparenza alimentare
+- Open Food Facts è un database di prodotti alimentari realizzato da tutti, per tutti.
+- Puoi usarlo per fare scelte alimentari migliori e, poiché si tratta di dati liberi, chiunque può riutilizzarlo per qualsiasi scopo.
+- Open Food Facts è un progetto senza scopo di lucro sviluppato da migliaia di volontari provenienti da tutto il mondo. Abbiamo molti progetti interessanti a cui puoi contribuire in molti modi diversi.
+- Puoi iniziare a contribuire oggi aggiungendo un prodotto dal tuo frigo.
 
 ▶ Creare liste
 Crea liste della spesa, registra ciò che hai mangiato e condividi ed esporta facilmente le tue liste.
 
 ▶ Ottieni i fatti
-- Open Products Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai anche in grado di trovare (secondo le indicazioni presenti sui prodotti):
+- Open Food Facts ti aiuta a dare un senso alle piccole scritte sulle etichette dei prodotti. Sarai in grado di trovare:
 - l'impronta di carbonio (emissioni di CO2) e l'imballaggio (comprese le istruzioni per il riciclo),
 - il Nutriscore (punteggio nutrizionale), i nutrienti, il contenuto in grassi, gli acidi grassi saturi, i carboidrati, gli zuccheri, le fibre, le proteine, il sale e il sodio.
-- marche, allergeni, etichette (biologico, vegano...)
+- i marchi, gli allergeni, le etichette (bio, senza glutine, vegano, vegetariano, halal, kosher ...), informazioni sulla tracciabilità (codici di imballaggio, origine degli ingredienti)
 - Su vini e birre troverai la gradazione alcolica.
 
 
@@ -51,26 +51,26 @@ Scansione alla velocità della luce (anche se sei su un aereo, sottomarino o sup
 
 - L'intero pianeta, nella tua tasca!
 - Puoi aggiungere nuovi prodotti, anche senza una connessione internet disponibile sul momento.
-- L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria
+- L'app carica solo il minimo indispensabile per ridurre i dati e il consumo della batteria.
 
-*** Il tuo cibo per animali, i tuoi dati ***
+▶ Il tuo cibo, i tuoi dati
 - I tuoi dati personali sono tuoi e non vengono mai inviati online
 - Puoi usare l'app in modo anonimo
 - Puoi esportare la cronologia di scansione
 
 ▶ Imposta avvisi sugli allergeni nei prodotti
 - Latte, glutine, uova, soia, noci, pesce, sedano, senape, anidride solforosa e solfiti, arachidi, semi di sesamo, crostacei, molluschi o allergia al lupino?
-- Open Miniature Facts - Il più grande database aperto di miniature di prodotti alimentari
+- Accelera i tuoi acquisti facendo una prima scansione del tuo cibo con Open Food Facts.
 - Fai attenzione che le informazioni ed il rilevamento potrebbero non essere accurati al 100%. Quindi controlla sempre da solo, con la confezione.
 
 
 ▶ Saluta e/o unisciti a noi!
 
 
-Open Produts Facts è anche disponibile sul web ad https://world.openproductsfacts.org
+Open Food Facts è anche disponibile sul web all'indirizzo https://world-it.openfoodfacts.org/
 
 
 Per domande e feedback: contact@openfoodfacts.org
 
 
-Per il cibo è possibile installare Open Food Facts, per alimenti per animali domestici Open Pet Food Facts e per tutti gli altri prodotti Open Products Facts.
+Per i cosmetici è possibile installare Open Beauty Facts, per alimenti per animali domestici Open Pet Food Facts e per tutti gli altri prodotti Open Products Facts.
