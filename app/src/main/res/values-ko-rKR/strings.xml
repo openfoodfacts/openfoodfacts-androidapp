@@ -167,7 +167,7 @@
     <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">성분 목록 :</string>
     <string name="Donate">기부</string>
-    <string name="Donation">Open Products Facts에 기부하려면 여기를 클릭하십시오.</string>
+    <string name="Donation">Open Food Facts에 기부하려면 여기를 클릭하십시오.</string>
     <string name="txtSubstances">알레르기 또는 과민 반응을 일으키는 물질 또는 제품 :</string>
     <string name="txtAdditives">첨가물:</string>
     <string name="txtTraces">흔적 :</string>
@@ -195,7 +195,7 @@
     <string name="uploadLater">네트워크에 연결되면 이미지가 업로드됩니다</string>
     <string name="txtInfoLoginOk">사용자 정보 저장됨</string>
     <string name="txtInfoLoginNo">유저 정보가 저장되지 않았습니다</string>
-    <string name="txtDialogsContent">스캔한 제품이 Open Products Facts에 아직 존재하지 않습니다. 제품을 추가하십시오.</string>
+    <string name="txtDialogsContent">스캔한 제품이 Open Food Facts에 아직 존재하지 않습니다. 제품을 추가하십시오.</string>
     <string name="txtYes">예</string>
     <string name="txtNo">아니요</string>
     <string name="hintBrand">브랜드</string>
@@ -209,7 +209,7 @@
     <string name="txtBarcodeRequire">바코드가 필요함</string>
     <string name="txtOk">확인</string>
     <string name="txtBarcodeNotValid">바코드가 유효하지 않습니다.</string>
-    <string name="msg_share">Open Products Facts에서 이 제품을 검색해보세요 : </string>
+    <string name="msg_share">Open Food Facts에서 이 제품을 검색해보세요 : </string>
     <string name="create_account">회원 가입</string>
     <string name="home_drawer">홈</string>
     <string name="install">설치</string>
@@ -233,9 +233,9 @@
     <string name="cancel_button">취소</string>
     <string name="login_button">로그인</string>
     <string name="create_account_button">계정 만들기</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">귀하의 알레르기 정보는 Open Products Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">귀하의 알레르기 정보는 Open Food Facts 서버로 전송되지 않습니다. 또한 제품 데이터가 정확하지 않을 수 있으며 감지가 100 % 정확하지 않을 수 있으므로 조심하여 직접 확인하십시오! </string>
     <string name="title_info_dialog">이용 방법</string>
-    <string name="text_offline_info_dialog">오프라인 상태에서도 제품을 스캔하여 나중에 Open Products Facts에 추가하십시오. 스캔한 제품이 여기에 나타나면 아래 버튼을 사용하여 추가할 수 있습니다.</string>
+    <string name="text_offline_info_dialog">오프라인 상태에서도 제품을 스캔하여 나중에 Open Food Facts에 추가하십시오. 스캔한 제품이 여기에 나타나면 아래 버튼을 사용하여 추가할 수 있습니다.</string>
     <string name="permission_camera">바코드를 스캔하고 사진을 찍으려면 카메라 사용 권한이 필요합니다.</string>
     <string name="no_camera_dialog_title">카메라를 찾을 수 없습니다</string>
     <string name="no_camera_dialog_content">기기에 카메라가 없습니다. 바코드를 스캔할 수 없습니다.</string>
@@ -311,7 +311,7 @@
     <string name="txt_no_matching_incomplete_products">미완성품은 없습니다! 신제품을 추가 하시겠어요?</string>
     <string name="txt_no_matching_contributor_products">이런, 이 기여자로부터의 상품이 없군요. 추가해 주실 수 있나요?</string>
     <string name="txt_no_matching_products">일치하는 제품을 찾지 못했습니다. \n 시도해 볼 수 있습니다 :</string>
-    <string name="txt_broaden_search">- 검색 범위를 넓힌후 \n 제품을 Open Products Facts에 추가하십시오</string>
+    <string name="txt_broaden_search">- 검색 범위를 넓힌후 \n 제품을 Open Food Facts에 추가하십시오</string>
     <string name="something_went_wrong">죄송합니다. 오류가 발생했습니다.</string>
     <string name="txt_try_again">다시 시도</string>
     <string name="nutrition_lactose">유당</string>
@@ -422,11 +422,11 @@
     <string name="dismiss">무시</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -513,7 +513,7 @@
     </plurals>
     <string name="product_not_complete">이 제품은 아직 완성되지 않았습니다. \n세부 정보를 추가 해주시겠어요?</string>
     <string name="addProductOffline">오프라인 상태 인 것 같습니다. 오프라인 모드를 사용하여 제품 %s 을 추가 하시겠습니까?</string>
-    <string name="product_not_found">스캔한 상품 %1$s가 Open Products Facts에 존재하지 않습니다. 추가하시겠습니까?</string>
+    <string name="product_not_found">스캔한 상품 %1$s가 Open Food Facts에 존재하지 않습니다. 추가하시겠습니까?</string>
     <string name="scan_sound">소리 스캔</string>
     <string name="trouble_scanning">스캔에 문제가 발생했습니까?</string>
     <string name="barcode_hint">스캔에 문제가 발생했습니까? 바코드를 입력하세요.</string>
@@ -521,7 +521,7 @@
     <string name="autofocus">자동 초점</string>
     <string name="initial_loading">초기 로딩</string>
     <string name="preferences">환경 설정</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">상품 불러오는 중… %s</string>
     <string name="image_not_defined_for_language">선택한 언어에 대한 이미지가 없습니다. 새로운 것을 추가 할 수 있습니다.</string>
     <string name="error_adding_ingredients">제품 성분을 추가하는 중에 문제가 발생했습니다.</string>
@@ -616,7 +616,7 @@
     <string name="contribution_by">기여</string>
     <string name="title_activity_product">타이틀</string>
     <string name="description_activity_product">설명</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">과다 노출에 대한 고위험</string>
     <string name="overexposure_moderate">과다 노출에 대한 중위험</string>
@@ -653,7 +653,7 @@
     <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">제품 분류 도움말</string>
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -770,16 +770,16 @@
     <string name="icon_categories">카테고리 아이콘</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">제품 전면 이미지</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts는 %1$s개 이상의 제품(및 기여할 제품)을 포함한 공개 데이터베이스입니다.</string>
+    <string name="txtHomeOnline">Open Food Facts는 %1$s개 이상의 제품(및 기여할 제품)을 포함한 공개 데이터베이스입니다.</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
 </resources>

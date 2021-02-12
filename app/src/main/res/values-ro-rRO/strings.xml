@@ -177,7 +177,7 @@
     <string name="txtEMB">Codul EMB:</string>
     <string name="txtIngredients">Ingrediente:</string>
     <string name="Donate">Donează</string>
-    <string name="Donation">Apăsă aici pentru a face o donație către Open Products Facts</string>
+    <string name="Donation">Apăsă aici pentru a face o donație către Open Food Facts</string>
     <string name="txtSubstances">Substanțe care provoacă alergii sau intoleranțe:</string>
     <string name="txtAdditives">Aditivi alimentari:</string>
     <string name="txtTraces">Urme de:</string>
@@ -205,7 +205,7 @@
     <string name="uploadLater">Imaginea va fi încărcată când va fi disponibilă o conexiune la internet</string>
     <string name="txtInfoLoginOk">Utilizator salvat</string>
     <string name="txtInfoLoginNo">Utilizatorul nu a fost salvat.</string>
-    <string name="txtDialogsContent">Produsul pe care l-ai sanat încă nu există în Open Products Facts. Te rog să îl adaugi tu.</string>
+    <string name="txtDialogsContent">Produsul pe care l-ai sanat încă nu există în Open Food Facts. Te rog să îl adaugi tu.</string>
     <string name="txtYes">Da</string>
     <string name="txtNo">Nu</string>
     <string name="hintBrand">Marca</string>
@@ -219,7 +219,7 @@
     <string name="txtBarcodeRequire">Codul de bare este obligatoriu</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Codul de bare este invalid.</string>
-    <string name="msg_share">Vizualizează acest produs în Open Products Facts :</string>
+    <string name="msg_share">Vizualizează acest produs în Open Food Facts :</string>
     <string name="create_account">Înregistrare</string>
     <string name="home_drawer">Pagina de start</string>
     <string name="install">Instalare</string>
@@ -243,9 +243,9 @@
     <string name="cancel_button">Anulare</string>
     <string name="login_button">Conectați-vă</string>
     <string name="create_account_button">Creează cont</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Products Facts. Totodată, fi atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% aorectă, așa că te rog să verifici și tu personal acele produse! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Informațiile despre alergiile tale nu vor fi trimise niciodată serverului Open Food Facts. Totodată, fi atent pentru că datele despre anumite produse pot fi incorecte, și detecția s-ar putea să nu fie 100% aorectă, așa că te rog să verifici și tu personal acele produse! </string>
     <string name="title_info_dialog">Cum funcționează?</string>
-    <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Products Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
+    <string name="text_offline_info_dialog">Scanează produsele chiar dacă ești deconectat și le poți adăuga mai târziu în baza de date Open Food Facts. Produsele scanate vor apărea aici și le vei putea trimite folosind butonul de mai jos.</string>
     <string name="permission_camera">Pentru a scana codul de bare și a fotografia produse sunt necesare drepturi de access la camera foto.</string>
     <string name="no_camera_dialog_title">Camera nu s-a putut deschide</string>
     <string name="no_camera_dialog_content">Aparatul tău nu este dotat cu cameră. Nu vei putea scana niciun cod de bare.</string>
@@ -321,7 +321,7 @@
     <string name="txt_no_matching_incomplete_products">Nu avem niciun produs incomplet! Adăugați un produs nou?</string>
     <string name="txt_no_matching_contributor_products">Din păcate, nu avem niciun produs de la acest colaborator, puteți adăuga unul?</string>
     <string name="txt_no_matching_products">Nu am găsit niciun produs similar.\nPuteți încerca:</string>
-    <string name="txt_broaden_search">- extinderea căutării tale \n- scanează-l și adaugă-l în Open Products Facts</string>
+    <string name="txt_broaden_search">- extinderea căutării tale \n- scanează-l și adaugă-l în Open Food Facts</string>
     <string name="something_went_wrong">Ne pare rău, ceva nu a funcționat corespunzător…</string>
     <string name="txt_try_again">Încercaţi din nou</string>
     <string name="nutrition_lactose">Lactoză</string>
@@ -432,11 +432,11 @@
     <string name="dismiss">Renunță</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -525,7 +525,7 @@
     </plurals>
     <string name="product_not_complete">Acest produs încă nu este complet.\nÎi poți adăuga tu câteva detalii?</string>
     <string name="addProductOffline">Pari a fi deconectat. Adaugi produsul %s folosind modul offline?</string>
-    <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Products Facts. Îl poți adăuga tu?</string>
+    <string name="product_not_found">Produsul %1$s pe care l-ai scanat nu există încă în Open Food Facts. Îl poți adăuga tu?</string>
     <string name="scan_sound">Scanează sunetul</string>
     <string name="trouble_scanning">Probleme cu scanarea?</string>
     <string name="barcode_hint">Probleme cu scanarea? Introduce manual codul de bare</string>
@@ -533,7 +533,7 @@
     <string name="autofocus">Autofocalizare</string>
     <string name="initial_loading">Încărcare inițială</string>
     <string name="preferences">Preferințe</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Se încarcă produse%s</string>
     <string name="image_not_defined_for_language">Nicio imagine pentru limba selectată. Poți adăuga tu una</string>
     <string name="error_adding_ingredients">Au apărut probleme în timp ce încercaţi să adăugaţi ingredientele produsului</string>
@@ -628,7 +628,7 @@
     <string name="contribution_by">Contribuiția [user.neme]</string>
     <string name="title_activity_product">Titlu</string>
     <string name="description_activity_product">descriere</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Risc crescut de supraexpunere</string>
     <string name="overexposure_moderate">Moderate risk of over exposure</string>
@@ -665,7 +665,7 @@
     <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Ajutați la catalogarea produselor</string>
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -782,16 +782,16 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">EMB code icon</string>
     <string name="product_front_image">Product front image</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Sign in or register</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
 </resources>

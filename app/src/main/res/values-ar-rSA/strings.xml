@@ -194,7 +194,7 @@
     <string name="txtEMB">رمز EMB:</string>
     <string name="txtIngredients">قائمة المكونات:</string>
     <string name="Donate">تبرع</string>
-    <string name="Donation">انقر هنا للتبرع لـ Open Products Facts</string>
+    <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
     <string name="txtSubstances">المواد أو المنتجات التي تسبب الحساسية أو عدم التحمل:</string>
     <string name="txtAdditives">الإضافات:</string>
     <string name="txtTraces">آثار:</string>
@@ -236,7 +236,7 @@
     <string name="txtBarcodeRequire">الرمز الشريطي مطلوب</string>
     <string name="txtOk">موافق</string>
     <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
-    <string name="msg_share">انظر إلى هذا المنتج على Open Products Facts :</string>
+    <string name="msg_share">انظر إلى هذا المنتج على Open Food Facts :</string>
     <string name="create_account">تسجيل الدخول</string>
     <string name="home_drawer">الصفحة الرئيسية</string>
     <string name="install">تثبيت</string>
@@ -260,9 +260,9 @@
     <string name="cancel_button">إلغاء</string>
     <string name="login_button">تسجيل الدخول</string>
     <string name="create_account_button">إنشاء حساب</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلوماتك الشخصية إلى خادم Open Products Facts. أيضاً كن حذراً بأن بيانات المنتج قد تكون غير دقيقة، و الكشف قد لا يكون دقيقاً بنسبة 100٪ ، لذا نرجو منك إعادة التحقق منها بنفسك! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلوماتك الشخصية إلى خادم Open Food Facts. أيضاً كن حذراً بأن بيانات المنتج قد تكون غير دقيقة، و الكشف قد لا يكون دقيقاً بنسبة 100٪ ، لذا نرجو منك إعادة التحقق منها بنفسك! </string>
     <string name="title_info_dialog">كيف يعمل؟</string>
-    <string name="text_offline_info_dialog">قم بمسح المنتجات ضوئياً حتى في حالة عدم الاتصال بالإنترنت لإضافتها إلى Open Products Facts لاحقاً. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
+    <string name="text_offline_info_dialog">قم بمسح المنتجات ضوئياً حتى في حالة عدم الاتصال بالإنترنت لإضافتها إلى Open Food Facts لاحقاً. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
     <string name="permission_camera">تصريح الكاميرا مطلوب لمسح شفرة المنتجات والتقاط الصور.</string>
     <string name="no_camera_dialog_title">لم يتم العثور على الكاميرا</string>
     <string name="no_camera_dialog_content">جهازك ليس به كاميرا. لن تتمكن من مسح أي رمز شريطي ضوئيًا.</string>
@@ -338,7 +338,7 @@
     <string name="txt_no_matching_incomplete_products">ليس لدينا أي منتجات غير مكتملة! إضافة منتج جديد؟</string>
     <string name="txt_no_matching_contributor_products">لا ، ليس لدينا أي منتجات من هذا المساهم ، هل يمكنك إضافة واحدة؟</string>
     <string name="txt_no_matching_products">لم نعثر على أي منتجات مطابقة. \n يمكنك تجربة:</string>
-    <string name="txt_broaden_search">- توسيع نطاق البحث \n- مسح ضوئي وإضافته إلى Open Products Facts</string>
+    <string name="txt_broaden_search">- توسيع نطاق البحث \n- مسح ضوئي وإضافته إلى Open Food Facts</string>
     <string name="something_went_wrong">عذراً، حدث خطأ ما…</string>
     <string name="txt_try_again">أعد المحاولة</string>
     <string name="nutrition_lactose">اللاكتوز</string>
@@ -449,11 +449,11 @@
     <string name="dismiss">تجاهل</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -545,7 +545,7 @@
     </plurals>
     <string name="product_not_complete">هذا المنتج لم يكتمل بعد. \n هل يمكنك إضافة بعض التفاصيل؟</string>
     <string name="addProductOffline">يبدو أنك غير متصل. أضف المنتج %s باستخدام الوضع الغير متصل بالشبكة؟</string>
-    <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Products Facts. هل يمكنك إضافته؟</string>
+    <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Food Facts. هل يمكنك إضافته؟</string>
     <string name="scan_sound">مسح الصوت</string>
     <string name="trouble_scanning">عطل في المسح؟</string>
     <string name="barcode_hint">عطل في المسح؟ أدخل الباركود</string>
@@ -685,7 +685,7 @@
     <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">المساعدة في تصنيف المنتجات</string>
-    <string name="version_string">افتح تطبيق Open Products Facts على Android</string>
+    <string name="version_string">افتح تطبيق Open Food Facts على Android</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -805,13 +805,13 @@
     <string name="brand_hint">أمثلة: Nike ، Apple ، إلخ…</string>
     <string name="sign_in_or_register">تسجيل الدخول أو التسجيل</string>
     <string name="hunger_game_call_to_action">ساعد في تصنيف المزيد %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
 </resources>

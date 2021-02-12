@@ -172,7 +172,7 @@
     <string name="txtEMB">Codis de traçabilitat:</string>
     <string name="txtIngredients">Llista d\'ingredients :</string>
     <string name="Donate">Feu un donatiu</string>
-    <string name="Donation">Cliqueu aquí per a fer un donatiu a Open Products Facts</string>
+    <string name="Donation">Cliqueu aquí per a fer un donatiu a Open Food Facts</string>
     <string name="txtSubstances">Substàncies o productes que causen al·lèrgies o intoleràncies:</string>
     <string name="txtAdditives">Additius :</string>
     <string name="txtTraces">Traces:</string>
@@ -200,7 +200,7 @@
     <string name="uploadLater">La imatge es carregarà quan la xarxa estigui disponible</string>
     <string name="txtInfoLoginOk">Usuari desat</string>
     <string name="txtInfoLoginNo">Usuari no desat</string>
-    <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Products Facts. Afegiu-lo.</string>
+    <string name="txtDialogsContent">El producte que heu escanejat encara no existeix a Open Food Facts. Afegiu-lo.</string>
     <string name="txtYes">Si</string>
     <string name="txtNo">No</string>
     <string name="hintBrand">Marca</string>
@@ -214,7 +214,7 @@
     <string name="txtBarcodeRequire">Es necessita un codi de barres</string>
     <string name="txtOk">D\'acord</string>
     <string name="txtBarcodeNotValid">Codi de barres no vàlid</string>
-    <string name="msg_share">Mireu aquest producte a Open Products Facts:</string>
+    <string name="msg_share">Mireu aquest producte a Open Food Facts:</string>
     <string name="create_account">Uniu-vos</string>
     <string name="home_drawer">Inici</string>
     <string name="install">Instal·la</string>
@@ -238,9 +238,9 @@
     <string name="cancel_button">Cancel·la</string>
     <string name="login_button">Iniciar sessió</string>
     <string name="create_account_button">Crea un compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La informació de les al·lèrgies que patiu no s\'enviarà mai al servidor d\'Open Products Facts. A més, aneu amb compte: les dades del producte poden ser poc precises i és possible que la detecció no sigui 100% axacta, així que comproveu-ho bé! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">La informació de les al·lèrgies que patiu no s\'enviarà mai al servidor d\'Open Food Facts. A més, aneu amb compte: les dades del producte poden ser poc precises i és possible que la detecció no sigui 100% axacta, així que comproveu-ho bé! </string>
     <string name="title_info_dialog">Com funciona?</string>
-    <string name="text_offline_info_dialog">Escanegeu els productes fins i tot quan no estigueu connectat per a afegir-los a Open Products Facts més endavant. Els productes escanejats apareixeran aquí i podreu enviar-los amb el botó que teniu més avall.</string>
+    <string name="text_offline_info_dialog">Escanegeu els productes fins i tot quan no estigueu connectat per a afegir-los a Open Food Facts més endavant. Els productes escanejats apareixeran aquí i podreu enviar-los amb el botó que teniu més avall.</string>
     <string name="permission_camera">El permís de la càmera és necessari per escanejar codis de barres i fer fotos.</string>
     <string name="no_camera_dialog_title">No s\'ha trobat càmera</string>
     <string name="no_camera_dialog_content">El vostre dispositiu no té càmera. No podreu escanejar cap codi de barres.</string>
@@ -316,7 +316,7 @@
     <string name="txt_no_matching_incomplete_products">No tenim productes incomplets! Voleu afegir un producte nou?</string>
     <string name="txt_no_matching_contributor_products">Oh no! No tenim cap producte d\'aquest col·laborador, podeu afegir-lo?</string>
     <string name="txt_no_matching_products">No hem trobat cap producte que coincideixi. \nPodeu provar:</string>
-    <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-ho i afegiu-ho a Open Products Facts</string>
+    <string name="txt_broaden_search">- amplieu la cerca \n- escanegeu-ho i afegiu-ho a Open Food Facts</string>
     <string name="something_went_wrong">Perdoneu, alguna cosa ha anat malament…</string>
     <string name="txt_try_again">Torneu-ho a intentar</string>
     <string name="nutrition_lactose">Lactosa</string>
@@ -427,7 +427,7 @@
     <string name="dismiss">Omet</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://es-ca.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://es-ca.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://es-ca.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -622,7 +622,7 @@
     <string name="contribution_by">Aportació de</string>
     <string name="title_activity_product">Títol</string>
     <string name="description_activity_product">descripció</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Risc alt per exposició excessiva</string>
     <string name="overexposure_moderate">Risc moderat per exposició excessiva</string>
@@ -659,7 +659,7 @@
     <string name="add_labels_prompt_text">L’Eco-Score té en compte les etiquetes mediambientals. Si us plau, feu-los fotos o editeu el producte perquè es puguin tenir en compte</string>
     <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Help categorize products</string>
-    <string name="version_string">Aplicació per a Android Open Products Facts</string>
+    <string name="version_string">Aplicació per a Android Open Food Facts</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -779,13 +779,13 @@
     <string name="brand_hint">Exemples: Nike, Apple, etc…</string>
     <string name="sign_in_or_register">Inicieu la sessió o registreu-vos</string>
     <string name="hunger_game_call_to_action">Ajudeu a classificar millor %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts és una base de dades oberta de més de %1$s productes (més els que aportareu).</string>
+    <string name="txtHomeOnline">Open Food Facts és una base de dades oberta de més de %1$s productes (més els que aportareu).</string>
     <string name="enabled">Actiu</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Dia</string>
     <string name="night">Nit</string>
     <string name="required_for_ecoscore">(Obligatori per calcular el Nutri-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
 </resources>

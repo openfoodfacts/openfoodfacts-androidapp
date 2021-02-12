@@ -172,7 +172,7 @@
     <string name="txtEMB">Code emballeur :</string>
     <string name="txtIngredients">Liste des ingrédients :</string>
     <string name="Donate">Faire un don</string>
-    <string name="Donation">Cliquez ici pour faire un don à Open Products Facts</string>
+    <string name="Donation">Cliquez ici pour faire un don à Open Food Facts</string>
     <string name="txtSubstances">Substances ou produits provoquant des allergies ou intolérances :</string>
     <string name="txtAdditives">Additifs :</string>
     <string name="txtTraces">Traces :</string>
@@ -200,7 +200,7 @@
     <string name="uploadLater">L\'image sera téléchargée lorsque le réseau sera disponible</string>
     <string name="txtInfoLoginOk">Utilisateur connecté</string>
     <string name="txtInfoLoginNo">Utilisateur anonyme</string>
-    <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Products Facts. Voulez-vous l\'ajouter ?</string>
+    <string name="txtDialogsContent">Le produit que vous avez scanné n\'existe pas encore dans Open Food Facts. Voulez-vous l\'ajouter ?</string>
     <string name="txtYes">Oui</string>
     <string name="txtNo">Non</string>
     <string name="hintBrand">Marque</string>
@@ -214,7 +214,7 @@
     <string name="txtBarcodeRequire">Code-barres requis</string>
     <string name="txtOk">OK</string>
     <string name="txtBarcodeNotValid">Code-barres non valide</string>
-    <string name="msg_share">Regarde ce produit sur Open Products Facts:</string>
+    <string name="msg_share">Regarde ce produit sur Open Food Facts:</string>
     <string name="create_account">S\'inscrire</string>
     <string name="home_drawer">Accueil</string>
     <string name="install">Installer</string>
@@ -238,7 +238,7 @@
     <string name="cancel_button">Annuler</string>
     <string name="login_button">Connexion</string>
     <string name="create_account_button">Créer un Compte</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Products Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100% at que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Les informations relatives à vos allergies ne seront jamais envoyées aux serveurs d\'Open Food Facts. Par ailleurs, soyez vigilant sur le fait que ces données ne sont pas fiables à 100% at que la détection peut ne pas être précise à 100%. Veuillez donc vérifier vous-même! </string>
     <string name="title_info_dialog">Comment cela fonctionne-t-il ?</string>
     <string name="text_offline_info_dialog">Vous pouvez scanner des produits lorsque vous êtes hors-ligne pour les ajouter plus tard à Open Pet Food Facts. Tous les produits que vous scannez apparaîtront ici et vous serez en mesure de les envoyer en utilisant le bouton ci-dessous.</string>
     <string name="permission_camera">L\'autorisation d\'utiliser l\'appareil photo est nécessaire pour scanner des codes-barres et prendre des photos.</string>
@@ -316,7 +316,7 @@
     <string name="txt_no_matching_incomplete_products">Nous n\'avons aucun produit incomplet ! Ajouter un nouveau produit ?</string>
     <string name="txt_no_matching_contributor_products">Oh non ! Nous n\'avons aucun produit de ce contributeur. Pouvez-vous en ajouter un ?</string>
     <string name="txt_no_matching_products">Nous n\'avons trouvé aucun produit correspondant.\nVous pouvez essayer :</string>
-    <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Products Facts</string>
+    <string name="txt_broaden_search">- élargir votre recherche\n-le scanner et l\'ajouter à Open Food Facts</string>
     <string name="something_went_wrong">Désolé, une erreur s\'est produite…</string>
     <string name="txt_try_again">Veuillez réessayer</string>
     <string name="nutrition_lactose">Lactose</string>
@@ -427,7 +427,7 @@
     <string name="dismiss">Ignorer</string>
     <string name="donation_url">https://donner.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://fr.openproductsfacts.org/conditions-d-utilisation</string>
+    <string name="terms_url">https://fr.openfoodfacts.org/conditions-d-utilisation</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world-fr.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
@@ -519,7 +519,7 @@
     </plurals>
     <string name="product_not_complete">Ce produit n\'est pas encore complet.\nPouvez-vous ajouter des détails?</string>
     <string name="addProductOffline">Vous semblez déconnecté. Ajouter le produit %s en utilisant le mode hors ligne?</string>
-    <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Products Facts. Pouvez-vous l\'ajouter ?</string>
+    <string name="product_not_found">Le produit %1$s que vous scannez n\'existe pas encore dans Open Food Facts. Pouvez-vous l\'ajouter ?</string>
     <string name="scan_sound">Son de scan</string>
     <string name="trouble_scanning">Problèmes de scan?</string>
     <string name="barcode_hint">Problème de scan ? Saisissez le code-barres</string>
@@ -527,7 +527,7 @@
     <string name="autofocus">Autofocus</string>
     <string name="initial_loading">Chargement initial</string>
     <string name="preferences">Préférences</string>
-    <string name="OFFlogo">Logo Open Products Facts</string>
+    <string name="OFFlogo">Logo Open Food Facts</string>
     <string name="loading_product">Chargement du produit %s</string>
     <string name="image_not_defined_for_language">Aucune image pour la langue sélectionnée. Vous pouvez en ajouter une nouvelle</string>
     <string name="error_adding_ingredients">Une erreur s\'est produite lors de l\'ajout des ingrédients du produit</string>
@@ -622,7 +622,7 @@
     <string name="contribution_by">Contribution par</string>
     <string name="title_activity_product">Titre</string>
     <string name="description_activity_product">description</string>
-    <string name="intent_filter_share_label">Ajouter sur Open Products Facts</string>
+    <string name="intent_filter_share_label">Ajouter sur Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Risque élevé de sur-exposition</string>
     <string name="overexposure_moderate">Risque modéré de sur-exposition</string>
@@ -659,7 +659,7 @@
     <string name="add_labels_prompt_text">L\'Eco-Score prend en compte les labels environnementaux. Veuillez les prendre en photo ou modifier le produit de sorte qu\'ils soient pris en compte</string>
     <string name="add_origins_prompt_text">L\'Eco-Score prend en compte l\'origine des ingrédients. Veuillez les prendre en photo (liste des ingrédients et/ou toute appellation géographique) ou modifier le produit de sorte qu\'ils soient pris en compte</string>
     <string name="category_game_btn">Aidez à classer les produits</string>
-    <string name="version_string">Application Android Open Products Facts</string>
+    <string name="version_string">Application Android Open Food Facts</string>
     <string name="set_ingredient_img">Définir comme image d\'ingrédient</string>
     <string name="set_img_nutrients">Définir comme image nutritionelle</string>
     <string name="set_img_front">Définir comme image de profil</string>
@@ -779,7 +779,7 @@
     <string name="brand_hint">Exemples : Nike, Apple, etc…</string>
     <string name="sign_in_or_register">Se connecter ou s\'inscrire</string>
     <string name="hunger_game_call_to_action">Aider à classer plus de: %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts est une base de données de plus de %1$s produits (plus ceux que vous contribuerez) dans le monde.</string>
+    <string name="txtHomeOnline">Open Food Facts est une base de données de plus de %1$s produits (plus ceux que vous contribuerez) dans le monde.</string>
     <string name="enabled">Activé</string>
     <!-- Application theme settings -->
     <string name="follow_system">Suivre le système</string>

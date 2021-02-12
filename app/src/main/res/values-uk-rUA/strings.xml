@@ -182,7 +182,7 @@
     <string name="txtEMB">Коди відстежування:</string>
     <string name="txtIngredients">Склад:</string>
     <string name="Donate">Підтримати проект</string>
-    <string name="Donation">Click here to donate to Open Products Facts</string>
+    <string name="Donation">Click here to donate to Open Food Facts</string>
     <string name="txtSubstances">Речовини або продукти, що викликають алергію чи непереносимість:</string>
     <string name="txtAdditives">Добавки:</string>
     <string name="txtTraces">Сліди:</string>
@@ -210,7 +210,7 @@
     <string name="uploadLater">Зображення буде завантажено, коли з\'явиться інтернет</string>
     <string name="txtInfoLoginOk">Користувача збережено</string>
     <string name="txtInfoLoginNo">Користувача не збережено</string>
-    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Products Facts. Please add it.</string>
+    <string name="txtDialogsContent">The product you scanned does not exist yet in Open Food Facts. Please add it.</string>
     <string name="txtYes">Так</string>
     <string name="txtNo">Ні</string>
     <string name="hintBrand">Виробник</string>
@@ -224,7 +224,7 @@
     <string name="txtBarcodeRequire">Необхіден код товару</string>
     <string name="txtOk">Добре</string>
     <string name="txtBarcodeNotValid">Некоректний код товару</string>
-    <string name="msg_share">Look at this product on Open Products Facts :</string>
+    <string name="msg_share">Look at this product on Open Food Facts :</string>
     <string name="create_account">Зареєструватися</string>
     <string name="home_drawer">Головна</string>
     <string name="install">Встановити</string>
@@ -248,9 +248,9 @@
     <string name="cancel_button">Скасувати</string>
     <string name="login_button">Ім\'я користувача</string>
     <string name="create_account_button">Створити обліковий запис</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Як це працює?</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Дозвіл на використання камери необхідний для сканування кодів товарів та фотографування.</string>
     <string name="no_camera_dialog_title">Камеру не знайдено</string>
     <string name="no_camera_dialog_content">На вашому пристрої немає камери. Ви не зможете сканувати штрихкоди.</string>
@@ -326,7 +326,7 @@
     <string name="txt_no_matching_incomplete_products">We don’t have any incomplete products! Add a new product?</string>
     <string name="txt_no_matching_contributor_products">Oh no, we don’t have any products from this contributor, can you add one?</string>
     <string name="txt_no_matching_products">Ми не знайшли відповідних продуктів.\nВи можете спробувати:</string>
-    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Products Facts</string>
+    <string name="txt_broaden_search">- broadening your search \n- scan and add it to Open Food Facts</string>
     <string name="something_went_wrong">На жаль, щось пішло не так…</string>
     <string name="txt_try_again">Спробуйте ще раз</string>
     <string name="nutrition_lactose">Лактоза</string>
@@ -437,11 +437,11 @@
     <string name="dismiss">Закрити</string>
     <string name="donation_url">https://donate.openfoodfacts.org</string>
     <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
-    <string name="terms_url">https://world.openproductsfacts.org/terms-of-use</string>
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -487,7 +487,7 @@
     <string name="by_barcode">Код товару</string>
     <string name="by_time">Нещодавно переглянуті</string>
     <string name="sort">Сортувати</string>
-    <string name="by_nutrition_grade">Nutrition Grade</string>
+    <string name="by_nutrition_grade">Nutri-Score</string>
     <string name="sort_by">Сортувати за</string>
     <!-- strings related to share images -->
     <string name="sorry_msg">Зображення без штрих-коду ще не можна додавати до програми. Спробуйте мобільну веб-версію.</string>
@@ -531,7 +531,7 @@
     </plurals>
     <string name="product_not_complete">Цей продукт ще не завершено. \nМожете додати подробиць?</string>
     <string name="addProductOffline">Здається, ви не в мережі. Додати продукт %s за допомогою оффлайн режиму?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Звук сканування</string>
     <string name="trouble_scanning">Не вдалося відсканувати?</string>
     <string name="barcode_hint">Не вдалося відсканувати? Введіть штрих-код</string>
@@ -539,7 +539,7 @@
     <string name="autofocus">Автофокус</string>
     <string name="initial_loading">Початкове завантаження</string>
     <string name="preferences">Налаштування</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Завантаження продукту %s</string>
     <string name="image_not_defined_for_language">Немає зображень для вибраної мови. Ви можете додати нове</string>
     <string name="error_adding_ingredients">Щось пішло не так під час спроби додати інгредієнти продукту</string>
@@ -634,7 +634,7 @@
     <string name="contribution_by">Внесок від</string>
     <string name="title_activity_product">Найменування</string>
     <string name="description_activity_product">опис</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Високий ризик надмірного впливу</string>
     <string name="overexposure_moderate">Помірний ризик надмірного впливу</string>
@@ -671,7 +671,7 @@
     <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Help categorize products</string>
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -788,16 +788,16 @@
     <string name="icon_categories">Categories icon</string>
     <string name="icon_emb">Traceability code icon</string>
     <string name="product_front_image">Зображення передньої частини товару</string>
-    <string name="brand_hint">Examples: Nike, Apple, etc…</string>
+    <string name="brand_hint">Examples: Coca-Cola, Nestle, etc…</string>
     <string name="sign_in_or_register">Увійти або зареєструватися</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
     <string name="report_email_chooser_title">Send a report email</string>
 </resources>
