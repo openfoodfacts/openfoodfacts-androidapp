@@ -243,9 +243,9 @@
     <string name="cancel_button">Atcelt</string>
     <string name="login_button">Username</string>
     <string name="create_account_button">Izveidot profilu</string>
-    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Products Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">Your allergies info will never be sent to the Open Food Facts server. Also, be careful that product data may not be accurate, and detection might not be 100% accurate, so please double-check by yourself! </string>
     <string name="title_info_dialog">Kā tas darbojas?</string>
-    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Products Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
+    <string name="text_offline_info_dialog">Scan the products even when you are offline so as to add them to Open Food Facts later. The scanned products will appear here and you will be able to send them using the button below.</string>
     <string name="permission_camera">Piekļuve kamerai ir nepieciešama, lai skenētu svītrkodus un uzņemtu attēlus.</string>
     <string name="no_camera_dialog_title">Kamera nav atrasta</string>
     <string name="no_camera_dialog_content">Jūsu ierīcē nav kameras. Jūs nevarēsit skenēt nevienu svītrkodu.</string>
@@ -525,7 +525,7 @@
     </plurals>
     <string name="product_not_complete">Šis produkts vēl nav pabeigts. \nVai varat pievienot sīkāku informāciju?</string>
     <string name="addProductOffline">Šķiet, ka esat bezsaistē. Vai pievienot produktu %s izmantojot bezsaistes režīmu?</string>
-    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Products Facts. Can you add it?</string>
+    <string name="product_not_found">The product %1$s you scanned does not exist yet in Open Food Facts. Can you add it?</string>
     <string name="scan_sound">Skenēt skaņu</string>
     <string name="trouble_scanning">Vai ir problēmas ar skenēšanu?</string>
     <string name="barcode_hint">Vai ir problēmas ar skenēšanu? Ievadiet svītrkodu</string>
@@ -533,7 +533,7 @@
     <string name="autofocus">Autofokuss</string>
     <string name="initial_loading">Sākotnējā ielāde</string>
     <string name="preferences">Iestatījumi</string>
-    <string name="OFFlogo">Open Products Facts logo</string>
+    <string name="OFFlogo">Open Food Facts logo</string>
     <string name="loading_product">Notiek produkta ielāde %s</string>
     <string name="image_not_defined_for_language">Atlasītajai valodai nav attēla. Jūs varat pievienot jaunu</string>
     <string name="error_adding_ingredients">Mēģinot pievienot produkta sastāvdaļas, radās kļūda</string>
@@ -628,7 +628,7 @@
     <string name="contribution_by">Autors</string>
     <string name="title_activity_product">Virsraksts</string>
     <string name="description_activity_product">apraksts</string>
-    <string name="intent_filter_share_label">Add to Open Products Facts</string>
+    <string name="intent_filter_share_label">Add to Open Food Facts</string>
     <!-- Used for additive exposure evaluation table -->
     <string name="overexposure_high">Augsts ekspozīcijas risks</string>
     <string name="overexposure_moderate">Mērens pārmērīgas iedarbības risks</string>
@@ -665,7 +665,7 @@
     <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
     <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
     <string name="category_game_btn">Help categorize products</string>
-    <string name="version_string">Open Products Facts Android App</string>
+    <string name="version_string">Open Food Facts Android App</string>
     <string name="set_ingredient_img">Set as ingredients image</string>
     <string name="set_img_nutrients">Set as nutrition image</string>
     <string name="set_img_front">Set as front image</string>
@@ -785,7 +785,7 @@
     <string name="brand_hint">Examples: Nike, Apple, etc…</string>
     <string name="sign_in_or_register">Pierakstieties vai reģistrējieties</string>
     <string name="hunger_game_call_to_action">Palīdziet klasificēt vairāk %1$s</string>
-    <string name="txtHomeOnline">Open Products Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute).</string>
     <string name="enabled">Enabled</string>
     <!-- Application theme settings -->
     <string name="follow_system">Follow system</string>

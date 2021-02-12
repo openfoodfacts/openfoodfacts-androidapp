@@ -779,7 +779,7 @@
     <string name="brand_hint">Esimerkkejä: Nike, Apple jne…</string>
     <string name="sign_in_or_register">Kirjaudu sisään tai rekisteröidy</string>
     <string name="hunger_game_call_to_action">Help classify more %1$s</string>
-    <string name="txtHomeOnline">Open Products Food Facts on tietokanta, joka sisältää yli %1$s tuotetta (plus ne jotka lisäät).</string>
+    <string name="txtHomeOnline">Open Food Food Facts on tietokanta, joka sisältää yli %1$s tuotetta (plus ne jotka lisäät).</string>
     <string name="enabled">Käytössä</string>
     <!-- Application theme settings -->
     <string name="follow_system">Järjestelmän teema</string>
