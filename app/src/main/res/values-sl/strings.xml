@@ -182,7 +182,7 @@
     <string name="txtEMB">Traceability codes:</string>
     <string name="txtIngredients">Seznam sestavin:</string>
     <string name="Donate">Prispevaj</string>
-    <string name="Donation">Kliknite tukaj, če želite prispevati k Open Products Facts</string>
+    <string name="Donation">Kliknite tukaj, če želite prispevati k Open Food Facts</string>
     <string name="txtSubstances">Snovi ali proizvodi, ki povzročajo alergije ali preobčutljivost:</string>
     <string name="txtAdditives">Aditivi :</string>
     <string name="txtTraces">Sledi :</string>
@@ -445,7 +445,7 @@
     <string name="preference_choose_language_dialog_title">Izberi jezik</string>
     <string name="pref_faq_title">Pogosta vprašanja</string>
     <string name="pref_faq_summary">Pogosto zastavljena vprašanja</string>
-    <string name="pref_help_translate_title">Pomagajte prevesti Open Products Facts</string>
+    <string name="pref_help_translate_title">Pomagajte prevesti Open Food Facts</string>
     <string name="pref_help_translate_summary">Prevedite Open Facts Facts zbirko podatkov v vaš jezik - tehnično znanje ni potrebno</string>
     <string name="please_check_your_connection">Prosim, preverite povezavo.</string>
     <string name="advanced_search_title">Napredno iskanje &amp; Grafikoni</string>
@@ -460,7 +460,7 @@
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
     <string name="faq_url">https://world.openfoodfacts.org/faq</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
-    <string name="hunger_game_url">https://world.openfoodfacts.org/hunger-game</string>
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org/</string>
     <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
     <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
     <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
@@ -828,5 +828,5 @@
     <string name="day">Day</string>
     <string name="night">Night</string>
     <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
-    <string name="hint_origin">Examples: USA, French, Italy</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
 </resources>

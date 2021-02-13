@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2016-2020 Open Food Facts
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <plurals name="offline_notification_count">
+        <item quantity="zero">لديك منتج 1 %d لايُباع على الإنترنت بانتظار الإسهام في اوبن فود فاكتس</item>
+        <item quantity="one">لديك منتج 1 [%i] لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
+        <item quantity="two"> لديك منتج 1 %d لايُباع على الإنترنت بانتظار المساهمة به في حقائق الغذاء المفتوح</item>
+        <item quantity="few"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="many"> You have %d offline products waiting to be contributed to Open Food Facts</item>
+        <item quantity="other"> لديك %d منتجات في وضع عدم الاتصال بإنتظار أن تُساهم به في Open Food Facts</item>
+    </plurals>
+    <plurals name="seconds">
+        <item quantity="zero">منذ بضع ثوان%d</item>
+        <item quantity="one">منذ ثانية</item>
+        <item quantity="two">%d seconds ago</item>
+        <item quantity="few">%d seconds ago</item>
+        <item quantity="many">%d seconds ago</item>
+        <item quantity="other">%d seconds ago</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="zero">%d قبل دقيقة</item>
+        <item quantity="one">قبل دقيقة</item>
+        <item quantity="two">منذ %d دقيقة</item>
+        <item quantity="few">قبل دقيقة</item>
+        <item quantity="many">قبل دقيقة</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="zero">قبل ساعة</item>
+        <item quantity="one">قبل ساعة</item>
+        <item quantity="two">%d منذ ساعات</item>
+        <item quantity="few">%d hours ago</item>
+        <item quantity="many">%d hours ago</item>
+        <item quantity="other">%d منذ ساعات</item>
+    </plurals>
+    <plurals name="days">
+        <item quantity="zero">منذ %d يوم</item>
+        <item quantity="one">منذ يوم</item>
+        <item quantity="two">منذ %d يوم</item>
+        <item quantity="few">منذ %d يوم</item>
+        <item quantity="many">منذ %d يوم</item>
+        <item quantity="other">%d منذ أيام</item>
+    </plurals>
+    <string name="action_about">حول</string>
+    <string name="action_discover">إكتشف</string>
+    <string name="contribute">كيفية المساهمة</string>
+    <string name="action_find">بحث</string>
+    <string name="product_incomplete_message">هذا المنتج غير كامل. ونتيجة لذلك، لم نتمكن من القيام بفحص المواد المسببة للحساسية.</string>
+    <string name="product_allergen_prompt">هذا المنتج يحتوي على:</string>
+    <string name="no_offline_data">لقد انتهيت</string>
+    <string name="first_offline">ستظهر هنا المنتجات المضافة بلا اتصال بالإنترنت</string>
+    <!-- Image Upload -->
+    <!-- Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_items_product">
+        <item>الملخص</item>
+        <item>المكونات</item>
+        <item>التغذية</item>
+        <item>حقائق غذائية</item>
+        <item>البيئة</item>
+    </string-array>
+    <!-- New Nav Drawer Product Menu Items -->
+    <string-array name="nav_drawer_new_items_product">
+        <item>صور المنتج</item>
+        <item>تحليل المكونات</item>
+    </string-array>
+    <!-- Text units -->
+    <!-- weight units -->
+    <!-- nutrition energy units -->
+    <!-- volume units -->
+    <!-- nutrition weight units -->
+    <!-- nutrition weight units -->
+    <!-- all weight units -->
+    <string-array name="weight_all_units">
+        <item>ج</item>
+        <item>مج</item>
+        <item>ميكروجرام</item>
+        <item>القيمة اليومية</item>
+        <item>وحدة دولية</item>
+    </string-array>
+    <!-- nutrition comparison units -->
+    <!-- Application theme settings -->
+    <string-array name="application_theme_entries">
+        <item>@string/follow_system</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
+    </string-array>
+    <!-- nutrients list
+    do not change the order of the array as the items are paired with the String array
+    PARAMS_OTHER_NUTRIENTS present in AddProductNutritionFactsFragment-->
+    <string-array name="nutrients_array">
+        <item>حمض اللينولينيك / ALA (١٨: ٣ n-٣)</item>
+        <item>حمض الأراشيديك (٠:٢٠)</item>
+        <item>حمض الأراشيديك / AA / ARA (٢٠: ٤ n-٦)</item>
+        <item>حمض البان (٢٢: ٠)</item>
+        <item>بيكربونات</item>
+        <item>البيوتين</item>
+        <item>حمض البوتيريك (٤: ٠)</item>
+        <item>الكافيين</item>
+        <item>الكالسيوم</item>
+        <item>حمض الكبريك (١٠: ٠)</item>
+        <item>حمض الكبريك (٦: ٠)</item>
+        <item>حمض الكابريليك (٨: ٠)</item>
+        <item>الكازين</item>
+        <item>حمض السيروتيك (٢٦: ٠)</item>
+        <item>كلوريد</item>
+        <item>كوليسترول</item>
+        <item>الكروم</item>
+        <item>النحاس</item>
+        <item>\"حمض ديهومو-غاما-اللينولينيك
+/DGLA (n-٦ ٢٠:٣)\"</item>
+        <item>حمض دوكوساهيكسينويك / DHA (٢٢: ٦ n-٣)</item>
+        <item>حمض ايكوسابنتانويك / EPA (٢٠: ٥ n-٣)</item>
+        <item>حمض الالايديك (١٨: ١ n ٩)</item>
+        <item>حمض الأيروسيك (٢٢: ١ n-٩)</item>
+        <item>الفلوريد</item>
+        <item>سكر الفاكهة</item>
+        <item>حمض غاما-لينولينيك/GLA (n-٦ ١٨:٣)</item>
+        <item>الجلوكوز</item>
+        <item>حمض الغوندويك (٢٠: ١ n -٩)</item>
+        <item>اليود</item>
+        <item>الحديد</item>
+        <item>اللاكتوز</item>
+        <item>\"حمض اللوريك
+ (١٢: ٠)\"</item>
+        <item>حمض الليغنوسيريك (٢٤:٠)</item>
+        <item>حمض اللينولئيك / LA (١٨: ٢ n-٦)</item>
+        <item>المغنيسيوم</item>
+        <item>مالتوديكسترينس</item>
+        <item>مالتوس</item>
+        <item>المنغنيز</item>
+        <item>حمض ميد (n-٩ ٢٠:٣)</item>
+        <item>حمض المليسيك (٣٠:٠)</item>
+        <item>الموليبدينوم</item>
+        <item>دهون مُشبَعة</item>
+        <item>حمض المونتانيك (٢٨:٠)</item>
+        <item>حمض الميرستيك (١٤: ٠)</item>
+        <item>حمض النيرفونيك (n-٩ ٢٤:١)</item>
+        <item>النيوكليوتيدات</item>
+        <item>حمض الأولييك (n-٩ ١٨:١)</item>
+        <item>حمض دهنى أوميغا -٣</item>
+        <item>حمض دهنى أوميغا -٦</item>
+        <item>حمض دهنى أوميغا -٩</item>
+        <item>حمض النخيل (١٦:٠)</item>
+        <item>حمض البانتوثنيك / بانتوثينات (فيتامين ب ٥)</item>
+        <item>الرقم الهيدروجيني</item>
+        <item>الفوسفور</item>
+        <item>كحول سكري (البوليولات)</item>
+        <item>دهون عديد اللاتشَبُّع</item>
+        <item>بوتاسيوم</item>
+        <item>السيلينيوم</item>
+        <item>بروتينات المصل</item>
+        <item>السيليكا</item>
+        <item>نشاء</item>
+        <item>حمض الشمع (١٨: ٠)</item>
+        <item>السكروز</item>
+        <item>توراين</item>
+        <item>الدهون غير المشبعة</item>
+        <item>فيتامين أ</item>
+        <item>فيتامين ب ١ (الثيامين)</item>
+        <item>فيتامين ب ١٢ (كوبالامين)</item>
+        <item>فيتامين ب ٢ (ريبوفلافين)</item>
+        <item>فيتامين ب ٣ / فيتامين PP (النياسين)</item>
+        <item>فيتامين ب ٦ (البيريدوكسين)</item>
+        <item>فيتامين ب ٩ (حمض الفوليك)</item>
+        <item>فيتامين ج (حمض الأسكوربيك)</item>
+        <item>فيتامين د</item>
+        <item>فيتامين هـ</item>
+        <item>فيتامين ك</item>
+        <item>الزنك</item>
+    </string-array>
+    <!-- Text units -->
+    <!-- Content Description -->
+    <string name="search_button">بحث</string>
+    <string name="alert_dialog_warning_title">تحذير</string>
+    <string name="alert_dialog_warning_msg_user">تم تغيير إسم المستخدم / كلمة السر، يرجى تحديث المعلومات</string>
+    <string name="toast_retrieving">جاري التحميل…</string>
+    <string name="txtBarcode">الرمز الشريطي:</string>
+    <string name="txtCategories">الفئات :</string>
+    <string name="txtLabels">التسميات، الشهادات، الجوائز:</string>
+    <string name="txtEMB">رمز EMB:</string>
+    <string name="txtIngredients">قائمة المكونات:</string>
+    <string name="Donate">تبرع</string>
+    <string name="Donation">انقر هنا للتبرع لـ Open Food Facts</string>
+    <string name="txtSubstances">المواد أو المنتجات التي تسبب الحساسية أو عدم التحمل:</string>
+    <string name="txtAdditives">الإضافات:</string>
+    <string name="txtTraces">آثار:</string>
+    <string name="txtMayBeFromPalmOilProduct">المكونات التي قد تكون من زيت النخيل:</string>
+    <string name="txtPalmOilProduct">مكونات من زيت النخيل:</string>
+    <string name="txtServingSize">حجم الحصة:</string>
+    <string name="txtNutrientLevel100g">مستويات المواد الغذائية لـ 100غ:</string>
+    <string name="txtNutrientLevel100ml">مستويات العناصر الغذائية ل ١٠٠ ميللي جرام:</string>
+    <string name="txtNutritionLevelLow">في كمية المخزون</string>
+    <string name="txtNutritionLevelModerate">كمية معتدلة</string>
+    <string name="txtNutritionLevelHigh">كمية عالية</string>
+    <string name="txtSave">حفظ</string>
+    <string name="txtSignIn">تسجيل الدخول</string>
+    <string name="txtToastSaved">تم حفظ المستخدم</string>
+    <string name="txtSalt">ملح</string>
+    <string name="txtFat">الدهون</string>
+    <string name="txtSugars">السكريات</string>
+    <string name="hintBarcode">الرمز الشريطي</string>
+    <string name="txtNutriScoreInfo">تعلم المزيد عن المستويات الغذائية</string>
+    <string name="txtloginHelper">If you have an Open Food Facts account, you can login here with it</string>
+    <string name="hintLogin">تسجيل الدخول</string>
+    <string name="hintPass">كلمة المرور</string>
+    <string name="errorLogin">خطأ في تسجيل الدخول أو كلمة المرور</string>
+    <string name="errorWeb">لم نتمكن من الوصول إلى الإنترنت. هل لديك مشاكل في الاتصال؟</string>
+    <string name="uploadLater">سيتم تحميل الصورة عندما تكون الشبكة متاحة</string>
+    <string name="txtInfoLoginOk">تم حفظ المستخدم</string>
+    <string name="txtInfoLoginNo">لم يتم حفظ المستخدم</string>
+    <string name="txtDialogsContent">المنتج الذي قمت بمسحه ضوئياً غير موجود حتى الآن في Open Open Facts. يرجى إضافته.</string>
+    <string name="txtYes">نعم</string>
+    <string name="txtNo">لا</string>
+    <string name="hintBrand">العلامة التجارية</string>
+    <string name="txtSendAll">تحميل الكل</string>
+    <string name="txtPictureNeededDialogNo">تجاهل</string>
+    <string name="toastSending">جاري الإرسال…</string>
+    <string name="txtLoading">جاري التحميل…</string>
+    <string name="txtDialogsContentDelete">هل أنت متأكد من أنك تريد حذف هذه المسودة؟</string>
+    <string name="txtDialogsContentInfoSave">تم حفظ المنتج محليا، يمكنك تحريره في قائمة  تحرير</string>
+    <string name="productSavedToast">تم حفظ المنتج، شكرًا!</string>
+    <string name="txtBarcodeRequire">الرمز الشريطي مطلوب</string>
+    <string name="txtOk">موافق</string>
+    <string name="txtBarcodeNotValid">الرمز الشريطي غير صحيح.</string>
+    <string name="msg_share">انظر إلى هذا المنتج على Open Food Facts :</string>
+    <string name="create_account">تسجيل الدخول</string>
+    <string name="home_drawer">الصفحة الرئيسية</string>
+    <string name="install">تثبيت</string>
+    <string name="open_beauty_drawer">Open Beauty Facts</string>
+    <string name="open_food_drawer">Open Food Facts</string>
+    <string name="search_drawer">بحث</string>
+    <string name="search_by_barcode_drawer">البحث عن طريق الرمز الشريطي</string>
+    <string name="category_drawer">الفئات</string>
+    <string name="search_by_category">Atassnifate</string>
+    <string name="scan_search">امسح</string>
+    <string name="user_drawer">المستخدم</string>
+    <string name="offline_edit_drawer">تعديل دون اتصال</string>
+    <string name="txt_anonymous">مجهول</string>
+    <string name="delete_txt">حذف</string>
+    <string name="sign_in_drawer">تسجيل الدخول</string>
+    <string name="alert_drawer">تنبيه مسببات الحساسية</string>
+    <string name="your_lists">قوائمك</string>
+    <string name="title_dialog_alert">إضافة تنبيه</string>
+    <string name="select_camera">اختر الكاميرا</string>
+    <string name="ok_button">موافق</string>
+    <string name="cancel_button">إلغاء</string>
+    <string name="login_button">تسجيل الدخول</string>
+    <string name="create_account_button">إنشاء حساب</string>
+    <string name="warning_alert_data" tools:ignore="StringFormatInvalid">لن يتم إرسال معلوماتك الشخصية إلى خادم Open Food Facts. أيضاً كن حذراً بأن بيانات المنتج قد تكون غير دقيقة، و الكشف قد لا يكون دقيقاً بنسبة 100٪ ، لذا نرجو منك إعادة التحقق منها بنفسك! </string>
+    <string name="title_info_dialog">كيف يعمل؟</string>
+    <string name="text_offline_info_dialog">قم بمسح المنتجات ضوئياً حتى في حالة عدم الاتصال بالإنترنت لإضافتها إلى Open Food Facts لاحقاً. ستظهر المنتجات الممسوحة ضوئيًا هنا وستتمكن من إرسالها باستخدام الزر أدناه.</string>
+    <string name="permission_camera">تصريح الكاميرا مطلوب لمسح شفرة المنتجات والتقاط الصور.</string>
+    <string name="no_camera_dialog_title">لم يتم العثور على الكاميرا</string>
+    <string name="no_camera_dialog_content">جهازك ليس به كاميرا. لن تتمكن من مسح أي رمز شريطي ضوئيًا.</string>
+    <string name="permission_title">معلومات التصريح</string>
+    <string name="permission_denied">يرجى تفعيل التصريح في الإعدادات</string>
+    <string name="info_download_data_connection">تحتاج إلى تحميل بعض البيانات لجعل هذه الوظيفة تعمل، يرجى تفعيل الاتصال بالإنترنت.</string>
+    <!-- Strings related to login -->
+    <string name="error_invalid_password">يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.</string>
+    <string name="user">المستخدم</string>
+    <string name="error_field_required">هذا الحقل ضروري.</string>
+    <!-- Strings related to feedback dialog -->
+    <string name="user_enjoying_app">هل تستمتع بتجربتك مع Open Food Facts؟</string>
+    <string name="user_ask_show_feedback_form">نأسف لسماع ذلك! هل يمكنك إخبارنا بما حدث؟</string>
+    <string name="user_ask_rate_app">رائع! دع اﻷخرين يعرفون رأيك في هذا التطبيق!</string>
+    <string name="rate_app">قيِّم التطبيق</string>
+    <string name="no_thx">ﻻ، شكرًا</string>
+    <string name="feedback_form_url">https://forms.gle/SWnx6h6QSUHcmFMy7</string>
+    <!-- Scan history -->
+    <string name="scan_history_drawer">السجل</string>
+    <string name="clear_history">محو السجل</string>
+    <string name="title_clear_history_dialog">محو</string>
+    <string name="text_clear_history_dialog">هل تريد مسح كافة سجل المسح الضوءي؟</string>
+    <string name="export_csv_history">تصدير CSV</string>
+    <string name="txt_exporting_history">جار تصدير السجل…</string>
+    <string name="txt_history_exported">تم تصدير السجل</string>
+    <string name="permision_write_external_storage">إعطاء التصريح للتخزين الخارجي مطلوبة لتصدير التاريخ.</string>
+    <string name="no_brand">لا علامة تجارية</string>
+    <string name="no_title">لا يوجد عنوان</string>
+    <!-- Nutrition info tab -->
+    <string name="display_fact">جدول حقائق التغذية ل %1$s من هذا المنتج</string>
+    <string name="check_facts">تحقق</string>
+    <string name="nutrition">التغذية</string>
+    <string name="calculated_nutrition">التغذية المحسوبة</string>
+    <string name="please_enter_weight">يرجى كتابة وزن المنتج</string>
+    <string name="enter_weight">اكتب وزن المنتج</string>
+    <string name="calculate_nutrition_facts">احسب حقائق التغذية</string>
+    <string name="nutrition_carbohydrate">كربوهيدرات</string>
+    <string name="nutrition_cholesterol">كوليسترول</string>
+    <string name="nutrition_energy">الطاقة</string>
+    <string name="nutrition_energy_kcal">الطاقة في السعرات الحرارية (كيلو كالوري)</string>
+    <string name="nutrition_energy_kj">الطاقة بالجول (كيلوجول)</string>
+    <string name="nutrition_energy_short_name">الطاقة</string>
+    <string name="nutrition_fat">الدهون</string>
+    <string name="nutrition_fiber">الألياف الغذائية</string>
+    <string name="nutrition_header">حقائق غذائية</string>
+    <string name="nutrition_proteins">البروتينات</string>
+    <string name="nutrition_salt">ملح</string>
+    <string name="nutrition_satured_fat">الدهون المشبعة</string>
+    <string name="nutrition_sodium">صوديوم</string>
+    <string name="nutrition_sugars">السكريات</string>
+    <string name="nutrition_trans_fat">الدهون غير المشبعة</string>
+    <string name="nutriment_serving_size">كل جزء: </string>
+    <string name="action_manage_account">أدر الحساب</string>
+    <string name="action_contributes">مساهماتكم</string>
+    <string name="choose_energy_unit">اختر وحدات الطاقة المفضلة لديك لجدول التغذية</string>
+    <string name="choose_volume_unit">اختر وحدات الحجم المفضلة لديك لجدول التغذية</string>
+    <string name="logout_drawer">تسجيل خروج</string>
+    <string name="contribution_without_account">يمكنك تسجيل الدخول أو إنشاء حساب للحفاظ على مساهماتك</string>
+    <string name="textCarbonFootprint">انبعاثات الكربون/انبعاثات CO2: </string>
+    <string name="packaging_environmentTab">Packaging:</string>
+    <string name="action_search">بحث</string>
+    <string name="search_hint">ابحث عن منتج</string>
+    <string name="number_of_results">عدد النتائج: </string>
+    <string name="number_of_products">عدد من المنتجات: </string>
+    <string name="txt_no_matching__category_products">لا ، ليس لدينا أي منتج في هذه الفئة ، هل يمكنك إضافة المنتج؟</string>
+    <string name="txt_no_matching_allergen_products">أوه لا ، ليس لدينا أي منتجات مع هذه المادة المثيرة للحساسية ، هل يمكنك إضافة واحدة؟</string>
+    <string name="txt_no_matching_label_products">لا ، ليس لدينا أي منتجات تحمل هذه العلامة ، هل يمكنك إضافة واحدة؟</string>
+    <string name="txt_no_matching_additive_products">لا ، ليس لدينا أي منتجات مع هذه الإضافة ، هل يمكنك إضافة واحدة؟</string>
+    <string name="txt_no_matching_country_products">لا ، ليس لدينا أي منتجات من هذا البلد ، هل يمكنك إضافة واحدة؟</string>
+    <string name="txt_no_matching_store_products">لا ، ليس لدينا أي منتجات من هذا المتجر ، هل يمكنك إضافة واحدة؟</string>
+    <string name="txt_no_matching_packaging_products">لا ، ليس لدينا أي منتجات مع هذه العبوة ، هل يمكنك إضافة واحدة؟</string>
+    <string name="txt_no_matching_brand_products">لا ، ليس لدينا أي منتجات بهذه العلامة التجارية ، هل يمكنك إضافة واحدة؟</string>
+    <string name="txt_no_matching_incomplete_products">ليس لدينا أي منتجات غير مكتملة! إضافة منتج جديد؟</string>
+    <string name="txt_no_matching_contributor_products">لا ، ليس لدينا أي منتجات من هذا المساهم ، هل يمكنك إضافة واحدة؟</string>
+    <string name="txt_no_matching_products">لم نعثر على أي منتجات مطابقة. \n يمكنك تجربة:</string>
+    <string name="txt_broaden_search">- توسيع نطاق البحث \n- مسح ضوئي وإضافته إلى Open Food Facts</string>
+    <string name="something_went_wrong">عذراً، حدث خطأ ما…</string>
+    <string name="txt_try_again">أعد المحاولة</string>
+    <string name="nutrition_lactose">اللاكتوز</string>
+    <string name="nutrition_casein">الكازين</string>
+    <string name="nutrition_maltodextrins">مالتوديكسترينس</string>
+    <string name="nutrition_serum_proteins">بروتينات المصل</string>
+    <string name="nutrition_nucleotides">النيوكليوتيدات</string>
+    <string name="for_100g">ل 100 غرام</string>
+    <string name="for_100ml">ل ١٠٠ ميللي جرام</string>
+    <string name="serving">لكل وجبة</string>
+    <string name="nutrition_monounsaturatedFat">الدهون غير المشبعة أحادية</string>
+    <string name="nutrition_polyunsaturatedFat">الدهون غير المشبعة أحادية</string>
+    <string name="nutrition_omega3">أوميغا 3</string>
+    <string name="nutrition_omega6">أوميغا 3</string>
+    <string name="nutrition_omega9">أوميغا 9</string>
+    <string name="nutrition_sucrose">السكروز</string>
+    <string name="nutrition_glucose">الجلوكوز</string>
+    <string name="nutrition_fructose">سكر الفاكهة</string>
+    <string name="nutrition_maltose">مالتوس</string>
+    <string name="nutrition_alcohol">الكحول</string>
+    <string name="nutrition_vitamins">الفيتامينات</string>
+    <string name="vitamin_a">فيتامين أ</string>
+    <string name="vitamin_d">فيتامين د</string>
+    <string name="vitamin_e">فيتامين هـ</string>
+    <string name="vitamin_k">فيتامين ك</string>
+    <string name="vitamin_c">فيتامين سي</string>
+    <string name="vitamin_b1">فيتامين ب 1</string>
+    <string name="vitamin_b2">فيتامين ب 2</string>
+    <string name="vitamin_pp">فيتامين ب 2</string>
+    <string name="vitamin_b6">فيتامين ب 6</string>
+    <string name="vitamin_b9">فيتامين ب 9</string>
+    <string name="vitamin_b12">فيتامين ب 12</string>
+    <string name="biotin">البيوتين</string>
+    <string name="pantothenic_acid">حمض البانتوثينيك</string>
+    <string name="nutrition_minerals">المعادن</string>
+    <string name="silica">السيليكا</string>
+    <string name="bicarbonate">بيكربونات</string>
+    <string name="potassium">بوتاسيوم</string>
+    <string name="chloride">كلوريد</string>
+    <string name="calcium">الكالسيوم</string>
+    <string name="phosphorus">الفوسفور</string>
+    <string name="iron">الحديد</string>
+    <string name="magnesium">المغنيسيوم</string>
+    <string name="zinc">الزنك</string>
+    <string name="copper">النحاس</string>
+    <string name="manganese">المنغنيز</string>
+    <string name="fluoride">الفلوريد</string>
+    <string name="selenium">السيلينيوم</string>
+    <string name="chromium">الكروم</string>
+    <string name="molybdenum">الموليبدينوم</string>
+    <string name="iodine">اليود</string>
+    <string name="caffeine">الكافيين</string>
+    <string name="taurine">توراين</string>
+    <string name="ph">الرقم الهيدروجيني</string>
+    <string name="fruits_vegetables_nuts">الفواكه والخضروات والمكسرات</string>
+    <string name="collagen_meat_protein_ratio">نسبة بروتين اللحوم الكولاجين</string>
+    <string name="cocoa">الكاكاو</string>
+    <string name="chlorophyl">الكلوروفيل</string>
+    <string name="take_picture">التقط صورة</string>
+    <string name="choose_picture_from_gallery">من معرض الصور</string>
+    <string name="take_picture_ingredients">التقط صورة للمكونات</string>
+    <string name="take_picture_recycling">Take a photo of the recycling instructions</string>
+    <string name="take_picture_front">التقاط صورة من الجهة الأمامية</string>
+    <string name="take_picture_nutrition_table">التقط صورة لجدول الحقائق الغذائية</string>
+    <string name="take_more_pictures">التقط المزيد من الصور</string>
+    <string name="take_extra_packaging_pictures">التقاط صور إضافية للعبوة</string>
+    <string name="txtSaturatedFat">الدهون المشبعة</string>
+    <string name="nutriscore_info_msg">معرفة المزيد عن Nutri-Score</string>
+    <string name="nova_info_msg">معرفة المزيد عن Nova</string>
+    <string name="nova_grp1_msg">المجموعة 1 - الأطعمة غير المصنّعة أو المصنّعة بالحد الأدنى</string>
+    <string name="nova_grp2_msg">المجموعة 2 - مكونات الطهي المصنعة</string>
+    <string name="nova_grp3_msg">المجموعة 3 - الأطعمة المصنّعة</string>
+    <string name="nova_grp4_msg">المجموعة 4 - منتجات الأغذية والمشروبات فائقة التصنيع</string>
+    <!-- String related to App Shortcuts -->
+    <string name="disabled_message">الاختصار غير متاح</string>
+    <string name="scan_shortcut_short_label">مسح</string>
+    <string name="scan_shortcut_long_label">فحص المنتج</string>
+    <string name="barcode_shortcut_short_label">بحث</string>
+    <string name="barcode_shortcut_long_label">البحث عن طريق الباركود</string>
+    <string name="history_shortcut_short_label">السجل</string>
+    <string name="history_shortcut_long_label">السجل</string>
+    <string name="contributions_shortcut_short_label">مساهمات</string>
+    <string name="contributions_shortcut_long_label">مساهماتي</string>
+    <string name="forgot_password">نسيت كلمة المرور</string>
+    <string name="next">التالي</string>
+    <string name="skip">تخطى</string>
+    <string name="start">فهمت ذلك</string>
+    <string name="email_not_found">لم يتم العثور على تطبيقات البريد الإلكتروني</string>
+    <string name="airplane_mode_active_dialog_title">تم تمكين وضع الطيران</string>
+    <string name="airplane_mode_active_dialog_message">وضع الطيران فعّال ، يرجى تعطيل هذا للمتابعة.</string>
+    <string name="airplane_mode_active_dialog_negative">تجاهل</string>
+    <string name="airplane_mode_active_dialog_positive">الإعدادات</string>
+    <string name="device_offline_dialog_title">الشبكة غير متوفرة</string>
+    <string name="device_offline_dialog_message">يتطلب الاتصال بالشبكة للقيام بذلك، هل ترغب في تغيير هذا في الإعدادات؟</string>
+    <string name="device_offline_dialog_negative">تجاهل</string>
+    <string name="device_offline_dialog_positive">الإعدادات</string>
+    <string name="scan_first_product">مسح المنتج الأول</string>
+    <string name="device_on_mobile_data_warning_title">معلومات</string>
+    <string name="device_on_mobile_data_warning_message">التحميل على بيانات الجوال غير مفعل، يرجى الاتصال بشبكة WiFi أو تغيير هذا في التفضيلات</string>
+    <string name="device_on_mobile_data_warning_positive">الخيارات</string>
+    <string name="device_on_mobile_data_warning_negative">تحميل على أي حال</string>
+    <string name="changes_saved">تم حفظ التغييرات بنجاح</string>
+    <string name="preference_choose_language_dialog_title">اختر اللغة</string>
+    <string name="please_check_your_connection">يرجى التحقق من اتصالك.</string>
+    <string name="advanced_search_title">بحث متقدم &amp;</string>
+    <string name="compare_products">قارن بين المنتجات</string>
+    <string name="connectivity_check">الرجاء التحقق من اتصالك بالإنترنت</string>
+    <string name="dismiss">تجاهل</string>
+    <string name="donation_url">https://donate.openfoodfacts.org</string>
+    <!--Just replace "world" by "fr", "de"… translate the "terms-of-use" with the hyphens -->
+    <string name="terms_url">https://world.openfoodfacts.org/terms-of-use</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "faq" -->
+    <string name="faq_url">https://world.openfoodfacts.org/faq</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate "hunger-game" -->
+    <string name="hunger_game_url">https://hunger.openfoodfacts.org</string>
+    <!--Just replace "world" by "world-fr", "world-de"… do not translate the end of the url -->
+    <!--Just replace "world" by "fr", "de"… do not translate the "nutriscore"-->
+    <string name="nutriscore_uri">https://world.openfoodfacts.org/nutriscore</string>
+    <!--Just replace "world" by "fr", "de"… do not translate the "nova"-->
+    <string name="url_nova_groups">https://world-en.openfoodfacts.org/nova</string>
+    <!--Just replace "world" by "fr", "de"… translate the end of the url -->
+    <string name="ecoscore_url">https://world.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products</string>
+    <!--Just replace "world" by "fr", "de"… translate the "nutrition-traffic-lights" with the hyphens -->
+    <string name="url_nutrient_values">https://world.openfoodfacts.org/nutrition-traffic-lights</string>
+    <string name="preference_header_general">عام</string>
+    <string name="scan_first_string">سيتم سرد سجل المنتجات الذي تم عرضه سابقاً هنا. \n هذا السجل مخصص لك فقط ويتم تخزينه محليًا فى هاتفك الجوال.</string>
+    <string name="log_in">تسجيل الدخول</string>
+    <string name="login_true">مسجل مسبقاً!</string>
+    <string name="confirm_logout">تأكيد تسجيل الخروج</string>
+    <string name="logout_dialog_content">هل أنت متأكد من تسجيل الخروج؟</string>
+    <string name="dialog_cancel">إلغاء</string>
+    <string name="dialog_create">إنشاء</string>
+    <string name="wikidata_information">الذهاب إلى أبعد من ذلك</string>
+    <string name="wikidata_unavailable">لا يوجد صفحة ويكيبيديا بلغتكم بعد.</string>
+    <string name="Wikipedia">عرض على ويكيبيديا</string>
+    <string name="Browse_Products">استعراض المنتجات</string>
+    <string name="brand_string">العلامة التجارية</string>
+    <string name="additive_string">المواد المضافة</string>
+    <string name="allergen_string">حساسية</string>
+    <string name="search_string">بحث</string>
+    <string name="country_string">بلدان بيع</string>
+    <string name="store_subtitle">المتجر</string>
+    <string name="packaging_subtitle">التعبئة والتغليف</string>
+    <string name="packaging_string">التعبئة والتغليف</string>
+    <string name="label_string">al3alama</string>
+    <string name="category_string">Atassnifate</string>
+    <string name="connection">متصل</string>
+    <string name="contributor_string">Almousstakhdimoun</string>
+    <string name="app_disabled_text">التطبيق معطل</string>
+    <!--Vitamin, Amino Acid, mineral and other nutrition Tags TextView-->
+    <string name="vitamin_tags_text">الفيتامينات:</string>
+    <string name="amino_acid_tags_text">أحماض أمينية:</string>
+    <string name="mineral_tags_text">المعادن:</string>
+    <string name="other_tags_text">مواد أخرى:</string>
+    <!--shared element transition key-->
+    <string name="by_title">العنوان</string>
+    <string name="by_brand">العلامة التجارية</string>
+    <string name="by_barcode">الرمز الشريطي</string>
+    <string name="by_time">شوهدت مؤخرًا</string>
+    <string name="sort">التصنيف</string>
+    <string name="by_nutrition_grade">درجة التغذية</string>
+    <string name="sort_by">ترتيب حسب</string>
+    <!-- strings related to share images -->
+    <string name="sorry_msg">لا يمكن بعد إضافة الصور بدون الباركود فى التطبيق. يرجى تجربة نسخة الويب للهاتف المحمولة.</string>
+    <string name="no_barcode">البرنامج لم يكتشف أي باركود</string>
+    <string name="enter_barcode">يرجى كتابة الرمز الشريطي أدناه</string>
+    <string name="format_error">خطأ الباركود / رمز الاستجابة السريعة</string>
+    <string name="code_detected">تم إكتشف الباركود</string>
+    <string name="do_you_want_to">هل تريد إضافة صور لهذا الباركود؟</string>
+    <string name="bottomNav_history">السجل</string>
+    <string name="products_added">المنتجات التي قمت بإضافتها أو تحريرها</string>
+    <string name="products_incomplete">المنتجات التي أضفتها وتحتاج إلى إكمالها</string>
+    <string name="product_pictures_contributed">المنتجات التي التقطت صور لها</string>
+    <string name="picture_contributed_incomplete">المنتجات التي إلتقط صور لها تحتاج إلى إكمالها</string>
+    <string name="product_info_added">المنتجات التي أضفت لها معلومات</string>
+    <string name="product_info_tocomplete">المنتجات التي أضفت معلومات لها تحتاج إلى إكمالها</string>
+    <string name="show_by">أعرض</string>
+    <string name="notify_title">تم الانتهاء من إخراج المنتجات</string>
+    <string name="notify_content">إضغط لعرض المنتجات التى تم إخراجها</string>
+    <string name="notification_channel_name">إخراج الإشعارات</string>
+    <string name="notify_channel_description">إشعار لإظهار موقع الملف المستخرج</string>
+    <string name="products_to_be_completed">مُنتجات مراد إكمالها</string>
+    <string name="offline_notification_title">المساهمات دون اتصال التي تحتاج إلى إرسالها</string>
+    <string name="creator_history">تمت إضافة المنتج بتاريخ %1$s فى %2$s من قبل</string>
+    <string name="last_editor_history">التعديل الأخير من صفحة المنتج على %1$s في %2$s CEST بواسطة </string>
+    <string name="other_editors">تم تعديل المنتج أيضاً بواسطة </string>
+    <string name="product_states">Product States</string>
+    <string name="incomplete_states">Incomplete States</string>
+    <string name="complete_states">Complete States</string>
+    <string name="contribution_tab">مساهمات</string>
+    <string name="synthesis_tab">Synthesis</string>
+    <string name="txtDialogsTitle">معلومات</string>
+    <string name="offline_product_addition_title">إضافة منتج جديد</string>
+    <string name="productNameNull">الاسم غير معروف</string>
+    <string name="productAdditivesUnknown"></string>
+    <string name="productAdditivesTemplate">%1$d إضافات</string>
+    <plurals name="productAdditives">
+        <item quantity="zero">مواد الإضافية </item>
+        <item quantity="one">%d المواد المضافة</item>
+        <item quantity="two">%d مادة مضافة</item>
+        <item quantity="few">%d additives</item>
+        <item quantity="many">%d additives</item>
+        <item quantity="other">%d additives</item>
+    </plurals>
+    <string name="product_not_complete">هذا المنتج لم يكتمل بعد. \n هل يمكنك إضافة بعض التفاصيل؟</string>
+    <string name="addProductOffline">يبدو أنك غير متصل. أضف المنتج %s باستخدام الوضع الغير متصل بالشبكة؟</string>
+    <string name="product_not_found">المنتج %1$s الذي مسحته غير موجود حتى الآن في Open Food Facts. هل يمكنك إضافته؟</string>
+    <string name="scan_sound">مسح الصوت</string>
+    <string name="trouble_scanning">عطل في المسح؟</string>
+    <string name="barcode_hint">عطل في المسح؟ أدخل الباركود</string>
+    <string name="switch_camera">تبديل الكاميرا</string>
+    <string name="autofocus">ضبط تلقائي للصورة</string>
+    <string name="initial_loading">التمهيد للتحميل</string>
+    <string name="preferences">الخيارات</string>
+    <string name="OFFlogo">فتح شعار الحقائق للمنتجات</string>
+    <string name="loading_product">يتم تحميل المنتج %s</string>
+    <string name="image_not_defined_for_language">لا توجد صورة للغة المختارة. يمكنك إضافة واحدة جديدة</string>
+    <string name="error_adding_ingredients">حدث خطأ ما أثناء محاولة إضافة مكونات المنتج</string>
+    <string name="unable_to_extract_ingredients">غير قادر على استخراج المكونات من الصورة</string>
+    <string name="error_adding_nutrition_facts">حدث خطأ ما أثناء محاولة إضافة الحقائق الغذائية للمنتج</string>
+    <string name="error_in_carbohydrate_value">الكربوهيدرات لا يمكن ان تكون اقل من مجموع السكر والنشا</string>
+    <string name="choose_nutrient">اختيار المواد المغذية</string>
+    <string name="error_adding_product_details">حدث خطأ ما أثناء محاولة إضافة تفاصيل المنتج</string>
+    <string name="hint_product_URL">رابط الصفحة الرسمية للمنتج</string>
+    <string name="extract_url">Extract URL from QR-code</string>
+    <string name="search_url">Search for official page URL</string>
+    <string name="product_language">لغة المنتج: </string>
+    <string name="hint_emb_codes">أمثلة: EMB 53062 ، FR 62.448.034 CE ، 84 R 20 ، 33 RECOLTANT 522 ، FSSL 10013011001409</string>
+    <string name="official_website">الموقع الرسمي</string>
+    <string name="scan_QR_code">مسح رمز الاستجابة السريعة لموقع المنتج</string>
+    <string name="add_at_least_one_picture">الرجاء إضافة صورة واحدة على الأقل لهذا المنتج قبل المتابعة</string>
+    <string name="image_uploaded_successfully">تم تحميل الصورة بنجاح</string>
+    <string name="error_adding_product_photos">حدث خطأ ما أثناء محاولة إضافة صور المنتج</string>
+    <string name="ingredients_overwrite">إعادة كتابة المكونات</string>
+    <string name="choose_mine">اختر لي</string>
+    <string name="keep_previous_version">حافظ على الإصدار السابق</string>
+    <string name="product_name_overwrite">إعادة كتابة اسم المنتج</string>
+    <string name="yours">خاصة بك: </string>
+    <string name="currently_on">حاليا على %s: </string>
+    <string name="quantity_overwrite">إعادة كتابة الكمية</string>
+    <string name="link_overwrite">إعادة كتابة الرابط</string>
+    <string name="save_product">هل تريد حفظ المنتج؟</string>
+    <string name="error_adding_product">حدث خطأ ما عند إضافة المنتج</string>
+    <string name="photos">صور</string>
+    <string name="please_wait">يُرجى الانتظار</string>
+    <string name="product_uploaded_successfully">تم إرسال المنتج بنجاح</string>
+    <string name="no_internet_connection">لا يوجد اتصال بالإنترنت ، سيتم تحميل الصور عندما تكون الشبكة متاحة</string>
+    <string name="no_internet_unable_to_extract_ingredients">لا يوجد اتصال بالإنترنت. غير قادر على استخراج المكونات</string>
+    <string name="percent">%1$d%%</string>
+    <string name="overview">نظرة عامة</string>
+    <string name="ingredients">المكونات</string>
+    <string name="nutrition_facts">حقائق غذائية</string>
+    <string name="your_version">خاصة بك</string>
+    <string name="ingredients_picture">صورة لقائمة المكونات</string>
+    <string name="packaging">Recycling</string>
+    <string name="recycling_picture">Recycling Picture</string>
+    <string name="take_ingredients_picture_to_extract">(يرجى التقاط صورة للمكونات ليتم إستخراجها تلقائيًا)</string>
+    <string name="ingredients_list">قائمة المكونات</string>
+    <string name="ingredients_hint">حافظ على الترتيب ، أو حدد النسبة المئوية عند تحديدها ، أو افصلها باستخدام فاصلة أو استخدام \"-\" أو استخدم \"()\" لمكون أحد المكونات ، أو احاطة المواد المسببة للحساسية مع _</string>
+    <string name="extract_ingredients">استخراج المكونات</string>
+    <string name="extracting_ingredients">استخراج المكونات</string>
+    <string name="looksGood">يبدو جيداً</string>
+    <string name="skip_ingredients">سيئ جدًا \n تخطي المكونات</string>
+    <string name="traces">آثار</string>
+    <string name="traces_hint">أشر إلى المكونات تشير الى مثلاً \"قد تحتوي على آثار\" ، \"صنع في مصنع يستخدم أيضًا\" ، إلخ. \n أمثلة: الحليب ، الغلوتين ، المكسرات</string>
+    <string name="nutrition_facts_not_specified">لم يتم تحديد الحقائق الغذائية على المنتج.</string>
+    <string name="nutrition_facts_picture">صورة للحقائق الغذائية</string>
+    <string name="front_short_picture">الأمامية</string>
+    <string name="other_picture">صورة أخرى</string>
+    <string name="for_100g_100ml">100 جرام / 100 مل</string>
+    <string name="per_serving">لكل وجبة</string>
+    <string name="serving_size">حجم الحصة</string>
+    <string name="alcohol_unit" formatted="false">٪ الحجم / °</string>
+    <string name="add_a_nutrient">إضافة مادة غذائية</string>
+    <string name="add_this_product">إضافة منتج</string>
+    <string name="product_picture">صورة المنتج</string>
+    <string name="one_photo_compulsory">(صورة واحدة فقط إلزامية لإضافة منتج جديد)</string>
+    <string name="product_details">تفاصيل المنتج</string>
+    <string name="product_name">اسم المنتج</string>
+    <string name="quantity">كمية</string>
+    <string name="labels">علامات</string>
+    <string name="period_of_time_after_opening">فترة من الوقت بعد الافتتاح</string>
+    <string name="manufacturing_details">تفاصيل التصنيع</string>
+    <string name="origin_of_ingredients">أصل المكونات</string>
+    <string name="manufacturing_place">مكان التصنيع</string>
+    <string name="emb_code">رمز EMB</string>
+    <string name="purchasing_details">تفاصيل الشراء</string>
+    <string name="country_where_purchased">البلد حيث تم شراؤها منها</string>
+    <string name="stores">المتاجر</string>
+    <string name="additional_pictures">صور إضافية</string>
+    <string name="hint_product_pictures">(أضف المزيد من الصور للمنتج ، على سبيل المثال: تعليمات إعادة التدوير والملصقات وغير ذلك)</string>
+    <string name="uploading_image">إرسال الصورة</string>
+    <string name="uploading_nutrition_image">تحميل صورة حقائق التغذية</string>
+    <string name="uploading_ingredients_image">تحميل صورة المكونات</string>
+    <string name="uploading_front_image">تحميل الصورة الأمامية</string>
+    <string name="edit_front_image">تعديل الصورة الأمامية</string>
+    <string name="edit_nutrition_image">تعديل صورة التغذية</string>
+    <string name="edit_packaging_image">Edit the recycling photo</string>
+    <string name="edit_ingredients_image">تعديل صورة المكونات</string>
+    <string name="edit_other_image">تعديل الصورة</string>
+    <string name="sign_in_to_edit">الرجاء التسجيل لتحرير المنتج.</string>
+    <string name="sign_in_to_answer">الرجاء تسجيل الدخول أو التسجيل للإجابة على الفكرة.</string>
+    <string name="hint_quantity">أمثلة: 1لتر، 250 غرام، 1 كيلوغرام، 25 سنتلتر، 6 اوقية سائلة، 1 باوند</string>
+    <string name="edit_product_title">تعديل المنتج</string>
+    <string name="nutrient_already_added">%s موجود بالفعل ضمن المعلومات التغذية</string>
+    <string name="save_edits">حفظ التعديلات</string>
+    <string name="contribution_by">مساهمة من قبل</string>
+    <string name="title_activity_product">العنوان</string>
+    <string name="description_activity_product">وصف</string>
+    <string name="intent_filter_share_label">أضف إلى حقائق المنتجات المفتوحة</string>
+    <!-- Used for additive exposure evaluation table -->
+    <string name="overexposure_high">ارتفاع خطر التعرض المفرط</string>
+    <string name="overexposure_moderate">خطر معتدل من التعرض المفرط</string>
+    <string name="infants">الرُضَّع</string>
+    <string name="infants_age">&lt; 1</string>
+    <string name="toddlers">الأطفال الصغار</string>
+    <string name="toddlers_age">١ إلى ٢</string>
+    <string name="children">الأطفال</string>
+    <string name="children_age">٣ إلى ٩</string>
+    <string name="adolescents">المراهقين</string>
+    <string name="adolescents_age">١٠ إلى ١٧</string>
+    <string name="adults">البالغين</string>
+    <string name="adults_age">١٨ إلى ٦٤</string>
+    <string name="elderly">بشيخوخة</string>
+    <string name="elderly_age">+٦٥</string>
+    <string name="most_people">معظم الناس\n(أكثر من ٥٠ ٪)</string>
+    <string name="some_people">بعض الناس\n(أكثر من ٥ ٪)</string>
+    <string name="safety_and_exposure_assessment">السلامة وتقييم التعرض</string>
+    <string name="risk_of_exposure">مخاطر التعرض</string>
+    <string name="efsa_warning_high_risk">قررت الهيئة الأوروبية لسلامة الأغذية (EFSA) أن بعض المجموعات السكانية لديها مخاطر عالية للاستهلاك المفرط%1$s.</string>
+    <string name="legend_noael">جرعة أعلى مع تأثير ضار ملحوظ (NOAEL)</string>
+    <string name="legend_adi">فوق المأخود اليومي المقبول (ADI)</string>
+    <string name="max_energy_val_msg">هذه القيمة أعلى من 2000 كيلو كالوري لكل 100 جرام. هل يمكنك تصحيحه؟</string>
+    <string name="max_nutrient_val_msg">القيمة المدخلة أكبر من المعطاة لكل حجم خدمة</string>
+    <string name="update_image">أرسل صورة حديثة</string>
+    <!-- Used for additive exposure evaluation table -->
+    <string name="extract_ingredients_prompt">استخراج المكونات</string>
+    <string name="extract_recycling_prompt">Extract recycling instructions</string>
+    <string name="add_nutrient_prompt_text">أضف حقائق غذائية لحساب مستويات المغذيات</string>
+    <string name="add_category_prompt_text">أضف المزيد من التفاصيل للمساعدة في استكمال المنتج</string>
+    <string name="add_nutrient_category_prompt_text">أضف فئة ومزيد الحقائق التغذية للمساعدة في إكمال المنتج</string>
+    <string name="couldnot_compute_ecoscore_prompt_text">We could not compute an Eco-Score for this product. It might be that the category is not specific enough or that we don\'t have supporting data for this category. If you believe this is an error, you can mail us by clicking below.</string>
+    <string name="add_labels_origins_prompt_text">The Eco-Score takes into account environmental labels and origins of the ingredients. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_labels_prompt_text">The Eco-Score takes into account environmental labels. Please take them into photo or edit the product so that they can be taken into account</string>
+    <string name="add_origins_prompt_text">The Eco-Score takes into account the origins of the ingredients. Please take them into photo (ingredient list and/or any geographic claim) or edit the product so that they can be taken into account</string>
+    <string name="category_game_btn">المساعدة في تصنيف المنتجات</string>
+    <string name="version_string">افتح تطبيق Open Food Facts على Android</string>
+    <string name="set_ingredient_img">Set as ingredients image</string>
+    <string name="set_img_nutrients">Set as nutrition image</string>
+    <string name="set_img_front">Set as front image</string>
+    <string name="set_img_recycling">Set Image as Recycling</string>
+    <string name="report_img">إبلاغ عن الصورة</string>
+    <string name="detected_ingredients">المكونات المكتشفة</string>
+    <string name="txtConnectionError">لم نتمكن من تنزيل بعض البيانات. قد يكون هذا بسبب خطأ في الاتصال.</string>
+    <string name="set_image_name">تعيين الصورة بنجاح</string>
+    <string name="addtive_search">البحث عن مادة مضافة</string>
+    <string name="additives">إضافات</string>
+    <!--used for product_lists implementation-->
+    <string name="add_to_product_lists">أضف إلى قائمتك</string>
+    <string name="txt_create_new_list">قم بإنشاء قائمة جديدة</string>
+    <string name="txt_add_to_new_list">قم بإنشاء قائمة جديدة</string>
+    <string name="create_new_list_list_name">اسم القائمة</string>
+    <string name="txt_eaten_products">المنتجات التي أملكها</string>
+    <string name="txt_products_to_buy">منتجات للشراء</string>
+    <string name="txt_exporting_your_listed_products">تصدير منتجاتك…</string>
+    <string name="txt_your_listed_products_exported">تم تصدير المنتجات الخاصة بك</string>
+    <string name="txt_discard">تجاهل</string>
+    <string name="txt_info_eaten_products">ستتمكن من إضافة منتج إلى هذه القائمة عن طريق مسح المنتجات وسحب بطاقة المنتج لأعلى والنقر على \"المنتجات المراد شراؤها\".
+        ستتمكن أيضًا من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
+    <string name="txt_info_your_listed_products">ستتمكن من إضافة منتجات إلى هذه القائمة من خلال البحث عنها والنقر فوق الزر + في أعلى يمين صفحة المنتج.</string>
+    <string name="txt_no_nutrition_data">لا يحتوي هذا المنتج على أي معلومات غذائية على العبوة. إذا طراء أيي تغير ، يمكنك تحرير المنتج.</string>
+    <string name="image_prompt_language">التقط صورة للمكونات الموجودة في</string>
+    <string name="swipe_delete_tip">You can delete a list by swiping it left.</string>
+    <!-- Used for diets AddOn -->
+    <string name="empty"></string>
+    <string name="add_product">أضف المنتجات</string>
+    <string name="add_another_product">أضف منتجًا آخر</string>
+    <string name="add_nutrition_facts_for_nutriscore">أضف حقائق غذائية لحساب Nutri-Score</string>
+    <string name="product_summary_action_compare_button_label">قارن</string>
+    <string name="product_summary_action_add_to_list_button_label">أضف إلى القائمة</string>
+    <string name="product_summary_action_edit_button_label">تعديل</string>
+    <string name="product_summary_action_share_button_label">مشاركة</string>
+    <string name="product_question_prompt">اضغط هنا للاجابة</string>
+    <string name="product_question_positive_response">نعم</string>
+    <string name="product_question_negative_response">لا</string>
+    <string name="product_question_ambiguous_response">لست متأكدًا</string>
+    <string name="product_question_submit_message">شكراً لمساهمتك!</string>
+    <string name="error_nutrient_entry">يجب أن تكون القيمة رقمية. مثال: &quot;1.5&quot;، &quot;2.0&quot;</string>
+    <string name="error_nutrient_serving_data">يجب أن تكون قيمة حجم الحصة موجبة</string>
+    <string name="error_in_nutrient_data">بعض القيم الغذائية غير صالحة. من فضلك ، تعديل الحقول أعلاه مع علامة الخطأ</string>
+    <string name="go_to_full_product_page">انتقل إلى المنتج</string>
+    <string name="no_additive_data_available_for_this_product">لا توجد بيانات مضافة متاحة لهذا المنتج</string>
+    <string name="no_nutrient_information_available_for_this_product">لا توجد معلومات غذائية متاحة لهذا المنتج</string>
+    <string name="error_duplicate_listname">لديك بالفعل قائمة بهذا الاسم</string>
+    <string name="required_to_compute_nutriscore">(مطلوب لحساب النتيجة الغذائية)</string>
+    <string name="scan_tooltip">يمكنك سحب البطاقة للاعلى لمزيد من التفاصيل</string>
+    <string name="add_an_allergen">أضف مادة مسببة للحساسية</string>
+    <string name="add_a_list">أضف قائمة</string>
+    <string name="edit_image">تحرير صفحة</string>
+    <string name="cant_edit_image_not_yet_uploaded">لم يتم تحميل الصورة الجديدة بعد. من فضلك انتظر قبل التعديل عليه</string>
+    <string name="unselect_image">قم بإلغاء تحديد الصورة</string>
+    <string name="choose_default_language">حدد لغة المنتج</string>
+    <string name="barcode">الرمز الشريطي</string>
+    <string name="productAdditivesNone">بدون إضافات</string>
+    <string name="error_uploading_photo">حدث خطأ ما اثناء تحميل صورة جديدة</string>
+    <string name="import_csv_to_list">استيراد ملف CSV بقائمة حقائق الأطعمة المفتوحة</string>
+    <string name="toast_import_csv_error">خطأ في استيراد ملف CSV</string>
+    <string name="toast_import_csv">تم استيراد ملف CSV بنجاح!</string>
+    <string name="open_csv">افتح CSV</string>
+    <!-- Used for diets AddOn -->
+    <string name="history_network_error">لا يمكن تحميل المنتج. يرجى المحاولة مرة أخرى عند الاتصال بالإنترنت مرة أخرى.</string>
+    <string name="cant_modify_if_refreshing">الرجاء الانتظار حتى انتهاء التحميل</string>
+    <string name="closeZoom">انقر لإغلاق التكبير</string>
+    <string name="imageFullscreen">التكبير</string>
+    <!-- Used for product ingredients analysis tags -->
+    <string name="close_button">إغلق</string>
+    <string name="tip_message">نصيحة: %1$s </string>
+    <string name="ingredient_analysis_tip">انقر على الأيقونات أدناه لمعرفة المزيد عن المنتج وتحديد المعلومات التي تهتم بها.</string>
+    <string name="got_it">فهِمت!</string>
+    <string name="onboarding_hint_msg">تلميح: %s </string>
+    <string name="image_edit_tip">اضغط على الصورة لتكبيرها وتغييرها واقتصاصها وتدويرها والمزيد…</string>
+    <string name="ingredients_in_this_product_are">المكونات في هذا المنتج هي %1$s.</string>
+    <string name="ingredients_in_this_product">المكونات في هذا المنتج هي %1$s.</string>
+    <string name="display_analysis_tag_status">عرض حالة %1$s</string>
+    <string name="unknown_status_no_translation">لم نتمكن من تقييم حالة المنتج بسبب المكونات غير المعترف بها.</string>
+    <string name="help_translate_ingredients">ساعد في ترجمة المكونات بلغتك</string>
+    <string name="unknown_status_missing_ingredients">لم نتمكن من تقييم حالة المنتج بسبب نقص المكونات.</string>
+    <string name="unknown_status_ambiguous_ingredients">We couldn\'t assess the status of the product because of ambiguous ingredients : <![CDATA[<b>%1$s</b>]]></string>
+    <string name="help_extract_ingredients">ساعد في استخراج المكونات لتحصل على الحالة %1$s</string>
+    <string name="add_photo_to_extract_ingredients">أضف صورة لبدء استخراج المكونات</string>
+    <string name="product_already_exists_in_comparison">المنتج موجود مسبقاً في قائمة المقارنة</string>
+    <string name="compare_brands">العلامات التجارية</string>
+    <string name="compare_additives">الإضافات:</string>
+    <string name="compare_salt">ملح</string>
+    <string name="compare_sugars">السكريات</string>
+    <string name="compare_saturated_fat">الدهون المشبعة</string>
+    <string name="compare_fat">الدهون</string>
+    <string name="compare_quantity">الكمية:</string>
+    <string name="load_ingredient_detection_data">تحميل بيانات الكشف عن المكون</string>
+    <string name="load_ingredient_detection_data_summary">لم يتم العثور على بيانات الكشف عن المكونات ، حاول تحميلها من الخادم</string>
+    <string name="white_check_image_descr">فحص أبيض</string>
+    <string name="hint_packaging">أمثلة: البلاستيك والورق والزجاج</string>
+    <string name="hint_trace_code">Examples: EMB 23456, FR 23.345.34 CE</string>
+    <string name="risk_alcohol_consumption">الاستهلاك المفرط للكحول ضار بالصحة ، لذا يجب تناولها باعتدال</string>
+    <!--ShowcaseView Strings-->
+    <string name="title_image_type">حدد نوع الصورة</string>
+    <string name="content_image_type">اختر الصورة للعمل عليها</string>
+    <string name="title_choose_language">حدد اللغة</string>
+    <string name="content_choose_language">حدد لغة الصورة</string>
+    <string name="title_add_photo">أضف صورة</string>
+    <string name="content_add_photo">اضغط هنا لالتقاط صورة جديدة</string>
+    <string name="title_choose_photo">اختر صورة</string>
+    <string name="content_choose_photo">اختر من بين الصور الموجودة</string>
+    <string name="title_edit_photo">حرر الصورة</string>
+    <string name="content_edit_photo">تحرير واقتصاص وتدوير الصورة</string>
+    <string name="title_unselect_photo">إلغاء تحديد الصورة</string>
+    <string name="content_unselect_photo">اضغط هنا ﻹلغاء تحديد الصورة الحالية</string>
+    <string name="title_exit">خروج</string>
+    <string name="content_exit">اضغط هنا للعودة إلى المنتج</string>
+    <string name="icon_label">أيقونة التسميات</string>
+    <string name="icon_categories">أيقونة الفئات</string>
+    <string name="icon_emb">EMB code icon</string>
+    <string name="product_front_image">الصورة اﻷمامية للمنتج</string>
+    <string name="brand_hint">أمثلة: Nike ، Apple ، إلخ…</string>
+    <string name="sign_in_or_register">تسجيل الدخول أو التسجيل</string>
+    <string name="hunger_game_call_to_action">ساعد في تصنيف المزيد %1$s</string>
+    <string name="txtHomeOnline">Open Food Facts is an open database of more than %1$s products (plus the ones you will contribute) in the world.</string>
+    <string name="enabled">Enabled</string>
+    <!-- Application theme settings -->
+    <string name="follow_system">Follow system</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="required_for_ecoscore">(Required to calculate the Eco-Score)</string>
+    <string name="hint_origin">Examples: USA, France, Italy</string>
+    <string name="report_email_chooser_title">Send a report email</string>
+</resources>
