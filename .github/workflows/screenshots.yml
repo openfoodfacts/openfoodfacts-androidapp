@@ -47,6 +47,8 @@ jobs:
 
       - name: Install sentry-cli
         run: curl -sL https://sentry.io/get-cli/ | bash
+      - name: Screenshots AssembleAndroidTest
+        run: pwd && ./gradlew assembleDebug assembleAndroidTest
       - name: Screenshots android tests
         uses: eskatos/gradle-command-action@v1
         with:
@@ -56,7 +58,7 @@ jobs:
         run: gem install bundler && bundle install
 
       - name: Run Fastlane release lane
-        run: bundle exec fastlane screenshots
+        run: pwd && bundle exec fastlane build_for_screengrab && bundle exec fastlane screenshots
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CI_RELEASE: true
