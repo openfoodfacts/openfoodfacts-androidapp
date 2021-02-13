@@ -26,6 +26,21 @@ lane :capture_screen do
   screengrab
 end
 
+desc "Build debug and test APK for screenshots"
+  lane :build_for_screengrab do
+    gradle(
+      task: 'clean'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'Debug'
+    )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'AndroidTest'
+    )
+  end
+
 desc 'Create a release and upload to internal channel of playstore'
 lane :release do
     PACKAGE_NAME = CredentialsManager::AppfileConfig.try_fetch_value(:package_name)
