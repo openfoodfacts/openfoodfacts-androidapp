@@ -19,7 +19,7 @@
             android:layout_height="@dimen/button_height_normal"
             android:layout_gravity="center"
             android:indeterminate="true"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
     </FrameLayout>
 

@@ -1,5 +1,7 @@
 package openfoodfacts.github.scrachx.openfood.scanner
 
+import android.animation.ValueAnimator
+import android.graphics.Camera
 import android.util.Log
 import androidx.annotation.MainThread
 import com.google.android.gms.tasks.Task
@@ -60,7 +62,7 @@ class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel
         if (barcodeInCenter == null) {
             cameraReticleAnimator.start()
             graphicOverlay.add(BarcodeReticleGraphic(graphicOverlay, cameraReticleAnimator))
-            workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTING)
+            workflowModel.setWorkflowState(WorkflowState.DETECTING)
         } else {
             cameraReticleAnimator.cancel()
             val sizeProgress = CameraPreferenceUtils.getProgressToMeetBarcodeSizeRequirement(graphicOverlay, barcodeInCenter)

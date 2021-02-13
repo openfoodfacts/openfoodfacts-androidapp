@@ -41,7 +41,7 @@ internal class BarcodeReticleGraphic(overlay: GraphicOverlay, private val animat
         ripplePaint.style = Style.STROKE
         ripplePaint.color = ContextCompat.getColor(context, R.color.reticle_ripple)
         rippleSizeOffset = resources.getDimensionPixelOffset(R.dimen.barcode_reticle_ripple_size_offset)
-        rippleStrokeWidth = resources.getDimensionPixelOffset(R.dimen.nav_bar_height)
+        rippleStrokeWidth = resources.getDimensionPixelOffset(R.dimen.barcode_reticle_ripple_stroke_width)
         rippleAlpha = ripplePaint.alpha
     }
 

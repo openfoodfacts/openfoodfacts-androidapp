@@ -21,6 +21,7 @@ import android.graphics.ImageFormat
 import android.hardware.Camera
 import android.hardware.Camera.CameraInfo
 import android.hardware.Camera.Parameters
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
 import android.view.SurfaceHolder
@@ -33,9 +34,10 @@ import openfoodfacts.github.scrachx.openfood.utils.CameraUtils.generateValidPrev
 import openfoodfacts.github.scrachx.openfood.utils.CameraUtils.isPortraitMode
 import java.io.IOException
 import java.nio.ByteBuffer
-import java.util.IdentityHashMap
+import java.util.*
 import kotlin.math.abs
 import kotlin.math.ceil
+
 
 /**
  * Manages the camera and allows UI updates on top of it (e.g. overlaying extra Graphics). This
@@ -221,18 +223,23 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
     @Throws(IOException::class)
     private fun setPreviewAndPictureSize(camera: Camera, parameters: Parameters) {
 
-        // Gives priority to the preview size specified by the user if exists.
-        val sizePair: CameraSizePair = CameraPreferenceUtils.getUserSpecifiedPreviewSize(context) ?: run {
-            // Camera preview size is based on the landscape mode, so we need to also use the aspect
-            // ration of display in the same mode for comparison.
-            val displayAspectRatioInLandscape: Float =
+        // Camera preview size is based on the landscape mode, so we need to also use the aspect
+        // ration of display in the same mode for comparison.
+        var height = 0
+        val displayAspectRatioInLandscape: Float =
                 if (isPortraitMode(graphicOverlay.context)) {
+                    height = graphicOverlay.height
                     graphicOverlay.height.toFloat() / graphicOverlay.width
+
                 } else {
+                    height = graphicOverlay.width
                     graphicOverlay.width.toFloat() / graphicOverlay.height
                 }
-            selectSizePair(camera, displayAspectRatioInLandscape)
-        } ?: throw IOException("Could not find suitable preview size.")
+
+        // Gives priority to the preview size specified by the user if exists.
+        Log.i(TAG,height.toString())
+        val sizePair: CameraSizePair = selectSizePair(camera, displayAspectRatioInLandscape, height)
+                ?: throw IOException("Could not find suitable preview size.")
 
         previewSize = sizePair.preview.also {
             Log.v(TAG, "Camera preview size: $it")
@@ -417,6 +424,9 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         }
     }
 
+
+
+
     companion object {
 
         const val CAMERA_FACING_BACK = CameraInfo.CAMERA_FACING_BACK
@@ -452,7 +462,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
          * @param camera the camera to select a preview size from
          * @return the selected preview and picture size pair
          */
-        private fun selectSizePair(camera: Camera, displayAspectRatioInLandscape: Float): CameraSizePair? {
+        private fun selectSizePair(camera: Camera, displayAspectRatioInLandscape: Float, height:Int): CameraSizePair? {
             val validPreviewSizes = generateValidPreviewSizeList(camera)
 
             var selectedPair: CameraSizePair? = null
@@ -461,7 +471,9 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
             for (sizePair in validPreviewSizes) {
                 val previewSize = sizePair.preview
-                if (previewSize.width < MIN_CAMERA_PREVIEW_WIDTH || previewSize.width > MAX_CAMERA_PREVIEW_WIDTH) {
+                Log.i(TAG, "pre view size  = "+ previewSize.toString())
+                if (previewSize.width < MIN_CAMERA_PREVIEW_WIDTH || previewSize.width > MAX_CAMERA_PREVIEW_WIDTH
+                        || previewSize.height<height) {
                     continue
                 }
 
@@ -478,6 +490,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
             }
 
             if (selectedPair == null) {
+                Log.i(TAG, "inside selected pair null")
                 // Picks the one that has the minimum sum of the differences between the desired values and
                 // the actual values for width and height.
                 var minDiff = Integer.MAX_VALUE
