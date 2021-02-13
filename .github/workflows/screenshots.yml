@@ -58,7 +58,7 @@ jobs:
         run: gem install bundler && bundle install
 
       - name: Run Fastlane release lane
-        run: pwd && bundle exec fastlane build_for_screengrab && bundle exec fastlane screenshots
+        run: pwd && bundle exec fastlane build_for_screengrab
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CI_RELEASE: true
