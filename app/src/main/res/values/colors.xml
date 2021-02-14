@@ -70,6 +70,7 @@
     <color name="grey_600">#757575</color>
     <color name="grey_800">#424242</color>
     <color name="grey_800_alpha">#88424242</color>
+    <color name="grey_round">#303030</color>
 
     <color name="blue_grey_100">#cfd8dc</color>
 
