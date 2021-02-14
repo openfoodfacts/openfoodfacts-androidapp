@@ -154,7 +154,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
             it.addValidListener()
             it.checkValue()
         }
-        (requireActivity() as? ProductEditActivity)?.initialValues?.let { values ->
+        (activity as? ProductEditActivity)?.initialValues?.let { values ->
             addAllFieldsToMap(values)
         }
     }
@@ -716,7 +716,7 @@ class ProductEditNutritionFactsFragment : ProductEditFragment() {
                 modSpinner.setSelection(modSelectedIndex)
             }
         } catch (t: Throwable) {
-            AnalyticsService.record(Throwable("Can't find weight units for nutriment: $nutrientShortName", t))
+            AnalyticsService.record(IllegalStateException("Can't find weight units for nutriment: $nutrientShortName", t))
             closeScreenWithAlert()
         }
 
