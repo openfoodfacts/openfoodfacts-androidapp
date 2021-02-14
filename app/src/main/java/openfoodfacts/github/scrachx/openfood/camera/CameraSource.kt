@@ -226,19 +226,24 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         // Camera preview size is based on the landscape mode, so we need to also use the aspect
         // ration of display in the same mode for comparison.
         var height = 0
+        var width = 0
+
         val displayAspectRatioInLandscape: Float =
                 if (isPortraitMode(graphicOverlay.context)) {
-                    height = graphicOverlay.height
+                    width = graphicOverlay.height
+                    height = graphicOverlay.width
                     graphicOverlay.height.toFloat() / graphicOverlay.width
 
                 } else {
-                    height = graphicOverlay.width
+                    width = graphicOverlay.width
+                    height = graphicOverlay.height
                     graphicOverlay.width.toFloat() / graphicOverlay.height
                 }
 
         // Gives priority to the preview size specified by the user if exists.
-        Log.i(TAG,height.toString())
-        val sizePair: CameraSizePair = selectSizePair(camera, displayAspectRatioInLandscape, height)
+        Log.i(TAG," height = " + height.toString())
+        Log.i(TAG," width = " + width.toString())
+        val sizePair: CameraSizePair = selectSizePair(camera, displayAspectRatioInLandscape,width)
                 ?: throw IOException("Could not find suitable preview size.")
 
         previewSize = sizePair.preview.also {
@@ -250,9 +255,6 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         sizePair.picture?.let { pictureSize ->
             Log.v(TAG, "Camera picture size: $pictureSize")
             parameters.setPictureSize(pictureSize.width, pictureSize.height)
-            CameraPreferenceUtils.saveStringPreference(
-                context, R.string.pref_key_rear_camera_picture_size, pictureSize.toString()
-            )
         }
     }
 
@@ -472,8 +474,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
             for (sizePair in validPreviewSizes) {
                 val previewSize = sizePair.preview
                 Log.i(TAG, "pre view size  = "+ previewSize.toString())
-                if (previewSize.width < MIN_CAMERA_PREVIEW_WIDTH || previewSize.width > MAX_CAMERA_PREVIEW_WIDTH
-                        || previewSize.height<height) {
+                if (previewSize.width < MIN_CAMERA_PREVIEW_WIDTH || previewSize.width > MAX_CAMERA_PREVIEW_WIDTH) {
                     continue
                 }
 

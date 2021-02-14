@@ -81,39 +81,42 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
 
         cameraSource?.previewSize?.let { cameraPreviewSize = it }
 
-        val previewSizeRatio = cameraPreviewSize?.let { size ->
+        val previewWidth = cameraPreviewSize?.let { size ->
             if (isPortraitMode(context)) {
                 // Camera's natural orientation is landscape, so need to swap width and height.
-                size.height.toFloat() / size.width
+                size.height
             } else {
-                size.width.toFloat() / size.height
+                size.width
             }
-        } ?: layoutWidth.toFloat() / layoutHeight.toFloat()
+        } ?: layoutWidth.toInt()
+
+        val previewHeight = cameraPreviewSize?.let { size ->
+            if (isPortraitMode(context)) {
+                // Camera's natural orientation is landscape, so need to swap width and height.
+                size.width
+            } else {
+                size.height
+            }
+        } ?: layoutHeight
 
         // Match the width of the child view to its parent.
-        val childHeight = (layoutWidth / previewSizeRatio).toInt()
-        if (childHeight <= layoutHeight) {
+        if (layoutWidth*previewHeight <= layoutHeight*previewWidth) {
+            val scaledChildWidth = previewWidth * layoutHeight / previewHeight;
+
             for (i in 0 until childCount) {
-                getChildAt(i).layout(0, 0, layoutWidth, childHeight)
+                getChildAt(i).layout((layoutWidth - scaledChildWidth) / 2, 0,
+                        (layoutWidth + scaledChildWidth) / 2, height)
             }
         } else {
             // When the child view is too tall to be fitted in its parent: If the child view is
             // static overlay view container (contains views such as bottom prompt chip), we apply
             // the size of the parent view to it. Otherwise, we offset the top/bottom position
             // equally to position it in the center of the parent.
-            val excessLenInHalf = (childHeight - layoutHeight) / 2
+            val scaledChildHeight = previewHeight * layoutWidth / previewWidth;
+
             for (i in 0 until childCount) {
-                val childView = getChildAt(i)
-                when (childView.id) {
-                    R.id.static_overlay_container -> {
-                        childView.layout(0, 0, layoutWidth, layoutHeight)
-                    }
-                    else -> {
-                        childView.layout(
-                            0, -excessLenInHalf, layoutWidth, layoutHeight + excessLenInHalf
-                        )
-                    }
-                }
+                getChildAt(i).layout(0, (layoutHeight - scaledChildHeight) / 2,
+                        width, (layoutHeight + scaledChildHeight) / 2)
             }
         }
 
