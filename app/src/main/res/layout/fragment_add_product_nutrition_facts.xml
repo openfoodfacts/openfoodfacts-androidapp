@@ -862,7 +862,7 @@
                     android:layout_marginTop="@dimen/spacing_small"
                     android:drawablePadding="@dimen/spacing_tiny"
                     android:text="@string/add_a_nutrient"
-                    app:drawableStartCompat="@drawable/ic_add_box_blue_18dp"
+                    app:drawableLeftCompat="@drawable/ic_add_box_blue_18dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/table_layout" />
