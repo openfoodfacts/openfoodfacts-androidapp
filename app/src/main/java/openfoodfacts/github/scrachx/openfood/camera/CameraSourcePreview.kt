@@ -88,7 +88,7 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
             } else {
                 size.width
             }
-        } ?: layoutWidth.toInt()
+        } ?: layoutWidth
 
         val previewHeight = cameraPreviewSize?.let { size ->
             if (isPortraitMode(context)) {

@@ -452,7 +452,7 @@ class ContinuousScanActivity : AppCompatActivity() {
         _binding = ActivityContinuousScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        useMLScanner = settings.getBoolean("select_scanner",false)
+        useMLScanner = settings.getBoolean(getString(R.string.pref_scanner_type_key),false)
         binding.toggleFlash.setOnClickListener { toggleFlash() }
         binding.buttonMore.setOnClickListener { showMoreSettings() }
 
@@ -465,7 +465,6 @@ class ContinuousScanActivity : AppCompatActivity() {
                 ?: error("Could not create vector drawable.")
 
         binding.quickViewTags.isNestedScrollingEnabled = false
-
 
         // The system bars are visible.
         hideSystemUI()
@@ -496,7 +495,6 @@ class ContinuousScanActivity : AppCompatActivity() {
         }
 
         // Setup barcode scanner
-
         if (!useMLScanner) {
             binding.barcodeScanner.visibility = View.VISIBLE
             binding.cameraPreview.visibility = View.GONE
@@ -518,22 +516,25 @@ class ContinuousScanActivity : AppCompatActivity() {
         } else {
             binding.cameraPreview.visibility = View.VISIBLE
             binding.barcodeScanner.visibility = View.GONE
-
             preview = binding.cameraPreview
+
             graphicOverlay = findViewById<GraphicOverlay>(R.id.camera_preview_graphic_overlay).apply {
+
+                cameraSource = CameraSource(this).apply {
+                    this.setFocusMode(autoFocusActive)
+                }
                 setOnClickListener{
                     quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
                     workflowModel?.setWorkflowState(WorkflowState.DETECTING)
                     startCameraPreview()
                 }
-                cameraSource = CameraSource(this)
             }
-
             setUpWorkflowModel()
         }
 
         binding.quickViewSearchByBarcode.setOnEditorActionListener(barcodeInputListener)
         binding.bottomNavigation.bottomNavigation.installBottomNavigation(this)
+
         // Setup popup menu
         setupPopupMenu()
     }
@@ -710,9 +711,15 @@ class ContinuousScanActivity : AppCompatActivity() {
     private fun setupPopupMenu() {
         popupMenu = PopupMenu(this, binding.buttonMore).also {
             it.menuInflater.inflate(R.menu.popup_menu, it.menu)
+            // turn flash on if flashActive true in pref
             if (flashActive) {
-                binding.barcodeScanner.setTorchOn()
-                binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
+                if(useMLScanner) {
+                    cameraSource!!.updateFlashMode(flashActive)
+                    binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
+                } else{
+                    binding.barcodeScanner.setTorchOn()
+                    binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
+                }
             }
             if (beepActive) {
                 it.menu.findItem(R.id.toggleBeep).isChecked = true
@@ -758,37 +765,38 @@ class ContinuousScanActivity : AppCompatActivity() {
     }
 
     private fun toggleFlash() {
+        Log.i("CSSAA", "inside toggle flash")
         cameraPref.edit {
             if (flashActive) {
-                if(useMLScanner){
-//                    fotoapparat.updateConfiguration(
-//                            UpdateConfiguration( flashMode= off() )
-//                    )
-                }
-                else {
-                    binding.barcodeScanner.setTorchOff()
-                }
                 flashActive = false
                 binding.toggleFlash.setImageResource(R.drawable.ic_flash_off_white_24dp)
                 putBoolean(SETTING_FLASH, false)
-            } else {
+
                 if(useMLScanner){
-//                    fotoapparat.updateConfiguration(
-//                            UpdateConfiguration( flashMode= torch() )
-//                    )
+                    cameraSource?.updateFlashMode(flashActive)
+                } else {
+                    binding.barcodeScanner.setTorchOff()
+                }
+            } else {
+                flashActive = true
+                binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
+                putBoolean(SETTING_FLASH, true)
+
+                if(useMLScanner){
+                    cameraSource!!.updateFlashMode(flashActive)
                 }
                 else {
                     binding.barcodeScanner.setTorchOn()
                 }
-                flashActive = true
-                binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
-                putBoolean(SETTING_FLASH, true)
             }
         }
     }
 
     private fun showMoreSettings() {
         popupMenu?.let {
+            if(useMLScanner) {
+                it.menu.findItem(R.id.toggleBeep).setEnabled(false)
+            }
             it.setOnMenuItemClickListener { item: MenuItem ->
                 when (item.itemId) {
                     R.id.toggleBeep -> {
@@ -800,31 +808,27 @@ class ContinuousScanActivity : AppCompatActivity() {
                         }
                     }
                     R.id.toggleAutofocus -> {
-                        if (binding.barcodeScanner.barcodeView.isPreviewActive) {
-                            binding.barcodeScanner.pause()
-                        }
-                        val settings = binding.barcodeScanner.barcodeView.cameraSettings
                         autoFocusActive = !autoFocusActive
-                        settings.isAutoFocusEnabled = autoFocusActive
                         item.isChecked = autoFocusActive
-
                         cameraPref.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
 
-                        binding.barcodeScanner.resume()
-                        binding.barcodeScanner.barcodeView.cameraSettings = settings
+                        if(useMLScanner){
+                            cameraSource!!.setFocusMode(autoFocusActive)
+                        } else {
+                            if (binding.barcodeScanner.barcodeView.isPreviewActive) {
+                                binding.barcodeScanner.pause()
+                            }
+                            val settings = binding.barcodeScanner.barcodeView.cameraSettings
+                            settings.isAutoFocusEnabled = autoFocusActive
+                        }
                     }
                     R.id.troubleScanning -> {
                         hideAllViews()
-                        hintBarcodeDisp?.dispose()
-
+                        hintBarcodeDisp!!.dispose()
                         binding.quickView.setOnClickListener(null)
                         binding.quickViewSearchByBarcode.text = null
                         binding.quickViewSearchByBarcode.visibility = View.VISIBLE
-                        binding.quickView.visibility = View.INVISIBLE
-                        quickViewBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-                        commonDisp.add(Completable.timer(500, TimeUnit.MILLISECONDS)
-                                .doOnComplete { binding.quickView.visibility = View.VISIBLE }
-                                .subscribeOn(AndroidSchedulers.mainThread()).subscribe())
+                        quickViewBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
                         binding.quickViewSearchByBarcode.requestFocus()
                     }
                     R.id.toggleCamera -> toggleCamera()

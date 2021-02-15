@@ -21,7 +21,6 @@ import android.graphics.ImageFormat
 import android.hardware.Camera
 import android.hardware.Camera.CameraInfo
 import android.hardware.Camera.Parameters
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
 import android.view.SurfaceHolder
@@ -52,7 +51,7 @@ import kotlin.math.ceil
 @Suppress("DEPRECATION")
 class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
-    private var camera: Camera? = null
+    var camera: Camera? = null
     private var rotationDegrees: Int = 0
 
     /** Returns the preview size that is currently in use by the underlying camera.  */
@@ -162,9 +161,29 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         }
     }
 
-    fun updateFlashMode(flashMode: String) {
+    fun updateFlashMode(flashActive: Boolean) {
+        Log.i("CSSAA", "inside update flash mode")
         val parameters = camera?.parameters
-        parameters?.flashMode = flashMode
+        if(flashActive) {
+            parameters?.flashMode = Camera.Parameters.FLASH_MODE_TORCH
+        } else{
+            parameters?.flashMode = Camera.Parameters.FLASH_MODE_OFF
+        }
+        camera?.parameters = parameters
+    }
+
+    fun setFocusMode(autoFocusActive:Boolean) {
+        val parameters = camera?.parameters
+        if(autoFocusActive) {
+            if (parameters?.supportedFocusModes?.contains(Parameters.FOCUS_MODE_AUTO) == true) {
+                parameters.focusMode = Parameters.FOCUS_MODE_AUTO
+            } else {
+                Log.i(TAG, "Camera auto focus is not supported on this device.")
+            }
+        }
+        else{
+            parameters?.focusMode = null
+        }
         camera?.parameters = parameters
     }
 
@@ -189,11 +208,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
         parameters.previewFormat = IMAGE_FORMAT
 
-        if (parameters.supportedFocusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
-            parameters.focusMode = Parameters.FOCUS_MODE_CONTINUOUS_VIDEO
-        } else {
-            Log.i(TAG, "Camera auto focus is not supported on this device.")
-        }
+        setFocusMode(false)
 
         camera.parameters = parameters
 
