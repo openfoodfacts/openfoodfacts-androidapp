@@ -26,6 +26,7 @@ import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.WindowManager
 import com.google.android.gms.common.images.Size
+import com.google.zxing.client.android.camera.open.OpenCameraInterface
 import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.utils.CameraPreferenceUtils
 import openfoodfacts.github.scrachx.openfood.utils.CameraUtils.ASPECT_RATIO_TOLERANCE
@@ -53,6 +54,8 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
     var camera: Camera? = null
     private var rotationDegrees: Int = 0
+
+    var requestedCameraId = CameraInfo.CAMERA_FACING_BACK
 
     /** Returns the preview size that is currently in use by the underlying camera.  */
     internal var previewSize: Size? = null
@@ -162,7 +165,6 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
     }
 
     fun updateFlashMode(flashActive: Boolean) {
-        Log.i("CSSAA", "inside update flash mode")
         val parameters = camera?.parameters
         if(flashActive) {
             parameters?.flashMode = Camera.Parameters.FLASH_MODE_TORCH
@@ -172,19 +174,28 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
         camera?.parameters = parameters
     }
 
-    fun setFocusMode(autoFocusActive:Boolean) {
-        val parameters = camera?.parameters
+    fun setFocusMode(autoFocusActive: Boolean) {
         if(autoFocusActive) {
+            val parameters = camera?.parameters
             if (parameters?.supportedFocusModes?.contains(Parameters.FOCUS_MODE_AUTO) == true) {
                 parameters.focusMode = Parameters.FOCUS_MODE_AUTO
             } else {
                 Log.i(TAG, "Camera auto focus is not supported on this device.")
             }
+            camera?.parameters = parameters
+        } else {
+            camera?.cancelAutoFocus()
         }
-        else{
-            parameters?.focusMode = null
+    }
+
+    fun switchCamera() : Camera {
+        camera?.release()
+        if(requestedCameraId == CAMERA_FACING_BACK){
+            requestedCameraId = CAMERA_FACING_FRONT
+        } else{
+            requestedCameraId = CAMERA_FACING_BACK
         }
-        camera?.parameters = parameters
+        return createCamera()
     }
 
     /**
@@ -194,7 +205,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
      */
     @Throws(IOException::class)
     private fun createCamera(): Camera {
-        val camera = Camera.open() ?: throw IOException("There is no back-facing camera.")
+        val camera = Camera.open(requestedCameraId) ?: throw IOException("There is no back-facing camera.")
         val parameters = camera.parameters
         setPreviewAndPictureSize(camera, parameters)
         setRotation(camera, parameters)
@@ -208,7 +219,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
         parameters.previewFormat = IMAGE_FORMAT
 
-        setFocusMode(false)
+        setFocusMode(true)
 
         camera.parameters = parameters
 
@@ -256,19 +267,19 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
                 }
 
         // Gives priority to the preview size specified by the user if exists.
-        Log.i(TAG," height = " + height.toString())
-        Log.i(TAG," width = " + width.toString())
-        val sizePair: CameraSizePair = selectSizePair(camera, displayAspectRatioInLandscape,width)
+//        Log.i(TAG," height = " + height.toString())
+//        Log.i(TAG," width = " + width.toString())
+        val sizePair: CameraSizePair = selectSizePair(camera, displayAspectRatioInLandscape, width)
                 ?: throw IOException("Could not find suitable preview size.")
 
         previewSize = sizePair.preview.also {
-            Log.v(TAG, "Camera preview size: $it")
+//            Log.v(TAG, "Camera preview size: $it")
             parameters.setPreviewSize(it.width, it.height)
             CameraPreferenceUtils.saveStringPreference(context, R.string.pref_key_rear_camera_preview_size, it.toString())
         }
 
         sizePair.picture?.let { pictureSize ->
-            Log.v(TAG, "Camera picture size: $pictureSize")
+//            Log.v(TAG, "Camera picture size: $pictureSize")
             parameters.setPictureSize(pictureSize.width, pictureSize.height)
         }
     }
@@ -366,8 +377,8 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
                 if (!bytesToByteBuffer.containsKey(data)) {
                     Log.d(
-                        TAG,
-                        "Skipping frame. Could not find ByteBuffer associated with the image data from the camera."
+                            TAG,
+                            "Skipping frame. Could not find ByteBuffer associated with the image data from the camera."
                     )
                     return
                 }
@@ -447,6 +458,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
     companion object {
 
         const val CAMERA_FACING_BACK = CameraInfo.CAMERA_FACING_BACK
+        const val CAMERA_FACING_FRONT = CameraInfo.CAMERA_FACING_FRONT
 
         private const val TAG = "CameraSource"
 
@@ -479,7 +491,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
          * @param camera the camera to select a preview size from
          * @return the selected preview and picture size pair
          */
-        private fun selectSizePair(camera: Camera, displayAspectRatioInLandscape: Float, height:Int): CameraSizePair? {
+        private fun selectSizePair(camera: Camera, displayAspectRatioInLandscape: Float, height: Int): CameraSizePair? {
             val validPreviewSizes = generateValidPreviewSizeList(camera)
 
             var selectedPair: CameraSizePair? = null
@@ -488,7 +500,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
             for (sizePair in validPreviewSizes) {
                 val previewSize = sizePair.preview
-                Log.i(TAG, "pre view size  = "+ previewSize.toString())
+//                Log.i(TAG, "pre view size  = "+ previewSize.toString())
                 if (previewSize.width < MIN_CAMERA_PREVIEW_WIDTH || previewSize.width > MAX_CAMERA_PREVIEW_WIDTH) {
                     continue
                 }
@@ -506,7 +518,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
             }
 
             if (selectedPair == null) {
-                Log.i(TAG, "inside selected pair null")
+//                Log.i(TAG, "inside selected pair null")
                 // Picks the one that has the minimum sum of the differences between the desired values and
                 // the actual values for width and height.
                 var minDiff = Integer.MAX_VALUE

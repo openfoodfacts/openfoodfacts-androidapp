@@ -521,6 +521,8 @@ class ContinuousScanActivity : AppCompatActivity() {
             graphicOverlay = findViewById<GraphicOverlay>(R.id.camera_preview_graphic_overlay).apply {
 
                 cameraSource = CameraSource(this).apply {
+                    requestedCameraId = cameraState
+                    Log.i("CSSAA", "inside on create CameraSource apply")
                     this.setFocusMode(autoFocusActive)
                 }
                 setOnClickListener{
@@ -760,6 +762,10 @@ class ContinuousScanActivity : AppCompatActivity() {
             binding.barcodeScanner.barcodeView.cameraSettings = settings
             cameraPref.edit { putInt(SETTING_STATE, cameraState) }
             binding.barcodeScanner.resume()
+        } else {
+            stopCameraPreview()
+            cameraSource?.switchCamera()
+            startCameraPreview()
         }
 
     }
@@ -795,7 +801,7 @@ class ContinuousScanActivity : AppCompatActivity() {
     private fun showMoreSettings() {
         popupMenu?.let {
             if(useMLScanner) {
-                it.menu.findItem(R.id.toggleBeep).setEnabled(false)
+                it.menu.findItem(R.id.toggleBeep).isEnabled = false
             }
             it.setOnMenuItemClickListener { item: MenuItem ->
                 when (item.itemId) {
@@ -813,7 +819,7 @@ class ContinuousScanActivity : AppCompatActivity() {
                         cameraPref.edit { putBoolean(SETTING_FOCUS, autoFocusActive) }
 
                         if(useMLScanner){
-                            cameraSource!!.setFocusMode(autoFocusActive)
+                            cameraSource?.setFocusMode(autoFocusActive)
                         } else {
                             if (binding.barcodeScanner.barcodeView.isPreviewActive) {
                                 binding.barcodeScanner.pause()
