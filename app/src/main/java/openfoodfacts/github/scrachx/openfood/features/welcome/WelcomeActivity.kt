@@ -147,8 +147,7 @@ class WelcomeActivity : AppCompatActivity() {
                 binding.layoutDots.addView(this)
             }
         }
-            dots[currentPage].setTextColor(colorsActive[currentPage])
-
+        dots[currentPage].setTextColor(colorsActive[currentPage])
     }
 
     private fun launchHomeScreen() {
@@ -170,9 +169,6 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun start(context: Context) {
-            val starter = Intent(context, WelcomeActivity::class.java)
-            context.startActivity(starter)
-        }
+        fun start(context: Context) = context.startActivity(Intent(context, WelcomeActivity::class.java))
     }
 }
