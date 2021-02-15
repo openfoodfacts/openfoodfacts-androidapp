@@ -17,6 +17,8 @@ package openfoodfacts.github.scrachx.openfood.features.shared.views
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Build
@@ -43,8 +45,6 @@ class QuestionDialog(private val mContext: Context) {
 
     @ColorRes
     var backgroundColor = 0
-    private val mIconColor = ResourcesCompat.getColor(mContext.resources, R.color.gray, mContext.theme)
-    private val mIcon = ResourcesCompat.getDrawable(mContext.resources, R.drawable.ic_feedback_black_24dp, mContext.theme)
     var question: String? = null
     var value: String? = null
 
@@ -73,20 +73,6 @@ class QuestionDialog(private val mContext: Context) {
 
     fun show() {
         initiateListeners()
-        val layerDrawable = ResourcesCompat.getDrawable(
-                mContext.resources,
-                R.drawable.reviewdialog_round_icon,
-                mContext.theme
-        ) as LayerDrawable?
-        val gradientDrawable = (layerDrawable!!.findDrawableByLayerId(R.id.round_background) as GradientDrawable).apply {
-            setColor(ResourcesCompat.getColor(mContext.resources, R.color.white, mContext.theme))
-        }
-        layerDrawable.setDrawableByLayerId(R.id.round_background, gradientDrawable)
-        val wrappedDrawable = DrawableCompat.wrap(mIcon!!)
-        DrawableCompat.setTint(wrappedDrawable.mutate(), mIconColor)
-        layerDrawable.setDrawableByLayerId(R.id.drawable_image, wrappedDrawable)
-
-        binding.reviewIcon.setImageDrawable(layerDrawable)
         binding.reviewQuestion.text = question
         binding.reviewValue.text = value
         binding.positiveFeedbackText.text = mPositiveFeedbackText

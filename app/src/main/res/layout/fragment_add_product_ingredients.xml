@@ -168,6 +168,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/extract_ingredients"
                 android:visibility="gone"
+                app:drawableLeftCompat="@drawable/ic_compare_arrows_black_18dp"
                 app:layout_constraintBottom_toBottomOf="@id/ingredients_list"
                 app:layout_constraintEnd_toEndOf="@id/ingredients_list"
                 app:layout_constraintStart_toStartOf="@id/ingredients_list"
