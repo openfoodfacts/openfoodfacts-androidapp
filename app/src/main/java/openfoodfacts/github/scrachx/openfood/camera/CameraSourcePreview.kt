@@ -1,18 +1,3 @@
-/*
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package openfoodfacts.github.scrachx.openfood.camera
 
@@ -27,7 +12,9 @@ import openfoodfacts.github.scrachx.openfood.R
 import openfoodfacts.github.scrachx.openfood.utils.CameraUtils.isPortraitMode
 import java.io.IOException
 
-/** Preview the camera image in the screen.  */
+/**
+ * Preview the camera image in the screen.
+ */
 class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
     private val surfaceView: SurfaceView = SurfaceView(context).apply {
@@ -79,40 +66,30 @@ class CameraSourcePreview(context: Context, attrs: AttributeSet) : FrameLayout(c
         val layoutWidth = right - left
         val layoutHeight = bottom - top
 
-        cameraSource?.previewSize?.let { cameraPreviewSize = it }
+        var previewWidth: Int = layoutWidth
+        var previewHeight: Int = layoutHeight
 
-        val previewWidth = cameraPreviewSize?.let { size ->
+        cameraPreviewSize?.let { size ->
             if (isPortraitMode(context)) {
                 // Camera's natural orientation is landscape, so need to swap width and height.
-                size.height
+                previewWidth = size.height
+                previewHeight = size.width
             } else {
-                size.width
+                previewWidth = size.width
+                previewHeight = size.height
             }
-        } ?: layoutWidth
-
-        val previewHeight = cameraPreviewSize?.let { size ->
-            if (isPortraitMode(context)) {
-                // Camera's natural orientation is landscape, so need to swap width and height.
-                size.width
-            } else {
-                size.height
-            }
-        } ?: layoutHeight
+        }
 
         // Match the width of the child view to its parent.
         if (layoutWidth*previewHeight <= layoutHeight*previewWidth) {
-            val scaledChildWidth = previewWidth * layoutHeight / previewHeight;
+            val scaledChildWidth = previewWidth * layoutHeight / previewHeight
 
             for (i in 0 until childCount) {
                 getChildAt(i).layout((layoutWidth - scaledChildWidth) / 2, 0,
                         (layoutWidth + scaledChildWidth) / 2, height)
             }
         } else {
-            // When the child view is too tall to be fitted in its parent: If the child view is
-            // static overlay view container (contains views such as bottom prompt chip), we apply
-            // the size of the parent view to it. Otherwise, we offset the top/bottom position
-            // equally to position it in the center of the parent.
-            val scaledChildHeight = previewHeight * layoutWidth / previewWidth;
+            val scaledChildHeight = previewHeight * layoutWidth / previewWidth
 
             for (i in 0 until childCount) {
                 getChildAt(i).layout(0, (layoutHeight - scaledChildHeight) / 2,

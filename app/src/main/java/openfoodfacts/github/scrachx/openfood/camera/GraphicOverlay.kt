@@ -1,18 +1,3 @@
-/*
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package openfoodfacts.github.scrachx.openfood.camera
 
@@ -26,10 +11,8 @@ import openfoodfacts.github.scrachx.openfood.utils.CameraUtils.isPortraitMode
 import java.util.ArrayList
 
 /**
- * A view which renders a series of custom graphics to be overlaid on top of an associated preview
- * (i.e., the camera preview). The creator can add graphics objects, update the objects, and remove
- * them, triggering the appropriate drawing and invalidation within the view.
- *
+ * A view which renders custom graphics overlaid on top of an associated preview
+ * (i.e., the camera preview).
  *
  * Supports scaling and mirroring of the graphics relative the camera's preview properties. The
  * idea is that detection items are expressed in terms of a preview size, but need to be scaled up
@@ -59,7 +42,9 @@ class GraphicOverlay(context: Context, attrs: AttributeSet) : View(context, attr
         abstract fun draw(canvas: Canvas)
     }
 
-    /** Removes all graphics from the overlay.  */
+    /**
+     * Removes all graphics from the overlay.
+     */
     fun clear() {
         synchronized(lock) {
             graphics.clear()
@@ -67,7 +52,9 @@ class GraphicOverlay(context: Context, attrs: AttributeSet) : View(context, attr
         postInvalidate()
     }
 
-    /** Adds a graphic to the overlay.  */
+    /**
+     * Adds a graphic to the overlay.
+     */
     fun add(graphic: Graphic) {
         synchronized(lock) {
             graphics.add(graphic)
@@ -104,7 +91,9 @@ class GraphicOverlay(context: Context, attrs: AttributeSet) : View(context, attr
         translateY(rect.bottom.toFloat())
     )
 
-    /** Draws the overlay with its associated graphic objects.  */
+    /**
+     * Draws the overlay with its associated graphic objects.
+     */
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 

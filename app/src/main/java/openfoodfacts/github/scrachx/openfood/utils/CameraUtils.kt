@@ -1,16 +1,19 @@
+@file:Suppress("DEPRECATION")
+
 package openfoodfacts.github.scrachx.openfood.utils
 
 import android.content.Context
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.*
 import android.hardware.Camera
 import android.util.Log
+import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.common.InputImage
 import openfoodfacts.github.scrachx.openfood.camera.CameraSizePair
+import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
-import java.util.ArrayList
+import java.util.*
 import kotlin.math.abs
 
 
@@ -23,7 +26,6 @@ object CameraUtils {
      */
     const val ASPECT_RATIO_TOLERANCE = 0.01f
 
-
     /**
      * Check if the  camera is in portrait mode.
      *
@@ -31,7 +33,6 @@ object CameraUtils {
      */
     fun isPortraitMode(context: Context): Boolean =
             context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
-
 
     /**
      * Generates a list of acceptable preview sizes. Preview sizes are not acceptable if there is not
@@ -99,6 +100,23 @@ object CameraUtils {
             Log.e("Camera Utils", "Error: " + e.message)
         }
         return null
+    }
+
+    fun getProgressToMeetBarcodeSizeRequirement(overlay: GraphicOverlay, barcode: Barcode): Float {
+        val reticleBoxWidth = getBarcodeReticleBox(overlay).width()
+        val barcodeWidth = overlay.translateX(barcode.boundingBox?.width()?.toFloat() ?: 0f)
+        val requiredWidth = reticleBoxWidth * 50/100
+        return (barcodeWidth / requiredWidth).coerceAtMost(1f)
+    }
+
+    fun getBarcodeReticleBox(overlay: GraphicOverlay): RectF {
+        val overlayWidth = overlay.width.toFloat()
+        val overlayHeight = overlay.height.toFloat()
+        val boxWidth = overlayWidth * 80 / 100
+        val boxHeight = overlayHeight * 40 / 100
+        val cx = overlayWidth / 2
+        val cy = overlayHeight / 2
+        return RectF(cx - boxWidth / 2, cy - boxHeight / 2, cx + boxWidth / 2, cy + boxHeight / 2)
     }
 
 }

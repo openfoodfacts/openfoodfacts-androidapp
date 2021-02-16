@@ -1,7 +1,6 @@
+
 package openfoodfacts.github.scrachx.openfood.scanner
 
-import android.animation.ValueAnimator
-import android.graphics.Camera
 import android.util.Log
 import androidx.annotation.MainThread
 import com.google.android.gms.tasks.Task
@@ -14,24 +13,26 @@ import openfoodfacts.github.scrachx.openfood.camera.FrameProcessorBase
 import openfoodfacts.github.scrachx.openfood.camera.GraphicOverlay
 import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel
 import openfoodfacts.github.scrachx.openfood.camera.WorkflowModel.WorkflowState
-import openfoodfacts.github.scrachx.openfood.utils.CameraPreferenceUtils
+import openfoodfacts.github.scrachx.openfood.utils.CameraUtils
 import openfoodfacts.github.scrachx.openfood.utils.InputInfo
 import java.io.IOException
 
-
-/** A processor to run the barcode detector.  */
+/**
+ * A processor to run the barcode detector.
+ */
 class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel: WorkflowModel) :
         FrameProcessorBase<List<Barcode>>() {
 
     private val options = BarcodeScannerOptions.Builder()
-            .setBarcodeFormats(Barcode.FORMAT_UPC_A,
+            .setBarcodeFormats(
+                    Barcode.FORMAT_UPC_A,
                     Barcode.FORMAT_UPC_E,
                     Barcode.FORMAT_EAN_13,
                     Barcode.FORMAT_EAN_8,
                     Barcode.FORMAT_CODE_39,
                     Barcode.FORMAT_CODE_93,
-                    Barcode.FORMAT_CODE_128)
-            .build()
+                    Barcode.FORMAT_CODE_128
+            ).build()
 
     private val scanner = BarcodeScanning.getClient(options)
     private val cameraReticleAnimator: CameraReticleAnimator = CameraReticleAnimator(graphicOverlay)
@@ -65,16 +66,15 @@ class BarcodeProcessor(graphicOverlay: GraphicOverlay, private val workflowModel
             workflowModel.setWorkflowState(WorkflowState.DETECTING)
         } else {
             cameraReticleAnimator.cancel()
-            val sizeProgress = CameraPreferenceUtils.getProgressToMeetBarcodeSizeRequirement(graphicOverlay, barcodeInCenter)
+            val sizeProgress = CameraUtils.getProgressToMeetBarcodeSizeRequirement(graphicOverlay, barcodeInCenter)
             if (sizeProgress < 1) {
                 // Barcode in the camera view is too small, so prompt user to move camera closer.
                 graphicOverlay.add(BarcodeConfirmingGraphic(graphicOverlay, barcodeInCenter))
                 workflowModel.setWorkflowState(WorkflowState.CONFIRMING)
             } else {
                 // Barcode size in the camera view is sufficient.
-                    workflowModel.setWorkflowState(WorkflowState.DETECTED)
-                    workflowModel.detectedBarcode.setValue(barcodeInCenter)
-
+                workflowModel.setWorkflowState(WorkflowState.DETECTED)
+                workflowModel.detectedBarcode.setValue(barcodeInCenter)
             }
         }
         graphicOverlay.invalidate()

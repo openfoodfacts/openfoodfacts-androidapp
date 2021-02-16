@@ -1,18 +1,3 @@
-/*
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package openfoodfacts.github.scrachx.openfood.camera
 
@@ -45,6 +30,7 @@ FrameProcessorBase<T> : FrameProcessor {
 
     @GuardedBy("this")
     private var processingFrameMetaData: FrameMetadata? = null
+
     private val executor = ScopedExecutor(TaskExecutors.MAIN_THREAD)
 
     @Synchronized
@@ -66,6 +52,7 @@ FrameProcessorBase<T> : FrameProcessor {
         processingFrameMetaData = latestFrameMetaData
         latestFrame = null
         latestFrameMetaData = null
+
         val frame = processingFrame ?: return
         val frameMetaData = processingFrameMetaData ?: return
         val image = InputImage.fromByteBuffer(
@@ -82,7 +69,7 @@ FrameProcessorBase<T> : FrameProcessor {
                 this@FrameProcessorBase.onSuccess(CameraInputInfo(frame, frameMetaData), results, graphicOverlay)
                 processLatestFrame(graphicOverlay)
             }
-            .addOnFailureListener(executor) { e -> OnFailureListener { this@FrameProcessorBase.onFailure(it) } }
+            .addOnFailureListener(executor) { OnFailureListener { this@FrameProcessorBase.onFailure(it) } }
     }
 
     override fun stop() {
@@ -91,7 +78,9 @@ FrameProcessorBase<T> : FrameProcessor {
 
     protected abstract fun detectInImage(image: InputImage): Task<T>
 
-    /** Be called when the detection succeeds.  */
+    /**
+     * Be called when the detection succeeds.
+     */
     protected abstract fun onSuccess(
             inputInfo: InputInfo,
             results: T,

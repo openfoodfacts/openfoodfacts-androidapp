@@ -13,13 +13,22 @@
         android:layout_height="match_parent"
         android:background="@color/transparent">
 
-        <ProgressBar
-            android:id="@+id/search_progress_bar"
-            android:layout_width="@dimen/button_height_normal"
-            android:layout_height="@dimen/button_height_normal"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="gone"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/bottom_prompt_chip"
+            style="@style/Widget.MaterialComponents.Chip.Entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:checkable="false"
+            android:clickable="false"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:chipCornerRadius="8dp"
+            app:chipSurfaceColor="@color/black"
+            app:closeIconVisible="false"/>
 
     </FrameLayout>
 

@@ -68,12 +68,10 @@ dependencies {
     implementation("androidx.work:work-rxjava2:2.4.0")
     implementation("androidx.startup:startup-runtime:1.0.0")
 
-
     // ML Kit barcode Scanner
     implementation ("com.google.mlkit:barcode-scanning:16.1.1")
-    // ___ library
-    implementation ("android.arch.lifecycle:extensions:1.1.1")
 
+    implementation ("android.arch.lifecycle:extensions:1.1.1")
 
     kapt("com.google.dagger:dagger-compiler:2.30.1")
     implementation("com.google.dagger:dagger:2.30.1")

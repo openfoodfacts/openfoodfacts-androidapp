@@ -71,8 +71,13 @@
     <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12sp</dimen>
 
+    <!-- preview graphic overlay -->
     <dimen name="barcode_reticle_ripple_stroke_width">4dp</dimen>
     <dimen name="barcode_reticle_ripple_size_offset">40dp</dimen>
     <dimen name="barcode_reticle_stroke_width">4dp</dimen>
     <dimen name="barcode_reticle_corner_radius">8dp</dimen>
+    <dimen name="bottom_prompt_chip_text_size">14sp</dimen>
+    <dimen name="bottom_prompt_chip_margin_bottom">28dp</dimen>
+    <dimen name="bottom_prompt_chip_corner_radius">8dp</dimen>
+
 </resources>

@@ -12,7 +12,6 @@ class CameraInputInfo(
         private val frameByteBuffer: ByteBuffer,
         private val frameMetadata: FrameMetadata
 ) : InputInfo {
-
     private var bitmap: Bitmap? = null
 
     @Synchronized
@@ -23,11 +22,5 @@ class CameraInputInfo(
             )
             bitmap!!
         }
-    }
-}
-
-class BitmapInputInfo(private val bitmap: Bitmap) : InputInfo {
-    override fun getBitmap(): Bitmap {
-        return bitmap
     }
 }
