@@ -168,7 +168,7 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         setLanguageInPrefs(this, getLanguage(this))
         setSupportActionBar(binding.toolbarInclude.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        swapToHomeFragment()
+        swapToFragment(HomeFragment.newInstance(), HomeFragment.TAG)
 
         // chrome custom tab init
         customTabActivityHelper = CustomTabActivityHelper()
@@ -265,11 +265,11 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                 )
                 .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
                     override fun onItemClick(view: View?, position: Int, drawerItem: IDrawerItem<*>): Boolean {
-                        var newFragment: Fragment? = null
+                        var newFragment: Pair<Fragment, String>? = null
                         when (drawerItem.identifier.toInt()) {
-                            ITEM_HOME -> newFragment = HomeFragment.newInstance()
+                            ITEM_HOME -> newFragment = HomeFragment.newInstance() to HomeFragment.TAG
                             ITEM_SEARCH_BY_CODE -> {
-                                newFragment = SearchByCodeFragment()
+                                newFragment = SearchByCodeFragment() to SearchByCodeFragment.TAG
                                 binding.bottomNavigationInclude.bottomNavigation.selectNavigationItem(0)
                             }
                             ITEM_CATEGORIES -> CategoryActivity.start(this@MainActivity)
@@ -278,8 +278,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             ITEM_HISTORY -> ScanHistoryActivity.start(this@MainActivity)
                             ITEM_SCAN -> openScan()
                             ITEM_LOGIN -> loginThenUpdate.launch(Unit)
-                            ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance()
-                            ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance()
+                            ITEM_ALERT -> newFragment = AllergensAlertFragment.newInstance() to AllergensAlertFragment.TAG
+                            ITEM_PREFERENCES -> newFragment = PreferencesFragment.newInstance() to PreferencesFragment.TAG
                             ITEM_ABOUT -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, discoverUri, WebViewFallback())
                             ITEM_CONTRIBUTE -> CustomTabActivityHelper.openCustomTab(this@MainActivity, customTabsIntent, contributeUri, WebViewFallback())
                             ITEM_INCOMPLETE_PRODUCTS -> start(this@MainActivity, SearchType.INCOMPLETE_PRODUCT, "") // Search and display the products to be completed by moving to ProductBrowsingListActivity
@@ -332,11 +332,8 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
                             }
 
                         }
-                        newFragment?.let {
-                            supportFragmentManager.commit {
-                                replace(R.id.fragment_container, it)
-                                addToBackStack(null)
-                            }
+                        newFragment?.let { (fragment, tag) ->
+                            swapToFragment(fragment, tag)
                         }
                         return false
                     }
@@ -422,9 +419,17 @@ class MainActivity : BaseActivity(), NavigationDrawerListener {
         handleIntent(intent)
     }
 
-    private fun swapToHomeFragment() {
-        supportFragmentManager.addOnBackStackChangedListener {}
-        supportFragmentManager.commit { replace(R.id.fragment_container, HomeFragment()) }
+    private fun swapToFragment(fragment: Fragment, tag: String) {
+        with(supportFragmentManager) {
+            val currentFragment = findFragmentByTag(HomeFragment.TAG)
+            if (currentFragment == null || currentFragment.isVisible.not()) {
+                commit {
+                    replace(R.id.fragment_container, fragment, tag)
+                    addToBackStack(null)
+                }
+            }
+
+        }
         binding.toolbarInclude.toolbar.title = BuildConfig.APP_NAME
     }
 

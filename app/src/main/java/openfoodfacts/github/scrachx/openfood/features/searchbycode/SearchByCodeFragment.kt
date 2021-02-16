@@ -75,6 +75,7 @@ class SearchByCodeFragment : NavigationBaseFragment() {
     }
 
     companion object {
+        const val TAG = "fragment_search_by_code"
         const val INTENT_KEY_BARCODE = "barcode"
         fun newInstance(barcode: String) = SearchByCodeFragment().apply {
             arguments = Bundle().apply {

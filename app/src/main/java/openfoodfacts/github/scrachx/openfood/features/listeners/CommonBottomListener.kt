@@ -34,9 +34,14 @@ class CommonBottomListener internal constructor(private val currentActivity: Act
             }
             R.id.home_page, R.id.home -> {
                 if (isCurrentActivity(WelcomeActivity::class.java) || isCurrentActivity(MainActivity::class.java)) {
-                    (currentActivity as FragmentActivity).supportFragmentManager.commit {
-                        replace(R.id.fragment_container, HomeFragment())
-                        addToBackStack(null)
+                    with((currentActivity as FragmentActivity).supportFragmentManager) {
+                        val currentFragment = findFragmentByTag(HomeFragment.TAG)
+                        if (currentFragment == null || currentFragment.isVisible.not()) {
+                            commit {
+                                replace(R.id.fragment_container, HomeFragment.newInstance(), HomeFragment.TAG)
+                                addToBackStack(null)
+                            }
+                        }
                     }
                     return true
                 }
