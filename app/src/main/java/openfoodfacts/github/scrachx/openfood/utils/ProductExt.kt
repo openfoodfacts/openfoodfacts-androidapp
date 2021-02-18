@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import openfoodfacts.github.scrachx.openfood.R
-import openfoodfacts.github.scrachx.openfood.features.productlist.ProductListActivity
 import openfoodfacts.github.scrachx.openfood.models.HistoryProduct
 import openfoodfacts.github.scrachx.openfood.models.Product
 import openfoodfacts.github.scrachx.openfood.models.Units
@@ -20,7 +19,19 @@ fun OfflineSavedProduct.toOnlineProduct(client: OpenFoodAPIClient) = toState(cli
 
 fun Product.isPerServingInLiter() = servingSize?.contains(Units.UNIT_LITER, true)
 
-fun Product.getProductBrandsQuantityDetails() = ProductListActivity.getProductBrandsQuantityDetails(brands, quantity)
+fun Product.getProductBrandsQuantityDetails(): String {
+    return StringBuilder()
+            .apply {
+                brands?.takeIf { it.isNotEmpty() }?.let {
+                    append(it.split(",").first().trim { it <= ' ' }.capitalize(Locale.ROOT))
+                }
+                if (!quantity.isNullOrEmpty()) {
+                    append(" - ")
+                    append(quantity)
+                }
+            }
+            .toString()
+}
 
 
 @DrawableRes

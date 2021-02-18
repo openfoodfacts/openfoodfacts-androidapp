@@ -61,6 +61,62 @@ public class HistoryProduct {
     public HistoryProduct() {
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        HistoryProduct that = (HistoryProduct) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) {
+            return false;
+        }
+        if (title != null ? !title.equals(that.title) : that.title != null) {
+            return false;
+        }
+        if (brands != null ? !brands.equals(that.brands) : that.brands != null) {
+            return false;
+        }
+        if (url != null ? !url.equals(that.url) : that.url != null) {
+            return false;
+        }
+        if (lastSeen != null ? !lastSeen.equals(that.lastSeen) : that.lastSeen != null) {
+            return false;
+        }
+        if (barcode != null ? !barcode.equals(that.barcode) : that.barcode != null) {
+            return false;
+        }
+        if (quantity != null ? !quantity.equals(that.quantity) : that.quantity != null) {
+            return false;
+        }
+        if (nutritionGrade != null ? !nutritionGrade.equals(that.nutritionGrade) : that.nutritionGrade != null) {
+            return false;
+        }
+        if (ecoscore != null ? !ecoscore.equals(that.ecoscore) : that.ecoscore != null) {
+            return false;
+        }
+        return novaGroup != null ? novaGroup.equals(that.novaGroup) : that.novaGroup == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (brands != null ? brands.hashCode() : 0);
+        result = 31 * result + (url != null ? url.hashCode() : 0);
+        result = 31 * result + (lastSeen != null ? lastSeen.hashCode() : 0);
+        result = 31 * result + (barcode != null ? barcode.hashCode() : 0);
+        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
+        result = 31 * result + (nutritionGrade != null ? nutritionGrade.hashCode() : 0);
+        result = 31 * result + (ecoscore != null ? ecoscore.hashCode() : 0);
+        result = 31 * result + (novaGroup != null ? novaGroup.hashCode() : 0);
+        return result;
+    }
+
     public Long getId() {
         return this.id;
     }

@@ -384,17 +384,6 @@ class ProductListActivity : BaseActivity(), SwipeController.Actions {
             return notificationManager
         }
 
-        fun getProductBrandsQuantityDetails(brands: String?, quantity: String?): String {
-            val builder = StringBuilder()
-            if (!brands.isNullOrEmpty()) {
-                builder.append(brands.split(",")[0].trim { it <= ' ' }.capitalize(Locale.ROOT))
-            }
-            if (!quantity.isNullOrEmpty()) {
-                builder.append(" - ").append(quantity)
-            }
-            return builder.toString()
-        }
-
         const val KEY_LIST_ID = "listId"
         const val KEY_LIST_NAME = "listName"
         const val KEY_PRODUCT_TO_ADD = "product"
