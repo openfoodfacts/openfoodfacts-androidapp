@@ -32,7 +32,7 @@ Data about food is of public interest and has to be open. The complete database 
 
 
 ## Impact Roadmap
-### Scanning 
+### A brilliant scan experience 
 https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20
 - [ ] Add ML Kit scanning
 - [ ] Add offline scanning
@@ -44,7 +44,6 @@ https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/20
 - [ ] https://github.com/openfoodfacts/openfoodfacts-androidapp/projects/8#card-39610510
 
 ### Editing papercut bugs
-Remove Packager code tooltip #2946
 Make category selection more intuitive for beginners #2951
 Improve suggestions by removing diacritics in the edit mode #2184
 
