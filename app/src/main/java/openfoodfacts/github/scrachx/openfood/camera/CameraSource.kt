@@ -40,6 +40,10 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
     var requestedCameraId = CameraInfo.CAMERA_FACING_BACK
 
+    var requestedFocusState = true
+
+    var requestedFlashState = false
+
     /** Returns the preview size that is currently in use by the underlying camera.  */
     internal var previewSize: Size? = null
         private set
@@ -149,7 +153,7 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
     fun updateFlashMode(flashActive: Boolean) {
         val parameters = camera?.parameters
-        if(flashActive) {
+        if(flashActive && requestedCameraId == CAMERA_FACING_BACK) {
             parameters?.flashMode = Parameters.FLASH_MODE_TORCH
         } else{
             parameters?.flashMode = Parameters.FLASH_MODE_OFF
@@ -158,17 +162,18 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
     }
 
     fun setFocusMode(autoFocusActive: Boolean) {
+        val parameters = camera?.parameters
         if(autoFocusActive) {
-            val parameters = camera?.parameters
-            if (parameters?.supportedFocusModes?.contains(Parameters.FOCUS_MODE_AUTO) == true) {
-                parameters.focusMode = Parameters.FOCUS_MODE_AUTO
+            Log.i(TAG,"Supported focus mode = " + parameters!!.supportedFocusModes)
+            if(parameters.supportedFocusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+                parameters.focusMode = Parameters.FOCUS_MODE_CONTINUOUS_VIDEO
             } else {
-                Log.i(TAG, "Camera auto focus is not supported on this device.")
+                Log.i(TAG, "Camera continuous mode is not supported on this device.")
             }
-            camera?.parameters = parameters
         } else {
-            camera?.cancelAutoFocus()
+            parameters!!.focusMode = Parameters.FOCUS_MODE_FIXED
         }
+        camera?.parameters = parameters
     }
 
     fun switchCamera() : Camera {
@@ -189,7 +194,8 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
      */
     @Throws(IOException::class)
     private fun createCamera(): Camera {
-        val camera = Camera.open(requestedCameraId) ?: throw IOException("There is no back-facing camera.")
+        val camera = Camera.open(requestedCameraId) ?: throw IOException("Requested Camera not installed.")
+
         val parameters = camera.parameters
         setPreviewAndPictureSize(camera, parameters)
         setRotation(camera, parameters)
@@ -203,7 +209,17 @@ class CameraSource(private val graphicOverlay: GraphicOverlay) {
 
         parameters.previewFormat = IMAGE_FORMAT
 
-        setFocusMode(true)
+        if(requestedFlashState){
+            parameters.flashMode = Parameters.FLASH_MODE_TORCH
+        }
+
+        if(requestedFocusState){
+            if(parameters.supportedFocusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+                parameters.focusMode = Parameters.FOCUS_MODE_CONTINUOUS_VIDEO
+            } else {
+                Log.i(TAG, "Camera continuous mode is not supported on this device.")
+            }
+        }
 
         camera.parameters = parameters
 

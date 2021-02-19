@@ -525,7 +525,8 @@ class ContinuousScanActivity : AppCompatActivity() {
 
                 cameraSource = CameraSource(this).apply {
                     requestedCameraId = cameraState
-                    setFocusMode(autoFocusActive)
+                    requestedFlashState = flashActive
+                    requestedFocusState = autoFocusActive
                 }
                 setOnClickListener{
                     quickViewBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -716,12 +717,9 @@ class ContinuousScanActivity : AppCompatActivity() {
             it.menuInflater.inflate(R.menu.popup_menu, it.menu)
             // turn flash on if flashActive true in pref
             if (flashActive) {
-                if(useMLScanner) {
-                    cameraSource?.updateFlashMode(flashActive)
-                    binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
-                } else{
+                binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
+                if(!useMLScanner) {
                     binding.barcodeScanner.setTorchOn()
-                    binding.toggleFlash.setImageResource(R.drawable.ic_flash_on_white_24dp)
                 }
             }
             if (beepActive) {
@@ -750,19 +748,21 @@ class ContinuousScanActivity : AppCompatActivity() {
 
     @Suppress("deprecation")
     private fun toggleCamera() {
+
+        cameraState = if (cameraState == Camera.CameraInfo.CAMERA_FACING_BACK) {
+            Camera.CameraInfo.CAMERA_FACING_FRONT
+        } else {
+            Camera.CameraInfo.CAMERA_FACING_BACK
+        }
+        cameraPref.edit { putInt(SETTING_STATE, cameraState) }
+
         if(!useMLScanner) {
             val settings = binding.barcodeScanner.barcodeView.cameraSettings
             if (binding.barcodeScanner.barcodeView.isPreviewActive) {
                 binding.barcodeScanner.pause()
             }
-            cameraState = if (settings.requestedCameraId == Camera.CameraInfo.CAMERA_FACING_BACK) {
-                Camera.CameraInfo.CAMERA_FACING_FRONT
-            } else {
-                Camera.CameraInfo.CAMERA_FACING_BACK
-            }
             settings.requestedCameraId = cameraState
             binding.barcodeScanner.barcodeView.cameraSettings = settings
-            cameraPref.edit { putInt(SETTING_STATE, cameraState) }
             binding.barcodeScanner.resume()
         } else {
             stopCameraPreview()
