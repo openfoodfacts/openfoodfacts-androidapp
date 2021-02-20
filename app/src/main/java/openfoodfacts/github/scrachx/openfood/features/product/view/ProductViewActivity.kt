@@ -246,29 +246,22 @@ class ProductViewActivity : BaseActivity(), OnRefreshListener {
             val preferences = PreferenceManager.getDefaultSharedPreferences(activity)
 
             // Add Ingredients fragment for off, obf and opff
-            if (isFlavors(OFF, OBF, OPFF)) {
-                adapter.add(IngredientsProductFragment.newInstance(productState), titles[1])
+            if (isFlavors(OFF, OBF, OPFF)) adapter.add(IngredientsProductFragment.newInstance(productState), titles[1])
+
+            if (isFlavors(OFF, OPFF)) adapter.add(NutritionProductFragment.newInstance(productState), titles[2])
+
+            if (isFlavors(OFF)) adapter.add(EnvironmentProductFragment().applyBundle(fBundle), titles[4])
+
+            if (isFlavors(OFF, OPFF, OBF) && isPhotoMode(activity) || isFlavors(OPF)) {
+                adapter.add(ProductPhotosFragment.newInstance(productState), newTitles[0])
             }
-            if (isFlavors(OFF)) {
-                adapter.add(NutritionProductFragment().applyBundle(fBundle), titles[2])
-                adapter.add(EnvironmentProductFragment().applyBundle(fBundle), titles[4])
-                if (isPhotoMode(activity)) {
-                    adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
-                }
+
+            if (isFlavors(OFF, OBF)) {
                 adapter.add(ServerAttributesFragment.newInstance(productState), activity.getString(R.string.synthesis_tab))
-            } else if (isFlavors(OPFF)) {
-                adapter.add(NutritionProductFragment().applyBundle(fBundle), titles[2])
-                if (isPhotoMode(activity)) {
-                    adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
-                }
-            } else if (isFlavors(OBF)) {
-                if (isPhotoMode(activity)) {
-                    adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
-                }
-                adapter.add(IngredientsAnalysisProductFragment().applyBundle(fBundle), newTitles[1])
-            } else if (isFlavors(OPF)) {
-                adapter.add(ProductPhotosFragment().applyBundle(fBundle), newTitles[0])
             }
+
+            if (isFlavors(OBF)) adapter.add(IngredientsAnalysisProductFragment().applyBundle(fBundle), newTitles[1])
+
             if (preferences.getBoolean(activity.getString(R.string.pref_contribution_tab_key), false)) {
                 adapter.add(ContributorsFragment.newInstance(productState), activity.getString(R.string.contribution_tab))
             }

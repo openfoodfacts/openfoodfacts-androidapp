@@ -10,5 +10,5 @@ object AnalyticsService {
 
     fun setTag(key: String, value: String) = Sentry.setTag(key, value)
 
-    fun record(exception: Exception) = Sentry.captureException(exception)
+    fun record(exception: Throwable) = Sentry.captureException(exception)
 }
