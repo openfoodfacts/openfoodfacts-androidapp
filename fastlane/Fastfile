@@ -34,7 +34,8 @@ desc "Build debug and test APK for screenshots"
     build_android_app(
       task: 'assemble',
       build_type: 'Debug',
-      flavor: "off"
+      flavor: "off",
+      project_dir: './'
     )
     #build_android_app(
     #      task: 'assemble',
@@ -43,7 +44,8 @@ desc "Build debug and test APK for screenshots"
     build_android_app(
       task: 'assemble',
       build_type: 'Screenshots',
-      flavor: "off"
+      flavor: "off",
+      project_dir: './'
     )
   end
 
