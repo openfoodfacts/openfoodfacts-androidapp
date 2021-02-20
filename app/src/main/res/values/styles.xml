@@ -65,4 +65,9 @@
         <item name="android:background">@color/grey_200</item>
     </style>
 
+    <style name="ChangelogDialogAnimation" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
 </resources>
