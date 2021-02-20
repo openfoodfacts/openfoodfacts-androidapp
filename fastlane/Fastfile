@@ -45,7 +45,6 @@ desc "Build debug and test APK for screenshots"
       build_type: 'Screenshots',
       flavor: "off"
     )
-    screengrab
   end
 
 desc 'Create a release and upload to internal channel of playstore'
