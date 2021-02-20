@@ -44,8 +44,8 @@ jobs:
       - name: Install Dependencies
         run: gem install bundler && bundle install
 
-      - name: Run Fastlane Screenshots
-        run: pwd && cd ./app/ && bundle exec fastlane build_for_screengrab
+      - name: Build Screenshots APK
+        run: pwd && bundle exec fastlane build_for_screengrab
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CI_RELEASE: true
@@ -54,7 +54,7 @@ jobs:
           SIGN_KEY_ALIAS: ${{ secrets.SIGN_KEY_ALIAS }}
           SIGN_KEY_PASSWORD: ${{ secrets.SIGN_KEY_PASSWORD }}
 
-      - name: run emulator
+      - name: Run emulator and generate screenshots
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
