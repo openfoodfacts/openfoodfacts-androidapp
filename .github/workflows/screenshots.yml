@@ -6,7 +6,6 @@ on:
       - 'screenshots/*'
 
 jobs:
-  testOff:
   screenshots:
     name: Generate screenshots
     runs-on: ubuntu-20.04
