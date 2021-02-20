@@ -39,6 +39,10 @@ desc "Build debug and test APK for screenshots"
       task: 'assemble',
       build_type: 'AndroidTest'
     )
+    build_android_app(
+      task: 'assemble',
+      build_type: 'Screenshots'
+    )
     screengrab
   end
 
